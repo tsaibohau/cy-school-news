@@ -68,6 +68,11 @@ def normalize_url(url: str) -> str:
     return urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
 
 
+def display_date(item: dict) -> str:
+    """排序與顯示共用的日期鍵:公告日期缺漏時,以首次發現日期(first_seen 前 10 碼)代替。"""
+    return item.get("date") or (item.get("first_seen") or "")[:10]
+
+
 def parse_date_near(node) -> str:
     """從連結節點往上找最近容器內的日期字串。"""
     cur = node
@@ -108,6 +113,8 @@ def extract_items(html: str, school: dict, source_url: str):
         if art_id in seen:
             continue
         title = a.get_text(" ", strip=True)
+        # 官網 HTML 偶有 \x0b 等隱形空白字元,一律壓成單一空格
+        title = re.sub(r"\s+", " ", title).strip()
         if not title or len(title) < 4 or title in ("MORE", "更多"):
             continue
         seen.add(art_id)
@@ -125,27 +132,55 @@ def extract_items(html: str, school: dict, source_url: str):
     return items
 
 
+def _article_body(soup: BeautifulSoup):
+    """去除雜訊後,找出 406 文章頁的內文節點(摘要與日期補齊共用)。"""
+    for tag in soup(["script", "style", "nav", "header", "footer"]):
+        tag.decompose()
+    candidates = []
+    for sel in ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article"]:
+        candidates += soup.select(sel)
+    if not candidates:
+        # 後備方案:找含最多文字的 div
+        divs = sorted(soup.find_all("div"),
+                      key=lambda d: len(d.get_text(strip=True)), reverse=True)
+        candidates = divs[:1]
+    return candidates[0] if candidates else None
+
+
 def extract_article_snippet(html: str, title: str) -> str:
     """從 406 文章頁抽出內文摘要(盡力而為,失敗回空字串)。"""
     try:
         soup = BeautifulSoup(html, "html.parser")
-        for tag in soup(["script", "style", "nav", "header", "footer"]):
-            tag.decompose()
-        candidates = []
-        for sel in ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article"]:
-            candidates += soup.select(sel)
-        if not candidates:
-            # 後備方案:找含最多文字的 div
-            divs = sorted(soup.find_all("div"),
-                          key=lambda d: len(d.get_text(strip=True)), reverse=True)
-            candidates = divs[:1]
-        if not candidates:
+        body = _article_body(soup)
+        if body is None:
             return ""
-        text = candidates[0].get_text(" ", strip=True)
+        text = body.get_text(" ", strip=True)
         text = re.sub(r"\s+", " ", text)
         if title and text.startswith(title):
             text = text[len(title):].strip()
         return text[:280]
+    except Exception:
+        return ""
+
+
+def extract_article_date(html: str) -> str:
+    """從 406 文章頁抽出公告日期:優先 class 含 mdate 的元素,其次內文第一個日期。"""
+    try:
+        soup = BeautifulSoup(html, "html.parser")
+        texts = []
+        node = soup.find(class_=re.compile("mdate"))
+        if node is not None:
+            texts.append(node.get_text(" ", strip=True))
+        body = _article_body(soup)
+        if body is not None:
+            texts.append(body.get_text(" ", strip=True))
+        for text in texts:
+            m = DATE_RE.search(text or "")
+            if m:
+                y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
+                if 1 <= mo <= 12 and 1 <= d <= 31:
+                    return f"{y:04d}-{mo:02d}-{d:02d}"
+        return ""
     except Exception:
         return ""
 
@@ -176,6 +211,7 @@ def main() -> int:
 
     now_iso = datetime.now(TW_TZ).isoformat(timespec="seconds")
     all_new = []
+    fetched_this_run = set()
 
     for school in CONFIG["schools"]:
         collected = {}
@@ -199,12 +235,15 @@ def main() -> int:
         new_for_school = [it for iid, it in collected.items() if iid not in known_ids]
         new_for_school.sort(key=lambda x: x.get("date") or "", reverse=True)
 
-        # 只對「新」項目補抓內文摘要,並設上限
+        # 只對「新」項目補抓內文摘要,並設上限;順便從文章頁補回缺漏的日期
         cap = CONFIG["fetch_content_max_per_school"]
         for it in new_for_school[:cap]:
             try:
                 html = fetch(session, it["url"])
                 it["snippet"] = extract_article_snippet(html, it["title"])
+                if not it.get("date"):
+                    it["date"] = extract_article_date(html)
+                fetched_this_run.add(it["id"])
             except Exception as e:
                 print(f"[warn] 內文抓取失敗 {it['url']}: {e}", file=sys.stderr)
                 it["snippet"] = ""
@@ -230,8 +269,36 @@ def main() -> int:
 
         print(f"[info] {school['short']}: 共 {len(collected)} 筆,其中新項目 {len(new_for_school)} 筆")
 
+    # 逐步補齊舊資料:每次最多挑幾筆沒日期的既有項目,抓文章頁補日期與摘要
+    backfill_cap = CONFIG.get("backfill_max_per_run", 10)
+    pending = [it for it in by_id.values()
+               if not it.get("date") and not it.get("date_tried")
+               and it["id"] not in fetched_this_run]
+    pending.sort(key=lambda x: x.get("first_seen") or "", reverse=True)
+    filled = 0
+    for it in pending[:backfill_cap]:
+        try:
+            html = fetch(session, it["url"])
+        except Exception as e:
+            print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)
+            time.sleep(delay)
+            continue
+        date = extract_article_date(html)
+        if date:
+            it["date"] = date
+            filled += 1
+        else:
+            # 文章頁也沒有日期,標記後不再重複嘗試
+            it["date_tried"] = True
+        if not it.get("snippet"):
+            it["snippet"] = extract_article_snippet(html, it["title"])
+        time.sleep(delay)
+    if pending:
+        print(f"[info] 日期補齊:本次處理 {min(len(pending), backfill_cap)} 筆,"
+              f"補上 {filled} 筆,剩餘 {max(len(pending) - backfill_cap, 0)} 筆待補")
+
     items = list(by_id.values())
-    items.sort(key=lambda x: (x.get("date") or "0000-00-00", x.get("first_seen") or ""),
+    items.sort(key=lambda x: (display_date(x), x.get("first_seen") or ""),
                reverse=True)
     items = items[: CONFIG["max_items"]]
 

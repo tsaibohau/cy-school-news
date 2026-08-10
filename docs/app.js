@@ -91,13 +91,17 @@
   }
 
   /* ── 畫面渲染 ── */
+  function displayDate(it) {
+    /* 沒有公告日期時,退而顯示首次抓到的日期 */
+    return it.date || (it.first_seen || "").slice(0, 10) || "—";
+  }
   function cardHTML(it) {
     var schoolClass = it.school === "cysh" ? "tag-cysh" : "tag-cygsh";
     var catClass = it.category === "榮譽榜" ? " cat-honor" : "";
     return '<article class="card' + catClass + '">' +
       (isNew(it) ? '<span class="new-dot" title="新公告"></span>' : "") +
       '<div class="card-meta">' +
-        '<span>' + esc(it.date || "—") + '</span>' +
+        '<span>' + esc(displayDate(it)) + '</span>' +
         '<span class="tag ' + schoolClass + '">' + esc(it.school_name) + '</span>' +
         '<span class="tag tag-cat">' + esc(it.category) + '</span>' +
       '</div>' +

@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
-from scrape import extract_items, classify, normalize_url, extract_article_snippet  # noqa: E402
+from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date  # noqa: E402
 
 SCHOOL = {"id": "cysh", "short": "嘉中", "base": "https://www.cysh.cy.edu.tw", "unit": "1008"}
 
@@ -46,6 +46,30 @@ ARTICLE_HTML = """
 <div class="mpgdetail">一、 申請資格:本校在學學生。 二、 申請期限:即日起至115年9月14日止。 三、 檢附文件請洽註冊組。</div>
 <footer>頁尾</footer>
 </body></html>
+"""
+
+# 標題含 \x0b(垂直定位符)等隱形空白,應被壓成單一空格
+DIRTY_TITLE_HTML = """
+<html><body>
+<a href="/p/406-1008-136300,r17.php">恭賀\x0b201王小明\x0b同學  榮獲全國賽第一名</a>
+</body></html>
+"""
+
+ARTICLE_MDATE_HTML = """
+<html><body>
+<span class="mdate_s">公告日期 2026-08-09 16:20</span>
+<div class="mpgdetail">內文文字。</div>
+</body></html>
+"""
+
+ARTICLE_BODYDATE_HTML = """
+<html><body>
+<div class="mpgdetail">說明會日期:2026/8/3(一)於本校大禮堂辦理,請同學準時出席。</div>
+</body></html>
+"""
+
+ARTICLE_NODATE_HTML = """
+<html><body><div class="mpgdetail">內文沒有任何日期資訊。</div></body></html>
 """
 
 
@@ -90,6 +114,21 @@ def run():
     sn = extract_article_snippet(ARTICLE_HTML, "test")
     assert "申請資格" in sn and "選單" not in sn, sn
     print("✓ 內文摘要萃取")
+
+    dirty = extract_items(DIRTY_TITLE_HTML, SCHOOL, "https://www.cysh.cy.edu.tw/")
+    assert len(dirty) == 1
+    assert dirty[0]["title"] == "恭賀 201王小明 同學 榮獲全國賽第一名", dirty[0]["title"]
+    print("✓ 標題隱形空白清理")
+
+    assert extract_article_date(ARTICLE_MDATE_HTML) == "2026-08-09"
+    assert extract_article_date(ARTICLE_BODYDATE_HTML) == "2026-08-03", "單位數月日也要能解析並補零"
+    assert extract_article_date(ARTICLE_NODATE_HTML) == ""
+    print("✓ 文章頁日期補齊")
+
+    assert display_date({"date": "2026-08-01", "first_seen": "2026-08-10T08:00:00+08:00"}) == "2026-08-01"
+    assert display_date({"date": "", "first_seen": "2026-08-10T08:00:00+08:00"}) == "2026-08-10"
+    assert display_date({"date": ""}) == ""
+    print("✓ 排序/顯示日期鍵")
 
     return ok
 
