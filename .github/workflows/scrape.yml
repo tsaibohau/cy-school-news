@@ -1,0 +1,47 @@
+name: 抓取兩校公告
+
+on:
+  schedule:
+    # UTC 時間;對應台灣時間 08:30 / 12:30 / 15:30 / 18:30(每天 4 次)
+    - cron: '30 0,4,7,10 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 安裝相依套件
+        run: pip install -r scraper/requirements.txt
+
+      - name: 執行爬蟲
+        run: python scraper/scrape.py
+
+      - name: 推播新公告 (ntfy)
+        env:
+          NTFY_TOPIC: ${{ vars.NTFY_TOPIC }}
+        run: python scraper/notify.py
+
+      - name: 提交更新後的資料
+        run: |
+          git config user.name "news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/announcements.json
+          if git diff --cached --quiet; then
+            echo "沒有變更,略過提交"
+          else
+            git commit -m "更新公告 $(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M')"
+            git push
+          fi

@@ -1,0 +1,257 @@
+# -*- coding: utf-8 -*-
+"""嘉校快訊爬蟲
+抓取嘉義高中(cysh)與嘉義女中(cygsh)官網公告(RulingDigital 校園系統),
+合併去重後輸出 docs/data/announcements.json,並將本次新增項目寫入
+scraper/new_items.json 供推播使用。
+
+設計原則:
+- 低頻率、低請求量,對學校伺服器友善(每次請求間隔 delay)。
+- 只憑 URL 樣式解析(/p/406-{unit}-{id},r{cat}.php),不依賴 CSS class,
+  網站小改版也不易壞。
+- 任一頁面抓取失敗只會略過該頁,不影響整體。
+"""
+import json
+import re
+import sys
+import time
+from datetime import datetime, timezone, timedelta
+from pathlib import Path
+from urllib.parse import urljoin, urlsplit, urlunsplit
+
+import requests
+from bs4 import BeautifulSoup
+
+ROOT = Path(__file__).resolve().parent.parent
+CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
+
+TW_TZ = timezone(timedelta(hours=8))
+DATE_RE = re.compile(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
+UA = ("Mozilla/5.0 (compatible; cy-school-news/1.0; "
+      "+https://github.com/ ; personal non-commercial announcement reader)")
+
+# 依序比對,先命中先分類
+CATEGORY_RULES = [
+    ("段考考試", ["段考", "期中考", "期末考", "定期考", "補考", "考試範圍", "模擬考",
+                  "學測", "分科測驗", "會考", "英聽", "試場", "考程", "准考證", "重補修"]),
+    ("升學",     ["升學", "繁星", "申請入學", "分發", "特殊選才", "學習歷程", "志願",
+                  "大學營", "科系", "面試", "選填", "四技二專"]),
+    ("獎助學金", ["獎學", "獎助", "助學", "就學貸款", "學雜費減免", "補助金", "工讀"]),
+    ("榮譽榜",   ["榮獲", "恭賀", "恭喜", "得獎名單", "佳績", "獲獎", "金牌", "銀牌",
+                  "銅牌", "特優", "冠軍", "亞軍", "季軍", "入選"]),
+    ("競賽",     ["競賽", "比賽", "初賽", "決賽", "複賽", "奧林匹亞", "科展", "徵文",
+                  "徵稿", "盃", "語文競賽", "辯論"]),
+    ("社團",     ["社團", "社課", "社博", "成果發表", "班聯會", "熱音", "熱舞", "校隊",
+                  "迎新", "社慶"]),
+    ("研習活動", ["研習", "講座", "營隊", "工作坊", "參訪", "體驗", "博覽會", "宣導",
+                  "演講", "活動"]),
+    ("招生編班", ["招生", "簡章", "甄選入學", "編班", "新生", "轉學", "報到", "入學"]),
+    ("行政公告", ["招標", "採購", "徵才", "代理教師", "教師甄選", "場地", "停車",
+                  "系統維護", "停電", "施工", "問卷"]),
+]
+CATEGORY_SLUGS = {
+    "段考考試": "exam", "升學": "admission", "獎助學金": "scholarship",
+    "榮譽榜": "honor", "競賽": "contest", "社團": "club",
+    "研習活動": "event", "招生編班": "enroll", "行政公告": "admin", "一般": "general",
+}
+
+
+def classify(text: str) -> str:
+    for cat, keywords in CATEGORY_RULES:
+        if any(k in text for k in keywords):
+            return cat
+    return "一般"
+
+
+def normalize_url(url: str) -> str:
+    """去除 query string 與 fragment,作為去重的 key。"""
+    parts = urlsplit(url)
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, "", ""))
+
+
+def parse_date_near(node) -> str:
+    """從連結節點往上找最近容器內的日期字串。"""
+    cur = node
+    for _ in range(4):
+        if cur is None:
+            break
+        m = DATE_RE.search(cur.get_text(" ", strip=True) or "")
+        if m:
+            y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
+            try:
+                return f"{y:04d}-{mo:02d}-{d:02d}"
+            except ValueError:
+                pass
+        cur = cur.parent
+    return ""
+
+
+def page_category_name(soup: BeautifulSoup) -> str:
+    title = (soup.title.get_text(strip=True) if soup.title else "") or ""
+    # Ruling 頁面標題常見「行政單位>總務處>庶務組>公告事項」,取最後一段
+    if ">" in title:
+        title = title.split(">")[-1]
+    return title.strip()
+
+
+def extract_items(html: str, school: dict, source_url: str):
+    """從任一頁面(列表頁或首頁)萃取公告項目。"""
+    soup = BeautifulSoup(html, "html.parser")
+    unit = school["unit"]
+    item_re = re.compile(r"/p/406-%s-(\d+)(?:,r(\d+))?\.php" % re.escape(unit))
+    src_cat = page_category_name(soup)
+    items, seen = [], set()
+    for a in soup.find_all("a", href=True):
+        m = item_re.search(a["href"])
+        if not m:
+            continue
+        art_id = m.group(1)
+        if art_id in seen:
+            continue
+        title = a.get_text(" ", strip=True)
+        if not title or len(title) < 4 or title in ("MORE", "更多"):
+            continue
+        seen.add(art_id)
+        url = normalize_url(urljoin(school["base"], a["href"]))
+        date = parse_date_near(a)
+        items.append({
+            "id": f'{school["id"]}-{art_id}',
+            "school": school["id"],
+            "school_name": school["short"],
+            "title": title,
+            "url": url,
+            "date": date,
+            "source_category": src_cat if "403-" in source_url else "",
+        })
+    return items
+
+
+def extract_article_snippet(html: str, title: str) -> str:
+    """從 406 文章頁抽出內文摘要(盡力而為,失敗回空字串)。"""
+    try:
+        soup = BeautifulSoup(html, "html.parser")
+        for tag in soup(["script", "style", "nav", "header", "footer"]):
+            tag.decompose()
+        candidates = []
+        for sel in ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article"]:
+            candidates += soup.select(sel)
+        if not candidates:
+            # 後備方案:找含最多文字的 div
+            divs = sorted(soup.find_all("div"),
+                          key=lambda d: len(d.get_text(strip=True)), reverse=True)
+            candidates = divs[:1]
+        if not candidates:
+            return ""
+        text = candidates[0].get_text(" ", strip=True)
+        text = re.sub(r"\s+", " ", text)
+        if title and text.startswith(title):
+            text = text[len(title):].strip()
+        return text[:280]
+    except Exception:
+        return ""
+
+
+def fetch(session: requests.Session, url: str) -> str:
+    resp = session.get(url, timeout=CONFIG["timeout_sec"])
+    resp.raise_for_status()
+    resp.encoding = resp.apparent_encoding or "utf-8"
+    return resp.text
+
+
+def main() -> int:
+    data_path = ROOT / CONFIG["data_path"]
+    new_items_path = ROOT / CONFIG["new_items_path"]
+    delay = CONFIG["request_delay_sec"]
+
+    existing = {"items": []}
+    if data_path.exists():
+        try:
+            existing = json.loads(data_path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    by_id = {it["id"]: it for it in existing.get("items", [])}
+    known_ids = set(by_id)
+
+    session = requests.Session()
+    session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
+
+    now_iso = datetime.now(TW_TZ).isoformat(timespec="seconds")
+    all_new = []
+
+    for school in CONFIG["schools"]:
+        collected = {}
+        pages = list(school.get("scan_pages", [])) + list(school.get("list_pages", []))
+        for page_url in pages:
+            try:
+                html = fetch(session, page_url)
+            except Exception as e:
+                print(f"[warn] 略過 {page_url}: {e}", file=sys.stderr)
+                time.sleep(delay)
+                continue
+            for it in extract_items(html, school, page_url):
+                prev = collected.get(it["id"])
+                # 列表頁的 source_category 優先於首頁掃描
+                if prev is None or (not prev.get("source_category") and it.get("source_category")):
+                    if prev and prev.get("date") and not it.get("date"):
+                        it["date"] = prev["date"]
+                    collected[it["id"]] = it
+            time.sleep(delay)
+
+        new_for_school = [it for iid, it in collected.items() if iid not in known_ids]
+        new_for_school.sort(key=lambda x: x.get("date") or "", reverse=True)
+
+        # 只對「新」項目補抓內文摘要,並設上限
+        cap = CONFIG["fetch_content_max_per_school"]
+        for it in new_for_school[:cap]:
+            try:
+                html = fetch(session, it["url"])
+                it["snippet"] = extract_article_snippet(html, it["title"])
+            except Exception as e:
+                print(f"[warn] 內文抓取失敗 {it['url']}: {e}", file=sys.stderr)
+                it["snippet"] = ""
+            time.sleep(delay)
+
+        for it in collected.values():
+            base_text = it["title"] + " " + it.get("source_category", "")
+            if it["id"] in known_ids:
+                old = by_id[it["id"]]
+                # 保留舊資料的 first_seen / snippet,更新可能修訂過的標題與分類來源
+                old["title"] = it["title"]
+                if it.get("source_category"):
+                    old["source_category"] = it["source_category"]
+                if it.get("date"):
+                    old["date"] = it["date"]
+                old["category"] = classify(old["title"] + " " + old.get("source_category", ""))
+            else:
+                it["category"] = classify(base_text)
+                it["first_seen"] = now_iso
+                it.setdefault("snippet", "")
+                by_id[it["id"]] = it
+                all_new.append(it)
+
+        print(f"[info] {school['short']}: 共 {len(collected)} 筆,其中新項目 {len(new_for_school)} 筆")
+
+    items = list(by_id.values())
+    items.sort(key=lambda x: (x.get("date") or "0000-00-00", x.get("first_seen") or ""),
+               reverse=True)
+    items = items[: CONFIG["max_items"]]
+
+    out = {
+        "generated_at": now_iso,
+        "schools": [{"id": s["id"], "name": s["name"], "short": s["short"], "base": s["base"]}
+                    for s in CONFIG["schools"]],
+        "categories": [c for c, _ in CATEGORY_RULES] + ["一般"],
+        "category_slugs": CATEGORY_SLUGS,
+        "items": items,
+    }
+    data_path.parent.mkdir(parents=True, exist_ok=True)
+    data_path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    all_new.sort(key=lambda x: x.get("date") or "", reverse=True)
+    new_items_path.write_text(json.dumps(all_new, ensure_ascii=False, indent=1),
+                              encoding="utf-8")
+    print(f"[info] 輸出 {len(items)} 筆(新增 {len(all_new)} 筆)→ {data_path}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

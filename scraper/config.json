@@ -1,0 +1,45 @@
+{
+  "schools": [
+    {
+      "id": "cysh",
+      "name": "國立嘉義高級中學",
+      "short": "嘉中",
+      "base": "https://www.cysh.cy.edu.tw",
+      "unit": "1008",
+      "scan_pages": [
+        "https://www.cysh.cy.edu.tw/"
+      ],
+      "list_pages": [
+        "https://www.cysh.cy.edu.tw/p/403-1008-439-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-17-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-18-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-184-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-324-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-122-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-173-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-147-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-189-1.php"
+      ]
+    },
+    {
+      "id": "cygsh",
+      "name": "國立嘉義女子高級中學",
+      "short": "嘉女",
+      "base": "https://www.cygsh.cy.edu.tw",
+      "unit": "1013",
+      "scan_pages": [
+        "https://www.cygsh.cy.edu.tw/"
+      ],
+      "list_pages": [
+        "https://www.cygsh.cy.edu.tw/p/403-1013-508-1.php",
+        "https://www.cygsh.cy.edu.tw/p/403-1013-786-1.php"
+      ]
+    }
+  ],
+  "max_items": 1500,
+  "fetch_content_max_per_school": 12,
+  "request_delay_sec": 1.5,
+  "timeout_sec": 20,
+  "data_path": "docs/data/announcements.json",
+  "new_items_path": "scraper/new_items.json"
+}
