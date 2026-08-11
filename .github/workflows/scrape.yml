@@ -27,6 +27,9 @@ jobs:
         run: pip install -r scraper/requirements.txt
 
       - name: 執行爬蟲
+        env:
+          # 手動觸發時全抓;排程時 hot 每輪抓、cold 每天只抓一次
+          FETCH_ALL: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
         run: python scraper/scrape.py
 
       - name: 推播新公告 (ntfy)
@@ -38,7 +41,7 @@ jobs:
         run: |
           git config user.name "news-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/announcements.json scraper/coverage_gaps.json
+          git add docs/data/announcements.json scraper/coverage_gaps.json scraper/fetch_state.json
           if git diff --cached --quiet; then
             echo "沒有變更,略過提交"
           else

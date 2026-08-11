@@ -4,8 +4,9 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
-from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories  # noqa: E402
+from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ  # noqa: E402
 from notify import push_topics  # noqa: E402
+from datetime import datetime, timedelta  # noqa: E402
 
 SCHOOL = {"id": "cysh", "short": "嘉中", "base": "https://www.cysh.cy.edu.tw", "unit": "1008"}
 
@@ -175,6 +176,30 @@ def run():
     home = extract_items(HOME_HTML, SCHOOL, "https://www.cysh.cy.edu.tw/")
     assert coverage_gaps(home, {"14", "15"}) == [], coverage_gaps(home, {"14", "15"})
     print("✓ 覆蓋率哨兵")
+
+    tier_cfg = {"unit": "1008", "list_pages": [
+        "https://x/p/403-1008-17-1.php",
+        {"url": "https://x/p/403-1008-401-1.php", "tier": "hot"},
+        {"url": "https://x/p/403-1008-242-1.php"},
+    ]}
+    assert configured_categories(tier_cfg) == {"17", "401", "242"}, \
+        "物件型條目也要能解析分類編號"
+    assert page_entries(tier_cfg) == [
+        ("https://x/p/403-1008-17-1.php", "cold"),
+        ("https://x/p/403-1008-401-1.php", "hot"),
+        ("https://x/p/403-1008-242-1.php", "cold"),
+    ], "字串與未標示 tier 都應預設 cold"
+
+    now = datetime.now(TW_TZ)
+    fresh = {"u": now.isoformat(timespec="seconds")}
+    stale = {"u": (now - timedelta(hours=21)).isoformat(timespec="seconds")}
+    assert should_fetch("u", "hot", fresh), "hot 每輪都抓"
+    assert should_fetch("u", "cold", {}), "沒抓過的 cold 要抓"
+    assert not should_fetch("u", "cold", fresh), "20 小時內抓過的 cold 要略過"
+    assert should_fetch("u", "cold", stale), "超過 20 小時的 cold 要抓"
+    assert should_fetch("u", "cold", fresh, fetch_all=True), "手動觸發一律全抓"
+    assert should_fetch("u", "cold", {"u": "不是時間"}), "壞時間戳視同沒抓過"
+    print("✓ 來源分級抓取")
 
     return ok
 

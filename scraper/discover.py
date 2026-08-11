@@ -42,7 +42,7 @@ import requests
 from bs4 import BeautifulSoup
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from scrape import UA, extract_items, page_category_name  # noqa: E402
+from scrape import UA, extract_items, list_page_urls, page_category_name  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
@@ -339,7 +339,7 @@ def run_site_map():
 def main():
     known = set()
     for s in CONFIG["schools"]:
-        for u in s.get("list_pages", []):
+        for u in list_page_urls(s):
             m = P403_RE.search(u)
             if m:
                 known.add((m.group(1), m.group(2)))
