@@ -11,6 +11,7 @@ scraper/new_items.json 供推播使用。
 - 任一頁面抓取失敗只會略過該頁,不影響整體。
 """
 import json
+import os
 import re
 import sys
 import time
@@ -136,10 +137,48 @@ def extract_items(html: str, school: dict, source_url: str):
     return items
 
 
+def list_page_urls(school: dict) -> list:
+    """list_pages 的項目可為網址字串或 {"url", "tier"} 物件,一律取出網址。"""
+    return [p if isinstance(p, str) else p["url"]
+            for p in school.get("list_pages", [])]
+
+
+def page_entries(school: dict) -> list:
+    """回傳 [(網址, tier)]。tier 僅 hot / cold,未標示者為 cold。"""
+    out = []
+    for p in school.get("list_pages", []):
+        if isinstance(p, str):
+            out.append((p, "cold"))
+        else:
+            out.append((p["url"], p.get("tier", "cold")))
+    return out
+
+
+def _hours_since(iso: str) -> float:
+    """距離 ISO 時間戳的小時數;無法解析(含空字串)視為無限久。"""
+    try:
+        then = datetime.fromisoformat(iso)
+        return (datetime.now(TW_TZ) - then).total_seconds() / 3600
+    except (TypeError, ValueError):
+        return float("inf")
+
+
+def should_fetch(url: str, tier: str, fetch_state: dict,
+                 fetch_all: bool = False, cold_hours: float = 20) -> bool:
+    """來源分級:hot 每輪都抓;cold 距上次成功抓取超過 cold_hours 才抓。
+
+    fetch_all(手動觸發 workflow)時一律全抓。時間紀錄以成功抓取為準,
+    失敗不更新,下一輪自然重試。
+    """
+    if tier == "hot" or fetch_all:
+        return True
+    return _hours_since(fetch_state.get(url, "")) >= cold_hours
+
+
 def configured_categories(school: dict) -> set:
     """該校 config 裡已納入的 403 分類編號。"""
     ids = set()
-    for url in school.get("list_pages", []):
+    for url in list_page_urls(school):
         m = re.search(r"/p/403-%s-(\d+)-\d+\.php" % re.escape(school["unit"]), url)
         if m:
             ids.add(m.group(1))
@@ -251,18 +290,36 @@ def main() -> int:
     fetched_this_run = set()
     all_gaps = []
 
+    # 來源分級:cold 頁的上次抓取時間記在 fetch_state.json(由 Actions 一起提交)
+    fetch_all = bool(os.environ.get("FETCH_ALL", "").strip())
+    cold_hours = CONFIG.get("cold_interval_hours", 20)
+    state_path = ROOT / CONFIG.get("fetch_state_path", "scraper/fetch_state.json")
+    fetch_state = {}
+    if state_path.exists():
+        try:
+            fetch_state = json.loads(state_path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    if fetch_all:
+        print("[info] 手動觸發:忽略分級,抓取全部來源")
+
     for school in CONFIG["schools"]:
         collected = {}
         scan_pages = list(school.get("scan_pages", []))
-        pages = scan_pages + list(school.get("list_pages", []))
+        entries = [(u, "hot") for u in scan_pages] + page_entries(school)
         scanned_items = []
-        for page_url in pages:
+        skipped_cold = 0
+        for page_url, tier in entries:
+            if not should_fetch(page_url, tier, fetch_state, fetch_all, cold_hours):
+                skipped_cold += 1
+                continue
             try:
                 html = fetch(session, page_url)
             except Exception as e:
                 print(f"[warn] 略過 {page_url}: {e}", file=sys.stderr)
                 time.sleep(delay)
                 continue
+            fetch_state[page_url] = now_iso
             page_items = extract_items(html, school, page_url)
             if page_url in scan_pages:
                 scanned_items += page_items
@@ -326,7 +383,9 @@ def main() -> int:
                   f"→ 可加入 {g['list_page']}", file=sys.stderr)
         all_gaps += gaps
 
-        print(f"[info] {school['short']}: 共 {len(collected)} 筆,其中新項目 {len(new_for_school)} 筆")
+        print(f"[info] {school['short']}: 抓取 {len(entries) - skipped_cold}/{len(entries)} 頁"
+              f"(略過 cold {skipped_cold} 頁),共 {len(collected)} 筆,"
+              f"其中新項目 {len(new_for_school)} 筆")
 
     # 逐步補齊舊資料:每次最多挑幾筆缺日期或缺摘要的既有項目,抓文章頁補齊
     backfill_cap = CONFIG.get("backfill_max_per_run", 10)
@@ -402,6 +461,9 @@ def main() -> int:
     if all_gaps:
         print(f"[warn] 發現 {len(all_gaps)} 個未收錄分類,詳見 {gaps_path}",
               file=sys.stderr)
+
+    state_path.write_text(json.dumps(fetch_state, ensure_ascii=False, indent=1),
+                          encoding="utf-8")
 
     print(f"[info] 輸出 {len(items)} 筆(新增 {len(all_new)} 筆)→ {data_path}")
     return 0

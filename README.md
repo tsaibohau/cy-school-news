@@ -99,6 +99,7 @@ git push -u origin main
 - **自動偵測漏抓**(不用自己巡網站):每輪掃首頁時,若有公告的分類不在 `list_pages` 裡,會寫進 `scraper/coverage_gaps.json` 並在 Actions log 印警告。裡面每筆都附 `list_page` 網址,複製貼進 `config.json` 即可收錄;確定不想收的分類,加進 `config.json` 的 `coverage_ignore` 就不會再回報。
 - **重新盤點全站分類**:`python scraper/discover.py site_map` 會爬遍全站並把分類 ID 從 1 掃到 850,產生 `scraper/site_map.json` 與 `scraper/discovery_report.md`。這是一次性工具(約 50 分鐘),**不要放進排程**;平常靠上面的哨兵機制就夠了。
 - **調整抓取頻率**:改 `.github/workflows/scrape.yml` 裡的 cron(注意是 UTC 時間,台灣時間要減 8 小時)。請維持合理頻率,對學校伺服器友善。
+- **來源分級(降低請求量)**:`list_pages` 的項目寫成 `{"url": "...", "tier": "hot"}` 表示每輪都抓;純網址字串為 cold,每天只抓一次(距上次成功抓取超過 20 小時才重抓,紀錄在 `scraper/fetch_state.json`,由 Actions 自動提交)。手動 Run workflow 時一律全抓。
 - **調整自動分類**:改 `scraper/scrape.py` 開頭的 `CATEGORY_RULES` 關鍵字,由上而下依序比對。
 - **本機測試**:`pip install -r scraper/requirements.txt` 後執行 `python scraper/scrape.py`;解析邏輯離線測試:`python tests/test_parser.py`。
 
