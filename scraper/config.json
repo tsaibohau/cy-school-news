@@ -308,5 +308,10 @@
   "request_delay_sec": 1.5,
   "timeout_sec": 20,
   "data_path": "docs/data/announcements.json",
-  "new_items_path": "scraper/new_items.json"
+  "new_items_path": "scraper/new_items.json",
+  "coverage_ignore": {
+    "cysh": [
+      "1136"
+    ]
+  }
 }
