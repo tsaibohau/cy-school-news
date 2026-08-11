@@ -6,6 +6,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
 from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ  # noqa: E402
 from notify import push_topics  # noqa: E402
+from schoolcal import build_ics, events_on  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
 
 SCHOOL = {"id": "cysh", "short": "嘉中", "base": "https://www.cysh.cy.edu.tw", "unit": "1008"}
@@ -200,6 +201,21 @@ def run():
     assert should_fetch("u", "cold", fresh, fetch_all=True), "手動觸發一律全抓"
     assert should_fetch("u", "cold", {"u": "不是時間"}), "壞時間戳視同沒抓過"
     print("✓ 來源分級抓取")
+
+    evs = [{"date": "2026-08-31", "school": "嘉中", "title": "開學日"},
+           {"date": "2026-09-02", "school": "嘉中", "title": "高三模擬考(9/2-9/3)"}]
+    ics = build_ics(evs)
+    assert ics.count("BEGIN:VEVENT") == 2
+    assert "DTSTART;VALUE=DATE:20260831" in ics
+    assert "DTEND;VALUE=DATE:20260901" in ics, "全天事件 DTEND 應為次日"
+    assert "SUMMARY:[嘉中] 開學日" in ics
+    assert "TRIGGER:-PT15H" in ics, "要含提醒欄位"
+    assert "BEGIN:VALARM" in ics and ics.endswith("END:VCALENDAR\r\n")
+    assert all(len(ln.encode("utf-8")) <= 75 for ln in ics.split("\r\n")), \
+        "每行不得超過 75 octets(RFC 5545 行摺疊)"
+    assert events_on(evs, "2026-08-31") == [evs[0]]
+    assert events_on(evs, "2026-08-30") == []
+    print("✓ 行事曆 ICS 與當日事件")
 
     return ok
 
