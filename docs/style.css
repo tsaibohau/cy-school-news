@@ -129,6 +129,8 @@ a { color: inherit; }
   width: 8px; height: 8px; border-radius: 50%; background: var(--seal);
 }
 .empty { text-align: center; color: var(--muted); padding: 48px 12px; font-size: 14px; }
+.more-wrap { text-align: center; margin: 18px 0 6px; }
+.more-wrap button { padding: 10px 22px; font-size: 14px; }
 
 /* ── 訂閱分頁 ── */
 .sub-head h2 { font-family: var(--serif); font-weight: 900; letter-spacing: .1em; font-size: 19px; margin: 16px 0 4px; }
