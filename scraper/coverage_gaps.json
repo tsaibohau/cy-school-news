@@ -1,0 +1,14 @@
+{
+ "note": "首頁出現、但所屬分類的列表頁不在 config 的公告。把 list_page 加進 config.json 即可收錄;確定不要的分類請加進 config.json 的 coverage_ignore。檢查時間見本檔的 git 提交紀錄。",
+ "gaps": [
+  {
+   "cat_ref": "1136",
+   "school": "cysh",
+   "count": 1,
+   "example_title": "中學生文章相似度比對系統",
+   "example_url": "https://www.cysh.cy.edu.tw/p/406-1008-129864,r1136.php",
+   "school_name": "嘉中",
+   "list_page": "https://www.cysh.cy.edu.tw/p/403-1008-1136-1.php"
+  }
+ ]
+}
