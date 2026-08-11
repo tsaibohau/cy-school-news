@@ -81,6 +81,16 @@ git push -u origin main
 | `你的主題-event` | 研習活動 |
 | `你的主題-enroll` | 招生編班 |
 
+**個人關鍵字推播:** 編輯 `scraper/subscriptions.json`,新公告的「標題+摘要」命中任一關鍵字時,會額外推到 `你的主題-{topic_suffix}`:
+
+```json
+[
+  { "name": "我的訂閱", "topic_suffix": "kw-me", "keywords": ["段考", "獎學金"] }
+]
+```
+
+上例會把含「段考」或「獎學金」的新公告推到 `你的主題-kw-me`,手機用 ntfy 訂閱該主題即可;`name` 只是給自己看的備註,可放多組訂閱,改完 push 上 GitHub 後生效。
+
 ---
 
 ## 三、自訂調整

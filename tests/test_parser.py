@@ -5,6 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
 from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date  # noqa: E402
+from notify import push_topics  # noqa: E402
 
 SCHOOL = {"id": "cysh", "short": "嘉中", "base": "https://www.cysh.cy.edu.tw", "unit": "1008"}
 
@@ -72,6 +73,15 @@ ARTICLE_NODATE_HTML = """
 <html><body><div class="mpgdetail">內文沒有任何日期資訊。</div></body></html>
 """
 
+# 「發佈日期」標籤應優先於 mdate 與內文日期
+ARTICLE_PUBDATE_HTML = """
+<html><body>
+<span class="mdate">2026-01-01</span>
+<p>發佈日期 : 2026-08-07 16:00 發佈單位 : 教務處</p>
+<div class="mpgdetail">活動日期 2026/9/1 開始報名。</div>
+</body></html>
+"""
+
 
 def run():
     ok = True
@@ -123,12 +133,26 @@ def run():
     assert extract_article_date(ARTICLE_MDATE_HTML) == "2026-08-09"
     assert extract_article_date(ARTICLE_BODYDATE_HTML) == "2026-08-03", "單位數月日也要能解析並補零"
     assert extract_article_date(ARTICLE_NODATE_HTML) == ""
+    assert extract_article_date(ARTICLE_PUBDATE_HTML) == "2026-08-07", "發佈日期標籤應最優先"
     print("✓ 文章頁日期補齊")
 
     assert display_date({"date": "2026-08-01", "first_seen": "2026-08-10T08:00:00+08:00"}) == "2026-08-01"
     assert display_date({"date": "", "first_seen": "2026-08-10T08:00:00+08:00"}) == "2026-08-10"
     assert display_date({"date": ""}) == ""
     print("✓ 排序/顯示日期鍵")
+
+    subs = [{"name": "我的訂閱", "topic_suffix": "kw-me", "keywords": ["段考", "獎學金"]},
+            {"name": "空後綴", "topic_suffix": "", "keywords": ["段考"]}]
+    hit = push_topics({"title": "第一次段考範圍", "category": "段考考試"}, "cynews", subs)
+    assert hit == ["cynews", "cynews-exam", "cynews-kw-me"], hit
+    snip = push_topics({"title": "校內公告", "category": "一般",
+                        "snippet": "本校獎學金申請開始"}, "cynews", subs)
+    assert snip[-1] == "cynews-kw-me", "摘要命中關鍵字也要推播"
+    miss = push_topics({"title": "圖書館閉館通知", "category": "一般"}, "cynews", subs)
+    assert miss == ["cynews", "cynews-general"], miss
+    assert push_topics({"title": "段考", "category": "一般"}, "cynews") == \
+        ["cynews", "cynews-general"], "沒有訂閱設定時只推全部與分類"
+    print("✓ 個人關鍵字推播主題")
 
     return ok
 

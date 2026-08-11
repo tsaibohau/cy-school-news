@@ -26,6 +26,8 @@ CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8
 
 TW_TZ = timezone(timedelta(hours=8))
 DATE_RE = re.compile(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
+# RulingDigital 文章頁的「發佈日期 : YYYY-MM-DD」欄位(嘉中文章頁固定會有)
+PUB_DATE_RE = re.compile(r"發[佈布]日期\s*[::]\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
 UA = ("Mozilla/5.0 (compatible; cy-school-news/1.0; "
       "+https://github.com/ ; personal non-commercial announcement reader)")
 
@@ -158,24 +160,25 @@ def extract_article_snippet(html: str, title: str) -> str:
         text = re.sub(r"\s+", " ", text)
         if title and text.startswith(title):
             text = text[len(title):].strip()
-        return text[:280]
+        return text[:600]
     except Exception:
         return ""
 
 
 def extract_article_date(html: str) -> str:
-    """從 406 文章頁抽出公告日期:優先 class 含 mdate 的元素,其次內文第一個日期。"""
+    """從 406 文章頁抽出公告日期,依優先序:
+    1.「發佈日期 : YYYY-MM-DD」標籤  2. class 含 mdate 的元素  3. 內文第一個日期
+    """
     try:
         soup = BeautifulSoup(html, "html.parser")
-        texts = []
+        matches = [PUB_DATE_RE.search(soup.get_text(" ", strip=True) or "")]
         node = soup.find(class_=re.compile("mdate"))
         if node is not None:
-            texts.append(node.get_text(" ", strip=True))
+            matches.append(DATE_RE.search(node.get_text(" ", strip=True) or ""))
         body = _article_body(soup)
         if body is not None:
-            texts.append(body.get_text(" ", strip=True))
-        for text in texts:
-            m = DATE_RE.search(text or "")
+            matches.append(DATE_RE.search(body.get_text(" ", strip=True) or ""))
+        for m in matches:
             if m:
                 y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
                 if 1 <= mo <= 12 and 1 <= d <= 31:
@@ -241,8 +244,12 @@ def main() -> int:
             try:
                 html = fetch(session, it["url"])
                 it["snippet"] = extract_article_snippet(html, it["title"])
+                if not it["snippet"]:
+                    it["snippet_tried"] = True
                 if not it.get("date"):
                     it["date"] = extract_article_date(html)
+                    if not it["date"]:
+                        it["date_tried"] = True
                 fetched_this_run.add(it["id"])
             except Exception as e:
                 print(f"[warn] 內文抓取失敗 {it['url']}: {e}", file=sys.stderr)
@@ -269,13 +276,20 @@ def main() -> int:
 
         print(f"[info] {school['short']}: 共 {len(collected)} 筆,其中新項目 {len(new_for_school)} 筆")
 
-    # 逐步補齊舊資料:每次最多挑幾筆沒日期的既有項目,抓文章頁補日期與摘要
+    # 逐步補齊舊資料:每次最多挑幾筆缺日期或缺摘要的既有項目,抓文章頁補齊
     backfill_cap = CONFIG.get("backfill_max_per_run", 10)
+
+    def needs_date(it):
+        return not it.get("date") and not it.get("date_tried")
+
+    def needs_snippet(it):
+        return not it.get("snippet") and not it.get("snippet_tried")
+
     pending = [it for it in by_id.values()
-               if not it.get("date") and not it.get("date_tried")
-               and it["id"] not in fetched_this_run]
+               if it["id"] not in fetched_this_run
+               and (needs_date(it) or needs_snippet(it))]
     pending.sort(key=lambda x: x.get("first_seen") or "", reverse=True)
-    filled = 0
+    filled_dates = filled_snippets = 0
     for it in pending[:backfill_cap]:
         try:
             html = fetch(session, it["url"])
@@ -283,19 +297,26 @@ def main() -> int:
             print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)
             time.sleep(delay)
             continue
-        date = extract_article_date(html)
-        if date:
-            it["date"] = date
-            filled += 1
-        else:
-            # 文章頁也沒有日期,標記後不再重複嘗試
-            it["date_tried"] = True
-        if not it.get("snippet"):
-            it["snippet"] = extract_article_snippet(html, it["title"])
+        if needs_date(it):
+            date = extract_article_date(html)
+            if date:
+                it["date"] = date
+                filled_dates += 1
+            else:
+                # 文章頁也沒有日期,標記後不再重複嘗試
+                it["date_tried"] = True
+        if needs_snippet(it):
+            snippet = extract_article_snippet(html, it["title"])
+            if snippet:
+                it["snippet"] = snippet
+                filled_snippets += 1
+            else:
+                it["snippet_tried"] = True
         time.sleep(delay)
     if pending:
-        print(f"[info] 日期補齊:本次處理 {min(len(pending), backfill_cap)} 筆,"
-              f"補上 {filled} 筆,剩餘 {max(len(pending) - backfill_cap, 0)} 筆待補")
+        done = min(len(pending), backfill_cap)
+        print(f"[info] 補齊:本次處理 {done} 筆,補日期 {filled_dates} 筆、"
+              f"補摘要 {filled_snippets} 筆,剩餘 {len(pending) - done} 筆待補")
 
     items = list(by_id.values())
     items.sort(key=lambda x: (display_date(x), x.get("first_seen") or ""),

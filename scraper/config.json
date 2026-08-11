@@ -10,15 +10,31 @@
         "https://www.cysh.cy.edu.tw/"
       ],
       "list_pages": [
-        "https://www.cysh.cy.edu.tw/p/403-1008-439-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-12-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-13-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-14-1.php",
         "https://www.cysh.cy.edu.tw/p/403-1008-17-1.php",
         "https://www.cysh.cy.edu.tw/p/403-1008-18-1.php",
-        "https://www.cysh.cy.edu.tw/p/403-1008-184-1.php",
-        "https://www.cysh.cy.edu.tw/p/403-1008-324-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-19-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-21-1.php",
         "https://www.cysh.cy.edu.tw/p/403-1008-122-1.php",
-        "https://www.cysh.cy.edu.tw/p/403-1008-173-1.php",
         "https://www.cysh.cy.edu.tw/p/403-1008-147-1.php",
-        "https://www.cysh.cy.edu.tw/p/403-1008-189-1.php"
+        "https://www.cysh.cy.edu.tw/p/403-1008-173-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-184-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-189-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-324-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-386-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-401-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-430-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-439-1.php",
+        "https://www.cysh.cy.edu.tw/p/412-1008-151.php",
+        "https://www.cysh.cy.edu.tw/p/412-1008-372.php",
+        "https://www.cysh.cy.edu.tw/p/412-1008-579.php",
+        "https://www.cysh.cy.edu.tw/p/412-1008-946.php",
+        "https://www.cysh.cy.edu.tw/p/412-1008-1260.php",
+        "https://www.cysh.cy.edu.tw/p/412-1008-1336.php",
+        "https://www.cysh.cy.edu.tw/p/412-1008-1431.php",
+        "https://www.cysh.cy.edu.tw/p/412-1008-5009.php"
       ]
     },
     {
@@ -31,13 +47,20 @@
         "https://www.cygsh.cy.edu.tw/"
       ],
       "list_pages": [
+        "https://www.cygsh.cy.edu.tw/p/403-1013-11-1.php",
         "https://www.cygsh.cy.edu.tw/p/403-1013-508-1.php",
+        "https://www.cygsh.cy.edu.tw/p/403-1013-516-1.php",
+        "https://www.cygsh.cy.edu.tw/p/403-1013-547-1.php",
+        "https://www.cygsh.cy.edu.tw/p/403-1013-548-1.php",
+        "https://www.cygsh.cy.edu.tw/p/403-1013-679-1.php",
+        "https://www.cygsh.cy.edu.tw/p/403-1013-742-1.php",
         "https://www.cygsh.cy.edu.tw/p/403-1013-786-1.php"
       ]
     }
   ],
   "max_items": 1500,
   "fetch_content_max_per_school": 12,
+  "backfill_max_per_run": 40,
   "request_delay_sec": 1.5,
   "timeout_sec": 20,
   "data_path": "docs/data/announcements.json",

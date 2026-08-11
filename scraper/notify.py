@@ -5,9 +5,11 @@
   NTFY_TOPIC   主題名稱(在 GitHub repo 的 Settings → Variables 設定)。
                未設定時本腳本直接跳過,不影響流程。
 
-每則新公告會發到兩個主題:
+每則新公告會發到以下主題:
   1. {NTFY_TOPIC}                → 訂閱全部消息
   2. {NTFY_TOPIC}-{分類代號}      → 只訂閱特定分類(exam / club / admission ...)
+  3. {NTFY_TOPIC}-{topic_suffix} → 個人關鍵字訂閱:scraper/subscriptions.json
+                                   內 keywords 命中「標題+摘要」的訂閱組
 使用者在 ntfy App(iOS/Android)或 https://ntfy.sh/{主題} 訂閱即可收到推播。
 """
 import json
@@ -20,7 +22,32 @@ import requests
 
 ROOT = Path(__file__).resolve().parent.parent
 NEW_ITEMS = ROOT / "scraper" / "new_items.json"
+SUBSCRIPTIONS = ROOT / "scraper" / "subscriptions.json"
 MAX_PUSH = 20  # 單次最多推播則數,避免第一次建置時灌爆訂閱者
+
+CATEGORY_SLUGS = {
+    "段考考試": "exam", "升學": "admission", "獎助學金": "scholarship",
+    "榮譽榜": "honor", "競賽": "contest", "社團": "club",
+    "研習活動": "event", "招生編班": "enroll", "行政公告": "admin", "一般": "general",
+}
+
+
+def push_topics(item: dict, topic: str, subs=()) -> list:
+    """算出一則公告要推到哪些 ntfy 主題:全部 + 分類 + 命中關鍵字的個人訂閱。
+
+    個人訂閱比對「標題 + 摘要」,不分大小寫;同一組訂閱只會加一次。
+    """
+    cat_slug = CATEGORY_SLUGS.get(item.get("category", "一般"), "general")
+    topics = [topic, f"{topic}-{cat_slug}"]
+    haystack = (item.get("title", "") + " " + (item.get("snippet") or "")).lower()
+    for sub in subs or ():
+        suffix = str(sub.get("topic_suffix", "")).strip()
+        keywords = [str(k).strip().lower() for k in sub.get("keywords", [])]
+        if not suffix or f"{topic}-{suffix}" in topics:
+            continue
+        if any(k and k in haystack for k in keywords):
+            topics.append(f"{topic}-{suffix}")
+    return topics
 
 
 def main() -> int:
@@ -37,18 +64,18 @@ def main() -> int:
         print("[info] 本次沒有新公告")
         return 0
 
-    slugs = {
-        "段考考試": "exam", "升學": "admission", "獎助學金": "scholarship",
-        "榮譽榜": "honor", "競賽": "contest", "社團": "club",
-        "研習活動": "event", "招生編班": "enroll", "行政公告": "admin", "一般": "general",
-    }
+    subs = []
+    if SUBSCRIPTIONS.exists():
+        try:
+            subs = json.loads(SUBSCRIPTIONS.read_text(encoding="utf-8"))
+        except Exception as e:
+            print(f"[warn] subscriptions.json 讀取失敗,略過個人訂閱:{e}", file=sys.stderr)
 
     sent = 0
     for it in items[:MAX_PUSH]:
         title = f'[{it.get("school_name", "")}] {it.get("category", "一般")}'
         body = it.get("title", "")
-        cat_slug = slugs.get(it.get("category", "一般"), "general")
-        for t in (topic, f"{topic}-{cat_slug}"):
+        for t in push_topics(it, topic, subs):
             try:
                 requests.post(
                     f"https://ntfy.sh/{t}",
