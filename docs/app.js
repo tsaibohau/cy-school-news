@@ -4,6 +4,7 @@
 
   var LS_KW = "cyNews.keywords";
   var LS_SEEN = "cyNews.lastSeen";
+  var PAGE_SIZE = 200;  // 最新清單一次渲染的則數,避免一口氣塞入上千張卡片
 
   var state = {
     data: null,
@@ -11,6 +12,7 @@
     cat: "all",
     q: "",
     tab: "latest",
+    shown: PAGE_SIZE,
     keywords: loadJSON(LS_KW, []),
     lastSeen: localStorage.getItem(LS_SEEN) || "",
   };
@@ -117,9 +119,20 @@
   }
   function renderLatest() {
     var items = latestItems();
-    el.countLine.textContent = "共 " + items.length + " 則公告";
-    renderList(el.list, items, "找不到符合條件的公告,換個關鍵字或篩選試試。");
+    var shown = Math.min(state.shown, items.length);
+    var rest = items.length - shown;
+    el.countLine.textContent = rest > 0
+      ? "共 " + items.length + " 則公告(已顯示 " + shown + " 則)"
+      : "共 " + items.length + " 則公告";
+    renderList(el.list, items.slice(0, shown),
+      "找不到符合條件的公告,換個關鍵字或篩選試試。");
+    if (rest > 0) {
+      el.list.insertAdjacentHTML("beforeend",
+        '<div class="more-wrap"><button type="button" id="btnMore" class="btn-ghost">' +
+        "載入更多(還有 " + rest + " 則)</button></div>");
+    }
   }
+  function resetPaging() { state.shown = PAGE_SIZE; }
   function renderSub() {
     var msg = state.keywords.length
       ? "目前沒有符合訂閱關鍵字的公告。"
@@ -203,19 +216,27 @@
   /* ── 事件 ── */
   el.q.addEventListener("input", function () {
     state.q = el.q.value.trim();
-    renderLatest();
+    resetPaging(); renderLatest();
   });
   el.schoolSeg.addEventListener("click", function (e) {
     var b = e.target.closest("button[data-school]");
     if (!b) return;
     state.school = b.dataset.school;
-    renderControls(); renderLatest();
+    resetPaging(); renderControls(); renderLatest();
   });
   el.catChips.addEventListener("click", function (e) {
     var b = e.target.closest("button[data-cat]");
     if (!b) return;
     state.cat = b.dataset.cat;
-    renderControls(); renderLatest();
+    resetPaging(); renderControls(); renderLatest();
+  });
+  el.list.addEventListener("click", function (e) {
+    if (!e.target.closest("#btnMore")) return;
+    state.shown += PAGE_SIZE;
+    renderLatest();
+    // 重新渲染後按鈕是新的節點,把焦點移回去,鍵盤操作才不會跳掉
+    var next = document.getElementById("btnMore");
+    if (next) next.focus();
   });
   el.kwForm.addEventListener("submit", function (e) {
     e.preventDefault();
