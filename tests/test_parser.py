@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
-from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date  # noqa: E402
+from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories  # noqa: E402
 from notify import push_topics  # noqa: E402
 
 SCHOOL = {"id": "cysh", "short": "嘉中", "base": "https://www.cysh.cy.edu.tw", "unit": "1008"}
@@ -153,6 +153,28 @@ def run():
     assert push_topics({"title": "段考", "category": "一般"}, "cynews") == \
         ["cynews", "cynews-general"], "沒有訂閱設定時只推全部與分類"
     print("✓ 個人關鍵字推播主題")
+
+    school_cfg = {"unit": "1008", "list_pages": [
+        "https://www.cysh.cy.edu.tw/p/403-1008-17-1.php",
+        "https://www.cysh.cy.edu.tw/p/403-1008-168-1.php",
+        "https://www.cysh.cy.edu.tw/p/412-1008-151.php",       # 412 不算分類編號
+        "https://www.cygsh.cy.edu.tw/p/403-1013-508-1.php",    # 別校的不算
+    ]}
+    assert configured_categories(school_cfg) == {"17", "168"}, \
+        configured_categories(school_cfg)
+
+    scanned = extract_items(LIST_HTML, SCHOOL,
+                            "https://www.cysh.cy.edu.tw/p/403-1008-17-1.php")
+    assert scanned[0]["cat_ref"] == "17", scanned[0]
+    assert coverage_gaps(scanned, {"17"}) == [], "已收錄的分類不該回報"
+    gaps = coverage_gaps(scanned, set())
+    assert len(gaps) == 1 and gaps[0]["cat_ref"] == "17" and gaps[0]["count"] == 2, gaps
+    assert gaps[0]["example_title"], "缺口要附範例標題"
+    assert coverage_gaps(scanned, set(), ignore=["17"]) == [], "ignore 清單要生效"
+    # 首頁掃描:沒有 ,rXXX 的連結不會誤報
+    home = extract_items(HOME_HTML, SCHOOL, "https://www.cysh.cy.edu.tw/")
+    assert coverage_gaps(home, {"14", "15"}) == [], coverage_gaps(home, {"14", "15"})
+    print("✓ 覆蓋率哨兵")
 
     return ok
 

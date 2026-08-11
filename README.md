@@ -96,6 +96,8 @@ git push -u origin main
 ## 三、自訂調整
 
 - **新增抓取來源**:兩校官網任何「更多/MORE」列表頁(網址長得像 `/p/403-1008-xxx-1.php`)都可以直接貼進 `scraper/config.json` 的 `list_pages`,不用改程式——分類名稱會自動從頁面標題讀取。
+- **自動偵測漏抓**(不用自己巡網站):每輪掃首頁時,若有公告的分類不在 `list_pages` 裡,會寫進 `scraper/coverage_gaps.json` 並在 Actions log 印警告。裡面每筆都附 `list_page` 網址,複製貼進 `config.json` 即可收錄;確定不想收的分類,加進 `config.json` 的 `coverage_ignore` 就不會再回報。
+- **重新盤點全站分類**:`python scraper/discover.py site_map` 會爬遍全站並把分類 ID 從 1 掃到 850,產生 `scraper/site_map.json` 與 `scraper/discovery_report.md`。這是一次性工具(約 50 分鐘),**不要放進排程**;平常靠上面的哨兵機制就夠了。
 - **調整抓取頻率**:改 `.github/workflows/scrape.yml` 裡的 cron(注意是 UTC 時間,台灣時間要減 8 小時)。請維持合理頻率,對學校伺服器友善。
 - **調整自動分類**:改 `scraper/scrape.py` 開頭的 `CATEGORY_RULES` 關鍵字,由上而下依序比對。
 - **本機測試**:`pip install -r scraper/requirements.txt` 後執行 `python scraper/scrape.py`;解析邏輯離線測試:`python tests/test_parser.py`。
@@ -108,7 +110,12 @@ cy-school-news/
 ├── scraper/
 │   ├── config.json                # 兩校來源設定(要加來源改這裡)
 │   ├── scrape.py                  # 爬蟲主程式(解析、去重、自動分類)
-│   └── notify.py                  # ntfy 推播
+│   ├── notify.py                  # ntfy 推播
+│   ├── subscriptions.json         # 個人關鍵字訂閱
+│   ├── coverage_gaps.json         # 哨兵:偵測到的未收錄分類(自動產生)
+│   ├── discover.py                # 一次性來源探測工具(不在排程內)
+│   ├── discovery_report.md        # 探測結果與來源取捨理由
+│   └── site_map.json              # 全站分類地圖(discover.py site_map 產生)
 ├── docs/                          # GitHub Pages 網站(PWA)
 │   ├── index.html / style.css / app.js
 │   ├── manifest.webmanifest / sw.js / icons/

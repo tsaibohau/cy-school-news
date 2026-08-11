@@ -1,8 +1,18 @@
 # -*- coding: utf-8 -*-
 """一次性來源探測:盤點兩校 RulingDigital 系統的公告列表頁(不加入排程)。
 
-用法:python scraper/discover.py
-輸出:scraper/discovery_report.md(各候選頁的 ID、名稱、公告數、範例標題)
+用法:
+  python scraper/discover.py            # 探測模式:固定區間 + 導覽頁 + 首頁頁籤
+  python scraper/discover.py site_map   # 全站地圖模式:BFS 爬站 + 地毯式補掃
+
+輸出:
+  scraper/discovery_report.md  各候選頁的 ID、名稱、公告數、範例標題
+  scraper/site_map.json        site_map 模式產生的完整分類地圖(永久保存)
+
+site_map 模式一次跑約 30–45 分鐘,跑一次就有完整地圖,**不要放進排程**。
+它存在的理由:分類 ID 既不連續、也不一定出現在導覽頁或首頁頁籤上
+(實例:403-1008-168「新生專區」兩者都查不到,卻有 20 筆公告),
+只有「爬遍全站 + 把 1..MAX_CATEGORY_ID 全掃一遍」才能保證沒有遺漏。
 
 探測範圍:
 - 固定區間的 /p/403-{unit}-{id}-1.php 分類列表頁。
@@ -26,7 +36,7 @@ import time
 from collections import Counter
 from datetime import datetime
 from pathlib import Path
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlsplit
 
 import requests
 from bs4 import BeautifulSoup
@@ -37,6 +47,14 @@ from scrape import UA, extract_items, page_category_name  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
 REPORT_PATH = ROOT / "scraper" / "discovery_report.md"
+SITE_MAP_PATH = ROOT / "scraper" / "site_map.json"
+
+# site_map 模式的參數
+BFS_MAX_PAGES = 400        # 單校 BFS 上限
+# 地毯式補掃的分類 ID 上限。實測嘉中最大 908、嘉女最大 1177,
+# 一開始設 850 會漏掉這兩個(當時只是碰巧被 BFS 的連結撈到),因此放寬到 1500。
+MAX_CATEGORY_ID = 1500
+ALLOWED_HOST_SUFFIX = ".cy.edu.tw"
 
 DELAY = 1.0
 TIMEOUT = 15
@@ -193,6 +211,129 @@ def md_cell(s, limit=60):
 def page_label(row):
     return (f"403-{row['unit']}-{row['cat_id']}"
             if row["cat_id"].isdigit() else row["cat_id"])
+
+
+def same_site(url, base):
+    """只走站內:host 必須與該校相同,且落在 *.cy.edu.tw。"""
+    try:
+        host = urlsplit(url).netloc.lower()
+    except ValueError:
+        return False
+    return host == urlsplit(base).netloc.lower() and host.endswith(ALLOWED_HOST_SUFFIX)
+
+
+def crawl_site(session, school):
+    """BFS 爬站內 412 頁面,沿路收集 403 連結與 AJAX 頁籤的分類 ID。
+
+    只把 412 頁面放進佇列(403 分類頁交給後面的地毯式補掃統一評估),
+    這樣 BFS 的頁數預算才會全部花在「發現網站結構」上。
+    """
+    base, unit = school["base"], school["unit"]
+    queue = [base + "/"]
+    nav = NAV_PAGES.get(school["id"])
+    if nav:
+        queue.append(nav)
+    visited, pages = set(), {}
+    found_403, found_nbr = {}, {}
+
+    while queue and len(visited) < BFS_MAX_PAGES:
+        url = queue.pop(0)
+        if url in visited or not same_site(url, base):
+            continue
+        visited.add(url)
+        html, err = fetch(session, url)
+        time.sleep(DELAY)
+        if html is None:
+            pages[url] = {"err": err}
+            continue
+        soup = BeautifulSoup(html, "html.parser")
+        title = soup.title.get_text(strip=True) if soup.title else ""
+        items = extract_items(html, school, url)
+
+        # 這一頁提到的 403 分類頁
+        links = []
+        for a in soup.find_all("a", href=True):
+            m403 = P403_RE.search(a["href"])
+            if m403 and m403.group(1) == unit:
+                cid = m403.group(2)
+                links.append(cid)
+                found_403.setdefault(cid, url)
+                continue
+            m412 = P412_RE.search(a["href"])
+            if m412 and m412.group(1) == unit:
+                nxt = urljoin(base, m412.group(0))
+                if nxt not in visited and same_site(nxt, base):
+                    queue.append(nxt)
+
+        # 這一頁的 AJAX 頁籤分類 ID(各處室頁面也可能有自己的頁籤)
+        nbrs = sorted(set(TAB_NBR_RE.findall(html)))
+        for nbr in nbrs:
+            found_nbr.setdefault(nbr, url)
+
+        pages[url] = {"title": title, "count": len(items),
+                      "links403": sorted(set(links)), "nbrs": nbrs}
+        if len(visited) % 25 == 0:
+            print(f"[{school['short']}] BFS {len(visited)} 頁,"
+                  f"待訪 {len(queue)},已知分類 "
+                  f"{len(set(found_403) | set(found_nbr))}", flush=True)
+
+    return {"pages": pages, "visited": sorted(visited),
+            "from_links": found_403, "from_tabs": found_nbr,
+            "hit_limit": len(visited) >= BFS_MAX_PAGES}
+
+
+def sweep_categories(session, school, discovered):
+    """地毯式補掃 403-{unit}-{1..MAX_CATEGORY_ID},BFS 已發現的優先先掃。"""
+    base, unit = school["base"], school["unit"]
+    order = sorted(discovered, key=lambda x: int(x)) + \
+        [str(i) for i in range(1, MAX_CATEGORY_ID + 1) if str(i) not in discovered]
+    rows = []
+    for n, cid in enumerate(order, 1):
+        url = f"{base}/p/403-{unit}-{cid}-1.php"
+        row = evaluate(session, school, url, unit, cid, False)
+        row["discovered"] = cid in discovered
+        rows.append(row)
+        if not row["err"] and row["count"] > 0:
+            print(f"[{school['short']}] 403-{unit}-{cid}: "
+                  f"{row['count']} 筆「{row['name']}」", flush=True)
+        elif n % 100 == 0:
+            print(f"[{school['short']}] 補掃進度 {n}/{len(order)}", flush=True)
+    return rows
+
+
+def run_site_map():
+    session = requests.Session()
+    session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
+    out = {}
+    for school in CONFIG["schools"]:
+        print(f"\n===== {school['short']} BFS 爬站 =====", flush=True)
+        crawl = crawl_site(session, school)
+        discovered = set(crawl["from_links"]) | set(crawl["from_tabs"])
+        print(f"[{school['short']}] BFS 完成:{len(crawl['visited'])} 頁,"
+              f"發現 {len(discovered)} 個分類 ID"
+              f"{'(已達頁數上限)' if crawl['hit_limit'] else ''}", flush=True)
+
+        print(f"\n===== {school['short']} 地毯式補掃 1..{MAX_CATEGORY_ID} =====",
+              flush=True)
+        rows = sweep_categories(session, school, discovered)
+        pick_samples(rows)
+        out[school["id"]] = {
+            "short": school["short"], "unit": school["unit"],
+            "bfs_pages": len(crawl["visited"]), "bfs_hit_limit": crawl["hit_limit"],
+            "from_links": crawl["from_links"], "from_tabs": crawl["from_tabs"],
+            "categories": [
+                {k: r[k] for k in ("cat_id", "name", "count", "sample", "err",
+                                   "only_common", "discovered", "url")}
+                for r in rows],
+        }
+        live = [r for r in rows if not r["err"] and r["count"] > 0
+                and not r.get("only_common")]
+        print(f"[{school['short']}] 補掃完成:有自有公告的分類 {len(live)} 個",
+              flush=True)
+        SITE_MAP_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=1),
+                                 encoding="utf-8")
+    print(f"\n[info] 全站地圖已寫入 {SITE_MAP_PATH}", flush=True)
+    return 0
 
 
 def main():
@@ -393,4 +534,6 @@ def main():
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "site_map":
+        sys.exit(run_site_map())
     sys.exit(main())

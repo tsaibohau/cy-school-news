@@ -129,9 +129,43 @@ def extract_items(html: str, school: dict, source_url: str):
             "title": title,
             "url": url,
             "date": date,
+            # 文章網址裡的 ,rXXX 分類編號,供覆蓋率哨兵比對用
+            "cat_ref": m.group(2) or "",
             "source_category": src_cat if "403-" in source_url else "",
         })
     return items
+
+
+def configured_categories(school: dict) -> set:
+    """該校 config 裡已納入的 403 分類編號。"""
+    ids = set()
+    for url in school.get("list_pages", []):
+        m = re.search(r"/p/403-%s-(\d+)-\d+\.php" % re.escape(school["unit"]), url)
+        if m:
+            ids.add(m.group(1))
+    return ids
+
+
+def coverage_gaps(items, configured: set, ignore=()) -> list:
+    """找出「文章屬於某分類,但該分類的列表頁不在 config」的缺口。
+
+    這是防止未來漏抓的哨兵:學校新增分類、或把公告移到沒收錄的分類時,
+    首頁掃描仍會看到那則文章,其 ,rXXX 編號就會在這裡浮出來。
+    """
+    ignore = {str(i) for i in ignore}
+    gaps = {}
+    for it in items:
+        ref = it.get("cat_ref") or ""
+        if not ref or ref in configured or ref in ignore:
+            continue
+        gap = gaps.setdefault(ref, {"cat_ref": ref, "school": it.get("school", ""),
+                                    "count": 0, "example_title": "",
+                                    "example_url": ""})
+        gap["count"] += 1
+        if not gap["example_title"]:
+            gap["example_title"] = it.get("title", "")
+            gap["example_url"] = it.get("url", "")
+    return sorted(gaps.values(), key=lambda g: (-g["count"], g["cat_ref"]))
 
 
 def _article_body(soup: BeautifulSoup):
@@ -215,10 +249,13 @@ def main() -> int:
     now_iso = datetime.now(TW_TZ).isoformat(timespec="seconds")
     all_new = []
     fetched_this_run = set()
+    all_gaps = []
 
     for school in CONFIG["schools"]:
         collected = {}
-        pages = list(school.get("scan_pages", [])) + list(school.get("list_pages", []))
+        scan_pages = list(school.get("scan_pages", []))
+        pages = scan_pages + list(school.get("list_pages", []))
+        scanned_items = []
         for page_url in pages:
             try:
                 html = fetch(session, page_url)
@@ -226,7 +263,10 @@ def main() -> int:
                 print(f"[warn] 略過 {page_url}: {e}", file=sys.stderr)
                 time.sleep(delay)
                 continue
-            for it in extract_items(html, school, page_url):
+            page_items = extract_items(html, school, page_url)
+            if page_url in scan_pages:
+                scanned_items += page_items
+            for it in page_items:
                 prev = collected.get(it["id"])
                 # 列表頁的 source_category 優先於首頁掃描
                 if prev is None or (not prev.get("source_category") and it.get("source_category")):
@@ -273,6 +313,18 @@ def main() -> int:
                 it.setdefault("snippet", "")
                 by_id[it["id"]] = it
                 all_new.append(it)
+
+        # 覆蓋率哨兵:首頁出現的文章,其分類若不在 config 就記下來
+        gaps = coverage_gaps(scanned_items, configured_categories(school),
+                             CONFIG.get("coverage_ignore", {}).get(school["id"], []))
+        for g in gaps:
+            g["school_name"] = school["short"]
+            g["list_page"] = (f'{school["base"]}/p/403-{school["unit"]}'
+                              f'-{g["cat_ref"]}-1.php')
+            print(f"[warn] 覆蓋率缺口 {school['short']} 分類 r{g['cat_ref']}:"
+                  f"首頁有 {g['count']} 則未收錄,例:{g['example_title'][:30]} "
+                  f"→ 可加入 {g['list_page']}", file=sys.stderr)
+        all_gaps += gaps
 
         print(f"[info] {school['short']}: 共 {len(collected)} 筆,其中新項目 {len(new_for_school)} 筆")
 
@@ -337,6 +389,20 @@ def main() -> int:
     all_new.sort(key=lambda x: x.get("date") or "", reverse=True)
     new_items_path.write_text(json.dumps(all_new, ensure_ascii=False, indent=1),
                               encoding="utf-8")
+
+    # 注意:這裡刻意不寫入時間戳。這個檔案由 Actions 一起提交,
+    # 若每輪內容都變動,就會每天產生 4 個沒有實質差異的 commit。
+    gaps_path = ROOT / CONFIG.get("coverage_gaps_path", "scraper/coverage_gaps.json")
+    gaps_path.write_text(json.dumps(
+        {"note": "首頁出現、但所屬分類的列表頁不在 config 的公告。"
+                 "把 list_page 加進 config.json 即可收錄;"
+                 "確定不要的分類請加進 config.json 的 coverage_ignore。"
+                 "檢查時間見本檔的 git 提交紀錄。",
+         "gaps": all_gaps}, ensure_ascii=False, indent=1), encoding="utf-8")
+    if all_gaps:
+        print(f"[warn] 發現 {len(all_gaps)} 個未收錄分類,詳見 {gaps_path}",
+              file=sys.stderr)
+
     print(f"[info] 輸出 {len(items)} 筆(新增 {len(all_new)} 筆)→ {data_path}")
     return 0
 
