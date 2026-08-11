@@ -57,7 +57,9 @@
 
   /* ── 篩選與比對 ── */
   function itemText(it) {
-    return (it.title + " " + (it.snippet || "") + " " + (it.source_category || "")).toLowerCase();
+    /* 含自動分類名稱:訂「段考」也能命中整個「段考考試」分類 */
+    return (it.title + " " + (it.snippet || "") + " " +
+      (it.category || "") + " " + (it.source_category || "")).toLowerCase();
   }
   function matchQuery(it, q) {
     if (!q) return true;

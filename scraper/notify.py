@@ -35,11 +35,14 @@ CATEGORY_SLUGS = {
 def push_topics(item: dict, topic: str, subs=()) -> list:
     """算出一則公告要推到哪些 ntfy 主題:全部 + 分類 + 命中關鍵字的個人訂閱。
 
-    個人訂閱比對「標題 + 摘要」,不分大小寫;同一組訂閱只會加一次。
+    個人訂閱比對「標題 + 摘要 + 自動分類名稱」,不分大小寫;同一組訂閱只會加一次。
+    納入分類名稱是為了讓訂「段考」的人能命中整個「段考考試」分類,
+    即使公告標題用的是「期末考」「考程」等其他字眼。
     """
     cat_slug = CATEGORY_SLUGS.get(item.get("category", "一般"), "general")
     topics = [topic, f"{topic}-{cat_slug}"]
-    haystack = (item.get("title", "") + " " + (item.get("snippet") or "")).lower()
+    haystack = (item.get("title", "") + " " + (item.get("snippet") or "") +
+                " " + item.get("category", "")).lower()
     for sub in subs or ():
         suffix = str(sub.get("topic_suffix", "")).strip()
         keywords = [str(k).strip().lower() for k in sub.get("keywords", [])]

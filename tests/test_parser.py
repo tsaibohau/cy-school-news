@@ -149,6 +149,8 @@ def run():
     snip = push_topics({"title": "校內公告", "category": "一般",
                         "snippet": "本校獎學金申請開始"}, "cynews", subs)
     assert snip[-1] == "cynews-kw-me", "摘要命中關鍵字也要推播"
+    cat = push_topics({"title": "期末考時間表", "category": "段考考試"}, "cynews", subs)
+    assert cat[-1] == "cynews-kw-me", "自動分類名稱也要納入比對(訂段考收到期末考)"
     miss = push_topics({"title": "圖書館閉館通知", "category": "一般"}, "cynews", subs)
     assert miss == ["cynews", "cynews-general"], miss
     assert push_topics({"title": "段考", "category": "一般"}, "cynews") == \
