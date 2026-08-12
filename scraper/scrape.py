@@ -203,6 +203,13 @@ def deep_stop_reason(page_items, known_ids: set) -> str:
     return ""
 
 
+def split_recent(items, cutoff: str):
+    """依 display_date 把項目分成近期(>= cutoff)與封存兩份,順序不變。"""
+    recent = [it for it in items if display_date(it) >= cutoff]
+    archived = [it for it in items if display_date(it) < cutoff]
+    return recent, archived
+
+
 def configured_categories(school: dict) -> set:
     """該校 config 裡已納入的 403 分類編號。"""
     ids = set()
@@ -445,8 +452,11 @@ def main() -> int:
               f"(略過 cold {skipped_cold} 頁),共 {len(collected)} 筆,"
               f"其中新項目 {len(new_for_school)} 筆")
 
-    # 逐步補齊舊資料:每次最多挑幾筆缺日期或缺摘要的既有項目,抓文章頁補齊
+    # 逐步補齊舊資料:每次最多挑幾筆缺日期或缺摘要的既有項目,抓文章頁補齊。
+    # 排程改成每小時後,補齊只在少數班次執行,避免每小時都多打幾十個請求。
     backfill_cap = CONFIG.get("backfill_max_per_run", 10)
+    backfill_hours = set(CONFIG.get("backfill_hours", [7, 11, 15, 19]))
+    run_backfill = fetch_all or datetime.now(TW_TZ).hour in backfill_hours
 
     def needs_date(it):
         return not it.get("date") and not it.get("date_tried")
@@ -454,9 +464,11 @@ def main() -> int:
     def needs_snippet(it):
         return not it.get("snippet") and not it.get("snippet_tried")
 
+    if not run_backfill:
+        print(f"[info] 本輪不執行補齊(補齊班次:台灣時間 {sorted(backfill_hours)} 點)")
     pending = [it for it in by_id.values()
                if it["id"] not in fetched_this_run
-               and (needs_date(it) or needs_snippet(it))]
+               and (needs_date(it) or needs_snippet(it))] if run_backfill else []
     pending.sort(key=lambda x: x.get("first_seen") or "", reverse=True)
     filled_dates = filled_snippets = 0
     for it in pending[:backfill_cap]:
@@ -492,16 +504,27 @@ def main() -> int:
                reverse=True)
     items = items[: CONFIG["max_items"]]
 
+    # 資料分層:近一年的放 announcements.json(開站即載),其餘放 archive.json
+    # (前端搜尋時才背景載入),兩檔合起來仍是完整資料。
+    hot_cutoff = (datetime.now(TW_TZ)
+                  - timedelta(days=CONFIG.get("hot_days", 365))).strftime("%Y-%m-%d")
+    recent, archived = split_recent(items, hot_cutoff)
+
     out = {
         "generated_at": now_iso,
         "schools": [{"id": s["id"], "name": s["name"], "short": s["short"], "base": s["base"]}
                     for s in CONFIG["schools"]],
         "categories": [c for c, _ in CATEGORY_RULES] + ["一般"],
         "category_slugs": CATEGORY_SLUGS,
-        "items": items,
+        "items": recent,
     }
     data_path.parent.mkdir(parents=True, exist_ok=True)
     data_path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    archive_path = ROOT / CONFIG.get("archive_path", "docs/data/archive.json")
+    archive_path.write_text(json.dumps(
+        {"generated_at": now_iso, "hot_cutoff": hot_cutoff, "items": archived},
+        ensure_ascii=False, indent=1), encoding="utf-8")
 
     all_new.sort(key=lambda x: x.get("date") or "", reverse=True)
     new_items_path.write_text(json.dumps(all_new, ensure_ascii=False, indent=1),
@@ -523,7 +546,8 @@ def main() -> int:
     state_path.write_text(json.dumps(fetch_state, ensure_ascii=False, indent=1),
                           encoding="utf-8")
 
-    print(f"[info] 輸出 {len(items)} 筆(新增 {len(all_new)} 筆)→ {data_path}")
+    print(f"[info] 輸出 {len(recent)} 筆近期 + {len(archived)} 筆封存"
+          f"(共 {len(items)} 筆,新增 {len(all_new)} 筆)→ {data_path.parent}")
     return 0
 
 

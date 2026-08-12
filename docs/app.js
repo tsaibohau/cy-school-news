@@ -13,6 +13,7 @@
     q: "",
     tab: "latest",
     shown: PAGE_SIZE,
+    archive: "none",  /* none | loading | loaded:歷史封存資料的載入狀態 */
     keywords: loadJSON(LS_KW, []),
     lastSeen: localStorage.getItem(LS_SEEN) || "",
   };
@@ -45,6 +46,14 @@
     return fetch("data/announcements.json?_=" + Date.now(), { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (data) {
+        if (state.archive === "loaded") {
+          /* 已載入過封存資料:重新抓的檔案只有近一年,把封存部分接回去 */
+          var ids = {};
+          data.items.forEach(function (it) { ids[it.id] = true; });
+          state.data.items.forEach(function (it) {
+            if (!ids[it.id]) data.items.push(it);
+          });
+        }
         state.data = data;
         renderAll();
       })
@@ -53,6 +62,29 @@
           el.list.innerHTML = '<p class="empty">目前離線且尚無快取資料,連上網路後再試一次。</p>';
         }
       });
+  }
+
+  /* 歷史封存資料:開站不載,搜尋或篩選時才背景載入一次 */
+  function ensureArchive() {
+    if (!state.data || state.archive !== "none") return;
+    state.archive = "loading";
+    renderLatest();
+    fetch("data/archive.json?_=" + Date.now(), { cache: "no-store" })
+      .then(function (r) {
+        if (r.status === 404) return { items: [] }; /* 尚未產生封存檔,視為空 */
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      })
+      .then(function (arc) {
+        var ids = {};
+        state.data.items.forEach(function (it) { ids[it.id] = true; });
+        (arc.items || []).forEach(function (it) {
+          if (!ids[it.id]) state.data.items.push(it);
+        });
+        state.archive = "loaded";
+        renderAll();
+      })
+      .catch(function () { state.archive = "none"; renderLatest(); }); /* 離線等下次再試 */
   }
 
   /* ── 篩選與比對 ── */
@@ -123,9 +155,10 @@
     var items = latestItems();
     var shown = Math.min(state.shown, items.length);
     var rest = items.length - shown;
-    el.countLine.textContent = rest > 0
+    el.countLine.textContent = (rest > 0
       ? "共 " + items.length + " 則公告(已顯示 " + shown + " 則)"
-      : "共 " + items.length + " 則公告";
+      : "共 " + items.length + " 則公告")
+      + (state.archive === "loading" ? " · 搜尋歷史資料中…" : "");
     renderList(el.list, items.slice(0, shown),
       "找不到符合條件的公告,換個關鍵字或篩選試試。");
     if (rest > 0) {
@@ -218,6 +251,7 @@
   /* ── 事件 ── */
   el.q.addEventListener("input", function () {
     state.q = el.q.value.trim();
+    if (state.q) ensureArchive();
     resetPaging(); renderLatest();
   });
   el.schoolSeg.addEventListener("click", function (e) {
@@ -230,6 +264,7 @@
     var b = e.target.closest("button[data-cat]");
     if (!b) return;
     state.cat = b.dataset.cat;
+    if (state.cat !== "all") ensureArchive(); /* 分類瀏覽超出近一年範圍時需要完整資料 */
     resetPaging(); renderControls(); renderLatest();
   });
   el.list.addEventListener("click", function (e) {
@@ -262,7 +297,17 @@
       maybeNotify();
     });
   });
-  el.btnRefresh.addEventListener("click", function () { fetchData(); });
+  el.btnRefresh.addEventListener("click", function () {
+    var before = state.data && state.data.generated_at;
+    fetchData().then(function () {
+      if (state.data && before && state.data.generated_at === before) {
+        /* 資料沒變:誠實告知不是壞掉,是還沒到下一輪更新 */
+        el.updatedAt.textContent =
+          "已是最新(每小時自動更新,上次 " + before.slice(11, 16) + ")";
+        setTimeout(renderUpdatedAt, 3000);
+      }
+    });
+  });
 
   function switchTab(tab) {
     state.tab = tab;

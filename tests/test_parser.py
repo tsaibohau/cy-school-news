@@ -4,8 +4,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
-from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ, list_page_with_number, deep_stop_reason  # noqa: E402
-from notify import push_topics  # noqa: E402
+from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ, list_page_with_number, deep_stop_reason, split_recent  # noqa: E402
+from notify import push_topics, summarize, personal_topics, SUMMARY_THRESHOLD  # noqa: E402
 from schoolcal import build_ics, events_on  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
 
@@ -231,6 +231,34 @@ def run():
     assert events_on(evs, "2026-08-31") == [evs[0]]
     assert events_on(evs, "2026-08-30") == []
     print("✓ 行事曆 ICS 與當日事件")
+
+    tiered = [
+        {"id": "a", "date": "2026-08-01"},                                    # 近期
+        {"id": "b", "date": "", "first_seen": "2026-05-01T08:00:00+08:00"},   # 近期(用 first_seen)
+        {"id": "c", "date": "2024-12-31"},                                    # 封存
+        {"id": "d", "date": ""},                                              # 無任何日期 → 封存
+    ]
+    recent, archived = split_recent(tiered, "2025-08-12")
+    assert [i["id"] for i in recent] == ["a", "b"], recent
+    assert [i["id"] for i in archived] == ["c", "d"], archived
+    assert len(recent) + len(archived) == len(tiered), "分層不可遺失任何資料"
+    print("✓ 資料分層切分")
+
+    flood = ([{"category": "研習活動"}] * 9 + [{"category": "段考考試"}] * 2
+             + [{"category": "獎助學金"}] * 5)
+    s = summarize(flood)
+    assert s.startswith("本輪新增 16 則:"), s
+    assert "研習活動 9" in s and "獎助學金 5" in s and "段考考試 2" in s
+    assert s.index("研習活動 9") < s.index("獎助學金 5") < s.index("段考考試 2"), \
+        "分類應依數量排序"
+    assert summarize([{"title": "x"}]) == "本輪新增 1 則:一般 1", "無分類欄位歸為一般"
+    assert SUMMARY_THRESHOLD == 8
+    subs2 = [{"name": "我", "topic_suffix": "kw-me", "keywords": ["段考"]}]
+    assert personal_topics({"title": "段考範圍", "category": "段考考試"},
+                           "cynews", subs2) == ["cynews-kw-me"]
+    assert personal_topics({"title": "無關公告", "category": "一般"},
+                           "cynews", subs2) == [], "沒命中就沒有個人主題"
+    print("✓ 通知防洪彙總")
 
     return ok
 

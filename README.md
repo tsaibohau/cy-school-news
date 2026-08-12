@@ -4,7 +4,7 @@
 
 嘉義高中(嘉中)與嘉義女中(嘉女)官網公告的自動彙整網站,全程使用免費服務:
 
-- **GitHub Actions**:每天 4 次(台灣時間 08:30 / 12:30 / 15:30 / 18:30)自動抓取兩校官網公告
+- **GitHub Actions**:台灣時間 07:00–19:00 每小時自動抓取(高流量頁),21:00 收尾;低頻頁每天一次、深度補齊每天四班
 - **GitHub Pages**:免費架設前端網站(PWA,可「加入主畫面」當 App 用)
 - **ntfy.sh**:免費推播通知(手機裝 ntfy App 即可收到新公告通知)
 
@@ -91,6 +91,8 @@ git push -u origin main
 
 上例會把含「考試」或「獎學金」的新公告推到 `你的主題-kw-me`,手機用 ntfy 訂閱該主題即可;`name` 只是給自己看的備註,可放多組訂閱,改完 push 上 GitHub 後生效。
 
+**通知防洪:** 單輪新公告超過 8 則時,主主題不逐則推播,改推一則彙總(「本輪新增 23 則:段考考試 2、獎助學金 5…」,點擊開啟網站——網站網址設在 Variables 的 `SITE_URL`,選填);**個人關鍵字命中的公告不受影響,永遠逐則推**。
+
 關鍵字建議用**分類詞**(段考考試/升學/獎助學金/榮譽榜)或**學校實際用詞**(期中考/考程):因為比對範圍含自動分類名稱,訂「考試」或「段考」都能命中整個「段考考試」分類,不會因為某則公告標題寫「期末考」而漏接。
 
 **行事曆訂閱與每日提醒:** 兩校的開學、段考、模擬考等重要日程整理在 `scraper/events.json`,自動產生 `docs/calendar.ics` 訂閱檔:
@@ -108,7 +110,8 @@ git push -u origin main
 - **新增抓取來源**:兩校官網任何「更多/MORE」列表頁(網址長得像 `/p/403-1008-xxx-1.php`)都可以直接貼進 `scraper/config.json` 的 `list_pages`,不用改程式——分類名稱會自動從頁面標題讀取。
 - **自動偵測漏抓**(不用自己巡網站):每輪掃首頁時,若有公告的分類不在 `list_pages` 裡,會寫進 `scraper/coverage_gaps.json` 並在 Actions log 印警告。裡面每筆都附 `list_page` 網址,複製貼進 `config.json` 即可收錄;確定不想收的分類,加進 `config.json` 的 `coverage_ignore` 就不會再回報。
 - **重新盤點全站分類**:`python scraper/discover.py site_map` 會爬遍全站並把分類 ID 從 1 掃到 850,產生 `scraper/site_map.json` 與 `scraper/discovery_report.md`。這是一次性工具(約 50 分鐘),**不要放進排程**;平常靠上面的哨兵機制就夠了。
-- **調整抓取頻率**:改 `.github/workflows/scrape.yml` 裡的 cron(注意是 UTC 時間,台灣時間要減 8 小時)。請維持合理頻率,對學校伺服器友善。
+- **調整抓取頻率**:改 `.github/workflows/scrape.yml` 裡的 cron(注意是 UTC 時間,台灣時間要減 8 小時)。目前的請求量:hot 44 頁 × 14 班 + cold 108 頁 × 1 班 + 補齊 80 × 4 班 ≈ **每日約 1,050 次**(兩校合計,平均每校每 2.5 分鐘不到 1 次,全程 1.5 秒間隔;單輪尖峰約 124 次、約 3 分鐘)。請維持合理頻率,對學校伺服器友善。
+- **資料分層**:`announcements.json` 只放最近一年(`hot_days`)的公告供開站即載;其餘寫入 `docs/data/archive.json`,前端在搜尋或分類瀏覽時才背景載入,資料不會刪除。
 - **來源分級(降低請求量)**:`list_pages` 的項目寫成 `{"url": "...", "tier": "hot"}` 表示每輪都抓;純網址字串為 cold,每天只抓一次(距上次成功抓取超過 20 小時才重抓,紀錄在 `scraper/fetch_state.json`,由 Actions 自動提交)。手動 Run workflow 時一律全抓。
 - **調整自動分類**:改 `scraper/scrape.py` 開頭的 `CATEGORY_RULES` 關鍵字,由上而下依序比對。
 - **本機測試**:`pip install -r scraper/requirements.txt` 後執行 `python scraper/scrape.py`;解析邏輯離線測試:`python tests/test_parser.py`。

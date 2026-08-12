@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 NEW_ITEMS = ROOT / "scraper" / "new_items.json"
 SUBSCRIPTIONS = ROOT / "scraper" / "subscriptions.json"
 MAX_PUSH = 20  # 單次最多推播則數,避免第一次建置時灌爆訂閱者
+SUMMARY_THRESHOLD = 8  # 單輪新公告超過此數改推一則彙總(個人關鍵字命中仍逐則)
 
 CATEGORY_SLUGS = {
     "段考考試": "exam", "升學": "admission", "獎助學金": "scholarship",
@@ -53,6 +54,31 @@ def push_topics(item: dict, topic: str, subs=()) -> list:
     return topics
 
 
+def summarize(items) -> str:
+    """彙總文字:「本輪新增 N 則:段考考試 2、獎助學金 5…」,分類依數量排序。"""
+    from collections import Counter
+    counts = Counter(it.get("category", "一般") for it in items)
+    parts = "、".join(f"{cat} {n}" for cat, n in counts.most_common())
+    return f"本輪新增 {len(items)} 則:{parts}"
+
+
+def personal_topics(item: dict, topic: str, subs) -> list:
+    """只取個人關鍵字命中的主題(去掉「全部」與「分類」兩個固定主題)。"""
+    return push_topics(item, topic, subs)[2:]
+
+
+def _post(t: str, body: str, title: str, click: str = "") -> None:
+    headers = {"Title": title.encode("utf-8"), "Tags": "loudspeaker"}
+    if click:
+        headers["Click"] = click
+    try:
+        requests.post(f"https://ntfy.sh/{t}", data=body.encode("utf-8"),
+                      headers=headers, timeout=15)
+    except Exception as e:
+        print(f"[warn] 推播失敗 {t}: {e}", file=sys.stderr)
+    time.sleep(0.3)
+
+
 def main() -> int:
     topic = os.environ.get("NTFY_TOPIC", "").strip()
     if not topic:
@@ -74,29 +100,32 @@ def main() -> int:
         except Exception as e:
             print(f"[warn] subscriptions.json 讀取失敗,略過個人訂閱:{e}", file=sys.stderr)
 
+    if len(items) > SUMMARY_THRESHOLD:
+        # 防洪:改推一則彙總到主主題;個人關鍵字命中的(使用者點名要的)仍逐則推
+        site_url = os.environ.get("SITE_URL", "").strip()
+        _post(topic, summarize(items), "[嘉校快訊] 新公告彙總", site_url)
+        personal_sent = 0
+        for it in items:
+            if personal_sent >= MAX_PUSH:
+                break
+            hits = personal_topics(it, topic, subs)
+            for t in hits:
+                _post(t, it.get("title", ""),
+                      f'[{it.get("school_name", "")}] {it.get("category", "一般")}',
+                      it.get("url", ""))
+            personal_sent += bool(hits)
+        print(f"[info] 彙總模式:{len(items)} 則合併為 1 則推播,"
+              f"個人關鍵字另推 {personal_sent} 則")
+        return 0
+
     sent = 0
     for it in items[:MAX_PUSH]:
         title = f'[{it.get("school_name", "")}] {it.get("category", "一般")}'
         body = it.get("title", "")
         for t in push_topics(it, topic, subs):
-            try:
-                requests.post(
-                    f"https://ntfy.sh/{t}",
-                    data=body.encode("utf-8"),
-                    headers={
-                        "Title": title.encode("utf-8"),
-                        "Click": it.get("url", ""),
-                        "Tags": "loudspeaker",
-                    },
-                    timeout=15,
-                )
-            except Exception as e:
-                print(f"[warn] 推播失敗 {t}: {e}", file=sys.stderr)
-            time.sleep(0.3)
+            _post(t, body, title, it.get("url", ""))
         sent += 1
 
-    if len(items) > MAX_PUSH:
-        print(f"[info] 新公告 {len(items)} 則,僅推播最新 {MAX_PUSH} 則")
     print(f"[info] 已推播 {sent} 則到主題 {topic}")
     return 0
 
