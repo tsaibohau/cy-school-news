@@ -260,6 +260,24 @@ def run():
                            "cynews", subs2) == [], "沒命中就沒有個人主題"
     print("✓ 通知防洪彙總")
 
+    future = (datetime.now(TW_TZ) + timedelta(days=30)).strftime("%Y-%m-%d")
+    tomorrow = (datetime.now(TW_TZ) + timedelta(days=1)).strftime("%Y-%m-%d")
+    fut_list = ('<html><body><div class="row"><div class="mdate">' + future +
+                '</div><a href="/p/406-1008-999901,r17.php">未來活動日期的測試公告標題</a>'
+                '</div></body></html>')
+    fitems = extract_items(fut_list, SCHOOL, "https://www.cysh.cy.edu.tw/p/403-1008-17-1.php")
+    assert fitems[0]["date"] == "", "列表頁的未來日期應視為活動日期捨棄"
+    fut_article = ('<html><body><p>發佈日期 : ' + future +
+                   '</p><div class="mpgdetail">活動說明。</div></body></html>')
+    assert extract_article_date(fut_article) == "", "發佈日期標籤的未來日期也要擋"
+    mixed = ('<html><body><p>發佈日期 : ' + future +
+             '</p><div class="mpgdetail">已於 2026-08-01 公告。</div></body></html>')
+    assert extract_article_date(mixed) == "2026-08-01", "未來日期擋掉後應退回其他來源"
+    tom_article = ('<html><body><p>發佈日期 : ' + tomorrow +
+                   '</p><div class="mpgdetail">內容。</div></body></html>')
+    assert extract_article_date(tom_article) == tomorrow, "明天(含)以內仍接受"
+    print("✓ 未來日期護欄")
+
     return ok
 
 

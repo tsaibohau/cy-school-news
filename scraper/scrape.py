@@ -81,19 +81,30 @@ def display_date(item: dict) -> str:
     return item.get("date") or (item.get("first_seen") or "")[:10]
 
 
+def _fmt_valid_date(y: int, mo: int, d: int) -> str:
+    """組出日期字串;無效、或晚於台灣時間「明天」的一律回空字串。
+
+    發佈日期不可能在未來——頁面上晚於明天的日期必然是活動/報名日期,
+    不能當成公告日期(留一天餘裕吸收時區與預先排版)。
+    """
+    if not (1 <= mo <= 12 and 1 <= d <= 31):
+        return ""
+    s = f"{y:04d}-{mo:02d}-{d:02d}"
+    tomorrow = (datetime.now(TW_TZ) + timedelta(days=1)).strftime("%Y-%m-%d")
+    return "" if s > tomorrow else s
+
+
 def parse_date_near(node) -> str:
-    """從連結節點往上找最近容器內的日期字串。"""
+    """從連結節點往上找最近容器內的日期字串(未來日期視為活動日期,略過)。"""
     cur = node
     for _ in range(4):
         if cur is None:
             break
         m = DATE_RE.search(cur.get_text(" ", strip=True) or "")
         if m:
-            y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
-            try:
-                return f"{y:04d}-{mo:02d}-{d:02d}"
-            except ValueError:
-                pass
+            s = _fmt_valid_date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+            if s:
+                return s
         cur = cur.parent
     return ""
 
@@ -288,9 +299,9 @@ def extract_article_date(html: str) -> str:
             matches.append(DATE_RE.search(body.get_text(" ", strip=True) or ""))
         for m in matches:
             if m:
-                y, mo, d = int(m.group(1)), int(m.group(2)), int(m.group(3))
-                if 1 <= mo <= 12 and 1 <= d <= 31:
-                    return f"{y:04d}-{mo:02d}-{d:02d}"
+                s = _fmt_valid_date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+                if s:
+                    return s
         return ""
     except Exception:
         return ""
