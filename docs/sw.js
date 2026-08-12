@@ -1,5 +1,7 @@
 /* 嘉校快訊 Service Worker:離線快取殼層,資料採網路優先 */
-var CACHE = "cy-news-v1";
+/* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
+   下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
+var CACHE = "cy-news-v2";
 var SHELL = ["./", "./index.html", "./style.css", "./app.js", "./manifest.webmanifest",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
