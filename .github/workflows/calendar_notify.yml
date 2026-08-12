@@ -1,0 +1,27 @@
+name: 行事曆提醒
+
+on:
+  schedule:
+    # UTC 23:00 = 台灣時間 07:00
+    - cron: '0 23 * * *'
+  workflow_dispatch: {}
+
+permissions: {}
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: 安裝相依套件
+        run: pip install requests
+
+      - name: 推播今日行事曆事件
+        env:
+          NTFY_TOPIC: ${{ vars.NTFY_TOPIC }}
+        run: python scraper/schoolcal.py notify
