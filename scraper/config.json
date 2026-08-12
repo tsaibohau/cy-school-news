@@ -301,12 +301,17 @@
       ]
     }
   ],
-  "max_items": 3000,
+  "max_items": 6000,
   "fetch_content_max_per_school": 12,
   "backfill_max_per_run": 80,
   "cold_interval_hours": 20,
   "request_delay_sec": 1.5,
   "timeout_sec": 20,
   "data_path": "docs/data/announcements.json",
-  "new_items_path": "scraper/new_items.json"
+  "new_items_path": "scraper/new_items.json",
+  "coverage_ignore": {
+    "cysh": [
+      "1136"
+    ]
+  }
 }

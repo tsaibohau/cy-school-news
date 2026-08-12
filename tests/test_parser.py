@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
-from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ  # noqa: E402
+from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ, list_page_with_number, deep_stop_reason  # noqa: E402
 from notify import push_topics  # noqa: E402
 from schoolcal import build_ics, events_on  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
@@ -203,6 +203,19 @@ def run():
     assert should_fetch("u", "cold", fresh, fetch_all=True), "手動觸發一律全抓"
     assert should_fetch("u", "cold", {"u": "不是時間"}), "壞時間戳視同沒抓過"
     print("✓ 來源分級抓取")
+
+    assert list_page_with_number("https://x/p/403-1008-17-1.php", 3) == \
+        "https://x/p/403-1008-17-3.php"
+    old_page = [{"id": "a", "date": "2024-05-01"}, {"id": "b", "date": "2024-07-31"}]
+    assert deep_stop_reason([], set()) == "無公告"
+    assert deep_stop_reason(old_page, {"a", "b"}) == "整頁重複", "頁碼鎖定要跳出"
+    assert deep_stop_reason(old_page, {"a"}) == "早於截止日"
+    assert deep_stop_reason([{"id": "c", "date": "2026-08-01"},
+                             {"id": "d", "date": "2024-01-01"}], set()) == "", \
+        "頁上仍有截止日後的公告就繼續翻"
+    assert deep_stop_reason([{"id": "e", "date": ""}], set()) == "", \
+        "整頁無日期時無從判斷,要繼續翻"
+    print("✓ 深度回補分頁邏輯")
 
     evs = [{"date": "2026-08-31", "school": "嘉中", "title": "開學日"},
            {"date": "2026-09-02", "school": "嘉中", "title": "高三模擬考(9/2-9/3)"}]

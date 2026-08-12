@@ -29,6 +29,11 @@ TW_TZ = timezone(timedelta(hours=8))
 DATE_RE = re.compile(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
 # RulingDigital 文章頁的「發佈日期 : YYYY-MM-DD」欄位(嘉中文章頁固定會有)
 PUB_DATE_RE = re.compile(r"發[佈布]日期\s*[::]\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
+
+# 深度回補(環境變數 DEEP_CRAWL=1):對每個 403 分類頁往後翻頁的一次性模式,
+# 由維護者在本機執行,不進排程——新公告永遠出現在第一頁,日常抓第一頁即可。
+DEEP_CRAWL_MAX_PAGES = 15
+DEEP_CRAWL_CUTOFF = "2024-08-01"  # 回溯到現任高三入學
 UA = ("Mozilla/5.0 (compatible; cy-school-news/1.0; "
       "+https://github.com/ ; personal non-commercial announcement reader)")
 
@@ -175,6 +180,29 @@ def should_fetch(url: str, tier: str, fetch_state: dict,
     return _hours_since(fetch_state.get(url, "")) >= cold_hours
 
 
+def list_page_with_number(url: str, page_no: int) -> str:
+    """把 /p/403-{unit}-{cat}-1.php 換成第 page_no 頁的網址。"""
+    return re.sub(r"-1\.php$", f"-{page_no}.php", url)
+
+
+def deep_stop_reason(page_items, known_ids: set) -> str:
+    """深度爬取是否應停止翻頁。
+
+    - 無公告:到底了。
+    - 整頁重複:頁碼超出範圍時 RulingDigital 可能回傳同一頁,靠這條跳出。
+    - 早於截止日:整頁最新的日期都早於 DEEP_CRAWL_CUTOFF(該頁仍會被收錄,
+      只是不再往後翻);整頁都沒日期時無從判斷,繼續翻。
+    """
+    if not page_items:
+        return "無公告"
+    if all(it["id"] in known_ids for it in page_items):
+        return "整頁重複"
+    dates = [it["date"] for it in page_items if it.get("date")]
+    if dates and max(dates) < DEEP_CRAWL_CUTOFF:
+        return "早於截止日"
+    return ""
+
+
 def configured_categories(school: dict) -> set:
     """該校 config 裡已納入的 403 分類編號。"""
     ids = set()
@@ -233,7 +261,7 @@ def extract_article_snippet(html: str, title: str) -> str:
         text = re.sub(r"\s+", " ", text)
         if title and text.startswith(title):
             text = text[len(title):].strip()
-        return text[:600]
+        return text[:1000]
     except Exception:
         return ""
 
@@ -302,6 +330,11 @@ def main() -> int:
             pass
     if fetch_all:
         print("[info] 手動觸發:忽略分級,抓取全部來源")
+    deep_crawl = bool(os.environ.get("DEEP_CRAWL", "").strip())
+    if deep_crawl:
+        fetch_all = True
+        print(f"[info] 深度回補模式:每個分類最多翻 {DEEP_CRAWL_MAX_PAGES} 頁,"
+              f"截止日 {DEEP_CRAWL_CUTOFF};忽略分級抓取全部來源")
 
     for school in CONFIG["schools"]:
         collected = {}
@@ -332,12 +365,37 @@ def main() -> int:
                     collected[it["id"]] = it
             time.sleep(delay)
 
+            # 深度回補:對 403 分類頁繼續抓第 2、3…頁
+            if deep_crawl and "/p/403-" in page_url:
+                for page_no in range(2, DEEP_CRAWL_MAX_PAGES + 1):
+                    deep_url = list_page_with_number(page_url, page_no)
+                    try:
+                        deep_html = fetch(session, deep_url)
+                    except Exception as e:
+                        print(f"[warn] 深度頁略過 {deep_url}: {e}", file=sys.stderr)
+                        time.sleep(delay)
+                        break
+                    time.sleep(delay)
+                    deep_items = extract_items(deep_html, school, deep_url)
+                    reason = deep_stop_reason(deep_items, set(collected))
+                    if reason in ("無公告", "整頁重複"):
+                        break
+                    for it in deep_items:
+                        collected.setdefault(it["id"], it)
+                    if reason == "早於截止日":
+                        break
+
         new_for_school = [it for iid, it in collected.items() if iid not in known_ids]
         new_for_school.sort(key=lambda x: x.get("date") or "", reverse=True)
 
         # 只對「新」項目補抓內文摘要,並設上限;順便從文章頁補回缺漏的日期
         cap = CONFIG["fetch_content_max_per_school"]
-        for it in new_for_school[:cap]:
+        snippet_targets = new_for_school[:cap]
+        if deep_crawl:
+            # 回補的舊公告若沒日期,會被誤排成「今天」,一律補抓文章頁取得日期
+            snippet_targets = snippet_targets + [
+                it for it in new_for_school[cap:] if not it.get("date")]
+        for it in snippet_targets:
             try:
                 html = fetch(session, it["url"])
                 it["snippet"] = extract_article_snippet(html, it["title"])
