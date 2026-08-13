@@ -99,7 +99,7 @@ git push -u origin main
 
 - **iPhone**:設定 → 行事曆 → 帳號 → 加入帳號 → 其他 →「加入已訂閱的行事曆」→ 貼上 `https://<你的帳號>.github.io/<儲存庫名>/calendar.ics`。
 - **Google 日曆**:電腦版設定 →「新增日曆」→「透過網址」→ 貼上同一網址。
-- **ntfy 推播**:訂閱 `你的主題-calendar`,每天早上 07:00 當天有事件才會推播(由 `calendar_notify.yml` 執行,不做任何爬取)。
+- **ntfy 推播**:訂閱 `你的主題-calendar`,每天早上 07:00 當天有事件才會推播(由 `calendar-daily.yml` 執行,不做任何爬取)。
 
 行事曆資料由維護者從兩校官網的行事曆 PDF 人工轉錄(自動解析表格 PDF 不可靠);**每學期初跟維護者說「更新行事曆」即可換上新學期資料**。
 
@@ -110,7 +110,7 @@ git push -u origin main
 - **新增抓取來源**:兩校官網任何「更多/MORE」列表頁(網址長得像 `/p/403-1008-xxx-1.php`)都可以直接貼進 `scraper/config.json` 的 `list_pages`,不用改程式——分類名稱會自動從頁面標題讀取。
 - **自動偵測漏抓**(不用自己巡網站):每輪掃首頁時,若有公告的分類不在 `list_pages` 裡,會寫進 `scraper/coverage_gaps.json` 並在 Actions log 印警告。裡面每筆都附 `list_page` 網址,複製貼進 `config.json` 即可收錄;確定不想收的分類,加進 `config.json` 的 `coverage_ignore` 就不會再回報。
 - **重新盤點全站分類**:`python scraper/discover.py site_map` 會爬遍全站並把分類 ID 從 1 掃到 850,產生 `scraper/site_map.json` 與 `scraper/discovery_report.md`。這是一次性工具(約 50 分鐘),**不要放進排程**;平常靠上面的哨兵機制就夠了。
-- **調整抓取頻率**:改 `.github/workflows/scrape.yml` 裡的 cron(注意是 UTC 時間,台灣時間要減 8 小時)。目前的請求量:hot 44 頁 × 14 班 + cold 108 頁 × 1 班 + 補齊 80 × 4 班 ≈ **每日約 1,050 次**(兩校合計,平均每校每 2.5 分鐘不到 1 次,全程 1.5 秒間隔;單輪尖峰約 124 次、約 3 分鐘)。請維持合理頻率,對學校伺服器友善。
+- **調整抓取頻率**:改 `.github/workflows/scrape-hourly.yml` 裡的 cron(注意是 UTC 時間,台灣時間要減 8 小時)。目前的請求量:hot 44 頁 × 14 班 + cold 108 頁 × 1 班 + 補齊 80 × 4 班 ≈ **每日約 1,050 次**(兩校合計,平均每校每 2.5 分鐘不到 1 次,全程 1.5 秒間隔;單輪尖峰約 124 次、約 3 分鐘)。請維持合理頻率,對學校伺服器友善。
 - **資料分層**:`announcements.json` 只放最近一年(`hot_days`)的公告供開站即載;其餘寫入 `docs/data/archive.json`,前端在搜尋或分類瀏覽時才背景載入,資料不會刪除。
 - **來源分級(降低請求量)**:`list_pages` 的項目寫成 `{"url": "...", "tier": "hot"}` 表示每輪都抓;純網址字串為 cold,每天只抓一次(距上次成功抓取超過 20 小時才重抓,紀錄在 `scraper/fetch_state.json`,由 Actions 自動提交)。手動 Run workflow 時一律全抓。
 - **調整自動分類**:改 `scraper/scrape.py` 開頭的 `CATEGORY_RULES` 關鍵字,由上而下依序比對。
@@ -120,7 +120,7 @@ git push -u origin main
 
 ```
 cy-school-news/
-├── .github/workflows/scrape.yml   # 排程:抓取 → 推播 → 提交資料
+├── .github/workflows/scrape-hourly.yml  # 排程:抓取 → 推播 → 提交資料
 ├── scraper/
 │   ├── config.json                # 兩校來源設定(要加來源改這裡)
 │   ├── scrape.py                  # 爬蟲主程式(解析、去重、自動分類)
