@@ -4,7 +4,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
-from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ, list_page_with_number, deep_stop_reason, split_recent  # noqa: E402
+from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ, list_page_with_number, deep_stop_reason, split_recent, load_existing_items  # noqa: E402
 from notify import push_topics, summarize, personal_topics, SUMMARY_THRESHOLD  # noqa: E402
 from schoolcal import build_ics, events_on  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
@@ -277,6 +277,23 @@ def run():
                    '</p><div class="mpgdetail">內容。</div></body></html>')
     assert extract_article_date(tom_article) == tomorrow, "明天(含)以內仍接受"
     print("✓ 未來日期護欄")
+
+    import json as _json
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        dp, ap = Path(td) / "a.json", Path(td) / "arc.json"
+        dp.write_text(_json.dumps({"items": [
+            {"id": "x", "title": "新版"}, {"id": "y", "title": "只在近期"}]},
+            ensure_ascii=False), encoding="utf-8")
+        ap.write_text(_json.dumps({"items": [
+            {"id": "x", "title": "舊版"}, {"id": "z", "title": "只在封存"}]},
+            ensure_ascii=False), encoding="utf-8")
+        merged = load_existing_items(dp, ap)
+        assert set(merged) == {"x", "y", "z"}, "近期與封存都要讀回,缺一不可"
+        assert merged["x"]["title"] == "新版", "同 id 以近期檔為準"
+        assert load_existing_items(dp, Path(td) / "無此檔.json")["y"]["title"] == "只在近期", \
+            "封存檔不存在時要能正常運作"
+    print("✓ 既有資料載入(近期+封存)")
 
     return ok
 

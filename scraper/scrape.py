@@ -314,18 +314,33 @@ def fetch(session: requests.Session, url: str) -> str:
     return resp.text
 
 
+def load_existing_items(data_path: Path, archive_path: Path) -> dict:
+    """讀回既有資料(封存 + 近期)合併成 by_id;檔案缺失或壞損視為空。
+
+    兩個檔都必須讀:若只讀 announcements.json,封存項目不會進 by_id,
+    輸出時就從資料集中永久消失,而仍掛在分類頁第一頁的舊公告則會被
+    誤判為「新公告」重新推播(2026-08-13 實際發生過)。
+    """
+    by_id = {}
+    for p in (archive_path, data_path):  # data_path 較新,後讀覆蓋同 id
+        if not p.exists():
+            continue
+        try:
+            data = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        for it in data.get("items", []):
+            by_id[it["id"]] = it
+    return by_id
+
+
 def main() -> int:
     data_path = ROOT / CONFIG["data_path"]
+    archive_path = ROOT / CONFIG.get("archive_path", "docs/data/archive.json")
     new_items_path = ROOT / CONFIG["new_items_path"]
     delay = CONFIG["request_delay_sec"]
 
-    existing = {"items": []}
-    if data_path.exists():
-        try:
-            existing = json.loads(data_path.read_text(encoding="utf-8"))
-        except Exception:
-            pass
-    by_id = {it["id"]: it for it in existing.get("items", [])}
+    by_id = load_existing_items(data_path, archive_path)
     known_ids = set(by_id)
 
     session = requests.Session()
@@ -532,7 +547,6 @@ def main() -> int:
     data_path.parent.mkdir(parents=True, exist_ok=True)
     data_path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
 
-    archive_path = ROOT / CONFIG.get("archive_path", "docs/data/archive.json")
     archive_path.write_text(json.dumps(
         {"generated_at": now_iso, "hot_cutoff": hot_cutoff, "items": archived},
         ensure_ascii=False, indent=1), encoding="utf-8")
