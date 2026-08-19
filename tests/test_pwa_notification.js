@@ -1,4 +1,4 @@
-/* Local PWA Notification V2 行為測試:Node 內建 assert/vm,不引入依賴。 */
+/* Local PWA Notification V3 行為測試:Node 內建 assert/vm,不引入依賴。 */
 "use strict";
 
 const assert = require("node:assert/strict");
@@ -170,7 +170,11 @@ async function testRepeatedRefreshAndRender() {
   const notification = makeNotification();
   const appRun = await createApp({
     storage,
-    responses: [response(dataOf([])), response(dataOf([item("a", "2026-08-20T00:00:00Z", "考試")]))],
+    responses: [
+      response(dataOf([])),
+      response(dataOf([item("a", "2026-08-20T00:00:00Z", "考試")])),
+      response(dataOf([item("a", "2026-08-20T00:00:00Z", "考試")])),
+    ],
     notification,
   });
   addSubscription(appRun.app, appRun.document, "考試");
@@ -231,6 +235,38 @@ async function testTwoKeywordsOneNotificationAndReadSeparate() {
   assert.deepEqual(ids, ["same"]);
 }
 
+async function testWatermarkPreventsEvictedIdRedelivery() {
+  const storage = new MemoryStorage();
+  const notification = makeNotification();
+  const articleA = item("A", "2026-08-20T00:00:00Z", "考試");
+  const bulk = Array.from({ length: 501 }, (_, i) => item(
+    "bulk-" + i,
+    new Date(Date.parse("2026-08-21T00:00:00Z") + i * 1000).toISOString(),
+    "考試",
+  ));
+  const appRun = await createApp({
+    storage,
+    responses: [response(dataOf([])), response(dataOf([articleA]))],
+    notification,
+  });
+  addSubscription(appRun.app, appRun.document, "考試");
+  await appRun.app.fetchData();
+  assert.equal(notification.calls.length, 1);
+
+  appRun.queue.push(response(dataOf(bulk)));
+  await appRun.app.fetchData();
+  const afterBulk = JSON.parse(storage.getItem("cyNews.notificationState"));
+  assert.equal(afterBulk.notifiedIds.length, 500);
+  assert.ok(!afterBulk.notifiedIds.includes("A"), "bulk delivery must evict A from the bounded ID list");
+  const watermarkAfterBulk = afterBulk.notifiedThrough;
+
+  appRun.queue.push(response(dataOf([articleA])));
+  await appRun.app.fetchData();
+  const afterReload = JSON.parse(storage.getItem("cyNews.notificationState"));
+  assert.equal(notification.calls.length, 2, "evicted A must not be redelivered");
+  assert.equal(afterReload.notifiedThrough, watermarkAfterBulk, "watermark must not move backwards");
+}
+
 async function testTabDoesNotResetDedupe() {
   const storage = new MemoryStorage({ "cyNews.keywords": JSON.stringify(["考試"]) });
   const notification = makeNotification();
@@ -280,9 +316,10 @@ async function testLegacyMigration() {
   const state = api.load({ storage, now: new FixedDate(), idFactory: (() => {
     let n = 0; return () => "legacy-" + (++n);
   })() });
-  assert.equal(state.version, 2);
+  assert.equal(state.version, 3);
   assert.deepEqual(Array.from(state.subscriptions, (s) => s.keyword), ["考試", "社團"]);
   assert.ok(state.subscriptions.every((s) => s.createdAt === "2026-08-19T00:00:00.000Z"));
+  assert.equal(state.notifiedThrough, "2026-08-19T00:00:00.000Z");
   assert.equal(storage.getItem("cyNews.keywords"), legacyKeywords);
   assert.equal(storage.getItem("cyNews.lastSeen"), "2026-08-18T00:00:00Z");
   api.removeSubscription(state, state.subscriptions[0].id);
@@ -290,6 +327,46 @@ async function testLegacyMigration() {
   const reloaded = api.load({ storage });
   assert.deepEqual(Array.from(reloaded.subscriptions, (s) => s.keyword), ["社團"],
     "legacy keywords must not recreate deleted V2 subscriptions");
+}
+
+function testV2MigrationPreservesIds() {
+  const v2 = {
+    version: 2,
+    subscriptions: [{ id: "sub-existing", keyword: "考試", createdAt: "2026-08-18T00:00:00Z" }],
+    notifiedIds: ["already-sent"],
+  };
+  const storage = new MemoryStorage({
+    "cyNews.notificationState": JSON.stringify(v2),
+    "cyNews.keywords": JSON.stringify(["社團"]),
+  });
+  const { api } = loadStateApi(storage);
+  const state = api.load({ storage, now: new FixedDate() });
+  assert.equal(state.version, 3);
+  assert.deepEqual(Array.from(state.notifiedIds), ["already-sent"]);
+  assert.equal(state.notifiedThrough, "2026-08-19T00:00:00.000Z");
+  assert.deepEqual(Array.from(state.subscriptions, (s) => s.keyword), ["考試"],
+    "V2 subscriptions remain authoritative over legacy keywords");
+}
+
+function testNewSubscriptionKeepsCreatedAtBaseline() {
+  const storage = new MemoryStorage();
+  const { api } = loadStateApi(storage);
+  const state = {
+    version: 3,
+    subscriptions: [],
+    notifiedIds: [],
+    notifiedThrough: "2026-08-19T00:00:00Z",
+  };
+  api.addSubscription(state, "考試", {
+    now: new FixedDate("2026-08-21T00:00:00Z"),
+    idFactory: () => "new-sub",
+  });
+  const candidates = api.findCandidates([
+    item("before-sub", "2026-08-20T00:00:00Z", "考試"),
+    item("after-sub", "2026-08-22T00:00:00Z", "考試"),
+  ], state);
+  assert.deepEqual(Array.from(candidates, (it) => it.id), ["after-sub"],
+    "a new subscription must use its later createdAt baseline, not revive history");
 }
 
 function testNotifiedIdsCap() {
@@ -323,11 +400,14 @@ async function testPermissionFailureDoesNotPersist() {
     responses: [response(dataOf([item("fail", "2026-08-20T00:00:00Z", "考試")]), "network")],
     notification,
   });
-  assert.deepEqual(JSON.parse(storage.getItem("cyNews.notificationState")).notifiedIds, []);
+  const state = JSON.parse(storage.getItem("cyNews.notificationState"));
+  assert.deepEqual(state.notifiedIds, []);
+  assert.equal(state.notifiedThrough, "2026-08-19T00:00:00.000Z",
+    "a failed Notification must not advance the watermark");
 }
 
 function testServiceWorkerContract() {
-  assert.match(swSource, /cy-news-v6/);
+  assert.match(swSource, /cy-news-v7/);
   assert.match(swSource, /\.\/notification-state\.js/);
   assert.match(swSource, /X-CyNews-Data-Source/);
   assert.match(swSource, /markDataSource\(res, "network"\)/);
@@ -340,14 +420,17 @@ function testServiceWorkerContract() {
   await testArchiveDoesNotNotify();
   await testSubscriptionBaselineAndLaterMatch();
   await testTwoKeywordsOneNotificationAndReadSeparate();
+  await testWatermarkPreventsEvictedIdRedelivery();
   await testTabDoesNotResetDedupe();
   await testUiFiltersNeverNotify();
   await testLegacyMigration();
+  testV2MigrationPreservesIds();
+  testNewSubscriptionKeepsCreatedAtBaseline();
   testNotifiedIdsCap();
   await testCacheDoesNotNotify();
   await testPermissionFailureDoesNotPersist();
   testServiceWorkerContract();
-  console.log("PWA Notification V2 tests passed (11 acceptance areas + guards)");
+  console.log("PWA Notification V3 tests passed (11 acceptance areas + guards)");
 })().catch((error) => {
   console.error(error);
   process.exitCode = 1;
