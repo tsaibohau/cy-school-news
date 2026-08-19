@@ -1,8 +1,8 @@
 /* 嘉校快訊 Service Worker:離線快取殼層,資料採網路優先 */
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
-var CACHE = "cy-news-v5";
-var SHELL = ["./", "./index.html", "./style.css", "./app.js", "./manifest.webmanifest",
+var CACHE = "cy-news-v6";
+var SHELL = ["./", "./index.html", "./style.css", "./app.js", "./notification-state.js", "./manifest.webmanifest",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {
@@ -34,9 +34,11 @@ self.addEventListener("fetch", function (e) {
       fetch(req).then(function (res) {
         var copy = res.clone();
         caches.open(CACHE).then(function (c) { c.put(key, copy); });
-        return res;
+        return markDataSource(res, "network");
       }).catch(function () {
-        return caches.match(key);
+        return caches.match(key).then(function (hit) {
+          return hit ? markDataSource(hit, "cache") : hit;
+        });
       })
     );
     return;
@@ -52,3 +54,13 @@ self.addEventListener("fetch", function (e) {
     })
   );
 });
+
+function markDataSource(response, source) {
+  var headers = new Headers(response.headers);
+  headers.set("X-CyNews-Data-Source", source);
+  return new Response(response.body, {
+    status: response.status,
+    statusText: response.statusText,
+    headers: headers
+  });
+}

@@ -1,0 +1,354 @@
+/* Local PWA Notification V2 行為測試:Node 內建 assert/vm,不引入依賴。 */
+"use strict";
+
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+const vm = require("node:vm");
+
+const repo = path.resolve(__dirname, "..");
+const stateSource = fs.readFileSync(path.join(repo, "docs", "notification-state.js"), "utf8");
+const appSource = fs.readFileSync(path.join(repo, "docs", "app.js"), "utf8");
+const swSource = fs.readFileSync(path.join(repo, "docs", "sw.js"), "utf8");
+
+class MemoryStorage {
+  constructor(entries) { this.values = new Map(Object.entries(entries || {})); }
+  getItem(key) { return this.values.has(key) ? this.values.get(key) : null; }
+  setItem(key, value) { this.values.set(key, String(value)); }
+  removeItem(key) { this.values.delete(key); }
+}
+
+class FixedDate extends Date {
+  constructor(...args) {
+    super(args.length ? args[0] : "2026-08-19T00:00:00.000Z");
+  }
+  static now() { return Date.parse("2026-08-19T00:00:00.000Z"); }
+}
+
+function loadStateApi(storage, idPrefix = "sub") {
+  const root = {
+    localStorage: storage,
+    Date: FixedDate,
+    crypto: null,
+  };
+  const context = vm.createContext({ window: root, Date: FixedDate });
+  vm.runInContext(stateSource, context);
+  return { api: root.CyNewsNotificationState, context, root };
+}
+
+class FakeElement {
+  constructor() {
+    this.listeners = {};
+    this.innerHTML = "";
+    this.textContent = "";
+    this.hidden = false;
+    this.value = "";
+    this.dataset = {};
+    this.classList = { toggle() {} };
+  }
+  addEventListener(type, handler) { this.listeners[type] = handler; }
+  setAttribute() {}
+  insertAdjacentHTML(_where, html) { this.innerHTML += html; }
+  focus() {}
+  emit(type, event = {}) {
+    const target = event.target || this;
+    if (!target.closest) target.closest = () => null;
+    if (this.listeners[type]) this.listeners[type]({ target, preventDefault() {} });
+  }
+}
+
+function makeDocument() {
+  const ids = [
+    "list", "subList", "countLine", "updatedAt", "q", "schoolSeg", "catChips",
+    "viewLatest", "viewSub", "tabLatest", "tabSub", "subBadge", "kwForm",
+    "kwInput", "kwChips", "btnNotify", "notifyState", "btnRefresh",
+  ];
+  const elements = Object.fromEntries(ids.map((id) => [id, new FakeElement()]));
+  return {
+    elements,
+    getElementById(id) { return elements[id]; },
+    createElement() {
+      return { set src(_value) {}, onload: null, onerror: null };
+    },
+    head: { appendChild() {} },
+  };
+}
+
+function response(data, source = "network") {
+  return {
+    ok: true,
+    status: 200,
+    headers: { get(name) { return name.toLowerCase() === "x-cynews-data-source" ? source : null; } },
+    json() { return Promise.resolve(data); },
+  };
+}
+
+function dataOf(items) {
+  return {
+    generated_at: "2026-08-19T01:00:00Z",
+    schools: [{ id: "cysh", short: "嘉中" }],
+    categories: ["一般", "段考考試"],
+    items,
+  };
+}
+
+function item(id, firstSeen, title) {
+  return {
+    id, first_seen: firstSeen, title, snippet: "", category: "一般",
+    source_category: "", school: "cysh", school_name: "嘉中",
+    url: "https://example.test/" + id,
+  };
+}
+
+function makeNotification(behavior = {}) {
+  function Notification(title, options) {
+    if (behavior.throwOnCreate) throw new Error("notification failed");
+    Notification.calls.push({ title, options });
+  }
+  Notification.permission = behavior.permission || "granted";
+  Notification.calls = [];
+  Notification.requestPermission = () => Promise.resolve(Notification.permission);
+  return Notification;
+}
+
+async function flush() {
+  await new Promise((resolve) => setImmediate(resolve));
+  await new Promise((resolve) => setImmediate(resolve));
+}
+
+async function createApp({ storage, responses, notification, controller = null }) {
+  const document = makeDocument();
+  const queue = responses.slice();
+  const window = {
+    localStorage: storage,
+    document,
+    navigator: { serviceWorker: { controller, register: () => Promise.resolve() } },
+    Notification: notification,
+    setTimeout,
+    scrollTo() {},
+    addEventListener() {},
+    __CYNEWS_TEST__: true,
+  };
+  const context = vm.createContext({
+    window,
+    document,
+    localStorage: storage,
+    navigator: window.navigator,
+    Notification: notification,
+    fetch: () => {
+      const next = queue.shift();
+      return next instanceof Error ? Promise.reject(next) : Promise.resolve(next);
+    },
+    Date: FixedDate,
+    setTimeout,
+    clearTimeout,
+    console,
+  });
+  vm.runInContext(stateSource, context);
+  vm.runInContext(appSource, context);
+  await flush();
+  return { context, window, document, app: window.__cyNewsAppTest, queue };
+}
+
+function addSubscription(app, document, keyword) {
+  document.elements.kwInput.value = keyword;
+  document.elements.kwForm.emit("submit");
+}
+
+async function testRepeatedAppOpens() {
+  const storage = new MemoryStorage({ "cyNews.keywords": JSON.stringify(["考試"]) });
+  const future = item("cysh-1", "2026-08-20T00:00:00Z", "期中考試程");
+  const first = await createApp({ storage, responses: [response(dataOf([future]))], notification: makeNotification() });
+  assert.equal(first.window.Notification.calls.length, 1);
+  const secondNotification = makeNotification();
+  const second = await createApp({ storage, responses: [response(dataOf([future]))], notification: secondNotification });
+  assert.equal(secondNotification.calls.length, 0, "reopening PWA must not repeat delivery");
+}
+
+async function testRepeatedRefreshAndRender() {
+  const storage = new MemoryStorage();
+  const notification = makeNotification();
+  const appRun = await createApp({
+    storage,
+    responses: [response(dataOf([])), response(dataOf([item("a", "2026-08-20T00:00:00Z", "考試")]))],
+    notification,
+  });
+  addSubscription(appRun.app, appRun.document, "考試");
+  await appRun.app.fetchData();
+  assert.equal(notification.calls.length, 1);
+  appRun.app.renderAll();
+  assert.equal(notification.calls.length, 1, "renderAll must never notify");
+  await appRun.app.fetchData();
+  assert.equal(notification.calls.length, 1, "refreshing same data must not notify twice");
+}
+
+async function testArchiveDoesNotNotify() {
+  const storage = new MemoryStorage();
+  const notification = makeNotification();
+  const appRun = await createApp({
+    storage,
+    responses: [
+      response(dataOf([])),
+      response({ items: [item("archive-1", "2026-08-20T00:00:00Z", "社團") ] }),
+    ],
+    notification,
+  });
+  addSubscription(appRun.app, appRun.document, "社團");
+  appRun.app.ensureArchive();
+  await flush();
+  assert.equal(notification.calls.length, 0, "archive loading must never notify");
+}
+
+async function testSubscriptionBaselineAndLaterMatch() {
+  const storage = new MemoryStorage();
+  const notification = makeNotification();
+  const oldMatch = item("old", "2026-08-18T00:00:00Z", "社團公告");
+  const newMatch = item("new", "2026-08-20T00:00:00Z", "社團公告");
+  const appRun = await createApp({ storage, responses: [response(dataOf([oldMatch]))], notification });
+  addSubscription(appRun.app, appRun.document, "社團");
+  assert.match(appRun.document.elements.subList.innerHTML, /社團公告/,
+    "historical matches must remain visible after creating a subscription");
+  assert.equal(notification.calls.length, 0, "new subscriptions must not notify historical matches");
+  appRun.queue.push(response(dataOf([oldMatch, newMatch])));
+  await appRun.app.fetchData();
+  assert.equal(notification.calls.length, 1, "later matching announcements must notify");
+}
+
+async function testTwoKeywordsOneNotificationAndReadSeparate() {
+  const storage = new MemoryStorage({ "cyNews.lastSeen": "2026-08-18T00:00:00Z" });
+  const notification = makeNotification();
+  const future = item("same", "2026-08-20T00:00:00Z", "考試社團");
+  const appRun = await createApp({ storage, responses: [response(dataOf([]))], notification });
+  addSubscription(appRun.app, appRun.document, "考試");
+  addSubscription(appRun.app, appRun.document, "社團");
+  appRun.queue.push(response(dataOf([future])));
+  await appRun.app.fetchData();
+  assert.equal(notification.calls.length, 1);
+  assert.match(notification.calls[0].options.body, /有 1 則/);
+  assert.equal(storage.getItem("cyNews.lastSeen"), "2026-08-18T00:00:00Z",
+    "delivery must not mark an item read");
+  const ids = JSON.parse(storage.getItem("cyNews.notificationState")).notifiedIds;
+  assert.deepEqual(ids, ["same"]);
+}
+
+async function testTabDoesNotResetDedupe() {
+  const storage = new MemoryStorage({ "cyNews.keywords": JSON.stringify(["考試"]) });
+  const notification = makeNotification();
+  const future = item("tab-1", "2026-08-20T00:00:00Z", "考試");
+  const appRun = await createApp({ storage, responses: [response(dataOf([future])), response(dataOf([future]))], notification });
+  assert.equal(notification.calls.length, 1);
+  appRun.document.elements.tabSub.emit("click");
+  const afterTab = storage.getItem("cyNews.lastSeen");
+  assert.ok(afterTab, "subscription tab may advance UI lastSeen");
+  await appRun.app.fetchData();
+  assert.equal(notification.calls.length, 1, "tab switching must not reset notification dedupe");
+}
+
+async function testUiFiltersNeverNotify() {
+  const storage = new MemoryStorage({ "cyNews.keywords": JSON.stringify(["考試"]) });
+  const notification = makeNotification();
+  const future = item("filter-1", "2026-08-20T00:00:00Z", "考試");
+  const appRun = await createApp({
+    storage,
+    responses: [
+      response(dataOf([future])),
+      response({ items: [item("archive-filter", "2026-08-20T00:00:00Z", "考試歷史")] }),
+    ],
+    notification,
+  });
+  assert.equal(notification.calls.length, 1);
+
+  appRun.document.elements.q.value = "考試";
+  appRun.document.elements.q.emit("input");
+  await flush();
+  appRun.document.elements.schoolSeg.emit("click", {
+    target: { dataset: { school: "cysh" }, closest: () => ({ dataset: { school: "cysh" } }) },
+  });
+  appRun.document.elements.catChips.emit("click", {
+    target: { dataset: { cat: "一般" }, closest: () => ({ dataset: { cat: "一般" } }) },
+  });
+  assert.equal(notification.calls.length, 1, "search and filters must never notify");
+}
+
+async function testLegacyMigration() {
+  const legacyKeywords = JSON.stringify(["考試", "社團"]);
+  const storage = new MemoryStorage({
+    "cyNews.keywords": legacyKeywords,
+    "cyNews.lastSeen": "2026-08-18T00:00:00Z",
+  });
+  const { api } = loadStateApi(storage);
+  const state = api.load({ storage, now: new FixedDate(), idFactory: (() => {
+    let n = 0; return () => "legacy-" + (++n);
+  })() });
+  assert.equal(state.version, 2);
+  assert.deepEqual(Array.from(state.subscriptions, (s) => s.keyword), ["考試", "社團"]);
+  assert.ok(state.subscriptions.every((s) => s.createdAt === "2026-08-19T00:00:00.000Z"));
+  assert.equal(storage.getItem("cyNews.keywords"), legacyKeywords);
+  assert.equal(storage.getItem("cyNews.lastSeen"), "2026-08-18T00:00:00Z");
+  api.removeSubscription(state, state.subscriptions[0].id);
+  api.save(state, storage);
+  const reloaded = api.load({ storage });
+  assert.deepEqual(Array.from(reloaded.subscriptions, (s) => s.keyword), ["社團"],
+    "legacy keywords must not recreate deleted V2 subscriptions");
+}
+
+function testNotifiedIdsCap() {
+  const storage = new MemoryStorage();
+  const { api } = loadStateApi(storage);
+  const state = api.load({ storage, idFactory: () => "one" });
+  api.markNotified(state, Array.from({ length: 501 }, (_, i) => "id-" + i), storage);
+  assert.equal(state.notifiedIds.length, 500);
+  assert.equal(state.notifiedIds[0], "id-1");
+  assert.equal(state.notifiedIds[499], "id-500");
+}
+
+async function testCacheDoesNotNotify() {
+  const storage = new MemoryStorage({ "cyNews.keywords": JSON.stringify(["考試"]) });
+  const future = item("cached", "2026-08-20T00:00:00Z", "考試");
+  const cachedNotification = makeNotification();
+  const cached = await createApp({
+    storage,
+    responses: [response(dataOf([future]), "cache")],
+    notification: cachedNotification,
+    controller: {},
+  });
+  assert.equal(cachedNotification.calls.length, 0, "cache/offline data must not notify");
+}
+
+async function testPermissionFailureDoesNotPersist() {
+  const storage = new MemoryStorage({ "cyNews.keywords": JSON.stringify(["考試"]) });
+  const notification = makeNotification({ throwOnCreate: true });
+  await createApp({
+    storage,
+    responses: [response(dataOf([item("fail", "2026-08-20T00:00:00Z", "考試")]), "network")],
+    notification,
+  });
+  assert.deepEqual(JSON.parse(storage.getItem("cyNews.notificationState")).notifiedIds, []);
+}
+
+function testServiceWorkerContract() {
+  assert.match(swSource, /cy-news-v6/);
+  assert.match(swSource, /\.\/notification-state\.js/);
+  assert.match(swSource, /X-CyNews-Data-Source/);
+  assert.match(swSource, /markDataSource\(res, "network"\)/);
+  assert.match(swSource, /markDataSource\(hit, "cache"\)/);
+}
+
+(async function () {
+  await testRepeatedAppOpens();
+  await testRepeatedRefreshAndRender();
+  await testArchiveDoesNotNotify();
+  await testSubscriptionBaselineAndLaterMatch();
+  await testTwoKeywordsOneNotificationAndReadSeparate();
+  await testTabDoesNotResetDedupe();
+  await testUiFiltersNeverNotify();
+  await testLegacyMigration();
+  testNotifiedIdsCap();
+  await testCacheDoesNotNotify();
+  await testPermissionFailureDoesNotPersist();
+  testServiceWorkerContract();
+  console.log("PWA Notification V2 tests passed (11 acceptance areas + guards)");
+})().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
