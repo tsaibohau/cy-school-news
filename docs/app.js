@@ -282,7 +282,8 @@
           body: "有 " + candidates.length + " 則符合訂閱關鍵字的新公告",
           icon: "icons/icon-192.png",
         });
-        NotificationState.markNotified(notificationState, candidates.map(function (it) { return it.id; }));
+        /* 只有 Notification 建立成功後才寫入 IDs 與 first_seen 水位。 */
+        NotificationState.markNotified(notificationState, candidates);
       } catch (e) { /* 通知建立失敗時不可寫入 notifiedIds */ }
     }
 
