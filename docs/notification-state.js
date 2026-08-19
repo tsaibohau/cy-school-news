@@ -1,11 +1,11 @@
-/* 嘉校快訊 Local PWA Notification V2 狀態與去重邏輯 */
+/* 嘉校快訊 Local PWA Notification V3 狀態與去重邏輯 */
 (function (root) {
   "use strict";
 
   var STORAGE_KEY = "cyNews.notificationState";
   var LEGACY_KEYWORDS = "cyNews.keywords";
   var MAX_NOTIFIED_IDS = 500;
-  var VERSION = 2;
+  var VERSION = 3;
 
   function getStorage(storage) {
     return storage || root.localStorage;
@@ -30,13 +30,19 @@
     return (now || new Date()).toISOString();
   }
 
-  function makeId(now, idFactory) {
+  function makeId(idFactory) {
     if (idFactory) return String(idFactory());
     if (root.crypto && typeof root.crypto.randomUUID === "function") {
       return root.crypto.randomUUID();
     }
     return "sub-" + Date.now().toString(36) + "-" +
       Math.random().toString(36).slice(2, 10);
+  }
+
+  function parseTimestamp(value) {
+    if (typeof value !== "string" || !value.trim()) return NaN;
+    var parsed = Date.parse(value);
+    return isNaN(parsed) ? NaN : parsed;
   }
 
   function validSubscription(value) {
@@ -72,43 +78,69 @@
     return result.slice(-MAX_NOTIFIED_IDS);
   }
 
-  function normalizeState(value) {
+  function normalizeState(value, fallbackWatermark) {
+    var candidateWatermark = value && typeof value.notifiedThrough === "string"
+      ? value.notifiedThrough : "";
+    /* A corrupt localStorage value must fail closed, not disable the watermark. */
+    var watermark = !isNaN(parseTimestamp(candidateWatermark))
+      ? candidateWatermark : (fallbackWatermark || "");
     return {
       version: VERSION,
       subscriptions: normalizeSubscriptions(value && value.subscriptions),
       notifiedIds: normalizeNotifiedIds(value && value.notifiedIds),
+      notifiedThrough: watermark,
     };
+  }
+
+  function writeMigratedState(storage, subscriptions, notifiedIds, migrationAt) {
+    var migrated = {
+      version: VERSION,
+      subscriptions: normalizeSubscriptions(subscriptions),
+      notifiedIds: normalizeNotifiedIds(notifiedIds),
+      notifiedThrough: migrationAt,
+    };
+    writeJSON(storage, STORAGE_KEY, migrated);
+    return migrated;
   }
 
   function load(options) {
     options = options || {};
     var storage = getStorage(options.storage);
-    var current;
-    try { current = JSON.parse(storage.getItem(STORAGE_KEY)); } catch (e) { current = null; }
+    var migrationAt = nowISO(options.now);
+    var current = readJSON(storage, STORAGE_KEY, null);
 
-    if (current && current.version === VERSION && Array.isArray(current.subscriptions) &&
-        Array.isArray(current.notifiedIds)) {
-      var existing = normalizeState(current);
+    /* V3 is authoritative, including an empty subscriptions array. */
+    if (current && current.version === VERSION) {
+      var existing = normalizeState(current, migrationAt);
       if (JSON.stringify(existing) !== JSON.stringify(current)) {
         writeJSON(storage, STORAGE_KEY, existing);
       }
       return existing;
     }
 
+    /* V2 is migrated in place: IDs survive, and the watermark starts now. */
+    if (current && current.version === 2) {
+      return writeMigratedState(storage, current.subscriptions, current.notifiedIds, migrationAt);
+    }
+
+    /* Any prior notification-state record is authoritative; never resurrect
+       deleted subscriptions from the legacy keyword key. */
+    if (current && typeof current.version === "number" && current.version > 2) {
+      return writeMigratedState(storage, current.subscriptions, current.notifiedIds, migrationAt);
+    }
+
     var legacy = readJSON(storage, LEGACY_KEYWORDS, []);
-    var createdAt = nowISO(options.now);
     var usedIds = {};
     var subscriptions = [];
-    (Array.isArray(legacy) ? legacy : []).forEach(function (keyword, index) {
+    (Array.isArray(legacy) ? legacy : []).forEach(function (keyword) {
       if (typeof keyword !== "string" || !keyword.trim()) return;
-      var id = makeId(options.now, options.idFactory);
-      while (usedIds[id]) id = makeId(options.now, options.idFactory);
+      var id = makeId(options.idFactory);
+      while (usedIds[id]) id = makeId(options.idFactory);
       usedIds[id] = true;
-      subscriptions.push({ id: id, keyword: keyword.trim(), createdAt: createdAt });
+      subscriptions.push({ id: id, keyword: keyword.trim(), createdAt: migrationAt });
     });
-    var migrated = { version: VERSION, subscriptions: subscriptions, notifiedIds: [] };
-    writeJSON(storage, STORAGE_KEY, migrated);
-    return migrated;
+    /* Legacy keys are intentionally left untouched. */
+    return writeMigratedState(storage, subscriptions, [], migrationAt);
   }
 
   function save(state, storage) {
@@ -117,6 +149,7 @@
     state.version = normalized.version;
     state.subscriptions = normalized.subscriptions;
     state.notifiedIds = normalized.notifiedIds;
+    state.notifiedThrough = normalized.notifiedThrough;
     return state;
   }
 
@@ -129,7 +162,7 @@
     });
     if (duplicate) return null;
     var sub = {
-      id: makeId(options.now, options.idFactory),
+      id: makeId(options.idFactory),
       keyword: value,
       createdAt: nowISO(options.now),
     };
@@ -143,13 +176,6 @@
     return state.subscriptions.length !== before;
   }
 
-  function compareTime(value, baseline) {
-    var valueTime = Date.parse(value);
-    var baselineTime = Date.parse(baseline);
-    if (!isNaN(valueTime) && !isNaN(baselineTime)) return valueTime > baselineTime;
-    return String(value || "") > String(baseline || "");
-  }
-
   function defaultText(item) {
     return String(item.title || "") + " " + String(item.snippet || "") + " " +
       String(item.category || "") + " " + String(item.source_category || "");
@@ -158,14 +184,22 @@
   function findCandidates(items, state, textFn) {
     var alreadyNotified = {};
     state.notifiedIds.forEach(function (id) { alreadyNotified[id] = true; });
+    var notifiedThrough = parseTimestamp(state.notifiedThrough);
     var seen = {};
     var result = [];
     var textGetter = textFn || defaultText;
     (Array.isArray(items) ? items : []).forEach(function (item) {
-      if (!item || typeof item.id !== "string" || !item.id || seen[item.id] || alreadyNotified[item.id]) return;
-      var text = textGetter(item).toLowerCase();
+      if (!item || typeof item.id !== "string" || !item.id ||
+          seen[item.id] || alreadyNotified[item.id]) return;
+      var itemTime = parseTimestamp(item.first_seen);
+      if (isNaN(itemTime)) return;
+      var text = String(textGetter(item)).toLowerCase();
       var matches = state.subscriptions.some(function (sub) {
-        return compareTime(item.first_seen, sub.createdAt) &&
+        var createdTime = parseTimestamp(sub.createdAt);
+        if (isNaN(createdTime)) return false;
+        var boundary = isNaN(notifiedThrough)
+          ? createdTime : Math.max(createdTime, notifiedThrough);
+        return itemTime > boundary &&
           text.indexOf(sub.keyword.toLowerCase()) !== -1;
       });
       if (matches) {
@@ -176,23 +210,37 @@
     return result;
   }
 
-  function markNotified(state, ids, storage) {
+  function markNotified(state, candidates, storage) {
     var existing = normalizeNotifiedIds(state.notifiedIds);
     var seen = {};
     existing.forEach(function (id) { seen[id] = true; });
-    (Array.isArray(ids) ? ids : []).forEach(function (id) {
-      if (typeof id !== "string" || !id || seen[id]) return;
-      seen[id] = true;
-      existing.push(id);
+    var watermarkTime = parseTimestamp(state.notifiedThrough);
+    var watermark = state.notifiedThrough || "";
+    (Array.isArray(candidates) ? candidates : []).forEach(function (candidate) {
+      var id = typeof candidate === "string" ? candidate : candidate && candidate.id;
+      if (typeof id === "string" && id && !seen[id]) {
+        seen[id] = true;
+        existing.push(id);
+      }
+      if (candidate && typeof candidate === "object") {
+        var candidateTime = parseTimestamp(candidate.first_seen);
+        if (!isNaN(candidateTime) && (isNaN(watermarkTime) || candidateTime > watermarkTime)) {
+          watermarkTime = candidateTime;
+          watermark = candidate.first_seen;
+        }
+      }
     });
     state.notifiedIds = existing.slice(-MAX_NOTIFIED_IDS);
+    if (watermark) state.notifiedThrough = watermark;
     save(state, storage);
     return state.notifiedIds;
   }
 
   root.CyNewsNotificationState = {
+    VERSION: VERSION,
     STORAGE_KEY: STORAGE_KEY,
     MAX_NOTIFIED_IDS: MAX_NOTIFIED_IDS,
+    parseTimestamp: parseTimestamp,
     load: load,
     save: save,
     addSubscription: addSubscription,
