@@ -4,7 +4,14 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
-from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ, list_page_with_number, deep_stop_reason, split_recent, load_existing_items  # noqa: E402
+from scrape import (extract_items, classify, normalize_url, extract_article_snippet,
+                    extract_article_date, extract_article_title,
+                    extract_labeled_publication_date, decode_response,
+                    display_date, coverage_gaps, configured_categories, page_entries,
+                    should_fetch, TW_TZ, list_page_with_number, deep_stop_reason,
+                    split_recent, load_existing_items, merge_item_candidates,
+                    merge_item_record, title_integrity, validate_snapshot_items,
+                    validate_split_items, DataIntegrityError)  # noqa: E402
 from notify import push_topics, summarize, personal_topics, SUMMARY_THRESHOLD  # noqa: E402
 from schoolcal import build_ics, events_on  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
@@ -278,6 +285,71 @@ def run():
     assert extract_article_date(tom_article) == tomorrow, "明天(含)以內仍接受"
     print("✓ 未來日期護欄")
 
+    assert title_integrity("A clean English-only title") == 1
+    assert title_integrity("標題�") == 0
+    assert title_integrity("標題\x0b") == 0
+    assert title_integrity("cafÃ\xA9") == 0
+    clean = {"id": "x", "title": "乾淨標題", "title_source": "persisted",
+             "source_category": "一般", "date": "2026-08-01",
+             "date_source": "persisted"}
+    corrupt = {"id": "x", "title": "標題�", "title_source": "list",
+               "source_category": "一般", "date": "2026-08-02",
+               "date_source": "list"}
+    merged = merge_item_record(clean, corrupt)
+    assert merged["title"] == "乾淨標題"
+    assert merged["date"] == "2026-08-01"
+    article = "<html><head><meta property='og:title' content='權威乾淨標題'></head></html>"
+    assert extract_article_title(article) == "權威乾淨標題"
+    assert extract_labeled_publication_date("作者 : A 發佈日期 : 2026-07-01") == "2026-07-01"
+    assert classify("一般標題", "考試訊息") == "段考考試"
+    print("✓ 標題完整性、權威標題與分類優先序")
+
+    class FakeResponse:
+        headers = {"Content-Type": "text/html; charset=UTF-8"}
+        content = "中文標題".encode("utf-8")
+    assert decode_response(FakeResponse()) == "中文標題"
+    class Big5Response:
+        headers = {"Content-Type": "text/html; charset=big5"}
+        content = "中文標題".encode("big5")
+    assert decode_response(Big5Response()) == "中文標題"
+    print("✓ HTTP charset 解碼")
+
+    school_for_merge = {"id": "cysh", "unit": "1008", "list_pages": [
+        "https://x/p/403-1008-18-1.php",
+        "https://x/p/403-1008-401-1.php"]}
+    candidates = [
+        {"id": "cysh-134736", "title": "公告", "title_source": "list",
+         "source_category": "校外獎學金", "source_category_rank": 0,
+         "date": "2026-03-20", "date_source": "list"},
+        {"id": "cysh-134736", "title": "公告", "title_source": "list",
+         "source_category": "獎助學金", "source_category_rank": 1,
+         "date": "2026-03-20", "date_source": "list"},
+    ]
+    one = merge_item_candidates(candidates)
+    two = merge_item_candidates(list(reversed(candidates)))
+    assert one["cysh-134736"]["source_category"] == two["cysh-134736"]["source_category"]
+    assert merge_item_record({"source_category": "校外獎學金"}, candidates[1])["source_category"] == "獎助學金"
+    assert school_for_merge["id"] == "cysh"  # keep fixture intent explicit
+    print("✓ source_category 合併順序穩定與修正路徑")
+
+    base = [{"id": "old", "title": "old"}]
+    try:
+        validate_snapshot_items(base + [{"id": "new"}], {"old"}, 1)
+        raise AssertionError("超過 max_items 應中止")
+    except DataIntegrityError:
+        pass
+    try:
+        validate_split_items([], [], {"old"}, 10)
+        raise AssertionError("空快照應中止")
+    except DataIntegrityError:
+        pass
+    try:
+        validate_snapshot_items([{"id": "new"}], {"old"}, 10)
+        raise AssertionError("既有 ID 遺失應中止")
+    except DataIntegrityError:
+        pass
+    print("✓ max_items 與歷史 ID fail-closed 護欄")
+
     import json as _json
     import tempfile
     with tempfile.TemporaryDirectory() as td:
@@ -293,6 +365,12 @@ def run():
         assert merged["x"]["title"] == "新版", "同 id 以近期檔為準"
         assert load_existing_items(dp, Path(td) / "無此檔.json")["y"]["title"] == "只在近期", \
             "封存檔不存在時要能正常運作"
+        ap.write_text("", encoding="utf-8")
+        try:
+            load_existing_items(dp, ap)
+            raise AssertionError("既有空資料檔應 fail closed")
+        except DataIntegrityError:
+            pass
     print("✓ 既有資料載入(近期+封存)")
 
     return ok

@@ -14,6 +14,7 @@ import json
 import os
 import re
 import sys
+import tempfile
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -62,8 +63,113 @@ CATEGORY_SLUGS = {
     "研習活動": "event", "招生編班": "enroll", "行政公告": "admin", "一般": "general",
 }
 
+# A title is considered damaged only when there is positive evidence of a
+# decoding problem.  Plain ASCII/English is deliberately not rejected.
+MOJIBAKE_MARKER_RE = re.compile(
+    r"(?:[ÃÂâð][\x80-\xBF]|(?:[æåçèé][\x80-\xBF]){2,})"
+)
+CONTROL_RE = re.compile(r"[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]")
 
-def classify(text: str) -> str:
+DATE_SOURCE_RANK = {
+    "": 0,
+    "first_seen": 1,
+    "list": 2,
+    "persisted": 3,
+    "publication": 4,
+}
+
+TITLE_SOURCE_RANK = {"": 0, "list": 1, "persisted": 2, "article": 3}
+
+SOURCE_CATEGORY_ALIASES = {
+    "考試訊息": "段考考試",
+    "考試": "段考考試",
+    "升學資訊": "升學",
+    "獎助": "獎助學金",
+    "活動訊息": "研習活動",
+}
+
+
+class DataIntegrityError(RuntimeError):
+    """Raised when a scraper run would replace a valid snapshot with bad data."""
+
+
+def normalize_title(title: str) -> str:
+    """Normalize display whitespace without repairing or guessing characters."""
+    return re.sub(r"\s+", " ", title or "").strip()
+
+
+def title_integrity(title: str) -> int:
+    """Return 1 for a title with no deterministic corruption evidence, else 0."""
+    title = title or ""
+    if not title or "\ufffd" in title or CONTROL_RE.search(title):
+        return 0
+    return 0 if MOJIBAKE_MARKER_RE.search(title) else 1
+
+
+def _title_candidate_is_better(candidate: dict, current: dict) -> bool:
+    c_title, p_title = candidate.get("title", ""), current.get("title", "")
+    c_clean, p_clean = title_integrity(c_title), title_integrity(p_title)
+    if c_clean != p_clean:
+        return c_clean > p_clean
+    c_rank = TITLE_SOURCE_RANK.get(candidate.get("title_source", ""), 0)
+    p_rank = TITLE_SOURCE_RANK.get(current.get("title_source", ""), 0)
+    if c_rank != p_rank:
+        return c_rank > p_rank
+    return candidate.get("title", "") < current.get("title", "")
+
+
+def _category_rank(school: dict, source_url: str) -> int:
+    """Return a stable, explainable source priority independent of crawl order."""
+    pages = list_page_urls(school)
+    normalized = normalize_url(source_url)
+    for index, page in enumerate(pages):
+        if normalize_url(page) == normalized:
+            return index
+    match = re.search(r"/p/403-[^-]+-(\d+)-\d+\.php", source_url or "")
+    return 100000 + int(match.group(1)) if match else 1000000
+
+
+def _source_candidate_is_better(candidate: dict, current: dict) -> bool:
+    c = candidate.get("source_category", "")
+    p = current.get("source_category", "")
+    if not c:
+        return False
+    if not p:
+        return True
+    cr = candidate.get("source_category_rank", 1000000)
+    pr = current.get("source_category_rank", 1000000)
+    return (cr, c) < (pr, p)
+
+
+def _date_source(item: dict, default: str = "") -> str:
+    source = item.get("date_source") or default
+    if not source and item.get("date"):
+        # Old snapshots have no provenance.  Treating their date as persisted
+        # is the safe compatibility behavior requested for Phase 1.5.
+        return "persisted"
+    return source
+
+
+def _date_candidate_is_better(candidate: dict, current: dict) -> bool:
+    c_date, p_date = candidate.get("date", ""), current.get("date", "")
+    if not c_date:
+        return False
+    c_source = _date_source(candidate)
+    p_source = _date_source(current)
+    cr, pr = DATE_SOURCE_RANK.get(c_source, 0), DATE_SOURCE_RANK.get(p_source, 0)
+    if cr != pr:
+        return cr > pr
+    if c_source == "list" and p_source == "list":
+        return c_date > p_date
+    return False
+
+
+def classify(text: str, source_category: str = "") -> str:
+    """Classify deterministically, using a confirmed source category first."""
+    source_category = (source_category or "").strip()
+    source_alias = SOURCE_CATEGORY_ALIASES.get(source_category, source_category)
+    if source_alias in CATEGORY_SLUGS and source_alias != "一般":
+        return source_alias
     for cat, keywords in CATEGORY_RULES:
         if any(k in text for k in keywords):
             return cat
@@ -131,9 +237,7 @@ def extract_items(html: str, school: dict, source_url: str):
         art_id = m.group(1)
         if art_id in seen:
             continue
-        title = a.get_text(" ", strip=True)
-        # 官網 HTML 偶有 \x0b 等隱形空白字元,一律壓成單一空格
-        title = re.sub(r"\s+", " ", title).strip()
+        title = normalize_title(a.get_text(" ", strip=True))
         if not title or len(title) < 4 or title in ("MORE", "更多"):
             continue
         seen.add(art_id)
@@ -146,11 +250,76 @@ def extract_items(html: str, school: dict, source_url: str):
             "title": title,
             "url": url,
             "date": date,
+            "date_source": "list" if date else "",
             # 文章網址裡的 ,rXXX 分類編號,供覆蓋率哨兵比對用
             "cat_ref": m.group(2) or "",
             "source_category": src_cat if "403-" in source_url else "",
+            "source_category_rank": (_category_rank(school, source_url)
+                                      if src_cat and "403-" in source_url else 1000000),
+            "title_source": "list",
         })
     return items
+
+
+def merge_item_candidates(candidates: list, existing: dict = None) -> dict:
+    """Merge same-ID list candidates without depending on traversal order.
+
+    ``existing`` is optional and is used only as a persisted baseline.  The
+    returned records are newly assembled dictionaries so callers can validate
+    them before mutating or writing any snapshot.
+    """
+    merged = {}
+    for candidate in candidates:
+        if not candidate or not candidate.get("id"):
+            continue
+        current = merged.get(candidate["id"])
+        if current is None:
+            merged[candidate["id"]] = dict(candidate)
+            continue
+        if _title_candidate_is_better(candidate, current):
+            current["title"] = candidate.get("title", "")
+            current["title_source"] = candidate.get("title_source", "list")
+        if _source_candidate_is_better(candidate, current):
+            current["source_category"] = candidate.get("source_category", "")
+            current["source_category_rank"] = candidate.get("source_category_rank", 1000000)
+        if _date_candidate_is_better(candidate, current):
+            current["date"] = candidate.get("date", "")
+            current["date_source"] = candidate.get("date_source", "list")
+
+    if existing:
+        for item_id, old in existing.items():
+            if item_id in merged:
+                merged[item_id] = merge_item_record(old, merged[item_id])
+    return merged
+
+
+def merge_item_record(old: dict, candidate: dict) -> dict:
+    """Merge a current candidate into persisted data using provenance ranks."""
+    result = dict(old)
+    old_title = {"title": result.get("title", ""),
+                 "title_source": result.get("title_source", "persisted")}
+    new_title = {"title": candidate.get("title", ""),
+                 "title_source": candidate.get("title_source", "list")}
+    if _title_candidate_is_better(new_title, old_title):
+        result["title"] = new_title["title"]
+        result["title_source"] = new_title["title_source"]
+    elif "title_source" not in result and result.get("title"):
+        result["title_source"] = "persisted"
+
+    old_source = {"source_category": result.get("source_category", ""),
+                  "source_category_rank": result.get("source_category_rank", 1000000)}
+    if _source_candidate_is_better(candidate, old_source):
+        result["source_category"] = candidate["source_category"]
+        result["source_category_rank"] = candidate.get("source_category_rank", 1000000)
+
+    old_date = {"date": result.get("date", ""),
+                "date_source": _date_source(result)}
+    if _date_candidate_is_better(candidate, old_date):
+        result["date"] = candidate["date"]
+        result["date_source"] = _date_source(candidate)
+    elif result.get("date") and "date_source" not in result:
+        result["date_source"] = "persisted"
+    return result
 
 
 def list_page_urls(school: dict) -> list:
@@ -284,6 +453,35 @@ def extract_article_snippet(html: str, title: str) -> str:
         return ""
 
 
+def extract_article_title(html: str) -> str:
+    """Extract a title only from explicit article-title metadata/elements."""
+    try:
+        soup = BeautifulSoup(html, "html.parser")
+        candidates = []
+        meta = soup.find("meta", attrs={"property": "og:title"})
+        if meta and meta.get("content"):
+            candidates.append(meta["content"])
+        for selector in ("h1", ".mpgtitle", ".mtitle"):
+            node = soup.select_one(selector)
+            if node:
+                candidates.append(node.get_text(" ", strip=True))
+        for value in candidates:
+            value = normalize_title(value)
+            if value and value.lower() not in {"test", "home", "首頁"}:
+                return value
+    except Exception:
+        pass
+    return ""
+
+
+def extract_labeled_publication_date(text: str) -> str:
+    """Extract only an explicitly labelled publication date from persisted text."""
+    m = PUB_DATE_RE.search(text or "")
+    if not m:
+        return ""
+    return _fmt_valid_date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+
+
 def extract_article_date(html: str) -> str:
     """從 406 文章頁抽出公告日期,依優先序:
     1.「發佈日期 : YYYY-MM-DD」標籤  2. class 含 mdate 的元素  3. 內文第一個日期
@@ -307,15 +505,78 @@ def extract_article_date(html: str) -> str:
         return ""
 
 
+def decode_response(response) -> str:
+    """Decode response bytes using a validated HTTP charset declaration."""
+    content_type = response.headers.get("Content-Type", "")
+    match = re.search(r"charset\s*=\s*[\"']?([\w.-]+)", content_type, re.I)
+    candidates = []
+    if match:
+        candidates.append(match.group(1).lower())
+    candidates.extend(["utf-8", "big5", "cp950", "gb18030"])
+    seen = set()
+    for encoding in candidates:
+        if encoding in seen:
+            continue
+        seen.add(encoding)
+        try:
+            decoded = response.content.decode(encoding, errors="strict")
+        except (LookupError, UnicodeDecodeError):
+            continue
+        if "\ufffd" not in decoded:
+            return decoded
+    return response.content.decode("utf-8", errors="replace")
+
+
 def fetch(session: requests.Session, url: str) -> str:
     resp = session.get(url, timeout=CONFIG["timeout_sec"])
     resp.raise_for_status()
-    resp.encoding = resp.apparent_encoding or "utf-8"
-    return resp.text
+    return decode_response(resp)
+
+
+def validate_snapshot_items(items: list, previous_ids: set, max_items: int):
+    """Fail closed before a snapshot can lose IDs or become malformed."""
+    if not isinstance(items, list) or not items:
+        raise DataIntegrityError("拒絕寫入空公告快照")
+    ids = [it.get("id") for it in items if isinstance(it, dict)]
+    if len(ids) != len(items) or any(not item_id for item_id in ids):
+        raise DataIntegrityError("拒絕寫入含無效公告 ID 的快照")
+    if len(set(ids)) != len(ids):
+        raise DataIntegrityError("拒絕寫入含重複 Stable ID 的快照")
+    if len(items) > max_items:
+        raise DataIntegrityError(
+            f"公告總數 {len(items)} 超過 max_items={max_items}，為避免靜默遺失歷史資料而中止")
+    missing = set(previous_ids) - set(ids)
+    if missing:
+        raise DataIntegrityError(
+            f"公告快照將遺失 {len(missing)} 個既有 Stable ID，拒絕覆寫")
+
+
+def validate_split_items(recent: list, archived: list, previous_ids: set,
+                         max_items: int):
+    all_items = list(recent) + list(archived)
+    validate_snapshot_items(all_items, previous_ids, max_items)
+
+
+def atomic_write_json(path: Path, payload):
+    """Write a validated JSON payload without exposing a partial file."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp",
+                                     dir=path.parent)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
+            json.dump(payload, handle, ensure_ascii=False, indent=1)
+            handle.write("\n")
+        os.replace(temp_name, path)
+    except Exception:
+        try:
+            os.unlink(temp_name)
+        except OSError:
+            pass
+        raise
 
 
 def load_existing_items(data_path: Path, archive_path: Path) -> dict:
-    """讀回既有資料(封存 + 近期)合併成 by_id;檔案缺失或壞損視為空。
+    """讀回既有資料(封存 + 近期)合併成 by_id;壞損檔案直接 fail closed。
 
     兩個檔都必須讀:若只讀 announcements.json,封存項目不會進 by_id,
     輸出時就從資料集中永久消失,而仍掛在分類頁第一頁的舊公告則會被
@@ -327,9 +588,13 @@ def load_existing_items(data_path: Path, archive_path: Path) -> dict:
             continue
         try:
             data = json.loads(p.read_text(encoding="utf-8"))
-        except Exception:
-            continue
-        for it in data.get("items", []):
+        except Exception as exc:
+            raise DataIntegrityError(f"既有資料檔無法解析，拒絕覆寫: {p}: {exc}") from exc
+        if not isinstance(data, dict) or not isinstance(data.get("items"), list):
+            raise DataIntegrityError(f"既有資料檔結構無效，拒絕覆寫: {p}")
+        for it in data["items"]:
+            if not isinstance(it, dict) or not it.get("id"):
+                raise DataIntegrityError(f"既有資料檔含無效公告，拒絕覆寫: {p}")
             by_id[it["id"]] = it
     return by_id
 
@@ -370,7 +635,7 @@ def main() -> int:
               f"截止日 {DEEP_CRAWL_CUTOFF};忽略分級抓取全部來源")
 
     for school in CONFIG["schools"]:
-        collected = {}
+        candidate_lists = {}
         scan_pages = list(school.get("scan_pages", []))
         entries = [(u, "hot") for u in scan_pages] + page_entries(school)
         scanned_items = []
@@ -390,12 +655,7 @@ def main() -> int:
             if page_url in scan_pages:
                 scanned_items += page_items
             for it in page_items:
-                prev = collected.get(it["id"])
-                # 列表頁的 source_category 優先於首頁掃描
-                if prev is None or (not prev.get("source_category") and it.get("source_category")):
-                    if prev and prev.get("date") and not it.get("date"):
-                        it["date"] = prev["date"]
-                    collected[it["id"]] = it
+                candidate_lists.setdefault(it["id"], []).append(it)
             time.sleep(delay)
 
             # 深度回補:對 403 分類頁繼續抓第 2、3…頁
@@ -410,14 +670,16 @@ def main() -> int:
                         break
                     time.sleep(delay)
                     deep_items = extract_items(deep_html, school, deep_url)
-                    reason = deep_stop_reason(deep_items, set(collected))
+                    reason = deep_stop_reason(deep_items, set(candidate_lists))
                     if reason in ("無公告", "整頁重複"):
                         break
                     for it in deep_items:
-                        collected.setdefault(it["id"], it)
+                        candidate_lists.setdefault(it["id"], []).append(it)
                     if reason == "早於截止日":
                         break
 
+        collected = merge_item_candidates(
+            [it for candidates in candidate_lists.values() for it in candidates])
         new_for_school = [it for iid, it in collected.items() if iid not in known_ids]
         new_for_school.sort(key=lambda x: x.get("date") or "", reverse=True)
 
@@ -431,13 +693,19 @@ def main() -> int:
         for it in snippet_targets:
             try:
                 html = fetch(session, it["url"])
+                article_title = extract_article_title(html)
+                if article_title and title_integrity(article_title):
+                    it["title"] = article_title
+                    it["title_source"] = "article"
                 it["snippet"] = extract_article_snippet(html, it["title"])
                 if not it["snippet"]:
                     it["snippet_tried"] = True
-                if not it.get("date"):
-                    it["date"] = extract_article_date(html)
-                    if not it["date"]:
-                        it["date_tried"] = True
+                article_date = extract_article_date(html)
+                if article_date:
+                    it["date"] = article_date
+                    it["date_source"] = "publication"
+                elif not it.get("date"):
+                    it["date_tried"] = True
                 fetched_this_run.add(it["id"])
             except Exception as e:
                 print(f"[warn] 內文抓取失敗 {it['url']}: {e}", file=sys.stderr)
@@ -445,18 +713,24 @@ def main() -> int:
             time.sleep(delay)
 
         for it in collected.values():
-            base_text = it["title"] + " " + it.get("source_category", "")
             if it["id"] in known_ids:
                 old = by_id[it["id"]]
-                # 保留舊資料的 first_seen / snippet,更新可能修訂過的標題與分類來源
-                old["title"] = it["title"]
-                if it.get("source_category"):
-                    old["source_category"] = it["source_category"]
-                if it.get("date"):
-                    old["date"] = it["date"]
-                old["category"] = classify(old["title"] + " " + old.get("source_category", ""))
+                published = extract_labeled_publication_date(old.get("snippet", ""))
+                if published:
+                    it = dict(it)
+                    it["date"] = published
+                    it["date_source"] = "publication"
+                merged = merge_item_record(old, it)
+                if it.get("snippet") and not old.get("snippet"):
+                    merged["snippet"] = it["snippet"]
+                merged["category"] = classify(
+                    merged.get("title", "") + " " + merged.get("source_category", ""),
+                    merged.get("source_category", ""))
+                by_id[it["id"]] = merged
             else:
-                it["category"] = classify(base_text)
+                it["category"] = classify(
+                    it["title"] + " " + it.get("source_category", ""),
+                    it.get("source_category", ""))
                 it["first_seen"] = now_iso
                 it.setdefault("snippet", "")
                 by_id[it["id"]] = it
@@ -528,7 +802,7 @@ def main() -> int:
     items = list(by_id.values())
     items.sort(key=lambda x: (display_date(x), x.get("first_seen") or ""),
                reverse=True)
-    items = items[: CONFIG["max_items"]]
+    validate_snapshot_items(items, known_ids, CONFIG["max_items"])
 
     # 資料分層:近一年的放 announcements.json(開站即載),其餘放 archive.json
     # (前端搜尋時才背景載入),兩檔合起來仍是完整資料。
@@ -544,26 +818,24 @@ def main() -> int:
         "category_slugs": CATEGORY_SLUGS,
         "items": recent,
     }
-    data_path.parent.mkdir(parents=True, exist_ok=True)
-    data_path.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-
-    archive_path.write_text(json.dumps(
-        {"generated_at": now_iso, "hot_cutoff": hot_cutoff, "items": archived},
-        ensure_ascii=False, indent=1), encoding="utf-8")
+    archive_out = {"generated_at": now_iso, "hot_cutoff": hot_cutoff,
+                   "items": archived}
+    validate_split_items(recent, archived, known_ids, CONFIG["max_items"])
+    atomic_write_json(data_path, out)
+    atomic_write_json(archive_path, archive_out)
 
     all_new.sort(key=lambda x: x.get("date") or "", reverse=True)
-    new_items_path.write_text(json.dumps(all_new, ensure_ascii=False, indent=1),
-                              encoding="utf-8")
+    atomic_write_json(new_items_path, all_new)
 
     # 注意:這裡刻意不寫入時間戳。這個檔案由 Actions 一起提交,
     # 若每輪內容都變動,就會每天產生 4 個沒有實質差異的 commit。
     gaps_path = ROOT / CONFIG.get("coverage_gaps_path", "scraper/coverage_gaps.json")
-    gaps_path.write_text(json.dumps(
-        {"note": "首頁出現、但所屬分類的列表頁不在 config 的公告。"
-                 "把 list_page 加進 config.json 即可收錄;"
-                 "確定不要的分類請加進 config.json 的 coverage_ignore。"
-                 "檢查時間見本檔的 git 提交紀錄。",
-         "gaps": all_gaps}, ensure_ascii=False, indent=1), encoding="utf-8")
+    atomic_write_json(gaps_path, {
+        "note": "首頁出現、但所屬分類的列表頁不在 config 的公告。"
+                "把 list_page 加進 config.json 即可收錄;"
+                "確定不要的分類請加進 config.json 的 coverage_ignore。"
+                "檢查時間見本檔的 git 提交紀錄。",
+        "gaps": all_gaps})
     if all_gaps:
         print(f"[warn] 發現 {len(all_gaps)} 個未收錄分類,詳見 {gaps_path}",
               file=sys.stderr)
