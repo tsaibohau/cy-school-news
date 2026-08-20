@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-08-20T17:56:07+08:00",
+ "generated_at": "2026-08-20T19:04:45+08:00",
  "schools": [
   {
    "id": "cysh",
@@ -9035,7 +9035,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202601-00000025 Fortinet 針對 FortiCloud SSO發布重大資安漏洞公告(CVE-2026-24858，CVSS：9.8)，此為身分驗證繞過漏洞，允許擁有FortiCloud帳號和已註冊設備的攻擊者，登入註冊到其他帳號的其他設備。 備註：目前Fortinet已觀察到有攻擊者利用此漏洞，建議儘速採取暫時緩解措施，以防止針對此漏洞可能的攻擊發生。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] FortiAnalyzer 7.6.0至7.6.5版本 FortiAnalyzer 7.4.0至7.4.9版本 FortiAnalyzer 7.2.0至7.2.11版本 FortiAnalyzer 7.0.0至7.0.15版本 FortiManager 7.6.0至7.6.5版本 FortiManager 7.4.0至7.4.9版本 FortiManager 7.2.0至7.2.11版本 FortiManager 7.0.0至7.0.15版本 FortiOS 7.6.0至7.6.5版本 FortiOS 7.4.0至7.4.10版本 FortiOS 7.2.0至7.2.12版本 FortiOS 7.0.0至7.0.18版本 FortiProxy 7.6.0至7.6.4版本 FortiProxy 7.4.0至7.4.12版本 FortiProxy 7.2所有版本 FortiProxy 7.0所有版本 [建議措施:] 請更新至以下版本： FortiAnalyzer 7.6.6(含)之後版本 FortiAnalyzer 7.4.10(含)之後版本 FortiAnalyzer 7.2.12(含)之後版本 FortiAnalyzer 7.0.16(含)之後版本 FortiManager 7.6.6(含)之後版本 FortiManager 7.4.10(含)之後版本 FortiManager 7.2.13(含)之後版本 FortiManager 7.0.16(含)之後版本 FortiOS 7.6.6(含)之後版本 FortiOS 7.4.11(含)之後版本 FortiOS 7.2.13(含)之後版本 FortiOS 7.0.19(含)之後版本 FortiPro",
+   "date_tried": true
   },
   {
    "id": "cygsh-186130",
@@ -9047,7 +9048,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-400-202601-00000012 資安院近期接獲外部情資，攻擊者以「修正就業安定基金收支保管及運用辦法第5條條文」為由，寄送含惡意下載連結之社交工程釣魚郵件，誘導收件者點擊郵件內釣魚連結並下載惡意檔案。 建議貴單位加強防範與通知各單位提高警覺，避免點擊該郵件帳號寄送之信件、釣魚連結與附檔，以免受駭。 已知攻擊相關郵件特徵如下： 1.駭客利用之寄件帳號：「executive_yuan@boitedebijou.com.tw」、「executive-yuan@boitedebijou.com.tw」 2.主旨：「修正「就業安定基金收支保管及運用辦法」第5條條文」 3.相關惡意連結：hxxps://www[.]boitedebijou[.]com[.]tw/Mns/populace/EYG/e_detail[.]do?metaid=162736&accesskey_c=3447 4.惡意檔案名稱：「1140202422A.rar」、「1140202422A.chm」 5.相關惡意中繼站：79[.]108[.]224[.]222 6.惡意檔案SHA1雜湊值：73281aa5a69f2d39aa5f6e08868073a24020d677、 599217201b4db537db681a21d6115d33289eb965 註：相關網域名稱為避免誤點觸發連線，故以「[.]」區隔。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] N/A [建議措施:] 1.網路管理人員請參考受駭偵測指標，確實更新防火牆，阻擋惡意中繼站。 2.建議留意可疑電子郵件，注意郵件來源正確性，勿開啟不明來源之郵件與相關附檔。 3.安裝防毒軟體並更新至最新病毒碼，開啟檔案前使用防毒軟體掃描郵件附檔，並確認附檔檔案類型，若發現檔案名稱中存在異常字元(如lnk, rcs, exe, moc等可執行檔案附檔名的逆排序)，請提高警覺。 4.加強內部宣導，提升人員資安意識，以防範駭客利用電子郵件進行社交工程攻擊。 [參考資料:] 附件-社交工程攻擊_IOC：https://cert.tanet.edu.tw/pdf/social_ioc_0128.csv",
+   "date_tried": true
   },
   {
    "id": "cygsh-186132",
@@ -9059,7 +9061,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202512-00000198 研究人員發現7-Zip存在連結追蹤(Link Following)漏洞(CVE-2025-55188)。 未經身分鑑別之本機端攻擊者可利用此漏洞寫入任意檔案。該漏洞目前已遭駭客利用，請儘速確認並進行修補。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] 7-Zip 25.01(不含)以下版本 [建議措施:] 更新7-Zip至25.01(含)以上版本 [參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-55188",
+   "date_tried": true
   },
   {
    "id": "cygsh-186133",
@@ -9071,7 +9074,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "轉發 國家資安資訊分享與分析中心 NISAC-200-202510-00000308 研究人員發現Windows SMB用戶端存在NTLM反射(NTLM Reflection)漏洞(CVE-2025-33073)。取得一般使用者權限之遠端攻擊者，可透過執行惡意腳本，迫使SMB用戶端與攻擊者控制之SMB伺服器連線並進行身分鑑別，由於SMB用戶端在驗證階段存在缺陷，攻擊者可藉此繞過安全檢核以提升至系統權限，進而控制用戶端系統。該漏洞已遭駭客利用，請儘速確認並進行修補。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] ● Windows Server 2025 (Server Core installation) ● Windows Server 2025 ● Windows Server 2022, 23H2 Edition (Server Core installation) ● Windows Server 2022 (Server Core installation) ● Windows Server 2022 ● Windows Server 2019 (Server Core installation) ● Windows Server 2019 ● Windows Server 2016 (Server Core installation) ● Windows Server 2016 ● Windows Server 2012 R2 (Server Core installation) ● Windows Server 2012 R2 ● Windows Server 2012 (Server Core installation) ● Windows Server 2012 ● Windows Server 2008 R2 for x64-based Systems Service Pack 1 (Server Core installation) ● Windows Server 2008 R2 for x64-based Systems Service Pack 1 ● Windows Server 2008 for x64-based Systems Service Pack 2 (Server Core installati",
+   "date_tried": true
   },
   {
    "id": "cygsh-186134",
@@ -9083,7 +9087,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202510-00000013 【傑印資訊｜筆硯公文管理系統 - Arbitrary File Upload】(CVE-2025-11948，CVSS：9.8) 傑印資訊開發之筆硯公文管理系統存在Arbitrary File Upload漏洞，未經身分鑑別之遠端攻擊者可上傳並執行網頁後門程式，進而於伺服器端執行任意程式碼。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] 筆硯公文管理系統 [建議措施:] 請聯繫廠商進行更新 [參考資料:] https://www.twcert.org.tw/tw/cp-132-10452-72cb6-1.html",
+   "date_tried": true
   },
   {
    "id": "cygsh-174509",
@@ -9095,7 +9100,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "研究人員發現TP-Link路由器存在2項高風險安全漏洞(CVE-2023-50224與CVE-2025-9377)，類型分別為敏感資訊洩露(Exposure of Sensitive Information)與作業系統指令注入(OS command Injection)，前者可使未經身分鑑別之同網域攻擊者透過httpd服務取得設備管理者帳號通行碼，進而控制設備。後者可使已取得管理權限之遠端攻擊者注入任意作業系統指令並於設備上執行。此2項漏洞皆已遭駭客利用，請儘速確認並進行修補。 受影響之產品以及其韌體版本如下： TL-WR841N TL-WR841N/ND (MS) V9韌體241108以前版本(不再支援更新) Archer C7 (EU)之V2韌體241108以前版本(不再支援更新) 處置建議 官方已針對漏洞釋出修復更新，請參考官方說明，網址如下： https://www.tp-link.com/en/support/download/tl-wr841n/v12/#Firmware EOL (End-of-Life)之產品因無法取得更新，建議優先更換新設備，或依官方公告安裝修補程式 https://www.tp-link.com/us/support/faq/4308/",
+   "date_tried": true
   },
   {
    "id": "cygsh-174283",
@@ -9107,7 +9113,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202507-00000009 【帝緯系統整合｜公文製作跨瀏覽器元件 - Remote Code Execution】(CVE-2025-7620，CVSS：8.8) 帝緯系統整合製作之公文製作跨瀏覽器元件存在 Remote Code Execution漏洞，若使用者在該元件啟用的情況下瀏覽惡意網站，遠端攻擊者可使其下載任意程式並執行。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] 公文製作跨瀏覽器元件v1.6.8(含)以前版本 [建議措施:] 聯繫廠商進行更新 [參考資料:] https://www.twcert.org.tw/tw/cp-132-10241-2ec07-1.html",
+   "date_tried": true
   },
   {
    "id": "cygsh-174290",
@@ -9119,7 +9126,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202507-00000011 1.【CVE-2025-41236，CVSS：9.3】 VMware ESXi、Workstation 和 Fusion 的 VMXNET3 虛擬網路介面卡存在整數溢位漏洞。 2.【CVE-2025-41237，CVSS：9.3】 VMware ESXi、 Workstation 和 Fusion 的 VMCI 存在整數下溢漏洞，可能導致越界寫入。 3.【CVE-2025-41238，CVSS：9.3】 VMware ESXi、Workstation 和 Fusion 的 PVSCSI 控制器存在堆疊溢位漏洞，可能導致越界寫入。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] ● VMware Cloud Foundation ● VMware vSphere Foundation ● VMware ESXi ● VMware Workstation Pro ● VMware Fusion ● VMware Tools ● VMware Telco Cloud Platform ● VMware Telco Cloud Infrastructure [建議措施:] 根據官方網站釋出的解決方式進行修補： https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/35877 [參考資料:] https://www.twcert.org.tw/tw/cp-169-10250-08712-1.html",
+   "date_tried": true
   },
   {
    "id": "cygsh-174286",
@@ -9131,7 +9139,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "以Chromium為基礎之瀏覽器存在安全漏洞(CVE-2025-5419)，請儘速確認並進行修補",
+   "date_tried": true
   },
   {
    "id": "cygsh-174287",
@@ -9143,7 +9152,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "ASUS RT-AX55無線路由器存在安全漏洞(CVE-2023-39780)，請儘速確認並進行修補",
+   "date_tried": true
   },
   {
    "id": "cygsh-174289",
@@ -9155,7 +9165,8 @@
    "source_category": "資訊安全訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202505-00000019 Vmware vCenter Server是一套中心化管理平台，用於管理Vmware vSphere環境中的所有虛擬機、虛擬化基礎架構，提升管理效率與便利性。日前Broadcom發布重大資安漏洞公告(CVE-2025-41225，CVSS：8.8)，此為已驗證的命令執行漏洞，允許具有建立或修改權限的攻擊者，透過腳本執行任意命令，進而在vCenter Server執行未經授權的操作。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] ● vCenter Server 8.0 版本 ● vCenter Server 7.0 版本 ● VMware Cloud Foundation (vCenter) 5.x 版本 ● VMware Cloud Foundation (vCenter) 4.5.x 版本 ● VMware Telco Cloud Platform (vCenter) 5.x 版本 ● VMware Telco Cloud Platform (vCenter) 4.x 版本 ● VMware Telco Cloud Platform (vCenter) 3.x 版本 ● VMware Telco Cloud Platform (vCenter) 2.x 版本 ● VMware Telco Cloud Infrastructure (vCenter) 3.x 版本 ● VMware Telco Cloud Infrastructure (vCenter) 2.x 版本 [建議措施:] 請至官方網站進行修補：https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/25717 [參考資料:] https://www.twcert.org.tw/tw/cp-169-10131-b5f54-1.html",
+   "date_tried": true
   },
   {
    "id": "cysh-136178",
@@ -11230,7 +11241,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 高瞻雙語班 發佈日期 : 2026-08-06 115學年度【雙語實驗班】【半導體實驗班】成班名單 一、【雙語實驗班】成班名單詳如下方附加檔案 。 【備註】 1. 雙語實驗班甄選方式: 115年國中教育會考英文 A+、數學與自然兩科成績皆須達 A（含）以上始具資格。 符合資格者，同分參酌項目依序為「英文＋數學+自然」→英文→自然→數學→各科成績(不含寫作測驗)對照點數總分數→國文→社會→寫作測驗對照點數順序參酌，高分者優先錄取，擇優錄取32名。 2. 正取排序依新生報到序號，非關成績高低。 二、 【半導體實驗班】成班名單詳如下方附加檔案 。 【備註】 1. 半導體實驗班甄選方式: 115年國中教育會考數學與自然兩科成績皆須達 A（含）以上始具資格。 符合資格者，同分參酌項目依序為「數學+自然」→數學→自然→各科成績(不含寫作測驗)對照點數總分數→英文→嘉義區免試入學總積分，高分者優先錄取，本班核定人數以32人為限。 2. 正取排序依新生報到序號，非關成績高低。 教務處承辦人翁小姐 05-2762804分機204"
   },
   {
    "id": "cysh-135966",
@@ -11278,7 +11289,7 @@
    "source_category": "考試訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 實驗研究組 發佈日期 : 2026-08-05 最後更新日期 : 2026-08-18 1. 考試時間： 9 月 9 日(三) 上午 2. 詳細內容請參閱附件檔案。"
   },
   {
    "id": "cysh-136127",
@@ -11339,7 +11350,7 @@
    "source_category": "重要訊息",
    "category": "社團",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 社團活動組 發佈日期 : 2026-08-04"
   },
   {
    "id": "cysh-136119",
@@ -11593,7 +11604,7 @@
    "source_category": "升學資訊",
    "category": "升學",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 輔導室 發佈日期 : 2026-07-29 最後更新日期 : 2026-07-29 詳附件"
   },
   {
    "id": "cysh-136100",
@@ -11605,7 +11616,7 @@
    "source_category": "訊息公告",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 員生社 發佈日期 : 2026-07-29"
   },
   {
    "id": "cysh-136088",
@@ -11705,7 +11716,7 @@
    "source_category": "考試訊息",
    "category": "段考考試",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 實驗研究組 發佈日期 : 2026-07-28 最後更新日期 : 2026-08-05 1. 考試時間： 9 月 2 日(三)、 9 月 3 日(四) 2. 詳細內容請參閱附件檔案。"
   },
   {
    "id": "cysh-136079",
@@ -12020,7 +12031,7 @@
    "source_category": "宣導事項",
    "category": "研習活動",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 特教組 發佈日期 : 2026-07-22 最後更新日期 : 2026-07-22"
   },
   {
    "id": "cysh-136028",
@@ -12160,7 +12171,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-07-21 轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202607-00000005 研究人員發現SonicWall SMA 1000系列存在多項高風險安全漏洞(CVE-2026-15409與CVE-2026-15410)，類型分別為伺服器端請求偽造(Server-Side Request Forgery)與程式碼注入(Code Injection)。兩項漏洞皆已遭到駭客利用，請儘速確認並進行修補。 CVE-2026-15409：未經身分鑑別之遠端攻擊者可對SMA1000設備之Work Place介面發送特製請求，進而使系統向非預期位置發送請求。 CVE-2026-15410：已取得管理員權限之遠端攻擊者可於Appliance Management Console(AMC)執行任意作業系統指令。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] SonicWall SMA 1000系列(6210、7210及8200v) platform-hotfix 12.4.3-03245、12.4.3-03387及12.4.3-03434版本 platform-hotfix 12.5.0-02283、12.5.0-02624及12.5.0-02800版本 [建議措施:] 官方已針對漏洞釋出修復更新，請升級至以下版本，並參考官方說明進行更新： https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0008 [參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2026-15409 2. https://nvd.nist.gov/vuln/detail/CVE-2026-15410 3. https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2026-0008 4. https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
   },
   {
    "id": "cysh-136019",
@@ -12326,7 +12337,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-07-16 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202607-00000007 SonicWall針對SMA1000系列產品發布重大資安漏洞(CVE-2026-15409，CVSS：10.0)，此為SSRF漏洞並存在於SMA1000系列產品設備工作介面中，未經身分驗證的遠端攻擊者可發出非預期請求。 備註：目前SonicWall PSIRT已調查多起案例，顯示該漏洞正被積極利用，建議儘速採取暫時緩解措施，以防止針對此漏洞可能的攻擊發生。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] SMA 1000系列產品 12.4.3-03245至12.4.3-03434(含)版本、 SMA 1000系列產品 12.5.0-02283至12.5.0-02800(含)版本 [建議措施:] 請更新至以下版本： SMA 1000系列產品 12.4.3-03453(含)之後版本、 SMA 1000系列產品 12.5.0-02835(含)之後版本"
   },
   {
    "id": "cysh-136058",
@@ -12338,7 +12349,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-07-16 轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202607-00000002 研究人員發現pgAdmin 4存在多項高風險安全漏洞(CVE-2026-12044至CVE-2026-12050)，其中最嚴重之CVE-2026-12046為不安全反序列化(Insecure Deserialization)漏洞，當產品以伺服器模式運作，且攻擊者已知pgAdmin之Flask SECRET_KEY並具備寫入pgAdmin之Session目錄權限時，可利用此漏洞執行任意程式碼，請儘速確認並進行修補。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] pgAdmin 4之1.0至9.15版本 [建議措施:] 官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下： https://www.postgresql.org/about/news/pgadmin-4-v916-released-3324/ [參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2026-12044 2. https://nvd.nist.gov/vuln/detail/CVE-2026-12045 3. https://nvd.nist.gov/vuln/detail/CVE-2026-12046 4. https://nvd.nist.gov/vuln/detail/CVE-2026-12047 5. https://nvd.nist.gov/vuln/detail/CVE-2026-12048 6. https://nvd.nist.gov/vuln/detail/CVE-2026-12049 7. https://nvd.nist.gov/vuln/detail/CVE-2026-12050 8. https://www.postgresql.org/about/news/pgadmin-4-v916-released-3324/"
   },
   {
    "id": "cysh-135999",
@@ -12528,7 +12539,7 @@
    "source_category": "升學資訊",
    "category": "升學",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 輔導室 發佈日期 : 2026-07-13 最後更新日期 : 2026-07-13 一、該校老福系成立至今為各單位及業界培育許多優秀人才，提供升學、進修者，對進修招生管道之參考與了解，誠摯歡迎有興趣者報考。 二、網路報考期限：至115年8月7日(五)下午4：00止；考試方式：書審，免筆試，免報名費。 三、就讀老福系進修部優勢： (一)畢業取得學士學位，畢業證書與日間部相同。 (二)以學分學雜費方式收費，並配合行政院實施之「定額減免私立大專學生學雜費」，可減免50%(每學年上限3.5萬)，生活與經濟負擔低。 四、預計上課時間：星期一至星期五，晚上18：20-21：35，以當學期開課為主，學業與工作可同時兼顧。 五、相關洽詢：李靜儀助理，電話04-2631-8652分機3502，E-mail：jan19ice@gmail.com"
   },
   {
    "id": "cysh-135967",
@@ -12818,7 +12829,7 @@
    "source_category": "新生專區",
    "category": "招生編班",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-07-08 國立嘉義高中115學年度免試入學及適性安置新生報到須知 特別聲明 因新生報到資料地址抓取誤操作，同學收到的新生報到須知的名字序號與地址對應錯誤，請同學及家長依校網公告 報到名單、報到序號及組別公告 為準。 新生報到須知內容皆相同，請收到信件時不需緊張。 報到日期及地點 報到時間： 7月9日（四）上午08:30-09:00 。 報到地點：本校樹人堂。※校園不開放停車，請從正門進出。 報到流程 ※因人數眾多，報到當天建議配戴口罩。 08:30 - 09:00報到、繳交畢業證書及領取本土語文選課通知單(請依照報到序號組別至各櫃台報到) ※報到名單、報到序號及組別公告連結 09:00 - 09:30新生說明會 09:30 - 12:00資優班、實驗班報名（地點：本校旭陵樓4樓會議室） 13:00 - 17:00實驗班報名（地點：本校旭陵樓2樓教務處） 報到當天應攜帶文件： 國中畢業證書正本 （請事先於右下角以鉛筆寫上「報到序號」→ 報到序號將以郵寄通知於通知單封面，亦於本校首頁公告） 繳交 特殊身分減免 學雜費 申請表 申請【特殊身份減免學雜費】條件為 ：身心障礙學生、身心障礙人士子女、低收入戶子女、中低收入戶子女、特殊境遇家庭子女、原住民、軍公教遺族、現役軍人子女 等 ，並已 經 領有相關證明文件者。 若要申請特殊身份減免學雜費，請至嘉中網站【新生入學專區】下載列印 申請表 填寫，於 7/9( 四)報到時跟畢業證書一起繳交 報到處 。或報到時現場將提供申請表，請家長選填所需資料並簽名後交回報到處 。 最遲於《新生訓練第一天》8/25(二)中午前，將申請表交到教務處。申請表亦可教務處索取。 將依選填申請表內容製作註冊繳費單，於開學後發給學生。 特殊班報名 資優班 報名時間：7/9（四）09:30 - 12:00(地點:本校旭陵樓四樓會議室)。 報名文件：欲報考本校語文資優班、數理資優班的新生，請務必準備 2 吋正面彩色相片 2 張 、 會考成績單正反面影本 。 報名費用：數理或語文達PR97（詳見嘉中首頁： 校園訊息>115國中教育會考PR97之應答對題數或加權分數 ）→具有複試資格者：報名費用 1000 元（無複試資格者，需先報名性向測驗初試→費用 300 元，請自備零鈔）。簡章請見嘉中首頁： 校園訊息>行政單位>教務"
   },
   {
    "id": "cysh-135937",
@@ -12920,7 +12931,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-07-07 轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202607-00000001 研究人員發現Splunk Enterprise、Splunk Cloud Platform及Splunk Secure Gateway存在不安全之反序列化(Insecure Deserialization)漏洞(CVE-2026-20251)，已通過身分鑑別之遠端攻擊者可透過對未受信任之資料進行反序列化，進而於受影響伺服器上執行任意程式碼，請儘速確認並進行修補。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Splunk Enterprise 10.2.0至10.2.3版本 Splunk Enterprise 10.0.0至10.0.6版本 Splunk Enterprise 9.4.0至9.4.11版本 Splunk Enterprise 9.3.0至9.3.12版本 Splunk Cloud Platform 10.3.2512.12(不含)以前版本 Splunk Cloud Platform 10.2.2510.14(不含)以前版本 Splunk Cloud Platform 10.1.2507.22(不含)以前版本 Splunk Cloud Platform 9.3.2411.132(不含)以前版本 Splunk Secure Gateway 3.10.6(不含)以前版本 Splunk Secure Gateway 3.9.20(不含)以前版本 Splunk Secure Gateway 3.8.67(不含)以前版本 [建議措施:] 官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下： https://advisory.splunk.com/advisories/SVD-2026-0601 [參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2026-20251 2. https://advisory.splunk.com/advisories/SVD-2026-0601"
   },
   {
    "id": "cysh-135931",
@@ -12932,7 +12943,7 @@
    "source_category": "考試訊息",
    "category": "段考考試",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 實驗研究組 發佈日期 : 2026-07-07 最後更新日期 : 2026-07-10 0708 更新：因高三多間教室凌亂，更正補考教室，補考名單無異動。 1. 學科學期補考名單及相關注意事項如附件，請同學自行查看，如有誤請於 7 月 8 日(三) 17:00 前告知教務處實研組。 2. 請同學應考前注意自己的試場，試場座位表將於考試當天張貼在各教室門口。請依照公布之『試場座位編號』位置應考。 3. 補考日期時間： 115 年 7 月 10 日(五)上午 08:30 起。補考範圍請參考校網網路服務之『考試範圍公告』。 4. 非本次考科而學期成績不及格者，請於 115 年 9 月 7 日(一)前找原任課老師補考。 5. 其餘所有考試規定悉依學生手冊考試規則辦理。 6. 補考科目名稱已常見形式公告，屆時會以各班級於各學科在課程計畫書中不同的名稱登錄成績。 7. 未帶合格證件者可以至教務處申請臨時學生證(週輔一支)，並於 08:45 前至教室應考。 8. 因應巴威颱風影響，若 7 月 10 日(五)嘉義縣市任意一鄉鎮市停課，則補考延期至 7 月 13 日(一) 08:30 開始，當日暑期輔導課停課，改為 7 月 14 日(二)開始上課。"
   },
   {
    "id": "cysh-132397",
@@ -13087,7 +13098,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-07-16 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202607-00000006 【CVE-2026-48908】JoomShaper SP Page Builder Unrestricted Upload of File with Dangerous Type Vulnerability (CVSS v3.1: 9.8) 【是否遭勒索軟體利用:未知】 JoomShaper SP Page Builder 存在未受限制的危險類型檔案上傳漏洞，允許未經身分驗證的使用者上傳任意檔案，最終可導致 PHP 程式碼被上傳並執行。 【CVE-2026-55255】Langflow Authorization Bypass Through User-Controlled Key Vulnerability (CVSS v3.1: 8.4) 【是否遭勒索軟體利用:未知】 Langflow 存在身分驗證繞過漏洞，允許已通過身分驗證的攻擊者在請求中指定受害者的工作流程ID，進而執行任何屬於其他使用者的流程。 【CVE-2026-56290】Joomlack Page Builder Improper Access Control Vulnerability (CVSS v3.1: 9.8) 【是否遭勒索軟體利用:未知】 Joomlack Page Builder 存在不當存取控制漏洞，可能允許攻擊者透過未經身分驗證的任意檔案上傳實現遠端程式碼執行。 【CVE-2026-48282】Adobe ColdFusion Path Traversal Vulnerability (CVSS v3.1: 10.0) 【是否遭勒索軟體利用:未知】 Adobe ColdFusion 存在路徑遍歷漏洞，可能導致在當前使用者權限下執行任意程式碼。 【CVE-2026-56291】Balbooa Forms Unrestricted Upload of File with Dangerous Type Vulnerability (CVSS v3.1: 9.8) 【是否遭勒索軟體利用:未知】 Balbooa Forms 存在未受限制的危險類型檔案上傳漏洞，允許未經身分驗證的任意檔案上傳，進而導致遠端程式碼"
   },
   {
    "id": "cysh-136056",
@@ -13099,7 +13110,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-07-06 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202607-00000002 WatchGuard Firebox 是一款次世代防火牆產品，提供多層次防護，包括防毒、IPS、APT 阻擋及垃圾郵件過濾。近日WatchGuard發布重大資安漏洞公告(CVE-2026-13368，CVSS 4.x：9.2)，該漏洞源於 Mobile User VPN with IKEv2 的 LDAP 驗證機制存在競爭條件（Race Condition），進而造成釋放後使用（Use-After-Free）漏洞。 若 Firebox 已設定 Mobile User VPN with IKEv2 並使用外部 LDAP 驗證伺服器，未經身分驗證的遠端攻擊者可利用此漏洞，以iked進程的上下文中執行任意程式碼。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Fireware OS 2025.1 版本 Fireware OS 12.x 版本 Fireware OS 12.5.x (T15&T13) 版本 Fireware OS 11.x 版本 [建議措施:] 請更新至以下版本：Fireware OS 2026.2.1版本、Fireware OS 12.12.1版本 [參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-11022-eee7d-1.html"
   },
   {
    "id": "cysh-135912",
@@ -13111,7 +13122,7 @@
    "source_category": "新生專區",
    "category": "招生編班",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-07-06 國立嘉義高中115學年度免試入學及適性安置新生報到須知 特別聲明 因新生報到資料地址抓取誤操作，同學收到的新生報到須知的名字序號與地址對應錯誤，請同學及家長依校網公告 報到名單、報到序號及組別公告 為準。 新生報到須知內容皆相同，請收到信件時不需緊張。 報到日期及地點 報到時間： 7月9日（四）上午08:30-09:00 。 報到地點：本校樹人堂。※校園不開放停車，請從正門進出。 報到流程 ※因人數眾多，報到當天建議配戴口罩。 08:30 - 09:00報到、繳交畢業證書及領取本土語文選課通知單(請依照報到序號組別至各櫃台報到) ※報到名單、報到序號及組別公告連結 09:00 - 09:30新生說明會 09:30 - 12:00資優班、實驗班報名（地點：本校旭陵樓4樓會議室） 13:00 - 17:00實驗班報名（地點：本校旭陵樓2樓教務處） 報到當天應攜帶文件： 國中畢業證書正本 （請事先於右下角以鉛筆寫上「報到序號」→ 報到序號將以郵寄通知於通知單封面，亦於本校首頁公告） 繳交 特殊身分減免 學雜費 申請表 申請【特殊身份減免學雜費】條件為 ：身心障礙學生、身心障礙人士子女、低收入戶子女、中低收入戶子女、特殊境遇家庭子女、原住民、軍公教遺族、現役軍人子女 等 ，並已 經 領有相關證明文件者。 若要申請特殊身份減免學雜費，請至嘉中網站【新生入學專區】下載列印 申請表 填寫，於 7/9( 四)報到時跟畢業證書一起繳交 報到處 。或報到時現場將提供申請表，請家長選填所需資料並簽名後交回報到處 。 最遲於《新生訓練第一天》8/25(二)中午前，將申請表交到教務處。申請表亦可教務處索取。 將依選填申請表內容製作註冊繳費單，於開學後發給學生。 特殊班報名 資優班 報名時間：7/9（四）09:30 - 12:00(地點:本校旭陵樓四樓會議室)。 報名文件：欲報考本校語文資優班、數理資優班的新生，請務必準備 2 吋正面彩色相片 2 張 、 會考成績單正反面影本 。 報名費用：數理或語文達PR97（詳見嘉中首頁： 校園訊息>115國中教育會考PR97之應答對題數或加權分數 ）→具有複試資格者：報名費用 1000 元（無複試資格者，需先報名性向測驗初試→費用 300 元，請自備零鈔）。簡章請見嘉中首頁： 校園訊息>行政單位>教務"
   },
   {
    "id": "cysh-135899",
@@ -13457,7 +13468,7 @@
    "source_category": "行事曆",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-07-01 最後更新日期 : 2026-07-02 國立嘉義高中115年暑假行事曆，請參閱附件檔案。"
   },
   {
    "id": "cysh-135834",
@@ -13716,7 +13727,7 @@
    "source_category": "考試訊息",
    "category": "段考考試",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 實驗研究組 發佈日期 : 2026-06-30 最後更新日期 : 2026-07-28 1. 考試時間： 7 月 29 日 ( 三 ) 、 7 月 30 日 ( 四 ) 2. 詳細內容請參閱附件檔案。"
   },
   {
    "id": "cysh-135825",
@@ -13728,7 +13739,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-06-30 115年嘉義高中高三學生照片上傳 說明：相片為之後報名學測、英聽、分科測驗、學籍卡、畢業證書使用，請同學於暑假期間自行穿制服至相館拍攝照片 。 上傳日期： 7/24 （五） 截止。 上傳網址： 115年嘉義高中高三學生照片上傳（另開新視窗） 照片規格： 務必著制服 （不限夏季冬季）。學號不一定要露出。 照片比照國民身分證規格 應為 115年1月1日以後拍攝 。 以頭部及肩膀頂端近拍，使臉部占據整張相片面積之百 分之七十至百分之八十。 數位攝影之影像， 寬×高像素不得少於 450×600 pixels ；掃描器掃描之解析度不得低於 300 dpi，最高解析度建議不超過 500 dpi。 不要自己拍攝，人像須脫帽，眉、眼、鼻、口、臉、兩耳輪廓及特殊痣、胎記、疤痕等清晰、不遮蓋。小耳症患者其頭髮可遮蓋耳朵輪廓，但臉型兩側仍須顯明，不遮蓋。 人像自頭頂至下顎之長度介於3.2至3.6公分之間 。 一定要彩色，背景須為白色或淺色。 不得配戴深色鏡片眼鏡。 請勿使用卡通照片、合成相片、AI生成圖或經修圖之照片，違者後果自負。 照片檔案名稱： 「 600 」＋「 班級 」＋「 座號 」 (600：校代號；301：年班號；01：座號) ，副檔名：請用 JPG 格式儲存。例如：3年01班01號同學檔名為 60030101.jpg ※不符規定報考相關考試時會被退件，若造成無法報名考試，請自行負責。 範例（正確版） 像素寬 x 高不得少於 450x600 pixels ※考量肖像權故使用一拳超人頭像當作範例"
   },
   {
    "id": "cysh-135821",
@@ -13818,7 +13829,7 @@
    "source_category": "研習活動",
    "category": "研習活動",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 資訊媒體組 發佈日期 : 2026-06-29 最後更新日期 : 2026-06-29 【龍華科技大學】簡報製作與AI應用班 一、本校推廣教育中心為因應數位時代簡報製作與人工智慧應用之發展趨勢，提升專業人士簡報設計與AI工具應用能力，特開設「簡報製作與AI應用班」。 二、本次課程預計於115年8月16日星期日開課，上課時間為上午9：00至下午12：00上課，共計3小時。 三、地點：龍華科技大學校本部四、報名方式：即日起直接至課程網站上報名或利用附件報名表傳Email至本中心報名均可。 報名連結(另開新視窗)"
   },
   {
    "id": "cysh-136054",
@@ -13830,7 +13841,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-06-29 轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202606-00000013 研究人員發現Apache HTTP Server存在3個高風險安全漏洞(CVE-2026-23918、CVE-2026-29167及CVE-2026-44631)，類型包含記憶體雙重釋放(Double Free)、使用釋放後記憶體(Use After Free)及緩衝區溢位(Buffer Overflow)漏洞，其最嚴重可使已通過身分鑑別之遠端攻擊者執行任意程式碼，請儘速確認並進行修補。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Apache HTTP Server 2.4.66 Apache HTTP Server 2.4.0到2.4.67 [建議措施:] 官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下： https://httpd.apache.org/security/vulnerabilities_24.html [參考資料:] 1. https://httpd.apache.org/security/vulnerabilities_24.html 2. https://nvd.nist.gov/vuln/detail/CVE-2026-23918 3. https://nvd.nist.gov/vuln/detail/CVE-2026-29167 4. https://nvd.nist.gov/vuln/detail/CVE-2026-44631"
   },
   {
    "id": "cysh-135812",
@@ -13957,7 +13968,7 @@
    "source_category": "升學資訊",
    "category": "升學",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-06-25 最後更新日期 : 2026-06-25 一、考生申請身心障礙及重大傷病考生應考服務之特殊項目， 應繳交大考中心格式之診斷證明書。為保障考生應考權益，使考生具充分時間就診取得診斷證明書，116學年度 診斷證明書格式及填寫樣例業於115年06月17日(三)，公告於大考中心網站 https：//www.ceec.edu.tw 之下載專區。 二、116學年度考試簡章預計於115年08月04日(二)公告，屆時務請詳閱「捌、身心障礙及重大傷病考生應考服務」申請辦法，以保障個人權益。"
   },
   {
    "id": "cysh-135788",
@@ -14190,7 +14201,7 @@
    "source_category": "研習活動",
    "category": "研習活動",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 教學組 發佈日期 : 2026-06-24 最後更新日期 : 2026-06-24"
   },
   {
    "id": "cysh-135800",
@@ -14202,7 +14213,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 教學組 發佈日期 : 2026-06-24 (1) 選課結果依校網公告為主，名單詳如附件。 (2) 如有問題，請於 6/25(四) 12:00~12:40 至 教務處教學組 詢問。 (3)課程 人文議題英文導讀 因故 停開 。 (4) 以下課程需 收費 ，請提早預備。 a. 生活化學 b. 甜心暖男特訓班 c. 榫接木工基礎實作 A"
   },
   {
    "id": "cysh-135796",
@@ -14214,7 +14225,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 教學組 發佈日期 : 2026-06-24 (1) 選課結果依校網公告為主，名單詳如附件。 (2) 如有問題，請於 6/25(四) 12:00~12:40 至 教務處教學組 詢問。"
   },
   {
    "id": "cysh-135764",
@@ -14343,7 +14354,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-06-23 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202606-00000016 Cisco 旗下身分識別服務引擎(Identity Services Engine，ISE)是一款基於身分的安全管理平台，可從網路、使用者設備收集資訊，並在網路基礎設施中實施策略和制定監管決策。 近日Cisco發布重大資安漏洞公告(CVE-2026-20181，CVSS：9.1)，此漏洞可能允許經過身分驗證的遠端攻擊者，在受影響設備的底層作業系統上執行任意命令。 備註：若利用此漏洞，攻擊者必須擁有有效的管理員憑證。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Cisco ISE 和 Cisco ISE-PIC 3.3 (含)之前版本 Cisco ISE 和 Cisco ISE-PIC 3.4 版本 Cisco ISE 和 Cisco ISE-PIC 3.5 版本 [建議措施:] 請更新至 Cisco ISE 和 Cisco ISE-PIC 3.3 Patch 11、Cisco ISE 和 Cisco ISE-PIC 3.4 Patch 6、Cisco ISE 和 Cisco ISE-PIC 3.5 Patch 4 [參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10984-5eafa-1.html"
   },
   {
    "id": "cysh-135758",
@@ -14355,7 +14366,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 教學組 發佈日期 : 2026-06-23 選課結果依校網公告為主，名單如附件。 有任何問題，請於 6/25(四)11:50-12:40 洽教務處教學組，逾時不候。"
   },
   {
    "id": "cysh-135742",
@@ -14507,7 +14518,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-06-29 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202606-00000018 【CVE-2025-67038】Lantronix EDS5000 Code Injection Vulnerability (CVSS v3.1: 9.8) 【是否遭勒索軟體利用:未知】 Lantronix EDS5000 存在程式碼注入漏洞，攻擊者可利用此漏洞將任意作業系統指令注入至 username 參數並以 root 權限執行。 【CVE-2026-34910】Ubiquiti UniFi OS Improper Input Validation Vulnerability (CVSS v3.1: 10.0) 【是否遭勒索軟體利用:未知】 Ubiquiti UniFi OS 存在不當輸入驗證漏洞，具備網路存取權限的惡意攻擊者可利用此漏洞執行指令注入攻擊。 【CVE-2026-34909】Ubiquiti UniFi OS Path Traversal Vulnerability (CVSS v3.1: 10.0) 【是否遭勒索軟體利用:未知】 Ubiquiti UniFi OS 存在路徑遍歷漏洞，具備網路存取權限的惡意攻擊者可利用此漏洞存取底層系統上的檔案，並可能藉由操控或利用這些檔案，進一步取得底層系統帳戶的存取權限。 【CVE-2026-34908】Ubiquiti UniFi OS Improper Access Control Vulnerability (CVSS v3.1: 10.0) 【是否遭勒索軟體利用:未知】 Ubiquiti UniFi OS 存在不當存取控制漏洞，具備網路存取權限的惡意攻擊者可利用此漏洞對系統進行未經授權的變更。 【CVE-2026-12569】PTC Windchill and FlexPLM Improper Input Validation Vulnerability (CVSS v3.1: 9.8) 【是否遭勒索軟體利用:未知】 PTC Windchill 與 FlexPLM 存在不當輸入驗證漏洞，未經驗證的遠端攻擊者可透過向網路發送惡意請求來執行任意程式碼。 【CVE-2026-20230】Cisco Unified Commun"
   },
   {
    "id": "cysh-136049",
@@ -14519,7 +14530,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-06-22 轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-400-202606-00000006 研究人員發現有攻擊者針對Fortinet防火牆與VPN裝置等設備進行大規模憑證竊取攻擊，且疑似掌握相關設備之帳密資料，進而大規模破解相關設備防護措施。 請機關運用下列查詢工具確認自身設備是否已遭揭露，並請盡速採取改善措施。 工具連結：https://www.hudsonrock.com/fortinet 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] 所有Fortinet設備 [建議措施:] 1.隱藏管理介面：盡速確認設備管理介面是否暴露於網際網路，並將管理介面從公開網際網路移除，僅允許受信任的IP或透過跳板機/VPN方式存取。 2.全面重置設備密碼：立即更換所有Fortinet設備管理介面與VPN之管理者密碼。 3.啟用多因子驗證機制（MFA）：建議在所有遠端存取與管理員帳戶啟用多因素認證。 4.強制升級雜湊演算法：升級 FortiOS 後，要求所有管理員至少登入一次防火牆，系統會自動將密碼加密方式升級為更難被破解的 PBKDF2 演算法。 [參考資料:] 1. https://www.hudsonrock.com/fortinet"
   },
   {
    "id": "cysh-135755",
@@ -14531,7 +14542,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 教學組 發佈日期 : 2026-06-22 選課結果依校網公告為主，名單詳如附件。 有任何問題，請於 6/25 (四 ) 11：50~12：40 洽教務處教學組。 「大學生必備之雲端工具實戰」 將酌收費用，請各位選課同學們注意！"
   },
   {
    "id": "cysh-135756",
@@ -14644,7 +14655,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-06-18 轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202606-00000006 研究人員發現Google Chrome、Microsoft Edge、Vivaldi、Brave及Opera等以Chromium為基礎之瀏覽器存在74個高風險安全漏洞(CVE-2026-11628至CVE-2026-11701)，類型包含使用釋放後記憶體(Use After Free)與越界記憶體存取(Out-of-Bounds Memory Access)等，最嚴重可使未經身分鑑別之遠端攻擊者誘使使用者開啟特製HTML頁面，進而於瀏覽器沙盒環境內執行任意程式碼。其中CVE-2026-11645已遭駭客利用，請儘速確認並進行修補。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Google Chrome 149.0.7827.102(不含)以前版本 Microsoft Edge 149.0.4022.62(不含)以前版本 Vivaldi 8.0.4033.46 (不含)以前版本 Brave 1.91.171(不含)以前版本 Opera 132.0.5905.37(不含)以前版本 [建議措施:] 1.請更新Google Chrome瀏覽器至149.0.7827.102(含)以後版本 https://support.google.com/chrome/answer/95414?hl=zh-Hant 2.請更新Microsoft Edge瀏覽器至149.0.4022.62(含)以後版本 https://support.microsoft.com/zh-tw/topic/microsoft-edge-%E6%9B%B4%E6%96%B0%E8%A8%AD%E5%AE%9A-af8aaca2-1b69-4870-94fe-18822dbb7ef1 3.請更新Vivaldi瀏覽器至8.04033.46(含)以後版本 https://help.vivaldi.com/desktop/install-update/update-vivaldi/ 4.請更新Brave瀏覽器至1.91.171(含)以後版本 https://community.brave.com/t/how-to-upd"
   },
   {
    "id": "cysh-135739",
@@ -14837,7 +14848,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-06-16 [內容說明:] 轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202606-00000005 微軟釋出115年6月份安全性更新，共修補204個漏洞，其中包含18個高風險漏洞，請儘速確認並進行修補。 【具高風險漏洞之產品】 Active Directory Domain Services Azure HorizonDB Azure Stack Edge Microsoft Azure Kubernetes Service Microsoft Dynamics 365 (on-premises) Microsoft Exchange Online Microsoft Exchange Server Microsoft Office SharePoint Nuance PowerScribe Remote Desktop Client Visual Studio Code Windows DHCP Client Windows DHCP Server Windows HTTP.sys Windows Kernel Windows TCP/IP 【其他受影響產品】 .NET ASP.NET Core Copilot Chat (Microsoft Edge) Function Discovery Service (fdwsd.dll) GitHub Copilot and Visual Studio Code HTTP/2 Linux MANA Driver M365 Copilot Microsoft Azure Attestation service and Device Health Attestation Service Microsoft Bing Microsoft Copilot Microsoft Defender for Endpoint Microsoft Graph Microsoft Graphics Component Microsoft Kinect Microsoft Live Share Canvas SDK Microsoft Office Microsoft Office Click-To-Run Microsoft Office Excel "
   },
   {
    "id": "cysh-135720",
@@ -14952,7 +14963,7 @@
    "source_category": "升學資訊",
    "category": "升學",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-06-15 最後更新日期 : 2026-06-15 一、為培育具音樂潛力與創作能力之學子，國立臺南大學音樂學系自114 學年度起特設立「流行音樂組」，結合理論與實務，旨在培養流行音樂創作、編曲、製作及舞台表演等跨領域專業人才。 二、前述該組「流行音樂創作編曲課程」特別引進日本專業流行音樂師資，並規劃國際交流學習機制，以拓展學生國際視野並提升產業實務能力。 三、該招生管道不採計音樂術科測驗成績，鼓勵對流行音樂、數位音樂創作及表演有興趣之同學踴躍報考。 四、招生相關資訊請洽該校音樂學系辦公室，電話：06- 2133111分機712。"
   },
   {
    "id": "cysh-135707",
@@ -15079,7 +15090,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-06-12 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202606-00000010 Veeam Backup & Replication是Veeam核心備份軟體，近日Veeam發布重大資安漏洞公告，此漏洞(CVE-2026-44963，CVSS 4.x：9.4)允許經身分驗證的網域使用者，在備份伺服器上執行遠端程式碼(RCE)。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Veeam Backup & Replication 12.3.2.4465(含)之前12版本 [建議措施:] 更新 Veeam Backup & Replication 至12.3.2.4854(含)之後版本 [參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10960-7814d-1.html"
   },
   {
    "id": "cysh-135696",
@@ -15335,7 +15346,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 教學組 發佈日期 : 2026-06-10 高一升高二(101-113) 意向書錄取名單已放置班級櫃，且公告於校網，請同學查閱，何疑問請於 06/10( 三 ) 第六、七節或 06/11( 四 ) 第五節 洽教學組。 未被選中的同學(附檔會顯示 需系統選課 )將於第二階段選課分發，只開放尚有名額課程。 選課前請詳讀高二多元選修課程大綱。 逾時未選填志願之同學，將 由系統進行自動分發 ，學生不得異議。 選課路徑：校網首頁－網路服務－ 校務行政系統（師生用） －選課 (藍字校務系統已設定連結，可直接點選進入系統) 二階段電腦志願選課開放時間： 06/15( 一 )12:00 ～ 06/18( 四 )23:59 。 第二階段選課結果將於 06/24( 三 ) 放學後公告。如有問題，請於 06/25( 四 ) 16:20 後 洽教學組。 尚有名額可提供選課的課程 序號 課程名稱 1 真實與虛構：恐怖小說的閱讀與探究 2 世說啟示錄 3 時事英文 4 自然議題英文導讀 5 人文議題英文導讀 6 數學探索 9 生活化學 (需收材料費) 10 半導體原理與概論 14 基礎應用電學實務 15 甜心暖男特訓班 (需收材料費) 16 基礎素描與造型結構應用 18 榫接木工基礎實作A (需收材料費)"
   },
   {
    "id": "cysh-135666",
@@ -15424,7 +15435,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 教學組 發佈日期 : 2026-06-09 意向書錄取名單已放置班級櫃，且公告於校網，請同學查閱， 何疑問請於 06/10( 三 ) 第六、七節或 06/11( 四 ) 第五節 洽教學組。 未被選中的同學(名單顯示 需系統選課者 )將於第二階段選課分發，只開放尚有名額課程。 選課前請詳讀高三三類加深加廣課程大綱。 逾時未選填志願之同學，將 由系統進行自動分發 ，學生不得異議。 選課路徑：校網首頁－網路服務－ 校務行政系統（師生用） －選課 (藍字校務系統已設定連結，可直接點選進入系統) 二階段電腦志願選課開放時間： 06/15( 一 )12:00 ～ 06/18( 四 )23:59 。 第二階段選課結果將於 06/24( 三 ) 放學後公告。如有問題，請於 06/25( 四 ) 16:20 後 洽教學組。 A 班群(208-210) 尚有名額課程 序號 課程名稱 2 機器人專題A (需收電腦教室使用費) 3 健康與休閒生活A 4 工程設計專題A 5 閩南語文口語溝通與表達A B 班群(211-213、217) 尚有名額課程 序號 課程名稱 2 機器人專題 B ( 需收電腦教室使用費 ) 4 進階程式設計 B ( 需收電腦教室使用費 ) 5 工程設計專題 B 6 閩南語文口語溝通與表達 B"
   },
   {
    "id": "cysh-135403",
@@ -15579,7 +15590,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 教學組 發佈日期 : 2026-06-08 意向書錄取名單公告於校網，請同學查閱 ， 如有任何疑問請於 06/11(四)第三、四節 下課洽教學組。 未被選中的同學將於第二階段選課分發，只開放尚有名額的課程。 尚有名額的課程： 史學X影像：十八學群跨域探索 、 大學生必備之雲端工具實戰 (共兩門) 📍選課前請前往校網，詳讀 高三社會組加深加廣選課大綱 。 二階段電腦志願選課開放時間： 06/15(一)12:00～06/18(四)23:59 ，請上 學校選課系統 選課。 📍逾時未選填志願之同學，將由系統進行自動分發，學生不得異議。"
   },
   {
    "id": "cysh-135639",
@@ -15849,7 +15860,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-06-04 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202606-00000002 Palo Alto Networks 防火牆作業系統 PAN-OS的GlobalProtect入口網站和通道設備存在身分驗證繞過漏洞，攻擊者可利用該漏洞繞過安全限制並建立未經授權的VPN連線。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] PAN-OS 10.2.10-h36(不含)以前版本 PAN-OS 10.2.13-h21(不含)以前版本 PAN-OS 10.2.16-h7(不含)以前版本 PAN-OS 10.2.18-h6(不含)以前版本 PAN-OS 10.2.7-h34(不含)以前版本 PAN-OS 11.1.10-h25(不含)以前版本 PAN-OS 11.1.13-h5(不含)以前版本 PAN-OS 11.1.15(不含)以前版本 PAN-OS 11.1.4-h33(不含)以前版本 PAN-OS 11.1.6-h32(不含)以前版本 PAN-OS 11.1.7-h6(不含)以前版本 PAN-OS 11.2.10-h7(不含)以前版本 PAN-OS 11.2.12(不含)以前版本 PAN-OS 11.2.4-h17(不含)以前版本 PAN-OS 11.2.7-h14(不含)以前版本 PAN-OS 12.1.4-h6(不含)以前版本 PAN-OS 12.1.7(不含)以前版本 Prisma Access 10.2.10-h36(不含)以前版本 Prisma Access 11.2.7-h13(不含)以前版本 [建議措施:] 根據官方網站釋出的解決方式進行修補： https://security.paloaltonetworks.com/CVE-2026-0257"
   },
   {
    "id": "cysh-135612",
@@ -15861,7 +15872,7 @@
    "source_category": "最新消息",
    "category": "招生編班",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-06-04 一、為協助國中端家長深入了解本校辦學理念與卓越績效，並掌握高中課程規劃與升學發展方向，特舉辦本次家長說明會。會中將介紹本校資優班、實驗班之特色課程與培育成果，期能協助家長與學生及早規劃適性發展，共同開創優質學習未來。 二、對象：國三學生與家長、國二與國一家長、國中端師長。 三、日期與時間：115年6月9日(星期二)晚間7時至9時。 四、地點：本校史蹟館。 五、「115學年度國中入學宣導家長說明會」採線上報名，報名網址： https://forms.gle/bzAyY4KZN1J2ZYZ6A 。 六、附件為本次活動相關資訊。 七、場地人數上限200人，額滿為止。 八、報名如有疑問，請洽本校教務處05-2762804分機204、205。"
   },
   {
    "id": "cysh-135583",
@@ -16223,7 +16234,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-06-09 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202606-00000005 【CVE-2024-21182】Oracle WebLogic Server Unspecified Vulnerability (CVSS v3.1: 7.5) 【是否遭勒索軟體利用:未知】 Oracle WebLogic存在未具體說明的漏洞。透過T3或IIOP協定進行連線的未經驗證攻擊者，可能利用此漏洞入侵Oracle WebLogic Server。若此漏洞遭成功利用，可能導致關鍵資料遭未經授權存取，或使攻擊者取得Oracle WebLogic Server可存取之所有資料的完整存取權限。 【CVE-2022-0492】Linux Kernel Improper Authentication Vulnerability (CVSS v3.1: 7.8) 【是否遭勒索軟體利用:未知】 Linux Kernel存在不當驗證漏洞，攻擊者可能透過cgroups v1的release_agent功能進行權限提升。 【CVE-2025-48595】Android Framework Integer Overflow Vulnerability (CVSS v3.1: 8.4) 【是否遭勒索軟體利用:未知】 Android Framework存在整數溢位漏洞，可能導致任意程式碼執行，進而造成本機權限提升。 【CVE-2026-45247】Mirasvit Full Page Cache Warmer Deserialization of Untrusted Data Vulnerability (CVSS v3.1: 9.8) 【是否遭勒索軟體利用:未知】 Mirasvit Full Page Cache Warmer存在反序列化不受信任資料漏洞，未經驗證的攻擊者可透過在CacheWarmer Cookie中提供特製的PHP物件，達成遠端程式碼執行。 【CVE-2026-28318】SolarWinds Serv-U Uncontrolled Resource Consumption Vulnerability (CVSS v3.1: 7.5) 【是否遭勒索軟體利用:未知】 SolarWind"
   },
   {
    "id": "cysh-135577",
@@ -16235,7 +16246,7 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-06-01 高三畢業提醒 申請入學志願填寫 ： 115.06.04( 四 ) 至 115.06.05( 五 ) 每日上午 9 時起至下午 9 時止，有報申請入學的同學要到甄選會系統去填志願，即使只有一個志願正取也要填志願序！ ※溫馨提醒：志願請依自己的喜好排序，與正備取無關，即備取的志願也可以排在正取前面。 分科測驗退費 ： 申請入學或四技申請已錄取欲取消報名、退費者，請依下列方式擇一辦理： 方式一：於6/12(五)中午12:00前持「不報名分科測驗切結書」親至教務處櫃檯辦理分科測驗退費(由家長代處理者需持學生身分證及家長身分證)。 方式二：於6/12(五)中午12:00前郵寄「不報名分科測驗切結書(簽名掃描檔)」至cyshreg@cysh.cy.edu.tw信箱，郵件標題註明「分科測驗退費」，申請者寄出郵件後，註冊組會回信確認收件，若無收到回信請來電教務處確認，並最遲於6/20前親至教務處領回退費。 ※逾期則視為不變更分科測驗報名相關資料，學校將依時程進行團體報名。 重補修提醒 ：有參加高三重補修者，請準時到校上課並穿著校服 ( 詳見校網公告 ) 。欲下修高一二重補修者請注意校網公告報名訊息， 7/20~7/21 報名。 圖書館通知 ：分科自修班於 6/1( 一 ) 下午 1:00 後開放，請自修同學前往圖書館四樓。 圖書館通知 ：同學學校的 google 帳號 @student.cysh.cy.edu.tw 於 115/12/31 前會刪除，請盡快完成資料備份，如有疑問請洽圖書館。 校務系統畢業後即無法登入，同學如有需留存學習歷程檔案資料，可自行下載備份，如有疑問請洽教務處。 未畢業的同學無法拿到畢業證書，如有需要 修業證書 ( 需滿 120 學分、需自備照片 )/ 成績證明書 ( 未達 120 學分者 ) ，請至教務處櫃台申請及洽詢。 貴班若有同學於「獨招、特殊選才、國外大學、國防大學、軍警校」錄取，或是放棄不就讀者，請告知導師及教務處，以利榜單彙整！ ~ 祝同學們 鵬程萬里 畢業快樂 ~ 教務處註冊組 20260601"
   },
   {
    "id": "cysh-135538",
@@ -16312,7 +16323,7 @@
    "source_category": "研習活動",
    "category": "研習活動",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 資訊媒體組 發佈日期 : 2026-05-29 最後更新日期 : 2026-05-29 【國立臺北大學】205期AI創新財報分析技術班 一、本校為推廣遠距學習AI創新課程，特開設「AI創新財報分析技術班」之遠距教學課程。 二、「AI創新財報分析技術班」為每週一天夜間上課的基礎課程，預計自115年7月7日開始，每週二晚上1900-2200上課，至115年8月4日結束，共計5週15小時；本課程由鄭宇廷老師授課，除了教導學員看懂財報，還學會運用ChatGPT、Copilot、Gemini、Napkin等尖端工具，將繁瑣的數據分析轉化為高效的決策輔助，並利用Gamma製作出專業等級的簡報，輕鬆讓AI成為財務分析的超強助手。 三、課程費用：報名費＄200，學費$5,700；三人或五人團報另有學費優惠，詳見簡章內容。 四、上課方式：採用遠距教學線上授課，無實體教室課程。 五、報名方式：即日起直接至課程網站線上報名，或利用附件報名表Email報名均可。 課程網址(另開新視窗) 。"
   },
   {
    "id": "cysh-136045",
@@ -16324,7 +16335,7 @@
    "source_category": "資安訊息",
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : Administrator 發佈日期 : 2026-05-29 轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202605-00000011 研究人員發現PostgreSQL存在11個高風險安全漏洞(CVE-2026-6472至CVE-2026-6479、CVE-2026-6575、CVE-2026-6637及CVE-2026-6638)，類型包含堆疊型緩衝區溢位(Stack-based Buffer Overflow)、SQL注入(SQL Injection)及整數迴繞(Integer Wraparound)等，最嚴重可使取得一般權限之遠端攻擊者執行任意程式碼，請儘速確認並進行修補。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] PostgreSQL 14版本 PostgreSQL 15版本 PostgreSQL 16版本 PostgreSQL 17版本 PostgreSQL 18版本 [建議措施:] 官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下： https://www.postgresql.org/about/news/postgresql-184-1710-1614-1518-and-1423-released-3297/"
   },
   {
    "id": "cysh-135534",
@@ -16505,7 +16516,7 @@
    "source_category": "最新消息",
    "category": "段考考試",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-05-28 最後更新日期 : 2026-07-16 重要通知 【 115 學年度分科測驗報名提醒】 115 年分科測驗考試時間為 115 年 7 月 11 日 ( 六 )~ 115 年 7 月 12 日 ( 日 ) ，如有意願報考的同學，請先於分科測驗校內報名調查表上填妥報考科目，並由班長收齊報名費繳交至教務處櫃台。 注意事項： 欲報考分科測驗者，請先於「 分科測驗校內報名調查表 」上填妥報考科目，欲加考、取消考科，請用紅筆更改。請班長於 4/17( 五 ) 中午前 將分科測驗校內報名調查表繳交至教務處櫃台。 (1) 請有意願報考或不確定是否報考的同學都先報考。 (2) 申請入學、四技申請還沒公佈者，一律先報考，後續若有錄取再取消報名及退費。 (3) 確定不報考者，請務必簽「 分科測驗不報考切結書 ( 附件一 ) 」並於 4/17( 五 ) 中午前繳交至教務處櫃台。 (4) 若確定校系不採計分科測驗成績，則無須報考分科測驗，但仍要完成「登記分發繳費」 (115/08/01~115/08/04 請考生自行完成登記分發繳費 - 「分發入學登記費」之程序 ) 。 4/20( 一 ) 發放分科測驗「 班級考生報名統計表 」。請班長於 4/24( 五 ) 中午前將「 報名費 」及「 班級考生報名統計表 」繳交至教務處櫃台。 ※ 報名費：報名費含「基本作業費」 200 元，及「考科測驗費」每選考一科 170 元；中低收入戶「基本作業費」 80 元，「考科測驗費」每選考一科 68 元，低收入戶考生費用全免。 5/22( 五 ) 發放分科測驗「 考生資料確認表 」。請同學簽名確認報考資料是否有誤，請班長於 5/28( 四 ) 中午前將「 考生資料確認表 」繳交至教務處櫃台。由於大考中心系統五月底才開放各校報名，為配合系統開放時間， 請長假的同學請自行留意通知回校領取「考生資料確認表」帶回給家長簽名。 (1) 若以上資料有錯誤，請用 紅筆 更改。 (2) 欲取消報名或退費者，最遲請於 6/12( 五 ) 中午 12:00 前至教務處註冊組辦理退費。 如因校系遞補程序而無法於截止日前辦理校內退費者，請先來電告知。 (6/3 繁星第八學群放榜； 6/14 四技申請第二階段放榜； 6/11 大學申請第二階段放榜 ) (3) 請假者請注意以上時程並自"
   },
   {
    "id": "cysh-135526",
@@ -16517,7 +16528,7 @@
    "source_category": "最新消息",
    "category": "升學",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-05-28 115 學年度大學分發「特種生 ( 原住民生或其他身分 ) 加分或聽覺障礙證明文件審查」申請須知 依「115學年度大學分發入學招生簡章」規定略以：…凡欲以特種生身分享加分優待者，均須提出特種生身分審查申請。…聽覺障礙達衛生福利部鑑定標準中度以上者，若欲申請不受高中英語聽力測驗成績檢定標準之限制，須繳交聽覺障礙證明文件進行審查。 請於 6/12( 五 ) 下午 5:00 前 至教務處註冊組辦理。 繳交證明文件及加分規定詳如下方附件。 未於規定期間提出特種生加分申請或審查未通過者，一律視為普通考生，不予加分優待。詳細規定及應上傳文件，請參照 招生簡章第5 至8 頁及第14 至16 頁說明 。 審查結果於6月30日公告在大學考試入學分發委員會網站，請自行查看。如有疑義，請於7月2日 下午 5:00 前至註冊組辦理提出申覆，申覆結果將於7月8日公告於大學考試入學分發委員會網站。 相關連結： https://www.uac.edu.tw/checkup.htm 身分細節提醒：「原住民學生不須上傳證明文件」，只需在系統中填報申請，考分會將進行電子查核；聽覺障礙生免繳件條件：若學生曾通過 115 學年度「繁星推薦」或「申請入學」之聽障審查者，可免繳證明文件。 註冊組20260528"
   },
   {
    "id": "cysh-135517",
@@ -16633,7 +16644,7 @@
    "source_category": "研習活動",
    "category": "研習活動",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 資訊媒體組 發佈日期 : 2026-05-27 最後更新日期 : 2026-05-27 【國立陽明交通大學】E數位素養講師培訓工作坊—探索數位素養新篇章 一、依據國立陽明交通大學115年5月21日陽明交大人社研字第1150020335號函辦理。 二、旨揭活動內容說明如下： (一)研習時間：115年7月8日（星期三）至7月9日（星期四）。 (二)研習地點：高雄商務會議中心3樓商道廳（高雄市前鎮區中山二路5號）。 (三)參與對象：已完成A1數位學習工作坊（一）、A2數位學習工作坊（二）及A3數位素養增能研習之教師。 (四)報名方式：即日起至115年6月22日（星期一）止，採 線上報名(另開新視窗) ，活動上限70名，額滿為止。 三、請惠予出席人員公（差）假及課務派代，其相關差旅費由貴校酌情核予支應。 四、檢附旨案實施計畫1份。"
   },
   {
    "id": "cysh-135495",
@@ -16697,7 +16708,7 @@
    "source_category": "升學資訊",
    "category": "升學",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-05-26 最後更新日期 : 2026-05-26 一、為推廣共享教育理念並深耕高中線上學習，國立陽明交通大學藉由 「ewant 育網」平台，整合大學磨課師（MOOCs）課程，並 與「中華國際創新教育資源交流協會」合作推動「第二十 五期中學人才培育計畫」。旨在提供中學生探索專業領域、提升核心素養之優質先修管道。 二、計畫說明與開課資訊： (一)開設計畫包括物理科學、資訊、人文社會、生醫、中醫 藥、心理諮商、醫學心理、應用物理、數學、化學、機 電工程、太空科學共19門課程，詳細內容請參閱隨函附發之簡章及海報。 (二)開課期間：自115年6月29日起至115年8月28日止。 三、報名與審查說明： (一)採「先報名先審查」制，每學科計畫限額50名，額滿即 截止；報名期限至115年6月26日止。 (二)個人報名方式：請逕至計畫網站（ https://ewanths.nycu.edu.tw ）辦理報名與進度查詢。 (三)個人團報方式：由學生自行至報名網站發起個人團報， 滿五人以上可免繳審查費。 (四)學校團報方式：可由學校老師至計畫報名網站發起學校 團報，經審核後該校學生不計人數可免繳審查費。 (五)特殊身分補助：凡家境清寒、中低收入戶或低收入戶學 生，檢附相關證明文件後，各計畫審查費及課程費全額減免。 四、上課方式：經錄取後，需至國立陽明交通大學ewant育網開放教育平台修 讀線上課程、與教授線上互動、完成線上作業測驗，並於期末與教授面授評量，於結業並通過各計畫評量標準，將頒發結業證書、區塊鏈證書。檢附計畫海報及簡章供參。"
   },
   {
    "id": "cysh-135488",
@@ -16981,7 +16992,7 @@
    "source_category": "升學資訊",
    "category": "升學",
    "first_seen": "2026-08-11T12:52:49+08:00",
-   "snippet": ""
+   "snippet": "作者 : 註冊組 發佈日期 : 2026-05-22 最後更新日期 : 2026-05-22 一、為協助學生自主學習，國立中興大學開設大學先修課程，協助學生提升自我，超前學習，為銜接大學課程、職涯試探預作準備。 二、參加對象：各高中職學校學生。 三、課程說明： (一)線上課程共計20門，採用「非同步線上教學」，系統24 小時開放，學生可彈性上網自主學習。完整閱讀課程全部章節，符合研讀時數規定，並通過課後測驗，始可獲得修課證明。 (二)學生獲得先修課程修課證明（學習點數），於就讀國立中興大學後，可申請採計通識教育中心學習點數，就學期間累積點數符合規定，得採計為通識學分。 (三)如課程報名人數超過容量，以經濟不利學生、國立中興大學策略聯盟學校學生優先。 四、課程資訊： (一)報名時間：自115年6月2日上午10時起至115年6月9日下 午4時止。 (二)學習時間：115年7月1日起至115年7月31日止。 (三)修課證明：115年8月18日上午10時起至115年8月31日下 午4時止開放下載修課證明。"
   },
   {
    "id": "cysh-135468",
