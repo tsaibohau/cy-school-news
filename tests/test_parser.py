@@ -4,7 +4,13 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
-from scrape import extract_items, classify, normalize_url, extract_article_snippet, extract_article_date, display_date, coverage_gaps, configured_categories, page_entries, should_fetch, TW_TZ, list_page_with_number, deep_stop_reason, split_recent, load_existing_items  # noqa: E402
+from scrape import (extract_items, classify, normalize_url, extract_article_snippet,
+                    extract_article_date, extract_article_date_result, display_date,
+                    coverage_gaps, configured_categories, page_entries, should_fetch,
+                    TW_TZ, list_page_with_number, deep_stop_reason, split_recent,
+                    load_existing_items, is_mojibake, _category_rank,
+                    merge_collected_item, validate_snapshot_items,
+                    validate_history_capacity, merge_title)  # noqa: E402
 from notify import push_topics, summarize, personal_topics, SUMMARY_THRESHOLD  # noqa: E402
 from schoolcal import build_ics, events_on  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
@@ -133,7 +139,7 @@ def run():
     print("✓ 標題隱形空白清理")
 
     assert extract_article_date(ARTICLE_MDATE_HTML) == "2026-08-09"
-    assert extract_article_date(ARTICLE_BODYDATE_HTML) == "2026-08-03", "單位數月日也要能解析並補零"
+    assert extract_article_date(ARTICLE_BODYDATE_HTML) == "", "內文活動日期不可冒充公告日期"
     assert extract_article_date(ARTICLE_NODATE_HTML) == ""
     assert extract_article_date(ARTICLE_PUBDATE_HTML) == "2026-08-07", "發佈日期標籤應最優先"
     print("✓ 文章頁日期補齊")
@@ -272,11 +278,61 @@ def run():
     assert extract_article_date(fut_article) == "", "發佈日期標籤的未來日期也要擋"
     mixed = ('<html><body><p>發佈日期 : ' + future +
              '</p><div class="mpgdetail">已於 2026-08-01 公告。</div></body></html>')
-    assert extract_article_date(mixed) == "2026-08-01", "未來日期擋掉後應退回其他來源"
+    assert extract_article_date(mixed) == "", "未來 publication 日期不可退回內文事件日期"
     tom_article = ('<html><body><p>發佈日期 : ' + tomorrow +
                    '</p><div class="mpgdetail">內容。</div></body></html>')
     assert extract_article_date(tom_article) == tomorrow, "明天(含)以內仍接受"
+    assert extract_article_date_result(ARTICLE_PUBDATE_HTML)["date_source"] == "publication"
     print("✓ 未來日期護欄")
+
+    assert classify("考試訊息") == "段考考試", "考試訊息不可落入一般"
+    assert not is_mojibake("測試公告")
+    assert not is_mojibake("café")
+    assert is_mojibake("cafÃ©")
+    assert is_mojibake("æ¸¬è©¦")
+    assert is_mojibake("ä¸­æ–‡")
+    assert is_mojibake("bad\ufffdtitle")
+    assert not is_mojibake("plain English title")
+    persisted = {"title": "乾淨中文"}
+    merge_title(persisted, "æ¸¬è©¦")
+    assert persisted["title"] == "乾淨中文"
+    damaged = {"title": "æ¸¬è©¦"}
+    merge_title(damaged, "猜測修復")
+    assert damaged["title"] == "æ¸¬è©¦"
+    merge_title(damaged, "權威修復", authoritative=True)
+    assert damaged["title"] == "權威修復"
+    print("✓ mojibake 與強分類證據")
+
+    # 以真實 source URL 進入 _category_rank，再反轉 traversal 順序。
+    candidates = [
+        {"id": "cysh-134736", "title": "x", "source_category": "獎助學金",
+         "_source_url": "https://www.cysh.cy.edu.tw/p/403-1008-17-1.php"},
+        {"id": "cysh-134736", "title": "x", "source_category": "一般",
+         "_source_url": "https://www.cysh.cy.edu.tw/p/403-1008-168-1.php"},
+    ]
+    assert _category_rank(candidates[0]["_source_url"]) < _category_rank(candidates[1]["_source_url"])
+    merged_a, merged_b = {}, {}
+    for item in candidates:
+        merge_collected_item(merged_a, item.copy())
+    for item in reversed(candidates):
+        merge_collected_item(merged_b, item.copy())
+    assert merged_a["cysh-134736"]["source_category"] == merged_b["cysh-134736"]["source_category"]
+    assert merged_a["cysh-134736"]["source_category"] == "獎助學金"
+    clean = {"id": "x", "title": "乾淨標題", "date": "2026-08-01"}
+    validate_snapshot_items([clean], "test")
+    try:
+        validate_snapshot_items([{"id": "x", "title": "æ¸¬è©¦"}], "test")
+    except RuntimeError:
+        pass
+    else:
+        raise AssertionError("corrupted title must fail closed")
+    try:
+        validate_history_capacity([{"id": str(i), "title": "ok"} for i in range(3)], 2)
+    except RuntimeError:
+        pass
+    else:
+        raise AssertionError("max_items overflow must fail closed")
+    print("✓ source_category 順序與 snapshot safety")
 
     import json as _json
     import tempfile
