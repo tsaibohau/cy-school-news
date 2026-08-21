@@ -63,8 +63,16 @@ assert.throws(() => aOutbox.ack([aMutation.id], "2026-01-04T00:00:00Z", "user-b"
 assert.equal(aOutbox.pending().length, 1);
 assert.equal(aOutbox.ack([aMutation.id], "2026-01-04T00:00:00Z").pending.length, 0);
 
-const legacyStore = { data: { "cyNews.accountSync.v1": JSON.stringify({ account_id: "", pending: [{ id: "legacy" }] }) }, getItem(k) { return this.data[k] || null; }, setItem(k, v) { this.data[k] = v; } };
-assert.equal(new Sync.Outbox(legacyStore).pending()[0].account_id, Sync.ANONYMOUS_ACCOUNT);
+const legacyStore = { data: { "cyNews.accountSync.v1": JSON.stringify({ account_id: "", pending: [{ id: "legacy" }] }) }, getItem(k) { return this.data[k] || null; }, setItem(k, v) { this.data[k] = v; }, removeItem(k) { delete this.data[k]; } };
+assert.equal(new Sync.Outbox(legacyStore).pending().length, 0);
+assert(legacyStore.data["cyNews.accountSync.v1"], "unknown legacy owner must be retained");
+const anonymousLegacy = { data: { "cyNews.accountSync.v1": JSON.stringify({ account_id: "anonymous", pending: [{ id: "legacy" }] }) }, getItem(k) { return this.data[k] || null; }, setItem(k, v) { this.data[k] = v; }, removeItem(k) { delete this.data[k]; } };
+assert.equal(new Sync.Outbox(anonymousLegacy).pending()[0].account_id, Sync.ANONYMOUS_ACCOUNT);
+assert(!anonymousLegacy.data["cyNews.accountSync.v1"], "migrated legacy source is removed");
+assert.equal(new Sync.Outbox(anonymousLegacy).pending().length, 1, "migration is idempotent");
+const accountLegacy = { data: { "cyNews.accountSync.v1": JSON.stringify({ account_id: "user-c", pending: [{ id: "c1" }] }) }, getItem(k) { return this.data[k] || null; }, setItem(k, v) { this.data[k] = v; }, removeItem(k) { delete this.data[k]; } };
+assert.equal(new Sync.Outbox(accountLegacy, "user-c").pending()[0].account_id, "user-c");
+assert.equal(new Sync.Outbox(accountLegacy, "user-d").pending().length, 0, "another account cannot adopt legacy data");
 assert.equal(aOutbox.ack([aMutation.id], "2026-01-04T00:00:00Z").pending.length, 0);
 
 const anonymous = {
@@ -89,3 +97,40 @@ assert(aAgain.subscriptions.some(x => x.keyword === "A"));
 assert.equal(store.getItem("cyNews.notificationState"), notificationState);
 
 console.log("Account Sync V1.1 core tests passed");
+
+// V1.2 durable lifecycle: state survives reconstruction, anonymous baseline
+// imports once per account, and account edits never overwrite that baseline.
+const durableStore = {
+  data: {},
+  getItem(k) { return this.data[k] || null; },
+  setItem(k, v) { this.data[k] = v; },
+  removeItem(k) { delete this.data[k]; },
+};
+durableStore.setItem("cyNews.notificationState", notificationState);
+const baseline = { subscriptions: [{ keyword: "X", updated_at: "2026-02-01T00:00:00Z" }], reads: [], preferences: { schema_version: 1, preferences: {} } };
+let durable = new Sync.AccountLifecycle(baseline, durableStore);
+durable.login("user-a");
+durable.active_state.subscriptions.push({ keyword: "A-only", updated_at: "2026-02-02T00:00:00Z" });
+durable.active_state.subscriptions.push({ keyword: "X", deleted_at: "2026-02-03T00:00:00Z", updated_at: "2026-02-03T00:00:00Z" });
+durable.logout();
+assert(durable.state().subscriptions.some(x => x.keyword === "X"));
+assert(!durable.state().subscriptions.some(x => x.keyword === "A-only"));
+durable = new Sync.AccountLifecycle(null, { storage: durableStore, activeAccountId: "user-a" });
+assert(durable.state().subscriptions.some(x => x.keyword === "A-only"));
+assert(durable.state().subscriptions.some(x => x.keyword === "X" && x.deleted_at));
+durable.logout();
+durable.login("user-b");
+assert(!durable.state().subscriptions.some(x => x.keyword === "A-only"));
+durable.logout();
+durable = new Sync.AccountLifecycle(null, { storage: durableStore, activeAccountId: "user-a" });
+assert(durable.state().subscriptions.some(x => x.keyword === "X" && x.deleted_at), "A tombstone survives reload and re-login");
+durable.logout();
+durable.updateAnonymous({ subscriptions: [{ keyword: "anonymous-new", updated_at: "2026-02-04T00:00:00Z" }], reads: [], preferences: { schema_version: 1, preferences: {} } });
+durable = new Sync.AccountLifecycle(null, durableStore);
+assert(durable.state().subscriptions.some(x => x.keyword === "anonymous-new"));
+
+durableStore.setItem(Sync.STATE_KEY_PREFIX + "user-corrupt", "not-json");
+const corrupt = new Sync.AccountLifecycle(null, { storage: durableStore, activeAccountId: "user-corrupt" });
+assert.deepEqual(corrupt.state(), { subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: {} } });
+assert.equal(durableStore.getItem("cyNews.notificationState"), notificationState);
+console.log("Account Sync V1.2 durable lifecycle tests passed");

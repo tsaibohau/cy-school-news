@@ -20,12 +20,21 @@
 
 ## Sync semantics
 
-- local mutation 先更新 UI，再進 `cyNews.accountSync.v1` outbox；網路恢復後重試。
+- local mutation 先更新 UI，再進 `cyNews.accountSync.v1:<account UUID>` outbox；anonymous 使用獨立 namespace，網路恢復後重試。
 - subscription identity 是 trim + `toLocaleLowerCase("zh-TW")` 後的 keyword；刪除以 tombstone 保留，避免 stale device 復活。
 - reads 以 read union 合併，read 是 monotonic。
 - preferences 以 `updated_at` last-write-wins。
 - first login merge anonymous local state 與 remote state，但不改 Notification V3 delivery state。
 - sign out 時應移除 active account-derived state，恢復匿名 backup；Notification permission 與公共快取不動。
+
+## Durable local state (V1.2)
+
+- sync-domain state 使用 `cyNews.accountState.v1:anonymous`、
+  `cyNews.accountState.v1:<auth user UUID>` 與 `cyNews.accountState.v1:meta`。
+- anonymous baseline 在該裝置對某帳戶第一次 adoption 時匯入一次；之後登入只合併該帳戶持久狀態與 remote，避免 tombstone 被舊匿名資料復活。
+- lifecycle reload 可恢復指定 authenticated account；logout 恢復原 anonymous baseline。
+- malformed state 只降級為該 account 的空 sync state，不刪除其他 localStorage，也不觸碰 public data 或 Notification V3 state。
+- legacy outbox 只有明確 owner（`anonymous` 或 matching auth UUID）才會一次性遷移；空/未知 owner fail closed 並保留原資料。
 
 ## 不可快取
 
