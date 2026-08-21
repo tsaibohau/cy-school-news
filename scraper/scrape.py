@@ -432,11 +432,16 @@ def extract_article_date(html: str) -> str:
     return extract_article_date_result(html).get("date", "")
 
 
+def decode_response(response) -> str:
+    """Decode HTTP bytes using the scraper's validated requests fallback."""
+    response.encoding = response.apparent_encoding or "utf-8"
+    return response.text
+
+
 def fetch(session: requests.Session, url: str) -> str:
     resp = session.get(url, timeout=CONFIG["timeout_sec"])
     resp.raise_for_status()
-    resp.encoding = resp.apparent_encoding or "utf-8"
-    return resp.text
+    return decode_response(resp)
 
 
 def load_existing_items(data_path: Path, archive_path: Path) -> dict:

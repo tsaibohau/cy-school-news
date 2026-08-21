@@ -21,7 +21,7 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scraper"))
-from scrape import extract_items, page_entries  # noqa: E402
+from scrape import extract_items, page_entries, decode_response  # noqa: E402
 
 DELAY = 1.5
 TIMEOUT = 20
@@ -42,8 +42,7 @@ def stored_ids():
 def request_page(session, url):
     try:
         response = session.get(url, timeout=TIMEOUT)
-        response.encoding = response.apparent_encoding or "utf-8"
-        return response, response.text, ""
+        return response, decode_response(response), ""
     except Exception as exc:  # pragma: no cover - network dependent
         return None, "", repr(exc)
 

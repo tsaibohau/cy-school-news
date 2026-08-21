@@ -10,12 +10,25 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     TW_TZ, list_page_with_number, deep_stop_reason, split_recent,
                     load_existing_items, is_mojibake, _category_rank,
                     merge_collected_item, validate_snapshot_items,
-                    validate_history_capacity, merge_title)  # noqa: E402
+                    validate_history_capacity, merge_title, decode_response)  # noqa: E402
 from notify import push_topics, summarize, personal_topics, SUMMARY_THRESHOLD  # noqa: E402
 from schoolcal import build_ics, events_on  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
 
 SCHOOL = {"id": "cysh", "short": "嘉中", "base": "https://www.cysh.cy.edu.tw", "unit": "1008"}
+
+
+class _Response:
+    content = "中文".encode("utf-8")
+    apparent_encoding = "utf-8"
+    encoding = None
+    @property
+    def text(self):
+        return self.content.decode(self.encoding or "utf-8")
+
+
+_decoded = _Response()
+assert decode_response(_decoded) == "中文"
 
 LIST_HTML = """
 <html><head><title>行政單位&gt;教務處&gt;榮譽榜</title></head><body>
