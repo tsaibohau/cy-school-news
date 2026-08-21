@@ -407,8 +407,12 @@ async function testPermissionFailureDoesNotPersist() {
 }
 
 function testServiceWorkerContract() {
-  assert.match(swSource, /cy-news-v7/);
+  assert.match(swSource, /cy-news-v8/);
+  assert.doesNotMatch(swSource, /cy-news-v7/);
   assert.match(swSource, /\.\/notification-state\.js/);
+  assert.match(swSource, /\.\/supabase-sync\.js/);
+  assert.match(swSource, /\.\/account-auth\.js/);
+  assert.match(swSource, /searchParams\.has\("code"\)/);
   assert.match(swSource, /X-CyNews-Data-Source/);
   assert.match(swSource, /markDataSource\(res, "network"\)/);
   assert.match(swSource, /markDataSource\(hit, "cache"\)/);

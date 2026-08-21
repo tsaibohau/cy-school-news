@@ -21,6 +21,7 @@
     var LS_SEEN = "cyNews.lastSeen";
     var PAGE_SIZE = 200;  // 最新清單一次渲染的則數,避免一口氣塞入上千張卡片
     var notificationState = NotificationState.load();
+    var queueAccountMutation = function () {};
 
     var state = {
       data: null,
@@ -44,7 +45,101 @@
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
       btnRefresh: $("btnRefresh"),
+      accountState: $("accountState"), accountLogin: $("accountLogin"),
+      accountForm: $("accountForm"), accountEmail: $("accountEmail"),
+      accountLogout: $("accountLogout"),
     };
+
+    function setupAccountSync() {
+      if (!el.accountState || !window.CyNewsAccountAuth || !window.CyNewsAccountSync) return;
+      var auth = window.CyNewsAccountAuth.createController();
+      var lifecycle = null;
+      var accountAdapter = null;
+      var accountOutbox = null;
+      function status(text) { el.accountState.textContent = text; }
+      function projectSubscriptions(rows) {
+        var now = new Date().toISOString();
+        var existing = {};
+        notificationState.subscriptions.forEach(function (sub) {
+          existing[sub.keyword.toLocaleLowerCase("zh-TW")] = sub;
+        });
+        return (rows || []).filter(function (row) { return !row.deleted_at && row.keyword; }).map(function (row) {
+          var key = String(row.keyword).trim().toLocaleLowerCase("zh-TW");
+          var old = existing[key];
+          /* A subscription arriving from another device is new on this device:
+             establish a local notification baseline now, never at its server age. */
+          return { id: old ? old.id : String(row.id || "sub-" + key), keyword: row.keyword,
+            createdAt: old ? old.createdAt : now };
+        });
+      }
+      function applyRemote(remote) {
+        var merged = lifecycle.login(lifecycle.active_account_id, remote || {});
+        notificationState.subscriptions = projectSubscriptions(merged.subscriptions);
+        NotificationState.save(notificationState);
+        renderSub(); renderBadge();
+        return merged;
+      }
+      function restoreAnonymous() {
+        if (!lifecycle) return;
+        var anonymousState = lifecycle.logout();
+        notificationState.subscriptions = projectSubscriptions(anonymousState.subscriptions);
+        NotificationState.save(notificationState);
+        renderSub(); renderBadge();
+      }
+      function sync(uid) {
+        status("同步中");
+        auth.getClient().then(function (client) {
+          lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
+            subscriptions: notificationState.subscriptions, reads: [],
+            preferences: { schema_version: 1, preferences: {} },
+          }, localStorage, uid);
+          accountAdapter = window.CyNewsSupabaseSync.createAdapter(client);
+          accountOutbox = new window.CyNewsAccountSync.Outbox(localStorage, uid);
+          return accountAdapter.fetchRemoteState().then(function (remote) {
+            var merged = applyRemote(remote);
+            return accountAdapter.pushState(merged).then(function () {
+              return accountAdapter.drain(accountOutbox, function (item) {
+                return accountAdapter.sendMutation(item);
+              });
+            });
+          });
+        }).then(function () { status("已同步"); el.accountLogin.hidden = true; el.accountForm.hidden = true; el.accountLogout.hidden = false; })
+          .catch(function () { status("離線，稍後同步"); });
+      }
+      queueAccountMutation = function (type, payload) {
+        if (!accountOutbox || !lifecycle || lifecycle.active_account_id === window.CyNewsAccountSync.ANONYMOUS_ACCOUNT) return;
+        accountOutbox.enqueue({ type: type, payload: payload });
+        status("等待同步");
+      };
+      function handleSession(session) {
+        var uid = session && session.user && session.user.id;
+        if (typeof uid === "string" && uid) sync(uid);
+        else { restoreAnonymous(); lifecycle = null; status("未登入"); el.accountLogin.hidden = false; el.accountLogout.hidden = true; }
+      }
+      el.accountLogin.addEventListener("click", function () {
+        el.accountLogin.hidden = true; el.accountForm.hidden = false; el.accountEmail.focus();
+      });
+      el.accountForm.addEventListener("submit", function (event) {
+        event.preventDefault(); status("寄送登入連結中");
+        auth.sendMagicLink(el.accountEmail.value).then(function (result) {
+          if (result && result.error) throw result.error;
+          status("請查看信箱");
+        }).catch(function () { status("同步失敗"); });
+      });
+      el.accountLogout.addEventListener("click", function () {
+        status("同步中");
+        auth.signOut().then(function () {
+          restoreAnonymous();
+          status("未登入"); el.accountLogin.hidden = false; el.accountLogout.hidden = true;
+        }).catch(function () { status("同步失敗"); });
+      });
+      auth.getClient().then(function (client) {
+        return client.auth.getSession().then(function (result) {
+          if (!result.error) handleSession(result.data && result.data.session);
+        });
+      }).catch(function () { status("未登入"); });
+      auth.onAuthStateChange(function (_event, session) { handleSession(session); }).catch(function () {});
+    }
 
     function syncSubscriptions() {
       state.subscriptions = notificationState.subscriptions;
@@ -320,6 +415,7 @@
       var added = NotificationState.addSubscription(notificationState, kw);
       if (!added) { el.kwInput.value = ""; return; }
       NotificationState.save(notificationState);
+      queueAccountMutation("subscription.upsert", added);
       syncSubscriptions();
       el.kwInput.value = "";
       renderSub(); renderBadge();
@@ -329,6 +425,7 @@
       if (!b) return;
       if (NotificationState.removeSubscription(notificationState, b.dataset.id)) {
         NotificationState.save(notificationState);
+        queueAccountMutation("subscription.delete", { id: b.dataset.id, keyword: b.closest(".kw-chip").textContent.replace("×", "").trim(), deleted_at: new Date().toISOString(), updated_at: new Date().toISOString() });
       }
       syncSubscriptions();
       renderSub(); renderBadge();
@@ -393,6 +490,7 @@
     }
 
     refreshNotifyState();
+    setupAccountSync();
     fetchData();
   }
 

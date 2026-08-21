@@ -6,6 +6,8 @@ const migration = fs.readFileSync(path.join(root, "supabase/migrations/001_accou
 for (const table of ["user_subscriptions", "user_reads", "user_preferences"]) {
   assert(migration.includes(`alter table public.${table} enable row level security`));
   assert(migration.includes(`auth.uid() = user_id`));
+  assert(migration.includes(`revoke all on public.${table} from anon`));
+  assert(migration.includes("authenticated"));
 }
 const tracked = [];
 function walk(dir) {

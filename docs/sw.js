@@ -1,8 +1,8 @@
 /* 嘉校快訊 Service Worker:離線快取殼層,資料採網路優先 */
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
-var CACHE = "cy-news-v7";
-var SHELL = ["./", "./index.html", "./style.css", "./app.js", "./notification-state.js", "./manifest.webmanifest",
+var CACHE = "cy-news-v8";
+var SHELL = ["./", "./index.html", "./style.css", "./app.js", "./notification-state.js", "./supabase-sync.js", "./account-auth.js", "./manifest.webmanifest",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {
@@ -25,6 +25,9 @@ self.addEventListener("fetch", function (e) {
   if (req.method !== "GET") return;
   var url = new URL(req.url);
   if (url.origin !== location.origin) return;
+  /* Never cache auth callback URLs or token-bearing query strings. */
+  if (url.pathname.indexOf("/auth/") !== -1 || url.searchParams.has("code") ||
+      url.searchParams.has("access_token") || url.searchParams.has("refresh_token")) return;
 
   if (url.pathname.indexOf("/data/") !== -1) {
     // 資料(announcements / archive):網路優先,離線時退回快取。
