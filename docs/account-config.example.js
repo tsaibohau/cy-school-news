@@ -1,5 +1,6 @@
 /* Copy to a local, untracked configuration only after provisioning a dedicated
- * Supabase project. Never commit service_role or database credentials. */
+ * Supabase project. Google Client Secret belongs only in Supabase Auth > Google;
+ * never commit service_role, database credentials, OAuth secrets, or tokens. */
 window.CYNEWS_ACCOUNT_CONFIG = {
   supabaseUrl: "",
   supabaseAnonKey: "",

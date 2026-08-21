@@ -46,7 +46,6 @@
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
       btnRefresh: $("btnRefresh"),
       accountState: $("accountState"), accountLogin: $("accountLogin"),
-      accountForm: $("accountForm"), accountEmail: $("accountEmail"),
       accountLogout: $("accountLogout"),
     };
 
@@ -61,6 +60,7 @@
       var lifecycle = null;
       var accountAdapter = null;
       var accountOutbox = null;
+      var syncGeneration = 0;
       function status(text) { el.accountState.textContent = text; }
       function projectSubscriptions(rows) {
         var now = new Date().toISOString();
@@ -85,6 +85,7 @@
         return merged;
       }
       function restoreAnonymous() {
+        syncGeneration += 1;
         if (!lifecycle) return;
         var anonymousState = lifecycle.logout();
         notificationState.subscriptions = projectSubscriptions(anonymousState.subscriptions);
@@ -92,8 +93,13 @@
         renderSub(); renderBadge();
       }
       function sync(uid) {
+        var generation = ++syncGeneration;
+        function stillCurrent() {
+          if (generation !== syncGeneration) throw new Error("account sync superseded");
+        }
         status("同步中");
         auth.getClient().then(function (client) {
+          stillCurrent();
           lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
             subscriptions: notificationState.subscriptions, reads: [],
             preferences: { schema_version: 1, preferences: {} },
@@ -101,49 +107,48 @@
           accountAdapter = window.CyNewsSupabaseSync.createAdapter(client);
           accountOutbox = new window.CyNewsAccountSync.Outbox(localStorage, uid);
           return accountAdapter.fetchRemoteState().then(function (remote) {
+            stillCurrent();
             var merged = applyRemote(remote);
             return accountAdapter.pushState(merged).then(function () {
+              stillCurrent();
               return accountAdapter.drain(accountOutbox, function (item) {
                 return accountAdapter.sendMutation(item);
               });
             });
           });
-        }).then(function () { status("已同步"); el.accountLogin.hidden = true; el.accountForm.hidden = true; el.accountLogout.hidden = false; })
-          .catch(function () { status("離線，稍後同步"); });
+        }).then(function () { stillCurrent(); status("已同步"); el.accountLogin.hidden = true; el.accountLogout.hidden = false; })
+          .catch(function () { if (generation === syncGeneration) status("離線，稍後同步"); });
       }
       queueAccountMutation = function (type, payload) {
         if (!accountOutbox || !lifecycle || lifecycle.active_account_id === window.CyNewsAccountSync.ANONYMOUS_ACCOUNT) return;
         accountOutbox.enqueue({ type: type, payload: payload });
         status("等待同步");
       };
-      function handleSession(session) {
-        var uid = session && session.user && session.user.id;
-        if (typeof uid === "string" && uid) sync(uid);
-        else { restoreAnonymous(); lifecycle = null; status("未登入"); el.accountLogin.hidden = false; el.accountLogout.hidden = true; }
+      function handleVerifiedSession() {
+        return auth.getVerifiedSession().then(function (session) {
+          var uid = session && session.user && session.user.id;
+          if (typeof uid === "string" && uid) sync(uid);
+          else { restoreAnonymous(); lifecycle = null; status("未登入"); el.accountLogin.hidden = false; el.accountLogout.hidden = true; }
+        });
       }
       el.accountLogin.addEventListener("click", function () {
-        el.accountLogin.hidden = true; el.accountForm.hidden = false; el.accountEmail.focus();
-      });
-      el.accountForm.addEventListener("submit", function (event) {
-        event.preventDefault(); status("寄送登入連結中");
-        auth.sendMagicLink(el.accountEmail.value).then(function (result) {
+        status("前往 Google 登入中");
+        auth.signInWithGoogle().then(function (result) {
           if (result && result.error) throw result.error;
-          status("請查看信箱");
-        }).catch(function () { status("同步失敗"); });
+        }).catch(function () { status("登入失敗，請稍後再試"); });
       });
       el.accountLogout.addEventListener("click", function () {
+        syncGeneration += 1;
         status("同步中");
         auth.signOut().then(function () {
           restoreAnonymous();
           status("未登入"); el.accountLogin.hidden = false; el.accountLogout.hidden = true;
         }).catch(function () { status("同步失敗"); });
       });
-      auth.getClient().then(function (client) {
-        return client.auth.getSession().then(function (result) {
-          if (!result.error) handleSession(result.data && result.data.session);
-        });
-      }).catch(function () { status("未登入"); });
-      auth.onAuthStateChange(function (_event, session) { handleSession(session); }).catch(function () {});
+      auth.getClient().then(function () { return handleVerifiedSession(); })
+        .catch(function () { status("未登入"); });
+      /* Ignore callback URL parameters and event payloads; re-read the verified session. */
+      auth.onAuthStateChange(function () { handleVerifiedSession().catch(function () {}); }).catch(function () {});
     }
 
     function syncSubscriptions() {

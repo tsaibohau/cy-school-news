@@ -7,14 +7,34 @@
   "use strict";
   var CLIENT_VERSION = "2.112.3";
   var CLIENT_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@" + CLIENT_VERSION + "/+esm";
-  function verifiedUid(client) {
+  function verifiedSession(client) {
     return client.auth.getSession().then(function (result) {
       if (result.error) throw result.error;
       var session = result.data && result.data.session;
       var uid = session && session.user && session.user.id;
       if (typeof uid !== "string" || !uid.trim()) return null;
-      return uid;
+      return session;
     });
+  }
+  function verifiedUid(client) { return verifiedSession(client).then(function (session) { return session && session.user.id; }); }
+  function normalizeAppUrl(value, allowCallbackParameters) {
+    if (typeof value !== "string" || !value.trim()) return null;
+    try {
+      var url = new URL(value);
+      if ((url.protocol !== "https:" && url.protocol !== "http:") || url.username || url.password || (!allowCallbackParameters && (url.search || url.hash))) return null;
+      var pathname = url.pathname || "/";
+      if (!pathname.endsWith("/")) pathname += "/";
+      return url.origin + pathname;
+    } catch (_) {
+      return null;
+    }
+  }
+  function approvedRedirect(config, locationLike) {
+    config = config || {};
+    var allowed = [config.productionRedirectUrl, config.localhostRedirectUrl].map(function (url) { return normalizeAppUrl(url, false); }).filter(Boolean);
+    var current = locationLike || (typeof window !== "undefined" ? window.location : null);
+    var currentUrl = normalizeAppUrl(current && typeof current.href === "string" ? current.href : "", true);
+    return currentUrl && allowed.find(function (url) { return url === currentUrl; }) || null;
   }
   function createController(options) {
     options = options || {};
@@ -35,10 +55,14 @@
       clientUrl: CLIENT_URL,
       isConfigured: function () { return !!(config.supabaseUrl && config.supabaseAnonKey); },
       getClient: getClient,
+      getVerifiedSession: function () { return getClient().then(verifiedSession); },
       getVerifiedUid: function () { return getClient().then(verifiedUid); },
-      sendMagicLink: function (email, redirectTo) {
+      getApprovedRedirectTo: function () { return approvedRedirect(config, options.location); },
+      signInWithGoogle: function () {
+        var redirectTo = approvedRedirect(config, options.location);
+        if (!redirectTo) return Promise.reject(new Error("current app URL is not allow-listed"));
         return getClient().then(function (c) {
-          return c.auth.signInWithOtp({ email: String(email || "").trim(), options: { emailRedirectTo: redirectTo || location.href } });
+          return c.auth.signInWithOAuth({ provider: "google", options: { redirectTo: redirectTo } });
         });
       },
       signOut: function () {
@@ -49,5 +73,5 @@
       },
     };
   }
-  return { CLIENT_VERSION: CLIENT_VERSION, CLIENT_URL: CLIENT_URL, verifiedUid: verifiedUid, createController: createController };
+  return { CLIENT_VERSION: CLIENT_VERSION, CLIENT_URL: CLIENT_URL, verifiedSession: verifiedSession, verifiedUid: verifiedUid, normalizeAppUrl: normalizeAppUrl, approvedRedirect: approvedRedirect, createController: createController };
 });

@@ -13,10 +13,10 @@
 
 1. 建立專用、免費 tier Supabase project。
 2. 執行 `supabase/migrations/001_account_sync_v1.sql`。
-3. 設定 magic-link / email OTP redirect URLs：正式 GitHub Pages URL 與 localhost 開發 URL。
+3. 啟用 Google provider。Google Cloud Web Client 的 Authorized redirect URI 使用 Supabase Dashboard Google provider 頁面顯示的 callback URL；Supabase redirect allow-list 使用正式 GitHub Pages URL 與 localhost 開發 URL。
 4. 只把 project URL 與 anon/publishable key 放入公開設定；禁止 service-role key、database password 或其他 private secret 進 frontend。
 
-目前 repository 沒有既有 Supabase project URL/key，因此本分支只提供 migration 與 deterministic sync core；未偽造 production 設定，也未把登入 UI 強行開啟。
+目前 repository 沒有既有 Supabase project URL/key，因此本分支只提供 migration 與 deterministic sync core；Google 登入 UI 僅在 public config 有效時顯示。Client Secret 只放在 Supabase provider 設定，不能進 frontend 或 repository。
 
 ## Sync semantics
 
