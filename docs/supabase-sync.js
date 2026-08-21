@@ -7,6 +7,10 @@
   "use strict";
 
   var TABLES = { subscriptions: "user_subscriptions", reads: "user_reads", preferences: "user_preferences" };
+  var CONFLICT_TARGETS = {};
+  CONFLICT_TARGETS[TABLES.subscriptions] = "user_id,normalized_keyword";
+  CONFLICT_TARGETS[TABLES.reads] = "user_id,announcement_id";
+  CONFLICT_TARGETS[TABLES.preferences] = "user_id";
   function requireUid(session) {
     var uid = session && session.user && session.user.id;
     if (typeof uid !== "string" || !uid.trim()) throw new Error("verified session user id required");
@@ -57,7 +61,7 @@
         return sessionUid(client).then(function (uid) {
           var payload = (Array.isArray(values) ? values : []).map(function (row) { return withOwner(dbRow(table, row), uid); });
           if (!payload.length) return [];
-          return client.from(table).upsert(payload, { onConflict: options.onConflict && options.onConflict[table] }).then(rows);
+          return client.from(table).upsert(payload, { onConflict: CONFLICT_TARGETS[table] }).then(rows);
         });
       },
       pushState: function (state) {
@@ -77,7 +81,7 @@
           if (!mutation || mutation.account_id !== uid) throw new Error("mutation/session identity changed");
           var table = mutation.type === "subscription.upsert" || mutation.type === "subscription.delete" ? TABLES.subscriptions :
             mutation.type === "read.upsert" ? TABLES.reads : TABLES.preferences;
-          return client.from(table).upsert([withOwner(dbRow(table, mutation.payload || {}), uid)], { onConflict: options.onConflict && options.onConflict[table] }).then(rows);
+          return client.from(table).upsert([withOwner(dbRow(table, mutation.payload || {}), uid)], { onConflict: CONFLICT_TARGETS[table] }).then(rows);
         });
       },
       drain: function (outbox, send) {
@@ -103,5 +107,5 @@
       },
     };
   }
-  return { TABLES: TABLES, requireUid: requireUid, sessionUid: sessionUid, createAdapter: createAdapter };
+  return { TABLES: TABLES, CONFLICT_TARGETS: CONFLICT_TARGETS, requireUid: requireUid, sessionUid: sessionUid, createAdapter: createAdapter };
 });

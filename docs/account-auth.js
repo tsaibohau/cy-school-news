@@ -33,6 +33,7 @@
     return {
       clientVersion: CLIENT_VERSION,
       clientUrl: CLIENT_URL,
+      isConfigured: function () { return !!(config.supabaseUrl && config.supabaseAnonKey); },
       getClient: getClient,
       getVerifiedUid: function () { return getClient().then(verifiedUid); },
       sendMagicLink: function (email, redirectTo) {

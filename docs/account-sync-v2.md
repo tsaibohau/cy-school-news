@@ -23,10 +23,12 @@ Never put service-role keys, database passwords, access tokens, refresh tokens, 
 - first account adoption merges the durable anonymous baseline, persisted account state, and remote state once;
 - remote subscriptions arriving on a device receive a local notification baseline of “now”, preventing historical notification floods;
 - tombstones are pushed as subscription rows with `deleted_at` and are not resurrected by stale devices;
+- upserts use adapter-owned conflict targets: subscriptions `(user_id, normalized_keyword)`, reads `(user_id, announcement_id)`, preferences `(user_id)`; callers cannot override them;
+- subscription server UUIDs are transport details only. Cross-device identity is `user_id + normalized_keyword`;
 - reads remain monotonic and preferences use deterministic timestamp merging;
 - only successfully sent outbox mutations are acknowledged; failures remain pending;
 - a session UID change aborts the remaining queue and cannot send A's queue under B.
 
 ## Security status
 
-The migration and adapter are prepared, but no dedicated Supabase project is configured in this repository. Therefore real schema inspection, behavioral RLS tests, Magic Link delivery, and real-browser account E2E remain unexecuted and must not be reported as PASS.
+The migration and adapter are prepared, but no dedicated Supabase project is configured in this repository. Therefore real schema inspection, behavioral RLS tests, Magic Link delivery, and real-browser account E2E remain unexecuted and must not be reported as PASS. `docs/account-config.js` is intentionally empty until provisioning.

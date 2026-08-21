@@ -2,7 +2,7 @@
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
 var CACHE = "cy-news-v8";
-var SHELL = ["./", "./index.html", "./style.css", "./app.js", "./notification-state.js", "./supabase-sync.js", "./account-auth.js", "./manifest.webmanifest",
+var SHELL = ["./", "./index.html", "./style.css", "./app.js", "./notification-state.js", "./account-config.js", "./supabase-sync.js", "./account-auth.js", "./manifest.webmanifest",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {

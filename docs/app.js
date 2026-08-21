@@ -53,6 +53,11 @@
     function setupAccountSync() {
       if (!el.accountState || !window.CyNewsAccountAuth || !window.CyNewsAccountSync) return;
       var auth = window.CyNewsAccountAuth.createController();
+      if (!auth.isConfigured()) {
+        var accountBox = document.getElementById("accountBox");
+        if (accountBox) accountBox.hidden = true;
+        return;
+      }
       var lifecycle = null;
       var accountAdapter = null;
       var accountOutbox = null;
