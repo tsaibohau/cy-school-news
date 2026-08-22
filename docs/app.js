@@ -456,7 +456,14 @@
       }));
     }
     function isoDate(y, m, d) { return y + "-" + String(m + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0"); }
-    function eventsForDate(day) { return calendarEvents().filter(function (ev) { return ev.date === day; }); }
+    function eventStart(ev) { return ev.start_date || ev.date || ""; }
+    function eventEnd(ev) { return ev.end_date || ev.endDate || eventStart(ev); }
+    function eventsForDate(day) {
+      return calendarEvents().filter(function (ev) {
+        var start = eventStart(ev), end = eventEnd(ev);
+        return start && end && start <= day && day <= end;
+      });
+    }
     function renderCalendar() {
       var y = state.calendarMonth.getFullYear(), m = state.calendarMonth.getMonth();
       el.calendarTitle.textContent = y + "年" + (m + 1) + "月";
@@ -490,7 +497,9 @@
       };
       el.agendaTitle.textContent = day === new Date().toISOString().slice(0, 10) ? "今天" : day + " 的事件";
       el.agenda.innerHTML = evs.length ? evs.map(function (ev) {
-        return '<article class="agenda-item"><span class="agenda-mark ' + ev.kind + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '">刪除</button></div>' : '') + '</div></article>';
+        var start = eventStart(ev), end = eventEnd(ev);
+        var range = start !== end ? ' · ' + esc(start) + '–' + esc(end) : '';
+        return '<article class="agenda-item"><span class="agenda-mark ' + ev.kind + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + range + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '">刪除</button></div>' : '') + '</div></article>';
       }).join("") : '<p class="empty">這天沒有事件。選一個日期，或新增自己的事件。</p>';
       Array.prototype.forEach.call(el.agenda.querySelectorAll("button[data-edit-event]"), function (button) {
         button.addEventListener("click", function () {

@@ -252,7 +252,9 @@ def run():
     print("✓ 行事曆 ICS 與當日事件")
 
     public_evs = build_public_events(evs)
-    assert all(e["provenance"].startswith("scraper/events.json:") for e in public_evs)
+    assert all(e["provenance"] == "official_school_calendar" for e in public_evs)
+    assert all(e["source_url"].startswith("https://www.") for e in public_evs)
+    assert all(e["start_date"] == e["date"] for e in public_evs)
     assert all(e["kind"] == "official" for e in public_evs)
     print("✓ 行事曆公開資料含 provenance")
 

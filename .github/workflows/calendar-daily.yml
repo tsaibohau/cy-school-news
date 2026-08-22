@@ -19,7 +19,10 @@ jobs:
           python-version: '3.12'
 
       - name: 安裝相依套件
-        run: pip install requests
+        run: pip install -r scraper/requirements.txt
+
+      - name: 檢查官方學校行事曆來源
+        run: python scraper/schoolcal.py discover
 
       - name: 推播今日行事曆事件
         env:

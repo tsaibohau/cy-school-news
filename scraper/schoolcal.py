@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-"""行事曆工具:events.json → docs/calendar.ics(build),與當日 ntfy 提醒(notify)。
+"""官方行事曆工具: normalized events → public calendar/ICS/notify。
 
 用法:
   python scraper/schoolcal.py build    # 產生 docs/calendar.ics(排程每輪執行)
+  python scraper/schoolcal.py discover # 檢查官方日曆索引, fail-closed
   python scraper/schoolcal.py notify   # 當天有事件就推播到 {NTFY_TOPIC}-calendar
 
 scraper/events.json 由維護者手動整理(來源:兩校官網的行事曆 PDF),
@@ -18,10 +19,17 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
+from calendar_adapter import (discover_calendar_attachments, extract_pdf_text,
+                              fetch_source, parse_calendar_text, source_revision)
+from calendar_schema import normalize_event, validate_events, source_status
+from school_registry import SCHOOLS
+
 ROOT = Path(__file__).resolve().parent.parent
 EVENTS_PATH = ROOT / "scraper" / "events.json"
 ICS_PATH = ROOT / "docs" / "calendar.ics"
 JSON_PATH = ROOT / "docs" / "data" / "calendar-events.json"
+STATUS_PATH = ROOT / "docs" / "data" / "calendar-source-status.json"
+OFFICIAL_PATH = ROOT / "docs" / "data" / "official-calendar-events.json"
 TW_TZ = timezone(timedelta(hours=8))
 
 
@@ -33,16 +41,112 @@ def load_events() -> list:
 
 def build_public_events(events) -> list:
     """Expose curated school-calendar records, separate from announcement dates."""
-    return [{
-        "id": f"school:{e.get('school', '')}:{e['date']}:{e['title']}",
-        "date": e["date"],
-        "endDate": e.get("end_date", e["date"]),
-        "school": e.get("school", ""),
-        "title": e["title"],
-        "kind": "official",
-        "provenance": "scraper/events.json:curated-school-calendar",
-        "sourceLabel": "學校行事曆",
-    } for e in events]
+    result = []
+    for e in events:
+        school = e.get("school", "")
+        school_id = e.get("school_id") or {"嘉中": "cysh", "嘉女": "cygsh"}.get(school, "")
+        source_url = e.get("source_url") or next(
+            (s.calendar_sources[0].url for s in SCHOOLS.values() if s.short_name == school), ""
+        )
+        row = normalize_event(
+            event_id=e.get("id") or f"official-calendar:{school_id}:{e['date']}:{e['title']}",
+            school_id=school_id,
+            title=e["title"],
+            start_date=e["date"],
+            end_date=e.get("end_date", e["date"]),
+            event_type=e.get("event_type", "school_activity"),
+            source_url=source_url,
+            source_document=e.get("source_document", "legacy-curated-calendar"),
+            source_revision=e.get("source_revision", "legacy-curated"),
+            fetched_at=e.get("fetched_at", ""),
+            parser_provenance=e.get("parser_provenance", {"adapter": "legacy-curated", "parser_version": "1"}),
+        )
+        row.update({
+            # Backward-compatible fields consumed by the current UI/ICS.
+            "date": row["start_date"], "endDate": row["end_date"],
+            "school": school, "kind": "official", "sourceLabel": "學校行事曆",
+        })
+        result.append(row)
+    return validate_events(result, school_id=None)
+
+
+def discover() -> int:
+    """Check official indexes and publish only validated parsed documents.
+
+    Missing 115-1 documents are represented as awaiting_official_source.  The
+    last trustworthy public dataset is never replaced by an empty/guessed one.
+    """
+    checked = datetime.now(TW_TZ).isoformat(timespec="seconds")
+    statuses = []
+    published = []
+    if OFFICIAL_PATH.exists():
+        try:
+            published = json.loads(OFFICIAL_PATH.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            published = []
+    for school in SCHOOLS.values():
+        source = school.calendar_sources[0]
+        try:
+            html, revision, content_type = fetch_source(source.url)
+            matches = discover_calendar_attachments(
+                html.decode("utf-8", errors="replace"), base_url=school.base_url,
+                academic_year=115, semester=1,
+            )
+            if not matches:
+                statuses.append(source_status(
+                    school_id=school.school_id, academic_year=115, semester=1,
+                    status="awaiting_official_source", source_url=source.url,
+                    last_checked_at=checked,
+                    last_verified_document=None,
+                ))
+                continue
+            # A matching attachment still needs deterministic PDF parsing and
+            # validation before it can replace public events.
+            document = matches[0]
+            content, doc_revision, content_type = fetch_source(document["url"])
+            if "html" in content_type or document["url"].lower().endswith((".php", "/")):
+                nested = discover_calendar_attachments(
+                    content.decode("utf-8", errors="replace"),
+                    base_url=document["url"], academic_year=115, semester=1,
+                )
+                if not nested:
+                    raise ValueError("calendar detail page has no matching PDF attachment")
+                document = nested[0]
+                content, doc_revision, _ = fetch_source(document["url"])
+            text = extract_pdf_text(content)
+            parsed = parse_calendar_text(
+                text, school_id=school.school_id, academic_year=115, semester=1,
+                source_url=document["url"], source_document=document["label"],
+                fetched_at=checked,
+            )
+            validate_events(parsed, school_id=school.school_id)
+            published = [row for row in published if not (
+                row.get("school_id") == school.school_id and
+                row.get("academic_year") == 115 and row.get("semester") == 1
+            )]
+            for row in parsed:
+                row["academic_year"] = 115
+                row["semester"] = 1
+            published.extend(parsed)
+            statuses.append(source_status(
+                school_id=school.school_id, academic_year=115, semester=1,
+                status="official_complete" if parsed else "validation_failed",
+                source_url=source.url, last_checked_at=checked,
+                last_verified_document={"url": document["url"], "label": document["label"], "revision": doc_revision},
+                event_count=len(parsed),
+            ))
+        except Exception as exc:
+            statuses.append(source_status(
+                school_id=school.school_id, academic_year=115, semester=1,
+                status="parse_failed", source_url=source.url,
+                last_checked_at=checked, error=str(exc),
+            ))
+    STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    STATUS_PATH.write_text(json.dumps(statuses, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if any(row.get("academic_year") == 115 and row.get("semester") == 1 for row in published):
+        OFFICIAL_PATH.write_text(json.dumps(published, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"[info] 官方行事曆來源狀態 → {STATUS_PATH}")
+    return 0
 
 
 def events_on(events, day_str: str) -> list:
@@ -146,5 +250,7 @@ if __name__ == "__main__":
         sys.exit(build())
     if cmd == "notify":
         sys.exit(notify())
-    print("用法:python scraper/schoolcal.py [build|notify]", file=sys.stderr)
+    if cmd == "discover":
+        sys.exit(discover())
+    print("用法:python scraper/schoolcal.py [build|notify|discover]", file=sys.stderr)
     sys.exit(2)
