@@ -259,6 +259,7 @@ body { background: var(--paper); }
 .event-actions { display: flex; gap: 6px; margin-top: 8px; }
 .event-actions .btn-ghost { padding: 4px 9px; font-size: 12px; }
 .event-form-wrap { position: fixed; inset: 0; z-index: 50; display: grid; place-items: end center; background: rgba(23,50,77,.26); padding: 12px; }
+.event-form-wrap[hidden] { display: none; }
 .event-form { width: min(100%, 480px); background: var(--card); border-radius: 18px; padding: 18px; box-shadow: 0 18px 50px rgba(23,50,77,.22); }
 .event-form label { display: grid; gap: 5px; margin: 11px 0; color: var(--muted); font-size: 13px; }.event-form input, .event-form textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; font: inherit; color: var(--ink); background: #fbfdff; }
 .tab-icon { font-size: 20px; line-height: 20px; }
