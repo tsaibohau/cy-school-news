@@ -93,8 +93,11 @@ controller.signInWithGoogle().then(async () => {
   assert.equal(malformed.getApprovedRedirectTo(), null);
 
   const index = fs.readFileSync(path.join(__dirname, "..", "docs", "index.html"), "utf8");
+  const sw = fs.readFileSync(path.join(__dirname, "..", "docs", "sw.js"), "utf8");
   const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
   assert(index.includes("使用 Google 登入"));
+  assert(index.includes('src="account-sync.js"'), "index must load Account Sync before app.js");
+  assert(sw.includes('"./account-sync.js"'), "Service Worker shell must cache Account Sync");
   assert(!index.includes("accountEmail"));
   assert(!app.includes("sendMagicLink"));
   assert(app.includes("getVerifiedSession"));
