@@ -48,7 +48,7 @@ jobs:
         run: |
           git config user.name "news-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/announcements.json docs/data/archive.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json
+          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json
           if git diff --cached --quiet; then
             echo "沒有變更,略過提交"
           else

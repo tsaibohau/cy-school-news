@@ -19,6 +19,7 @@
     if (!NotificationState) return;
 
     var LS_SEEN = "cyNews.lastSeen";
+    var LS_EVENTS = "cyNews.calendarEvents.v1";
     var PAGE_SIZE = 200;  // 最新清單一次渲染的則數,避免一口氣塞入上千張卡片
     var notificationState = NotificationState.load();
     var queueAccountMutation = function () {};
@@ -29,6 +30,11 @@
       cat: "all",
       q: "",
       tab: "latest",
+      calendarMonth: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+      calendarSelected: new Date().toISOString().slice(0, 10),
+      eventEditingId: null,
+      officialEvents: [],
+      userEvents: loadUserEvents(),
       shown: PAGE_SIZE,
       archive: "none",  /* none | loading | loaded:歷史封存資料的載入狀態 */
       subscriptions: notificationState.subscriptions,
@@ -47,6 +53,32 @@
       btnRefresh: $("btnRefresh"),
       accountState: $("accountState"), accountLogin: $("accountLogin"),
       accountLogout: $("accountLogout"),
+      viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
+      calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
+      prevMonth: $("prevMonth"), nextMonth: $("nextMonth"), todayCalendar: $("todayCalendar"),
+      addEvent: $("addEvent"), eventFormWrap: $("eventFormWrap"), eventForm: $("eventForm"), cancelEvent: $("cancelEvent"),
+      eventTitle: $("eventTitle"), eventDate: $("eventDate"), eventNotes: $("eventNotes"),
+      eventFormTitle: $("eventFormTitle"),
+    };
+
+    function loadUserEvents() {
+      try { var rows = JSON.parse(localStorage.getItem(LS_EVENTS) || "[]"); return Array.isArray(rows) ? rows : []; }
+      catch (e) { return []; }
+    }
+    function saveUserEvents() { localStorage.setItem(LS_EVENTS, JSON.stringify(state.userEvents)); }
+    /* Keep handlers available to the generated agenda buttons across rerenders. */
+    window.__cyNewsCalendarHandlers = {
+      edit: function (id) {
+        var row = state.userEvents.find(function (ev) { return ev.id === id; });
+        if (!row) return;
+        state.eventEditingId = row.id; el.eventFormTitle.textContent = "編輯自己的事件";
+        el.eventTitle.value = row.title; el.eventDate.value = row.date; el.eventNotes.value = row.notes || "";
+        el.eventFormWrap.hidden = false; el.eventTitle.focus();
+      },
+      remove: function (id) {
+        state.userEvents = state.userEvents.filter(function (ev) { return ev.id !== id; });
+        saveUserEvents(); renderCalendar();
+      },
     };
 
     function setupAccountSync() {
@@ -273,6 +305,83 @@
       /* 沒有公告日期時,退而顯示首次抓到的日期 */
       return it.date || (it.first_seen || "").slice(0, 10) || "—";
     }
+    function calendarEvents() {
+      var announcementEvents = [];
+      (state.data && state.data.items || []).forEach(function (it) {
+        /* Only explicit, provenance-bearing event records enter the calendar.
+           it.date is publication date and is intentionally never used here. */
+        (Array.isArray(it.calendar_events) ? it.calendar_events : []).forEach(function (ev) {
+          if (!ev || !/^\d{4}-\d{2}-\d{2}$/.test(ev.date) || !ev.title || !ev.provenance) return;
+          announcementEvents.push({ id: "announcement:" + it.id + ":" + ev.date + ":" + ev.title,
+            date: ev.date, endDate: ev.end_date || ev.date, title: ev.title, school: it.school_name,
+            kind: ev.kind === "deadline" ? "deadline" : "announcement", url: it.url,
+            sourceLabel: ev.kind === "deadline" ? "公告截止日期" : "公告事件" });
+        });
+      });
+      return announcementEvents.concat(state.officialEvents).concat(state.userEvents.map(function (ev) {
+        return { id: ev.id, date: ev.date, endDate: ev.date, title: ev.title, notes: ev.notes,
+          kind: "user", sourceLabel: "我的事件" };
+      }));
+    }
+    function isoDate(y, m, d) { return y + "-" + String(m + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0"); }
+    function eventsForDate(day) { return calendarEvents().filter(function (ev) { return ev.date === day; }); }
+    function renderCalendar() {
+      var y = state.calendarMonth.getFullYear(), m = state.calendarMonth.getMonth();
+      el.calendarTitle.textContent = y + "年" + (m + 1) + "月";
+      var first = new Date(y, m, 1), start = new Date(y, m, 1 - first.getDay()), today = new Date().toISOString().slice(0, 10);
+      var html = ["日", "一", "二", "三", "四", "五", "六"].map(function (d) { return '<div class="calendar-weekday">' + d + '</div>'; }).join("");
+      for (var i = 0; i < 42; i++) {
+        var day = new Date(start); day.setDate(start.getDate() + i);
+        var key = isoDate(day.getFullYear(), day.getMonth(), day.getDate()), evs = eventsForDate(key);
+        var classes = "calendar-day" + (day.getMonth() !== m ? " is-outside" : "") + (key === today ? " is-today" : "") + (key === state.calendarSelected ? " is-selected" : "");
+        html += '<button type="button" class="' + classes + '" data-day="' + key + '"><span class="day-number">' + day.getDate() + '</span>';
+        if (evs.length) html += '<span class="day-dots">' + evs.slice(0, 4).map(function (ev) { return '<i class="day-dot ' + ev.kind + '" title="' + esc(ev.sourceLabel) + '"></i>'; }).join("") + '</span>';
+        html += '</button>';
+      }
+      el.calendarGrid.innerHTML = html;
+      renderAgenda(state.calendarSelected);
+    }
+    function renderAgenda(day) {
+      var evs = eventsForDate(day);
+      window.__cyNewsCalendarHandlers = {
+        edit: function (id) {
+          var row = state.userEvents.find(function (ev) { return ev.id === id; });
+          if (!row) return;
+          state.eventEditingId = row.id; el.eventFormTitle.textContent = "編輯自己的事件";
+          el.eventTitle.value = row.title; el.eventDate.value = row.date; el.eventNotes.value = row.notes || "";
+          el.eventFormWrap.hidden = false; el.eventTitle.focus();
+        },
+        remove: function (id) {
+          state.userEvents = state.userEvents.filter(function (ev) { return ev.id !== id; });
+          saveUserEvents(); renderCalendar();
+        },
+      };
+      el.agendaTitle.textContent = day === new Date().toISOString().slice(0, 10) ? "今天" : day + " 的事件";
+      el.agenda.innerHTML = evs.length ? evs.map(function (ev) {
+        return '<article class="agenda-item"><span class="agenda-mark ' + ev.kind + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '" data-title="' + esc(ev.title) + '" data-date="' + esc(ev.date) + '" data-notes="' + esc(ev.notes || "") + '" onclick="var f=document.getElementById(\'eventForm\'); f.dataset.editingId=this.dataset.editEvent; f.dataset.editingDate=this.dataset.date; document.getElementById(\'eventFormTitle\').textContent=\'編輯自己的事件\'; document.getElementById(\'eventTitle\').value=this.dataset.title; document.getElementById(\'eventDate\').value=this.dataset.date; document.getElementById(\'eventNotes\').value=this.dataset.notes; document.getElementById(\'eventFormWrap\').hidden=false;">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '" onclick="var id=this.dataset.deleteEvent; var rows=JSON.parse(localStorage.getItem(\'cyNews.calendarEvents.v1\')||\'[]\').filter(function(ev){return ev.id!==id;}); localStorage.setItem(\'cyNews.calendarEvents.v1\',JSON.stringify(rows)); location.reload();">刪除</button></div>' : '') + '</div></article>';
+      }).join("") : '<p class="empty">這天沒有事件。選一個日期，或新增自己的事件。</p>';
+      Array.prototype.forEach.call(el.agenda.querySelectorAll("button[data-edit-event]"), function (button) {
+        button.addEventListener("click", function () {
+          var row = state.userEvents.find(function (ev) { return ev.id === button.dataset.editEvent; });
+          if (!row) return;
+          state.eventEditingId = row.id; el.eventFormTitle.textContent = "編輯自己的事件";
+          el.eventTitle.value = row.title; el.eventDate.value = row.date; el.eventNotes.value = row.notes || "";
+          el.eventFormWrap.hidden = false; el.eventTitle.focus();
+        });
+      });
+      Array.prototype.forEach.call(el.agenda.querySelectorAll("button[data-delete-event]"), function (button) {
+        button.addEventListener("click", function () {
+          state.userEvents = state.userEvents.filter(function (ev) { return ev.id !== button.dataset.deleteEvent; });
+          saveUserEvents(); renderCalendar();
+        });
+      });
+    }
+    function loadOfficialEvents() {
+      return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
+        state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) { return ev && ev.date && ev.title && ev.provenance; }) : [];
+        if (state.tab === "calendar") renderCalendar();
+      }).catch(function () {});
+    }
     function cardHTML(it) {
       var schoolClass = it.school === "cysh" ? "tag-cysh" : "tag-cygsh";
       var catClass = it.category === "榮譽榜" ? " cat-honor" : "";
@@ -464,12 +573,16 @@
       state.tab = tab;
       var latest = tab === "latest";
       el.viewLatest.hidden = !latest;
-      el.viewSub.hidden = latest;
+      if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
+      el.viewSub.hidden = tab !== "sub";
       el.tabLatest.classList.toggle("is-active", latest);
+      if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar");
       el.tabSub.classList.toggle("is-active", !latest);
       el.tabLatest.setAttribute("aria-current", latest ? "page" : "false");
+      if (el.tabCalendar) el.tabCalendar.setAttribute("aria-current", tab === "calendar" ? "page" : "false");
       el.tabSub.setAttribute("aria-current", latest ? "false" : "page");
-      if (!latest) {
+      if (tab === "calendar" && el.viewCalendar) { loadOfficialEvents(); renderCalendar(); }
+      if (tab === "sub") {
         renderSub();
         // 看過訂閱頁後,把 UI「新」的基準點推進到現在;不影響通知去重。
         state.lastSeen = new Date().toISOString();
@@ -480,11 +593,39 @@
     }
     el.tabLatest.addEventListener("click", function () { switchTab("latest"); });
     el.tabSub.addEventListener("click", function () { switchTab("sub"); });
+    if (el.tabCalendar) {
+      el.tabCalendar.addEventListener("click", function () { switchTab("calendar"); });
+      el.quickCalendar.addEventListener("click", function () { switchTab("calendar"); });
+      el.calendarGrid.addEventListener("click", function (e) {
+        var b = e.target.closest("button[data-day]"); if (!b) return;
+        state.calendarSelected = b.dataset.day; renderCalendar();
+      });
+      el.prevMonth.addEventListener("click", function () { state.calendarMonth.setMonth(state.calendarMonth.getMonth() - 1); renderCalendar(); });
+      el.nextMonth.addEventListener("click", function () { state.calendarMonth.setMonth(state.calendarMonth.getMonth() + 1); renderCalendar(); });
+      el.todayCalendar.addEventListener("click", function () { var now = new Date(); state.calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1); state.calendarSelected = now.toISOString().slice(0, 10); renderCalendar(); });
+    el.addEvent.addEventListener("click", function () { state.eventEditingId = null; el.eventFormTitle.textContent = "新增自己的事件"; el.eventDate.value = state.calendarSelected; el.eventFormWrap.hidden = false; el.eventTitle.focus(); });
+      el.cancelEvent.addEventListener("click", function () { el.eventFormWrap.hidden = true; });
+      el.eventFormWrap.addEventListener("click", function (e) { if (e.target === el.eventFormWrap) el.eventFormWrap.hidden = true; });
+      el.eventForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var title = el.eventTitle.value.trim(), date = el.eventDate.value || el.eventForm.dataset.editingDate;
+        if (!title || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
+        var editingId = state.eventEditingId || el.eventForm.dataset.editingId;
+        if (editingId) {
+          state.userEvents = state.userEvents.map(function (ev) { return ev.id === editingId ? { id: ev.id, title: title, date: date, notes: el.eventNotes.value.trim() } : ev; });
+        } else {
+          state.userEvents.push({ id: "user:" + Date.now().toString(36), title: title, date: date, notes: el.eventNotes.value.trim() });
+        }
+        state.eventEditingId = null; el.eventForm.dataset.editingId = ""; el.eventForm.dataset.editingDate = "";
+        saveUserEvents(); state.calendarSelected = date; state.calendarMonth = new Date(Number(date.slice(0, 4)), Number(date.slice(5, 7)) - 1, 1);
+        el.eventForm.reset(); el.eventFormWrap.hidden = true; renderCalendar();
+      });
+    }
 
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=16").catch(function () {});
       });
     }
 

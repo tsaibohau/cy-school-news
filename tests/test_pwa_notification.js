@@ -407,8 +407,8 @@ async function testPermissionFailureDoesNotPersist() {
 }
 
 function testServiceWorkerContract() {
-  assert.match(swSource, /cy-news-v10/);
-  assert.doesNotMatch(swSource, /cy-news-v9/);
+  assert.match(swSource, /cy-news-v16/);
+  assert.doesNotMatch(swSource, /cy-news-v15/);
   assert.match(swSource, /\.\/notification-state\.js/);
   assert.match(swSource, /\.\/supabase-sync\.js/);
   assert.match(swSource, /\.\/account-auth\.js/);

@@ -12,7 +12,7 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     merge_collected_item, validate_snapshot_items,
                     validate_history_capacity, merge_title, decode_response)  # noqa: E402
 from notify import push_topics, summarize, personal_topics, SUMMARY_THRESHOLD  # noqa: E402
-from schoolcal import build_ics, events_on  # noqa: E402
+from schoolcal import build_ics, events_on, build_public_events  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
 
 SCHOOL = {"id": "cysh", "short": "嘉中", "base": "https://www.cysh.cy.edu.tw", "unit": "1008"}
@@ -250,6 +250,11 @@ def run():
     assert events_on(evs, "2026-08-31") == [evs[0]]
     assert events_on(evs, "2026-08-30") == []
     print("✓ 行事曆 ICS 與當日事件")
+
+    public_evs = build_public_events(evs)
+    assert all(e["provenance"].startswith("scraper/events.json:") for e in public_evs)
+    assert all(e["kind"] == "official" for e in public_evs)
+    print("✓ 行事曆公開資料含 provenance")
 
     tiered = [
         {"id": "a", "date": "2026-08-01"},                                    # 近期

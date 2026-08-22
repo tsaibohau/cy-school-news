@@ -21,6 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 EVENTS_PATH = ROOT / "scraper" / "events.json"
 ICS_PATH = ROOT / "docs" / "calendar.ics"
+JSON_PATH = ROOT / "docs" / "data" / "calendar-events.json"
 TW_TZ = timezone(timedelta(hours=8))
 
 
@@ -28,6 +29,20 @@ def load_events() -> list:
     events = json.loads(EVENTS_PATH.read_text(encoding="utf-8"))
     return sorted((e for e in events if e.get("date") and e.get("title")),
                   key=lambda e: e["date"])
+
+
+def build_public_events(events) -> list:
+    """Expose curated school-calendar records, separate from announcement dates."""
+    return [{
+        "id": f"school:{e.get('school', '')}:{e['date']}:{e['title']}",
+        "date": e["date"],
+        "endDate": e.get("end_date", e["date"]),
+        "school": e.get("school", ""),
+        "title": e["title"],
+        "kind": "official",
+        "provenance": "scraper/events.json:curated-school-calendar",
+        "sourceLabel": "學校行事曆",
+    } for e in events]
 
 
 def events_on(events, day_str: str) -> list:
@@ -93,6 +108,8 @@ def build_ics(events) -> str:
 def build() -> int:
     events = load_events()
     ICS_PATH.write_text(build_ics(events), encoding="utf-8", newline="")
+    JSON_PATH.parent.mkdir(parents=True, exist_ok=True)
+    JSON_PATH.write_text(json.dumps(build_public_events(events), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"[info] {len(events)} 個事件 → {ICS_PATH}")
     return 0
 

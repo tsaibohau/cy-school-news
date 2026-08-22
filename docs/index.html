@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
 
@@ -27,14 +27,23 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
       </button>
     </div>
-    <p class="mast-sub">嘉義高中・嘉義女中 官網公告彙整<span id="updatedAt" class="updated"></span></p>
+    <p class="mast-sub">嘉義高中・嘉義女中官網公告彙整 <span id="updatedAt" class="updated"></span></p>
   </div>
   <div class="rule-double" aria-hidden="true"></div>
 </header>
 
 <div class="wrap">
 
-  <!-- 最新分頁 -->
+  <section class="welcome" aria-labelledby="welcomeTitle">
+    <div>
+      <p class="eyebrow">CY SCHOOL NEWS</p>
+      <h2 id="welcomeTitle">今天的校務資訊，先看重要的。</h2>
+      <p class="welcome-copy">把嘉中、嘉女公告集中在一個清楚的地方，快速找到和你有關的消息。</p>
+    </div>
+    <button id="quickCalendar" class="btn-soft" type="button">查看近期行事曆 <span aria-hidden="true">→</span></button>
+  </section>
+
+  <!-- 公告首頁 -->
   <section id="viewLatest">
     <div class="controls">
       <input id="q" type="search" inputmode="search" placeholder="搜尋公告,可用空格分隔多個關鍵字" aria-label="搜尋公告">
@@ -45,11 +54,37 @@
     <main id="list" class="list"></main>
   </section>
 
+  <!-- 行事曆 -->
+  <section id="viewCalendar" hidden>
+    <div class="section-heading">
+      <div><p class="eyebrow">CALENDAR</p><h2>行事曆</h2></div>
+      <button id="addEvent" class="btn-primary" type="button">新增事件</button>
+    </div>
+    <div class="calendar-toolbar">
+      <button id="prevMonth" class="icon-btn" type="button" aria-label="上個月">‹</button>
+      <h3 id="calendarTitle"></h3>
+      <button id="nextMonth" class="icon-btn" type="button" aria-label="下個月">›</button>
+      <button id="todayCalendar" class="btn-ghost" type="button">今天</button>
+    </div>
+    <div id="calendarGrid" class="calendar-grid" aria-label="月曆"></div>
+    <div class="agenda-heading"><h3 id="agendaTitle">近期事件</h3><span class="hint">點選日期查看詳細內容</span></div>
+    <div id="agenda" class="agenda"></div>
+    <div id="eventFormWrap" class="event-form-wrap" hidden>
+      <form id="eventForm" class="event-form">
+        <div class="section-heading"><h3 id="eventFormTitle">新增自己的事件</h3><button id="cancelEvent" class="icon-btn" type="button" aria-label="取消">×</button></div>
+        <label>事件名稱<input id="eventTitle" required maxlength="80" placeholder="例如：社團幹部會議"></label>
+        <label>日期<input id="eventDate" required type="date"></label>
+        <label>備註（選填）<textarea id="eventNotes" maxlength="240" rows="3"></textarea></label>
+        <button class="btn-primary" type="submit">儲存事件</button>
+      </form>
+    </div>
+  </section>
+
   <!-- 訂閱分頁 -->
   <section id="viewSub" hidden>
     <div class="sub-head">
       <h2>我的訂閱</h2>
-      <p class="hint">加入關鍵字(例如「段考」「社團」「獎學金」「熱舞」),符合的新公告會出現在這裡並標上紅點。</p>
+      <p class="hint">訂閱你在意的關鍵字，新公告符合時會在這裡清楚標示。</p>
       <form id="kwForm" class="kw-form">
         <input id="kwInput" type="text" maxlength="20" placeholder="輸入關鍵字後按新增" aria-label="新增訂閱關鍵字">
         <button type="submit" class="btn-primary">新增</button>
@@ -81,6 +116,9 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h10"/></svg>
     <span>最新</span>
   </button>
+  <button id="tabCalendar" class="tab">
+    <span class="tab-icon" aria-hidden="true">▦</span><span>行事曆</span>
+  </button>
   <button id="tabSub" class="tab">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
     <span>訂閱</span>
@@ -92,6 +130,6 @@
 <script src="supabase-sync.js"></script>
 <script src="account-auth.js"></script>
 <script src="account-sync.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=16"></script>
 </body>
 </html>

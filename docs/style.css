@@ -194,6 +194,74 @@ button:focus-visible, a:focus-visible, input:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
 }
+
+/* ── UI/UX V3 ── */
+:root {
+  --paper: #f7faff;
+  --card: #ffffff;
+  --ink: #17324d;
+  --muted: #6b7d90;
+  --line: #dfe8f1;
+  --seal: #e2674f;
+  --cysh: #2f6fbe;
+  --cysh-bg: #eaf3ff;
+  --cygsh: #a65078;
+  --cygsh-bg: #faeef4;
+  --chip-bg: #f0f5fa;
+  --radius: 14px;
+}
+body { background: var(--paper); }
+.mast { background: rgba(247,250,255,.94); border-bottom: 0; }
+.mast-row { padding-top: 4px; }
+.brand h1 { font-family: var(--sans); letter-spacing: .08em; font-size: 23px; }
+.seal { background: #2f6fbe; border-radius: 9px; }
+.rule-double { display: none; }
+.welcome { display: flex; align-items: end; justify-content: space-between; gap: 18px; padding: 26px 0 16px; }
+.eyebrow { color: var(--cysh); font-size: 11px; font-weight: 800; letter-spacing: .16em; margin: 0 0 5px; }
+.welcome h2, .section-heading h2 { margin: 0; font-size: 24px; letter-spacing: -.02em; }
+.welcome-copy { color: var(--muted); font-size: 14px; margin: 7px 0 0; }
+.btn-soft { border: 1px solid #cfe0f2; background: #edf6ff; color: var(--cysh); padding: 10px 13px; border-radius: 12px; font-weight: 700; white-space: nowrap; cursor: pointer; }
+.controls { padding-top: 10px; gap: 11px; }
+#q { border-color: #cdddeb; box-shadow: 0 5px 18px rgba(49,95,140,.06); }
+.seg button.is-active, .chip.is-active { background: var(--cysh); border-color: var(--cysh); }
+.card { border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 5px 18px rgba(28,75,116,.05); padding: 15px; }
+.card + .card { margin-top: 10px; }
+.card-meta { gap: 7px; }
+.new-dot { background: #eb8d4d; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 12px; }
+.section-heading h3 { margin: 0; font-size: 18px; }
+.calendar-toolbar { display: flex; align-items: center; gap: 8px; margin: 8px 0 12px; }
+.calendar-toolbar h3 { flex: 1; text-align: center; margin: 0; font-size: 18px; }
+.calendar-toolbar .btn-ghost { margin-left: 5px; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; padding: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.calendar-weekday { color: var(--muted); font-size: 11px; font-weight: 800; text-align: center; padding: 2px 0 5px; }
+.calendar-day { min-height: 58px; border: 1px solid transparent; background: transparent; border-radius: 10px; padding: 6px; text-align: left; cursor: pointer; color: var(--ink); }
+.calendar-day:hover, .calendar-day.is-selected { background: #edf6ff; border-color: #bcd8f2; }
+.calendar-day.is-today .day-number { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: var(--cysh); color: #fff; }
+.calendar-day.is-outside { color: #afbdc9; }
+.day-number { font-size: 13px; font-weight: 800; }
+.day-dots { display: flex; gap: 3px; margin-top: 7px; flex-wrap: wrap; }
+.day-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cysh); }
+.day-dot.deadline { background: #eb8d4d; }.day-dot.user { background: #40a27c; }
+.agenda-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 20px 0 8px; }
+.agenda-heading h3 { margin: 0; font-size: 18px; }
+.agenda-item { display: flex; gap: 11px; align-items: flex-start; padding: 13px; margin-bottom: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.agenda-mark { width: 8px; min-width: 8px; height: 8px; margin-top: 7px; border-radius: 50%; background: var(--cysh); }.agenda-mark.deadline { background: #eb8d4d; }.agenda-mark.user { background: #40a27c; }
+.agenda-item h4 { margin: 0; font-size: 15px; }.agenda-item p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; }.agenda-item a { color: var(--cysh); font-size: 12px; }
+.event-actions { display: flex; gap: 6px; margin-top: 8px; }
+.event-actions .btn-ghost { padding: 4px 9px; font-size: 12px; }
+.event-form-wrap { position: fixed; inset: 0; z-index: 50; display: grid; place-items: end center; background: rgba(23,50,77,.26); padding: 12px; }
+.event-form { width: min(100%, 480px); background: var(--card); border-radius: 18px; padding: 18px; box-shadow: 0 18px 50px rgba(23,50,77,.22); }
+.event-form label { display: grid; gap: 5px; margin: 11px 0; color: var(--muted); font-size: 13px; }.event-form input, .event-form textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; font: inherit; color: var(--ink); background: #fbfdff; }
+.tab-icon { font-size: 20px; line-height: 20px; }
+.tabbar { box-shadow: 0 -5px 18px rgba(28,75,116,.06); }
+@media (min-width: 760px) {
+  .wrap { max-width: 900px; padding: 0 24px; }
+  .welcome { padding-top: 40px; }
+  .calendar-grid { gap: 7px; }.calendar-day { min-height: 86px; padding: 9px; }
+  .tabbar { position: static; max-width: 900px; margin: 26px auto 0; border: 1px solid var(--line); border-radius: 16px 16px 0 0; }
+  body { padding-bottom: 0; }
+}
 @media (min-width: 640px) {
   .brand h1 { font-size: 27px; }
   .card-title { font-size: 16.5px; }
