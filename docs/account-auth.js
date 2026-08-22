@@ -40,6 +40,7 @@
     options = options || {};
     var config = options.config || (typeof window !== "undefined" && window.CYNEWS_ACCOUNT_CONFIG) || {};
     var client = options.client || null;
+    var clientPromise = null;
     var loader = options.loader || function () {
       if (!config.supabaseUrl || !config.supabaseAnonKey) return Promise.reject(new Error("Supabase not configured"));
       return import(CLIENT_URL).then(function (mod) {
@@ -48,7 +49,16 @@
     };
     function getClient() {
       if (client) return Promise.resolve(client);
-      return loader().then(function (loaded) { client = loaded && loaded.createClient ? loaded.createClient(config.supabaseUrl, config.supabaseAnonKey) : loaded; return client; });
+      if (clientPromise) return clientPromise;
+      clientPromise = Promise.resolve().then(loader).then(function (loaded) {
+        client = loaded && loaded.createClient ? loaded.createClient(config.supabaseUrl, config.supabaseAnonKey) : loaded;
+        if (!client) throw new Error("Supabase client initialization returned no client");
+        return client;
+      }).catch(function (error) {
+        clientPromise = null;
+        throw error;
+      });
+      return clientPromise;
     }
     return {
       clientVersion: CLIENT_VERSION,

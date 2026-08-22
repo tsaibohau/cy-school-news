@@ -32,6 +32,36 @@ const controller = Auth.createController({
   location: { href: localhost },
 });
 
+async function singletonAndRetryChecks() {
+  let loaderCalls = 0;
+  let createCalls = 0;
+  const singletonClient = { auth: { getSession: () => Promise.resolve({ data: { session: null }, error: null }) } };
+  const singleton = Auth.createController({
+    config: { supabaseUrl: "https://example.supabase.co", supabaseAnonKey: "publishable-test-key" },
+    loader: () => { loaderCalls += 1; return new Promise(resolve => setTimeout(() => resolve({ createClient: () => { createCalls += 1; return singletonClient; } }), 5)); },
+  });
+  const clients = await Promise.all([singleton.getClient(), singleton.getClient(), singleton.getClient()]);
+  assert.equal(loaderCalls, 1, "concurrent getClient calls invoke the loader once");
+  assert.equal(createCalls, 1, "concurrent getClient calls create one client");
+  assert.strictEqual(clients[0], clients[1]);
+  assert.strictEqual(clients[1], clients[2]);
+
+  let failures = 0;
+  let retryLoaderCalls = 0;
+  const retryClient = Auth.createController({
+    config: { supabaseUrl: "https://example.supabase.co", supabaseAnonKey: "publishable-test-key" },
+    loader: () => {
+      retryLoaderCalls += 1;
+      if (retryLoaderCalls === 1) return Promise.reject(new Error("temporary loader failure"));
+      return Promise.resolve({ auth: { getSession: () => Promise.resolve({ data: { session: null }, error: null }) } });
+    },
+  });
+  await assert.rejects(retryClient.getClient(), error => { failures += 1; return /temporary/.test(error.message); });
+  assert.ok(await retryClient.getClient());
+  assert.equal(failures, 1);
+  assert.equal(retryLoaderCalls, 2, "failed initialization resets the memoized promise for one retry");
+}
+
 assert.equal(controller.getApprovedRedirectTo(), localhost);
 assert.equal(Auth.normalizeAppUrl(localhost + "?code=oauth"), null);
 assert.equal(Auth.normalizeAppUrl("https://tsaibohau.github.io/cy-school-news.evil/"), "https://tsaibohau.github.io/cy-school-news.evil/");
@@ -45,7 +75,7 @@ assert.equal(productionController.getApprovedRedirectTo(), production);
 assert.equal(typeof controller.getVerifiedSession, "function");
 assert.equal(controller.sendMagicLink, undefined, "Magic Link is deferred and cannot bypass redirect allowlist");
 
-controller.signInWithGoogle().then(async () => {
+singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async () => {
   assert.deepEqual(oauthRequest, {
     provider: "google",
     options: { redirectTo: localhost },
@@ -112,6 +142,9 @@ controller.signInWithGoogle().then(async () => {
   assert(app.includes("syncGeneration += 1;"));
   assert(app.includes("accountSwitch"));
   assert(app.includes("同步待完成"));
+  assert(app.includes("已登入・同步中"));
+  assert(app.includes("已登入・同步待完成"));
+  assert(sw.includes("cy-news-v21"), "Service Worker cache must advance for the auth hotfix");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   console.log("Google OAuth account auth tests passed");

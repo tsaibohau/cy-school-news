@@ -231,7 +231,12 @@
             status("同步待完成");
             if (el.accountSwitch) el.accountSwitch.hidden = false;
             el.accountLogout.hidden = false;
-          } else status("同步中，稍後重試");
+          } else {
+            status("已登入・同步待完成");
+            el.accountLogin.hidden = true;
+            if (el.accountSwitch) el.accountSwitch.hidden = false;
+            el.accountLogout.hidden = false;
+          }
         });
       }
       queueAccountMutation = function (type, payload) {
@@ -249,6 +254,12 @@
           var uid = session && session.user && session.user.id;
           if (typeof uid === "string" && uid) {
             if (uid === requestedUid) return;
+            /* A verified session is authenticated before remote sync completes.
+               Keep account controls truthful while the single transition runs. */
+            status("已登入・同步中");
+            el.accountLogin.hidden = true;
+            if (el.accountSwitch) el.accountSwitch.hidden = false;
+            el.accountLogout.hidden = false;
             sync(uid);
           } else if (requestedUid !== null || readyUid !== null || accountPhase !== "ANONYMOUS_READY") {
             restoreAnonymous();

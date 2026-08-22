@@ -24,6 +24,24 @@ assert.equal(Sync.requireUid({ user: { id: "u" } }), "u");
 assert.throws(() => Sync.requireUid({ user: {} }), /verified session/);
 assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
 const adapter = Sync.createAdapter(client, { onConflict: { user_subscriptions: "user_id,normalized_keyword" } });
+const unauthorizedClient = {
+  auth: { getSession: () => Promise.resolve({ data: { session: { user: { id: "user-a" } } }, error: null }) },
+  from(table) {
+    return {
+      select() { return this; },
+      eq() {
+        return table === "user_subscriptions"
+          ? Promise.reject(new Error("401 unauthorized"))
+          : Promise.resolve({ data: [], error: null });
+      },
+    };
+  },
+};
+assert.rejects(
+  Sync.createAdapter(unauthorizedClient).fetchRemoteState(),
+  /401 unauthorized/,
+  "one unauthorized table read fails the coherent fetch; it cannot become empty account state"
+);
 adapter.fetchRemoteState().then(async remote => {
   assert.equal(remote.user_id, "user-a");
   assert.equal(remote.subscriptions[0].keyword, "X");
