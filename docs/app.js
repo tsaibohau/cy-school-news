@@ -70,7 +70,7 @@
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
       btnRefresh: $("btnRefresh"),
-      accountState: $("accountState"), accountLogin: $("accountLogin"),
+      accountState: $("accountState"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
       accountLogout: $("accountLogout"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
@@ -131,10 +131,15 @@
         if (accountBox) accountBox.hidden = true;
         return;
       }
-      var lifecycle = null;
-      var accountAdapter = null;
-      var accountOutbox = null;
+      var lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
+        subscriptions: notificationState.subscriptions,
+        reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
+        preferences: { schema_version: 1, preferences: {} },
+      }, localStorage);
       var syncGeneration = 0;
+      var requestedUid = null;
+      var readyUid = null;
+      var accountPhase = "ANONYMOUS_READY";
       function status(text) { el.accountState.textContent = text; }
       function projectSubscriptions(rows) {
         var now = new Date().toISOString();
@@ -151,8 +156,7 @@
             createdAt: old ? old.createdAt : now };
         });
       }
-      function applyRemote(remote) {
-        var merged = lifecycle.login(lifecycle.active_account_id, remote || {});
+      function publishState(merged) {
         notificationState.subscriptions = projectSubscriptions(merged.subscriptions);
         state.reads = {};
         (merged.reads || []).forEach(function (row) { if (row && row.announcement_id && row.read_at) state.reads[row.announcement_id] = row.read_at; });
@@ -161,68 +165,128 @@
         renderSub(); renderBadge();
         return merged;
       }
-      function restoreAnonymous() {
-        syncGeneration += 1;
-        if (!lifecycle) return;
-        var anonymousState = lifecycle.logout();
-        notificationState.subscriptions = projectSubscriptions(anonymousState.subscriptions);
+      function clearAccountOwnedView() {
+        notificationState.subscriptions = [];
         state.reads = {};
-        (anonymousState.reads || []).forEach(function (row) { if (row && row.announcement_id && row.read_at) state.reads[row.announcement_id] = row.read_at; });
         saveReads();
         NotificationState.save(notificationState);
         renderSub(); renderBadge();
       }
+      function restoreAnonymous() {
+        syncGeneration += 1;
+        var anonymousState = lifecycle.logout();
+        requestedUid = null;
+        readyUid = null;
+        accountPhase = "ANONYMOUS_READY";
+        publishState(anonymousState);
+      }
       function sync(uid) {
         var generation = ++syncGeneration;
+        requestedUid = uid;
+        readyUid = null;
+        accountPhase = "ACCOUNT_RESOLVING";
+        clearAccountOwnedView();
         function stillCurrent() {
-          if (generation !== syncGeneration) throw new Error("account sync superseded");
+          if (generation !== syncGeneration || requestedUid !== uid) throw new Error("account sync superseded");
         }
         status("同步中");
+        var merged = null;
         auth.getClient().then(function (client) {
           stillCurrent();
-          lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
-            subscriptions: notificationState.subscriptions, reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
-            preferences: { schema_version: 1, preferences: {} },
-          }, localStorage, uid);
-          accountAdapter = window.CyNewsSupabaseSync.createAdapter(client);
-          accountOutbox = new window.CyNewsAccountSync.Outbox(localStorage, uid);
-          return accountAdapter.fetchRemoteState().then(function (remote) {
+          accountPhase = "REMOTE_LOADING";
+          var adapter = window.CyNewsSupabaseSync.createAdapter(client, { isCurrent: function (currentUid) {
+            return generation === syncGeneration && requestedUid === uid && currentUid === uid;
+          }});
+          var outbox = new window.CyNewsAccountSync.Outbox(localStorage, uid);
+          return adapter.fetchRemoteState().then(function (remote) {
             stillCurrent();
-            var merged = applyRemote(remote);
-            return accountAdapter.pushState(merged).then(function () {
+            /* Do not mutate or publish account state until the verified UID's remote
+               namespace has been fetched. The lifecycle remains anonymous while this
+               transition is resolving, so no old account state can be adopted. */
+            accountPhase = "MERGING";
+            merged = lifecycle.login(uid, remote || {});
+            accountPhase = "SYNCING";
+            return adapter.pushState(merged).then(function () {
               stillCurrent();
-              return accountAdapter.drain(accountOutbox, function (item) {
-                return accountAdapter.sendMutation(item);
+              return adapter.drain(outbox, function (item) {
+                return adapter.sendMutation(item);
               });
             });
           });
-        }).then(function () { stillCurrent(); status("已同步"); el.accountLogin.hidden = true; el.accountLogout.hidden = false; })
-          .catch(function () { if (generation === syncGeneration) status("離線，稍後同步"); });
+        }).then(function () {
+          stillCurrent();
+          readyUid = uid;
+          accountPhase = "ACCOUNT_READY";
+          publishState(merged);
+          status("已同步");
+          el.accountLogin.hidden = true;
+          if (el.accountSwitch) el.accountSwitch.hidden = false;
+          el.accountLogout.hidden = false;
+        }).catch(function () {
+          if (generation !== syncGeneration || requestedUid !== uid) return;
+          if (merged) {
+            readyUid = uid;
+            accountPhase = "ACCOUNT_READY";
+            publishState(merged);
+            status("同步待完成");
+            if (el.accountSwitch) el.accountSwitch.hidden = false;
+            el.accountLogout.hidden = false;
+          } else status("同步中，稍後重試");
+        });
       }
       queueAccountMutation = function (type, payload) {
-        if (!accountOutbox || !lifecycle || lifecycle.active_account_id === window.CyNewsAccountSync.ANONYMOUS_ACCOUNT) return;
-        accountOutbox.enqueue({ type: type, payload: payload });
+        if (accountPhase !== "ACCOUNT_READY" || !readyUid || lifecycle.active_account_id !== readyUid) return;
+        new window.CyNewsAccountSync.Outbox(localStorage, readyUid).enqueue({ type: type, payload: payload });
         status("等待同步");
       };
       function handleVerifiedSession() {
         return auth.getVerifiedSession().then(function (session) {
           var uid = session && session.user && session.user.id;
-          if (typeof uid === "string" && uid) sync(uid);
-          else { restoreAnonymous(); lifecycle = null; status("未登入"); el.accountLogin.hidden = false; el.accountLogout.hidden = true; }
+          if (typeof uid === "string" && uid) {
+            if (uid === requestedUid) return;
+            sync(uid);
+          } else if (requestedUid !== null || readyUid !== null || accountPhase !== "ANONYMOUS_READY") {
+            restoreAnonymous();
+            status("未登入"); el.accountLogin.hidden = false;
+            if (el.accountSwitch) el.accountSwitch.hidden = true;
+            el.accountLogout.hidden = true;
+          }
         });
       }
       el.accountLogin.addEventListener("click", function () {
+        syncGeneration += 1;
+        requestedUid = null;
+        readyUid = null;
+        accountPhase = "AUTHENTICATING";
+        clearAccountOwnedView();
         status("前往 Google 登入中");
         auth.signInWithGoogle().then(function (result) {
           if (result && result.error) throw result.error;
-        }).catch(function () { status("登入失敗，請稍後再試"); });
+        }).catch(function () { status("登入失敗，請稍後再試"); handleVerifiedSession().catch(function () {}); });
+      });
+      if (el.accountSwitch) el.accountSwitch.addEventListener("click", function () {
+        syncGeneration += 1;
+        requestedUid = null;
+        readyUid = null;
+        accountPhase = "AUTHENTICATING";
+        clearAccountOwnedView();
+        status("選擇 Google 帳號中");
+        auth.signInWithGoogle({ forceAccountChooser: true }).then(function (result) {
+          if (result && result.error) throw result.error;
+        }).catch(function () { status("切換帳號失敗，請稍後再試"); handleVerifiedSession().catch(function () {}); });
       });
       el.accountLogout.addEventListener("click", function () {
         syncGeneration += 1;
+        requestedUid = null;
+        readyUid = null;
+        accountPhase = "AUTHENTICATING";
+        clearAccountOwnedView();
         status("同步中");
         auth.signOut().then(function () {
           restoreAnonymous();
-          status("未登入"); el.accountLogin.hidden = false; el.accountLogout.hidden = true;
+          status("未登入"); el.accountLogin.hidden = false;
+          if (el.accountSwitch) el.accountSwitch.hidden = true;
+          el.accountLogout.hidden = true;
         }).catch(function () { status("同步失敗"); });
       });
       auth.getClient().then(function () { return handleVerifiedSession(); })

@@ -51,6 +51,12 @@ controller.signInWithGoogle().then(async () => {
     options: { redirectTo: localhost },
   });
 
+  await controller.signInWithGoogle({ forceAccountChooser: true });
+  assert.deepEqual(oauthRequest, {
+    provider: "google",
+    options: { redirectTo: localhost, queryParams: { prompt: "select_account" } },
+  });
+
   const session = await Auth.verifiedSession(client);
   assert.equal(session.user.id, "verified-session-id");
   assert.equal(await controller.getVerifiedUid(), "verified-session-id");
@@ -104,6 +110,8 @@ controller.signInWithGoogle().then(async () => {
   assert(app.includes("auth.signOut()"));
   assert(app.includes("restoreAnonymous();"));
   assert(app.includes("syncGeneration += 1;"));
+  assert(app.includes("accountSwitch"));
+  assert(app.includes("同步待完成"));
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   console.log("Google OAuth account auth tests passed");

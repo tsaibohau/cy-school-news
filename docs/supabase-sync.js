@@ -26,6 +26,11 @@
     if (result && result.error) throw result.error;
     return (result && result.data) || [];
   }
+  function assertCurrent(options, uid) {
+    if (options && typeof options.isCurrent === "function" && !options.isCurrent(uid)) {
+      throw new Error("account sync superseded");
+    }
+  }
   function withOwner(row, uid) {
     var copy = Object.assign({}, row);
     delete copy.user_id;
@@ -50,8 +55,12 @@
       updated_at: row.updated_at || row.updatedAt || new Date().toISOString(),
     };
   }
-  function query(client, table, uid) {
-    return client.from(table).select("*").eq("user_id", uid).then(rows);
+  function query(client, table, uid, options) {
+    assertCurrent(options, uid);
+    return client.from(table).select("*").eq("user_id", uid).then(function (result) {
+      assertCurrent(options, uid);
+      return rows(result);
+    });
   }
   function createAdapter(client, options) {
     options = options || {};
@@ -59,7 +68,8 @@
     return {
       fetchRemoteState: function () {
         return sessionUid(client).then(function (uid) {
-          return Promise.all([query(client, TABLES.subscriptions, uid), query(client, TABLES.reads, uid), query(client, TABLES.preferences, uid)])
+          assertCurrent(options, uid);
+          return Promise.all([query(client, TABLES.subscriptions, uid, options), query(client, TABLES.reads, uid, options), query(client, TABLES.preferences, uid, options)])
             .then(function (data) { return { user_id: uid, subscriptions: data[0], reads: data[1], preferences: data[2][0] || null }; });
         });
       },
@@ -67,11 +77,16 @@
         return sessionUid(client).then(function (uid) {
           var payload = (Array.isArray(values) ? values : []).map(function (row) { return withOwner(dbRow(table, row), uid); });
           if (!payload.length) return [];
-          return client.from(table).upsert(payload, { onConflict: CONFLICT_TARGETS[table] }).then(rows);
+          assertCurrent(options, uid);
+          return client.from(table).upsert(payload, { onConflict: CONFLICT_TARGETS[table] }).then(function (result) {
+            assertCurrent(options, uid);
+            return rows(result);
+          });
         });
       },
       pushState: function (state) {
         return sessionUid(client).then(function (uid) {
+          assertCurrent(options, uid);
           var subscriptions = (state.subscriptions || []).map(function (row) { return withOwner(row, uid); });
           var reads = (state.reads || []).map(function (row) { return withOwner(row, uid); });
           var preferences = state.preferences ? [withOwner(state.preferences, uid)] : [];
@@ -87,18 +102,24 @@
           if (!mutation || mutation.account_id !== uid) throw new Error("mutation/session identity changed");
           var table = mutation.type === "subscription.upsert" || mutation.type === "subscription.delete" ? TABLES.subscriptions :
             mutation.type === "read.upsert" ? TABLES.reads : TABLES.preferences;
-          return client.from(table).upsert([withOwner(dbRow(table, mutation.payload || {}), uid)], { onConflict: CONFLICT_TARGETS[table] }).then(rows);
+          assertCurrent(options, uid);
+          return client.from(table).upsert([withOwner(dbRow(table, mutation.payload || {}), uid)], { onConflict: CONFLICT_TARGETS[table] }).then(function (result) {
+            assertCurrent(options, uid);
+            return rows(result);
+          });
         });
       },
       drain: function (outbox, send) {
         return sessionUid(client).then(function (uid) {
           if (outbox.account_id !== uid) throw new Error("outbox/session identity changed");
+          assertCurrent(options, uid);
           var items = outbox.pending();
           return items.reduce(function (chain, item) {
             return chain.then(function (result) {
               if (result.error) return result;
               return sessionUid(client).then(function (currentUid) {
                 if (currentUid !== uid || outbox.account_id !== currentUid) throw new Error("outbox/session identity changed");
+                assertCurrent(options, currentUid);
                 return Promise.resolve(send(item, currentUid)).then(function () {
                   result.done.push(item.id); return result;
                 });

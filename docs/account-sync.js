@@ -216,8 +216,20 @@
   AccountLifecycle.prototype.stateKey = function (id) { return STATE_PREFIX + accountId(id); };
   AccountLifecycle.prototype.readMeta = function () {
     var value = parseObject(safeGet(this.storage, META_KEY));
-    return value && value.version === VERSION && value.adopted && typeof value.adopted === "object" ? value :
-      { version: VERSION, adopted: {} };
+    if (!value || value.version !== VERSION) return { version: VERSION, adopted: {}, anonymous_adopted: false };
+    value.adopted = value.adopted && typeof value.adopted === "object" ? value.adopted : {};
+    value.anonymous_adopted = !!value.anonymous_adopted;
+    /* V1.2 recorded adoption per account. Preserve the first durable owner
+       during migration, but never let that old per-account map authorize a
+       second anonymous adoption. */
+    if (!value.anonymous_adopted) {
+      var owners = Object.keys(value.adopted).filter(function (id) { return value.adopted[id]; }).sort();
+      if (owners.length) {
+        value.anonymous_adopted = true;
+        value.adopted_account_id = owners[0];
+      }
+    }
+    return value;
   };
   AccountLifecycle.prototype.saveMeta = function () { safeSet(this.storage, META_KEY, JSON.stringify(this.meta)); };
   AccountLifecycle.prototype.loadState = function (id, fallback) {
@@ -249,9 +261,11 @@
     }
     var existing = safeGet(this.storage, this.stateKey(id)) != null ?
       this.loadState(id, emptyState()) : (this.accounts[id] || emptyState());
-    if (!this.meta.adopted[id]) {
+    if (!this.meta.anonymous_adopted) {
       existing = mergeAccountState(existing, this.anonymous);
       this.meta.adopted[id] = true;
+      this.meta.anonymous_adopted = true;
+      this.meta.adopted_account_id = id;
       this.saveMeta();
     }
     this.active_state = mergeAccountState(existing, remote || {});

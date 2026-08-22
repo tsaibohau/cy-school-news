@@ -101,6 +101,7 @@ assert(lifecycle.state().subscriptions.some(x => x.keyword === "匿名"));
 assert(!lifecycle.state().subscriptions.some(x => x.keyword === "A"));
 const bState = lifecycle.login("user-b");
 assert(!bState.subscriptions.some(x => x.keyword === "A"));
+assert(!bState.subscriptions.some(x => x.keyword === "匿名"), "second account cannot re-adopt the anonymous baseline");
 lifecycle.logout();
 const aAgain = lifecycle.login("user-a");
 assert(aAgain.subscriptions.some(x => x.keyword === "A"));
@@ -139,6 +140,7 @@ assert(durable.state().subscriptions.some(x => x.keyword === "X" && x.deleted_at
 durable.logout();
 durable.login("user-b");
 assert(!durable.state().subscriptions.some(x => x.keyword === "A-only"));
+assert(!durable.state().subscriptions.some(x => x.keyword === "X"), "second account cannot re-adopt anonymous state");
 durable.logout();
 durable = new Sync.AccountLifecycle(null, { storage: durableStore, activeAccountId: "user-a" });
 assert(durable.state().subscriptions.some(x => x.keyword === "X" && x.deleted_at), "A tombstone survives reload and re-login");

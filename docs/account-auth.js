@@ -58,11 +58,14 @@
       getVerifiedSession: function () { return getClient().then(verifiedSession); },
       getVerifiedUid: function () { return getClient().then(verifiedUid); },
       getApprovedRedirectTo: function () { return approvedRedirect(config, options.location); },
-      signInWithGoogle: function () {
+      signInWithGoogle: function (signInOptions) {
+        signInOptions = signInOptions || {};
         var redirectTo = approvedRedirect(config, options.location);
         if (!redirectTo) return Promise.reject(new Error("current app URL is not allow-listed"));
         return getClient().then(function (c) {
-          return c.auth.signInWithOAuth({ provider: "google", options: { redirectTo: redirectTo } });
+          var oauthOptions = { redirectTo: redirectTo };
+          if (signInOptions.forceAccountChooser) oauthOptions.queryParams = { prompt: "select_account" };
+          return c.auth.signInWithOAuth({ provider: "google", options: oauthOptions });
         });
       },
       signOut: function () {
