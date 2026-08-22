@@ -20,6 +20,23 @@
 
     var LS_SEEN = "cyNews.lastSeen";
     var LS_EVENTS = "cyNews.calendarEvents.v1";
+    var CalendarState = window.CyNewsCalendarState || (function () {
+      function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
+      function normalize(rows) {
+        return (Array.isArray(rows) ? rows : []).filter(function (row) {
+          return row && String(row.title || "").trim() && validDate(row.date);
+        }).map(function (row, index) {
+          return { id: String(row.id || "user:legacy:" + index + ":" + row.date + ":" + row.title), title: String(row.title).trim(), date: String(row.date), notes: String(row.notes || "").trim() };
+        });
+      }
+      function upsert(rows, event) {
+        var normalized = normalize(rows), next = { id: String(event.id), title: String(event.title || "").trim(), date: String(event.date || ""), notes: String(event.notes || "").trim() }, found = false;
+        if (!next.id || !next.title || !validDate(next.date)) return normalized;
+        return normalized.map(function (row) { if (row.id !== next.id) return row; found = true; return next; }).concat(found ? [] : [next]);
+      }
+      function remove(rows, id) { return normalize(rows).filter(function (row) { return row.id !== String(id); }); }
+      return { normalize: normalize, upsert: upsert, remove: remove };
+    })();
     var LS_READS = "cyNews.reads.v1";
     var PAGE_SIZE = 200;  // 最新清單一次渲染的則數,避免一口氣塞入上千張卡片
     var notificationState = NotificationState.load();
@@ -65,7 +82,7 @@
     };
 
     function loadUserEvents() {
-      try { var rows = JSON.parse(localStorage.getItem(LS_EVENTS) || "[]"); return Array.isArray(rows) ? rows : []; }
+      try { var rows = JSON.parse(localStorage.getItem(LS_EVENTS) || "[]"); return CalendarState ? CalendarState.normalize(rows) : (Array.isArray(rows) ? rows : []); }
       catch (e) { return []; }
     }
     function loadReads() {
@@ -73,19 +90,36 @@
       catch (e) { return {}; }
     }
     function saveReads() { localStorage.setItem(LS_READS, JSON.stringify(state.reads)); }
-    function saveUserEvents() { localStorage.setItem(LS_EVENTS, JSON.stringify(state.userEvents)); }
+    function saveUserEvents() {
+      state.userEvents = CalendarState ? CalendarState.normalize(state.userEvents) : state.userEvents;
+      localStorage.setItem(LS_EVENTS, JSON.stringify(state.userEvents));
+    }
+    function editUserEvent(id) {
+      var row = state.userEvents.find(function (ev) { return ev.id === String(id); });
+      if (!row) return false;
+      state.eventEditingId = row.id;
+      el.eventForm.dataset.editingId = row.id;
+      el.eventForm.dataset.editingDate = row.date;
+      el.eventFormTitle.textContent = "編輯自己的事件";
+      el.eventTitle.value = row.title;
+      el.eventDate.value = row.date;
+      el.eventNotes.value = row.notes || "";
+      el.eventFormWrap.hidden = false;
+      el.eventTitle.focus();
+      return true;
+    }
+    function removeUserEvent(id) {
+      state.userEvents = CalendarState ? CalendarState.remove(state.userEvents, id) : state.userEvents.filter(function (ev) { return ev.id !== String(id); });
+      saveUserEvents();
+      renderCalendar();
+    }
     /* Keep handlers available to the generated agenda buttons across rerenders. */
     window.__cyNewsCalendarHandlers = {
       edit: function (id) {
-        var row = state.userEvents.find(function (ev) { return ev.id === id; });
-        if (!row) return;
-        state.eventEditingId = row.id; el.eventFormTitle.textContent = "編輯自己的事件";
-        el.eventTitle.value = row.title; el.eventDate.value = row.date; el.eventNotes.value = row.notes || "";
-        el.eventFormWrap.hidden = false; el.eventTitle.focus();
+        editUserEvent(id);
       },
       remove: function (id) {
-        state.userEvents = state.userEvents.filter(function (ev) { return ev.id !== id; });
-        saveUserEvents(); renderCalendar();
+        removeUserEvent(id);
       },
     };
 
@@ -376,21 +410,16 @@
       };
       el.agendaTitle.textContent = day === new Date().toISOString().slice(0, 10) ? "今天" : day + " 的事件";
       el.agenda.innerHTML = evs.length ? evs.map(function (ev) {
-        return '<article class="agenda-item"><span class="agenda-mark ' + ev.kind + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '" data-title="' + esc(ev.title) + '" data-date="' + esc(ev.date) + '" data-notes="' + esc(ev.notes || "") + '" onclick="var f=document.getElementById(\'eventForm\'); f.dataset.editingId=this.dataset.editEvent; f.dataset.editingDate=this.dataset.date; document.getElementById(\'eventFormTitle\').textContent=\'編輯自己的事件\'; document.getElementById(\'eventTitle\').value=this.dataset.title; document.getElementById(\'eventDate\').value=this.dataset.date; document.getElementById(\'eventNotes\').value=this.dataset.notes; document.getElementById(\'eventFormWrap\').hidden=false;">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '" onclick="var id=this.dataset.deleteEvent; var rows=JSON.parse(localStorage.getItem(\'cyNews.calendarEvents.v1\')||\'[]\').filter(function(ev){return ev.id!==id;}); localStorage.setItem(\'cyNews.calendarEvents.v1\',JSON.stringify(rows)); location.reload();">刪除</button></div>' : '') + '</div></article>';
+        return '<article class="agenda-item"><span class="agenda-mark ' + ev.kind + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '">刪除</button></div>' : '') + '</div></article>';
       }).join("") : '<p class="empty">這天沒有事件。選一個日期，或新增自己的事件。</p>';
       Array.prototype.forEach.call(el.agenda.querySelectorAll("button[data-edit-event]"), function (button) {
         button.addEventListener("click", function () {
-          var row = state.userEvents.find(function (ev) { return ev.id === button.dataset.editEvent; });
-          if (!row) return;
-          state.eventEditingId = row.id; el.eventFormTitle.textContent = "編輯自己的事件";
-          el.eventTitle.value = row.title; el.eventDate.value = row.date; el.eventNotes.value = row.notes || "";
-          el.eventFormWrap.hidden = false; el.eventTitle.focus();
+          editUserEvent(button.dataset.editEvent);
         });
       });
       Array.prototype.forEach.call(el.agenda.querySelectorAll("button[data-delete-event]"), function (button) {
         button.addEventListener("click", function () {
-          state.userEvents = state.userEvents.filter(function (ev) { return ev.id !== button.dataset.deleteEvent; });
-          saveUserEvents(); renderCalendar();
+          removeUserEvent(button.dataset.deleteEvent);
         });
       });
     }
@@ -655,11 +684,8 @@
         var title = el.eventTitle.value.trim(), date = el.eventDate.value || el.eventForm.dataset.editingDate;
         if (!title || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
         var editingId = state.eventEditingId || el.eventForm.dataset.editingId;
-        if (editingId) {
-          state.userEvents = state.userEvents.map(function (ev) { return ev.id === editingId ? { id: ev.id, title: title, date: date, notes: el.eventNotes.value.trim() } : ev; });
-        } else {
-          state.userEvents.push({ id: "user:" + Date.now().toString(36), title: title, date: date, notes: el.eventNotes.value.trim() });
-        }
+        var eventId = editingId || "user:" + Date.now().toString(36);
+        state.userEvents = CalendarState ? CalendarState.upsert(state.userEvents, { id: eventId, title: title, date: date, notes: el.eventNotes.value.trim() }) : state.userEvents;
         state.eventEditingId = null; el.eventForm.dataset.editingId = ""; el.eventForm.dataset.editingDate = "";
         saveUserEvents(); state.calendarSelected = date; state.calendarMonth = new Date(Number(date.slice(0, 4)), Number(date.slice(5, 7)) - 1, 1);
         el.eventForm.reset(); el.eventFormWrap.hidden = true; renderCalendar();
