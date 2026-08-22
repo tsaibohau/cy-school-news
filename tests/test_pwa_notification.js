@@ -8,6 +8,9 @@ const vm = require("node:vm");
 
 const repo = path.resolve(__dirname, "..");
 const stateSource = fs.readFileSync(path.join(repo, "docs", "notification-state.js"), "utf8");
+const profileSource = fs.readFileSync(path.join(repo, "docs", "profile.js"), "utf8");
+const relevanceSource = fs.readFileSync(path.join(repo, "docs", "relevance.js"), "utf8");
+const registrySource = fs.readFileSync(path.join(repo, "docs", "school-registry.js"), "utf8");
 const appSource = fs.readFileSync(path.join(repo, "docs", "app.js"), "utf8");
 const swSource = fs.readFileSync(path.join(repo, "docs", "sw.js"), "utf8");
 
@@ -62,6 +65,9 @@ function makeDocument() {
     "list", "subList", "countLine", "updatedAt", "q", "schoolSeg", "catChips",
     "viewLatest", "viewSub", "tabLatest", "tabSub", "subBadge", "kwForm",
     "kwInput", "kwChips", "btnNotify", "notifyState", "btnRefresh",
+    "profileBox", "profileHint", "profileForm", "profileSchool", "profileGrade",
+    "profileClass", "profileInterests", "profileCategories", "profileKeywords",
+    "profileSave", "profileStatus", "personalizedToggle",
   ];
   const elements = Object.fromEntries(ids.map((id) => [id, new FakeElement()]));
   return {
@@ -145,6 +151,9 @@ async function createApp({ storage, responses, notification, controller = null }
     console,
   });
   vm.runInContext(stateSource, context);
+  vm.runInContext(profileSource, context);
+  vm.runInContext(relevanceSource, context);
+  vm.runInContext(registrySource, context);
   vm.runInContext(appSource, context);
   await flush();
   return { context, window, document, app: window.__cyNewsAppTest, queue };
@@ -406,12 +415,78 @@ async function testPermissionFailureDoesNotPersist() {
     "a failed Notification must not advance the watermark");
 }
 
+async function testPersonalizedStrongMatchAndReasons() {
+  const storage = new MemoryStorage();
+  const notification = makeNotification();
+  const appRun = await createApp({ storage, responses: [response(dataOf([]))], notification });
+  const state = appRun.app.getState();
+  state.profile = { schema_version: 1, school_id: "cysh", grade_level: 1, class_name: "109", interests: [], tracked_categories: [], tracked_keywords: [] };
+  state.personalizedNotifications = true;
+  appRun.app.getNotificationState().personalizedThrough = "2026-08-19T00:00:00Z";
+  appRun.queue.push(response(dataOf([item("personal-strong", "2026-08-20T00:00:00Z", "高一 109班 物理競賽")])));
+  await appRun.app.fetchData();
+  assert.equal(notification.calls.length, 1);
+  assert.match(notification.calls[0].options.body, /與你相關/);
+  const stateOnDisk = JSON.parse(storage.getItem("cyNews.notificationState"));
+  assert.equal(stateOnDisk.personalizedThrough, "2026-08-20T00:00:00Z");
+}
+
+async function testPersonalizedDifferentSchoolAndClass() {
+  const storage = new MemoryStorage();
+  const notification = makeNotification();
+  const appRun = await createApp({ storage, responses: [response(dataOf([]))], notification });
+  const state = appRun.app.getState();
+  state.profile = { schema_version: 1, school_id: "cysh", grade_level: 1, class_name: "109", interests: [], tracked_categories: [], tracked_keywords: [] };
+  state.personalizedNotifications = true;
+  appRun.app.getNotificationState().personalizedThrough = "2026-08-19T00:00:00Z";
+  appRun.queue.push(response(dataOf([Object.assign(item("personal-other-school", "2026-08-20T00:00:00Z", "高一 109班 物理競賽"), { school: "cygsh", school_name: "嘉女" })])));
+  await appRun.app.fetchData();
+  assert.equal(notification.calls.length, 0, "different school must not qualify");
+
+  const second = await createApp({ storage: new MemoryStorage(), responses: [response(dataOf([]))], notification: makeNotification() });
+  const secondState = second.app.getState();
+  secondState.profile = state.profile;
+  secondState.personalizedNotifications = true;
+  second.app.getNotificationState().personalizedThrough = "2026-08-19T00:00:00Z";
+  second.queue.push(response(dataOf([item("personal-class", "2026-08-20T00:00:00Z", "校內活動 109班")])));
+  await second.app.fetchData();
+  assert.equal(second.window.Notification.calls.length, 1, "explicit class must qualify");
+}
+
+async function testPersonalizedBaselineAndDedup() {
+  const storage = new MemoryStorage({ "cyNews.keywords": JSON.stringify(["物理競賽"]) });
+  const notification = makeNotification();
+  const appRun = await createApp({ storage, responses: [response(dataOf([]))], notification });
+  const state = appRun.app.getState();
+  state.profile = { schema_version: 1, school_id: "cysh", grade_level: 1, class_name: "", interests: [], tracked_categories: [], tracked_keywords: [] };
+  state.personalizedNotifications = true;
+  appRun.app.getNotificationState().personalizedThrough = "2026-08-19T00:00:00Z";
+  appRun.queue.push(response(dataOf([
+    item("personal-dedup", "2026-08-20T00:00:00Z", "高一物理競賽報名"),
+  ])));
+  await appRun.app.fetchData();
+  assert.equal(notification.calls.length, 1, "keyword + profile must produce one delivery");
+  const ids = JSON.parse(storage.getItem("cyNews.notificationState")).notifiedIds;
+  assert.deepEqual(ids, ["personal-dedup"]);
+
+  const old = item("personal-old", "2026-08-18T00:00:00Z", "高二物理競賽");
+  const noFloodNotification = makeNotification();
+  const noFlood = await createApp({ storage: new MemoryStorage(), responses: [response(dataOf([old]))], notification: noFloodNotification });
+  const noFloodState = noFlood.app.getState();
+  noFloodState.profile = { schema_version: 1, school_id: "cysh", grade_level: 2, class_name: "", interests: [], tracked_categories: [], tracked_keywords: [] };
+  noFloodState.personalizedNotifications = true;
+  noFlood.app.getNotificationState().personalizedThrough = "2026-08-20T00:00:00Z";
+  noFlood.queue.push(response(dataOf([old])));
+  await noFlood.app.fetchData();
+  assert.equal(noFloodNotification.calls.length, 0, "profile enable/change must not flood history");
+}
+
 function testServiceWorkerContract() {
   assert.match(appSource, /isExplicitlyImportant/);
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v22/);
+  assert.match(swSource, /cy-news-v23/);
   assert.match(swSource, /\.\/profile\.js/);
   assert.match(swSource, /\.\/relevance\.js/);
   assert.doesNotMatch(swSource, /cy-news-v19/);
@@ -445,6 +520,9 @@ function testServiceWorkerContract() {
   testNotifiedIdsCap();
   await testCacheDoesNotNotify();
   await testPermissionFailureDoesNotPersist();
+  await testPersonalizedStrongMatchAndReasons();
+  await testPersonalizedDifferentSchoolAndClass();
+  await testPersonalizedBaselineAndDedup();
   testServiceWorkerContract();
   console.log("PWA Notification V3 tests passed (11 acceptance areas + guards)");
 })().catch((error) => {

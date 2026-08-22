@@ -58,6 +58,8 @@
       archive: "none",  /* none | loading | loaded:歷史封存資料的載入狀態 */
       subscriptions: notificationState.subscriptions,
       profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
+      personalizedNotifications: false,
+      activeAccountId: "anonymous",
       lastSeen: localStorage.getItem(LS_SEEN) || "",
     };
 
@@ -83,7 +85,7 @@
       profileBox: $("profileBox"), profileHint: $("profileHint"), profileForm: $("profileForm"),
       profileSchool: $("profileSchool"), profileGrade: $("profileGrade"), profileClass: $("profileClass"),
       profileInterests: $("profileInterests"), profileCategories: $("profileCategories"), profileKeywords: $("profileKeywords"),
-      profileSave: $("profileSave"), profileStatus: $("profileStatus"),
+      profileSave: $("profileSave"), profileStatus: $("profileStatus"), personalizedToggle: $("personalizedToggle"),
     };
 
     function loadUserEvents() {
@@ -126,6 +128,27 @@
         tracked_categories: el.profileCategories.value,
         tracked_keywords: el.profileKeywords.value,
       });
+    }
+    function hasProfileContext(profile) {
+      profile = profile || {};
+      return !!(profile.school_id || profile.grade_level || (profile.interests || []).length ||
+        (profile.tracked_categories || []).length || (profile.tracked_keywords || []).length);
+    }
+    function personalizedBaselineKey(accountId) {
+      return "cyNews.personalizedThrough.v1:" + String(accountId || "anonymous");
+    }
+    function establishPersonalizedBaseline(accountId) {
+      var key = personalizedBaselineKey(accountId);
+      var existing = localStorage.getItem(key);
+      if (!existing || isNaN(Date.parse(existing))) {
+        existing = new Date().toISOString();
+        localStorage.setItem(key, existing);
+      }
+      notificationState.personalizedThrough = existing;
+      NotificationState.save(notificationState);
+    }
+    function renderPersonalizedSetting() {
+      if (el.personalizedToggle) el.personalizedToggle.checked = !!state.personalizedNotifications;
     }
     function editUserEvent(id) {
       var row = state.userEvents.find(function (ev) { return ev.id === String(id); });
@@ -189,14 +212,19 @@
             createdAt: old ? old.createdAt : now };
         });
       }
-      function publishState(merged) {
+      function publishState(merged, accountId) {
+        state.activeAccountId = accountId || "anonymous";
         notificationState.subscriptions = projectSubscriptions(merged.subscriptions);
         state.reads = {};
         (merged.reads || []).forEach(function (row) { if (row && row.announcement_id && row.read_at) state.reads[row.announcement_id] = row.read_at; });
         saveReads();
         NotificationState.save(notificationState);
         state.profile = window.CyNewsProfile.normalize(merged.preferences && merged.preferences.preferences && merged.preferences.preferences.profile);
+        var notificationPreferences = merged.preferences && merged.preferences.preferences && merged.preferences.preferences.notification_preferences;
+        state.personalizedNotifications = !!(notificationPreferences && notificationPreferences.personalized);
+        establishPersonalizedBaseline(accountId || "anonymous");
         renderProfile();
+        renderPersonalizedSetting();
         renderLatest(); renderSub(); renderBadge();
         return merged;
       }
@@ -206,7 +234,11 @@
         saveReads();
         NotificationState.save(notificationState);
         state.profile = window.CyNewsProfile.empty();
+        state.personalizedNotifications = false;
+        state.activeAccountId = "anonymous";
+        establishPersonalizedBaseline("anonymous");
         renderProfile();
+        renderPersonalizedSetting();
         renderLatest(); renderSub(); renderBadge();
       }
       function restoreAnonymous() {
@@ -215,7 +247,7 @@
         requestedUid = null;
         readyUid = null;
         accountPhase = "ANONYMOUS_READY";
-        publishState(anonymousState);
+          publishState(anonymousState, "anonymous");
       }
       function sync(uid) {
         var generation = ++syncGeneration;
@@ -254,7 +286,7 @@
           stillCurrent();
           readyUid = uid;
           accountPhase = "ACCOUNT_READY";
-          publishState(merged);
+          publishState(merged, uid);
           status("已同步");
           el.accountLogin.hidden = true;
           if (el.accountSwitch) el.accountSwitch.hidden = false;
@@ -264,7 +296,7 @@
           if (merged) {
             readyUid = uid;
             accountPhase = "ACCOUNT_READY";
-            publishState(merged);
+            publishState(merged, uid);
             status("同步待完成");
             if (el.accountSwitch) el.accountSwitch.hidden = false;
             el.accountLogout.hidden = false;
@@ -678,15 +710,47 @@
     }
     function processFreshRecentNotifications(recentItems) {
       if (!("Notification" in window) || window.Notification.permission !== "granted") return;
-      var candidates = NotificationState.findCandidates(recentItems, notificationState, itemText);
+      var keywordCandidates = NotificationState.findCandidates(recentItems, notificationState, itemText);
+      var personalizedCandidates = [];
+      if (state.personalizedNotifications && hasProfileContext(state.profile) &&
+          window.CyNewsRelevance && window.CyNewsSchoolRegistry &&
+          NotificationState.findPersonalizedCandidates) {
+        personalizedCandidates = NotificationState.findPersonalizedCandidates(
+          recentItems, notificationState, state.profile,
+          function (item, profile) {
+            return window.CyNewsRelevance.calculate(item, profile, window.CyNewsSchoolRegistry);
+          }
+        );
+      }
+      var byId = {};
+      keywordCandidates.forEach(function (item) { byId[item.id] = { item: item, keyword: true }; });
+      personalizedCandidates.forEach(function (entry) {
+        if (!byId[entry.item.id]) byId[entry.item.id] = { item: entry.item };
+        byId[entry.item.id].personalized = true;
+        byId[entry.item.id].relevance = entry.relevance;
+      });
+      var combined = Object.keys(byId).map(function (id) { return byId[id]; });
+      var candidates = combined.map(function (entry) { return entry.item; });
       if (!candidates.length) return;
       try {
+        var personalCount = combined.filter(function (entry) { return entry.personalized; }).length;
+        var body = personalCount
+          ? (personalCount === 1 ? "與你相關的新公告：" + candidates.find(function (item) { return byId[item.id].personalized; }).title :
+            "有 " + personalCount + " 則與你相關的新公告")
+          : "有 " + candidates.length + " 則符合訂閱關鍵字的新公告";
         new window.Notification("嘉校快訊", {
-          body: "有 " + candidates.length + " 則符合訂閱關鍵字的新公告",
+          body: body,
           icon: "icons/icon-192.png",
         });
         /* 只有 Notification 建立成功後才寫入 IDs 與 first_seen 水位。 */
-        NotificationState.markNotified(notificationState, candidates);
+        var keywordOnly = combined.filter(function (entry) { return entry.keyword; }).map(function (entry) { return entry.item; });
+        var personalOnly = combined.filter(function (entry) { return entry.personalized; }).map(function (entry) {
+          return { item: entry.item, relevance: entry.relevance };
+        });
+        if (keywordOnly.length) NotificationState.markNotified(notificationState, keywordOnly);
+        if (personalOnly.length && NotificationState.markPersonalizedNotified) {
+          NotificationState.markPersonalizedNotified(notificationState, personalOnly);
+        }
       } catch (e) { /* 通知建立失敗時不可寫入 notifiedIds */ }
     }
 
@@ -832,7 +896,10 @@
       var profile = profileFromForm();
       var result = queueAccountMutation("preferences.upsert", {
         schema_version: 1,
-        preferences: { profile: profile },
+        preferences: {
+          profile: profile,
+          notification_preferences: { personalized: !!state.personalizedNotifications },
+        },
         updated_at: new Date().toISOString(),
       });
       if (!result) {
@@ -840,9 +907,34 @@
         return;
       }
       state.profile = profile;
+      establishPersonalizedBaseline(state.activeAccountId);
       el.profileStatus.textContent = "已儲存";
       renderProfile();
       renderLatest();
+    });
+    if (el.personalizedToggle) el.personalizedToggle.addEventListener("change", function () {
+      var enabled = !!el.personalizedToggle.checked;
+      if (enabled && !hasProfileContext(state.profile)) {
+        el.personalizedToggle.checked = false;
+        el.profileStatus.textContent = "請先設定學校、年級或關注內容";
+        return;
+      }
+      var result = queueAccountMutation("preferences.upsert", {
+        schema_version: 1,
+        preferences: {
+          profile: window.CyNewsProfile.normalize(state.profile),
+          notification_preferences: { personalized: enabled },
+        },
+        updated_at: new Date().toISOString(),
+      });
+      if (!result) {
+        el.personalizedToggle.checked = !enabled;
+        el.profileStatus.textContent = "請先登入並完成同步";
+        return;
+      }
+      state.personalizedNotifications = enabled;
+      establishPersonalizedBaseline(state.activeAccountId);
+      el.profileStatus.textContent = enabled ? "個人化通知已開啟" : "個人化通知已關閉";
     });
 
     /* ── PWA ── */

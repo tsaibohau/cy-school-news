@@ -89,6 +89,8 @@
       subscriptions: normalizeSubscriptions(value && value.subscriptions),
       notifiedIds: normalizeNotifiedIds(value && value.notifiedIds),
       notifiedThrough: watermark,
+      personalizedThrough: value && typeof value.personalizedThrough === "string" &&
+        !isNaN(parseTimestamp(value.personalizedThrough)) ? value.personalizedThrough : "",
     };
   }
 
@@ -98,6 +100,7 @@
       subscriptions: normalizeSubscriptions(subscriptions),
       notifiedIds: normalizeNotifiedIds(notifiedIds),
       notifiedThrough: migrationAt,
+      personalizedThrough: "",
     };
     writeJSON(storage, STORAGE_KEY, migrated);
     return migrated;
@@ -150,6 +153,7 @@
     state.subscriptions = normalized.subscriptions;
     state.notifiedIds = normalized.notifiedIds;
     state.notifiedThrough = normalized.notifiedThrough;
+    state.personalizedThrough = normalized.personalizedThrough;
     return state;
   }
 
@@ -210,6 +214,25 @@
     return result;
   }
 
+  function findPersonalizedCandidates(items, state, profile, evaluator) {
+    var alreadyNotified = {};
+    state.notifiedIds.forEach(function (id) { alreadyNotified[id] = true; });
+    var baseline = parseTimestamp(state.personalizedThrough);
+    var seen = {};
+    var result = [];
+    (Array.isArray(items) ? items : []).forEach(function (item) {
+      if (!item || typeof item.id !== "string" || !item.id || seen[item.id] || alreadyNotified[item.id]) return;
+      var itemTime = parseTimestamp(item.first_seen);
+      if (isNaN(itemTime) || !profile || typeof evaluator !== "function") return;
+      if (!isNaN(baseline) && itemTime <= baseline) return;
+      var relevance = evaluator(item, profile);
+      if (!relevance || relevance.tier !== "strong" || !relevance.reasons || !relevance.reasons.length) return;
+      seen[item.id] = true;
+      result.push({ item: item, relevance: relevance });
+    });
+    return result;
+  }
+
   function markNotified(state, candidates, storage) {
     var existing = normalizeNotifiedIds(state.notifiedIds);
     var seen = {};
@@ -236,6 +259,31 @@
     return state.notifiedIds;
   }
 
+  function markPersonalizedNotified(state, candidates, storage) {
+    var existing = normalizeNotifiedIds(state.notifiedIds);
+    var seen = {};
+    existing.forEach(function (id) { seen[id] = true; });
+    var watermarkTime = parseTimestamp(state.personalizedThrough);
+    var watermark = state.personalizedThrough || "";
+    (Array.isArray(candidates) ? candidates : []).forEach(function (candidate) {
+      var item = candidate && candidate.item ? candidate.item : candidate;
+      var id = item && item.id;
+      if (typeof id === "string" && id && !seen[id]) {
+        seen[id] = true;
+        existing.push(id);
+      }
+      var candidateTime = parseTimestamp(item && item.first_seen);
+      if (!isNaN(candidateTime) && (isNaN(watermarkTime) || candidateTime > watermarkTime)) {
+        watermarkTime = candidateTime;
+        watermark = item.first_seen;
+      }
+    });
+    state.notifiedIds = existing.slice(-MAX_NOTIFIED_IDS);
+    if (watermark) state.personalizedThrough = watermark;
+    save(state, storage);
+    return state.notifiedIds;
+  }
+
   root.CyNewsNotificationState = {
     VERSION: VERSION,
     STORAGE_KEY: STORAGE_KEY,
@@ -246,7 +294,9 @@
     addSubscription: addSubscription,
     removeSubscription: removeSubscription,
     findCandidates: findCandidates,
+    findPersonalizedCandidates: findPersonalizedCandidates,
     markNotified: markNotified,
+    markPersonalizedNotified: markPersonalizedNotified,
     normalizeState: normalizeState,
   };
 })(typeof window !== "undefined" ? window : this);
