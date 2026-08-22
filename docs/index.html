@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=16">
+<link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
 
@@ -41,6 +41,11 @@
       <p class="welcome-copy">把嘉中、嘉女公告集中在一個清楚的地方，快速找到和你有關的消息。</p>
     </div>
     <button id="quickCalendar" class="btn-soft" type="button">查看近期行事曆 <span aria-hidden="true">→</span></button>
+  </section>
+
+  <section id="importantSection" class="important-section" aria-labelledby="importantTitle">
+    <div class="section-heading compact-heading"><div><p class="eyebrow">FROM THE SOURCE</p><h2 id="importantTitle">重要公告</h2></div><span class="hint">僅顯示來源明確標記</span></div>
+    <div id="importantList" class="important-list"></div>
   </section>
 
   <!-- 公告首頁 -->
@@ -130,6 +135,6 @@
 <script src="supabase-sync.js"></script>
 <script src="account-auth.js"></script>
 <script src="account-sync.js"></script>
-<script src="app.js?v=16"></script>
+<script src="app.js?v=17"></script>
 </body>
 </html>

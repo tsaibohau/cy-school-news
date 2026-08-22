@@ -20,6 +20,7 @@
 
     var LS_SEEN = "cyNews.lastSeen";
     var LS_EVENTS = "cyNews.calendarEvents.v1";
+    var LS_READS = "cyNews.reads.v1";
     var PAGE_SIZE = 200;  // 最新清單一次渲染的則數,避免一口氣塞入上千張卡片
     var notificationState = NotificationState.load();
     var queueAccountMutation = function () {};
@@ -35,6 +36,7 @@
       eventEditingId: null,
       officialEvents: [],
       userEvents: loadUserEvents(),
+      reads: loadReads(),
       shown: PAGE_SIZE,
       archive: "none",  /* none | loading | loaded:歷史封存資料的載入狀態 */
       subscriptions: notificationState.subscriptions,
@@ -59,12 +61,18 @@
       addEvent: $("addEvent"), eventFormWrap: $("eventFormWrap"), eventForm: $("eventForm"), cancelEvent: $("cancelEvent"),
       eventTitle: $("eventTitle"), eventDate: $("eventDate"), eventNotes: $("eventNotes"),
       eventFormTitle: $("eventFormTitle"),
+      importantList: $("importantList"),
     };
 
     function loadUserEvents() {
       try { var rows = JSON.parse(localStorage.getItem(LS_EVENTS) || "[]"); return Array.isArray(rows) ? rows : []; }
       catch (e) { return []; }
     }
+    function loadReads() {
+      try { var rows = JSON.parse(localStorage.getItem(LS_READS) || "{}"); return rows && typeof rows === "object" && !Array.isArray(rows) ? rows : {}; }
+      catch (e) { return {}; }
+    }
+    function saveReads() { localStorage.setItem(LS_READS, JSON.stringify(state.reads)); }
     function saveUserEvents() { localStorage.setItem(LS_EVENTS, JSON.stringify(state.userEvents)); }
     /* Keep handlers available to the generated agenda buttons across rerenders. */
     window.__cyNewsCalendarHandlers = {
@@ -112,6 +120,9 @@
       function applyRemote(remote) {
         var merged = lifecycle.login(lifecycle.active_account_id, remote || {});
         notificationState.subscriptions = projectSubscriptions(merged.subscriptions);
+        state.reads = {};
+        (merged.reads || []).forEach(function (row) { if (row && row.announcement_id && row.read_at) state.reads[row.announcement_id] = row.read_at; });
+        saveReads();
         NotificationState.save(notificationState);
         renderSub(); renderBadge();
         return merged;
@@ -121,6 +132,9 @@
         if (!lifecycle) return;
         var anonymousState = lifecycle.logout();
         notificationState.subscriptions = projectSubscriptions(anonymousState.subscriptions);
+        state.reads = {};
+        (anonymousState.reads || []).forEach(function (row) { if (row && row.announcement_id && row.read_at) state.reads[row.announcement_id] = row.read_at; });
+        saveReads();
         NotificationState.save(notificationState);
         renderSub(); renderBadge();
       }
@@ -133,7 +147,7 @@
         auth.getClient().then(function (client) {
           stillCurrent();
           lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
-            subscriptions: notificationState.subscriptions, reads: [],
+            subscriptions: notificationState.subscriptions, reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
             preferences: { schema_version: 1, preferences: {} },
           }, localStorage, uid);
           accountAdapter = window.CyNewsSupabaseSync.createAdapter(client);
@@ -284,6 +298,10 @@
     function isNew(it) {
       return !!it.first_seen && (!state.lastSeen || it.first_seen > state.lastSeen);
     }
+    function isUnread(it) { return isNew(it) && !state.reads[it.id]; }
+    function isExplicitlyImportant(it) {
+      return it && (it.important === true || it.importance === "high" || it.source_pin === "important");
+    }
     function latestItems() {
       if (!state.data) return [];
       return state.data.items.filter(function (it) {
@@ -386,16 +404,25 @@
       var schoolClass = it.school === "cysh" ? "tag-cysh" : "tag-cygsh";
       var catClass = it.category === "榮譽榜" ? " cat-honor" : "";
       return '<article class="card' + catClass + '">' +
-        (isNew(it) ? '<span class="new-dot" title="新公告"></span>' : "") +
+        (isUnread(it) ? '<span class="new-dot" title="未讀公告"></span>' : "") +
         '<div class="card-meta">' +
         '<span>' + esc(displayDate(it)) + '</span>' +
         '<span class="tag ' + schoolClass + '">' + esc(it.school_name) + '</span>' +
         '<span class="tag tag-cat">' + esc(it.category) + '</span>' +
+        '<span class="read-state ' + (isUnread(it) ? 'is-unread' : '') + '">' + (isUnread(it) ? '未讀' : '已讀') + '</span>' +
+        (isUnread(it) ? '<button type="button" class="mark-read" data-read-id="' + esc(it.id) + '">標記已讀</button>' : '') +
         '</div>' +
         '<h3 class="card-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         esc(it.title) + '</a></h3>' +
         (it.snippet ? '<p class="card-snippet">' + esc(it.snippet) + '</p>' : "") +
         '</article>';
+    }
+    function renderImportant() {
+      if (!el.importantList) return;
+      var items = state.data ? state.data.items.filter(isExplicitlyImportant).slice(0, 3) : [];
+      el.importantList.innerHTML = items.length ? items.map(function (it) {
+        return '<article class="important-card"><span class="important-mark" aria-hidden="true">!</span><div><strong><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.title) + '</a></strong><p>' + esc(it.school_name) + ' · ' + esc(displayDate(it)) + '</p></div></article>';
+      }).join("") : '<p class="hint">目前沒有來源明確標記的重要公告。</p>';
     }
     function renderList(container, items, emptyMsg) {
       container.innerHTML = items.length
@@ -463,6 +490,7 @@
     function renderAll() {
       if (!state.data) return;
       renderControls();
+      renderImportant();
       renderLatest();
       renderSub();
       renderBadge();
@@ -520,13 +548,29 @@
       if (state.cat !== "all") ensureArchive(); /* 分類瀏覽超出近一年範圍時需要完整資料 */
       resetPaging(); renderControls(); renderLatest();
     });
+    function markRead(id) {
+      var readAt = new Date().toISOString();
+      state.reads[id] = readAt;
+      saveReads();
+      queueAccountMutation("read.upsert", { announcement_id: id, read_at: readAt });
+      renderLatest(); renderSub();
+    }
     el.list.addEventListener("click", function (e) {
+      var readButton = e.target.closest("button[data-read-id]");
+      if (readButton) {
+        markRead(readButton.dataset.readId);
+        return;
+      }
       if (!e.target.closest("#btnMore")) return;
       state.shown += PAGE_SIZE;
       renderLatest();
       // 重新渲染後按鈕是新的節點,把焦點移回去,鍵盤操作才不會跳掉
       var next = document.getElementById("btnMore");
       if (next) next.focus();
+    });
+    el.subList.addEventListener("click", function (e) {
+      var readButton = e.target.closest("button[data-read-id]");
+      if (readButton) markRead(readButton.dataset.readId);
     });
     el.kwForm.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -625,7 +669,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=16").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=17").catch(function () {});
       });
     }
 

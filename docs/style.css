@@ -220,6 +220,12 @@ body { background: var(--paper); }
 .eyebrow { color: var(--cysh); font-size: 11px; font-weight: 800; letter-spacing: .16em; margin: 0 0 5px; }
 .welcome h2, .section-heading h2 { margin: 0; font-size: 24px; letter-spacing: -.02em; }
 .welcome-copy { color: var(--muted); font-size: 14px; margin: 7px 0 0; }
+.important-section { margin: 8px 0 4px; }
+.compact-heading { margin: 10px 0 8px; }.compact-heading h2 { font-size: 19px; }
+.important-list { display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.important-card { display: flex; gap: 10px; align-items: flex-start; padding: 12px 13px; background: #fff8ec; border: 1px solid #f4d7a8; border-radius: 14px; }
+.important-card strong { display: block; font-size: 14px; line-height: 1.4; }.important-card p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+.important-mark { color: #bd7522; font-size: 16px; line-height: 1.2; }
 .btn-soft { border: 1px solid #cfe0f2; background: #edf6ff; color: var(--cysh); padding: 10px 13px; border-radius: 12px; font-weight: 700; white-space: nowrap; cursor: pointer; }
 .controls { padding-top: 10px; gap: 11px; }
 #q { border-color: #cdddeb; box-shadow: 0 5px 18px rgba(49,95,140,.06); }
@@ -228,6 +234,8 @@ body { background: var(--paper); }
 .card + .card { margin-top: 10px; }
 .card-meta { gap: 7px; }
 .new-dot { background: #eb8d4d; }
+.read-state { color: var(--muted); font-size: 11px; font-weight: 700; }.read-state.is-unread { color: #bd7522; }
+.mark-read { border: 0; background: transparent; color: var(--cysh); padding: 0; font: inherit; font-size: 11px; cursor: pointer; }
 .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 12px; }
 .section-heading h3 { margin: 0; font-size: 18px; }
 .calendar-toolbar { display: flex; align-items: center; gap: 8px; margin: 8px 0 12px; }
