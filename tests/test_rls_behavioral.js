@@ -50,6 +50,9 @@ async function userId(token) {
 }
 
 function ok(status) { return status >= 200 && status < 300; }
+function expectWriteDenied(result, label) {
+  assert.ok(!ok(result.status), `${label} must return a non-2xx response`);
+}
 function expectForbidden(result, label) {
   assert.ok(!ok(result.status) || !Array.isArray(result.data) || result.data.length === 0, `${label} must be denied or affect zero rows`);
 }
@@ -58,40 +61,61 @@ async function run() {
   const [a, b] = await Promise.all([userId(tokenA), userId(tokenB)]);
   assert.notEqual(a, b, "RLS acceptance requires two different authenticated users");
   const marker = `rls-acceptance-${Date.now()}-${crypto.randomUUID().slice(0, 8)}`;
-  const subA = { keyword: marker, normalized_keyword: marker, created_at: new Date().toISOString(), updated_at: new Date().toISOString(), deleted_at: null };
-  const readA = { announcement_id: marker, read_at: new Date().toISOString() };
-  const prefA = { schema_version: 1, preferences: { marker }, updated_at: new Date().toISOString() };
-  const own = [
-    ["user_subscriptions", subA], ["user_reads", readA], ["user_preferences", prefA],
-  ];
+  const subA = { keyword: `${marker}-a`, normalized_keyword: `${marker}-a`, created_at: new Date().toISOString(), updated_at: new Date().toISOString(), deleted_at: null };
+  const subB = { keyword: `${marker}-b`, normalized_keyword: `${marker}-b`, created_at: new Date().toISOString(), updated_at: new Date().toISOString(), deleted_at: null };
+  const readA = { announcement_id: `${marker}-a`, read_at: new Date().toISOString() };
+  const readB = { announcement_id: `${marker}-b`, read_at: new Date().toISOString() };
+  const prefA = { schema_version: 1, preferences: { marker: `${marker}-a` }, updated_at: new Date().toISOString() };
+  const prefB = { schema_version: 1, preferences: { marker: `${marker}-b` }, updated_at: new Date().toISOString() };
+  const rowsA = [["user_subscriptions", subA], ["user_reads", readA], ["user_preferences", prefA]];
+  const rowsB = [["user_subscriptions", subB], ["user_reads", readB], ["user_preferences", prefB]];
+  const queries = {
+    user_subscriptions: (uid, row) => `?user_id=eq.${encodeURIComponent(uid)}&normalized_keyword=eq.${encodeURIComponent(row.normalized_keyword)}`,
+    user_reads: (uid, row) => `?user_id=eq.${encodeURIComponent(uid)}&announcement_id=eq.${encodeURIComponent(row.announcement_id)}`,
+    user_preferences: uid => `?user_id=eq.${encodeURIComponent(uid)}`,
+  };
   try {
-    for (const [table, row] of own) {
-      const created = await request(tokenA, table, "POST", "", row);
-      assert.ok(ok(created.status), `A can insert own ${table}: ${created.status}`);
+    for (const [owner, rows] of [["A", rowsA], ["B", rowsB]]) {
+      const token = owner === "A" ? tokenA : tokenB;
+      for (const [table, row] of rows) {
+        const created = await request(token, table, "POST", "", row);
+        assert.ok(ok(created.status), `${owner} can insert own ${table}: ${created.status}`);
+      }
     }
 
-    for (const [table, row] of [["user_subscriptions", subA], ["user_reads", readA], ["user_preferences", prefA]]) {
+    for (const [table, row] of rowsA) {
       const spoof = { ...row, user_id: b };
       const result = await request(tokenA, table, "POST", "", spoof);
-      expectForbidden(result, `A spoof insert into ${table} as B`);
+      expectWriteDenied(result, `A spoof insert into ${table} as B`);
+    }
+    for (const [table, row] of rowsB) {
+      const spoof = { ...row, user_id: a };
+      const result = await request(tokenB, table, "POST", "", spoof);
+      expectWriteDenied(result, `B spoof insert into ${table} as A`);
     }
 
     for (const table of ["user_subscriptions", "user_reads", "user_preferences"]) {
-      const crossRead = await request(tokenB, table, "GET", `?select=*&user_id=eq.${encodeURIComponent(a)}`);
-      assert.ok(ok(crossRead.status), `B cross-read request for ${table} must be safe`);
-      assert.equal(Array.isArray(crossRead.data) ? crossRead.data.length : -1, 0, `B must not read A ${table}`);
+      for (const [token, other, label] of [[tokenB, a, "B must not read A"], [tokenA, b, "A must not read B"]]) {
+        const crossRead = await request(token, table, "GET", `?select=*&user_id=eq.${encodeURIComponent(other)}`);
+        assert.ok(ok(crossRead.status), `${label} ${table} request must be safe`);
+        assert.equal(Array.isArray(crossRead.data) ? crossRead.data.length : -1, 0, `${label} ${table}`);
+      }
     }
 
-    const ownSub = `?user_id=eq.${encodeURIComponent(a)}&normalized_keyword=eq.${encodeURIComponent(marker)}`;
-    const ownRead = `?user_id=eq.${encodeURIComponent(a)}&announcement_id=eq.${encodeURIComponent(marker)}`;
-    for (const [table, query] of [["user_subscriptions", ownSub], ["user_reads", ownRead], ["user_preferences", `?user_id=eq.${encodeURIComponent(a)}`]]) {
-      const crossUpdate = await request(tokenB, table, "PATCH", query, { preferences: { marker: "spoof" }, updated_at: new Date().toISOString() });
-      expectForbidden(crossUpdate, `B cross-update of A ${table}`);
-      const crossDelete = await request(tokenB, table, "DELETE", query);
-      expectForbidden(crossDelete, `B cross-delete of A ${table}`);
+    for (const [table, row] of rowsA) {
+      const query = queries[table](a, row);
+      expectForbidden(await request(tokenB, table, "PATCH", query, { updated_at: new Date().toISOString() }), `B cross-update of A ${table}`);
+      expectForbidden(await request(tokenB, table, "DELETE", query), `B cross-delete of A ${table}`);
+    }
+    for (const [table, row] of rowsB) {
+      const query = queries[table](b, row);
+      expectForbidden(await request(tokenA, table, "PATCH", query, { updated_at: new Date().toISOString() }), `A cross-update of B ${table}`);
+      expectForbidden(await request(tokenA, table, "DELETE", query), `A cross-delete of B ${table}`);
     }
 
-    const repeatedSub = await request(tokenA, "user_subscriptions", "POST", "?on_conflict=user_id%2Cnormalized_keyword", subA);
+    const ownSub = queries.user_subscriptions(a, subA);
+    const ownRead = queries.user_reads(a, readA);
+    const repeatedSub = await request(tokenA, "user_subscriptions", "POST", "?on_conflict=user_id,normalized_keyword", subA);
     assert.ok(ok(repeatedSub.status), "repeated subscription upsert succeeds");
     const repeatedRead = await request(tokenA, "user_reads", "POST", "?on_conflict=user_id,announcement_id", readA);
     assert.ok(ok(repeatedRead.status), "repeated read upsert succeeds");
@@ -106,7 +130,10 @@ async function run() {
   } finally {
     await request(tokenA, "user_subscriptions", "DELETE", ownSub);
     await request(tokenA, "user_reads", "DELETE", ownRead);
-    await request(tokenA, "user_preferences", "DELETE", `?user_id=eq.${encodeURIComponent(a)}`);
+    await request(tokenA, "user_preferences", "DELETE", queries.user_preferences(a));
+    await request(tokenB, "user_subscriptions", "DELETE", queries.user_subscriptions(b, subB));
+    await request(tokenB, "user_reads", "DELETE", queries.user_reads(b, readB));
+    await request(tokenB, "user_preferences", "DELETE", queries.user_preferences(b));
   }
 }
 
