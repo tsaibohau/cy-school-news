@@ -411,7 +411,9 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v21/);
+  assert.match(swSource, /cy-news-v22/);
+  assert.match(swSource, /\.\/profile\.js/);
+  assert.match(swSource, /\.\/relevance\.js/);
   assert.doesNotMatch(swSource, /cy-news-v19/);
   assert.match(swSource, /\.\/notification-state\.js/);
   assert.match(swSource, /\.\/calendar-state\.js/);

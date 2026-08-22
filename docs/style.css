@@ -264,11 +264,20 @@ body { background: var(--paper); }
 .event-form label { display: grid; gap: 5px; margin: 11px 0; color: var(--muted); font-size: 13px; }.event-form input, .event-form textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; font: inherit; color: var(--ink); background: #fbfdff; }
 .tab-icon { font-size: 20px; line-height: 20px; }
 .tabbar { box-shadow: 0 -5px 18px rgba(28,75,116,.06); }
+.profile-box { margin-top: 18px; padding: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.profile-box .compact-heading { margin-top: 0; }
+.profile-form { display: grid; gap: 9px; }
+.profile-form label { display: grid; gap: 5px; color: var(--muted); font-size: 13px; }
+.profile-form input, .profile-form select { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; font: inherit; color: var(--ink); background: #fbfdff; }
+.profile-actions { display: flex; align-items: center; gap: 10px; margin-top: 3px; }
+.relevance-note { color: var(--cysh); font-size: 11px; font-weight: 800; }
 @media (min-width: 760px) {
   .wrap { max-width: 900px; padding: 0 24px; }
   .welcome { padding-top: 40px; }
   .calendar-grid { gap: 7px; }.calendar-day { min-height: 86px; padding: 9px; }
   .tabbar { position: static; max-width: 900px; margin: 26px auto 0; border: 1px solid var(--line); border-radius: 16px 16px 0 0; }
+  .profile-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .profile-form label:nth-child(n+4), .profile-actions { grid-column: span 2; }
   body { padding-bottom: 0; }
 }
 @media (min-width: 640px) {

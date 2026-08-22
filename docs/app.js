@@ -57,6 +57,7 @@
       shown: PAGE_SIZE,
       archive: "none",  /* none | loading | loaded:歷史封存資料的載入狀態 */
       subscriptions: notificationState.subscriptions,
+      profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
       lastSeen: localStorage.getItem(LS_SEEN) || "",
     };
 
@@ -79,6 +80,10 @@
       eventTitle: $("eventTitle"), eventDate: $("eventDate"), eventNotes: $("eventNotes"),
       eventFormTitle: $("eventFormTitle"),
       importantList: $("importantList"),
+      profileBox: $("profileBox"), profileHint: $("profileHint"), profileForm: $("profileForm"),
+      profileSchool: $("profileSchool"), profileGrade: $("profileGrade"), profileClass: $("profileClass"),
+      profileInterests: $("profileInterests"), profileCategories: $("profileCategories"), profileKeywords: $("profileKeywords"),
+      profileSave: $("profileSave"), profileStatus: $("profileStatus"),
     };
 
     function loadUserEvents() {
@@ -93,6 +98,34 @@
     function saveUserEvents() {
       state.userEvents = CalendarState ? CalendarState.normalize(state.userEvents) : state.userEvents;
       localStorage.setItem(LS_EVENTS, JSON.stringify(state.userEvents));
+    }
+    function populateProfileSchools() {
+      if (!el.profileSchool || !window.CyNewsSchoolRegistry) return;
+      var current = el.profileSchool.value;
+      el.profileSchool.innerHTML = '<option value="">尚未設定</option>' + window.CyNewsSchoolRegistry.schools().map(function (school) {
+        return '<option value="' + esc(school.id) + '">' + esc(school.short) + '</option>';
+      }).join("");
+      el.profileSchool.value = current;
+    }
+    function renderProfile() {
+      if (!el.profileForm || !window.CyNewsProfile) return;
+      var profile = window.CyNewsProfile.toInputs(state.profile || {});
+      el.profileSchool.value = profile.school_id || "";
+      el.profileGrade.value = profile.grade_level || "";
+      el.profileClass.value = profile.class_name || "";
+      el.profileInterests.value = profile.interests_text || "";
+      el.profileCategories.value = profile.tracked_categories_text || "";
+      el.profileKeywords.value = profile.tracked_keywords_text || "";
+    }
+    function profileFromForm() {
+      return window.CyNewsProfile.normalize({
+        school_id: el.profileSchool.value,
+        grade_level: el.profileGrade.value,
+        class_name: el.profileClass.value,
+        interests: el.profileInterests.value,
+        tracked_categories: el.profileCategories.value,
+        tracked_keywords: el.profileKeywords.value,
+      });
     }
     function editUserEvent(id) {
       var row = state.userEvents.find(function (ev) { return ev.id === String(id); });
@@ -134,7 +167,7 @@
       var lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
         subscriptions: notificationState.subscriptions,
         reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
-        preferences: { schema_version: 1, preferences: {} },
+        preferences: { schema_version: 1, preferences: { profile: window.CyNewsProfile.empty() } },
       }, localStorage);
       var syncGeneration = 0;
       var requestedUid = null;
@@ -162,7 +195,9 @@
         (merged.reads || []).forEach(function (row) { if (row && row.announcement_id && row.read_at) state.reads[row.announcement_id] = row.read_at; });
         saveReads();
         NotificationState.save(notificationState);
-        renderSub(); renderBadge();
+        state.profile = window.CyNewsProfile.normalize(merged.preferences && merged.preferences.preferences && merged.preferences.preferences.profile);
+        renderProfile();
+        renderLatest(); renderSub(); renderBadge();
         return merged;
       }
       function clearAccountOwnedView() {
@@ -170,7 +205,9 @@
         state.reads = {};
         saveReads();
         NotificationState.save(notificationState);
-        renderSub(); renderBadge();
+        state.profile = window.CyNewsProfile.empty();
+        renderProfile();
+        renderLatest(); renderSub(); renderBadge();
       }
       function restoreAnonymous() {
         syncGeneration += 1;
@@ -240,14 +277,16 @@
         });
       }
       queueAccountMutation = function (type, payload) {
+        if (type === "preferences.upsert" && payload && payload.preferences && payload.preferences.profile && lifecycle.active_account_id === window.CyNewsAccountSync.ANONYMOUS_ACCOUNT) return null;
         if (lifecycle.active_account_id === window.CyNewsAccountSync.ANONYMOUS_ACCOUNT) {
-          if (accountPhase === "ANONYMOUS_READY") lifecycle.applyMutation(type, payload);
-          return;
+          if (accountPhase === "ANONYMOUS_READY") return lifecycle.applyMutation(type, payload);
+          return null;
         }
-        if (accountPhase !== "ACCOUNT_READY" || !readyUid || lifecycle.active_account_id !== readyUid) return;
-        lifecycle.applyMutation(type, payload);
+        if (accountPhase !== "ACCOUNT_READY" || !readyUid || lifecycle.active_account_id !== readyUid) return null;
+        var next = lifecycle.applyMutation(type, payload);
         new window.CyNewsAccountSync.Outbox(localStorage, readyUid).enqueue({ type: type, payload: payload });
         status("等待同步");
+        return next;
       };
       function handleVerifiedSession() {
         return auth.getVerifiedSession().then(function (session) {
@@ -521,12 +560,16 @@
     function cardHTML(it) {
       var schoolClass = it.school === "cysh" ? "tag-cysh" : "tag-cygsh";
       var catClass = it.category === "榮譽榜" ? " cat-honor" : "";
+      var relevance = window.CyNewsRelevance && window.CyNewsProfile && window.CyNewsSchoolRegistry
+        ? window.CyNewsRelevance.calculate(it, state.profile, window.CyNewsSchoolRegistry) : null;
+      var relevanceLabel = relevance && relevance.reasons.length ? window.CyNewsRelevance.label(relevance) : "";
       return '<article class="card' + catClass + '">' +
         (isUnread(it) ? '<span class="new-dot" title="未讀公告"></span>' : "") +
         '<div class="card-meta">' +
         '<span>' + esc(displayDate(it)) + '</span>' +
         '<span class="tag ' + schoolClass + '">' + esc(it.school_name) + '</span>' +
         '<span class="tag tag-cat">' + esc(it.category) + '</span>' +
+        (relevanceLabel ? '<span class="relevance-note">與你相關 · ' + esc(relevanceLabel) + '</span>' : '') +
         '<span class="read-state ' + (isUnread(it) ? 'is-unread' : '') + '">' + (isUnread(it) ? '未讀' : '已讀') + '</span>' +
         (isUnread(it) ? '<button type="button" class="mark-read" data-read-id="' + esc(it.id) + '">標記已讀</button>' : '') +
         '</div>' +
@@ -780,6 +823,27 @@
         el.eventForm.reset(); el.eventFormWrap.hidden = true; renderCalendar();
       });
     }
+
+    populateProfileSchools();
+    renderProfile();
+    if (el.profileForm) el.profileForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!window.CyNewsProfile) return;
+      var profile = profileFromForm();
+      var result = queueAccountMutation("preferences.upsert", {
+        schema_version: 1,
+        preferences: { profile: profile },
+        updated_at: new Date().toISOString(),
+      });
+      if (!result) {
+        el.profileStatus.textContent = "請先登入並完成同步";
+        return;
+      }
+      state.profile = profile;
+      el.profileStatus.textContent = "已儲存";
+      renderProfile();
+      renderLatest();
+    });
 
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
