@@ -235,7 +235,12 @@
         });
       }
       queueAccountMutation = function (type, payload) {
+        if (lifecycle.active_account_id === window.CyNewsAccountSync.ANONYMOUS_ACCOUNT) {
+          if (accountPhase === "ANONYMOUS_READY") lifecycle.applyMutation(type, payload);
+          return;
+        }
         if (accountPhase !== "ACCOUNT_READY" || !readyUid || lifecycle.active_account_id !== readyUid) return;
+        lifecycle.applyMutation(type, payload);
         new window.CyNewsAccountSync.Outbox(localStorage, readyUid).enqueue({ type: type, payload: payload });
         status("等待同步");
       };

@@ -242,6 +242,35 @@
     safeSet(this.storage, this.stateKey(id), JSON.stringify(safeState(state)));
   };
   AccountLifecycle.prototype.state = function () { return clone(this.active_state); };
+  AccountLifecycle.prototype.applyMutation = function (type, payload) {
+    var anonymous = this.active_account_id === ANONYMOUS_ACCOUNT;
+    payload = payload && typeof payload === "object" ? payload : {};
+    var next = clone(this.active_state);
+    var now = new Date().toISOString();
+    if (type === "subscription.upsert" || type === "subscription.delete") {
+      var keyword = String(payload.keyword || "").trim();
+      var normalized = payload.normalized_keyword || normalizeKeyword(keyword);
+      if (!normalized) throw new Error("subscription keyword required");
+      var row = Object.assign({}, payload, {
+        keyword: keyword,
+        normalized_keyword: normalized,
+        updated_at: payload.updated_at || payload.updatedAt || now,
+        deleted_at: type === "subscription.delete" ? (payload.deleted_at || now) : null,
+      });
+      next.subscriptions = mergeSubscriptions(next.subscriptions, [row]);
+    } else if (type === "read.upsert") {
+      next.reads = mergeReads(next.reads, [payload]);
+    } else if (type === "preferences.upsert") {
+      next.preferences = mergePreferences(next.preferences, payload);
+    } else {
+      throw new Error("unsupported account mutation");
+    }
+    this.active_state = safeState(next);
+    this.persistState(this.active_account_id, this.active_state);
+    if (anonymous) this.anonymous = clone(this.active_state);
+    else this.accounts[this.active_account_id] = clone(this.active_state);
+    return this.state();
+  };
   AccountLifecycle.prototype.reloadFromStorage = function (id) {
     if (id != null) this.active_account_id = accountId(id);
     this.active_state = this.loadState(this.active_account_id,

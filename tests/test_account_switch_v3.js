@@ -8,11 +8,16 @@ function store() {
 const anonymous = { subscriptions: [{ keyword: "匿名基線", updated_at: "2026-08-01T00:00:00Z" }], reads: [], preferences: { schema_version: 1, preferences: {} } };
 const storage = store();
 let lifecycle = new Sync.AccountLifecycle(anonymous, storage);
+lifecycle.applyMutation("subscription.upsert", { keyword: "匿名新增", createdAt: "2026-08-01T01:00:00Z" });
 const a = lifecycle.login("uid-a", { subscriptions: [{ keyword: "A-only", updated_at: "2026-08-02T00:00:00Z" }], reads: [], preferences: {} });
 assert(a.subscriptions.some(x => x.keyword === "匿名基線"));
+assert(a.subscriptions.some(x => x.keyword === "匿名新增"), "anonymous mutations persist before first adoption");
+lifecycle.applyMutation("subscription.upsert", { keyword: "A-local", createdAt: "2026-08-03T00:00:00Z" });
+assert(lifecycle.state().subscriptions.some(x => x.keyword === "A-local"), "local A mutation persists in the A namespace");
 lifecycle.logout();
 const b = lifecycle.login("uid-b", { subscriptions: [], reads: [], preferences: {} });
 assert(!b.subscriptions.some(x => x.keyword === "A-only"));
+assert(!b.subscriptions.some(x => x.keyword === "A-local"));
 assert(!b.subscriptions.some(x => x.keyword === "匿名基線"));
 assert(storage.getItem(Sync.STATE_KEY_PREFIX + "uid-a"));
 assert(storage.getItem(Sync.STATE_KEY_PREFIX + "uid-b"));
