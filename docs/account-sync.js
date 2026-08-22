@@ -68,10 +68,30 @@
       });
     return Object.keys(result).sort().map(function (key) { return result[key]; });
   }
+  function normalizePreferences(value, fallbackNow) {
+    var source = value && typeof value === "object" && !Array.isArray(value) ? value : {};
+    var result = Object.assign({}, source);
+    result.schema_version = source.schema_version || VERSION;
+    result.preferences = source.preferences && typeof source.preferences === "object" && !Array.isArray(source.preferences) ?
+      source.preferences : {};
+    if (timestamp(result.updated_at) === null) {
+      result.updated_at = timestamp(fallbackNow) !== null ? fallbackNow : new Date().toISOString();
+    }
+    return result;
+  }
   function mergePreferences(local, remote) {
-    if (!local) return remote || { schema_version: VERSION, preferences: {} };
-    if (!remote) return local;
-    return chooseCandidate(local, remote, "updated_at") === remote ? remote : local;
+    var candidate;
+    if (!local) candidate = remote;
+    else if (!remote) candidate = local;
+    else candidate = chooseCandidate(local, remote, "updated_at");
+    if (timestamp(candidate && candidate.updated_at) === null) {
+      var shape = candidate && typeof candidate === "object" ? Object.assign({}, candidate) : {};
+      shape.schema_version = shape.schema_version || VERSION;
+      shape.preferences = shape.preferences && typeof shape.preferences === "object" && !Array.isArray(shape.preferences) ?
+        shape.preferences : {};
+      return shape;
+    }
+    return normalizePreferences(candidate);
   }
   function emptyState() {
     return { subscriptions: [], reads: [], preferences: { schema_version: VERSION, preferences: {} } };
@@ -235,6 +255,9 @@
       this.saveMeta();
     }
     this.active_state = mergeAccountState(existing, remote || {});
+    /* Only an adopted/merged state is ready to sync. This prevents an empty
+       local default from outranking a valid remote preference timestamp. */
+    this.active_state.preferences = normalizePreferences(this.active_state.preferences);
     this.persistState(id, this.active_state);
     this.accounts[id] = clone(this.active_state);
     this.active_account_id = id;

@@ -37,6 +37,16 @@ const account = Sync.mergeAccountState(
 );
 assert.equal(account.preferences.preferences.school, "cygsh");
 
+// Preferences always have a delivery-safe timestamp at lifecycle boundaries;
+// a missing/null remote value cannot erase a valid local value.
+const missingPreferences = Sync.mergeAccountState(
+  { subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: { school: "cysh" }, updated_at: "2026-01-03T00:00:00Z" } },
+  { subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: { school: "remote" }, updated_at: null } }
+);
+assert.equal(missingPreferences.preferences.updated_at, "2026-01-03T00:00:00Z");
+assert.equal(Sync.mergePreferences(null, { schema_version: 1, preferences: {}, updated_at: "2026-01-04T00:00:00Z" }).updated_at, "2026-01-04T00:00:00Z");
+assert.equal(Sync.mergePreferences(null, { schema_version: 1, preferences: {} }).updated_at, undefined);
+
 // Invalid timestamps never beat valid timestamps; deletion wins exact ties and
 // the final stable JSON tie-break makes merge order irrelevant.
 const tieLive = { keyword: "x", updated_at: "2026-01-03T00:00:00Z", value: "a" };
@@ -96,6 +106,14 @@ const aAgain = lifecycle.login("user-a");
 assert(aAgain.subscriptions.some(x => x.keyword === "A"));
 assert.equal(store.getItem("cyNews.notificationState"), notificationState);
 
+const firstLogin = new Sync.AccountLifecycle({ subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: {} } });
+const firstLoginState = firstLogin.login("user-empty-remote", { subscriptions: [], reads: [], preferences: null });
+assert.match(firstLoginState.preferences.updated_at, /^\d{4}-\d{2}-\d{2}T/);
+const remotePreferenceWins = new Sync.AccountLifecycle({ subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: {} } })
+  .login("user-existing-remote", { subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: { school: "remote" }, updated_at: "2026-01-01T00:00:00Z" } });
+assert.equal(remotePreferenceWins.preferences.updated_at, "2026-01-01T00:00:00Z");
+assert.equal(remotePreferenceWins.preferences.preferences.school, "remote");
+
 console.log("Account Sync V1.1 core tests passed");
 
 // V1.2 durable lifecycle: state survives reconstruction, anonymous baseline
@@ -131,6 +149,9 @@ assert(durable.state().subscriptions.some(x => x.keyword === "anonymous-new"));
 
 durableStore.setItem(Sync.STATE_KEY_PREFIX + "user-corrupt", "not-json");
 const corrupt = new Sync.AccountLifecycle(null, { storage: durableStore, activeAccountId: "user-corrupt" });
-assert.deepEqual(corrupt.state(), { subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: {} } });
+assert.deepEqual(corrupt.state().subscriptions, []);
+assert.deepEqual(corrupt.state().reads, []);
+assert.deepEqual(corrupt.state().preferences.preferences, {});
+assert.equal(corrupt.state().preferences.updated_at, undefined);
 assert.equal(durableStore.getItem("cyNews.notificationState"), notificationState);
 console.log("Account Sync V1.2 durable lifecycle tests passed");

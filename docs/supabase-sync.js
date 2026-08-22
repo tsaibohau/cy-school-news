@@ -42,7 +42,13 @@
       deleted_at: row.deleted_at || null,
     };
     if (table === TABLES.reads) return { announcement_id: row.announcement_id, read_at: row.read_at };
-    return { schema_version: row.schema_version || 1, preferences: row.preferences || {}, updated_at: row.updated_at };
+    return {
+      schema_version: row.schema_version || 1,
+      preferences: row.preferences || {},
+      /* Lifecycle states are normalized before push. Keep this final guard so a
+         legacy/null state can never violate the NOT NULL database constraint. */
+      updated_at: row.updated_at || row.updatedAt || new Date().toISOString(),
+    };
   }
   function query(client, table, uid) {
     return client.from(table).select("*").eq("user_id", uid).then(rows);

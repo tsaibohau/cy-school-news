@@ -36,8 +36,19 @@ adapter.fetchRemoteState().then(async remote => {
   await adapter.pushRows("user_subscriptions", [{ keyword: "X", normalized_keyword: "x", deleted_at: "2026-02-01T00:00:00Z", updated_at: "2026-02-01T00:00:00Z" }]);
   await adapter.pushRows("user_reads", [{ announcement_id: "a", read_at: "2026-01-02T00:00:00Z" }]);
   await adapter.pushRows("user_reads", [{ announcement_id: "a", read_at: "2026-01-02T00:00:00Z" }]);
-  await adapter.pushRows("user_preferences", [{ schema_version: 1, preferences: { school: "cysh" } }]);
-  await adapter.pushRows("user_preferences", [{ schema_version: 1, preferences: { school: "cysh" } }]);
+  await adapter.pushRows("user_preferences", [{ schema_version: 1, preferences: { school: "cysh" }, updated_at: null }]);
+  await adapter.pushRows("user_preferences", [{ schema_version: 1, preferences: { school: "cysh" }, updated_at: "2026-02-01T00:00:00Z" }]);
+  const preferenceCalls = calls.filter(x => x.table === "user_preferences");
+  assert(preferenceCalls.every(x => x.rows[0].updated_at), "preferences upsert never sends null/undefined updated_at");
+  assert.equal(preferenceCalls[1].rows[0].updated_at, "2026-02-01T00:00:00Z", "normalized preference push preserves timestamp");
+  const firstLoginLifecycle = new Account.AccountLifecycle(
+    { subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: {} } },
+    store()
+  );
+  const firstLoginState = firstLoginLifecycle.login("user-a", { subscriptions: [], reads: [], preferences: null });
+  await adapter.pushState(firstLoginState);
+  const firstLoginPreference = calls.filter(x => x.table === "user_preferences").pop().rows[0];
+  assert.match(firstLoginPreference.updated_at, /^\d{4}-\d{2}-\d{2}T/, "first login with empty remote pushes a valid timestamp");
   const subscriptionCalls = calls.filter(x => x.table === "user_subscriptions");
   assert(subscriptionCalls.slice(1).every(x => x.options.onConflict === Sync.CONFLICT_TARGETS.user_subscriptions));
   assert(subscriptionCalls[2].rows[0].deleted_at, "tombstone uses the same logical subscription row");
