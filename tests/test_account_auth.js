@@ -11,9 +11,13 @@ const client = {
   auth: {
     getSession() {
       return Promise.resolve({
-        data: { session: { user: { id: "verified-session-id", email: "ignored@example.test" } } },
+        data: { session: { access_token: "test-access-token", user: { id: "verified-session-id", email: "ignored@example.test" } } },
         error: null,
       });
+    },
+    getUser(token) {
+      assert.equal(token, "test-access-token");
+      return Promise.resolve({ data: { user: { id: "verified-session-id" } }, error: null });
     },
     signInWithOAuth(request) {
       oauthRequest = request;
@@ -111,8 +115,11 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   const session = await Auth.verifiedSession(client);
   assert.equal(session.user.id, "verified-session-id");
   assert.equal(await controller.getVerifiedUid(), "verified-session-id");
-  const emailOnlyClient = { auth: { getSession: () => Promise.resolve({ data: { session: { user: { email: "email-only@example.test" } } }, error: null }) } };
+  const emailOnlyClient = { auth: { getSession: () => Promise.resolve({ data: { session: { access_token: "test-access-token", user: { email: "email-only@example.test" } } }, error: null }), getUser: () => Promise.resolve({ data: { user: null }, error: null }) } };
   assert.equal(await Auth.verifiedUid(emailOnlyClient), null, "email cannot determine account ownership");
+
+  const mismatchedIdentityClient = { auth: { getSession: () => Promise.resolve({ data: { session: { access_token: "test-access-token", user: { id: "claimed-id" } } }, error: null }), getUser: () => Promise.resolve({ data: { user: { id: "different-verified-id" } }, error: null }) } };
+  await assert.rejects(Auth.verifiedSession(mismatchedIdentityClient), /identity changed/);
 
   const callbackWithClaimedUuid = Auth.createController({
     client,

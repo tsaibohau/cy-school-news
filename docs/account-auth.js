@@ -12,8 +12,18 @@
       if (result.error) throw result.error;
       var session = result.data && result.data.session;
       var uid = session && session.user && session.user.id;
-      if (typeof uid !== "string" || !uid.trim()) return null;
-      return session;
+      var token = session && session.access_token;
+      /* A session-shaped object in storage is not sufficient for ownership.
+         Re-check it with Auth before beginning any account-owned sync. */
+      if (typeof uid !== "string" || !uid.trim() || typeof token !== "string" || !token) return null;
+      if (typeof client.auth.getUser !== "function") throw new Error("Supabase Auth verification unavailable");
+      return client.auth.getUser(token).then(function (verified) {
+        if (verified.error) throw verified.error;
+        var user = verified.data && verified.data.user;
+        if (!user || user.id !== uid) throw new Error("verified session identity changed");
+        session.user = user;
+        return session;
+      });
     });
   }
   function verifiedUid(client) { return verifiedSession(client).then(function (session) { return session && session.user.id; }); }
@@ -88,7 +98,14 @@
         return getClient().then(function (c) { return c.auth.signOut(); });
       },
       onAuthStateChange: function (callback) {
-        return getClient().then(function (c) { return c.auth.onAuthStateChange(callback); });
+        return getClient().then(function (c) {
+          return c.auth.onAuthStateChange(function (event, session) {
+            /* GoTrue is still committing an OAuth session when it emits SIGNED_IN.
+               Defer app work one turn so subsequent database requests inherit the
+               completed authenticated client session rather than an interim state. */
+            setTimeout(function () { callback(event, session); }, 0);
+          });
+        });
       },
     };
   }
