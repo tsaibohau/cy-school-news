@@ -259,7 +259,8 @@
         accountPhase = "ANONYMOUS_READY";
           publishState(anonymousState, "anonymous");
       }
-      function sync(uid) {
+      function sync(uid, authRetry) {
+        authRetry = authRetry || 0;
         var generation = ++syncGeneration;
         requestedUid = uid;
         readyUid = null;
@@ -303,6 +304,16 @@
           el.accountLogout.hidden = false;
         }).catch(function () {
           if (generation !== syncGeneration || requestedUid !== uid) return;
+          /* An OAuth callback can expose a server-verified user a fraction before
+             the data client begins attaching its bearer credential. Retry once in
+             place; never publish another account or make this an endless loop. */
+          if (!merged && authRetry === 0) {
+            status("同步中");
+            setTimeout(function () {
+              if (generation === syncGeneration && requestedUid === uid) sync(uid, 1);
+            }, 300);
+            return;
+          }
           if (merged) {
             readyUid = uid;
             accountPhase = "ACCOUNT_READY";

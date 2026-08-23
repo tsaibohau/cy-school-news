@@ -168,6 +168,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(!app.includes("sendMagicLink"));
   assert(app.includes("getVerifiedSession"));
   assert(app.indexOf("auth.onAuthStateChange") < app.indexOf("auth.getClient().then(function () { return handleVerifiedSession(); })"), "OAuth listener subscribes before the initial session read");
+  assert(app.includes("authRetry === 0"), "OAuth callback sync has one bounded credential-hydration retry");
   assert(app.includes("auth.signOut()"));
   assert(app.includes("restoreAnonymous();"));
   assert(app.includes("syncGeneration += 1;"));
