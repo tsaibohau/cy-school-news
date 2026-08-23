@@ -19,7 +19,7 @@ assert(!production.includes("acceptance-user-tasks.js"), "production source must
 assert(!production.includes("cynews-staging-banner"), "production source must not contain a staging banner");
 assert(staging.includes('name="robots" content="noindex,nofollow,noarchive"'));
 assert(staging.includes("STAGING／測試環境・非正式站"));
-assert(staging.includes('src="acceptance-user-tasks.js?v=3"'));
+assert(staging.includes('src="acceptance-user-tasks.js?v=4"'));
 assert.equal(manifest.name, "嘉校快訊 Staging／測試版");
 assert.equal(fs.readFileSync(path.join(root, "dist-staging", "robots.txt"), "utf8"), "User-agent: *\nDisallow: /\n");
 assert(harness.includes('params.get("acceptance") !== "user-tasks" && !sessionStorage.getItem(STORAGE)'), "harness is query gated and survives the exact-root OAuth callback");
@@ -35,13 +35,13 @@ assert(harness.includes('new URL("/acceptance-companion.html", location.origin)'
 assert(harness.includes("cleanupReservedOutbox"), "acceptance recovery must remove only reserved outbox fixtures");
 assert(harness.includes("BLOCKED：\" + (area.status.dataset.step"), "blocked reports must identify a sanitized acceptance stage");
 assert(!harness.includes("service_role"));
-assert(sw.includes('var CACHE = "cy-news-staging-v27";'), "staging cache namespace is distinct and advances with harness changes");
+assert(sw.includes('var CACHE = "cy-news-staging-v28";'), "staging cache namespace is distinct and advances with harness changes");
 assert(sw.includes('"./manifest-staging.webmanifest"'));
 assert(sw.includes('"./staging.css?v=1"'));
-assert(sw.includes('"./acceptance-user-tasks.js?v=3"'));
+assert(sw.includes('"./acceptance-user-tasks.js?v=4"'));
 assert(sw.includes('"./acceptance-companion.html"'));
 const companion = fs.readFileSync(path.join(root, "dist-staging", "acceptance-companion.html"), "utf8");
-assert(companion.includes('acceptance-user-tasks.js?v=3'));
+assert(companion.includes('acceptance-user-tasks.js?v=4'));
 assert(!companion.includes("app.js"), "companion must not initialize the production account lifecycle");
 assert(!companion.includes("account-sync.js"), "companion must not drain any account outbox");
 assert(sw.includes('url.searchParams.has("code")'), "OAuth callback navigation remains uncacheable");

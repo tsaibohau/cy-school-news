@@ -200,9 +200,10 @@
         channel.postMessage({ type: "GET_A_CONTEXT" });
         var aContext = await waitMessage("A_CONTEXT");
         cleanupReservedOutbox(aContext.uid);
-        channel.postMessage({ type: "CLEAN_RESERVED_A" });
-        await waitMessage("A_RESERVED_CLEAN_PASS");
-        area.status.textContent = "驗收暫存已清理；正在重新確認 ACCOUNT_READY";
+        channel.postMessage({ type: "CLEANUP_A", taskA: stored.taskA });
+        await waitMessage("A_CLEAN_PASS");
+        sessionStorage.removeItem(STORAGE);
+        area.status.textContent = "驗收暫存已清理；正在開始乾淨的新一輪";
         location.reload();
       });
       button(area, "驗證 USER_B 並完成 A/B RLS", async function () {
