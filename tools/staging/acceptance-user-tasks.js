@@ -196,12 +196,20 @@
         var b = await verified();
         cleanupReservedOutbox(b.uid);
         await cleanupReserved(b);
-        step(area, "清理 USER_A 驗收暫存");
-        channel.postMessage({ type: "GET_A_CONTEXT" });
-        var aContext = await waitMessage("A_CONTEXT");
-        cleanupReservedOutbox(aContext.uid);
-        channel.postMessage({ type: "CLEANUP_A", taskA: stored.taskA });
-        await waitMessage("A_CLEAN_PASS");
+        /* A browser may close the short-lived companion while a human is in the
+           Google chooser. Recover this interrupted run without pretending that
+           its other account's fixture was deleted; the next authenticated run
+           for that account clears its reserved prefix before creating data. */
+        try {
+          step(area, "清理 USER_A 驗收暫存");
+          channel.postMessage({ type: "GET_A_CONTEXT" });
+          var aContext = await waitMessage("A_CONTEXT");
+          cleanupReservedOutbox(aContext.uid);
+          channel.postMessage({ type: "CLEANUP_A", taskA: stored.taskA });
+          await waitMessage("A_CLEAN_PASS");
+        } catch (_) {
+          area.status.dataset.recovery = "companion-missing";
+        }
         sessionStorage.removeItem(STORAGE);
         area.status.textContent = "驗收暫存已清理；正在開始乾淨的新一輪";
         location.reload();
