@@ -12,6 +12,7 @@ const staging = fs.readFileSync(path.join(root, "dist-staging", "index.html"), "
 const manifest = JSON.parse(fs.readFileSync(path.join(root, "dist-staging", "manifest-staging.webmanifest"), "utf8"));
 const harness = fs.readFileSync(path.join(root, "dist-staging", "acceptance-user-tasks.js"), "utf8");
 const sw = fs.readFileSync(path.join(root, "dist-staging", "sw.js"), "utf8");
+const revision = (staging.match(/(?:style\.css|app\.js)\?v=(staging-[a-f0-9]{12})/) || [])[1];
 const config = fs.readFileSync(path.join(root, "docs", "account-config.js"), "utf8");
 const behavioral = fs.readFileSync(path.join(root, "tests", "test_rls_behavioral.js"), "utf8");
 
@@ -19,7 +20,10 @@ assert(!production.includes("acceptance-user-tasks.js"), "production source must
 assert(!production.includes("cynews-staging-banner"), "production source must not contain a staging banner");
 assert(staging.includes('name="robots" content="noindex,nofollow,noarchive"'));
 assert(staging.includes("STAGING／測試環境・非正式站"));
-assert(staging.includes('src="acceptance-user-tasks.js?v=4"'));
+assert(revision, "staging build must create a single content-derived shell revision");
+assert(!staging.includes("?v=25"), "staging cannot retain production shell query versions");
+assert(staging.includes('src="acceptance-user-tasks.js?v=' + revision + '"'));
+assert(staging.includes('src="app.js?v=' + revision + '"'));
 assert.equal(manifest.name, "嘉校快訊 Staging／測試版");
 assert.equal(fs.readFileSync(path.join(root, "dist-staging", "robots.txt"), "utf8"), "User-agent: *\nDisallow: /\n");
 assert(harness.includes('params.get("acceptance") !== "user-tasks" && !sessionStorage.getItem(STORAGE)'), "harness is query gated and survives the exact-root OAuth callback");
@@ -35,13 +39,15 @@ assert(harness.includes('new URL("/acceptance-companion.html", location.origin)'
 assert(harness.includes("cleanupReservedOutbox"), "acceptance recovery must remove only reserved outbox fixtures");
 assert(harness.includes("BLOCKED：\" + (area.status.dataset.step"), "blocked reports must identify a sanitized acceptance stage");
 assert(!harness.includes("service_role"));
-assert(sw.includes('var CACHE = "cy-news-staging-v28";'), "staging cache namespace is distinct and advances with harness changes");
+assert(sw.includes('var CACHE = "cy-news-' + revision + '";'), "staging cache namespace is distinct and advances with shell changes");
 assert(sw.includes('"./manifest-staging.webmanifest"'));
-assert(sw.includes('"./staging.css?v=1"'));
-assert(sw.includes('"./acceptance-user-tasks.js?v=4"'));
-assert(sw.includes('"./acceptance-companion.html"'));
+assert(sw.includes('"./staging.css?v=' + revision + '"'));
+assert(sw.includes('"./acceptance-user-tasks.js?v=' + revision + '"'));
+assert(sw.includes('"./acceptance-companion.html?v=' + revision + '"'));
+assert(sw.includes('if (req.mode === "navigate")'), "staging navigation must prefer fresh HTML over a stale app shell");
 const companion = fs.readFileSync(path.join(root, "dist-staging", "acceptance-companion.html"), "utf8");
-assert(companion.includes('acceptance-user-tasks.js?v=4'));
+assert(companion.includes('acceptance-user-tasks.js?v=' + revision));
+assert(companion.includes('account-auth.js?v=' + revision));
 assert(!companion.includes("app.js"), "companion must not initialize the production account lifecycle");
 assert(!companion.includes("account-sync.js"), "companion must not drain any account outbox");
 assert(sw.includes('url.searchParams.has("code")'), "OAuth callback navigation remains uncacheable");

@@ -14,6 +14,8 @@
 
 Vercel builds `dist-staging` with `node tools/build-staging.js`. The output is temporary and ignored by Git. The build copies the approved `docs` snapshot, then adds noindex headers/meta, a visible staging banner, a staging-specific manifest, and the query-gated acceptance harness. It never runs the scraper or rewrites generated announcement data.
 
+Every staging build derives one content revision for its HTML, CSS, JavaScript, harness and Service Worker cache. Staging navigation is network-first (with an offline shell fallback), so an installed PWA cannot combine an old HTML shell with newer scripts. This is staging-only; production cache versions remain governed by its own release process.
+
 ## OAuth configuration
 
 Supabase Site URL stays `https://tsaibohau.github.io/cy-school-news/`. The only staging Auth change is the exact Additional Redirect URL `https://cy-school-news-staging.vercel.app/`. Google continues to return to Supabase at `https://oppdhtnepjagdwovndra.supabase.co/auth/v1/callback`; do not add a Google redirect directly to Vercel. Per-commit Vercel URLs and wildcard redirects are deliberately rejected.

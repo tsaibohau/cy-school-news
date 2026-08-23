@@ -2,11 +2,25 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const crypto = require("node:crypto");
 
 const root = path.resolve(__dirname, "..");
 const source = path.join(root, "docs");
 const output = path.join(root, "dist-staging");
 const staging = path.join(root, "tools", "staging");
+const shellInputs = [
+  "index.html", "style.css", "app.js", "sw.js", "account-config.js",
+  "supabase-sync.js", "account-auth.js", "task-state.js", "account-sync.js",
+  "school-registry.js", "profile.js", "relevance.js", "today.js", "calendar-state.js",
+  path.join("..", "tools", "staging", "acceptance-user-tasks.js"),
+  path.join("..", "tools", "staging", "acceptance-companion.html"),
+  path.join("..", "tools", "staging", "staging.css"),
+];
+const shellRevision = "staging-" + crypto.createHash("sha256")
+  .update(shellInputs.map((file) => fs.readFileSync(path.join(source, file))).join("\n"))
+  .digest("hex").slice(0, 12);
+const sourceVersion = "?v=25";
+const stagedVersion = "?v=" + shellRevision;
 
 if (path.dirname(output) !== root || path.basename(output) !== "dist-staging") {
   throw new Error("refusing to clean an unexpected staging output path");
@@ -25,20 +39,29 @@ html = html
   .replace("<head>", '<head>\n<meta name="robots" content="noindex,nofollow,noarchive">')
   .replace("<title>", "<title>STAGING｜")
   .replace('href="manifest.webmanifest"', 'href="manifest-staging.webmanifest"')
-  .replace('</head>', '<link rel="stylesheet" href="staging.css?v=1">\n</head>')
+  .replaceAll(sourceVersion, stagedVersion)
+  .replace('</head>', '<link rel="stylesheet" href="staging.css?v=' + shellRevision + '">\n</head>')
   .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站</div>')
-  .replace('</body>', '<script src="acceptance-user-tasks.js?v=4" defer></script>\n</body>');
+  .replace('</body>', '<script src="acceptance-user-tasks.js?v=' + shellRevision + '" defer></script>\n</body>');
 fs.writeFileSync(indexPath, html);
 fs.writeFileSync(path.join(output, "robots.txt"), "User-agent: *\nDisallow: /\n");
 
+const companionPath = path.join(output, "acceptance-companion.html");
+let companion = fs.readFileSync(companionPath, "utf8")
+  .replaceAll(sourceVersion, stagedVersion)
+  .replace("acceptance-user-tasks.js?v=4", "acceptance-user-tasks.js?v=" + shellRevision);
+fs.writeFileSync(companionPath, companion);
+
 const swPath = path.join(output, "sw.js");
 let sw = fs.readFileSync(swPath, "utf8")
-  .replace('var CACHE = "cy-news-v25";', 'var CACHE = "cy-news-staging-v28";')
-  .replace('"./manifest.webmanifest"', '"./manifest-staging.webmanifest", "./staging.css?v=1", "./acceptance-user-tasks.js?v=4", "./acceptance-companion.html"');
-if (!sw.includes("cy-news-staging-v28") || !sw.includes("acceptance-user-tasks.js?v=4")) throw new Error("staging Service Worker isolation failed");
+  .replace('var CACHE = "cy-news-v25";', 'var CACHE = "cy-news-' + shellRevision + '";')
+  .replaceAll(sourceVersion, stagedVersion)
+  .replace('"./manifest.webmanifest"', '"./manifest-staging.webmanifest", "./staging.css?v=' + shellRevision + '", "./acceptance-user-tasks.js?v=' + shellRevision + '", "./acceptance-companion.html?v=' + shellRevision + '"')
+  .replace('  // 殼層:快取優先', '  /* A new staging deployment must never combine an old HTML shell with new JavaScript. */\n  if (req.mode === "navigate") {\n    e.respondWith(fetch(req).catch(function () { return caches.match("./index.html"); }));\n    return;\n  }\n  // 殼層:快取優先');
+if (!sw.includes('var CACHE = "cy-news-' + shellRevision + '"') || !sw.includes("acceptance-user-tasks.js?v=" + shellRevision) || !sw.includes("req.mode === \"navigate\"")) throw new Error("staging Service Worker isolation failed");
 fs.writeFileSync(swPath, sw);
 
 const config = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
 if (!config.includes("https://cy-school-news-staging.vercel.app/")) throw new Error("staging URL is absent from account allow-list");
-if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境")) throw new Error("staging markers were not injected");
-console.log("Staging artifact built with noindex, isolated manifest and acceptance harness");
+if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境") || html.includes(sourceVersion)) throw new Error("staging markers or coherent shell revision were not injected");
+console.log("Staging artifact built with noindex, coherent " + shellRevision + " shell and acceptance harness");
