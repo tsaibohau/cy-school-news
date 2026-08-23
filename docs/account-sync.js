@@ -1,9 +1,9 @@
 /* Optional Account & Sync V1 core. No Supabase client or secrets are bundled. */
 (function (root, factory) {
-  var api = factory();
+  var api = factory(root);
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   root.CyNewsAccountSync = api;
-})(typeof window !== "undefined" ? window : this, function () {
+})(typeof window !== "undefined" ? window : this, function (root) {
   "use strict";
 
   var VERSION = 1;
@@ -12,6 +12,10 @@
   var STATE_PREFIX = "cyNews.accountState.v1:";
   var META_KEY = "cyNews.accountState.v1:meta";
   var ANONYMOUS_ACCOUNT = "anonymous";
+  var TaskState = root && root.CyNewsTaskState;
+  if (!TaskState && typeof require === "function") {
+    try { TaskState = require("./task-state.js"); } catch (_) { /* browser-only load may provide it later */ }
+  }
 
   function normalizeKeyword(value) {
     return String(value == null ? "" : value).trim().toLocaleLowerCase("zh-TW");
@@ -94,7 +98,7 @@
     return normalizePreferences(candidate);
   }
   function emptyState() {
-    return { subscriptions: [], reads: [], preferences: { schema_version: VERSION, preferences: {} } };
+    return { subscriptions: [], reads: [], preferences: { schema_version: VERSION, preferences: {} }, tasks: [] };
   }
   function clone(value) { return JSON.parse(JSON.stringify(value)); }
   function validState(value) {
@@ -102,7 +106,12 @@
       Array.isArray(value.subscriptions) && Array.isArray(value.reads) &&
       !!value.preferences && typeof value.preferences === "object";
   }
-  function safeState(value) { return validState(value) ? clone(value) : emptyState(); }
+  function safeState(value) {
+    if (!validState(value)) return emptyState();
+    var result = clone(value);
+    result.tasks = TaskState && typeof TaskState.merge === "function" ? TaskState.merge([], result.tasks || []) : (Array.isArray(result.tasks) ? result.tasks : []);
+    return result;
+  }
   function mergeAccountState(local, remote) {
     local = local || {};
     remote = remote || {};
@@ -110,6 +119,7 @@
       subscriptions: mergeSubscriptions(local.subscriptions, remote.subscriptions),
       reads: mergeReads(local.reads, remote.reads),
       preferences: mergePreferences(local.preferences, remote.preferences),
+      tasks: TaskState && typeof TaskState.merge === "function" ? TaskState.merge(local.tasks, remote.tasks) : [],
     };
   }
   function safeGet(storage, key) {
@@ -262,6 +272,9 @@
       next.reads = mergeReads(next.reads, [payload]);
     } else if (type === "preferences.upsert") {
       next.preferences = mergePreferences(next.preferences, payload);
+    } else if (type.indexOf("task.") === 0) {
+      if (!TaskState || typeof TaskState.applyMutation !== "function") throw new Error("task state unavailable");
+      next.tasks = TaskState.applyMutation(next.tasks, type, payload, now);
     } else {
       throw new Error("unsupported account mutation");
     }

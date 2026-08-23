@@ -254,6 +254,21 @@ body { background: var(--paper); }
 .agenda-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 20px 0 8px; }
 .agenda-heading h3 { margin: 0; font-size: 18px; }
 .agenda-item { display: flex; gap: 11px; align-items: flex-start; padding: 13px; margin-bottom: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.today-section { margin: 0 0 18px; }
+.today-section h3, .tasks-box h4 { margin: 0 0 8px; font-size: 1rem; }
+.today-list, .task-list { display: grid; gap: 8px; }
+.today-item, .task-item { display: flex; gap: 10px; align-items: flex-start; padding: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.today-item-main, .task-item-main { flex: 1; min-width: 0; }
+.today-item-title, .task-item-title { font-weight: 700; overflow-wrap: anywhere; }
+.today-item-meta, .task-item-meta { color: var(--muted); font-size: .82rem; margin-top: 4px; }
+.task-item.is-completed { opacity: .7; }
+.task-item.is-completed .task-item-title { text-decoration: line-through; }
+.task-item-actions { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.task-item-actions button { min-height: 34px; }
+.task-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tasks-box { margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line); }
+.today-empty { padding: 18px 0; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.today-empty p { flex-basis: 100%; margin: 0 0 2px; }
 .agenda-mark { width: 8px; min-width: 8px; height: 8px; margin-top: 7px; border-radius: 50%; background: var(--cysh); }.agenda-mark.deadline { background: #eb8d4d; }.agenda-mark.user { background: #40a27c; }
 .agenda-item h4 { margin: 0; font-size: 15px; }.agenda-item p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; }.agenda-item a { color: var(--cysh); font-size: 12px; }
 .event-actions { display: flex; gap: 6px; margin-top: 8px; }
@@ -283,4 +298,8 @@ body { background: var(--paper); }
 @media (min-width: 640px) {
   .brand h1 { font-size: 27px; }
   .card-title { font-size: 16.5px; }
+}
+@media (max-width: 430px) {
+  .task-form-row { grid-template-columns: 1fr; }
+  .tabbar .tab { padding-left: 7px; padding-right: 7px; }
 }

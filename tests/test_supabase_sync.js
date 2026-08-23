@@ -56,6 +56,11 @@ adapter.fetchRemoteState().then(async remote => {
   await adapter.pushRows("user_reads", [{ announcement_id: "a", read_at: "2026-01-02T00:00:00Z" }]);
   await adapter.pushRows("user_preferences", [{ schema_version: 1, preferences: { school: "cysh" }, updated_at: null }]);
   await adapter.pushRows("user_preferences", [{ schema_version: 1, preferences: { school: "cysh" }, updated_at: "2026-02-01T00:00:00Z" }]);
+  await adapter.pushRows("user_tasks", [{ id: "task-a", user_id: "user-b", title: "A task", due_date: "2026-09-05", updated_at: "2026-02-01T00:00:00Z" }]);
+  const taskCall = calls.find(x => x.table === "user_tasks");
+  assert.equal(taskCall.rows[0].user_id, "user-a", "task payload cannot override verified session owner");
+  assert.match(taskCall.rows[0].id, /^[0-9a-f-]{36}$/i, "task adapter emits a database-safe stable UUID");
+  assert.equal(taskCall.options.onConflict, Sync.CONFLICT_TARGETS.user_tasks);
   const preferenceCalls = calls.filter(x => x.table === "user_preferences");
   assert(preferenceCalls.every(x => x.rows[0].updated_at), "preferences upsert never sends null/undefined updated_at");
   assert.equal(preferenceCalls[1].rows[0].updated_at, "2026-02-01T00:00:00Z", "normalized preference push preserves timestamp");

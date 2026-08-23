@@ -486,7 +486,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v23/);
+  assert.match(swSource, /cy-news-v24/);
   assert.match(swSource, /\.\/profile\.js/);
   assert.match(swSource, /\.\/relevance\.js/);
   assert.doesNotMatch(swSource, /cy-news-v19/);
@@ -495,6 +495,8 @@ function testServiceWorkerContract() {
   assert.match(swSource, /\.\/supabase-sync\.js/);
   assert.match(swSource, /\.\/account-auth\.js/);
   assert.match(swSource, /\.\/account-sync\.js/);
+  assert.match(swSource, /\.\/task-state\.js/);
+  assert.match(swSource, /\.\/today\.js/);
   assert.match(swSource, /searchParams\.has\("code"\)/);
   assert.match(swSource, /searchParams\.has\("access_token"\)/);
   assert.match(swSource, /searchParams\.has\("refresh_token"\)/);

@@ -52,11 +52,13 @@
       calendarSelected: new Date().toISOString().slice(0, 10),
       eventEditingId: null,
       officialEvents: [],
+      calendarStatus: "partial",
       userEvents: loadUserEvents(),
       reads: loadReads(),
       shown: PAGE_SIZE,
       archive: "none",  /* none | loading | loaded:歷史封存資料的載入狀態 */
       subscriptions: notificationState.subscriptions,
+      tasks: [],
       profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
       personalizedNotifications: false,
       activeAccountId: "anonymous",
@@ -68,8 +70,8 @@
       list: $("list"), subList: $("subList"), countLine: $("countLine"),
       updatedAt: $("updatedAt"), q: $("q"),
       schoolSeg: $("schoolSeg"), catChips: $("catChips"),
-      viewLatest: $("viewLatest"), viewSub: $("viewSub"),
-      tabLatest: $("tabLatest"), tabSub: $("tabSub"), subBadge: $("subBadge"),
+      viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewSub: $("viewSub"),
+      tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabSub: $("tabSub"), subBadge: $("subBadge"),
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
       btnRefresh: $("btnRefresh"),
@@ -86,6 +88,11 @@
       profileSchool: $("profileSchool"), profileGrade: $("profileGrade"), profileClass: $("profileClass"),
       profileInterests: $("profileInterests"), profileCategories: $("profileCategories"), profileKeywords: $("profileKeywords"),
       profileSave: $("profileSave"), profileStatus: $("profileStatus"), personalizedToggle: $("personalizedToggle"),
+      tasksBox: $("tasksBox"), taskForm: $("taskForm"), taskTitle: $("taskTitle"), taskDue: $("taskDue"),
+      taskPriority: $("taskPriority"), taskNotes: $("taskNotes"), taskSave: $("taskSave"), taskCancel: $("taskCancel"),
+      taskStatus: $("taskStatus"), taskOpenList: $("taskOpenList"), taskDoneList: $("taskDoneList"),
+      todayCoverage: $("todayCoverage"), todayEvents: $("todayEvents"), todayDeadlines: $("todayDeadlines"),
+      todayTasks: $("todayTasks"), todayRelevant: $("todayRelevant"), todayEmpty: $("todayEmpty"),
     };
 
     function loadUserEvents() {
@@ -191,6 +198,7 @@
         subscriptions: notificationState.subscriptions,
         reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
         preferences: { schema_version: 1, preferences: { profile: window.CyNewsProfile.empty() } },
+        tasks: state.tasks,
       }, localStorage);
       var syncGeneration = 0;
       var requestedUid = null;
@@ -220,12 +228,13 @@
         saveReads();
         NotificationState.save(notificationState);
         state.profile = window.CyNewsProfile.normalize(merged.preferences && merged.preferences.preferences && merged.preferences.preferences.profile);
+        state.tasks = window.CyNewsTaskState ? window.CyNewsTaskState.visible(merged.tasks || []) : [];
         var notificationPreferences = merged.preferences && merged.preferences.preferences && merged.preferences.preferences.notification_preferences;
         state.personalizedNotifications = !!(notificationPreferences && notificationPreferences.personalized);
         establishPersonalizedBaseline(accountId || "anonymous");
         renderProfile();
         renderPersonalizedSetting();
-        renderLatest(); renderSub(); renderBadge();
+        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
         return merged;
       }
       function clearAccountOwnedView() {
@@ -234,12 +243,13 @@
         saveReads();
         NotificationState.save(notificationState);
         state.profile = window.CyNewsProfile.empty();
+        state.tasks = [];
         state.personalizedNotifications = false;
         state.activeAccountId = "anonymous";
         establishPersonalizedBaseline("anonymous");
         renderProfile();
         renderPersonalizedSetting();
-        renderLatest(); renderSub(); renderBadge();
+        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
       }
       function restoreAnonymous() {
         syncGeneration += 1;
@@ -585,9 +595,19 @@
     }
     function loadOfficialEvents() {
       return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
-        state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) { return ev && ev.date && ev.title && ev.provenance; }) : [];
+        state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) { return ev && (ev.start_date || ev.date) && ev.title && ev.provenance; }) : [];
         if (state.tab === "calendar") renderCalendar();
       }).catch(function () {});
+    }
+    function loadCalendarStatus() {
+      fetch("data/calendar-source-status.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      }).then(function (status) {
+        var rows = Array.isArray(status) ? status : (Array.isArray(status && status.schools) ? status.schools : []);
+        state.calendarStatus = rows.length && rows.every(function (row) { return row.status === "official_complete"; }) ? "complete" : "partial";
+        renderToday();
+      }).catch(function () { state.calendarStatus = "partial"; renderToday(); });
     }
     function cardHTML(it) {
       var schoolClass = it.school === "cysh" ? "tag-cysh" : "tag-cygsh";
@@ -608,6 +628,7 @@
         '<h3 class="card-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         esc(it.title) + '</a></h3>' +
         (it.snippet ? '<p class="card-snippet">' + esc(it.snippet) + '</p>' : "") +
+        '<div class="card-actions"><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>' +
         '</article>';
     }
     function renderImportant() {
@@ -646,6 +667,49 @@
         : "先在上方新增關鍵字,開始追蹤你在意的消息。";
       renderList(el.subList, subItems(), msg);
       renderKwChips();
+    }
+    function taskDateLabel(due) {
+      if (!due) return "未設定截止日期";
+      var today = window.CyNewsToday ? window.CyNewsToday.build({ today: new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }) }).today : new Date().toISOString().slice(0, 10);
+      return (window.CyNewsToday ? window.CyNewsToday.dueLabel(today, due) : due) + " · " + due;
+    }
+    function taskHTML(task, completed) {
+      return '<article class="task-item' + (completed ? ' is-completed' : '') + '">' +
+        '<div class="task-item-main"><div class="task-item-title">' + esc(task.title) + '</div>' +
+        '<div class="task-item-meta">' + esc(taskDateLabel(task.due_date)) + (task.priority != null ? ' · 優先 ' + esc(task.priority) : '') + '</div>' +
+        (task.notes ? '<div class="task-item-meta">' + esc(task.notes) + '</div>' : '') + '</div>' +
+        '<div class="task-item-actions">' + (completed ? '<button type="button" class="btn-ghost" data-task-reopen="' + esc(task.id) + '">重開</button>' : '<button type="button" class="btn-ghost" data-task-complete="' + esc(task.id) + '">完成</button>') +
+        '<button type="button" class="btn-ghost" data-task-edit="' + esc(task.id) + '">編輯</button><button type="button" class="btn-ghost" data-task-delete="' + esc(task.id) + '">刪除</button></div></article>';
+    }
+    function renderTasks() {
+      if (!el.taskOpenList || !window.CyNewsTaskState) return;
+      var all = window.CyNewsTaskState.visible(state.tasks || []);
+      var open = window.CyNewsTaskState.sortOpen(all), done = all.filter(function (task) { return task.status === "completed"; }).sort(function (a, b) { return a.updated_at < b.updated_at ? 1 : -1; });
+      el.taskOpenList.innerHTML = open.length ? open.map(function (task) { return taskHTML(task, false); }).join("") : '<p class="empty">還沒有待辦。先新增一件小事。</p>';
+      el.taskDoneList.innerHTML = done.length ? done.map(function (task) { return taskHTML(task, true); }).join("") : '<p class="empty">完成的待辦會放在這裡。</p>';
+    }
+    function renderToday() {
+      if (!el.viewToday || !window.CyNewsToday) return;
+      var projection = window.CyNewsToday.build({
+        officialEvents: state.officialEvents,
+        announcementItems: state.data ? state.data.items : [],
+        tasks: state.tasks,
+        profile: state.profile,
+        relevance: function (item, profile) { return window.CyNewsRelevance && window.CyNewsSchoolRegistry ? window.CyNewsRelevance.calculate(item, profile, window.CyNewsSchoolRegistry) : null; },
+      });
+      if (el.todayCoverage) {
+        el.todayCoverage.hidden = state.calendarStatus === "complete";
+        el.todayCoverage.textContent = state.calendarStatus === "complete" ? "" : "官方學期行事曆尚未完整公布，先顯示目前已確認的資料。";
+      }
+      function eventRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(row.provenance === "user_event" ? "自己的事件" : (row.event_type || row.kind || "正式行程")) + '</div></div></div>'; }
+      function deadlineRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(projection.dueLabel(row.date)) + ' · ' + esc(row.date) + '</div></div></div>'; }
+      el.todayEvents.innerHTML = projection.todayEvents.length ? projection.todayEvents.map(eventRow).join("") : '<p class="empty">今天沒有已知正式行程。</p>';
+      var upcoming = projection.upcoming.concat(projection.deadlines);
+      el.todayDeadlines.innerHTML = upcoming.length ? upcoming.map(deadlineRow).join("") : '<p class="empty">接下來 7 天沒有已知截止事項。</p>';
+      el.todayTasks.innerHTML = projection.openTasks.length ? projection.openTasks.slice(0, 8).map(function (task) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(task.title) + '</div><div class="today-item-meta">' + esc(taskDateLabel(task.due_date)) + '</div></div></div>'; }).join("") : '<p class="empty">還沒有待辦。</p>';
+      el.todayRelevant.innerHTML = projection.relevantAnnouncements.length ? projection.relevantAnnouncements.map(function (item) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(item.title) + '</div><div class="today-item-meta">' + esc(item.school_name || "公告") + '</div></div></div>'; }).join("") : '<p class="empty">設定我的資料後，這裡會顯示相關公告。</p>';
+      var hasUseful = projection.todayEvents.length || upcoming.length || projection.openTasks.length || projection.relevantAnnouncements.length;
+      el.todayEmpty.hidden = !!hasUseful;
     }
     function renderKwChips() {
       syncSubscriptions();
@@ -686,6 +750,8 @@
       renderImportant();
       renderLatest();
       renderSub();
+      renderTasks();
+      renderToday();
       renderBadge();
       renderUpdatedAt();
     }
@@ -780,7 +846,39 @@
       queueAccountMutation("read.upsert", { announcement_id: id, read_at: readAt });
       renderLatest(); renderSub();
     }
+    function applyTask(type, payload) {
+      var result = queueAccountMutation(type, payload);
+      if (!result) { if (el.taskStatus) el.taskStatus.textContent = "請先完成登入同步"; return null; }
+      state.tasks = window.CyNewsTaskState ? window.CyNewsTaskState.visible(result.tasks || []) : [];
+      renderTasks(); renderToday();
+      return result;
+    }
+    function editTask(id) {
+      var task = (state.tasks || []).find(function (row) { return row.id === String(id); });
+      if (!task || !el.taskForm) return;
+      el.taskForm.dataset.editingId = task.id; el.taskTitle.value = task.title; el.taskDue.value = task.due_date || "";
+      el.taskPriority.value = task.priority == null ? "" : String(task.priority); el.taskNotes.value = task.notes || "";
+      el.taskSave.textContent = "儲存待辦"; el.taskCancel.hidden = false; el.taskTitle.focus();
+    }
+    function resetTaskForm() {
+      if (!el.taskForm) return;
+      el.taskForm.reset(); el.taskForm.dataset.editingId = ""; el.taskSave.textContent = "新增待辦"; el.taskCancel.hidden = true;
+    }
+    function addAnnouncementTask(id) {
+      var item = state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
+      if (!item || !window.CyNewsTaskState) return;
+      var task = window.CyNewsTaskState.fromAnnouncement(item);
+      if (!task) return;
+      var ok = typeof window.confirm === "function" ? window.confirm("要把「" + item.title + "」加入待辦嗎？") : true;
+      if (!ok) return;
+      if (applyTask("task.create", task)) {
+        if (el.taskStatus) el.taskStatus.textContent = task.due_date ? "已加入待辦，已帶入驗證截止日" : "已加入待辦";
+        switchTab("sub");
+      }
+    }
     el.list.addEventListener("click", function (e) {
+      var addTaskButton = e.target.closest("button[data-add-task]");
+      if (addTaskButton) { addAnnouncementTask(addTaskButton.dataset.addTask); return; }
       var readButton = e.target.closest("button[data-read-id]");
       if (readButton) {
         markRead(readButton.dataset.readId);
@@ -797,6 +895,29 @@
       var readButton = e.target.closest("button[data-read-id]");
       if (readButton) markRead(readButton.dataset.readId);
     });
+    function taskButtonHandler(e) {
+      var button = e.target.closest("button"); if (!button) return;
+      var id = button.dataset.taskComplete || button.dataset.taskReopen || button.dataset.taskEdit || button.dataset.taskDelete;
+      if (!id) return;
+      if (button.dataset.taskComplete) applyTask("task.complete", { id: id });
+      else if (button.dataset.taskReopen) applyTask("task.reopen", { id: id });
+      else if (button.dataset.taskEdit) editTask(id);
+      else if (button.dataset.taskDelete) applyTask("task.delete", { id: id });
+    }
+    if (el.taskOpenList) el.taskOpenList.addEventListener("click", taskButtonHandler);
+    if (el.taskDoneList) el.taskDoneList.addEventListener("click", taskButtonHandler);
+    if (el.taskForm) el.taskForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var id = el.taskForm.dataset.editingId || (window.CyNewsTaskState ? window.CyNewsTaskState.idFor("task:" + Date.now().toString(36) + ":" + Math.random()) : "task:" + Date.now().toString(36));
+      var payload = { id: id, title: el.taskTitle.value.trim(), due_date: el.taskDue.value || null,
+        priority: el.taskPriority.value === "" ? null : Number(el.taskPriority.value), notes: el.taskNotes.value.trim() };
+      if (!payload.title) return;
+      if (applyTask(el.taskForm.dataset.editingId ? "task.update" : "task.create", payload)) {
+        if (el.taskStatus) el.taskStatus.textContent = "已儲存";
+        resetTaskForm();
+      }
+    });
+    if (el.taskCancel) el.taskCancel.addEventListener("click", resetTaskForm);
     el.kwForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var kw = el.kwInput.value.trim();
@@ -841,15 +962,20 @@
     function switchTab(tab) {
       state.tab = tab;
       var latest = tab === "latest";
+      var today = tab === "today";
+      if (el.viewToday) el.viewToday.hidden = !today;
       el.viewLatest.hidden = !latest;
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
       el.viewSub.hidden = tab !== "sub";
       el.tabLatest.classList.toggle("is-active", latest);
+      if (el.tabToday) el.tabToday.classList.toggle("is-active", today);
       if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar");
-      el.tabSub.classList.toggle("is-active", !latest);
+      el.tabSub.classList.toggle("is-active", tab === "sub");
       el.tabLatest.setAttribute("aria-current", latest ? "page" : "false");
+      if (el.tabToday) el.tabToday.setAttribute("aria-current", today ? "page" : "false");
       if (el.tabCalendar) el.tabCalendar.setAttribute("aria-current", tab === "calendar" ? "page" : "false");
-      el.tabSub.setAttribute("aria-current", latest ? "false" : "page");
+      el.tabSub.setAttribute("aria-current", tab === "sub" ? "page" : "false");
+      if (today) { loadOfficialEvents(); loadCalendarStatus(); renderToday(); }
       if (tab === "calendar" && el.viewCalendar) { loadOfficialEvents(); renderCalendar(); }
       if (tab === "sub") {
         renderSub();
@@ -861,6 +987,7 @@
       window.scrollTo(0, 0);
     }
     el.tabLatest.addEventListener("click", function () { switchTab("latest"); });
+    if (el.tabToday) el.tabToday.addEventListener("click", function () { switchTab("today"); });
     el.tabSub.addEventListener("click", function () { switchTab("sub"); });
     if (el.tabCalendar) {
       el.tabCalendar.addEventListener("click", function () { switchTab("calendar"); });
@@ -940,7 +1067,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=17").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=24").catch(function () {});
       });
     }
 

@@ -67,13 +67,19 @@ async function run() {
   const readB = { announcement_id: `${marker}-b`, read_at: new Date().toISOString() };
   const prefA = { schema_version: 1, preferences: { marker: `${marker}-a` }, updated_at: new Date().toISOString() };
   const prefB = { schema_version: 1, preferences: { marker: `${marker}-b` }, updated_at: new Date().toISOString() };
-  const rowsA = [["user_subscriptions", subA], ["user_reads", readA], ["user_preferences", prefA]];
-  const rowsB = [["user_subscriptions", subB], ["user_reads", readB], ["user_preferences", prefB]];
+  const taskA = { id: crypto.randomUUID(), title: `${marker}-task-a`, status: "open", due_date: "2099-01-01", priority: 3, notes: "A", updated_at: new Date().toISOString() };
+  const taskB = { id: crypto.randomUUID(), title: `${marker}-task-b`, status: "open", due_date: "2099-01-02", priority: 3, notes: "B", updated_at: new Date().toISOString() };
+  const rowsA = [["user_subscriptions", subA], ["user_reads", readA], ["user_preferences", prefA], ["user_tasks", taskA]];
+  const rowsB = [["user_subscriptions", subB], ["user_reads", readB], ["user_preferences", prefB], ["user_tasks", taskB]];
   const queries = {
     user_subscriptions: (uid, row) => `?user_id=eq.${encodeURIComponent(uid)}&normalized_keyword=eq.${encodeURIComponent(row.normalized_keyword)}`,
     user_reads: (uid, row) => `?user_id=eq.${encodeURIComponent(uid)}&announcement_id=eq.${encodeURIComponent(row.announcement_id)}`,
     user_preferences: uid => `?user_id=eq.${encodeURIComponent(uid)}`,
+    user_tasks: (uid, row) => `?user_id=eq.${encodeURIComponent(uid)}&id=eq.${encodeURIComponent(row.id)}`,
   };
+  let ownSub = queries.user_subscriptions(a, subA);
+  let ownRead = queries.user_reads(a, readA);
+  let ownTask = queries.user_tasks(a, taskA);
   try {
     for (const [owner, rows] of [["A", rowsA], ["B", rowsB]]) {
       const token = owner === "A" ? tokenA : tokenB;
@@ -94,7 +100,7 @@ async function run() {
       expectWriteDenied(result, `B spoof insert into ${table} as A`);
     }
 
-    for (const table of ["user_subscriptions", "user_reads", "user_preferences"]) {
+    for (const table of ["user_subscriptions", "user_reads", "user_preferences", "user_tasks"]) {
       for (const [token, other, label] of [[tokenB, a, "B must not read A"], [tokenA, b, "A must not read B"]]) {
         const crossRead = await request(token, table, "GET", `?select=*&user_id=eq.${encodeURIComponent(other)}`);
         assert.ok(ok(crossRead.status), `${label} ${table} request must be safe`);
@@ -113,14 +119,24 @@ async function run() {
       expectForbidden(await request(tokenA, table, "DELETE", query), `A cross-delete of B ${table}`);
     }
 
-    const ownSub = queries.user_subscriptions(a, subA);
-    const ownRead = queries.user_reads(a, readA);
+    ownSub = queries.user_subscriptions(a, subA);
+    ownRead = queries.user_reads(a, readA);
     const repeatedSub = await request(tokenA, "user_subscriptions", "POST", "?on_conflict=user_id,normalized_keyword", subA);
     assert.ok(ok(repeatedSub.status), "repeated subscription upsert succeeds");
     const repeatedRead = await request(tokenA, "user_reads", "POST", "?on_conflict=user_id,announcement_id", readA);
     assert.ok(ok(repeatedRead.status), "repeated read upsert succeeds");
     const repeatedPref = await request(tokenA, "user_preferences", "PATCH", `?user_id=eq.${encodeURIComponent(a)}`, { preferences: { marker: "second" }, updated_at: new Date().toISOString() });
     assert.ok(ok(repeatedPref.status), "preferences second update succeeds");
+
+    ownTask = queries.user_tasks(a, taskA);
+    const repeatedTask = await request(tokenA, "user_tasks", "POST", "?on_conflict=id", { ...taskA, title: `${marker}-task-a-updated` });
+    assert.ok(ok(repeatedTask.status), "repeated task upsert succeeds");
+    const taskUpdated = await request(tokenA, "user_tasks", "PATCH", ownTask, { status: "completed", completed_at: new Date().toISOString(), updated_at: new Date().toISOString() });
+    assert.ok(ok(taskUpdated.status), "task complete/update succeeds");
+    const taskVerify = await request(tokenA, "user_tasks", "GET", ownTask);
+    assert.equal(Array.isArray(taskVerify.data) ? taskVerify.data.length : -1, 1, "task upsert remains one logical row");
+    const taskReopen = await request(tokenA, "user_tasks", "PATCH", ownTask, { status: "open", completed_at: null, updated_at: new Date().toISOString() });
+    assert.ok(ok(taskReopen.status), "task reopen succeeds");
 
     const verify = await request(tokenA, "user_subscriptions", "GET", ownSub);
     assert.equal(Array.isArray(verify.data) ? verify.data.length : -1, 1, "subscription upsert remains one logical row");
@@ -131,9 +147,11 @@ async function run() {
     await request(tokenA, "user_subscriptions", "DELETE", ownSub);
     await request(tokenA, "user_reads", "DELETE", ownRead);
     await request(tokenA, "user_preferences", "DELETE", queries.user_preferences(a));
+    await request(tokenA, "user_tasks", "DELETE", queries.user_tasks(a, taskA));
     await request(tokenB, "user_subscriptions", "DELETE", queries.user_subscriptions(b, subB));
     await request(tokenB, "user_reads", "DELETE", queries.user_reads(b, readB));
     await request(tokenB, "user_preferences", "DELETE", queries.user_preferences(b));
+    await request(tokenB, "user_tasks", "DELETE", queries.user_tasks(b, taskB));
   }
 }
 

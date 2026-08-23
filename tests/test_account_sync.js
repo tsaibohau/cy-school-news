@@ -1,5 +1,6 @@
 const assert = require("assert");
 const Sync = require("../docs/account-sync.js");
+const Tasks = require("../docs/task-state.js");
 
 const store = {
   data: {},
@@ -114,6 +115,18 @@ const remotePreferenceWins = new Sync.AccountLifecycle({ subscriptions: [], read
   .login("user-existing-remote", { subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: { school: "remote" }, updated_at: "2026-01-01T00:00:00Z" } });
 assert.equal(remotePreferenceWins.preferences.updated_at, "2026-01-01T00:00:00Z");
 assert.equal(remotePreferenceWins.preferences.preferences.school, "remote");
+
+const taskLifecycle = new Sync.AccountLifecycle({ subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: {} }, tasks: [] });
+taskLifecycle.login("user-a");
+const taskCreated = taskLifecycle.applyMutation("task.create", { id: "task-a", title: "A task", due_date: "2026-09-05" });
+assert.equal(taskCreated.tasks.length, 1);
+taskLifecycle.applyMutation("task.complete", { id: "task-a" });
+assert.equal(taskLifecycle.state().tasks[0].status, "completed");
+taskLifecycle.logout();
+const taskB = taskLifecycle.login("user-b");
+assert.equal(taskB.tasks.length, 0, "B namespace must not inherit A tasks");
+const tombstone = Tasks.applyMutation(taskCreated.tasks, "task.delete", { id: "task-a" }, "2026-09-06T00:00:00Z");
+assert.equal(Tasks.visible(tombstone).length, 0, "task delete is a tombstone, not a new logical row");
 
 console.log("Account Sync V1.1 core tests passed");
 

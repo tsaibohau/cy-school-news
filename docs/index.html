@@ -48,6 +48,22 @@
     <div id="importantList" class="important-list"></div>
   </section>
 
+  <!-- 今日：由既有行事曆、公告與待辦即時投影，不另存資料。 -->
+  <section id="viewToday" class="today-view" hidden aria-labelledby="todayTitle">
+    <div class="section-heading"><div><p class="eyebrow">PERSONAL ASSISTANT</p><h2 id="todayTitle">我的今天</h2></div></div>
+    <p id="todayCoverage" class="hint" hidden></p>
+    <section class="today-section"><h3>今天</h3><div id="todayEvents" class="today-list"></div></section>
+    <section class="today-section"><h3>即將到期</h3><div id="todayDeadlines" class="today-list"></div></section>
+    <section class="today-section"><h3>待辦</h3><div id="todayTasks" class="today-list"></div></section>
+    <section class="today-section"><h3>與我相關</h3><div id="todayRelevant" class="today-list"></div></section>
+    <div id="todayEmpty" class="today-empty" hidden>
+      <p>先從一件對你有用的小事開始。</p>
+      <button type="button" class="btn-soft" data-today-action="profile">設定我的學校</button>
+      <button type="button" class="btn-soft" data-today-action="task">新增待辦</button>
+      <button type="button" class="btn-soft" data-today-action="keyword">追蹤關鍵字</button>
+    </div>
+  </section>
+
   <!-- 公告首頁 -->
   <section id="viewLatest">
     <div class="controls">
@@ -119,6 +135,17 @@
           <label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label>
         </form>
       </section>
+      <section id="tasksBox" class="tasks-box" aria-labelledby="tasksTitle">
+        <div class="section-heading compact-heading"><div><p class="eyebrow">MY TASKS</p><h3 id="tasksTitle">待辦事項</h3></div><span class="hint">和行事曆分開管理</span></div>
+        <form id="taskForm" class="task-form">
+          <label>要做什麼？<input id="taskTitle" required maxlength="120" placeholder="例如：繳住宿資料"></label>
+          <div class="task-form-row"><label>截止日期（選填）<input id="taskDue" type="date"></label><label>優先度（選填）<select id="taskPriority"><option value="">一般</option><option value="5">高</option><option value="3">中</option><option value="1">低</option></select></label></div>
+          <label>備註（選填）<textarea id="taskNotes" maxlength="500" rows="2"></textarea></label>
+          <div class="profile-actions"><button id="taskSave" class="btn-primary" type="submit">新增待辦</button><button id="taskCancel" class="btn-ghost" type="button" hidden>取消編輯</button><span id="taskStatus" class="hint" aria-live="polite"></span></div>
+        </form>
+        <h4>待處理</h4><div id="taskOpenList" class="task-list"></div>
+        <h4>已完成</h4><div id="taskDoneList" class="task-list"></div>
+      </section>
       </div>
     <main id="subList" class="list"></main>
   </section>
@@ -132,6 +159,9 @@
 </div>
 
 <nav class="tabbar" aria-label="主要分頁">
+  <button id="tabToday" class="tab">
+    <span class="tab-icon" aria-hidden="true">✦</span><span>今天</span>
+  </button>
   <button id="tabLatest" class="tab is-active" aria-current="page">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h10"/></svg>
     <span>最新</span>
@@ -149,10 +179,12 @@
 <script src="account-config.js"></script>
 <script src="supabase-sync.js"></script>
 <script src="account-auth.js"></script>
+<script src="task-state.js?v=1"></script>
 <script src="account-sync.js"></script>
 <script src="school-registry.js"></script>
 <script src="profile.js"></script>
 <script src="relevance.js"></script>
+<script src="today.js?v=1"></script>
 <script src="calendar-state.js?v=18"></script>
 <script src="app.js?v=20"></script>
 </body>
