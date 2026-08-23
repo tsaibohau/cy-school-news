@@ -227,7 +227,8 @@
         step(area, "確認 USER_A／USER_B 身分隔離");
         channel.postMessage({ type: "GET_A_CONTEXT" });
         var aContext = await waitMessage("A_CONTEXT");
-        if (!aContext.uid || aContext.uid === b.uid) fail("USER_A and USER_B are not distinct");
+        if (!aContext.uid) fail("USER_A companion identity unavailable");
+        if (aContext.uid === b.uid) fail("USER_A and USER_B resolved to the same verified session");
         cleanupReservedOutbox(aContext.uid);
         var mutationA = addOutboxFixture(aContext.uid, stored.taskA);
         var taskB = randomId();
