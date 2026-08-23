@@ -1,0 +1,32 @@
+name: Local RLS database tests
+
+on:
+  push:
+    branches: [feature/personal-assistant-v1, staging]
+    paths:
+      - "supabase/**"
+      - "tests/test_rls_sql_contract.js"
+      - ".github/workflows/rls-local.yml"
+  pull_request:
+    paths:
+      - "supabase/**"
+      - "tests/test_rls_sql_contract.js"
+      - ".github/workflows/rls-local.yml"
+
+jobs:
+  pgtap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - name: Start local Supabase
+        run: supabase start
+      - name: Reset local migrations
+        run: supabase db reset --local --no-seed
+      - name: Run user_tasks RLS matrix
+        run: supabase test db --local supabase/tests/database/user_tasks_rls.test.sql
+      - name: Stop local Supabase
+        if: always()
+        run: supabase stop
