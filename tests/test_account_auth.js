@@ -144,7 +144,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v24"), "Service Worker cache must advance for Tasks and Today");
+  assert(sw.includes("cy-news-v25"), "Service Worker cache must advance for the current app shell");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   console.log("Google OAuth account auth tests passed");
