@@ -39,6 +39,8 @@ assert(harness.includes("raw ownership spoof was not rejected by RLS"));
 assert(harness.includes("created_at: now"), "outbox fixture must satisfy user_tasks timestamps");
 assert(harness.includes('new URL("/acceptance-companion.html", location.origin)'), "USER_A companion must use the lifecycle-free staging page");
 assert(harness.includes("cleanupReservedOutbox"), "acceptance recovery must remove only reserved outbox fixtures");
+assert(harness.includes("function requestMessage(type, message, timeout)"), "companion requests must use the race-safe request helper");
+assert(/var pending = waitMessage\(type, timeout\);\s*channel\.postMessage\(message\);/.test(harness), "acceptance listener must be installed before a companion message is posted");
 assert(harness.includes("BLOCKED：\" + (area.status.dataset.step"), "blocked reports must identify a sanitized acceptance stage");
 assert(!harness.includes("service_role"));
 assert(sw.includes('var CACHE = "cy-news-' + revision + '";'), "staging cache namespace is distinct and advances with shell changes");

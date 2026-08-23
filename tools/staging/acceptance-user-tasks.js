@@ -191,6 +191,13 @@
       channel.addEventListener("message", receive);
     });
   }
+  function requestMessage(type, message, timeout) {
+    /* Install the listener before posting. A same-origin companion can answer
+       immediately; posting first loses that reply and creates a false timeout. */
+    var pending = waitMessage(type, timeout);
+    channel.postMessage(message);
+    return pending;
+  }
   async function main() {
     var area = panel(), stored = safeState();
     if (stored.phase === "awaiting_b") {
@@ -205,11 +212,9 @@
            for that account clears its reserved prefix before creating data. */
         try {
           step(area, "清理 USER_A 驗收暫存");
-          channel.postMessage({ type: "GET_A_CONTEXT" });
-          var aContext = await waitMessage("A_CONTEXT");
+          var aContext = await requestMessage("A_CONTEXT", { type: "GET_A_CONTEXT" });
           cleanupReservedOutbox(aContext.uid);
-          channel.postMessage({ type: "CLEANUP_A", taskA: stored.taskA });
-          await waitMessage("A_CLEAN_PASS");
+          await requestMessage("A_CLEAN_PASS", { type: "CLEANUP_A", taskA: stored.taskA });
         } catch (_) {
           area.status.dataset.recovery = "companion-missing";
         }
@@ -225,8 +230,7 @@
         cleanupReservedOutbox(b.uid);
         await cleanupReserved(b);
         step(area, "確認 USER_A／USER_B 身分隔離");
-        channel.postMessage({ type: "GET_A_CONTEXT" });
-        var aContext = await waitMessage("A_CONTEXT");
+        var aContext = await requestMessage("A_CONTEXT", { type: "GET_A_CONTEXT" });
         if (!aContext.uid) fail("USER_A companion identity unavailable");
         if (aContext.uid === b.uid) fail("USER_A and USER_B resolved to the same verified session");
         cleanupReservedOutbox(aContext.uid);
@@ -239,13 +243,11 @@
         await adapterSpoof(b, aContext.uid);
         verifyOutboxIsolation(aContext.uid, b.uid, mutationA);
         step(area, "USER_A 對 USER_B 隔離");
-        channel.postMessage({ type: "RUN_A_CROSS", uidB: b.uid, taskB: taskB });
-        await waitMessage("A_CROSS_PASS");
+        await requestMessage("A_CROSS_PASS", { type: "RUN_A_CROSS", uidB: b.uid, taskB: taskB });
         step(area, "清理驗收資料");
         await cleanup(b, taskB);
         ackOutbox(aContext.uid, mutationA);
-        channel.postMessage({ type: "CLEANUP_A", taskA: stored.taskA });
-        await waitMessage("A_CLEAN_PASS");
+        await requestMessage("A_CLEAN_PASS", { type: "CLEANUP_A", taskA: stored.taskA });
         localStorage.removeItem(STORAGE);
         area.status.textContent = "PASS：USER_A／USER_B own-row、雙向隔離、spoof、outbox 與 cleanup 均通過";
         document.documentElement.dataset.rlsAcceptance = "pass";
