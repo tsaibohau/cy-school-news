@@ -6,6 +6,8 @@
 - Feature integration: `feature/personal-assistant-v1`
 - Staging promotion branch: `staging`
 - Vercel project: `cy-school-news-staging`
+- Vercel project ID: `prj_m1Bv7bl7wjEDjiVPidQUAJE7YVyQ`
+- Vercel Production Branch: `staging`
 - Stable origin: `https://cy-school-news-staging.vercel.app/`
 - Production remains GitHub Pages from `main`.
 - Supabase project remains `oppdhtnepjagdwovndra`; staging has no RLS bypass.
