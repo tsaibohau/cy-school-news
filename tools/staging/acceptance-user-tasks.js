@@ -174,8 +174,16 @@
   }
   function button(area, label, action) {
     var value = document.createElement("button"); value.type = "button"; value.textContent = label;
-    value.addEventListener("click", function () { value.disabled = true; action().catch(function () {
-      area.status.textContent = "BLOCKED：" + (area.status.dataset.step || "驗收步驟"); value.disabled = false;
+    value.addEventListener("click", function () { value.disabled = true; action().catch(function (error) {
+      /* Keep diagnostics safe: distinguish the acceptance boundary without
+         exposing identity values, tokens, request payloads, or database data. */
+      var reason = String((error && error.message) || "");
+      var label = area.status.dataset.step || "驗收步驟";
+      if (reason === "A_CONTEXT timeout") label = "USER_A companion 未回覆";
+      else if (reason === "USER_A companion identity unavailable") label = "USER_A companion 身分遺失";
+      else if (reason === "USER_A and USER_B resolved to the same verified session") label = "USER_A／USER_B 為同一 session";
+      else if (reason === "USER_A companion failed") label = "USER_A companion 驗證失敗";
+      area.status.textContent = "BLOCKED：" + label; value.disabled = false;
     }); });
     area.actions.appendChild(value); return value;
   }
