@@ -41,6 +41,9 @@ assert(harness.includes('new URL("/acceptance-companion.html", location.origin)'
 assert(harness.includes("cleanupReservedOutbox"), "acceptance recovery must remove only reserved outbox fixtures");
 assert(harness.includes("function requestMessage(type, message, timeout)"), "companion requests must use the race-safe request helper");
 assert(/var pending = waitMessage\(type, timeout\);\s*channel\.postMessage\(message\);/.test(harness), "acceptance listener must be installed before a companion message is posted");
+assert(harness.includes('"cynews-rls-acceptance-v1-" + channelRun'), "each acceptance run must use an isolated companion channel");
+assert(harness.includes('companionUrl.searchParams.set("acceptance-run", run)'), "the companion must receive the current acceptance-run identifier");
+assert(harness.includes('"cynews-user-a-companion-" + run'), "a stale companion tab must never be reused for a new acceptance run");
 assert(harness.includes('area.status.textContent = "BLOCKED：" + label'), "blocked reports must identify a sanitized acceptance stage");
 assert(harness.includes("USER_A companion 未回覆") && harness.includes("USER_A／USER_B 為同一 session"), "blocked reports must distinguish sanitized companion causes");
 assert(!harness.includes("service_role"));

@@ -8,7 +8,9 @@
   var expected = String(config.stagingRedirectUrl || "").replace(/\/$/, "");
   if (!expected || location.origin !== expected) return;
 
-  var CHANNEL = "cynews-rls-acceptance-v1";
+  var initialState = safeState();
+  var channelRun = String(params.get("acceptance-run") || initialState.run || "bootstrap");
+  var CHANNEL = "cynews-rls-acceptance-v1-" + channelRun;
   var PREFIX = "CYNEWS_RLS_ACCEPT_";
   var role = params.get("acceptance-role") === "companion" ? "companion" : "main";
   var channel = new BroadcastChannel(CHANNEL);
@@ -26,6 +28,13 @@
        Keep only disposable run/task identifiers in the staging origin so a new
        tab can resume; never store a UID, session, token, or fixture payload. */
     try { return JSON.parse(localStorage.getItem(STORAGE) || "null") || {}; } catch (_) { return {}; }
+  }
+  function activateRunChannel(run) {
+    var next = "cynews-rls-acceptance-v1-" + String(run);
+    if (CHANNEL === next) return;
+    channel.close();
+    CHANNEL = next;
+    channel = new BroadcastChannel(CHANNEL);
   }
   function saveState(value) {
     /* Only disposable run/task/mutation IDs and phase are durable. Never tokens or UIDs. */
@@ -209,6 +218,31 @@
   async function main() {
     var area = panel(), stored = safeState();
     if (stored.phase === "awaiting_b") {
+      button(area, "以目前帳號重建 USER_A 驗收", async function () {
+        /* A stale companion must never be reused. The current verified session
+           becomes a fresh USER_A run, then the real app switch opens the sole
+           chooser needed to select the other account. */
+        step(area, "重建 USER_A 驗收");
+        var a = await verified();
+        cleanupReservedOutbox(a.uid);
+        await cleanupReserved(a);
+        var run = Date.now().toString(36), taskA = randomId();
+        step(area, "USER_A own-row CRUD");
+        await ownCrud(a, taskA, PREFIX + run + "_A");
+        saveState({ phase: "awaiting_b", run: run, taskA: taskA, mutationA: null });
+        var companionUrl = new URL("/acceptance-companion.html", location.origin);
+        companionUrl.searchParams.set("acceptance", "user-tasks");
+        companionUrl.searchParams.set("acceptance-role", "companion");
+        companionUrl.searchParams.set("acceptance-run", run);
+        activateRunChannel(run);
+        var companionWindow = window.open(companionUrl.href, "cynews-user-a-companion-" + run);
+        if (!companionWindow) fail("companion tab was blocked");
+        step(area, "建立 USER_A companion");
+        await waitMessage("A_READY");
+        var accountSwitch = document.getElementById("accountSwitch");
+        if (!accountSwitch || accountSwitch.hidden) fail("real account switch unavailable");
+        accountSwitch.click();
+      });
       button(area, "清理上次驗收暫存", async function () {
         step(area, "清理 USER_B 驗收暫存");
         var b = await verified();
@@ -283,7 +317,9 @@
       var companionUrl = new URL("/acceptance-companion.html", location.origin);
       companionUrl.searchParams.set("acceptance", "user-tasks");
       companionUrl.searchParams.set("acceptance-role", "companion");
-      var companionWindow = window.open(companionUrl.href, "cynews-user-a-companion");
+      companionUrl.searchParams.set("acceptance-run", run);
+      activateRunChannel(run);
+      var companionWindow = window.open(companionUrl.href, "cynews-user-a-companion-" + run);
       if (!companionWindow) fail("companion tab was blocked");
       step(area, "建立 USER_A companion");
       await waitMessage("A_READY");
