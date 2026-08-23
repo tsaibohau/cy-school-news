@@ -31,7 +31,13 @@
   }
   function approvedRedirect(config, locationLike) {
     config = config || {};
-    var allowed = [config.productionRedirectUrl, config.localhostRedirectUrl].map(function (url) { return normalizeAppUrl(url, false); }).filter(Boolean);
+    var configured = Array.isArray(config.allowedRedirectUrls) ? config.allowedRedirectUrls.slice() : [];
+    /* Preserve compatibility with already deployed configuration while making
+       the exact allow-list the canonical source for new environments. */
+    configured.push(config.productionRedirectUrl, config.localhostRedirectUrl, config.stagingRedirectUrl);
+    var allowed = configured.map(function (url) { return normalizeAppUrl(url, false); }).filter(function (url, index, all) {
+      return !!url && all.indexOf(url) === index;
+    });
     var current = locationLike || (typeof window !== "undefined" ? window.location : null);
     var currentUrl = normalizeAppUrl(current && typeof current.href === "string" ? current.href : "", true);
     return currentUrl && allowed.find(function (url) { return url === currentUrl; }) || null;

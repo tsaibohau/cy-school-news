@@ -1,0 +1,40 @@
+"use strict";
+
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+const child = require("node:child_process");
+
+const root = path.resolve(__dirname, "..");
+child.execFileSync(process.execPath, [path.join(root, "tools", "build-staging.js")], { cwd: root, stdio: "pipe" });
+const production = fs.readFileSync(path.join(root, "docs", "index.html"), "utf8");
+const staging = fs.readFileSync(path.join(root, "dist-staging", "index.html"), "utf8");
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "dist-staging", "manifest-staging.webmanifest"), "utf8"));
+const harness = fs.readFileSync(path.join(root, "dist-staging", "acceptance-user-tasks.js"), "utf8");
+const sw = fs.readFileSync(path.join(root, "dist-staging", "sw.js"), "utf8");
+const config = fs.readFileSync(path.join(root, "docs", "account-config.js"), "utf8");
+const behavioral = fs.readFileSync(path.join(root, "tests", "test_rls_behavioral.js"), "utf8");
+
+assert(!production.includes("acceptance-user-tasks.js"), "production source must not load the acceptance harness");
+assert(!production.includes("cynews-staging-banner"), "production source must not contain a staging banner");
+assert(staging.includes('name="robots" content="noindex,nofollow,noarchive"'));
+assert(staging.includes("STAGING／測試環境・非正式站"));
+assert(staging.includes('src="acceptance-user-tasks.js?v=1"'));
+assert.equal(manifest.name, "嘉校快訊 Staging／測試版");
+assert.equal(fs.readFileSync(path.join(root, "dist-staging", "robots.txt"), "utf8"), "User-agent: *\nDisallow: /\n");
+assert(harness.includes('params.get("acceptance") !== "user-tasks" && !sessionStorage.getItem(STORAGE)'), "harness is query gated and survives the exact-root OAuth callback");
+assert(harness.includes("location.origin !== expected"), "harness is exact-origin gated");
+assert(harness.includes("adapter ownership guard failed"));
+assert(harness.includes("cross-user read isolation failed"));
+assert(harness.includes("account outbox isolation failed"));
+assert(!harness.includes("service_role"));
+assert(sw.includes('var CACHE = "cy-news-staging-v25";'), "staging cache namespace is distinct");
+assert(sw.includes('"./manifest-staging.webmanifest"'));
+assert(sw.includes('"./staging.css?v=1"'));
+assert(sw.includes('"./acceptance-user-tasks.js?v=1"'));
+assert(sw.includes('url.searchParams.has("code")'), "OAuth callback navigation remains uncacheable");
+assert(config.includes("allowedRedirectUrls"));
+assert(config.includes("https://cy-school-news-staging.vercel.app/"));
+assert(!behavioral.includes("passed for A=${a}"), "behavioral test output must not reveal user UUIDs");
+assert(behavioral.includes("passed for USER_A and USER_B"));
+console.log("Staging build and sanitized acceptance harness tests passed");

@@ -1,0 +1,53 @@
+name: Staging validation
+
+on:
+  push:
+    branches: [feature/personal-assistant-v1, staging]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install parser dependencies
+        run: pip install -r scraper/requirements.txt
+      - name: Node regression
+        run: >-
+          node --test
+          tests/test_account_auth.js
+          tests/test_account_switch_v3.js
+          tests/test_account_sync.js
+          tests/test_supabase_sync.js
+          tests/test_account_security.js
+          tests/test_pwa_notification.js
+          tests/test_profile.js
+          tests/test_relevance.js
+          tests/test_calendar_state.js
+          tests/test_calendar_persistence.js
+          tests/test_task_state.js
+          tests/test_today.js
+          tests/test_staging_build.js
+      - name: Python parser and calendar regression
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python tests/test_parser.py
+          python tests/test_calendar_adapter.py
+      - name: Verify generated data is untouched by staging build
+        run: git diff --exit-code -- docs/data scraper/fetch_state.json
+      - name: Reject tracked secret patterns
+        run: |
+          if git grep -n -I -E '(sb_secret_|eyJ[A-Za-z0-9_-]{20,}\.|postgres(ql)?://[^[:space:]]+:[^[:space:]]+@|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----)'; then
+            echo "Potential tracked secret detected"
+            exit 1
+          fi

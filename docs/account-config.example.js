@@ -7,4 +7,10 @@ window.CYNEWS_ACCOUNT_CONFIG = {
   /* Allowed redirects to configure in Supabase Auth: */
   productionRedirectUrl: "https://tsaibohau.github.io/cy-school-news/",
   localhostRedirectUrl: "http://127.0.0.1:8266/",
+  stagingRedirectUrl: "https://cy-school-news-staging.vercel.app/",
+  allowedRedirectUrls: [
+    "https://tsaibohau.github.io/cy-school-news/",
+    "http://127.0.0.1:8266/",
+    "https://cy-school-news-staging.vercel.app/",
+  ],
 };

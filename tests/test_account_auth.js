@@ -5,6 +5,7 @@ const Auth = require("../docs/account-auth.js");
 
 const production = "https://tsaibohau.github.io/cy-school-news/";
 const localhost = "http://127.0.0.1:8266/";
+const staging = "https://cy-school-news-staging.vercel.app/";
 let oauthRequest = null;
 const client = {
   auth: {
@@ -28,6 +29,8 @@ const controller = Auth.createController({
     supabaseAnonKey: "publishable-test-key",
     productionRedirectUrl: production,
     localhostRedirectUrl: localhost,
+    stagingRedirectUrl: staging,
+    allowedRedirectUrls: [production, localhost, staging],
   },
   location: { href: localhost },
 });
@@ -72,6 +75,18 @@ const productionController = Auth.createController({
   location: { href: production },
 });
 assert.equal(productionController.getApprovedRedirectTo(), production);
+const stagingController = Auth.createController({
+  client,
+  config: { supabaseUrl: "x", supabaseAnonKey: "y", allowedRedirectUrls: [production, staging] },
+  location: { href: staging + "?acceptance=user-tasks&code=oauth" },
+});
+assert.equal(stagingController.getApprovedRedirectTo(), staging, "staging callback parameters normalize to exact staging root");
+const unlistedVercel = Auth.createController({
+  client,
+  config: { supabaseUrl: "x", supabaseAnonKey: "y", allowedRedirectUrls: [staging] },
+  location: { href: "https://cy-school-news-staging-git-work.example.vercel.app/" },
+});
+assert.equal(unlistedVercel.getApprovedRedirectTo(), null, "per-commit preview domains are not OAuth allow-listed");
 assert.equal(typeof controller.getVerifiedSession, "function");
 assert.equal(controller.sendMagicLink, undefined, "Magic Link is deferred and cannot bypass redirect allowlist");
 
@@ -85,6 +100,12 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert.deepEqual(oauthRequest, {
     provider: "google",
     options: { redirectTo: localhost, queryParams: { prompt: "select_account" } },
+  });
+
+  await stagingController.signInWithGoogle({ forceAccountChooser: true });
+  assert.deepEqual(oauthRequest, {
+    provider: "google",
+    options: { redirectTo: staging, queryParams: { prompt: "select_account" } },
   });
 
   const session = await Auth.verifiedSession(client);

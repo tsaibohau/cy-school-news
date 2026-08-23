@@ -142,7 +142,7 @@ async function run() {
     assert.equal(Array.isArray(verify.data) ? verify.data.length : -1, 1, "subscription upsert remains one logical row");
     const tombstone = await request(tokenA, "user_subscriptions", "PATCH", ownSub, { deleted_at: new Date().toISOString(), updated_at: new Date().toISOString() });
     assert.ok(ok(tombstone.status), "subscription tombstone succeeds");
-    console.log(`REAL RLS behavioral acceptance passed for A=${a} and B=${b}`);
+    console.log("REAL RLS behavioral acceptance passed for USER_A and USER_B");
   } finally {
     await request(tokenA, "user_subscriptions", "DELETE", ownSub);
     await request(tokenA, "user_reads", "DELETE", ownRead);

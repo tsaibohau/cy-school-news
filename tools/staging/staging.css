@@ -1,0 +1,38 @@
+.cynews-staging-banner {
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+  padding: 0.45rem max(1rem, env(safe-area-inset-left));
+  background: #7c2d12;
+  color: #fff7ed;
+  font: 800 0.78rem/1.2 system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.cynews-acceptance-panel {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 12000;
+  max-height: 46vh;
+  overflow: auto;
+  padding: 0.9rem max(1rem, env(safe-area-inset-left)) calc(0.9rem + env(safe-area-inset-bottom));
+  background: #fffaf0;
+  border-top: 3px solid #7c2d12;
+  box-shadow: 0 -8px 24px rgb(22 35 59 / 18%);
+  color: #16233b;
+  font: 500 0.9rem/1.45 system-ui, sans-serif;
+}
+
+.cynews-acceptance-panel button {
+  min-height: 44px;
+  margin: 0.4rem 0.35rem 0 0;
+  padding: 0.55rem 0.85rem;
+  border: 0;
+  border-radius: 0.55rem;
+  background: #16233b;
+  color: white;
+  font-weight: 700;
+}
+
+.cynews-acceptance-panel pre { white-space: pre-wrap; margin: 0.5rem 0 0; }
