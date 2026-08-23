@@ -47,7 +47,7 @@ jobs:
         run: git diff --exit-code -- docs/data scraper/fetch_state.json
       - name: Reject tracked secret patterns
         run: |
-          if git grep -n -I -E '(sb_secret_|eyJ[A-Za-z0-9_-]{20,}\.|postgres(ql)?://[^[:space:]]+:[^[:space:]]+@|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----)'; then
+          if git grep -n -I -E '(sb_secret_|eyJ[A-Za-z0-9_-]{20,}\.|postgres(ql)?://[^[:space:]]+:[^[:space:]]+@|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----)' -- ':!.github/workflows/staging-validation.yml'; then
             echo "Potential tracked secret detected"
             exit 1
           fi
