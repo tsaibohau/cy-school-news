@@ -27,6 +27,9 @@ assert(harness.includes("location.origin !== expected"), "harness is exact-origi
 assert(harness.includes("adapter ownership guard failed"));
 assert(harness.includes("cross-user read isolation failed"));
 assert(harness.includes("account outbox isolation failed"));
+assert(harness.includes("created_at: spoofedAt"), "raw spoof fixture must satisfy schema timestamps before RLS evaluation");
+assert(harness.includes('spoof.data.code !== "42501"'), "raw spoof acceptance must require an RLS-specific rejection");
+assert(harness.includes("raw ownership spoof was not rejected by RLS"));
 assert(!harness.includes("service_role"));
 assert(sw.includes('var CACHE = "cy-news-staging-v25";'), "staging cache namespace is distinct");
 assert(sw.includes('"./manifest-staging.webmanifest"'));

@@ -82,8 +82,10 @@
       var result = await raw(ctx.token, method, target, method === "PATCH" ? { title: PREFIX + "FORBIDDEN", updated_at: new Date().toISOString() } : undefined);
       if (good(result.status) && Array.isArray(result.data) && result.data.length) fail("cross-user mutation affected a row");
     }
-    var spoof = await raw(ctx.token, "POST", "", { id: randomId(), user_id: foreignUid, title: PREFIX + "SPOOF", status: "open", updated_at: new Date().toISOString() });
-    if (good(spoof.status)) fail("raw ownership spoof was accepted");
+    var spoofedAt = new Date().toISOString();
+    var spoof = await raw(ctx.token, "POST", "", { id: randomId(), user_id: foreignUid, title: PREFIX + "SPOOF", status: "open",
+      notes: "disposable schema-valid RLS spoof fixture", created_at: spoofedAt, updated_at: spoofedAt });
+    if (spoof.status !== 403 || !spoof.data || spoof.data.code !== "42501") fail("raw ownership spoof was not rejected by RLS");
   }
   async function adapterSpoof(ctx, foreignUid) {
     var emitted = null;
