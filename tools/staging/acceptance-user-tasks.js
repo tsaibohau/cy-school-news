@@ -3,7 +3,7 @@
   "use strict";
   var STORAGE = "cynews.rlsAcceptance.v1";
   var params = new URLSearchParams(location.search);
-  if (params.get("acceptance") !== "user-tasks" && !sessionStorage.getItem(STORAGE)) return;
+  if (params.get("acceptance") !== "user-tasks" && !localStorage.getItem(STORAGE)) return;
   var config = window.CYNEWS_ACCOUNT_CONFIG || {};
   var expected = String(config.stagingRedirectUrl || "").replace(/\/$/, "");
   if (!expected || location.origin !== expected) return;
@@ -22,11 +22,14 @@
     return "xxxxxxxx-xxxx-4xxx-8xxx-xxxxxxxxxxxx".replace(/x/g, function () { return Math.floor(Math.random() * 16).toString(16); });
   }
   function safeState() {
-    try { return JSON.parse(sessionStorage.getItem(STORAGE) || "null") || {}; } catch (_) { return {}; }
+    /* The human OAuth chooser can outlive the main browser tab in automation.
+       Keep only disposable run/task identifiers in the staging origin so a new
+       tab can resume; never store a UID, session, token, or fixture payload. */
+    try { return JSON.parse(localStorage.getItem(STORAGE) || "null") || {}; } catch (_) { return {}; }
   }
   function saveState(value) {
     /* Only disposable run/task/mutation IDs and phase are durable. Never tokens or UIDs. */
-    sessionStorage.setItem(STORAGE, JSON.stringify({ phase: value.phase, run: value.run, taskA: value.taskA, mutationA: value.mutationA }));
+    localStorage.setItem(STORAGE, JSON.stringify({ phase: value.phase, run: value.run, taskA: value.taskA, mutationA: value.mutationA }));
   }
   function step(area, label) {
     area.status.dataset.step = label;
@@ -210,7 +213,7 @@
         } catch (_) {
           area.status.dataset.recovery = "companion-missing";
         }
-        sessionStorage.removeItem(STORAGE);
+        localStorage.removeItem(STORAGE);
         area.status.textContent = "驗收暫存已清理；正在開始乾淨的新一輪";
         location.reload();
       });
@@ -242,7 +245,7 @@
         ackOutbox(aContext.uid, mutationA);
         channel.postMessage({ type: "CLEANUP_A", taskA: stored.taskA });
         await waitMessage("A_CLEAN_PASS");
-        sessionStorage.removeItem(STORAGE);
+        localStorage.removeItem(STORAGE);
         area.status.textContent = "PASS：USER_A／USER_B own-row、雙向隔離、spoof、outbox 與 cleanup 均通過";
         document.documentElement.dataset.rlsAcceptance = "pass";
       });
