@@ -386,10 +386,13 @@
           el.accountLogout.hidden = true;
         }).catch(function () { status("同步失敗"); });
       });
+      /* Subscribe before the first session read. On an OAuth callback the client
+         begins exchanging the URL grant as it is constructed; registering after
+         the first read can miss that one SIGNED_IN event and leave the page at
+         "已登入・同步待完成" until a manual reload. */
+      auth.onAuthStateChange(function () { handleVerifiedSession().catch(function () {}); }).catch(function () {});
       auth.getClient().then(function () { return handleVerifiedSession(); })
         .catch(function () { status("未登入"); });
-      /* Ignore callback URL parameters and event payloads; re-read the verified session. */
-      auth.onAuthStateChange(function () { handleVerifiedSession().catch(function () {}); }).catch(function () {});
     }
 
     function syncSubscriptions() {
