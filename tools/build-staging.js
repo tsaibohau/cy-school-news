@@ -16,6 +16,7 @@ fs.cpSync(source, output, { recursive: true });
 fs.copyFileSync(path.join(staging, "manifest.webmanifest"), path.join(output, "manifest-staging.webmanifest"));
 fs.copyFileSync(path.join(staging, "staging.css"), path.join(output, "staging.css"));
 fs.copyFileSync(path.join(staging, "acceptance-user-tasks.js"), path.join(output, "acceptance-user-tasks.js"));
+fs.copyFileSync(path.join(staging, "acceptance-companion.html"), path.join(output, "acceptance-companion.html"));
 
 const indexPath = path.join(output, "index.html");
 let html = fs.readFileSync(indexPath, "utf8");
@@ -26,15 +27,15 @@ html = html
   .replace('href="manifest.webmanifest"', 'href="manifest-staging.webmanifest"')
   .replace('</head>', '<link rel="stylesheet" href="staging.css?v=1">\n</head>')
   .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站</div>')
-  .replace('</body>', '<script src="acceptance-user-tasks.js?v=2" defer></script>\n</body>');
+  .replace('</body>', '<script src="acceptance-user-tasks.js?v=3" defer></script>\n</body>');
 fs.writeFileSync(indexPath, html);
 fs.writeFileSync(path.join(output, "robots.txt"), "User-agent: *\nDisallow: /\n");
 
 const swPath = path.join(output, "sw.js");
 let sw = fs.readFileSync(swPath, "utf8")
-  .replace('var CACHE = "cy-news-v25";', 'var CACHE = "cy-news-staging-v26";')
-  .replace('"./manifest.webmanifest"', '"./manifest-staging.webmanifest", "./staging.css?v=1", "./acceptance-user-tasks.js?v=2"');
-if (!sw.includes("cy-news-staging-v26") || !sw.includes("acceptance-user-tasks.js?v=2")) throw new Error("staging Service Worker isolation failed");
+  .replace('var CACHE = "cy-news-v25";', 'var CACHE = "cy-news-staging-v27";')
+  .replace('"./manifest.webmanifest"', '"./manifest-staging.webmanifest", "./staging.css?v=1", "./acceptance-user-tasks.js?v=3", "./acceptance-companion.html"');
+if (!sw.includes("cy-news-staging-v27") || !sw.includes("acceptance-user-tasks.js?v=3")) throw new Error("staging Service Worker isolation failed");
 fs.writeFileSync(swPath, sw);
 
 const config = fs.readFileSync(path.join(output, "account-config.js"), "utf8");

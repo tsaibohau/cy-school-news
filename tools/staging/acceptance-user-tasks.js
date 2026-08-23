@@ -28,6 +28,10 @@
     /* Only disposable run/task/mutation IDs and phase are durable. Never tokens or UIDs. */
     sessionStorage.setItem(STORAGE, JSON.stringify({ phase: value.phase, run: value.run, taskA: value.taskA, mutationA: value.mutationA }));
   }
+  function step(area, label) {
+    area.status.dataset.step = label;
+    area.status.textContent = "驗證中：" + label;
+  }
   function headers(token, prefer) {
     return { apikey: config.supabaseAnonKey, Authorization: "Bearer " + token,
       "Content-Type": "application/json", Prefer: prefer || "return=representation" };
@@ -102,10 +106,22 @@
     var result = await raw(ctx.token, "DELETE", "?id=eq." + encodeURIComponent(taskId));
     if (!good(result.status)) fail("fixture cleanup failed");
   }
+  async function cleanupReserved(ctx) {
+    var result = await raw(ctx.token, "DELETE", "?title=like." + encodeURIComponent(PREFIX + "%"));
+    if (!good(result.status)) fail("reserved fixture cleanup failed");
+  }
+  function cleanupReservedOutbox(uid) {
+    var outbox = new window.CyNewsAccountSync.Outbox(localStorage, uid);
+    var ids = outbox.pending().filter(function (item) {
+      return item && item.payload && String(item.payload.title || "").indexOf(PREFIX) === 0;
+    }).map(function (item) { return item.id; });
+    if (ids.length) outbox.ack(ids, undefined, uid);
+  }
   function addOutboxFixture(uid, taskId) {
     var outbox = new window.CyNewsAccountSync.Outbox(localStorage, uid);
+    var now = new Date().toISOString();
     return outbox.enqueue({ id: "accept-" + randomId(), type: "task.upsert", payload: {
-      id: taskId, title: PREFIX + "OUTBOX", status: "open", updated_at: new Date().toISOString()
+      id: taskId, title: PREFIX + "OUTBOX", status: "open", created_at: now, updated_at: now
     }}).id;
   }
   function verifyOutboxIsolation(uidA, uidB, mutationId) {
@@ -127,8 +143,15 @@
           await adapterSpoof(captured, message.uidB);
           channel.postMessage({ type: "A_CROSS_PASS" });
         }
+        if (message.type === "CLEAN_RESERVED_A") {
+          cleanupReservedOutbox(captured.uid);
+          await cleanupReserved(captured);
+          channel.postMessage({ type: "A_RESERVED_CLEAN_PASS" });
+        }
         if (message.type === "CLEANUP_A") {
           await cleanup(captured, message.taskA);
+          cleanupReservedOutbox(captured.uid);
+          await cleanupReserved(captured);
           captured = null;
           channel.postMessage({ type: "A_CLEAN_PASS" });
           channel.close(); window.close();
@@ -148,34 +171,66 @@
   }
   function button(area, label, action) {
     var value = document.createElement("button"); value.type = "button"; value.textContent = label;
-    value.addEventListener("click", function () { value.disabled = true; action().catch(function () { area.status.textContent = "BLOCKED：驗收步驟失敗"; value.disabled = false; }); });
+    value.addEventListener("click", function () { value.disabled = true; action().catch(function () {
+      area.status.textContent = "BLOCKED：" + (area.status.dataset.step || "驗收步驟"); value.disabled = false;
+    }); });
     area.actions.appendChild(value); return value;
   }
   function waitMessage(type, timeout) {
     return new Promise(function (resolve, reject) {
       var timer = setTimeout(function () { channel.removeEventListener("message", receive); reject(new Error(type + " timeout")); }, timeout || 10000);
-      function receive(event) { if ((event.data || {}).type !== type) return; clearTimeout(timer); channel.removeEventListener("message", receive); resolve(event.data); }
+      function receive(event) {
+        var message = event.data || {};
+        if (message.type === "A_FAIL") { clearTimeout(timer); channel.removeEventListener("message", receive); reject(new Error("USER_A companion failed")); return; }
+        if (message.type !== type) return;
+        clearTimeout(timer); channel.removeEventListener("message", receive); resolve(message);
+      }
       channel.addEventListener("message", receive);
     });
   }
   async function main() {
     var area = panel(), stored = safeState();
     if (stored.phase === "awaiting_b") {
-      button(area, "驗證 USER_B 並完成 A/B RLS", async function () {
-        await ready();
+      button(area, "清理上次驗收暫存", async function () {
+        step(area, "清理 USER_B 驗收暫存");
         var b = await verified();
+        cleanupReservedOutbox(b.uid);
+        await cleanupReserved(b);
+        step(area, "清理 USER_A 驗收暫存");
+        channel.postMessage({ type: "GET_A_CONTEXT" });
+        var aContext = await waitMessage("A_CONTEXT");
+        cleanupReservedOutbox(aContext.uid);
+        channel.postMessage({ type: "CLEAN_RESERVED_A" });
+        await waitMessage("A_RESERVED_CLEAN_PASS");
+        area.status.textContent = "驗收暫存已清理；正在重新確認 ACCOUNT_READY";
+        location.reload();
+      });
+      button(area, "驗證 USER_B 並完成 A/B RLS", async function () {
+        step(area, "等待 USER_B ACCOUNT_READY");
+        await ready();
+        step(area, "驗證 USER_B session");
+        var b = await verified();
+        cleanupReservedOutbox(b.uid);
+        await cleanupReserved(b);
+        step(area, "確認 USER_A／USER_B 身分隔離");
         channel.postMessage({ type: "GET_A_CONTEXT" });
         var aContext = await waitMessage("A_CONTEXT");
         if (!aContext.uid || aContext.uid === b.uid) fail("USER_A and USER_B are not distinct");
+        cleanupReservedOutbox(aContext.uid);
+        var mutationA = addOutboxFixture(aContext.uid, stored.taskA);
         var taskB = randomId();
+        step(area, "USER_B own-row CRUD");
         await ownCrud(b, taskB, PREFIX + stored.run + "_B");
+        step(area, "USER_B 對 USER_A 隔離");
         await crossChecks(b, aContext.uid, stored.taskA);
         await adapterSpoof(b, aContext.uid);
-        verifyOutboxIsolation(aContext.uid, b.uid, stored.mutationA);
+        verifyOutboxIsolation(aContext.uid, b.uid, mutationA);
+        step(area, "USER_A 對 USER_B 隔離");
         channel.postMessage({ type: "RUN_A_CROSS", uidB: b.uid, taskB: taskB });
         await waitMessage("A_CROSS_PASS");
+        step(area, "清理驗收資料");
         await cleanup(b, taskB);
-        ackOutbox(aContext.uid, stored.mutationA);
+        ackOutbox(aContext.uid, mutationA);
         channel.postMessage({ type: "CLEANUP_A", taskA: stored.taskA });
         await waitMessage("A_CLEAN_PASS");
         sessionStorage.removeItem(STORAGE);
@@ -192,16 +247,22 @@
       login.click();
     });
     button(area, "驗證 USER_A 並前往第二次 chooser", async function () {
+      step(area, "等待 USER_A ACCOUNT_READY");
       await ready();
+      step(area, "驗證 USER_A session");
       var a = await verified();
+      cleanupReservedOutbox(a.uid);
+      await cleanupReserved(a);
       var run = Date.now().toString(36), taskA = randomId();
+      step(area, "USER_A own-row CRUD");
       await ownCrud(a, taskA, PREFIX + run + "_A");
-      var mutationA = addOutboxFixture(a.uid, taskA);
-      saveState({ phase: "awaiting_b", run: run, taskA: taskA, mutationA: mutationA });
-      var companionUrl = new URL(location.href);
+      saveState({ phase: "awaiting_b", run: run, taskA: taskA, mutationA: null });
+      var companionUrl = new URL("/acceptance-companion.html", location.origin);
+      companionUrl.searchParams.set("acceptance", "user-tasks");
       companionUrl.searchParams.set("acceptance-role", "companion");
       var companionWindow = window.open(companionUrl.href, "cynews-user-a-companion");
       if (!companionWindow) fail("companion tab was blocked");
+      step(area, "建立 USER_A companion");
       await waitMessage("A_READY");
       area.status.textContent = "USER_A PASS；正在開啟真實切換帳號流程";
       var accountSwitch = document.getElementById("accountSwitch");
