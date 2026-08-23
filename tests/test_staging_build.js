@@ -19,7 +19,7 @@ assert(!production.includes("acceptance-user-tasks.js"), "production source must
 assert(!production.includes("cynews-staging-banner"), "production source must not contain a staging banner");
 assert(staging.includes('name="robots" content="noindex,nofollow,noarchive"'));
 assert(staging.includes("STAGING／測試環境・非正式站"));
-assert(staging.includes('src="acceptance-user-tasks.js?v=1"'));
+assert(staging.includes('src="acceptance-user-tasks.js?v=2"'));
 assert.equal(manifest.name, "嘉校快訊 Staging／測試版");
 assert.equal(fs.readFileSync(path.join(root, "dist-staging", "robots.txt"), "utf8"), "User-agent: *\nDisallow: /\n");
 assert(harness.includes('params.get("acceptance") !== "user-tasks" && !sessionStorage.getItem(STORAGE)'), "harness is query gated and survives the exact-root OAuth callback");
@@ -31,10 +31,10 @@ assert(harness.includes("created_at: spoofedAt"), "raw spoof fixture must satisf
 assert(harness.includes('spoof.data.code !== "42501"'), "raw spoof acceptance must require an RLS-specific rejection");
 assert(harness.includes("raw ownership spoof was not rejected by RLS"));
 assert(!harness.includes("service_role"));
-assert(sw.includes('var CACHE = "cy-news-staging-v25";'), "staging cache namespace is distinct");
+assert(sw.includes('var CACHE = "cy-news-staging-v26";'), "staging cache namespace is distinct and advances with harness changes");
 assert(sw.includes('"./manifest-staging.webmanifest"'));
 assert(sw.includes('"./staging.css?v=1"'));
-assert(sw.includes('"./acceptance-user-tasks.js?v=1"'));
+assert(sw.includes('"./acceptance-user-tasks.js?v=2"'));
 assert(sw.includes('url.searchParams.has("code")'), "OAuth callback navigation remains uncacheable");
 assert(config.includes("allowedRedirectUrls"));
 assert(config.includes("https://cy-school-news-staging.vercel.app/"));
