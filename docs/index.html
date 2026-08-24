@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=28">
+<link rel="stylesheet" href="style.css?v=29">
 </head>
 <body>
 
@@ -115,6 +115,13 @@
         <button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button>
         <span id="notifyState" class="hint"></span>
       </div>
+      <section class="reminder-push-box" aria-labelledby="reminderPushTitle">
+        <div class="section-heading compact-heading"><div><p class="eyebrow">BACKGROUND PUSH</p><h3 id="reminderPushTitle">提醒推播</h3></div><span class="hint">此裝置</span></div>
+        <p class="hint">日期接近時主動提醒；只有可驗證的截止日、活動、校曆、待辦期限或你手動設定的日期才會排程。</p>
+        <div class="notify-row"><button id="reminderPushToggle" class="btn-primary" type="button">在此裝置開啟</button><span id="reminderPushState" class="hint" aria-live="polite">請先登入</span></div>
+        <label class="reminder-preset">預設提醒頻率<select id="reminderPreset"><option value="single">單次：1 天前</option><option value="standard">標準：3 天前、1 天前、當天</option><option value="dense">密集：7 天前、3 天前、1 天前、當天</option><option value="custom">自訂</option></select></label>
+        <p id="nextReminder" class="hint">尚無已排程提醒</p>
+      </section>
       <div id="accountBox" class="notify-row">
         <span id="accountState" class="hint">未登入</span>
         <button id="accountLogin" class="btn-primary">使用 Google 登入</button>
@@ -183,18 +190,19 @@
   </button>
 </nav>
 
-<script src="account-config.js?v=28"></script>
-<script src="supabase-sync.js?v=28"></script>
-<script src="account-auth.js?v=28"></script>
-<script src="task-state.js?v=28"></script>
-<script src="account-sync.js?v=28"></script>
-<script src="school-registry.js?v=28"></script>
-<script src="profile.js?v=28"></script>
-<script src="relevance.js?v=28"></script>
-<script src="today.js?v=28"></script>
-<script src="calendar-state.js?v=28"></script>
-<script src="detail-ui.js?v=28"></script>
-<script src="app.js?v=28"></script>
+<script src="account-config.js?v=29"></script>
+<script src="supabase-sync.js?v=29"></script>
+<script src="account-auth.js?v=29"></script>
+<script src="push-subscription.js?v=29"></script>
+<script src="task-state.js?v=29"></script>
+<script src="account-sync.js?v=29"></script>
+<script src="school-registry.js?v=29"></script>
+<script src="profile.js?v=29"></script>
+<script src="relevance.js?v=29"></script>
+<script src="today.js?v=29"></script>
+<script src="calendar-state.js?v=29"></script>
+<script src="detail-ui.js?v=29"></script>
+<script src="app.js?v=29"></script>
 </body>
 </html>
 

@@ -1,8 +1,8 @@
 /* 嘉校快訊 Service Worker:離線快取殼層,資料採網路優先 */
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
-var CACHE = "cy-news-v28";
-var SHELL = ["./", "./index.html", "./style.css?v=28", "./app.js?v=28", "./notification-state.js", "./calendar-state.js?v=28", "./account-config.js?v=28", "./supabase-sync.js?v=28", "./account-auth.js?v=28", "./task-state.js?v=28", "./account-sync.js?v=28", "./school-registry.js?v=28", "./profile.js?v=28", "./relevance.js?v=28", "./today.js?v=28", "./detail-ui.js?v=28", "./manifest.webmanifest", "./data/calendar-events.json",
+var CACHE = "cy-news-v29";
+var SHELL = ["./", "./index.html", "./style.css?v=29", "./app.js?v=29", "./notification-state.js", "./calendar-state.js?v=29", "./account-config.js?v=29", "./supabase-sync.js?v=29", "./account-auth.js?v=29", "./push-subscription.js?v=29", "./task-state.js?v=29", "./account-sync.js?v=29", "./school-registry.js?v=29", "./profile.js?v=29", "./relevance.js?v=29", "./today.js?v=29", "./detail-ui.js?v=29", "./manifest.webmanifest", "./data/calendar-events.json",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {

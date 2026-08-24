@@ -61,6 +61,7 @@
       tasks: [],
       profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
       personalizedNotifications: false,
+      reminderPreset: "single",
       activeAccountId: "anonymous",
       lastSeen: localStorage.getItem(LS_SEEN) || "",
       detailCache: {},
@@ -76,6 +77,8 @@
       tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabSub: $("tabSub"), subBadge: $("subBadge"),
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
+      reminderPushToggle: $("reminderPushToggle"), reminderPushState: $("reminderPushState"),
+      reminderPreset: $("reminderPreset"), nextReminder: $("nextReminder"),
       btnRefresh: $("btnRefresh"),
       accountState: $("accountState"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
       accountLogout: $("accountLogout"),
@@ -208,7 +211,28 @@
       var requestedUid = null;
       var readyUid = null;
       var accountPhase = "ANONYMOUS_READY";
+      var pushManager = window.CyNewsPushSubscription ? window.CyNewsPushSubscription.createManager({ auth: auth }) : null;
       function status(text) { el.accountState.textContent = text; }
+      function renderReminderPush() {
+        if (!el.reminderPushToggle || !el.reminderPushState) return;
+        if (!pushManager || !pushManager.supported()) {
+          el.reminderPushToggle.hidden = true;
+          el.reminderPushState.textContent = "尚未設定此環境的背景推播";
+          return;
+        }
+        el.reminderPushToggle.hidden = false;
+        el.reminderPushToggle.disabled = accountPhase !== "ACCOUNT_READY";
+        if (accountPhase !== "ACCOUNT_READY") {
+          el.reminderPushToggle.textContent = "在此裝置開啟";
+          el.reminderPushState.textContent = "請先登入並完成同步";
+          return;
+        }
+        pushManager.current().then(function (result) {
+          el.reminderPushToggle.textContent = result.active ? "在此裝置關閉" : "在此裝置開啟";
+          el.reminderPushState.textContent = result.active ? "背景推播已開啟" : "背景推播未開啟";
+          el.reminderPushToggle.dataset.active = result.active ? "true" : "false";
+        }).catch(function () { el.reminderPushState.textContent = "無法讀取此裝置推播狀態"; });
+      }
       function projectSubscriptions(rows) {
         var now = new Date().toISOString();
         var existing = {};
@@ -235,10 +259,14 @@
         state.tasks = window.CyNewsTaskState ? window.CyNewsTaskState.visible(merged.tasks || []) : [];
         var notificationPreferences = merged.preferences && merged.preferences.preferences && merged.preferences.preferences.notification_preferences;
         state.personalizedNotifications = !!(notificationPreferences && notificationPreferences.personalized);
+        var reminderPreferences = merged.preferences && merged.preferences.preferences && merged.preferences.preferences.reminder;
+        state.reminderPreset = reminderPreferences && ["single", "standard", "dense", "custom"].indexOf(reminderPreferences.preset) !== -1 ? reminderPreferences.preset : "single";
+        if (el.reminderPreset) el.reminderPreset.value = state.reminderPreset;
         establishPersonalizedBaseline(accountId || "anonymous");
         renderProfile();
         renderPersonalizedSetting();
         renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
+        renderReminderPush();
         return merged;
       }
       function clearAccountOwnedView() {
@@ -249,11 +277,14 @@
         state.profile = window.CyNewsProfile.empty();
         state.tasks = [];
         state.personalizedNotifications = false;
+        state.reminderPreset = "single";
+        if (el.reminderPreset) el.reminderPreset.value = "single";
         state.activeAccountId = "anonymous";
         establishPersonalizedBaseline("anonymous");
         renderProfile();
         renderPersonalizedSetting();
         renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
+        renderReminderPush();
       }
       function restoreAnonymous() {
         syncGeneration += 1;
@@ -306,6 +337,7 @@
           el.accountLogin.hidden = true;
           if (el.accountSwitch) el.accountSwitch.hidden = false;
           el.accountLogout.hidden = false;
+          renderReminderPush();
         }).catch(function () {
           if (generation !== syncGeneration || requestedUid !== uid) return;
           /* An OAuth callback can expose a server-verified user a fraction before
@@ -383,9 +415,10 @@
         accountPhase = "AUTHENTICATING";
         clearAccountOwnedView();
         status("選擇 Google 帳號中");
-        auth.signInWithGoogle({ forceAccountChooser: true }).then(function (result) {
+        var detach = pushManager ? pushManager.disable() : Promise.resolve();
+        detach.then(function () { return auth.signInWithGoogle({ forceAccountChooser: true }); }).then(function (result) {
           if (result && result.error) throw result.error;
-        }).catch(function () { status("切換帳號失敗，請稍後再試"); handleVerifiedSession().catch(function () {}); });
+        }).catch(function () { status("切換前無法安全停用此裝置推播，請稍後再試"); handleVerifiedSession().catch(function () {}); });
       });
       el.accountLogout.addEventListener("click", function () {
         syncGeneration += 1;
@@ -394,12 +427,13 @@
         accountPhase = "AUTHENTICATING";
         clearAccountOwnedView();
         status("同步中");
-        auth.signOut().then(function () {
+        var detach = pushManager ? pushManager.disable() : Promise.resolve();
+        detach.then(function () { return auth.signOut(); }).then(function () {
           restoreAnonymous();
           status("未登入"); el.accountLogin.hidden = false;
           if (el.accountSwitch) el.accountSwitch.hidden = true;
           el.accountLogout.hidden = true;
-        }).catch(function () { status("同步失敗"); });
+        }).catch(function () { status("登出前無法安全停用此裝置推播，請稍後再試"); });
       });
       /* Subscribe before the first session read. On an OAuth callback the client
          begins exchanging the URL grant as it is constructed; registering after
@@ -408,6 +442,18 @@
       auth.onAuthStateChange(function () { handleVerifiedSession().catch(function () {}); }).catch(function () {});
       auth.getClient().then(function () { return handleVerifiedSession(); })
         .catch(function () { status("未登入"); });
+
+      if (el.reminderPushToggle) el.reminderPushToggle.addEventListener("click", function () {
+        if (!pushManager || accountPhase !== "ACCOUNT_READY") return;
+        el.reminderPushToggle.disabled = true;
+        el.reminderPushState.textContent = "更新此裝置中";
+        var action = el.reminderPushToggle.dataset.active === "true" ? pushManager.disable() : pushManager.enable();
+        action.then(renderReminderPush).catch(function (error) {
+          el.reminderPushToggle.disabled = false;
+          el.reminderPushState.textContent = /denied/.test(String(error && error.message)) ? "通知權限已被封鎖" : "推播設定失敗，請稍後再試";
+        });
+      });
+      renderReminderPush();
     }
 
     function syncSubscriptions() {
@@ -1112,6 +1158,7 @@
         preferences: {
           profile: profile,
           notification_preferences: { personalized: !!state.personalizedNotifications },
+          reminder: { preset: state.reminderPreset || "single" },
         },
         updated_at: new Date().toISOString(),
       });
@@ -1137,6 +1184,7 @@
         preferences: {
           profile: window.CyNewsProfile.normalize(state.profile),
           notification_preferences: { personalized: enabled },
+          reminder: { preset: state.reminderPreset || "single" },
         },
         updated_at: new Date().toISOString(),
       });
@@ -1149,11 +1197,33 @@
       establishPersonalizedBaseline(state.activeAccountId);
       el.profileStatus.textContent = enabled ? "個人化通知已開啟" : "個人化通知已關閉";
     });
+    if (el.reminderPreset) el.reminderPreset.addEventListener("change", function () {
+      var preset = el.reminderPreset.value;
+      if (["single", "standard", "dense", "custom"].indexOf(preset) === -1) preset = "single";
+      var previous = state.reminderPreset;
+      state.reminderPreset = preset;
+      var result = queueAccountMutation("preferences.upsert", {
+        schema_version: 1,
+        preferences: {
+          profile: window.CyNewsProfile.normalize(state.profile),
+          notification_preferences: { personalized: !!state.personalizedNotifications },
+          reminder: { preset: preset },
+        },
+        updated_at: new Date().toISOString(),
+      });
+      if (!result) {
+        state.reminderPreset = previous;
+        el.reminderPreset.value = previous;
+        if (el.reminderPushState) el.reminderPushState.textContent = "請先登入並完成同步";
+      } else if (el.reminderPushState) {
+        el.reminderPushState.textContent = "預設頻率已儲存";
+      }
+    });
 
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=28").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=29").catch(function () {});
       });
     }
 

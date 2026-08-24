@@ -43,6 +43,7 @@ jobs:
           tests/test_reminder_rules.js
           tests/test_reminder_schema.js
           tests/test_reminder_worker.js
+          tests/test_push_subscription.js
           tests/test_staging_build.js
       - name: Type-check reminder Edge Function
         run: >-

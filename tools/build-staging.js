@@ -14,6 +14,7 @@ const staging = path.join(root, "tools", "staging");
 const shellInputs = [
   "index.html", "style.css", "app.js", "detail-ui.js", "sw.js", "account-config.js",
   "supabase-sync.js", "account-auth.js", "task-state.js", "account-sync.js",
+  "push-subscription.js",
   "school-registry.js", "profile.js", "relevance.js", "today.js", "calendar-state.js",
   path.join("..", "tools", "staging", "acceptance-user-tasks.js"),
   path.join("..", "tools", "staging", "acceptance-companion.html"),
@@ -22,7 +23,7 @@ const shellInputs = [
 const shellRevision = "staging-" + crypto.createHash("sha256")
   .update(shellInputs.map((file) => fs.readFileSync(path.join(source, file))).join("\n"))
   .digest("hex").slice(0, 12);
-const sourceVersion = "?v=28";
+const sourceVersion = "?v=29";
 const stagedVersion = "?v=" + shellRevision;
 
 const isRootOutput = path.dirname(output) === root && /^dist-staging(?:-[A-Za-z0-9._-]+)?$/.test(outputName);
@@ -59,7 +60,7 @@ fs.writeFileSync(companionPath, companion);
 
 const swPath = path.join(output, "sw.js");
 let sw = fs.readFileSync(swPath, "utf8")
-  .replace('var CACHE = "cy-news-v28";', 'var CACHE = "cy-news-' + shellRevision + '";')
+  .replace('var CACHE = "cy-news-v29";', 'var CACHE = "cy-news-' + shellRevision + '";')
   .replaceAll(sourceVersion, stagedVersion)
   .replace('"./manifest.webmanifest"', '"./manifest-staging.webmanifest", "./staging.css?v=' + shellRevision + '", "./acceptance-user-tasks.js?v=' + shellRevision + '", "./acceptance-companion.html?v=' + shellRevision + '"')
   .replace('  // 殼層:快取優先', '  /* A new staging deployment must never combine an old HTML shell with new JavaScript. */\n  if (req.mode === "navigate") {\n    e.respondWith(fetch(req).catch(function () { return caches.match("./index.html"); }));\n    return;\n  }\n  // 殼層:快取優先');

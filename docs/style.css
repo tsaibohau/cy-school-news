@@ -191,6 +191,10 @@ a { color: inherit; }
   font-size: 15px; line-height: 1; padding: 0;
 }
 .notify-row { display: flex; align-items: center; gap: 10px; margin: 6px 0 14px; }
+.reminder-push-box { margin: 14px 0; padding: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.reminder-push-box .compact-heading { margin-top: 0; }
+.reminder-preset { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+.reminder-preset select { width: 100%; }
 
 /* ── 底部分頁列 ── */
 .tabbar {

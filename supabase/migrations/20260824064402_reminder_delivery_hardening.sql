@@ -133,6 +133,13 @@ create policy user_push_subscriptions_owner_update on public.user_push_subscript
   using ((select auth.uid()) = user_id)
   with check ((select auth.uid()) = user_id);
 
+-- Data API privileges are separate from RLS. Browser clients need only the
+-- owner-scoped intent and device tables; internal jobs/ledger stay revoked.
+revoke all on table public.user_reminder_rules from anon;
+revoke all on table public.user_push_subscriptions from anon;
+grant select, insert, update on table public.user_reminder_rules to authenticated;
+grant select, insert, update on table public.user_push_subscriptions to authenticated;
+
 alter table public.reminder_jobs
   drop constraint if exists reminder_jobs_rule_id_fkey,
   add column if not exists scheduled_for timestamptz,

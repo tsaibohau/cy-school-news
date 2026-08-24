@@ -36,6 +36,8 @@ assert.match(hardening, /next_attempt_at timestamptz/);
 assert.match(hardening, /status in \('pending', 'processing', 'sent', 'skipped', 'retry', 'dead', 'cancelled'\)/);
 assert.match(hardening, /revoke all on table public\.reminder_jobs from anon, authenticated/);
 assert.match(hardening, /revoke all on table public\.reminder_deliveries from anon, authenticated/);
+assert.match(hardening, /grant select, insert, update on table public\.user_reminder_rules to authenticated/);
+assert.match(hardening, /grant select, insert, update on table public\.user_push_subscriptions to authenticated/);
 assert.match(hardening, /date-only targets resolve at local midnight/);
 assert.match(worker, /security invoker/);
 assert.doesNotMatch(worker, /security definer/);

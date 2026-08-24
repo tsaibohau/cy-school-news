@@ -4,6 +4,7 @@
 window.CYNEWS_ACCOUNT_CONFIG = {
   supabaseUrl: "",
   supabaseAnonKey: "",
+  vapidPublicKey: "",
   /* Allowed redirects to configure in Supabase Auth: */
   productionRedirectUrl: "https://tsaibohau.github.io/cy-school-news/",
   localhostRedirectUrl: "http://127.0.0.1:8266/",
