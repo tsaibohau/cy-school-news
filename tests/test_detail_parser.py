@@ -20,6 +20,7 @@ def main():
                                  school_id="cygsh", title="校內活動通知",
                                  source_url="https://www.cygsh.cy.edu.tw/p/406-1013-1.php")
     assert cysh["parse_status"] == "parsed"
+    assert cysh["parser_version"] == "detail-v2"
     assert any(block["type"] == "table" for block in cysh["blocks"])
     assert any(block["type"] == "list" for block in cysh["blocks"])
     assert len(cysh["attachments"]) == 1
@@ -33,7 +34,7 @@ def main():
     empty = parse_article_detail("<html><body><div class='mnav'>nav</div></body></html>",
                                  announcement_id="empty", school_id="cysh", title="空",
                                  source_url="https://example.test/a")
-    assert empty["parse_status"] in {"empty", "failed"}
+    assert empty["parse_status"] in {"empty", "permanent_error"}
     print("Detail parser tests passed")
 
 
