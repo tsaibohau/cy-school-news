@@ -43,6 +43,7 @@ jobs:
           tests/test_reminder_rules.js
           tests/test_reminder_schema.js
           tests/test_reminder_worker.js
+          tests/test_reminder_target_sync.js
           tests/test_push_subscription.js
           tests/test_reminder_rules_client.js
           tests/test_staging_build.js
@@ -51,6 +52,11 @@ jobs:
           deno check
           --config supabase/functions/reminder-worker/deno.json
           supabase/functions/reminder-worker/index.ts
+      - name: Type-check reminder target sync function
+        run: >-
+          deno check
+          --config supabase/functions/reminder-target-sync/deno.json
+          supabase/functions/reminder-target-sync/index.ts
       - name: Python parser and calendar regression
         env:
           PYTHONIOENCODING: utf-8
