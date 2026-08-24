@@ -27,7 +27,11 @@ def main():
     assert len(cysh["attachments"]) == 1
     assert cysh["attachments"][0]["provenance"] == "official_attachment"
     assert all("網站頁尾" not in json.dumps(block, ensure_ascii=False) for block in cysh["blocks"])
-    assert cysh["verified_dates"] == [], "body dates must not become publication dates"
+    assert cysh["verified_dates"] == [{
+        "kind": "deadline", "date": "2026-09-14", "title": "物理競賽公告",
+        "provenance": "verified_announcement_deadline", "source": "official_article",
+        "source_revision": cysh["source_hash"], "verification": "explicit_full_date_with_label",
+    }]
     assert any(block["type"] == "list" and block["ordered"] for block in cygsh["blocks"])
     assert cygsh["attachments"][0]["extension"] == ".docx"
     assert cygsh["attachments"][0]["mime_type"].endswith("wordprocessingml.document")
@@ -44,6 +48,10 @@ def main():
     hostile_links = [link for block in hostile["blocks"] for link in block.get("links", [])]
     assert [link["url"] for link in hostile_links if link["url"]] == ["https://www.cysh.cy.edu.tw/safe"]
     assert hostile["attachments"] == []
+    publication = parse_article_detail("<article><p>發布日期：115年9月14日</p><p>校務說明 115年9月15日</p></article>",
+      announcement_id="publication", school_id="cysh", title="日期測試",
+      source_url="https://www.cysh.cy.edu.tw/p/406-1008-2.php")
+    assert publication["verified_dates"] == [], "publication and unlabelled body dates are never reminder targets"
     print("Detail parser tests passed")
 
 

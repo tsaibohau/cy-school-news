@@ -496,6 +496,10 @@ def write_detail_record(item: dict, html: str, fetched_at: str) -> dict:
     item["detail_status"] = record.get("parse_status", "failed")
     item["detail_revision"] = record.get("source_hash", "")
     item["detail_attempts"] = int(item.get("detail_attempts") or 0) + 1
+    item["calendar_events"] = [{
+        "kind": row["kind"], "date": row["date"], "title": row["title"],
+        "provenance": row["provenance"], "source_revision": row["source_revision"],
+    } for row in record.get("verified_dates", [])]
     return record
 
 

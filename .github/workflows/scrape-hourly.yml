@@ -47,11 +47,17 @@ jobs:
       - name: 產生訂閱行事曆
         run: python scraper/schoolcal.py build
 
+      - name: 產生可信提醒目標清單
+        run: python scraper/reminder_targets.py
+
       - name: 提交更新後的資料
         run: |
           git config user.name "news-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json
+          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/data/reminder-targets.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json
+          if [ -d docs/data/details ]; then
+            git add docs/data/details
+          fi
           if git diff --cached --quiet; then
             echo "沒有變更,略過提交"
           else

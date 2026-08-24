@@ -28,6 +28,13 @@ EXTENSION_TYPES = {
     ".ppt": "application/vnd.ms-powerpoint",
     ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
 }
+FULL_DATE = re.compile(
+    r"(?:(?P<roc>1\d{2})\s*[年./-]\s*|(?P<gregorian>20\d{2})\s*[年./-]\s*)"
+    r"(?P<month>\d{1,2})\s*[月./-]\s*(?P<day>\d{1,2})\s*日?"
+)
+PUBLICATION_LABELS = ("發布日期", "發佈日期", "刊登日期", "最後更新日期", "公告日期")
+DEADLINE_LABELS = ("截止", "期限", "報名", "申請", "繳交", "繳費")
+EVENT_LABELS = ("活動日期", "辦理日期", "舉行日期", "比賽日期", "測驗日期", "報到日期")
 
 
 def _text(node) -> str:
@@ -122,6 +129,56 @@ def _blocks(body, source_url: str) -> list[dict]:
     return blocks
 
 
+def _explicit_date(match) -> str:
+    year = int(match.group("gregorian") or match.group("roc"))
+    if match.group("roc"):
+        year += 1911
+    try:
+        return datetime(year, int(match.group("month")), int(match.group("day"))).date().isoformat()
+    except ValueError:
+        return ""
+
+
+def _verified_dates(body, *, title: str, source_hash: str) -> list[dict]:
+    """Extract only explicitly labelled, full-year deadline/event dates.
+
+    Bare M/D values, publication metadata and arbitrary prose dates fail closed.
+    No year inference, OCR or semantic guessing is performed.
+    """
+    rows = []
+    seen = set()
+    nodes = body.find_all(["p", "li", "tr", "h2", "h3", "h4"], recursive=True)
+    for node in nodes:
+        text = _text(node)
+        if not text or any(label in text for label in PUBLICATION_LABELS):
+            continue
+        match = FULL_DATE.search(text)
+        if not match:
+            continue
+        date = _explicit_date(match)
+        if not date:
+            continue
+        kind = None
+        provenance = None
+        if any(label in text for label in EVENT_LABELS):
+            kind, provenance = "event", "verified_announcement_event"
+        elif any(label in text for label in DEADLINE_LABELS) and any(marker in text for marker in ("前", "止", "截止", "期限")):
+            kind, provenance = "deadline", "verified_announcement_deadline"
+        if not kind or (kind, date) in seen:
+            continue
+        seen.add((kind, date))
+        rows.append({
+            "kind": kind,
+            "date": date,
+            "title": title,
+            "provenance": provenance,
+            "source": "official_article",
+            "source_revision": source_hash,
+            "verification": "explicit_full_date_with_label",
+        })
+    return rows
+
+
 def parse_article_detail(html: str, *, announcement_id: str, school_id: str,
                          title: str, source_url: str, fetched_at: str | None = None) -> dict:
     raw_hash = hashlib.sha256(html.encode("utf-8", errors="replace")).hexdigest()
@@ -135,6 +192,7 @@ def parse_article_detail(html: str, *, announcement_id: str, school_id: str,
                     "source_hash": raw_hash, "parser_version": "detail-v2",
                     "fetched_at": fetched, "parse_status": "empty",
                     "provenance": "official_article"}
+        verified_dates = _verified_dates(body, title=title, source_hash=raw_hash)
         return {
             "announcement_id": announcement_id,
             "school_id": school_id,
@@ -147,7 +205,7 @@ def parse_article_detail(html: str, *, announcement_id: str, school_id: str,
             "fetched_at": fetched,
             "parse_status": "parsed" if _text(body) else "empty",
             "provenance": "official_article",
-            "verified_dates": [],
+            "verified_dates": verified_dates,
         }
     except Exception as exc:
         return {"announcement_id": announcement_id, "school_id": school_id, "title": title,
