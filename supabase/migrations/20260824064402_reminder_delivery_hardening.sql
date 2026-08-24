@@ -2,6 +2,9 @@
 -- This migration is intentionally schema-only: cron, Vault secrets, and the
 -- delivery Edge Function are activated separately after deployed validation.
 
+create schema if not exists private;
+revoke all on schema private from public, anon, authenticated;
+
 create table if not exists public.reminder_targets (
   id uuid primary key default gen_random_uuid(),
   owner_user_id uuid references auth.users(id) on delete cascade,
@@ -33,7 +36,8 @@ as $$
     and not exists (select 1 from unnest(offsets) value where value < 0 or value > 365)
     and cardinality(offsets) = (select count(distinct value) from unnest(offsets) value)
 $$;
-revoke all on function public.valid_reminder_offsets(integer[]) from public, anon, authenticated;
+revoke all on function public.valid_reminder_offsets(integer[]) from public, anon;
+grant execute on function public.valid_reminder_offsets(integer[]) to authenticated;
 
 alter table public.user_reminder_rules
   add column if not exists reminder_target_id uuid references public.reminder_targets(id) on delete restrict,
@@ -59,7 +63,7 @@ alter table public.user_reminder_rules
 
 -- A trusted catalog row, never a browser-supplied publication date, resolves
 -- every automatic reminder target. Task targets must belong to the same user.
-create or replace function public.validate_reminder_rule_target()
+create or replace function private.validate_reminder_rule_target()
 returns trigger
 language plpgsql
 security definer
@@ -88,12 +92,12 @@ begin
   return new;
 end;
 $$;
-revoke all on function public.validate_reminder_rule_target() from public, anon, authenticated;
+revoke all on function private.validate_reminder_rule_target() from public, anon, authenticated;
 
 drop trigger if exists validate_reminder_rule_target on public.user_reminder_rules;
 create trigger validate_reminder_rule_target
 before insert or update on public.user_reminder_rules
-for each row execute function public.validate_reminder_rule_target();
+for each row execute function private.validate_reminder_rule_target();
 
 alter table public.user_push_subscriptions
   add column if not exists disabled_at timestamptz,
@@ -189,7 +193,7 @@ create index if not exists reminder_targets_lookup_idx
   on public.reminder_targets (target_kind, target_id)
   where active;
 
-create or replace function public.set_reminder_updated_at()
+create or replace function private.set_reminder_updated_at()
 returns trigger language plpgsql set search_path = public, pg_temp as $$
 begin
   new.updated_at := now();
@@ -203,7 +207,7 @@ begin
   foreach table_name in array array['reminder_targets', 'user_reminder_rules', 'user_push_subscriptions', 'reminder_jobs']
   loop
     execute format('drop trigger if exists set_updated_at on public.%I', table_name);
-    execute format('create trigger set_updated_at before update on public.%I for each row execute function public.set_reminder_updated_at()', table_name);
+    execute format('create trigger set_updated_at before update on public.%I for each row execute function private.set_reminder_updated_at()', table_name);
   end loop;
 end $$;
 
