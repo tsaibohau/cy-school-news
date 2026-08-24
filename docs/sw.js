@@ -1,8 +1,8 @@
 /* 嘉校快訊 Service Worker:離線快取殼層,資料採網路優先 */
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
-var CACHE = "cy-news-v25";
-var SHELL = ["./", "./index.html", "./style.css?v=25", "./app.js?v=25", "./notification-state.js", "./calendar-state.js?v=25", "./account-config.js?v=25", "./supabase-sync.js?v=25", "./account-auth.js?v=25", "./task-state.js?v=25", "./account-sync.js?v=25", "./school-registry.js?v=25", "./profile.js?v=25", "./relevance.js?v=25", "./today.js?v=25", "./manifest.webmanifest", "./data/calendar-events.json",
+var CACHE = "cy-news-v26";
+var SHELL = ["./", "./index.html", "./style.css?v=26", "./app.js?v=26", "./notification-state.js", "./calendar-state.js?v=26", "./account-config.js?v=26", "./supabase-sync.js?v=26", "./account-auth.js?v=26", "./task-state.js?v=26", "./account-sync.js?v=26", "./school-registry.js?v=26", "./profile.js?v=26", "./relevance.js?v=26", "./today.js?v=26", "./manifest.webmanifest", "./data/calendar-events.json",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {
@@ -18,6 +18,25 @@ self.addEventListener("activate", function (e) {
     })
   );
   self.clients.claim();
+});
+
+self.addEventListener("push", function (e) {
+  var payload = {};
+  try { payload = e.data ? e.data.json() : {}; } catch (_) { payload = {}; }
+  var title = typeof payload.title === "string" && payload.title.trim() ? payload.title.trim() : "嘉校快訊";
+  var body = typeof payload.body === "string" && payload.body.trim() ? payload.body.trim() : "你有一則新的提醒";
+  var target = typeof payload.url === "string" && /^https:\/\//.test(payload.url) ? payload.url : "/";
+  e.waitUntil(self.registration.showNotification(title, { body: body.slice(0, 160), data: { url: target }, tag: typeof payload.tag === "string" ? payload.tag.slice(0, 120) : "cynews-reminder" }));
+});
+
+self.addEventListener("notificationclick", function (e) {
+  e.notification.close();
+  var target = e.notification.data && e.notification.data.url;
+  if (typeof target !== "string") target = "/";
+  e.waitUntil(clients.matchAll({ type: "window", includeUncontrolled: true }).then(function (list) {
+    for (var i = 0; i < list.length; i += 1) if ("focus" in list[i]) return list[i].focus();
+    return clients.openWindow(target);
+  }));
 });
 
 self.addEventListener("fetch", function (e) {
@@ -67,3 +86,4 @@ function markDataSource(response, source) {
     headers: headers
   });
 }
+
