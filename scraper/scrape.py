@@ -471,7 +471,17 @@ def write_detail_record(item: dict, html: str, fetched_at: str) -> dict:
     item["detail_ref"] = f"data/details/{school_id}/{target.name}"
     item["detail_status"] = record.get("parse_status", "failed")
     item["detail_revision"] = record.get("source_hash", "")
+    item["detail_attempts"] = int(item.get("detail_attempts") or 0) + 1
     return record
+
+
+def record_detail_fetch_failure(item: dict, max_attempts: int = 5) -> str:
+    """Persist bounded retry state without storing exception text or secrets."""
+    attempts = int(item.get("detail_attempts") or 0) + 1
+    item["detail_attempts"] = attempts
+    item["detail_available"] = False
+    item["detail_status"] = "permanent_error" if attempts >= max_attempts else "temporary_error"
+    return item["detail_status"]
 
 
 def load_existing_items(data_path: Path, archive_path: Path) -> dict:
@@ -604,6 +614,7 @@ def main() -> int:
             except Exception as e:
                 print(f"[warn] 內文抓取失敗 {it['url']}: {e}", file=sys.stderr)
                 it["snippet"] = ""
+                record_detail_fetch_failure(it)
             time.sleep(delay)
 
         for it in collected.values():
@@ -657,7 +668,9 @@ def main() -> int:
         return is_mojibake(it.get("title", ""))
 
     def needs_detail(it):
-        return not it.get("detail_status") or it.get("detail_status") == "pending"
+        status = it.get("detail_status")
+        return (not status or status in {"pending", "temporary_error"}) \
+            and int(it.get("detail_attempts") or 0) < 5
 
     if not run_backfill:
         print(f"[info] 本輪不執行補齊(補齊班次:台灣時間 {sorted(backfill_hours)} 點)")
@@ -672,6 +685,8 @@ def main() -> int:
             html = fetch(session, it["url"])
         except Exception as e:
             print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)
+            if needs_detail(it):
+                record_detail_fetch_failure(it)
             time.sleep(delay)
             continue
         if needs_date(it):
