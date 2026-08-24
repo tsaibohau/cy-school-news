@@ -486,7 +486,11 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v25/);
+  assert.match(swSource, /cy-news-v26/);
+  assert.match(swSource, /addEventListener\("push"/);
+  assert.match(swSource, /showNotification/);
+  assert.match(swSource, /addEventListener\("notificationclick"/);
+  assert.match(swSource, /Never cache auth callback URLs/);
   assert.match(swSource, /\.\/profile\.js/);
   assert.match(swSource, /\.\/relevance\.js/);
   assert.doesNotMatch(swSource, /cy-news-v19/);
@@ -531,3 +535,4 @@ function testServiceWorkerContract() {
   console.error(error);
   process.exitCode = 1;
 });
+
