@@ -4,14 +4,21 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const child = require("node:child_process");
+const os = require("node:os");
 
 const root = path.resolve(__dirname, "..");
-child.execFileSync(process.execPath, [path.join(root, "tools", "build-staging.js")], { cwd: root, stdio: "pipe" });
+const outputName = "cy-school-news-staging-" + process.pid;
+const output = path.join(os.tmpdir(), outputName);
+child.execFileSync(process.execPath, [path.join(root, "tools", "build-staging.js")], {
+  cwd: root,
+  stdio: "pipe",
+  env: { ...process.env, CYNEWS_STAGING_OUTPUT: output },
+});
 const production = fs.readFileSync(path.join(root, "docs", "index.html"), "utf8");
-const staging = fs.readFileSync(path.join(root, "dist-staging", "index.html"), "utf8");
-const manifest = JSON.parse(fs.readFileSync(path.join(root, "dist-staging", "manifest-staging.webmanifest"), "utf8"));
-const harness = fs.readFileSync(path.join(root, "dist-staging", "acceptance-user-tasks.js"), "utf8");
-const sw = fs.readFileSync(path.join(root, "dist-staging", "sw.js"), "utf8");
+const staging = fs.readFileSync(path.join(output, "index.html"), "utf8");
+const manifest = JSON.parse(fs.readFileSync(path.join(output, "manifest-staging.webmanifest"), "utf8"));
+const harness = fs.readFileSync(path.join(output, "acceptance-user-tasks.js"), "utf8");
+const sw = fs.readFileSync(path.join(output, "sw.js"), "utf8");
 const revision = (staging.match(/(?:style\.css|app\.js)\?v=(staging-[a-f0-9]{12})/) || [])[1];
 const config = fs.readFileSync(path.join(root, "docs", "account-config.js"), "utf8");
 const behavioral = fs.readFileSync(path.join(root, "tests", "test_rls_behavioral.js"), "utf8");
@@ -25,7 +32,7 @@ assert(!staging.includes("?v=25"), "staging cannot retain production shell query
 assert(staging.includes('src="acceptance-user-tasks.js?v=' + revision + '"'));
 assert(staging.includes('src="app.js?v=' + revision + '"'));
 assert.equal(manifest.name, "嘉校快訊 Staging／測試版");
-assert.equal(fs.readFileSync(path.join(root, "dist-staging", "robots.txt"), "utf8"), "User-agent: *\nDisallow: /\n");
+assert.equal(fs.readFileSync(path.join(output, "robots.txt"), "utf8"), "User-agent: *\nDisallow: /\n");
 assert(harness.includes('params.get("acceptance") !== "user-tasks" && !localStorage.getItem(STORAGE)'), "harness is query gated and survives the exact-root OAuth callback");
 assert(harness.includes('localStorage.setItem(STORAGE'), "interrupted OAuth acceptance can resume from a new staging tab");
 assert(!harness.includes('sessionStorage.setItem(STORAGE'), "acceptance progress cannot disappear with the OAuth-return tab");
@@ -53,7 +60,7 @@ assert(sw.includes('"./staging.css?v=' + revision + '"'));
 assert(sw.includes('"./acceptance-user-tasks.js?v=' + revision + '"'));
 assert(sw.includes('"./acceptance-companion.html?v=' + revision + '"'));
 assert(sw.includes('if (req.mode === "navigate")'), "staging navigation must prefer fresh HTML over a stale app shell");
-const companion = fs.readFileSync(path.join(root, "dist-staging", "acceptance-companion.html"), "utf8");
+const companion = fs.readFileSync(path.join(output, "acceptance-companion.html"), "utf8");
 assert(companion.includes('acceptance-user-tasks.js?v=' + revision));
 assert(companion.includes('account-auth.js?v=' + revision));
 assert(!companion.includes("app.js"), "companion must not initialize the production account lifecycle");
@@ -64,3 +71,5 @@ assert(config.includes("https://cy-school-news-staging.vercel.app/"));
 assert(!behavioral.includes("passed for A=${a}"), "behavioral test output must not reveal user UUIDs");
 assert(behavioral.includes("passed for USER_A and USER_B"));
 console.log("Staging build and sanitized acceptance harness tests passed");
+fs.rmSync(output, { recursive: true, force: true });
+
