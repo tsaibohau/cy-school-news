@@ -1081,7 +1081,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=25").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=26").catch(function () {});
       });
     }
 
@@ -1103,3 +1103,4 @@
 
   loadNotificationStateScript(startApp);
 })();
+
