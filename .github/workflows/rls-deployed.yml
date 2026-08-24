@@ -1,13 +1,41 @@
 name: Deployed dedicated-user RLS tests
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [feature/personal-assistant-v1]
+    paths:
+      - .github/workflows/rls-deployed.yml
+      - tests/test_rls_deployed.js
+      - tests/test_rls_behavioral.js
+      - tests/test_supabase_sync.js
+      - tests/test_account_sync.js
+      - tests/test_account_switch_v3.js
+      - docs/supabase-sync.js
+      - docs/account-sync.js
+      - supabase/migrations/**
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deployed-rls-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   deployed-rls:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify adapter UID and account/outbox isolation
+        run: >-
+          node --test
+          tests/test_supabase_sync.js
+          tests/test_account_sync.js
+          tests/test_account_switch_v3.js
       - name: Run sanitized deployed RLS matrix
         env:
           CYNEWS_SUPABASE_URL: ${{ secrets.CYNEWS_SUPABASE_URL }}
