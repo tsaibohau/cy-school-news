@@ -9,7 +9,7 @@ const migration = fs.readFileSync(path.join(repo, "supabase", "migrations", "002
 
 assert.match(sql, /set local role authenticated/);
 assert.match(sql, /request\.jwt\.claim\.sub/);
-assert.match(sql, /select plan\(26\)/);
+assert.match(sql, /select plan\(25\)/);
 assert.match(sql, /USER_A cannot insert with USER_B owner/);
 assert.match(sql, /USER_B cannot reassign ownership/);
 assert.match(sql, /anonymous cannot read private tasks/);
