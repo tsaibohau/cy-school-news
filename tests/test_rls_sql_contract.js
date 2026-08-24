@@ -5,7 +5,7 @@ const path = require("node:path");
 
 const repo = path.resolve(__dirname, "..");
 const sql = fs.readFileSync(path.join(repo, "supabase", "tests", "database", "user_tasks_rls.test.sql"), "utf8");
-const migration = fs.readFileSync(path.join(repo, "supabase", "migrations", "002_user_tasks.sql"), "utf8");
+const migration = fs.readFileSync(path.join(repo, "supabase", "migrations", "0021_user_tasks.sql"), "utf8");
 
 assert.match(sql, /set local role authenticated/);
 assert.match(sql, /request\.jwt\.claim\.sub/);
