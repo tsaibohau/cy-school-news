@@ -1,0 +1,20 @@
+name: Deployed dedicated-user RLS tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deployed-rls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run sanitized deployed RLS matrix
+        env:
+          CYNEWS_SUPABASE_URL: ${{ secrets.CYNEWS_SUPABASE_URL }}
+          CYNEWS_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.CYNEWS_SUPABASE_PUBLISHABLE_KEY }}
+          CYNEWS_RLS_EMAIL_A: ${{ secrets.CYNEWS_RLS_EMAIL_A }}
+          CYNEWS_RLS_PASSWORD_A: ${{ secrets.CYNEWS_RLS_PASSWORD_A }}
+          CYNEWS_RLS_EMAIL_B: ${{ secrets.CYNEWS_RLS_EMAIL_B }}
+          CYNEWS_RLS_PASSWORD_B: ${{ secrets.CYNEWS_RLS_PASSWORD_B }}
+        run: node tests/test_rls_deployed.js
+
