@@ -31,8 +31,8 @@ select lives_ok($$update public.user_tasks set status = 'open', completed_at = n
 select lives_ok($$update public.user_tasks set deleted_at = now() where id = '00000000-0000-4000-8000-00000000a001'$$, 'USER_A tombstones own task');
 select lives_ok($$update public.user_tasks set deleted_at = null where id = '00000000-0000-4000-8000-00000000a001'$$, 'USER_A restores own task');
 select is((select count(*)::int from public.user_tasks where id = '00000000-0000-4000-8000-00000000b002'), 0, 'USER_A cannot read USER_B task');
-select throws_ok($$insert into public.user_tasks (id, user_id, title) values ('00000000-0000-4000-8000-00000000a004', '00000000-0000-4000-8000-0000000000b2', 'spoof A')$$, '42501', 'USER_A cannot insert with USER_B owner');
-select throws_ok($$update public.user_tasks set user_id = '00000000-0000-4000-8000-0000000000b2' where id = '00000000-0000-4000-8000-00000000a001'$$, '42501', 'USER_A cannot reassign ownership');
+select throws_ok($$insert into public.user_tasks (id, user_id, title) values ('00000000-0000-4000-8000-00000000a004', '00000000-0000-4000-8000-0000000000b2', 'spoof A')$$, '42501', null, 'USER_A cannot insert with USER_B owner');
+select throws_ok($$update public.user_tasks set user_id = '00000000-0000-4000-8000-0000000000b2' where id = '00000000-0000-4000-8000-00000000a001'$$, '42501', null, 'USER_A cannot reassign ownership');
 select is((select count(*)::int from public.user_tasks where id = '00000000-0000-4000-8000-00000000b002'), 0, 'USER_A cross-read remains empty');
 select is((select count(*)::int from public.user_tasks where id = '00000000-0000-4000-8000-00000000b002' and title = 'hacked'), 0, 'USER_A cross-update has no effect');
 
@@ -45,14 +45,14 @@ select lives_ok($$update public.user_tasks set status = 'completed', completed_a
 select lives_ok($$update public.user_tasks set status = 'open', completed_at = null where id = '00000000-0000-4000-8000-00000000b002'$$, 'USER_B reopens own task');
 select lives_ok($$update public.user_tasks set deleted_at = now() where id = '00000000-0000-4000-8000-00000000b002'$$, 'USER_B tombstones own task');
 select is((select count(*)::int from public.user_tasks where id = '00000000-0000-4000-8000-00000000a001'), 0, 'USER_B cannot read USER_A task');
-select throws_ok($$insert into public.user_tasks (id, user_id, title) values ('00000000-0000-4000-8000-00000000b004', '00000000-0000-4000-8000-0000000000a1', 'spoof B')$$, '42501', 'USER_B cannot insert with USER_A owner');
-select throws_ok($$update public.user_tasks set user_id = '00000000-0000-4000-8000-0000000000a1' where id = '00000000-0000-4000-8000-00000000b002'$$, '42501', 'USER_B cannot reassign ownership');
+select throws_ok($$insert into public.user_tasks (id, user_id, title) values ('00000000-0000-4000-8000-00000000b004', '00000000-0000-4000-8000-0000000000a1', 'spoof B')$$, '42501', null, 'USER_B cannot insert with USER_A owner');
+select throws_ok($$update public.user_tasks set user_id = '00000000-0000-4000-8000-0000000000a1' where id = '00000000-0000-4000-8000-00000000b002'$$, '42501', null, 'USER_B cannot reassign ownership');
 select is((select count(*)::int from public.user_tasks where id = '00000000-0000-4000-8000-00000000a001'), 0, 'USER_B cross-read remains empty');
 select is((select count(*)::int from public.user_tasks where id = '00000000-0000-4000-8000-00000000a001' and title = 'hacked'), 0, 'USER_B cross-update has no effect');
 
 set local role anon;
-select is((select count(*)::int from public.user_tasks), 0, 'anonymous cannot read private tasks');
-select throws_ok($$insert into public.user_tasks (user_id, title) values ('00000000-0000-4000-8000-0000000000a1', 'anonymous')$$, '42501', 'anonymous cannot insert private tasks');
+select throws_ok($$select count(*) from public.user_tasks$$, '42501', null, 'anonymous cannot read private tasks');
+select throws_ok($$insert into public.user_tasks (user_id, title) values ('00000000-0000-4000-8000-0000000000a1', 'anonymous')$$, '42501', null, 'anonymous cannot insert private tasks');
 
 select * from finish();
 rollback;
