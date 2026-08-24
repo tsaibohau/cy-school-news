@@ -536,6 +536,16 @@
       /* 沒有公告日期時,退而顯示首次抓到的日期 */
       return it.date || (it.first_seen || "").slice(0, 10) || "—";
     }
+    function displayTitle(it) {
+      var title = String(it && it.title || "").replace(/\s+/g, " ").trim();
+      var valid = title.length >= 4 && /[0-9A-Za-z\u3400-\u9fff]/.test(title);
+      if (valid) return title;
+      /* Legacy RulingDigital records may contain the ::: access-key label.
+         Use readable article text while the Actions-owned snapshot self-heals. */
+      var snippet = String(it && it.snippet || "").replace(/\s+/g, " ").trim()
+        .replace(/^作者\s*:\s*.*?\s+發佈日期\s*:\s*\d{4}-\d{2}-\d{2}(?:\s+最後更新日期\s*:\s*\d{4}-\d{2}-\d{2})?\s*/, "");
+      return snippet ? snippet.slice(0, 140) : "公告標題暫時無法解析";
+    }
     function calendarEvents() {
       var announcementEvents = [];
       (state.data && state.data.items || []).forEach(function (it) {
@@ -644,7 +654,7 @@
         (isUnread(it) ? '<button type="button" class="mark-read" data-read-id="' + esc(it.id) + '">標記已讀</button>' : '') +
         '</div>' +
         '<h3 class="card-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
-        esc(it.title) + '</a></h3>' +
+        esc(displayTitle(it)) + '</a></h3>' +
         (it.snippet ? '<p class="card-snippet">' + esc(it.snippet) + '</p>' : "") +
         '<div class="card-actions"><button type="button" class="btn-ghost" data-detail-id="' + esc(it.id) + '">查看完整內容</button><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>' +
         '</article>';
@@ -674,7 +684,7 @@
     function openDetail(id) {
       var item = detailItem(id);
       if (!item || !el.detailDialog || !window.CyNewsDetailUI) return;
-      el.detailTitle.textContent = item.title || "公告完整內容";
+      el.detailTitle.textContent = displayTitle(item);
       el.detailMeta.textContent = (item.school_name || "官方公告") + " · " + displayDate(item);
       el.detailBody.innerHTML = '<p class="detail-state">正在載入官方完整內容…</p>';
       showDetailDialog();
@@ -703,7 +713,7 @@
       if (!el.importantList) return;
       var items = state.data ? state.data.items.filter(isExplicitlyImportant).slice(0, 3) : [];
       el.importantList.innerHTML = items.length ? items.map(function (it) {
-        return '<article class="important-card"><span class="important-mark" aria-hidden="true">!</span><div><strong><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.title) + '</a></strong><p>' + esc(it.school_name) + ' · ' + esc(displayDate(it)) + '</p></div></article>';
+        return '<article class="important-card"><span class="important-mark" aria-hidden="true">!</span><div><strong><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(displayTitle(it)) + '</a></strong><p>' + esc(it.school_name) + ' · ' + esc(displayDate(it)) + '</p></div></article>';
       }).join("") : '<p class="hint">目前沒有來源明確標記的重要公告。</p>';
     }
     function renderList(container, items, emptyMsg) {
@@ -775,7 +785,7 @@
       var upcoming = projection.upcoming.concat(projection.deadlines);
       el.todayDeadlines.innerHTML = upcoming.length ? upcoming.map(deadlineRow).join("") : '<p class="empty">接下來 7 天沒有已知截止事項。</p>';
       el.todayTasks.innerHTML = projection.openTasks.length ? projection.openTasks.slice(0, 8).map(function (task) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(task.title) + '</div><div class="today-item-meta">' + esc(taskDateLabel(task.due_date)) + '</div></div></div>'; }).join("") : '<p class="empty">還沒有待辦。</p>';
-      el.todayRelevant.innerHTML = projection.relevantAnnouncements.length ? projection.relevantAnnouncements.map(function (item) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(item.title) + '</div><div class="today-item-meta">' + esc(item.school_name || "公告") + '</div></div></div>'; }).join("") : '<p class="empty">設定我的資料後，這裡會顯示相關公告。</p>';
+      el.todayRelevant.innerHTML = projection.relevantAnnouncements.length ? projection.relevantAnnouncements.map(function (item) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(displayTitle(item)) + '</div><div class="today-item-meta">' + esc(item.school_name || "公告") + '</div></div></div>'; }).join("") : '<p class="empty">設定我的資料後，這裡會顯示相關公告。</p>';
       var hasUseful = projection.todayEvents.length || upcoming.length || projection.openTasks.length || projection.relevantAnnouncements.length;
       el.todayEmpty.hidden = !!hasUseful;
     }
@@ -1143,7 +1153,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=27").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=28").catch(function () {});
       });
     }
 

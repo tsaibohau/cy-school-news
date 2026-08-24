@@ -12,6 +12,9 @@ const profileSource = fs.readFileSync(path.join(repo, "docs", "profile.js"), "ut
 const relevanceSource = fs.readFileSync(path.join(repo, "docs", "relevance.js"), "utf8");
 const registrySource = fs.readFileSync(path.join(repo, "docs", "school-registry.js"), "utf8");
 const appSource = fs.readFileSync(path.join(repo, "docs", "app.js"), "utf8");
+assert.match(appSource, /function displayTitle\(it\)/, "UI must guard invalid source titles");
+assert.match(appSource, /Legacy RulingDigital records may contain the ::: access-key label/);
+assert.match(appSource, /公告標題暫時無法解析/, "invalid title fallback must fail readably");
 const swSource = fs.readFileSync(path.join(repo, "docs", "sw.js"), "utf8");
 
 class MemoryStorage {
@@ -486,7 +489,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v27/);
+  assert.match(swSource, /cy-news-v28/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
