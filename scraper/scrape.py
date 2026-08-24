@@ -22,8 +22,11 @@ from urllib.parse import urljoin, urlsplit, urlunsplit
 import requests
 from bs4 import BeautifulSoup
 
+from detail_parser import parse_article_detail
+
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
+DETAIL_ROOT = ROOT / "docs" / "data" / "details"
 
 TW_TZ = timezone(timedelta(hours=8))
 DATE_RE = re.compile(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
@@ -444,6 +447,33 @@ def fetch(session: requests.Session, url: str) -> str:
     return decode_response(resp)
 
 
+def _detail_filename(announcement_id: str) -> str:
+    safe = re.sub(r"[^A-Za-z0-9._-]+", "_", str(announcement_id)).strip("._")
+    return safe or "unknown"
+
+
+def write_detail_record(item: dict, html: str, fetched_at: str) -> dict:
+    """Persist one validated sidecar without inflating announcement snapshots."""
+    school_id = str(item.get("school_id") or item.get("school") or "unknown").lower()
+    record = parse_article_detail(
+        html,
+        announcement_id=str(item.get("id", "")),
+        school_id=school_id,
+        title=str(item.get("title", "")),
+        source_url=str(item.get("url", "")),
+        fetched_at=fetched_at,
+    )
+    school_dir = DETAIL_ROOT / re.sub(r"[^A-Za-z0-9_-]+", "_", school_id)
+    school_dir.mkdir(parents=True, exist_ok=True)
+    target = school_dir / (_detail_filename(item.get("id", "")) + ".json")
+    target.write_text(json.dumps(record, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    item["detail_available"] = record.get("parse_status") == "parsed"
+    item["detail_ref"] = f"data/details/{school_id}/{target.name}"
+    item["detail_status"] = record.get("parse_status", "failed")
+    item["detail_revision"] = record.get("source_hash", "")
+    return record
+
+
 def load_existing_items(data_path: Path, archive_path: Path) -> dict:
     """讀回既有資料(封存 + 近期)合併成 by_id;檔案缺失或壞損視為空。
 
@@ -562,6 +592,7 @@ def main() -> int:
                 if detail_title and not is_mojibake(detail_title):
                     it["title"] = detail_title
                 it["snippet"] = extract_article_snippet(html, it["title"])
+                write_detail_record(it, html, now_iso)
                 if not it["snippet"]:
                     it["snippet_tried"] = True
                 article_date = extract_article_date_result(html)
@@ -589,6 +620,8 @@ def main() -> int:
                 it["category"] = classify(base_text)
                 it["first_seen"] = now_iso
                 it.setdefault("snippet", "")
+                it.setdefault("detail_status", "pending")
+                it.setdefault("detail_available", False)
                 by_id[it["id"]] = it
                 all_new.append(it)
 
@@ -623,11 +656,14 @@ def main() -> int:
     def needs_title(it):
         return is_mojibake(it.get("title", ""))
 
+    def needs_detail(it):
+        return not it.get("detail_status") or it.get("detail_status") == "pending"
+
     if not run_backfill:
         print(f"[info] 本輪不執行補齊(補齊班次:台灣時間 {sorted(backfill_hours)} 點)")
     pending = [it for it in by_id.values()
                if it["id"] not in fetched_this_run
-               and (needs_date(it) or needs_snippet(it) or needs_title(it))] if run_backfill else []
+               and (needs_date(it) or needs_snippet(it) or needs_title(it) or needs_detail(it))] if run_backfill else []
     pending.sort(key=lambda x: x.get("first_seen") or "", reverse=True)
     filled_dates = filled_snippets = 0
     repaired_titles = 0
@@ -659,6 +695,8 @@ def main() -> int:
             merge_title(it, detail_title, authoritative=True)
             if it.get("title", "") != before:
                 repaired_titles += 1
+        if needs_detail(it):
+            write_detail_record(it, html, now_iso)
         time.sleep(delay)
     if pending:
         done = min(len(pending), backfill_cap)
@@ -726,3 +764,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
