@@ -24,6 +24,10 @@ assert.match(hardening, /create or replace function private\.validate_reminder_r
 assert.doesNotMatch(hardening, /security definer[\s\S]{0,160}public\.validate_reminder_rule_target/);
 assert.match(hardening, /grant execute on function public\.valid_reminder_offsets\(integer\[\]\) to authenticated/);
 assert.match(hardening, /Publication dates are not valid targets/);
+assert.match(hardening, /foreign or dateless task reminder target/);
+assert.match(hardening, /owned_task\.due_date::timestamp at time zone 'Asia\/Taipei'/);
+assert.match(hardening, /owned_task\.title/);
+assert.match(hardening, /on conflict \(owner_user_id, target_kind, target_id, source_revision\)/);
 assert.match(hardening, /target_kind = 'manual' and manual_target_at is not null/);
 assert.match(hardening, /raise exception 'unverified reminder target'/);
 assert.match(hardening, /foreign key \(rule_id, user_id\)/);
@@ -53,5 +57,6 @@ assert.match(worker, /outcome not in \('sent', 'invalid', 'retry', 'dead'\)/);
 assert.match(worker, /effective_outcome = 'invalid'/);
 assert.match(worker, /invalidated_at = coalesce\(invalidated_at, now\(\)\)/);
 assert.match(worker, /d\.attempts >= j\.max_attempts/);
+assert.match(worker, /coalesce\(t\.title, r\.target_id\)/);
 console.log("Reminder schema security contract tests passed");
 

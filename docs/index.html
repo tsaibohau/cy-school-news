@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=29">
+<link rel="stylesheet" href="style.css?v=30">
 </head>
 <body>
 
@@ -120,6 +120,7 @@
         <p class="hint">日期接近時主動提醒；只有可驗證的截止日、活動、校曆、待辦期限或你手動設定的日期才會排程。</p>
         <div class="notify-row"><button id="reminderPushToggle" class="btn-primary" type="button">在此裝置開啟</button><span id="reminderPushState" class="hint" aria-live="polite">請先登入</span></div>
         <label class="reminder-preset">預設提醒頻率<select id="reminderPreset"><option value="single">單次：1 天前</option><option value="standard">標準：3 天前、1 天前、當天</option><option value="dense">密集：7 天前、3 天前、1 天前、當天</option><option value="custom">自訂</option></select></label>
+        <label id="reminderCustomWrap" class="reminder-preset" hidden>自訂提前天數<input id="reminderCustomOffsets" inputmode="numeric" maxlength="32" placeholder="例如：5,2,0"></label>
         <p id="nextReminder" class="hint">尚無已排程提醒</p>
       </section>
       <div id="accountBox" class="notify-row">
@@ -190,19 +191,20 @@
   </button>
 </nav>
 
-<script src="account-config.js?v=29"></script>
-<script src="supabase-sync.js?v=29"></script>
-<script src="account-auth.js?v=29"></script>
-<script src="push-subscription.js?v=29"></script>
-<script src="task-state.js?v=29"></script>
-<script src="account-sync.js?v=29"></script>
-<script src="school-registry.js?v=29"></script>
-<script src="profile.js?v=29"></script>
-<script src="relevance.js?v=29"></script>
-<script src="today.js?v=29"></script>
-<script src="calendar-state.js?v=29"></script>
-<script src="detail-ui.js?v=29"></script>
-<script src="app.js?v=29"></script>
+<script src="account-config.js?v=30"></script>
+<script src="supabase-sync.js?v=30"></script>
+<script src="account-auth.js?v=30"></script>
+<script src="push-subscription.js?v=30"></script>
+<script src="reminder-rules.js?v=30"></script>
+<script src="task-state.js?v=30"></script>
+<script src="account-sync.js?v=30"></script>
+<script src="school-registry.js?v=30"></script>
+<script src="profile.js?v=30"></script>
+<script src="relevance.js?v=30"></script>
+<script src="today.js?v=30"></script>
+<script src="calendar-state.js?v=30"></script>
+<script src="detail-ui.js?v=30"></script>
+<script src="app.js?v=30"></script>
 </body>
 </html>
 

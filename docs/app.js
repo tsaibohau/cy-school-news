@@ -41,6 +41,7 @@
     var PAGE_SIZE = 200;  // 最新清單一次渲染的則數,避免一口氣塞入上千張卡片
     var notificationState = NotificationState.load();
     var queueAccountMutation = function () {};
+    var createTaskReminder = function () { return Promise.reject(new Error("account not ready")); };
 
     var state = {
       data: null,
@@ -62,6 +63,7 @@
       profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
       personalizedNotifications: false,
       reminderPreset: "single",
+      reminderCustomOffsets: "1",
       activeAccountId: "anonymous",
       lastSeen: localStorage.getItem(LS_SEEN) || "",
       detailCache: {},
@@ -79,6 +81,7 @@
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
       reminderPushToggle: $("reminderPushToggle"), reminderPushState: $("reminderPushState"),
       reminderPreset: $("reminderPreset"), nextReminder: $("nextReminder"),
+      reminderCustomWrap: $("reminderCustomWrap"), reminderCustomOffsets: $("reminderCustomOffsets"),
       btnRefresh: $("btnRefresh"),
       accountState: $("accountState"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
       accountLogout: $("accountLogout"),
@@ -212,6 +215,7 @@
       var readyUid = null;
       var accountPhase = "ANONYMOUS_READY";
       var pushManager = window.CyNewsPushSubscription ? window.CyNewsPushSubscription.createManager({ auth: auth }) : null;
+      var reminderAdapter = window.CyNewsReminderRules ? window.CyNewsReminderRules.createAdapter({ auth: auth }) : null;
       function status(text) { el.accountState.textContent = text; }
       function renderReminderPush() {
         if (!el.reminderPushToggle || !el.reminderPushState) return;
@@ -261,7 +265,10 @@
         state.personalizedNotifications = !!(notificationPreferences && notificationPreferences.personalized);
         var reminderPreferences = merged.preferences && merged.preferences.preferences && merged.preferences.preferences.reminder;
         state.reminderPreset = reminderPreferences && ["single", "standard", "dense", "custom"].indexOf(reminderPreferences.preset) !== -1 ? reminderPreferences.preset : "single";
+        state.reminderCustomOffsets = reminderPreferences && typeof reminderPreferences.custom_offsets === "string" ? reminderPreferences.custom_offsets : "1";
         if (el.reminderPreset) el.reminderPreset.value = state.reminderPreset;
+        if (el.reminderCustomOffsets) el.reminderCustomOffsets.value = state.reminderCustomOffsets;
+        if (el.reminderCustomWrap) el.reminderCustomWrap.hidden = state.reminderPreset !== "custom";
         establishPersonalizedBaseline(accountId || "anonymous");
         renderProfile();
         renderPersonalizedSetting();
@@ -278,6 +285,7 @@
         state.tasks = [];
         state.personalizedNotifications = false;
         state.reminderPreset = "single";
+        state.reminderCustomOffsets = "1";
         if (el.reminderPreset) el.reminderPreset.value = "single";
         state.activeAccountId = "anonymous";
         establishPersonalizedBaseline("anonymous");
@@ -376,6 +384,10 @@
         new window.CyNewsAccountSync.Outbox(localStorage, readyUid).enqueue({ type: type, payload: payload });
         status("等待同步");
         return next;
+      };
+      createTaskReminder = function (task) {
+        if (accountPhase !== "ACCOUNT_READY" || !reminderAdapter) return Promise.reject(new Error("account not ready"));
+        return reminderAdapter.upsertTask(task, state.reminderPreset, state.reminderCustomOffsets);
       };
       function handleVerifiedSession() {
         return auth.getVerifiedSession().then(function (session) {
@@ -798,11 +810,16 @@
       return (window.CyNewsToday ? window.CyNewsToday.dueLabel(today, due) : due) + " · " + due;
     }
     function taskHTML(task, completed) {
+      var dueTarget = task.due_date ? new Date(task.due_date + "T00:00:00+08:00") : null;
+      var canRemind = !completed && dueTarget && !isNaN(dueTarget.getTime()) && dueTarget > new Date();
+      var reminderMeta = !task.due_date ? '<div class="task-item-meta">沒有可驗證的提醒日期</div>' :
+        (canRemind ? '' : '<div class="task-item-meta">提醒日期已過</div>');
       return '<article class="task-item' + (completed ? ' is-completed' : '') + '">' +
         '<div class="task-item-main"><div class="task-item-title">' + esc(task.title) + '</div>' +
         '<div class="task-item-meta">' + esc(taskDateLabel(task.due_date)) + (task.priority != null ? ' · 優先 ' + esc(task.priority) : '') + '</div>' +
-        (task.notes ? '<div class="task-item-meta">' + esc(task.notes) + '</div>' : '') + '</div>' +
+        (task.notes ? '<div class="task-item-meta">' + esc(task.notes) + '</div>' : '') + reminderMeta + '</div>' +
         '<div class="task-item-actions">' + (completed ? '<button type="button" class="btn-ghost" data-task-reopen="' + esc(task.id) + '">重開</button>' : '<button type="button" class="btn-ghost" data-task-complete="' + esc(task.id) + '">完成</button>') +
+        (canRemind ? '<button type="button" class="btn-ghost" data-task-reminder="' + esc(task.id) + '">設定提醒</button>' : '') +
         '<button type="button" class="btn-ghost" data-task-edit="' + esc(task.id) + '">編輯</button><button type="button" class="btn-ghost" data-task-delete="' + esc(task.id) + '">刪除</button></div></article>';
     }
     function renderTasks() {
@@ -1029,12 +1046,24 @@
     });
     function taskButtonHandler(e) {
       var button = e.target.closest("button"); if (!button) return;
-      var id = button.dataset.taskComplete || button.dataset.taskReopen || button.dataset.taskEdit || button.dataset.taskDelete;
+      var id = button.dataset.taskComplete || button.dataset.taskReopen || button.dataset.taskEdit || button.dataset.taskDelete || button.dataset.taskReminder;
       if (!id) return;
       if (button.dataset.taskComplete) applyTask("task.complete", { id: id });
       else if (button.dataset.taskReopen) applyTask("task.reopen", { id: id });
       else if (button.dataset.taskEdit) editTask(id);
       else if (button.dataset.taskDelete) applyTask("task.delete", { id: id });
+      else if (button.dataset.taskReminder) {
+        var task = (state.tasks || []).find(function (row) { return row.id === String(id); });
+        if (!task) return;
+        if (el.taskStatus) el.taskStatus.textContent = "建立提醒中";
+        createTaskReminder(task).then(function (result) {
+          var next = result.next ? result.next.toLocaleString("zh-TW", { timeZone: "Asia/Taipei" }) : "沒有尚未到達的提醒時間";
+          if (el.taskStatus) el.taskStatus.textContent = "提醒已設定 · 下一次 " + next;
+          if (el.nextReminder) el.nextReminder.textContent = "下一次提醒：" + next;
+        }).catch(function (error) {
+          if (el.taskStatus) el.taskStatus.textContent = /custom offsets/.test(String(error && error.message)) ? "請輸入 1–8 個有效提前天數" : "提醒設定失敗，請確認日期與登入狀態";
+        });
+      }
     }
     if (el.taskOpenList) el.taskOpenList.addEventListener("click", taskButtonHandler);
     if (el.taskDoneList) el.taskDoneList.addEventListener("click", taskButtonHandler);
@@ -1158,7 +1187,7 @@
         preferences: {
           profile: profile,
           notification_preferences: { personalized: !!state.personalizedNotifications },
-          reminder: { preset: state.reminderPreset || "single" },
+          reminder: { preset: state.reminderPreset || "single", custom_offsets: state.reminderCustomOffsets || "1" },
         },
         updated_at: new Date().toISOString(),
       });
@@ -1184,7 +1213,7 @@
         preferences: {
           profile: window.CyNewsProfile.normalize(state.profile),
           notification_preferences: { personalized: enabled },
-          reminder: { preset: state.reminderPreset || "single" },
+          reminder: { preset: state.reminderPreset || "single", custom_offsets: state.reminderCustomOffsets || "1" },
         },
         updated_at: new Date().toISOString(),
       });
@@ -1197,33 +1226,49 @@
       establishPersonalizedBaseline(state.activeAccountId);
       el.profileStatus.textContent = enabled ? "個人化通知已開啟" : "個人化通知已關閉";
     });
-    if (el.reminderPreset) el.reminderPreset.addEventListener("change", function () {
+    function saveReminderPreference() {
       var preset = el.reminderPreset.value;
       if (["single", "standard", "dense", "custom"].indexOf(preset) === -1) preset = "single";
       var previous = state.reminderPreset;
+      var previousCustom = state.reminderCustomOffsets;
       state.reminderPreset = preset;
+      state.reminderCustomOffsets = el.reminderCustomOffsets ? el.reminderCustomOffsets.value.trim() : "1";
+      if (el.reminderCustomWrap) el.reminderCustomWrap.hidden = preset !== "custom";
+      if (preset === "custom" && window.CyNewsReminderRules) {
+        try { window.CyNewsReminderRules.offsetsFor(preset, state.reminderCustomOffsets); }
+        catch (_) {
+          state.reminderPreset = previous; state.reminderCustomOffsets = previousCustom;
+          el.reminderPreset.value = previous;
+          if (el.reminderCustomOffsets) el.reminderCustomOffsets.value = previousCustom;
+          if (el.reminderPushState) el.reminderPushState.textContent = "請輸入 1–8 個有效提前天數";
+          return;
+        }
+      }
       var result = queueAccountMutation("preferences.upsert", {
         schema_version: 1,
         preferences: {
           profile: window.CyNewsProfile.normalize(state.profile),
           notification_preferences: { personalized: !!state.personalizedNotifications },
-          reminder: { preset: preset },
+          reminder: { preset: preset, custom_offsets: state.reminderCustomOffsets },
         },
         updated_at: new Date().toISOString(),
       });
       if (!result) {
         state.reminderPreset = previous;
+        state.reminderCustomOffsets = previousCustom;
         el.reminderPreset.value = previous;
         if (el.reminderPushState) el.reminderPushState.textContent = "請先登入並完成同步";
       } else if (el.reminderPushState) {
         el.reminderPushState.textContent = "預設頻率已儲存";
       }
-    });
+    }
+    if (el.reminderPreset) el.reminderPreset.addEventListener("change", saveReminderPreference);
+    if (el.reminderCustomOffsets) el.reminderCustomOffsets.addEventListener("change", saveReminderPreference);
 
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=29").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=30").catch(function () {});
       });
     }
 

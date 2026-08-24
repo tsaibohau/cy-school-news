@@ -10,6 +10,7 @@ type ClaimedDelivery = {
   auth: string
   target_kind: string
   target_id: string
+  target_title: string
   target_at: string
   offset_days: number
 }
@@ -50,7 +51,7 @@ function payloadFor(delivery: ClaimedDelivery): string {
   }).format(new Date(delivery.target_at))
   return JSON.stringify({
     title: labels[delivery.target_kind] || "提醒",
-    body: `${targetTime} · ${delivery.target_id}`,
+    body: `${targetTime} · ${delivery.target_title}`,
     tag: `reminder:${delivery.delivery_id}`,
     data: {
       kind: "reminder",

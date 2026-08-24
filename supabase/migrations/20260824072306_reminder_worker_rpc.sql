@@ -20,6 +20,7 @@ returns table (
   auth text,
   target_kind text,
   target_id text,
+  target_title text,
   target_at timestamptz,
   offset_days integer
 )
@@ -113,11 +114,12 @@ begin
     returning d.*
   )
   select c.id, c.lease_token, s.id, s.endpoint, s.p256dh, s.auth,
-         r.target_kind, r.target_id, j.target_at, j.offset_days
+         r.target_kind, r.target_id, coalesce(t.title, r.target_id), j.target_at, j.offset_days
     from claimed c
     join public.reminder_jobs j on (j.id, j.user_id) = (c.job_id, c.user_id)
     join public.user_reminder_rules r on (r.id, r.user_id) = (j.rule_id, j.user_id)
-    join public.user_push_subscriptions s on (s.id, s.user_id) = (c.push_subscription_id, c.user_id);
+    join public.user_push_subscriptions s on (s.id, s.user_id) = (c.push_subscription_id, c.user_id)
+    left join public.reminder_targets t on t.id = r.reminder_target_id;
 end;
 $$;
 

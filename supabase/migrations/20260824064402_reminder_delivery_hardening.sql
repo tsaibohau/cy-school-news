@@ -11,6 +11,8 @@ create table if not exists public.reminder_targets (
   target_kind text not null check (target_kind in ('announcement_deadline', 'announcement_event', 'official_calendar_event', 'task_due')),
   target_id text not null,
   target_at timestamptz not null,
+  title text not null,
+  source_url text,
   timezone text not null default 'Asia/Taipei',
   provenance text not null check (provenance in ('official_announcement', 'official_attachment', 'official_calendar', 'verified_task_due')),
   source_revision text not null,
@@ -67,15 +69,61 @@ create or replace function private.validate_reminder_rule_target()
 returns trigger
 language plpgsql
 security definer
-set search_path = public, pg_temp
+set search_path = ''
 as $$
 declare
   trusted public.reminder_targets%rowtype;
+  owned_task public.user_tasks%rowtype;
+  resolved_target_id uuid;
 begin
   if new.target_kind = 'manual' then
     new.provenance := 'manual';
     new.source_revision := coalesce(nullif(new.source_revision, ''), 'manual');
     return new;
+  end if;
+
+  if new.target_kind = 'task_due' and new.reminder_target_id is null then
+    begin
+      resolved_target_id := new.target_id::uuid;
+    exception when invalid_text_representation then
+      raise exception 'invalid task reminder target';
+    end;
+    select * into owned_task
+      from public.user_tasks
+     where id = resolved_target_id
+       and user_id = new.user_id
+       and deleted_at is null
+       and due_date is not null;
+    if not found then
+      raise exception 'foreign or dateless task reminder target';
+    end if;
+    if owned_task.due_date::timestamp at time zone 'Asia/Taipei' <= now() then
+      raise exception 'past task reminder target';
+    end if;
+
+    update public.reminder_targets
+       set active = false, updated_at = now()
+     where owner_user_id = new.user_id
+       and target_kind = 'task_due'
+       and target_id = new.target_id
+       and active;
+    insert into public.reminder_targets (
+      owner_user_id, target_kind, target_id, target_at, title, timezone,
+      provenance, source_revision
+    ) values (
+      new.user_id, 'task_due', new.target_id,
+      owned_task.due_date::timestamp at time zone 'Asia/Taipei',
+      owned_task.title, 'Asia/Taipei', 'verified_task_due',
+      owned_task.updated_at::text
+    )
+    on conflict (owner_user_id, target_kind, target_id, source_revision)
+    do update set target_at = excluded.target_at,
+                  title = excluded.title,
+                  timezone = excluded.timezone,
+                  provenance = excluded.provenance,
+                  active = true,
+                  updated_at = now()
+    returning id into new.reminder_target_id;
   end if;
 
   select * into trusted from public.reminder_targets

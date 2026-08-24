@@ -16,6 +16,7 @@ assert.match(worker, /status === 404 \|\| status === 410/);
 assert.match(worker, /status === 408 \|\| status === 429/);
 assert.match(worker, /claim_reminder_deliveries/);
 assert.match(worker, /finish_reminder_delivery/);
+assert.match(worker, /delivery\.target_title/);
 assert.match(worker, /tag: `reminder:\$\{delivery\.delivery_id\}`/);
 for (const specifier of Object.values(imports.imports)) {
   assert.doesNotMatch(specifier, /[\^~*]|@latest$/);
