@@ -91,6 +91,17 @@ def is_mojibake(text: str) -> bool:
     return len(MOJIBAKE_TOKEN_RE.findall(text)) >= 1
 
 
+def is_invalid_title(text: str) -> bool:
+    """Reject navigation/access-key placeholders and unusable titles."""
+    if not isinstance(text, str):
+        return True
+    normalized = re.sub(r"\s+", " ", text).strip()
+    if len(normalized) < 4 or normalized in {"MORE", "更多", "國立嘉義高中"}:
+        return True
+    # RulingDigital access-key anchors use ::: as visible navigation text.
+    return not any(ch.isalnum() or "\u3400" <= ch <= "\u9fff" for ch in normalized)
+
+
 def _category_rank(source_url: str):
     """Stable source priority derived from the configured source URL."""
     normalized = normalize_url(source_url or "")
@@ -121,11 +132,11 @@ def choose_date(existing: dict, candidate: dict) -> dict:
 def merge_title(existing: dict, candidate_title: str, authoritative: bool = False) -> None:
     """Keep clean persisted titles; only authoritative clean detail titles repair damage."""
     old = existing.get("title", "")
-    if not candidate_title:
+    if is_invalid_title(candidate_title):
         return
     if is_mojibake(candidate_title) and not is_mojibake(old):
         return
-    if authoritative and not is_mojibake(candidate_title):
+    if (authoritative or is_invalid_title(old)) and not is_mojibake(candidate_title):
         existing["title"] = candidate_title
     elif not old:
         existing["title"] = candidate_title
@@ -310,7 +321,8 @@ def validate_snapshot_items(items, label="snapshot", allow_empty=False):
         raise RuntimeError(f"{label}: invalid Stable ID")
     if len(set(ids)) != len(ids):
         raise RuntimeError(f"{label}: duplicate Stable ID")
-    if any(is_mojibake(it.get("title", "")) for it in items):
+    if any(is_mojibake(it.get("title", "")) or is_invalid_title(it.get("title", ""))
+           for it in items):
         raise RuntimeError(f"{label}: corrupted title candidate")
     return set(ids)
 
@@ -398,12 +410,24 @@ def extract_article_title(html: str) -> str:
     """Read a clean title only from authoritative article-page markup."""
     try:
         soup = BeautifulSoup(html, "html.parser")
-        node = soup.find("meta", attrs={"property": "og:title"})
-        title = node.get("content", "") if node else ""
-        if not title:
-            node = soup.find("h1")
-            title = node.get_text(" ", strip=True) if node else ""
-        return re.sub(r"\s+", " ", title).strip()
+        candidates = []
+        for attrs in ({"property": "og:title"}, {"name": "twitter:title"}):
+            node = soup.find("meta", attrs=attrs)
+            if node:
+                candidates.append(node.get("content", ""))
+        # RulingDigital article pages use h2.hdline / .sk6_title. A bare h1
+        # may be the ::: accessibility anchor, so it is deliberately excluded.
+        for selector in ("h2.hdline", ".sk6_title", "h1.hdline"):
+            node = soup.select_one(selector)
+            if node:
+                candidates.append(node.get_text(" ", strip=True))
+        if soup.title:
+            candidates.append(soup.title.get_text(" ", strip=True))
+        for candidate in candidates:
+            title = re.sub(r"\s+", " ", candidate or "").strip()
+            if not is_invalid_title(title) and not is_mojibake(title):
+                return title
+        return ""
     except Exception:
         return ""
 
@@ -599,8 +623,7 @@ def main() -> int:
             try:
                 html = fetch(session, it["url"])
                 detail_title = extract_article_title(html)
-                if detail_title and not is_mojibake(detail_title):
-                    it["title"] = detail_title
+                merge_title(it, detail_title, authoritative=True)
                 it["snippet"] = extract_article_snippet(html, it["title"])
                 write_detail_record(it, html, now_iso)
                 if not it["snippet"]:
@@ -665,7 +688,7 @@ def main() -> int:
         return not it.get("snippet") and not it.get("snippet_tried")
 
     def needs_title(it):
-        return is_mojibake(it.get("title", ""))
+        return is_mojibake(it.get("title", "")) or is_invalid_title(it.get("title", ""))
 
     def needs_detail(it):
         status = it.get("detail_status")

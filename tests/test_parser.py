@@ -8,7 +8,8 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     extract_article_date, extract_article_date_result, display_date,
                     coverage_gaps, configured_categories, page_entries, should_fetch,
                     TW_TZ, list_page_with_number, deep_stop_reason, split_recent,
-                    load_existing_items, is_mojibake, _category_rank,
+                    load_existing_items, is_mojibake, is_invalid_title,
+                    extract_article_title, _category_rank,
                     merge_collected_item, validate_snapshot_items,
                     validate_history_capacity, merge_title, decode_response,
                     record_detail_fetch_failure)  # noqa: E402
@@ -105,6 +106,14 @@ ARTICLE_PUBDATE_HTML = """
 </body></html>
 """
 
+ARTICLE_RULING_TITLE_HTML = """
+<html><head><title>【重要公告】因應豪大雨 新生訓練調整措施</title></head><body>
+<h1><a href="#start-C">:::</a></h1>
+<div class="sk6_title">【重要公告】因應豪大雨 新生訓練調整措施</div>
+<h2 class="hdline">【重要公告】因應豪大雨 新生訓練調整措施</h2>
+</body></html>
+"""
+
 
 def run():
     ok = True
@@ -152,6 +161,16 @@ def run():
     assert len(dirty) == 1
     assert dirty[0]["title"] == "恭賀 201王小明 同學 榮獲全國賽第一名", dirty[0]["title"]
     print("✓ 標題隱形空白清理")
+
+    assert is_invalid_title(":::")
+    assert not is_invalid_title("【115年校園清掃區域分配】")
+    assert extract_article_title(ARTICLE_RULING_TITLE_HTML) == \
+        "【重要公告】因應豪大雨 新生訓練調整措施"
+    damaged = {"title": ":::"}
+    merge_title(damaged, "【115年校園清掃區域分配】")
+    assert damaged["title"] == "【115年校園清掃區域分配】", damaged
+    assert extract_article_title("<html><body><h1>:::</h1></body></html>") == ""
+    print("✓ RulingDigital 導覽字串不覆蓋公告標題")
 
     assert extract_article_date(ARTICLE_MDATE_HTML) == "2026-08-09"
     assert extract_article_date(ARTICLE_BODYDATE_HTML) == "", "內文活動日期不可冒充公告日期"
