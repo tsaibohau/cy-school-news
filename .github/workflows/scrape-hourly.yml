@@ -1,6 +1,11 @@
 name: 抓取兩校公告
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "scraper/**"
+      - ".github/workflows/scrape-hourly.yml"
   schedule:
     # 單行 cron(多行寫法曾發生 GitHub 排程未註冊)。UTC 時間,台灣時間 -8:
     # 23:10 UTC=台灣 07:10 每日首班(cold 來源距上次 >20 小時,此班自然全抓);
