@@ -10,7 +10,8 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     TW_TZ, list_page_with_number, deep_stop_reason, split_recent,
                     load_existing_items, is_mojibake, _category_rank,
                     merge_collected_item, validate_snapshot_items,
-                    validate_history_capacity, merge_title, decode_response)  # noqa: E402
+                    validate_history_capacity, merge_title, decode_response,
+                    record_detail_fetch_failure)  # noqa: E402
 from notify import push_topics, summarize, personal_topics, SUMMARY_THRESHOLD  # noqa: E402
 from schoolcal import build_ics, events_on, build_public_events  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
@@ -370,6 +371,14 @@ def run():
         assert load_existing_items(dp, Path(td) / "無此檔.json")["y"]["title"] == "只在近期", \
             "封存檔不存在時要能正常運作"
     print("✓ 既有資料載入(近期+封存)")
+
+    detail_retry = {"detail_status": "pending", "detail_attempts": 0}
+    for attempt in range(1, 6):
+        status = record_detail_fetch_failure(detail_retry)
+        assert detail_retry["detail_attempts"] == attempt
+        assert status == ("permanent_error" if attempt == 5 else "temporary_error")
+    assert detail_retry["detail_available"] is False
+    print("✓ detail failure bounded retry")
 
     return ok
 
