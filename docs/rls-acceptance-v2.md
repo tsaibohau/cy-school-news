@@ -18,7 +18,7 @@ project and never uses `service_role` as behavioral evidence.
 
 ## Layer 2: deployed dedicated Auth users
 
-The deployed test uses two dedicated non-production-purpose Auth identities
+`tests/test_rls_deployed.js` is the deployed test. It uses two dedicated non-production-purpose Auth identities
 with email/password sign-in. Their credentials are injected only through
 protected CI secrets. The test obtains ordinary user sessions and exercises
 the hosted Data API with each user's bearer token. Provisioning may require a
@@ -42,3 +42,4 @@ Google is tested only for normal login, callback return, and explicit
 - Disposable fixtures use a reserved prefix and are cleaned only by their own
   authenticated owner.
 - Production Site URL and Google callback are not changed for testing.
+
