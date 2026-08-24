@@ -96,7 +96,35 @@
         });
       });
     }
-    return { upsertTask: upsertTask };
+    function upsertManual(targetId, date, preset, custom) {
+      targetId = String(targetId || "").trim();
+      var targetAt = validDate(date) ? new Date(date + "T00:00:00+08:00") : null;
+      if (!targetId || targetId.length > 240 || !targetAt || isNaN(targetAt.getTime()) || targetAt <= new Date()) {
+        return Promise.reject(new Error("manual reminder requires a future date"));
+      }
+      var offsets = offsetsFor(preset, custom);
+      return context().then(function (ctx) {
+        return ctx.client.from("user_reminder_rules").upsert({
+          user_id: ctx.uid,
+          target_kind: "manual",
+          target_id: targetId,
+          reminder_target_id: null,
+          manual_target_at: targetAt.toISOString(),
+          offsets_days: offsets,
+          preset: preset,
+          provenance: "manual",
+          source_revision: "manual",
+          enabled: true,
+          disabled_at: null,
+          deleted_at: null,
+          schedule_baseline_at: new Date().toISOString(),
+        }, { onConflict: "user_id,target_kind,target_id" }).then(function (result) {
+          if (result.error) throw result.error;
+          return { targetId: targetId, offsets: offsets, next: nextReminderTime(date, offsets) };
+        });
+      });
+    }
+    return { upsertTask: upsertTask, upsertManual: upsertManual };
   }
 
   return { PRESETS: PRESETS, offsetsFor: offsetsFor, normalizeTarget: normalizeTarget, createRule: createRule,

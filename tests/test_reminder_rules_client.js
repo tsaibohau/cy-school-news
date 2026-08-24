@@ -29,6 +29,16 @@ async function run() {
   assert.deepEqual(captured.row.offsets_days, [3, 1, 0]);
   assert.equal(captured.options.onConflict, "user_id,target_kind,target_id");
   await assert.rejects(adapter.upsertTask({ id: task.id, due_date: null }, "single"), /verified due date/);
+  await adapter.upsertManual("announcement:a1:manual", "2099-10-01", "single");
+  assert.equal(captured.row.user_id, "verified-owner");
+  assert.equal(captured.row.target_kind, "manual");
+  assert.equal(captured.row.target_id, "announcement:a1:manual");
+  assert.equal(captured.row.reminder_target_id, null);
+  assert.equal(captured.row.manual_target_at, "2099-09-30T16:00:00.000Z");
+  assert.equal(captured.row.provenance, "manual");
+  assert.deepEqual(captured.row.offsets_days, [1]);
+  await assert.rejects(adapter.upsertManual("announcement:a1:manual", "2020-01-01", "single"), /future date/);
+  await assert.rejects(adapter.upsertManual("", "2099-10-01", "single"), /future date/);
   console.log("Reminder rule preset, verified identity and task-target tests passed");
 }
 
