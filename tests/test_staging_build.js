@@ -22,6 +22,7 @@ const sw = fs.readFileSync(path.join(output, "sw.js"), "utf8");
 const revision = (staging.match(/(?:style\.css|app\.js)\?v=(staging-[a-f0-9]{12})/) || [])[1];
 const config = fs.readFileSync(path.join(root, "docs", "account-config.js"), "utf8");
 const behavioral = fs.readFileSync(path.join(root, "tests", "test_rls_behavioral.js"), "utf8");
+const deployedWorkflow = fs.readFileSync(path.join(root, ".github", "workflows", "rls-deployed.yml"), "utf8");
 
 assert(!production.includes("acceptance-user-tasks.js"), "production source must not load the acceptance harness");
 assert(!production.includes("cynews-staging-banner"), "production source must not contain a staging banner");
@@ -72,6 +73,10 @@ assert(config.includes("allowedRedirectUrls"));
 assert(config.includes("https://cy-school-news-staging.vercel.app/"));
 assert(!behavioral.includes("passed for A=${a}"), "behavioral test output must not reveal user UUIDs");
 assert(behavioral.includes("passed for USER_A and USER_B"));
+assert(deployedWorkflow.includes("Check dedicated Auth harness availability"));
+assert(deployedWorkflow.includes("if: steps.auth-gate.outputs.available == 'true'"));
+assert(deployedWorkflow.includes("github.event_name == 'workflow_dispatch'"));
+assert(deployedWorkflow.includes("BLOCKED_EXTERNAL_AUTH"));
 console.log("Staging build and sanitized acceptance harness tests passed");
 fs.rmSync(output, { recursive: true, force: true });
 
