@@ -8,6 +8,8 @@ const config = fs.readFileSync(path.join(root, "config.toml"), "utf8");
 const workflow = fs.readFileSync(path.join(__dirname, "..", ".github", "workflows", "scrape-hourly.yml"), "utf8");
 
 assert.match(config, /\[functions\.reminder-target-sync\]/);
+assert.equal((config.match(/\[functions\.reminder-target-sync\]/g) || []).length, 1,
+  "Supabase config must define reminder-target-sync exactly once");
 assert.match(source, /REMINDER_TARGET_SYNC_TOKEN/);
 assert.match(source, /SUPABASE_SECRET_KEYS/);
 assert.match(source, /owner_user_id", null/);
