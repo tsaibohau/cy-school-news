@@ -7,3 +7,14 @@
 4. 修改爬蟲或解析邏輯後,必須執行 `python tests/test_parser.py` 且全數通過。
 5. 不改動 `.github/workflows` 的排程頻率,維持對學校伺服器友善的低頻抓取。
 6. 專案架構:`scraper/` 爬蟲與設定、`docs/` 為 GitHub Pages 網站(PWA);資料流:Actions 排程 → `scrape.py` → `announcements.json` → 網站讀取。
+
+# Cloud-first development
+
+1. GitHub remote is the canonical engineering source; local worktrees are optional caches.
+2. Start each Work cycle from current remote refs and finish meaningful work only after remote verification.
+3. Do not leave durable feature work only on one computer. If cloud write is unavailable, classify `CLOUD_WRITE_BLOCKED` and do not accumulate another large feature chain.
+4. GitHub-hosted CI is the canonical validation environment; Windows Docker is optional.
+5. Staging builds run through cloud CI/deployment; production remains `main` and is never changed by staging work.
+6. Supabase schema changes are committed migrations and must preserve authenticated ownership/RLS behavior.
+7. Secrets remain provider-side; never commit tokens, credentials, service keys, passwords, cookies, or private VAPID keys.
+8. Action-owned generated data is machine-owned; when conflicts occur, current `main` wins.
