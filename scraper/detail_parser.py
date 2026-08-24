@@ -8,7 +8,7 @@ from __future__ import annotations
 import hashlib
 import re
 from datetime import datetime, timezone
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
@@ -34,6 +34,12 @@ def _text(node) -> str:
     return re.sub(r"\s+", " ", node.get_text(" ", strip=True)).strip()
 
 
+def _safe_https_url(value: str, source_url: str) -> str:
+    resolved = urljoin(source_url, str(value or "").strip())
+    parsed = urlparse(resolved)
+    return resolved if parsed.scheme == "https" and bool(parsed.netloc) else ""
+
+
 def _body(soup: BeautifulSoup):
     for selector in NOISE_SELECTORS:
         for node in soup.select(selector):
@@ -47,7 +53,7 @@ def _body(soup: BeautifulSoup):
 
 
 def _link(node, source_url: str) -> dict:
-    href = urljoin(source_url, node.get("href", "").strip())
+    href = _safe_https_url(node.get("href", ""), source_url)
     return {"text": _text(node) or href, "url": href} if href else {"text": _text(node), "url": ""}
 
 
@@ -55,7 +61,7 @@ def _attachments(body, source_url: str, announcement_id: str) -> list[dict]:
     result = []
     seen = set()
     for anchor in body.select("a[href]"):
-        url = urljoin(source_url, anchor.get("href", "").strip())
+        url = _safe_https_url(anchor.get("href", ""), source_url)
         if not url or url in seen:
             continue
         lower = url.split("?", 1)[0].lower()
@@ -99,12 +105,16 @@ def _blocks(body, source_url: str) -> list[dict]:
                 blocks.append({"type": "list", "ordered": node.name == "ol", "items": items})
         elif node.name == "table":
             rows = []
+            header_rows = []
             for tr in node.select("tr"):
-                cells = [_text(cell) for cell in tr.find_all(["th", "td"], recursive=False)]
+                cell_nodes = tr.find_all(["th", "td"], recursive=False)
+                cells = [_text(cell) for cell in cell_nodes]
                 if cells:
+                    if cell_nodes and all(cell.name == "th" for cell in cell_nodes):
+                        header_rows.append(len(rows))
                     rows.append(cells)
             if rows:
-                blocks.append({"type": "table", "rows": rows})
+                blocks.append({"type": "table", "rows": rows, "header_rows": header_rows})
     if not blocks:
         text = _text(body)
         if text:

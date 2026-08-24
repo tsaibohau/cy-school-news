@@ -31,6 +31,7 @@ assert(revision, "staging build must create a single content-derived shell revis
 assert(!staging.includes("?v=25"), "staging cannot retain production shell query versions");
 assert(staging.includes('src="acceptance-user-tasks.js?v=' + revision + '"'));
 assert(staging.includes('src="app.js?v=' + revision + '"'));
+assert(staging.includes('src="detail-ui.js?v=' + revision + '"'));
 assert.equal(manifest.name, "嘉校快訊 Staging／測試版");
 assert.equal(fs.readFileSync(path.join(output, "robots.txt"), "utf8"), "User-agent: *\nDisallow: /\n");
 assert(harness.includes('params.get("acceptance") !== "user-tasks" && !localStorage.getItem(STORAGE)'), "harness is query gated and survives the exact-root OAuth callback");
@@ -55,6 +56,7 @@ assert(harness.includes('area.status.textContent = "BLOCKED：" + label'), "bloc
 assert(harness.includes("USER_A companion 未回覆") && harness.includes("USER_A／USER_B 為同一 session"), "blocked reports must distinguish sanitized companion causes");
 assert(!harness.includes("service_role"));
 assert(sw.includes('var CACHE = "cy-news-' + revision + '";'), "staging cache namespace is distinct and advances with shell changes");
+assert(sw.includes('detail-ui.js?v=' + revision), "structured detail renderer is part of the coherent shell");
 assert(sw.includes('"./manifest-staging.webmanifest"'));
 assert(sw.includes('"./staging.css?v=' + revision + '"'));
 assert(sw.includes('"./acceptance-user-tasks.js?v=' + revision + '"'));

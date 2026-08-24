@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=26">
+<link rel="stylesheet" href="style.css?v=27">
 </head>
 <body>
 
@@ -158,6 +158,13 @@
   </footer>
 </div>
 
+<dialog id="detailDialog" class="detail-dialog" aria-labelledby="detailTitle">
+  <div class="detail-sheet">
+    <header class="detail-header"><div><p class="eyebrow">OFFICIAL DETAIL</p><h2 id="detailTitle">公告完整內容</h2><p id="detailMeta" class="hint"></p></div><button id="detailClose" class="icon-btn" type="button" aria-label="關閉完整內容">×</button></header>
+    <div id="detailBody" class="detail-body" aria-live="polite"></div>
+  </div>
+</dialog>
+
 <nav class="tabbar" aria-label="主要分頁">
   <button id="tabToday" class="tab">
     <span class="tab-icon" aria-hidden="true">✦</span><span>今天</span>
@@ -176,17 +183,18 @@
   </button>
 </nav>
 
-<script src="account-config.js?v=26"></script>
-<script src="supabase-sync.js?v=26"></script>
-<script src="account-auth.js?v=26"></script>
-<script src="task-state.js?v=26"></script>
-<script src="account-sync.js?v=26"></script>
-<script src="school-registry.js?v=26"></script>
-<script src="profile.js?v=26"></script>
-<script src="relevance.js?v=26"></script>
-<script src="today.js?v=26"></script>
-<script src="calendar-state.js?v=26"></script>
-<script src="app.js?v=26"></script>
+<script src="account-config.js?v=27"></script>
+<script src="supabase-sync.js?v=27"></script>
+<script src="account-auth.js?v=27"></script>
+<script src="task-state.js?v=27"></script>
+<script src="account-sync.js?v=27"></script>
+<script src="school-registry.js?v=27"></script>
+<script src="profile.js?v=27"></script>
+<script src="relevance.js?v=27"></script>
+<script src="today.js?v=27"></script>
+<script src="calendar-state.js?v=27"></script>
+<script src="detail-ui.js?v=27"></script>
+<script src="app.js?v=27"></script>
 </body>
 </html>
 

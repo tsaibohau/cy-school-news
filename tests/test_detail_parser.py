@@ -21,7 +21,8 @@ def main():
                                  source_url="https://www.cygsh.cy.edu.tw/p/406-1013-1.php")
     assert cysh["parse_status"] == "parsed"
     assert cysh["parser_version"] == "detail-v2"
-    assert any(block["type"] == "table" for block in cysh["blocks"])
+    table = next(block for block in cysh["blocks"] if block["type"] == "table")
+    assert table["header_rows"] == [0]
     assert any(block["type"] == "list" for block in cysh["blocks"])
     assert len(cysh["attachments"]) == 1
     assert cysh["attachments"][0]["provenance"] == "official_attachment"
@@ -35,6 +36,14 @@ def main():
                                  announcement_id="empty", school_id="cysh", title="空",
                                  source_url="https://example.test/a")
     assert empty["parse_status"] in {"empty", "permanent_error"}
+    hostile = parse_article_detail("""<article><p>&lt;img src=x onerror=alert(1)&gt;
+      <a href='javascript:alert(1)'>危險</a><a href='data:text/html,x'>資料</a>
+      <a href='/safe'>安全</a></p><a href='javascript:file.pdf'>evil.pdf</a></article>""",
+      announcement_id="hostile", school_id="cysh", title="安全測試",
+      source_url="https://www.cysh.cy.edu.tw/p/406-1008-1.php")
+    hostile_links = [link for block in hostile["blocks"] for link in block.get("links", [])]
+    assert [link["url"] for link in hostile_links if link["url"]] == ["https://www.cysh.cy.edu.tw/safe"]
+    assert hostile["attachments"] == []
     print("Detail parser tests passed")
 
 

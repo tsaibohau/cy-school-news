@@ -63,6 +63,8 @@
       personalizedNotifications: false,
       activeAccountId: "anonymous",
       lastSeen: localStorage.getItem(LS_SEEN) || "",
+      detailCache: {},
+      detailRequestGeneration: 0,
     };
 
     var $ = function (id) { return document.getElementById(id); };
@@ -93,6 +95,8 @@
       taskStatus: $("taskStatus"), taskOpenList: $("taskOpenList"), taskDoneList: $("taskDoneList"),
       todayCoverage: $("todayCoverage"), todayEvents: $("todayEvents"), todayDeadlines: $("todayDeadlines"),
       todayTasks: $("todayTasks"), todayRelevant: $("todayRelevant"), todayEmpty: $("todayEmpty"),
+      detailDialog: $("detailDialog"), detailTitle: $("detailTitle"), detailMeta: $("detailMeta"),
+      detailBody: $("detailBody"), detailClose: $("detailClose"),
     };
 
     function loadUserEvents() {
@@ -642,8 +646,58 @@
         '<h3 class="card-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         esc(it.title) + '</a></h3>' +
         (it.snippet ? '<p class="card-snippet">' + esc(it.snippet) + '</p>' : "") +
-        '<div class="card-actions"><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>' +
+        '<div class="card-actions"><button type="button" class="btn-ghost" data-detail-id="' + esc(it.id) + '">查看完整內容</button><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>' +
         '</article>';
+    }
+
+    function detailItem(id) {
+      return state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
+    }
+    function showDetailDialog() {
+      if (!el.detailDialog) return;
+      if (typeof el.detailDialog.showModal === "function") {
+        if (!el.detailDialog.open) el.detailDialog.showModal();
+      } else el.detailDialog.setAttribute("open", "");
+    }
+    function closeDetailDialog() {
+      if (!el.detailDialog) return;
+      state.detailRequestGeneration += 1;
+      if (typeof el.detailDialog.close === "function") el.detailDialog.close();
+      else el.detailDialog.removeAttribute("open");
+    }
+    function detailFallback(item, message) {
+      var renderer = window.CyNewsDetailUI;
+      var source = renderer && renderer.safeUrl(item && item.url);
+      el.detailBody.innerHTML = '<p class="detail-state">' + esc(message) + '</p>' +
+        (source ? '<a class="detail-source" href="' + esc(source) + '" target="_blank" rel="noopener noreferrer">查看官方原始公告 ↗</a>' : '');
+    }
+    function openDetail(id) {
+      var item = detailItem(id);
+      if (!item || !el.detailDialog || !window.CyNewsDetailUI) return;
+      el.detailTitle.textContent = item.title || "公告完整內容";
+      el.detailMeta.textContent = (item.school_name || "官方公告") + " · " + displayDate(item);
+      el.detailBody.innerHTML = '<p class="detail-state">正在載入官方完整內容…</p>';
+      showDetailDialog();
+      var generation = ++state.detailRequestGeneration;
+      if (!window.CyNewsDetailUI.validDetailRef(item.detail_ref)) {
+        detailFallback(item, window.CyNewsDetailUI.statusMessage(item.detail_status));
+        return;
+      }
+      var cacheKey = item.detail_ref + "@" + String(item.detail_revision || "");
+      if (state.detailCache[cacheKey]) {
+        el.detailBody.innerHTML = window.CyNewsDetailUI.render(state.detailCache[cacheKey]);
+        return;
+      }
+      fetch(item.detail_ref + "?_=" + encodeURIComponent(item.detail_revision || Date.now()), { cache: "no-store" })
+        .then(function (response) { if (!response.ok) throw new Error("detail HTTP " + response.status); return response.json(); })
+        .then(function (record) {
+          if (generation !== state.detailRequestGeneration) return;
+          if (!record || String(record.announcement_id) !== String(item.id) || record.provenance !== "official_article" ||
+              (item.detail_revision && String(record.source_hash) !== String(item.detail_revision))) throw new Error("detail identity mismatch");
+          state.detailCache[cacheKey] = record;
+          el.detailBody.innerHTML = window.CyNewsDetailUI.render(record);
+        })
+        .catch(function () { if (generation === state.detailRequestGeneration) detailFallback(item, "完整內文載入失敗，請改看官方來源。"); });
     }
     function renderImportant() {
       if (!el.importantList) return;
@@ -891,6 +945,8 @@
       }
     }
     el.list.addEventListener("click", function (e) {
+      var detailButton = e.target.closest("button[data-detail-id]");
+      if (detailButton) { openDetail(detailButton.dataset.detailId); return; }
       var addTaskButton = e.target.closest("button[data-add-task]");
       if (addTaskButton) { addAnnouncementTask(addTaskButton.dataset.addTask); return; }
       var readButton = e.target.closest("button[data-read-id]");
@@ -906,8 +962,14 @@
       if (next) next.focus();
     });
     el.subList.addEventListener("click", function (e) {
+      var detailButton = e.target.closest("button[data-detail-id]");
+      if (detailButton) { openDetail(detailButton.dataset.detailId); return; }
       var readButton = e.target.closest("button[data-read-id]");
       if (readButton) markRead(readButton.dataset.readId);
+    });
+    if (el.detailClose) el.detailClose.addEventListener("click", closeDetailDialog);
+    if (el.detailDialog) el.detailDialog.addEventListener("click", function (e) {
+      if (e.target === el.detailDialog) closeDetailDialog();
     });
     function taskButtonHandler(e) {
       var button = e.target.closest("button"); if (!button) return;
@@ -1081,7 +1143,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=26").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=27").catch(function () {});
       });
     }
 

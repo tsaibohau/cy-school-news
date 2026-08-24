@@ -36,6 +36,7 @@ jobs:
           tests/test_calendar_persistence.js
           tests/test_task_state.js
           tests/test_today.js
+          tests/test_detail_ui.js
           tests/test_staging_build.js
       - name: Python parser and calendar regression
         env:
@@ -43,6 +44,8 @@ jobs:
         run: |
           python tests/test_parser.py
           python tests/test_calendar_adapter.py
+          python tests/test_detail_parser.py
+          python tests/test_attachment_parser.py
       - name: Verify generated data is untouched by staging build
         run: git diff --exit-code -- docs/data scraper/fetch_state.json
       - name: Reject tracked secret patterns
