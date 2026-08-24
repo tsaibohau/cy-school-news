@@ -41,10 +41,15 @@ assert.match(worker, /security invoker/);
 assert.doesNotMatch(worker, /security definer/);
 assert.match(worker, /for update of d skip locked/);
 assert.match(worker, /on conflict \(job_id, push_subscription_id\) do nothing/);
+assert.match(worker, /schedule_baseline_at/);
+assert.match(worker, /on conflict \(rule_id, offset_days, target_at\) do nothing/);
 assert.match(worker, /d\.lease_token = delivery_lease_token/);
 assert.match(worker, /d\.lease_until >= now\(\)/);
 assert.match(worker, /grant execute on function public\.claim_reminder_deliveries\(integer, integer\) to service_role/);
 assert.match(worker, /revoke all on function public\.claim_reminder_deliveries\(integer, integer\) from public, anon, authenticated/);
 assert.match(worker, /outcome not in \('sent', 'invalid', 'retry', 'dead'\)/);
+assert.match(worker, /effective_outcome = 'invalid'/);
+assert.match(worker, /invalidated_at = coalesce\(invalidated_at, now\(\)\)/);
+assert.match(worker, /d\.attempts >= j\.max_attempts/);
 console.log("Reminder schema security contract tests passed");
 

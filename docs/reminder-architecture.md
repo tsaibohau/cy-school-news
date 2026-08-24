@@ -28,3 +28,15 @@ secrets and hosted extensions are verified, reminder delivery remains disabled.
 A foreground-only poller is never an acceptable implementation. Publication
 dates are never substituted for verified target dates.
 
+The `reminder-worker` Edge Function requires a separate random
+`REMINDER_WORKER_TOKEN` header in addition to the gateway JWT. It reads the
+database secret key and VAPID private key only from hosted function secrets,
+claims deliveries through a service-role-only lease RPC, and never logs push
+endpoints or key material. HTTP 404/410 responses permanently invalidate the
+device subscription; transient 408/429/5xx failures use bounded retry, with the
+database enforcing the maximum attempt count.
+
+Cron activation is deliberately absent from source migrations. It happens only
+after the staging migration, function secrets, deployed Auth A/B RLS, and a real
+closed-App delivery smoke test all pass.
+

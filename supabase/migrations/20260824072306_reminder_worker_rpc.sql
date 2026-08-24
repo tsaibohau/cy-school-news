@@ -14,6 +14,7 @@ create or replace function public.claim_reminder_deliveries(
 returns table (
   delivery_id uuid,
   delivery_lease_token uuid,
+  push_subscription_id uuid,
   endpoint text,
   p256dh text,
   auth text,
@@ -43,6 +44,35 @@ begin
    where d.job_id = j.id
      and d.status = 'processing'
      and d.lease_until < now();
+
+  -- Materialize only reminders whose verified target and scheduled instant are
+  -- both in the future relative to the rule baseline. This prevents enabling a
+  -- rule from replaying years of historical announcements.
+  insert into public.reminder_jobs (
+    rule_id, user_id, target_at, offset_days, scheduled_for,
+    next_attempt_at, status
+  )
+  select r.id, r.user_id, resolved.target_at, offsets.offset_days,
+         resolved.target_at - make_interval(days => offsets.offset_days),
+         resolved.target_at - make_interval(days => offsets.offset_days),
+         'pending'
+    from public.user_reminder_rules r
+    cross join lateral unnest(r.offsets_days) offsets(offset_days)
+    cross join lateral (
+      select case when r.target_kind = 'manual'
+                  then r.manual_target_at else t.target_at end as target_at
+        from (select 1) seed
+        left join public.reminder_targets t
+          on t.id = r.reminder_target_id
+         and t.active
+         and t.target_kind = r.target_kind
+         and t.target_id = r.target_id
+    ) resolved
+   where r.enabled and r.disabled_at is null and r.deleted_at is null
+     and resolved.target_at > now()
+     and resolved.target_at - make_interval(days => offsets.offset_days) >= r.schedule_baseline_at
+     and resolved.target_at - make_interval(days => offsets.offset_days) <= now()
+  on conflict (rule_id, offset_days, target_at) do nothing;
 
   insert into public.reminder_deliveries (
     job_id, user_id, push_subscription_id, status, next_attempt_at
@@ -82,7 +112,7 @@ begin
      where d.id = c.id
     returning d.*
   )
-  select c.id, c.lease_token, s.endpoint, s.p256dh, s.auth,
+  select c.id, c.lease_token, s.id, s.endpoint, s.p256dh, s.auth,
          r.target_kind, r.target_id, j.target_at, j.offset_days
     from claimed c
     join public.reminder_jobs j on (j.id, j.user_id) = (c.job_id, c.user_id)
@@ -108,25 +138,73 @@ set search_path = public, pg_temp
 as $$
 declare
   changed integer;
+  claimed_subscription_id uuid;
+  claimed_job_id uuid;
+  effective_outcome text;
 begin
   if outcome not in ('sent', 'invalid', 'retry', 'dead') then
     raise exception 'invalid delivery outcome';
   end if;
+  select case when outcome = 'retry' and d.attempts >= j.max_attempts then 'dead' else outcome end
+    into effective_outcome
+    from public.reminder_deliveries d
+    join public.reminder_jobs j on (j.id, j.user_id) = (d.job_id, d.user_id)
+   where d.id = delivery_id
+     and d.status = 'processing'
+     and d.lease_token = delivery_lease_token
+     and d.lease_until >= now()
+   for update of d;
+
+  if effective_outcome is null then
+    return false;
+  end if;
+
   update public.reminder_deliveries d
-     set status = outcome,
-         delivered_at = case when outcome = 'sent' then now() else d.delivered_at end,
-         next_attempt_at = case when outcome = 'retry' then now() + make_interval(secs => least(3600, 30 * (2 ^ least(d.attempts, 7)))) else d.next_attempt_at end,
-         terminal_at = case when outcome in ('sent', 'invalid', 'dead') then now() else null end,
+     set status = effective_outcome,
+         delivered_at = case when effective_outcome = 'sent' then now() else d.delivered_at end,
+         next_attempt_at = case when effective_outcome = 'retry' then now() + make_interval(secs => least(3600, 30 * (2 ^ least(d.attempts, 7)))) else d.next_attempt_at end,
+         terminal_at = case when effective_outcome in ('sent', 'invalid', 'dead') then now() else null end,
          lease_until = null,
          lease_token = null,
          response_status = http_status,
          response_code = left(error_code, 120),
-         last_error = case when outcome in ('retry', 'dead') then left(error_code, 500) else null end
+         last_error = case when effective_outcome in ('retry', 'dead') then left(error_code, 500) else null end
    where d.id = delivery_id
      and d.status = 'processing'
      and d.lease_token = delivery_lease_token
-     and d.lease_until >= now();
+     and d.lease_until >= now()
+  returning d.push_subscription_id, d.job_id
+       into claimed_subscription_id, claimed_job_id;
   get diagnostics changed = row_count;
+
+  if changed = 1 and effective_outcome = 'invalid' then
+    update public.user_push_subscriptions
+       set active = false,
+           invalidated_at = coalesce(invalidated_at, now()),
+           disabled_at = coalesce(disabled_at, now()),
+           failure_count = failure_count + 1,
+           last_failure_at = now()
+     where id = claimed_subscription_id;
+  elsif changed = 1 and effective_outcome in ('retry', 'dead') then
+    update public.user_push_subscriptions
+       set failure_count = failure_count + 1,
+           last_failure_at = now()
+     where id = claimed_subscription_id;
+  end if;
+
+  if changed = 1 and not exists (
+    select 1 from public.reminder_deliveries
+     where job_id = claimed_job_id and status in ('pending', 'processing', 'retry')
+  ) then
+    update public.reminder_jobs j
+       set status = case when exists (
+             select 1 from public.reminder_deliveries
+              where job_id = claimed_job_id and status = 'sent'
+           ) then 'sent' else 'dead' end,
+           terminal_at = now()
+     where j.id = claimed_job_id;
+  end if;
+
   return changed = 1;
 end;
 $$;

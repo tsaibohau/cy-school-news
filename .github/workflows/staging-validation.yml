@@ -19,6 +19,9 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.1.4
       - name: Install parser dependencies
         run: pip install -r scraper/requirements.txt
       - name: Node regression
@@ -39,7 +42,13 @@ jobs:
           tests/test_detail_ui.js
           tests/test_reminder_rules.js
           tests/test_reminder_schema.js
+          tests/test_reminder_worker.js
           tests/test_staging_build.js
+      - name: Type-check reminder Edge Function
+        run: >-
+          deno check
+          --config supabase/functions/reminder-worker/deno.json
+          supabase/functions/reminder-worker/index.ts
       - name: Python parser and calendar regression
         env:
           PYTHONIOENCODING: utf-8
