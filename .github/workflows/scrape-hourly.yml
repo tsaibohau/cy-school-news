@@ -37,7 +37,10 @@ jobs:
 
       - name: 推播新公告 (ntfy)
         env:
-          NTFY_TOPIC: ${{ vars.NTFY_TOPIC }}
+          # Secret first (topic URL or name), then legacy repository variable.
+          # The value must never be echoed to Actions logs.
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || vars.NTFY_TOPIC }}
+          NTFY_URL: ${{ secrets.NTFY_URL || vars.NTFY_URL }}
           SITE_URL: ${{ vars.SITE_URL }}
         run: python scraper/notify.py
 

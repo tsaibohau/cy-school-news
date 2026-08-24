@@ -12,7 +12,8 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     merge_collected_item, validate_snapshot_items,
                     validate_history_capacity, merge_title, decode_response,
                     record_detail_fetch_failure)  # noqa: E402
-from notify import push_topics, summarize, personal_topics, SUMMARY_THRESHOLD  # noqa: E402
+from notify import (push_topics, summarize, personal_topics, notification_payload,
+                    normalize_topic, SUMMARY_THRESHOLD)  # noqa: E402
 from schoolcal import build_ics, events_on, build_public_events  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
 
@@ -278,7 +279,19 @@ def run():
     assert "研習活動 9" in s and "獎助學金 5" in s and "段考考試 2" in s
     assert s.index("研習活動 9") < s.index("獎助學金 5") < s.index("段考考試 2"), \
         "分類應依數量排序"
-    assert summarize([{"title": "x"}]) == "本輪新增 1 則:一般 1", "無分類欄位歸為一般"
+    one_digest = summarize([{"title": "x"}])
+    assert one_digest.startswith("本輪新增 1 則:一般 1") and "・x" in one_digest, "無分類欄位仍歸為一般，且保留實際標題"
+    digest = summarize([{"title": "實際公告 A", "snippet": "這是內文摘要", "category": "一般"}] * 9)
+    assert "實際公告 A" in digest and "這是內文摘要" in digest, "彙總仍必須帶實際標題與摘要"
+    header, body = notification_payload({"title": "實際公告標題", "snippet": "可讀的內文摘要", "school_name": "嘉中", "category": "競賽"})
+    assert header.startswith("實際公告標題") and "嘉中・競賽" in header
+    assert body == "可讀的內文摘要"
+    assert notification_payload({"title": "公告"})[1].startswith("尚未取得內文摘要")
+    assert normalize_topic("https://ntfy.sh/cynews_private-1") == "cynews_private-1"
+    assert normalize_topic("https://evil.example/topic") == ""
+    assert normalize_topic("cynews_private-1") == "cynews_private-1"
+    notify_source = (Path(__file__).resolve().parent.parent / "scraper" / "notify.py").read_text(encoding="utf-8")
+    assert "推播失敗 {t}" not in notify_source, "ntfy topic must not be logged"
     assert SUMMARY_THRESHOLD == 8
     subs2 = [{"name": "我", "topic_suffix": "kw-me", "keywords": ["段考"]}]
     assert personal_topics({"title": "段考範圍", "category": "段考考試"},

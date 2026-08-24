@@ -14,9 +14,11 @@
 """
 import json
 import os
+import re
 import sys
 import time
 from pathlib import Path
+from urllib.parse import urlparse
 
 import requests
 
@@ -25,6 +27,9 @@ NEW_ITEMS = ROOT / "scraper" / "new_items.json"
 SUBSCRIPTIONS = ROOT / "scraper" / "subscriptions.json"
 MAX_PUSH = 20  # 單次最多推播則數,避免第一次建置時灌爆訂閱者
 SUMMARY_THRESHOLD = 8  # 單輪新公告超過此數改推一則彙總(個人關鍵字命中仍逐則)
+SUMMARY_ITEM_LIMIT = 4
+TITLE_LIMIT = 120
+BODY_LIMIT = 260
 
 CATEGORY_SLUGS = {
     "段考考試": "exam", "升學": "admission", "獎助學金": "scholarship",
@@ -54,12 +59,47 @@ def push_topics(item: dict, topic: str, subs=()) -> list:
     return topics
 
 
+def _compact(value: object, limit: int) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    return text if len(text) <= limit else text[:max(0, limit - 1)].rstrip() + "…"
+
+
+def normalize_topic(value: object) -> str:
+    """Accept a private ntfy topic or its ntfy.sh URL without logging it."""
+    raw = str(value or "").strip()
+    if raw.startswith("https://"):
+        parsed = urlparse(raw)
+        if parsed.scheme != "https" or parsed.netloc != "ntfy.sh" or parsed.query or parsed.fragment:
+            return ""
+        raw = parsed.path.strip("/")
+    return raw if re.fullmatch(r"[A-Za-z0-9_-]{1,128}", raw) else ""
+
+
+def notification_payload(item: dict) -> tuple[str, str]:
+    """Return a readable ntfy title/body; never use a publication date as content."""
+    title = _compact(item.get("title"), TITLE_LIMIT) or "新公告"
+    school = _compact(item.get("school_name"), 20)
+    category = _compact(item.get("category", "一般"), 20)
+    header = title + (f"｜{school}・{category}" if school else f"｜{category}")
+    snippet = _compact(item.get("snippet"), BODY_LIMIT)
+    body = snippet or "尚未取得內文摘要，點擊查看官方公告。"
+    return header, body
+
+
 def summarize(items) -> str:
-    """彙總文字:「本輪新增 N 則:段考考試 2、獎助學金 5…」,分類依數量排序。"""
+    """Flood-safe digest that still names recent announcements and their snippets."""
     from collections import Counter
     counts = Counter(it.get("category", "一般") for it in items)
     parts = "、".join(f"{cat} {n}" for cat, n in counts.most_common())
-    return f"本輪新增 {len(items)} 則:{parts}"
+    base = f"本輪新增 {len(items)} 則:{parts}"
+    visible = []
+    for item in items[:SUMMARY_ITEM_LIMIT]:
+        title = _compact(item.get("title"), 80)
+        if not title:
+            continue
+        snippet = _compact(item.get("snippet"), 110)
+        visible.append("・" + title + ("\n  " + snippet if snippet else ""))
+    return base + ("\n\n最新公告:\n" + "\n".join(visible) if visible else "")
 
 
 def personal_topics(item: dict, topic: str, subs) -> list:
@@ -72,15 +112,17 @@ def _post(t: str, body: str, title: str, click: str = "") -> None:
     if click:
         headers["Click"] = click
     try:
-        requests.post(f"https://ntfy.sh/{t}", data=body.encode("utf-8"),
-                      headers=headers, timeout=15)
+        response = requests.post(f"https://ntfy.sh/{t}", data=body.encode("utf-8"),
+                                 headers=headers, timeout=15)
+        response.raise_for_status()
     except Exception as e:
-        print(f"[warn] 推播失敗 {t}: {e}", file=sys.stderr)
+        # Request exceptions often embed their URL; topic names are secrets.
+        print(f"[warn] ntfy 推播失敗 ({type(e).__name__})", file=sys.stderr)
     time.sleep(0.3)
 
 
 def main() -> int:
-    topic = os.environ.get("NTFY_TOPIC", "").strip()
+    topic = normalize_topic(os.environ.get("NTFY_TOPIC") or os.environ.get("NTFY_URL"))
     if not topic:
         print("[info] 未設定 NTFY_TOPIC,略過推播")
         return 0
@@ -110,9 +152,8 @@ def main() -> int:
                 break
             hits = personal_topics(it, topic, subs)
             for t in hits:
-                _post(t, it.get("title", ""),
-                      f'[{it.get("school_name", "")}] {it.get("category", "一般")}',
-                      it.get("url", ""))
+                title, body = notification_payload(it)
+                _post(t, body, title, it.get("url", ""))
             personal_sent += bool(hits)
         print(f"[info] 彙總模式:{len(items)} 則合併為 1 則推播,"
               f"個人關鍵字另推 {personal_sent} 則")
@@ -120,13 +161,12 @@ def main() -> int:
 
     sent = 0
     for it in items[:MAX_PUSH]:
-        title = f'[{it.get("school_name", "")}] {it.get("category", "一般")}'
-        body = it.get("title", "")
+        title, body = notification_payload(it)
         for t in push_topics(it, topic, subs):
             _post(t, body, title, it.get("url", ""))
         sent += 1
 
-    print(f"[info] 已推播 {sent} 則到主題 {topic}")
+    print(f"[info] 已推播 {sent} 則公告")
     return 0
 
 

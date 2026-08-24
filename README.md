@@ -62,9 +62,10 @@ git push -u origin main
 網頁內建的通知只在「開啟網站時」提醒你;要做到**真正的即時推播**(不開網站也會跳通知),用免費的 ntfy:
 
 1. 想一個**不易被猜到**的主題名稱,例如 `cynews-a8k3x7`(任何知道名稱的人都能訂閱,所以請加亂碼)。
-2. 儲存庫 → **Settings → Secrets and variables → Actions → Variables** → 「New repository variable」:
+2. 儲存庫 → **Settings → Secrets and variables → Actions → Secrets** → 「New repository secret」:
    - Name:`NTFY_TOPIC`
-   - Value:你的主題名稱(如 `cynews-a8k3x7`)
+   - Value:你的主題名稱，或完整 `https://ntfy.sh/主題名稱` 連結
+   - 舊有同名 repository variable 仍相容，但 Secret 優先，且工作流程不會輸出它。
 3. 手機安裝 **ntfy** App([iOS](https://apps.apple.com/app/ntfy/id1625396347) / [Android](https://play.google.com/store/apps/details?id=io.heckel.ntfy)),新增訂閱、輸入同一個主題名稱即可。
 
 **只想收特定分類?** 每則公告也會發到「主題-分類代號」,想收什麼就訂什麼:
