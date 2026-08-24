@@ -14,6 +14,7 @@
 
 const assert = require("node:assert/strict");
 const crypto = require("node:crypto");
+const { spawnSync } = require("node:child_process");
 
 const base = String(process.env.CYNEWS_SUPABASE_URL || "").replace(/\/$/, "");
 const apiKey = process.env.CYNEWS_SUPABASE_PUBLISHABLE_KEY || process.env.CYNEWS_SUPABASE_ANON_KEY || "";
@@ -115,7 +116,19 @@ async function run() {
     await crossIsolation(a, b, taskB);
     await crossIsolation(b, a, taskA);
     await anonymousDenied();
-    console.log("DEPLOYED_RLS_PASS: USER_A/USER_B own CRUD, isolation, spoofing, anonymous denial, and idempotency");
+    const accountMatrix = spawnSync(process.execPath, ["tests/test_rls_behavioral.js"], {
+      cwd: process.cwd(),
+      env: {
+        ...process.env,
+        CYNEWS_SUPABASE_ANON_KEY: apiKey,
+        CYNEWS_RLS_TOKEN_A: a.token,
+        CYNEWS_RLS_TOKEN_B: b.token,
+      },
+      encoding: "utf8",
+    });
+    assert.equal(accountMatrix.status, 0,
+      `deployed account-table matrix failed: ${String(accountMatrix.stderr || accountMatrix.stdout || "no output").trim()}`);
+    console.log("DEPLOYED_RLS_PASS: Auth A/B own CRUD, bidirectional isolation, spoofing, anonymous denial, account tables, and retry idempotency");
   } finally {
     if (taskA) await task(a.token, "DELETE", `?id=eq.${queryValue(taskA.id)}`);
     if (taskB) await task(b.token, "DELETE", `?id=eq.${queryValue(taskB.id)}`);
