@@ -122,7 +122,7 @@ def parse_article_detail(html: str, *, announcement_id: str, school_id: str,
         if body is None:
             return {"announcement_id": announcement_id, "school_id": school_id, "title": title,
                     "source_url": source_url, "blocks": [], "attachments": [],
-                    "source_hash": raw_hash, "parser_version": "detail-v1",
+                    "source_hash": raw_hash, "parser_version": "detail-v2",
                     "fetched_at": fetched, "parse_status": "empty",
                     "provenance": "official_article"}
         return {
@@ -133,7 +133,7 @@ def parse_article_detail(html: str, *, announcement_id: str, school_id: str,
             "blocks": _blocks(body, source_url),
             "attachments": _attachments(body, source_url, announcement_id),
             "source_hash": raw_hash,
-            "parser_version": "detail-v1",
+            "parser_version": "detail-v2",
             "fetched_at": fetched,
             "parse_status": "parsed" if _text(body) else "empty",
             "provenance": "official_article",
@@ -142,7 +142,7 @@ def parse_article_detail(html: str, *, announcement_id: str, school_id: str,
     except Exception as exc:
         return {"announcement_id": announcement_id, "school_id": school_id, "title": title,
                 "source_url": source_url, "blocks": [], "attachments": [],
-                "source_hash": raw_hash, "parser_version": "detail-v1",
-                "fetched_at": fetched, "parse_status": "failed",
+                "source_hash": raw_hash, "parser_version": "detail-v2",
+                "fetched_at": fetched, "parse_status": "permanent_error",
                 "parse_error_class": type(exc).__name__, "provenance": "official_article"}
 
