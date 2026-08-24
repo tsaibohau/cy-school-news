@@ -17,4 +17,5 @@ assert.doesNotMatch(source, /console\.(?:log|error)/);
 assert.match(workflow, /REMINDER_TARGET_SYNC_NOT_CONFIGURED/);
 assert.match(workflow, /--data-binary @docs\/data\/reminder-targets\.json/);
 assert.doesNotMatch(workflow, /SUPABASE_SERVICE_ROLE/);
+assert.doesNotMatch(workflow, /if:\s*\$\{\{\s*secrets\./);
 console.log("Reminder target server-sync security contract tests passed");

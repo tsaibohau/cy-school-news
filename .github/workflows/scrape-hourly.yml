@@ -51,22 +51,21 @@ jobs:
         run: python scraper/reminder_targets.py
 
       - name: 同步可信提醒目標到 Supabase（已設定時）
-        if: ${{ secrets.REMINDER_TARGET_SYNC_TOKEN != '' && vars.REMINDER_TARGET_SYNC_URL != '' && vars.SUPABASE_PUBLISHABLE_KEY != '' }}
         env:
           REMINDER_TARGET_SYNC_TOKEN: ${{ secrets.REMINDER_TARGET_SYNC_TOKEN }}
           REMINDER_TARGET_SYNC_URL: ${{ vars.REMINDER_TARGET_SYNC_URL }}
           SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
         run: |
+          if [ -z "$REMINDER_TARGET_SYNC_TOKEN" ] || [ -z "$REMINDER_TARGET_SYNC_URL" ] || [ -z "$SUPABASE_PUBLISHABLE_KEY" ]; then
+            echo "REMINDER_TARGET_SYNC_NOT_CONFIGURED"
+            exit 0
+          fi
           curl --fail --silent --show-error --request POST "$REMINDER_TARGET_SYNC_URL" \
             --header "authorization: Bearer $SUPABASE_PUBLISHABLE_KEY" \
             --header "apikey: $SUPABASE_PUBLISHABLE_KEY" \
             --header "x-reminder-target-sync-token: $REMINDER_TARGET_SYNC_TOKEN" \
             --header "content-type: application/json" \
             --data-binary @docs/data/reminder-targets.json
-
-      - name: 提醒目標同步狀態
-        if: ${{ secrets.REMINDER_TARGET_SYNC_TOKEN == '' || vars.REMINDER_TARGET_SYNC_URL == '' || vars.SUPABASE_PUBLISHABLE_KEY == '' }}
-        run: echo "REMINDER_TARGET_SYNC_NOT_CONFIGURED"
 
       - name: 提交更新後的資料
         run: |
