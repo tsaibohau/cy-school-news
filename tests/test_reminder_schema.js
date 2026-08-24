@@ -7,6 +7,9 @@ const foundation = fs.readFileSync(path.join(migrations, "003_reminder_push_foun
 const hardeningName = fs.readdirSync(migrations).find((name) => name.endsWith("_reminder_delivery_hardening.sql"));
 assert.ok(hardeningName, "official CLI-generated reminder hardening migration is required");
 const hardening = fs.readFileSync(path.join(migrations, hardeningName), "utf8");
+const workerName = fs.readdirSync(migrations).find((name) => name.endsWith("_reminder_worker_rpc.sql"));
+assert.ok(workerName, "official CLI-generated reminder worker migration is required");
+const worker = fs.readFileSync(path.join(migrations, workerName), "utf8");
 const sql = foundation + "\n" + hardening;
 for (const table of ["user_reminder_rules", "user_push_subscriptions", "reminder_jobs", "reminder_deliveries"]) {
   assert.match(sql, new RegExp("create table if not exists public\\." + table));
@@ -34,5 +37,14 @@ assert.match(hardening, /status in \('pending', 'processing', 'sent', 'skipped',
 assert.match(hardening, /revoke all on table public\.reminder_jobs from anon, authenticated/);
 assert.match(hardening, /revoke all on table public\.reminder_deliveries from anon, authenticated/);
 assert.match(hardening, /date-only targets resolve at local midnight/);
+assert.match(worker, /security invoker/);
+assert.doesNotMatch(worker, /security definer/);
+assert.match(worker, /for update of d skip locked/);
+assert.match(worker, /on conflict \(job_id, push_subscription_id\) do nothing/);
+assert.match(worker, /d\.lease_token = delivery_lease_token/);
+assert.match(worker, /d\.lease_until >= now\(\)/);
+assert.match(worker, /grant execute on function public\.claim_reminder_deliveries\(integer, integer\) to service_role/);
+assert.match(worker, /revoke all on function public\.claim_reminder_deliveries\(integer, integer\) from public, anon, authenticated/);
+assert.match(worker, /outcome not in \('sent', 'invalid', 'retry', 'dead'\)/);
 console.log("Reminder schema security contract tests passed");
 
