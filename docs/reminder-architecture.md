@@ -11,7 +11,20 @@ official calendar events, task due dates, or an explicit manual date.
 Publication dates are never reminder targets. Enabling or editing a rule must
 establish a local baseline and must not replay historical announcements.
 
-The remaining delivery gate is a server-side Web Push worker with VAPID. A
-foreground-only poller is not an acceptable implementation. The scheduler
-decision is deferred until the protected worker secret path is verified.
+The canonical scheduler is Supabase `pg_cron` invoking a bounded Edge Function.
+The cron-to-function credential belongs in Supabase Vault and the VAPID private
+key belongs only in Edge Function secrets. GitHub Actions is limited to manual
+smoke checks and recovery; it is not the primary scheduler. This keeps private
+reminder rows and privileged credentials in one control plane.
+
+Migration `003` is foundation only and must not be used to activate delivery.
+The next CLI-generated additive migration must first add durable target time,
+timezone, provenance/revision, preset and baseline fields; strict offset checks;
+cross-table owner consistency; scheduled time, bounded retry and lease state;
+global endpoint ownership; explicit browser privilege revocation; and durable
+dedupe that survives rule/device deactivation. Until that migration, Edge
+secrets and hosted extensions are verified, reminder delivery remains disabled.
+
+A foreground-only poller is never an acceptable implementation. Publication
+dates are never substituted for verified target dates.
 
