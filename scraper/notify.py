@@ -65,7 +65,9 @@ def _compact(value: object, limit: int) -> str:
 
 def _readable_title(value: object) -> str:
     title = _compact(value, TITLE_LIMIT)
-    return title if len(title) >= 4 and any(ch.isalnum() or "\u3400" <= ch <= "\u9fff" for ch in title) else ""
+    generic = {"國立嘉義高中", "國立嘉義女子高級中學"}
+    return title if title not in generic and len(title) >= 4 and any(
+        ch.isalnum() or "\u3400" <= ch <= "\u9fff" for ch in title) else ""
 
 
 def _clean_snippet(value: object) -> str:

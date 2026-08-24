@@ -161,10 +161,14 @@ def run():
     print("✓ 標題隱形空白清理")
 
     assert is_invalid_title(":::")
+    assert is_invalid_title("國立嘉義女子高級中學")
     assert extract_article_title(ARTICLE_RULING_TITLE_HTML) == "【重要公告】因應豪大雨 新生訓練調整措施"
     damaged = {"title": ":::"}
     merge_title(damaged, "【115年校園清掃區域分配】")
     assert damaged["title"] == "【115年校園清掃區域分配】"
+    damaged_cygsh = {"title": "國立嘉義女子高級中學"}
+    merge_title(damaged_cygsh, "【最新公告】新生始業輔導時間配當表更新版")
+    assert damaged_cygsh["title"] == "【最新公告】新生始業輔導時間配當表更新版"
     print("✓ 嘉中 ::: 導覽字串不再覆蓋標題")
 
     assert extract_article_date(ARTICLE_MDATE_HTML) == "2026-08-09"
@@ -295,6 +299,8 @@ def run():
     header, body = notification_payload({"title": ":::", "snippet": "作者：衛生組 發佈日期：2026-08-24 【衛生組公告】返校打掃調整", "school_name": "嘉中", "category": "一般"})
     assert ":::" not in header and "返校打掃調整" in header
     assert "作者" not in body and "返校打掃調整" in body
+    cygsh_header, _ = notification_payload({"title": "國立嘉義女子高級中學", "snippet": "新生始業輔導時間配當表更新版", "school_name": "嘉女"})
+    assert "新生始業輔導" in cygsh_header and "國立嘉義女子高級中學" not in cygsh_header
     assert SUMMARY_THRESHOLD == 8
     subs2 = [{"name": "我", "topic_suffix": "kw-me", "keywords": ["段考"]}]
     assert personal_topics({"title": "段考範圍", "category": "段考考試"},

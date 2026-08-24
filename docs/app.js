@@ -443,7 +443,8 @@
     }
     function displayTitle(it) {
       var title = String(it && it.title || "").replace(/\s+/g, " ").trim();
-      if (title.length >= 4 && /[0-9A-Za-z\u3400-\u9fff]/.test(title)) return title;
+      var generic = title === "國立嘉義高中" || title === "國立嘉義女子高級中學";
+      if (!generic && title.length >= 4 && /[0-9A-Za-z\u3400-\u9fff]/.test(title)) return title;
       var snippet = displaySnippet(it);
       return snippet ? snippet.slice(0, 140) : "公告標題暫時無法解析";
     }
@@ -785,7 +786,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=22").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=23").catch(function () {});
       });
     }
 
