@@ -4,7 +4,7 @@
 begin;
 
 create extension if not exists pgtap with schema extensions;
-select plan(26);
+select plan(25);
 
 -- Setup is performed before switching to the authenticated role. The tests
 -- below exercise the exposed table as two different JWT subjects.
