@@ -10,6 +10,9 @@ const repo = path.resolve(__dirname, "..");
 const stateSource = fs.readFileSync(path.join(repo, "docs", "notification-state.js"), "utf8");
 const appSource = fs.readFileSync(path.join(repo, "docs", "app.js"), "utf8");
 const swSource = fs.readFileSync(path.join(repo, "docs", "sw.js"), "utf8");
+assert.match(appSource, /function displayTitle\(it\)/);
+assert.match(appSource, /function displaySnippet\(it\)/);
+assert.match(appSource, /公告標題暫時無法解析/);
 
 class MemoryStorage {
   constructor(entries) { this.values = new Map(Object.entries(entries || {})); }
@@ -411,7 +414,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v21/);
+  assert.match(swSource, /cy-news-v22/);
   assert.doesNotMatch(swSource, /cy-news-v19/);
   assert.match(swSource, /\.\/notification-state\.js/);
   assert.match(swSource, /\.\/calendar-state\.js/);

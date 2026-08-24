@@ -1,8 +1,8 @@
 /* 嘉校快訊 Service Worker:離線快取殼層,資料採網路優先 */
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
-var CACHE = "cy-news-v21";
-var SHELL = ["./", "./index.html", "./style.css", "./app.js", "./notification-state.js", "./calendar-state.js", "./account-config.js", "./supabase-sync.js", "./account-auth.js", "./account-sync.js", "./manifest.webmanifest", "./data/calendar-events.json",
+var CACHE = "cy-news-v22";
+var SHELL = ["./", "./index.html", "./style.css?v=22", "./app.js?v=22", "./notification-state.js", "./calendar-state.js", "./account-config.js", "./supabase-sync.js", "./account-auth.js", "./account-sync.js", "./manifest.webmanifest", "./data/calendar-events.json",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {

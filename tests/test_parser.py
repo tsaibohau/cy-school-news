@@ -8,10 +8,12 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     extract_article_date, extract_article_date_result, display_date,
                     coverage_gaps, configured_categories, page_entries, should_fetch,
                     TW_TZ, list_page_with_number, deep_stop_reason, split_recent,
-                    load_existing_items, is_mojibake, _category_rank,
+                    load_existing_items, is_mojibake, is_invalid_title,
+                    extract_article_title, _category_rank,
                     merge_collected_item, validate_snapshot_items,
                     validate_history_capacity, merge_title, decode_response)  # noqa: E402
-from notify import push_topics, summarize, personal_topics, SUMMARY_THRESHOLD  # noqa: E402
+from notify import (push_topics, summarize, personal_topics, notification_payload,
+                    SUMMARY_THRESHOLD)  # noqa: E402
 from schoolcal import build_ics, events_on, build_public_events  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
 
@@ -103,6 +105,13 @@ ARTICLE_PUBDATE_HTML = """
 </body></html>
 """
 
+ARTICLE_RULING_TITLE_HTML = """
+<html><head><title>【重要公告】因應豪大雨 新生訓練調整措施</title></head><body>
+<h1><a href="#start-C">:::</a></h1>
+<div class="sk6_title">【重要公告】因應豪大雨 新生訓練調整措施</div>
+</body></html>
+"""
+
 
 def run():
     ok = True
@@ -150,6 +159,13 @@ def run():
     assert len(dirty) == 1
     assert dirty[0]["title"] == "恭賀 201王小明 同學 榮獲全國賽第一名", dirty[0]["title"]
     print("✓ 標題隱形空白清理")
+
+    assert is_invalid_title(":::")
+    assert extract_article_title(ARTICLE_RULING_TITLE_HTML) == "【重要公告】因應豪大雨 新生訓練調整措施"
+    damaged = {"title": ":::"}
+    merge_title(damaged, "【115年校園清掃區域分配】")
+    assert damaged["title"] == "【115年校園清掃區域分配】"
+    print("✓ 嘉中 ::: 導覽字串不再覆蓋標題")
 
     assert extract_article_date(ARTICLE_MDATE_HTML) == "2026-08-09"
     assert extract_article_date(ARTICLE_BODYDATE_HTML) == "", "內文活動日期不可冒充公告日期"
@@ -275,7 +291,10 @@ def run():
     assert "研習活動 9" in s and "獎助學金 5" in s and "段考考試 2" in s
     assert s.index("研習活動 9") < s.index("獎助學金 5") < s.index("段考考試 2"), \
         "分類應依數量排序"
-    assert summarize([{"title": "x"}]) == "本輪新增 1 則:一般 1", "無分類欄位歸為一般"
+    assert summarize([{"title": "x"}]).startswith("本輪新增 1 則:一般 1"), "無分類欄位歸為一般"
+    header, body = notification_payload({"title": ":::", "snippet": "作者：衛生組 發佈日期：2026-08-24 【衛生組公告】返校打掃調整", "school_name": "嘉中", "category": "一般"})
+    assert ":::" not in header and "返校打掃調整" in header
+    assert "作者" not in body and "返校打掃調整" in body
     assert SUMMARY_THRESHOLD == 8
     subs2 = [{"name": "我", "topic_suffix": "kw-me", "keywords": ["段考"]}]
     assert personal_topics({"title": "段考範圍", "category": "段考考試"},

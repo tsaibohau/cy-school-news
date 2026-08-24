@@ -437,6 +437,16 @@
       /* 沒有公告日期時,退而顯示首次抓到的日期 */
       return it.date || (it.first_seen || "").slice(0, 10) || "—";
     }
+    function displaySnippet(it) {
+      return String(it && it.snippet || "").replace(/\s+/g, " ").trim()
+        .replace(/^作者\s*[：:]\s*.*?\s+發[佈布]日期\s*[：:]\s*\d{4}-\d{2}-\d{2}(?:\s+最後更新日期\s*[：:]\s*\d{4}-\d{2}-\d{2})?\s*/, "");
+    }
+    function displayTitle(it) {
+      var title = String(it && it.title || "").replace(/\s+/g, " ").trim();
+      if (title.length >= 4 && /[0-9A-Za-z\u3400-\u9fff]/.test(title)) return title;
+      var snippet = displaySnippet(it);
+      return snippet ? snippet.slice(0, 140) : "公告標題暫時無法解析";
+    }
     function calendarEvents() {
       var announcementEvents = [];
       (state.data && state.data.items || []).forEach(function (it) {
@@ -522,15 +532,15 @@
         (isUnread(it) ? '<button type="button" class="mark-read" data-read-id="' + esc(it.id) + '">標記已讀</button>' : '') +
         '</div>' +
         '<h3 class="card-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
-        esc(it.title) + '</a></h3>' +
-        (it.snippet ? '<p class="card-snippet">' + esc(it.snippet) + '</p>' : "") +
+        esc(displayTitle(it)) + '</a></h3>' +
+        (displaySnippet(it) ? '<p class="card-snippet">' + esc(displaySnippet(it)) + '</p>' : "") +
         '</article>';
     }
     function renderImportant() {
       if (!el.importantList) return;
       var items = state.data ? state.data.items.filter(isExplicitlyImportant).slice(0, 3) : [];
       el.importantList.innerHTML = items.length ? items.map(function (it) {
-        return '<article class="important-card"><span class="important-mark" aria-hidden="true">!</span><div><strong><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.title) + '</a></strong><p>' + esc(it.school_name) + ' · ' + esc(displayDate(it)) + '</p></div></article>';
+        return '<article class="important-card"><span class="important-mark" aria-hidden="true">!</span><div><strong><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(displayTitle(it)) + '</a></strong><p>' + esc(it.school_name) + ' · ' + esc(displayDate(it)) + '</p></div></article>';
       }).join("") : '<p class="hint">目前沒有來源明確標記的重要公告。</p>';
     }
     function renderList(container, items, emptyMsg) {
@@ -775,7 +785,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=17").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=22").catch(function () {});
       });
     }
 

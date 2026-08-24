@@ -14,6 +14,7 @@
 """
 import json
 import os
+import re
 import sys
 import time
 from pathlib import Path
@@ -25,6 +26,9 @@ NEW_ITEMS = ROOT / "scraper" / "new_items.json"
 SUBSCRIPTIONS = ROOT / "scraper" / "subscriptions.json"
 MAX_PUSH = 20  # 單次最多推播則數,避免第一次建置時灌爆訂閱者
 SUMMARY_THRESHOLD = 8  # 單輪新公告超過此數改推一則彙總(個人關鍵字命中仍逐則)
+SUMMARY_ITEM_LIMIT = 4
+TITLE_LIMIT = 120
+BODY_LIMIT = 260
 
 CATEGORY_SLUGS = {
     "段考考試": "exam", "升學": "admission", "獎助學金": "scholarship",
@@ -54,12 +58,46 @@ def push_topics(item: dict, topic: str, subs=()) -> list:
     return topics
 
 
+def _compact(value: object, limit: int) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    return text if len(text) <= limit else text[:max(0, limit - 1)].rstrip() + "…"
+
+
+def _readable_title(value: object) -> str:
+    title = _compact(value, TITLE_LIMIT)
+    return title if len(title) >= 4 and any(ch.isalnum() or "\u3400" <= ch <= "\u9fff" for ch in title) else ""
+
+
+def _clean_snippet(value: object) -> str:
+    text = _compact(value, BODY_LIMIT)
+    return re.sub(
+        r"^作者\s*[：:]\s*.*?\s+發[佈布]日期\s*[：:]\s*\d{4}-\d{2}-\d{2}"
+        r"(?:\s+最後更新日期\s*[：:]\s*\d{4}-\d{2}-\d{2})?\s*", "", text)
+
+
+def notification_payload(item: dict) -> tuple[str, str]:
+    """Use real announcement text; never expose the ::: navigation label."""
+    snippet = _clean_snippet(item.get("snippet"))
+    title = _readable_title(item.get("title")) or _compact(snippet, TITLE_LIMIT) or "新公告"
+    school = _compact(item.get("school_name"), 20)
+    category = _compact(item.get("category", "一般"), 20)
+    header = title + (f"｜{school}・{category}" if school else f"｜{category}")
+    return header, snippet or "尚未取得內文摘要，點擊查看官方公告。"
+
+
 def summarize(items) -> str:
-    """彙總文字:「本輪新增 N 則:段考考試 2、獎助學金 5…」,分類依數量排序。"""
+    """Flood-safe digest that includes readable titles and real snippets."""
     from collections import Counter
     counts = Counter(it.get("category", "一般") for it in items)
     parts = "、".join(f"{cat} {n}" for cat, n in counts.most_common())
-    return f"本輪新增 {len(items)} 則:{parts}"
+    base = f"本輪新增 {len(items)} 則:{parts}"
+    visible = []
+    for item in items[:SUMMARY_ITEM_LIMIT]:
+        snippet = _clean_snippet(item.get("snippet"))
+        title = _readable_title(item.get("title")) or _compact(snippet, 80)
+        if title:
+            visible.append("・" + title + ("\n  " + _compact(snippet, 110) if snippet else ""))
+    return base + ("\n\n最新公告:\n" + "\n".join(visible) if visible else "")
 
 
 def personal_topics(item: dict, topic: str, subs) -> list:
@@ -110,9 +148,8 @@ def main() -> int:
                 break
             hits = personal_topics(it, topic, subs)
             for t in hits:
-                _post(t, it.get("title", ""),
-                      f'[{it.get("school_name", "")}] {it.get("category", "一般")}',
-                      it.get("url", ""))
+                title, body = notification_payload(it)
+                _post(t, body, title, it.get("url", ""))
             personal_sent += bool(hits)
         print(f"[info] 彙總模式:{len(items)} 則合併為 1 則推播,"
               f"個人關鍵字另推 {personal_sent} 則")
@@ -120,8 +157,7 @@ def main() -> int:
 
     sent = 0
     for it in items[:MAX_PUSH]:
-        title = f'[{it.get("school_name", "")}] {it.get("category", "一般")}'
-        body = it.get("title", "")
+        title, body = notification_payload(it)
         for t in push_topics(it, topic, subs):
             _post(t, body, title, it.get("url", ""))
         sent += 1
