@@ -245,6 +245,8 @@ def run():
     assert not should_fetch("u", "cold", fresh), "20 小時內抓過的 cold 要略過"
     assert should_fetch("u", "cold", stale), "超過 20 小時的 cold 要抓"
     assert should_fetch("u", "cold", fresh, fetch_all=True), "手動觸發一律全抓"
+    assert should_fetch("u", "hot", {}, hot_only=True), "立即重新整理仍抓 hot 來源"
+    assert not should_fetch("u", "cold", {}, hot_only=True), "立即重新整理不得碰 cold 來源"
     assert should_fetch("u", "cold", {"u": "不是時間"}), "壞時間戳視同沒抓過"
     print("✓ 來源分級抓取")
 

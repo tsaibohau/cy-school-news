@@ -278,13 +278,18 @@ def _hours_since(iso: str) -> float:
 
 
 def should_fetch(url: str, tier: str, fetch_state: dict,
-                 fetch_all: bool = False, cold_hours: float = 20) -> bool:
+                 fetch_all: bool = False, cold_hours: float = 20,
+                 hot_only: bool = False) -> bool:
     """來源分級:hot 每輪都抓;cold 距上次成功抓取超過 cold_hours 才抓。
 
     fetch_all(手動觸發 workflow)時一律全抓。時間紀錄以成功抓取為準,
     失敗不更新,下一輪自然重試。
     """
-    if tier == "hot" or fetch_all:
+    if fetch_all:
+        return True
+    if hot_only:
+        return tier == "hot"
+    if tier == "hot":
         return True
     return _hours_since(fetch_state.get(url, "")) >= cold_hours
 
@@ -571,6 +576,7 @@ def main() -> int:
 
     # 來源分級:cold 頁的上次抓取時間記在 fetch_state.json(由 Actions 一起提交)
     fetch_all = bool(os.environ.get("FETCH_ALL", "").strip())
+    hot_only = bool(os.environ.get("HOT_ONLY", "").strip())
     cold_hours = CONFIG.get("cold_interval_hours", 20)
     state_path = ROOT / CONFIG.get("fetch_state_path", "scraper/fetch_state.json")
     fetch_state = {}
@@ -581,6 +587,8 @@ def main() -> int:
             pass
     if fetch_all:
         print("[info] 手動觸發:忽略分級,抓取全部來源")
+    elif hot_only:
+        print("[info] 使用者立即重新整理:僅抓取 hot 來源")
     deep_crawl = bool(os.environ.get("DEEP_CRAWL", "").strip())
     if deep_crawl:
         fetch_all = True
@@ -594,7 +602,7 @@ def main() -> int:
         scanned_items = []
         skipped_cold = 0
         for page_url, tier in entries:
-            if not should_fetch(page_url, tier, fetch_state, fetch_all, cold_hours):
+            if not should_fetch(page_url, tier, fetch_state, fetch_all, cold_hours, hot_only):
                 skipped_cold += 1
                 continue
             try:

@@ -1,0 +1,66 @@
+name: Staging user-requested refresh
+
+on:
+  workflow_dispatch:
+    inputs:
+      request_id:
+        description: Sanitized server-issued request identifier
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: staging-user-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Validate dispatch contract
+        env:
+          REQUEST_ID: ${{ inputs.request_id }}
+        run: |
+          if [[ ! "$REQUEST_ID" =~ ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-4[0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$ ]]; then
+            echo "INVALID_REFRESH_REQUEST_ID" >&2
+            exit 2
+          fi
+
+      - uses: actions/checkout@v5
+        with:
+          ref: staging
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install scraper dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: Fetch hot sources only
+        env:
+          HOT_ONLY: '1'
+        run: python scraper/scrape.py
+
+      - name: Refresh deterministic projections
+        run: |
+          python scraper/schoolcal.py build
+          python scraper/reminder_targets.py
+
+      - name: Commit Actions-owned staging data
+        run: |
+          git config user.name "news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/data/reminder-targets.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json
+          if [ -d docs/data/details ]; then
+            git add docs/data/details
+          fi
+          if git diff --cached --quiet; then
+            echo "STAGING_REFRESH_NO_CHANGE"
+          else
+            git commit -m "Refresh staging announcements"
+            git push origin HEAD:staging
+          fi

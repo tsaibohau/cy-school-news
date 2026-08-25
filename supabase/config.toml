@@ -52,3 +52,9 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/reminder-target-sync/deno.json"
 entrypoint = "./functions/reminder-target-sync/index.ts"
+
+[functions.request-staging-refresh]
+enabled = true
+verify_jwt = true
+import_map = "./functions/request-staging-refresh/deno.json"
+entrypoint = "./functions/request-staging-refresh/index.ts"
