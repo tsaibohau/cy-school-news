@@ -8,7 +8,7 @@ from __future__ import annotations
 import hashlib
 import re
 from datetime import datetime, timezone
-from urllib.parse import urljoin, urlparse
+from urllib.parse import parse_qs, unquote, urljoin, urlparse
 
 from bs4 import BeautifulSoup
 
@@ -27,6 +27,8 @@ EXTENSION_TYPES = {
     ".ods": "application/vnd.oasis.opendocument.spreadsheet",
     ".ppt": "application/vnd.ms-powerpoint",
     ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".png": "image/png",
+    ".gif": "image/gif", ".webp": "image/webp",
 }
 FULL_DATE = re.compile(
     r"(?:(?P<roc>1\d{2})\s*[年./-]\s*|(?P<gregorian>20\d{2})\s*[年./-]\s*)"
@@ -71,14 +73,30 @@ def _attachments(body, source_url: str, announcement_id: str) -> list[dict]:
         url = _safe_https_url(anchor.get("href", ""), source_url)
         if not url or url in seen:
             continue
-        lower = url.split("?", 1)[0].lower()
-        ext = "." + lower.rsplit(".", 1)[-1] if "." in lower.rsplit("/", 1)[-1] else ""
+        parsed = urlparse(url)
+        path_filename = unquote(parsed.path.rsplit("/", 1)[-1]).strip()
+        query = parse_qs(parsed.query)
+        query_filename = ""
+        for key in ("filename", "file_name", "file", "name", "download"):
+            for value in query.get(key, []):
+                candidate = unquote(value).strip().rsplit("/", 1)[-1]
+                suffix = "." + candidate.rsplit(".", 1)[-1].lower() if "." in candidate else ""
+                if suffix in EXTENSION_TYPES:
+                    query_filename = candidate
+                    break
+            if query_filename:
+                break
+        file_candidate = query_filename or path_filename
+        ext = "." + file_candidate.rsplit(".", 1)[-1].lower() if "." in file_candidate else ""
         text = _text(anchor)
-        looks_like_file = ext in EXTENSION_TYPES or any(token in lower for token in ("download", "attachment", "file"))
+        lower_url = url.lower()
+        looks_like_file = ext in EXTENSION_TYPES or any(token in lower_url for token in ("download", "attachment", "file"))
         if not looks_like_file:
             continue
         seen.add(url)
-        filename = text or lower.rsplit("/", 1)[-1] or "官方附件"
+        generic_labels = {"附件", "下載", "download", "檔案", "開啟", "附件下載"}
+        filename = file_candidate if (not text or text.lower() in generic_labels) and file_candidate else text
+        filename = (filename or file_candidate or "官方附件")[:300]
         result.append({
             "filename": filename,
             "url": url,

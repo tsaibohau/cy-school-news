@@ -52,6 +52,20 @@ def main():
       announcement_id="publication", school_id="cysh", title="日期測試",
       source_url="https://www.cysh.cy.edu.tw/p/406-1008-2.php")
     assert publication["verified_dates"] == [], "publication and unlabelled body dates are never reminder targets"
+    encoded = parse_article_detail("""<article><p>附件如下</p>
+      <a href='/download?filename=%E7%94%B3%E8%AB%8B%E8%A1%A8.xlsx'>下載</a>
+      <a href='/files/%E6%B4%BB%E5%8B%95%E7%85%A7%E7%89%87.JPG?token=official'>附件</a>
+      <a href='/download?file=not-an-extension'>下載頁面</a></article>""",
+      announcement_id="encoded", school_id="cygsh", title="附件測試",
+      source_url="https://www.cygsh.cy.edu.tw/p/406-1013-2.php")
+    assert encoded["attachments"][0]["filename"] == "申請表.xlsx"
+    assert encoded["attachments"][0]["extension"] == ".xlsx"
+    assert encoded["attachments"][0]["mime_type"].endswith("spreadsheetml.sheet")
+    assert encoded["attachments"][1]["filename"] == "活動照片.JPG"
+    assert encoded["attachments"][1]["extension"] == ".jpg"
+    assert encoded["attachments"][1]["mime_type"] == "image/jpeg"
+    assert encoded["attachments"][2]["extension"] == ""
+    assert all(row["announcement_id"] == "encoded" for row in encoded["attachments"])
     print("Detail parser tests passed")
 
 

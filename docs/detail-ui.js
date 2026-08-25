@@ -66,7 +66,7 @@
     if (!attachments.length) return "";
     return '<section class="detail-attachments"><h3>附件</h3><ul>' + attachments.map(function (row) {
       var meta = [row.extension, row.mime_type, row.size].filter(Boolean).join(" · ");
-      return '<li><div><strong>' + esc(row.filename || "官方附件") + '</strong>' + (meta ? '<small>' + esc(meta) + '</small>' : '') + '</div><a href="' + esc(safeUrl(row.url)) + '" target="_blank" rel="noopener noreferrer">開啟／下載</a></li>';
+      return '<li><div><strong>' + esc(row.filename || "官方附件") + '</strong>' + (meta ? '<small>' + esc(meta) + '</small>' : '') + '</div><a href="' + esc(safeUrl(row.url)) + '" target="_blank" rel="noopener noreferrer">開啟附件</a></li>';
     }).join("") + "</ul></section>";
   }
   function render(record) {
