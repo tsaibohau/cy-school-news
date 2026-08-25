@@ -49,8 +49,8 @@ select throws_ok($$insert into public.user_reminder_rules
   '42501', null, 'USER_A cannot spoof USER_B owner');
 select throws_ok($$update public.user_reminder_rules set user_id = '00000000-0000-4000-8000-0000000000b2'
   where id = '00000000-0000-4000-8000-00000000a103'$$, '42501', null, 'USER_A cannot reassign rule owner');
-select is((with changed as (update public.user_reminder_rules set enabled = false
-  where id = '00000000-0000-4000-8000-00000000b102' returning 1) select count(*)::int from changed), 0,
+select results_eq($$update public.user_reminder_rules set enabled = false
+  where id = '00000000-0000-4000-8000-00000000b102' returning 1$$, array[]::integer[],
   'USER_A cannot update USER_B rule');
 select lives_ok($$insert into public.user_push_subscriptions
   (id, user_id, endpoint, p256dh, auth) values
@@ -86,8 +86,8 @@ select throws_ok($$insert into public.user_push_subscriptions
   (user_id, endpoint, p256dh, auth) values
   ('00000000-0000-4000-8000-0000000000b2', 'https://push.example/device-a', 'key-b', 'auth-b')$$,
   '23505', null, 'endpoint cannot silently transfer from USER_A to USER_B');
-select is((with changed as (update public.user_push_subscriptions set active = false
-  where id = '00000000-0000-4000-8000-00000000a201' returning 1) select count(*)::int from changed), 0,
+select results_eq($$update public.user_push_subscriptions set active = false
+  where id = '00000000-0000-4000-8000-00000000a201' returning 1$$, array[]::integer[],
   'USER_B cannot deactivate USER_A device');
 
 set local role anon;
