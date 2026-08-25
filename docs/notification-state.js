@@ -181,7 +181,7 @@
   }
 
   function defaultText(item) {
-    return String(item.title || "") + " " + String(item.snippet || "") + " " +
+    return String(item.title || "") + " " + String(item.summary || "") + " " + String(item.snippet || "") + " " +
       String(item.category || "") + " " + String(item.source_category || "");
   }
 

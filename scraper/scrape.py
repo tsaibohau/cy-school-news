@@ -21,6 +21,8 @@ from urllib.parse import urljoin, urlsplit, urlunsplit
 
 import requests
 from attachment_parser import enrich_pdf_attachments
+from extractive_summary import summarize_detail
+from public_shards import build_school_shards
 from bs4 import BeautifulSoup
 
 from detail_parser import parse_article_detail
@@ -520,6 +522,8 @@ def write_detail_record(item: dict, html: str, fetched_at: str, *, session=None,
             timeout_sec=CONFIG["timeout_sec"],
             request_delay_sec=request_delay_sec or CONFIG["request_delay_sec"],
         )
+    summary = summarize_detail(record, str(item.get("title", "")))
+    record["summary"] = summary
     school_dir = DETAIL_ROOT / re.sub(r"[^A-Za-z0-9_-]+", "_", school_id)
     school_dir.mkdir(parents=True, exist_ok=True)
     target = school_dir / (_detail_filename(item.get("id", "")) + ".json")
@@ -529,6 +533,10 @@ def write_detail_record(item: dict, html: str, fetched_at: str, *, session=None,
     item["detail_status"] = record.get("parse_status", "failed")
     item["detail_revision"] = record.get("source_hash", "")
     item["detail_attempts"] = int(item.get("detail_attempts") or 0) + 1
+    item["summary"] = summary["text"]
+    item["summary_status"] = summary["status"]
+    item["summary_version"] = summary["version"]
+    item["summary_provenance"] = summary["provenance"]
     item["calendar_events"] = [{
         "kind": row["kind"], "date": row["date"], "title": row["title"],
         "provenance": row["provenance"], "source_revision": row["source_revision"],
@@ -822,6 +830,8 @@ def main() -> int:
     atomic_write_text(archive_path, json.dumps(
         {"generated_at": now_iso, "hot_cutoff": hot_cutoff, "items": archived},
         ensure_ascii=False, indent=1))
+    build_school_shards(out, {"generated_at": now_iso, "hot_cutoff": hot_cutoff,
+                             "items": archived}, ROOT / "docs" / "data" / "schools")
 
     all_new.sort(key=lambda x: x.get("date") or "", reverse=True)
     new_items_path.write_text(json.dumps(all_new, ensure_ascii=False, indent=1),

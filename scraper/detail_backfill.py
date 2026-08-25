@@ -2,10 +2,13 @@
 """Bounded snapshot-only Detail V2 backfill for cloud staging."""
 import json
 import os
+import re
 import time
 from datetime import datetime
 
 import requests
+from public_shards import build_school_shards
+from extractive_summary import SUMMARY_VERSION, summarize_detail
 
 from scrape import (CONFIG, ROOT, TW_TZ, atomic_write_text, decode_response,
                     extract_article_date_result, extract_article_snippet,
@@ -15,6 +18,34 @@ from scrape import (CONFIG, ROOT, TW_TZ, atomic_write_text, decode_response,
 
 DATA_PATH = ROOT / "docs" / "data" / "announcements.json"
 ARCHIVE_PATH = ROOT / "docs" / "data" / "archive.json"
+
+
+def backfill_existing_summaries(items, cap):
+    """Summarize existing sidecars without another request to either school."""
+    updated = 0
+    ordered = sorted(items, key=lambda item: item.get("first_seen") or "", reverse=True)
+    for item in ordered:
+        if updated >= cap:
+            break
+        detail_ref = str(item.get("detail_ref") or "")
+        if not re.match(r"^data/details/(?:cysh|cygsh)/[A-Za-z0-9._-]+\.json$", detail_ref):
+            continue
+        path = ROOT / "docs" / detail_ref
+        try:
+            record = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        if record.get("provenance") != "official_article" or (record.get("summary") or {}).get("version") == SUMMARY_VERSION:
+            continue
+        summary = summarize_detail(record, str(item.get("title") or ""))
+        record["summary"] = summary
+        atomic_write_text(path, json.dumps(record, ensure_ascii=False, indent=1) + "\n")
+        item["summary"] = summary["text"]
+        item["summary_status"] = summary["status"]
+        item["summary_version"] = summary["version"]
+        item["summary_provenance"] = summary["provenance"]
+        updated += 1
+    return updated
 
 
 def needs_detail(item):
@@ -79,6 +110,8 @@ def main():
     recent_doc = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     archive_doc = json.loads(ARCHIVE_PATH.read_text(encoding="utf-8"))
     items = recent_doc.get("items", []) + archive_doc.get("items", [])
+    summary_cap = min(100, max(1, int(os.environ.get("SUMMARY_BACKFILL_CAP", "100"))))
+    summarized = backfill_existing_summaries(items, summary_cap)
     targets = select_targets(items, cap)
     session = requests.Session()
     session.headers.update({"User-Agent": "cy-school-news detail-backfill/1.0"})
@@ -106,7 +139,8 @@ def main():
 
     atomic_write_text(DATA_PATH, json.dumps(recent_doc, ensure_ascii=False, indent=1))
     atomic_write_text(ARCHIVE_PATH, json.dumps(archive_doc, ensure_ascii=False, indent=1))
-    print(f"DETAIL_BACKFILL_PROCESSED={len(targets)} CAP={cap}")
+    build_school_shards(recent_doc, archive_doc, ROOT / "docs" / "data" / "schools")
+    print(f"DETAIL_BACKFILL_PROCESSED={len(targets)} CAP={cap} SUMMARY_BACKFILLED={summarized}")
     return 0
 
 

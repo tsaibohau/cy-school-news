@@ -17,7 +17,7 @@ assert.match(style, /#btnRefresh\.is-refreshing svg/);
 assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion preference remains respected");
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
-assert.match(index, /style\.css\?v=34/);
-assert.match(index, /app\.js\?v=34/);
+assert.match(index, /style\.css\?v=35/);
+assert.match(index, /app\.js\?v=35/);
 
 console.log("Editorial UI and honest refresh status contract tests passed");

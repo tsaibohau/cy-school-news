@@ -158,6 +158,9 @@ a { color: inherit; }
 .attachment-text { margin-top: 8px; max-width: 100%; }
 .attachment-text summary { color: var(--accent); cursor: pointer; font-weight: 700; }
 .attachment-text p { margin: 8px 0 0; max-height: 18rem; overflow: auto; white-space: pre-wrap; line-height: 1.7; }
+.detail-summary { margin: 0 0 22px; padding: 14px 16px; border-left: 4px solid var(--accent); background: color-mix(in srgb, var(--paper) 84%, var(--accent) 16%); }
+.detail-summary h3, .detail-summary p { margin: 0 0 6px; }
+.detail-summary small { color: var(--muted); }
 .detail-source { display: inline-block; margin-top: 20px; }
 @media (max-width: 600px) {
   .detail-dialog { width: 100%; max-width: none; max-height: 92vh; margin: auto 0 0; border-radius: 20px 20px 0 0; }

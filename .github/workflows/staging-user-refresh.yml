@@ -58,6 +58,9 @@ jobs:
           if [ -d docs/data/details ]; then
             git add docs/data/details
           fi
+          if [ -d docs/data/schools ]; then
+            git add docs/data/schools
+          fi
           if git diff --cached --quiet; then
             echo "STAGING_REFRESH_NO_CHANGE"
           else

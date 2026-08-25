@@ -15,6 +15,7 @@ for (const ref of ["https://evil.test/a.json", "//evil.test/a.json", "data/detai
 
 const record = {
   announcement_id: "a-1", provenance: "official_article", parse_status: "parsed",
+  summary: { status: "extracted", text: "官方擷取摘要 <safe>" },
   source_url: "https://school.example/a", source_hash: "rev",
   blocks: [
     { type: "heading", level: 1, text: "<img onerror=alert(1)>" },
@@ -43,6 +44,8 @@ assert(html.includes("<td>&lt;svg/onload=x&gt;</td>"));
 assert(html.includes("&lt;x&gt;.pdf"));
 assert(html.includes("閱讀 PDF 文字內容"));
 assert(html.includes("截止日 &lt;script&gt;"));
+assert(html.includes("重點摘要"));
+assert(html.includes("官方擷取摘要 &lt;safe&gt;"));
 assert(html.includes(">開啟附件</a>"));
 assert(!html.includes("開啟／下載"), "UI must not claim iOS downloaded an attachment");
 assert(!html.includes("foreign.pdf"));
@@ -55,11 +58,11 @@ for (const state of ["pending", "empty", "unsupported", "temporary_error", "perm
 const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
 const index = fs.readFileSync(path.join(__dirname, "..", "docs", "index.html"), "utf8");
 const sw = fs.readFileSync(path.join(__dirname, "..", "docs", "sw.js"), "utf8");
-assert(index.includes('id="detailDialog"') && index.includes('src="detail-ui.js?v=34"'));
+assert(index.includes('id="detailDialog"') && index.includes('src="detail-ui.js?v=35"'));
 assert(app.includes('button[data-detail-id]'), "detail fetch is delegated from an explicit open action");
 assert(app.includes('displaySnippet(item) ? \'<p class="detail-paragraph">\''), "detail failure retains the safe existing summary");
 assert(app.includes('fetch(item.detail_ref'), "selected sidecar is lazy fetched");
 assert(app.includes("detailRequestGeneration"), "stale detail responses are generation guarded");
 assert(app.includes("detailCache[cacheKey]"), "repeat opens reuse revision-scoped cache");
-assert(sw.includes('detail-ui.js?v=34'));
+assert(sw.includes('detail-ui.js?v=35'));
 console.log("Detail UI structured rendering tests passed");

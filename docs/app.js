@@ -645,7 +645,7 @@
     /* ── 篩選與比對 ── */
     function itemText(it) {
       /* 含自動分類名稱:訂「段考」也能命中整個「段考考試」分類 */
-      return (it.title + " " + (it.snippet || "") + " " +
+      return (it.title + " " + (it.summary || "") + " " + (it.snippet || "") + " " +
         (it.category || "") + " " + (it.source_category || "")).toLowerCase();
     }
     function matchQuery(it, q) {
@@ -692,7 +692,7 @@
       return it.date || (it.first_seen || "").slice(0, 10) || "—";
     }
     function displaySnippet(it) {
-      return String(it && it.snippet || "").replace(/\s+/g, " ").trim()
+      return String(it && (it.summary || it.snippet) || "").replace(/\s+/g, " ").trim()
         .replace(/^作者\s*[：:]\s*.*?\s+發[佈布]日期\s*[：:]\s*\d{4}-\d{2}-\d{2}(?:\s+最後更新日期\s*[：:]\s*\d{4}-\d{2}-\d{2})?\s*/, "");
     }
     function displayTitle(it) {
@@ -1425,7 +1425,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=34").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=35").catch(function () {});
       });
     }
 

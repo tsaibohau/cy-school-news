@@ -311,6 +311,8 @@ def run():
     header, body = notification_payload({"title": "實際公告標題", "snippet": "可讀的內文摘要", "school_name": "嘉中", "category": "競賽"})
     assert header.startswith("實際公告標題") and "嘉中・競賽" in header
     assert body == "可讀的內文摘要"
+    summary_header, summary_body = notification_payload({"title": "摘要測試", "summary": "規則式摘要", "snippet": "舊摘要"})
+    assert summary_header.startswith("摘要測試") and summary_body == "規則式摘要"
     cygsh_header, cygsh_body = notification_payload({
         "title": "國立嘉義女子高級中學",
         "snippet": "新生始業輔導時間配當表更新版",

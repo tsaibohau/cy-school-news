@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 import sys
+import json
+import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraper"))
+import detail_backfill  # noqa: E402
 from detail_backfill import select_targets  # noqa: E402
 
 rows = [{"id": f"pending-{n}", "first_seen": f"2026-08-{n:02d}T00:00:00+08:00",
@@ -32,4 +35,21 @@ priority.extend({"id": f"ordinary-{n}", "school": "cygsh",
                 for n in range(1, 8))
 selected = select_targets(priority, 5)
 assert [row["id"] for row in selected[:3]] == ["broken-3", "broken-2", "broken-1"]
+
+with tempfile.TemporaryDirectory() as directory:
+    original_root = detail_backfill.ROOT
+    detail_backfill.ROOT = Path(directory)
+    sidecar = Path(directory) / "docs/data/details/cysh/cysh-summary.json"
+    sidecar.parent.mkdir(parents=True)
+    sidecar.write_text(json.dumps({
+        "provenance": "official_article", "title": "報名公告", "blocks": [
+            {"type": "paragraph", "text": "符合資格學生請於9月10日前完成報名。"},
+        ], "attachments": [],
+    }, ensure_ascii=False), encoding="utf-8")
+    item = {"id": "cysh-summary", "title": "報名公告",
+            "detail_ref": "data/details/cysh/cysh-summary.json"}
+    assert detail_backfill.backfill_existing_summaries([item], 10) == 1
+    assert item["summary_status"] == "extracted" and "9月10日" in item["summary"]
+    assert detail_backfill.backfill_existing_summaries([item], 10) == 0
+    detail_backfill.ROOT = original_root
 print("Snapshot-only detail backfill selection tests passed")

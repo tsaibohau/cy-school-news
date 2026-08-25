@@ -80,12 +80,14 @@
   function render(record) {
     if (!record || record.provenance !== "official_article") return '<p class="detail-state">無法驗證這份公告內文，請改看官方來源。</p>';
     var blocks = (Array.isArray(record.blocks) ? record.blocks : []).map(renderBlock).join("");
+    var summary = record.summary && record.summary.status === "extracted" && record.summary.text
+      ? '<section class="detail-summary"><h3>重點摘要</h3><p>' + esc(record.summary.text) + '</p><small>從官方內容擷取，可對照下方原文。</small></section>' : "";
     var source = safeUrl(record.source_url);
     var sourceLink = source ? '<a class="detail-source" href="' + esc(source) + '" target="_blank" rel="noopener noreferrer">查看官方原始公告 ↗</a>' : "";
     if (record.parse_status !== "parsed" || !blocks) {
       return '<p class="detail-state">' + esc(statusMessage(record.parse_status)) + '</p>' + renderAttachments(record.attachments, record.announcement_id) + sourceLink;
     }
-    return '<div class="detail-blocks">' + blocks + '</div>' + renderAttachments(record.attachments, record.announcement_id) + sourceLink;
+    return summary + '<div class="detail-blocks">' + blocks + '</div>' + renderAttachments(record.attachments, record.announcement_id) + sourceLink;
   }
   return { escape: esc, safeUrl: safeUrl, validDetailRef: validDetailRef, statusMessage: statusMessage,
     renderBlock: renderBlock, renderAttachments: renderAttachments, render: render };

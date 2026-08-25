@@ -10,7 +10,7 @@
   function unique(values) { var seen = {}; return (values || []).filter(function (value) { var key = lower(value); if (!key || seen[key]) return false; seen[key] = true; return true; }); }
   function extractAudience(item) {
     item = item || {};
-    var raw = [item.title, item.snippet, item.body, item.audience_text].map(clean).filter(Boolean).join(" ");
+    var raw = [item.title, item.summary, item.snippet, item.body, item.audience_text].map(clean).filter(Boolean).join(" ");
     var grades = [];
     [[/(?:高一|一年級|高一新生)/g, 1], [/(?:高二|二年級)/g, 2], [/(?:高三|三年級)/g, 3]].forEach(function (entry) {
       if (entry[0].test(raw)) grades.push(entry[1]);
@@ -53,7 +53,7 @@
     if (grade && audience.grades.indexOf(grade) >= 0) { priority += 100; reasons.push(reason("grade_explicit", "audience", "grade:" + grade, "高" + ["一", "二", "三"][grade - 1])); }
     var className = clean(profile.class_name);
     if (className && audience.classes.indexOf(className) >= 0) { priority += 110; reasons.push(reason("class_explicit", "audience", className, className + "班")); }
-    var text = lower([item.title, item.snippet, item.category].join(" "));
+    var text = lower([item.title, item.summary, item.snippet, item.category].join(" "));
     unique(profile.tracked_keywords).forEach(function (keyword) { if (text.indexOf(lower(keyword)) >= 0) { priority += 50; reasons.push(reason("tracked_keyword", "text", keyword, keyword)); } });
     unique(profile.tracked_categories).forEach(function (category) { if (lower(item.category) === lower(category)) { priority += 30; reasons.push(reason("tracked_category", "category", category, category)); } });
     unique(profile.interests).forEach(function (interest) { if (text.indexOf(lower(interest)) >= 0) { priority += 20; reasons.push(reason("interest", "text", interest, interest)); } });

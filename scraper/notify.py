@@ -94,7 +94,7 @@ def normalize_topic(value: object) -> str:
 
 def notification_payload(item: dict) -> tuple[str, str]:
     """Return a readable ntfy title/body; never use a publication date as content."""
-    snippet = _clean_snippet(item.get("snippet"))
+    snippet = _clean_snippet(item.get("summary") or item.get("snippet"))
     title = _readable_title(item.get("title")) or _compact(snippet, TITLE_LIMIT) or "新公告"
     school = _compact(item.get("school_name"), 20)
     category = _compact(item.get("category", "一般"), 20)
@@ -111,7 +111,7 @@ def summarize(items) -> str:
     base = f"本輪新增 {len(items)} 則:{parts}"
     visible = []
     for item in items[:SUMMARY_ITEM_LIMIT]:
-        snippet = _clean_snippet(item.get("snippet"))
+        snippet = _clean_snippet(item.get("summary") or item.get("snippet"))
         title = _readable_title(item.get("title")) or _compact(snippet, 80)
         if not title:
             continue
