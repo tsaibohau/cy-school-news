@@ -327,6 +327,11 @@ def run():
     notify_source = (Path(__file__).resolve().parent.parent / "scraper" / "notify.py").read_text(encoding="utf-8")
     assert "推播失敗 {t}" not in notify_source, "ntfy topic must not be logged"
     assert SUMMARY_THRESHOLD == 8
+    scrape_source = (Path(__file__).resolve().parent.parent / "scraper" / "scrape.py").read_text(encoding="utf-8")
+    assert 'os.environ.get("DETAIL_BACKFILL", "").strip() == "1"' in scrape_source
+    workflow_source = (Path(__file__).resolve().parent.parent / ".github" / "workflows" / "staging-detail-backfill.yml").read_text(encoding="utf-8")
+    assert "github.actor != 'github-actions[bot]'" in workflow_source, "staging backfill must not recurse"
+    assert "notify.py" not in workflow_source, "historical staging backfill must not send ntfy"
     subs2 = [{"name": "我", "topic_suffix": "kw-me", "keywords": ["段考"]}]
     assert personal_topics({"title": "段考範圍", "category": "段考考試"},
                            "cynews", subs2) == ["cynews-kw-me"]

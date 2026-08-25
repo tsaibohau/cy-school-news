@@ -1,0 +1,55 @@
+name: Staging detail backfill
+
+on:
+  push:
+    branches: [staging]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: staging-detail-backfill
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    # A generated-data commit must not recursively start another backfill run.
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: staging
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install parser dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: Run one bounded detail pass
+        env:
+          DETAIL_BACKFILL: '1'
+        run: python scraper/scrape.py
+
+      - name: Refresh deterministic projections
+        run: |
+          python scraper/schoolcal.py build
+          python scraper/reminder_targets.py
+
+      - name: Commit Actions-owned staging data
+        run: |
+          git config user.name "news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/data/reminder-targets.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json
+          if [ -d docs/data/details ]; then
+            git add docs/data/details
+          fi
+          if git diff --cached --quiet; then
+            echo "STAGING_DETAIL_NO_CHANGE"
+          else
+            git commit -m "Backfill staging announcement details"
+            git push origin HEAD:staging
+          fi

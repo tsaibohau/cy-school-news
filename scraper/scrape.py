@@ -685,7 +685,10 @@ def main() -> int:
     # 排程改成每小時後,補齊只在少數班次執行,避免每小時都多打幾十個請求。
     backfill_cap = CONFIG.get("backfill_max_per_run", 10)
     backfill_hours = set(CONFIG.get("backfill_hours", [7, 11, 15, 19]))
-    run_backfill = fetch_all or datetime.now(TW_TZ).hour in backfill_hours
+    # Staging may request one bounded detail pass without turning a normal hot/cold
+    # scrape into FETCH_ALL. This keeps historical backfill gradual and quiet.
+    detail_backfill = os.environ.get("DETAIL_BACKFILL", "").strip() == "1"
+    run_backfill = fetch_all or detail_backfill or datetime.now(TW_TZ).hour in backfill_hours
 
     def needs_date(it):
         return not it.get("date") and not it.get("date_tried")
