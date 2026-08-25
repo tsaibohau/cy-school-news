@@ -1,0 +1,50 @@
+{
+ "schema_version": 1,
+ "generated_at": "2026-08-25T20:19:59+08:00",
+ "categories": [
+  "段考考試",
+  "升學",
+  "獎助學金",
+  "榮譽榜",
+  "競賽",
+  "社團",
+  "研習活動",
+  "招生編班",
+  "行政公告",
+  "一般"
+ ],
+ "category_slugs": {
+  "段考考試": "exam",
+  "升學": "admission",
+  "獎助學金": "scholarship",
+  "榮譽榜": "honor",
+  "競賽": "contest",
+  "社團": "club",
+  "研習活動": "event",
+  "招生編班": "enroll",
+  "行政公告": "admin",
+  "一般": "general"
+ },
+ "schools": [
+  {
+   "id": "cysh",
+   "name": "國立嘉義高級中學",
+   "short": "嘉中",
+   "base": "https://www.cysh.cy.edu.tw",
+   "current": "data/schools/cysh/current.json",
+   "archive": "data/schools/cysh/archive.json",
+   "current_count": 1136,
+   "archive_count": 919
+  },
+  {
+   "id": "cygsh",
+   "name": "國立嘉義女子高級中學",
+   "short": "嘉女",
+   "base": "https://www.cygsh.cy.edu.tw",
+   "current": "data/schools/cygsh/current.json",
+   "archive": "data/schools/cygsh/archive.json",
+   "current_count": 761,
+   "archive_count": 0
+  }
+ ]
+}
