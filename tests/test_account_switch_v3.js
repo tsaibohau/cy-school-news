@@ -44,5 +44,7 @@ current = false;
   assert(app.includes('accountPhase = "ACCOUNT_RESOLVING"'));
   assert(app.includes('accountPhase = "MERGING"'));
   assert(app.includes('accountPhase = "ACCOUNT_READY"'));
+  assert(app.indexOf("pushManager.disable()") < app.indexOf("auth.signInWithGoogle({ forceAccountChooser: true })"), "switch must detach USER_A push before USER_B authentication");
+  assert(app.indexOf("pushManager.disable()") < app.indexOf("auth.signOut()"), "logout must detach current push before sign-out");
   console.log("Account Switch V3 isolation tests passed");
 })().catch(error => { console.error(error); process.exitCode = 1; });

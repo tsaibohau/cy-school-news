@@ -30,7 +30,7 @@
     var official = Array.isArray(input.officialEvents) ? input.officialEvents : [];
     var announcementItems = Array.isArray(input.announcementItems) ? input.announcementItems : [];
     var tasks = Array.isArray(input.tasks) ? input.tasks.filter(function (task) { return task && !task.deleted_at && task.status !== "completed"; }) : [];
-    var todayEvents = [], upcoming = [];
+    var todayEvents = [], upcoming = [], upcomingReminders = [];
     official.forEach(function (event) {
       var dates = rangeDates(event.start_date || event.date, event.end_date);
       if (dates.indexOf(today) !== -1) todayEvents.push(event);
@@ -55,9 +55,27 @@
       var result = typeof input.relevance === "function" ? input.relevance(item, input.profile || {}) : null;
       return result && result.reasons && result.reasons.length;
     }).slice(0, 10);
+    (Array.isArray(input.reminderRules) ? input.reminderRules : []).forEach(function (rule) {
+      if (!rule || rule.enabled === false || rule.deleted_at || !date(rule.target_date)) return;
+      var allowed = ["announcement_deadline", "announcement_event", "official_calendar_event", "task_due", "manual"];
+      if (allowed.indexOf(rule.target_kind) === -1 || rule.target_date < today) return;
+      var baseline = date(String(rule.schedule_baseline_at || "").slice(0, 10)) ? String(rule.schedule_baseline_at).slice(0, 10) : null;
+      (Array.isArray(rule.offsets_days) ? rule.offsets_days : []).forEach(function (offset) {
+        offset = Number(offset);
+        if (!Number.isInteger(offset) || offset < 0 || offset > 365) return;
+        var reminderDate = new Date(rule.target_date + "T00:00:00Z");
+        reminderDate.setUTCDate(reminderDate.getUTCDate() - offset);
+        var key = reminderDate.toISOString().slice(0, 10);
+        if (key < today || (baseline && key < baseline) || diff(today, key) > until) return;
+        upcomingReminders.push({ id: rule.id, title: rule.title || "提醒", date: key, offset_days: offset,
+          target_kind: rule.target_kind, target_id: rule.target_id,
+          provenance: rule.provenance || (rule.target_kind === "manual" ? "manual" : "verified") });
+      });
+    });
+    upcomingReminders.sort(function (a, b) { return a.date.localeCompare(b.date) || String(a.id || "").localeCompare(String(b.id || "")); });
     deadlines.sort(function (a, b) { return a.date === b.date ? a.title.localeCompare(b.title, "zh-Hant") : (a.date < b.date ? -1 : 1); });
     return { today, todayEvents, upcoming, deadlines, openTasks: tasks, relevantAnnouncements: relevant,
-      dueLabel: function (due) { return dueLabel(today, due); } };
+      upcomingReminders: upcomingReminders, dueLabel: function (due) { return dueLabel(today, due); } };
   }
   return { build: build, dueLabel: dueLabel, rangeDates: rangeDates, diff: diff };
 });

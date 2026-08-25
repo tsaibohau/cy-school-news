@@ -8,13 +8,17 @@
   "use strict";
 
   var PRESETS = { single: [1], standard: [3, 1, 0], dense: [7, 3, 1, 0] };
+  var PRESET_LABELS = { single: "單次", standard: "標準", dense: "密集", custom: "自訂" };
 
   function offsetsFor(preset, custom) {
     if (PRESETS[preset]) return PRESETS[preset].slice();
     if (preset !== "custom") return PRESETS.single.slice();
     var values = Array.isArray(custom) ? custom : String(custom || "").split(",");
-    var offsets = values.map(function (value) { return Number(String(value).trim()); })
-      .filter(function (value) { return Number.isInteger(value) && value >= 0 && value <= 365; })
+    var parsed = values.map(function (value) { return String(value).trim(); });
+    if (!parsed.length || parsed.some(function (value) { return !/^\d{1,3}$/.test(value) || Number(value) > 365; })) {
+      throw new Error("custom offsets must contain 1 to 8 unique days");
+    }
+    var offsets = parsed.map(Number)
       .filter(function (value, index, all) { return all.indexOf(value) === index; })
       .sort(function (a, b) { return b - a; });
     if (!offsets.length || offsets.length > 8) throw new Error("custom offsets must contain 1 to 8 unique days");
@@ -22,7 +26,7 @@
   }
 
   function nextReminderTime(dueDate, offsets, now) {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(dueDate || ""))) return null;
+    if (!validDate(dueDate)) return null;
     var target = new Date(dueDate + "T00:00:00+08:00");
     if (isNaN(target.getTime())) return null;
     var after = now instanceof Date ? now : new Date(now || Date.now());
@@ -31,7 +35,13 @@
       .sort(function (a, b) { return a - b; })[0] || null;
   }
 
-  function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
+  function validDate(value) {
+    value = String(value || "");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+    var parts = value.split("-").map(Number);
+    var parsed = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
+    return parsed.getUTCFullYear() === parts[0] && parsed.getUTCMonth() === parts[1] - 1 && parsed.getUTCDate() === parts[2];
+  }
   function normalizeTarget(target) {
     var allowed = ["announcement_deadline", "announcement_event", "official_calendar_event", "task_due", "manual"];
     if (!target || allowed.indexOf(target.kind) === -1 || !String(target.id || "").trim() || !validDate(target.date)) return null;
@@ -60,6 +70,27 @@
       .sort(function (a, b) { return a.date.localeCompare(b.date); });
   }
   function nextReminder(rule, today) { return scheduleDates(rule, today)[0] || null; }
+
+  /* Shared presentation model for subscription/task/detail surfaces. */
+  function targetState(target, options, now) {
+    var normalized = normalizeTarget(target);
+    if (!normalized) return { status: "unverified", label: "沒有可驗證的提醒日期", manualAllowed: true, next: null };
+    options = options || {};
+    var next = nextReminderTime(normalized.date, offsetsFor(options.preset || "single", options.custom), now);
+    if (!next) return { status: "past", label: "提醒日期已過", manualAllowed: true, next: null };
+    return { status: "verified", label: "下一次提醒：" + next.toLocaleString("zh-TW", { timeZone: "Asia/Taipei" }), manualAllowed: false, next: next };
+  }
+
+  function subscriptionStatus(options) {
+    options = options || {};
+    var preset = PRESET_LABELS[options.preset] ? options.preset : "single";
+    return {
+      notification: options.notificationEnabled ? "新公告通知：開啟" : "新公告通知：關閉",
+      reminder: options.reminderEnabled ? "提醒推播：已開啟" : "提醒推播：未開啟",
+      preset: PRESET_LABELS[preset],
+      next: options.reminderEnabled && options.next instanceof Date && !isNaN(options.next.getTime()) ? options.next : null,
+    };
+  }
 
   function createAdapter(options) {
     options = options || {};
@@ -124,9 +155,28 @@
         });
       });
     }
-    return { upsertTask: upsertTask, upsertManual: upsertManual };
+    function listRules() {
+      return context().then(function (ctx) {
+        return ctx.client.from("user_reminder_rules")
+          .select("id,target_kind,target_id,offsets_days,preset,enabled,schedule_baseline_at,disabled_at,deleted_at,provenance,resolved_target_at,resolved_target_title,resolved_source_url")
+          .eq("user_id", ctx.uid)
+          .is("deleted_at", null)
+          .then(function (result) {
+            if (result.error) throw result.error;
+            return (result.data || []).map(function (row) {
+              return Object.assign({}, row, {
+                target_date: String(row.resolved_target_at || "").slice(0, 10),
+                title: row.resolved_target_title || "提醒",
+                source_url: row.resolved_source_url || "",
+              });
+            });
+          });
+      });
+    }
+    return { upsertTask: upsertTask, upsertManual: upsertManual, listRules: listRules };
   }
 
-  return { PRESETS: PRESETS, offsetsFor: offsetsFor, normalizeTarget: normalizeTarget, createRule: createRule,
-    scheduleDates: scheduleDates, nextReminder: nextReminder, nextReminderTime: nextReminderTime, createAdapter: createAdapter };
+  return { PRESETS: PRESETS, PRESET_LABELS: PRESET_LABELS, offsetsFor: offsetsFor, normalizeTarget: normalizeTarget, createRule: createRule,
+    scheduleDates: scheduleDates, nextReminder: nextReminder, nextReminderTime: nextReminderTime,
+    targetState: targetState, subscriptionStatus: subscriptionStatus, createAdapter: createAdapter };
 });

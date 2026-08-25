@@ -8,6 +8,7 @@ const api = context.globalThis.CyNewsReminderRules;
 assert.deepEqual(Array.from(api.PRESETS.standard), [3, 1, 0]);
 assert.equal(api.normalizeTarget({ kind: "manual", id: "m1", date: "2026-09-05" }).date, "2026-09-05");
 assert.equal(api.normalizeTarget({ kind: "publication_date", id: "x", date: "2026-09-05" }), null);
+assert.equal(api.normalizeTarget({ kind: "manual", id: "impossible", date: "2026-02-31" }), null);
 assert.equal(api.createRule({ kind: "task_due", id: "t1", date: "2026-09-05" }, [1, 1, -1, 500], "2026-08-24T00:00:00Z").offsets_days.join(","), "1");
 assert.equal(api.createRule({ kind: "announcement_deadline", id: "a1", date: "2026-09-05" }, [], null), null);
 assert.deepEqual(Array.from(api.PRESETS.single), [1], "single is the non-intensive default");
@@ -18,5 +19,10 @@ assert.equal(api.scheduleDates(standard, "2026-09-06").length, 0, "past target c
 const lateEnable = api.createRule({ kind: "announcement_event", id: "a2", date: "2026-09-05" }, [7, 3, 1, 0], "2026-09-04T12:00:00Z");
 assert.deepEqual(Array.from(api.scheduleDates(lateEnable, "2026-09-04"), row => row.offset_days), [1, 0], "historical offsets never replay");
 assert.equal(api.scheduleDates(api.createRule({ kind: "manual", id: "m2", date: "2026-08-20" }, [1], "2026-08-24T00:00:00Z"), "2026-08-24").length, 0);
+assert.equal(api.targetState(null, { preset: "single" }).label, "沒有可驗證的提醒日期");
+assert.equal(api.targetState({ kind: "publication_date", id: "p1", date: "2099-09-05" }, { preset: "single" }).status, "unverified");
+assert.equal(api.targetState({ kind: "task_due", id: "t3", date: "2099-09-05" }, { preset: "single" }, new Date("2099-09-01T00:00:00+08:00")).status, "verified");
+assert.equal(api.subscriptionStatus({ notificationEnabled: true, reminderEnabled: false, preset: "dense" }).reminder, "提醒推播：未開啟");
+assert.equal(api.subscriptionStatus({ notificationEnabled: true, reminderEnabled: true, preset: "standard" }).preset, "標準");
 console.log("Reminder target, provenance and baseline tests passed");
 

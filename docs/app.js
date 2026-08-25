@@ -64,6 +64,8 @@
       personalizedNotifications: false,
       reminderPreset: "single",
       reminderCustomOffsets: "1",
+      reminderRules: [],
+      reminderDeviceActive: false,
       activeAccountId: "anonymous",
       lastSeen: localStorage.getItem(LS_SEEN) || "",
       detailCache: {},
@@ -209,6 +211,7 @@
         reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
         preferences: { schema_version: 1, preferences: { profile: window.CyNewsProfile.empty() } },
         tasks: state.tasks,
+        reminderRules: state.reminderRules,
       }, localStorage);
       var syncGeneration = 0;
       var requestedUid = null;
@@ -232,10 +235,12 @@
           return;
         }
         pushManager.current().then(function (result) {
+          state.reminderDeviceActive = !!result.active;
           el.reminderPushToggle.textContent = result.active ? "在此裝置關閉" : "在此裝置開啟";
           el.reminderPushState.textContent = result.active ? "背景推播已開啟" : "背景推播未開啟";
           el.reminderPushToggle.dataset.active = result.active ? "true" : "false";
-        }).catch(function () { el.reminderPushState.textContent = "無法讀取此裝置推播狀態"; });
+          renderKwChips();
+        }).catch(function () { state.reminderDeviceActive = false; el.reminderPushState.textContent = "無法讀取此裝置推播狀態"; renderKwChips(); });
       }
       function projectSubscriptions(rows) {
         var now = new Date().toISOString();
@@ -266,6 +271,7 @@
         var reminderPreferences = merged.preferences && merged.preferences.preferences && merged.preferences.preferences.reminder;
         state.reminderPreset = reminderPreferences && ["single", "standard", "dense", "custom"].indexOf(reminderPreferences.preset) !== -1 ? reminderPreferences.preset : "single";
         state.reminderCustomOffsets = reminderPreferences && typeof reminderPreferences.custom_offsets === "string" ? reminderPreferences.custom_offsets : "1";
+        state.reminderRules = [];
         if (el.reminderPreset) el.reminderPreset.value = state.reminderPreset;
         if (el.reminderCustomOffsets) el.reminderCustomOffsets.value = state.reminderCustomOffsets;
         if (el.reminderCustomWrap) el.reminderCustomWrap.hidden = state.reminderPreset !== "custom";
@@ -274,6 +280,18 @@
         renderPersonalizedSetting();
         renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
         renderReminderPush();
+        if (accountId && accountId !== "anonymous" && reminderAdapter) {
+          var reminderGeneration = syncGeneration;
+          reminderAdapter.listRules().then(function (rows) {
+            if (reminderGeneration !== syncGeneration || readyUid !== accountId) return;
+            state.reminderRules = rows;
+            renderToday(); renderKwChips();
+          }).catch(function () {
+            if (reminderGeneration !== syncGeneration) return;
+            state.reminderRules = [];
+            if (el.reminderPushState) el.reminderPushState.textContent = "提醒規則暫時無法讀取";
+          });
+        }
         return merged;
       }
       function clearAccountOwnedView() {
@@ -286,6 +304,8 @@
         state.personalizedNotifications = false;
         state.reminderPreset = "single";
         state.reminderCustomOffsets = "1";
+        state.reminderRules = [];
+        state.reminderDeviceActive = false;
         if (el.reminderPreset) el.reminderPreset.value = "single";
         state.activeAccountId = "anonymous";
         establishPersonalizedBaseline("anonymous");
@@ -849,7 +869,7 @@
       function eventRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(row.provenance === "user_event" ? "自己的事件" : (row.event_type || row.kind || "正式行程")) + '</div></div></div>'; }
       function deadlineRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(projection.dueLabel(row.date)) + ' · ' + esc(row.date) + '</div></div></div>'; }
       el.todayEvents.innerHTML = projection.todayEvents.length ? projection.todayEvents.map(eventRow).join("") : '<p class="empty">今天沒有已知正式行程。</p>';
-      var upcoming = projection.upcoming.concat(projection.deadlines);
+      var upcoming = projection.upcoming.concat(projection.deadlines).concat(projection.upcomingReminders);
       el.todayDeadlines.innerHTML = upcoming.length ? upcoming.map(deadlineRow).join("") : '<p class="empty">接下來 7 天沒有已知截止事項。</p>';
       el.todayTasks.innerHTML = projection.openTasks.length ? projection.openTasks.slice(0, 8).map(function (task) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(task.title) + '</div><div class="today-item-meta">' + esc(taskDateLabel(task.due_date)) + '</div></div></div>'; }).join("") : '<p class="empty">還沒有待辦。</p>';
       el.todayRelevant.innerHTML = projection.relevantAnnouncements.length ? projection.relevantAnnouncements.map(function (item) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(displayTitle(item)) + '</div><div class="today-item-meta">' + esc(item.school_name || "公告") + '</div></div></div>'; }).join("") : '<p class="empty">設定我的資料後，這裡會顯示相關公告。</p>';
@@ -858,8 +878,21 @@
     }
     function renderKwChips() {
       syncSubscriptions();
+      var next = null;
+      (state.reminderRules || []).forEach(function (rule) {
+        var row = window.CyNewsReminderRules && window.CyNewsReminderRules.nextReminder(rule, new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }));
+        if (row && (!next || row.date < next.date)) next = row;
+      });
+      var reminderStatus = window.CyNewsReminderRules ? window.CyNewsReminderRules.subscriptionStatus({
+        notificationEnabled: true,
+        reminderEnabled: state.reminderDeviceActive,
+        preset: state.reminderPreset,
+        next: next ? new Date(next.date + "T00:00:00+08:00") : null,
+      }) : null;
       el.kwChips.innerHTML = state.subscriptions.map(function (sub) {
         return '<span class="kw-chip">' + esc(sub.keyword) +
+          (reminderStatus ? '<small> · ' + esc(reminderStatus.reminder) + ' · ' + esc(reminderStatus.preset) +
+            (reminderStatus.next ? ' · 下次 ' + esc(reminderStatus.next.toLocaleDateString("zh-TW", { timeZone: "Asia/Taipei" })) : '') + '</small>' : '') +
           '<button type="button" data-id="' + esc(sub.id) + '" aria-label="移除 ' + esc(sub.keyword) + '">×</button></span>';
       }).join("");
     }
@@ -1272,7 +1305,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=31").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=32").catch(function () {});
       });
     }
 
