@@ -36,6 +36,7 @@ jobs:
 
       - name: Refresh deterministic projections
         run: |
+          python scraper/schoolcal.py discover
           python scraper/schoolcal.py build
           python scraper/reminder_targets.py
 
@@ -43,7 +44,10 @@ jobs:
         run: |
           git config user.name "news-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/data/reminder-targets.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json
+          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/data/calendar-source-status.json docs/data/reminder-targets.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json
+          if [ -f docs/data/official-calendar-events.json ]; then
+            git add docs/data/official-calendar-events.json
+          fi
           if [ -d docs/data/details ]; then
             git add docs/data/details
           fi

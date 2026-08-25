@@ -6,7 +6,12 @@ on:
     - cron: '1 23 * * *'
   workflow_dispatch: {}
 
-permissions: {}
+permissions:
+  contents: write
+
+concurrency:
+  group: calendar-daily
+  cancel-in-progress: false
 
 jobs:
   notify:
@@ -24,7 +29,27 @@ jobs:
       - name: 檢查官方學校行事曆來源
         run: python scraper/schoolcal.py discover
 
+      - name: 更新官方行事曆與可信提醒目標
+        run: |
+          python scraper/schoolcal.py build
+          python scraper/reminder_targets.py
+
       - name: 推播今日行事曆事件
         env:
-          NTFY_TOPIC: ${{ vars.NTFY_TOPIC }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || vars.NTFY_TOPIC }}
         run: python scraper/schoolcal.py notify
+
+      - name: 提交 Actions-owned 行事曆資料
+        run: |
+          git config user.name "news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/calendar-source-status.json docs/data/calendar-events.json docs/data/reminder-targets.json docs/calendar.ics
+          if [ -f docs/data/official-calendar-events.json ]; then
+            git add docs/data/official-calendar-events.json
+          fi
+          if git diff --cached --quiet; then
+            echo "CALENDAR_NO_CHANGE"
+          else
+            git commit -m "Update official school calendars"
+            git push
+          fi

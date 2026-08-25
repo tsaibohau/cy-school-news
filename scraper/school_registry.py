@@ -50,11 +50,8 @@ SCHOOLS: Dict[str, SchoolDefinition] = {
         base_url="https://www.cygsh.cy.edu.tw",
         announcement_adapter="new-classic-cms",
         calendar_adapter="new-classic-cms-pdf",
-        # The school currently publishes calendar PDFs under /var/file.  The
-        # canonical page is intentionally kept configurable until the 115-1
-        # index entry is published.
         calendar_sources=(CalendarSource(
-            "https://www.cygsh.cy.edu.tw/",
+            "https://www.cygsh.cy.edu.tw/p/412-1013-1827.php",
             ("學年度", "行事曆"),
         ),),
         capabilities={"announcements": True, "official_calendar": True},

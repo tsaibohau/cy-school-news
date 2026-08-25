@@ -9,7 +9,7 @@ import io
 import re
 from datetime import datetime, timezone
 from html import unescape
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
 
 from calendar_schema import normalize_event, validate_events, source_status
 
@@ -82,7 +82,7 @@ def _year_from_context(text, academic_year):
 
 
 def parse_calendar_text(text, *, school_id, academic_year, semester, source_url,
-                        source_document, fetched_at=None):
+                        source_document, source_revision_value="", fetched_at=None):
     """Parse table-like official calendar text into one event per source row.
 
     Supported fixture shapes include the CYSH/CYGSH PDF extraction pattern:
@@ -116,13 +116,14 @@ def parse_calendar_text(text, *, school_id, academic_year, semester, source_url,
             event_id=event_id, school_id=school_id, title=title,
             start_date=start, end_date=end, event_type="school_activity",
             source_url=source_url, source_document=source_document,
-            source_revision="", fetched_at=fetched_at or "",
+            source_revision=source_revision_value, fetched_at=fetched_at or "",
             parser_provenance={"adapter": "new-classic-cms-pdf", "parser_version": "1"},
         ))
     return validate_events(rows, school_id=school_id)
 
 
-def discover_calendar_attachments(html, *, base_url, academic_year, semester):
+def discover_calendar_attachments(html, *, base_url, academic_year, semester,
+                                  allowed_origin=None):
     """Return only official-domain links matching calendar title metadata."""
     html = unescape(str(html or ""))
     candidates = []
@@ -139,7 +140,9 @@ def discover_calendar_attachments(html, *, base_url, academic_year, semester):
         if semester == 2 and not any(marker in haystack for marker in ("第二學期", "第2學期", f"{academic_year}-2", f"{academic_year}下")):
             continue
         url = urljoin(base_url, href)
-        if not url.startswith(base_url.rstrip("/") + "/"):
+        parsed = urlparse(url)
+        allowed = urlparse(allowed_origin or base_url)
+        if parsed.scheme != "https" or parsed.hostname != allowed.hostname:
             continue
         candidates.append({"url": url, "label": label, "source_type": "attachment"})
     return candidates

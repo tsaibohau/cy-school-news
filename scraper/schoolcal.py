@@ -70,13 +70,64 @@ def build_public_events(events) -> list:
     return validate_events(result, school_id=None)
 
 
-def discover() -> int:
+def academic_period(day=None):
+    """Return Taiwan academic year/semester without inferring event dates."""
+    day = day or datetime.now(TW_TZ).date()
+    if day.month >= 8:
+        return day.year - 1911, 1
+    if day.month == 1:
+        return day.year - 1912, 1
+    return day.year - 1912, 2
+
+
+def load_official_events() -> list:
+    if not OFFICIAL_PATH.exists():
+        return []
+    try:
+        return validate_events(json.loads(OFFICIAL_PATH.read_text(encoding="utf-8")), school_id=None)
+    except (OSError, ValueError, TypeError):
+        return []
+
+
+def merge_calendar_events(curated, official):
+    """Replace curated rows only for school/term pairs with validated official data."""
+    official = validate_events(official, school_id=None)
+    covered = {(row["school_id"], int(row["academic_year"]), int(row["semester"])) for row in official}
+    merged = []
+    for row in curated:
+        school_id = row.get("school_id", "")
+        try:
+            day = datetime.fromisoformat(row["start_date"]).date()
+            term = academic_period(day)
+        except (KeyError, TypeError, ValueError):
+            term = None
+        if term and (school_id, term[0], term[1]) in covered:
+            continue
+        merged.append(row)
+    for row in official:
+        visible = dict(row)
+        visible.update({
+            "date": row["start_date"], "endDate": row["end_date"],
+            "school": SCHOOLS[row["school_id"]].short_name if row["school_id"] in SCHOOLS else "",
+            "kind": "official", "sourceLabel": "學校行事曆",
+        })
+        merged.append(visible)
+    deduped = {row["id"]: row for row in merged}
+    return sorted(deduped.values(), key=lambda row: (row["start_date"], row["school_id"], row["id"]))
+
+
+def discover(*, academic_year=None, semester=None) -> int:
     """Check official indexes and publish only validated parsed documents.
 
     Missing 115-1 documents are represented as awaiting_official_source.  The
     last trustworthy public dataset is never replaced by an empty/guessed one.
     """
     checked = datetime.now(TW_TZ).isoformat(timespec="seconds")
+    current_year, current_semester = academic_period()
+    academic_year = int(academic_year or os.environ.get("CALENDAR_ACADEMIC_YEAR") or current_year)
+    semester = int(semester or os.environ.get("CALENDAR_SEMESTER") or current_semester)
+    if semester not in (1, 2):
+        raise ValueError("calendar semester must be 1 or 2")
     statuses = []
     published = []
     if OFFICIAL_PATH.exists():
@@ -90,11 +141,11 @@ def discover() -> int:
             html, revision, content_type = fetch_source(source.url)
             matches = discover_calendar_attachments(
                 html.decode("utf-8", errors="replace"), base_url=school.base_url,
-                academic_year=115, semester=1,
+                academic_year=academic_year, semester=semester,
             )
             if not matches:
                 statuses.append(source_status(
-                    school_id=school.school_id, academic_year=115, semester=1,
+                    school_id=school.school_id, academic_year=academic_year, semester=semester,
                     status="awaiting_official_source", source_url=source.url,
                     last_checked_at=checked,
                     last_verified_document=None,
@@ -107,7 +158,8 @@ def discover() -> int:
             if "html" in content_type or document["url"].lower().endswith((".php", "/")):
                 nested = discover_calendar_attachments(
                     content.decode("utf-8", errors="replace"),
-                    base_url=document["url"], academic_year=115, semester=1,
+                    base_url=document["url"], academic_year=academic_year, semester=semester,
+                    allowed_origin=school.base_url,
                 )
                 if not nested:
                     raise ValueError("calendar detail page has no matching PDF attachment")
@@ -115,35 +167,44 @@ def discover() -> int:
                 content, doc_revision, _ = fetch_source(document["url"])
             text = extract_pdf_text(content)
             parsed = parse_calendar_text(
-                text, school_id=school.school_id, academic_year=115, semester=1,
+                text, school_id=school.school_id, academic_year=academic_year, semester=semester,
                 source_url=document["url"], source_document=document["label"],
-                fetched_at=checked,
+                source_revision_value=doc_revision, fetched_at=checked,
             )
             validate_events(parsed, school_id=school.school_id)
+            if not parsed:
+                statuses.append(source_status(
+                    school_id=school.school_id, academic_year=academic_year, semester=semester,
+                    status="validation_failed", source_url=source.url,
+                    last_checked_at=checked,
+                    last_verified_document={"url": document["url"], "label": document["label"], "revision": doc_revision},
+                    event_count=0, error="official document produced no validated events",
+                ))
+                continue
             published = [row for row in published if not (
                 row.get("school_id") == school.school_id and
-                row.get("academic_year") == 115 and row.get("semester") == 1
+                row.get("academic_year") == academic_year and row.get("semester") == semester
             )]
             for row in parsed:
-                row["academic_year"] = 115
-                row["semester"] = 1
+                row["academic_year"] = academic_year
+                row["semester"] = semester
             published.extend(parsed)
             statuses.append(source_status(
-                school_id=school.school_id, academic_year=115, semester=1,
-                status="official_complete" if parsed else "validation_failed",
+                school_id=school.school_id, academic_year=academic_year, semester=semester,
+                status="official_complete",
                 source_url=source.url, last_checked_at=checked,
                 last_verified_document={"url": document["url"], "label": document["label"], "revision": doc_revision},
                 event_count=len(parsed),
             ))
         except Exception as exc:
             statuses.append(source_status(
-                school_id=school.school_id, academic_year=115, semester=1,
+                school_id=school.school_id, academic_year=academic_year, semester=semester,
                 status="parse_failed", source_url=source.url,
                 last_checked_at=checked, error=str(exc),
             ))
     STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
     STATUS_PATH.write_text(json.dumps(statuses, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    if any(row.get("academic_year") == 115 and row.get("semester") == 1 for row in published):
+    if published:
         OFFICIAL_PATH.write_text(json.dumps(published, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"[info] 官方行事曆來源狀態 → {STATUS_PATH}")
     return 0
@@ -185,7 +246,11 @@ def build_ics(events) -> str:
     ]
     for e in events:
         day = datetime.strptime(e["date"], "%Y-%m-%d").date()
-        nxt = day + timedelta(days=1)
+        try:
+            end_day = datetime.strptime(e.get("end_date", e["date"]), "%Y-%m-%d").date()
+        except (TypeError, ValueError):
+            end_day = day
+        nxt = max(day, end_day) + timedelta(days=1)
         school = e.get("school", "")
         summary = f'[{school}] {e["title"]}' if school else e["title"]
         digest = hashlib.md5(f'{e["date"]}|{summary}'.encode("utf-8")).hexdigest()[:12]
@@ -211,17 +276,32 @@ def build_ics(events) -> str:
 
 def build() -> int:
     events = load_events()
-    ICS_PATH.write_text(build_ics(events), encoding="utf-8", newline="")
+    public_events = merge_calendar_events(build_public_events(events), load_official_events())
+    legacy_shape = [{
+        "date": row["start_date"], "end_date": row["end_date"],
+        "school": SCHOOLS[row["school_id"]].short_name if row["school_id"] in SCHOOLS else "",
+        "title": row["title"],
+    } for row in public_events]
+    ICS_PATH.write_text(build_ics(legacy_shape), encoding="utf-8", newline="")
     JSON_PATH.parent.mkdir(parents=True, exist_ok=True)
-    JSON_PATH.write_text(json.dumps(build_public_events(events), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"[info] {len(events)} 個事件 → {ICS_PATH}")
+    JSON_PATH.write_text(json.dumps(public_events, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"[info] {len(public_events)} 個事件 → {ICS_PATH}")
     return 0
 
 
 def notify() -> int:
     import requests
     today = datetime.now(TW_TZ).strftime("%Y-%m-%d")
-    todays = events_on(load_events(), today)
+    if JSON_PATH.exists():
+        canonical = json.loads(JSON_PATH.read_text(encoding="utf-8"))
+        notification_events = [{
+            "date": row.get("start_date") or row.get("date"),
+            "school": row.get("school") or (SCHOOLS[row.get("school_id")].short_name if row.get("school_id") in SCHOOLS else ""),
+            "title": row.get("title", ""),
+        } for row in canonical]
+    else:
+        notification_events = load_events()
+    todays = events_on(notification_events, today)
     if not todays:
         print(f"[info] {today} 沒有行事曆事件")
         return 0
