@@ -19,6 +19,7 @@ NOISE_SELECTORS = [
     ".site-header", ".site-footer", ".cookie", ".tracking",
 ]
 BODY_SELECTORS = ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article"]
+ATTACHMENT_SELECTORS = ["ul.mptattach", ".mattachment", ".mfile"]
 EXTENSION_TYPES = {
     ".pdf": "application/pdf", ".doc": "application/msword",
     ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -66,10 +67,13 @@ def _link(node, source_url: str) -> dict:
     return {"text": _text(node) or href, "url": href} if href else {"text": _text(node), "url": ""}
 
 
-def _attachments(body, source_url: str, announcement_id: str) -> list[dict]:
+def _attachments(roots, source_url: str, announcement_id: str) -> list[dict]:
     result = []
     seen = set()
-    for anchor in body.select("a[href]"):
+    anchors = []
+    for root in roots if isinstance(roots, (list, tuple)) else [roots]:
+        anchors.extend(root.select("a[href]"))
+    for anchor in anchors:
         url = _safe_https_url(anchor.get("href", ""), source_url)
         if not url or url in seen:
             continue
@@ -86,9 +90,11 @@ def _attachments(body, source_url: str, announcement_id: str) -> list[dict]:
                     break
             if query_filename:
                 break
-        file_candidate = query_filename or path_filename
-        ext = "." + file_candidate.rsplit(".", 1)[-1].lower() if "." in file_candidate else ""
         text = _text(anchor)
+        text_ext = "." + text.rsplit(".", 1)[-1].lower() if "." in text else ""
+        file_candidate = query_filename or path_filename
+        path_ext = "." + file_candidate.rsplit(".", 1)[-1].lower() if "." in file_candidate else ""
+        ext = text_ext if text_ext in EXTENSION_TYPES else path_ext
         lower_url = url.lower()
         looks_like_file = ext in EXTENSION_TYPES or any(token in lower_url for token in ("download", "attachment", "file"))
         if not looks_like_file:
@@ -211,13 +217,14 @@ def parse_article_detail(html: str, *, announcement_id: str, school_id: str,
                     "fetched_at": fetched, "parse_status": "empty",
                     "provenance": "official_article"}
         verified_dates = _verified_dates(body, title=title, source_hash=raw_hash)
+        attachment_roots = [body] + [node for selector in ATTACHMENT_SELECTORS for node in soup.select(selector)]
         return {
             "announcement_id": announcement_id,
             "school_id": school_id,
             "title": title,
             "source_url": source_url,
             "blocks": _blocks(body, source_url),
-            "attachments": _attachments(body, source_url, announcement_id),
+            "attachments": _attachments(attachment_roots, source_url, announcement_id),
             "source_hash": raw_hash,
             "parser_version": "detail-v2",
             "fetched_at": fetched,

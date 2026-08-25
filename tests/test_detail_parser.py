@@ -35,6 +35,11 @@ def main():
     assert any(block["type"] == "list" and block["ordered"] for block in cygsh["blocks"])
     assert cygsh["attachments"][0]["extension"] == ".docx"
     assert cygsh["attachments"][0]["mime_type"].endswith("wordprocessingml.document")
+    assert len(cygsh["attachments"]) == 2
+    assert cygsh["attachments"][1]["filename"] == "校外教學名單.pdf"
+    assert cygsh["attachments"][1]["extension"] == ".pdf"
+    assert cygsh["attachments"][1]["mime_type"] == "application/pdf"
+    assert all("footer.pdf" not in row["url"] for row in cygsh["attachments"])
     assert cygsh["parse_status"] == "parsed"
     empty = parse_article_detail("<html><body><div class='mnav'>nav</div></body></html>",
                                  announcement_id="empty", school_id="cysh", title="空",

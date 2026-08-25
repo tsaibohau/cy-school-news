@@ -32,7 +32,30 @@ def select_targets(items, cap):
         -(datetime.fromisoformat(item.get("first_seen")).timestamp()
           if item.get("first_seen") else 0),
     ))
-    return pending[:cap]
+    # Preserve corruption-first/newest-first priority inside each school's
+    # queue, but round-robin schools so a bounded run cannot starve one source
+    # merely because snapshots list the other source first for tied timestamps.
+    selected = []
+    tiers = [
+        [item for item in pending if is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", ""))],
+        [item for item in pending if not (is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", "")))],
+    ]
+    for tier in tiers:
+        queues = {}
+        order = []
+        for item in tier:
+            school = item.get("school") or item.get("school_id") or "unknown"
+            if school not in queues:
+                queues[school] = []
+                order.append(school)
+            queues[school].append(item)
+        while len(selected) < cap and any(queues.values()):
+            for school in order:
+                if queues[school] and len(selected) < cap:
+                    selected.append(queues[school].pop(0))
+        if len(selected) >= cap:
+            break
+    return selected
 
 
 def main():
