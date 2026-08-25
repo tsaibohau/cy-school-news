@@ -5,6 +5,7 @@ const path = require("node:path");
 
 const repo = path.resolve(__dirname, "..");
 const sql = fs.readFileSync(path.join(repo, "supabase", "tests", "database", "user_tasks_rls.test.sql"), "utf8");
+const reminderSql = fs.readFileSync(path.join(repo, "supabase", "tests", "database", "reminder_rls.test.sql"), "utf8");
 const migration = fs.readFileSync(path.join(repo, "supabase", "migrations", "0021_user_tasks.sql"), "utf8");
 
 assert.match(sql, /set local role authenticated/);
@@ -16,4 +17,10 @@ assert.match(sql, /anonymous cannot read private tasks/);
 assert.match(migration, /create policy "tasks own rows"/);
 assert.match(migration, /using \(\(select auth\.uid\(\)\) = user_id\)/);
 assert.match(migration, /with check/);
+assert.match(reminderSql, /select plan\(22\)/);
+assert.match(reminderSql, /USER_A cannot spoof USER_B owner/);
+assert.match(reminderSql, /USER_B cannot deactivate USER_A device/);
+assert.match(reminderSql, /endpoint cannot silently transfer from USER_A to USER_B/);
+assert.match(reminderSql, /authenticated cannot read delivery ledger/);
+assert.match(reminderSql, /anonymous cannot insert reminder rules/);
 console.log("RLS SQL contract tests passed");

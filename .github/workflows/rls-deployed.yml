@@ -6,6 +6,7 @@ on:
     paths:
       - .github/workflows/rls-deployed.yml
       - tests/test_rls_deployed.js
+      - tests/test_rls_deployed_contract.js
       - tests/test_rls_behavioral.js
       - tests/test_supabase_sync.js
       - tests/test_account_sync.js
@@ -33,6 +34,7 @@ jobs:
       - name: Verify adapter UID and account/outbox isolation
         run: >-
           node --test
+          tests/test_rls_deployed_contract.js
           tests/test_supabase_sync.js
           tests/test_account_sync.js
           tests/test_account_switch_v3.js

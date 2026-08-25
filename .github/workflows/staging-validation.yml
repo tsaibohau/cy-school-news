@@ -32,6 +32,7 @@ jobs:
           tests/test_account_sync.js
           tests/test_supabase_sync.js
           tests/test_account_security.js
+          tests/test_rls_deployed_contract.js
           tests/test_pwa_notification.js
           tests/test_profile.js
           tests/test_relevance.js
@@ -47,6 +48,7 @@ jobs:
           tests/test_reminder_historical_flood.js
           tests/test_reminder_target_sync.js
           tests/test_push_subscription.js
+          tests/test_closed_app_push.js
           tests/test_reminder_rules_client.js
           tests/test_staging_build.js
       - name: Type-check reminder Edge Function

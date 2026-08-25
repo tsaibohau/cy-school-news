@@ -32,7 +32,9 @@ async function request(token, table, method, query, body) {
       apikey: anonKey,
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
-      Prefer: "return=representation",
+      Prefer: method === "POST" && String(query || "").includes("on_conflict=")
+        ? "resolution=merge-duplicates,return=representation"
+        : "return=representation",
     },
     body: body === undefined ? undefined : JSON.stringify(body),
   });
