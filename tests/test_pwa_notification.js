@@ -68,7 +68,7 @@ function makeDocument() {
   const ids = [
     "list", "subList", "countLine", "updatedAt", "q", "schoolSeg", "catChips",
     "viewLatest", "viewSub", "tabLatest", "tabSub", "subBadge", "kwForm",
-    "kwInput", "kwChips", "btnNotify", "notifyState", "btnRefresh",
+    "kwInput", "kwChips", "btnNotify", "notifyState", "btnRefresh", "refreshState",
     "profileBox", "profileHint", "profileForm", "profileSchool", "profileGrade",
     "profileClass", "profileInterests", "profileCategories", "profileKeywords",
     "profileSave", "profileStatus", "personalizedToggle",
@@ -89,6 +89,15 @@ function response(data, source = "network") {
     ok: true,
     status: 200,
     headers: { get(name) { return name.toLowerCase() === "x-cynews-data-source" ? source : null; } },
+    json() { return Promise.resolve(data); },
+  };
+}
+
+function apiResponse(status, data) {
+  return {
+    ok: status >= 200 && status < 300,
+    status,
+    headers: { get() { return null; } },
     json() { return Promise.resolve(data); },
   };
 }
@@ -126,9 +135,10 @@ async function flush() {
   await new Promise((resolve) => setImmediate(resolve));
 }
 
-async function createApp({ storage, responses, notification, controller = null }) {
+async function createApp({ storage, responses, notification, controller = null, location = null, crypto = null, accountAuth = null, accountConfig = null }) {
   const document = makeDocument();
   const queue = responses.slice();
+  const fetchRequests = [];
   const window = {
     localStorage: storage,
     document,
@@ -139,17 +149,23 @@ async function createApp({ storage, responses, notification, controller = null }
     addEventListener() {},
     __CYNEWS_TEST__: true,
   };
+  if (location) window.location = location;
+  if (crypto) window.crypto = crypto;
+  if (accountAuth) window.CyNewsAccountAuth = accountAuth;
+  if (accountConfig) window.CYNEWS_ACCOUNT_CONFIG = accountConfig;
   const context = vm.createContext({
     window,
     document,
     localStorage: storage,
     navigator: window.navigator,
     Notification: notification,
-    fetch: () => {
+    fetch: (url, options) => {
+      fetchRequests.push({ url, options: options || {} });
       const next = queue.shift();
       return next instanceof Error ? Promise.reject(next) : Promise.resolve(next);
     },
     Date: FixedDate,
+    URL,
     setTimeout,
     clearTimeout,
     console,
@@ -160,7 +176,7 @@ async function createApp({ storage, responses, notification, controller = null }
   vm.runInContext(registrySource, context);
   vm.runInContext(appSource, context);
   await flush();
-  return { context, window, document, app: window.__cyNewsAppTest, queue };
+  return { context, window, document, app: window.__cyNewsAppTest, queue, fetchRequests };
 }
 
 function addSubscription(app, document, keyword) {
@@ -419,6 +435,107 @@ async function testPermissionFailureDoesNotPersist() {
     "a failed Notification must not advance the watermark");
 }
 
+async function testRefreshStatusContract() {
+  const current = await createApp({
+    storage: new MemoryStorage(),
+    responses: [response(dataOf([])), response(dataOf([]))],
+    notification: makeNotification(),
+  });
+  current.document.elements.btnRefresh.emit("click");
+  assert.equal(current.document.elements.btnRefresh.disabled, true, "refresh disables repeated taps immediately");
+  assert.equal(current.document.elements.refreshState.textContent, "正在取得雲端已發布資料…");
+  await flush();
+  assert.equal(current.document.elements.btnRefresh.disabled, false);
+  assert.equal(current.document.elements.refreshState.textContent, "同步完成；雲端尚未發布新版本",
+    "same generated_at is described as no newly published cloud version, not a server scrape");
+
+  const cached = await createApp({
+    storage: new MemoryStorage(),
+    responses: [response(dataOf([])), response(dataOf([]), "cache")],
+    notification: makeNotification(),
+    controller: {},
+  });
+  cached.document.elements.btnRefresh.emit("click");
+  await flush();
+  assert.equal(cached.document.elements.refreshState.textContent, "目前顯示離線快取，未取得雲端新資料");
+
+  const failed = await createApp({
+    storage: new MemoryStorage(), responses: [response(dataOf([])), new Error("offline")], notification: makeNotification(),
+  });
+  failed.document.elements.btnRefresh.emit("click");
+  await flush();
+  assert.equal(failed.document.elements.refreshState.textContent, "無法取得雲端資料，已保留目前畫面");
+  assert.ok(failed.app.getState().data, "failed refresh preserves the current dataset");
+}
+
+async function testAuthenticatedStagingRefreshContract() {
+  const oldData = dataOf([]);
+  const newData = { ...dataOf([]), generated_at: "2026-08-19T01:01:00Z" };
+  let verifiedCalls = 0;
+  const accountAuth = {
+    createController() {
+      return {
+        isConfigured() { return true; },
+        getVerifiedSession() {
+          verifiedCalls += 1;
+          return Promise.resolve({ access_token: "verified-jwt", user: { id: "user-a" } });
+        },
+      };
+    },
+  };
+  const staging = await createApp({
+    storage: new MemoryStorage(),
+    responses: [response(oldData), apiResponse(202, { status: "accepted" }), response(newData)],
+    notification: makeNotification(),
+    location: { origin: "https://cy-school-news-staging.vercel.app" },
+    crypto: { randomUUID() { return "9b7a43b2-855a-4da4-b04f-cf11d5f777aa"; } },
+    accountAuth,
+    accountConfig: { supabaseUrl: "https://project.supabase.co/", supabaseAnonKey: "public-anon-key" },
+  });
+  staging.document.elements.btnRefresh.emit("click");
+  assert.equal(staging.document.elements.refreshState.textContent, "正在要求雲端立即更新…");
+  await new Promise((resolve) => setTimeout(resolve, 20));
+  await flush();
+  assert.equal(verifiedCalls, 1, "refresh requires the account adapter's server-verified session");
+  assert.equal(staging.fetchRequests[1].url, "https://project.supabase.co/functions/v1/request-staging-refresh");
+  assert.equal(staging.fetchRequests[1].options.method, "POST");
+  assert.equal(staging.fetchRequests[1].options.headers.apikey, "public-anon-key");
+  assert.equal(staging.fetchRequests[1].options.headers.authorization, "Bearer verified-jwt");
+  assert.equal(staging.fetchRequests[1].options.headers["x-idempotency-key"], "9b7a43b2-855a-4da4-b04f-cf11d5f777aa");
+  assert.equal(staging.document.elements.refreshState.textContent, "已載入最新雲端資料");
+
+  const limited = await createApp({
+    storage: new MemoryStorage(),
+    responses: [response(oldData), apiResponse(429, { status: "rate_limited", retryAfterSeconds: 120 })],
+    notification: makeNotification(),
+    location: { origin: "https://cy-school-news-staging.vercel.app" },
+    crypto: { randomUUID() { return "85c6633b-2205-4f14-a776-0b225038b8ae"; } },
+    accountAuth,
+    accountConfig: { supabaseUrl: "https://project.supabase.co", supabaseAnonKey: "public-anon-key" },
+  });
+  limited.document.elements.btnRefresh.emit("click");
+  await flush();
+  assert.equal(limited.document.elements.refreshState.textContent, "更新請求太頻繁，請在 120 秒後再試");
+  assert.equal(limited.document.elements.btnRefresh.disabled, false);
+
+  const loggedOutAuth = {
+    createController() {
+      return { isConfigured() { return true; }, getVerifiedSession() { return Promise.resolve(null); } };
+    },
+  };
+  const loggedOut = await createApp({
+    storage: new MemoryStorage(), responses: [response(oldData)], notification: makeNotification(),
+    location: { origin: "https://cy-school-news-staging.vercel.app" },
+    crypto: { randomUUID() { return "2e54b9fa-0f35-429d-8e11-b45fc71f3a96"; } },
+    accountAuth: loggedOutAuth,
+    accountConfig: { supabaseUrl: "https://project.supabase.co", supabaseAnonKey: "public-anon-key" },
+  });
+  loggedOut.document.elements.btnRefresh.emit("click");
+  await flush();
+  assert.equal(loggedOut.document.elements.refreshState.textContent, "請先登入後再要求立即更新；未送出更新");
+  assert.equal(loggedOut.fetchRequests.length, 1, "logged-out staging users must not call the refresh function");
+}
+
 async function testPersonalizedStrongMatchAndReasons() {
   const storage = new MemoryStorage();
   const notification = makeNotification();
@@ -490,7 +607,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v33/);
+  assert.match(swSource, /cy-news-v34/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
@@ -522,6 +639,8 @@ function testServiceWorkerContract() {
 (async function () {
   await testRepeatedAppOpens();
   await testRepeatedRefreshAndRender();
+  await testRefreshStatusContract();
+  await testAuthenticatedStagingRefreshContract();
   await testArchiveDoesNotNotify();
   await testSubscriptionBaselineAndLaterMatch();
   await testTwoKeywordsOneNotificationAndReadSeparate();

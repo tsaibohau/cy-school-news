@@ -42,6 +42,7 @@
     var notificationState = NotificationState.load();
     var queueAccountMutation = function () {};
     var createTaskReminder = function () { return Promise.reject(new Error("account not ready")); };
+    var accountAuth = null;
 
     var state = {
       data: null,
@@ -84,7 +85,7 @@
       reminderPushToggle: $("reminderPushToggle"), reminderPushState: $("reminderPushState"),
       reminderPreset: $("reminderPreset"), nextReminder: $("nextReminder"),
       reminderCustomWrap: $("reminderCustomWrap"), reminderCustomOffsets: $("reminderCustomOffsets"),
-      btnRefresh: $("btnRefresh"),
+      btnRefresh: $("btnRefresh"), refreshState: $("refreshState"),
       accountState: $("accountState"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
       accountLogout: $("accountLogout"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
@@ -200,7 +201,8 @@
 
     function setupAccountSync() {
       if (!el.accountState || !window.CyNewsAccountAuth || !window.CyNewsAccountSync) return;
-      var auth = window.CyNewsAccountAuth.createController();
+      var auth = accountAuth || window.CyNewsAccountAuth.createController();
+      accountAuth = auth;
       if (!auth.isConfigured()) {
         var accountBox = document.getElementById("accountBox");
         if (accountBox) accountBox.hidden = true;
@@ -534,12 +536,87 @@
           state.data = data;
           renderAll();
           if (result.freshNetwork) processFreshRecentNotifications(recentItems);
+          return { ok: true, freshNetwork: result.freshNetwork, generatedAt: data.generated_at || "" };
         })
         .catch(function () {
           if (!state.data) {
             el.list.innerHTML = '<p class="empty">目前離線且尚無快取資料,連上網路後再試一次。</p>';
           }
+          return { ok: false, freshNetwork: false, generatedAt: state.data && state.data.generated_at || "" };
         });
+    }
+
+    var STAGING_REFRESH_ORIGIN = "https://cy-school-news-staging.vercel.app";
+    function stagingRefreshEndpoint() {
+      if (!window.location || window.location.origin !== STAGING_REFRESH_ORIGIN) return null;
+      var config = window.CYNEWS_ACCOUNT_CONFIG || {};
+      if (!config.supabaseUrl || !config.supabaseAnonKey) return null;
+      try {
+        var base = new URL(config.supabaseUrl);
+        if (base.protocol !== "https:" || base.username || base.password || !/\.supabase\.co$/i.test(base.hostname)) return null;
+        return {
+          url: base.origin + "/functions/v1/request-staging-refresh",
+          anonKey: String(config.supabaseAnonKey),
+        };
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function requestStagingRefresh(endpoint) {
+      if (!window.crypto || typeof window.crypto.randomUUID !== "function") {
+        return Promise.resolve({ status: "unavailable" });
+      }
+      if (!accountAuth && window.CyNewsAccountAuth) accountAuth = window.CyNewsAccountAuth.createController();
+      if (!accountAuth || !accountAuth.isConfigured() || typeof accountAuth.getVerifiedSession !== "function") {
+        return Promise.resolve({ status: "unavailable" });
+      }
+      return accountAuth.getVerifiedSession().then(function (session) {
+        if (!session || !session.access_token || !session.user || !session.user.id) return { status: "unauthenticated" };
+        return fetch(endpoint.url, {
+          method: "POST",
+          cache: "no-store",
+          headers: {
+            "content-type": "application/json",
+            apikey: endpoint.anonKey,
+            authorization: "Bearer " + session.access_token,
+            "x-idempotency-key": window.crypto.randomUUID(),
+          },
+          body: "{}",
+        }).then(function (response) {
+          return response.json().catch(function () { return {}; }).then(function (body) {
+            if (response.status === 429 || body.status === "rate_limited") {
+              return { status: "rate_limited", retryAfterSeconds: Number(body.retryAfterSeconds) || 0 };
+            }
+            if (!response.ok || ["accepted", "already_requested"].indexOf(body.status) === -1) {
+              return { status: "unavailable" };
+            }
+            return { status: body.status };
+          });
+        });
+      }).catch(function () { return { status: "unavailable" }; });
+    }
+
+    function generationAdvanced(before, after) {
+      var afterTime = Date.parse(after || "");
+      if (!Number.isFinite(afterTime)) return false;
+      if (!before) return true;
+      var beforeTime = Date.parse(before);
+      return Number.isFinite(beforeTime) ? afterTime > beforeTime : after !== before;
+    }
+
+    function pollPublishedGeneration(before) {
+      var delays = window.__CYNEWS_TEST__ ? [0, 0, 0] : [5000, 10000, 15000, 20000, 30000, 30000];
+      function poll(index) {
+        if (index >= delays.length) return Promise.resolve({ status: "pending" });
+        return new Promise(function (resolve) { setTimeout(resolve, delays[index]); }).then(fetchData).then(function (result) {
+          if (result && result.ok && result.freshNetwork && generationAdvanced(before, result.generatedAt)) {
+            return { status: "updated" };
+          }
+          return poll(index + 1);
+        });
+      }
+      return poll(0);
     }
 
     /* 歷史封存資料:開站不載,搜尋或篩選時才背景載入一次 */
@@ -1147,14 +1224,55 @@
         /* 等待下一次成功的近期資料網路載入,此處不觸發通知。 */
       });
     });
+    function setRefreshState(kind, text) {
+      el.btnRefresh.disabled = kind === "loading";
+      el.btnRefresh.setAttribute("aria-busy", kind === "loading" ? "true" : "false");
+      el.btnRefresh.classList.toggle("is-refreshing", kind === "loading");
+      if (el.refreshState) {
+        el.refreshState.textContent = text || "";
+        el.refreshState.dataset.state = kind || "idle";
+      }
+    }
     el.btnRefresh.addEventListener("click", function () {
+      if (el.btnRefresh.disabled) return;
       var before = state.data && state.data.generated_at;
-      fetchData().then(function () {
-        if (state.data && before && state.data.generated_at === before) {
-          /* 資料沒變:誠實告知不是壞掉,是還沒到下一輪更新 */
-          el.updatedAt.textContent =
-            "已是最新(每小時自動更新,上次 " + before.slice(11, 16) + ")";
-          setTimeout(renderUpdatedAt, 3000);
+      var endpoint = stagingRefreshEndpoint();
+      if (endpoint) {
+        setRefreshState("loading", "正在要求雲端立即更新…");
+        requestStagingRefresh(endpoint).then(function (request) {
+          if (request.status === "unauthenticated") {
+            setRefreshState("error", "請先登入後再要求立即更新；未送出更新");
+            return;
+          }
+          if (request.status === "rate_limited") {
+            var wait = request.retryAfterSeconds > 0 ? "，請在 " + request.retryAfterSeconds + " 秒後再試" : "，請稍後再試";
+            setRefreshState("current", "更新請求太頻繁" + wait);
+            return;
+          }
+          if (["accepted", "already_requested"].indexOf(request.status) === -1) {
+            setRefreshState("error", "立即更新服務目前不可用；未送出更新");
+            return;
+          }
+          setRefreshState("loading", request.status === "accepted"
+            ? "已送出立即更新，等待雲端發布…"
+            : "更新已在排程中，等待雲端發布…");
+          return pollPublishedGeneration(before).then(function (published) {
+            if (published.status === "updated") setRefreshState("updated", "已載入最新雲端資料");
+            else setRefreshState("current", "更新已排程；雲端尚未發布完成");
+          });
+        });
+        return;
+      }
+      setRefreshState("loading", "正在取得雲端已發布資料…");
+      fetchData().then(function (result) {
+        if (!result || !result.ok) {
+          setRefreshState("error", "無法取得雲端資料，已保留目前畫面");
+        } else if (!result.freshNetwork) {
+          setRefreshState("cached", "目前顯示離線快取，未取得雲端新資料");
+        } else if (before && result.generatedAt === before) {
+          setRefreshState("current", "同步完成；雲端尚未發布新版本");
+        } else {
+          setRefreshState("updated", "已載入最新雲端資料");
         }
       });
     });
@@ -1307,7 +1425,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=33").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=34").catch(function () {});
       });
     }
 
