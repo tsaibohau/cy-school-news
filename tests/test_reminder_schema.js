@@ -29,6 +29,11 @@ assert.match(hardening, /owned_task\.due_date::timestamp at time zone 'Asia\/Tai
 assert.match(hardening, /owned_task\.title/);
 assert.match(hardening, /on conflict \(owner_user_id, target_kind, target_id, source_revision\)/);
 assert.match(hardening, /target_kind = 'manual' and manual_target_at is not null/);
+assert.match(hardening, /resolved_target_at := new\.manual_target_at/);
+assert.match(hardening, /resolved_target_at := trusted\.target_at/);
+assert.match(hardening, /resolved_target_title := trusted\.title/);
+assert.match(hardening, /resolved_source_url := trusted\.source_url/);
+assert.match(hardening, /Populate the safe owner-visible projection/);
 assert.match(hardening, /raise exception 'unverified reminder target'/);
 assert.match(hardening, /foreign key \(rule_id, user_id\)/);
 assert.match(hardening, /foreign key \(job_id, user_id\)/);
@@ -57,6 +62,8 @@ assert.match(worker, /outcome not in \('sent', 'invalid', 'retry', 'dead'\)/);
 assert.match(worker, /effective_outcome = 'invalid'/);
 assert.match(worker, /invalidated_at = coalesce\(invalidated_at, now\(\)\)/);
 assert.match(worker, /d\.attempts >= j\.max_attempts/);
-assert.match(worker, /coalesce\(t\.title, r\.target_id\)/);
+assert.match(worker, /coalesce\(r\.resolved_target_title, r\.target_id\)/);
+assert.match(worker, /r\.resolved_source_url/);
+assert.match(worker, /where t\.id = r\.reminder_target_id[\s\S]*and t\.active/);
 console.log("Reminder schema security contract tests passed");
 

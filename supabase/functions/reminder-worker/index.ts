@@ -11,6 +11,7 @@ type ClaimedDelivery = {
   target_kind: string
   target_id: string
   target_title: string
+  source_url: string | null
   target_at: string
   offset_days: number
 }
@@ -59,6 +60,7 @@ function payloadFor(delivery: ClaimedDelivery): string {
       targetId: delivery.target_id,
       targetAt: delivery.target_at,
       offsetDays: delivery.offset_days,
+      url: delivery.source_url || "./",
     },
   })
 }
@@ -99,7 +101,7 @@ Deno.serve(async (req) => {
       const result = await webpush.sendNotification({
         endpoint: delivery.endpoint,
         keys: { p256dh: delivery.p256dh, auth: delivery.auth },
-      }, payloadFor(delivery), { TTL: 86400 })
+      }, payloadFor(delivery), { TTL: 86400, timeout: 15000, urgency: "normal" })
       httpStatus = result.statusCode
     } catch (error) {
       const pushError = error as { statusCode?: number; code?: string; name?: string }

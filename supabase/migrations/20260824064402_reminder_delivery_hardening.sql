@@ -50,7 +50,11 @@ alter table public.user_reminder_rules
   add column if not exists preset text not null default 'single',
   add column if not exists schedule_baseline_at timestamptz not null default now(),
   add column if not exists disabled_at timestamptz,
-  add column if not exists deleted_at timestamptz;
+  add column if not exists deleted_at timestamptz,
+  add column if not exists manual_title text,
+  add column if not exists resolved_target_at timestamptz,
+  add column if not exists resolved_target_title text,
+  add column if not exists resolved_source_url text;
 
 alter table public.user_reminder_rules
   drop constraint if exists user_reminder_rules_offsets_days_check,
@@ -61,6 +65,9 @@ alter table public.user_reminder_rules
     or
     (target_kind <> 'manual' and manual_target_at is null and reminder_target_id is not null)
   ) not valid,
+  add constraint user_reminder_rules_manual_title_check check (
+    manual_title is null or (char_length(btrim(manual_title)) between 1 and 500)
+  ),
   add constraint user_reminder_rules_id_user_key unique (id, user_id);
 
 -- A trusted catalog row, never a browser-supplied publication date, resolves
@@ -79,6 +86,9 @@ begin
   if new.target_kind = 'manual' then
     new.provenance := 'manual';
     new.source_revision := coalesce(nullif(new.source_revision, ''), 'manual');
+    new.resolved_target_at := new.manual_target_at;
+    new.resolved_target_title := coalesce(nullif(btrim(new.manual_title), ''), new.target_id);
+    new.resolved_source_url := null;
     return new;
   end if;
 
@@ -137,6 +147,9 @@ begin
   new.timezone := trusted.timezone;
   new.provenance := trusted.provenance;
   new.source_revision := trusted.source_revision;
+  new.resolved_target_at := trusted.target_at;
+  new.resolved_target_title := trusted.title;
+  new.resolved_source_url := trusted.source_url;
   return new;
 end;
 $$;
@@ -146,6 +159,17 @@ drop trigger if exists validate_reminder_rule_target on public.user_reminder_rul
 create trigger validate_reminder_rule_target
 before insert or update on public.user_reminder_rules
 for each row execute function private.validate_reminder_rule_target();
+
+-- Populate the safe owner-visible projection for pre-existing rules without
+-- reviving stale automatic targets. The BEFORE trigger remains authoritative.
+update public.user_reminder_rules r
+   set manual_title = r.manual_title
+ where r.target_kind = 'manual'
+    or exists (
+      select 1 from public.reminder_targets t
+       where t.id = r.reminder_target_id and t.active
+         and t.target_kind = r.target_kind and t.target_id = r.target_id
+    );
 
 alter table public.user_push_subscriptions
   add column if not exists disabled_at timestamptz,
@@ -272,3 +296,9 @@ comment on column public.user_reminder_rules.timezone is
   'IANA timezone; date-only targets resolve at local midnight, default Asia/Taipei.';
 comment on table public.reminder_targets is
   'Server-owned verified target catalog. Publication dates are not valid targets.';
+comment on column public.user_reminder_rules.resolved_target_at is
+  'Trigger-maintained trusted target timestamp exposed only through the owner-scoped rule row.';
+comment on column public.user_reminder_rules.resolved_target_title is
+  'Trigger-maintained display title; automatic targets never trust a browser-supplied title.';
+comment on column public.user_reminder_rules.resolved_source_url is
+  'Trigger-maintained official source URL; null for manual and task targets without a trusted URL.';

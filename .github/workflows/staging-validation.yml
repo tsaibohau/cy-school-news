@@ -43,6 +43,8 @@ jobs:
           tests/test_reminder_rules.js
           tests/test_reminder_schema.js
           tests/test_reminder_worker.js
+          tests/test_reminder_scheduler.js
+          tests/test_reminder_historical_flood.js
           tests/test_reminder_target_sync.js
           tests/test_push_subscription.js
           tests/test_reminder_rules_client.js

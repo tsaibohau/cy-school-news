@@ -21,6 +21,7 @@ returns table (
   target_kind text,
   target_id text,
   target_title text,
+  source_url text,
   target_at timestamptz,
   offset_days integer
 )
@@ -60,14 +61,15 @@ begin
     from public.user_reminder_rules r
     cross join lateral unnest(r.offsets_days) offsets(offset_days)
     cross join lateral (
-      select case when r.target_kind = 'manual'
-                  then r.manual_target_at else t.target_at end as target_at
-        from (select 1) seed
-        left join public.reminder_targets t
-          on t.id = r.reminder_target_id
-         and t.active
-         and t.target_kind = r.target_kind
-         and t.target_id = r.target_id
+      select r.resolved_target_at as target_at
+       where r.target_kind = 'manual'
+          or exists (
+            select 1 from public.reminder_targets t
+             where t.id = r.reminder_target_id
+               and t.active
+               and t.target_kind = r.target_kind
+               and t.target_id = r.target_id
+          )
     ) resolved
    where r.enabled and r.disabled_at is null and r.deleted_at is null
      and resolved.target_at > now()
@@ -114,7 +116,8 @@ begin
     returning d.*
   )
   select c.id, c.lease_token, s.id, s.endpoint, s.p256dh, s.auth,
-         r.target_kind, r.target_id, coalesce(t.title, r.target_id), j.target_at, j.offset_days
+         r.target_kind, r.target_id, coalesce(r.resolved_target_title, r.target_id), r.resolved_source_url,
+         j.target_at, j.offset_days
     from claimed c
     join public.reminder_jobs j on (j.id, j.user_id) = (c.job_id, c.user_id)
     join public.user_reminder_rules r on (r.id, r.user_id) = (j.rule_id, j.user_id)

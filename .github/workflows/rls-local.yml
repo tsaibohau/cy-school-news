@@ -27,6 +27,8 @@ jobs:
         run: supabase db reset --local --no-seed
       - name: Run user_tasks RLS matrix
         run: supabase test db --local supabase/tests/database/user_tasks_rls.test.sql
+      - name: Run reminder RLS matrix
+        run: supabase test db --local supabase/tests/database/reminder_rls.test.sql
       - name: Stop local Supabase
         if: always()
         run: supabase stop
