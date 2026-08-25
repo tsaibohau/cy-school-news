@@ -64,6 +64,7 @@ jobs:
           python tests/test_parser.py
           python tests/test_calendar_adapter.py
           python tests/test_detail_parser.py
+          python tests/test_detail_backfill.py
           python tests/test_attachment_parser.py
           python tests/test_reminder_targets.py
       - name: Verify generated data is untouched by staging build

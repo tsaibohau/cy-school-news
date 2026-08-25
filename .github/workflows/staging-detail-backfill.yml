@@ -31,8 +31,8 @@ jobs:
 
       - name: Run one bounded detail pass
         env:
-          DETAIL_BACKFILL: '1'
-        run: python scraper/scrape.py
+          DETAIL_BACKFILL_CAP: '10'
+        run: python scraper/detail_backfill.py
 
       - name: Refresh deterministic projections
         run: |
