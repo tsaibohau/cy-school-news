@@ -20,6 +20,7 @@ from pathlib import Path
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 import requests
+from attachment_parser import enrich_pdf_attachments
 from bs4 import BeautifulSoup
 
 from detail_parser import parse_article_detail
@@ -501,7 +502,8 @@ def _detail_filename(announcement_id: str) -> str:
     return safe or "unknown"
 
 
-def write_detail_record(item: dict, html: str, fetched_at: str) -> dict:
+def write_detail_record(item: dict, html: str, fetched_at: str, *, session=None,
+                        attachment_budget=None, request_delay_sec=None) -> dict:
     """Persist one validated sidecar without inflating announcement snapshots."""
     school_id = str(item.get("school_id") or item.get("school") or "unknown").lower()
     record = parse_article_detail(
@@ -512,6 +514,12 @@ def write_detail_record(item: dict, html: str, fetched_at: str) -> dict:
         source_url=str(item.get("url", "")),
         fetched_at=fetched_at,
     )
+    if session is not None and attachment_budget is not None:
+        enrich_pdf_attachments(
+            record, session, attachment_budget,
+            timeout_sec=CONFIG["timeout_sec"],
+            request_delay_sec=request_delay_sec or CONFIG["request_delay_sec"],
+        )
     school_dir = DETAIL_ROOT / re.sub(r"[^A-Za-z0-9_-]+", "_", school_id)
     school_dir.mkdir(parents=True, exist_ok=True)
     target = school_dir / (_detail_filename(item.get("id", "")) + ".json")
@@ -568,6 +576,7 @@ def main() -> int:
 
     session = requests.Session()
     session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
+    attachment_budget = {"remaining": min(4, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))}
 
     now_iso = datetime.now(TW_TZ).isoformat(timespec="seconds")
     all_new = []
@@ -657,7 +666,8 @@ def main() -> int:
                 detail_title = extract_article_title(html)
                 merge_title(it, detail_title, authoritative=True)
                 it["snippet"] = extract_article_snippet(html, it["title"])
-                write_detail_record(it, html, now_iso)
+                write_detail_record(it, html, now_iso, session=session,
+                                    attachment_budget=attachment_budget, request_delay_sec=delay)
                 if not it["snippet"]:
                     it["snippet_tried"] = True
                 article_date = extract_article_date_result(html)

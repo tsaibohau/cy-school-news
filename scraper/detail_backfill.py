@@ -22,7 +22,22 @@ def needs_detail(item):
     status = item.get("detail_status")
     retryable = (not status or status in {"pending", "temporary_error"}) \
         and int(item.get("detail_attempts") or 0) < 5
-    return corrupt or retryable
+    detail_ref = str(item.get("detail_ref") or "")
+    attachment_pending = False
+    if detail_ref.startswith("data/details/") and int(item.get("detail_attempts") or 0) < 5:
+        path = ROOT / "docs" / detail_ref
+        try:
+            record = json.loads(path.read_text(encoding="utf-8"))
+            attachment_pending = any(
+                str(row.get("extension") or "").lower() == ".pdf" and (
+                    row.get("parse_status") in {"pending", "temporary_error"} or
+                    (row.get("parse_status") == "unparsed" and not row.get("content_sha256"))
+                )
+                for row in record.get("attachments") or []
+            )
+        except (OSError, ValueError):
+            attachment_pending = False
+    return corrupt or retryable or attachment_pending
 
 
 def select_targets(items, cap):
@@ -67,6 +82,7 @@ def main():
     targets = select_targets(items, cap)
     session = requests.Session()
     session.headers.update({"User-Agent": "cy-school-news detail-backfill/1.0"})
+    attachment_budget = {"remaining": min(4, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))}
     fetched_at = datetime.now(TW_TZ).isoformat(timespec="seconds")
 
     for item in targets:
@@ -79,7 +95,8 @@ def main():
             if snippet:
                 item["snippet"] = snippet
             choose_date(item, extract_article_date_result(html))
-            write_detail_record(item, html, fetched_at)
+            write_detail_record(item, html, fetched_at, session=session,
+                                attachment_budget=attachment_budget, request_delay_sec=delay)
             if is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", "")):
                 raise RuntimeError("decoded detail remains corrupted")
         except Exception as error:

@@ -26,7 +26,7 @@ const record = {
     { type: "raw_html", html: "<img src=x onerror=alert(1)>" },
   ],
   attachments: [
-    { announcement_id: "a-1", provenance: "official_attachment", filename: "<x>.pdf", url: "https://school.example/a.pdf", extension: ".pdf" },
+    { announcement_id: "a-1", provenance: "official_attachment", filename: "<x>.pdf", url: "https://school.example/a.pdf", extension: ".pdf", parse_status: "parsed", embedded_text: "截止日 <script>" },
     { announcement_id: "other", provenance: "official_attachment", filename: "foreign.pdf", url: "https://school.example/f.pdf" },
     { announcement_id: "a-1", provenance: "untrusted", filename: "bad.pdf", url: "https://school.example/b.pdf" },
     { announcement_id: "a-1", provenance: "official_attachment", filename: "scheme.pdf", url: "javascript:alert(1)" },
@@ -41,6 +41,8 @@ assert(html.includes("<ol"));
 assert(html.includes("<th>欄位</th>"));
 assert(html.includes("<td>&lt;svg/onload=x&gt;</td>"));
 assert(html.includes("&lt;x&gt;.pdf"));
+assert(html.includes("閱讀 PDF 文字內容"));
+assert(html.includes("截止日 &lt;script&gt;"));
 assert(html.includes(">開啟附件</a>"));
 assert(!html.includes("開啟／下載"), "UI must not claim iOS downloaded an attachment");
 assert(!html.includes("foreign.pdf"));

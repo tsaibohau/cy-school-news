@@ -111,7 +111,7 @@ def _attachments(roots, source_url: str, announcement_id: str) -> list[dict]:
             "size": None,
             "announcement_id": announcement_id,
             "provenance": "official_attachment",
-            "parse_status": "unparsed",
+            "parse_status": "pending",
         })
     return result
 

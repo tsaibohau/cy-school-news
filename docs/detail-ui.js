@@ -66,7 +66,15 @@
     if (!attachments.length) return "";
     return '<section class="detail-attachments"><h3>附件</h3><ul>' + attachments.map(function (row) {
       var meta = [row.extension, row.mime_type, row.size].filter(Boolean).join(" · ");
-      return '<li><div><strong>' + esc(row.filename || "官方附件") + '</strong>' + (meta ? '<small>' + esc(meta) + '</small>' : '') + '</div><a href="' + esc(safeUrl(row.url)) + '" target="_blank" rel="noopener noreferrer">開啟附件</a></li>';
+      var extracted = row.parse_status === "parsed" && row.embedded_text
+        ? '<details class="attachment-text"><summary>閱讀 PDF 文字內容</summary><p>' + esc(row.embedded_text) + '</p></details>'
+        : (row.extension === ".pdf" ? '<small>' + esc({
+            pending: "PDF 文字正在排程整理",
+            temporary_error: "PDF 暫時無法讀取，系統稍後會重試",
+            unsupported: "此 PDF 超出安全解析範圍",
+            unparsed: "此 PDF 沒有可可靠讀取的文字層",
+          }[row.parse_status] || "PDF 文字尚未整理") + '</small>' : '');
+      return '<li><div><strong>' + esc(row.filename || "官方附件") + '</strong>' + (meta ? '<small>' + esc(meta) + '</small>' : '') + extracted + '</div><a href="' + esc(safeUrl(row.url)) + '" target="_blank" rel="noopener noreferrer">開啟附件</a></li>';
     }).join("") + "</ul></section>";
   }
   function render(record) {

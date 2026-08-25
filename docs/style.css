@@ -155,6 +155,9 @@ a { color: inherit; }
 .detail-attachments li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); }
 .detail-attachments small { display: block; color: var(--muted); margin-top: 3px; }
 .detail-attachments a { flex: 0 0 auto; }
+.attachment-text { margin-top: 8px; max-width: 100%; }
+.attachment-text summary { color: var(--accent); cursor: pointer; font-weight: 700; }
+.attachment-text p { margin: 8px 0 0; max-height: 18rem; overflow: auto; white-space: pre-wrap; line-height: 1.7; }
 .detail-source { display: inline-block; margin-top: 20px; }
 @media (max-width: 600px) {
   .detail-dialog { width: 100%; max-width: none; max-height: 92vh; margin: auto 0 0; border-radius: 20px 20px 0 0; }
