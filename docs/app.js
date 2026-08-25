@@ -761,6 +761,7 @@
       var renderer = window.CyNewsDetailUI;
       var source = renderer && renderer.safeUrl(item && item.url);
       el.detailBody.innerHTML = '<p class="detail-state">' + esc(message) + '</p>' +
+        (displaySnippet(item) ? '<p class="detail-paragraph">' + esc(displaySnippet(item)) + '</p>' : '') +
         (source ? '<a class="detail-source" href="' + esc(source) + '" target="_blank" rel="noopener noreferrer">查看官方原始公告 ↗</a>' : '');
     }
     function openDetail(id) {
@@ -859,6 +860,7 @@
         officialEvents: state.officialEvents,
         announcementItems: state.data ? state.data.items : [],
         tasks: state.tasks,
+        reminderRules: state.reminderRules,
         profile: state.profile,
         relevance: function (item, profile) { return window.CyNewsRelevance && window.CyNewsSchoolRegistry ? window.CyNewsRelevance.calculate(item, profile, window.CyNewsSchoolRegistry) : null; },
       });
@@ -884,7 +886,7 @@
         if (row && (!next || row.date < next.date)) next = row;
       });
       var reminderStatus = window.CyNewsReminderRules ? window.CyNewsReminderRules.subscriptionStatus({
-        notificationEnabled: true,
+        notificationEnabled: typeof Notification !== "undefined" && Notification.permission === "granted",
         reminderEnabled: state.reminderDeviceActive,
         preset: state.reminderPreset,
         next: next ? new Date(next.date + "T00:00:00+08:00") : null,
@@ -1305,7 +1307,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=32").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=33").catch(function () {});
       });
     }
 

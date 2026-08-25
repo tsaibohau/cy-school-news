@@ -1,8 +1,8 @@
 /* 嘉校快訊 Service Worker:離線快取殼層,資料採網路優先 */
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
-var CACHE = "cy-news-v32";
-var SHELL = ["./", "./index.html", "./style.css?v=32", "./app.js?v=32", "./notification-state.js", "./calendar-state.js?v=32", "./account-config.js?v=32", "./supabase-sync.js?v=32", "./account-auth.js?v=32", "./push-subscription.js?v=32", "./reminder-rules.js?v=32", "./task-state.js?v=32", "./account-sync.js?v=32", "./school-registry.js?v=32", "./profile.js?v=32", "./relevance.js?v=32", "./today.js?v=32", "./detail-ui.js?v=32", "./manifest.webmanifest", "./data/calendar-events.json",
+var CACHE = "cy-news-v33";
+var SHELL = ["./", "./index.html", "./style.css?v=33", "./app.js?v=33", "./notification-state.js", "./calendar-state.js?v=33", "./account-config.js?v=33", "./supabase-sync.js?v=33", "./account-auth.js?v=33", "./push-subscription.js?v=33", "./reminder-rules.js?v=33", "./task-state.js?v=33", "./account-sync.js?v=33", "./school-registry.js?v=33", "./profile.js?v=33", "./relevance.js?v=33", "./today.js?v=33", "./detail-ui.js?v=33", "./manifest.webmanifest", "./data/calendar-events.json",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {
@@ -25,19 +25,33 @@ self.addEventListener("push", function (e) {
   try { payload = e.data ? e.data.json() : {}; } catch (_) { payload = {}; }
   var title = typeof payload.title === "string" && payload.title.trim() ? payload.title.trim() : "嘉校快訊";
   var body = typeof payload.body === "string" && payload.body.trim() ? payload.body.trim() : "你有一則新的提醒";
-  var target = typeof payload.url === "string" && /^https:\/\//.test(payload.url) ? payload.url : "/";
+  var target = safeNotificationTarget(payload.url);
   e.waitUntil(self.registration.showNotification(title, { body: body.slice(0, 160), data: { url: target }, tag: typeof payload.tag === "string" ? payload.tag.slice(0, 120) : "cynews-reminder" }));
 });
 
 self.addEventListener("notificationclick", function (e) {
   e.notification.close();
-  var target = e.notification.data && e.notification.data.url;
-  if (typeof target !== "string") target = "/";
-  e.waitUntil(clients.matchAll({ type: "window", includeUncontrolled: true }).then(function (list) {
-    for (var i = 0; i < list.length; i += 1) if ("focus" in list[i]) return list[i].focus();
-    return clients.openWindow(target);
+  var target = safeNotificationTarget(e.notification.data && e.notification.data.url);
+  e.waitUntil(self.clients.matchAll({ type: "window", includeUncontrolled: true }).then(function (list) {
+    var existing = list[0];
+    if (existing && "navigate" in existing) {
+      return existing.navigate(target)
+        .then(function (navigated) { return (navigated || existing).focus(); })
+        .catch(function () { return self.clients.openWindow(target); });
+    }
+    return self.clients.openWindow(target);
   }));
 });
+
+function safeNotificationTarget(value) {
+  var scope = new URL(self.registration.scope);
+  try {
+    var target = new URL(typeof value === "string" ? value : "", scope);
+    var inScope = target.origin === scope.origin && target.pathname.indexOf(scope.pathname) === 0;
+    var hasToken = target.searchParams.has("access_token") || target.searchParams.has("refresh_token") || target.searchParams.has("code");
+    return inScope && !target.username && !target.password && !hasToken ? target.href : scope.href;
+  } catch (_) { return scope.href; }
+}
 
 self.addEventListener("fetch", function (e) {
   var req = e.request;

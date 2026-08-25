@@ -490,10 +490,14 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v32/);
+  assert.match(swSource, /cy-news-v33/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
+  assert.match(swSource, /safeNotificationTarget/);
+  assert.match(swSource, /existing\.navigate\(target\)/, "an existing PWA window navigates to the notification target before focus");
+  assert.match(swSource, /target\.origin === scope\.origin/, "notification targets stay on the current deployment origin");
+  assert.match(swSource, /target\.pathname\.indexOf\(scope\.pathname\) === 0/, "notification targets stay inside the current PWA scope");
   assert.match(swSource, /Never cache auth callback URLs/);
   assert.match(swSource, /\.\/profile\.js/);
   assert.match(swSource, /\.\/relevance\.js/);

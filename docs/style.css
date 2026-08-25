@@ -182,7 +182,7 @@ a { color: inherit; }
 }
 .kw-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
 .kw-chip {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; flex-wrap: wrap; gap: 6px; max-width: 100%; overflow-wrap: anywhere;
   background: var(--chip-bg); border: 1px solid var(--line);
   padding: 5px 10px; border-radius: 999px; font-size: 13.5px;
 }
@@ -190,6 +190,7 @@ a { color: inherit; }
   border: 0; background: transparent; color: var(--muted); cursor: pointer;
   font-size: 15px; line-height: 1; padding: 0;
 }
+.kw-chip small { color: var(--muted); line-height: 1.35; }
 .notify-row { display: flex; align-items: center; gap: 10px; margin: 6px 0 14px; }
 .reminder-push-box { margin: 14px 0; padding: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .reminder-push-box .compact-heading { margin-top: 0; }

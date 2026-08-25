@@ -1,4 +1,6 @@
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
 const Today = require("../docs/today.js");
 const Tasks = require("../docs/task-state.js");
 
@@ -24,4 +26,8 @@ assert.equal(result.relevantAnnouncements.length, 1);
 assert.deepEqual(result.upcomingReminders.map(row => row.date), ["2026-09-05", "2026-09-07", "2026-09-08"], "Today projects only reminders after the rule baseline");
 assert.ok(result.upcomingReminders.every(row => row.target_kind !== "publication_date"), "publication date never becomes a reminder");
 assert.equal(Today.rangeDates("2026-09-05", "2026-09-06").length, 2);
+const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
+assert.match(app, /reminderRules:\s*state\.reminderRules/, "Today receives the account's reminder rules");
+assert.match(app, /notificationEnabled:\s*typeof Notification !== "undefined" && Notification\.permission === "granted"/,
+  "subscription notification status reflects this browser's actual permission");
 console.log("Today projection tests passed");
