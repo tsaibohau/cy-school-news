@@ -64,6 +64,23 @@ def _compact(value: object, limit: int) -> str:
     return text if len(text) <= limit else text[:max(0, limit - 1)].rstrip() + "…"
 
 
+def _readable_title(value: object) -> str:
+    title = _compact(value, TITLE_LIMIT)
+    generic = {"國立嘉義高中", "國立嘉義女子高級中學"}
+    if title in generic or len(title) < 4:
+        return ""
+    return title if any(ch.isalnum() or "\u3400" <= ch <= "\u9fff" for ch in title) else ""
+
+
+def _clean_snippet(value: object) -> str:
+    text = _compact(value, BODY_LIMIT)
+    return re.sub(
+        r"^作者\s*[：:]\s*.*?\s+發[佈布]日期\s*[：:]\s*\d{4}-\d{2}-\d{2}"
+        r"(?:\s+最後更新日期\s*[：:]\s*\d{4}-\d{2}-\d{2})?\s*",
+        "", text,
+    )
+
+
 def normalize_topic(value: object) -> str:
     """Accept a private ntfy topic or its ntfy.sh URL without logging it."""
     raw = str(value or "").strip()
@@ -77,11 +94,11 @@ def normalize_topic(value: object) -> str:
 
 def notification_payload(item: dict) -> tuple[str, str]:
     """Return a readable ntfy title/body; never use a publication date as content."""
-    title = _compact(item.get("title"), TITLE_LIMIT) or "新公告"
+    snippet = _clean_snippet(item.get("snippet"))
+    title = _readable_title(item.get("title")) or _compact(snippet, TITLE_LIMIT) or "新公告"
     school = _compact(item.get("school_name"), 20)
     category = _compact(item.get("category", "一般"), 20)
     header = title + (f"｜{school}・{category}" if school else f"｜{category}")
-    snippet = _compact(item.get("snippet"), BODY_LIMIT)
     body = snippet or "尚未取得內文摘要，點擊查看官方公告。"
     return header, body
 
@@ -94,10 +111,11 @@ def summarize(items) -> str:
     base = f"本輪新增 {len(items)} 則:{parts}"
     visible = []
     for item in items[:SUMMARY_ITEM_LIMIT]:
-        title = _compact(item.get("title"), 80)
+        snippet = _clean_snippet(item.get("snippet"))
+        title = _readable_title(item.get("title")) or _compact(snippet, 80)
         if not title:
             continue
-        snippet = _compact(item.get("snippet"), 110)
+        snippet = _compact(snippet, 110)
         visible.append("・" + title + ("\n  " + snippet if snippet else ""))
     return base + ("\n\n最新公告:\n" + "\n".join(visible) if visible else "")
 

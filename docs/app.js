@@ -594,14 +594,18 @@
       /* 沒有公告日期時,退而顯示首次抓到的日期 */
       return it.date || (it.first_seen || "").slice(0, 10) || "—";
     }
+    function displaySnippet(it) {
+      return String(it && it.snippet || "").replace(/\s+/g, " ").trim()
+        .replace(/^作者\s*[：:]\s*.*?\s+發[佈布]日期\s*[：:]\s*\d{4}-\d{2}-\d{2}(?:\s+最後更新日期\s*[：:]\s*\d{4}-\d{2}-\d{2})?\s*/, "");
+    }
     function displayTitle(it) {
       var title = String(it && it.title || "").replace(/\s+/g, " ").trim();
-      var valid = title.length >= 4 && /[0-9A-Za-z\u3400-\u9fff]/.test(title);
+      var generic = title === "國立嘉義高中" || title === "國立嘉義女子高級中學";
+      var valid = !generic && title.length >= 4 && /[0-9A-Za-z\u3400-\u9fff]/.test(title);
       if (valid) return title;
       /* Legacy RulingDigital records may contain the ::: access-key label.
          Use readable article text while the Actions-owned snapshot self-heals. */
-      var snippet = String(it && it.snippet || "").replace(/\s+/g, " ").trim()
-        .replace(/^作者\s*:\s*.*?\s+發佈日期\s*:\s*\d{4}-\d{2}-\d{2}(?:\s+最後更新日期\s*:\s*\d{4}-\d{2}-\d{2})?\s*/, "");
+      var snippet = displaySnippet(it);
       return snippet ? snippet.slice(0, 140) : "公告標題暫時無法解析";
     }
     function calendarEvents() {
@@ -713,7 +717,7 @@
         '</div>' +
         '<h3 class="card-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         esc(displayTitle(it)) + '</a></h3>' +
-        (it.snippet ? '<p class="card-snippet">' + esc(it.snippet) + '</p>' : "") +
+        (displaySnippet(it) ? '<p class="card-snippet">' + esc(displaySnippet(it)) + '</p>' : "") +
         '<div class="card-actions"><button type="button" class="btn-ghost" data-detail-id="' + esc(it.id) + '">查看完整內容</button><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>' +
         '</article>';
     }
@@ -1268,7 +1272,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=30").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=31").catch(function () {});
       });
     }
 

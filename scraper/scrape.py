@@ -96,7 +96,9 @@ def is_invalid_title(text: str) -> bool:
     if not isinstance(text, str):
         return True
     normalized = re.sub(r"\s+", " ", text).strip()
-    if len(normalized) < 4 or normalized in {"MORE", "更多", "國立嘉義高中"}:
+    if len(normalized) < 4 or normalized in {
+        "MORE", "更多", "國立嘉義高中", "國立嘉義女子高級中學",
+    }:
         return True
     # RulingDigital access-key anchors use ::: as visible navigation text.
     return not any(ch.isalnum() or "\u3400" <= ch <= "\u9fff" for ch in normalized)

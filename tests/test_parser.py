@@ -163,6 +163,7 @@ def run():
     print("✓ 標題隱形空白清理")
 
     assert is_invalid_title(":::")
+    assert is_invalid_title("國立嘉義女子高級中學")
     assert not is_invalid_title("【115年校園清掃區域分配】")
     assert extract_article_title(ARTICLE_RULING_TITLE_HTML) == \
         "【重要公告】因應豪大雨 新生訓練調整措施"
@@ -298,13 +299,27 @@ def run():
     assert "研習活動 9" in s and "獎助學金 5" in s and "段考考試 2" in s
     assert s.index("研習活動 9") < s.index("獎助學金 5") < s.index("段考考試 2"), \
         "分類應依數量排序"
-    one_digest = summarize([{"title": "x"}])
-    assert one_digest.startswith("本輪新增 1 則:一般 1") and "・x" in one_digest, "無分類欄位仍歸為一般，且保留實際標題"
+    one_digest = summarize([{"title": "一般公告"}])
+    assert one_digest.startswith("本輪新增 1 則:一般 1") and "・一般公告" in one_digest, "無分類欄位仍歸為一般，且保留實際標題"
     digest = summarize([{"title": "實際公告 A", "snippet": "這是內文摘要", "category": "一般"}] * 9)
     assert "實際公告 A" in digest and "這是內文摘要" in digest, "彙總仍必須帶實際標題與摘要"
     header, body = notification_payload({"title": "實際公告標題", "snippet": "可讀的內文摘要", "school_name": "嘉中", "category": "競賽"})
     assert header.startswith("實際公告標題") and "嘉中・競賽" in header
     assert body == "可讀的內文摘要"
+    cygsh_header, cygsh_body = notification_payload({
+        "title": "國立嘉義女子高級中學",
+        "snippet": "新生始業輔導時間配當表更新版",
+        "school_name": "嘉女",
+    })
+    assert cygsh_header.startswith("新生始業輔導時間配當表更新版")
+    assert cygsh_body == "新生始業輔導時間配當表更新版"
+    noisy_header, noisy_body = notification_payload({
+        "title": ":::",
+        "snippet": "作者：衛生組 發佈日期：2026-08-24 【衛生組公告】返校打掃調整",
+        "school_name": "嘉中",
+    })
+    assert noisy_header.startswith("【衛生組公告】返校打掃調整")
+    assert noisy_body == "【衛生組公告】返校打掃調整"
     assert notification_payload({"title": "公告"})[1].startswith("尚未取得內文摘要")
     assert normalize_topic("https://ntfy.sh/cynews_private-1") == "cynews_private-1"
     assert normalize_topic("https://evil.example/topic") == ""
