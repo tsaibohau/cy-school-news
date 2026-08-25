@@ -23,8 +23,10 @@ SCHOOL = {"id": "cysh", "short": "嘉中", "base": "https://www.cysh.cy.edu.tw",
 
 class _Response:
     content = "中文".encode("utf-8")
-    apparent_encoding = "utf-8"
-    encoding = None
+    # Regression: charset_normalizer may guess a Cyrillic encoding for short
+    # Traditional-Chinese pages even when the server declares UTF-8.
+    apparent_encoding = "windows-1251"
+    encoding = "UTF-8"
     @property
     def text(self):
         return self.content.decode(self.encoding or "utf-8")
@@ -32,6 +34,7 @@ class _Response:
 
 _decoded = _Response()
 assert decode_response(_decoded) == "中文"
+assert is_mojibake("гҖҗиҪүзҹҘгҖ‘"), "Cyrillic-looking UTF-8 corruption must be repaired"
 
 LIST_HTML = """
 <html><head><title>行政單位&gt;教務處&gt;榮譽榜</title></head><body>

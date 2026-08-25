@@ -83,10 +83,15 @@ MOJIBAKE_TOKEN_RE = re.compile(
 
 
 def is_mojibake(text: str) -> bool:
-    """Conservative detector for known UTF-8-as-Latin-1 corruption."""
+    """Conservative detector for known UTF-8 decoding corruption."""
     if not isinstance(text, str) or not text:
         return False
     if "\ufffd" in text or any(ord(c) < 32 and c not in "\t\r\n" for c in text):
+        return True
+    # charset_normalizer has misidentified short Traditional-Chinese pages as
+    # Cyrillic encodings. Official CYSH/CYGSH announcements are Chinese; a run
+    # of Cyrillic code points is therefore corruption, not legitimate content.
+    if sum("\u0400" <= c <= "\u052f" for c in text) >= 3:
         return True
     return len(MOJIBAKE_TOKEN_RE.findall(text)) >= 1
 
@@ -462,9 +467,22 @@ def extract_article_date(html: str) -> str:
 
 
 def decode_response(response) -> str:
-    """Decode HTTP bytes using the scraper's validated requests fallback."""
-    response.encoding = response.apparent_encoding or "utf-8"
-    return response.text
+    """Decode HTML deterministically; never let charset guessing override UTF-8."""
+    raw = response.content
+    try:
+        return raw.decode("utf-8")
+    except UnicodeDecodeError:
+        pass
+    candidates = [getattr(response, "encoding", None),
+                  getattr(response, "apparent_encoding", None), "cp950"]
+    for encoding in candidates:
+        if not encoding or str(encoding).lower() in {"utf-8", "utf8"}:
+            continue
+        try:
+            return raw.decode(encoding)
+        except (LookupError, UnicodeDecodeError):
+            continue
+    return raw.decode("utf-8", errors="replace")
 
 
 def fetch(session: requests.Session, url: str) -> str:
@@ -694,15 +712,17 @@ def main() -> int:
         return not it.get("date") and not it.get("date_tried")
 
     def needs_snippet(it):
-        return not it.get("snippet") and not it.get("snippet_tried")
+        return (not it.get("snippet") and not it.get("snippet_tried")) \
+            or is_mojibake(it.get("snippet", ""))
 
     def needs_title(it):
         return is_mojibake(it.get("title", "")) or is_invalid_title(it.get("title", ""))
 
     def needs_detail(it):
         status = it.get("detail_status")
-        return (not status or status in {"pending", "temporary_error"}) \
-            and int(it.get("detail_attempts") or 0) < 5
+        corrupt = is_mojibake(it.get("title", "")) or is_mojibake(it.get("snippet", ""))
+        return corrupt or ((not status or status in {"pending", "temporary_error"})
+                           and int(it.get("detail_attempts") or 0) < 5)
 
     if not run_backfill:
         print(f"[info] 本輪不執行補齊(補齊班次:台灣時間 {sorted(backfill_hours)} 點)")
@@ -713,11 +733,12 @@ def main() -> int:
     filled_dates = filled_snippets = 0
     repaired_titles = 0
     for it in pending[:backfill_cap]:
+        detail_needed = needs_detail(it)
         try:
             html = fetch(session, it["url"])
         except Exception as e:
             print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)
-            if needs_detail(it):
+            if detail_needed:
                 record_detail_fetch_failure(it)
             time.sleep(delay)
             continue
@@ -742,7 +763,7 @@ def main() -> int:
             merge_title(it, detail_title, authoritative=True)
             if it.get("title", "") != before:
                 repaired_titles += 1
-        if needs_detail(it):
+        if detail_needed:
             write_detail_record(it, html, now_iso)
         time.sleep(delay)
     if pending:
