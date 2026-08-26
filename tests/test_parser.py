@@ -14,7 +14,8 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     validate_history_capacity, merge_title, decode_response,
                     record_detail_fetch_failure)  # noqa: E402
 from notify import (push_topics, summarize, personal_topics, notification_payload,
-                    normalize_topic, SUMMARY_THRESHOLD)  # noqa: E402
+                    normalize_topic, prepare_notification_items,
+                    SUMMARY_THRESHOLD)  # noqa: E402
 from schoolcal import build_ics, events_on, build_public_events  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
 
@@ -313,6 +314,15 @@ def run():
     assert body == "可讀的內文摘要"
     summary_header, summary_body = notification_payload({"title": "摘要測試", "summary": "規則式摘要", "snippet": "舊摘要"})
     assert summary_header.startswith("摘要測試") and summary_body == "規則式摘要"
+    ready, pending = prepare_notification_items(
+        [{"id": "pending-1", "title": "待補公告"}], [], {})
+    assert not ready and pending[0]["notification_wait_attempts"] == 1, \
+        "沒有實際內文的公告必須延後，不得推送空摘要"
+    ready, pending = prepare_notification_items(
+        [], [{"id": "pending-1", "title": "待補公告", "notification_wait_attempts": 1}],
+        {"pending-1": {"id": "pending-1", "title": "待補公告", "summary": "官方內容已補齊"}})
+    assert ready[0]["summary"] == "官方內容已補齊" and not pending, \
+        "後續 corpus 補齊摘要後，queue 應可送出"
     cygsh_header, cygsh_body = notification_payload({
         "title": "國立嘉義女子高級中學",
         "snippet": "新生始業輔導時間配當表更新版",

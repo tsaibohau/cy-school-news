@@ -24,6 +24,9 @@ import requests
 
 ROOT = Path(__file__).resolve().parent.parent
 NEW_ITEMS = ROOT / "scraper" / "new_items.json"
+NOTIFICATION_OUTBOX = ROOT / "scraper" / "notification_outbox.json"
+ANNOUNCEMENT_FILES = (ROOT / "docs" / "data" / "archive.json",
+                      ROOT / "docs" / "data" / "announcements.json")
 SUBSCRIPTIONS = ROOT / "scraper" / "subscriptions.json"
 MAX_PUSH = 20  # 單次最多推播則數,避免第一次建置時灌爆訂閱者
 SUMMARY_THRESHOLD = 8  # 單輪新公告超過此數改推一則彙總(個人關鍵字命中仍逐則)
@@ -103,6 +106,38 @@ def notification_payload(item: dict) -> tuple[str, str]:
     return header, body
 
 
+def _latest_announcements() -> dict:
+    latest = {}
+    for path in ANNOUNCEMENT_FILES:
+        if not path.exists():
+            continue
+        try:
+            for item in json.loads(path.read_text(encoding="utf-8")).get("items", []):
+                if item.get("id"):
+                    latest[str(item["id"])] = item
+        except Exception:
+            continue
+    return latest
+
+
+def prepare_notification_items(new_items, queued_items, latest: dict) -> tuple[list, list]:
+    """Hydrate pending notices from the corpus and defer rows without real content."""
+    merged = {}
+    for item in list(queued_items or []) + list(new_items or []):
+        item_id = str(item.get("id") or "")
+        if item_id:
+            merged[item_id] = {**merged.get(item_id, {}), **item}
+    ready, pending = [], []
+    for item_id, item in merged.items():
+        hydrated = {**item, **latest.get(item_id, {})}
+        if _clean_snippet(hydrated.get("summary") or hydrated.get("snippet")):
+            ready.append(hydrated)
+        else:
+            hydrated["notification_wait_attempts"] = int(item.get("notification_wait_attempts") or 0) + 1
+            pending.append(hydrated)
+    return ready, pending
+
+
 def summarize(items) -> str:
     """Flood-safe digest that still names recent announcements and their snippets."""
     from collections import Counter
@@ -144,13 +179,18 @@ def main() -> int:
     if not topic:
         print("[info] 未設定 NTFY_TOPIC,略過推播")
         return 0
-    if not NEW_ITEMS.exists():
-        print("[info] 找不到 new_items.json,略過推播")
-        return 0
-
-    items = json.loads(NEW_ITEMS.read_text(encoding="utf-8"))
+    new_items = json.loads(NEW_ITEMS.read_text(encoding="utf-8")) if NEW_ITEMS.exists() else []
+    try:
+        queued_items = json.loads(NOTIFICATION_OUTBOX.read_text(encoding="utf-8")) \
+            if NOTIFICATION_OUTBOX.exists() else []
+    except Exception:
+        queued_items = []
+    items, pending = prepare_notification_items(new_items, queued_items, _latest_announcements())
+    NOTIFICATION_OUTBOX.write_text(json.dumps(pending, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    if pending:
+        print(f"[info] {len(pending)} 則尚無可讀內文，保留到後續輪次")
     if not items:
-        print("[info] 本次沒有新公告")
+        print("[info] 本次沒有已備妥內文的公告")
         return 0
 
     subs = []
