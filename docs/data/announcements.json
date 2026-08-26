@@ -398,8 +398,8 @@
    "detail_available": true,
    "detail_ref": "data/details/cysh/cysh-136337.json",
    "detail_status": "parsed",
-   "detail_revision": "5ef707c57376a9f88aded75312ff522ddb33a99e4edf52cc7150630be5192017",
-   "detail_attempts": 3,
+   "detail_revision": "6848ce7276526565ff39c770ee1d3592da953ae07a6a9277ea454c9dbdedc8b9",
+   "detail_attempts": 4,
    "calendar_events": [],
    "summary": "(3)第一次上課為 9/04(五)第五、六節 ，上課地點請參閱 附件 (可直接點選)。",
    "summary_status": "extracted",
@@ -914,7 +914,7 @@
    "snippet": "作者 : 特教組 發佈日期 : 2026-08-24 最後更新日期 : 2026-08-24 【特教組公告】今日 8/24 (一) 高一數理資優班、語文資優班、雙語實驗班及半導體實驗班家長說明會照常辦理。",
    "category": "一般",
    "first_seen": "2026-08-24T11:35:19+08:00",
-   "detail_attempts": 2,
+   "detail_attempts": 3,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -2008,8 +2008,8 @@
    "detail_available": true,
    "detail_ref": "data/details/cysh/cysh-136268.json",
    "detail_status": "parsed",
-   "detail_revision": "d96f2c01895ee64f9647d510de3294d8afa0d2d795ca5fe59733a8a3b9c1d3d3",
-   "detail_attempts": 1,
+   "detail_revision": "2990d3c43e7e30498dbcfd8350c60a2ab136ad50276daa58902da6d8d3c70d8f",
+   "detail_attempts": 2,
    "summary": "",
    "summary_status": "insufficient",
    "summary_version": "extractive-v1",
@@ -2056,8 +2056,8 @@
    "detail_available": true,
    "detail_ref": "data/details/cysh/cysh-136248.json",
    "detail_status": "parsed",
-   "detail_revision": "0997d3f0228365f8d9e2b6168b01f2ff0abe15d2cf4a41333473884e3bf52b5a",
-   "detail_attempts": 1,
+   "detail_revision": "64977edf1441576405f98cbf29567bf4cac83a89c34fb4a4548a7ca848755c72",
+   "detail_attempts": 2,
    "summary": "1. 考試時間： 9 月 21 日(一) 、 9 月 22 日(二)",
    "summary_status": "extracted",
    "summary_version": "extractive-v1",
@@ -2073,9 +2073,20 @@
    "date": "2026-08-19",
    "cat_ref": "1053",
    "source_category": "最新消息",
-   "snippet": "作者 : 主計室 發佈日期 : 2026-08-19",
+   "snippet": "作者 : 主計室 發佈日期 : 2026-08-19 說明:修正出席費之支給，以每次會議新臺幣三千元為上限，並自116年1月1日生效。",
    "category": "一般",
-   "first_seen": "2026-08-19T16:03:57+08:00"
+   "first_seen": "2026-08-19T16:03:57+08:00",
+   "date_source": "publication",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-136266.json",
+   "detail_status": "parsed",
+   "detail_revision": "65b9bb18f32d36faeaf064bea2efb196ad3d43f9101923407a6b28ad2119cc84",
+   "detail_attempts": 1,
+   "summary": "說明:修正出席費之支給，以每次會議新臺幣三千元為上限，並自116年1月1日生效。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-136247",
@@ -2132,8 +2143,8 @@
    "detail_available": true,
    "detail_ref": "data/details/cygsh/cygsh-186302.json",
    "detail_status": "parsed",
-   "detail_revision": "5c4f78d025e8225a69444eb70556227543b3e596926bb00ec06685acef597d10",
-   "detail_attempts": 2,
+   "detail_revision": "18303d2f182ddec80dec5a8b369316cdf2f469da5116f3b360831028d1dc048a",
+   "detail_attempts": 3,
    "calendar_events": [],
    "summary": "三、培訓資訊請參照簡章(如附件)，報名等資訊如下： (一)台語B2證照輔導班第5期，2026/09/12-2027/01/23，每週六9-15點，共15次、75小時，優惠價13,800元(不含教材與午餐)。",
    "summary_status": "extracted",
@@ -2156,8 +2167,8 @@
    "detail_available": true,
    "detail_ref": "data/details/cygsh/cygsh-186304.json",
    "detail_status": "parsed",
-   "detail_revision": "eda58e9f58e4bcd9738fdbd35e812e0b8f27d8cc2572cec617834bfff8277626",
-   "detail_attempts": 1,
+   "detail_revision": "5deb57ffa6c9209f1aa6a6c8821ed5a22ade14d6ad17a5bcb91d2adcaa3790b2",
+   "detail_attempts": 2,
    "summary": "一、中國文化大學辦理旨揭活動，為使參賽學生更能充分表達簡報內容，爰修正簡報比賽口頭發表語言之相關規定。",
    "summary_status": "extracted",
    "summary_version": "extractive-v1",
@@ -2219,8 +2230,8 @@
    "detail_available": false,
    "detail_ref": "data/details/cygsh/cygsh-172836.json",
    "detail_status": "empty",
-   "detail_revision": "1291dadfcd64f570d2c4e6c027846ad62a45c26d6a5198bff7654e356c17ec9e",
-   "detail_attempts": 1,
+   "detail_revision": "937cfae748c904a41ac8f6c036ca3d5d3350e808482394fbd0009609acaa91a5",
+   "detail_attempts": 2,
    "summary": "",
    "summary_status": "insufficient",
    "summary_version": "extractive-v1",
@@ -2269,8 +2280,8 @@
    "detail_available": true,
    "detail_ref": "data/details/cygsh/cygsh-186300.json",
    "detail_status": "parsed",
-   "detail_revision": "b9acfbacfc60f5844f27e340056fc1a4d8249ce87375ac05e108a58f6e258397",
-   "detail_attempts": 1,
+   "detail_revision": "1ad1e29e8147f8fd3782b0127c516c8851cfc1f3c4a2a7365de852d56a74fd78",
+   "detail_attempts": 2,
    "summary": "附件為115學年度【高一生命探索體驗營】研習活動家長同意書以及行程表。",
    "summary_status": "extracted",
    "summary_version": "extractive-v1",
@@ -2289,7 +2300,25 @@
    "snippet": "一、公演資訊 (一)台北場 １、時間：115年9月06日(星期日)下午2:30~4:00 ２、地點：牯嶺街小劇場/二樓藝文空間（臺北市牯嶺街5巷2號） (二)台南場 １、時間：115年9月20日(星期日）下午2:30~4:00 ２、地點：台南文創園區/漂丿白鷺Live House（臺南市北門路二段16號） 二、報名 (一)時間：即日起至8月26日(台北場)、9月9日(台南場)截止，或額滿截止。 (二)表單：https://forms.gle/FRw545vhF73mUkmT7 (三)主辦單位將寄送電子錄取通知。 敬請有興趣的老師們報名參加。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-18T11:12:12+08:00"
+   "first_seen": "2026-08-18T11:12:12+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-186299.json",
+   "detail_status": "parsed",
+   "detail_revision": "65253935358a0a13dd440b0061ed1f5f9e0e8fd493cc44d26571acd6d24397f4",
+   "detail_attempts": 1,
+   "summary": "一、公演資訊 (一)台北場 １、時間：115年9月06日(星期日)下午2:30~4:00 ２、地點：牯嶺街小劇場/二樓藝文空間（臺北市牯嶺街5巷2號） (二)台南場 １、時間：115年9月20日(星期日）下午2:30~4:00 ２、地點：台南文創園區/漂丿白鷺Live House（臺南市北門路二段16號） 二、報名 (一)時間：即日起至8月26日(台北場)…",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-09-06",
+     "title": "【轉知】臺南女子高級中學人權教育資源中心「Z世代下載中」《祝你教師節快樂?!》戲劇公演",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "65253935358a0a13dd440b0061ed1f5f9e0e8fd493cc44d26571acd6d24397f4"
+    }
+   ]
   },
   {
    "id": "cygsh-186298",
@@ -8537,7 +8566,11 @@
    "detail_status": "parsed",
    "detail_revision": "9bd6cdf8840cc48b8494fb25ebeafbe262aa98f8f1e73b6dfd7687c6b8972aec",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "本校參加1150313梯次小論文寫作比賽榮獲佳績，恭喜各位獲獎同學，感謝各位老師的指導，獲獎名單如附件。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-183415",
@@ -8597,7 +8630,11 @@
    "detail_status": "parsed",
    "detail_revision": "9e2949a82f49b8d7e37ec92be8891031357109b5c264631eb2c3f617fc2a6998",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "嘉義市 114學年度學生美術比賽 本校榮獲高中(職)普通科組團體組第一名 恭喜以下得獎學生，全體師生一同恭賀!",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-175053",
@@ -8777,7 +8814,11 @@
    "detail_status": "parsed",
    "detail_revision": "b1eb30727b57db903dcfb3de52884906fbb71dd73d65a4ebcc1e30182dd94d66",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "本校參加 113學年度全國語文競賽、全國學生美術競賽勇奪佳績",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-142036",
@@ -8858,7 +8899,11 @@
      "provenance": "verified_announcement_deadline",
      "source_revision": "5305efac4f868caa7126f65215b505d2604aafe015b46c2953323a7a0d96145f"
     }
-   ]
+   ],
+   "summary": "二、培育對象為設籍本國且具正式學籍之清寒在校生，分為學業優異獎學金與特殊才能獎學金二類，可依條件擇一申請，請鼓勵貴校符合條件之學生踴躍報名。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-174508",
@@ -9529,7 +9574,11 @@
    "detail_status": "parsed",
    "detail_revision": "fcaad6a7328f4f0c0345d9418d857d1c59a98c837f301881ce576a8753a5404c",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "一、旨揭網站係為推廣藝術教育與終身學習，每年度均新製作數位課程，累計共114門課程供民眾選讀，除提供公務人員終身學習時數核發及教師研習時數認證外，另可累積紅利點數兌換贈品，歡迎踴躍上網選讀。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-185690",
@@ -10106,7 +10155,11 @@
    "detail_status": "parsed",
    "detail_revision": "f44d5abb4f4884e3259897846f85b61e78e3543e74a4a978cae40bd1dbb23429",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "詳情請參閱附件，校內教師如有意報名需申請公假，請洽教學組黃助理(分機#1252)。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-175906",
@@ -10138,7 +10191,11 @@
    "detail_status": "parsed",
    "detail_revision": "47d9a1b86b5a822babd2fe0ebae95cf7ca9e8873ecf753689d36da1e52e5daff",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "三、參加人員請於114年11月16日（星期日）前登錄全國特殊教育資訊網(https://special.moe.gov.tw/)，選取「研習報名」/「大專特教研習」，進行報名。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-158422",
@@ -10157,7 +10214,11 @@
    "detail_status": "parsed",
    "detail_revision": "b2d1ebded94ad24112ae0067a053196df630cec951e3694a201102cc232e9114",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "一、大專校院原住民族學生資源中心對原住民學生學習影響之探究計畫（第四期）針對「原住民族及多元文化教育」議題，邀請高中、國中、國小教師撰寫案例教學實例，經班級試教及專家學者審查後，研訂案例教學實例高中組2份、國中組3份、國小組1份，提供教師於教學現場參考使用。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-156832",
@@ -10189,7 +10250,11 @@
    "detail_status": "parsed",
    "detail_revision": "24a4ffcf6bc059933def5f0300a5a1e32efcfe59e51aa71fff8dec75a871b5dd",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "詳情請參閱附件，校內教師如有意報名需申請公假，請洽教學組黃助理(分機#1252)。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-186019",
@@ -10247,7 +10312,11 @@
    "detail_status": "parsed",
    "detail_revision": "b2617c3529125d499d9ab95f52bec0696fd927a47da7c9fc7902dd09d7dcd7d5",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "二、競賽相關資訊如下： (一)限40隊，須參加本校於115年8月24日至-8月25日舉辦之【新星組專屬競技程式工作坊】，有機會獲推薦參加競賽。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-185849",
@@ -10292,7 +10361,11 @@
    "detail_status": "parsed",
    "detail_revision": "e7c92defa7964fb5155bfcf7d2bc87504ddb77138d0d73fdaedbde6f8143083a",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "財團法人正覺教育基金會舉辦2026年生命教育系列─「生命教育與心靈成長」心得寫作徵文活動，自2026年7月1日起受理報名。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-185815",
@@ -10417,7 +10490,11 @@
    "detail_status": "parsed",
    "detail_revision": "4b136da92d3522160ff2ea13ea551e3efee03c98aa4417f96a6f95d6a84ce9f7",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "一、台灣玩具圖書館協會與新北市政府社會局合作辦理《115木育玩具創作競賽-第十一屆金趣咪獎》，誠摯邀請貴校師生參與競賽活動。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-185595",
@@ -10436,7 +10513,11 @@
    "detail_status": "parsed",
    "detail_revision": "16c2514471e0073701923393107384d5676d94885c2286fe0c0b87eeade16bc4",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "活動活動活動活動時間時間時間時間與與 與與競賽方式競賽方式競賽方式競賽方式  ● 收件收件收件收件、、、、資格審查及資格審查及資格審查及資格審查及競競競競賽賽賽賽 自 2026年 6月 1日起至 2026年 9月 18日下午 24 時止(以郵戳為憑)，郵寄繳交報名表紙 本、作品說明書紙本與光碟(電子檔內容包含報名表、參賽者身份證+學生證正反面文件、 作品…",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_attachment"
   },
   {
    "id": "cygsh-185481",
@@ -10455,7 +10536,11 @@
    "detail_status": "parsed",
    "detail_revision": "9a6514e839db2c4b456ba869ff909d4a7a309880185f6b42dad84ecfa5990ddd",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "一、依據嘉義市115年度兒童權利公約宣導行銷及在地培力計畫辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-185476",
@@ -10647,7 +10732,11 @@
    "detail_status": "parsed",
    "detail_revision": "1f02b455d6635e8c2b2b61c22fa45249ad438aa7b58f80977a25b0f52f8dfa82",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "一、為選拔具語言分析能力、邏輯推理能力及問題解決能力之優秀中學生，以參與本年度國際語言學奧林匹亞競賽（International Linguistics Olympiad, IOL），國立臺灣大學語言學研究所將辦理臺灣代表隊第一階段國手培訓。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-184339",
@@ -10771,7 +10860,11 @@
    "detail_status": "parsed",
    "detail_revision": "958a303ea3b3c5428d714de6833c88c2e1c4580e36da0bf437d8e668a2598f8d",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "檢送114學年度「全國技術型高級中等學校學生職場英語演講比賽試辦實施計畫」1份，請鼓勵學生（包含參與高級中等教育階段非學校型態實驗教育學生）踴躍報名參加，請查照",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cygsh-167410",
@@ -10830,7 +10923,11 @@
    "detail_status": "parsed",
    "detail_revision": "1ad32c2dbe40345b63a2f2f698e650110386df73c4edb872c108d5f6aaa3e759",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": ""
   },
   {
    "id": "cygsh-146479",
@@ -13818,7 +13915,11 @@
    "detail_status": "parsed",
    "detail_revision": "155d818f04e4c7f20c9b35cb49e2c814044da3e9fba027f6dc33fb25b94a025b",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "嘉中115年學科能力競賽校內初賽 ，數學科 得獎名單如下表。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cysh-136075",
@@ -17327,7 +17428,11 @@
    "detail_status": "parsed",
    "detail_revision": "ebc5a5058d3cd401be1fd9d15be50e397dacd47ea879c5fa463bdc3211ef0c66",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "嘉中115年能力競賽校內初賽地科得獎名單如下表。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cysh-135660",
@@ -21720,7 +21825,11 @@
      "provenance": "verified_announcement_deadline",
      "source_revision": "55f9ae6e0c7c5e7e49b4678c9a9dba7590172cf1f4acb785758aaced080a18f8"
     }
-   ]
+   ],
+   "summary": "1. 經本校資格審查結果，直接錄取學生0人，通過資格審查參加科學能力檢定名單共156人(如附件一)。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cysh-134602",
@@ -23017,7 +23126,11 @@
    "detail_status": "parsed",
    "detail_revision": "8d16e68d821344b75065c37523e29be9c98250a0eef043f740e5a2ec6f7da521",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "115 年1月16日(五)下午2:00~4:00 開放考生查看試場，查看試場相關規定依照大考中心規訂辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cysh-134174",
@@ -25303,7 +25416,11 @@
    "detail_status": "parsed",
    "detail_revision": "e3e40dcbe5624ce0bf2f3655cb1f5938e2b720a1d130d3880df9cb4ca507900a",
    "detail_attempts": 1,
-   "calendar_events": []
+   "calendar_events": [],
+   "summary": "114年國立嘉義高級中學全年級自主學習成果展-成果展覽",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article"
   },
   {
    "id": "cysh-133167",
