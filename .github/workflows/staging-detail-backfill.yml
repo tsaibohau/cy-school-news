@@ -29,6 +29,11 @@ jobs:
       - name: Install parser dependencies
         run: pip install -r scraper/requirements.txt
 
+      - name: Refresh hot announcement sources without notifications
+        env:
+          HOT_ONLY: '1'
+        run: python scraper/scrape.py
+
       - name: Run one bounded detail pass
         env:
           DETAIL_BACKFILL_CAP: '10'

@@ -8,6 +8,7 @@ const fn = fs.readFileSync(path.join(root, "supabase", "functions", "request-sta
 const imports = JSON.parse(fs.readFileSync(path.join(root, "supabase", "functions", "request-staging-refresh", "deno.json"), "utf8"));
 const sql = fs.readFileSync(path.join(root, "supabase", "contracts", "staging_refresh_request.sql"), "utf8");
 const workflow = fs.readFileSync(path.join(root, ".github", "workflows", "staging-user-refresh.yml"), "utf8");
+const promotionWorkflow = fs.readFileSync(path.join(root, ".github", "workflows", "staging-detail-backfill.yml"), "utf8");
 const config = fs.readFileSync(path.join(root, "supabase", "config.toml"), "utf8");
 const browser = ["app.js", "account-config.js", "account-auth.js"].map(name =>
   fs.readFileSync(path.join(root, "docs", name), "utf8")).join("\n");
@@ -57,5 +58,11 @@ assert.match(workflow, /HOT_ONLY: '1'/);
 assert.doesNotMatch(workflow, /FETCH_ALL|notify\.py/, "user refresh must neither full-crawl nor send staging ntfy");
 assert.match(workflow, /group: staging-user-refresh/);
 assert.match(workflow, /cancel-in-progress: false/);
+assert.match(promotionWorkflow, /github\.actor != 'github-actions\[bot\]'/,
+  "Actions-owned data commits must not recursively refresh staging");
+assert.match(promotionWorkflow, /HOT_ONLY: '1'[\s\S]*python scraper\/scrape\.py/,
+  "a staging promotion refreshes current hot sources before detail backfill");
+assert.doesNotMatch(promotionWorkflow, /notify\.py/,
+  "a staging promotion must never send ntfy announcements");
 assert.equal(Number(scraperConfig.request_delay_sec) >= 1.5, true, "school request delay invariant remains >= 1.5 seconds");
 console.log("Authenticated staging user-refresh security/rate-limit contract tests passed");
