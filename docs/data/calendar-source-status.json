@@ -3,12 +3,12 @@
     "school_id": "cysh",
     "academic_year": 115,
     "semester": 1,
-    "status": "awaiting_official_source",
+    "status": "parse_failed",
     "source_url": "https://www.cysh.cy.edu.tw/p/412-1008-151.php",
-    "last_checked_at": "2026-08-26T13:20:11+08:00",
+    "last_checked_at": "2026-08-26T13:33:22+08:00",
     "last_verified_document": null,
     "event_count": 0,
-    "error": ""
+    "error": "HTTPSConnectionPool(host='www.cysh.cy.edu.tw', port=443): Max retries exceeded with url: /p/412-1008-151.php (Caused by NewConnectionError(\"HTTPSConnection(host='www.cysh.cy.edu.tw', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
   },
   {
     "school_id": "cygsh",
@@ -16,7 +16,7 @@
     "semester": 1,
     "status": "awaiting_official_source",
     "source_url": "https://www.cygsh.cy.edu.tw/p/412-1013-1827.php",
-    "last_checked_at": "2026-08-26T13:20:11+08:00",
+    "last_checked_at": "2026-08-26T13:33:22+08:00",
     "last_verified_document": null,
     "event_count": 0,
     "error": ""
