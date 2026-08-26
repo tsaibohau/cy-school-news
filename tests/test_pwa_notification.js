@@ -435,6 +435,38 @@ async function testPermissionFailureDoesNotPersist() {
     "a failed Notification must not advance the watermark");
 }
 
+async function testSchoolScopedDataLoading() {
+  const storage = new MemoryStorage({ "cyNews.school.v1": "cysh" });
+  const manifest = {
+    generated_at: "2026-08-19T01:00:00Z",
+    categories: ["一般"],
+    category_slugs: { "一般": "general" },
+    schools: [
+      { id: "cysh", short: "嘉中", current: "data/schools/cysh/current.json" },
+      { id: "cygsh", short: "嘉女", current: "data/schools/cygsh/current.json" },
+    ],
+  };
+  const shard = {
+    generated_at: manifest.generated_at,
+    school: manifest.schools[0],
+    items: [item("cysh-only", "2026-08-20T00:00:00Z", "嘉中公告")],
+  };
+  const run = await createApp({
+    storage,
+    responses: [response(manifest), response(shard)],
+    notification: makeNotification({ permission: "default" }),
+  });
+  assert.match(run.fetchRequests[0].url, /data\/schools\/manifest\.json/);
+  assert.match(run.fetchRequests[1].url, /data\/schools\/cysh\/current\.json/);
+  assert.equal(run.app.getState().data.items[0].id, "cysh-only");
+  assert.equal(run.app.getState().data.schools.length, 2, "manifest keeps every school selector available");
+
+  run.queue.push(response({ items: [] }));
+  run.app.ensureArchive();
+  await flush();
+  assert.match(run.fetchRequests.at(-1).url, /data\/schools\/cysh\/archive\.json/);
+}
+
 async function testRefreshStatusContract() {
   const current = await createApp({
     storage: new MemoryStorage(),
@@ -607,7 +639,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v36/);
+  assert.match(swSource, /cy-news-v37/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
@@ -642,6 +674,7 @@ function testServiceWorkerContract() {
   await testRefreshStatusContract();
   await testAuthenticatedStagingRefreshContract();
   await testArchiveDoesNotNotify();
+  await testSchoolScopedDataLoading();
   await testSubscriptionBaselineAndLaterMatch();
   await testTwoKeywordsOneNotificationAndReadSeparate();
   await testWatermarkPreventsEvictedIdRedelivery();

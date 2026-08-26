@@ -20,6 +20,7 @@
 
     var LS_SEEN = "cyNews.lastSeen";
     var LS_EVENTS = "cyNews.calendarEvents.v1";
+    var LS_SCHOOL = "cyNews.school.v1";
     var CalendarState = window.CyNewsCalendarState || (function () {
       function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
       function normalize(rows) {
@@ -46,7 +47,7 @@
 
     var state = {
       data: null,
-      school: "all",
+      school: loadSchool(),
       cat: "all",
       q: "",
       tab: "latest",
@@ -115,6 +116,10 @@
     function loadReads() {
       try { var rows = JSON.parse(localStorage.getItem(LS_READS) || "{}"); return rows && typeof rows === "object" && !Array.isArray(rows) ? rows : {}; }
       catch (e) { return {}; }
+    }
+    function loadSchool() {
+      var value = String(localStorage.getItem(LS_SCHOOL) || "all");
+      return value === "all" || /^[a-z0-9-]{1,32}$/.test(value) ? value : "all";
     }
     function saveReads() { localStorage.setItem(LS_READS, JSON.stringify(state.reads)); }
     function saveUserEvents() {
@@ -513,14 +518,40 @@
       return !(navigator.serviceWorker && navigator.serviceWorker.controller);
     }
 
-    function fetchData() {
-      return fetch("data/announcements.json?_=" + Date.now(), { cache: "no-store" })
+    function fetchManifest() {
+      return fetch("data/schools/manifest.json?_=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+    }
+
+    function currentDataRequest() {
+      if (state.school === "all") return Promise.resolve({ url: "data/announcements.json", manifest: null });
+      return fetchManifest().then(function (manifest) {
+        var school = (manifest.schools || []).find(function (row) { return row.id === state.school; });
+        if (!school || !school.current) throw new Error("unknown school shard");
+        return { url: school.current, manifest: manifest };
+      }).catch(function () {
+        return { url: "data/announcements.json", manifest: null };
+      });
+    }
+
+    function normalizeCurrentData(data, manifest) {
+      if (!manifest || !data.school) return data;
+      data.schools = manifest.schools || [];
+      data.categories = manifest.categories || [];
+      data.category_slugs = manifest.category_slugs || {};
+      return data;
+    }
+
+    function fetchData(skipNotifications) {
+      return currentDataRequest().then(function (request) {
+        return fetch(request.url + "?_=" + Date.now(), { cache: "no-store" })
         .then(function (r) {
           if (!r.ok) throw new Error(r.status);
           return r.json().then(function (data) {
-            return { data: data, freshNetwork: isFreshNetworkResponse(r) };
+            return { data: normalizeCurrentData(data, request.manifest), freshNetwork: isFreshNetworkResponse(r) };
           });
-        })
+        });
+      })
         .then(function (result) {
           var data = result.data;
           var recentItems = Array.isArray(data.items) ? data.items.slice() : [];
@@ -535,7 +566,7 @@
           }
           state.data = data;
           renderAll();
-          if (result.freshNetwork) processFreshRecentNotifications(recentItems);
+          if (result.freshNetwork && !skipNotifications) processFreshRecentNotifications(recentItems);
           return { ok: true, freshNetwork: result.freshNetwork, generatedAt: data.generated_at || "" };
         })
         .catch(function () {
@@ -624,7 +655,8 @@
       if (!state.data || state.archive !== "none") return;
       state.archive = "loading";
       renderLatest();
-      fetch("data/archive.json?_=" + Date.now(), { cache: "no-store" })
+      var archiveUrl = state.school === "all" ? "data/archive.json" : "data/schools/" + encodeURIComponent(state.school) + "/archive.json";
+      fetch(archiveUrl + "?_=" + Date.now(), { cache: "no-store" })
         .then(function (r) {
           if (r.status === 404) return { items: [] }; /* 尚未產生封存檔,視為空 */
           if (!r.ok) throw new Error(r.status);
@@ -1087,7 +1119,12 @@
       var b = e.target.closest("button[data-school]");
       if (!b) return;
       state.school = b.dataset.school;
-      resetPaging(); renderControls(); renderLatest();
+      localStorage.setItem(LS_SCHOOL, state.school);
+      state.archive = "none";
+      resetPaging();
+      fetchData(true).then(function () {
+        if (state.q || state.cat !== "all") ensureArchive();
+      });
     });
     el.catChips.addEventListener("click", function (e) {
       var b = e.target.closest("button[data-cat]");
@@ -1425,7 +1462,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=35").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=36").catch(function () {});
       });
     }
 

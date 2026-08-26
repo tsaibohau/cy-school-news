@@ -58,11 +58,11 @@ for (const state of ["pending", "empty", "unsupported", "temporary_error", "perm
 const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
 const index = fs.readFileSync(path.join(__dirname, "..", "docs", "index.html"), "utf8");
 const sw = fs.readFileSync(path.join(__dirname, "..", "docs", "sw.js"), "utf8");
-assert(index.includes('id="detailDialog"') && index.includes('src="detail-ui.js?v=35"'));
+assert(index.includes('id="detailDialog"') && index.includes('src="detail-ui.js?v=36"'));
 assert(app.includes('button[data-detail-id]'), "detail fetch is delegated from an explicit open action");
 assert(app.includes('displaySnippet(item) ? \'<p class="detail-paragraph">\''), "detail failure retains the safe existing summary");
 assert(app.includes('fetch(item.detail_ref'), "selected sidecar is lazy fetched");
 assert(app.includes("detailRequestGeneration"), "stale detail responses are generation guarded");
 assert(app.includes("detailCache[cacheKey]"), "repeat opens reuse revision-scoped cache");
-assert(sw.includes('detail-ui.js?v=35'));
+assert(sw.includes('detail-ui.js?v=36'));
 console.log("Detail UI structured rendering tests passed");
