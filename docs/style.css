@@ -383,6 +383,34 @@ body { background: var(--paper); }
   .today-focus-actions { width: 100%; padding-left: 35px; justify-content: flex-start; }
   .tabbar .tab { padding-left: 7px; padding-right: 7px; }
 }
+
+/* 單一功能入口：以一顆按鈕展開主要功能，避免手機底部塞滿分頁。 */
+.function-dock {
+  position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 40; display: grid; justify-items: end; gap: 9px;
+}
+.function-toggle {
+  min-height: 52px; border: 1px solid color-mix(in srgb, var(--ink) 24%, transparent);
+  border-radius: 999px; padding: 7px 16px 7px 8px; background: color-mix(in srgb, var(--card) 92%, transparent);
+  color: var(--ink); box-shadow: 0 12px 34px rgba(15,28,25,.2); backdrop-filter: blur(16px);
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+}
+.function-toggle span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--ink); color: var(--paper); font-size: 24px; line-height: 1; transition: transform .18s ease; }
+.function-toggle strong { font-size: 14px; white-space: nowrap; }
+.function-toggle.is-open span { transform: rotate(45deg); }
+.function-dock .tabbar {
+  position: static; width: min(230px, calc(100vw - 32px)); margin: 0; padding: 8px;
+  display: grid; grid-template-columns: 1fr; gap: 3px; border: 1px solid var(--line); border-radius: 20px;
+  background: color-mix(in srgb, var(--card) 94%, transparent); box-shadow: 0 18px 50px rgba(15,28,25,.24); backdrop-filter: blur(18px);
+}
+.function-dock .tabbar[hidden] { display: none; }
+.function-dock .tab { width: 100%; min-height: 46px; padding: 9px 12px; border-radius: 13px; flex-direction: row; justify-content: flex-start; gap: 11px; font-size: 14px; text-align: left; }
+.function-dock .tab.is-active { background: var(--chip-bg); }
+.function-dock .tab svg, .function-dock .tab-icon { width: 22px; min-width: 22px; text-align: center; }
+.function-dock .badge { top: 5px; right: 7px; left: auto; }
+.assistant-scope { display: flex !important; align-items: center; justify-content: flex-end; gap: 8px; margin: 10px 0 0 !important; }
+.assistant-scope select, .nickname-sheet select { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font: inherit; color: var(--ink); background: var(--card); }
+.nickname-sheet select { width: 100%; }
 @media (prefers-color-scheme: dark) {
   :root {
     --paper: #111816;
