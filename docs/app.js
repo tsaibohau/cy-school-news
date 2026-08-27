@@ -103,7 +103,8 @@
       tasksBox: $("tasksBox"), taskForm: $("taskForm"), taskTitle: $("taskTitle"), taskDue: $("taskDue"),
       taskPriority: $("taskPriority"), taskNotes: $("taskNotes"), taskSave: $("taskSave"), taskCancel: $("taskCancel"),
       taskStatus: $("taskStatus"), taskOpenList: $("taskOpenList"), taskDoneList: $("taskDoneList"),
-      todayCoverage: $("todayCoverage"), todayEvents: $("todayEvents"), todayDeadlines: $("todayDeadlines"),
+      todayCoverage: $("todayCoverage"), todayBriefSummary: $("todayBriefSummary"), todayFocus: $("todayFocus"),
+      todayEvents: $("todayEvents"), todayDeadlines: $("todayDeadlines"),
       todayTasks: $("todayTasks"), todayRelevant: $("todayRelevant"), todayEmpty: $("todayEmpty"),
       detailDialog: $("detailDialog"), detailTitle: $("detailTitle"), detailMeta: $("detailMeta"),
       detailBody: $("detailBody"), detailClose: $("detailClose"),
@@ -979,6 +980,13 @@
       }
       function eventRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(row.provenance === "user_event" ? "自己的事件" : (row.event_type || row.kind || "正式行程")) + '</div></div></div>'; }
       function deadlineRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(projection.dueLabel(row.date)) + ' · ' + esc(row.date) + '</div></div></div>'; }
+      if (el.todayBriefSummary) el.todayBriefSummary.textContent = projection.briefLabel;
+      if (el.todayFocus) el.todayFocus.innerHTML = projection.focusItems.length ? projection.focusItems.map(function (row, index) {
+        var sourceId = row.source && row.source.id;
+        var actions = row.kind === "task" ? '<button type="button" class="btn-ghost" data-task-complete="' + esc(row.id) + '">完成</button>' :
+          (sourceId ? '<button type="button" class="btn-ghost" data-detail-id="' + esc(sourceId) + '">查看依據</button><button type="button" class="btn-ghost" data-add-task="' + esc(sourceId) + '">加入待辦</button>' : '');
+        return '<article class="today-focus-item"><span class="today-focus-rank" aria-hidden="true">' + (index + 1) + '</span><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(row.reason) + (row.date ? ' · ' + esc(row.date) : '') + '</div></div><div class="today-focus-actions">' + actions + '</div></article>';
+      }).join("") : '<p class="empty">目前沒有足夠證據排出優先事項。</p>';
       el.todayEvents.innerHTML = projection.todayEvents.length ? projection.todayEvents.map(eventRow).join("") : '<p class="empty">今天沒有已知正式行程。</p>';
       var upcoming = projection.upcoming.concat(projection.deadlines).concat(projection.upcomingReminders);
       el.todayDeadlines.innerHTML = upcoming.length ? upcoming.map(deadlineRow).join("") : '<p class="empty">接下來 7 天沒有已知截止事項。</p>';
@@ -1220,6 +1228,13 @@
     }
     if (el.taskOpenList) el.taskOpenList.addEventListener("click", taskButtonHandler);
     if (el.taskDoneList) el.taskDoneList.addEventListener("click", taskButtonHandler);
+    if (el.viewToday) el.viewToday.addEventListener("click", function (e) {
+      var detailButton = e.target.closest("button[data-detail-id]");
+      if (detailButton) { openDetail(detailButton.dataset.detailId); return; }
+      var addTaskButton = e.target.closest("button[data-add-task]");
+      if (addTaskButton) { addAnnouncementTask(addTaskButton.dataset.addTask); return; }
+      taskButtonHandler(e);
+    });
     if (el.taskForm) el.taskForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var id = el.taskForm.dataset.editingId || (window.CyNewsTaskState ? window.CyNewsTaskState.idFor("task:" + Date.now().toString(36) + ":" + Math.random()) : "task:" + Date.now().toString(36));
@@ -1462,7 +1477,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=36").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=37").catch(function () {});
       });
     }
 

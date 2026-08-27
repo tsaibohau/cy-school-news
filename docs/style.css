@@ -300,6 +300,13 @@ body { background: var(--paper); }
 .agenda-heading h3 { margin: 0; font-size: 18px; }
 .agenda-item { display: flex; gap: 11px; align-items: flex-start; padding: 13px; margin-bottom: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
 .today-section { margin: 0 0 18px; }
+.today-brief { margin: 10px 0 22px; padding: 15px; background: linear-gradient(135deg, var(--card), var(--cysh-bg)); border: 1px solid var(--line); border-radius: 18px; }
+.today-brief .section-heading { margin: 0 0 10px; }
+.today-focus { display: grid; gap: 9px; }
+.today-focus-item { display: flex; gap: 10px; align-items: flex-start; padding: 11px; background: color-mix(in srgb, var(--card) 90%, transparent); border: 1px solid var(--line); border-radius: 14px; }
+.today-focus-rank { display: grid; place-items: center; width: 25px; min-width: 25px; height: 25px; border-radius: 50%; background: var(--seal); color: #fff; font: 800 12px/1 var(--serif); }
+.today-focus-actions { display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; }
+.today-focus-actions .btn-ghost { min-height: 32px; padding: 5px 8px; }
 .today-section h3, .tasks-box h4 { margin: 0 0 8px; font-size: 1rem; }
 .today-list, .task-list { display: grid; gap: 8px; }
 .today-item, .task-item { display: flex; gap: 10px; align-items: flex-start; padding: 12px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
@@ -346,6 +353,9 @@ body { background: var(--paper); }
 }
 @media (max-width: 430px) {
   .task-form-row { grid-template-columns: 1fr; }
+  .today-focus-item { flex-wrap: wrap; }
+  .today-focus-item .today-item-main { width: calc(100% - 38px); }
+  .today-focus-actions { width: 100%; padding-left: 35px; justify-content: flex-start; }
   .tabbar .tab { padding-left: 7px; padding-right: 7px; }
 }
 @media (prefers-color-scheme: dark) {
