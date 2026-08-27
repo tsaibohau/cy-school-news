@@ -153,6 +153,7 @@ def merge_title(existing: dict, candidate_title: str, authoritative: bool = Fals
     if (authoritative or is_invalid_title(old) or is_mojibake(old)) \
             and not is_mojibake(candidate_title):
         existing["title"] = candidate_title
+        existing.pop("title_status", None)
     elif not old:
         existing["title"] = candidate_title
 
@@ -345,6 +346,24 @@ def validate_snapshot_items(items, label="snapshot", allow_empty=False):
            for it in items):
         raise RuntimeError(f"{label}: corrupted title candidate")
     return set(ids)
+
+
+def quarantine_corrupt_titles(items) -> int:
+    """Keep historical IDs/URLs while preventing corrupt titles from publishing.
+
+    Some old records may no longer appear on a list page and their detail page
+    may be temporarily unavailable.  A conservative placeholder lets the rest
+    of the snapshot advance while keeping the record eligible for later repair.
+    """
+    count = 0
+    for item in items:
+        title = item.get("title", "")
+        if is_mojibake(title) or is_invalid_title(title):
+            item["title"] = "公告標題待修復（請查看原公告）"
+            item["title_status"] = "repair_pending"
+            item["category"] = "一般"
+            count += 1
+    return count
 
 
 def atomic_write_text(path: Path, text: str) -> None:
@@ -747,11 +766,15 @@ def main() -> int:
             or is_mojibake(it.get("snippet", ""))
 
     def needs_title(it):
-        return is_mojibake(it.get("title", "")) or is_invalid_title(it.get("title", ""))
+        return (it.get("title_status") == "repair_pending"
+                or is_mojibake(it.get("title", ""))
+                or is_invalid_title(it.get("title", "")))
 
     def needs_detail(it):
         status = it.get("detail_status")
-        corrupt = is_mojibake(it.get("title", "")) or is_mojibake(it.get("snippet", ""))
+        corrupt = (it.get("title_status") == "repair_pending"
+                   or is_mojibake(it.get("title", ""))
+                   or is_mojibake(it.get("snippet", "")))
         return corrupt or ((not status or status in {"pending", "temporary_error"})
                            and int(it.get("detail_attempts") or 0) < 5)
 
@@ -804,6 +827,10 @@ def main() -> int:
               f"剩餘 {len(pending) - done} 筆待補")
 
     items = list(by_id.values())
+    quarantined_titles = quarantine_corrupt_titles(items)
+    if quarantined_titles:
+        print(f"[warn] {quarantined_titles} 筆歷史標題待後續修復；已保留 ID 與官方連結",
+              file=sys.stderr)
     items.sort(key=lambda x: (display_date(x), x.get("first_seen") or ""),
                reverse=True)
     all_ids_before_cap = validate_snapshot_items(items, "merged corpus")

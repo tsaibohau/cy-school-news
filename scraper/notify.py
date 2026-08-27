@@ -130,7 +130,8 @@ def prepare_notification_items(new_items, queued_items, latest: dict) -> tuple[l
     ready, pending = [], []
     for item_id, item in merged.items():
         hydrated = {**item, **latest.get(item_id, {})}
-        if _clean_snippet(hydrated.get("summary") or hydrated.get("snippet")):
+        if (hydrated.get("title_status") != "repair_pending"
+                and _clean_snippet(hydrated.get("summary") or hydrated.get("snippet"))):
             ready.append(hydrated)
         else:
             hydrated["notification_wait_attempts"] = int(item.get("notification_wait_attempts") or 0) + 1
