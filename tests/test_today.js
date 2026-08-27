@@ -30,6 +30,10 @@ assert.equal(result.briefLabel, "今天優先處理 3 項");
 const mediumOnly = Today.build({ today: "2026-09-05", announcementItems: [{ id: "m", title: "一般公告" }],
   relevance: () => ({ tier: "medium", priority: 120, reasons: [{ label: "同校" }] }) });
 assert.equal(mediumOnly.focusItems.length, 0, "medium school-only relevance must not fill the priority brief");
+const dismissed = Today.build({ today: "2026-09-05", announcementItems: [{ id: "hidden", title: "相關公告" }],
+  relevance: () => ({ tier: "strong", priority: 200, reasons: [{ label: "物理" }] }),
+  feedbackScore: key => key === "announcement:hidden" ? { score: -12, label: "" } : { score: 0, label: "" } });
+assert.equal(dismissed.focusItems.length, 0, "a transparent dismiss signal suppresses that announcement from the daily brief");
 assert.deepEqual(result.upcomingReminders.map(row => row.date), ["2026-09-05", "2026-09-07", "2026-09-08"], "Today projects only reminders after the rule baseline");
 assert.ok(result.upcomingReminders.every(row => row.target_kind !== "publication_date"), "publication date never becomes a reminder");
 assert.equal(Today.rangeDates("2026-09-05", "2026-09-06").length, 2);
@@ -37,6 +41,7 @@ const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8"
 assert.match(app, /reminderRules:\s*state\.reminderRules/, "Today receives the account's reminder rules");
 assert.match(app, /data-add-task/, "daily brief announcements can become tasks");
 assert.match(app, /data-task-complete/, "daily brief tasks can be completed in place");
+assert.match(app, /data-focus-dismiss/, "daily brief lets the user explicitly dismiss a suggestion");
 assert.match(app, /notificationEnabled:\s*typeof Notification !== "undefined" && Notification\.permission === "granted"/,
   "subscription notification status reflects this browser's actual permission");
 console.log("Today projection tests passed");

@@ -30,6 +30,11 @@
   }
   function focusPlan(today, input) {
     var candidates = [], seen = {};
+    function preference(sourceId) {
+      if (!sourceId || typeof input.feedbackScore !== "function") return { score: 0, label: "" };
+      var row = input.feedbackScore("announcement:" + sourceId) || {};
+      return typeof row === "number" ? { score: row, label: "" } : { score: Number(row.score) || 0, label: String(row.label || "") };
+    }
     function add(row) {
       var key = String(row.key || row.id || "");
       if (!key || seen[key]) return;
@@ -48,8 +53,10 @@
       var days = diff(today, row.date);
       if (days < 0 || days > 3) return;
       var sourceId = row.source && row.source.id;
+      var pref = preference(sourceId);
+      if (pref.score <= -10) return;
       add({ key: sourceId ? "announcement:" + sourceId : "deadline:" + row.id, id: row.id, kind: "deadline",
-        title: row.title, date: row.date, reason: dueLabel(today, row.date), score: days === 0 ? 480 : 460 - days * 15,
+        title: row.title, date: row.date, reason: dueLabel(today, row.date) + (pref.label ? "・" + pref.label : ""), score: (days === 0 ? 480 : 460 - days * 15) + pref.score,
         source: row.source || null });
     });
     (input.todayEvents || []).forEach(function (event) {
@@ -59,9 +66,11 @@
     (input.relevant || []).forEach(function (row) {
       var item = row.item, result = row.result;
       if (result.tier !== "strong") return;
+      var pref = preference(item.id);
+      if (pref.score <= -10) return;
       add({ key: "announcement:" + item.id, id: item.id, kind: "announcement", title: item.title,
-        date: item.date || null, reason: "與你相關" + (relevanceLabel(result) ? "：" + relevanceLabel(result) : ""),
-        score: result.tier === "strong" ? 330 + Number(result.priority || 0) / 100 : 220 + Number(result.priority || 0) / 100,
+        date: item.date || null, reason: "與你相關" + (relevanceLabel(result) ? "：" + relevanceLabel(result) : "") + (pref.label ? "・" + pref.label : ""),
+        score: 330 + Number(result.priority || 0) / 100 + pref.score,
         source: item, relevance: result });
     });
     return candidates.sort(function (a, b) {
@@ -125,7 +134,8 @@
     });
     upcomingReminders.sort(function (a, b) { return a.date.localeCompare(b.date) || String(a.id || "").localeCompare(String(b.id || "")); });
     deadlines.sort(function (a, b) { return a.date === b.date ? a.title.localeCompare(b.title, "zh-Hant") : (a.date < b.date ? -1 : 1); });
-    var focusItems = focusPlan(today, { tasks: tasks, deadlines: deadlines, todayEvents: todayEvents, relevant: relevantRows });
+    var focusItems = focusPlan(today, { tasks: tasks, deadlines: deadlines, todayEvents: todayEvents, relevant: relevantRows,
+      feedbackScore: input.feedbackScore });
     return { today, todayEvents, upcoming, deadlines, openTasks: tasks, relevantAnnouncements: relevant,
       upcomingReminders: upcomingReminders, focusItems: focusItems,
       briefLabel: focusItems.length ? "今天優先處理 " + focusItems.length + " 項" : "今天沒有明確需要處理的事項",
