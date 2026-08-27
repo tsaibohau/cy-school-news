@@ -146,7 +146,12 @@ def merge_title(existing: dict, candidate_title: str, authoritative: bool = Fals
         return
     if is_mojibake(candidate_title) and not is_mojibake(old):
         return
-    if (authoritative or is_invalid_title(old)) and not is_mojibake(candidate_title):
+    # A clean list-page title is enough to repair a persisted mojibake title.
+    # Requiring an authoritative detail fetch here left historical corruption
+    # in place until a bounded backfill happened to reach that old record; the
+    # snapshot validator would then fail every normal scrape in the meantime.
+    if (authoritative or is_invalid_title(old) or is_mojibake(old)) \
+            and not is_mojibake(candidate_title):
         existing["title"] = candidate_title
     elif not old:
         existing["title"] = candidate_title

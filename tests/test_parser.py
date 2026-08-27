@@ -387,8 +387,8 @@ def run():
     merge_title(persisted, "æ¸¬è©¦")
     assert persisted["title"] == "乾淨中文"
     damaged = {"title": "æ¸¬è©¦"}
-    merge_title(damaged, "猜測修復")
-    assert damaged["title"] == "æ¸¬è©¦"
+    merge_title(damaged, "列表頁修復")
+    assert damaged["title"] == "列表頁修復"
     merge_title(damaged, "權威修復", authoritative=True)
     assert damaged["title"] == "權威修復"
     print("✓ mojibake 與強分類證據")
@@ -410,6 +410,11 @@ def run():
     assert merged_a["cysh-134736"]["source_category"] == "獎助學金"
     clean = {"id": "x", "title": "乾淨標題", "date": "2026-08-01"}
     validate_snapshot_items([clean], "test")
+    repaired = {"id": "x", "title": "гҖҗиҪүзҹҘгҖ‘"}
+    merge_title(repaired, "可讀的官方公告標題")
+    assert repaired["title"] == "可讀的官方公告標題", \
+        "clean list titles must repair persisted mojibake before snapshot validation"
+    validate_snapshot_items([repaired], "repaired test")
     try:
         validate_snapshot_items([{"id": "x", "title": "æ¸¬è©¦"}], "test")
     except RuntimeError:
