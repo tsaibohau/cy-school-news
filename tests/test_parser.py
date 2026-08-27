@@ -11,7 +11,8 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     load_existing_items, is_mojibake, is_invalid_title,
                     extract_article_title, _category_rank,
                     merge_collected_item, validate_snapshot_items,
-                    validate_history_capacity, merge_title, decode_response,
+                    validate_history_capacity, quarantine_corrupt_titles,
+                    merge_title, decode_response,
                     record_detail_fetch_failure)  # noqa: E402
 from notify import (push_topics, summarize, personal_topics, notification_payload,
                     normalize_topic, prepare_notification_items,
@@ -323,6 +324,10 @@ def run():
         {"pending-1": {"id": "pending-1", "title": "待補公告", "summary": "官方內容已補齊"}})
     assert ready[0]["summary"] == "官方內容已補齊" and not pending, \
         "後續 corpus 補齊摘要後，queue 應可送出"
+    ready, pending = prepare_notification_items(
+        [{"id": "repair-1", "title": "公告標題待修復（請查看原公告）",
+          "title_status": "repair_pending", "summary": "已有摘要"}], [], {})
+    assert not ready and pending, "標題仍待修復時不得送出通知"
     cygsh_header, cygsh_body = notification_payload({
         "title": "國立嘉義女子高級中學",
         "snippet": "新生始業輔導時間配當表更新版",
@@ -387,8 +392,8 @@ def run():
     merge_title(persisted, "æ¸¬è©¦")
     assert persisted["title"] == "乾淨中文"
     damaged = {"title": "æ¸¬è©¦"}
-    merge_title(damaged, "猜測修復")
-    assert damaged["title"] == "æ¸¬è©¦"
+    merge_title(damaged, "列表頁修復")
+    assert damaged["title"] == "列表頁修復"
     merge_title(damaged, "權威修復", authoritative=True)
     assert damaged["title"] == "權威修復"
     print("✓ mojibake 與強分類證據")
@@ -410,6 +415,15 @@ def run():
     assert merged_a["cysh-134736"]["source_category"] == "獎助學金"
     clean = {"id": "x", "title": "乾淨標題", "date": "2026-08-01"}
     validate_snapshot_items([clean], "test")
+    repaired = {"id": "x", "title": "гҖҗиҪүзҹҘгҖ‘"}
+    merge_title(repaired, "可讀的官方公告標題")
+    assert repaired["title"] == "可讀的官方公告標題", \
+        "clean list titles must repair persisted mojibake before snapshot validation"
+    validate_snapshot_items([repaired], "repaired test")
+    quarantined = [{"id": "legacy", "title": "æ¸¬è©¦", "url": "https://example.test/a"}]
+    assert quarantine_corrupt_titles(quarantined) == 1
+    assert quarantined[0]["title_status"] == "repair_pending"
+    validate_snapshot_items(quarantined, "quarantined test")
     try:
         validate_snapshot_items([{"id": "x", "title": "æ¸¬è©¦"}], "test")
     except RuntimeError:

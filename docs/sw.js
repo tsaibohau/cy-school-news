@@ -2,7 +2,7 @@
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
 var CACHE = "cy-news-v37";
-var SHELL = ["./", "./index.html", "./style.css?v=36", "./app.js?v=36", "./notification-state.js", "./calendar-state.js?v=36", "./account-config.js?v=36", "./supabase-sync.js?v=36", "./account-auth.js?v=36", "./push-subscription.js?v=36", "./reminder-rules.js?v=36", "./task-state.js?v=36", "./account-sync.js?v=36", "./school-registry.js?v=36", "./profile.js?v=36", "./relevance.js?v=36", "./today.js?v=36", "./detail-ui.js?v=36", "./manifest.webmanifest", "./data/calendar-events.json",
+var SHELL = ["./", "./index.html", "./style.css?v=37", "./app.js?v=37", "./notification-state.js", "./calendar-state.js?v=37", "./account-config.js?v=37", "./supabase-sync.js?v=37", "./account-auth.js?v=37", "./push-subscription.js?v=37", "./reminder-rules.js?v=37", "./task-state.js?v=37", "./account-sync.js?v=37", "./school-registry.js?v=37", "./profile.js?v=37", "./relevance.js?v=37", "./today.js?v=37", "./detail-ui.js?v=37", "./manifest.webmanifest", "./data/calendar-events.json",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {
