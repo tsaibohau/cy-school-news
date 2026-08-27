@@ -17,7 +17,15 @@ assert.match(style, /#btnRefresh\.is-refreshing svg/);
 assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion preference remains respected");
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
-assert.match(index, /style\.css\?v=38/);
-assert.match(index, /app\.js\?v=38/);
+assert.match(index, /style\.css\?v=39/);
+assert.match(index, /app\.js\?v=39/);
+assert.match(index, /id="navMenuToggle"[^>]*aria-expanded="false"[^>]*aria-controls="navMenu"/, "mobile navigation is exposed through one accessible menu button");
+assert.match(index, /id="navMenu"[^>]*hidden/, "function menu starts closed");
+assert.match(index, /id="nicknameSchool"[^>]*required/, "first-login onboarding asks for the preferred school");
+assert.match(index, /id="profileSchool" required/, "account settings require an explicit school");
+assert.match(index, /id="assistantScope"/, "school assistant exposes an explicit cross-school search scope");
+assert.match(app, /mentionedSchool\(question\)/, "a school named in the question overrides the default scope");
+assert.match(app, /applyPreferredSchool\(state\.profile\.school_id/, "the account school becomes the default data shard");
+assert.match(style, /\.function-dock/, "single-button function menu has a dedicated responsive layout");
 
 console.log("Editorial UI and honest refresh status contract tests passed");

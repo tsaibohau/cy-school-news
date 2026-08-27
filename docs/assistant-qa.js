@@ -110,6 +110,23 @@
     if (/作者\s*[：:]|發[佈布]日期|最後更新日期/.test(sentence)) score -= 18;
     return score;
   }
+  function smoothEvidence(value) {
+    var text = clean(value).replace(/^[•●▪▫◆◇※*\-–—]+\s*/, "")
+      .replace(/^(?:說明|公告內容|主旨|注意事項|辦理方式|相關資訊)\s*[：:]\s*/i, "")
+      .replace(/\s*詳情請(?:參閱|見).*$/i, "").trim();
+    if (text.length > 170) text = text.slice(0, 168).replace(/[，、；;：:]?[^，。！？!?；;]{0,22}$/, "") + "…";
+    return text;
+  }
+  function composeSummary(evidence, sources, wanted) {
+    var lead = evidence.length ? smoothEvidence(evidence[0].text) : "";
+    if (!lead) return "目前資料不足，找不到可驗證的答案。";
+    var prefix = "依官方公告，最相關的重點是：";
+    if (wanted.indexOf("date") !== -1) prefix = "先說結論，官方資料中的時間重點是：";
+    else if (wanted.indexOf("method") !== -1) prefix = "依官方公告，辦理方式的重點是：";
+    else if (wanted.indexOf("place") !== -1) prefix = "依官方公告，地點資訊是：";
+    else if (wanted.indexOf("person") !== -1) prefix = "依官方公告，適用對象或資格的重點是：";
+    return prefix + lead + (/[。！？!?]$/.test(lead) ? "" : "。") + "下方附有 " + sources.length + " 則可核對的官方來源。";
+  }
   function answer(query, items, details) {
     query = clean(query).slice(0, 160);
     var queryTokens = tokens(query), wanted = intent(query), ranked = rank(query, items, details).slice(0, 8);
@@ -132,8 +149,8 @@
     var sourceIds = {};
     evidence.forEach(function (row) { sourceIds[row.announcement_id] = true; });
     var sources = ranked.map(function (row) { return row.item; }).filter(function (item) { return sourceIds[item.id]; }).slice(0, 4);
-    return { status: "answered", query: query, summary: "根據 " + sources.length + " 則相關官方公告，整理出以下重點：", evidence: evidence,
+    return { status: "answered", query: query, summary: composeSummary(evidence, sources, wanted), evidence: evidence,
       sources: sources };
   }
-  return { tokens: tokens, anchors: anchors, intent: intent, detailText: detailText, rank: rank, answer: answer };
+  return { tokens: tokens, anchors: anchors, intent: intent, detailText: detailText, rank: rank, smoothEvidence: smoothEvidence, composeSummary: composeSummary, answer: answer };
 });

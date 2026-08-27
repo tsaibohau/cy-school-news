@@ -68,6 +68,8 @@
       nickname: "",
       assistantFeedback: window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {},
       assistantAnswer: null,
+      assistantScope: "preferred",
+      assistantItems: {},
       personalizedNotifications: false,
       reminderPreset: "single",
       reminderCustomOffsets: "1",
@@ -102,7 +104,7 @@
       eventFormTitle: $("eventFormTitle"),
       importantList: $("importantList"),
       welcomeTitle: $("welcomeTitle"), assistantForm: $("assistantForm"), assistantQuestion: $("assistantQuestion"),
-      assistantAsk: $("assistantAsk"), assistantStatus: $("assistantStatus"), assistantAnswer: $("assistantAnswer"),
+      assistantAsk: $("assistantAsk"), assistantScope: $("assistantScope"), assistantStatus: $("assistantStatus"), assistantAnswer: $("assistantAnswer"),
       profileBox: $("profileBox"), profileHint: $("profileHint"), profileForm: $("profileForm"),
       profileNickname: $("profileNickname"),
       profileSchool: $("profileSchool"), profileGrade: $("profileGrade"), profileClass: $("profileClass"),
@@ -117,7 +119,8 @@
       detailDialog: $("detailDialog"), detailTitle: $("detailTitle"), detailMeta: $("detailMeta"),
       detailBody: $("detailBody"), detailClose: $("detailClose"),
       nicknameDialog: $("nicknameDialog"), nicknameForm: $("nicknameForm"), nicknameInput: $("nicknameInput"),
-      nicknameLater: $("nicknameLater"), nicknameStatus: $("nicknameStatus"),
+      nicknameSchool: $("nicknameSchool"), nicknameLater: $("nicknameLater"), nicknameStatus: $("nicknameStatus"),
+      navMenu: $("navMenu"), navMenuToggle: $("navMenuToggle"), navCurrentLabel: $("navCurrentLabel"),
     };
 
     function loadUserEvents() {
@@ -140,10 +143,35 @@
     function populateProfileSchools() {
       if (!el.profileSchool || !window.CyNewsSchoolRegistry) return;
       var current = el.profileSchool.value;
-      el.profileSchool.innerHTML = '<option value="">尚未設定</option>' + window.CyNewsSchoolRegistry.schools().map(function (school) {
+      var options = window.CyNewsSchoolRegistry.schools().map(function (school) {
         return '<option value="' + esc(school.id) + '">' + esc(school.short) + '</option>';
       }).join("");
+      el.profileSchool.innerHTML = '<option value="">請選擇學校</option>' + options;
       el.profileSchool.value = current;
+      if (el.nicknameSchool) {
+        var onboardingCurrent = el.nicknameSchool.value;
+        el.nicknameSchool.innerHTML = '<option value="">請選擇學校</option>' + options;
+        el.nicknameSchool.value = onboardingCurrent;
+      }
+    }
+    function preferredSchoolId() {
+      var id = String(state.profile && state.profile.school_id || "");
+      return window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(id) ? id : "";
+    }
+    function applyPreferredSchool(id, reload) {
+      id = String(id || "");
+      if (!window.CyNewsSchoolRegistry || !window.CyNewsSchoolRegistry.find(id)) return false;
+      var changed = state.school !== id;
+      state.school = id;
+      localStorage.setItem(LS_SCHOOL, id);
+      if (el.assistantScope) el.assistantScope.options[0].textContent = "我的學校（" + window.CyNewsSchoolRegistry.find(id).short + "）";
+      if (changed) {
+        state.archive = "none";
+        state.archivePromise = null;
+        resetPaging();
+        if (reload && state.data) fetchData(true);
+      }
+      return changed;
     }
     function renderGreeting() {
       if (!el.welcomeTitle) return;
@@ -274,9 +302,12 @@
       function maybePromptNickname(user) {
         if (!user || !el.nicknameDialog || !el.nicknameInput) return;
         var metadata = user.user_metadata || {};
-        if (window.CyNewsAccountAuth.normalizeNickname(metadata.nickname)) return;
-        if (localStorage.getItem("cyNews.nicknameLater.v1:" + user.id) === "true") return;
+        var missingNickname = !window.CyNewsAccountAuth.normalizeNickname(metadata.nickname);
+        var missingSchool = !preferredSchoolId();
+        if (!missingNickname && !missingSchool) return;
+        if (localStorage.getItem("cyNews.onboardingLater.v2:" + user.id) === "true") return;
         el.nicknameInput.value = state.nickname || "";
+        if (el.nicknameSchool) el.nicknameSchool.value = preferredSchoolId();
         if (typeof el.nicknameDialog.showModal === "function" && !el.nicknameDialog.open) el.nicknameDialog.showModal();
       }
       function renderReminderPush() {
@@ -324,6 +355,7 @@
         saveReads();
         NotificationState.save(notificationState);
         state.profile = window.CyNewsProfile.normalize(merged.preferences && merged.preferences.preferences && merged.preferences.preferences.profile);
+        var schoolChanged = applyPreferredSchool(state.profile.school_id, false);
         state.assistantFeedback = window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize(
           merged.preferences && merged.preferences.preferences && merged.preferences.preferences.assistant_feedback) : {};
         state.tasks = window.CyNewsTaskState ? window.CyNewsTaskState.visible(merged.tasks || []) : [];
@@ -341,6 +373,7 @@
         renderPersonalizedSetting();
         renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
         renderReminderPush();
+        if (schoolChanged && state.data) fetchData(true);
         if (accountId && accountId !== "anonymous" && reminderAdapter) {
           var reminderGeneration = syncGeneration;
           reminderAdapter.listRules().then(function (rows) {
@@ -368,6 +401,9 @@
         state.reminderCustomOffsets = "1";
         state.reminderRules = [];
         state.reminderDeviceActive = false;
+        state.school = "all";
+        state.archive = "none";
+        state.archivePromise = null;
         if (el.reminderPreset) el.reminderPreset.value = "single";
         state.activeAccountId = "anonymous";
         establishPersonalizedBaseline("anonymous");
@@ -382,7 +418,12 @@
         requestedUid = null;
         readyUid = null;
         accountPhase = "ANONYMOUS_READY";
-          publishState(anonymousState, "anonymous");
+        state.school = "all";
+        localStorage.setItem(LS_SCHOOL, "all");
+        state.archive = "none";
+        state.archivePromise = null;
+        publishState(anonymousState, "anonymous");
+        if (state.data) fetchData(true);
       }
       function sync(uid, authRetry) {
         authRetry = authRetry || 0;
@@ -876,7 +917,10 @@
     }
     function loadOfficialEvents() {
       return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
-        state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) { return ev && (ev.start_date || ev.date) && ev.title && ev.provenance; }) : [];
+        state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) {
+          return ev && (ev.start_date || ev.date) && ev.title && ev.provenance &&
+            (state.school === "all" || String(ev.school_id || "") === state.school);
+        }) : [];
         if (state.tab === "calendar") renderCalendar();
       }).catch(function () {});
     }
@@ -886,6 +930,7 @@
         return r.json();
       }).then(function (status) {
         var rows = Array.isArray(status) ? status : (Array.isArray(status && status.schools) ? status.schools : []);
+        if (state.school !== "all") rows = rows.filter(function (row) { return String(row.school_id || row.id || "") === state.school; });
         state.calendarStatus = rows.length && rows.every(function (row) { return row.status === "official_complete"; }) ? "complete" : "partial";
         renderToday();
       }).catch(function () { state.calendarStatus = "partial"; renderToday(); });
@@ -914,7 +959,8 @@
     }
 
     function detailItem(id) {
-      return state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
+      var current = state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
+      return current || state.assistantItems[String(id)] || null;
     }
     function showDetailDialog() {
       if (!el.detailDialog) return;
@@ -1095,6 +1141,34 @@
         return record;
       }).catch(function () { return null; });
     }
+    function fetchJsonItems(url) {
+      return fetch(url + "?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
+        if (response.status === 404) return { items: [] };
+        if (!response.ok) throw new Error("corpus HTTP " + response.status);
+        return response.json();
+      }).then(function (data) { return Array.isArray(data && data.items) ? data.items : []; });
+    }
+    function fetchAssistantCorpus(scopeId) {
+      if (scopeId === state.school) return ensureArchive().then(function () { return state.data && state.data.items || []; });
+      var current = scopeId === "all" ? "data/announcements.json" : "data/schools/" + encodeURIComponent(scopeId) + "/current.json";
+      var archive = scopeId === "all" ? "data/archive.json" : "data/schools/" + encodeURIComponent(scopeId) + "/archive.json";
+      return Promise.all([fetchJsonItems(current), fetchJsonItems(archive)]).then(function (parts) {
+        var seen = {};
+        return parts[0].concat(parts[1]).filter(function (item) {
+          if (!item || !item.id || seen[item.id]) return false;
+          seen[item.id] = true;
+          return true;
+        });
+      });
+    }
+    function assistantScopeFor(question) {
+      var mentioned = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.mentionedSchool(question);
+      if (mentioned) return { id: mentioned.id, label: mentioned.short + "（依問題指定）" };
+      if (el.assistantScope && el.assistantScope.value === "all") return { id: "all", label: "所有學校" };
+      var preferred = preferredSchoolId() || (state.school !== "all" ? state.school : "all");
+      var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(preferred);
+      return { id: preferred, label: school ? school.short : "所有學校" };
+    }
     function renderAssistantAnswer(result) {
       if (!el.assistantAnswer) return;
       state.assistantAnswer = result;
@@ -1114,17 +1188,19 @@
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
       question = String(question || "").trim().slice(0, 160);
       if (!question) return Promise.resolve(null);
+      var scope = assistantScopeFor(question);
       if (el.assistantAsk) el.assistantAsk.disabled = true;
-      if (el.assistantStatus) el.assistantStatus.textContent = "正在搜尋公告與官方附件文字…";
-      return ensureArchive().then(function () {
-        var items = state.data && state.data.items || [];
+      if (el.assistantStatus) el.assistantStatus.textContent = "正在搜尋「" + scope.label + "」公告與官方附件文字…";
+      return fetchAssistantCorpus(scope.id).then(function (items) {
+        state.assistantItems = {};
+        items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
         var candidates = window.CyNewsAssistantQA.rank(question, items, {}).slice(0, 8);
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
           var details = {};
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
           var result = window.CyNewsAssistantQA.answer(question, items, details);
           renderAssistantAnswer(result);
-          if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已依官方資料整理，請對照下方依據" : "沒有足夠官方證據，未產生猜測答案";
+          if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已從「" + scope.label + "」官方資料整理，請對照下方依據" : "「" + scope.label + "」沒有足夠官方證據，未產生猜測答案";
           return result;
         });
       }).catch(function () {
@@ -1135,7 +1211,7 @@
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
     }
     function renderControls() {
-      var schools = [{ id: "all", short: "全部" }].concat(state.data.schools);
+      var schools = [{ id: "all", short: "跨校查看" }].concat(state.data.schools || []);
       el.schoolSeg.innerHTML = schools.map(function (s) {
         return '<button data-school="' + s.id + '"' +
           (state.school === s.id ? ' class="is-active"' : "") + ">" + esc(s.short) + "</button>";
@@ -1252,6 +1328,7 @@
       resetPaging();
       fetchData(true).then(function () {
         if (state.q || state.cat !== "all") ensureArchive();
+        if (state.tab === "today" || state.tab === "calendar") { loadOfficialEvents(); loadCalendarStatus(); }
       });
     });
     el.catChips.addEventListener("click", function (e) {
@@ -1464,8 +1541,16 @@
       });
     });
 
+    function setNavMenu(open) {
+      if (!el.navMenu || !el.navMenuToggle) return;
+      el.navMenu.hidden = !open;
+      el.navMenuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      el.navMenuToggle.classList.toggle("is-open", open);
+    }
     function switchTab(tab) {
       state.tab = tab;
+      setNavMenu(false);
+      if (el.navCurrentLabel) el.navCurrentLabel.textContent = ({ today: "我的今天", latest: "最新公告", assistant: "問校務", calendar: "行事曆", sub: "我的設定" })[tab] || "功能";
       var latest = tab === "latest";
       var today = tab === "today";
       var assistant = tab === "assistant";
@@ -1524,6 +1609,16 @@
         el.eventForm.reset(); el.eventFormWrap.hidden = true; renderCalendar();
       });
     }
+    if (el.navMenuToggle) el.navMenuToggle.addEventListener("click", function () {
+      setNavMenu(el.navMenuToggle.getAttribute("aria-expanded") !== "true");
+    });
+    if (document.addEventListener) {
+      document.addEventListener("click", function (event) {
+        if (!el.navMenu || el.navMenu.hidden || !event.target || !event.target.closest || event.target.closest(".function-dock")) return;
+        setNavMenu(false);
+      });
+      document.addEventListener("keydown", function (event) { if (event.key === "Escape") setNavMenu(false); });
+    }
 
     populateProfileSchools();
     renderProfile();
@@ -1531,12 +1626,17 @@
       e.preventDefault();
       if (!window.CyNewsProfile) return;
       var profile = profileFromForm();
+      if (!profile.school_id) {
+        el.profileStatus.textContent = "請先選擇你關心的學校";
+        return;
+      }
       var result = queueAccountMutation("preferences.upsert", preferencePayload({ profile: profile }));
       if (!result) {
         el.profileStatus.textContent = "請先登入並完成同步";
         return;
       }
       state.profile = profile;
+      applyPreferredSchool(profile.school_id, true);
       establishPersonalizedBaseline(state.activeAccountId);
       var requestedNickname = window.CyNewsAccountAuth.normalizeNickname(el.profileNickname && el.profileNickname.value);
       if (!requestedNickname || !accountAuth || typeof accountAuth.updateNickname !== "function") {
@@ -1556,19 +1656,25 @@
     if (el.nicknameForm) el.nicknameForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var nickname = window.CyNewsAccountAuth && window.CyNewsAccountAuth.normalizeNickname(el.nicknameInput.value);
+      var schoolId = String(el.nicknameSchool && el.nicknameSchool.value || "");
       if (!nickname || !accountAuth || !state.accountUser) { el.nicknameStatus.textContent = "請輸入暱稱"; return; }
+      if (!window.CyNewsSchoolRegistry || !window.CyNewsSchoolRegistry.find(schoolId)) { el.nicknameStatus.textContent = "請選擇你關心的學校"; return; }
+      var profile = window.CyNewsProfile.normalize(Object.assign({}, state.profile || {}, { school_id: schoolId }));
+      if (!queueAccountMutation("preferences.upsert", preferencePayload({ profile: profile }))) { el.nicknameStatus.textContent = "請先完成登入同步"; return; }
+      state.profile = profile;
+      applyPreferredSchool(schoolId, true);
       el.nicknameStatus.textContent = "儲存中";
       accountAuth.updateNickname(nickname).then(function (user) {
         state.accountUser = user || state.accountUser;
         state.nickname = window.CyNewsAccountAuth.displayName(user || { user_metadata: { nickname: nickname } });
-        localStorage.removeItem("cyNews.nicknameLater.v1:" + state.accountUser.id);
+        localStorage.removeItem("cyNews.onboardingLater.v2:" + state.accountUser.id);
         renderGreeting(); renderProfile();
         el.nicknameStatus.textContent = "已儲存";
         if (el.nicknameDialog.open) el.nicknameDialog.close();
       }).catch(function () { el.nicknameStatus.textContent = "暱稱儲存失敗，請稍後再試"; });
     });
     if (el.nicknameLater) el.nicknameLater.addEventListener("click", function () {
-      if (state.accountUser && state.accountUser.id) localStorage.setItem("cyNews.nicknameLater.v1:" + state.accountUser.id, "true");
+      if (state.accountUser && state.accountUser.id) localStorage.setItem("cyNews.onboardingLater.v2:" + state.accountUser.id, "true");
       if (el.nicknameDialog && el.nicknameDialog.open) el.nicknameDialog.close();
     });
     if (el.personalizedToggle) el.personalizedToggle.addEventListener("change", function () {
@@ -1622,7 +1728,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=38").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=39").catch(function () {});
       });
     }
 
