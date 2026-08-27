@@ -27,6 +27,20 @@
     });
   }
   function verifiedUid(client) { return verifiedSession(client).then(function (session) { return session && session.user.id; }); }
+  function normalizeNickname(value) {
+    return String(value == null ? "" : value).replace(/[\t\r\n]+/g, " ")
+      .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "").replace(/\s+/g, " ").trim().slice(0, 32);
+  }
+  function displayName(user) {
+    user = user && typeof user === "object" ? user : {};
+    var metadata = user.user_metadata && typeof user.user_metadata === "object" ? user.user_metadata : {};
+    var nickname = normalizeNickname(metadata.nickname);
+    if (nickname) return nickname;
+    var providerName = normalizeNickname(metadata.given_name || metadata.full_name || metadata.name);
+    if (providerName) return providerName;
+    var email = String(user.email || "").trim();
+    return normalizeNickname(email.split("@")[0]);
+  }
   function normalizeAppUrl(value, allowCallbackParameters) {
     if (typeof value !== "string" || !value.trim()) return null;
     try {
@@ -97,6 +111,16 @@
       signOut: function () {
         return getClient().then(function (c) { return c.auth.signOut(); });
       },
+      updateNickname: function (value) {
+        var nickname = normalizeNickname(value);
+        if (!nickname) return Promise.reject(new Error("nickname required"));
+        return getClient().then(function (c) {
+          return c.auth.updateUser({ data: { nickname: nickname } }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data && result.data.user;
+          });
+        });
+      },
       onAuthStateChange: function (callback) {
         return getClient().then(function (c) {
           return c.auth.onAuthStateChange(function (event, session) {
@@ -109,5 +133,7 @@
       },
     };
   }
-  return { CLIENT_VERSION: CLIENT_VERSION, CLIENT_URL: CLIENT_URL, verifiedSession: verifiedSession, verifiedUid: verifiedUid, normalizeAppUrl: normalizeAppUrl, approvedRedirect: approvedRedirect, createController: createController };
+  return { CLIENT_VERSION: CLIENT_VERSION, CLIENT_URL: CLIENT_URL, verifiedSession: verifiedSession, verifiedUid: verifiedUid,
+    normalizeNickname: normalizeNickname, displayName: displayName, normalizeAppUrl: normalizeAppUrl,
+    approvedRedirect: approvedRedirect, createController: createController };
 });
