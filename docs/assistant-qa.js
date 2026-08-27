@@ -1,0 +1,139 @@
+/* Deterministic, evidence-first school information question answering. */
+(function (root, factory) {
+  var api = factory();
+  if (typeof module !== "undefined" && module.exports) module.exports = api;
+  root.CyNewsAssistantQA = api;
+})(typeof window !== "undefined" ? window : this, function () {
+  "use strict";
+
+  var INTENTS = {
+    date: ["何時", "什麼時候", "日期", "截止", "幾點", "時間", "多久"],
+    place: ["哪裡", "地點", "在哪", "會場", "教室"],
+    method: ["怎麼", "如何", "辦法", "流程", "報名", "申請", "要帶", "繳交"],
+    person: ["誰", "對象", "資格", "哪些人", "學生", "年級"],
+  };
+  var EXPANSIONS = {
+    "手機": ["行動載具", "智慧型手機"], "行動載具": ["手機"],
+    "獎學金": ["獎助學金", "助學金"], "宿舍": ["住宿", "宿舍生"],
+    "考試": ["段考", "測驗", "檢定"], "社團": ["社團活動", "社團選填"],
+  };
+  var STOP = ["請問", "我想知道", "想知道", "可以幫我", "幫我", "有沒有", "是否", "可以", "目前", "學校", "公告", "相關", "一下", "嗎", "呢", "啊", "的", "了", "是"];
+  var GENERIC = ["有什麼", "什麼", "哪些", "最近", "目前", "相關", "規定", "辦法", "如何", "怎麼", "何時", "時間", "日期", "截止", "活動", "資訊", "資料", "請問", "快", "或"];
+
+  function clean(value) { return String(value == null ? "" : value).replace(/\s+/g, " ").trim(); }
+  function compact(value) { return clean(value).toLocaleLowerCase("zh-TW").replace(/[^0-9a-z\u3400-\u9fff]+/g, ""); }
+  function unique(rows) { var seen = {}; return rows.filter(function (row) { if (!row || seen[row]) return false; seen[row] = true; return true; }); }
+  function tokens(query) {
+    var normalized = compact(query), base = normalized;
+    STOP.forEach(function (word) { base = base.split(word).join(""); });
+    var out = clean(query).toLocaleLowerCase("zh-TW").split(/[\s,，。！？?、:：;；()（）]+/).filter(function (word) { return word.length >= 2; });
+    if (base.length >= 2) {
+      out.push(base);
+      for (var size = Math.min(4, base.length); size >= 2; size--) {
+        for (var i = 0; i + size <= base.length; i++) out.push(base.slice(i, i + size));
+      }
+    }
+    Object.keys(EXPANSIONS).forEach(function (key) {
+      if (normalized.indexOf(key) !== -1) out = out.concat(EXPANSIONS[key]);
+    });
+    return unique(out.map(compact).filter(function (word) { return word.length >= 2 && STOP.indexOf(word) === -1; })).slice(0, 48);
+  }
+  function intent(query) {
+    var value = clean(query), found = [];
+    Object.keys(INTENTS).forEach(function (key) {
+      if (INTENTS[key].some(function (word) { return value.indexOf(word) !== -1; })) found.push(key);
+    });
+    return found;
+  }
+  function anchors(query) {
+    var value = compact(query);
+    STOP.concat(GENERIC).sort(function (a, b) { return b.length - a.length; }).forEach(function (word) { value = value.split(word).join(""); });
+    var out = [];
+    Object.keys(EXPANSIONS).forEach(function (key) {
+      if (compact(query).indexOf(key) !== -1) out = out.concat([key]).concat(EXPANSIONS[key]);
+    });
+    if (out.length) return unique(out.map(compact).filter(function (word) { return word.length >= 2; }));
+    if (value.length >= 2) {
+      out.push(value);
+      for (var size = Math.min(4, value.length); size >= 2; size--) for (var i = 0; i + size <= value.length; i++) out.push(value.slice(i, i + size));
+    }
+    return unique(out.map(compact).filter(function (word) { return word.length >= 2; }));
+  }
+  function overview(item) {
+    return clean([item && item.title, item && item.summary, item && item.snippet, item && item.category, item && item.source_category, item && item.school_name].filter(Boolean).join(" "));
+  }
+  function detailText(record) {
+    if (!record || record.provenance !== "official_article") return "";
+    var parts = [];
+    (record.blocks || []).forEach(function (block) {
+      if (block && block.text) parts.push(block.text);
+      (block && block.items || []).forEach(function (item) { parts.push(item); });
+      (block && block.rows || []).forEach(function (row) { parts.push((row || []).join(" ")); });
+    });
+    (record.attachments || []).forEach(function (file) {
+      if (file && file.parse_status === "parsed" && file.embedded_text) parts.push(file.embedded_text);
+    });
+    return clean(parts.join(" ")).slice(0, 120000);
+  }
+  function occurrence(text, token) {
+    var count = 0, at = 0;
+    while ((at = text.indexOf(token, at)) !== -1 && count < 5) { count++; at += token.length; }
+    return count;
+  }
+  function scoreText(text, queryTokens, weight) {
+    var normalized = compact(text), score = 0;
+    queryTokens.forEach(function (token) { score += occurrence(normalized, token) * Math.max(1, token.length - 1) * weight; });
+    return score;
+  }
+  function rank(query, items, details) {
+    var queryTokens = tokens(query), anchorTokens = anchors(query), wanted = intent(query), detailMap = details || {};
+    if (!queryTokens.length) return [];
+    return (Array.isArray(items) ? items : []).map(function (item) {
+      var titleScore = scoreText(item.title || "", queryTokens, 9);
+      var overviewScore = scoreText(overview(item), queryTokens, 3);
+      var body = detailText(detailMap[item.id]);
+      var bodyScore = scoreText(body, queryTokens, 1);
+      var anchorScore = scoreText(clean(item.title || "") + " " + overview(item) + " " + body, anchorTokens, 1);
+      var intentBonus = 0, combined = clean(overview(item) + " " + body);
+      wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
+      return { item: item, detail: detailMap[item.id] || null, text: combined, score: titleScore + overviewScore + Math.min(bodyScore, 80) + intentBonus, anchorScore: anchorScore };
+    }).filter(function (row) { return row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0); }).sort(function (a, b) {
+      return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
+    });
+  }
+  function sentences(value) {
+    return clean(value).split(/(?<=[。！？!?；;])|\n+/).map(clean).filter(function (row) { return row.length >= 8 && row.length <= 420; });
+  }
+  function evidenceScore(sentence, queryTokens, wanted) {
+    var score = scoreText(sentence, queryTokens, 4);
+    wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return sentence.indexOf(word) !== -1; })) score += 12; });
+    if (/作者\s*[：:]|發[佈布]日期|最後更新日期/.test(sentence)) score -= 18;
+    return score;
+  }
+  function answer(query, items, details) {
+    query = clean(query).slice(0, 160);
+    var queryTokens = tokens(query), wanted = intent(query), ranked = rank(query, items, details).slice(0, 8);
+    if (ranked.length) {
+      var relevanceFloor = Math.max(8, ranked[0].score * 0.35);
+      ranked = ranked.filter(function (row) { return row.score >= relevanceFloor; }).slice(0, 5);
+    }
+    if (!query || !queryTokens.length || !ranked.length) return { status: "insufficient", query: query, summary: "目前資料不足，找不到可驗證的答案。", evidence: [], sources: [] };
+    var evidence = [], seen = {};
+    ranked.forEach(function (row) {
+      var sourceText = detailText(row.detail) || clean((row.item.summary || "") + " " + (row.item.snippet || ""));
+      sentences(sourceText).map(function (sentence) { return { text: sentence, score: evidenceScore(sentence, queryTokens, wanted), item: row.item }; })
+        .filter(function (candidate) { return candidate.score >= 4; })
+        .sort(function (a, b) { return b.score - a.score; }).slice(0, 2).forEach(function (candidate) {
+          var key = compact(candidate.text);
+          if (!seen[key] && evidence.length < 4) { seen[key] = true; evidence.push({ text: candidate.text.slice(0, 220), announcement_id: candidate.item.id, title: candidate.item.title, score: candidate.score }); }
+        });
+    });
+    if (!evidence.length) return { status: "insufficient", query: query, summary: "有找到可能相關的公告，但內容不足以可靠回答。", evidence: [], sources: [] };
+    var sourceIds = {};
+    evidence.forEach(function (row) { sourceIds[row.announcement_id] = true; });
+    var sources = ranked.map(function (row) { return row.item; }).filter(function (item) { return sourceIds[item.id]; }).slice(0, 4);
+    return { status: "answered", query: query, summary: "根據 " + sources.length + " 則相關官方公告，整理出以下重點：", evidence: evidence,
+      sources: sources };
+  }
+  return { tokens: tokens, anchors: anchors, intent: intent, detailText: detailText, rank: rank, answer: answer };
+});

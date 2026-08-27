@@ -7,6 +7,7 @@ const production = "https://tsaibohau.github.io/cy-school-news/";
 const localhost = "http://127.0.0.1:8266/";
 const staging = "https://cy-school-news-staging.vercel.app/";
 let oauthRequest = null;
+let userUpdateRequest = null;
 const client = {
   auth: {
     getSession() {
@@ -22,6 +23,10 @@ const client = {
     signInWithOAuth(request) {
       oauthRequest = request;
       return Promise.resolve({ data: { provider: request.provider }, error: null });
+    },
+    updateUser(request) {
+      userUpdateRequest = request;
+      return Promise.resolve({ data: { user: { id: "verified-session-id", user_metadata: request.data } }, error: null });
     },
   },
 };
@@ -61,6 +66,10 @@ async function singletonAndRetryChecks() {
       retryLoaderCalls += 1;
       if (retryLoaderCalls === 1) return Promise.reject(new Error("temporary loader failure"));
       return Promise.resolve({ auth: { getSession: () => Promise.resolve({ data: { session: null }, error: null }) } });
+    },
+    updateUser(request) {
+      userUpdateRequest = request;
+      return Promise.resolve({ data: { user: { id: "verified-session-id", user_metadata: request.data } }, error: null });
     },
   });
   await assert.rejects(retryClient.getClient(), error => { failures += 1; return /temporary/.test(error.message); });
@@ -115,6 +124,13 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   const session = await Auth.verifiedSession(client);
   assert.equal(session.user.id, "verified-session-id");
   assert.equal(await controller.getVerifiedUid(), "verified-session-id");
+  assert.equal(Auth.normalizeNickname("  Hau\nTest  "), "Hau Test");
+  assert.equal(Auth.displayName({ user_metadata: { nickname: "Hau" }, email: "ignored@example.test" }), "Hau");
+  assert.equal(Auth.displayName({ user_metadata: { given_name: "Bo" }, email: "ignored@example.test" }), "Bo");
+  const updatedUser = await controller.updateNickname("  Hau  ");
+  assert.deepEqual(userUpdateRequest, { data: { nickname: "Hau" } });
+  assert.equal(updatedUser.user_metadata.nickname, "Hau");
+  await assert.rejects(controller.updateNickname("   "), /nickname required/);
   const emailOnlyClient = { auth: { getSession: () => Promise.resolve({ data: { session: { access_token: "test-access-token", user: { email: "email-only@example.test" } } }, error: null }), getUser: () => Promise.resolve({ data: { user: null }, error: null }) } };
   assert.equal(await Auth.verifiedUid(emailOnlyClient), null, "email cannot determine account ownership");
 
@@ -160,10 +176,10 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   const sw = fs.readFileSync(path.join(__dirname, "..", "docs", "sw.js"), "utf8");
   const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
   assert(index.includes("使用 Google 登入"));
-  assert(index.includes('src="account-sync.js?v=36"'), "index must load versioned Account Sync before app.js");
-  assert(index.includes('src="account-config.js?v=36"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=36"'), "index must load versioned account auth");
-  assert(sw.includes('"./account-sync.js?v=36"'), "Service Worker shell must cache versioned Account Sync");
+  assert(index.includes('src="account-sync.js?v=38"'), "index must load versioned Account Sync before app.js");
+  assert(index.includes('src="account-config.js?v=38"'), "index must load versioned account config");
+  assert(index.includes('src="account-auth.js?v=38"'), "index must load versioned account auth");
+  assert(sw.includes('"./account-sync.js?v=38"'), "Service Worker shell must cache versioned Account Sync");
   assert(!index.includes("accountEmail"));
   assert(!app.includes("sendMagicLink"));
   assert(app.includes("getVerifiedSession"));
@@ -176,8 +192,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v37"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=36")'), "App and Service Worker must use one shell version");
+  assert(sw.includes("cy-news-v38"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=38")'), "App and Service Worker must use one shell version");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   console.log("Google OAuth account auth tests passed");

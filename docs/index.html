@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=36">
+<link rel="stylesheet" href="style.css?v=38">
 </head>
 <body>
 
@@ -48,10 +48,31 @@
     <div id="importantList" class="important-list"></div>
   </section>
 
+  <!-- 免費、可追溯的校務資料問答；只整理官方公告，不呼叫生成式 AI。 -->
+  <section id="viewAssistant" class="assistant-view" hidden aria-labelledby="assistantTitle">
+    <div class="section-heading"><div><p class="eyebrow">ASK SCHOOL DATA</p><h2 id="assistantTitle">問校務</h2></div><span class="hint">免費・依官方資料回答</span></div>
+    <p class="assistant-intro">可以問公告、截止日、報名方式、活動地點或規定。答案會附上依據；資料不足時不會猜。</p>
+    <form id="assistantForm" class="assistant-form">
+      <label for="assistantQuestion">想問什麼？</label>
+      <div class="assistant-input-row"><input id="assistantQuestion" type="search" required maxlength="160" placeholder="例如：學生音樂比賽什麼時候截止？"><button id="assistantAsk" class="btn-primary" type="submit">整理答案</button></div>
+    </form>
+    <div class="assistant-examples" aria-label="問題範例">
+      <button type="button" data-assistant-example="最近有哪些獎助學金？">最近有哪些獎助學金？</button>
+      <button type="button" data-assistant-example="有哪些活動快截止？">有哪些活動快截止？</button>
+      <button type="button" data-assistant-example="學生音樂比賽什麼時候截止？">音樂比賽截止日</button>
+    </div>
+    <p id="assistantStatus" class="hint" role="status" aria-live="polite"></p>
+    <div id="assistantAnswer" class="assistant-answer"></div>
+  </section>
+
   <!-- 今日：由既有行事曆、公告與待辦即時投影，不另存資料。 -->
   <section id="viewToday" class="today-view" hidden aria-labelledby="todayTitle">
     <div class="section-heading"><div><p class="eyebrow">PERSONAL ASSISTANT</p><h2 id="todayTitle">我的今天</h2></div></div>
     <p id="todayCoverage" class="hint" hidden></p>
+    <section class="today-brief" aria-labelledby="todayBriefTitle">
+      <div class="section-heading compact-heading"><div><p class="eyebrow">DAILY BRIEF</p><h3 id="todayBriefTitle">今天先做什麼</h3></div><span id="todayBriefSummary" class="hint"></span></div>
+      <div id="todayFocus" class="today-focus"></div>
+    </section>
     <section class="today-section"><h3>今天</h3><div id="todayEvents" class="today-list"></div></section>
     <section class="today-section"><h3>即將到期</h3><div id="todayDeadlines" class="today-list"></div></section>
     <section class="today-section"><h3>待辦</h3><div id="todayTasks" class="today-list"></div></section>
@@ -130,9 +151,10 @@
         <button id="accountLogout" class="btn-ghost" hidden>登出</button>
       </div>
       <section id="profileBox" class="profile-box" aria-labelledby="profileTitle">
-        <div class="section-heading compact-heading"><div><p class="eyebrow">PERSONAL CONTEXT</p><h3 id="profileTitle">我的資料</h3></div><span class="hint">選填</span></div>
-        <p id="profileHint" class="hint">登入後設定學校與年級，讓相關公告更容易被找到。</p>
+        <div class="section-heading compact-heading"><div><p class="eyebrow">USER SETTINGS</p><h3 id="profileTitle">我的設定</h3></div><span class="hint">可隨時修改</span></div>
+        <p id="profileHint" class="hint">登入後設定暱稱、學校與年級，讓介面和公告排序更貼近你。</p>
         <form id="profileForm" class="profile-form">
+          <label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
           <label>我的學校<select id="profileSchool"><option value="">尚未設定</option></select></label>
           <label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label>
           <label>我的班級<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109（選填）"></label>
@@ -173,6 +195,16 @@
   </div>
 </dialog>
 
+<dialog id="nicknameDialog" class="nickname-dialog" aria-labelledby="nicknameTitle">
+  <form id="nicknameForm" class="nickname-sheet">
+    <p class="eyebrow">WELCOME</p><h2 id="nicknameTitle">先告訴我怎麼稱呼你</h2>
+    <p class="hint">暱稱只用於介面顯示，不參與權限判斷。</p>
+    <label>暱稱<input id="nicknameInput" required maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
+    <div class="profile-actions"><button class="btn-primary" type="submit">儲存並開始</button><button id="nicknameLater" class="btn-ghost" type="button">稍後設定</button></div>
+    <p id="nicknameStatus" class="hint" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
 <nav class="tabbar" aria-label="主要分頁">
   <button id="tabToday" class="tab">
     <span class="tab-icon" aria-hidden="true">✦</span><span>今天</span>
@@ -180,6 +212,9 @@
   <button id="tabLatest" class="tab is-active" aria-current="page">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h10"/></svg>
     <span>最新</span>
+  </button>
+  <button id="tabAssistant" class="tab">
+    <span class="tab-icon" aria-hidden="true">?</span><span>問校務</span>
   </button>
   <button id="tabCalendar" class="tab">
     <span class="tab-icon" aria-hidden="true">▦</span><span>行事曆</span>
@@ -191,20 +226,22 @@
   </button>
 </nav>
 
-<script src="account-config.js?v=36"></script>
-<script src="supabase-sync.js?v=36"></script>
-<script src="account-auth.js?v=36"></script>
-<script src="push-subscription.js?v=36"></script>
-<script src="reminder-rules.js?v=36"></script>
-<script src="task-state.js?v=36"></script>
-<script src="account-sync.js?v=36"></script>
-<script src="school-registry.js?v=36"></script>
-<script src="profile.js?v=36"></script>
-<script src="relevance.js?v=36"></script>
-<script src="today.js?v=36"></script>
-<script src="calendar-state.js?v=36"></script>
-<script src="detail-ui.js?v=36"></script>
-<script src="app.js?v=36"></script>
+<script src="account-config.js?v=38"></script>
+<script src="supabase-sync.js?v=38"></script>
+<script src="account-auth.js?v=38"></script>
+<script src="push-subscription.js?v=38"></script>
+<script src="reminder-rules.js?v=38"></script>
+<script src="task-state.js?v=38"></script>
+<script src="account-sync.js?v=38"></script>
+<script src="school-registry.js?v=38"></script>
+<script src="profile.js?v=38"></script>
+<script src="relevance.js?v=38"></script>
+<script src="assistant-feedback.js?v=38"></script>
+<script src="today.js?v=38"></script>
+<script src="assistant-qa.js?v=38"></script>
+<script src="calendar-state.js?v=38"></script>
+<script src="detail-ui.js?v=38"></script>
+<script src="app.js?v=38"></script>
 </body>
 </html>
 
