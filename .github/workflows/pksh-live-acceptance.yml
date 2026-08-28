@@ -1,47 +1,90 @@
+name: PKSH live acceptance
+
+on:
+  push:
+    branches: [feature/personal-assistant-v1]
+    paths:
+      - .github/workflows/pksh-live-acceptance.yml
+      - tests/test_pksh_live_api.py
+      - tests/pksh_integration_report.py
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  live-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install scraper dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: DNS TCP TLS and HTTP diagnostics
+        shell: bash
+        run: |
+          set +e
+          {
+            echo 'DNS_RESULTS'
+            getent ahosts www.pksh.ylc.edu.tw
+            echo 'TCP_443'
+            timeout 15 bash -c '</dev/tcp/www.pksh.ylc.edu.tw/443'
+            echo "tcp_exit=$?"
+          } 2>&1 | tee pksh-network.log
+          curl -Iv --connect-timeout 20 --max-time 40 \
+            https://www.pksh.ylc.edu.tw/ 2>&1 | tee pksh-curl.log
+          echo "curl_exit=${PIPESTATUS[0]}" | tee -a pksh-curl.log
+          openssl s_client \
+            -connect www.pksh.ylc.edu.tw:443 \
+            -servername www.pksh.ylc.edu.tw \
+            -verify_return_error \
+            -showcerts </dev/null 2>&1 | tee pksh-openssl.log
+          echo "openssl_exit=${PIPESTATUS[0]}" | tee -a pksh-openssl.log
+
+      - name: Probe official hostname and iSchool endpoint alternatives
+        # This is read-only.  It deliberately keeps normal certificate
+        # verification enabled: a URL path cannot bypass a TLS failure, but
+        # this records whether the bare official hostname differs from www and
+        # whether the documented iSchool endpoints are reachable at all.
+        shell: bash
+        run: |
+          set +e
+          : > pksh-alternatives.log
+          probe() {
+            local label="$1"
+            shift
+            echo "=== ${label} ===" | tee -a pksh-alternatives.log
+            curl --silent --show-error --location \
+              --connect-timeout 20 --max-time 40 \
+              --output /dev/null --write-out 'http_status=%{http_code} curl_exit=%{exitcode} remote_ip=%{remote_ip}\n' \
+              "$@" 2>&1 | tee -a pksh-alternatives.log
+          }
+          probe bare_official_home https://pksh.ylc.edu.tw/
+          probe bare_official_main2 \
+            'https://pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a'
+          probe www_official_main2 \
+            'https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a'
+          probe iSchool_list_post --request POST --data \
+            'field=time&order=DESC&pageNum=0&maxRows=1&keyword=&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a&tf=1&auth_type=user&flock=' \
+            https://www.pksh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php
+          # RSS is not an established iSchool endpoint in this installation.
+          # It may only be discovered from a successfully fetched main2 HTML;
+          # do not guess a feed and do not treat any alternate path as data.
+          openssl s_client -connect pksh.ylc.edu.tw:443 -servername pksh.ylc.edu.tw \
+            -verify_return_error </dev/null 2>&1 | tee -a pksh-alternatives.log
+          echo "bare_openssl_exit=${PIPESTATUS[0]}" | tee -a pksh-alternatives.log
+
+      - name: Verify official Sectigo chain completion (probe only)
         # This deliberately does not alter the scraper's TLS policy.  It only
         # tests whether the missing issuing chain can be completed using
         # certificates referenced by Sectigo's official CA documentation and
         # then verified back to the runner's existing system trust store.
         shell: bash
-        run: |
-          set -euo pipefail
-          tmp_dir="$(mktemp -d)"
-          trap 'rm -rf "$tmp_dir"' EXIT
-          system_bundle=/etc/ssl/certs/ca-certificates.crt
-          log=pksh-sectigo-chain.log
-          : > "$log"
-          # Sectigo's official CA page names these exact Certificate
-          # Transparency records.  The bytes are never trusted merely because
-          # they were downloaded: their subject/issuer and chain are checked
-          # below against the system CA bundle.
-          echo 'source=sectigo-official-docs: crt.sh d=4267304690,11405654893' | tee -a "$log"
-          curl --fail --silent --show-error --proto '=https' --tlsv1.2 \
-            --connect-timeout 20 --max-time 40 \
-            --output "$tmp_dir/dv-r36.der" \
-            'https://crt.sh/?d=4267304690'
-          curl --fail --silent --show-error --proto '=https' --tlsv1.2 \
-            --connect-timeout 20 --max-time 40 \
-            --output "$tmp_dir/root-r46-usertrust.der" \
-            'https://crt.sh/?d=11405654893'
-          openssl x509 -inform DER -in "$tmp_dir/dv-r36.der" -out "$tmp_dir/dv-r36.pem"
-          openssl x509 -inform DER -in "$tmp_dir/root-r46-usertrust.der" -out "$tmp_dir/root-r46-usertrust.pem"
-          openssl x509 -in "$tmp_dir/dv-r36.pem" -noout -subject -issuer -dates -fingerprint -sha256 | tee -a "$log"
-          openssl x509 -in "$tmp_dir/root-r46-usertrust.pem" -noout -subject -issuer -dates -fingerprint -sha256 | tee -a "$log"
-          openssl x509 -in "$tmp_dir/dv-r36.pem" -noout -subject -nameopt RFC2253 | \
-            grep -Fx 'subject=CN=Sectigo Public Server Authentication CA DV R36,O=Sectigo Limited,C=GB'
-          openssl x509 -in "$tmp_dir/dv-r36.pem" -noout -issuer -nameopt RFC2253 | \
-            grep -Fx 'issuer=CN=Sectigo Public Server Authentication Root R46,O=Sectigo Limited,C=GB'
-          openssl verify -show_chain -CAfile "$system_bundle" \
-            -untrusted "$tmp_dir/root-r46-usertrust.pem" "$tmp_dir/dv-r36.pem" | tee -a "$log"
-          cp "$system_bundle" "$tmp_dir/pksh-probe-ca.pem"
-          openssl x509 -in "$tmp_dir/dv-r36.pem" >> "$tmp_dir/pksh-probe-ca.pem"
-          openssl x509 -in "$tmp_dir/root-r46-usertrust.pem" >> "$tmp_dir/pksh-probe-ca.pem"
-          curl --fail --silent --show-error --proto '=https' --tlsv1.2 \
-            --cacert "$tmp_dir/pksh-probe-ca.pem" \
-            --connect-timeout 20 --max-time 40 --output /dev/null \
-            --write-out 'pksh_http_status=%{http_code} verify_result=%{ssl_verify_result}\n' \
-            'https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a' | tee -a "$log"
-          echo 'CHAIN_COMPLETION_PROBE=success' | tee -a "$log"
+        run: bash tests/pksh_sectigo_chain_probe.sh
 
       - name: PKSH five-record live API acceptance
         id: live
@@ -62,3 +105,42 @@
         continue-on-error: true
         env:
           FETCH_ALL: '1'
+          ATTACHMENT_PDF_CAP: '0'
+          PYTHONIOENCODING: utf-8
+        run: python scraper/scrape.py
+
+      - name: Integration counts and dedup gate
+        id: integration
+        continue-on-error: true
+        run: python tests/pksh_integration_report.py
+
+      - name: Preserve diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pksh-live-acceptance-${{ github.sha }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            pksh-network.log
+            pksh-curl.log
+            pksh-openssl.log
+            pksh-alternatives.log
+            pksh-sectigo-chain.log
+            pksh-live-report.json
+            pksh-integration-report.json
+
+      - name: Final acceptance gate
+        if: always()
+        shell: bash
+        run: |
+          echo "live=${{ steps.live.outcome }}"
+          echo "scraper=${{ steps.scraper.outcome }}"
+          echo "integration=${{ steps.integration.outcome }}"
+          if [[ '${{ steps.live.outcome }}' != success || \
+                '${{ steps.scraper.outcome }}' != success || \
+                '${{ steps.integration.outcome }}' != success ]]; then
+            echo 'BLOCKED — PKSH live-data acceptance gate is incomplete'
+            exit 1
+          fi
+          echo 'VERIFIED'
