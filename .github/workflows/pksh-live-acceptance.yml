@@ -7,6 +7,11 @@ on:
       - .github/workflows/pksh-live-acceptance.yml
       - tests/test_pksh_live_api.py
       - tests/pksh_integration_report.py
+      - tests/test_ischool_adapter.py
+      - tests/test_pksh_adapter.py
+      - scraper/ischool_adapter.py
+      - scraper/scrape.py
+      - scraper/config.json
   workflow_dispatch: {}
 
 permissions:
