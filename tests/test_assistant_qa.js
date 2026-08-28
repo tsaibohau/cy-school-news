@@ -23,6 +23,7 @@ assert.equal(QA.smoothEvidence("主旨：請於九月十日前送件。"), "請�
 assert.match(QA.composeSummary([{ text: "科學營於九月五日前報名。" }, { text: "寫作工作坊於九月十日前報名。" }], [{ id: "one" }, { id: "two" }], []), /不是同一項活動/);
 assert.equal(Schools.mentionedSchool("嘉義女中的獎學金有哪些？").id, "cygsh");
 assert.equal(Schools.mentionedSchool("請查 CYSH 宿舍規定").id, "cysh");
+assert.equal(Schools.mentionedSchool("輔仁中學的校車公告").id, "fjsh");
 assert.equal(Schools.mentionedSchool("北港高中模擬考公告了嗎").id, "pksh");
 assert.equal(QA.questionPlan("目前最新的報名方式是什麼").wants_latest, true);
 const split = QA.answerLines([
