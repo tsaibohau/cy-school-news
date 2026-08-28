@@ -1,0 +1,102 @@
+name: PKSH live acceptance
+
+on:
+  push:
+    branches: [feature/personal-assistant-v1]
+    paths:
+      - .github/workflows/pksh-live-acceptance.yml
+      - tests/test_pksh_live_api.py
+      - tests/pksh_integration_report.py
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  live-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install scraper dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: DNS TCP TLS and HTTP diagnostics
+        shell: bash
+        run: |
+          set +e
+          {
+            echo 'DNS_RESULTS'
+            getent ahosts www.pksh.ylc.edu.tw
+            echo 'TCP_443'
+            timeout 15 bash -c '</dev/tcp/www.pksh.ylc.edu.tw/443'
+            echo "tcp_exit=$?"
+          } 2>&1 | tee pksh-network.log
+          curl -Iv --connect-timeout 20 --max-time 40 \
+            https://www.pksh.ylc.edu.tw/ 2>&1 | tee pksh-curl.log
+          echo "curl_exit=${PIPESTATUS[0]}" | tee -a pksh-curl.log
+          openssl s_client \
+            -connect www.pksh.ylc.edu.tw:443 \
+            -servername www.pksh.ylc.edu.tw \
+            -showcerts </dev/null 2>&1 | tee pksh-openssl.log
+          echo "openssl_exit=${PIPESTATUS[0]}" | tee -a pksh-openssl.log
+
+      - name: PKSH five-record live API acceptance
+        id: live
+        continue-on-error: true
+        env:
+          PKSH_LIVE_API: '1'
+        run: python tests/test_pksh_live_api.py
+
+      - name: Zero-result and CYSH/CYGSH regression
+        run: |
+          python tests/test_parser.py
+          python tests/test_pksh_adapter.py
+          python tests/test_ischool_adapter.py
+          python tests/test_public_shards.py
+
+      - name: Full scraper integration without notifications
+        id: scraper
+        continue-on-error: true
+        env:
+          FETCH_ALL: '1'
+          ATTACHMENT_PDF_CAP: '0'
+          PYTHONIOENCODING: utf-8
+        run: python scraper/scrape.py
+
+      - name: Integration counts and dedup gate
+        id: integration
+        continue-on-error: true
+        run: python tests/pksh_integration_report.py
+
+      - name: Preserve diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pksh-live-acceptance-${{ github.sha }}
+          if-no-files-found: warn
+          retention-days: 14
+          path: |
+            pksh-network.log
+            pksh-curl.log
+            pksh-openssl.log
+            pksh-live-report.json
+            pksh-integration-report.json
+
+      - name: Final acceptance gate
+        if: always()
+        shell: bash
+        run: |
+          echo "live=${{ steps.live.outcome }}"
+          echo "scraper=${{ steps.scraper.outcome }}"
+          echo "integration=${{ steps.integration.outcome }}"
+          if [[ '${{ steps.live.outcome }}' != success || \
+                '${{ steps.scraper.outcome }}' != success || \
+                '${{ steps.integration.outcome }}' != success ]]; then
+            echo 'BLOCKED — PKSH live-data acceptance gate is incomplete'
+            exit 1
+          fi
+          echo 'VERIFIED'
