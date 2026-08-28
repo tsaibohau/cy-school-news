@@ -71,6 +71,22 @@ HOME_HTML = """
 </body></html>
 """
 
+FJSH_LIST_HTML = """
+<html><head><title>最新公告</title></head><body>
+<div class="row listBS"><div class="d-txt"><div class="mtitle">
+  <i class="mdate before">2026-08-28</i>
+  <a href="https://rpage.fjsh.cy.edu.tw/p/406-1000-2373,r59.php?Lang=zh-tw">115學年度第1學期校車路線表115.8.28</a>
+</div></div></div>
+<div class="row listBS"><div class="d-txt"><div class="mtitle">
+  <i class="mdate before">2026-08-27</i>
+  <a href="/p/406-1000-2369,r59.php?Lang=zh-tw">中國文化大學第三屆世界大學問活動</a>
+</div></div></div>
+<!-- 同一文章在頁面裝飾區重複出現，不能產生第二筆。 -->
+<a href="/p/406-1000-2373,r59.php"><img src="banner.png"></a>
+<a href="https://evil.example/p/406-1000-9999,r59.php">外站偽造連結</a>
+</body></html>
+"""
+
 ARTICLE_HTML = """
 <html><head><title>test</title></head><body>
 <nav>選單選單選單</nav>
@@ -138,6 +154,15 @@ def run():
     assert home_items[1]["date"] == "2026-08-05", "斜線日期也要能解析"
     assert home_items[0]["source_category"] == "", "首頁掃描不套用頁面標題為分類"
     print("✓ 首頁掃描解析")
+
+    fjsh_school = {"id": "fjsh", "short": "輔仁", "base": "https://rpage.fjsh.cy.edu.tw", "unit": "1000"}
+    fjsh_items = extract_items(FJSH_LIST_HTML, fjsh_school,
+                               "https://rpage.fjsh.cy.edu.tw/p/403-1000-59-1.php?Lang=zh-tw")
+    assert [row["id"] for row in fjsh_items] == ["fjsh-2373", "fjsh-2369"], fjsh_items
+    assert fjsh_items[0]["date"] == "2026-08-28"
+    assert fjsh_items[0]["url"] == "https://rpage.fjsh.cy.edu.tw/p/406-1000-2373,r59.php"
+    assert fjsh_items[0]["source_category"] == "最新公告"
+    print("✓ 輔仁 R-page 列表 / stable ID / 去重 / unit 隔離")
 
     cases = {
         "115學年度第一次段考考試範圍公告": "段考考試",
