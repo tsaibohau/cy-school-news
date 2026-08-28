@@ -113,6 +113,7 @@ def is_invalid_title(text: str) -> bool:
     normalized = re.sub(r"\s+", " ", text).strip()
     if len(normalized) < 4 or normalized in {
         "MORE", "更多", "國立嘉義高中", "國立嘉義女子高級中學",
+        "天主教輔仁中學", "嘉義市私立輔仁高級中學",
     }:
         return True
     # RulingDigital access-key anchors use ::: as visible navigation text.
@@ -233,6 +234,7 @@ def extract_rulingdigital_items(html: str, school: dict, source_url: str):
     """從任一頁面(列表頁或首頁)萃取公告項目。"""
     soup = BeautifulSoup(html, "html.parser")
     unit = school["unit"]
+    base = urlsplit(school["base"])
     item_re = re.compile(r"/p/406-%s-(\d+)(?:,r(\d+))?\.php" % re.escape(unit))
     src_cat = page_category_name(soup)
     items, seen = [], set()
@@ -249,7 +251,20 @@ def extract_rulingdigital_items(html: str, school: dict, source_url: str):
         if not title or len(title) < 4 or title in ("MORE", "更多"):
             continue
         seen.add(art_id)
-        url = normalize_url(urljoin(school["base"], a["href"]))
+        resolved = urlsplit(urljoin(school["base"], a["href"]))
+        # R-page installations occasionally emit absolute http links even when
+        # the public site is HTTPS.  Canonicalize only the configured origin;
+        # an external look-alike /p/406 link must never enter the corpus.
+        try:
+            same_origin = (resolved.hostname == base.hostname and
+                           (resolved.port or 443) == (base.port or 443) and
+                           not resolved.username and not resolved.password)
+        except ValueError:
+            same_origin = False
+        if not same_origin or resolved.scheme not in {"http", "https"}:
+            continue
+        url = normalize_url(urlunsplit(("https", base.netloc, resolved.path,
+                                       resolved.query, "")))
         date = parse_date_near(a)
         items.append({
             "id": f'{school["id"]}-{art_id}',
