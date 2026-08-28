@@ -83,6 +83,23 @@ jobs:
             -verify_return_error </dev/null 2>&1 | tee -a pksh-alternatives.log
           echo "bare_openssl_exit=${PIPESTATUS[0]}" | tee -a pksh-alternatives.log
 
+      - name: Verify official Sectigo intermediate-chain recovery
+        # Diagnostic only: the PKSH server omits its issuing intermediate. Fetch
+        # the AIA-published certificate, verify it against certifi's trusted
+        # root store, then use it only as an untrusted chain-building helper.
+        shell: bash
+        run: |
+          set -euo pipefail
+          issuer_url='http://crt.sectigo.com/SectigoPublicServerAuthenticationCADVR36.crt'
+          curl --fail --silent --show-error --location --max-time 30 "$issuer_url"             --output pksh-dv-r36.der
+          openssl x509 -inform DER -in pksh-dv-r36.der -out pksh-dv-r36.pem
+          openssl x509 -in pksh-dv-r36.pem -noout -subject -issuer -fingerprint -sha256             | tee pksh-intermediate.log
+          openssl x509 -in pksh-dv-r36.pem -noout -subject | grep -F 'Sectigo Public Server Authentication CA DV R36'
+          certifi_bundle="$(python -c 'import certifi; print(certifi.where())')"
+          openssl verify -CAfile "$certifi_bundle" pksh-dv-r36.pem | tee -a pksh-intermediate.log
+          openssl s_client -connect www.pksh.ylc.edu.tw:443             -servername www.pksh.ylc.edu.tw             -verify_return_error             -verifyCAfile "$certifi_bundle"             -chainCAfile pksh-dv-r36.pem </dev/null 2>&1 | tee -a pksh-intermediate.log
+          echo "chain_recovery_exit=${PIPESTATUS[0]}" | tee -a pksh-intermediate.log
+
       - name: PKSH five-record live API acceptance
         id: live
         continue-on-error: true
