@@ -27,6 +27,7 @@ from public_shards import build_school_shards
 from bs4 import BeautifulSoup
 
 from detail_parser import parse_article_detail
+from ischool_adapter import PkshAdapter
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
@@ -345,7 +346,7 @@ def extract_ischool_next_page(html: str, school: dict, source_url: str) -> str:
 
 
 def extract_items(html: str, school: dict, source_url: str):
-    if school.get("adapter", "rulingdigital") == "ischool-site-news":
+    if school.get("adapter", "rulingdigital") in {"ischool-site-news", "ischool-json"}:
         return extract_ischool_items(html, school, source_url)
     return extract_rulingdigital_items(html, school, source_url)
 
@@ -784,8 +785,38 @@ def main() -> int:
 
     for school in CONFIG["schools"]:
         collected = {}
+        api_succeeded = False
+        # iSchool exposes a JSON board API.  Keep it isolated from the legacy
+        # HTML adapters; an unavailable/invalid response leaves persisted data
+        # untouched and falls through to the ordinary source status reporting.
+        if school.get("adapter") == "ischool-json":
+            adapter = PkshAdapter(school)
+            board_url = next((str(p.get("url")) for p in school.get("list_pages", [])
+                              if isinstance(p, dict) and p.get("url")), "")
+            board_html = ""
+            if board_url:
+                try:
+                    board_html = fetch(session, board_url, school)
+                except Exception as e:
+                    print(f"[warn] {school['short']}: board UID discovery failed: {fetch_error_class(e)}", file=sys.stderr)
+            uid, used_fallback = adapter.discover_board(board_html)
+            if used_fallback:
+                print(f"[warn] {school['short']}: using configured board UID fallback", file=sys.stderr)
+            try:
+                api_page = adapter.fetch_list(session, uid, tf=1, timeout=CONFIG["timeout_sec"])
+                if not api_page.items:
+                    api_page = adapter.fetch_list(session, uid, tf=2, timeout=CONFIG["timeout_sec"])
+                    print(f"[info] {school['short']}: iSchool API tf=1 returned no rows; tried tf=2")
+                for it in api_page.items:
+                    merge_collected_item(collected, it)
+                api_succeeded = True
+                record_source_status(fetch_state, school["id"], school["base"] + adapter.list_path, now_iso)
+                print(f"[info] {school['short']}: iSchool JSON {len(api_page.items)} 筆, {api_page.total_pages} 頁")
+            except Exception as e:
+                source_status = record_source_status(fetch_state, school["id"], school["base"] + adapter.list_path, now_iso, e)
+                print(f"[warn] {school['short']} iSchool API unavailable: {source_status['error_class']}", file=sys.stderr)
         scan_pages = list(school.get("scan_pages", []))
-        entries = [(u, "hot") for u in scan_pages] + page_entries(school)
+        entries = [] if api_succeeded else [(u, "hot") for u in scan_pages] + page_entries(school)
         scanned_items = []
         skipped_cold = 0
         for page_url, tier in entries:
@@ -810,7 +841,7 @@ def main() -> int:
                 merge_collected_item(collected, it)
             time.sleep(delay)
 
-            if school.get("adapter") == "ischool-site-news":
+            if school.get("adapter") in {"ischool-site-news", "ischool-json"}:
                 visited_pages = {page_url}
                 current_url, current_html = page_url, html
                 max_pages = max(1, min(int(school.get("max_list_pages", 3)), 5))

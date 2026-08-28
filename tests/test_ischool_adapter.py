@@ -1,0 +1,53 @@
+"""Offline contract tests for the iSchool JSON adapter."""
+import sys
+from pathlib import Path
+
+import requests
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scraper"))
+from ischool_adapter import PkshAdapter, discover_uid  # noqa: E402
+
+school = {"id": "pksh", "short": "北港高中", "base": "https://www.pksh.ylc.edu.tw",
+          "ischool_uid": "WID_0_2_fallback"}
+adapter = PkshAdapter(school)
+uid, fallback = discover_uid('var g_unique_id = "WID_0_2_live";', school["ischool_uid"])
+assert (uid, fallback) == ("WID_0_2_live", False)
+uid, fallback = discover_uid("", school["ischool_uid"])
+assert (uid, fallback) == ("WID_0_2_fallback", True)
+
+payload = [
+    {"totalPages": "3"},
+    {"newsId": "28123", "time": "2026/08/26", "title": "115學年學測第二次模擬考試程", "unit_name": "教務處", "attr_name": "公告", "clicks": "9"},
+    {"newsId": "28123", "time": "2026/08/26", "title": "duplicate"},
+    {"newsId": "bad", "title": "invalid"},
+]
+page = adapter.parse_list(payload, "WID_0_2_live")
+assert page.total_pages == 3 and len(page.items) == 1
+row = page.items[0]
+assert row["id"] == "pksh-28123" and row["source_id"] == "pksh:28123"
+assert row["date"] == "2026-08-26" and row["source_unit"] == "教務處"
+assert row["url"].endswith("show.php?nid=28123")
+assert adapter.parse_detail({"content": "%E5%85%AC%E5%91%8A%E6%9C%AC%E6%96%87"}) == "公告本文"
+try:
+    adapter.parse_detail({"content": "The news is not existed"})
+    raise AssertionError("deleted iSchool detail must fail")
+except ValueError:
+    pass
+
+class RetrySession:
+    def __init__(self): self.calls = []
+    def post(self, url, data, timeout, **kwargs):
+        self.calls.append(kwargs)
+        if len(self.calls) == 1:
+            raise requests.exceptions.SSLError("fixture")
+        class Response:
+            def raise_for_status(self): pass
+            def json(self): return [{"totalPages": 0}]
+        return Response()
+
+secure_school = dict(school, tls_verify_fallback="system-ca")
+retry_session = RetrySession()
+PkshAdapter(secure_school).fetch_list(retry_session, "WID_0_2_live")
+assert len(retry_session.calls) == 2 and retry_session.calls[1].get("verify")
+print("iSchool JSON adapter contract tests passed")
