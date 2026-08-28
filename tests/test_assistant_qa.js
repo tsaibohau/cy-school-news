@@ -17,6 +17,7 @@ assert(result.evidence.some(row => row.announcement_id === "a1"));
 assert.match(result.summary, /官方.*重點|先說結論/);
 assert(!result.summary.includes("整理出以下重點"), "answer lead should be natural instead of a generic result count");
 assert.equal(QA.smoothEvidence("主旨：請於九月十日前送件。"), "請於九月十日前送件。");
+assert.match(QA.composeSummary([{ text: "科學營於九月五日前報名。" }, { text: "寫作工作坊於九月十日前報名。" }], [{ id: "one" }, { id: "two" }], []), /不是同一項活動/);
 assert.equal(Schools.mentionedSchool("嘉義女中的獎學金有哪些？").id, "cygsh");
 assert.equal(Schools.mentionedSchool("請查 CYSH 宿舍規定").id, "cysh");
 assert(!QA.rank("手機或行動載具有什麼規定？", items, details).some(row => row.item.id === "a3"), "generic words cannot pull an unrelated regulation into the answer");

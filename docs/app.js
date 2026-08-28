@@ -50,7 +50,7 @@
       school: loadSchool(),
       cat: "all",
       q: "",
-      tab: "latest",
+      tab: "home",
       calendarMonth: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
       calendarSelected: new Date().toISOString().slice(0, 10),
       eventEditingId: null,
@@ -86,8 +86,8 @@
       list: $("list"), subList: $("subList"), countLine: $("countLine"),
       updatedAt: $("updatedAt"), q: $("q"),
       schoolSeg: $("schoolSeg"), catChips: $("catChips"),
-      viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"),
-      tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabSub: $("tabSub"), subBadge: $("subBadge"),
+      viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"),
+      tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabSub: $("tabSub"), subBadge: $("subBadge"),
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
       reminderPushToggle: $("reminderPushToggle"), reminderPushState: $("reminderPushState"),
@@ -113,6 +113,7 @@
       tasksBox: $("tasksBox"), taskForm: $("taskForm"), taskTitle: $("taskTitle"), taskDue: $("taskDue"),
       taskPriority: $("taskPriority"), taskNotes: $("taskNotes"), taskSave: $("taskSave"), taskCancel: $("taskCancel"),
       taskStatus: $("taskStatus"), taskOpenList: $("taskOpenList"), taskDoneList: $("taskDoneList"),
+      taskComposerToggle: $("taskComposerToggle"), taskOpenCount: $("taskOpenCount"), taskDoneCount: $("taskDoneCount"),
       todayCoverage: $("todayCoverage"), todayBriefSummary: $("todayBriefSummary"), todayFocus: $("todayFocus"),
       todayEvents: $("todayEvents"), todayDeadlines: $("todayDeadlines"),
       todayTasks: $("todayTasks"), todayRelevant: $("todayRelevant"), todayEmpty: $("todayEmpty"),
@@ -175,7 +176,7 @@
     }
     function renderGreeting() {
       if (!el.welcomeTitle) return;
-      el.welcomeTitle.textContent = state.nickname ? "Hi, " + state.nickname : "今天的校務資訊，先看重要的。";
+      el.welcomeTitle.textContent = state.nickname ? "Hi, " + state.nickname + "。今天想先看什麼？" : "今天的校務資訊，從這裡開始。";
     }
     function renderProfile() {
       if (!el.profileForm || !window.CyNewsProfile) return;
@@ -1056,18 +1057,23 @@
       var canRemind = !completed && dueTarget && !isNaN(dueTarget.getTime()) && dueTarget > new Date();
       var reminderMeta = !task.due_date ? '<div class="task-item-meta">沒有可驗證的提醒日期</div>' :
         (canRemind ? '' : '<div class="task-item-meta">提醒日期已過</div>');
+      var primary = completed ? '<button type="button" class="btn-ghost" data-task-reopen="' + esc(task.id) + '">復原</button>' : '<button type="button" class="task-complete-button" data-task-complete="' + esc(task.id) + '"><span aria-hidden="true">✓</span>完成</button>';
+      var more = '<details class="task-more"><summary aria-label="更多待辦操作">•••</summary><div>' +
+        (canRemind ? '<button type="button" class="btn-ghost" data-task-reminder="' + esc(task.id) + '">設定提醒</button>' : '') +
+        (!completed ? '<button type="button" class="btn-ghost" data-task-edit="' + esc(task.id) + '">編輯</button>' : '') +
+        '<button type="button" class="btn-ghost danger-button" data-task-delete="' + esc(task.id) + '">刪除</button></div></details>';
       return '<article class="task-item' + (completed ? ' is-completed' : '') + '">' +
         '<div class="task-item-main"><div class="task-item-title">' + esc(task.title) + '</div>' +
         '<div class="task-item-meta">' + esc(taskDateLabel(task.due_date)) + (task.priority != null ? ' · 優先 ' + esc(task.priority) : '') + '</div>' +
         (task.notes ? '<div class="task-item-meta">' + esc(task.notes) + '</div>' : '') + reminderMeta + '</div>' +
-        '<div class="task-item-actions">' + (completed ? '<button type="button" class="btn-ghost" data-task-reopen="' + esc(task.id) + '">重開</button>' : '<button type="button" class="btn-ghost" data-task-complete="' + esc(task.id) + '">完成</button>') +
-        (canRemind ? '<button type="button" class="btn-ghost" data-task-reminder="' + esc(task.id) + '">設定提醒</button>' : '') +
-        '<button type="button" class="btn-ghost" data-task-edit="' + esc(task.id) + '">編輯</button><button type="button" class="btn-ghost" data-task-delete="' + esc(task.id) + '">刪除</button></div></article>';
+        '<div class="task-item-actions">' + primary + more + '</div></article>';
     }
     function renderTasks() {
       if (!el.taskOpenList || !window.CyNewsTaskState) return;
       var all = window.CyNewsTaskState.visible(state.tasks || []);
       var open = window.CyNewsTaskState.sortOpen(all), done = all.filter(function (task) { return task.status === "completed"; }).sort(function (a, b) { return a.updated_at < b.updated_at ? 1 : -1; });
+      if (el.taskOpenCount) el.taskOpenCount.textContent = open.length ? open.length + " 件" : "";
+      if (el.taskDoneCount) el.taskDoneCount.textContent = done.length ? "（" + done.length + "）" : "";
       el.taskOpenList.innerHTML = open.length ? open.map(function (task) { return taskHTML(task, false); }).join("") : '<p class="empty">還沒有待辦。先新增一件小事。</p>';
       el.taskDoneList.innerHTML = done.length ? done.map(function (task) { return taskHTML(task, true); }).join("") : '<p class="empty">完成的待辦會放在這裡。</p>';
     }
@@ -1177,7 +1183,7 @@
         return;
       }
       var evidence = result.evidence.map(function (row, index) {
-        return '<li><span class="assistant-evidence-rank">' + (index + 1) + '</span><div><p>' + esc(row.text) + '</p><button type="button" class="btn-ghost" data-detail-id="' + esc(row.announcement_id) + '">查看這則官方依據</button></div></li>';
+        return '<li><span class="assistant-evidence-rank">' + (index + 1) + '</span><div><strong class="assistant-evidence-title">' + esc(row.title || "官方公告") + '</strong><p>' + esc(row.text) + '</p><button type="button" class="btn-ghost" data-detail-id="' + esc(row.announcement_id) + '">查看這則官方依據</button></div></li>';
       }).join("");
       var sources = result.sources.slice(0, 5).map(function (item) {
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc((item.school_name || "官方公告") + " · " + displayDate(item)) + '</small></button>';
@@ -1357,11 +1363,20 @@
       if (!task || !el.taskForm) return;
       el.taskForm.dataset.editingId = task.id; el.taskTitle.value = task.title; el.taskDue.value = task.due_date || "";
       el.taskPriority.value = task.priority == null ? "" : String(task.priority); el.taskNotes.value = task.notes || "";
-      el.taskSave.textContent = "儲存待辦"; el.taskCancel.hidden = false; el.taskTitle.focus();
+      setTaskComposer(true); el.taskSave.textContent = "儲存待辦"; el.taskTitle.focus();
+    }
+    function setTaskComposer(open) {
+      if (!el.taskForm) return;
+      el.taskForm.hidden = !open;
+      if (el.taskComposerToggle) {
+        el.taskComposerToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        el.taskComposerToggle.textContent = open ? "收起" : "新增待辦";
+      }
+      if (open) el.taskTitle.focus();
     }
     function resetTaskForm() {
       if (!el.taskForm) return;
-      el.taskForm.reset(); el.taskForm.dataset.editingId = ""; el.taskSave.textContent = "新增待辦"; el.taskCancel.hidden = true;
+      el.taskForm.reset(); el.taskForm.dataset.editingId = ""; el.taskSave.textContent = "新增待辦"; setTaskComposer(false);
     }
     function addAnnouncementTask(id) {
       var item = state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
@@ -1459,6 +1474,7 @@
       }
     });
     if (el.taskCancel) el.taskCancel.addEventListener("click", resetTaskForm);
+    if (el.taskComposerToggle) el.taskComposerToggle.addEventListener("click", function () { setTaskComposer(el.taskForm.hidden); });
     el.kwForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var kw = el.kwInput.value.trim();
@@ -1550,20 +1566,24 @@
     function switchTab(tab) {
       state.tab = tab;
       setNavMenu(false);
-      if (el.navCurrentLabel) el.navCurrentLabel.textContent = ({ today: "我的今天", latest: "最新公告", assistant: "問校務", calendar: "行事曆", sub: "我的設定" })[tab] || "功能";
+      if (el.navCurrentLabel) el.navCurrentLabel.textContent = "選單";
+      var home = tab === "home";
       var latest = tab === "latest";
       var today = tab === "today";
       var assistant = tab === "assistant";
+      if (el.viewHome) el.viewHome.hidden = !home;
       if (el.viewToday) el.viewToday.hidden = !today;
       el.viewLatest.hidden = !latest;
       if (el.viewAssistant) el.viewAssistant.hidden = !assistant;
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
       el.viewSub.hidden = tab !== "sub";
+      if (el.tabHome) el.tabHome.classList.toggle("is-active", home);
       el.tabLatest.classList.toggle("is-active", latest);
       if (el.tabToday) el.tabToday.classList.toggle("is-active", today);
       if (el.tabAssistant) el.tabAssistant.classList.toggle("is-active", assistant);
       if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar");
       el.tabSub.classList.toggle("is-active", tab === "sub");
+      if (el.tabHome) el.tabHome.setAttribute("aria-current", home ? "page" : "false");
       el.tabLatest.setAttribute("aria-current", latest ? "page" : "false");
       if (el.tabToday) el.tabToday.setAttribute("aria-current", today ? "page" : "false");
       if (el.tabAssistant) el.tabAssistant.setAttribute("aria-current", assistant ? "page" : "false");
@@ -1580,13 +1600,13 @@
       }
       window.scrollTo(0, 0);
     }
+    if (el.tabHome) el.tabHome.addEventListener("click", function () { switchTab("home"); });
     el.tabLatest.addEventListener("click", function () { switchTab("latest"); });
     if (el.tabToday) el.tabToday.addEventListener("click", function () { switchTab("today"); });
     if (el.tabAssistant) el.tabAssistant.addEventListener("click", function () { switchTab("assistant"); });
     el.tabSub.addEventListener("click", function () { switchTab("sub"); });
     if (el.tabCalendar) {
       el.tabCalendar.addEventListener("click", function () { switchTab("calendar"); });
-      el.quickCalendar.addEventListener("click", function () { switchTab("calendar"); });
       el.calendarGrid.addEventListener("click", function (e) {
         var b = e.target.closest("button[data-day]"); if (!b) return;
         state.calendarSelected = b.dataset.day; renderCalendar();
@@ -1609,6 +1629,18 @@
         el.eventForm.reset(); el.eventFormWrap.hidden = true; renderCalendar();
       });
     }
+    if (el.viewHome) el.viewHome.addEventListener("click", function (event) {
+      var target = event.target.closest("button[data-home-tab]");
+      if (target) switchTab(target.dataset.homeTab);
+    });
+    if (el.viewToday) el.viewToday.addEventListener("click", function (event) {
+      var target = event.target.closest("button[data-today-action]");
+      if (!target) return;
+      switchTab("sub");
+      if (target.dataset.todayAction === "task") setTaskComposer(true);
+      else if (target.dataset.todayAction === "profile" && el.profileBox) el.profileBox.open = true;
+      else if (target.dataset.todayAction === "keyword" && el.kwInput) el.kwInput.focus();
+    });
     if (el.navMenuToggle) el.navMenuToggle.addEventListener("click", function () {
       setNavMenu(el.navMenuToggle.getAttribute("aria-expanded") !== "true");
     });
@@ -1728,7 +1760,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=39").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=40").catch(function () {});
       });
     }
 
