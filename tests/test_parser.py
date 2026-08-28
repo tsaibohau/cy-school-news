@@ -159,6 +159,7 @@ def run():
     fjsh_items = extract_items(FJSH_LIST_HTML, fjsh_school,
                                "https://rpage.fjsh.cy.edu.tw/p/403-1000-59-1.php?Lang=zh-tw")
     assert [row["id"] for row in fjsh_items] == ["fjsh-2373", "fjsh-2369"], fjsh_items
+    assert [row["source_id"] for row in fjsh_items] == ["fjsh:2373", "fjsh:2369"], fjsh_items
     assert fjsh_items[0]["date"] == "2026-08-28"
     assert fjsh_items[0]["url"] == "https://rpage.fjsh.cy.edu.tw/p/406-1000-2373,r59.php"
     assert fjsh_items[0]["source_category"] == "最新公告"
