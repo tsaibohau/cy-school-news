@@ -24,6 +24,9 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    # A stuck source must not keep the shared scrape queue occupied and make
+    # later scheduled runs appear stale to readers.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
 
