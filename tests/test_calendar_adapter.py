@@ -54,10 +54,11 @@ def run():
     )
     assert pending["status"] == "awaiting_official_source"
     assert get_school("cysh").capabilities["official_calendar"] is True
-    assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh", "pksh"}
+    assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh", "fjsh", "pksh"}
     assert get_school("pksh").capabilities["official_calendar"] is False
     assert get_school("pksh").announcement_adapter == "ischool-site-news"
     assert get_school("cygsh").calendar_sources[0].url.endswith("/p/412-1013-1827.php")
+    assert get_school("fjsh").capabilities["official_calendar"] is False
 
     nested = discover_calendar_attachments(
         """<a href='/var/file/13/1013/img/1.pdf'>115學年度第一學期行事曆</a>
