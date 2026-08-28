@@ -33,7 +33,8 @@ jobs:
           from pathlib import Path
           from urllib.parse import urlsplit
 
-          items = json.loads(Path('docs/data/announcements.json').read_text(encoding='utf-8'))
+          payload = json.loads(Path('docs/data/announcements.json').read_text(encoding='utf-8'))
+          items = payload['items']
           counts = {school: sum(x.get('school') == school for x in items)
                     for school in ('cysh', 'cygsh', 'fjsh')}
           assert all(counts.values()), counts
