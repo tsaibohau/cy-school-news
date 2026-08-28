@@ -1,0 +1,52 @@
+name: FJSH live acceptance
+
+on:
+  push:
+    branches: [feature/personal-assistant-v1]
+    paths: [.github/workflows/fjsh-live-acceptance.yml]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  live-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install scraper dependencies
+        run: pip install -r scraper/requirements.txt
+      - name: Run normal hot pipeline without notifications or commits
+        env:
+          HOT_ONLY: '1'
+          ATTACHMENT_PDF_CAP: '0'
+          PYTHONIOENCODING: utf-8
+        run: python scraper/scrape.py
+      - name: Verify real FJSH output and regressions
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from urllib.parse import urlsplit
+
+          items = json.loads(Path('docs/data/announcements.json').read_text(encoding='utf-8'))
+          counts = {school: sum(x.get('school') == school for x in items)
+                    for school in ('cysh', 'cygsh', 'fjsh')}
+          assert all(counts.values()), counts
+          fjsh = [x for x in items if x.get('school') == 'fjsh']
+          assert len({x.get('source_id') for x in fjsh}) == len(fjsh), 'duplicate FJSH source_id'
+          assert len(fjsh) >= 5, counts
+          for item in fjsh[:5]:
+              assert item.get('source_id', '').startswith('fjsh:'), item
+              assert item.get('id', '').startswith('fjsh-'), item
+              assert item.get('title') and item.get('date'), item
+              parsed = urlsplit(item.get('url', ''))
+              assert parsed.scheme == 'https' and parsed.hostname == 'rpage.fjsh.cy.edu.tw', item
+          print(json.dumps({'counts': counts, 'sample_ids': [x['source_id'] for x in fjsh[:5]]}, ensure_ascii=False))
+          PY
+      - name: Confirm generated data was not committed
+        run: git diff -- docs/data scraper/fetch_state.json
