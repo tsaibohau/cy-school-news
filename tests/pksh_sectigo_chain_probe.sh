@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Read-only PKSH TLS chain-completion probe.  It does not alter scraper policy.
+set -euo pipefail
+
+tmp_dir="$(mktemp -d)"
+trap 'rm -rf "$tmp_dir"' EXIT
+system_bundle=/etc/ssl/certs/ca-certificates.crt
+log=pksh-sectigo-chain.log
+: > "$log"
+
+# Sectigo's official CA documentation identifies these exact CT records.  The
+# downloaded bytes must still match the expected CA identity and verify to the
+# runner's existing system trust store.
+echo 'source=sectigo-official-docs: crt.sh d=4267304690,11405654893' | tee -a "$log"
+curl --fail --silent --show-error --proto '=https' --tlsv1.2 \
+  --connect-timeout 20 --max-time 40 --output "$tmp_dir/dv-r36.der" \
+  'https://crt.sh/?d=4267304690'
+curl --fail --silent --show-error --proto '=https' --tlsv1.2 \
+  --connect-timeout 20 --max-time 40 --output "$tmp_dir/root-r46-usertrust.der" \
+  'https://crt.sh/?d=11405654893'
+openssl x509 -inform DER -in "$tmp_dir/dv-r36.der" -out "$tmp_dir/dv-r36.pem"
+openssl x509 -inform DER -in "$tmp_dir/root-r46-usertrust.der" -out "$tmp_dir/root-r46-usertrust.pem"
+openssl x509 -in "$tmp_dir/dv-r36.pem" -noout -subject -issuer -dates -fingerprint -sha256 | tee -a "$log"
+openssl x509 -in "$tmp_dir/root-r46-usertrust.pem" -noout -subject -issuer -dates -fingerprint -sha256 | tee -a "$log"
+openssl x509 -in "$tmp_dir/dv-r36.pem" -noout -subject -nameopt RFC2253 | \
+  grep -Fx 'subject=CN=Sectigo Public Server Authentication CA DV R36,O=Sectigo Limited,C=GB'
+openssl x509 -in "$tmp_dir/dv-r36.pem" -noout -issuer -nameopt RFC2253 | \
+  grep -Fx 'issuer=CN=Sectigo Public Server Authentication Root R46,O=Sectigo Limited,C=GB'
+openssl verify -show_chain -CAfile "$system_bundle" \
+  -untrusted "$tmp_dir/root-r46-usertrust.pem" "$tmp_dir/dv-r36.pem" | tee -a "$log"
+
+# curl continues to perform the normal hostname and certificate verification.
+cp "$system_bundle" "$tmp_dir/pksh-probe-ca.pem"
+openssl x509 -in "$tmp_dir/dv-r36.pem" >> "$tmp_dir/pksh-probe-ca.pem"
+openssl x509 -in "$tmp_dir/root-r46-usertrust.pem" >> "$tmp_dir/pksh-probe-ca.pem"
+curl --fail --silent --show-error --proto '=https' --tlsv1.2 \
+  --cacert "$tmp_dir/pksh-probe-ca.pem" \
+  --connect-timeout 20 --max-time 40 --output /dev/null \
+  --write-out 'pksh_http_status=%{http_code} verify_result=%{ssl_verify_result}\n' \
+  'https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a' | tee -a "$log"
+echo 'CHAIN_COMPLETION_PROBE=success' | tee -a "$log"
