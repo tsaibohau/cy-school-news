@@ -56,6 +56,15 @@ SCHOOLS: Dict[str, SchoolDefinition] = {
         ),),
         capabilities={"announcements": True, "official_calendar": True},
     ),
+    "fjsh": SchoolDefinition(
+        school_id="fjsh",
+        name="嘉義市私立輔仁高級中學",
+        short_name="輔仁",
+        base_url="https://rpage.fjsh.cy.edu.tw",
+        announcement_adapter="new-classic-cms",
+        calendar_adapter="unavailable",
+        capabilities={"announcements": True, "official_calendar": False},
+    ),
 }
 
 
