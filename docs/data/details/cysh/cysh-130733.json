@@ -34,9 +34,29 @@
  "verified_dates": [],
  "summary": {
   "status": "extracted",
-  "text": "第一次上課時間為 2/17(一)第7節 。",
+  "text": "第一次上課時間為 2/17(一)第7節 。（另有 2 項重點）",
   "evidence": "第一次上課時間為 2/17(一)第7節 。",
+  "items": [
+   {
+    "label": "項目 2",
+    "text": "第一次上課時間為 2/17(一)第7節 。",
+    "evidence": "第一次上課時間為 2/17(一)第7節 。",
+    "provenance": "official_article"
+   },
+   {
+    "label": "項目 1",
+    "text": "選課結果依校網公告為主，名單如附件。",
+    "evidence": "選課結果依校網公告為主，名單如附件。",
+    "provenance": "official_article"
+   },
+   {
+    "label": "項目 3",
+    "text": "因國文B(充實)、歷史(充實)、地理(充實)、公民(補強)選課人數不足，故變成彈性學習A~D。",
+    "evidence": "因國文B(充實)、歷史(充實)、地理(充實)、公民(補強)選課人數不足，故變成彈性學習A~D。",
+    "provenance": "official_article"
+   }
+  ],
   "provenance": "official_article",
-  "version": "extractive-v1"
+  "version": "extractive-v2"
  }
 }
