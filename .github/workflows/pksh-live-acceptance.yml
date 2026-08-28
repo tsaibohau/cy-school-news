@@ -84,21 +84,34 @@ jobs:
           echo "bare_openssl_exit=${PIPESTATUS[0]}" | tee -a pksh-alternatives.log
 
       - name: Verify official Sectigo intermediate-chain recovery
-        # Diagnostic only: the PKSH server omits its issuing intermediate. Fetch
-        # the AIA-published certificate, verify it against certifi's trusted
-        # root store, then use it only as an untrusted chain-building helper.
+        # Diagnostic only: the server omits its issuing intermediate. The
+        # downloaded AIA certificate is first verified against certifi's root
+        # store, then used in a temporary local verification bundle.
         shell: bash
         run: |
           set -euo pipefail
           issuer_url='http://crt.sectigo.com/SectigoPublicServerAuthenticationCADVR36.crt'
-          curl --fail --silent --show-error --location --max-time 30 "$issuer_url"             --output pksh-dv-r36.der
+          curl --fail --silent --show-error --location --max-time 30 "$issuer_url" --output pksh-dv-r36.der
           openssl x509 -inform DER -in pksh-dv-r36.der -out pksh-dv-r36.pem
-          openssl x509 -in pksh-dv-r36.pem -noout -subject -issuer -fingerprint -sha256             | tee pksh-intermediate.log
+          openssl x509 -in pksh-dv-r36.pem -noout -subject -issuer -fingerprint -sha256 | tee pksh-intermediate.log
           openssl x509 -in pksh-dv-r36.pem -noout -subject | grep -F 'Sectigo Public Server Authentication CA DV R36'
           certifi_bundle="$(python -c 'import certifi; print(certifi.where())')"
           openssl verify -CAfile "$certifi_bundle" pksh-dv-r36.pem | tee -a pksh-intermediate.log
-          openssl s_client -connect www.pksh.ylc.edu.tw:443             -servername www.pksh.ylc.edu.tw             -verify_return_error             -verifyCAfile "$certifi_bundle"             -chainCAfile pksh-dv-r36.pem </dev/null 2>&1 | tee -a pksh-intermediate.log
-          echo "chain_recovery_exit=${PIPESTATUS[0]}" | tee -a pksh-intermediate.log
+          cat "$certifi_bundle" pksh-dv-r36.pem > pksh-verified-chain.pem
+          curl --fail --silent --show-error --location --max-time 40 --cacert pksh-verified-chain.pem \
+            'https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a' \
+            --output /dev/null --write-out 'main2_http=%{http_code}\n' | tee -a pksh-intermediate.log
+          python - <<'PY'
+          import requests
+          url = 'https://www.pksh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php'
+          payload = {'field': 'time', 'order': 'DESC', 'pageNum': '0', 'maxRows': '1',
+                     'keyword': '', 'uid': 'WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a',
+                     'tf': '1', 'auth_type': 'user', 'flock': ''}
+          response = requests.post(url, data=payload, verify='pksh-verified-chain.pem', timeout=40)
+          response.raise_for_status()
+          print('list_http=', response.status_code, 'content_type=', response.headers.get('Content-Type', ''))
+          print('list_prefix=', response.text[:160].replace('\n', ' '))
+          PY
 
       - name: PKSH five-record live API acceptance
         id: live
