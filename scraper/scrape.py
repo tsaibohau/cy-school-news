@@ -268,6 +268,7 @@ def extract_rulingdigital_items(html: str, school: dict, source_url: str):
         date = parse_date_near(a)
         items.append({
             "id": f'{school["id"]}-{art_id}',
+            "source_id": f'{school["id"]}:{art_id}',
             "school": school["id"],
             "school_name": school["short"],
             "title": title,
