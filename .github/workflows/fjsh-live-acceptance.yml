@@ -3,7 +3,11 @@ name: FJSH live acceptance
 on:
   push:
     branches: [feature/personal-assistant-v1]
-    paths: [.github/workflows/fjsh-live-acceptance.yml]
+    paths:
+      - .github/workflows/fjsh-live-acceptance.yml
+      - scraper/scrape.py
+      - scraper/config.json
+      - tests/test_parser.py
   workflow_dispatch: {}
 
 permissions:
