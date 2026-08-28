@@ -18,7 +18,7 @@
     } catch (_) { return ""; }
   }
   function validDetailRef(value) {
-    return /^data\/details\/(cysh|cygsh)\/[A-Za-z0-9._-]+\.json$/.test(String(value || ""));
+    return /^data\/details\/(cysh|cygsh|fjsh)\/[A-Za-z0-9._-]+\.json$/.test(String(value || ""));
   }
   function statusMessage(status) {
     return {
