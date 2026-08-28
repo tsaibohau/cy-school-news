@@ -78,14 +78,6 @@ jobs:
             -verify_return_error </dev/null 2>&1 | tee -a pksh-alternatives.log
           echo "bare_openssl_exit=${PIPESTATUS[0]}" | tee -a pksh-alternatives.log
 
-      - name: Verify official Sectigo chain completion (probe only)
-        # This deliberately does not alter the scraper's TLS policy.  It only
-        # tests whether the missing issuing chain can be completed using
-        # certificates referenced by Sectigo's official CA documentation and
-        # then verified back to the runner's existing system trust store.
-        shell: bash
-        run: bash tests/pksh_sectigo_chain_probe.sh
-
       - name: PKSH five-record live API acceptance
         id: live
         continue-on-error: true
@@ -126,7 +118,6 @@ jobs:
             pksh-curl.log
             pksh-openssl.log
             pksh-alternatives.log
-            pksh-sectigo-chain.log
             pksh-live-report.json
             pksh-integration-report.json
 
