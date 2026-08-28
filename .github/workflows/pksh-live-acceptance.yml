@@ -90,7 +90,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          issuer_url='https://crt.sectigo.com/SectigoPublicServerAuthenticationCADVR36.crt'
+          issuer_url='https://crt.sh/?d=4267304690' # official Sectigo knowledge-base linked certificate
           curl --fail --silent --show-error --location --max-time 30 "$issuer_url" --output pksh-dv-r36.der
           openssl x509 -inform DER -in pksh-dv-r36.der -out pksh-dv-r36.pem
           openssl x509 -in pksh-dv-r36.pem -noout -subject -issuer -fingerprint -sha256 | tee pksh-intermediate.log
