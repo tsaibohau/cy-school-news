@@ -10,6 +10,7 @@ assert.equal(Detail.safeUrl("http://example.test/a"), "");
 assert.equal(Detail.safeUrl("https://example.test/a"), "https://example.test/a");
 assert.equal(Detail.validDetailRef("data/details/cysh/cysh-1.json"), true);
 assert.equal(Detail.validDetailRef("data/details/pksh/pksh-28123.json"), true);
+assert.equal(Detail.validDetailRef("data/details/fjsh/fjsh-2373.json"), true);
 for (const ref of ["https://evil.test/a.json", "//evil.test/a.json", "data/details/other/a.json", "data/details/cysh/../a.json", "data/details/cysh/a.json?x=1", "data/details/cysh/%2e%2e.json"]) {
   assert.equal(Detail.validDetailRef(ref), false, "unsafe detail ref rejected: " + ref);
 }
