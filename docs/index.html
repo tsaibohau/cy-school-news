@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>嘉校快訊|嘉中・嘉女公告彙整</title>
+<title>嘉校快訊｜三校公告匯集系統</title>
 <meta name="description" content="嘉義高中與嘉義女中官網最新公告即時彙整:段考、社團、升學、獎學金分類與關鍵字訂閱。非官方服務。">
 <meta name="theme-color" content="#16233B">
 <link rel="manifest" href="manifest.webmanifest">
@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=38">
+<link rel="stylesheet" href="style.css?v=41">
 </head>
 <body>
 
@@ -34,18 +34,25 @@
 
 <div class="wrap">
 
-  <section class="welcome" aria-labelledby="welcomeTitle">
-    <div>
+  <section id="viewHome" class="home-view" aria-labelledby="homeTitle">
+    <div class="home-hero">
       <p class="eyebrow">CY SCHOOL NEWS</p>
-      <h2 id="welcomeTitle">今天的校務資訊，先看重要的。</h2>
-      <p class="welcome-copy">把嘉中、嘉女公告集中在一個清楚的地方，快速找到和你有關的消息。</p>
+      <h2 id="homeTitle" class="calligraphy-title"><span>學校公告</span><span>匯集系統</span></h2>
+      <p id="welcomeTitle" class="home-greeting">今天的校務資訊，從這裡開始。</p>
+      <p class="welcome-copy">選一個功能；登入後會優先顯示你設定的學校。</p>
+      <span class="ink-stroke" aria-hidden="true"></span>
     </div>
-    <button id="quickCalendar" class="btn-soft" type="button">查看近期行事曆 <span aria-hidden="true">→</span></button>
-  </section>
-
-  <section id="importantSection" class="important-section" aria-labelledby="importantTitle">
-    <div class="section-heading compact-heading"><div><p class="eyebrow">FROM THE SOURCE</p><h2 id="importantTitle">重要公告</h2></div><span class="hint">僅顯示來源明確標記</span></div>
-    <div id="importantList" class="important-list"></div>
+    <div class="home-actions" aria-label="選擇功能">
+      <button type="button" class="home-action home-action-primary" data-home-tab="today"><span aria-hidden="true">✦</span><strong>我的今天</strong><small>待辦、期限與重要事項</small></button>
+      <button type="button" class="home-action" data-home-tab="latest"><span aria-hidden="true">文</span><strong>公告總庫</strong><small>瀏覽與搜尋學校公告</small></button>
+      <button type="button" class="home-action" data-home-tab="assistant"><span aria-hidden="true">問</span><strong>問校務</strong><small>依官方內容整理答案</small></button>
+      <button id="quickCalendar" type="button" class="home-action" data-home-tab="calendar"><span aria-hidden="true">曆</span><strong>行事曆</strong><small>查看日期與自己的事件</small></button>
+      <button type="button" class="home-action" data-home-tab="sub"><span aria-hidden="true">我</span><strong>我的</strong><small>帳號、偏好、通知與待辦</small></button>
+    </div>
+    <section id="importantSection" class="important-section" aria-labelledby="importantTitle">
+      <div class="section-heading compact-heading"><div><p class="eyebrow">FROM THE SOURCE</p><h2 id="importantTitle">重要公告</h2></div><span class="hint">僅顯示來源明確標記</span></div>
+      <div id="importantList" class="important-list"></div>
+    </section>
   </section>
 
   <!-- 免費、可追溯的校務資料問答；只整理官方公告，不呼叫生成式 AI。 -->
@@ -55,6 +62,7 @@
     <form id="assistantForm" class="assistant-form">
       <label for="assistantQuestion">想問什麼？</label>
       <div class="assistant-input-row"><input id="assistantQuestion" type="search" required maxlength="160" placeholder="例如：學生音樂比賽什麼時候截止？"><button id="assistantAsk" class="btn-primary" type="submit">整理答案</button></div>
+      <label class="assistant-scope">查詢範圍<select id="assistantScope"><option value="preferred">我的學校</option><option value="all">所有學校</option></select></label>
     </form>
     <div class="assistant-examples" aria-label="問題範例">
       <button type="button" data-assistant-example="最近有哪些獎助學金？">最近有哪些獎助學金？</button>
@@ -86,10 +94,16 @@
   </section>
 
   <!-- 公告首頁 -->
-  <section id="viewLatest">
+  <section id="viewLatest" hidden>
+    <div class="section-heading"><div><p class="eyebrow">ANNOUNCEMENTS</p><h2>公告總庫</h2></div></div>
     <div class="controls">
       <input id="q" type="search" inputmode="search" placeholder="搜尋公告,可用空格分隔多個關鍵字" aria-label="搜尋公告">
-      <div class="seg" id="schoolSeg" role="tablist" aria-label="學校篩選"></div>
+      <label class="school-filter" for="schoolFilter">
+        <span>學校</span>
+        <select id="schoolFilter" aria-label="選擇公告學校">
+          <option value="all">所有學校</option>
+        </select>
+      </label>
       <div class="chips" id="catChips" aria-label="分類篩選"></div>
     </div>
     <p id="countLine" class="count-line"></p>
@@ -122,62 +136,24 @@
     </div>
   </section>
 
-  <!-- 訂閱分頁 -->
   <section id="viewSub" hidden>
     <div class="sub-head">
-      <h2>我的訂閱</h2>
-      <p class="hint">訂閱你在意的關鍵字，新公告符合時會在這裡清楚標示。</p>
-      <form id="kwForm" class="kw-form">
-        <input id="kwInput" type="text" maxlength="20" placeholder="輸入關鍵字後按新增" aria-label="新增訂閱關鍵字">
-        <button type="submit" class="btn-primary">新增</button>
-      </form>
-      <div id="kwChips" class="kw-chips"></div>
-      <div class="notify-row">
-        <button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button>
-        <span id="notifyState" class="hint"></span>
-      </div>
-      <section class="reminder-push-box" aria-labelledby="reminderPushTitle">
-        <div class="section-heading compact-heading"><div><p class="eyebrow">BACKGROUND PUSH</p><h3 id="reminderPushTitle">提醒推播</h3></div><span class="hint">此裝置</span></div>
-        <p class="hint">日期接近時主動提醒；只有可驗證的截止日、活動、校曆、待辦期限或你手動設定的日期才會排程。</p>
-        <div class="notify-row"><button id="reminderPushToggle" class="btn-primary" type="button">在此裝置開啟</button><span id="reminderPushState" class="hint" aria-live="polite">請先登入</span></div>
-        <label class="reminder-preset">預設提醒頻率<select id="reminderPreset"><option value="single">單次：1 天前</option><option value="standard">標準：3 天前、1 天前、當天</option><option value="dense">密集：7 天前、3 天前、1 天前、當天</option><option value="custom">自訂</option></select></label>
-        <label id="reminderCustomWrap" class="reminder-preset" hidden>自訂提前天數<input id="reminderCustomOffsets" inputmode="numeric" maxlength="32" placeholder="例如：5,2,0"></label>
-        <p id="nextReminder" class="hint">尚無已排程提醒</p>
+      <div class="section-heading"><div><p class="eyebrow">PERSONAL SPACE</p><h2>我的</h2></div></div>
+      <section class="my-card account-card" aria-labelledby="accountTitle">
+        <div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">人</span><div><h3 id="accountTitle">帳號</h3><p>同步你的學校、偏好與待辦</p></div></div></div>
+        <div id="accountBox" class="account-actions"><div class="account-identity"><span id="accountState" class="hint">未登入</span><span id="accountEmail" class="account-email" hidden></span></div><button id="accountLogin" class="btn-primary">使用 Google 登入</button><button id="accountSwitch" class="btn-ghost" hidden>切換 Google 帳號</button><button id="accountLogout" class="btn-ghost" hidden>登出</button></div>
       </section>
-      <div id="accountBox" class="notify-row">
-        <span id="accountState" class="hint">未登入</span>
-        <button id="accountLogin" class="btn-primary">使用 Google 登入</button>
-        <button id="accountSwitch" class="btn-ghost" hidden>切換 Google 帳號</button>
-        <button id="accountLogout" class="btn-ghost" hidden>登出</button>
-      </div>
-      <section id="profileBox" class="profile-box" aria-labelledby="profileTitle">
-        <div class="section-heading compact-heading"><div><p class="eyebrow">USER SETTINGS</p><h3 id="profileTitle">我的設定</h3></div><span class="hint">可隨時修改</span></div>
-        <p id="profileHint" class="hint">登入後設定暱稱、學校與年級，讓介面和公告排序更貼近你。</p>
-        <form id="profileForm" class="profile-form">
-          <label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
-          <label>我的學校<select id="profileSchool"><option value="">尚未設定</option></select></label>
-          <label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label>
-          <label>我的班級<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109（選填）"></label>
-          <label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團（選填）"></label>
-          <label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金（選填）"></label>
-          <label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課（選填）"></label>
-          <div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存我的資料</button><span id="profileStatus" class="hint" aria-live="polite"></span></div>
-          <label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label>
-        </form>
-      </section>
-      <section id="tasksBox" class="tasks-box" aria-labelledby="tasksTitle">
-        <div class="section-heading compact-heading"><div><p class="eyebrow">MY TASKS</p><h3 id="tasksTitle">待辦事項</h3></div><span class="hint">和行事曆分開管理</span></div>
-        <form id="taskForm" class="task-form">
-          <label>要做什麼？<input id="taskTitle" required maxlength="120" placeholder="例如：繳住宿資料"></label>
-          <div class="task-form-row"><label>截止日期（選填）<input id="taskDue" type="date"></label><label>優先度（選填）<select id="taskPriority"><option value="">一般</option><option value="5">高</option><option value="3">中</option><option value="1">低</option></select></label></div>
-          <label>備註（選填）<textarea id="taskNotes" maxlength="500" rows="2"></textarea></label>
-          <div class="profile-actions"><button id="taskSave" class="btn-primary" type="submit">新增待辦</button><button id="taskCancel" class="btn-ghost" type="button" hidden>取消編輯</button><span id="taskStatus" class="hint" aria-live="polite"></span></div>
-        </form>
-        <h4>待處理</h4><div id="taskOpenList" class="task-list"></div>
-        <h4>已完成</h4><div id="taskDoneList" class="task-list"></div>
-      </section>
-      </div>
-    <main id="subList" class="list"></main>
+      <details id="profileBox" class="my-card my-disclosure" aria-labelledby="profileTitle">
+        <summary><span class="my-card-icon" aria-hidden="true">設</span><span><strong id="profileTitle">個人設定</strong><small>暱稱、學校、年級與關注內容</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary>
+        <div class="my-card-body"><p id="profileHint" class="hint">登入後設定暱稱、學校與年級，讓介面和公告排序更貼近你。</p><form id="profileForm" class="profile-form">
+          <label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109（選填）"></label><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團（選填）"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金（選填）"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課（選填）"></label><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存我的資料</button><span id="profileStatus" class="hint" aria-live="polite"></span></div><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label>
+        </form></div>
+      </details>
+      <section class="my-card" aria-labelledby="subscriptionTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">追</span><div><h3 id="subscriptionTitle">關鍵字追蹤</h3><p>只追蹤你真正關心的消息</p></div></div></div><form id="kwForm" class="kw-form"><input id="kwInput" type="text" maxlength="20" placeholder="例如：物理競賽" aria-label="新增訂閱關鍵字"><button type="submit" class="btn-primary">新增</button></form><div id="kwChips" class="kw-chips"></div><div class="notify-row"><button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button><span id="notifyState" class="hint"></span></div></section>
+      <details class="my-card my-disclosure" aria-labelledby="reminderPushTitle"><summary><span class="my-card-icon" aria-hidden="true">鈴</span><span><strong id="reminderPushTitle">提醒推播</strong><small>日期接近時在此裝置提醒</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary><div class="my-card-body"><p class="hint">只有可驗證的截止日、活動、校曆、待辦期限或你手動設定的日期才會排程。</p><div class="notify-row"><button id="reminderPushToggle" class="btn-primary" type="button">在此裝置開啟</button><span id="reminderPushState" class="hint" aria-live="polite">請先登入</span></div><label class="reminder-preset">預設提醒頻率<select id="reminderPreset"><option value="single">單次：1 天前</option><option value="standard">標準：3 天前、1 天前、當天</option><option value="dense">密集：7 天前、3 天前、1 天前、當天</option><option value="custom">自訂</option></select></label><label id="reminderCustomWrap" class="reminder-preset" hidden>自訂提前天數<input id="reminderCustomOffsets" inputmode="numeric" maxlength="32" placeholder="例如：5,2,0"></label><p id="nextReminder" class="hint">尚無已排程提醒</p></div></details>
+      <section id="tasksBox" class="my-card tasks-box" aria-labelledby="tasksTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">辦</span><div><h3 id="tasksTitle">待辦事項</h3><p>未完成的事情集中在這裡</p></div></div><button id="taskComposerToggle" class="btn-primary compact-button" type="button" aria-expanded="false" aria-controls="taskForm">新增待辦</button></div><form id="taskForm" class="task-form task-composer" hidden><label class="task-title-field">要做什麼？<input id="taskTitle" required maxlength="120" placeholder="例如：繳住宿資料"></label><div class="task-form-row"><label>截止日期（選填）<input id="taskDue" type="date"></label><label>優先度（選填）<select id="taskPriority"><option value="">一般</option><option value="5">高</option><option value="3">中</option><option value="1">低</option></select></label></div><label>備註（選填）<textarea id="taskNotes" maxlength="500" rows="2" placeholder="補充資料、地點或注意事項"></textarea></label><div class="profile-actions"><button id="taskSave" class="btn-primary" type="submit">新增待辦</button><button id="taskCancel" class="btn-ghost" type="button">取消</button><span id="taskStatus" class="hint" aria-live="polite"></span></div></form><div class="task-section-heading"><h4>待處理</h4><span id="taskOpenCount" class="hint"></span></div><div id="taskOpenList" class="task-list"></div><details class="completed-tasks"><summary>查看已完成 <span id="taskDoneCount"></span></summary><div id="taskDoneList" class="task-list"></div></details></section>
+      <section class="my-card matched-card" aria-labelledby="matchedTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">訊</span><div><h3 id="matchedTitle">符合追蹤的公告</h3><p>依上方關鍵字即時篩選</p></div></div></div><main id="subList" class="list"></main></section>
+    </div>
   </section>
 
   <footer class="foot">
@@ -197,19 +173,23 @@
 
 <dialog id="nicknameDialog" class="nickname-dialog" aria-labelledby="nicknameTitle">
   <form id="nicknameForm" class="nickname-sheet">
-    <p class="eyebrow">WELCOME</p><h2 id="nicknameTitle">先告訴我怎麼稱呼你</h2>
-    <p class="hint">暱稱只用於介面顯示，不參與權限判斷。</p>
+    <p class="eyebrow">WELCOME</p><h2 id="nicknameTitle">先完成你的校務設定</h2>
+    <p class="hint">之後首頁只顯示你關心的學校；暱稱與學校都能在「我的設定」修改。</p>
     <label>暱稱<input id="nicknameInput" required maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
+    <label>我關心的學校<select id="nicknameSchool" required><option value="">請選擇學校</option></select></label>
     <div class="profile-actions"><button class="btn-primary" type="submit">儲存並開始</button><button id="nicknameLater" class="btn-ghost" type="button">稍後設定</button></div>
     <p id="nicknameStatus" class="hint" role="status" aria-live="polite"></p>
   </form>
 </dialog>
 
-<nav class="tabbar" aria-label="主要分頁">
+<div class="function-dock">
+<button id="navMenuToggle" class="function-toggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="開啟功能選單"><span aria-hidden="true">＋</span><strong id="navCurrentLabel">選單</strong></button>
+<nav id="navMenu" class="tabbar" aria-label="主要功能" hidden>
+  <button id="tabHome" class="tab is-active" aria-current="page"><span class="tab-icon" aria-hidden="true">首</span><span>主畫面</span></button>
   <button id="tabToday" class="tab">
     <span class="tab-icon" aria-hidden="true">✦</span><span>今天</span>
   </button>
-  <button id="tabLatest" class="tab is-active" aria-current="page">
+  <button id="tabLatest" class="tab">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h10"/></svg>
     <span>最新</span>
   </button>
@@ -225,23 +205,24 @@
     <em id="subBadge" class="badge" hidden></em>
   </button>
 </nav>
+</div>
 
-<script src="account-config.js?v=38"></script>
-<script src="supabase-sync.js?v=38"></script>
-<script src="account-auth.js?v=38"></script>
-<script src="push-subscription.js?v=38"></script>
-<script src="reminder-rules.js?v=38"></script>
-<script src="task-state.js?v=38"></script>
-<script src="account-sync.js?v=38"></script>
-<script src="school-registry.js?v=38"></script>
-<script src="profile.js?v=38"></script>
-<script src="relevance.js?v=38"></script>
-<script src="assistant-feedback.js?v=38"></script>
-<script src="today.js?v=38"></script>
-<script src="assistant-qa.js?v=38"></script>
-<script src="calendar-state.js?v=38"></script>
-<script src="detail-ui.js?v=38"></script>
-<script src="app.js?v=38"></script>
+<script src="account-config.js?v=41"></script>
+<script src="supabase-sync.js?v=41"></script>
+<script src="account-auth.js?v=41"></script>
+<script src="push-subscription.js?v=41"></script>
+<script src="reminder-rules.js?v=41"></script>
+<script src="task-state.js?v=41"></script>
+<script src="account-sync.js?v=41"></script>
+<script src="school-registry.js?v=41"></script>
+<script src="profile.js?v=41"></script>
+<script src="relevance.js?v=41"></script>
+<script src="assistant-feedback.js?v=41"></script>
+<script src="today.js?v=41"></script>
+<script src="assistant-qa.js?v=41"></script>
+<script src="calendar-state.js?v=41"></script>
+<script src="detail-ui.js?v=41"></script>
+<script src="app.js?v=41"></script>
 </body>
 </html>
 

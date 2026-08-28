@@ -50,7 +50,7 @@
       school: loadSchool(),
       cat: "all",
       q: "",
-      tab: "latest",
+      tab: "home",
       calendarMonth: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
       calendarSelected: new Date().toISOString().slice(0, 10),
       eventEditingId: null,
@@ -68,6 +68,8 @@
       nickname: "",
       assistantFeedback: window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {},
       assistantAnswer: null,
+      assistantScope: "preferred",
+      assistantItems: {},
       personalizedNotifications: false,
       reminderPreset: "single",
       reminderCustomOffsets: "1",
@@ -83,16 +85,16 @@
     var el = {
       list: $("list"), subList: $("subList"), countLine: $("countLine"),
       updatedAt: $("updatedAt"), q: $("q"),
-      schoolSeg: $("schoolSeg"), catChips: $("catChips"),
-      viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"),
-      tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabSub: $("tabSub"), subBadge: $("subBadge"),
+      schoolFilter: $("schoolFilter"), catChips: $("catChips"),
+      viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"),
+      tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabSub: $("tabSub"), subBadge: $("subBadge"),
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
       reminderPushToggle: $("reminderPushToggle"), reminderPushState: $("reminderPushState"),
       reminderPreset: $("reminderPreset"), nextReminder: $("nextReminder"),
       reminderCustomWrap: $("reminderCustomWrap"), reminderCustomOffsets: $("reminderCustomOffsets"),
       btnRefresh: $("btnRefresh"), refreshState: $("refreshState"),
-      accountState: $("accountState"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
+      accountState: $("accountState"), accountEmail: $("accountEmail"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
       accountLogout: $("accountLogout"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
@@ -102,7 +104,7 @@
       eventFormTitle: $("eventFormTitle"),
       importantList: $("importantList"),
       welcomeTitle: $("welcomeTitle"), assistantForm: $("assistantForm"), assistantQuestion: $("assistantQuestion"),
-      assistantAsk: $("assistantAsk"), assistantStatus: $("assistantStatus"), assistantAnswer: $("assistantAnswer"),
+      assistantAsk: $("assistantAsk"), assistantScope: $("assistantScope"), assistantStatus: $("assistantStatus"), assistantAnswer: $("assistantAnswer"),
       profileBox: $("profileBox"), profileHint: $("profileHint"), profileForm: $("profileForm"),
       profileNickname: $("profileNickname"),
       profileSchool: $("profileSchool"), profileGrade: $("profileGrade"), profileClass: $("profileClass"),
@@ -111,13 +113,15 @@
       tasksBox: $("tasksBox"), taskForm: $("taskForm"), taskTitle: $("taskTitle"), taskDue: $("taskDue"),
       taskPriority: $("taskPriority"), taskNotes: $("taskNotes"), taskSave: $("taskSave"), taskCancel: $("taskCancel"),
       taskStatus: $("taskStatus"), taskOpenList: $("taskOpenList"), taskDoneList: $("taskDoneList"),
+      taskComposerToggle: $("taskComposerToggle"), taskOpenCount: $("taskOpenCount"), taskDoneCount: $("taskDoneCount"),
       todayCoverage: $("todayCoverage"), todayBriefSummary: $("todayBriefSummary"), todayFocus: $("todayFocus"),
       todayEvents: $("todayEvents"), todayDeadlines: $("todayDeadlines"),
       todayTasks: $("todayTasks"), todayRelevant: $("todayRelevant"), todayEmpty: $("todayEmpty"),
       detailDialog: $("detailDialog"), detailTitle: $("detailTitle"), detailMeta: $("detailMeta"),
       detailBody: $("detailBody"), detailClose: $("detailClose"),
       nicknameDialog: $("nicknameDialog"), nicknameForm: $("nicknameForm"), nicknameInput: $("nicknameInput"),
-      nicknameLater: $("nicknameLater"), nicknameStatus: $("nicknameStatus"),
+      nicknameSchool: $("nicknameSchool"), nicknameLater: $("nicknameLater"), nicknameStatus: $("nicknameStatus"),
+      navMenu: $("navMenu"), navMenuToggle: $("navMenuToggle"), navCurrentLabel: $("navCurrentLabel"),
     };
 
     function loadUserEvents() {
@@ -140,14 +144,39 @@
     function populateProfileSchools() {
       if (!el.profileSchool || !window.CyNewsSchoolRegistry) return;
       var current = el.profileSchool.value;
-      el.profileSchool.innerHTML = '<option value="">尚未設定</option>' + window.CyNewsSchoolRegistry.schools().map(function (school) {
+      var options = window.CyNewsSchoolRegistry.schools().map(function (school) {
         return '<option value="' + esc(school.id) + '">' + esc(school.short) + '</option>';
       }).join("");
+      el.profileSchool.innerHTML = '<option value="">請選擇學校</option>' + options;
       el.profileSchool.value = current;
+      if (el.nicknameSchool) {
+        var onboardingCurrent = el.nicknameSchool.value;
+        el.nicknameSchool.innerHTML = '<option value="">請選擇學校</option>' + options;
+        el.nicknameSchool.value = onboardingCurrent;
+      }
+    }
+    function preferredSchoolId() {
+      var id = String(state.profile && state.profile.school_id || "");
+      return window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(id) ? id : "";
+    }
+    function applyPreferredSchool(id, reload) {
+      id = String(id || "");
+      if (!window.CyNewsSchoolRegistry || !window.CyNewsSchoolRegistry.find(id)) return false;
+      var changed = state.school !== id;
+      state.school = id;
+      localStorage.setItem(LS_SCHOOL, id);
+      if (el.assistantScope) el.assistantScope.options[0].textContent = "我的學校（" + window.CyNewsSchoolRegistry.find(id).short + "）";
+      if (changed) {
+        state.archive = "none";
+        state.archivePromise = null;
+        resetPaging();
+        if (reload && state.data) fetchData(true);
+      }
+      return changed;
     }
     function renderGreeting() {
       if (!el.welcomeTitle) return;
-      el.welcomeTitle.textContent = state.nickname ? "Hi, " + state.nickname : "今天的校務資訊，先看重要的。";
+      el.welcomeTitle.textContent = state.nickname ? "Hi, " + state.nickname + "。今天想先看什麼？" : "今天的校務資訊，從這裡開始。";
     }
     function renderProfile() {
       if (!el.profileForm || !window.CyNewsProfile) return;
@@ -269,14 +298,22 @@
       function setAccountUser(user) {
         state.accountUser = user || null;
         state.nickname = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayName(user) : "";
+        var email = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayEmail(user) : "";
+        if (el.accountEmail) {
+          el.accountEmail.textContent = email ? "登入信箱：" + email : "";
+          el.accountEmail.hidden = !email;
+        }
         renderGreeting(); renderProfile();
       }
       function maybePromptNickname(user) {
         if (!user || !el.nicknameDialog || !el.nicknameInput) return;
         var metadata = user.user_metadata || {};
-        if (window.CyNewsAccountAuth.normalizeNickname(metadata.nickname)) return;
-        if (localStorage.getItem("cyNews.nicknameLater.v1:" + user.id) === "true") return;
+        var missingNickname = !window.CyNewsAccountAuth.normalizeNickname(metadata.nickname);
+        var missingSchool = !preferredSchoolId();
+        if (!missingNickname && !missingSchool) return;
+        if (localStorage.getItem("cyNews.onboardingLater.v2:" + user.id) === "true") return;
         el.nicknameInput.value = state.nickname || "";
+        if (el.nicknameSchool) el.nicknameSchool.value = preferredSchoolId();
         if (typeof el.nicknameDialog.showModal === "function" && !el.nicknameDialog.open) el.nicknameDialog.showModal();
       }
       function renderReminderPush() {
@@ -324,6 +361,7 @@
         saveReads();
         NotificationState.save(notificationState);
         state.profile = window.CyNewsProfile.normalize(merged.preferences && merged.preferences.preferences && merged.preferences.preferences.profile);
+        var schoolChanged = applyPreferredSchool(state.profile.school_id, false);
         state.assistantFeedback = window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize(
           merged.preferences && merged.preferences.preferences && merged.preferences.preferences.assistant_feedback) : {};
         state.tasks = window.CyNewsTaskState ? window.CyNewsTaskState.visible(merged.tasks || []) : [];
@@ -341,6 +379,7 @@
         renderPersonalizedSetting();
         renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
         renderReminderPush();
+        if (schoolChanged && state.data) fetchData(true);
         if (accountId && accountId !== "anonymous" && reminderAdapter) {
           var reminderGeneration = syncGeneration;
           reminderAdapter.listRules().then(function (rows) {
@@ -368,6 +407,9 @@
         state.reminderCustomOffsets = "1";
         state.reminderRules = [];
         state.reminderDeviceActive = false;
+        state.school = "all";
+        state.archive = "none";
+        state.archivePromise = null;
         if (el.reminderPreset) el.reminderPreset.value = "single";
         state.activeAccountId = "anonymous";
         establishPersonalizedBaseline("anonymous");
@@ -382,7 +424,12 @@
         requestedUid = null;
         readyUid = null;
         accountPhase = "ANONYMOUS_READY";
-          publishState(anonymousState, "anonymous");
+        state.school = "all";
+        localStorage.setItem(LS_SCHOOL, "all");
+        state.archive = "none";
+        state.archivePromise = null;
+        publishState(anonymousState, "anonymous");
+        if (state.data) fetchData(true);
       }
       function sync(uid, authRetry) {
         authRetry = authRetry || 0;
@@ -876,7 +923,10 @@
     }
     function loadOfficialEvents() {
       return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
-        state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) { return ev && (ev.start_date || ev.date) && ev.title && ev.provenance; }) : [];
+        state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) {
+          return ev && (ev.start_date || ev.date) && ev.title && ev.provenance &&
+            (state.school === "all" || String(ev.school_id || "") === state.school);
+        }) : [];
         if (state.tab === "calendar") renderCalendar();
       }).catch(function () {});
     }
@@ -886,6 +936,7 @@
         return r.json();
       }).then(function (status) {
         var rows = Array.isArray(status) ? status : (Array.isArray(status && status.schools) ? status.schools : []);
+        if (state.school !== "all") rows = rows.filter(function (row) { return String(row.school_id || row.id || "") === state.school; });
         state.calendarStatus = rows.length && rows.every(function (row) { return row.status === "official_complete"; }) ? "complete" : "partial";
         renderToday();
       }).catch(function () { state.calendarStatus = "partial"; renderToday(); });
@@ -914,7 +965,8 @@
     }
 
     function detailItem(id) {
-      return state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
+      var current = state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
+      return current || state.assistantItems[String(id)] || null;
     }
     function showDetailDialog() {
       if (!el.detailDialog) return;
@@ -1010,18 +1062,23 @@
       var canRemind = !completed && dueTarget && !isNaN(dueTarget.getTime()) && dueTarget > new Date();
       var reminderMeta = !task.due_date ? '<div class="task-item-meta">沒有可驗證的提醒日期</div>' :
         (canRemind ? '' : '<div class="task-item-meta">提醒日期已過</div>');
+      var primary = completed ? '<button type="button" class="btn-ghost" data-task-reopen="' + esc(task.id) + '">復原</button>' : '<button type="button" class="task-complete-button" data-task-complete="' + esc(task.id) + '"><span aria-hidden="true">✓</span>完成</button>';
+      var more = '<details class="task-more"><summary aria-label="更多待辦操作">•••</summary><div>' +
+        (canRemind ? '<button type="button" class="btn-ghost" data-task-reminder="' + esc(task.id) + '">設定提醒</button>' : '') +
+        (!completed ? '<button type="button" class="btn-ghost" data-task-edit="' + esc(task.id) + '">編輯</button>' : '') +
+        '<button type="button" class="btn-ghost danger-button" data-task-delete="' + esc(task.id) + '">刪除</button></div></details>';
       return '<article class="task-item' + (completed ? ' is-completed' : '') + '">' +
         '<div class="task-item-main"><div class="task-item-title">' + esc(task.title) + '</div>' +
         '<div class="task-item-meta">' + esc(taskDateLabel(task.due_date)) + (task.priority != null ? ' · 優先 ' + esc(task.priority) : '') + '</div>' +
         (task.notes ? '<div class="task-item-meta">' + esc(task.notes) + '</div>' : '') + reminderMeta + '</div>' +
-        '<div class="task-item-actions">' + (completed ? '<button type="button" class="btn-ghost" data-task-reopen="' + esc(task.id) + '">重開</button>' : '<button type="button" class="btn-ghost" data-task-complete="' + esc(task.id) + '">完成</button>') +
-        (canRemind ? '<button type="button" class="btn-ghost" data-task-reminder="' + esc(task.id) + '">設定提醒</button>' : '') +
-        '<button type="button" class="btn-ghost" data-task-edit="' + esc(task.id) + '">編輯</button><button type="button" class="btn-ghost" data-task-delete="' + esc(task.id) + '">刪除</button></div></article>';
+        '<div class="task-item-actions">' + primary + more + '</div></article>';
     }
     function renderTasks() {
       if (!el.taskOpenList || !window.CyNewsTaskState) return;
       var all = window.CyNewsTaskState.visible(state.tasks || []);
       var open = window.CyNewsTaskState.sortOpen(all), done = all.filter(function (task) { return task.status === "completed"; }).sort(function (a, b) { return a.updated_at < b.updated_at ? 1 : -1; });
+      if (el.taskOpenCount) el.taskOpenCount.textContent = open.length ? open.length + " 件" : "";
+      if (el.taskDoneCount) el.taskDoneCount.textContent = done.length ? "（" + done.length + "）" : "";
       el.taskOpenList.innerHTML = open.length ? open.map(function (task) { return taskHTML(task, false); }).join("") : '<p class="empty">還沒有待辦。先新增一件小事。</p>';
       el.taskDoneList.innerHTML = done.length ? done.map(function (task) { return taskHTML(task, true); }).join("") : '<p class="empty">完成的待辦會放在這裡。</p>';
     }
@@ -1095,6 +1152,34 @@
         return record;
       }).catch(function () { return null; });
     }
+    function fetchJsonItems(url) {
+      return fetch(url + "?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
+        if (response.status === 404) return { items: [] };
+        if (!response.ok) throw new Error("corpus HTTP " + response.status);
+        return response.json();
+      }).then(function (data) { return Array.isArray(data && data.items) ? data.items : []; });
+    }
+    function fetchAssistantCorpus(scopeId) {
+      if (scopeId === state.school) return ensureArchive().then(function () { return state.data && state.data.items || []; });
+      var current = scopeId === "all" ? "data/announcements.json" : "data/schools/" + encodeURIComponent(scopeId) + "/current.json";
+      var archive = scopeId === "all" ? "data/archive.json" : "data/schools/" + encodeURIComponent(scopeId) + "/archive.json";
+      return Promise.all([fetchJsonItems(current), fetchJsonItems(archive)]).then(function (parts) {
+        var seen = {};
+        return parts[0].concat(parts[1]).filter(function (item) {
+          if (!item || !item.id || seen[item.id]) return false;
+          seen[item.id] = true;
+          return true;
+        });
+      });
+    }
+    function assistantScopeFor(question) {
+      var mentioned = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.mentionedSchool(question);
+      if (mentioned) return { id: mentioned.id, label: mentioned.short + "（依問題指定）" };
+      if (el.assistantScope && el.assistantScope.value === "all") return { id: "all", label: "所有學校" };
+      var preferred = preferredSchoolId() || (state.school !== "all" ? state.school : "all");
+      var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(preferred);
+      return { id: preferred, label: school ? school.short : "所有學校" };
+    }
     function renderAssistantAnswer(result) {
       if (!el.assistantAnswer) return;
       state.assistantAnswer = result;
@@ -1103,28 +1188,33 @@
         return;
       }
       var evidence = result.evidence.map(function (row, index) {
-        return '<li><span class="assistant-evidence-rank">' + (index + 1) + '</span><div><p>' + esc(row.text) + '</p><button type="button" class="btn-ghost" data-detail-id="' + esc(row.announcement_id) + '">查看這則官方依據</button></div></li>';
+        return '<li><span class="assistant-evidence-rank">' + (index + 1) + '</span><div><strong class="assistant-evidence-title">' + esc(row.title || "官方公告") + '</strong><p>' + esc(row.text) + '</p><button type="button" class="btn-ghost" data-detail-id="' + esc(row.announcement_id) + '">查看這則官方依據</button></div></li>';
       }).join("");
       var sources = result.sources.slice(0, 5).map(function (item) {
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc((item.school_name || "官方公告") + " · " + displayDate(item)) + '</small></button>';
       }).join("");
-      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>整理結果</h3><p>' + esc(result.summary) + '</p><ol class="assistant-evidence">' + evidence + '</ol><h4>參考公告</h4><div class="assistant-sources">' + sources + '</div><p class="assistant-disclaimer">這是原文擷取整理，不是生成式 AI 判斷；規定與日期仍以官方公告為準。</p></section>';
+      var answerLines = (result.answer_lines || []).map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("");
+      var directAnswer = answerLines ? '<h4>直接回答</h4><ul class="assistant-answer-lines">' + answerLines + '</ul>' : '';
+      var limitation = result.limitation ? '<p class="assistant-limitation"><strong>資料限制：</strong>' + esc(result.limitation) + '</p>' : '';
+      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>整理結果</h3><p>' + esc(result.summary) + '</p>' + directAnswer + limitation + '<h4>我怎麼判斷</h4><ol class="assistant-evidence">' + evidence + '</ol><h4>參考公告</h4><div class="assistant-sources">' + sources + '</div><p class="assistant-disclaimer">採用類生成式問答流程整理，但每個結論都必須能回到官方原文；規定與日期仍以官方公告為準。</p></section>';
     }
     function askAssistant(question) {
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
       question = String(question || "").trim().slice(0, 160);
       if (!question) return Promise.resolve(null);
+      var scope = assistantScopeFor(question);
       if (el.assistantAsk) el.assistantAsk.disabled = true;
-      if (el.assistantStatus) el.assistantStatus.textContent = "正在搜尋公告與官方附件文字…";
-      return ensureArchive().then(function () {
-        var items = state.data && state.data.items || [];
+      if (el.assistantStatus) el.assistantStatus.textContent = "正在搜尋「" + scope.label + "」公告與官方附件文字…";
+      return fetchAssistantCorpus(scope.id).then(function (items) {
+        state.assistantItems = {};
+        items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
         var candidates = window.CyNewsAssistantQA.rank(question, items, {}).slice(0, 8);
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
           var details = {};
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
           var result = window.CyNewsAssistantQA.answer(question, items, details);
           renderAssistantAnswer(result);
-          if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已依官方資料整理，請對照下方依據" : "沒有足夠官方證據，未產生猜測答案";
+          if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已從「" + scope.label + "」官方資料整理，請對照下方依據" : "「" + scope.label + "」沒有足夠官方證據，未產生猜測答案";
           return result;
         });
       }).catch(function () {
@@ -1135,11 +1225,11 @@
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
     }
     function renderControls() {
-      var schools = [{ id: "all", short: "全部" }].concat(state.data.schools);
-      el.schoolSeg.innerHTML = schools.map(function (s) {
-        return '<button data-school="' + s.id + '"' +
-          (state.school === s.id ? ' class="is-active"' : "") + ">" + esc(s.short) + "</button>";
+      var schools = [{ id: "all", short: "所有學校" }].concat(state.data.schools || []);
+      el.schoolFilter.innerHTML = schools.map(function (s) {
+        return '<option value="' + esc(s.id) + '">' + esc(s.short) + "</option>";
       }).join("");
+      el.schoolFilter.value = schools.some(function (s) { return s.id === state.school; }) ? state.school : "all";
 
       var used = {};
       state.data.items.forEach(function (it) { used[it.category] = true; });
@@ -1242,16 +1332,19 @@
       if (state.q) ensureArchive();
       resetPaging(); renderLatest();
     });
-    el.schoolSeg.addEventListener("click", function (e) {
-      var b = e.target.closest("button[data-school]");
-      if (!b) return;
-      state.school = b.dataset.school;
+    el.schoolFilter.addEventListener("change", function () {
+      var selected = String(el.schoolFilter.value || "all");
+      if (selected !== "all" && (!window.CyNewsSchoolRegistry || !window.CyNewsSchoolRegistry.find(selected))) {
+        selected = "all";
+      }
+      state.school = selected;
       localStorage.setItem(LS_SCHOOL, state.school);
       state.archive = "none";
       state.archivePromise = null;
       resetPaging();
       fetchData(true).then(function () {
         if (state.q || state.cat !== "all") ensureArchive();
+        if (state.tab === "today" || state.tab === "calendar") { loadOfficialEvents(); loadCalendarStatus(); }
       });
     });
     el.catChips.addEventListener("click", function (e) {
@@ -1280,11 +1373,20 @@
       if (!task || !el.taskForm) return;
       el.taskForm.dataset.editingId = task.id; el.taskTitle.value = task.title; el.taskDue.value = task.due_date || "";
       el.taskPriority.value = task.priority == null ? "" : String(task.priority); el.taskNotes.value = task.notes || "";
-      el.taskSave.textContent = "儲存待辦"; el.taskCancel.hidden = false; el.taskTitle.focus();
+      setTaskComposer(true); el.taskSave.textContent = "儲存待辦"; el.taskTitle.focus();
+    }
+    function setTaskComposer(open) {
+      if (!el.taskForm) return;
+      el.taskForm.hidden = !open;
+      if (el.taskComposerToggle) {
+        el.taskComposerToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        el.taskComposerToggle.textContent = open ? "收起" : "新增待辦";
+      }
+      if (open) el.taskTitle.focus();
     }
     function resetTaskForm() {
       if (!el.taskForm) return;
-      el.taskForm.reset(); el.taskForm.dataset.editingId = ""; el.taskSave.textContent = "新增待辦"; el.taskCancel.hidden = true;
+      el.taskForm.reset(); el.taskForm.dataset.editingId = ""; el.taskSave.textContent = "新增待辦"; setTaskComposer(false);
     }
     function addAnnouncementTask(id) {
       var item = state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
@@ -1382,6 +1484,7 @@
       }
     });
     if (el.taskCancel) el.taskCancel.addEventListener("click", resetTaskForm);
+    if (el.taskComposerToggle) el.taskComposerToggle.addEventListener("click", function () { setTaskComposer(el.taskForm.hidden); });
     el.kwForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var kw = el.kwInput.value.trim();
@@ -1464,21 +1567,33 @@
       });
     });
 
+    function setNavMenu(open) {
+      if (!el.navMenu || !el.navMenuToggle) return;
+      el.navMenu.hidden = !open;
+      el.navMenuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      el.navMenuToggle.classList.toggle("is-open", open);
+    }
     function switchTab(tab) {
       state.tab = tab;
+      setNavMenu(false);
+      if (el.navCurrentLabel) el.navCurrentLabel.textContent = "選單";
+      var home = tab === "home";
       var latest = tab === "latest";
       var today = tab === "today";
       var assistant = tab === "assistant";
+      if (el.viewHome) el.viewHome.hidden = !home;
       if (el.viewToday) el.viewToday.hidden = !today;
       el.viewLatest.hidden = !latest;
       if (el.viewAssistant) el.viewAssistant.hidden = !assistant;
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
       el.viewSub.hidden = tab !== "sub";
+      if (el.tabHome) el.tabHome.classList.toggle("is-active", home);
       el.tabLatest.classList.toggle("is-active", latest);
       if (el.tabToday) el.tabToday.classList.toggle("is-active", today);
       if (el.tabAssistant) el.tabAssistant.classList.toggle("is-active", assistant);
       if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar");
       el.tabSub.classList.toggle("is-active", tab === "sub");
+      if (el.tabHome) el.tabHome.setAttribute("aria-current", home ? "page" : "false");
       el.tabLatest.setAttribute("aria-current", latest ? "page" : "false");
       if (el.tabToday) el.tabToday.setAttribute("aria-current", today ? "page" : "false");
       if (el.tabAssistant) el.tabAssistant.setAttribute("aria-current", assistant ? "page" : "false");
@@ -1495,13 +1610,13 @@
       }
       window.scrollTo(0, 0);
     }
+    if (el.tabHome) el.tabHome.addEventListener("click", function () { switchTab("home"); });
     el.tabLatest.addEventListener("click", function () { switchTab("latest"); });
     if (el.tabToday) el.tabToday.addEventListener("click", function () { switchTab("today"); });
     if (el.tabAssistant) el.tabAssistant.addEventListener("click", function () { switchTab("assistant"); });
     el.tabSub.addEventListener("click", function () { switchTab("sub"); });
     if (el.tabCalendar) {
       el.tabCalendar.addEventListener("click", function () { switchTab("calendar"); });
-      el.quickCalendar.addEventListener("click", function () { switchTab("calendar"); });
       el.calendarGrid.addEventListener("click", function (e) {
         var b = e.target.closest("button[data-day]"); if (!b) return;
         state.calendarSelected = b.dataset.day; renderCalendar();
@@ -1524,6 +1639,28 @@
         el.eventForm.reset(); el.eventFormWrap.hidden = true; renderCalendar();
       });
     }
+    if (el.viewHome) el.viewHome.addEventListener("click", function (event) {
+      var target = event.target.closest("button[data-home-tab]");
+      if (target) switchTab(target.dataset.homeTab);
+    });
+    if (el.viewToday) el.viewToday.addEventListener("click", function (event) {
+      var target = event.target.closest("button[data-today-action]");
+      if (!target) return;
+      switchTab("sub");
+      if (target.dataset.todayAction === "task") setTaskComposer(true);
+      else if (target.dataset.todayAction === "profile" && el.profileBox) el.profileBox.open = true;
+      else if (target.dataset.todayAction === "keyword" && el.kwInput) el.kwInput.focus();
+    });
+    if (el.navMenuToggle) el.navMenuToggle.addEventListener("click", function () {
+      setNavMenu(el.navMenuToggle.getAttribute("aria-expanded") !== "true");
+    });
+    if (document.addEventListener) {
+      document.addEventListener("click", function (event) {
+        if (!el.navMenu || el.navMenu.hidden || !event.target || !event.target.closest || event.target.closest(".function-dock")) return;
+        setNavMenu(false);
+      });
+      document.addEventListener("keydown", function (event) { if (event.key === "Escape") setNavMenu(false); });
+    }
 
     populateProfileSchools();
     renderProfile();
@@ -1531,12 +1668,17 @@
       e.preventDefault();
       if (!window.CyNewsProfile) return;
       var profile = profileFromForm();
+      if (!profile.school_id) {
+        el.profileStatus.textContent = "請先選擇你關心的學校";
+        return;
+      }
       var result = queueAccountMutation("preferences.upsert", preferencePayload({ profile: profile }));
       if (!result) {
         el.profileStatus.textContent = "請先登入並完成同步";
         return;
       }
       state.profile = profile;
+      applyPreferredSchool(profile.school_id, true);
       establishPersonalizedBaseline(state.activeAccountId);
       var requestedNickname = window.CyNewsAccountAuth.normalizeNickname(el.profileNickname && el.profileNickname.value);
       if (!requestedNickname || !accountAuth || typeof accountAuth.updateNickname !== "function") {
@@ -1556,19 +1698,25 @@
     if (el.nicknameForm) el.nicknameForm.addEventListener("submit", function (e) {
       e.preventDefault();
       var nickname = window.CyNewsAccountAuth && window.CyNewsAccountAuth.normalizeNickname(el.nicknameInput.value);
+      var schoolId = String(el.nicknameSchool && el.nicknameSchool.value || "");
       if (!nickname || !accountAuth || !state.accountUser) { el.nicknameStatus.textContent = "請輸入暱稱"; return; }
+      if (!window.CyNewsSchoolRegistry || !window.CyNewsSchoolRegistry.find(schoolId)) { el.nicknameStatus.textContent = "請選擇你關心的學校"; return; }
+      var profile = window.CyNewsProfile.normalize(Object.assign({}, state.profile || {}, { school_id: schoolId }));
+      if (!queueAccountMutation("preferences.upsert", preferencePayload({ profile: profile }))) { el.nicknameStatus.textContent = "請先完成登入同步"; return; }
+      state.profile = profile;
+      applyPreferredSchool(schoolId, true);
       el.nicknameStatus.textContent = "儲存中";
       accountAuth.updateNickname(nickname).then(function (user) {
         state.accountUser = user || state.accountUser;
         state.nickname = window.CyNewsAccountAuth.displayName(user || { user_metadata: { nickname: nickname } });
-        localStorage.removeItem("cyNews.nicknameLater.v1:" + state.accountUser.id);
+        localStorage.removeItem("cyNews.onboardingLater.v2:" + state.accountUser.id);
         renderGreeting(); renderProfile();
         el.nicknameStatus.textContent = "已儲存";
         if (el.nicknameDialog.open) el.nicknameDialog.close();
       }).catch(function () { el.nicknameStatus.textContent = "暱稱儲存失敗，請稍後再試"; });
     });
     if (el.nicknameLater) el.nicknameLater.addEventListener("click", function () {
-      if (state.accountUser && state.accountUser.id) localStorage.setItem("cyNews.nicknameLater.v1:" + state.accountUser.id, "true");
+      if (state.accountUser && state.accountUser.id) localStorage.setItem("cyNews.onboardingLater.v2:" + state.accountUser.id, "true");
       if (el.nicknameDialog && el.nicknameDialog.open) el.nicknameDialog.close();
     });
     if (el.personalizedToggle) el.personalizedToggle.addEventListener("change", function () {
@@ -1622,7 +1770,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=38").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=41").catch(function () {});
       });
     }
 

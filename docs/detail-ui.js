@@ -77,11 +77,19 @@
       return '<li><div><strong>' + esc(row.filename || "官方附件") + '</strong>' + (meta ? '<small>' + esc(meta) + '</small>' : '') + extracted + '</div><a href="' + esc(safeUrl(row.url)) + '" target="_blank" rel="noopener noreferrer">開啟附件</a></li>';
     }).join("") + "</ul></section>";
   }
+  function renderSummary(summary) {
+    if (!summary || summary.status !== "extracted" || !summary.text) return "";
+    var items = (Array.isArray(summary.items) ? summary.items : []).filter(function (item) { return item && typeof item.text === "string" && item.text.trim(); }).slice(0, 4);
+    var body = items.length > 1 ? '<ol class="detail-summary-items">' + items.map(function (item) {
+      var label = item.label && !/^項目 \d+$/.test(String(item.label)) ? '<strong>' + esc(item.label) + '</strong>' : "";
+      return '<li>' + label + '<p>' + esc(item.text) + '</p></li>';
+    }).join("") + '</ol>' : '<p>' + esc(items.length === 1 ? items[0].text : summary.text) + '</p>';
+    return '<section class="detail-summary"><h3>' + (items.length > 1 ? '分項重點' : '重點摘要') + '</h3>' + body + '<small>依官方內容分項擷取，可對照下方原文。</small></section>';
+  }
   function render(record) {
     if (!record || record.provenance !== "official_article") return '<p class="detail-state">無法驗證這份公告內文，請改看官方來源。</p>';
     var blocks = (Array.isArray(record.blocks) ? record.blocks : []).map(renderBlock).join("");
-    var summary = record.summary && record.summary.status === "extracted" && record.summary.text
-      ? '<section class="detail-summary"><h3>重點摘要</h3><p>' + esc(record.summary.text) + '</p><small>從官方內容擷取，可對照下方原文。</small></section>' : "";
+    var summary = renderSummary(record.summary);
     var source = safeUrl(record.source_url);
     var sourceLink = source ? '<a class="detail-source" href="' + esc(source) + '" target="_blank" rel="noopener noreferrer">查看官方原始公告 ↗</a>' : "";
     if (record.parse_status !== "parsed" || !blocks) {
@@ -90,5 +98,5 @@
     return summary + '<div class="detail-blocks">' + blocks + '</div>' + renderAttachments(record.attachments, record.announcement_id) + sourceLink;
   }
   return { escape: esc, safeUrl: safeUrl, validDetailRef: validDetailRef, statusMessage: statusMessage,
-    renderBlock: renderBlock, renderAttachments: renderAttachments, render: render };
+    renderBlock: renderBlock, renderAttachments: renderAttachments, renderSummary: renderSummary, render: render };
 });

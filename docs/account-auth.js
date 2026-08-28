@@ -41,6 +41,10 @@
     var email = String(user.email || "").trim();
     return normalizeNickname(email.split("@")[0]);
   }
+  function displayEmail(user) {
+    var email = String(user && user.email || "").replace(/[\t\r\n\u0000-\u001f\u007f]+/g, "").trim();
+    return email.length <= 254 && /^[^\s@]+@[^\s@]+$/.test(email) ? email : "";
+  }
   function normalizeAppUrl(value, allowCallbackParameters) {
     if (typeof value !== "string" || !value.trim()) return null;
     try {
@@ -134,6 +138,6 @@
     };
   }
   return { CLIENT_VERSION: CLIENT_VERSION, CLIENT_URL: CLIENT_URL, verifiedSession: verifiedSession, verifiedUid: verifiedUid,
-    normalizeNickname: normalizeNickname, displayName: displayName, normalizeAppUrl: normalizeAppUrl,
+    normalizeNickname: normalizeNickname, displayName: displayName, displayEmail: displayEmail, normalizeAppUrl: normalizeAppUrl,
     approvedRedirect: approvedRedirect, createController: createController };
 });

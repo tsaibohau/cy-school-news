@@ -11,6 +11,8 @@
     place: ["哪裡", "地點", "在哪", "會場", "教室"],
     method: ["怎麼", "如何", "辦法", "流程", "報名", "申請", "要帶", "繳交"],
     person: ["誰", "對象", "資格", "哪些人", "學生", "年級"],
+    status: ["現在", "目前", "已經", "還有", "最新", "公告了嗎"],
+    yesno: ["是否", "有沒有", "需不需要", "需要", "可以嗎", "能不能", "會不會", "嗎"],
   };
   var EXPANSIONS = {
     "手機": ["行動載具", "智慧型手機"], "行動載具": ["手機"],
@@ -110,9 +112,53 @@
     if (/作者\s*[：:]|發[佈布]日期|最後更新日期/.test(sentence)) score -= 18;
     return score;
   }
+  function smoothEvidence(value) {
+    var text = clean(value).replace(/^[•●▪▫◆◇※*\-–—]+\s*/, "")
+      .replace(/^(?:說明|公告內容|主旨|注意事項|辦理方式|相關資訊)\s*[：:]\s*/i, "")
+      .replace(/\s*詳情請(?:參閱|見).*$/i, "").trim();
+    if (text.length > 170) text = text.slice(0, 168).replace(/[，、；;：:]?[^，。！？!?；;]{0,22}$/, "") + "…";
+    return text;
+  }
+  function questionPlan(query) {
+    var wanted = intent(query);
+    return {
+      intents: wanted,
+      wants_latest: wanted.indexOf("status") !== -1 || /最新|最近|現在|目前/.test(query),
+      yes_no: wanted.indexOf("yesno") !== -1,
+      wants_steps: wanted.indexOf("method") !== -1,
+    };
+  }
+  function answerLines(evidence, sources) {
+    var sourceTitles = {};
+    (sources || []).forEach(function (item) { sourceTitles[item.id] = clean(item.title || "官方公告"); });
+    var multiple = (sources || []).length > 1, seen = {};
+    return (evidence || []).map(function (row) {
+      var fact = smoothEvidence(row.text), key = compact(fact);
+      if (!fact || seen[key]) return "";
+      seen[key] = true;
+      return (multiple ? (sourceTitles[row.announcement_id] || "官方公告") + "：" : "") + fact;
+    }).filter(Boolean).slice(0, 4);
+  }
+  function evidenceLimitation(evidence, sources, plan) {
+    if (!evidence.length) return "沒有足夠的官方原文可供核對。";
+    if (sources.length > 1) return "找到多則不同公告，已分開列出；不能把不同活動的日期或資格互相拼接。";
+    if (plan.wants_latest) return "這是本站目前已抓到的最新官方資料；校方若尚未發布，系統不會自行補出答案。";
+    return "答案只涵蓋目前可讀取的公告正文與 PDF 文字，圖片型附件可能尚未包含。";
+  }
+  function composeSummary(evidence, sources, wanted) {
+    var lead = evidence.length ? smoothEvidence(evidence[0].text) : "";
+    if (!lead) return "目前資料不足，找不到可驗證的答案。";
+    if (sources.length > 1) return "找到 " + sources.length + " 則可能相關的官方資訊，已按公告分開整理；它們不是同一項活動，請逐項核對。";
+    var prefix = "依官方公告，最相關的重點是：";
+    if (wanted.indexOf("date") !== -1) prefix = "先說結論，官方資料中的時間重點是：";
+    else if (wanted.indexOf("method") !== -1) prefix = "依官方公告，辦理方式的重點是：";
+    else if (wanted.indexOf("place") !== -1) prefix = "依官方公告，地點資訊是：";
+    else if (wanted.indexOf("person") !== -1) prefix = "依官方公告，適用對象或資格的重點是：";
+    return prefix + lead + (/[。！？!?]$/.test(lead) ? "" : "。") + "下方附有 " + sources.length + " 則可核對的官方來源。";
+  }
   function answer(query, items, details) {
     query = clean(query).slice(0, 160);
-    var queryTokens = tokens(query), wanted = intent(query), ranked = rank(query, items, details).slice(0, 8);
+    var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details).slice(0, 8);
     if (ranked.length) {
       var relevanceFloor = Math.max(8, ranked[0].score * 0.35);
       ranked = ranked.filter(function (row) { return row.score >= relevanceFloor; }).slice(0, 5);
@@ -123,7 +169,7 @@
       var sourceText = detailText(row.detail) || clean((row.item.summary || "") + " " + (row.item.snippet || ""));
       sentences(sourceText).map(function (sentence) { return { text: sentence, score: evidenceScore(sentence, queryTokens, wanted), item: row.item }; })
         .filter(function (candidate) { return candidate.score >= 4; })
-        .sort(function (a, b) { return b.score - a.score; }).slice(0, 2).forEach(function (candidate) {
+        .sort(function (a, b) { return b.score - a.score; }).slice(0, 1).forEach(function (candidate) {
           var key = compact(candidate.text);
           if (!seen[key] && evidence.length < 4) { seen[key] = true; evidence.push({ text: candidate.text.slice(0, 220), announcement_id: candidate.item.id, title: candidate.item.title, score: candidate.score }); }
         });
@@ -132,8 +178,11 @@
     var sourceIds = {};
     evidence.forEach(function (row) { sourceIds[row.announcement_id] = true; });
     var sources = ranked.map(function (row) { return row.item; }).filter(function (item) { return sourceIds[item.id]; }).slice(0, 4);
-    return { status: "answered", query: query, summary: "根據 " + sources.length + " 則相關官方公告，整理出以下重點：", evidence: evidence,
-      sources: sources };
+    var lines = answerLines(evidence, sources);
+    return { status: "answered", query: query, summary: composeSummary(evidence, sources, wanted),
+      answer_lines: lines, limitation: evidenceLimitation(evidence, sources, plan), confidence: lines.length >= 2 ? "high" : "medium",
+      plan: plan, evidence: evidence, sources: sources };
   }
-  return { tokens: tokens, anchors: anchors, intent: intent, detailText: detailText, rank: rank, answer: answer };
+  return { tokens: tokens, anchors: anchors, intent: intent, questionPlan: questionPlan, detailText: detailText, rank: rank,
+    smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary, answer: answer };
 });

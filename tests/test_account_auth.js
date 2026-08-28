@@ -18,7 +18,7 @@ const client = {
     },
     getUser(token) {
       assert.equal(token, "test-access-token");
-      return Promise.resolve({ data: { user: { id: "verified-session-id" } }, error: null });
+      return Promise.resolve({ data: { user: { id: "verified-session-id", email: "student@example.test" } }, error: null });
     },
     signInWithOAuth(request) {
       oauthRequest = request;
@@ -127,6 +127,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert.equal(Auth.normalizeNickname("  Hau\nTest  "), "Hau Test");
   assert.equal(Auth.displayName({ user_metadata: { nickname: "Hau" }, email: "ignored@example.test" }), "Hau");
   assert.equal(Auth.displayName({ user_metadata: { given_name: "Bo" }, email: "ignored@example.test" }), "Bo");
+  assert.equal(Auth.displayEmail({ email: " student@example.test\n" }), "student@example.test");
+  assert.equal(Auth.displayEmail({ email: "not-an-email" }), "");
   const updatedUser = await controller.updateNickname("  Hau  ");
   assert.deepEqual(userUpdateRequest, { data: { nickname: "Hau" } });
   assert.equal(updatedUser.user_metadata.nickname, "Hau");
@@ -176,11 +178,12 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   const sw = fs.readFileSync(path.join(__dirname, "..", "docs", "sw.js"), "utf8");
   const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
   assert(index.includes("使用 Google 登入"));
-  assert(index.includes('src="account-sync.js?v=38"'), "index must load versioned Account Sync before app.js");
-  assert(index.includes('src="account-config.js?v=38"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=38"'), "index must load versioned account auth");
-  assert(sw.includes('"./account-sync.js?v=38"'), "Service Worker shell must cache versioned Account Sync");
-  assert(!index.includes("accountEmail"));
+  assert(index.includes('src="account-sync.js?v=41"'), "index must load versioned Account Sync before app.js");
+  assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
+  assert(index.includes('src="account-auth.js?v=41"'), "index must load versioned account auth");
+  assert(sw.includes('"./account-sync.js?v=41"'), "Service Worker shell must cache versioned Account Sync");
+  assert(index.includes('id="accountEmail"'));
+  assert(app.includes('"登入信箱：" + email'));
   assert(!app.includes("sendMagicLink"));
   assert(app.includes("getVerifiedSession"));
   assert(app.indexOf("auth.onAuthStateChange") < app.indexOf("auth.getClient().then(function () { return handleVerifiedSession(); })"), "OAuth listener subscribes before the initial session read");
@@ -192,8 +195,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v38"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=38")'), "App and Service Worker must use one shell version");
+  assert(sw.includes("cy-news-v41"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=41")'), "App and Service Worker must use one shell version");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   console.log("Google OAuth account auth tests passed");
