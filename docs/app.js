@@ -85,7 +85,7 @@
     var el = {
       list: $("list"), subList: $("subList"), countLine: $("countLine"),
       updatedAt: $("updatedAt"), q: $("q"),
-      schoolSeg: $("schoolSeg"), catChips: $("catChips"),
+      schoolFilter: $("schoolFilter"), catChips: $("catChips"),
       viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"),
       tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabSub: $("tabSub"), subBadge: $("subBadge"),
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
@@ -1225,11 +1225,11 @@
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
     }
     function renderControls() {
-      var schools = [{ id: "all", short: "跨校查看" }].concat(state.data.schools || []);
-      el.schoolSeg.innerHTML = schools.map(function (s) {
-        return '<button data-school="' + s.id + '"' +
-          (state.school === s.id ? ' class="is-active"' : "") + ">" + esc(s.short) + "</button>";
+      var schools = [{ id: "all", short: "所有學校" }].concat(state.data.schools || []);
+      el.schoolFilter.innerHTML = schools.map(function (s) {
+        return '<option value="' + esc(s.id) + '">' + esc(s.short) + "</option>";
       }).join("");
+      el.schoolFilter.value = schools.some(function (s) { return s.id === state.school; }) ? state.school : "all";
 
       var used = {};
       state.data.items.forEach(function (it) { used[it.category] = true; });
@@ -1332,10 +1332,12 @@
       if (state.q) ensureArchive();
       resetPaging(); renderLatest();
     });
-    el.schoolSeg.addEventListener("click", function (e) {
-      var b = e.target.closest("button[data-school]");
-      if (!b) return;
-      state.school = b.dataset.school;
+    el.schoolFilter.addEventListener("change", function () {
+      var selected = String(el.schoolFilter.value || "all");
+      if (selected !== "all" && (!window.CyNewsSchoolRegistry || !window.CyNewsSchoolRegistry.find(selected))) {
+        selected = "all";
+      }
+      state.school = selected;
       localStorage.setItem(LS_SCHOOL, state.school);
       state.archive = "none";
       state.archivePromise = null;

@@ -13,7 +13,8 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     merge_collected_item, validate_snapshot_items,
                     validate_history_capacity, quarantine_corrupt_titles,
                     merge_title, decode_response,
-                    record_detail_fetch_failure)  # noqa: E402
+                    record_detail_fetch_failure, fetch_error_class,
+                    record_source_status, SOURCE_STATUS_KEY)  # noqa: E402
 from notify import (push_topics, summarize, personal_topics, notification_payload,
                     normalize_topic, prepare_notification_items,
                     SUMMARY_THRESHOLD)  # noqa: E402
@@ -462,6 +463,23 @@ def run():
         assert status == ("permanent_error" if attempt == 5 else "temporary_error")
     assert detail_retry["detail_available"] is False
     print("✓ detail failure bounded retry")
+
+    import requests as _requests
+    fetch_state = {"https://example.test/list": "2026-08-01T00:00:00+08:00"}
+    tls_error = _requests.exceptions.SSLError("certificate verify failed: secret detail")
+    status = record_source_status(fetch_state, "pksh", "https://example.test/list",
+                                  "2026-08-28T12:00:00+08:00", tls_error)
+    assert status["error_class"] == "tls_certificate_error"
+    assert "secret detail" not in str(fetch_state)
+    assert fetch_state["https://example.test/list"] == "2026-08-01T00:00:00+08:00", \
+        "a failed fetch must not advance the last-success watermark"
+    assert fetch_state[SOURCE_STATUS_KEY]["https://example.test/list"]["status"] == "unavailable"
+    assert fetch_error_class(_requests.exceptions.Timeout()) == "timeout"
+    record_source_status(fetch_state, "pksh", "https://example.test/list",
+                         "2026-08-28T12:05:00+08:00")
+    assert fetch_state["https://example.test/list"] == "2026-08-28T12:05:00+08:00"
+    assert fetch_state[SOURCE_STATUS_KEY]["https://example.test/list"]["status"] == "ok"
+    print("✓ source failure state is explicit and fail-closed")
 
     return ok
 

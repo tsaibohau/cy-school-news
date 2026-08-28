@@ -12,6 +12,10 @@ const profileSource = fs.readFileSync(path.join(repo, "docs", "profile.js"), "ut
 const relevanceSource = fs.readFileSync(path.join(repo, "docs", "relevance.js"), "utf8");
 const registrySource = fs.readFileSync(path.join(repo, "docs", "school-registry.js"), "utf8");
 const appSource = fs.readFileSync(path.join(repo, "docs", "app.js"), "utf8");
+const indexSource = fs.readFileSync(path.join(repo, "docs", "index.html"), "utf8");
+assert.match(indexSource, /<select id="schoolFilter" aria-label="選擇公告學校">/,
+  "announcement school filter must be a keyboard-accessible native select");
+assert.doesNotMatch(indexSource, /id="schoolSeg"/, "school segmented buttons must be removed");
 assert.match(appSource, /function displayTitle\(it\)/, "UI must guard invalid source titles");
 assert.match(appSource, /function displaySnippet\(it\)/, "UI must remove source metadata from snippets");
 assert.match(appSource, /Legacy RulingDigital records may contain the ::: access-key label/);
@@ -66,7 +70,7 @@ class FakeElement {
 
 function makeDocument() {
   const ids = [
-    "list", "subList", "countLine", "updatedAt", "q", "schoolSeg", "catChips",
+    "list", "subList", "countLine", "updatedAt", "q", "schoolFilter", "catChips",
     "viewLatest", "viewSub", "tabLatest", "tabSub", "subBadge", "kwForm",
     "kwInput", "kwChips", "btnNotify", "notifyState", "btnRefresh", "refreshState",
     "profileBox", "profileHint", "profileForm", "profileSchool", "profileGrade", "accountEmail",
@@ -326,9 +330,8 @@ async function testUiFiltersNeverNotify() {
   appRun.document.elements.q.value = "考試";
   appRun.document.elements.q.emit("input");
   await flush();
-  appRun.document.elements.schoolSeg.emit("click", {
-    target: { dataset: { school: "cysh" }, closest: () => ({ dataset: { school: "cysh" } }) },
-  });
+  appRun.document.elements.schoolFilter.value = "cysh";
+  appRun.document.elements.schoolFilter.emit("change");
   appRun.document.elements.catChips.emit("click", {
     target: { dataset: { cat: "一般" }, closest: () => ({ dataset: { cat: "一般" } }) },
   });
@@ -444,6 +447,7 @@ async function testSchoolScopedDataLoading() {
     schools: [
       { id: "cysh", short: "嘉中", current: "data/schools/cysh/current.json" },
       { id: "cygsh", short: "嘉女", current: "data/schools/cygsh/current.json" },
+      { id: "pksh", short: "北港高中", current: "data/schools/pksh/current.json" },
     ],
   };
   const shard = {
@@ -459,12 +463,40 @@ async function testSchoolScopedDataLoading() {
   assert.match(run.fetchRequests[0].url, /data\/schools\/manifest\.json/);
   assert.match(run.fetchRequests[1].url, /data\/schools\/cysh\/current\.json/);
   assert.equal(run.app.getState().data.items[0].id, "cysh-only");
-  assert.equal(run.app.getState().data.schools.length, 2, "manifest keeps every school selector available");
+  assert.equal(run.app.getState().data.schools.length, 3, "manifest keeps every school selector available");
+  assert.equal(run.document.elements.schoolFilter.value, "cysh");
+  assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="all">所有學校<\/option>/);
+  assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="cysh">嘉中<\/option>/);
+  assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="cygsh">嘉女<\/option>/);
+  assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="pksh">北港高中<\/option>/);
 
   run.queue.push(response({ items: [] }));
   run.app.ensureArchive();
   await flush();
   assert.match(run.fetchRequests.at(-1).url, /data\/schools\/cysh\/archive\.json/);
+}
+
+async function testSchoolSelectionFallbackAndPersistence() {
+  const storage = new MemoryStorage();
+  const combined = dataOf([item("cysh-1", "2026-08-20T00:00:00Z", "嘉中公告")]);
+  combined.schools = [
+    { id: "cysh", short: "嘉中" },
+    { id: "cygsh", short: "嘉女" },
+    { id: "pksh", short: "北港高中" },
+  ];
+  const run = await createApp({ storage, responses: [response(combined)], notification: makeNotification() });
+  run.queue.push(new Error("manifest unavailable"), response(Object.assign({}, combined, {
+    items: [Object.assign(item("pksh-1", "2026-08-20T00:00:00Z", "北港公告"), { school: "pksh", school_name: "北港高中" })],
+  })));
+  run.document.elements.schoolFilter.value = "pksh";
+  run.document.elements.schoolFilter.emit("change");
+  await flush();
+  assert.equal(storage.getItem("cyNews.school.v1"), "pksh", "school selection persists in localStorage");
+  assert.equal(run.app.getState().school, "pksh");
+  assert.match(run.fetchRequests.at(-2).url, /data\/schools\/manifest\.json/);
+  assert.match(run.fetchRequests.at(-1).url, /data\/announcements\.json/,
+    "a failed shard manifest must safely fall back to the combined snapshot");
+  assert.equal(run.app.getState().data.items[0].id, "pksh-1");
 }
 
 async function testRefreshStatusContract() {
@@ -675,6 +707,7 @@ function testServiceWorkerContract() {
   await testAuthenticatedStagingRefreshContract();
   await testArchiveDoesNotNotify();
   await testSchoolScopedDataLoading();
+  await testSchoolSelectionFallbackAndPersistence();
   await testSubscriptionBaselineAndLaterMatch();
   await testTwoKeywordsOneNotificationAndReadSeparate();
   await testWatermarkPreventsEvictedIdRedelivery();

@@ -32,4 +32,5 @@ detail = parse_article_detail(
 assert detail["parse_status"] == "parsed"
 assert any("九月二日" in block.get("text", "") for block in detail["blocks"])
 assert any(file["url"].endswith("mock-exam.pdf") for file in detail["attachments"])
+assert all("evil.example" not in file["url"] for file in detail["attachments"])
 print("PKSH iSchool announcement adapter tests passed")
