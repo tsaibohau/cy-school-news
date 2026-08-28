@@ -942,7 +942,7 @@
       }).catch(function () { state.calendarStatus = "partial"; renderToday(); });
     }
     function cardHTML(it) {
-      var schoolClass = it.school === "cysh" ? "tag-cysh" : "tag-cygsh";
+      var schoolClass = it.school === "cysh" ? "tag-cysh" : (it.school === "fjsh" ? "tag-fjsh" : "tag-cygsh");
       var catClass = it.category === "榮譽榜" ? " cat-honor" : "";
       var relevance = window.CyNewsRelevance && window.CyNewsProfile && window.CyNewsSchoolRegistry
         ? window.CyNewsRelevance.calculate(it, state.profile, window.CyNewsSchoolRegistry) : null;
