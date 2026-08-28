@@ -12,9 +12,22 @@ school = {"id": "pksh", "short": "北港高中", "base": "https://www.pksh.ylc.e
           "ischool_uid": "WID_0_2_fallback"}
 adapter = PkshAdapter(school)
 uid, fallback = discover_uid('var g_unique_id = "WID_0_2_live";', school["ischool_uid"])
-assert (uid, fallback) == ("WID_0_2_live", False)
+assert (uid, fallback) == (school["ischool_uid"], True)
 uid, fallback = discover_uid("", school["ischool_uid"])
 assert (uid, fallback) == ("WID_0_2_fallback", True)
+
+# A partial WID may appear in a DOM class but is not accepted by the iSchool
+# backend.  It must never override the configured complete fallback.
+full_uid = "WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a"
+truncated_uid = "WID_0_2_0a14b8dc17bb7190f9566cc9fece58668"
+assert len(full_uid.rsplit("_", 1)[1]) == 40
+assert len(truncated_uid.rsplit("_", 1)[1]) == 33
+uid, fallback = discover_uid(f'var g_unique_id = "{full_uid}";', school["ischool_uid"])
+assert (uid, fallback) == (full_uid, False)
+uid, fallback = discover_uid(f'<div data-uid="{truncated_uid}"></div>', full_uid)
+assert (uid, fallback) == (full_uid, True)
+adapter.discover_board(f'<div data-uid="{truncated_uid}"></div>')
+assert adapter.last_discovery_warning == "ignored incomplete iSchool UID (33 hex characters; expected 40)"
 
 payload = [
     {"totalPages": "3"},

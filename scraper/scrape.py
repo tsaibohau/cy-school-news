@@ -867,7 +867,8 @@ def main() -> int:
                     print(f"[warn] {school['short']}: board UID discovery failed: {fetch_error_class(e)}", file=sys.stderr)
             uid, used_fallback = adapter.discover_board(board_html)
             if used_fallback:
-                print(f"[warn] {school['short']}: using configured board UID fallback", file=sys.stderr)
+                warning = f"; {adapter.last_discovery_warning}" if adapter.last_discovery_warning else ""
+                print(f"[warn] {school['short']}: using configured board UID fallback{warning}", file=sys.stderr)
             try:
                 api_page, used_tf = adapter.fetch_list_with_fallback(
                     session, uid, timeout=CONFIG["timeout_sec"])

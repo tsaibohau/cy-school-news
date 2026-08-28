@@ -16,19 +16,27 @@ from bs4 import BeautifulSoup
 import requests
 
 UID_RE = re.compile(r"(?:g_unique_id|uid)\s*[=:]\s*[\"']([^\"']+)")
+# iSchool widget identifiers use a widget position followed by a 40-character
+# SHA-1-like token.  A shortened CSS class is not a usable backend UID.
+FULL_UID_RE = re.compile(r"WID_\d+_\d+_[0-9a-f]{40}\Z", re.I)
+WID_TOKEN_RE = re.compile(r"\b(WID_\d+_\d+_([0-9a-f]+))\b", re.I)
 MISSING_DETAIL_RE = re.compile(r"(?:the\s+)?news\s+is\s+not\s+exist(?:ed)?", re.I)
 MAX_TOTAL_PAGES = 500
 
 
 def discover_uid(html: str, fallback_uid: str = "") -> tuple[str, bool]:
-    """Find a board UID and report explicitly when the fallback is used."""
+    """Find a complete iSchool board UID; reject truncated DOM tokens.
+
+    The boolean is true when no complete UID was exposed by the response and
+    the configured fallback is therefore used.
+    """
     match = UID_RE.search(html or "")
-    if match and match.group(1).startswith("WID_"):
-        return match.group(1), False
+    if match and FULL_UID_RE.fullmatch(match.group(1).strip()):
+        return match.group(1).strip(), False
     soup = BeautifulSoup(html or "", "html.parser")
     for node in soup.select("[data-uid], input[name=uid]"):
         value = (node.get("data-uid") or node.get("value") or "").strip()
-        if value.startswith("WID_"):
+        if FULL_UID_RE.fullmatch(value):
             return value, False
     return fallback_uid, True
 
@@ -108,9 +116,19 @@ class PkshAdapter:
         self.school = school
         self.base = school["base"].rstrip("/")
         self.fallback_uid = str(school.get("ischool_uid") or "")
+        self.last_discovery_warning = ""
 
     def discover_board(self, html: str) -> tuple[str, bool]:
-        return discover_uid(html, self.fallback_uid)
+        uid, used_fallback = discover_uid(html, self.fallback_uid)
+        self.last_discovery_warning = ""
+        if used_fallback:
+            token = WID_TOKEN_RE.search(html or "")
+            if token and not FULL_UID_RE.fullmatch(token.group(1)):
+                self.last_discovery_warning = (
+                    "ignored incomplete iSchool UID "
+                    f"({len(token.group(2))} hex characters; expected 40)"
+                )
+        return uid, used_fallback
 
     def _request(self, session, method: str, path: str, *, timeout: int, **kwargs):
         request = getattr(session, method)
