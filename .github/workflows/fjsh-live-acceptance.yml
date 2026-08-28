@@ -44,14 +44,18 @@ jobs:
           assert all(counts.values()), counts
           fjsh = [x for x in items if x.get('school') == 'fjsh']
           assert len({x.get('source_id') for x in fjsh}) == len(fjsh), 'duplicate FJSH source_id'
-          assert len(fjsh) >= 5, counts
-          for item in fjsh[:5]:
+          dated = [item for item in fjsh if item.get('date')]
+          assert len(dated) >= 5, {'counts': counts, 'dated_fjsh': len(dated)}
+          assert sum(bool(item.get('detail_available')) for item in dated) >= 5, 'five FJSH details required'
+          for item in dated[:5]:
               assert item.get('source_id', '').startswith('fjsh:'), item
               assert item.get('id', '').startswith('fjsh-'), item
-              assert item.get('title') and item.get('date'), item
+              assert item.get('title'), item
               parsed = urlsplit(item.get('url', ''))
               assert parsed.scheme == 'https' and parsed.hostname == 'rpage.fjsh.cy.edu.tw', item
-          print(json.dumps({'counts': counts, 'sample_ids': [x['source_id'] for x in fjsh[:5]]}, ensure_ascii=False))
+          detail_files = list(Path('docs/data/details/fjsh').glob('*.json'))
+          assert any(json.loads(path.read_text(encoding='utf-8')).get('attachments') for path in detail_files), 'FJSH attachment required'
+          print(json.dumps({'counts': counts, 'sample_ids': [x['source_id'] for x in dated[:5]]}, ensure_ascii=False))
           PY
       - name: Confirm generated data was not committed
         run: git diff -- docs/data scraper/fetch_state.json
