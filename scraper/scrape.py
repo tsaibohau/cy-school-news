@@ -34,7 +34,7 @@ DETAIL_ROOT = ROOT / "docs" / "data" / "details"
 TW_TZ = timezone(timedelta(hours=8))
 DATE_RE = re.compile(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
 # RulingDigital 文章頁的「發佈日期 : YYYY-MM-DD」欄位(嘉中文章頁固定會有)
-PUB_DATE_RE = re.compile(r"發[佈布]日期\s*[::]\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
+PUB_DATE_RE = re.compile(r"發[佈布](?:日期|時間)\s*[::：]\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
 
 # 深度回補(環境變數 DEEP_CRAWL=1):對每個 403 分類頁往後翻頁的一次性模式,
 # 由維護者在本機執行,不進排程——新公告永遠出現在第一頁,日常抓第一頁即可。
@@ -222,7 +222,7 @@ def page_category_name(soup: BeautifulSoup) -> str:
     return title.strip()
 
 
-def extract_items(html: str, school: dict, source_url: str):
+def extract_rulingdigital_items(html: str, school: dict, source_url: str):
     """從任一頁面(列表頁或首頁)萃取公告項目。"""
     soup = BeautifulSoup(html, "html.parser")
     unit = school["unit"]
@@ -258,6 +258,48 @@ def extract_items(html: str, school: dict, source_url: str):
             "_source_url": source_url,
         })
     return items
+
+
+def extract_ischool_items(html: str, school: dict, source_url: str):
+    """Extract iSchool site-news rows using only the stable official nid URL."""
+    soup = BeautifulSoup(html, "html.parser")
+    item_re = re.compile(r"/ischool/public/news_view/show\.php\?[^#]*\bnid=(\d+)")
+    items, seen = [], set()
+    for anchor in soup.find_all("a", href=True):
+        href = urljoin(school["base"], anchor.get("href", ""))
+        if urlsplit(href).netloc != urlsplit(school["base"]).netloc:
+            continue
+        match = item_re.search(href)
+        if not match:
+            continue
+        article_id = match.group(1)
+        title = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
+        if article_id in seen or is_invalid_title(title) or is_mojibake(title):
+            continue
+        seen.add(article_id)
+        date = parse_date_near(anchor)
+        href_parts = urlsplit(href)
+        canonical_url = urlunsplit((href_parts.scheme, href_parts.netloc, href_parts.path,
+                                    "nid=" + article_id, ""))
+        items.append({
+            "id": f'{school["id"]}-{article_id}',
+            "school": school["id"],
+            "school_name": school["short"],
+            "title": title,
+            "url": canonical_url,
+            "date": date,
+            "date_source": "list" if date else "",
+            "cat_ref": "",
+            "source_category": "消息公佈欄",
+            "_source_url": source_url,
+        })
+    return items
+
+
+def extract_items(html: str, school: dict, source_url: str):
+    if school.get("adapter", "rulingdigital") == "ischool-site-news":
+        return extract_ischool_items(html, school, source_url)
+    return extract_rulingdigital_items(html, school, source_url)
 
 
 def list_page_urls(school: dict) -> list:
@@ -384,6 +426,8 @@ def validate_history_capacity(items, max_items: int) -> None:
 
 def configured_categories(school: dict) -> set:
     """該校 config 裡已納入的 403 分類編號。"""
+    if school.get("adapter", "rulingdigital") != "rulingdigital" or not school.get("unit"):
+        return set()
     ids = set()
     for url in list_page_urls(school):
         m = re.search(r"/p/403-%s-(\d+)-\d+\.php" % re.escape(school["unit"]), url)
@@ -419,7 +463,7 @@ def _article_body(soup: BeautifulSoup):
     for tag in soup(["script", "style", "nav", "header", "footer"]):
         tag.decompose()
     candidates = []
-    for sel in ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article"]:
+    for sel in ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article", ".news_content", ".news-content", ".page_content"]:
         candidates += soup.select(sel)
     if not candidates:
         # 後備方案:找含最多文字的 div
@@ -735,7 +779,8 @@ def main() -> int:
 
         # 覆蓋率哨兵:首頁出現的文章,其分類若不在 config 就記下來
         gaps = coverage_gaps(scanned_items, configured_categories(school),
-                             CONFIG.get("coverage_ignore", {}).get(school["id"], []))
+                             CONFIG.get("coverage_ignore", {}).get(school["id"], [])) \
+            if school.get("adapter", "rulingdigital") == "rulingdigital" else []
         for g in gaps:
             g["school_name"] = school["short"]
             g["list_page"] = (f'{school["base"]}/p/403-{school["unit"]}'

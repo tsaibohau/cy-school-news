@@ -14,12 +14,22 @@ assert.deepEqual(QA.intent("獎學金什麼時候截止"), ["date"]);
 const result = QA.answer("手機需要上繳嗎？", items, details);
 assert.equal(result.status, "answered");
 assert(result.evidence.some(row => row.announcement_id === "a1"));
+assert(result.answer_lines.some(row => row.includes("自行保管")), "direct answer stays grounded in the official sentence");
+assert.equal(result.plan.yes_no, true);
+assert.match(result.limitation, /官方|公告|附件/);
 assert.match(result.summary, /官方.*重點|先說結論/);
 assert(!result.summary.includes("整理出以下重點"), "answer lead should be natural instead of a generic result count");
 assert.equal(QA.smoothEvidence("主旨：請於九月十日前送件。"), "請於九月十日前送件。");
 assert.match(QA.composeSummary([{ text: "科學營於九月五日前報名。" }, { text: "寫作工作坊於九月十日前報名。" }], [{ id: "one" }, { id: "two" }], []), /不是同一項活動/);
 assert.equal(Schools.mentionedSchool("嘉義女中的獎學金有哪些？").id, "cygsh");
 assert.equal(Schools.mentionedSchool("請查 CYSH 宿舍規定").id, "cysh");
+assert.equal(Schools.mentionedSchool("北港高中模擬考公告了嗎").id, "pksh");
+assert.equal(QA.questionPlan("目前最新的報名方式是什麼").wants_latest, true);
+const split = QA.answerLines([
+  { announcement_id: "one", text: "科學營於九月五日前報名。" },
+  { announcement_id: "two", text: "寫作工作坊於九月十日前報名。" },
+], [{ id: "one", title: "科學營" }, { id: "two", title: "寫作工作坊" }]);
+assert.deepEqual(split, ["科學營：科學營於九月五日前報名。", "寫作工作坊：寫作工作坊於九月十日前報名。"]);
 assert(!QA.rank("手機或行動載具有什麼規定？", items, details).some(row => row.item.id === "a3"), "generic words cannot pull an unrelated regulation into the answer");
 assert.equal(QA.answer("火星社團在哪裡", items, {}).status, "insufficient", "unsupported questions are not guessed");
 let feedback = Feedback.record({}, "announcement:a1", "add_task", "2026-08-27T00:00:00Z");

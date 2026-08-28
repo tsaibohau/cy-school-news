@@ -299,6 +299,20 @@
           "tier": "hot"
         }
       ]
+    },
+    {
+      "id": "pksh",
+      "name": "國立北港高級中學",
+      "short": "北港高中",
+      "base": "https://www.pksh.ylc.edu.tw",
+      "adapter": "ischool-site-news",
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a",
+          "tier": "hot"
+        }
+      ]
     }
   ],
   "max_items": 6000,

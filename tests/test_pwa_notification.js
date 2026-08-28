@@ -69,7 +69,7 @@ function makeDocument() {
     "list", "subList", "countLine", "updatedAt", "q", "schoolSeg", "catChips",
     "viewLatest", "viewSub", "tabLatest", "tabSub", "subBadge", "kwForm",
     "kwInput", "kwChips", "btnNotify", "notifyState", "btnRefresh", "refreshState",
-    "profileBox", "profileHint", "profileForm", "profileSchool", "profileGrade",
+    "profileBox", "profileHint", "profileForm", "profileSchool", "profileGrade", "accountEmail",
     "profileClass", "profileInterests", "profileCategories", "profileKeywords",
     "profileSave", "profileStatus", "personalizedToggle",
   ];
@@ -639,7 +639,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v40/);
+  assert.match(swSource, /cy-news-v41/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);

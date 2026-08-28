@@ -443,6 +443,11 @@ body { background: var(--paper); }
 .my-card-heading h3, .my-card-heading p { margin: 0; }
 .my-card-heading h3 { font-family: var(--serif); font-size: 17px; }
 .my-card-heading p { color: var(--muted); font-size: 12.5px; }
+.account-identity { display: grid; gap: 2px; min-width: 0; }
+.account-email { color: var(--ink); font-size: 12.5px; overflow-wrap: anywhere; }
+.assistant-answer-lines { display: grid; gap: 8px; margin: 8px 0 14px; padding-left: 22px; }
+.assistant-answer-lines li { line-height: 1.65; }
+.assistant-limitation { margin: 10px 0 14px; padding: 10px 12px; border-left: 3px solid var(--seal); background: color-mix(in srgb, var(--paper) 72%, transparent); border-radius: 0 10px 10px 0; color: var(--muted); }
 .my-card-icon { display: grid; place-items: center; flex: 0 0 38px; width: 38px; height: 38px; border-radius: 12px; background: var(--chip-bg); color: var(--seal); font: 800 14px/1 var(--serif); }
 .account-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .my-disclosure { padding: 0; }
