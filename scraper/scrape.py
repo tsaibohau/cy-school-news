@@ -13,6 +13,7 @@ scraper/new_items.json 供推播使用。
 import json
 import os
 import re
+import ssl
 import sys
 import time
 from datetime import datetime, timezone, timedelta
@@ -261,23 +262,32 @@ def extract_rulingdigital_items(html: str, school: dict, source_url: str):
     return items
 
 
+def _ischool_url(value: str, school: dict, *, path: str) -> str:
+    """Return one canonical same-origin iSchool URL or fail closed."""
+    resolved = urljoin(school["base"], str(value or "").strip())
+    parsed = urlsplit(resolved)
+    base = urlsplit(school["base"])
+    try:
+        origin = (parsed.scheme, parsed.hostname, parsed.port or 443)
+        base_origin = (base.scheme, base.hostname, base.port or 443)
+    except ValueError:
+        return ""
+    if (parsed.scheme != "https" or origin != base_origin or parsed.username or
+            parsed.password or parsed.path != path):
+        return ""
+    return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, parsed.query, ""))
+
+
 def extract_ischool_items(html: str, school: dict, source_url: str):
     """Extract iSchool site-news rows using only the stable official nid URL."""
     soup = BeautifulSoup(html, "html.parser")
-    base = urlsplit(school["base"])
-    base_origin = (base.scheme, base.hostname, base.port or 443)
     items, seen = [], set()
     for anchor in soup.find_all("a", href=True):
-        href = urljoin(school["base"], anchor.get("href", ""))
+        href = _ischool_url(anchor.get("href", ""), school,
+                            path="/ischool/public/news_view/show.php")
+        if not href:
+            continue
         parsed = urlsplit(href)
-        try:
-            origin = (parsed.scheme, parsed.hostname, parsed.port or 443)
-        except ValueError:
-            continue
-        if (origin != base_origin or parsed.scheme != "https" or
-                parsed.username or parsed.password or
-                parsed.path != "/ischool/public/news_view/show.php"):
-            continue
         nid_values = parse_qs(parsed.query, keep_blank_values=True).get("nid", [])
         if len(nid_values) != 1 or not re.fullmatch(r"\d+", nid_values[0]):
             continue
@@ -303,6 +313,35 @@ def extract_ischool_items(html: str, school: dict, source_url: str):
             "_source_url": source_url,
         })
     return items
+
+
+ISCHOOL_NEXT_LABELS = {"下一頁", "下頁", "next", "next page", "›", "»"}
+
+
+def extract_ischool_next_page(html: str, school: dict, source_url: str) -> str:
+    """Read the real next-page link without guessing iSchool parameters."""
+    soup = BeautifulSoup(html, "html.parser")
+    source = urlsplit(source_url)
+    source_uid = parse_qs(source.query, keep_blank_values=True).get("uid", [])
+    if len(source_uid) != 1 or not source_uid[0]:
+        return ""
+    for anchor in soup.find_all("a", href=True):
+        label = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip().lower()
+        aria = re.sub(r"\s+", " ", str(anchor.get("aria-label") or "")).strip().lower()
+        if label not in ISCHOOL_NEXT_LABELS and aria not in ISCHOOL_NEXT_LABELS:
+            continue
+        candidate = _ischool_url(anchor.get("href", ""), school,
+                                 path="/ischool/widget/site_news/main2.php")
+        if not candidate or candidate == source_url:
+            continue
+        query = parse_qs(urlsplit(candidate).query, keep_blank_values=True)
+        if query.get("uid", []) != source_uid:
+            continue
+        if any(len(key) > 40 or len(value) > 300
+               for key, values in query.items() for value in values):
+            continue
+        return candidate
+    return ""
 
 
 def extract_items(html: str, school: dict, source_url: str):
@@ -570,8 +609,28 @@ def decode_response(response) -> str:
     return raw.decode("utf-8", errors="replace")
 
 
-def fetch(session: requests.Session, url: str) -> str:
-    resp = session.get(url, timeout=CONFIG["timeout_sec"])
+def system_ca_bundle() -> str:
+    """Return the OS-managed CA file, never an unverified custom certificate."""
+    candidates = [ssl.get_default_verify_paths().cafile,
+                  "/etc/ssl/certs/ca-certificates.crt"]
+    for candidate in candidates:
+        if candidate and Path(candidate).is_file():
+            return str(Path(candidate).resolve())
+    return ""
+
+
+def fetch(session: requests.Session, url: str, school: dict | None = None) -> str:
+    try:
+        resp = session.get(url, timeout=CONFIG["timeout_sec"])
+    except requests.exceptions.SSLError:
+        if not school or school.get("tls_verify_fallback") != "system-ca":
+            raise
+        ca_bundle = system_ca_bundle()
+        if not ca_bundle:
+            raise
+        print(f"[info] {school['id']}: 使用系統 CA bundle 重新驗證 TLS",
+              file=sys.stderr)
+        resp = session.get(url, timeout=CONFIG["timeout_sec"], verify=ca_bundle)
     resp.raise_for_status()
     return decode_response(resp)
 
@@ -734,7 +793,7 @@ def main() -> int:
                 skipped_cold += 1
                 continue
             try:
-                html = fetch(session, page_url)
+                html = fetch(session, page_url, school)
             except Exception as e:
                 source_status = record_source_status(fetch_state, school["id"], page_url, now_iso, e)
                 print(f"[warn] 略過 {page_url}: {e}", file=sys.stderr)
@@ -750,6 +809,25 @@ def main() -> int:
                 # 穩定 rank 選 canonical source，與 traversal 順序無關。
                 merge_collected_item(collected, it)
             time.sleep(delay)
+
+            if school.get("adapter") == "ischool-site-news":
+                visited_pages = {page_url}
+                current_url, current_html = page_url, html
+                max_pages = max(1, min(int(school.get("max_list_pages", 3)), 5))
+                for _ in range(1, max_pages):
+                    next_url = extract_ischool_next_page(current_html, school, current_url)
+                    if not next_url or next_url in visited_pages:
+                        break
+                    try:
+                        current_html = fetch(session, next_url, school)
+                    except Exception as e:
+                        print(f"[warn] iSchool 分頁略過 {next_url}: {e}", file=sys.stderr)
+                        break
+                    visited_pages.add(next_url)
+                    current_url = next_url
+                    for it in extract_items(current_html, school, current_url):
+                        merge_collected_item(collected, it)
+                    time.sleep(delay)
 
             # 深度回補:對 403 分類頁繼續抓第 2、3…頁
             if deep_crawl and "/p/403-" in page_url:
@@ -783,7 +861,7 @@ def main() -> int:
                 it for it in new_for_school[cap:] if not it.get("date")]
         for it in snippet_targets:
             try:
-                html = fetch(session, it["url"])
+                html = fetch(session, it["url"], school)
                 detail_title = extract_article_title(html)
                 merge_title(it, detail_title, authoritative=True)
                 it["snippet"] = extract_article_snippet(html, it["title"])
@@ -879,7 +957,9 @@ def main() -> int:
     for it in pending[:backfill_cap]:
         detail_needed = needs_detail(it)
         try:
-            html = fetch(session, it["url"])
+            item_school = next((school for school in CONFIG["schools"]
+                                if school["id"] == it.get("school")), None)
+            html = fetch(session, it["url"], item_school)
         except Exception as e:
             print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)
             if detail_needed:

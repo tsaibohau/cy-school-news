@@ -306,6 +306,8 @@
       "short": "北港高中",
       "base": "https://www.pksh.ylc.edu.tw",
       "adapter": "ischool-site-news",
+      "tls_verify_fallback": "system-ca",
+      "max_list_pages": 3,
       "scan_pages": [],
       "list_pages": [
         {
