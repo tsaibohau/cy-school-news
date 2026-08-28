@@ -45,6 +45,39 @@ jobs:
             -showcerts </dev/null 2>&1 | tee pksh-openssl.log
           echo "openssl_exit=${PIPESTATUS[0]}" | tee -a pksh-openssl.log
 
+      - name: Probe official hostname and iSchool endpoint alternatives
+        # This is read-only.  It deliberately keeps normal certificate
+        # verification enabled: a URL path cannot bypass a TLS failure, but
+        # this records whether the bare official hostname differs from www and
+        # whether the documented iSchool endpoints are reachable at all.
+        shell: bash
+        run: |
+          set +e
+          : > pksh-alternatives.log
+          probe() {
+            local label="$1"
+            shift
+            echo "=== ${label} ===" | tee -a pksh-alternatives.log
+            curl --silent --show-error --location \
+              --connect-timeout 20 --max-time 40 \
+              --output /dev/null --write-out 'http_status=%{http_code} curl_exit=%{exitcode} remote_ip=%{remote_ip}\n' \
+              "$@" 2>&1 | tee -a pksh-alternatives.log
+          }
+          probe bare_official_home https://pksh.ylc.edu.tw/
+          probe bare_official_main2 \
+            'https://pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a'
+          probe www_official_main2 \
+            'https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a'
+          probe iSchool_list_post --request POST --data \
+            'field=time&order=DESC&pageNum=0&maxRows=1&keyword=&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a&tf=1&auth_type=user&flock=' \
+            https://www.pksh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php
+          # RSS is not an established iSchool endpoint in this installation.
+          # It may only be discovered from a successfully fetched main2 HTML;
+          # do not guess a feed and do not treat any alternate path as data.
+          openssl s_client -connect pksh.ylc.edu.tw:443 -servername pksh.ylc.edu.tw \
+            -verify_return_error </dev/null 2>&1 | tee -a pksh-alternatives.log
+          echo "bare_openssl_exit=${PIPESTATUS[0]}" | tee -a pksh-alternatives.log
+
       - name: PKSH five-record live API acceptance
         id: live
         continue-on-error: true
@@ -84,6 +117,7 @@ jobs:
             pksh-network.log
             pksh-curl.log
             pksh-openssl.log
+            pksh-alternatives.log
             pksh-live-report.json
             pksh-integration-report.json
 
