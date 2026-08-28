@@ -41,6 +41,7 @@ jobs:
           openssl s_client \
             -connect www.pksh.ylc.edu.tw:443 \
             -servername www.pksh.ylc.edu.tw \
+            -verify_return_error \
             -showcerts </dev/null 2>&1 | tee pksh-openssl.log
           echo "openssl_exit=${PIPESTATUS[0]}" | tee -a pksh-openssl.log
 

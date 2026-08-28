@@ -53,6 +53,9 @@ session.headers.update({
     "Accept-Language": "zh-TW,zh;q=0.9",
 })
 report = {"verdict": "BLOCKED", "network": {}, "api": {}, "records": []}
+report["network"]["requests_ca_bundle"] = requests.certs.where()
+emit("pksh_tls_policy", verify=True,
+     ca_bundle=report["network"]["requests_ca_bundle"])
 
 try:
     board_params = {
