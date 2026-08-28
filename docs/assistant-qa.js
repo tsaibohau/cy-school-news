@@ -120,6 +120,7 @@
   function composeSummary(evidence, sources, wanted) {
     var lead = evidence.length ? smoothEvidence(evidence[0].text) : "";
     if (!lead) return "目前資料不足，找不到可驗證的答案。";
+    if (sources.length > 1) return "找到 " + sources.length + " 則可能相關的官方資訊，已按公告分開整理；它們不是同一項活動，請逐項核對。";
     var prefix = "依官方公告，最相關的重點是：";
     if (wanted.indexOf("date") !== -1) prefix = "先說結論，官方資料中的時間重點是：";
     else if (wanted.indexOf("method") !== -1) prefix = "依官方公告，辦理方式的重點是：";
@@ -140,7 +141,7 @@
       var sourceText = detailText(row.detail) || clean((row.item.summary || "") + " " + (row.item.snippet || ""));
       sentences(sourceText).map(function (sentence) { return { text: sentence, score: evidenceScore(sentence, queryTokens, wanted), item: row.item }; })
         .filter(function (candidate) { return candidate.score >= 4; })
-        .sort(function (a, b) { return b.score - a.score; }).slice(0, 2).forEach(function (candidate) {
+        .sort(function (a, b) { return b.score - a.score; }).slice(0, 1).forEach(function (candidate) {
           var key = compact(candidate.text);
           if (!seen[key] && evidence.length < 4) { seen[key] = true; evidence.push({ text: candidate.text.slice(0, 220), announcement_id: candidate.item.id, title: candidate.item.title, score: candidate.score }); }
         });
