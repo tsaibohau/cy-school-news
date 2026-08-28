@@ -28,10 +28,24 @@ row = page.items[0]
 assert row["id"] == "pksh-28123" and row["source_id"] == "pksh:28123"
 assert row["date"] == "2026-08-26" and row["source_unit"] == "教務處"
 assert row["url"].endswith("show.php?nid=28123")
-assert adapter.parse_detail({"content": "%E5%85%AC%E5%91%8A%E6%9C%AC%E6%96%87"}) == "公告本文"
+detail = adapter.parse_detail({
+    "content": "%E5%85%AC%E5%91%8A%E6%9C%AC%E6%96%87%3Ca%20href%3D%22https%3A%2F%2Fexample.invalid%22%3E%E5%A4%96%E9%83%A8%3C%2Fa%3E",
+    "attachedfile": [{"name": "official.pdf", "url": "/ischool/news/attached/28123/official.pdf"}],
+})
+assert detail.content.startswith("公告本文")
+assert detail.attachments[0]["filename"] == "official.pdf"
+assert detail.external_links == [{"text": "外部", "url": "https://example.invalid"}]
 try:
     adapter.parse_detail({"content": "The news is not existed"})
     raise AssertionError("deleted iSchool detail must fail")
+except ValueError:
+    pass
+
+# Metadata with pages but no usable numeric newsId is an invalid list, not an
+# empty school. It exercises external fake links and schema drift fail-closed.
+try:
+    adapter.parse_list([{"totalPages": 1}, {"newsId": "bad", "title": "偽造"}], "WID_0_2_live")
+    raise AssertionError("invalid iSchool list must fail")
 except ValueError:
     pass
 

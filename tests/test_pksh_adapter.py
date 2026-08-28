@@ -7,7 +7,8 @@ sys.path.insert(0, str(ROOT / "scraper"))
 import requests
 import scrape  # noqa: E402
 from detail_parser import parse_article_detail  # noqa: E402
-from scrape import extract_article_date_result, extract_ischool_next_page, extract_items  # noqa: E402
+from scrape import (extract_article_date_result, extract_ischool_next_page, extract_items,
+                    pksh_empty_result_is_failure, pksh_news_id)  # noqa: E402
 
 
 def read(name):
@@ -60,6 +61,11 @@ finally:
 assert len(fallback_session.calls) == 2
 assert fallback_session.calls[1][1]["verify"] == "/etc/ssl/certs/ca-certificates.crt"
 assert fallback_session.calls[1][1]["verify"] is not False
+assert pksh_empty_result_is_failure(10, 0)
+assert not pksh_empty_result_is_failure(9, 0)
+assert not pksh_empty_result_is_failure(10, 1)
+assert pksh_news_id({"source_id": "pksh:28123"}) == "28123"
+assert pksh_news_id({"id": "pksh-28123"}) == "28123"
 
 detail_html = read("pksh_detail.html")
 assert extract_article_date_result(detail_html) == {"date": "2026-08-26", "date_source": "publication"}

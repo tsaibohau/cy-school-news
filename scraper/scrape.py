@@ -71,6 +71,10 @@ CATEGORY_SLUGS = {
 }
 SOURCE_STATUS_KEY = "__source_status__"
 
+
+class SourceValidationError(RuntimeError):
+    """A syntactically valid source response that must not replace a snapshot."""
+
 # Date provenance is persisted explicitly when it is known.  Older records
 # without this field are treated as reliable persisted observations, never as
 # weak list-page observations.
@@ -646,7 +650,23 @@ def fetch_error_class(exc: Exception) -> str:
         return "http_error"
     if isinstance(exc, requests.exceptions.ConnectionError):
         return "network_error"
+    if isinstance(exc, SourceValidationError):
+        return "invalid_response"
     return "unexpected_error"
+
+
+def pksh_empty_result_is_failure(previous_count: int, collected_count: int) -> bool:
+    """Protect a mature PKSH snapshot from an apparently empty board."""
+    return previous_count >= 10 and collected_count == 0
+
+
+def pksh_news_id(item: dict) -> str:
+    """Read either the new canonical source_id or the legacy public id."""
+    source_id = str(item.get("source_id") or "")
+    if source_id.startswith("pksh:"):
+        return source_id[5:]
+    item_id = str(item.get("id") or "")
+    return item_id[5:] if item_id.startswith("pksh-") else ""
 
 
 def record_source_status(fetch_state: dict, school_id: str, url: str,
@@ -715,6 +735,35 @@ def write_detail_record(item: dict, html: str, fetched_at: str, *, session=None,
     return record
 
 
+def write_ischool_detail_record(item: dict, detail, fetched_at: str, *, session=None,
+                                attachment_budget=None, request_delay_sec=None) -> dict:
+    """Store an iSchool JSON detail through the normal sidecar schema.
+
+    The generic parser gives the public detail record its stable block schema;
+    the API's explicit attachment and external-link arrays then augment it.
+    """
+    record = write_detail_record(
+        item, detail.content_html, fetched_at, session=session,
+        attachment_budget=attachment_budget, request_delay_sec=request_delay_sec)
+    existing = {row.get("url") for row in record.get("attachments", [])}
+    for attachment in detail.attachments:
+        if attachment.get("url") in existing:
+            continue
+        record.setdefault("attachments", []).append({
+            "filename": attachment.get("filename") or "官方附件",
+            "url": attachment["url"], "extension": "", "mime_type": "",
+            "size": None, "announcement_id": item.get("id", ""),
+            "provenance": "official_attachment", "parse_status": "pending",
+        })
+    record["external_links"] = detail.external_links
+    record["content"] = detail.content
+    school_id = str(item.get("school") or "unknown").lower()
+    target = DETAIL_ROOT / re.sub(r"[^A-Za-z0-9_-]+", "_", school_id) / (
+        _detail_filename(item.get("id", "")) + ".json")
+    target.write_text(json.dumps(record, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return record
+
+
 def record_detail_fetch_failure(item: dict, max_attempts: int = 5) -> str:
     """Persist bounded retry state without storing exception text or secrets."""
     attempts = int(item.get("detail_attempts") or 0) + 1
@@ -761,6 +810,7 @@ def main() -> int:
     all_new = []
     fetched_this_run = set()
     all_gaps = []
+    ischool_runtime = {}
 
     # 來源分級:cold 頁的上次抓取時間記在 fetch_state.json(由 Actions 一起提交)
     fetch_all = bool(os.environ.get("FETCH_ALL", "").strip())
@@ -803,15 +853,35 @@ def main() -> int:
             if used_fallback:
                 print(f"[warn] {school['short']}: using configured board UID fallback", file=sys.stderr)
             try:
-                api_page = adapter.fetch_list(session, uid, tf=1, timeout=CONFIG["timeout_sec"])
-                if not api_page.items:
-                    api_page = adapter.fetch_list(session, uid, tf=2, timeout=CONFIG["timeout_sec"])
-                    print(f"[info] {school['short']}: iSchool API tf=1 returned no rows; tried tf=2")
+                api_page, used_tf = adapter.fetch_list_with_fallback(
+                    session, uid, timeout=CONFIG["timeout_sec"])
+                if used_tf == 2:
+                    print(f"[info] {school['short']}: iSchool API used tf=2 fallback")
                 for it in api_page.items:
                     merge_collected_item(collected, it)
+                list_url = school["base"] + adapter.list_path
+                cold_due = should_fetch(list_url, "cold", fetch_state, fetch_all,
+                                        cold_hours, hot_only)
+                max_pages = max(1, min(int(school.get("max_list_pages", 3)), 500))
+                target_pages = max_pages if (fetch_all or deep_crawl or cold_due) else min(2, max_pages)
+                total_pages = max(1, api_page.total_pages)
+                for page_no in range(1, min(target_pages, total_pages)):
+                    time.sleep(delay)
+                    page, page_tf = adapter.fetch_list_with_fallback(
+                        session, uid, page=page_no, timeout=CONFIG["timeout_sec"])
+                    if page_tf != used_tf:
+                        print(f"[warn] {school['short']}: page {page_no} changed tf={used_tf} to tf={page_tf}", file=sys.stderr)
+                    for it in page.items:
+                        merge_collected_item(collected, it)
+                previous_pksh = sum(1 for item in by_id.values()
+                                    if item.get("school") == "pksh")
+                if pksh_empty_result_is_failure(previous_pksh, len(collected)):
+                    raise SourceValidationError(
+                        "PKSH returned zero rows while a prior valid snapshot has at least 10 rows")
                 api_succeeded = True
-                record_source_status(fetch_state, school["id"], school["base"] + adapter.list_path, now_iso)
-                print(f"[info] {school['short']}: iSchool JSON {len(api_page.items)} 筆, {api_page.total_pages} 頁")
+                ischool_runtime[school["id"]] = (adapter, uid)
+                record_source_status(fetch_state, school["id"], list_url, now_iso)
+                print(f"[info] {school['short']}: iSchool JSON {len(collected)} 筆, {api_page.total_pages} 頁")
             except Exception as e:
                 source_status = record_source_status(fetch_state, school["id"], school["base"] + adapter.list_path, now_iso, e)
                 print(f"[warn] {school['short']} iSchool API unavailable: {source_status['error_class']}", file=sys.stderr)
@@ -892,6 +962,23 @@ def main() -> int:
                 it for it in new_for_school[cap:] if not it.get("date")]
         for it in snippet_targets:
             try:
+                runtime = ischool_runtime.get(school["id"])
+                if runtime:
+                    adapter, uid = runtime
+                    nid = pksh_news_id(it)
+                    if not re.fullmatch(r"\d+", nid):
+                        raise SourceValidationError("PKSH item has no numeric newsId")
+                    detail = adapter.fetch_detail(session, nid, uid, timeout=CONFIG["timeout_sec"])
+                    html = detail.content_html
+                    it["snippet"] = detail.content[:500]
+                    write_ischool_detail_record(
+                        it, detail, now_iso, session=session,
+                        attachment_budget=attachment_budget, request_delay_sec=delay)
+                    if not it["snippet"]:
+                        it["snippet_tried"] = True
+                    fetched_this_run.add(it["id"])
+                    time.sleep(delay)
+                    continue
                 html = fetch(session, it["url"], school)
                 detail_title = extract_article_title(html)
                 merge_title(it, detail_title, authoritative=True)
@@ -990,7 +1077,17 @@ def main() -> int:
         try:
             item_school = next((school for school in CONFIG["schools"]
                                 if school["id"] == it.get("school")), None)
-            html = fetch(session, it["url"], item_school)
+            runtime = ischool_runtime.get(it.get("school"))
+            ischool_detail = None
+            if runtime:
+                adapter, uid = runtime
+                nid = pksh_news_id(it)
+                if not re.fullmatch(r"\d+", nid):
+                    raise SourceValidationError("PKSH item has no numeric newsId")
+                ischool_detail = adapter.fetch_detail(session, nid, uid, timeout=CONFIG["timeout_sec"])
+                html = ischool_detail.content_html
+            else:
+                html = fetch(session, it["url"], item_school)
         except Exception as e:
             print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)
             if detail_needed:
@@ -1019,7 +1116,10 @@ def main() -> int:
             if it.get("title", "") != before:
                 repaired_titles += 1
         if detail_needed:
-            write_detail_record(it, html, now_iso)
+            if ischool_detail:
+                write_ischool_detail_record(it, ischool_detail, now_iso)
+            else:
+                write_detail_record(it, html, now_iso)
         time.sleep(delay)
     if pending:
         done = min(len(pending), backfill_cap)
