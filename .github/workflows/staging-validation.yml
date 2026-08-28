@@ -75,9 +75,11 @@ jobs:
           python tests/test_parser.py
           python tests/test_calendar_adapter.py
           python tests/test_detail_parser.py
+          python tests/test_pksh_adapter.py
           python tests/test_detail_backfill.py
           python tests/test_attachment_parser.py
           python tests/test_reminder_targets.py
+          python tests/test_public_shards.py
       - name: Verify generated data is untouched by staging build
         run: git diff --exit-code -- docs/data scraper/fetch_state.json
       - name: Reject tracked secret patterns
