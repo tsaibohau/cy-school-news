@@ -17,7 +17,7 @@ import sys
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from urllib.parse import urljoin, urlsplit, urlunsplit
+from urllib.parse import parse_qs, urljoin, urlsplit, urlunsplit
 
 import requests
 from attachment_parser import enrich_pdf_attachments
@@ -67,6 +67,7 @@ CATEGORY_SLUGS = {
     "榮譽榜": "honor", "競賽": "contest", "社團": "club",
     "研習活動": "event", "招生編班": "enroll", "行政公告": "admin", "一般": "general",
 }
+SOURCE_STATUS_KEY = "__source_status__"
 
 # Date provenance is persisted explicitly when it is known.  Older records
 # without this field are treated as reliable persisted observations, never as
@@ -263,16 +264,24 @@ def extract_rulingdigital_items(html: str, school: dict, source_url: str):
 def extract_ischool_items(html: str, school: dict, source_url: str):
     """Extract iSchool site-news rows using only the stable official nid URL."""
     soup = BeautifulSoup(html, "html.parser")
-    item_re = re.compile(r"/ischool/public/news_view/show\.php\?[^#]*\bnid=(\d+)")
+    base = urlsplit(school["base"])
+    base_origin = (base.scheme, base.hostname, base.port or 443)
     items, seen = [], set()
     for anchor in soup.find_all("a", href=True):
         href = urljoin(school["base"], anchor.get("href", ""))
-        if urlsplit(href).netloc != urlsplit(school["base"]).netloc:
+        parsed = urlsplit(href)
+        try:
+            origin = (parsed.scheme, parsed.hostname, parsed.port or 443)
+        except ValueError:
             continue
-        match = item_re.search(href)
-        if not match:
+        if (origin != base_origin or parsed.scheme != "https" or
+                parsed.username or parsed.password or
+                parsed.path != "/ischool/public/news_view/show.php"):
             continue
-        article_id = match.group(1)
+        nid_values = parse_qs(parsed.query, keep_blank_values=True).get("nid", [])
+        if len(nid_values) != 1 or not re.fullmatch(r"\d+", nid_values[0]):
+            continue
+        article_id = nid_values[0]
         title = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
         if article_id in seen or is_invalid_title(title) or is_mojibake(title):
             continue
@@ -567,6 +576,40 @@ def fetch(session: requests.Session, url: str) -> str:
     return decode_response(resp)
 
 
+def fetch_error_class(exc: Exception) -> str:
+    """Return a stable, non-sensitive source error suitable for machine state."""
+    if isinstance(exc, requests.exceptions.SSLError):
+        return "tls_certificate_error"
+    if isinstance(exc, requests.exceptions.Timeout):
+        return "timeout"
+    if isinstance(exc, requests.exceptions.HTTPError):
+        return "http_error"
+    if isinstance(exc, requests.exceptions.ConnectionError):
+        return "network_error"
+    return "unexpected_error"
+
+
+def record_source_status(fetch_state: dict, school_id: str, url: str,
+                         attempted_at: str, error: Exception | None = None) -> dict:
+    """Persist an explicit source outcome without weakening TLS verification.
+
+    The legacy top-level ``url -> last successful timestamp`` entries stay in
+    place so hot/cold scheduling remains backwards compatible. Failure details
+    are deliberately classified rather than serialising exception text.
+    """
+    statuses = fetch_state.setdefault(SOURCE_STATUS_KEY, {})
+    status = {
+        "school": str(school_id),
+        "status": "ok" if error is None else "unavailable",
+        "last_attempt": attempted_at,
+        "error_class": "" if error is None else fetch_error_class(error),
+    }
+    statuses[url] = status
+    if error is None:
+        fetch_state[url] = attempted_at
+    return status
+
+
 def _detail_filename(announcement_id: str) -> str:
     safe = re.sub(r"[^A-Za-z0-9._-]+", "_", str(announcement_id)).strip("._")
     return safe or "unknown"
@@ -693,10 +736,12 @@ def main() -> int:
             try:
                 html = fetch(session, page_url)
             except Exception as e:
+                source_status = record_source_status(fetch_state, school["id"], page_url, now_iso, e)
                 print(f"[warn] 略過 {page_url}: {e}", file=sys.stderr)
+                print(f"[warn] 來源狀態 {school['id']}: {source_status['error_class']}", file=sys.stderr)
                 time.sleep(delay)
                 continue
-            fetch_state[page_url] = now_iso
+            record_source_status(fetch_state, school["id"], page_url, now_iso)
             page_items = extract_items(html, school, page_url)
             if page_url in scan_pages:
                 scanned_items += page_items

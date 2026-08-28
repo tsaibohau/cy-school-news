@@ -50,6 +50,21 @@ def _safe_https_url(value: str, source_url: str) -> str:
     return resolved if parsed.scheme == "https" and bool(parsed.netloc) else ""
 
 
+def _same_origin_https_url(value: str, source_url: str) -> str:
+    resolved = _safe_https_url(value, source_url)
+    if not resolved:
+        return ""
+    target, source = urlparse(resolved), urlparse(source_url)
+    if target.username or target.password:
+        return ""
+    try:
+        target_port = target.port or 443
+        source_port = source.port or 443
+    except ValueError:
+        return ""
+    return resolved if (target.hostname, target_port) == (source.hostname, source_port) else ""
+
+
 def _body(soup: BeautifulSoup):
     for selector in NOISE_SELECTORS:
         for node in soup.select(selector):
@@ -74,7 +89,7 @@ def _attachments(roots, source_url: str, announcement_id: str) -> list[dict]:
     for root in roots if isinstance(roots, (list, tuple)) else [roots]:
         anchors.extend(root.select("a[href]"))
     for anchor in anchors:
-        url = _safe_https_url(anchor.get("href", ""), source_url)
+        url = _same_origin_https_url(anchor.get("href", ""), source_url)
         if not url or url in seen:
             continue
         parsed = urlparse(url)

@@ -98,7 +98,12 @@
     <div class="section-heading"><div><p class="eyebrow">ANNOUNCEMENTS</p><h2>公告總庫</h2></div></div>
     <div class="controls">
       <input id="q" type="search" inputmode="search" placeholder="搜尋公告,可用空格分隔多個關鍵字" aria-label="搜尋公告">
-      <div class="seg" id="schoolSeg" role="tablist" aria-label="學校篩選"></div>
+      <label class="school-filter" for="schoolFilter">
+        <span>學校</span>
+        <select id="schoolFilter" aria-label="選擇公告學校">
+          <option value="all">所有學校</option>
+        </select>
+      </label>
       <div class="chips" id="catChips" aria-label="分類篩選"></div>
     </div>
     <p id="countLine" class="count-line"></p>
