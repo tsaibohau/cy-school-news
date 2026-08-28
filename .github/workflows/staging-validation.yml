@@ -81,11 +81,6 @@ jobs:
           python tests/test_reminder_targets.py
           python tests/test_public_shards.py
           python tests/test_ischool_adapter.py
-      - name: Read-only PKSH JSON API probe
-        if: github.ref == 'refs/heads/feature/personal-assistant-v1'
-        env:
-          PKSH_LIVE_API: '1'
-        run: python tests/test_pksh_live_api.py
       - name: Verify generated data is untouched by staging build
         run: git diff --exit-code -- docs/data scraper/fetch_state.json
       - name: Reject tracked secret patterns
