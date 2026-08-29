@@ -6,6 +6,9 @@
 })(typeof window !== "undefined" ? window : this, function () {
   "use strict";
 
+  var SearchQuery = typeof window !== "undefined" ? window.CyNewsSearchQuery : null;
+  if (!SearchQuery && typeof module !== "undefined" && module.exports) SearchQuery = require("./search-query.js");
+
   var INTENTS = {
     date: ["何時", "什麼時候", "日期", "截止", "幾點", "時間", "多久"],
     place: ["哪裡", "地點", "在哪", "會場", "教室"],
@@ -35,6 +38,7 @@
         for (var i = 0; i + size <= base.length; i++) out.push(base.slice(i, i + size));
       }
     }
+    if (SearchQuery) out = out.concat(SearchQuery.terms(query));
     Object.keys(EXPANSIONS).forEach(function (key) {
       if (normalized.indexOf(key) !== -1) out = out.concat(EXPANSIONS[key]);
     });
@@ -51,6 +55,7 @@
     var value = compact(query);
     STOP.concat(GENERIC).sort(function (a, b) { return b.length - a.length; }).forEach(function (word) { value = value.split(word).join(""); });
     var out = [];
+    if (SearchQuery) out = out.concat(SearchQuery.terms(query));
     Object.keys(EXPANSIONS).forEach(function (key) {
       if (compact(query).indexOf(key) !== -1) out = out.concat([key]).concat(EXPANSIONS[key]);
     });
