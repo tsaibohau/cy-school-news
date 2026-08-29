@@ -792,6 +792,7 @@
     function matchQuery(it, q) {
       if (!q) return true;
       var text = itemText(it);
+      if (window.CyNewsSearchQuery) return window.CyNewsSearchQuery.matches(text, q);
       return q.toLowerCase().split(/\s+/).filter(Boolean).every(function (tok) {
         return text.indexOf(tok) !== -1;
       });
