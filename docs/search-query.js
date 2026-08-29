@@ -31,6 +31,8 @@
       terms: unique(matched), remainder: remainder.length >= 2 ? remainder : "" };
   }
   function primaryText(item) { return compact([item && item.title, item && item.category, item && item.source_category].filter(Boolean).join(" ")); }
+  function titleText(item) { return compact(item && item.title); }
+  function supportingText(item) { return compact([item && item.summary, item && item.snippet].filter(Boolean).join(" ")); }
   function labelsFromPrimary(item, kind) {
     var field = kind === "topic" ? "topics" : "actions", stored = item && item[field];
     if (Array.isArray(stored) && Number(item.classification_version) === Number(taxonomy.version)) return stored;
@@ -39,6 +41,15 @@
   }
   function includesAll(values, wanted) { return wanted.every(function (value) { return values.indexOf(value) !== -1; }); }
   function hasWord(text, word) { return !word || text.indexOf(word) !== -1; }
+  function ruleById(kind, id) { return allRules().filter(function (rule) { return rule.kind === kind && rule.row.id === id; })[0]; }
+  function hasRule(text, kind, id) {
+    var rule = ruleById(kind, id);
+    return !!(rule && findTerms(text, rule.row.terms).length);
+  }
+  function actionRequired(id) {
+    var rule = ruleById("action", id);
+    return !!(rule && rule.row.retrieval === "required");
+  }
   function terms(query) {
     var plan = queryPlan(query), rows = [];
     allRules().forEach(function (rule) {
@@ -53,24 +64,53 @@
     var plan = queryPlan(query), value = compact(text);
     if (!plan.value) return true;
     return plan.topics.every(function (id) { return allRules().some(function (rule) { return rule.kind === "topic" && rule.row.id === id && findTerms(value, rule.row.terms).length; }); }) &&
-      plan.actions.every(function (id) { return allRules().some(function (rule) { return rule.kind === "action" && rule.row.id === id && findTerms(value, rule.row.terms).length; }); }) && hasWord(value, plan.remainder);
+      hasWord(value, plan.remainder);
   }
   function primaryTopicsMatch(item, query) { return includesAll(labelsFromPrimary(item, "topic"), queryPlan(query).topics); }
   function announcementScore(item, query) {
-    var plan = queryPlan(query), primary = primaryText(item);
+    var plan = queryPlan(query), title = titleText(item), primary = primaryText(item), supporting = supportingText(item);
     if (!plan.value) return 1;
-    var topics = labelsFromPrimary(item, "topic"), actions = labelsFromPrimary(item, "action");
-    // Topics and actions are independent facets. A generic action cannot
-    // substitute for the topic the user explicitly requested.
-    if (!includesAll(topics, plan.topics) || !includesAll(actions, plan.actions)) return 0;
-    /* The unresolved part of a question is its subject, not optional prose.
-       It must occur in title/category/source-category.  A body-only mention
-       is evidence after retrieval, never a licence to retrieve the notice. */
-    if (plan.remainder && !hasWord(primary, plan.remainder)) return 0;
-    var score = plan.topics.length * 120 + plan.actions.length * 55;
-    if (hasWord(primary, plan.value)) score += 60;
-    else if (plan.remainder && hasWord(primary, plan.remainder)) score += 24;
-    return score || (hasWord(primary, plan.value) ? 20 : 0);
+    var primaryTopics = labelsFromPrimary(item, "topic"), score = 0, topicInPrimary = false;
+
+    /* Retrieval is deliberately recall-first, like a small fielded search
+       engine: subject terms find candidates; process words (apply/register)
+       improve their order but must never erase a relevant announcement. */
+    plan.topics.forEach(function (id) {
+      if (hasRule(title, "topic", id)) { score += 220; topicInPrimary = true; }
+      else if (hasRule(primary, "topic", id)) { score += 160; topicInPrimary = true; }
+      /* Summaries/snippets are not a trustworthy subject index: one can
+         mention a dormitory while the announcement is actually a camp or an
+         admission notice.  Keep them for ranking/evidence only. */
+      else score = -10000;
+    });
+    if (score < 0) return 0;
+
+    /* An unclassified subject still has a safe route: it must be named in a
+       title/category/source field.  This prevents a stray body sentence from
+       turning an unrelated announcement into the answer. */
+    if (plan.remainder) {
+      if (hasWord(title, plan.remainder)) score += 190;
+      else if (hasWord(primary, plan.remainder)) score += 125;
+      else return 0;
+    }
+
+    /* Process words rank results, rather than being an all-or-nothing gate. */
+    plan.actions.forEach(function (id) {
+      if (hasRule(title, "action", id)) score += 45;
+      else if (hasRule(primary, "action", id)) score += 28;
+      else if (hasRule(supporting, "action", id)) score += 8;
+      else if (actionRequired(id)) score = -10000;
+    });
+    if (score < 0) return 0;
+
+    /* A document whose title is clearly about a different known subject is
+       not promoted merely because its summary happens to mention the query. */
+    if (plan.topics.length && !topicInPrimary) return 0;
+
+    if (hasWord(title, plan.value)) score += 260;
+    else if (hasWord(primary, plan.value)) score += 120;
+    else if (hasWord(supporting, plan.value)) score += 35;
+    return score;
   }
   return { compact: compact, concepts: concepts, terms: terms, matches: matches, queryPlan: queryPlan,
     primaryTopicsMatch: primaryTopicsMatch, announcementScore: announcementScore, taxonomyVersion: taxonomy.version };
