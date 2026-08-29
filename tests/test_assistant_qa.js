@@ -19,6 +19,12 @@ assert(SearchQuery.matches(accommodationItem.title + " " + accommodationItem.sum
 assert(!SearchQuery.matches("學生宿舍管理規定", "住宿申請"), "concept matching does not drop the user's application requirement");
 assert(SearchQuery.announcementScore(accommodationItem, "宿舍申請") > 0, "a primary accommodation title remains searchable");
 assert.equal(SearchQuery.announcementScore(admissionItem, "宿舍申請"), 0, "a body mention cannot turn 申請入學 into a dormitory application result");
+assert.equal(SearchQuery.announcementScore({ title: "學生宿舍管理規定", summary: "申請表另附" }, "宿舍申請"), 0,
+  "an action mentioned only in body cannot qualify a result");
+assert(SearchQuery.announcementScore({ title: "晚自習申請說明" }, "晚自習申請") > 0,
+  "unknown subjects use title/source matching instead of a hard-coded topic list");
+assert.equal(SearchQuery.announcementScore({ title: "大學申請入學說明", summary: "晚自習資訊另行公告" }, "晚自習申請"), 0,
+  "an unknown subject mentioned only in body cannot qualify a result");
 const searchCases = [
   ["獎學金申請", { title: "獎助學金申請辦法" }, true],
   ["獎學金申請", { title: "社團補助核銷", summary: "獎學金資訊另行公告" }, false],
