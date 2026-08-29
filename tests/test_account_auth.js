@@ -195,7 +195,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v42"), "Service Worker cache must advance for the current app shell");
+  assert(sw.includes("cy-news-v43"), "Service Worker cache must advance for the current app shell");
   assert(app.includes('register("sw.js?v=41")'), "App and Service Worker must use one shell version");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);

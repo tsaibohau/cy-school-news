@@ -18,8 +18,8 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /style\.css\?v=41/);
-assert.match(index, /search-query\.js\?v=42/, "semantic search terms load before the application");
-assert.match(index, /app\.js\?v=42/);
+assert.match(index, /search-query\.js\?v=43/, "semantic search terms load before the application");
+assert.match(index, /app\.js\?v=43/);
 assert.match(index, /id="navMenuToggle"[^>]*aria-expanded="false"[^>]*aria-controls="navMenu"/, "mobile navigation is exposed through one accessible menu button");
 assert.match(index, /id="navMenu"[^>]*hidden/, "function menu starts closed");
 assert.match(index, /id="navCurrentLabel">選單</);

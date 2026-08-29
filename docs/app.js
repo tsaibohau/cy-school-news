@@ -789,13 +789,11 @@
       return (it.title + " " + (it.summary || "") + " " + (it.snippet || "") + " " +
         (it.category || "") + " " + (it.source_category || "")).toLowerCase();
     }
-    function matchQuery(it, q) {
+    function queryScore(it, q) {
       if (!q) return true;
       var text = itemText(it);
-      if (window.CyNewsSearchQuery) return window.CyNewsSearchQuery.matches(text, q);
-      return q.toLowerCase().split(/\s+/).filter(Boolean).every(function (tok) {
-        return text.indexOf(tok) !== -1;
-      });
+      if (window.CyNewsSearchQuery) return window.CyNewsSearchQuery.announcementScore(it, q);
+      return q.toLowerCase().split(/\s+/).filter(Boolean).every(function (tok) { return text.indexOf(tok) !== -1; }) ? 1 : 0;
     }
     function matchKeywords(it) {
       syncSubscriptions();
@@ -814,11 +812,16 @@
     }
     function latestItems() {
       if (!state.data) return [];
-      return state.data.items.filter(function (it) {
+      var rows = state.data.items.map(function (it) {
         if (state.school !== "all" && it.school !== state.school) return false;
         if (state.cat !== "all" && it.category !== state.cat) return false;
-        return matchQuery(it, state.q);
+        var score = queryScore(it, state.q);
+        return score ? { item: it, score: score } : false;
+      }).filter(Boolean);
+      if (state.q) rows.sort(function (a, b) {
+        return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
       });
+      return rows.map(function (row) { return row.item; });
     }
     function subItems() {
       if (!state.data) return [];

@@ -96,6 +96,7 @@
     var queryTokens = tokens(query), anchorTokens = anchors(query), wanted = intent(query), detailMap = details || {};
     if (!queryTokens.length) return [];
     return (Array.isArray(items) ? items : []).map(function (item) {
+      if (SearchQuery && !SearchQuery.primaryTopicsMatch(item, query)) return null;
       var titleScore = scoreText(item.title || "", queryTokens, 9);
       var overviewScore = scoreText(overview(item), queryTokens, 3);
       var body = detailText(detailMap[item.id]);
@@ -104,7 +105,7 @@
       var intentBonus = 0, combined = clean(overview(item) + " " + body);
       wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
       return { item: item, detail: detailMap[item.id] || null, text: combined, score: titleScore + overviewScore + Math.min(bodyScore, 80) + intentBonus, anchorScore: anchorScore };
-    }).filter(function (row) { return row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0); }).sort(function (a, b) {
+    }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
   }

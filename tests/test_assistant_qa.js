@@ -11,12 +11,17 @@ const items = [
 ];
 const details = { a1: { provenance: "official_article", blocks: [{ type: "paragraph", text: "學生攜帶之手機由學生自行保管；上課期間應依授課教師指示使用。" }], attachments: [] } };
 const accommodationItem = { id: "a4", title: "學生宿舍申請作業說明", summary: "欲申請住宿者，請依期限完成登記。", url: "https://school.example/a4", date: "2026-08-21" };
+const admissionItem = { id: "a5", title: "大學申請入學說明", summary: "新生住宿與宿舍相關資訊另行公告。", url: "https://school.example/a5", date: "2026-08-22" };
 items.push(accommodationItem);
+items.push(admissionItem);
 details.a4 = { provenance: "official_article", blocks: [{ type: "paragraph", text: "欲申請學生宿舍住宿者，請於期限前完成登記。" }], attachments: [] };
 assert(SearchQuery.matches(accommodationItem.title + " " + accommodationItem.summary, "住宿申請"), "library search treats 住宿 and 宿舍 as one concept while requiring 申請");
 assert(!SearchQuery.matches("學生宿舍管理規定", "住宿申請"), "concept matching does not drop the user's application requirement");
+assert(SearchQuery.announcementScore(accommodationItem, "宿舍申請") > 0, "a primary accommodation title remains searchable");
+assert.equal(SearchQuery.announcementScore(admissionItem, "宿舍申請"), 0, "a body mention cannot turn 申請入學 into a dormitory application result");
 assert(QA.tokens("住宿申請怎麼辦").includes("宿舍"), "assistant query expands accommodation terminology bidirectionally");
 assert(QA.answer("住宿申請怎麼辦", items, details).sources.some(row => row.id === "a4"), "assistant finds a 宿舍公告 for a 住宿申請 question");
+assert(!QA.rank("宿舍申請怎麼辦", items, details).some(row => row.item.id === "a5"), "assistant excludes admissions that only mention a dormitory in their body");
 assert(QA.tokens("手機要上繳嗎？").includes("行動載具"), "question synonyms expand deterministically");
 assert.deepEqual(QA.intent("獎學金什麼時候截止"), ["date"]);
 const result = QA.answer("手機需要上繳嗎？", items, details);
