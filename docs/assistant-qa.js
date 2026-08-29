@@ -83,9 +83,11 @@
   }
   function rank(query, items, details) {
     var queryTokens = tokens(query), anchorTokens = anchors(query), wanted = intent(query), detailMap = details || {};
-    if (!queryTokens.length) return [];
+    /* Fail closed.  Falling back to raw full-text ranking makes a missing or
+       stale search module silently return unrelated announcements. */
+    if (!SearchQuery || !queryTokens.length) return [];
     return (Array.isArray(items) ? items : []).map(function (item) {
-      var metadataScore = SearchQuery ? SearchQuery.announcementScore(item, query) : 1;
+      var metadataScore = SearchQuery.announcementScore(item, query);
       if (!metadataScore) return null;
       var titleScore = scoreText(item.title || "", queryTokens, 9);
       var overviewScore = scoreText(overview(item), queryTokens, 3);
