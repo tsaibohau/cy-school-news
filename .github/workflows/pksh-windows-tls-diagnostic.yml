@@ -1,0 +1,158 @@
+name: PKSH Windows TLS diagnostic
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [feature/personal-assistant-v1]
+    paths:
+      - .github/workflows/pksh-windows-tls-diagnostic.yml
+
+permissions:
+  contents: read
+
+jobs:
+  ubuntu-tls-control:
+    name: Ubuntu TLS control
+    runs-on: ubuntu-latest
+    outputs:
+      tls_result: ${{ steps.probe.outputs.tls_result }}
+    steps:
+      - id: probe
+        shell: bash
+        run: |
+          set +e
+          curl -v --connect-timeout 15 --max-time 30 https://www.pksh.ylc.edu.tw/ 2>&1 | tee pksh-ubuntu-tls-diagnostic.log
+          code=${PIPESTATUS[0]}
+          if [ "$code" -eq 0 ]; then
+            echo "tls_result=HTTPS_PASS" >> "$GITHUB_OUTPUT"
+          else
+            echo "tls_result=TLS_FAIL" >> "$GITHUB_OUTPUT"
+          fi
+          echo "curl_exit=$code" | tee -a pksh-ubuntu-tls-diagnostic.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pksh-ubuntu-tls-diagnostic-${{ github.sha }}
+          path: pksh-ubuntu-tls-diagnostic.log
+          retention-days: 14
+
+  windows-schannel:
+    name: Windows Schannel TLS diagnostic
+    runs-on: windows-latest
+    outputs:
+      homepage_result: ${{ steps.probe.outputs.homepage_result }}
+      api_result: ${{ steps.probe.outputs.api_result }}
+    steps:
+      - id: probe
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $uid = "WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a"
+          $log = "pksh-windows-tls-diagnostic.log"
+
+          function Write-Diagnostic([string]$Text) {
+            $Text | Tee-Object -FilePath $log -Append
+          }
+
+          Write-Diagnostic "=== PowerShell ==="
+          ($PSVersionTable | Out-String).TrimEnd() | Tee-Object -FilePath $log -Append
+          Write-Diagnostic "=== curl.exe version ==="
+          (& curl.exe --version 2>&1 | Out-String).TrimEnd() | Tee-Object -FilePath $log -Append
+
+          $homepageOk = $false
+          $widgetOk = $false
+          $apiOk = $false
+
+          Write-Diagnostic "=== Windows curl HTTPS GET (verification enabled) ==="
+          & curl.exe -v --connect-timeout 15 --max-time 30 https://www.pksh.ylc.edu.tw/ 2>&1 |
+            Tee-Object -FilePath $log -Append
+          Write-Diagnostic "CURL_EXIT=$LASTEXITCODE"
+
+          Write-Diagnostic "=== Invoke-WebRequest homepage (Windows/.NET TLS) ==="
+          try {
+            $r = Invoke-WebRequest -Uri "https://www.pksh.ylc.edu.tw/" -MaximumRedirection 5 -TimeoutSec 30
+            Write-Diagnostic "STATUS=$($r.StatusCode)"
+            Write-Diagnostic "FINAL=$($r.BaseResponse.ResponseUri)"
+            $homepageOk = $true
+          } catch {
+            Write-Diagnostic "TYPE=$($_.Exception.GetType().FullName)"
+            Write-Diagnostic "ERROR=$($_.Exception.Message)"
+          }
+
+          if ($homepageOk) {
+            Write-Diagnostic "=== Widget GET (full UID only) ==="
+            try {
+              $widgetUrl = "https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=$uid"
+              $widget = Invoke-WebRequest -Uri $widgetUrl -MaximumRedirection 5 -TimeoutSec 30
+              $invalid = $widget.Content -match "(?i)invalid\s+uid"
+              Write-Diagnostic "STATUS=$($widget.StatusCode)"
+              Write-Diagnostic "INVALID_UID=$invalid"
+              $widgetOk = ($widget.StatusCode -ge 200 -and $widget.StatusCode -lt 300 -and -not $invalid)
+            } catch {
+              Write-Diagnostic "WIDGET_TYPE=$($_.Exception.GetType().FullName)"
+              Write-Diagnostic "WIDGET_ERROR=$($_.Exception.Message)"
+            }
+          }
+
+          if ($widgetOk) {
+            Write-Diagnostic "=== Announcement API POST (verification enabled) ==="
+            try {
+              $body = @{
+                field = "time"; order = "DESC"; pageNum = "0"; maxRows = "15"
+                keyword = ""; uid = $uid; tf = "1"; auth_type = "user"
+                use_cache = "0"; tag = ""; news_open_mode = "0"
+              }
+              $api = Invoke-WebRequest -Method POST -Uri "https://www.pksh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php" -Body $body -ContentType "application/x-www-form-urlencoded" -TimeoutSec 30
+              Write-Diagnostic "STATUS=$($api.StatusCode)"
+              Write-Diagnostic "CONTENT_TYPE=$($api.Headers['Content-Type'])"
+              Write-Diagnostic "LENGTH=$($api.Content.Length)"
+              try {
+                $payload = $api.Content | ConvertFrom-Json
+                $rows = @($payload | Where-Object { $_.newsId })
+                $latest = if ($rows.Count -gt 0) { $rows[0].newsId } else { "" }
+                Write-Diagnostic "ROWS=$($rows.Count)"
+                Write-Diagnostic "LATEST_NEWS_ID=$latest"
+                $apiOk = ($api.StatusCode -eq 200 -and $rows.Count -gt 0 -and $latest)
+              } catch {
+                Write-Diagnostic "JSON_TYPE=$($_.Exception.GetType().FullName)"
+                Write-Diagnostic "JSON_ERROR=$($_.Exception.Message)"
+              }
+            } catch {
+              Write-Diagnostic "API_TYPE=$($_.Exception.GetType().FullName)"
+              Write-Diagnostic "API_ERROR=$($_.Exception.Message)"
+            }
+          }
+
+          $homepageResult = if ($homepageOk) { "HTTPS_PASS" } else { "TLS_OR_HTTP_FAIL" }
+          $apiResult = if ($apiOk) { "API_PASS" } elseif ($homepageOk) { "API_FAIL" } else { "NOT_RUN" }
+          Write-Diagnostic "WINDOWS_HOMEPAGE_RESULT=$homepageResult"
+          Write-Diagnostic "WINDOWS_API_RESULT=$apiResult"
+          "homepage_result=$homepageResult" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "api_result=$apiResult" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pksh-windows-tls-diagnostic-${{ github.sha }}
+          path: pksh-windows-tls-diagnostic.log
+          retention-days: 14
+
+  verdict:
+    name: PKSH Windows TLS verdict
+    needs: [ubuntu-tls-control, windows-schannel]
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          linux='${{ needs.ubuntu-tls-control.outputs.tls_result }}'
+          windows='${{ needs.windows-schannel.outputs.homepage_result }}'
+          api='${{ needs.windows-schannel.outputs.api_result }}'
+          echo "ubuntu=$linux windows=$windows api=$api"
+          if [[ "$linux" == TLS_FAIL && "$windows" == HTTPS_PASS && "$api" == API_PASS ]]; then
+            echo "PKSH_TLS_CHAIN_INCOMPLETE_WINDOWS_SCHANNEL_WORKAROUND_CONFIRMED"
+          elif [[ "$windows" != HTTPS_PASS ]]; then
+            echo "PKSH_GITHUB_RUNNER_BLOCKED"
+          elif [[ "$api" != API_PASS ]]; then
+            echo "PKSH_API_LAYER_FAILURE"
+          else
+            echo "INCONCLUSIVE"
+          fi
