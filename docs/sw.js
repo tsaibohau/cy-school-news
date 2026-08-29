@@ -1,8 +1,8 @@
 /* 嘉校快訊 Service Worker:離線快取殼層,資料採網路優先 */
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
-var CACHE = "cy-news-v43";
-var SHELL = ["./", "./index.html", "./style.css?v=41", "./app.js?v=43", "./notification-state.js", "./calendar-state.js?v=41", "./account-config.js?v=41", "./supabase-sync.js?v=41", "./account-auth.js?v=41", "./push-subscription.js?v=41", "./reminder-rules.js?v=41", "./task-state.js?v=41", "./account-sync.js?v=41", "./school-registry.js?v=41", "./profile.js?v=41", "./relevance.js?v=41", "./assistant-feedback.js?v=41", "./today.js?v=41", "./search-query.js?v=43", "./assistant-qa.js?v=43", "./detail-ui.js?v=41", "./manifest.webmanifest", "./data/calendar-events.json",
+var CACHE = "cy-news-v44";
+var SHELL = ["./", "./index.html", "./style.css?v=41", "./app.js?v=44", "./notification-state.js", "./calendar-state.js?v=41", "./account-config.js?v=41", "./supabase-sync.js?v=41", "./account-auth.js?v=41", "./push-subscription.js?v=41", "./reminder-rules.js?v=41", "./task-state.js?v=41", "./account-sync.js?v=41", "./school-registry.js?v=41", "./profile.js?v=41", "./relevance.js?v=41", "./assistant-feedback.js?v=41", "./today.js?v=41", "./search-taxonomy.js?v=44", "./search-query.js?v=44", "./assistant-qa.js?v=44", "./detail-ui.js?v=41", "./manifest.webmanifest", "./data/calendar-events.json",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {

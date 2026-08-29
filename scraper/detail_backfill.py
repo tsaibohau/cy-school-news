@@ -15,6 +15,7 @@ from scrape import (CONFIG, ROOT, TW_TZ, atomic_write_text, decode_response,
                     extract_article_title, is_mojibake, merge_title,
                     choose_date, record_detail_fetch_failure,
                     write_detail_record)
+from search_taxonomy import apply_search_tags
 
 DATA_PATH = ROOT / "docs" / "data" / "announcements.json"
 ARCHIVE_PATH = ROOT / "docs" / "data" / "archive.json"
@@ -136,6 +137,11 @@ def main():
             record_detail_fetch_failure(item)
             print(f"[warn] detail backfill failed {item.get('id')}: {type(error).__name__}")
         time.sleep(delay)
+
+    # A backfill run can update titles without visiting list pages, so refresh
+    # the metadata-only tags before it republishes public shards.
+    for item in items:
+        apply_search_tags(item)
 
     atomic_write_text(DATA_PATH, json.dumps(recent_doc, ensure_ascii=False, indent=1))
     atomic_write_text(ARCHIVE_PATH, json.dumps(archive_doc, ensure_ascii=False, indent=1))

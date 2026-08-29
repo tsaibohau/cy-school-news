@@ -28,6 +28,7 @@ from bs4 import BeautifulSoup
 
 from detail_parser import parse_article_detail
 from ischool_adapter import PkshAdapter
+from search_taxonomy import apply_search_tags
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
@@ -1145,6 +1146,10 @@ def main() -> int:
               f"剩餘 {len(pending) - done} 筆待補")
 
     items = list(by_id.values())
+    # Search topics are deliberately multi-label and derived only from stable
+    # announcement metadata.  Keep the legacy display category unchanged.
+    for it in items:
+        apply_search_tags(it)
     quarantined_titles = quarantine_corrupt_titles(items)
     if quarantined_titles:
         print(f"[warn] {quarantined_titles} 筆歷史標題待後續修復；已保留 ID 與官方連結",

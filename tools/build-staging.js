@@ -16,7 +16,7 @@ const shellInputs = [
   "supabase-sync.js", "account-auth.js", "task-state.js", "account-sync.js",
   "push-subscription.js",
   "reminder-rules.js",
-  "school-registry.js", "profile.js", "relevance.js", "assistant-feedback.js", "today.js", "search-query.js", "assistant-qa.js", "calendar-state.js",
+  "school-registry.js", "profile.js", "relevance.js", "assistant-feedback.js", "today.js", "search-taxonomy.js", "search-query.js", "assistant-qa.js", "calendar-state.js",
   path.join("..", "tools", "staging", "acceptance-user-tasks.js"),
   path.join("..", "tools", "staging", "acceptance-companion.html"),
   path.join("..", "tools", "staging", "staging.css"),
@@ -24,7 +24,7 @@ const shellInputs = [
 const shellRevision = "staging-" + crypto.createHash("sha256")
   .update(shellInputs.map((file) => fs.readFileSync(path.join(source, file))).join("\n"))
   .digest("hex").slice(0, 12);
-const sourceVersions = ["?v=41", "?v=42", "?v=43"];
+const sourceVersions = ["?v=41", "?v=42", "?v=43", "?v=44"];
 const stagedVersion = "?v=" + shellRevision;
 
 const isRootOutput = path.dirname(output) === root && /^dist-staging(?:-[A-Za-z0-9._-]+)?$/.test(outputName);
@@ -61,7 +61,7 @@ fs.writeFileSync(companionPath, companion);
 
 const swPath = path.join(output, "sw.js");
 let sw = fs.readFileSync(swPath, "utf8")
-  .replace('var CACHE = "cy-news-v43";', 'var CACHE = "cy-news-' + shellRevision + '";')
+  .replace('var CACHE = "cy-news-v44";', 'var CACHE = "cy-news-' + shellRevision + '";')
   .replace('"./manifest.webmanifest"', '"./manifest-staging.webmanifest", "./staging.css?v=' + shellRevision + '", "./acceptance-user-tasks.js?v=' + shellRevision + '", "./acceptance-companion.html?v=' + shellRevision + '"')
   .replace('  // 殼層:快取優先', '  /* A new staging deployment must never combine an old HTML shell with new JavaScript. */\n  if (req.mode === "navigate") {\n    e.respondWith(fetch(req).catch(function () { return caches.match("./index.html"); }));\n    return;\n  }\n  // 殼層:快取優先');
 sourceVersions.forEach((sourceVersion) => { sw = sw.replaceAll(sourceVersion, stagedVersion); });

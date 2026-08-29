@@ -19,6 +19,15 @@ assert(SearchQuery.matches(accommodationItem.title + " " + accommodationItem.sum
 assert(!SearchQuery.matches("學生宿舍管理規定", "住宿申請"), "concept matching does not drop the user's application requirement");
 assert(SearchQuery.announcementScore(accommodationItem, "宿舍申請") > 0, "a primary accommodation title remains searchable");
 assert.equal(SearchQuery.announcementScore(admissionItem, "宿舍申請"), 0, "a body mention cannot turn 申請入學 into a dormitory application result");
+const searchCases = [
+  ["獎學金申請", { title: "獎助學金申請辦法" }, true],
+  ["獎學金申請", { title: "社團補助核銷", summary: "獎學金資訊另行公告" }, false],
+  ["社團選填", { title: "社團選填須知" }, true],
+  ["社團選填", { title: "社團成果發表" }, false],
+  ["校車報名", { title: "校車乘車申請表" }, true],
+  ["校車報名", { title: "語文競賽報名" }, false],
+];
+searchCases.forEach(([query, item, expected]) => assert.equal(SearchQuery.announcementScore(item, query) > 0, expected, query));
 assert(QA.tokens("住宿申請怎麼辦").includes("宿舍"), "assistant query expands accommodation terminology bidirectionally");
 assert(QA.answer("住宿申請怎麼辦", items, details).sources.some(row => row.id === "a4"), "assistant finds a 宿舍公告 for a 住宿申請 question");
 assert(!QA.rank("宿舍申請怎麼辦", items, details).some(row => row.item.id === "a5"), "assistant excludes admissions that only mention a dormitory in their body");

@@ -19,6 +19,7 @@ from notify import (push_topics, summarize, personal_topics, notification_payloa
                     normalize_topic, prepare_notification_items,
                     SUMMARY_THRESHOLD)  # noqa: E402
 from schoolcal import build_ics, events_on, build_public_events  # noqa: E402
+from search_taxonomy import classify_search_tags  # noqa: E402
 from datetime import datetime, timedelta  # noqa: E402
 
 SCHOOL = {"id": "cysh", "short": "嘉中", "base": "https://www.cysh.cy.edu.tw", "unit": "1008"}
@@ -180,6 +181,15 @@ def run():
         got = classify(text)
         assert got == expect, f"「{text}」應為 {expect},實得 {got}"
     print("✓ 自動分類")
+
+    dorm = classify_search_tags("學生宿舍申請作業說明")
+    admission = classify_search_tags("大學申請入學說明")
+    bus = classify_search_tags("校車乘車申請表")
+    assert dorm["topics"] == ["accommodation"] and dorm["actions"] == ["apply"], dorm
+    assert "accommodation" not in admission["topics"] and "admission" in admission["topics"], admission
+    assert "transport" in bus["topics"] and "apply" in bus["actions"], bus
+    assert dorm["classification_evidence"]["fields"] == ["title", "source_category", "category"]
+    print("✓ 多主題/流程搜尋標籤")
 
     assert normalize_url("https://a.b/p/406-1008-1,r2.php?Lang=zh-tw#x") == \
         "https://a.b/p/406-1008-1,r2.php"
