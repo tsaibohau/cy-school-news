@@ -1,0 +1,122 @@
+{
+ "announcement_id": "cysh-132567",
+ "school_id": "cysh",
+ "title": "【漏洞預警】VMware ESXi、Workstation、Fusion 和 Tools 存在3個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-132567,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202507-00000011",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "1.【CVE-2025-41236，CVSS：9.3】 VMware ESXi、Workstation 和 Fusion 的 VMXNET3 虛擬網路介面卡存在整數溢位漏洞。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "2.【CVE-2025-41237，CVSS：9.3】 VMware ESXi、 Workstation 和 Fusion 的 VMCI 存在整數下溢漏洞，可能導致越界寫入。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "3.【CVE-2025-41238，CVSS：9.3】 VMware ESXi、Workstation 和 Fusion 的 PVSCSI 控制器存在堆疊溢位漏洞，可能導致越界寫入。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● VMware Cloud Foundation",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● VMware vSphere Foundation",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● VMware ESXi",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● VMware Workstation Pro",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● VMware Fusion",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● VMware Tools",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● VMware Telco Cloud Platform",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● VMware Telco Cloud Infrastructure",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "根據官方網站釋出的解決方式進行修補：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/35877",
+   "links": [
+    {
+     "text": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/35877",
+     "url": "https://support.broadcom.com/web/ecx/support-content-notification/-/external/content/SecurityAdvisories/0/35877"
+    }
+   ]
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-169-10250-08712-1.html",
+   "links": [
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-169-10250-08712-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-169-10250-08712-1.html"
+    }
+   ]
+  }
+ ],
+ "attachments": [],
+ "source_hash": "ba0a5260d079c5f5ad9a809c7d051fb3df5bc7d15dad2d98fdb31c06073002dd",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T07:18:08+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "1.【CVE-2025-41236，CVSS：9.3】 VMware ESXi、Workstation 和 Fusion 的 VMXNET3 虛擬網路介面卡存在整數溢位漏洞。",
+  "evidence": "1.【CVE-2025-41236，CVSS：9.3】 VMware ESXi、Workstation 和 Fusion 的 VMXNET3 虛擬網路介面卡存在整數溢位漏洞。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
