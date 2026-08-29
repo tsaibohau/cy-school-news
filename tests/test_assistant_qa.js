@@ -1,5 +1,6 @@
 const assert = require("node:assert/strict");
 const QA = require("../docs/assistant-qa.js");
+const SearchQuery = require("../docs/search-query.js");
 const Feedback = require("../docs/assistant-feedback.js");
 const Schools = require("../docs/school-registry.js");
 
@@ -9,6 +10,27 @@ const items = [
   { id: "a3", title: "教師年資提敘相關規定", summary: "教師可依待遇條例申請。", url: "https://school.example/a3" },
 ];
 const details = { a1: { provenance: "official_article", blocks: [{ type: "paragraph", text: "學生攜帶之手機由學生自行保管；上課期間應依授課教師指示使用。" }], attachments: [] } };
+const accommodationItem = { id: "a4", title: "學生宿舍申請作業說明", summary: "欲申請住宿者，請依期限完成登記。", url: "https://school.example/a4", date: "2026-08-21" };
+const admissionItem = { id: "a5", title: "大學申請入學說明", summary: "新生住宿與宿舍相關資訊另行公告。", url: "https://school.example/a5", date: "2026-08-22" };
+items.push(accommodationItem);
+items.push(admissionItem);
+details.a4 = { provenance: "official_article", blocks: [{ type: "paragraph", text: "欲申請學生宿舍住宿者，請於期限前完成登記。" }], attachments: [] };
+assert(SearchQuery.matches(accommodationItem.title + " " + accommodationItem.summary, "住宿申請"), "library search treats 住宿 and 宿舍 as one concept while requiring 申請");
+assert(!SearchQuery.matches("學生宿舍管理規定", "住宿申請"), "concept matching does not drop the user's application requirement");
+assert(SearchQuery.announcementScore(accommodationItem, "宿舍申請") > 0, "a primary accommodation title remains searchable");
+assert.equal(SearchQuery.announcementScore(admissionItem, "宿舍申請"), 0, "a body mention cannot turn 申請入學 into a dormitory application result");
+const searchCases = [
+  ["獎學金申請", { title: "獎助學金申請辦法" }, true],
+  ["獎學金申請", { title: "社團補助核銷", summary: "獎學金資訊另行公告" }, false],
+  ["社團選填", { title: "社團選填須知" }, true],
+  ["社團選填", { title: "社團成果發表" }, false],
+  ["校車報名", { title: "校車乘車申請表" }, true],
+  ["校車報名", { title: "語文競賽報名" }, false],
+];
+searchCases.forEach(([query, item, expected]) => assert.equal(SearchQuery.announcementScore(item, query) > 0, expected, query));
+assert(QA.tokens("住宿申請怎麼辦").includes("宿舍"), "assistant query expands accommodation terminology bidirectionally");
+assert(QA.answer("住宿申請怎麼辦", items, details).sources.some(row => row.id === "a4"), "assistant finds a 宿舍公告 for a 住宿申請 question");
+assert(!QA.rank("宿舍申請怎麼辦", items, details).some(row => row.item.id === "a5"), "assistant excludes admissions that only mention a dormitory in their body");
 assert(QA.tokens("手機要上繳嗎？").includes("行動載具"), "question synonyms expand deterministically");
 assert.deepEqual(QA.intent("獎學金什麼時候截止"), ["date"]);
 const result = QA.answer("手機需要上繳嗎？", items, details);
@@ -23,7 +45,8 @@ assert.equal(QA.smoothEvidence("主旨：請於九月十日前送件。"), "請�
 assert.match(QA.composeSummary([{ text: "科學營於九月五日前報名。" }, { text: "寫作工作坊於九月十日前報名。" }], [{ id: "one" }, { id: "two" }], []), /不是同一項活動/);
 assert.equal(Schools.mentionedSchool("嘉義女中的獎學金有哪些？").id, "cygsh");
 assert.equal(Schools.mentionedSchool("請查 CYSH 宿舍規定").id, "cysh");
-assert.equal(Schools.mentionedSchool("北港高中模擬考公告了嗎"), null);
+assert.equal(Schools.mentionedSchool("輔仁中學的校車公告").id, "fjsh");
+assert.equal(Schools.mentionedSchool("北港高中模擬考公告了嗎").id, "pksh");
 assert.equal(QA.questionPlan("目前最新的報名方式是什麼").wants_latest, true);
 const split = QA.answerLines([
   { announcement_id: "one", text: "科學營於九月五日前報名。" },

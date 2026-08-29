@@ -6,6 +6,9 @@
 })(typeof window !== "undefined" ? window : this, function () {
   "use strict";
 
+  var SearchQuery = typeof window !== "undefined" ? window.CyNewsSearchQuery : null;
+  if (!SearchQuery && typeof module !== "undefined" && module.exports) SearchQuery = require("./search-query.js");
+
   var INTENTS = {
     date: ["何時", "什麼時候", "日期", "截止", "幾點", "時間", "多久"],
     place: ["哪裡", "地點", "在哪", "會場", "教室"],
@@ -13,11 +16,6 @@
     person: ["誰", "對象", "資格", "哪些人", "學生", "年級"],
     status: ["現在", "目前", "已經", "還有", "最新", "公告了嗎"],
     yesno: ["是否", "有沒有", "需不需要", "需要", "可以嗎", "能不能", "會不會", "嗎"],
-  };
-  var EXPANSIONS = {
-    "手機": ["行動載具", "智慧型手機"], "行動載具": ["手機"],
-    "獎學金": ["獎助學金", "助學金"], "宿舍": ["住宿", "宿舍生"],
-    "考試": ["段考", "測驗", "檢定"], "社團": ["社團活動", "社團選填"],
   };
   var STOP = ["請問", "我想知道", "想知道", "可以幫我", "幫我", "有沒有", "是否", "可以", "目前", "學校", "公告", "相關", "一下", "嗎", "呢", "啊", "的", "了", "是"];
   var GENERIC = ["有什麼", "什麼", "哪些", "最近", "目前", "相關", "規定", "辦法", "如何", "怎麼", "何時", "時間", "日期", "截止", "活動", "資訊", "資料", "請問", "快", "或"];
@@ -35,9 +33,7 @@
         for (var i = 0; i + size <= base.length; i++) out.push(base.slice(i, i + size));
       }
     }
-    Object.keys(EXPANSIONS).forEach(function (key) {
-      if (normalized.indexOf(key) !== -1) out = out.concat(EXPANSIONS[key]);
-    });
+    if (SearchQuery) out = out.concat(SearchQuery.terms(query));
     return unique(out.map(compact).filter(function (word) { return word.length >= 2 && STOP.indexOf(word) === -1; })).slice(0, 48);
   }
   function intent(query) {
@@ -51,9 +47,7 @@
     var value = compact(query);
     STOP.concat(GENERIC).sort(function (a, b) { return b.length - a.length; }).forEach(function (word) { value = value.split(word).join(""); });
     var out = [];
-    Object.keys(EXPANSIONS).forEach(function (key) {
-      if (compact(query).indexOf(key) !== -1) out = out.concat([key]).concat(EXPANSIONS[key]);
-    });
+    if (SearchQuery) out = out.concat(SearchQuery.terms(query));
     if (out.length) return unique(out.map(compact).filter(function (word) { return word.length >= 2; }));
     if (value.length >= 2) {
       out.push(value);
@@ -91,6 +85,8 @@
     var queryTokens = tokens(query), anchorTokens = anchors(query), wanted = intent(query), detailMap = details || {};
     if (!queryTokens.length) return [];
     return (Array.isArray(items) ? items : []).map(function (item) {
+      var metadataScore = SearchQuery ? SearchQuery.announcementScore(item, query) : 1;
+      if (!metadataScore) return null;
       var titleScore = scoreText(item.title || "", queryTokens, 9);
       var overviewScore = scoreText(overview(item), queryTokens, 3);
       var body = detailText(detailMap[item.id]);
@@ -98,8 +94,8 @@
       var anchorScore = scoreText(clean(item.title || "") + " " + overview(item) + " " + body, anchorTokens, 1);
       var intentBonus = 0, combined = clean(overview(item) + " " + body);
       wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
-      return { item: item, detail: detailMap[item.id] || null, text: combined, score: titleScore + overviewScore + Math.min(bodyScore, 80) + intentBonus, anchorScore: anchorScore };
-    }).filter(function (row) { return row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0); }).sort(function (a, b) {
+      return { item: item, detail: detailMap[item.id] || null, text: combined, score: metadataScore + titleScore + overviewScore + Math.min(bodyScore, 80) + intentBonus, anchorScore: anchorScore };
+    }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
   }
