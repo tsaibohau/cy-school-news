@@ -494,21 +494,21 @@ async function testSchoolSelectionFallbackAndPersistence() {
   combined.schools = [
     { id: "cysh", short: "嘉中" },
     { id: "cygsh", short: "嘉女" },
-    { id: "pksh", short: "北港高中" },
+    { id: "cygsh", short: "嘉女" },
   ];
   const run = await createApp({ storage, responses: [response(combined)], notification: makeNotification() });
   run.queue.push(new Error("manifest unavailable"), response(Object.assign({}, combined, {
-    items: [Object.assign(item("pksh-1", "2026-08-20T00:00:00Z", "北港公告"), { school: "pksh", school_name: "北港高中" })],
+    items: [Object.assign(item("cygsh-1", "2026-08-20T00:00:00Z", "嘉女公告"), { school: "cygsh", school_name: "嘉女" })],
   })));
-  run.document.elements.schoolFilter.value = "pksh";
+  run.document.elements.schoolFilter.value = "cygsh";
   run.document.elements.schoolFilter.emit("change");
   await flush();
-  assert.equal(storage.getItem("cyNews.school.v1"), "pksh", "school selection persists in localStorage");
-  assert.equal(run.app.getState().school, "pksh");
+  assert.equal(storage.getItem("cyNews.school.v1"), "cygsh", "school selection persists in localStorage");
+  assert.equal(run.app.getState().school, "cygsh");
   assert.match(run.fetchRequests.at(-2).url, /data\/schools\/manifest\.json/);
   assert.match(run.fetchRequests.at(-1).url, /data\/announcements\.json/,
     "a failed shard manifest must safely fall back to the combined snapshot");
-  assert.equal(run.app.getState().data.items[0].id, "pksh-1");
+  assert.equal(run.app.getState().data.items[0].id, "cygsh-1");
 }
 
 async function testRefreshStatusContract() {
