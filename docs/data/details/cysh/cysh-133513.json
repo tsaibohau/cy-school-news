@@ -1,0 +1,67 @@
+{
+ "announcement_id": "cysh-133513",
+ "school_id": "cysh",
+ "title": "【漏洞預警】飛宇高新科技｜多功能智慧校園平台存在2個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133513,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202507-00000024",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【飛宇高新科技｜多功能智慧校園平台 - Missing Authorization】(CVE-2025-8322，CVSS：8.8) 飛宇高新科技多功能校園平台存在Missing Authorization漏洞，已取得一般使用者權限之遠端攻擊者能夠直接存取管理員功能，包括新增、修改與刪除帳號，甚至可將任意帳號提升為系統管理員。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【飛宇高新科技｜多功能智慧校園平台 - Arbitrary File Upload】(CVE-2025-8323，CVSS：8.8) 飛宇高新科技多功能校園平台存在Arbitrary File Upload漏洞，已取得一般使用者權限之遠端攻擊者可上傳並執行網頁後門程式，進而於伺服器端執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "多功能智慧校園平台",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "系統執行於地端之學校單位，請聯繫飛宇高新科技確認單位更新狀況；或評估關閉對外服務、僅開放校內使用。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-132-10304-6b375-1.html 2. https://www.twcert.org.tw/tw/cp-132-10306-ccea7-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "b7a6052a59a52521ec86c0783fd25f06c014ea6de25842d91d8d5d5df620df46",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-29T19:18:09+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【飛宇高新科技｜多功能智慧校園平台 - Missing Authorization】(CVE-2025-8322，CVSS：8.8) 飛宇高新科技多功能校園平台存在Missing Authorization漏洞，已取得一般使用者權限之遠端攻擊者能夠直接存取管理員功能，包括新增、修改與刪除帳號，甚至可將任意帳號提升為系統管理員。",
+  "evidence": "【飛宇高新科技｜多功能智慧校園平台 - Missing Authorization】(CVE-2025-8322，CVSS：8.8) 飛宇高新科技多功能校園平台存在Missing Authorization漏洞，已取得一般使用者權限之遠端攻擊者能夠直接存取管理員功能，包括新增、修改與刪除帳號，甚至可將任意帳號提升為系統管理員。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

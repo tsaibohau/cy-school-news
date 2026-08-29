@@ -1,0 +1,67 @@
+{
+ "announcement_id": "cysh-133516",
+ "school_id": "cysh",
+ "title": "【漏洞預警】趨勢科技旗下Apex One管理控制台存在2個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133516,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202508-00000002",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Apex One是趨勢科技旗下一款端點安全整合式方案，提供集中式管理功能，可有效防護企業端點免受各種網路安全威脅侵害。日前，趨勢科技發布2個重大資安漏洞(CVE-2025-54948，CVSS：9.4 和CVE-2025-54987，CVSS：9.4 )，皆屬於作業系統指令注入漏洞，允許預授權的遠端攻擊者上傳惡意程式碼並執行命令。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Apex One (on-prem) 2019 14.0.0.14039(含)之前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "根據官方網站釋出解決方式進行修補：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "https://success.trendmicro.com/en-US/solution/KA-0020652",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-169-10314-4907b-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "cf77df1ca2dd7aedd7764423c0011287d938e95cc6c3b78b244c8ada882d1fe5",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-29T19:18:09+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "日前，趨勢科技發布2個重大資安漏洞(CVE-2025-54948，CVSS：9.4 和CVE-2025-54987，CVSS：9.4 )，皆屬於作業系統指令注入漏洞，允許預授權的遠端攻擊者上傳惡意程式碼並執行命令。",
+  "evidence": "日前，趨勢科技發布2個重大資安漏洞(CVE-2025-54948，CVSS：9.4 和CVE-2025-54987，CVSS：9.4 )，皆屬於作業系統指令注入漏洞，允許預授權的遠端攻擊者上傳惡意程式碼並執行命令。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

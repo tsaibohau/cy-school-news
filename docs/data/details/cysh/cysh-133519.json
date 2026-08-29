@@ -1,0 +1,62 @@
+{
+ "announcement_id": "cysh-133519",
+ "school_id": "cysh",
+ "title": "【漏洞預警】WinRAR存在高風險安全漏洞(CVE-2025-8088)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133519,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 NISAC-200-202508-00000076",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現Windows版本WinRAR存在路徑穿越(Path Traversal)漏洞(CVE-2025-8088)，未經身分鑑別之遠端攻擊者可利用漏洞製作惡意壓縮檔並透過釣魚信件發送，當受駭者開啟壓縮檔後，惡意程式將寫入開機資料夾中，並於每次開機時自動執行。該漏洞已遭駭客利用，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Windows版本WinRAR 7.12(含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "請更新Windows版本WinRAR至7.13(含)以後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-8088 2. https://www.helpnetsecurity.com/2025/08/11/winrar-zero-day-cve-2025-8088",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "a7f998da3e716cadbd8824bbc51e945282e72a836143be32bcc79f2cb1cf4aa5",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-29T19:18:09+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現Windows版本WinRAR存在路徑穿越(Path Traversal)漏洞(CVE-2025-8088)，未經身分鑑別之遠端攻擊者可利用漏洞製作惡意壓縮檔並透過釣魚信件發送，當受駭者開啟壓縮檔後，惡意程式將寫入開機資料夾中，並於每次開機時自動執行。",
+  "evidence": "研究人員發現Windows版本WinRAR存在路徑穿越(Path Traversal)漏洞(CVE-2025-8088)，未經身分鑑別之遠端攻擊者可利用漏洞製作惡意壓縮檔並透過釣魚信件發送，當受駭者開啟壓縮檔後，惡意程式將寫入開機資料夾中，並於每次開機時自動執行。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

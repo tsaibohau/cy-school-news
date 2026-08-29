@@ -1,0 +1,67 @@
+{
+ "announcement_id": "cysh-133514",
+ "school_id": "cysh",
+ "title": "【漏洞預警】HPE之Networking Instant On無線基地台存在高風險安全漏洞(CVE-2025-37102與CVE-2025-37103)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133514,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 NISAC-200-202507-00000230",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現HPE之Networking Instant On無線基地台存在2項高風險安全漏洞(CVE-2025-37102與CVE-2025-37103)，類型分別為作業系統命令注入(OS Command Injection)與使用硬刻之帳號通行碼(Use of Hard-coded Credentials)，前者可使已取得管理權限之遠端攻擊者注入任意作業系統指令並於設備上執行，後者可使未經身分鑑別之遠端攻擊者利用固定帳號通行碼以管理員權限登入系統，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "HPE之Networking Instant On無線基地台軟體版本3.20.1(含)以下",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw04894en_us&docLocale=en_US",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-37102 2. https://nvd.nist.gov/vuln/detail/CVE-2025-37103 3. https://support.hpe.com/hpesc/public/docDisplay?docId=hpesbnw04894en_us&docLocale=en_US",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "37816e500f35d40ea5d89317a13e89c708af94cc61d4511d6c3ece73b6975b7c",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-29T19:18:09+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現HPE之Networking Instant On無線基地台存在2項高風險安全漏洞(CVE-2025-37102與CVE-2025-37103)，類型分別為作業系統命令注入(OS Command Injection)與使用硬刻之帳號通行碼(Use of Hard-coded Credentials)，前者可使已取得管理權限之遠端攻擊者注入任意作…",
+  "evidence": "研究人員發現HPE之Networking Instant On無線基地台存在2項高風險安全漏洞(CVE-2025-37102與CVE-2025-37103)，類型分別為作業系統命令注入(OS Command Injection)與使用硬刻之帳號通行碼(Use of Hard-coded Credentials)，前者可使已取得管理權限之遠端攻擊者注入任意作業系統指令並於設備上執行，後者可使未經身分鑑別之遠端攻擊者利用固定帳號通行碼以管理員權限登入系統，請儘速確認並進行修補。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
