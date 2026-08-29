@@ -86,7 +86,7 @@
     /* Fail closed.  Falling back to raw full-text ranking makes a missing or
        stale search module silently return unrelated announcements. */
     if (!SearchQuery || !queryTokens.length) return [];
-    return (Array.isArray(items) ? items : []).map(function (item) {
+    var ranked = (Array.isArray(items) ? items : []).map(function (item) {
       var metadataScore = SearchQuery.announcementScore(item, query);
       if (!metadataScore) return null;
       var titleScore = scoreText(item.title || "", queryTokens, 9);
@@ -100,6 +100,9 @@
     }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
+    if (!ranked.length) return ranked;
+    var floor = Math.max(70, ranked[0].score * 0.50);
+    return ranked.filter(function (row) { return row.score >= floor; });
   }
   function sentences(value) {
     return clean(value).split(/(?<=[。！？!?；;])|\n+/).map(clean).filter(function (row) { return row.length >= 8 && row.length <= 420; });
