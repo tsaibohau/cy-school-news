@@ -18,9 +18,9 @@
     {"id": "event", "label": "活動", "terms": ["研習", "講座", "營隊", "工作坊", "參訪", "體驗", "博覽會", "宣導", "演講"]}
   ],
   "actions": [
-    {"id": "apply", "label": "申請或報名", "terms": ["申請", "申辦", "登記", "填表", "送件", "繳件", "報名", "報到"]},
-    {"id": "select", "label": "選填", "terms": ["選填", "選課", "選擇"]},
-    {"id": "pay", "label": "繳費", "terms": ["繳費", "收費"]},
-    {"id": "submit", "label": "繳交", "terms": ["繳交", "交件", "上傳"]}
+    {"id": "apply", "label": "申請或報名", "retrieval": "boost", "terms": ["申請", "申辦", "登記", "填表", "送件", "繳件", "報名", "報到"]},
+    {"id": "select", "label": "選填", "retrieval": "required", "terms": ["選填", "選課", "選擇"]},
+    {"id": "pay", "label": "繳費", "retrieval": "required", "terms": ["繳費", "收費"]},
+    {"id": "submit", "label": "繳交", "retrieval": "required", "terms": ["繳交", "交件", "上傳"]}
   ]
 }

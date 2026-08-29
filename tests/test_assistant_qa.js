@@ -15,12 +15,14 @@ const admissionItem = { id: "a5", title: "大學申請入學說明", summary: "�
 items.push(accommodationItem);
 items.push(admissionItem);
 details.a4 = { provenance: "official_article", blocks: [{ type: "paragraph", text: "欲申請學生宿舍住宿者，請於期限前完成登記。" }], attachments: [] };
-assert(SearchQuery.matches(accommodationItem.title + " " + accommodationItem.summary, "住宿申請"), "library search treats 住宿 and 宿舍 as one concept while requiring 申請");
-assert(!SearchQuery.matches("學生宿舍管理規定", "住宿申請"), "concept matching does not drop the user's application requirement");
+assert(SearchQuery.matches(accommodationItem.title + " " + accommodationItem.summary, "住宿申請"), "library search treats 住宿 and 宿舍 as one concept");
+assert(SearchQuery.matches("學生宿舍管理規定", "住宿申請"), "process words are optional retrieval signals");
 assert(SearchQuery.announcementScore(accommodationItem, "宿舍申請") > 0, "a primary accommodation title remains searchable");
 assert.equal(SearchQuery.announcementScore(admissionItem, "宿舍申請"), 0, "a body mention cannot turn 申請入學 into a dormitory application result");
-assert.equal(SearchQuery.announcementScore({ title: "學生宿舍管理規定", summary: "申請表另附" }, "宿舍申請"), 0,
-  "an action mentioned only in body cannot qualify a result");
+assert(SearchQuery.announcementScore({ title: "學生宿舍管理規定", summary: "申請表另附" }, "宿舍申請") > 0,
+  "a dormitory announcement stays discoverable even when it does not use the requested process word");
+assert(SearchQuery.announcementScore({ title: "115學年度高一新生住宿相關資訊" }, "住宿申請") > 0,
+  "a subject match is not discarded because the title says information rather than application");
 assert(SearchQuery.announcementScore({ title: "晚自習申請說明" }, "晚自習申請") > 0,
   "unknown subjects use title/source matching instead of a hard-coded topic list");
 assert.equal(SearchQuery.announcementScore({ title: "大學申請入學說明", summary: "晚自習資訊另行公告" }, "晚自習申請"), 0,
