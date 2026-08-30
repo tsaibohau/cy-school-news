@@ -11,7 +11,7 @@
     {"id": "transport", "label": "交通", "terms": ["校車", "專車", "交通車", "公車", "乘車"]},
     {"id": "leave", "label": "請假", "terms": ["請假", "缺曠", "缺課", "假單", "銷假"]},
     {"id": "health", "label": "健康", "terms": ["健康檢查", "健檢", "疫苗", "流感", "衛生", "醫療"]},
-    {"id": "course", "label": "課程", "terms": ["選課", "課表", "課程", "加退選", "自主學習"]},
+    {"id": "course", "label": "課程", "terms": ["選課", "選修", "多元選修", "課表", "課程", "加退選", "自主學習"]},
     {"id": "library", "label": "圖書館", "terms": ["圖書館", "借書", "閱覽室", "閉館"]},
     {"id": "safety", "label": "校園安全", "terms": ["停課", "停班", "防災", "安全", "災害", "颱風", "豪雨"]},
     {"id": "enrollment", "label": "新生", "terms": ["招生", "新生", "編班", "報到", "轉學", "入學"]},
@@ -19,7 +19,7 @@
   ],
   "actions": [
     {"id": "apply", "label": "申請或報名", "retrieval": "boost", "terms": ["申請", "申辦", "登記", "填表", "送件", "繳件", "報名", "報到"]},
-    {"id": "select", "label": "選填", "retrieval": "required", "terms": ["選填", "選課", "選擇"]},
+    {"id": "select", "label": "選填", "retrieval": "required", "terms": ["選填", "選課", "選修", "選擇"]},
     {"id": "pay", "label": "繳費", "retrieval": "required", "terms": ["繳費", "收費"]},
     {"id": "submit", "label": "繳交", "retrieval": "required", "terms": ["繳交", "交件", "上傳"]}
   ]

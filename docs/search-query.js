@@ -21,11 +21,13 @@
     { id: "regulation", terms: ["規定", "辦法", "要點", "規範", "準則", "標準"] },
     { id: "procedure", terms: ["流程", "步驟", "操作", "說明", "指南"] },
     { id: "result", terms: ["結果", "名單", "錄取", "分發"] },
-    { id: "location", terms: ["地點", "位置", "哪裡", "教室", "站牌"] }
+    { id: "location", terms: ["地點", "位置", "哪裡", "教室", "站牌"] },
+    { id: "availability", terms: ["開放時間", "開館時間", "營業時間", "開放", "開館"] }
   ];
   function allRules() { return (taxonomy.topics || []).map(function (row) { return { kind: "topic", row: row }; })
     .concat((taxonomy.actions || []).map(function (row) { return { kind: "action", row: row }; })); }
-  function findTerms(value, choices) { return (choices || []).filter(function (term) { return value.indexOf(compact(term)) !== -1; }); }
+  function findTerms(value, choices) { return (choices || []).filter(function (term) { return value.indexOf(compact(term)) !== -1; })
+    .sort(function (a, b) { return compact(b).length - compact(a).length; }); }
   function queryPlan(query) {
     var cacheKey = clean(query), cached = planCache[cacheKey];
     if (cached) return cached;
@@ -36,10 +38,13 @@
       facets.push(facet.id);
       found.forEach(function (term) { termMatches.push({ kind: "facet", id: facet.id, term: compact(term) }); });
     });
-    ["請問", "幫我", "我想知道", "有沒有", "有什麼", "有哪些", "怎麼辦", "如何", "怎麼", "辦法", "規定", "資訊", "公告", "相關", "現在", "目前", "最新", "什麼時候", "何時", "日期", "截止", "期限", "時間", "流程", "方式", "需不需要", "需要", "上繳", "可以", "可否", "能否", "能不能", "會不會", "使用", "一下", "嗎", "呢"].forEach(function (word) {
+    ["請問", "幫我", "我想知道", "有沒有", "有什麼", "有哪些", "怎麼辦", "如何", "怎麼", "辦法", "規定", "資訊", "公告", "相關", "現在", "目前", "最新", "什麼時候", "何時", "日期", "截止", "期限", "時間", "流程", "方式", "需不需要", "需要", "上繳", "可以", "可否", "能否", "還能不能", "能不能", "還能", "是否", "會不會", "使用", "一下", "這個", "這", "能", "嗎", "呢"].forEach(function (word) {
       value = value.split(compact(word)).join("");
     });
     var remainder = value;
+    termMatches.filter(function (row) { return row.kind === "facet"; }).forEach(function (row) {
+      remainder = remainder.split(row.term).join("");
+    });
     allRules().forEach(function (rule) {
       var found = findTerms(value, rule.row.terms);
       if (!found.length) return;
@@ -104,6 +109,21 @@
   }
   function facetById(id) { return FACETS.filter(function (row) { return row.id === id; })[0]; }
   function fieldHit(text, words) { return (words || []).some(function (word) { return hasWord(text, word); }); }
+  function bigrams(value) {
+    value = compact(value);
+    var out = [];
+    for (var i = 0; i < value.length - 1; i += 1) out.push(value.slice(i, i + 2));
+    return unique(out);
+  }
+  function phraseCoverage(text, phrase) {
+    phrase = compact(phrase);
+    if (!phrase) return 1;
+    if (hasWord(text, phrase)) return 1;
+    if (phrase.length < 4) return 0;
+    var grams = bigrams(phrase);
+    if (!grams.length) return 0;
+    return grams.filter(function (gram) { return hasWord(text, gram); }).length / grams.length;
+  }
   function actionRequired(id) {
     var rule = ruleById("action", id);
     return !!(rule && rule.row.retrieval === "required");
@@ -125,9 +145,28 @@
       hasWord(value, plan.remainder);
   }
   function primaryTopicsMatch(item, query) { return includesAll(labelsFromPrimary(item, "topic"), queryPlan(query).topics); }
-  function announcementScore(item, query) {
+  function reviewedSearchText(item, options) {
+    var validity = validityApi(options), record = validity && validity.reviewedRecord ? validity.reviewedRecord(item) : null;
+    if (!record) return "";
+    return compact((record.fragments || []).map(function (fragment) {
+      return clean(fragment.keywords) + " " + clean(fragment.text);
+    }).join(" "));
+  }
+  function termEvidenceScore(fields, reviewed, term) {
+    var titleCoverage = phraseCoverage(fields.title, term);
+    var primaryCoverage = phraseCoverage(fields.primary, term);
+    var reviewedCoverage = phraseCoverage(reviewed, term);
+    var supportingCoverage = phraseCoverage(fields.supporting, term);
+    if (titleCoverage >= 0.6) return 310 * titleCoverage;
+    if (primaryCoverage >= 0.6) return 190 * primaryCoverage;
+    if (reviewedCoverage >= 0.6) return 235 * reviewedCoverage;
+    if (supportingCoverage >= 0.72) return 35 * supportingCoverage;
+    return 0;
+  }
+  function announcementScore(item, query, options) {
     var plan = queryPlan(query), title = titleText(item), primary = primaryText(item), supporting = supportingText(item);
     if (!plan.value) return 1;
+    var fields = itemFields(item), reviewed = reviewedSearchText(item, options);
     var primaryTopics = labelsFromPrimary(item, "topic"), score = 0, topicInPrimary = false, weakTopic = false;
 
     /* Fielded retrieval: all evidence contributes a score.  Strong title and
@@ -148,9 +187,8 @@
     /* Unknown subjects can also be found in a summary, but rank below an
        explicit title/category/source match. */
     (plan.remainder_terms || []).forEach(function (term) {
-      if (hasWord(title, term)) score += 190;
-      else if (hasWord(primary, term)) score += 125;
-      else if (hasWord(supporting, term)) score += 35;
+      var evidence = termEvidenceScore(fields, reviewed, term);
+      if (evidence) score += evidence;
       else score -= plan.topics.length ? 95 : 150;
     });
 
@@ -239,17 +277,43 @@
     var open = validity.requiresOpenWindow(query), status = analysis.status;
     if (status === "ACTIVE_WINDOW") score += open ? 140 : (current ? 85 : 55);
     else if (status === "ACTIVE") score += current ? 65 : 35;
-    else if (status === "PARTIAL_ACTIVE") score = score * (open ? 0.52 : 0.78);
+    else if (status === "PARTIAL_ACTIVE") {
+      var currentNegative = open && (analysis.fragments || []).some(function (fragment) { return fragment.answer_policy === "current_negative"; });
+      score = currentNegative ? score + 180 : score * (open ? 0.52 : 0.78);
+    }
     else if (status === "FUTURE") score = score * (open ? 0.42 : 0.72);
     else if (status === "EXPIRED") score = score * (open ? 0.14 : (current ? 0.25 : 0.34));
     else if (status === "UNCONFIRMED") score -= 12;
     return { score: Math.max(1, score), validity: analysis };
   }
+  function publicationTimestamp(item) {
+    var direct = clean(item && (item.date || item.published_at || ""));
+    var match = direct.match(/(20\d{2})[-\/.](\d{1,2})[-\/.](\d{1,2})/);
+    if (!match) match = clean(item && item.snippet).match(/發佈日期\s*[:：]?\s*(20\d{2})[-\/.](\d{1,2})[-\/.](\d{1,2})/);
+    if (!match) return 0;
+    return Date.UTC(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+  }
+  function academicYear(item) {
+    var match = clean(item && item.title).match(/(?:^|\D)(1\d{2})(?:學年度|學年)/);
+    return match ? Number(match[1]) : 0;
+  }
+  function freshnessScore(item, query, options) {
+    var validity = validityApi(options), current = validity && validity.requiresCurrentStatus ? validity.requiresCurrentStatus(query) : /現在|目前|最新|本學期|這學期/.test(query);
+    if (!current) return 0;
+    var published = publicationTimestamp(item), asOf = Date.parse(options && options.asOf || "");
+    if (!published || !Number.isFinite(asOf)) return 0;
+    var days = Math.max(0, (asOf - published) / 86400000);
+    if (days <= 180) return 210;
+    if (days <= 365) return 110;
+    if (days <= 730) return 30;
+    if (days > 1095) return -45;
+    return 0;
+  }
   function rank(items, query, options) {
     items = Array.isArray(items) ? items : [];
     var plan = queryPlan(query), idf = specificityBonuses(items, plan);
     return items.map(function (item) {
-      var score = announcementScore(item, query), fields = itemFields(item), title = fields.title, primary = fields.primary, supporting = fields.supporting;
+      var score = announcementScore(item, query, options || {}), fields = itemFields(item), title = fields.title, primary = fields.primary, supporting = fields.supporting;
       if (!score) return null;
       queryExactTerms(plan).forEach(function (word) {
         var weight = idf[word] || 1;
@@ -259,10 +323,14 @@
       });
       var queryAsksStaff = hasAny(plan.value, STAFF_TERMS);
       if (plan.topics.length && !queryAsksStaff && hasAny(primary, STAFF_TERMS)) score *= 0.22;
+      score += freshnessScore(item, query, options || {});
       var temporal = temporalScore(item, query, plan, score, options || {});
       return { item: item, score: Math.round(temporal.score * 100) / 100, validity: temporal.validity };
     }).filter(Boolean).sort(function (a, b) {
-      return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
+      var scoreGap = b.score - a.score;
+      var nearTie = Math.abs(scoreGap) <= Math.max(a.score, b.score) * 0.015;
+      if (!nearTie) return scoreGap;
+      return academicYear(b.item) - academicYear(a.item) || publicationTimestamp(b.item) - publicationTimestamp(a.item) || scoreGap || String(b.item.date || "").localeCompare(String(a.item.date || ""));
     });
   }
   function cutoff(scores) {
@@ -270,7 +338,14 @@
     return best >= 120 ? Math.max(55, best * 0.50) : 1;
   }
   function select(items, query, options) {
-    var rows = rank(items, query, options);
+    var rows = rank(items, query, options), plan = queryPlan(query), validity = validityApi(options);
+    var broadOpenQuery = validity && validity.requiresOpenWindow(query) && !(plan.remainder_terms || []).length;
+    if (broadOpenQuery && rows.some(function (row) { return row.validity && row.validity.status === "ACTIVE_WINDOW"; })) {
+      rows = rows.filter(function (row) {
+        if (row.validity && row.validity.status === "ACTIVE_WINDOW") return true;
+        return !!(row.validity && (row.validity.fragments || []).some(function (fragment) { return fragment.answer_policy === "current_negative"; }));
+      });
+    }
     var floor = cutoff(rows.map(function (row) { return row.score; }));
     return rows.filter(function (row) { return row.score >= floor; });
   }
