@@ -54,7 +54,7 @@ def run():
     )
     assert pending["status"] == "awaiting_official_source"
     assert get_school("cysh").capabilities["official_calendar"] is True
-    assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh"}
+    assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh", "fjsh"}
     assert get_school("cygsh").calendar_sources[0].url.endswith("/p/412-1013-1827.php")
 
     nested = discover_calendar_attachments(
