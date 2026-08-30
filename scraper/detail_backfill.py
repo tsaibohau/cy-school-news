@@ -14,7 +14,7 @@ from scrape import (CONFIG, ROOT, TW_TZ, atomic_write_text, decode_response,
                     extract_article_date_result, extract_article_snippet,
                     extract_article_title, is_mojibake, merge_title,
                     choose_date, record_detail_fetch_failure,
-                    write_detail_record)
+                    write_detail_record, fetch)
 
 DATA_PATH = ROOT / "docs" / "data" / "announcements.json"
 ARCHIVE_PATH = ROOT / "docs" / "data" / "archive.json"
@@ -120,9 +120,7 @@ def main():
 
     for item in targets:
         try:
-            response = session.get(item["url"], timeout=CONFIG["timeout_sec"])
-            response.raise_for_status()
-            html = decode_response(response)
+            html = fetch(session, item["url"])
             merge_title(item, extract_article_title(html), authoritative=True)
             snippet = extract_article_snippet(html, item.get("title", ""))
             if snippet:

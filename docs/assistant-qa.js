@@ -21,6 +21,7 @@
   };
   var STOP = ["請問", "我想知道", "想知道", "可以幫我", "幫我", "有沒有", "是否", "可以", "目前", "學校", "公告", "相關", "一下", "嗎", "呢", "啊", "的", "了", "是"];
   var GENERIC = ["有什麼", "什麼", "哪些", "最近", "目前", "相關", "規定", "辦法", "如何", "怎麼", "何時", "時間", "日期", "截止", "活動", "資訊", "資料", "請問", "快", "或"];
+  var PERSONAL_DATA_QUERY = /名單|姓名|學號|座號|身分證|電話|地址|成績|獎懲|缺曠|請假紀錄|健康檢查結果|病歷|診斷|低收入|補助名冊|誰錄取|誰得獎/;
 
   function clean(value) { return String(value == null ? "" : value).replace(/\s+/g, " ").trim(); }
   function compact(value) { return clean(value).toLocaleLowerCase("zh-TW").replace(/[^0-9a-z\u3400-\u9fff]+/g, ""); }
@@ -57,6 +58,13 @@
     }
     return unique(out.map(compact).filter(function (word) { return word.length >= 2; }));
   }
+  function literalAnchors(query) {
+    var value=compact(query);
+    STOP.concat(GENERIC).sort(function(a,b){return b.length-a.length;}).forEach(function(word){value=value.split(compact(word)).join("");});
+    var out=[];
+    for(var size=Math.min(4,value.length);size>=2;size--)for(var i=0;i+size<=value.length;i++)out.push(value.slice(i,i+size));
+    return unique(out);
+  }
   function overview(item) {
     return clean([item && item.title, item && item.summary, item && item.snippet, item && item.category, item && item.source_category, item && item.school_name].filter(Boolean).join(" "));
   }
@@ -84,7 +92,7 @@
     return score;
   }
   function rank(query, items, details, options) {
-    var queryTokens = tokens(query), anchorTokens = anchors(query), wanted = intent(query), detailMap = details || {};
+    var queryTokens = tokens(query), anchorTokens = anchors(query), literalTokens=literalAnchors(query), wanted = intent(query), detailMap = details || {};
     /* Fail closed.  Falling back to raw full-text ranking makes a missing or
        stale search module silently return unrelated announcements. */
     if (!SearchQuery || !queryTokens.length) return [];
@@ -97,20 +105,30 @@
       var metadataScore = metadataRow ? metadataRow.score : SearchQuery.announcementScore(item, query);
       var reviewed=Validity&&Validity.reviewedRecord?Validity.reviewedRecord(item):null;
       var reviewedText=reviewed?(reviewed.fragments||[]).map(function(f){return clean(f.keywords+" "+f.text);}).join(" "):"";
-      var reviewedScore=scoreText(reviewedText,queryTokens,5);if(!metadataScore&&!reviewedScore)return null;
+      var reviewedScore=scoreText(reviewedText,queryTokens,8);if(!metadataScore&&!reviewedScore)return null;
       var titleScore = scoreText(item.title || "", queryTokens, 9);
       var overviewScore = scoreText(overview(item), queryTokens, 3);
       var body = detailText(detailMap[item.id]);
       var bodyScore = scoreText(body, queryTokens, 1);
       var anchorScore = scoreText(clean(item.title || "") + " " + overview(item) + " " + body+" "+reviewedText, anchorTokens, 1);
+      var reviewedNormalized=compact(reviewedText);
+      var reviewedAnchorHits=literalTokens.filter(function(token){return reviewedNormalized.indexOf(token)!==-1;}).length;
+      var reviewedCoverage=literalTokens.length?reviewedAnchorHits/literalTokens.length:0;
+      var reviewedLongest=literalTokens.reduce(function(best,token){return reviewedNormalized.indexOf(token)!==-1?Math.max(best,token.length):best;},0);
+      var reviewedBonus=reviewedScore?(45+Math.round(reviewedCoverage*120)):0;
       var intentBonus = 0, combined = clean(overview(item) + " " + body);
       wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
-      return { item:item,detail:detailMap[item.id]||null,text:combined,score:metadataScore+reviewedScore+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus,anchorScore:anchorScore,reviewedMatch:reviewedScore>0,search_validity:metadataRow&&metadataRow.validity };
+      return { item:item,detail:detailMap[item.id]||null,text:combined,score:metadataScore+reviewedScore+reviewedBonus+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus,anchorScore:anchorScore,reviewedMatch:reviewedScore>0,reviewedCoverage:reviewedCoverage,reviewedAnchorHits:reviewedAnchorHits,reviewedLongest:reviewedLongest,search_validity:metadataRow&&metadataRow.validity };
     }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0 || row.reviewedMatch); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
     if (!ranked.length) return ranked;
-    var floor = Math.max(70, ranked[0].score * 0.50);
+    var strongReviewed=ranked.filter(function(row){return row.reviewedMatch&&row.reviewedLongest>=3&&row.reviewedAnchorHits>=2&&row.reviewedCoverage>=0.12;});
+    if(strongReviewed.length){
+      var related={};strongReviewed.forEach(function(row){related[row.item.id]=true;var record=Validity&&Validity.reviewedRecord?Validity.reviewedRecord(row.item):null;(record&&record.relations||[]).forEach(function(rel){if(rel.target_id)related[rel.target_id]=true;});});
+      ranked=ranked.filter(function(row){return related[row.item.id]||(row.reviewedMatch&&row.reviewedLongest>=3&&row.reviewedAnchorHits>=2&&row.reviewedCoverage>=0.12);});
+    }
+    var floor = Math.max(70, ranked[0].score * 0.55);
     return ranked.filter(function (row) { return row.score >= floor; });
   }
   function sentences(value) {
@@ -190,6 +208,20 @@
       confidence: "medium", plan: questionPlan(query), evidence: [], sources: sources,
       validity_warnings: ["過期公告只作歷史依據，不作目前有效證明。"] };
   }
+  function safeSource(row, options) {
+    var item=row.item||row;
+    return { id:item.id, title:clean(item.title||"官方公告"), school_id:item.school_id||item.school||"",
+      school_name:item.school_name||"", url:item.url||"", date:item.date||item.first_seen||"",
+      category:item.category||"", validity:row.validity||validityFor({item:item,detail:row.detail||null},options) };
+  }
+  function personalDataAnswer(query, ranked, options) {
+    ranked.forEach(function(row){row.validity=validityFor(row,options);});
+    return { status:"answered", query:query, privacy_limited:true,
+      summary:"這個問題可能涉及可識別的學生或個人資料；本站不整理、不轉述名單或個人紀錄。",
+      answer_lines:["請直接開啟下方官方公告核對；若資料有誤、已逾保存目的或需要更正，請聯絡原發布學校。"],
+      limitation:"為降低個資再次散布風險，問校務只提供必要的官方入口，不顯示姓名、學號、健康、獎懲或其他個人紀錄。",
+      confidence:"high",plan:questionPlan(query),evidence:[],sources:ranked.slice(0,4).map(function(row){return safeSource(row,options);}),validity_warnings:[] };
+  }
   function answer(query, items, details, options) {
     query = clean(query).slice(0, 160);
     var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);
@@ -198,6 +230,7 @@
       ranked = ranked.filter(function (row) { return row.score >= relevanceFloor; }).slice(0, 5);
     }
     if (!query || !queryTokens.length || !ranked.length) return { status: "insufficient", query: query, summary: "目前資料不足，找不到可驗證的答案。", evidence: [], sources: [] };
+    if(PERSONAL_DATA_QUERY.test(query))return personalDataAnswer(query,ranked,options);
     ranked.forEach(function (row) { row.validity = validityFor(row, options); });
     var currentSensitive = Validity && Validity.requiresCurrentStatus(query);
     var openWindow = Validity && Validity.requiresOpenWindow(query);
@@ -229,6 +262,7 @@
       answer_lines: lines, limitation: evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
       plan: plan, evidence: evidence, sources: sources, validity_warnings: unique(validityWarnings) };
   }
-  return { tokens: tokens, anchors: anchors, intent: intent, questionPlan: questionPlan, detailText: detailText, rank: rank,
-    smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary, answer: answer };
+  return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, questionPlan: questionPlan, detailText: detailText, rank: rank,
+    smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
+    isPersonalDataQuery:function(query){return PERSONAL_DATA_QUERY.test(clean(query));},answer: answer };
 });

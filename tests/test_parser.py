@@ -13,7 +13,8 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     merge_collected_item, validate_snapshot_items,
                     validate_history_capacity, quarantine_corrupt_titles,
                     merge_title, decode_response,
-                    record_detail_fetch_failure)  # noqa: E402
+                    record_detail_fetch_failure,
+                    validate_public_source_url)  # noqa: E402
 from notify import (push_topics, summarize, personal_topics, notification_payload,
                     normalize_topic, prepare_notification_items,
                     SUMMARY_THRESHOLD)  # noqa: E402
@@ -132,6 +133,17 @@ ARTICLE_RULING_TITLE_HTML = """
 
 def run():
     ok = True
+
+    validate_public_source_url("https://www.cysh.cy.edu.tw/p/406-1008-1.php")
+    for unsafe in ("http://www.cysh.cy.edu.tw/", "https://user:pass@www.cysh.cy.edu.tw/",
+                   "https://evil.example/p/406-1008-1.php"):
+        try:
+            validate_public_source_url(unsafe)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("crawler must reject non-public or non-allowlisted URLs")
+    print("✓ public HTTPS source allow-list")
 
     items = extract_items(LIST_HTML, SCHOOL, "https://www.cysh.cy.edu.tw/p/403-1008-17-1.php")
     assert len(items) == 2, f"應萃取 2 筆,實得 {len(items)}"

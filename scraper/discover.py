@@ -54,7 +54,10 @@ BFS_MAX_PAGES = 400        # 單校 BFS 上限
 # 地毯式補掃的分類 ID 上限。實測嘉中最大 908、嘉女最大 1177,
 # 一開始設 850 會漏掉這兩個(當時只是碰巧被 BFS 的連結撈到),因此放寬到 1500。
 MAX_CATEGORY_ID = 1500
-ALLOWED_HOST_SUFFIX = ".cy.edu.tw"
+ALLOWED_HOSTS = {
+    (urlsplit(str(school.get("base") or "")).hostname or "").lower()
+    for school in CONFIG.get("schools", [])
+}
 
 DELAY = 1.0
 TIMEOUT = 15
@@ -83,10 +86,18 @@ COMMON_TITLE_MIN_PAGES = 4
 def fetch(session, url):
     """回傳 (html, 錯誤訊息);404 以 '404' 表示,成功時錯誤訊息為空字串。"""
     try:
+        parsed = urlsplit(str(url or ""))
+        if (parsed.scheme != "https" or parsed.username or parsed.password
+                or (parsed.hostname or "").lower() not in ALLOWED_HOSTS):
+            return None, "source_url_not_allowlisted"
         resp = session.get(url, timeout=TIMEOUT)
         if resp.status_code == 404:
             return None, "404"
         resp.raise_for_status()
+        final = urlsplit(resp.url)
+        if (final.scheme != "https" or final.username or final.password
+                or (final.hostname or "").lower() not in ALLOWED_HOSTS):
+            return None, "redirect_url_not_allowlisted"
         resp.encoding = resp.apparent_encoding or "utf-8"
         return resp.text, ""
     except Exception as e:

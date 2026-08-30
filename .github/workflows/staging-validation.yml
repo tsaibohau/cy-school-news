@@ -58,6 +58,10 @@ jobs:
           tests/test_staging_build.js
       - name: Search ranking train and holdout gate
         run: node tools/evaluate-search-ranking.js --strict
+      - name: Assistant QA train and holdout gate
+        run: node tools/evaluate-assistant-qa.js --strict
+      - name: Legal and privacy preview gate
+        run: node tools/check-legal-compliance.js
       - name: Type-check reminder Edge Function
         run: >-
           deno check

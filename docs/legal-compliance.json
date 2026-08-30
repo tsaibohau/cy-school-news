@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-30",
+  "status": "PREVIEW_ONLY_REVIEW_REQUIRED",
+  "production_ready": false,
+  "technical_controls": {
+    "public_https_sources_only": true,
+    "no_authentication_bypass": true,
+    "bounded_request_rate": true,
+    "qa_personal_data_guard": true,
+    "source_attribution_and_official_links": true,
+    "rls_contract_tests": true
+  },
+  "production_blockers": [
+    "Dedicated two-user deployed RLS behavioral test has not produced a current passing record.",
+    "A private correction/removal contact channel has not been confirmed.",
+    "Source-by-source copyright and terms review is incomplete.",
+    "A qualified Taiwan legal professional has not reviewed the complete production service."
+  ]
+}

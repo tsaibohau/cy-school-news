@@ -30,6 +30,10 @@ from detail_parser import parse_article_detail
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
 DETAIL_ROOT = ROOT / "docs" / "data" / "details"
+ALLOWED_SOURCE_HOSTS = {
+    (urlsplit(str(school.get("base") or "")).hostname or "").lower()
+    for school in CONFIG.get("schools", [])
+}
 
 TW_TZ = timezone(timedelta(hours=8))
 DATE_RE = re.compile(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
@@ -532,9 +536,19 @@ def decode_response(response) -> str:
     return raw.decode("utf-8", errors="replace")
 
 
+def validate_public_source_url(url: str) -> None:
+    """Reject credentials, non-HTTPS URLs and redirects outside configured schools."""
+    parsed = urlsplit(str(url or ""))
+    if (parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password
+            or parsed.hostname.lower() not in ALLOWED_SOURCE_HOSTS):
+        raise ValueError("source_url_not_allowlisted")
+
+
 def fetch(session: requests.Session, url: str) -> str:
+    validate_public_source_url(url)
     resp = session.get(url, timeout=CONFIG["timeout_sec"])
     resp.raise_for_status()
+    validate_public_source_url(resp.url)
     return decode_response(resp)
 
 

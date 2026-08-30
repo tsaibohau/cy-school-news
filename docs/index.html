@@ -145,7 +145,7 @@
       </section>
       <details id="profileBox" class="my-card my-disclosure" aria-labelledby="profileTitle">
         <summary><span class="my-card-icon" aria-hidden="true">設</span><span><strong id="profileTitle">個人設定</strong><small>暱稱、學校、年級與關注內容</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary>
-        <div class="my-card-body"><p id="profileHint" class="hint">登入後設定暱稱、學校與年級，讓介面和公告排序更貼近你。</p><form id="profileForm" class="profile-form">
+        <div class="my-card-body"><p id="profileHint" class="hint">登入後設定暱稱、學校與年級，讓介面和公告排序更貼近你。班級與關注內容可不填；請勿輸入自己或他人的敏感個資。</p><form id="profileForm" class="profile-form">
           <label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109（選填）"></label><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團（選填）"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金（選填）"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課（選填）"></label><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存我的資料</button><span id="profileStatus" class="hint" aria-live="polite"></span></div><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label>
         </form></div>
       </details>
@@ -157,10 +157,11 @@
   </section>
 
   <footer class="foot">
-    <p>資料來源:<a href="https://www.cysh.cy.edu.tw/" target="_blank" rel="noopener">嘉義高中</a>、<a href="https://www.cygsh.cy.edu.tw/" target="_blank" rel="noopener">嘉義女中</a>、<a href="https://www.pksh.ylc.edu.tw/" target="_blank" rel="noopener">北港高中</a>官方網站,每日自動更新數次。</p>
+    <p>資料來源:<a href="https://www.cysh.cy.edu.tw/" target="_blank" rel="noopener">嘉義高中</a>、<a href="https://www.cygsh.cy.edu.tw/" target="_blank" rel="noopener">嘉義女中</a>、<a href="https://rpage.fjsh.cy.edu.tw/" target="_blank" rel="noopener">輔仁高中</a>官方網站,每日自動更新數次。</p>
     <p><a href="calendar.ics">📅 訂閱行事曆</a>(開學、段考、模擬考等重要日程,可加入 iPhone/Google 行事曆)</p>
     <p>資料涵蓋:開站即載入最近一年公告;更早的歷史公告(回溯至 2024 年)會在搜尋或分類瀏覽時自動載入。</p>
     <p>本站為個人非官方服務,內容以各校官網為準。</p>
+    <p><a href="legal.html">資料、隱私與權利說明</a></p>
   </footer>
 </div>
 
@@ -223,7 +224,7 @@
 <script src="search-query.js?v=52"></script>
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
-<script src="assistant-qa.js?v=52"></script>
+<script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
 <script src="app.js?v=52"></script>
