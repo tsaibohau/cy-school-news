@@ -1,0 +1,79 @@
+{
+ "announcement_id": "cysh-131418",
+ "school_id": "cysh",
+ "title": "【漏洞預警】GitLab 的社群版(CE)及企業版(EE)存在2個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-131418,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202503-00000007",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "GitLab 是基於Git的整合軟體開發( DevSecOps )平台，提供版本控制、CI/CD自動化等功能。近期GitLab針對社群版(CE)及企業版(EE)發布多個資安漏洞公告並提供修補版本，其中以CVE-2025-25291(CVSS 4.x：8.8) 與 CVE-2025-25292(CVSS 4.x：8.8)為重大資安漏洞，這二個繞過身分驗證漏洞存在ruby-saml的程式庫，攻擊者能存取已經過身分驗證且有效簽署的SAML檔，作為另一個有效使用者進行身分驗證。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "GitLab CE/EE",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "將 GitLab CE/EE 更新至 17.7.7、17.8.5、17.9.2(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. GitLab 的社群版(CE)及企業版(EE)存在2個重大資安漏洞： https://www.twcert.org.tw/tw/cp-169-10016-550eb-1.html 2. GitLab Critical Patch Release: 17.9.2, 17.8.5, 17.7.7： https://about.gitlab.com/releases/2025/03/12/patch-release-gitlab-17-9-2-released/#guest-with-custom-admin-group-member-permissions-can-approve-the-users-invitation-despite-user-caps 3. CVE-2025-25291： https://nvd.nist.gov/vuln/detail/CVE-2025-25291 4. CVE-2025-25292： https://nvd.nist.gov/vuln/detail/CVE-2025-25292",
+   "links": [
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-169-10016-550eb-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-169-10016-550eb-1.html"
+    },
+    {
+     "text": "https://about.gitlab.com/releases/2025/03/12/patch-release-gitlab-17-9-2-released/#guest-with-custom-admin-group-member-permissions-can-approve-the-users-invitation-despite-user-caps",
+     "url": "https://about.gitlab.com/releases/2025/03/12/patch-release-gitlab-17-9-2-released/#guest-with-custom-admin-group-member-permissions-can-approve-the-users-invitation-despite-user-caps"
+    },
+    {
+     "text": "https://nvd.nist.gov/vuln/detail/CVE-2025-25291",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-25291"
+    },
+    {
+     "text": "https://nvd.nist.gov/vuln/detail/CVE-2025-25292",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-25292"
+    }
+   ]
+  }
+ ],
+ "attachments": [],
+ "source_hash": "3c1a2f53539c5b6ac2a8fdca7e0bd20275c47b30097b2dd2d7ee0208c6ab910b",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T11:18:16+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "近期GitLab針對社群版(CE)及企業版(EE)發布多個資安漏洞公告並提供修補版本，其中以CVE-2025-25291(CVSS 4.x：8.8) 與 CVE-2025-25292(CVSS 4.x：8.8)為重大資安漏洞，這二個繞過身分驗證漏洞存在ruby-saml的程式庫，攻擊者能存取已經過身分驗證且有效簽署的SAML檔，作為另一個有效使用者進行身分…",
+  "evidence": "近期GitLab針對社群版(CE)及企業版(EE)發布多個資安漏洞公告並提供修補版本，其中以CVE-2025-25291(CVSS 4.x：8.8) 與 CVE-2025-25292(CVSS 4.x：8.8)為重大資安漏洞，這二個繞過身分驗證漏洞存在ruby-saml的程式庫，攻擊者能存取已經過身分驗證且有效簽署的SAML檔，作為另一個有效使用者進行身分驗證。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

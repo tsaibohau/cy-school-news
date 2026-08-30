@@ -1,0 +1,85 @@
+{
+ "announcement_id": "cysh-131091",
+ "school_id": "cysh",
+ "title": "【漏洞預警】一宇數位科技 Orca HCM 存在多個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-131091,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202502-00000002",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【一宇數位科技 Orca HCM - Missing Authentication】(TVN-202409001，CVE-2024-8584，CVSS：9.8) 一宇數位科技 Orca HCM 存在Missing Authentication漏洞，未經身分鑑別之遠端攻擊者可利用該功能新增管理權限帳號，並用該帳號進行登入。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【一宇數位科技 Orca HCM - Arbitrary File Upload】(TVN-202502005，CVE-2025-1388，CVSS：8.8) 一宇數位科技Orca HCM存在Arbitrary File Upload漏洞，允許已取得一般權限之遠端攻擊者上傳並執行網頁後門程式。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【一宇數位科技 Orca HCM - SQL Injection】(TVN-202502006，CVE-2025-1389，CVSS：8.8) 一宇數位科技Orca HCM存在SQL Injection漏洞，允許已取得一般權限之遠端攻擊者注入任意SQL指令以讀取、修改及刪除資料庫內容。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Orca HCM 11.0(不含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "標準用戶請更新至11.0(含)以後版本；客製化用戶請聯繫廠商安裝修補程式",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1.一宇數位科技 Orca HCM - Missing Authentication： https://www.twcert.org.tw/tw/cp-132-8039-24e48-1.html 2.一宇數位科技 Orca HCM - Arbitrary File Upload： https://www.twcert.org.tw/tw/cp-132-8429-07d7e-1.html 3.一宇數位科技 Orca HCM - SQL Injection： https://www.twcert.org.tw/tw/cp-132-8431-61e42-1.html",
+   "links": [
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-132-8039-24e48-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-132-8039-24e48-1.html"
+    },
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-132-8429-07d7e-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-132-8429-07d7e-1.html"
+    },
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-132-8431-61e42-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-132-8431-61e42-1.html"
+    }
+   ]
+  }
+ ],
+ "attachments": [],
+ "source_hash": "5cafa110aa4a0063aaac965bca97a2beed403a7cbd92f4c0dd0e1ba5ac2f1c69",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T11:18:16+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【一宇數位科技 Orca HCM - Missing Authentication】(TVN-202409001，CVE-2024-8584，CVSS：9.8) 一宇數位科技 Orca HCM 存在Missing Authentication漏洞，未經身分鑑別之遠端攻擊者可利用該功能新增管理權限帳號，並用該帳號進行登入。",
+  "evidence": "【一宇數位科技 Orca HCM - Missing Authentication】(TVN-202409001，CVE-2024-8584，CVSS：9.8) 一宇數位科技 Orca HCM 存在Missing Authentication漏洞，未經身分鑑別之遠端攻擊者可利用該功能新增管理權限帳號，並用該帳號進行登入。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

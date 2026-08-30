@@ -1,0 +1,85 @@
+{
+ "announcement_id": "cysh-130934",
+ "school_id": "cysh",
+ "title": "【漏洞預警】SonicWall SMA1000存在安全漏洞(CVE-2025-23006)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-130934,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 NISAC-200-202502-00000018",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現SonicWall SMA1000系列型號產品存在反序列化(Deserialization)漏洞(CVE-2025-23006)，允許未經身分鑑別之遠端攻擊者可利用此漏洞執行任意作業系統指令。該漏洞已遭駭客利用，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "SonicWall SMA1000系列型號產品12.4.3-02804(含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "官方已針對漏洞釋出修復更新，請參考官方說明，網址如下：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "https://www.sonicwall.com/support/knowledge-base/product-notice-urgent-security-notification-sma-1000/250120090802840",
+   "links": [
+    {
+     "text": "https://www.sonicwall.com/support/knowledge-base/product-notice-urgent-security-notification-sma-1000/250120090802840",
+     "url": "https://www.sonicwall.com/support/knowledge-base/product-notice-urgent-security-notification-sma-1000/250120090802840"
+    }
+   ]
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-23006 2. https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2025-0002 3. https://www.sonicwall.com/support/knowledge-base/product-notice-urgent-security-notification-sma-1000/250120090802840",
+   "links": [
+    {
+     "text": "https://nvd.nist.gov/vuln/detail/CVE-2025-23006",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-23006"
+    },
+    {
+     "text": "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2025-0002",
+     "url": "https://psirt.global.sonicwall.com/vuln-detail/SNWLID-2025-0002"
+    },
+    {
+     "text": "https://www.sonicwall.com/support/knowledge-base/product-notice-urgent-security-notification-sma-1000/250120090802840",
+     "url": "https://www.sonicwall.com/support/knowledge-base/product-notice-urgent-security-notification-sma-1000/250120090802840"
+    }
+   ]
+  }
+ ],
+ "attachments": [],
+ "source_hash": "9651d68bf7e3b3cff8a769107aa9ed8a6fbb95b23cf717a827336c4cda3d9ed3",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T11:18:16+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現SonicWall SMA1000系列型號產品存在反序列化(Deserialization)漏洞(CVE-2025-23006)，允許未經身分鑑別之遠端攻擊者可利用此漏洞執行任意作業系統指令。",
+  "evidence": "研究人員發現SonicWall SMA1000系列型號產品存在反序列化(Deserialization)漏洞(CVE-2025-23006)，允許未經身分鑑別之遠端攻擊者可利用此漏洞執行任意作業系統指令。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
