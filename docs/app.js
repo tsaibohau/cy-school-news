@@ -44,6 +44,7 @@
     var queueAccountMutation = function () {};
     var createTaskReminder = function () { return Promise.reject(new Error("account not ready")); };
     var accountAuth = null;
+    var searchTimer = null;
 
     var state = {
       data: null,
@@ -812,9 +813,15 @@
     }
     function latestItems() {
       if (!state.data) return [];
-      var rows = state.data.items.map(function (it) {
+      var candidates = state.data.items.filter(function (it) {
         if (state.school !== "all" && it.school !== state.school) return false;
         if (state.cat !== "all" && it.category !== state.cat) return false;
+        return true;
+      });
+      if (state.q && window.CyNewsSearchQuery && typeof window.CyNewsSearchQuery.select === "function") {
+        return window.CyNewsSearchQuery.select(candidates, state.q).map(function (row) { return row.item; });
+      }
+      var rows = candidates.map(function (it) {
         var score = queryScore(it, state.q);
         return score ? { item: it, score: score } : false;
       }).filter(Boolean);
@@ -1341,8 +1348,13 @@
     /* ── 事件 ── */
     el.q.addEventListener("input", function () {
       state.q = el.q.value.trim();
-      if (state.q) ensureArchive();
-      resetPaging(); renderLatest();
+      if (searchTimer) clearTimeout(searchTimer);
+      if (!state.q) { resetPaging(); renderLatest(); return; }
+      searchTimer = setTimeout(function () {
+        resetPaging();
+        if (state.archive === "none") ensureArchive();
+        else renderLatest();
+      }, 200);
     });
     el.schoolFilter.addEventListener("change", function () {
       var selected = String(el.schoolFilter.value || "all");

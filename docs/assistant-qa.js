@@ -83,13 +83,18 @@
     queryTokens.forEach(function (token) { score += occurrence(normalized, token) * Math.max(1, token.length - 1) * weight; });
     return score;
   }
-  function rank(query, items, details) {
+  function rank(query, items, details, options) {
     var queryTokens = tokens(query), anchorTokens = anchors(query), wanted = intent(query), detailMap = details || {};
     /* Fail closed.  Falling back to raw full-text ranking makes a missing or
        stale search module silently return unrelated announcements. */
     if (!SearchQuery || !queryTokens.length) return [];
-    var ranked = (Array.isArray(items) ? items : []).map(function (item) {
-      var metadataScore = SearchQuery.announcementScore(item, query);
+    var sourceItems = Array.isArray(items) ? items : [];
+    var metadataRows = SearchQuery.rank ? SearchQuery.rank(sourceItems, query, { asOf: options && options.asOf, details: detailMap, validity: Validity }) : [];
+    var metadataById = {};
+    metadataRows.forEach(function (row) { metadataById[row.item.id] = row; });
+    var ranked = sourceItems.map(function (item) {
+      var metadataRow = metadataById[item.id];
+      var metadataScore = metadataRow ? metadataRow.score : SearchQuery.announcementScore(item, query);
       var reviewed=Validity&&Validity.reviewedRecord?Validity.reviewedRecord(item):null;
       var reviewedText=reviewed?(reviewed.fragments||[]).map(function(f){return clean(f.keywords+" "+f.text);}).join(" "):"";
       var reviewedScore=scoreText(reviewedText,queryTokens,5);if(!metadataScore&&!reviewedScore)return null;
@@ -100,7 +105,7 @@
       var anchorScore = scoreText(clean(item.title || "") + " " + overview(item) + " " + body+" "+reviewedText, anchorTokens, 1);
       var intentBonus = 0, combined = clean(overview(item) + " " + body);
       wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
-      return { item:item,detail:detailMap[item.id]||null,text:combined,score:metadataScore+reviewedScore+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus,anchorScore:anchorScore,reviewedMatch:reviewedScore>0 };
+      return { item:item,detail:detailMap[item.id]||null,text:combined,score:metadataScore+reviewedScore+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus,anchorScore:anchorScore,reviewedMatch:reviewedScore>0,search_validity:metadataRow&&metadataRow.validity };
     }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0 || row.reviewedMatch); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
@@ -187,7 +192,7 @@
   }
   function answer(query, items, details, options) {
     query = clean(query).slice(0, 160);
-    var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details).slice(0, 8);
+    var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);
     if (ranked.length) {
       var relevanceFloor = Math.max(8, ranked[0].score * 0.35);
       ranked = ranked.filter(function (row) { return row.score >= relevanceFloor; }).slice(0, 5);

@@ -446,6 +446,7 @@ async function testTopicFirstSearchExcludesBodyOnlyMatches() {
   const appRun = await createApp({ storage: new MemoryStorage(), responses: [response(dataOf([admission, dorm]))], notification: makeNotification() });
   appRun.document.elements.q.value = "宿舍申請";
   appRun.document.elements.q.emit("input");
+  await new Promise((resolve) => setTimeout(resolve, 250));
   assert.match(appRun.document.elements.list.innerHTML, /學生宿舍申請作業/, "a title-level dormitory match remains visible");
   assert.doesNotMatch(appRun.document.elements.list.innerHTML, /大學申請入學說明/, "a body-only dormitory mention cannot pollute the result");
 }
@@ -683,7 +684,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v50/);
+  assert.match(swSource, /cy-news-v51/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
@@ -702,8 +703,8 @@ function testServiceWorkerContract() {
   assert.match(swSource, /\.\/account-sync\.js/);
   assert.match(swSource, /\.\/task-state\.js/);
   assert.match(swSource, /\.\/today\.js/);
-  assert.match(swSource, /\.\/announcement-validity-reviewed\.js\?v=50/, "PWA caches reviewed validity records");
-  assert.match(swSource, /\.\/announcement-validity\.js\?v=50/, "PWA caches the validity module with the same shell revision");
+  assert.match(swSource, /\.\/announcement-validity-reviewed\.js\?v=51/, "PWA caches reviewed validity records");
+  assert.match(swSource, /\.\/announcement-validity\.js\?v=51/, "PWA caches the validity module with the same shell revision");
   assert.match(swSource, /searchParams\.has\("code"\)/);
   assert.match(swSource, /searchParams\.has\("access_token"\)/);
   assert.match(swSource, /searchParams\.has\("refresh_token"\)/);
