@@ -25,7 +25,7 @@
     "privacy_retention_policy": "privacy-retention-policy.md"
   },
   "production_blockers": [
-    "Two independent OAuth browser sessions have not completed the deployed Supabase HTTP RLS test in CI.",
+    "Two dedicated non-production Auth users have not completed the deployed Supabase HTTP RLS test in CI.",
     "The account least-privilege migrations and reminder schema are committed but not deployed to Supabase.",
     "Supabase leaked-password protection is not enabled.",
     "Automatic 30-day tombstone cleanup and 365-day read-history retention enforcement are not deployed.",
