@@ -97,6 +97,7 @@
       btnRefresh: $("btnRefresh"), refreshState: $("refreshState"),
       accountState: $("accountState"), accountEmail: $("accountEmail"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
       accountLogout: $("accountLogout"),
+      accountDeleteCloud: $("accountDeleteCloud"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
       prevMonth: $("prevMonth"), nextMonth: $("nextMonth"), todayCalendar: $("todayCalendar"),
@@ -475,6 +476,7 @@
           el.accountLogin.hidden = true;
           if (el.accountSwitch) el.accountSwitch.hidden = false;
           el.accountLogout.hidden = false;
+          if (el.accountDeleteCloud) { el.accountDeleteCloud.hidden = false; el.accountDeleteCloud.disabled = false; }
           maybePromptNickname(state.accountUser);
           renderReminderPush();
         }).catch(function () {
@@ -496,8 +498,10 @@
             status("同步待完成");
             if (el.accountSwitch) el.accountSwitch.hidden = false;
             el.accountLogout.hidden = false;
+            if (el.accountDeleteCloud) { el.accountDeleteCloud.hidden = false; el.accountDeleteCloud.disabled = false; }
           } else {
             status("已登入・同步待完成");
+            if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
             el.accountLogin.hidden = true;
             if (el.accountSwitch) el.accountSwitch.hidden = false;
             el.accountLogout.hidden = false;
@@ -532,10 +536,12 @@
             el.accountLogin.hidden = true;
             if (el.accountSwitch) el.accountSwitch.hidden = false;
             el.accountLogout.hidden = false;
+            if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
             sync(uid);
           } else if (requestedUid !== null || readyUid !== null || accountPhase !== "ANONYMOUS_READY") {
             restoreAnonymous();
             setAccountUser(null);
+            if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
             status("未登入"); el.accountLogin.hidden = false;
             if (el.accountSwitch) el.accountSwitch.hidden = true;
             el.accountLogout.hidden = true;
@@ -543,6 +549,7 @@
         });
       }
       el.accountLogin.addEventListener("click", function () {
+        if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
         syncGeneration += 1;
         requestedUid = null;
         readyUid = null;
@@ -554,6 +561,7 @@
         }).catch(function () { status("登入失敗，請稍後再試"); handleVerifiedSession().catch(function () {}); });
       });
       if (el.accountSwitch) el.accountSwitch.addEventListener("click", function () {
+        if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
         syncGeneration += 1;
         requestedUid = null;
         readyUid = null;
@@ -566,6 +574,7 @@
         }).catch(function () { status("切換前無法安全停用此裝置推播，請稍後再試"); handleVerifiedSession().catch(function () {}); });
       });
       el.accountLogout.addEventListener("click", function () {
+        if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
         syncGeneration += 1;
         requestedUid = null;
         readyUid = null;
@@ -580,6 +589,51 @@
           if (el.accountSwitch) el.accountSwitch.hidden = true;
           el.accountLogout.hidden = true;
         }).catch(function () { status("登出前無法安全停用此裝置推播，請稍後再試"); });
+      });
+      if (el.accountDeleteCloud) el.accountDeleteCloud.addEventListener("click", function () {
+        if (accountPhase !== "ACCOUNT_READY" || !readyUid) return;
+        if (!window.confirm("確定刪除這個登入帳號在本站同步的偏好、追蹤、閱讀紀錄與待辦？此操作無法復原，但不會刪除 Google 帳號。")) return;
+        var deletionUid = readyUid;
+        var generation = ++syncGeneration;
+        var dataDeleted = false;
+        requestedUid = deletionUid;
+        readyUid = null;
+        accountPhase = "AUTHENTICATING";
+        el.accountDeleteCloud.disabled = true;
+        status("正在刪除已同步資料");
+        var detach = pushManager ? pushManager.disable() : Promise.resolve();
+        detach.then(function () { return auth.getClient(); }).then(function (client) {
+          return window.CyNewsSupabaseSync.createAdapter(client, { isCurrent: function (currentUid) {
+            return generation === syncGeneration && currentUid === deletionUid;
+          }}).deleteOwnData();
+        }).then(function () {
+          dataDeleted = true;
+          lifecycle.clearAccountData(deletionUid);
+          clearAccountOwnedView();
+          return auth.signOut();
+        }).then(function () {
+          restoreAnonymous();
+          setAccountUser(null);
+          status("已刪除同步資料並登出");
+          el.accountLogin.hidden = false;
+          if (el.accountSwitch) el.accountSwitch.hidden = true;
+          el.accountLogout.hidden = true;
+          el.accountDeleteCloud.hidden = true;
+        }).catch(function () {
+          if (generation !== syncGeneration) return;
+          if (dataDeleted) {
+            accountPhase = "AUTHENTICATING";
+            status("同步資料已刪除，但登出未完成；請再按登出");
+            el.accountDeleteCloud.hidden = true;
+            el.accountLogout.hidden = false;
+            return;
+          }
+          readyUid = deletionUid;
+          accountPhase = "ACCOUNT_READY";
+          status("刪除未完成，請稍後重試");
+          el.accountDeleteCloud.disabled = false;
+          el.accountDeleteCloud.hidden = false;
+        });
       });
       /* Subscribe before the first session read. On an OAuth callback the client
          begins exchanging the URL grant as it is constructed; registering after

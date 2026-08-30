@@ -169,4 +169,22 @@ assert.deepEqual(corrupt.state().reads, []);
 assert.deepEqual(corrupt.state().preferences.preferences, {});
 assert.equal(corrupt.state().preferences.updated_at, undefined);
 assert.equal(durableStore.getItem("cyNews.notificationState"), notificationState);
+
+const clearStore = {
+  data: {},
+  getItem(k) { return this.data[k] || null; },
+  setItem(k, v) { this.data[k] = v; },
+  removeItem(k) { delete this.data[k]; },
+};
+const clearLifecycle = new Sync.AccountLifecycle(null, clearStore);
+clearLifecycle.login("user-clear");
+clearLifecycle.applyMutation("subscription.upsert", { keyword: "清除測試" });
+new Sync.Outbox(clearStore, "user-clear").enqueue({ type: "subscription.upsert", payload: { keyword: "清除測試" } });
+assert(clearStore.getItem(Sync.STATE_KEY_PREFIX + "user-clear"));
+assert(clearStore.getItem(Sync.OUTBOX_KEY + "user-clear"));
+clearLifecycle.clearAccountData("user-clear");
+assert.equal(clearStore.getItem(Sync.STATE_KEY_PREFIX + "user-clear"), null, "account state is removed locally");
+assert.equal(clearStore.getItem(Sync.OUTBOX_KEY + "user-clear"), null, "queued mutations cannot re-upload deleted data");
+assert.equal(clearLifecycle.active_account_id, Sync.ANONYMOUS_ACCOUNT);
+assert.throws(() => clearLifecycle.clearAccountData(Sync.ANONYMOUS_ACCOUNT), /authenticated account required/);
 console.log("Account Sync V1.2 durable lifecycle tests passed");

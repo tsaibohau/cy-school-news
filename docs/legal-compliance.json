@@ -9,12 +9,21 @@
     "bounded_request_rate": true,
     "qa_personal_data_guard": true,
     "source_attribution_and_official_links": true,
-    "rls_contract_tests": true
+    "rls_contract_tests": true,
+    "deployed_database_two_identity_rls_pass": true,
+    "rls_test_residue_count": 0,
+    "preview_self_service_app_data_deletion": true,
+    "source_rights_audit_recorded": true
+  },
+  "evidence": {
+    "rls_verification": "rls-verification-2026-08-30.md",
+    "source_rights_audit": "source-rights-audit.md",
+    "privacy_retention_policy": "privacy-retention-policy.md"
   },
   "production_blockers": [
-    "Dedicated two-user deployed RLS behavioral test has not produced a current passing record.",
-    "A private correction/removal contact channel has not been confirmed.",
-    "Source-by-source copyright and terms review is incomplete.",
+    "Two independent OAuth browser sessions have not completed the deployed Supabase HTTP RLS test in CI.",
+    "A private identity-verification, Auth-record deletion, and correction/removal contact channel has not been confirmed.",
+    "Source audit found no open licence and two sites state rights reserved; written permission or qualified fair-use review is still required.",
     "A qualified Taiwan legal professional has not reviewed the complete production service."
   ]
 }

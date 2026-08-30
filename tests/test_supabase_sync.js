@@ -94,5 +94,23 @@ adapter.fetchRemoteState().then(async remote => {
   client.currentUid = "user-b";
   await assert.rejects(adapter.drain(outbox, () => true), /identity changed/);
   assert.equal(outbox.pending().length, 1, "identity change cannot drain A queue as B");
+
+  const deletedTables = [];
+  const deletionClient = {
+    auth: { getSession: () => Promise.resolve({ data: { session: { user: { id: "user-a" } } }, error: null }) },
+    from(table) {
+      return {
+        delete() { return this; },
+        eq(column, uid) {
+          deletedTables.push({ table, column, uid });
+          return Promise.resolve({ data: [], error: null });
+        },
+      };
+    },
+  };
+  const deletionResult = await Sync.createAdapter(deletionClient).deleteOwnData();
+  assert.deepEqual(deletionResult, Sync.TABLES_ORDER);
+  assert.deepEqual(deletedTables.map(x => x.table), Sync.TABLES_ORDER, "all current account-owned tables are deleted");
+  assert(deletedTables.every(x => x.column === "user_id" && x.uid === "user-a"), "deletion is scoped to the verified session owner");
   console.log("Supabase Sync adapter tests passed");
 }).catch(error => { console.error(error); process.exitCode = 1; });

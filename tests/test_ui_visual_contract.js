@@ -20,8 +20,8 @@ assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >
 assert.match(index, /style\.css\?v=41/);
 assert.match(index, /search-taxonomy\.js\?v=52/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=52/, "semantic search terms load before the application");
-assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=52/, "reviewed validity loads before answers");
-assert.match(index, /app\.js\?v=52/);
+assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=53/, "reviewed validity loads before answers");
+assert.match(index, /app\.js\?v=54/);
 assert.match(app, /不會把過期公告當成目前有效/, "assistant explains its validity guardrail");
 assert.match(app, /searchTimer = setTimeout[\s\S]*200\);/, "full-corpus ranking is debounced while the user types");
 assert.match(index, /id="navMenuToggle"[^>]*aria-expanded="false"[^>]*aria-controls="navMenu"/, "mobile navigation is exposed through one accessible menu button");
