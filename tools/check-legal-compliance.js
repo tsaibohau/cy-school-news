@@ -32,6 +32,17 @@ if (!/robots\.txt/.test(sourceAudit) || !/All Rights Reserved|版權所有/.test
 if (!/30 天/.test(retention) || !/365 天/.test(retention) || !/尚未.{0,8}部署/.test(retention)) throw new Error("retention policy must separate targets from deployed controls");
 if (!/A 可見 B 的測試列 \| 0/.test(rlsEvidence) || !/測試殘留 \| 0/.test(rlsEvidence)) throw new Error("deployed RLS evidence is incomplete");
 if (!status.technical_controls.deployed_database_two_identity_rls_pass || status.technical_controls.rls_test_residue_count !== 0) throw new Error("RLS evidence status mismatch");
+for (const key of [
+  "deployed_account_least_privilege_migrations",
+  "deployed_reminder_schema",
+  "deployed_http_two_session_rls_pass",
+  "leaked_password_protection_enabled",
+]) {
+  if (status.technical_controls[key] !== false) throw new Error(`unverified deployed control must remain false: ${key}`);
+}
+if (!status.production_blockers.some(item => /least-privilege migrations and reminder schema/.test(item))) throw new Error("missing deployed schema blocker");
+if (!status.production_blockers.some(item => /leaked-password protection/.test(item))) throw new Error("missing leaked-password protection blocker");
+if (!status.production_blockers.some(item => /Automatic 30-day tombstone cleanup/.test(item))) throw new Error("missing retention enforcement blocker");
 if (!/request_delay_sec/.test(scraper) || !/time\.sleep\(delay\)/.test(scraper)) throw new Error("bounded crawler delay missing");
 
 const production = process.argv.includes("--production") || process.env.CYNEWS_RELEASE_TARGET === "production";

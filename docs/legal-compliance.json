@@ -12,6 +12,10 @@
     "rls_contract_tests": true,
     "deployed_database_two_identity_rls_pass": true,
     "rls_test_residue_count": 0,
+    "deployed_account_least_privilege_migrations": false,
+    "deployed_reminder_schema": false,
+    "deployed_http_two_session_rls_pass": false,
+    "leaked_password_protection_enabled": false,
     "preview_self_service_app_data_deletion": true,
     "source_rights_audit_recorded": true
   },
@@ -22,6 +26,9 @@
   },
   "production_blockers": [
     "Two independent OAuth browser sessions have not completed the deployed Supabase HTTP RLS test in CI.",
+    "The account least-privilege migrations and reminder schema are committed but not deployed to Supabase.",
+    "Supabase leaked-password protection is not enabled.",
+    "Automatic 30-day tombstone cleanup and 365-day read-history retention enforcement are not deployed.",
     "A private identity-verification, Auth-record deletion, and correction/removal contact channel has not been confirmed.",
     "Source audit found no open licence and two sites state rights reserved; written permission or qualified fair-use review is still required.",
     "A qualified Taiwan legal professional has not reviewed the complete production service."

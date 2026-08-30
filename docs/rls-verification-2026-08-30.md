@@ -33,3 +33,13 @@
 `authenticated` 目前仍有前端不需要的 `TRUNCATE`、`TRIGGER`、`REFERENCES` 權限。雖然前端 REST API 沒有直接暴露 `TRUNCATE`，仍應依最小權限原則撤除。對應 account migration 已放在 `supabase/migrations/20260830120000_account_least_privilege.sql`，尚未套用線上資料庫。
 
 完整 CI 另發現既有 reminder migration 曾保留 `DELETE` 權限，造成「瀏覽器不得硬刪永久提醒識別」的資料庫測試失敗。`supabase/migrations/20260830123000_reminder_browser_least_privilege.sql` 已明確撤銷提醒規則與推播裝置的 `DELETE`、`TRUNCATE`、`REFERENCES`、`TRIGGER`，並新增權限回歸斷言；同樣尚未套用線上資料庫。
+
+## 線上再次核對（2026-08-30 14:33 UTC）
+
+- Supabase migration history 目前只有 `account_sync_v1`、`account_security_hardening`、`add_user_tasks` 三筆。
+- 線上只有四張帳號資料表；提醒規則、推播訂閱、提醒工作與傳送紀錄 schema 尚未部署。
+- 四張帳號資料表均開啟 RLS，匿名角色沒有資料表權限；但 `user_subscriptions`、`user_reads`、`user_preferences` 的政策仍是 `PUBLIC` role，最小權限 migration 尚未套用。
+- `authenticated` 仍持有 `REFERENCES`、`TRIGGER`、`TRUNCATE`；線上狀態證實最小權限修正尚未生效。
+- Supabase Security Advisor 唯一警告是外洩密碼保護未啟用；正式啟用帳密登入前應開啟，或明確限制只允許受控 OAuth。
+
+因此，Feature CI 與 Preview 成功不代表 Supabase schema 已部署或 production 已可發布。
