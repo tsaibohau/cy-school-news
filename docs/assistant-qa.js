@@ -8,6 +8,8 @@
 
   var SearchQuery = typeof window !== "undefined" ? window.CyNewsSearchQuery : null;
   if (!SearchQuery && typeof module !== "undefined" && module.exports) SearchQuery = require("./search-query.js");
+  var Validity = typeof window !== "undefined" ? window.CyNewsAnnouncementValidity : null;
+  if (!Validity && typeof module !== "undefined" && module.exports) Validity = require("./announcement-validity.js");
 
   var INTENTS = {
     date: ["何時", "什麼時候", "日期", "截止", "幾點", "時間", "多久"],
@@ -140,7 +142,9 @@
       return (multiple ? (sourceTitles[row.announcement_id] || "官方公告") + "：" : "") + fact;
     }).filter(Boolean).slice(0, 4);
   }
-  function evidenceLimitation(evidence, sources, plan) {
+  function evidenceLimitation(evidence, sources, plan, validityWarnings) {
+    validityWarnings = unique((validityWarnings || []).map(clean).filter(Boolean));
+    if (validityWarnings.length) return validityWarnings.slice(0, 2).join(" ");
     if (!evidence.length) return "沒有足夠的官方原文可供核對。";
     if (sources.length > 1) return "找到多則不同公告，已分開列出；不能把不同活動的日期或資格互相拼接。";
     if (plan.wants_latest) return "這是本站目前已抓到的最新官方資料；校方若尚未發布，系統不會自行補出答案。";
@@ -157,7 +161,24 @@
     else if (wanted.indexOf("person") !== -1) prefix = "依官方公告，適用對象或資格的重點是：";
     return prefix + lead + (/[。！？!?]$/.test(lead) ? "" : "。") + "下方附有 " + sources.length + " 則可核對的官方來源。";
   }
-  function answer(query, items, details) {
+  function validityFor(row, options) {
+    return Validity ? Validity.analyze(row.item, row.detail, options || {}) : { status: "UNCONFIRMED", answer_policy: "warn", warnings: ["公告效力模組未載入，不能確認目前狀態。"] };
+  }
+  function expiredAnswer(query, rows) {
+    var sources = rows.slice(0, 4).map(function (row) {
+      return Object.assign({}, row.item, { validity: row.validity });
+    });
+    var lines = rows.slice(0, 3).map(function (row) {
+      var date = row.validity.latest_deadline || row.validity.latest_event;
+      return clean(row.item.title || "相關公告") + "：本次期限或事件" + (date ? "已於 " + date : "已經") + "結束。";
+    });
+    return { status: "answered", query: query,
+      summary: "找到的相關官方公告已超過明確期限；不能用它證明現在仍可申請、報名或辦理。",
+      answer_lines: lines, limitation: "目前未找到可確認仍有效的更新公告；若校方另有新公告，應以新公告為準。",
+      confidence: "medium", plan: questionPlan(query), evidence: [], sources: sources,
+      validity_warnings: ["過期公告只作歷史依據，不作目前有效證明。"] };
+  }
+  function answer(query, items, details, options) {
     query = clean(query).slice(0, 160);
     var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details).slice(0, 8);
     if (ranked.length) {
@@ -165,24 +186,35 @@
       ranked = ranked.filter(function (row) { return row.score >= relevanceFloor; }).slice(0, 5);
     }
     if (!query || !queryTokens.length || !ranked.length) return { status: "insufficient", query: query, summary: "目前資料不足，找不到可驗證的答案。", evidence: [], sources: [] };
+    ranked.forEach(function (row) { row.validity = validityFor(row, options); });
+    var currentSensitive = Validity && Validity.requiresCurrentStatus(query);
+    var openWindow = Validity && Validity.requiresOpenWindow(query);
+    function unusableForCurrentAnswer(row) { return row.validity.answer_policy === "exclude" || (openWindow && row.validity.stale_sensitive); }
+    var expiredRows = currentSensitive ? ranked.filter(unusableForCurrentAnswer) : [];
+    if (currentSensitive) ranked = ranked.filter(function (row) { return !unusableForCurrentAnswer(row); });
+    if (!ranked.length && expiredRows.length) return expiredAnswer(query, expiredRows);
     var evidence = [], seen = {};
     ranked.forEach(function (row) {
       var sourceText = detailText(row.detail) || clean((row.item.summary || "") + " " + (row.item.snippet || ""));
       sentences(sourceText).map(function (sentence) { return { text: sentence, score: evidenceScore(sentence, queryTokens, wanted), item: row.item }; })
-        .filter(function (candidate) { return candidate.score >= 4; })
+        .filter(function (candidate) { return candidate.score >= 4 && (!Validity || Validity.sentencePolicy(candidate.text, row.validity, query) !== "exclude"); })
         .sort(function (a, b) { return b.score - a.score; }).slice(0, 1).forEach(function (candidate) {
           var key = compact(candidate.text);
-          if (!seen[key] && evidence.length < 4) { seen[key] = true; evidence.push({ text: candidate.text.slice(0, 220), announcement_id: candidate.item.id, title: candidate.item.title, score: candidate.score }); }
+          if (!seen[key] && evidence.length < 4) { seen[key] = true; evidence.push({ text: candidate.text.slice(0, 220), announcement_id: candidate.item.id, title: candidate.item.title, score: candidate.score, validity: row.validity }); }
         });
     });
     if (!evidence.length) return { status: "insufficient", query: query, summary: "有找到可能相關的公告，但內容不足以可靠回答。", evidence: [], sources: [] };
     var sourceIds = {};
     evidence.forEach(function (row) { sourceIds[row.announcement_id] = true; });
-    var sources = ranked.map(function (row) { return row.item; }).filter(function (item) { return sourceIds[item.id]; }).slice(0, 4);
+    var sources = ranked.filter(function (row) { return sourceIds[row.item.id]; }).map(function (row) {
+      return Object.assign({}, row.item, { validity: row.validity });
+    }).slice(0, 4);
+    var validityWarnings = [];
+    ranked.forEach(function (row) { (row.validity.warnings || []).forEach(function (warning) { validityWarnings.push(warning); }); });
     var lines = answerLines(evidence, sources);
     return { status: "answered", query: query, summary: composeSummary(evidence, sources, wanted),
-      answer_lines: lines, limitation: evidenceLimitation(evidence, sources, plan), confidence: lines.length >= 2 ? "high" : "medium",
-      plan: plan, evidence: evidence, sources: sources };
+      answer_lines: lines, limitation: evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
+      plan: plan, evidence: evidence, sources: sources, validity_warnings: unique(validityWarnings) };
   }
   return { tokens: tokens, anchors: anchors, intent: intent, questionPlan: questionPlan, detailText: detailText, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary, answer: answer };

@@ -1201,12 +1201,14 @@
         return '<li><span class="assistant-evidence-rank">' + (index + 1) + '</span><div><strong class="assistant-evidence-title">' + esc(row.title || "官方公告") + '</strong><p>' + esc(row.text) + '</p><button type="button" class="btn-ghost" data-detail-id="' + esc(row.announcement_id) + '">查看這則官方依據</button></div></li>';
       }).join("");
       var sources = result.sources.slice(0, 5).map(function (item) {
-        return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc((item.school_name || "官方公告") + " · " + displayDate(item)) + '</small></button>';
+        var validityLabel = window.CyNewsAnnouncementValidity && item.validity ? window.CyNewsAnnouncementValidity.label(item.validity) : "";
+        var sourceMeta = (item.school_name || "官方公告") + " · " + displayDate(item) + (validityLabel ? " · " + validityLabel : "");
+        return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc(sourceMeta) + '</small></button>';
       }).join("");
       var answerLines = (result.answer_lines || []).map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("");
       var directAnswer = answerLines ? '<h4>直接回答</h4><ul class="assistant-answer-lines">' + answerLines + '</ul>' : '';
       var limitation = result.limitation ? '<p class="assistant-limitation"><strong>資料限制：</strong>' + esc(result.limitation) + '</p>' : '';
-      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>整理結果</h3><p>' + esc(result.summary) + '</p>' + directAnswer + limitation + '<h4>我怎麼判斷</h4><ol class="assistant-evidence">' + evidence + '</ol><h4>參考公告</h4><div class="assistant-sources">' + sources + '</div><p class="assistant-disclaimer">採用類生成式問答流程整理，但每個結論都必須能回到官方原文；規定與日期仍以官方公告為準。</p></section>';
+      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>整理結果</h3><p>' + esc(result.summary) + '</p>' + directAnswer + limitation + '<h4>我怎麼判斷</h4><ol class="assistant-evidence">' + evidence + '</ol><h4>參考公告</h4><div class="assistant-sources">' + sources + '</div><p class="assistant-disclaimer">回答前會先判斷公告期限與效力；無法確認時會明確標示，不會把過期公告當成目前有效。規定與日期仍以官方公告為準。</p></section>';
     }
     function askAssistant(question) {
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);

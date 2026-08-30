@@ -18,9 +18,11 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /style\.css\?v=41/);
-assert.match(index, /search-taxonomy\.js\?v=48/, "search taxonomy loads before the query parser");
-assert.match(index, /search-query\.js\?v=48/, "semantic search terms load before the application");
-assert.match(index, /app\.js\?v=48/);
+assert.match(index, /search-taxonomy\.js\?v=49/, "search taxonomy loads before the query parser");
+assert.match(index, /search-query\.js\?v=49/, "semantic search terms load before the application");
+assert.match(index, /search-query\.js\?v=49[\s\S]*announcement-validity\.js\?v=49[\s\S]*assistant-qa\.js\?v=49/, "validity analysis loads before school-affairs answers");
+assert.match(index, /app\.js\?v=49/);
+assert.match(app, /不會把過期公告當成目前有效/, "assistant explains its validity guardrail");
 assert.match(index, /id="navMenuToggle"[^>]*aria-expanded="false"[^>]*aria-controls="navMenu"/, "mobile navigation is exposed through one accessible menu button");
 assert.match(index, /id="navMenu"[^>]*hidden/, "function menu starts closed");
 assert.match(index, /id="navCurrentLabel">選單</);
