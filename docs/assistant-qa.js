@@ -90,16 +90,18 @@
     if (!SearchQuery || !queryTokens.length) return [];
     var ranked = (Array.isArray(items) ? items : []).map(function (item) {
       var metadataScore = SearchQuery.announcementScore(item, query);
-      if (!metadataScore) return null;
+      var reviewed=Validity&&Validity.reviewedRecord?Validity.reviewedRecord(item):null;
+      var reviewedText=reviewed?(reviewed.fragments||[]).map(function(f){return clean(f.keywords+" "+f.text);}).join(" "):"";
+      var reviewedScore=scoreText(reviewedText,queryTokens,5);if(!metadataScore&&!reviewedScore)return null;
       var titleScore = scoreText(item.title || "", queryTokens, 9);
       var overviewScore = scoreText(overview(item), queryTokens, 3);
       var body = detailText(detailMap[item.id]);
       var bodyScore = scoreText(body, queryTokens, 1);
-      var anchorScore = scoreText(clean(item.title || "") + " " + overview(item) + " " + body, anchorTokens, 1);
+      var anchorScore = scoreText(clean(item.title || "") + " " + overview(item) + " " + body+" "+reviewedText, anchorTokens, 1);
       var intentBonus = 0, combined = clean(overview(item) + " " + body);
       wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
-      return { item: item, detail: detailMap[item.id] || null, text: combined, score: metadataScore + titleScore + overviewScore + Math.min(bodyScore, 80) + intentBonus, anchorScore: anchorScore };
-    }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0); }).sort(function (a, b) {
+      return { item:item,detail:detailMap[item.id]||null,text:combined,score:metadataScore+reviewedScore+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus,anchorScore:anchorScore,reviewedMatch:reviewedScore>0 };
+    }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0 || row.reviewedMatch); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
     if (!ranked.length) return ranked;
@@ -115,6 +117,9 @@
     if (/作者\s*[：:]|發[佈布]日期|最後更新日期/.test(sentence)) score -= 18;
     return score;
   }
+  function fragmentEvidence(row,queryTokens,wanted,query){if(!Validity||!row.validity||!Array.isArray(row.validity.fragments))return[];var open=Validity.requiresOpenWindow(query);
+    var c=Validity.usableFragments(row.validity,query).map(function(f){var score=evidenceScore(clean(f.keywords+" "+f.text),queryTokens,wanted);if(f.status==="ACTIVE"||f.status==="ACTIVE_WINDOW")score+=8;if(f.status==="FUTURE"&&open)score+=16;if(f.answer_policy==="current_negative"&&open)score+=24;if(f.status==="UNCONFIRMED")score+=3;return{text:f.text,score:score,item:row.item,fragment:f};}).filter(function(x){return x.score>=4;}).sort(function(a,b){return b.score-a.score;});
+    if(!c.length)return c;var floor=Math.max(4,c[0].score*.60);return c.filter(function(x){return x.score>=floor;});}
   function smoothEvidence(value) {
     var text = clean(value).replace(/^[•●▪▫◆◇※*\-–—]+\s*/, "")
       .replace(/^(?:說明|公告內容|主旨|注意事項|辦理方式|相關資訊)\s*[：:]\s*/i, "")
@@ -146,6 +151,7 @@
     validityWarnings = unique((validityWarnings || []).map(clean).filter(Boolean));
     if (validityWarnings.length) return validityWarnings.slice(0, 2).join(" ");
     if (!evidence.length) return "沒有足夠的官方原文可供核對。";
+    if(sources.length>1&&sources.some(function(i){return i.validity&&i.validity.relations&&i.validity.relations.length;}))return"這些公告有更正或補充關係；只合併明確指定的部分，其餘內容不得自行視為被取代。";
     if (sources.length > 1) return "找到多則不同公告，已分開列出；不能把不同活動的日期或資格互相拼接。";
     if (plan.wants_latest) return "這是本站目前已抓到的最新官方資料；校方若尚未發布，系統不會自行補出答案。";
     return "答案只涵蓋目前可讀取的公告正文與 PDF 文字，圖片型附件可能尚未包含。";
@@ -153,6 +159,7 @@
   function composeSummary(evidence, sources, wanted) {
     var lead = evidence.length ? smoothEvidence(evidence[0].text) : "";
     if (!lead) return "目前資料不足，找不到可驗證的答案。";
+    if(sources.length>1&&sources.some(function(i){return i.validity&&i.validity.relations&&i.validity.relations.length;}))return"找到互相修正或補充的官方文件，已依指定範圍合併；未被點名的內容仍沿用原文件。";
     if (sources.length > 1) return "找到 " + sources.length + " 則可能相關的官方資訊，已按公告分開整理；它們不是同一項活動，請逐項核對。";
     var prefix = "依官方公告，最相關的重點是：";
     if (wanted.indexOf("date") !== -1) prefix = "先說結論，官方資料中的時間重點是：";
@@ -170,7 +177,7 @@
     });
     var lines = rows.slice(0, 3).map(function (row) {
       var date = row.validity.latest_deadline || row.validity.latest_event;
-      return clean(row.item.title || "相關公告") + "：本次期限或事件" + (date ? "已於 " + date : "已經") + "結束。";
+      return clean(row.item.title || "相關公告") + "：本次期限或事件" + (date ? "已於 " + date + " " : "已經") + "結束。";
     });
     return { status: "answered", query: query,
       summary: "找到的相關官方公告已超過明確期限；不能用它證明現在仍可申請、報名或辦理。",
@@ -189,12 +196,13 @@
     ranked.forEach(function (row) { row.validity = validityFor(row, options); });
     var currentSensitive = Validity && Validity.requiresCurrentStatus(query);
     var openWindow = Validity && Validity.requiresOpenWindow(query);
-    function unusableForCurrentAnswer(row) { return row.validity.answer_policy === "exclude" || (openWindow && row.validity.stale_sensitive); }
+    function unusableForCurrentAnswer(row){var has=row.validity.fragments&&row.validity.fragments.length;return row.validity.answer_policy==="exclude"||(openWindow&&row.validity.stale_sensitive&&!has);}
     var expiredRows = currentSensitive ? ranked.filter(unusableForCurrentAnswer) : [];
     if (currentSensitive) ranked = ranked.filter(function (row) { return !unusableForCurrentAnswer(row); });
     if (!ranked.length && expiredRows.length) return expiredAnswer(query, expiredRows);
     var evidence = [], seen = {};
     ranked.forEach(function (row) {
+      var reviewedCandidates=fragmentEvidence(row,queryTokens,wanted,query);if(reviewedCandidates.length){reviewedCandidates.slice(0,4).forEach(function(c){var k=compact(c.text);if(!seen[k]&&evidence.length<6){seen[k]=true;evidence.push({text:c.text.slice(0,220),announcement_id:c.item.id,title:c.item.title,score:c.score,validity:row.validity,fragment:c.fragment});}});return;}
       var sourceText = detailText(row.detail) || clean((row.item.summary || "") + " " + (row.item.snippet || ""));
       sentences(sourceText).map(function (sentence) { return { text: sentence, score: evidenceScore(sentence, queryTokens, wanted), item: row.item }; })
         .filter(function (candidate) { return candidate.score >= 4 && (!Validity || Validity.sentencePolicy(candidate.text, row.validity, query) !== "exclude"); })
@@ -211,7 +219,7 @@
     }).slice(0, 4);
     var validityWarnings = [];
     ranked.forEach(function (row) { (row.validity.warnings || []).forEach(function (warning) { validityWarnings.push(warning); }); });
-    var lines = answerLines(evidence, sources);
+    evidence.sort(function(a,b){return b.score-a.score;});var lines = answerLines(evidence, sources);
     return { status: "answered", query: query, summary: composeSummary(evidence, sources, wanted),
       answer_lines: lines, limitation: evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
       plan: plan, evidence: evidence, sources: sources, validity_warnings: unique(validityWarnings) };

@@ -6,7 +6,10 @@
 })(typeof window !== "undefined" ? window : this, function () {
   "use strict";
 
-  var CURRENT_WORDS = /現在|目前|今天|今日|明天|最新|最近|快截止|還能|仍能|還有|是否|可以|能不能|會不會|需不需要|已經/;
+  var Reviewed = typeof window !== "undefined" ? window.CyNewsAnnouncementValidityReviewed : null;
+  if (!Reviewed && typeof module !== "undefined" && module.exports) Reviewed = require("./announcement-validity-reviewed.js");
+
+  var CURRENT_WORDS = /現在|目前|今天|今日|明天|下次|最新|最近|快截止|還能|仍能|還有|是否|可以|能不能|會不會|需不需要|已經/;
   var REGULATION_WORDS = /法規|規則|規定|要點|準則|規範|辦法|注意事項/;
   var AMENDMENT_WORDS = /修正|修訂|部分條文|發布令|停止適用|廢止/;
   var EVENT_WORDS = /年度|學年度|第\s*[一二三四五六七八九十0-9]+\s*(?:屆|次)|競賽|比賽|活動|研習|營隊|招生|報名|申請|推薦|繳費|健檢|施工|停電|補考|註冊/;
@@ -95,6 +98,38 @@
     var value = item && item.validity || detail && detail.validity;
     return value && typeof value === "object" ? value : null;
   }
+  function fragmentStatus(fragment, asOf) {
+    if (fragment.status) return fragment.status;
+    var starts = validIso(fragment.valid_from), ends = validIso(fragment.valid_until);
+    if (starts && starts > asOf) return "FUTURE";
+    if (ends && ends < asOf) return "EXPIRED";
+    return ends ? "ACTIVE_WINDOW" : "ACTIVE";
+  }
+  function materializeFragments(rows, asOf) {
+    return (Array.isArray(rows) ? rows : []).map(function(row){
+      var fragment=Object.assign({},row);fragment.status=fragmentStatus(fragment,asOf);
+      if(!fragment.answer_policy)fragment.answer_policy=fragment.status==="EXPIRED"?"exclude":fragment.status==="UNCONFIRMED"?"warn":"allow";
+      return fragment;
+    });
+  }
+  function aggregateFragmentStatus(rows){
+    if(!rows.length)return"UNCONFIRMED";var s=rows.map(function(r){return r.status;});
+    if(s.every(function(x){return x==="EXPIRED";}))return"EXPIRED";
+    if(s.every(function(x){return x==="FUTURE";}))return"FUTURE";
+    if(s.every(function(x){return x==="ACTIVE"||x==="ACTIVE_WINDOW";}))return s.indexOf("ACTIVE_WINDOW")>=0?"ACTIVE_WINDOW":"ACTIVE";
+    return"PARTIAL_ACTIVE";
+  }
+  function annotationAnalysis(annotation,asOf,source){
+    var a=Object.assign({source:source||"annotation",warnings:[],as_of:asOf},annotation);
+    a.fragments=materializeFragments(annotation.fragments,asOf);a.relations=Array.isArray(annotation.relations)?annotation.relations.slice():[];
+    a.status=annotation.status_override||annotation.status||aggregateFragmentStatus(a.fragments);
+    if(!a.answer_policy)a.answer_policy=a.status==="EXPIRED"?"exclude":(a.status==="UNCONFIRMED"||a.status==="PARTIAL_ACTIVE"?"warn":"allow");
+    if(!Array.isArray(a.warnings))a.warnings=[];
+    if(a.status==="PARTIAL_ACTIVE"&&!a.warnings.length)a.warnings.push("本公告只有部分內容目前有效，回答時必須逐項判斷。");
+    var ends=a.fragments.map(function(r){return validIso(r.valid_until);}).filter(Boolean).sort();
+    a.latest_deadline=ends.length?ends[ends.length-1]:null;
+    a.stale_sensitive=a.fragments.some(function(r){return r.status==="EXPIRED"||r.answer_policy==="exclude_current";});return a;
+  }
   function academicYearScope(value) {
     var match = clean(value).match(/(?:民國\s*)?(\d{2,4})\s*學年(?:度)?/);
     if (!match) return null;
@@ -108,15 +143,8 @@
     var asOf = validIso(options.asOf) || taipeiToday();
     var body = detailText(detail), metadata = clean([item.title, item.summary, item.snippet].filter(Boolean).join(" "));
     var sourceText = clean(metadata + " " + body), title = clean(item.title), annotation = explicitAnnotation(item, detail);
-    if (annotation) {
-      var annotated = Object.assign({ source: "annotation", warnings: [], as_of: asOf }, annotation);
-      if (!annotated.answer_policy) {
-        annotated.answer_policy = annotated.status === "EXPIRED" ? "exclude" :
-          (annotated.status === "UNCONFIRMED" || annotated.status === "PARTIAL_ACTIVE" ? "warn" : "allow");
-      }
-      if (!Array.isArray(annotated.warnings)) annotated.warnings = [];
-      return annotated;
-    }
+    if (annotation) return annotationAnalysis(annotation,asOf,"annotation");
+    var reviewed=Reviewed&&Reviewed.get(item.id);if(reviewed)return annotationAnalysis(reviewed,asOf,"human_review");
     var type = inferredType(title, sourceText), mentions = dateMentions(sourceText, item.date || asOf), schoolYear = academicYearScope(sourceText);
     var deadlines = mentions.filter(function (row) { return row.kind === "deadline"; });
     var events = mentions.filter(function (row) { return row.kind === "event" || row.kind === "effective"; });
@@ -153,7 +181,7 @@
   function requiresCurrentStatus(query) { return CURRENT_WORDS.test(clean(query)); }
   function requiresOpenWindow(query) {
     var text = clean(query);
-    return /申請|報名|繳費|推薦|送件|繳交/.test(text) && /現在|目前|今天|還能|仍能|可以|可否|能否|有哪些|快截止/.test(text) && !/如何|怎麼|方式|流程/.test(text);
+    return /申請|報名|繳費|推薦|送件|繳交|選課|選填|選修|訂購/.test(text) && /現在|目前|今天|還能|仍能|可以|可否|能否|有哪些|快截止/.test(text) && !/如何|怎麼|方式|流程/.test(text);
   }
   function sentencePolicy(sentence, analysis, query) {
     if (!requiresCurrentStatus(query)) return "allow";
@@ -164,11 +192,17 @@
     if (analysis.stale_sensitive && MONEY_OR_CREDENTIALS.test(sentence)) return "exclude";
     return analysis.answer_policy === "warn" ? "warn" : "allow";
   }
+  function usableFragments(analysis,query){analysis=analysis||{};var current=requiresCurrentStatus(query),open=requiresOpenWindow(query);return(analysis.fragments||[]).filter(function(f){
+    if(!current)return f.answer_policy!=="exclude";if(f.answer_policy==="current_negative"&&open)return true;
+    return f.answer_policy!=="exclude"&&f.answer_policy!=="exclude_current"&&f.status!=="EXPIRED";
+  });}
+  function reviewedRecord(itemOrId){var id=itemOrId&&typeof itemOrId==="object"?itemOrId.id:itemOrId;return Reviewed?Reviewed.get(id):null;}
   function label(analysis) {
     var labels = { ACTIVE: "目前有效", ACTIVE_WINDOW: "期限內", FUTURE: "尚未生效／事件未開始", EXPIRED: "本次已過期",
       PARTIAL_ACTIVE: "部分有效", UNCONFIRMED: "效力未確認", EVIDENCE_DAMAGED: "證據損壞" };
     return labels[analysis && analysis.status] || "效力未確認";
   }
   return { analyze: analyze, dateMentions: dateMentions, detailText: detailText, damagedText: damagedText, academicYearScope: academicYearScope,
-    requiresCurrentStatus: requiresCurrentStatus, requiresOpenWindow: requiresOpenWindow, sentencePolicy: sentencePolicy, label: label };
+    requiresCurrentStatus: requiresCurrentStatus, requiresOpenWindow: requiresOpenWindow, sentencePolicy: sentencePolicy,
+    usableFragments:usableFragments,fragmentStatus:fragmentStatus,reviewedRecord:reviewedRecord,label: label };
 });

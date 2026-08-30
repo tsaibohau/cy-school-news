@@ -27,10 +27,17 @@
 - 新舊法規只有在有明確取代證據時才能建立取代關係；否則並列日期並標示效力未確認。
 - 未來可由爬蟲寫入結構化 `validity` 標註；人工或高可信標註優先於推論規則。
 
+## 片段級資料模型
+
+每則公告可含多個 `fragments`，各自保存生效日、結束日、狀態與回答政策；`until_superseded` 表示跨學年度沿用至官方修正。`relations` 表達部分更正、期限延長與局部取代，日期較新或主題相同不足以推定整份取代。
+
+人工審核紀錄保存在 `announcement-validity-reviewed.js`，不寫回爬蟲產生的 JSON。沒有人工紀錄時才使用保守推論。
+
 ## 整合範圍
 
-- `announcement-validity.js`：分類、日期證據、效力狀態與句子級引用政策。
-- `assistant-qa.js`：在現況問題中排除過期候選，保留不確定警告。
+- `announcement-validity-reviewed.js`：人工確認的真實公告片段與文件關係。
+- `announcement-validity.js`：分類、片段效力、文件關係與引用政策。
+- `assistant-qa.js`：依問題選取並組合可用片段。
 - `app.js`：在參考公告顯示效力標籤與資料限制。
 - PWA 與 staging builder：確保新模組與問校務使用同一版殼層。
 
