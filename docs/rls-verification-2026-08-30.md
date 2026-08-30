@@ -30,4 +30,6 @@
 
 ## 額外發現
 
-`authenticated` 目前仍有前端不需要的 `TRUNCATE`、`TRIGGER`、`REFERENCES` 權限。雖然前端 REST API 沒有直接暴露 `TRUNCATE`，仍應依最小權限原則撤除。對應 migration 已放在 `supabase/migrations/20260830120000_account_least_privilege.sql`，尚未套用線上資料庫。
+`authenticated` 目前仍有前端不需要的 `TRUNCATE`、`TRIGGER`、`REFERENCES` 權限。雖然前端 REST API 沒有直接暴露 `TRUNCATE`，仍應依最小權限原則撤除。對應 account migration 已放在 `supabase/migrations/20260830120000_account_least_privilege.sql`，尚未套用線上資料庫。
+
+完整 CI 另發現既有 reminder migration 曾保留 `DELETE` 權限，造成「瀏覽器不得硬刪永久提醒識別」的資料庫測試失敗。`supabase/migrations/20260830123000_reminder_browser_least_privilege.sql` 已明確撤銷提醒規則與推播裝置的 `DELETE`、`TRUNCATE`、`REFERENCES`、`TRIGGER`，並新增權限回歸斷言；同樣尚未套用線上資料庫。

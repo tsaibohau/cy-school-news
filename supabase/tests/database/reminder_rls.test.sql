@@ -2,7 +2,7 @@
 begin;
 
 create extension if not exists pgtap with schema extensions;
-select plan(22);
+select plan(24);
 
 insert into auth.users (id, aud, role, email, encrypted_password, email_confirmed_at)
 values
@@ -34,6 +34,10 @@ on conflict (id) do nothing;
 set local role authenticated;
 set local "request.jwt.claim.sub" = '00000000-0000-4000-8000-0000000000a1';
 
+select ok(not has_table_privilege('authenticated', 'public.user_reminder_rules', 'DELETE'),
+  'authenticated cannot hard-delete reminder rules');
+select ok(not has_table_privilege('authenticated', 'public.user_push_subscriptions', 'DELETE'),
+  'authenticated cannot hard-delete push devices');
 select is((select count(*)::int from public.user_reminder_rules), 1, 'USER_A sees only own rule');
 select lives_ok($$insert into public.user_reminder_rules
   (id, user_id, target_kind, target_id, manual_target_at, provenance, source_revision)
