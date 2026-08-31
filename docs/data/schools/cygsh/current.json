@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-08-31T10:18:15+08:00",
+ "generated_at": "2026-08-31T11:18:17+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -3307,7 +3307,7 @@
    "date_tried": true,
    "category": "研習活動",
    "first_seen": "2026-08-12T00:00:23+08:00",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -3373,7 +3373,7 @@
    "date_tried": true,
    "category": "研習活動",
    "first_seen": "2026-08-12T00:00:23+08:00",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -3414,7 +3414,7 @@
    "date_tried": true,
    "category": "研習活動",
    "first_seen": "2026-08-12T00:00:23+08:00",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -3479,7 +3479,7 @@
    "date_tried": true,
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -3521,7 +3521,7 @@
    "date_tried": true,
    "category": "研習活動",
    "first_seen": "2026-08-12T00:00:23+08:00",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -3787,7 +3787,7 @@
    "date_tried": true,
    "category": "研習活動",
    "first_seen": "2026-08-12T00:00:23+08:00",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -4295,7 +4295,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-185314.json",
+   "detail_status": "empty",
+   "detail_revision": "87eb295f901c0f3e4b0e646bd84d23ed52f692dc73c912f1814f79589af8ced3",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185313",
@@ -4310,7 +4320,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-185313.json",
+   "detail_status": "empty",
+   "detail_revision": "0b1417da55a4c6bc0e72e30f348bf131220185cffcceaff6089ee72e3eab1903",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185297",
@@ -4324,7 +4344,17 @@
    "snippet": "一、依109年至114年統計資料顯示，妨害兵役案件中，以「經催告仍未返國，致未能接受徵兵處理或徵集者」為最常見類型，其比例高達61%，此類案件多屬當事人對妨害兵役相關規定認知不足所致。 二、爰此，為減少與避免上述情形發生，內政部透過來文及海報宣導，期使學生及家長及早了解妨害兵役相關規範與界線，以降低因資訊不足所產生之誤解或違規風險。 三、相關資料詳如附件。",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185297.json",
+   "detail_status": "parsed",
+   "detail_revision": "36141131c0929885dafb8e98b312dc038340ed0cb377177e954978aa8c5d95cc",
+   "detail_attempts": 1,
+   "summary": "一、依109年至114年統計資料顯示，妨害兵役案件中，以「經催告仍未返國，致未能接受徵兵處理或徵集者」為最常見類型，其比例高達61%，此類案件多屬當事人對妨害兵役相關規定認知不足所致。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185294",
@@ -4338,7 +4368,17 @@
    "snippet": "一、無人機足球競賽係本部首次舉辦全國性競賽，期透過符合國際標準的無人機足球競技，引導學生學習飛行控制、團隊策略與技術創新，進而培育熟悉國際規範、具備實作能力、創新思維與發展潛力之無人機科技人才。 二、本次賽制規劃係參照國際航空聯盟（FAI）於2025年6月15日發布之FAI World Drone Soccer ChampionshipsSporting Rules (Class F9A-B，20公分) 競賽精神制定。為符合教育推廣及國內競賽實務需求，並配合無人機非紅供應鏈原則，部分規則經適度調整，競賽核心概念與技術標準仍與國際賽事接軌。 三、競賽分組：國中小組、高中組及大專校院組。 四、賽程規劃： (一)分區賽： １、時間：115年7-8月期間辦理。 ２、分區縣市：分北、中、南3區辦理。 (１)北區：臺北市、新北市、桃園市、基隆市、宜蘭縣、花蓮縣及連江縣，共7縣市。 (２)中區：新竹市、新竹縣、苗栗縣、臺中市、彰化縣、南投縣、雲林縣及金門縣，共8縣市。 (３)南區：嘉義市、嘉義縣、臺南市、高雄市、臺東縣、屏東縣及澎湖縣，共7縣市。 ３、賽制：採分組循環賽。每組隊伍進行單循環對戰，各分區前3名隊伍晉級準決賽。 (二)準決賽： １、時間：115年10月2-3日。 ２、地點：國立臺灣大學綜合體育館(臺北市大安區羅斯福路4段1號)。 ３、賽制：採積分賽制。準決賽積分最高前2名隊伍將於總統盃無人機競賽中進行決賽，以決定冠亞軍。 (三)決賽： １、時間：預計115年12月。 ２、地點：大臺南會展中心(臺南市歸仁區歸仁十二路3號)。 ３、賽制：由準決賽積分最高前2名隊伍進行比賽。 ４、特別活動：決賽當天將舉辦 F9A-A(40公分級/5對5)國際規格示範賽，展示高階戰術與無人機技術，吸引民眾參與。 五、獎勵辦法：各階段競賽之冠、亞、季軍，頒予獎金、獎盃及獎狀以資鼓勵（會後造冊寄發）。 (一)分區賽：各分組之分區賽冠軍獎金新臺幣(以下同)1萬元、亞軍5,000元及季軍3,000元，另頒予獎盃1座，指導老師及參賽學生每人獎狀1紙。 (二)準決賽：全國各分組積分前3名獎金各2萬元，另季軍頒予獎盃1座，指導老師及參賽學生每人獎狀1紙。 (三)決賽：全國各分組冠軍獎金5萬元，亞軍3萬元，另頒予獎盃1座，指導老師及參賽學生每人獎狀1紙。 六、各分組競賽日期、地點、選手資格及報名資訊等事項，",
    "date_tried": true,
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185294.json",
+   "detail_status": "parsed",
+   "detail_revision": "a44cbeb2319c8f77d3d32088406c8fdbc170600bee60b98f7cd00c86da9974e5",
+   "detail_attempts": 1,
+   "summary": "四、賽程規劃： (一)分區賽： １、時間：115年7-8月期間辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185254",
@@ -4352,7 +4392,17 @@
    "snippet": "一、旨計畫擬招募具良好英語能力及關心偏遠地區國小英語教育之在學大學生與研究所學生（115年9月後入學之大學生亦可），以遠距教學方式服務全國近100所偏遠地區與非山非市國小學生。 二、申請資格： (一)須為教育部認可大專校院以上(含)學校之各系所在學大學生或研究所學生，或曾任本計畫英語學伴之畢業生，若為外籍學生則需具備基本中文聽說能力。 (二)具遠距英語教學經驗、國小英語教學經驗、或英語相關語言系所尤佳，但不以此為限。(三)應熟悉操作Google Meet與Google Drive等相關功能，如：畫面/影片分享、教學錄影、會議連結建立等。 (四)可檢附相關英語能力檢定證明尤佳，但不以此為限。 三、需求人數：200名（倘本次不足額錄取，得持續辦理後續招募事宜）。 四、授課期間： (一)原則上預計115年9月底陸續開始進行偏遠地區國小英語遠距課程，上課時間為每週一至週五下午3時至8時之間，以配合媒合學校可授課時間為主。 (二)授課教材以使用Cool English教材為主，可參考教育部英語線上學習平臺，網址：www.coolenglish.edu.tw。 (三)每位學伴擬陪伴3至4位學生，教學目標為提升學生英語聽說能力。 (四)每週教學時數約2至6小時，如另有要事不克授課，可提前請其他學伴協助代課，請假以3次為限。授課以一學期為單位，每人時數均可不同，惟每週授課時數至少2小時。 (五)需自備電腦，本計畫提供英語學伴登記借用視訊攝影機，學期末需完整歸還。 五、英語學伴需於每月授課結束後一週內繳交遠距教學側錄影片、授課電子簽到表與教學鐘點費附件表，並經本計畫審核通過後，擬於完成授課後次月月底前依實際教學時數核給每小時新臺幣336元之教學鐘點費。 六、於每學期授課結束後，經本計畫確認該學期授課情況、出缺席紀錄及教學增能工作坊出席情況，並審查通過後，方得頒發國教署服務證明。當學期表現優異並獲頒特優等或優等英語學伴者，可申請核發服務時數。學伴若中途退出或發生其他爭議事項，恕不頒發服務證明。 七、申請方式： (一)報名表網址：https://forms.gle/s4buaxEqyYe8KpHMA (二)欲申請者請於115年9月18日前填寫以上報名表後，相關文件上傳至前開網址。缺件不受理逾期補件，合者將以E-mail通知面談，採隨到隨審，不合者恕不另行通知。 (三)所送報名表資料如填列",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185254.json",
+   "detail_status": "parsed",
+   "detail_revision": "3bc777dbcdde0388c55bd4c48ade44e3213a5a0e48975162e07bd9a241adccfc",
+   "detail_attempts": 1,
+   "summary": "二、申請資格： (一)須為教育部認可大專校院以上(含)學校之各系所在學大學生或研究所學生，或曾任本計畫英語學伴之畢業生，若為外籍學生則需具備基本中文聽說能力。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185246",
@@ -4366,7 +4416,17 @@
    "snippet": "一、旨揭研討會參與對象為專家學者、學校教師、軍訓教官、行政院動員會報各分類計畫機關、研究生及對研討議題有興趣者。 二、時間:115年5月14日（星期四）上午10時至下午16時。 三、研討會地點:國立政治大學綜合院館三樓演講廳（另同步辦理線上直播）舉行。 四、報名方式:請至https://forms.gle/717LCDdUsapAx2sv9 五、報名期間:即日起至115年5月4日（星期一）止。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185246.json",
+   "detail_status": "parsed",
+   "detail_revision": "ee43e5b1f51a041e8fe565825e54219a672f173c098f90a8a7aff47bc748cebf",
+   "detail_attempts": 1,
+   "summary": "一、旨揭研討會參與對象為專家學者、學校教師、軍訓教官、行政院動員會報各分類計畫機關、研究生及對研討議題有興趣者。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185221",
@@ -4380,7 +4440,17 @@
    "snippet": "一、為鼓勵全國各級學校教師展現教學專業實踐、創新教學設計及教育反思成果，促進優質教學經驗之交流與擴散，特辦理旨揭甄選活動。 二、本獎甄選對象為現任全國公私立高中、國中、國小、幼兒園之正式教師，並依學制分為高中組、國中組、國小組及幼兒園組辦理。 三、參與遴選者應提交教案、課程錄影、教師專業發展歷程檔案及相關佐證資料，展現其教學理念、實踐歷程及專業反思成果。 四、本獎正式收件期間自115年8月1日上午9時起至115年9月30日中午12時止。 五、檢附甄選簡章及宣傳海報各1份，相關資訊請參見清華光罩教育研究中心網站(https://tterc.site.nthu.edu.tw)或洽本案聯絡窗口(ourera2024@gmail.com)。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185221.json",
+   "detail_status": "parsed",
+   "detail_revision": "db392bd583f27f894bc6fceb7c75a98be511421b56578dec93fd34e2bfdb0f49",
+   "detail_attempts": 1,
+   "summary": "二、本獎甄選對象為現任全國公私立高中、國中、國小、幼兒園之正式教師，並依學制分為高中組、國中組、國小組及幼兒園組辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185135",
@@ -4394,7 +4464,25 @@
    "snippet": "說明： 依據社團法人中華心理衛生協會115年4月1日心衛協字字第1150000013號函辦理。 旨揭「慧鏡悅心-II』校園展心韌性手機桌布體驗/分享活動」，鼓勵校園學子共同體驗分享心理韌性手機桌布，期望在智慧手機中融入心理健康元素，提醒關照個人心理狀態及情緒調節，呼應SEL社會情緒學習中的自我覺察與自我管理。 活動獎項豐富，敬請協助公告周知，鼓勵各級學校教師共同響應。 活動辦法詳見協會「心防疫」網站活動公告（網址 https://ppp.mhat.org.tw/post/wallpaper-school2 ），教學簡報與學習單免費下載使用。 活動日期自即日起至115年09月15日止。 活動窗口：以電子郵件信箱洽詢本函聯絡人，或「心防疫」工作小組官方LINE https://ssur.cc/9gF8eYei",
    "date_tried": true,
    "category": "社團",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185135.json",
+   "detail_status": "parsed",
+   "detail_revision": "51da6cffc9c28fff6de36fe5d30d8431f2f4e5b2537a5c7f63498d01f47f1ebd",
+   "detail_attempts": 1,
+   "summary": "依據社團法人中華心理衛生協會115年4月1日心衛協字字第1150000013號函辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-09-15",
+     "title": "【轉知】嘉義市政府衛生局函轉社團法人中華心理衛生協會來文，『慧鏡悅心-II』校園展心韌性手機桌布體驗/分享，敬請教師們協助推廣。",
+     "provenance": "verified_announcement_event",
+     "source_revision": "51da6cffc9c28fff6de36fe5d30d8431f2f4e5b2537a5c7f63498d01f47f1ebd"
+    }
+   ]
   },
   {
    "id": "cygsh-185125",
@@ -4408,7 +4496,17 @@
    "snippet": "一、臺北醫學大學為鼓勵高中學子於暑假期間參與多元學習，訂於115年7月1日至8月30日辦理【全國青少年高中暑假研習】系列課程。由各學系優秀大學生全程陪伴，透過經驗分享與互動交流，引導學員認識大學生活並啟發學習方向；並藉由課程規劃，協助學員於探索與實作中建立目標、拓展視野。 二、系列課程包括： (一)現代醫學研習課程A–D：人體結構觀察、心臟生理學、心理疾病初探、微生物、法醫解碼、醫院參訪等。 (二)生物醫學實驗班A-B：牙科材料學、醫學臨床技能課程、生理學、微生物免疫學及人體解剖學。 (三)現代醫學急救研習課程A-B：認識人體結構、搶救大腦行動中、基礎急救教學與認證(BLS)、運動傷害防護等。 (四)Biodesign生醫設計–建立學員對 Biodesign 醫材開發之基礎認知與學習興趣，透過系統化引導，帶領學員實際體驗從「需求識別」到「解決方案設計」的完整歷程，進而培養其設計思維與問題解決能力。 三、課程詳情請見本校進修推廣處官網：https://ocee.tmu.edu.tw/。 四、聯絡人：陳專員（02）2736-1661 分機 22818。",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185125.json",
+   "detail_status": "parsed",
+   "detail_revision": "e87885aefbedb9a568ea128f38bca372642a5d50cb875791e981a194b54690cb",
+   "detail_attempts": 1,
+   "summary": "一、臺北醫學大學為鼓勵高中學子於暑假期間參與多元學習，訂於115年7月1日至8月30日辦理【全國青少年高中暑假研習】系列課程。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185101",
@@ -4423,7 +4521,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-185101.json",
+   "detail_status": "empty",
+   "detail_revision": "24fb1201220b95fca6429f2c098034c93968c99410a25b77d739effc80bd1c96",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185094",
@@ -4437,7 +4545,17 @@
    "snippet": "說明：一、為響應 4月23日「世界閱讀日」(World Book andCopyright Day) 此全球性之閱讀盛事，鼓勵民眾將閱讀習慣深植於日常生活中，進而提升全民閱讀風氣。二、本（115）年規劃「我的經典繪本由我來展演」活動，結合閱讀與手作創作，邀請參加者以心中最喜愛的繪本為靈感，打造獨一無二的「Story Box（行動故事盒）」。透過將平面閱讀轉化為立體場景，不僅能讓閱讀變得生動有趣，更能深化參與者的說故事能力、空間創造力與想像力，為親友演出一場屬於自己的獨創故事。三、活動辦理時程自115年4月1日至115年5月15日止，於活動期間內線上完成投稿，經主辦單位審核資料無誤並予公開展示，即視為完成收件程序，參加者亦同步取得活動抽獎資格，詳細活動內容請參閱本活動專屬網站：https://ncl.taipei/2026423。四、為鼓勵大眾踴躍參加本活動，活動結束後將公開抽出300位參加者，每名可獲贈300元禮券，以及300位參加者每名可獲贈國圖文創品1份，每人限獲獎乙次（不得重複中獎），名單於活動網站公布，並以電子郵件通知。五、本館將以電子郵件寄送活動參與證書，以個人名義參加者，參與證書以個人姓名署名；以團體參加者，參與證書以團體名稱署名，恕不提供團體參加者個人參與證書。六、檢附本活動實施計畫及活動海報各1份，請卓參。",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185094.json",
+   "detail_status": "parsed",
+   "detail_revision": "fe7b7e49b09831df000a054ddb299d0668aa2a7acee6a6b797c8b06bfdc80cb6",
+   "detail_attempts": 1,
+   "summary": "三、活動辦理時程自115年4月1日至115年5月15日止，於活動期間內線上完成投稿，經主辦單位審核資料無誤並予公開展示，即視為完成收件程序，參加者亦同步取得活動抽獎資格，詳細活動內容請參閱本活動專屬網站：https://ncl.taipei/2026423。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185050",
@@ -4451,7 +4569,17 @@
    "snippet": "一、為落實青年政策，推動青年走向國際並結合百工百業創新成長，教育部青年發展署特辦理旨揭計畫。本（115）年度第二梯次已公告逾 200 案海外見習與交流機會。 二、為精準媒合具備國際競爭力之技職青年，建請貴校針對參加「全國高級中等學校學生技藝競賽」之金手獎、優勝選手及指導老師，及全國技能競賽及相關技能競賽選手及技職體系青年宣傳。 三、隨文檢附EDM乙份，詳細資訊請參考官方宣傳網站連結（網址：https://twpathfinder.org/）。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185050.json",
+   "detail_status": "parsed",
+   "detail_revision": "1ba2549b3fa8493238b6b362bc2d4c6eabf46476244209598d525e944db70034",
+   "detail_attempts": 1,
+   "summary": "一、為落實青年政策，推動青年走向國際並結合百工百業創新成長，教育部青年發展署特辦理旨揭計畫。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185024",
@@ -4466,7 +4594,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-185024.json",
+   "detail_status": "empty",
+   "detail_revision": "49c95881593007b74ee20a1d9703a7918285164b634a9f6d6550623c106fe6fa",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185020",
@@ -4481,7 +4619,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-185020.json",
+   "detail_status": "empty",
+   "detail_revision": "648c84f5e9a4d7518d4edff807513bed003763ed0a8c05e763962d32ff4dbf25",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-185011",
@@ -4495,7 +4643,17 @@
    "snippet": "一、為提升兒童與青少年、老師及社會大眾對網路霸凌議題的重視，舉辦【Pause & Think】停止網路霸凌海報徵件比賽，活動自即日起開始收件至民國115年5月19日止，邀請學生與老師以手繪或電繪方式創作海報投稿，得獎作品可獲獎金，國高中職組金獎兩萬元、一般組金獎三萬元。 二、另為推廣本次比賽，特別提供學校團報專案，國小組與國高中職組增設「最佳響應獎」，投稿作品數最多的學校可獲得實用3C用品。 三、活動詳請，請參考活動海報。",
    "date_tried": true,
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-185011.json",
+   "detail_status": "parsed",
+   "detail_revision": "180830882c47845b4013292bbddd5de3632defda4a80e01a4e21bc0be917ba90",
+   "detail_attempts": 1,
+   "summary": "一、為提升兒童與青少年、老師及社會大眾對網路霸凌議題的重視，舉辦【Pause & Think】停止網路霸凌海報徵件比賽，活動自即日起開始收件至民國115年5月19日止，邀請學生與老師以手繪或電繪方式創作海報投稿，得獎作品可獲獎金，國高中職組金獎兩萬元、一般組金獎三萬元。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184995",
@@ -4509,7 +4667,17 @@
    "snippet": "說明： 一、依據衛生福利部114年12月18日衛部心字第1141763225號函辦理。 二、連結網址： https://sps.mohw.gov.tw/mhs 二、檢附宣傳DM一份(如下圖)。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184995.json",
+   "detail_status": "parsed",
+   "detail_revision": "bacfcf78e3528e482d56fe07c554b7b7925e5ec48e3555eb22873bdb07941e1d",
+   "detail_attempts": 1,
+   "summary": "說明： 一、依據衛生福利部114年12月18日衛部心字第1141763225號函辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184981",
@@ -4524,7 +4692,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184981.json",
+   "detail_status": "empty",
+   "detail_revision": "9472dc7f60f5cf575f24b16f2ea7aaa1227209a8dd64e57b4c4614693181bc07",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184955",
@@ -4538,7 +4716,17 @@
    "snippet": "說明： 一、為展示國立嘉義大學高等教育深耕計畫執行成果，特舉辦旨揭活動，敬邀全國大專校院、鄰近高中職師生共同參與交流。 二、活動時間與地點： (一)靜態海報展示 １、日期：115年3月23日(星期一)至3月27日(星期五) ２、時間：上午10時至下午3時。 (二)互動式體驗暨新書發表 １、日期：115年3月25日(星期三) ２、時間：上午10時至下午3時。 (三)地點：國立嘉義大學蘭潭校區國際交流學園 三、活動資訊：https://twncyuhespa.com/events-detail/41 四、檢附成果展海報及交通資訊(含展場位置圖)各1份，國立嘉義大學蘭潭校區地址：嘉義市鹿寮里學府路300號。 五、活動聯絡人：國立嘉義大學教務處劉淑君專任助理，電話05-2717028。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184955.json",
+   "detail_status": "parsed",
+   "detail_revision": "e66289bb7de2e678623798326825c0054f3cb54cdf3401a270b60172b01bba4c",
+   "detail_attempts": 1,
+   "summary": "二、活動時間與地點： (一)靜態海報展示 １、日期：115年3月23日(星期一)至3月27日(星期五) ２、時間：上午10時至下午3時。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184942",
@@ -4552,7 +4740,17 @@
    "snippet": "說明： 一、中心開設英、日、韓、越、泰、印尼、緬甸、德、西班牙、俄、捷克、土耳其、阿拉伯及希伯來等多種從入門到高階語言課程。 二、實用語言課程：英文口說聽力密集訓練、新制多益測驗（初級班）及（中高級班）、中日語筆譯基礎、職場日本語、越南語會話、泰語超實用生活會話與閱讀、樂學德語。 三、上課方式：線上同步或實體上課。實體上課地點：台北市金華街187號（政大公企中心）。 四、課程全面線上報名繳費，恕不提供現場繳費，即日起開始報名，各班課程內容、上課日期、學費、報名及繳費方式請參考『政大公企中心』https://cpbae.nccu.edu.tw/cpbae-page/ 五、修畢本中心課程，符合中心結業規定者，可申請非學分班結業證書及登錄公務人員終身學習時數。",
    "date_tried": true,
    "category": "招生編班",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184942.json",
+   "detail_status": "parsed",
+   "detail_revision": "e7c42758650a83fd7bbc0408003ebc20331bf6a63c8f4e1b508a7a30aa138606",
+   "detail_attempts": 1,
+   "summary": "四、課程全面線上報名繳費，恕不提供現場繳費，即日起開始報名，各班課程內容、上課日期、學費、報名及繳費方式請參考『政大公企中心』https://cpbae.nccu.edu.tw/cpbae-page/ 五、修畢本中心課程，符合中心結業規定者，可申請非學分班結業證書及登錄公務人員終身學習時數。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184904",
@@ -4567,7 +4765,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184904.json",
+   "detail_status": "empty",
+   "detail_revision": "9d8fd072d7b19c55fb208f4c4bbe2447052c873dbbc430dff4fe5f0c0d1f6d24",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184893",
@@ -4582,7 +4790,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184893.json",
+   "detail_status": "empty",
+   "detail_revision": "24192233904e35892ea01858d427e212fec560bc3854dc15c5b09cb5e48cc6c0",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184874",
@@ -4597,7 +4815,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184874.json",
+   "detail_status": "empty",
+   "detail_revision": "cb88e2f73062779b31e5ea36a55cef316d6ce7f4da7a4a87b50eec4af7e4cc3a",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184861",
@@ -4612,7 +4840,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184861.json",
+   "detail_status": "empty",
+   "detail_revision": "d89ee16700423f1bd769d84b43c5bdd28f7d6f9c11518c94f80e0f116cc95d17",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184812",
@@ -4626,7 +4864,17 @@
    "snippet": "為發掘更多具有潛力的原住民運動選手，並激發原住民學生優異潛能，原民會將擴大支持協助原住民族運動人才發展，向下扎根於國中、高中及大專階段，並穩定扶植具發展潛力之原住民學生運動員，以利未來向上銜接國家級培訓體系，爰辦理本計畫。 補助對象： (一)以個人項目為主，雙人及團體參賽成績不予採計，並且具有國民中學、高級中等學校及大專校院在學學籍之選手為限，同一選手如同時具有二項以上運動賽會成績者，應擇優申請。 (二)全運會、全大運公開組及全中運績優原住民選手： １、全運會績優原住民選手：獲本計畫培育項目114年度前3名且具學籍選手為限。 ２、全大運公開組及全中運績優原住民選手：獲本計畫培育項目115年度前3名選手為限。 (三)績優選手之教練。 (四)培育項目重點學校或單位。 申請方式（期限）： (一)第一期：115年3月1日至115年3月31日，逾期不受理。 (二)第二期：115年9月1日至115年9月30日，逾期不受理。 (三)教練績效獎金： １、115年9月1日至115年9月30日，逾期不受理。 ２、教練績效獎金不與選手申請計畫合併提報，另須檢附獲獎選手之原住民族身分證明文件、獎狀、秩序冊（須有申請教練之姓名）。 (四)由符合上開條件之學校或單位依本計畫後附各式表件研提計畫，向原民會委託設置之國立體育大學（原住民族運動人才育成中心）提出申請；如選手學籍轉換，計畫由新學籍學校提送。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184812.json",
+   "detail_status": "parsed",
+   "detail_revision": "01d54c93d1cf732a72b02d879c612992091987846f6b82d5f82312dc274a3daa",
+   "detail_attempts": 1,
+   "summary": "為發掘更多具有潛力的原住民運動選手，並激發原住民學生優異潛能，原民會將擴大支持協助原住民族運動人才發展，向下扎根於國中、高中及大專階段，並穩定扶植具發展潛力之原住民學生運動員，以利未來向上銜接國家級培訓體系，爰辦理本計畫。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184806",
@@ -4641,7 +4889,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "招生編班",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184806.json",
+   "detail_status": "empty",
+   "detail_revision": "1a6592a8206adb702de537c3c53a7d7a4a6d5490a707ef1fea67a9198eb2d145",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184792",
@@ -4655,7 +4913,17 @@
    "snippet": "一、國立臺灣師範大學音樂學院暨系所於本(115)年3月18日16:30假該校禮堂舉辦「2026師大音樂節開幕慶」；3月21日起至6月9日舉辦「2026師大音樂節系列活動」共31項78場次展演，假國家音樂廳及該校禮堂、音樂系演奏廳、知音劇場等展演場地舉辦，大部分活動為免費自由入場，歡迎蒞臨欣賞並請協助宣傳。 二、檢附「2026師大音樂節開幕慶」節目單、「2026師大音樂節」系列活動一覽表、活動簡介及海報，惠請協助宣傳並歡迎蒞臨欣賞。",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184792.json",
+   "detail_status": "parsed",
+   "detail_revision": "6dc38c200a2066a643e1521a403966cbb813cef74b39876aa8ddd36a333c4399",
+   "detail_attempts": 1,
+   "summary": "3月21日起至6月9日舉辦「2026師大音樂節系列活動」共31項78場次展演，假國家音樂廳及該校禮堂、音樂系演奏廳、知音劇場等展演場地舉辦，大部分活動為免費自由入場，歡迎蒞臨欣賞並請協助宣傳。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184789",
@@ -4669,7 +4937,17 @@
    "snippet": "春季典禮訂於3月27日(星期五)上午9時假本市忠烈祠舉行，請有意願參加陪祭之學生，於3月25日前至教官室登記。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184789.json",
+   "detail_status": "parsed",
+   "detail_revision": "eb2ea519823448b81202b8076c495bcc697138c0172bb0350f9c9d0876472d86",
+   "detail_attempts": 1,
+   "summary": "春季典禮訂於3月27日(星期五)上午9時假本市忠烈祠舉行，請有意願參加陪祭之學生，於3月25日前至教官室登記。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184768",
@@ -4684,7 +4962,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184768.json",
+   "detail_status": "empty",
+   "detail_revision": "1cf894d1178d817c91f9e9e78c0b4263efad130e8e412dcdf075e057c8255ab1",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184744",
@@ -4699,7 +4987,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184744.json",
+   "detail_status": "empty",
+   "detail_revision": "7eff2d42231758cef937f5451450d9d72df1c79265cc6c0add9856df71ca391c",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184742",
@@ -4713,7 +5011,17 @@
    "snippet": "一、旨揭計畫本部委託國立體育大學辦理，並就田徑、舉重、體操、射箭、柔道、跆拳道、拳擊、空手道、角力、射擊、輕艇及划船等12種運動種類，遴選優秀原住民族選手進行專案培訓。 二、請依據115年度培訓選手遴選注意事項，轉知符合資格之各級學校選手提出申請，並於115年3月9日（星期一）前至「https://forms.gle/LBJ4YFS1nQn3rc9X9」填寫申請表單並備妥相關資料後，於網頁表單直接填寫上傳，俾利辦理後續遴選作業事宜。 三、為辦理本部培育優秀原住民族學校運動人才計畫與本部其他執行計畫進行資料處理及行政事務等相關作業，或其他有助達成上開蒐集目的之合理正當方式利用個人資料，請詳閱「個人資料授權使用同意書」並簽署後，一併上傳至前述申請表單。 四、有關申請等相關資訊如需詢問事項，請洽詢計畫委辦單位國立體育大學進修推廣部張小姐，連絡電話：（03）328-3201轉8108。五、檢附旨揭計畫培訓選手遴選注意事項、申請資料表及個人資料授權使用同意書。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184742.json",
+   "detail_status": "parsed",
+   "detail_revision": "116eda36994f4fee6b8ea8e03372fbfc89ff781ca8270d43357fdfb16f4ed33d",
+   "detail_attempts": 1,
+   "summary": "二、請依據115年度培訓選手遴選注意事項，轉知符合資格之各級學校選手提出申請，並於115年3月9日（星期一）前至「https://forms.gle/LBJ4YFS1nQn3rc9X9」填寫申請表單並備妥相關資料後，於網頁表單直接填寫上傳，俾利辦理後續遴選作業事宜。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184725",
@@ -4728,7 +5036,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184725.json",
+   "detail_status": "empty",
+   "detail_revision": "5ac8a8e33e32cfdf91e04112622c8aa9f253d38973aa0b503f2384a64bb3eb97",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184709",
@@ -4743,7 +5061,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "招生編班",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184709.json",
+   "detail_status": "empty",
+   "detail_revision": "e13b3632c8dcc484a54a50ab5661af67d9338eed109764238670f2ad871b4abb",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184708",
@@ -4758,7 +5086,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184708.json",
+   "detail_status": "empty",
+   "detail_revision": "a8430ddf59c6880981d20d81f88e276c409a2eed2a6c037e48e314f38b0c230b",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184706",
@@ -4772,7 +5110,17 @@
    "snippet": "說明： 一、依據臺北市政府教育局115年2月13日北市教特字第1153040999號函辦理。 二、旨揭會議業於115年2月4日辦竣，領隊會議簡報、領隊會議手冊、領隊會議QA及各場館比賽動線影片，可逕至雲端硬碟：「https://reurl.cc/Zl30nW」參閱。 三、為完善賽場動線規劃並維護比賽秩序，請各校轉知參賽人員配合辦理下列調查事項： (一)鋼琴項目參賽者：如有安裝「輔助踏板」之需求，請於115年3月10日（星期二）前填寫需求調查表「https://forms.gle/eeEE2NkTagdpfwZP6」。 (二)二樂類項目參賽者：如有「大型伴奏樂器」（如揚琴、古箏等）之需求，請於115年3月10日（星期二）前填寫調查表「https://forms.gle/Dswrb3a4FLuNb8BSA」，以利承辦單位掌握大型樂器進出動線，並安排人員引導事宜。 四、檢送領隊會議簽到表、領隊會議QA、領隊會議簡報及領隊會議手冊各1份。",
    "date_tried": true,
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184706.json",
+   "detail_status": "parsed",
+   "detail_revision": "71fcde64f79d305d551c98a75b1855893647ffa2664d6c6c391e70edefc8bcbe",
+   "detail_attempts": 1,
+   "summary": "三、為完善賽場動線規劃並維護比賽秩序，請各校轉知參賽人員配合辦理下列調查事項： (一)鋼琴項目參賽者：如有安裝「輔助踏板」之需求，請於115年3月10日（星期二）前填寫需求調查表「https://forms.gle/eeEE2NkTagdpfwZP6」。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184672",
@@ -4786,7 +5134,25 @@
    "snippet": "國立清華大學材料科學工程學系將於 2026 年 3 月 7 日（六）至 3 月 13 日（日） 舉辦「 2026 未來材子領袖營」， 誠摯邀請貴校協助轉知並鼓勵對材料科學工程領域有興趣之學生踴躍 報名參加。 本活動旨在協助高中學生深入了解材料科學工程之發展趨勢與應用領 域， 透過專題講座與學習交流，拓展學生對未來升學及職涯發展之視野。 活動資訊如下： 一、活動日期： 2026 年 3 月 7 日（六）至 2026 年 3 月 15 日 （日） 二、報名資格：高中生（高三優先），名額原則上 250 名 三、報名時間：即日起至 3 月 5 日止（採網路線上報名） 四、報名網址： https://forms.gle/ FLyaQXmnLJcekJnx5 五、活動公告網址： https://mse.site. nthu.edu.tw （本系首頁「最新消息」）",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184672.json",
+   "detail_status": "parsed",
+   "detail_revision": "54948c8778186b670cedfd6be89ed6062590a91aeefe13cc7430deacba236ea0",
+   "detail_attempts": 1,
+   "summary": "誠摯邀請貴校協助轉知並鼓勵對材料科學工程領域有興趣之學生踴躍 報名參加。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-03-07",
+     "title": "【轉知】清華大學材料科學工程學系2026「未來材子領袖營」活動資訊",
+     "provenance": "verified_announcement_event",
+     "source_revision": "54948c8778186b670cedfd6be89ed6062590a91aeefe13cc7430deacba236ea0"
+    }
+   ]
   },
   {
    "id": "cygsh-184662",
@@ -4800,7 +5166,17 @@
    "snippet": "說明： 一、本著熱愛家園的情懷，玉山銀行用心推廣藝術與人文，特別籌辦2026「畫家畫玉山」活動，邀請國內外熱愛繪畫的藝術人士及學生踴躍報名，期盼透過藝術家創意與動人的彩筆，彩繪玉山與音樂人文之美，為厚植藝術創作人才盡一份心力。 二、2026「畫家畫玉山」徵選主題聚焦「玉山國家公園的生態景物與人文特色」，並新增「音樂」主題，材質以油畫、壓克力及膠彩為主，本次共設置國際組、社會組及學生組三大組別，歡迎海內外藝術創作者、學生參加。世界各地都有許多優秀、具潛力的藝術人才，期待更多畫家用多元的視角彩繪創作。(請參考附件中英簡章及DM) 三、本活動為線上報名，收件截止日期為臺灣時間2026年7月17日(五)止。活動網站網址https://event.esunbank.com.tw/mkt/drawesun/esunbank.htmll若有相關問題請聯繫玉山銀行管理事務處電話(02)21751313 謝依珊(分機8126)、張琬琳(分機8128)。",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184662.json",
+   "detail_status": "parsed",
+   "detail_revision": "ad1fb1796873b8b5595561665c555e244e83a8604f59f7410da8d3819c1ca730",
+   "detail_attempts": 1,
+   "summary": "(請參考附件中英簡章及DM) 三、本活動為線上報名，收件截止日期為臺灣時間2026年7月17日(五)止。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184660",
@@ -4815,7 +5191,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184660.json",
+   "detail_status": "empty",
+   "detail_revision": "9581608da3f9f46d1d7fe29bcf8b5505a19917f0172427721d314b2267984b85",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184659",
@@ -4830,7 +5216,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184659.json",
+   "detail_status": "empty",
+   "detail_revision": "1c7dfead9634f3b59a5eb3649c2c0d02373d94ec38a4dbe9d1fdc60463be0d80",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184658",
@@ -4845,7 +5241,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184658.json",
+   "detail_status": "empty",
+   "detail_revision": "dceebdc98cff15030f8239e958ada9e060a4374eba16db3aaacea5325d6ed007",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184657",
@@ -4860,7 +5266,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184657.json",
+   "detail_status": "empty",
+   "detail_revision": "a737e8b19dab897fe429d973245471dde25ec476e25fe9294ede98f46c4b55ee",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184621",
@@ -4874,7 +5290,17 @@
    "snippet": "一、國家教育研究院歷年致力於製作、徵集與整合優質數位影音資源，建置於愛學網（https://stv.naer.edu.tw/）供各界免費觀賞、教學與學習之用。 二、為配合行政院「國家語言整體發展方案（111-115年）」，國家教育研究院於114年拍攝「閩東語」教學媒體影片12部，並於本（115）年初在愛學網「愛學習」專區完成上架，各學習階段影片內容包含： (一)國小學習階段：融合閩東語部編版分級教材第5、6冊內容，計有「去醫院」、「日日是好日」、「儂家的地球」、「齊去旅行」等4部影片（網址：https://reurl.cc/ORO4z9）；透過生動的影音，可讓學習者不只認識閩東習俗，也能從生活延伸到全球視野。 (二)國中學習階段：融合閩東語部編版分級教材第9冊內容，計有「看見馬祖文化」、「守護俊俊的馬祖」、「蜀把扁擔䟰天下擺暝傳統耀四方」、「外嬤的故事」等4部影片（網址：https://reurl.cc/KelgKg）；可幫助學生回顧句型和教材內容，同時更深入了解馬祖的節慶、歷史和文化。 (三)高中學習階段：融合閩東語部編版分級教材第12冊內容，計有「什乇是專題研究？」、「生紅過夏」、「借字來使野有味」、「使喙嘗使鼻鼻」等4部影片（網址：https://reurl.cc/ZeVxn6）；此部分定位為「加深加廣教材」，除了語文學理的探討，更強調溝通與表達能力；影片中融入馬祖老酒文化，讓語言學習和生活、學科專題結合在一起。 三、國家教育研究院愛學網影音資源，可供作為教師教學與學生學習之輔助教材，請鼓勵師生參考運用。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184621.json",
+   "detail_status": "parsed",
+   "detail_revision": "cefe68603b6c98b6da64fc310e850b62062c17b969fe05e59c9352f09519e3f0",
+   "detail_attempts": 1,
+   "summary": "一、國家教育研究院歷年致力於製作、徵集與整合優質數位影音資源，建置於愛學網（https://stv.naer.edu.tw/）供各界免費觀賞、教學與學習之用。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184613",
@@ -4888,7 +5314,17 @@
    "snippet": "說明： 依教育部114年12月30日臺教文(三)字第1142504986號函辦理。(本署收文日115年1月30日) 旨述手冊電子檔可於教育部「海外留遊學資訊萬花筒」（ https://studyabroadinfo.moe.gov.tw/ ）網站，點選：海外「留學、遊學」指南→「留遊學文宣下載」→「留遊學宣導相關資料」項下下載。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184613.json",
+   "detail_status": "parsed",
+   "detail_revision": "d331af6dc8519dba32c164505ca293a78e4008d3eeb14ed12b60222588a6a0f1",
+   "detail_attempts": 1,
+   "summary": "依教育部114年12月30日臺教文(三)字第1142504986號函辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184596",
@@ -4902,7 +5338,17 @@
    "snippet": "各班班級課表請參閱線上課表連結，提供師生參考，如有調整以網路上公告最新版本為主。 https://classtable.cygsh.cy.edu.tw/classtable/ 實施時間自115/2/23起至115/6/30，紙本課表將於2/23(一)發放。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184596.json",
+   "detail_status": "parsed",
+   "detail_revision": "6d68a6dc678e22b642ef58e6e498420028e87c7874d6f855d35ba41fce288156",
+   "detail_attempts": 1,
+   "summary": "各班班級課表請參閱線上課表連結，提供師生參考，如有調整以網路上公告最新版本為主。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184595",
@@ -4917,7 +5363,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184595.json",
+   "detail_status": "empty",
+   "detail_revision": "8c6df97037c6742f72a951b69028d724e41645060437a582d507e8ca4ab80658",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184560",
@@ -4931,7 +5387,17 @@
    "snippet": "一、為鼓勵民眾以聽的方式進行終身學習，多元運用廣播節目內容，國立教育廣播電臺設立Channel+網站，將播出過的優質節目內容，以主題分類重新編排並持續優化使用者體驗，並成立「親子節目專區」及「語言專區」，適合親子共學及學生收聽學習。 二、旨揭網站業於115年1月15日改版上架，鼓勵教師參考運用，網址https://channelplus.ner.gov.tw/。 三、如有相關問題，請逕洽該臺聯絡人蔡小姐，電話 (02)23880600轉154。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184560.json",
+   "detail_status": "parsed",
+   "detail_revision": "1d1b699b9f3915fce023134f77d150542217fb07574ec2cd04eb53918b7b72a0",
+   "detail_attempts": 1,
+   "summary": "二、旨揭網站業於115年1月15日改版上架，鼓勵教師參考運用，網址https://channelplus.ner.gov.tw/。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184552",
@@ -4945,7 +5411,17 @@
    "snippet": "「個人資料保護長及相關人員職掌職能條件及訓練辦法」可參閱 （一）個人資料保護委員會籌備處網站（網址：https://www.pdpc.gov.tw/）「最新消息」項下網頁 （二）籌備處「主管法規查詢系統」網站（網址：https://law.pdpc.gov.tw/）「草案預告」項下網頁 （三）「公共政策網路參與平臺」網站之「眾開講」（網址：https://join.gov.tw/policies/）。 對公告內容有任何意見或修正建議者，請於公告刊登公報次日起60日內陳述意見或洽詢 (一)承辦單位：個人資料保護委員會籌備處。 (二)地址：臺北市中正區館前路77號5樓。 (三)聯絡人：顏科長。 (四)電話：（02）3356-8016分機231。 (五)傳真：（02）3356-8012。 (六)電子郵件：yenwc@pdpc.gov.tw",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184552.json",
+   "detail_status": "parsed",
+   "detail_revision": "031d10820ff3280d5c173f1bd322c34d8e692522c1a501367f7a517f4d73d9a7",
+   "detail_attempts": 1,
+   "summary": "對公告內容有任何意見或修正建議者，請於公告刊登公報次日起60日內陳述意見或洽詢 (一)承辦單位：個人資料保護委員會籌備處。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184513",
@@ -4959,7 +5435,17 @@
    "snippet": "一 、旨揭事項徵稿時程如后:115年1月30日（星期五）徵稿截止（僅須繳交題目、摘要、關鍵字）；115年2月2日（星期一）公告及寄信通知審查結果；115年4月15日（星期三）繳交全文；5月中旬蒞臨國立政治大學研討會實體發表論文。 二、相關資料詳如附件。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184513.json",
+   "detail_status": "parsed",
+   "detail_revision": "0bc15a79a7b91982b8efbd19e472513488ce7237e911159e8faa0dfcd8078f1c",
+   "detail_attempts": 1,
+   "summary": "一 、旨揭事項徵稿時程如后:115年1月30日（星期五）徵稿截止（僅須繳交題目、摘要、關鍵字）；",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184500",
@@ -4973,7 +5459,17 @@
    "snippet": "各位同學～ 本通知說明關於學期補考、 寒假作業、 寒假假期規劃、 學習歷程檔案上傳、 借用筆電、 開學等重要事項。 提醒你~請務必逐條參閱，配合相關期程與說明辦理！並請隨時上學校網站查詢重要公告及訊息！本通知內相關資訊，一樣會上傳教務事務與新課綱資訊專區，請記得上網查詢、下載參閱。 寒假期間各項提問、家庭經濟突發狀況急需獎助金協助、學習相關問題、學習歷程檔案製作上傳等需求，請務必電話聯繫教務處專線 05-2232935 洽詢。 祝福大家有個愉快充實的寒假時光(´,,•ω•,,)♡",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184500.json",
+   "detail_status": "parsed",
+   "detail_revision": "ff198b37e6aaa29f2c81c13c19a6957fc0b4f400560d5a1865c0fd3cb4eb92d3",
+   "detail_attempts": 1,
+   "summary": "寒假期間各項提問、家庭經濟突發狀況急需獎助金協助、學習相關問題、學習歷程檔案製作上傳等需求，請務必電話聯繫教務處專線 05-2232935 洽詢。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184495",
@@ -4987,7 +5483,17 @@
    "snippet": "說明： 一、依菸害防制法第15條第2項規定任何人不得使用類菸品(俗稱電子煙)及未經核定通過健康風險評估審查指定菸品，違法者依菸害防制法第40條規定，處新臺幣2仟元以上1萬元以下罰鍰，且「特定營業場所」係屬菸害防制法規定之禁菸場所，違法使用者亦依上述規定處罰之。 二、鑒於電子煙經常與大麻、依托咪酯等毒品混合使用，為杜絕電子煙及毒品危害，請大部參考電子煙防制宣導相關素材融入毒品危害防制訓練，以利「特定營業場所」業者瞭解相關規範，影片及宣導單張載網址如下：https://reurl.cc/NN9kym",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184495.json",
+   "detail_status": "parsed",
+   "detail_revision": "16370f6d7c474619543af6469a91826436eea0d847df61d105edb326a27ab082",
+   "detail_attempts": 1,
+   "summary": "二、鑒於電子煙經常與大麻、依托咪酯等毒品混合使用，為杜絕電子煙及毒品危害，請大部參考電子煙防制宣導相關素材融入毒品危害防制訓練，以利「特定營業場所」業者瞭解相關規範，影片及宣導單張載網址如下：https://reurl.cc/NN9kym",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184492",
@@ -5001,7 +5507,17 @@
    "snippet": "說明： 為加強防制電子煙危害，教育部國民及學前教育署前於114年2月14日以臺教國署學字第1145800697號函（諒達），請各校落實校園菸害防制措施，倘查獲學生攜帶或使用電子煙，應進行通報作業及處置（一般校安事件／暴力與偏差行為事件）；如電子煙疑含有毒品成分，請確依「各級學校特定人員尿液篩檢及輔導作業要點」及「教育單位發現疑有毒品、製造或施用毒品之器具移請警察機關查處流程」等相關規定辦理如下： 1. 加熱菸與電子煙外觀辨識方式及說明(如附件1) 。 2. 倘查獲學生違規攜帶或使用電子煙，應即依規定辦理校安通報（案類：一般校安事件／暴力與偏差行為事件），並參考「高級中等以下學校電子煙處遇流程」(如附件2)。 3. 教育單位發現類菸品（電子煙）處理同意書-範本(如附件3) 。 4. 衛生福利部國民健康署說明「校園查獲電子煙處理疑義」函文影本(如附件4)。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184492.json",
+   "detail_status": "parsed",
+   "detail_revision": "a51b80500b9598d55fca86ce6d776cd0c5747c69875684923826743f7ac0106c",
+   "detail_attempts": 1,
+   "summary": "說明： 為加強防制電子煙危害，教育部國民及學前教育署前於114年2月14日以臺教國署學字第1145800697號函（諒達），請各校落實校園菸害防制措施，倘查獲學生攜帶或使用電子煙，應進行通報作業及處置（一般校安事件／暴力與偏差行為事件）；",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184474",
@@ -5015,7 +5531,17 @@
    "snippet": "說明： 內政部警政署編撰「重大暴力事件與天然災害因應作 為」、「無人機應處與民防人員自我防護實務指引」等課 程教材，業已登載於該署全球資訊網：機關簡介/防治組/ 民防訓練-下載(網址：https://www.npa.gov.tw/ch /index)，請自行下載使用(如附件)。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184474.json",
+   "detail_status": "parsed",
+   "detail_revision": "5a8f544d235b0b69b16ada4d188b30eb4641513ae342594cf399addbd9390fe0",
+   "detail_attempts": 1,
+   "summary": "說明： 內政部警政署編撰「重大暴力事件與天然災害因應作 為」、「無人機應處與民防人員自我防護實務指引」等課 程教材，業已登載於該署全球資訊網：機關簡介/防治組/ 民防訓練-下載(網址：https://www.npa.gov.tw/ch /index)，請自行下載使用(如附件)。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184445",
@@ -5029,7 +5555,17 @@
    "snippet": "說明： 一、依據財團法人周大觀文教基金會115年1月8日（115）大觀字第11501080031號函辦理。 二、旨揭助學金詳細申請辦法，請參閱該會網站（ http://www.ta.org.tw ），如有申請疑問請聯絡該基金會張副秘書長芝瑄，電話02-29178770分機12。 三、檢附旨揭原函及附件1份。",
    "date_tried": true,
    "category": "獎助學金",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184445.json",
+   "detail_status": "parsed",
+   "detail_revision": "97e86d743b7b9b631c8f4a843a84d05237fb574c4f5c3f98c052e20d4d6675d6",
+   "detail_attempts": 1,
+   "summary": "說明： 一、依據財團法人周大觀文教基金會115年1月8日（115）大觀字第11501080031號函辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184437",
@@ -5044,7 +5580,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184437.json",
+   "detail_status": "empty",
+   "detail_revision": "a2959535f1534c6f86f184a5542e766d608e2de2d445d919069ff0547085c10f",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184423",
@@ -5058,7 +5604,17 @@
    "snippet": "一、為協助高中學生於升學前即能提前接觸大學課程內容、認識不同學門之學習樣貌，並探索自身學習興趣與未來可能之學涯方向，國立政治大學特整合既有優質課程資源，辦理「政大鮮修」高中端學習推廣活動。 二、旨揭活動係自國立政治大學「政大數位知識城（NCCU DKB）」平台逾五百門數位課程中，精選具代表性之課程並依學院進行分類呈現。課程涵蓋人文社會、商管、外語、資訊、傳播、法政等多元領域，以數位學習方式推動跨領域學習與開放教育。 三、活動主要對象為全國高中生，亦歡迎對大學課程內容有興趣者共同參與；所有課程均採線上方式自主學習，學習時間彈性，無需修課費用，相關活動資訊請參閱：https://nccu-hs-online-course.my.canva.site/。 四、檢附活動海報，鼓勵學生及有興趣者踴躍參與，增進對各學群學習內容之理解，作為未來升學與學涯探索之參考。 五、如有活動相關問題，請洽國立政治大學教務處教學發展中心龔小姐，電話：(02)29393091分機62863，Email：cocoruu@nccu.edu.tw。",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184423.json",
+   "detail_status": "parsed",
+   "detail_revision": "c7e9f9874c2282b7488432e20a38cf28786d1b971e99092bfbf88aa87fafebed",
+   "detail_attempts": 1,
+   "summary": "一、為協助高中學生於升學前即能提前接觸大學課程內容、認識不同學門之學習樣貌，並探索自身學習興趣與未來可能之學涯方向，國立政治大學特整合既有優質課程資源，辦理「政大鮮修」高中端學習推廣活動。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184422",
@@ -5072,7 +5628,10 @@
    "snippet": "一、招生宗旨：為落實消防教育向下扎根理念，並鼓勵高中職學子積極參與專業訓練。凡高中職在學學生，報名參加旨揭之「防火管理人」及「服勤人員」課程，嘉南藥理大學公共安全及消防系將補助半額報名費，期能透過實質補貼，提升學生投入公共安全領域之意願。 二、旨揭推廣教育班，包含下列各證照(書)訓練課程，詳細班別、日期資訊，請參閱附件海報。 (一)防火管理人初/複訓(含考照)； (二)防災中心服勤人員初/複訓(含考照)； (三)升降機裝修乙/丙級術科輔導班； (四)消防設備師衝刺班； (五)基礎Revit建築班(含考照)； (六)初級救護技術員EMT-1(含考照)。 三、課程報名，請至嘉南藥理大學推廣教育中心－課程分類－消防專區 https://ccee.cnu.edu.tw/?.p=HEYZ&.qio=Q20251127151550852。 四、課程相關問題，請逕洽詢： (一)報名、付費相關問題請洽：推廣教育中心，06-2664911分機1612、1613、1615、1618。 (二)考照與其他問題請洽：消防科技防災中心，06-2664911分機6930，信箱box6930@gm.cnu.edu.tw。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_attempts": 1,
+   "detail_available": false,
+   "detail_status": "temporary_error"
   },
   {
    "id": "cygsh-184373",
@@ -5087,7 +5646,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": false,
+   "detail_ref": "data/details/cygsh/cygsh-184373.json",
+   "detail_status": "empty",
+   "detail_revision": "e07fbb31ac7d7cf5d4d33a4c2753d8c108bb01338cec99977e0d0c33f9373e6e",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184372",
@@ -5101,7 +5670,17 @@
    "snippet": "115學年度公立高級中等學校教師介聘作業日程表（如附檔），請參閱。 二、欲申請115學年度公立高級中等學校教師介聘之教師，請自115年1月20日起至1月28日下午5時前止（逾期無法登錄）至教師介聘資訊作業系統網站【由溪湖高中首頁點選：教師介聘資訊作業系統】填報資料並列印完成線上申請證明，並於115年1月28日中午12時以前備妥相關證明文件送人事室初審。 三、有關本校介聘作業說明及檢附文件等事項，將於教師介聘分區會議後再公告於學校網站。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184372.json",
+   "detail_status": "parsed",
+   "detail_revision": "b63624316f3f21eda374f3271c47332e69a9660b967abbde6f4badd1ec1897ec",
+   "detail_attempts": 1,
+   "summary": "115學年度公立高級中等學校教師介聘作業日程表（如附檔），請參閱。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184369",
@@ -5115,7 +5694,17 @@
    "snippet": "一、正取1名：盧O彰。 二、相關配合事項請依本校115年度游泳池救生員甄選簡章辦理。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184369.json",
+   "detail_status": "parsed",
+   "detail_revision": "f306293317fa12aab787873b1bbbe57a68fe88df5e33ec84f85181a8dd9ceca6",
+   "detail_attempts": 1,
+   "summary": "二、相關配合事項請依本校115年度游泳池救生員甄選簡章辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184367",
@@ -5129,7 +5718,17 @@
    "snippet": "說明： 一、【免費生涯講座】協助學生認識自我、探索方向 (一)講座申請連結（請登入填寫報名資訊）： https://pse.is/7qtrde (二)講座主題（可依校內需求彈性安排）： １、工作大未來：解析工作世界現況與未來趨勢，分析不同科系畢業出路。 ２、生涯探索：引導學生從才能＆熱情探索優勢天賦，找到適性適才的目標校系。 ３、學習歷程自述：掌握書寫關鍵，了解教授期待的內容與方向。 ４、大學面試教戰：面試技巧解析、教授常見提問應對方法。 二、【職人入班公益分享】引領學生認識職場樣貌，啟發多元發展可能 (一)Facebook媒合平台連結： https://pse.is/7qtrhh (二)申請方式： １、請教師先加入Facebook私密社團，「務必填寫以下資料」： 姓名、學校名稱、職稱、辦公室電話與電子信箱，資料完整者將於3日內審核通過，未填妥資料恕無法申請媒合服務。 ２、通過後請參考釘選貼文範例，自行發文媒合適合的職人入班分享，104人力銀行將全程協助媒合流程，確保媒合順利與分享品質。 ３、若有任何問題，歡迎聯繫函文承辦人：社會企業處 劉小姐（02-29126104）",
    "date_tried": true,
    "category": "獎助學金",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184367.json",
+   "detail_status": "parsed",
+   "detail_revision": "0af98bcc30b0928e27cfd750b139b7c38180d1ecf8bab80d03a167844e3f80bb",
+   "detail_attempts": 1,
+   "summary": "(一)講座申請連結（請登入填寫報名資訊）： https://pse.is/7qtrde",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184362",
@@ -5143,7 +5742,17 @@
    "snippet": "一、為培育高中職學生資訊素養與程式設計能力，並協助學生熟悉 APCS（Advanced Placement Computer Science）檢測內容，國立暨南國際大學教育學院 USR 計畫結合資訊工程學系人工智慧應用研發中心之專業資源，特辦理本次線上推廣課程。 二、本課程設計兼顧理論與實作，導入 AI 自學筆記平台，結合同步線上教學與遠距輔導機制，協助程式初學者順利入門，並建立線上學習社群，提供學習進度諮詢及實作題目輔導。 三、APCS 檢測為教育部推動之資訊人才選才機制之一，其成績可與學測成績併用申請資訊相關科系，並可能作為大學課程抵免依據，具高度學習與升學參考價值。 四、課程公告事項： (一)課程名稱：青少年 AI 程式設計先修推廣計畫（C 語言基礎班/進階班） (二)授課方式：全程線上授課。 (三)報名截止日期：115 年 1 月 22 日（星期四）上午 10時止。 (四)上課時間：115年1月24 日（六）、1月31日（六）、2月7日（六）、3月7日（六），每次課程時間均為13 時30 分至 16 時 00 分。 (五)報名資格與相關要求： 1. 具高中職在學身分（含國三升高一）或自學學生。 2. 須具備可上網之電腦與穩定網路設備，以利參與線上課程。 3. 報名學員須同時報名參加 2026 年 3 月 APCS 檢測，並於檢測後主動回報成績予本計畫單位，作為課程成效追蹤之依據。 (六)報名方式：請於截止期限前填寫 Google 表單完成報名，報名連結 https://forms.gle/EYQ1eADmxwmqVQd87 (七)課程結束後，將持續提供線上學習陪伴與 APCS 檢測準備輔導，協助學員爭取理想成績。 (八)為即時接收課程相關公告與通知，請報名學員務必加入課程 Line 社群：https://tinyurl.com/ncnuapcs (九)相關訊息亦歡迎參閱國立暨南國際大學教育學院USR計畫官網：https://www.ncnu-edulab.org (十)活動連絡人：國立暨南國際大學教育學院USR計畫朱俊彥專案經理，連絡電話：（049）2910960分機3609，電子郵件信箱：marcochu@mail.ncnu.edu.tw",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184362.json",
+   "detail_status": "parsed",
+   "detail_revision": "06b1b010cd60af4def8714bc1985d5c533c95ba37bddd369145af56b49f12720",
+   "detail_attempts": 1,
+   "summary": "(六)報名方式：請於截止期限前填寫 Google 表單完成報名，報名連結 https://forms.gle/EYQ1eADmxwmqVQd87 (七)課程結束後，將持續提供線上學習陪伴與 APCS 檢測準備輔導，協助學員爭取理想成績。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184343",
@@ -5157,7 +5766,17 @@
    "snippet": "一、依據教練裁判相關辦法規定，教練及裁判證照效期為4年，惟為因應運動部成立，各競賽項目教練證有效期限統一調整至114年12月31日，故各競賽項目教練及裁判證皆須辦理換證(展延)，始得視為有效證件。 二、有關全國教練證及裁判證換發作業不及之因應作為說明如下： (一)已完成換證作業之教練，需上傳新版教練證。 (二)於報名期間內完成換證作業，請直接於系統修正後重新上傳。 (三)如未能於線上報名期間內完成換證作業，請提前向各申請換證(展延)之單項協會申請換證(展延)證明，並於115年1月23日(週五)下班前送至市府教育處體健科，俾利彙整提報執委會。",
    "date_tried": true,
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184343.json",
+   "detail_status": "parsed",
+   "detail_revision": "b22f5c5c061a644223adfadc116734dc40aa6f6b964287ef97ff8200bba1907e",
+   "detail_attempts": 1,
+   "summary": "一、依據教練裁判相關辦法規定，教練及裁判證照效期為4年，惟為因應運動部成立，各競賽項目教練證有效期限統一調整至114年12月31日，故各競賽項目教練及裁判證皆須辦理換證(展延)，始得視為有效證件。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184315",
@@ -5171,7 +5790,17 @@
    "snippet": "說明： 一、課程：包括「桌球研習營」、「跆拳研習營」、「美勞DIY」、「捏塑手作營」、「益智桌遊研習營」、「素描繪畫班」等6項活動，均為免費參加，名額有限。 二、時間：於115年2月3日至2月13日期間分別舉辦上述課程，各課程時間詳見課程表(如附件)。 三、各項課程自115年1月19日9時起開放報名，至1月23日24時或額滿為止，以網路報名為主，請逕至本局全球資訊網首頁項下「線上報名系統」點選「115年寒假期間保護少年活動報名」（網址：https://www.ccpb.gov.tw/course/?parent_id=12&type_id=12）。",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184315.json",
+   "detail_status": "parsed",
+   "detail_revision": "3e6d889959867d9aae421ac27bd7078899638177e3f48110220a169063f30d82",
+   "detail_attempts": 1,
+   "summary": "三、各項課程自115年1月19日9時起開放報名，至1月23日24時或額滿為止，以網路報名為主，請逕至本局全球資訊網首頁項下「線上報名系統」點選「115年寒假期間保護少年活動報名」（網址：https://www.ccpb.gov.tw/course/?",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184312",
@@ -5185,7 +5814,17 @@
    "snippet": "說明： 一、為強化全民防災避難知識，將教育部「全民安全指引」專區（https://www.edu.tw/ PrepareEDU/Default.aspx）連結於單位網頁(首頁 行政單位 教官室 校園防空指引)。 二、手冊推廣方式，為提供線上網站版和PDF離線版(如附件)，以方便查找及教育訓練使用。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184312.json",
+   "detail_status": "parsed",
+   "detail_revision": "550056af87d68cb9200741cd438606334be640b9dc1cf60ddaed74357d66e205",
+   "detail_attempts": 1,
+   "summary": "說明： 一、為強化全民防災避難知識，將教育部「全民安全指引」專區（https://www.edu.tw/ PrepareEDU/Default.aspx）連結於單位網頁(首頁 行政單位 教官室 校園防空指引)。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184310",
@@ -5199,7 +5838,17 @@
    "snippet": "運動部主辦之各級籃球聯賽，參賽學校務必遵守競賽規程規範，未經登錄之職隊員，不得列坐及站立於球隊席區，違者將依競賽規程處理",
    "date_tried": true,
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184310.json",
+   "detail_status": "parsed",
+   "detail_revision": "6d667409c20190908096ff14a200f3a9b31f5426d29a3749f10bf42a08d6c2e2",
+   "detail_attempts": 1,
+   "summary": "運動部主辦之各級籃球聯賽，參賽學校務必遵守競賽規程規範，未經登錄之職隊員，不得列坐及站立於球隊席區，違者將依競賽規程處理",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184294",
@@ -5213,7 +5862,17 @@
    "snippet": "旨冊手冊電子檔業登載於教育部推動中小學數位學習精進方案入口網/資料下載/中小學生成式AI之學習應用手冊（https://pads.moe.edu.tw/download.php），轉知校內親師生參採運用。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184294.json",
+   "detail_status": "parsed",
+   "detail_revision": "5996e5af7730837b5fd214d7acb4f29d5d66abd9d9deffd2bf51fc563cf50511",
+   "detail_attempts": 1,
+   "summary": "旨冊手冊電子檔業登載於教育部推動中小學數位學習精進方案入口網/資料下載/中小學生成式AI之學習應用手冊（https://pads.moe.edu.tw/download.php），轉知校內親師生參採運用。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184281",
@@ -5227,7 +5886,17 @@
    "snippet": "一、依教育部114年12月12日臺教學(五)字第1142805487號函辦理。 二、為落實新世代反毒策略行動綱領，提升學生反毒知能，教育部製作「寒假親子共學反毒學習單」作為家長與學生識毒及拒毒的學習資源，期協助家長陪伴孩子在每個重要歷程健康成長。 三、旨揭學習單共分8個版本，提供國小三至六年級、國中七至八年級及高級中等學校一至二年級學生適齡的重要反毒知識與策略。請至教育部「防制學生藥物濫用資源網(https://enc.moe.edu.tw/)/反毒知識/下載專區/反毒學習單」下載運用(附件參考)。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184281.json",
+   "detail_status": "parsed",
+   "detail_revision": "3187386b310d6e32b4e7d902bbe9fb7d9d83f85973c66a190a2ada3aa063b83c",
+   "detail_attempts": 1,
+   "summary": "一、依教育部114年12月12日臺教學(五)字第1142805487號函辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184280",
@@ -5241,7 +5910,17 @@
    "snippet": "一、教育部國民及學前教育署 114 年 12 月 23 日臺教國署學字第 1140137886 號函辦理。 二、旨揭影片片名「拒絕毒品 擁抱未來」及「每一步重來，都值得被看見」請至「法務部全球資訊網」（ https://www.moj.gov.tw/）首頁/下載專區/Youtube 影音下載，電子圖卡請至「反毒大本營」（ https://reurl.cc/RW4WVx ）首頁/反毒知識宣導/文宣品/下載運用。 三、檢附來文提供參考。",
    "date_tried": true,
    "category": "研習活動",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184280.json",
+   "detail_status": "parsed",
+   "detail_revision": "16104da7761326fd7b420b688322d4ebd687f8acd4abb36bb306805fcf6a9ddc",
+   "detail_attempts": 1,
+   "summary": "二、旨揭影片片名「拒絕毒品 擁抱未來」及「每一步重來，都值得被看見」請至「法務部全球資訊網」（ https://www.moj.gov.tw/）首頁/下載專區/Youtube 影音下載，電子圖卡請至「反毒大本營」（ https://reurl.cc/RW4WVx ）首頁/反毒知識宣導/文宣品/下載運用。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184268",
@@ -5255,7 +5934,17 @@
    "snippet": "有關國防部辦理115年全民國防教育「寒假戰鬥營」事宜，報名日期自115年1月5日0800時起至1月12日1700時止，採網路或郵寄方式報名，請有興趣報名參加者，至教官室領取報名表。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184268.json",
+   "detail_status": "parsed",
+   "detail_revision": "3221810c9a9b466d4b55c26bc491a209927b9109e233377096520d46c1b04632",
+   "detail_attempts": 1,
+   "summary": "有關國防部辦理115年全民國防教育「寒假戰鬥營」事宜，報名日期自115年1月5日0800時起至1月12日1700時止，採網路或郵寄方式報名，請有興趣報名參加者，至教官室領取報名表。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184209",
@@ -5269,7 +5958,17 @@
    "snippet": "說明： 一、為擴大學員參與，且不受地域及時間限制，促使圖書館專業知識加速普及，自100學年度起，本課程教學模式採遠距教學（非同步+線上同步）並減少實體面授方式進行，讓學習更佳彈性；由本校圖檔所、國家圖書館及圖書館界知名專家學者授課，符合圖書館專業人員應具備的學科學分，並皆依教育部專科以上學校推廣教育實施辦法辦理。 二、115年上半年將開設3門課程：(一)資訊素養與閱讀推廣。(二)生成式AI 於圖書館應用實務。(三)數位資源與數位策展。 三、課程學費：每門課程3學分（54小時）為新臺幣1萬2,000元整（新生享有全選95折優惠），皆可依個人規劃單科選修課程。 四、上課方式：採非同步（錄影檔）與同步視訊教學為主，實體授課為輔；實體授課地點為政大公企中心（台北市大安區金華街187號）。五、報名方式：採線上報名，Google搜尋CPBAE至中心官網，課程/活動搜尋（圖書館學分）至課程頁面點選「我要報名」選擇您所需的課程，登記報名達15人另通知繳費。如第一次報名請先註冊。",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184209.json",
+   "detail_status": "parsed",
+   "detail_revision": "92ff0caf44fd8af43ffc4b1500426d20445f6126d397b8b305fb02bb77926b83",
+   "detail_attempts": 1,
+   "summary": "由本校圖檔所、國家圖書館及圖書館界知名專家學者授課，符合圖書館專業人員應具備的學科學分，並皆依教育部專科以上學校推廣教育實施辦法辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-184186",
@@ -5284,7 +5983,17 @@
    "snippet_tried": true,
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-184186.json",
+   "detail_status": "parsed",
+   "detail_revision": "1ecb0eb111804f827818ebff40988b93577f4cc3c70405547e71417f094f1857",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-183436",
@@ -5298,7 +6007,17 @@
    "snippet": "「中華民國115年全國中等學校運動會」競賽規程及21種競賽種類技術手冊，詳如附件",
    "date_tried": true,
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-183436.json",
+   "detail_status": "parsed",
+   "detail_revision": "6900accbb787a39a7f999b6e260a8cb221dd990a5baf9e59867cd8f549ef6aa2",
+   "detail_attempts": 1,
+   "summary": "「中華民國115年全國中等學校運動會」競賽規程及21種競賽種類技術手冊，詳如附件",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-183060",
@@ -5312,7 +6031,17 @@
    "snippet": "https://cygsh-sport-demo.solamimi.org/ 以上是運動會報名及查詢網站，大會資訊站下面的單項分組即可查詢選手名單道次等資訊，賽程規劃即是比賽時間，選手成績可以查詢成績名次，請老師及同學可以多多利用。",
    "date_tried": true,
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-183060.json",
+   "detail_status": "parsed",
+   "detail_revision": "33d5d60f3c368193af0e2ae16ed49c879f8ef1462671ed870cf875512ebd3828",
+   "detail_attempts": 1,
+   "summary": "https://cygsh-sport-demo.solamimi.org/ 以上是運動會報名及查詢網站，大會資訊站下面的單項分組即可查詢選手名單道次等資訊，賽程規劃即是比賽時間，選手成績可以查詢成績名次，請老師及同學可以多多利用。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cygsh-182773",
@@ -5326,7 +6055,17 @@
    "snippet": "(一) 12月01日(星期一)： 1. 13：30 高三、高二、高一、男生組200公尺計時決賽 2. 13：35 高一跳遠決賽 3. 14：05 高三、高二、高一、男生組800公尺 計時決賽 4. 14：35 男生組跳遠決賽 5. 15：00 高三、高二、高一、男生組1600公尺接力 計時決賽 (二) 12月03日(星期三)： 1. 9：00 高三、高二、高一、男生組100公尺計時決賽 2. 9：05 高二跳遠決賽 3. 9：15 高三、高二、高一、男生組1500公尺 計時決賽 4. 9：45 高三、高二、高一、男生組400公尺 計時決賽 5. 10：10 高三跳遠決賽 6. 10：25 高三、高二、高一、男生組400公尺接力 計時決賽 (三) 12月6日(星期六) 時 間 活 動 內 容 08：30 ～ 09：20 大會開始→管樂隊→儀隊→會旗進場→典禮 09：20 ～ 09：40 樂旗隊表演 09：40 ～ 10：00 儀隊表演 10：00 ～ 10：15 啦啦隊表演 10：15 ～ 10：25 師生大隊接力，共一組4隊，每隊16人，每人跑100m 10：25 ～ 10：35 教職員&親子暨家長會趣味競賽 10：35 ～ 11：00 高三組趣味競賽，共二組16隊 11：00 ～ 11：25 高二組趣味競賽，共二組16隊 11：25 ～ 11：50 高一組趣味競賽，共二組16隊 11：00 ～ 12：00 頒發田徑賽各獎項 12：00 ～ 13：10 午 休 13：10 高三組1600m大隊接力決賽檢錄點名(賽前20分鐘) 13：30 ～ 14：00 高三組1600m大隊接力決賽，共三組16隊 13：30 高二組1600m大隊接力決賽檢錄點名(賽前20分鐘) 14：00 ～ 14：30 高二組1600m大隊接力決賽，共三組16隊 14：10 高一組1600m男女混合大隊接力決賽檢錄點名(賽前20分鐘) 14：30 ～ 15：00 高一組1600m男女混合大隊接力決賽，共三組16隊 15：30 ～ 16：00 吾愛吾校 16：00 ～ 16：30 閉幕式、頒發各項團體錦標 16：30 ～ 16：30 快樂平安回家",
    "date_tried": true,
    "category": "一般",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-182773.json",
+   "detail_status": "parsed",
+   "detail_revision": "49d1586f30067efcf2250c3e2a30902e83199824a83159e4dfdc13f0ea639d00",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cygsh-182770",
