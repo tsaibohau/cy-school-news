@@ -45,6 +45,15 @@
     var email = String(user && user.email || "").replace(/[\t\r\n\u0000-\u001f\u007f]+/g, "").trim();
     return email.length <= 254 && /^[^\s@]+@[^\s@]+$/.test(email) ? email : "";
   }
+  function normalizeEmail(value) {
+    var email = String(value == null ? "" : value).replace(/[\t\r\n\u0000-\u001f\u007f]+/g, "").trim().toLowerCase();
+    return email.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : "";
+  }
+  function validPassword(value) {
+    /* This is a usability floor, not the password policy. Supabase Auth remains
+       the authority and must have leaked-password protection enabled before production. */
+    return typeof value === "string" && value.length >= 12 && value.length <= 72;
+  }
   function normalizeAppUrl(value, allowCallbackParameters) {
     if (typeof value !== "string" || !value.trim()) return null;
     try {
@@ -112,6 +121,31 @@
           return c.auth.signInWithOAuth({ provider: "google", options: oauthOptions });
         });
       },
+      signInWithPassword: function (email, password) {
+        email = normalizeEmail(email);
+        if (!email || !validPassword(password)) return Promise.reject(new Error("invalid email or password"));
+        return getClient().then(function (c) {
+          return c.auth.signInWithPassword({ email: email, password: password }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data || {};
+          });
+        });
+      },
+      signUpWithPassword: function (email, password, nickname) {
+        email = normalizeEmail(email);
+        nickname = normalizeNickname(nickname);
+        if (!email || !validPassword(password)) return Promise.reject(new Error("invalid email or password"));
+        var redirectTo = approvedRedirect(config, options.location);
+        if (!redirectTo) return Promise.reject(new Error("current app URL is not allow-listed"));
+        return getClient().then(function (c) {
+          var signUpOptions = { emailRedirectTo: redirectTo };
+          if (nickname) signUpOptions.data = { nickname: nickname };
+          return c.auth.signUp({ email: email, password: password, options: signUpOptions }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data || {};
+          });
+        });
+      },
       signOut: function () {
         return getClient().then(function (c) { return c.auth.signOut(); });
       },
@@ -138,6 +172,6 @@
     };
   }
   return { CLIENT_VERSION: CLIENT_VERSION, CLIENT_URL: CLIENT_URL, verifiedSession: verifiedSession, verifiedUid: verifiedUid,
-    normalizeNickname: normalizeNickname, displayName: displayName, displayEmail: displayEmail, normalizeAppUrl: normalizeAppUrl,
+    normalizeNickname: normalizeNickname, normalizeEmail: normalizeEmail, validPassword: validPassword, displayName: displayName, displayEmail: displayEmail, normalizeAppUrl: normalizeAppUrl,
     approvedRedirect: approvedRedirect, createController: createController };
 });
