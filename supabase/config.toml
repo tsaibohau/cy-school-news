@@ -58,3 +58,9 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/request-staging-refresh/deno.json"
 entrypoint = "./functions/request-staging-refresh/index.ts"
+
+[functions.username-auth]
+enabled = true
+verify_jwt = false
+import_map = "./functions/username-auth/deno.json"
+entrypoint = "./functions/username-auth/index.ts"

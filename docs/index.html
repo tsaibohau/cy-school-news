@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=42">
+<link rel="stylesheet" href="style.css?v=43">
 </head>
 <body>
 
@@ -174,9 +174,10 @@
 
 <dialog id="passwordAuthDialog" class="nickname-dialog" aria-labelledby="passwordAuthTitle">
   <form id="passwordAuthForm" class="nickname-sheet">
-    <p class="eyebrow">ACCOUNT</p><h2 id="passwordAuthTitle">用 Email 登入或註冊</h2>
-    <p class="hint">不需要 Google。帳密由 Supabase Auth 安全處理，本站不會保存你的密碼。</p>
-    <label>Email<input id="passwordAuthEmail" type="email" required maxlength="254" autocomplete="email" inputmode="email" placeholder="name@example.com"></label>
+    <p class="eyebrow">ACCOUNT</p><h2 id="passwordAuthTitle">用嘉校快訊帳號登入</h2>
+    <p class="hint">登入只需帳號與密碼。Email 僅在註冊時私下用於驗證與找回密碼；本站不會保存你的密碼。</p>
+    <label>嘉校快訊帳號<input id="passwordAuthUsername" required maxlength="32" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="例如：hau_115"></label>
+    <label>救援 Email（只在註冊時需要）<input id="passwordAuthEmail" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="name@example.com"></label>
     <label>密碼<input id="passwordAuthPassword" type="password" required minlength="12" maxlength="72" autocomplete="current-password" placeholder="至少 12 個字元"></label>
     <label>顯示名稱（註冊時選填）<input id="passwordAuthNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
     <div class="profile-actions"><button id="passwordSignIn" class="btn-primary" type="submit">登入</button><button id="passwordSignUp" class="btn-ghost" type="button">註冊</button><button id="passwordAuthCancel" class="btn-ghost" type="button">取消</button></div>
@@ -223,7 +224,7 @@
 
 <script src="account-config.js?v=41"></script>
 <script src="supabase-sync.js?v=54"></script>
-<script src="account-auth.js?v=42"></script>
+<script src="account-auth.js?v=43"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
@@ -240,7 +241,7 @@
 <script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=55"></script>
+<script src="app.js?v=56"></script>
 </body>
 </html>
 

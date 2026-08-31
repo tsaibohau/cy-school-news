@@ -10,6 +10,8 @@ let oauthRequest = null;
 let userUpdateRequest = null;
 let passwordSignInRequest = null;
 let passwordSignUpRequest = null;
+let usernameSessionRequest = null;
+const originalFetch = global.fetch;
 const client = {
   auth: {
     getSession() {
@@ -33,6 +35,10 @@ const client = {
     signUp(request) {
       passwordSignUpRequest = request;
       return Promise.resolve({ data: { user: { id: "new-user" }, session: null }, error: null });
+    },
+    setSession(request) {
+      usernameSessionRequest = request;
+      return Promise.resolve({ data: { session: { access_token: request.access_token } }, error: null });
     },
     updateUser(request) {
       userUpdateRequest = request;
@@ -145,10 +151,20 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert.equal(Auth.validPassword("0123456789ab"), true);
   await controller.signInWithPassword("Student@Example.TEST", "0123456789ab");
   assert.deepEqual(passwordSignInRequest, { email: "student@example.test", password: "0123456789ab" });
-  await controller.signUpWithPassword("Student@Example.TEST", "0123456789ab", " Hau ");
-  assert.deepEqual(passwordSignUpRequest, { email: "student@example.test", password: "0123456789ab", options: { emailRedirectTo: localhost, data: { nickname: "Hau" } } });
+  await controller.signUpWithPassword("Student@Example.TEST", "0123456789ab", " Hau ", "Hau_115");
+  assert.deepEqual(passwordSignUpRequest, { email: "student@example.test", password: "0123456789ab", options: { emailRedirectTo: localhost, data: { pending_username: "hau_115", nickname: "Hau" } } });
   await assert.rejects(controller.signInWithPassword("bad", "0123456789ab"), /invalid/);
-  await assert.rejects(controller.signUpWithPassword("student@example.test", "short", "Hau"), /invalid/);
+  await assert.rejects(controller.signUpWithPassword("student@example.test", "short", "Hau", "hau_115"), /invalid/);
+  assert.equal(Auth.normalizeUsername(" Hau_115 "), "hau_115");
+  assert.equal(Auth.normalizeUsername("12bad"), "");
+  global.fetch = (url, request) => {
+    assert.equal(url, "https://example.supabase.co/functions/v1/username-auth");
+    assert.deepEqual(JSON.parse(request.body), { action: "sign_in", username: "hau_115", password: "0123456789ab" });
+    return Promise.resolve({ ok: true, json: () => Promise.resolve({ access_token: "username-access", refresh_token: "username-refresh" }) });
+  };
+  await controller.signInWithUsername("Hau_115", "0123456789ab");
+  assert.deepEqual(usernameSessionRequest, { access_token: "username-access", refresh_token: "username-refresh" });
+  global.fetch = originalFetch;
   const updatedUser = await controller.updateNickname("  Hau  ");
   assert.deepEqual(userUpdateRequest, { data: { nickname: "Hau" } });
   assert.equal(updatedUser.user_metadata.nickname, "Hau");
@@ -202,9 +218,9 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('autocomplete="current-password"'));
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=42"'), "index must load current account auth");
+  assert(index.includes('src="account-auth.js?v=43"'), "index must load current account auth");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
-  assert(sw.includes('"./account-auth.js?v=42"'), "Service Worker shell must cache current account auth");
+  assert(sw.includes('"./account-auth.js?v=43"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
   assert(app.includes('"登入信箱：" + email'));
   assert(!app.includes("sendMagicLink"));
@@ -218,12 +234,13 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v56"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=41")'), "App and Service Worker must use one shell version");
+  assert(sw.includes("cy-news-v57"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=57")'), "App and Service Worker must use one shell version");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
-  assert(app.includes("signInWithPassword"));
   assert(app.includes("signUpWithPassword"));
+  assert(app.includes("signInWithUsername"));
+  assert(index.includes('id="passwordAuthUsername"'));
   assert(!app.includes("passwordAuthPassword.value = password"));
   console.log("OAuth and password account auth tests passed");
 }).catch(error => {

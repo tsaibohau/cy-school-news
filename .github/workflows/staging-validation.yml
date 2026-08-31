@@ -2,7 +2,7 @@ name: Staging validation
 
 on:
   push:
-    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate]
+    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login]
   workflow_dispatch: {}
 
 permissions:
@@ -28,6 +28,7 @@ jobs:
         run: >-
           node --test
           tests/test_account_auth.js
+          tests/test_username_auth_contract.js
           tests/test_account_switch_v3.js
           tests/test_account_sync.js
           tests/test_supabase_sync.js
@@ -78,6 +79,11 @@ jobs:
           deno check
           --config supabase/functions/request-staging-refresh/deno.json
           supabase/functions/request-staging-refresh/index.ts
+      - name: Type-check username/password login function
+        run: >-
+          deno check
+          --config supabase/functions/username-auth/deno.json
+          supabase/functions/username-auth/index.ts
       - name: Python parser and calendar regression
         env:
           PYTHONIOENCODING: utf-8
