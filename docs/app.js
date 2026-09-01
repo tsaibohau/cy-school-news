@@ -14,9 +14,14 @@
     document.head.appendChild(script);
   }
 
+  function finishInitialLoading() {
+    var loading = document.getElementById("appLoading");
+    if (loading) loading.hidden = true;
+  }
+
   function startApp() {
     var NotificationState = window.CyNewsNotificationState;
-    if (!NotificationState) return;
+    if (!NotificationState) { finishInitialLoading(); return; }
 
     var LS_SEEN = "cyNews.lastSeen";
     var LS_EVENTS = "cyNews.calendarEvents.v1";
@@ -84,7 +89,7 @@
 
     var $ = function (id) { return document.getElementById(id); };
     var el = {
-      list: $("list"), subList: $("subList"), countLine: $("countLine"),
+      appLoading: $("appLoading"), list: $("list"), subList: $("subList"), countLine: $("countLine"),
       updatedAt: $("updatedAt"), q: $("q"),
       schoolFilter: $("schoolFilter"), catChips: $("catChips"),
       viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"),
@@ -1322,7 +1327,7 @@
       var answerLines = (result.answer_lines || []).map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("");
       var directAnswer = answerLines ? '<h4>直接回答</h4><ul class="assistant-answer-lines">' + answerLines + '</ul>' : '';
       var limitation = result.limitation ? '<p class="assistant-limitation"><strong>資料限制：</strong>' + esc(result.limitation) + '</p>' : '';
-      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>整理結果</h3><p>' + esc(result.summary) + '</p>' + directAnswer + limitation + '<h4>我怎麼判斷</h4><ol class="assistant-evidence">' + evidence + '</ol><h4>參考公告</h4><div class="assistant-sources">' + sources + '</div><p class="assistant-disclaimer">回答前會先判斷公告期限與效力；無法確認時會明確標示，不會把過期公告當成目前有效。規定與日期仍以官方公告為準。</p></section>';
+          el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>整理結果</h3><p>' + esc(result.summary) + '</p>' + directAnswer + limitation + '<h4>我怎麼判斷</h4><ol class="assistant-evidence">' + evidence + '</ol><h4>參考公告</h4><div class="assistant-sources">' + sources + '</div><p class="assistant-disclaimer">回答會依公告期限與效力整理；無法確認時會明確標示。規定與日期仍以官方公告為準。</p></section>';
     }
     function askAssistant(question) {
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
@@ -1340,7 +1345,7 @@
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
           var result = window.CyNewsAssistantQA.answer(question, items, details);
           renderAssistantAnswer(result);
-          if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已從「" + scope.label + "」官方資料整理，請對照下方依據" : "「" + scope.label + "」沒有足夠官方證據，未產生猜測答案";
+          if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已從「" + scope.label + "」官方資料整理，請對照下方依據" : "「" + scope.label + "」尚缺可用的官方資料，請查看相關公告";
           return result;
         });
       }).catch(function () {
@@ -1901,7 +1906,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=57").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=58").catch(function () {});
       });
     }
 
@@ -1918,7 +1923,7 @@
 
     refreshNotifyState();
     setupAccountSync();
-    fetchData();
+    fetchData().then(finishInitialLoading);
   }
 
   loadNotificationStateScript(startApp);

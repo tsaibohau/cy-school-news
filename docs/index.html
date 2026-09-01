@@ -11,10 +11,16 @@
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=43">
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=44">
 </head>
 <body>
+
+<div id="appLoading" class="app-loading" role="status" aria-live="polite" aria-label="正在載入嘉校快訊">
+  <span class="app-loading-seal" aria-hidden="true">訊</span>
+  <strong>嘉校快訊</strong>
+  <span>正在整理最新公告</span>
+</div>
 
 <header class="mast">
   <div class="wrap">
@@ -58,7 +64,7 @@
   <!-- 免費、可追溯的校務資料問答；只整理官方公告，不呼叫生成式 AI。 -->
   <section id="viewAssistant" class="assistant-view" hidden aria-labelledby="assistantTitle">
     <div class="section-heading"><div><p class="eyebrow">ASK SCHOOL DATA</p><h2 id="assistantTitle">問校務</h2></div><span class="hint">免費・依官方資料回答</span></div>
-    <p class="assistant-intro">可以問公告、截止日、報名方式、活動地點或規定。答案會附上依據；資料不足時不會猜。</p>
+    <p class="assistant-intro">查詢公告、截止日、報名方式、活動地點或規定；每一則答覆都附上來源。</p>
     <form id="assistantForm" class="assistant-form">
       <label for="assistantQuestion">想問什麼？</label>
       <div class="assistant-input-row"><input id="assistantQuestion" type="search" required maxlength="160" placeholder="例如：學生音樂比賽什麼時候截止？"><button id="assistantAsk" class="btn-primary" type="submit">整理答案</button></div>
@@ -241,7 +247,7 @@
 <script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=56"></script>
+<script src="app.js?v=57"></script>
 </body>
 </html>
 
