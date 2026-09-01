@@ -1313,7 +1313,7 @@
       if (!el.assistantAnswer) return;
       state.assistantAnswer = result;
       if (!result || result.status !== "answered") {
-        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>目前無法可靠回答</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p><small>可能原因：官方尚未公告、PDF 無文字層，或問題不在本站資料範圍。</small></div>';
+        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>目前還無法回答這個問題</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p><small>可能是校方尚未公告、附件沒有可讀文字，或問題不在本站資料範圍。</small></div>';
         return;
       }
       var evidence = result.evidence.map(function (row, index) {
@@ -1325,9 +1325,12 @@
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc(sourceMeta) + '</small></button>';
       }).join("");
       var answerLines = (result.answer_lines || []).map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("");
-      var directAnswer = answerLines ? '<h4>直接回答</h4><ul class="assistant-answer-lines">' + answerLines + '</ul>' : '';
-      var limitation = result.limitation ? '<p class="assistant-limitation"><strong>資料限制：</strong>' + esc(result.limitation) + '</p>' : '';
-          el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>整理結果</h3><p>' + esc(result.summary) + '</p>' + directAnswer + limitation + '<h4>我怎麼判斷</h4><ol class="assistant-evidence">' + evidence + '</ol><h4>參考公告</h4><div class="assistant-sources">' + sources + '</div><p class="assistant-disclaimer">回答會依公告期限與效力整理；無法確認時會明確標示。規定與日期仍以官方公告為準。</p></section>';
+      var directAnswer = answerLines ? '<ul class="assistant-answer-lines">' + answerLines + '</ul>' : '';
+      var sourcePanel = sources ? '<details class="assistant-details" open><summary>官方來源（' + result.sources.length + '）</summary><div class="assistant-sources">' + sources + '</div></details>' : '';
+      var evidencePanel = evidence ? '<details class="assistant-details"><summary>為什麼這樣回答</summary><ol class="assistant-evidence">' + evidence + '</ol></details>' : '';
+      var limitation = result.limitation ? '<details class="assistant-details"><summary>資料說明</summary><p class="assistant-limitation">' + esc(result.limitation) + '</p></details>' : '';
+      var title = result.query ? '關於「' + esc(result.query) + '」' : '回答';
+      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>' + title + '</h3><p class="assistant-lead">' + esc(result.summary) + '</p>' + directAnswer + sourcePanel + evidencePanel + limitation + '</section>';
     }
     function askAssistant(question) {
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
@@ -1906,7 +1909,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=58").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=59").catch(function () {});
       });
     }
 
