@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-01T10:23:23+08:00",
+ "generated_at": "2026-09-01T11:25:16+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -8,6 +8,58 @@
   "base": "https://www.cygsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cygsh-186411",
+   "source_id": "cygsh:186411",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "title": "【教師研習】核心問題概念與實作工作坊",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186411,r548.php",
+   "date": "",
+   "date_source": "",
+   "cat_ref": "548",
+   "source_category": "研習活動",
+   "snippet": "一、研習資訊如下： (一)講師：國立羅東高級中學-胡敏華老師。 (二)日期：115年10月4日(週日)。 (三)時間：上午9時至下午4時。 (四)地點：臺灣大學校總區(教室位置請詳閱錄取通知)。 二、報名資格： (一)具高級中等以下學校或特殊教育中等以下學校合格教師證書之在職專任教師。 (二)具高級中等以下學校或特殊教育中等學校合格教師證書，且聘期為三個月以上之代理、代課或兼任在職教師。 (三)符合第(一)項條件者優先錄取，第(二)項次之。 三、報名資訊： (一)本研習採線上(報名網址：https://reurl.cc/KE0ZVg)。 (二)參加名額100位額滿為止。 (三)即日起報名至9月21日(週一)截止，截止後將以Email方式寄發錄取暨研習通知。 四、洽詢專線：國立臺灣大學生命教育研發育成中心吳小姐，(02)3366-1755分機204。 五、招生簡章如附件。",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-186411.json",
+   "detail_status": "parsed",
+   "detail_revision": "0382d18eccbbc1d3c7fee8a3633349990544ad1e2dd4ca1d2ce9177b0417f22a",
+   "detail_attempts": 1,
+   "summary": "(三)即日起報名至9月21日(週一)截止，截止後將以Email方式寄發錄取暨研習通知。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [],
+   "date_tried": true,
+   "category": "研習活動",
+   "first_seen": "2026-09-01T11:25:16+08:00"
+  },
+  {
+   "id": "cygsh-186412",
+   "source_id": "cygsh:186412",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "title": "【轉知】115學年度中華文化基本教材– 教案甄選",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186412,r679.php",
+   "date": "",
+   "date_source": "",
+   "cat_ref": "679",
+   "source_category": "競賽與投稿",
+   "snippet": "一、主辦單位：中華文化基本教材資源中心(國立彰化女子高級中學)。 二、甄選項目：中華文化基本教材教學活動教案設計。 (一)核心課程：中華文化基本教材。 (二)作品內容：以中華文化基本教材內容為教學設計的主題，設計出合宜的教學教案。教案設計宜兼顧教學內容與學生的關聯性、知識間關聯性及整合性、教案的多元性及應用性。 三、投稿者資格：投稿者資格不限，只要對中華文化基本教材教學有興趣者均可參加。 四、收件截止日期：115年12月4日(星期五)。 五、收件方式： (一)掛號郵寄：彰化市光復路62號 『彰化女中中華文化基本教材資源中心收』，並請於信封上註明「參加中華文化基本教材資源中心教學教案設計甄選」。 (二)計畫電子檔及相關檔案請至資源中心網站下載https://ppt.cc/fvF3px。 六、獎勵： (一) 優勝：3名，每位4000元獎金、獎狀一紙。 (二) 佳作：3名，每位2000元獎金、獎狀一紙。 (三) 得獎名額得視評審結果予以調整。 (四) 獲獎者將於日後邀請擔任講師。 七、甄選結果將於115年度12月31日(星期四)前公告，並通知獲獎人",
+   "detail_available": true,
+   "detail_ref": "data/details/cygsh/cygsh-186412.json",
+   "detail_status": "parsed",
+   "detail_revision": "1ee9f3da6bf5766d7ec361c6fc91d501ef7c7dbfadf5dfcc56242580d03528ec",
+   "detail_attempts": 1,
+   "summary": "一、主辦單位：中華文化基本教材資源中心(國立彰化女子高級中學)。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [],
+   "date_tried": true,
+   "category": "競賽",
+   "first_seen": "2026-09-01T11:25:16+08:00"
+  },
   {
    "id": "cygsh-186409",
    "source_id": "cygsh:186409",
@@ -6017,9 +6069,9 @@
    "date_tried": true,
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "detail_available": false,
-   "detail_status": "temporary_error"
+   "detail_status": "permanent_error"
   },
   {
    "id": "cygsh-184373",
@@ -6565,7 +6617,7 @@
    "date_tried": true,
    "category": "獎助學金",
    "first_seen": "2026-08-12T00:00:23+08:00",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
