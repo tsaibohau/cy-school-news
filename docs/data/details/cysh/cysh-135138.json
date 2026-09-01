@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-135138",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Fortinet 旗下 FortiSandbox 存在重大資安漏洞(CVE-2026-39808)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135138,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202604-00000011",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "FortiSandbox是Fortinet旗下一款威脅防護解決方案，可執行動態分析以識別先前未知的網路威脅。Fortinet發布FortiSandbox存在重大資安漏洞(CVE-2026-39808，CVSS：9.8)，此為作業系統指令注入漏洞，可允許未經過身分驗證的攻擊者，透過特製的HTTP請求執行未經授權的程式碼或指令。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] FortiSandbox 4.4.0 至 4.4.8(含)版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至FortiSandbox 4.4.9 (含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10837-5fade-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "78fbc67e4aa7df2e66d2e0ee0378623d10d1210b92475192b45ea7b2b751416a",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T07:20:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Fortinet發布FortiSandbox存在重大資安漏洞(CVE-2026-39808，CVSS：9.8)，此為作業系統指令注入漏洞，可允許未經過身分驗證的攻擊者，透過特製的HTTP請求執行未經授權的程式碼或指令。",
+  "evidence": "Fortinet發布FortiSandbox存在重大資安漏洞(CVE-2026-39808，CVSS：9.8)，此為作業系統指令注入漏洞，可允許未經過身分驗證的攻擊者，透過特製的HTTP請求執行未經授權的程式碼或指令。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
