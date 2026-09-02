@@ -1,7 +1,20 @@
 {
- "generated_at": "2026-09-02T20:03:53+08:00",
- "hot_cutoff": "2025-09-02",
+ "generated_at": "2026-09-03T00:37:00+08:00",
+ "hot_cutoff": "2025-09-03",
  "items": [
+  {
+   "id": "cysh-133521",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "title": "【漏洞預警】Openfind 使用第三方工具存在安全漏洞，可能引發XSS跨腳本攻擊",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133521,r19.php",
+   "date": "2025-09-02",
+   "cat_ref": "19",
+   "source_category": "資安訊息",
+   "category": "一般",
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "snippet": "作者 : Administrator 發佈日期 : 2025-09-02 轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202508-00000018 近日Openfind 電子郵件威脅實驗室於分析存取紀錄時，發現MailGates / MailAudit 系統中使用的第三方工具存在安全漏洞，目前已發現有攻擊者以 XSS 跨站腳本攻擊成功，可能導致用戶資料外洩及檔案系統未授權存取。 Openfind 已更新受影響的第三方模組版本，並釋出安全性修補程式(Security Patch)，建議使用者儘速完成更新。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] MailGates 5.0/6.0、MailAudit 5.0/6.0 [建議措施:] MailGates / MailAudit 標準版至 [線上更新] 頁面更新： v6.0 版本請依序更新 Patch 至 6.1.9.050 v5.0 版本請依序更新 Patch 至 5.2.10.097 [參考資料:] 1. Openfind_OF-ISAC-25-002 https://www.openfind.com.tw/taiwan/download/Openfind_OF-ISAC-25-002.pdf"
+  },
   {
    "id": "cysh-132857",
    "school": "cysh",
