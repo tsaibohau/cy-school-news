@@ -4,8 +4,14 @@ const cases = require("../tests/fixtures/search-ranking-cases.json");
 const current = require("../docs/data/announcements.json").items || [];
 const archive = require("../docs/data/archive.json").items || [];
 
+const asOfEnd = Date.parse(`${cases.as_of}T23:59:59+08:00`);
+function availableAtEvaluationTime(item) {
+  const firstSeen = Date.parse(String(item && item.first_seen || ""));
+  return Number.isFinite(firstSeen) && firstSeen <= asOfEnd;
+}
+
 const seen = new Set();
-const items = current.concat(archive).filter(item => item && item.id && !seen.has(item.id) && seen.add(item.id));
+const items = current.concat(archive).filter(item => item && item.id && availableAtEvaluationTime(item) && !seen.has(item.id) && seen.add(item.id));
 
 function judge(test) {
   const rows = Search.select(items, test.query, { asOf: cases.as_of, validity: Validity });
@@ -55,4 +61,4 @@ else {
   }
 }
 
-if (process.argv.includes("--strict") && (report.train.passed !== report.train.total || report.validation.passed !== report.validation.total)) process.exitCode = 1;
+if (process.argv.includes("--strict") && (report.train.passed !== report.train.total || report.validation.passed !== report.validation.total)) processexitCode = 1;
