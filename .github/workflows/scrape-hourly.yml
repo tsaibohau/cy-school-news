@@ -6,13 +6,19 @@ on:
     paths:
       - "scraper/**"
       - ".github/workflows/scrape-hourly.yml"
-  schedule:
-    # 單行 cron(多行寫法曾發生 GitHub 排程未註冊)。UTC 時間,台灣時間 -8:
-    # 23:10 UTC=台灣 07:10 每日首班(cold 來源距上次 >20 小時,此班自然全抓);
-    # 0-11 UTC=台灣 08:10–19:10 每小時;13:10 UTC=台灣 21:10 收尾。
-    # 取 :10 避開 GitHub 整點壅塞。
-    - cron: '10 23,0-11,13 * * *'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      fetch_all:
+        description: "Fetch cold sources and history too"
+        required: false
+        default: true
+        type: boolean
+  workflow_call:
+    inputs:
+      fetch_all:
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -24,6 +30,9 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    # A stuck source must not keep the shared scrape queue occupied and make
+    # later scheduled runs appear stale to readers.
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
 
@@ -36,9 +45,13 @@ jobs:
 
       - name: 執行爬蟲
         env:
-          # 手動觸發時全抓;排程時 hot 每輪抓、cold 每天只抓一次
-          FETCH_ALL: ${{ github.event_name == 'workflow_dispatch' && '1' || '' }}
+          # Direct manual runs may request a full crawl. The scheduled driver
+          # keeps the established hot/cold behaviour by passing false.
+          FETCH_ALL: ${{ inputs.fetch_all && '1' || '' }}
         run: python scraper/scrape.py
+
+      - name: 更新公開班級課表
+        run: python scraper/timetable.py discover
 
       - name: 推播新公告 (ntfy)
         env:
@@ -76,7 +89,7 @@ jobs:
         run: |
           git config user.name "news-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/data/reminder-targets.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json scraper/notification_outbox.json
+          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/data/class-timetables.json docs/data/reminder-targets.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json scraper/notification_outbox.json
           if [ -d docs/data/details ]; then
             git add docs/data/details
           fi

@@ -11,6 +11,7 @@ const stateSource = fs.readFileSync(path.join(repo, "docs", "notification-state.
 const profileSource = fs.readFileSync(path.join(repo, "docs", "profile.js"), "utf8");
 const relevanceSource = fs.readFileSync(path.join(repo, "docs", "relevance.js"), "utf8");
 const registrySource = fs.readFileSync(path.join(repo, "docs", "school-registry.js"), "utf8");
+const searchQuerySource = fs.readFileSync(path.join(repo, "docs", "search-query.js"), "utf8");
 const appSource = fs.readFileSync(path.join(repo, "docs", "app.js"), "utf8");
 const indexSource = fs.readFileSync(path.join(repo, "docs", "index.html"), "utf8");
 assert.match(indexSource, /<select id="schoolFilter" aria-label="選擇公告學校">/,
@@ -178,6 +179,7 @@ async function createApp({ storage, responses, notification, controller = null, 
   vm.runInContext(profileSource, context);
   vm.runInContext(relevanceSource, context);
   vm.runInContext(registrySource, context);
+  vm.runInContext(searchQuerySource, context);
   vm.runInContext(appSource, context);
   await flush();
   return { context, window, document, app: window.__cyNewsAppTest, queue, fetchRequests };
@@ -438,6 +440,17 @@ async function testPermissionFailureDoesNotPersist() {
     "a failed Notification must not advance the watermark");
 }
 
+async function testTopicFirstSearchExcludesBodyOnlyMatches() {
+  const dorm = Object.assign(item("dorm", "2026-08-20T00:00:00Z", "學生宿舍申請作業"), { summary: "欲申請住宿者請完成登記。" });
+  const admission = Object.assign(item("admission", "2026-08-21T00:00:00Z", "大學申請入學說明"), { summary: "新生住宿與宿舍資訊另行公告。" });
+  const appRun = await createApp({ storage: new MemoryStorage(), responses: [response(dataOf([admission, dorm]))], notification: makeNotification() });
+  appRun.document.elements.q.value = "宿舍申請";
+  appRun.document.elements.q.emit("input");
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  assert.match(appRun.document.elements.list.innerHTML, /學生宿舍申請作業/, "a title-level dormitory match remains visible");
+  assert.doesNotMatch(appRun.document.elements.list.innerHTML, /大學申請入學說明/, "a body-only dormitory mention cannot pollute the result");
+}
+
 async function testSchoolScopedDataLoading() {
   const storage = new MemoryStorage({ "cyNews.school.v1": "cysh" });
   const manifest = {
@@ -447,6 +460,7 @@ async function testSchoolScopedDataLoading() {
     schools: [
       { id: "cysh", short: "嘉中", current: "data/schools/cysh/current.json" },
       { id: "cygsh", short: "嘉女", current: "data/schools/cygsh/current.json" },
+      { id: "pksh", short: "北港高中", current: "data/schools/pksh/current.json" },
     ],
   };
   const shard = {
@@ -462,12 +476,12 @@ async function testSchoolScopedDataLoading() {
   assert.match(run.fetchRequests[0].url, /data\/schools\/manifest\.json/);
   assert.match(run.fetchRequests[1].url, /data\/schools\/cysh\/current\.json/);
   assert.equal(run.app.getState().data.items[0].id, "cysh-only");
-  assert.equal(run.app.getState().data.schools.length, 2, "manifest keeps every supported school selector available");
+  assert.equal(run.app.getState().data.schools.length, 3, "manifest keeps every school selector available");
   assert.equal(run.document.elements.schoolFilter.value, "cysh");
   assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="all">所有學校<\/option>/);
   assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="cysh">嘉中<\/option>/);
   assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="cygsh">嘉女<\/option>/);
-  assert.doesNotMatch(run.document.elements.schoolFilter.innerHTML, /北港高中/);
+  assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="pksh">北港高中<\/option>/);
 
   run.queue.push(response({ items: [] }));
   run.app.ensureArchive();
@@ -480,6 +494,7 @@ async function testSchoolSelectionFallbackAndPersistence() {
   const combined = dataOf([item("cysh-1", "2026-08-20T00:00:00Z", "嘉中公告")]);
   combined.schools = [
     { id: "cysh", short: "嘉中" },
+    { id: "cygsh", short: "嘉女" },
     { id: "cygsh", short: "嘉女" },
   ];
   const run = await createApp({ storage, responses: [response(combined)], notification: makeNotification() });
@@ -669,7 +684,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v41/);
+  assert.match(swSource, /cy-news-v60/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
@@ -688,6 +703,9 @@ function testServiceWorkerContract() {
   assert.match(swSource, /\.\/account-sync\.js/);
   assert.match(swSource, /\.\/task-state\.js/);
   assert.match(swSource, /\.\/today\.js/);
+  assert.match(swSource, /\.\/data\/class-timetables\.json/, "PWA shell includes the public class timetable snapshot");
+  assert.match(swSource, /\.\/announcement-validity-reviewed\.js\?v=52/, "PWA caches reviewed validity records");
+  assert.match(swSource, /\.\/announcement-validity\.js\?v=52/, "PWA caches the validity module with the same shell revision");
   assert.match(swSource, /searchParams\.has\("code"\)/);
   assert.match(swSource, /searchParams\.has\("access_token"\)/);
   assert.match(swSource, /searchParams\.has\("refresh_token"\)/);
@@ -704,6 +722,7 @@ function testServiceWorkerContract() {
   await testRefreshStatusContract();
   await testAuthenticatedStagingRefreshContract();
   await testArchiveDoesNotNotify();
+  await testTopicFirstSearchExcludesBodyOnlyMatches();
   await testSchoolScopedDataLoading();
   await testSchoolSelectionFallbackAndPersistence();
   await testSubscriptionBaselineAndLaterMatch();

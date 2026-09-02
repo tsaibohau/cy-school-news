@@ -45,6 +45,19 @@
     var email = String(user && user.email || "").replace(/[\t\r\n\u0000-\u001f\u007f]+/g, "").trim();
     return email.length <= 254 && /^[^\s@]+@[^\s@]+$/.test(email) ? email : "";
   }
+  function normalizeEmail(value) {
+    var email = String(value == null ? "" : value).replace(/[\t\r\n\u0000-\u001f\u007f]+/g, "").trim().toLowerCase();
+    return email.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : "";
+  }
+  function normalizeUsername(value) {
+    var username = String(value == null ? "" : value).trim().toLowerCase();
+    return /^[a-z][a-z0-9_]{2,31}$/.test(username) ? username : "";
+  }
+  function validPassword(value) {
+    /* This is a usability floor, not the password policy. Supabase Auth remains
+       the authority and must have leaked-password protection enabled before production. */
+    return typeof value === "string" && value.length >= 12 && value.length <= 72;
+  }
   function normalizeAppUrl(value, allowCallbackParameters) {
     if (typeof value !== "string" || !value.trim()) return null;
     try {
@@ -112,6 +125,65 @@
           return c.auth.signInWithOAuth({ provider: "google", options: oauthOptions });
         });
       },
+      signInWithPassword: function (email, password) {
+        email = normalizeEmail(email);
+        if (!email || !validPassword(password)) return Promise.reject(new Error("invalid email or password"));
+        return getClient().then(function (c) {
+          return c.auth.signInWithPassword({ email: email, password: password }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data || {};
+          });
+        });
+      },
+      signInWithUsername: function (username, password) {
+        username = normalizeUsername(username);
+        if (!username || !validPassword(password)) return Promise.reject(new Error("invalid username or password"));
+        return getClient().then(function (c) {
+          return fetch(String(config.supabaseUrl).replace(/\/$/, "") + "/functions/v1/username-auth", {
+            method: "POST",
+            headers: { "apikey": config.supabaseAnonKey, "content-type": "application/json" },
+            body: JSON.stringify({ action: "sign_in", username: username, password: password }),
+          }).then(function (response) {
+            return response.json().catch(function () { return {}; }).then(function (body) {
+              if (!response.ok || !body.access_token || !body.refresh_token) throw new Error("invalid username or password");
+              return c.auth.setSession({ access_token: body.access_token, refresh_token: body.refresh_token });
+            });
+          }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data || {};
+          });
+        });
+      },
+      signUpWithPassword: function (email, password, nickname, username) {
+        email = normalizeEmail(email);
+        nickname = normalizeNickname(nickname);
+        username = normalizeUsername(username);
+        if (!email || !username || !validPassword(password)) return Promise.reject(new Error("invalid email, username, or password"));
+        var redirectTo = approvedRedirect(config, options.location);
+        if (!redirectTo) return Promise.reject(new Error("current app URL is not allow-listed"));
+        return getClient().then(function (c) {
+          var signUpOptions = { emailRedirectTo: redirectTo };
+          signUpOptions.data = { pending_username: username };
+          if (nickname) signUpOptions.data.nickname = nickname;
+          return c.auth.signUp({ email: email, password: password, options: signUpOptions }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data || {};
+          });
+        });
+      },
+      claimUsername: function (username) {
+        username = normalizeUsername(username);
+        if (!username) return Promise.reject(new Error("invalid username"));
+        return getClient().then(function (c) {
+          return c.rpc("claim_account_username", { requested_username: username }).then(function (result) {
+            if (result.error) throw result.error;
+            return c.auth.updateUser({ data: { pending_username: "" } }).then(function (updated) {
+              if (updated.error) throw updated.error;
+              return username;
+            });
+          });
+        });
+      },
       signOut: function () {
         return getClient().then(function (c) { return c.auth.signOut(); });
       },
@@ -138,6 +210,6 @@
     };
   }
   return { CLIENT_VERSION: CLIENT_VERSION, CLIENT_URL: CLIENT_URL, verifiedSession: verifiedSession, verifiedUid: verifiedUid,
-    normalizeNickname: normalizeNickname, displayName: displayName, displayEmail: displayEmail, normalizeAppUrl: normalizeAppUrl,
+    normalizeNickname: normalizeNickname, normalizeEmail: normalizeEmail, normalizeUsername: normalizeUsername, validPassword: validPassword, displayName: displayName, displayEmail: displayEmail, normalizeAppUrl: normalizeAppUrl,
     approvedRedirect: approvedRedirect, createController: createController };
 });

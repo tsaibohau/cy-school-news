@@ -11,10 +11,16 @@
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=41">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=46">
 </head>
 <body>
+
+<div id="appLoading" class="app-loading" role="status" aria-live="polite" aria-label="正在載入嘉校快訊">
+  <span class="app-loading-seal" aria-hidden="true">訊</span>
+  <strong>嘉校快訊</strong>
+  <span>正在整理最新公告</span>
+</div>
 
 <header class="mast">
   <div class="wrap">
@@ -58,7 +64,7 @@
   <!-- 免費、可追溯的校務資料問答；只整理官方公告，不呼叫生成式 AI。 -->
   <section id="viewAssistant" class="assistant-view" hidden aria-labelledby="assistantTitle">
     <div class="section-heading"><div><p class="eyebrow">ASK SCHOOL DATA</p><h2 id="assistantTitle">問校務</h2></div><span class="hint">免費・依官方資料回答</span></div>
-    <p class="assistant-intro">可以問公告、截止日、報名方式、活動地點或規定。答案會附上依據；資料不足時不會猜。</p>
+    <p class="assistant-intro">查詢公告、截止日、報名方式、活動地點或規定；每一則答覆都附上來源。</p>
     <form id="assistantForm" class="assistant-form">
       <label for="assistantQuestion">想問什麼？</label>
       <div class="assistant-input-row"><input id="assistantQuestion" type="search" required maxlength="160" placeholder="例如：學生音樂比賽什麼時候截止？"><button id="assistantAsk" class="btn-primary" type="submit">整理答案</button></div>
@@ -80,6 +86,10 @@
     <section class="today-brief" aria-labelledby="todayBriefTitle">
       <div class="section-heading compact-heading"><div><p class="eyebrow">DAILY BRIEF</p><h3 id="todayBriefTitle">今天先做什麼</h3></div><span id="todayBriefSummary" class="hint"></span></div>
       <div id="todayFocus" class="today-focus"></div>
+    </section>
+    <section id="todayTimetableSection" class="today-section" aria-labelledby="todayTimetableTitle">
+      <div class="section-heading compact-heading"><div><p class="eyebrow">CLASS TIMETABLE</p><h3 id="todayTimetableTitle">今天課表</h3></div></div>
+      <div id="todayTimetable" class="today-list"></div>
     </section>
     <section class="today-section"><h3>今天</h3><div id="todayEvents" class="today-list"></div></section>
     <section class="today-section"><h3>即將到期</h3><div id="todayDeadlines" class="today-list"></div></section>
@@ -141,12 +151,12 @@
       <div class="section-heading"><div><p class="eyebrow">PERSONAL SPACE</p><h2>我的</h2></div></div>
       <section class="my-card account-card" aria-labelledby="accountTitle">
         <div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">人</span><div><h3 id="accountTitle">帳號</h3><p>同步你的學校、偏好與待辦</p></div></div></div>
-        <div id="accountBox" class="account-actions"><div class="account-identity"><span id="accountState" class="hint">未登入</span><span id="accountEmail" class="account-email" hidden></span></div><button id="accountLogin" class="btn-primary">使用 Google 登入</button><button id="accountSwitch" class="btn-ghost" hidden>切換 Google 帳號</button><button id="accountLogout" class="btn-ghost" hidden>登出</button></div>
+        <div id="accountBox" class="account-actions"><div class="account-identity"><span id="accountState" class="hint">未登入</span><span id="accountEmail" class="account-email" hidden></span></div><button id="accountLogin" class="btn-primary">登入或註冊</button><button id="accountSwitch" class="btn-ghost" hidden>切換 Google 帳號</button><button id="accountLogout" class="btn-ghost" hidden>登出</button><button id="accountDeleteCloud" class="btn-ghost danger-button" type="button" hidden>刪除已同步資料</button></div>
       </section>
       <details id="profileBox" class="my-card my-disclosure" aria-labelledby="profileTitle">
         <summary><span class="my-card-icon" aria-hidden="true">設</span><span><strong id="profileTitle">個人設定</strong><small>暱稱、學校、年級與關注內容</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary>
-        <div class="my-card-body"><p id="profileHint" class="hint">登入後設定暱稱、學校與年級，讓介面和公告排序更貼近你。</p><form id="profileForm" class="profile-form">
-          <label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109（選填）"></label><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團（選填）"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金（選填）"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課（選填）"></label><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存我的資料</button><span id="profileStatus" class="hint" aria-live="polite"></span></div><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label>
+        <div class="my-card-body"><p id="profileHint" class="hint">登入後設定暱稱、學校與年級，讓介面和公告排序更貼近你。若要查看班級課表，請填入三位數班級；請勿輸入自己或他人的敏感個資。</p><form id="profileForm" class="profile-form">
+          <label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級（查看課表需要）<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109"></label><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團（選填）"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金（選填）"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課（選填）"></label><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存我的資料</button><span id="profileStatus" class="hint" aria-live="polite"></span></div><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label>
         </form></div>
       </details>
       <section class="my-card" aria-labelledby="subscriptionTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">追</span><div><h3 id="subscriptionTitle">關鍵字追蹤</h3><p>只追蹤你真正關心的消息</p></div></div></div><form id="kwForm" class="kw-form"><input id="kwInput" type="text" maxlength="20" placeholder="例如：物理競賽" aria-label="新增訂閱關鍵字"><button type="submit" class="btn-primary">新增</button></form><div id="kwChips" class="kw-chips"></div><div class="notify-row"><button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button><span id="notifyState" class="hint"></span></div></section>
@@ -157,10 +167,11 @@
   </section>
 
   <footer class="foot">
-    <p>資料來源:<a href="https://www.cysh.cy.edu.tw/" target="_blank" rel="noopener">嘉義高中</a>、<a href="https://www.cygsh.cy.edu.tw/" target="_blank" rel="noopener">嘉義女中</a>、<a href="https://www.pksh.ylc.edu.tw/" target="_blank" rel="noopener">北港高中</a>官方網站,每日自動更新數次。</p>
+    <p>資料來源:<a href="https://www.cysh.cy.edu.tw/" target="_blank" rel="noopener">嘉義高中</a>、<a href="https://www.cygsh.cy.edu.tw/" target="_blank" rel="noopener">嘉義女中</a>、<a href="https://rpage.fjsh.cy.edu.tw/" target="_blank" rel="noopener">輔仁高中</a>官方網站,每日自動更新數次。</p>
     <p><a href="calendar.ics">📅 訂閱行事曆</a>(開學、段考、模擬考等重要日程,可加入 iPhone/Google 行事曆)</p>
     <p>資料涵蓋:開站即載入最近一年公告;更早的歷史公告(回溯至 2024 年)會在搜尋或分類瀏覽時自動載入。</p>
     <p>本站為個人非官方服務,內容以各校官網為準。</p>
+    <p><a href="legal.html">資料、隱私與權利說明</a></p>
   </footer>
 </div>
 
@@ -169,6 +180,20 @@
     <header class="detail-header"><div><p class="eyebrow">OFFICIAL DETAIL</p><h2 id="detailTitle">公告完整內容</h2><p id="detailMeta" class="hint"></p></div><button id="detailClose" class="icon-btn" type="button" aria-label="關閉完整內容">×</button></header>
     <div id="detailBody" class="detail-body" aria-live="polite"></div>
   </div>
+</dialog>
+
+<dialog id="passwordAuthDialog" class="nickname-dialog" aria-labelledby="passwordAuthTitle">
+  <form id="passwordAuthForm" class="nickname-sheet">
+    <p class="eyebrow">ACCOUNT</p><h2 id="passwordAuthTitle">用嘉校快訊帳號登入</h2>
+    <p class="hint">登入只需帳號與密碼。Email 僅在註冊時私下用於驗證與找回密碼；本站不會保存你的密碼。</p>
+    <label>嘉校快訊帳號<input id="passwordAuthUsername" required maxlength="32" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="例如：hau_115"></label>
+    <label>救援 Email（只在註冊時需要）<input id="passwordAuthEmail" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="name@example.com"></label>
+    <label>密碼<input id="passwordAuthPassword" type="password" required minlength="12" maxlength="72" autocomplete="current-password" placeholder="至少 12 個字元"></label>
+    <label>顯示名稱（註冊時選填）<input id="passwordAuthNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
+    <div class="profile-actions"><button id="passwordSignIn" class="btn-primary" type="submit">登入</button><button id="passwordSignUp" class="btn-ghost" type="button">註冊</button><button id="passwordAuthCancel" class="btn-ghost" type="button">取消</button></div>
+    <button id="passwordGoogleLogin" class="btn-ghost" type="button">改用 Google 登入</button>
+    <p id="passwordAuthStatus" class="hint" role="status" aria-live="polite"></p>
+  </form>
 </dialog>
 
 <dialog id="nicknameDialog" class="nickname-dialog" aria-labelledby="nicknameTitle">
@@ -208,21 +233,25 @@
 </div>
 
 <script src="account-config.js?v=41"></script>
-<script src="supabase-sync.js?v=41"></script>
-<script src="account-auth.js?v=41"></script>
+<script src="supabase-sync.js?v=54"></script>
+<script src="account-auth.js?v=43"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
-<script src="account-sync.js?v=41"></script>
+<script src="account-sync.js?v=54"></script>
 <script src="school-registry.js?v=41"></script>
 <script src="profile.js?v=41"></script>
 <script src="relevance.js?v=41"></script>
 <script src="assistant-feedback.js?v=41"></script>
 <script src="today.js?v=41"></script>
-<script src="assistant-qa.js?v=41"></script>
+<script src="search-taxonomy.js?v=52"></script>
+<script src="search-query.js?v=52"></script>
+<script src="announcement-validity-reviewed.js?v=52"></script>
+<script src="announcement-validity.js?v=52"></script>
+<script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=41"></script>
+<script src="app.js?v=59"></script>
 </body>
 </html>
 

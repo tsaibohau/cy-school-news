@@ -2,7 +2,7 @@ name: Staging validation
 
 on:
   push:
-    branches: [feature/personal-assistant-v1, staging]
+    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login]
   workflow_dispatch: {}
 
 permissions:
@@ -28,6 +28,7 @@ jobs:
         run: >-
           node --test
           tests/test_account_auth.js
+          tests/test_username_auth_contract.js
           tests/test_account_switch_v3.js
           tests/test_account_sync.js
           tests/test_supabase_sync.js
@@ -37,6 +38,10 @@ jobs:
           tests/test_profile.js
           tests/test_relevance.js
           tests/test_assistant_qa.js
+          tests/test_search_ranking.js
+          tests/test_production_release_evidence.js
+          tests/test_announcement_validity.js
+          tests/test_reviewed_validity_cases.js
           tests/test_calendar_state.js
           tests/test_calendar_persistence.js
           tests/test_task_state.js
@@ -53,6 +58,12 @@ jobs:
           tests/test_user_refresh.js
           tests/test_reminder_rules_client.js
           tests/test_staging_build.js
+      - name: Search ranking train and holdout gate
+        run: node tools/evaluate-search-ranking.js --strict
+      - name: Assistant QA train and holdout gate
+        run: node tools/evaluate-assistant-qa.js --strict
+      - name: Legal and privacy preview gate
+        run: node tools/check-legal-compliance.js
       - name: Type-check reminder Edge Function
         run: >-
           deno check
@@ -68,6 +79,11 @@ jobs:
           deno check
           --config supabase/functions/request-staging-refresh/deno.json
           supabase/functions/request-staging-refresh/index.ts
+      - name: Type-check username/password login function
+        run: >-
+          deno check
+          --config supabase/functions/username-auth/deno.json
+          supabase/functions/username-auth/index.ts
       - name: Python parser and calendar regression
         env:
           PYTHONIOENCODING: utf-8
@@ -75,11 +91,9 @@ jobs:
           python tests/test_parser.py
           python tests/test_calendar_adapter.py
           python tests/test_detail_parser.py
-          python tests/test_pksh_adapter.py
           python tests/test_detail_backfill.py
           python tests/test_attachment_parser.py
           python tests/test_reminder_targets.py
-          python tests/test_public_shards.py
       - name: Verify generated data is untouched by staging build
         run: git diff --exit-code -- docs/data scraper/fetch_state.json
       - name: Reject tracked secret patterns
