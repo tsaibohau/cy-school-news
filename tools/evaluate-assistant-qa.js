@@ -4,16 +4,11 @@ const QA = require("../docs/assistant-qa.js");
 const cases = require("../tests/fixtures/assistant-qa-cases.json");
 const current = require("../tests/fixtures/benchmark-2026-08-30-current.json").items || [];
 const archive = require("../tests/fixtures/benchmark-2026-08-30-archive.json").items || [];
+const snapshotDetails = require("../tests/fixtures/benchmark-2026-08-30-assistant-details.json");
 
 const seen = new Set();
 const items = current.concat(archive).filter(item => item && item.id && !seen.has(item.id) && seen.add(item.id));
-const details = {};
-for (const item of items) {
-  if (!item.detail_ref) continue;
-  const filename = path.join(__dirname, "..", "docs", item.detail_ref);
-  if (!fs.existsSync(filename)) continue;
-  try { details[item.id] = JSON.parse(fs.readFileSync(filename, "utf8")); } catch (_) {}
-}
+const details = snapshotDetails;
 
 function outputText(answer) {
   return [answer.summary, ...(answer.answer_lines || []), answer.limitation].filter(Boolean).join(" ");
