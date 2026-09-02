@@ -371,6 +371,25 @@ body { background: var(--paper); }
 .assistant-examples { display: flex; gap: 7px; flex-wrap: wrap; margin: 10px 0; }
 .assistant-examples button { border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px; background: var(--chip-bg); color: var(--ink); cursor: pointer; }
 .assistant-result, .assistant-empty { margin-top: 14px; padding: 16px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; }
+.timetable-note { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 9px; color: var(--muted); font-size: 12.5px; }
+.timetable-note strong { color: var(--ink); font-family: var(--serif); font-size: 14px; }
+.timetable-note a { color: var(--cysh); font-weight: 800; white-space: nowrap; }
+.timetable-today { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--card); }
+.timetable-today .empty { margin: 0; padding: 16px; }
+.timetable-row { display: grid; grid-template-columns: 92px 1fr; gap: 11px; align-items: center; min-height: 52px; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+.timetable-row:last-child { border-bottom: 0; }
+.timetable-period { display: grid; gap: 1px; color: var(--muted); font-size: 12px; font-weight: 800; }
+.timetable-period small, .timetable-grid-period small { color: var(--muted); font-size: 10px; font-weight: 500; }
+.timetable-week { margin-top: 10px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); overflow: hidden; }
+.timetable-week > summary { padding: 11px 12px; color: var(--cysh); font-size: 13px; font-weight: 800; cursor: pointer; }
+.timetable-grid-wrap { overflow-x: auto; border-top: 1px solid var(--line); }
+.timetable-grid { min-width: 570px; }
+.timetable-grid-head, .timetable-grid-row { display: grid; grid-template-columns: 58px repeat(5, minmax(96px, 1fr)); }
+.timetable-grid-head > div { padding: 8px 6px; color: var(--muted); background: var(--paper); border-right: 1px solid var(--line); font-size: 12px; font-weight: 800; text-align: center; }
+.timetable-grid-row > div { min-height: 48px; padding: 7px 6px; border-top: 1px solid var(--line); border-right: 1px solid var(--line); font-size: 12px; line-height: 1.4; }
+.timetable-grid-row > div:last-child, .timetable-grid-head > div:last-child { border-right: 0; }
+.timetable-grid-period { display: grid; place-content: center; text-align: center; color: var(--muted); font-weight: 800; }
+.timetable-grid-cell { display: grid; place-items: center; text-align: center; }
 .assistant-result h3, .assistant-result h4, .assistant-empty h3 { margin: 0 0 8px; font-family: var(--serif); }
 .assistant-lead { margin: 0 0 14px; line-height: 1.75; }
 .assistant-details { margin-top: 11px; padding-top: 11px; border-top: 1px solid var(--line); }
@@ -411,6 +430,7 @@ body { background: var(--paper); }
   .today-focus-item .today-item-main { width: calc(100% - 38px); }
   .today-focus-actions { width: 100%; padding-left: 35px; justify-content: flex-start; }
   .tabbar .tab { padding-left: 7px; padding-right: 7px; }
+  .timetable-note { display: grid; gap: 3px; }
 }
 
 /* 單一功能入口：以一顆按鈕展開主要功能，避免手機底部塞滿分頁。 */

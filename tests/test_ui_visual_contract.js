@@ -18,11 +18,11 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=45/);
+assert.match(index, /style\.css\?v=46/);
 assert.match(index, /search-taxonomy\.js\?v=52/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=52/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=53/, "reviewed validity loads before answers");
-assert.match(index, /app\.js\?v=58/);
+assert.match(index, /app\.js\?v=59/);
 assert.match(index, /id="appLoading"[^>]*role="status"/, "initial data loading is announced accessibly");
 assert.match(style, /\.app-loading/, "initial data loading has a dedicated view");
 assert.doesNotMatch(style, /--calligraphy:/, "the interface does not mix a second display font into reading UI");
@@ -49,5 +49,10 @@ assert.match(index, /id="assistantScope"/, "school assistant exposes an explicit
 assert.match(app, /mentionedSchool\(question\)/, "a school named in the question overrides the default scope");
 assert.match(app, /applyPreferredSchool\(state\.profile\.school_id/, "the account school becomes the default data shard");
 assert.match(style, /\.function-dock/, "single-button function menu has a dedicated responsive layout");
+assert.match(index, /id="todayTimetable"/, "today view includes a class timetable region");
+assert.match(index, /我的班級（查看課表需要）/, "profile explains when a class is needed");
+assert.match(app, /data\/class-timetables\.json/, "today view loads the generated public timetable data");
+assert.match(app, /officialTimetableUrl/, "timetable source links are constrained to the official school origin");
+assert.match(style, /\.timetable-week/, "weekly timetable has a dedicated responsive layout");
 
 console.log("Editorial UI and honest refresh status contract tests passed");

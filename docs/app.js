@@ -62,6 +62,7 @@
       eventEditingId: null,
       officialEvents: [],
       calendarStatus: "partial",
+      timetables: [],
       userEvents: loadUserEvents(),
       reads: loadReads(),
       shown: PAGE_SIZE,
@@ -123,6 +124,7 @@
       taskStatus: $("taskStatus"), taskOpenList: $("taskOpenList"), taskDoneList: $("taskDoneList"),
       taskComposerToggle: $("taskComposerToggle"), taskOpenCount: $("taskOpenCount"), taskDoneCount: $("taskDoneCount"),
       todayCoverage: $("todayCoverage"), todayBriefSummary: $("todayBriefSummary"), todayFocus: $("todayFocus"),
+      todayTimetable: $("todayTimetable"),
       todayEvents: $("todayEvents"), todayDeadlines: $("todayDeadlines"),
       todayTasks: $("todayTasks"), todayRelevant: $("todayRelevant"), todayEmpty: $("todayEmpty"),
       detailDialog: $("detailDialog"), detailTitle: $("detailTitle"), detailMeta: $("detailMeta"),
@@ -1070,6 +1072,74 @@
         renderToday();
       }).catch(function () { state.calendarStatus = "partial"; renderToday(); });
     }
+    function loadTimetables() {
+      return fetch("data/class-timetables.json?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
+        return response.ok ? response.json() : { timetables: [] };
+      }).then(function (data) {
+        state.timetables = Array.isArray(data && data.timetables) ? data.timetables : [];
+        renderToday();
+      }).catch(function () {
+        state.timetables = [];
+        renderToday();
+      });
+    }
+    function officialTimetableUrl(value) {
+      try {
+        var url = new URL(String(value || ""), window.location.href);
+        return url.protocol === "https:" && url.hostname === "www.cysh.cy.edu.tw" ? url.href : "";
+      } catch (_) { return ""; }
+    }
+    function timetableForProfile() {
+      var profile = state.profile || {};
+      var className = String(profile.class_name || "").trim();
+      if (profile.school_id !== "cysh" || !/^\d{3}$/.test(className)) return null;
+      var candidates = (state.timetables || []).filter(function (row) {
+        return row && row.school_id === "cysh" && Array.isArray(row.classes);
+      }).sort(function (left, right) {
+        var leftTerm = Number(left.academic_year || 0) * 2 + Number(left.semester || 0);
+        var rightTerm = Number(right.academic_year || 0) * 2 + Number(right.semester || 0);
+        if (leftTerm !== rightTerm) return rightTerm - leftTerm;
+        return (right.version === "formal" ? 1 : 0) - (left.version === "formal" ? 1 : 0);
+      });
+      for (var index = 0; index < candidates.length; index += 1) {
+        var classRow = candidates[index].classes.find(function (row) { return String(row && row.class_name || "") === className; });
+        if (classRow && Array.isArray(classRow.slots)) return { timetable: candidates[index], classRow: classRow };
+      }
+      return null;
+    }
+    function taipeiWeekday() {
+      return new Intl.DateTimeFormat("zh-TW", { weekday: "long", timeZone: "Asia/Taipei" }).format(new Date()).replace("週", "星期");
+    }
+    function timetableHTML() {
+      var profile = state.profile || {};
+      var className = String(profile.class_name || "").trim();
+      if (!profile.school_id) return '<p class="empty">先登入並在「我的」選擇學校與班級，才能顯示課表。</p>';
+      if (profile.school_id !== "cysh") return '<p class="empty">目前只讀取嘉義高中已公開的班級課表。</p>';
+      if (!/^\d{3}$/.test(className)) return '<p class="empty">請先到「我的」填入三位數班級，例如 109。</p>';
+      var found = timetableForProfile();
+      if (!found) return '<p class="empty">校方目前沒有這個班級可讀取的公開課表。</p>';
+      var row = found.timetable;
+      var version = row.version === "formal" ? "正式版" : "試行版";
+      var weekday = taipeiWeekday();
+      var todaySlots = found.classRow.slots.filter(function (slot) { return slot.weekday === weekday; });
+      var sourceUrl = officialTimetableUrl(row.source_url);
+      var source = sourceUrl ? '<a href="' + esc(sourceUrl) + '" target="_blank" rel="noopener noreferrer">查看校方課表公告 ↗</a>' : '校方公告來源';
+      var todayRows = todaySlots.length ? todaySlots.map(function (slot) {
+        return '<div class="timetable-row"><span class="timetable-period">第 ' + esc(slot.period) + ' 節<small>' + esc(slot.start) + '–' + esc(slot.end) + '</small></span><strong>' + esc(slot.subject || "—") + '</strong></div>';
+      }).join("") : '<p class="empty">今天沒有排定上課時段。</p>';
+      var weekdays = ["星期一", "星期二", "星期三", "星期四", "星期五"];
+      var grid = [1, 2, 3, 4, 5, 6, 7, 8].map(function (period) {
+        var cells = weekdays.map(function (day) {
+          var slot = found.classRow.slots.find(function (item) { return item.weekday === day && Number(item.period) === period; });
+          return '<div class="timetable-grid-cell">' + esc(slot && slot.subject || "—") + '</div>';
+        }).join("");
+        var first = found.classRow.slots.find(function (item) { return Number(item.period) === period; });
+        return '<div class="timetable-grid-row"><div class="timetable-grid-period">' + period + '<small>' + esc(first && first.start || "") + '</small></div>' + cells + '</div>';
+      }).join("");
+      return '<div class="timetable-note"><strong>' + esc(found.classRow.class_name) + ' 班 · ' + esc(row.academic_year) + ' 學年度第 ' + esc(row.semester) + ' 學期 · ' + version + '</strong><span>' + source + '</span></div>' +
+        '<div class="timetable-today">' + todayRows + '</div>' +
+        '<details class="timetable-week"><summary>查看整週課表</summary><div class="timetable-grid-wrap"><div class="timetable-grid timetable-grid-head"><div>節次</div>' + weekdays.map(function (day) { return '<div>' + esc(day.replace("星期", "週")) + '</div>'; }).join("") + '</div><div class="timetable-grid">' + grid + '</div></div></details>';
+    }
     function cardHTML(it) {
       var schoolClass = it.school === "cysh" ? "tag-cysh" : (it.school === "fjsh" ? "tag-fjsh" : "tag-cygsh");
       var catClass = it.category === "榮譽榜" ? " cat-honor" : "";
@@ -1240,12 +1310,13 @@
           (sourceId ? '<button type="button" class="btn-ghost" data-detail-id="' + esc(sourceId) + '">查看依據</button><button type="button" class="btn-ghost" data-add-task="' + esc(sourceId) + '">加入待辦</button><button type="button" class="btn-ghost" data-focus-dismiss="' + esc(sourceId) + '">略過</button>' : '');
         return '<article class="today-focus-item"><span class="today-focus-rank" aria-hidden="true">' + (index + 1) + '</span><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(row.reason) + (row.date ? ' · ' + esc(row.date) : '') + '</div></div><div class="today-focus-actions">' + actions + '</div></article>';
       }).join("") : '<p class="empty">目前沒有足夠證據排出優先事項。</p>';
+      if (el.todayTimetable) el.todayTimetable.innerHTML = timetableHTML();
       el.todayEvents.innerHTML = projection.todayEvents.length ? projection.todayEvents.map(eventRow).join("") : '<p class="empty">今天沒有已知正式行程。</p>';
       var upcoming = projection.upcoming.concat(projection.deadlines).concat(projection.upcomingReminders);
       el.todayDeadlines.innerHTML = upcoming.length ? upcoming.map(deadlineRow).join("") : '<p class="empty">接下來 7 天沒有已知截止事項。</p>';
       el.todayTasks.innerHTML = projection.openTasks.length ? projection.openTasks.slice(0, 8).map(function (task) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(task.title) + '</div><div class="today-item-meta">' + esc(taskDateLabel(task.due_date)) + '</div></div></div>'; }).join("") : '<p class="empty">還沒有待辦。</p>';
       el.todayRelevant.innerHTML = projection.relevantAnnouncements.length ? projection.relevantAnnouncements.map(function (item) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(displayTitle(item)) + '</div><div class="today-item-meta">' + esc(item.school_name || "公告") + '</div></div></div>'; }).join("") : '<p class="empty">設定我的資料後，這裡會顯示相關公告。</p>';
-      var hasUseful = projection.todayEvents.length || upcoming.length || projection.openTasks.length || projection.relevantAnnouncements.length;
+      var hasUseful = projection.todayEvents.length || upcoming.length || projection.openTasks.length || projection.relevantAnnouncements.length || !!timetableForProfile();
       el.todayEmpty.hidden = !!hasUseful;
     }
     function renderKwChips() {
@@ -1738,7 +1809,7 @@
       if (el.tabAssistant) el.tabAssistant.setAttribute("aria-current", assistant ? "page" : "false");
       if (el.tabCalendar) el.tabCalendar.setAttribute("aria-current", tab === "calendar" ? "page" : "false");
       el.tabSub.setAttribute("aria-current", tab === "sub" ? "page" : "false");
-      if (today) { loadOfficialEvents(); loadCalendarStatus(); renderToday(); }
+      if (today) { loadOfficialEvents(); loadCalendarStatus(); loadTimetables(); renderToday(); }
       if (tab === "calendar" && el.viewCalendar) { loadOfficialEvents(); renderCalendar(); }
       if (tab === "sub") {
         renderSub();
@@ -1909,7 +1980,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=59").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=60").catch(function () {});
       });
     }
 
