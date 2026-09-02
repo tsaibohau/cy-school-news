@@ -1,0 +1,57 @@
+{
+ "announcement_id": "cysh-134584",
+ "school_id": "cysh",
+ "title": "【漏洞預警】WordPress擴充程式與網頁主題存在10個高風險安全漏洞，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134584,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202512-00000155",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現WordPress擴充程式與網頁主題存在PHP本機檔案包含(PHP Local File Inclusion)漏洞(CVE-2025-67522、CVE-2025-67523、CVE-2025-67524、CVE-2025-67525、CVE-2025-67526、CVE-2025-67527、CVE-2025-67529、CVE-2025-67530、CVE-2025-67531及CVE-2025-67532)。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "未經身分鑑別之遠端攻擊者可利用此漏洞，誘使伺服器端PHP程式載入本機非預期檔案，並於伺服器端執行任意程式碼，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] 【擴充程式】Jobmonster Elementor Addon 1.1.4(含)以前版本 【網頁主題】更新至Jobmonster 4.8.3(含)以後版本 【網頁主題】更新至Exhibz 3.0.10(含)以後版本 【網頁主題】更新至ekommart 4.3.1(含)以後版本 【網頁主題】更新至Digiqole 2.2.7(含)以後版本 【網頁主題】更新至Sailing 4.4.6(含)以後版本 【網頁主題】更新至Fashion 5.3.0(含)以後版本 【網頁主題】更新至Besa 2.3.16(含)以後版本 【網頁主題】更新至Turitor 1.5.3(含)以後版本 【網頁主題】更新至Hara 1.2.18(含)以後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 【擴充程式】 更新至Jobmonster Elementor Addon 1.1.5(含)以後版本 【網頁主題】 更新至Jobmonster 4.8.3(含)以後版本 【網頁主題】 更新至Exhibz 3.0.10(含)以後版本 【網頁主題】 更新至ekommart 4.3.1(含)以後版本 【網頁主題】 更新至Sailing 4.4.6(含)以後版本 【網頁主題】 更新至Digiqole 2.2.7(含)以後版本 【網頁主題】 更新至Fashion 5.3.0(含)以後版本 【網頁主題】 更新至Besa 2.3.16(含)以後版本 【網頁主題】 更新至Turitor 1.5.3(含)以後版本 【網頁主題】 更新至Hara 1.2.18(含)以後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.cve.org/CVERecord?id=CVE-2025-67522 2. https://www.cve.org/CVERecord?id=CVE-2025-67523 3. https://www.cve.org/CVERecord?id=CVE-2025-67524 4. https://www.cve.org/CVERecord?id=CVE-2025-67525 5. https://www.cve.org/CVERecord?id=CVE-2025-67526 6. https://www.cve.org/CVERecord?id=CVE-2025-67527 7. https://www.cve.org/CVERecord?id=CVE-2025-67529 8. https://www.cve.org/CVERecord?id=CVE-2025-67530 9. https://www.cve.org/CVERecord?id=CVE-2025-67531 10. https://www.cve.org/CVERecord?id=CVE-2025-67532",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "2505e7e3a9ac1f8e01e5f987d85bab94052380d8c63976cf76ce2417ead19812",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "未經身分鑑別之遠端攻擊者可利用此漏洞，誘使伺服器端PHP程式載入本機非預期檔案，並於伺服器端執行任意程式碼，請儘速確認並進行修補。",
+  "evidence": "未經身分鑑別之遠端攻擊者可利用此漏洞，誘使伺服器端PHP程式載入本機非預期檔案，並於伺服器端執行任意程式碼，請儘速確認並進行修補。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
