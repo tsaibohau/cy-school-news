@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-134591",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Zoom Node 多媒體路由器存在重大資安漏洞(CVE-2026-22844)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134591,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202601-00000018",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Zoom Node Multimedia Routers (MMRs) 是由Zoom所提供的混合雲端解決方案核心模組，主要用於處理會議媒體流量、提升頻寬效率和降低延遲等需求。近日Zoom發布重大資安公告(CVE-2026-22844，CVSS：9.9)，此為命令注入漏洞，會議參與者可能透過網路存取對MMRs執行遠端程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Zoom Node Meetings Hybrid (ZMH) MMR module 5.2.1716.0(不含)以前版本 Zoom Node Meeting Connector (MC) MMR module 5.2.1716.0(不含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 根據官方網站釋出的解決方式進行修補: https://www.twcert.org.tw/tw/cp-169-10648-b83d7-1.html",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1 https://www.twcert.org.tw/tw/cp-169-10648-b83d7-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "b8d3b9296f15f85a550700783bfd3d9aad0176015aa31565569537f6a3908a44",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "近日Zoom發布重大資安公告(CVE-2026-22844，CVSS：9.9)，此為命令注入漏洞，會議參與者可能透過網路存取對MMRs執行遠端程式碼。",
+  "evidence": "近日Zoom發布重大資安公告(CVE-2026-22844，CVSS：9.9)，此為命令注入漏洞，會議參與者可能透過網路存取對MMRs執行遠端程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

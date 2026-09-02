@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-135129",
+ "school_id": "cysh",
+ "title": "【漏洞預警】QNAP作業系統存在高風險安全漏洞(CVE-2025-66277)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135129,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202603-00000014",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現QNAP作業系統存在連結追蹤(Link Following)漏洞(CVE-2025-66277)，未經身分鑑別之遠端攻擊者可利用此漏洞存取未授權之檔案系統路徑，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] QTS 5.2.x至5.2.8.3350 build 20251216(不含)版本 QuTS hero h5.2.x至h5.2.8.3350 build 20251216(不含)版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下： https://www.qnap.com/en/security-advisory/qsa-26-05",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-66277",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "96d33a79680c70397325d0aa72dafac67b5f099de0a429e7a3e08eb433f1d9c3",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現QNAP作業系統存在連結追蹤(Link Following)漏洞(CVE-2025-66277)，未經身分鑑別之遠端攻擊者可利用此漏洞存取未授權之檔案系統路徑，請儘速確認並進行修補。",
+  "evidence": "研究人員發現QNAP作業系統存在連結追蹤(Link Following)漏洞(CVE-2025-66277)，未經身分鑑別之遠端攻擊者可利用此漏洞存取未授權之檔案系統路徑，請儘速確認並進行修補。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

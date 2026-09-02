@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-134593",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Fortinet 的 FortiCloud SSO 存在重大資安漏洞(CVE-2026-24858)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134593,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202601-00000025",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Fortinet 針對 FortiCloud SSO發布重大資安漏洞公告(CVE-2026-24858，CVSS：9.8)，此為身分驗證繞過漏洞，允許擁有FortiCloud帳號和已註冊設備的攻擊者，登入註冊到其他帳號的其他設備。 備註：目前Fortinet已觀察到有攻擊者利用此漏洞，建議儘速採取暫時緩解措施，以防止針對此漏洞可能的攻擊發生。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] FortiAnalyzer 7.6.0至7.6.5版本 FortiAnalyzer 7.4.0至7.4.9版本 FortiAnalyzer 7.2.0至7.2.11版本 FortiAnalyzer 7.0.0至7.0.15版本 FortiManager 7.6.0至7.6.5版本 FortiManager 7.4.0至7.4.9版本 FortiManager 7.2.0至7.2.11版本 FortiManager 7.0.0至7.0.15版本 FortiOS 7.6.0至7.6.5版本 FortiOS 7.4.0至7.4.10版本 FortiOS 7.2.0至7.2.12版本 FortiOS 7.0.0至7.0.18版本 FortiProxy 7.6.0至7.6.4版本 FortiProxy 7.4.0至7.4.12版本 FortiProxy 7.2所有版本 FortiProxy 7.0所有版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至以下版本： FortiAnalyzer 7.6.6(含)之後版本 FortiAnalyzer 7.4.10(含)之後版本 FortiAnalyzer 7.2.12(含)之後版本 FortiAnalyzer 7.0.16(含)之後版本 FortiManager 7.6.6(含)之後版本 FortiManager 7.4.10(含)之後版本 FortiManager 7.2.13(含)之後版本 FortiManager 7.0.16(含)之後版本 FortiOS 7.6.6(含)之後版本 FortiOS 7.4.11(含)之後版本 FortiOS 7.2.13(含)之後版本 FortiOS 7.0.19(含)之後版本 FortiProxy 7.6.6(含)之後版本 FortiProxy 7.4.13(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "備註：FortiProxy 7.2 和 FortiProxy 7.0 請遷移至固定版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10678-e5cd4-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "bad0774506316fd5078844a7c9bc098c382abdfd3318ed217c0bb5f6ea08025b",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Fortinet 針對 FortiCloud SSO發布重大資安漏洞公告(CVE-2026-24858，CVSS：9.8)，此為身分驗證繞過漏洞，允許擁有FortiCloud帳號和已註冊設備的攻擊者，登入註冊到其他帳號的其他設備。",
+  "evidence": "Fortinet 針對 FortiCloud SSO發布重大資安漏洞公告(CVE-2026-24858，CVSS：9.8)，此為身分驗證繞過漏洞，允許擁有FortiCloud帳號和已註冊設備的攻擊者，登入註冊到其他帳號的其他設備。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

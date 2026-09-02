@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-134590",
+ "school_id": "cysh",
+ "title": "【漏洞預警】MOXA存在高風險安全漏洞(CVE-2023-38408)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134590,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202601-00000253",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "MOXA近期已發布安全性更新，修補交換器設備中OpenSSH不帶引號搜尋路徑(Unquoted Search Path)之漏洞(CVE-2023-38408)，該漏洞允許未經身分鑑別之遠端攻擊者透過SSH金鑰轉發機制於遠端執行任意程式碼，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] EDS-G4000系列韌體v4.1(含)以前版本 RKS-G4000系列韌體v5.0(含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下： https://wwwmoxa.com/en/support/product-support/security-advisory/mpsa-256261-cve-2023-38408-openssh-vulnerability-in-ethernet-switches",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2023-38408 2. https://www.moxa.com/en/support/product-support/security-advisory/mpsa-256261-cve-2023-38408-openssh-vulnerability-in-ethernet-switches",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "521647ecb97f8a7b99180b8633929df979b251e66a52dde93f14317bd5b12b3d",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "MOXA近期已發布安全性更新，修補交換器設備中OpenSSH不帶引號搜尋路徑(Unquoted Search Path)之漏洞(CVE-2023-38408)，該漏洞允許未經身分鑑別之遠端攻擊者透過SSH金鑰轉發機制於遠端執行任意程式碼，請儘速確認並進行修補。",
+  "evidence": "MOXA近期已發布安全性更新，修補交換器設備中OpenSSH不帶引號搜尋路徑(Unquoted Search Path)之漏洞(CVE-2023-38408)，該漏洞允許未經身分鑑別之遠端攻擊者透過SSH金鑰轉發機制於遠端執行任意程式碼，請儘速確認並進行修補。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
