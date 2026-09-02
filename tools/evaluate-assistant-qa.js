@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const QA = require("../docs/assistant-qa.js");
+const QA = require("../tests/fixtures/benchmark-2026-08-30-assistant-qa.js");
 const cases = require("../tests/fixtures/assistant-qa-cases.json");
 const current = require("../tests/fixtures/benchmark-2026-08-30-current.json").items || [];
 const archive = require("../tests/fixtures/benchmark-2026-08-30-archive.json").items || [];
