@@ -1,0 +1,57 @@
+{
+ "announcement_id": "cysh-133525",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Cisco 旗下防火牆系統存在二個重大資安漏洞(CVE-2025-20333和CVE-2025-20363)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133525,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202509-00000015",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-20333】 Cisco安全防火牆自適應安全設備(ASA)和Cisco安全防火牆威脅防禦(FTD)的VPN Web伺服器中存在重大資安漏洞(CVE-2025-20333，CVSS：9.9)。此漏洞源自伺服器對使用者輸入HTTP(S)請求驗證不當，持有有效VPN使用者憑證的攻擊者，可藉由精心設計的HTTP請求，允許經身分驗證的遠端攻擊者以root身分在受影響設備執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-20363】 Cisco安全防火牆自適應安全設備(ASA)、Cisco安全防火牆威脅防禦(FTD)軟體、Cisco IOS軟體、Cisco IOS XE軟體和Cisco IOS XR軟體的Web服務存在重大資安漏洞(CVE-2025-20363，CVSS：9.0)。此漏洞源於HTTP請求對使用者輸入驗證不當，攻擊者可向受影響設備的Web服務發送精心設計的HTTP請求，以root身分執行任意程式碼，從而導致受影響裝置中斷服務。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] 1.建議至官方網站查詢版本以確定是否受此漏洞影響。https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-webvpn-z5xP8EUB",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "2.建議至官方網站查詢版本以確定是否受此漏洞影響。https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-http-code-exec-WmfP3h3O",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 根據官方網站釋出解決方式進行修補：https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-asaftd-webvpn-z5xP8EUB [參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10411-12ff4-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "6bd018b837e9ed1cf19667aaaf37e44078fde01df807ae2e1651cc0c44814c4c",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T19:24:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【CVE-2025-20333】 Cisco安全防火牆自適應安全設備(ASA)和Cisco安全防火牆威脅防禦(FTD)的VPN Web伺服器中存在重大資安漏洞(CVE-2025-20333，CVSS：9.9)。",
+  "evidence": "【CVE-2025-20333】 Cisco安全防火牆自適應安全設備(ASA)和Cisco安全防火牆威脅防禦(FTD)的VPN Web伺服器中存在重大資安漏洞(CVE-2025-20333，CVSS：9.9)。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
