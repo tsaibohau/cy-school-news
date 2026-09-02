@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-02T21:25:47+08:00",
- "hot_cutoff": "2025-09-02",
+ "generated_at": "2026-09-03T07:21:39+08:00",
+ "hot_cutoff": "2025-09-03",
  "school": {
   "id": "cysh",
   "name": "國立嘉義高級中學",
@@ -9,6 +9,29 @@
   "base": "https://www.cysh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cysh-133521",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "title": "【漏洞預警】Openfind 使用第三方工具存在安全漏洞，可能引發XSS跨腳本攻擊",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133521,r19.php",
+   "date": "2025-09-02",
+   "cat_ref": "19",
+   "source_category": "資安訊息",
+   "category": "一般",
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "snippet": "作者 : Administrator 發佈日期 : 2025-09-02 轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202508-00000018 近日Openfind 電子郵件威脅實驗室於分析存取紀錄時，發現MailGates / MailAudit 系統中使用的第三方工具存在安全漏洞，目前已發現有攻擊者以 XSS 跨站腳本攻擊成功，可能導致用戶資料外洩及檔案系統未授權存取。 Openfind 已更新受影響的第三方模組版本，並釋出安全性修補程式(Security Patch)，建議使用者儘速完成更新。 情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] MailGates 5.0/6.0、MailAudit 5.0/6.0 [建議措施:] MailGates / MailAudit 標準版至 [線上更新] 頁面更新： v6.0 版本請依序更新 Patch 至 6.1.9.050 v5.0 版本請依序更新 Patch 至 5.2.10.097 [參考資料:] 1. Openfind_OF-ISAC-25-002 https://www.openfind.com.tw/taiwan/download/Openfind_OF-ISAC-25-002.pdf",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-133521.json",
+   "detail_status": "parsed",
+   "detail_revision": "4ef99a976cae66800d9de05c01e38428f8e0ead48b2e04590caf38ba09f15d9f",
+   "detail_attempts": 1,
+   "summary": "近日Openfind 電子郵件威脅實驗室於分析存取紀錄時，發現MailGates / MailAudit 系統中使用的第三方工具存在安全漏洞，目前已發現有攻擊者以 XSS 跨站腳本攻擊成功，可能導致用戶資料外洩及檔案系統未授權存取。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
+  },
   {
    "id": "cysh-132857",
    "school": "cysh",
@@ -44,7 +67,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "snippet": "作者 : 主計室 發佈日期 : 2025-09-01 最後更新日期 : 2025-09-01 一、依據會計法第八十二條「各機關會計月報應由會計人員按月向該機關公告之。」之規定辦理。 二、 11 4 年 8 月 份會計月報公告於網路請購系統之「 報表查詢 」 及學校網頁「行政單位-主計室-會計報 表查詢 ( 限校外 ) 」內，請自行參閱。",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -106,7 +129,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "snippet": "作者 : 主計室 發佈日期 : 2025-09-01",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -1252,7 +1275,17 @@
    "source_category": "最新消息",
    "snippet": "作者 : 進修部教務組 發佈日期 : 2025-07-29 報名時間：114 年 8 月 4 日 (星期一)至 114 年 8 月 11 日 (星期一)，每日 9 時至 17 時，星期六、日除外，逾期不予受理，其他詳情請見簡章。",
    "category": "招生編班",
-   "first_seen": "2026-08-11T14:33:34+08:00"
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132631.json",
+   "detail_status": "parsed",
+   "detail_revision": "9d8ecaed7a3ed7278a2214443b7849177e06d535f08174c854876d38419abe7c",
+   "detail_attempts": 1,
+   "summary": "17 時，星期六、日除外，逾期不予受理，其他詳情請見簡章。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132629",
@@ -1311,7 +1344,17 @@
    "source_category": "最新消息",
    "snippet": "作者 : 教師會 發佈日期 : 2025-07-28 嘉義高中第30屆教師會 理監事當選名單 理事長：許栢紋師。 副理事長：單贏田師。 理事：吳岱蓉師、許瀞尹師、李賦美師、 蔡宗桓師、程永潔師、翁嘉伶師、 苗琦玉師、林政得師、龔昱銘師。 監事主席：曾麗華師。 監事：蔡梅枝師、陳相翰師。 中華民國114年7月28日",
    "category": "一般",
-   "first_seen": "2026-08-11T14:33:34+08:00"
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132620.json",
+   "detail_status": "parsed",
+   "detail_revision": "4a0e12a18f1a4afcf19a5ab5aef53170efb95c35b3001eed19fc3e943d9a6106",
+   "detail_attempts": 1,
+   "summary": "理事：吳岱蓉師、許瀞尹師、李賦美師、 蔡宗桓師、程永潔師、翁嘉伶師、 苗琦玉師、林政得師、龔昱銘師。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-135932",
@@ -1324,7 +1367,17 @@
    "source_category": "歷屆試題",
    "snippet": "作者 : 特教組 發佈日期 : 2025-07-27",
    "category": "一般",
-   "first_seen": "2026-08-11T14:33:34+08:00"
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-135932.json",
+   "detail_status": "parsed",
+   "detail_revision": "b729888d6662dcda30771c87d2b4b19657335343bb4b5401ddf643e812251a04",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132604",
@@ -1383,7 +1436,25 @@
    "source_category": "公告消息",
    "snippet": "作者 : 科學班 發佈日期 : 2025-07-23 一、 公告114學年度科學班實驗計畫聘任專任行政助理第1次甄選錄取名單： 1、正取：1名 02周○瑜 2、備取：2名 順位1 03陳○莘 順位2 01林○君 二、正取人員報到日期：114年7月24日（星期四 ） 上午11:00。逾期未報到視同放棄。",
    "category": "一般",
-   "first_seen": "2026-08-11T14:33:34+08:00"
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132588.json",
+   "detail_status": "parsed",
+   "detail_revision": "0d7b96d1027b62be817700a5634e3b11c8d25aa0fb26a889dc3f399e5c21d019",
+   "detail_attempts": 1,
+   "summary": "一、 公告114學年度科學班實驗計畫聘任專任行政助理第1次甄選錄取名單：",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2025-07-24",
+     "title": "公告「114學年度科學班實驗計畫聘任專任行政助理第1次甄選」錄取名單",
+     "provenance": "verified_announcement_event",
+     "source_revision": "0d7b96d1027b62be817700a5634e3b11c8d25aa0fb26a889dc3f399e5c21d019"
+    }
+   ]
   },
   {
    "id": "cysh-132578",
@@ -1396,7 +1467,17 @@
    "source_category": "最新消息",
    "snippet": "作者 : 進修部教務組 發佈日期 : 2025-07-22 113學年度進修部重讀名單，如附件。",
    "category": "一般",
-   "first_seen": "2026-08-11T14:33:34+08:00"
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132578.json",
+   "detail_status": "parsed",
+   "detail_revision": "1d832d713e78d720092a34c8f72ca89b4fa6b44fbbea30672bc2c4166eb335ca",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132577",
@@ -1432,7 +1513,17 @@
    "source_category": "嘉中數學日",
    "snippet": "作者 : 數學科 發佈日期 : 2025-07-21",
    "category": "競賽",
-   "first_seen": "2026-08-11T14:33:34+08:00"
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132572.json",
+   "detail_status": "parsed",
+   "detail_revision": "4cb8f259546ddb528f53e262b8788a5ab8369bf4a74e75f3cd4a12366b15803d",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132571",
@@ -1445,7 +1536,17 @@
    "source_category": "嘉中數學日",
    "snippet": "作者 : 數學科 發佈日期 : 2025-07-21",
    "category": "競賽",
-   "first_seen": "2026-08-11T14:33:34+08:00"
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132571.json",
+   "detail_status": "parsed",
+   "detail_revision": "5260c8d70767a5eb52f45c19b8c514828be8dc923841c37d5bc84d2eac0f75e7",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132567",
@@ -1481,7 +1582,17 @@
    "source_category": "獲獎快訊",
    "snippet": "作者 : 設備組 發佈日期 : 2025-07-18 賀🎉本校318科學班學生參加65屆全國科展，化學科勇奪第一名佳績；工程學科二榮獲佳作。 🏆化學科：何0彙、吳0儒(同時獲得日本高中化學競賽特別獎，之後會到日本參賽) 🎖️工程學科二：沈0凱、張0翔、黃0 恭喜獲獎同學，感謝洪瑞鼎老師辛勤指導！",
    "category": "榮譽榜",
-   "first_seen": "2026-08-11T14:33:34+08:00"
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132560.json",
+   "detail_status": "parsed",
+   "detail_revision": "e6fc57d145898d92f32cce0ff8547fd3c7ff74d01fd35b252c67bb6971bcd4b2",
+   "detail_attempts": 1,
+   "summary": "賀🎉本校318科學班學生參加65屆全國科展，化學科勇奪第一名佳績；",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132556",
@@ -1494,7 +1605,17 @@
    "source_category": "公告消息",
    "snippet": "作者 : 科學班 發佈日期 : 2025-07-18 一、 進入複試名單共計4位，依序為： 序號：01林○君 02周 ○瑜 03陳 ○莘 04蘇 ○甄 二、 複試流程： 1. 參加複試人員請於114年7月21日（星期一）13：00~13：30至本校教務處報到。 2. 報到需查驗以下證件正本，驗畢歸還(須符合甄試簡章規定)，未於複試時繳驗正本者， 即取消參加複試資格。 (1) 國民身分證。 (2) 最高學歷畢業證書。 3. 實作測驗：電腦實作測驗，測驗時間90分鐘。 4. 面談：報到後進行抽籤，本校得視報到人數調整每位面談時間。",
    "category": "一般",
-   "first_seen": "2026-08-11T14:33:34+08:00"
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132556.json",
+   "detail_status": "parsed",
+   "detail_revision": "f1cb3dcccad488169a5ba3076418f39454d5076be2e2578c971d5e1e929b2a70",
+   "detail_attempts": 1,
+   "summary": "1. 參加複試人員請於114年7月21日（星期一）13：00~13：30至本校教務處報到。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132566",
@@ -1602,7 +1723,17 @@
    "source_category": "課表",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-07-11"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-07-11",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132505.json",
+   "detail_status": "parsed",
+   "detail_revision": "8756fc8de081bd889e7d8822bddca7a4412129518ffb5bd0e70c212ceba35b3d",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132504",
@@ -1713,7 +1844,25 @@
    "source_category": "公告消息",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2025-07-09 一、甄選資訊請參閱簡章。 二、報名時間：即日起至114年7月16日星期三12:00止。"
+   "snippet": "作者 : 科學班 發佈日期 : 2025-07-09 一、甄選資訊請參閱簡章。 二、報名時間：即日起至114年7月16日星期三12:00止。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132415.json",
+   "detail_status": "parsed",
+   "detail_revision": "35b082af555a50f8dc5424305782d38267787794fd97a1532da93624640e937c",
+   "detail_attempts": 1,
+   "summary": "二、報名時間：即日起至114年7月16日星期三12:00止。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-07-16",
+     "title": "公告「114學年度科學班實驗計畫聘任專任行政助理 第1次甄選」",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "35b082af555a50f8dc5424305782d38267787794fd97a1532da93624640e937c"
+    }
+   ]
   },
   {
    "id": "cysh-132496",
@@ -1726,7 +1875,17 @@
    "source_category": "重補修(含自學輔導)",
    "category": "段考考試",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-07-09 重補修報名時間為 7/18(週五)至7/21(週一)中午 ，預計7/29公布上課資訊，7/31開始上課，請同學留意相關訊息，並把握報名時間。 由於開課科目多，因此開課時間可能涵蓋週間與週末的白天與傍晚，請預留時間。"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-07-09 重補修報名時間為 7/18(週五)至7/21(週一)中午 ，預計7/29公布上課資訊，7/31開始上課，請同學留意相關訊息，並把握報名時間。 由於開課科目多，因此開課時間可能涵蓋週間與週末的白天與傍晚，請預留時間。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132496.json",
+   "detail_status": "parsed",
+   "detail_revision": "274c264a5b4728cbfd881fce2b81efc13cfc029f661dd636f5188830f7f8293b",
+   "detail_attempts": 1,
+   "summary": "重補修報名時間為 7/18(週五)至7/21(週一)中午 ，預計7/29公布上課資訊，7/31開始上課，請同學留意相關訊息，並把握報名時間。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132485",
@@ -1762,7 +1921,17 @@
    "source_category": "最新消息",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-07-08 報到日期及地點 • 報到時間：7月10日（四）上午09:00-11:00。 • 報到地點：本校進修部辦公室。※校園不開放停車，請從正門進出。 報到當天應攜帶文件： 1. 國中畢業證書正本 2. 繳交身分證正反面影本 3.一吋證件照3張"
+   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-07-08 報到日期及地點 • 報到時間：7月10日（四）上午09:00-11:00。 • 報到地點：本校進修部辦公室。※校園不開放停車，請從正門進出。 報到當天應攜帶文件： 1. 國中畢業證書正本 2. 繳交身分證正反面影本 3.一吋證件照3張",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132486.json",
+   "detail_status": "parsed",
+   "detail_revision": "4a8cf41823882b3bc78ceae62263ddcd0982d4b9760917a6541dfad17a58aa03",
+   "detail_attempts": 1,
+   "summary": "報到地點：本校進修部辦公室。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132476",
@@ -1775,7 +1944,17 @@
    "source_category": "公告消息",
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2025-07-07 因颱風過後校園多處樹木傾倒，影響通行動線，為維護參與學生之安全，原訂於7月8日（星期二）舉辦之「國中趣味科學營」第二梯次活動將取消辦理。 造成不便，敬請見諒。"
+   "snippet": "作者 : 科學班 發佈日期 : 2025-07-07 因颱風過後校園多處樹木傾倒，影響通行動線，為維護參與學生之安全，原訂於7月8日（星期二）舉辦之「國中趣味科學營」第二梯次活動將取消辦理。 造成不便，敬請見諒。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132476.json",
+   "detail_status": "parsed",
+   "detail_revision": "171d8e78124f8bf88077fea06ab91cc872563147bd997047134e0f28c3f1d7fa",
+   "detail_attempts": 1,
+   "summary": "因颱風過後校園多處樹木傾倒，影響通行動線，為維護參與學生之安全，原訂於7月8日（星期二）舉辦之「國中趣味科學營」第二梯次活動將取消辦理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132465",
@@ -1842,7 +2021,17 @@
    "source_category": "藝文活動",
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-07-03 為讓知識向下扎根，國立臺灣大學精選該校近年優良出版品，內含臺灣社會關懷、文學、科普、生涯規劃勵志等書籍及多媒體影音，提供高中生豐富多元的學習選擇，作為中學銜接大學教育的橋樑。"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-07-03 為讓知識向下扎根，國立臺灣大學精選該校近年優良出版品，內含臺灣社會關懷、文學、科普、生涯規劃勵志等書籍及多媒體影音，提供高中生豐富多元的學習選擇，作為中學銜接大學教育的橋樑。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132460.json",
+   "detail_status": "parsed",
+   "detail_revision": "a3fa8e855411a69c231732995167a0c5ed9ebd1c528dfa7d66fae4340e209714",
+   "detail_attempts": 1,
+   "summary": "音，提供高中生豐富多元的學習選擇，作為中學銜接大學教育的橋樑。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132448",
@@ -1881,7 +2070,17 @@
    "source_category": "教科書版本",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-07-01"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-07-01",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132438.json",
+   "detail_status": "parsed",
+   "detail_revision": "34caab174e95cf123b0a9242bda839e6f41ef2977f4702ef85d0948f10c88a2f",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132439",
@@ -1894,7 +2093,25 @@
    "source_category": "嘉義市市賽",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-07-01 依據「嘉義市114語文競賽實施要點」： 凡於前一學制(限定為國小五、六年級、國中二、三年級)參加 全國語文競賽 獲得特優或優等成績且限定於本年度比賽時為國一、高一學生者，可具備種子選手資格，即可不經學校校內初選獲得本市複賽參賽資格，惟報名項目不得更換(例如：於全國賽「國語演說國小學生組」榮獲特優，本年度為國一新生則可報名參加本年度市賽「國語演說國中學生組」)。 具備種子選手身分者，應於 114年7月11日(星期五)以前 向114學年度就讀學校教務處提出報名意願並同時繳交112或113年全國語文競賽獎狀影本，逾期視為放棄參賽資格。 請符合資格的選手，於 7/10報到當天 至報到場地樹人堂學雜費減免攤位登記，繳交影本。亦可於7/11下班前至 教務處3號櫃台 報名並繳交影本。"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-07-01 依據「嘉義市114語文競賽實施要點」： 凡於前一學制(限定為國小五、六年級、國中二、三年級)參加 全國語文競賽 獲得特優或優等成績且限定於本年度比賽時為國一、高一學生者，可具備種子選手資格，即可不經學校校內初選獲得本市複賽參賽資格，惟報名項目不得更換(例如：於全國賽「國語演說國小學生組」榮獲特優，本年度為國一新生則可報名參加本年度市賽「國語演說國中學生組」)。 具備種子選手身分者，應於 114年7月11日(星期五)以前 向114學年度就讀學校教務處提出報名意願並同時繳交112或113年全國語文競賽獎狀影本，逾期視為放棄參賽資格。 請符合資格的選手，於 7/10報到當天 至報到場地樹人堂學雜費減免攤位登記，繳交影本。亦可於7/11下班前至 教務處3號櫃台 報名並繳交影本。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132439.json",
+   "detail_status": "parsed",
+   "detail_revision": "bd2e8503b42dab1c75f5f0bf1fa876c8dfea20021d1821d4e22a9d7ff22e62f0",
+   "detail_attempts": 1,
+   "summary": "具備種子選手身分者，應於 114年7月11日(星期五)以前 向114學年度就讀學校教務處提出報名意願並同時繳交112或113年全國語文競賽獎狀影本，逾期視為放棄參賽資格。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-07-11",
+     "title": "【新生資訊】114語文競賽種子選手報名",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "bd2e8503b42dab1c75f5f0bf1fa876c8dfea20021d1821d4e22a9d7ff22e62f0"
+    }
+   ]
   },
   {
    "id": "cysh-132583",
@@ -1989,7 +2206,17 @@
    "source_category": "成果發表",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-06-25 一、得獎名單：請詳見附件。 二、發表人數及獲獎人數統計： 年級 總人數 發表人數 ( 佔總人數 ) 得獎總數 ( 佔發表人數 ) 高二 604 377 (62%) 216 (57%) 高一 98 67 (68%) 42 (63%)"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-06-25 一、得獎名單：請詳見附件。 二、發表人數及獲獎人數統計： 年級 總人數 發表人數 ( 佔總人數 ) 得獎總數 ( 佔發表人數 ) 高二 604 377 (62%) 216 (57%) 高一 98 67 (68%) 42 (63%)",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132386.json",
+   "detail_status": "parsed",
+   "detail_revision": "fbcd5232a15ad5237046a5bac7a851789cbf14de2d8eabdb3ae86c6a833fd0e1",
+   "detail_attempts": 1,
+   "summary": "一、得獎名單：請詳見附件。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132383",
@@ -2061,7 +2288,17 @@
    "source_category": "能力競賽",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2025-06-24 嘉中114年能力競賽校內初賽 化學科 得獎名單如下，得獎名單如下，恭喜得獎同學！ 得獎同學之獎狀，待能力競賽校內初選各科皆辦理完畢後，將一同製作頒發，以資鼓勵。 班級 姓名 獎項 218 吳○懷 特優 218 陳○翰 特優 218 林○佑 特優 218 張○翔 特優 218 許○瑄 特優 218 邱○欣 特優 218 林○融 特優 218 何○彙 特優 218 黃○ 特優 218 黃○勻 特優 118 黃○叡 特優 218 吳○儒 優等 218 林○祐 優等 118 王○毅 優等 118 李○穎 優等 217 吳○圻 優等 217 呂○霆 優等 218 陳○瑾 優等 218 王○文 優等 217 黃○智 優等 215 洪○程 優等 218 吳○祐 優等 117 呂○彥 優等 218 黃○穎 優等 218 蘇○永 佳作 218 陳○睿 佳作 118 張○誠 佳作 117 張○彥 佳作 218 葉○妡 佳作 117 鄭○傑 佳作 215 洪○鈞 佳作 218 李○叡 佳作 118 顏○安 佳作 215 陳○言 佳作 217 徐○恩 佳作 018 何○燁 佳作 217 羅○冕 佳作 218 謝 ○ 玹 佳作 018 楊 ○ 然 佳作 217 唐○ 佳作"
+   "snippet": "作者 : 設備組 發佈日期 : 2025-06-24 嘉中114年能力競賽校內初賽 化學科 得獎名單如下，得獎名單如下，恭喜得獎同學！ 得獎同學之獎狀，待能力競賽校內初選各科皆辦理完畢後，將一同製作頒發，以資鼓勵。 班級 姓名 獎項 218 吳○懷 特優 218 陳○翰 特優 218 林○佑 特優 218 張○翔 特優 218 許○瑄 特優 218 邱○欣 特優 218 林○融 特優 218 何○彙 特優 218 黃○ 特優 218 黃○勻 特優 118 黃○叡 特優 218 吳○儒 優等 218 林○祐 優等 118 王○毅 優等 118 李○穎 優等 217 吳○圻 優等 217 呂○霆 優等 218 陳○瑾 優等 218 王○文 優等 217 黃○智 優等 215 洪○程 優等 218 吳○祐 優等 117 呂○彥 優等 218 黃○穎 優等 218 蘇○永 佳作 218 陳○睿 佳作 118 張○誠 佳作 117 張○彥 佳作 218 葉○妡 佳作 117 鄭○傑 佳作 215 洪○鈞 佳作 218 李○叡 佳作 118 顏○安 佳作 215 陳○言 佳作 217 徐○恩 佳作 018 何○燁 佳作 217 羅○冕 佳作 218 謝 ○ 玹 佳作 018 楊 ○ 然 佳作 217 唐○ 佳作",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132373.json",
+   "detail_status": "parsed",
+   "detail_revision": "97adf41fbb4aec127b76e158580f268eb4c12a0028e1472a4d3d551acd21b1af",
+   "detail_attempts": 1,
+   "summary": "嘉中114年能力競賽校內初賽 化學科 得獎名單如下，得獎名單如下，恭喜得獎同學！",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132363",
@@ -2258,7 +2495,17 @@
    "source_category": "最新消息",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2025-06-19 【學科能力競賽】生物科能力競賽校內初選優秀名單 得獎名單如下，恭喜得獎同學！ 特優獎項同學可進入校內複賽，依校內複賽成績甄選選手。 特優 年級 班級 座號 學生姓名 備註 1 18 9 凃O比 進入複賽 1 18 27 蘇O睿 進入複賽 2 15 15 洪O鈞 進入複賽 2 17 26 劉O慶 當然選手 2 18 1 王O文 進入複賽 2 18 7 沈O凱 當然選手 2 18 8 林O佑 進入複賽 2 18 9 林O融 進入複賽 2 18 10 林O祐 進入複賽 2 18 15 陳O瑾 進入複賽 優等 年級 班級 座號 學生姓名 備註 1 18 12 張O恩 2 17 10 周O儒 2 17 23 黃O勳 2 17 30 羅O冕 2 18 2 何O彙 2 18 5 吳O懷 2 18 11 邱O欣 2 18 12 張O翔 佳作 年級 班級 座號 學生姓名 備註 1 17 10 林O廷 1 18 15 陳O廷 2 15 13 邱O翔 2 17 7 吳O圻 2 17 8 呂O霆 2 18 4 吳O儒 2 18 14 許O瑄 2 18 17 陳O睿 2 18 25 蘇O永"
+   "snippet": "作者 : 設備組 發佈日期 : 2025-06-19 【學科能力競賽】生物科能力競賽校內初選優秀名單 得獎名單如下，恭喜得獎同學！ 特優獎項同學可進入校內複賽，依校內複賽成績甄選選手。 特優 年級 班級 座號 學生姓名 備註 1 18 9 凃O比 進入複賽 1 18 27 蘇O睿 進入複賽 2 15 15 洪O鈞 進入複賽 2 17 26 劉O慶 當然選手 2 18 1 王O文 進入複賽 2 18 7 沈O凱 當然選手 2 18 8 林O佑 進入複賽 2 18 9 林O融 進入複賽 2 18 10 林O祐 進入複賽 2 18 15 陳O瑾 進入複賽 優等 年級 班級 座號 學生姓名 備註 1 18 12 張O恩 2 17 10 周O儒 2 17 23 黃O勳 2 17 30 羅O冕 2 18 2 何O彙 2 18 5 吳O懷 2 18 11 邱O欣 2 18 12 張O翔 佳作 年級 班級 座號 學生姓名 備註 1 17 10 林O廷 1 18 15 陳O廷 2 15 13 邱O翔 2 17 7 吳O圻 2 17 8 呂O霆 2 18 4 吳O儒 2 18 14 許O瑄 2 18 17 陳O睿 2 18 25 蘇O永",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132324.json",
+   "detail_status": "parsed",
+   "detail_revision": "d0053bc945e6d19b93c461d6a9c1385d6c8b884353ea3303bbf0baf4e0749877",
+   "detail_attempts": 1,
+   "summary": "【學科能力競賽】生物科能力競賽校內初選優秀名單",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132267",
@@ -2389,7 +2636,17 @@
    "source_category": "重補修(含自學輔導)",
    "category": "段考考試",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-06-11 本課程因應 轉組生(學術資優班轉普通班) 班群課程差異，缺少部定必修本土語文學分而開設。 先前已修習過本土語文，但未能順利取得學分的學生亦可報名。 請 詳閱附件中的報名時間、上課時間，並準時到課 。 缺課 達 該科修習節數三分之一者，該科評量成績以零分計算。"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-06-11 本課程因應 轉組生(學術資優班轉普通班) 班群課程差異，缺少部定必修本土語文學分而開設。 先前已修習過本土語文，但未能順利取得學分的學生亦可報名。 請 詳閱附件中的報名時間、上課時間，並準時到課 。 缺課 達 該科修習節數三分之一者，該科評量成績以零分計算。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132254.json",
+   "detail_status": "parsed",
+   "detail_revision": "e6b8ff3dd1d012da8d28c03ddfa727a9d4dd0c06e8e24690577570129499a293",
+   "detail_attempts": 1,
+   "summary": "先前已修習過本土語文，但未能順利取得學分的學生亦可報名。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132562",
@@ -2497,7 +2754,17 @@
    "source_category": "最新消息",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-06-05"
+   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-06-05",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132197.json",
+   "detail_status": "parsed",
+   "detail_revision": "581fedb14da1f737971c61adaa9ce3a49ebd720d71db797fe57421870266b454",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132167",
@@ -2546,7 +2813,17 @@
    "source_category": "性騷擾防治專區",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 人事室 發佈日期 : 2025-06-02 有關性騷擾防治三法介紹及案例分享請同仁參閱附件。"
+   "snippet": "作者 : 人事室 發佈日期 : 2025-06-02 有關性騷擾防治三法介紹及案例分享請同仁參閱附件。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131949.json",
+   "detail_status": "parsed",
+   "detail_revision": "7f0f1f8f77a76e2c86879462d0eb920aa8679d81e9268b452f1b60b0386f2896",
+   "detail_attempts": 1,
+   "summary": "有關性騷擾防治三法介紹及案例分享請同仁參閱附件。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132160",
@@ -2572,7 +2849,17 @@
    "source_category": "嘉中數學日",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 數學科 發佈日期 : 2025-05-29"
+   "snippet": "作者 : 數學科 發佈日期 : 2025-05-29",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132136.json",
+   "detail_status": "parsed",
+   "detail_revision": "62a2c5d54467a676e69c9777d1e8670fa6755d291a44744b1d2dca5180e11b62",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132139",
@@ -2585,7 +2872,17 @@
    "source_category": "重補修(含自學輔導)",
    "category": "段考考試",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-05-29 一、114年高三重補修開課班別、教室、師資、課程時段、修課名單，請同學參閱附件，檢查報名相關資料是否無誤。 二、上課前請備妥修課課程的課本並攜帶到課。修習 選修化學下 的同學，請攜帶 龍騰版選修V教學講義 三、到校請穿著學校制服或運動服；若在非放學時間需離校外出，請到教務處填寫外出單，由班級承辦人員核章，外出時交給校門傳達室。 四、請務必準時到課，缺課(不論假別) 達 該科目總節數1/3，不予成績考查。 五、若開課資料有任何問題，請盡速聯繫教務處教學組。"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-05-29 一、114年高三重補修開課班別、教室、師資、課程時段、修課名單，請同學參閱附件，檢查報名相關資料是否無誤。 二、上課前請備妥修課課程的課本並攜帶到課。修習 選修化學下 的同學，請攜帶 龍騰版選修V教學講義 三、到校請穿著學校制服或運動服；若在非放學時間需離校外出，請到教務處填寫外出單，由班級承辦人員核章，外出時交給校門傳達室。 四、請務必準時到課，缺課(不論假別) 達 該科目總節數1/3，不予成績考查。 五、若開課資料有任何問題，請盡速聯繫教務處教學組。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132139.json",
+   "detail_status": "parsed",
+   "detail_revision": "089026ee95afd8bb4277c493bbdfe0339dec2bda739c9e11c6f464d318ed4e9b",
+   "detail_attempts": 1,
+   "summary": "一、114年高三重補修開課班別、教室、師資、課程時段、修課名單，請同學參閱附件，檢查報名相關資料是否無誤。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132144",
@@ -2598,7 +2895,17 @@
    "source_category": "畢業典禮",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 訓育組 發佈日期 : 2025-05-29 國立嘉義高中113學年度畢業典禮 時間：114年6月2日(一) 8:30~11:30 （11:30~12:00為導師時間） ※有規劃家長觀禮區，8:00開放入場，敬請家長自行入座。 ※因為畢典當天為正常上課，校內停車位不足，要麻煩家長車輛停在外面或停車場。"
+   "snippet": "作者 : 訓育組 發佈日期 : 2025-05-29 國立嘉義高中113學年度畢業典禮 時間：114年6月2日(一) 8:30~11:30 （11:30~12:00為導師時間） ※有規劃家長觀禮區，8:00開放入場，敬請家長自行入座。 ※因為畢典當天為正常上課，校內停車位不足，要麻煩家長車輛停在外面或停車場。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132144.json",
+   "detail_status": "parsed",
+   "detail_revision": "39d953942e59d5694a474a4575d27595b0aa818a40e71b30835c5b806ff1e080",
+   "detail_attempts": 1,
+   "summary": "國立嘉義高中113學年度畢業典禮",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-132106",
@@ -2634,7 +2941,17 @@
    "source_category": "性騷擾防治專區",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 人事室 發佈日期 : 2025-05-26"
+   "snippet": "作者 : 人事室 發佈日期 : 2025-05-26",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-132088.json",
+   "detail_status": "parsed",
+   "detail_revision": "7ee2e75e667d7d407174749ed32f95217812ca7f0ecd9f3d68c3e0975e50e2f8",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132091",
@@ -2926,7 +3243,17 @@
    "source_category": "重補修(含自學輔導)",
    "category": "段考考試",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-05-14 【高三重補修】，詳如下方檔案，報名期限為 5/21(三)-22(四)中午截止 ， 待學期成績開放查詢後，發現未達畢業標準的同學，務必把握機會報名重補修課程，以利取得畢業證書。"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-05-14 【高三重補修】，詳如下方檔案，報名期限為 5/21(三)-22(四)中午截止 ， 待學期成績開放查詢後，發現未達畢業標準的同學，務必把握機會報名重補修課程，以利取得畢業證書。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131952.json",
+   "detail_status": "parsed",
+   "detail_revision": "7bc1a5dc55d54e2e85be392998751c4b47657c827c73c64fb2026f73df55d226",
+   "detail_attempts": 1,
+   "summary": "【高三重補修】，詳如下方檔案，報名期限為 5/21(三)-22(四)中午截止 ， 待學期成績開放查詢後，發現未達畢業標準的同學，務必把握機會報名重補修課程，以利取得畢業證書。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-129212",
@@ -2939,7 +3266,17 @@
    "source_category": "性騷擾防治專區",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "дҪңиҖ… : дәәдәӢе®Ө зҷјдҪҲж—Ҙжңҹ : 2025-05-14 и«ӢеҗҢд»Ғй»һж“ҠдёӢж–№иЎЁж јжӘ”жЎҲдёӢијүйҒӢз”ЁгҖӮи¬қи¬қ"
+   "snippet": "作者 : 人事室 發佈日期 : 2025-05-14 請同仁點擊下方表格檔案下載運用。謝謝",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-129212.json",
+   "detail_status": "parsed",
+   "detail_revision": "b846d2f24edfeea47cd4bf4c375244e20d3ccdeb63e3f6a81db15b7e8a0277cd",
+   "detail_attempts": 1,
+   "summary": "請同仁點擊下方表格檔案下載運用。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131937",
@@ -2952,7 +3289,17 @@
    "source_category": "就學貸款",
    "category": "獎助學金",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 訓育組 發佈日期 : 2025-05-13"
+   "snippet": "作者 : 訓育組 發佈日期 : 2025-05-13",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131937.json",
+   "detail_status": "parsed",
+   "detail_revision": "dc75248e0ea25fc7149e300878b22d7e5f9f3509b8ee6344fa9717a1cbc76a20",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132104",
@@ -2988,7 +3335,25 @@
    "source_category": "大考、升學相關",
    "category": "升學",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 註冊組 發佈日期 : 2025-05-12 【申請入學 / 四技申請】應屆畢業生查詢「第六學期修課紀錄 ( 高三下成績 ) 」相關事宜。 【申請入學】應屆畢業生應於 114 年 5 月 12 日至 5 月 13 日每日上午 9 時至下午 9 時 ，至大學甄選委員會申請入學網站 ( https://www.cac.edu.tw/apply114/dataupload.php ) 點選「審查資料上傳」，再點選「應屆畢業學測 ( 或術科 ) 考生查詢第六學期修課紀錄系統」選項，確認「第六學期修課紀錄 (PDF 檔 ) 」；考生未於查詢期間內上網查詢或修課紀錄內容有誤而未及時向就教務處反映，致影響個人第二階段甄試權益，考生應自行負責。 【四技申請】申請生請至技專校院招生委員會聯合會網站 ( https://www.jctv.ntut.edu.tw/caac/?academicYear=114 ) 【考生作業系統】→【第六學期修課紀錄檢視系統】開放時間為： 114 年 5 月 12 日 ( 一 )10:00 起至 5 月 13 日 ( 二 )21:00 止 。通過第一階段篩選之當年度應屆畢業申請生務必於上述時間內詳細核對成績證明之內容，如有問題應儘速向教務處提出疑義申請。未於查詢期間上網查詢或查詢之成績證明內容有誤而未即時反映，致影響個人第二階段複試權益，申請生應自行負責。 高三下學期提供給各大學的成績「不含補考成績」。"
+   "snippet": "作者 : 註冊組 發佈日期 : 2025-05-12 【申請入學 / 四技申請】應屆畢業生查詢「第六學期修課紀錄 ( 高三下成績 ) 」相關事宜。 【申請入學】應屆畢業生應於 114 年 5 月 12 日至 5 月 13 日每日上午 9 時至下午 9 時 ，至大學甄選委員會申請入學網站 ( https://www.cac.edu.tw/apply114/dataupload.php ) 點選「審查資料上傳」，再點選「應屆畢業學測 ( 或術科 ) 考生查詢第六學期修課紀錄系統」選項，確認「第六學期修課紀錄 (PDF 檔 ) 」；考生未於查詢期間內上網查詢或修課紀錄內容有誤而未及時向就教務處反映，致影響個人第二階段甄試權益，考生應自行負責。 【四技申請】申請生請至技專校院招生委員會聯合會網站 ( https://www.jctv.ntut.edu.tw/caac/?academicYear=114 ) 【考生作業系統】→【第六學期修課紀錄檢視系統】開放時間為： 114 年 5 月 12 日 ( 一 )10:00 起至 5 月 13 日 ( 二 )21:00 止 。通過第一階段篩選之當年度應屆畢業申請生務必於上述時間內詳細核對成績證明之內容，如有問題應儘速向教務處提出疑義申請。未於查詢期間上網查詢或查詢之成績證明內容有誤而未即時反映，致影響個人第二階段複試權益，申請生應自行負責。 高三下學期提供給各大學的成績「不含補考成績」。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131932.json",
+   "detail_status": "parsed",
+   "detail_revision": "ff1c95f2b6ac57f4fbb50e8df109eb56525abf575ff761f2a54cba2a22f5ad85",
+   "detail_attempts": 1,
+   "summary": "【申請入學 / 四技申請】應屆畢業生查詢「第六學期修課紀錄 ( 高三下成績 ) 」相關事宜。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-05-12",
+     "title": "【申請入學/四技申請】應屆畢業生查詢「第六學期修課紀錄(高三下成績)」相關事宜",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ff1c95f2b6ac57f4fbb50e8df109eb56525abf575ff761f2a54cba2a22f5ad85"
+    }
+   ]
   },
   {
    "id": "cysh-131911",
@@ -3070,7 +3435,17 @@
    "source_category": "最新消息",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 高瞻雙語班 發佈日期 : 2025-05-09 國立嘉義高級中學114學年度【高瞻雙語班】甄選簡章 國立嘉義高中114學年度【高瞻雙語班】報名注意事項 一、 報名對象：凡114學年度本校高一新生皆可報名(科學班、音樂班、美術班除外) 二、 報名時間：114年7月10日 (星期四) 上午9:00~中午12:00(報名地點:本校旭陵樓4樓會議室)、下午13:00-17:00(報名地點:旭陵樓2樓教務處) (請先完成 新生報到 ，再至指定報名處進行報名) 三、報名所需文件：請先下載簡章並詳閱 （一）報名表（簡章附件一）：第6頁。(可和 半導體實驗班 同時報名，請記得填寫志願序!) （二）114年國中教育會考成績單正反面影本-雙面列印 ( 學生本人簽名並寫上「與正本相符」 ) 四、榜單公布：114年8月4日 (星期一)下午6:00前公告於本校網站。 五、聲明放棄:114年8月6日 (星期三)中午 12:00 前由本人或監護人親送至教務處特教組。 2025/06/19更新:轉入條件: 本班在有缺額的條件下，限於第一學年學期末辦理轉入作業。英文總成績須 達第一學年前 20% 之學生"
+   "snippet": "作者 : 高瞻雙語班 發佈日期 : 2025-05-09 國立嘉義高級中學114學年度【高瞻雙語班】甄選簡章 國立嘉義高中114學年度【高瞻雙語班】報名注意事項 一、 報名對象：凡114學年度本校高一新生皆可報名(科學班、音樂班、美術班除外) 二、 報名時間：114年7月10日 (星期四) 上午9:00~中午12:00(報名地點:本校旭陵樓4樓會議室)、下午13:00-17:00(報名地點:旭陵樓2樓教務處) (請先完成 新生報到 ，再至指定報名處進行報名) 三、報名所需文件：請先下載簡章並詳閱 （一）報名表（簡章附件一）：第6頁。(可和 半導體實驗班 同時報名，請記得填寫志願序!) （二）114年國中教育會考成績單正反面影本-雙面列印 ( 學生本人簽名並寫上「與正本相符」 ) 四、榜單公布：114年8月4日 (星期一)下午6:00前公告於本校網站。 五、聲明放棄:114年8月6日 (星期三)中午 12:00 前由本人或監護人親送至教務處特教組。 2025/06/19更新:轉入條件: 本班在有缺額的條件下，限於第一學年學期末辦理轉入作業。英文總成績須 達第一學年前 20% 之學生",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131909.json",
+   "detail_status": "parsed",
+   "detail_revision": "b2a7e3cb0ec39fcd5a77817fce0b4dfd93bc1e374e88b67fe3446db2ab2a2b56",
+   "detail_attempts": 1,
+   "summary": "一、 報名對象：凡114學年度本校高一新生皆可報名(科學班、音樂班、美術班除外)",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131908",
@@ -3109,7 +3484,17 @@
    "source_category": "最新消息",
    "category": "行政公告",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : Administrator 最後更新日期 : 2026-04-17 1.因學校5/10(六)全校停電一天，故5/9(五)下午4:30後將陸續關閉所有網路相關設備。 2.待5/12(一)上班後才會陸續開起設備，預計當天9點前無線網路使用將會受影響，故早上第一節課及上午差勤請準備相關因應措施。"
+   "snippet": "作者 : Administrator 最後更新日期 : 2026-04-17 1.因學校5/10(六)全校停電一天，故5/9(五)下午4:30後將陸續關閉所有網路相關設備。 2.待5/12(一)上班後才會陸續開起設備，預計當天9點前無線網路使用將會受影響，故早上第一節課及上午差勤請準備相關因應措施。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131907.json",
+   "detail_status": "parsed",
+   "detail_revision": "a2062eecb85566a764c7c16bc18ee7c4a5fe0aa1f58cf39455a30c601b7dfa8b",
+   "detail_attempts": 1,
+   "summary": "1.因學校5/10(六)全校停電一天，故5/9(五)下午4:30後將陸續關閉所有網路相關設備。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131884",
@@ -3146,7 +3531,17 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "snippet": "",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "detail_available": false,
+   "detail_ref": "data/details/cysh/cysh-131866.json",
+   "detail_status": "empty",
+   "detail_revision": "2acacf2295d76713fcd64536e4c5a5eef0e028504d618c8e92972236ad7770b5",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-132100",
@@ -3182,7 +3577,17 @@
    "source_category": "閱讀心得",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-05-05 得獎名單如圖，恭喜獲獎同學並感謝指導老師悉心指導！"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-05-05 得獎名單如圖，恭喜獲獎同學並感謝指導老師悉心指導！",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131852.json",
+   "detail_status": "parsed",
+   "detail_revision": "90ebcb3e750be363bfe3fec527f4e5cfcc5abe01e4455ebd604942960c53e076",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-131840",
@@ -3218,7 +3623,17 @@
    "source_category": "大考、升學相關",
    "category": "升學",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 註冊組 發佈日期 : 2025-05-01 重要公告 申請入學、四技申請第二階段指定項目甄試審查資料上傳提醒 今日(5/1)起開始進行 申請入學、四技申請「考生上傳 / 勾選第二階段審查資料及繳交指定項目甄試費用 ( 考生自行繳費 !!) 」 ，截止日各校系自訂，請同學務必確認上傳截止日期，並於時間內完成上傳/勾選作業，亦請同學確認「高三學習歷程」資料是否有誤，如有誤，請盡速至教務處註冊組反映。(學習歷程資料有誤是指審查資料上傳系統的資料與收訖明細的不同，如果是同學因自身原因而導致的錯誤不在處理範圍) 重點： 確認各校系上傳勾選截止日及系統開放時間，並於期限內確實完成作業。 請同學於時間內自行繳交指定項目甄試費用。 檢查第 5 、 6 學期學習歷程資料是否有誤。 申請入學審查資料上傳連結： https://www.cac.edu.tw/apply114/dataupload.php 四技申請審查資料上傳連結： https://www.jctv.ntut.edu.tw/caac/contents.php?academicYear=114&subId=115 教務處註冊組20250501"
+   "snippet": "作者 : 註冊組 發佈日期 : 2025-05-01 重要公告 申請入學、四技申請第二階段指定項目甄試審查資料上傳提醒 今日(5/1)起開始進行 申請入學、四技申請「考生上傳 / 勾選第二階段審查資料及繳交指定項目甄試費用 ( 考生自行繳費 !!) 」 ，截止日各校系自訂，請同學務必確認上傳截止日期，並於時間內完成上傳/勾選作業，亦請同學確認「高三學習歷程」資料是否有誤，如有誤，請盡速至教務處註冊組反映。(學習歷程資料有誤是指審查資料上傳系統的資料與收訖明細的不同，如果是同學因自身原因而導致的錯誤不在處理範圍) 重點： 確認各校系上傳勾選截止日及系統開放時間，並於期限內確實完成作業。 請同學於時間內自行繳交指定項目甄試費用。 檢查第 5 、 6 學期學習歷程資料是否有誤。 申請入學審查資料上傳連結： https://www.cac.edu.tw/apply114/dataupload.php 四技申請審查資料上傳連結： https://www.jctv.ntut.edu.tw/caac/contents.php?academicYear=114&subId=115 教務處註冊組20250501",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131820.json",
+   "detail_status": "parsed",
+   "detail_revision": "c27a2822c3dd0c8a3c90c04c7cbe8b157fd23f658e5c7740df6e63645f191c2e",
+   "detail_attempts": 1,
+   "summary": "今日(5/1)起開始進行 申請入學、四技申請「考生上傳 / 勾選第二階段審查資料及繳交指定項目甄試費用 ( 考生自行繳費 !",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131821",
@@ -3231,7 +3646,25 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 優質化計畫 發佈日期 : 2025-05-01 114 學年度優質化計畫申請說明 一、計畫內容說明 ： 1. 子計畫 A ：和「學生課程」相關經費。 (A-1 校必、 A-2 多元、 A-3 加深加廣選修、 A-4 充補 . 彈性 . 探究與實作 ) 2. 子計畫 B ：和「教師社群」增能、教師研發新課程相關經費。 3. 子計畫 C ：課發會、課諮、自主學習、學習歷程數位核心等小組。 4. 子計畫 D ：數位學習精進發展計畫 ( 數位學習發展核心小組、數位學習課程與社群、數位遠距共授課程 ) 5. 子計畫 E ：主題融入 ( 人權教育 ) 、學校特色發展相關經費。 二、經費說明： 經費使用依會計年度：上學期 8~12 月、下學期 1~7 月 資本門：單價一萬元以上物品。經常門：單價低於一萬元物品。 1. 辦理研習、講座、校外參訪 ： (1) 可申請：講座鐘點費 ( 請分 內、外聘 撰寫 ) 、膳費、印刷費、材料費等。 (2) 校外參訪：租車費 ( 上限 12000 元 / 台 ) 。 2. 資料蒐集費 ( 買共備書籍 ) ：圖書之購置已具有專門性且與計畫直接有關者為限 (1) 須清楚列出書名、數目、單價及總價。 (2) 買書僅供科內使用，不可贈與他人或課程教科書。 (3) 不可與圖書館館藏重複。 3. 物品費 ： (1) 經常門物品單價不可超過 10000 元， 3000 以上需有保管人為購買人。 (2) 需清楚標示品名、預估數量及預估單價。 4. 材料費 ： 200 元 / 人，需列出預估人數，材料費屬於耗材性質。 5. 保險費 ： (1) 學生參訪可申請保險費一日 31 元 / 人，帶隊老師不可申請保險費。 (2) 須註明預計參加學生人數。 三、繳交期限及注意事項 1. 麻煩要申請 114 學年度優質化計畫經費的老師，於 114.5.13( 二 ) 前將計畫表格 ( 如附 件 ) 寄到優質化信箱： spa@cysh.cy.edu.tw ，謝謝您的協助！ 檔名範例： A-1 校必 - 玉山學 2. 有申請計畫者 114 學年度可優先使用優質化經費、前一學年使用率低的子計畫， 若核定經費降低，將優先刪減。"
+   "snippet": "作者 : 優質化計畫 發佈日期 : 2025-05-01 114 學年度優質化計畫申請說明 一、計畫內容說明 ： 1. 子計畫 A ：和「學生課程」相關經費。 (A-1 校必、 A-2 多元、 A-3 加深加廣選修、 A-4 充補 . 彈性 . 探究與實作 ) 2. 子計畫 B ：和「教師社群」增能、教師研發新課程相關經費。 3. 子計畫 C ：課發會、課諮、自主學習、學習歷程數位核心等小組。 4. 子計畫 D ：數位學習精進發展計畫 ( 數位學習發展核心小組、數位學習課程與社群、數位遠距共授課程 ) 5. 子計畫 E ：主題融入 ( 人權教育 ) 、學校特色發展相關經費。 二、經費說明： 經費使用依會計年度：上學期 8~12 月、下學期 1~7 月 資本門：單價一萬元以上物品。經常門：單價低於一萬元物品。 1. 辦理研習、講座、校外參訪 ： (1) 可申請：講座鐘點費 ( 請分 內、外聘 撰寫 ) 、膳費、印刷費、材料費等。 (2) 校外參訪：租車費 ( 上限 12000 元 / 台 ) 。 2. 資料蒐集費 ( 買共備書籍 ) ：圖書之購置已具有專門性且與計畫直接有關者為限 (1) 須清楚列出書名、數目、單價及總價。 (2) 買書僅供科內使用，不可贈與他人或課程教科書。 (3) 不可與圖書館館藏重複。 3. 物品費 ： (1) 經常門物品單價不可超過 10000 元， 3000 以上需有保管人為購買人。 (2) 需清楚標示品名、預估數量及預估單價。 4. 材料費 ： 200 元 / 人，需列出預估人數，材料費屬於耗材性質。 5. 保險費 ： (1) 學生參訪可申請保險費一日 31 元 / 人，帶隊老師不可申請保險費。 (2) 須註明預計參加學生人數。 三、繳交期限及注意事項 1. 麻煩要申請 114 學年度優質化計畫經費的老師，於 114.5.13( 二 ) 前將計畫表格 ( 如附 件 ) 寄到優質化信箱： spa@cysh.cy.edu.tw ，謝謝您的協助！ 檔名範例： A-1 校必 - 玉山學 2. 有申請計畫者 114 學年度可優先使用優質化經費、前一學年使用率低的子計畫， 若核定經費降低，將優先刪減。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131821.json",
+   "detail_status": "parsed",
+   "detail_revision": "f86886561f497d21e177d8729c4aaaf18700a9de137b0432c3c7e124b7a82923",
+   "detail_attempts": 1,
+   "summary": "1. 麻煩要申請 114 學年度優質化計畫經費的老師，於 114.5.13( 二 ) 前將計畫表格 ( 如附 件 ) 寄到優質化信箱： spa@cysh.cy.edu.tw ，謝謝您的協助！",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-05-13",
+     "title": "114學年度優質化計畫申請說明",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f86886561f497d21e177d8729c4aaaf18700a9de137b0432c3c7e124b7a82923"
+    }
+   ]
   },
   {
    "id": "cysh-131774",
@@ -3244,7 +3677,17 @@
    "source_category": "衛生教育宣導",
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 衛生組 發佈日期 : 2025-04-28 依菸害防制法第16條第1項規定，未滿20歲之人不得吸菸。違反前述規定者，依同法第42條規定，直轄市、縣（市）主管機關應通知其限期接受戒菸教育；未成年者，並應令其父母或監護人使其到場。未滿20歲之人無正當理由未依前項通知接受戒菸教育者，處新臺幣2千元以上1萬元以下罰鍰，並按次處罰；行為人為未成年者，處罰其父母或監護人。"
+   "snippet": "作者 : 衛生組 發佈日期 : 2025-04-28 依菸害防制法第16條第1項規定，未滿20歲之人不得吸菸。違反前述規定者，依同法第42條規定，直轄市、縣（市）主管機關應通知其限期接受戒菸教育；未成年者，並應令其父母或監護人使其到場。未滿20歲之人無正當理由未依前項通知接受戒菸教育者，處新臺幣2千元以上1萬元以下罰鍰，並按次處罰；行為人為未成年者，處罰其父母或監護人。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131774.json",
+   "detail_status": "parsed",
+   "detail_revision": "3b07043eded3e34aed7abe1084e37f6ec996073b0c29e7fff1f04d756b8b730a",
+   "detail_attempts": 1,
+   "summary": "依菸害防制法第16條第1項規定，未滿20歲之人不得吸菸。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131723",
@@ -3293,7 +3736,17 @@
    "source_category": "電子書資源",
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-04-22 【資源網址】 宅在家學習網 https://shl.twse.com.tw/ 投資人知識網-電子書 https://investoredu.twse.com.tw/Pages/TWSE_OnlineLearning2_1.aspx?ID=004 【資源簡介】 臺灣證券交易所為加強對校園宣導證券知識，以漫畫形式呈現，幫助讀者熟悉相關投資概念。 除了圖書館有漫畫紙本版，系列漫畫全彩電子版同步置於臺灣證券交易所「宅在家學習網」漫畫及「投資人知識網」數位百寶箱。"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-04-22 【資源網址】 宅在家學習網 https://shl.twse.com.tw/ 投資人知識網-電子書 https://investoredu.twse.com.tw/Pages/TWSE_OnlineLearning2_1.aspx?ID=004 【資源簡介】 臺灣證券交易所為加強對校園宣導證券知識，以漫畫形式呈現，幫助讀者熟悉相關投資概念。 除了圖書館有漫畫紙本版，系列漫畫全彩電子版同步置於臺灣證券交易所「宅在家學習網」漫畫及「投資人知識網」數位百寶箱。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131690.json",
+   "detail_status": "parsed",
+   "detail_revision": "7ac7ea909c026ee4f1740cbc47370cbd71544d0d205b1872e704a842831a6c85",
+   "detail_attempts": 1,
+   "summary": "臺灣證券交易所為加強對校園宣導證券知識，以漫畫形式呈現，幫助讀者熟悉相關投資概念。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131689",
@@ -3306,7 +3759,17 @@
    "source_category": "電子書資源",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-04-22 【資源網址】 https://alilin.cip.gov.tw/ 【資源簡介】 原住民族委員會製作，供民眾可輕鬆使用行動裝置閱讀原住民族委原會所提供語言教材，協助大眾隨時學習原住民族語言。 【使用方式】 不用加入會員，就可以在PC/iPhone/iPad/Android/HTML5全機種裝置上，免費閱讀臺灣原住民族電子書。"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-04-22 【資源網址】 https://alilin.cip.gov.tw/ 【資源簡介】 原住民族委員會製作，供民眾可輕鬆使用行動裝置閱讀原住民族委原會所提供語言教材，協助大眾隨時學習原住民族語言。 【使用方式】 不用加入會員，就可以在PC/iPhone/iPad/Android/HTML5全機種裝置上，免費閱讀臺灣原住民族電子書。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131689.json",
+   "detail_status": "parsed",
+   "detail_revision": "0f9bb45bd3dfaf9425658668a0b94f23dd27e8068897b3e8ac4f9c710ec00b9f",
+   "detail_attempts": 1,
+   "summary": "不用加入會員，就可以在PC/iPhone/iPad/Android/HTML5全機種裝置上，免費閱讀臺灣原住民族電子書。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131671",
@@ -3365,7 +3828,17 @@
    "source_category": "檔案下載",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 生輔組 發佈日期 : 2025-04-16"
+   "snippet": "作者 : 生輔組 發佈日期 : 2025-04-16",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131631.json",
+   "detail_status": "parsed",
+   "detail_revision": "885335247df3cac477af7d985be0213552ee6d45c00c6bc3c822fc8207256ef1",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-131625",
@@ -3378,7 +3851,25 @@
    "source_category": "學習歷程檔案系統事項",
    "category": "升學",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 註冊組 發佈日期 : 2025-04-16 113下學期學習歷程已提交至中央資料庫，請高三同學到校務系統→學習歷程→收訖明細，檢查資料是否有誤。 學習歷程收訖明細確認時間至 114/04/18 中午12:00截止 若無誤，請至系統內點選「確認資料皆正確」。 若有誤，請至系統內點選「問題回報」，並於4/18中午12:00前至教務處註冊組反映，謝謝!! https://cysh-cy.k12ea.gov.tw/SCH_UI/"
+   "snippet": "作者 : 註冊組 發佈日期 : 2025-04-16 113下學期學習歷程已提交至中央資料庫，請高三同學到校務系統→學習歷程→收訖明細，檢查資料是否有誤。 學習歷程收訖明細確認時間至 114/04/18 中午12:00截止 若無誤，請至系統內點選「確認資料皆正確」。 若有誤，請至系統內點選「問題回報」，並於4/18中午12:00前至教務處註冊組反映，謝謝!! https://cysh-cy.k12ea.gov.tw/SCH_UI/",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131625.json",
+   "detail_status": "parsed",
+   "detail_revision": "433acf397ddb6496306867793fa5f52a1f3cc9c9c1406fa4736d88e470986f31",
+   "detail_attempts": 1,
+   "summary": "學習歷程收訖明細確認時間至 114/04/18 中午12:00截止 若無誤，請至系統內點選「確認資料皆正確」。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-04-18",
+     "title": "【學習歷程】113學年度「高三」學習歷程收訖明細確認通知",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "433acf397ddb6496306867793fa5f52a1f3cc9c9c1406fa4736d88e470986f31"
+    }
+   ]
   },
   {
    "id": "cysh-131765",
@@ -3414,7 +3905,17 @@
    "source_category": "彈性學習【充實補強.微課程】",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組協行教師2 發佈日期 : 2025-04-14 選課結果依校網公告為主，名單如附件。 第一次上課時間為 4/24(四)第3、4節 。 有任何問題，請於 4/16(三)13:20~15:20 洽教務處教學組，逾時不候 。 木工實作二、浮水印手工書 課程將酌收費用，請各位選課同學們注意"
+   "snippet": "作者 : 教學組協行教師2 發佈日期 : 2025-04-14 選課結果依校網公告為主，名單如附件。 第一次上課時間為 4/24(四)第3、4節 。 有任何問題，請於 4/16(三)13:20~15:20 洽教務處教學組，逾時不候 。 木工實作二、浮水印手工書 課程將酌收費用，請各位選課同學們注意",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131596.json",
+   "detail_status": "parsed",
+   "detail_revision": "229ee1c7ad28d7d1c2b838f5c22cc36a6d17091001033cb2246774760deb0b7c",
+   "detail_attempts": 1,
+   "summary": "有任何問題，請於 4/16(三)13:20~15:20 洽教務處教學組，逾時不候 。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131764",
@@ -3450,7 +3951,17 @@
    "source_category": "大考、升學相關",
    "category": "升學",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 註冊組 發佈日期 : 2025-04-11 重要通知 【申請入學】第二階段審查資料上傳系統 ( 測試版 ) 注意事項 為利考生預科並熟悉網路上傳（勾選）審查資料之操作界面及作業流程，甄選會於 4 月 11 日至 4 月 16 日每日上午 9 時至下午 9 時止 開放測驗版供考生 練習及檢視第 1 至第 4 學期學習歷程檔案資料 。請通過第一階段篩選之考生務必測試相關操作並檢視核資料，以維護自身權益。 重要提醒： 1. 申請入學網站業已公告「審查資料上傳作業操作說明及影音教學檔」，請同學依照影片說明操作 https://www.youtube.com/watch?v=YZvjOuXKu9g 。 2. 為使考生瞭解各大學第二階段甄試審查資料準備方向與內容，考生可於本會申請入學網站「審查資料準備指引」專區，連結至各大學網站查詢相關資訊。 3. 考生若為 113 學年度各高級中等學校應屆畢業生，測試版期間 (114 年 4 月 11 日至 114 年 4 月 16 日 ) ，登入後可檢視學習歷程中央資料庫第 1 至第 4 學期之學習歷程檔案資料；正式版期間 (114 年 5 月 1 日至 114 年 5 月 7 日 ) ，登入後可檢視學習歷程中央資料庫第 1 至第 6 學期之學習歷程檔案資料。 4. 本測試系統僅供考生測試及提前檢視並核對歷程資料是否正確，故考生於測試版所上傳 ( 勾選 ) 之審查資料不列入正式資料 。嗣後，考生仍須依 114 學年度大學申請入學招生簡章相關規定及時程，完成第二階段指定項目甄試繳費、報名及審查資料上傳作業。 ※測試期間，系統內所有校系一經確認即不得再進行測試。 5. 應屆畢業考生如發現 學習歷程中央資料庫第 1 至第 4 學期之修課紀錄、課程學習成果、多元表現之檔案資料有誤，應於 114 年 4 月 17 日中午 12 時前之每日上班時間向教務處註冊組反映 ，未依限反映者，日後不得再提出異議。 6. 尚未完成甄選會個人密碼設定的同學，請先完成設定才可進入系統。 7. 請同學用電腦進行以上作業，避免因為手機 / 平板顯示問題而影響操作過程。 甄選會網址： https://www.cac.edu.tw/apply114/dataupload.php"
+   "snippet": "作者 : 註冊組 發佈日期 : 2025-04-11 重要通知 【申請入學】第二階段審查資料上傳系統 ( 測試版 ) 注意事項 為利考生預科並熟悉網路上傳（勾選）審查資料之操作界面及作業流程，甄選會於 4 月 11 日至 4 月 16 日每日上午 9 時至下午 9 時止 開放測驗版供考生 練習及檢視第 1 至第 4 學期學習歷程檔案資料 。請通過第一階段篩選之考生務必測試相關操作並檢視核資料，以維護自身權益。 重要提醒： 1. 申請入學網站業已公告「審查資料上傳作業操作說明及影音教學檔」，請同學依照影片說明操作 https://www.youtube.com/watch?v=YZvjOuXKu9g 。 2. 為使考生瞭解各大學第二階段甄試審查資料準備方向與內容，考生可於本會申請入學網站「審查資料準備指引」專區，連結至各大學網站查詢相關資訊。 3. 考生若為 113 學年度各高級中等學校應屆畢業生，測試版期間 (114 年 4 月 11 日至 114 年 4 月 16 日 ) ，登入後可檢視學習歷程中央資料庫第 1 至第 4 學期之學習歷程檔案資料；正式版期間 (114 年 5 月 1 日至 114 年 5 月 7 日 ) ，登入後可檢視學習歷程中央資料庫第 1 至第 6 學期之學習歷程檔案資料。 4. 本測試系統僅供考生測試及提前檢視並核對歷程資料是否正確，故考生於測試版所上傳 ( 勾選 ) 之審查資料不列入正式資料 。嗣後，考生仍須依 114 學年度大學申請入學招生簡章相關規定及時程，完成第二階段指定項目甄試繳費、報名及審查資料上傳作業。 ※測試期間，系統內所有校系一經確認即不得再進行測試。 5. 應屆畢業考生如發現 學習歷程中央資料庫第 1 至第 4 學期之修課紀錄、課程學習成果、多元表現之檔案資料有誤，應於 114 年 4 月 17 日中午 12 時前之每日上班時間向教務處註冊組反映 ，未依限反映者，日後不得再提出異議。 6. 尚未完成甄選會個人密碼設定的同學，請先完成設定才可進入系統。 7. 請同學用電腦進行以上作業，避免因為手機 / 平板顯示問題而影響操作過程。 甄選會網址： https://www.cac.edu.tw/apply114/dataupload.php",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131580.json",
+   "detail_status": "parsed",
+   "detail_revision": "133cc1169c862ef4cbfdaadd76d2bbc2b7a87d9368173c2ba27ec8350901eb2b",
+   "detail_attempts": 1,
+   "summary": "嗣後，考生仍須依 114 學年度大學申請入學招生簡章相關規定及時程，完成第二階段指定項目甄試繳費、報名及審查資料上傳作業。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131581",
@@ -3463,7 +3974,25 @@
    "source_category": "大考、升學相關",
    "category": "升學",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "дҪңиҖ… : иЁ»еҶҠзө„ зҷјдҪҲж—Ҙжңҹ : 2025-04-11 йҮҚиҰҒйҖҡзҹҘ гҖҗеӣӣжҠҖз”іи«ӢгҖ‘еӯёзҝ’жӯ·зЁӢдёӯеӨ®иіҮж–ҷеә«йҮӢеҮәиіҮж–ҷ ( жӘ”жЎҲ ) жҹҘзңӢеҸҠ ж Ўзі»гҖҒеӯёзЁӢдёҠеӮіжӘ”жЎҲеӢҫйҒёжё…е–®й җж“¬з·ҙзҝ’зүҲжіЁж„ҸдәӢй … 1. зі»зөұй–Ӣж”ҫжҷӮй–“пјҡ 114.4.11 пјҲжҳҹжңҹдә”пјү 10 пјҡ 00 иө·иҮі 114.4.16 пјҲжҳҹжңҹдёүпјү 21 пјҡ 00 жӯў ( жҜҸж—Ҙ 8 пјҡ 00 иө·иҮі 21 пјҡ 00 жӯўпјҢзі»зөұж–ј 21 пјҡ 00 жә–жҷӮй—ңй–ү ) 2. з·ҙзҝ’зүҲзі»зөұдёҚжңғиЁҳйҢ„жҲ–жҡ«еӯҳд»»дҪ•ж“ҚдҪңйҒҺзЁӢпјҢеғ…жҸҗдҫӣзҶҹжӮүд»ӢйқўеҠҹиғҪеҸҠзі»зөұж“ҚдҪңзЁӢеәҸгҖӮ ж“ҚдҪңжүӢеҶҠпјҡ https://www.jctv.ntut.edu.tw/downloads/114/caac/114_caac_system2.pdf 3. йҖҡйҒҺз¬¬дёҖйҡҺж®өзҜ©йҒёд№Ӣз”іи«Ӣз”ҹпјҢи«ӢйҖІе…ҘгҖҢж Ўзі»пјҲзө„пјүеӯёзЁӢдёҠеӮіжӘ”жЎҲеӢҫйҒёжё…е–®й җж“¬з·ҙзҝ’зүҲгҖҚпјҢ дҪҝз”ЁгҖҢеӯёжё¬жҮүи©ҰиҷҹзўјгҖҚгҖҒгҖҢиә«еҲҶиӯүеӯ—иҷҹгҖҚгҖҒгҖҢдёҠеӮіеҜҶзўјгҖҚзҷ»е…Ҙз·ҙзҝ’зүҲзі»зөұ пјҢйҖІиЎҢжӘ”жЎҲжӘўиҰ–еҸҠдёҠеӮіжөҒзЁӢжј”з·ҙгҖӮ 4. з·ҙзҝ’зүҲдёҠеӮіеҜҶзўјпјҢи«ӢдёҖеҫӢијёе…Ҙз”іи«Ӣз”ҹд№ӢгҖҢеҮәз”ҹе№ҙжңҲж—ҘгҖҚе…ұ 7 зўјпјҢеҰӮ 0960701 гҖӮз·ҙзҝ’зүҲдёҚжҸҗдҫӣдҝ®ж”№еҜҶзўјеҠҹиғҪгҖӮ 5. з•¶еӯёе№"
+   "snippet": "作者 : 註冊組 發佈日期 : 2025-04-11 重要通知 【四技申請】學習歷程中央資料庫釋出資料 ( 檔案 ) 查看及 校系、學程上傳檔案勾選清單預擬練習版注意事項 1. 系統開放時間： 114.4.11 （星期五） 10 ： 00 起至 114.4.16 （星期三） 21 ： 00 止 ( 每日 8 ： 00 起至 21 ： 00 止，系統於 21 ： 00 準時關閉 ) 2. 練習版系統不會記錄或暫存任何操作過程，僅提供熟悉介面功能及系統操作程序。 操作手冊： https://www.jctv.ntut.edu.tw/downloads/114/caac/114_caac_system2.pdf 3. 通過第一階段篩選之申請生，請進入「校系（組）學程上傳檔案勾選清單預擬練習版」， 使用「學測應試號碼」、「身分證字號」、「上傳密碼」登入練習版系統 ，進行檔案檢視及上傳流程演練。 4. 練習版上傳密碼，請一律輸入申請生之「出生年月日」共 7 碼，如 0960701 。練習版不提供修改密碼功能。 5. 當學年度應屆畢業生，可檢視一～四學期之中央資料庫學習歷程檔案 ； 110 學年度以後畢業之非應屆考生，可檢視一～六學期之中央資料庫學習歷程檔案。 6. 如有疑義者，須於 114.4.17( 星期四 ) 中午 12 時前 之每日上班時間，向教務處註冊組提出疑義申請，逾期或未依本簡章規定提出疑義申請者，視同確認中央資料庫學習歷程檔案，概不受理複查及申訴。 7. 請同學用電腦進行以上作業，避免因為手機 / 平板顯示問題而影響操作過程。 聯合會網址： https://www.jctv.ntut.edu.tw/caac/contents.php?academicYear=114&subId=115",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131581.json",
+   "detail_status": "parsed",
+   "detail_revision": "05657c8a06ce309f89b5e3e799cf9e99c4ac4d1c99c9ae5733cdcbdd90eb8e25",
+   "detail_attempts": 1,
+   "summary": "6. 如有疑義者，須於 114.4.17( 星期四 ) 中午 12 時前 之每日上班時間，向教務處註冊組提出疑義申請，逾期或未依本簡章規定提出疑義申請者，視同確認中央資料庫學習歷程檔案，概不受理複查及申訴。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-04-17",
+     "title": "【四技申請】學習歷程中央資料庫釋出資料(檔案)查看及 校系、學程上傳檔案勾選清單預擬練習版注意事項",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "05657c8a06ce309f89b5e3e799cf9e99c4ac4d1c99c9ae5733cdcbdd90eb8e25"
+    }
+   ]
   },
   {
    "id": "cysh-131582",
@@ -3603,7 +4132,25 @@
    "source_category": "歷屆招生甄選試題",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2025-03-29 說明： 一、實驗實作各科題目及參考答案如附件。 二、題目及參考答案有疑義者請於114年3月31日(星期一) 12：00前填寫附件「甄選題目疑義釋復申請表」，傳真至嘉義高中教務處 (05)2779293 提出申請， 逾 期不予受理。"
+   "snippet": "作者 : 科學班 發佈日期 : 2025-03-29 說明： 一、實驗實作各科題目及參考答案如附件。 二、題目及參考答案有疑義者請於114年3月31日(星期一) 12：00前填寫附件「甄選題目疑義釋復申請表」，傳真至嘉義高中教務處 (05)2779293 提出申請， 逾 期不予受理。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131474.json",
+   "detail_status": "parsed",
+   "detail_revision": "d57478a7f86e157e5d27251b8caaedf7dd43ba85fd5fd802fb0ac5d642ed19fd",
+   "detail_attempts": 1,
+   "summary": "二、題目及參考答案有疑義者請於114年3月31日(星期一) 12：00前填寫附件「甄選題目疑義釋復申請表」，傳真至嘉義高中教務處 (05)2779293 提出申請， 逾 期不予受理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-03-31",
+     "title": "114學年度科學班甄選入學「實驗實作」甄選試題與參考答案",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d57478a7f86e157e5d27251b8caaedf7dd43ba85fd5fd802fb0ac5d642ed19fd"
+    }
+   ]
   },
   {
    "id": "cysh-131459",
@@ -3616,7 +4163,17 @@
    "source_category": "彈性學習【充實補強.微課程】",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組協行教師2 發佈日期 : 2025-03-28 113-2 學期高一微課程(後八週)線上選課： 4/2(三) - 4/7(一)12:00 ，請上 學校選課系統 選課 (務必填滿志願序，以免影響自身權益。如未選填，將由系統自動分發，不接受事後換課) 本次課程大綱公告於附件，請同學自行查看。 選課對象：101-113、119、120班級(非自主學習者) 📍日文、西班牙語、天文物理、鋼筆藝術 四門課程為全學期課程， 該班課程學生無須選課 📍木工實作二、浮水印手工書將酌收費用，選課前務必詳閱課程大綱"
+   "snippet": "作者 : 教學組協行教師2 發佈日期 : 2025-03-28 113-2 學期高一微課程(後八週)線上選課： 4/2(三) - 4/7(一)12:00 ，請上 學校選課系統 選課 (務必填滿志願序，以免影響自身權益。如未選填，將由系統自動分發，不接受事後換課) 本次課程大綱公告於附件，請同學自行查看。 選課對象：101-113、119、120班級(非自主學習者) 📍日文、西班牙語、天文物理、鋼筆藝術 四門課程為全學期課程， 該班課程學生無須選課 📍木工實作二、浮水印手工書將酌收費用，選課前務必詳閱課程大綱",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131459.json",
+   "detail_status": "parsed",
+   "detail_revision": "fa681214eca17128a8c06dc0b79b6a515f26142b28f0441a1264561082525af7",
+   "detail_attempts": 1,
+   "summary": "113-2 學期高一微課程(後八週)線上選課： 4/2(三) - 4/7(一)12:00 ，請上 學校選課系統 選課 (務必填滿志願序，以免影響自身權益。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131586",
@@ -3629,7 +4186,17 @@
    "source_category": "大考、升學相關",
    "category": "升學",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "ńŻťŔÇů : ŔĘ╗ňćŐšÁä šÖ╝ńŻłŠŚąŠťč : 2025-03-27 115 ňşŞň╣┤ň║ŽňĄžňşŞš╣üŠśčŠÄĘŔľŽŠáíňůžŠ»öň║ĆŔżŽŠ│Ľ 114 ň╣┤ 3 Šťł 25 ŠŚą 115 ňşŞň╣┤ň║ŽÚźśńŞëňĄžňşŞš╣üŠśčŠÄĘŔľŽŠáíňůžńŻťŠąşŔĘÄŔźľŠťâŔş░ÚÇÜÚüÄ 115 ňşŞň╣┤ň║ŽňĄžňşŞš╣üŠśčŠÄĘŔľŽŠáíňůžŠ»öň║ĆŔżŽŠ│ĽšÂôŠáíňůžŠťâŔş░Š▒║Ŕş░ňżî´╝îš╣üŠśčŠáíňůžÚüŞňíźň┐ŚÚíśňłćšÖ╝ŠÄĺň║ĆňĆŐŠÄĘŔľŽÚáćň║ĆńŞő´╝Ü ŠáíňůžÚüŞňíźň┐ŚÚíśňłćšÖ╝ŠÄĺň║ĆňĆŐŠÄĘŔľŽÚáćň║Ć´╝Ü Š»öň║ĆńŞÇ´╝ÜňťĘŠáíňşŞŠąşŠłÉšŞżšÖżňłćŠ»ö ´╝łšöäÚüŞŠťâŠëÇŔŽĆň«Ü´╝îšé║ń║öňşŞŠťčňşŞŠąşŠłÉšŞżšŞŻň╣│ňŁç´╝ë Š»öň║Ćń║î´╝ÜňşŞŠŞČšŞŻš┤Üňłć ´╝łšĄżŠťâšÁäŠÄíŔĘłňťőŠľçŃÇüŔő▒ŠľçŃÇüŠĽŞňşŞŃÇüšĄżŠťâšşëňŤŤšžĹš┤Üňłć´╝ŤŔç¬šäÂšÁäŠÄíŔĘłňťőŠľçŃÇüŔő▒ŠľçŃÇüŠĽŞňşŞŃÇüŔç¬šäÂšşëňŤŤšžĹš┤ÜňłćŃÇéŔőąňşŞšöčŠĽŞňşŞ A ŔłçŠĽŞňşŞ B ŠťëňÉîŠÖéŠçëŔÇâ´╝îňëçŠÄíŔĘłňůÂÚźśń║îńŞőňşŞŠťčŠëÇń┐«ŠĽŞňşŞšžĹšŤ«Úí×ňłąšé║Š║ľ´╝ë Š»öň║ĆńŞë´╝Ü´╝ł ňŤŤŠČíŔĄçš┐ĺŔÇâ + ÚźśńŞëńŞŐňşŞŠťčňëŹ ňůęŠČíŠĘíŠôČŔÇâ´╝ëň╣│ňŁç ´╝łňůÂńŞşŠĘíŠôČŔÇâ´╝Ü šĄżŠťâšÁäŠÄíŔĘłňťőŠľçŃÇüŔő▒ŠľçŃÇüŠĽŞňşŞŃÇüšĄżŠťâšşëšžĹšŤ«ŠłÉšŞż´╝ŤŔç¬šäÂšÁäŠÄíŔĘłňťőŠľçŃÇüŔő▒ŠľçŃÇüŠĽŞňşŞŃÇüŔç¬šäÂšşëšžĹšŤ«ŠłÉšŞżŃÇéŔőąŠĽŞňşŞ A ŔłçŠĽŞňşŞ B ňÉîŠ"
+   "snippet": "ńŻťŔÇů : ŔĘ╗ňćŐšÁä šÖ╝ńŻłŠŚąŠťč : 2025-03-27 115 ňşŞň╣┤ň║ŽňĄžňşŞš╣üŠśčŠÄĘŔľŽŠáíňůžŠ»öň║ĆŔżŽŠ│Ľ 114 ň╣┤ 3 Šťł 25 ŠŚą 115 ňşŞň╣┤ň║ŽÚźśńŞëňĄžňşŞš╣üŠśčŠÄĘŔľŽŠáíňůžńŻťŠąşŔĘÄŔźľŠťâŔş░ÚÇÜÚüÄ 115 ňşŞň╣┤ň║ŽňĄžňşŞš╣üŠśčŠÄĘŔľŽŠáíňůžŠ»öň║ĆŔżŽŠ│ĽšÂôŠáíňůžŠťâŔş░Š▒║Ŕş░ňżî´╝îš╣üŠśčŠáíňůžÚüŞňíźň┐ŚÚíśňłćšÖ╝ŠÄĺň║ĆňĆŐŠÄĘŔľŽÚáćň║ĆńŞő´╝Ü ŠáíňůžÚüŞňíźň┐ŚÚíśňłćšÖ╝ŠÄĺň║ĆňĆŐŠÄĘŔľŽÚáćň║Ć´╝Ü Š»öň║ĆńŞÇ´╝ÜňťĘŠáíňşŞŠąşŠłÉšŞżšÖżňłćŠ»ö ´╝łšöäÚüŞŠťâŠëÇŔŽĆň«Ü´╝îšé║ń║öňşŞŠťčňşŞŠąşŠłÉšŞżšŞŻň╣│ňŁç´╝ë Š»öň║Ćń║î´╝ÜňşŞŠŞČšŞŻš┤Üňłć ´╝łšĄżŠťâšÁäŠÄíŔĘłňťőŠľçŃÇüŔő▒ŠľçŃÇüŠĽŞňşŞŃÇüšĄżŠťâšşëňŤŤšžĹš┤Üňłć´╝ŤŔç¬šäÂšÁäŠÄíŔĘłňťőŠľçŃÇüŔő▒ŠľçŃÇüŠĽŞňşŞŃÇüŔç¬šäÂšşëňŤŤšžĹš┤ÜňłćŃÇéŔőąňşŞšöčŠĽŞňşŞ A ŔłçŠĽŞňşŞ B ŠťëňÉîŠÖéŠçëŔÇâ´╝îňëçŠÄíŔĘłňůÂÚźśń║îńŞőňşŞŠťčŠëÇń┐«ŠĽŞňşŞšžĹšŤ«Úí×ňłąšé║Š║ľ´╝ë Š»öň║ĆńŞë´╝Ü´╝ł ňŤŤŠČíŔĄçš┐ĺŔÇâ + ÚźśńŞëńŞŐňşŞŠťčňëŹ ňůęŠČíŠĘíŠôČŔÇâ´╝ëň╣│ňŁç ´╝łňůÂńŞşŠĘíŠôČŔÇâ´╝Ü šĄżŠťâšÁäŠÄíŔĘłňťőŠľçŃÇüŔő▒ŠľçŃÇüŠĽŞňşŞŃÇüšĄżŠťâšşëšžĹšŤ«ŠłÉšŞż´╝ŤŔç¬šäÂšÁäŠÄíŔĘłňťőŠľçŃÇüŔő▒ŠľçŃÇüŠĽŞňşŞŃÇüŔç¬šäÂšşëšžĹšŤ«ŠłÉšŞżŃÇéŔőąŠĽŞňşŞ A ŔłçŠĽŞňşŞ B ňÉîŠ",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131586.json",
+   "detail_status": "parsed",
+   "detail_revision": "df85963cb1df1afae54a4ac791606f0cca8ccb12bedc1556dc97c696ac45b543",
+   "detail_attempts": 1,
+   "summary": "114 年 3 月 25 日 115 學年度高三大學繁星推薦校內作業討論會議通過",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131437",
@@ -3719,7 +4286,17 @@
    "source_category": "旭陵圓夢計畫",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 社團活動組 發佈日期 : 2025-03-20"
+   "snippet": "作者 : 社團活動組 發佈日期 : 2025-03-20",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131373.json",
+   "detail_status": "parsed",
+   "detail_revision": "316e947f3a9437ada4dca16c70659297ec52da001b3365938212fc806fe5e560",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-131365",
@@ -3832,7 +4409,17 @@
    "source_category": "最新消息",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-03-18 一、報名方式：採現場報名，通訊報名恕不受理。 二、報名日期： 114年3月10日(一)至114年6月27日(五)止，上班日14：00至22：00。 114年6月30日(一)至114年8月14日(四)止，上班日8：00至17：00。"
+   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-03-18 一、報名方式：採現場報名，通訊報名恕不受理。 二、報名日期： 114年3月10日(一)至114年6月27日(五)止，上班日14：00至22：00。 114年6月30日(一)至114年8月14日(四)止，上班日8：00至17：00。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131353.json",
+   "detail_status": "parsed",
+   "detail_revision": "495c4c55e3be453632969849f9dd89d05f959ce1ed106b3367959e7278877b5e",
+   "detail_attempts": 1,
+   "summary": "二、報名日期： 114年3月10日(一)至114年6月27日(五)止，上班日14：00至22：00。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131350",
@@ -3846,7 +4433,17 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "snippet": "",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "detail_available": false,
+   "detail_ref": "data/details/cysh/cysh-131350.json",
+   "detail_status": "empty",
+   "detail_revision": "8e7e16b6f64d239841b49face0755da4436eaec446a82f342e58be680f2b39e8",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-131355",
@@ -3918,7 +4515,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 美術科 發佈日期 : 2025-03-17"
+   "snippet": "作者 : 美術科 發佈日期 : 2025-03-17",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131318.json",
+   "detail_status": "parsed",
+   "detail_revision": "bd38b3903d6d57d21f6aa37299b91ae0b0eac2611f0f047fe892a5a677304d9a",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-131319",
@@ -3931,7 +4538,17 @@
    "source_category": "重要公告",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 校友會 發佈日期 : 2025-03-17 公告請點選以下附件查閱 第15屆傑出校友公告"
+   "snippet": "作者 : 校友會 發佈日期 : 2025-03-17 公告請點選以下附件查閱 第15屆傑出校友公告",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131319.json",
+   "detail_status": "parsed",
+   "detail_revision": "c58e954112d4737efb985abeca979ab32d89edaf0606323131a31d66d4939288",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-131341",
@@ -3944,7 +4561,17 @@
    "source_category": "歷屆招生甄選試題",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2025-03-17 說明: 1.修正英文、物理、數學參考答案如附件。"
+   "snippet": "作者 : 科學班 發佈日期 : 2025-03-17 說明: 1.修正英文、物理、數學參考答案如附件。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131341.json",
+   "detail_status": "parsed",
+   "detail_revision": "2d44ddbbe415ae288e3d0886b2bd06bd9ac414bd477b701a30545cb48fb2c40a",
+   "detail_attempts": 1,
+   "summary": "1.修正英文、物理、數學參考答案如附件。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131320",
@@ -3957,7 +4584,17 @@
    "source_category": "教科書版本",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-03-17"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-03-17",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131320.json",
+   "detail_status": "parsed",
+   "detail_revision": "20d744852b31fd4dbd94c8681acc53dcc6e7439aff35131ff354ffc668ede07e",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-131312",
@@ -3970,7 +4607,25 @@
    "source_category": "歷屆招生甄選試題",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2025-03-15 說明: 1.各科題目及參考答案如附件。 2.題目及參考答案有疑義者請於114年3月17日(星期一) 12：00前填寫簡章附件五「甄選題目疑義釋復申請表」，傳真或代理人親送至本校教務處，傳真電話：(05)277-9293。逾期不予受理。"
+   "snippet": "作者 : 科學班 發佈日期 : 2025-03-15 說明: 1.各科題目及參考答案如附件。 2.題目及參考答案有疑義者請於114年3月17日(星期一) 12：00前填寫簡章附件五「甄選題目疑義釋復申請表」，傳真或代理人親送至本校教務處，傳真電話：(05)277-9293。逾期不予受理。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131312.json",
+   "detail_status": "parsed",
+   "detail_revision": "6c048686342ec620c465edab11c650fcbbbf9f2f79813e07fb24ce073ce07b0d",
+   "detail_attempts": 1,
+   "summary": "2.題目及參考答案有疑義者請於114年3月17日(星期一) 12：00前填寫簡章附件五「甄選題目疑義釋復申請表」，傳真或代理人親送至本校教務處，傳真電話：(05)277-9293。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-03-17",
+     "title": "114學年度科學班甄選入學「科學能力檢定」甄選試題與參考答案",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6c048686342ec620c465edab11c650fcbbbf9f2f79813e07fb24ce073ce07b0d"
+    }
+   ]
   },
   {
    "id": "cysh-131292",
@@ -4006,7 +4661,17 @@
    "source_category": "獲獎快訊",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2025-03-13 賀!!本校科學班 118黃○叡、318吳○緯 參加2025年化學奧林匹亞第57屆冬令營(選訓決賽營)榮獲一等獎 恭喜獲獎同學，感謝簡○展老師、吳○雯老師 辛勤指導!!!"
+   "snippet": "作者 : 科學班 發佈日期 : 2025-03-13 賀!!本校科學班 118黃○叡、318吳○緯 參加2025年化學奧林匹亞第57屆冬令營(選訓決賽營)榮獲一等獎 恭喜獲獎同學，感謝簡○展老師、吳○雯老師 辛勤指導!!!",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131294.json",
+   "detail_status": "parsed",
+   "detail_revision": "b1df084cd14530f235947462236761ac99bfdea994ceab2997a366c8f5371aeb",
+   "detail_attempts": 1,
+   "summary": "本校科學班 118黃○叡、318吳○緯 參加2025年化學奧林匹亞第57屆冬令營(選訓決賽營)榮獲一等獎 恭喜獲獎同學，感謝簡○展老師、吳○雯老師 辛勤指導!",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131288",
@@ -4088,7 +4753,17 @@
    "source_category": "大學榜單",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 特教組 發佈日期 : 2025-03-11"
+   "snippet": "作者 : 特教組 發佈日期 : 2025-03-11",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131271.json",
+   "detail_status": "parsed",
+   "detail_revision": "78c83e134466b528d01f58bcca5abd248e9e5d3c6c7970a094f3a9b02efa84e9",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-131190",
@@ -4191,7 +4866,17 @@
    "source_category": "電子書資源",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-02-27 一、計畫內容：化學中心總圖書室與國立臺灣大學化學系圖書室共同執行國科會自然處【自然科學及永續研究圖書服務計劃-化學領域】，旨在提供化學領域所需的資源，如電子期刊、圖書、電子書和資料庫等。本計畫透過館際合作推動學術資源共享，並提供學界免費文獻申請服務。 二、館藏資源：超過百種化學專業期刊，化學專業圖書超過兩萬冊。 三、申請內容：化學領域館際合作線上申請、電子報、及ChemNews 網站等創新服務，提升學術資源利用與合作效率。 四、申請方式： 1. 線上申請與傳遞流程：當您需要化學領域中的電子期刊文章、電子書章節或紙本文獻時，可透過化學領域館際合作線上申請。化學中心總圖書室將以「零距離、免付費」的方式，提供所需檔案給各校圖書館。 ✔️申請網址：https://reurl.cc/eGrnLM 2. 訂閱電子報了解新知：可透過國科會自然處《化學圖書服務計畫》電子報，從〈推薦報導〉欄位了解國際最新科學知識獲得科學展覽的靈感，每月編輯團隊精選國際期刊中的4篇文章撰寫中文導讀，協助大學生及高中生讀者閱讀，同時附上相關報導及研究文章的原文連結，主題涵蓋半導體、材料、人工智慧AI、淨零排放、電池等等熱門議題。 ✔️電子報訂閱：https://reurl.cc/74ankl"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-02-27 一、計畫內容：化學中心總圖書室與國立臺灣大學化學系圖書室共同執行國科會自然處【自然科學及永續研究圖書服務計劃-化學領域】，旨在提供化學領域所需的資源，如電子期刊、圖書、電子書和資料庫等。本計畫透過館際合作推動學術資源共享，並提供學界免費文獻申請服務。 二、館藏資源：超過百種化學專業期刊，化學專業圖書超過兩萬冊。 三、申請內容：化學領域館際合作線上申請、電子報、及ChemNews 網站等創新服務，提升學術資源利用與合作效率。 四、申請方式： 1. 線上申請與傳遞流程：當您需要化學領域中的電子期刊文章、電子書章節或紙本文獻時，可透過化學領域館際合作線上申請。化學中心總圖書室將以「零距離、免付費」的方式，提供所需檔案給各校圖書館。 ✔️申請網址：https://reurl.cc/eGrnLM 2. 訂閱電子報了解新知：可透過國科會自然處《化學圖書服務計畫》電子報，從〈推薦報導〉欄位了解國際最新科學知識獲得科學展覽的靈感，每月編輯團隊精選國際期刊中的4篇文章撰寫中文導讀，協助大學生及高中生讀者閱讀，同時附上相關報導及研究文章的原文連結，主題涵蓋半導體、材料、人工智慧AI、淨零排放、電池等等熱門議題。 ✔️電子報訂閱：https://reurl.cc/74ankl",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-131154.json",
+   "detail_status": "parsed",
+   "detail_revision": "f6c96a01587cbfea3491e7ebfd9e857645ebc541cd4a4ef86c0c5a5427e4645d",
+   "detail_attempts": 1,
+   "summary": "本計畫透過館際合作推動學術資源共享，並提供學界免費文獻申請服務。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-131118",
@@ -4406,7 +5091,17 @@
    "source_category": "科學展覽",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2025-02-13 「中華民國中小學科學展覽會實施要點」暨「臺灣國際科學展覽會實施要點」業經國立臺灣科學教育館於114年1月16日以科實字第11402000350號令修正發布，檢送發布令影本（含實施要點及部分規定修正對照表）. ※請參閱附件"
+   "snippet": "作者 : 設備組 發佈日期 : 2025-02-13 「中華民國中小學科學展覽會實施要點」暨「臺灣國際科學展覽會實施要點」業經國立臺灣科學教育館於114年1月16日以科實字第11402000350號令修正發布，檢送發布令影本（含實施要點及部分規定修正對照表）. ※請參閱附件",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-130958.json",
+   "detail_status": "parsed",
+   "detail_revision": "5c55005a0b32026c51cbb2bcbd72bb47e389fdc02a54cd4b685549822a365540",
+   "detail_attempts": 1,
+   "summary": "「中華民國中小學科學展覽會實施要點」暨「臺灣國際科學展覽會實施要點」業經國立臺灣科學教育館於114年1月16日以科實字第11402000350號令修正發布，檢送發布令影本（含實施要點及部分規定修正對照表）. ※請參閱附件",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-130946",
@@ -4419,7 +5114,17 @@
    "source_category": "教科書版本",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-02-12"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-02-12",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-130946.json",
+   "detail_status": "parsed",
+   "detail_revision": "d2ccf1db92211f4fb2a969962a2a10d9dde62bd2f229aa91a3c6ee2beadb0660",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-130927",
@@ -4738,7 +5443,17 @@
    "source_category": "教務組＞課程計畫",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-02-05"
+   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-02-05",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-130868.json",
+   "detail_status": "parsed",
+   "detail_revision": "327bd2a80a570e504192bc8c53bb8e80aa3c6e23b78191cbf0a8674b0eb9cf7a",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-130867",
@@ -4751,7 +5466,17 @@
    "source_category": "教務組＞課程計畫",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-02-05"
+   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-02-05",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-130867.json",
+   "detail_status": "parsed",
+   "detail_revision": "0e0bbab314aca88baf01c6c0381c95fb330e3e7a2508c8e78c271e2877ab9da3",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-130869",
@@ -4764,7 +5489,17 @@
    "source_category": "教務組＞招生訊息",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-02-05 名單及報到注意事項請詳見檔案。"
+   "snippet": "作者 : 進修部教務組 發佈日期 : 2025-02-05 名單及報到注意事項請詳見檔案。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-130869.json",
+   "detail_status": "parsed",
+   "detail_revision": "189510903bad0d8996eeddaa7e7cc90905fdacd16a56394312ffa505f9b1af8a",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-130870",
@@ -4918,7 +5653,17 @@
    "source_category": "教科書版本",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-01-16"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-01-16",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-130768.json",
+   "detail_status": "parsed",
+   "detail_revision": "c78df506fd263be3cc4a57c6a880b12622f20258d9842231332a1f6493d3aab5",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-130646",
@@ -4969,7 +5714,17 @@
    "source_category": "重補修(含自學輔導)",
    "category": "段考考試",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2025-01-15 高二藝術生活與高二音樂重補修相關訊息，請詳見附件。 報名繳費： (1) 音樂 2/7 星期五 8:45 (2) 藝術生活 2/10 星期一8:45 開課時間： (1) 音樂 2/7 星期五 9:00-11:50，13:20-16:10 (2) 藝術生活 2/10 星期一9:00-11:50，13:20-16:10 113學年度高二轉組生 ，因班群對開致使轉組至新班級後，缺漏藝術生活與音樂學分者，請務必報名以免無法畢業。"
+   "snippet": "作者 : 教學組 發佈日期 : 2025-01-15 高二藝術生活與高二音樂重補修相關訊息，請詳見附件。 報名繳費： (1) 音樂 2/7 星期五 8:45 (2) 藝術生活 2/10 星期一8:45 開課時間： (1) 音樂 2/7 星期五 9:00-11:50，13:20-16:10 (2) 藝術生活 2/10 星期一9:00-11:50，13:20-16:10 113學年度高二轉組生 ，因班群對開致使轉組至新班級後，缺漏藝術生活與音樂學分者，請務必報名以免無法畢業。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-130755.json",
+   "detail_status": "parsed",
+   "detail_revision": "2763eb068bcca36bf9f7ad78e62a5196718520a2909c53b820266630fc8f72b4",
+   "detail_attempts": 1,
+   "summary": "113學年度高二轉組生 ，因班群對開致使轉組至新班級後，缺漏藝術生活與音樂學分者，請務必報名以免無法畢業。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-130713",
@@ -5005,7 +5760,17 @@
    "source_category": "成果發表",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-01-13"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-01-13",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-130720.json",
+   "detail_status": "parsed",
+   "detail_revision": "b3eec7361cf389a892c2d95651f78e8243de7d13c57a257cf8f0eb00843e97bd",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-130712",
@@ -5088,7 +5853,17 @@
    "source_category": "小論文",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-01-09 恭喜獲獎同學，感謝指導教師們的辛勤指導!"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2025-01-09 恭喜獲獎同學，感謝指導教師們的辛勤指導!",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-130687.json",
+   "detail_status": "parsed",
+   "detail_revision": "c993ba1b273792bc66605883910004ce50f6dcc92dedceba3bb75f71d43dc7f2",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-130654",
