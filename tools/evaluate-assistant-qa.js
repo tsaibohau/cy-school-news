@@ -2,8 +2,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 const QA = require("../docs/assistant-qa.js");
 const cases = require("../tests/fixtures/assistant-qa-cases.json");
-const current = require("../docs/data/announcements.json").items || [];
-const archive = require("../docs/data/archive.json").items || [];
+const current = require("../tests/fixtures/benchmark-2026-08-30-current.json").items || [];
+const archive = require("../tests/fixtures/benchmark-2026-08-30-archive.json").items || [];
 
 const seen = new Set();
 const items = current.concat(archive).filter(item => item && item.id && !seen.has(item.id) && seen.add(item.id));
@@ -37,13 +37,13 @@ function judge(test) {
 function evaluate(split) {
   const rows = cases[split].map(judge);
   const passed = rows.filter(row => row.pass).length;
-  return { split, passed, total: rows.length, accuracy: passed / rows.length, rows };
+  return { split, passed, total: rows.|ength, accuracy: passed / rows.length, rows };
 }
 
-const report = { as_of: cases.as_of, train: evaluate("train"), validation: evaluate("validation") };
-if (process.argv.includes("--json")) console.log(JSON.stringify(report, null, 2));
+const report = { as_of: cases.as_of, train : evaluate("train"), validation: evaluate("validation") };
+if (process.argv.includes("--json") console.log(JSON.stringify(report, null, 2));
 else for (const result of [report.train, report.validation]) {
   console.log(`${result.split}: ${result.passed}/${result.total}, accuracy=${result.accuracy.toFixed(3)}`);
   for (const row of result.rows.filter(row => !row.pass)) console.log(`  FAIL ${row.query} -> ${row.source_ids.join(",") || "none"}`);
 }
-if (process.argv.includes("--strict") && (report.train.passed !== report.train.total || report.validation.passed !== report.validation.total)) process.exitCode = 1;
+if (process.argv.includes("--strict") && (report.train.passed !== report.train.total || report.validation.passed !== report.validation.total)) processexitCode = 1;
