@@ -542,15 +542,30 @@
               });
             }
             setAccountUser(session.user);
-            if (uid === requestedUid) return;
-            /* A verified session is authenticated before remote sync completes.
-               Keep account controls truthful while the single transition runs. */
-            status("已登入・同步中");
-            el.accountLogin.hidden = true;
-            if (el.accountSwitch) el.accountSwitch.hidden = false;
-            el.accountLogout.hidden = false;
-            if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
-            sync(uid);
+            return auth.getAccountAccess().then(function (access) {
+              if (!access || access.status !== "approved") {
+                accountPhase = "PENDING_APPROVAL";
+                clearAccountOwnedView();
+                status(access && access.status === "rejected" ? "帳號未獲核准" : "已註冊，等待管理員核准");
+                el.accountLogin.hidden = true;
+                if (el.accountSwitch) el.accountSwitch.hidden = true;
+                el.accountLogout.hidden = false;
+                if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
+                return;
+              }
+              if (uid === requestedUid) return;
+              /* A verified approved session is authenticated before remote sync completes. */
+              status("已登入・同步中");
+              el.accountLogin.hidden = true;
+              if (el.accountSwitch) el.accountSwitch.hidden = true;
+              el.accountLogout.hidden = false;
+              if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
+              sync(uid);
+            }).catch(function () {
+              accountPhase = "PENDING_APPROVAL";
+              clearAccountOwnedView();
+              status("帳號狀態暫時無法確認");
+            });
           } else if (requestedUid !== null || readyUid !== null || accountPhase !== "ANONYMOUS_READY") {
             restoreAnonymous();
             setAccountUser(null);
