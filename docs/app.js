@@ -1260,18 +1260,9 @@
           '<button type="button" data-id="' + esc(sub.id) + '" aria-label="移除 ' + esc(sub.keyword) + '">×</button></span>';
       }).join("");
     }
-    function assistantDetail(item) {
-      if (!item || !window.CyNewsDetailUI || !window.CyNewsDetailUI.validDetailRef(item.detail_ref)) return Promise.resolve(null);
-      var key = String(item.id || "");
-      if (state.detailCache[key]) return Promise.resolve(state.detailCache[key]);
-      return fetch(item.detail_ref, { cache: "no-store" }).then(function (response) {
-        if (!response.ok) return null;
-        return response.json();
-      }).then(function (record) {
-        if (!record || String(record.announcement_id) !== key || record.provenance !== "official_article") return null;
-        state.detailCache[key] = record;
-        return record;
-      }).catch(function () { return null; });
+    function assistantDetail() {
+      // Full article sidecars are deliberately not served from the public site.
+      return Promise.resolve(null);
     }
     function fetchJsonItems(url) {
       return fetch(url + "?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
@@ -1908,7 +1899,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=59").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=60").catch(function () {});
       });
     }
 
