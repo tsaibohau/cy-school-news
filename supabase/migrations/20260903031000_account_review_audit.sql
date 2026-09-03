@@ -4,4 +4,4 @@ alter table public.admin_audit_log
 
 alter table public.admin_audit_log
   add constraint admin_audit_log_action_check
-  check (action in ('account_approved', 'account_rejected'));
+  check (action in ('invite_requested', 'account_approved', 'account_rejected'));
