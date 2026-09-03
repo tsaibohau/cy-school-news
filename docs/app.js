@@ -94,8 +94,8 @@
       appLoading: $("appLoading"), list: $("list"), subList: $("subList"), countLine: $("countLine"),
       updatedAt: $("updatedAt"), q: $("q"),
       schoolFilter: $("schoolFilter"), catChips: $("catChips"),
-      viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"),
-      tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabSub: $("tabSub"), subBadge: $("subBadge"),
+      viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"), viewAdmin: $("viewAdmin"),
+      tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabSub: $("tabSub"), tabAdmin: $("tabAdmin"), subBadge: $("subBadge"),
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
       reminderPushToggle: $("reminderPushToggle"), reminderPushState: $("reminderPushState"),
@@ -104,7 +104,7 @@
       btnRefresh: $("btnRefresh"), refreshState: $("refreshState"),
       accountState: $("accountState"), accountEmail: $("accountEmail"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
       accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"), publicAccountLogout: $("publicAccountLogout"), publicAccessStatus: $("publicAccessStatus"),
-      adminPanel: $("adminPanel"), adminRefresh: $("adminRefresh"), adminStatus: $("adminStatus"), adminAccounts: $("adminAccounts"),
+      adminRefresh: $("adminRefresh"), adminStatus: $("adminStatus"), adminAccounts: $("adminAccounts"),
       passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
@@ -318,6 +318,7 @@
         if (el.publicAccountLogin) el.publicAccountLogin.hidden = false;
         if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = false;
         if (el.publicAccountLogout) el.publicAccountLogout.hidden = true;
+        if (el.tabAdmin) el.tabAdmin.hidden = true;
         if (state.tab !== "latest") switchTab("latest");
       }
       function showPendingAccountShell(message) {
@@ -351,9 +352,9 @@
         }).join("") : '<p class="empty">目前沒有已註冊帳號。</p>';
       }
       function loadAdminAccounts() {
-        if (!accountAuth || !state.accountUser || !el.adminPanel) return;
-        el.adminPanel.hidden = true;
-        accountAuth.getAdminAccounts().then(function (rows) { el.adminPanel.hidden = false; el.adminStatus.textContent = ""; renderAdminAccounts(rows); }).catch(function () { el.adminPanel.hidden = true; });
+        if (!accountAuth || !state.accountUser || !state.accountAccess || !state.accountAccess.is_admin || !el.adminAccounts) return;
+        el.adminStatus.textContent = "讀取帳號申請中";
+        accountAuth.getAdminAccounts().then(function (rows) { el.adminStatus.textContent = ""; renderAdminAccounts(rows); }).catch(function () { el.adminStatus.textContent = "目前無法讀取帳號申請，請重新整理後再試。"; });
       }
       function maybePromptNickname(user) {
         if (!user || !el.nicknameDialog || !el.nicknameInput) return;
@@ -588,12 +589,13 @@
             return auth.getAccountAccess().then(function (access) {
               state.accountAccess = access;
               if (access.status !== "approved") {
-                if (el.adminPanel) el.adminPanel.hidden = true;
+                if (el.tabAdmin) el.tabAdmin.hidden = true;
                 showPendingAccountShell(access.status === "rejected" ? "此帳號目前未獲使用核准；如有疑問請聯絡管理員。" : "帳號已登入，等待管理員核准後才能使用個人功能。");
                 status(access.status === "rejected" ? "未獲核准" : "等待核准");
                 return;
               }
               showAccountShell();
+              if (el.tabAdmin) el.tabAdmin.hidden = !access.is_admin;
               loadAdminAccounts();
               if (uid === requestedUid) return;
             /* A verified session is authenticated before remote sync completes.
@@ -606,7 +608,7 @@
               sync(uid);
             }).catch(function () {
               state.accountAccess = null;
-              if (el.adminPanel) el.adminPanel.hidden = true;
+              if (el.tabAdmin) el.tabAdmin.hidden = true;
               showPendingAccountShell("帳號權限暫時無法確認，請稍後再試。");
               status("權限待確認");
             });
@@ -1926,11 +1928,15 @@
     function hasSignedInAccount() {
       return !!(state.accountUser && typeof state.accountUser.id === "string" && state.accountUser.id && state.accountAccess && state.accountAccess.status === "approved");
     }
+    function isAdminAccount() {
+      return hasSignedInAccount() && !!state.accountAccess.is_admin;
+    }
     function switchTab(tab) {
       if (tab !== "latest" && !hasSignedInAccount()) {
         tab = "latest";
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能需要登入後才能使用。";
       }
+      if (tab === "admin" && !isAdminAccount()) tab = "latest";
       state.tab = tab;
       setNavMenu(false);
       if (el.navCurrentLabel) el.navCurrentLabel.textContent = "選單";
@@ -1944,18 +1950,21 @@
       if (el.viewAssistant) el.viewAssistant.hidden = !assistant;
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
       el.viewSub.hidden = tab !== "sub";
+      if (el.viewAdmin) el.viewAdmin.hidden = tab !== "admin";
       if (el.tabHome) el.tabHome.classList.toggle("is-active", home);
       el.tabLatest.classList.toggle("is-active", latest);
       if (el.tabToday) el.tabToday.classList.toggle("is-active", today);
       if (el.tabAssistant) el.tabAssistant.classList.toggle("is-active", assistant);
       if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar");
       el.tabSub.classList.toggle("is-active", tab === "sub");
+      if (el.tabAdmin) el.tabAdmin.classList.toggle("is-active", tab === "admin");
       if (el.tabHome) el.tabHome.setAttribute("aria-current", home ? "page" : "false");
       el.tabLatest.setAttribute("aria-current", latest ? "page" : "false");
       if (el.tabToday) el.tabToday.setAttribute("aria-current", today ? "page" : "false");
       if (el.tabAssistant) el.tabAssistant.setAttribute("aria-current", assistant ? "page" : "false");
       if (el.tabCalendar) el.tabCalendar.setAttribute("aria-current", tab === "calendar" ? "page" : "false");
       el.tabSub.setAttribute("aria-current", tab === "sub" ? "page" : "false");
+      if (el.tabAdmin) el.tabAdmin.setAttribute("aria-current", tab === "admin" ? "page" : "false");
       if (today) { loadOfficialEvents(); loadCalendarStatus(); loadTimetables(); renderToday(); }
       if (tab === "calendar" && el.viewCalendar) { loadOfficialEvents(); renderCalendar(); }
       if (tab === "sub") {
@@ -1972,6 +1981,7 @@
     if (el.tabToday) el.tabToday.addEventListener("click", function () { switchTab("today"); });
     if (el.tabAssistant) el.tabAssistant.addEventListener("click", function () { switchTab("assistant"); });
     el.tabSub.addEventListener("click", function () { switchTab("sub"); });
+    if (el.tabAdmin) el.tabAdmin.addEventListener("click", function () { switchTab("admin"); });
     if (el.tabCalendar) {
       el.tabCalendar.addEventListener("click", function () { switchTab("calendar"); });
       el.calendarGrid.addEventListener("click", function (e) {
@@ -2127,7 +2137,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=65").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=66").catch(function () {});
       });
     }
 
