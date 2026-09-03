@@ -1582,12 +1582,19 @@
     if (el.detailDialog) el.detailDialog.addEventListener("click", function (e) {
       if (e.target === el.detailDialog) closeDetailDialog();
     });
+    function askAssistantIfApproved(question) {
+      if (accountPhase !== "ACCOUNT_READY") {
+        if (el.assistantStatus) el.assistantStatus.textContent = accountPhase === "PENDING_APPROVAL" ? "帳號尚待管理員核准。" : "請先登入並完成帳號核准。";
+        return;
+      }
+      askAssistant(question);
+    }
     if (el.assistantForm) el.assistantForm.addEventListener("submit", function (e) {
-      e.preventDefault(); askAssistant(el.assistantQuestion.value);
+      e.preventDefault(); askAssistantIfApproved(el.assistantQuestion.value);
     });
     if (el.viewAssistant) el.viewAssistant.addEventListener("click", function (e) {
       var example = e.target.closest("button[data-assistant-example]");
-      if (example) { el.assistantQuestion.value = example.dataset.assistantExample; askAssistant(el.assistantQuestion.value); return; }
+      if (example) { el.assistantQuestion.value = example.dataset.assistantExample; askAssistantIfApproved(el.assistantQuestion.value); return; }
       var source = e.target.closest("button[data-detail-id]");
       if (source) openDetail(source.dataset.detailId);
     });
