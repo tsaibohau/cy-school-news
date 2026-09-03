@@ -13,7 +13,7 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     merge_collected_item, validate_snapshot_items,
                     validate_history_capacity, quarantine_corrupt_titles,
                     merge_title, decode_response,
-                    record_detail_fetch_failure,
+                    public_preview_item,
                     validate_public_source_url)  # noqa: E402
 from notify import (push_topics, summarize, personal_topics, notification_payload,
                     normalize_topic, prepare_notification_items,
@@ -328,6 +328,19 @@ def run():
     assert [i["id"] for i in archived] == ["c", "d"], archived
     assert len(recent) + len(archived) == len(tiered), "分層不可遺失任何資料"
     print("✓ 資料分層切分")
+
+    preview = public_preview_item({
+        "id": "cysh-1", "school": "cysh", "school_name": "嘉中",
+        "title": "官方公告", "url": "https://www.cysh.cy.edu.tw/p/406-1008-1.php",
+        "date": "2026-09-03", "category": "一般",
+        "snippet": "甲" * 200, "summary": "不得公開的完整摘要",
+        "detail_ref": "data/details/cysh/cysh-1.json", "detail_revision": "secret",
+        "calendar_events": [{"title": "不得公開的完整活動資料"}],
+    })
+    assert set(preview) <= {"id", "school", "school_name", "title", "url", "date", "date_source", "category", "source_category", "first_seen", "snippet"}
+    assert len(preview["snippet"]) == 180 and "summary" not in preview and "detail_ref" not in preview
+    print("✓ 公開公告只保留最小預覽欄位")
+
 
     flood = ([{"category": "研習活動"}] * 9 + [{"category": "段考考試"}] * 2
              + [{"category": "獎助學金"}] * 5)
