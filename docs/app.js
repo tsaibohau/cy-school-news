@@ -102,8 +102,9 @@
       reminderCustomWrap: $("reminderCustomWrap"), reminderCustomOffsets: $("reminderCustomOffsets"),
       btnRefresh: $("btnRefresh"), refreshState: $("refreshState"),
       accountState: $("accountState"), accountEmail: $("accountEmail"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
-      accountLogout: $("accountLogout"),
-      passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordAuthNickname: $("passwordAuthNickname"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
+      accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"),
+      passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordAuthNickname: $("passwordAuthNickname"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
+      passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
@@ -289,6 +290,9 @@
       if (!auth.isConfigured()) {
         var accountBox = document.getElementById("accountBox");
         if (accountBox) accountBox.hidden = true;
+        if (el.functionDock) el.functionDock.hidden = true;
+        if (el.publicAccountEntry) el.publicAccountEntry.hidden = false;
+        switchTab("latest");
         return;
       }
       var lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
@@ -305,6 +309,15 @@
       var pushManager = window.CyNewsPushSubscription ? window.CyNewsPushSubscription.createManager({ auth: auth }) : null;
       var reminderAdapter = window.CyNewsReminderRules ? window.CyNewsReminderRules.createAdapter({ auth: auth }) : null;
       function status(text) { el.accountState.textContent = text; }
+      function showAnonymousShell() {
+        if (el.functionDock) el.functionDock.hidden = true;
+        if (el.publicAccountEntry) el.publicAccountEntry.hidden = false;
+        if (state.tab !== "latest") switchTab("latest");
+      }
+      function showAccountShell() {
+        if (el.functionDock) el.functionDock.hidden = false;
+        if (el.publicAccountEntry) el.publicAccountEntry.hidden = true;
+      }
       function setAccountUser(user) {
         state.accountUser = user || null;
         state.nickname = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayName(user) : "";
@@ -439,6 +452,7 @@
         state.archive = "none";
         state.archivePromise = null;
         publishState(anonymousState, "anonymous");
+        showAnonymousShell();
         if (state.data) fetchData(true);
       }
       function sync(uid, authRetry) {
@@ -536,6 +550,7 @@
         return auth.getVerifiedSession().then(function (session) {
           var uid = session && session.user && session.user.id;
           if (typeof uid === "string" && uid) {
+            showAccountShell();
             var pendingUsername = window.CyNewsAccountAuth.normalizeUsername(session.user && session.user.user_metadata && session.user.user_metadata.pending_username);
             if (pendingUsername) {
               return auth.claimUsername(pendingUsername).then(function () { return handleVerifiedSession(); }).catch(function () {
@@ -561,6 +576,7 @@
             if (el.accountSwitch) el.accountSwitch.hidden = true;
             el.accountLogout.hidden = true;
           }
+          if (!(typeof uid === "string" && uid)) showAnonymousShell();
         });
       }
       function showPasswordAuth() {
@@ -569,6 +585,24 @@
         el.passwordAuthPassword.value = "";
         el.passwordAuthDialog.showModal();
         el.passwordAuthUsername.focus();
+      }
+      function showPasswordRecovery() {
+        if (!el.passwordRecoveryDialog || typeof el.passwordRecoveryDialog.showModal !== "function") return;
+        el.passwordRecoveryPassword.value = "";
+        el.passwordRecoveryConfirm.value = "";
+        el.passwordRecoveryStatus.textContent = "";
+        if (!el.passwordRecoveryDialog.open) el.passwordRecoveryDialog.showModal();
+        el.passwordRecoveryPassword.focus();
+      }
+      function requestPasswordReset() {
+        el.passwordAuthStatus.textContent = "寄送中";
+        auth.resetPasswordForEmail(el.passwordAuthEmail.value).then(function () {
+          el.passwordAuthPassword.value = "";
+          el.passwordAuthStatus.textContent = "若此 Email 已註冊，重設信已寄出。";
+        }).catch(function () {
+          el.passwordAuthPassword.value = "";
+          el.passwordAuthStatus.textContent = "無法寄出重設信；請確認 Email 後再試。";
+        });
       }
       function beginPasswordSession(work, successMessage) {
         syncGeneration += 1;
@@ -604,8 +638,29 @@
           el.passwordAuthStatus.textContent = "請到救援 Email 完成驗證，再用帳號與密碼登入。";
         }).catch(function () { el.passwordAuthPassword.value = ""; el.passwordAuthStatus.textContent = "無法建立帳號；請確認資料或換一個帳號名稱。"; });
       });
+      if (el.passwordResetRequest) el.passwordResetRequest.addEventListener("click", requestPasswordReset);
       if (el.passwordAuthCancel) el.passwordAuthCancel.addEventListener("click", function () { el.passwordAuthPassword.value = ""; el.passwordAuthDialog.close(); });
+      if (el.passwordRecoveryForm) el.passwordRecoveryForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var password = el.passwordRecoveryPassword.value;
+        if (password !== el.passwordRecoveryConfirm.value) { el.passwordRecoveryStatus.textContent = "兩次密碼不一致。"; return; }
+        el.passwordRecoveryStatus.textContent = "更新中";
+        auth.updatePassword(password).then(function () {
+          el.passwordRecoveryPassword.value = "";
+          el.passwordRecoveryConfirm.value = "";
+          el.passwordRecoveryStatus.textContent = "密碼已更新。";
+          if (el.passwordRecoveryDialog.open) el.passwordRecoveryDialog.close();
+          return handleVerifiedSession();
+        }).catch(function () {
+          el.passwordRecoveryPassword.value = "";
+          el.passwordRecoveryConfirm.value = "";
+          el.passwordRecoveryStatus.textContent = "無法更新密碼；請重新開啟重設連結。";
+        });
+      });
+      if (el.passwordRecoveryCancel) el.passwordRecoveryCancel.addEventListener("click", function () { el.passwordRecoveryPassword.value = ""; el.passwordRecoveryConfirm.value = ""; el.passwordRecoveryDialog.close(); });
       if (el.passwordGoogleLogin) el.passwordGoogleLogin.addEventListener("click", function () { el.passwordAuthDialog.close(); el.accountLogin.dataset.googleLogin = "1"; el.accountLogin.click(); });
+      if (el.publicAccountLogin) el.publicAccountLogin.addEventListener("click", showPasswordAuth);
+      if (el.publicAccountSignUp) el.publicAccountSignUp.addEventListener("click", function () { showPasswordAuth(); el.passwordAuthStatus.textContent = "填完資料後按「註冊」。"; });
       el.accountLogin.addEventListener("click", function () {
         if (el.accountLogin.dataset.googleLogin !== "1") { showPasswordAuth(); return; }
         delete el.accountLogin.dataset.googleLogin;
@@ -699,7 +754,8 @@
          begins exchanging the URL grant as it is constructed; registering after
          the first read can miss that one SIGNED_IN event and leave the page at
          "已登入・同步待完成" until a manual reload. */
-      auth.onAuthStateChange(function () { handleVerifiedSession().catch(function () {}); }).catch(function () {});
+      showAnonymousShell();
+      auth.onAuthStateChange(function (event) { if (event === "PASSWORD_RECOVERY") { showAccountShell(); showPasswordRecovery(); return; } handleVerifiedSession().catch(function () {}); }).catch(function () {});
       auth.getClient().then(function () { return handleVerifiedSession(); })
         .catch(function () { status("未登入"); });
 
@@ -1980,7 +2036,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=60").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=61").catch(function () {});
       });
     }
 
