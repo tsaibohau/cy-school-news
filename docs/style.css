@@ -438,6 +438,11 @@ body { background: var(--paper); }
   position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
   z-index: 40; display: grid; justify-items: end; gap: 9px;
 }
+.function-dock[hidden] { display: none !important; }
+.admin-accounts { display: grid; gap: 9px; }
+.admin-account { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px; border: 1px solid var(--line); border-radius: 12px; }
+.admin-account small { display: block; color: var(--muted); margin-top: 3px; overflow-wrap: anywhere; }
+.admin-account-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
 .function-toggle {
   min-height: 52px; border: 1px solid color-mix(in srgb, var(--ink) 24%, transparent);
   border-radius: 999px; padding: 7px 16px 7px 8px; background: color-mix(in srgb, var(--card) 92%, transparent);

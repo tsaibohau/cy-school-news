@@ -140,6 +140,22 @@
         if (email) return this.signInWithPassword(email, password);
         return this.signInWithUsername(identifier, password);
       },
+      getAdminAccounts: function () {
+        return getClient().then(function (c) { return c.rpc("admin_list_account_access").then(function (result) { if (result.error) throw result.error; return result.data || []; }); });
+      },
+      reviewAccount: function (userId, status) {
+        return getClient().then(function (c) { return c.rpc("admin_review_account", { target_user_id: userId, next_status: status }).then(function (result) { if (result.error) throw result.error; }); });
+      },
+      getAccountAccess: function () {
+        return getClient().then(function (c) {
+          return c.rpc("current_account_access").then(function (result) {
+            if (result.error) throw result.error;
+            var row = Array.isArray(result.data) ? result.data[0] : result.data;
+            if (!row || typeof row.status !== "string") throw new Error("account access unavailable");
+            return row;
+          });
+        });
+      },
       resetPasswordForEmail: function (email) {
         email = normalizeEmail(email);
         var redirectTo = approvedRedirect(config, options.location);

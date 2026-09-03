@@ -72,6 +72,7 @@
       tasks: [],
       profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
       accountUser: null,
+      accountAccess: null,
       nickname: "",
       assistantFeedback: window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {},
       assistantAnswer: null,
@@ -102,7 +103,8 @@
       reminderCustomWrap: $("reminderCustomWrap"), reminderCustomOffsets: $("reminderCustomOffsets"),
       btnRefresh: $("btnRefresh"), refreshState: $("refreshState"),
       accountState: $("accountState"), accountEmail: $("accountEmail"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
-      accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"), publicAccessStatus: $("publicAccessStatus"),
+      accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"), publicAccountLogout: $("publicAccountLogout"), publicAccessStatus: $("publicAccessStatus"),
+      adminPanel: $("adminPanel"), adminRefresh: $("adminRefresh"), adminStatus: $("adminStatus"), adminAccounts: $("adminAccounts"),
       passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
@@ -311,8 +313,19 @@
       function status(text) { el.accountState.textContent = text; }
       function showAnonymousShell() {
         if (el.functionDock) el.functionDock.hidden = true;
+        setNavMenu(false);
         if (el.publicAccountEntry) el.publicAccountEntry.hidden = false;
+        if (el.publicAccountLogin) el.publicAccountLogin.hidden = false;
+        if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = false;
+        if (el.publicAccountLogout) el.publicAccountLogout.hidden = true;
         if (state.tab !== "latest") switchTab("latest");
+      }
+      function showPendingAccountShell(message) {
+        showAnonymousShell();
+        if (el.publicAccountLogin) el.publicAccountLogin.hidden = true;
+        if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = true;
+        if (el.publicAccountLogout) el.publicAccountLogout.hidden = false;
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = message;
       }
       function showAccountShell() {
         if (el.functionDock) el.functionDock.hidden = false;
@@ -321,6 +334,7 @@
       }
       function setAccountUser(user) {
         state.accountUser = user || null;
+        if (!user) state.accountAccess = null;
         state.nickname = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayName(user) : "";
         var email = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayEmail(user) : "";
         if (el.accountEmail) {
@@ -328,6 +342,18 @@
           el.accountEmail.hidden = !email;
         }
         renderGreeting(); renderProfile();
+      }
+      function renderAdminAccounts(rows) {
+        if (!el.adminAccounts) return;
+        el.adminAccounts.innerHTML = rows.length ? rows.map(function (row) {
+          var action = row.status === "pending" ? '<button class="btn-primary" type="button" data-admin-review="approved" data-admin-user="' + esc(row.user_id) + '">核准</button><button class="btn-ghost danger-button" type="button" data-admin-review="rejected" data-admin-user="' + esc(row.user_id) + '">拒絕</button>' : '<button class="btn-ghost danger-button" type="button" data-admin-review="rejected" data-admin-user="' + esc(row.user_id) + '">移除使用權</button>';
+          return '<article class="admin-account"><div><strong>' + esc(row.email) + '</strong><small>' + esc(row.status === "pending" ? "等待核准" : row.status === "approved" ? "已核准" : "已移除使用權") + '</small></div><div class="admin-account-actions">' + action + '</div></article>';
+        }).join("") : '<p class="empty">目前沒有已註冊帳號。</p>';
+      }
+      function loadAdminAccounts() {
+        if (!accountAuth || !state.accountUser || !el.adminPanel) return;
+        el.adminPanel.hidden = true;
+        accountAuth.getAdminAccounts().then(function (rows) { el.adminPanel.hidden = false; el.adminStatus.textContent = ""; renderAdminAccounts(rows); }).catch(function () { el.adminPanel.hidden = true; });
       }
       function maybePromptNickname(user) {
         if (!user || !el.nicknameDialog || !el.nicknameInput) return;
@@ -551,7 +577,6 @@
         return auth.getVerifiedSession().then(function (session) {
           var uid = session && session.user && session.user.id;
           if (typeof uid === "string" && uid) {
-            showAccountShell();
             var pendingUsername = window.CyNewsAccountAuth.normalizeUsername(session.user && session.user.user_metadata && session.user.user_metadata.pending_username);
             if (pendingUsername) {
               return auth.claimUsername(pendingUsername).then(function () { return handleVerifiedSession(); }).catch(function () {
@@ -560,15 +585,31 @@
               });
             }
             setAccountUser(session.user);
-            if (uid === requestedUid) return;
+            return auth.getAccountAccess().then(function (access) {
+              state.accountAccess = access;
+              if (access.status !== "approved") {
+                if (el.adminPanel) el.adminPanel.hidden = true;
+                showPendingAccountShell(access.status === "rejected" ? "此帳號目前未獲使用核准；如有疑問請聯絡管理員。" : "帳號已登入，等待管理員核准後才能使用個人功能。");
+                status(access.status === "rejected" ? "未獲核准" : "等待核准");
+                return;
+              }
+              showAccountShell();
+              loadAdminAccounts();
+              if (uid === requestedUid) return;
             /* A verified session is authenticated before remote sync completes.
                Keep account controls truthful while the single transition runs. */
-            status("已登入・同步中");
-            el.accountLogin.hidden = true;
-            if (el.accountSwitch) el.accountSwitch.hidden = false;
-            el.accountLogout.hidden = false;
-            if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
-            sync(uid);
+              status("已登入・同步中");
+              el.accountLogin.hidden = true;
+              if (el.accountSwitch) el.accountSwitch.hidden = false;
+              el.accountLogout.hidden = false;
+              if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
+              sync(uid);
+            }).catch(function () {
+              state.accountAccess = null;
+              if (el.adminPanel) el.adminPanel.hidden = true;
+              showPendingAccountShell("帳號權限暫時無法確認，請稍後再試。");
+              status("權限待確認");
+            });
           } else if (requestedUid !== null || readyUid !== null || accountPhase !== "ANONYMOUS_READY") {
             restoreAnonymous();
             setAccountUser(null);
@@ -670,6 +711,15 @@
       if (el.passwordResetRequest) el.passwordResetRequest.addEventListener("click", function () { setPasswordAuthMode("reset"); el.passwordAuthStatus.textContent = ""; });
       if (el.passwordAuthBack) el.passwordAuthBack.addEventListener("click", function () { setPasswordAuthMode("signin"); el.passwordAuthStatus.textContent = ""; el.passwordAuthUsername.focus(); });
       if (el.passwordAuthCancel) el.passwordAuthCancel.addEventListener("click", function () { el.passwordAuthPassword.value = ""; el.passwordAuthDialog.close(); });
+      if (el.adminRefresh) el.adminRefresh.addEventListener("click", loadAdminAccounts);
+      if (el.adminAccounts) el.adminAccounts.addEventListener("click", function (event) {
+        var button = event.target.closest("button[data-admin-review]");
+        if (!button || !accountAuth) return;
+        var action = button.dataset.adminReview;
+        if (action === "rejected" && !window.confirm("確定要移除此帳號的網站使用權嗎？資料會保留在稽核紀錄中。")) return;
+        el.adminStatus.textContent = "處理中";
+        accountAuth.reviewAccount(button.dataset.adminUser, action).then(function () { el.adminStatus.textContent = action === "approved" ? "已核准帳號。" : "已移除帳號使用權。"; loadAdminAccounts(); }).catch(function () { el.adminStatus.textContent = "無法更新帳號狀態，請重新整理後再試。"; });
+      });
       if (el.passwordRecoveryForm) el.passwordRecoveryForm.addEventListener("submit", function (event) {
         event.preventDefault();
         var password = el.passwordRecoveryPassword.value;
@@ -691,6 +741,10 @@
       if (el.passwordGoogleLogin) el.passwordGoogleLogin.addEventListener("click", function () { el.passwordAuthDialog.close(); el.accountLogin.dataset.googleLogin = "1"; el.accountLogin.click(); });
       if (el.publicAccountLogin) el.publicAccountLogin.addEventListener("click", function () { showPasswordAuth("signin"); });
       if (el.publicAccountSignUp) el.publicAccountSignUp.addEventListener("click", function () { showPasswordAuth("signup"); });
+      if (el.publicAccountLogout) el.publicAccountLogout.addEventListener("click", function () {
+        var detach = pushManager ? pushManager.disable() : Promise.resolve();
+        detach.then(function () { return auth.signOut(); }).then(function () { restoreAnonymous(); setAccountUser(null); status("未登入"); }).catch(function () { if (el.publicAccessStatus) el.publicAccessStatus.textContent = "登出失敗，請稍後再試。"; });
+      });
       el.accountLogin.addEventListener("click", function () {
         if (el.accountLogin.dataset.googleLogin !== "1") { showPasswordAuth("signin"); return; }
         delete el.accountLogin.dataset.googleLogin;
@@ -785,7 +839,7 @@
          the first read can miss that one SIGNED_IN event and leave the page at
          "已登入・同步待完成" until a manual reload. */
       showAnonymousShell();
-      auth.onAuthStateChange(function (event) { if (event === "PASSWORD_RECOVERY") { showAccountShell(); showPasswordRecovery(); return; } handleVerifiedSession().catch(function () {}); }).catch(function () {});
+      auth.onAuthStateChange(function (event) { if (event === "PASSWORD_RECOVERY") { showPasswordRecovery(); return; } handleVerifiedSession().catch(function () {}); }).catch(function () {});
       auth.getClient().then(function () { return handleVerifiedSession(); })
         .catch(function () { status("未登入"); });
 
@@ -1870,7 +1924,7 @@
       el.navMenuToggle.classList.toggle("is-open", open);
     }
     function hasSignedInAccount() {
-      return !!(state.accountUser && typeof state.accountUser.id === "string" && state.accountUser.id);
+      return !!(state.accountUser && typeof state.accountUser.id === "string" && state.accountUser.id && state.accountAccess && state.accountAccess.status === "approved");
     }
     function switchTab(tab) {
       if (tab !== "latest" && !hasSignedInAccount()) {
@@ -2073,7 +2127,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=63").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=65").catch(function () {});
       });
     }
 
