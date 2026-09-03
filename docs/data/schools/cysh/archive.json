@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
- "generated_at": "2026-09-03T21:25:29+08:00",
- "hot_cutoff": "2025-09-03",
+ "generated_at": "2026-09-04T07:20:47+08:00",
+ "hot_cutoff": "2025-09-04",
  "school": {
   "id": "cysh",
   "name": "國立嘉義高級中學",
@@ -9,6 +9,18 @@
   "base": "https://www.cysh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cysh-132888",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "title": "國立嘉義高中114學年度第一學期行事曆",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-132888,r246.php",
+   "date": "2025-09-03",
+   "source_category": "行事曆",
+   "category": "一般",
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "snippet": "作者 : Administrator 發佈日期 : 2025-09-03 最後更新日期 : 2026-01-26 國立嘉義高中114學年度第一學期行事曆，請參閱附件檔。"
+  },
   {
    "id": "cysh-133521",
    "school": "cysh",
@@ -129,9 +141,9 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "snippet": "作者 : 主計室 發佈日期 : 2025-09-01",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "detail_available": false,
-   "detail_status": "temporary_error"
+   "detail_status": "permanent_error"
   },
   {
    "id": "cysh-132845",
@@ -10717,7 +10729,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "snippet": "作者 : 設備組 發佈日期 : 2023-12-15 恭喜得獎同學，感謝鄒○鑫老師辛勤指導～ 318蘇○儒 全國學科能力競賽生物科決賽一等獎 318盧○瑜 全國學科能力競賽生物科決賽二等獎 318陳○宏 全國學科能力競賽生物科決賽 表現優良獎 一等獎(左一)- 蘇○儒 二等獎(左一)- 盧○瑜 表現優良獎(左三)- 陳○宏",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -11921,7 +11933,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "snippet": "作者 : 教師會 發佈日期 : 2023-06-30",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "detail_available": false,
    "detail_status": "temporary_error"
   },
@@ -12156,7 +12168,17 @@
    "source_category": "音樂比賽",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 音樂科 發佈日期 : 2023-04-13"
+   "snippet": "作者 : 音樂科 發佈日期 : 2023-04-13",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-79014.json",
+   "detail_status": "parsed",
+   "detail_revision": "d6033d096e469c1590a66cab2499823a382dfee140a858e965c97ca9e7ed0837",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-38241",
@@ -12169,7 +12191,17 @@
    "source_category": "榮譽櫥窗",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2023-04-10 2023年第16屆國際地球科學奧林匹亞全國初選 選拔營入選名單 恭喜入選同學 感謝指導老師辛勤指導 班級 姓名 指導老師 218 楊○瑞 劉○二 118 何○祐 黃 ○夫"
+   "snippet": "作者 : 科學班 發佈日期 : 2023-04-10 2023年第16屆國際地球科學奧林匹亞全國初選 選拔營入選名單 恭喜入選同學 感謝指導老師辛勤指導 班級 姓名 指導老師 218 楊○瑞 劉○二 118 何○祐 黃 ○夫",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-38241.json",
+   "detail_status": "parsed",
+   "detail_revision": "25f7ede16aba3bd64df3defac2fe2f17309b9372ae621f305b79b81bc7a0ece5",
+   "detail_attempts": 1,
+   "summary": "2023年第16屆國際地球科學奧林匹亞全國初選",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-78236",
@@ -12228,7 +12260,25 @@
    "source_category": "歷屆招生甄選試題",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2023-03-25 實驗實作各科題目及參考答案如附件。 題目及參考答案有疑義者請於112年3月27日(星期一) 12：00前填寫附件「甄選題目疑義釋復申請表」，傳真至嘉義高中教務處 (05)2779293 提出申請，逾期不予受理。"
+   "snippet": "作者 : 科學班 發佈日期 : 2023-03-25 實驗實作各科題目及參考答案如附件。 題目及參考答案有疑義者請於112年3月27日(星期一) 12：00前填寫附件「甄選題目疑義釋復申請表」，傳真至嘉義高中教務處 (05)2779293 提出申請，逾期不予受理。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-77408.json",
+   "detail_status": "parsed",
+   "detail_revision": "b35f9943afea3f14c77d4ee07a02c1f361f790dc078cfe919db0b5d8b124edd3",
+   "detail_attempts": 1,
+   "summary": "題目及參考答案有疑義者請於112年3月27日(星期一) 12：00前填寫附件「甄選題目疑義釋復申請表」，傳真至嘉義高中教務處 (05)2779293 提出申請，逾期不予受理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2023-03-27",
+     "title": "112學年度科學班甄選入學「實驗實作」甄選試題與參考答案",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b35f9943afea3f14c77d4ee07a02c1f361f790dc078cfe919db0b5d8b124edd3"
+    }
+   ]
   },
   {
    "id": "cysh-77292",
@@ -12310,7 +12360,25 @@
    "source_category": "歷屆招生甄選試題",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2023-03-11 說明: 1.各科題目及參考答案如附件。 2.題目及參考答案有疑義者請於111年3月13日(星期一) 12：00前填寫本次簡章附件五「甄選題目疑義釋復申請表」，傳真(05)2779293至本校教務處提出申請，逾期不予受理。"
+   "snippet": "作者 : 科學班 發佈日期 : 2023-03-11 說明: 1.各科題目及參考答案如附件。 2.題目及參考答案有疑義者請於111年3月13日(星期一) 12：00前填寫本次簡章附件五「甄選題目疑義釋復申請表」，傳真(05)2779293至本校教務處提出申請，逾期不予受理。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-75789.json",
+   "detail_status": "parsed",
+   "detail_revision": "3a2fdfd3d3e78954d1deceeb97d2d7341e0b3a1c21b83436d6ef877c8bc1fcb7",
+   "detail_attempts": 1,
+   "summary": "2.題目及參考答案有疑義者請於111年3月13日(星期一) 12：00前填寫本次簡章附件五「甄選題目疑義釋復申請表」，傳真(05)2779293至本校教務處提出申請，逾期不予受理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2022-03-13",
+     "title": "112學年度科學班甄選入學「科學能力檢定」甄選試題與參考答案",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "3a2fdfd3d3e78954d1deceeb97d2d7341e0b3a1c21b83436d6ef877c8bc1fcb7"
+    }
+   ]
   },
   {
    "id": "cysh-75504",
@@ -12347,7 +12415,17 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "snippet": "",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "detail_available": false,
+   "detail_ref": "data/details/cysh/cysh-75582.json",
+   "detail_status": "empty",
+   "detail_revision": "977a27c469b834e3bed2207ba6f5e3c0581073514cf3ed55aaff860c40050627",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-72867",
@@ -12406,7 +12484,17 @@
    "source_category": "最新消息",
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "дҪңиҖ… : еҢ–еӯёз§‘ зҷјдҪҲж—Ҙжңҹ : 2023-02-24 2023 еңӢйҡӣеҢ–еҘ§з ”зҝ’зҮҹзҚІзҚҺеҗҚе–® жҒӯе–ңеҫ—зҚҺеё«з”ҹ ж„ҹи¬қеҢ–еӯёе®Ө жӣҫ в—Ӣ зҸҠе°Ҹе§җ зҚҺй … зҸӯзҙҡ еӯёз”ҹ жҢҮе°ҺиҖҒеё« дёҖзӯүзҚҺ 318 зҺӢ в—Ӣ еҜҢ жҙӘ в—Ӣ йјҺ 318 йҷі в—Ӣ йӮ‘ жҙӘ в—Ӣ йјҺ дәҢзӯүзҚҺ 318 й»ғ в—Ӣ жҳ• жҙӘ в—Ӣ йјҺ 318 йҷі в—Ӣ еҰҸ жҙӘ в—Ӣ йјҺ 318 жҘҠ в—Ӣ и‘і жҙӘ в—Ӣ йјҺ"
+   "snippet": "作者 : 化學科 發佈日期 : 2023-02-24 2023 國際化奧研習營獲獎名單 恭喜得獎師生 感謝化學室 曾 ○ 珊小姐 獎項 班級 學生 指導老師 一等獎 318 王 ○ 富 洪 ○ 鼎 318 陳 ○ 邑 洪 ○ 鼎 二等獎 318 黃 ○ 昕 洪 ○ 鼎 318 陳 ○ 妏 洪 ○ 鼎 318 楊 ○ 葳 洪 ○ 鼎",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-74366.json",
+   "detail_status": "parsed",
+   "detail_revision": "1a0f2b0d02514e1bc7342d9c5490724ba066fb5ba7240b35f6598b0931f515e3",
+   "detail_attempts": 1,
+   "summary": "2023 國際化奧研習營獲獎名單 恭喜得獎師生 感謝化學室 曾 ○ 珊小姐",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-73734",
@@ -12419,7 +12507,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2023-02-17 賀！本校5名同學入選2023年生物奧林匹亞國手選拔營！ 恭喜入選同學！感謝老師辛勤指導！ 班級 姓 名 指導老師 310 林O盈 林O珠 318 呂O叡 葉O華 318 劉O璘 葉O華 218 陳O宏 鄒O鑫 218 蘇O儒 鄒O鑫"
+   "snippet": "作者 : 設備組 發佈日期 : 2023-02-17 賀！本校5名同學入選2023年生物奧林匹亞國手選拔營！ 恭喜入選同學！感謝老師辛勤指導！ 班級 姓 名 指導老師 310 林O盈 林O珠 318 呂O叡 葉O華 318 劉O璘 葉O華 218 陳O宏 鄒O鑫 218 蘇O儒 鄒O鑫",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-73734.json",
+   "detail_status": "parsed",
+   "detail_revision": "d8ccca8d54da70c06c862a1fe92a9415a39093929019d4d339dac3993d524490",
+   "detail_attempts": 1,
+   "summary": "本校5名同學入選2023年生物奧林匹亞國手選拔營！",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-72866",
@@ -12470,7 +12568,17 @@
    "source_category": "教務組＞課程計畫",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 進修部教務組 發佈日期 : 2023-02-06"
+   "snippet": "作者 : 進修部教務組 發佈日期 : 2023-02-06",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-72279.json",
+   "detail_status": "parsed",
+   "detail_revision": "f96348c798d79dff350532553ffc12cbb466296f63bcab43e93736af9c77f9a8",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-72281",
@@ -12483,7 +12591,17 @@
    "source_category": "教務組＞課程計畫",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 進修部教務組 發佈日期 : 2023-02-06"
+   "snippet": "作者 : 進修部教務組 發佈日期 : 2023-02-06",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-72281.json",
+   "detail_status": "parsed",
+   "detail_revision": "8480b695c4bf692764187c5085f1bf4ecc4b2d26fc0e500fd49ef846b956bd1a",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-71870",
@@ -12550,7 +12668,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "ńŻťŔÇů : ňîľňşŞšžĹ šÖ╝ńŻłŠŚąŠťč : 2023-01-16 2023 ňůĘňťőňîľňşŞňąžŠ×Śňî╣ń║×šźÂŔ│Ż šŹ▓šŹÄňÉŹňľ« ŠüşňľťšŹ▓šŹÄňÉîňşŞ ŠäčŔČŁŠîçň░ÄŔÇüňŞźňĆŐňîľňşŞň«Ą ŠŤż ÔŚő šĆŐň░ĆňžÉ šŹÄÚáů šĆşš┤Ü šŹ▓šŹÄňşŞšöč Šîçň░ÄŔÇüňŞź ÚçĹšŹÄ 318 ÚÖ│ ÔŚő ÚéĹ Š┤¬ ÔŚő Ú╝Ä 318 Ú╗â ÔŚő ŠśĽ Š┤¬ ÔŚő Ú╝Ä 318 šÄő ÔŚő ň»î Š┤¬ ÔŚő Ú╝Ä 318 Š┤¬ ÔŚő ŠŹĚ Š┤¬ ÔŚő Ú╝Ä 318 ÚŚť ÔŚő ŠżĄ Š┤¬ ÔŚő Ú╝Ä 318 Ú╗â ÔŚő Šúá Š┤¬ ÔŚő Ú╝Ä 218 ÚÖ│ ÔŚő ňőĄ ŔĹë ÔŚő ňĘč ÚŐÇšŹÄ 318 ÚÖ│ ÔŚő ňŽĆ Š┤¬ ÔŚő Ú╝Ä 318 ŠąŐ ÔŚő ŔĹ│ Š┤¬ ÔŚő Ú╝Ä 318 Úâş ÔŚő ňŁç Š┤¬ ÔŚő Ú╝Ä 318 Š×Ś ÔŚő ŠÂÁ Š┤¬ ÔŚő Ú╝Ä 318 ÚÖ│ ÔŚő šÁť Š┤¬ ÔŚő Ú╝Ä 317 ň╝Á ÔŚő šŽÄ ŔĹë ÔŚő ňĘč 317 ňéů ÔŚő Šľç ŔĹë ÔŚő ňĘč 317 Úźś ÔŚő ŠÖĘ ŔĹë ÔŚő ňĘč ÚŐůšŹÄ 318 šžŽ ÔŚő ňŹÜ Š┤¬ ÔŚő Ú╝Ä 318 Ŕ│┤ ÔŚő ňůâ Š┤¬ ÔŚő Ú╝Ä 318 ÚÖ│ ÔŚő šÂŞ Š┤¬ ÔŚő Ú╝Ä 318 ňĹé ÔŚő ňĆí Š┤¬ ÔŚő Ú╝Ä 317 Ŕöí ÔŚő š┐░ ŔĹë ÔŚő ňĘč 317 Š×Ś ÔŚő ň╣│ ŔĹë ÔŚő ňĘč 317 ÚÖ│ ÔŚő Š»ů ŔĹë ÔŚő ňĘč 312 Úş» ÔŚő ňç▒ Úäş ÔŚő Š│ë 218 š┐ü ÔŚő šĹä ŔĹë ÔŚő ňĘč 218 Ŕśç ÔŚő ňäĺ ŔĹë ÔŚő ňĘč 218 Ú╗â ÔŚő šŁ┐ ŔĹë ÔŚő ňĘč 217 Š┤¬ ÔŚő ňŹÜ Š┤¬ ÔŚő Ú╝Ä 118 ňŐë ÔŚő ň«ë š░í Ô"
+   "snippet": "ńŻťŔÇů : ňîľňşŞšžĹ šÖ╝ńŻłŠŚąŠťč : 2023-01-16 2023 ňůĘňťőňîľňşŞňąžŠ×Śňî╣ń║×šźÂŔ│Ż šŹ▓šŹÄňÉŹňľ« ŠüşňľťšŹ▓šŹÄňÉîňşŞ ŠäčŔČŁŠîçň░ÄŔÇüňŞźňĆŐňîľňşŞň«Ą ŠŤż ÔŚő šĆŐň░ĆňžÉ šŹÄÚáů šĆşš┤Ü šŹ▓šŹÄňşŞšöč Šîçň░ÄŔÇüňŞź ÚçĹšŹÄ 318 ÚÖ│ ÔŚő ÚéĹ Š┤¬ ÔŚő Ú╝Ä 318 Ú╗â ÔŚő ŠśĽ Š┤¬ ÔŚő Ú╝Ä 318 šÄő ÔŚő ň»î Š┤¬ ÔŚő Ú╝Ä 318 Š┤¬ ÔŚő ŠŹĚ Š┤¬ ÔŚő Ú╝Ä 318 ÚŚť ÔŚő ŠżĄ Š┤¬ ÔŚő Ú╝Ä 318 Ú╗â ÔŚő Šúá Š┤¬ ÔŚő Ú╝Ä 218 ÚÖ│ ÔŚő ňőĄ ŔĹë ÔŚő ňĘč ÚŐÇšŹÄ 318 ÚÖ│ ÔŚő ňŽĆ Š┤¬ ÔŚő Ú╝Ä 318 ŠąŐ ÔŚő ŔĹ│ Š┤¬ ÔŚő Ú╝Ä 318 Úâş ÔŚő ňŁç Š┤¬ ÔŚő Ú╝Ä 318 Š×Ś ÔŚő ŠÂÁ Š┤¬ ÔŚő Ú╝Ä 318 ÚÖ│ ÔŚő šÁť Š┤¬ ÔŚő Ú╝Ä 317 ň╝Á ÔŚő šŽÄ ŔĹë ÔŚő ňĘč 317 ňéů ÔŚő Šľç ŔĹë ÔŚő ňĘč 317 Úźś ÔŚő ŠÖĘ ŔĹë ÔŚő ňĘč ÚŐůšŹÄ 318 šžŽ ÔŚő ňŹÜ Š┤¬ ÔŚő Ú╝Ä 318 Ŕ│┤ ÔŚő ňůâ Š┤¬ ÔŚő Ú╝Ä 318 ÚÖ│ ÔŚő šÂŞ Š┤¬ ÔŚő Ú╝Ä 318 ňĹé ÔŚő ňĆí Š┤¬ ÔŚő Ú╝Ä 317 Ŕöí ÔŚő š┐░ ŔĹë ÔŚő ňĘč 317 Š×Ś ÔŚő ň╣│ ŔĹë ÔŚő ňĘč 317 ÚÖ│ ÔŚő Š»ů ŔĹë ÔŚő ňĘč 312 Úş» ÔŚő ňç▒ Úäş ÔŚő Š│ë 218 š┐ü ÔŚő šĹä ŔĹë ÔŚő ňĘč 218 Ŕśç ÔŚő ňäĺ ŔĹë ÔŚő ňĘč 218 Ú╗â ÔŚő šŁ┐ ŔĹë ÔŚő ňĘč 217 Š┤¬ ÔŚő ňŹÜ Š┤¬ ÔŚő Ú╝Ä 118 ňŐë ÔŚő ň«ë š░í Ô",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-71291.json",
+   "detail_status": "parsed",
+   "detail_revision": "f0440ec711b3e1fa32b4a3f4c816a47ec226b892efee72a7e8c24a1f5470a639",
+   "detail_attempts": 1,
+   "summary": "2023 全國化學奧林匹亞競賽 獲獎名單 恭喜獲獎同學 感謝指導老師及化學室 曾 ○ 珊小姐",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-71204",
@@ -12586,7 +12714,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2022-12-26 2023 國際化奧研習營 54 人名單 恭喜入選同學 感謝 指導老師及化學室管理員曾 ○ 珊 班級 學生 指導老師 318 王 ○ 富 洪 ○ 鼎 318 陳 ○ 邑 洪 ○ 鼎 318 陳 ○ 妏 洪 ○ 鼎 318 黃 ○ 昕 洪 ○ 鼎 318 楊 ○ 葳 洪 ○ 鼎"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-12-26 2023 國際化奧研習營 54 人名單 恭喜入選同學 感謝 指導老師及化學室管理員曾 ○ 珊 班級 學生 指導老師 318 王 ○ 富 洪 ○ 鼎 318 陳 ○ 邑 洪 ○ 鼎 318 陳 ○ 妏 洪 ○ 鼎 318 黃 ○ 昕 洪 ○ 鼎 318 楊 ○ 葳 洪 ○ 鼎",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-69740.json",
+   "detail_status": "parsed",
+   "detail_revision": "132194287df29aca2d7eb5eaa2fb747fadea7d7eb9e61987232e1198d5c00038",
+   "detail_attempts": 1,
+   "summary": "2023 國際化奧研習營 54 人名單 恭喜入選同學 感謝 指導老師及化學室管理員曾 ○ 珊",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-69207",
@@ -12599,7 +12737,17 @@
    "source_category": "最新消息",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2022-12-19 恭喜 318 王○富同學 榮獲 111 學年度 全國化學學科競賽 一等獎 感謝指導老師 洪○鼎 及 化學室管理員 曾○珊"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-12-19 恭喜 318 王○富同學 榮獲 111 學年度 全國化學學科競賽 一等獎 感謝指導老師 洪○鼎 及 化學室管理員 曾○珊",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-69207.json",
+   "detail_status": "parsed",
+   "detail_revision": "0ca4bf3501bd0694e7804430c4277cd2e8a1a2f45a868668b8629ad128ea591e",
+   "detail_attempts": 1,
+   "summary": "恭喜 318 王○富同學 榮獲 111 學年度 全國化學學科競賽 一等獎 感謝指導老師 洪○鼎 及 化學室管理員 曾○珊",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-67714",
@@ -12612,7 +12760,17 @@
    "source_category": "小論文",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "дҪңиҖ… : и®ҖиҖ…жңҚеӢҷзө„ зҷјдҪҲж—Ҙжңҹ : 2022-11-30 дёӯеӯёз”ҹз¶Із«ҷз¬¬1111010жўҜж¬Ўе…ЁеңӢй«ҳзҙҡдёӯзӯүеӯёж Ўй–ұи®Җеҝғеҫ—еҜ«дҪңжҜ”иіҪ з¬¬1111015жўҜж¬Ўе…ЁеңӢй«ҳзҙҡдёӯзӯүеӯёж Ўе°Ҹи«–ж–ҮеҜ«дҪңжҜ”иіҪгҖҖ еҫ—зҚҺеҗҚе–®е·Іе…¬еёғпјҢжҒӯе–ңзҚІзҚҺеҗҢеӯёпјҢж„ҹи¬қжҢҮе°ҺиҖҒеё«жӮүеҝғжҢҮе°ҺпјҒ"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2022-11-30 中學生網站第1111010梯次全國高級中等學校閱讀心得寫作比賽 第1111015梯次全國高級中等學校小論文寫作比賽 得獎名單已公布，恭喜獲獎同學，感謝指導老師悉心指導！",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-67714.json",
+   "detail_status": "parsed",
+   "detail_revision": "aa50853b2f2081c2a9e4dfa68c94cf0db4e81ffdb072acced373ce43ba43ae3f",
+   "detail_attempts": 1,
+   "summary": "賽 得獎名單已公布，恭喜獲獎同學，感謝指導老師悉心指導！",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-67637",
@@ -12625,7 +12783,17 @@
    "source_category": "音樂比賽",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 音樂科 發佈日期 : 2022-11-29"
+   "snippet": "作者 : 音樂科 發佈日期 : 2022-11-29",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-67637.json",
+   "detail_status": "parsed",
+   "detail_revision": "97d7626eb23192d04a2c2b31d6e1b4a9ccfc3c4e5a699e98438bc210ae559238",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-66914",
@@ -12661,7 +12829,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2022-11-16 2022 清華盃化學競賽 獲獎名單 恭喜得獎師生 及 化學室管理員 曾 ○ 珊 獎項 班級 學生 指導老師 團體決賽銅牌 318 劉 ○ 璘 洪 ○ 鼎 318 陳 ○ 邑 洪 ○ 鼎 318 洪 ○ 捷 洪 ○ 鼎 218 陳 ○ 勤 葉 ○ 娟 個人金牌 318 劉 ○ 璘 洪 ○ 鼎 個人銅牌 318 陳 ○ 邑 洪 ○ 鼎 個人銅牌 318 洪 ○ 捷 洪 ○ 鼎 個人成績優良 218 陳 ○ 勤 葉 ○ 娟"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-11-16 2022 清華盃化學競賽 獲獎名單 恭喜得獎師生 及 化學室管理員 曾 ○ 珊 獎項 班級 學生 指導老師 團體決賽銅牌 318 劉 ○ 璘 洪 ○ 鼎 318 陳 ○ 邑 洪 ○ 鼎 318 洪 ○ 捷 洪 ○ 鼎 218 陳 ○ 勤 葉 ○ 娟 個人金牌 318 劉 ○ 璘 洪 ○ 鼎 個人銅牌 318 陳 ○ 邑 洪 ○ 鼎 個人銅牌 318 洪 ○ 捷 洪 ○ 鼎 個人成績優良 218 陳 ○ 勤 葉 ○ 娟",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-66509.json",
+   "detail_status": "parsed",
+   "detail_revision": "b772a341bbe85ef28602a7e32be749482a85d48dfe540a46b74b087a20ac8b25",
+   "detail_attempts": 1,
+   "summary": "2022 清華盃化學競賽 獲獎名單 恭喜得獎師生 及 化學室管理員 曾 ○ 珊",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-65953",
@@ -12674,7 +12852,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2022-11-10 111 學年度化學學科能力競賽分區得獎名單 恭喜五位同學全部獲獎並進軍全國賽 感謝指導老師 及 化學室管理員 曾于珊 獎項 班級 獲獎同學 指導老師 第一名 318 王 ○ 富 洪瑞鼎 第二名 318 陳 ○ 邑 洪瑞鼎 第三名 318 陳 ○ 絜 洪瑞鼎 第四名 318 劉 ○ 璘 洪瑞鼎 第五名 318 洪 ○ 捷 洪瑞鼎"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-11-10 111 學年度化學學科能力競賽分區得獎名單 恭喜五位同學全部獲獎並進軍全國賽 感謝指導老師 及 化學室管理員 曾于珊 獎項 班級 獲獎同學 指導老師 第一名 318 王 ○ 富 洪瑞鼎 第二名 318 陳 ○ 邑 洪瑞鼎 第三名 318 陳 ○ 絜 洪瑞鼎 第四名 318 劉 ○ 璘 洪瑞鼎 第五名 318 洪 ○ 捷 洪瑞鼎",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-65953.json",
+   "detail_status": "parsed",
+   "detail_revision": "d8778e90331696c4d1d2af64fb87625110e32b213e0770fa3cc57b9ffeff9675",
+   "detail_attempts": 1,
+   "summary": "111 學年度化學學科能力競賽分區得獎名單 恭喜五位同學全部獲獎並進軍全國賽 感謝指導老師 及 化學室管理員 曾于珊",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-65916",
@@ -12687,7 +12875,17 @@
    "source_category": "能力競賽",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2022-11-09 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出 註：為符合實施計畫中之給獎(第六名500元)，彰化高中王同學(第七名)及嘉義女中黃同學)(第八名)暫列第六名"
+   "snippet": "作者 : 設備組 發佈日期 : 2022-11-09 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出 註：為符合實施計畫中之給獎(第六名500元)，彰化高中王同學(第七名)及嘉義女中黃同學)(第八名)暫列第六名",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-65916.json",
+   "detail_status": "parsed",
+   "detail_revision": "3ba8420b702d5ceb42a19bd4265f85ac5a2227311bd41e7d8c3cdb8e22b62a45",
+   "detail_attempts": 1,
+   "summary": "，彰化高中王同學(第七名)及嘉義女中黃同學)(第八名)暫列第六名",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-65918",
@@ -12700,7 +12898,17 @@
    "source_category": "能力競賽",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2022-11-09 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出"
+   "snippet": "作者 : 設備組 發佈日期 : 2022-11-09 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-65918.json",
+   "detail_status": "parsed",
+   "detail_revision": "70f44056b4ea4e92b113d5253c5e62ec822240d9ff6728a192d45d9d7a03c1a7",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-65917",
@@ -12713,7 +12921,17 @@
    "source_category": "能力競賽",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2022-11-09 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出"
+   "snippet": "作者 : 設備組 發佈日期 : 2022-11-09 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-65917.json",
+   "detail_status": "parsed",
+   "detail_revision": "e5031903541a8b0b5c18798ee6aef21ba2408323ca410c055484a2b0946d637e",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-65778",
@@ -12726,7 +12944,17 @@
    "source_category": "能力競賽",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2022-11-08 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出"
+   "snippet": "作者 : 設備組 發佈日期 : 2022-11-08 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-65778.json",
+   "detail_status": "parsed",
+   "detail_revision": "fc1f2ba402e338a7b2cb8b48ede694cd1f783cd8448d3a97e49a9d111bab27e4",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-65777",
@@ -12739,7 +12967,17 @@
    "source_category": "能力競賽",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2022-11-08 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出"
+   "snippet": "作者 : 設備組 發佈日期 : 2022-11-08 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-65777.json",
+   "detail_status": "parsed",
+   "detail_revision": "a229927465c41f075b586e5903e13ccfc74b6088f50342eb94ba4d3a9cb198e9",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-65776",
@@ -12752,7 +12990,17 @@
    "source_category": "能力競賽",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2022-11-08 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出"
+   "snippet": "作者 : 設備組 發佈日期 : 2022-11-08 名次詳如附件, 本得獎名單視為得獎證明, 獎狀約會在明年1月~2月寄出",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-65776.json",
+   "detail_status": "parsed",
+   "detail_revision": "d478056ff0cfe1c1c4f445eb2892b44534018544542e9e2ea2d4d2aa2c22efb7",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-64620",
@@ -12765,7 +13013,17 @@
    "source_category": "教室佈置",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 訓育組 發佈日期 : 2022-10-27 嘉義高中111學年度教室佈置比賽得獎班級 第 1 名 第 2 名 第 3 名 第 4 名 第 5 名 高一 107 113 120 114 119 高二 220 219 203 211 218 高三 320 314 313 319 315"
+   "snippet": "作者 : 訓育組 發佈日期 : 2022-10-27 嘉義高中111學年度教室佈置比賽得獎班級 第 1 名 第 2 名 第 3 名 第 4 名 第 5 名 高一 107 113 120 114 119 高二 220 219 203 211 218 高三 320 314 313 319 315",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-64620.json",
+   "detail_status": "parsed",
+   "detail_revision": "d7da50998be26e0f9e0700580f9a46baead39c6fa16f3bfeb275bb2caee5076e",
+   "detail_attempts": 1,
+   "summary": "嘉義高中111學年度教室佈置比賽得獎班級",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-64056",
@@ -12824,7 +13082,17 @@
    "source_category": "嘉中數學日",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 數學科 發佈日期 : 2022-10-14"
+   "snippet": "作者 : 數學科 發佈日期 : 2022-10-14",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-63455.json",
+   "detail_status": "parsed",
+   "detail_revision": "5c4e25acb924609d3b421da39694dfb9e714094ccc58661f44b27ea72a97ca6c",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-63453",
@@ -12837,7 +13105,17 @@
    "source_category": "嘉中數學日",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 數學科 發佈日期 : 2022-10-14"
+   "snippet": "作者 : 數學科 發佈日期 : 2022-10-14",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-63453.json",
+   "detail_status": "parsed",
+   "detail_revision": "6a873147d49038b0f8df6a00c5be2f4018e5fcc8745f128eca5a77257525da85",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-62295",
@@ -12850,7 +13128,17 @@
    "source_category": "相關連結",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 特教組 發佈日期 : 2022-10-04"
+   "snippet": "作者 : 特教組 發佈日期 : 2022-10-04",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-62295.json",
+   "detail_status": "parsed",
+   "detail_revision": "c23b79e7bf5123965d9c559f49309b051c42b67f2d18b3eb1bb8640702e89ad2",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-61852",
@@ -12909,7 +13197,17 @@
    "source_category": "最新消息",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2022-09-20 主旨：檢陳本校辦理「111學年度普通型高級中學數理及資訊學科能力競賽國教署第三區(彰雲嘉區)複賽」報名表、參賽人數及便當統計表、競賽範圍及時程表各一份，請查照。 說明： 一、依據教育部國民及學前教育署「111學年度普通型高級中學數理及資訊學科能力競賽國教署負責區複賽實施計畫」及中區複賽籌備會議決議事項辦理。 二、本區複賽時間訂為111年11月8日（星期二，辦理物理、化學、資訊）、11月9日（星期三，辦理數學、生物、地科），二天辦理，競賽各項表件如附件，並恢復開閉幕及頒獎。 三、採網路報名，請於即日起至10月14日(五)17:00前以電子郵件傳送「報名表」、「參賽人數及便當統計表」及「用印後之報名表掃描檔」（ 請傳至equip206@cysh.cy.edu.tw，並確認收件訊息）以便造冊，請於報名截止時間前完成報名，逾時不再受理報名及 異動。 四、各校參加複賽人數限制及其他規定，詳見教育部國民及學前教育署「111學年度普通型高級中學數理及資訊學科能力競賽國教署負責區複賽實施計畫」規定，綜合高中報名學生以修習學術學程為限，且班級數採計以學術學程班級數計算。 五、比賽當天中午提供競賽學生及隨隊老師便當，請預填「參賽人數及便當統計表」（如附件二），連同報名表一併寄回，實際領取數量以當天報到人數為準。為響應環保，當天請選手自備環保杯，本校不提供紙杯。 六、生物科選手使用複式顯微鏡、解剖顯微鏡請參賽選手自行攜帶，物理、化學、生物、地科選手需著實驗衣，本校無備用設備可供借用，本年度資訊科仍採線上評測，將於後續公告伺服器版本，請注意本校網頁。 七、本年度非學校型態學生參賽方式，請見附件七-無學籍自學生初賽實施計畫，附件八-無學籍自學生初賽報名表。 八、本次競賽各項補充公告將放置在本校設備組網頁，請隨時注意相關訊息。競賽手冊及報到須知等相關資料另於報名日期截止後， 放置本校網站提供下載， 查詢網址： h t t p : / / w w w . c y s h . c y . e d u . t w 。 九、本次競賽聯絡人： 本校教務處設備組黃冠夫組長( 05）2762804＃206或物理實驗室莊旻真小姐(05）2762804＃207。"
+   "snippet": "作者 : 設備組 發佈日期 : 2022-09-20 主旨：檢陳本校辦理「111學年度普通型高級中學數理及資訊學科能力競賽國教署第三區(彰雲嘉區)複賽」報名表、參賽人數及便當統計表、競賽範圍及時程表各一份，請查照。 說明： 一、依據教育部國民及學前教育署「111學年度普通型高級中學數理及資訊學科能力競賽國教署負責區複賽實施計畫」及中區複賽籌備會議決議事項辦理。 二、本區複賽時間訂為111年11月8日（星期二，辦理物理、化學、資訊）、11月9日（星期三，辦理數學、生物、地科），二天辦理，競賽各項表件如附件，並恢復開閉幕及頒獎。 三、採網路報名，請於即日起至10月14日(五)17:00前以電子郵件傳送「報名表」、「參賽人數及便當統計表」及「用印後之報名表掃描檔」（ 請傳至equip206@cysh.cy.edu.tw，並確認收件訊息）以便造冊，請於報名截止時間前完成報名，逾時不再受理報名及 異動。 四、各校參加複賽人數限制及其他規定，詳見教育部國民及學前教育署「111學年度普通型高級中學數理及資訊學科能力競賽國教署負責區複賽實施計畫」規定，綜合高中報名學生以修習學術學程為限，且班級數採計以學術學程班級數計算。 五、比賽當天中午提供競賽學生及隨隊老師便當，請預填「參賽人數及便當統計表」（如附件二），連同報名表一併寄回，實際領取數量以當天報到人數為準。為響應環保，當天請選手自備環保杯，本校不提供紙杯。 六、生物科選手使用複式顯微鏡、解剖顯微鏡請參賽選手自行攜帶，物理、化學、生物、地科選手需著實驗衣，本校無備用設備可供借用，本年度資訊科仍採線上評測，將於後續公告伺服器版本，請注意本校網頁。 七、本年度非學校型態學生參賽方式，請見附件七-無學籍自學生初賽實施計畫，附件八-無學籍自學生初賽報名表。 八、本次競賽各項補充公告將放置在本校設備組網頁，請隨時注意相關訊息。競賽手冊及報到須知等相關資料另於報名日期截止後， 放置本校網站提供下載， 查詢網址： h t t p : / / w w w . c y s h . c y . e d u . t w 。 九、本次競賽聯絡人： 本校教務處設備組黃冠夫組長( 05）2762804＃206或物理實驗室莊旻真小姐(05）2762804＃207。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-60815.json",
+   "detail_status": "parsed",
+   "detail_revision": "0e65cf7432679b1cdb7b0e143d194d6a68b1de3ae99365085cd04841317dad15",
+   "detail_attempts": 1,
+   "summary": "三、採網路報名，請於即日起至10月14日(五)17:00前以電子郵件傳送「報名表」、「參賽人數及便當統計表」及「用印後之報名表掃描檔」（ 請傳至equip206@cysh.cy.edu.tw，並確認收件訊息）以便造冊，請於報名截止時間前完成報名，逾時不再受理報名及 異動。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-59037",
@@ -12945,7 +13243,17 @@
    "source_category": "化學學科能力競賽",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2022-08-30"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-08-30",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-58712.json",
+   "detail_status": "parsed",
+   "detail_revision": "98d53e05a9a129c909638231de996605d88ccb09eeeacc651e277cdae5a5259e",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-57650",
@@ -12981,7 +13289,17 @@
    "source_category": "大學榜單",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 美術科 發佈日期 : 2022-08-15"
+   "snippet": "作者 : 美術科 發佈日期 : 2022-08-15",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-57479.json",
+   "detail_status": "parsed",
+   "detail_revision": "e4823b0a4879756d69159a61eb7cee397d6e4c3c09c8f2437686c400a0e72035",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-57370",
@@ -13086,7 +13404,17 @@
    "source_category": "歷屆試題",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 特教組 發佈日期 : 2022-07-27"
+   "snippet": "作者 : 特教組 發佈日期 : 2022-07-27",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-135928.json",
+   "detail_status": "parsed",
+   "detail_revision": "ddc6dfc9dc8adb53ecf0905e103f890f24be4b67ac07d04bca1a68a9d727759f",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-56118",
@@ -13122,7 +13450,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2022-07-20 恭喜218劉耀璘 榮獲2022國際化奧金牌 感謝指導老師洪瑞鼎 及 化學實驗室曾于珊小姐 左一為劉耀璘同學"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-07-20 恭喜218劉耀璘 榮獲2022國際化奧金牌 感謝指導老師洪瑞鼎 及 化學實驗室曾于珊小姐 左一為劉耀璘同學",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-55846.json",
+   "detail_status": "parsed",
+   "detail_revision": "dcb91c6fa5646f16ede0c948cfa38efb9195d36e9511b20b1a91aab8ede03c89",
+   "detail_attempts": 1,
+   "summary": "恭喜218劉耀璘 榮獲2022國際化奧金牌",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-55796",
@@ -13181,7 +13519,17 @@
    "source_category": "公告訊息",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 特教組 發佈日期 : 2022-07-19 國立嘉義高中111學年度臺加高中雙聯學制招生簡章 (詳附件)"
+   "snippet": "作者 : 特教組 發佈日期 : 2022-07-19 國立嘉義高中111學年度臺加高中雙聯學制招生簡章 (詳附件)",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-55693.json",
+   "detail_status": "parsed",
+   "detail_revision": "5964066b316b6743c4d83a333a4b2538214220f7175aa029b2ace5064374cf93",
+   "detail_attempts": 1,
+   "summary": "國立嘉義高中111學年度臺加高中雙聯學制招生簡章 (詳附件)",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-55706",
@@ -13194,7 +13542,17 @@
    "source_category": "公告訊息",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 特教組 發佈日期 : 2022-07-19 加拿大雙聯學制計畫簡介 (詳如附件)"
+   "snippet": "作者 : 特教組 發佈日期 : 2022-07-19 加拿大雙聯學制計畫簡介 (詳如附件)",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-55706.json",
+   "detail_status": "parsed",
+   "detail_revision": "91410d7ca60693403aaaf89a3be46a661a852a0437ece88e89b0fe34acf1a256",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-55612",
@@ -13230,7 +13588,17 @@
    "source_category": "教科書版本",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2022-07-12"
+   "snippet": "作者 : 教學組 發佈日期 : 2022-07-12",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-55175.json",
+   "detail_status": "parsed",
+   "detail_revision": "8b8e6a12f65096475a631f3830f888a9b6ce82bfc1bd4ae612d68c4ddbf0d4ce",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-55196",
@@ -13279,7 +13647,17 @@
    "source_category": "成果發表",
    "category": "社團",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2022-06-10 高一高二自主學習原領域發表，陸續於6/9,6/16,6/23進行，報名主題與名單請參閱附件檔案。 若有意參加全年級自主學習發表者，相關活動辦法與時程請參閱【教學組網頁－自主學習專區】。"
+   "snippet": "作者 : 教學組 發佈日期 : 2022-06-10 高一高二自主學習原領域發表，陸續於6/9,6/16,6/23進行，報名主題與名單請參閱附件檔案。 若有意參加全年級自主學習發表者，相關活動辦法與時程請參閱【教學組網頁－自主學習專區】。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-52340.json",
+   "detail_status": "parsed",
+   "detail_revision": "157c3f69cd83f11aac6d736d3c45c78e8cfb21d03acd850a3f76f0d1b58429ef",
+   "detail_attempts": 1,
+   "summary": "高一高二自主學習原領域發表，陸續於6/9,6/16,6/23進行，報名主題與名單請參閱附件檔案。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-50977",
@@ -13292,7 +13670,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2022-05-25 恭喜218劉耀璘同學 獲選2022國際化奧國手 代表台灣出賽 為國爭光 感謝指導老師 洪瑞鼎 及化學室管理員 曾于珊"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-05-25 恭喜218劉耀璘同學 獲選2022國際化奧國手 代表台灣出賽 為國爭光 感謝指導老師 洪瑞鼎 及化學室管理員 曾于珊",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-50977.json",
+   "detail_status": "parsed",
+   "detail_revision": "27db4ecd9d58798cb39282b1b50beffc6ecbe7f2ba04ce5f3760201eef019db0",
+   "detail_attempts": 1,
+   "summary": "恭喜218劉耀璘同學 獲選2022國際化奧國手 代表台灣出賽 為國爭光",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-50762",
@@ -13374,7 +13762,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2022-04-27 恭賀本校兩位同學入選 2022 化奧國手選拔營十二人名單 班級 學生姓名 指導老師 218 劉耀璘 洪瑞鼎 318 邱暐宸 簡詩展"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-04-27 恭賀本校兩位同學入選 2022 化奧國手選拔營十二人名單 班級 學生姓名 指導老師 218 劉耀璘 洪瑞鼎 318 邱暐宸 簡詩展",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-48406.json",
+   "detail_status": "parsed",
+   "detail_revision": "aa75aa6202673e48b0eaac724b8c808d22e75e543643c70644a4137bf721fce1",
+   "detail_attempts": 1,
+   "summary": "恭賀本校兩位同學入選 2022 化奧國手選拔營十二人名單",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-48351",
@@ -13400,7 +13798,17 @@
    "source_category": "班級課表",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2022-04-22"
+   "snippet": "作者 : 科學班 發佈日期 : 2022-04-22",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-47909.json",
+   "detail_status": "parsed",
+   "detail_revision": "dad2b99b5655d6512ec60ca1d8eedfe759cac1248339b2159d475f8f11e7e5e6",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-46169",
@@ -13436,7 +13844,25 @@
    "source_category": "歷屆招生甄選試題",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2022-03-26 本次實驗實作各科題目及參考答案如附件。 題目及參考答案有疑義者請於111年3月28日(星期一) 12：00前填寫本次簡章附件「甄選題目疑義釋復申請表」，傳真(05)2779293至嘉義高中教務處提出申請，逾期不予受理。"
+   "snippet": "作者 : 科學班 發佈日期 : 2022-03-26 本次實驗實作各科題目及參考答案如附件。 題目及參考答案有疑義者請於111年3月28日(星期一) 12：00前填寫本次簡章附件「甄選題目疑義釋復申請表」，傳真(05)2779293至嘉義高中教務處提出申請，逾期不予受理。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-45480.json",
+   "detail_status": "parsed",
+   "detail_revision": "ae63eeb9902acf2fb82cf0bf05ff429867cbea3c2a3968c02343f4c6dfc39378",
+   "detail_attempts": 1,
+   "summary": "題目及參考答案有疑義者請於111年3月28日(星期一) 12：00前填寫本次簡章附件「甄選題目疑義釋復申請表」，傳真(05)2779293至嘉義高中教務處提出申請，逾期不予受理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2022-03-28",
+     "title": "111學年度科學班甄選入學「實驗實作」甄選試題與參考答案",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ae63eeb9902acf2fb82cf0bf05ff429867cbea3c2a3968c02343f4c6dfc39378"
+    }
+   ]
   },
   {
    "id": "cysh-45269",
@@ -13472,7 +13898,17 @@
    "source_category": "歷屆招生甄選試題",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2022-03-14 經試題疑義釋復後，修正 國文、生物、物理科學能力檢定參考解答。"
+   "snippet": "作者 : 科學班 發佈日期 : 2022-03-14 經試題疑義釋復後，修正 國文、生物、物理科學能力檢定參考解答。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-44204.json",
+   "detail_status": "parsed",
+   "detail_revision": "849ba4cb6920c70aacfc209b097acd4b893808ae593852e44c1c0ee3d3573fce",
+   "detail_attempts": 1,
+   "summary": "經試題疑義釋復後，修正 國文、生物、物理科學能力檢定參考解答。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-44067",
@@ -13485,7 +13921,25 @@
    "source_category": "歷屆招生甄選試題",
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2022-03-12 各科題目及參考答案如附件。 若對於題目及參考答案有疑義者請於111年3月14日(星期一) 12：00前填寫本次簡章附件六「甄選題目疑義釋復申請表」，傳真(05)2779293至本校教務處提出申請，逾期不予受理。"
+   "snippet": "作者 : 科學班 發佈日期 : 2022-03-12 各科題目及參考答案如附件。 若對於題目及參考答案有疑義者請於111年3月14日(星期一) 12：00前填寫本次簡章附件六「甄選題目疑義釋復申請表」，傳真(05)2779293至本校教務處提出申請，逾期不予受理。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-44067.json",
+   "detail_status": "parsed",
+   "detail_revision": "42444fe4a0560dfe42d25dd5d699594b254bc17728b27e923a1b6287f90062aa",
+   "detail_attempts": 1,
+   "summary": "若對於題目及參考答案有疑義者請於111年3月14日(星期一) 12：00前填寫本次簡章附件六「甄選題目疑義釋復申請表」，傳真(05)2779293至本校教務處提出申請，逾期不予受理。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2022-03-14",
+     "title": "111學年度科學班甄選入學「科學能力檢定」甄選試題與參考答案",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "42444fe4a0560dfe42d25dd5d699594b254bc17728b27e923a1b6287f90062aa"
+    }
+   ]
   },
   {
    "id": "cysh-43650",
@@ -13498,7 +13952,17 @@
    "source_category": "音樂比賽",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 音樂科 發佈日期 : 2022-03-09"
+   "snippet": "作者 : 音樂科 發佈日期 : 2022-03-09",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-43650.json",
+   "detail_status": "parsed",
+   "detail_revision": "a93e12b7a21363bc68eac9892c5dac89c6846c2cfa8260cf67a55b3c7d7f1816",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-42087",
@@ -13511,7 +13975,17 @@
    "source_category": "最新消息",
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2022-02-22 2022 化奧研習營結訓獲獎名單 恭喜獲獎同學與指導老師 感謝化學室曾于珊 小姐 獎項 班級 獲獎同學 指導老師 一等獎 318 邱瑋宸 簡詩展 218 劉耀璘 洪瑞鼎 218 王靖富 洪瑞鼎 218 陳冠邑 洪瑞鼎 二等獎 318 張庭愷 簡詩展 318 劉宸安 簡詩展 218 陳郁絜 洪瑞鼎 218 洪楷捷 洪瑞鼎"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-02-22 2022 化奧研習營結訓獲獎名單 恭喜獲獎同學與指導老師 感謝化學室曾于珊 小姐 獎項 班級 獲獎同學 指導老師 一等獎 318 邱瑋宸 簡詩展 218 劉耀璘 洪瑞鼎 218 王靖富 洪瑞鼎 218 陳冠邑 洪瑞鼎 二等獎 318 張庭愷 簡詩展 318 劉宸安 簡詩展 218 陳郁絜 洪瑞鼎 218 洪楷捷 洪瑞鼎",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-42087.json",
+   "detail_status": "parsed",
+   "detail_revision": "ee0cf59651164c3a15dc916d15b86efdfbd060c32678f1d1ffcc6b2d52effe8f",
+   "detail_attempts": 1,
+   "summary": "2022 化奧研習營結訓獲獎名單 恭喜獲獎同學與指導老師 感謝化學室曾于珊 小姐",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-41517",
@@ -13524,7 +13998,17 @@
    "source_category": "榮譽榜",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2022-02-16 20 22 年亞太 數學奧林匹亞晉級初選第二階段入選名單及 第二階段通過名單 恭喜入選同學，感謝老師辛勤指導！ 班級 姓名 初選結果 指導老師 118 蘇○儒 晉級並通過 曾柏耕 218 陳○妏 晉級 許栢紋 218 陳○綸 晉級 許栢紋 318 邱○宸 晉級 蔡東霖 317 林○穎 晉級 蔡東霖 118 林○民 晉級並通過 曾柏耕"
+   "snippet": "作者 : 設備組 發佈日期 : 2022-02-16 20 22 年亞太 數學奧林匹亞晉級初選第二階段入選名單及 第二階段通過名單 恭喜入選同學，感謝老師辛勤指導！ 班級 姓名 初選結果 指導老師 118 蘇○儒 晉級並通過 曾柏耕 218 陳○妏 晉級 許栢紋 218 陳○綸 晉級 許栢紋 318 邱○宸 晉級 蔡東霖 317 林○穎 晉級 蔡東霖 118 林○民 晉級並通過 曾柏耕",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-41517.json",
+   "detail_status": "parsed",
+   "detail_revision": "2e35d6cecd710172a7fed2d8e945e9e326f0b1ac195b7d64202429e92938aca3",
+   "detail_attempts": 1,
+   "summary": "20 22 年亞太 數學奧林匹亞晉級初選第二階段入選名單及 第二階段通過名單",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-41400",
@@ -13537,7 +14021,17 @@
    "source_category": "小論文",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 讀者服務組 發佈日期 : 2022-02-15"
+   "snippet": "作者 : 讀者服務組 發佈日期 : 2022-02-15",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-41400.json",
+   "detail_status": "parsed",
+   "detail_revision": "58dd64a2fa0b117af255f149c5ff43890c256c126b73b1ad85c51450fbe5a594",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-39994",
@@ -13550,7 +14044,17 @@
    "source_category": "表格下載",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 人事室 發佈日期 : 2022-01-22"
+   "snippet": "作者 : 人事室 發佈日期 : 2022-01-22",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-39994.json",
+   "detail_status": "parsed",
+   "detail_revision": "3c254a75d9098d0bd5e8165619f83eb919f8a73ba96ed46c58676204c9f6eefd",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-39536",
@@ -13563,7 +14067,17 @@
    "source_category": "學生工讀獎助金",
    "category": "獎助學金",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 訓育組 發佈日期 : 2022-01-18"
+   "snippet": "作者 : 訓育組 發佈日期 : 2022-01-18",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-39536.json",
+   "detail_status": "parsed",
+   "detail_revision": "8e48d1005747947692e683052e88068e23c6cc3dcd64e4e512a237391ae7a9a0",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-39383",
@@ -13599,7 +14113,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "дҪңиҖ… : еҢ–еӯёз§‘ зҷјдҪҲж—Ҙжңҹ : 2022-01-10 2022 еңӢйҡӣеҢ–еҘ§еҲқйҒё е…ЁеңӢеүҚ 308 еҗҚзҚІзҚҺеҗҚе–® жҒӯе–ңеҫ—зҚҺеё«з”ҹ ж„ҹи¬қеҜҰй©—е®Өз®ЎзҗҶе“Ў жӣҫдәҺзҸҠе°Ҹе§җ зҚҺй … зҸӯзҙҡ еӯёз”ҹе§“еҗҚ жҢҮе°ҺиҖҒеё« йҮ‘зҚҺ 218 зҺӢйқ–еҜҢ жҙӘз‘һйјҺ 218 йғӯеҪҘеқҮ жҙӘз‘һйјҺ 218 йҷіеҶ йӮ‘ жҙӘз‘һйјҺ 218 йҷійғҒзөң жҙӘз‘һйјҺ 218 еҠүиҖҖз’ҳ жҙӘз‘һйјҺ 218 жҙӘжҘ·жҚ· жҙӘз‘һйјҺ 318 йӮұжҡҗе®ё з°Ўи©©еұ• 318 ејөеәӯж„· з°Ўи©©еұ• 318 иЁұзҝғзқҝ з°Ўи©©еұ• 318 еҠүе®ёе®ү з°Ўи©©еұ• йҠҖзҚҺ 218 йҷіеҪҘжЁә жҙӘз‘һйјҺ 218 йҷіжҳұз¶ё жҙӘз‘һйјҺ 218 й»ғдә®жҳ• жҙӘз‘һйјҺ 218 й»ғеҪҘжЈ жҙӘз‘һйјҺ 315 ејөзӣҠз¶ӯ йҷіжәҗиҢӮ 317 е‘Ӯе®¶дҪ‘ зҺӢжғ иІһ йҠ…зҚҺ 217 ејөеәӯзҰҺ и‘үз§ҖеЁҹ 218 е‘Ӯдҫ‘еҸЎ жҙӘз‘һйјҺ 218 жқҺд»ҒеӮі жҙӘз‘һйјҺ 218 йҷіжҳ еҰҸ жҙӘз‘һйјҺ 218 жҘҠдё№и‘і жҙӘз‘һйјҺ 218 иіҙжҳ“е‘Ҳ жҙӘз‘һйјҺ 218 иіҙйјҺе…ғ жҙӘз‘һйјҺ 218 й—ңйҒӢжҫӨ жҙӘз‘һйјҺ 318 еҗіжғ йӣҜ з°Ўи©©еұ• 318 жҙӘжў“иҢ— з°Ўи©©еұ• 318 й»ғжҹҸеӢі з°Ўи©©еұ• 318 еҗідәһжҙӣ з°Ўи©©еұ•"
+   "snippet": "作者 : 化學科 發佈日期 : 2022-01-10 2022 國際化奧初選 全國前 308 名獲獎名單 恭喜得獎師生 感謝實驗室管理員 曾于珊小姐 獎項 班級 學生姓名 指導老師 金獎 218 王靖富 洪瑞鼎 218 郭彥均 洪瑞鼎 218 陳冠邑 洪瑞鼎 218 陳郁絜 洪瑞鼎 218 劉耀璘 洪瑞鼎 218 洪楷捷 洪瑞鼎 318 邱暐宸 簡詩展 318 張庭愷 簡詩展 318 許翃睿 簡詩展 318 劉宸安 簡詩展 銀獎 218 陳彥樺 洪瑞鼎 218 陳昱綸 洪瑞鼎 218 黃亮昕 洪瑞鼎 218 黃彥棠 洪瑞鼎 315 張益維 陳源茂 317 呂家佑 王惠貞 銅獎 217 張庭禎 葉秀娟 218 呂侑叡 洪瑞鼎 218 李仁傳 洪瑞鼎 218 陳映妏 洪瑞鼎 218 楊丹葳 洪瑞鼎 218 賴易呈 洪瑞鼎 218 賴鼎元 洪瑞鼎 218 關運澤 洪瑞鼎 318 吳惠雯 簡詩展 318 洪梓茗 簡詩展 318 黃柏勳 簡詩展 318 吳亞洛 簡詩展",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-38779.json",
+   "detail_status": "parsed",
+   "detail_revision": "228f5b101bbe25a34c4c78b39c83bae4961b25e9bb97f38569b92e316eb78731",
+   "detail_attempts": 1,
+   "summary": "2022 國際化奧初選 全國前 308 名獲獎名單 恭喜得獎師生 感謝實驗室管理員 曾于珊小姐",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-38250",
@@ -13612,7 +14136,17 @@
    "source_category": "榮譽櫥窗",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2022-01-03 本班(318 班)邱暐宸同學 經特殊選才 錄取 國立台灣大學 化學系 恭賀錄取同學"
+   "snippet": "作者 : 科學班 發佈日期 : 2022-01-03 本班(318 班)邱暐宸同學 經特殊選才 錄取 國立台灣大學 化學系 恭賀錄取同學",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-38250.json",
+   "detail_status": "parsed",
+   "detail_revision": "f71e30c32a811d96850fcf54268d3c92e67d8ad528d130404bb3ec5758c20e0f",
+   "detail_attempts": 1,
+   "summary": "本班(318 班)邱暐宸同學",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-24686",
@@ -13625,7 +14159,17 @@
    "source_category": "表格下載",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 人事室 發佈日期 : 2022-01-01"
+   "snippet": "作者 : 人事室 發佈日期 : 2022-01-01",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-24686.json",
+   "detail_status": "parsed",
+   "detail_revision": "a7d42925c6a62e10bb302186146a08310638f8e537c80084b7e474f7fc1e489c",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-38273",
@@ -13638,7 +14182,17 @@
    "source_category": "榮譽櫥窗",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2021-12-29 110學年度學科能力競賽 全國決賽 本班同學表現優異 科目 班級 姓名 名次 指導教師 數學 318 黃鈵棋 第三等獎 蔡東霖 數學 218 陳映妏 推薦亞太營 許栢紋 物理 318 曾奕豪 特別優秀 黃進昌 化學 218 陳冠邑 二等獎 洪瑞鼎 化學 318 邱暐宸 二等獎 簡詩展 化學 218 劉耀璘 二等獎 洪瑞鼎 生物 318 許翃睿 二等獎 賴美杏 生物 318 吳亞洛 三等獎 賴美杏 生物 218 黃亮昕 二等獎 葉貴華 地球科學 318 丁建宏 二等獎 劉宏二 資訊 318 黃銘宇 三等獎 林品杰 恭喜獲獎同學，感謝各位老師辛勤指導"
+   "snippet": "作者 : 科學班 發佈日期 : 2021-12-29 110學年度學科能力競賽 全國決賽 本班同學表現優異 科目 班級 姓名 名次 指導教師 數學 318 黃鈵棋 第三等獎 蔡東霖 數學 218 陳映妏 推薦亞太營 許栢紋 物理 318 曾奕豪 特別優秀 黃進昌 化學 218 陳冠邑 二等獎 洪瑞鼎 化學 318 邱暐宸 二等獎 簡詩展 化學 218 劉耀璘 二等獎 洪瑞鼎 生物 318 許翃睿 二等獎 賴美杏 生物 318 吳亞洛 三等獎 賴美杏 生物 218 黃亮昕 二等獎 葉貴華 地球科學 318 丁建宏 二等獎 劉宏二 資訊 318 黃銘宇 三等獎 林品杰 恭喜獲獎同學，感謝各位老師辛勤指導",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-38273.json",
+   "detail_status": "parsed",
+   "detail_revision": "fbe7002afb2d33430e1f5893a53904236c54be00b811cebf376cdf82db7990ca",
+   "detail_attempts": 1,
+   "summary": "110學年度學科能力競賽 全國決賽",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-37765",
@@ -13651,7 +14205,17 @@
    "source_category": "最新消息",
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2021-12-28 2022 化奧 全國前 54 人錄取名單 錄取人數全國第 2 名 ( 不含去年增額 ) 恭喜得獎師生 感謝管理員 曾于珊小姐 班級 姓名 指導老師 318 邱暐宸 簡詩展 318 張庭愷 簡詩展 318 劉宸安 簡詩展 218 劉耀璘 洪瑞鼎 218 陳冠邑 洪瑞鼎 218 王靖富 洪瑞鼎 218 陳郁絜 洪瑞鼎 218 洪楷捷 洪瑞鼎"
+   "snippet": "作者 : 化學科 發佈日期 : 2021-12-28 2022 化奧 全國前 54 人錄取名單 錄取人數全國第 2 名 ( 不含去年增額 ) 恭喜得獎師生 感謝管理員 曾于珊小姐 班級 姓名 指導老師 318 邱暐宸 簡詩展 318 張庭愷 簡詩展 318 劉宸安 簡詩展 218 劉耀璘 洪瑞鼎 218 陳冠邑 洪瑞鼎 218 王靖富 洪瑞鼎 218 陳郁絜 洪瑞鼎 218 洪楷捷 洪瑞鼎",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-37765.json",
+   "detail_status": "parsed",
+   "detail_revision": "5a8aad153a9a73bf4c18930283c73e13d613408d809e7fd3fd58526174f86ad5",
+   "detail_attempts": 1,
+   "summary": "2022 化奧 全國前 54 人錄取名單 錄取人數全國第 2 名 ( 不含去年增額 ) 恭喜得獎師生 感謝管理員 曾于珊小姐",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-38235",
@@ -13664,7 +14228,17 @@
    "source_category": "榮譽櫥窗",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2021-12-20 110學年度學科能力競賽 全國決賽-化學科 本班同學表現優異 獎項 班級 學生 指導老師 二等獎 318 邱暐宸 簡詩展 二等獎 218 陳冠邑 洪瑞鼎 二等獎 218 劉耀璘 洪瑞鼎 恭喜獲獎同學，感謝各位老師辛勤指導"
+   "snippet": "作者 : 科學班 發佈日期 : 2021-12-20 110學年度學科能力競賽 全國決賽-化學科 本班同學表現優異 獎項 班級 學生 指導老師 二等獎 318 邱暐宸 簡詩展 二等獎 218 陳冠邑 洪瑞鼎 二等獎 218 劉耀璘 洪瑞鼎 恭喜獲獎同學，感謝各位老師辛勤指導",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-38235.json",
+   "detail_status": "parsed",
+   "detail_revision": "a5691b54d682ebef680ffd0a771357c280f5e5a5f3e922225eab956d15fa5bb6",
+   "detail_attempts": 1,
+   "summary": "110學年度學科能力競賽 全國決賽-化學科",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-37100",
@@ -13677,7 +14251,17 @@
    "source_category": "最新消息",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2021-12-20 110 全國化學科能力競賽決賽獲獎名單 恭喜獲獎師生 感謝實驗室管理員 曾于珊小姐 獎項 班級 學生 指導老師 二等獎 318 邱暐宸 簡詩展 二等獎 218 陳冠邑 洪瑞鼎 二等獎 218 劉耀璘 洪瑞鼎"
+   "snippet": "作者 : 化學科 發佈日期 : 2021-12-20 110 全國化學科能力競賽決賽獲獎名單 恭喜獲獎師生 感謝實驗室管理員 曾于珊小姐 獎項 班級 學生 指導老師 二等獎 318 邱暐宸 簡詩展 二等獎 218 陳冠邑 洪瑞鼎 二等獎 218 劉耀璘 洪瑞鼎",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-37100.json",
+   "detail_status": "parsed",
+   "detail_revision": "30c1e7ef06d5923761b35c227ce8923bff3b45e0a3e780468815c0666c9a8570",
+   "detail_attempts": 1,
+   "summary": "110 全國化學科能力競賽決賽獲獎名單 恭喜獲獎師生 感謝實驗室管理員 曾于珊小姐",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-36607",
@@ -13690,7 +14274,17 @@
    "source_category": "榮譽櫥窗",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2021-12-10 110學年度學科能力競賽 全國決賽-生物科 本班同學成績優異 班級 姓名 獎項 指導老師 ３１８ 許翃睿 二等獎 賴美杏 ２１８ 黃亮昕 二等獎 葉貴華 ３１８ 吳亞洛 三等獎 賴美杏 恭喜獲獎同學，感謝各位老師辛勤指導"
+   "snippet": "作者 : 科學班 發佈日期 : 2021-12-10 110學年度學科能力競賽 全國決賽-生物科 本班同學成績優異 班級 姓名 獎項 指導老師 ３１８ 許翃睿 二等獎 賴美杏 ２１８ 黃亮昕 二等獎 葉貴華 ３１８ 吳亞洛 三等獎 賴美杏 恭喜獲獎同學，感謝各位老師辛勤指導",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-36607.json",
+   "detail_status": "parsed",
+   "detail_revision": "5236be7a756c40e57691d9d7650666a04454afbd77f4fc39d0d3e3fc78619b10",
+   "detail_attempts": 1,
+   "summary": "110學年度學科能力競賽 全國決賽-生物科",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-36606",
@@ -13703,7 +14297,17 @@
    "source_category": "榮譽櫥窗",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2021-12-09 110學年度學科能力競賽 全國決賽 本班高三同學 丁建宏 榮獲 地球科學科- 二等獎 指導老師劉宏二老師 恭喜獲獎同學，感謝老師辛勤指導"
+   "snippet": "作者 : 科學班 發佈日期 : 2021-12-09 110學年度學科能力競賽 全國決賽 本班高三同學 丁建宏 榮獲 地球科學科- 二等獎 指導老師劉宏二老師 恭喜獲獎同學，感謝老師辛勤指導",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-36606.json",
+   "detail_status": "parsed",
+   "detail_revision": "929a8b7bf1c95319da952b1b3c0d6159e10caf34d33cf13f0aafca904b5dfe84",
+   "detail_attempts": 1,
+   "summary": "110學年度學科能力競賽 全國決賽",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-35502",
@@ -13716,7 +14320,17 @@
    "source_category": "音樂比賽",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 音樂科 發佈日期 : 2021-11-30"
+   "snippet": "作者 : 音樂科 發佈日期 : 2021-11-30",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-35502.json",
+   "detail_status": "parsed",
+   "detail_revision": "811b50dd88a03d064ee4ebf4d6d1f3b4f5ec235e9fe007a5d2c1dfece964020b",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-91362",
@@ -13729,7 +14343,17 @@
    "source_category": "學生工讀獎助金",
    "category": "獎助學金",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 訓育組 發佈日期 : 2021-11-24"
+   "snippet": "作者 : 訓育組 發佈日期 : 2021-11-24",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-91362.json",
+   "detail_status": "parsed",
+   "detail_revision": "514363e4740ecc31fcae25ba92aa343edffd71eed2adcc07ee13f83e6c60c930",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-34330",
@@ -13742,7 +14366,17 @@
    "source_category": "化學學科能力競賽榮譽榜",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 化學科 發佈日期 : 2021-11-18 110 化學學科彰雲嘉分區競賽獲獎名單 恭喜得獎師生 感謝化學室管理員 曾于珊小姐 獎項 班級 姓名 指導老師 第 1 名 218 陳冠邑 洪瑞鼎 第 2 名 318 邱暐宸 簡詩展 第 3 名 218 劉耀璘 洪瑞鼎 第 5 名 218 王靖富 洪瑞鼎 佳作 218 陳郁絜 洪瑞鼎"
+   "snippet": "作者 : 化學科 發佈日期 : 2021-11-18 110 化學學科彰雲嘉分區競賽獲獎名單 恭喜得獎師生 感謝化學室管理員 曾于珊小姐 獎項 班級 姓名 指導老師 第 1 名 218 陳冠邑 洪瑞鼎 第 2 名 318 邱暐宸 簡詩展 第 3 名 218 劉耀璘 洪瑞鼎 第 5 名 218 王靖富 洪瑞鼎 佳作 218 陳郁絜 洪瑞鼎",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-34330.json",
+   "detail_status": "parsed",
+   "detail_revision": "c01e6a2681b26f30f3cedf6878fd28893bc47eef8258a4d89123d0df5996c2de",
+   "detail_attempts": 1,
+   "summary": "110 化學學科彰雲嘉分區競賽獲獎名單 恭喜得獎師生 感謝化學室管理員 曾于珊小姐",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-33599",
@@ -13778,7 +14412,17 @@
    "source_category": "榮譽櫥窗",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "дҪңиҖ… : з§‘еӯёзҸӯ зҷјдҪҲж—Ҙжңҹ : 2021-11-10 2021 жё…иҸҜзӣғзҚІзҚҺдәәж•ё 13 дәәпјҢйҒ”е…ЁеңӢз¬¬еӣӣеҗҚ ~~ жҒӯе–ңзҚІзҚҺеӯёз”ҹгҖҒжҢҮе°ҺиҖҒеё«еҸҠеҢ–еӯёе®Өз®ЎзҗҶе“Ў жӣҫдәҺзҸҠ е°Ҹе§җ зҚҺй … зҸӯзҙҡ еӯёз”ҹе§“еҗҚ жҢҮе°ҺиҖҒеё« йҮ‘зүҢзҚҺ 218 еҠүиҖҖз’ҳ жҙӘз‘һйјҺ 218 йҷіеҶ йӮ‘ жҙӘз‘һйјҺ 218 йҷійғҒзөң жҙӘз‘һйјҺ йҠҖзүҢзҚҺ 218 зҺӢйқ–еҜҢ жҙӘз‘һйјҺ йҠ…зүҢзҚҺ 218 йҷіеҪҘжЁә жҙӘз‘һйјҺ 218 йҷіжҳұз¶ё жҙӘз‘һйјҺ еҖӢдәәжҲҗзёҫе„ӘиүҜзҚҺ 318 йӮұжҡҗе®ё з°Ўи©©еұ• 318 ејөеәӯж„· з°Ўи©©еұ• 218 й»ғеҪҘжЈ жҙӘз‘һйјҺ 318 й»ғзӮіжЈӢ з°Ўи©©еұ• 318 дёҒе»әе®Ҹ з°Ўи©©еұ• 218 жҙӘжҘ·жҚ· жҙӘз‘һйјҺ 318 еҠүе®ёе®ү з°Ўи©©еұ•"
+   "snippet": "作者 : 科學班 發佈日期 : 2021-11-10 2021 清華盃獲獎人數 13 人，達全國第四名 ~~ 恭喜獲獎學生、指導老師及化學室管理員 曾于珊 小姐 獎項 班級 學生姓名 指導老師 金牌獎 218 劉耀璘 洪瑞鼎 218 陳冠邑 洪瑞鼎 218 陳郁絜 洪瑞鼎 銀牌獎 218 王靖富 洪瑞鼎 銅牌獎 218 陳彥樺 洪瑞鼎 218 陳昱綸 洪瑞鼎 個人成績優良獎 318 邱暐宸 簡詩展 318 張庭愷 簡詩展 218 黃彥棠 洪瑞鼎 318 黃炳棋 簡詩展 318 丁建宏 簡詩展 218 洪楷捷 洪瑞鼎 318 劉宸安 簡詩展",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-34301.json",
+   "detail_status": "parsed",
+   "detail_revision": "b18fb10a0e4f9c2a07ca4e30ddd0973fe76924d5b50568bf02bbbae6e67e22fd",
+   "detail_attempts": 1,
+   "summary": "2021 清華盃獲獎人數 13 人，達全國第四名 ~~ 恭喜獲獎學生、指導老師及化學室管理員 曾于珊 小姐",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-52331",
@@ -13791,7 +14435,17 @@
    "source_category": "班聯會",
    "category": "社團",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 訓育組 發佈日期 : 2021-10-30"
+   "snippet": "作者 : 訓育組 發佈日期 : 2021-10-30",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-52331.json",
+   "detail_status": "parsed",
+   "detail_revision": "f0c09a49ccf95482ba10fcf47e76bb05a32a4c4cda9b601e469bf0d948c32f92",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-32186",
@@ -13804,7 +14458,17 @@
    "source_category": "教室佈置",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 訓育組 發佈日期 : 2021-10-28 嘉義高中110學年度教室佈置比賽得獎班級 第 1 名 第 2 名 第 3 名 第 4 名 第 5 名 高一 120 114 113 118 119 高二 220 214 216 219 218 高三 320 304 316 317 315"
+   "snippet": "作者 : 訓育組 發佈日期 : 2021-10-28 嘉義高中110學年度教室佈置比賽得獎班級 第 1 名 第 2 名 第 3 名 第 4 名 第 5 名 高一 120 114 113 118 119 高二 220 214 216 219 218 高三 320 304 316 317 315",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-32186.json",
+   "detail_status": "parsed",
+   "detail_revision": "c88f376acac65eb70f9b0f06ff3313d93b24c8706e1222cec3ae29668ce2f997",
+   "detail_attempts": 1,
+   "summary": "嘉義高中110學年度教室佈置比賽得獎班級",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-31878",
@@ -13817,7 +14481,17 @@
    "source_category": "大學榜單",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 美術科 發佈日期 : 2021-10-25"
+   "snippet": "作者 : 美術科 發佈日期 : 2021-10-25",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-31878.json",
+   "detail_status": "parsed",
+   "detail_revision": "303048884befafb7c163b028b1cf84a7112a3491c7d8e0569a0f1484199e09e9",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-31879",
@@ -13830,7 +14504,17 @@
    "source_category": "大學榜單",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 美術科 發佈日期 : 2021-10-25"
+   "snippet": "作者 : 美術科 發佈日期 : 2021-10-25",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-31879.json",
+   "detail_status": "parsed",
+   "detail_revision": "321abe81cef42f254670b013eb8d2bbc336f647e4e2d64947841f42d4b92e95c",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-31838",
@@ -13843,7 +14527,17 @@
    "source_category": "大考、升學相關",
    "category": "升學",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 註冊組 發佈日期 : 2021-10-25 111 學年度大學學科能力測驗及大學術科測驗報名通知 註冊組於 11 月 2 日前，進行高三同學參加 111 學年度大學學測報名前置作業， 預設所有高三同學都會報名參加 。如有不參加學測者（之後繁星推薦、大學申請、四技申請皆無法參加），請於 10 月 28 日（四）前， 填寫不考學測切結書 ( 至校網下載列印 ) 並至教務處找註冊組長。 高三同學參加學測之報名資料，依報考第一次英聽測驗之基本資料為準。同學如有更改資料 ( 例如：手機沒有收到報考資訊的簡訊等等 ) ，請務必於 10 月 28 日（四）前，至教務處櫃台更正。 因應大學學測最多參採 4 科成績，學測各班預設報名科目為： 社會組：預設報名國文、英文、數學 B 、社會等 4 科。 自然組：預設報名國文、英文、數學 A 、自然等 4 科。 316 班的數學預設報名數學 A 。 ※如欲加考其他科目，請以 紅筆 填寫至「 大學學測考試科目調查表 」，並請班長於 10 月 28 日（四）前，將本表交至教務處櫃台。 大學學測報名費： 一般生：基本作業費 200 元，每一考科測驗費 170 元。亦即考 4 科 880 元，考 5 科 1050 元。 中低收入戶考生：基本作業費 80 元，每一考科測驗費 68 元。亦即考 4 科 352 元，考 5 科 420 元。 低收戶考生：免繳。 ※ 繳費時間由教務處依據大學學測考試科目調查表統計後另發通知 。 大學術科報名費：詳見簡章。 普通班同學如果要報考體育、音樂或美術類術科，請在 10 月 28 日（四）前自行到教務處填表。 111 學年度大學學測考試科目調查表 注意事項 1. 如有不參加學測者，請於 10 月 28 日（四）前，填寫不考學測切結書 ( 至校網下載列印 ) 並至教務處找註冊組長。 2. 如欲加考其他科目，請以 紅筆 填寫至「大學學測考試科目調查表」，並請班長於 10 月 28 日（四）前，將本表交至教務處櫃台。 備註： 1. 學測預設考區：嘉義區代碼 540 2. 學測特殊應考服務需求如有需要，請盡早至教務處註冊組申請。"
+   "snippet": "作者 : 註冊組 發佈日期 : 2021-10-25 111 學年度大學學科能力測驗及大學術科測驗報名通知 註冊組於 11 月 2 日前，進行高三同學參加 111 學年度大學學測報名前置作業， 預設所有高三同學都會報名參加 。如有不參加學測者（之後繁星推薦、大學申請、四技申請皆無法參加），請於 10 月 28 日（四）前， 填寫不考學測切結書 ( 至校網下載列印 ) 並至教務處找註冊組長。 高三同學參加學測之報名資料，依報考第一次英聽測驗之基本資料為準。同學如有更改資料 ( 例如：手機沒有收到報考資訊的簡訊等等 ) ，請務必於 10 月 28 日（四）前，至教務處櫃台更正。 因應大學學測最多參採 4 科成績，學測各班預設報名科目為： 社會組：預設報名國文、英文、數學 B 、社會等 4 科。 自然組：預設報名國文、英文、數學 A 、自然等 4 科。 316 班的數學預設報名數學 A 。 ※如欲加考其他科目，請以 紅筆 填寫至「 大學學測考試科目調查表 」，並請班長於 10 月 28 日（四）前，將本表交至教務處櫃台。 大學學測報名費： 一般生：基本作業費 200 元，每一考科測驗費 170 元。亦即考 4 科 880 元，考 5 科 1050 元。 中低收入戶考生：基本作業費 80 元，每一考科測驗費 68 元。亦即考 4 科 352 元，考 5 科 420 元。 低收戶考生：免繳。 ※ 繳費時間由教務處依據大學學測考試科目調查表統計後另發通知 。 大學術科報名費：詳見簡章。 普通班同學如果要報考體育、音樂或美術類術科，請在 10 月 28 日（四）前自行到教務處填表。 111 學年度大學學測考試科目調查表 注意事項 1. 如有不參加學測者，請於 10 月 28 日（四）前，填寫不考學測切結書 ( 至校網下載列印 ) 並至教務處找註冊組長。 2. 如欲加考其他科目，請以 紅筆 填寫至「大學學測考試科目調查表」，並請班長於 10 月 28 日（四）前，將本表交至教務處櫃台。 備註： 1. 學測預設考區：嘉義區代碼 540 2. 學測特殊應考服務需求如有需要，請盡早至教務處註冊組申請。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-31838.json",
+   "detail_status": "parsed",
+   "detail_revision": "cd3fc245395faea5f411c63aafc67e24d070b5d1635b710da07b2e8606b8da4b",
+   "detail_attempts": 1,
+   "summary": "註冊組於 11 月 2 日前，進行高三同學參加 111 學年度大學學測報名前置作業， 預設所有高三同學都會報名參加 。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-31310",
@@ -13856,7 +14550,17 @@
    "source_category": "最新消息",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2021-10-19 詳如附件"
+   "snippet": "作者 : 設備組 發佈日期 : 2021-10-19 詳如附件",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-31310.json",
+   "detail_status": "parsed",
+   "detail_revision": "0c7ca86c269ed01eebc1971ca7e5e5f5b00d7640ce93b9c8140b7eebe7142dc1",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-29076",
@@ -13915,7 +14619,17 @@
    "source_category": "能力競賽",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2021-09-28 1、依據教育部國民及學前教育署「110學年度普通型高級中學數理及資訊學科能力競賽臺灣省複賽實施計畫」及中區複賽籌備會議決議事項辦理。 2、本區複賽時間訂為110年11月15日（星期一，辦理物理、地科）、11月16日（星期二，辦理數學、生物）、11月17日（星期三，辦理化學、資訊）三天辦理，競賽各項表件如附件。 3、本年度無開、閉幕式，競賽結束後即可離開，且因疫情因素各校限1位老師陪同。 4、採網路報名，請於即日起至10月15日(五)12:00前以電子郵件傳送「報名表」及「參賽人數及便當統計表」（請傳至equip206@cysh.cy.edu.tw，並確認收件訊息）以便造冊，並將報名資料用印後免備文郵寄至嘉義高中教務處設備組確認並先書面傳真(05-2779293)，請避免造成網路資料與書面報名表不符之情況；請於報名截止時間前完成報名，逾時不再受理報名及異動。 5、各校參加複賽人數限制及其他規定，詳見教育部國民及學前教育署「110學年度普通型高級中學數理及資訊學科能力競賽臺灣省複賽實施計畫」規定，綜合高中報名學生以修習學術學程為限，且班級數採計以學術學程班級數計算。 6、比賽當天中午提供競賽學生及隨隊老師便當，請預填「參賽人數及便當統計表」（如附件二），連同報名表一併寄回，實際領取數量以當天報到人數為準。為響應環保，當天請選手自備環保杯，本校不提供紙杯。 7、生物科選手使用複式顯微鏡、解剖顯微鏡請參賽選手自行攜帶，物理、化學、生物、地科選手需著實驗衣，本校無備用設備可供借用，本年度資訊科仍採線上評測，將於後續公告伺服器版本，請注意本校網頁。 8、非學校型態學生參賽，詳情請見附件七－無學籍自學生初賽實施計畫，附件八-無學籍自學生初賽報名表。 9、本次競賽各項補充公告將放置在本校設備組網頁，請隨時注意相關訊息。競賽手冊及報到須知等相關資料另於報名日期截止後，放置本校網站提供下載，查詢網址：http://www.cysh.cy.edu.tw。 10、本次競賽聯絡人：本校教務處設備組黃冠夫組長( 05）2762804＃206或物理實驗室莊旻真小姐(05）2762804＃207"
+   "snippet": "作者 : 設備組 發佈日期 : 2021-09-28 1、依據教育部國民及學前教育署「110學年度普通型高級中學數理及資訊學科能力競賽臺灣省複賽實施計畫」及中區複賽籌備會議決議事項辦理。 2、本區複賽時間訂為110年11月15日（星期一，辦理物理、地科）、11月16日（星期二，辦理數學、生物）、11月17日（星期三，辦理化學、資訊）三天辦理，競賽各項表件如附件。 3、本年度無開、閉幕式，競賽結束後即可離開，且因疫情因素各校限1位老師陪同。 4、採網路報名，請於即日起至10月15日(五)12:00前以電子郵件傳送「報名表」及「參賽人數及便當統計表」（請傳至equip206@cysh.cy.edu.tw，並確認收件訊息）以便造冊，並將報名資料用印後免備文郵寄至嘉義高中教務處設備組確認並先書面傳真(05-2779293)，請避免造成網路資料與書面報名表不符之情況；請於報名截止時間前完成報名，逾時不再受理報名及異動。 5、各校參加複賽人數限制及其他規定，詳見教育部國民及學前教育署「110學年度普通型高級中學數理及資訊學科能力競賽臺灣省複賽實施計畫」規定，綜合高中報名學生以修習學術學程為限，且班級數採計以學術學程班級數計算。 6、比賽當天中午提供競賽學生及隨隊老師便當，請預填「參賽人數及便當統計表」（如附件二），連同報名表一併寄回，實際領取數量以當天報到人數為準。為響應環保，當天請選手自備環保杯，本校不提供紙杯。 7、生物科選手使用複式顯微鏡、解剖顯微鏡請參賽選手自行攜帶，物理、化學、生物、地科選手需著實驗衣，本校無備用設備可供借用，本年度資訊科仍採線上評測，將於後續公告伺服器版本，請注意本校網頁。 8、非學校型態學生參賽，詳情請見附件七－無學籍自學生初賽實施計畫，附件八-無學籍自學生初賽報名表。 9、本次競賽各項補充公告將放置在本校設備組網頁，請隨時注意相關訊息。競賽手冊及報到須知等相關資料另於報名日期截止後，放置本校網站提供下載，查詢網址：http://www.cysh.cy.edu.tw。 10、本次競賽聯絡人：本校教務處設備組黃冠夫組長( 05）2762804＃206或物理實驗室莊旻真小姐(05）2762804＃207",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-28578.json",
+   "detail_status": "parsed",
+   "detail_revision": "52b14ef16ff42462c992e17bbee46b01a287925a618a666f2525ad2427721c44",
+   "detail_attempts": 1,
+   "summary": "2、本區複賽時間訂為110年11月15日（星期一，辦理物理、地科）、11月16日（星期二，辦理數學、生物）、11月17日（星期三，辦理化學、資訊）三天辦理，競賽各項表件如附件。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-25303",
@@ -13928,7 +14642,10 @@
    "source_category": "最新消息",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教師會 發佈日期 : 2021-09-04"
+   "snippet": "作者 : 教師會 發佈日期 : 2021-09-04",
+   "detail_attempts": 1,
+   "detail_available": false,
+   "detail_status": "temporary_error"
   },
   {
    "id": "cysh-135927",
@@ -13941,7 +14658,17 @@
    "source_category": "歷屆試題",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 特教組 發佈日期 : 2021-07-27"
+   "snippet": "作者 : 特教組 發佈日期 : 2021-07-27",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-135927.json",
+   "detail_status": "parsed",
+   "detail_revision": "f1339363d0f4a8a51971290aecec90818af9bbddd78da9d5c3fa7d335407b5a4",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-20801",
@@ -13977,7 +14704,17 @@
    "source_category": "榮譽櫥窗",
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2021-07-25 賀 本班 318 杞亮昀同學 榮獲 2021年第32屆國際生物奧林匹亞競賽 金 牌 ( 右 一 杞 亮 昀 ) 感 謝 科 學 班 各 科 老 師 辛 勤 指 導"
+   "snippet": "作者 : 科學班 發佈日期 : 2021-07-25 賀 本班 318 杞亮昀同學 榮獲 2021年第32屆國際生物奧林匹亞競賽 金 牌 ( 右 一 杞 亮 昀 ) 感 謝 科 學 班 各 科 老 師 辛 勤 指 導",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-2158.json",
+   "detail_status": "parsed",
+   "detail_revision": "6dd5432695026328f4a3c4f850ed291f8c8a2064832ceef8a3589d98be07f959",
+   "detail_attempts": 1,
+   "summary": "2021年第32屆國際生物奧林匹亞競賽",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-28458",
@@ -13990,7 +14727,17 @@
    "source_category": "榮譽櫥窗",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2021-07-15 本校學生參加2021年第20屆旺宏科學獎競賽 318 洪梓茗 ， 以作品「 以葡萄原汁製備奈米銀，並探討其抗菌性」 獲 ​ 初賽 《佳作》 感謝簡詩展老師辛勤指導!! 恭喜以上獲獎同學!! 公告出處： https://www.mxeduc.org.tw/news/Pages/20210714.aspx"
+   "snippet": "作者 : 科學班 發佈日期 : 2021-07-15 本校學生參加2021年第20屆旺宏科學獎競賽 318 洪梓茗 ， 以作品「 以葡萄原汁製備奈米銀，並探討其抗菌性」 獲 ​ 初賽 《佳作》 感謝簡詩展老師辛勤指導!! 恭喜以上獲獎同學!! 公告出處： https://www.mxeduc.org.tw/news/Pages/20210714.aspx",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-28458.json",
+   "detail_status": "parsed",
+   "detail_revision": "8d4b4f04fdef67c41917e97ae92eed06bdd128cf4506ed1c79f461682eb7f594",
+   "detail_attempts": 1,
+   "summary": "本校學生參加2021年第20屆旺宏科學獎競賽",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-19048",
@@ -14003,7 +14750,17 @@
    "source_category": "重補修(含自學輔導)",
    "category": "段考考試",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 教學組 發佈日期 : 2021-06-17 教學組開設【高三重補修】，詳如下方檔案， 未達畢業標準的同學，務必把握重補修課程，以利取得畢業證書。 1、開課課程範圍：109學年度高三全學年之科目，及辦理延修後下修高一、二之科目。 2、課程開設方式：採線上遠距授課 3、報名及繳費： 6.21~6.23電子郵件報名 ，郵政劃撥繳費。 4、預計7/8(四)起開課，開課班別與名單預計於7/5(一)公告於學校官網。"
+   "snippet": "作者 : 教學組 發佈日期 : 2021-06-17 教學組開設【高三重補修】，詳如下方檔案， 未達畢業標準的同學，務必把握重補修課程，以利取得畢業證書。 1、開課課程範圍：109學年度高三全學年之科目，及辦理延修後下修高一、二之科目。 2、課程開設方式：採線上遠距授課 3、報名及繳費： 6.21~6.23電子郵件報名 ，郵政劃撥繳費。 4、預計7/8(四)起開課，開課班別與名單預計於7/5(一)公告於學校官網。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-19048.json",
+   "detail_status": "parsed",
+   "detail_revision": "78d9d55bf2851a02c13dafb4d679d829056f971365a5bb0fc48238420e51cd9b",
+   "detail_attempts": 1,
+   "summary": "2、課程開設方式：採線上遠距授課 3、報名及繳費： 6.21~6.23電子郵件報名 ，郵政劃撥繳費。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-10666",
@@ -14016,7 +14773,17 @@
    "source_category": "歷屆大學榜單",
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 註冊組 發佈日期 : 2021-05-25 本校110學年度升大學及四技榜單，含大學申請統一分發及四技報到(統計至2021-05-25)。"
+   "snippet": "作者 : 註冊組 發佈日期 : 2021-05-25 本校110學年度升大學及四技榜單，含大學申請統一分發及四技報到(統計至2021-05-25)。",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-10666.json",
+   "detail_status": "parsed",
+   "detail_revision": "3a0970e40ea219a493e5642b4c1362ab68b5f1ab36464fbf9d28bc79a49bdc30",
+   "detail_attempts": 1,
+   "summary": "本校110學年度升大學及四技榜單，含大學申請統一分發及四技報到(統計至2021-05-25)。",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-11119",
@@ -14029,7 +14796,17 @@
    "source_category": "最新消息",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 設備組 發佈日期 : 2021-05-10 數學科"
+   "snippet": "作者 : 設備組 發佈日期 : 2021-05-10 數學科",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-11119.json",
+   "detail_status": "parsed",
+   "detail_revision": "19d7a40cb3b256605205cc892d79b44c9f49846f117b42d0d562c2f45754f682",
+   "detail_attempts": 1,
+   "summary": "",
+   "summary_status": "insufficient",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "",
+   "calendar_events": []
   },
   {
    "id": "cysh-18368",
@@ -14042,7 +14819,17 @@
    "source_category": "榮譽櫥窗",
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
-   "snippet": "作者 : 科學班 發佈日期 : 2021-05-07 2021年第32屆國際生物奧林匹亞競賽 本班共2位學生完成決選(第四階段) 一等獎 318 杞亮昀 ★ 入選國手 指導老師 林秀珠 三等獎 218 劉宸安 指導老師 賴美杏 非常恭喜獲獎及獲選同學 感謝生物 老師辛勤指導"
+   "snippet": "作者 : 科學班 發佈日期 : 2021-05-07 2021年第32屆國際生物奧林匹亞競賽 本班共2位學生完成決選(第四階段) 一等獎 318 杞亮昀 ★ 入選國手 指導老師 林秀珠 三等獎 218 劉宸安 指導老師 賴美杏 非常恭喜獲獎及獲選同學 感謝生物 老師辛勤指導",
+   "detail_available": true,
+   "detail_ref": "data/details/cysh/cysh-18368.json",
+   "detail_status": "parsed",
+   "detail_revision": "d4a3431c38b76c2373cdabf4face8689155011a0c1fe7abccbe84ab7bfc10b0a",
+   "detail_attempts": 1,
+   "summary": "2021年第32屆國際生物奧林匹亞競賽",
+   "summary_status": "extracted",
+   "summary_version": "extractive-v1",
+   "summary_provenance": "official_article",
+   "calendar_events": []
   },
   {
    "id": "cysh-11072",
