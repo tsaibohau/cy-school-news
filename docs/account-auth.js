@@ -135,6 +135,11 @@
           });
         });
       },
+      signInWithIdentifier: function (identifier, password) {
+        var email = normalizeEmail(identifier);
+        if (email) return this.signInWithPassword(email, password);
+        return this.signInWithUsername(identifier, password);
+      },
       resetPasswordForEmail: function (email) {
         email = normalizeEmail(email);
         var redirectTo = approvedRedirect(config, options.location);
