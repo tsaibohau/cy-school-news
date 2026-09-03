@@ -15,21 +15,18 @@ import os
 import re
 import sys
 import time
+import shutil
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit, urlunsplit
 
 import requests
-from attachment_parser import enrich_pdf_attachments
-from extractive_summary import summarize_detail
 from public_shards import build_school_shards
 from bs4 import BeautifulSoup
 
-from detail_parser import parse_article_detail
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
-DETAIL_ROOT = ROOT / "docs" / "data" / "details"
 ALLOWED_SOURCE_HOSTS = {
     (urlsplit(str(school.get("base") or "")).hostname or "").lower()
     for school in CONFIG.get("schools", [])
@@ -557,55 +554,6 @@ def _detail_filename(announcement_id: str) -> str:
     return safe or "unknown"
 
 
-def write_detail_record(item: dict, html: str, fetched_at: str, *, session=None,
-                        attachment_budget=None, request_delay_sec=None) -> dict:
-    """Persist one validated sidecar without inflating announcement snapshots."""
-    school_id = str(item.get("school_id") or item.get("school") or "unknown").lower()
-    record = parse_article_detail(
-        html,
-        announcement_id=str(item.get("id", "")),
-        school_id=school_id,
-        title=str(item.get("title", "")),
-        source_url=str(item.get("url", "")),
-        fetched_at=fetched_at,
-    )
-    if session is not None and attachment_budget is not None:
-        enrich_pdf_attachments(
-            record, session, attachment_budget,
-            timeout_sec=CONFIG["timeout_sec"],
-            request_delay_sec=request_delay_sec or CONFIG["request_delay_sec"],
-        )
-    summary = summarize_detail(record, str(item.get("title", "")))
-    record["summary"] = summary
-    school_dir = DETAIL_ROOT / re.sub(r"[^A-Za-z0-9_-]+", "_", school_id)
-    school_dir.mkdir(parents=True, exist_ok=True)
-    target = school_dir / (_detail_filename(item.get("id", "")) + ".json")
-    target.write_text(json.dumps(record, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    item["detail_available"] = record.get("parse_status") == "parsed"
-    item["detail_ref"] = f"data/details/{school_id}/{target.name}"
-    item["detail_status"] = record.get("parse_status", "failed")
-    item["detail_revision"] = record.get("source_hash", "")
-    item["detail_attempts"] = int(item.get("detail_attempts") or 0) + 1
-    item["summary"] = summary["text"]
-    item["summary_status"] = summary["status"]
-    item["summary_version"] = summary["version"]
-    item["summary_provenance"] = summary["provenance"]
-    item["calendar_events"] = [{
-        "kind": row["kind"], "date": row["date"], "title": row["title"],
-        "provenance": row["provenance"], "source_revision": row["source_revision"],
-    } for row in record.get("verified_dates", [])]
-    return record
-
-
-def record_detail_fetch_failure(item: dict, max_attempts: int = 5) -> str:
-    """Persist bounded retry state without storing exception text or secrets."""
-    attempts = int(item.get("detail_attempts") or 0) + 1
-    item["detail_attempts"] = attempts
-    item["detail_available"] = False
-    item["detail_status"] = "permanent_error" if attempts >= max_attempts else "temporary_error"
-    return item["detail_status"]
-
-
 def load_existing_items(data_path: Path, archive_path: Path) -> dict:
     """讀回既有資料(封存 + 近期)合併成 by_id;檔案缺失或壞損視為空。
 
@@ -626,6 +574,22 @@ def load_existing_items(data_path: Path, archive_path: Path) -> dict:
     return by_id
 
 
+PUBLIC_PREVIEW_FIELDS = (
+    "id", "school", "school_name", "title", "url", "date", "date_source",
+    "category", "source_category", "first_seen",
+)
+PUBLIC_SNIPPET_LIMIT = 180
+
+
+def public_preview_item(item: dict) -> dict:
+    """Return the only announcement fields that may be committed to the public site."""
+    preview = {field: item[field] for field in PUBLIC_PREVIEW_FIELDS if item.get(field) not in (None, "")}
+    snippet = re.sub(r"\s+", " ", str(item.get("snippet") or "")).strip()
+    if snippet:
+        preview["snippet"] = snippet[:PUBLIC_SNIPPET_LIMIT]
+    return preview
+
+
 def main() -> int:
     data_path = ROOT / CONFIG["data_path"]
     archive_path = ROOT / CONFIG.get("archive_path", "docs/data/archive.json")
@@ -637,7 +601,6 @@ def main() -> int:
 
     session = requests.Session()
     session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
-    attachment_budget = {"remaining": min(4, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))}
 
     now_iso = datetime.now(TW_TZ).isoformat(timespec="seconds")
     all_new = []
@@ -727,8 +690,6 @@ def main() -> int:
                 detail_title = extract_article_title(html)
                 merge_title(it, detail_title, authoritative=True)
                 it["snippet"] = extract_article_snippet(html, it["title"])
-                write_detail_record(it, html, now_iso, session=session,
-                                    attachment_budget=attachment_budget, request_delay_sec=delay)
                 if not it["snippet"]:
                     it["snippet_tried"] = True
                 article_date = extract_article_date_result(html)
@@ -740,7 +701,6 @@ def main() -> int:
             except Exception as e:
                 print(f"[warn] 內文抓取失敗 {it['url']}: {e}", file=sys.stderr)
                 it["snippet"] = ""
-                record_detail_fetch_failure(it)
             time.sleep(delay)
 
         for it in collected.values():
@@ -757,8 +717,6 @@ def main() -> int:
                 it["category"] = classify(base_text)
                 it["first_seen"] = now_iso
                 it.setdefault("snippet", "")
-                it.setdefault("detail_status", "pending")
-                it.setdefault("detail_available", False)
                 by_id[it["id"]] = it
                 all_new.append(it)
 
@@ -799,30 +757,19 @@ def main() -> int:
                 or is_mojibake(it.get("title", ""))
                 or is_invalid_title(it.get("title", "")))
 
-    def needs_detail(it):
-        status = it.get("detail_status")
-        corrupt = (it.get("title_status") == "repair_pending"
-                   or is_mojibake(it.get("title", ""))
-                   or is_mojibake(it.get("snippet", "")))
-        return corrupt or ((not status or status in {"pending", "temporary_error"})
-                           and int(it.get("detail_attempts") or 0) < 5)
-
     if not run_backfill:
         print(f"[info] 本輪不執行補齊(補齊班次:台灣時間 {sorted(backfill_hours)} 點)")
     pending = [it for it in by_id.values()
                if it["id"] not in fetched_this_run
-               and (needs_date(it) or needs_snippet(it) or needs_title(it) or needs_detail(it))] if run_backfill else []
+               and (needs_date(it) or needs_snippet(it) or needs_title(it))] if run_backfill else []
     pending.sort(key=lambda x: x.get("first_seen") or "", reverse=True)
     filled_dates = filled_snippets = 0
     repaired_titles = 0
     for it in pending[:backfill_cap]:
-        detail_needed = needs_detail(it)
         try:
             html = fetch(session, it["url"])
         except Exception as e:
             print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)
-            if detail_needed:
-                record_detail_fetch_failure(it)
             time.sleep(delay)
             continue
         if needs_date(it):
@@ -846,8 +793,6 @@ def main() -> int:
             merge_title(it, detail_title, authoritative=True)
             if it.get("title", "") != before:
                 repaired_titles += 1
-        if detail_needed:
-            write_detail_record(it, html, now_iso)
         time.sleep(delay)
     if pending:
         done = min(len(pending), backfill_cap)
@@ -866,12 +811,17 @@ def main() -> int:
     validate_history_capacity(items, CONFIG["max_items"])
     for it in items:
         it.pop("_source_url", None)
+    public_items = [public_preview_item(it) for it in items]
+
+    # Full article sidecars must never be served from the public static site.
+    # The scheduled action owns generated data and clears legacy sidecars on its next run.
+    shutil.rmtree(ROOT / "docs" / "data" / "details", ignore_errors=True)
 
     # 資料分層:近一年的放 announcements.json(開站即載),其餘放 archive.json
     # (前端搜尋時才背景載入),兩檔合起來仍是完整資料。
     hot_cutoff = (datetime.now(TW_TZ)
                   - timedelta(days=CONFIG.get("hot_days", 365))).strftime("%Y-%m-%d")
-    recent, archived = split_recent(items, hot_cutoff)
+    recent, archived = split_recent(public_items, hot_cutoff)
     recent_ids = validate_snapshot_items(recent, "recent snapshot") if recent else set()
     archived_ids = validate_snapshot_items(archived, "archive snapshot", allow_empty=True)
     if recent_ids | archived_ids != all_ids_before_cap:
@@ -894,8 +844,9 @@ def main() -> int:
     build_school_shards(out, {"generated_at": now_iso, "hot_cutoff": hot_cutoff,
                              "items": archived}, ROOT / "docs" / "data" / "schools")
 
-    all_new.sort(key=lambda x: x.get("date") or "", reverse=True)
-    new_items_path.write_text(json.dumps(all_new, ensure_ascii=False, indent=1),
+    public_new = [public_preview_item(it) for it in all_new]
+    public_new.sort(key=lambda x: x.get("date") or "", reverse=True)
+    new_items_path.write_text(json.dumps(public_new, ensure_ascii=False, indent=1),
                               encoding="utf-8")
 
     # 注意:這裡刻意不寫入時間戳。這個檔案由 Actions 一起提交,
