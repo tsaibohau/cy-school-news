@@ -197,6 +197,23 @@
           });
         });
       },
+      getAccountAccess: function () {
+        return getClient().then(function (c) {
+          return verifiedSession(c).then(function (session) {
+            if (!session) return { status: "anonymous" };
+            return fetch(String(config.supabaseUrl).replace(/\/$/, "") + "/functions/v1/account-access", {
+              method: "POST",
+              headers: { "apikey": config.supabaseAnonKey, "authorization": "Bearer " + session.access_token, "content-type": "application/json" },
+              body: "{}",
+            }).then(function (response) {
+              return response.json().catch(function () { return {}; }).then(function (body) {
+                if (!response.ok) throw new Error(body.error || "account access unavailable");
+                return { status: body.status || "pending" };
+              });
+            });
+          });
+        });
+      },
       onAuthStateChange: function (callback) {
         return getClient().then(function (c) {
           return c.auth.onAuthStateChange(function (event, session) {
