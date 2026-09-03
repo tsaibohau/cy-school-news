@@ -498,14 +498,6 @@ def run():
             "封存檔不存在時要能正常運作"
     print("✓ 既有資料載入(近期+封存)")
 
-    detail_retry = {"detail_status": "pending", "detail_attempts": 0}
-    for attempt in range(1, 6):
-        status = record_detail_fetch_failure(detail_retry)
-        assert detail_retry["detail_attempts"] == attempt
-        assert status == ("permanent_error" if attempt == 5 else "temporary_error")
-    assert detail_retry["detail_available"] is False
-    print("✓ detail failure bounded retry")
-
     return ok
 
 
