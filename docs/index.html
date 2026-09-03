@@ -181,12 +181,13 @@
 <dialog id="passwordAuthDialog" class="nickname-dialog" aria-labelledby="passwordAuthTitle">
   <form id="passwordAuthForm" class="nickname-sheet">
     <p class="eyebrow">ACCOUNT</p><h2 id="passwordAuthTitle">用嘉校快訊帳號登入</h2>
-    <p class="hint">此網站採管理員邀請制；請使用管理員提供的帳號與密碼登入。本站不會保存你的密碼。</p>
+    <p class="hint">完成註冊並驗證 Email 後，需經管理員核准才能使用問校務、個人通知與行事曆。本站不會保存你的密碼。</p>
     <label>嘉校快訊帳號<input id="passwordAuthUsername" required maxlength="32" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="例如：hau_115"></label>
-    
+    <label>救援 Email（註冊時需要）<input id="passwordAuthEmail" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="name@example.com"></label>
+    <label>顯示名稱（註冊時選填）<input id="passwordAuthNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
     <label>密碼<input id="passwordAuthPassword" type="password" required minlength="12" maxlength="72" autocomplete="current-password" placeholder="至少 12 個字元"></label>
     
-    <div class="profile-actions"><button id="passwordSignIn" class="btn-primary" type="submit">登入</button><button id="passwordAuthCancel" class="btn-ghost" type="button">取消</button></div>
+    <div class="profile-actions"><button id="passwordSignIn" class="btn-primary" type="submit">登入</button><button id="passwordSignUp" class="btn-ghost" type="button">註冊</button><button id="passwordAuthCancel" class="btn-ghost" type="button">取消</button></div>
     
     <p id="passwordAuthStatus" class="hint" role="status" aria-live="polite"></p>
   </form>
