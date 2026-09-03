@@ -310,7 +310,7 @@ async function testTabDoesNotResetDedupe() {
   assert.equal(notification.calls.length, 1);
   appRun.document.elements.tabSub.emit("click");
   const afterTab = storage.getItem("cyNews.lastSeen");
-  assert.ok(afterTab, "subscription tab may advance UI lastSeen");
+  assert.equal(afterTab, null, "anonymous users stay in the announcement archive instead of opening subscriptions");
   await appRun.app.fetchData();
   assert.equal(notification.calls.length, 1, "tab switching must not reset notification dedupe");
 }
@@ -684,7 +684,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v61/);
+  assert.match(swSource, /cy-news-v62/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
