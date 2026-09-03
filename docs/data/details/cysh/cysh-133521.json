@@ -1,0 +1,77 @@
+{
+ "announcement_id": "cysh-133521",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Openfind 使用第三方工具存在安全漏洞，可能引發XSS跨腳本攻擊",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133521,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202508-00000018",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "近日Openfind 電子郵件威脅實驗室於分析存取紀錄時，發現MailGates / MailAudit 系統中使用的第三方工具存在安全漏洞，目前已發現有攻擊者以 XSS 跨站腳本攻擊成功，可能導致用戶資料外洩及檔案系統未授權存取。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Openfind 已更新受影響的第三方模組版本，並釋出安全性修補程式(Security Patch)，建議使用者儘速完成更新。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "MailGates 5.0/6.0、MailAudit 5.0/6.0",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "MailGates / MailAudit 標準版至 [線上更新] 頁面更新：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "v6.0 版本請依序更新 Patch 至 6.1.9.050",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "v5.0 版本請依序更新 Patch 至 5.2.10.097",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. Openfind_OF-ISAC-25-002 https://www.openfind.com.tw/taiwan/download/Openfind_OF-ISAC-25-002.pdf",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "4ef99a976cae66800d9de05c01e38428f8e0ead48b2e04590caf38ba09f15d9f",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T19:24:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "近日Openfind 電子郵件威脅實驗室於分析存取紀錄時，發現MailGates / MailAudit 系統中使用的第三方工具存在安全漏洞，目前已發現有攻擊者以 XSS 跨站腳本攻擊成功，可能導致用戶資料外洩及檔案系統未授權存取。",
+  "evidence": "近日Openfind 電子郵件威脅實驗室於分析存取紀錄時，發現MailGates / MailAudit 系統中使用的第三方工具存在安全漏洞，目前已發現有攻擊者以 XSS 跨站腳本攻擊成功，可能導致用戶資料外洩及檔案系統未授權存取。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

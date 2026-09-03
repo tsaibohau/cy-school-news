@@ -10,7 +10,7 @@
 - Vercel Production Branch: `staging`
 - Stable origin: `https://cy-school-news-staging.vercel.app/`
 - Production remains GitHub Pages from `main`.
-- Supabase project remains `oppdhtnepjagdwovndra`; staging has no RLS bypass.
+- The staging source configuration (`docs/account-config.js`) points to the dedicated Preview Supabase project `ebezqanvmgsgtatsbssn`. It does not share the former `oppdhtnepjagdwovndra` configuration. Production Auth settings must be verified separately before promotion; do not copy a Preview backend into production by assuming they are interchangeable.
 
 Vercel builds `dist-staging` with `node tools/build-staging.js`. The output is temporary and ignored by Git. The build copies the approved `docs` snapshot, then adds noindex headers/meta, a visible staging banner, a staging-specific manifest, and the query-gated acceptance harness. It never runs the scraper or rewrites generated announcement data.
 
@@ -18,7 +18,7 @@ Every staging build derives one content revision for its HTML, CSS, JavaScript, 
 
 ## OAuth configuration
 
-Supabase Site URL stays `https://tsaibohau.github.io/cy-school-news/`. The only staging Auth change is the exact Additional Redirect URL `https://cy-school-news-staging.vercel.app/`. Google continues to return to Supabase at `https://oppdhtnepjagdwovndra.supabase.co/auth/v1/callback`; do not add a Google redirect directly to Vercel. Per-commit Vercel URLs and wildcard redirects are deliberately rejected.
+The stable staging return URL is `https://cy-school-news-staging.vercel.app/`. For the dedicated Preview backend, Google's Supabase callback is `https://ebezqanvmgsgtatsbssn.supabase.co/auth/v1/callback`; it is not the old shared-project callback or a direct Google-to-Vercel callback. The provider's current Site URL and redirect allowlist require provider-side verification; this source file is not evidence that those settings are deployed. Per-commit Vercel URLs and wildcard redirects are deliberately rejected.
 
 ## Promotion
 
@@ -28,6 +28,8 @@ Supabase Site URL stays `https://tsaibohau.github.io/cy-school-news/`. The only 
 4. Push feature and verify its remote head.
 5. Promote the reviewed feature head to `staging` without rewriting shared history.
 6. Verify Vercel's deployed commit equals `origin/staging` before authenticated acceptance.
+
+If Git reports unrelated histories, first inspect `git rev-parse --is-shallow-repository`. Fetch complete history before drawing conclusions about ancestry. Fetch explicit `main:refs/remotes/origin/main` and `staging:refs/remotes/origin/staging` refspecs when the local clone only tracks an old feature branch. Never fix this with force-push or `--allow-unrelated-histories`.
 
 ## REAL user_tasks A/B acceptance
 

@@ -22,7 +22,11 @@ assert.match(index, /style\.css\?v=46/);
 assert.match(index, /search-taxonomy\.js\?v=52/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=52/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=53/, "reviewed validity loads before answers");
-assert.match(index, /app\.js\?v=59/);
+const appVersion = index.match(/src="app\.js\?v=(\d+)"/);
+assert.ok(appVersion, "application script has a numeric cache version");
+const serviceWorker = fs.readFileSync(path.join(root, "docs", "sw.js"), "utf8");
+assert.ok(serviceWorker.includes("./app.js?v=" + appVersion[1] + '"'),
+  "the HTML and Service Worker cache refer to the same application version");
 assert.match(index, /id="appLoading"[^>]*role="status"/, "initial data loading is announced accessibly");
 assert.match(style, /\.app-loading/, "initial data loading has a dedicated view");
 assert.doesNotMatch(style, /--calligraphy:/, "the interface does not mix a second display font into reading UI");

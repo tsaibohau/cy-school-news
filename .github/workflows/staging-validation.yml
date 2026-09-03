@@ -59,6 +59,8 @@ jobs:
           tests/test_user_refresh.js
           tests/test_reminder_rules_client.js
           tests/test_staging_build.js
+          tests/test_ui_visual_contract.js
+          tests/test_calendar_workflow.js
       - name: Search ranking train and holdout gate
         run: node tools/evaluate-search-ranking.js --strict
       - name: Assistant QA train and holdout gate

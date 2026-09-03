@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-136041",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Cisco Catalyst SD-WAN 存在重大資安漏洞(CVE-2026-20182)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-136041,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202605-00000011",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Cisco Catalyst SD-WAN 是 Cisco 以雲端為中心的軟體定義廣域網路架構，提供集中管理、安全加密及應用效能優化，確保多雲環境的可靠連線，近日Cisco發布重大資安公告。 【CVE-2026-20182，CVSS：10.0】 此漏洞存在於Cisco Catalyst SD-WAN Controller (formerly vSmart) 與 Catalyst SD-WAN Manager (formerly vManage)，允許遠端攻擊者發送特製請求繞過身分驗證，取得內部高權限帳號 (non-root)。 攻擊者後續可利用高權限帳號存取 NETCONF，修改 SD-WAN 網路架構配置，建立惡意網路節點並深入攻擊企業/組織網路。 註：Cisco Catalyst SD-WAN Controller (formerly vSmart) 與 Cisco Catalyst SD-WAN Manager (formerly vManage) 已被發現積極利用於攻擊活動，請儘速採取應變措施。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] Cisco Catalyst SD-WAN On-Prem Deployment、Cisco SD-WAN Cloud-Pro、Cisco SD-WAN Cloud (Cisco Managed)、Cisco SD-WAN for Government (FedRAMP)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 根據官方網站釋出的解決方式進行修補: https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-sdwan-rpa2-v69WY2SW",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "eb7a753e56f9a13324556b3e3483c5b49067c7171707a624064d9f1132e33c29",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-01T19:23:36+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【CVE-2026-20182，CVSS：10.0】 此漏洞存在於Cisco Catalyst SD-WAN Controller (formerly vSmart) 與 Catalyst SD-WAN Manager (formerly vManage)，允許遠端攻擊者發送特製請求繞過身分驗證，取得內部高權限帳號 (non-root)。",
+  "evidence": "【CVE-2026-20182，CVSS：10.0】 此漏洞存在於Cisco Catalyst SD-WAN Controller (formerly vSmart) 與 Catalyst SD-WAN Manager (formerly vManage)，允許遠端攻擊者發送特製請求繞過身分驗證，取得內部高權限帳號 (non-root)。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

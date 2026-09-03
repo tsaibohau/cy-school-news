@@ -1,0 +1,42 @@
+{
+ "announcement_id": "cysh-133865",
+ "school_id": "cysh",
+ "title": "【漏洞預警】7-Zip 存在遠端程式碼執行漏洞(CVE-2025-11001及CVE-2025-11002)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133865,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "7-Zip壓縮軟體近期遭揭露存在兩個高風險等級漏洞CVE-2025-11001及CVE-2025-11002，因程式撰寫不當導致在解壓縮惡意的ZIP檔案時，可能觸發相關漏洞而執行任意程式碼(RCE)，進而造成系統的危害，該漏洞影響25.00（不含）之前的版本，建議使用者安裝至最新版本。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] 7-Zip 25.00 之前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 建議使用者儘快至官方網站更新至最新版本:https://www.7-zip.org/",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. CVE-2025-11001： https://nvd.nist.gov/vuln/detail/CVE-2025-11001 2. https://cybersecuritynews.com/7-zip-vulnerabilities/ 3. https://www.ithome.com.tw/news/172366/",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "b8bd93aeac47c9f8672932687121c6f0b1d451eca53973be7eb2971b093e62a4",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "7-Zip壓縮軟體近期遭揭露存在兩個高風險等級漏洞CVE-2025-11001及CVE-2025-11002，因程式撰寫不當導致在解壓縮惡意的ZIP檔案時，可能觸發相關漏洞而執行任意程式碼(RCE)，進而造成系統的危害，該漏洞影響25.00（不含）之前的版本，建議使用者安裝至最新版本。",
+  "evidence": "7-Zip壓縮軟體近期遭揭露存在兩個高風險等級漏洞CVE-2025-11001及CVE-2025-11002，因程式撰寫不當導致在解壓縮惡意的ZIP檔案時，可能觸發相關漏洞而執行任意程式碼(RCE)，進而造成系統的危害，該漏洞影響25.00（不含）之前的版本，建議使用者安裝至最新版本。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

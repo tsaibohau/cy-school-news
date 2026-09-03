@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-134598",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Junos OS Evolved PTX系列存在重大資安漏洞(CVE-2026-21902)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134598,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202602-00000013",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Juniper Networks 針對旗下Junos OS Evolved PTX系列產品發布重大資安公告(CVE-2026-21902，CVSS：9.8)，此為關鍵資源權限分配錯誤漏洞，允許未經身分驗證的攻擊者以root身分執行程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Junos OS Evolved PTX系列 25.4R1-S1-EVO、25.4R2-EVO版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至以下版本： Junos OS Evolved PTX系列 25.4R1-S1-EVO、25.4R2-EVO、26.2R1-EVO(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10736-63e97-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "baff0cf719db0c71f33aa94b8a771b73e7547e34a2ed64fd6e28c33f5f09f1cf",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Juniper Networks 針對旗下Junos OS Evolved PTX系列產品發布重大資安公告(CVE-2026-21902，CVSS：9.8)，此為關鍵資源權限分配錯誤漏洞，允許未經身分驗證的攻擊者以root身分執行程式碼。",
+  "evidence": "Juniper Networks 針對旗下Junos OS Evolved PTX系列產品發布重大資安公告(CVE-2026-21902，CVSS：9.8)，此為關鍵資源權限分配錯誤漏洞，允許未經身分驗證的攻擊者以root身分執行程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "announcement_id": "cysh-135141",
+ "school_id": "cysh",
+ "title": "【漏洞預警】微軟釋出115年4月份安全性更新",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135141,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202604-00000009",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "微軟釋出115年4月份安全性更新，共修補165個漏洞，其中包含8個高風險漏洞與1個已遭利用之漏洞，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] 影響平台-系統 Azure Logic Apps Microsoft Power App Remote Desktop Client SQL Server NET NET Framework NET and Visual Studio NET, .NET Framework, Visual Studio Applocker Filter Driver (applockerfltr.sys) Azure Monitor Agent Desktop Window Manager Function Discovery Service (fdwsd.dll) GitHub Copilot and Visual Studio Code",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "影響平台-軟體 Windows Advanced Rasterization Platform Windows IKE Extension Windows Push Notifications Windows Shell Microsoft Brokering File System Microsoft Defender Microsoft Dynamics 365 (on-premises) Microsoft Edge (Chromium-based) Microsoft Graphics Component Microsoft High Performance Compute Pack (HPC) Microsoft Management Console Microsoft Office Microsoft Office Excel Microsoft Office PowerPoint Microsoft Office SharePoint Microsoft Office Word Microsoft PowerShell Microsoft Windows Microsoft Windows Search Component Microsoft Windows Speech Role: Windows Hyper-V Universal Plug and Play (upnp.dll) Windows Active Directory Windows Admin Center Windows Ancillary Function Driver for WinSock Windows Biometric Service Windows BitLocker Windows Boot Loader Windows Boot Manager Windows COM Windows Client Side Caching driver (csc.sys) Windows Cloud Files Mini Filter Driver Windows Common Log File System Driver Windows Container Isolation FS Filter Driver Windows Cryptographic Services Windows Encrypting File System (EFS) Windows File Explorer Windows GDI Windows HTTP.sys Windows Hello Windows Installer Windows Kerberos Windows Kernel Windows Kernel Memory Windows LUAFV Windows Local Security Authority Subsystem Service (LSASS) Windows Management Services Windows OLE Windows Print Spooler Components Windows Projected File System Windows RPC API Windows Recovery Environment Agent Windows Redirected Drive Buffering Windows Remote Desktop Windows Remote Desktop Licensing Service Windows Remote Procedure Call Windows SSDP Service Windows Sensor Data Service Windows Snipping Tool Windows Speech Brokered Api Windows Storage Spaces Controller Windows TCP/IP Windows TDI Translation Driver (tdx.sys) Windows USB Print Driver Windows Universal Plug and Play (UPnP) Device Host Windows User Interface Core Windows User Interface Core Windows WFP NDIS Lightweight Filter Driver (wfplwfs.sys) Windows WalletService Windows Win32K - GRFX Windows Win32K - ICOMP",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 目前微軟官方已針對弱點釋出修復版本，請各機關可聯絡系統維護廠商或參考以下連結： https://msrc.microsoft.com/update-guide/releaseNote/2026-Apr",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://msrc.microsoft.com/update-guide/releaseNote/2026-Apr",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "5724db6334e26bfc73d09660cb8c462b0d15f610c66c4e6cb766d2d8dcce1366",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T07:20:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "微軟釋出115年4月份安全性更新，共修補165個漏洞，其中包含8個高風險漏洞與1個已遭利用之漏洞，請儘速確認並進行修補。",
+  "evidence": "微軟釋出115年4月份安全性更新，共修補165個漏洞，其中包含8個高風險漏洞與1個已遭利用之漏洞，請儘速確認並進行修補。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

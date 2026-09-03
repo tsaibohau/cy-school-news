@@ -30,50 +30,37 @@
    "text_length": 13879,
    "content_sha256": "c8a76aa2ee65bdda8ee7c9bb18c5a42c6080bbc1711b3cd7434a7ff595867922",
    "parser_version": "attachment-pdf-v1",
-   "parsed_at": "2026-09-03T07:26:09+00:00"
+   "parsed_at": "2026-08-31T04:19:31+00:00"
   },
   {
    "filename": "115-1高一微課程（前八週）上課地點.pdf",
    "url": "https://www.cysh.cy.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MelEyTDNCMFlWOHhORGs1TXpCZk1UQTBORGMyTjE4ME5UVTNOaTV3WkdZPQ==&fname=WW54RPOKIC44TXMP44VW30WTRKSWFHICWSJC35XSNPIDDCTS34YWA0SW00ECDGSSZTWWSS0100VWTXLO34DGMOYSQOB0FHXWIHMPNO40RONK34UWCCLK45OK20POXXKKVSNOXWXTMKMOHGXSKLQKSW10UTA1UTEGLKUSZWPKDGTSGHQKA4XW21JHB00450GDRK30FHNP20A0HGHCZTJDROFCYSB430OK00POYWB0YWKKPPHHWW04DHHG",
    "extension": ".pdf",
    "mime_type": "application/pdf",
-   "size": null,
+   "size": 75625,
    "announcement_id": "cysh-136428",
    "provenance": "official_attachment",
-   "parse_status": "pending"
+   "parse_status": "parsed",
+   "parse_attempts": 1,
+   "embedded_text": "序號 課程名稱 上課地點\n1 木工實作 生活科技館2F木工教室\n2 西班牙語初階(全) 101\n3 安紐，初級韓語 112\n4 浮水印手工書 美術館版畫教室\n5 從遊戲中拼湊自己 樸毅樓一樓遊藝教室\n6 旭陵鬥法大會-公共議題思辨之旅 107\n7 自造之星(全/惠文高中遠距同步) 生活科技館四樓雙語教室\n8 鋼筆藝術(全/惠文高中遠距同步) 樸毅樓-一樓電腦教室\n9 藝數摺學 資優大樓-三樓多功能教室\n10 資安攻防戰(全) 科學館電腦教室2A\n11 體適能陸海空 體育館重訓室\n12 管理與生活 113\n13 股票投資輕鬆學 生活科技館-二樓電腦教室\n14 別急著相信先問對問題 111\n15 理財總管 106\n16 光影捕捉術：基礎攝影 109\n17 澱粉、麻糬，我的最愛 104\n18 QGIS主題地圖入門 進修部大樓-三樓電腦教室\n19 自動播放下一集：Netflix 裡的生命故事 108\n20 俄羅斯生存指南：玩轉俄語 × 探索文化 102\n21 自我民族誌的初級訓練：\n歡迎光臨異世界-嘉義高中冒險者公會的初心者 103\n115-1高一上彈性課程 微課程(前8週)\n實施時間:星期四 第3、4節\n實施班級101-113.115-116",
+   "page_count": 1,
+   "text_length": 526,
+   "content_sha256": "c1eb22853da1c4836a7492cfc983cef2f2c97916908671e69b72c85fe5c3cab8",
+   "parser_version": "attachment-pdf-v1",
+   "parsed_at": "2026-08-31T04:19:34+00:00"
   }
  ],
- "source_hash": "3ca01fdfd3ddb86c3b9b624404a897f3b07a11a06f0b47c6cc60b24ac1e87654",
+ "source_hash": "7e88c6abad42bcfd38f58d00e7a229b10e5711f9ea1cb593dac11e75fef0b5b3",
  "parser_version": "detail-v2",
- "fetched_at": "2026-09-03T15:25:43+08:00",
+ "fetched_at": "2026-08-31T12:18:19+08:00",
  "parse_status": "parsed",
  "provenance": "official_article",
  "verified_dates": [],
  "summary": {
   "status": "extracted",
-  "text": "選課結果、上課地點依校網公告為主，名單如附件。（另有 2 項重點）",
+  "text": "選課結果、上課地點依校網公告為主，名單如附件。",
   "evidence": "選課結果、上課地點依校網公告為主，名單如附件。",
-  "items": [
-   {
-    "label": "項目 1",
-    "text": "選課結果、上課地點依校網公告為主，名單如附件。",
-    "evidence": "選課結果、上課地點依校網公告為主，名單如附件。",
-    "provenance": "official_article"
-   },
-   {
-    "label": "項目 3",
-    "text": "有任何問題，請於 9/2(三)11:50~12:35 洽教務處教學組，逾時不候。",
-    "evidence": "有任何問題，請於 9/2(三)11:50~12:35 洽教務處教學組，逾時不候。",
-    "provenance": "official_article"
-   },
-   {
-    "label": "項目 2",
-    "text": "第一次上課時間為 9/3(四)第3、4節 。",
-    "evidence": "第一次上課時間為 9/3(四)第3、4節 。",
-    "provenance": "official_article"
-   }
-  ],
   "provenance": "official_article",
-  "version": "extractive-v2"
+  "version": "extractive-v1"
  }
 }

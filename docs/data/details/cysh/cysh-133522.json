@@ -1,0 +1,62 @@
+{
+ "announcement_id": "cysh-133522",
+ "school_id": "cysh",
+ "title": "【漏洞預警】永恒數位通訊科技｜網路監控伺服器 - 存在2個漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133522,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202509-00000009",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【永恒數位通訊科技｜網路監控伺服器 - Exposure of Sensitive Information】(CVE-2025-10264，CVSS：10.0) 未經身分鑑別之遠端攻擊者可存取系統設定檔並取得該NVR與連線攝影機之明文帳號密碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【永恒數位通訊科技｜網路監控伺服器 - OS Command Injection】(CVE-2025-10265，CVSS：8.8) 已通過身分鑑別之遠端攻擊者可注入任意作業系統指令並於設備上執行。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] ● 受影響NVR系列型號： DS-1200 DS-2100 Pro DS-2100 Pro+ DS-2100 UHD DS-2200 UHD DS-2200 UHD+ DS-4200 Pro DS-4200 Pro+ DS-4200 UHD DS-4200 UHD+ DS-4100-RM DS-4200-RM Pro+ DS-4200-RM UHD DS-8x00-RM Pro+ DS-8x00-SRM Pro+ DS-8x00-RM UHD DS-16x00-RM Pro+ DS-16x00-RM UHD",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● 受影響Firmware版本： x.x.x.78(含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 更新韌體版本至x.x.x.79(含)以後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. 永恒數位通訊科技｜網路監控伺服器 - 存在2個漏洞：https://www.twcert.org.tw/tw/cp-132-10375-19f1e-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "1d6a12460d2242872e24db42db123814cc6fa312edda6c4916d4ff1ab691fefc",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T19:24:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【永恒數位通訊科技｜網路監控伺服器 - Exposure of Sensitive Information】(CVE-2025-10264，CVSS：10.0) 未經身分鑑別之遠端攻擊者可存取系統設定檔並取得該NVR與連線攝影機之明文帳號密碼。",
+  "evidence": "【永恒數位通訊科技｜網路監控伺服器 - Exposure of Sensitive Information】(CVE-2025-10264，CVSS：10.0) 未經身分鑑別之遠端攻擊者可存取系統設定檔並取得該NVR與連線攝影機之明文帳號密碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

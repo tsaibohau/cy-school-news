@@ -1,0 +1,67 @@
+{
+ "announcement_id": "cysh-134592",
+ "school_id": "cysh",
+ "title": "【漏洞預警】SolarWinds旗下Web Help Desk (WHD)存在4個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134592,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202601-00000027",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Web Help Desk (WHD)是SolarWinds旗下產品，主要提供集中式自動執行工單管理的服務，包含工單自動化、集中式知識庫、資產追蹤管理等，以便支援客戶與追蹤事項，近日發布重大資安漏洞公告。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-40551，CVSS：9.8】 此為不受信任資料反序列化漏洞，允許未經身分驗證的攻擊者可在主機上執行命令，可能導致遠端程式碼執行。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-40552，CVSS：9.8】 此為身分驗證繞過漏洞，若攻擊者利用該漏洞，可執行本應受身分驗證保護的相關服務。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-40553，CVSS：9.8】 此為不受信任資料反序列化漏洞，允許未經身分驗證的攻擊者可在主機上執行命令，可能導致遠端程式碼執行。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-40554，CVSS：9.8】 此為身分驗證繞過漏洞，若攻擊者利用該漏洞，可在Web Help Desk(WHD)中執行特定操作。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] SolarWinds Web Help Desk (WHD) 12.8.8 HF1(含)以下版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 根據官方網站釋出的解決方式進行修補：https://documentation.solarwinds.com/en/success_center/whd/content/release_notes/whd_2026-1_release_notes.htm",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10680-43bed-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "5daa0fd6551b76b4403d9fc853a70588ae61749699efd9df3825c0ad2e5b9c60",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Web Help Desk (WHD)是SolarWinds旗下產品，主要提供集中式自動執行工單管理的服務，包含工單自動化、集中式知識庫、資產追蹤管理等，以便支援客戶與追蹤事項，近日發布重大資安漏洞公告。",
+  "evidence": "Web Help Desk (WHD)是SolarWinds旗下產品，主要提供集中式自動執行工單管理的服務，包含工單自動化、集中式知識庫、資產追蹤管理等，以便支援客戶與追蹤事項，近日發布重大資安漏洞公告。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

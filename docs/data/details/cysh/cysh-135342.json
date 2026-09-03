@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-135342",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Palo Alto Networks PAN-OS存在重大資安漏洞(CVE-2026-0300)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135342,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202605-00000002",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Palo Alto Networks 的防火牆作業系統 PAN-OS的User-ID驗證入口網站服務存在緩衝區溢位漏洞(CVE-2026-0300，CVSS ：9.3)，此漏洞允許未經身分驗證的攻擊者透過發送特製的資料，在PA系列和VM系統防火牆上，以root權限執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] PAN-OS 12.1.4-h5(不含)以前版本 PAN-OS 12.1.7(不含)以前版本 PAN-OS 11.2.4-h17(不含)以前版本 PAN-OS 11.2.7-h13(不含)以前版本 PAN-OS 11.2.10-h6(不含)以前版本 PAN-OS 11.2.12(不含)以前版本 PAN-OS 11.1.4-h33(不含)以前版本 PAN-OS 11.1.6-h32(不含)以前版本 PAN-OS 11.1.7-h6(不含)以前版本 PAN-OS 11.1.10-h25(不含)以前版本 PAN-OS 11.1.13-h5(不含)以前版本 PAN-OS 11.1.15(不含)以前版本 PAN-OS 10.2.7-h34(不含)以前版本 PAN-OS 10.2.10-h36(不含)以前版本 PAN-OS 10.2.13-h21(不含)以前版本 PAN-OS 10.2.16-h7(不含)以前版本 PAN-OS 10.2.18-h6(不含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 根據官方網站釋出的解決方式進行修補: https://security.paloaltonetworks.com/CVE-2026-0300",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10898-012f2-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "88264597cc52e4a9591281fff2253042c74f4392b4d67e5dcef7f9f9edf860de",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T07:20:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Palo Alto Networks 的防火牆作業系統 PAN-OS的User-ID驗證入口網站服務存在緩衝區溢位漏洞(CVE-2026-0300，CVSS ：9.3)，此漏洞允許未經身分驗證的攻擊者透過發送特製的資料，在PA系列和VM系統防火牆上，以root權限執行任意程式碼。",
+  "evidence": "Palo Alto Networks 的防火牆作業系統 PAN-OS的User-ID驗證入口網站服務存在緩衝區溢位漏洞(CVE-2026-0300，CVSS ：9.3)，此漏洞允許未經身分驗證的攻擊者透過發送特製的資料，在PA系列和VM系統防火牆上，以root權限執行任意程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

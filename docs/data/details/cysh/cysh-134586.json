@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-134586",
+ "school_id": "cysh",
+ "title": "【漏洞預警】PostgreSQL圖形化介面工具pgAdmin存在高風險安全漏洞(CVE-2025-13780)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134586,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202601-00000012",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現PostgreSQL圖形化介面工具pgAdmin存在程式碼注入(Code Injection)漏洞(CVE-2025-13780)。當系統處於伺服器模式(Server Mode)下，取得一般權限之遠端攻擊者可上傳特製惡意備份檔，後續當觸發PLAIN格式備份檔還原功能時，系統會解析特製備份檔，進而於pgAdmin主機上執行任意程式碼，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] pgAdmin 9.10(含)以下版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 更新pgAdmin至9.11(含)以上版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-13780 2. https://www.endorlabs.com/learn/when-regex-isnt-enough-how-we-discovered-cve-2025-13780-in-pgadmin",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "32399aedb40e9dbf361780234b24fcc2de58d12c6bc5d59ff80ebc8e3c1d4344",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現PostgreSQL圖形化介面工具pgAdmin存在程式碼注入(Code Injection)漏洞(CVE-2025-13780)。",
+  "evidence": "研究人員發現PostgreSQL圖形化介面工具pgAdmin存在程式碼注入(Code Injection)漏洞(CVE-2025-13780)。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

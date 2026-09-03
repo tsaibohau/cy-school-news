@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-133532",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Apache ActiveMQ NMS AMQP存在高風險安全漏洞(CVE-2025-54539)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133532,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 NISAC-200-202510-00000201",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現Apache ActiveMQ NMS AMQP用戶端存在反序列化不受信任資料(Deserialization of Untrusted Data)漏洞(CVE-2025-54539)。未經身分鑑別之遠端攻擊者可在受影響用戶端與不受信任之AMQP伺服器建立連線時，回傳特製序列化資料即可於用戶端執行任意程式碼，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] Apache ActiveMQ NMS AMQP 2.3.0(含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新Apache ActiveMQ NMS AMQP至2.4.0(含)以後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-54539 2. https://lists.apache.org/thread/9k684j07ljrshy3hxwhj5m0xjmkz1g2n",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "a684ccc2df6d5badb2a22225c11b41fce7a5a815e5c2dcc8982c3c1842ca9cf0",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T19:24:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現Apache ActiveMQ NMS AMQP用戶端存在反序列化不受信任資料(Deserialization of Untrusted Data)漏洞(CVE-2025-54539)。",
+  "evidence": "研究人員發現Apache ActiveMQ NMS AMQP用戶端存在反序列化不受信任資料(Deserialization of Untrusted Data)漏洞(CVE-2025-54539)。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

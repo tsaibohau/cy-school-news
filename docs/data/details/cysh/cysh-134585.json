@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-134585",
+ "school_id": "cysh",
+ "title": "【漏洞預警】7-Zip存在高風險安全漏洞(CVE-2025-55188)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134585,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202512-00000198",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現7-Zip存在連結追蹤(Link Following)漏洞(CVE-2025-55188)。 未經身分鑑別之本機端攻擊者可利用此漏洞寫入任意檔案。該漏洞目前已遭駭客利用，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] 7-Zip 25.01(不含)以下版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 更新7-Zip至25.01(含)以上版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-55188",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "e5a122ffaa5b31b34f80acccaf45934b346c64e12860ddf69133c4956af79520",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現7-Zip存在連結追蹤(Link Following)漏洞(CVE-2025-55188)。",
+  "evidence": "研究人員發現7-Zip存在連結追蹤(Link Following)漏洞(CVE-2025-55188)。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

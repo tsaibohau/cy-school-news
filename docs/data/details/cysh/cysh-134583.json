@@ -1,0 +1,67 @@
+{
+ "announcement_id": "cysh-134583",
+ "school_id": "cysh",
+ "title": "【漏洞預警】以Chromium為基礎之瀏覽器存在5個高風險安全漏洞，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134583,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202512-00000131",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現Google Chrome、Microsoft Edge、Vivaldi及Brave 等以Chromium為基礎之瀏覽器存在5個高風險安全漏洞，類型包含類型混淆(Type Confusion)漏洞(CVE-2025-13630)、權限提升(Privilege Escalation)漏洞(CVE-2025-13631)、使用釋放後記憶體(Use After Free)漏洞(CVE-2025-13633與CVE-2025-13638)及不正確之類型轉換(Incorrect Type Conversion or Cast)漏洞(CVE-2025-13720)，最嚴重可使未經身分鑑別之遠端攻擊者於使用者端執行任意程式碼，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] Google Chrome(Linux與Windows) 143.0.7499.40(不含)以下版本 Google Chrome(Mac) 143.0.7499.41(不含)以下版本 Microsoft Edge 143.0.3650.66(不含)以下版本 Vivaldi 7.7.3851.58(不含)以下版本 Brave 1.85.111(不含)以下版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 一、請更新Google Chrome瀏覽器至143.0.7499.40/41(含)以上版本 https://support.google.com/chrome/answer/95414?hl=zh-Hant",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "二、請更新Microsoft Edge瀏覽器至143.0.3650.66(含)以上版本 https://support.microsoft.com/zh-tw/topic/microsoft-edge-%E6%9B%B4%E6%96%B0%E8%A8%AD%E5%AE%9A-af8aaca2-1b69-4870-94fe-18822dbb7ef1",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "三、請更新Vivaldi瀏覽器至7.7.3851.58(含)以上版本 https://help.vivaldi.com/desktop/install-update/update-vivaldi/",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "四、請更新Brave瀏覽器至1.85.111(含)以上版本 https://community.brave.com/t/how-to-update-brave/384780",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-13630 2. https://nvd.nist.gov/vuln/detail/CVE-2025-13631 3. https://nvd.nist.gov/vuln/detail/CVE-2025-13633 4. https://nvd.nist.gov/vuln/detail/CVE-2025-13638 5. https://nvd.nist.gov/vuln/detail/CVE-2025-13720",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "cf10e8a7b5ba694272970ddd0dc5765589ff588e04b0c174ff8ace5194531b80",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "[建議措施:] 一、請更新Google Chrome瀏覽器至143.0.7499.40/41(含)以上版本 https://support.google.com/chrome/answer/95414?",
+  "evidence": "[建議措施:] 一、請更新Google Chrome瀏覽器至143.0.7499.40/41(含)以上版本 https://support.google.com/chrome/answer/95414?",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

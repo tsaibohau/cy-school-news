@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-134587",
+ "school_id": "cysh",
+ "title": "【漏洞預警】MongoDB存在高風險安全漏洞(CVE-2025-14847)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134587,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202601-00000030",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現MongoDB存在不當處理長度不一致參數(Improper Handling of Length Parameter Inconsistency)漏洞(CVE-2025-14847)。 未經身分鑑別之遠端攻擊者可透過傳送特製之zlib壓縮通訊封包，觸發系統於處理解壓縮資料時，未適當驗證參數長度之問題，進而於解析文件流程讀取未初始化之記憶體內容，造成敏感資訊洩漏。該漏洞已遭駭客利用，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] MongoDB 8.2.0至8.2.2版本 MongoDB 8.0.0至8.0.16版本 MongoDB 7.0.0至7.0.26版本 MongoDB 6.0.0至6.0.26版本 MongoDB 5.0.0至5.0.31版本 MongoDB 4.4.0至4.4.29版本 MongoDB Server 4.2所有版本 MongoDB Server 4.0所有版本 MongoDB Server 3.6所有版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 更新MongoDB至8.2.3版本 更新MongoDB至8.0.17版本 更新MongoDB至7.0.28版本 更新MongoDB至6.0.27版本 更新MongoDB至5.0.32版本 更新MongoDB至4.4.30版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "若無法立即更新，請參考官方說明進行處哩，網址如下： https://jira.mongodb.org/browse/SERVER-115508",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-14847 2. https://jira.mongodb.org/browse/SERVER-115508",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "8958e8723375bb99c3e44638f73d734f9fa9f5f4ed91234b2a9ab685ec5ff7c6",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現MongoDB存在不當處理長度不一致參數(Improper Handling of Length Parameter Inconsistency)漏洞(CVE-2025-14847)。",
+  "evidence": "研究人員發現MongoDB存在不當處理長度不一致參數(Improper Handling of Length Parameter Inconsistency)漏洞(CVE-2025-14847)。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
