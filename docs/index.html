@@ -102,6 +102,11 @@
   <!-- 公告首頁 -->
   <section id="viewLatest" hidden>
     <div class="section-heading"><div><p class="eyebrow">ANNOUNCEMENTS</p><h2>公告總庫</h2></div></div>
+    <div id="publicAccountEntry" class="account-actions" aria-label="帳號功能">
+      <span class="hint">登入後可使用問校務、個人通知與行事曆。</span>
+      <button id="publicAccountLogin" class="btn-primary" type="button">登入</button>
+      <button id="publicAccountSignUp" class="btn-ghost" type="button">註冊</button>
+    </div>
     <div class="controls">
       <input id="q" type="search" inputmode="search" placeholder="搜尋公告,可用空格分隔多個關鍵字" aria-label="搜尋公告">
       <label class="school-filter" for="schoolFilter">
@@ -187,9 +192,20 @@
     <label>顯示名稱（註冊時選填）<input id="passwordAuthNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
     <label>密碼<input id="passwordAuthPassword" type="password" required minlength="12" maxlength="72" autocomplete="current-password" placeholder="至少 12 個字元"></label>
     
-    <div class="profile-actions"><button id="passwordSignIn" class="btn-primary" type="submit">登入</button><button id="passwordSignUp" class="btn-ghost" type="button">註冊</button><button id="passwordAuthCancel" class="btn-ghost" type="button">取消</button></div>
+    <div class="profile-actions"><button id="passwordSignIn" class="btn-primary" type="submit">登入</button><button id="passwordSignUp" class="btn-ghost" type="button">註冊</button><button id="passwordResetRequest" class="btn-ghost" type="button">重設密碼</button><button id="passwordAuthCancel" class="btn-ghost" type="button">取消</button></div>
     
     <p id="passwordAuthStatus" class="hint" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+<dialog id="passwordRecoveryDialog" class="nickname-dialog" aria-labelledby="passwordRecoveryTitle">
+  <form id="passwordRecoveryForm" class="nickname-sheet">
+    <p class="eyebrow">PASSWORD RECOVERY</p><h2 id="passwordRecoveryTitle">設定新密碼</h2>
+    <p class="hint">請設定至少 12 個字元的新密碼。</p>
+    <label>新密碼<input id="passwordRecoveryPassword" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label>
+    <label>再次輸入新密碼<input id="passwordRecoveryConfirm" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label>
+    <div class="profile-actions"><button class="btn-primary" type="submit">更新密碼</button><button id="passwordRecoveryCancel" class="btn-ghost" type="button">取消</button></div>
+    <p id="passwordRecoveryStatus" class="hint" role="status" aria-live="polite"></p>
   </form>
 </dialog>
 
@@ -204,7 +220,7 @@
   </form>
 </dialog>
 
-<div class="function-dock">
+<div id="functionDock" class="function-dock">
 <button id="navMenuToggle" class="function-toggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="開啟功能選單"><span aria-hidden="true">＋</span><strong id="navCurrentLabel">選單</strong></button>
 <nav id="navMenu" class="tabbar" aria-label="主要功能" hidden>
   <button id="tabHome" class="tab is-active" aria-current="page"><span class="tab-icon" aria-hidden="true">首</span><span>主畫面</span></button>
@@ -231,7 +247,7 @@
 
 <script src="account-config.js?v=41"></script>
 <script src="supabase-sync.js?v=54"></script>
-<script src="account-auth.js?v=44"></script>
+<script src="account-auth.js?v=45"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
@@ -249,7 +265,7 @@
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
 <script src="admin-users.js?v=3"></script>
-<script src="app.js?v=61"></script>
+<script src="app.js?v=62"></script>
 </body>
 </html>
 
