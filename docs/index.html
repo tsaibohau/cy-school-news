@@ -164,8 +164,13 @@
       <details class="my-card my-disclosure" aria-labelledby="reminderPushTitle"><summary><span class="my-card-icon" aria-hidden="true">鈴</span><span><strong id="reminderPushTitle">提醒推播</strong><small>日期接近時在此裝置提醒</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary><div class="my-card-body"><p class="hint">只有可驗證的截止日、活動、校曆、待辦期限或你手動設定的日期才會排程。</p><div class="notify-row"><button id="reminderPushToggle" class="btn-primary" type="button">在此裝置開啟</button><span id="reminderPushState" class="hint" aria-live="polite">請先登入</span></div><label class="reminder-preset">預設提醒頻率<select id="reminderPreset"><option value="single">單次：1 天前</option><option value="standard">標準：3 天前、1 天前、當天</option><option value="dense">密集：7 天前、3 天前、1 天前、當天</option><option value="custom">自訂</option></select></label><label id="reminderCustomWrap" class="reminder-preset" hidden>自訂提前天數<input id="reminderCustomOffsets" inputmode="numeric" maxlength="32" placeholder="例如：5,2,0"></label><p id="nextReminder" class="hint">尚無已排程提醒</p></div></details>
       <section id="tasksBox" class="my-card tasks-box" aria-labelledby="tasksTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">辦</span><div><h3 id="tasksTitle">待辦事項</h3><p>未完成的事情集中在這裡</p></div></div><button id="taskComposerToggle" class="btn-primary compact-button" type="button" aria-expanded="false" aria-controls="taskForm">新增待辦</button></div><form id="taskForm" class="task-form task-composer" hidden><label class="task-title-field">要做什麼？<input id="taskTitle" required maxlength="120" placeholder="例如：繳住宿資料"></label><div class="task-form-row"><label>截止日期（選填）<input id="taskDue" type="date"></label><label>優先度（選填）<select id="taskPriority"><option value="">一般</option><option value="5">高</option><option value="3">中</option><option value="1">低</option></select></label></div><label>備註（選填）<textarea id="taskNotes" maxlength="500" rows="2" placeholder="補充資料、地點或注意事項"></textarea></label><div class="profile-actions"><button id="taskSave" class="btn-primary" type="submit">新增待辦</button><button id="taskCancel" class="btn-ghost" type="button">取消</button><span id="taskStatus" class="hint" aria-live="polite"></span></div></form><div class="task-section-heading"><h4>待處理</h4><span id="taskOpenCount" class="hint"></span></div><div id="taskOpenList" class="task-list"></div><details class="completed-tasks"><summary>查看已完成 <span id="taskDoneCount"></span></summary><div id="taskDoneList" class="task-list"></div></details></section>
       <section class="my-card matched-card" aria-labelledby="matchedTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">訊</span><div><h3 id="matchedTitle">符合追蹤的公告</h3><p>依上方關鍵字即時篩選</p></div></div></div><main id="subList" class="list"></main></section>
-      <section id="adminPanel" class="my-card admin-panel" hidden aria-labelledby="adminTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">管</span><div><h3 id="adminTitle">帳號管理</h3><p>核准已註冊帳號，或移除其網站使用權</p></div></div><button id="adminRefresh" class="btn-ghost" type="button">重新整理</button></div><p id="adminStatus" class="hint" role="status" aria-live="polite"></p><div id="adminAccounts" class="admin-accounts"></div></section>
     </div>
+  </section>
+
+  <section id="viewAdmin" class="admin-view" hidden aria-labelledby="adminTitle">
+    <div class="section-heading"><div><p class="eyebrow">ADMINISTRATION</p><h2 id="adminTitle">帳號管理</h2></div><button id="adminRefresh" class="btn-ghost" type="button">重新整理</button></div>
+    <p class="assistant-intro">核准已註冊帳號，或移除其網站使用權。</p>
+    <p id="adminStatus" class="hint" role="status" aria-live="polite"></p><div id="adminAccounts" class="admin-accounts"></div>
   </section>
 
   <footer class="foot">
@@ -241,6 +246,9 @@
     <span>我的</span>
     <em id="subBadge" class="badge" hidden></em>
   </button>
+  <button id="tabAdmin" class="tab" hidden>
+    <span class="tab-icon" aria-hidden="true">管</span><span>管理員</span>
+  </button>
 </nav>
 </div>
 
@@ -263,7 +271,7 @@
 <script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=64"></script>
+<script src="app.js?v=65"></script>
 </body>
 </html>
 
