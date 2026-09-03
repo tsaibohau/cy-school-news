@@ -10,6 +10,7 @@ let oauthRequest = null;
 let userUpdateRequest = null;
 let passwordSignInRequest = null;
 let passwordSignUpRequest = null;
+let passwordResetRequest = null;
 let usernameSessionRequest = null;
 const originalFetch = global.fetch;
 const client = {
@@ -36,13 +37,17 @@ const client = {
       passwordSignUpRequest = request;
       return Promise.resolve({ data: { user: { id: "new-user" }, session: null }, error: null });
     },
+    resetPasswordForEmail(email, options) {
+      passwordResetRequest = { email, options };
+      return Promise.resolve({ data: {}, error: null });
+    },
     setSession(request) {
       usernameSessionRequest = request;
       return Promise.resolve({ data: { session: { access_token: request.access_token } }, error: null });
     },
     updateUser(request) {
       userUpdateRequest = request;
-      return Promise.resolve({ data: { user: { id: "verified-session-id", user_metadata: request.data } }, error: null });
+      return Promise.resolve({ data: { user: { id: "verified-session-id", user_metadata: request.data || {} } }, error: null });
     },
   },
 };
@@ -151,6 +156,12 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert.equal(Auth.validPassword("0123456789ab"), true);
   await controller.signInWithPassword("Student@Example.TEST", "0123456789ab");
   assert.deepEqual(passwordSignInRequest, { email: "student@example.test", password: "0123456789ab" });
+  await controller.resetPasswordForEmail("Student@Example.TEST");
+  assert.deepEqual(passwordResetRequest, { email: "student@example.test", options: { redirectTo: localhost } });
+  await assert.rejects(controller.resetPasswordForEmail("bad"), /invalid/);
+  await controller.updatePassword("0123456789ab");
+  assert.deepEqual(userUpdateRequest, { password: "0123456789ab" });
+  await assert.rejects(controller.updatePassword("short"), /invalid/);
   await controller.signUpWithPassword("Student@Example.TEST", "0123456789ab", " Hau ", "Hau_115");
   assert.deepEqual(passwordSignUpRequest, { email: "student@example.test", password: "0123456789ab", options: { emailRedirectTo: localhost, data: { pending_username: "hau_115", nickname: "Hau" } } });
   await assert.rejects(controller.signInWithPassword("bad", "0123456789ab"), /invalid/);
@@ -218,9 +229,10 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('autocomplete="current-password"'));
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=43"'), "index must load current account auth");
+  assert(index.includes('src="account-auth.js?v=44"'), "index must load current account auth");
+  assert(index.includes('src="app.js?v=60"'), "index must load current app shell");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
-  assert(sw.includes('"./account-auth.js?v=43"'), "Service Worker shell must cache current account auth");
+  assert(sw.includes('"./account-auth.js?v=44"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
   assert(app.includes('"登入信箱：" + email'));
   assert(!app.includes("sendMagicLink"));
@@ -234,13 +246,20 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v60"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=60")'), "App and Service Worker must use one shell version");
+  assert(sw.includes("cy-news-v61"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=61")'), "App and Service Worker must use one shell version");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   assert(app.includes("signUpWithPassword"));
   assert(app.includes("signInWithUsername"));
   assert(index.includes('id="passwordAuthUsername"'));
+  assert(index.includes('id="publicAccountEntry"'));
+  assert(index.includes('id="functionDock"'));
+  assert(index.includes('id="passwordResetRequest"'));
+  assert(index.includes('id="passwordRecoveryDialog"'));
+  assert(app.includes('switchTab("latest")'));
+  assert(app.includes("resetPasswordForEmail"));
+  assert(app.includes("updatePassword"));
   assert(!app.includes("passwordAuthPassword.value = password"));
   console.log("OAuth and password account auth tests passed");
 }).catch(error => {
