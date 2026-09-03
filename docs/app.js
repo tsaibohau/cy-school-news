@@ -56,7 +56,7 @@
       school: loadSchool(),
       cat: "all",
       q: "",
-      tab: "home",
+      tab: "latest",
       calendarMonth: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
       calendarSelected: new Date().toISOString().slice(0, 10),
       eventEditingId: null,
