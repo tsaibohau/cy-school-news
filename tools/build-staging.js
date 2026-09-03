@@ -24,8 +24,10 @@ const shellInputs = [
 const shellRevision = "staging-" + crypto.createHash("sha256")
   .update(shellInputs.map((file) => fs.readFileSync(path.join(source, file))).join("\n"))
   .digest("hex").slice(0, 12);
-const sourceVersions = ["?v=41", "?v=42", "?v=43", "?v=44", "?v=45", "?v=46", "?v=47", "?v=48", "?v=49", "?v=50", "?v=51", "?v=52", "?v=53", "?v=54", "?v=55", "?v=56", "?v=57", "?v=58", "?v=59"];
 const stagedVersion = "?v=" + shellRevision;
+function stageAssetVersions(value) {
+  return value.replace(/\?v=\d+/g, stagedVersion);
+}
 
 const isRootOutput = path.dirname(output) === root && /^dist-staging(?:-[A-Za-z0-9._-]+)?$/.test(outputName);
 const isTempOutput = path.dirname(output) === path.resolve(os.tmpdir()) && /^cy-school-news-staging-[A-Za-z0-9._-]+$/.test(outputName);
@@ -49,14 +51,14 @@ html = html
   .replace('</head>', '<link rel="stylesheet" href="staging.css?v=' + shellRevision + '">\n</head>')
   .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站</div>')
   .replace('</body>', '<script src="acceptance-user-tasks.js?v=' + shellRevision + '" defer></script>\n</body>');
-sourceVersions.forEach((sourceVersion) => { html = html.replaceAll(sourceVersion, stagedVersion); });
+html = stageAssetVersions(html);
 fs.writeFileSync(indexPath, html);
 fs.writeFileSync(path.join(output, "robots.txt"), "User-agent: *\nDisallow: /\n");
 
 const companionPath = path.join(output, "acceptance-companion.html");
 let companion = fs.readFileSync(companionPath, "utf8")
   .replace("acceptance-user-tasks.js?v=4", "acceptance-user-tasks.js?v=" + shellRevision);
-sourceVersions.forEach((sourceVersion) => { companion = companion.replaceAll(sourceVersion, stagedVersion); });
+companion = stageAssetVersions(companion);
 fs.writeFileSync(companionPath, companion);
 
 const swPath = path.join(output, "sw.js");
@@ -64,12 +66,12 @@ let sw = fs.readFileSync(swPath, "utf8")
   .replace(/var CACHE = "cy-news-v[^\"]+";/, 'var CACHE = "cy-news-' + shellRevision + '";')
   .replace('"./manifest.webmanifest"', '"./manifest-staging.webmanifest", "./staging.css?v=' + shellRevision + '", "./acceptance-user-tasks.js?v=' + shellRevision + '", "./acceptance-companion.html?v=' + shellRevision + '"')
   .replace('  // 殼層:快取優先', '  /* A new staging deployment must never combine an old HTML shell with new JavaScript. */\n  if (req.mode === "navigate") {\n    e.respondWith(fetch(req).catch(function () { return caches.match("./index.html"); }));\n    return;\n  }\n  // 殼層:快取優先');
-sourceVersions.forEach((sourceVersion) => { sw = sw.replaceAll(sourceVersion, stagedVersion); });
+sw = stageAssetVersions(sw);
 if (!sw.includes('var CACHE = "cy-news-' + shellRevision + '"') || !sw.includes("acceptance-user-tasks.js?v=" + shellRevision) || !sw.includes("req.mode === \"navigate\"")) throw new Error("staging Service Worker isolation failed");
 fs.writeFileSync(swPath, sw);
 
 const config = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
 if (!config.includes("https://cy-school-news-staging.vercel.app/")) throw new Error("staging URL is absent from account allow-list");
-if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境") || sourceVersions.some((sourceVersion) => html.includes(sourceVersion))) throw new Error("staging markers or coherent shell revision were not injected");
+if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境") || /\?v=\d+/.test(html)) throw new Error("staging markers or coherent shell revision were not injected");
 console.log("Staging artifact built with noindex, coherent " + shellRevision + " shell and acceptance harness");
 
