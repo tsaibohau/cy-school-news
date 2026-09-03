@@ -125,6 +125,27 @@
           return c.auth.signInWithOAuth({ provider: "google", options: oauthOptions });
         });
       },
+      resetPasswordForEmail: function (email) {
+        email = normalizeEmail(email);
+        if (!email) return Promise.reject(new Error("invalid email"));
+        var redirectTo = approvedRedirect(config, options.location);
+        if (!redirectTo) return Promise.reject(new Error("current app URL is not allow-listed"));
+        return getClient().then(function (c) {
+          return c.auth.resetPasswordForEmail(email, { redirectTo: redirectTo }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data || {};
+          });
+        });
+      },
+      updatePassword: function (password) {
+        if (!validPassword(password)) return Promise.reject(new Error("invalid password"));
+        return getClient().then(function (c) {
+          return c.auth.updateUser({ password: password }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data && result.data.user;
+          });
+        });
+      },
       signInWithPassword: function (email, password) {
         email = normalizeEmail(email);
         if (!email || !validPassword(password)) return Promise.reject(new Error("invalid email or password"));
