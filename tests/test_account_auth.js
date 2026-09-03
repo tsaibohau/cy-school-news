@@ -213,14 +213,14 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   const index = fs.readFileSync(path.join(__dirname, "..", "docs", "index.html"), "utf8");
   const sw = fs.readFileSync(path.join(__dirname, "..", "docs", "sw.js"), "utf8");
   const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
-  assert(index.includes("登入或註冊"));
+  assert(index.includes("用嘉校快訊帳號登入"));
   assert(index.includes('id="passwordAuthDialog"'));
   assert(index.includes('autocomplete="current-password"'));
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=43"'), "index must load current account auth");
+  assert(index.includes('src="account-auth.js?v=44"'), "index must load current account auth");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
-  assert(sw.includes('"./account-auth.js?v=43"'), "Service Worker shell must cache current account auth");
+  assert(sw.includes('"./account-auth.js?v=44"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
   assert(app.includes('"登入信箱：" + email'));
   assert(!app.includes("sendMagicLink"));
