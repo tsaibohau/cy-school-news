@@ -1104,7 +1104,7 @@
         '<h3 class="card-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         esc(displayTitle(it)) + '</a></h3>' +
         (displaySnippet(it) ? '<p class="card-snippet">' + esc(displaySnippet(it)) + '</p>' : "") +
-        '<div class="card-actions"><button type="button" class="btn-ghost" data-detail-id="' + esc(it.id) + '">查看完整內容</button><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>' +
+        '<div class="card-actions"><a class="btn-ghost" href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer">查看官方原始公告</a><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>' +
         '</article>';
     }
 
@@ -1133,31 +1133,8 @@
     }
     function openDetail(id) {
       var item = detailItem(id);
-      if (!item || !el.detailDialog || !window.CyNewsDetailUI) return;
-      el.detailTitle.textContent = displayTitle(item);
-      el.detailMeta.textContent = (item.school_name || "官方公告") + " · " + displayDate(item);
-      el.detailBody.innerHTML = '<p class="detail-state">正在載入官方完整內容…</p>';
-      showDetailDialog();
-      var generation = ++state.detailRequestGeneration;
-      if (!window.CyNewsDetailUI.validDetailRef(item.detail_ref)) {
-        detailFallback(item, window.CyNewsDetailUI.statusMessage(item.detail_status));
-        return;
-      }
-      var cacheKey = item.detail_ref + "@" + String(item.detail_revision || "");
-      if (state.detailCache[cacheKey]) {
-        el.detailBody.innerHTML = window.CyNewsDetailUI.render(state.detailCache[cacheKey]);
-        return;
-      }
-      fetch(item.detail_ref + "?_=" + encodeURIComponent(item.detail_revision || Date.now()), { cache: "no-store" })
-        .then(function (response) { if (!response.ok) throw new Error("detail HTTP " + response.status); return response.json(); })
-        .then(function (record) {
-          if (generation !== state.detailRequestGeneration) return;
-          if (!record || String(record.announcement_id) !== String(item.id) || record.provenance !== "official_article" ||
-              (item.detail_revision && String(record.source_hash) !== String(item.detail_revision))) throw new Error("detail identity mismatch");
-          state.detailCache[cacheKey] = record;
-          el.detailBody.innerHTML = window.CyNewsDetailUI.render(record);
-        })
-        .catch(function () { if (generation === state.detailRequestGeneration) detailFallback(item, "完整內文載入失敗，請改看官方來源。"); });
+      if (!item || !item.url) return;
+      window.open(item.url, "_blank", "noopener,noreferrer");
     }
     function renderImportant() {
       if (!el.importantList) return;
