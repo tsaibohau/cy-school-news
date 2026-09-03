@@ -230,7 +230,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
   assert(index.includes('src="account-auth.js?v=44"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=60"'), "index must load current app shell");
+  assert(index.includes('src="app.js?v=61"'), "index must load current app shell");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
   assert(sw.includes('"./account-auth.js?v=44"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
@@ -246,8 +246,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v61"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=61")'), "App and Service Worker must use one shell version");
+  assert(sw.includes("cy-news-v62"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=62")'), "App and Service Worker must use one shell version");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   assert(app.includes("signUpWithPassword"));
@@ -256,11 +256,18 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('id="publicAccountEntry"'));
   assert(index.includes('id="functionDock"'));
   assert(index.includes('id="functionDock" class="function-dock" hidden'));
+  assert(index.includes('id="viewHome" class="home-view" hidden'));
+  assert(index.includes('id="publicAccessStatus"'));
+  assert(index.includes('id="passwordAuthEmailField" hidden'));
+  assert(!index.includes('id="passwordAuthNickname"'));
   assert(index.includes('<section id="viewLatest">'));
   assert(index.includes('id="passwordResetRequest"'));
   assert(index.includes('id="passwordRecoveryDialog"'));
   assert(app.includes('switchTab("latest")'));
   assert(app.includes('tab: "latest"'));
+  assert(app.includes("function hasSignedInAccount()"));
+  assert(app.includes('tab !== "latest" && !hasSignedInAccount()'));
+  assert(app.includes("setPasswordAuthMode"));
   assert(app.includes("resetPasswordForEmail"));
   assert(app.includes("updatePassword"));
   assert(!app.includes("passwordAuthPassword.value = password"));
