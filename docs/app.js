@@ -102,8 +102,8 @@
       reminderCustomWrap: $("reminderCustomWrap"), reminderCustomOffsets: $("reminderCustomOffsets"),
       btnRefresh: $("btnRefresh"), refreshState: $("refreshState"),
       accountState: $("accountState"), accountEmail: $("accountEmail"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
-      accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"),
-      passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordAuthNickname: $("passwordAuthNickname"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
+      accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"), publicAccessStatus: $("publicAccessStatus"),
+      passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
@@ -317,6 +317,7 @@
       function showAccountShell() {
         if (el.functionDock) el.functionDock.hidden = false;
         if (el.publicAccountEntry) el.publicAccountEntry.hidden = true;
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "";
       }
       function setAccountUser(user) {
         state.accountUser = user || null;
@@ -579,12 +580,35 @@
           if (!(typeof uid === "string" && uid)) showAnonymousShell();
         });
       }
-      function showPasswordAuth() {
+      function setPasswordAuthMode(mode) {
+        mode = mode === "signup" || mode === "reset" ? mode : "signin";
+        var signup = mode === "signup";
+        var reset = mode === "reset";
+        var usernameField = el.passwordAuthUsername.parentNode;
+        var passwordField = el.passwordAuthPassword.parentNode;
+        el.passwordAuthDialog.dataset.mode = mode;
+        el.passwordAuthTitle.textContent = signup ? "註冊嘉校快訊" : reset ? "重設密碼" : "登入嘉校快訊";
+        el.passwordAuthHint.textContent = signup ? "只需要帳號、救援 Email 與密碼。完成驗證後，等待管理員核准即可使用個人功能。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "請輸入帳號與密碼。";
+        usernameField.hidden = reset;
+        el.passwordAuthUsername.disabled = reset;
+        el.passwordAuthEmailField.hidden = !signup && !reset;
+        el.passwordAuthEmail.disabled = !signup && !reset;
+        passwordField.hidden = reset;
+        el.passwordAuthPassword.disabled = reset;
+        el.passwordAuthPassword.autocomplete = signup ? "new-password" : "current-password";
+        el.passwordSignIn.hidden = signup || reset;
+        el.passwordSignUp.hidden = false;
+        el.passwordSignUp.textContent = signup ? "建立帳號" : reset ? "寄送重設信" : "註冊";
+        el.passwordResetRequest.hidden = signup || reset;
+        el.passwordAuthBack.hidden = !reset;
+      }
+      function showPasswordAuth(mode) {
         if (!el.passwordAuthDialog || typeof el.passwordAuthDialog.showModal !== "function") { status("帳密登入介面暫時不可用"); return; }
+        setPasswordAuthMode(mode);
         el.passwordAuthStatus.textContent = "";
         el.passwordAuthPassword.value = "";
-        el.passwordAuthDialog.showModal();
-        el.passwordAuthUsername.focus();
+        if (!el.passwordAuthDialog.open) el.passwordAuthDialog.showModal();
+        (mode === "reset" ? el.passwordAuthEmail : el.passwordAuthUsername).focus();
       }
       function showPasswordRecovery() {
         if (!el.passwordRecoveryDialog || typeof el.passwordRecoveryDialog.showModal !== "function") return;
@@ -624,21 +648,27 @@
       }
       if (el.passwordAuthForm) el.passwordAuthForm.addEventListener("submit", function (event) {
         event.preventDefault();
+        var mode = el.passwordAuthDialog.dataset.mode || "signin";
+        if (mode === "signup") { el.passwordSignUp.click(); return; }
+        if (mode === "reset") { requestPasswordReset(); return; }
         beginPasswordSession(function () { return auth.signInWithUsername(el.passwordAuthUsername.value, el.passwordAuthPassword.value); });
       });
       if (el.passwordSignUp) el.passwordSignUp.addEventListener("click", function () {
+        var mode = el.passwordAuthDialog.dataset.mode || "signin";
+        if (mode === "signin") { setPasswordAuthMode("signup"); return; }
+        if (mode === "reset") { requestPasswordReset(); return; }
         var username = el.passwordAuthUsername.value;
         var email = el.passwordAuthEmail.value;
         var password = el.passwordAuthPassword.value;
-        var nickname = el.passwordAuthNickname.value;
         el.passwordAuthStatus.textContent = "建立帳號中";
-        auth.signUpWithPassword(email, password, nickname, username).then(function (result) {
+        auth.signUpWithPassword(email, password, "", username).then(function (result) {
           el.passwordAuthPassword.value = "";
           if (result.session) return auth.claimUsername(username).then(function () { if (el.passwordAuthDialog.open) el.passwordAuthDialog.close(); return handleVerifiedSession(); });
           el.passwordAuthStatus.textContent = "請到救援 Email 完成驗證，再用帳號與密碼登入。";
         }).catch(function () { el.passwordAuthPassword.value = ""; el.passwordAuthStatus.textContent = "無法建立帳號；請確認資料或換一個帳號名稱。"; });
       });
-      if (el.passwordResetRequest) el.passwordResetRequest.addEventListener("click", requestPasswordReset);
+      if (el.passwordResetRequest) el.passwordResetRequest.addEventListener("click", function () { setPasswordAuthMode("reset"); el.passwordAuthStatus.textContent = ""; });
+      if (el.passwordAuthBack) el.passwordAuthBack.addEventListener("click", function () { setPasswordAuthMode("signin"); el.passwordAuthStatus.textContent = ""; el.passwordAuthUsername.focus(); });
       if (el.passwordAuthCancel) el.passwordAuthCancel.addEventListener("click", function () { el.passwordAuthPassword.value = ""; el.passwordAuthDialog.close(); });
       if (el.passwordRecoveryForm) el.passwordRecoveryForm.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -659,10 +689,10 @@
       });
       if (el.passwordRecoveryCancel) el.passwordRecoveryCancel.addEventListener("click", function () { el.passwordRecoveryPassword.value = ""; el.passwordRecoveryConfirm.value = ""; el.passwordRecoveryDialog.close(); });
       if (el.passwordGoogleLogin) el.passwordGoogleLogin.addEventListener("click", function () { el.passwordAuthDialog.close(); el.accountLogin.dataset.googleLogin = "1"; el.accountLogin.click(); });
-      if (el.publicAccountLogin) el.publicAccountLogin.addEventListener("click", showPasswordAuth);
-      if (el.publicAccountSignUp) el.publicAccountSignUp.addEventListener("click", function () { showPasswordAuth(); el.passwordAuthStatus.textContent = "填完資料後按「註冊」。"; });
+      if (el.publicAccountLogin) el.publicAccountLogin.addEventListener("click", function () { showPasswordAuth("signin"); });
+      if (el.publicAccountSignUp) el.publicAccountSignUp.addEventListener("click", function () { showPasswordAuth("signup"); });
       el.accountLogin.addEventListener("click", function () {
-        if (el.accountLogin.dataset.googleLogin !== "1") { showPasswordAuth(); return; }
+        if (el.accountLogin.dataset.googleLogin !== "1") { showPasswordAuth("signin"); return; }
         delete el.accountLogin.dataset.googleLogin;
         if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
         syncGeneration += 1;
@@ -1839,7 +1869,14 @@
       el.navMenuToggle.setAttribute("aria-expanded", open ? "true" : "false");
       el.navMenuToggle.classList.toggle("is-open", open);
     }
+    function hasSignedInAccount() {
+      return !!(state.accountUser && typeof state.accountUser.id === "string" && state.accountUser.id);
+    }
     function switchTab(tab) {
+      if (tab !== "latest" && !hasSignedInAccount()) {
+        tab = "latest";
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能需要登入後才能使用。";
+      }
       state.tab = tab;
       setNavMenu(false);
       if (el.navCurrentLabel) el.navCurrentLabel.textContent = "選單";
@@ -2036,7 +2073,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=61").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=62").catch(function () {});
       });
     }
 
