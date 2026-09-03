@@ -1,5 +1,5 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts"
-import { createClient } from "@supabase/supabase-js"
+import { createClient } from "npm:@supabase/supabase-js@2"
 
 type Body = { action?: "status" | "list" | "invite"; email?: string; username?: string }
 const USERNAME = /^[a-z][a-z0-9_]{2,31}$/
