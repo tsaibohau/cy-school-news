@@ -16,5 +16,7 @@ assert.match(app, /移除使用權/);
 assert.match(app, /window\.confirm/);
 assert.match(app, /getAccountAccess/);
 assert.match(app, /等待管理員核准後才能使用個人功能/);
+assert.match(app, /isAdminAccount/);
+assert.match(app, /tab === "admin" && !isAdminAccount\(\)/);
 assert.match(css, /\.function-dock\[hidden\] \{ display: none !important; \}/);
 console.log("Admin account-management security contract tests passed");
