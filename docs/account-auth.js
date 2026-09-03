@@ -135,6 +135,26 @@
           });
         });
       },
+      resetPasswordForEmail: function (email) {
+        email = normalizeEmail(email);
+        var redirectTo = approvedRedirect(config, options.location);
+        if (!email || !redirectTo) return Promise.reject(new Error("invalid email or redirect"));
+        return getClient().then(function (c) {
+          return c.auth.resetPasswordForEmail(email, { redirectTo: redirectTo }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data || {};
+          });
+        });
+      },
+      updatePassword: function (password) {
+        if (!validPassword(password)) return Promise.reject(new Error("invalid password"));
+        return getClient().then(function (c) {
+          return c.auth.updateUser({ password: password }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data && result.data.user;
+          });
+        });
+      },
       signInWithUsername: function (username, password) {
         username = normalizeUsername(username);
         if (!username || !validPassword(password)) return Promise.reject(new Error("invalid username or password"));
