@@ -255,9 +255,12 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('id="passwordAuthUsername"'));
   assert(index.includes('id="publicAccountEntry"'));
   assert(index.includes('id="functionDock"'));
+  assert(index.includes('id="functionDock" class="function-dock" hidden'));
+  assert(index.includes('<section id="viewLatest">'));
   assert(index.includes('id="passwordResetRequest"'));
   assert(index.includes('id="passwordRecoveryDialog"'));
   assert(app.includes('switchTab("latest")'));
+  assert(app.includes('tab: "latest"'));
   assert(app.includes("resetPasswordForEmail"));
   assert(app.includes("updatePassword"));
   assert(!app.includes("passwordAuthPassword.value = password"));
