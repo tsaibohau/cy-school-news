@@ -2,7 +2,7 @@ name: Staging validation
 
 on:
   push:
-    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login]
+    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/human-centered-ux]
   workflow_dispatch: {}
 
 permissions:
