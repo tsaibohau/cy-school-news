@@ -684,7 +684,11 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v68/);
+  const appRevision = indexSource.match(/src="app\.js\?v=(\d+)"/);
+  const cacheRevision = swSource.match(/var CACHE = "cy-news-v(\d+)"/);
+  assert.ok(appRevision && cacheRevision, "PWA shell versions are declared");
+  assert.match(swSource, new RegExp("\\.\\/app\\.js\\?v=" + appRevision[1]), "service worker caches the active app revision");
+  assert.ok(Number(cacheRevision[1]) >= 69, "cache revision advances when the shell changes");
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);

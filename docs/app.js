@@ -1261,6 +1261,10 @@
     function taipeiWeekday() {
       return new Intl.DateTimeFormat("zh-TW", { weekday: "long", timeZone: "Asia/Taipei" }).format(new Date()).replace("週", "星期");
     }
+    function timetableTime(value) {
+      var raw = String(value == null ? "" : value).trim();
+      return /^\d{4}$/.test(raw) ? raw.slice(0, 2) + ":" + raw.slice(2) : raw;
+    }
     function timetableHTML() {
       var profile = state.profile || {};
       var className = String(profile.class_name || "").trim();
@@ -1276,7 +1280,7 @@
       var sourceUrl = officialTimetableUrl(row.source_url);
       var source = sourceUrl ? '<a href="' + esc(sourceUrl) + '" target="_blank" rel="noopener noreferrer">查看校方課表公告 ↗</a>' : '校方公告來源';
       var todayRows = todaySlots.length ? todaySlots.map(function (slot) {
-        return '<div class="timetable-row"><span class="timetable-period">第 ' + esc(slot.period) + ' 節<small>' + esc(slot.start) + '–' + esc(slot.end) + '</small></span><strong>' + esc(slot.subject || "—") + '</strong></div>';
+        return '<div class="timetable-row"><span class="timetable-period">第 ' + esc(slot.period) + ' 節<small>' + esc(timetableTime(slot.start)) + '–' + esc(timetableTime(slot.end)) + '</small></span><strong>' + esc(slot.subject || "—") + '</strong></div>';
       }).join("") : '<p class="empty">今天沒有排定上課時段。</p>';
       var weekdays = ["星期一", "星期二", "星期三", "星期四", "星期五"];
       var grid = [1, 2, 3, 4, 5, 6, 7, 8].map(function (period) {
@@ -1285,7 +1289,7 @@
           return '<div class="timetable-grid-cell">' + esc(slot && slot.subject || "—") + '</div>';
         }).join("");
         var first = found.classRow.slots.find(function (item) { return Number(item.period) === period; });
-        return '<div class="timetable-grid-row"><div class="timetable-grid-period">' + period + '<small>' + esc(first && first.start || "") + '</small></div>' + cells + '</div>';
+        return '<div class="timetable-grid-row"><div class="timetable-grid-period">' + period + '<small>' + esc(timetableTime(first && first.start || "")) + '</small></div>' + cells + '</div>';
       }).join("");
       return '<div class="timetable-note"><strong>' + esc(found.classRow.class_name) + ' 班 · ' + esc(row.academic_year) + ' 學年度第 ' + esc(row.semester) + ' 學期 · ' + version + '</strong><span>' + source + '</span></div>' +
         '<div class="timetable-today">' + todayRows + '</div>' +

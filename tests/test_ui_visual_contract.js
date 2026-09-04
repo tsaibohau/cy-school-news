@@ -57,6 +57,8 @@ assert.match(index, /id="todayTimetable"/, "today view includes a class timetabl
 assert.match(index, /我的班級（查看課表需要）/, "profile explains when a class is needed");
 assert.match(app, /data\/class-timetables\.json/, "today view loads the generated public timetable data");
 assert.match(app, /officialTimetableUrl/, "timetable source links are constrained to the official school origin");
+assert.match(app, /function timetableTime\(value\)[\s\S]*raw\.slice\(0, 2\) \+ ":" \+ raw\.slice\(2\)/,
+  "timetable times are displayed with a readable colon");
 assert.match(style, /\.timetable-week/, "weekly timetable has a dedicated responsive layout");
 assert.match(index, /先查公告，不必登入/, "anonymous visitors are told that browsing does not require an account");
 assert.match(index, /id="publicAccessTitle"/, "account state has a dedicated, accessible heading");
