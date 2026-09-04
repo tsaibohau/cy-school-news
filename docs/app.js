@@ -2150,7 +2150,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=68").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=69").catch(function () {});
       });
     }
 
