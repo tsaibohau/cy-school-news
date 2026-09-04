@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=46">
+<link rel="stylesheet" href="style.css?v=47">
 </head>
 <body>
 
@@ -45,15 +45,15 @@
       <p class="eyebrow">CY SCHOOL NEWS</p>
       <h2 id="homeTitle" class="calligraphy-title"><span>學校公告</span><span>匯集系統</span></h2>
       <p id="welcomeTitle" class="home-greeting">今天的校務資訊，從這裡開始。</p>
-      <p class="welcome-copy">選一個功能；登入後會優先顯示你設定的學校。</p>
+      <p class="welcome-copy">先處理今天最重要的事；其他功能隨時都找得到。</p>
       <span class="ink-stroke" aria-hidden="true"></span>
     </div>
     <div class="home-actions" aria-label="選擇功能">
-      <button type="button" class="home-action home-action-primary" data-home-tab="today"><span aria-hidden="true">✦</span><strong>我的今天</strong><small>待辦、期限與重要事項</small></button>
-      <button type="button" class="home-action" data-home-tab="latest"><span aria-hidden="true">文</span><strong>公告總庫</strong><small>瀏覽與搜尋學校公告</small></button>
-      <button type="button" class="home-action" data-home-tab="assistant"><span aria-hidden="true">問</span><strong>問校務</strong><small>依官方內容整理答案</small></button>
-      <button id="quickCalendar" type="button" class="home-action" data-home-tab="calendar"><span aria-hidden="true">曆</span><strong>行事曆</strong><small>查看日期與自己的事件</small></button>
-      <button type="button" class="home-action" data-home-tab="sub"><span aria-hidden="true">我</span><strong>我的</strong><small>帳號、偏好、通知與待辦</small></button>
+      <button type="button" class="home-action home-action-primary" data-home-tab="today"><span aria-hidden="true">✦</span><strong>今天先做什麼</strong><small>看待辦、期限與重要事項</small></button>
+      <button type="button" class="home-action" data-home-tab="latest"><span aria-hidden="true">文</span><strong>搜尋公告</strong><small>從三校公告中找到資訊</small></button>
+      <button type="button" class="home-action" data-home-tab="assistant"><span aria-hidden="true">問</span><strong>直接問校務</strong><small>依官方內容整理答案</small></button>
+      <button id="quickCalendar" type="button" class="home-action" data-home-tab="calendar"><span aria-hidden="true">曆</span><strong>看行事曆</strong><small>查看日期與自己的事件</small></button>
+      <button type="button" class="home-action" data-home-tab="sub"><span aria-hidden="true">我</span><strong>調整我的設定</strong><small>管理帳號、通知與待辦</small></button>
     </div>
     <section id="importantSection" class="important-section" aria-labelledby="importantTitle">
       <div class="section-heading compact-heading"><div><p class="eyebrow">FROM THE SOURCE</p><h2 id="importantTitle">重要公告</h2></div><span class="hint">僅顯示來源明確標記</span></div>
@@ -106,7 +106,11 @@
   <!-- 公告首頁 -->
   <section id="viewLatest">
     <div class="section-heading"><div><p class="eyebrow">ANNOUNCEMENTS</p><h2>公告總庫</h2></div></div>
-    <div id="publicAccountEntry" class="account-actions"><span class="hint">登入後可使用問校務、個人通知與行事曆。</span><button id="publicAccountLogin" class="btn-primary" type="button">登入</button><button id="publicAccountSignUp" class="btn-ghost" type="button">註冊</button><button id="publicAccountLogout" class="btn-ghost" type="button" hidden>登出</button><p id="publicAccessStatus" class="hint" role="status" aria-live="polite"></p></div>
+    <section id="publicAccountEntry" class="access-card" aria-labelledby="publicAccessTitle">
+      <span class="access-icon" aria-hidden="true">查</span>
+      <div class="access-copy"><h3 id="publicAccessTitle">先查公告，不必登入</h3><p id="publicAccessLead">想使用課表、待辦、問校務或通知時，再建立帳號就好。</p><p id="publicAccessStatus" role="status" aria-live="polite"></p></div>
+      <div class="access-actions"><button id="publicAccountLogin" class="btn-primary" type="button">登入</button><button id="publicAccountSignUp" class="btn-ghost" type="button">建立帳號</button><button id="publicAccountLogout" class="btn-ghost" type="button" hidden>登出</button></div>
+    </section>
     <div class="controls">
       <input id="q" type="search" inputmode="search" placeholder="搜尋公告,可用空格分隔多個關鍵字" aria-label="搜尋公告">
       <label class="school-filter" for="schoolFilter">
@@ -156,8 +160,8 @@
       </section>
       <details id="profileBox" class="my-card my-disclosure" aria-labelledby="profileTitle">
         <summary><span class="my-card-icon" aria-hidden="true">設</span><span><strong id="profileTitle">個人設定</strong><small>暱稱、學校、年級與關注內容</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary>
-        <div class="my-card-body"><p id="profileHint" class="hint">登入後設定暱稱、學校與年級，讓介面和公告排序更貼近你。若要查看班級課表，請填入三位數班級；請勿輸入自己或他人的敏感個資。</p><form id="profileForm" class="profile-form">
-          <label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級（查看課表需要）<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109"></label><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團（選填）"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金（選填）"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課（選填）"></label><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存我的資料</button><span id="profileStatus" class="hint" aria-live="polite"></span></div><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label>
+        <div class="my-card-body"><p id="profileHint" class="hint">先完成基本資料即可；想讓排序和通知更精準時，再補充選填內容。</p><form id="profileForm" class="profile-form">
+          <fieldset><legend>基本資料</legend><p class="field-help">約 20 秒完成</p><label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級（查看課表需要）<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109"></label></fieldset><fieldset><legend>讓內容更符合我 <span>（選填）</span></legend><p class="field-help">稍後再設定也不影響基本功能</p><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課"></label><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label></fieldset><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存設定</button><span id="profileStatus" class="hint" aria-live="polite"></span></div>
         </form></div>
       </details>
       <section class="my-card" aria-labelledby="subscriptionTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">追</span><div><h3 id="subscriptionTitle">關鍵字追蹤</h3><p>只追蹤你真正關心的消息</p></div></div></div><form id="kwForm" class="kw-form"><input id="kwInput" type="text" maxlength="20" placeholder="例如：物理競賽" aria-label="新增訂閱關鍵字"><button type="submit" class="btn-primary">新增</button></form><div id="kwChips" class="kw-chips"></div><div class="notify-row"><button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button><span id="notifyState" class="hint"></span></div></section>
@@ -215,8 +219,8 @@
 
 <dialog id="nicknameDialog" class="nickname-dialog" aria-labelledby="nicknameTitle">
   <form id="nicknameForm" class="nickname-sheet">
-    <p class="eyebrow">WELCOME</p><h2 id="nicknameTitle">先完成你的校務設定</h2>
-    <p class="hint">之後首頁只顯示你關心的學校；暱稱與學校都能在「我的設定」修改。</p>
+    <p class="eyebrow">QUICK SETUP・約 20 秒</p><h2 id="nicknameTitle">讓首頁先認識你</h2>
+    <p class="hint">只設定暱稱與學校就能開始；年級、班級和通知都可以稍後再調整。</p>
     <label>暱稱<input id="nicknameInput" required maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
     <label>我關心的學校<select id="nicknameSchool" required><option value="">請選擇學校</option></select></label>
     <div class="profile-actions"><button class="btn-primary" type="submit">儲存並開始</button><button id="nicknameLater" class="btn-ghost" type="button">稍後設定</button></div>
@@ -271,7 +275,7 @@
 <script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=65"></script>
+<script src="app.js?v=66"></script>
 </body>
 </html>
 

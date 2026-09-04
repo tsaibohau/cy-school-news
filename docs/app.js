@@ -103,7 +103,7 @@
       reminderCustomWrap: $("reminderCustomWrap"), reminderCustomOffsets: $("reminderCustomOffsets"),
       btnRefresh: $("btnRefresh"), refreshState: $("refreshState"),
       accountState: $("accountState"), accountEmail: $("accountEmail"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
-      accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"), publicAccountLogout: $("publicAccountLogout"), publicAccessStatus: $("publicAccessStatus"),
+      accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"), publicAccountLogout: $("publicAccountLogout"), publicAccessTitle: $("publicAccessTitle"), publicAccessLead: $("publicAccessLead"), publicAccessStatus: $("publicAccessStatus"),
       adminRefresh: $("adminRefresh"), adminStatus: $("adminStatus"), adminAccounts: $("adminAccounts"),
       passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
@@ -318,6 +318,10 @@
         if (el.publicAccountLogin) el.publicAccountLogin.hidden = false;
         if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = false;
         if (el.publicAccountLogout) el.publicAccountLogout.hidden = true;
+        if (el.publicAccountEntry) el.publicAccountEntry.dataset.state = "anonymous";
+        if (el.publicAccessTitle) el.publicAccessTitle.textContent = "先查公告，不必登入";
+        if (el.publicAccessLead) el.publicAccessLead.textContent = "想使用課表、待辦、問校務或通知時，再建立帳號就好。";
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "";
         if (el.tabAdmin) el.tabAdmin.hidden = true;
         if (state.tab !== "latest") switchTab("latest");
       }
@@ -326,6 +330,9 @@
         if (el.publicAccountLogin) el.publicAccountLogin.hidden = true;
         if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = true;
         if (el.publicAccountLogout) el.publicAccountLogout.hidden = false;
+        if (el.publicAccountEntry) el.publicAccountEntry.dataset.state = "pending";
+        if (el.publicAccessTitle) el.publicAccessTitle.textContent = "帳號已建立，正在等待核准";
+        if (el.publicAccessLead) el.publicAccessLead.textContent = "你現在仍可搜尋所有公告；核准後重新整理，就能使用個人功能。";
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = message;
       }
       function showAccountShell() {
@@ -630,8 +637,8 @@
         var usernameField = el.passwordAuthUsername.parentNode;
         var passwordField = el.passwordAuthPassword.parentNode;
         el.passwordAuthDialog.dataset.mode = mode;
-        el.passwordAuthTitle.textContent = signup ? "註冊嘉校快訊" : reset ? "重設密碼" : "登入嘉校快訊";
-        el.passwordAuthHint.textContent = signup ? "只需要帳號、救援 Email 與密碼。完成驗證後，等待管理員核准即可使用個人功能。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "請輸入 Email 或帳號名稱與密碼。";
+        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉校快訊";
+        el.passwordAuthHint.textContent = signup ? "先設定登入資料。完成 Email 驗證與管理員核准後，再用約 20 秒選擇學校。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "請輸入 Email 或帳號名稱與密碼。";
         usernameField.hidden = reset;
         el.passwordAuthUsername.disabled = reset;
         el.passwordAuthEmailField.hidden = !signup && !reset;
@@ -642,6 +649,8 @@
         el.passwordSignIn.hidden = signup || reset;
         el.passwordSignUp.hidden = false;
         el.passwordSignUp.textContent = signup ? "建立帳號" : reset ? "寄送重設信" : "註冊";
+        el.passwordSignUp.classList.toggle("btn-primary", signup || reset);
+        el.passwordSignUp.classList.toggle("btn-ghost", !signup && !reset);
         el.passwordResetRequest.hidden = signup || reset;
         el.passwordAuthBack.hidden = !reset;
       }
@@ -2137,7 +2146,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=66").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=67").catch(function () {});
       });
     }
 
