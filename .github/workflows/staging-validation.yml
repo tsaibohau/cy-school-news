@@ -29,6 +29,7 @@ jobs:
           node --test
           tests/test_account_auth.js
           tests/test_admin_account_contract.js
+          tests/test_account_approval_rls_contract.js
           tests/test_username_auth_contract.js
           tests/test_account_switch_v3.js
           tests/test_account_sync.js
