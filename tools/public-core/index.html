@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>嘉校快訊｜公開公告候選版</title>
+  <meta name="description" content="彙整嘉義高中、嘉義女中與輔仁高中公開公告的非官方索引。">
+  <meta name="theme-color" content="#16233B">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=public-core-1">
+</head>
+<body>
+  <div id="appLoading" class="app-loading" role="status" aria-live="polite">
+    <span class="app-loading-seal" aria-hidden="true">訊</span>
+    <strong>嘉校快訊</strong>
+    <span>正在整理最新公告</span>
+  </div>
+
+  <header class="mast">
+    <div class="wrap">
+      <div class="mast-row">
+        <div class="brand"><span class="seal" aria-hidden="true">訊</span><h1>嘉校快訊</h1></div>
+        <button id="btnRefresh" class="icon-btn" type="button" aria-label="重新載入公告" aria-describedby="refreshState">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        </button>
+      </div>
+      <p class="mast-sub">嘉中・嘉女・輔仁公開公告索引 <span id="updatedAt" class="updated"></span><span id="refreshState" class="refresh-state" role="status" aria-live="polite"></span></p>
+    </div>
+    <div class="rule-double" aria-hidden="true"></div>
+  </header>
+
+  <div class="wrap">
+    <main id="viewLatest">
+      <div class="section-heading"><div><p class="eyebrow">PUBLIC ANNOUNCEMENTS</p><h2>公告總庫</h2></div><span class="hint">公開版候選</span></div>
+      <section class="access-card" aria-labelledby="candidateTitle">
+        <span class="access-icon" aria-hidden="true">查</span>
+        <div class="access-copy">
+          <h3 id="candidateTitle">先把公開公告做好</h3>
+          <p>此候選版不提供帳號、個人化、密碼登入或提醒；完整內容請回官方網站查看。</p>
+        </div>
+      </section>
+      <div class="controls">
+        <input id="q" type="search" inputmode="search" placeholder="搜尋公告，可用空格分隔關鍵字" aria-label="搜尋公告">
+        <label class="school-filter" for="schoolFilter"><span>學校</span><select id="schoolFilter" aria-label="選擇公告學校"><option value="all">所有學校</option></select></label>
+        <div class="chips" id="catChips" aria-label="分類篩選"></div>
+      </div>
+      <p id="countLine" class="count-line" role="status" aria-live="polite"></p>
+      <section id="list" class="list" aria-label="公告列表"></section>
+      <button id="loadMore" class="btn-ghost" type="button" hidden>顯示更多</button>
+    </main>
+
+    <footer class="foot">
+      <p>資料來源：<a href="https://www.cysh.cy.edu.tw/" target="_blank" rel="noopener">嘉義高中</a>、<a href="https://www.cygsh.cy.edu.tw/" target="_blank" rel="noopener">嘉義女中</a>、<a href="https://rpage.fjsh.cy.edu.tw/" target="_blank" rel="noopener">輔仁高中</a>官方網站。</p>
+      <p>本站為個人非官方索引；內容、期限與效力均以原校公告為準。</p>
+      <p><a href="legal.html">資料與權利說明</a></p>
+    </footer>
+  </div>
+
+  <script src="search-taxonomy.js?v=public-core-1"></script>
+  <script src="search-query.js?v=public-core-1"></script>
+  <script src="public-core-app.js?v=public-core-1"></script>
+</body>
+</html>
