@@ -7,25 +7,28 @@ const os = require("node:os");
 const path = require("node:path");
 
 const root = path.resolve(__dirname, "..");
-const output = fs.mkdtempSync(path.join(os.tmpdir(), "cy-school-news-public-core-"));
+const output = fs.mkdtempSync(path.join(os.tmpdir(), "cy-school-news-student-core-"));
 
 try {
   cp.execFileSync(process.execPath, [path.join(root, "tools", "build-public-core.js")], {
     cwd: root,
-    env: { ...process.env, CYNEWS_PUBLIC_CORE_OUTPUT: output },
+    env: { ...process.env, CYNEWS_STUDENT_CORE_OUTPUT: output },
     stdio: "pipe",
   });
 
   const index = fs.readFileSync(path.join(output, "index.html"), "utf8");
-  const app = fs.readFileSync(path.join(output, "public-core-app.js"), "utf8");
+  const app = fs.readFileSync(path.join(output, "student-core-app.js"), "utf8");
   const profile = JSON.parse(fs.readFileSync(path.join(output, "release-profile.json"), "utf8"));
   const data = JSON.parse(fs.readFileSync(path.join(output, "data", "public-announcements.json"), "utf8"));
   const rootFiles = new Set(fs.readdirSync(output));
 
-  assert.equal(profile.profile, "public_core");
+  const timetable = JSON.parse(fs.readFileSync(path.join(output, "data", "public-timetables.json"), "utf8"));
+  const calendar = JSON.parse(fs.readFileSync(path.join(output, "data", "public-calendar.json"), "utf8"));
+
+  assert.equal(profile.profile, "student_core");
   assert.equal(profile.candidate, true);
   assert.deepEqual(profile.disabled_features, ["accounts", "personalization", "password_auth", "reminders", "local_full_text", "attachments"]);
-  assert(rootFiles.has("public-core-app.js"));
+  assert(rootFiles.has("student-core-app.js"));
   assert(!rootFiles.has("app.js"));
   assert(!rootFiles.has("account-auth.js"));
   assert(!rootFiles.has("account-config.js"));
@@ -40,11 +43,11 @@ try {
 
   assert.doesNotMatch(index, /id="(?:account|password|profile|reminder|task)|src="(?:account|supabase|push-subscription|reminder|task)/i);
   assert.doesNotMatch(app, /localStorage|sessionStorage|new\s+Notification|navigator\.serviceWorker|supabase\.co|CyNewsAccount|signIn|signUp/i);
-  assert.match(index, /完整內容請回官方網站查看/);
-  assert.match(index, /不提供帳號、個人化、密碼登入或提醒/);
-  assert.match(index, /嘉中・嘉女・輔仁/);
+  assert.match(index, /公告、課表、問校務與行事曆可以直接使用/);
+  assert.match(index, /id="timetableClass"/);
+  assert.match(index, /今天課表/);
 
-  assert.equal(data.release_profile, "public_core");
+  assert.equal(data.release_profile, "student_core");
   assert(data.items.length > 100, "candidate should include a useful announcement index");
   const keys = ["id", "school", "school_name", "title", "url", "date", "source_category", "category", "summary"];
   const allowedHosts = new Set(["www.cysh.cy.edu.tw", "www.cygsh.cy.edu.tw", "rpage.fjsh.cy.edu.tw"]);
@@ -58,11 +61,18 @@ try {
     assert.equal("calendar_events" in item, false);
   }
 
-  const legalGate = cp.spawnSync(process.execPath, [path.join(root, "tools", "check-legal-compliance.js"), "--production", "--profile=public_core"], { cwd: root, encoding: "utf8" });
+  assert.equal(timetable.schema_version, 1);
+  assert(timetable.timetables.some((row) => row.school_id === "cysh" && row.classes.some((classRow) => classRow.class_name === "109")));
+  assert(timetable.timetables.every((row) => allowedHosts.has(new URL(row.source_url).hostname)));
+  assert(calendar.events.length > 0);
+  assert(calendar.events.every((row) => allowedHosts.has(new URL(row.source_url).hostname)));
+  assert(calendar.events.every((row) => Object.keys(row).join(",") === "id,school_id,title,start_date,end_date,source_url"));
+
+  const legalGate = cp.spawnSync(process.execPath, [path.join(root, "tools", "check-legal-compliance.js"), "--production", "--profile=student_core"], { cwd: root, encoding: "utf8" });
   assert.equal(legalGate.status, 3, "candidate must remain review-required until rights review is recorded");
   assert.match(legalGate.stderr, /PRODUCTION_REVIEW_REQUIRED/);
   assert.doesNotMatch(legalGate.stderr, /PRODUCTION_BLOCKED/);
-  console.log("Public-core artifact isolation contract tests passed");
+  console.log("Student-core feature and isolation contract tests passed");
 } finally {
   fs.rmSync(output, { recursive: true, force: true });
 }

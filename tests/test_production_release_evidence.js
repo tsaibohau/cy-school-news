@@ -15,7 +15,7 @@ function run(args) {
 }
 
 assert.equal(status.schema_version, 2);
-assert.deepEqual(Object.keys(status.release_profiles), ["public_core", "account_personalization", "password_auth", "reminders"]);
+assert.deepEqual(Object.keys(status.release_profiles), ["public_core", "student_core", "account_personalization", "password_auth", "reminders"]);
 assert.equal(status.requirements.retention_policy_enforced.state, "block");
 assert.match(status.requirements.retention_policy_enforced.message, /site policy limits, not universal statutory periods/);
 assert.equal(status.requirements.source_rights_scope_review.state, "review");
@@ -39,6 +39,11 @@ const acknowledgedPublicCore = run(["--production", "--profile=public_core", "--
 assert.equal(acknowledgedPublicCore.status, 0, acknowledgedPublicCore.stderr);
 assert.match(acknowledgedPublicCore.stdout, /Scoped production technical gate passed/);
 assert.match(acknowledgedPublicCore.stderr, /not a legal opinion/);
+
+const studentCore = run(["--production", "--profile=student_core"]);
+assert.equal(studentCore.status, 3);
+assert.match(studentCore.stderr, /PRODUCTION_REVIEW_REQUIRED/);
+assert.doesNotMatch(studentCore.stderr, /deployed_http_rls|leaked_password|reminder_schema/);
 
 const accounts = run(["--production", "--profile=account_personalization", "--acknowledge-review"]);
 assert.equal(accounts.status, 2, "manual acknowledgement must never bypass technical blockers");

@@ -20,27 +20,35 @@
     "production_backend_isolated": false,
     "retention_enforcement_deployed": false,
     "preview_self_service_app_data_deletion": true,
-    "source_rights_audit_recorded": true
+    "source_rights_audit_recorded": true,
+    "student_core_has_no_account_backend": true
   },
   "requirements": {
     "public_source_controls": {
       "category": "technical",
       "state": "pass",
-      "applies_to": ["public_core"],
+      "applies_to": ["public_core", "student_core"],
       "message": "Only allow-listed public HTTPS sources are fetched at a bounded rate."
     },
     "source_rights_scope_review": {
       "category": "legal_review",
       "state": "review",
-      "applies_to": ["public_core"],
+      "applies_to": ["public_core", "student_core"],
       "message": "The title, metadata, short-summary and official-link scope needs a documented rights assessment; absence of an open licence is not an automatic legality finding.",
       "evidence": "source-rights-audit.md"
     },
     "qualified_taiwan_legal_review": {
       "category": "risk_policy",
       "state": "review",
-      "applies_to": ["public_core", "account_personalization", "password_auth", "reminders"],
+      "applies_to": ["public_core", "student_core", "account_personalization", "password_auth", "reminders"],
       "message": "Qualified Taiwan legal review remains recommended risk governance, not a technical control or an automatic statutory launch licence."
+    },
+    "student_core_isolation": {
+      "category": "technical",
+      "state": "pass",
+      "control": "student_core_has_no_account_backend",
+      "applies_to": ["student_core"],
+      "message": "Timetable, announcement search, source-based school Q&A and public calendar run without accounts or user-owned storage."
     },
     "deployed_http_rls": {
       "category": "technical",
@@ -103,6 +111,11 @@
       "enabled": true,
       "description": "Public announcement titles, dates, necessary short summaries and official source links; no account-owned data.",
       "requirements": ["public_source_controls", "source_rights_scope_review", "qualified_taiwan_legal_review"]
+    },
+    "student_core": {
+      "enabled": false,
+      "description": "Public timetable, announcement search, source-based school Q&A and public calendar; no account-owned data.",
+      "requirements": ["public_source_controls", "student_core_isolation", "source_rights_scope_review", "qualified_taiwan_legal_review"]
     },
     "account_personalization": {
       "enabled": true,

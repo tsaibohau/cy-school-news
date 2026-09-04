@@ -1,0 +1,15 @@
+.student-nav { position: sticky; top: 0; z-index: 5; display: flex; gap: 8px; overflow-x: auto; padding: 10px 0 12px; background: var(--paper); }
+.student-nav .chip { flex: 0 0 auto; min-height: 42px; font-size: 14px; }
+.student-view { min-height: 58vh; }
+.student-tool-card { padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); box-shadow: 0 4px 14px rgba(42,50,43,.045); }
+.student-selectors { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+.student-selectors label, .student-tool-card > label { display: grid; gap: 6px; color: var(--muted); font-size: 14px; font-weight: 700; }
+.student-selectors select, .student-tool-card select { width: 100%; min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); font: inherit; }
+.student-tool-card .timetable-today { margin-top: 12px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.student-tool-card .assistant-answer { margin-top: 14px; }
+.student-tool-card .agenda { margin-top: 14px; display: grid; gap: 10px; }
+.calendar-item { padding: 12px; border: 1px solid var(--line); border-radius: 11px; background: var(--paper); }
+.calendar-item time { color: var(--muted); font-size: 13px; }
+.calendar-item h3 { margin: 4px 0; font-size: 16px; }
+.calendar-item p { margin: 0; color: var(--muted); font-size: 13px; }
+@media (max-width: 520px) { .student-selectors { grid-template-columns: 1fr; } }

@@ -2,9 +2,11 @@
 
 狀態：`SCOPED_RELEASE_REVIEW_REQUIRED`。本檔是發布前的證據清單，不是發布授權，也不取代法律意見。
 
-發布閘門分成 `public_core`、`account_personalization`、`password_auth`、`reminders` 四個範圍。未指定範圍時會檢查所有已啟用功能並維持 fail-closed；指定範圍時，只採計與該功能真正相關的控制。
+發布閘門分成 `public_core`、`student_core`、`account_personalization`、`password_auth`、`reminders` 五個範圍。未指定範圍時會檢查所有已啟用功能並維持 fail-closed；指定範圍時，只採計與該功能真正相關的控制。
 
 指定範圍只決定「檢查哪些條件」，不會自動從網站移除其他功能。真正發布時，部署成品必須已透過設定或獨立建置關閉未選功能；否則不得以較小範圍的結果代表整個成品。
+
+`student_core` 候選成品保留公開課表、公告搜尋、來源式問校務與公開行事曆，並在建置時排除帳號、跨裝置同步、待辦與推播程式。班級選擇只存在當次頁面記憶體，不寫入瀏覽器儲存或後端；因此帳號功能的 RLS、密碼與保存期限阻擋不應連坐公開課表。
 
 ## 已完成但不足以正式發布的事實
 
