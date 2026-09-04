@@ -22,4 +22,14 @@ with tempfile.TemporaryDirectory() as directory:
     assert [row["id"] for row in cysh["items"]] == ["a"]
     assert [row["id"] for row in cygsh["items"]] == ["b"]
     assert [row["id"] for row in pksh["items"]] == ["c"]
+
+legacy_recent = {**recent, "schools": recent["schools"][:2],
+                 "items": [{"id": "legacy", "school": "retired", "school_name": "舊校"}]}
+with tempfile.TemporaryDirectory() as directory:
+    root = Path(directory)
+    manifest = build_school_shards(legacy_recent, {"items": []}, root)
+    assert manifest["schools"][-1]["id"] == "retired"
+    assert manifest["schools"][-1]["legacy"] is True
+    legacy = json.loads((root / "retired/current.json").read_text(encoding="utf-8"))
+    assert [row["id"] for row in legacy["items"]] == ["legacy"]
 print("School-scoped public shard tests passed")

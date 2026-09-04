@@ -10,6 +10,13 @@ values
   ('00000000-0000-4000-8000-0000000000b2', 'authenticated', 'authenticated', 'reminder-b@local.test', '', now())
 on conflict (id) do nothing;
 
+-- The RLS policies intentionally require an administrator-approved account.
+insert into public.account_access (user_id, status, reviewed_at)
+values
+  ('00000000-0000-4000-8000-0000000000a1', 'approved', now()),
+  ('00000000-0000-4000-8000-0000000000b2', 'approved', now())
+on conflict (user_id) do update set status = excluded.status, reviewed_at = excluded.reviewed_at;
+
 insert into public.reminder_targets (
   id, owner_user_id, target_kind, target_id, target_at, title, source_url,
   provenance, source_revision
