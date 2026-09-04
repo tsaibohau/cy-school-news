@@ -1,0 +1,27 @@
+{
+ "announcement_id": "cysh-7498",
+ "school_id": "cysh",
+ "title": "108學年度學科能力競賽各科需自行準備之器材清單(含資訊科之作業環境)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-7498,r352.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "作者 : 設備組 發佈日期 : 2019-10-21 資訊科 一、 本競賽採電腦線上自動評分，請以本頁下方所提供的帳號/密碼登入系統。 二、 請將每一題的程式碼撰寫於一個檔案中，每個檔案大小不可超過100KB，編譯所需記憶體不可超過512MB。 三、 本競賽一律使用標準輸入輸出，請依照題目指定之格式輸出，多餘空白字元、換行字元、程式未能正常結束或於程式中使用system(\"pause\")均視為錯誤。 四、 程式上傳後，系統將自動進行編譯、執行及評分，選手可線上查閱得分及編譯執行結果。每題程式碼皆可重複上傳，但同一題兩次上傳的間隔時間不可少於一分鐘。每題的最終分數以該題所有單次評分結果之最高分計算。 五、 每題均有程式執行時間限制(除題目另有規定外，以5秒為限)，超過時間則視同未完成，該組測試資料得分將以 0 分計算。 六、 請將完成之程式碼另存一份至隨身碟中，每一題請以一個資料夾存放該題程式碼(資料夾名稱根據題號依序取名為T1、T2、T3、……)。 七、 競賽期間請確實執行備份工作。若因電腦問題而造成資料之遺失，概由選手自行負責。 八、 本競賽可使用C、C++或Java等程式語言作答；使用Java作答者，類別名稱請依規定命名，並避免直接使用Scanner.nextFloat()、Scanner.nextDouble()或Scanner.nextLine()輸入。以下為參考語法： Scanner scn = new Scanner(System.in); float m= Float.parseFloat(scn.next()); double n= Double.parseDouble(scn.next()); String s = scn.next(); 九、 競賽評分主機環境如下： 作業系統：ubuntu 14.04 LTS 評分平台：CMS 1.2 程式語言：C/C++/Java 編譯器：C:gcc 7.3.0 C++: g++7.3.0 Java:gcj 6.4.0 物理科: 無 生物科: 光學顯微鏡、解剖顯微鏡(燈泡一定要正常運作)、解剖用具（含解剖刀．解剖剪．解剖針和鑷子） 化學科: 1. 安全眼鏡 2. 實驗衣 3. 計算機(工程用計算機也可以)",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "8cdb134c96b1fae25f79a0b5221836f31fe1ac6966bbb9d07127317c25b57f90",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-04T11:23:13+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "二、 請將每一題的程式碼撰寫於一個檔案中，每個檔案大小不可超過100KB，編譯所需記憶體不可超過512MB。",
+  "evidence": "二、 請將每一題的程式碼撰寫於一個檔案中，每個檔案大小不可超過100KB，編譯所需記憶體不可超過512MB。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
