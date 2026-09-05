@@ -73,6 +73,7 @@
       profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
       accountUser: null,
       accountAccess: null,
+      memberContent: {},
       adminOffset: 0,
       adminTotal: 0,
       nickname: "",
@@ -557,6 +558,7 @@
         localStorage.setItem(LS_SCHOOL, "all");
         state.archive = "none";
         state.archivePromise = null;
+        state.memberContent = {};
         publishState(anonymousState, "anonymous");
         showAnonymousShell();
         if (state.data) fetchData(true);
@@ -674,6 +676,18 @@
                 return;
               }
               showAccountShell();
+              auth.getMemberAnnouncementIndex().then(function (rows) {
+                if (!hasSignedInAccount()) return;
+                state.memberContent = {};
+                rows.forEach(function (row) { if (row && row.announcement_id) state.memberContent[row.announcement_id] = row; });
+                if (state.data) {
+                  state.data.items.forEach(applyMemberContent);
+                  renderAll();
+                }
+              }).catch(function () {
+                state.memberContent = {};
+                if (el.publicAccessStatus) el.publicAccessStatus.textContent = "會員摘要暫時無法載入，仍可查看校網原文。";
+              });
               if (el.tabAdmin) el.tabAdmin.hidden = !access.is_admin;
               loadAdminAccounts();
               if (uid === requestedUid) return;
@@ -1017,6 +1031,7 @@
           var data = result.data;
           var recentItems = Array.isArray(data.items) ? data.items.slice() : [];
           if (!Array.isArray(data.items)) data.items = [];
+          data.items.forEach(applyMemberContent);
           if (state.archive === "loaded") {
             /* 已載入過封存資料:重新抓的檔案只有近一年,把封存部分接回去 */
             var ids = {};
@@ -1128,6 +1143,7 @@
           var ids = {};
           state.data.items.forEach(function (it) { ids[it.id] = true; });
           (arc.items || []).forEach(function (it) {
+            applyMemberContent(it);
             if (!ids[it.id]) state.data.items.push(it);
           });
           state.archive = "loaded";
@@ -1143,6 +1159,15 @@
       /* 含自動分類名稱:訂「段考」也能命中整個「段考考試」分類 */
       return (it.title + " " + (hasSignedInAccount() ? (it.summary || "") + " " + (it.snippet || "") : "") + " " +
         (it.category || "") + " " + (it.source_category || "")).toLowerCase();
+    }
+    function applyMemberContent(it) {
+      if (!it || !hasSignedInAccount()) return it;
+      var member = state.memberContent[String(it.id)] || null;
+      if (!member) return it;
+      it.summary = member.summary || "";
+      it.snippet = member.snippet || "";
+      it.detail_revision = member.source_hash || "";
+      return it;
     }
     function searchableItem(it) {
       if (hasSignedInAccount()) return it;
@@ -1452,28 +1477,28 @@
       }
       el.detailTitle.textContent = displayTitle(item);
       el.detailMeta.textContent = (item.school_name || "官方公告") + " · " + displayDate(item);
-      el.detailBody.innerHTML = '<p class="detail-state">正在載入官方完整內容…</p>';
+      el.detailBody.innerHTML = '<p class="detail-state">正在載入會員內容…</p>';
       showDetailDialog();
       var generation = ++state.detailRequestGeneration;
-      if (!window.CyNewsDetailUI.validDetailRef(item.detail_ref)) {
-        detailFallback(item, window.CyNewsDetailUI.statusMessage(item.detail_status));
+      if (!accountAuth || typeof accountAuth.getMemberAnnouncementDetail !== "function") {
+        detailFallback(item, "會員內容服務暫時無法使用，請改看官方來源。");
         return;
       }
-      var cacheKey = item.detail_ref + "@" + String(item.detail_revision || "");
+      var cacheKey = "member:" + item.id + "@" + String(item.detail_revision || "");
       if (state.detailCache[cacheKey]) {
         el.detailBody.innerHTML = window.CyNewsDetailUI.render(state.detailCache[cacheKey]);
         return;
       }
-      fetch(item.detail_ref + "?_=" + encodeURIComponent(item.detail_revision || Date.now()), { cache: "no-store" })
-        .then(function (response) { if (!response.ok) throw new Error("detail HTTP " + response.status); return response.json(); })
-        .then(function (record) {
+      accountAuth.getMemberAnnouncementDetail(item.id).then(function (protectedRow) {
           if (generation !== state.detailRequestGeneration) return;
+          var record = protectedRow && protectedRow.detail;
+          if (!record) throw new Error("member detail unavailable");
           if (!record || String(record.announcement_id) !== String(item.id) || record.provenance !== "official_article" ||
-              (item.detail_revision && String(record.source_hash) !== String(item.detail_revision))) throw new Error("detail identity mismatch");
+              (protectedRow.source_hash && String(record.source_hash) !== String(protectedRow.source_hash))) throw new Error("detail identity mismatch");
           state.detailCache[cacheKey] = record;
           el.detailBody.innerHTML = window.CyNewsDetailUI.render(record);
         })
-        .catch(function () { if (generation === state.detailRequestGeneration) detailFallback(item, "完整內文載入失敗，請改看官方來源。"); });
+        .catch(function () { if (generation === state.detailRequestGeneration) detailFallback(item, "會員摘要如下；完整原文請前往官方來源。"); });
     }
     function renderImportant() {
       if (!el.importantList) return;
@@ -1601,15 +1626,15 @@
       }).join("");
     }
     function assistantDetail(item) {
-      if (!item || !window.CyNewsDetailUI || !window.CyNewsDetailUI.validDetailRef(item.detail_ref)) return Promise.resolve(null);
+      if (!item || !accountAuth || typeof accountAuth.getMemberAnnouncementDetail !== "function") return Promise.resolve(null);
       var key = String(item.id || "");
-      if (state.detailCache[key]) return Promise.resolve(state.detailCache[key]);
-      return fetch(item.detail_ref, { cache: "no-store" }).then(function (response) {
-        if (!response.ok) return null;
-        return response.json();
-      }).then(function (record) {
-        if (!record || String(record.announcement_id) !== key || record.provenance !== "official_article") return null;
-        state.detailCache[key] = record;
+      var cacheKey = "member:" + key + "@" + String(item.detail_revision || "");
+      if (state.detailCache[cacheKey]) return Promise.resolve(state.detailCache[cacheKey]);
+      return accountAuth.getMemberAnnouncementDetail(key).then(function (protectedRow) {
+        var record = protectedRow && protectedRow.detail;
+        if (!record || String(record.announcement_id) !== key || record.provenance !== "official_article" ||
+            (protectedRow.source_hash && String(record.source_hash) !== String(protectedRow.source_hash))) return null;
+        state.detailCache[cacheKey] = record;
         return record;
       }).catch(function () { return null; });
     }
@@ -1630,7 +1655,7 @@
           if (!item || !item.id || seen[item.id]) return false;
           seen[item.id] = true;
           return true;
-        });
+        }).map(applyMemberContent);
       });
     }
     function assistantScopeFor(question) {
@@ -2272,7 +2297,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=76").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=77").catch(function () {});
       });
     }
 

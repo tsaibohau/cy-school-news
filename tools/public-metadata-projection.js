@@ -46,3 +46,12 @@ function sanitizePublicData(root) {
 }
 
 module.exports = { PUBLIC_ITEM_FIELDS, projectItem, projectCorpusFile, sanitizePublicData };
+
+if (require.main === module) {
+  const target = process.argv[2] ? path.resolve(process.argv[2]) : null;
+  if (!target || !fs.existsSync(path.join(target, "data"))) {
+    throw new Error("usage: node tools/public-metadata-projection.js <public-root>");
+  }
+  sanitizePublicData(target);
+  console.log("Public announcement data contains metadata only");
+}

@@ -249,10 +249,10 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('autocomplete="current-password"'));
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=75"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=76"'), "index must load current app shell");
+  assert(index.includes('src="account-auth.js?v=76"'), "index must load current account auth");
+  assert(index.includes('src="app.js?v=77"'), "index must load current app shell");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
-  assert(sw.includes('"./account-auth.js?v=75"'), "Service Worker shell must cache current account auth");
+  assert(sw.includes('"./account-auth.js?v=76"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
   assert(app.includes('"登入信箱：" + email'));
   assert(!app.includes("sendMagicLink"));
@@ -266,8 +266,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v77"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=76")'), "App must register the current Service Worker script");
+  assert(sw.includes("cy-news-v78"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=77")'), "App must register the current Service Worker script");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   assert(app.includes("signUpWithPassword"));

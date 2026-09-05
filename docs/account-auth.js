@@ -190,6 +190,30 @@
           });
         });
       },
+      getMemberAnnouncementIndex: function () {
+        return getClient().then(function (c) {
+          var rows = [];
+          function next(offset) {
+            return c.rpc("member_announcement_index", { page_size: 500, page_offset: offset }).then(function (result) {
+              if (result.error) throw result.error;
+              var page = Array.isArray(result.data) ? result.data : [];
+              rows = rows.concat(page);
+              return page.length === 500 && rows.length < 10000 ? next(offset + 500) : rows;
+            });
+          }
+          return next(0);
+        });
+      },
+      getMemberAnnouncementDetail: function (announcementId) {
+        announcementId = String(announcementId || "");
+        if (!announcementId || announcementId.length > 180) return Promise.reject(new Error("invalid announcement id"));
+        return getClient().then(function (c) {
+          return c.rpc("member_announcement_detail", { target_announcement_id: announcementId }).then(function (result) {
+            if (result.error) throw result.error;
+            return Array.isArray(result.data) && result.data.length ? result.data[0] : null;
+          });
+        });
+      },
       resetPasswordForEmail: function (email) {
         email = normalizeEmail(email);
         var redirectTo = approvedRedirect(config, options.location);

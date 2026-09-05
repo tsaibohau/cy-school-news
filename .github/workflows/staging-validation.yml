@@ -44,6 +44,7 @@ jobs:
           tests/test_assistant_qa.js
           tests/test_search_ranking.js
           tests/test_nonmember_content_gate.js
+          tests/test_member_content_rls_contract.js
           tests/test_production_release_evidence.js
           tests/test_announcement_validity.js
           tests/test_reviewed_validity_cases.js
@@ -96,6 +97,11 @@ jobs:
           deno check
           --config supabase/functions/account-email-worker/deno.json
           supabase/functions/account-email-worker/index.ts
+      - name: Type-check announcement content sync
+        run: >-
+          deno check
+          --config supabase/functions/announcement-content-sync/deno.json
+          supabase/functions/announcement-content-sync/index.ts
       - name: Python parser and calendar regression
         env:
           PYTHONIOENCODING: utf-8

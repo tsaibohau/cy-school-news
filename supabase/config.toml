@@ -71,3 +71,9 @@ enabled = true
 verify_jwt = false
 import_map = "./functions/account-email-worker/deno.json"
 entrypoint = "./functions/account-email-worker/index.ts"
+
+[functions.announcement-content-sync]
+enabled = true
+verify_jwt = true
+import_map = "./functions/announcement-content-sync/deno.json"
+entrypoint = "./functions/announcement-content-sync/index.ts"
