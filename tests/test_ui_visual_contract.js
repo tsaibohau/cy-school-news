@@ -18,7 +18,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=47/);
+assert.match(index, /style\.css\?v=72/);
 assert.match(index, /search-taxonomy\.js\?v=52/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=52/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=53/, "reviewed validity loads before answers");
@@ -66,3 +66,50 @@ assert.match(index, /今天先做什麼/, "home actions use task-oriented langua
 assert.match(app, /classList\.toggle\("btn-primary", signup \|\| reset\)/, "the current authentication action has clear visual priority");
 
 console.log("Editorial UI and honest refresh status contract tests passed");
+
+// Exercise the actual account-shell transitions with a deterministic clock.
+{
+  const vm = require("vm");
+  const source = fs.readFileSync(path.join(__dirname, "../docs/app.js"), "utf8");
+  const timers = new Map();
+  let clock = 0, nextId = 0;
+  const card = { hidden: false, dataset: {}, classList: new Set() };
+  card.classList.remove = card.classList.delete.bind(card.classList);
+  const el = { publicAccountEntry: card };
+  for (const key of ["functionDock", "publicAccountLogin", "publicAccountSignUp", "publicAccountLogout", "publicAccessTitle", "publicAccessLead", "publicAccessStatus", "tabAdmin"]) el[key] = {};
+  const state = { accountUser: { id: "user-a" }, tab: "latest" };
+  const context = vm.createContext({ el, state, setNavMenu() {}, switchTab() {},
+    setTimeout(fn, delay) { const id = ++nextId; timers.set(id, { fn, at: clock + delay }); return id; },
+    clearTimeout(id) { timers.delete(id); }
+  });
+  vm.runInContext(source.slice(source.indexOf("      var welcomeUid ="), source.indexOf("      function setAccountUser")), context);
+  function advance(ms) {
+    const end = clock + ms;
+    while (true) {
+      const entry = [...timers].sort((a, b) => a[1].at - b[1].at)[0];
+      if (!entry || entry[1].at > end) break;
+      clock = entry[1].at; timers.delete(entry[0]); entry[1].fn();
+    }
+    clock = end;
+  }
+  context.showAnonymousShell();
+  context.showAccountShell();
+  assert.equal(el.publicAccountLogin.hidden, true);
+  assert.equal(el.publicAccountSignUp.hidden, true);
+  assert.match(el.publicAccessStatus.textContent, /登入成功/);
+  advance(1999); assert.equal(card.hidden, false);
+  advance(1); assert.equal(card.classList.has("is-leaving"), true);
+  advance(600); assert.equal(card.hidden, true);
+  context.showAccountShell(); assert.equal(card.hidden, true, "session refresh must not replay welcome");
+  context.showAnonymousShell(); context.showAccountShell(); advance(2100);
+  context.showAnonymousShell(); advance(1000);
+  assert.equal(card.hidden, false, "old fade must not hide the signed-out guest card");
+  assert.equal(el.publicAccountLogin.hidden, false);
+  assert.equal(card.classList.has("is-leaving"), false);
+  context.showAccountShell(); context.showPendingAccountShell("等待核准"); advance(3000);
+  assert.equal(card.hidden, false, "pending status stays visible");
+  assert.equal(el.publicAccountLogout.hidden, false);
+  assert.equal(card.dataset.state, "pending");
+  const cssSource = fs.readFileSync(path.join(__dirname, "../docs/style.css"), "utf8");
+  assert.match(cssSource, /\.access-card\[hidden\]\s*\{\s*display:\s*none/);
+}

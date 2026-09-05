@@ -311,7 +311,17 @@
       var pushManager = window.CyNewsPushSubscription ? window.CyNewsPushSubscription.createManager({ auth: auth }) : null;
       var reminderAdapter = window.CyNewsReminderRules ? window.CyNewsReminderRules.createAdapter({ auth: auth }) : null;
       function status(text) { el.accountState.textContent = text; }
+      var welcomeUid = null;
+      var welcomeFadeTimer = null;
+      var welcomeHideTimer = null;
+      function resetWelcome() {
+        clearTimeout(welcomeFadeTimer);
+        clearTimeout(welcomeHideTimer);
+        welcomeUid = null;
+        if (el.publicAccountEntry) el.publicAccountEntry.classList.remove("is-leaving");
+      }
       function showAnonymousShell() {
+        resetWelcome();
         if (el.functionDock) el.functionDock.hidden = true;
         setNavMenu(false);
         if (el.publicAccountEntry) el.publicAccountEntry.hidden = false;
@@ -337,8 +347,25 @@
       }
       function showAccountShell() {
         if (el.functionDock) el.functionDock.hidden = false;
-        if (el.publicAccountEntry) el.publicAccountEntry.hidden = true;
-        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "";
+        if (!el.publicAccountEntry) return;
+        var uid = state.accountUser && state.accountUser.id;
+        if (welcomeUid === uid) return;
+        resetWelcome();
+        welcomeUid = uid;
+        el.publicAccountEntry.hidden = false;
+        el.publicAccountEntry.dataset.state = "welcome";
+        if (el.publicAccountLogin) el.publicAccountLogin.hidden = true;
+        if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = true;
+        if (el.publicAccountLogout) el.publicAccountLogout.hidden = true;
+        if (el.publicAccessTitle) el.publicAccessTitle.textContent = "歡迎回來";
+        if (el.publicAccessLead) el.publicAccessLead.textContent = "";
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "登入成功，可以使用個人功能了。";
+        welcomeFadeTimer = setTimeout(function () {
+          el.publicAccountEntry.classList.add("is-leaving");
+          welcomeHideTimer = setTimeout(function () {
+            el.publicAccountEntry.hidden = true;
+          }, 600);
+        }, 2000);
       }
       function setAccountUser(user) {
         state.accountUser = user || null;
@@ -2150,7 +2177,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=71").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=72").catch(function () {});
       });
     }
 
