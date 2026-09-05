@@ -21,8 +21,11 @@ const harness = fs.readFileSync(path.join(output, "acceptance-user-tasks.js"), "
 const sw = fs.readFileSync(path.join(output, "sw.js"), "utf8");
 const revision = (staging.match(/(?:style\.css|app\.js)\?v=(staging-[a-f0-9]{12})/) || [])[1];
 const config = fs.readFileSync(path.join(root, "docs", "account-config.js"), "utf8");
+const stagingConfig = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
 const behavioral = fs.readFileSync(path.join(root, "tests", "test_rls_behavioral.js"), "utf8");
 const deployedWorkflow = fs.readFileSync(path.join(root, ".github", "workflows", "rls-deployed.yml"), "utf8");
+const publicCurrent = JSON.parse(fs.readFileSync(path.join(output, "data", "announcements.json"), "utf8"));
+const publicArchive = JSON.parse(fs.readFileSync(path.join(output, "data", "archive.json"), "utf8"));
 
 assert(!production.includes("acceptance-user-tasks.js"), "production source must not load the acceptance harness");
 assert(!production.includes("cynews-staging-banner"), "production source must not contain a staging banner");
@@ -70,8 +73,20 @@ assert(!companion.includes("app.js"), "companion must not initialize the product
 assert(!companion.includes("account-sync.js"), "companion must not drain any account outbox");
 assert(sw.includes('url.searchParams.has("code")'), "OAuth callback navigation remains uncacheable");
 assert(config.includes("allowedRedirectUrls"));
-assert(config.includes("https://cy-school-news-staging.vercel.app/"));
+assert(config.includes("https://oppdhtnepjagdwovndra.supabase.co"));
+assert(!config.includes("https://ebezqanvmgsgtatsbssn.supabase.co"));
+assert(stagingConfig.includes("https://ebezqanvmgsgtatsbssn.supabase.co"));
+assert(!stagingConfig.includes("https://oppdhtnepjagdwovndra.supabase.co"));
 assert(!behavioral.includes("passed for A=${a}"), "behavioral test output must not reveal user UUIDs");
+assert.equal(publicCurrent.content_access, "approved-account-required");
+assert.equal(publicArchive.content_access, "approved-account-required");
+for (const item of publicCurrent.items.concat(publicArchive.items)) {
+  for (const field of ["summary", "snippet", "detail_ref", "detail_revision", "detail_status", "detail_available", "calendar_events"]) {
+    assert(!Object.prototype.hasOwnProperty.call(item, field), `public metadata must omit ${field}`);
+  }
+  assert(item.title && item.url && item.school, "public metadata keeps title, school, and official URL");
+}
+assert(!fs.existsSync(path.join(output, "data", "details")), "staging must not publish downloadable detail files");
 assert(behavioral.includes("passed for USER_A and USER_B"));
 assert(deployedWorkflow.includes("Check dedicated Auth harness availability"));
 assert(deployedWorkflow.includes("if: steps.auth-gate.outputs.available == 'true'"));

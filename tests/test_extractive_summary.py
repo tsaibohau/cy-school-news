@@ -15,6 +15,20 @@ assert summary["provenance"] == "official_article"
 assert "8月26日" in summary["text"]
 assert "作者" not in summary["text"]
 assert summary["evidence"]
+assert summary["version"] == "extractive-v2"
+
+multi_activity = {"title": "近期學生研習活動彙整", "blocks": [
+    {"type": "heading", "text": "科學營"},
+    {"type": "list", "items": [
+        "科學營於9月12日辦理，請有興趣學生於9月5日前完成報名。",
+        "寫作工作坊於9月20日在圖書館舉行，報名期限為9月10日。",
+        "英語演講講座於9月25日在第一會議室辦理，採線上報名。",
+    ]},
+], "attachments": []}
+multi_summary = summarize_detail(multi_activity)
+assert len(multi_summary["items"]) >= 2
+assert "另有" in multi_summary["text"]
+assert {item["label"] for item in multi_summary["items"]} >= {"科學營", "寫作工作坊"}
 
 pdf_only = {"title": "申請公告", "blocks": [], "attachments": [{
     "provenance": "official_attachment", "parse_status": "parsed",

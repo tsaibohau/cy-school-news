@@ -8,7 +8,6 @@
   var schools = [
     { id: "cysh", name: "國立嘉義高級中學", short: "嘉中", aliases: ["嘉義高中", "嘉義高級中學", "cysh"], capabilities: { announcements: true, official_calendar: true } },
     { id: "cygsh", name: "國立嘉義女子高級中學", short: "嘉女", aliases: ["嘉義女中", "嘉義女子高級中學", "cygsh"], capabilities: { announcements: true, official_calendar: true } },
-    { id: "fjsh", name: "嘉義市私立輔仁高級中學", short: "輔仁", aliases: ["輔仁中學", "天主教輔仁中學", "嘉義輔仁", "嘉義市私立輔仁高級中學", "fjsh"], capabilities: { announcements: true, official_calendar: false } },
   ];
   function copy(school) {
     return Object.assign({}, school, { aliases: (school.aliases || []).slice(), capabilities: Object.assign({}, school.capabilities) });
