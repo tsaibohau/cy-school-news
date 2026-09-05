@@ -65,3 +65,9 @@ enabled = true
 verify_jwt = false
 import_map = "./functions/username-auth/deno.json"
 entrypoint = "./functions/username-auth/index.ts"
+
+[functions.account-email-worker]
+enabled = true
+verify_jwt = false
+import_map = "./functions/account-email-worker/deno.json"
+entrypoint = "./functions/account-email-worker/index.ts"

@@ -12,11 +12,14 @@ assert.match(migration, /create trigger create_pending_account_access after inse
 assert.match(migration, /admin_review_account\(uuid, text\) to authenticated/);
 assert.match(migration, /cannot review own account/);
 assert.match(migration, /revoke all on function public\.create_pending_account_access\(\) from public, anon, authenticated/);
-assert.match(app, /移除使用權/);
+assert.match(app, /移除存取權/);
 assert.match(app, /window\.confirm/);
 assert.match(app, /getAccountAccess/);
 assert.match(app, /等待管理員核准後才能使用個人功能/);
 assert.match(app, /isAdminAccount/);
 assert.match(app, /tab === "admin" && !isAdminAccount\(\)/);
+assert.match(app, /admin_role === "owner"/);
+assert.match(app, /data-admin-role="co_admin"/);
+assert.match(app, /可重新送審/);
 assert.match(css, /\.function-dock\[hidden\] \{ display: none !important; \}/);
 console.log("Admin account-management security contract tests passed");

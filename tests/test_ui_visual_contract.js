@@ -18,7 +18,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=75/);
+assert.match(index, /style\.css\?v=76/);
 assert.match(index, /search-taxonomy\.js\?v=52/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=52/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=53/, "reviewed validity loads before answers");

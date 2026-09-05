@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=75">
+<link rel="stylesheet" href="style.css?v=76">
 </head>
 <body>
 
@@ -103,13 +103,19 @@
     </div>
   </section>
 
+  <section id="viewTimetable" class="today-view" hidden aria-labelledby="timetableTitle">
+    <div class="section-heading"><div><p class="eyebrow">CLASS TIMETABLE</p><h2 id="timetableTitle">我的課表</h2></div></div>
+    <p class="assistant-intro">依「我的」裡設定的學校與班級，顯示校方公開課表。</p>
+    <div id="standaloneTimetable" class="today-list"></div>
+  </section>
+
   <!-- 公告首頁 -->
   <section id="viewLatest">
     <div class="section-heading"><div><p class="eyebrow">ANNOUNCEMENTS</p><h2>公告總庫</h2></div></div>
     <section id="publicAccountEntry" class="access-card" aria-labelledby="publicAccessTitle">
       <span class="access-icon" aria-hidden="true">查</span>
       <div class="access-copy"><h3 id="publicAccessTitle">先查公告，不必登入</h3><p id="publicAccessLead">想使用課表、待辦、問校務或通知時，再建立帳號就好。</p><p id="publicAccessStatus" role="status" aria-live="polite"></p></div>
-      <div class="access-actions"><button id="publicAccountLogin" class="btn-primary" type="button">登入</button><button id="publicAccountSignUp" class="btn-ghost" type="button">建立帳號</button><button id="publicAccountLogout" class="btn-ghost" type="button" hidden>登出</button></div>
+      <div class="access-actions"><button id="publicAccountLogin" class="btn-primary" type="button">登入</button><button id="publicAccountSignUp" class="btn-ghost" type="button">建立帳號</button><button id="accountReapply" class="btn-primary" type="button" hidden>重新送審</button><button id="publicAccountLogout" class="btn-ghost" type="button" hidden>登出</button></div>
     </section>
     <div class="controls">
       <input id="q" type="search" inputmode="search" placeholder="搜尋公告,可用空格分隔多個關鍵字" aria-label="搜尋公告">
@@ -156,25 +162,35 @@
       <div class="section-heading"><div><p class="eyebrow">PERSONAL SPACE</p><h2>我的</h2></div></div>
       <section class="my-card account-card" aria-labelledby="accountTitle">
         <div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">人</span><div><h3 id="accountTitle">帳號</h3><p>同步你的學校、偏好與待辦</p></div></div></div>
-        <div id="accountBox" class="account-actions"><div class="account-identity"><span id="accountState" class="hint">未登入</span><span id="accountEmail" class="account-email" hidden></span></div><button id="accountLogin" class="btn-primary">登入或註冊</button><button id="accountSwitch" class="btn-ghost" hidden>切換 Google 帳號</button><button id="accountLogout" class="btn-ghost" hidden>登出</button><button id="accountDeleteCloud" class="btn-ghost danger-button" type="button" hidden>刪除已同步資料</button></div>
+        <div id="accountBox" class="account-actions"><div class="account-identity"><span id="accountState" class="hint">未登入</span><span id="accountService" class="account-service" hidden></span><span id="accountEmail" class="account-email" hidden></span></div><button id="accountLogin" class="btn-primary">登入或註冊</button><button id="accountSwitch" class="btn-ghost" hidden>切換 Google 帳號</button><button id="accountLogout" class="btn-ghost" hidden>登出</button><button id="accountDeleteCloud" class="btn-ghost danger-button" type="button" hidden>刪除已同步資料</button></div>
       </section>
       <details id="profileBox" class="my-card my-disclosure" aria-labelledby="profileTitle">
         <summary><span class="my-card-icon" aria-hidden="true">設</span><span><strong id="profileTitle">個人設定</strong><small>暱稱、學校、年級與關注內容</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary>
         <div class="my-card-body"><p id="profileHint" class="hint">先完成基本資料即可；想讓排序和通知更精準時，再補充選填內容。</p><form id="profileForm" class="profile-form">
-          <fieldset><legend>基本資料</legend><p class="field-help">約 20 秒完成</p><label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級（查看課表需要）<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109"></label></fieldset><fieldset><legend>讓內容更符合我 <span>（選填）</span></legend><p class="field-help">稍後再設定也不影響基本功能</p><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課"></label><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label></fieldset><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存設定</button><span id="profileStatus" class="hint" aria-live="polite"></span></div>
+          <fieldset><legend>基本資料</legend><p class="field-help">約 20 秒完成</p><label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級（查看課表需要）<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109"></label></fieldset><fieldset class="full-service-only"><legend>讓內容更符合我 <span>（選填）</span></legend><p class="field-help">稍後再設定也不影響基本功能</p><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課"></label><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label></fieldset><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存設定</button><span id="profileStatus" class="hint" aria-live="polite"></span></div>
         </form></div>
       </details>
-      <section class="my-card" aria-labelledby="subscriptionTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">追</span><div><h3 id="subscriptionTitle">關鍵字追蹤</h3><p>只追蹤你真正關心的消息</p></div></div></div><form id="kwForm" class="kw-form"><input id="kwInput" type="text" maxlength="20" placeholder="例如：物理競賽" aria-label="新增訂閱關鍵字"><button type="submit" class="btn-primary">新增</button></form><div id="kwChips" class="kw-chips"></div><div class="notify-row"><button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button><span id="notifyState" class="hint"></span></div></section>
-      <details class="my-card my-disclosure" aria-labelledby="reminderPushTitle"><summary><span class="my-card-icon" aria-hidden="true">鈴</span><span><strong id="reminderPushTitle">提醒推播</strong><small>日期接近時在此裝置提醒</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary><div class="my-card-body"><p class="hint">只有可驗證的截止日、活動、校曆、待辦期限或你手動設定的日期才會排程。</p><div class="notify-row"><button id="reminderPushToggle" class="btn-primary" type="button">在此裝置開啟</button><span id="reminderPushState" class="hint" aria-live="polite">請先登入</span></div><label class="reminder-preset">預設提醒頻率<select id="reminderPreset"><option value="single">單次：1 天前</option><option value="standard">標準：3 天前、1 天前、當天</option><option value="dense">密集：7 天前、3 天前、1 天前、當天</option><option value="custom">自訂</option></select></label><label id="reminderCustomWrap" class="reminder-preset" hidden>自訂提前天數<input id="reminderCustomOffsets" inputmode="numeric" maxlength="32" placeholder="例如：5,2,0"></label><p id="nextReminder" class="hint">尚無已排程提醒</p></div></details>
-      <section id="tasksBox" class="my-card tasks-box" aria-labelledby="tasksTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">辦</span><div><h3 id="tasksTitle">待辦事項</h3><p>未完成的事情集中在這裡</p></div></div><button id="taskComposerToggle" class="btn-primary compact-button" type="button" aria-expanded="false" aria-controls="taskForm">新增待辦</button></div><form id="taskForm" class="task-form task-composer" hidden><label class="task-title-field">要做什麼？<input id="taskTitle" required maxlength="120" placeholder="例如：繳住宿資料"></label><div class="task-form-row"><label>截止日期（選填）<input id="taskDue" type="date"></label><label>優先度（選填）<select id="taskPriority"><option value="">一般</option><option value="5">高</option><option value="3">中</option><option value="1">低</option></select></label></div><label>備註（選填）<textarea id="taskNotes" maxlength="500" rows="2" placeholder="補充資料、地點或注意事項"></textarea></label><div class="profile-actions"><button id="taskSave" class="btn-primary" type="submit">新增待辦</button><button id="taskCancel" class="btn-ghost" type="button">取消</button><span id="taskStatus" class="hint" aria-live="polite"></span></div></form><div class="task-section-heading"><h4>待處理</h4><span id="taskOpenCount" class="hint"></span></div><div id="taskOpenList" class="task-list"></div><details class="completed-tasks"><summary>查看已完成 <span id="taskDoneCount"></span></summary><div id="taskDoneList" class="task-list"></div></details></section>
-      <section class="my-card matched-card" aria-labelledby="matchedTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">訊</span><div><h3 id="matchedTitle">符合追蹤的公告</h3><p>依上方關鍵字即時篩選</p></div></div></div><main id="subList" class="list"></main></section>
+      <section class="my-card full-service-only" aria-labelledby="subscriptionTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">追</span><div><h3 id="subscriptionTitle">關鍵字追蹤</h3><p>只追蹤你真正關心的消息</p></div></div></div><form id="kwForm" class="kw-form"><input id="kwInput" type="text" maxlength="20" placeholder="例如：物理競賽" aria-label="新增訂閱關鍵字"><button type="submit" class="btn-primary">新增</button></form><div id="kwChips" class="kw-chips"></div><div class="notify-row"><button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button><span id="notifyState" class="hint"></span></div></section>
+      <details class="my-card my-disclosure full-service-only" aria-labelledby="reminderPushTitle"><summary><span class="my-card-icon" aria-hidden="true">鈴</span><span><strong id="reminderPushTitle">提醒推播</strong><small>日期接近時在此裝置提醒</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary><div class="my-card-body"><p class="hint">只有可驗證的截止日、活動、校曆、待辦期限或你手動設定的日期才會排程。</p><div class="notify-row"><button id="reminderPushToggle" class="btn-primary" type="button">在此裝置開啟</button><span id="reminderPushState" class="hint" aria-live="polite">請先登入</span></div><label class="reminder-preset">預設提醒頻率<select id="reminderPreset"><option value="single">單次：1 天前</option><option value="standard">標準：3 天前、1 天前、當天</option><option value="dense">密集：7 天前、3 天前、1 天前、當天</option><option value="custom">自訂</option></select></label><label id="reminderCustomWrap" class="reminder-preset" hidden>自訂提前天數<input id="reminderCustomOffsets" inputmode="numeric" maxlength="32" placeholder="例如：5,2,0"></label><p id="nextReminder" class="hint">尚無已排程提醒</p></div></details>
+      <section id="tasksBox" class="my-card tasks-box full-service-only" aria-labelledby="tasksTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">辦</span><div><h3 id="tasksTitle">待辦事項</h3><p>未完成的事情集中在這裡</p></div></div><button id="taskComposerToggle" class="btn-primary compact-button" type="button" aria-expanded="false" aria-controls="taskForm">新增待辦</button></div><form id="taskForm" class="task-form task-composer" hidden><label class="task-title-field">要做什麼？<input id="taskTitle" required maxlength="120" placeholder="例如：繳住宿資料"></label><div class="task-form-row"><label>截止日期（選填）<input id="taskDue" type="date"></label><label>優先度（選填）<select id="taskPriority"><option value="">一般</option><option value="5">高</option><option value="3">中</option><option value="1">低</option></select></label></div><label>備註（選填）<textarea id="taskNotes" maxlength="500" rows="2" placeholder="補充資料、地點或注意事項"></textarea></label><div class="profile-actions"><button id="taskSave" class="btn-primary" type="submit">新增待辦</button><button id="taskCancel" class="btn-ghost" type="button">取消</button><span id="taskStatus" class="hint" aria-live="polite"></span></div></form><div class="task-section-heading"><h4>待處理</h4><span id="taskOpenCount" class="hint"></span></div><div id="taskOpenList" class="task-list"></div><details class="completed-tasks"><summary>查看已完成 <span id="taskDoneCount"></span></summary><div id="taskDoneList" class="task-list"></div></details></section>
+      <section class="my-card matched-card full-service-only" aria-labelledby="matchedTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">訊</span><div><h3 id="matchedTitle">符合追蹤的公告</h3><p>依上方關鍵字即時篩選</p></div></div></div><main id="subList" class="list"></main></section>
     </div>
   </section>
 
   <section id="viewAdmin" class="admin-view" hidden aria-labelledby="adminTitle">
     <div class="section-heading"><div><p class="eyebrow">ADMINISTRATION</p><h2 id="adminTitle">帳號管理</h2></div><button id="adminRefresh" class="btn-ghost" type="button">重新整理</button></div>
-    <p class="assistant-intro">核准已註冊帳號，或移除其網站使用權。</p>
-    <p id="adminStatus" class="hint" role="status" aria-live="polite"></p><div id="adminAccounts" class="admin-accounts"></div>
+    <p class="assistant-intro">搜尋、篩選及調整一般帳號。聯席管理員可處理一般帳號，但只有主要管理員能授予或移除管理員身分。</p>
+    <div id="adminMetrics" class="admin-metrics" aria-label="帳號統計"></div>
+    <form id="adminFilters" class="admin-filters">
+      <label>搜尋帳號<input id="adminSearch" type="search" maxlength="120" placeholder="輸入 Email"></label>
+      <label>申請狀態<select id="adminStatusFilter"><option value="all">全部</option><option value="pending">等待審核</option><option value="approved">已核准</option><option value="rejected">已拒絕／已移除</option></select></label>
+      <label>管理角色<select id="adminRoleFilter"><option value="all">全部</option><option value="owner">主要管理員</option><option value="co_admin">聯席管理員</option><option value="member">一般會員</option></select></label>
+      <label>服務範圍<select id="adminServiceFilter"><option value="all">全部</option><option value="full">完整服務</option><option value="timetable_only">僅課表</option></select></label>
+      <button class="btn-primary" type="submit">套用</button>
+    </form>
+    <p id="adminStatus" class="hint" role="status" aria-live="polite"></p>
+    <div id="adminAccounts" class="admin-accounts"></div>
+    <div class="admin-pagination"><button id="adminPrevious" class="btn-ghost" type="button">上一頁</button><span id="adminPage" class="hint"></span><button id="adminNext" class="btn-ghost" type="button">下一頁</button></div>
   </section>
 
   <footer class="foot">
@@ -250,6 +266,9 @@
     <span>我的</span>
     <em id="subBadge" class="badge" hidden></em>
   </button>
+  <button id="tabTimetable" class="tab">
+    <span class="tab-icon" aria-hidden="true">課</span><span>課表</span>
+  </button>
   <button id="tabAdmin" class="tab" hidden>
     <span class="tab-icon" aria-hidden="true">管</span><span>管理員</span>
   </button>
@@ -257,8 +276,8 @@
 </div>
 
 <script src="account-config.js?v=41"></script>
-<script src="supabase-sync.js?v=54"></script>
-<script src="account-auth.js?v=74"></script>
+<script src="supabase-sync.js?v=55"></script>
+<script src="account-auth.js?v=75"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
@@ -275,7 +294,7 @@
 <script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=74"></script>
+<script src="app.js?v=75"></script>
 </body>
 </html>
 

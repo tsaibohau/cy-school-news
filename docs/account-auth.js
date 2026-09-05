@@ -160,11 +160,25 @@
         if (email) return this.signInWithPassword(email, password);
         return this.signInWithUsername(identifier, password);
       },
-      getAdminAccounts: function () {
-        return getClient().then(function (c) { return c.rpc("admin_list_account_access").then(function (result) { if (result.error) throw result.error; return result.data || []; }); });
+      getAdminAccounts: function (filters) {
+        filters = filters || {};
+        return getClient().then(function (c) { return c.rpc("admin_list_account_access", {
+          search_text: String(filters.search || "").trim().slice(0, 120),
+          status_filter: filters.status || "all",
+          role_filter: filters.role || "all",
+          service_filter: filters.service || "all",
+          page_size: Math.min(100, Math.max(1, Number(filters.limit) || 50)),
+          page_offset: Math.max(0, Number(filters.offset) || 0),
+        }).then(function (result) { if (result.error) throw result.error; return result.data || []; }); });
       },
-      reviewAccount: function (userId, status) {
-        return getClient().then(function (c) { return c.rpc("admin_review_account", { target_user_id: userId, next_status: status }).then(function (result) { if (result.error) throw result.error; }); });
+      updateAccountAccess: function (userId, status, serviceLevel) {
+        return getClient().then(function (c) { return c.rpc("admin_update_account", { target_user_id: userId, next_status: status, next_service_level: serviceLevel }).then(function (result) { if (result.error) throw result.error; }); });
+      },
+      setAdminRole: function (userId, role) {
+        return getClient().then(function (c) { return c.rpc("owner_set_admin_role", { target_user_id: userId, next_role: role }).then(function (result) { if (result.error) throw result.error; }); });
+      },
+      requestAccountAccess: function () {
+        return getClient().then(function (c) { return c.rpc("request_account_access").then(function (result) { if (result.error) throw result.error; return result.data; }); });
       },
       getAccountAccess: function () {
         return getClient().then(function (c) {
