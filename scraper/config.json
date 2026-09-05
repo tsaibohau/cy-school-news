@@ -301,22 +301,19 @@
       ]
     },
     {
-      "id": "fjsh",
-      "name": "嘉義市私立輔仁高級中學",
-      "short": "輔仁",
-      "base": "https://rpage.fjsh.cy.edu.tw",
-      "unit": "1000",
+      "id": "pksh",
+      "name": "國立北港高級中學",
+      "short": "北港高中",
+      "base": "https://www.pksh.ylc.edu.tw",
+      "adapter": "ischool-site-news",
+      "tls_verify_fallback": "system-ca",
+      "max_list_pages": 3,
       "scan_pages": [],
       "list_pages": [
-        {"url": "https://rpage.fjsh.cy.edu.tw/p/403-1000-59-1.php?Lang=zh-tw", "tier": "hot"},
-        {"url": "https://rpage.fjsh.cy.edu.tw/p/403-1000-36-1.php?Lang=zh-tw", "tier": "hot"},
-        {"url": "https://rpage.fjsh.cy.edu.tw/p/403-1000-37-1.php?Lang=zh-tw", "tier": "hot"},
-        {"url": "https://rpage.fjsh.cy.edu.tw/p/403-1000-44-1.php?Lang=zh-tw", "tier": "hot"},
-        "https://rpage.fjsh.cy.edu.tw/p/403-1000-38-1.php?Lang=zh-tw",
-        "https://rpage.fjsh.cy.edu.tw/p/403-1000-39-1.php?Lang=zh-tw",
-        "https://rpage.fjsh.cy.edu.tw/p/403-1000-40-1.php?Lang=zh-tw",
-        "https://rpage.fjsh.cy.edu.tw/p/403-1000-41-1.php?Lang=zh-tw",
-        "https://rpage.fjsh.cy.edu.tw/p/403-1000-42-1.php?Lang=zh-tw"
+        {
+          "url": "https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a",
+          "tier": "hot"
+        }
       ]
     }
   ],

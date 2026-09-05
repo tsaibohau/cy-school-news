@@ -12,11 +12,11 @@ const outputName = path.isAbsolute(configuredOutput) ? path.basename(configuredO
 const output = path.isAbsolute(configuredOutput) ? path.resolve(configuredOutput) : path.join(root, configuredOutput);
 const staging = path.join(root, "tools", "staging");
 const shellInputs = [
-  "index.html", "style.css", "app.js", "detail-ui.js", "sw.js", "account-config.js",
+  "index.html", "legal.html", "legal-compliance.json", "style.css", "app.js", "detail-ui.js", "sw.js", "account-config.js",
   "supabase-sync.js", "account-auth.js", "task-state.js", "account-sync.js",
   "push-subscription.js",
   "reminder-rules.js",
-  "school-registry.js", "profile.js", "relevance.js", "assistant-feedback.js", "today.js", "search-taxonomy.js", "search-query.js", "assistant-qa.js", "calendar-state.js",
+  "school-registry.js", "profile.js", "relevance.js", "assistant-feedback.js", "today.js", "search-taxonomy.js", "search-query.js", "announcement-validity-reviewed.js", "announcement-validity.js", "assistant-qa.js", "calendar-state.js",
   path.join("..", "tools", "staging", "acceptance-user-tasks.js"),
   path.join("..", "tools", "staging", "acceptance-companion.html"),
   path.join("..", "tools", "staging", "staging.css"),
@@ -24,7 +24,7 @@ const shellInputs = [
 const shellRevision = "staging-" + crypto.createHash("sha256")
   .update(shellInputs.map((file) => fs.readFileSync(path.join(source, file))).join("\n"))
   .digest("hex").slice(0, 12);
-const sourceVersions = ["?v=41", "?v=42", "?v=43", "?v=44", "?v=45", "?v=46", "?v=47", "?v=48"];
+const sourceVersions = Array.from({ length: 35 }, (_, index) => "?v=" + (41 + index));
 const stagedVersion = "?v=" + shellRevision;
 
 const isRootOutput = path.dirname(output) === root && /^dist-staging(?:-[A-Za-z0-9._-]+)?$/.test(outputName);
@@ -38,6 +38,7 @@ fs.copyFileSync(path.join(staging, "manifest.webmanifest"), path.join(output, "m
 fs.copyFileSync(path.join(staging, "staging.css"), path.join(output, "staging.css"));
 fs.copyFileSync(path.join(staging, "acceptance-user-tasks.js"), path.join(output, "acceptance-user-tasks.js"));
 fs.copyFileSync(path.join(staging, "acceptance-companion.html"), path.join(output, "acceptance-companion.html"));
+fs.copyFileSync(path.join(staging, "account-config.js"), path.join(output, "account-config.js"));
 
 const indexPath = path.join(output, "index.html");
 let html = fs.readFileSync(indexPath, "utf8");
@@ -61,7 +62,7 @@ fs.writeFileSync(companionPath, companion);
 
 const swPath = path.join(output, "sw.js");
 let sw = fs.readFileSync(swPath, "utf8")
-  .replace('var CACHE = "cy-news-v48";', 'var CACHE = "cy-news-' + shellRevision + '";')
+  .replace(/var CACHE = "cy-news-v[^\"]+";/, 'var CACHE = "cy-news-' + shellRevision + '";')
   .replace('"./manifest.webmanifest"', '"./manifest-staging.webmanifest", "./staging.css?v=' + shellRevision + '", "./acceptance-user-tasks.js?v=' + shellRevision + '", "./acceptance-companion.html?v=' + shellRevision + '"')
   .replace('  // 殼層:快取優先', '  /* A new staging deployment must never combine an old HTML shell with new JavaScript. */\n  if (req.mode === "navigate") {\n    e.respondWith(fetch(req).catch(function () { return caches.match("./index.html"); }));\n    return;\n  }\n  // 殼層:快取優先');
 sourceVersions.forEach((sourceVersion) => { sw = sw.replaceAll(sourceVersion, stagedVersion); });
@@ -69,7 +70,7 @@ if (!sw.includes('var CACHE = "cy-news-' + shellRevision + '"') || !sw.includes(
 fs.writeFileSync(swPath, sw);
 
 const config = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
-if (!config.includes("https://cy-school-news-staging.vercel.app/")) throw new Error("staging URL is absent from account allow-list");
+if (!config.includes("https://ebezqanvmgsgtatsbssn.supabase.co") || config.includes("https://oppdhtnepjagdwovndra.supabase.co")) throw new Error("staging Auth backend isolation failed");
 if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境") || sourceVersions.some((sourceVersion) => html.includes(sourceVersion))) throw new Error("staging markers or coherent shell revision were not injected");
 console.log("Staging artifact built with noindex, coherent " + shellRevision + " shell and acceptance harness");
 

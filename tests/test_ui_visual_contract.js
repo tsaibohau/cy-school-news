@@ -12,17 +12,34 @@ assert.match(index, /id="refreshState"[^>]*role="status"[^>]*aria-live="polite"/
 assert.match(app, /正在取得雲端已發布資料/);
 assert.match(app, /同步完成；雲端尚未發布新版本/);
 assert.match(app, /目前顯示離線快取，未取得雲端新資料/);
-assert.match(style, /\.brand h1 \{ font-family: var\(--serif\)/, "editorial typography is scoped to headings, not body copy");
+assert.match(style, /--sans: var\(--serif\)/, "one readable serif family is used across the interface");
 assert.match(style, /#btnRefresh\.is-refreshing svg/);
 assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion preference remains respected");
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
-assert.match(index, /style\.css\?v=41/);
-assert.match(index, /search-taxonomy\.js\?v=48/, "search taxonomy loads before the query parser");
-assert.match(index, /search-query\.js\?v=48/, "semantic search terms load before the application");
-assert.match(index, /app\.js\?v=48/);
+assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
+assert.match(index, /style\.css\?v=75/);
+assert.match(index, /search-taxonomy\.js\?v=52/, "search taxonomy loads before the query parser");
+assert.match(index, /search-query\.js\?v=52/, "semantic search terms load before the application");
+assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=53/, "reviewed validity loads before answers");
+const appVersion = index.match(/src="app\.js\?v=(\d+)"/);
+assert.ok(appVersion, "application script has a numeric cache version");
+const serviceWorker = fs.readFileSync(path.join(root, "docs", "sw.js"), "utf8");
+assert.ok(serviceWorker.includes("./app.js?v=" + appVersion[1] + '"'),
+  "the HTML and Service Worker cache refer to the same application version");
+assert.match(index, /id="appLoading"[^>]*role="status"/, "initial data loading is announced accessibly");
+assert.match(style, /\.app-loading/, "initial data loading has a dedicated view");
+assert.doesNotMatch(style, /--calligraphy:/, "the interface does not mix a second display font into reading UI");
+assert.match(app, /finishInitialLoading/, "the loading view closes after initial data work");
+assert.doesNotMatch(index, /不會猜/, "assistant copy is direct rather than defensive");
+assert.match(app, /資料說明/, "assistant keeps limitations available without interrupting the answer");
+assert.match(app, /官方來源（/, "assistant answers use a source panel template");
+assert.match(app, /為什麼這樣回答/, "assistant evidence is available without interrupting the answer");
+assert.match(app, /searchTimer = setTimeout[\s\S]*200\);/, "full-corpus ranking is debounced while the user types");
 assert.match(index, /id="navMenuToggle"[^>]*aria-expanded="false"[^>]*aria-controls="navMenu"/, "mobile navigation is exposed through one accessible menu button");
 assert.match(index, /id="navMenu"[^>]*hidden/, "function menu starts closed");
+assert.match(index, /id="tabAdmin"[^>]*hidden/, "administrator tab starts hidden");
+assert.match(style, /\.tab\[hidden\]\s*\{\s*display:\s*none;/, "hidden navigation tabs must override the tab display layout");
 assert.match(index, /id="navCurrentLabel">選單</);
 assert.match(index, /id="viewHome"[^>]*aria-labelledby="homeTitle"/);
 assert.match(index, /id="homeTitle"[^>]*class="calligraphy-title"[^>]*>.*學校公告.*匯集系統/s);
@@ -38,5 +55,63 @@ assert.match(index, /id="assistantScope"/, "school assistant exposes an explicit
 assert.match(app, /mentionedSchool\(question\)/, "a school named in the question overrides the default scope");
 assert.match(app, /applyPreferredSchool\(state\.profile\.school_id/, "the account school becomes the default data shard");
 assert.match(style, /\.function-dock/, "single-button function menu has a dedicated responsive layout");
+assert.match(index, /id="todayTimetable"/, "today view includes a class timetable region");
+assert.match(index, /我的班級（查看課表需要）/, "profile explains when a class is needed");
+assert.match(app, /data\/class-timetables\.json/, "today view loads the generated public timetable data");
+assert.match(app, /officialTimetableUrl/, "timetable source links are constrained to the official school origin");
+assert.match(style, /\.timetable-week/, "weekly timetable has a dedicated responsive layout");
+assert.match(index, /先查公告，不必登入/, "anonymous visitors are told that browsing does not require an account");
+assert.match(index, /id="publicAccessTitle"/, "account state has a dedicated, accessible heading");
+assert.match(app, /帳號已建立，正在等待核准/, "pending accounts receive a clear status and next step");
+assert.match(index, /基本資料[\s\S]*讓內容更符合我/, "profile fields are progressively disclosed into essential and optional groups");
+assert.match(index, /今天先做什麼/, "home actions use task-oriented language");
+assert.match(app, /classList\.toggle\("btn-primary", signup \|\| reset\)/, "the current authentication action has clear visual priority");
 
 console.log("Editorial UI and honest refresh status contract tests passed");
+
+// Exercise the actual account-shell transitions with a deterministic clock.
+{
+  const vm = require("vm");
+  const source = fs.readFileSync(path.join(__dirname, "../docs/app.js"), "utf8");
+  const timers = new Map();
+  let clock = 0, nextId = 0;
+  const card = { hidden: false, dataset: {}, classList: new Set() };
+  card.classList.remove = card.classList.delete.bind(card.classList);
+  const el = { publicAccountEntry: card };
+  for (const key of ["functionDock", "publicAccountLogin", "publicAccountSignUp", "publicAccountLogout", "publicAccessTitle", "publicAccessLead", "publicAccessStatus", "tabAdmin"]) el[key] = {};
+  const state = { accountUser: { id: "user-a" }, tab: "latest" };
+  const context = vm.createContext({ el, state, setNavMenu() {}, switchTab() {},
+    setTimeout(fn, delay) { const id = ++nextId; timers.set(id, { fn, at: clock + delay }); return id; },
+    clearTimeout(id) { timers.delete(id); }
+  });
+  vm.runInContext(source.slice(source.indexOf("      var welcomeUid ="), source.indexOf("      function setAccountUser")), context);
+  function advance(ms) {
+    const end = clock + ms;
+    while (true) {
+      const entry = [...timers].sort((a, b) => a[1].at - b[1].at)[0];
+      if (!entry || entry[1].at > end) break;
+      clock = entry[1].at; timers.delete(entry[0]); entry[1].fn();
+    }
+    clock = end;
+  }
+  context.showAnonymousShell();
+  context.showAccountShell();
+  assert.equal(el.publicAccountLogin.hidden, true);
+  assert.equal(el.publicAccountSignUp.hidden, true);
+  assert.match(el.publicAccessStatus.textContent, /登入成功/);
+  advance(1999); assert.equal(card.hidden, false);
+  advance(1); assert.equal(card.classList.has("is-leaving"), true);
+  advance(600); assert.equal(card.hidden, true);
+  context.showAccountShell(); assert.equal(card.hidden, true, "session refresh must not replay welcome");
+  context.showAnonymousShell(); context.showAccountShell(); advance(2100);
+  context.showAnonymousShell(); advance(1000);
+  assert.equal(card.hidden, false, "old fade must not hide the signed-out guest card");
+  assert.equal(el.publicAccountLogin.hidden, false);
+  assert.equal(card.classList.has("is-leaving"), false);
+  context.showAccountShell(); context.showPendingAccountShell("等待核准"); advance(3000);
+  assert.equal(card.hidden, false, "pending status stays visible");
+  assert.equal(el.publicAccountLogout.hidden, false);
+  assert.equal(card.dataset.state, "pending");
+  const cssSource = fs.readFileSync(path.join(__dirname, "../docs/style.css"), "utf8");
+  assert.match(cssSource, /\.access-card\[hidden\]\s*\{\s*display:\s*none/);
+}

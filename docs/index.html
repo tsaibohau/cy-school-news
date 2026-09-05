@@ -11,10 +11,16 @@
 <link rel="apple-touch-icon" href="icons/icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=41">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=75">
 </head>
 <body>
+
+<div id="appLoading" class="app-loading" role="status" aria-live="polite" aria-label="正在載入嘉校快訊">
+  <span class="app-loading-seal" aria-hidden="true">訊</span>
+  <strong>嘉校快訊</strong>
+  <span>正在整理最新公告</span>
+</div>
 
 <header class="mast">
   <div class="wrap">
@@ -34,20 +40,20 @@
 
 <div class="wrap">
 
-  <section id="viewHome" class="home-view" aria-labelledby="homeTitle">
+  <section id="viewHome" class="home-view" hidden aria-labelledby="homeTitle">
     <div class="home-hero">
       <p class="eyebrow">CY SCHOOL NEWS</p>
       <h2 id="homeTitle" class="calligraphy-title"><span>學校公告</span><span>匯集系統</span></h2>
       <p id="welcomeTitle" class="home-greeting">今天的校務資訊，從這裡開始。</p>
-      <p class="welcome-copy">選一個功能；登入後會優先顯示你設定的學校。</p>
+      <p class="welcome-copy">先處理今天最重要的事；其他功能隨時都找得到。</p>
       <span class="ink-stroke" aria-hidden="true"></span>
     </div>
     <div class="home-actions" aria-label="選擇功能">
-      <button type="button" class="home-action home-action-primary" data-home-tab="today"><span aria-hidden="true">✦</span><strong>我的今天</strong><small>待辦、期限與重要事項</small></button>
-      <button type="button" class="home-action" data-home-tab="latest"><span aria-hidden="true">文</span><strong>公告總庫</strong><small>瀏覽與搜尋學校公告</small></button>
-      <button type="button" class="home-action" data-home-tab="assistant"><span aria-hidden="true">問</span><strong>問校務</strong><small>依官方內容整理答案</small></button>
-      <button id="quickCalendar" type="button" class="home-action" data-home-tab="calendar"><span aria-hidden="true">曆</span><strong>行事曆</strong><small>查看日期與自己的事件</small></button>
-      <button type="button" class="home-action" data-home-tab="sub"><span aria-hidden="true">我</span><strong>我的</strong><small>帳號、偏好、通知與待辦</small></button>
+      <button type="button" class="home-action home-action-primary" data-home-tab="today"><span aria-hidden="true">✦</span><strong>今天先做什麼</strong><small>看待辦、期限與重要事項</small></button>
+      <button type="button" class="home-action" data-home-tab="latest"><span aria-hidden="true">文</span><strong>搜尋公告</strong><small>從三校公告中找到資訊</small></button>
+      <button type="button" class="home-action" data-home-tab="assistant"><span aria-hidden="true">問</span><strong>直接問校務</strong><small>依官方內容整理答案</small></button>
+      <button id="quickCalendar" type="button" class="home-action" data-home-tab="calendar"><span aria-hidden="true">曆</span><strong>看行事曆</strong><small>查看日期與自己的事件</small></button>
+      <button type="button" class="home-action" data-home-tab="sub"><span aria-hidden="true">我</span><strong>調整我的設定</strong><small>管理帳號、通知與待辦</small></button>
     </div>
     <section id="importantSection" class="important-section" aria-labelledby="importantTitle">
       <div class="section-heading compact-heading"><div><p class="eyebrow">FROM THE SOURCE</p><h2 id="importantTitle">重要公告</h2></div><span class="hint">僅顯示來源明確標記</span></div>
@@ -58,7 +64,7 @@
   <!-- 免費、可追溯的校務資料問答；只整理官方公告，不呼叫生成式 AI。 -->
   <section id="viewAssistant" class="assistant-view" hidden aria-labelledby="assistantTitle">
     <div class="section-heading"><div><p class="eyebrow">ASK SCHOOL DATA</p><h2 id="assistantTitle">問校務</h2></div><span class="hint">免費・依官方資料回答</span></div>
-    <p class="assistant-intro">可以問公告、截止日、報名方式、活動地點或規定。答案會附上依據；資料不足時不會猜。</p>
+    <p class="assistant-intro">查詢公告、截止日、報名方式、活動地點或規定；每一則答覆都附上來源。</p>
     <form id="assistantForm" class="assistant-form">
       <label for="assistantQuestion">想問什麼？</label>
       <div class="assistant-input-row"><input id="assistantQuestion" type="search" required maxlength="160" placeholder="例如：學生音樂比賽什麼時候截止？"><button id="assistantAsk" class="btn-primary" type="submit">整理答案</button></div>
@@ -81,6 +87,10 @@
       <div class="section-heading compact-heading"><div><p class="eyebrow">DAILY BRIEF</p><h3 id="todayBriefTitle">今天先做什麼</h3></div><span id="todayBriefSummary" class="hint"></span></div>
       <div id="todayFocus" class="today-focus"></div>
     </section>
+    <section id="todayTimetableSection" class="today-section" aria-labelledby="todayTimetableTitle">
+      <div class="section-heading compact-heading"><div><p class="eyebrow">CLASS TIMETABLE</p><h3 id="todayTimetableTitle">今天課表</h3></div></div>
+      <div id="todayTimetable" class="today-list"></div>
+    </section>
     <section class="today-section"><h3>今天</h3><div id="todayEvents" class="today-list"></div></section>
     <section class="today-section"><h3>即將到期</h3><div id="todayDeadlines" class="today-list"></div></section>
     <section class="today-section"><h3>待辦</h3><div id="todayTasks" class="today-list"></div></section>
@@ -94,8 +104,13 @@
   </section>
 
   <!-- 公告首頁 -->
-  <section id="viewLatest" hidden>
+  <section id="viewLatest">
     <div class="section-heading"><div><p class="eyebrow">ANNOUNCEMENTS</p><h2>公告總庫</h2></div></div>
+    <section id="publicAccountEntry" class="access-card" aria-labelledby="publicAccessTitle">
+      <span class="access-icon" aria-hidden="true">查</span>
+      <div class="access-copy"><h3 id="publicAccessTitle">先查公告，不必登入</h3><p id="publicAccessLead">想使用課表、待辦、問校務或通知時，再建立帳號就好。</p><p id="publicAccessStatus" role="status" aria-live="polite"></p></div>
+      <div class="access-actions"><button id="publicAccountLogin" class="btn-primary" type="button">登入</button><button id="publicAccountSignUp" class="btn-ghost" type="button">建立帳號</button><button id="publicAccountLogout" class="btn-ghost" type="button" hidden>登出</button></div>
+    </section>
     <div class="controls">
       <input id="q" type="search" inputmode="search" placeholder="搜尋公告,可用空格分隔多個關鍵字" aria-label="搜尋公告">
       <label class="school-filter" for="schoolFilter">
@@ -141,12 +156,12 @@
       <div class="section-heading"><div><p class="eyebrow">PERSONAL SPACE</p><h2>我的</h2></div></div>
       <section class="my-card account-card" aria-labelledby="accountTitle">
         <div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">人</span><div><h3 id="accountTitle">帳號</h3><p>同步你的學校、偏好與待辦</p></div></div></div>
-        <div id="accountBox" class="account-actions"><div class="account-identity"><span id="accountState" class="hint">未登入</span><span id="accountEmail" class="account-email" hidden></span></div><button id="accountLogin" class="btn-primary">使用 Google 登入</button><button id="accountSwitch" class="btn-ghost" hidden>切換 Google 帳號</button><button id="accountLogout" class="btn-ghost" hidden>登出</button></div>
+        <div id="accountBox" class="account-actions"><div class="account-identity"><span id="accountState" class="hint">未登入</span><span id="accountEmail" class="account-email" hidden></span></div><button id="accountLogin" class="btn-primary">登入或註冊</button><button id="accountSwitch" class="btn-ghost" hidden>切換 Google 帳號</button><button id="accountLogout" class="btn-ghost" hidden>登出</button><button id="accountDeleteCloud" class="btn-ghost danger-button" type="button" hidden>刪除已同步資料</button></div>
       </section>
       <details id="profileBox" class="my-card my-disclosure" aria-labelledby="profileTitle">
         <summary><span class="my-card-icon" aria-hidden="true">設</span><span><strong id="profileTitle">個人設定</strong><small>暱稱、學校、年級與關注內容</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary>
-        <div class="my-card-body"><p id="profileHint" class="hint">登入後設定暱稱、學校與年級，讓介面和公告排序更貼近你。</p><form id="profileForm" class="profile-form">
-          <label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109（選填）"></label><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團（選填）"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金（選填）"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課（選填）"></label><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存我的資料</button><span id="profileStatus" class="hint" aria-live="polite"></span></div><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label>
+        <div class="my-card-body"><p id="profileHint" class="hint">先完成基本資料即可；想讓排序和通知更精準時，再補充選填內容。</p><form id="profileForm" class="profile-form">
+          <fieldset><legend>基本資料</legend><p class="field-help">約 20 秒完成</p><label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級（查看課表需要）<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109"></label></fieldset><fieldset><legend>讓內容更符合我 <span>（選填）</span></legend><p class="field-help">稍後再設定也不影響基本功能</p><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課"></label><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知 <span class="hint">只提醒與你的學校、年級或關注內容有明確關聯的新公告</span></label></fieldset><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存設定</button><span id="profileStatus" class="hint" aria-live="polite"></span></div>
         </form></div>
       </details>
       <section class="my-card" aria-labelledby="subscriptionTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">追</span><div><h3 id="subscriptionTitle">關鍵字追蹤</h3><p>只追蹤你真正關心的消息</p></div></div></div><form id="kwForm" class="kw-form"><input id="kwInput" type="text" maxlength="20" placeholder="例如：物理競賽" aria-label="新增訂閱關鍵字"><button type="submit" class="btn-primary">新增</button></form><div id="kwChips" class="kw-chips"></div><div class="notify-row"><button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button><span id="notifyState" class="hint"></span></div></section>
@@ -156,11 +171,18 @@
     </div>
   </section>
 
+  <section id="viewAdmin" class="admin-view" hidden aria-labelledby="adminTitle">
+    <div class="section-heading"><div><p class="eyebrow">ADMINISTRATION</p><h2 id="adminTitle">帳號管理</h2></div><button id="adminRefresh" class="btn-ghost" type="button">重新整理</button></div>
+    <p class="assistant-intro">核准已註冊帳號，或移除其網站使用權。</p>
+    <p id="adminStatus" class="hint" role="status" aria-live="polite"></p><div id="adminAccounts" class="admin-accounts"></div>
+  </section>
+
   <footer class="foot">
-    <p>資料來源:<a href="https://www.cysh.cy.edu.tw/" target="_blank" rel="noopener">嘉義高中</a>、<a href="https://www.cygsh.cy.edu.tw/" target="_blank" rel="noopener">嘉義女中</a>、<a href="https://www.pksh.ylc.edu.tw/" target="_blank" rel="noopener">北港高中</a>官方網站,每日自動更新數次。</p>
+    <p>資料來源:<a href="https://www.cysh.cy.edu.tw/" target="_blank" rel="noopener">嘉義高中</a>、<a href="https://www.cygsh.cy.edu.tw/" target="_blank" rel="noopener">嘉義女中</a>、<a href="https://rpage.fjsh.cy.edu.tw/" target="_blank" rel="noopener">輔仁高中</a>官方網站,每日自動更新數次。</p>
     <p><a href="calendar.ics">📅 訂閱行事曆</a>(開學、段考、模擬考等重要日程,可加入 iPhone/Google 行事曆)</p>
     <p>資料涵蓋:開站即載入最近一年公告;更早的歷史公告(回溯至 2024 年)會在搜尋或分類瀏覽時自動載入。</p>
     <p>本站為個人非官方服務,內容以各校官網為準。</p>
+    <p><a href="legal.html">資料、隱私與權利說明</a></p>
   </footer>
 </div>
 
@@ -171,10 +193,34 @@
   </div>
 </dialog>
 
+<dialog id="passwordAuthDialog" class="nickname-dialog" aria-labelledby="passwordAuthTitle">
+  <form id="passwordAuthForm" class="nickname-sheet">
+    <p class="eyebrow">ACCOUNT</p><h2 id="passwordAuthTitle">登入嘉校快訊</h2>
+    <p id="passwordAuthHint" class="hint">請輸入 Email 或帳號名稱與密碼。</p>
+    <label>登入 Email 或帳號名稱<input id="passwordAuthUsername" required maxlength="254" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="例如：name@example.com 或 hau_115"></label>
+    <label id="passwordAuthEmailField" hidden>救援 Email<input id="passwordAuthEmail" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="name@example.com" disabled></label>
+    <label>密碼<input id="passwordAuthPassword" type="password" required minlength="6" maxlength="72" autocomplete="current-password" placeholder="至少 6 個字元"></label>
+    <div class="profile-actions"><button id="passwordSignIn" class="btn-primary" type="submit">登入</button><button id="passwordSignUp" class="btn-ghost" type="button">註冊</button><button id="passwordResetRequest" class="btn-ghost" type="button">重設密碼</button><button id="passwordAuthBack" class="btn-ghost" type="button" hidden>返回登入</button><button id="passwordAuthCancel" class="btn-ghost" type="button">取消</button></div>
+    <button id="passwordGoogleLogin" class="btn-ghost" type="button">改用 Google 登入</button>
+    <p id="passwordAuthStatus" class="hint" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+<dialog id="passwordRecoveryDialog" class="nickname-dialog" aria-labelledby="passwordRecoveryTitle">
+  <form id="passwordRecoveryForm" class="nickname-sheet">
+    <p class="eyebrow">PASSWORD</p><h2 id="passwordRecoveryTitle">設定新密碼</h2>
+    <p class="hint">請設定至少 6 個字元的新密碼。</p>
+    <label>新密碼<input id="passwordRecoveryPassword" type="password" required minlength="6" maxlength="72" autocomplete="new-password"></label>
+    <label>確認新密碼<input id="passwordRecoveryConfirm" type="password" required minlength="6" maxlength="72" autocomplete="new-password"></label>
+    <div class="profile-actions"><button class="btn-primary" type="submit">更新密碼</button><button id="passwordRecoveryCancel" class="btn-ghost" type="button">取消</button></div>
+    <p id="passwordRecoveryStatus" class="hint" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
 <dialog id="nicknameDialog" class="nickname-dialog" aria-labelledby="nicknameTitle">
   <form id="nicknameForm" class="nickname-sheet">
-    <p class="eyebrow">WELCOME</p><h2 id="nicknameTitle">先完成你的校務設定</h2>
-    <p class="hint">之後首頁只顯示你關心的學校；暱稱與學校都能在「我的設定」修改。</p>
+    <p class="eyebrow">QUICK SETUP・約 20 秒</p><h2 id="nicknameTitle">讓首頁先認識你</h2>
+    <p class="hint">只設定暱稱與學校就能開始；年級、班級和通知都可以稍後再調整。</p>
     <label>暱稱<input id="nicknameInput" required maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label>
     <label>我關心的學校<select id="nicknameSchool" required><option value="">請選擇學校</option></select></label>
     <div class="profile-actions"><button class="btn-primary" type="submit">儲存並開始</button><button id="nicknameLater" class="btn-ghost" type="button">稍後設定</button></div>
@@ -182,7 +228,7 @@
   </form>
 </dialog>
 
-<div class="function-dock">
+<div id="functionDock" class="function-dock" hidden>
 <button id="navMenuToggle" class="function-toggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="開啟功能選單"><span aria-hidden="true">＋</span><strong id="navCurrentLabel">選單</strong></button>
 <nav id="navMenu" class="tabbar" aria-label="主要功能" hidden>
   <button id="tabHome" class="tab is-active" aria-current="page"><span class="tab-icon" aria-hidden="true">首</span><span>主畫面</span></button>
@@ -204,27 +250,32 @@
     <span>我的</span>
     <em id="subBadge" class="badge" hidden></em>
   </button>
+  <button id="tabAdmin" class="tab" hidden>
+    <span class="tab-icon" aria-hidden="true">管</span><span>管理員</span>
+  </button>
 </nav>
 </div>
 
 <script src="account-config.js?v=41"></script>
-<script src="supabase-sync.js?v=41"></script>
-<script src="account-auth.js?v=41"></script>
+<script src="supabase-sync.js?v=54"></script>
+<script src="account-auth.js?v=74"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
-<script src="account-sync.js?v=41"></script>
+<script src="account-sync.js?v=54"></script>
 <script src="school-registry.js?v=41"></script>
 <script src="profile.js?v=41"></script>
 <script src="relevance.js?v=41"></script>
 <script src="assistant-feedback.js?v=41"></script>
 <script src="today.js?v=41"></script>
-<script src="search-taxonomy.js?v=48"></script>
-<script src="search-query.js?v=48"></script>
-<script src="assistant-qa.js?v=48"></script>
+<script src="search-taxonomy.js?v=52"></script>
+<script src="search-query.js?v=52"></script>
+<script src="announcement-validity-reviewed.js?v=52"></script>
+<script src="announcement-validity.js?v=52"></script>
+<script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=48"></script>
+<script src="app.js?v=74"></script>
 </body>
 </html>
 

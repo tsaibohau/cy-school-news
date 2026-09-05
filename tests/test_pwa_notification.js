@@ -310,7 +310,7 @@ async function testTabDoesNotResetDedupe() {
   assert.equal(notification.calls.length, 1);
   appRun.document.elements.tabSub.emit("click");
   const afterTab = storage.getItem("cyNews.lastSeen");
-  assert.ok(afterTab, "subscription tab may advance UI lastSeen");
+  assert.equal(afterTab, null, "anonymous users stay in the announcement archive instead of opening subscriptions");
   await appRun.app.fetchData();
   assert.equal(notification.calls.length, 1, "tab switching must not reset notification dedupe");
 }
@@ -446,6 +446,7 @@ async function testTopicFirstSearchExcludesBodyOnlyMatches() {
   const appRun = await createApp({ storage: new MemoryStorage(), responses: [response(dataOf([admission, dorm]))], notification: makeNotification() });
   appRun.document.elements.q.value = "宿舍申請";
   appRun.document.elements.q.emit("input");
+  await new Promise((resolve) => setTimeout(resolve, 250));
   assert.match(appRun.document.elements.list.innerHTML, /學生宿舍申請作業/, "a title-level dormitory match remains visible");
   assert.doesNotMatch(appRun.document.elements.list.innerHTML, /大學申請入學說明/, "a body-only dormitory mention cannot pollute the result");
 }
@@ -683,7 +684,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v48/);
+  assert.match(swSource, /cy-news-v75/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
@@ -702,6 +703,9 @@ function testServiceWorkerContract() {
   assert.match(swSource, /\.\/account-sync\.js/);
   assert.match(swSource, /\.\/task-state\.js/);
   assert.match(swSource, /\.\/today\.js/);
+  assert.match(swSource, /\.\/data\/class-timetables\.json/, "PWA shell includes the public class timetable snapshot");
+  assert.match(swSource, /\.\/announcement-validity-reviewed\.js\?v=52/, "PWA caches reviewed validity records");
+  assert.match(swSource, /\.\/announcement-validity\.js\?v=52/, "PWA caches the validity module with the same shell revision");
   assert.match(swSource, /searchParams\.has\("code"\)/);
   assert.match(swSource, /searchParams\.has\("access_token"\)/);
   assert.match(swSource, /searchParams\.has\("refresh_token"\)/);

@@ -12,6 +12,7 @@
   CONFLICT_TARGETS[TABLES.reads] = "user_id,announcement_id";
   CONFLICT_TARGETS[TABLES.preferences] = "user_id";
   CONFLICT_TARGETS[TABLES.tasks] = "id";
+  var TABLES_ORDER = [TABLES.subscriptions, TABLES.reads, TABLES.preferences, TABLES.tasks];
   function requireUid(session) {
     var uid = session && session.user && session.user.id;
     if (typeof uid !== "string" || !uid.trim()) throw new Error("verified session user id required");
@@ -113,6 +114,22 @@
           ]);
         }.bind(this));
       },
+      deleteOwnData: function () {
+        return sessionUid(client).then(function (uid) {
+          assertCurrent(options, uid);
+          return TABLES_ORDER.reduce(function (chain, table) {
+            return chain.then(function (deleted) {
+              assertCurrent(options, uid);
+              return client.from(table).delete().eq("user_id", uid).then(function (result) {
+                assertCurrent(options, uid);
+                rows(result);
+                deleted.push(table);
+                return deleted;
+              });
+            });
+          }, Promise.resolve([]));
+        });
+      },
       sendMutation: function (mutation) {
         return sessionUid(client).then(function (uid) {
           if (!mutation || mutation.account_id !== uid) throw new Error("mutation/session identity changed");
@@ -153,5 +170,5 @@
       },
     };
   }
-  return { TABLES: TABLES, CONFLICT_TARGETS: CONFLICT_TARGETS, requireUid: requireUid, sessionUid: sessionUid, createAdapter: createAdapter };
+  return { TABLES: TABLES, TABLES_ORDER: TABLES_ORDER, CONFLICT_TARGETS: CONFLICT_TARGETS, requireUid: requireUid, sessionUid: sessionUid, createAdapter: createAdapter };
 });
