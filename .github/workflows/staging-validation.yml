@@ -2,7 +2,7 @@ name: Staging validation
 
 on:
   push:
-    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/integrated-v11, codex/account-roles-email]
+    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/integrated-v11, codex/account-roles-email, codex/pksh-windows-research-v12]
   workflow_dispatch: {}
 
 permissions:
@@ -112,6 +112,8 @@ jobs:
           python tests/test_detail_backfill.py
           python tests/test_attachment_parser.py
           python tests/test_reminder_targets.py
+          python tests/test_pksh_adapter.py
+          python tests/test_pksh_windows_handoff.py
       - name: Verify generated data is untouched by staging build
         run: git diff --exit-code -- docs/data scraper/fetch_state.json
       - name: Reject tracked secret patterns
@@ -120,3 +122,41 @@ jobs:
             echo "Potential tracked secret detected"
             exit 1
           fi
+
+  pksh-windows-live:
+    if: github.ref == 'refs/heads/codex/pksh-windows-research-v12'
+    runs-on: windows-latest
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install parser dependencies
+        run: pip install -r scraper/requirements.txt
+      - name: Verify offline PKSH contracts
+        run: |
+          python tests/test_pksh_adapter.py
+          python tests/test_pksh_windows_handoff.py
+      - name: Fetch PKSH with Windows certificate validation
+        shell: pwsh
+        run: >-
+          ./scraper/pksh_windows_fetch.ps1
+          -OutputPath "$env:RUNNER_TEMP/pksh-list.html"
+          -ReportPath "$env:RUNNER_TEMP/pksh-transport.json"
+      - name: Produce metadata-only handoff
+        shell: pwsh
+        run: >-
+          python tools/pksh_snapshot.py
+          --html "$env:RUNNER_TEMP/pksh-list.html"
+          --output "$env:RUNNER_TEMP/pksh-metadata.json"
+      - name: Upload bounded research evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: pksh-windows-research-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/pksh-transport.json
+            ${{ runner.temp }}/pksh-metadata.json
+          retention-days: 7
