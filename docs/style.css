@@ -431,6 +431,7 @@ body { background: var(--paper); }
 .nickname-sheet { padding: 22px; }
 .nickname-sheet h2 { margin: 4px 0 8px; font-family: var(--serif); }
 .nickname-sheet label { display: grid; gap: 6px; margin: 16px 0 10px; color: var(--muted); font-size: 13px; }
+.nickname-sheet label[hidden] { display: none !important; }
 .nickname-sheet input { width: 100%; border: 1px solid var(--line); border-radius: 11px; padding: 10px 11px; font: inherit; color: var(--ink); background: var(--paper); }
 #passwordGoogleLogin { margin-top: 12px; }
 @media (min-width: 760px) {

@@ -122,6 +122,17 @@ const unlistedVercel = Auth.createController({
   location: { href: "https://cy-school-news-staging-git-work.example.vercel.app/" },
 });
 assert.equal(unlistedVercel.getApprovedRedirectTo(), null, "per-commit preview domains are not OAuth allow-listed");
+const knownPreview = Auth.createController({
+  client,
+  config: {
+    supabaseUrl: "x", supabaseAnonKey: "y", stagingRedirectUrl: staging,
+    allowedRedirectUrls: [staging],
+    previewHostnamePrefix: "cy-school-news-staging-git-",
+    previewHostnameSuffix: "-tsaibohau-9644s-projects.vercel.app",
+  },
+  location: { href: "https://cy-school-news-staging-git-codex-account-roles-e-f19678-tsaibohau-9644s-projects.vercel.app/" },
+});
+assert.equal(knownPreview.getApprovedRedirectTo(), staging, "known Preview hosts return recovery links to the fixed staging site");
 assert.equal(typeof controller.getVerifiedSession, "function");
 assert.equal(controller.sendMagicLink, undefined, "Magic Link is deferred and cannot bypass redirect allowlist");
 
@@ -176,7 +187,10 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert.deepEqual(passwordSignInRequest, { email: "student@example.test", password: "0123456789ab" });
   await controller.resetPasswordForEmail("Student@Example.TEST");
   assert.deepEqual(passwordResetRequest, { email: "student@example.test", options: { redirectTo: localhost } });
-  await assert.rejects(controller.resetPasswordForEmail("bad"), /invalid/);
+  await assert.rejects(controller.resetPasswordForEmail("bad"), error => error.code === "invalid_email");
+  await knownPreview.resetPasswordForEmail("student@example.test");
+  assert.deepEqual(passwordResetRequest, { email: "student@example.test", options: { redirectTo: staging } });
+  await assert.rejects(unlistedVercel.resetPasswordForEmail("student@example.test"), error => error.code === "redirect_not_allowed");
   await controller.updatePassword("0123456789ab");
   assert.deepEqual(userUpdateRequest, { password: "0123456789ab" });
   await assert.rejects(controller.updatePassword("short"), /invalid/);
@@ -244,15 +258,16 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   const index = fs.readFileSync(path.join(__dirname, "..", "docs", "index.html"), "utf8");
   const sw = fs.readFileSync(path.join(__dirname, "..", "docs", "sw.js"), "utf8");
   const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
+  const css = fs.readFileSync(path.join(__dirname, "..", "docs", "style.css"), "utf8");
   assert(index.includes("登入或註冊"));
   assert(index.includes('id="passwordAuthDialog"'));
   assert(index.includes('autocomplete="current-password"'));
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=76"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=77"'), "index must load current app shell");
+  assert(index.includes('src="account-auth.js?v=77"'), "index must load current account auth");
+  assert(index.includes('src="app.js?v=78"'), "index must load current app shell");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
-  assert(sw.includes('"./account-auth.js?v=76"'), "Service Worker shell must cache current account auth");
+  assert(sw.includes('"./account-auth.js?v=77"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
   assert(app.includes('"登入信箱：" + email'));
   assert(!app.includes("sendMagicLink"));
@@ -266,8 +281,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v78"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=77")'), "App must register the current Service Worker script");
+  assert(sw.includes("cy-news-v79"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=78")'), "App must register the current Service Worker script");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   assert(app.includes("signUpWithPassword"));
@@ -298,6 +313,9 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes('tab !== "latest" && !hasSignedInAccount()'));
   assert(app.includes("setPasswordAuthMode"));
   assert(app.includes("resetPasswordForEmail"));
+  assert(app.includes("這個網址尚未開放寄送重設信"));
+  assert(app.includes("請輸入有效的救援 Email"));
+  assert(css.includes(".nickname-sheet label[hidden] { display: none !important; }"));
   assert(app.includes("updatePassword"));
   assert(!app.includes("passwordAuthPassword.value = password"));
   console.log("OAuth and password account auth tests passed");

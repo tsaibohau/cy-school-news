@@ -95,7 +95,21 @@
     });
     var current = locationLike || (typeof window !== "undefined" ? window.location : null);
     var currentUrl = normalizeAppUrl(current && typeof current.href === "string" ? current.href : "", true);
-    if (!currentUrl || allowed.indexOf(currentUrl) === -1) return null;
+    if (!currentUrl) return null;
+    if (allowed.indexOf(currentUrl) === -1) {
+      /* Vercel gives each commit a different Preview hostname.  A recovery
+         token must never return to that temporary hostname, so allow only our
+         known Preview project to initiate the request and always send the
+         email back to the fixed staging origin. */
+      var staging = normalizeAppUrl(config.stagingRedirectUrl, false);
+      var previewPrefix = String(config.previewHostnamePrefix || "").toLowerCase();
+      var previewSuffix = String(config.previewHostnameSuffix || "").toLowerCase();
+      var hostname = "";
+      try { hostname = new URL(currentUrl).hostname.toLowerCase(); } catch (_) {}
+      if (staging && allowed.indexOf(staging) !== -1 && previewPrefix && previewSuffix &&
+          hostname.indexOf(previewPrefix) === 0 && hostname.endsWith(previewSuffix)) return staging;
+      return null;
+    }
     var callback = config.callbackRedirects && config.callbackRedirects[currentUrl];
     if (callback) {
       callback = normalizeAppUrl(callback, false);
@@ -217,7 +231,8 @@
       resetPasswordForEmail: function (email) {
         email = normalizeEmail(email);
         var redirectTo = approvedRedirect(config, options.location);
-        if (!email || !redirectTo) return Promise.reject(new Error("invalid email or redirect"));
+        if (!email) return Promise.reject(Object.assign(new Error("invalid email"), { code: "invalid_email" }));
+        if (!redirectTo) return Promise.reject(Object.assign(new Error("current app URL is not allow-listed"), { code: "redirect_not_allowed" }));
         return getClient().then(function (c) {
           return c.auth.resetPasswordForEmail(email, { redirectTo: redirectTo }).then(function (result) {
             if (result.error) throw result.error;

@@ -761,9 +761,14 @@
         auth.resetPasswordForEmail(el.passwordAuthEmail.value).then(function () {
           el.passwordAuthPassword.value = "";
           el.passwordAuthStatus.textContent = "若此 Email 已註冊，重設信已寄出。";
-        }).catch(function () {
+        }).catch(function (error) {
           el.passwordAuthPassword.value = "";
-          el.passwordAuthStatus.textContent = "無法寄出重設信；請確認 Email 後再試。";
+          var code = String(error && error.code || "");
+          if (code === "redirect_not_allowed") el.passwordAuthStatus.textContent = "這個網址尚未開放寄送重設信；請改用固定測試站。";
+          else if (code === "over_email_send_rate_limit") el.passwordAuthStatus.textContent = "寄送太頻繁，請稍後再試。";
+          else if (code === "email_address_not_authorized") el.passwordAuthStatus.textContent = "此 Email 暫時無法使用重設服務，請聯絡管理員。";
+          else if (code === "invalid_email") el.passwordAuthStatus.textContent = "請輸入有效的救援 Email。";
+          else el.passwordAuthStatus.textContent = "重設信暫時無法寄出，請稍後再試。";
         });
       }
       function beginPasswordSession(work, successMessage) {
@@ -2297,7 +2302,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=77").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=78").catch(function () {});
       });
     }
 
