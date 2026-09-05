@@ -21,6 +21,7 @@ const harness = fs.readFileSync(path.join(output, "acceptance-user-tasks.js"), "
 const sw = fs.readFileSync(path.join(output, "sw.js"), "utf8");
 const revision = (staging.match(/(?:style\.css|app\.js)\?v=(staging-[a-f0-9]{12})/) || [])[1];
 const config = fs.readFileSync(path.join(root, "docs", "account-config.js"), "utf8");
+const stagingConfig = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
 const behavioral = fs.readFileSync(path.join(root, "tests", "test_rls_behavioral.js"), "utf8");
 const deployedWorkflow = fs.readFileSync(path.join(root, ".github", "workflows", "rls-deployed.yml"), "utf8");
 
@@ -70,7 +71,10 @@ assert(!companion.includes("app.js"), "companion must not initialize the product
 assert(!companion.includes("account-sync.js"), "companion must not drain any account outbox");
 assert(sw.includes('url.searchParams.has("code")'), "OAuth callback navigation remains uncacheable");
 assert(config.includes("allowedRedirectUrls"));
-assert(config.includes("https://cy-school-news-staging.vercel.app/"));
+assert(config.includes("https://oppdhtnepjagdwovndra.supabase.co"));
+assert(!config.includes("https://ebezqanvmgsgtatsbssn.supabase.co"));
+assert(stagingConfig.includes("https://ebezqanvmgsgtatsbssn.supabase.co"));
+assert(!stagingConfig.includes("https://oppdhtnepjagdwovndra.supabase.co"));
 assert(!behavioral.includes("passed for A=${a}"), "behavioral test output must not reveal user UUIDs");
 assert(behavioral.includes("passed for USER_A and USER_B"));
 assert(deployedWorkflow.includes("Check dedicated Auth harness availability"));

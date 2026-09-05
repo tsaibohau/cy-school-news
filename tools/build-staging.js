@@ -38,6 +38,7 @@ fs.copyFileSync(path.join(staging, "manifest.webmanifest"), path.join(output, "m
 fs.copyFileSync(path.join(staging, "staging.css"), path.join(output, "staging.css"));
 fs.copyFileSync(path.join(staging, "acceptance-user-tasks.js"), path.join(output, "acceptance-user-tasks.js"));
 fs.copyFileSync(path.join(staging, "acceptance-companion.html"), path.join(output, "acceptance-companion.html"));
+fs.copyFileSync(path.join(staging, "account-config.js"), path.join(output, "account-config.js"));
 
 const indexPath = path.join(output, "index.html");
 let html = fs.readFileSync(indexPath, "utf8");
@@ -69,7 +70,7 @@ if (!sw.includes('var CACHE = "cy-news-' + shellRevision + '"') || !sw.includes(
 fs.writeFileSync(swPath, sw);
 
 const config = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
-if (!config.includes("https://cy-school-news-staging.vercel.app/")) throw new Error("staging URL is absent from account allow-list");
+if (!config.includes("https://ebezqanvmgsgtatsbssn.supabase.co") || config.includes("https://oppdhtnepjagdwovndra.supabase.co")) throw new Error("staging Auth backend isolation failed");
 if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境") || sourceVersions.some((sourceVersion) => html.includes(sourceVersion))) throw new Error("staging markers or coherent shell revision were not injected");
 console.log("Staging artifact built with noindex, coherent " + shellRevision + " shell and acceptance harness");
 
