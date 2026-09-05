@@ -11,6 +11,7 @@ const configuredOutput = process.env.CYNEWS_STAGING_OUTPUT || "dist-staging";
 const outputName = path.isAbsolute(configuredOutput) ? path.basename(configuredOutput) : configuredOutput;
 const output = path.isAbsolute(configuredOutput) ? path.resolve(configuredOutput) : path.join(root, configuredOutput);
 const staging = path.join(root, "tools", "staging");
+const { sanitizePublicData } = require("./public-metadata-projection.js");
 const shellInputs = [
   "index.html", "legal.html", "legal-compliance.json", "style.css", "app.js", "detail-ui.js", "sw.js", "account-config.js",
   "supabase-sync.js", "account-auth.js", "task-state.js", "account-sync.js",
@@ -24,7 +25,7 @@ const shellInputs = [
 const shellRevision = "staging-" + crypto.createHash("sha256")
   .update(shellInputs.map((file) => fs.readFileSync(path.join(source, file))).join("\n"))
   .digest("hex").slice(0, 12);
-const sourceVersions = Array.from({ length: 35 }, (_, index) => "?v=" + (41 + index));
+const sourceVersions = Array.from({ length: 37 }, (_, index) => "?v=" + (41 + index));
 const stagedVersion = "?v=" + shellRevision;
 
 const isRootOutput = path.dirname(output) === root && /^dist-staging(?:-[A-Za-z0-9._-]+)?$/.test(outputName);
@@ -34,6 +35,9 @@ if (!isRootOutput && !isTempOutput) {
 }
 fs.rmSync(output, { recursive: true, force: true });
 fs.cpSync(source, output, { recursive: true });
+/* A Preview is publicly addressable even when its UI asks users to sign in.
+   Publish only factual metadata; member content must come from an authenticated backend. */
+sanitizePublicData(output);
 fs.copyFileSync(path.join(staging, "manifest.webmanifest"), path.join(output, "manifest-staging.webmanifest"));
 fs.copyFileSync(path.join(staging, "staging.css"), path.join(output, "staging.css"));
 fs.copyFileSync(path.join(staging, "acceptance-user-tasks.js"), path.join(output, "acceptance-user-tasks.js"));

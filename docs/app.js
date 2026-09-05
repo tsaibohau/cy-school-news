@@ -331,8 +331,8 @@
         if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = false;
         if (el.publicAccountLogout) el.publicAccountLogout.hidden = true;
         if (el.publicAccountEntry) el.publicAccountEntry.dataset.state = "anonymous";
-        if (el.publicAccessTitle) el.publicAccessTitle.textContent = "先查公告，不必登入";
-        if (el.publicAccessLead) el.publicAccessLead.textContent = "想使用課表、待辦、問校務或通知時，再建立帳號就好。";
+        if (el.publicAccessTitle) el.publicAccessTitle.textContent = "未登入可查看公告索引";
+        if (el.publicAccessLead) el.publicAccessLead.textContent = "提供標題、日期、處室、學校與校網原始連結；公告內文不對非會員提供。";
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "";
         if (el.tabAdmin) el.tabAdmin.hidden = true;
         if (el.tabTimetable) el.tabTimetable.hidden = true;
@@ -1141,13 +1141,17 @@
     /* ── 篩選與比對 ── */
     function itemText(it) {
       /* 含自動分類名稱:訂「段考」也能命中整個「段考考試」分類 */
-      return (it.title + " " + (it.summary || "") + " " + (it.snippet || "") + " " +
+      return (it.title + " " + (hasSignedInAccount() ? (it.summary || "") + " " + (it.snippet || "") : "") + " " +
         (it.category || "") + " " + (it.source_category || "")).toLowerCase();
+    }
+    function searchableItem(it) {
+      if (hasSignedInAccount()) return it;
+      return Object.assign({}, it, { summary: "", snippet: "", calendar_events: [], detail_ref: "", detail_available: false });
     }
     function queryScore(it, q) {
       if (!q) return true;
       var text = itemText(it);
-      if (window.CyNewsSearchQuery) return window.CyNewsSearchQuery.announcementScore(it, q);
+      if (window.CyNewsSearchQuery) return window.CyNewsSearchQuery.announcementScore(searchableItem(it), q);
       return q.toLowerCase().split(/\s+/).filter(Boolean).every(function (tok) { return text.indexOf(tok) !== -1; }) ? 1 : 0;
     }
     function matchKeywords(it) {
@@ -1173,7 +1177,9 @@
         return true;
       });
       if (state.q && window.CyNewsSearchQuery && typeof window.CyNewsSearchQuery.select === "function") {
-        return window.CyNewsSearchQuery.select(candidates, state.q).map(function (row) { return row.item; });
+        var originals = {};
+        var searchable = candidates.map(function (item) { originals[item.id] = item; return searchableItem(item); });
+        return window.CyNewsSearchQuery.select(searchable, state.q).map(function (row) { return originals[row.item.id] || row.item; });
       }
       var rows = candidates.map(function (it) {
         var score = queryScore(it, state.q);
@@ -1204,6 +1210,7 @@
       return it.date || (it.first_seen || "").slice(0, 10) || "—";
     }
     function displaySnippet(it) {
+      if (!hasSignedInAccount()) return "";
       return String(it && (it.summary || it.snippet) || "").replace(/\s+/g, " ").trim()
         .replace(/^作者\s*[：:]\s*.*?\s+發[佈布]日期\s*[：:]\s*\d{4}-\d{2}-\d{2}(?:\s+最後更新日期\s*[：:]\s*\d{4}-\d{2}-\d{2})?\s*/, "");
     }
@@ -1385,6 +1392,7 @@
         '<details class="timetable-week"><summary>查看整週課表</summary><div class="timetable-grid-wrap"><div class="timetable-grid timetable-grid-head"><div>節次</div>' + weekdays.map(function (day) { return '<div>' + esc(day.replace("星期", "週")) + '</div>'; }).join("") + '</div><div class="timetable-grid">' + grid + '</div></div></details>';
     }
     function cardHTML(it) {
+      var member = hasSignedInAccount();
       var schoolClass = it.school === "cysh" ? "tag-cysh" : (it.school === "fjsh" ? "tag-fjsh" : "tag-cygsh");
       var catClass = it.category === "榮譽榜" ? " cat-honor" : "";
       var relevance = window.CyNewsRelevance && window.CyNewsProfile && window.CyNewsSchoolRegistry
@@ -1396,14 +1404,16 @@
         '<span>' + esc(displayDate(it)) + '</span>' +
         '<span class="tag ' + schoolClass + '">' + esc(it.school_name) + '</span>' +
         '<span class="tag tag-cat">' + esc(it.category) + '</span>' +
-        (relevanceLabel ? '<span class="relevance-note">與你相關 · ' + esc(relevanceLabel) + '</span>' : '') +
-        '<span class="read-state ' + (isUnread(it) ? 'is-unread' : '') + '">' + (isUnread(it) ? '未讀' : '已讀') + '</span>' +
-        (isUnread(it) ? '<button type="button" class="mark-read" data-read-id="' + esc(it.id) + '">標記已讀</button>' : '') +
+        (member && relevanceLabel ? '<span class="relevance-note">與你相關 · ' + esc(relevanceLabel) + '</span>' : '') +
+        (member ? '<span class="read-state ' + (isUnread(it) ? 'is-unread' : '') + '">' + (isUnread(it) ? '未讀' : '已讀') + '</span>' : '') +
+        (member && isUnread(it) ? '<button type="button" class="mark-read" data-read-id="' + esc(it.id) + '">標記已讀</button>' : '') +
         '</div>' +
         '<h3 class="card-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         esc(displayTitle(it)) + '</a></h3>' +
         (displaySnippet(it) ? '<p class="card-snippet">' + esc(displaySnippet(it)) + '</p>' : "") +
-        '<div class="card-actions"><button type="button" class="btn-ghost" data-detail-id="' + esc(it.id) + '">查看完整內容</button><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>' +
+        (member
+          ? '<div class="card-actions"><button type="button" class="btn-ghost" data-detail-id="' + esc(it.id) + '">查看會員內容</button><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>'
+          : '<div class="card-actions"><a class="btn-ghost" href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer">前往校網原文 ↗</a></div>') +
         '</article>';
     }
 
@@ -1433,6 +1443,13 @@
     function openDetail(id) {
       var item = detailItem(id);
       if (!item || !el.detailDialog || !window.CyNewsDetailUI) return;
+      if (!hasSignedInAccount()) {
+        el.detailTitle.textContent = displayTitle(item);
+        el.detailMeta.textContent = (item.school_name || "官方公告") + " · " + displayDate(item);
+        showDetailDialog();
+        detailFallback(item, "公告內文僅提供給已核准會員；你仍可前往校網查看原始公告。");
+        return;
+      }
       el.detailTitle.textContent = displayTitle(item);
       el.detailMeta.textContent = (item.school_name || "官方公告") + " · " + displayDate(item);
       el.detailBody.innerHTML = '<p class="detail-state">正在載入官方完整內容…</p>';
@@ -2255,7 +2272,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=75").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=76").catch(function () {});
       });
     }
 

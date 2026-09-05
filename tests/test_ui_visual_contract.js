@@ -60,7 +60,8 @@ assert.match(index, /我的班級（查看課表需要）/, "profile explains wh
 assert.match(app, /data\/class-timetables\.json/, "today view loads the generated public timetable data");
 assert.match(app, /officialTimetableUrl/, "timetable source links are constrained to the official school origin");
 assert.match(style, /\.timetable-week/, "weekly timetable has a dedicated responsive layout");
-assert.match(index, /先查公告，不必登入/, "anonymous visitors are told that browsing does not require an account");
+assert.match(index, /未登入可查看公告索引/, "anonymous visitors are told that only the public index is available");
+assert.match(index, /公告內文不對非會員提供/, "anonymous visitors are told that announcement content requires approval");
 assert.match(index, /id="publicAccessTitle"/, "account state has a dedicated, accessible heading");
 assert.match(app, /帳號已建立，正在等待核准/, "pending accounts receive a clear status and next step");
 assert.match(index, /基本資料[\s\S]*讓內容更符合我/, "profile fields are progressively disclosed into essential and optional groups");
