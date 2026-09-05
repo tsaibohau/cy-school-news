@@ -230,7 +230,11 @@
           if (nickname) signUpOptions.data.nickname = nickname;
           return c.auth.signUp({ email: email, password: password, options: signUpOptions }).then(function (result) {
             if (result.error) throw result.error;
-            return result.data || {};
+            var data = result.data || {};
+            if (data.user && Array.isArray(data.user.identities) && data.user.identities.length === 0) {
+              throw Object.assign(new Error("email already registered"), { code: "email_exists" });
+            }
+            return data;
           });
         });
       },
