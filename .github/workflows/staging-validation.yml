@@ -2,7 +2,7 @@ name: Staging validation
 
 on:
   push:
-    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login]
+    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/human-centered-ux, codex/student-core-candidate]
   workflow_dispatch: {}
 
 permissions:
@@ -60,6 +60,7 @@ jobs:
           tests/test_user_refresh.js
           tests/test_reminder_rules_client.js
           tests/test_staging_build.js
+          tests/test_public_core_build.js
           tests/test_ui_visual_contract.js
           tests/test_calendar_workflow.js
       - name: Search ranking train and holdout gate

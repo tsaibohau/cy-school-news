@@ -1,8 +1,8 @@
 {
-  "schema_version": 1,
-  "as_of": "2026-08-30",
-  "status": "PREVIEW_ONLY_REVIEW_REQUIRED",
-  "production_ready": false,
+  "schema_version": 2,
+  "as_of": "2026-09-04",
+  "status": "SCOPED_RELEASE_REVIEW_REQUIRED",
+  "status_vocabulary": ["pass", "block", "review", "warning", "not_applicable"],
   "technical_controls": {
     "public_https_sources_only": true,
     "no_authentication_bypass": true,
@@ -16,21 +16,127 @@
     "deployed_reminder_schema": false,
     "deployed_http_two_session_rls_pass": false,
     "leaked_password_protection_enabled": false,
+    "password_auth_rate_limit_verified": false,
+    "production_backend_isolated": false,
+    "retention_enforcement_deployed": false,
     "preview_self_service_app_data_deletion": true,
-    "source_rights_audit_recorded": true
+    "source_rights_audit_recorded": true,
+    "student_core_has_no_account_backend": true
+  },
+  "requirements": {
+    "public_source_controls": {
+      "category": "technical",
+      "state": "pass",
+      "applies_to": ["public_core", "student_core"],
+      "message": "Only allow-listed public HTTPS sources are fetched at a bounded rate."
+    },
+    "source_rights_scope_review": {
+      "category": "legal_review",
+      "state": "review",
+      "applies_to": ["public_core", "student_core"],
+      "message": "The title, metadata, short-summary and official-link scope needs a documented rights assessment; absence of an open licence is not an automatic legality finding.",
+      "evidence": "source-rights-audit.md"
+    },
+    "qualified_taiwan_legal_review": {
+      "category": "risk_policy",
+      "state": "review",
+      "applies_to": ["public_core", "student_core", "account_personalization", "password_auth", "reminders"],
+      "message": "Qualified Taiwan legal review remains recommended risk governance, not a technical control or an automatic statutory launch licence."
+    },
+    "student_core_isolation": {
+      "category": "technical",
+      "state": "pass",
+      "control": "student_core_has_no_account_backend",
+      "applies_to": ["student_core"],
+      "message": "Timetable, announcement search, source-based school Q&A and public calendar run without accounts or user-owned storage."
+    },
+    "deployed_http_rls": {
+      "category": "technical",
+      "state": "block",
+      "control": "deployed_http_two_session_rls_pass",
+      "applies_to": ["account_personalization", "reminders"],
+      "message": "Dedicated Auth A/B sessions have not yet passed the deployed HTTP RLS test."
+    },
+    "account_schema_deployed": {
+      "category": "technical",
+      "state": "block",
+      "control": "deployed_account_least_privilege_migrations",
+      "applies_to": ["account_personalization"],
+      "message": "The production least-privilege account migrations are not verified as deployed."
+    },
+    "production_backend_isolated": {
+      "category": "technical",
+      "state": "block",
+      "control": "production_backend_isolated",
+      "applies_to": ["account_personalization", "password_auth", "reminders"],
+      "message": "The production site has not been verified to use a production-isolated backend."
+    },
+    "private_rights_request_channel": {
+      "category": "operations",
+      "state": "block",
+      "applies_to": ["account_personalization", "password_auth"],
+      "message": "A private identity-verification and access, correction, stop-use and deletion request channel has not been confirmed."
+    },
+    "retention_policy_enforced": {
+      "category": "technical",
+      "state": "block",
+      "control": "retention_enforcement_deployed",
+      "applies_to": ["account_personalization", "reminders"],
+      "message": "The site's declared 30-day tombstone and 365-day read-history limits are not enforced by a verified deployed job; these are site policy limits, not universal statutory periods."
+    },
+    "leaked_password_protection": {
+      "category": "technical",
+      "state": "block",
+      "control": "leaked_password_protection_enabled",
+      "applies_to": ["password_auth"],
+      "message": "Leaked-password protection is not verified as enabled."
+    },
+    "password_auth_rate_limit": {
+      "category": "technical",
+      "state": "block",
+      "control": "password_auth_rate_limit_verified",
+      "applies_to": ["password_auth"],
+      "message": "Production password-authentication rate limiting has not been verified."
+    },
+    "reminder_schema_deployed": {
+      "category": "technical",
+      "state": "block",
+      "control": "deployed_reminder_schema",
+      "applies_to": ["reminders"],
+      "message": "The production reminder schema is not verified as deployed."
+    }
+  },
+  "release_profiles": {
+    "public_core": {
+      "enabled": true,
+      "description": "Public announcement titles, dates, necessary short summaries and official source links; no account-owned data.",
+      "requirements": ["public_source_controls", "source_rights_scope_review", "qualified_taiwan_legal_review"]
+    },
+    "student_core": {
+      "enabled": false,
+      "description": "Public timetable, announcement search, source-based school Q&A and public calendar; no account-owned data.",
+      "requirements": ["public_source_controls", "student_core_isolation", "source_rights_scope_review", "qualified_taiwan_legal_review"]
+    },
+    "account_personalization": {
+      "enabled": true,
+      "description": "Accounts, preferences, read state, tasks and other user-owned data.",
+      "requirements": ["deployed_http_rls", "account_schema_deployed", "production_backend_isolated", "private_rights_request_channel", "retention_policy_enforced", "qualified_taiwan_legal_review"]
+    },
+    "password_auth": {
+      "enabled": true,
+      "description": "Username, email and password authentication.",
+      "requirements": ["production_backend_isolated", "private_rights_request_channel", "leaked_password_protection", "password_auth_rate_limit", "qualified_taiwan_legal_review"]
+    },
+    "reminders": {
+      "enabled": true,
+      "description": "Stored reminder rules and background push delivery.",
+      "requirements": ["deployed_http_rls", "production_backend_isolated", "retention_policy_enforced", "reminder_schema_deployed", "qualified_taiwan_legal_review"]
+    }
   },
   "evidence": {
     "rls_verification": "rls-verification-2026-08-30.md",
     "source_rights_audit": "source-rights-audit.md",
-    "privacy_retention_policy": "privacy-retention-policy.md"
-  },
-  "production_blockers": [
-    "Two dedicated non-production Auth users have not completed the deployed Supabase HTTP RLS test in CI.",
-    "The account least-privilege migrations and reminder schema are committed but not deployed to Supabase.",
-    "Supabase leaked-password protection is not enabled.",
-    "Automatic 30-day tombstone cleanup and 365-day read-history retention enforcement are not deployed.",
-    "A private identity-verification, Auth-record deletion, and correction/removal contact channel has not been confirmed.",
-    "Source audit found no open licence and two sites state rights reserved; written permission or qualified fair-use review is still required.",
-    "A qualified Taiwan legal professional has not reviewed the complete production service."
-  ]
+    "privacy_retention_policy": "privacy-retention-policy.md",
+    "release_evidence": "production-release-evidence.md"
+  }
 }

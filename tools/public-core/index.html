@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>嘉校快訊｜學生核心候選版</title>
+  <meta name="description" content="嘉中公開課表與三校公告、問校務、行事曆的非官方學生工具。">
+  <meta name="theme-color" content="#16233B">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=public-core-1">
+  <link rel="stylesheet" href="student-core.css?v=student-core-1">
+</head>
+<body>
+  <div id="appLoading" class="app-loading" role="status" aria-live="polite">
+    <span class="app-loading-seal" aria-hidden="true">訊</span>
+    <strong>嘉校快訊</strong>
+    <span>正在整理最新公告</span>
+  </div>
+
+  <header class="mast">
+    <div class="wrap">
+      <div class="mast-row">
+        <div class="brand"><span class="seal" aria-hidden="true">訊</span><h1>嘉校快訊</h1></div>
+        <button id="btnRefresh" class="icon-btn" type="button" aria-label="重新載入公告" aria-describedby="refreshState">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+        </button>
+      </div>
+      <p class="mast-sub">課表・公告・問校務・行事曆 <span id="updatedAt" class="updated"></span><span id="refreshState" class="refresh-state" role="status" aria-live="polite"></span></p>
+    </div>
+    <div class="rule-double" aria-hidden="true"></div>
+  </header>
+
+  <div class="wrap">
+    <nav class="student-nav" aria-label="學生工具">
+      <button type="button" class="chip active" data-view="timetable">今天課表</button>
+      <button type="button" class="chip" data-view="announcements">公告</button>
+      <button type="button" class="chip" data-view="assistant">問校務</button>
+      <button type="button" class="chip" data-view="calendar">行事曆</button>
+    </nav>
+
+    <main id="viewTimetable" class="student-view">
+      <div class="section-heading"><div><p class="eyebrow">CLASS TIMETABLE</p><h2>今天課表</h2></div><span class="hint">嘉中公開資料</span></div>
+      <section class="student-tool-card">
+        <div class="student-selectors">
+          <label>學校<select id="timetableSchool"><option value="cysh">嘉義高中</option></select></label>
+          <label>班級<select id="timetableClass"><option value="">選擇班級</option></select></label>
+        </div>
+        <p id="timetableStatus" class="hint" role="status" aria-live="polite">選擇班級後顯示今天與整週課表。</p>
+        <div id="timetableResult"></div>
+      </section>
+    </main>
+
+    <main id="viewAnnouncements" class="student-view" hidden>
+      <div class="section-heading"><div><p class="eyebrow">PUBLIC ANNOUNCEMENTS</p><h2>公告總庫</h2></div><span class="hint">三校公開資料</span></div>
+      <section class="access-card" aria-labelledby="candidateTitle">
+        <span class="access-icon" aria-hidden="true">查</span>
+        <div class="access-copy">
+          <h3 id="candidateTitle">公開功能不必登入</h3>
+          <p>公告、課表、問校務與行事曆可以直接使用；完整公告內容請回官方網站查看。</p>
+        </div>
+      </section>
+      <div class="controls">
+        <input id="q" type="search" inputmode="search" placeholder="搜尋公告，可用空格分隔關鍵字" aria-label="搜尋公告">
+        <label class="school-filter" for="schoolFilter"><span>學校</span><select id="schoolFilter" aria-label="選擇公告學校"><option value="all">所有學校</option></select></label>
+        <div class="chips" id="catChips" aria-label="分類篩選"></div>
+      </div>
+      <p id="countLine" class="count-line" role="status" aria-live="polite"></p>
+      <section id="list" class="list" aria-label="公告列表"></section>
+      <button id="loadMore" class="btn-ghost" type="button" hidden>顯示更多</button>
+    </main>
+
+    <main id="viewAssistant" class="student-view" hidden>
+      <div class="section-heading"><div><p class="eyebrow">ASK SCHOOL DATA</p><h2>問校務</h2></div><span class="hint">附官方來源</span></div>
+      <section class="student-tool-card">
+        <form id="assistantForm" class="assistant-form">
+          <label for="assistantQuestion">想問什麼？</label>
+          <div class="assistant-input-row"><input id="assistantQuestion" type="search" required maxlength="160" placeholder="例如：最近有哪些獎助學金？"><button class="btn-primary" type="submit">查詢</button></div>
+        </form>
+        <p id="assistantStatus" class="hint" role="status" aria-live="polite"></p>
+        <div id="assistantAnswer" class="assistant-answer"></div>
+      </section>
+    </main>
+
+    <main id="viewCalendar" class="student-view" hidden>
+      <div class="section-heading"><div><p class="eyebrow">OFFICIAL CALENDAR</p><h2>近期行事</h2></div><span class="hint">公開校曆</span></div>
+      <section class="student-tool-card">
+        <label class="school-filter">學校<select id="calendarSchool"><option value="all">所有學校</option><option value="cysh">嘉中</option><option value="cygsh">嘉女</option><option value="fjsh">輔仁</option></select></label>
+        <div id="calendarList" class="agenda"></div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>資料來源：<a href="https://www.cysh.cy.edu.tw/" target="_blank" rel="noopener">嘉義高中</a>、<a href="https://www.cygsh.cy.edu.tw/" target="_blank" rel="noopener">嘉義女中</a>、<a href="https://rpage.fjsh.cy.edu.tw/" target="_blank" rel="noopener">輔仁高中</a>官方網站。</p>
+      <p>本站為個人非官方工具；課表、公告、期限與效力均以原校資料為準。</p>
+      <p><a href="legal.html">資料與權利說明</a></p>
+    </footer>
+  </div>
+
+  <script src="search-taxonomy.js?v=public-core-1"></script>
+  <script src="search-query.js?v=public-core-1"></script>
+  <script src="student-core-app.js?v=student-core-1"></script>
+</body>
+</html>

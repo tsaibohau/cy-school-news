@@ -18,7 +18,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=46/);
+assert.match(index, /style\.css\?v=47/);
 assert.match(index, /search-taxonomy\.js\?v=52/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=52/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=53/, "reviewed validity loads before answers");
@@ -58,5 +58,11 @@ assert.match(index, /我的班級（查看課表需要）/, "profile explains wh
 assert.match(app, /data\/class-timetables\.json/, "today view loads the generated public timetable data");
 assert.match(app, /officialTimetableUrl/, "timetable source links are constrained to the official school origin");
 assert.match(style, /\.timetable-week/, "weekly timetable has a dedicated responsive layout");
+assert.match(index, /先查公告，不必登入/, "anonymous visitors are told that browsing does not require an account");
+assert.match(index, /id="publicAccessTitle"/, "account state has a dedicated, accessible heading");
+assert.match(app, /帳號已建立，正在等待核准/, "pending accounts receive a clear status and next step");
+assert.match(index, /基本資料[\s\S]*讓內容更符合我/, "profile fields are progressively disclosed into essential and optional groups");
+assert.match(index, /今天先做什麼/, "home actions use task-oriented language");
+assert.match(app, /classList\.toggle\("btn-primary", signup \|\| reset\)/, "the current authentication action has clear visual priority");
 
 console.log("Editorial UI and honest refresh status contract tests passed");

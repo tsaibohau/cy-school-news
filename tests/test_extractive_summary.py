@@ -15,7 +15,7 @@ assert summary["provenance"] == "official_article"
 assert "8月26日" in summary["text"]
 assert "作者" not in summary["text"]
 assert summary["evidence"]
-assert summary["version"] == "extractive-v2"
+assert summary["version"] == "extractive-v3-public-minimized"
 
 multi_activity = {"title": "近期學生研習活動彙整", "blocks": [
     {"type": "heading", "text": "科學營"},
@@ -34,6 +34,8 @@ pdf_only = {"title": "申請公告", "blocks": [], "attachments": [{
     "provenance": "official_attachment", "parse_status": "parsed",
     "embedded_text": "符合資格的學生請於9月10日前將申請表交至教務處註冊組。",
 }]}
-assert summarize_detail(pdf_only)["provenance"] == "official_attachment"
+assert summarize_detail(pdf_only)["status"] == "insufficient"
+short_notice = {"title": "停課通知", "blocks": [{"type": "paragraph", "text": "明日因颱風停課一天，請留意官方後續公告。"}], "attachments": []}
+assert summarize_detail(short_notice)["mode"] == "short_fact_notice"
 assert summarize_detail({"title": "公告", "blocks": [], "attachments": []})["status"] == "insufficient"
 print("Deterministic extractive summary tests passed")

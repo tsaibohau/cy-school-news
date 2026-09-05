@@ -61,21 +61,10 @@
   function renderAttachments(rows, announcementId) {
     var attachments = (Array.isArray(rows) ? rows : []).filter(function (row) {
       return row && row.provenance === "official_attachment" &&
-        (!announcementId || String(row.announcement_id) === String(announcementId)) && safeUrl(row.url);
+        (!announcementId || String(row.announcement_id) === String(announcementId));
     });
     if (!attachments.length) return "";
-    return '<section class="detail-attachments"><h3>附件</h3><ul>' + attachments.map(function (row) {
-      var meta = [row.extension, row.mime_type, row.size].filter(Boolean).join(" · ");
-      var extracted = row.parse_status === "parsed" && row.embedded_text
-        ? '<details class="attachment-text"><summary>閱讀 PDF 文字內容</summary><p>' + esc(row.embedded_text) + '</p></details>'
-        : (row.extension === ".pdf" ? '<small>' + esc({
-            pending: "PDF 文字正在排程整理",
-            temporary_error: "PDF 暫時無法讀取，系統稍後會重試",
-            unsupported: "此 PDF 超出安全解析範圍",
-            unparsed: "此 PDF 沒有可可靠讀取的文字層",
-          }[row.parse_status] || "PDF 文字尚未整理") + '</small>' : '');
-      return '<li><div><strong>' + esc(row.filename || "官方附件") + '</strong>' + (meta ? '<small>' + esc(meta) + '</small>' : '') + extracted + '</div><a href="' + esc(safeUrl(row.url)) + '" target="_blank" rel="noopener noreferrer">開啟附件</a></li>';
-    }).join("") + "</ul></section>";
+    return '<section class="detail-attachments"><p>此公告有附件，請至官方網站查看完整內容。</p></section>';
   }
   function renderSummary(summary) {
     if (!summary || summary.status !== "extracted" || !summary.text) return "";
@@ -91,11 +80,11 @@
     var blocks = (Array.isArray(record.blocks) ? record.blocks : []).map(renderBlock).join("");
     var summary = renderSummary(record.summary);
     var source = safeUrl(record.source_url);
-    var sourceLink = source ? '<a class="detail-source" href="' + esc(source) + '" target="_blank" rel="noopener noreferrer">查看官方原始公告 ↗</a>' : "";
+    var sourceLink = source ? '<a class="detail-source" href="' + esc(source) + '" target="_blank" rel="noopener noreferrer">前往官方網站 ↗</a>' : "";
     if (record.parse_status !== "parsed" || !blocks) {
       return '<p class="detail-state">' + esc(statusMessage(record.parse_status)) + '</p>' + renderAttachments(record.attachments, record.announcement_id) + sourceLink;
     }
-    return summary + '<div class="detail-blocks">' + blocks + '</div>' + renderAttachments(record.attachments, record.announcement_id) + sourceLink;
+    return summary + renderAttachments(record.attachments, record.announcement_id) + sourceLink;
   }
   return { escape: esc, safeUrl: safeUrl, validDetailRef: validDetailRef, statusMessage: statusMessage,
     renderBlock: renderBlock, renderAttachments: renderAttachments, renderSummary: renderSummary, render: render };

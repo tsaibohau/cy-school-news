@@ -3,8 +3,7 @@ from __future__ import annotations
 
 import re
 
-SUMMARY_VERSION = "extractive-v2"
-MAX_SUMMARY_CHARS = 180
+SUMMARY_VERSION = "extractive-v3-public-minimized"
 META_PREFIX = re.compile(r"^(?:作者|發布日期|發佈日期|最後更新日期)\s*[：:]\s*[^。！？!?]{0,80}", re.I)
 NOISE = re.compile(r"^(?:下載附件|附件下載|回首頁|國立嘉義(?:女子)?高級中學)$")
 SIGNALS = {"請": 2, "須": 2, "務必": 3, "截止": 5, "期限": 4, "報名": 4,
@@ -13,6 +12,8 @@ SIGNALS = {"請": 2, "須": 2, "務必": 3, "截止": 5, "期限": 4, "報名": 
            "參加": 2, "附件": 1}
 GENERIC_HEADINGS = {"說明", "公告內容", "主旨", "注意事項", "相關資訊", "附件"}
 NUMBERED_ITEM = re.compile(r"^(?:第[一二三四五六七八九十]+項|[一二三四五六七八九十]+[、.]|\(?\d{1,2}\)?[、.)．])\s*")
+PERSONAL_DATA = re.compile(r"(?:[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|(?:\d{2,4}[-\s]?)?\d{3,4}[-\s]?\d{3,4}|\b\d{8,10}\b)")
+SHORT_FACT_NOTICE_CHARS = 60
 
 
 def _clean(value: object) -> str:
@@ -112,10 +113,6 @@ def _candidate_rows(record: dict) -> tuple[list[dict], bool]:
                 label = _item_label(raw, current_heading) or f"項目 {value_index + 1}"
             for sentence in _sentences(value):
                 rows.append({"sentence": sentence, "source": "official_article", "label": label, "position": len(rows)})
-    for attachment in record.get("attachments") or []:
-        if attachment.get("provenance") == "official_attachment" and attachment.get("parse_status") == "parsed":
-            for sentence in _sentences(attachment.get("embedded_text")):
-                rows.append({"sentence": sentence, "source": "official_attachment", "label": _clean(attachment.get("filename")) or "附件", "position": len(rows)})
     return rows, structured_groups > 0 or numbered_count >= 2 or len(meaningful_headings) >= 2
 
 
@@ -123,7 +120,19 @@ def summarize_detail(record: dict, title: str = "") -> dict:
     candidates, explicit_multi = _candidate_rows(record)
     normalized_title = _clean(title or record.get("title"))
     candidates = [row for row in candidates if row["sentence"] != normalized_title and row["sentence"].strip("。") != normalized_title]
-    if not candidates:
+    safe_body_length = len(_clean(" ".join(
+        str(block.get("text") or " ".join(map(str, block.get("items") or [])))
+        for block in record.get("blocks") or []
+    )))
+    summary_limit = int(safe_body_length * .20)
+    # A very short, factual notice cannot yield a readable 20% summary.  It may
+    # be relayed verbatim only when it contains no detected personal data.
+    full_notice = _clean(" ".join(row["sentence"] for row in candidates))
+    if 12 <= len(full_notice) <= SHORT_FACT_NOTICE_CHARS and not PERSONAL_DATA.search(full_notice):
+        return {"status": "extracted", "text": full_notice, "evidence": full_notice,
+                "items": [], "provenance": "official_article", "mode": "short_fact_notice",
+                "version": SUMMARY_VERSION}
+    if not candidates or summary_limit < 12:
         return {"status": "insufficient", "text": "", "evidence": "",
                 "items": [], "provenance": "", "version": SUMMARY_VERSION}
     title_terms = _title_terms(normalized_title)
@@ -138,8 +147,8 @@ def summarize_detail(record: dict, title: str = "") -> dict:
     items = [{"label": row["label"], "text": _short(row["sentence"]), "evidence": row["sentence"], "provenance": row["source"]} for row in selected]
     evidence, source = selected[0]["sentence"], selected[0]["source"]
     if len(items) == 1:
-        text = _short(evidence, MAX_SUMMARY_CHARS)
+        text = _short(evidence, summary_limit)
     else:
         first = ((items[0]["label"] + "：") if items[0]["label"] and not items[0]["label"].startswith("項目 ") else "") + items[0]["text"]
-        text = _short(first, MAX_SUMMARY_CHARS - 18) + f"（另有 {len(items) - 1} 項重點）"
+        text = _short(first, max(12, summary_limit - 18)) + f"（另有 {len(items) - 1} 項重點）"
     return {"status": "extracted", "text": text, "evidence": evidence, "items": items, "provenance": source, "version": SUMMARY_VERSION}

@@ -123,6 +123,20 @@ a { color: inherit; }
 
 .count-line { font-size: 12.5px; color: var(--muted); margin: 10px 2px 6px; }
 
+.access-card {
+  display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  margin: 12px 0 2px; padding: 14px; border: 1px solid var(--line); border-radius: 16px;
+  background: var(--card); box-shadow: 0 5px 18px rgba(37,49,43,.04);
+}
+.access-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; color: var(--cysh); background: var(--cysh-bg); font-weight: 900; }
+.access-copy h3, .access-copy p { margin: 0; }
+.access-copy h3 { font-size: 15px; }
+.access-copy p { margin-top: 2px; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+.access-copy #publicAccessStatus:not(:empty) { margin-top: 7px; color: var(--ink); font-weight: 700; }
+.access-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+.access-card[data-state="pending"] { border-color: color-mix(in srgb, var(--cysh) 45%, var(--line)); background: color-mix(in srgb, var(--cysh-bg) 55%, var(--card)); }
+.access-card[data-state="pending"] .access-icon { color: var(--paper); background: var(--cysh); }
+
 /* ── 公告清單 ── */
 .list { display: grid; gap: 10px; }
 .list > * { min-width: 0; } /* grid 子項預設 min-width:auto,長字串會把個別卡片撐出版面 */
@@ -467,8 +481,8 @@ body { background: var(--paper); }
 .nickname-sheet select { width: 100%; }
 
 .home-view { padding: 24px 0 34px; }
-.home-hero { position: relative; overflow: hidden; min-height: 270px; padding: 34px 28px 30px; display: flex; flex-direction: column; justify-content: center; background: radial-gradient(circle at 78% 22%, rgba(169,67,53,.1), transparent 32%), linear-gradient(145deg, color-mix(in srgb, var(--card) 94%, transparent), color-mix(in srgb, var(--paper) 82%, var(--cysh-bg) 18%)); border: 1px solid var(--line); border-radius: 26px; box-shadow: 0 18px 50px rgba(37,49,43,.08); }
-.calligraphy-title { display: grid; width: max-content; margin: 2px 0 16px; font-family: var(--serif); font-weight: 900; font-size: clamp(42px, 10vw, 72px); line-height: .98; letter-spacing: .08em; animation: ink-title-in .85s cubic-bezier(.2,.72,.22,1) both; }
+.home-hero { position: relative; overflow: hidden; min-height: 220px; padding: 28px 26px 24px; display: flex; flex-direction: column; justify-content: center; background: radial-gradient(circle at 78% 22%, rgba(169,67,53,.1), transparent 32%), linear-gradient(145deg, color-mix(in srgb, var(--card) 94%, transparent), color-mix(in srgb, var(--paper) 82%, var(--cysh-bg) 18%)); border: 1px solid var(--line); border-radius: 26px; box-shadow: 0 18px 50px rgba(37,49,43,.08); }
+.calligraphy-title { display: grid; width: max-content; margin: 2px 0 14px; font-family: var(--serif); font-weight: 900; font-size: clamp(36px, 8vw, 58px); line-height: 1; letter-spacing: .08em; animation: ink-title-in .85s cubic-bezier(.2,.72,.22,1) both; }
 .calligraphy-title span:last-child { margin-left: .72em; }
 .home-greeting { margin: 0; font-weight: 800; font-size: 17px; }
 .home-hero .welcome-copy { max-width: 520px; }
@@ -508,6 +522,10 @@ body { background: var(--paper); }
 .my-disclosure[open] .disclosure-mark { transform: rotate(180deg); }
 .my-card-body { padding: 0 16px 16px; border-top: 1px solid var(--line); }
 .my-card-body .profile-form { margin-top: 12px; }
+.profile-form fieldset { min-width: 0; margin: 0 0 16px; padding: 13px; border: 1px solid var(--line); border-radius: 13px; }
+.profile-form legend { padding: 0 6px; font-weight: 900; }
+.profile-form legend span, .field-help { color: var(--muted); font-size: 12.5px; font-weight: 500; }
+.field-help { margin: -2px 0 8px; }
 .compact-button { min-height: 38px; padding: 7px 12px; }
 .task-composer { margin: 14px 0; padding: 14px; display: grid; gap: 10px; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; }
 .task-composer[hidden] { display: none; }
@@ -527,7 +545,7 @@ body { background: var(--paper); }
 .completed-tasks { margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px; }
 .completed-tasks > summary { color: var(--muted); font-size: 13px; font-weight: 800; cursor: pointer; }
 .completed-tasks .task-list, .matched-card .list { margin-top: 9px; }
-@media (max-width: 520px) { .home-hero { min-height: 240px; padding: 28px 20px 25px; } .home-actions { grid-template-columns: 1fr; } .home-action-primary { grid-column: auto; } .my-card { padding: 14px; } .my-disclosure { padding: 0; } .task-item { align-items: flex-start; } .task-item-actions { flex-direction: column; } }
+@media (max-width: 520px) { .home-hero { min-height: 200px; padding: 24px 20px 22px; } .home-actions { grid-template-columns: 1fr; } .home-action-primary { grid-column: auto; } .access-card { grid-template-columns: 42px minmax(0, 1fr); } .access-actions { grid-column: 1 / -1; justify-content: stretch; } .access-actions button { flex: 1 1 0; } .my-card { padding: 14px; } .my-disclosure { padding: 0; } .task-item { align-items: flex-start; } .task-item-actions { flex-direction: column; } }
 @media (prefers-color-scheme: dark) {
   :root {
     --paper: #111816;

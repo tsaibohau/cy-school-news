@@ -234,7 +234,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
   assert(index.includes('src="account-auth.js?v=47"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=65"'), "index must load current app shell");
+  assert(index.includes('src="app.js?v=66"'), "index must load current app shell");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
   assert(sw.includes('"./account-auth.js?v=47"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
@@ -250,8 +250,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v66"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=66")'), "App and Service Worker must use one shell version");
+  assert(sw.includes("cy-news-v68"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=68")'), "App and Service Worker must use one shell version");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   assert(app.includes("signUpWithPassword"));
