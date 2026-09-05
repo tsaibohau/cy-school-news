@@ -10,7 +10,11 @@ window.CYNEWS_ACCOUNT_CONFIG = {
   productionRedirectUrl: "https://tsaibohau.github.io/cy-school-news/",
   localhostRedirectUrl: "http://127.0.0.1:8266/",
   stagingRedirectUrl: "https://cy-school-news-staging.vercel.app/",
+  callbackRedirects: {
+    "https://cy-school-news-staging-git-code-184992-tsaibohau-9644s-projects.vercel.app/": "https://cy-school-news-staging.vercel.app/",
+  },
   allowedRedirectUrls: [
+    "https://cy-school-news-staging-git-code-184992-tsaibohau-9644s-projects.vercel.app/",
     "https://tsaibohau.github.io/cy-school-news/",
     "http://127.0.0.1:8266/",
     "https://cy-school-news-staging.vercel.app/",

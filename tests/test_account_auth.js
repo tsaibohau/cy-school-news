@@ -153,6 +153,20 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert.equal(Auth.normalizeEmail(" Student@Example.TEST\n"), "student@example.test");
   assert.equal(Auth.normalizeEmail("not-an-email"), "");
   assert.equal(Auth.validPassword("short"), false);
+  assert.equal(Auth.validPassword("123456"), true);
+  assert.equal(Auth.validPassword("a".repeat(73)), false);
+  await controller.signUpWithPassword("test@example.test", "abc123", "", "test_new");
+  assert.equal(passwordSignUpRequest.password, "abc123");
+  await controller.updatePassword("abc123");
+  assert.equal(userUpdateRequest.password, "abc123");
+  await assert.rejects(controller.signUpWithPassword("test@example.test", "abc123", "", "123456"), e => e.code === "invalid_username");
+  await assert.rejects(controller.signUpWithPassword("bad", "abc123", "", "test_new"), e => e.code === "invalid_email");
+  await assert.rejects(controller.signUpWithPassword("test@example.test", "short", "", "test_new"), e => e.code === "invalid_password");
+  assert.match(Auth.signUpErrorMessage({ code: "invalid_username" }), /英文字母/);
+  assert.match(Auth.signUpErrorMessage({ code: "invalid_password" }), /6～72/);
+  assert.match(Auth.signUpErrorMessage({ code: "over_email_send_rate_limit" }), /不必更換帳號/);
+  assert.match(Auth.signUpErrorMessage({ code: "email_address_not_authorized" }), /驗證信服務/);
+
   assert.equal(Auth.validPassword("0123456789ab"), true);
   await controller.signInWithPassword("Student@Example.TEST", "0123456789ab");
   assert.deepEqual(passwordSignInRequest, { email: "student@example.test", password: "0123456789ab" });
@@ -233,10 +247,10 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('autocomplete="current-password"'));
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=47"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=72"'), "index must load current app shell");
+  assert(index.includes('src="account-auth.js?v=73"'), "index must load current account auth");
+  assert(index.includes('src="app.js?v=73"'), "index must load current app shell");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
-  assert(sw.includes('"./account-auth.js?v=47"'), "Service Worker shell must cache current account auth");
+  assert(sw.includes('"./account-auth.js?v=73"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
   assert(app.includes('"登入信箱：" + email'));
   assert(!app.includes("sendMagicLink"));
@@ -250,8 +264,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v72"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=72")'), "App and Service Worker must use one shell version");
+  assert(sw.includes("cy-news-v73"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=73")'), "App and Service Worker must use one shell version");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   assert(app.includes("signUpWithPassword"));

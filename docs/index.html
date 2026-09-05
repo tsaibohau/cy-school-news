@@ -199,7 +199,7 @@
     <p id="passwordAuthHint" class="hint">請輸入 Email 或帳號名稱與密碼。</p>
     <label>登入 Email 或帳號名稱<input id="passwordAuthUsername" required maxlength="254" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="例如：name@example.com 或 hau_115"></label>
     <label id="passwordAuthEmailField" hidden>救援 Email<input id="passwordAuthEmail" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="name@example.com" disabled></label>
-    <label>密碼<input id="passwordAuthPassword" type="password" required minlength="12" maxlength="72" autocomplete="current-password" placeholder="至少 12 個字元"></label>
+    <label>密碼<input id="passwordAuthPassword" type="password" required minlength="6" maxlength="72" autocomplete="current-password" placeholder="至少 6 個字元"></label>
     <div class="profile-actions"><button id="passwordSignIn" class="btn-primary" type="submit">登入</button><button id="passwordSignUp" class="btn-ghost" type="button">註冊</button><button id="passwordResetRequest" class="btn-ghost" type="button">重設密碼</button><button id="passwordAuthBack" class="btn-ghost" type="button" hidden>返回登入</button><button id="passwordAuthCancel" class="btn-ghost" type="button">取消</button></div>
     <button id="passwordGoogleLogin" class="btn-ghost" type="button">改用 Google 登入</button>
     <p id="passwordAuthStatus" class="hint" role="status" aria-live="polite"></p>
@@ -209,9 +209,9 @@
 <dialog id="passwordRecoveryDialog" class="nickname-dialog" aria-labelledby="passwordRecoveryTitle">
   <form id="passwordRecoveryForm" class="nickname-sheet">
     <p class="eyebrow">PASSWORD</p><h2 id="passwordRecoveryTitle">設定新密碼</h2>
-    <p class="hint">請設定至少 12 個字元的新密碼。</p>
-    <label>新密碼<input id="passwordRecoveryPassword" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label>
-    <label>確認新密碼<input id="passwordRecoveryConfirm" type="password" required minlength="12" maxlength="72" autocomplete="new-password"></label>
+    <p class="hint">請設定至少 6 個字元的新密碼。</p>
+    <label>新密碼<input id="passwordRecoveryPassword" type="password" required minlength="6" maxlength="72" autocomplete="new-password"></label>
+    <label>確認新密碼<input id="passwordRecoveryConfirm" type="password" required minlength="6" maxlength="72" autocomplete="new-password"></label>
     <div class="profile-actions"><button class="btn-primary" type="submit">更新密碼</button><button id="passwordRecoveryCancel" class="btn-ghost" type="button">取消</button></div>
     <p id="passwordRecoveryStatus" class="hint" role="status" aria-live="polite"></p>
   </form>
@@ -258,7 +258,7 @@
 
 <script src="account-config.js?v=41"></script>
 <script src="supabase-sync.js?v=54"></script>
-<script src="account-auth.js?v=47"></script>
+<script src="account-auth.js?v=73"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
@@ -275,7 +275,7 @@
 <script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=72"></script>
+<script src="app.js?v=73"></script>
 </body>
 </html>
 

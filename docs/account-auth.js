@@ -56,7 +56,21 @@
   function validPassword(value) {
     /* This is a usability floor, not the password policy. Supabase Auth remains
        the authority and must have leaked-password protection enabled before production. */
-    return typeof value === "string" && value.length >= 12 && value.length <= 72;
+    return typeof value === "string" && value.length >= 6 && value.length <= 72;
+  }
+  function signUpErrorMessage(error) {
+    var code = error && error.code;
+    if (code === "invalid_username") return "帳號名稱須為 3～32 個字元，以英文字母開頭，只能使用英文字母、數字與底線，例如 hau_115。";
+    if (code === "invalid_email" || code === "email_address_invalid") return "請填寫有效的救援 Email。";
+    if (code === "invalid_password") return "密碼須為 6～72 個字元。";
+    if (code === "23505") return "Email 帳號已建立，但帳號名稱無法啟用，請聯絡管理員處理，不必重複註冊。";
+    if (code === "weak_password") return "密碼未符合帳號服務的要求，請換一組密碼；若已滿 6 個字元仍失敗，請回報管理員。";
+    if (code === "over_email_send_rate_limit" || code === "over_request_rate_limit" || (error && error.status === 429)) return "操作太頻繁，請稍後再試，不必更換帳號名稱。";
+    if (code === "email_address_not_authorized") return "目前驗證信服務尚未開放寄送到這個 Email，請聯絡管理員處理。";
+    if (code === "signup_disabled") return "目前暫停新帳號註冊，請聯絡管理員。";
+    if (code === "user_already_exists" || code === "email_exists") return "這個 Email 已註冊，請登入或使用忘記密碼。";
+    if (error && error.message === "current app URL is not allow-listed") return "這個測試網址尚未開放註冊，請使用已設定的測試站網址。";
+    return "註冊暫時失敗，請稍後再試；若持續發生，請回報管理員。這不代表帳號名稱已被使用。";
   }
   function normalizeAppUrl(value, allowCallbackParameters) {
     if (typeof value !== "string" || !value.trim()) return null;
@@ -81,7 +95,13 @@
     });
     var current = locationLike || (typeof window !== "undefined" ? window.location : null);
     var currentUrl = normalizeAppUrl(current && typeof current.href === "string" ? current.href : "", true);
-    return currentUrl && allowed.find(function (url) { return url === currentUrl; }) || null;
+    if (!currentUrl || allowed.indexOf(currentUrl) === -1) return null;
+    var callback = config.callbackRedirects && config.callbackRedirects[currentUrl];
+    if (callback) {
+      callback = normalizeAppUrl(callback, false);
+      return callback && allowed.indexOf(callback) !== -1 ? callback : null;
+    }
+    return currentUrl;
   }
   function createController(options) {
     options = options || {};
@@ -199,7 +219,9 @@
         email = normalizeEmail(email);
         nickname = normalizeNickname(nickname);
         username = normalizeUsername(username);
-        if (!email || !username || !validPassword(password)) return Promise.reject(new Error("invalid email, username, or password"));
+        if (!username) return Promise.reject(Object.assign(new Error("invalid username"), { code: "invalid_username" }));
+        if (!email) return Promise.reject(Object.assign(new Error("invalid email"), { code: "invalid_email" }));
+        if (!validPassword(password)) return Promise.reject(Object.assign(new Error("invalid password"), { code: "invalid_password" }));
         var redirectTo = approvedRedirect(config, options.location);
         if (!redirectTo) return Promise.reject(new Error("current app URL is not allow-listed"));
         return getClient().then(function (c) {
@@ -251,6 +273,6 @@
     };
   }
   return { CLIENT_VERSION: CLIENT_VERSION, CLIENT_URL: CLIENT_URL, verifiedSession: verifiedSession, verifiedUid: verifiedUid,
-    normalizeNickname: normalizeNickname, normalizeEmail: normalizeEmail, normalizeUsername: normalizeUsername, validPassword: validPassword, displayName: displayName, displayEmail: displayEmail, normalizeAppUrl: normalizeAppUrl,
+    normalizeNickname: normalizeNickname, normalizeEmail: normalizeEmail, normalizeUsername: normalizeUsername, validPassword: validPassword, signUpErrorMessage: signUpErrorMessage, displayName: displayName, displayEmail: displayEmail, normalizeAppUrl: normalizeAppUrl,
     approvedRedirect: approvedRedirect, createController: createController };
 });

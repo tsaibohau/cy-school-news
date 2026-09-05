@@ -5,6 +5,7 @@ type RequestBody = { action?: string; username?: string; password?: string }
 const usernamePattern = /^[a-z][a-z0-9_]{2,31}$/
 const allowedOrigins = new Set([
   "https://cy-school-news-staging.vercel.app",
+  "https://cy-school-news-staging-git-code-184992-tsaibohau-9644s-projects.vercel.app",
   "https://tsaibohau.github.io",
 ])
 
@@ -40,7 +41,7 @@ Deno.serve(async (req) => {
   const body = await req.json().catch(() => null) as RequestBody | null
   const username = String(body?.username || "").trim().toLowerCase()
   const password = body?.password
-  if (body?.action !== "sign_in" || !usernamePattern.test(username) || typeof password !== "string" || password.length < 12 || password.length > 72) {
+  if (body?.action !== "sign_in" || !usernamePattern.test(username) || typeof password !== "string" || password.length < 6 || password.length > 72) {
     return reply({ error: "invalid_credentials" }, 400, origin)
   }
   const url = required("SUPABASE_URL")

@@ -665,7 +665,7 @@
         var passwordField = el.passwordAuthPassword.parentNode;
         el.passwordAuthDialog.dataset.mode = mode;
         el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉校快訊";
-        el.passwordAuthHint.textContent = signup ? "先設定登入資料。完成 Email 驗證與管理員核准後，再用約 20 秒選擇學校。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "請輸入 Email 或帳號名稱與密碼。";
+        el.passwordAuthHint.textContent = signup ? "帳號名稱限 3～32 個英文字母、數字或底線，須以英文字母開頭；密碼至少 6 個字元。完成 Email 驗證後等待管理員核准。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "請輸入 Email 或帳號名稱與密碼。";
         usernameField.hidden = reset;
         el.passwordAuthUsername.disabled = reset;
         el.passwordAuthEmailField.hidden = !signup && !reset;
@@ -743,8 +743,8 @@
         auth.signUpWithPassword(email, password, "", username).then(function (result) {
           el.passwordAuthPassword.value = "";
           if (result.session) return auth.claimUsername(username).then(function () { if (el.passwordAuthDialog.open) el.passwordAuthDialog.close(); return handleVerifiedSession(); });
-          el.passwordAuthStatus.textContent = "請到救援 Email 完成驗證，再用帳號與密碼登入。";
-        }).catch(function () { el.passwordAuthPassword.value = ""; el.passwordAuthStatus.textContent = "無法建立帳號；請確認資料或換一個帳號名稱。"; });
+          el.passwordAuthStatus.textContent = "請到救援 Email 完成驗證，再用 Email 與密碼首次登入，即可啟用帳號名稱。";
+        }).catch(function (error) { el.passwordAuthPassword.value = ""; el.passwordAuthStatus.textContent = window.CyNewsAccountAuth.signUpErrorMessage(error); });
       });
       if (el.passwordResetRequest) el.passwordResetRequest.addEventListener("click", function () { setPasswordAuthMode("reset"); el.passwordAuthStatus.textContent = ""; });
       if (el.passwordAuthBack) el.passwordAuthBack.addEventListener("click", function () { setPasswordAuthMode("signin"); el.passwordAuthStatus.textContent = ""; el.passwordAuthUsername.focus(); });
@@ -2177,7 +2177,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=72").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=73").catch(function () {});
       });
     }
 
