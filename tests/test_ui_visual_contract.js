@@ -18,7 +18,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=72/);
+assert.match(index, /style\.css\?v=75/);
 assert.match(index, /search-taxonomy\.js\?v=52/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=52/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=53/, "reviewed validity loads before answers");
@@ -38,6 +38,8 @@ assert.match(app, /為什麼這樣回答/, "assistant evidence is available with
 assert.match(app, /searchTimer = setTimeout[\s\S]*200\);/, "full-corpus ranking is debounced while the user types");
 assert.match(index, /id="navMenuToggle"[^>]*aria-expanded="false"[^>]*aria-controls="navMenu"/, "mobile navigation is exposed through one accessible menu button");
 assert.match(index, /id="navMenu"[^>]*hidden/, "function menu starts closed");
+assert.match(index, /id="tabAdmin"[^>]*hidden/, "administrator tab starts hidden");
+assert.match(style, /\.tab\[hidden\]\s*\{\s*display:\s*none;/, "hidden navigation tabs must override the tab display layout");
 assert.match(index, /id="navCurrentLabel">選單</);
 assert.match(index, /id="viewHome"[^>]*aria-labelledby="homeTitle"/);
 assert.match(index, /id="homeTitle"[^>]*class="calligraphy-title"[^>]*>.*學校公告.*匯集系統/s);
