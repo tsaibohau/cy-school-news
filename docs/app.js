@@ -14,9 +14,14 @@
     document.head.appendChild(script);
   }
 
+  function finishInitialLoading() {
+    var loading = document.getElementById("appLoading");
+    if (loading) loading.hidden = true;
+  }
+
   function startApp() {
     var NotificationState = window.CyNewsNotificationState;
-    if (!NotificationState) return;
+    if (!NotificationState) { finishInitialLoading(); return; }
 
     var LS_SEEN = "cyNews.lastSeen";
     var LS_EVENTS = "cyNews.calendarEvents.v1";
@@ -44,18 +49,20 @@
     var queueAccountMutation = function () {};
     var createTaskReminder = function () { return Promise.reject(new Error("account not ready")); };
     var accountAuth = null;
+    var searchTimer = null;
 
     var state = {
       data: null,
       school: loadSchool(),
       cat: "all",
       q: "",
-      tab: "home",
+      tab: "latest",
       calendarMonth: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
       calendarSelected: new Date().toISOString().slice(0, 10),
       eventEditingId: null,
       officialEvents: [],
       calendarStatus: "partial",
+      timetables: [],
       userEvents: loadUserEvents(),
       reads: loadReads(),
       shown: PAGE_SIZE,
@@ -65,6 +72,7 @@
       tasks: [],
       profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
       accountUser: null,
+      accountAccess: null,
       nickname: "",
       assistantFeedback: window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {},
       assistantAnswer: null,
@@ -83,11 +91,11 @@
 
     var $ = function (id) { return document.getElementById(id); };
     var el = {
-      list: $("list"), subList: $("subList"), countLine: $("countLine"),
+      appLoading: $("appLoading"), list: $("list"), subList: $("subList"), countLine: $("countLine"),
       updatedAt: $("updatedAt"), q: $("q"),
       schoolFilter: $("schoolFilter"), catChips: $("catChips"),
-      viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"),
-      tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabSub: $("tabSub"), subBadge: $("subBadge"),
+      viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewSub: $("viewSub"), viewAdmin: $("viewAdmin"),
+      tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabSub: $("tabSub"), tabAdmin: $("tabAdmin"), subBadge: $("subBadge"),
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
       reminderPushToggle: $("reminderPushToggle"), reminderPushState: $("reminderPushState"),
@@ -95,7 +103,11 @@
       reminderCustomWrap: $("reminderCustomWrap"), reminderCustomOffsets: $("reminderCustomOffsets"),
       btnRefresh: $("btnRefresh"), refreshState: $("refreshState"),
       accountState: $("accountState"), accountEmail: $("accountEmail"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
-      accountLogout: $("accountLogout"),
+      accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"), publicAccountLogout: $("publicAccountLogout"), publicAccessTitle: $("publicAccessTitle"), publicAccessLead: $("publicAccessLead"), publicAccessStatus: $("publicAccessStatus"),
+      adminRefresh: $("adminRefresh"), adminStatus: $("adminStatus"), adminAccounts: $("adminAccounts"),
+      passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
+      passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
+      accountDeleteCloud: $("accountDeleteCloud"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
       prevMonth: $("prevMonth"), nextMonth: $("nextMonth"), todayCalendar: $("todayCalendar"),
@@ -115,6 +127,7 @@
       taskStatus: $("taskStatus"), taskOpenList: $("taskOpenList"), taskDoneList: $("taskDoneList"),
       taskComposerToggle: $("taskComposerToggle"), taskOpenCount: $("taskOpenCount"), taskDoneCount: $("taskDoneCount"),
       todayCoverage: $("todayCoverage"), todayBriefSummary: $("todayBriefSummary"), todayFocus: $("todayFocus"),
+      todayTimetable: $("todayTimetable"),
       todayEvents: $("todayEvents"), todayDeadlines: $("todayDeadlines"),
       todayTasks: $("todayTasks"), todayRelevant: $("todayRelevant"), todayEmpty: $("todayEmpty"),
       detailDialog: $("detailDialog"), detailTitle: $("detailTitle"), detailMeta: $("detailMeta"),
@@ -279,6 +292,9 @@
       if (!auth.isConfigured()) {
         var accountBox = document.getElementById("accountBox");
         if (accountBox) accountBox.hidden = true;
+        if (el.functionDock) el.functionDock.hidden = true;
+        if (el.publicAccountEntry) el.publicAccountEntry.hidden = false;
+        switchTab("latest");
         return;
       }
       var lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
@@ -295,8 +311,38 @@
       var pushManager = window.CyNewsPushSubscription ? window.CyNewsPushSubscription.createManager({ auth: auth }) : null;
       var reminderAdapter = window.CyNewsReminderRules ? window.CyNewsReminderRules.createAdapter({ auth: auth }) : null;
       function status(text) { el.accountState.textContent = text; }
+      function showAnonymousShell() {
+        if (el.functionDock) el.functionDock.hidden = true;
+        setNavMenu(false);
+        if (el.publicAccountEntry) el.publicAccountEntry.hidden = false;
+        if (el.publicAccountLogin) el.publicAccountLogin.hidden = false;
+        if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = false;
+        if (el.publicAccountLogout) el.publicAccountLogout.hidden = true;
+        if (el.publicAccountEntry) el.publicAccountEntry.dataset.state = "anonymous";
+        if (el.publicAccessTitle) el.publicAccessTitle.textContent = "先查公告，不必登入";
+        if (el.publicAccessLead) el.publicAccessLead.textContent = "想使用課表、待辦、問校務或通知時，再建立帳號就好。";
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "";
+        if (el.tabAdmin) el.tabAdmin.hidden = true;
+        if (state.tab !== "latest") switchTab("latest");
+      }
+      function showPendingAccountShell(message) {
+        showAnonymousShell();
+        if (el.publicAccountLogin) el.publicAccountLogin.hidden = true;
+        if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = true;
+        if (el.publicAccountLogout) el.publicAccountLogout.hidden = false;
+        if (el.publicAccountEntry) el.publicAccountEntry.dataset.state = "pending";
+        if (el.publicAccessTitle) el.publicAccessTitle.textContent = "帳號已建立，正在等待核准";
+        if (el.publicAccessLead) el.publicAccessLead.textContent = "你現在仍可搜尋所有公告；核准後重新整理，就能使用個人功能。";
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = message;
+      }
+      function showAccountShell() {
+        if (el.functionDock) el.functionDock.hidden = false;
+        if (el.publicAccountEntry) el.publicAccountEntry.hidden = true;
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "";
+      }
       function setAccountUser(user) {
         state.accountUser = user || null;
+        if (!user) state.accountAccess = null;
         state.nickname = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayName(user) : "";
         var email = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayEmail(user) : "";
         if (el.accountEmail) {
@@ -304,6 +350,18 @@
           el.accountEmail.hidden = !email;
         }
         renderGreeting(); renderProfile();
+      }
+      function renderAdminAccounts(rows) {
+        if (!el.adminAccounts) return;
+        el.adminAccounts.innerHTML = rows.length ? rows.map(function (row) {
+          var action = row.status === "pending" ? '<button class="btn-primary" type="button" data-admin-review="approved" data-admin-user="' + esc(row.user_id) + '">核准</button><button class="btn-ghost danger-button" type="button" data-admin-review="rejected" data-admin-user="' + esc(row.user_id) + '">拒絕</button>' : '<button class="btn-ghost danger-button" type="button" data-admin-review="rejected" data-admin-user="' + esc(row.user_id) + '">移除使用權</button>';
+          return '<article class="admin-account"><div><strong>' + esc(row.email) + '</strong><small>' + esc(row.status === "pending" ? "等待核准" : row.status === "approved" ? "已核准" : "已移除使用權") + '</small></div><div class="admin-account-actions">' + action + '</div></article>';
+        }).join("") : '<p class="empty">目前沒有已註冊帳號。</p>';
+      }
+      function loadAdminAccounts() {
+        if (!accountAuth || !state.accountUser || !state.accountAccess || !state.accountAccess.is_admin || !el.adminAccounts) return;
+        el.adminStatus.textContent = "讀取帳號申請中";
+        accountAuth.getAdminAccounts().then(function (rows) { el.adminStatus.textContent = ""; renderAdminAccounts(rows); }).catch(function () { el.adminStatus.textContent = "目前無法讀取帳號申請，請重新整理後再試。"; });
       }
       function maybePromptNickname(user) {
         if (!user || !el.nicknameDialog || !el.nicknameInput) return;
@@ -429,6 +487,7 @@
         state.archive = "none";
         state.archivePromise = null;
         publishState(anonymousState, "anonymous");
+        showAnonymousShell();
         if (state.data) fetchData(true);
       }
       function sync(uid, authRetry) {
@@ -474,6 +533,7 @@
           el.accountLogin.hidden = true;
           if (el.accountSwitch) el.accountSwitch.hidden = false;
           el.accountLogout.hidden = false;
+          if (el.accountDeleteCloud) { el.accountDeleteCloud.hidden = false; el.accountDeleteCloud.disabled = false; }
           maybePromptNickname(state.accountUser);
           renderReminderPush();
         }).catch(function () {
@@ -495,8 +555,10 @@
             status("同步待完成");
             if (el.accountSwitch) el.accountSwitch.hidden = false;
             el.accountLogout.hidden = false;
+            if (el.accountDeleteCloud) { el.accountDeleteCloud.hidden = false; el.accountDeleteCloud.disabled = false; }
           } else {
             status("已登入・同步待完成");
+            if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
             el.accountLogin.hidden = true;
             if (el.accountSwitch) el.accountSwitch.hidden = false;
             el.accountLogout.hidden = false;
@@ -523,25 +585,181 @@
         return auth.getVerifiedSession().then(function (session) {
           var uid = session && session.user && session.user.id;
           if (typeof uid === "string" && uid) {
+            var pendingUsername = window.CyNewsAccountAuth.normalizeUsername(session.user && session.user.user_metadata && session.user.user_metadata.pending_username);
+            if (pendingUsername) {
+              return auth.claimUsername(pendingUsername).then(function () { return handleVerifiedSession(); }).catch(function () {
+                status("帳號名稱無法啟用；請聯絡管理者協助。");
+                return auth.getClient().then(function (client) { return client.auth["signOut"](); }).then(function () { restoreAnonymous(); setAccountUser(null); });
+              });
+            }
             setAccountUser(session.user);
-            if (uid === requestedUid) return;
+            return auth.getAccountAccess().then(function (access) {
+              state.accountAccess = access;
+              if (access.status !== "approved") {
+                if (el.tabAdmin) el.tabAdmin.hidden = true;
+                showPendingAccountShell(access.status === "rejected" ? "此帳號目前未獲使用核准；如有疑問請聯絡管理員。" : "帳號已登入，等待管理員核准後才能使用個人功能。");
+                status(access.status === "rejected" ? "未獲核准" : "等待核准");
+                return;
+              }
+              showAccountShell();
+              if (el.tabAdmin) el.tabAdmin.hidden = !access.is_admin;
+              loadAdminAccounts();
+              if (uid === requestedUid) return;
             /* A verified session is authenticated before remote sync completes.
                Keep account controls truthful while the single transition runs. */
-            status("已登入・同步中");
-            el.accountLogin.hidden = true;
-            if (el.accountSwitch) el.accountSwitch.hidden = false;
-            el.accountLogout.hidden = false;
-            sync(uid);
+              status("已登入・同步中");
+              el.accountLogin.hidden = true;
+              if (el.accountSwitch) el.accountSwitch.hidden = false;
+              el.accountLogout.hidden = false;
+              if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
+              sync(uid);
+            }).catch(function () {
+              state.accountAccess = null;
+              if (el.tabAdmin) el.tabAdmin.hidden = true;
+              showPendingAccountShell("帳號權限暫時無法確認，請稍後再試。");
+              status("權限待確認");
+            });
           } else if (requestedUid !== null || readyUid !== null || accountPhase !== "ANONYMOUS_READY") {
             restoreAnonymous();
             setAccountUser(null);
+            if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
             status("未登入"); el.accountLogin.hidden = false;
             if (el.accountSwitch) el.accountSwitch.hidden = true;
             el.accountLogout.hidden = true;
           }
+          if (!(typeof uid === "string" && uid)) showAnonymousShell();
         });
       }
+      function setPasswordAuthMode(mode) {
+        mode = mode === "signup" || mode === "reset" ? mode : "signin";
+        var signup = mode === "signup";
+        var reset = mode === "reset";
+        var usernameField = el.passwordAuthUsername.parentNode;
+        var passwordField = el.passwordAuthPassword.parentNode;
+        el.passwordAuthDialog.dataset.mode = mode;
+        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉校快訊";
+        el.passwordAuthHint.textContent = signup ? "先設定登入資料。完成 Email 驗證與管理員核准後，再用約 20 秒選擇學校。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "請輸入 Email 或帳號名稱與密碼。";
+        usernameField.hidden = reset;
+        el.passwordAuthUsername.disabled = reset;
+        el.passwordAuthEmailField.hidden = !signup && !reset;
+        el.passwordAuthEmail.disabled = !signup && !reset;
+        passwordField.hidden = reset;
+        el.passwordAuthPassword.disabled = reset;
+        el.passwordAuthPassword.autocomplete = signup ? "new-password" : "current-password";
+        el.passwordSignIn.hidden = signup || reset;
+        el.passwordSignUp.hidden = false;
+        el.passwordSignUp.textContent = signup ? "建立帳號" : reset ? "寄送重設信" : "註冊";
+        el.passwordSignUp.classList.toggle("btn-primary", signup || reset);
+        el.passwordSignUp.classList.toggle("btn-ghost", !signup && !reset);
+        el.passwordResetRequest.hidden = signup || reset;
+        el.passwordAuthBack.hidden = !reset;
+      }
+      function showPasswordAuth(mode) {
+        if (!el.passwordAuthDialog || typeof el.passwordAuthDialog.showModal !== "function") { status("帳密登入介面暫時不可用"); return; }
+        setPasswordAuthMode(mode);
+        el.passwordAuthStatus.textContent = "";
+        el.passwordAuthPassword.value = "";
+        if (!el.passwordAuthDialog.open) el.passwordAuthDialog.showModal();
+        (mode === "reset" ? el.passwordAuthEmail : el.passwordAuthUsername).focus();
+      }
+      function showPasswordRecovery() {
+        if (!el.passwordRecoveryDialog || typeof el.passwordRecoveryDialog.showModal !== "function") return;
+        el.passwordRecoveryPassword.value = "";
+        el.passwordRecoveryConfirm.value = "";
+        el.passwordRecoveryStatus.textContent = "";
+        if (!el.passwordRecoveryDialog.open) el.passwordRecoveryDialog.showModal();
+        el.passwordRecoveryPassword.focus();
+      }
+      function requestPasswordReset() {
+        el.passwordAuthStatus.textContent = "寄送中";
+        auth.resetPasswordForEmail(el.passwordAuthEmail.value).then(function () {
+          el.passwordAuthPassword.value = "";
+          el.passwordAuthStatus.textContent = "若此 Email 已註冊，重設信已寄出。";
+        }).catch(function () {
+          el.passwordAuthPassword.value = "";
+          el.passwordAuthStatus.textContent = "無法寄出重設信；請確認 Email 後再試。";
+        });
+      }
+      function beginPasswordSession(work, successMessage) {
+        syncGeneration += 1;
+        requestedUid = null;
+        readyUid = null;
+        accountPhase = "AUTHENTICATING";
+        clearAccountOwnedView();
+        el.passwordAuthStatus.textContent = "處理中";
+        return work().then(function () {
+          el.passwordAuthPassword.value = "";
+          if (el.passwordAuthDialog.open) el.passwordAuthDialog.close();
+          status(successMessage || "登入中");
+          return handleVerifiedSession();
+        }).catch(function () {
+          el.passwordAuthPassword.value = "";
+          el.passwordAuthStatus.textContent = "帳號或密碼錯誤；請再試一次。";
+          status("未登入");
+        });
+      }
+      if (el.passwordAuthForm) el.passwordAuthForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var mode = el.passwordAuthDialog.dataset.mode || "signin";
+        if (mode === "signup") { el.passwordSignUp.click(); return; }
+        if (mode === "reset") { requestPasswordReset(); return; }
+        beginPasswordSession(function () { return auth.signInWithIdentifier(el.passwordAuthUsername.value, el.passwordAuthPassword.value); });
+      });
+      if (el.passwordSignUp) el.passwordSignUp.addEventListener("click", function () {
+        var mode = el.passwordAuthDialog.dataset.mode || "signin";
+        if (mode === "signin") { setPasswordAuthMode("signup"); return; }
+        if (mode === "reset") { requestPasswordReset(); return; }
+        var username = el.passwordAuthUsername.value;
+        var email = el.passwordAuthEmail.value;
+        var password = el.passwordAuthPassword.value;
+        el.passwordAuthStatus.textContent = "建立帳號中";
+        auth.signUpWithPassword(email, password, "", username).then(function (result) {
+          el.passwordAuthPassword.value = "";
+          if (result.session) return auth.claimUsername(username).then(function () { if (el.passwordAuthDialog.open) el.passwordAuthDialog.close(); return handleVerifiedSession(); });
+          el.passwordAuthStatus.textContent = "請到救援 Email 完成驗證，再用帳號與密碼登入。";
+        }).catch(function () { el.passwordAuthPassword.value = ""; el.passwordAuthStatus.textContent = "無法建立帳號；請確認資料或換一個帳號名稱。"; });
+      });
+      if (el.passwordResetRequest) el.passwordResetRequest.addEventListener("click", function () { setPasswordAuthMode("reset"); el.passwordAuthStatus.textContent = ""; });
+      if (el.passwordAuthBack) el.passwordAuthBack.addEventListener("click", function () { setPasswordAuthMode("signin"); el.passwordAuthStatus.textContent = ""; el.passwordAuthUsername.focus(); });
+      if (el.passwordAuthCancel) el.passwordAuthCancel.addEventListener("click", function () { el.passwordAuthPassword.value = ""; el.passwordAuthDialog.close(); });
+      if (el.adminRefresh) el.adminRefresh.addEventListener("click", loadAdminAccounts);
+      if (el.adminAccounts) el.adminAccounts.addEventListener("click", function (event) {
+        var button = event.target.closest("button[data-admin-review]");
+        if (!button || !accountAuth) return;
+        var action = button.dataset.adminReview;
+        if (action === "rejected" && !window.confirm("確定要移除此帳號的網站使用權嗎？資料會保留在稽核紀錄中。")) return;
+        el.adminStatus.textContent = "處理中";
+        accountAuth.reviewAccount(button.dataset.adminUser, action).then(function () { el.adminStatus.textContent = action === "approved" ? "已核准帳號。" : "已移除帳號使用權。"; loadAdminAccounts(); }).catch(function () { el.adminStatus.textContent = "無法更新帳號狀態，請重新整理後再試。"; });
+      });
+      if (el.passwordRecoveryForm) el.passwordRecoveryForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var password = el.passwordRecoveryPassword.value;
+        if (password !== el.passwordRecoveryConfirm.value) { el.passwordRecoveryStatus.textContent = "兩次密碼不一致。"; return; }
+        el.passwordRecoveryStatus.textContent = "更新中";
+        auth.updatePassword(password).then(function () {
+          el.passwordRecoveryPassword.value = "";
+          el.passwordRecoveryConfirm.value = "";
+          el.passwordRecoveryStatus.textContent = "密碼已更新。";
+          if (el.passwordRecoveryDialog.open) el.passwordRecoveryDialog.close();
+          return handleVerifiedSession();
+        }).catch(function () {
+          el.passwordRecoveryPassword.value = "";
+          el.passwordRecoveryConfirm.value = "";
+          el.passwordRecoveryStatus.textContent = "無法更新密碼；請重新開啟重設連結。";
+        });
+      });
+      if (el.passwordRecoveryCancel) el.passwordRecoveryCancel.addEventListener("click", function () { el.passwordRecoveryPassword.value = ""; el.passwordRecoveryConfirm.value = ""; el.passwordRecoveryDialog.close(); });
+      if (el.passwordGoogleLogin) el.passwordGoogleLogin.addEventListener("click", function () { el.passwordAuthDialog.close(); el.accountLogin.dataset.googleLogin = "1"; el.accountLogin.click(); });
+      if (el.publicAccountLogin) el.publicAccountLogin.addEventListener("click", function () { showPasswordAuth("signin"); });
+      if (el.publicAccountSignUp) el.publicAccountSignUp.addEventListener("click", function () { showPasswordAuth("signup"); });
+      if (el.publicAccountLogout) el.publicAccountLogout.addEventListener("click", function () {
+        var detach = pushManager ? pushManager.disable() : Promise.resolve();
+        detach.then(function () { return auth.signOut(); }).then(function () { restoreAnonymous(); setAccountUser(null); status("未登入"); }).catch(function () { if (el.publicAccessStatus) el.publicAccessStatus.textContent = "登出失敗，請稍後再試。"; });
+      });
       el.accountLogin.addEventListener("click", function () {
+        if (el.accountLogin.dataset.googleLogin !== "1") { showPasswordAuth("signin"); return; }
+        delete el.accountLogin.dataset.googleLogin;
+        if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
         syncGeneration += 1;
         requestedUid = null;
         readyUid = null;
@@ -553,6 +771,7 @@
         }).catch(function () { status("登入失敗，請稍後再試"); handleVerifiedSession().catch(function () {}); });
       });
       if (el.accountSwitch) el.accountSwitch.addEventListener("click", function () {
+        if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
         syncGeneration += 1;
         requestedUid = null;
         readyUid = null;
@@ -565,6 +784,7 @@
         }).catch(function () { status("切換前無法安全停用此裝置推播，請稍後再試"); handleVerifiedSession().catch(function () {}); });
       });
       el.accountLogout.addEventListener("click", function () {
+        if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
         syncGeneration += 1;
         requestedUid = null;
         readyUid = null;
@@ -580,11 +800,57 @@
           el.accountLogout.hidden = true;
         }).catch(function () { status("登出前無法安全停用此裝置推播，請稍後再試"); });
       });
+      if (el.accountDeleteCloud) el.accountDeleteCloud.addEventListener("click", function () {
+        if (accountPhase !== "ACCOUNT_READY" || !readyUid) return;
+        if (!window.confirm("確定刪除這個登入帳號在本站同步的偏好、追蹤、閱讀紀錄與待辦？此操作無法復原，但不會刪除 Google 帳號。")) return;
+        var deletionUid = readyUid;
+        var generation = ++syncGeneration;
+        var dataDeleted = false;
+        requestedUid = deletionUid;
+        readyUid = null;
+        accountPhase = "AUTHENTICATING";
+        el.accountDeleteCloud.disabled = true;
+        status("正在刪除已同步資料");
+        var detach = pushManager ? pushManager.disable() : Promise.resolve();
+        detach.then(function () { return auth.getClient(); }).then(function (client) {
+          return window.CyNewsSupabaseSync.createAdapter(client, { isCurrent: function (currentUid) {
+            return generation === syncGeneration && currentUid === deletionUid;
+          }}).deleteOwnData();
+        }).then(function () {
+          dataDeleted = true;
+          lifecycle.clearAccountData(deletionUid);
+          clearAccountOwnedView();
+          return auth.signOut();
+        }).then(function () {
+          restoreAnonymous();
+          setAccountUser(null);
+          status("已刪除同步資料並登出");
+          el.accountLogin.hidden = false;
+          if (el.accountSwitch) el.accountSwitch.hidden = true;
+          el.accountLogout.hidden = true;
+          el.accountDeleteCloud.hidden = true;
+        }).catch(function () {
+          if (generation !== syncGeneration) return;
+          if (dataDeleted) {
+            accountPhase = "AUTHENTICATING";
+            status("同步資料已刪除，但登出未完成；請再按登出");
+            el.accountDeleteCloud.hidden = true;
+            el.accountLogout.hidden = false;
+            return;
+          }
+          readyUid = deletionUid;
+          accountPhase = "ACCOUNT_READY";
+          status("刪除未完成，請稍後重試");
+          el.accountDeleteCloud.disabled = false;
+          el.accountDeleteCloud.hidden = false;
+        });
+      });
       /* Subscribe before the first session read. On an OAuth callback the client
          begins exchanging the URL grant as it is constructed; registering after
          the first read can miss that one SIGNED_IN event and leave the page at
          "已登入・同步待完成" until a manual reload. */
-      auth.onAuthStateChange(function () { handleVerifiedSession().catch(function () {}); }).catch(function () {});
+      showAnonymousShell();
+      auth.onAuthStateChange(function (event) { if (event === "PASSWORD_RECOVERY") { showPasswordRecovery(); return; } handleVerifiedSession().catch(function () {}); }).catch(function () {});
       auth.getClient().then(function () { return handleVerifiedSession(); })
         .catch(function () { status("未登入"); });
 
@@ -812,9 +1078,15 @@
     }
     function latestItems() {
       if (!state.data) return [];
-      var rows = state.data.items.map(function (it) {
+      var candidates = state.data.items.filter(function (it) {
         if (state.school !== "all" && it.school !== state.school) return false;
         if (state.cat !== "all" && it.category !== state.cat) return false;
+        return true;
+      });
+      if (state.q && window.CyNewsSearchQuery && typeof window.CyNewsSearchQuery.select === "function") {
+        return window.CyNewsSearchQuery.select(candidates, state.q).map(function (row) { return row.item; });
+      }
+      var rows = candidates.map(function (it) {
         var score = queryScore(it, state.q);
         return score ? { item: it, score: score } : false;
       }).filter(Boolean);
@@ -950,6 +1222,78 @@
         state.calendarStatus = rows.length && rows.every(function (row) { return row.status === "official_complete"; }) ? "complete" : "partial";
         renderToday();
       }).catch(function () { state.calendarStatus = "partial"; renderToday(); });
+    }
+    function loadTimetables() {
+      return fetch("data/class-timetables.json?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
+        return response.ok ? response.json() : { timetables: [] };
+      }).then(function (data) {
+        state.timetables = Array.isArray(data && data.timetables) ? data.timetables : [];
+        renderToday();
+      }).catch(function () {
+        state.timetables = [];
+        renderToday();
+      });
+    }
+    function officialTimetableUrl(value) {
+      try {
+        var url = new URL(String(value || ""), window.location.href);
+        return url.protocol === "https:" && url.hostname === "www.cysh.cy.edu.tw" ? url.href : "";
+      } catch (_) { return ""; }
+    }
+    function timetableForProfile() {
+      var profile = state.profile || {};
+      var className = String(profile.class_name || "").trim();
+      if (profile.school_id !== "cysh" || !/^\d{3}$/.test(className)) return null;
+      var candidates = (state.timetables || []).filter(function (row) {
+        return row && row.school_id === "cysh" && Array.isArray(row.classes);
+      }).sort(function (left, right) {
+        var leftTerm = Number(left.academic_year || 0) * 2 + Number(left.semester || 0);
+        var rightTerm = Number(right.academic_year || 0) * 2 + Number(right.semester || 0);
+        if (leftTerm !== rightTerm) return rightTerm - leftTerm;
+        return (right.version === "formal" ? 1 : 0) - (left.version === "formal" ? 1 : 0);
+      });
+      for (var index = 0; index < candidates.length; index += 1) {
+        var classRow = candidates[index].classes.find(function (row) { return String(row && row.class_name || "") === className; });
+        if (classRow && Array.isArray(classRow.slots)) return { timetable: candidates[index], classRow: classRow };
+      }
+      return null;
+    }
+    function taipeiWeekday() {
+      return new Intl.DateTimeFormat("zh-TW", { weekday: "long", timeZone: "Asia/Taipei" }).format(new Date()).replace("週", "星期");
+    }
+    function timetableTime(value) {
+      var raw = String(value == null ? "" : value).trim();
+      return /^\d{4}$/.test(raw) ? raw.slice(0, 2) + ":" + raw.slice(2) : raw;
+    }
+    function timetableHTML() {
+      var profile = state.profile || {};
+      var className = String(profile.class_name || "").trim();
+      if (!profile.school_id) return '<p class="empty">先登入並在「我的」選擇學校與班級，才能顯示課表。</p>';
+      if (profile.school_id !== "cysh") return '<p class="empty">目前只讀取嘉義高中已公開的班級課表。</p>';
+      if (!/^\d{3}$/.test(className)) return '<p class="empty">請先到「我的」填入三位數班級，例如 109。</p>';
+      var found = timetableForProfile();
+      if (!found) return '<p class="empty">校方目前沒有這個班級可讀取的公開課表。</p>';
+      var row = found.timetable;
+      var version = row.version === "formal" ? "正式版" : "試行版";
+      var weekday = taipeiWeekday();
+      var todaySlots = found.classRow.slots.filter(function (slot) { return slot.weekday === weekday; });
+      var sourceUrl = officialTimetableUrl(row.source_url);
+      var source = sourceUrl ? '<a href="' + esc(sourceUrl) + '" target="_blank" rel="noopener noreferrer">查看校方課表公告 ↗</a>' : '校方公告來源';
+      var todayRows = todaySlots.length ? todaySlots.map(function (slot) {
+        return '<div class="timetable-row"><span class="timetable-period">第 ' + esc(slot.period) + ' 節<small>' + esc(timetableTime(slot.start)) + '–' + esc(timetableTime(slot.end)) + '</small></span><strong>' + esc(slot.subject || "—") + '</strong></div>';
+      }).join("") : '<p class="empty">今天沒有排定上課時段。</p>';
+      var weekdays = ["星期一", "星期二", "星期三", "星期四", "星期五"];
+      var grid = [1, 2, 3, 4, 5, 6, 7, 8].map(function (period) {
+        var cells = weekdays.map(function (day) {
+          var slot = found.classRow.slots.find(function (item) { return item.weekday === day && Number(item.period) === period; });
+          return '<div class="timetable-grid-cell">' + esc(slot && slot.subject || "—") + '</div>';
+        }).join("");
+        var first = found.classRow.slots.find(function (item) { return Number(item.period) === period; });
+        return '<div class="timetable-grid-row"><div class="timetable-grid-period">' + period + '<small>' + esc(timetableTime(first && first.start || "")) + '</small></div>' + cells + '</div>';
+      }).join("");
+      return '<div class="timetable-note"><strong>' + esc(found.classRow.class_name) + ' 班 · ' + esc(row.academic_year) + ' 學年度第 ' + esc(row.semester) + ' 學期 · ' + version + '</strong><span>' + source + '</span></div>' +
+        '<div class="timetable-today">' + todayRows + '</div>' +
+        '<details class="timetable-week"><summary>查看整週課表</summary><div class="timetable-grid-wrap"><div class="timetable-grid timetable-grid-head"><div>節次</div>' + weekdays.map(function (day) { return '<div>' + esc(day.replace("星期", "週")) + '</div>'; }).join("") + '</div><div class="timetable-grid">' + grid + '</div></div></details>';
     }
     function cardHTML(it) {
       var schoolClass = it.school === "cysh" ? "tag-cysh" : (it.school === "fjsh" ? "tag-fjsh" : "tag-cygsh");
@@ -1121,12 +1465,13 @@
           (sourceId ? '<button type="button" class="btn-ghost" data-detail-id="' + esc(sourceId) + '">查看依據</button><button type="button" class="btn-ghost" data-add-task="' + esc(sourceId) + '">加入待辦</button><button type="button" class="btn-ghost" data-focus-dismiss="' + esc(sourceId) + '">略過</button>' : '');
         return '<article class="today-focus-item"><span class="today-focus-rank" aria-hidden="true">' + (index + 1) + '</span><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(row.reason) + (row.date ? ' · ' + esc(row.date) : '') + '</div></div><div class="today-focus-actions">' + actions + '</div></article>';
       }).join("") : '<p class="empty">目前沒有足夠證據排出優先事項。</p>';
+      if (el.todayTimetable) el.todayTimetable.innerHTML = timetableHTML();
       el.todayEvents.innerHTML = projection.todayEvents.length ? projection.todayEvents.map(eventRow).join("") : '<p class="empty">今天沒有已知正式行程。</p>';
       var upcoming = projection.upcoming.concat(projection.deadlines).concat(projection.upcomingReminders);
       el.todayDeadlines.innerHTML = upcoming.length ? upcoming.map(deadlineRow).join("") : '<p class="empty">接下來 7 天沒有已知截止事項。</p>';
       el.todayTasks.innerHTML = projection.openTasks.length ? projection.openTasks.slice(0, 8).map(function (task) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(task.title) + '</div><div class="today-item-meta">' + esc(taskDateLabel(task.due_date)) + '</div></div></div>'; }).join("") : '<p class="empty">還沒有待辦。</p>';
       el.todayRelevant.innerHTML = projection.relevantAnnouncements.length ? projection.relevantAnnouncements.map(function (item) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(displayTitle(item)) + '</div><div class="today-item-meta">' + esc(item.school_name || "公告") + '</div></div></div>'; }).join("") : '<p class="empty">設定我的資料後，這裡會顯示相關公告。</p>';
-      var hasUseful = projection.todayEvents.length || upcoming.length || projection.openTasks.length || projection.relevantAnnouncements.length;
+      var hasUseful = projection.todayEvents.length || upcoming.length || projection.openTasks.length || projection.relevantAnnouncements.length || !!timetableForProfile();
       el.todayEmpty.hidden = !!hasUseful;
     }
     function renderKwChips() {
@@ -1194,19 +1539,24 @@
       if (!el.assistantAnswer) return;
       state.assistantAnswer = result;
       if (!result || result.status !== "answered") {
-        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>目前無法可靠回答</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p><small>可能原因：官方尚未公告、PDF 無文字層，或問題不在本站資料範圍。</small></div>';
+        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>目前還無法回答這個問題</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p><small>可能是校方尚未公告、附件沒有可讀文字，或問題不在本站資料範圍。</small></div>';
         return;
       }
       var evidence = result.evidence.map(function (row, index) {
         return '<li><span class="assistant-evidence-rank">' + (index + 1) + '</span><div><strong class="assistant-evidence-title">' + esc(row.title || "官方公告") + '</strong><p>' + esc(row.text) + '</p><button type="button" class="btn-ghost" data-detail-id="' + esc(row.announcement_id) + '">查看這則官方依據</button></div></li>';
       }).join("");
       var sources = result.sources.slice(0, 5).map(function (item) {
-        return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc((item.school_name || "官方公告") + " · " + displayDate(item)) + '</small></button>';
+        var validityLabel = window.CyNewsAnnouncementValidity && item.validity ? window.CyNewsAnnouncementValidity.label(item.validity) : "";
+        var sourceMeta = (item.school_name || "官方公告") + " · " + displayDate(item) + (validityLabel ? " · " + validityLabel : "");
+        return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc(sourceMeta) + '</small></button>';
       }).join("");
       var answerLines = (result.answer_lines || []).map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("");
-      var directAnswer = answerLines ? '<h4>直接回答</h4><ul class="assistant-answer-lines">' + answerLines + '</ul>' : '';
-      var limitation = result.limitation ? '<p class="assistant-limitation"><strong>資料限制：</strong>' + esc(result.limitation) + '</p>' : '';
-      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>整理結果</h3><p>' + esc(result.summary) + '</p>' + directAnswer + limitation + '<h4>我怎麼判斷</h4><ol class="assistant-evidence">' + evidence + '</ol><h4>參考公告</h4><div class="assistant-sources">' + sources + '</div><p class="assistant-disclaimer">採用類生成式問答流程整理，但每個結論都必須能回到官方原文；規定與日期仍以官方公告為準。</p></section>';
+      var directAnswer = answerLines ? '<ul class="assistant-answer-lines">' + answerLines + '</ul>' : '';
+      var sourcePanel = sources ? '<details class="assistant-details" open><summary>官方來源（' + result.sources.length + '）</summary><div class="assistant-sources">' + sources + '</div></details>' : '';
+      var evidencePanel = evidence ? '<details class="assistant-details"><summary>為什麼這樣回答</summary><ol class="assistant-evidence">' + evidence + '</ol></details>' : '';
+      var limitation = result.limitation ? '<details class="assistant-details"><summary>資料說明</summary><p class="assistant-limitation">' + esc(result.limitation) + '</p></details>' : '';
+      var title = result.query ? '關於「' + esc(result.query) + '」' : '回答';
+      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>' + title + '</h3><p class="assistant-lead">' + esc(result.summary) + '</p>' + directAnswer + sourcePanel + evidencePanel + limitation + '</section>';
     }
     function askAssistant(question) {
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
@@ -1224,7 +1574,7 @@
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
           var result = window.CyNewsAssistantQA.answer(question, items, details);
           renderAssistantAnswer(result);
-          if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已從「" + scope.label + "」官方資料整理，請對照下方依據" : "「" + scope.label + "」沒有足夠官方證據，未產生猜測答案";
+          if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已從「" + scope.label + "」官方資料整理，請對照下方依據" : "「" + scope.label + "」尚缺可用的官方資料，請查看相關公告";
           return result;
         });
       }).catch(function () {
@@ -1339,8 +1689,13 @@
     /* ── 事件 ── */
     el.q.addEventListener("input", function () {
       state.q = el.q.value.trim();
-      if (state.q) ensureArchive();
-      resetPaging(); renderLatest();
+      if (searchTimer) clearTimeout(searchTimer);
+      if (!state.q) { resetPaging(); renderLatest(); return; }
+      searchTimer = setTimeout(function () {
+        resetPaging();
+        if (state.archive === "none") ensureArchive();
+        else renderLatest();
+      }, 200);
     });
     el.schoolFilter.addEventListener("change", function () {
       var selected = String(el.schoolFilter.value || "all");
@@ -1583,7 +1938,18 @@
       el.navMenuToggle.setAttribute("aria-expanded", open ? "true" : "false");
       el.navMenuToggle.classList.toggle("is-open", open);
     }
+    function hasSignedInAccount() {
+      return !!(state.accountUser && typeof state.accountUser.id === "string" && state.accountUser.id && state.accountAccess && state.accountAccess.status === "approved");
+    }
+    function isAdminAccount() {
+      return hasSignedInAccount() && !!state.accountAccess.is_admin;
+    }
     function switchTab(tab) {
+      if (tab !== "latest" && !hasSignedInAccount()) {
+        tab = "latest";
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能需要登入後才能使用。";
+      }
+      if (tab === "admin" && !isAdminAccount()) tab = "latest";
       state.tab = tab;
       setNavMenu(false);
       if (el.navCurrentLabel) el.navCurrentLabel.textContent = "選單";
@@ -1597,19 +1963,22 @@
       if (el.viewAssistant) el.viewAssistant.hidden = !assistant;
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
       el.viewSub.hidden = tab !== "sub";
+      if (el.viewAdmin) el.viewAdmin.hidden = tab !== "admin";
       if (el.tabHome) el.tabHome.classList.toggle("is-active", home);
       el.tabLatest.classList.toggle("is-active", latest);
       if (el.tabToday) el.tabToday.classList.toggle("is-active", today);
       if (el.tabAssistant) el.tabAssistant.classList.toggle("is-active", assistant);
       if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar");
       el.tabSub.classList.toggle("is-active", tab === "sub");
+      if (el.tabAdmin) el.tabAdmin.classList.toggle("is-active", tab === "admin");
       if (el.tabHome) el.tabHome.setAttribute("aria-current", home ? "page" : "false");
       el.tabLatest.setAttribute("aria-current", latest ? "page" : "false");
       if (el.tabToday) el.tabToday.setAttribute("aria-current", today ? "page" : "false");
       if (el.tabAssistant) el.tabAssistant.setAttribute("aria-current", assistant ? "page" : "false");
       if (el.tabCalendar) el.tabCalendar.setAttribute("aria-current", tab === "calendar" ? "page" : "false");
       el.tabSub.setAttribute("aria-current", tab === "sub" ? "page" : "false");
-      if (today) { loadOfficialEvents(); loadCalendarStatus(); renderToday(); }
+      if (el.tabAdmin) el.tabAdmin.setAttribute("aria-current", tab === "admin" ? "page" : "false");
+      if (today) { loadOfficialEvents(); loadCalendarStatus(); loadTimetables(); renderToday(); }
       if (tab === "calendar" && el.viewCalendar) { loadOfficialEvents(); renderCalendar(); }
       if (tab === "sub") {
         renderSub();
@@ -1625,6 +1994,7 @@
     if (el.tabToday) el.tabToday.addEventListener("click", function () { switchTab("today"); });
     if (el.tabAssistant) el.tabAssistant.addEventListener("click", function () { switchTab("assistant"); });
     el.tabSub.addEventListener("click", function () { switchTab("sub"); });
+    if (el.tabAdmin) el.tabAdmin.addEventListener("click", function () { switchTab("admin"); });
     if (el.tabCalendar) {
       el.tabCalendar.addEventListener("click", function () { switchTab("calendar"); });
       el.calendarGrid.addEventListener("click", function (e) {
@@ -1780,7 +2150,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=41").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=71").catch(function () {});
       });
     }
 
@@ -1797,7 +2167,7 @@
 
     refreshNotifyState();
     setupAccountSync();
-    fetchData();
+    fetchData().then(finishInitialLoading);
   }
 
   loadNotificationStateScript(startApp);

@@ -13,11 +13,12 @@ scraper/new_items.json 供推播使用。
 import json
 import os
 import re
+import ssl
 import sys
 import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from urllib.parse import urljoin, urlsplit, urlunsplit
+from urllib.parse import parse_qs, urljoin, urlsplit, urlunsplit
 
 import requests
 from attachment_parser import enrich_pdf_attachments
@@ -34,7 +35,7 @@ DETAIL_ROOT = ROOT / "docs" / "data" / "details"
 TW_TZ = timezone(timedelta(hours=8))
 DATE_RE = re.compile(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
 # RulingDigital 文章頁的「發佈日期 : YYYY-MM-DD」欄位(嘉中文章頁固定會有)
-PUB_DATE_RE = re.compile(r"發[佈布]日期\s*[::]\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
+PUB_DATE_RE = re.compile(r"發[佈布](?:日期|時間)\s*[::：]\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
 
 # 深度回補(環境變數 DEEP_CRAWL=1):對每個 403 分類頁往後翻頁的一次性模式,
 # 由維護者在本機執行,不進排程——新公告永遠出現在第一頁,日常抓第一頁即可。
@@ -67,6 +68,7 @@ CATEGORY_SLUGS = {
     "榮譽榜": "honor", "競賽": "contest", "社團": "club",
     "研習活動": "event", "招生編班": "enroll", "行政公告": "admin", "一般": "general",
 }
+SOURCE_STATUS_KEY = "__source_status__"
 
 # Date provenance is persisted explicitly when it is known.  Older records
 # without this field are treated as reliable persisted observations, never as
@@ -106,7 +108,6 @@ def is_invalid_title(text: str) -> bool:
     normalized = re.sub(r"\s+", " ", text).strip()
     if len(normalized) < 4 or normalized in {
         "MORE", "更多", "國立嘉義高中", "國立嘉義女子高級中學",
-        "天主教輔仁中學", "嘉義市私立輔仁高級中學",
     }:
         return True
     # RulingDigital access-key anchors use ::: as visible navigation text.
@@ -223,11 +224,10 @@ def page_category_name(soup: BeautifulSoup) -> str:
     return title.strip()
 
 
-def extract_items(html: str, school: dict, source_url: str):
+def extract_rulingdigital_items(html: str, school: dict, source_url: str):
     """從任一頁面(列表頁或首頁)萃取公告項目。"""
     soup = BeautifulSoup(html, "html.parser")
     unit = school["unit"]
-    base = urlsplit(school["base"])
     item_re = re.compile(r"/p/406-%s-(\d+)(?:,r(\d+))?\.php" % re.escape(unit))
     src_cat = page_category_name(soup)
     items, seen = [], set()
@@ -244,23 +244,10 @@ def extract_items(html: str, school: dict, source_url: str):
         if not title or len(title) < 4 or title in ("MORE", "更多"):
             continue
         seen.add(art_id)
-        resolved = urlsplit(urljoin(school["base"], a["href"]))
-        # R-page may emit absolute HTTP links from an HTTPS page. Keep only
-        # the configured origin and publish its canonical HTTPS URL.
-        try:
-            same_origin = (resolved.hostname == base.hostname and
-                           (resolved.port or 443) == (base.port or 443) and
-                           not resolved.username and not resolved.password)
-        except ValueError:
-            same_origin = False
-        if not same_origin or resolved.scheme not in {"http", "https"}:
-            continue
-        url = normalize_url(urlunsplit(("https", base.netloc, resolved.path,
-                                       resolved.query, "")))
+        url = normalize_url(urljoin(school["base"], a["href"]))
         date = parse_date_near(a)
         items.append({
             "id": f'{school["id"]}-{art_id}',
-            "source_id": f'{school["id"]}:{art_id}',
             "school": school["id"],
             "school_name": school["short"],
             "title": title,
@@ -273,6 +260,94 @@ def extract_items(html: str, school: dict, source_url: str):
             "_source_url": source_url,
         })
     return items
+
+
+def _ischool_url(value: str, school: dict, *, path: str) -> str:
+    """Return one canonical same-origin iSchool URL or fail closed."""
+    resolved = urljoin(school["base"], str(value or "").strip())
+    parsed = urlsplit(resolved)
+    base = urlsplit(school["base"])
+    try:
+        origin = (parsed.scheme, parsed.hostname, parsed.port or 443)
+        base_origin = (base.scheme, base.hostname, base.port or 443)
+    except ValueError:
+        return ""
+    if (parsed.scheme != "https" or origin != base_origin or parsed.username or
+            parsed.password or parsed.path != path):
+        return ""
+    return urlunsplit((parsed.scheme, parsed.netloc, parsed.path, parsed.query, ""))
+
+
+def extract_ischool_items(html: str, school: dict, source_url: str):
+    """Extract iSchool site-news rows using only the stable official nid URL."""
+    soup = BeautifulSoup(html, "html.parser")
+    items, seen = [], set()
+    for anchor in soup.find_all("a", href=True):
+        href = _ischool_url(anchor.get("href", ""), school,
+                            path="/ischool/public/news_view/show.php")
+        if not href:
+            continue
+        parsed = urlsplit(href)
+        nid_values = parse_qs(parsed.query, keep_blank_values=True).get("nid", [])
+        if len(nid_values) != 1 or not re.fullmatch(r"\d+", nid_values[0]):
+            continue
+        article_id = nid_values[0]
+        title = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip()
+        if article_id in seen or is_invalid_title(title) or is_mojibake(title):
+            continue
+        seen.add(article_id)
+        date = parse_date_near(anchor)
+        href_parts = urlsplit(href)
+        canonical_url = urlunsplit((href_parts.scheme, href_parts.netloc, href_parts.path,
+                                    "nid=" + article_id, ""))
+        items.append({
+            "id": f'{school["id"]}-{article_id}',
+            "school": school["id"],
+            "school_name": school["short"],
+            "title": title,
+            "url": canonical_url,
+            "date": date,
+            "date_source": "list" if date else "",
+            "cat_ref": "",
+            "source_category": "消息公佈欄",
+            "_source_url": source_url,
+        })
+    return items
+
+
+ISCHOOL_NEXT_LABELS = {"下一頁", "下頁", "next", "next page", "›", "»"}
+
+
+def extract_ischool_next_page(html: str, school: dict, source_url: str) -> str:
+    """Read the real next-page link without guessing iSchool parameters."""
+    soup = BeautifulSoup(html, "html.parser")
+    source = urlsplit(source_url)
+    source_uid = parse_qs(source.query, keep_blank_values=True).get("uid", [])
+    if len(source_uid) != 1 or not source_uid[0]:
+        return ""
+    for anchor in soup.find_all("a", href=True):
+        label = re.sub(r"\s+", " ", anchor.get_text(" ", strip=True)).strip().lower()
+        aria = re.sub(r"\s+", " ", str(anchor.get("aria-label") or "")).strip().lower()
+        if label not in ISCHOOL_NEXT_LABELS and aria not in ISCHOOL_NEXT_LABELS:
+            continue
+        candidate = _ischool_url(anchor.get("href", ""), school,
+                                 path="/ischool/widget/site_news/main2.php")
+        if not candidate or candidate == source_url:
+            continue
+        query = parse_qs(urlsplit(candidate).query, keep_blank_values=True)
+        if query.get("uid", []) != source_uid:
+            continue
+        if any(len(key) > 40 or len(value) > 300
+               for key, values in query.items() for value in values):
+            continue
+        return candidate
+    return ""
+
+
+def extract_items(html: str, school: dict, source_url: str):
+    if school.get("adapter", "rulingdigital") == "ischool-site-news":
+        return extract_ischool_items(html, school, source_url)
+    return extract_rulingdigital_items(html, school, source_url)
 
 
 def list_page_urls(school: dict) -> list:
@@ -399,6 +474,8 @@ def validate_history_capacity(items, max_items: int) -> None:
 
 def configured_categories(school: dict) -> set:
     """該校 config 裡已納入的 403 分類編號。"""
+    if school.get("adapter", "rulingdigital") != "rulingdigital" or not school.get("unit"):
+        return set()
     ids = set()
     for url in list_page_urls(school):
         m = re.search(r"/p/403-%s-(\d+)-\d+\.php" % re.escape(school["unit"]), url)
@@ -434,7 +511,7 @@ def _article_body(soup: BeautifulSoup):
     for tag in soup(["script", "style", "nav", "header", "footer"]):
         tag.decompose()
     candidates = []
-    for sel in ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article"]:
+    for sel in ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article", ".news_content", ".news-content", ".page_content"]:
         candidates += soup.select(sel)
     if not candidates:
         # 後備方案:找含最多文字的 div
@@ -532,10 +609,64 @@ def decode_response(response) -> str:
     return raw.decode("utf-8", errors="replace")
 
 
-def fetch(session: requests.Session, url: str) -> str:
-    resp = session.get(url, timeout=CONFIG["timeout_sec"])
+def system_ca_bundle() -> str:
+    """Return the OS-managed CA file, never an unverified custom certificate."""
+    candidates = [ssl.get_default_verify_paths().cafile,
+                  "/etc/ssl/certs/ca-certificates.crt"]
+    for candidate in candidates:
+        if candidate and Path(candidate).is_file():
+            return str(Path(candidate).resolve())
+    return ""
+
+
+def fetch(session: requests.Session, url: str, school: dict | None = None) -> str:
+    try:
+        resp = session.get(url, timeout=CONFIG["timeout_sec"])
+    except requests.exceptions.SSLError:
+        if not school or school.get("tls_verify_fallback") != "system-ca":
+            raise
+        ca_bundle = system_ca_bundle()
+        if not ca_bundle:
+            raise
+        print(f"[info] {school['id']}: 使用系統 CA bundle 重新驗證 TLS",
+              file=sys.stderr)
+        resp = session.get(url, timeout=CONFIG["timeout_sec"], verify=ca_bundle)
     resp.raise_for_status()
     return decode_response(resp)
+
+
+def fetch_error_class(exc: Exception) -> str:
+    """Return a stable, non-sensitive source error suitable for machine state."""
+    if isinstance(exc, requests.exceptions.SSLError):
+        return "tls_certificate_error"
+    if isinstance(exc, requests.exceptions.Timeout):
+        return "timeout"
+    if isinstance(exc, requests.exceptions.HTTPError):
+        return "http_error"
+    if isinstance(exc, requests.exceptions.ConnectionError):
+        return "network_error"
+    return "unexpected_error"
+
+
+def record_source_status(fetch_state: dict, school_id: str, url: str,
+                         attempted_at: str, error: Exception | None = None) -> dict:
+    """Persist an explicit source outcome without weakening TLS verification.
+
+    The legacy top-level ``url -> last successful timestamp`` entries stay in
+    place so hot/cold scheduling remains backwards compatible. Failure details
+    are deliberately classified rather than serialising exception text.
+    """
+    statuses = fetch_state.setdefault(SOURCE_STATUS_KEY, {})
+    status = {
+        "school": str(school_id),
+        "status": "ok" if error is None else "unavailable",
+        "last_attempt": attempted_at,
+        "error_class": "" if error is None else fetch_error_class(error),
+    }
+    statuses[url] = status
+    if error is None:
+        fetch_state[url] = attempted_at
+    return status
 
 
 def _detail_filename(announcement_id: str) -> str:
@@ -662,12 +793,14 @@ def main() -> int:
                 skipped_cold += 1
                 continue
             try:
-                html = fetch(session, page_url)
+                html = fetch(session, page_url, school)
             except Exception as e:
+                source_status = record_source_status(fetch_state, school["id"], page_url, now_iso, e)
                 print(f"[warn] 略過 {page_url}: {e}", file=sys.stderr)
+                print(f"[warn] 來源狀態 {school['id']}: {source_status['error_class']}", file=sys.stderr)
                 time.sleep(delay)
                 continue
-            fetch_state[page_url] = now_iso
+            record_source_status(fetch_state, school["id"], page_url, now_iso)
             page_items = extract_items(html, school, page_url)
             if page_url in scan_pages:
                 scanned_items += page_items
@@ -676,6 +809,25 @@ def main() -> int:
                 # 穩定 rank 選 canonical source，與 traversal 順序無關。
                 merge_collected_item(collected, it)
             time.sleep(delay)
+
+            if school.get("adapter") == "ischool-site-news":
+                visited_pages = {page_url}
+                current_url, current_html = page_url, html
+                max_pages = max(1, min(int(school.get("max_list_pages", 3)), 5))
+                for _ in range(1, max_pages):
+                    next_url = extract_ischool_next_page(current_html, school, current_url)
+                    if not next_url or next_url in visited_pages:
+                        break
+                    try:
+                        current_html = fetch(session, next_url, school)
+                    except Exception as e:
+                        print(f"[warn] iSchool 分頁略過 {next_url}: {e}", file=sys.stderr)
+                        break
+                    visited_pages.add(next_url)
+                    current_url = next_url
+                    for it in extract_items(current_html, school, current_url):
+                        merge_collected_item(collected, it)
+                    time.sleep(delay)
 
             # 深度回補:對 403 分類頁繼續抓第 2、3…頁
             if deep_crawl and "/p/403-" in page_url:
@@ -709,7 +861,7 @@ def main() -> int:
                 it for it in new_for_school[cap:] if not it.get("date")]
         for it in snippet_targets:
             try:
-                html = fetch(session, it["url"])
+                html = fetch(session, it["url"], school)
                 detail_title = extract_article_title(html)
                 merge_title(it, detail_title, authoritative=True)
                 it["snippet"] = extract_article_snippet(html, it["title"])
@@ -750,7 +902,8 @@ def main() -> int:
 
         # 覆蓋率哨兵:首頁出現的文章,其分類若不在 config 就記下來
         gaps = coverage_gaps(scanned_items, configured_categories(school),
-                             CONFIG.get("coverage_ignore", {}).get(school["id"], []))
+                             CONFIG.get("coverage_ignore", {}).get(school["id"], [])) \
+            if school.get("adapter", "rulingdigital") == "rulingdigital" else []
         for g in gaps:
             g["school_name"] = school["short"]
             g["list_page"] = (f'{school["base"]}/p/403-{school["unit"]}'
@@ -804,7 +957,9 @@ def main() -> int:
     for it in pending[:backfill_cap]:
         detail_needed = needs_detail(it)
         try:
-            html = fetch(session, it["url"])
+            item_school = next((school for school in CONFIG["schools"]
+                                if school["id"] == it.get("school")), None)
+            html = fetch(session, it["url"], item_school)
         except Exception as e:
             print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)
             if detail_needed:

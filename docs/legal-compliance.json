@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-30",
+  "status": "PREVIEW_ONLY_REVIEW_REQUIRED",
+  "production_ready": false,
+  "technical_controls": {
+    "public_https_sources_only": true,
+    "no_authentication_bypass": true,
+    "bounded_request_rate": true,
+    "qa_personal_data_guard": true,
+    "source_attribution_and_official_links": true,
+    "rls_contract_tests": true,
+    "deployed_database_two_identity_rls_pass": true,
+    "rls_test_residue_count": 0,
+    "deployed_account_least_privilege_migrations": false,
+    "deployed_reminder_schema": false,
+    "deployed_http_two_session_rls_pass": false,
+    "leaked_password_protection_enabled": false,
+    "preview_self_service_app_data_deletion": true,
+    "source_rights_audit_recorded": true
+  },
+  "evidence": {
+    "rls_verification": "rls-verification-2026-08-30.md",
+    "source_rights_audit": "source-rights-audit.md",
+    "privacy_retention_policy": "privacy-retention-policy.md"
+  },
+  "production_blockers": [
+    "Two dedicated non-production Auth users have not completed the deployed Supabase HTTP RLS test in CI.",
+    "The account least-privilege migrations and reminder schema are committed but not deployed to Supabase.",
+    "Supabase leaked-password protection is not enabled.",
+    "Automatic 30-day tombstone cleanup and 365-day read-history retention enforcement are not deployed.",
+    "A private identity-verification, Auth-record deletion, and correction/removal contact channel has not been confirmed.",
+    "Source audit found no open licence and two sites state rights reserved; written permission or qualified fair-use review is still required.",
+    "A qualified Taiwan legal professional has not reviewed the complete production service."
+  ]
+}

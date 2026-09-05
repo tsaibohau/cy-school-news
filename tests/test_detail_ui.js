@@ -9,7 +9,7 @@ assert.equal(Detail.safeUrl("data:text/html,x"), "");
 assert.equal(Detail.safeUrl("http://example.test/a"), "");
 assert.equal(Detail.safeUrl("https://example.test/a"), "https://example.test/a");
 assert.equal(Detail.validDetailRef("data/details/cysh/cysh-1.json"), true);
-assert.equal(Detail.validDetailRef("data/details/pksh/pksh-28123.json"), false);
+assert.equal(Detail.validDetailRef("data/details/pksh/pksh-28123.json"), true);
 for (const ref of ["https://evil.test/a.json", "//evil.test/a.json", "data/details/other/a.json", "data/details/cysh/../a.json", "data/details/cysh/a.json?x=1", "data/details/cysh/%2e%2e.json"]) {
   assert.equal(Detail.validDetailRef(ref), false, "unsafe detail ref rejected: " + ref);
 }
@@ -38,13 +38,15 @@ const html = Detail.render(record);
 assert(!html.includes("<script>"));
 assert(!html.includes("<img"));
 assert(!html.includes("javascript:"));
-assert(html.includes("&lt;script&gt;"));
-assert(html.includes("<ol"));
-assert(html.includes("<th>欄位</th>"));
-assert(html.includes("<td>&lt;svg/onload=x&gt;</td>"));
-assert(html.includes("&lt;x&gt;.pdf"));
-assert(html.includes("閱讀 PDF 文字內容"));
-assert(html.includes("截止日 &lt;script&gt;"));
+// Public cards retain a safe summary and official link, never raw article/attachment text.
+for (const hidden of ["&lt;script&gt;", "<ol", "<th>", "<td>", "&lt;x&gt;.pdf", "閱讀 PDF 文字內容", "截止日", "attachment-text", "detail-blocks"]) {
+  assert(!html.includes(hidden), "private/raw detail must not appear: " + hidden);
+}
+assert(html.includes("請至官方網站查看完整內容"));
+assert(html.includes('href="https://school.example/a"'));
+const escapedBlock = Detail.renderBlock(record.blocks[1]);
+assert(escapedBlock.includes("&lt;script&gt;"));
+assert(!escapedBlock.includes("javascript:"));
 assert(html.includes("重點摘要"));
 assert(html.includes("官方擷取摘要 &lt;safe&gt;"));
 const grouped = Detail.renderSummary({ status: "extracted", text: "摘要", items: [
@@ -52,7 +54,7 @@ const grouped = Detail.renderSummary({ status: "extracted", text: "摘要", item
 ] });
 assert(grouped.includes("分項重點") && grouped.includes("科學營") && grouped.includes("寫作工作坊"));
 assert.equal((grouped.match(/<li>/g) || []).length, 2);
-assert(html.includes(">開啟附件</a>"));
+assert(!html.includes(">開啟附件</a>"));
 assert(!html.includes("開啟／下載"), "UI must not claim iOS downloaded an attachment");
 assert(!html.includes("foreign.pdf"));
 assert(!html.includes("bad.pdf"));

@@ -136,6 +136,8 @@ def discover(*, academic_year=None, semester=None) -> int:
         except (OSError, ValueError):
             published = []
     for school in SCHOOLS.values():
+        if not school.capabilities.get("official_calendar") or not school.calendar_sources:
+            continue
         source = school.calendar_sources[0]
         try:
             html, revision, content_type = fetch_source(source.url)

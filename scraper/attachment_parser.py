@@ -96,10 +96,10 @@ def enrich_pdf_attachments(record: dict, session, budget: dict, *, timeout_sec: 
                 chunks.append(chunk)
             attachment["size"] = size
             extracted = extract_embedded_text(b"".join(chunks), ".pdf")
-            attachment.update({
-                "embedded_text": extracted.pop("text", ""),
-                **extracted,
-            })
+            # Attachment text is used only transiently during this fetch.  Detail
+            # JSON is public, so never persist the extracted content there.
+            extracted.pop("text", "")
+            attachment.update(extracted)
         except ValueError:
             attachment["parse_status"] = "unsupported"
             attachment["parse_reason"] = "size_limit"
