@@ -16,15 +16,21 @@
    "url": "https://www.cygsh.cy.edu.tw/app/index.php?Action=downloadfile&file=WVhSMFlXTm9MelUxTDNCMFlWOHlNVEV4TWpKZk9UY3hNVE13TTE4eE5EVTNOUzV3WkdZPQ==&fname=0054RPA0ICCCTXMPVS0454SXVWB4HC25PKFGSSMPZX25NLNL",
    "extension": ".pdf",
    "mime_type": "application/pdf",
-   "size": null,
+   "size": 1420882,
    "announcement_id": "cygsh-186101",
    "provenance": "official_attachment",
-   "parse_status": "pending"
+   "parse_status": "parsed",
+   "parse_attempts": 1,
+   "page_count": 17,
+   "text_length": 8001,
+   "content_sha256": "535f0b8a90b15aa36682ca8d3b28277ad5fc6ee1485b82a7d2f1a85271765c4f",
+   "parser_version": "attachment-pdf-v1",
+   "parsed_at": "2026-09-05T06:15:50+00:00"
   }
  ],
- "source_hash": "07309d55d8f125226e43ee1b1c676dfc0273f1fecbc23df94c7acb58ac057140",
+ "source_hash": "1139d5eaa491e63ffd94698c26610225baeb875620daa14d62cb2dbad43eac3a",
  "parser_version": "detail-v2",
- "fetched_at": "2026-08-28T12:24:37+08:00",
+ "fetched_at": "2026-09-05T14:15:13+08:00",
  "parse_status": "parsed",
  "provenance": "official_article",
  "verified_dates": [],
@@ -32,15 +38,9 @@
   "status": "extracted",
   "text": "詳情請參閱附件，校內教師如有意報名需申請公假，請洽教學組黃助理(分機#1252)。",
   "evidence": "詳情請參閱附件，校內教師如有意報名需申請公假，請洽教學組黃助理(分機#1252)。",
-  "items": [
-   {
-    "label": "",
-    "text": "詳情請參閱附件，校內教師如有意報名需申請公假，請洽教學組黃助理(分機#1252)。",
-    "evidence": "詳情請參閱附件，校內教師如有意報名需申請公假，請洽教學組黃助理(分機#1252)。",
-    "provenance": "official_article"
-   }
-  ],
+  "items": [],
   "provenance": "official_article",
-  "version": "extractive-v2"
+  "mode": "short_fact_notice",
+  "version": "extractive-v3-public-minimized"
  }
 }
