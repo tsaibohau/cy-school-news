@@ -68,4 +68,13 @@ function applyPkshSnapshot(output, snapshotPath) {
   writeJson(manifestPath, manifest);
 }
 
+if (require.main === module) {
+  const [, , output, snapshotPath] = process.argv;
+  if (!output || !snapshotPath) {
+    console.error("usage: node tools/pksh-staging-overlay.js <docs-dir> <snapshot.json>");
+    process.exit(2);
+  }
+  applyPkshSnapshot(output, snapshotPath);
+}
+
 module.exports = { applyPkshSnapshot, safeItems };
