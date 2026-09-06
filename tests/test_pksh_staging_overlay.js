@@ -4,6 +4,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
+const { execFileSync } = require("node:child_process");
 const { applyPkshSnapshot, safeItems } = require("../tools/pksh-staging-overlay.js");
 
 const root = path.resolve(__dirname, "..");
@@ -47,5 +48,20 @@ assert.equal(mixed.length, 1, "one malformed row must not reject the valid annou
 assert.equal(mixed[0].id, "pksh-40001");
 assert.equal("summary" in mixed[0], false, "protected fields are removed instead of blocking the batch");
 assert.throws(() => safeItems({ items: [{ id: "bad" }] }), /no valid announcement items/);
+
+const cliOutput = fs.mkdtempSync(path.join(os.tmpdir(), "pksh-staging-overlay-cli-"));
+fs.cpSync(path.join(root, "docs", "data"), path.join(cliOutput, "data"), { recursive: true });
+execFileSync(process.execPath, [path.join(root, "tools", "pksh-staging-overlay.js"), cliOutput, snapshot]);
+const cliCombined = JSON.parse(fs.readFileSync(path.join(cliOutput, "data", "announcements.json")));
+const cliSchool = JSON.parse(fs.readFileSync(path.join(cliOutput, "data", "schools", "pksh", "current.json")));
+const cliManifest = JSON.parse(fs.readFileSync(path.join(cliOutput, "data", "schools", "manifest.json")));
+const cliCounts = [
+  cliCombined.items.filter((item) => item.school === "pksh").length,
+  cliSchool.items.length,
+  cliManifest.schools.find((entry) => entry.id === "pksh").current_count,
+];
+assert.deepEqual(cliCounts, [1, 1, 1], "the workflow CLI must update every PKSH production corpus");
+
 fs.rmSync(output, { recursive: true, force: true });
+fs.rmSync(cliOutput, { recursive: true, force: true });
 console.log("PKSH staging overlay tests passed");
