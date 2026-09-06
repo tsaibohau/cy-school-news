@@ -144,13 +144,13 @@ jobs:
         shell: pwsh
         run: >-
           ./scraper/pksh_windows_fetch.ps1
-          -OutputPath "$env:RUNNER_TEMP/pksh-list.html"
+          -OutputPath "$env:RUNNER_TEMP/pksh-list.json"
           -ReportPath "$env:RUNNER_TEMP/pksh-transport.json"
       - name: Produce metadata-only handoff
         shell: pwsh
         run: >-
           python tools/pksh_snapshot.py
-          --html "$env:RUNNER_TEMP/pksh-list.html"
+          --html "$env:RUNNER_TEMP/pksh-list.json"
           --output "$env:RUNNER_TEMP/pksh-metadata.json"
       - name: Upload bounded research evidence
         uses: actions/upload-artifact@v4

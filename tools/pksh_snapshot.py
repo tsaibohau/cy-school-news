@@ -25,10 +25,38 @@ def pksh_config() -> dict:
     return next(school for school in CONFIG["schools"] if school["id"] == "pksh")
 
 
-def build_snapshot(html: str, fetched_at: str = "") -> dict:
+def _api_items(payload: str, school: dict) -> list[dict]:
+    records = json.loads(payload)
+    if not isinstance(records, list):
+        raise ValueError("PKSH API payload must be a list")
+    items = []
+    seen = set()
+    for record in records:
+        if not isinstance(record, dict) or not record.get("newsId") or not record.get("title"):
+            continue
+        news_id = str(record["newsId"]).strip()
+        if not news_id.isdigit() or news_id in seen:
+            continue
+        seen.add(news_id)
+        raw_date = str(record.get("time", "")).strip().replace("/", "-")
+        items.append({
+            "id": f"pksh-{news_id}",
+            "school": "pksh",
+            "school_name": school["short"],
+            "title": str(record["title"]).strip(),
+            "url": f"{school['base']}/ischool/public/news_view/show.php?nid={news_id}",
+            "date": raw_date[:10],
+            "date_source": "list",
+            "source_category": str(record.get("unit_name") or record.get("attr_name") or "").strip(),
+        })
+    return items
+
+
+def build_snapshot(payload: str, fetched_at: str = "") -> dict:
     school = pksh_config()
     source_url = school["list_pages"][0]["url"]
-    items = extract_items(html, school, source_url)
+    stripped = payload.lstrip()
+    items = _api_items(payload, school) if stripped.startswith("[") else extract_items(payload, school, source_url)
     if not items or len(items) > 200:
         raise ValueError("PKSH page produced an unexpected announcement count")
     public_items = [{key: item.get(key, "") for key in PUBLIC_FIELDS} for item in items]
