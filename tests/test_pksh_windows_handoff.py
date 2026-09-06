@@ -52,8 +52,10 @@ assert 'start-sleep -milliseconds 1500' in lowered
 assert "$maxlistpages = 100" in lowered
 assert 'maxrows = [string]$pagesize' in lowered
 assert 'properties["total"]' in lowered
+assert '$rejectedannouncementrecords' in lowered
+assert '$pagerows.count - $pageannouncements.count' in lowered
 assert "pagination ended before the reported announcement total was collected" in lowered
-assert "collected $($announcements.count) announcements but the site reported $expectedtotal" in lowered
+assert "processed $($announcements.count + $rejectedannouncementrecords) announcement rows" in lowered
 assert 'git commit -m "Update PKSH staging snapshot"' in workflow
 assert "!contains(github.event.head_commit.message, 'Update PKSH staging snapshot')" in workflow
 assert "Update PKSH staging snapshot [skip ci]" not in workflow

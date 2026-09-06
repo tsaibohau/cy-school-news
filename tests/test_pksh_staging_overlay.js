@@ -31,5 +31,21 @@ assert.equal(safeItems({ items: Array.from({ length: 201 }, (_, index) => ({
   title: "公告", url: "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=" + (30000 + index),
   date: "2026-09-06", date_source: "list", source_category: "教務處",
 })) }).length, 201);
+const mixed = safeItems({ fetched_at: "2026-09-06T00:00:00Z", items: [
+  {
+    id: "pksh-40001", school: "pksh", school_name: "北港高中", title: "有效公告",
+    url: "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=40001",
+    date: "2026-09-06", summary: "不得公開的內容",
+  },
+  { id: "pksh-bad", school: "pksh", title: "錯誤公告", url: "https://example.test/bad" },
+  {
+    id: "pksh-40001", school: "pksh", title: "重複公告",
+    url: "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=40001",
+  },
+] });
+assert.equal(mixed.length, 1, "one malformed row must not reject the valid announcements");
+assert.equal(mixed[0].id, "pksh-40001");
+assert.equal("summary" in mixed[0], false, "protected fields are removed instead of blocking the batch");
+assert.throws(() => safeItems({ items: [{ id: "bad" }] }), /no valid announcement items/);
 fs.rmSync(output, { recursive: true, force: true });
 console.log("PKSH staging overlay tests passed");
