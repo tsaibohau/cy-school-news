@@ -25,6 +25,7 @@ enabled = true
 
 [auth]
 enabled = true
+minimum_password_length = 6
 site_url = "http://127.0.0.1:3000"
 additional_redirect_urls = ["http://127.0.0.1:3000"]
 enable_signup = true
@@ -58,3 +59,21 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/request-staging-refresh/deno.json"
 entrypoint = "./functions/request-staging-refresh/index.ts"
+
+[functions.username-auth]
+enabled = true
+verify_jwt = false
+import_map = "./functions/username-auth/deno.json"
+entrypoint = "./functions/username-auth/index.ts"
+
+[functions.account-email-worker]
+enabled = true
+verify_jwt = false
+import_map = "./functions/account-email-worker/deno.json"
+entrypoint = "./functions/account-email-worker/index.ts"
+
+[functions.announcement-content-sync]
+enabled = true
+verify_jwt = true
+import_map = "./functions/announcement-content-sync/deno.json"
+entrypoint = "./functions/announcement-content-sync/index.ts"

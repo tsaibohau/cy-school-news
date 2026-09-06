@@ -18,8 +18,8 @@ NOISE_SELECTORS = [
     ".mnav", ".mfooter", ".share", ".social", ".breadcrumb",
     ".site-header", ".site-footer", ".cookie", ".tracking",
 ]
-BODY_SELECTORS = ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article"]
-ATTACHMENT_SELECTORS = ["ul.mptattach", ".mattachment", ".mfile"]
+BODY_SELECTORS = ["div.mpgdetail", "div.meditor", "div#Dyn_2_2", "article", ".news_content", ".news-content", ".page_content"]
+ATTACHMENT_SELECTORS = ["ul.mptattach", ".mattachment", ".mfile", ".news_attach", ".news-attachment"]
 EXTENSION_TYPES = {
     ".pdf": "application/pdf", ".doc": "application/msword",
     ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
@@ -35,7 +35,7 @@ FULL_DATE = re.compile(
     r"(?:(?P<roc>1\d{2})\s*[年./-]\s*|(?P<gregorian>20\d{2})\s*[年./-]\s*)"
     r"(?P<month>\d{1,2})\s*[月./-]\s*(?P<day>\d{1,2})\s*日?"
 )
-PUBLICATION_LABELS = ("發布日期", "發佈日期", "刊登日期", "最後更新日期", "公告日期")
+PUBLICATION_LABELS = ("發布日期", "發佈日期", "發佈時間", "刊登日期", "最後更新日期", "公告日期")
 DEADLINE_LABELS = ("截止", "期限", "報名", "申請", "繳交", "繳費")
 EVENT_LABELS = ("活動日期", "辦理日期", "舉行日期", "比賽日期", "測驗日期", "報到日期")
 
@@ -48,6 +48,21 @@ def _safe_https_url(value: str, source_url: str) -> str:
     resolved = urljoin(source_url, str(value or "").strip())
     parsed = urlparse(resolved)
     return resolved if parsed.scheme == "https" and bool(parsed.netloc) else ""
+
+
+def _same_origin_https_url(value: str, source_url: str) -> str:
+    resolved = _safe_https_url(value, source_url)
+    if not resolved:
+        return ""
+    target, source = urlparse(resolved), urlparse(source_url)
+    if target.username or target.password:
+        return ""
+    try:
+        target_port = target.port or 443
+        source_port = source.port or 443
+    except ValueError:
+        return ""
+    return resolved if (target.hostname, target_port) == (source.hostname, source_port) else ""
 
 
 def _body(soup: BeautifulSoup):
@@ -74,7 +89,7 @@ def _attachments(roots, source_url: str, announcement_id: str) -> list[dict]:
     for root in roots if isinstance(roots, (list, tuple)) else [roots]:
         anchors.extend(root.select("a[href]"))
     for anchor in anchors:
-        url = _safe_https_url(anchor.get("href", ""), source_url)
+        url = _same_origin_https_url(anchor.get("href", ""), source_url)
         if not url or url in seen:
             continue
         parsed = urlparse(url)

@@ -14,6 +14,15 @@ values
   ('00000000-0000-4000-8000-0000000000b2', 'authenticated', 'authenticated', 'rls-b@local.test', '', now())
 on conflict (id) do nothing;
 
+-- The production policy additionally requires explicit administrator approval.
+-- These fixture users model approved accounts; pending access is covered by the
+-- JavaScript contract test and must not make an ownership test pass by accident.
+insert into public.account_access (user_id, status, reviewed_at)
+values
+  ('00000000-0000-4000-8000-0000000000a1', 'approved', now()),
+  ('00000000-0000-4000-8000-0000000000b2', 'approved', now())
+on conflict (user_id) do update set status = excluded.status, reviewed_at = excluded.reviewed_at;
+
 insert into public.user_tasks (id, user_id, title, status, notes)
 values
   ('00000000-0000-4000-8000-00000000a001', '00000000-0000-4000-8000-0000000000a1', 'fixture A', 'open', 'local'),

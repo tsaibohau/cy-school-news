@@ -13,7 +13,8 @@ from scrape import (extract_items, classify, normalize_url, extract_article_snip
                     merge_collected_item, validate_snapshot_items,
                     validate_history_capacity, quarantine_corrupt_titles,
                     merge_title, decode_response,
-                    record_detail_fetch_failure)  # noqa: E402
+                    record_detail_fetch_failure, fetch_error_class,
+                    record_source_status, SOURCE_STATUS_KEY)  # noqa: E402
 from notify import (push_topics, summarize, personal_topics, notification_payload,
                     normalize_topic, prepare_notification_items,
                     SUMMARY_THRESHOLD)  # noqa: E402
@@ -67,16 +68,6 @@ HOME_HTML = """
         <a href="/p/406-1008-136140,r15.php">社團博覽會暨社課選課須知</a></li>
   </ul>
 </div>
-</body></html>
-"""
-
-FJSH_LIST_HTML = """
-<html><head><title>最新公告</title></head><body>
-  <i class="mdate before">2026-08-28</i>
-  <a href="http://rpage.fjsh.cy.edu.tw/p/406-1000-2373,r59.php?Lang=zh-tw">115學年度第1學期校車路線表115.8.28</a>
-  <i class="mdate before">2026-08-27</i>
-  <a href="/p/406-1000-2369,r59.php?Lang=zh-tw">中國文化大學第三屆世界大學問活動</a>
-  <a href="https://evil.example/p/406-1000-9999,r59.php">外站偽造連結</a>
 </body></html>
 """
 
@@ -147,14 +138,6 @@ def run():
     assert home_items[1]["date"] == "2026-08-05", "斜線日期也要能解析"
     assert home_items[0]["source_category"] == "", "首頁掃描不套用頁面標題為分類"
     print("✓ 首頁掃描解析")
-
-    fjsh_school = {"id": "fjsh", "short": "輔仁", "base": "https://rpage.fjsh.cy.edu.tw", "unit": "1000"}
-    fjsh_items = extract_items(FJSH_LIST_HTML, fjsh_school,
-                               "https://rpage.fjsh.cy.edu.tw/p/403-1000-59-1.php?Lang=zh-tw")
-    assert [row["id"] for row in fjsh_items] == ["fjsh-2373", "fjsh-2369"], fjsh_items
-    assert [row["source_id"] for row in fjsh_items] == ["fjsh:2373", "fjsh:2369"], fjsh_items
-    assert fjsh_items[0]["url"] == "https://rpage.fjsh.cy.edu.tw/p/406-1000-2373,r59.php"
-    print("✓ 輔仁 R-page HTTPS / stable ID / 外站連結拒絕")
 
     cases = {
         "115學年度第一次段考考試範圍公告": "段考考試",
@@ -480,6 +463,23 @@ def run():
         assert status == ("permanent_error" if attempt == 5 else "temporary_error")
     assert detail_retry["detail_available"] is False
     print("✓ detail failure bounded retry")
+
+    import requests as _requests
+    fetch_state = {"https://example.test/list": "2026-08-01T00:00:00+08:00"}
+    tls_error = _requests.exceptions.SSLError("certificate verify failed: secret detail")
+    status = record_source_status(fetch_state, "pksh", "https://example.test/list",
+                                  "2026-08-28T12:00:00+08:00", tls_error)
+    assert status["error_class"] == "tls_certificate_error"
+    assert "secret detail" not in str(fetch_state)
+    assert fetch_state["https://example.test/list"] == "2026-08-01T00:00:00+08:00", \
+        "a failed fetch must not advance the last-success watermark"
+    assert fetch_state[SOURCE_STATUS_KEY]["https://example.test/list"]["status"] == "unavailable"
+    assert fetch_error_class(_requests.exceptions.Timeout()) == "timeout"
+    record_source_status(fetch_state, "pksh", "https://example.test/list",
+                         "2026-08-28T12:05:00+08:00")
+    assert fetch_state["https://example.test/list"] == "2026-08-28T12:05:00+08:00"
+    assert fetch_state[SOURCE_STATUS_KEY]["https://example.test/list"]["status"] == "ok"
+    print("✓ source failure state is explicit and fail-closed")
 
     return ok
 

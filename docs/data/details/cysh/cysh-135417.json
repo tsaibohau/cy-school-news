@@ -55,17 +55,43 @@
    "parse_status": "pending"
   }
  ],
- "source_hash": "357198b5a7efdc6d11d5132e85a4a8169840f526fd23842fd29c31caa8bb3eac",
+ "source_hash": "bff4241db1c1feed8ce30bbbe861af3984b518ef7a82e17a170a243d13dc4366",
  "parser_version": "detail-v2",
- "fetched_at": "2026-09-06T07:20:41+08:00",
+ "fetched_at": "2026-09-05T19:21:22+08:00",
  "parse_status": "parsed",
  "provenance": "official_article",
  "verified_dates": [],
  "summary": {
   "status": "extracted",
-  "text": "【高三重補修】請-詳見附檔，報名時間為 5/25(一)-26(二)中午12:00截止 。",
+  "text": "【高三重補修】請-詳見附檔，報名時間為 5/25(一)-26(二)中午12:00截止 。（另有 3 項重點）",
   "evidence": "【高三重補修】請-詳見附檔，報名時間為 5/25(一)-26(二)中午12:00截止 。",
+  "items": [
+   {
+    "label": "項目 1",
+    "text": "【高三重補修】請-詳見附檔，報名時間為 5/25(一)-26(二)中午12:00截止 。",
+    "evidence": "【高三重補修】請-詳見附檔，報名時間為 5/25(一)-26(二)中午12:00截止 。",
+    "provenance": "official_article"
+   },
+   {
+    "label": "項目 4",
+    "text": "附件中上課時段為預排，請報名的同學於6/1務必上網參看確認版的上課時段與地點。",
+    "evidence": "附件中上課時段為預排，請報名的同學於6/1務必上網參看確認版的上課時段與地點。",
+    "provenance": "official_article"
+   },
+   {
+    "label": "項目 2",
+    "text": "本次高三重補修，依5/15-5/18開課意願調查統計，提供國文上、英文上、數學甲乙上下、選修物理上下、選修化學上下、選修歷史上、選修生物上，提供學生報名。",
+    "evidence": "本次高三重補修，依5/15-5/18開課意願調查統計，提供國文上、英文上、數學甲乙上下、選修物理上下、選修化學上下、選修歷史上、選修生物上，提供學生報名。",
+    "provenance": "official_article"
+   },
+   {
+    "label": "項目 2",
+    "text": "惟最後開課狀況，根據報名人數以6/1公告為準，未成班的班級會通知學生退費或改選。",
+    "evidence": "惟最後開課狀況，根據報名人數以6/1公告為準，未成班的班級會通知學生退費或改選。",
+    "provenance": "official_article"
+   }
+  ],
   "provenance": "official_article",
-  "version": "extractive-v1"
+  "version": "extractive-v3-public-minimized"
  }
 }

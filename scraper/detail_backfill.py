@@ -28,7 +28,7 @@ def backfill_existing_summaries(items, cap):
         if updated >= cap:
             break
         detail_ref = str(item.get("detail_ref") or "")
-        if not re.match(r"^data/details/(?:cysh|cygsh)/[A-Za-z0-9._-]+\.json$", detail_ref):
+        if not re.match(r"^data/details/(?:cysh|cygsh|pksh)/[A-Za-z0-9._-]+\.json$", detail_ref):
             continue
         path = ROOT / "docs" / detail_ref
         try:

@@ -1,0 +1,23 @@
+{
+  "as_of": "2026-08-30",
+  "train": [
+    { "query": "手機管理規定", "expected_top_ids": ["cysh-8032"] },
+    { "query": "VPN", "expected_top_ids": ["cysh-116561"] },
+    { "query": "圖書館開放時間", "expected_top_ids": ["cygsh-185842"] },
+    { "query": "宿舍申請", "expected_top_ids": ["cygsh-186151", "cysh-136178"], "forbidden_title": "職缺|徵才|幹事.*(?:甄選|面試|名單)" },
+    { "query": "現在可以報名的比賽", "expected_top_status": "ACTIVE_WINDOW", "top_status_count": 5 },
+    { "query": "現在能申請行天宮助學金", "expected_top_ids": ["cysh-136374"] },
+    { "query": "多元選修還能選嗎", "expected_top_ids": ["cysh-136198"] },
+    { "query": "音樂比賽鋼琴調音標準", "expected_top_ids": ["cygsh-186135"] }
+  ],
+  "validation": [
+    { "query": "新生健檢", "expected_top_ids": ["cysh-136222"] },
+    { "query": "註冊費繳費", "expected_top_ids": ["fjsh-2359"] },
+    { "query": "社團選填", "expected_top_ids": ["cysh-133057"] },
+    { "query": "目前就學貸款規定", "expected_top_ids": ["cysh-135942", "cysh-135732"] },
+    { "query": "這學期課表", "expected_top_ids": ["cygsh-186383"] },
+    { "query": "住宿入住名單", "expected_top_ids": ["cygsh-186151"] },
+    { "query": "校車在哪裡搭", "expected_top_ids": ["fjsh-2373", "fjsh-2323", "fjsh-2243"] },
+    { "query": "制服訂購", "expected_top_ids": ["cysh-132504"] }
+  ]
+}

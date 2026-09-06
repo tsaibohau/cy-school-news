@@ -56,13 +56,16 @@ SCHOOLS: Dict[str, SchoolDefinition] = {
         ),),
         capabilities={"announcements": True, "official_calendar": True},
     ),
-    "fjsh": SchoolDefinition(
-        school_id="fjsh",
-        name="嘉義市私立輔仁高級中學",
-        short_name="輔仁",
-        base_url="https://rpage.fjsh.cy.edu.tw",
-        announcement_adapter="new-classic-cms",
+    "pksh": SchoolDefinition(
+        school_id="pksh",
+        name="國立北港高級中學",
+        short_name="北港高中",
+        base_url="https://www.pksh.ylc.edu.tw",
+        announcement_adapter="ischool-site-news",
         calendar_adapter="unavailable",
+        announcement_sources=(
+            "https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a",
+        ),
         capabilities={"announcements": True, "official_calendar": False},
     ),
 }

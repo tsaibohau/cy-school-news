@@ -2,7 +2,7 @@ name: Deployed dedicated-user RLS tests
 
 on:
   push:
-    branches: [feature/personal-assistant-v1]
+    branches: [feature/personal-assistant-v1, staging]
     paths:
       - .github/workflows/rls-deployed.yml
       - tests/test_rls_deployed.js

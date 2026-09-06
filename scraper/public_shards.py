@@ -14,12 +14,39 @@ def _write(path: Path, value: object) -> None:
     temporary.replace(path)
 
 
+def _school_id(item: dict) -> str:
+    return str(item.get("school") or item.get("school_id") or "").strip()
+
+
+def preserve_legacy_schools(schools: list, items: list) -> list:
+    """Keep already-published school records shardable after a source retires.
+
+    Crawling configuration controls what is fetched next. It must not silently
+    delete historical announcements merely because a school is no longer in
+    that configuration.  Use the stored display name when available and mark
+    the entry as legacy so the manifest remains honest.
+    """
+    known = {str(row.get("id")) for row in schools}
+    legacy = {}
+    for item in items:
+        school_id = _school_id(item)
+        if school_id and school_id not in known:
+            legacy.setdefault(school_id, {
+                "id": school_id,
+                "name": str(item.get("school_name") or school_id),
+                "short": str(item.get("school_name") or school_id),
+                "legacy": True,
+            })
+    return schools + [legacy[school_id] for school_id in sorted(legacy)]
+
+
 def build_school_shards(recent_doc: dict, archive_doc: dict, output_dir: Path) -> dict:
-    schools = recent_doc.get("schools") or []
+    schools = list(recent_doc.get("schools") or [])
     recent = recent_doc.get("items") or []
     archive = archive_doc.get("items") or []
+    schools = preserve_legacy_schools(schools, recent + archive)
     known = {str(row.get("id")) for row in schools}
-    if not known or any(str(item.get("school") or item.get("school_id")) not in known
+    if not known or any(_school_id(item) not in known
                         for item in recent + archive):
         raise ValueError("school shard source contains an unknown school")
     manifest_schools = []
@@ -27,9 +54,9 @@ def build_school_shards(recent_doc: dict, archive_doc: dict, output_dir: Path) -
     for school in schools:
         school_id = str(school["id"])
         current_items = [item for item in recent
-                         if str(item.get("school") or item.get("school_id")) == school_id]
+                         if _school_id(item) == school_id]
         archive_items = [item for item in archive
-                         if str(item.get("school") or item.get("school_id")) == school_id]
+                         if _school_id(item) == school_id]
         for item in current_items + archive_items:
             item_id = str(item.get("id"))
             if not item_id or item_id in written_ids:

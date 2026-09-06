@@ -50,6 +50,9 @@ jobs:
           FETCH_ALL: ${{ inputs.fetch_all && '1' || '' }}
         run: python scraper/scrape.py
 
+      - name: 更新公開班級課表
+        run: python scraper/timetable.py discover
+
       - name: 推播新公告 (ntfy)
         env:
           # Secret first (topic URL or name), then legacy repository variable.
@@ -64,6 +67,29 @@ jobs:
 
       - name: 產生可信提醒目標清單
         run: python scraper/reminder_targets.py
+
+      - name: 準備會員摘要並同步到受保護資料庫（已設定時）
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          node tools/export-member-content.js .member-content-sync
+          if [ -z "$ANNOUNCEMENT_CONTENT_SYNC_TOKEN" ] || [ -z "$ANNOUNCEMENT_CONTENT_SYNC_URL" ] || [ -z "$SUPABASE_PUBLISHABLE_KEY" ]; then
+            echo "ANNOUNCEMENT_CONTENT_SYNC_NOT_CONFIGURED"
+          else
+            for batch in .member-content-sync/batch-*.json; do
+              curl --fail --silent --show-error --request POST "$ANNOUNCEMENT_CONTENT_SYNC_URL" \
+                --header "authorization: Bearer $SUPABASE_PUBLISHABLE_KEY" \
+                --header "apikey: $SUPABASE_PUBLISHABLE_KEY" \
+                --header "x-announcement-content-sync-token: $ANNOUNCEMENT_CONTENT_SYNC_TOKEN" \
+                --header "content-type: application/json" \
+                --data-binary "@$batch"
+            done
+          fi
+
+      - name: 移除公開產物中的會員內容
+        run: node tools/public-metadata-projection.js docs
 
       - name: 同步可信提醒目標到 Supabase（已設定時）
         env:
@@ -86,7 +112,7 @@ jobs:
         run: |
           git config user.name "news-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/announcements.json docs/data/archive.json docs/data/calendar-events.json docs/data/reminder-targets.json docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json scraper/notification_outbox.json
+          git add -A docs/data docs/calendar.ics scraper/coverage_gaps.json scraper/fetch_state.json scraper/notification_outbox.json
           if [ -d docs/data/details ]; then
             git add docs/data/details
           fi

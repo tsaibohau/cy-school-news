@@ -329,6 +329,19 @@
     }
     return this.state();
   };
+  AccountLifecycle.prototype.clearAccountData = function (id) {
+    id = accountId(id || this.active_account_id);
+    if (id === ANONYMOUS_ACCOUNT) throw new Error("authenticated account required");
+    safeRemove(this.storage, this.stateKey(id));
+    safeRemove(this.storage, OUTBOX_PREFIX + id);
+    delete this.accounts[id];
+    if (this.active_account_id === id) {
+      this.active_account_id = ANONYMOUS_ACCOUNT;
+      this.active_state = this.loadState(ANONYMOUS_ACCOUNT, this.anonymous);
+      this.anonymous = clone(this.active_state);
+    }
+    return this.state();
+  };
   AccountLifecycle.prototype.updateAnonymous = function (state) {
     if (this.active_account_id !== ANONYMOUS_ACCOUNT) throw new Error("anonymous state inactive");
     this.anonymous = safeState(state || emptyState());
