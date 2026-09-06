@@ -126,7 +126,10 @@ jobs:
           fi
 
   pksh-windows-live:
-    if: github.ref == 'refs/heads/codex/pksh-windows-research-v12' || github.head_ref == 'codex/pksh-windows-research-v12'
+    if: >-
+      (github.ref == 'refs/heads/codex/pksh-windows-research-v12' ||
+      github.head_ref == 'codex/pksh-windows-research-v12') &&
+      !contains(github.event.head_commit.message, 'Update PKSH staging snapshot')
     runs-on: windows-latest
     timeout-minutes: 8
     permissions:
@@ -192,7 +195,7 @@ jobs:
           if (git diff --cached --quiet) {
             Write-Host "PKSH staging snapshot is unchanged."
           } else {
-            git commit -m "Update PKSH staging snapshot [skip ci]"
+            git commit -m "Update PKSH staging snapshot"
             git push origin "HEAD:$env:TARGET_BRANCH"
           }
       - name: Upload bounded research evidence

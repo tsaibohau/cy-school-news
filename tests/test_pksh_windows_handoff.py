@@ -25,6 +25,7 @@ assert api_snapshot["items"][1]["date"] == "2026-08-21"
 assert api_snapshot["items"][0]["source_category"] == "教務處"
 
 script = (ROOT / "scraper" / "pksh_windows_fetch.ps1").read_text(encoding="utf-8")
+workflow = (ROOT / ".github" / "workflows" / "staging-validation.yml").read_text(encoding="utf-8")
 lowered = script.lower()
 assert "invoke-webrequest" in lowered
 assert "news_query_json.php" in lowered
@@ -42,5 +43,8 @@ assert 'select-object -first 5' in lowered
 assert 'start-sleep -milliseconds 1000' in lowered
 assert 'start-sleep -milliseconds 1500' in lowered
 assert 'maxrows = "30"' in lowered
+assert 'git commit -m "Update PKSH staging snapshot"' in workflow
+assert "!contains(github.event.head_commit.message, 'Update PKSH staging snapshot')" in workflow
+assert "Update PKSH staging snapshot [skip ci]" not in workflow
 
 print("PKSH Windows metadata handoff tests passed")
