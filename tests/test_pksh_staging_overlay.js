@@ -4,7 +4,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
-const { applyPkshSnapshot } = require("../tools/pksh-staging-overlay.js");
+const { applyPkshSnapshot, safeItems } = require("../tools/pksh-staging-overlay.js");
 
 const root = path.resolve(__dirname, "..");
 const output = fs.mkdtempSync(path.join(os.tmpdir(), "pksh-staging-overlay-"));
@@ -26,5 +26,10 @@ assert.equal(combined.items.filter((item) => item.school === "pksh").length, 1);
 assert.equal(school.items.length, 1);
 assert.equal(manifest.schools.find((entry) => entry.id === "pksh").current_count, 1);
 assert(!("summary" in school.items[0]) && !("snippet" in school.items[0]) && !("detail_ref" in school.items[0]));
+assert.equal(safeItems({ items: Array.from({ length: 201 }, (_, index) => ({
+  id: "pksh-" + (30000 + index), school: "pksh", school_name: "北港高中",
+  title: "公告", url: "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=" + (30000 + index),
+  date: "2026-09-06", date_source: "list", source_category: "教務處",
+})) }).length, 201);
 fs.rmSync(output, { recursive: true, force: true });
 console.log("PKSH staging overlay tests passed");

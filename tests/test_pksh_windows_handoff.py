@@ -1,10 +1,11 @@
+import json
 from pathlib import Path
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
-from pksh_snapshot import PUBLIC_FIELDS, build_snapshot  # noqa: E402
+from pksh_snapshot import MAX_PKSH_ANNOUNCEMENTS, PUBLIC_FIELDS, build_snapshot  # noqa: E402
 
 
 fixture = (ROOT / "tests" / "fixtures" / "pksh_list.html").read_text(encoding="utf-8")
@@ -23,6 +24,13 @@ assert [row["id"] for row in api_snapshot["items"]] == ["pksh-28123", "pksh-2810
 assert api_snapshot["items"][0]["date"] == "2026-08-26"
 assert api_snapshot["items"][1]["date"] == "2026-08-21"
 assert api_snapshot["items"][0]["source_category"] == "教務處"
+
+large_payload = json.dumps([
+    {"newsId": str(900000 + i), "time": "09/01", "title": f"公告{i}", "unit_name": "教務處"}
+    for i in range(201)
+])
+assert len(build_snapshot(large_payload, "2026-09-06T00:00:00+00:00")["items"]) == 201
+assert MAX_PKSH_ANNOUNCEMENTS == 3000
 
 script = (ROOT / "scraper" / "pksh_windows_fetch.ps1").read_text(encoding="utf-8")
 workflow = (ROOT / ".github" / "workflows" / "staging-validation.yml").read_text(encoding="utf-8")

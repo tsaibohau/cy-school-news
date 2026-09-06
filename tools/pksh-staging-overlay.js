@@ -7,6 +7,7 @@ const ALLOWED = new Set([
   "id", "school", "school_name", "title", "url", "date",
   "date_source", "source_category",
 ]);
+const MAX_PKSH_ANNOUNCEMENTS = 3000;
 
 function readJson(file) {
   return JSON.parse(fs.readFileSync(file, "utf8"));
@@ -17,7 +18,7 @@ function writeJson(file, value) {
 }
 
 function safeItems(snapshot) {
-  if (!snapshot || !Array.isArray(snapshot.items) || !snapshot.items.length || snapshot.items.length > 200) {
+  if (!snapshot || !Array.isArray(snapshot.items) || !snapshot.items.length || snapshot.items.length > MAX_PKSH_ANNOUNCEMENTS) {
     throw new Error("invalid PKSH staging snapshot count");
   }
   return snapshot.items.map((item) => {

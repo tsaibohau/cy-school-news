@@ -20,6 +20,7 @@ PUBLIC_FIELDS = (
     "id", "school", "school_name", "title", "url", "date",
     "date_source", "source_category",
 )
+MAX_PKSH_ANNOUNCEMENTS = 3000
 
 
 def pksh_config() -> dict:
@@ -71,8 +72,8 @@ def build_snapshot(payload: str, fetched_at: str = "") -> dict:
     source_url = school["list_pages"][0]["url"]
     stripped = payload.lstrip()
     items = _api_items(payload, school, fetched_at) if stripped.startswith("[") else extract_items(payload, school, source_url)
-    if not items or len(items) > 200:
-        raise ValueError("PKSH page produced an unexpected announcement count")
+    if not items or len(items) > MAX_PKSH_ANNOUNCEMENTS:
+        raise ValueError("PKSH collection produced an unexpected announcement count")
     public_items = [{key: item.get(key, "") for key in PUBLIC_FIELDS} for item in items]
     if any(item["school"] != "pksh" or not item["url"].startswith(school["base"] + "/")
            for item in public_items):
