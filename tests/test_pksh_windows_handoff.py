@@ -33,5 +33,8 @@ assert "www.pksh.ylc.edu.tw" in lowered
 assert "skipcertificatecheck" not in lowered
 assert "--insecure" not in lowered and "curl -k" not in lowered
 assert "http://www.pksh.ylc.edu.tw" not in lowered
+assert "servercertificatevalidationcallback" not in lowered
+assert "servicepointmanager" not in lowered
+assert '.psobject.properties["newsid"]' in lowered
 
 print("PKSH Windows metadata handoff tests passed")

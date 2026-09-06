@@ -49,7 +49,12 @@ try {
 } catch {
   throw "PKSH announcement endpoint did not return valid JSON"
 }
-$Announcements = @($Records | Where-Object { $_.newsId -and $_.title })
+$Announcements = @($Records | Where-Object {
+  $NewsIdProperty = $_.PSObject.Properties["newsId"]
+  $TitleProperty = $_.PSObject.Properties["title"]
+  $null -ne $NewsIdProperty -and $null -ne $TitleProperty -and
+    $NewsIdProperty.Value -and $TitleProperty.Value
+})
 if ($Announcements.Count -lt 1 -or $Announcements.Count -gt 200) {
   throw "PKSH response does not contain recognizable announcement records"
 }

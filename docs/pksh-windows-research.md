@@ -16,6 +16,7 @@
 - `scraper/pksh_windows_fetch.ps1`：使用 `windows-latest` 的原生 HTTPS 驗證讀取固定官方公告資料介面；不關閉憑證驗證、不改用 HTTP、不加入自訂不可信憑證。
 - `tools/pksh_snapshot.py`：把暫存 HTML 轉成只含標題、日期、處室／分類、學校及官方網址的 JSON；不輸出摘要、正文或詳情位置。
 - Windows 工作只上傳資料最小化後的 JSON 與連線報告，不上傳完整頁面。
+- 公告資料的第一筆可能是統計資訊而沒有公告編號；程式只把同時具有 `newsId` 與標題的項目視為公告。
 
 ## 判定標準
 
