@@ -1,0 +1,30 @@
+"use strict";
+
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const os = require("node:os");
+const path = require("node:path");
+const { applyPkshSnapshot } = require("../tools/pksh-staging-overlay.js");
+
+const root = path.resolve(__dirname, "..");
+const output = fs.mkdtempSync(path.join(os.tmpdir(), "pksh-staging-overlay-"));
+fs.cpSync(path.join(root, "docs", "data"), path.join(output, "data"), { recursive: true });
+const snapshot = path.join(output, "pksh.json");
+fs.writeFileSync(snapshot, JSON.stringify({
+  fetched_at: "2026-09-06T00:00:00Z",
+  items: [{
+    id: "pksh-28123", school: "pksh", school_name: "北港高中",
+    title: "測試公告", url: "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=28123",
+    date: "2026-09-06", date_source: "list", source_category: "教務處",
+  }],
+}));
+applyPkshSnapshot(output, snapshot);
+const combined = JSON.parse(fs.readFileSync(path.join(output, "data", "announcements.json")));
+const school = JSON.parse(fs.readFileSync(path.join(output, "data", "schools", "pksh", "current.json")));
+const manifest = JSON.parse(fs.readFileSync(path.join(output, "data", "schools", "manifest.json")));
+assert.equal(combined.items.filter((item) => item.school === "pksh").length, 1);
+assert.equal(school.items.length, 1);
+assert.equal(manifest.schools.find((entry) => entry.id === "pksh").current_count, 1);
+assert(!("summary" in school.items[0]) && !("snippet" in school.items[0]) && !("detail_ref" in school.items[0]));
+fs.rmSync(output, { recursive: true, force: true });
+console.log("PKSH staging overlay tests passed");

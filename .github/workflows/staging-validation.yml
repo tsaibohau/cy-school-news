@@ -64,6 +64,7 @@ jobs:
           tests/test_user_refresh.js
           tests/test_reminder_rules_client.js
           tests/test_staging_build.js
+          tests/test_pksh_staging_overlay.js
           tests/test_ui_visual_contract.js
           tests/test_calendar_workflow.js
       - name: Search ranking train and holdout gate
@@ -124,13 +125,15 @@ jobs:
           fi
 
   pksh-windows-live:
-    if: github.ref == 'refs/heads/codex/pksh-windows-research-v12'
+    if: github.ref == 'refs/heads/codex/pksh-windows-research-v12' || github.head_ref == 'codex/pksh-windows-research-v12'
     runs-on: windows-latest
     timeout-minutes: 8
     permissions:
-      contents: read
+      contents: write
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -152,6 +155,22 @@ jobs:
           python tools/pksh_snapshot.py
           --html "$env:RUNNER_TEMP/pksh-list.json"
           --output "$env:RUNNER_TEMP/pksh-metadata.json"
+      - name: Save PKSH snapshot for the research Preview
+        shell: pwsh
+        env:
+          TARGET_BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: |
+          New-Item -ItemType Directory -Force -Path staging-data | Out-Null
+          Copy-Item "$env:RUNNER_TEMP/pksh-metadata.json" "staging-data/pksh-metadata.json"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add staging-data/pksh-metadata.json
+          if (git diff --cached --quiet) {
+            Write-Host "PKSH staging snapshot is unchanged."
+          } else {
+            git commit -m "Update PKSH staging snapshot [skip ci]"
+            git push origin "HEAD:$env:TARGET_BRANCH"
+          }
       - name: Upload bounded research evidence
         uses: actions/upload-artifact@v4
         with:
