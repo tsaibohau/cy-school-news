@@ -115,6 +115,7 @@ jobs:
           python tests/test_reminder_targets.py
           python tests/test_pksh_adapter.py
           python tests/test_pksh_windows_handoff.py
+          python tests/test_pksh_member_content.py
       - name: Verify generated data is untouched by staging build
         run: git diff --exit-code -- docs/data scraper/fetch_state.json
       - name: Reject tracked secret patterns
@@ -149,12 +150,35 @@ jobs:
           ./scraper/pksh_windows_fetch.ps1
           -OutputPath "$env:RUNNER_TEMP/pksh-list.json"
           -ReportPath "$env:RUNNER_TEMP/pksh-transport.json"
+          -MemberOutputPath "$env:RUNNER_TEMP/pksh-member-source.json"
       - name: Produce metadata-only handoff
         shell: pwsh
         run: >-
           python tools/pksh_snapshot.py
           --html "$env:RUNNER_TEMP/pksh-list.json"
           --output "$env:RUNNER_TEMP/pksh-metadata.json"
+      - name: Prepare protected PKSH summaries
+        shell: pwsh
+        run: >-
+          python tools/pksh_member_content.py
+          --input "$env:RUNNER_TEMP/pksh-member-source.json"
+          --output "$env:RUNNER_TEMP/pksh-member-sync.json"
+      - name: Sync summaries to the protected staging backend when configured
+        shell: pwsh
+        env:
+          SYNC_TOKEN: ${{ secrets.STAGING_ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          SYNC_URL: ${{ vars.STAGING_ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          PUBLISHABLE_KEY: ${{ vars.STAGING_SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          if (-not $env:SYNC_TOKEN -or -not $env:SYNC_URL -or -not $env:PUBLISHABLE_KEY) {
+            Write-Host "PKSH_STAGING_MEMBER_SYNC_NOT_CONFIGURED"
+            exit 0
+          }
+          Invoke-WebRequest -Uri $env:SYNC_URL -Method Post -Headers @{
+            authorization = "Bearer $env:PUBLISHABLE_KEY"
+            apikey = $env:PUBLISHABLE_KEY
+            "x-announcement-content-sync-token" = $env:SYNC_TOKEN
+          } -ContentType "application/json" -InFile "$env:RUNNER_TEMP/pksh-member-sync.json" -TimeoutSec 30 -UseBasicParsing | Out-Null
       - name: Save PKSH snapshot for the research Preview
         shell: pwsh
         env:

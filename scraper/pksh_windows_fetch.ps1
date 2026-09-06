@@ -2,7 +2,8 @@ param(
   [Parameter(Mandatory = $true)]
   [string]$OutputPath,
   [Parameter(Mandatory = $true)]
-  [string]$ReportPath
+  [string]$ReportPath,
+  [string]$MemberOutputPath = ""
 )
 
 Set-StrictMode -Version Latest
@@ -66,6 +67,48 @@ foreach ($Target in @($OutputPath, $ReportPath)) {
 }
 [System.IO.File]::WriteAllText([System.IO.Path]::GetFullPath($OutputPath), $Payload, $Utf8)
 
+$MemberRecords = @()
+if ($MemberOutputPath) {
+  foreach ($Announcement in $Announcements) {
+    $NewsId = [string]$Announcement.PSObject.Properties["newsId"].Value
+    if ($NewsId -notmatch '^\d+$') { continue }
+    $ViewUri = [Uri]"https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=$NewsId"
+    $ViewResponse = Invoke-WebRequest -Uri $ViewUri -Method Get -Headers $Headers -TimeoutSec 30 -MaximumRedirection 3 -UseBasicParsing
+    $ViewFinalUri = $ViewResponse.BaseResponse.RequestMessage.RequestUri
+    if ([int]$ViewResponse.StatusCode -ne 200 -or $ViewFinalUri.Scheme -ne "https" -or $ViewFinalUri.Host -ne "www.pksh.ylc.edu.tw") {
+      throw "PKSH detail page left the verified official HTTPS origin"
+    }
+    $UniqueMatch = [regex]::Match([string]$ViewResponse.Content, 'g_news_unique_id\s*=\s*["'']([^"'']+)["'']')
+    if (-not $UniqueMatch.Success) { continue }
+    $UniqueId = [Uri]::EscapeDataString($UniqueMatch.Groups[1].Value)
+    $DetailUri = [Uri]"https://www.pksh.ylc.edu.tw/ischool/widget/site_news/news_query_json_content.php?nid=$NewsId&dir=0&uid=$UniqueId"
+    $DetailResponse = Invoke-WebRequest -Uri $DetailUri -Method Get -Headers $Headers -TimeoutSec 30 -MaximumRedirection 3 -UseBasicParsing
+    $DetailFinalUri = $DetailResponse.BaseResponse.RequestMessage.RequestUri
+    if ([int]$DetailResponse.StatusCode -ne 200 -or $DetailFinalUri.Scheme -ne "https" -or $DetailFinalUri.Host -ne "www.pksh.ylc.edu.tw") {
+      throw "PKSH detail endpoint left the verified official HTTPS origin"
+    }
+    $DetailPayload = [string]$DetailResponse.Content
+    if ($DetailPayload.Length -gt 2097152) { throw "PKSH detail response is too large" }
+    try { $DetailRows = @($DetailPayload | ConvertFrom-Json) } catch { continue }
+    $Detail = $DetailRows | Where-Object { $null -ne $_.PSObject.Properties["content"] } | Select-Object -First 1
+    if ($null -eq $Detail) { continue }
+    $MemberRecords += [ordered]@{
+      newsId = $NewsId
+      title = [string]$Announcement.PSObject.Properties["title"].Value
+      source_url = $ViewUri.AbsoluteUri
+      content = [string]$Detail.PSObject.Properties["content"].Value
+    }
+    Start-Sleep -Milliseconds 350
+  }
+  $MemberParent = [System.IO.Path]::GetDirectoryName([System.IO.Path]::GetFullPath($MemberOutputPath))
+  [System.IO.Directory]::CreateDirectory($MemberParent) | Out-Null
+  [System.IO.File]::WriteAllText(
+    [System.IO.Path]::GetFullPath($MemberOutputPath),
+    ($MemberRecords | ConvertTo-Json -Depth 5),
+    $Utf8
+  )
+}
+
 $Report = [ordered]@{
   schema_version = 1
   fetched_at = [DateTimeOffset]::UtcNow.ToString("o")
@@ -75,6 +118,7 @@ $Report = [ordered]@{
   tls_verification = "windows_default_required"
   response_characters = $Payload.Length
   announcement_records = $Announcements.Count
+  member_detail_records = $MemberRecords.Count
 }
 [System.IO.File]::WriteAllText(
   [System.IO.Path]::GetFullPath($ReportPath),
