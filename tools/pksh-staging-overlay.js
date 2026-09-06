@@ -21,20 +21,26 @@ function safeItems(snapshot) {
   if (!snapshot || !Array.isArray(snapshot.items) || !snapshot.items.length || snapshot.items.length > MAX_PKSH_ANNOUNCEMENTS) {
     throw new Error("invalid PKSH staging snapshot count");
   }
-  return snapshot.items.map((item) => {
-    if (!item || item.school !== "pksh" || !/^pksh-\d+$/.test(item.id || "") ||
-        !String(item.url || "").startsWith("https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=")) {
-      throw new Error("invalid PKSH staging snapshot item");
+  const seen = new Set();
+  const items = [];
+  for (const item of snapshot.items) {
+    const idMatch = /^pksh-(\d+)$/.exec(String(item && item.id || ""));
+    const urlMatch = /^https:\/\/www\.pksh\.ylc\.edu\.tw\/ischool\/public\/news_view\/show\.php\?nid=(\d+)$/.exec(String(item && item.url || ""));
+    if (!item || item.school !== "pksh" || !idMatch || !urlMatch ||
+        idMatch[1] !== urlMatch[1] || !String(item.title || "").trim() || seen.has(item.id)) {
+      continue;
     }
     const publicItem = {};
-    for (const key of Object.keys(item)) {
-      if (!ALLOWED.has(key)) throw new Error("PKSH staging snapshot contains protected content");
-      publicItem[key] = item[key];
+    for (const key of ALLOWED) {
+      if (Object.prototype.hasOwnProperty.call(item, key)) publicItem[key] = item[key];
     }
     publicItem.category = "一般";
     publicItem.first_seen = snapshot.fetched_at || "";
-    return publicItem;
-  });
+    seen.add(item.id);
+    items.push(publicItem);
+  }
+  if (!items.length) throw new Error("PKSH snapshot contains no valid announcement items");
+  return items;
 }
 
 function applyPkshSnapshot(output, snapshotPath) {

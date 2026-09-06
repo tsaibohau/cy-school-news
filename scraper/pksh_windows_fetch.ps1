@@ -22,6 +22,7 @@ $Headers = @{
 # forbidden here: a failed chain must remain a failed research result.
 $Announcements = @()
 $SeenNewsIds = @{}
+$RejectedAnnouncementRecords = 0
 $ListPagesRequested = 0
 $PageSize = 30
 $MaxListPages = 100
@@ -68,12 +69,16 @@ for ($PageNum = 0; $PageNum -lt $MaxListPages; $PageNum++) {
       }
     }
   }
-  $PageAnnouncements = @($PageRecords | Where-Object {
+  $PageRows = @($PageRecords | Where-Object {
+    $null -eq $_.PSObject.Properties["total"]
+  })
+  $PageAnnouncements = @($PageRows | Where-Object {
     $NewsIdProperty = $_.PSObject.Properties["newsId"]
     $TitleProperty = $_.PSObject.Properties["title"]
     $null -ne $NewsIdProperty -and $null -ne $TitleProperty -and
       $NewsIdProperty.Value -and $TitleProperty.Value
   })
+  $RejectedAnnouncementRecords += ($PageRows.Count - $PageAnnouncements.Count)
   foreach ($Announcement in $PageAnnouncements) {
     $NewsId = [string]$Announcement.PSObject.Properties["newsId"].Value
     if (-not $SeenNewsIds.ContainsKey($NewsId)) {
@@ -81,9 +86,10 @@ for ($PageNum = 0; $PageNum -lt $MaxListPages; $PageNum++) {
       $Announcements += $Announcement
     }
   }
-  if ($null -ne $ExpectedTotal -and $Announcements.Count -ge $ExpectedTotal) { break }
-  if ($PageAnnouncements.Count -lt $PageSize) {
-    if ($null -ne $ExpectedTotal -and $Announcements.Count -lt $ExpectedTotal) {
+  $ProcessedAnnouncementRecords = $Announcements.Count + $RejectedAnnouncementRecords
+  if ($null -ne $ExpectedTotal -and $ProcessedAnnouncementRecords -ge $ExpectedTotal) { break }
+  if ($PageRows.Count -lt $PageSize) {
+    if ($null -ne $ExpectedTotal -and $ProcessedAnnouncementRecords -lt $ExpectedTotal) {
       throw "PKSH pagination ended before the reported announcement total was collected"
     }
     break
@@ -96,8 +102,8 @@ for ($PageNum = 0; $PageNum -lt $MaxListPages; $PageNum++) {
 if ($Announcements.Count -lt 1 -or $Announcements.Count -gt ($PageSize * $MaxListPages)) {
   throw "PKSH response does not contain recognizable announcement records"
 }
-if ($null -ne $ExpectedTotal -and $Announcements.Count -ne $ExpectedTotal) {
-  throw "PKSH collected $($Announcements.Count) announcements but the site reported $ExpectedTotal"
+if ($null -ne $ExpectedTotal -and ($Announcements.Count + $RejectedAnnouncementRecords) -ne $ExpectedTotal) {
+  throw "PKSH processed $($Announcements.Count + $RejectedAnnouncementRecords) announcement rows but the site reported $ExpectedTotal"
 }
 
 $Utf8 = [System.Text.UTF8Encoding]::new($false)
@@ -159,6 +165,7 @@ $Report = [ordered]@{
   tls_verification = "windows_default_required"
   response_characters = $Payload.Length
   announcement_records = $Announcements.Count
+  rejected_announcement_records = $RejectedAnnouncementRecords
   expected_announcement_records = $ExpectedTotal
   list_pages_requested = $ListPagesRequested
   request_policy = "sequential; follow the reported total, max 100 list pages and 5 detail records per run"
