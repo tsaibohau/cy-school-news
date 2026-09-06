@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-133524",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Cisco IOS XE存在高風險資安漏洞(CVE-2025-20334)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133524,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202509-00000014",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Cisco發布重大資安漏洞公告(CVE-2025-20334，CVSS：8.8)，此漏洞存在於 Cisco IOS XE 的HTTP API子系統，因輸入驗證不足，允許具有管理者權限的攻擊者，可透過精心設計的API請求向受影響的系統進行身分驗證；或未經身分驗證的遠端攻擊者誘使具有管理者權限的合法使用者點擊精心設計的連結以觸發漏洞。當漏洞成功利用後，攻擊者可能以root身分在受影響系統上執行任意命令。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] Cisco IOS XE系統已啟用HTTP伺服器功能，建議至官方網站查詢版本以確定是否受此漏洞影響。 https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ios-xe-cmd-inject-rPJM8BGL#fs",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請參考官方說明進行更新：https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-ios-xe-cmd-inject-rPJM8BGL",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10410-5dfbf-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "210a25fe3a543ae5aed98b39b241e2cbaa05cd8a1d706ee5962700873d45923b",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T19:24:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Cisco發布重大資安漏洞公告(CVE-2025-20334，CVSS：8.8)，此漏洞存在於 Cisco IOS XE 的HTTP API子系統，因輸入驗證不足，允許具有管理者權限的攻擊者，可透過精心設計的API請求向受影響的系統進行身分驗證；",
+  "evidence": "Cisco發布重大資安漏洞公告(CVE-2025-20334，CVSS：8.8)，此漏洞存在於 Cisco IOS XE 的HTTP API子系統，因輸入驗證不足，允許具有管理者權限的攻擊者，可透過精心設計的API請求向受影響的系統進行身分驗證；",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

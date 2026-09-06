@@ -1,0 +1,72 @@
+{
+ "announcement_id": "cysh-134599",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Cisco Catalyst SD-WAN 存在3個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134599,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "[內容說明:] 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202602-00000014",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Cisco Catalyst SD-WAN 是 Cisco 以雲端為中心的軟體定義廣域網路架構，提供集中管理、安全加密及應用效能優化，確保多雲環境的可靠連線，近日Cisco發布重大資安公告。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-20127，CVSS：10.0】 此漏洞存在於Cisco Catalyst SD-WAN Controller(formerly vSmart) 可能被未經身分驗證的遠端攻擊者利用，以繞過身分驗證機制並取得受影響系統的管理權限。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-20126，CVSS：8.8】 此漏洞存在於Cisco Catalyst SD-WAN Manager(formerly vManage) ，可能允許已通過身分驗證且具有本機低權限的攻擊者，利用REST API發送請求後，取得底層作業系統的root權限。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-20129，CVSS：9.8】 此漏洞存在於Cisco Catalyst SD-WAN Manager 的 API 使用者驗證，允許未經身分驗證的遠端攻擊者利用精心設計的API請求，以netadmin 角色使用者的身分存取受影響的系統。 註：Cisco Catalyst SD-WAN Controller (formerly vSmart) 與 Cisco Catalyst SD-WAN Manager (formerly vManage) 已被發現積極利用於攻擊活動，請儘速採取應變措施。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] 【CVE-2026-20127】 Cisco Catalyst SD-WAN 20.9 版本、 Cisco Catalyst SD-WAN 20.11版本、 Cisco Catalyst SD-WAN 20.12.5版本、 Cisco Catalyst SD-WAN 20.12.6版本、 Cisco Catalyst SD-WAN 20.13版本、 Cisco Catalyst SD-WAN 20.14版本、 Cisco Catalyst SD-WAN 20.15版本、 Cisco Catalyst SD-WAN 20.16版本、 Cisco Catalyst SD-WAN 20.18版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-20126、CVE-2026-20129】 Cisco Catalyst SD-WAN Manager 20.9版本、 Cisco Catalyst SD-WAN Manager 20.11版本、 Cisco Catalyst SD-WAN Manager 20.12.5版本、 Cisco Catalyst SD-WAN Manager 20.126版本、 Cisco Catalyst SD-WAN Manager 20.13版本、 Cisco Catalyst SD-WAN Manager 20.14版本、 Cisco Catalyst SD-WAN Manager 20.15版本、 Cisco Catalyst SD-WAN Manager 20.16版本、 Cisco Catalyst SD-WAN Manager 20.18版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至以下版本： 【CVE-2026-20127】 Cisco Catalyst SD-WAN 20.9.8.2(含)之後版本 Cisco Catalyst SD-WAN 20.12.6.1(含)之後版本 Cisco Catalyst SD-WAN 20.12.5.3(含)之後版本 Cisco Catalyst SD-WAN 20.12.6.1(含)之後版本 Cisco Catalyst SD-WAN 20.15.4.2(含)之後版本 Cisco Catalyst SD-WAN 20.18.2.1(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-20126、CVE-2026-20129】 Cisco Catalyst SD-WAN Manager 20.9.8.2(含)之後版本 Cisco Catalyst SD-WAN Manager 20.12.6.1(含)之後版本 Cisco Catalyst SD-WAN Manager 20.12.5.3(含)之後版本 Cisco Catalyst SD-WAN Manager 20.12.6.1(含)之後版本 Cisco Catalyst SD-WAN Manager 20.15.4.2(含)之後版本 Cisco Catalyst SD-WAN Manager 20.15.4.2(含)之後版本 Cisco Catalyst SD-WAN Manager 20.18.2.1(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10737-2a2d2-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "fe9ebe377222e27a321e7efa15d716ef9e8d46c29aa09d58dea730f2a75c7fe4",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【CVE-2026-20126，CVSS：8.8】 此漏洞存在於Cisco Catalyst SD-WAN Manager(formerly vManage) ，可能允許已通過身分驗證且具有本機低權限的攻擊者，利用REST API發送請求後，取得底層作業系統的root權限。",
+  "evidence": "【CVE-2026-20126，CVSS：8.8】 此漏洞存在於Cisco Catalyst SD-WAN Manager(formerly vManage) ，可能允許已通過身分驗證且具有本機低權限的攻擊者，利用REST API發送請求後，取得底層作業系統的root權限。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

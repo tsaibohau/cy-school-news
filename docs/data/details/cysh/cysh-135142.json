@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-135142",
+ "school_id": "cysh",
+ "title": "【漏洞預警】網擎資訊｜MailGates/MailAudit - Stack-based Buffer Overflow",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135142,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202604-00000016",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【網擎資訊｜MailGates/MailAudit - Stack-based Buffer Overflow】(CVE-2026-6350，CVSS：9.8) 未經身分鑑別之遠端攻擊者可控制程式執行流程並執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] MailGates/MailAudit 6.0： 6.1.10.054(不含)以前版本 MailGates/MailAudit 5.0： 5.2.10.099(不含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] MailGates/MailAudit 6.0: Update to version 61.10.054 or later MailGates/MailAudit 5.0: Update to version 5.2.10.099 or later",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-132-10844-1405d-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "a4ef4bbb385a4c238bc3577d1692a99cf93e3aeb8f357b829405b6f3972b079b",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T07:20:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【網擎資訊｜MailGates/MailAudit - Stack-based Buffer Overflow】(CVE-2026-6350，CVSS：9.8) 未經身分鑑別之遠端攻擊者可控制程式執行流程並執行任意程式碼。",
+  "evidence": "【網擎資訊｜MailGates/MailAudit - Stack-based Buffer Overflow】(CVE-2026-6350，CVSS：9.8) 未經身分鑑別之遠端攻擊者可控制程式執行流程並執行任意程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

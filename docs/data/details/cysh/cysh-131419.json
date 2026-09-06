@@ -1,0 +1,75 @@
+{
+ "announcement_id": "cysh-131419",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Veeam旗下Veeam Backup 和 Replication備份軟體存在重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-131419,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202503-00000010",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Veeam Backup 和 Replication是Veeam核心備份軟體，近日Veeam發布重大資安漏洞公告。此漏洞(CVE-2025-23120，CVSS：9.9)允許經網域驗證的使用者，可遠端執行程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Veeam Backup 和 Replication 12.3.0.310 (含)之前所有12.x版",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "將Veeam Backup 和 Replication 更新至 12.3.1.1139 (含)以後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10023-ba7c8-1.html 2. https://www.veeam.com/kb4724 3. CVE-2025-23120： https://nvd.nist.gov/vuln/detail/CVE-2025-23120",
+   "links": [
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-169-10023-ba7c8-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-169-10023-ba7c8-1.html"
+    },
+    {
+     "text": "https://www.veeam.com/kb4724",
+     "url": "https://www.veeam.com/kb4724"
+    },
+    {
+     "text": "https://nvd.nist.gov/vuln/detail/CVE-2025-23120",
+     "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-23120"
+    }
+   ]
+  }
+ ],
+ "attachments": [],
+ "source_hash": "4a360f20f1df41bd70d02199104a57cc0f5550e16cd53d884ca1aa34e5b61151",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T07:18:08+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Veeam Backup 和 Replication是Veeam核心備份軟體，近日Veeam發布重大資安漏洞公告。",
+  "evidence": "Veeam Backup 和 Replication是Veeam核心備份軟體，近日Veeam發布重大資安漏洞公告。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

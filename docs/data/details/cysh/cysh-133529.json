@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-133529",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Microsoft Exchange Server 存在重大資安漏洞(CVE-2025-59249)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133529,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202510-00000009",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "微軟針對旗下產品Exchange Server發布重大資安漏洞公告(CVE-2025-59249，CVSS：8.8)，此漏洞為弱身分驗證漏洞，允許經授權的攻擊透過網路提升權限。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] ● Microsoft Exchange Server Subion Edition RTM ● Microsoft Exchange Server 2019 Cumulative Update 15 ● Microsoft Exchange Server 2019 Cumulative Update 14 ● Microsoft Exchange Server 2016 Cumulative Update 23",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 根據官方網站釋出解決方式進行修補：https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59249",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-169-10447-4a433-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "97cdfbc5dd5c9657b1092295ca5ef41f659f5dd3e72a696982a94e21b9fe5afa",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "微軟針對旗下產品Exchange Server發布重大資安漏洞公告(CVE-2025-59249，CVSS：8.8)，此漏洞為弱身分驗證漏洞，允許經授權的攻擊透過網路提升權限。",
+  "evidence": "微軟針對旗下產品Exchange Server發布重大資安漏洞公告(CVE-2025-59249，CVSS：8.8)，此漏洞為弱身分驗證漏洞，允許經授權的攻擊透過網路提升權限。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

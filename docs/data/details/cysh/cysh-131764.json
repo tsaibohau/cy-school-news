@@ -1,0 +1,105 @@
+{
+ "announcement_id": "cysh-131764",
+ "school_id": "cysh",
+ "title": "【漏洞預警】桓基科技 iSherlock 存在三個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-131764,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202504-00000004",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "桓基科技 iSherlock近期遭揭漏之重大資安漏洞皆為OS Command Injection，分述如下：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【桓基科技 iSherlock - OS Command Injection】(CVE-2025-3361，CVSS：9.8) 桓基科技iSherlock之網頁介面存在 OS Command Injection漏洞，允許未經身分鑑別之遠端攻擊者注入任意作業系統指令並於伺服器上執行。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【桓基科技 iSherlock - OS Command Injection】(CVE-2025-3362，CVSS：9.8) 桓基科技iSherlock之網頁介面存在 OS Command Injection漏洞，允許未經身分鑑別之遠端攻擊者注入任意作業系統指令並於伺服器上執行。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【桓基科技 iSherlock - OS Command Injection】(CVE-2025-3363，CVSS：9.8) 桓基科技iSherlock之網頁介面存在 OS Command Injection漏洞，允許未經身分鑑別之遠端攻擊者注入任意作業系統指令並於伺服器上執行。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● iSherlock 4.5與iSherlock 5.5(包含 MailSherlock , SpamSherock, AuditSherlock)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● iSherlock-user-4.5：236(不含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● iSherlock-user-5.5：236(不含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● iSherlock 4.5更新iSherlock-user-4.5套件至236(含)以後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● iSherlock 5.5更新iSherlock-user-5.5套件至236(含)以後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. 桓基科技 iSherlock - OS Command Injection： https://www.twcert.org.tw/tw/cp-132-10051-76634-1.html 2. 桓基科技 iSherlock - OS Command Injection： https://www.twcert.org.tw/tw/cp-132-10053-890b1-1.html 3. 桓基科技 iSherlock - OS Command Injection： https://www.twcert.org.tw/tw/cp-132-10054-84588-1.html",
+   "links": [
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-132-10051-76634-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-132-10051-76634-1.html"
+    },
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-132-10053-890b1-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-132-10053-890b1-1.html"
+    },
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-132-10054-84588-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-132-10054-84588-1.html"
+    }
+   ]
+  }
+ ],
+ "attachments": [],
+ "source_hash": "e79426d94b0099fdabfbe11b78bdfc4a48c60ee9276f764fbade68d23400ed38",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T07:18:08+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "桓基科技 iSherlock近期遭揭漏之重大資安漏洞皆為OS Command Injection，分述如下：",
+  "evidence": "桓基科技 iSherlock近期遭揭漏之重大資安漏洞皆為OS Command Injection，分述如下：",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

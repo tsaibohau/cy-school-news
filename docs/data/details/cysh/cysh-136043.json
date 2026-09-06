@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-136043",
+ "school_id": "cysh",
+ "title": "【漏洞預警】微軟釋出115年5月份安全性更新",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-136043,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202605-00000007",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "微軟釋出115年5月份安全性更新，共修補139個漏洞，其中包含30個高風險漏洞與1個已遭利用之漏洞，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] 【具高風險漏洞之產品】 ASP.NET Core Azure AI Foundry M365 published agents Azure Cloud Shell Azure Connected Machine Agent Azure DevOps Azure Entra ID Azure Logic Apps Azure Machine Learning Azure Managed Instance for Apache Cassandra Azure Monitor Agent Azure Notification Service Azure SDK Copilot Chat (Microsoft Edge) Data Deduplication Dynamics Business Central GitHub Copilot and Visual Studio M365 Copilot M365 Copilot for Desktop Microsoft Authenticator Microsoft Data Formulator Microsoft Dynamics 365 Customer Insights Microsoft Dynamics 365 (on-premises) Microsoft Edge (Chromium-based) Microsoft Edge for Android Microsoft Exchange Server Microsoft Office Microsoft Office Click-To-Run Microsoft Office Excel Microsoft Office PowerPoint Microsoft Office SharePoint Microsoft Office Word Microsoft Partner Center Microsoft SSO Plugin for Jira ＆ Confluence Microsoft Teams Microsoft Windows DNS .NET Power Automate SQL Server Telnet Client Visual Studio Code Windows Admin Center Windows Ancillary Function Driver for WinSock Windows Application Identity (AppID) Subsystem Windows Cloud Files Mini Filter Driver Windows Common Log File System Driver Windows Cryptographic Services Windows DWM Core Library Windows Event Logging Service Windows Filtering Platform (WFP) Windows GDI Windows Hyper-V Windows Internet Key Exchange (IKE) Protocol Windows Kernel Windows Kernel - Mode Drivers Windows LDAP - Lightweight Directory Access Protocol Windows LLDP Windows Message Queuing Windows Native WiFi Miniport Driver Windows Netlogon Windows Print Spooler Components Windows Projected File System Windows Remote Desktop Windows Rich Text Edit Windows Rich Text Edit Control Windows Secure Boot Windows SMB Client Windows Storage Spaces Controller Windows Storport Miniport Driver Windows TCP/IP Windows Telephony Service Windows Volume Manager Extension Driver Windows Win32K – GRFX Windows Win32K - ICOMP",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 目前微軟官方已針對弱點釋出修復版本，請各機關可聯絡系統維護廠商或參考以下連結： https://msrc.microsoft.com/update-guide/releaseNote/2026-May",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://msrc.microsoft.com/update-guide/releaseNote/2026-May",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "d6f47f55604a8d2616fc305cade6328e92417b2b006fc093fc544f1455caa7f1",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-01T19:23:36+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "微軟釋出115年5月份安全性更新，共修補139個漏洞，其中包含30個高風險漏洞與1個已遭利用之漏洞，請儘速確認並進行修補。",
+  "evidence": "微軟釋出115年5月份安全性更新，共修補139個漏洞，其中包含30個高風險漏洞與1個已遭利用之漏洞，請儘速確認並進行修補。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

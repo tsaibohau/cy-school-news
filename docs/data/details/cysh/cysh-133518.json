@@ -1,0 +1,87 @@
+{
+ "announcement_id": "cysh-133518",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Windows版Zoom用戶端存在重大資安漏洞(CVE-2025-49457)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133518,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202508-00000008",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Zoom 是一款跨平台雲端視訊會議軟體，支持多人線上會議、螢幕分享及會議錄製，適用於遠距工作與教學。Zoom日前發布重大資安漏洞公告(CVE-2025-49457，CVSS：9.6)，部分Windows版Zoom客戶端存在不受信任的搜尋路徑漏洞，可能允許未經身分驗證的攻擊者，透過網路存取進行權限提升攻擊。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Zoom Workplace for Windows 6.3.10 之前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Windows 6.3.10 之前版本（6.1.16 和 6.2.12 除外）的 Zoom Workplace VDI",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Windows 版 Zoom Rooms 6.3.10之前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Windows 的 Zoom Rooms 控制器 6.3.10 之前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Windows 版 Zoom Meeting SDK 6.3.10 之前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "根據官方網站釋出解決方式進行修補",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "https://www.zoom.com/en/trust/security-bulletin/zsb-25030/?lang=null&lang=null",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-169-10323-6ea39-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "019f7c1e29e038b0d714cb610aaaeb7fbc0a560a4086f0afef7642a9ae5aa47d",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-29T19:18:09+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Zoom日前發布重大資安漏洞公告(CVE-2025-49457，CVSS：9.6)，部分Windows版Zoom客戶端存在不受信任的搜尋路徑漏洞，可能允許未經身分驗證的攻擊者，透過網路存取進行權限提升攻擊。",
+  "evidence": "Zoom日前發布重大資安漏洞公告(CVE-2025-49457，CVSS：9.6)，部分Windows版Zoom客戶端存在不受信任的搜尋路徑漏洞，可能允許未經身分驗證的攻擊者，透過網路存取進行權限提升攻擊。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

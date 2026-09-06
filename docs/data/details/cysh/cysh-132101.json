@@ -1,0 +1,97 @@
+{
+ "announcement_id": "cysh-132101",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Fortinet 裝置存在繞過身分驗證漏洞(CVE-2025-22252)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-132101,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202505-00000015",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "日前Fortinet發布重大資安漏洞公告，指出多項產品受到影響，包括FortiOS、FortiProxy與FortiSwitchManager。此漏洞(CVE-2025-22252，CVSS：9.0)為允許攻擊者繞過身分驗證並取得管理存取權限。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● FortiOS 7.6.0",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● FortiOS 7.4.4 至 7.4.6",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● FortiProxy 7.6.0 至 7.6.1",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● FortiSwitchManager 7.2.5",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "請更新至以下版本：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● FortiOS 7.6.1(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● FortiOS 7.4.7(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● FortiProxy 7.6.2(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● FortiSwitchManager 7.2.6(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-169-10126-a63a3-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "39bfb4ba1a178ca97197c0b77bcb02302b730817d02f0b67caa3716dc8916b1c",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T07:18:08+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "此漏洞(CVE-2025-22252，CVSS：9.0)為允許攻擊者繞過身分驗證並取得管理存取權限。",
+  "evidence": "此漏洞(CVE-2025-22252，CVSS：9.0)為允許攻擊者繞過身分驗證並取得管理存取權限。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

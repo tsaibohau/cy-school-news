@@ -1,0 +1,67 @@
+{
+ "announcement_id": "cysh-132566",
+ "school_id": "cysh",
+ "title": "【漏洞預警】帝緯系統整合｜公文製作跨瀏覽器元件 - Remote Code Execution",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-132566,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202507-00000009",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【帝緯系統整合｜公文製作跨瀏覽器元件 - Remote Code Execution】(CVE-2025-7620，CVSS：8.8) 帝緯系統整合製作之公文製作跨瀏覽器元件存在 Remote Code Execution漏洞，若使用者在該元件啟用的情況下瀏覽惡意網站，遠端攻擊者可使其下載任意程式並執行。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "公文製作跨瀏覽器元件v1.6.8(含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "聯繫廠商進行更新",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-132-10241-2ec07-1.html",
+   "links": [
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-132-10241-2ec07-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-132-10241-2ec07-1.html"
+    }
+   ]
+  }
+ ],
+ "attachments": [],
+ "source_hash": "2e02b0197a30bf0db28b8c3e82f02f7a0bee53d240d7536c87130ee661e98e49",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T07:18:08+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【帝緯系統整合｜公文製作跨瀏覽器元件 - Remote Code Execution】(CVE-2025-7620，CVSS：8.8) 帝緯系統整合製作之公文製作跨瀏覽器元件存在 Remote Code Execution漏洞，若使用者在該元件啟用的情況下瀏覽惡意網站，遠端攻擊者可使其下載任意程式並執行。",
+  "evidence": "【帝緯系統整合｜公文製作跨瀏覽器元件 - Remote Code Execution】(CVE-2025-7620，CVSS：8.8) 帝緯系統整合製作之公文製作跨瀏覽器元件存在 Remote Code Execution漏洞，若使用者在該元件啟用的情況下瀏覽惡意網站，遠端攻擊者可使其下載任意程式並執行。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

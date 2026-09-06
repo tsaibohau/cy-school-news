@@ -1,0 +1,72 @@
+{
+ "announcement_id": "cysh-132099",
+ "school_id": "cysh",
+ "title": "【漏洞預警】宏正自動科技 LCD KVM over IP Switch CL5708IM 存在多個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-132099,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202505-00000007",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【宏正自動科技 LCD KVM over IP Switch CL5708IM - Stack-based Buffer Overflow】(CVE-2025-3710，CVSS：9.8) 宏正自動科技 LCD KVM over IP Switch CL5708IM 存在 Stack-based Buffer Overflow 漏洞，未經身分鑑別之遠端攻擊者可利用此漏洞於設備上執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【宏正自動科技 LCD KVM over IP Switch CL5708IM - Stack-based Buffer Overflow】(CVE-2025-3711，CVSS：9.8) 宏正自動科技 LCD KVM over IP Switch CL5708IM 存在 Stack-based Buffer Overflow 漏洞，未經身分鑑別之遠端攻擊者可利用此漏洞於設備上執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【宏正自動科技 LCD KVM over IP Switch CL5708IM - Stack-based Buffer Overflow】(CVE-2025-3714，CVSS：9.8) 宏正自動科技 LCD KVM over IP Switch CL5708IM 存在 Stack-based Buffer Overflow 漏洞，未經身分鑑別之遠端攻擊者可利用此漏洞於設備上執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "LCD KVM over IP Switch CL5708IM 韌體 v2.2.215(不含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "請更新韌體至 v2.2.215(含)以後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. 宏正自動科技 LCD KVM over IP Switch CL5708IM - Stack-based Buffer Overflow https://www.twcert.org.tw/tw/cp-132-10095-a0f57-1.html 2. 宏正自動科技 LCD KVM over IP Switch CL5708IM - Stack-based Buffer Overflow https://www.twcert.org.tw/tw/cp-132-10096-60a81-1.html 3. 宏正自動科技 LCD KVM over IP Switch CL5708IM - Stack-based Buffer Overflow https://www.twcert.org.tw/tw/cp-132-10099-0ad69-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "a488353b3acd89d16ea51d08c0d6d5fc0008ca183b0cd2b67f54e950c381a2db",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T07:18:08+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【宏正自動科技 LCD KVM over IP Switch CL5708IM - Stack-based Buffer Overflow】(CVE-2025-3710，CVSS：9.8) 宏正自動科技 LCD KVM over IP Switch CL5708IM 存在 Stack-based Buffer Overflow 漏洞，未經身分鑑別之遠端攻擊…",
+  "evidence": "【宏正自動科技 LCD KVM over IP Switch CL5708IM - Stack-based Buffer Overflow】(CVE-2025-3710，CVSS：9.8) 宏正自動科技 LCD KVM over IP Switch CL5708IM 存在 Stack-based Buffer Overflow 漏洞，未經身分鑑別之遠端攻擊者可利用此漏洞於設備上執行任意程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

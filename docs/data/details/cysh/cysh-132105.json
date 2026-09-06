@@ -1,0 +1,107 @@
+{
+ "announcement_id": "cysh-132105",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Cisco IOS XE Software存在高風險安全漏洞(CVE-2025-20188)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-132105,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 NISAC-200-202505-00000076",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現Cisco IOS XE Software for Wireless LAN Controllers (WLCs)之Out-of-Band Access Point (AP) Image Download功能存在任意檔案上傳(Arbitrary File Upload)漏洞(CVE-2025-20188)，允許未經身分鑑別之遠端攻擊者上傳後門程式以執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "影響產品名稱：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Cisco IOS XE Software且開啟Out-of-Band AP Image Download功能之設備",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "影響型號：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Catalyst 9800-CL Wireless Controllers for Cloud",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Catalyst 9800 Embedded Wireless Controller（適用於Catalyst 9300、9400及9500系列交換器）",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Catalyst 9800系列無線控制器",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Catalyst AP內嵌式無線控制器",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "可使用Cisco Software Checker(https://sec.cloudapps.cisco.com/security/center/softwarechecker.x) 確認現行使用之Cisco IOS XE Software版本是否受到影響。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "1.官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-wlc-file-uplpd-rHZG9UfC",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "2.若暫時無法更新，請先行關閉Out-of-Band AP Image Download功能以避免遭到攻擊利用。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://sec.cloudapps.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-wlc-file-uplpd-rHZG9UfC 2. https://netmag.tw/2025/05/13/cisco-ios-xe-wireless-controller-vulnerability",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "5ab1880108dad1676b689bf42e6d1b0941f10b4d486c8735df3bbebd5a1ba986",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T07:18:08+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現Cisco IOS XE Software for Wireless LAN Controllers (WLCs)之Out-of-Band Access Point (AP) Image Download功能存在任意檔案上傳(Arbitrary File Upload)漏洞(CVE-2025-20188)，允許未經身分鑑別之遠端攻擊者上傳後門程…",
+  "evidence": "研究人員發現Cisco IOS XE Software for Wireless LAN Controllers (WLCs)之Out-of-Band Access Point (AP) Image Download功能存在任意檔案上傳(Arbitrary File Upload)漏洞(CVE-2025-20188)，允許未經身分鑑別之遠端攻擊者上傳後門程式以執行任意程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

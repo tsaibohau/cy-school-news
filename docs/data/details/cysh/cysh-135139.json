@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-135139",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Fortinet 旗下 FortiSandbox JRPC API 存在重大資安漏洞(CVE-2026-39813)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135139,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202604-00000012",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Fortinet發布FortiSandbox JRPC API 存在重大資安漏洞(CVE-2026-39813，CVSS：9.8)，此為路徑遍歷漏洞，可能允許未經過身分驗證的攻擊者，透過特製的HTTP請求繞過身分驗證。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] FortiSandbox 4.4.0 至 4.4.8 (含)版本 FortiSandbox 5.0.0 至 5.0.5 (含)版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至以下版本 FortiSandbox 4.4.9 (含)之後版本、 FortiSandbox 5.0.6 (含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://wwwtwcert.org.tw/tw/cp-169-10838-99d85-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "f2760f6b4cef65beb209294905fe2a33d1ea3e5137be2d05d5804919333820e1",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T07:20:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Fortinet發布FortiSandbox JRPC API 存在重大資安漏洞(CVE-2026-39813，CVSS：9.8)，此為路徑遍歷漏洞，可能允許未經過身分驗證的攻擊者，透過特製的HTTP請求繞過身分驗證。",
+  "evidence": "Fortinet發布FortiSandbox JRPC API 存在重大資安漏洞(CVE-2026-39813，CVSS：9.8)，此為路徑遍歷漏洞，可能允許未經過身分驗證的攻擊者，透過特製的HTTP請求繞過身分驗證。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

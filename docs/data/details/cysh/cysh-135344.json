@@ -1,0 +1,92 @@
+{
+ "announcement_id": "cysh-135344",
+ "school_id": "cysh",
+ "title": "【漏洞預警】CISA新增4個已知遭駭客利用之漏洞至KEV目錄(2026/04/27-2026/05/03)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135344,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202605-00000003",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2024-1708】ConnectWise ScreenConnect Path Traversal Vulnerability (CVSS v3.1: 8.4) 【是否遭勒索軟體利用:未知】 ConnectWise ScreenConnect 存在路徑遍歷漏洞，可能允許攻擊者執行遠端程式碼，或直接影響機密資料與關鍵系統。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-32202】Microsoft Windows Protection Mechanism Failure Vulnerability (CVSS v3.1: 4.3) 【是否遭勒索軟體利用:未知】 Microsoft Windows Shell 存在保護機制失效漏洞，允許未經授權的攻擊者透過網路進行偽裝攻擊。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-41940】WebPros cPanel & WHM and WP2 (WordPress Squared) Missing Authentication for Critical Function Vulnerability (CVSS v3.1: 9.8) 【是否遭勒索軟體利用:未知】 WebPros 的 cPanel 與 WHM（WebHost Manager）以及 WP2（WordPress Squared）在登入流程中存在身分驗證繞過漏洞，允許未經驗證的遠端攻擊者存取控制面板。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-31431】Linux Kernel Incorrect Resource Transfer Between Spheres Vulnerability (CVSS v3.1: 7.8) 【是否遭勒索軟體利用:未知】 Linux Kernel 存在Incorrect Resource Transfer Between Spheres漏洞，可能導致權限提升。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] 【CVE-2024-1708】請參考官方所列的影響版本 https://www.connectwise.com/company/trust/security-bulletins/connectwise-screenconnect-23.9.8",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-32202】請參考官方所列的影響版本 https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32202",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-41940】請參考官方所列的影響版本 https://support.cpanel.net/hc/en-us/articles/40073787579671-cPanel-WHM-Security-Update-04-28-2026",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-31431】請參考官方所列的影響版本 https://lore.kernel.org/linux-cve-announce/2026042214-CVE-2026-31431-3d65@gregkh/",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 【CVE-2024-1708】 官方已針對漏洞釋出修復更新，請更新至相關版本 https://www.connectwise.com/company/trust/security-bulletins/connectwise-screenconnect-23.9.8",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-32202】 官方已針對漏洞釋出修復更新，請更新至相關版本 https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-32202",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-41940】 官方已針對漏洞釋出修復更新，請更新至相關版本 https://support.cpanel.net/hc/en-us/articles/40073787579671-cPanel-WHM-Security-Update-04-28-2026",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-31431】 官方已針對漏洞釋出修復更新，請更新至相關版本 https://lore.kernel.org/linux-cve-announce/2026042214-CVE-2026-31431-3d65@gregkh/",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "642c25b6bb03ea359b0f3e0cd793dc9e55fcf331321adc802a5c155c0267bd29",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T07:20:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202605-00000003",
+  "evidence": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202605-00000003",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

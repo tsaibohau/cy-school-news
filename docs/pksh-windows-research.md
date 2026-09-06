@@ -1,7 +1,7 @@
 # 北港高中 Windows 安全抓取研究
 
-日期：2026-09-05
-研究分支：`codex/pksh-windows-research-v12`
+日期：2026-09-05  
+研究分支：`codex/pksh-windows-research-v12`  
 基線：封存測試版 `cc5fb431c620a134ea1838ccbe4b4a5a0221288e`
 
 ## 已確認

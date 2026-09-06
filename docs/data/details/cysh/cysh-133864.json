@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-133864",
+ "school_id": "cysh",
+ "title": "【漏洞預警】SolarWinds旗下Serv-U軟體存在3個重大資安漏洞(CVE-2025-40547)(CVE-2025-40548)(CVE-2025-40549)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133864,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202511-00000016",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "SolarWinds Serv-U是一款用於安全文件傳輸的伺服器軟體，支援FTP、FTPS、SFTP等多種協議，具備易用的管理介面，並支援跨平台與跨裝置存取等功能。日前，SolarWinds發布旗下產品Serv-U存在3個重大資安漏洞。 【CVE-2025-40547，CVSS：9.1】 此為邏輯錯誤漏洞，可能允許具有管理員權限的攻擊者可執行程式碼。 【CVE-2025-40548，CVSS：9.1】 此為缺失驗證過程漏洞，可能允許具有管理員的攻擊者可執行程式碼。 【CVE-2025-40549，CVSS：9.1】 此為路徑限制繞過漏洞，可能允許具有管理者權限的攻擊者，可在目錄上執行程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] SolarWinds Serv-U 15.5.2.2.102版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至以下版本： SolarWinds Serv-U 15.5.3版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10519-a28f7-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "e2feedaa2726ced5a157b9c2732c486345f6ab7a1265dfe101784fb406603dfa",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202511-00000016",
+  "evidence": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202511-00000016",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

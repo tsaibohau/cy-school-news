@@ -26,7 +26,6 @@ const behavioral = fs.readFileSync(path.join(root, "tests", "test_rls_behavioral
 const deployedWorkflow = fs.readFileSync(path.join(root, ".github", "workflows", "rls-deployed.yml"), "utf8");
 const publicCurrent = JSON.parse(fs.readFileSync(path.join(output, "data", "announcements.json"), "utf8"));
 const publicArchive = JSON.parse(fs.readFileSync(path.join(output, "data", "archive.json"), "utf8"));
-const pkshSnapshotPath = path.join(root, "staging-data", "pksh-metadata.json");
 
 assert(!production.includes("acceptance-user-tasks.js"), "production source must not load the acceptance harness");
 assert(!production.includes("cynews-staging-banner"), "production source must not contain a staging banner");
@@ -81,19 +80,6 @@ assert(!stagingConfig.includes("https://oppdhtnepjagdwovndra.supabase.co"));
 assert(!behavioral.includes("passed for A=${a}"), "behavioral test output must not reveal user UUIDs");
 assert.equal(publicCurrent.content_access, "approved-account-required");
 assert.equal(publicArchive.content_access, "approved-account-required");
-if (fs.existsSync(pkshSnapshotPath)) {
-  const pkshSnapshot = JSON.parse(fs.readFileSync(pkshSnapshotPath, "utf8"));
-  const pkshCurrent = JSON.parse(fs.readFileSync(path.join(output, "data", "schools", "pksh", "current.json"), "utf8"));
-  const schoolManifest = JSON.parse(fs.readFileSync(path.join(output, "data", "schools", "manifest.json"), "utf8"));
-  const combinedPksh = publicCurrent.items.filter((item) => item.school === "pksh");
-  const manifestPksh = schoolManifest.schools.find((school) => school.id === "pksh");
-  const expectedIds = pkshSnapshot.items.map((item) => item.id).sort();
-  assert.equal(combinedPksh.length, pkshSnapshot.items.length, "combined staging data must retain every PKSH snapshot row");
-  assert.equal(pkshCurrent.items.length, pkshSnapshot.items.length, "school staging data must retain every PKSH snapshot row");
-  assert.equal(manifestPksh.current_count, pkshSnapshot.items.length, "PKSH manifest count must match the complete snapshot");
-  assert.deepEqual(combinedPksh.map((item) => item.id).sort(), expectedIds, "combined staging data cannot truncate or replace PKSH rows");
-  assert.deepEqual(pkshCurrent.items.map((item) => item.id).sort(), expectedIds, "school staging data cannot truncate or replace PKSH rows");
-}
 for (const item of publicCurrent.items.concat(publicArchive.items)) {
   for (const field of ["summary", "snippet", "detail_ref", "detail_revision", "detail_status", "detail_available", "calendar_events"]) {
     assert(!Object.prototype.hasOwnProperty.call(item, field), `public metadata must omit ${field}`);

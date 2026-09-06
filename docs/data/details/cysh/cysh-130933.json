@@ -1,0 +1,67 @@
+{
+ "announcement_id": "cysh-130933",
+ "school_id": "cysh",
+ "title": "【漏洞預警】育碁數位科技 aEnrich a+HRD - SQL Injection",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-130933,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202501-00000003",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【育碁數位科技 aEnrich a+HRD - SQL Injection】(TVN-202501006，CVE-2025-0585，CVSS：9.8) 育碁數位科技a+HRD存在SQL Injection漏洞，未經身分鑑別之遠端攻擊者可於特定參數注入任意SQL指令以讀取、修改及刪除資料庫內容。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "a+HRD 7.5(含)以下版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "請參考育碁官網資安公告資訊升級至6.8(含)以上版本並安裝對應最新之修補更新，或與育碁客服人員聯絡。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-132-8372-19721-1.html",
+   "links": [
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-132-8372-19721-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-132-8372-19721-1.html"
+    }
+   ]
+  }
+ ],
+ "attachments": [],
+ "source_hash": "cdc3c25d108614499f4c97248eabb13e230a03b50460d715592f9a25e8a14e60",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T11:18:16+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【育碁數位科技 aEnrich a+HRD - SQL Injection】(TVN-202501006，CVE-2025-0585，CVSS：9.8) 育碁數位科技a+HRD存在SQL Injection漏洞，未經身分鑑別之遠端攻擊者可於特定參數注入任意SQL指令以讀取、修改及刪除資料庫內容。",
+  "evidence": "【育碁數位科技 aEnrich a+HRD - SQL Injection】(TVN-202501006，CVE-2025-0585，CVSS：9.8) 育碁數位科技a+HRD存在SQL Injection漏洞，未經身分鑑別之遠端攻擊者可於特定參數注入任意SQL指令以讀取、修改及刪除資料庫內容。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

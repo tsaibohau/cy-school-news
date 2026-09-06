@@ -1,0 +1,72 @@
+{
+ "announcement_id": "cysh-135130",
+ "school_id": "cysh",
+ "title": "【漏洞預警】以Chromium為基礎之瀏覽器存在21個高風險安全漏洞，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135130,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202604-00000003",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現Google Chrome、Microsoft Edge、Vivaldi、Brave及Opera等以Chromium為基礎之瀏覽器存在21個高風險安全漏洞(CVE-2026-5272至CVE-2026-5292)，類型包含緩衝區溢位(Buffer Overflow)與使用釋放後記憶體(Use After Free)等，最嚴重可使未經身分鑑別之遠端攻擊者利用特製HTML頁面逃離瀏覽器沙箱環境並執行任意程式碼。其中CVE-2026-5281已遭駭客利用，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] Google Chrome 146.0.7680.177(不含)以前版本 Microsoft Edge 146.0.3856.97(不含)以前版本 Vivaldi 7.9.3970.47(不含)以前版本 Brave 1.88.138(不含)以前版本 Opera 129.0.5823.65(不含)以前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 1. 請更新Google Chrome瀏覽器至146.0.7680.178(含)以後版本 https://support.google.com/chrome/answer/95414?hl=zh-Hant",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "2. 請更新Microsoft Edge瀏覽器至146.0.3856.97(含)以後版本 https://support.microsoft.com/zh-tw/topic/microsoft-edge-%E6%9B%B4%E6%96%B0%E8%A8%AD%E5%AE%9A-af8aaca2-1b69-4870-94fe-18822dbb7ef1",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "3. 請更新Vivaldi瀏覽器至7.9.3970.47(含)以後版本 https://help.vivaldi.com/desktop/install-update/update-vivaldi/",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "4. 請更新Brave瀏覽器至1.88138(含)以後版本 https://community.brave.com/t/how-to-update-brave/384780",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "5. 請更新Opera瀏覽器至129.0.5823.65(含)以後版本 https://help.opera.com/en/latest/crashes-and-issues/#updateBrowser",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://support.google.com/chrome/answer/95414?hl=zh-Hant 2. https://support.microsoft.com/zh-tw/topic/microsoft-edge-%E6%9B%B4%E6%96%B0%E8%A8%AD%E5%AE%9A-af8aaca2-1b69-4870-94fe-18822dbb7ef1 3. https://help.vivaldi.com/desktop/install-update/update-vivaldi/ 4. https://community.brave.com/t/how-to-update-brave/384780 5. https://help.opera.com/en/latest/crashes-and-issues/#updateBrowser 6. https://chromereleases.googleblog.com/2026/03/stable-channel-update-for-desktop_31.html 7. https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-5281 8. https://vivaldi.com/blog/desktop/minor-update-four-7-9/ 9. https://brave.com/latest/ 10. https://blogs.opera.com/security/2026/04/update-your-browser-security-fix-for-chrome-zero-day-cve-2026-5281/",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "cb0097fbf2802c36c101b791d6bbe1719931079cd544104d3290d7525c001445",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "其中CVE-2026-5281已遭駭客利用，請儘速確認並進行修補。",
+  "evidence": "其中CVE-2026-5281已遭駭客利用，請儘速確認並進行修補。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

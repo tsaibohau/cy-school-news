@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-134589",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Veeam旗下Veeam Backup Replication備份軟體存在重大資安漏洞(CVE-2025-59470)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134589,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202601-00000004",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Veeam Backup Replication是Veeam核心備份軟體。近日Veeam發布重大資安漏洞公告，此漏洞(CVE-2025-59470，CVSS：9.0)允許Backup或Tape Operator傳送惡意interval或order參數，以postgres使用者身分執行遠端程式碼(RCE)。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Veeam Backup Replication 13.0.1.180 (含)之前13版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 更新 Veeam Backup Replication 至13.0.1.1071(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10618-1b9d3-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "a3b878433554383a3fec23edd3c86d07c7b6cb679e083a796edec58e56d3975c",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "近日Veeam發布重大資安漏洞公告，此漏洞(CVE-2025-59470，CVSS：9.0)允許Backup或Tape Operator傳送惡意interval或order參數，以postgres使用者身分執行遠端程式碼(RCE)。",
+  "evidence": "近日Veeam發布重大資安漏洞公告，此漏洞(CVE-2025-59470，CVSS：9.0)允許Backup或Tape Operator傳送惡意interval或order參數，以postgres使用者身分執行遠端程式碼(RCE)。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-134595",
+ "school_id": "cysh",
+ "title": "【漏洞預警】OpenSSL函式庫存在重大資安漏洞(CVE-2025-15467)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134595,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202601-00000029",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "OpenSSL是開源的加密工具庫，主要用於安全通訊、SSL/TLS協定實作及憑證管理，支援多種加密演算法，廣泛應用於伺服器與應用程式。 近期OpenSSL發布安全性更新，修補重大資安漏洞(CVE-2025-15467，CVSS：9.8)，此為堆疊緩衝區溢位漏洞，可能導致程式異常終止，引發拒絕服務(DoS)攻擊，甚至可能造成遠端程式碼執行。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] OpenSSL libray 3.6.0至3.6.1(不含)版本 OpenSSL libray 3.5.0至3.5.5(不含)版本 OpenSSL libray 3.4.0至3.4.4(不含)版本 OpenSSL libray 3.3.0至3.3.6(不含)版本 OpenSSL libray 3.0.0至3.0.19(不含)版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至以下版本： OpenSSL libray 3.6.1(含)之後版本、 OpenSSL libray 3.5.5(含)之後版本、 OpenSSL libray 3.4.4(含)之後版本、 OpenSSL libray 3.3.6(含)之後版本、 OpenSSL libray 3.0.19(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10692-38c40-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "fdc27947d3ba9dfad9c6aac340f5aed5264ba99b9b8d14cef14cfbd7ee8abc47",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "近期OpenSSL發布安全性更新，修補重大資安漏洞(CVE-2025-15467，CVSS：9.8)，此為堆疊緩衝區溢位漏洞，可能導致程式異常終止，引發拒絕服務(DoS)攻擊，甚至可能造成遠端程式碼執行。",
+  "evidence": "近期OpenSSL發布安全性更新，修補重大資安漏洞(CVE-2025-15467，CVSS：9.8)，此為堆疊緩衝區溢位漏洞，可能導致程式異常終止，引發拒絕服務(DoS)攻擊，甚至可能造成遠端程式碼執行。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

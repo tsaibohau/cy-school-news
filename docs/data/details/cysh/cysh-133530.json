@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-133530",
+ "school_id": "cysh",
+ "title": "【漏洞預警】傑印資訊｜筆硯公文管理系統 - Arbitrary File Upload",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133530,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202510-00000013",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【傑印資訊｜筆硯公文管理系統 - Arbitrary File Upload】(CVE-2025-11948，CVSS：9.8) 傑印資訊開發之筆硯公文管理系統存在Arbitrary File Upload漏洞，未經身分鑑別之遠端攻擊者可上傳並執行網頁後門程式，進而於伺服器端執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] 筆硯公文管理系統",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請聯繫廠商進行更新",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-132-10452-72cb6-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "d791efbddf729f74e2ecf8917b679e3d2b1634623c7647469f9508903a855416",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "【傑印資訊｜筆硯公文管理系統 - Arbitrary File Upload】(CVE-2025-11948，CVSS：9.8) 傑印資訊開發之筆硯公文管理系統存在Arbitrary File Upload漏洞，未經身分鑑別之遠端攻擊者可上傳並執行網頁後門程式，進而於伺服器端執行任意程式碼。",
+  "evidence": "【傑印資訊｜筆硯公文管理系統 - Arbitrary File Upload】(CVE-2025-11948，CVSS：9.8) 傑印資訊開發之筆硯公文管理系統存在Arbitrary File Upload漏洞，未經身分鑑別之遠端攻擊者可上傳並執行網頁後門程式，進而於伺服器端執行任意程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

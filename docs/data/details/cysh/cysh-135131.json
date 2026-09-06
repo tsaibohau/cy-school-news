@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-135131",
+ "school_id": "cysh",
+ "title": "【漏洞預警】FortiClient EMS存在高風險安全漏洞(CVE-2026-21643與CVE-2026-35616)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135131,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202604-00000002",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現FortiClient EMS存在SQL注入(SQL Injection)漏洞(CVE-2026-21643)與不當存取控制(Improper Access Control)漏洞(CVE-2026-35616)，兩者皆可使未經身分鑑別之遠端攻擊者執行任意程式碼。 漏洞皆已遭到駭客利用，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] FortiClient EMS 7.4.x至7.4.6版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 更新FortiClient EMS 7.4.x版本至7.4.7(含)以上版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2026-21643 2. https://nvd.nist.gov/vuln/detail/CVE-2026-35616 3. https://fortiguard.fortinet.com/psirt/FG-IR-25-1142 4. https://fortiguard.fortinet.com/psirt/FG-IR-26-099",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "d4948aaa6bc2bd08597cd3b208b963114824502739e2dd7910faf5774969ad65",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現FortiClient EMS存在SQL注入(SQL Injection)漏洞(CVE-2026-21643)與不當存取控制(Improper Access Control)漏洞(CVE-2026-35616)，兩者皆可使未經身分鑑別之遠端攻擊者執行任意程式碼。",
+  "evidence": "研究人員發現FortiClient EMS存在SQL注入(SQL Injection)漏洞(CVE-2026-21643)與不當存取控制(Improper Access Control)漏洞(CVE-2026-35616)，兩者皆可使未經身分鑑別之遠端攻擊者執行任意程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

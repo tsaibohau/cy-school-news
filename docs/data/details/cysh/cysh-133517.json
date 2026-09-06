@@ -1,0 +1,62 @@
+{
+ "announcement_id": "cysh-133517",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Adobe Experience Manager (JEE) 存在重大資安漏洞(CVE-2025-54253)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133517,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202508-00000003",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Adobe針對Java企業版(JEE)的Adobe Experience Manager Forms發布重大資安漏洞(CVE-2025-54253，CVSS：10.0)，此漏洞源於配置錯誤，攻擊者可利用此漏洞繞過安全機制並執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Adobe Experience Manager(AEM)Forms on JEE 6.5.23.0(含)之前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "更新Adobe Experience Manager (AEM) Forms on JEE 至 6.5.0-0108版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10315-0abd1-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "f2b18aeb3cf8364ed84a4c11d4be9c52ba16b268de9ba1be7f997da2c61d897e",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-29T19:18:09+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Adobe針對Java企業版(JEE)的Adobe Experience Manager Forms發布重大資安漏洞(CVE-2025-54253，CVSS：10.0)，此漏洞源於配置錯誤，攻擊者可利用此漏洞繞過安全機制並執行任意程式碼。",
+  "evidence": "Adobe針對Java企業版(JEE)的Adobe Experience Manager Forms發布重大資安漏洞(CVE-2025-54253，CVSS：10.0)，此漏洞源於配置錯誤，攻擊者可利用此漏洞繞過安全機制並執行任意程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

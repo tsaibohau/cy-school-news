@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-134602",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Trend Micro Apex One管理主控台存在高風險安全漏洞(CVE-2025-71210與CVE-2025-71211)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134602,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 資安訊息警訊 NISAC-200-202603-00000002",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現Trend Micro Apex One管理主控台存在路徑遍歷(Path Traversal)漏洞(CVE-2025-71210與CVE-2025-71211)，當受影響產品之管理主控台服務可被存取時，未經身分鑑別之遠端攻擊者可利用此漏洞上傳惡意檔案並執行任意程式碼，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] Trend Micro Apex One 2019(On-prem)版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下： https://success.trendmicro.com/en-US/solution/KA-0022458",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.zerodayinitiative.com/advisories/ZDI-26-136/ 2. https://www.zerodayinitiative.com/advisories/ZDI-26-137/ 3. https://success.trendmicro.com/en-US/solution/KA-0022458",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "bdce557b59f91b169749230f9df271b95327a1736d74bf629a9d55099b173cad",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現Trend Micro Apex One管理主控台存在路徑遍歷(Path Traversal)漏洞(CVE-2025-71210與CVE-2025-71211)，當受影響產品之管理主控台服務可被存取時，未經身分鑑別之遠端攻擊者可利用此漏洞上傳惡意檔案並執行任意程式碼，請儘速確認並進行修補。",
+  "evidence": "研究人員發現Trend Micro Apex One管理主控台存在路徑遍歷(Path Traversal)漏洞(CVE-2025-71210與CVE-2025-71211)，當受影響產品之管理主控台服務可被存取時，未經身分鑑別之遠端攻擊者可利用此漏洞上傳惡意檔案並執行任意程式碼，請儘速確認並進行修補。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

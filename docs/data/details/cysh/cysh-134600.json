@@ -1,0 +1,62 @@
+{
+ "announcement_id": "cysh-134600",
+ "school_id": "cysh",
+ "title": "【漏洞預警】SolarWinds旗下Serv-U軟體存在4個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-134600,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202602-00000015",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "SolarWinds Serv-U是一款用於安全文件傳輸的伺服器軟體，支援FTP、FTPS、SFTP等多種協議，具備易用的管理介面，並支援跨平台與跨裝置存取等功能。日前，SolarWinds發布旗下產品Serv-U存在4個重大資安漏洞。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-40538，CVSS：9.1】 此為存取控制漏洞，允許攻擊者建立系統管理員，並透過網域管理員或群組管理員權限，以特權帳號身分執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-40539，CVSS：9.1】 此為類型混淆漏洞，允許攻擊者能以特權帳號身分執行任意本機程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-40540，CVSS：9.1】 此為類型混淆漏洞，允許攻擊者能以特權帳號身分執行任意本機程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-40541，CVSS：9.1】 此為不安全直接物件參考(IDOR)漏洞，允許攻擊者能以特權帳號身分執行任意本機程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊) [影響平台:] SolarWinds Serv-U 15.5版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至以下版本： SolarWinds Serv-U 15.5.4(含)之後版本",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "9e0ed126f868b3c86029b56dce562efa98443848d388a382e78994af19b6e247",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "日前，SolarWinds發布旗下產品Serv-U存在4個重大資安漏洞。",
+  "evidence": "日前，SolarWinds發布旗下產品Serv-U存在4個重大資安漏洞。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "announcement_id": "cysh-133863",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Cisco旗下Catalyst Center存在重大資安漏洞(CVE-2025-20341)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133863,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202511-00000011",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Catalyst Center是Cisco提供的網路管理平台，藉由自動化配置和部署功能，可協助網路管理人員更有效率管理和監控企業網路環境。近日，Cisco發布重大資安漏洞公告(CVE-2025-20341，CVSS：8.8)，該漏洞源於使用者輸入資料驗證不足，允許攻擊者可向受影響的系統發送精心設計的HTTP請求，對系統進行未授權的修改。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "備註：攻擊者若要使用此漏洞，必須至少具有「Observer」角色的有效憑證。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] ● Cisco Catalyst Center 2.3.7.3-VA 至 2.3.7.10-VA(不含)之前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至以下版本： Cisco Catalyst Center 2.3.7.10-VA(含)之後版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-169-10507-ed3a8-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "e7204a264630a0372b0557e8961eaec13537e7532788565912961ffe262b60ae",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T15:24:15+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "近日，Cisco發布重大資安漏洞公告(CVE-2025-20341，CVSS：8.8)，該漏洞源於使用者輸入資料驗證不足，允許攻擊者可向受影響的系統發送精心設計的HTTP請求，對系統進行未授權的修改。",
+  "evidence": "近日，Cisco發布重大資安漏洞公告(CVE-2025-20341，CVSS：8.8)，該漏洞源於使用者輸入資料驗證不足，允許攻擊者可向受影響的系統發送精心設計的HTTP請求，對系統進行未授權的修改。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

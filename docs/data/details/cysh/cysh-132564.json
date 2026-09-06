@@ -1,0 +1,87 @@
+{
+ "announcement_id": "cysh-132564",
+ "school_id": "cysh",
+ "title": "【漏洞預警】趨勢科技旗下 Trend Micro Apex Central 存在2個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-132564,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 TWCERTCC-200-202506-00000013",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Trend Micro Apex Central 是趨勢科技旗下一款集中式管理平台，用於管理多種Trend Micro 安全解決方案，包括閘道、郵件伺服器、檔案伺服器和企業桌面。日前發布重大資安公告修補2項漏洞：",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-49219，CVSS：9.8】 Trend Micro Apex Central 存在不安全的反序列化操作，允許未經身分驗證的遠端攻擊者在受影響的Apex Central 安裝執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2025-49220，CVSS：9.8】 Trend Micro Apex Central 存在不安全的反序列化操作，允許未經身分驗證的遠端攻擊者在受影響的Apex Central 安裝執行任意程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Apex Central 2019 (On-prem)(含)之前版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "● Apex Central as a Service SaaS",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:]",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "請至官方網站進行修補： https://success.trendmicro.com/en-US/solution/KA-0019926",
+   "links": [
+    {
+     "text": "https://success.trendmicro.com/en-US/solution/KA-0019926",
+     "url": "https://success.trendmicro.com/en-US/solution/KA-0019926"
+    }
+   ]
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] https://www.twcert.org.tw/tw/cp-169-10187-e713c-1.html",
+   "links": [
+    {
+     "text": "https://www.twcert.org.tw/tw/cp-169-10187-e713c-1.html",
+     "url": "https://www.twcert.org.tw/tw/cp-169-10187-e713c-1.html"
+    }
+   ]
+  }
+ ],
+ "attachments": [],
+ "source_hash": "1a0fbd5de676909c4388ae7db69f41068a9b2afdb6e8fbc3470f48eea3d8e6f7",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-08-30T07:18:08+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Trend Micro Apex Central 是趨勢科技旗下一款集中式管理平台，用於管理多種Trend Micro 安全解決方案，包括閘道、郵件伺服器、檔案伺服器和企業桌面。",
+  "evidence": "Trend Micro Apex Central 是趨勢科技旗下一款集中式管理平台，用於管理多種Trend Micro 安全解決方案，包括閘道、郵件伺服器、檔案伺服器和企業桌面。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

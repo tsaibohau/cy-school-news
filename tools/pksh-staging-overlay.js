@@ -63,14 +63,3 @@ function applyPkshSnapshot(output, snapshotPath) {
 }
 
 module.exports = { applyPkshSnapshot, safeItems };
-
-if (require.main === module) {
-  const output = process.argv[2];
-  const snapshotPath = process.argv[3];
-  if (!output || !snapshotPath) {
-    throw new Error("usage: node tools/pksh-staging-overlay.js <site-root> <snapshot.json>");
-  }
-  applyPkshSnapshot(path.resolve(output), path.resolve(snapshotPath));
-  const snapshot = readJson(path.resolve(snapshotPath));
-  console.log("Applied " + snapshot.items.length + " PKSH announcements without truncation");
-}

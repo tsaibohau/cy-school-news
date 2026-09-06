@@ -1,0 +1,67 @@
+{
+ "announcement_id": "cysh-135144",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Cisco 旗下身分識別服務存在3個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135144,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202604-00000018",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "Cisco 旗下身分識別服務引擎(Identity Services Engine，ISE)是一款基於身分的安全管理平台，可從網路、使用者設備收集資訊，並在網路基礎設施中實施策略和制定監管決策，近日Cisco發布重大資安漏洞公告。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-20180，CVSS：9.9 和 CVE-2026-20186，CVSS：9.9】 皆為遠端執行程式碼漏洞，允許經身分驗證的遠端攻擊者，可在受影響的底層作業系統上執行任意命令。 若利用該漏洞，成功利用此漏洞的前提為攻擊者至少具備唯讀管理者權限。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-20147，CVSS：9.9】 此漏洞允許經身分驗證的遠端攻擊者在受影響設備的底層作業系統上執行任意命令，成功利用此漏洞的前提為攻擊者至少擁有有效的管理員憑證。 情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] Cisco ISE 3.2(含)之前版本 Cisco ISE 3.2版本 Cisco ISE 3.3版本 Cisco ISE 3.4版本 Cisco ISE 或 Cisco ISE-PIC 3.1(含)之前版本 Cisco ISE 或 Cisco ISE-PIC 3.2版本 Cisco ISE 或 Cisco ISE-PIC 3.3版本 Cisco ISE 或 Cisco ISE-PIC 3.4版本 Cisco ISE 或 Cisco ISE-PIC 3.5版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 請更新至以下版本 【CVE-2026-20180、CVE-2026-20186】 Cisco ISE 3.2 Patch 8 Cisco ISE 3.3 Patch 8 Cisco ISE 3.4 Patch 5",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "【CVE-2026-20147】 Cisco ISE 或 Cisco ISE-PIC 3.1 Patch 11 Cisco ISE 或 Cisco ISE-PIC 3.2 Patch 10 Cisco ISE 或 Cisco ISE-PIC 3.3 Patch 11 Cisco ISE 或 Cisco ISE-PIC 3.4 Patch 6 Cisco ISE 或 Cisco ISE-PIC 3.5 Patch 3",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "備註:Cisco ISE-PIC已停止販售，3.4版本是最後一個支援的版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10849-9d3d6-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "34d51bc6ee92ee7ebe9167dad8005f364a067df1a0444b0c5b8e980926286911",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T07:20:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "Cisco 旗下身分識別服務引擎(Identity Services Engine，ISE)是一款基於身分的安全管理平台，可從網路、使用者設備收集資訊，並在網路基礎設施中實施策略和制定監管決策，近日Cisco發布重大資安漏洞公告。",
+  "evidence": "Cisco 旗下身分識別服務引擎(Identity Services Engine，ISE)是一款基於身分的安全管理平台，可從網路、使用者設備收集資訊，並在網路基礎設施中實施策略和制定監管決策，近日Cisco發布重大資安漏洞公告。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

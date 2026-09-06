@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-133531",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Fortinet FortiPAM與FortiSwitchManager存在高風險安全漏洞(CVE-2025-49201)，請儘速確認並進行修補",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-133531,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 國家資安資訊分享與分析中心 NISAC-200-202510-00000158",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "研究人員發現Fortinet FortiPAM與FortiSwitchManager之GUI存在驗證機制不足(Weak Authentication)漏洞(CVE-2025-49201)。未經身分鑑別之遠端攻擊者可透過暴力破解繞過驗證流程並登入系統，進而執行未經授權之指令，請儘速確認並進行修補。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] ● FortiPAM 1.5.0版本 ● FortiPAM 1.4.0至1.4.2版本 ● FortiPAM 1.3所有版本 ● FortiPAM 1.2所有版本 ● FortiPAM 1.1所有版本 ● FortiPAM 1.0所有版本 ● FortiSwitchManager 7.2.0至7.2.4版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 官方已針對漏洞釋出修復更新，請參考官方說明進行更新，網址如下： https://fortiguard.fortinet.com/psirt/FG-IR-25-010",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://nvd.nist.gov/vuln/detail/CVE-2025-49201 2. https://fortiguard.fortinet.com/psirt/FG-IR-25-010",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "820beeaadbd9f07a8bbb17de45a1e9cc0b6bfde315dd75fae9c07436a4311e6b",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T19:24:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "研究人員發現Fortinet FortiPAM與FortiSwitchManager之GUI存在驗證機制不足(Weak Authentication)漏洞(CVE-2025-49201)。",
+  "evidence": "研究人員發現Fortinet FortiPAM與FortiSwitchManager之GUI存在驗證機制不足(Weak Authentication)漏洞(CVE-2025-49201)。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

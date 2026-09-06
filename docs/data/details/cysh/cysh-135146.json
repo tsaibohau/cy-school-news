@@ -1,0 +1,52 @@
+{
+ "announcement_id": "cysh-135146",
+ "school_id": "cysh",
+ "title": "【漏洞預警】Microsoft SQL Server 存在重大資安漏洞(CVE-2026-33120)",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135146,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202604-00000020",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "微軟針對旗下產品SQL Server發布重大資安漏洞公告(CVE-2026-33120，CVSS：8.8)，此為Untrusted Pointer Dereference漏洞，允許授權的攻擊者透過網路執行程式碼。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] Microsoft SQL Server 2022 (GDR) 16.0.0至16.0.1175.1版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 根據官方網站釋出的解決方式進行修補 https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2026-33120",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[參考資料:] 1. https://www.twcert.org.tw/tw/cp-169-10851-e7d71-1.html",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "4ccc532a1b1497ccfe71a2c6905baf13abdfc5354f554b6dbea7f5835a6d1394",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T07:20:01+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "微軟針對旗下產品SQL Server發布重大資安漏洞公告(CVE-2026-33120，CVSS：8.8)，此為Untrusted Pointer Dereference漏洞，允許授權的攻擊者透過網路執行程式碼。",
+  "evidence": "微軟針對旗下產品SQL Server發布重大資安漏洞公告(CVE-2026-33120，CVSS：8.8)，此為Untrusted Pointer Dereference漏洞，允許授權的攻擊者透過網路執行程式碼。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}

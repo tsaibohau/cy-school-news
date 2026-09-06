@@ -1,0 +1,47 @@
+{
+ "announcement_id": "cysh-135127",
+ "school_id": "cysh",
+ "title": "【漏洞預警】HPE Aruba Networking AOS-CX 存在2個重大資安漏洞",
+ "source_url": "https://www.cysh.cy.edu.tw/p/406-1008-135127,r19.php",
+ "blocks": [
+  {
+   "type": "paragraph",
+   "text": "[內容說明:] 轉發 台灣電腦網路危機處理暨協調中心 資安訊息警訊 TWCERTCC-200-202603-00000017",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "近期HPE針對Aruba Networking AOS-CX發布重大資安公告(CVE-2026-23813，CVSS：9.8 和 CVE-2026-23814，CVSS：8.8)。 CVE-2026-23813存在於AOS-CX 交換器的 Web 的管理介面，可能允許未經身分驗證的遠端攻擊者繞過身分驗證機制，在某些情況下，可能導致管理員密碼重設；CVE-2026-23814為命令注入漏洞，可能允許經過身分驗證且具有低權限的遠端攻擊者，注入和執行惡意命令。",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "情資分享等級: WHITE(情資內容為可公開揭露之資訊)",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[影響平台:] AOS-CX 10.17.0001 (含)以下版本 AOS-CX 10.16.1020 (含)以下版本 AOS-CX 10.13.1160 (含)以下版本 AOS-CX 10.10.1170 (含)以下版本",
+   "links": []
+  },
+  {
+   "type": "paragraph",
+   "text": "[建議措施:] 根據官方網站釋出的解決方式進行修補：https://networkingsupport.hpe.com/home/",
+   "links": []
+  }
+ ],
+ "attachments": [],
+ "source_hash": "b5b2e3ddc0f4ee7f701a7478ea60dfbfe3daa12cd4b2be34949c3d53ed7d37da",
+ "parser_version": "detail-v2",
+ "fetched_at": "2026-09-02T11:23:18+08:00",
+ "parse_status": "parsed",
+ "provenance": "official_article",
+ "verified_dates": [],
+ "summary": {
+  "status": "extracted",
+  "text": "近期HPE針對Aruba Networking AOS-CX發布重大資安公告(CVE-2026-23813，CVSS：9.8 和 CVE-2026-23814，CVSS：8.8)。",
+  "evidence": "近期HPE針對Aruba Networking AOS-CX發布重大資安公告(CVE-2026-23813，CVSS：9.8 和 CVE-2026-23814，CVSS：8.8)。",
+  "provenance": "official_article",
+  "version": "extractive-v1"
+ }
+}
