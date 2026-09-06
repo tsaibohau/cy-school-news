@@ -11,6 +11,8 @@ const stateSource = fs.readFileSync(path.join(repo, "docs", "notification-state.
 const profileSource = fs.readFileSync(path.join(repo, "docs", "profile.js"), "utf8");
 const relevanceSource = fs.readFileSync(path.join(repo, "docs", "relevance.js"), "utf8");
 const registrySource = fs.readFileSync(path.join(repo, "docs", "school-registry.js"), "utf8");
+assert.match(registrySource, /id: "pksh"[\s\S]*short: "北港高中"/,
+  "the browser school registry must accept PKSH instead of resetting its filter");
 const searchQuerySource = fs.readFileSync(path.join(repo, "docs", "search-query.js"), "utf8");
 const appSource = fs.readFileSync(path.join(repo, "docs", "app.js"), "utf8");
 const indexSource = fs.readFileSync(path.join(repo, "docs", "index.html"), "utf8");
