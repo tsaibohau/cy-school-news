@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -25,7 +26,21 @@ def pksh_config() -> dict:
     return next(school for school in CONFIG["schools"] if school["id"] == "pksh")
 
 
-def _api_items(payload: str, school: dict) -> list[dict]:
+def _api_date(value: object, fetched_at: str) -> str:
+    raw = str(value or "").strip().replace("/", "-")
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", raw):
+        return raw
+    roc = re.fullmatch(r"(\d{3})-(\d{2})-(\d{2})", raw)
+    if roc:
+        return f"{int(roc.group(1)) + 1911:04d}-{roc.group(2)}-{roc.group(3)}"
+    short = re.fullmatch(r"(\d{2})-(\d{2})", raw)
+    if short:
+        year = (fetched_at or datetime.now(timezone.utc).isoformat())[:4]
+        return f"{year}-{short.group(1)}-{short.group(2)}"
+    return ""
+
+
+def _api_items(payload: str, school: dict, fetched_at: str = "") -> list[dict]:
     records = json.loads(payload)
     if not isinstance(records, list):
         raise ValueError("PKSH API payload must be a list")
@@ -38,14 +53,13 @@ def _api_items(payload: str, school: dict) -> list[dict]:
         if not news_id.isdigit() or news_id in seen:
             continue
         seen.add(news_id)
-        raw_date = str(record.get("time", "")).strip().replace("/", "-")
         items.append({
             "id": f"pksh-{news_id}",
             "school": "pksh",
             "school_name": school["short"],
             "title": str(record["title"]).strip(),
             "url": f"{school['base']}/ischool/public/news_view/show.php?nid={news_id}",
-            "date": raw_date[:10],
+            "date": _api_date(record.get("time"), fetched_at),
             "date_source": "list",
             "source_category": str(record.get("unit_name") or record.get("attr_name") or "").strip(),
         })
@@ -56,7 +70,7 @@ def build_snapshot(payload: str, fetched_at: str = "") -> dict:
     school = pksh_config()
     source_url = school["list_pages"][0]["url"]
     stripped = payload.lstrip()
-    items = _api_items(payload, school) if stripped.startswith("[") else extract_items(payload, school, source_url)
+    items = _api_items(payload, school, fetched_at) if stripped.startswith("[") else extract_items(payload, school, source_url)
     if not items or len(items) > 200:
         raise ValueError("PKSH page produced an unexpected announcement count")
     public_items = [{key: item.get(key, "") for key in PUBLIC_FIELDS} for item in items]

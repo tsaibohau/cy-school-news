@@ -21,6 +21,7 @@ api_fixture = (ROOT / "tests" / "fixtures" / "pksh_list_api.json").read_text(enc
 api_snapshot = build_snapshot(api_fixture, "2026-09-06T00:00:00+00:00")
 assert [row["id"] for row in api_snapshot["items"]] == ["pksh-28123", "pksh-28101"]
 assert api_snapshot["items"][0]["date"] == "2026-08-26"
+assert api_snapshot["items"][1]["date"] == "2026-08-21"
 assert api_snapshot["items"][0]["source_category"] == "教務處"
 
 script = (ROOT / "scraper" / "pksh_windows_fetch.ps1").read_text(encoding="utf-8")
