@@ -1,8 +1,8 @@
-/* 嘉校快訊 Service Worker:離線快取殼層,資料採網路優先 */
+/* 嘉雲校訊 Service Worker:離線快取殼層,資料採網路優先 */
 /* ⚠ 殼層是快取優先:只要改了 app.js / style.css / index.html,就必須把
    下面的版本號 +1,否則已安裝 PWA 的使用者會一直用舊版檔案。 */
-var CACHE = "cy-news-v79";
-var SHELL = ["./", "./index.html", "./legal.html", "./legal-compliance.json", "./style.css?v=77", "./app.js?v=78", "./notification-state.js", "./calendar-state.js?v=41", "./supabase-sync.js?v=55", "./account-auth.js?v=77", "./push-subscription.js?v=41", "./reminder-rules.js?v=41", "./task-state.js?v=41", "./account-sync.js?v=54", "./school-registry.js?v=41", "./profile.js?v=41", "./relevance.js?v=41", "./assistant-feedback.js?v=41", "./today.js?v=41", "./search-taxonomy.js?v=52", "./search-query.js?v=52", "./announcement-validity-reviewed.js?v=52", "./announcement-validity.js?v=52", "./assistant-qa.js?v=53", "./detail-ui.js?v=41", "./manifest.webmanifest", "./data/calendar-events.json", "./data/class-timetables.json",
+var CACHE = "cy-news-v80";
+var SHELL = ["./", "./index.html", "./legal.html", "./legal-compliance.json", "./style.css?v=77", "./app.js?v=79", "./notification-state.js", "./calendar-state.js?v=41", "./supabase-sync.js?v=55", "./account-auth.js?v=77", "./push-subscription.js?v=41", "./reminder-rules.js?v=41", "./task-state.js?v=41", "./account-sync.js?v=54", "./school-registry.js?v=41", "./profile.js?v=41", "./relevance.js?v=41", "./assistant-feedback.js?v=41", "./today.js?v=41", "./search-taxonomy.js?v=52", "./search-query.js?v=52", "./announcement-validity-reviewed.js?v=52", "./announcement-validity.js?v=52", "./assistant-qa.js?v=53", "./detail-ui.js?v=41", "./manifest.webmanifest", "./data/calendar-events.json", "./data/class-timetables.json",
              "./icons/icon-192.png", "./icons/icon-512.png"];
 
 self.addEventListener("install", function (e) {
@@ -23,7 +23,7 @@ self.addEventListener("activate", function (e) {
 self.addEventListener("push", function (e) {
   var payload = {};
   try { payload = e.data ? e.data.json() : {}; } catch (_) { payload = {}; }
-  var title = typeof payload.title === "string" && payload.title.trim() ? payload.title.trim() : "嘉校快訊";
+  var title = typeof payload.title === "string" && payload.title.trim() ? payload.title.trim() : "嘉雲校訊";
   var body = typeof payload.body === "string" && payload.body.trim() ? payload.body.trim() : "你有一則新的提醒";
   var target = safeNotificationTarget(payload.url);
   e.waitUntil(self.registration.showNotification(title, { body: body.slice(0, 160), data: { url: target }, tag: typeof payload.tag === "string" ? payload.tag.slice(0, 120) : "cynews-reminder" }));

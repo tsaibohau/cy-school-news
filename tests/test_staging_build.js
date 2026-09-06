@@ -36,7 +36,7 @@ assert(!staging.includes("?v=25"), "staging cannot retain production shell query
 assert(staging.includes('src="acceptance-user-tasks.js?v=' + revision + '"'));
 assert(staging.includes('src="app.js?v=' + revision + '"'));
 assert(staging.includes('src="detail-ui.js?v=' + revision + '"'));
-assert.equal(manifest.name, "嘉校快訊 Staging／測試版");
+assert.equal(manifest.name, "嘉雲校訊 Staging／測試版");
 assert.equal(fs.readFileSync(path.join(output, "robots.txt"), "utf8"), "User-agent: *\nDisallow: /\n");
 assert(harness.includes('params.get("acceptance") !== "user-tasks" && !localStorage.getItem(STORAGE)'), "harness is query gated and survives the exact-root OAuth callback");
 assert(harness.includes('localStorage.setItem(STORAGE'), "interrupted OAuth acceptance can resume from a new staging tab");

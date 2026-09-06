@@ -37,5 +37,10 @@ assert "http://www.pksh.ylc.edu.tw" not in lowered
 assert "servercertificatevalidationcallback" not in lowered
 assert "servicepointmanager" not in lowered
 assert '.psobject.properties["newsid"]' in lowered
+assert "$pagenum -lt 3" in lowered
+assert 'select-object -first 5' in lowered
+assert 'start-sleep -milliseconds 1000' in lowered
+assert 'start-sleep -milliseconds 1500' in lowered
+assert 'maxrows = "30"' in lowered
 
 print("PKSH Windows metadata handoff tests passed")

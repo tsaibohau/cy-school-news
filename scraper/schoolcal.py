@@ -243,7 +243,7 @@ def build_ics(events) -> str:
         "BEGIN:VCALENDAR", "VERSION:2.0",
         "PRODID:-//cy-school-news//school calendar//ZH-TW",
         "CALSCALE:GREGORIAN",
-        "X-WR-CALNAME:嘉校快訊行事曆",
+        "X-WR-CALNAME:嘉雲校訊行事曆",
         "X-WR-TIMEZONE:Asia/Taipei",
     ]
     for e in events:

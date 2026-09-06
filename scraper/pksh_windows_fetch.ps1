@@ -20,43 +20,55 @@ $Headers = @{
 # Invoke-WebRequest on windows-latest uses the Windows/.NET certificate-chain
 # validator. Certificate bypasses, custom trust roots, and HTTP fallback are
 # forbidden here: a failed chain must remain a failed research result.
-$Body = @{
-  field = "time"
-  order = "DESC"
-  pageNum = "0"
-  maxRows = "30"
-  keyword = ""
-  uid = $WidgetUid
-  tf = "2"
-  auth_type = "user"
-  use_cache = "1"
+$Announcements = @()
+$SeenNewsIds = @{}
+$ListPagesRequested = 0
+$FinalUri = $ListUri
+$LastStatusCode = 0
+for ($PageNum = 0; $PageNum -lt 3; $PageNum++) {
+  $Body = @{
+    field = "time"
+    order = "DESC"
+    pageNum = [string]$PageNum
+    maxRows = "30"
+    keyword = ""
+    uid = $WidgetUid
+    tf = "2"
+    auth_type = "user"
+    use_cache = "1"
+  }
+  $Response = Invoke-WebRequest -Uri $ListUri -Method Post -Headers $Headers -Body $Body -ContentType "application/x-www-form-urlencoded; charset=UTF-8" -TimeoutSec 30 -MaximumRedirection 3 -UseBasicParsing
+  $ListPagesRequested++
+  $FinalUri = $Response.BaseResponse.RequestMessage.RequestUri
+  $LastStatusCode = [int]$Response.StatusCode
+  if ($LastStatusCode -ne 200) { throw "PKSH returned HTTP $LastStatusCode" }
+  if ($FinalUri.Scheme -ne "https" -or $FinalUri.Host -ne "www.pksh.ylc.edu.tw") {
+    throw "PKSH redirected outside the verified official HTTPS origin"
+  }
+  $PagePayload = [string]$Response.Content
+  if ($PagePayload.Length -lt 20 -or $PagePayload.Length -gt 2097152) {
+    throw "PKSH response size is outside the expected research bounds"
+  }
+  try { $PageRecords = @($PagePayload | ConvertFrom-Json) } catch {
+    throw "PKSH announcement endpoint did not return valid JSON"
+  }
+  $PageAnnouncements = @($PageRecords | Where-Object {
+    $NewsIdProperty = $_.PSObject.Properties["newsId"]
+    $TitleProperty = $_.PSObject.Properties["title"]
+    $null -ne $NewsIdProperty -and $null -ne $TitleProperty -and
+      $NewsIdProperty.Value -and $TitleProperty.Value
+  })
+  foreach ($Announcement in $PageAnnouncements) {
+    $NewsId = [string]$Announcement.PSObject.Properties["newsId"].Value
+    if (-not $SeenNewsIds.ContainsKey($NewsId)) {
+      $SeenNewsIds[$NewsId] = $true
+      $Announcements += $Announcement
+    }
+  }
+  if ($PageAnnouncements.Count -lt 30) { break }
+  if ($PageNum -lt 2) { Start-Sleep -Milliseconds 1000 }
 }
-$Response = Invoke-WebRequest -Uri $ListUri -Method Post -Headers $Headers -Body $Body -ContentType "application/x-www-form-urlencoded; charset=UTF-8" -TimeoutSec 30 -MaximumRedirection 3 -UseBasicParsing
-$FinalUri = $Response.BaseResponse.RequestMessage.RequestUri
-
-if ([int]$Response.StatusCode -ne 200) {
-  throw "PKSH returned HTTP $([int]$Response.StatusCode)"
-}
-if ($FinalUri.Scheme -ne "https" -or $FinalUri.Host -ne "www.pksh.ylc.edu.tw") {
-  throw "PKSH redirected outside the verified official HTTPS origin"
-}
-
-$Payload = [string]$Response.Content
-if ($Payload.Length -lt 100 -or $Payload.Length -gt 2097152) {
-  throw "PKSH response size is outside the expected research bounds"
-}
-try {
-  $Records = @($Payload | ConvertFrom-Json)
-} catch {
-  throw "PKSH announcement endpoint did not return valid JSON"
-}
-$Announcements = @($Records | Where-Object {
-  $NewsIdProperty = $_.PSObject.Properties["newsId"]
-  $TitleProperty = $_.PSObject.Properties["title"]
-  $null -ne $NewsIdProperty -and $null -ne $TitleProperty -and
-    $NewsIdProperty.Value -and $TitleProperty.Value
-})
-if ($Announcements.Count -lt 1 -or $Announcements.Count -gt 200) {
+if ($Announcements.Count -lt 1 -or $Announcements.Count -gt 90) {
   throw "PKSH response does not contain recognizable announcement records"
 }
 
@@ -65,11 +77,12 @@ foreach ($Target in @($OutputPath, $ReportPath)) {
   $Parent = [System.IO.Path]::GetDirectoryName([System.IO.Path]::GetFullPath($Target))
   [System.IO.Directory]::CreateDirectory($Parent) | Out-Null
 }
+$Payload = $Announcements | ConvertTo-Json -Depth 8
 [System.IO.File]::WriteAllText([System.IO.Path]::GetFullPath($OutputPath), $Payload, $Utf8)
 
 $MemberRecords = @()
 if ($MemberOutputPath) {
-  foreach ($Announcement in $Announcements) {
+  foreach ($Announcement in @($Announcements | Select-Object -First 5)) {
     $NewsId = [string]$Announcement.PSObject.Properties["newsId"].Value
     if ($NewsId -notmatch '^\d+$') { continue }
     $ViewUri = [Uri]"https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=$NewsId"
@@ -98,7 +111,7 @@ if ($MemberOutputPath) {
       source_url = $ViewUri.AbsoluteUri
       content = [string]$Detail.PSObject.Properties["content"].Value
     }
-    Start-Sleep -Milliseconds 350
+    Start-Sleep -Milliseconds 1500
   }
   $MemberParent = [System.IO.Path]::GetDirectoryName([System.IO.Path]::GetFullPath($MemberOutputPath))
   [System.IO.Directory]::CreateDirectory($MemberParent) | Out-Null
@@ -114,10 +127,12 @@ $Report = [ordered]@{
   fetched_at = [DateTimeOffset]::UtcNow.ToString("o")
   requested_url = $ListUri.AbsoluteUri
   final_url = $FinalUri.AbsoluteUri
-  status_code = [int]$Response.StatusCode
+  status_code = $LastStatusCode
   tls_verification = "windows_default_required"
   response_characters = $Payload.Length
   announcement_records = $Announcements.Count
+  list_pages_requested = $ListPagesRequested
+  request_policy = "sequential; max 3 list pages and 5 detail records per run"
   member_detail_records = $MemberRecords.Count
 }
 [System.IO.File]::WriteAllText(
