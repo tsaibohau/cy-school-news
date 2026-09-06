@@ -23,14 +23,17 @@ $Headers = @{
 $Announcements = @()
 $SeenNewsIds = @{}
 $ListPagesRequested = 0
+$PageSize = 30
+$MaxListPages = 100
+$ExpectedTotal = $null
 $FinalUri = $ListUri
 $LastStatusCode = 0
-for ($PageNum = 0; $PageNum -lt 3; $PageNum++) {
+for ($PageNum = 0; $PageNum -lt $MaxListPages; $PageNum++) {
   $Body = @{
     field = "time"
     order = "DESC"
     pageNum = [string]$PageNum
-    maxRows = "30"
+    maxRows = [string]$PageSize
     keyword = ""
     uid = $WidgetUid
     tf = "2"
@@ -52,6 +55,19 @@ for ($PageNum = 0; $PageNum -lt 3; $PageNum++) {
   try { $PageRecords = @($PagePayload | ConvertFrom-Json) } catch {
     throw "PKSH announcement endpoint did not return valid JSON"
   }
+  if ($PageNum -eq 0) {
+    $TotalRow = $PageRecords | Where-Object { $null -ne $_.PSObject.Properties["total"] } | Select-Object -First 1
+    if ($null -ne $TotalRow) {
+      $ParsedTotal = 0
+      if ([int]::TryParse([string]$TotalRow.PSObject.Properties["total"].Value, [ref]$ParsedTotal) -and $ParsedTotal -gt 0) {
+        $ExpectedTotal = $ParsedTotal
+        $ExpectedPages = [int][Math]::Ceiling($ExpectedTotal / [double]$PageSize)
+        if ($ExpectedPages -gt $MaxListPages) {
+          throw "PKSH reports $ExpectedTotal announcements, exceeding the explicit safe retrieval bound"
+        }
+      }
+    }
+  }
   $PageAnnouncements = @($PageRecords | Where-Object {
     $NewsIdProperty = $_.PSObject.Properties["newsId"]
     $TitleProperty = $_.PSObject.Properties["title"]
@@ -65,11 +81,23 @@ for ($PageNum = 0; $PageNum -lt 3; $PageNum++) {
       $Announcements += $Announcement
     }
   }
-  if ($PageAnnouncements.Count -lt 30) { break }
-  if ($PageNum -lt 2) { Start-Sleep -Milliseconds 1000 }
+  if ($null -ne $ExpectedTotal -and $Announcements.Count -ge $ExpectedTotal) { break }
+  if ($PageAnnouncements.Count -lt $PageSize) {
+    if ($null -ne $ExpectedTotal -and $Announcements.Count -lt $ExpectedTotal) {
+      throw "PKSH pagination ended before the reported announcement total was collected"
+    }
+    break
+  }
+  if ($PageNum -eq ($MaxListPages - 1)) {
+    throw "PKSH pagination reached the safe retrieval bound before completion"
+  }
+  Start-Sleep -Milliseconds 1500
 }
-if ($Announcements.Count -lt 1 -or $Announcements.Count -gt 90) {
+if ($Announcements.Count -lt 1 -or $Announcements.Count -gt ($PageSize * $MaxListPages)) {
   throw "PKSH response does not contain recognizable announcement records"
+}
+if ($null -ne $ExpectedTotal -and $Announcements.Count -ne $ExpectedTotal) {
+  throw "PKSH collected $($Announcements.Count) announcements but the site reported $ExpectedTotal"
 }
 
 $Utf8 = [System.Text.UTF8Encoding]::new($false)
@@ -131,8 +159,9 @@ $Report = [ordered]@{
   tls_verification = "windows_default_required"
   response_characters = $Payload.Length
   announcement_records = $Announcements.Count
+  expected_announcement_records = $ExpectedTotal
   list_pages_requested = $ListPagesRequested
-  request_policy = "sequential; max 3 list pages and 5 detail records per run"
+  request_policy = "sequential; follow the reported total, max 100 list pages and 5 detail records per run"
   member_detail_records = $MemberRecords.Count
 }
 [System.IO.File]::WriteAllText(

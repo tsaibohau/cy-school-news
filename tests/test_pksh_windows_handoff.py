@@ -38,11 +38,14 @@ assert "http://www.pksh.ylc.edu.tw" not in lowered
 assert "servercertificatevalidationcallback" not in lowered
 assert "servicepointmanager" not in lowered
 assert '.psobject.properties["newsid"]' in lowered
-assert "$pagenum -lt 3" in lowered
+assert "$pagenum -lt $maxlistpages" in lowered
 assert 'select-object -first 5' in lowered
-assert 'start-sleep -milliseconds 1000' in lowered
 assert 'start-sleep -milliseconds 1500' in lowered
-assert 'maxrows = "30"' in lowered
+assert "$maxlistpages = 100" in lowered
+assert 'maxrows = [string]$pagesize' in lowered
+assert 'properties["total"]' in lowered
+assert "pagination ended before the reported announcement total was collected" in lowered
+assert "collected $($announcements.count) announcements but the site reported $expectedtotal" in lowered
 assert 'git commit -m "Update PKSH staging snapshot"' in workflow
 assert "!contains(github.event.head_commit.message, 'Update PKSH staging snapshot')" in workflow
 assert "Update PKSH staging snapshot [skip ci]" not in workflow
