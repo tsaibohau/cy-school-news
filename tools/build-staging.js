@@ -35,6 +35,10 @@ if (!isRootOutput && !isTempOutput) {
 }
 fs.rmSync(output, { recursive: true, force: true });
 fs.cpSync(source, output, { recursive: true });
+const pkshSnapshot = path.join(root, "staging-data", "pksh-metadata.json");
+if (fs.existsSync(pkshSnapshot)) {
+  require("./pksh-staging-overlay.js").applyPkshSnapshot(output, pkshSnapshot);
+}
 /* A Preview is publicly addressable even when its UI asks users to sign in.
    Publish only factual metadata; member content must come from an authenticated backend. */
 sanitizePublicData(output);

@@ -2,7 +2,7 @@ name: Staging validation
 
 on:
   push:
-    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/integrated-v11, codex/account-roles-email]
+    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/integrated-v11, codex/account-roles-email, codex/pksh-windows-research-v12]
   workflow_dispatch: {}
 
 permissions:
@@ -64,6 +64,7 @@ jobs:
           tests/test_user_refresh.js
           tests/test_reminder_rules_client.js
           tests/test_staging_build.js
+          tests/test_pksh_staging_overlay.js
           tests/test_ui_visual_contract.js
           tests/test_calendar_workflow.js
       - name: Search ranking train and holdout gate
@@ -112,6 +113,9 @@ jobs:
           python tests/test_detail_backfill.py
           python tests/test_attachment_parser.py
           python tests/test_reminder_targets.py
+          python tests/test_pksh_adapter.py
+          python tests/test_pksh_windows_handoff.py
+          python tests/test_pksh_member_content.py
       - name: Verify generated data is untouched by staging build
         run: git diff --exit-code -- docs/data scraper/fetch_state.json
       - name: Reject tracked secret patterns
@@ -120,3 +124,85 @@ jobs:
             echo "Potential tracked secret detected"
             exit 1
           fi
+
+  pksh-windows-live:
+    if: >-
+      (github.ref == 'refs/heads/codex/pksh-windows-research-v12' ||
+      github.head_ref == 'codex/pksh-windows-research-v12') &&
+      !contains(github.event.head_commit.message, 'Update PKSH staging snapshot')
+    runs-on: windows-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install parser dependencies
+        run: pip install -r scraper/requirements.txt
+      - name: Verify offline PKSH contracts
+        run: |
+          python tests/test_pksh_adapter.py
+          python tests/test_pksh_windows_handoff.py
+      - name: Fetch PKSH with Windows certificate validation
+        shell: pwsh
+        run: >-
+          ./scraper/pksh_windows_fetch.ps1
+          -OutputPath "$env:RUNNER_TEMP/pksh-list.json"
+          -ReportPath "$env:RUNNER_TEMP/pksh-transport.json"
+          -MemberOutputPath "$env:RUNNER_TEMP/pksh-member-source.json"
+      - name: Produce metadata-only handoff
+        shell: pwsh
+        run: >-
+          python tools/pksh_snapshot.py
+          --html "$env:RUNNER_TEMP/pksh-list.json"
+          --output "$env:RUNNER_TEMP/pksh-metadata.json"
+      - name: Prepare protected PKSH summaries
+        shell: pwsh
+        run: >-
+          python tools/pksh_member_content.py
+          --input "$env:RUNNER_TEMP/pksh-member-source.json"
+          --output "$env:RUNNER_TEMP/pksh-member-sync.json"
+      - name: Sync summaries to the protected staging backend when configured
+        shell: pwsh
+        env:
+          SYNC_TOKEN: ${{ secrets.STAGING_ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          SYNC_URL: ${{ vars.STAGING_ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          PUBLISHABLE_KEY: ${{ vars.STAGING_SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          if (-not $env:SYNC_TOKEN -or -not $env:SYNC_URL -or -not $env:PUBLISHABLE_KEY) {
+            Write-Host "PKSH_STAGING_MEMBER_SYNC_NOT_CONFIGURED"
+            exit 0
+          }
+          Invoke-WebRequest -Uri $env:SYNC_URL -Method Post -Headers @{
+            authorization = "Bearer $env:PUBLISHABLE_KEY"
+            apikey = $env:PUBLISHABLE_KEY
+            "x-announcement-content-sync-token" = $env:SYNC_TOKEN
+          } -ContentType "application/json" -InFile "$env:RUNNER_TEMP/pksh-member-sync.json" -TimeoutSec 30 -UseBasicParsing | Out-Null
+      - name: Save PKSH snapshot for the research Preview
+        shell: pwsh
+        env:
+          TARGET_BRANCH: ${{ github.head_ref || github.ref_name }}
+        run: |
+          New-Item -ItemType Directory -Force -Path staging-data | Out-Null
+          Copy-Item "$env:RUNNER_TEMP/pksh-metadata.json" "staging-data/pksh-metadata.json"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add staging-data/pksh-metadata.json
+          if (git diff --cached --quiet) {
+            Write-Host "PKSH staging snapshot is unchanged."
+          } else {
+            git commit -m "Update PKSH staging snapshot"
+            git push origin "HEAD:$env:TARGET_BRANCH"
+          }
+      - name: Upload bounded research evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: pksh-windows-research-${{ github.run_id }}
+          path: |
+            ${{ runner.temp }}/pksh-transport.json
+            ${{ runner.temp }}/pksh-metadata.json
+          retention-days: 7

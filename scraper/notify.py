@@ -204,7 +204,7 @@ def main() -> int:
     if len(items) > SUMMARY_THRESHOLD:
         # 防洪:改推一則彙總到主主題;個人關鍵字命中的(使用者點名要的)仍逐則推
         site_url = os.environ.get("SITE_URL", "").strip()
-        _post(topic, summarize(items), "[嘉校快訊] 新公告彙總", site_url)
+        _post(topic, summarize(items), "[嘉雲校訊] 新公告彙總", site_url)
         personal_sent = 0
         for it in items:
             if personal_sent >= MAX_PUSH:

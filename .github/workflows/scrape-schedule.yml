@@ -16,3 +16,8 @@ jobs:
     with:
       fetch_all: false
     secrets: inherit
+
+  pksh:
+    needs: scrape
+    if: github.event_name == 'workflow_dispatch' || github.event.schedule == '10 13 * * *'
+    uses: ./.github/workflows/pksh-windows-production.yml

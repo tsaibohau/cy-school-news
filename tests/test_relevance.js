@@ -3,6 +3,9 @@ const Relevance = require("../docs/relevance.js");
 const Profile = require("../docs/profile.js");
 const Registry = require("../docs/school-registry.js");
 
+assert.equal(Registry.find("pksh").short, "北港高中");
+assert.equal(Registry.mentionedSchool("北高課表").id, "pksh");
+
 const audience = Relevance.extractAudience({ title: "高一新生 109班 物理競賽報名" });
 assert.deepEqual(audience.grades, [1]);
 assert(audience.classes.includes("109"));

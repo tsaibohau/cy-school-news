@@ -1,4 +1,4 @@
-/* 嘉校快訊 前端邏輯(無框架) */
+/* 嘉雲校訊 前端邏輯(無框架) */
 (function () {
   "use strict";
 
@@ -723,7 +723,7 @@
         var usernameField = el.passwordAuthUsername.parentNode;
         var passwordField = el.passwordAuthPassword.parentNode;
         el.passwordAuthDialog.dataset.mode = mode;
-        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉校快訊";
+        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉雲校訊";
         el.passwordAuthHint.textContent = signup ? "帳號名稱限 3～32 個英文字母、數字或底線，須以英文字母開頭；密碼至少 6 個字元。完成 Email 驗證後等待管理員核准。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "請輸入 Email 或帳號名稱與密碼。";
         usernameField.hidden = reset;
         el.passwordAuthUsername.disabled = reset;
@@ -1806,7 +1806,7 @@
           ? (personalCount === 1 ? "與你相關的新公告：" + candidates.find(function (item) { return byId[item.id].personalized; }).title :
             "有 " + personalCount + " 則與你相關的新公告")
           : "有 " + candidates.length + " 則符合訂閱關鍵字的新公告";
-        new window.Notification("嘉校快訊", {
+        new window.Notification("嘉雲校訊", {
           body: body,
           icon: "icons/icon-192.png",
         });
@@ -2302,7 +2302,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=78").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=79").catch(function () {});
       });
     }
 
