@@ -31,12 +31,14 @@ function validCallerKey(req: Request): boolean {
 }
 
 function secretKey(): string {
+  const legacyServiceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")
+  if (legacyServiceRoleKey) return legacyServiceRoleKey
   const keys = Deno.env.get("SUPABASE_SECRET_KEYS")
   if (keys) {
     const parsed = JSON.parse(keys) as Record<string, string>
     if (parsed.default) return parsed.default
   }
-  return required("SUPABASE_SERVICE_ROLE_KEY")
+  throw new Error("missing_supabase_admin_key")
 }
 
 function validRecord(value: unknown): value is RecordInput {
