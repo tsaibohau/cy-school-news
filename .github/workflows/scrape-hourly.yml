@@ -80,7 +80,6 @@ jobs:
           else
             for batch in .member-content-sync/batch-*.json; do
               curl --fail --silent --show-error --request POST "$ANNOUNCEMENT_CONTENT_SYNC_URL" \
-                --header "authorization: Bearer $SUPABASE_PUBLISHABLE_KEY" \
                 --header "apikey: $SUPABASE_PUBLISHABLE_KEY" \
                 --header "x-announcement-content-sync-token: $ANNOUNCEMENT_CONTENT_SYNC_TOKEN" \
                 --header "content-type: application/json" \
