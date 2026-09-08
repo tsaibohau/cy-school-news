@@ -15,6 +15,21 @@ function required(name: string): string {
   return value
 }
 
+function validCallerKey(req: Request): boolean {
+  const supplied = req.headers.get("apikey")
+  if (!supplied) return false
+  const configured = new Set<string>()
+  const publishableKeys = Deno.env.get("SUPABASE_PUBLISHABLE_KEYS")
+  if (publishableKeys) {
+    for (const value of Object.values(JSON.parse(publishableKeys) as Record<string, string>)) {
+      if (value) configured.add(value)
+    }
+  }
+  const legacyAnonKey = Deno.env.get("SUPABASE_ANON_KEY")
+  if (legacyAnonKey) configured.add(legacyAnonKey)
+  return configured.has(supplied)
+}
+
 function secretKey(): string {
   const keys = Deno.env.get("SUPABASE_SECRET_KEYS")
   if (keys) {
@@ -34,7 +49,7 @@ function validRecord(value: unknown): value is RecordInput {
 
 Deno.serve(async (req) => {
   if (req.method !== "POST") return Response.json({ error: "method_not_allowed" }, { status: 405 })
-  if (req.headers.get("x-announcement-content-sync-token") !== required("ANNOUNCEMENT_CONTENT_SYNC_TOKEN")) {
+  if (!validCallerKey(req) || req.headers.get("x-announcement-content-sync-token") !== required("ANNOUNCEMENT_CONTENT_SYNC_TOKEN")) {
     return Response.json({ error: "unauthorized" }, { status: 401 })
   }
   const body = await req.json().catch(() => null) as { schema_version?: number; records?: unknown[] } | null
