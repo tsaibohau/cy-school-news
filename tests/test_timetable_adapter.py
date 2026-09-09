@@ -38,6 +38,24 @@ def run():
     }
     assert parse_class_page(page().replace("科目33", "", 1)) is None
     assert [row["class_name"] for row in parse_timetable_pages([page("109"), page("101")])] == ["101", "109"]
+
+    near_complete = page("110").replace("科目33", "", 1)
+    try:
+        parse_timetable_pages([page("109"), near_complete])
+    except ValueError as exc:
+        assert "incomplete class timetable page" in str(exc)
+    else:
+        raise AssertionError("near-complete class page must fail closed")
+
+    sparse = page("121")
+    keep = {(3, 1), (3, 2), (3, 3), (3, 5), (4, 2), (4, 4),
+            (5, 1), (5, 3), (5, 4), (7, 4)}
+    for period in range(1, 9):
+        for day in range(1, 6):
+            if (period, day) not in keep:
+                sparse = sparse.replace(f"科目{period}{day}", "", 1)
+    assert parse_class_page(sparse) is None
+    assert [row["class_name"] for row in parse_timetable_pages([page("109"), sparse])] == ["109"]
     blank = "121\n時間 星期一 星期二 星期三 星期四 星期五\n1 0800\n0850\n2 0900\n0950\n3 1000\n1050\n4 1100\n1150\n5 1320\n1410\n6 1420\n1510\n7 1520\n1610\n8 1620\n1710\n註"
     assert [row["class_name"] for row in parse_timetable_pages([page("109"), blank])] == ["109"]
 
