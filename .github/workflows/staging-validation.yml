@@ -30,99 +30,27 @@ jobs:
         run: |
           python tests/test_parser.py
           python tests/test_timetable_adapter.py
-      - name: Diagnose live formal timetable structure
+      - name: Live formal timetable discovery
         env:
           PYTHONIOENCODING: utf-8
         run: |
+          python scraper/timetable.py discover
           python - <<'PY'
-          import re
-          import sys
+          import json
           from pathlib import Path
-          import requests
 
-          sys.path.insert(0, str(Path("scraper").resolve()))
-          from timetable import NEWS_INDEX_URL, find_current_timetable_article, is_direct_pdf_url
-          from timetable_adapter import WEEKDAYS, CLASS_CODE, extract_pdf_pages, parse_class_page
-
-          index = requests.get(NEWS_INDEX_URL, timeout=20)
-          index.raise_for_status()
-          article = find_current_timetable_article(
-              index.text, academic_year=115, semester=1, base_url=NEWS_INDEX_URL
+          data = json.loads(Path("docs/data/class-timetables.json").read_text(encoding="utf-8"))
+          row = next(
+              item for item in data["timetables"]
+              if item.get("school_id") == "cysh"
+              and item.get("academic_year") == 115
+              and item.get("semester") == 1
           )
-          assert article and article["version"] == "formal", article
-          assert is_direct_pdf_url(article["url"]), article
-          pdf = requests.get(article["url"], timeout=30)
-          pdf.raise_for_status()
-          pages = extract_pdf_pages(pdf.content)
-          print("FORMAL_PDF_PAGES", len(pages))
-          for number, page in enumerate(pages, 1):
-              lines = [line.rstrip() for line in str(page or "").replace("\r", "").splitlines()]
-              weekday_at = next((idx for idx, line in enumerate(lines) if all(day in line for day in WEEKDAYS)), None)
-              class_codes = [line.strip() for line in lines[:weekday_at or 0] if CLASS_CODE.fullmatch(line.strip())]
-              starts = []
-              ends = []
-              for line in lines:
-                  m = re.match(r"\s*(\d+)\s+(\d{4})(.*)$", line)
-                  if m:
-                      starts.append((int(m.group(1)), m.group(2)))
-                  m2 = re.fullmatch(r"\s*(\d{4})\s*", line)
-                  if m2:
-                      ends.append(m2.group(1))
-              parsed = parse_class_page(page)
-              print(
-                  "PAGE", number,
-                  "weekday", weekday_at is not None,
-                  "class", class_codes[-1] if class_codes else "-",
-                  "starts", starts,
-                  "end_count", len(ends),
-                  "parsed", bool(parsed),
-              )
-              if weekday_at is not None and not parsed and class_codes:
-                  weekday_line = lines[weekday_at]
-                  positions = [weekday_line.find(day) for day in WEEKDAYS]
-                  boundaries = [
-                      (positions[idx] + positions[idx + 1]) // 2
-                      for idx in range(len(positions) - 1)
-                  ]
-                  cursor = weekday_at + 1
-                  for expected_period in range(1, 9):
-                      while cursor < len(lines) and not lines[cursor].strip():
-                          cursor += 1
-                      raw_start = lines[cursor] if cursor < len(lines) else ""
-                      m = re.match(r"\s*(\d+)\s+(\d{4})(.*)$", raw_start)
-                      if not m:
-                          print("FAIL_DETAIL", class_codes[-1], "period", expected_period, "reason", "missing_start")
-                          break
-                      inline = " " * m.end(2) + m.group(3)
-                      cursor += 1
-                      parts = [[] for _ in WEEKDAYS]
-                      def collect(raw):
-                          for day in range(len(WEEKDAYS)):
-                              left = boundaries[day - 1] if day else 0
-                              right = boundaries[day] if day < len(boundaries) else None
-                              fragment = raw[left:right].strip()
-                              if fragment:
-                                  parts[day].append(fragment)
-                      collect(inline)
-                      end = ""
-                      while cursor < len(lines):
-                          raw = lines[cursor]
-                          end_match = re.fullmatch(r"\s*(\d{4})\s*", raw)
-                          if end_match:
-                              end = end_match.group(1)
-                              cursor += 1
-                              break
-                          if re.match(r"\s*\d+\s+\d{4}", raw):
-                              break
-                          collect(raw)
-                          cursor += 1
-                      subjects = [" ".join(p) for p in parts]
-                      print(
-                          "FAIL_DETAIL", class_codes[-1],
-                          "period", expected_period,
-                          "lengths", [len(s) for s in subjects],
-                          "end", bool(end),
-                      )
+          assert row["version"] == "formal", row["version"]
+          assert row["source_url"].lower().endswith(".pdf"), row["source_url"]
+          assert len(row["classes"]) == 60, len(row["classes"])
+          assert all(len(item.get("slots") or []) == 40 for item in row["classes"])
+          print("LIVE_FORMAL_TIMETABLE_OK", len(row["classes"]))
           PY
       - name: Node regression
         run: >-
