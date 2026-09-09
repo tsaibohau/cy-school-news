@@ -30,26 +30,53 @@ jobs:
         run: |
           python tests/test_parser.py
           python tests/test_timetable_adapter.py
-      - name: Live formal timetable discovery
+      - name: Diagnose live formal timetable structure
         env:
           PYTHONIOENCODING: utf-8
         run: |
-          python scraper/timetable.py discover
           python - <<'PY'
-          import json
-          from pathlib import Path
-
-          data = json.loads(Path("docs/data/class-timetables.json").read_text(encoding="utf-8"))
-          row = next(
-              item for item in data["timetables"]
-              if item.get("school_id") == "cysh"
-              and item.get("academic_year") == 115
-              and item.get("semester") == 1
+          import re
+          import requests
+          from scraper.timetable import (
+              NEWS_INDEX_URL, find_current_timetable_article, is_direct_pdf_url
           )
-          assert row["version"] == "formal", row["version"]
-          assert row["source_url"].lower().endswith(".pdf"), row["source_url"]
-          assert row["classes"], "formal timetable must contain parsed class rows"
-          print("LIVE_FORMAL_TIMETABLE_OK", len(row["classes"]))
+          from scraper.timetable_adapter import (
+              WEEKDAYS, CLASS_CODE, extract_pdf_pages, parse_class_page
+          )
+
+          index = requests.get(NEWS_INDEX_URL, timeout=20)
+          index.raise_for_status()
+          article = find_current_timetable_article(
+              index.text, academic_year=115, semester=1, base_url=NEWS_INDEX_URL
+          )
+          assert article and article["version"] == "formal", article
+          assert is_direct_pdf_url(article["url"]), article
+          pdf = requests.get(article["url"], timeout=30)
+          pdf.raise_for_status()
+          pages = extract_pdf_pages(pdf.content)
+          print("FORMAL_PDF_PAGES", len(pages))
+          for number, page in enumerate(pages, 1):
+              lines = [line.rstrip() for line in str(page or "").replace("\r", "").splitlines()]
+              weekday_at = next((idx for idx, line in enumerate(lines) if all(day in line for day in WEEKDAYS)), None)
+              class_codes = [line.strip() for line in lines[:weekday_at or 0] if CLASS_CODE.fullmatch(line.strip())]
+              starts = []
+              ends = []
+              for line in lines:
+                  m = re.match(r"\s*(\d+)\s+(\d{4})(.*)$", line)
+                  if m:
+                      starts.append((int(m.group(1)), m.group(2)))
+                  m2 = re.fullmatch(r"\s*(\d{4})\s*", line)
+                  if m2:
+                      ends.append(m2.group(1))
+              parsed = parse_class_page(page)
+              print(
+                  "PAGE", number,
+                  "weekday", weekday_at is not None,
+                  "class", class_codes[-1] if class_codes else "-",
+                  "starts", starts,
+                  "end_count", len(ends),
+                  "parsed", bool(parsed),
+              )
           PY
       - name: Node regression
         run: >-
