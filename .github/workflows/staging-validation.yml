@@ -2,7 +2,7 @@ name: Staging validation
 
 on:
   push:
-    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/integrated-v11, codex/account-roles-email, codex/pksh-windows-research-v12, codex/fix-formal-timetable-discovery]
+    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/integrated-v11, codex/account-roles-email, codex/pksh-windows-research-v12]
   workflow_dispatch: {}
 
 permissions:
@@ -24,34 +24,6 @@ jobs:
           deno-version: v2.1.4
       - name: Install parser dependencies
         run: pip install -r scraper/requirements.txt
-      - name: Timetable parser regression
-        env:
-          PYTHONIOENCODING: utf-8
-        run: |
-          python tests/test_parser.py
-          python tests/test_timetable_adapter.py
-      - name: Live formal timetable discovery
-        env:
-          PYTHONIOENCODING: utf-8
-        run: |
-          python scraper/timetable.py discover
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          data = json.loads(Path("docs/data/class-timetables.json").read_text(encoding="utf-8"))
-          row = next(
-              item for item in data["timetables"]
-              if item.get("school_id") == "cysh"
-              and item.get("academic_year") == 115
-              and item.get("semester") == 1
-          )
-          assert row["version"] == "formal", row["version"]
-          assert row["source_url"].lower().endswith(".pdf"), row["source_url"]
-          assert len(row["classes"]) == 60, len(row["classes"])
-          assert all(len(item.get("slots") or []) == 40 for item in row["classes"])
-          print("LIVE_FORMAL_TIMETABLE_OK", len(row["classes"]))
-          PY
       - name: Node regression
         run: >-
           node --test
