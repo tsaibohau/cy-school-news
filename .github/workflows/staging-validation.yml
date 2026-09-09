@@ -24,6 +24,12 @@ jobs:
           deno-version: v2.1.4
       - name: Install parser dependencies
         run: pip install -r scraper/requirements.txt
+      - name: Timetable parser regression
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python tests/test_parser.py
+          python tests/test_timetable_adapter.py
       - name: Node regression
         run: >-
           node --test
