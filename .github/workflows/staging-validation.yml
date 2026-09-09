@@ -77,6 +77,52 @@ jobs:
                   "end_count", len(ends),
                   "parsed", bool(parsed),
               )
+              if weekday_at is not None and not parsed and class_codes:
+                  weekday_line = lines[weekday_at]
+                  positions = [weekday_line.find(day) for day in WEEKDAYS]
+                  boundaries = [
+                      (positions[idx] + positions[idx + 1]) // 2
+                      for idx in range(len(positions) - 1)
+                  ]
+                  cursor = weekday_at + 1
+                  for expected_period in range(1, 9):
+                      while cursor < len(lines) and not lines[cursor].strip():
+                          cursor += 1
+                      raw_start = lines[cursor] if cursor < len(lines) else ""
+                      m = re.match(r"\s*(\d+)\s+(\d{4})(.*)$", raw_start)
+                      if not m:
+                          print("FAIL_DETAIL", class_codes[-1], "period", expected_period, "reason", "missing_start")
+                          break
+                      inline = " " * m.end(2) + m.group(3)
+                      cursor += 1
+                      parts = [[] for _ in WEEKDAYS]
+                      def collect(raw):
+                          for day in range(len(WEEKDAYS)):
+                              left = boundaries[day - 1] if day else 0
+                              right = boundaries[day] if day < len(boundaries) else None
+                              fragment = raw[left:right].strip()
+                              if fragment:
+                                  parts[day].append(fragment)
+                      collect(inline)
+                      end = ""
+                      while cursor < len(lines):
+                          raw = lines[cursor]
+                          end_match = re.fullmatch(r"\s*(\d{4})\s*", raw)
+                          if end_match:
+                              end = end_match.group(1)
+                              cursor += 1
+                              break
+                          if re.match(r"\s*\d+\s+\d{4}", raw):
+                              break
+                          collect(raw)
+                          cursor += 1
+                      subjects = [" ".join(p) for p in parts]
+                      print(
+                          "FAIL_DETAIL", class_codes[-1],
+                          "period", expected_period,
+                          "lengths", [len(s) for s in subjects],
+                          "end", bool(end),
+                      )
           PY
       - name: Node regression
         run: >-
