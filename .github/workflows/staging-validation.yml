@@ -36,13 +36,13 @@ jobs:
         run: |
           python - <<'PY'
           import re
+          import sys
+          from pathlib import Path
           import requests
-          from scraper.timetable import (
-              NEWS_INDEX_URL, find_current_timetable_article, is_direct_pdf_url
-          )
-          from scraper.timetable_adapter import (
-              WEEKDAYS, CLASS_CODE, extract_pdf_pages, parse_class_page
-          )
+
+          sys.path.insert(0, str(Path("scraper").resolve()))
+          from timetable import NEWS_INDEX_URL, find_current_timetable_article, is_direct_pdf_url
+          from timetable_adapter import WEEKDAYS, CLASS_CODE, extract_pdf_pages, parse_class_page
 
           index = requests.get(NEWS_INDEX_URL, timeout=20)
           index.raise_for_status()
