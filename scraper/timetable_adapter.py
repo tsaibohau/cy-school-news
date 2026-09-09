@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """Deterministic parser for public class-timetable PDFs.
 
-The public CYSH document is one class per page.  This adapter only accepts
-the explicit table structure (five weekdays and eight numbered periods); it
-does not OCR, infer missing slots, or expose any information beyond period,
-time and course name.
+The public CYSH document is one class per page.  This adapter accepts complete
+class tables (five weekdays and eight numbered periods).  Official PDFs may
+also append sparse special-group tables; those are skipped only when their
+time grid is structurally complete and at most half of the 40 course cells
+contain text.  Near-complete pages still fail closed.
 """
 import io
 import re
@@ -39,8 +40,7 @@ def _lines(text):
     return [line.rstrip() for line in str(text or "").replace("\r", "").splitlines()]
 
 
-def parse_class_page(text):
-    """Parse exactly one public class timetable page, otherwise return None."""
+def _parse_class_page(text, *, allow_empty=False):
     lines = _lines(text)
     weekday_at = next((index for index, line in enumerate(lines)
                        if all(day in line for day in WEEKDAYS)), None)
@@ -68,6 +68,7 @@ def parse_class_page(text):
         inline = " " * start_match.end(2) + start_match.group(3)
         cursor += 1
         subject_lines = [[] for _ in WEEKDAYS]
+
         def collect(raw):
             for day in range(len(WEEKDAYS)):
                 left = boundaries[day - 1] if day else 0
@@ -75,6 +76,7 @@ def parse_class_page(text):
                 fragment = raw[left:right].strip()
                 if fragment:
                     subject_lines[day].append(fragment)
+
         collect(inline)
         end = ""
         while cursor < len(lines):
@@ -89,7 +91,9 @@ def parse_class_page(text):
             collect(raw)
             cursor += 1
         subjects = [" ".join(parts) for parts in subject_lines]
-        if not TIME.fullmatch(start) or not TIME.fullmatch(end) or any(not subject or len(subject) > 80 for subject in subjects):
+        if not TIME.fullmatch(start) or not TIME.fullmatch(end) or any(len(subject) > 80 for subject in subjects):
+            return None
+        if not allow_empty and any(not subject for subject in subjects):
             return None
         for weekday, subject in zip(WEEKDAYS, subjects):
             slots.append({"weekday": weekday, "period": expected_period,
@@ -97,8 +101,22 @@ def parse_class_page(text):
     return {"class_name": class_code, "slots": slots}
 
 
+def parse_class_page(text):
+    """Parse exactly one complete public class timetable page, otherwise None."""
+    return _parse_class_page(text, allow_empty=False)
+
+
+def _is_sparse_special_table(page):
+    """Recognize structurally valid sparse tables without publishing partial rows."""
+    row = _parse_class_page(page, allow_empty=True)
+    if not row:
+        return False
+    filled = sum(bool(slot["subject"]) for slot in row["slots"])
+    return 0 < filled <= len(row["slots"]) // 2
+
+
 def parse_timetable_pages(pages):
-    """Return class rows only when every accepted page is complete and unique."""
+    """Return complete class rows, skipping only verified blank/sparse appendices."""
     def blank_table_page(page):
         ignored = [
             CLASS_CODE, TIME, re.compile(r"^\d+\s+\d{4}$"), re.compile(r"^時間$"),
@@ -114,10 +132,13 @@ def parse_timetable_pages(pages):
                 continue
             return False
         return True
+
     classes = {}
     for page in pages or []:
         row = parse_class_page(page)
         table_page = all(day in str(page or "") for day in WEEKDAYS)
+        if table_page and not row and _is_sparse_special_table(page):
+            continue
         if table_page and not row and not blank_table_page(page):
             raise ValueError("incomplete class timetable page")
         if not row:
