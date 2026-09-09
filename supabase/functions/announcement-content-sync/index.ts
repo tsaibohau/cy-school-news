@@ -51,8 +51,11 @@ function validRecord(value: unknown): value is RecordInput {
 
 Deno.serve(async (req) => {
   if (req.method !== "POST") return Response.json({ error: "method_not_allowed" }, { status: 405 })
-  if (!validCallerKey(req) || req.headers.get("x-announcement-content-sync-token") !== required("ANNOUNCEMENT_CONTENT_SYNC_TOKEN")) {
-    return Response.json({ error: "unauthorized" }, { status: 401 })
+  if (!validCallerKey(req)) {
+    return Response.json({ error: "invalid_apikey" }, { status: 401 })
+  }
+  if (req.headers.get("x-announcement-content-sync-token") !== required("ANNOUNCEMENT_CONTENT_SYNC_TOKEN")) {
+    return Response.json({ error: "invalid_sync_token" }, { status: 401 })
   }
   const body = await req.json().catch(() => null) as { schema_version?: number; records?: unknown[] } | null
   if (!body || body.schema_version !== 1 || !Array.isArray(body.records) || body.records.length > 400 || !body.records.every(validRecord)) {
