@@ -30,6 +30,27 @@ jobs:
         run: |
           python tests/test_parser.py
           python tests/test_timetable_adapter.py
+      - name: Live formal timetable discovery
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python scraper/timetable.py discover
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("docs/data/class-timetables.json").read_text(encoding="utf-8"))
+          row = next(
+              item for item in data["timetables"]
+              if item.get("school_id") == "cysh"
+              and item.get("academic_year") == 115
+              and item.get("semester") == 1
+          )
+          assert row["version"] == "formal", row["version"]
+          assert row["source_url"].lower().endswith(".pdf"), row["source_url"]
+          assert row["classes"], "formal timetable must contain parsed class rows"
+          print("LIVE_FORMAL_TIMETABLE_OK", len(row["classes"]))
+          PY
       - name: Node regression
         run: >-
           node --test
