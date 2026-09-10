@@ -7,7 +7,7 @@ on:
       - "scraper/local_ocr.py"
       - "scraper/attachment_parser.py"
       - "scraper/detail_backfill.py"
-      - "scraper/requirements.txt"
+      - "scraper/requirements-ocr.txt"
       - "tests/test_local_ocr.py"
       - "tools/live_ocr_preview.py"
       - ".github/workflows/assistant-ocr-live-preview.yml"
@@ -35,8 +35,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install parser dependencies
-        run: pip install -r scraper/requirements.txt
+      - name: Install parser and OCR preview dependencies
+        run: pip install -r scraper/requirements-ocr.txt
 
       - name: Install local Traditional Chinese OCR runtime
         run: |
