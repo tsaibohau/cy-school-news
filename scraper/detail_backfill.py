@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Bounded snapshot-only Detail V2 backfill for cloud staging."""
+"""Bounded Detail V2 backfill with a persistent metadata-only cursor.
+
+The sidecars produced here are transient in production: member content is
+exported first and the public projection removes detail files before commit.
+The cursor lives in fetch_state.json so protected attachment backfill can still
+progress across runs without publishing attachment text.
+"""
 import json
 import os
 import re
@@ -10,7 +16,7 @@ import requests
 from public_shards import build_school_shards
 from extractive_summary import SUMMARY_VERSION, summarize_detail
 
-from scrape import (CONFIG, ROOT, TW_TZ, atomic_write_text, decode_response,
+from scrape import (CONFIG, ROOT, TW_TZ, UA, atomic_write_text, decode_response,
                     extract_article_date_result, extract_article_snippet,
                     extract_article_title, is_mojibake, merge_title,
                     choose_date, record_detail_fetch_failure,
@@ -18,6 +24,8 @@ from scrape import (CONFIG, ROOT, TW_TZ, atomic_write_text, decode_response,
 
 DATA_PATH = ROOT / "docs" / "data" / "announcements.json"
 ARCHIVE_PATH = ROOT / "docs" / "data" / "archive.json"
+BACKFILL_STATE_KEY = "__member_detail_backfill__"
+SEARCHABLE_ATTACHMENT_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".pptx"}
 
 
 def backfill_existing_summaries(items, cap):
@@ -60,7 +68,7 @@ def needs_detail(item):
         try:
             record = json.loads(path.read_text(encoding="utf-8"))
             attachment_pending = any(
-                str(row.get("extension") or "").lower() == ".pdf" and (
+                str(row.get("extension") or "").lower() in SEARCHABLE_ATTACHMENT_EXTENSIONS and (
                     row.get("parse_status") in {"pending", "temporary_error"} or
                     (row.get("parse_status") == "unparsed" and not row.get("content_sha256"))
                 )
@@ -71,37 +79,72 @@ def needs_detail(item):
     return corrupt or retryable or attachment_pending
 
 
-def select_targets(items, cap):
-    pending = [item for item in items if needs_detail(item)]
-    pending.sort(key=lambda item: (
-        not (is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", ""))),
-        -(datetime.fromisoformat(item.get("first_seen")).timestamp()
-          if item.get("first_seen") else 0),
-    ))
-    # Preserve corruption-first/newest-first priority inside each school's
-    # queue, but round-robin schools so a bounded run cannot starve one source
-    # merely because snapshots list the other source first for tied timestamps.
+def _cursor_key(item):
+    return (str(item.get("first_seen") or ""), str(item.get("id") or ""))
+
+
+def _after_cursor(rows, state):
+    """Return ordinary rows after the stable newest-to-oldest cursor, or wrap."""
+    if not state or not state.get("cursor_id"):
+        return rows
+    cursor = (str(state.get("cursor_first_seen") or ""), str(state.get("cursor_id") or ""))
+    after = [row for row in rows if _cursor_key(row) < cursor]
+    return after if after else rows
+
+
+def _round_robin(rows):
+    queues = {}
+    order = []
+    for item in rows:
+        school = item.get("school") or item.get("school_id") or "unknown"
+        if school not in queues:
+            queues[school] = []
+            order.append(school)
+        queues[school].append(item)
     selected = []
-    tiers = [
-        [item for item in pending if is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", ""))],
-        [item for item in pending if not (is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", "")))],
-    ]
-    for tier in tiers:
-        queues = {}
-        order = []
-        for item in tier:
-            school = item.get("school") or item.get("school_id") or "unknown"
-            if school not in queues:
-                queues[school] = []
-                order.append(school)
-            queues[school].append(item)
-        while len(selected) < cap and any(queues.values()):
-            for school in order:
-                if queues[school] and len(selected) < cap:
-                    selected.append(queues[school].pop(0))
-        if len(selected) >= cap:
-            break
+    while any(queues.values()):
+        for school in order:
+            if queues[school]:
+                selected.append(queues[school].pop(0))
     return selected
+
+
+def select_targets(items, cap, state=None):
+    pending = [item for item in items if needs_detail(item)]
+    pending.sort(key=_cursor_key, reverse=True)
+    corrupt = [item for item in pending
+               if is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", ""))]
+    ordinary = [item for item in pending if item not in corrupt]
+
+    selected = _round_robin(corrupt)[:cap]
+    if len(selected) >= cap:
+        return selected
+    remaining = _round_robin(_after_cursor(ordinary, state))
+    selected_ids = {str(item.get("id") or "") for item in selected}
+    selected.extend(item for item in remaining if str(item.get("id") or "") not in selected_ids)
+    return selected[:cap]
+
+
+def _state_path():
+    return ROOT / CONFIG.get("fetch_state_path", "scraper/fetch_state.json")
+
+
+def load_fetch_state():
+    try:
+        data = json.loads(_state_path().read_text(encoding="utf-8"))
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def save_cursor(fetch_state, target):
+    state = fetch_state.setdefault(BACKFILL_STATE_KEY, {})
+    state["schema_version"] = 1
+    if target:
+        state["cursor_id"] = str(target.get("id") or "")
+        state["cursor_first_seen"] = str(target.get("first_seen") or "")
+    state["updated_at"] = datetime.now(TW_TZ).isoformat(timespec="seconds")
+    atomic_write_text(_state_path(), json.dumps(fetch_state, ensure_ascii=False, indent=1))
 
 
 def main():
@@ -112,9 +155,12 @@ def main():
     items = recent_doc.get("items", []) + archive_doc.get("items", [])
     summary_cap = min(100, max(1, int(os.environ.get("SUMMARY_BACKFILL_CAP", "100"))))
     summarized = backfill_existing_summaries(items, summary_cap)
-    targets = select_targets(items, cap)
+    fetch_state = load_fetch_state()
+    cursor_state = fetch_state.get(BACKFILL_STATE_KEY, {})
+    targets = select_targets(items, cap, cursor_state)
+
     session = requests.Session()
-    session.headers.update({"User-Agent": "cy-school-news detail-backfill/1.0"})
+    session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
     attachment_budget = {"remaining": min(4, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))}
     fetched_at = datetime.now(TW_TZ).isoformat(timespec="seconds")
 
@@ -140,7 +186,8 @@ def main():
     atomic_write_text(DATA_PATH, json.dumps(recent_doc, ensure_ascii=False, indent=1))
     atomic_write_text(ARCHIVE_PATH, json.dumps(archive_doc, ensure_ascii=False, indent=1))
     build_school_shards(recent_doc, archive_doc, ROOT / "docs" / "data" / "schools")
-    print(f"DETAIL_BACKFILL_PROCESSED={len(targets)} CAP={cap} SUMMARY_BACKFILLED={summarized}")
+    save_cursor(fetch_state, targets[-1] if targets else None)
+    print(f"DETAIL_BACKFILL_PROCESSED={len(targets)} CAP={cap} SUMMARY_BACKFILLED={summarized} ATTACHMENT_REQUESTS_USED={4 - attachment_budget['remaining']}")
     return 0
 
 
