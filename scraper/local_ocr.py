@@ -168,10 +168,10 @@ def _ocr_image(data: bytes, *, languages: str, max_chars: int,
 
 def _ocr_pdf(data: bytes, *, languages: str, max_chars: int, max_pdf_pages: int,
              min_confidence: float, min_chars: int, timeout_sec: int) -> dict:
-    import fitz
+    import pymupdf
 
     try:
-        document = fitz.open(stream=data, filetype="pdf")
+        document = pymupdf.open(stream=data, filetype="pdf")
     except Exception:
         return {"text": "", "parse_status": "unsupported", "reason": "ocr_invalid_pdf",
                 "ocr_version": OCR_VERSION, "ocr_attempted": False}
@@ -190,7 +190,7 @@ def _ocr_pdf(data: bytes, *, languages: str, max_chars: int, max_pdf_pages: int,
         with tempfile.TemporaryDirectory(prefix="cynews-ocr-") as directory:
             for index in range(page_count):
                 page = document.load_page(index)
-                pixmap = page.get_pixmap(matrix=fitz.Matrix(DEFAULT_PAGE_SCALE, DEFAULT_PAGE_SCALE), alpha=False)
+                pixmap = page.get_pixmap(matrix=pymupdf.Matrix(DEFAULT_PAGE_SCALE, DEFAULT_PAGE_SCALE), alpha=False)
                 if pixmap.width * pixmap.height > DEFAULT_MAX_IMAGE_PIXELS:
                     return {"text": "", "parse_status": "unsupported", "reason": "ocr_image_size_limit",
                             "ocr_version": OCR_VERSION, "ocr_attempted": attempted,
