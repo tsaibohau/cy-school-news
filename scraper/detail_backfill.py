@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Bounded Detail V2 backfill with a persistent metadata-only cursor.
+"""Bounded Detail V2 backfill with persistent metadata-only cursors.
 
-The sidecars produced here are transient in production: member content is
-exported first and the public projection removes detail files before commit.
-The cursor lives in fetch_state.json so protected attachment backfill can still
-progress across runs without publishing attachment text.
+Normal detail backfill and OCR backfill deliberately use separate cursors. OCR
+therefore can revisit the corpus slowly without changing the hourly crawler's
+progress. Sidecars remain transient: member content is exported first and the
+public projection removes detail files before any public commit.
 """
 import json
 import os
@@ -25,7 +25,9 @@ from scrape import (CONFIG, ROOT, TW_TZ, UA, atomic_write_text, decode_response,
 DATA_PATH = ROOT / "docs" / "data" / "announcements.json"
 ARCHIVE_PATH = ROOT / "docs" / "data" / "archive.json"
 BACKFILL_STATE_KEY = "__member_detail_backfill__"
+OCR_BACKFILL_STATE_KEY = "__member_ocr_backfill__"
 SEARCHABLE_ATTACHMENT_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".pptx"}
+OCR_TARGET_SCHOOLS = {"cysh", "cygsh"}
 
 
 def backfill_existing_summaries(items, cap):
@@ -84,7 +86,7 @@ def _cursor_key(item):
 
 
 def _after_cursor(rows, state):
-    """Return ordinary rows after the stable newest-to-oldest cursor, or wrap."""
+    """Return rows after a stable newest-to-oldest cursor, or wrap."""
     if not state or not state.get("cursor_id"):
         return rows
     cursor = (str(state.get("cursor_first_seen") or ""), str(state.get("cursor_id") or ""))
@@ -125,6 +127,20 @@ def select_targets(items, cap, state=None):
     return selected[:cap]
 
 
+def select_ocr_targets(items, cap, state=None):
+    """Walk CYSH/CYGSH independently of normal detail retry state.
+
+    Public snapshots cannot safely persist the private attachment OCR status, so
+    OCR discovery uses its own metadata-only cursor and revisits article pages
+    at a deliberately low rate. PKSH is excluded from this path.
+    """
+    rows = [item for item in items
+            if (item.get("school") or item.get("school_id")) in OCR_TARGET_SCHOOLS
+            and str(item.get("url") or "").startswith("https://")]
+    rows.sort(key=_cursor_key, reverse=True)
+    return _round_robin(_after_cursor(rows, state))[:cap]
+
+
 def _state_path():
     return ROOT / CONFIG.get("fetch_state_path", "scraper/fetch_state.json")
 
@@ -137,8 +153,8 @@ def load_fetch_state():
         return {}
 
 
-def save_cursor(fetch_state, target):
-    state = fetch_state.setdefault(BACKFILL_STATE_KEY, {})
+def save_cursor(fetch_state, target, state_key=BACKFILL_STATE_KEY):
+    state = fetch_state.setdefault(state_key, {})
     state["schema_version"] = 1
     if target:
         state["cursor_id"] = str(target.get("id") or "")
@@ -147,8 +163,38 @@ def save_cursor(fetch_state, target):
     atomic_write_text(_state_path(), json.dumps(fetch_state, ensure_ascii=False, indent=1))
 
 
+def _ocr_metrics(targets):
+    counts = {"attempted": 0, "accepted": 0, "low_confidence": 0, "unavailable": 0}
+    for item in targets:
+        detail_ref = str(item.get("detail_ref") or "")
+        if not detail_ref.startswith("data/details/"):
+            continue
+        path = ROOT / "docs" / detail_ref
+        try:
+            record = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        for row in record.get("attachments") or []:
+            if not row.get("ocr_version"):
+                continue
+            if row.get("ocr_confidence") is not None or row.get("parse_reason") in {"ocr_timeout"}:
+                counts["attempted"] += 1
+            if row.get("parse_status") == "parsed" and row.get("embedded_text"):
+                counts["accepted"] += 1
+            if row.get("parse_reason") in {"ocr_low_confidence", "ocr_too_little_text"}:
+                counts["low_confidence"] += 1
+            if row.get("parse_reason") == "ocr_language_unavailable":
+                counts["unavailable"] += 1
+    return counts
+
+
 def main():
-    cap = min(10, max(1, int(os.environ.get("DETAIL_BACKFILL_CAP", "10"))))
+    mode = str(os.environ.get("BACKFILL_MODE", "detail")).strip().lower() or "detail"
+    if mode not in {"detail", "ocr"}:
+        raise RuntimeError(f"unsupported BACKFILL_MODE={mode}")
+    ocr_mode = mode == "ocr"
+    cap_default = "8" if ocr_mode else "10"
+    cap = min(12, max(1, int(os.environ.get("DETAIL_BACKFILL_CAP", cap_default))))
     delay = max(1.5, float(CONFIG.get("request_delay_sec", 1.5)))
     recent_doc = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     archive_doc = json.loads(ARCHIVE_PATH.read_text(encoding="utf-8"))
@@ -156,13 +202,22 @@ def main():
     summary_cap = min(100, max(1, int(os.environ.get("SUMMARY_BACKFILL_CAP", "100"))))
     summarized = backfill_existing_summaries(items, summary_cap)
     fetch_state = load_fetch_state()
-    cursor_state = fetch_state.get(BACKFILL_STATE_KEY, {})
-    targets = select_targets(items, cap, cursor_state)
+    state_key = OCR_BACKFILL_STATE_KEY if ocr_mode else BACKFILL_STATE_KEY
+    cursor_state = fetch_state.get(state_key, {})
+    targets = select_ocr_targets(items, cap, cursor_state) if ocr_mode else select_targets(items, cap, cursor_state)
 
     session = requests.Session()
     session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
-    attachment_cap = min(4, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))
-    attachment_budget = {"remaining": attachment_cap}
+    attachment_cap = min(6, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))
+    ocr_cap = min(2, max(0, int(os.environ.get("OCR_ATTACHMENT_CAP", "0"))))
+    enable_ocr = os.environ.get("ENABLE_LOCAL_OCR", "").strip() == "1"
+    if ocr_mode and (not enable_ocr or ocr_cap <= 0):
+        raise RuntimeError("OCR backfill requires ENABLE_LOCAL_OCR=1 and OCR_ATTACHMENT_CAP>0")
+    attachment_budget = {
+        "remaining": attachment_cap,
+        "ocr_enabled": enable_ocr,
+        "ocr_remaining": ocr_cap,
+    }
     fetched_at = datetime.now(TW_TZ).isoformat(timespec="seconds")
 
     for item in targets:
@@ -187,8 +242,20 @@ def main():
     atomic_write_text(DATA_PATH, json.dumps(recent_doc, ensure_ascii=False, indent=1))
     atomic_write_text(ARCHIVE_PATH, json.dumps(archive_doc, ensure_ascii=False, indent=1))
     build_school_shards(recent_doc, archive_doc, ROOT / "docs" / "data" / "schools")
-    save_cursor(fetch_state, targets[-1] if targets else None)
-    print(f"DETAIL_BACKFILL_PROCESSED={len(targets)} CAP={cap} SUMMARY_BACKFILLED={summarized} ATTACHMENT_REQUESTS_USED={attachment_cap - attachment_budget['remaining']}")
+    save_cursor(fetch_state, targets[-1] if targets else None, state_key=state_key)
+    metrics = _ocr_metrics(targets) if ocr_mode else None
+    message = (
+        f"DETAIL_BACKFILL_MODE={mode} PROCESSED={len(targets)} CAP={cap} "
+        f"SUMMARY_BACKFILLED={summarized} "
+        f"ATTACHMENT_REQUESTS_USED={attachment_cap - attachment_budget['remaining']}"
+    )
+    if metrics is not None:
+        message += (
+            f" OCR_BUDGET_USED={ocr_cap - attachment_budget['ocr_remaining']}"
+            f" OCR_ATTEMPTED={metrics['attempted']} OCR_ACCEPTED={metrics['accepted']}"
+            f" OCR_LOW_CONFIDENCE={metrics['low_confidence']} OCR_UNAVAILABLE={metrics['unavailable']}"
+        )
+    print(message)
     return 0
 
 
