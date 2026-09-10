@@ -11,7 +11,7 @@ permissions:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
@@ -27,6 +27,12 @@ jobs:
       - name: Install parser dependencies
         run: pip install -r scraper/requirements.txt
 
+      - name: Install local Traditional Chinese OCR runtime
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-chi-tra fonts-arphic-uming
+          tesseract --list-langs | grep -Fx chi_tra
+
       - name: Required parser regression
         env:
           PYTHONIOENCODING: utf-8
@@ -35,6 +41,7 @@ jobs:
           python tests/test_detail_parser.py
           python tests/test_detail_backfill.py
           python tests/test_attachment_parser.py
+          python tests/test_local_ocr.py
 
       - name: Attachment-aware member QA regression
         run: |
