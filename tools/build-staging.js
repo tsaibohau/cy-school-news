@@ -13,7 +13,7 @@ const output = path.isAbsolute(configuredOutput) ? path.resolve(configuredOutput
 const staging = path.join(root, "tools", "staging");
 const { sanitizePublicData } = require("./public-metadata-projection.js");
 const shellInputs = [
-  "index.html", "legal.html", "legal-compliance.json", "style.css", "app.js", "detail-ui.js", "sw.js", "account-config.js",
+  "index.html", "legal.html", "legal-compliance.json", "style.css", "app.js", "detail-ui.js", "sw.js", "account-config.js", "capability-layer.js",
   "supabase-sync.js", "account-auth.js", "task-state.js", "account-sync.js",
   "push-subscription.js",
   "reminder-rules.js",
@@ -79,6 +79,6 @@ fs.writeFileSync(swPath, sw);
 
 const config = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
 if (!config.includes("https://ebezqanvmgsgtatsbssn.supabase.co") || config.includes("https://oppdhtnepjagdwovndra.supabase.co")) throw new Error("staging Auth backend isolation failed");
+if (!config.includes("capability-layer.js?v=3")) throw new Error("staging capability bootstrap missing");
 if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境") || sourceVersions.some((sourceVersion) => html.includes(sourceVersion))) throw new Error("staging markers or coherent shell revision were not injected");
 console.log("Staging artifact built with noindex, coherent " + shellRevision + " shell and acceptance harness");
-

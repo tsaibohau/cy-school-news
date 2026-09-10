@@ -78,24 +78,54 @@
       return rows(result);
     });
   }
+  function normalizeCapabilities(options) {
+    var provided = options && options.capabilities;
+    if (!provided && typeof window !== "undefined" && window.CyNewsCapabilities && typeof window.CyNewsCapabilities.current === "function") {
+      provided = window.CyNewsCapabilities.current();
+    }
+    if (provided && typeof provided === "object") {
+      return {
+        member_content: provided.member_content === true,
+        assistant: provided.assistant === true,
+        timetable: provided.timetable === true,
+        calendar: provided.calendar === true,
+        notifications: provided.notifications === true,
+      };
+    }
+    var timetableOnly = options && options.serviceLevel === "timetable_only";
+    return {
+      member_content: !timetableOnly,
+      assistant: !timetableOnly,
+      timetable: true,
+      calendar: !timetableOnly,
+      notifications: !timetableOnly,
+    };
+  }
   function createAdapter(client, options) {
     options = options || {};
-    var timetableOnly = options.serviceLevel === "timetable_only";
+    var capabilities = normalizeCapabilities(options);
+    function allowed(table) {
+      if (table === TABLES.subscriptions) return capabilities.notifications;
+      if (table === TABLES.reads) return capabilities.member_content;
+      if (table === TABLES.tasks) return capabilities.calendar;
+      if (table === TABLES.preferences) return capabilities.assistant || capabilities.timetable || capabilities.calendar || capabilities.notifications;
+      return false;
+    }
     if (!client || !client.auth || typeof client.from !== "function") throw new Error("Supabase client required");
     return {
       fetchRemoteState: function () {
         return sessionUid(client).then(function (uid) {
           assertCurrent(options, uid);
-          if (timetableOnly) {
-            return query(client, TABLES.preferences, uid, options)
-              .then(function (data) { return { user_id: uid, subscriptions: [], reads: [], preferences: data[0] || null, tasks: [] }; });
-          }
-          return Promise.all([query(client, TABLES.subscriptions, uid, options), query(client, TABLES.reads, uid, options), query(client, TABLES.preferences, uid, options), query(client, TABLES.tasks, uid, options)])
+          var subscriptions = allowed(TABLES.subscriptions) ? query(client, TABLES.subscriptions, uid, options) : Promise.resolve([]);
+          var reads = allowed(TABLES.reads) ? query(client, TABLES.reads, uid, options) : Promise.resolve([]);
+          var preferences = allowed(TABLES.preferences) ? query(client, TABLES.preferences, uid, options) : Promise.resolve([]);
+          var tasks = allowed(TABLES.tasks) ? query(client, TABLES.tasks, uid, options) : Promise.resolve([]);
+          return Promise.all([subscriptions, reads, preferences, tasks])
             .then(function (data) { return { user_id: uid, subscriptions: data[0], reads: data[1], preferences: data[2][0] || null, tasks: data[3] }; });
         });
       },
       pushRows: function (table, values) {
-        if (timetableOnly && table !== TABLES.preferences) return Promise.resolve([]);
+        if (!allowed(table)) return Promise.resolve([]);
         return sessionUid(client).then(function (uid) {
           var payload = (Array.isArray(values) ? values : []).map(function (row) { return withOwner(dbRow(table, row), uid); });
           if (!payload.length) return [];
@@ -112,7 +142,6 @@
           var subscriptions = (state.subscriptions || []).map(function (row) { return withOwner(row, uid); });
           var reads = (state.reads || []).map(function (row) { return withOwner(row, uid); });
           var preferences = state.preferences ? [withOwner(state.preferences, uid)] : [];
-          if (timetableOnly) return this.pushRows(TABLES.preferences, preferences);
           return Promise.all([
             this.pushRows(TABLES.subscriptions, subscriptions),
             this.pushRows(TABLES.reads, reads),
@@ -124,7 +153,7 @@
       deleteOwnData: function () {
         return sessionUid(client).then(function (uid) {
           assertCurrent(options, uid);
-          var tables = timetableOnly ? [TABLES.preferences] : TABLES_ORDER;
+          var tables = TABLES_ORDER.filter(allowed);
           return tables.reduce(function (chain, table) {
             return chain.then(function (deleted) {
               assertCurrent(options, uid);
@@ -146,7 +175,7 @@
             mutation.type.indexOf("task.") === 0 ? TABLES.tasks :
             mutation.type === "preferences.upsert" ? TABLES.preferences : null;
           if (!table) throw new Error("unsupported account mutation");
-          if (timetableOnly && table !== TABLES.preferences) throw new Error("feature unavailable for timetable-only account");
+          if (!allowed(table)) throw new Error("feature unavailable for this account capability set");
           assertCurrent(options, uid);
           return client.from(table).upsert([withOwner(dbRow(table, mutation.payload || {}), uid)], { onConflict: CONFLICT_TARGETS[table] }).then(function (result) {
             assertCurrent(options, uid);
@@ -167,6 +196,12 @@
                 assertCurrent(options, currentUid);
                 return Promise.resolve(send(item, currentUid)).then(function () {
                   result.done.push(item.id); return result;
+                }).catch(function (error) {
+                  if (/feature unavailable/.test(String(error && error.message))) {
+                    result.done.push(item.id);
+                    return result;
+                  }
+                  throw error;
                 });
               }).catch(function (error) { result.error = error; return result; });
             });

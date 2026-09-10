@@ -12,3 +12,7 @@ window.CYNEWS_ACCOUNT_CONFIG = {
     "https://tsaibohau.github.io/cy-school-news/",
   ],
 };
+/* Capability layer must load before account-auth.js so the auth controller is capability-aware. */
+if (typeof document !== "undefined" && document.readyState === "loading") {
+  document.write('<script src="capability-layer.js?v=3"></' + 'script>');
+}
