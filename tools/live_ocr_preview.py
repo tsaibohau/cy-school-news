@@ -69,6 +69,7 @@ def main() -> int:
     scanned_articles = 0
     attempted = 0
     accepted = 0
+    insufficient_visible = 0
     low_confidence = 0
     unavailable = 0
     fetch_failures = 0
@@ -119,8 +120,12 @@ def main() -> int:
         row = (record.get("attachments") or [{}])[0]
         if row.get("ocr_confidence") is not None or row.get("parse_reason") == "ocr_timeout":
             attempted += 1
-        if row.get("parse_status") == "parsed" and row.get("embedded_text") and row.get("ocr_version"):
-            accepted += 1
+        if (row.get("parse_status") == "parsed" and row.get("embedded_text")
+                and row.get("ocr_version")):
+            if row.get("evidence_confidence") == "insufficient":
+                insufficient_visible += 1
+            else:
+                accepted += 1
         if row.get("parse_reason") in {"ocr_low_confidence", "ocr_too_little_text"}:
             low_confidence += 1
         if row.get("parse_reason") == "ocr_language_unavailable":
@@ -131,6 +136,7 @@ def main() -> int:
         f"ARTICLES={scanned_articles} CANDIDATE_ATTACHMENTS={candidate_attachments} "
         f"ATTACHMENT_REQUESTS={attachment_cap - budget['remaining']} "
         f"OCR_ATTEMPTED={attempted} OCR_ACCEPTED={accepted} "
+        f"OCR_INSUFFICIENT_VISIBLE={insufficient_visible} "
         f"OCR_LOW_CONFIDENCE={low_confidence} OCR_UNAVAILABLE={unavailable} "
         f"FETCH_FAILURES={fetch_failures}"
     )
