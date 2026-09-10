@@ -14,5 +14,5 @@ window.CYNEWS_ACCOUNT_CONFIG = {
 };
 /* Capability bridge must install before account-auth.js assigns CyNewsAccountAuth. */
 if (typeof document !== "undefined" && document.readyState === "loading") {
-  document.write('<script src="capability-layer.js?v=1"><\\/script>');
+  document.write('<script src="capability-layer.js?v=1"><\/script>');
 }
