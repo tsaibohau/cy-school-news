@@ -14,5 +14,5 @@ window.CYNEWS_ACCOUNT_CONFIG = {
 };
 /* Capability layer must load before account-auth.js so the auth controller is capability-aware. */
 if (typeof document !== "undefined" && document.readyState === "loading") {
-  document.write('<script src="capability-layer.js?v=3"></' + 'script>');
+  document.write('<script src="capability-layer.js?v=4"></' + 'script>');
 }
