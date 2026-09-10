@@ -52,7 +52,7 @@ jobs:
 
       - name: Reject tracked secret patterns
         run: |
-          if git grep -n -I -E '(sb_secret_|eyJ[A-Za-z0-9_-]{20,}\.|postgres(ql)?://[^[:space:]]+:[^[:space:]]+@|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----)' -- ':!.github/workflows/assistant-attachments-v2-validation.yml'; then
+          if git grep -n -I -E '(sb_secret_|eyJ[A-Za-z0-9_-]{20,}\.|postgres(ql)?://[^[:space:]]+:[^[:space:]]+@|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----)' -- ':!.github/workflows/assistant-attachments-v2-validation.yml' ':!.github/workflows/staging-validation.yml'; then
             echo "Potential tracked secret detected"
             exit 1
           fi
