@@ -1,9 +1,10 @@
 """Bounded local OCR for official announcement attachments.
 
 This module intentionally has no network access and no AI/LLM dependency. OCR
-output is promoted only when the Traditional-Chinese language pack is present
-and Tesseract reports enough high-confidence text. Otherwise callers receive a
-fail-closed status and no searchable text.
+output is always labeled with its evidence quality. High-confidence text may be
+used as normal evidence; low-confidence text is retained only as visibly marked
+"evidence insufficient" material so users can inspect it without mistaking it
+for a verified fact.
 """
 
 from __future__ import annotations
@@ -42,6 +43,14 @@ def _clean_lines(lines, max_chars: int) -> str:
         output.append(text)
         size += len(text) + 1
     return "\n".join(output)[:max_chars]
+
+
+def _mark_insufficient_evidence(text: str, confidence: float, max_chars: int) -> str:
+    """Prefix every OCR sentence/line so any extracted snippet carries the warning."""
+    marker = f"【證據不足：OCR 辨識信心 {round(float(confidence), 1)}%，請核對官方原附件】"
+    parts = re.split(r"(?<=[。！？!?；;])|\n+", str(text or ""))
+    marked = [marker + part.strip() for part in parts if part.strip()]
+    return "\n".join(marked)[:max_chars]
 
 
 def installed_languages(timeout_sec: int = 5) -> set[str]:
@@ -133,10 +142,18 @@ def _quality_result(text: str, confidence: float, candidate_chars: int, *,
     if page_count is not None:
         common["page_count"] = page_count
     if searchable_chars < min_chars:
-        return dict(common, text="", parse_status="needs_ocr", reason="ocr_too_little_text")
+        return dict(common, text="", parse_status="needs_ocr", reason="ocr_too_little_text",
+                    evidence_confidence="insufficient")
     if confidence < min_confidence:
-        return dict(common, text="", parse_status="needs_ocr", reason="ocr_low_confidence")
-    return dict(common, text=cleaned, parse_status="parsed", reason="")
+        return dict(
+            common,
+            text=_mark_insufficient_evidence(cleaned, confidence, max_chars),
+            parse_status="parsed",
+            reason="ocr_low_confidence",
+            evidence_confidence="insufficient",
+        )
+    return dict(common, text=cleaned, parse_status="parsed", reason="",
+                evidence_confidence="sufficient")
 
 
 def _ocr_image(data: bytes, *, languages: str, max_chars: int,
@@ -224,12 +241,13 @@ def extract_ocr_text(data: bytes, extension: str, *, languages: str = DEFAULT_LA
                      min_confidence: float = DEFAULT_MIN_CONFIDENCE,
                      min_chars: int = DEFAULT_MIN_CHARS,
                      timeout_sec: int = DEFAULT_PAGE_TIMEOUT_SEC) -> dict:
-    """OCR one already-downloaded attachment and return only trusted text."""
+    """OCR one downloaded attachment and return text plus explicit evidence quality."""
     ext = str(extension or "").lower().lstrip(".")
     if not languages_ready(languages):
         return {"text": "", "parse_status": "needs_ocr", "reason": "ocr_language_unavailable",
                 "ocr_version": OCR_VERSION, "ocr_engine": "tesseract",
-                "ocr_languages": languages, "ocr_attempted": False}
+                "ocr_languages": languages, "ocr_attempted": False,
+                "evidence_confidence": "insufficient"}
     if ext == "pdf":
         result = _ocr_pdf(data, languages=languages, max_chars=max_chars,
                           max_pdf_pages=max_pdf_pages, min_confidence=min_confidence,
@@ -240,7 +258,9 @@ def extract_ocr_text(data: bytes, extension: str, *, languages: str = DEFAULT_LA
                             timeout_sec=timeout_sec)
     else:
         return {"text": "", "parse_status": "unparsed", "reason": "ocr_unsupported_format",
-                "ocr_version": OCR_VERSION, "ocr_attempted": False}
+                "ocr_version": OCR_VERSION, "ocr_attempted": False,
+                "evidence_confidence": "insufficient"}
     result["ocr_languages"] = languages
     result.setdefault("ocr_engine", "tesseract")
+    result.setdefault("evidence_confidence", "insufficient")
     return result
