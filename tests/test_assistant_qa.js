@@ -32,6 +32,28 @@ const split = QA.answerLines([
 assert.deepEqual(split, ["科學營：科學營於九月五日前報名。", "寫作工作坊：寫作工作坊於九月十日前報名。"]);
 assert(!QA.rank("手機或行動載具有什麼規定？", items, details).some(row => row.item.id === "a3"), "generic words cannot pull an unrelated regulation into the answer");
 assert.equal(QA.answer("火星社團在哪裡", items, {}).status, "insufficient", "unsupported questions are not guessed");
+
+const attachmentItem = {
+  id: "music-form", title: "學生音樂比賽報名表", school: "cysh", school_name: "嘉中",
+  summary: "", snippet: "", url: "https://school.example/music", date: "2026-09-01",
+};
+const attachmentDetail = {
+  provenance: "official_article", announcement_id: "music-form", source_hash: "detail-1", blocks: [],
+  attachments: [{
+    provenance: "official_attachment", filename: "音樂比賽報名表.pdf", parse_status: "parsed",
+    embedded_text: "參賽同學填妥報名表後，請送交學務處訓育組辦理。",
+  }],
+};
+const attachmentAnswer = QA.answer(
+  "音樂比賽的報名表要去哪個處室辦理？",
+  [attachmentItem],
+  { "music-form": attachmentDetail },
+);
+assert.equal(attachmentAnswer.status, "answered", "attachment-only official evidence must be answerable");
+assert(attachmentAnswer.evidence.some(row => row.text.includes("學務處訓育組")));
+assert(attachmentAnswer.answer_lines.some(row => row.includes("學務處訓育組")));
+assert(QA.detailText(attachmentDetail).includes("學務處訓育組"), "protected attachment text participates in retrieval evidence");
+
 let feedback = Feedback.record({}, "announcement:a1", "add_task", "2026-08-27T00:00:00Z");
 feedback = Feedback.record(feedback, "announcement:a1", "dismiss", "2026-08-27T01:00:00Z");
 assert.equal(Feedback.score(feedback, "announcement:a1"), -6);
