@@ -48,6 +48,16 @@ def is_ocr_candidate(row: dict) -> bool:
     return ext in OCR_EXTENSIONS or ext == "pdf"
 
 
+def candidate_priority(record: dict) -> tuple:
+    attachment = (record.get("attachments") or [{}])[0]
+    ext = str(attachment.get("extension") or "").lower().lstrip(".")
+    # Image attachments are guaranteed OCR work. PDFs come second because many
+    # already contain a text layer and would otherwise consume the tiny live
+    # attachment budget before we reach a real scan candidate.
+    return (0 if ext in OCR_EXTENSIONS else 1,
+            str(record.get("school_id") or ""), str(attachment.get("url") or ""))
+
+
 def main() -> int:
     article_cap = min(12, max(1, int(os.environ.get("LIVE_OCR_ARTICLE_CAP", "10"))))
     attachment_cap = min(4, max(1, int(os.environ.get("LIVE_OCR_ATTACHMENT_CAP", "3"))))
@@ -57,13 +67,16 @@ def main() -> int:
     session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
     budget = {"remaining": attachment_cap, "ocr_enabled": True, "ocr_remaining": ocr_cap}
     scanned_articles = 0
-    candidate_attachments = 0
     attempted = 0
     accepted = 0
     low_confidence = 0
     unavailable = 0
     fetch_failures = 0
+    candidate_records = []
 
+    # First inspect a bounded article window. Do not download an attachment yet:
+    # this lets the tiny attachment budget prefer actual images across all
+    # articles rather than the first few ordinary PDFs encountered.
     for item in load_items()[:article_cap]:
         scanned_articles += 1
         try:
@@ -78,37 +91,40 @@ def main() -> int:
                 source_url=str(item.get("url") or ""),
                 fetched_at=datetime.now(TW_TZ).isoformat(timespec="seconds"),
             )
+            for attachment in record.get("attachments") or []:
+                if not is_ocr_candidate(attachment):
+                    continue
+                candidate_records.append({
+                    "announcement_id": record.get("announcement_id"),
+                    "school_id": record.get("school_id"),
+                    "source_url": record.get("source_url"),
+                    "source_hash": record.get("source_hash"),
+                    "provenance": record.get("provenance"),
+                    "attachments": [dict(attachment)],
+                    "verified_dates": [],
+                })
         except Exception:
             fetch_failures += 1
-            time.sleep(delay)
-            continue
-
-        candidates = [row for row in record.get("attachments") or [] if is_ocr_candidate(row)]
-        candidates.sort(key=lambda row: (
-            str(row.get("extension") or "").lower().lstrip(".") not in OCR_EXTENSIONS,
-            str(row.get("url") or ""),
-        ))
-        if candidates and budget["remaining"] > 0:
-            candidate_attachments += len(candidates)
-            record["attachments"] = candidates
-            enrich_pdf_attachments(
-                record, session, budget,
-                timeout_sec=CONFIG["timeout_sec"], request_delay_sec=delay,
-            )
-            for row in record.get("attachments") or []:
-                if not row.get("ocr_version"):
-                    continue
-                if row.get("ocr_confidence") is not None or row.get("parse_reason") == "ocr_timeout":
-                    attempted += 1
-                if row.get("parse_status") == "parsed" and row.get("embedded_text"):
-                    accepted += 1
-                if row.get("parse_reason") in {"ocr_low_confidence", "ocr_too_little_text"}:
-                    low_confidence += 1
-                if row.get("parse_reason") == "ocr_language_unavailable":
-                    unavailable += 1
         time.sleep(delay)
-        if budget["ocr_remaining"] <= 0 or budget["remaining"] <= 0:
+
+    candidate_records.sort(key=candidate_priority)
+    candidate_attachments = len(candidate_records)
+    for record in candidate_records:
+        if budget["remaining"] <= 0 or budget["ocr_remaining"] <= 0:
             break
+        enrich_pdf_attachments(
+            record, session, budget,
+            timeout_sec=CONFIG["timeout_sec"], request_delay_sec=delay,
+        )
+        row = (record.get("attachments") or [{}])[0]
+        if row.get("ocr_confidence") is not None or row.get("parse_reason") == "ocr_timeout":
+            attempted += 1
+        if row.get("parse_status") == "parsed" and row.get("embedded_text") and row.get("ocr_version"):
+            accepted += 1
+        if row.get("parse_reason") in {"ocr_low_confidence", "ocr_too_little_text"}:
+            low_confidence += 1
+        if row.get("parse_reason") == "ocr_language_unavailable":
+            unavailable += 1
 
     print(
         "LIVE_OCR_PREVIEW "
@@ -120,9 +136,8 @@ def main() -> int:
     )
     if unavailable:
         return 3
-    # A live corpus is allowed to contain no scan in this small bounded window.
-    # That is inconclusive, not a parser failure; the synthetic OCR regression
-    # remains the deterministic correctness gate.
+    # No scan inside a small live window is inconclusive rather than a parser
+    # failure. Synthetic OCR remains the deterministic correctness gate.
     return 0
 
 
