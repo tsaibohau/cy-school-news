@@ -36,6 +36,31 @@ assert.equal(answer.status, "answered", "attachment-only official evidence must 
 assert(answer.evidence.some((row) => row.text.includes("學務處訓育組")));
 assert(answer.answer_lines.some((row) => row.includes("學務處訓育組")));
 
+const lowConfidenceDetail = {
+  provenance: "official_article",
+  announcement_id: "music-form",
+  source_hash: "detail-low-ocr",
+  blocks: [],
+  attachments: [{
+    provenance: "official_attachment",
+    filename: "音樂比賽報名表掃描檔.png",
+    parse_status: "parsed",
+    parse_reason: "ocr_low_confidence",
+    evidence_confidence: "insufficient",
+    ocr_confidence: 41.2,
+    embedded_text: "【證據不足：OCR 辨識信心 41.2%，請核對官方原附件】報名表請送交學務處訓育組辦理。",
+  }],
+};
+const lowAnswer = QA.answer(
+  "音樂比賽的報名表要去哪個處室辦理？",
+  [item],
+  { "music-form": lowConfidenceDetail },
+);
+assert.equal(lowAnswer.status, "answered", "low-confidence OCR should remain visible instead of disappearing");
+assert(lowAnswer.summary.includes("證據不足"), "visible answer must disclose insufficient OCR evidence");
+assert(lowAnswer.evidence.some((row) => row.text.includes("證據不足")));
+assert(lowAnswer.answer_lines.some((row) => row.includes("證據不足")));
+
 const noEvidence = QA.answer("音樂比賽一定要參加嗎？", [item], { "music-form": detail });
 assert.equal(noEvidence.status, "insufficient", "the assistant must not infer an unsupported requirement from an attachment");
 console.log("Attachment-only assistant QA tests passed");
