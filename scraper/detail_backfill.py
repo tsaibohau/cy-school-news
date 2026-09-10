@@ -164,7 +164,8 @@ def save_cursor(fetch_state, target, state_key=BACKFILL_STATE_KEY):
 
 
 def _ocr_metrics(targets):
-    counts = {"attempted": 0, "accepted": 0, "low_confidence": 0, "unavailable": 0}
+    counts = {"attempted": 0, "accepted": 0, "insufficient_visible": 0,
+              "low_confidence": 0, "unavailable": 0}
     for item in targets:
         detail_ref = str(item.get("detail_ref") or "")
         if not detail_ref.startswith("data/details/"):
@@ -180,7 +181,10 @@ def _ocr_metrics(targets):
             if row.get("ocr_confidence") is not None or row.get("parse_reason") in {"ocr_timeout"}:
                 counts["attempted"] += 1
             if row.get("parse_status") == "parsed" and row.get("embedded_text"):
-                counts["accepted"] += 1
+                if row.get("evidence_confidence") == "insufficient":
+                    counts["insufficient_visible"] += 1
+                else:
+                    counts["accepted"] += 1
             if row.get("parse_reason") in {"ocr_low_confidence", "ocr_too_little_text"}:
                 counts["low_confidence"] += 1
             if row.get("parse_reason") == "ocr_language_unavailable":
@@ -253,6 +257,7 @@ def main():
         message += (
             f" OCR_BUDGET_USED={ocr_cap - attachment_budget['ocr_remaining']}"
             f" OCR_ATTEMPTED={metrics['attempted']} OCR_ACCEPTED={metrics['accepted']}"
+            f" OCR_INSUFFICIENT_VISIBLE={metrics['insufficient_visible']}"
             f" OCR_LOW_CONFIDENCE={metrics['low_confidence']} OCR_UNAVAILABLE={metrics['unavailable']}"
         )
     print(message)
