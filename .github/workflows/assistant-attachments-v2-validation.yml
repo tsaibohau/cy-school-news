@@ -24,8 +24,8 @@ jobs:
         with:
           deno-version: v2.1.4
 
-      - name: Install parser dependencies
-        run: pip install -r scraper/requirements.txt
+      - name: Install parser and OCR validation dependencies
+        run: pip install -r scraper/requirements-ocr.txt
 
       - name: Install local Traditional Chinese OCR runtime
         run: |
