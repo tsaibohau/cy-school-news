@@ -38,7 +38,7 @@ jobs:
 
       - name: Attachment-aware member QA regression
         run: |
-          node tests/test_assistant_qa.js
+          node tests/test_assistant_attachment_qa.js
           node tests/test_member_content_export.js
           node tests/test_member_content_rls_contract.js
           node tools/evaluate-assistant-qa.js --strict
