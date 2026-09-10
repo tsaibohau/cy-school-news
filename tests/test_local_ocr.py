@@ -62,18 +62,32 @@ assert languages_ready(), "Tesseract chi_tra+eng must be present for OCR workflo
 
 png_result = extract_ocr_text(as_png(make_image()), ".png")
 assert png_result["parse_status"] == "parsed", png_result
+assert png_result["evidence_confidence"] == "sufficient"
 assert png_result["ocr_confidence"] >= 55
 assert similarity(png_result["text"]) >= 0.60, png_result["text"]
 
 pdf_result = extract_ocr_text(as_scanned_pdf(make_image()), ".pdf")
 assert pdf_result["parse_status"] == "parsed", pdf_result
+assert pdf_result["evidence_confidence"] == "sufficient"
 assert pdf_result["page_count"] == 1
 assert pdf_result["ocr_confidence"] >= 55
 assert similarity(pdf_result["text"]) >= 0.60, pdf_result["text"]
 
+# Force a normally-readable image below the acceptance threshold. The text must
+# remain available, but every searchable snippet must carry an explicit warning
+# so the assistant cannot present it as verified evidence.
+low_result = extract_ocr_text(as_png(make_image()), ".png", min_confidence=101)
+assert low_result["parse_status"] == "parsed", low_result
+assert low_result["evidence_confidence"] == "insufficient"
+assert low_result["reason"] == "ocr_low_confidence"
+assert "證據不足" in low_result["text"]
+assert "核對官方原附件" in low_result["text"]
+assert EXPECTED[:3] in compact(low_result["text"])
+
 blank = Image.new("RGB", (800, 250), "white")
 blank_result = extract_ocr_text(as_png(blank), ".png")
 assert blank_result["parse_status"] == "needs_ocr"
+assert blank_result["evidence_confidence"] == "insufficient"
 assert blank_result["text"] == ""
 assert blank_result["reason"] in {"ocr_too_little_text", "ocr_low_confidence"}
 
