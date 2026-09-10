@@ -161,7 +161,8 @@ def main():
 
     session = requests.Session()
     session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
-    attachment_budget = {"remaining": min(4, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))}
+    attachment_cap = min(4, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))
+    attachment_budget = {"remaining": attachment_cap}
     fetched_at = datetime.now(TW_TZ).isoformat(timespec="seconds")
 
     for item in targets:
@@ -187,7 +188,7 @@ def main():
     atomic_write_text(ARCHIVE_PATH, json.dumps(archive_doc, ensure_ascii=False, indent=1))
     build_school_shards(recent_doc, archive_doc, ROOT / "docs" / "data" / "schools")
     save_cursor(fetch_state, targets[-1] if targets else None)
-    print(f"DETAIL_BACKFILL_PROCESSED={len(targets)} CAP={cap} SUMMARY_BACKFILLED={summarized} ATTACHMENT_REQUESTS_USED={4 - attachment_budget['remaining']}")
+    print(f"DETAIL_BACKFILL_PROCESSED={len(targets)} CAP={cap} SUMMARY_BACKFILLED={summarized} ATTACHMENT_REQUESTS_USED={attachment_cap - attachment_budget['remaining']}")
     return 0
 
 
