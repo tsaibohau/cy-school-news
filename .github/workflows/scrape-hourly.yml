@@ -50,6 +50,14 @@ jobs:
           FETCH_ALL: ${{ inputs.fetch_all && '1' || '' }}
         run: python scraper/scrape.py
 
+      - name: 逐步補齊問校務受保護資料
+        env:
+          # Keep school load bounded. Article pages advance with a persisted
+          # cursor; attachment downloads share an even smaller per-run cap.
+          DETAIL_BACKFILL_CAP: '4'
+          ATTACHMENT_PDF_CAP: '2'
+        run: python scraper/detail_backfill.py
+
       - name: 更新公開班級課表
         run: python scraper/timetable.py discover
 
