@@ -5,9 +5,14 @@ type RecordInput = {
   announcement_id: string
   summary: string
   snippet: string
-  detail: null
+  detail: Record<string, unknown> | null
   source_hash: string
 }
+
+const MAX_BODY_BYTES = 2_000_000
+const MAX_DETAIL_BYTES = 600_000
+const MAX_ATTACHMENTS = 40
+const MAX_ATTACHMENT_TEXT = 120_000
 
 function required(name: string): string {
   const value = Deno.env.get(name)
@@ -41,12 +46,39 @@ function secretKey(): string {
   throw new Error("missing_supabase_admin_key")
 }
 
+function validDetail(detail: unknown, announcementId: string, sourceHash: string): detail is Record<string, unknown> {
+  if (!detail || typeof detail !== "object" || Array.isArray(detail)) return false
+  const row = detail as Record<string, unknown>
+  if (row.provenance !== "official_article") return false
+  if (row.announcement_id !== announcementId) return false
+  if (typeof row.source_hash !== "string" || row.source_hash.length > 160) return false
+  if (sourceHash && row.source_hash !== sourceHash) return false
+  const attachments = row.attachments
+  if (attachments != null && !Array.isArray(attachments)) return false
+  if (Array.isArray(attachments)) {
+    if (attachments.length > MAX_ATTACHMENTS) return false
+    for (const value of attachments) {
+      if (!value || typeof value !== "object" || Array.isArray(value)) return false
+      const attachment = value as Record<string, unknown>
+      if (attachment.provenance !== "official_attachment") return false
+      if (attachment.embedded_text != null &&
+          (typeof attachment.embedded_text !== "string" || attachment.embedded_text.length > MAX_ATTACHMENT_TEXT)) return false
+    }
+  }
+  try {
+    return new TextEncoder().encode(JSON.stringify(row)).byteLength <= MAX_DETAIL_BYTES
+  } catch (_error) {
+    return false
+  }
+}
+
 function validRecord(value: unknown): value is RecordInput {
   const row = value as Partial<RecordInput>
-  return !!row && typeof row.announcement_id === "string" && row.announcement_id.length > 0 && row.announcement_id.length <= 180 &&
-    typeof row.summary === "string" && row.summary.length <= 1200 &&
-    typeof row.snippet === "string" && row.snippet.length <= 2000 &&
-    row.detail === null && typeof row.source_hash === "string" && row.source_hash.length <= 160
+  if (!row || typeof row.announcement_id !== "string" || row.announcement_id.length < 1 || row.announcement_id.length > 180) return false
+  if (typeof row.summary !== "string" || row.summary.length > 1200) return false
+  if (typeof row.snippet !== "string" || row.snippet.length > 2000) return false
+  if (typeof row.source_hash !== "string" || row.source_hash.length > 160) return false
+  return row.detail === null || validDetail(row.detail, row.announcement_id, row.source_hash)
 }
 
 Deno.serve(async (req) => {
@@ -57,10 +89,21 @@ Deno.serve(async (req) => {
   if (req.headers.get("x-announcement-content-sync-token") !== required("ANNOUNCEMENT_CONTENT_SYNC_TOKEN")) {
     return Response.json({ error: "invalid_sync_token" }, { status: 401 })
   }
-  const body = await req.json().catch(() => null) as { schema_version?: number; records?: unknown[] } | null
+
+  const raw = await req.text().catch(() => "")
+  if (!raw || new TextEncoder().encode(raw).byteLength > MAX_BODY_BYTES) {
+    return Response.json({ error: "payload_too_large" }, { status: 413 })
+  }
+  let body: { schema_version?: number; records?: unknown[] } | null = null
+  try {
+    body = JSON.parse(raw)
+  } catch (_error) {
+    return Response.json({ error: "invalid_json" }, { status: 400 })
+  }
   if (!body || body.schema_version !== 1 || !Array.isArray(body.records) || body.records.length > 400 || !body.records.every(validRecord)) {
     return Response.json({ error: "invalid_manifest" }, { status: 400 })
   }
+
   const client = createClient(required("SUPABASE_URL"), secretKey(), { auth: { persistSession: false, autoRefreshToken: false } })
   const { data, error } = await client.rpc("upsert_announcement_member_content", { records: body.records })
   if (error) throw new Error(`upsert_failed:${error.code || "unknown"}`)
