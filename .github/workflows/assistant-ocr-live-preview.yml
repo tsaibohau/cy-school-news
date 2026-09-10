@@ -69,18 +69,18 @@ jobs:
 
       - name: Verify protected export can consume transient detail
         run: |
-          rm -rf .member-ocr-preview
-          node tools/export-member-content.js .member-ocr-preview
+          rm -rf .member-content-sync-ocr-preview
+          node tools/export-member-content.js .member-content-sync-ocr-preview
           python - <<'PY'
           import json
           from pathlib import Path
-          batches = sorted(Path('.member-ocr-preview').glob('batch-*.json'))
+          batches = sorted(Path('.member-content-sync-ocr-preview').glob('batch-*.json'))
           assert batches, 'member export produced no batches'
           rows = 0
           detailed = 0
           for path in batches:
               payload = json.loads(path.read_text(encoding='utf-8'))
-              for row in payload.get('items', []):
+              for row in payload.get('records', []):
                   rows += 1
                   if row.get('detail'):
                       detailed += 1
