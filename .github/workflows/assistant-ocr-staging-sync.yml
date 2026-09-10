@@ -1,0 +1,99 @@
+name: Assistant OCR staging sync
+
+on:
+  push:
+    branches: [codex/assistant-attachments-v2]
+    paths:
+      - ".github/workflows/assistant-ocr-staging-sync.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: assistant-ocr-staging-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-staging:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install OCR dependencies
+        run: pip install -r scraper/requirements-ocr.txt
+
+      - name: Install Traditional Chinese OCR runtime
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-chi-tra fonts-arphic-uming
+          tesseract --list-langs | grep -Fx chi_tra
+
+      - name: Run bounded OCR backfill in ephemeral workspace
+        env:
+          PYTHONIOENCODING: utf-8
+          BACKFILL_MODE: ocr
+          DETAIL_BACKFILL_CAP: '6'
+          ATTACHMENT_PDF_CAP: '3'
+          ENABLE_LOCAL_OCR: '1'
+          OCR_ATTACHMENT_CAP: '1'
+          SUMMARY_BACKFILL_CAP: '20'
+        run: python scraper/detail_backfill.py
+
+      - name: Export protected member content
+        run: node tools/export-member-content.js .member-content-sync-staging-ocr
+
+      - name: Sync only to staging protected backend
+        env:
+          SYNC_TOKEN: ${{ secrets.STAGING_ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          SYNC_URL: ${{ vars.STAGING_ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          PUBLISHABLE_KEY: ${{ vars.STAGING_SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          if [ -z "${SYNC_TOKEN:-}" ] || [ -z "${SYNC_URL:-}" ] || [ -z "${PUBLISHABLE_KEY:-}" ]; then
+            echo "STAGING_OCR_SYNC_NOT_CONFIGURED"
+            exit 0
+          fi
+          python - <<'PY'
+          import glob, json, os
+          import requests
+
+          url = os.environ['SYNC_URL']
+          token = os.environ['SYNC_TOKEN']
+          key = os.environ['PUBLISHABLE_KEY']
+          if 'oppdhtnepjagdwovndra' in url:
+              raise SystemExit('refusing Production Supabase URL')
+          if 'ebezqanvmgsgtatsbssn' not in url:
+              raise SystemExit('refusing non-staging Supabase URL')
+
+          headers = {
+              'apikey': key,
+              'x-announcement-content-sync-token': token,
+              'content-type': 'application/json',
+          }
+          batches = sorted(glob.glob('.member-content-sync-staging-ocr/batch-*.json'))
+          if not batches:
+              raise SystemExit('no protected batches')
+          accepted = 0
+          for path in batches:
+              with open(path, 'rb') as handle:
+                  response = requests.post(url, headers=headers, data=handle.read(), timeout=30)
+              if not response.ok:
+                  raise SystemExit(f'staging sync failed: HTTP {response.status_code}')
+              payload = response.json()
+              accepted += int(payload.get('accepted') or 0)
+          print(f'STAGING_OCR_SYNC_OK BATCHES={len(batches)} ACCEPTED={accepted}')
+          PY
+
+      - name: Confirm no Production credentials were referenced
+        run: |
+          test -z "${ANNOUNCEMENT_CONTENT_SYNC_TOKEN:-}"
+          test -z "${ANNOUNCEMENT_CONTENT_SYNC_URL:-}"
+          echo "STAGING_OCR_NO_PRODUCTION_SYNC"
