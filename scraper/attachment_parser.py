@@ -2,9 +2,9 @@
 
 Only text that can be extracted locally and reproducibly is promoted into the
 protected member-content pipeline. Nothing here calls an AI/LLM service.
-Legacy binary Office files and image-only content fail closed instead of being
-guessed. The caller is responsible for keeping ``embedded_text`` out of the
-public metadata projection.
+Legacy binary Office files fail closed. Image and scan OCR is optional,
+bounded, and confidence-gated. The caller is responsible for keeping
+``embedded_text`` out of the public metadata projection.
 """
 
 from __future__ import annotations
@@ -192,15 +192,35 @@ def _extract_pdf(data: bytes, max_pages: int, max_chars: int) -> tuple[str, int]
     return _clean_lines(pages, max_chars), len(reader.pages)
 
 
+def _apply_ocr(result: dict, data: bytes, extension: str, *, max_chars: int) -> dict:
+    from local_ocr import OCR_VERSION, extract_ocr_text
+
+    ocr = extract_ocr_text(data, extension, max_chars=max_chars)
+    text = ocr.pop("text", "")
+    result.update(ocr)
+    result["parser_version"] = f"{PARSER_VERSION}+{OCR_VERSION}"
+    if text and result.get("parse_status") == "parsed":
+        result["text"] = text
+        result["text_length"] = len(text)
+        result["parsed_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    else:
+        result["text"] = ""
+        result["text_length"] = 0
+    return result
+
+
 def extract_embedded_text(data: bytes, extension: str, *, max_pages: int = DEFAULT_MAX_PAGES,
-                          max_chars: int = DEFAULT_MAX_CHARS) -> dict:
-    """Extract deterministic text from PDF and OOXML attachments."""
+                          max_chars: int = DEFAULT_MAX_CHARS, enable_ocr: bool = False) -> dict:
+    """Extract deterministic text, optionally falling back to local OCR."""
     ext = (extension or "").lower().lstrip(".")
     result = _base_result(data)
     try:
         page_count = None
         if ext == "pdf":
             text, page_count = _extract_pdf(data, max_pages, max_chars)
+            if not text and enable_ocr:
+                result["page_count"] = page_count
+                return _apply_ocr(result, data, ".pdf", max_chars=max_chars)
         elif ext == "docx":
             text = _extract_docx(data, max_chars)
         elif ext == "xlsx":
@@ -208,6 +228,8 @@ def extract_embedded_text(data: bytes, extension: str, *, max_pages: int = DEFAU
         elif ext == "pptx":
             text = _extract_pptx(data, max_chars)
         elif ext in OCR_EXTENSIONS:
+            if enable_ocr:
+                return _apply_ocr(result, data, "." + ext, max_chars=max_chars)
             return dict(result, text="", parse_status="needs_ocr", reason="ocr_required")
         else:
             return dict(result, text="", parse_status="unparsed", reason="unsupported_format")
@@ -234,7 +256,7 @@ def extract_embedded_text(data: bytes, extension: str, *, max_pages: int = DEFAU
 
 
 def _finalize_record_revision(record: dict) -> None:
-    """Make cache revision sensitive to successfully fetched attachment bytes."""
+    """Make cache revision sensitive to successfully fetched attachment bytes/parser."""
     attachments = record.get("attachments") or []
     revisions = []
     for attachment in sorted(attachments, key=lambda row: str(row.get("url") or "")):
@@ -258,22 +280,28 @@ def _finalize_record_revision(record: dict) -> None:
 
 def enrich_pdf_attachments(record: dict, session, budget: dict, *, timeout_sec: float,
                            request_delay_sec: float, max_bytes: int = DEFAULT_MAX_BYTES) -> dict:
-    """Boundedly fetch same-origin PDF/OOXML attachments and retain protected text.
+    """Boundedly fetch same-origin attachments and retain protected text.
 
-    The historical function name is retained for compatibility. The shared
-    budget covers every supported format together, so expanding search sources
-    does not increase the maximum attachment request count.
+    ``budget['remaining']`` bounds school attachment requests. Optional local
+    OCR is enabled only when ``budget['ocr_enabled']`` is true and
+    ``budget['ocr_remaining']`` is positive. OCR never adds another school
+    request because it runs on bytes already downloaded by this function.
     """
     source_host = (urlparse(str(record.get("source_url") or "")).hostname or "").lower()
+    ocr_enabled = bool(budget.get("ocr_enabled"))
     for attachment in record.get("attachments") or []:
         ext = str(attachment.get("extension") or "").lower().lstrip(".")
-        if ext in OCR_EXTENSIONS:
+        if ext in OCR_EXTENSIONS and not ocr_enabled:
             attachment["parse_status"] = "needs_ocr"
             attachment["parse_reason"] = "ocr_required"
             continue
-        if ext not in SUPPORTED_TEXT_EXTENSIONS:
+        if ext not in SUPPORTED_TEXT_EXTENSIONS and ext not in OCR_EXTENSIONS:
             attachment["parse_status"] = "unparsed"
             attachment["parse_reason"] = "unsupported_format"
+            continue
+        if ext in OCR_EXTENSIONS and int(budget.get("ocr_remaining") or 0) <= 0:
+            attachment["parse_status"] = "needs_ocr"
+            attachment["parse_reason"] = "ocr_budget_exhausted"
             continue
         if budget.get("remaining", 0) <= 0:
             break
@@ -310,20 +338,26 @@ def enrich_pdf_attachments(record: dict, session, budget: dict, *, timeout_sec: 
                 chunks.append(chunk)
             data = b"".join(chunks)
             attachment["size"] = size
-            extracted = extract_embedded_text(data, "." + ext)
+            allow_ocr = ocr_enabled and int(budget.get("ocr_remaining") or 0) > 0
+            extracted = extract_embedded_text(data, "." + ext, enable_ocr=allow_ocr)
             text = extracted.pop("text", "")
+            ocr_attempted = bool(extracted.pop("ocr_attempted", False))
+            if ocr_attempted:
+                budget["ocr_remaining"] = max(0, int(budget.get("ocr_remaining") or 0) - 1)
             attachment.pop("embedded_text", None)
             attachment.update(extracted)
             if text and attachment.get("parse_status") == "parsed":
                 attachment["embedded_text"] = text
-            if attachment.get("reason") and not attachment.get("parse_reason"):
-                attachment["parse_reason"] = attachment.pop("reason")
+            reason = attachment.pop("reason", "")
+            if reason:
+                attachment["parse_reason"] = reason
         except ValueError:
             attachment["parse_status"] = "unsupported"
             attachment["parse_reason"] = "size_limit"
             attachment.pop("embedded_text", None)
         except Exception:
             attachment["parse_status"] = "temporary_error"
+            attachment["parse_reason"] = "attachment_fetch_or_parse_error"
             attachment.pop("embedded_text", None)
         finally:
             time.sleep(max(1.5, float(request_delay_sec)))
