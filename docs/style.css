@@ -457,6 +457,133 @@ body { background: var(--paper); }
   .timetable-note { display: grid; gap: 3px; }
 }
 
+/* ── UI/UX V4: 清爽、公告優先 ────────────────────────────── */
+:root {
+  --paper: #f7f9fc;
+  --card: #ffffff;
+  --ink: #172033;
+  --muted: #657087;
+  --line: #e5e9f0;
+  --seal: #e25555;
+  --cysh: #2563eb;
+  --cysh-bg: #eaf1ff;
+  --cygsh: #b84066;
+  --cygsh-bg: #fbeaf0;
+  --chip-bg: #f1f4f8;
+  --radius: 14px;
+  --sans: "Noto Sans TC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: "Noto Sans TC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0e1420;
+    --card: #171f2d;
+    --ink: #f1f5fb;
+    --muted: #a2aec1;
+    --line: #293446;
+    --cysh-bg: #172b50;
+    --cygsh-bg: #3a2030;
+    --chip-bg: #222c3c;
+  }
+}
+
+body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+.wrap { width: min(100%, 1080px); max-width: 1080px; padding-inline: clamp(16px, 3vw, 32px); }
+.mast { padding-top: env(safe-area-inset-top); background: color-mix(in srgb, var(--card) 90%, transparent); border-bottom: 1px solid var(--line); }
+.mast .wrap { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.mast-row { display: contents; }
+.brand { gap: 9px; }
+.brand h1 { font-size: 19px; letter-spacing: .04em; font-weight: 800; }
+.seal { width: 34px; height: 34px; border-radius: 11px; transform: none; background: var(--cysh); box-shadow: none; font-size: 15px; }
+.mast-sub { margin: 0 48px 0 auto; font-size: 13px; white-space: nowrap; }
+.rule-double { display: none; }
+.icon-btn { flex: 0 0 auto; width: 40px; height: 40px; border-radius: 12px; box-shadow: none; }
+
+.section-heading { margin: 28px 0 14px; align-items: end; }
+.section-heading h2, .welcome h2, .sub-head h2 { font-size: clamp(23px, 3vw, 30px); font-weight: 800; letter-spacing: -.025em; }
+.eyebrow { margin-bottom: 4px; color: var(--cysh); font-size: 11px; letter-spacing: .1em; }
+.hint { font-size: 13px; }
+
+/* 首頁不再以裝飾性大標佔滿第一屏，功能一眼可掃完。 */
+.home-view { padding: 24px 0 40px; }
+.home-hero { min-height: 0; padding: 26px clamp(20px, 4vw, 34px); border: 0; border-radius: 22px; background: linear-gradient(120deg, #1c4ed8 0%, #3178f4 100%); color: #fff; box-shadow: 0 14px 36px rgba(37,99,235,.16); }
+.calligraphy-title { display: flex; gap: .3em; width: auto; margin: 2px 0 12px; font-size: clamp(28px, 5vw, 42px); line-height: 1.16; letter-spacing: -.04em; animation: none; }
+.calligraphy-title span:last-child { margin-left: 0; }
+.home-greeting { font-size: 16px; }
+.home-hero .eyebrow, .home-hero .welcome-copy { color: rgba(255,255,255,.78); }
+.ink-stroke { display: none; }
+.home-actions { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; margin: 14px 0 30px; }
+.home-action, .home-action-primary { grid-column: auto; min-height: 118px; padding: 15px; grid-template-columns: 1fr; align-content: start; gap: 7px; border-radius: 16px; background: var(--card); color: var(--ink); box-shadow: none; }
+.home-action > span, .home-action-primary > span { grid-row: auto; width: 34px; height: 34px; border-radius: 10px; background: var(--chip-bg); color: var(--cysh); }
+.home-action strong { align-self: auto; font-size: 15px; line-height: 1.35; }
+.home-action small, .home-action-primary small { color: var(--muted); font-size: 12px; }
+.home-action:hover { transform: translateY(-1px); border-color: color-mix(in srgb, var(--cysh) 45%, var(--line)); }
+
+/* 公告頁：控制區合併為一個安靜的搜尋面板。 */
+.access-card { grid-template-columns: 38px minmax(0, 1fr) auto; margin: 0 0 14px; padding: 12px 14px; border-radius: 14px; box-shadow: none; }
+.access-icon { width: 38px; height: 38px; border-radius: 11px; }
+.controls { grid-template-columns: minmax(280px, 1fr) minmax(180px, 260px); align-items: center; gap: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+#q, .school-filter select { min-height: 46px; border-color: var(--line); background: var(--paper); box-shadow: none; }
+.school-filter { grid-template-columns: auto minmax(0, 1fr); }
+.chips { grid-column: 1 / -1; padding: 2px 0 0; }
+.chip { padding: 7px 12px; border: 0; font-size: 13px; font-weight: 600; }
+.chip.is-active { background: var(--cysh); color: #fff; }
+.count-line { margin: 12px 2px 8px; font-size: 13px; }
+.list { gap: 8px; }
+.card, .card + .card { margin-top: 0; padding: 16px 18px; border-radius: 15px; box-shadow: none; transition: border-color .15s ease, transform .15s ease; }
+.card:hover { border-color: color-mix(in srgb, var(--cysh) 38%, var(--line)); transform: translateY(-1px); }
+.card-title { margin-top: 7px; font-size: 16px; line-height: 1.55; }
+.card-snippet { margin-top: 6px; font-size: 13px; line-height: 1.65; }
+.tag { border-radius: 7px; }
+
+/* 各功能頁共用同一套低噪音容器。 */
+.my-card, .today-item, .task-item, .agenda-item, .assistant-result, .assistant-empty, .today-brief, .assistant-form { border-radius: 16px; box-shadow: none; }
+.today-brief, .assistant-form { background: var(--card); }
+.btn-primary { min-height: 42px; padding-inline: 16px; border-radius: 11px; background: var(--cysh); color: #fff; }
+.btn-ghost, .btn-soft { min-height: 40px; border-radius: 11px; }
+.assistant-input-row input, .profile-form input, .profile-form select, .event-form input, .event-form textarea { min-height: 44px; background: var(--paper); }
+.detail-dialog, .nickname-dialog { border-radius: 22px; }
+
+/* 登入後：桌機使用固定側欄；手機使用永遠可見的底部導覽。 */
+.function-toggle { display: none; }
+.function-dock { left: 0; right: 0; bottom: 0; display: block; }
+.function-dock .tabbar, .function-dock .tabbar[hidden] { position: static; display: flex; width: 100%; max-width: none; margin: 0; padding: 6px max(8px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); gap: 2px; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: color-mix(in srgb, var(--card) 94%, transparent); box-shadow: 0 -8px 30px rgba(19,31,52,.08); }
+.function-dock .tab { justify-content: center; min-width: 58px; min-height: 52px; padding: 7px 5px; flex: 1 0 auto; flex-direction: column; gap: 2px; border-radius: 11px; font-size: 11px; }
+.function-dock .tab.is-active { color: var(--cysh); background: var(--cysh-bg); }
+.function-dock #tabAdmin:not([hidden]) { order: -1; }
+.function-dock .tab svg, .function-dock .tab-icon { width: 20px; min-width: 20px; height: 20px; font-size: 17px; line-height: 20px; }
+
+@media (min-width: 900px) {
+  body:has(.function-dock:not([hidden])) { padding-left: 206px; padding-bottom: 0; }
+  .function-dock { top: 0; right: auto; width: 206px; padding: 92px 12px 16px; background: var(--card); border-right: 1px solid var(--line); }
+  .function-dock .tabbar, .function-dock .tabbar[hidden] { display: grid; grid-template-columns: 1fr; align-content: start; gap: 5px; padding: 0; border: 0; background: transparent; box-shadow: none; }
+  .function-dock .tab { width: 100%; min-height: 46px; padding: 10px 12px; justify-content: flex-start; flex-direction: row; gap: 12px; font-size: 14px; }
+  .function-dock .tab.is-active { font-weight: 700; }
+}
+
+@media (max-width: 760px) {
+  .mast .wrap { min-height: 60px; }
+  .mast-sub { display: none; }
+  .home-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .home-action:first-child { grid-column: 1 / -1; min-height: 92px; }
+  .controls { grid-template-columns: 1fr; padding: 12px; }
+  .chips { grid-column: auto; }
+  .access-card { grid-template-columns: 38px minmax(0, 1fr); }
+  .access-actions { grid-column: 1 / -1; justify-content: stretch; }
+  .access-actions button { flex: 1; }
+  .function-dock .tabbar { overflow-x: auto; scrollbar-width: none; }
+  .function-dock .tabbar::-webkit-scrollbar { display: none; }
+}
+
+@media (max-width: 430px) {
+  .home-hero { padding: 23px 20px; }
+  .calligraphy-title { display: grid; gap: 0; font-size: 30px; }
+  .home-action { min-height: 110px; }
+  .card { padding: 14px 15px; }
+  .card-title { font-size: 15px; }
+  .section-heading { margin-top: 22px; }
+}
+
 /* 單一功能入口：以一顆按鈕展開主要功能，避免手機底部塞滿分頁。 */
 .function-dock {
   position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
@@ -598,4 +725,64 @@ body { background: var(--paper); }
   .important-card { background: #2b271f; border-color: #514733; }
   .event-form input, .event-form textarea, .profile-form input, .profile-form select { background: #151d1a; }
   .btn-soft { background: #24322d; border-color: #40534c; color: var(--ink); }
+}
+
+/* V4 必須保持在檔案最後，確保舊版相容規則不會蓋回新版介面。 */
+:root {
+  --paper: #f7f9fc; --card: #fff; --ink: #172033; --muted: #657087; --line: #e5e9f0;
+  --seal: #e25555; --cysh: #2563eb; --cysh-bg: #eaf1ff; --cygsh: #b84066;
+  --cygsh-bg: #fbeaf0; --chip-bg: #f1f4f8; --radius: 14px;
+  --sans: "Noto Sans TC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: "Noto Sans TC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+.wrap { width: min(100%, 1080px); max-width: 1080px; padding-inline: clamp(16px, 3vw, 32px); }
+.mast { padding-top: env(safe-area-inset-top); background: color-mix(in srgb, var(--card) 90%, transparent); border-bottom: 1px solid var(--line); }
+.mast .wrap { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.mast-row { display: contents; }.brand h1 { font-size: 19px; letter-spacing: .04em; font-weight: 800; }
+.brand-button { padding: 0; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.seal { width: 34px; height: 34px; border-radius: 11px; transform: none; background: var(--cysh); box-shadow: none; }
+.mast-sub { margin: 0 48px 0 auto; font-size: 13px; white-space: nowrap; }.rule-double { display: none; }
+.section-heading { margin: 28px 0 14px; align-items: end; }.section-heading h2, .sub-head h2 { font-size: clamp(23px, 3vw, 30px); font-weight: 800; letter-spacing: -.025em; }
+.eyebrow { margin-bottom: 4px; color: var(--cysh); font-size: 11px; letter-spacing: .1em; }
+.home-view { padding: 24px 0 40px; }
+.home-hero { min-height: 0; padding: 26px clamp(20px, 4vw, 34px); border: 0; border-radius: 22px; background: linear-gradient(120deg, #1c4ed8, #3178f4); color: #fff; box-shadow: 0 14px 36px rgba(37,99,235,.16); }
+.calligraphy-title { display: flex; gap: .3em; width: auto; margin: 2px 0 12px; font-size: clamp(28px,5vw,42px); line-height: 1.16; letter-spacing: -.04em; animation: none; }
+.calligraphy-title span:last-child { margin-left: 0; }.home-hero .eyebrow, .home-hero .welcome-copy { color: rgba(255,255,255,.78); }.ink-stroke { display: none; }
+.home-actions { grid-template-columns: repeat(5,minmax(0,1fr)); gap: 10px; margin: 14px 0 30px; }
+.home-action, .home-action-primary { grid-column: auto; min-height: 118px; padding: 15px; grid-template-columns: 1fr; align-content: start; gap: 7px; border-radius: 16px; background: var(--card); color: var(--ink); box-shadow: none; }
+.home-action > span, .home-action-primary > span { grid-row: auto; width: 34px; height: 34px; border-radius: 10px; background: var(--chip-bg); color: var(--cysh); }
+.home-action strong { align-self: auto; font-size: 15px; }.home-action small, .home-action-primary small { color: var(--muted); font-size: 12px; }
+.controls { grid-template-columns: minmax(280px,1fr) minmax(180px,260px); align-items: center; gap: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
+#q, .school-filter select { min-height: 46px; border-color: var(--line); background: var(--paper); box-shadow: none; }
+.chips { grid-column: 1/-1; }.chip { padding: 7px 12px; border: 0; font-weight: 600; }.chip.is-active { background: var(--cysh); color: #fff; }
+.list { gap: 8px; }.card, .card + .card { margin-top: 0; padding: 16px 18px; border-radius: 15px; box-shadow: none; }
+.card-title { margin-top: 7px; font-size: 16px; line-height: 1.55; }.card-snippet { line-height: 1.65; }
+.btn-primary { min-height: 42px; border-radius: 11px; background: var(--cysh); color: #fff; }.btn-ghost, .btn-soft { min-height: 40px; border-radius: 11px; }
+.function-toggle { display: none; }
+.function-dock { left: 0; right: 0; bottom: 0; display: block; }
+.function-dock .tabbar, .function-dock .tabbar[hidden] { position: static; display: flex; width: 100%; max-width: none; margin: 0; padding: 6px 8px calc(6px + env(safe-area-inset-bottom)); gap: 2px; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: color-mix(in srgb,var(--card) 94%,transparent); box-shadow: 0 -8px 30px rgba(19,31,52,.08); }
+.function-dock .tab { justify-content: center; min-width: 0; min-height: 52px; padding: 7px 2px; flex: 1 1 0; flex-direction: column; gap: 2px; border-radius: 11px; font-size: 10px; }
+.function-dock .tab.is-active { color: var(--cysh); background: var(--cysh-bg); }
+@media (prefers-color-scheme: dark) {
+  :root { --paper:#0e1420; --card:#171f2d; --ink:#f1f5fb; --muted:#a2aec1; --line:#293446; --cysh:#77a7ff; --cysh-bg:#172b50; --cygsh-bg:#3a2030; --chip-bg:#222c3c; }
+  .mast { background: color-mix(in srgb,var(--card) 90%,transparent); }
+}
+@media (min-width: 900px) {
+  body:has(.function-dock:not([hidden])) { padding-left: 206px; padding-bottom: 0; }
+  .function-dock { top: 0; right: auto; width: 206px; padding: 92px 12px 16px; background: var(--card); border-right: 1px solid var(--line); }
+  .function-dock .tabbar, .function-dock .tabbar[hidden] { display: grid; grid-template-columns: 1fr; align-content: start; gap: 5px; padding: 0; border: 0; background: transparent; box-shadow: none; }
+  .function-dock .tab { width: 100%; min-height: 46px; padding: 10px 12px; justify-content: flex-start; flex-direction: row; gap: 12px; font-size: 14px; }
+  .function-dock #tabAdmin:not([hidden]) { order: 0; }
+}
+@media (max-width: 760px) {
+  .mast .wrap { min-height: 60px; }.mast-sub { display: none; }
+  .home-actions { grid-template-columns: repeat(2,minmax(0,1fr)); }.home-action:first-child { grid-column: 1/-1; min-height: 92px; }
+  .controls { grid-template-columns: 1fr; padding: 12px; }.chips { grid-column: auto; }
+  .function-dock .tabbar { overflow-x: hidden; scrollbar-width: none; }
+}
+@media (max-width: 430px) {
+  .home-hero { min-height: 0; padding: 23px 20px; }.calligraphy-title { display: grid; gap: 0; font-size: 30px; }
+  .home-actions { grid-template-columns: repeat(2,minmax(0,1fr)); }.home-action-primary { grid-column: auto; }.home-action:first-child { grid-column: 1/-1; }
+  .home-action { min-height: 110px; }.card { padding: 14px 15px; }.card-title { font-size: 15px; }
 }

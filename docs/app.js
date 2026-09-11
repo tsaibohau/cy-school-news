@@ -97,7 +97,7 @@
       appLoading: $("appLoading"), list: $("list"), subList: $("subList"), countLine: $("countLine"),
       updatedAt: $("updatedAt"), q: $("q"),
       schoolFilter: $("schoolFilter"), catChips: $("catChips"),
-      viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewTimetable: $("viewTimetable"), viewSub: $("viewSub"), viewAdmin: $("viewAdmin"),
+      viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewTimetable: $("viewTimetable"), viewSub: $("viewSub"), viewAdmin: $("viewAdmin"), brandHome: $("brandHome"),
       tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabTimetable: $("tabTimetable"), tabSub: $("tabSub"), tabAdmin: $("tabAdmin"), subBadge: $("subBadge"),
       kwForm: $("kwForm"), kwInput: $("kwInput"), kwChips: $("kwChips"),
       btnNotify: $("btnNotify"), notifyState: $("notifyState"),
@@ -2141,6 +2141,7 @@
       window.scrollTo(0, 0);
     }
     if (el.tabHome) el.tabHome.addEventListener("click", function () { switchTab("home"); });
+    if (el.brandHome) el.brandHome.addEventListener("click", function () { switchTab("home"); });
     el.tabLatest.addEventListener("click", function () { switchTab("latest"); });
     if (el.tabToday) el.tabToday.addEventListener("click", function () { switchTab("today"); });
     if (el.tabAssistant) el.tabAssistant.addEventListener("click", function () { switchTab("assistant"); });
