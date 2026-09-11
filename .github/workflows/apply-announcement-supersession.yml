@@ -4,7 +4,7 @@ on:
   push:
     branches: [codex/assistant-attachments-v2]
     paths:
-      - tools/apply-announcement-supersession-patch.py
+      - tools/apply-announcement-supersession-patch-v2.py
       - .github/workflows/apply-announcement-supersession.yml
 
 permissions:
@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '22'
       - name: Apply deterministic patch
-        run: python tools/apply-announcement-supersession-patch.py
+        run: python tools/apply-announcement-supersession-patch-v2.py
       - name: Run focused QA regression
         run: node tests/test_assistant_attachment_qa.js
       - name: Commit patched implementation
