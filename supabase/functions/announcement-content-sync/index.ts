@@ -1,5 +1,6 @@
 import "@supabase/functions-js/edge-runtime.d.ts"
 import { createClient } from "@supabase/supabase-js"
+import { createRemoteJWKSet, jwtVerify } from "jose"
 
 type RecordInput = {
   announcement_id: string
@@ -13,6 +14,12 @@ const MAX_BODY_BYTES = 2_000_000
 const MAX_DETAIL_BYTES = 600_000
 const MAX_ATTACHMENTS = 40
 const MAX_ATTACHMENT_TEXT = 120_000
+const STAGING_REF = "ebezqanvmgsgtatsbssn"
+const STAGING_REPOSITORY = "tsaibohau/cy-school-news"
+const STAGING_BRANCH = "refs/heads/codex/assistant-attachments-v2"
+const STAGING_AUDIENCE = "cy-school-news-staging"
+const GITHUB_ISSUER = "https://token.actions.githubusercontent.com"
+const GITHUB_JWKS = createRemoteJWKSet(new URL(`${GITHUB_ISSUER}/.well-known/jwks`))
 
 function required(name: string): string {
   const value = Deno.env.get(name)
@@ -44,6 +51,27 @@ function secretKey(): string {
     if (parsed.default) return parsed.default
   }
   throw new Error("missing_supabase_admin_key")
+}
+
+async function validSyncCaller(req: Request): Promise<boolean> {
+  const configuredToken = Deno.env.get("ANNOUNCEMENT_CONTENT_SYNC_TOKEN")
+  const suppliedToken = req.headers.get("x-announcement-content-sync-token")
+  if (configuredToken && suppliedToken === configuredToken) return true
+
+  const supabaseUrl = required("SUPABASE_URL")
+  if (!supabaseUrl.includes(STAGING_REF)) return false
+  const oidc = req.headers.get("x-github-oidc")
+  if (!oidc) return false
+
+  try {
+    const { payload } = await jwtVerify(oidc, GITHUB_JWKS, {
+      issuer: GITHUB_ISSUER,
+      audience: STAGING_AUDIENCE,
+    })
+    return payload.repository === STAGING_REPOSITORY && payload.ref === STAGING_BRANCH
+  } catch (_error) {
+    return false
+  }
 }
 
 function validDetail(detail: unknown, announcementId: string, sourceHash: string): detail is Record<string, unknown> {
@@ -87,8 +115,8 @@ Deno.serve(async (req) => {
     if (!validCallerKey(req)) {
       return Response.json({ error: "invalid_apikey" }, { status: 401 })
     }
-    if (req.headers.get("x-announcement-content-sync-token") !== required("ANNOUNCEMENT_CONTENT_SYNC_TOKEN")) {
-      return Response.json({ error: "invalid_sync_token" }, { status: 401 })
+    if (!(await validSyncCaller(req))) {
+      return Response.json({ error: "invalid_sync_caller" }, { status: 401 })
     }
 
     const raw = await req.text().catch(() => "")
