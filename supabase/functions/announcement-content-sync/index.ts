@@ -82,30 +82,38 @@ function validRecord(value: unknown): value is RecordInput {
 }
 
 Deno.serve(async (req) => {
-  if (req.method !== "POST") return Response.json({ error: "method_not_allowed" }, { status: 405 })
-  if (!validCallerKey(req)) {
-    return Response.json({ error: "invalid_apikey" }, { status: 401 })
-  }
-  if (req.headers.get("x-announcement-content-sync-token") !== required("ANNOUNCEMENT_CONTENT_SYNC_TOKEN")) {
-    return Response.json({ error: "invalid_sync_token" }, { status: 401 })
-  }
-
-  const raw = await req.text().catch(() => "")
-  if (!raw || new TextEncoder().encode(raw).byteLength > MAX_BODY_BYTES) {
-    return Response.json({ error: "payload_too_large" }, { status: 413 })
-  }
-  let body: { schema_version?: number; records?: unknown[] } | null = null
   try {
-    body = JSON.parse(raw)
-  } catch (_error) {
-    return Response.json({ error: "invalid_json" }, { status: 400 })
-  }
-  if (!body || body.schema_version !== 1 || !Array.isArray(body.records) || body.records.length > 400 || !body.records.every(validRecord)) {
-    return Response.json({ error: "invalid_manifest" }, { status: 400 })
-  }
+    if (req.method !== "POST") return Response.json({ error: "method_not_allowed" }, { status: 405 })
+    if (!validCallerKey(req)) {
+      return Response.json({ error: "invalid_apikey" }, { status: 401 })
+    }
+    if (req.headers.get("x-announcement-content-sync-token") !== required("ANNOUNCEMENT_CONTENT_SYNC_TOKEN")) {
+      return Response.json({ error: "invalid_sync_token" }, { status: 401 })
+    }
 
-  const client = createClient(required("SUPABASE_URL"), secretKey(), { auth: { persistSession: false, autoRefreshToken: false } })
-  const { data, error } = await client.rpc("upsert_announcement_member_content", { records: body.records })
-  if (error) throw new Error(`upsert_failed:${error.code || "unknown"}`)
-  return Response.json({ accepted: Number(data) || 0 })
+    const raw = await req.text().catch(() => "")
+    if (!raw || new TextEncoder().encode(raw).byteLength > MAX_BODY_BYTES) {
+      return Response.json({ error: "payload_too_large" }, { status: 413 })
+    }
+    let body: { schema_version?: number; records?: unknown[] } | null = null
+    try {
+      body = JSON.parse(raw)
+    } catch (_error) {
+      return Response.json({ error: "invalid_json" }, { status: 400 })
+    }
+    if (!body || body.schema_version !== 1 || !Array.isArray(body.records) || body.records.length > 400 || !body.records.every(validRecord)) {
+      return Response.json({ error: "invalid_manifest" }, { status: 400 })
+    }
+
+    const client = createClient(required("SUPABASE_URL"), secretKey(), { auth: { persistSession: false, autoRefreshToken: false } })
+    const { data, error } = await client.rpc("upsert_announcement_member_content", { records: body.records })
+    if (error) {
+      return Response.json({ error: "upsert_failed", code: error.code || "unknown" }, { status: 500 })
+    }
+    return Response.json({ accepted: Number(data) || 0 })
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "internal_error"
+    const safe = message.startsWith("missing_") ? message : "internal_error"
+    return Response.json({ error: safe }, { status: 500 })
+  }
 })
