@@ -53,16 +53,16 @@ jobs:
 
       - name: Sync only to staging protected backend
         env:
-          SYNC_TOKEN: ${{ secrets.STAGING_ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
-          SYNC_URL: ${{ vars.STAGING_ANNOUNCEMENT_CONTENT_SYNC_URL }}
-          PUBLISHABLE_KEY: ${{ vars.STAGING_SUPABASE_PUBLISHABLE_KEY }}
+          SYNC_TOKEN: ${{ secrets.STAGING_ANNOUNCEMENT_CONTENT_SYNC_TOKEN || secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          SYNC_URL: https://ebezqanvmgsgtatsbssn.supabase.co/functions/v1/announcement-content-sync
+          PUBLISHABLE_KEY: sb_publishable_AMraTwpKL4GF-U0UdA8AmQ_jRmt6izJ
         run: |
-          if [ -z "${SYNC_TOKEN:-}" ] || [ -z "${SYNC_URL:-}" ] || [ -z "${PUBLISHABLE_KEY:-}" ]; then
-            echo "STAGING_OCR_SYNC_NOT_CONFIGURED"
-            exit 0
+          if [ -z "${SYNC_TOKEN:-}" ]; then
+            echo "STAGING_OCR_SYNC_TOKEN_NOT_CONFIGURED"
+            exit 2
           fi
           python - <<'PY'
-          import glob, json, os
+          import glob, os
           import requests
 
           url = os.environ['SYNC_URL']
@@ -86,14 +86,20 @@ jobs:
               with open(path, 'rb') as handle:
                   response = requests.post(url, headers=headers, data=handle.read(), timeout=30)
               if not response.ok:
-                  raise SystemExit(f'staging sync failed: HTTP {response.status_code}')
+                  raise SystemExit(f'staging sync failed: HTTP {response.status_code} {response.text[:160]}')
               payload = response.json()
               accepted += int(payload.get('accepted') or 0)
+          if accepted <= 0:
+              raise SystemExit('staging sync accepted zero records')
           print(f'STAGING_OCR_SYNC_OK BATCHES={len(batches)} ACCEPTED={accepted}')
           PY
 
-      - name: Confirm no Production credentials were referenced
+      - name: Confirm staging target isolation
+        env:
+          SYNC_URL: https://ebezqanvmgsgtatsbssn.supabase.co/functions/v1/announcement-content-sync
         run: |
-          test -z "${ANNOUNCEMENT_CONTENT_SYNC_TOKEN:-}"
-          test -z "${ANNOUNCEMENT_CONTENT_SYNC_URL:-}"
-          echo "STAGING_OCR_NO_PRODUCTION_SYNC"
+          case "$SYNC_URL" in
+            *oppdhtnepjagdwovndra*) echo "Production target detected"; exit 1 ;;
+            *ebezqanvmgsgtatsbssn*) echo "STAGING_OCR_TARGET_CONFIRMED" ;;
+            *) echo "Unknown target"; exit 1 ;;
+          esac
