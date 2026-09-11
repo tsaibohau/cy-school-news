@@ -160,6 +160,77 @@
     cues.forEach(function (cue) { if (normalized.indexOf(cue) !== -1) hits++; });
     return hits;
   }
+  function periodToken(value) {
+    var text = clean(value), match = text.match(/(\d{2,4})\s*[-－]\s*([12])|(?:民國\s*)?(\d{2,4})\s*學年(?:度)?(?:第?\s*([一二12])\s*學期)?/);
+    if (!match) return "";
+    var year = match[1] || match[3] || "", term = match[2] || match[4] || "";
+    if (term === "一") term = "1";
+    if (term === "二") term = "2";
+    return year + (term ? "-" + term : "");
+  }
+  function rowDate(row) {
+    var item = row && row.item || {};
+    return String(item.date || item.first_seen || "").slice(0, 10);
+  }
+  function familyText(row) {
+    var title = clean(row && row.item && row.item.title || "");
+    return compact(title
+      .replace(/(?:民國\s*)?\d{2,4}\s*學年(?:度)?/g, " ")
+      .replace(/\d{2,4}\s*[-－]\s*[12]/g, " ")
+      .replace(/第?[一二12]\s*學期/g, " ")
+      .replace(/修正版|修正|更正|更新|新版|公告|通知|名單|開設情形|上課地點|上課教室/g, " "));
+  }
+  function grams(value) {
+    value = compact(value); var out = [];
+    if (value.length < 2) return value ? [value] : [];
+    for (var i = 0; i + 2 <= value.length; i++) out.push(value.slice(i, i + 2));
+    return unique(out);
+  }
+  function familySimilarity(a, b) {
+    var left = grams(familyText(a)), right = grams(familyText(b));
+    if (!left.length || !right.length) return 0;
+    var lookup = {}; right.forEach(function (g) { lookup[g] = true; });
+    var shared = left.filter(function (g) { return lookup[g]; }).length;
+    return shared / Math.max(1, Math.min(left.length, right.length));
+  }
+  function sameSchool(a, b) {
+    var ai = a && a.item || {}, bi = b && b.item || {};
+    return String(ai.school || ai.school_id || "") === String(bi.school || bi.school_id || "");
+  }
+  function subjectOverlap(query, row) {
+    var words = subjectTerms(query), text = compact(clean((row && row.item && row.item.title || "") + " " + (row && row.text || "")));
+    return words.some(function (word) { return word.length >= 2 && text.indexOf(word) !== -1; });
+  }
+  function hasSlotEvidence(row, slot) {
+    if (!slot) return false;
+    return cueHits(clean((row && row.item && row.item.title || "") + " " + (row && row.text || "")), slot) > 0;
+  }
+  function preferNewestRelated(query, ranked) {
+    ranked = Array.isArray(ranked) ? ranked.slice() : [];
+    if (ranked.length < 2) return ranked;
+    var requestedPeriod = periodToken(query), slot = answerSlot(query);
+    if (requestedPeriod) {
+      var periodRows = ranked.filter(function (row) { return periodToken(row && row.item && row.item.title || "") === requestedPeriod; });
+      if (periodRows.length) return periodRows;
+    }
+    var chronological = ranked.slice().sort(function (a, b) {
+      return rowDate(b).localeCompare(rowDate(a)) || b.score - a.score;
+    });
+    var kept = [];
+    chronological.forEach(function (row) {
+      var superseded = kept.some(function (newer) {
+        if (!sameSchool(row, newer)) return false;
+        if (!subjectOverlap(query, row) || !subjectOverlap(query, newer)) return false;
+        if (familySimilarity(row, newer) < 0.45) return false;
+        if (rowDate(newer) <= rowDate(row)) return false;
+        return slot ? hasSlotEvidence(newer, slot) : false;
+      });
+      if (!superseded) kept.push(row);
+    });
+    var allowed = {};
+    kept.forEach(function (row) { if (row && row.item) allowed[row.item.id] = true; });
+    return ranked.filter(function (row) { return row && row.item && allowed[row.item.id]; });
+  }
   function rank(query, items, details, options) {
     var queryTokens = tokens(query), anchorTokens = anchors(query), literalTokens=literalAnchors(query), wanted = intent(query), detailMap = details || {}, slot = answerSlot(query);
     if (!SearchQuery || !queryTokens.length) return [];
@@ -196,6 +267,8 @@
       var related={};strongReviewed.forEach(function(row){related[row.item.id]=true;var record=Validity&&Validity.reviewedRecord?Validity.reviewedRecord(row.item):null;(record&&record.relations||[]).forEach(function(rel){if(rel.target_id)related[rel.target_id]=true;});});
       ranked=ranked.filter(function(row){return related[row.item.id]||(row.reviewedMatch&&row.reviewedLongest>=3&&row.reviewedAnchorHits>=2&&row.reviewedCoverage>=0.12);});
     }
+    ranked = preferNewestRelated(query, ranked);
+    if (!ranked.length) return ranked;
     var floor = Math.max(70, ranked[0].score * 0.55);
     return ranked.filter(function (row) { return row.score >= floor; });
   }
