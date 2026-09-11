@@ -39,6 +39,7 @@ assert.match(app, /searchTimer = setTimeout[\s\S]*200\);/, "full-corpus ranking 
 assert.match(index, /id="navMenuToggle"[^>]*aria-expanded="false"[^>]*aria-controls="navMenu"/, "mobile navigation is exposed through one accessible menu button");
 assert.match(index, /id="navMenu"[^>]*hidden/, "function menu starts closed");
 assert.match(index, /id="tabAdmin"[^>]*hidden/, "administrator tab starts hidden");
+assert.match(style, /#tabAdmin:not\(\[hidden\]\)\s*\{\s*order:\s*-1/, "administrator entry stays visible at the front of the mobile navigation");
 assert.match(style, /\.tab\[hidden\]\s*\{\s*display:\s*none;/, "hidden navigation tabs must override the tab display layout");
 assert.match(index, /id="navCurrentLabel">選單</);
 assert.match(index, /id="viewHome"[^>]*aria-labelledby="homeTitle"/);
