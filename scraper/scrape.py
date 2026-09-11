@@ -743,6 +743,39 @@ def load_existing_items(data_path: Path, archive_path: Path) -> dict:
     return by_id
 
 
+def load_deleted_announcement_ids(path_value: str) -> set[str]:
+    """Load the small server-issued tombstone list; never infer deletion locally."""
+    if not path_value:
+        return set()
+    path = Path(path_value)
+    if not path.is_file():
+        raise RuntimeError("announcement tombstone file is missing")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    values = payload.get("deleted_ids") if isinstance(payload, dict) else None
+    if not isinstance(values, list):
+        raise RuntimeError("announcement tombstone file has an invalid shape")
+    deleted = {str(value).strip() for value in values if str(value).strip()}
+    if any(len(value) > 180 for value in deleted):
+        raise RuntimeError("announcement tombstone contains an invalid ID")
+    return deleted
+
+
+def purge_deleted_announcements(by_id: dict, deleted_ids: set[str]) -> int:
+    """Remove active records and their private detail sidecars, retaining no body copy."""
+    removed = 0
+    for announcement_id in deleted_ids:
+        item = by_id.pop(announcement_id, None)
+        if not item:
+            continue
+        removed += 1
+        school_id = re.sub(r"[^A-Za-z0-9_-]+", "_", str(item.get("school") or ""))
+        if school_id:
+            sidecar = DETAIL_ROOT / school_id / (_detail_filename(announcement_id) + ".json")
+            if sidecar.is_file():
+                sidecar.unlink()
+    return removed
+
+
 def main() -> int:
     data_path = ROOT / CONFIG["data_path"]
     archive_path = ROOT / CONFIG.get("archive_path", "docs/data/archive.json")
@@ -750,6 +783,10 @@ def main() -> int:
     delay = CONFIG["request_delay_sec"]
 
     by_id = load_existing_items(data_path, archive_path)
+    deleted_ids = load_deleted_announcement_ids(os.environ.get("ANNOUNCEMENT_TOMBSTONES_PATH", ""))
+    removed_deleted = purge_deleted_announcements(by_id, deleted_ids)
+    if deleted_ids:
+        print(f"[info] 套用 {len(deleted_ids)} 筆刪除紀錄,移除既有公告 {removed_deleted} 筆")
     known_ids = set(by_id)
 
     session = requests.Session()
@@ -849,6 +886,7 @@ def main() -> int:
                     if reason == "早於截止日":
                         break
 
+        collected = {iid: item for iid, item in collected.items() if iid not in deleted_ids}
         new_for_school = [it for iid, it in collected.items() if iid not in known_ids]
         new_for_school.sort(key=lambda x: x.get("date") or "", reverse=True)
 

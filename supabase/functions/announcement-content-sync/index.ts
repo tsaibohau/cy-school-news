@@ -111,12 +111,19 @@ function validRecord(value: unknown): value is RecordInput {
 
 Deno.serve(async (req) => {
   try {
-    if (req.method !== "POST") return Response.json({ error: "method_not_allowed" }, { status: 405 })
+    if (req.method !== "POST" && req.method !== "GET") return Response.json({ error: "method_not_allowed" }, { status: 405 })
     if (!validCallerKey(req)) {
       return Response.json({ error: "invalid_apikey" }, { status: 401 })
     }
     if (!(await validSyncCaller(req))) {
       return Response.json({ error: "invalid_sync_caller" }, { status: 401 })
+    }
+
+    const client = createClient(required("SUPABASE_URL"), secretKey(), { auth: { persistSession: false, autoRefreshToken: false } })
+    if (req.method === "GET") {
+      const { data, error } = await client.rpc("announcement_deleted_ids")
+      if (error) return Response.json({ error: "tombstone_read_failed", code: error.code || "unknown" }, { status: 500 })
+      return Response.json({ deleted_ids: (data || []).map((row: { announcement_id?: string }) => row.announcement_id).filter(Boolean) })
     }
 
     const raw = await req.text().catch(() => "")
@@ -133,7 +140,6 @@ Deno.serve(async (req) => {
       return Response.json({ error: "invalid_manifest" }, { status: 400 })
     }
 
-    const client = createClient(required("SUPABASE_URL"), secretKey(), { auth: { persistSession: false, autoRefreshToken: false } })
     const { data, error } = await client.rpc("upsert_announcement_member_content", { records: body.records })
     if (error) {
       return Response.json({ error: "upsert_failed", code: error.code || "unknown" }, { status: 500 })

@@ -43,6 +43,25 @@ jobs:
       - name: 安裝相依套件
         run: pip install -r scraper/requirements.txt
 
+      - name: 取得管理員刪除紀錄
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          tombstone_file="$RUNNER_TEMP/announcement-tombstones.json"
+          if [ -z "$ANNOUNCEMENT_CONTENT_SYNC_TOKEN" ] || [ -z "$ANNOUNCEMENT_CONTENT_SYNC_URL" ] || [ -z "$SUPABASE_PUBLISHABLE_KEY" ]; then
+            echo '{"deleted_ids":[]}' > "$tombstone_file"
+            echo "ANNOUNCEMENT_TOMBSTONES_NOT_CONFIGURED"
+          else
+            curl --fail --silent --show-error --request GET "$ANNOUNCEMENT_CONTENT_SYNC_URL" \
+              --header "apikey: $SUPABASE_PUBLISHABLE_KEY" \
+              --header "x-announcement-content-sync-token: $ANNOUNCEMENT_CONTENT_SYNC_TOKEN" \
+              --output "$tombstone_file"
+          fi
+          python -c 'import json,sys; p=json.load(open(sys.argv[1], encoding="utf-8")); assert isinstance(p.get("deleted_ids"), list)' "$tombstone_file"
+          echo "ANNOUNCEMENT_TOMBSTONES_PATH=$tombstone_file" >> "$GITHUB_ENV"
+
       - name: 執行爬蟲
         env:
           # Direct manual runs may request a full crawl. The scheduled driver

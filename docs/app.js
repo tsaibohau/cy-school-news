@@ -74,8 +74,11 @@
       accountUser: null,
       accountAccess: null,
       memberContent: {},
+      deletedAnnouncements: {},
       adminOffset: 0,
       adminTotal: 0,
+      cleanupCandidates: [],
+      cleanupScanned: false,
       nickname: "",
       assistantFeedback: window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {},
       assistantAnswer: null,
@@ -108,6 +111,7 @@
       accountState: $("accountState"), accountService: $("accountService"), accountReapply: $("accountReapply"), accountEmail: $("accountEmail"), accountLogin: $("accountLogin"), accountSwitch: $("accountSwitch"),
       accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"), publicAccountLogout: $("publicAccountLogout"), publicAccessTitle: $("publicAccessTitle"), publicAccessLead: $("publicAccessLead"), publicAccessStatus: $("publicAccessStatus"),
       adminRefresh: $("adminRefresh"), adminStatus: $("adminStatus"), adminAccounts: $("adminAccounts"), adminMetrics: $("adminMetrics"), adminFilters: $("adminFilters"), adminSearch: $("adminSearch"), adminStatusFilter: $("adminStatusFilter"), adminRoleFilter: $("adminRoleFilter"), adminServiceFilter: $("adminServiceFilter"), adminPrevious: $("adminPrevious"), adminNext: $("adminNext"), adminPage: $("adminPage"),
+      adminCleanupScan: $("adminCleanupScan"), adminCleanupStatus: $("adminCleanupStatus"), adminCleanupFilters: $("adminCleanupFilters"), adminCleanupConfidence: $("adminCleanupConfidence"), adminCleanupReason: $("adminCleanupReason"), adminCleanupSchool: $("adminCleanupSchool"), adminCleanupMetrics: $("adminCleanupMetrics"), adminCleanupResults: $("adminCleanupResults"),
       passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
@@ -434,6 +438,92 @@
         if (!accountAuth || !state.accountUser || !state.accountAccess || !state.accountAccess.is_admin || !el.adminAccounts) return;
         el.adminStatus.textContent = "讀取帳號申請中";
         accountAuth.getAdminAccounts(adminFilters()).then(function (rows) { el.adminStatus.textContent = ""; renderAdminAccounts(rows); }).catch(function () { el.adminStatus.textContent = "目前無法讀取帳號申請，請重新整理後再試。"; });
+      }
+      var cleanupReasonLabels = {
+        deadline_passed: "截止日期已過", event_ended: "活動已結束",
+        term_ended: "所屬學期已結束", replaced: "可能已有新版取代",
+      };
+      var cleanupConfidenceLabels = { high: "高信心", medium: "中信心", low: "低信心" };
+      function cleanupFilteredRows() {
+        var confidence = el.adminCleanupConfidence ? el.adminCleanupConfidence.value : "all";
+        var reason = el.adminCleanupReason ? el.adminCleanupReason.value : "all";
+        var school = el.adminCleanupSchool ? el.adminCleanupSchool.value : "all";
+        return state.cleanupCandidates.filter(function (row) {
+          return (confidence === "all" || row.confidence === confidence) &&
+            (reason === "all" || row.reason === reason) &&
+            (school === "all" || String(row.item.school || "") === school);
+        });
+      }
+      function renderCleanupCandidates() {
+        if (!el.adminCleanupResults) return;
+        var rows = cleanupFilteredRows(), all = state.cleanupCandidates;
+        var reasonCounts = {};
+        all.forEach(function (row) { reasonCounts[row.reason] = (reasonCounts[row.reason] || 0) + 1; });
+        if (el.adminCleanupMetrics) el.adminCleanupMetrics.innerHTML = state.cleanupScanned ?
+          '<span><strong>' + esc(all.length) + '</strong> 筆候選</span><span>高信心 ' + esc(all.filter(function (row) { return row.confidence === "high"; }).length) + '</span>' +
+          Object.keys(cleanupReasonLabels).map(function (reason) { return '<span>' + esc(cleanupReasonLabels[reason]) + ' ' + esc(reasonCounts[reason] || 0) + '</span>'; }).join("") : "";
+        el.adminCleanupResults.innerHTML = !state.cleanupScanned ? "" : rows.length ? rows.map(function (row) {
+          var item = row.item || {};
+          return '<article class="cleanup-card" data-cleanup-id="' + esc(row.announcement_id) + '"><div class="cleanup-card-head"><div><h4>' + esc(item.title || "未命名公告") + '</h4><div class="cleanup-meta"><span>' + esc(item.school_name || item.school || "未知學校") + '</span><span>公告日期：' + esc(item.date || "未提供") + '</span><span>' + esc(item.category || item.source_category || "未分類") + '</span></div></div><span class="cleanup-confidence" data-confidence="' + esc(row.confidence) + '">' + esc(cleanupConfidenceLabels[row.confidence]) + '</span></div><div class="cleanup-reason"><strong>疑似失效：' + esc(cleanupReasonLabels[row.reason]) + '</strong><span>' + esc(row.detail) + '</span>' + (row.related_date ? '<span>相關日期：' + esc(row.related_date) + '</span>' : '') + '</div><div class="cleanup-actions"><a class="btn-ghost" href="' + esc(item.url || "#") + '" target="_blank" rel="noopener">查看原公告</a><button class="btn-ghost" type="button" data-cleanup-action="keep" data-cleanup-id="' + esc(row.announcement_id) + '">保留</button><button class="btn-ghost danger-button" type="button" data-cleanup-action="delete" data-cleanup-id="' + esc(row.announcement_id) + '">刪除</button></div></article>';
+        }).join("") : '<p class="empty">目前篩選條件下沒有疑似失效公告。</p>';
+      }
+      function populateCleanupSchools(rows) {
+        if (!el.adminCleanupSchool) return;
+        var current = el.adminCleanupSchool.value || "all", schools = {};
+        rows.forEach(function (row) { var item = row.item || {}; if (item.school) schools[item.school] = item.school_name || item.school; });
+        el.adminCleanupSchool.innerHTML = '<option value="all">全部學校</option>' + Object.keys(schools).sort().map(function (id) { return '<option value="' + esc(id) + '">' + esc(schools[id]) + '</option>'; }).join("");
+        if (current === "all" || schools[current]) el.adminCleanupSchool.value = current;
+      }
+      function loadCleanupCorpus() {
+        return Promise.all(["data/announcements.json", "data/archive.json"].map(function (url) {
+          return fetch(url + "?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
+            if (!response.ok) throw new Error(String(response.status));
+            return response.json();
+          });
+        })).then(function (sets) {
+          var byId = {};
+          sets.forEach(function (set) { (set.items || []).forEach(function (item) { if (item && item.id && !state.deletedAnnouncements[item.id]) { applyMemberContent(item); byId[item.id] = item; } }); });
+          return Object.keys(byId).map(function (id) { return byId[id]; });
+        });
+      }
+      function scanAnnouncementCleanup() {
+        if (!isAdminAccount() || !accountAuth || !window.CyNewsAnnouncementCleanup) return;
+        el.adminCleanupScan.disabled = true;
+        el.adminCleanupStatus.textContent = "正在載入完整公告並套用失效規則…";
+        Promise.all([loadCleanupCorpus(), accountAuth.getAdminCleanupDecisions(), accountAuth.getMemberAnnouncementIndex().catch(function () { return []; })]).then(function (values) {
+          values[2].forEach(function (row) { if (row && row.announcement_id) state.memberContent[row.announcement_id] = row; });
+          values[0].forEach(applyMemberContent);
+          state.cleanupCandidates = window.CyNewsAnnouncementCleanup.scan(values[0], values[1]);
+          state.cleanupScanned = true;
+          populateCleanupSchools(state.cleanupCandidates);
+          if (el.adminCleanupFilters) el.adminCleanupFilters.hidden = false;
+          el.adminCleanupStatus.textContent = "掃描完成，共列出 " + state.cleanupCandidates.length + " 筆，尚未刪除任何公告。";
+          renderCleanupCandidates();
+        }).catch(function () {
+          el.adminCleanupStatus.textContent = "掃描失敗：無法取得完整公告或管理員決策，未變更任何資料。";
+        }).finally(function () { el.adminCleanupScan.disabled = false; });
+      }
+      function reviewCleanupCandidate(id, action, button) {
+        var row = state.cleanupCandidates.find(function (candidateRow) { return candidateRow.announcement_id === id; });
+        if (!row || (action !== "keep" && action !== "delete")) return;
+        if (action === "delete" && !window.confirm("確定刪除此公告嗎？它會退出首頁、問校務與未來爬蟲結果；只保留小型刪除紀錄。")) return;
+        button.disabled = true;
+        el.adminCleanupStatus.textContent = action === "delete" ? "正在刪除並建立防復活紀錄…" : "正在記錄保留決定…";
+        accountAuth.reviewAnnouncementCleanup(row, action).then(function () {
+          state.cleanupCandidates = state.cleanupCandidates.filter(function (candidateRow) { return candidateRow.announcement_id !== id; });
+          if (action === "delete") {
+            state.deletedAnnouncements[id] = true;
+            delete state.memberContent[id];
+            if (state.data && Array.isArray(state.data.items)) state.data.items = state.data.items.filter(function (item) { return item.id !== id; });
+            renderAll();
+          }
+          el.adminCleanupStatus.textContent = action === "delete" ? "已刪除；此 ID 已加入防復活清單。" : "已保留；內容未變時不會再次列出。";
+          populateCleanupSchools(state.cleanupCandidates);
+          renderCleanupCandidates();
+        }).catch(function () {
+          button.disabled = false;
+          el.adminCleanupStatus.textContent = "操作失敗，資料未變更；請確認管理員權限後再試。";
+        });
       }
       function maybePromptNickname(user) {
         if (!user || !el.nicknameDialog || !el.nicknameInput) return;
@@ -817,6 +907,14 @@
       if (el.adminFilters) el.adminFilters.addEventListener("submit", function (event) { event.preventDefault(); state.adminOffset = 0; loadAdminAccounts(); });
       if (el.adminPrevious) el.adminPrevious.addEventListener("click", function () { state.adminOffset = Math.max(0, state.adminOffset - 50); loadAdminAccounts(); });
       if (el.adminNext) el.adminNext.addEventListener("click", function () { if (state.adminOffset + 50 < state.adminTotal) { state.adminOffset += 50; loadAdminAccounts(); } });
+      if (el.adminCleanupScan) el.adminCleanupScan.addEventListener("click", scanAnnouncementCleanup);
+      [el.adminCleanupConfidence, el.adminCleanupReason, el.adminCleanupSchool].forEach(function (node) {
+        if (node) node.addEventListener("change", renderCleanupCandidates);
+      });
+      if (el.adminCleanupResults) el.adminCleanupResults.addEventListener("click", function (event) {
+        var button = event.target.closest("button[data-cleanup-action]");
+        if (button) reviewCleanupCandidate(button.dataset.cleanupId, button.dataset.cleanupAction, button);
+      });
       if (el.adminAccounts) el.adminAccounts.addEventListener("click", function (event) {
         var button = event.target.closest("button[data-admin-access], button[data-admin-role]");
         if (!button || !accountAuth) return;
@@ -1023,7 +1121,14 @@
     }
 
     function fetchData(skipNotifications) {
-      return currentDataRequest().then(function (request) {
+      var deletedIds = accountAuth && typeof accountAuth.getDeletedAnnouncementIds === "function" ?
+        accountAuth.getDeletedAnnouncementIds().catch(function () { return Object.keys(state.deletedAnnouncements); }) :
+        Promise.resolve(Object.keys(state.deletedAnnouncements));
+      return deletedIds.then(function (ids) {
+        state.deletedAnnouncements = {};
+        ids.forEach(function (id) { state.deletedAnnouncements[id] = true; });
+        return currentDataRequest();
+      }).then(function (request) {
         return fetch(request.url + "?_=" + Date.now(), { cache: "no-store" })
         .then(function (r) {
           if (!r.ok) throw new Error(r.status);
@@ -1034,6 +1139,7 @@
       })
         .then(function (result) {
           var data = result.data;
+          if (Array.isArray(data.items)) data.items = data.items.filter(function (item) { return !state.deletedAnnouncements[item.id]; });
           var recentItems = Array.isArray(data.items) ? data.items.slice() : [];
           if (!Array.isArray(data.items)) data.items = [];
           data.items.forEach(applyMemberContent);
@@ -1042,7 +1148,7 @@
             var ids = {};
             data.items.forEach(function (it) { ids[it.id] = true; });
             state.data.items.forEach(function (it) {
-              if (!ids[it.id]) data.items.push(it);
+              if (!ids[it.id] && !state.deletedAnnouncements[it.id]) data.items.push(it);
             });
           }
           state.data = data;
@@ -1149,7 +1255,7 @@
           state.data.items.forEach(function (it) { ids[it.id] = true; });
           (arc.items || []).forEach(function (it) {
             applyMemberContent(it);
-            if (!ids[it.id]) state.data.items.push(it);
+            if (!ids[it.id] && !state.deletedAnnouncements[it.id]) state.data.items.push(it);
           });
           state.archive = "loaded";
           renderAll();
@@ -2303,7 +2409,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=79").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=80").catch(function () {});
       });
     }
 
