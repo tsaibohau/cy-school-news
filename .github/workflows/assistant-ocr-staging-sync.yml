@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: assistant-ocr-staging-sync
@@ -51,22 +52,25 @@ jobs:
       - name: Export protected member content
         run: node tools/export-member-content.js .member-content-sync-staging-ocr
 
+      - name: Obtain short-lived GitHub OIDC identity
+        shell: bash
+        run: |
+          OIDC_RESPONSE="$(curl -fsSL -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=cy-school-news-staging")"
+          OIDC_TOKEN="$(python -c 'import json,sys; print(json.load(sys.stdin)["value"])' <<<"$OIDC_RESPONSE")"
+          test -n "$OIDC_TOKEN"
+          echo "STAGING_GITHUB_OIDC=$OIDC_TOKEN" >> "$GITHUB_ENV"
+
       - name: Sync only to staging protected backend
         env:
-          SYNC_TOKEN: ${{ secrets.STAGING_ANNOUNCEMENT_CONTENT_SYNC_TOKEN || secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
           SYNC_URL: https://ebezqanvmgsgtatsbssn.supabase.co/functions/v1/announcement-content-sync
           PUBLISHABLE_KEY: sb_publishable_AMraTwpKL4GF-U0UdA8AmQ_jRmt6izJ
         run: |
-          if [ -z "${SYNC_TOKEN:-}" ]; then
-            echo "STAGING_OCR_SYNC_TOKEN_NOT_CONFIGURED"
-            exit 2
-          fi
           python - <<'PY'
           import glob, os
           import requests
 
           url = os.environ['SYNC_URL']
-          token = os.environ['SYNC_TOKEN']
+          oidc = os.environ['STAGING_GITHUB_OIDC']
           key = os.environ['PUBLISHABLE_KEY']
           if 'oppdhtnepjagdwovndra' in url:
               raise SystemExit('refusing Production Supabase URL')
@@ -75,7 +79,7 @@ jobs:
 
           headers = {
               'apikey': key,
-              'x-announcement-content-sync-token': token,
+              'x-github-oidc': oidc,
               'content-type': 'application/json',
           }
           batches = sorted(glob.glob('.member-content-sync-staging-ocr/batch-*.json'))
