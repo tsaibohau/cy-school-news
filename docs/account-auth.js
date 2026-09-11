@@ -191,6 +191,37 @@
       setAdminRole: function (userId, role) {
         return getClient().then(function (c) { return c.rpc("owner_set_admin_role", { target_user_id: userId, next_role: role }).then(function (result) { if (result.error) throw result.error; }); });
       },
+      getDeletedAnnouncementIds: function () {
+        return getClient().then(function (c) { return c.rpc("announcement_deleted_ids").then(function (result) {
+          if (result.error) throw result.error;
+          return (result.data || []).map(function (row) { return String(row.announcement_id || ""); }).filter(Boolean);
+        }); });
+      },
+      getAdminCleanupDecisions: function () {
+        return getClient().then(function (c) { return c.rpc("admin_list_announcement_cleanup_decisions").then(function (result) {
+          if (result.error) throw result.error;
+          return result.data || [];
+        }); });
+      },
+      reviewAnnouncementCleanup: function (candidate, action) {
+        candidate = candidate || {};
+        var item = candidate.item || {};
+        return getClient().then(function (c) { return c.rpc("admin_review_announcement_cleanup", {
+          target_announcement_id: String(candidate.announcement_id || ""),
+          target_title: String(item.title || "").slice(0, 500),
+          target_school: String(item.school || "").slice(0, 40),
+          target_source_url: String(item.url || "").slice(0, 2048),
+          target_reason: String(candidate.reason || ""),
+          target_confidence: String(candidate.confidence || ""),
+          target_related_date: candidate.related_date || null,
+          target_source_hash: String(candidate.source_hash || ""),
+          target_rule_version: Number(candidate.rule_version || 0),
+          target_action: action,
+        }).then(function (result) { if (result.error) throw result.error; }); });
+      },
+      cancelAnnouncementKeep: function (announcementId) {
+        return getClient().then(function (c) { return c.rpc("admin_cancel_announcement_keep", { target_announcement_id: String(announcementId || "") }).then(function (result) { if (result.error) throw result.error; }); });
+      },
       requestAccountAccess: function () {
         return getClient().then(function (c) { return c.rpc("request_account_access").then(function (result) { if (result.error) throw result.error; return result.data; }); });
       },

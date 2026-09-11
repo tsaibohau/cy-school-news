@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=83">
+<link rel="stylesheet" href="style.css?v=84">
 </head>
 <body>
 
@@ -178,7 +178,8 @@
   </section>
 
   <section id="viewAdmin" class="admin-view" hidden aria-labelledby="adminTitle">
-    <div class="section-heading"><div><p class="eyebrow">ADMINISTRATION</p><h2 id="adminTitle">帳號管理</h2></div><button id="adminRefresh" class="btn-ghost" type="button">重新整理</button></div>
+    <div class="section-heading"><div><p class="eyebrow">ADMINISTRATION</p><h2 id="adminTitle">管理員介面</h2></div></div>
+    <div class="section-heading admin-subheading"><div><h3>帳號管理</h3></div><button id="adminRefresh" class="btn-ghost" type="button">重新整理</button></div>
     <p class="assistant-intro">搜尋、篩選及調整一般帳號。聯席管理員可處理一般帳號，但只有主要管理員能授予或移除管理員身分。</p>
     <div id="adminMetrics" class="admin-metrics" aria-label="帳號統計"></div>
     <form id="adminFilters" class="admin-filters">
@@ -191,6 +192,17 @@
     <p id="adminStatus" class="hint" role="status" aria-live="polite"></p>
     <div id="adminAccounts" class="admin-accounts"></div>
     <div class="admin-pagination"><button id="adminPrevious" class="btn-ghost" type="button">上一頁</button><span id="adminPage" class="hint"></span><button id="adminNext" class="btn-ghost" type="button">下一頁</button></div>
+    <section class="admin-cleanup" aria-labelledby="adminCleanupTitle">
+      <div class="section-heading admin-subheading"><div><h3 id="adminCleanupTitle">公告管理</h3><p class="hint">掃描既有資料並由管理員人工決定；系統不會自動刪除。</p></div><button id="adminCleanupScan" class="btn-primary" type="button">檢查無效公告</button></div>
+      <p id="adminCleanupStatus" class="hint" role="status" aria-live="polite">尚未執行檢查。</p>
+      <form id="adminCleanupFilters" class="admin-cleanup-filters" hidden>
+        <label>判定信心<select id="adminCleanupConfidence"><option value="all">全部</option><option value="high">高信心</option><option value="medium">中信心</option><option value="low">低信心</option></select></label>
+        <label>失效原因<select id="adminCleanupReason"><option value="all">全部</option><option value="deadline_passed">截止日期已過</option><option value="event_ended">活動已結束</option><option value="term_ended">舊學期</option><option value="replaced">疑似被新版取代</option></select></label>
+        <label>學校<select id="adminCleanupSchool"><option value="all">全部學校</option></select></label>
+      </form>
+      <div id="adminCleanupMetrics" class="admin-metrics" aria-label="公告清理統計"></div>
+      <div id="adminCleanupResults" class="admin-cleanup-results"></div>
+    </section>
   </section>
 
   <footer class="foot">
@@ -277,7 +289,7 @@
 
 <script src="account-config.js?v=41"></script>
 <script src="supabase-sync.js?v=55"></script>
-<script src="account-auth.js?v=77"></script>
+<script src="account-auth.js?v=78"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
@@ -291,10 +303,11 @@
 <script src="search-query.js?v=52"></script>
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
+<script src="announcement-cleanup.js?v=81"></script>
 <script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=80"></script>
+<script src="app.js?v=81"></script>
 </body>
 </html>
 
