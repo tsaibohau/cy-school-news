@@ -550,6 +550,7 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
 .function-dock .tabbar, .function-dock .tabbar[hidden] { position: static; display: flex; width: 100%; max-width: none; margin: 0; padding: 6px max(8px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); gap: 2px; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: color-mix(in srgb, var(--card) 94%, transparent); box-shadow: 0 -8px 30px rgba(19,31,52,.08); }
 .function-dock .tab { justify-content: center; min-width: 58px; min-height: 52px; padding: 7px 5px; flex: 1 0 auto; flex-direction: column; gap: 2px; border-radius: 11px; font-size: 11px; }
 .function-dock .tab.is-active { color: var(--cysh); background: var(--cysh-bg); }
+.function-dock #tabAdmin:not([hidden]) { order: -1; }
 .function-dock .tab svg, .function-dock .tab-icon { width: 20px; min-width: 20px; height: 20px; font-size: 17px; line-height: 20px; }
 
 @media (min-width: 900px) {
@@ -771,6 +772,7 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
   .function-dock { top: 0; right: auto; width: 206px; padding: 92px 12px 16px; background: var(--card); border-right: 1px solid var(--line); }
   .function-dock .tabbar, .function-dock .tabbar[hidden] { display: grid; grid-template-columns: 1fr; align-content: start; gap: 5px; padding: 0; border: 0; background: transparent; box-shadow: none; }
   .function-dock .tab { width: 100%; min-height: 46px; padding: 10px 12px; justify-content: flex-start; flex-direction: row; gap: 12px; font-size: 14px; }
+  .function-dock #tabAdmin:not([hidden]) { order: 0; }
 }
 @media (max-width: 760px) {
   .mast .wrap { min-height: 60px; }.mast-sub { display: none; }
