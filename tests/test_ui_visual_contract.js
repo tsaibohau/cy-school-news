@@ -42,6 +42,8 @@ assert.match(index, /id="tabAdmin"[^>]*hidden/, "administrator tab starts hidden
 assert.match(style, /#tabAdmin:not\(\[hidden\]\)\s*\{\s*order:\s*-1/, "administrator entry stays visible at the front of the mobile navigation");
 assert.match(style, /\.tab\[hidden\]\s*\{\s*display:\s*none;/, "hidden navigation tabs must override the tab display layout");
 assert.match(index, /id="navCurrentLabel">選單</);
+assert.match(index, /id="brandHome"[^>]*aria-label="返回主畫面"/, "the masthead always exposes a route back home");
+assert.match(app, /brandHome.*addEventListener\("click"[\s\S]*switchTab\("home"\)/, "the masthead returns approved accounts to the home view");
 assert.match(index, /id="viewHome"[^>]*aria-labelledby="homeTitle"/);
 assert.match(index, /id="homeTitle"[^>]*class="calligraphy-title"[^>]*>.*學校公告.*匯集系統/s);
 assert.ok((index.match(/data-home-tab=/g) || []).length >= 5);
