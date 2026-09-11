@@ -1,0 +1,108 @@
+name: Assistant OCR live preview
+
+on:
+  push:
+    branches: [codex/assistant-attachments-v2]
+    paths:
+      - "scraper/local_ocr.py"
+      - "scraper/attachment_parser.py"
+      - "scraper/detail_backfill.py"
+      - "scraper/requirements-ocr.txt"
+      - "tests/test_local_ocr.py"
+      - "tools/live_ocr_preview.py"
+      - ".github/workflows/assistant-ocr-live-preview.yml"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: assistant-ocr-live-preview
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install parser and OCR preview dependencies
+        run: pip install -r scraper/requirements-ocr.txt
+
+      - name: Install local Traditional Chinese OCR runtime
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-chi-tra fonts-arphic-uming
+          tesseract --list-langs | grep -Fx chi_tra
+
+      - name: Deterministic local OCR gate
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python tests/test_local_ocr.py
+
+      - name: Bounded live school-site OCR probe
+        env:
+          PYTHONIOENCODING: utf-8
+          LIVE_OCR_ARTICLE_CAP: '10'
+          LIVE_OCR_ATTACHMENT_CAP: '3'
+        run: python tools/live_ocr_preview.py
+
+      - name: Exercise integrated OCR backfill without syncing Production
+        env:
+          PYTHONIOENCODING: utf-8
+          BACKFILL_MODE: ocr
+          DETAIL_BACKFILL_CAP: '4'
+          ATTACHMENT_PDF_CAP: '2'
+          ENABLE_LOCAL_OCR: '1'
+          OCR_ATTACHMENT_CAP: '1'
+          SUMMARY_BACKFILL_CAP: '20'
+        run: python scraper/detail_backfill.py
+
+      - name: Verify protected export can consume transient detail
+        run: |
+          rm -rf .member-content-sync-ocr-preview
+          node tools/export-member-content.js .member-content-sync-ocr-preview
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          batches = sorted(Path('.member-content-sync-ocr-preview').glob('batch-*.json'))
+          assert batches, 'member export produced no batches'
+          rows = 0
+          detailed = 0
+          for path in batches:
+              payload = json.loads(path.read_text(encoding='utf-8'))
+              for row in payload.get('records', []):
+                  rows += 1
+                  if row.get('detail'):
+                      detailed += 1
+          print(f'OCR_PREVIEW_EXPORT ROWS={rows} DETAILED={detailed}')
+          assert rows > 0
+          PY
+
+      - name: Verify public projection removes private attachment text
+        run: |
+          node tools/public-metadata-projection.js docs
+          if grep -R -n -I '"embedded_text"' docs/data; then
+            echo "Private attachment OCR text leaked into public projection"
+            exit 1
+          fi
+          if find docs/data/details -type f -print -quit 2>/dev/null | grep -q .; then
+            echo "Private detail sidecars remain after public projection"
+            exit 1
+          fi
+          echo "OCR_PUBLIC_PROJECTION_SAFE"
+
+      - name: Confirm this preview never writes Production
+        run: |
+          test -z "${ANNOUNCEMENT_CONTENT_SYNC_TOKEN:-}"
+          test -z "${ANNOUNCEMENT_CONTENT_SYNC_URL:-}"
+          echo "OCR_PREVIEW_NO_PRODUCTION_SYNC"

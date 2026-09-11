@@ -1,0 +1,109 @@
+name: Assistant OCR staging sync
+
+on:
+  push:
+    branches: [codex/assistant-attachments-v2]
+    paths:
+      - ".github/workflows/assistant-ocr-staging-sync.yml"
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: assistant-ocr-staging-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-staging:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Install OCR dependencies
+        run: pip install -r scraper/requirements-ocr.txt
+
+      - name: Install Traditional Chinese OCR runtime
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-chi-tra fonts-arphic-uming
+          tesseract --list-langs | grep -Fx chi_tra
+
+      - name: Run bounded OCR backfill in ephemeral workspace
+        env:
+          PYTHONIOENCODING: utf-8
+          BACKFILL_MODE: ocr
+          DETAIL_BACKFILL_CAP: '6'
+          ATTACHMENT_PDF_CAP: '3'
+          ENABLE_LOCAL_OCR: '1'
+          OCR_ATTACHMENT_CAP: '1'
+          SUMMARY_BACKFILL_CAP: '20'
+        run: python scraper/detail_backfill.py
+
+      - name: Export protected member content
+        run: node tools/export-member-content.js .member-content-sync-staging-ocr
+
+      - name: Obtain short-lived GitHub OIDC identity
+        shell: bash
+        run: |
+          OIDC_RESPONSE="$(curl -fsSL -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=cy-school-news-staging")"
+          OIDC_TOKEN="$(python -c 'import json,sys; print(json.load(sys.stdin)["value"])' <<<"$OIDC_RESPONSE")"
+          test -n "$OIDC_TOKEN"
+          echo "STAGING_GITHUB_OIDC=$OIDC_TOKEN" >> "$GITHUB_ENV"
+
+      - name: Sync only to staging protected backend
+        env:
+          SYNC_URL: https://ebezqanvmgsgtatsbssn.supabase.co/functions/v1/announcement-content-sync
+          PUBLISHABLE_KEY: sb_publishable_AMraTwpKL4GF-U0UdA8AmQ_jRmt6izJ
+        run: |
+          python - <<'PY'
+          import glob, os
+          import requests
+
+          url = os.environ['SYNC_URL']
+          oidc = os.environ['STAGING_GITHUB_OIDC']
+          key = os.environ['PUBLISHABLE_KEY']
+          if 'oppdhtnepjagdwovndra' in url:
+              raise SystemExit('refusing Production Supabase URL')
+          if 'ebezqanvmgsgtatsbssn' not in url:
+              raise SystemExit('refusing non-staging Supabase URL')
+
+          headers = {
+              'apikey': key,
+              'x-github-oidc': oidc,
+              'content-type': 'application/json',
+          }
+          batches = sorted(glob.glob('.member-content-sync-staging-ocr/batch-*.json'))
+          if not batches:
+              raise SystemExit('no protected batches')
+          accepted = 0
+          for path in batches:
+              with open(path, 'rb') as handle:
+                  response = requests.post(url, headers=headers, data=handle.read(), timeout=30)
+              if not response.ok:
+                  raise SystemExit(f'staging sync failed: HTTP {response.status_code} {response.text[:160]}')
+              payload = response.json()
+              accepted += int(payload.get('accepted') or 0)
+          if accepted <= 0:
+              raise SystemExit('staging sync accepted zero records')
+          print(f'STAGING_OCR_SYNC_OK BATCHES={len(batches)} ACCEPTED={accepted}')
+          PY
+
+      - name: Confirm staging target isolation
+        env:
+          SYNC_URL: https://ebezqanvmgsgtatsbssn.supabase.co/functions/v1/announcement-content-sync
+        run: |
+          case "$SYNC_URL" in
+            *oppdhtnepjagdwovndra*) echo "Production target detected"; exit 1 ;;
+            *ebezqanvmgsgtatsbssn*) echo "STAGING_OCR_TARGET_CONFIRMED" ;;
+            *) echo "Unknown target"; exit 1 ;;
+          esac

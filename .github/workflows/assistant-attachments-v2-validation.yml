@@ -1,0 +1,65 @@
+name: Assistant attachment source validation
+
+on:
+  push:
+    branches: [codex/assistant-attachments-v2]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.1.4
+
+      - name: Install parser and OCR validation dependencies
+        run: pip install -r scraper/requirements-ocr.txt
+
+      - name: Install local Traditional Chinese OCR runtime
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-chi-tra fonts-arphic-uming
+          tesseract --list-langs | grep -Fx chi_tra
+
+      - name: Required parser regression
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python tests/test_parser.py
+          python tests/test_detail_parser.py
+          python tests/test_detail_backfill.py
+          python tests/test_attachment_parser.py
+          python tests/test_local_ocr.py
+
+      - name: Attachment-aware member QA regression
+        run: |
+          node tests/test_assistant_attachment_qa.js
+          node tests/test_member_content_export.js
+          node tests/test_member_content_rls_contract.js
+          node tools/evaluate-assistant-qa.js --strict
+          node tools/check-legal-compliance.js
+
+      - name: Type-check protected content sync
+        run: >-
+          deno check
+          --config supabase/functions/announcement-content-sync/deno.json
+          supabase/functions/announcement-content-sync/index.ts
+
+      - name: Reject tracked secret patterns
+        run: |
+          if git grep -n -I -E '(sb_secret_|eyJ[A-Za-z0-9_-]{20,}\.|postgres(ql)?://[^[:space:]]+:[^[:space:]]+@|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----)' -- ':!.github/workflows/assistant-attachments-v2-validation.yml' ':!.github/workflows/staging-validation.yml'; then
+            echo "Potential tracked secret detected"
+            exit 1
+          fi
