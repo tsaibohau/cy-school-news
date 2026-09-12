@@ -185,6 +185,33 @@
           page_offset: Math.max(0, Number(filters.offset) || 0),
         }).then(function (result) { if (result.error) throw result.error; return result.data || []; }); });
       },
+      listAnnouncementClassifications: function (filters) {
+        filters = filters || {};
+        return getClient().then(function (c) {
+          var rows = [], pageSize = 100, maximumRows = 5000;
+          function next(offset) {
+            return c.rpc("admin_list_announcement_classifications", {
+              school_filter: filters.school || "all",
+              main_category_filter: filters.mainCategory || "all",
+              academic_year_filter: filters.academicYear ? Number(filters.academicYear) : null,
+              confidence_max: filters.confidenceMax === null || filters.confidenceMax === "" ? null : Number(filters.confidenceMax),
+              unclassified_only: filters.unclassifiedOnly === true,
+              page_size: pageSize,
+              page_offset: offset,
+            }).then(function (result) {
+              if (result.error) throw result.error;
+              var page = Array.isArray(result.data) ? result.data : [];
+              rows = rows.concat(page);
+              var total = page.length ? Number(page[0].total_count) || rows.length : rows.length;
+              return page.length === pageSize && rows.length < total && rows.length < maximumRows ? next(offset + pageSize) : rows;
+            });
+          }
+          return next(0).then(function (all) {
+            var subcategory = String(filters.subCategory || "all");
+            return subcategory === "all" ? all : all.filter(function (row) { return row.sub_category === subcategory; });
+          });
+        });
+      },
       updateAccountAccess: function (userId, status, serviceLevel) {
         return getClient().then(function (c) { return c.rpc("admin_update_account", { target_user_id: userId, next_status: status, next_service_level: serviceLevel }).then(function (result) { if (result.error) throw result.error; }); });
       },
