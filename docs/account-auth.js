@@ -206,6 +206,7 @@
       reviewAnnouncementCleanup: function (candidate, action) {
         candidate = candidate || {};
         var item = candidate.item || {};
+        var academic = candidate.academic || {};
         return getClient().then(function (c) { return c.rpc("admin_review_announcement_cleanup", {
           target_announcement_id: String(candidate.announcement_id || ""),
           target_title: String(item.title || "").slice(0, 500),
@@ -217,7 +218,32 @@
           target_source_hash: String(candidate.source_hash || ""),
           target_rule_version: Number(candidate.rule_version || 0),
           target_action: action,
+          target_original_metadata: item,
+          target_category: String(item.category || item.source_category || "").slice(0, 160),
+          target_subcategory: String(candidate.subcategory || "").slice(0, 160),
+          target_academic_year: academic.academic_year || null,
+          target_semester: academic.semester || null,
+          target_reference_value: String(candidate.reference_value || "NONE"),
+          target_superseded_by: String(candidate.superseded_by || "") || null,
         }).then(function (result) { if (result.error) throw result.error; }); });
+      },
+      listArchivedAnnouncements: function (filters) {
+        filters = filters || {};
+        return getClient().then(function (c) { return c.rpc("admin_list_archived_announcements", {
+          school_filter: filters.school || "all",
+          category_filter: filters.category || "all",
+          academic_year_filter: filters.academicYear ? Number(filters.academicYear) : null,
+          semester_filter: filters.semester ? Number(filters.semester) : null,
+          reference_value_filter: filters.referenceValue || "all",
+          search_text: String(filters.search || "").trim().slice(0, 120),
+          page_size: Math.min(100, Math.max(1, Number(filters.limit) || 50)),
+          page_offset: Math.max(0, Number(filters.offset) || 0),
+        }).then(function (result) { if (result.error) throw result.error; return result.data || []; }); });
+      },
+      restoreArchivedAnnouncement: function (announcementId) {
+        return getClient().then(function (c) { return c.rpc("admin_restore_archived_announcement", {
+          target_announcement_id: String(announcementId || ""),
+        }).then(function (result) { if (result.error) throw result.error; return result.data || null; }); });
       },
       cancelAnnouncementKeep: function (announcementId) {
         return getClient().then(function (c) { return c.rpc("admin_cancel_announcement_keep", { target_announcement_id: String(announcementId || "") }).then(function (result) { if (result.error) throw result.error; }); });

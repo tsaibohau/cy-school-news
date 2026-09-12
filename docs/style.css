@@ -622,9 +622,15 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
 .cleanup-confidence[data-confidence="low"] { color: var(--muted); background: var(--chip-bg); }
 .cleanup-actions { display: flex; flex-wrap: wrap; gap: 7px; }
 .cleanup-actions a { display: inline-flex; align-items: center; text-decoration: none; }
+.cleanup-toolbar { display: flex; flex-wrap: wrap; gap: 8px; }
+.cleanup-reference-label { display: grid; grid-template-columns: max-content minmax(180px, 320px); align-items: center; gap: 8px; color: var(--muted); font-size: 12px; font-weight: 700; }
+.cleanup-reference-label select, .admin-archive-filters select, .admin-archive-filters input { min-height: 40px; border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; color: var(--ink); background: var(--paper); font: inherit; }
+.admin-archive-panel { margin-top: 24px; padding-top: 8px; border-top: 1px solid var(--line); }
+.admin-archive-filters { display: grid; grid-template-columns: repeat(3, minmax(150px, 1fr)); gap: 9px; margin: 12px 0; }
+.admin-archive-filters label { display: grid; gap: 5px; color: var(--muted); font-size: 12px; font-weight: 700; }
 @media (max-width: 820px) {
   .admin-filters { grid-template-columns: 1fr 1fr; }
-  .admin-cleanup-filters { grid-template-columns: 1fr; }
+  .admin-cleanup-filters, .admin-archive-filters { grid-template-columns: 1fr; }
   .admin-filters label:first-child { grid-column: 1 / -1; }
   .admin-account { grid-template-columns: 1fr; }
   .admin-account-actions { justify-content: flex-start; }
@@ -634,6 +640,7 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
   .admin-filters label:first-child { grid-column: auto; }
   .admin-account-actions, .admin-service-label { width: 100%; }
   .admin-account-actions button, .admin-service-label select { flex: 1 1 100%; width: 100%; }
+  .cleanup-reference-label { grid-template-columns: 1fr; }
 }
 .function-toggle {
   min-height: 52px; border: 1px solid color-mix(in srgb, var(--ink) 24%, transparent);

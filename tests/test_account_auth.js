@@ -264,10 +264,10 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('autocomplete="current-password"'));
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=78"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=81"'), "index must load current app shell");
+  assert(index.includes('src="account-auth.js?v=79"'), "index must load current account auth");
+  assert(index.includes('src="app.js?v=82"'), "index must load current app shell");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
-  assert(sw.includes('"./account-auth.js?v=78"'), "Service Worker shell must cache current account auth");
+  assert(sw.includes('"./account-auth.js?v=79"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
   assert(app.includes('"登入信箱：" + email'));
   assert(!app.includes("sendMagicLink"));

@@ -79,6 +79,8 @@
       adminTotal: 0,
       cleanupCandidates: [],
       cleanupScanned: false,
+      archivedAnnouncements: [],
+      archiveTotal: 0,
       nickname: "",
       assistantFeedback: window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {},
       assistantAnswer: null,
@@ -112,6 +114,7 @@
       accountLogout: $("accountLogout"), functionDock: $("functionDock"), publicAccountEntry: $("publicAccountEntry"), publicAccountLogin: $("publicAccountLogin"), publicAccountSignUp: $("publicAccountSignUp"), publicAccountLogout: $("publicAccountLogout"), publicAccessTitle: $("publicAccessTitle"), publicAccessLead: $("publicAccessLead"), publicAccessStatus: $("publicAccessStatus"),
       adminRefresh: $("adminRefresh"), adminStatus: $("adminStatus"), adminAccounts: $("adminAccounts"), adminMetrics: $("adminMetrics"), adminFilters: $("adminFilters"), adminSearch: $("adminSearch"), adminStatusFilter: $("adminStatusFilter"), adminRoleFilter: $("adminRoleFilter"), adminServiceFilter: $("adminServiceFilter"), adminPrevious: $("adminPrevious"), adminNext: $("adminNext"), adminPage: $("adminPage"),
       adminCleanupScan: $("adminCleanupScan"), adminCleanupStatus: $("adminCleanupStatus"), adminCleanupFilters: $("adminCleanupFilters"), adminCleanupConfidence: $("adminCleanupConfidence"), adminCleanupReason: $("adminCleanupReason"), adminCleanupSchool: $("adminCleanupSchool"), adminCleanupMetrics: $("adminCleanupMetrics"), adminCleanupResults: $("adminCleanupResults"),
+      adminArchiveToggle: $("adminArchiveToggle"), adminArchivePanel: $("adminArchivePanel"), adminArchiveStatus: $("adminArchiveStatus"), adminArchiveRefresh: $("adminArchiveRefresh"), adminArchiveFilters: $("adminArchiveFilters"), adminArchiveSearch: $("adminArchiveSearch"), adminArchiveSchool: $("adminArchiveSchool"), adminArchiveCategory: $("adminArchiveCategory"), adminArchiveYear: $("adminArchiveYear"), adminArchiveSemester: $("adminArchiveSemester"), adminArchiveReference: $("adminArchiveReference"), adminArchiveMetrics: $("adminArchiveMetrics"), adminArchiveResults: $("adminArchiveResults"),
       passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
@@ -464,8 +467,33 @@
           Object.keys(cleanupReasonLabels).map(function (reason) { return '<span>' + esc(cleanupReasonLabels[reason]) + ' ' + esc(reasonCounts[reason] || 0) + '</span>'; }).join("") : "";
         el.adminCleanupResults.innerHTML = !state.cleanupScanned ? "" : rows.length ? rows.map(function (row) {
           var item = row.item || {};
-          return '<article class="cleanup-card" data-cleanup-id="' + esc(row.announcement_id) + '"><div class="cleanup-card-head"><div><h4>' + esc(item.title || "未命名公告") + '</h4><div class="cleanup-meta"><span>' + esc(item.school_name || item.school || "未知學校") + '</span><span>公告日期：' + esc(item.date || "未提供") + '</span><span>' + esc(item.category || item.source_category || "未分類") + '</span></div></div><span class="cleanup-confidence" data-confidence="' + esc(row.confidence) + '">' + esc(cleanupConfidenceLabels[row.confidence]) + '</span></div><div class="cleanup-reason"><strong>疑似失效：' + esc(cleanupReasonLabels[row.reason]) + '</strong><span>' + esc(row.detail) + '</span>' + (row.related_date ? '<span>相關日期：' + esc(row.related_date) + '</span>' : '') + '</div><div class="cleanup-actions"><a class="btn-ghost" href="' + esc(item.url || "#") + '" target="_blank" rel="noopener">查看原公告</a><button class="btn-ghost" type="button" data-cleanup-action="keep" data-cleanup-id="' + esc(row.announcement_id) + '">保留</button><button class="btn-ghost danger-button" type="button" data-cleanup-action="delete" data-cleanup-id="' + esc(row.announcement_id) + '">刪除</button></div></article>';
+          return '<article class="cleanup-card" data-cleanup-id="' + esc(row.announcement_id) + '"><div class="cleanup-card-head"><div><h4>' + esc(item.title || "未命名公告") + '</h4><div class="cleanup-meta"><span>' + esc(item.school_name || item.school || "未知學校") + '</span><span>公告日期：' + esc(item.date || "未提供") + '</span><span>' + esc(item.category || item.source_category || "未分類") + '</span></div></div><span class="cleanup-confidence" data-confidence="' + esc(row.confidence) + '">' + esc(cleanupConfidenceLabels[row.confidence]) + '</span></div><div class="cleanup-reason"><strong>疑似失效：' + esc(cleanupReasonLabels[row.reason]) + '</strong><span>' + esc(row.detail) + '</span>' + (row.related_date ? '<span>相關日期：' + esc(row.related_date) + '</span>' : '') + '</div><label class="cleanup-reference-label">歷史參考價值<select data-cleanup-reference="' + esc(row.announcement_id) + '"><option value="HIGH"' + (row.reference_value === "HIGH" ? " selected" : "") + '>HIGH：制度／長期規則</option><option value="MEDIUM"' + (row.reference_value === "MEDIUM" ? " selected" : "") + '>MEDIUM：歷年時程</option><option value="LOW"' + (row.reference_value === "LOW" ? " selected" : "") + '>LOW：單次活動</option><option value="NONE"' + (row.reference_value === "NONE" ? " selected" : "") + '>NONE：無後續價值</option></select></label><div class="cleanup-actions"><a class="btn-ghost" href="' + esc(item.url || "#") + '" target="_blank" rel="noopener">查看原公告</a><button class="btn-ghost" type="button" data-cleanup-action="keep" data-cleanup-id="' + esc(row.announcement_id) + '">保留</button><button class="btn-ghost danger-button" type="button" data-cleanup-action="archive" data-cleanup-id="' + esc(row.announcement_id) + '">歸檔並移除</button></div></article>';
         }).join("") : '<p class="empty">目前篩選條件下沒有疑似失效公告。</p>';
+      }
+      function archiveFilters() {
+        return { school: el.adminArchiveSchool ? el.adminArchiveSchool.value : "all",
+          category: el.adminArchiveCategory ? el.adminArchiveCategory.value : "all",
+          academicYear: el.adminArchiveYear ? el.adminArchiveYear.value : "",
+          semester: el.adminArchiveSemester ? el.adminArchiveSemester.value : "",
+          referenceValue: el.adminArchiveReference ? el.adminArchiveReference.value : "all",
+          search: el.adminArchiveSearch ? el.adminArchiveSearch.value : "", limit: 100, offset: 0 };
+      }
+      function renderArchivedAnnouncements() {
+        if (!el.adminArchiveResults) return;
+        if (el.adminArchiveMetrics) el.adminArchiveMetrics.innerHTML = '<span><strong>' + esc(state.archiveTotal) + '</strong> 筆 Archive</span><span>目前顯示 ' + esc(state.archivedAnnouncements.length) + ' 筆</span>';
+        el.adminArchiveResults.innerHTML = state.archivedAnnouncements.length ? state.archivedAnnouncements.map(function (row) {
+          var term = row.academic_year ? row.academic_year + ' 學年' + (row.semester ? '第 ' + row.semester + ' 學期' : '') : '未辨識學年';
+          return '<article class="cleanup-card" data-archive-id="' + esc(row.announcement_id) + '"><div class="cleanup-card-head"><div><h4>' + esc(row.title) + '</h4><div class="cleanup-meta"><span>' + esc(row.school) + '</span><span>' + esc(row.category || '未分類') + '／' + esc(row.subcategory || '未細分') + '</span><span>' + esc(term) + '</span><span>' + esc(row.reference_value) + '</span></div></div><span class="admin-role-badge">歷史參考</span></div><div class="cleanup-reason"><span>歸檔原因：' + esc(cleanupReasonLabels[row.archive_reason] || row.archive_reason) + '</span><span>歸檔日期：' + esc(String(row.archived_at || '').slice(0, 10)) + '</span><span>附件：' + esc(row.attachment_count || 0) + '</span></div><div class="cleanup-actions"><a class="btn-ghost" href="' + esc(row.source_url || '#') + '" target="_blank" rel="noopener">原始公告</a><button class="btn-ghost" type="button" data-archive-restore="' + esc(row.announcement_id) + '">恢復為有效公告</button></div></article>';
+        }).join('') : '<p class="empty">目前沒有符合條件的歷史公告。</p>';
+      }
+      function loadArchivedAnnouncements() {
+        if (!isAdminAccount() || !accountAuth || !el.adminArchiveStatus) return;
+        el.adminArchiveStatus.textContent='讀取歷史公告中…';
+        accountAuth.listArchivedAnnouncements(archiveFilters()).then(function (rows) {
+          state.archivedAnnouncements=rows; state.archiveTotal=rows.length ? Number(rows[0].total_count || rows.length) : 0;
+          renderArchivedAnnouncements();
+          el.adminArchiveStatus.textContent='已載入；歷史資料不會加入首頁或一般搜尋。';
+        }).catch(function () { el.adminArchiveStatus.textContent='無法讀取歷史公告，未變更任何資料。'; });
       }
       function populateCleanupSchools(rows) {
         if (!el.adminCleanupSchool) return;
@@ -497,7 +525,7 @@
           state.cleanupScanned = true;
           populateCleanupSchools(state.cleanupCandidates);
           if (el.adminCleanupFilters) el.adminCleanupFilters.hidden = false;
-          el.adminCleanupStatus.textContent = "掃描完成，共列出 " + state.cleanupCandidates.length + " 筆，尚未刪除任何公告。";
+          el.adminCleanupStatus.textContent = "掃描完成，共列出 " + state.cleanupCandidates.length + " 筆，尚未歸檔任何公告。";
           renderCleanupCandidates();
         }).catch(function () {
           el.adminCleanupStatus.textContent = "掃描失敗：無法取得完整公告或管理員決策，未變更任何資料。";
@@ -505,19 +533,23 @@
       }
       function reviewCleanupCandidate(id, action, button) {
         var row = state.cleanupCandidates.find(function (candidateRow) { return candidateRow.announcement_id === id; });
-        if (!row || (action !== "keep" && action !== "delete")) return;
-        if (action === "delete" && !window.confirm("確定刪除此公告嗎？它會退出首頁、問校務與未來爬蟲結果；只保留小型刪除紀錄。")) return;
+        if (!row || (action !== "keep" && action !== "archive")) return;
+        var card = button.closest("[data-cleanup-id]");
+        var referenceSelect = card ? card.querySelector("select[data-cleanup-reference]") : null;
+        if (referenceSelect) row.reference_value = referenceSelect.value;
+        if (action === "archive" && !window.confirm("確定歸檔並移除此公告嗎？系統會先保存原始資料與既有附件關係，確認成功後才退出一般公告。")) return;
         button.disabled = true;
-        el.adminCleanupStatus.textContent = action === "delete" ? "正在刪除並建立防復活紀錄…" : "正在記錄保留決定…";
+        el.adminCleanupStatus.textContent = action === "archive" ? "正在先寫入 Archive，驗證後移除 ACTIVE…" : "正在記錄保留決定…";
         accountAuth.reviewAnnouncementCleanup(row, action).then(function () {
           state.cleanupCandidates = state.cleanupCandidates.filter(function (candidateRow) { return candidateRow.announcement_id !== id; });
-          if (action === "delete") {
+          if (action === "archive") {
             state.deletedAnnouncements[id] = true;
             delete state.memberContent[id];
             if (state.data && Array.isArray(state.data.items)) state.data.items = state.data.items.filter(function (item) { return item.id !== id; });
             renderAll();
           }
-          el.adminCleanupStatus.textContent = action === "delete" ? "已刪除；此 ID 已加入防復活清單。" : "已保留；內容未變時不會再次列出。";
+          el.adminCleanupStatus.textContent = action === "archive" ? "已歸檔並移除；Archive 與防復活紀錄均已建立。" : "已保留；內容未變時不會再次列出。";
+          if (action === "archive" && el.adminArchivePanel && !el.adminArchivePanel.hidden) loadArchivedAnnouncements();
           populateCleanupSchools(state.cleanupCandidates);
           renderCleanupCandidates();
         }).catch(function () {
@@ -914,6 +946,24 @@
       if (el.adminCleanupResults) el.adminCleanupResults.addEventListener("click", function (event) {
         var button = event.target.closest("button[data-cleanup-action]");
         if (button) reviewCleanupCandidate(button.dataset.cleanupId, button.dataset.cleanupAction, button);
+      });
+      if (el.adminArchiveToggle) el.adminArchiveToggle.addEventListener("click", function () {
+        var opening=el.adminArchivePanel.hidden; el.adminArchivePanel.hidden=!opening;
+        el.adminArchiveToggle.setAttribute("aria-expanded", String(opening));
+        if (opening) loadArchivedAnnouncements();
+      });
+      if (el.adminArchiveRefresh) el.adminArchiveRefresh.addEventListener("click", loadArchivedAnnouncements);
+      if (el.adminArchiveFilters) el.adminArchiveFilters.addEventListener("submit", function (event) { event.preventDefault(); loadArchivedAnnouncements(); });
+      if (el.adminArchiveResults) el.adminArchiveResults.addEventListener("click", function (event) {
+        var button=event.target.closest("button[data-archive-restore]"); if (!button || !accountAuth) return;
+        var id=button.dataset.archiveRestore;
+        if (!window.confirm("確定將此歷史公告恢復為有效公告嗎？它之後仍可能再次被失效檢查列為候選。")) return;
+        button.disabled=true; el.adminArchiveStatus.textContent="正在恢復公告…";
+        accountAuth.restoreArchivedAnnouncement(id).then(function (item) {
+          delete state.deletedAnnouncements[id];
+          if (item && state.data && Array.isArray(state.data.items) && !state.data.items.some(function (row) { return row.id===id; })) state.data.items.push(item);
+          renderAll(); loadArchivedAnnouncements();
+        }).catch(function () { button.disabled=false; el.adminArchiveStatus.textContent="恢復失敗，Archive 與 ACTIVE 均保持原狀。"; });
       });
       if (el.adminAccounts) el.adminAccounts.addEventListener("click", function (event) {
         var button = event.target.closest("button[data-admin-access], button[data-admin-role]");
