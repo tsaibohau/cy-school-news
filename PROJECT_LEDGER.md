@@ -505,7 +505,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
-# 3. 當前系統 checkpoint（2026-09-12 16:54 +08:00）
+# 3. 當前系統 checkpoint（2026-09-12 17:18 +08:00）
 
 ## Production
 
@@ -538,14 +538,15 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### Classification
 
-- PR #23：Ready for review
-- branch：`codex/announcement-classification-recovery`
-- HEAD：`a8afea975be4daaeb4957a0e4b839f088df2efb5`
-- Vercel Preview：Ready
+- PR #23：已 merged
+- source branch：`codex/announcement-classification-recovery`
+- source HEAD：`a8afea975be4daaeb4957a0e4b839f088df2efb5`
+- merge commit / main HEAD：`d074e9498af18c3c25f95c99c0b50a6495dc0b10`
+- Vercel Preview：Ready（合併前 checkpoint）
 - CI：failure，但 baseline attribution 已完成
 - 新增 regression：NO
-- classification recovery：完成
-- merge：尚未
+- classification recovery：已進入 main
+- Production Supabase migration / backfill / deployment：本輪未執行
 
 ### Ledger / recovery workflow
 
@@ -559,7 +560,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 1. 保住 Archive / lifecycle Freeze，不重做。
 2. PR #23 classification recovery 已完成，不再調查 baseline CI。
-3. PR #23 收尾已完成並標記 Ready for review；不得 merge，等待使用者決定。
+3. PR #23 已依使用者明確授權合併；不得重複合併或重做 recovery。
 4. PR #24 持續承載 ledger / recovery workflow，不混入產品功能。
 5. 會員權限分層仍是後續重要方向。
 6. 附件解析 → Reference Knowledge → 問校務 v2 為後續資料能力主線，但尚未開工。
@@ -690,12 +691,13 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 # 10. 目前下一個唯一允許動作
 
-**等待使用者決定是否 merge PR #23。**
+**停止在 PR #23 已合併 checkpoint，等待使用者指定下一項工作。**
 
-- PR #23 已完成收尾並為 Ready for review。
-- 未經使用者明確指示不得 merge。
-- 不得藉此處理 baseline failure、Supabase、Production、PKSH、user_tasks 或 account capability。
-- 下一個產品動作由使用者另行指定。
+- 不重複 merge PR #23。
+- 不重新 backfill、重跑 migration 或修改任何 Supabase classification rows。
+- 不自動執行 Production migration、backfill 或 deployment。
+- 不處理 PKSH、user_tasks、account capability 或其他 baseline failure。
+- 不開始附件解析、Reference Knowledge 或問校務 v2。
 
 ---
 
@@ -758,6 +760,75 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 下一個唯一允許動作
 
 等待使用者決定是否 merge PR #23。
+
+### 最終狀態
+【已完成】
+
+
+---
+
+## 2026-09-12 17:18｜合併 PR #23
+
+### 目標
+
+只將 PR #23 `Recover announcement classification v1` 合併到 main，確認 main 已包含 recovery，並記錄 merge identity；不新增修正、不碰 Supabase 或 Production deployment。
+
+### 開始前 checkpoint
+- PR: #23 open、Ready for review、mergeable
+- source branch: `codex/announcement-classification-recovery`
+- source HEAD: `a8afea975be4daaeb4957a0e4b839f088df2efb5`
+- DB / deployment checkpoint: Preview classification 4,887 / 4,887；indexed announcements 4,887；index rows 35,809；Vercel Preview Ready
+
+### 已完成
+
+- 以 expected source HEAD 鎖定後，使用 merge commit 方式合併 PR #23。
+- GitHub 回報 `merged=true`。
+- merge commit / 合併當下 main HEAD：`d074e9498af18c3c25f95c99c0b50a6495dc0b10`
+- PR #23 狀態：closed、merged。
+- main 已可直接讀取：
+  - `scraper/classification_taxonomy.py`
+  - `scraper/announcement_classifier.py`
+  - `supabase/migrations/20260912061752_announcement_classification_v1_recovery.sql`
+- 未修改 PR #23 內容，未新增任何產品修正。
+
+### 驗證
+- Git / main: merge commit 可讀，標題為 `Merge pull request #23 ... Recover announcement classification v1`
+- classification recovery: taxonomy、classifier、recovery migration 已存在 main
+- Preview Supabase: 本輪未呼叫、未寫入、未 backfill
+- Production Supabase: 本輪未呼叫、未 migration、未 backfill
+- Production deployment: 本輪未手動執行或呼叫部署
+- baseline failures: 未調查、未處理
+
+### 精確失敗點（若有）
+
+- 合併本身無失敗。
+- 第一次讀取 merge commit metadata 時誤用參數名 `repository_full_name`，唯讀呼叫被拒；改用正確參數 `repo_full_name` 後成功。此錯誤未改變 repo、PR、資料庫或部署狀態。
+
+### 已排除原因
+
+- source HEAD 未漂移。
+- PR 確實已 merged，不只是 closed。
+- main 確實包含 recovery 核心檔案。
+- 本輪沒有任何 Supabase 或 deployment 寫入工具呼叫。
+
+### 尚待驗證
+
+無屬於本輪授權範圍的待驗證項目。
+
+### 禁止重做
+
+- 不重複 merge PR #23。
+- 不重新 classification recovery。
+- 不重新 backfill 4,887 筆。
+- 不重跑 Preview / Production classification migration。
+- 不修改 Preview / Production classification 或 index rows。
+- 不處理 PKSH、user_tasks、account capability 或其他 baseline failure。
+- 不執行 Production deployment。
+- 不開始附件解析、Reference Knowledge 或問校務 v2。
+
+### 下一個唯一允許動作
+
+等待使用者指定下一項工作。
 
 ### 最終狀態
 【已完成】
