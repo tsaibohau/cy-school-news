@@ -505,7 +505,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
-# 3. 當前系統 checkpoint（2026-09-12 17:18 +08:00）
+# 3. 當前系統 checkpoint（2026-09-12 19:51 +08:00）
 
 ## Production
 
@@ -551,11 +551,11 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### Ledger / recovery workflow
 
 - branch：`codex/project-ledger-history`
-- PR #24：Ready for review `Add durable project ledger and recovery workflow`
-- HEAD（同步 main 後、收尾紀錄前）：`fe59b6dbc8f4d571fc484d2a84a3a0c940f639ce`
-- aligned main：`399f072e081c3e1e52f4be425098fbd868d9222c`
+- PR #24：已 merged `Add durable project ledger and recovery workflow`
+- source HEAD：`ff767b4926b245ec91c24d4e6f894df8be9fc218`
+- merge commit / 合併當下 main HEAD：`8ae8a415570f6884b28987b7c588e9314b1b56e9`
 - changed files：`AGENTS.md`、`PROJECT_LEDGER.md`
-- merge conflict：NO
+- product / database changes：NO
 - 目的：讓後續 Work 從 checkpoint / failure point 續接，不再重新考古。
 
 ---
@@ -565,7 +565,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 1. 保住 Archive / lifecycle Freeze，不重做。
 2. PR #23 classification recovery 已完成，不再調查 baseline CI。
 3. PR #23 已依使用者明確授權合併；不得重複合併或重做 recovery。
-4. PR #24 已與最新 main 對齊並標記 Ready for review；不得未經使用者明確指示合併。
+4. PR #24 已依使用者明確授權合併；續接制度已進入 main，不得重複合併。
 5. 會員權限分層仍是後續重要方向。
 6. 附件解析 → Reference Knowledge → 問校務 v2 為後續資料能力主線，但尚未開工。
 
@@ -695,12 +695,12 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 # 10. 目前下一個唯一允許動作
 
-**等待使用者決定是否 merge PR #24。**
+**停止在 PR #24 已合併 checkpoint，等待使用者指定下一項工作。**
 
-- PR #24 已與 main 對齊並為 Ready for review。
-- 未經使用者明確指示不得 merge PR #24。
-- 不得藉此修改產品、Supabase、classification、Archive 或處理 baseline failures。
-- 不開始附件解析、Reference Knowledge 或問校務 v2。
+- 不重複 merge PR #24。
+- 後續工作必須先讀 main 根目錄的 `AGENTS.md` 與 `PROJECT_LEDGER.md`。
+- 不自動修改產品、Supabase、classification、Archive 或 baseline failures。
+- 不自動開始附件解析、Reference Knowledge 或問校務 v2。
 
 ---
 
@@ -911,6 +911,75 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 下一個唯一允許動作
 
 等待使用者決定是否 merge PR #24。
+
+### 最終狀態
+【已完成】
+
+
+---
+
+## 2026-09-12 19:51｜合併 PR #24
+
+### 目標
+
+只將 PR #24 `Add durable project ledger and recovery workflow` 合併到 main，確認續接制度正式存在於 main；不修改產品或資料庫。
+
+### 開始前 checkpoint
+- PR: #24 open、Ready for review、mergeable
+- source branch: `codex/project-ledger-history`
+- source HEAD: `ff767b4926b245ec91c24d4e6f894df8be9fc218`
+- changed files: `AGENTS.md`、`PROJECT_LEDGER.md`
+
+### 已完成
+
+- 以 expected source HEAD 鎖定後，使用 merge commit 方式合併 PR #24。
+- GitHub 回報 `merged=true`。
+- PR #24 merge commit：`8ae8a415570f6884b28987b7c588e9314b1b56e9`
+- 合併當下 main HEAD：`8ae8a415570f6884b28987b7c588e9314b1b56e9`
+- PR #24 狀態：closed、merged。
+- main 根目錄已正式包含 `AGENTS.md` 與 `PROJECT_LEDGER.md`。
+- `AGENTS.md` 已確認包含：
+  - 開工前讀 `PROJECT_LEDGER.md`
+  - 從最後成功 checkpoint 與精確失敗點續接
+  - 完成、失敗、中斷或等待後先更新 `PROJECT_LEDGER.md`
+- PR #24 changed scope 仍只有兩份規則文件。
+
+### 驗證
+- merge result: SUCCESS
+- PR changed files: `AGENTS.md`、`PROJECT_LEDGER.md`
+- main files present: YES
+- AGENTS continuation rules present: YES
+- product changes: NO
+- Supabase / database changes: NO
+- backfill / migration / Production deployment: NO
+
+### 精確失敗點（若有）
+
+無。
+
+### 已排除原因
+
+- PR 不是只有 closed，而是 GitHub 明確回報 merged。
+- main 可直接讀取兩份根目錄文件。
+- 本輪沒有呼叫任何 Supabase、backfill、migration 或 deployment 工具。
+- 未修改 classification、Archive、PKSH、user_tasks 或 account capability。
+
+### 尚待驗證
+
+無屬於本輪授權範圍的待驗證項目。
+
+### 禁止重做
+
+- 不重複 merge PR #24。
+- 不重建 AGENTS / ledger 制度。
+- 不因本輪合併重跑 classification recovery 或 backfill。
+- 不修改 Supabase、classification、Archive、PKSH、user_tasks、account capability。
+- 不做 migration 或 Production deployment。
+- 不開始附件解析、Reference Knowledge 或問校務 v2。
+
+### 下一個唯一允許動作
+
+等待使用者指定下一項工作；後續必須從 main 的最新 ledger checkpoint 繼續。
 
 ### 最終狀態
 【已完成】
