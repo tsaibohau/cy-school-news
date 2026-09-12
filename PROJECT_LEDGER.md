@@ -767,7 +767,6 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 最終狀態
 【已完成】
 
-
 ---
 
 ## 2026-09-12 17:18｜合併 PR #23
@@ -1118,3 +1117,105 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 最終狀態
 【已完成】
 
+---
+
+## 2026-09-13 01:26｜會員 capability cutover：repo-only 實作與隔離驗證
+
+### 目標
+
+依 2026-09-12 21:28 已確認設計，完成既有 `account_capabilities` 的正式前端啟用、RPC / RLS cutover 與測試；只新增 forward-only migration 檔，不套用到 Preview 或 Production Supabase。
+
+### 開始前 checkpoint
+
+- base branch / HEAD / tree: `main` / `ff9512813b7607572335987ced490e5b7b87e826` / `7c342dc367bd002203721e24ee516dba64e17e33`
+- feature branch: `codex/member-capability-cutover`
+- tested implementation HEAD / tree: `d8d2002664c0b834b37c2cf3605a504d45963ac7` / `ca81edaed881869420227f71cb5c77282400a0c3`
+- Draft PR: #25 `Member capability cutover`
+
+### 已完成
+
+#### 前端 / Auth / Sync
+
+- `docs/capability-layer.js` 已由 monkey-patch / `MutationObserver` compatibility layer 收斂成無 DOM 攔截的正式 capability model。
+- `docs/index.html` 明確在 `account-auth.js` 前載入 capability client；PWA cache version 已同步更新。
+- `docs/app.js` 已移除 `service_level`、`hasFullService()`、`isTimetableOnly()` 與 `applyServiceAccess()` 的功能授權 gate，tab、home action、會員摘要、問校務、課表、行事曆／待辦、訂閱／通知皆依 capability map 控制。
+- 管理介面已改成五項 capability checkbox；owner / co_admin 顯示唯讀全開狀態，不能由 capability editor 修改。
+- `docs/account-auth.js` 已正式封裝 `current_account_capabilities()`、`admin_account_capabilities(...)`、`admin_set_account_capabilities(...)` 與 atomic `admin_update_account_capabilities_v2(...)`。
+- `docs/supabase-sync.js` 已移除 `serviceLevel` 正式授權 fallback；subscriptions / reads / preferences / tasks 只依五項 capability 決定讀寫。
+
+#### Forward-only migration / RLS
+
+- 新增 `supabase/migrations/20260912165735_member_capability_cutover_v2.sql`。
+- `account_access.status` 維持最外層 gate；`account_capabilities` 為五項會員功能唯一授權來源；`service_level` 只在缺列初始化時作 legacy preset，既有 rows 以 `ON CONFLICT DO NOTHING` 完整保留。
+- owner / co_admin 有效產品功能相容為全開；admin 降級後讀回原本保存的 capability，不重算。
+- atomic approval v2 在同一 transaction 更新 status 與完整五項 capability；拒絕／移除存取權不覆寫保存的 capability。
+- `user_reminder_rules`、`user_push_subscriptions` 已切到 `notifications` capability，並移除會與 capability policy OR 放行的舊 owner / approved permissive policies。
+- Security Definer functions 固定 `search_path`；PUBLIC / anon EXECUTE 已 revoke，只 grant 必要的 `authenticated` function。
+
+#### 測試
+
+- 新增 `tests/test_capability_cutover.js`、`tests/test_capability_rpc_client.js`。
+- 新增 `supabase/tests/database/capability_cutover_rls.test.sql` 30 項 matrix，涵蓋 capability matrix、owner / co_admin effective-full 與 protection、admin downgrade restore、atomic approval / rejection、missing-row initialization、existing-row preservation、service_level 不覆寫、reminder / push RLS、舊 policy 移除、EXECUTE grant 與 search_path contract。
+- 更新既有 reminder / user_tasks fixture，明確賦予 notifications / calendar capability；更新 frontend / sync / PWA contract tests 與 CI test list。
+
+### 驗證
+
+- capability-focused Node suite：9 / 9 PASS。
+- full Node regression：42 / 43 PASS；唯一 failure 為既有 `tests/test_assistant_qa.js:26` 仍期待「北港高中」查詢回傳 `null`，但 main 的 school registry 已回傳 PKSH。依本輪禁止事項只歸因，未修改 PKSH baseline。
+- `tests/test_rls_sql_contract.js`：PASS。
+- search ranking strict：train 8 / 8、validation 8 / 8；PASS。
+- assistant evaluation strict：train 6 / 6、validation 6 / 6；PASS。
+- legal preview gate：PASS（仍維持 `PREVIEW_ONLY_REVIEW_REQUIRED`；未做 Production deployment）。
+- 本機 DB reset：此 runner 無 Docker，無法在本機執行；不是 migration failure。
+- GitHub Actions `Local RLS database tests` run #122：PASS。
+  - isolated `supabase db reset --local --no-seed`：PASS，包含新 migration。
+  - user_tasks RLS：25 / 25 PASS。
+  - reminder RLS：22 / 22 PASS。
+  - capability cutover RLS：30 / 30 PASS。
+- 前一 run #121 的唯一 failure 是 PUBLIC grant 測試以 `proacl` 字串搜尋 `=X/`，誤命中 `authenticated=X/...`；改用 `aclexplode(...).grantee = 0` 後 run #122 全綠，產品 grant 未改動。
+- Vercel Preview：latest commit check SUCCESS；deployment dashboard `7zoQUfdPkasdmHsKoeXJohMmMEo6`。
+
+### Preview / Production 寫入邊界
+
+- Preview Supabase migration：NO。
+- Production Supabase migration：NO。
+- Preview / Production `account_access`：NO WRITE。
+- Preview / Production `account_capabilities`：NO WRITE。
+- Auth users：NO WRITE。
+- Preview / Production backfill：NO。
+- merge main / Production deployment：NO。
+- 唯一資料庫 mutation 是 GitHub Actions runner 的隔離 ephemeral local Supabase，job 結束後已 `supabase stop`。
+
+### 精確失敗點（若有）
+
+- 本機隔離 DB 無法啟動：`docker` 不存在；已由 GitHub Actions ephemeral Supabase 完整替代驗證並通過。
+- repo HTTPS push 首次因 runner 無 Git credential 失敗：`fatal: could not read Username for 'https://github.com'`；改由已授權 GitHub connector 建立同名 branch / commits / Draft PR，遠端成功。
+- 完整 Node regression 的唯一既有 baseline failure：`tests/test_assistant_qa.js:26` PKSH 舊預期；未修。
+
+### 已排除原因
+
+- 新 migration 本身可由乾淨 reset 依序套用，非 migration ordering / syntax failure。
+- capability、reminder 與 push RLS matrix 全綠，未留下舊 permissive policy OR bypass。
+- PUBLIC / anon EXECUTE 與 Security Definer search_path 已由資料庫 catalog 測試確認。
+- 既有 capability rows、admin downgrade row 與 service_level 非覆寫行為已由 matrix 確認。
+- Vercel Preview build 成功；沒有 Production deployment。
+
+### 尚待驗證
+
+- 尚未在 Preview 或 Production Supabase 套用 migration；這是本輪明確禁止事項，不是遺漏。
+- 尚未對真實 Preview / Production 帳號執行 after-cutover 行為驗證；必須等後續另行授權 migration 與只讀驗證窗口。
+- staging validation 的全套 Node workflow 未由本 branch 自動觸發；本機已執行相同 Node regression，並保留唯一既有 PKSH baseline failure。
+
+### 禁止重做
+
+- 不以 `service_level='full'` 重算或覆寫任何既有 capability。
+- 不套用 migration 到 Preview / Production，不修改其 account / capability / Auth 資料。
+- 不修 PKSH、user_tasks 舊 baseline、classification 或 Archive，不開始附件解析、Reference Knowledge 或問校務 v2。
+- 不 merge main，不做 Production deployment。
+
+### 下一個唯一允許動作
+
+等待使用者審閱 Draft PR #25 與成功的隔離 CI / Vercel Preview；未取得新的明確授權前，不套用任何 Supabase migration，也不合併 main。
+
+### 最終狀態
+【已完成】

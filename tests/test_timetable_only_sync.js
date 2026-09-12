@@ -16,7 +16,7 @@ const Sync = require("../docs/supabase-sync.js");
       };
     },
   };
-  const adapter = Sync.createAdapter(client, { serviceLevel: "timetable_only" });
+  const adapter = Sync.createAdapter(client, { capabilities: { timetable: true } });
   const remote = await adapter.fetchRemoteState();
   assert.deepEqual(reads, ["user_preferences"], "limited accounts only read the profile needed for their timetable");
   assert.deepEqual(remote.subscriptions, []);
@@ -25,5 +25,5 @@ const Sync = require("../docs/supabase-sync.js");
   await adapter.pushState({ subscriptions: [{ keyword: "x" }], reads: [{ announcement_id: "a" }], preferences: { preferences: { profile: { class_name: "109" } } }, tasks: [{ title: "hidden" }] });
   assert.deepEqual(writes.map((entry) => entry.table), ["user_preferences"], "limited accounts only write timetable profile settings");
   await assert.rejects(adapter.sendMutation({ account_id: "limited-user", type: "task.upsert", payload: { title: "blocked" } }), /feature unavailable/);
-  console.log("Timetable-only behavioral sync tests passed");
+  console.log("Timetable capability-only behavioral sync tests passed");
 })().catch((error) => { console.error(error); process.exitCode = 1; });

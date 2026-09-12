@@ -28,6 +28,8 @@ jobs:
         run: >-
           node --test
           tests/test_account_auth.js
+          tests/test_capability_cutover.js
+          tests/test_capability_rpc_client.js
           tests/test_admin_account_contract.js
           tests/test_account_approval_rls_contract.js
           tests/test_account_roles_contract.js

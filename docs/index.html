@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=85">
+<link rel="stylesheet" href="style.css?v=86">
 </head>
 <body>
 
@@ -186,7 +186,6 @@
       <label>搜尋帳號<input id="adminSearch" type="search" maxlength="120" placeholder="輸入 Email"></label>
       <label>申請狀態<select id="adminStatusFilter"><option value="all">全部</option><option value="pending">等待審核</option><option value="approved">已核准</option><option value="rejected">已拒絕／已移除</option></select></label>
       <label>管理角色<select id="adminRoleFilter"><option value="all">全部</option><option value="owner">主要管理員</option><option value="co_admin">聯席管理員</option><option value="member">一般會員</option></select></label>
-      <label>服務範圍<select id="adminServiceFilter"><option value="all">全部</option><option value="full">完整服務</option><option value="timetable_only">僅課表</option></select></label>
       <button class="btn-primary" type="submit">套用</button>
     </form>
     <p id="adminStatus" class="hint" role="status" aria-live="polite"></p>
@@ -317,8 +316,9 @@
 </div>
 
 <script src="account-config.js?v=41"></script>
-<script src="supabase-sync.js?v=55"></script>
-<script src="account-auth.js?v=79"></script>
+<script src="supabase-sync.js?v=56"></script>
+<script src="capability-layer.js?v=5"></script>
+<script src="account-auth.js?v=80"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
@@ -336,7 +336,7 @@
 <script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=82"></script>
+<script src="app.js?v=83"></script>
 </body>
 </html>
 

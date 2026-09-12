@@ -264,10 +264,12 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('autocomplete="current-password"'));
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
-  assert(index.includes('src="account-auth.js?v=79"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=82"'), "index must load current app shell");
+  assert(index.includes('src="capability-layer.js?v=5"'), "index must load the canonical capability model");
+  assert(index.includes('src="account-auth.js?v=80"'), "index must load current account auth");
+  assert(index.includes('src="app.js?v=83"'), "index must load current app shell");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
-  assert(sw.includes('"./account-auth.js?v=79"'), "Service Worker shell must cache current account auth");
+  assert(sw.includes('"./capability-layer.js?v=5"'), "Service Worker shell must cache the capability model");
+  assert(sw.includes('"./account-auth.js?v=80"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
   assert(app.includes('"登入信箱：" + email'));
   assert(!app.includes("sendMagicLink"));
@@ -281,8 +283,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v85"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=80")'), "App must register the current Service Worker script");
+  assert(sw.includes("cy-news-v86"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=81")'), "App must register the current Service Worker script");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   assert(app.includes("signUpWithPassword"));

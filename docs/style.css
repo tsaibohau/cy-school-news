@@ -605,6 +605,12 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
 .admin-role-badge[data-role="owner"] { background: #244f45; color: #fff; }
 .admin-role-badge[data-role="co_admin"] { background: #d8e9e4; color: #17332d; }
 .admin-account-actions { display: flex; flex-wrap: wrap; align-items: end; justify-content: flex-end; gap: 6px; }
+.capability-editor { flex: 1 1 100%; min-width: min(520px, 100%); margin: 0; padding: 10px; border: 1px solid var(--line); border-radius: 12px; }
+.capability-editor legend { padding: 0 5px; color: var(--muted); font-size: 12px; font-weight: 800; }
+.capability-grid { display: grid; grid-template-columns: repeat(5, minmax(90px, 1fr)); gap: 7px; }
+.capability-option { display: flex; align-items: center; gap: 6px; min-height: 38px; padding: 7px 8px; border-radius: 9px; background: var(--chip-bg); color: var(--ink); font-size: 12px; font-weight: 700; }
+.capability-option input { width: 17px; height: 17px; accent-color: var(--seal); }
+.capability-editor:disabled { opacity: .78; }
 .admin-pagination { display: flex; justify-content: center; align-items: center; gap: 10px; margin: 16px 0; }
 .admin-subheading { margin-top: 20px; }
 .admin-cleanup { margin-top: 30px; padding-top: 8px; border-top: 1px solid var(--line); }
@@ -634,6 +640,7 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
   .admin-filters label:first-child { grid-column: 1 / -1; }
   .admin-account { grid-template-columns: 1fr; }
   .admin-account-actions { justify-content: flex-start; }
+  .capability-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
 }
 @media (max-width: 520px) {
   .admin-filters { grid-template-columns: 1fr; }
@@ -641,6 +648,7 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
   .admin-account-actions, .admin-service-label { width: 100%; }
   .admin-account-actions button, .admin-service-label select { flex: 1 1 100%; width: 100%; }
   .cleanup-reference-label { grid-template-columns: 1fr; }
+  .capability-grid { grid-template-columns: 1fr; }
 }
 .function-toggle {
   min-height: 52px; border: 1px solid color-mix(in srgb, var(--ink) 24%, transparent);

@@ -12,6 +12,7 @@ const index = fs.readFileSync(path.join(root, "docs/index.html"), "utf8");
 const worker = fs.readFileSync(path.join(root, "supabase/functions/account-email-worker/index.ts"), "utf8");
 const hardening = fs.readFileSync(path.join(root, "supabase/migrations/20260905085250_remove_legacy_admin_path_and_add_indexes.sql"), "utf8");
 const scheduler = fs.readFileSync(path.join(root, "supabase/scheduler/activate_account_email_cron.sql"), "utf8");
+const capabilityMigration = fs.readFileSync(path.join(root, "supabase/migrations/20260912165735_member_capability_cutover_v2.sql"), "utf8");
 
 assert.match(migration, /admin_role in \('owner', 'co_admin'\)/);
 assert.match(migration, /function public\.is_app_owner\(\)/);
@@ -36,16 +37,20 @@ assert.match(auth, /admin_list_account_access/);
 assert.match(auth, /admin_update_account/);
 assert.match(auth, /owner_set_admin_role/);
 assert.match(auth, /request_account_access/);
-assert.match(sync, /serviceLevel === "timetable_only"/);
-assert.match(sync, /feature unavailable for timetable-only account/);
-assert.match(app, /function isTimetableOnly\(\)/);
-assert.match(app, /此帳號目前只有課表服務/);
+assert.doesNotMatch(sync, /serviceLevel|service_level/, "sync authorization cannot fall back to service level");
+assert.match(sync, /capabilities\.notifications/);
+assert.doesNotMatch(app, /isTimetableOnly|hasFullService|applyServiceAccess/, "app feature gates must be capability-based");
+assert.match(app, /applyCapabilityAccess/);
+assert.match(app, /updateAccountAccessWithCapabilities/);
 assert.match(app, /data-admin-access="approved"/);
+assert.match(app, /data-admin-capability/);
 assert.match(app, /data-admin-role="co_admin"/);
 assert.match(index, /id="adminSearch"/);
 assert.match(index, /id="adminStatusFilter"/);
 assert.match(index, /id="adminRoleFilter"/);
-assert.match(index, /id="adminServiceFilter"/);
+assert.doesNotMatch(index, /id="adminServiceFilter"/);
+assert.match(index, /capability-layer\.js\?v=5/);
+assert.ok(index.indexOf("capability-layer.js?v=5") < index.indexOf("account-auth.js?v=80"));
 assert.match(index, /id="viewTimetable"/);
 assert.match(index, /id="accountReapply"/);
 assert.match(worker, /x-account-email-worker-token/);
@@ -55,5 +60,14 @@ assert.doesNotMatch(worker, /re_[A-Za-z0-9_-]{12,}/, "no Resend secret is commit
 assert.match(scheduler, /account_email_worker_token/);
 assert.match(scheduler, /cron\.schedule/);
 assert.doesNotMatch(scheduler, /re_[A-Za-z0-9_-]{12,}/, "scheduler contains no provider secret");
+
+assert.match(capabilityMigration, /on conflict \(user_id, capability\) do nothing/);
+assert.match(capabilityMigration, /admin_update_account_capabilities_v2/);
+assert.match(capabilityMigration, /perform public\.admin_update_account[\s\S]*perform public\.admin_set_account_capabilities/);
+assert.match(capabilityMigration, /admin_capabilities_protected/);
+assert.match(capabilityMigration, /notifications_reminder_rules_select/);
+assert.match(capabilityMigration, /notifications_push_subscriptions_select/);
+assert.match(capabilityMigration, /set search_path = pg_catalog, public/);
+assert.match(capabilityMigration, /revoke all on function public\.admin_update_account_capabilities_v2\(uuid, text, jsonb\) from public, anon, authenticated/);
 
 console.log("Account role, service-level, re-application, and email-outbox contract tests passed");
