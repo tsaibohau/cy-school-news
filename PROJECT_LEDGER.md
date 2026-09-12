@@ -538,7 +538,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### Classification
 
-- PR #23：Draft
+- PR #23：Ready for review
 - branch：`codex/announcement-classification-recovery`
 - HEAD：`a8afea975be4daaeb4957a0e4b839f088df2efb5`
 - Vercel Preview：Ready
@@ -559,7 +559,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 1. 保住 Archive / lifecycle Freeze，不重做。
 2. PR #23 classification recovery 已完成，不再調查 baseline CI。
-3. 下一步只做 PR #23 收尾：確認 PR 說明與 checkpoint 一致，必要時將 Draft 標記 Ready for review；不得 merge，等待使用者決定。
+3. PR #23 收尾已完成並標記 Ready for review；不得 merge，等待使用者決定。
 4. PR #24 持續承載 ledger / recovery workflow，不混入產品功能。
 5. 會員權限分層仍是後續重要方向。
 6. 附件解析 → Reference Knowledge → 問校務 v2 為後續資料能力主線，但尚未開工。
@@ -690,25 +690,74 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 # 10. 目前下一個唯一允許動作
 
-**只做 PR #23 的收尾，不再做 baseline 調查。**
+**等待使用者決定是否 merge PR #23。**
 
-Codex 應：
+- PR #23 已完成收尾並為 Ready for review。
+- 未經使用者明確指示不得 merge。
+- 不得藉此處理 baseline failure、Supabase、Production、PKSH、user_tasks 或 account capability。
+- 下一個產品動作由使用者另行指定。
 
-1. 先讀 `AGENTS.md` 與本檔。
-2. 確認 PR #23 的 branch / HEAD 仍為：
-   - `codex/announcement-classification-recovery`
-   - `a8afea975be4daaeb4957a0e4b839f088df2efb5`
-3. 確認 PR 說明能反映：
-   - Preview 4,887 / 4,887
-   - index 35,809 rows
-   - no re-backfill
-   - no Preview write
-   - Vercel Preview Ready
-   - CI failures 均屬 main baseline
-   - PR #23 無新增 regression
-4. 若 PR 仍為 Draft，可將它標記為 Ready for review。
-5. 不得 merge。
-6. 不得修改任何產品程式、Supabase、classification rows、Archive、PKSH、account capability、user_tasks。
-7. 完成或失敗後，更新本檔再回報。
+---
 
-完成 PR #23 收尾後，下一步由使用者決定是否 merge。
+## 2026-09-12 17:08｜PR #23 收尾
+
+### 目標
+
+只確認 PR #23 checkpoint 與說明，若仍為 Draft 則標記 Ready for review；不 merge、不修改產品與資料庫。
+
+### 開始前 checkpoint
+- branch: `codex/announcement-classification-recovery`
+- HEAD: `a8afea975be4daaeb4957a0e4b839f088df2efb5`
+- tree: `6128f4c390fbcdc93ace74749d9a4a9bb6743c19`（沿用已確認 checkpoint；本輪未重建 working tree）
+- working tree: cloud-first read-only inspection；未建立產品修改
+- DB / deployment checkpoint: Preview classification 4,887 / 4,887；indexed announcements 4,887；index 35,809；Vercel Preview Ready
+
+### 已完成
+
+- 確認 PR #23 branch / HEAD 未變。
+- 確認 PR 說明已正確反映：
+  - Preview classification 4,887 / 4,887
+  - index 35,809 rows
+  - no re-backfill
+  - no Preview Supabase write
+  - Vercel Preview Ready
+  - CI failures 屬 main baseline
+  - PR #23 無新增 regression
+- PR #23 已由 Draft 標記為 Ready for review。
+- PR #23 保持 open、mergeable，未 merge。
+
+### 驗證
+- local tests: 本輪未重跑；沿用 Recovery 已確認測試 checkpoint
+- CI: failure 歸因沿用已完成 checkpoint；本輪未處理 baseline failure
+- Preview: GitHub commit status `Vercel = success`，PR bot 留言顯示 Ready
+- Production: 未修改、未部署
+
+### 精確失敗點（若有）
+
+無。
+
+### 已排除原因
+
+- PR 說明沒有缺漏指定 checkpoint。
+- PR branch / HEAD 沒有漂移。
+- Vercel Preview 並非等待中或失敗。
+- PR 仍未 merge。
+
+### 尚待驗證
+
+無；是否 merge 由使用者決定。
+
+### 禁止重做
+
+- 不重新 backfill 4,887 筆。
+- 不修改 Preview Supabase / classification / index rows。
+- 不處理 main baseline 的 PKSH、user_tasks、account capability failure。
+- 不做 Production migration / deployment。
+- 不在未獲明確指示時 merge PR #23。
+
+### 下一個唯一允許動作
+
+等待使用者決定是否 merge PR #23。
+
+### 最終狀態
+【已完成】
