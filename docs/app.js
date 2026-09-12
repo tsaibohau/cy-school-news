@@ -81,6 +81,7 @@
       cleanupScanned: false,
       archivedAnnouncements: [],
       archiveTotal: 0,
+      classificationRows: [],
       nickname: "",
       assistantFeedback: window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {},
       assistantAnswer: null,
@@ -115,6 +116,7 @@
       adminRefresh: $("adminRefresh"), adminStatus: $("adminStatus"), adminAccounts: $("adminAccounts"), adminMetrics: $("adminMetrics"), adminFilters: $("adminFilters"), adminSearch: $("adminSearch"), adminStatusFilter: $("adminStatusFilter"), adminRoleFilter: $("adminRoleFilter"), adminServiceFilter: $("adminServiceFilter"), adminPrevious: $("adminPrevious"), adminNext: $("adminNext"), adminPage: $("adminPage"),
       adminCleanupScan: $("adminCleanupScan"), adminCleanupStatus: $("adminCleanupStatus"), adminCleanupFilters: $("adminCleanupFilters"), adminCleanupConfidence: $("adminCleanupConfidence"), adminCleanupReason: $("adminCleanupReason"), adminCleanupSchool: $("adminCleanupSchool"), adminCleanupMetrics: $("adminCleanupMetrics"), adminCleanupResults: $("adminCleanupResults"),
       adminArchiveToggle: $("adminArchiveToggle"), adminArchivePanel: $("adminArchivePanel"), adminArchiveStatus: $("adminArchiveStatus"), adminArchiveRefresh: $("adminArchiveRefresh"), adminArchiveFilters: $("adminArchiveFilters"), adminArchiveSearch: $("adminArchiveSearch"), adminArchiveSchool: $("adminArchiveSchool"), adminArchiveCategory: $("adminArchiveCategory"), adminArchiveYear: $("adminArchiveYear"), adminArchiveSemester: $("adminArchiveSemester"), adminArchiveReference: $("adminArchiveReference"), adminArchiveMetrics: $("adminArchiveMetrics"), adminArchiveResults: $("adminArchiveResults"),
+      adminClassificationToggle: $("adminClassificationToggle"), adminClassificationPanel: $("adminClassificationPanel"), adminClassificationStatus: $("adminClassificationStatus"), adminClassificationRefresh: $("adminClassificationRefresh"), adminClassificationFilters: $("adminClassificationFilters"), adminClassificationMain: $("adminClassificationMain"), adminClassificationSub: $("adminClassificationSub"), adminClassificationSchool: $("adminClassificationSchool"), adminClassificationYear: $("adminClassificationYear"), adminClassificationConfidence: $("adminClassificationConfidence"), adminClassificationLow: $("adminClassificationLow"), adminClassificationUnclassified: $("adminClassificationUnclassified"), adminClassificationMetrics: $("adminClassificationMetrics"), adminClassificationResults: $("adminClassificationResults"),
       passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
@@ -441,6 +443,50 @@
         if (!accountAuth || !state.accountUser || !state.accountAccess || !state.accountAccess.is_admin || !el.adminAccounts) return;
         el.adminStatus.textContent = "讀取帳號申請中";
         accountAuth.getAdminAccounts(adminFilters()).then(function (rows) { el.adminStatus.textContent = ""; renderAdminAccounts(rows); }).catch(function () { el.adminStatus.textContent = "目前無法讀取帳號申請，請重新整理後再試。"; });
+      }
+      var classificationCategoryLabels = {
+        academic_exam: "段考考試", course_selection: "課程選修", admission: "升學",
+        student_affairs: "學務", club: "社團", competition: "競賽",
+        event_learning: "研習活動", scholarship: "獎助學金", honor_roll: "榮譽榜",
+        enrollment: "招生編班", administration: "行政公告", rules_policy: "規章政策",
+        campus_service: "校園服務", other: "其他",
+      };
+      function classificationFilters() {
+        var confidenceText = el.adminClassificationConfidence ? el.adminClassificationConfidence.value.trim() : "";
+        var confidence = confidenceText === "" ? NaN : Number(confidenceText);
+        confidence = Number.isFinite(confidence) && confidence >= 0 && confidence <= 1 ? confidence : null;
+        if (el.adminClassificationLow && el.adminClassificationLow.checked) confidence = confidence === null ? 0.6 : Math.min(confidence, 0.6);
+        return {
+          mainCategory: el.adminClassificationMain ? el.adminClassificationMain.value : "all",
+          subCategory: el.adminClassificationSub && el.adminClassificationSub.value.trim() || "all",
+          school: el.adminClassificationSchool ? el.adminClassificationSchool.value : "all",
+          academicYear: el.adminClassificationYear ? el.adminClassificationYear.value : "",
+          confidenceMax: confidence,
+          unclassifiedOnly: !!(el.adminClassificationUnclassified && el.adminClassificationUnclassified.checked),
+        };
+      }
+      function renderAdminClassifications(rows) {
+        if (!el.adminClassificationResults) return;
+        state.classificationRows = rows;
+        var visible = rows.slice(0, 200);
+        if (el.adminClassificationMetrics) el.adminClassificationMetrics.innerHTML = '<span><strong>' + esc(rows.length) + '</strong> 筆符合條件</span><span>classification v1</span>' + (rows.length > visible.length ? '<span>畫面先顯示前 ' + esc(visible.length) + ' 筆</span>' : '');
+        el.adminClassificationResults.innerHTML = visible.length ? visible.map(function (row) {
+          var confidence = Math.round((Number(row.classification_confidence) || 0) * 100) + "%";
+          var sources = Array.isArray(row.classification_sources) ? row.classification_sources.join(" → ") : "未提供";
+          var category = classificationCategoryLabels[row.main_category] || row.main_category || "其他";
+          return '<article class="cleanup-card" data-classification-id="' + esc(row.announcement_id) + '"><div class="cleanup-card-head"><div><h4>' + esc(row.title || "未命名公告") + '</h4><div class="cleanup-meta"><span>' + esc(row.school || "未知學校") + '</span><span>' + esc(category) + '／' + esc(row.sub_category || "other") + '</span><span>' + esc(row.academic_year || "未判定學年") + '</span><span>' + esc(row.data_layer || "ACTIVE") + '</span></div></div><span class="cleanup-confidence">' + esc(confidence) + '</span></div><div class="cleanup-reason"><span>分類來源：' + esc(sources) + '</span><span>版本：' + esc(row.classification_version) + '</span></div></article>';
+        }).join("") : '<p class="empty">目前沒有符合條件的分類資料。</p>';
+      }
+      function loadAdminClassifications() {
+        if (!accountAuth || !state.accountUser || !state.accountAccess || !state.accountAccess.is_admin || !el.adminClassificationResults) return;
+        el.adminClassificationStatus.textContent = "正在唯讀載入分類資料…";
+        accountAuth.listAnnouncementClassifications(classificationFilters()).then(function (rows) {
+          renderAdminClassifications(rows);
+          el.adminClassificationStatus.textContent = "已載入；此檢視不會修改分類資料。";
+        }).catch(function () {
+          state.classificationRows = [];
+          el.adminClassificationStatus.textContent = "目前無法讀取分類資料，未變更任何資料。";
+        });
       }
       var cleanupReasonLabels = {
         deadline_passed: "截止日期已過", event_ended: "活動已結束",
@@ -939,6 +985,14 @@
       if (el.adminFilters) el.adminFilters.addEventListener("submit", function (event) { event.preventDefault(); state.adminOffset = 0; loadAdminAccounts(); });
       if (el.adminPrevious) el.adminPrevious.addEventListener("click", function () { state.adminOffset = Math.max(0, state.adminOffset - 50); loadAdminAccounts(); });
       if (el.adminNext) el.adminNext.addEventListener("click", function () { if (state.adminOffset + 50 < state.adminTotal) { state.adminOffset += 50; loadAdminAccounts(); } });
+      if (el.adminClassificationToggle) el.adminClassificationToggle.addEventListener("click", function () {
+        var opening = el.adminClassificationPanel.hidden;
+        el.adminClassificationPanel.hidden = !opening;
+        el.adminClassificationToggle.setAttribute("aria-expanded", String(opening));
+        if (opening) loadAdminClassifications();
+      });
+      if (el.adminClassificationRefresh) el.adminClassificationRefresh.addEventListener("click", loadAdminClassifications);
+      if (el.adminClassificationFilters) el.adminClassificationFilters.addEventListener("submit", function (event) { event.preventDefault(); loadAdminClassifications(); });
       if (el.adminCleanupScan) el.adminCleanupScan.addEventListener("click", scanAnnouncementCleanup);
       [el.adminCleanupConfidence, el.adminCleanupReason, el.adminCleanupSchool].forEach(function (node) {
         if (node) node.addEventListener("change", renderCleanupCandidates);
