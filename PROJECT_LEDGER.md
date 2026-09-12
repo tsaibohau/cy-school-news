@@ -983,3 +983,138 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】
+
+---
+
+## 2026-09-12 21:28｜會員功能權限分層：現況盤點與最小設計
+
+### 目標
+
+只盤點現有會員角色、功能權限、前端 gate、RPC 與 RLS，提出逐項授權的最小修改方案；不修改產品、不套用 migration、不修改任何 Supabase 資料。
+
+### 開始前 checkpoint
+- branch: main（cloud-first 唯讀盤點；沒有建立產品分支）
+- HEAD: `79429a9ef07930035b2ef121609a1176ded7b7f3`
+- tree / working tree: 未建立本機產品 working tree；GitHub main 逐檔唯讀檢查
+- DB / deployment checkpoint:
+  - Production auth users / account_access：4 / 4
+  - Production access status：approved 4
+  - Production service_level：full 4
+  - Production active admin roles：owner 1、co_admin 1
+  - Production capability rows：五項各 4 筆，missing rows 0
+  - 本輪僅執行 schema / policy / function / aggregate count 的 SELECT；Preview 與 Production 都沒有寫入
+
+### 已完成
+
+#### 現有權限架構
+
+- `public.account_access` 保管申請生命週期：`status`、`requested_at`、`reviewed_at`、`reviewed_by`，並保留舊 `service_level in ('full','timetable_only')`。
+- `public.app_admins.admin_role` 保管管理權限：`owner` / `co_admin`；「僅課表」不是 admin role，而是舊 service level。
+- main 已有 `public.account_capabilities`，主鍵為 `(user_id, capability)`，五個 key 已正好對應：
+  - `member_content`＝會員摘要
+  - `assistant`＝問校務
+  - `timetable`＝課表
+  - `calendar`＝行事曆
+  - `notifications`＝訂閱通知
+- 已有 `has_account_capability(text)`、`current_account_capabilities()`、`admin_account_capabilities(uuid[])`、`admin_set_account_capabilities(uuid,jsonb)`。
+- `current_account_access()` 仍回傳 status / is_admin / admin_role / service_level / can_reapply。
+- `admin_list_account_access(...)` 仍依 status / role / service_level 查詢；`admin_update_account(...)` 只更新 status / service_level；`owner_set_admin_role(...)` 管 owner / co_admin 並在升任時把 service_level 設為 full。
+- Production 現況為五項 capability 每項都有 4 列；enabled aggregate：assistant 4，其餘 member_content / timetable / calendar / notifications 各 3。不得用 `service_level='full'` 重新展開並覆蓋這些既有逐項設定。
+- Production capability RLS 已控制：
+  - `user_reads` → member_content
+  - `user_subscriptions` → notifications
+  - `user_tasks` → calendar
+  - `user_preferences` → assistant / timetable / calendar / notifications 任一
+  - member announcement index/detail RPC → member_content
+- Production 的 `user_reminder_rules`、`user_push_subscriptions` 仍使用舊 approved / full-service policy，尚未由 notifications capability 完整接管。
+- Preview 已有 capability table / RPC，但沒有 applied `capability_policy_cutover_v1`；舊 approved policies 與 capability policies 同時存在。Postgres permissive policies 以 OR 合併，因此 Preview 的 fine-grained RLS 目前不是權威 gate。
+- 前端 `docs/app.js` 仍以 `service_level` 的 `hasFullService()`、`applyServiceAccess()`、`isTimetableOnly()`、`switchTab()` 控制功能；管理介面仍顯示 full / timetable_only 下拉。
+- `docs/capability-layer.js` 已有五項 checkbox、可見性 gate、`current_account_capabilities()` 與 admin capability RPC 串接，但 `docs/index.html` 沒有載入它，因此目前是 dead code。
+- `docs/supabase-sync.js` 已能依 capability 控制 subscriptions / reads / tasks / preferences，但仍保留 serviceLevel fallback。
+- 問校務 corpus 本身來自公開 current/archive JSON；受保護的會員 detail/summary 另由 member_content RPC 控制。因此 assistant 與 member_content 是兩項獨立權限；問校務可運作於公開資料，只有會員摘要補強需 member_content。
+
+#### 建議的新權限資料模型
+
+- 不新增第二張 feature-permission 表；沿用 `account_capabilities` 作唯一逐項功能權限來源。
+- `account_access.status` 保留並作最外層核准 gate；非 approved 帳號所有 capability 的有效值皆為 false。
+- `app_admins.admin_role` 保留，只代表管理介面與帳號管理 authority，不再代表會員功能集合。
+- `service_level` 暫時保留一個相容期，只作舊 client / preset / 顯示用途，不再作前端或 RLS 的授權來源；後續另案移除。
+- 第一版安全相容規則：
+  - owner / co_admin：管理 authority 保持不變，會員功能有效值暫時視為全開，且維持不可由一般 capability editor 修改，避免兩個現有管理帳號因既有 disabled row 被鎖掉。
+  - 舊 full：只在「缺列」時補成五項 true；已有列一律保留，不覆寫。
+  - 舊 timetable_only：只在「缺列」時補 timetable=true、其餘 false；已有列一律保留。
+  - pending / rejected：有效權限全 false，但保留 row 供重新核准時使用。
+  - admin 升任期間可視為全開；移除 co_admin 後恢復該帳號原本保存的逐項 capability，不重算、不覆寫。
+- 新帳號核准需在同一 transaction 寫 status 與完整五項 capability，避免 `admin_update_account` 成功但 capability 寫入失敗的半完成狀態。建議新增相容 RPC（例如 `admin_update_account_capabilities_v2(uuid,text,jsonb)`），保留舊 RPC 一個相容期。
+- `current_account_access()`、`admin_list_account_access(...)` 可維持回傳 shape；前端另用既有 `current_account_capabilities()` 與 `admin_account_capabilities(uuid[])`，降低破壞舊 client 的風險。
+
+#### 管理介面與前端最小修改
+
+- 一般會員卡片顯示五個 checkbox；核准時以 atomic v2 RPC 一次提交 status + 五項權限，已核准會員後續可用既有 setter 更新。
+- owner / co_admin 顯示角色與「管理員功能全開」唯讀摘要；co_admin 不得改 owner/co_admin，owner 的角色管理規則維持。
+- 移除產品流程對 `service_level` 的硬 gate，統一以 capability map 控制 tab、home action、同步 adapter 與操作 guard。
+- 不直接只把現有 compatibility layer 插入頁面後就算完成；需把 `app.js` 的舊 redirect/gate 改為 capability-aware，否則 timetable_only 與 capability 結果會互相覆蓋。
+- 前端隱藏只作 UX；資料保護仍由 RLS / RPC 執行。
+
+#### 需要修改的檔案 / migration
+
+- `docs/index.html`：載入 capability client（順序在 `account-auth.js` 前）並更新 cache version。
+- `docs/app.js`：改用 capability map、移除 service_level 功能 gate、改管理員五項 checkbox / atomic approval 流程。
+- `docs/account-auth.js`：正式封裝 current/admin capability RPC 與 atomic v2 approval RPC。
+- `docs/capability-layer.js`：由 monkey-patch / MutationObserver compatibility layer 收斂成正式模組，或將其邏輯整合進 app/auth；不可維持未載入 dead code。
+- `docs/supabase-sync.js`：移除 serviceLevel 作授權依據，只保留 capability。
+- 新增一個 forward-only migration（不得改寫已套用舊 migration）：
+  - 補 atomic account approval + capability RPC
+  - 補新帳號五項 row 的 idempotent 初始化
+  - 讓 admin role 的有效功能相容規則明確
+  - 將 reminder_rules / push_subscriptions 切到 notifications capability
+  - 移除所有會與 capability policy OR 放行的舊 permissive policies
+  - 明確 revoke PUBLIC / anon EXECUTE，僅 grant 必要角色
+- 測試：新增 capability matrix / admin protection / atomic approval / missing-row / RLS policy coexistence contract；更新 `test_account_roles_contract.js`、`test_timetable_only_sync.js`，並補 reminder / push 的資料庫 RLS 測試。
+
+### 驗證
+- local tests: 本輪未修改程式，因此未跑產品測試；已盤點現有 contract tests，現況仍主要斷言舊 service_level。
+- CI: 未觸發、未處理任何 baseline failure。
+- Preview: 只做 metadata / aggregate SELECT；2 auth users、2 approved account_access、每項 capability 2 rows、missing 0；發現舊與新 permissive policies 並存。
+- Production: 只做 metadata / aggregate SELECT；4 auth users、4 approved account_access、每項 capability 4 rows、missing 0；未修改 Auth / account_access / account_capabilities。
+- migration / backfill / deployment: 全部 NO。
+
+### 精確失敗點（若有）
+
+無執行失敗。設計上的精確未完成點是：
+1. capability 前端檔存在但未由 index 載入；
+2. app.js 仍以 service_level 作硬 gate；
+3. Preview 未套用 policy cutover，舊 policy 會 OR 放行；
+4. Production reminder_rules / push_subscriptions 仍依賴舊 full-service gate；
+5. 新帳號核准與 capability 設定尚非單一 transaction。
+
+### 已排除原因
+
+- 不需要再新增一張 feature permission 表；現有 `account_capabilities` 已涵蓋五項需求。
+- 不可把 Production 4 個 full 帳號重新映射成全 true；現有 capability aggregate 已存在差異，重算會破壞既有設定。
+- 不可只靠 UI 隱藏；必須完成 RLS / RPC enforcement。
+- 不可把 admin role 與會員功能 permission 混成同一欄位。
+
+### 尚待驗證
+
+- 實作階段需以匿名化 per-user matrix 建立 before/after assertion，確認 4 個 Production 帳號的 status、admin role、既有 capability row 全部原樣保存。
+- 需在隔離 Preview / local reset 驗證新 migration 的 policy matrix；本輪禁止套用，因此未做。
+- 需確認 Security Definer function 的實際 EXECUTE grants 與固定 search_path 完整符合 hardening 要求。
+
+### 禁止重做
+
+- 不重算或覆蓋現有 4 個帳號的 capability。
+- 不以 service_level 對既有帳號重新 backfill。
+- 未獲下一輪明確授權前，不建立產品 branch、不修改前端、不新增 migration、不套用 Preview / Production。
+- 不修改 Auth users、account_access 或 account_capabilities 現有資料。
+- 不做 Production migration / backfill / deployment。
+- 不處理 classification、Archive、PKSH、user_tasks baseline failure。
+- 不開始附件解析、Reference Knowledge 或問校務 v2。
+
+### 下一個唯一允許動作
+
+等待使用者明確授權後，從最新 main 建立獨立功能分支，只做「repo-only 的 capability cutover 實作與測試」；可新增 forward-only migration 檔，但不得套用到 Preview 或 Production。
+
+### 最終狀態
+【已完成】
+
