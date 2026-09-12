@@ -2,6 +2,7 @@ const assert = require("assert");
 const Sync = require("../docs/supabase-sync.js");
 const Account = require("../docs/account-sync.js");
 const Auth = require("../docs/account-auth.js");
+const FULL_CAPABILITIES = { member_content: true, assistant: true, timetable: true, calendar: true, notifications: true };
 
 function store() {
   return { data: {}, getItem(k) { return this.data[k] || null; }, setItem(k, v) { this.data[k] = v; }, removeItem(k) { delete this.data[k]; } };
@@ -23,7 +24,7 @@ const client = {
 assert.equal(Sync.requireUid({ user: { id: "u" } }), "u");
 assert.throws(() => Sync.requireUid({ user: {} }), /verified session/);
 assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
-const adapter = Sync.createAdapter(client, { onConflict: { user_subscriptions: "user_id,normalized_keyword" } });
+const adapter = Sync.createAdapter(client, { capabilities: FULL_CAPABILITIES, onConflict: { user_subscriptions: "user_id,normalized_keyword" } });
 const unauthorizedClient = {
   auth: { getSession: () => Promise.resolve({ data: { session: { user: { id: "user-a" } } }, error: null }) },
   from(table) {
@@ -38,7 +39,7 @@ const unauthorizedClient = {
   },
 };
 assert.rejects(
-  Sync.createAdapter(unauthorizedClient).fetchRemoteState(),
+  Sync.createAdapter(unauthorizedClient, { capabilities: FULL_CAPABILITIES }).fetchRemoteState(),
   /401 unauthorized/,
   "one unauthorized table read fails the coherent fetch; it cannot become empty account state"
 );

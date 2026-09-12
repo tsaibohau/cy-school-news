@@ -185,6 +185,38 @@
           page_offset: Math.max(0, Number(filters.offset) || 0),
         }).then(function (result) { if (result.error) throw result.error; return result.data || []; }); });
       },
+      getCurrentAccountCapabilities: function () {
+        return getClient().then(function (c) {
+          return c.rpc("current_account_capabilities").then(function (result) {
+            if (result.error) throw result.error;
+            return result.data || [];
+          });
+        });
+      },
+      getAdminAccountCapabilities: function (userIds) {
+        var ids = (Array.isArray(userIds) ? userIds : []).filter(function (id) { return typeof id === "string" && id; });
+        if (!ids.length) return Promise.resolve([]);
+        return getClient().then(function (c) {
+          return c.rpc("admin_account_capabilities", { target_user_ids: ids }).then(function (result) {
+            if (result.error) throw result.error;
+            return result.data || [];
+          });
+        });
+      },
+      setAccountCapabilities: function (userId, capabilities) {
+        return getClient().then(function (c) {
+          return c.rpc("admin_set_account_capabilities", { target_user_id: userId, next_capabilities: capabilities }).then(function (result) {
+            if (result.error) throw result.error;
+          });
+        });
+      },
+      updateAccountAccessWithCapabilities: function (userId, status, capabilities) {
+        return getClient().then(function (c) {
+          return c.rpc("admin_update_account_capabilities_v2", {
+            target_user_id: userId, next_status: status, next_capabilities: capabilities,
+          }).then(function (result) { if (result.error) throw result.error; });
+        });
+      },
       listAnnouncementClassifications: function (filters) {
         filters = filters || {};
         return getClient().then(function (c) {

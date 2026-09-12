@@ -32,7 +32,7 @@ const client = {
   auth: { getSession: () => Promise.resolve({ data: { session: { user: { id: "uid-a" } } }, error: null }) },
   from() { return { select() { return { eq: () => Promise.resolve({ data: [], error: null }) }; }, upsert() { return Promise.resolve({ data: [], error: null }); } }; },
 };
-const guarded = Supabase.createAdapter(client, { isCurrent: () => current });
+const guarded = Supabase.createAdapter(client, { capabilities: { member_content: true, assistant: true, timetable: true, calendar: true, notifications: true }, isCurrent: () => current });
 current = false;
 (async function () {
   await assert.rejects(guarded.fetchRemoteState(), /superseded/);

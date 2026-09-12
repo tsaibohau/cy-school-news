@@ -92,14 +92,7 @@
         notifications: provided.notifications === true,
       };
     }
-    var timetableOnly = options && options.serviceLevel === "timetable_only";
-    return {
-      member_content: !timetableOnly,
-      assistant: !timetableOnly,
-      timetable: true,
-      calendar: !timetableOnly,
-      notifications: !timetableOnly,
-    };
+    return { member_content: false, assistant: false, timetable: false, calendar: false, notifications: false };
   }
   function createAdapter(client, options) {
     options = options || {};

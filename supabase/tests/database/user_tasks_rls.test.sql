@@ -23,6 +23,12 @@ values
   ('00000000-0000-4000-8000-0000000000b2', 'approved', now())
 on conflict (user_id) do update set status = excluded.status, reviewed_at = excluded.reviewed_at;
 
+insert into public.account_capabilities (user_id, capability, enabled)
+values
+  ('00000000-0000-4000-8000-0000000000a1', 'calendar', true),
+  ('00000000-0000-4000-8000-0000000000b2', 'calendar', true)
+on conflict (user_id, capability) do update set enabled = excluded.enabled;
+
 insert into public.user_tasks (id, user_id, title, status, notes)
 values
   ('00000000-0000-4000-8000-00000000a001', '00000000-0000-4000-8000-0000000000a1', 'fixture A', 'open', 'local'),

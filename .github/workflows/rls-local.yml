@@ -29,6 +29,8 @@ jobs:
         run: supabase test db --local supabase/tests/database/user_tasks_rls.test.sql
       - name: Run reminder RLS matrix
         run: supabase test db --local supabase/tests/database/reminder_rls.test.sql
+      - name: Run capability cutover RLS matrix
+        run: supabase test db --local supabase/tests/database/capability_cutover_rls.test.sql
       - name: Stop local Supabase
         if: always()
         run: supabase stop

@@ -14,6 +14,7 @@ const registrySource = fs.readFileSync(path.join(repo, "docs", "school-registry.
 assert.match(registrySource, /id: "pksh"[\s\S]*short: "北港高中"/,
   "the browser school registry must accept PKSH instead of resetting its filter");
 const searchQuerySource = fs.readFileSync(path.join(repo, "docs", "search-query.js"), "utf8");
+const capabilitySource = fs.readFileSync(path.join(repo, "docs", "capability-layer.js"), "utf8");
 const appSource = fs.readFileSync(path.join(repo, "docs", "app.js"), "utf8");
 const indexSource = fs.readFileSync(path.join(repo, "docs", "index.html"), "utf8");
 assert.match(indexSource, /<select id="schoolFilter" aria-label="選擇公告學校">/,
@@ -63,6 +64,8 @@ class FakeElement {
   addEventListener(type, handler) { this.listeners[type] = handler; }
   setAttribute() {}
   insertAdjacentHTML(_where, html) { this.innerHTML += html; }
+  closest() { return null; }
+  querySelector() { return null; }
   focus() {}
   emit(type, event = {}) {
     const target = event.target || this;
@@ -84,6 +87,7 @@ function makeDocument() {
   return {
     elements,
     getElementById(id) { return elements[id]; },
+    querySelectorAll() { return []; },
     createElement() {
       return { set src(_value) {}, onload: null, onerror: null };
     },
@@ -182,6 +186,11 @@ async function createApp({ storage, responses, notification, controller = null, 
   vm.runInContext(relevanceSource, context);
   vm.runInContext(registrySource, context);
   vm.runInContext(searchQuerySource, context);
+  vm.runInContext(capabilitySource, context);
+  // These notification behavior cases model a member whose notifications
+  // capability is enabled. Capability denial is covered by the cutover suite.
+  const notificationMemberCapabilities = window.CyNewsCapabilities.full();
+  window.CyNewsCapabilities.empty = () => ({ ...notificationMemberCapabilities });
   vm.runInContext(appSource, context);
   await flush();
   return { context, window, document, app: window.__cyNewsAppTest, queue, fetchRequests };
@@ -686,7 +695,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v85/);
+  assert.match(swSource, /cy-news-v86/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
