@@ -2,7 +2,7 @@ name: Staging validation
 
 on:
   push:
-    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/integrated-v11, codex/account-roles-email, codex/pksh-windows-research-v12]
+    branches: [feature/personal-assistant-v1, staging, codex/assistant-validity-gate, codex/username-password-login, codex/integrated-v11, codex/account-roles-email, codex/pksh-windows-research-v12, codex/announcement-classification-recovery]
   workflow_dispatch: {}
 
 permissions:
@@ -67,6 +67,7 @@ jobs:
           tests/test_pksh_staging_overlay.js
           tests/test_ui_visual_contract.js
           tests/test_calendar_workflow.js
+          tests/test_announcement_classification_admin.js
       - name: Search ranking train and holdout gate
         run: node tools/evaluate-search-ranking.js --strict
       - name: Assistant QA train and holdout gate
@@ -116,6 +117,7 @@ jobs:
           python tests/test_pksh_adapter.py
           python tests/test_pksh_windows_handoff.py
           python tests/test_pksh_member_content.py
+          python -m unittest tests.test_announcement_classification -v
       - name: Verify generated data is untouched by staging build
         run: git diff --exit-code -- docs/data scraper/fetch_state.json
       - name: Reject tracked secret patterns
