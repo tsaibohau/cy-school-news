@@ -551,7 +551,11 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### Ledger / recovery workflow
 
 - branch：`codex/project-ledger-history`
-- PR #24：Draft `Add durable project ledger and recovery workflow`
+- PR #24：Ready for review `Add durable project ledger and recovery workflow`
+- HEAD（同步 main 後、收尾紀錄前）：`fe59b6dbc8f4d571fc484d2a84a3a0c940f639ce`
+- aligned main：`399f072e081c3e1e52f4be425098fbd868d9222c`
+- changed files：`AGENTS.md`、`PROJECT_LEDGER.md`
+- merge conflict：NO
 - 目的：讓後續 Work 從 checkpoint / failure point 續接，不再重新考古。
 
 ---
@@ -561,7 +565,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 1. 保住 Archive / lifecycle Freeze，不重做。
 2. PR #23 classification recovery 已完成，不再調查 baseline CI。
 3. PR #23 已依使用者明確授權合併；不得重複合併或重做 recovery。
-4. PR #24 持續承載 ledger / recovery workflow，不混入產品功能。
+4. PR #24 已與最新 main 對齊並標記 Ready for review；不得未經使用者明確指示合併。
 5. 會員權限分層仍是後續重要方向。
 6. 附件解析 → Reference Knowledge → 問校務 v2 為後續資料能力主線，但尚未開工。
 
@@ -691,12 +695,11 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 # 10. 目前下一個唯一允許動作
 
-**停止在 PR #23 已合併 checkpoint，等待使用者指定下一項工作。**
+**等待使用者決定是否 merge PR #24。**
 
-- 不重複 merge PR #23。
-- 不重新 backfill、重跑 migration 或修改任何 Supabase classification rows。
-- 不自動執行 Production migration、backfill 或 deployment。
-- 不處理 PKSH、user_tasks、account capability 或其他 baseline failure。
+- PR #24 已與 main 對齊並為 Ready for review。
+- 未經使用者明確指示不得 merge PR #24。
+- 不得藉此修改產品、Supabase、classification、Archive 或處理 baseline failures。
 - 不開始附件解析、Reference Knowledge 或問校務 v2。
 
 ---
@@ -829,6 +832,85 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 下一個唯一允許動作
 
 等待使用者指定下一項工作。
+
+### 最終狀態
+【已完成】
+
+
+---
+
+## 2026-09-12 17:31｜PR #24 收尾
+
+### 目標
+
+只確認 PR #24 變更範圍、同步最新 main、排除 merge conflict 並標記 Ready for review；不 merge、不修改產品或資料庫。
+
+### 開始前 checkpoint
+- PR: #24 open、Draft、mergeable
+- branch: `codex/project-ledger-history`
+- HEAD: `0960ed6738bd57976b47a7cac9c68b4d51067084`
+- PR base SHA: `a32f769ad0ee8d3a1d3ae154ad2ee33126b0ca01`
+- 最新 main（同步時）: `399f072e081c3e1e52f4be425098fbd868d9222c`
+- PR #23 merge commit: `d074e9498af18c3c25f95c99c0b50a6495dc0b10`
+
+### 已完成
+
+- 確認 PR #24 只有 `AGENTS.md` 與 `PROJECT_LEDGER.md`。
+- 確認內容只屬續接規則、失敗紀錄規則與專案總帳，沒有產品功能修改。
+- 確認總帳包含：
+  - PR #23 已 merged
+  - merge commit / main HEAD checkpoint `d074e9498af18c3c25f95c99c0b50a6495dc0b10`
+  - classification 4,887 / 4,887
+  - index rows 35,809
+  - 禁止重新 backfill
+  - 禁止重新 classification recovery
+- 以非破壞性 merge commit 將最新 main 同步到 PR 分支：
+  - synced main: `399f072e081c3e1e52f4be425098fbd868d9222c`
+  - sync commit: `fe59b6dbc8f4d571fc484d2a84a3a0c940f639ce`
+- 同步後 PR base SHA 與最新 main 一致。
+- 同步後 changed files 仍只有兩份規則文件。
+- GitHub 回報 `mergeable=true`，無 merge conflict。
+- PR #24 已由 Draft 標記為 Ready for review。
+- PR #24 未 merge。
+
+### 驗證
+- PR #24 HEAD（寫入本次總帳紀錄前）: `fe59b6dbc8f4d571fc484d2a84a3a0c940f639ce`
+- aligned main: YES，base SHA `399f072e081c3e1e52f4be425098fbd868d9222c`
+- changed files: `AGENTS.md`、`PROJECT_LEDGER.md`
+- merge conflict: NO
+- Ready for review: YES
+- 產品修改: NO
+- Supabase / DB 修改: NO
+- backfill / migration / deployment: NO
+
+### 精確失敗點（若有）
+
+- 同步後第一次 compare API 唯讀檢查誤用參數名 `repository_full_name`，呼叫被拒；PR metadata 已直接確認 base SHA、head SHA、`mergeable=true` 與 changed files，因此未重試此非必要方法。
+- 此錯誤沒有改變 branch、main、PR、產品、資料庫或部署。
+
+### 已排除原因
+
+- PR #24 未混入產品檔案。
+- PR 分支已納入同步當下最新 main。
+- PR 無 merge conflict。
+- PR 尚未 merged。
+
+### 尚待驗證
+
+無屬於本輪授權範圍的待驗證項目。
+
+### 禁止重做
+
+- 不重複同步已納入的 main commit `399f072e081c3e1e52f4be425098fbd868d9222c`。
+- 不修改 PR #24 產品範圍。
+- 不重新 backfill 或 classification recovery。
+- 不修改 Supabase、classification、Archive、PKSH、user_tasks、account capability。
+- 不做 migration 或 Production deployment。
+- 不開始附件解析、Reference Knowledge 或問校務 v2。
+
+### 下一個唯一允許動作
+
+等待使用者決定是否 merge PR #24。
 
 ### 最終狀態
 【已完成】
