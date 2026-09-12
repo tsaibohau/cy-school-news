@@ -109,7 +109,13 @@ select is((select count(*)::int from pg_policies where schemaname='public' and t
 select is((select count(*)::int from pg_policies where schemaname='public' and tablename='user_reminder_rules' and (policyname like 'approved_%' or policyname like '%_owner%')), 0, 'no legacy reminder policy remains to OR-bypass capability');
 select is((select count(*)::int from pg_policies where schemaname='public' and tablename='user_push_subscriptions'), 3, 'push table has only three capability policies');
 select is((select count(*)::int from pg_policies where schemaname='public' and tablename='user_push_subscriptions' and (policyname like 'approved_%' or policyname like '%_owner%')), 0, 'no legacy push policy remains to OR-bypass capability');
-select ok(position('=X/' in coalesce((select proacl::text from pg_proc where oid='public.admin_update_account_capabilities_v2(uuid,text,jsonb)'::regprocedure),''))=0, 'atomic RPC has no PUBLIC execute grant');
+select ok(not exists (
+  select 1
+  from pg_proc procedure
+  cross join lateral aclexplode(coalesce(procedure.proacl, acldefault('f', procedure.proowner))) privilege
+  where procedure.oid='public.admin_update_account_capabilities_v2(uuid,text,jsonb)'::regprocedure
+    and privilege.grantee=0 and privilege.privilege_type='EXECUTE'
+), 'atomic RPC has no PUBLIC execute grant');
 select ok(not has_function_privilege('anon','public.admin_update_account_capabilities_v2(uuid,text,jsonb)','execute'), 'anon cannot execute atomic RPC');
 select ok(has_function_privilege('authenticated','public.admin_update_account_capabilities_v2(uuid,text,jsonb)','execute'), 'authenticated can execute atomic RPC');
 select ok((select proconfig @> array['search_path=pg_catalog, public, private'] from pg_proc where oid='public.admin_update_account_capabilities_v2(uuid,text,jsonb)'::regprocedure), 'atomic RPC fixes search_path');
