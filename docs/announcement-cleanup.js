@@ -10,6 +10,9 @@
   var EVENT_WORDS = /比賽|競賽|講座|營隊|研習|說明會|工作坊|參訪|演講|活動|測驗|考試|補考|會議/;
   var CONTINUING_WORDS = /長期|常設|持續|即日起|全年|不限期|辦法|規定|要點|服務/;
   var REVISION_WORDS = /修正版|更新版|更正版|更正公告|第二次修正|第[二三四五六七八九十\d]+次修正|最新版|更新|修正/;
+  var HIGH_REFERENCE_WORDS = /校規|學生手冊|辦法|規章|實施要點|選課制度|升學制度|重補修|行政流程|作業流程|課程制度/;
+  var MEDIUM_REFERENCE_WORDS = /段考|補考|課程安排|重要時程|行事曆|學年度|學期|年度活動/;
+  var NONE_REFERENCE_WORDS = /停水|停電|臨時施工|場地異動|場地通知|設備維修/;
 
   function pad(value) { return String(value).padStart(2, "0"); }
   function isoDate(year, month, day) {
@@ -65,7 +68,35 @@
   }
   function candidate(item, reason, confidence, relatedDate, detail) {
     return { announcement_id: String(item.id), item: item, reason: reason, confidence: confidence,
-      related_date: relatedDate || "", detail: detail || "", source_hash: sourceHash(item), rule_version: RULE_VERSION };
+      related_date: relatedDate || "", detail: detail || "", source_hash: sourceHash(item), rule_version: RULE_VERSION,
+      reference_value: referenceValue(item), academic: academicContext(item), subcategory: subcategory(item), superseded_by: "" };
+  }
+  function referenceValue(item) {
+    var text = [item && item.title, item && item.category, item && item.source_category, item && item.summary, item && item.snippet].join(" ");
+    if (HIGH_REFERENCE_WORDS.test(text)) return "HIGH";
+    if (NONE_REFERENCE_WORDS.test(text)) return "NONE";
+    if (MEDIUM_REFERENCE_WORDS.test(text)) return "MEDIUM";
+    if (/競賽|講座|營隊|獎學金|獎助學金|補助|文學獎|徵文|徵件|活動/.test(text)) return "LOW";
+    return "NONE";
+  }
+  function academicContext(item) {
+    var text = [item && item.title, item && item.summary, item && item.snippet].join(" ");
+    var match = text.match(/(?<!\d)(1\d{2}|20\d{2})\s*(?:學年度|學年)(?:\s*[-第]?\s*([12一二])\s*學期)?/);
+    var year = match ? Number(match[1]) : null;
+    if (year && year >= 1911) year -= 1911;
+    var semester = match && (match[2] === "1" || match[2] === "一") ? 1 : match && (match[2] === "2" || match[2] === "二") ? 2 : null;
+    return { academic_year: year, semester: semester };
+  }
+  function subcategory(item) {
+    var text = [item && item.title, item && item.category, item && item.source_category].join(" ");
+    if (/重補修|補考/.test(text)) return "make_up_exam";
+    if (/段考|考試|測驗/.test(text)) return "exam";
+    if (/選課|課程/.test(text)) return "course";
+    if (/校規|辦法|規章|要點|制度/.test(text)) return "rules";
+    if (/升學|招生/.test(text)) return "admission";
+    if (/獎學金|助學金|補助/.test(text)) return "scholarship";
+    if (/活動|講座|營隊|競賽/.test(text)) return "activity";
+    return "administration";
   }
   function scan(items, decisions, options) {
     items = Array.isArray(items) ? items.filter(function (row) { return row && row.id; }) : [];
@@ -75,7 +106,7 @@
     var current = {};
     decisions.forEach(function (row) { if (row && row.announcement_id) current[row.announcement_id] = row; });
     var deleted = {};
-    decisions.forEach(function (row) { if (row && row.action === "delete") deleted[row.announcement_id] = true; });
+    decisions.forEach(function (row) { if (row && (row.action === "archive" || row.action === "delete")) deleted[row.announcement_id] = true; });
     var active = items.filter(function (item) { return !deleted[item.id]; });
     var newerByBase = {};
     active.forEach(function (item) {
@@ -110,7 +141,9 @@
       }
       var key = String(item.school || "") + "\u001f" + normalizeBaseTitle(title), newer = newerByBase[key];
       if (newer && newer.id !== item.id && String(newer.date || newer.first_seen || "") >= String(item.date || item.first_seen || "")) {
-        results.push(candidate(item, "replaced", "low", String(newer.date || ""), "可能由「" + String(newer.title || "") + "」取代"));
+        var replaced = candidate(item, "replaced", "low", String(newer.date || ""), "可能由「" + String(newer.title || "") + "」取代");
+        replaced.superseded_by = String(newer.id || "");
+        results.push(replaced);
       }
     });
     return results.sort(function (a, b) {
@@ -118,5 +151,7 @@
       return rank[a.confidence] - rank[b.confidence] || String(b.related_date).localeCompare(String(a.related_date));
     });
   }
-  return { RULE_VERSION: RULE_VERSION, scan: scan, datesIn: datesIn, sourceHash: sourceHash, normalizeBaseTitle: normalizeBaseTitle };
+  return { RULE_VERSION: RULE_VERSION, scan: scan, datesIn: datesIn, sourceHash: sourceHash,
+    normalizeBaseTitle: normalizeBaseTitle, referenceValue: referenceValue,
+    academicContext: academicContext, subcategory: subcategory };
 });

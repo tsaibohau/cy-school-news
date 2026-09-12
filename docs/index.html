@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=84">
+<link rel="stylesheet" href="style.css?v=85">
 </head>
 <body>
 
@@ -193,7 +193,7 @@
     <div id="adminAccounts" class="admin-accounts"></div>
     <div class="admin-pagination"><button id="adminPrevious" class="btn-ghost" type="button">上一頁</button><span id="adminPage" class="hint"></span><button id="adminNext" class="btn-ghost" type="button">下一頁</button></div>
     <section class="admin-cleanup" aria-labelledby="adminCleanupTitle">
-      <div class="section-heading admin-subheading"><div><h3 id="adminCleanupTitle">公告管理</h3><p class="hint">掃描既有資料並由管理員人工決定；系統不會自動刪除。</p></div><button id="adminCleanupScan" class="btn-primary" type="button">檢查無效公告</button></div>
+      <div class="section-heading admin-subheading"><div><h3 id="adminCleanupTitle">公告管理</h3><p class="hint">掃描既有資料並由管理員人工決定；失效公告會先完整歸檔，再退出一般列表。</p></div><div class="cleanup-toolbar"><button id="adminCleanupScan" class="btn-primary" type="button">檢查無效公告</button><button id="adminArchiveToggle" class="btn-ghost" type="button" aria-expanded="false" aria-controls="adminArchivePanel">歷史公告</button></div></div>
       <p id="adminCleanupStatus" class="hint" role="status" aria-live="polite">尚未執行檢查。</p>
       <form id="adminCleanupFilters" class="admin-cleanup-filters" hidden>
         <label>判定信心<select id="adminCleanupConfidence"><option value="all">全部</option><option value="high">高信心</option><option value="medium">中信心</option><option value="low">低信心</option></select></label>
@@ -202,6 +202,20 @@
       </form>
       <div id="adminCleanupMetrics" class="admin-metrics" aria-label="公告清理統計"></div>
       <div id="adminCleanupResults" class="admin-cleanup-results"></div>
+      <section id="adminArchivePanel" class="admin-archive-panel" hidden aria-labelledby="adminArchiveTitle">
+        <div class="section-heading admin-subheading"><div><h4 id="adminArchiveTitle">歷史公告</h4><p id="adminArchiveStatus" class="hint" role="status" aria-live="polite">尚未載入。</p></div><button id="adminArchiveRefresh" class="btn-ghost" type="button">重新整理</button></div>
+        <form id="adminArchiveFilters" class="admin-archive-filters">
+          <label>搜尋標題<input id="adminArchiveSearch" type="search" maxlength="120" placeholder="輸入公告標題"></label>
+          <label>學校<select id="adminArchiveSchool"><option value="all">全部學校</option><option value="cysh">嘉義高中</option><option value="cygsh">嘉義女中</option><option value="fjsh">輔仁高中</option><option value="pksh">北港高中</option></select></label>
+          <label>分類<select id="adminArchiveCategory"><option value="all">全部分類</option><option value="一般">一般</option><option value="升學">升學</option><option value="招生編班">招生編班</option><option value="榮譽榜">榮譽榜</option><option value="段考考試">段考考試</option><option value="獎助學金">獎助學金</option><option value="研習活動">研習活動</option><option value="社團">社團</option><option value="競賽">競賽</option><option value="行政公告">行政公告</option></select></label>
+          <label>學年<input id="adminArchiveYear" type="number" min="80" max="300" inputmode="numeric" placeholder="例如 115"></label>
+          <label>學期<select id="adminArchiveSemester"><option value="">全部學期</option><option value="1">第一學期</option><option value="2">第二學期</option></select></label>
+          <label>參考價值<select id="adminArchiveReference"><option value="all">全部</option><option value="HIGH">HIGH</option><option value="MEDIUM">MEDIUM</option><option value="LOW">LOW</option><option value="NONE">NONE</option></select></label>
+          <button class="btn-primary" type="submit">套用</button>
+        </form>
+        <div id="adminArchiveMetrics" class="admin-metrics" aria-label="歷史公告統計"></div>
+        <div id="adminArchiveResults" class="admin-cleanup-results"></div>
+      </section>
     </section>
   </section>
 
@@ -289,7 +303,7 @@
 
 <script src="account-config.js?v=41"></script>
 <script src="supabase-sync.js?v=55"></script>
-<script src="account-auth.js?v=78"></script>
+<script src="account-auth.js?v=79"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
@@ -303,11 +317,11 @@
 <script src="search-query.js?v=52"></script>
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
-<script src="announcement-cleanup.js?v=81"></script>
+<script src="announcement-cleanup.js?v=82"></script>
 <script src="assistant-qa.js?v=53"></script>
 <script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=81"></script>
+<script src="app.js?v=82"></script>
 </body>
 </html>
 
