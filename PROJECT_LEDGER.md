@@ -769,6 +769,69 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-13 05:31｜Draft PR #25 Member capability cutover：最終安全審閱
+
+### 目標與邊界
+
+- 只審閱 PR #25 相對最新 `origin/main` 的實際 diff，不修改產品程式、不新增 commit、不 merge、不套用任何 Preview / Production migration。
+- review 起點：`origin/main` `2297a5c47615d8ed99529b8b6faebc5e802fcc47`；PR #25 HEAD `30fc8040a6c9662be9035491f93b1cdff720979b`；tree `a93841188a1ee62c72210fc848c3b0c2dcc2e14b`。
+
+### Review 結論
+
+- 結論：**B — 有 blocking issue；保持 Draft，未標記 Ready for review。**
+- 實作靜態審閱未發現已知直接權限繞過：五項產品功能由 capability 決定，`account_access.status` 仍是 approved outer gate；admin role 僅提供管理 authority / owner、co_admin effective-full；`service_level` 只參與 missing-row legacy preset；initializer 使用 `ON CONFLICT DO NOTHING`；admin 升降級保留 stored capability；reminder / push 已由 notifications capability 控制；前端與 sync 已退出 service-level hard gate。
+- blocking 原因是本輪要求的安全 contract 尚未由現有測試完整證明，不能將 Draft 放行為 Ready。
+
+### Blocking issues（精確位置與風險）
+
+1. **Atomic approval 未測 capability 寫入失敗時的 transaction rollback。**
+   - 檔案：`supabase/tests/database/capability_cutover_rls.test.sql:13-19,69-77`。
+   - 函式：`public.admin_update_account_capabilities_v2(uuid,text,jsonb)`。
+   - 現有 fixture 在呼叫前已是 `approved`，測試只驗成功寫入；沒有讓 `admin_set_account_capabilities(...)` 在 status 更新後失敗，並斷言 status 與 capability 全部回滾。因此測試無法捕捉日後把同一 transaction 邊界破壞後產生 `approved + capability` 半完成狀態的 regression。
+
+2. **Security Definer ACL / `search_path` contract 未逐一覆蓋所有 cutover functions。**
+   - 檔案：`supabase/tests/database/capability_cutover_rls.test.sql:112-122`、`tests/test_account_roles_contract.js:64-71`。
+   - 函式：`public.has_account_capability(text)`、`public.current_account_capabilities()`、`public.admin_account_capabilities(uuid[])`、`public.admin_set_account_capabilities(uuid,jsonb)`；另應保留對 `private.initialize_account_capabilities(uuid)` 的完整 PUBLIC / anon / authenticated denial contract。
+   - 現有 DB catalog assertions 只完整檢查 atomic v2，initializer 只檢查 authenticated；Node regex 只作寬鬆單一字串匹配。migration 本身目前有固定 search_path 與 revoke/grant，但測試不足以防止上述任一函式日後重新暴露 PUBLIC / anon EXECUTE 或遺失固定 search_path。
+
+3. **四張既有會員資料表的舊 permissive-policy OR bypass 缺少最終 catalog / capability=false negative test。**
+   - migration policy：`approved_subscriptions_*`、`approved_reads_*`、`approved_preferences_*`、`approved_tasks_*`，位於 `supabase/migrations/20260912165735_member_capability_cutover_v2.sql:170-185`。
+   - 測試：`supabase/tests/database/capability_cutover_rls.test.sql:107-111` 只對 reminder / push 做 policy catalog 斷言；`supabase/tests/database/user_tasks_rls.test.sql:26-30` 只測 calendar=true 的正向路徑。
+   - migration 目前明確 drop 已知舊 policy，但缺少 reset 後 catalog assertion 與 capability=false 行為測試，無法證明 subscriptions / reads / preferences / tasks 不會因舊 permissive policy 殘留而 OR 放行。
+
+### 已確認通過的項目
+
+- existing-row preservation、missing-row initialization、admin downgrade restore、full / timetable_only 不覆寫既有 rows、owner / co_admin effective-full 與 target protection：現有 SQL / frontend matrix 有對應 assertion。
+- reminder / push notifications capability 的 true / false 可見性與舊 owner / approved policy 移除：現有 SQL matrix 有對應 assertion。
+- `docs/app.js` 無 capability 衝突的 `service_level` hard gate；`docs/capability-layer.js` 正式載入且不依賴 monkey-patch / MutationObserver；`docs/supabase-sync.js` 無 serviceLevel 正式授權 fallback。
+- `git diff --check origin/main...HEAD`：PASS。
+- capability frontend contract：PASS。
+- capability RPC client contract：PASS。
+- 相對最新 main 的 read-only merge-tree conflict scan：未發現 conflict marker。
+
+### CI / Preview 狀態
+
+- GitHub Actions `Local RLS database tests` run #123（PR HEAD）：SUCCESS。
+- Vercel commit status（PR HEAD）：SUCCESS。
+- PR #25 保持 Draft；Ready for review：NO。
+
+### Preview / Production 寫入邊界
+
+- Preview Supabase migration / data write：NO。
+- Production Supabase migration / data write：NO。
+- Auth users / account_access / account_capabilities / backfill：NO。
+- merge / Production deployment：NO。
+- 本輪未呼叫 Supabase，未修改任何遠端資料。
+
+### 下一個唯一允許動作
+
+在 PR #25 的同一功能 branch **只補齊上述三類安全回歸測試**，不改產品授權設計、不套用 Preview / Production migration；測試與 CI 全綠後重新進行最終安全審閱。
+
+### 最終狀態
+【有 blocking issue；保持 Draft】
+
+---
+
 ## 2026-09-12 17:18｜合併 PR #23
 
 ### 目標
@@ -1219,3 +1282,18 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】
+
+---
+
+## 2026-09-13 05:31｜PR #25 最終安全審閱 checkpoint
+
+- 結論：**B — 有 blocking issue；PR #25 保持 Draft，Ready for review = NO。**
+- PR HEAD / tree：`30fc8040a6c9662be9035491f93b1cdff720979b` / `a93841188a1ee62c72210fc848c3b0c2dcc2e14b`；review main：`2297a5c47615d8ed99529b8b6faebc5e802fcc47`。
+- 靜態審閱未發現已知直接授權繞過；blocking 是安全回歸測試缺口：atomic failure rollback 未驗證、所有 cutover Security Definer ACL / search_path 未逐一驗證、四張既有會員表的 permissive-policy OR bypass 未做 final catalog / capability=false negative matrix。
+- 詳細檔案、函式、policy 與風險記錄於本 ledger 同時間的「Draft PR #25 Member capability cutover：最終安全審閱」章節。
+- GitHub Actions `Local RLS database tests` run #123：SUCCESS；Vercel：SUCCESS。
+- Preview / Production Supabase、Auth、account_access、account_capabilities：NO WRITE；無 migration、merge 或 Production deployment。
+- 下一個唯一允許動作：只在 PR #25 同一 branch 補上述三類安全回歸測試，CI 全綠後重新做最終安全審閱；不得改產品授權設計或套用 Preview / Production migration。
+
+### 最終狀態
+【有 blocking issue；保持 Draft】
