@@ -1297,3 +1297,69 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【有 blocking issue；保持 Draft】
+
+---
+
+## 2026-09-14 03:57｜PR #25 安全回歸測試證據補強
+
+### 目標與修改邊界
+
+- 沿用 `codex/member-capability-cutover`，只補上一輪列出的三類安全回歸測試。
+- 保留並提交上一輪未提交的 `PROJECT_LEDGER.md` 安全審閱紀錄。
+- 產品實作、migration、前端、RPC、RLS policy、workflow：NO CHANGE。
+
+### 修改檔案
+
+- `supabase/tests/database/capability_cutover_rls.test.sql`
+  - assertions 由 30 增至 91。
+  - target 以 `pending` 與完整五項 capability rows 起始；test-only `BEFORE UPDATE` trigger 在 atomic RPC 已更新 status、setter 開始寫 capability 時故意拋出真正 exception。
+  - 驗證 RPC throws、status 回到 `pending`、完整五項 capability 與事前 snapshot 相同、rows 仍精確為五列，無 partial update。
+  - 對六支 Security Definer functions 逐一驗證 `prosecdef`、精確 `search_path`、PUBLIC / anon ACL；五支 public client RPC 另驗 authenticated EXECUTE，private initializer 驗證 PUBLIC / anon / authenticated 全部 NO。
+  - 對 `user_subscriptions`、`user_reads`、`user_tasks`、`user_preferences` 加入 final-policy catalog assertions，以及 capability=false 的 authenticated read / insert / update negative matrix與重新開啟 capability 後的正向恢復。
+- `PROJECT_LEDGER.md`：保留上一輪未提交審閱紀錄並追加本 checkpoint。
+
+### 測試結果
+
+- GitHub Actions `Local RLS database tests` run #125：SUCCESS。
+  - isolated `supabase db reset --local --no-seed`：PASS。
+  - user_tasks RLS：25 / 25 PASS。
+  - reminder RLS：22 / 22 PASS。
+  - capability cutover RLS：91 / 91 PASS。
+  - pgTAP 合計：138 / 138 PASS。
+- Atomic rollback：PASS；真實 capability UPDATE exception 後，status 與五項 capability 全部回復原值。
+- Security Definer matrix：PASS。
+- subscriptions / reads / tasks / preferences final catalog + negative/positive behavior matrix：PASS。
+- Node workflow regression：42 / 43；唯一 failure 仍為 `tests/test_assistant_qa.js:26` 的既有 PKSH 舊 baseline，依禁止事項未修改。
+- Search ranking：train 8 / 8、validation 8 / 8 PASS。
+- Assistant evaluation：train 6 / 6、validation 6 / 6 PASS。
+- Legal preview gate：PASS（仍為 `PREVIEW_ONLY_REVIEW_REQUIRED`）。
+- Python parser / calendar / detail / attachment / reminder / PKSH / classification regression：PASS。
+- 本機無 Supabase CLI / Docker，pgTAP 由 GitHub Actions 隔離 Supabase 完成；不是測試 failure。
+
+### 失敗分類與排除
+
+- run #124 首次為 90 / 91：test-only trigger 同時監聽 INSERT/UPDATE，因 PostgreSQL `BEFORE INSERT` 會先於 `ON CONFLICT DO NOTHING` 判定而在 initializer 階段過早觸發。
+- 分類：【測試假設錯誤】，不是 implementation 安全問題。
+- 只把 test trigger 改為 `BEFORE UPDATE`；完整五列使 initializer 保持資料 no-op，setter 的 conflict-update 才在 status 更新後拋錯。run #125 隨即 91 / 91 PASS。
+- 新 implementation blocking issue：NO。
+
+### CI / Vercel / PR
+
+- 已推送測試修正 HEAD：`4273d737c52e258ec82fca766f6e47e49bef4ea1`；tree：`d8690379b536f1589d928b3ca676e569a811584b`。
+- Vercel Preview：SUCCESS，deployment `3QgvzVUUo6BdBddeL7GECQT5CVVT`。
+- PR #25：保持 Draft；未標記 Ready、未 merge。
+
+### Preview / Production 寫入邊界
+
+- Preview / Production Supabase migration：NO。
+- Preview / Production data / account_access / account_capabilities：NO WRITE。
+- Auth users：NO WRITE。
+- Production deployment：NO。
+- 唯一資料庫 mutation 是 GitHub Actions runner 的隔離 ephemeral local Supabase，完成後已 stop。
+
+### 下一個唯一允許動作
+
+等待使用者另行授權「PR #25 最終安全審閱」；本輪不得自行把 PR 標記 Ready、不得套用 Preview / Production migration、不得 merge。
+
+### 最終狀態
+【已完成；PR 保持 Draft】
