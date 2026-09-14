@@ -94,7 +94,7 @@ begin
 end;
 $$;
 create trigger fail_target_capability_write
-before insert or update on public.account_capabilities
+before update on public.account_capabilities
 for each row execute function pg_temp.fail_target_capability_write();
 
 set local role authenticated;
