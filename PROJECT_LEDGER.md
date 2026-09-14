@@ -1363,3 +1363,49 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成；PR 保持 Draft】
+
+---
+
+## 2026-09-14 10:59｜PR #25 最終安全審閱（Ready for review）
+
+### 審閱結論
+
+- 結論：**A — 無 blocking issue**；PR #25 已由 Draft 標記為 Ready for review，未 merge。
+- 審閱起始 HEAD / tree：`f403b2d6cc62d472cb7b53052b828c82fe391007` / `3254a8a84488792c030784cc74dbd8229821559d`。
+- 本輪重新檢查 PR 實際 diff、migration、tests 與 GitHub CI 證據；除本 checkpoint 外，未修改 migration、產品程式、測試或 workflow。
+
+### 四組安全確認
+
+- Atomic rollback：target 由 `pending` 與完整五項既有 capability 起始；test-only `BEFORE UPDATE` trigger 只在 status 已成為 `approved` 後的 capability write 階段拋出 `P0001/test_capability_write_failure`。RPC 確實 throws，status 回復 `pending`，五項 snapshot 全數相同且仍精確五列；不是 validation-before-write 的假 rollback。
+- Security Definer matrix：六支函式均逐一驗證 `prosecdef`、精確固定 `search_path`、PUBLIC / anon EXECUTE = NO；五支 public client RPC 驗 authenticated EXECUTE = YES；`private.initialize_account_capabilities(uuid)` 另驗 authenticated = NO。catalog assertions 全數通過。
+- Legacy permissive-policy OR bypass：`user_subscriptions`、`user_reads`、`user_tasks`、`user_preferences` 均有 final catalog、舊 `approved_*` / owner policy 不存在、capability=false authenticated read/insert/update negative，以及 capability=true positive recovery；不存在第二條 permissive policy 可 OR 放行。
+- 整體 implementation：`account_capabilities` 仍是五項會員功能唯一正式授權來源；`account_access.status` 仍是 outer approved gate；`admin_role` 僅為管理 authority；`service_level` 僅留 missing-row preset / legacy compatibility，不會重算既有 rows。missing-row-only 初始化、existing-row preservation、admin effective-full / downgrade preservation、atomic approval、reminder/push notifications RLS、frontend/sync capability gate 與 Security Definer hardening均符合已確認設計。
+
+### 驗證證據
+
+- GitHub Actions `Local RLS database tests` run #126：SUCCESS。
+  - capability cutover：91 / 91 PASS。
+  - reminder / push：22 / 22 PASS。
+  - user_tasks：25 / 25 PASS。
+  - pgTAP 合計：138 / 138 PASS。
+- Vercel Preview：SUCCESS（審閱 HEAD deployment `5U33n89zZKNWH45YPmhGDbtSm4Gn`）。
+- Node regression：42 / 43；唯一 failure 仍為 `tests/test_assistant_qa.js:26` 的既有 PKSH baseline，未修改。
+- Search：train 8 / 8、validation 8 / 8 PASS。
+- Assistant evaluation：train 6 / 6、validation 6 / 6 PASS。
+- Python regression：PASS。
+- Legal preview gate：PASS（`PREVIEW_ONLY_REVIEW_REQUIRED`）。
+- 最新 main 相對 PR merge base 的變更僅為產生資料 / scraper state，未與 capability cutover 檔案重疊；未發現新 implementation blocker。
+
+### 寫入邊界
+
+- Preview / Production Supabase migration：NO。
+- Preview / Production data、`account_access`、`account_capabilities`：NO WRITE。
+- Auth users：NO WRITE。
+- merge PR #25 / Production deployment：NO。
+
+### 下一個唯一允許動作
+
+等待使用者審閱 Ready PR #25 並另行決定後續；未取得明確授權前，不 merge，也不套用 Preview / Production migration。
+
+### 最終狀態
+【無 blocking issue；Ready for review】
