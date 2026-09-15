@@ -1217,3 +1217,77 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】
+
+---
+
+## 2026-09-15 20:38｜隱藏管理員帳號卡片的舊服務 selector
+
+### 目標
+
+依使用者明確要求，只做極小 UI cleanup：所有帳號卡片不再顯示舊「服務／完整服務／僅課表」下拉選單；保留 legacy element 與 `data-admin-service` value 供既有 `app.js` 內部相容。不修改資料庫、capability 系統或其他產品流程。
+
+### 開始前 checkpoint
+- branch: `main`
+- HEAD: `0bbfb97bfacebfe708ed0f2c5f7087e0ade61f72`
+- tree: `7d5cd8a3dc522fbde68ff8a8bbc4b9215bf4ff02`
+- working tree: clean；本地 `main` 與當時最新 `origin/main` 一致
+- DB / deployment checkpoint: 本輪未呼叫或修改 Preview / Production Supabase；未執行 migration、backfill 或 Production deployment
+
+### 已完成
+
+- `docs/style.css` 將 `.admin-service-label` 設為全域 `display: none !important`。
+- `docs/sw.js` 只將 shell cache `cy-news-v85` 提升為 `cy-news-v86`，確保已安裝 PWA 不會持續使用舊 CSS。
+- 隱藏規則不位於 media query 內，因此桌面與手機版均套用。
+- 保留 `app.js` 建立的 `.admin-service-label`、`select[data-admin-service]` 與既有 service value；舊核准／存取權流程仍可在背景讀取 selector value。
+- 未刪除 `account_access.service_level`。
+- 未修改 capability 系統、五項功能權限 UI 或儲存權限程式。
+- 未重新開啟或套用 PR #25 的任何程式／migration。
+
+### 驗證
+- `node tests/test_admin_account_contract.js`: PASS
+- `node tests/test_ui_visual_contract.js`: PASS
+- `node tests/test_account_auth.js`: PASS（cache v86 更新後重跑）
+- `node tests/test_pwa_notification.js`: PASS（cache v86）
+- `node tests/test_account_sync.js`: PASS（V1.1 core、V1.2 durable lifecycle）
+- `node tests/test_account_switch_v3.js`: PASS
+- `node tests/test_announcement_classification_admin.js`: PASS
+- UI cleanup 靜態 contract: PASS；確認全域桌面／手機 cascade 隱藏、legacy selector 保留、核准／移除存取權、設為／移除聯席管理員與五項 capability hook 均仍存在。
+- `git diff --check`: PASS
+- changed files: `docs/style.css`、`docs/sw.js`、`tests/test_account_auth.js`、`tests/test_pwa_notification.js`、`PROJECT_LEDGER.md`
+- 真實瀏覽器視覺驗證: 【無法確認】；本機 server 正常啟動，但受控瀏覽器拒絕 localhost，回報 `ERR_BLOCKED_BY_CLIENT`。未部署 Production，因此沒有用 Production 網址取代本機驗證。
+- CI: commit 前未觸發
+- Preview: 未修改、未部署
+- Production: 未修改、未部署
+
+### 精確失敗點（若有）
+
+- `node tests/test_account_roles_contract.js` FAIL：測試仍期待舊字串 `feature unavailable for timetable-only account`，但未被本輪修改的 `docs/supabase-sync.js` 現為 `feature unavailable for this account capability set`。
+- 此 failure 位於未修改檔案的既有 contract 期待值，與本輪 `.admin-service-label` CSS 變更無關；本輪禁止順手修測試或 capability 系統。
+
+### 已排除原因
+
+- 不是 selector 被刪除：DOM、`data-admin-service` 與 value 仍保留。
+- 不是只隱藏一般會員：CSS 規則不依 role，主要管理員、聯席管理員與一般會員卡片全部適用。
+- 手機 media rule 沒有重新設定 `display`，且全域規則使用 `!important`，不會被手機寬度樣式覆蓋。
+- 管理操作與 capability 程式均未修改；相關 contract 與靜態 hook 檢查通過。
+
+### 尚待驗證
+
+- 未在真實登入後的管理員頁面做桌面／手機視覺截圖；原因是本輪禁止 Production deployment，且受控瀏覽器無法開啟 localhost。
+- remote CI 狀態須在 push 後另行觀察；不以 CI 修復為本輪擴張範圍。
+
+### 禁止重做
+
+- 不刪除 `account_access.service_level` 或 legacy selector/value。
+- 不修改 schema、RPC、RLS、Supabase 或 capability 系統。
+- 不重新開啟 PR #25，不套用 PR #25 的任何程式或 migration。
+- 不部署 Production。
+- 不順手修正既有 `test_account_roles_contract.js` baseline mismatch。
+- 不自行開始其他產品重構。
+
+### 下一個唯一允許動作
+
+回到 ledger 已鎖定的最高優先事項：先以 read-only 方式盤點 `user_tasks`、calendar event model 與 account sync，規劃「行事曆使用者事件 durable persistence」；未經明確授權不得直接 migration 或實作。
+
+### 最終狀態
+【已完成】
