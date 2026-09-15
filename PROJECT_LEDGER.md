@@ -562,12 +562,12 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 # 4. 現在的優先順序
 
-1. 保住 Archive / lifecycle Freeze，不重做。
-2. PR #23 classification recovery 已完成，不再調查 baseline CI。
-3. PR #23 已依使用者明確授權合併；不得重複合併或重做 recovery。
-4. PR #24 已依使用者明確授權合併；續接制度已進入 main，不得重複合併。
-5. 會員權限分層仍是後續重要方向。
-6. 附件解析 → Reference Knowledge → 問校務 v2 為後續資料能力主線，但尚未開工。
+1. 最高優先：修復「使用者自行建立的行事曆事件沒有 durable persistence」所造成的資料遺失風險。
+2. 在任何 migration 或實作前，先盤點現有 `user_tasks`、calendar event model 與 account sync，避免建立重複資料模型。
+3. 完成行事曆事件 durable persistence 後，回到使用者原始主線「改善問校務」，從已完成的 Archive + announcement classification checkpoint 繼續問校務 v2。
+4. Archive / lifecycle 維持 Freeze；PR #23 classification recovery 已完成，不重做 recovery、migration 或 backfill。
+5. PR #25 已被使用者明確拒絕並關閉，`merged = false`；不得重新開啟、merge、繼續 member-capability-cutover，或套用該 PR 的 Preview / Production migration。
+6. 不得自行插入其他產品重構。
 
 ---
 
@@ -695,12 +695,13 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 # 10. 目前下一個唯一允許動作
 
-**停止在 PR #24 已合併 checkpoint，等待使用者指定下一項工作。**
+**下一輪先以 read-only 方式盤點現有 `user_tasks`、calendar event model 與 account sync，提出不重複資料模型的帳號級 durable calendar persistence 方案；未經明確授權不得執行 migration 或產品實作。**
 
-- 不重複 merge PR #24。
-- 後續工作必須先讀 main 根目錄的 `AGENTS.md` 與 `PROJECT_LEDGER.md`。
-- 不自動修改產品、Supabase、classification、Archive 或 baseline failures。
-- 不自動開始附件解析、Reference Knowledge 或問校務 v2。
+- Supabase 應作使用者行事曆事件的 canonical storage。
+- localStorage 只能作 cache / offline queue，不得再作唯一 source of truth。
+- PR #25 CLOSED、`merged = false`；禁止重新開啟、merge、繼續開發或套用其 Preview / Production migration。
+- 行事曆資料遺失風險修復完成後，下一條產品主線才是從 Archive + classification checkpoint 繼續問校務 v2。
+- 不得自行插入其他產品重構。
 
 ---
 
@@ -1118,3 +1119,101 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 最終狀態
 【已完成】
 
+---
+
+## 2026-09-15 20:15｜拒絕 PR #25、修正產品主線與行事曆 durable persistence checkpoint
+
+### 目標
+
+只更新 `PROJECT_LEDGER.md`，記錄使用者對 PR #25 的最終決策、更正產品主線、新增行事曆資料遺失風險與重排工作優先順序；不修改任何產品程式、migration、資料庫或部署。
+
+### 開始前 checkpoint
+- branch: `main`
+- HEAD: `1c3bc1d8e15d590e9c497c91baeacfebc22e7062`
+- tree: `20e4fffc6fad38ce4ff549b4669775e67c9469e0`
+- working tree: clean；本地 `main` 已 fast-forward 至當時最新 `origin/main`
+- DB / deployment checkpoint: 本輪未讀寫 Preview / Production Supabase，未執行 migration、backfill 或 deployment
+
+### 已完成
+
+#### PR #25 最終決策
+
+- 使用者明確拒絕 PR #25。
+- PR #25：CLOSED。
+- `merged = false`。
+- 禁止重新開啟。
+- 禁止 merge。
+- 禁止繼續 `member-capability-cutover`。
+- 禁止套用該 PR 的 Preview / Production migration。
+- 該 branch 僅保留歷史證據，不視為後續開發基礎。
+
+#### 產品主線更正
+
+- 使用者原始主要目標是「改善問校務」。
+- Archive / 公告生命週期與 announcement classification 都是問校務 v2 的前置工程。
+- Member capability cutover 是錯誤偏離主線，不得再自動選為下一項工作。
+
+#### 高優先級已知缺陷
+
+- 「使用者自行建立的行事曆事件沒有 durable persistence。」
+- 已確認目前 main 的 calendar user events 使用 `localStorage`。
+- key：`cyNews.calendarEvents.v1`。
+- `loadUserEvents()` 從 `localStorage` 讀取。
+- `saveUserEvents()` 只寫入 `localStorage`。
+- 目前沒有帳號級 Supabase durable storage。
+- 因此裝置或瀏覽器儲存遺失時，使用者建立的事件可能永久消失。
+
+#### 正確技術方向
+
+- `localStorage` 不得再作為行事曆事件唯一 source of truth。
+- 未來需建立帳號級 durable calendar persistence。
+- Supabase 作 canonical storage。
+- 本機儲存只作 cache / offline queue。
+- 在任何 migration 或實作前，先盤點現有 `user_tasks`、calendar event model 與 account sync，避免建立重複資料模型。
+
+#### 鎖定工作優先順序
+
+1. 修復「行事曆使用者事件無法長期保存」的資料遺失風險。
+2. 回到問校務 v2 主線，從已完成的 Archive + classification checkpoint 繼續。
+3. 不得自行插入其他產品重構。
+
+### 驗證
+- changed files: 僅 `PROJECT_LEDGER.md`
+- product code: 未修改
+- migration: 未新增、未修改、未套用
+- local tests: 文件紀錄變更，不需執行產品測試
+- CI: 本輪不以 CI 作完成條件
+- Preview: 未修改、未部署
+- Production: 未修改、未部署
+
+### 精確失敗點（若有）
+
+無。
+
+### 已排除原因
+
+- PR #25 不再是待審或後續開發候選，而是已被使用者最終拒絕的歷史分支。
+- Member capability cutover 不屬問校務 v2 必要前置，不得再凌駕原始產品主線。
+- `localStorage` 不能提供跨裝置、跨瀏覽器或瀏覽器資料清除後的 durable persistence。
+
+### 尚待驗證
+
+- 下一輪需 read-only 盤點 `user_tasks`、現有 calendar event model 與 account sync 的 schema、欄位、同步方向、衝突處理與離線行為。
+- 尚未決定沿用 `user_tasks` 或建立其他模型；必須先以實際 schema 與程式資料流排除重複模型。
+
+### 禁止重做
+
+- 禁止重新開啟或 merge PR #25。
+- 禁止繼續 `member-capability-cutover`。
+- 禁止套用 PR #25 的 Preview / Production migration。
+- 禁止把 PR #25 branch 當成後續開發基礎；只保留歷史證據。
+- 禁止在盤點前直接建立新的 calendar persistence migration 或資料模型。
+- 禁止重新執行 Archive / classification recovery、migration 或 4,887 筆 backfill。
+- 禁止自行插入其他產品重構。
+
+### 下一個唯一允許動作
+
+以 read-only 方式盤點 main 現有 `user_tasks`、calendar event model 與 account sync，提出以 Supabase 為 canonical storage、localStorage 為 cache / offline queue，且不重複資料模型的最小修復方案；等待使用者明確授權後才可修改產品或新增／套用 migration。
+
+### 最終狀態
+【已完成】
