@@ -1291,3 +1291,265 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】
+
+---
+
+## 2026-09-15 20:55｜行事曆使用者事件 durable persistence read-only 架構盤點
+
+### 目標
+
+只從最新 `main` 盤點行事曆使用者事件、`user_tasks`、account sync / Supabase sync 的實際資料模型與生命週期，回答是否可重用 `user_tasks`，並提出以 Supabase 為 canonical storage、localStorage 只作 cache / offline queue 的最小修復方案。本輪除本 ledger 外不修改任何產品程式、migration、Supabase、Preview 或 Production；不建立 PR、不開始實作、不碰 PR #25 或 capability cutover。
+
+### 開始前 checkpoint
+
+- branch: `main`
+- HEAD: `797186a22d6e40e025efbbae1e3dcae3a1c01bda`
+- tree: `37f6d4525237077813120b2727f780597d74f9d4`
+- working tree: clean；本地 `main` 與當時最新 `origin/main` 一致
+- DB / deployment checkpoint: 未連線、未讀寫 Preview / Production Supabase；未執行 migration、backfill 或 deployment
+
+### 現況資料流
+
+#### Calendar event model
+
+- `docs/app.js` 的 `LS_EVENTS` 固定為全瀏覽器共用、未分帳號的 `cyNews.calendarEvents.v1`；頁面初始化時 `state.userEvents = loadUserEvents()`。
+- `loadUserEvents()` 只從該 localStorage key 讀 JSON，再交給 `docs/calendar-state.js` normalize；解析失敗直接回空陣列。
+- 現有事件只有 `id / title / date / notes`：
+  - 新增：`user:` + `Date.now().toString(36)` 產生 id，`CalendarState.upsert()` 後 `saveUserEvents()`。
+  - 編輯：保留原 id，覆寫 title/date/notes，再寫回同一 localStorage key。
+  - 刪除：`CalendarState.remove()` / `filter()` 實體移除 row，再寫回 localStorage；沒有 tombstone。
+- `docs/calendar-state.js` 只驗證非空 title 與 `YYYY-MM-DD` 字串；legacy 無 id row 以 index/date/title 合成 id。沒有 `user_id`、`created_at`、`updated_at`、revision、mutation id 或 `deleted_at`。
+- `calendarEvents()` 將公告事件、官方校曆事件與 `state.userEvents` 合併顯示；使用者事件不進 account lifecycle、outbox 或 Supabase adapter。
+- `clearAccountOwnedView()`、`publishState()`、`restoreAnonymous()`、logout、Google account switch 與 delete-cloud 流程都沒有重載、清空或重新分區 `state.userEvents`。因此同一瀏覽器的 A 帳號事件可在 B 帳號或匿名狀態繼續顯示，除了資料遺失風險，也有帳號隔離缺口。
+- PWA shell 更新只處理 Cache Storage，正常情況不會主動刪 localStorage；但瀏覽器清站台資料、換瀏覽器、換裝置或 localStorage 損壞後，現況沒有任何雲端副本可恢復。
+
+#### 現有 `user_tasks`
+
+- 建表 migration：`supabase/migrations/0021_user_tasks.sql`。
+- schema：`id uuid PK`、`user_id uuid FK auth.users ON DELETE CASCADE`、`title`、`status(open/completed)`、`due_date`、`priority(0..5)`、`notes`、`source_announcement_id`、`source_event_id`、`created_at`、`updated_at`、`completed_at`、`deleted_at`；另有 `(user_id, updated_at desc)` index。
+- `20260902164000_session_owned_user_data.sql` 後 `user_id` default 為 `auth.uid()`；後續 migrations 曾依 approved account / service level / calendar capability 依序替換 RLS。repo 最新 migration 順序下，`user_tasks` 的目標 policy 是 authenticated owner 且具有既有 calendar access gate。這是現況盤點，不代表重啟或採用 PR #25。
+- 初始 migration 已 `ENABLE RLS`、revoke anon、grant authenticated CRUD；ownership 條件使用 `(select auth.uid()) = user_id`。UPDATE 具 `USING` 與 `WITH CHECK`；現有 SQL / behavioral tests 覆蓋匿名拒絕、A/B owner isolation、own-row CRUD 與 upsert。
+- `docs/task-state.js` 將 task normalize 為完整 task lifecycle；create/update/complete/reopen/delete 都走 `applyMutation()`。delete 寫 `deleted_at` tombstone，不立即移除；`visible()` 才隱藏 tombstone。
+- task merge 以相同 id 合併：較新的 `updated_at` 勝；同 timestamp 時 tombstone 勝；再以 stable JSON 排序作 deterministic tie-break。這是 client timestamp LWW，能 deterministic，但仍有裝置時鐘偏差風險。
+- `docs/app.js` 的 task CRUD 先透過 `queueAccountMutation()` 更新 account-scoped local state，再加入 `cyNews.accountSync.v1:<UID>` outbox；畫面只顯示未 tombstone row。
+- `docs/supabase-sync.js` 對 `user_tasks` 以 `id` upsert，會傳完整 tombstone；登入同步為 remote fetch → local/remote merge → push merged state → 依序 drain outbox。
+- 已具跨裝置「登入／重新觸發同步後」的 eventual sync，但不是即時同步：目前 account-ready 後的新 mutation 只 enqueue，沒有在同一次操作中立刻 drain；通常要後續重新登入／重載並重新跑 sync 才上雲。故 outbox 架構可重用，但不能原封不動宣稱已提供立即 durable write。
+- `deleteOwnData()` 會依 table order hard-delete該 UID 的既有同步資料；若新增 calendar table，必須納入此帳號刪除流程與確認文字。
+
+#### Account sync / isolation
+
+- `docs/account-sync.js` 的 durable state key 為 `cyNews.accountState.v1:anonymous`、`cyNews.accountState.v1:<UID>` 與 meta；outbox 也以 `cyNews.accountSync.v1:<UID>` 分區。
+- 初次登入先抓 verified session UID 的 remote namespace，才呼叫 `lifecycle.login(uid, remote)`；避免切換期間發布前一帳號資料。
+- 該裝置 anonymous baseline 只自動 adopt 給第一個帳號一次，並以 `anonymous_adopted / adopted_account_id` 防止第二帳號重複採用。
+- remote → local：subscriptions / reads / preferences / tasks 依各 domain merge；publish 前清除帳號畫面資料。
+- local → remote：先 push merged state，再 drain 該 UID outbox；adapter 每一步重新核對 session UID、requested UID 與 sync generation。
+- conflict：subscriptions/preferences/tasks 為 timestamp LWW 加 deterministic tie-break；reads 是 monotonic union。Supabase `upsert` 本身沒有 expected-version compare-and-set。
+- offline queue：local mutation 會保存，但目前只在登入 sync path drain；成功項目 ack，第一個失敗後保留未完成項目；A outbox 無法由 B session drain。
+- 以上隔離與 merge 邏輯目前不含 calendar user events。
+
+### 核心設計結論
+
+#### `user_tasks` 是否可直接重用：NO
+
+- 欄位層面只能「勉強表示」：event title/date/notes 可塞入 task title/due_date/notes；但 task 強制帶 `open/completed`，且 priority、completed lifecycle、待辦清單、待辦計數、排序與 task reminder 都會把事件當成工作項目。
+- `source_event_id` 是 task 對來源事件的引用欄位，不是 calendar event subtype，也不能承載事件本身。
+- 若硬併，至少必須新增 `entity_type` / `task` vs `calendar_event`、將 status/due/completed constraints 改為 subtype-aware，並在所有 task query、today、reminder、UI 與統計處排除 event；修改面比新表更大，舊 task 也需 backfill。這會污染待辦語意並增加回歸風險。
+- 正確重用邊界是：重用 account-scoped cache/outbox、verified UID guard、首次匿名資料單一歸屬與測試模式；不重用 `user_tasks` table 或 task domain model。
+
+#### 推薦模型：新增 `public.user_calendar_events`
+
+最小 canonical schema：
+
+- `id uuid primary key default gen_random_uuid()`
+- `user_id uuid not null default auth.uid() references auth.users(id) on delete cascade`
+- `title text not null`，check trim length `1..80`
+- `event_date date not null`
+- `notes text not null default ''`，check length `<= 240`
+- `created_at timestamptz not null default now()`
+- `updated_at timestamptz not null default now()`（由 server mutation path 寫入）
+- `deleted_at timestamptz null`（soft-delete tombstone）
+- `version bigint not null default 1`，check `version > 0`
+- `last_mutation_id uuid not null`，用來識別「server 已成功、client 未收到回覆」後的重試
+- `legacy_import_key text null`；建立 `(user_id, legacy_import_key)` partial unique index，作同一帳號內的 v1 local event 匯入冪等鍵。此 constraint 不能阻止 A、B 兩個帳號先後匯入同一批 global legacy payload，跨帳號 ownership 必須由下述本機 durable claim 另外保護。
+- active calendar query index：`(user_id, event_date) where deleted_at is null`；sync / recovery index：`(user_id, updated_at)`。這些 index 同時覆蓋 owner filter / FK cascade 的主要查詢路徑。
+
+### RPC / RLS 最小方案
+
+- 只新增 forward-only migration；不改寫既有 `user_tasks` migration，不從 PR #25 搬程式或 migration。
+- table `ENABLE RLS`；revoke anon / PUBLIC；authenticated 只可 SELECT 自己資料。SELECT policy 至少包含 `(select auth.uid()) = user_id`，並沿用實作當下 `main` 已存在的 calendar access gate；只引用既有 gate，不修改 capability 系統。
+- create/update/delete 不用無條件 client upsert。新增單一 atomic mutation RPC，例如 `apply_user_calendar_event_mutation(id, expected_version, mutation_id, operation, payload, legacy_import_key)`：
+  - 從 `auth.uid()` 決定 owner，不接受 browser 指定他人 user_id。
+  - create / update / delete 都鎖定同一 row；同 mutation id 重試回傳既有結果，不重做。
+  - update/delete 只接受目前 `expected_version`；成功後 server 增加 version 並寫 server timestamp。
+  - stale mutation 回傳明確 conflict 與 canonical row，不得以普通 upsert 靜默覆蓋。
+  - tombstone row 的普通 update 不得清掉 `deleted_at`；未來若需要復原，必須另有明確 restore operation，不讓舊 cache 自動復活。
+- 為阻止繞過 version protocol，authenticated 不直接取得 table INSERT/UPDATE/DELETE；mutation RPC 若採 `SECURITY DEFINER`，必須固定空 `search_path`、使用 fully-qualified object、在函式內明確驗證 `auth.uid()` 與既有 calendar access、revoke EXECUTE from PUBLIC/anon，只 grant authenticated。這是針對該新 table 的最小安全邊界，不是 capability cutover。
+- 帳號「刪除已同步資料」另需 owner-only hard-delete RPC，或將 calendar hard-delete納入既有受保護的 account data deletion path；避免為了 bulk delete 開放一般 table DELETE。
+- DB tests 必須證明 anon 無權、A 看不到/改不到 B、不能竄改 owner、stale version 被拒絕、mutation replay 冪等、tombstone 不復活、legacy import key 不重複。
+
+### localStorage → cloud 安全遷移
+
+1. 新版使用 account-scoped cache，例如 `cyNews.calendarEvents.v2:<UID>`；anonymous 另有獨立 namespace。登入／登出／切帳號先清空 in-memory events，再只讀目標 namespace，絕不共用 v1 全域陣列。
+2. 登入帳號流程必須 remote-first：先取得 Supabase canonical rows與 tombstones，再套用本帳號待送 outbox；不得把任意 stale cache 直接 union 成 live row。
+3. 舊 `cyNews.calendarEvents.v1` 視為「尚未確定 owner 的 import candidate」，不能自動送給每個登入帳號。第一次偵測到時，必須由使用者明確選擇是否把整批本機事件匯入目前帳號。
+4. 使用獨立的本機 durable calendar import claim metadata（不能沿用可能早已完成的 account-sync `anonymous_adopted`）。使用者選定 A 後，先將整批 legacy payload 綁定到 A 的 UID，再開始任何 cloud import；不能只依賴 `(user_id, legacy_import_key)`，因為該 unique constraint 只保證同一帳號 idempotent，無法阻止 B 再匯入同一批資料。
+5. claim 生效後，只有 claimed UID 可查看、續傳或重試這批 legacy events；logout、reload 或 account switch 都不得解除 claim，也不得讓其他 UID 顯示或匯入。若只成功匯入部分 events，claim 必須保留且狀態維持 claimed/pending，不能因部分失敗回復成 unclaimed。
+6. 每筆以 claimed account UID + normalized legacy id/title/date/notes 產生穩定 `legacy_import_key`；DB unique constraint + mutation RPC 的 idempotent replay，使網路重試、重載與 lost response 都不重複建立同一帳號的 row。
+7. 只有所有 legacy events 都取得 cloud confirmation 後，才把 canonical rows 寫入 claimed UID cache、寫 completed receipt，並清除 v1 payload 與 active claim metadata；在此之前兩者都必須保留。completed receipt 可繼續保留，避免完成後重跑 migration。
+8. 未登入新增事件留在 anonymous v2 namespace / anonymous outbox。anonymous v2 data 也不得在登入時自動 merge 或 adopt；若未來支援匯入，仍必須由使用者明確確認目標 UID，並套用同一套 durable claim、idempotent retry 與全批 cloud confirmation 規則。
+9. 網站/PWA 更新可替換程式 cache，但不能把 local event cache 當 canonical 或主動清除尚未 ack 的 outbox、v1 payload 或未完成 claim。
+
+### 多裝置、刪除與 conflict 規則
+
+- Supabase 是登入帳號 canonical source；新裝置登入 remote-first 後即可重建事件。
+- localStorage 只保存該 UID 的最近 canonical snapshot、pending mutations、import receipt；離線可編輯，恢復 online 或下一次 account sync 時重送。
+- 每次 local mutation 先以穩定 mutation UUID enqueue，再 optimistic 更新 UI；online 時要立即 best-effort drain，而不是沿用目前「只等下一次登入 sync」的限制。失敗仍留 queue，`online`、reload、re-login 再重送。
+- 同一 version 的多裝置更新採 deterministic first-server-commit-wins；後到的 stale mutation不覆寫，client 收 canonical row並標示衝突。不能以裝置時鐘單獨決定勝負。
+- delete 也是 versioned mutation，產生 tombstone；任何 base version 較舊的 edit/import 都不能清除它。tombstone 至少保留超過支援的最長離線窗口；首版不做自動 purge，避免離線舊 cache 復活。
+- account switch 以現有 `syncGeneration / requestedUid / sessionUid` guard 擴充到 events；任何 A 的 late response 不得 publish 到 B。
+
+### 最小修改檔案清單（未執行）
+
+- 新增 `supabase/migrations/<timestamp>_user_calendar_events.sql`：table、constraints、indexes、RLS、mutation / account-delete RPC 與 grants。
+- `docs/calendar-state.js`：擴充 timestamps/version/deleted/import normalization、deterministic cache projection與 tombstone-aware merge；不再實體刪除 canonical event。
+- `docs/account-sync.js`：將 `calendar_events` 納入 account-scoped state、first-owner adoption、outbox mutation type 與 switch/logout isolation。
+- `docs/supabase-sync.js`：fetch calendar rows、呼叫 mutation RPC、處理 version conflict、drain與 delete-own-data。
+- `docs/app.js`：新增/編輯/刪除改走 account mutation；remote-first publish、分帳號 cache、legacy import確認、online immediate drain與同步狀態。
+- `docs/index.html`、`docs/sw.js`：僅在實作需要新提示 UI / script cache bust 時做最小更新。
+- tests：更新 `tests/test_calendar_state.js`、`tests/test_calendar_persistence.js`、`tests/test_account_sync.js`、`tests/test_supabase_sync.js`、`tests/test_account_switch_v3.js`；新增 calendar RLS/RPC SQL contract 與 behavioral tests，並更新 staging/PWA cache contracts（若檔案版本有變）。
+
+### 建議 rollout 順序（未執行）
+
+1. 使用者另行授權後，從最新 main 建獨立 calendar persistence branch；先寫 migration contract / state / sync / isolation tests，再做 repo-only 實作。
+2. 另經明確授權，才在隔離 Preview 套 forward-only migration；先驗 RLS/RPC、A/B isolation、replay、stale conflict、tombstone與 account hard-delete。
+3. Preview frontend 驗證 anonymous create → 明確 import、離線 create/edit/delete → online drain、雙裝置衝突、logout/switch、PWA upgrade、清除本機資料後 remote recovery。
+4. Production rollout 必須先部署向後相容的新 table/RPC，再部署 frontend；舊 frontend 不使用新 table，因此 DB-first 可安全共存。
+5. 觀察 import / mutation failure 後才考慮 tombstone retention / purge；首版不刪尚未確認的 v1 payload或 outbox。
+
+### 風險
+
+- 目前 global v1 event 在共用裝置會跨帳號顯示；遷移若自動認領，可能把事件匯入錯誤帳號。`(user_id, legacy_import_key)` 無法防止跨帳號雙重匯入，故必須先明確確認整批 owner，再建立不可因部分失敗、登出或切帳號而解除的本機 durable claim。
+- 現有 event id 不是 UUID且 legacy id 含 index/title；直接拿來當新 PK 不穩定，需獨立 idempotent import key。
+- 直接複製 `user_tasks` 的 client timestamp LWW 會受時鐘偏差影響；直接複製無條件 Supabase upsert 也可能讓 stale cache 覆蓋較新 remote。
+- 只保留 `last_mutation_id` 需搭配 `expected_version`；否則較舊已成功 mutation 在更新 mutation之後重送時仍可能覆寫。
+- tombstone 太早 hard-delete會讓長期離線裝置復活事件；永久保留則需評估儲存與隱私刪除需求。首版選擇不自動 purge，帳號刪除走明確 hard-delete。
+- 現有 outbox 不會在每次 mutation 後立即 drain；只「接上同一 queue」仍不足以保證及時 durable，必須補 online immediate best-effort flush及 reload/online recovery。
+- 新 table 必須加入 delete-cloud 全流程；漏加會違反使用者對「刪除已同步資料」的期待。
+
+### 驗證
+
+- `node tests/test_calendar_state.js`: PASS
+- `node tests/test_calendar_persistence.js`: PASS（只證明現有 localStorage lifecycle，不證明 durable cloud persistence）
+- `node tests/test_task_state.js`: PASS
+- `node tests/test_account_sync.js`: PASS（V1.1 core、V1.2 durable lifecycle）
+- `node tests/test_supabase_sync.js`: PASS
+- `node tests/test_account_switch_v3.js`: PASS
+- `node tests/test_rls_sql_contract.js`: PASS
+- `git diff --check`: PASS（ledger 寫入前 baseline）
+- Supabase 官方文件 read-only 核對：exposed table 必須啟用 RLS並做最小 grants；owner policy 用 `auth.uid()`；UPDATE 需 SELECT policy 及 `USING` / `WITH CHECK`；RLS owner欄位需 index。
+- product code / migration / Supabase / Preview / Production / PR / deployment: 全部 NO。
+
+### 精確失敗點（若有）
+
+無執行失敗。現況的精確缺口是：calendar user events 不在 account state / outbox / Supabase，global v1 key 不隔離帳號，delete 為實體刪除且沒有 tombstone；既有 outbox 也不在每次 account-ready mutation 後立即送出。
+
+### 已排除原因
+
+- `user_tasks` 不是 calendar event canonical model；欄位可勉強容納不等於 domain 可安全重用。
+- `source_event_id` 不是 event storage。
+- PWA Cache Storage 更新不是目前資料消失的直接程式路徑；真正缺陷是 localStorage 為唯一副本。
+- 不需要 Realtime 才能達成首版 durable persistence；remote-first login + immediate/outbox retry 已能提供 deterministic eventual multi-device sync，減少首版範圍。
+- 不以 PR #25、member capability cutover 或其他產品重構作為本方案前置。
+
+### 尚待驗證
+
+- 實作前需用 migration SQL 明確決定 mutation RPC 的回傳型別與 conflict error contract，並在 local/Preview 驗證 concurrent transaction locking。
+- tombstone 保留期限尚未由產品決策指定；首版安全預設是不自動 purge。
+- legacy import 的確認文案與大量事件上限需在實作輪決定，但不得改為靜默自動匯入。
+- Production / Preview 實際 schema、policy與資料量本輪依限制未查詢；實作前需在獲授權的環境重新確認 migration parity。
+
+### 禁止重做
+
+- 禁止重新開啟或 merge PR #25；禁止使用該 branch 作開發基礎或套用其 migration。
+- 禁止回到 member capability cutover；本方案只可引用 main 已存在的 access gate，不修改 capability 系統。
+- 未獲下一輪明確授權前，不新增 table/migration/RPC、不修改 frontend/sync、不連線或套用 Preview / Production。
+- 不把 calendar event 塞進 `user_tasks`，也不為此重構 task domain。
+- 不順手處理既有 outbox 的其他 domain、其他 bug、Archive/classification或問校務 v2。
+
+### 下一個唯一允許動作
+
+等待使用者明確授權；若獲授權，從當時最新 main 建立獨立 branch，只做上述 `user_calendar_events` repo-only migration、calendar/account sync、localStorage import與對應 tests。第一階段不得套用 migration到 Preview / Production，也不得部署；完成 repo review 後再等待另一次明確授權。
+
+### 最終狀態
+【已完成】
+
+---
+
+## 2026-09-15 23:29｜完成 calendar durable architecture ledger checkpoint
+
+### 目標
+
+只保留、核對並完成上一輪尚未提交的「行事曆使用者事件 durable persistence」架構盤點，補齊 legacy v1 import ownership 規則後直接 commit / push `main`；不修改任何產品程式、migration、Supabase、Preview 或 Production。
+
+### 開始前 checkpoint
+
+- branch: `main`
+- 本輪開始時 local HEAD: `797186a22d6e40e025efbbae1e3dcae3a1c01bda`
+- fetch 後 remote main HEAD: `821d9223482de8936f845922f293647a0a2ca488`
+- remote 新增的是 GitHub Actions 機器公告資料 commit `更新公告 2026-09-15 21:37`；未修改 `AGENTS.md` 或 `PROJECT_LEDGER.md`
+- 已以 `git pull --rebase --autostash origin main` fast-forward 到 remote main，並成功恢復上一輪僅 `PROJECT_LEDGER.md` 的未提交修改
+- working tree 在本輪 ledger 補充前只有 `PROJECT_LEDGER.md` modified
+- DB / deployment checkpoint: 未連線、未讀寫 Preview / Production Supabase；未執行 migration、backfill 或 deployment
+
+### 已完成
+
+- 完整保留上一輪 read-only architecture audit 與既定結論：
+  - `user_tasks` 不重用。
+  - 新增獨立 `public.user_calendar_events`。
+  - Supabase 為登入帳號 canonical source；localStorage 僅作 account-scoped cache / offline queue。
+  - 使用 versioned tombstone、`expected_version + mutation_id`、remote-first、immediate best-effort drain，且首版不自動 purge tombstone。
+- 補齊 legacy v1 import ownership：
+  - `cyNews.calendarEvents.v1` 是未分帳號的 global legacy payload。
+  - `(user_id, legacy_import_key)` 只保證同帳號 idempotent，不能單獨阻止 A、B 先後匯入同一批 payload。
+  - 使用者明確選定目標帳號後，必須先建立本機 durable batch claim 並綁定該 UID，才可開始匯入。
+  - claim 後只有該 UID 可查看／續傳／重試；logout、reload、切帳號或部分失敗都不能解除、轉交或顯示給其他帳號。
+  - 每筆 mutation 重試必須 idempotent；只有全批 events 都取得 cloud confirmation 後，才清除 v1 payload 與 active claim metadata。
+  - anonymous v2 data 不得自動 merge / adopt 到登入帳號；未來若支援匯入，同樣必須由使用者明確確認並建立 durable claim。
+- 未建立 feature branch、PR、migration 或產品實作；未碰 PR #25 或 capability cutover。
+
+### 驗證
+
+- changed files: 僅 `PROJECT_LEDGER.md`
+- 已檢查上一輪 architecture audit 仍完整涵蓋現況資料流、`user_tasks = NO`、推薦 schema、RPC/RLS、localStorage migration、conflict/deletion、tests、rollout 與風險
+- `git diff --check`: commit 前必須 PASS
+- product code / migration / Supabase / Preview / Production / deployment / PR: 全部 NO
+- local `main` ledger commit: 已完成；本輪只授權 commit，未明確授權遠端 publish，`git push origin main` 被執行環境安全政策拒絕，沒有遠端變更。狀態記為 `CLOUD_WRITE_BLOCKED`；`origin/main` 仍為 `821d9223482de8936f845922f293647a0a2ca488`。
+
+### 精確失敗點（若有）
+
+產品／ledger 內容無失敗。唯一外部失敗是未獲授權的 remote push 被政策拒絕；沒有重試、沒有繞過，也未修改 GitHub remote。
+
+### 已排除原因
+
+- DB unique key 不能代表 global legacy payload ownership；它只解決同一 UID 的重試重複問題。
+- logout 或 account switch 不是 ownership reset，不能讓 claimed payload 回到可被其他帳號認領的狀態。
+- anonymous v2 與 legacy v1 都沒有可安全推定的登入 owner，因此不得靜默自動採用。
+
+### 尚待驗證
+
+- 本輪只完成 durable design checkpoint；尚未建立 migration、RPC、frontend sync 或執行 Preview concurrency / RLS 測試。
+
+### 禁止重做
+
+- 不把 calendar events 併入 `user_tasks`。
+- 不以 per-account unique key 取代 batch ownership claim。
+- 不自動把 legacy v1 或 anonymous v2 data 匯入任何登入帳號。
+- 不重新開啟或使用 PR #25，不回到 member capability cutover。
+- 未獲明確授權前，不修改產品程式、不新增 migration、不操作 Supabase / Preview / Production、不部署。
+
+### 下一個唯一允許動作
+
+等待使用者明確授權後，從當時最新 `main` 建立獨立 branch，只做 `user_calendar_events` 的 repo-only 實作與測試；不得在同一授權下套用 Preview / Production migration 或部署。
+
+### 最終狀態
+【已完成】
