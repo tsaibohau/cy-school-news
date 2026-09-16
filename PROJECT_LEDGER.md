@@ -1955,3 +1955,64 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 
 ### 最終狀態
 【Preview migration 與 rollback runtime verification 完成；Production untouched】
+
+---
+
+## 2026-09-16｜PR #26 calendar browser load-order regression fix
+
+### 真實瀏覽器 blocker
+
+- Preview 真實瀏覽器中，行事曆新增事件按下儲存後沒有反應。
+- 根因確認：`docs/index.html` 原先依序載入 `task-state.js → account-sync.js → ... → calendar-state.js → app.js`。
+- `account-sync.js` module 初始化時只讀一次 `root.CyNewsCalendarState`；瀏覽器沒有 Node `require` fallback，因此 closure 內 `CalendarState` 永久為 `undefined`，`calendar.create` 進入 `AccountLifecycle.applyMutation()` 時拋出 `calendar state unavailable`。
+- 既有 Node tests 先用 `require('../docs/calendar-state.js')`，而 `account-sync.js` 在 Node 可再 `require('./calendar-state.js')`，所以測試環境自動補上瀏覽器缺失依賴，遮蔽實際 load-order bug。
+
+### Scoped fix
+
+- script order 改為：`task-state.js → calendar-state.js?v=44 → account-sync.js?v=56 → ... → app.js?v=84`；硬性保證 `calendar-state.js → account-sync.js → app.js`。
+- 未修改 `calendar-state.js`、`account-sync.js` 或 `app.js` 的 persistence / mutation 邏輯。
+- PWA shell cache 只做必要 cache bust：`cy-news-v88 → cy-news-v89`；shell entries 同步更新 calendar/account query versions，cache strategy 未改。
+- 新增 `tests/test_calendar_browser_load_order.js`，用 Node VM 建立無 `module`、無 `exports`、無 `require` 的 browser-like global 環境，先執行 Calendar State 再執行 Account Sync；確認 calendar create/update/delete、anonymous local persistence 與登入帳號 account-scoped queue 均可運作，且不會拋出 `calendar state unavailable`。
+- staging validation 納入此 regression test。
+
+### Changed files / implementation checkpoint
+
+- implementation remote commit：`ff3265d185d20f269e306702731c8a58f27e1a4e`
+- implementation tree：`3ec7d7db0caccd6a1da2f20ba1dda43d04d894af`
+- changed files：`.github/workflows/staging-validation.yml`、`docs/index.html`、`docs/sw.js`、`tests/test_account_auth.js`、`tests/test_pwa_notification.js`、`tests/test_calendar_browser_load_order.js`。
+
+### Regression results
+
+- browser script-order contract：PASS。
+- browser-like create / edit / delete：PASS。
+- anonymous local event persistence：PASS。
+- logged-in account event queue：PASS。
+- calendar state / persistence / durable contract：PASS。
+- account sync / account switch / Supabase adapter：PASS。
+- account auth / PWA / staging build / UI / calendar workflow：PASS。
+- `git diff --check`：PASS。
+
+### Vercel / CI / external state
+
+- Vercel Preview：Ready。
+- deployment：`2DNAPxS8mqfRgUy34BqKbwfpHyhF`。
+- Preview URL：`https://cy-school-news-staging-git-code-fee9ea-tsaibohau-9644s-projects.vercel.app`。
+- 對 Preview URL 的額外 HTML open 被工具以 URL safety 規則拒絕，屬 non-retryable；沒有重試。部署狀態與 URL 以 PR 上 Vercel Git integration 的 Ready 回報為準。
+- GitHub RLS workflow 在單次檢查時仍為【等待中】；本輪沒有 migration / SQL / RLS 變更，因此未繼續 polling。
+- 所有 external operation 均未超過 5 分鐘；未延長等待。
+
+### Safety
+
+- Preview migration rerun：NO。
+- Preview / Production Supabase write：NO。
+- RPC / RLS / migration 修改：NO。
+- Production：untouched；沒有 query、write、migration 或 deployment。
+- PR #26：維持 Draft、未 merge、未標 Ready。
+- unrelated baseline：未修改。
+
+### 下一個唯一允許動作
+
+等待使用者在最新 Vercel Preview 驗收新增／編輯／刪除事件。未取得後續明確授權前，不 merge PR #26、不標 Ready、不重跑 Preview migration、不操作 Production Supabase或部署 Production。
+
+### 最終狀態
+【browser load-order regression 已修正；Vercel Preview Ready；等待使用者驗收】
