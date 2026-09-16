@@ -1861,3 +1861,97 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 
 ### 最終狀態
 【checkpoint recovery 完成；無未提交產品修改；停止等待】
+
+---
+
+## 2026-09-16｜PR #26 Preview Supabase migration / runtime verification
+
+### 授權與開始前狀態
+
+- 使用者明確授權只對 Preview Supabase `ebezqanvmgsgtatsbssn` 套用 PR #26 的 `user_calendar_events` migration 並驗證。
+- Production Supabase `oppdhtnepjagdwovndra`：未查詢、未寫入、未套 migration。
+- branch：`codex/user-calendar-events-durable`
+- 開始前 local / remote HEAD：`f338f9559b4e409728535a131842218f3e25412b`
+- 開始前 tree：`d04b4b13371c3f43ddf7dc231d08a7dbed083567`
+- working tree：clean。
+- Draft PR #26：open、Draft、未 merge；head 與指定 HEAD 一致。
+- migration repo blob：`d32e6da3d043ed20c4f2dd161ed12d9bfb1a0455`；working tree 與 PR HEAD 一致。
+
+### Preview preflight
+
+- migration registry 原先最後一筆為 `20260912045120_announcement_classification_v1`；沒有 `user_calendar_events`。
+- `public.user_calendar_events`、`apply_user_calendar_event_mutation(...)`、`delete_own_user_calendar_events()` 原先均不存在，因此未發生重跑。
+- baseline counts（只輸出 aggregate，不讀取或記錄 email / UID / token / secret）：
+  - `account_access`：2
+  - `account_capabilities`：10
+  - calendar capability：2（enabled 1 / disabled 1）
+  - `app_admins`：2
+  - `user_tasks`：0（live 0）
+  - Auth users：2
+
+### Migration
+
+- Preview migration：SUCCESS。
+- repo migration source：`supabase/migrations/20260916110000_user_calendar_events.sql`。
+- Supabase migration registry 實際登錄：`20260916061747_user_calendar_events`。版本時間由 Supabase migration operation 產生；SQL 來源仍為上述 PR 檔案，沒有修改 migration 後重跑。
+- Preview write：YES，僅本 migration 與 transaction/rollback calendar fixture。
+- backfill / seed / Auth / account access / capability mutation：NO。
+
+### Schema / constraints / indexes
+
+- `public.user_calendar_events` 存在且 RLS enabled。
+- columns 確認：`id uuid`、`user_id uuid`、`title text`、`event_date date`、`notes text`、`created_at/updated_at timestamptz`、`deleted_at timestamptz`、`version bigint`、`last_mutation_id uuid`、`legacy_import_key text`；nullable/default 與 migration 一致。
+- constraints 確認：PK、`auth.users(id) on delete cascade`、title `1..80`、notes `<=240`、version `>0`、legacy key `1..200`。
+- indexes 確認：owner/update、active owner/date partial index、以及 `(user_id, legacy_import_key) where legacy_import_key is not null` partial unique index。
+
+### ACL / RLS / RPC
+
+- anon table SELECT / INSERT / UPDATE / DELETE：全部 false。
+- authenticated：只有 SELECT=true；direct INSERT / UPDATE / DELETE=false。
+- 唯一 SELECT policy：authenticated、`auth.uid() = user_id`，且必須通過既有 `has_account_capability('calendar')` gate。
+- `apply_user_calendar_event_mutation(uuid,bigint,uuid,text,jsonb,text)`：SECURITY DEFINER、空 `search_path`、PUBLIC/anon EXECUTE=false、authenticated EXECUTE=true；函式內檢查 authenticated UID + calendar capability。
+- `delete_own_user_calendar_events()`：SECURITY DEFINER、空 `search_path`、PUBLIC/anon EXECUTE=false、authenticated EXECUTE=true；只要求 authenticated UID，不依賴 calendar capability，只刪自己的 calendar rows。
+
+### Preview runtime matrix（transaction rollback fixture）
+
+- create `expected_version=0` → applied：PASS。
+- 同 mutation id retry → idempotent replay、version 不增加：PASS。
+- matching update → version + 1：PASS。
+- stale update → conflict，canonical row 未被覆寫：PASS。
+- delete → versioned tombstone：PASS。
+- tombstoned row 普通 update 不得復活：PASS。
+- owner read isolation：PASS。
+- owner write isolation：PASS。
+- calendar capability=false mutation denied：PASS。
+- calendar capability=false owner cloud delete 仍成功：PASS。
+- fixture 只寫入 `user_calendar_events`，transaction 最終 rollback；rollback 後 fixture 殘留 rows：0。
+- 沒有新增或修改 Auth user、account access、account capability、admin 或 user task fixture。
+
+### Regression counts（before → after）
+
+- `account_access`：2 → 2。
+- `account_capabilities`：10 → 10。
+- calendar capability：2（enabled 1 / disabled 1）→ 完全相同。
+- `app_admins`：2 → 2。
+- `user_tasks`：0 / live 0 → 0 / live 0。
+- Auth users：2 → 2。
+- `user_calendar_events` fixture rows after rollback：0。
+- 意外差異：NO。
+
+### 等待與安全狀態
+
+- 所有 Supabase / GitHub 外部操作均在 5 分鐘內完成；五分鐘停止規則未觸發，沒有 polling。
+- Production query/write/migration：NO。
+- merge PR #26：NO；PR 維持 Draft，未標 Ready。
+- Production deployment：NO。
+
+### Feature-specific blocker
+
+無。Preview migration、schema、ACL、RLS、RPC 與 rollback runtime matrix 均已通過。
+
+### 下一個唯一允許動作
+
+停止施工，等待使用者檢視 Preview 驗證結果並另行明確授權。未獲授權前不得 merge PR #26、不得套用 Production migration、不得修改 Production Supabase/Auth data、不得部署 Production或把 PR 標 Ready。
+
+### 最終狀態
+【Preview migration 與 rollback runtime verification 完成；Production untouched】
