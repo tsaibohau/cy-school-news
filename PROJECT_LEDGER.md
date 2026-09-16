@@ -1803,3 +1803,61 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 
 ### 最終狀態
 【三個 durability blockers 已修正並完成 repo / CI / Vercel 驗證】
+
+---
+
+## 2026-09-16｜PR #26 長時間等待中斷後 checkpoint recovery
+
+### 事故與本輪範圍
+
+- 上一輪在三項 durability blocker 已完成實作、測試、commit、push，且 cloud verification 已回寫 ledger 後，仍持續等待外部服務超過 80 分鐘；這違反「外部等待最長 5 分鐘」規則。
+- 本輪立即停止等待，只做 checkpoint recovery；沒有重新執行上一輪施工、已完成測試、migration、CI 或 Vercel deployment。
+- 後續任何 CI / Vercel / runner / external service 檢查最長 5 分鐘；超時立即記為【等待中】或【無法確認】，不得持續 polling，也不得為完整綠燈延長工作時間。
+
+### 最後成功 checkpoint
+
+- branch: `codex/user-calendar-events-durable`
+- remote feature HEAD before this recovery ledger commit: `7e0dd5144e4dc88537f9824a8fd41e3573eb7f90`
+- tree: `07e7cc0e115f90dbc3ed9d1ad364756e9ff448e4`
+- implementation commit: `c8700be2707040875dcf9f7a47417f7f169f4f70`
+- verification / ledger commit: `7e0dd5144e4dc88537f9824a8fd41e3573eb7f90`
+- local branch 已 fast-forward 對齊 remote；recovery 開始時及 fast-forward 後 working tree 均 clean，沒有遺留未 commit 修改。
+- Draft PR #26 仍 open / Draft / unmerged；head 與上述 remote HEAD 一致。
+
+### 三個 blocker 狀態
+
+1. Legacy claim cleanup fail-closed：【已完成】。payload remove 必須經不存在驗證後才移除 claim；payload/claim cleanup failure 均回 `complete=false`、保留 ownership，B 不可接手；A 可 idempotent retry。
+2. Cloud delete 不依賴 calendar capability：【已完成】。authenticated owner 執行 delete-own-data 時無條件嘗試既有 calendar delete RPC；capability=false 測試已通過。
+3. Calendar outbox 不因 feature unavailable 被 ACK：【已完成】。calendar create/update/delete 未經 server confirmation 均保留；capability 恢復後可重試 drain；非 calendar domain 舊行為未改。
+
+### 已實際完成、禁止重跑的驗證
+
+- focused calendar/account/sync/auth/timetable/PWA/UI tests與 JavaScript syntax：PASS。
+- failure injection：v1 remove failure、claim remove failure、ownership 不轉交、A retry：PASS。
+- calendar create/update/delete feature unavailable 保留 outbox、capability recovery drain：PASS。
+- calendar capability=false cloud delete：PASS。
+- full Node regression：41/43 PASS；只有既有 account-role 文案與 PKSH fixture baseline failure。
+- isolated GitHub calendar pgTAP：PASS；整體 RLS workflow 已完成為 failure，原因仍是既有 `user_tasks` 19/25 baseline，未修復或隱藏。
+- Vercel Preview：Ready / SUCCESS；本輪只一次讀取既有 PR 狀態，未等待或重新部署。
+
+### 外部與安全狀態
+
+- CI：已完成；aggregate failure（既有 baseline），不是 pending。
+- Vercel：Ready / SUCCESS，不是 pending。
+- Preview / Production Supabase migration or data write：NO。
+- Remote Supabase / Auth mutation：NO。
+- Production deployment：NO。
+- merge PR #26：NO。
+- PR #25 / capability cutover / unrelated baseline repair：NO。
+
+### 尚未完成
+
+- repo-only 三個 blocker沒有剩餘施工。
+- 隔離 Preview Supabase migration、RLS/RPC 與完整前端流程驗證尚未授權、尚未執行；這不是本輪 blocker。
+
+### 下一個唯一允許動作
+
+停止所有等待與施工，等待使用者檢視 Draft PR #26 並另行明確授權。若獲授權，唯一方向是隔離 Preview Supabase migration / RLS / RPC 與完整前端流程驗證；未授權前不得套用 Preview / Production migration、修改遠端 Supabase/Auth、merge PR #26 或部署 Production。
+
+### 最終狀態
+【checkpoint recovery 完成；無未提交產品修改；停止等待】
