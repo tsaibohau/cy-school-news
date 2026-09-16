@@ -1780,3 +1780,26 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 
 ### 最終狀態
 【本機修正與測試完成；等待 cloud verification】
+
+---
+
+## 2026-09-16 04:02 UTC｜PR #26 durability blockers cloud-verified checkpoint
+
+- scoped implementation commit / remote feature HEAD before this final ledger commit: `c8700be2707040875dcf9f7a47417f7f169f4f70`
+- tree: `ce6982082fff9efa129f8f1c1711ab546a6e264f`；local / remote tree identical。
+- Draft PR #26：維持 Draft，未 merge。
+- GitHub Node regression：41/43 PASS；唯一 failures 仍為既有 `test_account_roles_contract.js` 文案 baseline 與 `test_assistant_qa.js` PKSH fixture baseline。本輪新增與相關 calendar/account/sync/auth/PWA/UI tests 均 PASS。
+- isolated GitHub calendar pgTAP step：PASS。整體 pgTAP job 仍因既有 `user_tasks` matrix 19/25 baseline 顯示 failure；calendar matrix 已獨立執行成功，未修 baseline。
+- Vercel Preview：SUCCESS（deployment `2o4yuJtJ2AYCkGQ7FYXVJ2PAMsAu`）。
+- 三個 feature-specific blockers：已修正，未發現剩餘 feature-specific blocker。
+- Preview / Production Supabase migration or data write：NO。
+- Remote Supabase/Auth mutation：NO。
+- Production deployment / merge：NO。
+- PR #25 / capability cutover / unrelated refactor or baseline repair：NO。
+
+### 下一個唯一允許動作
+
+等待使用者檢視 Draft PR #26 並明確授權下一階段。未取得新授權前不得套用 Preview / Production migration、修改任何遠端 Supabase/Auth data、merge 或部署 Production；若另行授權，唯一方向是隔離 Preview Supabase 的 migration / RLS / RPC 與完整前端流程驗證。
+
+### 最終狀態
+【三個 durability blockers 已修正並完成 repo / CI / Vercel 驗證】
