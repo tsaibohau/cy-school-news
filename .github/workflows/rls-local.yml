@@ -32,6 +32,7 @@ jobs:
       - name: Run reminder RLS matrix
         run: supabase test db --local supabase/tests/database/reminder_rls.test.sql
       - name: Run calendar RLS and mutation matrix
+        if: success() || failure()
         run: supabase test db --local supabase/tests/database/user_calendar_events.test.sql
       - name: Stop local Supabase
         if: always()
