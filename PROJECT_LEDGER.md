@@ -770,6 +770,52 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-16 02:30 UTC｜user_calendar_events repo-only implementation final checkpoint
+
+### 完成狀態
+
+- branch: `codex/user-calendar-events-durable`
+- base: `origin/main@088b44f955ee08c61c858d3981bf2b15a3f68c51`
+- Draft PR: #26 `Add durable user calendar event persistence`
+- remote feature HEAD before this final ledger-only commit: `2bbd3f06700eb730ab2411335e3df7a7f4461f47`
+- repository implementation and scoped tests are complete; no merge was performed.
+
+### 實作確認
+
+- Added forward-only migration `20260916110000_user_calendar_events.sql` for independent `public.user_calendar_events`; `user_tasks` was not reused or refactored.
+- Schema includes owner UUID, event payload, timestamps, version, mutation UUID, tombstone and legacy import key, with owner/date indexes and partial per-owner legacy uniqueness.
+- RLS denies anonymous access and limits authenticated reads to owner rows behind the existing calendar access gate. Direct table writes remain revoked; owner mutations use the dedicated RPC.
+- Mutation RPC implements `expected_version + mutation_id`, row locking, deterministic canonical conflict response, idempotent retry and versioned tombstones; ordinary updates cannot resurrect deleted rows. Tombstones are not auto-purged.
+- Frontend uses account-scoped v2 cache/outbox, remote-first load, remote cache rebuild, immediate best-effort drain and offline retention. Anonymous, account A and account B namespaces are isolated.
+- Legacy `cyNews.calendarEvents.v1` is never auto-imported. Explicit confirmation creates a local durable batch claim bound to one UID; deterministic keys make retries idempotent, partial failure retains payload/claim, and cleanup occurs only after all rows receive cloud confirmation. Anonymous v2 is not auto-adopted.
+- Existing synced-account cloud-delete flow now invokes owner-only calendar deletion without changing other account/capability behavior.
+
+### 驗證與外部狀態
+
+- Local focused calendar/account/sync/auth/PWA/UI/staging tests, JavaScript syntax checks and `git diff --check`: PASS.
+- GitHub isolated calendar pgTAP matrix: PASS, including RLS ownership, access gate, idempotent replay, stale conflict, tombstone and cloud delete assertions.
+- GitHub staging Node regression: 41/43 PASS. The two failures are pre-existing main baseline assertions in `test_account_roles_contract.js` and `test_assistant_qa.js`; all calendar-related tests pass. They were not modified.
+- Overall pgTAP workflow remains red because the pre-existing `user_tasks` matrix fails 6/25 before/independently of this feature. The workflow was minimally changed so the calendar matrix still runs and proves PASS; `user_tasks` was not changed.
+- Vercel Preview for Draft PR #26: SUCCESS.
+- Preview Supabase migration/write: NO.
+- Production Supabase migration/write: NO.
+- Remote Supabase/Auth data mutation: NO.
+- Production deployment: NO.
+- PR #25 reopen/reuse, capability cutover, unrelated product work: NO.
+
+### Blocking issue
+
+No feature-specific implementation blocker. The PR's aggregate CI remains red only because of the documented unrelated main baselines above. Per scope, those baselines were not repaired or hidden.
+
+### 下一個唯一允許動作
+
+等待使用者檢視 Draft PR #26 並明確授權下一階段。未取得新授權前，不套用任何 Preview / Production Supabase migration、不修改遠端資料、不 merge、不部署 Production；若獲下一階段授權，唯一方向是以隔離 Preview Supabase 驗證本 migration / RLS / RPC 與前端完整流程，Production 仍須另行明確授權。
+
+### 最終狀態
+【repo-only 實作完成；等待使用者授權下一階段】
+
+---
+
 ## 2026-09-16｜user_calendar_events durable persistence repo-only 實作
 
 ### 目標
@@ -1664,3 +1710,26 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】
+
+---
+
+## 2026-09-16 02:30 UTC｜calendar durable final remote checkpoint
+
+- 本輪完整實作、schema/RLS/RPC、frontend cache/outbox、legacy claim、cloud delete、測試與外部狀態詳見上方同時間的 `user_calendar_events repo-only implementation final checkpoint`。
+- branch: `codex/user-calendar-events-durable`
+- base: `origin/main@088b44f955ee08c61c858d3981bf2b15a3f68c51`
+- Draft PR: #26
+- feature HEAD before this ledger-only final commit: `2bbd3f06700eb730ab2411335e3df7a7f4461f47`
+- calendar-focused local tests: PASS
+- isolated calendar pgTAP: PASS
+- Vercel Preview: SUCCESS
+- aggregate CI remains red only for documented unrelated main baselines: Node 41/43, existing `user_tasks` pgTAP 19/25.
+- Preview / Production Supabase migration or data write: NO
+- Production deployment / merge: NO
+
+### 下一個唯一允許動作
+
+等待使用者檢視 Draft PR #26 並明確授權下一階段；若獲授權，只進行隔離 Preview Supabase migration/RLS/RPC 與完整流程驗證。未取得新授權前不 merge、不套用任何遠端 migration、不修改遠端 Supabase/Auth data、不部署 Production。
+
+### 最終狀態
+【repo-only 實作完成；等待使用者授權下一階段】
