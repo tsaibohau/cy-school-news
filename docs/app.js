@@ -357,7 +357,8 @@
         if (result.event) lifecycle.reconcileCalendarEvent(result.event);
         else if (result.status === "conflict" && item.payload && item.payload.id) lifecycle.discardCalendarEvent(item.payload.id);
         if (result.status === "applied" && item.payload && item.payload.legacy_import_key) {
-          CalendarState.confirmLegacy(localStorage, owner, item.payload.legacy_import_key);
+          var confirmation = CalendarState.confirmLegacy(localStorage, owner, item.payload.legacy_import_key);
+          if (confirmation.cleanup_pending) throw new Error(confirmation.cleanup_error || "legacy cleanup pending");
         }
         var current = lifecycle.state();
         CalendarState.saveCache(localStorage, owner, current.calendar_events || []);

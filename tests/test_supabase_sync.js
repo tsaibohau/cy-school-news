@@ -106,6 +106,44 @@ adapter.fetchRemoteState().then(async remote => {
   assert(deletedTables.includes("user_calendar_events"));
   assert(rpcCalls.some(x => x.name === "delete_own_user_calendar_events"), "cloud delete uses the owner-only calendar RPC");
 
+  const calendarDisabled = Sync.createAdapter(client, { capabilities: {
+    member_content: false, assistant: false, timetable: true, calendar: false, notifications: false,
+  } });
+  const deleteRpcCount = rpcCalls.filter(x => x.name === "delete_own_user_calendar_events").length;
+  const disabledDeleteTables = await calendarDisabled.deleteOwnData();
+  assert(disabledDeleteTables.includes("user_calendar_events"), "cloud delete reports calendar cleanup even when capability is false");
+  assert.equal(rpcCalls.filter(x => x.name === "delete_own_user_calendar_events").length, deleteRpcCount + 1,
+    "cloud delete always attempts the owner-only calendar RPC");
+
+  const calendarCases = [
+    { type: "calendar.create", expected_version: 0, suffix: "3" },
+    { type: "calendar.update", expected_version: 1, suffix: "4" },
+    { type: "calendar.delete", expected_version: 1, suffix: "5" },
+  ];
+  for (const calendarCase of calendarCases) {
+    const calendarOutbox = new Account.Outbox(store(), "user-a");
+    calendarOutbox.enqueue({ type: calendarCase.type, payload: {
+      id: `10000000-0000-4000-8000-00000000000${calendarCase.suffix}`,
+      expected_version: calendarCase.expected_version,
+      mutation_id: `20000000-0000-4000-8000-00000000000${calendarCase.suffix}`,
+      title: "Queued", event_date: "2026-09-18", notes: "",
+    } });
+    await assert.rejects(
+      calendarDisabled.drain(calendarOutbox, item => calendarDisabled.sendMutation(item)),
+      /feature unavailable/,
+      `${calendarCase.type} surfaces temporary capability failure`
+    );
+    assert.equal(calendarOutbox.pending().length, 1, `${calendarCase.type} remains queued while capability is unavailable`);
+    const recovered = await adapter.drain(calendarOutbox, item => adapter.sendMutation(item));
+    assert.equal(recovered.length, 1, `${calendarCase.type} drains after capability recovery`);
+    assert.equal(calendarOutbox.pending().length, 0, `${calendarCase.type} is acked only after server confirmation`);
+  }
+
+  const legacyDomainOutbox = new Account.Outbox(store(), "user-a");
+  legacyDomainOutbox.enqueue({ type: "subscription.upsert", payload: { keyword: "legacy behavior" } });
+  await adapter.drain(legacyDomainOutbox, () => Promise.reject(new Error("feature unavailable for this account capability set")));
+  assert.equal(legacyDomainOutbox.pending().length, 0, "non-calendar feature-unavailable ACK behavior remains unchanged");
+
   const outbox = new Account.Outbox(store(), "user-a");
   outbox.enqueue({ type: "subscription.upsert", payload: { keyword: "one", createdAt: "2026-01-01T00:00:00Z" } });
   outbox.enqueue({ type: "subscription.upsert", payload: { keyword: "two", createdAt: "2026-01-01T00:00:00Z" } });

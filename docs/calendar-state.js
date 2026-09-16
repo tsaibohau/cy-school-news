@@ -14,6 +14,11 @@
   function safeGet(storage, key) { try { return storage && storage.getItem(key); } catch (_) { return null; } }
   function safeSet(storage, key, value) { try { if (!storage) return false; storage.setItem(key, value); return true; } catch (_) { return false; } }
   function safeRemove(storage, key) { try { if (storage) storage.removeItem(key); } catch (_) { /* retain best effort state */ } }
+  function removeAndVerify(storage, key) {
+    if (!storage) return false;
+    try { storage.removeItem(key); } catch (_) { /* verify the durable result below */ }
+    try { return storage.getItem(key) === null; } catch (_) { return false; }
+  }
   function parse(raw, fallback) { try { return raw ? JSON.parse(raw) : fallback; } catch (_) { return fallback; } }
   function stableJson(value) {
     if (value === null || typeof value !== "object") return JSON.stringify(value);
@@ -154,10 +159,17 @@
       if (!safeSet(storage, LEGACY_CLAIM_KEY, JSON.stringify(claim))) throw new Error("legacy confirmation could not be persisted");
       return { complete: false, claim: claim };
     }
+    if (!safeSet(storage, LEGACY_CLAIM_KEY, JSON.stringify(claim))) throw new Error("legacy confirmation could not be persisted");
+    if (!removeAndVerify(storage, LEGACY_KEY)) {
+      return { complete: false, claim: claim, cleanup_pending: true, cleanup_error: "legacy payload removal failed" };
+    }
     var receipt = { version: 2, account_id: claim.account_id, payload_hash: claim.payload_hash, completed_at: new Date().toISOString() };
-    if (!safeSet(storage, LEGACY_RECEIPT_PREFIX + claim.account_id, JSON.stringify(receipt))) throw new Error("legacy receipt could not be persisted");
-    safeRemove(storage, LEGACY_KEY);
-    safeRemove(storage, LEGACY_CLAIM_KEY);
+    if (!safeSet(storage, LEGACY_RECEIPT_PREFIX + claim.account_id, JSON.stringify(receipt))) {
+      return { complete: false, claim: claim, cleanup_pending: true, cleanup_error: "legacy receipt could not be persisted" };
+    }
+    if (!removeAndVerify(storage, LEGACY_CLAIM_KEY)) {
+      return { complete: false, claim: readClaim(storage) || claim, cleanup_pending: true, cleanup_error: "legacy claim removal failed" };
+    }
     return { complete: true, receipt: receipt };
   }
 

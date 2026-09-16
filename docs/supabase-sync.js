@@ -167,7 +167,6 @@
               });
             });
           }, Promise.resolve([])).then(function (deleted) {
-            if (!allowed(TABLES.calendar)) return deleted;
             assertCurrent(options, uid);
             return client.rpc("delete_own_user_calendar_events").then(function (result) {
               assertCurrent(options, uid);
@@ -225,7 +224,8 @@
                 return Promise.resolve(send(item, currentUid)).then(function () {
                   result.done.push(item.id); return result;
                 }).catch(function (error) {
-                  if (/feature unavailable/.test(String(error && error.message))) {
+                  var isCalendar = item.type && item.type.indexOf("calendar.") === 0;
+                  if (!isCalendar && /feature unavailable/.test(String(error && error.message))) {
                     result.done.push(item.id);
                     return result;
                   }

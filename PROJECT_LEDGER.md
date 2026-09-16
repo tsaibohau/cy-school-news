@@ -1733,3 +1733,50 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 
 ### 最終狀態
 【repo-only 實作完成；等待使用者授權下一階段】
+
+---
+
+## 2026-09-16 03:58 UTC｜PR #26 durability blocker fix checkpoint
+
+### 本輪範圍
+
+只修 PR #26 的三個 feature-specific durability blocker；沿用 `codex/user-calendar-events-durable`。未修改 migration / RPC 權限模型、capability 系統、其他產品功能或既有 baseline。
+
+### 已完成的修正
+
+1. Legacy claim cleanup fail-closed：
+   - 全批 server confirmation 後先 durable 保存「全數 confirmed」claim。
+   - 以 remove + getItem 驗證 `cyNews.calendarEvents.v1` 已確實不存在；失敗時回 `complete=false / cleanup_pending=true`，保留 claim，且不嘗試移除 claim。
+   - payload 確認不存在後才寫 completion receipt、移除 claim，並再次確認 claim 確實不存在。
+   - receipt 或 claim cleanup 失敗都不回報 complete；`app.js` 將 cleanup pending 視為未完成，使 immediate drain 與 login drain 都不 ACK 該 mutation，之後以同一 mutation id 重試。
+2. Cloud delete 不依賴 calendar capability：
+   - authenticated owner 的 `deleteOwnData()` 現在無條件呼叫既有 `delete_own_user_calendar_events()`。
+   - calendar capability=false / timetable-only 不再跳過既有 calendar rows；RPC 本身的 owner-only 權限模型未修改。
+3. Calendar outbox 不因 feature unavailable 被 ACK：
+   - generic drain 只有非 calendar domain 延續既有 feature-unavailable ACK 行為。
+   - `calendar.create/update/delete` 遇到 feature unavailable 或其他未 server-confirmed failure 都保留在 account-scoped outbox、回傳錯誤且不進 done；capability 恢復後可正常重送並 ACK。
+4. 必要 PWA cache bust：因三個修正檔屬 shell cache，僅遞增 app/calendar/supabase asset query 與 cache `v88`，避免瀏覽器繼續執行舊缺陷程式。
+
+### 新增驗證
+
+- `tests/test_calendar_persistence.js`：注入 v1 remove failure、claim remove failure；兩者都驗證 `complete=false`、A claim 保留、B 無法取得 ownership，以及 A 後續可 idempotent retry 完成。
+- `tests/test_supabase_sync.js`：calendar capability=false 仍執行 cloud-delete RPC；calendar create/update/delete feature unavailable 均保留 outbox；capability 恢復後三者均成功 drain；非 calendar domain 舊 ACK 行為不變。
+- focused calendar/account/sync/auth/timetable/PWA/UI tests與 JavaScript syntax：PASS。
+- full Node regression：41/43 PASS；僅既有 `test_account_roles_contract.js` 文案 baseline 與 `test_assistant_qa.js` PKSH fixture baseline 失敗，未修改。
+- `git diff --check`：PASS。
+- local calendar pgTAP：環境沒有 Supabase CLI / Docker / psql；將由既有隔離 GitHub CI 執行，未連線遠端 Supabase。
+
+### 外部狀態
+
+- Draft PR #26：維持 Draft；此 checkpoint 寫入時尚待 commit / push / CI / Vercel 驗證。
+- Preview / Production Supabase migration or data write：NO。
+- Remote Supabase/Auth mutation：NO。
+- Production deployment / merge：NO。
+- PR #25 / capability cutover / baseline repair：NO。
+
+### 下一個唯一允許動作
+
+將本 checkpoint 與上述 scoped changes commit / push 到同一 feature branch，等待 PR #26 的 calendar pgTAP、CI 與 Vercel Preview；只處理本輪變更造成的 failure。不得套用 Preview / Production migration、修改遠端 Supabase、merge 或部署 Production。
+
+### 最終狀態
+【本機修正與測試完成；等待 cloud verification】
