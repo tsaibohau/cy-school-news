@@ -169,4 +169,32 @@ assert.deepEqual(corrupt.state().reads, []);
 assert.deepEqual(corrupt.state().preferences.preferences, {});
 assert.equal(corrupt.state().preferences.updated_at, undefined);
 assert.equal(durableStore.getItem("cyNews.notificationState"), notificationState);
+
+// Calendar v2 is account-scoped and is deliberately excluded from the legacy
+// one-time anonymous adoption used by the other account domains.
+const calendarStore = {
+  data: {}, getItem(k) { return this.data[k] || null; }, setItem(k, v) { this.data[k] = v; }, removeItem(k) { delete this.data[k]; },
+};
+let calendarLifecycle = new Sync.AccountLifecycle({
+  subscriptions: [], reads: [], preferences: { schema_version: 1, preferences: {} }, tasks: [],
+  calendar_events: [{ id: "anonymous-event", title: "Anonymous", date: "2026-09-01", notes: "" }],
+}, calendarStore);
+const calendarA = calendarLifecycle.login("calendar-a", { calendar_events: [{
+  id: "10000000-0000-4000-8000-000000000001", title: "Remote A", event_date: "2026-09-02",
+  notes: "", version: 4, created_at: "2026-09-01T00:00:00Z", updated_at: "2026-09-02T00:00:00Z",
+  deleted_at: null, last_mutation_id: "20000000-0000-4000-8000-000000000001",
+}] });
+assert.equal(calendarA.calendar_events.length, 1);
+assert.equal(calendarA.calendar_events[0].title, "Remote A");
+assert(!calendarA.calendar_events.some(x => x.id === "anonymous-event"), "anonymous v2 must not auto-adopt");
+calendarLifecycle.applyMutation("calendar.delete", { id: calendarA.calendar_events[0].id, mutation_id: "20000000-0000-4000-8000-000000000002" });
+assert.equal(calendarLifecycle.state().calendar_events[0].version, 5);
+calendarLifecycle.logout();
+assert(calendarLifecycle.state().calendar_events.some(x => x.id === "anonymous-event"), "logout restores anonymous cache");
+assert(!calendarLifecycle.state().calendar_events.some(x => x.title === "Remote A"), "A data cannot leak to anonymous");
+const calendarB = calendarLifecycle.login("calendar-b", { calendar_events: [] });
+assert.equal(calendarB.calendar_events.length, 0, "B cannot inherit A or anonymous events");
+calendarLifecycle = new Sync.AccountLifecycle(null, { storage: calendarStore, activeAccountId: "calendar-a" });
+assert.equal(calendarLifecycle.state().calendar_events[0].deleted_at !== null, true, "A tombstone survives reload");
+assert(calendarStore.getItem("cyNews.calendarEvents.v2:calendar-a"), "calendar uses a dedicated account-scoped v2 cache");
 console.log("Account Sync V1.2 durable lifecycle tests passed");

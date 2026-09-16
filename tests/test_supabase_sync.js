@@ -8,15 +8,26 @@ function store() {
 }
 
 const calls = [];
+const rpcCalls = [];
 const client = {
   currentUid: "user-a",
   auth: { getSession() { return Promise.resolve({ data: { session: this.session() }, error: null }); }, session() { return { user: { id: client.currentUid } }; } },
   from(table) {
     return {
       select() { return this; },
-      eq() { return Promise.resolve({ data: table === "user_subscriptions" ? [{ keyword: "X", normalized_keyword: "x" }] : [], error: null }); },
+      delete() { calls.push({ table, delete: true }); return this; },
+      eq() { return Promise.resolve({ data: table === "user_subscriptions" ? [{ keyword: "X", normalized_keyword: "x" }] :
+        table === "user_calendar_events" ? [{ id: "10000000-0000-4000-8000-000000000001", title: "Remote", event_date: "2026-09-16", notes: "", version: 1 }] : [], error: null }); },
       upsert(rows, options) { calls.push({ table, rows, options }); return Promise.resolve({ data: rows, error: null }); },
     };
+  },
+  rpc(name, args) {
+    rpcCalls.push({ name, args });
+    if (name === "apply_user_calendar_event_mutation") return Promise.resolve({ data: { status: "applied", event: {
+      id: args.p_id, title: args.p_payload.title, event_date: args.p_payload.event_date, notes: args.p_payload.notes,
+      version: 1, last_mutation_id: args.p_mutation_id,
+    } }, error: null });
+    return Promise.resolve({ data: 1, error: null });
   },
 };
 
@@ -45,6 +56,7 @@ assert.rejects(
 adapter.fetchRemoteState().then(async remote => {
   assert.equal(remote.user_id, "user-a");
   assert.equal(remote.subscriptions[0].keyword, "X");
+  assert.equal(remote.calendar_events[0].title, "Remote");
   await adapter.pushRows("user_subscriptions", [{ user_id: "user-b", id: "server-uuid-a", keyword: "X", createdAt: "2026-01-01T00:00:00Z" }]);
   assert.equal(calls[0].rows[0].user_id, "user-a", "payload cannot override verified session owner");
   assert.equal(calls[0].rows[0].id, undefined, "server UUID is not sync identity");
@@ -79,6 +91,20 @@ adapter.fetchRemoteState().then(async remote => {
   assert.equal(calls.find(x => x.table === "user_preferences").options.onConflict, Sync.CONFLICT_TARGETS.user_preferences);
   assert.notEqual(subscriptionCalls[0].options.onConflict, "user_id");
   assert.equal(adapter.CONFLICT_TARGETS, undefined);
+
+  const calendarResult = await adapter.sendMutation({ account_id: "user-a", type: "calendar.create", payload: {
+    id: "10000000-0000-4000-8000-000000000002", expected_version: 0,
+    mutation_id: "20000000-0000-4000-8000-000000000002", title: "Created", event_date: "2026-09-17",
+    notes: "note", legacy_import_key: "v1:test",
+  } });
+  assert.equal(calendarResult.status, "applied");
+  const mutationRpc = rpcCalls.find(x => x.name === "apply_user_calendar_event_mutation");
+  assert.equal(mutationRpc.args.p_expected_version, 0);
+  assert.equal(mutationRpc.args.p_mutation_id, "20000000-0000-4000-8000-000000000002");
+  assert.equal(mutationRpc.args.p_legacy_import_key, "v1:test");
+  const deletedTables = await adapter.deleteOwnData();
+  assert(deletedTables.includes("user_calendar_events"));
+  assert(rpcCalls.some(x => x.name === "delete_own_user_calendar_events"), "cloud delete uses the owner-only calendar RPC");
 
   const outbox = new Account.Outbox(store(), "user-a");
   outbox.enqueue({ type: "subscription.upsert", payload: { keyword: "one", createdAt: "2026-01-01T00:00:00Z" } });

@@ -6,11 +6,13 @@ on:
     paths:
       - "supabase/**"
       - "tests/test_rls_sql_contract.js"
+      - "tests/test_calendar_rls_contract.js"
       - ".github/workflows/rls-local.yml"
   pull_request:
     paths:
       - "supabase/**"
       - "tests/test_rls_sql_contract.js"
+      - "tests/test_calendar_rls_contract.js"
       - ".github/workflows/rls-local.yml"
 
 jobs:
@@ -29,6 +31,8 @@ jobs:
         run: supabase test db --local supabase/tests/database/user_tasks_rls.test.sql
       - name: Run reminder RLS matrix
         run: supabase test db --local supabase/tests/database/reminder_rls.test.sql
+      - name: Run calendar RLS and mutation matrix
+        run: supabase test db --local supabase/tests/database/user_calendar_events.test.sql
       - name: Stop local Supabase
         if: always()
         run: supabase stop

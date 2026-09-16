@@ -768,6 +768,117 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 最終狀態
 【已完成】
 
+---
+
+## 2026-09-16｜user_calendar_events durable persistence repo-only 實作
+
+### 目標
+
+依使用者明確授權，從最新 `origin/main` 建立 `codex/user-calendar-events-durable`，只實作既定的獨立 `public.user_calendar_events`、versioned mutation RPC、account-scoped v2 cache/outbox、explicit legacy v1 claim/import 與 cloud delete integration。可 commit / push feature branch、跑 CI、建立 Vercel Preview 與 Draft PR；禁止套用 migration 到任何遠端 Supabase、修改遠端資料/Auth、merge main 或 Production deployment。
+
+### 開始前 checkpoint
+
+- branch base / `origin/main`: `088b44f955ee08c61c858d3981bf2b15a3f68c51`
+- feature branch: `codex/user-calendar-events-durable`
+- base working tree: clean
+- 已先讀最新 `AGENTS.md`、`PROJECT_LEDGER.md` 與技術紀錄相關 Supabase/RLS 段落；未使用 PR #25 branch 或其程式。
+- Supabase CLI / local Postgres / Docker 在本環境均不存在，因此未能本機執行 migration reset / pgTAP；已新增 CI pgTAP matrix，等待 GitHub-hosted isolated Supabase 驗證。
+
+### 已完成的 repo 實作
+
+#### Migration / schema
+
+- 新增 forward-only `supabase/migrations/20260916110000_user_calendar_events.sql`。
+- `public.user_calendar_events` 欄位：`id uuid PK`、`user_id uuid FK auth.users ON DELETE CASCADE`、`title`、`event_date`、`notes`、`created_at`、`updated_at`、`deleted_at`、`version bigint`、`last_mutation_id uuid`、`legacy_import_key text`。
+- constraints：title trim length `1..80`、notes `<=240`、version `>0`、legacy key length；partial unique `(user_id, legacy_import_key) where legacy_import_key is not null`。
+- indexes：`(user_id, updated_at)` 與 active `(user_id, event_date) where deleted_at is null`；FK/owner filter 與 sync/calendar query 均有對應索引。
+
+#### RLS / RPC
+
+- table `ENABLE RLS`；revoke PUBLIC/anon/authenticated table rights後只 grant authenticated SELECT。
+- SELECT policy 同時要求 `(select auth.uid()) = user_id` 與既有 `has_account_capability('calendar')`；未修改 capability schema、gate 或 admin flow。
+- `apply_user_calendar_event_mutation(...)` 為固定空 `search_path` 的 hardened `SECURITY DEFINER`，owner 永遠取 `auth.uid()`；PUBLIC/anon 無 EXECUTE，只有 authenticated 可呼叫。
+- create/update/delete 使用 row lock、`expected_version + mutation_id`、server timestamp/version；lost-response replay idempotent、concurrent unique-key replay有 `unique_violation` recovery、stale version回 canonical conflict。
+- delete 寫 versioned tombstone；普通 update 遇 tombstone只回 conflict，不清除 `deleted_at`；沒有 tombstone purge。
+- `delete_own_user_calendar_events()` 只 hard-delete目前 `auth.uid()` rows，供既有「刪除已同步資料」流程使用；未開放一般 table DELETE。
+
+#### Frontend cache / outbox / lifecycle
+
+- `docs/calendar-state.js` 擴充 canonical event normalize、version/tombstone merge、server reconcile、account cache、stable import IDs與 durable claim；active keys為 `cyNews.calendarEvents.v2:<UID|anonymous>`。
+- `docs/account-sync.js` 納入 `calendar_events`，但 one-time anonymous adoption明確剔除 calendar；登入、登出、reload、A/B switch均使用各自 v2 namespace。
+- 登入流程先 remote fetch，再以 Supabase rows重建該 UID cache，最後只重放該 UID pending calendar mutations；不把 stale local snapshot無條件 union成 canonical live rows。
+- 新增/編輯/刪除均先 optimistic寫入該 UID cache並 enqueue `cyNews.accountSync.v1:<UID>`；online立即 best-effort drain，失敗保留 queue，`online` / reload / re-login可重試。
+- RPC applied/conflict均以 server canonical row reconcile；not-found conflict會丟棄 stale local row，避免本機 cache復活不存在的資料。
+- `docs/supabase-sync.js` fetch新 table、calendar write只呼叫 versioned RPC、cloud delete呼叫 owner-only delete RPC；`pushState()` 不對 calendar做無條件 upsert。
+
+#### Legacy v1 ownership
+
+- `cyNews.calendarEvents.v1` 只作未分帳號 import candidate，app不再把它當 active source of truth，也不自動匯入。
+- calendar UI只有在 approved/current UID 可認領時顯示「匯入此裝置的舊事件」，且第一次必須明確 confirm。
+- confirm後先同步寫入並回讀驗證 `cyNews.calendarEvents.v2:legacy-claim`，把 payload hash、deterministic event/mutation/import keys整批綁定單一 UID，才 enqueue任何 mutation。
+- claim後其他 UID看不到按鈕、不能讀 claim內容或匯入；登出、切帳號、reload與部分 failure不會解除 claim。
+- 每筆 server applied/replay才標 confirmed；只有全部 entries confirmed後才寫 completion receipt並清除 v1 payload + active claim。anonymous v2不會自動併入登入帳號。
+
+#### UI / PWA / workflow
+
+- 新增最小 legacy import提示列；cloud delete確認文案加入行事曆事件。
+- shell cache提升至 `cy-news-v87`，同步更新 app/calendar/account/supabase/style asset versions。
+- CI新增 calendar SQL contract、frontend durable contract與 local pgTAP matrix；沒有修改排程頻率。
+
+### Changed files（人工）
+
+- product/frontend: `docs/app.js`、`docs/calendar-state.js`、`docs/account-sync.js`、`docs/supabase-sync.js`、`docs/index.html`、`docs/style.css`、`docs/sw.js`
+- migration/tests: `supabase/migrations/20260916110000_user_calendar_events.sql`、`supabase/tests/database/user_calendar_events.test.sql`、`tests/test_calendar_state.js`、`tests/test_calendar_persistence.js`、`tests/test_calendar_durable_contract.js`、`tests/test_calendar_rls_contract.js`、`tests/test_account_sync.js`、`tests/test_supabase_sync.js`、`tests/test_account_switch_v3.js`（既有 isolation contract仍通過）、`tests/test_account_auth.js`、`tests/test_pwa_notification.js`、`tests/test_ui_visual_contract.js`
+- CI wiring: `.github/workflows/rls-local.yml`、`.github/workflows/staging-validation.yml`
+- checkpoint: `PROJECT_LEDGER.md`
+- machine-owned announcement/data files：未修改。
+
+### 本機驗證
+
+- PASS：`node tests/test_calendar_state.js`
+- PASS：`node tests/test_calendar_persistence.js`（account v2 cache、offline outbox、A/B、legacy partial failure/retry/全批清除）
+- PASS：`node tests/test_calendar_durable_contract.js`
+- PASS：`node tests/test_calendar_rls_contract.js`
+- PASS：`node tests/test_account_sync.js`
+- PASS：`node tests/test_supabase_sync.js`
+- PASS：`node tests/test_account_switch_v3.js`
+- PASS：`node tests/test_timetable_only_sync.js`
+- PASS：`node tests/test_account_auth.js`
+- PASS：`node tests/test_pwa_notification.js`
+- PASS：`node tests/test_ui_visual_contract.js`
+- PASS：`node tests/test_staging_build.js`
+- PASS：`node --check` for `app.js` / calendar/account/supabase sync modules
+- PASS：`git diff --check`
+- full existing Node staging gate：40/43 PASS；3 failures中，本輪相關的 `test_ui_visual_contract.js` cache version已更新後 PASS。其餘兩項為 main既存且未由本輪檔案造成：
+  - `test_account_roles_contract.js` 仍期待舊字串 `feature unavailable for timetable-only account`，main adapter早已是 `feature unavailable for this account capability set`。
+  - `test_assistant_qa.js` 仍期待 PKSH registry lookup為 null，但最新 main registry已包含 PKSH。
+  - 依使用者「不修無關 baseline」限制，兩者保留未改。
+- local pgTAP：未執行（本環境無 Supabase CLI / Postgres / Docker）；CI workflow已加入 `supabase/tests/database/user_calendar_events.test.sql`，不得以遠端 Preview/Production DB代替。
+
+### Cloud / deployment checkpoint
+
+- feature commit / push / Draft PR：待本 ledger commit後執行並回填。
+- GitHub CI：待 push後回填。
+- Vercel Preview：待 push / Draft PR後回填；只允許 frontend preview，不套 migration。
+- Preview Supabase migration/data/Auth write：NO。
+- Production Supabase migration/data/Auth write：NO。
+- Production deployment：NO。
+- main merge / PR #25 / capability cutover / user_tasks refactor / 問校務 v2：NO。
+
+### 精確風險與 blocking issue
+
+- 真正 SQL behavioral / concurrency驗證目前只能等待 GitHub-hosted local Supabase pgTAP；尚未也不得用任何遠端 Supabase驗證。
+- Vercel Preview未套 migration，因此只能驗證靜態 shell/build；登入 calendar remote RPC在獲另一次 Preview Supabase migration授權前預期不可端到端使用。
+- main既有兩個無關 Node baseline mismatch可能使廣泛 staging validation job顯示 failure；不得為了變綠而擴張本功能去改 service-level/capability或 PKSH/問校務測試。
+
+### 下一個唯一允許動作
+
+完成本 branch commit / push、GitHub-hosted local Supabase CI、Vercel Preview與 Draft PR並回填此 checkpoint；之後停止，等待使用者 review。只有再獲明確授權，才可把 migration套到隔離 Preview Supabase做登入端到端驗證；Production仍禁止。
+
+### 最終狀態
+
+【進行中：等待 feature commit / cloud verification】
+
 
 ---
 
