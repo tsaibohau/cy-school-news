@@ -24,7 +24,7 @@
     if (!NotificationState) { finishInitialLoading(); return; }
 
     var LS_SEEN = "cyNews.lastSeen";
-    var LS_EVENTS = "cyNews.calendarEvents.v1";
+    var LS_EVENTS = "cyNews.calendarEvents.v1"; /* import candidate only; never the active account store */
     var LS_SCHOOL = "cyNews.school.v1";
     var CalendarState = window.CyNewsCalendarState || (function () {
       function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
@@ -63,7 +63,7 @@
       officialEvents: [],
       calendarStatus: "partial",
       timetables: [],
-      userEvents: loadUserEvents(),
+      userEvents: loadUserEvents("anonymous"),
       reads: loadReads(),
       shown: PAGE_SIZE,
       archive: "none",  /* none | loading | loaded:歷史封存資料的載入狀態 */
@@ -126,6 +126,7 @@
       addEvent: $("addEvent"), eventFormWrap: $("eventFormWrap"), eventForm: $("eventForm"), cancelEvent: $("cancelEvent"),
       eventTitle: $("eventTitle"), eventDate: $("eventDate"), eventNotes: $("eventNotes"),
       eventFormTitle: $("eventFormTitle"),
+      legacyEventImport: $("legacyEventImport"), legacyEventImportStatus: $("legacyEventImportStatus"),
       importantList: $("importantList"),
       welcomeTitle: $("welcomeTitle"), assistantForm: $("assistantForm"), assistantQuestion: $("assistantQuestion"),
       assistantAsk: $("assistantAsk"), assistantScope: $("assistantScope"), assistantStatus: $("assistantStatus"), assistantAnswer: $("assistantAnswer"),
@@ -149,8 +150,8 @@
       navMenu: $("navMenu"), navMenuToggle: $("navMenuToggle"), navCurrentLabel: $("navCurrentLabel"),
     };
 
-    function loadUserEvents() {
-      try { var rows = JSON.parse(localStorage.getItem(LS_EVENTS) || "[]"); return CalendarState ? CalendarState.normalize(rows) : (Array.isArray(rows) ? rows : []); }
+    function loadUserEvents(accountId) {
+      try { return CalendarState && CalendarState.loadCache ? CalendarState.loadCache(localStorage, accountId || "anonymous") : []; }
       catch (e) { return []; }
     }
     function loadReads() {
@@ -164,7 +165,7 @@
     function saveReads() { localStorage.setItem(LS_READS, JSON.stringify(state.reads)); }
     function saveUserEvents() {
       state.userEvents = CalendarState ? CalendarState.normalize(state.userEvents) : state.userEvents;
-      localStorage.setItem(LS_EVENTS, JSON.stringify(state.userEvents));
+      if (CalendarState && CalendarState.saveCache) CalendarState.saveCache(localStorage, state.activeAccountId || "anonymous", state.userEvents);
     }
     function populateProfileSchools() {
       if (!el.profileSchool || !window.CyNewsSchoolRegistry) return;
@@ -283,7 +284,13 @@
       return true;
     }
     function removeUserEvent(id) {
-      state.userEvents = CalendarState ? CalendarState.remove(state.userEvents, id) : state.userEvents.filter(function (ev) { return ev.id !== String(id); });
+      var current = state.userEvents.find(function (event) { return event.id === String(id); });
+      if (!current) return;
+      var payload = { id: current.id, expected_version: current.version || 1,
+        mutation_id: CalendarState.randomUuid() };
+      var next = queueAccountMutation("calendar.delete", payload);
+      if (!next) return;
+      state.userEvents = CalendarState.visible(next.calendar_events || []);
       saveUserEvents();
       renderCalendar();
     }
@@ -314,15 +321,110 @@
         reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
         preferences: { schema_version: 1, preferences: { profile: window.CyNewsProfile.empty() } },
         tasks: state.tasks,
+        calendar_events: state.userEvents,
         reminderRules: state.reminderRules,
       }, localStorage);
       var syncGeneration = 0;
       var requestedUid = null;
       var readyUid = null;
       var accountPhase = "ANONYMOUS_READY";
+      var activeSyncAdapter = null;
+      var calendarDrainRunning = false;
       var pushManager = window.CyNewsPushSubscription ? window.CyNewsPushSubscription.createManager({ auth: auth }) : null;
       var reminderAdapter = window.CyNewsReminderRules ? window.CyNewsReminderRules.createAdapter({ auth: auth }) : null;
       function status(text) { el.accountState.textContent = text; }
+      function renderLegacyImport() {
+        if (!el.legacyEventImport || !el.legacyEventImportStatus) return;
+        var claim = CalendarState.readClaim(localStorage);
+        var rows = CalendarState.legacyRows(localStorage);
+        var available = accountPhase === "ACCOUNT_READY" && readyUid &&
+          ((claim && claim.account_id === readyUid) || (!claim && rows.length));
+        el.legacyEventImport.hidden = !available;
+        el.legacyEventImportStatus.hidden = !available;
+        if (!available) { el.legacyEventImportStatus.textContent = ""; return; }
+        if (claim) {
+          var remaining = claim.entries.filter(function (entry) { return !entry.confirmed; }).length;
+          el.legacyEventImport.textContent = "繼續匯入舊事件";
+          el.legacyEventImportStatus.textContent = "這批舊事件已綁定目前帳號，尚有 " + remaining + " 筆等待雲端確認。";
+        } else {
+          el.legacyEventImport.textContent = "匯入此裝置的舊事件";
+          el.legacyEventImportStatus.textContent = "偵測到 " + rows.length + " 筆未分帳號的舊事件；只有明確確認後才會綁定目前帳號。";
+        }
+      }
+      function acceptCalendarServerResult(item, result) {
+        var owner = readyUid || requestedUid;
+        if (!item || item.account_id !== owner || !result) return;
+        if (result.event) lifecycle.reconcileCalendarEvent(result.event);
+        else if (result.status === "conflict" && item.payload && item.payload.id) lifecycle.discardCalendarEvent(item.payload.id);
+        if (result.status === "applied" && item.payload && item.payload.legacy_import_key) {
+          var confirmation = CalendarState.confirmLegacy(localStorage, owner, item.payload.legacy_import_key);
+          if (confirmation.cleanup_pending) throw new Error(confirmation.cleanup_error || "legacy cleanup pending");
+        }
+        var current = lifecycle.state();
+        CalendarState.saveCache(localStorage, owner, current.calendar_events || []);
+        if (accountPhase === "ACCOUNT_READY" && readyUid === owner) {
+          state.userEvents = CalendarState.visible(current.calendar_events || []);
+          renderCalendar();
+        }
+        renderLegacyImport();
+      }
+      function drainCalendarOutbox() {
+        if (calendarDrainRunning || accountPhase !== "ACCOUNT_READY" || !readyUid || !activeSyncAdapter) return Promise.resolve([]);
+        var owner = readyUid;
+        var outbox = new window.CyNewsAccountSync.Outbox(localStorage, owner);
+        var items = outbox.pending().filter(function (item) { return item.type && item.type.indexOf("calendar.") === 0; });
+        if (!items.length) return Promise.resolve([]);
+        calendarDrainRunning = true;
+        var done = [], continueDrain = false;
+        return items.reduce(function (chain, item) {
+          return chain.then(function () {
+            if (accountPhase !== "ACCOUNT_READY" || readyUid !== owner) throw new Error("account sync superseded");
+            return activeSyncAdapter.sendMutation(item).then(function (result) {
+              acceptCalendarServerResult(item, result);
+              done.push(item.id);
+              outbox.ack([item.id], null, owner);
+            });
+          });
+        }, Promise.resolve()).then(function () {
+          if (readyUid === owner) status("已同步");
+          continueDrain = true;
+          return done;
+        }).catch(function () {
+          if (readyUid === owner) status("事件已保留在此裝置，等待同步");
+          return done;
+        }).finally(function () {
+          calendarDrainRunning = false;
+          if (continueDrain && readyUid === owner) {
+            var remaining = new window.CyNewsAccountSync.Outbox(localStorage, owner).pending()
+              .some(function (item) { return item.type && item.type.indexOf("calendar.") === 0; });
+            if (remaining) setTimeout(drainCalendarOutbox, 0);
+          }
+        });
+      }
+      function enqueueLegacyClaim(claim) {
+        (claim.entries || []).filter(function (entry) { return !entry.confirmed; }).forEach(function (entry) {
+          queueAccountMutation("calendar.create", {
+            id: entry.event_id, expected_version: 0, mutation_id: entry.mutation_id,
+            title: entry.title, event_date: entry.event_date, notes: entry.notes,
+            legacy_import_key: entry.legacy_import_key,
+            outbox_id: "calendar-import:" + entry.legacy_import_key,
+          });
+        });
+        drainCalendarOutbox();
+      }
+      if (el.legacyEventImport) el.legacyEventImport.addEventListener("click", function () {
+        if (accountPhase !== "ACCOUNT_READY" || !readyUid) return;
+        var claim = CalendarState.claimForAccount(localStorage, readyUid);
+        if (!claim) {
+          if (CalendarState.readClaim(localStorage)) return;
+          if (!window.confirm("要把這個瀏覽器中的舊行事曆事件綁定並匯入目前帳號嗎？綁定後不能改交給其他帳號。")) return;
+          try { claim = CalendarState.createLegacyClaim(localStorage, readyUid); }
+          catch (_) { status("舊事件認領未完成，資料仍保留在此裝置"); return; }
+        }
+        enqueueLegacyClaim(claim);
+        renderLegacyImport();
+      });
+      if (window.addEventListener) window.addEventListener("online", function () { drainCalendarOutbox(); });
       var welcomeUid = null;
       var welcomeFadeTimer = null;
       var welcomeHideTimer = null;
@@ -653,6 +755,8 @@
       }
       function publishState(merged, accountId) {
         state.activeAccountId = accountId || "anonymous";
+        state.userEvents = CalendarState.visible(merged.calendar_events || []);
+        saveUserEvents();
         notificationState.subscriptions = projectSubscriptions(merged.subscriptions);
         state.reads = {};
         (merged.reads || []).forEach(function (row) { if (row && row.announcement_id && row.read_at) state.reads[row.announcement_id] = row.read_at; });
@@ -675,8 +779,9 @@
         establishPersonalizedBaseline(accountId || "anonymous");
         renderProfile();
         renderPersonalizedSetting();
-        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
+        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge(); renderCalendar();
         renderReminderPush();
+        renderLegacyImport();
         if (schoolChanged && state.data) fetchData(true);
         if (accountId && accountId !== "anonymous" && reminderAdapter) {
           var reminderGeneration = syncGeneration;
@@ -700,6 +805,7 @@
         state.profile = window.CyNewsProfile.empty();
         state.assistantFeedback = window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {};
         state.tasks = [];
+        state.userEvents = [];
         state.personalizedNotifications = false;
         state.reminderPreset = "single";
         state.reminderCustomOffsets = "1";
@@ -713,11 +819,13 @@
         establishPersonalizedBaseline("anonymous");
         renderProfile();
         renderPersonalizedSetting();
-        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
+        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge(); renderCalendar();
         renderReminderPush();
+        renderLegacyImport();
       }
       function restoreAnonymous() {
         syncGeneration += 1;
+        activeSyncAdapter = null;
         var anonymousState = lifecycle.logout();
         requestedUid = null;
         readyUid = null;
@@ -749,6 +857,7 @@
           var adapter = window.CyNewsSupabaseSync.createAdapter(client, { serviceLevel: state.accountAccess && state.accountAccess.service_level, isCurrent: function (currentUid) {
             return generation === syncGeneration && requestedUid === uid && currentUid === uid;
           }});
+          activeSyncAdapter = adapter;
           var outbox = new window.CyNewsAccountSync.Outbox(localStorage, uid);
           return adapter.fetchRemoteState().then(function (remote) {
             stillCurrent();
@@ -757,16 +866,26 @@
                transition is resolving, so no old account state can be adopted. */
             accountPhase = "MERGING";
             merged = lifecycle.login(uid, remote || {});
+            /* Supabase is canonical. Rebuild the UID cache from remote rows,
+               then replay only that UID's durable pending calendar mutations. */
+            lifecycle.replaceCalendarEvents(remote && remote.calendar_events || []);
+            outbox.pending().filter(function (item) { return item.type && item.type.indexOf("calendar.") === 0; })
+              .forEach(function (item) { lifecycle.applyMutation(item.type, item.payload || {}); });
+            merged = lifecycle.state();
             accountPhase = "SYNCING";
             return adapter.pushState(merged).then(function () {
               stillCurrent();
               return adapter.drain(outbox, function (item) {
-                return adapter.sendMutation(item);
+                return adapter.sendMutation(item).then(function (result) {
+                  if (item.type && item.type.indexOf("calendar.") === 0) acceptCalendarServerResult(item, result);
+                  return result;
+                });
               });
             });
           });
         }).then(function () {
           stillCurrent();
+          merged = lifecycle.state();
           readyUid = uid;
           accountPhase = "ACCOUNT_READY";
           publishState(merged, uid);
@@ -777,6 +896,7 @@
           if (el.accountDeleteCloud) { el.accountDeleteCloud.hidden = false; el.accountDeleteCloud.disabled = false; }
           maybePromptNickname(state.accountUser);
           renderReminderPush();
+          drainCalendarOutbox();
         }).catch(function () {
           if (generation !== syncGeneration || requestedUid !== uid) return;
           /* An OAuth callback can expose a server-verified user a fraction before
@@ -790,6 +910,7 @@
             return;
           }
           if (merged) {
+            merged = lifecycle.state();
             readyUid = uid;
             accountPhase = "ACCOUNT_READY";
             publishState(merged, uid);
@@ -814,8 +935,15 @@
         }
         if (accountPhase !== "ACCOUNT_READY" || !readyUid || lifecycle.active_account_id !== readyUid) return null;
         var next = lifecycle.applyMutation(type, payload);
-        new window.CyNewsAccountSync.Outbox(localStorage, readyUid).enqueue({ type: type, payload: payload });
+        var mutation = { type: type, payload: payload };
+        if (payload && payload.outbox_id) mutation.id = payload.outbox_id;
+        new window.CyNewsAccountSync.Outbox(localStorage, readyUid).enqueue(mutation);
         status("等待同步");
+        if (type.indexOf("calendar.") === 0) {
+          state.userEvents = CalendarState.visible(next.calendar_events || []);
+          saveUserEvents();
+          drainCalendarOutbox();
+        }
         return next;
       };
       createTaskReminder = function (task) {
@@ -1112,7 +1240,7 @@
       });
       if (el.accountDeleteCloud) el.accountDeleteCloud.addEventListener("click", function () {
         if (accountPhase !== "ACCOUNT_READY" || !readyUid) return;
-        if (!window.confirm("確定刪除這個登入帳號在本站同步的偏好、追蹤、閱讀紀錄與待辦？此操作無法復原，但不會刪除 Google 帳號。")) return;
+        if (!window.confirm("確定刪除這個登入帳號在本站同步的偏好、追蹤、閱讀紀錄、待辦與行事曆事件？此操作無法復原，但不會刪除 Google 帳號。")) return;
         var deletionUid = readyUid;
         var generation = ++syncGeneration;
         var dataDeleted = false;
@@ -1518,8 +1646,7 @@
           el.eventFormWrap.hidden = false; el.eventTitle.focus();
         },
         remove: function (id) {
-          state.userEvents = state.userEvents.filter(function (ev) { return ev.id !== id; });
-          saveUserEvents(); renderCalendar();
+          removeUserEvent(id);
         },
       };
       el.agendaTitle.textContent = day === new Date().toISOString().slice(0, 10) ? "今天" : day + " 的事件";
@@ -2375,8 +2502,13 @@
         var title = el.eventTitle.value.trim(), date = el.eventDate.value || el.eventForm.dataset.editingDate;
         if (!title || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
         var editingId = state.eventEditingId || el.eventForm.dataset.editingId;
-        var eventId = editingId || "user:" + Date.now().toString(36);
-        state.userEvents = CalendarState ? CalendarState.upsert(state.userEvents, { id: eventId, title: title, date: date, notes: el.eventNotes.value.trim() }) : state.userEvents;
+        var current = editingId && state.userEvents.find(function (event) { return event.id === editingId; });
+        var payload = { id: editingId || CalendarState.randomUuid(), title: title, event_date: date,
+          notes: el.eventNotes.value.trim(), expected_version: current ? current.version : 0,
+          mutation_id: CalendarState.randomUuid() };
+        var next = queueAccountMutation(current ? "calendar.update" : "calendar.create", payload);
+        if (!next) return;
+        state.userEvents = CalendarState.visible(next.calendar_events || []);
         state.eventEditingId = null; el.eventForm.dataset.editingId = ""; el.eventForm.dataset.editingDate = "";
         saveUserEvents(); state.calendarSelected = date; state.calendarMonth = new Date(Number(date.slice(0, 4)), Number(date.slice(5, 7)) - 1, 1);
         el.eventForm.reset(); el.eventFormWrap.hidden = true; renderCalendar();

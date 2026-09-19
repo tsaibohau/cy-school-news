@@ -1,0 +1,32 @@
+"use strict";
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+
+const repo = path.resolve(__dirname, "..");
+const migration = fs.readFileSync(path.join(repo, "supabase", "migrations", "20260916110000_user_calendar_events.sql"), "utf8");
+const test = fs.readFileSync(path.join(repo, "supabase", "tests", "database", "user_calendar_events.test.sql"), "utf8");
+
+assert.match(migration, /create table public\.user_calendar_events/);
+assert.match(migration, /references auth\.users\(id\) on delete cascade/);
+assert.match(migration, /unique index user_calendar_events_user_legacy_key_uidx[\s\S]*where legacy_import_key is not null/);
+assert.match(migration, /enable row level security/);
+assert.match(migration, /grant select on public\.user_calendar_events to authenticated/);
+assert.doesNotMatch(migration, /grant (?:insert|update|delete|all).*user_calendar_events to authenticated/i);
+assert.match(migration, /\(select auth\.uid\(\)\) = user_id/);
+assert.match(migration, /has_account_capability\('calendar'\)/);
+assert.match(migration, /p_expected_version bigint/);
+assert.match(migration, /p_mutation_id uuid/);
+assert.match(migration, /for update/);
+assert.match(migration, /last_mutation_id = p_mutation_id/);
+assert.match(migration, /exception when unique_violation/);
+assert.match(migration, /reason', 'stale_version'/);
+assert.match(migration, /reason', 'tombstoned'/);
+assert.match(migration, /security definer[\s\S]*set search_path = ''/);
+assert.match(migration, /revoke all on function public\.apply_user_calendar_event_mutation[\s\S]*from public, anon/);
+assert.match(migration, /delete_own_user_calendar_events/);
+assert.match(test, /select plan\(27\)/);
+assert.match(test, /stale cache cannot revive tombstone/);
+assert.match(test, /USER_B row survives USER_A cloud delete/);
+assert.match(test, /anonymous cannot read calendar rows/);
+console.log("Calendar RLS/RPC SQL contract tests passed");
