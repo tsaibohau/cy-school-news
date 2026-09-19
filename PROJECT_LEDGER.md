@@ -845,6 +845,59 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 最終狀態
 【repo-only 已實作；Vercel Ready；CI 等待中；Production untouched】
 
+---
+
+## 2026-09-19｜PR #28 feature-specific pgTAP unblock checkpoint
+
+### Branch / HEAD / tree
+
+- branch: `codex/public-access-auth-plan`（Draft PR #28；未 merge、未標記 Ready）
+- feature verification HEAD: `eed4fbd0b9c846600e679615db044a12bc9c7dc0`
+- feature verification tree: `809781970627cf7200b5f75ed856c1faccf8b8f6`
+
+### Changed files
+
+- `.github/workflows/rls-local.yml`
+  - 僅為 `Run PUBLIC capability and multi-owner matrix` 加上 `if: always()`，使其不被前一個既有 baseline failure 阻斷。
+- `supabase/tests/database/public_access_rls.test.sql`
+  - 僅修正 pgTAP harness：owner RPC 仍以 `authenticated` 執行；受保護的 `app_admins` 驗證改由 test runner role 執行，之後恢復 `authenticated` JWT。未改 schema、RPC、migration 或產品權限。
+- `PROJECT_LEDGER.md`
+  - 本 checkpoint。
+
+### GitHub Actions 實際結果
+
+- 原始已知 run `35443861377`：`user_tasks` FAIL，後續 PUBLIC matrix SKIPPED。
+- workflow unblock 後 run `35454660416`：
+  - `user_tasks` 維持既有 baseline FAIL。
+  - PUBLIC matrix 已實際執行，但 test harness 因 authenticated role 直接讀取受保護的 `app_admins` 而 FAIL；這是 feature test 自身問題，不是 schema / RPC 產品 regression。
+- 最終驗證 run `35454865896`：
+  - `Run user_tasks RLS matrix`: FAIL（既有 6/25 baseline；未修改、未隱藏、未轉成 success）。
+  - `Run reminder RLS matrix`: SKIPPED（被既有 baseline 阻斷；非本輪範圍）。
+  - `Run PUBLIC capability and multi-owner matrix`: PASS，已在前置 baseline FAIL 後獨立實際執行。
+  - `Stop local Supabase`: PASS。
+  - 結論：PR #28 feature-specific pgTAP PASS；aggregate job red only because known `user_tasks` baseline。沒有 feature-specific regression。
+
+### Safety / environment state
+
+- Preview Supabase: 未修改；未套用 migration。
+- Production Supabase: 未修改；未套用 migration、未部署。
+- Auth / 真實帳號 / identity / Google Provider: 全部未修改。
+- PR #25 / #26: 未修改。
+- PR #28: 未 merge、未標記 Ready。
+
+### 禁止重做
+
+- 不修 `user_tasks` baseline，不改其 expectation，不隱藏 aggregate failure。
+- 不再重跑本輪已通過的 feature-specific pgTAP 作為前往 Preview 的替代授權。
+- 未獲另行授權前，不套用任何 Preview / Production migration，不做 runtime cutover，不關閉 Google Provider。
+
+### 下一個唯一允許動作
+
+等待使用者另行明確授權 Preview migration / runtime 驗證；本輪到此停止，不自行進入 Preview。
+
+### 最終狀態
+【PR #28 feature-specific pgTAP PASS；aggregate red 僅因已知 user_tasks baseline；Preview / Production / Auth untouched】
+
 
 ---
 
