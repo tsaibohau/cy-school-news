@@ -768,6 +768,83 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 最終狀態
 【已完成】
 
+---
+
+## 2026-09-19 12:47 UTC｜PR #28 PUBLIC access / auth cutover repo-only checkpoint
+
+### Branch / identity
+
+- branch: `codex/public-access-auth-plan`，從 `origin/main@625c4d9df1cecdaa5b0bc9fa4fb6e23350940be4` 建立；未以 PR #26 或 PR #27 branch 為基底。
+- local implementation commit: `328b5f8`；GitHub connector 發布之等價 tree commit: `c38ca5116c63d310a34588e05e143628b6005f04`。
+- remote tree: `5608cc9d6e3cc2871e1f5bc7e652ea1b84c56c14`。
+- Draft PR: #28 `Add PUBLIC access and auth cutover controls`；未 merge。
+- PR #25 / PR #26：未修改、未 rebase、未 merge；PR #26 migration 未重跑。
+
+### Read-only 現況盤點
+
+- PR #26 直接證據：open、Draft、未 merge，head `7b2cbb6...`；Preview calendar migration/runtime matrix已完成、load-order regression 已修、Vercel Ready，等待人工新增／編輯／刪除驗收。
+- PR #27：open、未 merge，且 diff 只有 `PROJECT_LEDGER.md` 115 行產品方向紀錄。
+- 正式 capability keys：`member_content`、`assistant`、`timetable`、`calendar`、`notifications`。
+- 現行 `app_admins_one_active_owner` partial unique index 只允許一位 active owner；`owner_set_admin_role` 原本只能授予／移除 `co_admin`。
+- Preview（read-only aggregate）：Auth 2、active admins 2（owner 1 / co_admin 1）；owner 與 co_admin 均有非 Google Email identity。
+- Production（read-only aggregate）：Auth 4、active admins 2（owner 1 / co_admin 1）；co_admin 有 Email identity，但唯一 owner 只有 Google identity、沒有非 Google identity。
+- 結論：Production 尚不符合 Google cutover 條件；本輪不得移除 Google UI 或停用 Provider。
+
+### Repo-only 實作
+
+- migration `20260919123614_public_access_and_multi_owner.sql`：
+  - 新增獨立 `public.public_capabilities`，PUBLIC 不是 `auth.users` 假帳號；五個 keys 預設全 false。
+  - `current_public_capabilities()` / `has_public_capability(text)` 提供 anon read/gate；table 本身不直接 grant。
+  - `owner_set_public_capabilities(jsonb)` 僅 owner 可寫；anon / co_admin 不可寫。
+  - `member_announcement_index/detail` 對 anon 加入 PUBLIC `member_content` server-side gate；關閉時即使直接呼叫 RPC 也只回空集合。
+  - 移除單 owner unique index；`owner_set_admin_role` 支援 owner/co_admin/none、禁止 self-change、禁止移除最後一位 owner、要求 target 已 approved，並保留 audit/email 通知。
+  - `owner_auth_cutover_readiness()` 只允許 owner 唯讀確認所有 active owner 是否都有非 Google identity。
+- 前端：匿名載入 PUBLIC capability；UI gates 改用 PUBLIC map；owner 管理介面可管理 PUBLIC capabilities 與授予第二位主要管理員。
+- Google UI：新增 `googleLoginUiEnabled` rollout flag，但目前固定 `true`；只有 Production readiness 成功且另獲授權時才可改 false。Provider 本輪未動。
+- PWA：必要 cache bust 至 `cy-news-v87`。
+- 新增 `public_access_rls.test.sql`，涵蓋 anon read、anon/co_admin deny、owner write、第二 owner、降級與至少一位 owner 保護；CI workflow 已加入此 matrix。
+
+### Changed files
+
+- `.github/workflows/rls-local.yml`
+- `docs/account-config.js`, `docs/app.js`, `docs/capability-layer.js`, `docs/index.html`, `docs/sw.js`
+- `supabase/migrations/20260919123614_public_access_and_multi_owner.sql`
+- `supabase/tests/database/public_access_rls.test.sql`
+- `tests/test_account_auth.js`, `tests/test_public_access_contract.js`, `tests/test_pwa_notification.js`
+- `PROJECT_LEDGER.md`（本 checkpoint）
+
+### 驗證
+
+- focused syntax / PUBLIC contract / OAuth+password auth / PWA / staging build / admin security：PASS。
+- full local Node：46 PASS；2 個既有 baseline failure：`test_account_roles_contract.js` 舊 timetable-only 文案 assertion、`test_assistant_qa.js` PKSH fixture；2 個 deployed tests 因未注入外部 Auth credentials 無法執行。未修 unrelated baseline。
+- `git diff --check`: PASS（ledger 寫入前）。
+- local Supabase/pgTAP：無 Docker/Podman，精確失敗為 `LegacyDockerLifecycleInspectError`，未重試；由 GitHub CI 執行。
+- Vercel Preview：SUCCESS / Ready，deployment `4Zew8LgyMRsu8iZqqawKbRYcFR7d`。
+- GitHub Local RLS workflow run `35443760422`：最後一次檢查為【等待中 / in_progress】；依 5 分鐘規則不長時間 polling。
+
+### Supabase / Auth / deployment safety
+
+- Preview / Production SQL：只做 aggregate read-only audit；write/migration/data mutation：NO。
+- Auth identity / provider / user / role mutation：NO。
+- Preview migration：NO；Production migration：NO。
+- Production deployment：NO；merge：NO。
+- 本地第一次 HTTPS push 因無 GitHub credential 失敗；沒有遠端變更。其後使用已連線 GitHub connector發布同一 tree成功。
+
+### 精確未完成點
+
+- GitHub pgTAP workflow 尚在執行，結果未確認。
+- Google removal 被 Production owner-only-Google identity 明確阻擋。
+- 尚未指定或升級第二位真實主要管理員；repo 只建立安全模型與 UI/RPC。
+- migration 尚未套至任何 Supabase，因此 Preview UI 對新 RPC 的實際互動尚不能驗收。
+
+### 禁止重做／下一個唯一允許動作
+
+- 禁止重跑 PR #26 Preview migration、修改 PR #25/#26、修 unrelated baseline、建立匿名 Auth user、直接修改真實管理員、關閉 Google Provider、部署 Production或 merge。
+- 下一個唯一允許動作：先讀 GitHub workflow run `35443760422` 的完成結果；若 feature pgTAP 失敗，只修 PR #28 feature regression。若通過，等待使用者另行授權 Preview migration/runtime/UI 驗證；在 Production owner 取得非 Google identity 前，Google UI/Provider cutover 持續禁止。
+
+### 最終狀態
+【repo-only 已實作；Vercel Ready；CI 等待中；Production untouched】
+
 
 ---
 
@@ -1553,3 +1630,17 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】
+
+---
+
+## 2026-09-19 12:49 UTC｜最新 authoritative checkpoint：PR #28
+
+- 本檔前述「PR #28 PUBLIC access / auth cutover repo-only checkpoint」為目前最新工作，優先於上方較舊 calendar architecture checkpoint。
+- branch `codex/public-access-auth-plan`；remote implementation HEAD `c38ca5116c63d310a34588e05e143628b6005f04`；Draft PR #28；Vercel Ready。
+- changed files、完整盤點、測試、baseline 歸因、Supabase/Auth 安全狀態與禁止事項，均以該詳細 checkpoint 為準。
+- GitHub RLS run `35443760422` 最後狀態【等待中】；沒有套用任何 Preview/Production migration，沒有修改任何真實帳號或 Provider。
+- Production 唯一 owner 仍只有 Google identity；在取得非 Google identity 前，禁止移除 Google UI 或關閉 Google Provider。
+- 下一個唯一允許動作：讀取 run `35443760422` 完成結果；若 feature pgTAP 失敗，只修 PR #28 regression；若通過，等待另行授權 Preview migration/runtime/UI 驗證。不得 merge、Production migration或Production deployment。
+
+### 最終狀態
+【repo-only 已實作；Vercel Ready；CI 等待中；Production untouched】
