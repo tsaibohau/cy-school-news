@@ -1553,3 +1553,118 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】
+
+---
+
+## 2026-09-18｜待辦決策：移除 Google 登入 + PUBLIC 訪客權限 + 新增主要管理員
+
+### 狀態
+
+【已記錄產品決策／尚未施工】
+
+本節只把使用者已確認的產品方向寫入 durable ledger，供後續 Codex / Work 續接。
+本次 **不代表授權實作**，不得因讀到本節就自行修改 Auth、角色、Supabase、Preview 或 Production。
+
+### 產品目標
+
+1. **移除 Google 登入**
+   - 嘉雲快訊後續不再提供 Google 登入入口。
+   - 保留既有非 Google 登入方式；實作前必須先確認主要管理員都有可用的非 Google 登入方式。
+   - 正確順序：先驗證管理員可用非 Google 方式登入 → 移除前端 Google 登入入口 → 最後才停用 Supabase Google Provider。
+   - 禁止先關 Provider 再驗證，避免把管理員鎖在系統外。
+
+2. **新增一位主要管理員**
+   - 使用者要求再新增一位「主要管理員」。
+   - 實作前必須先對照當時最新 main 的 `admin_role` / owner 模型，確認「主要管理員」應映射成第二位 owner、既有 owner-equivalent role，或需新增明確角色。
+   - 不得在未確認現況 schema 與權限契約前，直接把任意帳號升級成 owner。
+   - 此項需求與 PUBLIC 訪客權限管理有關：主要管理員應能控制未登入使用者可見／可用的功能。
+
+3. **未登入者作為 PUBLIC principal 管理**
+   - 未登入者在權限模型中視為一個共用的 authorization principal：`PUBLIC` / `anonymous`。
+   - **不要**建立假的 Supabase Auth user 來代表訪客。
+   - 產品行為上可以「像帳號一樣被設定權限」，但 authentication 層仍保持匿名。
+
+4. **新增 PUBLIC capability 設定**
+   - 優先採最小修改方案，例如獨立 `public_capabilities`，不要為了訪客重新拆整套既有會員 capability schema。
+   - capability 名稱應盡量沿用當時 main 已存在的正式 capability keys，避免再創第二套語意相同的權限字典。
+   - 管理介面提供 PUBLIC / 未登入使用者的功能開關，讓主要管理員決定匿名狀態下可以看到／使用哪些功能。
+   - 若公告總庫本身不是既有 capability，實作時需明確區分「公開基礎頁面」與「可逐項授權的會員功能」。
+
+5. **PUBLIC 權限必須 server-side enforce**
+   - 前端隱藏按鈕不能視為安全控制。
+   - 若某功能支援匿名使用，必須同時檢查 UI gate、RPC / API gate、RLS / server-side authorization gate。
+   - 若 PUBLIC capability 為 false，即使使用者知道 URL、RPC 名稱或直接呼叫 API，也必須被 server-side 拒絕。
+
+6. **PUBLIC capability 的寫入權限**
+   - PUBLIC 權限影響所有未登入使用者，安全等級高於一般單一會員 capability。
+   - 預設只有 owner / 經確認的主要管理員層級可以修改。
+   - co_admin 或一般會員不得因前端可見而取得修改 PUBLIC capability 的能力。
+   - 實作時必須用 RPC / RLS / grants 證明此限制，而不是只靠管理介面隱藏。
+
+### 架構原則
+
+```text
+訪客
+  ↓
+PUBLIC principal
+  ↓
+public capabilities
+  ↓
+UI + RPC/API + RLS gate
+
+已登入會員
+  ↓
+account UUID
+  ↓
+account capabilities
+  ↓
+既有會員功能 gate
+```
+
+Authentication 與 Authorization 必須分開處理：
+
+```text
+Authentication
+- 移除 Google 登入
+- 確保管理員仍可透過非 Google 方式登入
+
+Authorization
+- PUBLIC principal
+- PUBLIC capability
+- 主要管理員可管理匿名權限
+```
+
+不得把兩者混成一個大 migration 或用「停用 Google」順便重構整套 capability。
+
+### 實作前必須重新確認
+
+- 當時最新 main 的 `account_access`、`admin_role`、owner / co_admin 實際模型。
+- `account_capabilities` 與正式 capability keys。
+- current account / admin RPC、Google OAuth / Supabase provider、前端登入 callback。
+- 各功能目前的 UI / RPC / RLS gate。
+- 目前哪些管理員帳號具有非 Google identity。
+- 「新增一位主要管理員」在現有模型中應是第二位 owner 還是另一種 owner-equivalent role。
+- PUBLIC 可控制的完整功能清單及其預設值。
+
+### 本節禁止事項
+
+在使用者另行明確授權施工前，禁止：
+
+- 關閉 Supabase Google Provider
+- 刪除或改動現有 identity
+- 升級任何真實帳號的 admin / owner 權限
+- 新增或套用 Supabase migration
+- 修改 Preview / Production 資料
+- 修改既有 account capability rows
+- 部署 Preview / Production
+- 把匿名使用者建立成假 Auth user
+- 為此需求順手重構其他功能
+
+### 下一個允許動作
+
+只有在使用者明確要求開始此項工作後：
+
+1. 先讀最新 `AGENTS.md` 與 `PROJECT_LEDGER.md`。
+2. 從當時最新 `main` 做 **read-only 現況盤點**，確認 Auth、owner/admin、capability、RPC、RLS 與登入流程。
+3. 先提出最小修改方案與安全遷移順序。
+4. 未獲進一步授權前，不關 Google Provider、不升級帳號、不套 migration、不部署。
