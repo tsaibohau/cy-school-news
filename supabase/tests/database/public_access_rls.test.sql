@@ -31,11 +31,16 @@ set local "request.jwt.claim.sub"='00000000-0000-4000-8000-00000000a001';
 select lives_ok($$select public.owner_set_public_capabilities('{"calendar":true,"assistant":true}'::jsonb)$$,'owner writes PUBLIC capabilities');
 select ok(public.has_public_capability('calendar'),'PUBLIC calendar gate reflects owner write');
 select lives_ok($$select public.owner_set_admin_role('00000000-0000-4000-8000-00000000b002','owner')$$,'owner grants second owner');
+reset role;
 select is((select count(*)::int from public.app_admins where admin_role='owner' and revoked_at is null),2,'two active owners are supported');
 
+set local role authenticated;
 set local "request.jwt.claim.sub"='00000000-0000-4000-8000-00000000b002';
 select lives_ok($$select public.owner_set_admin_role('00000000-0000-4000-8000-00000000a001','none')$$,'second owner can downgrade first owner');
+reset role;
 select is((select count(*)::int from public.app_admins where admin_role='owner' and revoked_at is null),1,'downgrade keeps one active owner');
+set local role authenticated;
+set local "request.jwt.claim.sub"='00000000-0000-4000-8000-00000000b002';
 select throws_ok($$select public.owner_set_admin_role('00000000-0000-4000-8000-00000000b002','none')$$,'22023','cannot_change_own_owner_role','owner cannot self-remove');
 
 select * from finish();
