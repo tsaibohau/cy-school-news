@@ -385,6 +385,7 @@
       }
       function setAccountUser(user) {
         state.accountUser = user || null;
+        if (window.CyNewsCapabilities) window.CyNewsCapabilities.setAuthenticated(!!user);
         if (!user) state.accountAccess = null;
         state.nickname = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayName(user) : "";
         var email = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayEmail(user) : "";
@@ -435,7 +436,13 @@
           var protectedAdmin = !!row.admin_role;
           var serviceSelect = '<label class="admin-service-label">服務<select data-admin-service="' + esc(row.user_id) + '"' + (protectedAdmin ? " disabled" : "") + '><option value="full"' + (row.service_level === "full" ? " selected" : "") + '>完整服務</option><option value="timetable_only"' + (row.service_level === "timetable_only" ? " selected" : "") + '>僅課表</option></select></label>';
           var accessActions = protectedAdmin ? "" : '<button class="btn-primary" type="button" data-admin-access="approved" data-admin-user="' + esc(row.user_id) + '">' + (row.status === "approved" ? "儲存服務" : "核准") + '</button><button class="btn-ghost danger-button" type="button" data-admin-access="rejected" data-admin-user="' + esc(row.user_id) + '">' + (row.status === "pending" ? "拒絕本次申請" : "移除存取權") + '</button>';
-          var roleAction = owner && row.admin_role === "co_admin" ? '<button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除聯席管理員</button>' : owner && !row.admin_role && row.status === "approved" ? '<button class="btn-ghost" type="button" data-admin-role="co_admin" data-admin-user="' + esc(row.user_id) + '">設為聯席管理員</button>' : "";
+          var self = state.accountUser && row.user_id === state.accountUser.id;
+          var roleAction = "";
+          if (owner && !self && row.status === "approved") {
+            if (row.admin_role === "owner") roleAction = '<button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除主要管理員</button>';
+            else if (row.admin_role === "co_admin") roleAction = '<button class="btn-ghost" type="button" data-admin-role="owner" data-admin-user="' + esc(row.user_id) + '">升為主要管理員</button><button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除聯席管理員</button>';
+            else roleAction = '<button class="btn-ghost" type="button" data-admin-role="owner" data-admin-user="' + esc(row.user_id) + '">設為主要管理員</button><button class="btn-ghost" type="button" data-admin-role="co_admin" data-admin-user="' + esc(row.user_id) + '">設為聯席管理員</button>';
+          }
           return '<article class="admin-account"><div class="admin-account-main"><div class="admin-account-title"><strong>' + esc(row.email) + '</strong><span class="admin-role-badge" data-role="' + esc(row.admin_role || "member") + '">' + esc(roleLabel) + '</span></div><div class="admin-account-meta"><span>' + esc(statusLabel) + '</span><span>' + esc(serviceLabel) + '</span><span>申請：' + esc(String(row.requested_at || "").slice(0, 10)) + '</span></div></div><div class="admin-account-actions">' + serviceSelect + accessActions + roleAction + '</div></article>';
         }).join("") : '<p class="empty">目前沒有符合條件的帳號。</p>';
       }
@@ -729,6 +736,12 @@
         state.memberContent = {};
         publishState(anonymousState, "anonymous");
         showAnonymousShell();
+        if (auth.getPublicCapabilities) auth.getPublicCapabilities().then(function (capabilities) {
+          if (capabilities.member_content) return auth.getMemberAnnouncementIndex().then(function (rows) {
+            state.memberContent = {}; rows.forEach(function (row) { if (row && row.announcement_id) state.memberContent[row.announcement_id] = row; });
+            if (state.data) { state.data.items.forEach(applyMemberContent); renderAll(); }
+          });
+        }).catch(function () { state.memberContent = {}; });
         if (state.data) fetchData(true);
       }
       function sync(uid, authRetry) {
@@ -881,7 +894,10 @@
             if (el.accountSwitch) el.accountSwitch.hidden = true;
             el.accountLogout.hidden = true;
           }
-          if (!(typeof uid === "string" && uid)) showAnonymousShell();
+          if (!(typeof uid === "string" && uid)) {
+            showAnonymousShell();
+            if (auth.getPublicCapabilities) auth.getPublicCapabilities().catch(function () {});
+          }
         });
       }
       function setPasswordAuthMode(mode) {
@@ -911,6 +927,7 @@
       function showPasswordAuth(mode) {
         if (!el.passwordAuthDialog || typeof el.passwordAuthDialog.showModal !== "function") { status("帳密登入介面暫時不可用"); return; }
         setPasswordAuthMode(mode);
+        if (el.passwordGoogleLogin) el.passwordGoogleLogin.hidden = window.CYNEWS_ACCOUNT_CONFIG && window.CYNEWS_ACCOUNT_CONFIG.googleLoginUiEnabled === false;
         el.passwordAuthStatus.textContent = "";
         el.passwordAuthPassword.value = "";
         if (!el.passwordAuthDialog.open) el.passwordAuthDialog.showModal();
@@ -1025,7 +1042,7 @@
         var accessAction = button.dataset.adminAccess;
         var roleAction = button.dataset.adminRole;
         var userId = button.dataset.adminUser;
-        if ((accessAction === "rejected" || roleAction === "none") && !window.confirm(accessAction === "rejected" ? "確定拒絕本次申請或移除此帳號的存取權嗎？帳號不會被封鎖，之後仍可重新送審。" : "確定移除此人的聯席管理員身分嗎？一般使用權會保留。")) return;
+        if ((accessAction === "rejected" || roleAction === "none") && !window.confirm(accessAction === "rejected" ? "確定拒絕本次申請或移除此帳號的存取權嗎？帳號不會被封鎖，之後仍可重新送審。" : "確定移除此人的管理員身分嗎？系統不允許移除最後一位主要管理員。")) return;
         el.adminStatus.textContent = "處理中";
         var operation;
         if (roleAction) operation = accountAuth.setAdminRole(userId, roleAction);
@@ -1033,7 +1050,7 @@
           var service = el.adminAccounts.querySelector('select[data-admin-service="' + userId + '"]');
           operation = accountAuth.updateAccountAccess(userId, accessAction, service ? service.value : "full");
         }
-        operation.then(function () { el.adminStatus.textContent = roleAction === "co_admin" ? "已設為聯席管理員。" : roleAction === "none" ? "已移除聯席管理員身分。" : accessAction === "approved" ? "帳號權限已更新。" : "存取權已移除；對方仍可重新送審。"; loadAdminAccounts(); }).catch(function () { el.adminStatus.textContent = "無法更新帳號狀態，請確認你的管理權限後再試。"; });
+        operation.then(function () { el.adminStatus.textContent = roleAction === "owner" ? "已設為主要管理員。" : roleAction === "co_admin" ? "已設為聯席管理員。" : roleAction === "none" ? "已移除管理員身分。" : accessAction === "approved" ? "帳號權限已更新。" : "存取權已移除；對方仍可重新送審。"; loadAdminAccounts(); }).catch(function () { el.adminStatus.textContent = "無法更新帳號狀態；請確認主要管理員權限，且不可移除最後一位主要管理員。"; });
       });
       if (el.accountReapply) el.accountReapply.addEventListener("click", function () {
         if (!accountAuth) return;
@@ -2513,7 +2530,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=80").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=81").catch(function () {});
       });
     }
 

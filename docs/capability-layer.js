@@ -5,8 +5,11 @@
   var KEYS = ["member_content", "assistant", "timetable", "calendar", "notifications"];
   var LABELS = { member_content: "會員摘要", assistant: "問校務", timetable: "課表", calendar: "行事曆", notifications: "訂閱通知" };
   var current = emptyMap();
+  var publicCurrent = emptyMap();
   var adminRows = {};
   var approved = false;
+  var authenticated = false;
+  var owner = false;
   var observerStarted = false;
 
   function emptyMap() {
@@ -24,8 +27,8 @@
     return out;
   }
   function snapshot() { return normalize(current); }
-  function has(key) { return approved && current[key] === true; }
-  function any(keys) { return approved && keys.some(function (key) { return current[key] === true; }); }
+  function has(key) { return (approved ? current[key] : !authenticated && publicCurrent[key]) === true; }
+  function any(keys) { return keys.some(function (key) { return has(key); }); }
   function anyPersonal() { return any(["assistant", "timetable", "calendar", "notifications"]); }
   function setHidden(node, hidden) {
     if (node && node.hidden !== !!hidden) node.hidden = !!hidden;
@@ -138,6 +141,28 @@
     });
   }
 
+  function renderPublicCapabilities() {
+    if (typeof document === "undefined" || !owner) return;
+    var admin = document.getElementById("viewAdmin");
+    if (!admin || document.getElementById("publicCapabilityEditor")) return;
+    var box = document.createElement("fieldset");
+    box.id = "publicCapabilityEditor";
+    box.className = "capability-editor";
+    box.innerHTML = '<legend>PUBLIC／未登入權限</legend><p class="hint">這些開關影響所有未登入訪客，並由資料庫 RPC 同步強制執行。</p><div class="capability-grid">' + KEYS.map(function (key) {
+      return '<label class="capability-option"><input type="checkbox" data-public-capability="' + key + '"' + (publicCurrent[key] ? " checked" : "") + '> <span>' + LABELS[key] + '</span></label>';
+    }).join("") + '</div><button type="button" class="btn-primary">儲存 PUBLIC 權限</button><span class="capability-save-state" aria-live="polite"></span>';
+    box.querySelector("button").addEventListener("click", function () {
+      var next = emptyMap(), state = box.querySelector(".capability-save-state");
+      KEYS.forEach(function (key) { next[key] = box.querySelector('[data-public-capability="' + key + '"]').checked; });
+      box.disabled = true; state.textContent = "儲存中";
+      root.__CYNEWS_SET_PUBLIC_CAPABILITIES(next).then(function () {
+        publicCurrent = normalize(next); state.textContent = "已儲存"; applyVisibility();
+      }).catch(function () { state.textContent = "儲存失敗：僅主要管理員可修改"; }).finally(function () { box.disabled = false; });
+    });
+    var heading = admin.querySelector(".admin-subheading");
+    admin.insertBefore(box, heading ? heading.nextSibling : admin.firstChild);
+  }
+
   function requiredForTarget(target) {
     if (!target || typeof target.closest !== "function") return null;
     if (target.closest("#tabAssistant,[data-home-tab='assistant']")) return "assistant";
@@ -170,6 +195,7 @@
     new MutationObserver(function () {
       applyVisibility();
       renderAdminCapabilities();
+      renderPublicCapabilities();
     }).observe(document.documentElement, { childList: true, subtree: true });
     applyVisibility();
     renderAdminCapabilities();
@@ -188,11 +214,26 @@
             if (result.error) throw result.error;
             current = normalize(result.data);
             approved = access.status === "approved";
+            authenticated = true;
+            owner = access.admin_role === "owner";
             access.capabilities = snapshot();
             setTimeout(applyVisibility, 0);
             return access;
           });
         });
+      };
+      controller.getPublicCapabilities = function () {
+        return controller.getClient().then(function (client) { return client.rpc("current_public_capabilities"); }).then(function (result) {
+          if (result.error) throw result.error;
+          publicCurrent = normalize(result.data); setTimeout(function () { applyVisibility(); renderPublicCapabilities(); }, 0);
+          return normalize(publicCurrent);
+        });
+      };
+      controller.setPublicCapabilities = function (capabilities) {
+        return controller.getClient().then(function (client) { return client.rpc("owner_set_public_capabilities", { next_capabilities: normalize(capabilities) }); }).then(function (result) { if (result.error) throw result.error; });
+      };
+      controller.getAuthCutoverReadiness = function () {
+        return controller.getClient().then(function (client) { return client.rpc("owner_auth_cutover_readiness"); }).then(function (result) { if (result.error) throw result.error; return result.data && result.data[0]; });
       };
       controller.getAdminAccounts = function (filters) {
         return originalAdmin.call(controller, filters).then(function (rows) {
@@ -218,6 +259,7 @@
         }).then(function (result) { if (result.error) throw result.error; });
       };
       root.__CYNEWS_SET_CAPABILITIES = controller.setAccountCapabilities;
+      root.__CYNEWS_SET_PUBLIC_CAPABILITIES = controller.setPublicCapabilities;
       return controller;
     };
     api.__capabilityWrapped = true;
@@ -230,6 +272,7 @@
     has: has,
     anyPersonal: anyPersonal,
     applyVisibility: applyVisibility,
+    setAuthenticated: function (value) { authenticated = value === true; if (!authenticated) { approved = false; owner = false; current = emptyMap(); } applyVisibility(); },
   };
 
   var assignedAuth = root.CyNewsAccountAuth;
