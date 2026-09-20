@@ -1784,3 +1784,44 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【Preview migration SUCCESS；Preview runtime PASS；Preview browser UI 無法確認；Production/Auth untouched】
+
+---
+
+## 2026-09-20｜PR #28 真實瀏覽器 UI 驗收 blocker checkpoint
+
+### Branch / deployment identity
+
+- canonical branch: `codex/public-access-auth-plan`
+- 本輪開始 remote HEAD: `c947212debcbf97f9278c8e97882cea137fe412c`
+- GitHub Vercel bot 顯示最新 deployment `66sYyVUvqqEn74w2CEJ1crLMpPks` 為 Ready。
+- 唯一允許的 per-commit Preview URL：`https://cy-school-news-staging-git-code-86fd74-tsaibohau-9644s-projects.vercel.app`。
+
+### 實際結果／精確 blocker
+
+- Vercel `get_access_to_vercel_url` 對上述 Preview URL 立即回 `INVALID_ARGUMENT`，無法取得可通過 SSO 的 share URL。
+- 此執行環境沒有 `agent-browser` binary，也沒有其他 browser automation tool。
+- 對 per-commit URL 的 read-only HTTP 嘗試被 proxy connect timeout 阻擋；上一 checkpoint 已確認同一 URL 會導向 Vercel SSO。
+- 因此無法建立真實瀏覽器 session，以下六項全部維持【無法確認】，不得宣稱 PASS：
+  - 未登入 PUBLIC capability 顯示／隱藏。
+  - owner 的 PUBLIC capability 管理介面。
+  - 非 owner 無法操作管理介面。
+  - multi-owner 管理入口。
+  - Google 登入仍保留。
+  - UI 狀態與 Preview server-side權限一致。
+- 沒有改用舊 `cy-school-news-staging.vercel.app` 冒充驗收；沒有超過五分鐘 polling或重複嘗試。
+
+### Safety / mutations
+
+- Preview migration：未重跑。
+- Preview schema / RPC / RLS / data / role：未修改。
+- Production / Google Provider / Auth identity：未修改。
+- PR #28：仍為 Draft、未merge、未標記Ready。
+- PR #25 / #26、unrelated baseline：未修改。
+- changed files：僅 `PROJECT_LEDGER.md`。
+
+### 下一個唯一允許動作
+
+取得可存取 PR #28 Preview 的真實瀏覽器環境後完成 UI 驗收。
+
+### 最終狀態
+【UI 驗收被 Vercel SSO／browser tool blocker 阻擋；已停止施工；Preview migration/runtime既有PASS不重做；Production untouched】
