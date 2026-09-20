@@ -847,6 +847,77 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-20｜PR #28 Preview migration / runtime checkpoint
+
+### Branch / source identity
+
+- canonical branch: `codex/public-access-auth-plan`
+- 開始時 remote HEAD: `c27e8b92d8fa04ec5ffc88e56959b1e755a0ebef`
+- Draft PR #28 維持 open / Draft / unmerged；未標記 Ready。
+- 本輪只使用 Preview Supabase `ebezqanvmgsgtatsbssn`；Production `oppdhtnepjagdwovndra` 完全未呼叫 migration / SQL / Auth mutation。
+
+### Migration
+
+- 套用前 `list_migrations` 不含 PR #28 migration，因此不是重跑。
+- 只對 Preview 套用 repo migration `20260919123614_public_access_and_multi_owner.sql`。
+- Supabase 實際 migration history：`20260920032854 public_access_and_multi_owner`。
+- apply result: SUCCESS。
+
+### Preview runtime matrix
+
+- schema / grants：`public_capabilities` RLS enabled；anon/authenticated 無 table direct privilege；anon 有 `current_public_capabilities()` / `has_public_capability(text)` execute；anon 無 owner write execute。
+- 初始五項 PUBLIC capabilities 全為 `false`。
+- anon 可讀五項 PUBLIC capability：PASS。
+- anon 寫 PUBLIC capability：DENIED；anon 呼叫 owner cutover readiness：DENIED。
+- co_admin 寫 PUBLIC capability及授予 owner：DENIED (`owner_required`)。
+- owner 寫 PUBLIC capability：PASS。
+- server-side gate：`member_content=false` 時 anon 直接呼叫 `member_announcement_index` 得 0 rows；transaction 中設為 true 後同一 anon RPC 得 10 rows：PASS。
+- multi-owner：owner 將現有 co_admin 升為第二 owner後 active owners=2；第二 owner將第一 owner降為 co_admin後 active owners=1：PASS。
+- Google Auth cutover readiness（Preview only）：active owner=1、具有非 Google identity=1、`ready=true`。這不代表 Production ready，也不授權關閉任何 Provider。
+- 全部角色／capability runtime mutation 包在單一 transaction並 `ROLLBACK`；rollback 後再次確認 owner=1、co_admin=1、五項 PUBLIC capabilities仍全 false。
+- runtime result marker：`PREVIEW_RUNTIME_MATRIX_PASS`。
+- 真實 Data API補充：anon `current_public_capabilities` HTTP 200且回傳五項；anon `owner_set_public_capabilities` HTTP 401 / PostgreSQL `42501`。第三個 REST gate請求遇到 proxy connect timeout；其 server-side行為已由上方 Preview DB role transaction實證，不以失敗的 HTTP重試取代。
+
+### Advisors / baseline separation
+
+- Supabase security / performance advisors 已執行。
+- PR #28 相關 advisor findings：`public_capabilities` RLS enabled且無 policy是刻意設計（table grants全撤銷，只經受控 SECURITY DEFINER RPC）；anon可執行 capability read與member-content RPC也是產品定義的公開入口，runtime gate已實證。
+- advisor另列 leaked-password protection、既有多個 SECURITY DEFINER RPC、既有 policy / index performance notices；不屬本輪 PR #28 runtime regression，依限制未修改 unrelated baseline。
+- `public_capabilities.updated_by` 未覆蓋 index為新增 performance INFO；五列固定小表，非本輪安全或runtime blocker，未擴張範圍修改migration。
+
+### Preview UI / deployment verification
+
+- GitHub Vercel bot顯示 PR #28 deployment Ready；最新 per-commit Preview URL為 `https://cy-school-news-staging-git-code-86fd74-tsaibohau-9644s-projects.vercel.app`。
+- 精確阻擋點：per-commit URL回 Vercel SSO 302；Vercel connector對 project/deployment/share/fetch均回 `INVALID_ARGUMENT`，本環境也無可用browser binary。因此無法完成真實瀏覽器 DOM / click驗收，狀態為【無法確認】，不得誤報 PASS。
+- stable `cy-school-news-staging.vercel.app` 可讀但仍是較舊部署（缺 `capability-layer.js`），不得拿它冒充 PR #28 Preview UI。
+- repo build與Vercel Ready已是前輪證據，本輪未重跑 Node / pgTAP / workflow，也未重新部署。
+
+### Safety / mutations
+
+- Preview：只新增本次 migration；runtime角色與capability變更全部 rollback，未保留真實帳號角色或capability變更。
+- Production Supabase / Auth identities / Google Provider / Production deployment：全部未修改。
+- PR #25 / #26：未修改。PR #28：未 merge、未標記 Ready。
+
+### 精確未完成點
+
+- 唯一未完成項是 PR #28 per-commit Vercel Preview 的真實瀏覽器 UI驗收；原因是deployment SSO與Vercel connector `INVALID_ARGUMENT`，不是產品程式、migration或runtime matrix failure。
+
+### 禁止重做
+
+- 不重跑已成功的 PR #28 Preview migration。
+- 不重跑 repo-only Node / pgTAP / workflow修正或本輪已PASS的transaction runtime matrix。
+- 不以 stable舊staging取代PR #28 per-commit UI驗收。
+- 未獲後續明確授權前，不修改Production、不關閉Google Provider、不改真實Production owner / identity、不merge或標記Ready。
+
+### 下一個唯一允許動作
+
+使用可通過Vercel SSO的真實瀏覽器開啟上述PR #28 per-commit Preview，只驗收未登入PUBLIC UI gates與owner管理畫面；不得重跑migration。驗收結果若PASS，再等待使用者決定是否進入下一階段；目前不得進入Production cutover。
+
+### 最終狀態
+【Preview migration SUCCESS；Preview DB/runtime matrix PASS且已rollback；Preview真實瀏覽器UI因Vercel SSO/connector阻擋無法確認；Production/Auth untouched】
+
+---
+
 ## 2026-09-19｜PR #28 feature-specific pgTAP unblock checkpoint
 
 ### Branch / HEAD / tree
@@ -1697,3 +1768,19 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【repo-only 已實作；Vercel Ready；CI 等待中；Production untouched】
+
+---
+
+## 2026-09-20｜最新 authoritative checkpoint：PR #28 Preview runtime
+
+- 本檔前述「PR #28 Preview migration / runtime checkpoint」是目前最新詳細紀錄，優先於所有較舊 checkpoint。
+- Preview migration `20260920032854 public_access_and_multi_owner`：SUCCESS；禁止重跑。
+- Preview DB/runtime transaction matrix：PASS；PUBLIC capability、anon/co-admin deny、owner-only write/readiness、server-side member-content gate、multi-owner升降級均通過，測試異動已rollback。
+- rollback後 Preview仍為 owner 1 / co_admin 1，五項PUBLIC capabilities全false；未修改任何真實角色或capability設定。
+- Preview owner auth cutover readiness為true只代表Preview；Production未查改且仍禁止Google cutover。
+- PR #28 per-commit Vercel Preview真實瀏覽器UI因SSO及connector `INVALID_ARGUMENT`為【無法確認】；stable staging是舊部署，不得替代驗收。
+- Production / Auth / Google Provider / Production deployment / PR #25 / PR #26：全部未修改；PR #28仍Draft、未merge、未標記Ready。
+- 下一個唯一允許動作：以可通過Vercel SSO的真實瀏覽器只驗收PR #28 per-commit Preview UI；不得重跑migration或進入Production。
+
+### 最終狀態
+【Preview migration SUCCESS；Preview runtime PASS；Preview browser UI 無法確認；Production/Auth untouched】
