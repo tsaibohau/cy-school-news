@@ -872,6 +872,39 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-21｜calendar-parser remote publish blocker
+
+### 本輪授權與起點
+
+- 使用者明確授權只將 `codex/calendar-parser-1151` 現有三個 commit push 到 remote，驗證 remote HEAD / tree 與本地完全一致，再建立 Draft PR 與 read-only repo/PR review。
+- 本地起點為 clean working tree；branch `codex/calendar-parser-1151`；HEAD `d52a3549ab029071dc5980f070564cd0a32053c7`；tree `a77b090653b6a4ce20539bd401d169d4e1051aa4`。
+- 待 push 的三個 commit：`d2b6faae63d24f9bd59f2e84f522d3b29f9814c3`、`80a0b96ed2d64cefa0627bb9576e004386699c45`、`d52a3549ab029071dc5980f070564cd0a32053c7`。
+
+### 精確 blocker
+
+- `git push -u origin codex/calendar-parser-1151` 在建立任何 remote ref 前失敗：`fatal: could not read Username for 'https://github.com': No such device or address`。
+- 目前 worktree 與 Git 設定沒有可用的 HTTPS credential helper / extra header；`gh` CLI 也不存在。
+- 已確認有 GitHub connector 可建立 blob/tree/commit/ref/PR，但它只能重新建立 commit，無法上傳現有本地 commit object 或保留原 commit author/committer metadata；因此會產生不同 commit SHA，不符合「remote branch HEAD / tree 與本地完全一致」的明確要求。未使用此方式繞過。
+
+### 實際狀態
+
+- remote branch：未建立／未更新。
+- Draft PR：未建立，因為必要的 remote head branch 不存在。
+- remote HEAD / tree parity：無法驗證。
+- repo/PR review：未開始；使用者要求的順序是 push、parity、Draft PR 後才 review，不跳過前置條件。
+- 程式、fixtures、tests：未修改。
+- parser / discover / build / backfill / 公開 JSON / Preview / Production / deployment：全部未執行、未修改。
+
+### 下一個唯一允許動作
+
+先提供能夠對 `https://github.com/tsaibohau/cy-school-news.git` 執行原生 Git push 的已授權通道（例如在 Work 環境完成 GitHub Git credential 連線）。從本 checkpoint 繼續時，只重試原本的三個 commit push，驗證 remote HEAD/tree 完全一致，建立 Draft PR，然後依使用者列出的五項進行 read-only review。未取得認證前不得改造 commits、不得以 connector 重建不同 SHA 的分支、不得建立無正確 head 的 PR。
+
+### 最終狀態
+
+【CLOUD_WRITE_BLOCKED：本地三個既有 commit 完整保留；remote 與 PR 未變更】
+
+---
+
 ## 2026-09-12 17:18｜合併 PR #23
 
 ### 目標
