@@ -41,6 +41,18 @@
     var node = document.getElementById("publicAccessStatus");
     if (node) node.textContent = text;
   }
+  function setButtonAvailability(button, allowed, reason) {
+    if (!button) return;
+    button.disabled = !allowed;
+    button.setAttribute("aria-disabled", allowed ? "false" : "true");
+    button.classList.toggle("is-capability-disabled", !allowed);
+    var detail = button.querySelector("small");
+    if (detail) {
+      if (!detail.hasAttribute("data-available-copy")) detail.setAttribute("data-available-copy", detail.textContent);
+      var copy = allowed ? detail.getAttribute("data-available-copy") : reason;
+      if (detail.textContent !== copy) detail.textContent = copy;
+    }
+  }
 
   function applyVisibility() {
     if (typeof document === "undefined") return;
@@ -50,7 +62,7 @@
       tabTimetable: has("timetable"),
       tabCalendar: has("calendar"),
       tabSub: anyPersonal(),
-      tabHome: anyPersonal(),
+      tabHome: true,
       tabToday: anyPersonal(),
       functionDock: approved || publicEntry,
     };
@@ -58,8 +70,10 @@
 
     document.querySelectorAll("[data-home-tab]").forEach(function (button) {
       var tab = button.getAttribute("data-home-tab");
-      var allowed = tab === "latest" || tab === "today" && anyPersonal() || tab === "assistant" && has("assistant") || tab === "calendar" && has("calendar") || tab === "sub" && anyPersonal();
-      setHidden(button, !allowed);
+      var allowed = tab === "latest" || tab === "sub" || tab === "today" && anyPersonal() || tab === "assistant" && has("assistant") || tab === "calendar" && has("calendar");
+      var reason = authenticated ? "此功能目前未開放" : "此功能目前未對訪客開放";
+      setHidden(button, false);
+      setButtonAvailability(button, allowed, reason);
     });
     document.querySelectorAll("[data-today-action='task']").forEach(function (node) { setHidden(node, !has("calendar")); });
     document.querySelectorAll("[data-today-action='keyword']").forEach(function (node) { setHidden(node, !has("notifications")); });
@@ -176,8 +190,8 @@
     if (target.closest("#tabAssistant,[data-home-tab='assistant']")) return "assistant";
     if (target.closest("#tabTimetable")) return "timetable";
     if (target.closest("#tabCalendar,[data-home-tab='calendar']")) return "calendar";
-    if (target.closest("#tabSub,[data-home-tab='sub']")) return "personal";
-    if (target.closest("#tabHome,#tabToday,[data-home-tab='today']")) return "personal";
+    if (target.closest("#tabSub,[data-home-tab='sub'],#tabHome")) return null;
+    if (target.closest("#tabToday,[data-home-tab='today']")) return "personal";
     if (target.closest("[data-today-action='task'],button[data-add-task]")) return "calendar";
     if (target.closest("[data-today-action='keyword']")) return "notifications";
     if (target.closest("button[data-detail-id],button[data-read-id],.mark-read")) return "member_content";

@@ -778,6 +778,10 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
 .home-action, .home-action-primary { grid-column: auto; min-height: 118px; padding: 15px; grid-template-columns: 1fr; align-content: start; gap: 7px; border-radius: 16px; background: var(--card); color: var(--ink); box-shadow: none; }
 .home-action > span, .home-action-primary > span { grid-row: auto; width: 34px; height: 34px; border-radius: 10px; background: var(--chip-bg); color: var(--cysh); }
 .home-action strong { align-self: auto; font-size: 15px; }.home-action small, .home-action-primary small { color: var(--muted); font-size: 12px; }
+.home-action.is-capability-disabled,
+.home-action:disabled { opacity: .52; filter: grayscale(.72); cursor: not-allowed; box-shadow: none; }
+.home-action.is-capability-disabled > span,
+.home-action:disabled > span { color: var(--muted); background: var(--chip-bg); }
 .controls { grid-template-columns: minmax(280px,1fr) minmax(180px,260px); align-items: center; gap: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
 #q, .school-filter select { min-height: 46px; border-color: var(--line); background: var(--paper); box-shadow: none; }
 .chips { grid-column: 1/-1; }.chip { padding: 7px 12px; border: 0; font-weight: 600; }.chip.is-active { background: var(--cysh); color: #fff; }

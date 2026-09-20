@@ -44,6 +44,7 @@
       return { normalize: normalize, upsert: upsert, remove: remove };
     })();
     var LS_READS = "cyNews.reads.v1";
+    var LS_VISITOR_CONTEXT = "cyNews.visitorContext.v1";
     var PAGE_SIZE = 200;  // 最新清單一次渲染的則數,避免一口氣塞入上千張卡片
     var notificationState = NotificationState.load();
     var queueAccountMutation = function () {};
@@ -70,7 +71,7 @@
       archivePromise: null,
       subscriptions: notificationState.subscriptions,
       tasks: [],
-      profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
+      profile: loadVisitorContext(),
       accountUser: null,
       accountAccess: null,
       memberContent: {},
@@ -160,6 +161,27 @@
     function loadSchool() {
       var value = String(localStorage.getItem(LS_SCHOOL) || "all");
       return value === "all" || /^[a-z0-9-]{1,32}$/.test(value) ? value : "all";
+    }
+    function loadVisitorContext() {
+      if (!window.CyNewsProfile) return {};
+      try {
+        var saved = JSON.parse(localStorage.getItem(LS_VISITOR_CONTEXT) || "{}");
+        return window.CyNewsProfile.normalize({
+          school_id: saved.school_id,
+          grade_level: saved.grade_level,
+          class_name: saved.class_name,
+        });
+      } catch (_) { return window.CyNewsProfile.empty(); }
+    }
+    function saveVisitorContext(profile) {
+      var visitor = window.CyNewsProfile.normalize(profile);
+      localStorage.setItem(LS_VISITOR_CONTEXT, JSON.stringify({
+        schema_version: 1,
+        school_id: visitor.school_id,
+        grade_level: visitor.grade_level,
+        class_name: visitor.class_name,
+      }));
+      return visitor;
     }
     function saveReads() { localStorage.setItem(LS_READS, JSON.stringify(state.reads)); }
     function saveUserEvents() {
@@ -312,7 +334,7 @@
       var lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
         subscriptions: notificationState.subscriptions,
         reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
-        preferences: { schema_version: 1, preferences: { profile: window.CyNewsProfile.empty() } },
+        preferences: { schema_version: 1, preferences: { profile: loadVisitorContext() } },
         tasks: state.tasks,
         reminderRules: state.reminderRules,
       }, localStorage);
@@ -704,7 +726,7 @@
         state.reads = {};
         saveReads();
         NotificationState.save(notificationState);
-        state.profile = window.CyNewsProfile.empty();
+        state.profile = loadVisitorContext();
         state.assistantFeedback = window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {};
         state.tasks = [];
         state.personalizedNotifications = false;
@@ -712,7 +734,7 @@
         state.reminderCustomOffsets = "1";
         state.reminderRules = [];
         state.reminderDeviceActive = false;
-        state.school = "all";
+        state.school = String(state.profile.school_id || "all");
         state.archive = "none";
         state.archivePromise = null;
         if (el.reminderPreset) el.reminderPreset.value = "single";
@@ -729,8 +751,8 @@
         requestedUid = null;
         readyUid = null;
         accountPhase = "ANONYMOUS_READY";
-        state.school = "all";
-        localStorage.setItem(LS_SCHOOL, "all");
+        state.school = String(loadVisitorContext().school_id || "all");
+        localStorage.setItem(LS_SCHOOL, state.school);
         state.archive = "none";
         state.archivePromise = null;
         state.memberContent = {};
@@ -2312,7 +2334,7 @@
     }
     function switchTab(tab) {
       var capabilities = window.CyNewsCapabilities;
-      var publicOrAccountAllowed = tab === "latest" || tab === "admin";
+      var publicOrAccountAllowed = tab === "latest" || tab === "home" || tab === "sub" || tab === "admin";
       if (!publicOrAccountAllowed && capabilities) {
         publicOrAccountAllowed = tab === "assistant" && capabilities.has("assistant") ||
           tab === "timetable" && capabilities.has("timetable") ||
@@ -2370,10 +2392,13 @@
       if (tab === "calendar" && el.viewCalendar) { loadOfficialEvents(); renderCalendar(); }
       if (tab === "sub") {
         renderSub();
-        // 看過訂閱頁後,把 UI「新」的基準點推進到現在;不影響通知去重。
-        state.lastSeen = new Date().toISOString();
-        localStorage.setItem(LS_SEEN, state.lastSeen);
-        setTimeout(renderBadge, 400);
+        // 只有真正具備通知 capability 時，才把「新」的 UI 基準點推進。
+        // 匿名訪客可進入此頁儲存 device-local context，但不能取得通知狀態。
+        if (hasSignedInAccount() && (!capabilities || capabilities.has("notifications"))) {
+          state.lastSeen = new Date().toISOString();
+          localStorage.setItem(LS_SEEN, state.lastSeen);
+          setTimeout(renderBadge, 400);
+        }
       }
       window.scrollTo(0, 0);
     }
@@ -2440,6 +2465,15 @@
       var profile = profileFromForm();
       if (!profile.school_id) {
         el.profileStatus.textContent = "請先選擇你關心的學校";
+        return;
+      }
+      if (!hasSignedInAccount()) {
+        state.profile = saveVisitorContext(profile);
+        applyPreferredSchool(profile.school_id, true);
+        el.profileStatus.textContent = "已儲存在此裝置";
+        renderProfile();
+        renderLatest();
+        renderToday();
         return;
       }
       var result = queueAccountMutation("preferences.upsert", preferencePayload({ profile: profile }));
