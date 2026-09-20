@@ -2311,9 +2311,19 @@
       return !!(state.accountAccess && state.accountAccess.status === "approved" && state.accountAccess.service_level === "timetable_only");
     }
     function switchTab(tab) {
-      if (tab !== "latest" && !hasSignedInAccount()) {
+      var capabilities = window.CyNewsCapabilities;
+      var publicOrAccountAllowed = tab === "latest" || tab === "admin";
+      if (!publicOrAccountAllowed && capabilities) {
+        publicOrAccountAllowed = tab === "assistant" && capabilities.has("assistant") ||
+          tab === "timetable" && capabilities.has("timetable") ||
+          tab === "calendar" && capabilities.has("calendar") ||
+          ["home", "today", "sub"].indexOf(tab) !== -1 && capabilities.anyPersonal();
+      } else if (!publicOrAccountAllowed) {
+        publicOrAccountAllowed = hasSignedInAccount();
+      }
+      if (tab !== "latest" && tab !== "admin" && !publicOrAccountAllowed) {
         tab = "latest";
-        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能需要登入後才能使用。";
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能目前未開放。";
       }
       if (tab === "admin" && !isAdminAccount()) tab = "latest";
       if (isTimetableOnly() && ["home", "today", "assistant", "calendar"].indexOf(tab) !== -1) {

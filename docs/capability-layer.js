@@ -3,6 +3,7 @@
   "use strict";
 
   var KEYS = ["member_content", "assistant", "timetable", "calendar", "notifications"];
+  var PUBLIC_KEYS = ["member_content", "assistant", "timetable", "calendar"];
   var LABELS = { member_content: "會員摘要", assistant: "問校務", timetable: "課表", calendar: "行事曆", notifications: "訂閱通知" };
   var current = emptyMap();
   var publicCurrent = emptyMap();
@@ -15,17 +16,19 @@
   function emptyMap() {
     return { member_content: false, assistant: false, timetable: false, calendar: false, notifications: false };
   }
-  function normalize(rows) {
+  function normalizeFor(rows, allowedKeys) {
     var out = emptyMap();
     if (rows && !Array.isArray(rows) && typeof rows === "object") {
-      KEYS.forEach(function (key) { out[key] = rows[key] === true; });
+      allowedKeys.forEach(function (key) { out[key] = rows[key] === true; });
       return out;
     }
     (Array.isArray(rows) ? rows : []).forEach(function (row) {
-      if (row && KEYS.indexOf(row.capability) !== -1) out[row.capability] = row.enabled === true;
+      if (row && allowedKeys.indexOf(row.capability) !== -1) out[row.capability] = row.enabled === true;
     });
     return out;
   }
+  function normalize(rows) { return normalizeFor(rows, KEYS); }
+  function normalizePublic(rows) { return normalizeFor(rows, PUBLIC_KEYS); }
   function snapshot() { return normalize(current); }
   function has(key) { return (approved ? current[key] : !authenticated && publicCurrent[key]) === true; }
   function any(keys) { return keys.some(function (key) { return has(key); }); }
@@ -41,6 +44,7 @@
 
   function applyVisibility() {
     if (typeof document === "undefined") return;
+    var publicEntry = !authenticated && any(["assistant", "timetable", "calendar"]);
     var map = {
       tabAssistant: has("assistant"),
       tabTimetable: has("timetable"),
@@ -48,6 +52,7 @@
       tabSub: anyPersonal(),
       tabHome: anyPersonal(),
       tabToday: anyPersonal(),
+      functionDock: approved || publicEntry,
     };
     Object.keys(map).forEach(function (id) { setHidden(document.getElementById(id), !map[id]); });
 
@@ -70,12 +75,10 @@
     var profileExtra = document.querySelector("#profileForm fieldset.full-service-only");
     setHidden(profileExtra, !(has("assistant") || has("notifications")));
 
-    if (approved && !has("member_content")) {
-      document.querySelectorAll("button[data-detail-id], button[data-read-id], .read-state, .mark-read").forEach(function (node) { setHidden(node, true); });
-    }
-    if (approved && !has("calendar")) {
-      document.querySelectorAll("button[data-add-task]").forEach(function (node) { setHidden(node, true); });
-    }
+    document.querySelectorAll("button[data-detail-id], button[data-read-id], .read-state, .mark-read").forEach(function (node) {
+      setHidden(node, !has("member_content"));
+    });
+    document.querySelectorAll("button[data-add-task]").forEach(function (node) { setHidden(node, !has("calendar")); });
   }
 
   function capabilitySummary(map) {
@@ -142,21 +145,26 @@
   }
 
   function renderPublicCapabilities() {
-    if (typeof document === "undefined" || !owner) return;
+    if (typeof document === "undefined") return;
+    var existing = document.getElementById("publicCapabilityEditor");
+    if (!owner) {
+      if (existing) existing.remove();
+      return;
+    }
     var admin = document.getElementById("viewAdmin");
-    if (!admin || document.getElementById("publicCapabilityEditor")) return;
+    if (!admin || existing) return;
     var box = document.createElement("fieldset");
     box.id = "publicCapabilityEditor";
     box.className = "capability-editor";
-    box.innerHTML = '<legend>PUBLIC／未登入權限</legend><p class="hint">這些開關影響所有未登入訪客，並由資料庫 RPC 同步強制執行。</p><div class="capability-grid">' + KEYS.map(function (key) {
+    box.innerHTML = '<legend>PUBLIC／未登入權限</legend><p class="hint">這些開關影響所有未登入訪客，並由資料庫 RPC 同步強制執行。個人化通知必須登入，不屬於 PUBLIC 權限。</p><div class="capability-grid">' + PUBLIC_KEYS.map(function (key) {
       return '<label class="capability-option"><input type="checkbox" data-public-capability="' + key + '"' + (publicCurrent[key] ? " checked" : "") + '> <span>' + LABELS[key] + '</span></label>';
     }).join("") + '</div><button type="button" class="btn-primary">儲存 PUBLIC 權限</button><span class="capability-save-state" aria-live="polite"></span>';
     box.querySelector("button").addEventListener("click", function () {
       var next = emptyMap(), state = box.querySelector(".capability-save-state");
-      KEYS.forEach(function (key) { next[key] = box.querySelector('[data-public-capability="' + key + '"]').checked; });
+      PUBLIC_KEYS.forEach(function (key) { next[key] = box.querySelector('[data-public-capability="' + key + '"]').checked; });
       box.disabled = true; state.textContent = "儲存中";
       root.__CYNEWS_SET_PUBLIC_CAPABILITIES(next).then(function () {
-        publicCurrent = normalize(next); state.textContent = "已儲存"; applyVisibility();
+        publicCurrent = normalizePublic(next); state.textContent = "已儲存"; applyVisibility();
       }).catch(function () { state.textContent = "儲存失敗：僅主要管理員可修改"; }).finally(function () { box.disabled = false; });
     });
     var heading = admin.querySelector(".admin-subheading");
@@ -176,7 +184,6 @@
     return null;
   }
   function allowedRequirement(requirement) {
-    if (!approved) return true;
     if (requirement === "personal") return anyPersonal();
     return !requirement || has(requirement);
   }
@@ -225,12 +232,12 @@
       controller.getPublicCapabilities = function () {
         return controller.getClient().then(function (client) { return client.rpc("current_public_capabilities"); }).then(function (result) {
           if (result.error) throw result.error;
-          publicCurrent = normalize(result.data); setTimeout(function () { applyVisibility(); renderPublicCapabilities(); }, 0);
-          return normalize(publicCurrent);
+          publicCurrent = normalizePublic(result.data); setTimeout(function () { applyVisibility(); renderPublicCapabilities(); }, 0);
+          return normalizePublic(publicCurrent);
         });
       };
       controller.setPublicCapabilities = function (capabilities) {
-        return controller.getClient().then(function (client) { return client.rpc("owner_set_public_capabilities", { next_capabilities: normalize(capabilities) }); }).then(function (result) { if (result.error) throw result.error; });
+        return controller.getClient().then(function (client) { return client.rpc("owner_set_public_capabilities", { next_capabilities: normalizePublic(capabilities) }); }).then(function (result) { if (result.error) throw result.error; });
       };
       controller.getAuthCutoverReadiness = function () {
         return controller.getClient().then(function (client) { return client.rpc("owner_auth_cutover_readiness"); }).then(function (result) { if (result.error) throw result.error; return result.data && result.data[0]; });
@@ -267,6 +274,7 @@
 
   root.CyNewsCapabilities = {
     KEYS: KEYS.slice(),
+    PUBLIC_KEYS: PUBLIC_KEYS.slice(),
     LABELS: Object.assign({}, LABELS),
     current: snapshot,
     has: has,

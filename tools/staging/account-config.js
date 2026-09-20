@@ -19,5 +19,5 @@ window.CYNEWS_ACCOUNT_CONFIG = {
 };
 /* Load the capability layer from the actual staging configuration that survives build-staging.js. */
 if (typeof document !== "undefined" && document.readyState === "loading") {
-  document.write('<script src="capability-layer.js?v=3"></' + 'script>');
+  document.write('<script src="capability-layer.js?v=6"></' + 'script>');
 }

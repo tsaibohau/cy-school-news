@@ -265,7 +265,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('src="account-sync.js?v=54"'), "index must load versioned Account Sync before app.js");
   assert(index.includes('src="account-config.js?v=42"'), "index must load versioned account config");
   assert(index.includes('src="account-auth.js?v=79"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=83"'), "index must load current app shell");
+  assert(index.includes('src="app.js?v=84"'), "index must load current app shell");
   assert(sw.includes('"./account-sync.js?v=54"'), "Service Worker shell must cache versioned Account Sync");
   assert(sw.includes('"./account-auth.js?v=79"'), "Service Worker shell must cache current account auth");
   assert(index.includes('id="accountEmail"'));
@@ -281,7 +281,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v87"), "Service Worker cache must advance for the current app shell");
+  assert(sw.includes("cy-news-v88"), "Service Worker cache must advance for the current app shell");
   assert(app.includes('register("sw.js?v=81")'), "App must register the current Service Worker script");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
@@ -310,7 +310,9 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes('switchTab("latest")'));
   assert(app.includes('tab: "latest"'));
   assert(app.includes("function hasSignedInAccount()"));
-  assert(app.includes('tab !== "latest" && !hasSignedInAccount()'));
+  assert(app.includes('tab === "assistant" && capabilities.has("assistant")'));
+  assert(app.includes('tab === "timetable" && capabilities.has("timetable")'));
+  assert(app.includes('tab === "calendar" && capabilities.has("calendar")'));
   assert(app.includes("setPasswordAuthMode"));
   assert(app.includes("resetPasswordForEmail"));
   assert(app.includes("這個網址尚未開放寄送重設信"));
