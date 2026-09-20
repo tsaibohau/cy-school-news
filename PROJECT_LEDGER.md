@@ -1905,3 +1905,77 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【兩項 feature blocker 已修正；相關 tests PASS；Preview forward-only migration/runtime PASS；feature pgTAP PASS；Vercel Ready；等待人工 Preview UI 驗收】
+
+---
+
+## 2026-09-20 13:36 UTC｜PR #28 常駐功能按鈕與 visitor context checkpoint
+
+### Branch / HEAD / tree
+
+- canonical branch: `codex/public-access-auth-plan`
+- 本輪開始 remote HEAD: `8a429b5cf1bded98418c3e924438d9b2e485985b`
+- feature implementation remote HEAD: `60e85b11f650a78a9e59e0af3fcb6a96ab2fe78c`
+- feature implementation tree: `2cd87fd3e771e032b952f1f5f09b1f106a2856e1`
+- PR #28 維持 Draft、未 merge、未標記 Ready。
+
+### Changed files
+
+- `docs/account-config.js`
+- `docs/app.js`
+- `docs/capability-layer.js`
+- `docs/index.html`
+- `docs/style.css`
+- `docs/sw.js`
+- `tests/test_account_auth.js`
+- `tests/test_public_access_contract.js`
+- `tests/test_pwa_notification.js`
+- `tools/build-staging.js`
+- `tools/staging/account-config.js`
+- `PROJECT_LEDGER.md`（本 checkpoint）
+
+### 實作結果
+
+- 主畫面五個功能按鈕全部常駐，不再因 capability=false 被 `hidden`。
+- 可用功能維持正常樣式與操作；不可用功能設為原生 `disabled`、`aria-disabled=true`、灰階，並將說明改為「此功能目前未開放」或「此功能目前未對訪客開放」。
+- anonymous 以 PUBLIC capability、登入使用者以 account capability 決定 enabled/disabled。
+- `home` 與「調整我的設定」保持可進入；assistant、calendar、today 等受限 route 仍由既有 click capture 與 `switchTab()` gate 拒絕。RPC/RLS/server-side gate 未修改。
+- 新增 `cyNews.visitorContext.v1` device-local context，只保存匿名訪客的 `school_id`、`grade_level`、`class_name`；不建立 Auth user、不寫 Supabase，也不保存個人化通知／追蹤等帳號專屬偏好。
+- anonymous 登出／重載後會恢復本機 visitor context；登入帳號仍使用既有 account preferences。匿名進入設定頁不會推進會員通知 `lastSeen`。
+- PWA shell cache 更新為 `cy-news-v89`，同步更新 app/style/capability-layer cache bust。
+
+### Tests / CI / deployment
+
+- `node --check docs/app.js`: PASS
+- `node --check docs/capability-layer.js`: PASS
+- `node tests/test_public_access_contract.js`: PASS
+- `node tests/test_account_auth.js`: PASS
+- `node tests/test_pwa_notification.js`: PASS
+- `node tests/test_staging_build.js`: PASS
+- `node tests/test_profile.js`: PASS
+- `node tests/test_account_sync.js`: PASS
+- `node tests/test_account_switch_v3.js`: PASS
+- `node tests/test_rls_sql_contract.js`: PASS
+- `git diff --check`: PASS（ledger commit 前）
+- GitHub Actions run `35513817209`：aggregate job FAIL；既有 `Run user_tasks RLS matrix` baseline FAIL，reminder matrix skipped；`Run PUBLIC capability and multi-owner matrix` 實際執行且 PASS。因此沒有本輪 feature-specific RLS regression。
+- Vercel deployment `DLRtkUVJYzj8Lm3F1q8B6KJgxa4f`: Ready。
+- Preview URL: `https://cy-school-news-staging-git-code-86fd74-tsaibohau-9644s-projects.vercel.app`。
+
+### 精確失敗點／baseline 區分
+
+- 第一次相關 test run 因 app/cache version assertions 尚未同步而停在 `test_account_auth.js`；已同步測試與 build contract後 PASS。
+- 第二次 test run 顯示 anonymous 設定頁會推進通知 `lastSeen`；已限制只有登入且具 notifications capability 才更新，完整相關 tests PASS。
+- GitHub aggregate red 仍是既有 `user_tasks` baseline，不是本輪 UI / visitor-context regression；未修改或隱藏該 baseline。
+
+### Supabase / Auth / Production safety
+
+- 本輪不需要 migration；未新增、未重跑、未套用任何 Preview migration。
+- Preview schema / RPC / RLS / data、Production Supabase、Production deployment：全部未修改。
+- Auth identity、owner/co-admin、Google Provider：全部未修改；Google 登入仍保留。
+- PR #25 / #26 與 unrelated baseline：未修改。
+
+### 下一個唯一允許動作
+
+以真實瀏覽器執行 PR #28 Preview 人工 UI 驗收：核對首頁按鈕常駐、PUBLIC/account capability 對應的 enabled/disabled 與原因文字、disabled 不可進入 route，以及匿名學校／年級／班級在重載後仍保留。不得自行進入 Production、merge、標記 Ready或重跑 migration。
+
+### 最終狀態
+【UI / visitor-context 修正完成；repo tests PASS；feature pgTAP PASS；Vercel Ready；Production/Auth/Supabase untouched；等待人工 Preview UI 驗收】
