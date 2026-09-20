@@ -4,8 +4,9 @@ from pathlib import Path
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scraper"))
-from calendar_adapter import (discover_calendar_attachments, parse_calendar_text,
-                              parse_explicit_date, roc_to_gregorian)  # noqa: E402
+from calendar_adapter import (calendar_quality_gate, discover_calendar_attachments,
+                              parse_calendar_text, parse_explicit_date,
+                              roc_to_gregorian)  # noqa: E402
 from calendar_schema import source_status, validate_events  # noqa: E402
 from school_registry import get_school, registry_snapshot  # noqa: E402
 from schoolcal import academic_period, build_ics, merge_calendar_events  # noqa: E402
@@ -23,6 +24,51 @@ def run():
     assert parse_explicit_date("115年9月1日") == "2026-09-01"
     assert parse_explicit_date("2025/09/01") == "2025-09-01"
     assert parse_explicit_date("公告日期 2026/09/01") == "2026-09-01"
+
+    cysh_115 = parse_calendar_text(
+        read("calendar_cysh_115_1_layout.txt"), school_id="cysh", academic_year=115,
+        semester=1, source_url="https://www.cysh.cy.edu.tw/fixed-revision.pdf",
+        source_document="國立嘉義高中115學年第一學期行事曆.pdf",
+        source_revision_value="981254e3c7e013c8cf532560b56fb00ea6e77606c2d23a8e14046203b39b18de",
+    )
+    cygsh_115 = parse_calendar_text(
+        read("calendar_cygsh_115_1_layout.txt"), school_id="cygsh", academic_year=115,
+        semester=1, source_url="https://www.cygsh.cy.edu.tw/fixed-revision.pdf",
+        source_document="115學年度第一學期行事曆",
+        source_revision_value="b678dc6c5b93e3136d9b4c316a8096ba5733c1231640b993c35f01fa6b5db8ef",
+    )
+    assert len(cysh_115) == 100 and len(cysh_115) > 2
+    assert len(cygsh_115) == 172
+    assert all(row["parser_provenance"]["parser_version"] == "2" for row in cysh_115 + cygsh_115)
+    forbidden_fragments = {")", ")。", "）。", "第 5-6 節)。", "第 5-6 節）。", "12:10", "中午 12 時"}
+    assert not forbidden_fragments.intersection(row["title"] for row in cygsh_115)
+    assert not any(row["title"] == "V1" for row in cysh_115)
+    assert any(row["start_date"].startswith("2027-01-") for row in cysh_115)
+    assert any(row["start_date"].startswith("2027-01-") for row in cygsh_115)
+    cysh_quality = calendar_quality_gate(
+        cysh_115, school_id="cysh", academic_year=115, semester=1,
+    )
+    cygsh_quality = calendar_quality_gate(
+        cygsh_115, school_id="cygsh", academic_year=115, semester=1,
+    )
+    assert cysh_quality["passed"] is True and len(cysh_quality["months"]) == 7
+    assert cygsh_quality["passed"] is True and cygsh_quality["fragment_count"] == 0
+
+    collapsed = calendar_quality_gate(
+        cysh_115[:2], school_id="cysh", academic_year=115, semester=1,
+        last_known_good_count=100,
+    )
+    assert collapsed["passed"] is False
+    assert "event_count_collapsed_from_last_known_good" in collapsed["reasons"]
+    fragments = [dict(row) for row in cygsh_115[:30]]
+    for index, row in enumerate(fragments[:20]):
+        row["id"] = f"fragment-{index}"
+        row["title"] = ")。"
+    fragment_quality = calendar_quality_gate(
+        fragments, school_id="cygsh", academic_year=115, semester=1,
+    )
+    assert fragment_quality["passed"] is False
+    assert "fragment_ratio_above_0.20" in fragment_quality["reasons"]
 
     cysh = parse_calendar_text(
         read("calendar_cysh_114_1.txt"), school_id="cysh", academic_year=114,
@@ -89,6 +135,10 @@ def run():
     assert {row["id"] for row in merged} == {"legacy-cygsh", "official-cysh"}
     official_visible = next(row for row in merged if row["id"] == "official-cysh")
     assert official_visible["school"] == "嘉中" and official_visible["kind"] == "official"
+    rejected = merge_calendar_events(curated, official, accepted_terms=set())
+    assert {row["id"] for row in rejected} == {"legacy-cysh", "legacy-cygsh"}
+    accepted = merge_calendar_events(curated, official, accepted_terms={("cysh", 115, 1)})
+    assert {row["id"] for row in accepted} == {"legacy-cygsh", "official-cysh"}
     ranged_ics = build_ics([{"date": "2026-09-02", "end_date": "2026-09-03", "school": "嘉中", "title": "兩日活動"}])
     assert "DTSTART;VALUE=DATE:20260902" in ranged_ics
     assert "DTEND;VALUE=DATE:20260904" in ranged_ics

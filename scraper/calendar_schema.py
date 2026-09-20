@@ -68,10 +68,10 @@ def validate_events(events, *, school_id=None):
 
 def source_status(*, school_id, academic_year, semester, status,
                   source_url, last_checked_at, last_verified_document=None,
-                  event_count=0, error=""):
+                  event_count=0, error="", quality=None):
     if status not in ALLOWED_STATUSES:
         raise ValueError(f"unknown calendar source status: {status}")
-    return {
+    row = {
         "school_id": school_id,
         "academic_year": int(academic_year),
         "semester": int(semester),
@@ -82,3 +82,6 @@ def source_status(*, school_id, academic_year, semester, status,
         "event_count": int(event_count),
         "error": error,
     }
+    if quality is not None:
+        row["quality"] = quality
+    return row
