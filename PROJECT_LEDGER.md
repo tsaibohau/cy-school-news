@@ -1825,3 +1825,83 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【UI 驗收被 Vercel SSO／browser tool blocker 阻擋；已停止施工；Preview migration/runtime既有PASS不重做；Production untouched】
+
+---
+
+## 2026-09-20 12:27 UTC｜PR #28 PUBLIC anonymous UI / notification boundary 修正 checkpoint
+
+### Branch / HEAD / tree
+
+- canonical branch: `codex/public-access-auth-plan`
+- 本輪開始 remote HEAD: `7901fdb6c9ba002a712507cf3d6d262420206b60`
+- feature implementation remote commit: `13105f2a369a1285226e78cb3e1a723e14d3a573`
+- feature implementation tree: `ebd0e0338520f5c03f78a6901602a10b226473fd`
+- PR #28 維持 Draft、未 merge、未標記 Ready。
+
+### Changed files
+
+- `docs/account-config.js`
+- `docs/app.js`
+- `docs/capability-layer.js`
+- `docs/index.html`
+- `docs/sw.js`
+- `supabase/migrations/20260920121839_remove_public_notifications.sql`
+- `supabase/tests/database/public_access_rls.test.sql`
+- `tests/test_account_auth.js`
+- `tests/test_public_access_contract.js`
+- `tests/test_pwa_notification.js`
+- `tools/build-staging.js`
+- `tools/staging/account-config.js`
+- `PROJECT_LEDGER.md`（本 checkpoint）
+
+### 實作結果
+
+- 前端 effective capability 現在明確分流：登入使用者讀 account capability；未登入使用者讀 PUBLIC capability。
+- anonymous 的 assistant / timetable / calendar dock 與對應入口不再被單純 `!session` / `!user` 移除；PUBLIC capability 為 false 時入口仍隱藏且 click / tab route 被拒絕。
+- member-content detail/read 與 calendar add-task 等入口會依 effective capability 同步更新；既有 RPC/RLS/server-side gate 保留，沒有降級成只靠 UI。
+- PUBLIC 管理清單只保留 `member_content`、`assistant`、`timetable`、`calendar`；`notifications` 仍保留在登入帳號 capability，不影響會員原有個人化通知功能。
+- 新 forward-only migration 從 PUBLIC table、constraint 與 owner write allowlist 移除 `notifications`；owner 傳入 `notifications:true` 也不會建立或授權該 capability，anon 仍無管理 RPC execute 權限。
+
+### Tests / CI / Vercel
+
+- `node --check docs/capability-layer.js`: PASS
+- `node --check docs/app.js`: PASS
+- `node tests/test_public_access_contract.js`: PASS
+- `node tests/test_account_auth.js`: PASS
+- `node tests/test_pwa_notification.js`: PASS
+- `node tests/test_staging_build.js`: PASS
+- `node tests/test_rls_sql_contract.js`: PASS
+- `git diff --check`: PASS（ledger commit 前）
+- GitHub Actions `Local RLS database tests`, run id `35510523798`：aggregate job FAIL；`Run user_tasks RLS matrix` 為既有 baseline FAIL，`Run reminder RLS matrix` 因前項 skipped，`Run PUBLIC capability and multi-owner matrix` 實際執行且 PASS。這不是 PR #28 feature-specific regression。
+- Vercel deployment `HcsnRKX3F1ueB9ZMSa7hCvHM47cW`: Ready。
+- Preview URL: `https://cy-school-news-staging-git-code-86fd74-tsaibohau-9644s-projects.vercel.app`。
+
+### Preview migration / runtime
+
+- 先讀 migration history，確認 `remove_public_notifications` 不存在後，才套用新的 forward-only migration；既有 `public_access_and_multi_owner` migration 未重跑。
+- Preview migration history 實際版本：`20260920122446 remove_public_notifications`；SUCCESS。
+- runtime：`current_public_capabilities()` 精確回傳 4 keys：`assistant`、`calendar`、`member_content`、`timetable`；`notifications` row count = 0，`has_public_capability('notifications') = false`。
+- rollback transaction：使用現有 Preview owner claim 呼叫 owner RPC 並要求 `notifications:true`，結果 notification row 仍為 0、effective 仍為 false；transaction 已 rollback，未保留 capability 變更。
+- grant：anon 不可 execute owner PUBLIC write RPC；authenticated 可呼叫，但函式內仍由 owner check enforce。
+- 前兩次診斷 SQL 分別因錯用 `account_access.admin_role` 與 authenticated role 直接讀 revoked table 而失敗；均未留下資料變更。修正查詢後上述 matrix PASS。
+
+### 只讀 UID / account persistence 矛盾盤點
+
+- `member_content`：anon 已有 PUBLIC server RPC gate，不依賴 UID，未發現同類矛盾。
+- `assistant`：啟動本身不依賴 UID；完整會員內容仍受獨立 `member_content` capability gate 控制，未擴大本輪施工。
+- `calendar`：官方行事曆可供 PUBLIC 使用，但「新增自己的事件」與 durable user event write 依賴登入 UID/account sync；這是仍待人工 Preview 判讀的入口語意矛盾，本輪只記錄、不修改 calendar persistence。
+- `timetable`：功能需要學校／班級 profile context；anonymous 沒有 account-owned profile persistence，可能可開啟但無法持久保存個人班級選擇。本輪只記錄、不修改 profile 模型。
+
+### Safety / untouched systems
+
+- Preview：只套用本次必要的新 forward-only migration並做 read/rollback runtime 驗證；未重跑舊 migration，未修改真實 owner/co-admin/Auth identity。
+- Production Supabase / Production deployment：完全未讀寫、未部署。
+- Google Provider：未關閉；Google 登入未移除。
+- PR #25 / #26、unrelated `user_tasks` baseline：未修改。
+
+### 下一個唯一允許動作
+
+以可存取 PR #28 Preview 的真實瀏覽器重新執行人工 UI 驗收，確認 anonymous 在 PUBLIC capability 開／關時的實際入口、owner 管理清單沒有個人化通知、非 owner 不可操作，以及 UI 與已通過的 Preview server-side gate 一致。不得自行進入 Production、merge 或標記 Ready。
+
+### 最終狀態
+【兩項 feature blocker 已修正；相關 tests PASS；Preview forward-only migration/runtime PASS；feature pgTAP PASS；Vercel Ready；等待人工 Preview UI 驗收】
