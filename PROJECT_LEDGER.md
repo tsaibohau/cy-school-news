@@ -1979,3 +1979,93 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【UI / visitor-context 修正完成；repo tests PASS；feature pgTAP PASS；Vercel Ready；Production/Auth/Supabase untouched；等待人工 Preview UI 驗收】
+
+---
+
+## 2026-09-20 14:10 UTC｜官方行事曆 PDF pipeline read-only 根因盤點
+
+### Scope / branch / safety
+
+- canonical source：GitHub remote branch `codex/public-access-auth-plan`。
+- read-only 起點 HEAD：`242929977a0e19091336b99949357faa02da4b2c`。
+- 本輪只讀取程式、fixtures、既有 JSON 產物與 Git 歷史；沒有重新抓取 PDF、沒有執行 `schoolcal.py discover/build`、沒有 backfill、沒有修改 PR #28 產品程式或產物。
+- Preview / Production Supabase、Auth、Vercel deployment、Production：全部未操作。
+- 唯一 changed file：`PROJECT_LEDGER.md`。
+
+### 已確認資料流
+
+1. `.github/workflows/calendar-daily.yml` 每日先執行 `python scraper/schoolcal.py discover`，再執行 `build`、reminder targets 與 notify，最後提交 Actions-owned JSON/ICS。
+2. `discover()` 從 `school_registry.py` 的官方索引頁尋找指定學年／學期附件，下載第一個符合標籤與同網域規則的 PDF。
+3. `extract_pdf_text()` 使用 `pypdf/PyPDF2 page.extract_text()` 的預設模式，將每頁文字直接以換行串接；沒有 layout/table extraction、欄位座標、OCR或 school-specific adapter。
+4. `parse_calendar_text()` 逐一處理抽取文字的每一行；只要該行含 Gregorian／民國日期或 `M/D`，便取第一個日期，並把該日期／range 後方剩餘文字當 title。它沒有重建 PDF 表格 row，也沒有辨別「事件日期欄」與「說明內提及的日期」。
+5. `validate_events()` 只檢查 required fields、provenance、school、id uniqueness 與 `end >= start`，不檢查事件數、學期日期範圍、標題品質、重複碎片、跨度或相對前版退化。
+6. `discover()` 只要 `parsed` 非空就刪除該校／該學期既有 official rows、寫入新 rows，並無條件標為 `official_complete`。
+7. `build()` 以 `(school_id, academic_year, semester)` 判定 official coverage；該 term 只要有任一 official row，就移除同 term 全部 curated rows，再輸出 `docs/data/calendar-events.json` 與 ICS。因此 CYSH 的 2 筆低品質 official rows 會取代整學期較完整的 curated fallback。
+8. hourly/staging refresh 的 `build` 不重新解析 PDF，而是持續投影已提交的 `official-calendar-events.json`；低品質 canonical output 因此會持續出現在 UI、ICS與 reminder targets。
+
+### CYSH 115-1：只剩 2 筆的根因
+
+- 既有 `official-calendar-events.json` 確認 CYSH 僅 2 筆；source revision 與 status 均指向同一份「國立嘉義高中115學年第一學期行事曆.pdf」。
+- parser 的核心假設是日期和完整事件標題必須位於同一個 `extract_text()` line。CYSH PDF 表格的日期欄與工作內容欄在預設文字抽取結果中大多分離，因此絕大多數正式 rows 沒有形成「同行日期 + title」，直接被略過。
+- 僅兩個偶然符合 regex 的抽取行通過：`2026-08-27 / V1` 與 `2026-11-30–2026-12-04 / 中等學校籃球`。其中 `V1` 已是明顯版面／欄位碎片，證明 2 筆不是完整行事曆。
+- 現有 fixtures 全是人工簡化的一行一事件文字（CYSH 114-1 僅 7 行），沒有保存真實 PDF extraction shape，因此測試會 PASS，卻無法重現 CYSH 115-1 的欄位分離。
+
+### CYGSH 115-1：169 筆碎片的根因
+
+- 既有 official output 確認 CYGSH 169 筆；parser 把任何含 `M/D` 的抽取行都視為新的行事曆 row，包括事件說明／括號內截止日／時段／其他表格欄的日期。
+- title 是日期 match 後的字串尾部，因此 PDF 欄位被切開後形成大量 `)。`、`)`、`第 5-6 節)。`、`中午 12 時`、`12:10` 等碎片。
+- read-only 品質統計：169 筆中至少 152 筆命中保守的可疑規則；52 筆 title 精確等於 `)。`，21 筆等於 `第 5-6 節)。`；82 筆以時刻或「第…節」碎片開頭，70 筆 title 長度不超過 3，59 筆幾乎只有標點。
+- 另有 25 筆日期落在 115-1 合理區間之外，7 筆 range 超過 14 天；例如同一 `9/1` 被附註中的後續日期組合成跨至 10 月的假 range。
+- `RANGE.search(line)` 會在整行任意位置尋找 range，而不是限定到正式日期欄；因此一行內事件日期與說明日期並存時，start 與 end 可能來自不同語意位置。
+
+### 額外日期年份缺陷
+
+- `parse_calendar_text()` 對第一學期所有無年份的 `M/D` 固定使用 `academic_year + 1911`。這使跨年後的一月事件仍落在學年起始年。
+- 現有 114-1 fixtures 已實際產生 `2025-01-20`，CYGSH 115-1 output 也出現 2026 年 1 月；合理結果應分別是 2026-01-20 與 2027 年 1 月。
+- 現有 tests 只斷言九月至十二月與第二學期案例，沒有對第一學期一月 rollover 做 assertion，因此未攔截。
+
+### `official_complete` 為何誤判
+
+- `calendar_adapter.build_status()` 預設規則是 `events` 非空即 `official_complete`；只有呼叫者顯式傳入 `document.partial` 才會變 `partial_official`。
+- 實際 production path `schoolcal.discover()` 沒有使用品質評分，也不呼叫 `build_status()`；它在 `parsed` 非空後直接呼叫 `source_status(... status="official_complete")`。
+- `source_status()` 只驗證 status enum，沒有根據 `event_count` 或品質指標重新判定。
+- 所以目前 status 的真實語意只是「找到 PDF，至少 parse 出一筆 schema-valid row」，不是「官方行事曆完整」。CYSH event_count=2、CYGSH fragment-heavy=169 都合法地穿過現有條件。
+
+### 最小修復方案（本輪未實作）
+
+1. 保留現有來源 discovery、provenance 與 canonical schema；不要重做 UI、會員事件或 Supabase。
+2. 將 PDF extraction 改為保留 layout/page 資訊，並新增 school-specific row reconstruction：CYSH 重組日期欄與同 row 工作內容；CYGSH 只接受主日期欄，合併同行／續行內容，禁止把說明內日期另建 event。
+3. 修正 semester-1 year rollover：8–12 月使用 `academic_year+1911`，1 月使用下一 Gregorian year；同一 range 必須由同一日期欄解析，跨年 range需明確處理。
+4. 新增 fail-closed quality gate，至少檢查：term date window、最低可信 row count／月份 coverage、短標題與純標點比例、重複 fragment 比例、異常長 range，以及相對上一個可信 revision 的 event-count collapse。門檻失敗時標 `validation_failed` 或 `partial_official`，不可取代上一個 trustworthy official/curated dataset。
+5. 只有 quality gate PASS 才能標 `official_complete` 並替換該校該 term；status 增加 machine-readable quality metrics/reasons，讓 `event_count=2` 不可能被誤讀為 complete。
+6. `build()` 的 official coverage 必須依通過品質 gate 的 school/term manifest/status，而不是只看 official JSON 中是否存在任一 row；避免少量殘缺 rows 清除完整 curated fallback。
+
+### 建議 regression fixtures / assertions
+
+- 新增由兩份實際 115-1 PDF extraction 產生、固定 revision 的離線 fixtures：
+  - `calendar_cysh_115_1_layout.txt`（或 page/word-position JSON）：必須包含日期欄與內容欄分離、跨行事件及 `V1` 噪音。
+  - `calendar_cygsh_115_1_layout.txt`：必須包含同行主日期、說明內第二日期、括號時段、跨行內容與目前的 `)。`／`第 5-6 節)。` 碎片來源。
+- fixture 必須保存真實 extraction structure，不得再手工改寫成「一行一事件」，否則無法回歸本次問題。
+- CYSH assertions：事件數不得崩成 2；`V1` 不得成為 title；至少涵蓋學期主要月份；已知跨日事件保持同一 event。
+- CYGSH assertions：`)。`、`)`、純時段／節次不得成為獨立 title；說明內日期不得另建 event；重建後無重複 fragment；range 只來自主日期欄。
+- 共通 assertions：115-1 的 2027 年 1 月正確 rollover；所有 start/end 落在允許 term window；quality-gate reject 2-row collapse及 fragment-heavy sample；reject 時保留 last-known-good dataset且 status 不得為 `official_complete`。
+- 更新 `tests/test_calendar_adapter.py`，並新增 discover/publish transaction fixture test，直接證明「品質失敗不替換既有 official rows／curated fallback」。
+
+### 已執行的 read-only 驗證
+
+- `python tests/test_calendar_adapter.py`: PASS；此 PASS 只證明簡化 fixtures，不代表真實 PDF 表格完整。
+- 對既有 committed JSON 執行只讀統計：CYSH=2、CYGSH=169；未寫回任何產物。
+- Git 歷史顯示每日 calendar commits 長期只更新 `last_checked_at`，相同 revision／相同錯誤資料持續被標為 complete；沒有證據顯示後續 daily run 自行改善品質。
+
+### 禁止重做／尚待驗證
+
+- 未獲另行授權前，不重新抓取兩校 PDF、不執行 discover/build、不改寫 official/calendar JSON、不 backfill、不部署、不修改 Production。
+- 不以目前 `official_complete` 作為品質證據；它只代表非空 schema-valid。
+- 因本輪禁止重新抓取且 repo 未保存 115-1 raw PDF/extracted text，尚無法逐列重建正確事件總數；下一輪必須以固定離線 source fixtures 先建立可重現基準。
+
+### 下一個唯一允許動作
+
+等待使用者另行授權後，從最新 canonical branch 建立獨立 calendar-parser feature branch；只做 repo-only 的真實 115-1 extraction fixtures、school-specific row reconstruction、semester rollover、quality gate、last-known-good publish protection及 regression tests。不得在同一輪重新抓取/backfill現有公開資料、部署或修改 Production。
+
+### 最終狀態
+【read-only 根因已確認；PR #28 產品程式與行事曆產物未修改；只更新 ledger；等待 calendar parser repo-only 實作授權】
