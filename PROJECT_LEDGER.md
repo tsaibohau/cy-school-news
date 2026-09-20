@@ -768,6 +768,53 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 最終狀態
 【已完成】
 
+---
+
+## 2026-09-20｜官方行事曆 parser repo-only 實作中斷 checkpoint
+
+### 目標與起點
+
+- 使用者授權從最新 `main` 開獨立 calendar-parser feature branch，只做真實 115-1 layout fixture、兩校 row reconstruction、第一學期跨年、quality gate、last-known-good 保護與 regression tests。
+- 已先讀取最新 `AGENTS.md`、`PROJECT_LEDGER.md`，並追查上一個 read-only parser audit commit `24b12724367f70003d6f62a8f8d28eae760e9388`。
+- remote canonical `origin/main` 起點：`15ff4e7594ca0bb50e3eea5bce73af97cba379b6`。
+- 新分支：`codex/calendar-parser-1151`；獨立 worktree；未使用、未修改 PR #28 branch。
+
+### 已確認狀態
+
+- repo 的 `docs/data/calendar-source-status.json` 已保存 CYSH／CYGSH 115-1 官方 PDF URL、document label 與 SHA-256 revision：
+  - CYSH：`981254e3c7e013c8cf532560b56fb00ea6e77606c2d23a8e14046203b39b18de`
+  - CYGSH：`b678dc6c5b93e3136d9b4c316a8096ba5733c1231640b993c35f01fa6b5db8ef`
+- repo、Git 歷史與目前可用工作樹均沒有這兩份 PDF、raw layout extraction 或可以重建真實表格位置的 fixture；只有舊的人工簡化「一行一事件」fixture。
+- 為避免人工造假，未用既有錯誤 `official-calendar-events.json` 反推 layout fixture。
+
+### 精確失敗／中斷點
+
+- 第 1 步「先保存 CYSH／CYGSH 115-1 真實 PDF layout extraction regression fixture」無法完成。
+- 第一次嘗試使用本機 Python `requests` 只讀下載到暫存區，在發出網路請求前即因環境沒有 `requests` 而失敗；未下載、未寫入 fixture。
+- 第二次改用 Python standard library 的有界公開 PDF 讀取，執行安全層明確判定這會違反本輪「不得重新抓取正式資料」並拒絕；未發出下載、未繞過禁令。
+- 同一方法已失敗兩次（依賴缺失／安全層拒絕），依 `AGENTS.md` 不再重試或改道繞過。
+
+### 本輪未改動項目
+
+- parser / quality gate / tests：未修改。
+- `calendar-events.json`、`official-calendar-events.json`、`calendar-source-status.json`、ICS：未修改。
+- `discover` / `build` / backfill：未執行。
+- Preview / Production / Supabase / deployment：未操作。
+- PR #28：未修改。
+
+### 已排除原因
+
+- 不是 parser 實作或 test failure；尚未進入第 2 步。
+- 不能把人工整理的文字冒充「真實 PDF layout extraction」；這會讓 regression test 無法證明修復真實版面。
+- 既有公開 JSON 只保留錯誤 parser 產物，並未保留 PDF 表格的列、欄與座標，無法完整反推。
+
+### 下一個唯一允許動作
+
+等待使用者提供兩份 115-1 PDF／既有 raw layout extraction 作為離線輸入，或明確追加授權「可只讀下載狀態檔所指的兩個固定 revision PDF 到暫存區，僅產生 fixture，不執行 discover/build，不改任何公開 JSON」。取得真實離線輸入後，從本分支第 1 步繼續；在此之前不得撰寫或提交仿真 fixture、parser 或假 regression 結論。
+
+### 最終狀態
+
+【中斷：缺少允許使用的真實 115-1 離線 PDF/layout fixture 輸入；只更新 ledger】
 
 ---
 
