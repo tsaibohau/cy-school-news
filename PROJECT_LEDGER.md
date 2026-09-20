@@ -818,6 +818,60 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-21｜官方行事曆 parser repo-only 修復完成 checkpoint
+
+### Branch / commits / safety
+
+- branch：`codex/calendar-parser-1151`，從 `origin/main@15ff4e7594ca0bb50e3eea5bce73af97cba379b6` 建立的獨立 worktree；未使用或修改 PR #28 branch。
+- blocker ledger commit：`d2b6faae63d24f9bd59f2e84f522d3b29f9814c3`。
+- parser implementation commit：`80a0b96ed2d64cefa0627bb9576e004386699c45`。
+- 使用者後續明確授權：可只讀下載狀態檔指定的兩個固定 revision PDF，僅製作離線 fixture，不執行 `discover/build`、不修改公開資料。
+- 已下載到暫存目錄並核對 SHA-256：CYSH `981254e3...b39b18de`；CYGSH `b678dc6c...6b5db8ef`，兩者均與 committed status 完全一致。PDF 本體未 commit。
+
+### Fixtures / parser 結果
+
+- 新增真實 native PDF extraction fixture，保留原始斷行、表格讀取順序與跨行，並非人工改寫的「一行一事件」：
+  - `tests/fixtures/calendar_cysh_115_1_layout.txt`
+  - `tests/fixtures/calendar_cygsh_115_1_layout.txt`
+  - `tests/fixtures/calendar_115_1_layout_sources.json` 記錄來源 document、PDF revision、extractor 與 fixture mapping。
+- CYSH v2 reconstructor：先從週曆正式日期列建立 week anchors，再將各處室欄位的日期開頭項目綁定到該週；不再依賴「日期與完整標題必須剛好在同一 extraction line」。
+- CYGSH v2 reconstructor：依處室欄內的編號項目重建 row；每個 row 最多建立一個事件，只用該 row 第一個日期定位，其後日期、時段與節次保留為說明，不另拆事件。
+- fixture regression 產出：CYSH 100 筆（不再是 2）；CYGSH 172 筆編號 row，「`)`、`)`、單獨時刻／節次」都不會成為獨立事件標題。
+- 第一學期跨年已修正：8–12 月用學年起始西元年；1–2 月用下一西元年。兩校 115-1 fixture 皆已證明 1 月事件落在 2027 年。
+
+### Quality gate / last-known-good protection
+
+- gate 已檢查：最低事件數、月份覆蓋、短標題／純標點碎片比例、重複比例、學期日期範圍、超過 31 日異常跨度，以及相對上一個真正通過 gate 的 last-known-good 縮水超過 40%。
+- 只有 gate PASS 才會標記 `official_complete` 並替換該校／學期 official rows。
+- gate FAIL 時不改寫 `official-calendar-events.json`；若已有通過 gate 的 last-known-good，`build` 繼續使用該版；若沒有可信 last-known-good，則保留 curated fallback，不會再因 official JSON 只有任一 row 就刪掉 fallback。
+- 新 status `quality` 為 machine-readable，含 passed、metrics、reasons 與 last-known-good 使用狀態。
+
+### Tests
+
+- `python tests/test_calendar_adapter.py`：PASS（含兩校真實 fixture、CYSH 100、CYGSH 172、2027-01 rollover、fragment-heavy reject、2-row collapse reject、accepted/rejected term fallback protection）。
+- `python tests/test_parser.py`：PASS（首次因執行環境缺 `requests` 而未啟動；後來只在 `/tmp` 安裝 repo 已宣告的 `scraper/requirements.txt` 後重跑，全數通過）。
+- `node tests/test_calendar_workflow.js`：PASS。
+- `node tests/test_calendar_state.js`：PASS。
+- `node tests/test_calendar_persistence.js`：PASS。
+- `python -m py_compile scraper/calendar_adapter.py scraper/calendar_schema.py scraper/schoolcal.py`：PASS。
+- `git diff --check`：PASS。
+
+### 未修改／未執行
+
+- 未執行 `schoolcal.py discover`、`schoolcal.py build`、backfill 或任何排程 workflow。
+- 未修改 `docs/data/calendar-events.json`、`docs/data/official-calendar-events.json`、`docs/data/calendar-source-status.json`、`docs/calendar.ics` 或 curated `scraper/events.json`。
+- 未修改 Preview / Production / Supabase / Auth；未部署；未 merge；未修改 PR #28。
+
+### 下一個唯一允許動作
+
+只能對 `codex/calendar-parser-1151` 做 repo/PR review，核對真實 fixture、parser 邊界與 fail-closed protection。未經使用者另行明確授權，不得執行 discover/build、不得重新抓取或 backfill、不得修改現有公開行事曆資料、不得部署或 merge。
+
+### 最終狀態
+
+【已完成：repo-only parser 修復與真實 fixture regression PASS；公開資料／環境／部署均未修改】
+
+---
+
 ## 2026-09-12 17:18｜合併 PR #23
 
 ### 目標
