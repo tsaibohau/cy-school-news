@@ -20,6 +20,10 @@ const shellInputs = [
   "school-registry.js", "profile.js", "relevance.js", "assistant-feedback.js", "today.js", "search-taxonomy.js", "search-query.js", "announcement-validity-reviewed.js", "announcement-validity.js", "assistant-qa.js", "calendar-state.js",
   path.join("..", "tools", "staging", "acceptance-user-tasks.js"),
   path.join("..", "tools", "staging", "acceptance-companion.html"),
+  path.join("..", "tools", "staging", "calendar-parser-1151-review.html"),
+  path.join("..", "tools", "staging", "calendar-parser-1151-review.css"),
+  path.join("..", "tools", "staging", "calendar-parser-1151-review.js"),
+  path.join("..", "artifacts", "calendar-parser-1151", "candidate-calendar-events.json"),
   path.join("..", "tools", "staging", "staging.css"),
 ];
 const shellRevision = "staging-" + crypto.createHash("sha256")
@@ -46,6 +50,12 @@ fs.copyFileSync(path.join(staging, "manifest.webmanifest"), path.join(output, "m
 fs.copyFileSync(path.join(staging, "staging.css"), path.join(output, "staging.css"));
 fs.copyFileSync(path.join(staging, "acceptance-user-tasks.js"), path.join(output, "acceptance-user-tasks.js"));
 fs.copyFileSync(path.join(staging, "acceptance-companion.html"), path.join(output, "acceptance-companion.html"));
+fs.copyFileSync(path.join(staging, "calendar-parser-1151-review.html"), path.join(output, "calendar-parser-1151-review.html"));
+fs.copyFileSync(path.join(staging, "calendar-parser-1151-review.css"), path.join(output, "calendar-parser-1151-review.css"));
+fs.copyFileSync(path.join(staging, "calendar-parser-1151-review.js"), path.join(output, "calendar-parser-1151-review.js"));
+const calendarReviewAsset = path.join(output, "review", "calendar-parser-1151");
+fs.mkdirSync(calendarReviewAsset, { recursive: true });
+fs.copyFileSync(path.join(root, "artifacts", "calendar-parser-1151", "candidate-calendar-events.json"), path.join(calendarReviewAsset, "candidate-calendar-events.json"));
 fs.copyFileSync(path.join(staging, "account-config.js"), path.join(output, "account-config.js"));
 
 const indexPath = path.join(output, "index.html");
@@ -81,4 +91,5 @@ const config = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
 if (!config.includes("https://ebezqanvmgsgtatsbssn.supabase.co") || config.includes("https://oppdhtnepjagdwovndra.supabase.co")) throw new Error("staging Auth backend isolation failed");
 if (!config.includes("capability-layer.js?v=3")) throw new Error("staging capability bootstrap missing");
 if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境") || sourceVersions.some((sourceVersion) => html.includes(sourceVersion))) throw new Error("staging markers or coherent shell revision were not injected");
+if (!fs.existsSync(path.join(output, "calendar-parser-1151-review.html")) || !fs.existsSync(path.join(calendarReviewAsset, "candidate-calendar-events.json"))) throw new Error("calendar parser candidate review path missing");
 console.log("Staging artifact built with noindex, coherent " + shellRevision + " shell and acceptance harness");

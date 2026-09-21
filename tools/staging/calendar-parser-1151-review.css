@@ -1,0 +1,51 @@
+.candidate-banner {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 11px 16px;
+  background: #7b1f1f;
+  color: #fff;
+  font-size: 13px;
+}
+.candidate-review { padding-bottom: 48px; }
+.candidate-heading { align-items: flex-start; }
+.candidate-heading h1 { margin: 0; font-family: var(--serif); font-size: 26px; }
+.candidate-heading .hint { margin: 7px 0 0; }
+.candidate-controls {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--card);
+}
+.candidate-controls label { display: grid; gap: 5px; color: var(--muted); font-size: 12px; font-weight: 700; }
+.candidate-controls select { min-width: 220px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 9px; background: #fff; color: var(--ink); font: inherit; }
+.review-jumps, .review-months { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+.review-months { margin: 12px 0; color: var(--muted); font-size: 12px; }
+.review-months button { border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); padding: 7px 10px; cursor: pointer; }
+.review-months button.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+.candidate-state { padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+.candidate-state.is-error { color: #8b2424; border-color: #d9a2a2; }
+.candidate-count { margin: -5px 0 10px; text-align: center; }
+.candidate-inventory { margin-top: 20px; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+.candidate-inventory summary { cursor: pointer; }
+.candidate-list { display: grid; gap: 7px; margin-top: 12px; }
+.candidate-row { display: grid; grid-template-columns: 110px 1fr auto; gap: 10px; align-items: start; padding: 9px 10px; border-radius: 9px; background: var(--paper); border: 1px solid var(--line); text-align: left; color: var(--ink); cursor: pointer; }
+.candidate-row strong { overflow-wrap: anywhere; }
+.candidate-row time, .candidate-row small { color: var(--muted); font-size: 12px; }
+.candidate-flag { display: inline-block; margin-left: 6px; padding: 2px 6px; border-radius: 999px; background: #f5dfb7; color: #70480c; font-size: 10px; font-weight: 800; }
+.agenda-item.is-attention { border-color: #d9a34f; background: #fffaf0; }
+@media (max-width: 620px) {
+  .candidate-heading { display: block; }
+  .candidate-heading > a { display: inline-block; margin-top: 12px; }
+  .candidate-controls { align-items: stretch; }
+  .review-jumps { width: 100%; }
+  .review-jumps button { flex: 1 1 140px; }
+  .candidate-row { grid-template-columns: 90px 1fr; }
+  .candidate-row small { grid-column: 2; }
+}
