@@ -1060,6 +1060,58 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-22｜PR #29 candidate-only 行事曆 UI 驗收入口
+
+### 目標與範圍
+
+- 從 Draft PR #29 branch `codex/calendar-parser-1151`、起始 HEAD `9d27f3588e8014956e73e96fab6aebaf5f2918bd` 繼續。
+- 只把已產生並驗證過的 candidate 接到 PR Preview 專用驗收頁；未修改 parser、fixture、quality gate 或 candidate 內容。
+- 驗收頁只由 staging build 產生，不放入 `docs/` 公開站內容，也不覆蓋正式 `docs/data/calendar-events.json` 或 `docs/data/calendar-source-status.json`。
+
+### 已完成
+
+- 新增 Preview-only route：`/calendar-parser-1151-review.html`。
+- staging build 將既有 `artifacts/calendar-parser-1151/candidate-calendar-events.json` 原樣複製到隔離路徑 `review/calendar-parser-1151/candidate-calendar-events.json`；來源與 build artifact 已用 `cmp` 確認逐位元組一致。
+- 驗收頁沿用正式月曆的核心呈現契約：42 格月份網格、事件日期區間含首尾日、每天最多 4 個事件點及當日 agenda；另加人工驗收用的月份事件清單，不改正式 UI。
+- 可切換全部／CYSH／CYGSH，並可直接切換 2026-09 至 2027-01。
+- 頁面明確標示「驗收資料，不是正式公開資料」。
+- 提供快速定位：CYSH「元旦放」、CYGSH 三筆完全重複事件、CYSH 跨日事件；疑似截斷與重複群組只在 UI 標記，不更動 candidate。
+- Preview UI commit：`0693259`（`feat: add calendar parser candidate review page`），已 push 至 PR #29 branch。
+
+### 驗證結果
+
+- `node --check tools/staging/calendar-parser-1151-review.js`: PASS。
+- `CYNEWS_STAGING_OUTPUT=/tmp/cy-school-news-staging-calendar-review node tools/build-staging.js`: PASS。
+- candidate source 與 staging copy：byte-identical，PASS。
+- 靜態互動資料契約：candidate 272 筆、CYSH「元旦放」1 筆、CYGSH 指定完全重複群組 3 筆、2026-09-03 顯示中的跨日事件 3 筆，PASS。
+- `git diff --check`: PASS。
+- 正式 `docs/data/calendar-events.json`、`docs/data/calendar-source-status.json`、官方 calendar JSON / ICS：本輪均無 diff。
+- GitHub deployment `6573669816` / commit status：success；Vercel Preview deployment 已 READY。
+- 直接驗收網址（需具 PR Preview 權限並登入 Vercel team）：`https://cy-school-news-staging-9c4kgl2or-tsaibohau-9644s-projects.vercel.app/calendar-parser-1151-review.html`。
+
+### 已知疑點與精確限制
+
+- candidate 既有疑點不變：CYSH「元旦放」疑似標題截斷；CYGSH 有 3 組完全重複事件；部分日期區間在 candidate 中仍以單日事件加標題文字表示。此輪只讓人工在月曆上檢查，未自行修正。
+- Preview 受 Vercel Deployment Protection 保護；未登入的 cloud browser 被導向 Vercel Login，因此「deployment READY」已確認，但部署後頁面的實際 browser runtime 標記為【無法確認】，須由具權限人工登入後抽查。未降低保護、未改 deployment 設定。
+- `gh pr view` 曾遇一次 GitHub GraphQL 502；改用 GitHub REST 後成功取得 deployment / status，沒有重試相同失敗方法。
+- 穩定 staging alias 對此新 route 回傳 404，因此只能使用上列本次 PR deployment URL，不能把 alias 當成本輪驗收入口。
+
+### 禁止重做
+
+- 不得因 Preview 登入保護而發布 candidate、降低保護或改用正式資料路徑。
+- 不得修改 parser、fixture、quality gate 或 candidate 內容；若人工驗收發現資料問題，只記錄並等待新授權。
+- 不得 merge 或標記 Ready、backfill、Production deployment、操作 Production / Preview Supabase、修改 PR #28 或覆蓋任何正式行事曆資料。
+
+### 下一個唯一允許動作
+
+由具 PR #29 Preview 權限的人工直接開啟上列 URL，切換 CYSH / CYGSH 與 2026-09 至 2027-01，抽查「元旦放」、CYGSH 重複事件、跨日呈現及標題截斷／錯誤合併／漏項。完成前不得自行修 parser、發布 candidate、merge 或標記 Ready。
+
+### 最終狀態
+
+【已完成：candidate-only Preview 驗收入口已建立；deployment READY，受保護頁面 runtime 等待授權人工驗收】
+
+---
+
 ## 2026-09-12 17:18｜合併 PR #23
 
 ### 目標
