@@ -999,6 +999,67 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-22｜PR #29 parser 驗收候選輸出
+
+### 範圍與產生方式
+
+- 從 Draft PR #29 branch `codex/calendar-parser-1151`、起始 HEAD `b235e27941bba8c78038774baf8e01a163603588` 繼續。
+- 只讀下載 `calendar-source-status.json` 已固定的 CYSH／CYGSH 115-1 官方 PDF 到 `/tmp`，沒有執行 discover/build/backfill。
+- PDF SHA-256：CYSH `981254e3c7e013c8cf532560b56fb00ea6e77606c2d23a8e14046203b39b18de`；CYGSH `b678dc6c5b93e3136d9b4c316a8096ba5733c1231640b993c35f01fa6b5db8ef`，均與 status 與 fixture provenance 完全一致。
+- 使用 PR #29 現有 `extract_pdf_text()` 與 `parse_calendar_text()` 直接解析；新 extraction 與兩份 committed layout fixture 逐位元組一致。
+- 未修改 parser、fixtures 或 tests。
+
+### 隔離 artifact
+
+- 候選事件：`artifacts/calendar-parser-1151/candidate-calendar-events.json`。
+- machine-readable 驗收報告：`artifacts/calendar-parser-1151/candidate-validation-report.json`。
+- 人工驗收摘要：`artifacts/calendar-parser-1151/README.md`。
+- artifact 位於非 `docs/` 路徑；未覆蓋或修改 `docs/data/calendar-events.json`、`docs/data/calendar-source-status.json`、`docs/data/official-calendar-events.json`、`docs/calendar.ics` 或其他現行公開資料。
+- 未建立或部署 Preview UI；candidate JSON 已可作後續本地／隔離 UI 輸入，但本輪只提供資料與報告供人工抽查。
+
+### 統計結果
+
+- CYSH：100 筆。月份分布：2026-08 11、09 19、10 16、11 19、12 20、2027-01 11、02 4。全範圍 2026-08-24～2027-02-11；2026-09～2027-01 共 85 筆，觀察範圍 2026-09-01～2027-01-29。
+- CYGSH：172 筆。月份分布：2026-08 19、09 43、10 27、11 31、12 25、2027-01 23、02 4。全範圍 2026-08-27～2027-02-15；2026-09～2027-01 共 149 筆，觀察範圍 2026-09-01～2027-01-26。
+- 跨日事件：CYSH 23 筆；例如 2026-08-25～27 高一選課、2026-09-02～03 高三第二次模擬考、2026-10-13～14 第一次期中考。CYGSH 0 筆；現有 parser 將 row 第一日期作單日定位，range 留在標題說明。
+- 空標題、純標點碎片、純時段、純節次：兩校皆 0。
+- 超出 115-1 合理範圍 2026-08-01～2027-02-28：兩校皆 0。
+- quality gate：兩校皆 PASS。
+
+### 與現行公開資料差異
+
+- CYSH：公開 2 筆，candidate 100 筆，`+98`；公開資料的 `V1` 碎片不在 candidate。
+- CYGSH：公開 169 筆，candidate 172 筆，表面 `+3`；公開資料把 1／2 月錯放在 2026，candidate 改為 2027。因 row reconstruction 同時改變標題與日期，不能把 count delta 單獨視為新增活動數。
+- exact `(start_date, end_date, title)` 比對：CYSH overlap 0；CYGSH overlap 0，符合 parser v2 重建 row 與跨年修正造成的資料形狀變更。
+
+### 已知疑點
+
+- CYSH 有 4 個短標題；「校運會」與兩筆「科學節」可理解，但 `2027-01-01` 的「元旦放」疑似 extraction／row 截斷，需人工對照 PDF。
+- CYGSH 有一組完全相同事件重複 3 次：`2026-09-29`「115 年嘉義市中小學聯合運動會 (9/29-10/15)」。quality gate 只計為 2 筆 excess、整體比例低於拒絕門檻，因此仍 PASS；人工驗收需決定三筆是否分屬不同處室欄或應去重。
+- CYGSH range 事件目前全部以第一日期顯示為單日，range 留在標題；這符合目前 parser 設計，但應由人工 UI 驗收確認顯示預期。
+- 依使用者限制，上述疑點只記錄，未自行修改 parser、fixtures 或 tests。
+
+### 驗收判定
+
+- 適合進入人工 UI／資料抽查：**是**。
+- 適合直接發布為正式公開資料：**尚未判定／未授權**。應先抽查上述 CYSH 截斷標題、CYGSH 重複事件與 range 顯示。
+
+### 未執行／未修改
+
+- 未 merge PR #29、未標記 Ready、未修改 PR #28。
+- 未 backfill、未執行 discover/build、未更新公開行事曆資料。
+- 未修改 Preview / Production Supabase，未部署或自行發布候選資料。
+
+### 下一個唯一允許動作
+
+停止並等待人工驗收。未經使用者另行明確授權，不得修 parser、發布 candidate、覆蓋公開資料、操作 Preview / Production、標記 Ready 或 merge。
+
+### 最終狀態
+
+【已完成：隔離 candidate 與統計報告已產生；適合人工抽查，尚未授權發布】
+
+---
+
 ## 2026-09-12 17:18｜合併 PR #23
 
 ### 目標
