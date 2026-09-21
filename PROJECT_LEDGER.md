@@ -1064,7 +1064,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 目標與範圍
 
-- 從 Draft PR #29 branch `codex/calendar-parser-1151`、起始 HEAD `9d27f3588e8014956e73e96fab6aebaf5f2918bd` 繼續。
+- 從 Draft PR #29 branch `codex/calendar-parser-1151`、起始 HEAD `9d27f35f337a3622a3c12834c17c7ab0ccfc676d` 繼續。
 - 只把已產生並驗證過的 candidate 接到 PR Preview 專用驗收頁；未修改 parser、fixture、quality gate 或 candidate 內容。
 - 驗收頁只由 staging build 產生，不放入 `docs/` 公開站內容，也不覆蓋正式 `docs/data/calendar-events.json` 或 `docs/data/calendar-source-status.json`。
 
