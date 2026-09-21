@@ -905,6 +905,31 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-21｜GitHub CLI authentication unavailable
+
+### 本輪授權
+
+- 只允許確認 Work 環境是否有 GitHub CLI；若有，使用 CLI 完成 github.com HTTPS authentication 與 `gh auth setup-git`，再只 push `codex/calendar-parser-1151`。
+- 禁止重建 commit、禁止用 GitHub connector 模擬 push，且不得要求、輸出或保存 token 到 repo / ledger。
+
+### 確認結果
+
+- `command -v gh`：無輸出。
+- Work 環境未安裝 GitHub CLI，因此無法執行 `gh auth status`、GitHub CLI HTTPS authentication 或 `gh auth setup-git`。
+- 依使用者明確指令，未安裝 CLI、未要求或讀取 token、未再次執行 `git push`、未使用 GitHub connector。
+- remote branch / Draft PR：未建立、未修改。
+- 程式、fixtures、tests、parser、公開資料、Preview / Production / deployment：全部未修改、未執行。
+
+### 下一個唯一允許動作
+
+在已安裝 GitHub CLI 且可完成 github.com HTTPS authentication 的 Work 環境繼續；先執行 `gh auth setup-git`，再原樣 push branch，並核對 remote HEAD 與目標 commit `fd0514e2dd69bf1fbb36dadf7f2d9f548ac4b53d` 完全一致。不得以重建 commit 或 connector 替代。
+
+### 最終狀態
+
+【CLOUD_WRITE_BLOCKED：Work 環境無 GitHub CLI；已停止】
+
+---
+
 ## 2026-09-12 17:18｜合併 PR #23
 
 ### 目標
