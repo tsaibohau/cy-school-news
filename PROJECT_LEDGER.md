@@ -930,6 +930,34 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-21｜Git Credential Manager authentication unavailable
+
+### 本輪授權
+
+- 只允許讀取最新 `AGENTS.md` 與 `PROJECT_LEDGER.md`，並檢查雲端環境是否具有 Git Credential Manager；本輪不得 push。
+- GCM 可用時才可使用 GitHub OAuth device login；禁止使用 PAT。
+
+### 確認結果
+
+- `git config --show-origin --get-all credential.helper`：無輸出，未設定 credential helper。
+- `git-credential-manager`：`command not found`。
+- `git-credential-manager-core`：`command not found`。
+- `git credential-manager --version`：`git: 'credential-manager' is not a git command.`。
+- 結論：cloud image 缺少可用的 GitHub interactive HTTPS authentication client。
+- 因 GCM 不存在，未嘗試 OAuth device login；未要求、使用、輸出或保存 PAT/token。
+- 未執行 `git push`；remote branch / Draft PR 未建立、未修改。
+- 程式、fixtures、tests、parser、公開資料、Preview / Production / deployment：全部未修改、未執行。
+
+### 下一個唯一允許動作
+
+停止。等待使用者在具有可用 GitHub interactive HTTPS authentication client 的環境另行明確授權後，再處理認證或 push；不得以 PAT、connector 或重建 commit 替代。
+
+### 最終狀態
+
+【CLOUD_WRITE_BLOCKED：cloud image 缺少可用的 GitHub interactive HTTPS authentication client；已停止】
+
+---
+
 ## 2026-09-12 17:18｜合併 PR #23
 
 ### 目標
