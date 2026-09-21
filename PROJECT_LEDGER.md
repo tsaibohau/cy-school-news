@@ -958,6 +958,47 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-21｜calendar-parser Draft PR publish 與 read-only review
+
+### Publish checkpoint
+
+- branch：`codex/calendar-parser-1151`。
+- push 前本地 HEAD 已確認為 `43c969d0dd37e88d7934c3b1dd6d7c63bfa04836`，working tree clean。
+- 以原生 `git push -u origin codex/calendar-parser-1151` 原樣發布；未重建、squash、rebase 或改寫任何既有 commit。
+- push 後 remote branch HEAD 與本地 HEAD 均為 `43c969d0dd37e88d7934c3b1dd6d7c63bfa04836`；兩端 tree 均為 `b23537adcc2d95933a3cb21cacab07d048579858`。
+- Draft PR #29：`https://github.com/tsaibohau/cy-school-news/pull/29`；base `main`，head `codex/calendar-parser-1151`，保持 Draft / OPEN，未標記 Ready、未 merge。
+
+### Read-only review 結果
+
+- **真實 fixtures：PASS。** `calendar_115_1_layout_sources.json` 的 CYSH／CYGSH PDF SHA-256 與既有 `calendar-source-status.json` 固定 revision 完全一致；fixture 分別保留 1／3 個 PDF page form-feed、原始斷行、跨行與 reading order，並非人工改寫成一行一事件。
+- **row reconstruction：PASS。** CYSH 由週日期 anchor 配對正式的 `N 日`／range row；CYGSH 先合併同一編號 row，再且每 row 最多 append 一個事件。CYGSH row 內後續日期、時段及節次只保留在標題說明，不會 fan-out 成額外事件。
+- **115-1 跨年：PASS。** `_calendar_year()` 對第一學期 1–2 月加一年；兩校真實 fixture regression 都明確要求存在 `2027-01-*` 事件。
+- **quality gate：PASS。** gate 包含事件數、至少四個月份、碎片比例、重複比例、學期日期合理範圍、超過 31 日跨度，以及相對 last-known-good 少逾 40% 的異常縮水。
+- **last-known-good / curated fallback：PASS。** discover 只在 gate PASS 後刪除並替換同校同學期 official rows、標記 `official_complete`；gate FAIL 會先 `continue`，保留既有 official rows。build 只讓 PASS 或明確 `using_last_known_good` 的 term 取代 curated rows；無可信 official term 時保留 curated fallback。
+- **regression coverage：PASS。** 真實 fixture test 要求 CYSH 100 且大於 2、CYGSH 172、禁止已知純標點／時刻／節次碎片標題、兩校一月為 2027；另直接驗證 2-row collapse 與 fragment-heavy gate reject，以及 rejected/accepted term 的 curated fallback 行為。
+- 本輪以 `PYTHONDONTWRITEBYTECODE=1 python -B tests/test_calendar_adapter.py` read-only 重跑：PASS；測試後 working tree 仍 clean。
+- PR metadata 已確認：#29 為 Draft / OPEN，head OID 等於發布的本地 HEAD；branch push 後 GitHub 顯示既有自動 Vercel status 與 Preview Comments 均 SUCCESS。本輪未手動觸發、操作或驗收 Preview，未操作 Production，也未執行任何 deployment command。
+
+### 未執行／未修改
+
+- 未執行 discover/build、重新抓取、backfill 或任何 workflow。
+- 未修改 parser、fixtures、tests、公開 `calendar-events.json`、official/status JSON、ICS、Preview、Production 或 deployment。
+- 未修改 PR #28；未 merge 或將 PR #29 標記 Ready。
+
+### Review finding
+
+未發現 blocker；不需自行擴大修正。
+
+### 下一個唯一允許動作
+
+等待使用者人工審閱 Draft PR #29。未經另行明確授權，不得修改程式或資料、執行 discover/build/backfill、更新公開行事曆 JSON、操作 Preview / Production、部署、標記 Ready 或 merge。
+
+### 最終狀態
+
+【已完成：remote parity、Draft PR #29 與 read-only review；無 blocker】
+
+---
+
 ## 2026-09-12 17:18｜合併 PR #23
 
 ### 目標
