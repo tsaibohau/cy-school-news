@@ -1112,6 +1112,72 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-22｜PR #29 完整行事曆產品驗收頁（CLOUD_WRITE_BLOCKED）
+
+### 目標與 checkpoint
+
+- 從 branch `codex/calendar-parser-1151`、remote / local 起始 HEAD `423183f28182358390cd27f10d0b0fd2e6e2d2c3` 繼續。
+- 只把既有 candidate-only 頁升級為完整行事曆產品驗收入口；未修改 parser、fixture、quality gate、candidate、正式行事曆 JSON 或 Supabase。
+- 本地產品實作 commit：`6ddf5b6`（`feat: add full candidate calendar product review`）。commit 已建立，但 remote push 在 ref 更新前失敗，因此 PR #29 尚未包含此 commit、尚無本輪新版 Preview URL。
+
+### schema / UI 盤點與重要度缺口
+
+- 官方 calendar event：現有 canonical 欄位沒有 `importance`；本輪不修改 candidate，也不替官方資料偽造可持久化重要度。驗收畫面只以唯讀預設「一般」投影。
+- user calendar event：本輪前 `CalendarState` 只有 `id/title/date/notes`，沒有重要度。現有 branch 的 persistence 是既有 `cyNews.calendarEvents.v1` localStorage lifecycle；本輪沒有另建第二套 persistence，也沒有新增 Supabase schema。
+- task priority：`user_tasks.priority` 為 nullable `smallint 0–5`，現有 UI 使用高／中／低對應 5／3／1；這是 task 模型，不直接冒充 calendar importance。
+- announcement importance：現有顯式判定讀取 `important === true`、`importance === "high"` 或 `source_pin === "important"`；不是一致的「重要／一般／參考」三態 schema。
+- 本輪最小 calendar importance model：只為 user calendar event 加 `important | normal | reference`，UI 顯示「重要／一般／參考」，legacy / invalid 值 fail-safe 為 `normal`；月曆格子圓點與當日 agenda 均可辨識。此欄位隨既有 CalendarState/localStorage create/edit lifecycle 保存，不寫入官方事件。
+
+### 完整產品驗收接線
+
+- staging build 不再部署獨立簡化月曆；`calendar-parser-1151-review.html` 直接由完整 staging `index.html` 衍生，沿用同一份 `app.js`、calendar render、日期選取、agenda、auth 與既有個人事件 persistence。
+- review bootstrap 只把官方行事曆 fetch URL 切換到隔離的 `review/calendar-parser-1151/candidate-calendar-events.json`；candidate build copy 與 source 已用 `cmp` 確認逐位元組一致。
+- 未登入時 review route 例外允許開啟 calendar；candidate 官方事件可讀，但 user events 不投影，新增按鈕與表單隱藏，edit/delete handlers 亦 fail closed。
+- 核准會員登入後投影「candidate 官方事件 + 既有自己的事件」，可沿用既有 create/edit/delete；操作按鈕只由 `kind === "user"` 產生，官方事件標示「候選官方行事曆（唯讀）」且不提供修改／刪除。
+- 保留 CYSH／CYGSH selector、2026-09～2027-01 快速月份、CYSH「元旦放」、CYGSH 三筆重複、CYSH 跨日事件捷徑，並保留「驗收資料，不是正式公開資料」警示。
+
+### 驗證結果
+
+- `node --check docs/app.js docs/calendar-state.js tools/build-staging.js tools/staging/calendar-parser-1151-review.js`: PASS。
+- `node tests/test_calendar_state.js`: PASS。
+- `node tests/test_calendar_persistence.js`: PASS。
+- `node tests/test_calendar_candidate_product_review.js`: PASS。
+- `node tests/test_calendar_workflow.js`: PASS。
+- `node tests/test_account_auth.js`: PASS；契約明確限定只有 candidate review calendar 可匿名進入，其餘會員頁籤仍需登入。
+- `node tests/test_account_sync.js`: PASS。
+- `node tests/test_account_switch_v3.js`: PASS。
+- `node tests/test_ui_visual_contract.js`: PASS。
+- staging build：PASS，shell revision `staging-0be9c77a2129`；candidate staging copy byte-identical；review HTML 已確認載入完整產品 shell、review bootstrap、警示、重要度欄位與驗收工具。
+- candidate read-only contract：272 筆；CYSH「元旦放」1 筆；CYGSH 2026-09-29 相同標題實際 3 筆；2026-09-03 可見 3 筆 CYSH 跨日事件。
+- `git diff --check`: PASS。
+- `docs/data/calendar-events.json`、`docs/data/calendar-source-status.json`、`docs/data/official-calendar-events.json`、`docs/calendar.ics`: 本輪無 diff。
+
+### 瀏覽器驗證限制
+
+- skill 指定的 `agent-browser` 不存在。
+- Node Playwright package 存在，但 Chromium executable 未安裝；啟動失敗於 `Executable doesn't exist ... chromium_headless_shell`。沒有下載 browser 或無限重試。
+- 因此本地 build / static / state contract 均已驗證，但真實 browser runtime 與登入會員 OAuth 流程標記【無法確認】，必須待 cloud push 與有權限人工在 PR Preview 驗收。
+
+### 精確 cloud write blocker
+
+- `git push origin codex/calendar-parser-1151` 失敗：`fatal: could not read Username for 'https://github.com': No such device or address`；remote ref 未更新。
+- 目前 image 找不到 `gh`，且 `git config --show-origin --get-all credential.helper` 無輸出。
+- `apt-get update/install gh` 被 container 權限阻擋：APT helper 無法 `setgroups/setegid/seteuid`，沒有安裝任何 repo 內容。
+- 改用官方 GitHub CLI release 到 `/tmp` 的下載在 30 秒只完成約 1%（14.5 MB 中約 238 KB），推估超過外部等待上限，已停止；未完成安裝、未進行 OAuth、未要求或保存 PAT/token。
+- 狀態：`CLOUD_WRITE_BLOCKED`。本輪沒有新 Vercel deployment，因此不能提供新版 Preview 驗收 URL；上一輪 URL 仍只包含舊的簡化 candidate UI，不能當成本輪完成證據。
+
+### 禁止重做與下一個唯一允許動作
+
+- 不得重建、squash、rebase 或改寫 `6ddf5b6`；不得重新實作已完成的完整產品驗收頁。
+- 不得修改 parser / fixture / quality gate / candidate / 正式 JSON，不得 backfill、操作 Supabase、Production deploy、merge／Ready PR #29 或修改 PR #28。
+- 下一個唯一允許動作：在具有 GitHub HTTPS OAuth credential helper 的 Work 環境，從本地 commit `6ddf5b6` 原樣 push `codex/calendar-parser-1151`；確認 remote HEAD 後等待 PR #29 Vercel Preview READY，再以受保護 Preview 實機驗收匿名／登入、重要度與指定 candidate 疑點。完成或失敗後更新本節。
+
+### 最終狀態
+
+【本地實作與測試已完成；CLOUD_WRITE_BLOCKED，PR #29 / 新 Preview 尚未更新】
+
+---
+
 ## 2026-09-12 17:18｜合併 PR #23
 
 ### 目標
