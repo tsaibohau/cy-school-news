@@ -333,6 +333,12 @@ body { background: var(--paper); }
 .calendar-toolbar { display: flex; align-items: center; gap: 8px; margin: 8px 0 12px; }
 .calendar-toolbar h3 { flex: 1; text-align: center; margin: 0; font-size: 18px; }
 .calendar-toolbar .btn-ghost { margin-left: 5px; }
+.calendar-review-tools { display: grid; gap: 10px; margin: 12px 0; padding: 14px; border: 2px solid #9f3333; border-radius: 14px; background: #fff5f3; }
+.calendar-review-tools[hidden] { display: none; }
+.calendar-review-tools > strong { color: #7b1f1f; }
+.calendar-review-tools label { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; color: var(--muted); font-size: 13px; font-weight: 700; }
+.calendar-review-tools select { min-width: 210px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 9px; background: var(--card); color: var(--ink); }
+.calendar-review-actions { display: flex; gap: 7px; flex-wrap: wrap; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; padding: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
 .calendar-weekday { color: var(--muted); font-size: 11px; font-weight: 800; text-align: center; padding: 2px 0 5px; }
 .calendar-day { min-height: 58px; border: 1px solid transparent; background: transparent; border-radius: 10px; padding: 6px; text-align: left; cursor: pointer; color: var(--ink); }
@@ -343,9 +349,16 @@ body { background: var(--paper); }
 .day-dots { display: flex; gap: 3px; margin-top: 7px; flex-wrap: wrap; }
 .day-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cysh); }
 .day-dot.deadline { background: #eb8d4d; }.day-dot.user { background: #40a27c; }
+.day-dot.importance-important { width: 9px; height: 9px; background: #b52b2b; box-shadow: 0 0 0 2px #f5cccc; }
+.day-dot.importance-reference { background: #8c98a3; opacity: .68; }
 .agenda-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin: 20px 0 8px; }
 .agenda-heading h3 { margin: 0; font-size: 18px; }
 .agenda-item { display: flex; gap: 11px; align-items: flex-start; padding: 13px; margin-bottom: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; }
+.agenda-item.importance-important { border-left: 5px solid #b52b2b; }
+.agenda-item.importance-reference { opacity: .76; border-left: 5px solid #8c98a3; }
+.calendar-importance { display: inline-block; margin-left: 6px; padding: 2px 7px; border-radius: 999px; background: #e8eef3; color: #43515e; font-size: 10px; font-weight: 800; vertical-align: middle; }
+.calendar-importance.importance-important { background: #f7d8d8; color: #8b2020; }
+.calendar-importance.importance-reference { background: #e5e8ea; color: #5d6871; }
 .today-section { margin: 0 0 18px; }
 .today-brief { margin: 10px 0 22px; padding: 15px; background: linear-gradient(135deg, var(--card), var(--cysh-bg)); border: 1px solid var(--line); border-radius: 18px; }
 .today-brief .section-heading { margin: 0 0 10px; }
@@ -375,7 +388,7 @@ body { background: var(--paper); }
 .event-form-wrap { position: fixed; inset: 0; z-index: 50; display: grid; place-items: end center; background: rgba(23,50,77,.26); padding: 12px; }
 .event-form-wrap[hidden] { display: none; }
 .event-form { width: min(100%, 480px); background: var(--card); border-radius: 18px; padding: 18px; box-shadow: 0 18px 50px rgba(23,50,77,.22); }
-.event-form label { display: grid; gap: 5px; margin: 11px 0; color: var(--muted); font-size: 13px; }.event-form input, .event-form textarea { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; font: inherit; color: var(--ink); background: #fbfdff; }
+.event-form label { display: grid; gap: 5px; margin: 11px 0; color: var(--muted); font-size: 13px; }.event-form input, .event-form textarea, .event-form select { width: 100%; border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; font: inherit; color: var(--ink); background: #fbfdff; }
 .tab-icon { font-size: 20px; line-height: 20px; }
 .tabbar { box-shadow: 0 -5px 18px rgba(28,75,116,.06); }
 .profile-box { margin-top: 18px; padding: 14px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }

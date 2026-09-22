@@ -2,9 +2,10 @@
 const assert = require("node:assert/strict");
 const Store = require("../docs/calendar-state.js");
 const created = Store.upsert([], { id: "user:test", title: "Original", date: "2026-08-22", notes: "one" });
-assert.deepEqual(created, [{ id: "user:test", title: "Original", date: "2026-08-22", notes: "one" }]);
-const edited = Store.upsert(Store.normalize(JSON.parse(JSON.stringify(created))), { id: "user:test", title: "Edited", date: "2026-08-23", notes: "two" });
-assert.deepEqual(Store.normalize(JSON.parse(JSON.stringify(edited))), [{ id: "user:test", title: "Edited", date: "2026-08-23", notes: "two" }]);
+assert.deepEqual(created, [{ id: "user:test", title: "Original", date: "2026-08-22", notes: "one", importance: "normal" }]);
+const edited = Store.upsert(Store.normalize(JSON.parse(JSON.stringify(created))), { id: "user:test", title: "Edited", date: "2026-08-23", notes: "two", importance: "important" });
+assert.deepEqual(Store.normalize(JSON.parse(JSON.stringify(edited))), [{ id: "user:test", title: "Edited", date: "2026-08-23", notes: "two", importance: "important" }]);
 assert.deepEqual(Store.remove(edited, "user:test"), []);
 assert.equal(Store.normalize([{ title: "Legacy", date: "2026-08-24" }])[0].id, "user:legacy:0:2026-08-24:Legacy");
+assert.equal(Store.normalize([{ title: "Invalid importance", date: "2026-08-24", importance: "urgent" }])[0].importance, "normal");
 console.log("Calendar state persistence tests passed");

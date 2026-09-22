@@ -310,7 +310,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes('switchTab("latest")'));
   assert(app.includes('tab: "latest"'));
   assert(app.includes("function hasSignedInAccount()"));
-  assert(app.includes('tab !== "latest" && !hasSignedInAccount()'));
+  assert(app.includes('tab !== "latest" && !(calendarReview && tab === "calendar") && !hasSignedInAccount()'));
+  assert(app.includes('calendarReview && !hasSignedInAccount() ? [] : state.userEvents'));
   assert(app.includes("setPasswordAuthMode"));
   assert(app.includes("resetPasswordForEmail"));
   assert(app.includes("這個網址尚未開放寄送重設信"));

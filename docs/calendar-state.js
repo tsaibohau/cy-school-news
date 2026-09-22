@@ -4,16 +4,17 @@
 })(typeof window !== "undefined" ? window : globalThis, function () {
   "use strict";
   function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
+  function importance(value) { return ["important", "normal", "reference"].indexOf(String(value || "")) !== -1 ? String(value) : "normal"; }
   function legacyId(row, index) { return "user:legacy:" + index + ":" + String(row.date || "") + ":" + String(row.title || ""); }
   function normalize(rows) {
     return (Array.isArray(rows) ? rows : []).filter(function (row) {
       return row && String(row.title || "").trim() && validDate(row.date);
     }).map(function (row, index) {
-      return { id: String(row.id || legacyId(row, index)), title: String(row.title).trim(), date: String(row.date), notes: String(row.notes || "").trim() };
+      return { id: String(row.id || legacyId(row, index)), title: String(row.title).trim(), date: String(row.date), notes: String(row.notes || "").trim(), importance: importance(row.importance) };
     });
   }
   function upsert(rows, event) {
-    var normalized = normalize(rows), next = { id: String(event.id), title: String(event.title || "").trim(), date: String(event.date || ""), notes: String(event.notes || "").trim() };
+    var normalized = normalize(rows), next = { id: String(event.id), title: String(event.title || "").trim(), date: String(event.date || ""), notes: String(event.notes || "").trim(), importance: importance(event.importance) };
     if (!next.id || !next.title || !validDate(next.date)) return normalized;
     var found = false;
     return normalized.map(function (row) { if (row.id !== next.id) return row; found = true; return next; }).concat(found ? [] : [next]);
