@@ -54,6 +54,25 @@ fs.copyFileSync(path.join(staging, "calendar-parser-1151-review.js"), path.join(
 const calendarReviewAsset = path.join(output, "review", "calendar-parser-1151");
 fs.mkdirSync(calendarReviewAsset, { recursive: true });
 fs.copyFileSync(path.join(root, "artifacts", "calendar-parser-1151", "candidate-calendar-events.json"), path.join(calendarReviewAsset, "candidate-calendar-events.json"));
+/* The regular staging calendar previews the same reviewed candidate without
+   changing the Action-owned source data in docs/data or the production site. */
+const candidatePath = path.join(root, "artifacts", "calendar-parser-1151", "candidate-calendar-events.json");
+const candidateReport = JSON.parse(fs.readFileSync(path.join(root, "artifacts", "calendar-parser-1151", "candidate-validation-report.json"), "utf8"));
+const candidateEvents = JSON.parse(fs.readFileSync(candidatePath, "utf8"));
+if (!candidateReport.isolated_from_public_paths ||
+    !candidateReport.schools.cysh.quality_gate.passed ||
+    !candidateReport.schools.cygsh.quality_gate.passed ||
+    !Array.isArray(candidateEvents) || candidateEvents.length !== 272) {
+  throw new Error("calendar candidate has not passed staging review gates");
+}
+fs.copyFileSync(candidatePath, path.join(output, "data", "calendar-events.json"));
+const calendarStatusPath = path.join(output, "data", "calendar-source-status.json");
+const calendarStatus = JSON.parse(fs.readFileSync(calendarStatusPath, "utf8"));
+for (const school of calendarStatus) {
+  school.event_count = candidateEvents.filter((event) => event.school_id === school.school_id).length;
+  school.review_pending = true;
+}
+fs.writeFileSync(calendarStatusPath, JSON.stringify(calendarStatus, null, 2) + "\n");
 fs.copyFileSync(path.join(staging, "account-config.js"), path.join(output, "account-config.js"));
 
 const indexPath = path.join(output, "index.html");
@@ -64,7 +83,7 @@ html = html
   .replace("<title>", "<title>STAGING｜")
   .replace('href="manifest.webmanifest"', 'href="manifest-staging.webmanifest"')
   .replace('</head>', '<link rel="stylesheet" href="staging.css?v=' + shellRevision + '">\n</head>')
-  .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站</div>')
+  .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站｜官方行事曆為 PDF 解析候選資料，仍待人工核對</div>')
   .replace('</body>', '<script src="acceptance-user-tasks.js?v=' + shellRevision + '" defer></script>\n</body>');
 sourceVersions.forEach((sourceVersion) => { html = html.replaceAll(sourceVersion, stagedVersion); });
 fs.writeFileSync(indexPath, html);
@@ -73,7 +92,7 @@ let calendarReviewHtml = html
   .replace("<head>", '<head>\n<script src="calendar-parser-1151-review.js?v=' + shellRevision + '"></script>')
   .replace("</head>", '<link rel="stylesheet" href="calendar-parser-1151-review.css?v=' + shellRevision + '">\n</head>')
   .replace("<title>STAGING｜", "<title>PR #29 行事曆產品驗收｜")
-  .replace('<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站</div>', '<div class="candidate-banner" role="alert"><strong>驗收資料，不是正式公開資料</strong><span>PR #29 candidate 官方事件 + 正式行事曆產品互動</span></div>');
+  .replace('<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站｜官方行事曆為 PDF 解析候選資料，仍待人工核對</div>', '<div class="candidate-banner" role="alert"><strong>驗收資料，不是正式公開資料</strong><span>PR #29 candidate 官方事件 + 正式行事曆產品互動</span></div>');
 if (!calendarReviewHtml.includes("window.__CYNEWS_CALENDAR_REVIEW__") && !calendarReviewHtml.includes("calendar-parser-1151-review.js")) throw new Error("calendar product review bootstrap missing");
 fs.writeFileSync(calendarReviewPath, calendarReviewHtml);
 fs.writeFileSync(path.join(output, "robots.txt"), "User-agent: *\nDisallow: /\n");

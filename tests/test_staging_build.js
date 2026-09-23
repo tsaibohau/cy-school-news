@@ -26,11 +26,21 @@ const behavioral = fs.readFileSync(path.join(root, "tests", "test_rls_behavioral
 const deployedWorkflow = fs.readFileSync(path.join(root, ".github", "workflows", "rls-deployed.yml"), "utf8");
 const publicCurrent = JSON.parse(fs.readFileSync(path.join(output, "data", "announcements.json"), "utf8"));
 const publicArchive = JSON.parse(fs.readFileSync(path.join(output, "data", "archive.json"), "utf8"));
+const candidatePath = path.join(root, "artifacts", "calendar-parser-1151", "candidate-calendar-events.json");
+const previewCalendarPath = path.join(output, "data", "calendar-events.json");
+const previewStatus = JSON.parse(fs.readFileSync(path.join(output, "data", "calendar-source-status.json"), "utf8"));
 
 assert(!production.includes("acceptance-user-tasks.js"), "production source must not load the acceptance harness");
 assert(!production.includes("cynews-staging-banner"), "production source must not contain a staging banner");
 assert(staging.includes('name="robots" content="noindex,nofollow,noarchive"'));
 assert(staging.includes("STAGING／測試環境・非正式站"));
+assert(staging.includes("PDF 解析候選資料，仍待人工核對"));
+assert(fs.readFileSync(previewCalendarPath).equals(fs.readFileSync(candidatePath)), "regular staging calendar must use the verified candidate bytes");
+assert(!fs.readFileSync(path.join(root, "docs", "data", "calendar-events.json")).equals(fs.readFileSync(candidatePath)), "production calendar data must remain unchanged");
+for (const school of previewStatus) {
+  assert.equal(school.review_pending, true);
+  assert.equal(school.event_count, JSON.parse(fs.readFileSync(candidatePath, "utf8")).filter((event) => event.school_id === school.school_id).length);
+}
 assert(revision, "staging build must create a single content-derived shell revision");
 assert(!staging.includes("?v=25"), "staging cannot retain production shell query versions");
 assert(staging.includes('src="acceptance-user-tasks.js?v=' + revision + '"'));

@@ -770,6 +770,90 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ---
 
+## 2026-09-22 08:18 UTC｜GitHub OAuth flow 唯讀網路／認證分層診斷
+
+### 目標
+
+在不重新啟動 GitHub OAuth、不帶 credential、不 push 的前提下，確認連續兩次 browser/device 授權後，失敗位於 device authorization、access-token exchange、API verification 或 credential storage 的哪一層。
+
+### 開始前 checkpoint
+
+- branch：`codex/calendar-parser-1151`
+- local HEAD：`7ca289466ef789f77e0b10c092c7c1ffb165f092`
+- local tree：`7964f27aeb5107fe2f594851b57e448eff63de78`
+- remote branch HEAD：`423183f28182358390cd27f10d0b0fd2e6e2d2c3`
+- working tree：本輪開始前已有 `PROJECT_LEDGER.md` modified；本輪只在同檔追加診斷，不修改既有 commit、程式或資料。
+
+### 已完成
+
+#### GitHub CLI
+
+- `gh --version`：`2.101.0 (2026-09-15)`。
+- `gh auth status`：exit 1，`You are not logged into any GitHub hosts`。
+- 未執行 `gh auth login`、`gh auth setup-git` 或其他 OAuth 動作。
+
+#### 無 credential HTTPS reachability
+
+- 所有 curl 探測均明確移除 GitHub token 環境變數、停用 netrc，並送出空的 Authorization／Cookie／Proxy-Authorization header；沒有輸出或使用 token、cookie 或 authorization value。
+- 執行環境不允許直接 DNS lookup：`github.com`、`api.github.com` 的 `getent`／直接 OpenSSL TLS 都因 temporary DNS resolution failure 失敗。這只代表 direct path 被隔離；實際允許的 HTTPS path 經本機政策代理 `127.0.0.1`。
+- `https://github.com/`：代理路徑 TLS 驗證成功，HTTP 200。
+- `https://github.com/login/device`：代理路徑 TLS 驗證成功，HTTP 302；device/browser 頁面路徑可達。
+- `https://github.com/login/oauth/access_token`：無 credential GET 可完成 TLS 並收到 HTTP 404，證明一般 GET 路徑可達；但無 credential、空 body 的 POST 在代理 CONNECT 階段 timeout，HTTP 000，未建立 token exchange HTTP 連線。
+- `https://api.github.com/`：兩次有界探測均未取得 HTTP 回應；獨立第二次結果為 proxy CONNECT timeout、HTTP 000。依同方法兩次失敗規則不再重試。
+
+#### gh account metadata / credential storage
+
+- `~/.config/gh/hosts.yml`：不存在。
+- `github.com` entry：不存在。
+- user / git_protocol metadata：不存在。
+- credential 欄位：不存在（false）；沒有讀取或輸出任何 credential value。
+
+#### Git credential helper
+
+- combined Git config 中 `credential.helper` entry 數：0。
+- `credential.useHttpPath`：未設定。
+- origin 使用 HTTPS。
+- 未呼叫 `git credential fill`，因此沒有觸發 helper、credential prompt 或任何 push。
+
+### 精確診斷
+
+- **主要分類：B — OAuth access-token exchange 被阻擋。** browser/device 頁面可達，但 token exchange 所需的 POST 目前在政策代理 CONNECT 階段 timeout；這是目前可重現的最早阻斷層。
+- **後續仍存在 C 層 blocker：** `api.github.com` 也無法通過代理 CONNECT。即使 B 被解除，CLI 的 token/API 驗證仍可能在 C 失敗。
+- **A 不符合目前證據：** 使用者已兩次完成 browser/device 操作，且 device 頁面可達；本輪沒有重新要求授權。由於禁止再次執行 OAuth，本輪不以新 flow 獨立重驗 server-side device approval。
+- **D 沒有證據支持：** `hosts.yml` 尚未建立、Git 也沒有 credential helper；這更符合流程在 token/API 網路階段先被中止，尚未抵達持久化，而不是「token 已取得後 storage 寫入失敗」。
+- 因此不得把「`hosts.yml` 不存在」單獨誤判為 storage failure，也不得把先前台帳的「向 api.github.com 交換 OAuth credential」當成精確協定描述：token exchange 與 API validation 是前後兩個端點／階段。
+
+### 已排除原因
+
+- 不是 `gh` 未安裝或版本不可執行。
+- 不是 GitHub Web 首頁或 device 頁面整體不可達。
+- 不是 repo remote protocol 被改成 SSH。
+- 沒有 PAT、SSH、push、commit rewrite、程式／資料修改造成干擾。
+
+### 尚待驗證
+
+- 在目前網路政策下無法驗證含真實 device code 的 token POST 是否能回傳 token；空 POST 已在連線層被阻擋。
+- 因 `api.github.com` 同樣被阻擋，無法驗證 token 後續 API identity check。
+- credential storage 尚未被流程觸及，不能宣稱 storage 成功或失敗。
+
+### 禁止重做
+
+- 不再次要求或執行 OAuth browser/device 授權。
+- 不使用 PAT、SSH 或 connector 重建 commit。
+- 不 push，不執行 `gh auth setup-git`。
+- 不修改、rebase、squash、amend 或重建現有 commit。
+- 不修改程式、parser、fixture、candidate、正式資料、Supabase、Preview 或 Production。
+
+### 下一個唯一允許動作
+
+停止。若後續另有明確授權，只能先在允許 HTTPS POST 到 `github.com/login/oauth/access_token` 且允許 `api.github.com:443` 的環境，讀取既有登入狀態；不得先讓使用者重做第三次 device authorization。確認 credential 已存在後，才可另案決定是否設定 Git helper 或原樣 push。
+
+### 最終狀態
+
+【已完成唯讀診斷；B 為最早可重現 blocker，C 同時存在；未 push】
+
+---
+
 ## 2026-09-20｜官方行事曆 parser repo-only 實作中斷 checkpoint
 
 ### 目標與起點
@@ -1165,6 +1249,15 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - `apt-get update/install gh` 被 container 權限阻擋：APT helper 無法 `setgroups/setegid/seteuid`，沒有安裝任何 repo 內容。
 - 改用官方 GitHub CLI release 到 `/tmp` 的下載在 30 秒只完成約 1%（14.5 MB 中約 238 KB），推估超過外部等待上限，已停止；未完成安裝、未進行 OAuth、未要求或保存 PAT/token。
 - 狀態：`CLOUD_WRITE_BLOCKED`。本輪沒有新 Vercel deployment，因此不能提供新版 Preview 驗收 URL；上一輪 URL 仍只包含舊的簡化 candidate UI，不能當成本輪完成證據。
+
+### 2026-09-22 OAuth recovery 再確認
+
+- 已依授權從 GitHub CLI 官方 release 下載 `gh 2.101.0`（Linux amd64），以 `--no-same-owner` 解壓並安裝到 `~/.local/bin/gh`；未使用 apt / sudo，未修改 repo 檔案。
+- 使用者已先後完成兩次 GitHub.com HTTPS browser/device 授權；兩次 `gh auth login` 都在授權完成後、CLI 向 `https://api.github.com:443` 交換 OAuth credential 時被 Cloud Work 網路政策中斷：`Network access to "https://api.github.com:443" was blocked by policy`。
+- `gh auth status` 最終仍回報 `You are not logged into any GitHub hosts`；credential 沒有落地，因此未執行 `gh auth setup-git`、未 push，也未建立新 Preview。
+- 為避免讓使用者反覆授權，同一 device-login 方法已停止。沒有要求、輸出或保存 PAT/token。
+- local HEAD 仍為 `7ca289466ef789f77e0b10c092c7c1ffb165f092`；remote HEAD 仍為 `423183f28182358390cd27f10d0b0fd2e6e2d2c3`；既有兩個 commit 未 amend / rebase / squash / 重建。
+- 本段是依失敗處理規則留下的本機 blocker 紀錄；因 GitHub credential 不可用，無法 commit / push 此 ledger 更新。下一個唯一允許動作仍是換到允許 `gh` 完成 OAuth API exchange 的 Work environment，確認登入後原樣 push 現有 branch。
 
 ### 禁止重做與下一個唯一允許動作
 
@@ -1960,3 +2053,305 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】
+
+---
+
+## 2026-09-22 08:18 UTC｜最新 auth checkpoint 索引
+
+- 本檔上方同時間的「GitHub OAuth flow 唯讀網路／認證分層診斷」為本輪完整、權威紀錄，並取代先前把 token exchange 與 `api.github.com` validation 混為同一階段的概括描述。
+- 最新結論：**B 是目前最早可重現 blocker**（`github.com/login/oauth/access_token` 的無 credential POST 在政策代理 CONNECT 階段 timeout）；**C 同時存在**（`api.github.com` 亦 proxy CONNECT timeout）。A 不符合目前證據；D 沒有證據，因流程尚未抵達持久化。
+- `gh auth status` 仍為未登入；`hosts.yml` 不存在；Git credential helper 0；未重新 OAuth、未 push、未修改 commit／程式／資料。
+- 下一個唯一允許動作：停止；除非另有明確授權且環境先允許 token POST 與 GitHub API，不得要求第三次 device authorization。
+
+### 最終狀態
+
+【已完成唯讀診斷；PROJECT_LEDGER.md 已更新；未 push】
+
+---
+
+## 2026-09-22 09:26 UTC｜SSH Deploy Key 階段 1 條件檢查
+
+### 目標
+
+只確認 `ssh.github.com:443` 可達性，以及目前 Cloud Work 是否有可由本 agent 安全寫入、跨 session 保存的 secret / credential storage。任一條件不成立即不產生 key。
+
+### 開始前 checkpoint
+
+- branch：`codex/calendar-parser-1151`
+- local HEAD：`7ca289466ef789f77e0b10c092c7c1ffb165f092`
+- local tree：`7964f27aeb5107fe2f594851b57e448eff63de78`
+- working tree：本輪開始前已有 `PROJECT_LEDGER.md` modified；本輪只追加 blocker 紀錄。
+
+### 確認結果
+
+- SSH 443：**不可達**。有界 `ssh-keyscan -T 8 -p 443 ssh.github.com` 未建立連線，exit 1；精確失敗點為 `getaddrinfo ssh.github.com: Temporary failure in name resolution`。
+- 第一次探測包裝命令因包含被安全層拒絕的暫存檔清理語法，在 process 建立前即遭拒，沒有執行網路探測；改成不建立檔案後才取得上述真實結果。
+- OpenAI 官方 Codex Cloud environment 文件確認平台有 environment Secrets，會加密保存並只在 setup script 執行時解密；進入 agent phase 前會移除。
+- 目前此 Work agent 沒有 Cloud environment Secrets 的新增／更新工具；現有可見的 secret 類工具只屬其他產品（例如 Sites runtime），不能冒充本 repo 的 Cloud Work environment storage。
+- 因此「可由本輪立即安全寫入 private key、並跨 session 保存」的 storage：**不存在／不可用**。只寫入目前容器的 `~/.ssh` 不符合要求。
+
+### 執行決策
+
+- 兩項前置條件都不成立，依使用者規則在階段 1 停止。
+- 未產生 ED25519 keypair。
+- private key：不存在；未寫入 repo、ledger、prompt、一般文字檔或 `~/.ssh`。
+- public key：不存在。
+- persistent secret name：未建立。
+- SSH host alias：未建立。
+- 未執行 OAuth、PAT、push、merge、Ready 或任何 commit／程式／candidate／tests 修改。
+
+### 下一個唯一允許動作
+
+停止。須先讓執行環境可解析並連線 `ssh.github.com:443`，並提供可由 agent 寫入的 Codex Cloud environment secret 介面；在兩項都以直接證據成立前，不得產生 Deploy Key，也沒有可進行的 GitHub Deploy keys UI 操作。
+
+### 最終狀態
+
+【BLOCKED：SSH 443 不可達，且本 agent 無可寫入的跨 session secret storage；未產生 key、未 push】
+
+---
+
+## 2026-09-22 11:45 UTC｜GitHub OAuth／push 環境差異唯讀鑑識
+
+### 目標
+
+追查「先前 Cloud Work 可原生 git push、目前 OAuth／部分 GitHub 路徑受阻」的環境差異；只做無 credential 的 fingerprint、DNS／TCP／TLS／HTTP、method policy 與 Git Smart HTTPS 測試。
+
+### 開始前 checkpoint
+
+- branch：`codex/calendar-parser-1151`
+- local HEAD：`7ca289466ef789f77e0b10c092c7c1ffb165f092`
+- local tree：`7964f27aeb5107fe2f594851b57e448eff63de78`
+- working tree：本輪開始前已有 `PROJECT_LEDGER.md` modified；本輪只追加鑑識紀錄。
+- 未 OAuth、未 push、未建立 credential、未修改 remote／commit／程式／candidate／tests、未安裝工具。
+
+### 最後一次已記錄的 known-good
+
+- Ledger 最後一次明確記錄原生 push 成功的 checkpoint：`2026-09-21｜calendar-parser Draft PR publish 與 read-only review`；只記錄日期，沒有精確時分。
+- 已確認操作：`git push -u origin codex/calendar-parser-1151` 成功；local／remote HEAD 均為 `43c969d0dd37e88d7934c3b1dd6d7c63bfa04836`，tree 均為 `b23537adcc2d95933a3cb21cacab07d048579858`。
+- 該成功 checkpoint **沒有記錄 `gh auth status` 成功**，也沒有記錄 gh version、OAuth exchange、DNS、proxy 或 endpoint reachability。因此本檔不能證明使用者題述的「gh auth 成功」部分，只能證明原生 push 成功。
+- protocol：成功段落沒有再次展開 remote URL；它之前的 blocker 與下一動作均明確以 `https://github.com/tsaibohau/cy-school-news.git` 為目標，且未記錄 remote 曾被修改。故可記為「HTTPS 有連續 ledger 證據，但成功段落未獨立重列 URL」，不得宣稱有 SSH 證據。
+
+### 目前環境 fingerprint
+
+- `uname -a`：`Linux localhost 6.18.44 #1 SMP Sat Sep 12 15:35:21 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux`
+- OS：Ubuntu 24.04.3 LTS (Noble Numbat)，ID `ubuntu`，ID_LIKE `debian`。
+- Git：`2.51.1`。
+- gh：`not found`；與前一個已安裝 `gh 2.101.0` 的 session 不同。
+- curl：`8.5.0`，libcurl `8.5.0`，OpenSSL `3.0.13`。
+- hostname：`localhost`；`/etc/hostname` container identifier：`42b6cc441053`。
+- `/etc/resolv.conf`：`nameserver 168.63.129.16`；沒有 search/domain 行。
+
+### Proxy / network environment（已遮罩）
+
+- `HTTP_PROXY`／`HTTPS_PROXY`／`http_proxy`／`https_proxy`：存在，`http://127.0.0.1`。
+- `ALL_PROXY`／`all_proxy`：存在，`socks5h://127.0.0.1`。
+- `NO_PROXY`／`no_proxy`：存在；只含 localhost、loopback 與 RFC1918 private ranges；未輸出 credential，原設定也未見 username／password／token／query。
+- Git config 未另設 `http.proxy`／`https.proxy`，故 Git 使用環境 proxy。
+- Git credential helper：0；`credential.useHttpPath` unset；`http.extraHeader` 不存在；`http.sslVerify`／`http.version` unset。
+- `~/.curlrc`、`/etc/curlrc`、`~/.config/gh/hosts.yml`、`~/.config/gh/config.yml`：均不存在。
+
+### Hostname 分層測試
+
+- Direct path：`github.com`、`api.github.com`、`ssh.github.com` 全部 `socket.getaddrinfo()` 失敗，`Temporary failure in name resolution`；因此 direct TCP 443 與 direct TLS 都未開始。
+- Proxy HTTPS GET：
+  - `github.com`：proxy CONNECT timeout，HTTP 000，TLS 未建立。
+  - `api.github.com`：proxy CONNECT timeout，HTTP 000，TLS 未建立。
+  - `ssh.github.com`：proxy CONNECT timeout，HTTP 000，TLS 未建立。
+- 這些結果代表「該次 generic curl GET」失敗，不代表同 host 的所有 operation 永久不可達；後續 OAuth dummy POST 與 Git Smart HTTPS 有成功反證。
+
+### HTTP method policy
+
+- Endpoint：`https://github.com/login/oauth/access_token`。
+- GET：proxy CONNECT timeout，HTTP 000，未建立 TLS。
+- 無 credential dummy POST：使用假的 `client_id`／`device_code`，未帶真實 code、token、cookie、Authorization；成功完成 proxy connection／TLS 並收到 HTTP 404，response body 未輸出。
+- 與上一輪「GET 可達、空 POST timeout」結果方向相反。證據不支持固定的 POST-block policy；更符合 per-request／session proxy routing 不穩定或政策狀態漂移。
+
+### Git Smart HTTPS
+
+- `git ls-remote https://github.com/cli/cli.git HEAD`：exit 0；以 `credential.helper=`、`GIT_TERMINAL_PROMPT=0`、移除 GitHub token 環境變數執行，沒有登入或 credential。
+- 目前 repo origin 的 `git ls-remote <origin> HEAD`：exit 0；同樣無 credential、無 prompt。
+- current origin protocol：HTTPS。
+- 結論：目前 Git Smart HTTPS read-only transport 可達；不是 GitHub HTTPS 全面中斷，也不是 Git-specific network failure。
+
+### 矩陣
+
+| endpoint / operation | previous known-good | current | failure layer |
+|---|---|---|---|
+| `github.com` GET | 成功 push checkpoint 未記錄 generic GET | curl proxy CONNECT timeout／HTTP 000；但同 host dummy POST 與 Git Smart HTTPS 成功 | generic GET 的 proxy routing／policy，不是 host 全面不可達 |
+| OAuth token POST | 成功 checkpoint 未記錄 | fake-data POST 到達 HTTP 404 | 本次無 network failure；固定 POST filtering 不成立 |
+| `api.github.com` GET | 成功 checkpoint未記錄 | direct DNS fail；proxy CONNECT timeout／HTTP 000 | DNS／proxy layer；TLS/HTTP 未到達 |
+| Git Smart HTTPS | 2026-09-21 原生 push 成功、remote parity PASS | 公開 repo與目前 origin的無 credential `ls-remote` 均 exit 0 | 無 failure；read-only Smart HTTPS 可達 |
+| `ssh.github.com:443` | 成功 checkpoint未記錄 | direct DNS fail；proxy CONNECT timeout／HTTP 000 | DNS／proxy layer；TCP/TLS 未到達 |
+
+### 分類結論
+
+- **A. session/network policy drift：成立。** 現容器 identifier、工具狀態與先前 session 不同；先前安裝的 gh 不存在。相同 proxy session 內 generic GET timeout，但 OAuth dummy POST與 Git Smart HTTPS 成功，且與上一輪 GET／POST結果反向，顯示 session／request-level network behavior 漂移。
+- **B. proxy/DNS configuration drift：目前只能確認「現況問題」，不能證明 configuration drift。** 現況 direct DNS 全失敗，流量依賴 localhost proxy；但 known-good push checkpoint 未保存當時 resolv.conf／proxy env，無法比較設定是否改變。精確 configuration drift 證據不足。
+- **C. GitHub endpoint/method-specific filtering：不成立／至少未被證明。** POST 本次成功到達 HTTP，而 GET timeout；Git Smart HTTPS同 host成功。結果不具穩定 method-specific pattern。
+- **D. gh-specific regression：不成立。** 當前環境沒有 gh，且 curl本身已有 timeout；不能把 network failure歸因 gh binary。
+- **E. 證據不足：同時成立。** Ledger 沒有「gh auth 成功」checkpoint、當時 gh version、proxy/DNS fingerprint或 generic endpoint matrix，因此無法精確指出 known-good與current之間哪一項平台設定改變，也不能從現有證據推定 GitHub服務端故障。
+
+### 下一個唯一允許動作
+
+停止。本輪只完成 forensic diagnosis；不得以此結果觸發 OAuth、push、PAT、SSH key、remote修改、工具重裝或任何產品修改。
+
+### 最終狀態
+
+【已完成：A + E；目前 Git Smart HTTPS 可達，generic curl/API/SSH受 DNS／proxy不穩定影響；未 OAuth、未 push】
+
+---
+
+## 2026-09-22 15:35 UTC｜成功 push credential lifecycle 唯讀鑑識
+
+### 目標
+
+只追查先前原生 Git push 成功時可能使用的 credential storage backend，以及其未跨 Cloud Work session 留存的證據；不觸發認證、不讀取 secret 值。
+
+### 開始前 checkpoint
+
+- branch：`codex/calendar-parser-1151`
+- local HEAD：`7ca289466ef789f77e0b10c092c7c1ffb165f092`
+- local tree：`7964f27aeb5107fe2f594851b57e448eff63de78`
+- working tree：開始前已有 `PROJECT_LEDGER.md` modified；本輪只追加鑑識紀錄。
+- 最後一次原生 push 成功：2026-09-21 `calendar-parser Draft PR publish 與 read-only review`，`git push -u origin codex/calendar-parser-1151` 成功並確認 remote parity；該 checkpoint 沒有記錄 gh auth 成功、gh version或 credential backend。
+
+### 現存 Git credential 設定
+
+- `git config --show-origin --get-all credential.helper`：exit 1，entries 0。
+- `git config --show-origin --get-regexp '^credential\.'`：exit 1，entries 0。
+- 沒有執行 `git credential fill`、credential prompt、fetch 或 push。
+- 常見檔案存在性：`~/.git-credentials`、`~/.netrc`、`~/.authinfo`、`~/.config/git/credentials` 全部不存在；未讀取任何檔案內容。
+
+### GitHub CLI credential 痕跡
+
+- `~/.config/gh/`：不存在。
+- `~/.config/gh/hosts.yml`：不存在。
+- `github.com` entry：不存在。
+- user／git_protocol metadata：不存在。
+- credential/token 欄位：不存在（false）；未讀取或輸出任何值。
+
+### 環境注入
+
+- `GH_TOKEN`：不存在。
+- `GITHUB_TOKEN`：不存在。
+- `GH_HOST`：不存在。
+- 只檢查變數存在性，沒有輸出值。
+
+### Linux secure credential storage
+
+- `secret-tool`、`gnome-keyring-daemon`、`kwalletd5`、`kwalletd6`、`keepassxc`、`gdbus`：binary 均不存在。
+- `libsecret-tools`、`libsecret-1-0`、`gnome-keyring`：未安裝。
+- `DBUS_SESSION_BUS_ADDRESS`、`XDG_RUNTIME_DIR`：均不存在。
+- `gnome-keyring-daemon`、`kwalletd5`、`kwalletd6` 精確程序名檢查：均未執行。
+- `busctl --user status org.freedesktop.secrets`：unavailable，exit 1。
+- 第一次 KWallet 檢查曾用 `pgrep -f`，可能把檢查命令本身誤判為 running；已用 `pgrep -x kwalletd5/kwalletd6` 更正為 not running。錯誤結果不得作為證據。
+- 結論：目前 session 沒有可用的 Secret Service／desktop keyring backend，也沒有它曾保存 GitHub credential 的痕跡。
+
+### `$HOME` filesystem／mount 性質
+
+- `$HOME=/root`：存在，位於 `/` 的 `overlay`／`overlayfs`，不是 dedicated mount。
+- `~/.config`：不存在；若建立會落在同一 root overlayfs，沒有獨立 mount。
+- `~/.local`：不存在；若建立會落在同一 root overlayfs，沒有獨立 mount。這與上一個曾安裝 `~/.local/bin/gh`、目前 gh 已消失的 session 差異一致。
+- `~/.gitconfig`：存在，但位於同一 root overlayfs，不是 dedicated mount；credential 設定為 0。
+- filesystem ID：`4cb5e943ee74aff3`（本 session）；沒有 bind mount、volume、network filesystem或其他跨 session persistent mount 證據。
+- 以上只能證明「目前 HOME 是 container overlay 且無持久掛載證據」，不能倒推成功 session 的 credential 必然存放於 HOME。
+
+### 問題 A：成功 session 最可能由哪個 storage backend 提供？
+
+**證據不足，無法指定 backend。**
+
+- 原生 push 成功證明當時 Git 取得過可寫 credential，但成功 checkpoint 沒保存 `credential.helper`、`hosts.yml`、環境注入、AskPass、記憶體 cache、keyring或其他 backend 證據。
+- 目前所有痕跡為空，只描述新 container 的狀態；不能用「現在不存在」反推當時一定使用 gh `hosts.yml`、Git credential cache、環境注入或任何特定 backend。
+- 因此不得把任一候選稱為「最可能」；現存證據只支持「某種 session 可用 credential source 曾存在」。
+
+### 問題 B：是否足以證明沒有跨 session 保留的原因？
+
+**證據不足，不能證明精確原因。**
+
+- 可以證明：目前 container 與先前 session 不同；目前 `$HOME` 是非 dedicated 的 overlayfs；gh binary與所有已查 credential 痕跡均不存在；沒有 persistent mount 證據。
+- 不能證明：成功 credential 當時確實位於 `$HOME` overlay、記憶體 cache、AskPass、環境變數或 keyring中的哪一處，也沒有成功 session 的 mount／environment snapshot可比較。
+- 只有條件式敘述成立：若 credential 當時存於 session-local filesystem、process memory或臨時注入，新 container不保留它是合理結果；但這不是已證明的實際 backend／消失原因。
+
+### 下一個唯一允許動作
+
+停止。不得為補證據而啟動 OAuth、credential lookup、push／fetch、PAT、SSH、工具安裝、remote修改或其他認證替代方案。
+
+### 最終狀態
+
+【已完成：A＝證據不足；B＝證據不足；未觸發或讀取任何 credential】
+## 2026-09-22｜GitHub 裝置授權後網路政策阻擋
+
+- 最後成功 checkpoint：本機 branch `codex/calendar-parser-1151`，HEAD `7ca289466ef789f77e0b10c092c7c1ffb165f092`；先前 remote 追蹤分支落後兩個 commit。
+- 使用者依 GitHub 裝置頁面完成授權；CLI 輪詢後工具回報 `Network access to https://api.github.com:443 was blocked by policy`。
+- 精確失敗點：OAuth 授權結果無法回傳目前 CLI；`~/.config/gh/hosts.yml` 不存在，credential 尚未建立。沒有執行 push；remote HEAD parity 未驗證。
+- 已排除：使用者端裝置授權未完成（截圖顯示 connected）。尚待驗證：此執行環境能否獲准連至 GitHub API 以完成 OAuth 輪詢。
+- 下一個允許動作：待網路政策允許 `api.github.com:443` 後，重新啟動官方 GitHub CLI OAuth，完成 credential integration、native push 與 remote HEAD 核對；不得將使用者端成功頁面當作 CLI 認證成功。
+- working tree：既有 `PROJECT_LEDGER.md` modified，本次僅追加此紀錄；未改產品程式與 commit。
+
+## 2026-09-22｜SSH 443 只讀探測與 HTTPS Git 候選確認
+
+- 目標：在不重跑 OAuth、不修改 commits 的前提下，以 native Git 推送 `codex/calendar-parser-1151`。
+- 最後已確認本機 checkpoint：HEAD `7ca289466ef789f77e0b10c092c7c1ffb165f092`；origin URL `https://github.com/tsaibohau/cy-school-news.git`；working tree 只有既有 `PROJECT_LEDGER.md` modified。
+- SSH 443 探測第一次：直連 `ssh.github.com:443` 在 DNS 階段失敗，`gaierror [Errno -3] Temporary failure in name resolution`。
+- SSH 443 探測第二次：HTTPS proxy CONNECT 到 `ssh.github.com:443` 逾時，HTTP 000；因此此 session 無法證實 SSH 443 可達，已停止該路徑，未產生金鑰或修改 remote。
+- HTTPS Git 只讀 `git ls-remote` 成功；遠端 `refs/heads/codex/calendar-parser-1151` HEAD 為 `423183f28182358390cd27f10d0b0fd2e6e2d2c3`，與本機不同。
+- 精確 blocker：SSH endpoint 無法連通；OAuth API 被環境政策阻擋，無可用 credential。HTTPS Git transport 可達，但本 session 尚無安全方式取得僅供推送的 PAT；不得在對話、ledger、log 或 commit 接收或輸出 token。
+- 最終狀態：【CLOUD_WRITE_BLOCKED；未 push；remote HEAD != local HEAD】。下一個允許動作：使用可安全提供 Git credential 的受信任環境，以 GitHub fine-grained PAT 完成 HTTPS native push，再用 native Git 核對 HEAD；不得要求在對話貼出 token。
+
+## 2026-09-23｜原生推送重試與 commit 原樣移交
+
+- branch `codex/calendar-parser-1151`；本機 HEAD `7ca289466ef789f77e0b10c092c7c1ffb165f092`，父 commit `6ddf5b686537c24dbc6346c377d99c8bdb88ee25`，其父為遠端基底 `423183f28182358390cd27f10d0b0fd2e6e2d2c3`。
+- 使用者要求推送。`GIT_TERMINAL_PROMPT=0 timeout 25 git push origin HEAD:refs/heads/codex/calendar-parser-1151` exit 124，無進展輸出；未取得成功回報。
+- GitHub 連接器有該 repo 的 push 權限，但其現有 create-commit 工具會重建 commit，不能保留原 SHA；未呼叫任何寫入工具。
+- 只讀 GitHub commit lookup：本機 HEAD `7ca2894...` 回傳「No commit found」；基底 `423183f...` 存在。遠端 HEAD parity 未達成。
+- 已建立並驗證增量 Git bundle `calendar-parser-1151.git.bundle`，內含原 HEAD、要求基底 `423183f...`；`git bundle verify` PASS。此檔供可信任的 Git 環境原樣載入後推送，不含未提交 working-tree 內容。
+- 工作樹：既有 `PROJECT_LEDGER.md` modified，追加本段；未更動 commit、程式碼、remote 或 Git 設定。狀態：【CLOUD_WRITE_BLOCKED；未推送】。
+- 下一個允許動作：在具 GitHub 寫入連線的環境取得 bundle，驗證基底與原 HEAD，原生推送且核對遠端 HEAD；不得重建既有 commit。
+
+## 2026-09-23｜雲端專用移交方向修正
+
+- 使用者確認全程只在雲端作業，不存在本機電腦；先前建議 Windows 終端機不適用。
+- GitHub connector 已確認對 repo 有 push 權限，但其 API create-commit 會產生新 SHA，不能替代保留原 commit 的 native Git push。
+- 探查純雲端 GitHub Codespaces 瀏覽器入口：Cloud Browser 開啟 GitHub 時顯示登入頁；既有 connector 授權未共享至此瀏覽器。安全登入交接結果為 user_took_over，隨後可見頁面仍為登入表單；未確認登入成功，未建立 Codespace、未上傳 bundle、未推送。
+- bundle 原樣保留本機 HEAD `7ca289466ef789f77e0b10c092c7c1ffb165f092`，已驗證並保存供雲端移交。下一步只限純雲端：在已登入的 GitHub 雲端工作環境載入 bundle 後 native Git push，或由平台提供可保留原 commit 的物件傳輸；不得要求本機電腦，不得重建 commit。
+- 狀態：【CLOUD_WRITE_BLOCKED；遠端尚未與本機 HEAD 一致】。
+
+## 2026-09-23｜再次裝置授權遭 API 網路政策阻擋
+
+- 使用者明確要求重新走 GitHub CLI device authorization；CLI 產生新代碼並顯示官方 `github.com/login/device` 入口。
+- 使用者截圖顯示 GitHub 網頁 404；無法由截圖判定代碼是否曾成功提交或頁面轉址原因。
+- CLI 輪詢時工具明確回報 `Network access to https://api.github.com:443 was blocked by policy`；授權結果無法傳回本 Cloud Work session。此次授權程序已無法繼續，不應重用該代碼。
+- 未接收 credential、未 git push，remote HEAD parity 未達成。下一動作：停止重試同一 device flow；需平台允許 API 連線或使用保留原始 commit 的純雲端 Git 傳輸環境。
+
+## 2026-09-23｜repo 專屬或 session 通道故障的對照診斷
+
+- 同一 Cloud Work session、同一 native Git HTTPS transport 下，read-only `git ls-remote` 對 `tsaibohau/cy-school-news.git` 與無關的公開 repo `git/git.git` 均 exit 0 並回傳 HEAD。嘉雲快訊 origin URL 正確，Git 讀取路徑未發現 repo 專屬故障。
+- GitHub connector 對嘉雲快訊 repo 回報 `admin/maintain/pull/push` 權限；平台連接器並非缺少該 repo 的寫入授權。
+- 本機 HEAD `7ca289466ef789f77e0b10c092c7c1ffb165f092` 在 GitHub connector 查詢仍回報 No commit found；未推送。
+- 已確認 blocker 仍是此 session 的 native Git 寫入 credential／OAuth API 網路路徑。只讀對照不能單獨證明所有 repo 的寫入是否可達，但新建 repo 不會自動改變本 session 的 OAuth API 端點、代理或 native Git credential；因此不建議以搬遷專案處理。
+- 狀態：【診斷完成；repo 專屬故障無證據；session 級寫入通道受阻；未修改程式與 commit】。下一步：保留現有 repo，改用有原始 Git 物件傳輸能力的純雲端 Git 環境載入已驗證 bundle，再推送同一 branch 並驗證 SHA；若環境不可用，標示阻礙，不另建 repo。
+## 2026-09-23｜推送工程再次檢查：雲端登入阻礙
+
+- 本機 branch `codex/calendar-parser-1151` HEAD `7ca289466ef789f77e0b10c092c7c1ffb165f092`；`git bundle verify` PASS，bundle 要求基底 `423183f28182358390cd27f10d0b0fd2e6e2d2c3`。
+- 原生 Git 只讀 `ls-remote` exit 0，遠端 branch HEAD 仍為 `423183f28182358390cd27f10d0b0fd2e6e2d2c3`；遠端與本機不一致。
+- 雲端瀏覽器 Codespaces 入口仍為 GitHub 登入頁，只提供使用者名稱／電子郵件和密碼欄位；使用者先前表示以 Google 登入，本次未要求或輸入密碼，未建立 Codespace。
+- 已知 CLI OAuth API 與 SSH 443 阻擋仍在先前 checkpoint，未重複 device flow 或 SSH probe；本輪未執行無憑證 push、未生成／接收 credential、未修改任何 commit、remote 或產品程式。
+- 狀態：【CLOUD_WRITE_BLOCKED；未推送；remote HEAD != local HEAD】。下一步需要有 GitHub 登入且可用原生 Git 的純雲端環境，或平台提供安全 Git credential 與寫入網路通道；載入既有 bundle 後推送原 branch 並核對 SHA。
+
+## 2026-09-23｜Codespace 原生 Git 推送成功
+
+- 使用者在雲端瀏覽器完成 GitHub 登入，並明確授權信任 `cy-school-news` Codespace 工作區及使用終端機推送。
+- 推送前先確認原始 bundle 仍存在（9,268 bytes），SHA-256 `cfdb9e76a6a439f2d95b7b2911b231cb8813c2dafeb691db07d40eec76ca1ef4`，`git bundle verify` 通過，bundle HEAD 為 `7ca289466ef789f77e0b10c092c7c1ffb165f092`。
+- Codespace 的分支及遠端原為 `423183f28182358390cd27f10d0b0fd2e6e2d2c3`；在其 `/tmp` 還原並驗證 bundle，`git fetch` 載入原始物件，確認 `FETCH_HEAD` 為 `7ca289466ef789f77e0b10c092c7c1ffb165f092` 且為目前分支 HEAD 的後代。
+- 原生 `git push origin FETCH_HEAD:refs/heads/codex/calendar-parser-1151` 成功：`423183f..7ca2894`；Codespace 的 `git ls-remote` 後續驗證輸出 `PUSH_VERIFIED`。
+- Cloud Work 獨立以 native Git 查詢遠端 `refs/heads/codex/calendar-parser-1151` 為 `7ca289466ef789f77e0b10c092c7c1ffb165f092`，與原始本機 HEAD 完全一致。
+- 未修改、重建、rebase、squash 或 amend 既有 commit；沒有修改產品程式碼、remote 或 Git 設定。本機僅此 ledger 保持未提交的 modified 狀態；它不包含在已推送 commit 中。
+- 狀態：【已完成；git push 成功；remote HEAD == local HEAD】。
+
+## 2026-09-23｜PDF 解析候選事件接入一般測試站行事曆
+
+- 使用者要求讓 PDF 解析成果進入行事曆；以 PR #29 branch `codex/calendar-parser-1151` 的測試站為範圍，正式站 `main` 與 Action-owned `docs/data/*` 保持原樣。
+- `tools/build-staging.js` 在品質報告通過時，僅於 `dist-staging` 將既有 272 筆 candidate 原樣覆蓋測試站的 `data/calendar-events.json`，讓一般行事曆使用；更新測試站 status 事件數與 review_pending 標記，首頁橫幅標明尚待人工核對。
+- 既有 `/calendar-parser-1151-review.html` 保留獨立驗收；候選資料已知疑點包括 CYSH 短標題「元旦放」與 CYGSH 三筆同名事件，不能作為 Production 發布依據。
+- `node tests/test_staging_build.js`、`node tests/test_calendar_candidate_product_review.js`、`node --check tools/build-staging.js`、`git diff --check`：PASS。Cloud Work 的 `python tests/test_parser.py` 因缺少 `requests` 在 import 時未啟動，待具備依賴的 Codespace／CI 驗證。
+- 此段為實作中 checkpoint；remote 推送、PR Preview deployment 及實機驗收結果需於完成後續記，不得在驗證前標成已發布。
