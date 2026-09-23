@@ -331,6 +331,7 @@ body { background: var(--paper); }
 .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 12px; }
 .section-heading h3 { margin: 0; font-family: var(--serif); font-size: 18px; }
 .calendar-toolbar { display: flex; align-items: center; gap: 8px; margin: 8px 0 12px; }
+.calendar-import { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 .calendar-toolbar h3 { flex: 1; text-align: center; margin: 0; font-size: 18px; }
 .calendar-toolbar .btn-ghost { margin-left: 5px; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; padding: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }

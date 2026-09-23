@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=85">
+<link rel="stylesheet" href="style.css?v=86">
 </head>
 <body>
 
@@ -136,6 +136,10 @@
     <div class="section-heading">
       <div><p class="eyebrow">CALENDAR</p><h2>行事曆</h2></div>
       <button id="addEvent" class="btn-primary" type="button">新增事件</button>
+    </div>
+    <div class="calendar-import">
+      <button id="legacyEventImport" class="btn-ghost" type="button" hidden>匯入此裝置的舊事件</button>
+      <span id="legacyEventImportStatus" class="hint" aria-live="polite" hidden></span>
     </div>
     <div class="calendar-toolbar">
       <button id="prevMonth" class="icon-btn" type="button" aria-label="上個月">‹</button>
@@ -317,12 +321,13 @@
 </div>
 
 <script src="account-config.js?v=41"></script>
-<script src="supabase-sync.js?v=55"></script>
+<script src="supabase-sync.js?v=57"></script>
 <script src="account-auth.js?v=79"></script>
 <script src="push-subscription.js?v=41"></script>
 <script src="reminder-rules.js?v=41"></script>
 <script src="task-state.js?v=41"></script>
-<script src="account-sync.js?v=54"></script>
+<script src="calendar-state.js?v=44"></script>
+<script src="account-sync.js?v=56"></script>
 <script src="school-registry.js?v=41"></script>
 <script src="profile.js?v=41"></script>
 <script src="relevance.js?v=41"></script>
@@ -334,9 +339,8 @@
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
 <script src="assistant-qa.js?v=53"></script>
-<script src="calendar-state.js?v=41"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=82"></script>
+<script src="app.js?v=84"></script>
 </body>
 </html>
 
