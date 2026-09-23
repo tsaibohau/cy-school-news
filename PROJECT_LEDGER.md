@@ -2025,3 +2025,11 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 - 本地整合測試已通過：account auth、PUBLIC capability contract、calendar browser load order/state/persistence、account sync、Supabase sync、PWA、staging build、calendar durable/RLS contract、UI、account switch、calendar workflow 與 RLS SQL contract；`git diff --check` 通過。
 - 尚待驗證：整合後實際 Preview 瀏覽器操作、兩組 migration 同時套用後的 pgTAP、Production 既有 schema/migration 狀態；此處的本地測試通過不等於可部署。沒有操作 Preview/Production DB，也沒有合併或部署正式站。
 - 下一個允許動作：推送發行候選分支，取得雲端 CI／Preview；針對真人登入與管理員開關實機驗收，確認資料庫 migration 安全及 Production 備份／回復方案，然後先將確定的選入清單通知使用者，最後才正式部署。
+
+### 同日後續：雲端寫入與 Production schema gate
+
+- release candidate HEAD `efe53a55683e196b8e61af4f381c31065c3ebcb2`，本地 branch `codex/release-public-calendar-20260923`。native HTTPS push 回 `fatal: could not read Username for 'https://github.com': terminal prompts disabled`，未推送。
+- 增量 bundle 73,911 bytes，SHA-256 `a08a11f97d36ba034a18e88c7f0cd0443646aa14d84acf9f53e1f4fd1e5dd491`，`git bundle verify` PASS。已啟動原有 Codespace；其 VS Code Web Explorer 檔案上傳兩次均回 `Protocol error (DOM.setFileInputFiles): No node found for given backend id`，停止重試；未確認 bundle 已傳到 Codespace，未執行 Codespace git push。
+- 只讀 Supabase schema 查詢：Preview 有 `public.user_calendar_events`、`public.public_capabilities` 與 `owner_set_public_capabilities(jsonb)`；Production 三者皆不存在。故前端不能先於對應 Production migration 發布，且 Production migration 的資料／角色安全驗證尚未完成。
+- 最後成功 checkpoint：本地整合 commit `efe53a5`，本地 JS/static contracts PASS，Preview 原有兩組 schema 存在。精確 blocker：Cloud Work Git credential 不存在且 Codespace UI upload 兩次失敗，無法觸發本整合 branch 的 CI／Preview；Production 缺 schema。已排除功能程式完全遺失、Preview schema 尚未建立。尚待驗證：合併後 pgTAP、Preview 真人登入與 PUBLIC 開關、Production migration 及回復程序。
+- 狀態：【發行候選本地已完成；CLOUD_WRITE_BLOCKED；正式站未部署，Production 資料庫未修改】。下一動作：取得安全的雲端 Git 物件傳輸，推送已驗證 commit 並跑 CI／Preview；做完整人機與 DB 驗收及 Production 安全遷移後，才可部署，且先通知使用者最終選入功能。
