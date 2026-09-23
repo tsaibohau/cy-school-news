@@ -44,6 +44,7 @@
       return { normalize: normalize, upsert: upsert, remove: remove };
     })();
     var LS_READS = "cyNews.reads.v1";
+    var LS_VISITOR_CONTEXT = "cyNews.visitorContext.v1";
     var PAGE_SIZE = 200;  // 最新清單一次渲染的則數,避免一口氣塞入上千張卡片
     var notificationState = NotificationState.load();
     var queueAccountMutation = function () {};
@@ -70,7 +71,7 @@
       archivePromise: null,
       subscriptions: notificationState.subscriptions,
       tasks: [],
-      profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
+      profile: loadVisitorContext(),
       accountUser: null,
       accountAccess: null,
       memberContent: {},
@@ -161,6 +162,27 @@
     function loadSchool() {
       var value = String(localStorage.getItem(LS_SCHOOL) || "all");
       return value === "all" || /^[a-z0-9-]{1,32}$/.test(value) ? value : "all";
+    }
+    function loadVisitorContext() {
+      if (!window.CyNewsProfile) return {};
+      try {
+        var saved = JSON.parse(localStorage.getItem(LS_VISITOR_CONTEXT) || "{}");
+        return window.CyNewsProfile.normalize({
+          school_id: saved.school_id,
+          grade_level: saved.grade_level,
+          class_name: saved.class_name,
+        });
+      } catch (_) { return window.CyNewsProfile.empty(); }
+    }
+    function saveVisitorContext(profile) {
+      var visitor = window.CyNewsProfile.normalize(profile);
+      localStorage.setItem(LS_VISITOR_CONTEXT, JSON.stringify({
+        schema_version: 1,
+        school_id: visitor.school_id,
+        grade_level: visitor.grade_level,
+        class_name: visitor.class_name,
+      }));
+      return visitor;
     }
     function saveReads() { localStorage.setItem(LS_READS, JSON.stringify(state.reads)); }
     function saveUserEvents() {
@@ -319,7 +341,7 @@
       var lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
         subscriptions: notificationState.subscriptions,
         reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
-        preferences: { schema_version: 1, preferences: { profile: window.CyNewsProfile.empty() } },
+        preferences: { schema_version: 1, preferences: { profile: loadVisitorContext() } },
         tasks: state.tasks,
         calendar_events: state.userEvents,
         reminderRules: state.reminderRules,
@@ -487,6 +509,7 @@
       }
       function setAccountUser(user) {
         state.accountUser = user || null;
+        if (window.CyNewsCapabilities) window.CyNewsCapabilities.setAuthenticated(!!user);
         if (!user) state.accountAccess = null;
         state.nickname = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayName(user) : "";
         var email = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayEmail(user) : "";
@@ -537,7 +560,13 @@
           var protectedAdmin = !!row.admin_role;
           var serviceSelect = '<label class="admin-service-label">服務<select data-admin-service="' + esc(row.user_id) + '"' + (protectedAdmin ? " disabled" : "") + '><option value="full"' + (row.service_level === "full" ? " selected" : "") + '>完整服務</option><option value="timetable_only"' + (row.service_level === "timetable_only" ? " selected" : "") + '>僅課表</option></select></label>';
           var accessActions = protectedAdmin ? "" : '<button class="btn-primary" type="button" data-admin-access="approved" data-admin-user="' + esc(row.user_id) + '">' + (row.status === "approved" ? "儲存服務" : "核准") + '</button><button class="btn-ghost danger-button" type="button" data-admin-access="rejected" data-admin-user="' + esc(row.user_id) + '">' + (row.status === "pending" ? "拒絕本次申請" : "移除存取權") + '</button>';
-          var roleAction = owner && row.admin_role === "co_admin" ? '<button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除聯席管理員</button>' : owner && !row.admin_role && row.status === "approved" ? '<button class="btn-ghost" type="button" data-admin-role="co_admin" data-admin-user="' + esc(row.user_id) + '">設為聯席管理員</button>' : "";
+          var self = state.accountUser && row.user_id === state.accountUser.id;
+          var roleAction = "";
+          if (owner && !self && row.status === "approved") {
+            if (row.admin_role === "owner") roleAction = '<button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除主要管理員</button>';
+            else if (row.admin_role === "co_admin") roleAction = '<button class="btn-ghost" type="button" data-admin-role="owner" data-admin-user="' + esc(row.user_id) + '">升為主要管理員</button><button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除聯席管理員</button>';
+            else roleAction = '<button class="btn-ghost" type="button" data-admin-role="owner" data-admin-user="' + esc(row.user_id) + '">設為主要管理員</button><button class="btn-ghost" type="button" data-admin-role="co_admin" data-admin-user="' + esc(row.user_id) + '">設為聯席管理員</button>';
+          }
           return '<article class="admin-account"><div class="admin-account-main"><div class="admin-account-title"><strong>' + esc(row.email) + '</strong><span class="admin-role-badge" data-role="' + esc(row.admin_role || "member") + '">' + esc(roleLabel) + '</span></div><div class="admin-account-meta"><span>' + esc(statusLabel) + '</span><span>' + esc(serviceLabel) + '</span><span>申請：' + esc(String(row.requested_at || "").slice(0, 10)) + '</span></div></div><div class="admin-account-actions">' + serviceSelect + accessActions + roleAction + '</div></article>';
         }).join("") : '<p class="empty">目前沒有符合條件的帳號。</p>';
       }
@@ -802,7 +831,7 @@
         state.reads = {};
         saveReads();
         NotificationState.save(notificationState);
-        state.profile = window.CyNewsProfile.empty();
+        state.profile = loadVisitorContext();
         state.assistantFeedback = window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {};
         state.tasks = [];
         state.userEvents = [];
@@ -811,7 +840,7 @@
         state.reminderCustomOffsets = "1";
         state.reminderRules = [];
         state.reminderDeviceActive = false;
-        state.school = "all";
+        state.school = String(state.profile.school_id || "all");
         state.archive = "none";
         state.archivePromise = null;
         if (el.reminderPreset) el.reminderPreset.value = "single";
@@ -830,13 +859,19 @@
         requestedUid = null;
         readyUid = null;
         accountPhase = "ANONYMOUS_READY";
-        state.school = "all";
-        localStorage.setItem(LS_SCHOOL, "all");
+        state.school = String(loadVisitorContext().school_id || "all");
+        localStorage.setItem(LS_SCHOOL, state.school);
         state.archive = "none";
         state.archivePromise = null;
         state.memberContent = {};
         publishState(anonymousState, "anonymous");
         showAnonymousShell();
+        if (auth.getPublicCapabilities) auth.getPublicCapabilities().then(function (capabilities) {
+          if (capabilities.member_content) return auth.getMemberAnnouncementIndex().then(function (rows) {
+            state.memberContent = {}; rows.forEach(function (row) { if (row && row.announcement_id) state.memberContent[row.announcement_id] = row; });
+            if (state.data) { state.data.items.forEach(applyMemberContent); renderAll(); }
+          });
+        }).catch(function () { state.memberContent = {}; });
         if (state.data) fetchData(true);
       }
       function sync(uid, authRetry) {
@@ -1009,7 +1044,10 @@
             if (el.accountSwitch) el.accountSwitch.hidden = true;
             el.accountLogout.hidden = true;
           }
-          if (!(typeof uid === "string" && uid)) showAnonymousShell();
+          if (!(typeof uid === "string" && uid)) {
+            showAnonymousShell();
+            if (auth.getPublicCapabilities) auth.getPublicCapabilities().catch(function () {});
+          }
         });
       }
       function setPasswordAuthMode(mode) {
@@ -1039,6 +1077,7 @@
       function showPasswordAuth(mode) {
         if (!el.passwordAuthDialog || typeof el.passwordAuthDialog.showModal !== "function") { status("帳密登入介面暫時不可用"); return; }
         setPasswordAuthMode(mode);
+        if (el.passwordGoogleLogin) el.passwordGoogleLogin.hidden = window.CYNEWS_ACCOUNT_CONFIG && window.CYNEWS_ACCOUNT_CONFIG.googleLoginUiEnabled === false;
         el.passwordAuthStatus.textContent = "";
         el.passwordAuthPassword.value = "";
         if (!el.passwordAuthDialog.open) el.passwordAuthDialog.showModal();
@@ -1153,7 +1192,7 @@
         var accessAction = button.dataset.adminAccess;
         var roleAction = button.dataset.adminRole;
         var userId = button.dataset.adminUser;
-        if ((accessAction === "rejected" || roleAction === "none") && !window.confirm(accessAction === "rejected" ? "確定拒絕本次申請或移除此帳號的存取權嗎？帳號不會被封鎖，之後仍可重新送審。" : "確定移除此人的聯席管理員身分嗎？一般使用權會保留。")) return;
+        if ((accessAction === "rejected" || roleAction === "none") && !window.confirm(accessAction === "rejected" ? "確定拒絕本次申請或移除此帳號的存取權嗎？帳號不會被封鎖，之後仍可重新送審。" : "確定移除此人的管理員身分嗎？系統不允許移除最後一位主要管理員。")) return;
         el.adminStatus.textContent = "處理中";
         var operation;
         if (roleAction) operation = accountAuth.setAdminRole(userId, roleAction);
@@ -1161,7 +1200,7 @@
           var service = el.adminAccounts.querySelector('select[data-admin-service="' + userId + '"]');
           operation = accountAuth.updateAccountAccess(userId, accessAction, service ? service.value : "full");
         }
-        operation.then(function () { el.adminStatus.textContent = roleAction === "co_admin" ? "已設為聯席管理員。" : roleAction === "none" ? "已移除聯席管理員身分。" : accessAction === "approved" ? "帳號權限已更新。" : "存取權已移除；對方仍可重新送審。"; loadAdminAccounts(); }).catch(function () { el.adminStatus.textContent = "無法更新帳號狀態，請確認你的管理權限後再試。"; });
+        operation.then(function () { el.adminStatus.textContent = roleAction === "owner" ? "已設為主要管理員。" : roleAction === "co_admin" ? "已設為聯席管理員。" : roleAction === "none" ? "已移除管理員身分。" : accessAction === "approved" ? "帳號權限已更新。" : "存取權已移除；對方仍可重新送審。"; loadAdminAccounts(); }).catch(function () { el.adminStatus.textContent = "無法更新帳號狀態；請確認主要管理員權限，且不可移除最後一位主要管理員。"; });
       });
       if (el.accountReapply) el.accountReapply.addEventListener("click", function () {
         if (!accountAuth) return;
@@ -2421,9 +2460,19 @@
       return !!(state.accountAccess && state.accountAccess.status === "approved" && state.accountAccess.service_level === "timetable_only");
     }
     function switchTab(tab) {
-      if (tab !== "latest" && !hasSignedInAccount()) {
+      var capabilities = window.CyNewsCapabilities;
+      var publicOrAccountAllowed = tab === "latest" || tab === "home" || tab === "sub" || tab === "admin";
+      if (!publicOrAccountAllowed && capabilities) {
+        publicOrAccountAllowed = tab === "assistant" && capabilities.has("assistant") ||
+          tab === "timetable" && capabilities.has("timetable") ||
+          tab === "calendar" && capabilities.has("calendar") ||
+          ["home", "today", "sub"].indexOf(tab) !== -1 && capabilities.anyPersonal();
+      } else if (!publicOrAccountAllowed) {
+        publicOrAccountAllowed = hasSignedInAccount();
+      }
+      if (tab !== "latest" && tab !== "admin" && !publicOrAccountAllowed) {
         tab = "latest";
-        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能需要登入後才能使用。";
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能目前未開放。";
       }
       if (tab === "admin" && !isAdminAccount()) tab = "latest";
       if (isTimetableOnly() && ["home", "today", "assistant", "calendar"].indexOf(tab) !== -1) {
@@ -2470,10 +2519,13 @@
       if (tab === "calendar" && el.viewCalendar) { loadOfficialEvents(); renderCalendar(); }
       if (tab === "sub") {
         renderSub();
-        // 看過訂閱頁後,把 UI「新」的基準點推進到現在;不影響通知去重。
-        state.lastSeen = new Date().toISOString();
-        localStorage.setItem(LS_SEEN, state.lastSeen);
-        setTimeout(renderBadge, 400);
+        // 只有真正具備通知 capability 時，才把「新」的 UI 基準點推進。
+        // 匿名訪客可進入此頁儲存 device-local context，但不能取得通知狀態。
+        if (hasSignedInAccount() && (!capabilities || capabilities.has("notifications"))) {
+          state.lastSeen = new Date().toISOString();
+          localStorage.setItem(LS_SEEN, state.lastSeen);
+          setTimeout(renderBadge, 400);
+        }
       }
       window.scrollTo(0, 0);
     }
@@ -2545,6 +2597,15 @@
       var profile = profileFromForm();
       if (!profile.school_id) {
         el.profileStatus.textContent = "請先選擇你關心的學校";
+        return;
+      }
+      if (!hasSignedInAccount()) {
+        state.profile = saveVisitorContext(profile);
+        applyPreferredSchool(profile.school_id, true);
+        el.profileStatus.textContent = "已儲存在此裝置";
+        renderProfile();
+        renderLatest();
+        renderToday();
         return;
       }
       var result = queueAccountMutation("preferences.upsert", preferencePayload({ profile: profile }));
@@ -2645,7 +2706,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=80").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=82").catch(function () {});
       });
     }
 

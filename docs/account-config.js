@@ -11,8 +11,11 @@ window.CYNEWS_ACCOUNT_CONFIG = {
   allowedRedirectUrls: [
     "https://tsaibohau.github.io/cy-school-news/",
   ],
+  /* Keep true until owner_auth_cutover_readiness() is true in Production and
+     Google Provider shutdown is separately authorized. */
+  googleLoginUiEnabled: true,
 };
 /* Capability layer must load before account-auth.js so the auth controller is capability-aware. */
 if (typeof document !== "undefined" && document.readyState === "loading") {
-  document.write('<script src="capability-layer.js?v=4"></' + 'script>');
+  document.write('<script src="capability-layer.js?v=8"></' + 'script>');
 }

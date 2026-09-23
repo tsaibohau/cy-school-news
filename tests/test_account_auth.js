@@ -265,9 +265,9 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('src="calendar-state.js?v=44"'), "index must load current Calendar State");
   assert(index.includes('src="account-sync.js?v=56"'), "index must load versioned Account Sync before app.js");
   assert(index.indexOf('src="calendar-state.js?v=44"') < index.indexOf('src="account-sync.js?v=56"'), "Calendar State must load before Account Sync");
-  assert(index.includes('src="account-config.js?v=41"'), "index must load versioned account config");
+  assert(index.includes('src="account-config.js?v=43"'), "index must load versioned account config");
   assert(index.includes('src="account-auth.js?v=79"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=84"'), "index must load current app shell");
+  assert(index.includes('src="app.js?v=86"'), "index must load current app shell");
   assert(sw.includes('"./calendar-state.js?v=44"'), "Service Worker shell must cache current Calendar State");
   assert(sw.includes('"./account-sync.js?v=56"'), "Service Worker shell must cache versioned Account Sync");
   assert(sw.includes('"./account-auth.js?v=79"'), "Service Worker shell must cache current account auth");
@@ -284,8 +284,8 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v89"), "Service Worker cache must advance for the current app shell");
-  assert(app.includes('register("sw.js?v=80")'), "App must register the current Service Worker script");
+  assert(sw.includes("cy-news-v90"), "Service Worker cache must advance for the current app shell");
+  assert(app.includes('register("sw.js?v=82")'), "App must register the current Service Worker script");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);
   assert(app.includes("signUpWithPassword"));
@@ -313,7 +313,9 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes('switchTab("latest")'));
   assert(app.includes('tab: "latest"'));
   assert(app.includes("function hasSignedInAccount()"));
-  assert(app.includes('tab !== "latest" && !hasSignedInAccount()'));
+  assert(app.includes('tab === "assistant" && capabilities.has("assistant")'));
+  assert(app.includes('tab === "timetable" && capabilities.has("timetable")'));
+  assert(app.includes('tab === "calendar" && capabilities.has("calendar")'));
   assert(app.includes("setPasswordAuthMode"));
   assert(app.includes("resetPasswordForEmail"));
   assert(app.includes("這個網址尚未開放寄送重設信"));

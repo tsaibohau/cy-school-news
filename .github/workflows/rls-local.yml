@@ -34,6 +34,9 @@ jobs:
       - name: Run calendar RLS and mutation matrix
         if: success() || failure()
         run: supabase test db --local supabase/tests/database/user_calendar_events.test.sql
+      - name: Run PUBLIC capability and multi-owner matrix
+        if: always()
+        run: supabase test db --local supabase/tests/database/public_access_rls.test.sql
       - name: Stop local Supabase
         if: always()
         run: supabase stop

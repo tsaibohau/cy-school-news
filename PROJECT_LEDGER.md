@@ -2016,3 +2016,12 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 
 ### 最終狀態
 【browser load-order regression 已修正；Vercel Preview Ready；等待使用者驗收】
+
+## 2026-09-23｜正式站發行候選整合（未部署）
+
+- 使用者要求統整已通過測試且需要的功能，正式部署前先通知納入項目。已從當時遠端 `origin/main` `e1395d156c4a2030c0c1d06fe2138192aa2e782d` 建立獨立 `codex/release-public-calendar-20260923` worktree。
+- 發行候選僅整合 PR #26 的個人行事曆雲端持久化，以及 PR #28 的主要管理員 PUBLIC 訪客權限控制／多主要管理員；解決共同的 script 順序、PWA 快取版號與 CI 測試清單衝突。未合併已拒絕 PR #25。
+- 不納入 PR #29 的 272 筆官方 PDF 候選事件：截斷標題與同名重複事件尚未人工核對，並且它只位於 staging 覆蓋路徑。正式站的 Action-owned `docs/data/*` 未修改。
+- 本地整合測試已通過：account auth、PUBLIC capability contract、calendar browser load order/state/persistence、account sync、Supabase sync、PWA、staging build、calendar durable/RLS contract、UI、account switch、calendar workflow 與 RLS SQL contract；`git diff --check` 通過。
+- 尚待驗證：整合後實際 Preview 瀏覽器操作、兩組 migration 同時套用後的 pgTAP、Production 既有 schema/migration 狀態；此處的本地測試通過不等於可部署。沒有操作 Preview/Production DB，也沒有合併或部署正式站。
+- 下一個允許動作：推送發行候選分支，取得雲端 CI／Preview；針對真人登入與管理員開關實機驗收，確認資料庫 migration 安全及 Production 備份／回復方案，然後先將確定的選入清單通知使用者，最後才正式部署。
