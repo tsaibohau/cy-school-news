@@ -112,6 +112,7 @@ a { color: inherit; }
   background: var(--card); color: var(--ink); font: inherit; font-size: 16px; cursor: pointer;
 }
 .school-filter select:focus { outline: 2px solid var(--cysh); outline-offset: 1px; }
+.calendar-school-filter { margin: 0 0 12px; }
 
 .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
 .chips::-webkit-scrollbar { display: none; }

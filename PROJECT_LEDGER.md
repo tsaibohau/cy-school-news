@@ -2033,3 +2033,23 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 - 只讀 Supabase schema 查詢：Preview 有 `public.user_calendar_events`、`public.public_capabilities` 與 `owner_set_public_capabilities(jsonb)`；Production 三者皆不存在。故前端不能先於對應 Production migration 發布，且 Production migration 的資料／角色安全驗證尚未完成。
 - 最後成功 checkpoint：本地整合 commit `efe53a5`，本地 JS/static contracts PASS，Preview 原有兩組 schema 存在。精確 blocker：Cloud Work Git credential 不存在且 Codespace UI upload 兩次失敗，無法觸發本整合 branch 的 CI／Preview；Production 缺 schema。已排除功能程式完全遺失、Preview schema 尚未建立。尚待驗證：合併後 pgTAP、Preview 真人登入與 PUBLIC 開關、Production migration 及回復程序。
 - 狀態：【發行候選本地已完成；CLOUD_WRITE_BLOCKED；正式站未部署，Production 資料庫未修改】。下一動作：取得安全的雲端 Git 物件傳輸，推送已驗證 commit 並跑 CI／Preview；做完整人機與 DB 驗收及 Production 安全遷移後，才可部署，且先通知使用者最終選入功能。
+
+### 同日補記：Codespace 推送阻礙已解除
+
+- 使用者指出先前曾以 Codespace 完成原生推送，故重用相同信任環境。Cloud Work 使用 GitHub connector 建立未掛分支的 Git blob `6f859ad020f7ba4c706d14f0691db4e606479590` 承載無憑證的增量 bundle；Codespace 透過 GitHub CLI 取回並驗證 SHA-256 `9602e82246a4a68f65ff76d0b43cd6dd3038d239b344efdb2c450147b04f225b`、`git bundle verify` PASS。
+- Codespace 原生 Git 載入 commit `e2c877d689d4a09bcd55f7c204535245beff17a4`，`git push` 新分支 `codex/release-public-calendar-20260923` 成功；`git ls-remote` parity PASS。無重建、amend、rebase 或修改 main。
+- Draft PR #30 已建立：`https://github.com/tsaibohau/cy-school-news/pull/30`。Vercel status success；整合 RLS workflow run `35849261213` 在最後檢查仍 in_progress（當時正在啟動 Supabase）。Production／Production DB 仍未修改。
+- 此段是 remote push 後 ledger 本地追加，尚未推送；下一動作：等待 CI／Preview 真人操作確認並檢查 Production migration 風險，再依使用者先行通知要求完成正式站部署。
+
+### PR #30 測試連結與 CI 結果
+
+- PR #30 Vercel bot 明確標示 Preview `Ready`，測試網址 `https://cy-school-news-staging-git-code-510b68-tsaibohau-9644s-projects.vercel.app`；Vercel status success 對應 commit `e2c877d689d4a09bcd55f7c204535245beff17a4`。連結尚未完成本人登入後真人操作驗證，且有 Vercel 訪問保護。
+- 整合 GitHub Actions RLS run `35849261213` 已完成，aggregate 結果 failure：既有 `Run user_tasks RLS matrix` failure；`Run reminder RLS matrix` skipped；本次新增 `Run calendar RLS and mutation matrix` success 與 `Run PUBLIC capability and multi-owner matrix` success。整體 CI 不可標記 PASS。
+- 正式站與 Production DB 未改動。下一動作：檢視 user_tasks 失敗是否 baseline、在 PR #30 Preview 真人驗收登入/owner PUBLIC 控制/行事曆持久化並解決 Preview OAuth callback origin 問題；資料庫正式 migration 與前端部署須等驗證後按順序進行。
+
+### PR #30 後續：行事曆 PDF 碎片與選校修正（測試站）
+
+- 使用者提供 2026-09-09 截圖，舊 Action-owned `docs/data/calendar-events.json` 的嘉女 PDF 解析產生「中午 12 時」「）。」等碎片與錯誤跨日；PR #30 staging 直接複製該正式快照。行事曆畫面也缺專用選校控制，原本沿用公告篩選值。
+- 加入行事曆獨立的學校選項與本機記憶；公告事件與官方事件隨選校過濾，自己的事件持續顯示。測試站僅覆蓋 272 筆 PR #29 已通過自動品質閘的 PDF 候選，標示仍待人工核對；`docs/data/*` 正式來源未修改。
+- 本地 `node --check docs/app.js`、staging build、calendar workflow、browser load order、staging build contract、UI visual contract、`git diff --check` 通過。候選資料 2026-09-09 有六件單日事件，截圖所示三種碎片為零。未宣稱 272 筆已人工逐件核對，未操作正式站或任何 Supabase。
+- 下一動作：把本次 commit 推送 PR #30，確認新 Preview Ready 與測試連結；真人核對 PDF 與選校後，才評估正式資料發行。

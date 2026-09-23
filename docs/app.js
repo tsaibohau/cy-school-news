@@ -26,6 +26,7 @@
     var LS_SEEN = "cyNews.lastSeen";
     var LS_EVENTS = "cyNews.calendarEvents.v1"; /* import candidate only; never the active account store */
     var LS_SCHOOL = "cyNews.school.v1";
+    var LS_CALENDAR_SCHOOL = "cyNews.calendarSchool.v1";
     var CalendarState = window.CyNewsCalendarState || (function () {
       function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
       function normalize(rows) {
@@ -55,6 +56,7 @@
     var state = {
       data: null,
       school: loadSchool(),
+      calendarSchool: localStorage.getItem(LS_CALENDAR_SCHOOL) || "all",
       cat: "all",
       q: "",
       tab: "latest",
@@ -123,6 +125,7 @@
       accountDeleteCloud: $("accountDeleteCloud"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
+      calendarSchoolFilter: $("calendarSchoolFilter"),
       prevMonth: $("prevMonth"), nextMonth: $("nextMonth"), todayCalendar: $("todayCalendar"),
       addEvent: $("addEvent"), eventFormWrap: $("eventFormWrap"), eventForm: $("eventForm"), cancelEvent: $("cancelEvent"),
       eventTitle: $("eventTitle"), eventDate: $("eventDate"), eventNotes: $("eventNotes"),
@@ -1638,13 +1641,16 @@
            it.date is publication date and is intentionally never used here. */
         (Array.isArray(it.calendar_events) ? it.calendar_events : []).forEach(function (ev) {
           if (!ev || !/^\d{4}-\d{2}-\d{2}$/.test(ev.date) || !ev.title || !ev.provenance) return;
+          if (state.calendarSchool !== "all" && it.school !== state.calendarSchool) return;
           announcementEvents.push({ id: "announcement:" + it.id + ":" + ev.date + ":" + ev.title,
             date: ev.date, endDate: ev.end_date || ev.date, title: ev.title, school: it.school_name,
             kind: ev.kind === "deadline" ? "deadline" : "announcement", url: it.url,
             sourceLabel: ev.kind === "deadline" ? "公告截止日期" : "公告事件" });
         });
       });
-      return announcementEvents.concat(state.officialEvents).concat(state.userEvents.map(function (ev) {
+      return announcementEvents.concat(state.officialEvents.filter(function (ev) {
+        return state.calendarSchool === "all" || ev.school_id === state.calendarSchool;
+      })).concat(state.userEvents.map(function (ev) {
         return { id: ev.id, date: ev.date, endDate: ev.date, title: ev.title, notes: ev.notes,
           kind: "user", sourceLabel: "我的事件" };
       }));
@@ -1709,7 +1715,8 @@
       return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
         state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) {
           return ev && (ev.start_date || ev.date) && ev.title && ev.provenance &&
-            (state.school === "all" || String(ev.school_id || "") === state.school);
+            /^\d{4}-\d{2}-\d{2}$/.test(ev.start_date || ev.date) &&
+            /^\d{4}-\d{2}-\d{2}$/.test(ev.end_date || ev.start_date || ev.date);
         }) : [];
         if (state.tab === "calendar") renderCalendar();
       }).catch(function () {});
@@ -1720,8 +1727,8 @@
         return r.json();
       }).then(function (status) {
         var rows = Array.isArray(status) ? status : (Array.isArray(status && status.schools) ? status.schools : []);
-        if (state.school !== "all") rows = rows.filter(function (row) { return String(row.school_id || row.id || "") === state.school; });
-        state.calendarStatus = rows.length && rows.every(function (row) { return row.status === "official_complete"; }) ? "complete" : "partial";
+        if (state.calendarSchool !== "all") rows = rows.filter(function (row) { return String(row.school_id || row.id || "") === state.calendarSchool; });
+        state.calendarStatus = rows.length && rows.every(function (row) { return row.status === "official_complete" && !row.review_pending; }) ? "complete" : "partial";
         renderToday();
       }).catch(function () { state.calendarStatus = "partial"; renderToday(); });
     }
@@ -2102,6 +2109,11 @@
         return '<option value="' + esc(s.id) + '">' + esc(s.short) + "</option>";
       }).join("");
       el.schoolFilter.value = schools.some(function (s) { return s.id === state.school; }) ? state.school : "all";
+      el.calendarSchoolFilter.innerHTML = schools.map(function (s) {
+        return '<option value="' + esc(s.id) + '">' + esc(s.short) + "</option>";
+      }).join("");
+      if (!schools.some(function (s) { return s.id === state.calendarSchool; })) state.calendarSchool = "all";
+      el.calendarSchoolFilter.value = state.calendarSchool;
 
       var used = {};
       state.data.items.forEach(function (it) { used[it.category] = true; });
@@ -2300,6 +2312,12 @@
       if (detailButton) { openDetail(detailButton.dataset.detailId); return; }
       var readButton = e.target.closest("button[data-read-id]");
       if (readButton) markRead(readButton.dataset.readId);
+    });
+    el.calendarSchoolFilter.addEventListener("change", function () {
+      state.calendarSchool = el.calendarSchoolFilter.value;
+      localStorage.setItem(LS_CALENDAR_SCHOOL, state.calendarSchool);
+      renderCalendar();
+      loadCalendarStatus();
     });
     if (el.detailClose) el.detailClose.addEventListener("click", closeDetailDialog);
     if (el.detailDialog) el.detailDialog.addEventListener("click", function (e) {
