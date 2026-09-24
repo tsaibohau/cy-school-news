@@ -133,6 +133,12 @@
 
   <!-- 行事曆 -->
   <section id="viewCalendar" hidden>
+    <section id="calendarReviewTools" class="calendar-review-tools" hidden aria-label="候選行事曆驗收工具">
+      <strong>驗收資料，不是正式公開資料</strong>
+      <label>官方資料學校<select id="calendarSchoolFilter"><option value="all">CYSH + CYGSH</option><option value="cysh">CYSH 嘉義高中</option><option value="cygsh">CYGSH 嘉義女中</option></select></label>
+      <div class="calendar-review-actions"><button type="button" class="btn-ghost" data-calendar-jump="cysh|2027-01-01">CYSH「元旦放」</button><button type="button" class="btn-ghost" data-calendar-jump="cygsh|2026-09-29">CYGSH 三筆重複</button><button type="button" class="btn-ghost" data-calendar-jump="cysh|2026-09-02">CYSH 跨日事件</button></div>
+      <div class="calendar-review-actions" aria-label="驗收月份"><button type="button" class="btn-ghost" data-calendar-month="2026-09">2026-09</button><button type="button" class="btn-ghost" data-calendar-month="2026-10">2026-10</button><button type="button" class="btn-ghost" data-calendar-month="2026-11">2026-11</button><button type="button" class="btn-ghost" data-calendar-month="2026-12">2026-12</button><button type="button" class="btn-ghost" data-calendar-month="2027-01">2027-01</button></div>
+    </section>
     <div class="section-heading">
       <div><p class="eyebrow">CALENDAR</p><h2>行事曆</h2></div>
       <button id="addEvent" class="btn-primary" type="button">新增事件</button>
@@ -151,6 +157,7 @@
         <div class="section-heading"><h3 id="eventFormTitle">新增自己的事件</h3><button id="cancelEvent" class="icon-btn" type="button" aria-label="取消">×</button></div>
         <label>事件名稱<input id="eventTitle" required maxlength="80" placeholder="例如：社團幹部會議"></label>
         <label>日期<input id="eventDate" required type="date"></label>
+        <label>重要度<select id="eventImportance"><option value="important">重要</option><option value="normal" selected>一般</option><option value="reference">參考</option></select></label>
         <label>備註（選填）<textarea id="eventNotes" maxlength="240" rows="3"></textarea></label>
         <button class="btn-primary" type="submit">儲存事件</button>
       </form>

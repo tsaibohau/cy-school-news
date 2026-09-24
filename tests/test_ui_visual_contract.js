@@ -84,7 +84,7 @@ console.log("Editorial UI and honest refresh status contract tests passed");
   const el = { publicAccountEntry: card };
   for (const key of ["functionDock", "publicAccountLogin", "publicAccountSignUp", "publicAccountLogout", "publicAccessTitle", "publicAccessLead", "publicAccessStatus", "tabAdmin"]) el[key] = {};
   const state = { accountUser: { id: "user-a" }, tab: "latest" };
-  const context = vm.createContext({ el, state, setNavMenu() {}, switchTab() {},
+  const context = vm.createContext({ el, state, calendarReview: null, setNavMenu() {}, switchTab() {},
     setTimeout(fn, delay) { const id = ++nextId; timers.set(id, { fn, at: clock + delay }); return id; },
     clearTimeout(id) { timers.delete(id); }
   });

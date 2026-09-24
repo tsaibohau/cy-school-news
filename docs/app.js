@@ -26,17 +26,18 @@
     var LS_SEEN = "cyNews.lastSeen";
     var LS_EVENTS = "cyNews.calendarEvents.v1";
     var LS_SCHOOL = "cyNews.school.v1";
+    var calendarReview = window.__CYNEWS_CALENDAR_REVIEW__ || null;
     var CalendarState = window.CyNewsCalendarState || (function () {
       function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
       function normalize(rows) {
         return (Array.isArray(rows) ? rows : []).filter(function (row) {
           return row && String(row.title || "").trim() && validDate(row.date);
         }).map(function (row, index) {
-          return { id: String(row.id || "user:legacy:" + index + ":" + row.date + ":" + row.title), title: String(row.title).trim(), date: String(row.date), notes: String(row.notes || "").trim() };
+          return { id: String(row.id || "user:legacy:" + index + ":" + row.date + ":" + row.title), title: String(row.title).trim(), date: String(row.date), notes: String(row.notes || "").trim(), importance: ["important", "normal", "reference"].indexOf(row.importance) !== -1 ? row.importance : "normal" };
         });
       }
       function upsert(rows, event) {
-        var normalized = normalize(rows), next = { id: String(event.id), title: String(event.title || "").trim(), date: String(event.date || ""), notes: String(event.notes || "").trim() }, found = false;
+        var normalized = normalize(rows), next = { id: String(event.id), title: String(event.title || "").trim(), date: String(event.date || ""), notes: String(event.notes || "").trim(), importance: ["important", "normal", "reference"].indexOf(event.importance) !== -1 ? event.importance : "normal" }, found = false;
         if (!next.id || !next.title || !validDate(next.date)) return normalized;
         return normalized.map(function (row) { if (row.id !== next.id) return row; found = true; return next; }).concat(found ? [] : [next]);
       }
@@ -57,8 +58,9 @@
       cat: "all",
       q: "",
       tab: "latest",
-      calendarMonth: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
-      calendarSelected: new Date().toISOString().slice(0, 10),
+      calendarMonth: calendarReview && calendarReview.initialDay ? new Date(Number(calendarReview.initialDay.slice(0, 4)), Number(calendarReview.initialDay.slice(5, 7)) - 1, 1) : new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+      calendarSelected: calendarReview && calendarReview.initialDay ? calendarReview.initialDay : new Date().toISOString().slice(0, 10),
+      calendarSchool: "all",
       eventEditingId: null,
       officialEvents: [],
       calendarStatus: "partial",
@@ -124,8 +126,9 @@
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
       prevMonth: $("prevMonth"), nextMonth: $("nextMonth"), todayCalendar: $("todayCalendar"),
       addEvent: $("addEvent"), eventFormWrap: $("eventFormWrap"), eventForm: $("eventForm"), cancelEvent: $("cancelEvent"),
-      eventTitle: $("eventTitle"), eventDate: $("eventDate"), eventNotes: $("eventNotes"),
+      eventTitle: $("eventTitle"), eventDate: $("eventDate"), eventNotes: $("eventNotes"), eventImportance: $("eventImportance"),
       eventFormTitle: $("eventFormTitle"),
+      calendarReviewTools: $("calendarReviewTools"), calendarSchoolFilter: $("calendarSchoolFilter"),
       importantList: $("importantList"),
       welcomeTitle: $("welcomeTitle"), assistantForm: $("assistantForm"), assistantQuestion: $("assistantQuestion"),
       assistantAsk: $("assistantAsk"), assistantScope: $("assistantScope"), assistantStatus: $("assistantStatus"), assistantAnswer: $("assistantAnswer"),
@@ -269,6 +272,7 @@
       if (el.personalizedToggle) el.personalizedToggle.checked = !!state.personalizedNotifications;
     }
     function editUserEvent(id) {
+      if (calendarReview && !hasSignedInAccount()) return false;
       var row = state.userEvents.find(function (ev) { return ev.id === String(id); });
       if (!row) return false;
       state.eventEditingId = row.id;
@@ -278,11 +282,13 @@
       el.eventTitle.value = row.title;
       el.eventDate.value = row.date;
       el.eventNotes.value = row.notes || "";
+      if (el.eventImportance) el.eventImportance.value = row.importance || "normal";
       el.eventFormWrap.hidden = false;
       el.eventTitle.focus();
       return true;
     }
     function removeUserEvent(id) {
+      if (calendarReview && !hasSignedInAccount()) return false;
       state.userEvents = CalendarState ? CalendarState.remove(state.userEvents, id) : state.userEvents.filter(function (ev) { return ev.id !== String(id); });
       saveUserEvents();
       renderCalendar();
@@ -306,7 +312,7 @@
         if (accountBox) accountBox.hidden = true;
         if (el.functionDock) el.functionDock.hidden = true;
         if (el.publicAccountEntry) el.publicAccountEntry.hidden = false;
-        switchTab("latest");
+        switchTab(calendarReview ? "calendar" : "latest");
         return;
       }
       var lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
@@ -348,7 +354,8 @@
         if (el.tabTimetable) el.tabTimetable.hidden = true;
         if (el.accountReapply) el.accountReapply.hidden = true;
         if (el.accountService) el.accountService.hidden = true;
-        if (state.tab !== "latest") switchTab("latest");
+        if (calendarReview) switchTab("calendar");
+        else if (state.tab !== "latest") switchTab("latest");
       }
       function showPendingAccountShell(message) {
         showAnonymousShell();
@@ -844,6 +851,7 @@
                 return;
               }
               showAccountShell();
+              if (calendarReview) renderCalendar();
               auth.getMemberAnnouncementIndex().then(function (rows) {
                 if (!hasSignedInAccount()) return;
                 state.memberContent = {};
@@ -1477,9 +1485,15 @@
             sourceLabel: ev.kind === "deadline" ? "公告截止日期" : "公告事件" });
         });
       });
-      return announcementEvents.concat(state.officialEvents).concat(state.userEvents.map(function (ev) {
+      var officialEvents = state.officialEvents.filter(function (ev) {
+        return !calendarReview || state.calendarSchool === "all" || String(ev.school_id || "") === state.calendarSchool;
+      }).map(function (ev) {
+        return Object.assign({}, ev, { importance: "normal", sourceLabel: calendarReview ? "候選官方行事曆（唯讀）" : (ev.sourceLabel || "官方行事曆") });
+      });
+      var userEvents = calendarReview && !hasSignedInAccount() ? [] : state.userEvents;
+      return announcementEvents.concat(officialEvents).concat(userEvents.map(function (ev) {
         return { id: ev.id, date: ev.date, endDate: ev.date, title: ev.title, notes: ev.notes,
-          kind: "user", sourceLabel: "我的事件" };
+          importance: ev.importance || "normal", kind: "user", sourceLabel: "我的事件" };
       }));
     }
     function isoDate(y, m, d) { return y + "-" + String(m + 1).padStart(2, "0") + "-" + String(d).padStart(2, "0"); }
@@ -1491,7 +1505,15 @@
         return start && end && start <= day && day <= end;
       });
     }
+    function eventImportance(ev) { return ["important", "normal", "reference"].indexOf(ev && ev.importance) !== -1 ? ev.importance : "normal"; }
+    function importanceLabel(ev) { return { important: "重要", normal: "一般", reference: "參考" }[eventImportance(ev)]; }
+    function updateCalendarAccessUI() {
+      if (el.calendarReviewTools) el.calendarReviewTools.hidden = !calendarReview;
+      if (calendarReview && el.addEvent) el.addEvent.hidden = !hasSignedInAccount();
+      if (calendarReview && !hasSignedInAccount() && el.eventFormWrap) el.eventFormWrap.hidden = true;
+    }
     function renderCalendar() {
+      updateCalendarAccessUI();
       var y = state.calendarMonth.getFullYear(), m = state.calendarMonth.getMonth();
       el.calendarTitle.textContent = y + "年" + (m + 1) + "月";
       var first = new Date(y, m, 1), start = new Date(y, m, 1 - first.getDay()), today = new Date().toISOString().slice(0, 10);
@@ -1501,7 +1523,7 @@
         var key = isoDate(day.getFullYear(), day.getMonth(), day.getDate()), evs = eventsForDate(key);
         var classes = "calendar-day" + (day.getMonth() !== m ? " is-outside" : "") + (key === today ? " is-today" : "") + (key === state.calendarSelected ? " is-selected" : "");
         html += '<button type="button" class="' + classes + '" data-day="' + key + '"><span class="day-number">' + day.getDate() + '</span>';
-        if (evs.length) html += '<span class="day-dots">' + evs.slice(0, 4).map(function (ev) { return '<i class="day-dot ' + ev.kind + '" title="' + esc(ev.sourceLabel) + '"></i>'; }).join("") + '</span>';
+        if (evs.length) html += '<span class="day-dots">' + evs.slice(0, 4).map(function (ev) { return '<i class="day-dot ' + ev.kind + ' importance-' + eventImportance(ev) + '" title="' + esc(ev.sourceLabel + ' · ' + importanceLabel(ev)) + '"></i>'; }).join("") + '</span>';
         html += '</button>';
       }
       el.calendarGrid.innerHTML = html;
@@ -1515,6 +1537,7 @@
           if (!row) return;
           state.eventEditingId = row.id; el.eventFormTitle.textContent = "編輯自己的事件";
           el.eventTitle.value = row.title; el.eventDate.value = row.date; el.eventNotes.value = row.notes || "";
+          if (el.eventImportance) el.eventImportance.value = row.importance || "normal";
           el.eventFormWrap.hidden = false; el.eventTitle.focus();
         },
         remove: function (id) {
@@ -1526,8 +1549,9 @@
       el.agenda.innerHTML = evs.length ? evs.map(function (ev) {
         var start = eventStart(ev), end = eventEnd(ev);
         var range = start !== end ? ' · ' + esc(start) + '–' + esc(end) : '';
-        return '<article class="agenda-item"><span class="agenda-mark ' + ev.kind + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + range + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '">刪除</button></div>' : '') + '</div></article>';
-      }).join("") : '<p class="empty">這天沒有事件。選一個日期，或新增自己的事件。</p>';
+        var importance = eventImportance(ev);
+        return '<article class="agenda-item importance-' + importance + '"><span class="agenda-mark ' + ev.kind + '"></span><div><h4>' + esc(ev.title) + '<span class="calendar-importance importance-' + importance + '">' + importanceLabel(ev) + '</span></h4><p>' + esc(ev.sourceLabel) + range + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" && (!calendarReview || hasSignedInAccount()) ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '">刪除</button></div>' : '') + '</div></article>';
+      }).join("") : '<p class="empty">這天沒有事件。' + ((!calendarReview || hasSignedInAccount()) ? '選一個日期，或新增自己的事件。' : '登入會員後可新增自己的事件。') + '</p>';
       Array.prototype.forEach.call(el.agenda.querySelectorAll("button[data-edit-event]"), function (button) {
         button.addEventListener("click", function () {
           editUserEvent(button.dataset.editEvent);
@@ -1540,10 +1564,11 @@
       });
     }
     function loadOfficialEvents() {
-      return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
+      var officialUrl = calendarReview && calendarReview.officialUrl ? calendarReview.officialUrl : "data/calendar-events.json";
+      return fetch(officialUrl + "?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
         state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) {
           return ev && (ev.start_date || ev.date) && ev.title && ev.provenance &&
-            (state.school === "all" || String(ev.school_id || "") === state.school);
+            (calendarReview || state.school === "all" || String(ev.school_id || "") === state.school);
         }) : [];
         if (state.tab === "calendar") renderCalendar();
       }).catch(function () {});
@@ -2294,7 +2319,7 @@
       return !!(state.accountAccess && state.accountAccess.status === "approved" && state.accountAccess.service_level === "timetable_only");
     }
     function switchTab(tab) {
-      if (tab !== "latest" && !hasSignedInAccount()) {
+      if (tab !== "latest" && !(calendarReview && tab === "calendar") && !hasSignedInAccount()) {
         tab = "latest";
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能需要登入後才能使用。";
       }
@@ -2367,20 +2392,50 @@
       el.prevMonth.addEventListener("click", function () { state.calendarMonth.setMonth(state.calendarMonth.getMonth() - 1); renderCalendar(); });
       el.nextMonth.addEventListener("click", function () { state.calendarMonth.setMonth(state.calendarMonth.getMonth() + 1); renderCalendar(); });
       el.todayCalendar.addEventListener("click", function () { var now = new Date(); state.calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1); state.calendarSelected = now.toISOString().slice(0, 10); renderCalendar(); });
-    el.addEvent.addEventListener("click", function () { state.eventEditingId = null; el.eventFormTitle.textContent = "新增自己的事件"; el.eventDate.value = state.calendarSelected; el.eventFormWrap.hidden = false; el.eventTitle.focus(); });
+    el.addEvent.addEventListener("click", function () {
+      if (calendarReview && !hasSignedInAccount()) return;
+      state.eventEditingId = null; el.eventFormTitle.textContent = "新增自己的事件"; el.eventDate.value = state.calendarSelected;
+      if (el.eventImportance) el.eventImportance.value = "normal";
+      el.eventFormWrap.hidden = false; el.eventTitle.focus();
+    });
       el.cancelEvent.addEventListener("click", function () { el.eventFormWrap.hidden = true; });
       el.eventFormWrap.addEventListener("click", function (e) { if (e.target === el.eventFormWrap) el.eventFormWrap.hidden = true; });
       el.eventForm.addEventListener("submit", function (e) {
         e.preventDefault();
+        if (calendarReview && !hasSignedInAccount()) return;
         var title = el.eventTitle.value.trim(), date = el.eventDate.value || el.eventForm.dataset.editingDate;
         if (!title || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
         var editingId = state.eventEditingId || el.eventForm.dataset.editingId;
         var eventId = editingId || "user:" + Date.now().toString(36);
-        state.userEvents = CalendarState ? CalendarState.upsert(state.userEvents, { id: eventId, title: title, date: date, notes: el.eventNotes.value.trim() }) : state.userEvents;
+        state.userEvents = CalendarState ? CalendarState.upsert(state.userEvents, { id: eventId, title: title, date: date, notes: el.eventNotes.value.trim(), importance: el.eventImportance ? el.eventImportance.value : "normal" }) : state.userEvents;
         state.eventEditingId = null; el.eventForm.dataset.editingId = ""; el.eventForm.dataset.editingDate = "";
         saveUserEvents(); state.calendarSelected = date; state.calendarMonth = new Date(Number(date.slice(0, 4)), Number(date.slice(5, 7)) - 1, 1);
         el.eventForm.reset(); el.eventFormWrap.hidden = true; renderCalendar();
       });
+      if (calendarReview && el.calendarSchoolFilter) {
+        el.calendarSchoolFilter.addEventListener("change", function () {
+          state.calendarSchool = el.calendarSchoolFilter.value;
+          renderCalendar();
+        });
+        document.querySelectorAll("button[data-calendar-month]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            var month = button.dataset.calendarMonth;
+            state.calendarSelected = month + "-01";
+            state.calendarMonth = new Date(Number(month.slice(0, 4)), Number(month.slice(5, 7)) - 1, 1);
+            renderCalendar();
+          });
+        });
+        document.querySelectorAll("button[data-calendar-jump]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            var parts = button.dataset.calendarJump.split("|");
+            state.calendarSchool = parts[0]; el.calendarSchoolFilter.value = parts[0];
+            state.calendarSelected = parts[1];
+            state.calendarMonth = new Date(Number(parts[1].slice(0, 4)), Number(parts[1].slice(5, 7)) - 1, 1);
+            renderCalendar();
+            el.agenda.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        });
+      }
     }
     if (el.viewHome) el.viewHome.addEventListener("click", function (event) {
       var target = event.target.closest("button[data-home-tab]");

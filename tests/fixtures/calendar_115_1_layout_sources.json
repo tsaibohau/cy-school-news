@@ -1,0 +1,18 @@
+{
+  "cysh": {
+    "academic_year": 115,
+    "semester": 1,
+    "source_document": "國立嘉義高中115學年第一學期行事曆.pdf",
+    "pdf_sha256": "981254e3c7e013c8cf532560b56fb00ea6e77606c2d23a8e14046203b39b18de",
+    "extractor": "pypdf-6.10.0-native-reading-order",
+    "fixture": "calendar_cysh_115_1_layout.txt"
+  },
+  "cygsh": {
+    "academic_year": 115,
+    "semester": 1,
+    "source_document": "115學年度第一學期行事曆",
+    "pdf_sha256": "b678dc6c5b93e3136d9b4c316a8096ba5733c1231640b993c35f01fa6b5db8ef",
+    "extractor": "pypdf-6.10.0-native-reading-order",
+    "fixture": "calendar_cygsh_115_1_layout.txt"
+  }
+}
