@@ -2087,3 +2087,21 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 - 月曆日期圓點與當日事件列表依來源校識別：嘉中藍、嘉女粉，個人事件綠；公告事件傳遞 school id，另加文字圖例，不只依賴顏色辨認。PWA shell 版號更新。
 - 本地 `test_calendar_public_readonly`、`test_calendar_workflow`、`test_pwa_notification`、`test_ui_visual_contract`、`test_staging_build`、`git diff --check` PASS；兩項原測試的硬編碼 PWA 版號同步更新。未變更 Supabase、正式站或官方事件資料。
 - 下一步：提交本次變更、推 PR #30、確認遠端 HEAD 與新的 Preview Ready；完成後回到問校務問題，從已記錄 checkpoint 先盤點根因，不擴張行事曆 PDF 候選發布。
+
+### 同日推送驗證
+
+- Codespace 取回 bundle SHA-256 `15487a7a2bf228111b77fc55a740a90e5d39328f555a0b3837450a211ed63f06`，`git bundle verify` PASS；原生 `git push` 成功，`git ls-remote` 與本地 ref 均為 `8ab73002a273067ef14841c5da7b862c273ca982`。
+- Vercel 對此 commit status success，PR #30 bot 回報 staging deployment `92vW8faSV25wDB8jhc8F5uuk17XK` Ready；Preview https://cy-school-news-staging-git-code-510b68-tsaibohau-9644s-projects.vercel.app 。真人視覺驗收待使用者確認；Production 未修改。本段於 push 後本地追加，未再次提交。
+- 行事曆顏色任務已完成；下一個產品議題依使用者指示回到問校務，先讀該議題最後 checkpoint 與實際錯誤再決定施工範圍。
+
+## 2026-09-24｜正式站部署前置檢查：阻擋
+
+- 使用者要求先將目前程式上傳正式站。已讀規則與最後 checkpoint，fetch 最新 `origin/main` `16e81e96841bc9db2e6886bdb0350664a2c905be`；發行候選 `8ab73002a273067ef14841c5da7b862c273ca982`，未修改正式站或 main。
+- Production Supabase 專案 `oppdhtnepjagdwovndra` 實際只讀查詢：`public.user_calendar_events`、`public.public_capabilities`、`public.owner_set_public_capabilities(jsonb)` 三者皆不存在；Preview 原有 schema 不能替代 Production。直接把整個 PR #30 前端發布會讓會員行事曆與主要管理員 PUBLIC 設定缺後端依賴。
+- PR #30 將個人行事曆雲端持久化、PUBLIC 管理控制、學校篩選與顏色整合；staging PDF 272 筆候選仍未人工核對，不納入 Production 官方資料。CI 整體仍有 user_tasks RLS matrix failure，行事曆及 PUBLIC 單項成功；真人登入／管理員切換與生產 migration 安全驗證未完成。
+- 最後成功 checkpoint：測試分支推送 parity PASS、Vercel staging Ready。精確阻礙：Production 缺兩個必要資料表與 RPC，且相關生產 migration、備份與真人驗收未過發布閘；排除原因：Git push／Vercel staging 故障。尚待驗證：生產遷移安全、整合 CI baseline、Preview 端到端行為和生產備份／回復。下一個允許動作：先明確確定部署範圍（完整 PR #30 需先遷移與驗證；或只挑可獨立的前端配色改動），並完成對應門檻後才部署。狀態：【正式站未部署；Production DB 未修改】。
+
+### 2026-09-24｜總帳版本落差核對（先行保存）
+
+- `origin/main` 的總帳 1,555 行；測試分支 `8ab73002a273067ef14841c5da7b862c273ca982` 的總帳已有 2,089 行且已在 GitHub，非 547 行全都尚未推送。本地另有前兩輪追加 13 行未提交，合計 2,102 行。
+- 本次只保存總帳到既有 PR #30 分支，不 merge main、不改 Production、不套 migration；後續函式/schema 盤點與回復演練仍需逐項確認。
