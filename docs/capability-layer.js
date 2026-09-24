@@ -67,6 +67,7 @@
       functionDock: approved || publicEntry,
     };
     Object.keys(map).forEach(function (id) { setHidden(document.getElementById(id), !map[id]); });
+    setHidden(document.getElementById("addEvent"), !(authenticated && approved && current.calendar));
 
     document.querySelectorAll("[data-home-tab]").forEach(function (button) {
       var tab = button.getAttribute("data-home-tab");
@@ -190,6 +191,7 @@
     if (target.closest("#tabAssistant,[data-home-tab='assistant']")) return "assistant";
     if (target.closest("#tabTimetable")) return "timetable";
     if (target.closest("#tabCalendar,[data-home-tab='calendar']")) return "calendar";
+    if (target.closest("#addEvent,#eventForm,[data-edit-event],[data-delete-event]")) return "member_calendar";
     if (target.closest("#tabSub,[data-home-tab='sub'],#tabHome")) return null;
     if (target.closest("#tabToday,[data-home-tab='today']")) return "personal";
     if (target.closest("[data-today-action='task'],button[data-add-task]")) return "calendar";
@@ -199,6 +201,7 @@
   }
   function allowedRequirement(requirement) {
     if (requirement === "personal") return anyPersonal();
+    if (requirement === "member_calendar") return authenticated && approved && current.calendar;
     return !requirement || has(requirement);
   }
 

@@ -96,6 +96,6 @@ fs.writeFileSync(swPath, sw);
 
 const config = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
 if (!config.includes("https://ebezqanvmgsgtatsbssn.supabase.co") || config.includes("https://oppdhtnepjagdwovndra.supabase.co")) throw new Error("staging Auth backend isolation failed");
-if (!config.includes("capability-layer.js?v=8")) throw new Error("staging capability bootstrap missing");
+if (!config.includes("capability-layer.js?v=9")) throw new Error("staging capability bootstrap missing");
 if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境") || sourceVersions.some((sourceVersion) => html.includes(sourceVersion))) throw new Error("staging markers or coherent shell revision were not injected");
 console.log("Staging artifact built with noindex, coherent " + shellRevision + " shell and acceptance harness");

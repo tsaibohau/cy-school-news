@@ -2053,3 +2053,16 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 - 加入行事曆獨立的學校選項與本機記憶；公告事件與官方事件隨選校過濾，自己的事件持續顯示。測試站僅覆蓋 272 筆 PR #29 已通過自動品質閘的 PDF 候選，標示仍待人工核對；`docs/data/*` 正式來源未修改。
 - 本地 `node --check docs/app.js`、staging build、calendar workflow、browser load order、staging build contract、UI visual contract、`git diff --check` 通過。候選資料 2026-09-09 有六件單日事件，截圖所示三種碎片為零。未宣稱 272 筆已人工逐件核對，未操作正式站或任何 Supabase。
 - 下一動作：把本次 commit 推送 PR #30，確認新 Preview Ready 與測試連結；真人核對 PDF 與選校後，才評估正式資料發行。
+
+### 行事曆修正推送與 Preview checkpoint
+
+- Codespace 從 SHA-256 `6491bde79d288aace82e19d64276f3401b5d596fda06fe1ff95160723e89eba0` 的 bundle 載入 commit `5a1849c049adaf27887149027a72851f8c816d0c`，原生 `git push` 成功，`git ls-remote` 與本地 ref 完全一致。
+- Vercel deployment `2VeLiBgqbxSRDuGLGXMGrm6JLYer` 回報 Ready；Preview `https://cy-school-news-staging-git-code-510b68-tsaibohau-9644s-projects.vercel.app`。雲端瀏覽器實際造訪會先進入 Vercel Login，故尚未完成人工登入後的行事曆 UI 驗收。Production 未改動。
+- 本段在推送後追加，尚未再推送；下一動作是取得 Preview 存取後驗收選校與 PDF 標題；候選資料仍需人工校對，切勿直接發布正式站。
+
+## 2026-09-24｜公開行事曆的會員事件入口修正
+
+- 使用者在 PR #30 Preview 發現訪客也看得到「新增事件」。根因：官方行事曆 PUBLIC 閱讀權限同時顯示個人寫入按鈕，缺獨立會員寫入檢查。
+- 在原發行候選 branch 修正：按鈕 HTML 預設隱藏；僅已登入、核准且具有會員 calendar capability 時顯示，並在新增、編輯、刪除和表單提交入口再檢查；匿名行事曆只展示公開官方／有來源的公告事件，不投影裝置本地私人的舊事件。PUBLIC 官方閱讀及學校篩選保留。
+- PWA 快取、腳本版本同步遞增；補會員／訪客權限轉換的行為測試。calendar public read-only、PUBLIC access、account auth、PWA notification、calendar load order/state/persistence、staging build、UI contract、`git diff --check` 本地 PASS。Production、Supabase、Action-owned 資料均未修改。
+- 下一步：commit 並推送 PR #30，確認 Git 遠端 parity 與 Vercel Ready，再提供測試連結供真人驗收。正式站仍不得部署。
