@@ -2066,3 +2066,24 @@ No feature-specific implementation blocker. The PR's aggregate CI remains red on
 - 在原發行候選 branch 修正：按鈕 HTML 預設隱藏；僅已登入、核准且具有會員 calendar capability 時顯示，並在新增、編輯、刪除和表單提交入口再檢查；匿名行事曆只展示公開官方／有來源的公告事件，不投影裝置本地私人的舊事件。PUBLIC 官方閱讀及學校篩選保留。
 - PWA 快取、腳本版本同步遞增；補會員／訪客權限轉換的行為測試。calendar public read-only、PUBLIC access、account auth、PWA notification、calendar load order/state/persistence、staging build、UI contract、`git diff --check` 本地 PASS。Production、Supabase、Action-owned 資料均未修改。
 - 下一步：commit 並推送 PR #30，確認 Git 遠端 parity 與 Vercel Ready，再提供測試連結供真人驗收。正式站仍不得部署。
+
+### 本次雲端推送阻礙（2026-09-24）
+
+- 最後成功 checkpoint：本地 commit `75d0032cca6407412f0ac5c36a6cf2383cc81a52`，上述回歸測試全數通過；bundle `/tmp/cy-calendar-member-75d0032.bundle` SHA-256 `1bcf23f4ccf09bf61715818708a199fd2958f6686681e9467388c7b9446de64f` 已驗證，GitHub connector 未掛 ref blob `cccdca364437deae6a6e153f5a375f68a2f46b1b` 已建立。
+- 精確失敗點：新 Cloud Browser 導向既有 Codespace 時，GitHub 要求重新登入；只有 username/password 登入表單，未看到 Google 選項；此 Cloud Work 本機沒有 Git credential helper、gh CLI、GH_TOKEN 或 GITHUB_TOKEN。故未能在已驗證的 Codespace 執行 native git push，也未更新 PR #30 remote HEAD。
+- 已排除：功能程式與測試失敗；Git bundle 生成和校驗失敗。尚待驗證：GitHub 認證的 Codespace 終端可重新訪問並且能完成 native push；新 Vercel Preview 尚不存在，先前 Preview 仍是舊 commit `5a1849c`。
+- 狀態：【本地已修正且已 commit；CLOUD_WRITE_BLOCKED；未推送／未部署；正式站與 DB 未更動】。下一動作：恢復 GitHub 身分於此瀏覽器的 Codespace 或由平台提供可接受原有 commit 物件的 Git 寫入通道，再原生推送 `75d0032` 並驗證 remote/local HEAD 一致；不可重建／amend 既有 commit。
+
+### 推送恢復與測試部署（2026-09-24）
+
+- 使用者重新登入後，Codespace 可用；信任既有專案資料夾，透過 GitHub blob 取回 bundle，SHA-256 與預期 `1bcf23f4ccf09bf61715818708a199fd2958f6686681e9467388c7b9446de64f` 一致，`git bundle verify` 通過。
+- 將 bundle 原有 commit 匯入 Codespace 的發行分支 ref，以原生 `git push origin refs/heads/codex/release-public-calendar-20260923:refs/heads/codex/release-public-calendar-20260923` 成功推送；`git ls-remote` 與本地 ref 均為 `75d0032cca6407412f0ac5c36a6cf2383cc81a52`。未改寫既有 commit。
+- Vercel 對此 commit 的 status 為 success，PR #30 bot 回報 deployment `HNYcTJuJJf9hK5CUXNgU9Mnm8PbK` Ready；測試連結 `https://cy-school-news-staging-git-code-510b68-tsaibohau-9644s-projects.vercel.app`。真人介面驗收尚待完成，正式站與 DB 未更動。
+- 本段於推送後記錄，尚未再提交／推送；先前的阻礙記錄是歷史狀態，現已解除。
+
+## 2026-09-24｜行事曆依學校顯示顏色
+
+- 最後成功 checkpoint：PR #30 分支遠端與本地均為 `75d0032cca6407412f0ac5c36a6cf2383cc81a52`，Vercel Preview Ready；本輪開始前已 fetch `origin/main` 與發行分支，未合併 main。
+- 月曆日期圓點與當日事件列表依來源校識別：嘉中藍、嘉女粉，個人事件綠；公告事件傳遞 school id，另加文字圖例，不只依賴顏色辨認。PWA shell 版號更新。
+- 本地 `test_calendar_public_readonly`、`test_calendar_workflow`、`test_pwa_notification`、`test_ui_visual_contract`、`test_staging_build`、`git diff --check` PASS；兩項原測試的硬編碼 PWA 版號同步更新。未變更 Supabase、正式站或官方事件資料。
+- 下一步：提交本次變更、推 PR #30、確認遠端 HEAD 與新的 Preview Ready；完成後回到問校務問題，從已記錄 checkpoint 先盤點根因，不擴張行事曆 PDF 候選發布。

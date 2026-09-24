@@ -1645,7 +1645,7 @@
           if (!ev || !/^\d{4}-\d{2}-\d{2}$/.test(ev.date) || !ev.title || !ev.provenance) return;
           if (state.calendarSchool !== "all" && it.school !== state.calendarSchool) return;
           announcementEvents.push({ id: "announcement:" + it.id + ":" + ev.date + ":" + ev.title,
-            date: ev.date, endDate: ev.end_date || ev.date, title: ev.title, school: it.school_name,
+            date: ev.date, endDate: ev.end_date || ev.date, title: ev.title, school: it.school_name, school_id: it.school,
             kind: ev.kind === "deadline" ? "deadline" : "announcement", url: it.url,
             sourceLabel: ev.kind === "deadline" ? "公告截止日期" : "公告事件" });
         });
@@ -1666,6 +1666,9 @@
         return start && end && start <= day && day <= end;
       });
     }
+    function calendarColorClass(ev) {
+      return ev.school_id === "cysh" || ev.school_id === "cygsh" ? "school-" + ev.school_id : "school-personal";
+    }
     function renderCalendar() {
       if (el.addEvent) el.addEvent.hidden = !canEditCalendar();
       if (!canEditCalendar() && el.eventFormWrap) el.eventFormWrap.hidden = true;
@@ -1678,7 +1681,7 @@
         var key = isoDate(day.getFullYear(), day.getMonth(), day.getDate()), evs = eventsForDate(key);
         var classes = "calendar-day" + (day.getMonth() !== m ? " is-outside" : "") + (key === today ? " is-today" : "") + (key === state.calendarSelected ? " is-selected" : "");
         html += '<button type="button" class="' + classes + '" data-day="' + key + '"><span class="day-number">' + day.getDate() + '</span>';
-        if (evs.length) html += '<span class="day-dots">' + evs.slice(0, 4).map(function (ev) { return '<i class="day-dot ' + ev.kind + '" title="' + esc(ev.sourceLabel) + '"></i>'; }).join("") + '</span>';
+        if (evs.length) html += '<span class="day-dots">' + evs.slice(0, 4).map(function (ev) { return '<i class="day-dot ' + calendarColorClass(ev) + '" title="' + esc(ev.school || ev.school_id || "我的事件") + '"></i>'; }).join("") + '</span>';
         html += '</button>';
       }
       el.calendarGrid.innerHTML = html;
@@ -1702,7 +1705,7 @@
       el.agenda.innerHTML = evs.length ? evs.map(function (ev) {
         var start = eventStart(ev), end = eventEnd(ev);
         var range = start !== end ? ' · ' + esc(start) + '–' + esc(end) : '';
-        return '<article class="agenda-item"><span class="agenda-mark ' + ev.kind + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + range + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '">刪除</button></div>' : '') + '</div></article>';
+        return '<article class="agenda-item"><span class="agenda-mark ' + calendarColorClass(ev) + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + range + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '">刪除</button></div>' : '') + '</div></article>';
       }).join("") : '<p class="empty">這天沒有事件。選一個日期，或新增自己的事件。</p>';
       Array.prototype.forEach.call(el.agenda.querySelectorAll("button[data-edit-event]"), function (button) {
         button.addEventListener("click", function () {

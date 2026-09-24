@@ -371,6 +371,12 @@ body { background: var(--paper); }
 .today-empty { padding: 18px 0; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .today-empty p { flex-basis: 100%; margin: 0 0 2px; }
 .agenda-mark { width: 8px; min-width: 8px; height: 8px; margin-top: 7px; border-radius: 50%; background: var(--cysh); }.agenda-mark.deadline { background: #eb8d4d; }.agenda-mark.user { background: #40a27c; }
+.calendar-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 12px; color: var(--muted); font-size: 13px; }
+.calendar-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.calendar-legend .day-dot { display: inline-block; width: 10px; height: 10px; flex: none; }
+.day-dot.school-cysh, .agenda-mark.school-cysh { background: var(--cysh); }
+.day-dot.school-cygsh, .agenda-mark.school-cygsh { background: var(--cygsh); }
+.day-dot.school-personal, .agenda-mark.school-personal { background: #278663; }
 .agenda-item h4 { margin: 0; font-size: 15px; }.agenda-item p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; }.agenda-item a { color: var(--cysh); font-size: 12px; }
 .event-actions { display: flex; gap: 6px; margin-top: 8px; }
 .event-actions .btn-ghost { padding: 4px 9px; font-size: 12px; }
