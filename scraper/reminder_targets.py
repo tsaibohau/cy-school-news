@@ -36,6 +36,8 @@ def build_targets(announcements, calendars, *, today=None):
     targets = []
     seen = set()
     for item in announcements or []:
+        if item.get("school") == "pksh":
+            continue
         for index, event in enumerate(item.get("calendar_events") or []):
             target_kind = ALLOWED_ANNOUNCEMENT.get((event.get("kind"), event.get("provenance")))
             date = str(event.get("date") or "")

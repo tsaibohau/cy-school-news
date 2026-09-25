@@ -13,6 +13,7 @@ concurrency:
 
 jobs:
   sync:
+    if: ${{ false }} # Source is marked damaged; keep historical workflow inert.
     runs-on: windows-latest
     timeout-minutes: 8
     steps:

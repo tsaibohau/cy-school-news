@@ -820,6 +820,9 @@ def main() -> int:
               f"截止日 {DEEP_CRAWL_CUTOFF};忽略分級抓取全部來源")
 
     for school in CONFIG["schools"]:
+        if school.get("enabled") is False:
+            print(f"[warn] 跳過已停用來源 {school['id']}: {school.get('status', 'disabled')}")
+            continue
         collected = {}
         scan_pages = list(school.get("scan_pages", []))
         entries = [(u, "hot") for u in scan_pages] + page_entries(school)
@@ -996,7 +999,10 @@ def main() -> int:
         detail_needed = needs_detail(it)
         try:
             item_school = next((school for school in CONFIG["schools"]
-                                if school["id"] == it.get("school")), None)
+                                if school["id"] == it.get("school")
+                                and school.get("enabled") is not False), None)
+            if item_school is None:
+                continue
             html = fetch(session, it["url"], item_school)
         except Exception as e:
             print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)

@@ -13,6 +13,13 @@ assert.match(app, /正在取得雲端已發布資料/);
 assert.match(app, /同步完成；雲端尚未發布新版本/);
 assert.match(app, /目前顯示離線快取，未取得雲端新資料/);
 assert.match(style, /--sans: var\(--serif\)/, "one readable serif family is used across the interface");
+const cyshColor = style.match(/--cysh:\s*([^;]+);/);
+const cygshColor = style.match(/--cygsh:\s*([^;]+);/);
+assert.ok(cyshColor && cygshColor && cyshColor[1] !== cygshColor[1], "the two schools use distinct calendar colors");
+assert.match(style, /\.day-dot\.school-cysh[\s\S]*var\(--cysh\)/, "CYSH calendar events use the CYSH color");
+assert.match(style, /\.day-dot\.school-cygsh[\s\S]*var\(--cygsh\)/, "CYGSH calendar events use the CYGSH color");
+assert.doesNotMatch(index, /<option value="pksh">/, "damaged PKSH source stays out of static selectors");
+assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*\{ pksh: true \}/, "damaged PKSH data is filtered before rendering");
 assert.match(style, /#btnRefresh\.is-refreshing svg/);
 assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion preference remains respected");
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,

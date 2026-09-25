@@ -4,8 +4,9 @@ from pathlib import Path
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scraper"))
-from calendar_adapter import (discover_calendar_attachments, parse_calendar_text,
-                              parse_explicit_date, roc_to_gregorian)  # noqa: E402
+from calendar_adapter import (calendar_quality_gate, discover_calendar_attachments,
+                              parse_calendar_text, parse_explicit_date,
+                              roc_to_gregorian)  # noqa: E402
 from calendar_schema import source_status, validate_events  # noqa: E402
 from school_registry import get_school, registry_snapshot  # noqa: E402
 from schoolcal import academic_period, build_ics, merge_calendar_events  # noqa: E402
@@ -23,6 +24,38 @@ def run():
     assert parse_explicit_date("115年9月1日") == "2026-09-01"
     assert parse_explicit_date("2025/09/01") == "2025-09-01"
     assert parse_explicit_date("公告日期 2026/09/01") == "2026-09-01"
+
+    cysh_115 = parse_calendar_text(
+        read("calendar_cysh_115_1_layout.txt"), school_id="cysh", academic_year=115,
+        semester=1, source_url="https://www.cysh.cy.edu.tw/fixed-revision.pdf",
+        source_document="國立嘉義高中115學年第一學期行事曆.pdf",
+        source_revision_value="fixture-cysh-115-1",
+    )
+    cygsh_115 = parse_calendar_text(
+        read("calendar_cygsh_115_1_layout.txt"), school_id="cygsh", academic_year=115,
+        semester=1, source_url="https://www.cygsh.cy.edu.tw/fixed-revision.pdf",
+        source_document="115學年度第一學期行事曆",
+        source_revision_value="fixture-cygsh-115-1",
+    )
+    assert len(cysh_115) == 100 and len(cysh_115) > 2
+    assert len(cygsh_115) == 170
+    assert all(row["parser_provenance"]["parser_version"] == "2" for row in cysh_115 + cygsh_115)
+    forbidden_fragments = {")", ")。", "）。", "第 5-6 節)。", "第 5-6 節）。", "12:10", "中午 12 時"}
+    assert not forbidden_fragments.intersection(row["title"] for row in cygsh_115)
+    assert not any(row["title"] == "V1" for row in cysh_115)
+    assert any(row["start_date"].startswith("2027-01-") for row in cysh_115)
+    assert any(row["start_date"].startswith("2027-01-") for row in cygsh_115)
+    assert calendar_quality_gate(cysh_115, school_id="cysh", academic_year=115, semester=1)["passed"]
+    cygsh_quality = calendar_quality_gate(cygsh_115, school_id="cygsh", academic_year=115, semester=1)
+    assert cygsh_quality["passed"] and cygsh_quality["fragment_count"] == 0
+    assert cygsh_quality["duplicate_count"] == 0
+
+    collapsed = calendar_quality_gate(
+        cysh_115[:2], school_id="cysh", academic_year=115, semester=1,
+        last_known_good_count=100,
+    )
+    assert not collapsed["passed"]
+    assert "event_count_collapsed_from_last_known_good" in collapsed["reasons"]
 
     cysh = parse_calendar_text(
         read("calendar_cysh_114_1.txt"), school_id="cysh", academic_year=114,
@@ -56,6 +89,9 @@ def run():
     assert get_school("cysh").capabilities["official_calendar"] is True
     assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh", "pksh"}
     assert get_school("pksh").capabilities["official_calendar"] is False
+    assert get_school("pksh").capabilities["announcements"] is False
+    assert get_school("pksh").status == "damaged"
+    assert get_school("pksh").visible is False
     assert get_school("pksh").announcement_adapter == "ischool-site-news"
     assert get_school("cygsh").calendar_sources[0].url.endswith("/p/412-1013-1827.php")
 
@@ -89,6 +125,8 @@ def run():
     assert {row["id"] for row in merged} == {"legacy-cygsh", "official-cysh"}
     official_visible = next(row for row in merged if row["id"] == "official-cysh")
     assert official_visible["school"] == "嘉中" and official_visible["kind"] == "official"
+    rejected = merge_calendar_events(curated, official, accepted_terms=set())
+    assert {row["id"] for row in rejected} == {"legacy-cysh", "legacy-cygsh"}
     ranged_ics = build_ics([{"date": "2026-09-02", "end_date": "2026-09-03", "school": "嘉中", "title": "兩日活動"}])
     assert "DTSTART;VALUE=DATE:20260902" in ranged_ics
     assert "DTEND;VALUE=DATE:20260904" in ranged_ics

@@ -27,6 +27,8 @@ class SchoolDefinition:
     announcement_sources: tuple[str, ...] = ()
     calendar_sources: tuple[CalendarSource, ...] = ()
     capabilities: Dict[str, bool] = field(default_factory=dict)
+    status: str = "active"
+    visible: bool = True
 
 
 SCHOOLS: Dict[str, SchoolDefinition] = {
@@ -66,7 +68,9 @@ SCHOOLS: Dict[str, SchoolDefinition] = {
         announcement_sources=(
             "https://www.pksh.ylc.edu.tw/ischool/widget/site_news/main2.php?allbtn=0&maximize=1&uid=WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a",
         ),
-        capabilities={"announcements": True, "official_calendar": False},
+        capabilities={"announcements": False, "official_calendar": False},
+        status="damaged",
+        visible=False,
     ),
 }
 
@@ -86,5 +90,7 @@ def registry_snapshot() -> List[dict]:
         "announcement_adapter": school.announcement_adapter,
         "calendar_adapter": school.calendar_adapter,
         "capabilities": dict(school.capabilities),
+        "status": school.status,
+        "visible": school.visible,
         "calendar_sources": [source.url for source in school.calendar_sources],
     } for school in SCHOOLS.values()]

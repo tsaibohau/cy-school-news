@@ -4,7 +4,10 @@ const Profile = require("../docs/profile.js");
 const Registry = require("../docs/school-registry.js");
 
 assert.equal(Registry.find("pksh").short, "北港高中");
-assert.equal(Registry.mentionedSchool("北高課表").id, "pksh");
+assert.equal(Registry.find("pksh").status, "damaged");
+assert.equal(Registry.find("pksh").visible, false);
+assert.equal(Registry.schools().some((school) => school.id === "pksh"), false);
+assert.equal(Registry.mentionedSchool("北高課表"), null, "damaged school aliases are not public assistant scopes");
 
 const audience = Relevance.extractAudience({ title: "高一新生 109班 物理競賽報名" });
 assert.deepEqual(audience.grades, [1]);

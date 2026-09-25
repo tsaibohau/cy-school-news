@@ -1575,3 +1575,22 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 最終狀態
 【已完成】Production DB migration、main merge、GitHub Pages 發布與靜態內容核對均成功。正式網址：https://tsaibohau.github.io/cy-school-news/
 - 2026-09-25 PR 歸屬修正：使用者指出正式發布必須由原 PR #30 完成，不應以 PR #31 取代。逐檔比對確認 main 的九個前端程式檔與 PR #30 head `29b1de4` 完全一致；差異僅為保留今天 Actions 產生的最新資料、RLS 測試 fixture 與發行紀錄。後續將目前 main 合併進原 PR #30 分支，保留 main 全部現況，再合併 PR #30，使原 PR lineage 正式進入 main；不改網站內容、不覆寫公告資料、不重跑 Production migration。
+
+## 2026-09-25 20:35（Asia/Taipei）｜正式行事曆資料修復與北港來源隔離
+
+### 本輪決策
+- 使用者要求停止沿用既有 PR；本輪從當時 `origin/main` `4b0550b` 建立乾淨修正線，不重開、不合併任何舊 PR。
+- 北港高中來源定義為 `damaged`：停止一般抓取與 Windows production workflow，取消 announcements capability，並在首頁、搜尋、行事曆、管理介面、問校務、提醒目標及學校選單入口過濾；歷史 JSON 保留作稽核，不在介面顯示。
+
+### 行事曆修復
+- PDF adapter 升級為版面感知 parser v2，嘉中依週列錨點取事件、嘉女依編號工作列重組，只以工作列主日期建立事件；修正第一學期 1–2 月跨西元年，加入事件數、月份覆蓋、碎片、重複、日期範圍與 last-known-good collapse 品質閘門。
+- 以已保存且具 SHA-256 的 115-1 官方 PDF 文字 fixture 重建公開資料：嘉中 100、嘉女 170，共 270 筆；純碎片標題 0、重複 0、超過 31 日範圍 0。嘉中使用 `--cysh #2B5CAD`，嘉女使用 `--cygsh #B03A5B`。
+- 即時校網抓取在本 Cloud Work 網路限制下逾時，未用失敗結果覆寫資料；正式資料來自同一份已校驗官方 PDF 快照，後續 Actions 仍會經相同品質閘門 fail-closed 更新。
+
+### 驗證
+- PASS：`python tests/test_calendar_adapter.py`、`python tests/test_reminder_targets.py`、`python tests/test_parser.py`。
+- PASS：`node tests/test_account_auth.js`、`test_calendar_browser_load_order.js`、`test_ui_visual_contract.js`、`test_relevance.js`、`test_pwa_notification.js`。
+- `docs/calendar.ics` 採 RFC 5545 CRLF 與 continuation whitespace，故一般 `git diff --check` 會把合法摺行顯示成 trailing whitespace；其餘檔案 whitespace 檢查無誤，ICS 結構由 parser tests 驗證。
+
+### 發布狀態
+- 程式、資料、測試與 PWA cache bump 均已準備；尚待提交、更新 `main`、等待 GitHub Pages 完成並驗證正式頁面。

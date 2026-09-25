@@ -20,7 +20,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from calendar_adapter import (discover_calendar_attachments, extract_pdf_text,
-                              fetch_source, parse_calendar_text, source_revision)
+                              fetch_source, parse_calendar_text, source_revision,
+                              calendar_quality_gate)
 from calendar_schema import normalize_event, validate_events, source_status
 from school_registry import SCHOOLS
 
@@ -89,10 +90,14 @@ def load_official_events() -> list:
         return []
 
 
-def merge_calendar_events(curated, official):
+def merge_calendar_events(curated, official, *, accepted_terms=None):
     """Replace curated rows only for school/term pairs with validated official data."""
     official = validate_events(official, school_id=None)
     covered = {(row["school_id"], int(row["academic_year"]), int(row["semester"])) for row in official}
+    if accepted_terms is not None:
+        covered &= set(accepted_terms)
+        official = [row for row in official if
+                    (row["school_id"], int(row["academic_year"]), int(row["semester"])) in covered]
     merged = []
     for row in curated:
         school_id = row.get("school_id", "")
@@ -128,6 +133,12 @@ def discover(*, academic_year=None, semester=None) -> int:
     semester = int(semester or os.environ.get("CALENDAR_SEMESTER") or current_semester)
     if semester not in (1, 2):
         raise ValueError("calendar semester must be 1 or 2")
+    previous_statuses = []
+    if STATUS_PATH.exists():
+        try:
+            previous_statuses = json.loads(STATUS_PATH.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            previous_statuses = []
     statuses = []
     published = []
     if OFFICIAL_PATH.exists():
@@ -174,13 +185,25 @@ def discover(*, academic_year=None, semester=None) -> int:
                 source_revision_value=doc_revision, fetched_at=checked,
             )
             validate_events(parsed, school_id=school.school_id)
-            if not parsed:
+            previous = next((row for row in previous_statuses if
+                             row.get("school_id") == school.school_id and
+                             row.get("academic_year") == academic_year and
+                             row.get("semester") == semester and
+                             row.get("status") == "official_complete" and
+                             row.get("quality", {}).get("passed") is True), None)
+            quality = calendar_quality_gate(
+                parsed, school_id=school.school_id, academic_year=academic_year,
+                semester=semester,
+                last_known_good_count=previous.get("event_count") if previous else None,
+            )
+            if not quality["passed"]:
+                quality["using_last_known_good"] = bool(previous)
                 statuses.append(source_status(
                     school_id=school.school_id, academic_year=academic_year, semester=semester,
                     status="validation_failed", source_url=source.url,
                     last_checked_at=checked,
                     last_verified_document={"url": document["url"], "label": document["label"], "revision": doc_revision},
-                    event_count=0, error="official document produced no validated events",
+                    event_count=len(parsed), error=";".join(quality["reasons"]), quality=quality,
                 ))
                 continue
             published = [row for row in published if not (
@@ -197,6 +220,7 @@ def discover(*, academic_year=None, semester=None) -> int:
                 source_url=source.url, last_checked_at=checked,
                 last_verified_document={"url": document["url"], "label": document["label"], "revision": doc_revision},
                 event_count=len(parsed),
+                quality=quality,
             ))
         except Exception as exc:
             statuses.append(source_status(
@@ -224,6 +248,7 @@ def _escape(text: str) -> str:
 
 def _fold(line: str) -> str:
     """RFC 5545 行摺疊:每行至多約 75 octets,續行以空白開頭;不切斷 UTF-8 字元。"""
+    line = line.rstrip()
     out, cur, cur_len = [], "", 0
     for ch in line:
         w = len(ch.encode("utf-8"))
@@ -278,7 +303,20 @@ def build_ics(events) -> str:
 
 def build() -> int:
     events = load_events()
-    public_events = merge_calendar_events(build_public_events(events), load_official_events())
+    accepted_terms = set()
+    if STATUS_PATH.exists():
+        try:
+            accepted_terms = {
+                (row["school_id"], int(row["academic_year"]), int(row["semester"]))
+                for row in json.loads(STATUS_PATH.read_text(encoding="utf-8"))
+                if ((row.get("status") == "official_complete" and row.get("quality", {}).get("passed") is True) or
+                    (row.get("status") == "validation_failed" and row.get("quality", {}).get("using_last_known_good") is True))
+            }
+        except (OSError, ValueError, KeyError, TypeError):
+            accepted_terms = set()
+    public_events = merge_calendar_events(
+        build_public_events(events), load_official_events(), accepted_terms=accepted_terms,
+    )
     legacy_shape = [{
         "date": row["start_date"], "end_date": row["end_date"],
         "school": SCHOOLS[row["school_id"]].short_name if row["school_id"] in SCHOOLS else "",

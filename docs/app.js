@@ -52,11 +52,13 @@
     var createTaskReminder = function () { return Promise.reject(new Error("account not ready")); };
     var accountAuth = null;
     var searchTimer = null;
+    var HIDDEN_SCHOOL_IDS = { pksh: true };
+    function visibleSchool(row) { return row && !HIDDEN_SCHOOL_IDS[String(row.id || row.school || row.school_id || "")]; }
 
     var state = {
       data: null,
-      school: loadSchool(),
-      calendarSchool: localStorage.getItem(LS_CALENDAR_SCHOOL) || "all",
+      school: HIDDEN_SCHOOL_IDS[loadSchool()] ? "all" : loadSchool(),
+      calendarSchool: HIDDEN_SCHOOL_IDS[localStorage.getItem(LS_CALENDAR_SCHOOL)] ? "all" : (localStorage.getItem(LS_CALENDAR_SCHOOL) || "all"),
       cat: "all",
       q: "",
       tab: "latest",
@@ -672,7 +674,7 @@
         if (!isAdminAccount() || !accountAuth || !el.adminArchiveStatus) return;
         el.adminArchiveStatus.textContent='讀取歷史公告中…';
         accountAuth.listArchivedAnnouncements(archiveFilters()).then(function (rows) {
-          state.archivedAnnouncements=rows; state.archiveTotal=rows.length ? Number(rows[0].total_count || rows.length) : 0;
+          state.archivedAnnouncements=(rows || []).filter(visibleSchool); state.archiveTotal=state.archivedAnnouncements.length;
           renderArchivedAnnouncements();
           el.adminArchiveStatus.textContent='已載入；歷史資料不會加入首頁或一般搜尋。';
         }).catch(function () { el.adminArchiveStatus.textContent='無法讀取歷史公告，未變更任何資料。'; });
@@ -692,7 +694,7 @@
           });
         })).then(function (sets) {
           var byId = {};
-          sets.forEach(function (set) { (set.items || []).forEach(function (item) { if (item && item.id && !state.deletedAnnouncements[item.id]) { applyMemberContent(item); byId[item.id] = item; } }); });
+          sets.forEach(function (set) { (set.items || []).filter(visibleSchool).forEach(function (item) { if (item && item.id && !state.deletedAnnouncements[item.id]) { applyMemberContent(item); byId[item.id] = item; } }); });
           return Object.keys(byId).map(function (id) { return byId[id]; });
         });
       }
@@ -1389,10 +1391,13 @@
     }
 
     function normalizeCurrentData(data, manifest) {
-      if (!manifest || !data.school) return data;
-      data.schools = manifest.schools || [];
-      data.categories = manifest.categories || [];
-      data.category_slugs = manifest.category_slugs || {};
+      if (manifest && data.school) {
+        data.schools = manifest.schools || [];
+        data.categories = manifest.categories || [];
+        data.category_slugs = manifest.category_slugs || {};
+      }
+      data.schools = (data.schools || []).filter(visibleSchool);
+      data.items = (data.items || []).filter(visibleSchool);
       return data;
     }
 
@@ -2038,7 +2043,7 @@
         if (response.status === 404) return { items: [] };
         if (!response.ok) throw new Error("corpus HTTP " + response.status);
         return response.json();
-      }).then(function (data) { return Array.isArray(data && data.items) ? data.items : []; });
+      }).then(function (data) { return Array.isArray(data && data.items) ? data.items.filter(visibleSchool) : []; });
     }
     function fetchAssistantCorpus(scopeId) {
       if (scopeId === state.school) return ensureArchive().then(function () { return state.data && state.data.items || []; });
@@ -2111,7 +2116,7 @@
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
     }
     function renderControls() {
-      var schools = [{ id: "all", short: "所有學校" }].concat(state.data.schools || []);
+      var schools = [{ id: "all", short: "所有學校" }].concat((state.data.schools || []).filter(visibleSchool));
       el.schoolFilter.innerHTML = schools.map(function (s) {
         return '<option value="' + esc(s.id) + '">' + esc(s.short) + "</option>";
       }).join("");
