@@ -1662,3 +1662,15 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 新唯一正確版本
 【CANONICAL】自本 checkpoint 起，`main` 的 `3503fbe` 及其後續只含本節 ledger 收尾的 commit 是唯一正確正式基準；舊 PR、舊分支與未含名稱 alias fail-closed 的版本不得作為回復基準。
+
+## 2026-09-25 21:55（Asia/Taipei）｜法律說明更新與舊快取修復
+
+### 根因與修正
+- 使用者仍看到列有輔仁高中及「返回嘉雲校訊」的舊法律頁；GitHub `main` 與正式伺服器原始 `legal.html` 已是新版，確認根因為 Service Worker 對殼層採 cache-first，舊法律頁可持續遮蔽正式檔案。
+- `legal.html` 更新日期改為 2026-09-25，移除過時的 Preview／CI 待辦敘述，明確記錄目前只公開嘉義高中、嘉義女中，輔仁與北港停用且歷史資料不公開展示。
+- 首頁法律頁連結改為 `legal.html?v=20260925`；Service Worker 對 `legal.html` 改採 network-first、離線才退回快取，cache 升為 `cy-news-v97`。
+
+### 驗證與發布狀態
+- PASS：`test_ui_visual_contract.js`、`test_account_auth.js`、`test_pwa_notification.js`、`test_staging_build.js`、`git diff --check`。
+- branch：`codex/legal-current-scope-20260925`，基準 `origin/main` `d8e5a337e8fd660b593c5bb33a3a366642b7d856`。
+- 尚待 commit、以 non-force fast-forward 更新 `main`、等待 Pages 並核對正式法律頁內容與 cache 規則。

@@ -28,6 +28,7 @@ assert.match(app, /function cardHTML\(it\) \{[\s\S]*if \(!visibleSchool\(it\)\) 
 assert.match(index, /嘉義校訊/, "the interface identifies the active Chiayi-only service");
 assert.match(index, /從嘉義兩校公告中找到資訊/, "the interface describes the current two-school scope truthfully");
 assert.doesNotMatch(index, /嘉雲校訊|從三校公告中/, "retired cross-county and three-school copy is removed");
+assert.match(index, /legal\.html\?v=20260925/, "the legal notice link bypasses stale installed-shell entries");
 
 {
   const vm = require("vm");
@@ -52,6 +53,7 @@ assert.match(index, /search-query\.js\?v=52[\s\S]*announcement-validity-reviewed
 const appVersion = index.match(/src="app\.js\?v=(\d+)"/);
 assert.ok(appVersion, "application script has a numeric cache version");
 const serviceWorker = fs.readFileSync(path.join(root, "docs", "sw.js"), "utf8");
+assert.match(serviceWorker, /\/legal\\\.html\$[\s\S]*fetch\(req\)/, "the legal notice is network-first with cache fallback");
 assert.ok(serviceWorker.includes("./app.js?v=" + appVersion[1] + '"'),
   "the HTML and Service Worker cache refer to the same application version");
 assert.match(index, /id="appLoading"[^>]*role="status"/, "initial data loading is announced accessibly");
