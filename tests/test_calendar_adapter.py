@@ -87,7 +87,11 @@ def run():
     )
     assert pending["status"] == "awaiting_official_source"
     assert get_school("cysh").capabilities["official_calendar"] is True
-    assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh", "pksh"}
+    assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh", "fjsh", "pksh"}
+    assert get_school("fjsh").capabilities["official_calendar"] is False
+    assert get_school("fjsh").capabilities["announcements"] is False
+    assert get_school("fjsh").status == "disabled"
+    assert get_school("fjsh").visible is False
     assert get_school("pksh").capabilities["official_calendar"] is False
     assert get_school("pksh").capabilities["announcements"] is False
     assert get_school("pksh").status == "damaged"

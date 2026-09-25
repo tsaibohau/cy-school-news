@@ -8,6 +8,7 @@
   var schools = [
     { id: "cysh", name: "國立嘉義高級中學", short: "嘉中", aliases: ["嘉義高中", "嘉義高級中學", "cysh"], capabilities: { announcements: true, official_calendar: true } },
     { id: "cygsh", name: "國立嘉義女子高級中學", short: "嘉女", aliases: ["嘉義女中", "嘉義女子高級中學", "cygsh"], capabilities: { announcements: true, official_calendar: true } },
+    { id: "fjsh", name: "嘉義市私立輔仁高級中學", short: "輔仁高中", aliases: ["輔仁", "輔仁高中", "輔仁中學", "fjsh"], status: "disabled", visible: false, capabilities: { announcements: false, official_calendar: false } },
     { id: "pksh", name: "國立北港高級中學", short: "北港高中", aliases: ["北高", "北港高中", "北港高級中學", "pksh"], status: "damaged", visible: false, capabilities: { announcements: false, official_calendar: false } },
   ];
   function copy(school) {

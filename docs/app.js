@@ -52,12 +52,12 @@
     var createTaskReminder = function () { return Promise.reject(new Error("account not ready")); };
     var accountAuth = null;
     var searchTimer = null;
-    var HIDDEN_SCHOOL_IDS = { pksh: true };
+    var HIDDEN_SCHOOL_IDS = { fjsh: true, pksh: true };
     function visibleSchool(row) {
       if (!row) return false;
       return [row.school, row.school_id, row.id].every(function (value) {
         value = String(value || "");
-        return !HIDDEN_SCHOOL_IDS[value] && !/^pksh(?:-|$)/.test(value);
+        return !HIDDEN_SCHOOL_IDS[value] && !/^(?:fjsh|pksh)(?:-|$)/.test(value);
       });
     }
 

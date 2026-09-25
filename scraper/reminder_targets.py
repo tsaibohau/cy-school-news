@@ -17,6 +17,7 @@ ALLOWED_ANNOUNCEMENT = {
     ("deadline", "verified_announcement_deadline"): "announcement_deadline",
     ("event", "verified_announcement_event"): "announcement_event",
 }
+DISABLED_SCHOOLS = {"fjsh", "pksh"}
 
 
 def _https(value):
@@ -36,7 +37,7 @@ def build_targets(announcements, calendars, *, today=None):
     targets = []
     seen = set()
     for item in announcements or []:
-        if item.get("school") == "pksh":
+        if item.get("school") in DISABLED_SCHOOLS:
             continue
         for index, event in enumerate(item.get("calendar_events") or []):
             target_kind = ALLOWED_ANNOUNCEMENT.get((event.get("kind"), event.get("provenance")))

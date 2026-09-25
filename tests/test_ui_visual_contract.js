@@ -19,8 +19,10 @@ assert.ok(cyshColor && cygshColor && cyshColor[1] !== cygshColor[1], "the two sc
 assert.match(style, /\.day-dot\.school-cysh[\s\S]*var\(--cysh\)/, "CYSH calendar events use the CYSH color");
 assert.match(style, /\.day-dot\.school-cygsh[\s\S]*var\(--cygsh\)/, "CYGSH calendar events use the CYGSH color");
 assert.doesNotMatch(index, /<option value="pksh">/, "damaged PKSH source stays out of static selectors");
-assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*\{ pksh: true \}/, "damaged PKSH data is filtered before rendering");
-assert.match(app, /\^pksh\(\?:-\|\$\)\//, "PKSH-prefixed historical records are filtered even when id appears before school");
+assert.doesNotMatch(index, /<option value="fjsh">/, "disabled FJSH source stays out of static selectors");
+assert.doesNotMatch(index, /輔仁高中/, "disabled FJSH source stays out of public interface copy");
+assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*\{ fjsh: true, pksh: true \}/, "disabled schools are filtered before rendering");
+assert.match(app, /\^\(\?:fjsh\|pksh\)\(\?:-\|\$\)\//, "disabled-school historical records are filtered even when id appears before school");
 assert.match(style, /#btnRefresh\.is-refreshing svg/);
 assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion preference remains respected");
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,

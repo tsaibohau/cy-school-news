@@ -1604,3 +1604,19 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】行事曆片段修復、學校分色、北港來源隔離、正式發布與正式站端到端驗證均完成。正式網址：https://tsaibohau.github.io/cy-school-news/
+
+## 2026-09-25 20:58（Asia/Taipei）｜停用輔仁中學與唯一正式基準
+
+### 決策與範圍
+- 使用者指定上一節已完成的行事曆修正版為唯一正確基準；本輪只在該 `main` 基準上停用輔仁中學，不重開、不沿用任何 PR，也不帶回其他版本。
+- `fjsh` 明確設定為 `enabled: false`、`status: disabled`、`visible: false`，announcements／official_calendar capability 均為 false；未來一般抓取與提醒目標不再處理該來源。
+- `docs/data/announcements.json` 內既有 99 筆輔仁歷史資料依機器維護規則保留，不手動修改；前端在載入資料、首頁、搜尋、問校務、管理員清理／分類／Archive、帳號學校選單與提醒目標前統一排除 `fjsh` 與 `fjsh-*`。
+- 首頁頁尾、法律說明及管理員靜態選單移除輔仁；PWA 更新為 `app.js?v=91`、school registry v42、cache v95，防止舊快取持續顯示。
+
+### 驗證
+- PASS：`python tests/test_parser.py`、`test_reminder_targets.py`、`test_calendar_adapter.py`。
+- PASS：`node tests/test_account_auth.js`、`test_calendar_browser_load_order.js`、`test_ui_visual_contract.js`、`test_pwa_notification.js`、`test_relevance.js`、`test_staging_build.js`。
+- 本 Cloud Browser 對 `127.0.0.1` 回 `ERR_BLOCKED_BY_CLIENT`，故不把本機瀏覽器視為驗收證據；發布後必須在正式 HTTPS 網址檢查 `app.js?v=91`、輔仁與北港文字均不存在、學校選單只含嘉中／嘉女。
+
+### 發布狀態
+- 程式與測試已完成；本節記錄的 commit／tree 將作為唯一正式基準。尚待更新 `main`、等待 GitHub Pages success 並完成正式站驗證。

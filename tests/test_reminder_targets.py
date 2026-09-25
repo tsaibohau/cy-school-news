@@ -16,7 +16,11 @@ def main():
             {"kind": "event", "date": "2099-09-20", "provenance": "verified_announcement_event", "source_revision": revision},
             {"kind": "deadline", "date": "2099-01-01", "provenance": "publication"},
         ],
-    }, {"id": "publication-only", "title": "發布", "date": "2099-12-31", "url": "https://school.example/p"}]
+    }, {"id": "publication-only", "title": "發布", "date": "2099-12-31", "url": "https://school.example/p"}, {
+        "id": "fjsh-disabled", "school": "fjsh", "title": "停用來源事件",
+        "url": "https://school.example/fjsh", "detail_revision": revision,
+        "calendar_events": [{"kind": "event", "date": "2099-09-21", "provenance": "verified_announcement_event", "source_revision": revision}],
+    }]
     calendars = [{
         "id": "exam", "title": "段考", "start_date": "2099-10-01",
         "source_url": "https://school.example/calendar.pdf", "source_revision": revision,
@@ -27,6 +31,7 @@ def main():
     assert all(row["target_at"].endswith("+08:00") for row in rows)
     assert all(row["source_revision"] == revision for row in rows)
     assert not any("publication-only" in row["target_id"] for row in rows)
+    assert not any("fjsh-disabled" in row["target_id"] for row in rows)
     workflow = (ROOT / ".github/workflows/scrape-hourly.yml").read_text(encoding="utf-8")
     source = (ROOT / "scraper/reminder_targets.py").read_text(encoding="utf-8")
     assert "python scraper/reminder_targets.py" in workflow
