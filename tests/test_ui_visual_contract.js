@@ -20,6 +20,7 @@ assert.match(style, /\.day-dot\.school-cysh[\s\S]*var\(--cysh\)/, "CYSH calendar
 assert.match(style, /\.day-dot\.school-cygsh[\s\S]*var\(--cygsh\)/, "CYGSH calendar events use the CYGSH color");
 assert.doesNotMatch(index, /<option value="pksh">/, "damaged PKSH source stays out of static selectors");
 assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*\{ pksh: true \}/, "damaged PKSH data is filtered before rendering");
+assert.match(app, /\^pksh\(\?:-\|\$\)\//, "PKSH-prefixed historical records are filtered even when id appears before school");
 assert.match(style, /#btnRefresh\.is-refreshing svg/);
 assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion preference remains respected");
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,

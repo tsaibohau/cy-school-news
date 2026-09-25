@@ -1594,3 +1594,4 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 發布狀態
 - 程式、資料、測試與 PWA cache bump 均已準備；尚待提交、更新 `main`、等待 GitHub Pages 完成並驗證正式頁面。
+- 第一個正式 commit `489048e` 上線後的瀏覽器驗證發現三筆 `pksh-*` 公告仍顯示：初版 `visibleSchool` 先取 announcement `id`，未繼續檢查 `school=pksh`。已改為同時檢查 `school`、`school_id` 與 `id` 前綴並再 bump PWA cache；此為前向修正，不回退行事曆資料。

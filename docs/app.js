@@ -53,7 +53,13 @@
     var accountAuth = null;
     var searchTimer = null;
     var HIDDEN_SCHOOL_IDS = { pksh: true };
-    function visibleSchool(row) { return row && !HIDDEN_SCHOOL_IDS[String(row.id || row.school || row.school_id || "")]; }
+    function visibleSchool(row) {
+      if (!row) return false;
+      return [row.school, row.school_id, row.id].every(function (value) {
+        value = String(value || "");
+        return !HIDDEN_SCHOOL_IDS[value] && !/^pksh(?:-|$)/.test(value);
+      });
+    }
 
     var state = {
       data: null,
