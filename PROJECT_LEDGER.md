@@ -1574,3 +1574,4 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 最終狀態
 【已完成】Production DB migration、main merge、GitHub Pages 發布與靜態內容核對均成功。正式網址：https://tsaibohau.github.io/cy-school-news/
+- 2026-09-25 PR 歸屬修正：使用者指出正式發布必須由原 PR #30 完成，不應以 PR #31 取代。逐檔比對確認 main 的九個前端程式檔與 PR #30 head `29b1de4` 完全一致；差異僅為保留今天 Actions 產生的最新資料、RLS 測試 fixture 與發行紀錄。後續將目前 main 合併進原 PR #30 分支，保留 main 全部現況，再合併 PR #30，使原 PR lineage 正式進入 main；不改網站內容、不覆寫公告資料、不重跑 Production migration。
