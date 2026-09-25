@@ -3,35 +3,29 @@
   "use strict";
 
   var KEYS = ["member_content", "assistant", "timetable", "calendar", "notifications"];
-  var PUBLIC_KEYS = ["member_content", "assistant", "timetable", "calendar"];
   var LABELS = { member_content: "會員摘要", assistant: "問校務", timetable: "課表", calendar: "行事曆", notifications: "訂閱通知" };
   var current = emptyMap();
-  var publicCurrent = emptyMap();
   var adminRows = {};
   var approved = false;
-  var authenticated = false;
-  var owner = false;
   var observerStarted = false;
 
   function emptyMap() {
     return { member_content: false, assistant: false, timetable: false, calendar: false, notifications: false };
   }
-  function normalizeFor(rows, allowedKeys) {
+  function normalize(rows) {
     var out = emptyMap();
     if (rows && !Array.isArray(rows) && typeof rows === "object") {
-      allowedKeys.forEach(function (key) { out[key] = rows[key] === true; });
+      KEYS.forEach(function (key) { out[key] = rows[key] === true; });
       return out;
     }
     (Array.isArray(rows) ? rows : []).forEach(function (row) {
-      if (row && allowedKeys.indexOf(row.capability) !== -1) out[row.capability] = row.enabled === true;
+      if (row && KEYS.indexOf(row.capability) !== -1) out[row.capability] = row.enabled === true;
     });
     return out;
   }
-  function normalize(rows) { return normalizeFor(rows, KEYS); }
-  function normalizePublic(rows) { return normalizeFor(rows, PUBLIC_KEYS); }
   function snapshot() { return normalize(current); }
-  function has(key) { return (approved ? current[key] : !authenticated && publicCurrent[key]) === true; }
-  function any(keys) { return keys.some(function (key) { return has(key); }); }
+  function has(key) { return approved && current[key] === true; }
+  function any(keys) { return approved && keys.some(function (key) { return current[key] === true; }); }
   function anyPersonal() { return any(["assistant", "timetable", "calendar", "notifications"]); }
   function setHidden(node, hidden) {
     if (node && node.hidden !== !!hidden) node.hidden = !!hidden;
@@ -41,40 +35,23 @@
     var node = document.getElementById("publicAccessStatus");
     if (node) node.textContent = text;
   }
-  function setButtonAvailability(button, allowed, reason) {
-    if (!button) return;
-    button.disabled = !allowed;
-    button.setAttribute("aria-disabled", allowed ? "false" : "true");
-    button.classList.toggle("is-capability-disabled", !allowed);
-    var detail = button.querySelector("small");
-    if (detail) {
-      if (!detail.hasAttribute("data-available-copy")) detail.setAttribute("data-available-copy", detail.textContent);
-      var copy = allowed ? detail.getAttribute("data-available-copy") : reason;
-      if (detail.textContent !== copy) detail.textContent = copy;
-    }
-  }
 
   function applyVisibility() {
     if (typeof document === "undefined") return;
-    var publicEntry = !authenticated && any(["assistant", "timetable", "calendar"]);
     var map = {
       tabAssistant: has("assistant"),
       tabTimetable: has("timetable"),
       tabCalendar: has("calendar"),
       tabSub: anyPersonal(),
-      tabHome: true,
+      tabHome: anyPersonal(),
       tabToday: anyPersonal(),
-      functionDock: approved || publicEntry,
     };
     Object.keys(map).forEach(function (id) { setHidden(document.getElementById(id), !map[id]); });
-    setHidden(document.getElementById("addEvent"), !(authenticated && approved && current.calendar));
 
     document.querySelectorAll("[data-home-tab]").forEach(function (button) {
       var tab = button.getAttribute("data-home-tab");
-      var allowed = tab === "latest" || tab === "sub" || tab === "today" && anyPersonal() || tab === "assistant" && has("assistant") || tab === "calendar" && has("calendar");
-      var reason = authenticated ? "此功能目前未開放" : "此功能目前未對訪客開放";
-      setHidden(button, false);
-      setButtonAvailability(button, allowed, reason);
+      var allowed = tab === "latest" || tab === "today" && anyPersonal() || tab === "assistant" && has("assistant") || tab === "calendar" && has("calendar") || tab === "sub" && anyPersonal();
+      setHidden(button, !allowed);
     });
     document.querySelectorAll("[data-today-action='task']").forEach(function (node) { setHidden(node, !has("calendar")); });
     document.querySelectorAll("[data-today-action='keyword']").forEach(function (node) { setHidden(node, !has("notifications")); });
@@ -90,10 +67,12 @@
     var profileExtra = document.querySelector("#profileForm fieldset.full-service-only");
     setHidden(profileExtra, !(has("assistant") || has("notifications")));
 
-    document.querySelectorAll("button[data-detail-id], button[data-read-id], .read-state, .mark-read").forEach(function (node) {
-      setHidden(node, !has("member_content"));
-    });
-    document.querySelectorAll("button[data-add-task]").forEach(function (node) { setHidden(node, !has("calendar")); });
+    if (approved && !has("member_content")) {
+      document.querySelectorAll("button[data-detail-id], button[data-read-id], .read-state, .mark-read").forEach(function (node) { setHidden(node, true); });
+    }
+    if (approved && !has("calendar")) {
+      document.querySelectorAll("button[data-add-task]").forEach(function (node) { setHidden(node, true); });
+    }
   }
 
   function capabilitySummary(map) {
@@ -159,49 +138,21 @@
     });
   }
 
-  function renderPublicCapabilities() {
-    if (typeof document === "undefined") return;
-    var existing = document.getElementById("publicCapabilityEditor");
-    if (!owner) {
-      if (existing) existing.remove();
-      return;
-    }
-    var admin = document.getElementById("viewAdmin");
-    if (!admin || existing) return;
-    var box = document.createElement("fieldset");
-    box.id = "publicCapabilityEditor";
-    box.className = "capability-editor";
-    box.innerHTML = '<legend>PUBLIC／未登入權限</legend><p class="hint">這些開關影響所有未登入訪客，並由資料庫 RPC 同步強制執行。個人化通知必須登入，不屬於 PUBLIC 權限。</p><div class="capability-grid">' + PUBLIC_KEYS.map(function (key) {
-      return '<label class="capability-option"><input type="checkbox" data-public-capability="' + key + '"' + (publicCurrent[key] ? " checked" : "") + '> <span>' + LABELS[key] + '</span></label>';
-    }).join("") + '</div><button type="button" class="btn-primary">儲存 PUBLIC 權限</button><span class="capability-save-state" aria-live="polite"></span>';
-    box.querySelector("button").addEventListener("click", function () {
-      var next = emptyMap(), state = box.querySelector(".capability-save-state");
-      PUBLIC_KEYS.forEach(function (key) { next[key] = box.querySelector('[data-public-capability="' + key + '"]').checked; });
-      box.disabled = true; state.textContent = "儲存中";
-      root.__CYNEWS_SET_PUBLIC_CAPABILITIES(next).then(function () {
-        publicCurrent = normalizePublic(next); state.textContent = "已儲存"; applyVisibility();
-      }).catch(function () { state.textContent = "儲存失敗：僅主要管理員可修改"; }).finally(function () { box.disabled = false; });
-    });
-    var heading = admin.querySelector(".admin-subheading");
-    admin.insertBefore(box, heading ? heading.nextSibling : admin.firstChild);
-  }
-
   function requiredForTarget(target) {
     if (!target || typeof target.closest !== "function") return null;
     if (target.closest("#tabAssistant,[data-home-tab='assistant']")) return "assistant";
     if (target.closest("#tabTimetable")) return "timetable";
     if (target.closest("#tabCalendar,[data-home-tab='calendar']")) return "calendar";
-    if (target.closest("#addEvent,#eventForm,[data-edit-event],[data-delete-event]")) return "member_calendar";
-    if (target.closest("#tabSub,[data-home-tab='sub'],#tabHome")) return null;
-    if (target.closest("#tabToday,[data-home-tab='today']")) return "personal";
+    if (target.closest("#tabSub,[data-home-tab='sub']")) return "personal";
+    if (target.closest("#tabHome,#tabToday,[data-home-tab='today']")) return "personal";
     if (target.closest("[data-today-action='task'],button[data-add-task]")) return "calendar";
     if (target.closest("[data-today-action='keyword']")) return "notifications";
     if (target.closest("button[data-detail-id],button[data-read-id],.mark-read")) return "member_content";
     return null;
   }
   function allowedRequirement(requirement) {
+    if (!approved) return true;
     if (requirement === "personal") return anyPersonal();
-    if (requirement === "member_calendar") return authenticated && approved && current.calendar;
     return !requirement || has(requirement);
   }
 
@@ -219,7 +170,6 @@
     new MutationObserver(function () {
       applyVisibility();
       renderAdminCapabilities();
-      renderPublicCapabilities();
     }).observe(document.documentElement, { childList: true, subtree: true });
     applyVisibility();
     renderAdminCapabilities();
@@ -238,26 +188,11 @@
             if (result.error) throw result.error;
             current = normalize(result.data);
             approved = access.status === "approved";
-            authenticated = true;
-            owner = access.admin_role === "owner";
             access.capabilities = snapshot();
             setTimeout(applyVisibility, 0);
             return access;
           });
         });
-      };
-      controller.getPublicCapabilities = function () {
-        return controller.getClient().then(function (client) { return client.rpc("current_public_capabilities"); }).then(function (result) {
-          if (result.error) throw result.error;
-          publicCurrent = normalizePublic(result.data); setTimeout(function () { applyVisibility(); renderPublicCapabilities(); }, 0);
-          return normalizePublic(publicCurrent);
-        });
-      };
-      controller.setPublicCapabilities = function (capabilities) {
-        return controller.getClient().then(function (client) { return client.rpc("owner_set_public_capabilities", { next_capabilities: normalizePublic(capabilities) }); }).then(function (result) { if (result.error) throw result.error; });
-      };
-      controller.getAuthCutoverReadiness = function () {
-        return controller.getClient().then(function (client) { return client.rpc("owner_auth_cutover_readiness"); }).then(function (result) { if (result.error) throw result.error; return result.data && result.data[0]; });
       };
       controller.getAdminAccounts = function (filters) {
         return originalAdmin.call(controller, filters).then(function (rows) {
@@ -283,7 +218,6 @@
         }).then(function (result) { if (result.error) throw result.error; });
       };
       root.__CYNEWS_SET_CAPABILITIES = controller.setAccountCapabilities;
-      root.__CYNEWS_SET_PUBLIC_CAPABILITIES = controller.setPublicCapabilities;
       return controller;
     };
     api.__capabilityWrapped = true;
@@ -291,13 +225,11 @@
 
   root.CyNewsCapabilities = {
     KEYS: KEYS.slice(),
-    PUBLIC_KEYS: PUBLIC_KEYS.slice(),
     LABELS: Object.assign({}, LABELS),
     current: snapshot,
     has: has,
     anyPersonal: anyPersonal,
     applyVisibility: applyVisibility,
-    setAuthenticated: function (value) { authenticated = value === true; if (!authenticated) { approved = false; owner = false; current = emptyMap(); } applyVisibility(); },
   };
 
   var assignedAuth = root.CyNewsAccountAuth;

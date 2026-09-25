@@ -112,7 +112,6 @@ a { color: inherit; }
   background: var(--card); color: var(--ink); font: inherit; font-size: 16px; cursor: pointer;
 }
 .school-filter select:focus { outline: 2px solid var(--cysh); outline-offset: 1px; }
-.calendar-school-filter { margin: 0 0 12px; }
 
 .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
 .chips::-webkit-scrollbar { display: none; }
@@ -332,7 +331,6 @@ body { background: var(--paper); }
 .section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 12px; }
 .section-heading h3 { margin: 0; font-family: var(--serif); font-size: 18px; }
 .calendar-toolbar { display: flex; align-items: center; gap: 8px; margin: 8px 0 12px; }
-.calendar-import { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 .calendar-toolbar h3 { flex: 1; text-align: center; margin: 0; font-size: 18px; }
 .calendar-toolbar .btn-ghost { margin-left: 5px; }
 .calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; padding: 10px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
@@ -371,12 +369,6 @@ body { background: var(--paper); }
 .today-empty { padding: 18px 0; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 .today-empty p { flex-basis: 100%; margin: 0 0 2px; }
 .agenda-mark { width: 8px; min-width: 8px; height: 8px; margin-top: 7px; border-radius: 50%; background: var(--cysh); }.agenda-mark.deadline { background: #eb8d4d; }.agenda-mark.user { background: #40a27c; }
-.calendar-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 0 0 12px; color: var(--muted); font-size: 13px; }
-.calendar-legend span { display: inline-flex; align-items: center; gap: 6px; }
-.calendar-legend .day-dot { display: inline-block; width: 10px; height: 10px; flex: none; }
-.day-dot.school-cysh, .agenda-mark.school-cysh { background: var(--cysh); }
-.day-dot.school-cygsh, .agenda-mark.school-cygsh { background: var(--cygsh); }
-.day-dot.school-personal, .agenda-mark.school-personal { background: #278663; }
 .agenda-item h4 { margin: 0; font-size: 15px; }.agenda-item p { margin: 2px 0 0; color: var(--muted); font-size: 12.5px; }.agenda-item a { color: var(--cysh); font-size: 12px; }
 .event-actions { display: flex; gap: 6px; margin-top: 8px; }
 .event-actions .btn-ghost { padding: 4px 9px; font-size: 12px; }
@@ -786,10 +778,6 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
 .home-action, .home-action-primary { grid-column: auto; min-height: 118px; padding: 15px; grid-template-columns: 1fr; align-content: start; gap: 7px; border-radius: 16px; background: var(--card); color: var(--ink); box-shadow: none; }
 .home-action > span, .home-action-primary > span { grid-row: auto; width: 34px; height: 34px; border-radius: 10px; background: var(--chip-bg); color: var(--cysh); }
 .home-action strong { align-self: auto; font-size: 15px; }.home-action small, .home-action-primary small { color: var(--muted); font-size: 12px; }
-.home-action.is-capability-disabled,
-.home-action:disabled { opacity: .52; filter: grayscale(.72); cursor: not-allowed; box-shadow: none; }
-.home-action.is-capability-disabled > span,
-.home-action:disabled > span { color: var(--muted); background: var(--chip-bg); }
 .controls { grid-template-columns: minmax(280px,1fr) minmax(180px,260px); align-items: center; gap: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 18px; background: var(--card); }
 #q, .school-filter select { min-height: 46px; border-color: var(--line); background: var(--paper); box-shadow: none; }
 .chips { grid-column: 1/-1; }.chip { padding: 7px 12px; border: 0; font-weight: 600; }.chip.is-active { background: var(--cysh); color: #fff; }

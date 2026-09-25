@@ -13,12 +13,8 @@
   var META_KEY = "cyNews.accountState.v1:meta";
   var ANONYMOUS_ACCOUNT = "anonymous";
   var TaskState = root && root.CyNewsTaskState;
-  var CalendarState = root && root.CyNewsCalendarState;
   if (!TaskState && typeof require === "function") {
     try { TaskState = require("./task-state.js"); } catch (_) { /* browser-only load may provide it later */ }
-  }
-  if (!CalendarState && typeof require === "function") {
-    try { CalendarState = require("./calendar-state.js"); } catch (_) { /* browser-only load may provide it later */ }
   }
 
   function normalizeKeyword(value) {
@@ -102,7 +98,7 @@
     return normalizePreferences(candidate);
   }
   function emptyState() {
-    return { subscriptions: [], reads: [], preferences: { schema_version: VERSION, preferences: {} }, tasks: [], calendar_events: [] };
+    return { subscriptions: [], reads: [], preferences: { schema_version: VERSION, preferences: {} }, tasks: [] };
   }
   function clone(value) { return JSON.parse(JSON.stringify(value)); }
   function validState(value) {
@@ -114,8 +110,6 @@
     if (!validState(value)) return emptyState();
     var result = clone(value);
     result.tasks = TaskState && typeof TaskState.merge === "function" ? TaskState.merge([], result.tasks || []) : (Array.isArray(result.tasks) ? result.tasks : []);
-    result.calendar_events = CalendarState && typeof CalendarState.normalize === "function" ?
-      CalendarState.normalize(result.calendar_events || []) : (Array.isArray(result.calendar_events) ? result.calendar_events : []);
     return result;
   }
   function mergeAccountState(local, remote) {
@@ -126,8 +120,6 @@
       reads: mergeReads(local.reads, remote.reads),
       preferences: mergePreferences(local.preferences, remote.preferences),
       tasks: TaskState && typeof TaskState.merge === "function" ? TaskState.merge(local.tasks, remote.tasks) : [],
-      calendar_events: CalendarState && typeof CalendarState.merge === "function" ?
-        CalendarState.merge(local.calendar_events, remote.calendar_events) : [],
     };
   }
   function safeGet(storage, key) {
@@ -252,19 +244,12 @@
   AccountLifecycle.prototype.saveMeta = function () { safeSet(this.storage, META_KEY, JSON.stringify(this.meta)); };
   AccountLifecycle.prototype.loadState = function (id, fallback) {
     var raw = safeGet(this.storage, this.stateKey(id));
-    var result = raw == null ? safeState(fallback || emptyState()) : safeState(parseObject(raw));
-    if (CalendarState && typeof CalendarState.cacheKey === "function" &&
-        safeGet(this.storage, CalendarState.cacheKey(accountId(id))) != null) {
-      result.calendar_events = CalendarState.loadCache(this.storage, accountId(id));
-    }
-    return result;
+    if (raw == null) return safeState(fallback || emptyState());
+    var value = parseObject(raw);
+    return safeState(value);
   };
   AccountLifecycle.prototype.persistState = function (id, state) {
-    var normalized = safeState(state);
-    safeSet(this.storage, this.stateKey(id), JSON.stringify(normalized));
-    if (CalendarState && typeof CalendarState.saveCache === "function") {
-      CalendarState.saveCache(this.storage, accountId(id), normalized.calendar_events);
-    }
+    safeSet(this.storage, this.stateKey(id), JSON.stringify(safeState(state)));
   };
   AccountLifecycle.prototype.state = function () { return clone(this.active_state); };
   AccountLifecycle.prototype.applyMutation = function (type, payload) {
@@ -290,9 +275,6 @@
     } else if (type.indexOf("task.") === 0) {
       if (!TaskState || typeof TaskState.applyMutation !== "function") throw new Error("task state unavailable");
       next.tasks = TaskState.applyMutation(next.tasks, type, payload, now);
-    } else if (type.indexOf("calendar.") === 0) {
-      if (!CalendarState || typeof CalendarState.applyMutation !== "function") throw new Error("calendar state unavailable");
-      next.calendar_events = CalendarState.applyMutation(next.calendar_events, type, payload, now);
     } else {
       throw new Error("unsupported account mutation");
     }
@@ -322,11 +304,7 @@
     var existing = safeGet(this.storage, this.stateKey(id)) != null ?
       this.loadState(id, emptyState()) : (this.accounts[id] || emptyState());
     if (!this.meta.anonymous_adopted) {
-      /* Anonymous calendar v2 has no safe account owner. Other historical
-         anonymous domains keep their one-time adoption behavior. */
-      var adoptableAnonymous = clone(this.anonymous);
-      adoptableAnonymous.calendar_events = [];
-      existing = mergeAccountState(existing, adoptableAnonymous);
+      existing = mergeAccountState(existing, this.anonymous);
       this.meta.adopted[id] = true;
       this.meta.anonymous_adopted = true;
       this.meta.adopted_account_id = id;
@@ -356,41 +334,12 @@
     if (id === ANONYMOUS_ACCOUNT) throw new Error("authenticated account required");
     safeRemove(this.storage, this.stateKey(id));
     safeRemove(this.storage, OUTBOX_PREFIX + id);
-    if (CalendarState && typeof CalendarState.clearCache === "function") CalendarState.clearCache(this.storage, id);
     delete this.accounts[id];
     if (this.active_account_id === id) {
       this.active_account_id = ANONYMOUS_ACCOUNT;
       this.active_state = this.loadState(ANONYMOUS_ACCOUNT, this.anonymous);
       this.anonymous = clone(this.active_state);
     }
-    return this.state();
-  };
-  AccountLifecycle.prototype.reconcileCalendarEvent = function (row) {
-    if (!CalendarState || typeof CalendarState.reconcile !== "function") throw new Error("calendar state unavailable");
-    var next = clone(this.active_state);
-    next.calendar_events = CalendarState.reconcile(next.calendar_events, row);
-    this.active_state = safeState(next);
-    this.persistState(this.active_account_id, this.active_state);
-    if (this.active_account_id === ANONYMOUS_ACCOUNT) this.anonymous = clone(this.active_state);
-    else this.accounts[this.active_account_id] = clone(this.active_state);
-    return this.state();
-  };
-  AccountLifecycle.prototype.replaceCalendarEvents = function (rows) {
-    var next = clone(this.active_state);
-    next.calendar_events = CalendarState && typeof CalendarState.normalize === "function" ? CalendarState.normalize(rows) : [];
-    this.active_state = safeState(next);
-    this.persistState(this.active_account_id, this.active_state);
-    if (this.active_account_id === ANONYMOUS_ACCOUNT) this.anonymous = clone(this.active_state);
-    else this.accounts[this.active_account_id] = clone(this.active_state);
-    return this.state();
-  };
-  AccountLifecycle.prototype.discardCalendarEvent = function (id) {
-    var next = clone(this.active_state);
-    next.calendar_events = (next.calendar_events || []).filter(function (row) { return row.id !== String(id); });
-    this.active_state = safeState(next);
-    this.persistState(this.active_account_id, this.active_state);
-    if (this.active_account_id === ANONYMOUS_ACCOUNT) this.anonymous = clone(this.active_state);
-    else this.accounts[this.active_account_id] = clone(this.active_state);
     return this.state();
   };
   AccountLifecycle.prototype.updateAnonymous = function (state) {
