@@ -1628,3 +1628,27 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 唯一正確版本
 【CANONICAL】自本 checkpoint 起，只有包含 `db8b5e0` 停用邏輯及其後續 Action 資料更新的 `main` 是正確正式基準；先前 PR、分支、部署與未含此停用規則的 commit 均不得作為回復或新開發基礎。
+
+## 2026-09-25 21:35（Asia/Taipei）｜輔仁顯示名稱漏網修正與嘉義限定 UI
+
+### 根因與修正
+- 使用者照片證明停用後仍有公告卡片顯示「輔仁高中」。上一版 `visibleSchool()` 只檢查 `school`、`school_id` 與 `id`，遇到來源識別欄位不一致、但 `school_name` 仍為輔仁的歷史列時可漏過。
+- 統一停用 gate 現在同時檢查 `school`、`school_id`、`source_id`、`id` 與學校顯示名稱 aliases；`latestItems()` 與 `cardHTML()` 再各自 fail-closed，避免其他資料路徑繞過載入階段過濾。
+- UI 品牌由「嘉雲校訊」改為「嘉義校訊」；首頁說明改為「嘉義兩校」，manifest 與法律說明明確寫目前只整合嘉義高中、嘉義女中。通知、行事曆輸出名稱與 staging manifest 同步更新。
+- PWA 更新為 `app.js?v=92`、cache `cy-news-v96`。
+
+### 驗證
+- PASS：`python tests/test_parser.py`、`test_calendar_adapter.py`、`test_reminder_targets.py`。
+- PASS：`node tests/test_ui_visual_contract.js`（新增錯誤來源 ID + 輔仁顯示名稱的實際函式測試）、`test_account_auth.js`、`test_calendar_browser_load_order.js`、`test_pwa_notification.js`、`test_relevance.js`、`test_staging_build.js`。
+- PASS：`git diff --check`。
+- 瀏覽器 CLI 驗收【無法執行】：技能指定的 `agent-browser` 與替代 Chromium/Playwright 均未安裝；不是網站或測試失敗。發布後仍須以正式 HTTPS 頁面驗證品牌、兩校說明及輔仁／北港 0 筆。
+
+### 發布狀態
+- branch：`codex/fix-fjsh-ui-chiayi-20260925`，基準為 canonical `origin/main` `b95ea8282a1050a9cc38357e08ba6c558af3ab97`。
+- 產品、測試與 ledger 已完成，尚待 commit、fast-forward 更新 `main`、GitHub Pages success 與正式站驗收。
+
+### 精確中斷點
+- 產品 commit：`ac315c6bef3d093618fc27f28a3cdbddad7d6f73`；tree：`68a2317d4c99fde009b90c7d40e54ca6f67957a2`。
+- 嘗試 `git push origin HEAD:main` 時被執行環境安全閘門拒絕：本輪使用者要求修改，但未明確寫出可略過 PR／確認流程直接觸發 Production GitHub Pages deployment。命令沒有執行，`origin/main` 未變。
+- 下一個唯一允許動作：先將 commit 推到同名功能分支保存；等待使用者明確授權「不建立 PR，直接推送 main／部署正式站」後，才可 fast-forward main，等待 Pages 並驗收。
+- 功能分支保存也失敗：HTTPS remote 要求 Username，目前工作環境沒有 GitHub credential；沒有任何遠端變更。含 blocker 紀錄的本機 HEAD 為 `f7a4d3c`。下一輪若使用者明確授權正式部署，可先嘗試目前工作環境受支援的 GitHub 寫入流程；若仍無 credential，停止並回報，不擴張到 PAT 或其他認證方案。

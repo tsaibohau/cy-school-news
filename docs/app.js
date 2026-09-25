@@ -1,4 +1,4 @@
-/* 嘉雲校訊 前端邏輯(無框架) */
+/* 嘉義校訊 前端邏輯(無框架) */
 (function () {
   "use strict";
 
@@ -53,9 +53,13 @@
     var accountAuth = null;
     var searchTimer = null;
     var HIDDEN_SCHOOL_IDS = { fjsh: true, pksh: true };
+    var HIDDEN_SCHOOL_NAMES = /(?:輔仁高中|輔仁中學|私立輔仁高級中學|北港高中|北港高級中學)/;
     function visibleSchool(row) {
       if (!row) return false;
-      return [row.school, row.school_id, row.id].every(function (value) {
+      if ([row.school_name, row.schoolName, row.school_short, row.short, row.name].some(function (value) {
+        return HIDDEN_SCHOOL_NAMES.test(String(value || ""));
+      })) return false;
+      return [row.school, row.school_id, row.source_id, row.id].every(function (value) {
         value = String(value || "");
         return !HIDDEN_SCHOOL_IDS[value] && !/^(?:fjsh|pksh)(?:-|$)/.test(value);
       });
@@ -1070,7 +1074,7 @@
         var usernameField = el.passwordAuthUsername.parentNode;
         var passwordField = el.passwordAuthPassword.parentNode;
         el.passwordAuthDialog.dataset.mode = mode;
-        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉雲校訊";
+        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉義校訊";
         el.passwordAuthHint.textContent = signup ? "帳號名稱限 3～32 個英文字母、數字或底線，須以英文字母開頭；密碼至少 6 個字元。完成 Email 驗證後等待管理員核准。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "請輸入 Email 或帳號名稱與密碼。";
         usernameField.hidden = reset;
         el.passwordAuthUsername.disabled = reset;
@@ -1595,6 +1599,7 @@
     function latestItems() {
       if (!state.data) return [];
       var candidates = state.data.items.filter(function (it) {
+        if (!visibleSchool(it)) return false;
         if (state.school !== "all" && it.school !== state.school) return false;
         if (state.cat !== "all" && it.category !== state.cat) return false;
         return true;
@@ -1823,6 +1828,7 @@
         '<details class="timetable-week"><summary>查看整週課表</summary><div class="timetable-grid-wrap"><div class="timetable-grid timetable-grid-head"><div>節次</div>' + weekdays.map(function (day) { return '<div>' + esc(day.replace("星期", "週")) + '</div>'; }).join("") + '</div><div class="timetable-grid">' + grid + '</div></div></details>';
     }
     function cardHTML(it) {
+      if (!visibleSchool(it)) return "";
       var member = hasSignedInAccount();
       var schoolClass = it.school === "cysh" ? "tag-cysh" : (it.school === "fjsh" ? "tag-fjsh" : "tag-cygsh");
       var catClass = it.category === "榮譽榜" ? " cat-honor" : "";
@@ -2212,7 +2218,7 @@
           ? (personalCount === 1 ? "與你相關的新公告：" + candidates.find(function (item) { return byId[item.id].personalized; }).title :
             "有 " + personalCount + " 則與你相關的新公告")
           : "有 " + candidates.length + " 則符合訂閱關鍵字的新公告";
-        new window.Notification("嘉雲校訊", {
+        new window.Notification("嘉義校訊", {
           body: body,
           icon: "icons/icon-192.png",
         });

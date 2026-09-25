@@ -23,6 +23,23 @@ assert.doesNotMatch(index, /<option value="fjsh">/, "disabled FJSH source stays 
 assert.doesNotMatch(index, /輔仁高中/, "disabled FJSH source stays out of public interface copy");
 assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*\{ fjsh: true, pksh: true \}/, "disabled schools are filtered before rendering");
 assert.match(app, /\^\(\?:fjsh\|pksh\)\(\?:-\|\$\)\//, "disabled-school historical records are filtered even when id appears before school");
+assert.match(app, /HIDDEN_SCHOOL_NAMES[\s\S]*輔仁高中[\s\S]*北港高中/, "disabled schools are also rejected by display-name aliases");
+assert.match(app, /function cardHTML\(it\) \{[\s\S]*if \(!visibleSchool\(it\)\) return "";/, "card rendering fails closed for disabled sources");
+assert.match(index, /嘉義校訊/, "the interface identifies the active Chiayi-only service");
+assert.match(index, /從嘉義兩校公告中找到資訊/, "the interface describes the current two-school scope truthfully");
+assert.doesNotMatch(index, /嘉雲校訊|從三校公告中/, "retired cross-county and three-school copy is removed");
+
+{
+  const vm = require("vm");
+  const context = vm.createContext({});
+  const start = app.indexOf("    var HIDDEN_SCHOOL_IDS");
+  const end = app.indexOf("    var state = {", start);
+  vm.runInContext(app.slice(start, end), context);
+  assert.equal(context.visibleSchool({ id: "legacy-1", school: "unknown", school_name: "輔仁高中" }), false,
+    "a malformed legacy row cannot bypass FJSH filtering through its display name");
+  assert.equal(context.visibleSchool({ id: "legacy-2", school: "cysh", school_name: "嘉義高中" }), true,
+    "an active Chiayi school remains visible");
+}
 assert.match(style, /#btnRefresh\.is-refreshing svg/);
 assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion preference remains respected");
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
