@@ -1652,3 +1652,13 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 嘗試 `git push origin HEAD:main` 時被執行環境安全閘門拒絕：本輪使用者要求修改，但未明確寫出可略過 PR／確認流程直接觸發 Production GitHub Pages deployment。命令沒有執行，`origin/main` 未變。
 - 下一個唯一允許動作：先將 commit 推到同名功能分支保存；等待使用者明確授權「不建立 PR，直接推送 main／部署正式站」後，才可 fast-forward main，等待 Pages 並驗收。
 - 功能分支保存也失敗：HTTPS remote 要求 Username，目前工作環境沒有 GitHub credential；沒有任何遠端變更。含 blocker 紀錄的本機 HEAD 為 `f7a4d3c`。下一輪若使用者明確授權正式部署，可先嘗試目前工作環境受支援的 GitHub 寫入流程；若仍無 credential，停止並回報，不擴張到 PAT 或其他認證方案。
+
+### 最終發布驗證
+- 使用者已明確授權不建立 PR、直接更新 `main`。native Git 仍無 HTTPS credential，改用已連線且受支援的 GitHub App Git Data API 建立 blobs/tree/commit 並以 non-force fast-forward 更新 `main`；未使用 PAT、未改寫歷史。
+- 正式 commit：`3503fbe39cfb983b5a28e5a92cf5a0b41bbf06c6`，parent 為 canonical `b95ea8282a1050a9cc38357e08ba6c558af3ab97`；GitHub ref update 回傳 success，Vercel status success。
+- GitHub Pages 正式網址回 HTTP 200，Last-Modified `2026-09-25 04:40:52 UTC`；HTML 已載入 `app.js?v=92` 且顯示「嘉義校訊」「從嘉義兩校公告中找到資訊」。
+- 正式 `app.js` 與本地檔案 SHA-256 完全一致，包含顯示名稱 alias 過濾及 `cardHTML()` fail-closed；正式 manifest 亦與本地 SHA-256 一致，只列嘉義高中與嘉義女中。
+- 因執行環境沒有 browser CLI，本輪正式驗收以 HTTP 200、正式檔案逐位元一致、實際函式 behavioral test 與完整關聯測試為證據；未宣稱完成視覺瀏覽器截圖驗收。
+
+### 新唯一正確版本
+【CANONICAL】自本 checkpoint 起，`main` 的 `3503fbe` 及其後續只含本節 ledger 收尾的 commit 是唯一正確正式基準；舊 PR、舊分支與未含名稱 alias fail-closed 的版本不得作為回復基準。
