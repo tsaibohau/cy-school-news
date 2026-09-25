@@ -1674,3 +1674,11 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - PASS：`test_ui_visual_contract.js`、`test_account_auth.js`、`test_pwa_notification.js`、`test_staging_build.js`、`git diff --check`。
 - branch：`codex/legal-current-scope-20260925`，基準 `origin/main` `d8e5a337e8fd660b593c5bb33a3a366642b7d856`。
 - 尚待 commit、以 non-force fast-forward 更新 `main`、等待 Pages 並核對正式法律頁內容與 cache 規則。
+
+### 最終發布驗證
+- 正式 commit：`5b485243b7dc328a36142d27e561ec5b59f56108`，以 GitHub App Git Data API non-force fast-forward 更新 `main`，未建立 PR、未改寫歷史。
+- 正式法律頁已顯示更新日期 2026-09-25、來源只列嘉義高中與嘉義女中、停用來源說明及「返回嘉義校訊」。
+- 正式 Service Worker 已載入 `cy-news-v97`，`legal.html` 命中 network-first 規則；正式 `legal.html`、`sw.js` 與本地 SHA-256 均逐位元一致。
+
+### 新唯一正確版本
+【CANONICAL】`main` 的 `5b48524` 及其後續只含本節 ledger 收尾的 commit 是唯一正確正式基準；不得回復到會快取舊法律頁或仍列輔仁來源的版本。
