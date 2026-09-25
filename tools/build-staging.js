@@ -20,6 +20,7 @@ const shellInputs = [
   "school-registry.js", "profile.js", "relevance.js", "assistant-feedback.js", "today.js", "search-taxonomy.js", "search-query.js", "announcement-validity-reviewed.js", "announcement-validity.js", "assistant-qa.js", "calendar-state.js",
   path.join("..", "tools", "staging", "acceptance-user-tasks.js"),
   path.join("..", "tools", "staging", "acceptance-companion.html"),
+  path.join("..", "artifacts", "calendar-parser-1151", "candidate-calendar-events.json"),
   path.join("..", "tools", "staging", "staging.css"),
 ];
 const shellRevision = "staging-" + crypto.createHash("sha256")
@@ -42,6 +43,22 @@ if (fs.existsSync(pkshSnapshot)) {
 /* A Preview is publicly addressable even when its UI asks users to sign in.
    Publish only factual metadata; member content must come from an authenticated backend. */
 sanitizePublicData(output);
+/* Preview the PDF candidate only; the Action-owned production snapshot stays untouched. */
+const candidatePath = path.join(root, "artifacts", "calendar-parser-1151", "candidate-calendar-events.json");
+const report = JSON.parse(fs.readFileSync(path.join(root, "artifacts", "calendar-parser-1151", "candidate-validation-report.json"), "utf8"));
+const candidate = JSON.parse(fs.readFileSync(candidatePath, "utf8"));
+if (!report.isolated_from_public_paths || !report.schools.cysh.quality_gate.passed ||
+    !report.schools.cygsh.quality_gate.passed || !Array.isArray(candidate) || candidate.length !== 272) {
+  throw new Error("calendar preview candidate failed validation");
+}
+fs.copyFileSync(candidatePath, path.join(output, "data", "calendar-events.json"));
+const statusPath = path.join(output, "data", "calendar-source-status.json");
+const statuses = JSON.parse(fs.readFileSync(statusPath, "utf8"));
+for (const status of statuses) {
+  status.event_count = candidate.filter((event) => event.school_id === status.school_id).length;
+  status.review_pending = true;
+}
+fs.writeFileSync(statusPath, JSON.stringify(statuses, null, 2) + "\n");
 fs.copyFileSync(path.join(staging, "manifest.webmanifest"), path.join(output, "manifest-staging.webmanifest"));
 fs.copyFileSync(path.join(staging, "staging.css"), path.join(output, "staging.css"));
 fs.copyFileSync(path.join(staging, "acceptance-user-tasks.js"), path.join(output, "acceptance-user-tasks.js"));
@@ -56,7 +73,7 @@ html = html
   .replace("<title>", "<title>STAGING｜")
   .replace('href="manifest.webmanifest"', 'href="manifest-staging.webmanifest"')
   .replace('</head>', '<link rel="stylesheet" href="staging.css?v=' + shellRevision + '">\n</head>')
-  .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站</div>')
+  .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站｜官方 PDF 解析候選資料仍待人工核對</div>')
   .replace('</body>', '<script src="acceptance-user-tasks.js?v=' + shellRevision + '" defer></script>\n</body>');
 sourceVersions.forEach((sourceVersion) => { html = html.replaceAll(sourceVersion, stagedVersion); });
 fs.writeFileSync(indexPath, html);
@@ -79,6 +96,6 @@ fs.writeFileSync(swPath, sw);
 
 const config = fs.readFileSync(path.join(output, "account-config.js"), "utf8");
 if (!config.includes("https://ebezqanvmgsgtatsbssn.supabase.co") || config.includes("https://oppdhtnepjagdwovndra.supabase.co")) throw new Error("staging Auth backend isolation failed");
-if (!config.includes("capability-layer.js?v=3")) throw new Error("staging capability bootstrap missing");
+if (!config.includes("capability-layer.js?v=9")) throw new Error("staging capability bootstrap missing");
 if (!html.includes("acceptance-user-tasks.js") || !html.includes("STAGING／測試環境") || sourceVersions.some((sourceVersion) => html.includes(sourceVersion))) throw new Error("staging markers or coherent shell revision were not injected");
 console.log("Staging artifact built with noindex, coherent " + shellRevision + " shell and acceptance harness");
