@@ -1620,3 +1620,11 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 發布狀態
 - 程式與測試已完成；本節記錄的 commit／tree 將作為唯一正式基準。尚待更新 `main`、等待 GitHub Pages success 並完成正式站驗證。
+
+### 最終發布驗證
+- 產品 commit `db8b5e01943ca07c84926ebaa4591b5a05ad29fe` 已 fast-forward 進 `main`；產品 tree `7ce5141e884d202ed215a410d71fe03b089a5c4b` 與本地候選完全一致，未建立或沿用 PR。
+- GitHub Pages run `36093525621` success；正式站載入 `app.js?v=91`、school registry v42。實際 UI 學校選單只有「所有學校／嘉中／嘉女」，頁尾只列嘉中與嘉女，頁面不存在輔仁高中／輔仁中學或北港高中文字。
+- 觸發的既有「抓取兩校公告」run `36093526455` success，後續資料 commit `b53cb1d9b7030741265ce9f9dacfebaeab836549` 僅更新 Action 維護資料；再次核對設定仍為 `fjsh=false/disabled`、`pksh=false/damaged`。該資料 commit 的 Pages run `36093763754` 亦 success。
+
+### 唯一正確版本
+【CANONICAL】自本 checkpoint 起，只有包含 `db8b5e0` 停用邏輯及其後續 Action 資料更新的 `main` 是正確正式基準；先前 PR、分支、部署與未含此停用規則的 commit 均不得作為回復或新開發基礎。
