@@ -24,8 +24,9 @@
     if (!NotificationState) { finishInitialLoading(); return; }
 
     var LS_SEEN = "cyNews.lastSeen";
-    var LS_EVENTS = "cyNews.calendarEvents.v1";
+    var LS_EVENTS = "cyNews.calendarEvents.v1"; /* import candidate only; never the active account store */
     var LS_SCHOOL = "cyNews.school.v1";
+    var LS_CALENDAR_SCHOOL = "cyNews.calendarSchool.v1";
     var CalendarState = window.CyNewsCalendarState || (function () {
       function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
       function normalize(rows) {
@@ -44,6 +45,7 @@
       return { normalize: normalize, upsert: upsert, remove: remove };
     })();
     var LS_READS = "cyNews.reads.v1";
+    var LS_VISITOR_CONTEXT = "cyNews.visitorContext.v1";
     var PAGE_SIZE = 200;  // 最新清單一次渲染的則數,避免一口氣塞入上千張卡片
     var notificationState = NotificationState.load();
     var queueAccountMutation = function () {};
@@ -54,6 +56,7 @@
     var state = {
       data: null,
       school: loadSchool(),
+      calendarSchool: localStorage.getItem(LS_CALENDAR_SCHOOL) || "all",
       cat: "all",
       q: "",
       tab: "latest",
@@ -63,14 +66,14 @@
       officialEvents: [],
       calendarStatus: "partial",
       timetables: [],
-      userEvents: loadUserEvents(),
+      userEvents: loadUserEvents("anonymous"),
       reads: loadReads(),
       shown: PAGE_SIZE,
       archive: "none",  /* none | loading | loaded:歷史封存資料的載入狀態 */
       archivePromise: null,
       subscriptions: notificationState.subscriptions,
       tasks: [],
-      profile: window.CyNewsProfile ? window.CyNewsProfile.empty() : {},
+      profile: loadVisitorContext(),
       accountUser: null,
       accountAccess: null,
       memberContent: {},
@@ -122,10 +125,12 @@
       accountDeleteCloud: $("accountDeleteCloud"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
+      calendarSchoolFilter: $("calendarSchoolFilter"),
       prevMonth: $("prevMonth"), nextMonth: $("nextMonth"), todayCalendar: $("todayCalendar"),
       addEvent: $("addEvent"), eventFormWrap: $("eventFormWrap"), eventForm: $("eventForm"), cancelEvent: $("cancelEvent"),
       eventTitle: $("eventTitle"), eventDate: $("eventDate"), eventNotes: $("eventNotes"),
       eventFormTitle: $("eventFormTitle"),
+      legacyEventImport: $("legacyEventImport"), legacyEventImportStatus: $("legacyEventImportStatus"),
       importantList: $("importantList"),
       welcomeTitle: $("welcomeTitle"), assistantForm: $("assistantForm"), assistantQuestion: $("assistantQuestion"),
       assistantAsk: $("assistantAsk"), assistantScope: $("assistantScope"), assistantStatus: $("assistantStatus"), assistantAnswer: $("assistantAnswer"),
@@ -149,8 +154,8 @@
       navMenu: $("navMenu"), navMenuToggle: $("navMenuToggle"), navCurrentLabel: $("navCurrentLabel"),
     };
 
-    function loadUserEvents() {
-      try { var rows = JSON.parse(localStorage.getItem(LS_EVENTS) || "[]"); return CalendarState ? CalendarState.normalize(rows) : (Array.isArray(rows) ? rows : []); }
+    function loadUserEvents(accountId) {
+      try { return CalendarState && CalendarState.loadCache ? CalendarState.loadCache(localStorage, accountId || "anonymous") : []; }
       catch (e) { return []; }
     }
     function loadReads() {
@@ -161,10 +166,31 @@
       var value = String(localStorage.getItem(LS_SCHOOL) || "all");
       return value === "all" || /^[a-z0-9-]{1,32}$/.test(value) ? value : "all";
     }
+    function loadVisitorContext() {
+      if (!window.CyNewsProfile) return {};
+      try {
+        var saved = JSON.parse(localStorage.getItem(LS_VISITOR_CONTEXT) || "{}");
+        return window.CyNewsProfile.normalize({
+          school_id: saved.school_id,
+          grade_level: saved.grade_level,
+          class_name: saved.class_name,
+        });
+      } catch (_) { return window.CyNewsProfile.empty(); }
+    }
+    function saveVisitorContext(profile) {
+      var visitor = window.CyNewsProfile.normalize(profile);
+      localStorage.setItem(LS_VISITOR_CONTEXT, JSON.stringify({
+        schema_version: 1,
+        school_id: visitor.school_id,
+        grade_level: visitor.grade_level,
+        class_name: visitor.class_name,
+      }));
+      return visitor;
+    }
     function saveReads() { localStorage.setItem(LS_READS, JSON.stringify(state.reads)); }
     function saveUserEvents() {
       state.userEvents = CalendarState ? CalendarState.normalize(state.userEvents) : state.userEvents;
-      localStorage.setItem(LS_EVENTS, JSON.stringify(state.userEvents));
+      if (CalendarState && CalendarState.saveCache) CalendarState.saveCache(localStorage, state.activeAccountId || "anonymous", state.userEvents);
     }
     function populateProfileSchools() {
       if (!el.profileSchool || !window.CyNewsSchoolRegistry) return;
@@ -269,6 +295,7 @@
       if (el.personalizedToggle) el.personalizedToggle.checked = !!state.personalizedNotifications;
     }
     function editUserEvent(id) {
+      if (!canEditCalendar()) return false;
       var row = state.userEvents.find(function (ev) { return ev.id === String(id); });
       if (!row) return false;
       state.eventEditingId = row.id;
@@ -283,7 +310,14 @@
       return true;
     }
     function removeUserEvent(id) {
-      state.userEvents = CalendarState ? CalendarState.remove(state.userEvents, id) : state.userEvents.filter(function (ev) { return ev.id !== String(id); });
+      if (!canEditCalendar()) return;
+      var current = state.userEvents.find(function (event) { return event.id === String(id); });
+      if (!current) return;
+      var payload = { id: current.id, expected_version: current.version || 1,
+        mutation_id: CalendarState.randomUuid() };
+      var next = queueAccountMutation("calendar.delete", payload);
+      if (!next) return;
+      state.userEvents = CalendarState.visible(next.calendar_events || []);
       saveUserEvents();
       renderCalendar();
     }
@@ -312,17 +346,112 @@
       var lifecycle = new window.CyNewsAccountSync.AccountLifecycle({
         subscriptions: notificationState.subscriptions,
         reads: Object.keys(state.reads).map(function (id) { return { announcement_id: id, read_at: state.reads[id] }; }),
-        preferences: { schema_version: 1, preferences: { profile: window.CyNewsProfile.empty() } },
+        preferences: { schema_version: 1, preferences: { profile: loadVisitorContext() } },
         tasks: state.tasks,
+        calendar_events: state.userEvents,
         reminderRules: state.reminderRules,
       }, localStorage);
       var syncGeneration = 0;
       var requestedUid = null;
       var readyUid = null;
       var accountPhase = "ANONYMOUS_READY";
+      var activeSyncAdapter = null;
+      var calendarDrainRunning = false;
       var pushManager = window.CyNewsPushSubscription ? window.CyNewsPushSubscription.createManager({ auth: auth }) : null;
       var reminderAdapter = window.CyNewsReminderRules ? window.CyNewsReminderRules.createAdapter({ auth: auth }) : null;
       function status(text) { el.accountState.textContent = text; }
+      function renderLegacyImport() {
+        if (!el.legacyEventImport || !el.legacyEventImportStatus) return;
+        var claim = CalendarState.readClaim(localStorage);
+        var rows = CalendarState.legacyRows(localStorage);
+        var available = accountPhase === "ACCOUNT_READY" && readyUid &&
+          ((claim && claim.account_id === readyUid) || (!claim && rows.length));
+        el.legacyEventImport.hidden = !available;
+        el.legacyEventImportStatus.hidden = !available;
+        if (!available) { el.legacyEventImportStatus.textContent = ""; return; }
+        if (claim) {
+          var remaining = claim.entries.filter(function (entry) { return !entry.confirmed; }).length;
+          el.legacyEventImport.textContent = "繼續匯入舊事件";
+          el.legacyEventImportStatus.textContent = "這批舊事件已綁定目前帳號，尚有 " + remaining + " 筆等待雲端確認。";
+        } else {
+          el.legacyEventImport.textContent = "匯入此裝置的舊事件";
+          el.legacyEventImportStatus.textContent = "偵測到 " + rows.length + " 筆未分帳號的舊事件；只有明確確認後才會綁定目前帳號。";
+        }
+      }
+      function acceptCalendarServerResult(item, result) {
+        var owner = readyUid || requestedUid;
+        if (!item || item.account_id !== owner || !result) return;
+        if (result.event) lifecycle.reconcileCalendarEvent(result.event);
+        else if (result.status === "conflict" && item.payload && item.payload.id) lifecycle.discardCalendarEvent(item.payload.id);
+        if (result.status === "applied" && item.payload && item.payload.legacy_import_key) {
+          var confirmation = CalendarState.confirmLegacy(localStorage, owner, item.payload.legacy_import_key);
+          if (confirmation.cleanup_pending) throw new Error(confirmation.cleanup_error || "legacy cleanup pending");
+        }
+        var current = lifecycle.state();
+        CalendarState.saveCache(localStorage, owner, current.calendar_events || []);
+        if (accountPhase === "ACCOUNT_READY" && readyUid === owner) {
+          state.userEvents = CalendarState.visible(current.calendar_events || []);
+          renderCalendar();
+        }
+        renderLegacyImport();
+      }
+      function drainCalendarOutbox() {
+        if (calendarDrainRunning || accountPhase !== "ACCOUNT_READY" || !readyUid || !activeSyncAdapter) return Promise.resolve([]);
+        var owner = readyUid;
+        var outbox = new window.CyNewsAccountSync.Outbox(localStorage, owner);
+        var items = outbox.pending().filter(function (item) { return item.type && item.type.indexOf("calendar.") === 0; });
+        if (!items.length) return Promise.resolve([]);
+        calendarDrainRunning = true;
+        var done = [], continueDrain = false;
+        return items.reduce(function (chain, item) {
+          return chain.then(function () {
+            if (accountPhase !== "ACCOUNT_READY" || readyUid !== owner) throw new Error("account sync superseded");
+            return activeSyncAdapter.sendMutation(item).then(function (result) {
+              acceptCalendarServerResult(item, result);
+              done.push(item.id);
+              outbox.ack([item.id], null, owner);
+            });
+          });
+        }, Promise.resolve()).then(function () {
+          if (readyUid === owner) status("已同步");
+          continueDrain = true;
+          return done;
+        }).catch(function () {
+          if (readyUid === owner) status("事件已保留在此裝置，等待同步");
+          return done;
+        }).finally(function () {
+          calendarDrainRunning = false;
+          if (continueDrain && readyUid === owner) {
+            var remaining = new window.CyNewsAccountSync.Outbox(localStorage, owner).pending()
+              .some(function (item) { return item.type && item.type.indexOf("calendar.") === 0; });
+            if (remaining) setTimeout(drainCalendarOutbox, 0);
+          }
+        });
+      }
+      function enqueueLegacyClaim(claim) {
+        (claim.entries || []).filter(function (entry) { return !entry.confirmed; }).forEach(function (entry) {
+          queueAccountMutation("calendar.create", {
+            id: entry.event_id, expected_version: 0, mutation_id: entry.mutation_id,
+            title: entry.title, event_date: entry.event_date, notes: entry.notes,
+            legacy_import_key: entry.legacy_import_key,
+            outbox_id: "calendar-import:" + entry.legacy_import_key,
+          });
+        });
+        drainCalendarOutbox();
+      }
+      if (el.legacyEventImport) el.legacyEventImport.addEventListener("click", function () {
+        if (accountPhase !== "ACCOUNT_READY" || !readyUid) return;
+        var claim = CalendarState.claimForAccount(localStorage, readyUid);
+        if (!claim) {
+          if (CalendarState.readClaim(localStorage)) return;
+          if (!window.confirm("要把這個瀏覽器中的舊行事曆事件綁定並匯入目前帳號嗎？綁定後不能改交給其他帳號。")) return;
+          try { claim = CalendarState.createLegacyClaim(localStorage, readyUid); }
+          catch (_) { status("舊事件認領未完成，資料仍保留在此裝置"); return; }
+        }
+        enqueueLegacyClaim(claim);
+        renderLegacyImport();
+      });
+      if (window.addEventListener) window.addEventListener("online", function () { drainCalendarOutbox(); });
       var welcomeUid = null;
       var welcomeFadeTimer = null;
       var welcomeHideTimer = null;
@@ -385,6 +514,7 @@
       }
       function setAccountUser(user) {
         state.accountUser = user || null;
+        if (window.CyNewsCapabilities) window.CyNewsCapabilities.setAuthenticated(!!user);
         if (!user) state.accountAccess = null;
         state.nickname = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayName(user) : "";
         var email = window.CyNewsAccountAuth ? window.CyNewsAccountAuth.displayEmail(user) : "";
@@ -435,7 +565,13 @@
           var protectedAdmin = !!row.admin_role;
           var serviceSelect = '<label class="admin-service-label">服務<select data-admin-service="' + esc(row.user_id) + '"' + (protectedAdmin ? " disabled" : "") + '><option value="full"' + (row.service_level === "full" ? " selected" : "") + '>完整服務</option><option value="timetable_only"' + (row.service_level === "timetable_only" ? " selected" : "") + '>僅課表</option></select></label>';
           var accessActions = protectedAdmin ? "" : '<button class="btn-primary" type="button" data-admin-access="approved" data-admin-user="' + esc(row.user_id) + '">' + (row.status === "approved" ? "儲存服務" : "核准") + '</button><button class="btn-ghost danger-button" type="button" data-admin-access="rejected" data-admin-user="' + esc(row.user_id) + '">' + (row.status === "pending" ? "拒絕本次申請" : "移除存取權") + '</button>';
-          var roleAction = owner && row.admin_role === "co_admin" ? '<button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除聯席管理員</button>' : owner && !row.admin_role && row.status === "approved" ? '<button class="btn-ghost" type="button" data-admin-role="co_admin" data-admin-user="' + esc(row.user_id) + '">設為聯席管理員</button>' : "";
+          var self = state.accountUser && row.user_id === state.accountUser.id;
+          var roleAction = "";
+          if (owner && !self && row.status === "approved") {
+            if (row.admin_role === "owner") roleAction = '<button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除主要管理員</button>';
+            else if (row.admin_role === "co_admin") roleAction = '<button class="btn-ghost" type="button" data-admin-role="owner" data-admin-user="' + esc(row.user_id) + '">升為主要管理員</button><button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除聯席管理員</button>';
+            else roleAction = '<button class="btn-ghost" type="button" data-admin-role="owner" data-admin-user="' + esc(row.user_id) + '">設為主要管理員</button><button class="btn-ghost" type="button" data-admin-role="co_admin" data-admin-user="' + esc(row.user_id) + '">設為聯席管理員</button>';
+          }
           return '<article class="admin-account"><div class="admin-account-main"><div class="admin-account-title"><strong>' + esc(row.email) + '</strong><span class="admin-role-badge" data-role="' + esc(row.admin_role || "member") + '">' + esc(roleLabel) + '</span></div><div class="admin-account-meta"><span>' + esc(statusLabel) + '</span><span>' + esc(serviceLabel) + '</span><span>申請：' + esc(String(row.requested_at || "").slice(0, 10)) + '</span></div></div><div class="admin-account-actions">' + serviceSelect + accessActions + roleAction + '</div></article>';
         }).join("") : '<p class="empty">目前沒有符合條件的帳號。</p>';
       }
@@ -653,6 +789,8 @@
       }
       function publishState(merged, accountId) {
         state.activeAccountId = accountId || "anonymous";
+        state.userEvents = CalendarState.visible(merged.calendar_events || []);
+        saveUserEvents();
         notificationState.subscriptions = projectSubscriptions(merged.subscriptions);
         state.reads = {};
         (merged.reads || []).forEach(function (row) { if (row && row.announcement_id && row.read_at) state.reads[row.announcement_id] = row.read_at; });
@@ -675,8 +813,9 @@
         establishPersonalizedBaseline(accountId || "anonymous");
         renderProfile();
         renderPersonalizedSetting();
-        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
+        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge(); renderCalendar();
         renderReminderPush();
+        renderLegacyImport();
         if (schoolChanged && state.data) fetchData(true);
         if (accountId && accountId !== "anonymous" && reminderAdapter) {
           var reminderGeneration = syncGeneration;
@@ -697,15 +836,16 @@
         state.reads = {};
         saveReads();
         NotificationState.save(notificationState);
-        state.profile = window.CyNewsProfile.empty();
+        state.profile = loadVisitorContext();
         state.assistantFeedback = window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {};
         state.tasks = [];
+        state.userEvents = [];
         state.personalizedNotifications = false;
         state.reminderPreset = "single";
         state.reminderCustomOffsets = "1";
         state.reminderRules = [];
         state.reminderDeviceActive = false;
-        state.school = "all";
+        state.school = String(state.profile.school_id || "all");
         state.archive = "none";
         state.archivePromise = null;
         if (el.reminderPreset) el.reminderPreset.value = "single";
@@ -713,22 +853,30 @@
         establishPersonalizedBaseline("anonymous");
         renderProfile();
         renderPersonalizedSetting();
-        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge();
+        renderLatest(); renderSub(); renderTasks(); renderToday(); renderBadge(); renderCalendar();
         renderReminderPush();
+        renderLegacyImport();
       }
       function restoreAnonymous() {
         syncGeneration += 1;
+        activeSyncAdapter = null;
         var anonymousState = lifecycle.logout();
         requestedUid = null;
         readyUid = null;
         accountPhase = "ANONYMOUS_READY";
-        state.school = "all";
-        localStorage.setItem(LS_SCHOOL, "all");
+        state.school = String(loadVisitorContext().school_id || "all");
+        localStorage.setItem(LS_SCHOOL, state.school);
         state.archive = "none";
         state.archivePromise = null;
         state.memberContent = {};
         publishState(anonymousState, "anonymous");
         showAnonymousShell();
+        if (auth.getPublicCapabilities) auth.getPublicCapabilities().then(function (capabilities) {
+          if (capabilities.member_content) return auth.getMemberAnnouncementIndex().then(function (rows) {
+            state.memberContent = {}; rows.forEach(function (row) { if (row && row.announcement_id) state.memberContent[row.announcement_id] = row; });
+            if (state.data) { state.data.items.forEach(applyMemberContent); renderAll(); }
+          });
+        }).catch(function () { state.memberContent = {}; });
         if (state.data) fetchData(true);
       }
       function sync(uid, authRetry) {
@@ -749,6 +897,7 @@
           var adapter = window.CyNewsSupabaseSync.createAdapter(client, { serviceLevel: state.accountAccess && state.accountAccess.service_level, isCurrent: function (currentUid) {
             return generation === syncGeneration && requestedUid === uid && currentUid === uid;
           }});
+          activeSyncAdapter = adapter;
           var outbox = new window.CyNewsAccountSync.Outbox(localStorage, uid);
           return adapter.fetchRemoteState().then(function (remote) {
             stillCurrent();
@@ -757,16 +906,26 @@
                transition is resolving, so no old account state can be adopted. */
             accountPhase = "MERGING";
             merged = lifecycle.login(uid, remote || {});
+            /* Supabase is canonical. Rebuild the UID cache from remote rows,
+               then replay only that UID's durable pending calendar mutations. */
+            lifecycle.replaceCalendarEvents(remote && remote.calendar_events || []);
+            outbox.pending().filter(function (item) { return item.type && item.type.indexOf("calendar.") === 0; })
+              .forEach(function (item) { lifecycle.applyMutation(item.type, item.payload || {}); });
+            merged = lifecycle.state();
             accountPhase = "SYNCING";
             return adapter.pushState(merged).then(function () {
               stillCurrent();
               return adapter.drain(outbox, function (item) {
-                return adapter.sendMutation(item);
+                return adapter.sendMutation(item).then(function (result) {
+                  if (item.type && item.type.indexOf("calendar.") === 0) acceptCalendarServerResult(item, result);
+                  return result;
+                });
               });
             });
           });
         }).then(function () {
           stillCurrent();
+          merged = lifecycle.state();
           readyUid = uid;
           accountPhase = "ACCOUNT_READY";
           publishState(merged, uid);
@@ -777,6 +936,7 @@
           if (el.accountDeleteCloud) { el.accountDeleteCloud.hidden = false; el.accountDeleteCloud.disabled = false; }
           maybePromptNickname(state.accountUser);
           renderReminderPush();
+          drainCalendarOutbox();
         }).catch(function () {
           if (generation !== syncGeneration || requestedUid !== uid) return;
           /* An OAuth callback can expose a server-verified user a fraction before
@@ -790,6 +950,7 @@
             return;
           }
           if (merged) {
+            merged = lifecycle.state();
             readyUid = uid;
             accountPhase = "ACCOUNT_READY";
             publishState(merged, uid);
@@ -814,8 +975,15 @@
         }
         if (accountPhase !== "ACCOUNT_READY" || !readyUid || lifecycle.active_account_id !== readyUid) return null;
         var next = lifecycle.applyMutation(type, payload);
-        new window.CyNewsAccountSync.Outbox(localStorage, readyUid).enqueue({ type: type, payload: payload });
+        var mutation = { type: type, payload: payload };
+        if (payload && payload.outbox_id) mutation.id = payload.outbox_id;
+        new window.CyNewsAccountSync.Outbox(localStorage, readyUid).enqueue(mutation);
         status("等待同步");
+        if (type.indexOf("calendar.") === 0) {
+          state.userEvents = CalendarState.visible(next.calendar_events || []);
+          saveUserEvents();
+          drainCalendarOutbox();
+        }
         return next;
       };
       createTaskReminder = function (task) {
@@ -881,7 +1049,10 @@
             if (el.accountSwitch) el.accountSwitch.hidden = true;
             el.accountLogout.hidden = true;
           }
-          if (!(typeof uid === "string" && uid)) showAnonymousShell();
+          if (!(typeof uid === "string" && uid)) {
+            showAnonymousShell();
+            if (auth.getPublicCapabilities) auth.getPublicCapabilities().catch(function () {});
+          }
         });
       }
       function setPasswordAuthMode(mode) {
@@ -911,6 +1082,7 @@
       function showPasswordAuth(mode) {
         if (!el.passwordAuthDialog || typeof el.passwordAuthDialog.showModal !== "function") { status("帳密登入介面暫時不可用"); return; }
         setPasswordAuthMode(mode);
+        if (el.passwordGoogleLogin) el.passwordGoogleLogin.hidden = window.CYNEWS_ACCOUNT_CONFIG && window.CYNEWS_ACCOUNT_CONFIG.googleLoginUiEnabled === false;
         el.passwordAuthStatus.textContent = "";
         el.passwordAuthPassword.value = "";
         if (!el.passwordAuthDialog.open) el.passwordAuthDialog.showModal();
@@ -1025,7 +1197,7 @@
         var accessAction = button.dataset.adminAccess;
         var roleAction = button.dataset.adminRole;
         var userId = button.dataset.adminUser;
-        if ((accessAction === "rejected" || roleAction === "none") && !window.confirm(accessAction === "rejected" ? "確定拒絕本次申請或移除此帳號的存取權嗎？帳號不會被封鎖，之後仍可重新送審。" : "確定移除此人的聯席管理員身分嗎？一般使用權會保留。")) return;
+        if ((accessAction === "rejected" || roleAction === "none") && !window.confirm(accessAction === "rejected" ? "確定拒絕本次申請或移除此帳號的存取權嗎？帳號不會被封鎖，之後仍可重新送審。" : "確定移除此人的管理員身分嗎？系統不允許移除最後一位主要管理員。")) return;
         el.adminStatus.textContent = "處理中";
         var operation;
         if (roleAction) operation = accountAuth.setAdminRole(userId, roleAction);
@@ -1033,7 +1205,7 @@
           var service = el.adminAccounts.querySelector('select[data-admin-service="' + userId + '"]');
           operation = accountAuth.updateAccountAccess(userId, accessAction, service ? service.value : "full");
         }
-        operation.then(function () { el.adminStatus.textContent = roleAction === "co_admin" ? "已設為聯席管理員。" : roleAction === "none" ? "已移除聯席管理員身分。" : accessAction === "approved" ? "帳號權限已更新。" : "存取權已移除；對方仍可重新送審。"; loadAdminAccounts(); }).catch(function () { el.adminStatus.textContent = "無法更新帳號狀態，請確認你的管理權限後再試。"; });
+        operation.then(function () { el.adminStatus.textContent = roleAction === "owner" ? "已設為主要管理員。" : roleAction === "co_admin" ? "已設為聯席管理員。" : roleAction === "none" ? "已移除管理員身分。" : accessAction === "approved" ? "帳號權限已更新。" : "存取權已移除；對方仍可重新送審。"; loadAdminAccounts(); }).catch(function () { el.adminStatus.textContent = "無法更新帳號狀態；請確認主要管理員權限，且不可移除最後一位主要管理員。"; });
       });
       if (el.accountReapply) el.accountReapply.addEventListener("click", function () {
         if (!accountAuth) return;
@@ -1112,7 +1284,7 @@
       });
       if (el.accountDeleteCloud) el.accountDeleteCloud.addEventListener("click", function () {
         if (accountPhase !== "ACCOUNT_READY" || !readyUid) return;
-        if (!window.confirm("確定刪除這個登入帳號在本站同步的偏好、追蹤、閱讀紀錄與待辦？此操作無法復原，但不會刪除 Google 帳號。")) return;
+        if (!window.confirm("確定刪除這個登入帳號在本站同步的偏好、追蹤、閱讀紀錄、待辦與行事曆事件？此操作無法復原，但不會刪除 Google 帳號。")) return;
         var deletionUid = readyUid;
         var generation = ++syncGeneration;
         var dataDeleted = false;
@@ -1471,13 +1643,16 @@
            it.date is publication date and is intentionally never used here. */
         (Array.isArray(it.calendar_events) ? it.calendar_events : []).forEach(function (ev) {
           if (!ev || !/^\d{4}-\d{2}-\d{2}$/.test(ev.date) || !ev.title || !ev.provenance) return;
+          if (state.calendarSchool !== "all" && it.school !== state.calendarSchool) return;
           announcementEvents.push({ id: "announcement:" + it.id + ":" + ev.date + ":" + ev.title,
-            date: ev.date, endDate: ev.end_date || ev.date, title: ev.title, school: it.school_name,
+            date: ev.date, endDate: ev.end_date || ev.date, title: ev.title, school: it.school_name, school_id: it.school,
             kind: ev.kind === "deadline" ? "deadline" : "announcement", url: it.url,
             sourceLabel: ev.kind === "deadline" ? "公告截止日期" : "公告事件" });
         });
       });
-      return announcementEvents.concat(state.officialEvents).concat(state.userEvents.map(function (ev) {
+      return announcementEvents.concat(state.officialEvents.filter(function (ev) {
+        return state.calendarSchool === "all" || ev.school_id === state.calendarSchool;
+      })).concat((canEditCalendar() ? state.userEvents : []).map(function (ev) {
         return { id: ev.id, date: ev.date, endDate: ev.date, title: ev.title, notes: ev.notes,
           kind: "user", sourceLabel: "我的事件" };
       }));
@@ -1491,7 +1666,12 @@
         return start && end && start <= day && day <= end;
       });
     }
+    function calendarColorClass(ev) {
+      return ev.school_id === "cysh" || ev.school_id === "cygsh" ? "school-" + ev.school_id : "school-personal";
+    }
     function renderCalendar() {
+      if (el.addEvent) el.addEvent.hidden = !canEditCalendar();
+      if (!canEditCalendar() && el.eventFormWrap) el.eventFormWrap.hidden = true;
       var y = state.calendarMonth.getFullYear(), m = state.calendarMonth.getMonth();
       el.calendarTitle.textContent = y + "年" + (m + 1) + "月";
       var first = new Date(y, m, 1), start = new Date(y, m, 1 - first.getDay()), today = new Date().toISOString().slice(0, 10);
@@ -1501,7 +1681,7 @@
         var key = isoDate(day.getFullYear(), day.getMonth(), day.getDate()), evs = eventsForDate(key);
         var classes = "calendar-day" + (day.getMonth() !== m ? " is-outside" : "") + (key === today ? " is-today" : "") + (key === state.calendarSelected ? " is-selected" : "");
         html += '<button type="button" class="' + classes + '" data-day="' + key + '"><span class="day-number">' + day.getDate() + '</span>';
-        if (evs.length) html += '<span class="day-dots">' + evs.slice(0, 4).map(function (ev) { return '<i class="day-dot ' + ev.kind + '" title="' + esc(ev.sourceLabel) + '"></i>'; }).join("") + '</span>';
+        if (evs.length) html += '<span class="day-dots">' + evs.slice(0, 4).map(function (ev) { return '<i class="day-dot ' + calendarColorClass(ev) + '" title="' + esc(ev.school || ev.school_id || "我的事件") + '"></i>'; }).join("") + '</span>';
         html += '</button>';
       }
       el.calendarGrid.innerHTML = html;
@@ -1518,15 +1698,14 @@
           el.eventFormWrap.hidden = false; el.eventTitle.focus();
         },
         remove: function (id) {
-          state.userEvents = state.userEvents.filter(function (ev) { return ev.id !== id; });
-          saveUserEvents(); renderCalendar();
+          removeUserEvent(id);
         },
       };
       el.agendaTitle.textContent = day === new Date().toISOString().slice(0, 10) ? "今天" : day + " 的事件";
       el.agenda.innerHTML = evs.length ? evs.map(function (ev) {
         var start = eventStart(ev), end = eventEnd(ev);
         var range = start !== end ? ' · ' + esc(start) + '–' + esc(end) : '';
-        return '<article class="agenda-item"><span class="agenda-mark ' + ev.kind + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + range + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '">刪除</button></div>' : '') + '</div></article>';
+        return '<article class="agenda-item"><span class="agenda-mark ' + calendarColorClass(ev) + '"></span><div><h4>' + esc(ev.title) + '</h4><p>' + esc(ev.sourceLabel) + range + (ev.school ? ' · ' + esc(ev.school) : '') + (ev.notes ? ' · ' + esc(ev.notes) : '') + '</p>' + (ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">查看原始公告 ↗</a>' : '') + (ev.kind === "user" ? '<div class="event-actions"><button type="button" class="btn-ghost" data-edit-event="' + esc(ev.id) + '">編輯</button><button type="button" class="btn-ghost" data-delete-event="' + esc(ev.id) + '">刪除</button></div>' : '') + '</div></article>';
       }).join("") : '<p class="empty">這天沒有事件。選一個日期，或新增自己的事件。</p>';
       Array.prototype.forEach.call(el.agenda.querySelectorAll("button[data-edit-event]"), function (button) {
         button.addEventListener("click", function () {
@@ -1543,7 +1722,8 @@
       return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
         state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) {
           return ev && (ev.start_date || ev.date) && ev.title && ev.provenance &&
-            (state.school === "all" || String(ev.school_id || "") === state.school);
+            /^\d{4}-\d{2}-\d{2}$/.test(ev.start_date || ev.date) &&
+            /^\d{4}-\d{2}-\d{2}$/.test(ev.end_date || ev.start_date || ev.date);
         }) : [];
         if (state.tab === "calendar") renderCalendar();
       }).catch(function () {});
@@ -1554,8 +1734,8 @@
         return r.json();
       }).then(function (status) {
         var rows = Array.isArray(status) ? status : (Array.isArray(status && status.schools) ? status.schools : []);
-        if (state.school !== "all") rows = rows.filter(function (row) { return String(row.school_id || row.id || "") === state.school; });
-        state.calendarStatus = rows.length && rows.every(function (row) { return row.status === "official_complete"; }) ? "complete" : "partial";
+        if (state.calendarSchool !== "all") rows = rows.filter(function (row) { return String(row.school_id || row.id || "") === state.calendarSchool; });
+        state.calendarStatus = rows.length && rows.every(function (row) { return row.status === "official_complete" && !row.review_pending; }) ? "complete" : "partial";
         renderToday();
       }).catch(function () { state.calendarStatus = "partial"; renderToday(); });
     }
@@ -1936,6 +2116,11 @@
         return '<option value="' + esc(s.id) + '">' + esc(s.short) + "</option>";
       }).join("");
       el.schoolFilter.value = schools.some(function (s) { return s.id === state.school; }) ? state.school : "all";
+      el.calendarSchoolFilter.innerHTML = schools.map(function (s) {
+        return '<option value="' + esc(s.id) + '">' + esc(s.short) + "</option>";
+      }).join("");
+      if (!schools.some(function (s) { return s.id === state.calendarSchool; })) state.calendarSchool = "all";
+      el.calendarSchoolFilter.value = state.calendarSchool;
 
       var used = {};
       state.data.items.forEach(function (it) { used[it.category] = true; });
@@ -2135,6 +2320,12 @@
       var readButton = e.target.closest("button[data-read-id]");
       if (readButton) markRead(readButton.dataset.readId);
     });
+    el.calendarSchoolFilter.addEventListener("change", function () {
+      state.calendarSchool = el.calendarSchoolFilter.value;
+      localStorage.setItem(LS_CALENDAR_SCHOOL, state.calendarSchool);
+      renderCalendar();
+      loadCalendarStatus();
+    });
     if (el.detailClose) el.detailClose.addEventListener("click", closeDetailDialog);
     if (el.detailDialog) el.detailDialog.addEventListener("click", function (e) {
       if (e.target === el.detailDialog) closeDetailDialog();
@@ -2287,6 +2478,9 @@
     function hasSignedInAccount() {
       return !!(state.accountUser && typeof state.accountUser.id === "string" && state.accountUser.id && state.accountAccess && state.accountAccess.status === "approved");
     }
+    function canEditCalendar() {
+      return hasSignedInAccount() && (!window.CyNewsCapabilities || window.CyNewsCapabilities.has("calendar"));
+    }
     function isAdminAccount() {
       return hasSignedInAccount() && !!state.accountAccess.is_admin;
     }
@@ -2294,9 +2488,19 @@
       return !!(state.accountAccess && state.accountAccess.status === "approved" && state.accountAccess.service_level === "timetable_only");
     }
     function switchTab(tab) {
-      if (tab !== "latest" && !hasSignedInAccount()) {
+      var capabilities = window.CyNewsCapabilities;
+      var publicOrAccountAllowed = tab === "latest" || tab === "home" || tab === "sub" || tab === "admin";
+      if (!publicOrAccountAllowed && capabilities) {
+        publicOrAccountAllowed = tab === "assistant" && capabilities.has("assistant") ||
+          tab === "timetable" && capabilities.has("timetable") ||
+          tab === "calendar" && capabilities.has("calendar") ||
+          ["home", "today", "sub"].indexOf(tab) !== -1 && capabilities.anyPersonal();
+      } else if (!publicOrAccountAllowed) {
+        publicOrAccountAllowed = hasSignedInAccount();
+      }
+      if (tab !== "latest" && tab !== "admin" && !publicOrAccountAllowed) {
         tab = "latest";
-        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能需要登入後才能使用。";
+        if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能目前未開放。";
       }
       if (tab === "admin" && !isAdminAccount()) tab = "latest";
       if (isTimetableOnly() && ["home", "today", "assistant", "calendar"].indexOf(tab) !== -1) {
@@ -2343,10 +2547,13 @@
       if (tab === "calendar" && el.viewCalendar) { loadOfficialEvents(); renderCalendar(); }
       if (tab === "sub") {
         renderSub();
-        // 看過訂閱頁後,把 UI「新」的基準點推進到現在;不影響通知去重。
-        state.lastSeen = new Date().toISOString();
-        localStorage.setItem(LS_SEEN, state.lastSeen);
-        setTimeout(renderBadge, 400);
+        // 只有真正具備通知 capability 時，才把「新」的 UI 基準點推進。
+        // 匿名訪客可進入此頁儲存 device-local context，但不能取得通知狀態。
+        if (hasSignedInAccount() && (!capabilities || capabilities.has("notifications"))) {
+          state.lastSeen = new Date().toISOString();
+          localStorage.setItem(LS_SEEN, state.lastSeen);
+          setTimeout(renderBadge, 400);
+        }
       }
       window.scrollTo(0, 0);
     }
@@ -2367,16 +2574,22 @@
       el.prevMonth.addEventListener("click", function () { state.calendarMonth.setMonth(state.calendarMonth.getMonth() - 1); renderCalendar(); });
       el.nextMonth.addEventListener("click", function () { state.calendarMonth.setMonth(state.calendarMonth.getMonth() + 1); renderCalendar(); });
       el.todayCalendar.addEventListener("click", function () { var now = new Date(); state.calendarMonth = new Date(now.getFullYear(), now.getMonth(), 1); state.calendarSelected = now.toISOString().slice(0, 10); renderCalendar(); });
-    el.addEvent.addEventListener("click", function () { state.eventEditingId = null; el.eventFormTitle.textContent = "新增自己的事件"; el.eventDate.value = state.calendarSelected; el.eventFormWrap.hidden = false; el.eventTitle.focus(); });
+    el.addEvent.addEventListener("click", function () { if (!canEditCalendar()) return; state.eventEditingId = null; el.eventFormTitle.textContent = "新增自己的事件"; el.eventDate.value = state.calendarSelected; el.eventFormWrap.hidden = false; el.eventTitle.focus(); });
       el.cancelEvent.addEventListener("click", function () { el.eventFormWrap.hidden = true; });
       el.eventFormWrap.addEventListener("click", function (e) { if (e.target === el.eventFormWrap) el.eventFormWrap.hidden = true; });
       el.eventForm.addEventListener("submit", function (e) {
         e.preventDefault();
+        if (!canEditCalendar()) return;
         var title = el.eventTitle.value.trim(), date = el.eventDate.value || el.eventForm.dataset.editingDate;
         if (!title || !/^\d{4}-\d{2}-\d{2}$/.test(date)) return;
         var editingId = state.eventEditingId || el.eventForm.dataset.editingId;
-        var eventId = editingId || "user:" + Date.now().toString(36);
-        state.userEvents = CalendarState ? CalendarState.upsert(state.userEvents, { id: eventId, title: title, date: date, notes: el.eventNotes.value.trim() }) : state.userEvents;
+        var current = editingId && state.userEvents.find(function (event) { return event.id === editingId; });
+        var payload = { id: editingId || CalendarState.randomUuid(), title: title, event_date: date,
+          notes: el.eventNotes.value.trim(), expected_version: current ? current.version : 0,
+          mutation_id: CalendarState.randomUuid() };
+        var next = queueAccountMutation(current ? "calendar.update" : "calendar.create", payload);
+        if (!next) return;
+        state.userEvents = CalendarState.visible(next.calendar_events || []);
         state.eventEditingId = null; el.eventForm.dataset.editingId = ""; el.eventForm.dataset.editingDate = "";
         saveUserEvents(); state.calendarSelected = date; state.calendarMonth = new Date(Number(date.slice(0, 4)), Number(date.slice(5, 7)) - 1, 1);
         el.eventForm.reset(); el.eventFormWrap.hidden = true; renderCalendar();
@@ -2413,6 +2626,15 @@
       var profile = profileFromForm();
       if (!profile.school_id) {
         el.profileStatus.textContent = "請先選擇你關心的學校";
+        return;
+      }
+      if (!hasSignedInAccount()) {
+        state.profile = saveVisitorContext(profile);
+        applyPreferredSchool(profile.school_id, true);
+        el.profileStatus.textContent = "已儲存在此裝置";
+        renderProfile();
+        renderLatest();
+        renderToday();
         return;
       }
       var result = queueAccountMutation("preferences.upsert", preferencePayload({ profile: profile }));
@@ -2513,7 +2735,7 @@
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", function () {
-        navigator.serviceWorker.register("sw.js?v=80").catch(function () {});
+        navigator.serviceWorker.register("sw.js?v=82").catch(function () {});
       });
     }
 

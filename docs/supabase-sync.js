@@ -6,7 +6,7 @@
 })(typeof window !== "undefined" ? window : this, function () {
   "use strict";
 
-  var TABLES = { subscriptions: "user_subscriptions", reads: "user_reads", preferences: "user_preferences", tasks: "user_tasks" };
+  var TABLES = { subscriptions: "user_subscriptions", reads: "user_reads", preferences: "user_preferences", tasks: "user_tasks", calendar: "user_calendar_events" };
   var CONFLICT_TARGETS = {};
   CONFLICT_TARGETS[TABLES.subscriptions] = "user_id,normalized_keyword";
   CONFLICT_TARGETS[TABLES.reads] = "user_id,announcement_id";
@@ -108,6 +108,7 @@
       if (table === TABLES.subscriptions) return capabilities.notifications;
       if (table === TABLES.reads) return capabilities.member_content;
       if (table === TABLES.tasks) return capabilities.calendar;
+      if (table === TABLES.calendar) return capabilities.calendar;
       if (table === TABLES.preferences) return capabilities.assistant || capabilities.timetable || capabilities.calendar || capabilities.notifications;
       return false;
     }
@@ -120,8 +121,9 @@
           var reads = allowed(TABLES.reads) ? query(client, TABLES.reads, uid, options) : Promise.resolve([]);
           var preferences = allowed(TABLES.preferences) ? query(client, TABLES.preferences, uid, options) : Promise.resolve([]);
           var tasks = allowed(TABLES.tasks) ? query(client, TABLES.tasks, uid, options) : Promise.resolve([]);
-          return Promise.all([subscriptions, reads, preferences, tasks])
-            .then(function (data) { return { user_id: uid, subscriptions: data[0], reads: data[1], preferences: data[2][0] || null, tasks: data[3] }; });
+          var calendar = allowed(TABLES.calendar) ? query(client, TABLES.calendar, uid, options) : Promise.resolve([]);
+          return Promise.all([subscriptions, reads, preferences, tasks, calendar])
+            .then(function (data) { return { user_id: uid, subscriptions: data[0], reads: data[1], preferences: data[2][0] || null, tasks: data[3], calendar_events: data[4] }; });
         });
       },
       pushRows: function (table, values) {
@@ -164,12 +166,37 @@
                 return deleted;
               });
             });
-          }, Promise.resolve([]));
+          }, Promise.resolve([])).then(function (deleted) {
+            assertCurrent(options, uid);
+            return client.rpc("delete_own_user_calendar_events").then(function (result) {
+              assertCurrent(options, uid);
+              if (result && result.error) throw result.error;
+              deleted.push(TABLES.calendar);
+              return deleted;
+            });
+          });
         });
       },
       sendMutation: function (mutation) {
         return sessionUid(client).then(function (uid) {
           if (!mutation || mutation.account_id !== uid) throw new Error("mutation/session identity changed");
+          if (mutation.type.indexOf("calendar.") === 0) {
+            if (!allowed(TABLES.calendar)) throw new Error("feature unavailable for this account capability set");
+            var calendarPayload = mutation.payload || {};
+            assertCurrent(options, uid);
+            return client.rpc("apply_user_calendar_event_mutation", {
+              p_id: calendarPayload.id,
+              p_expected_version: Number(calendarPayload.expected_version || 0),
+              p_mutation_id: calendarPayload.mutation_id,
+              p_operation: mutation.type.slice("calendar.".length),
+              p_payload: { title: calendarPayload.title, event_date: calendarPayload.event_date || calendarPayload.date, notes: calendarPayload.notes || "" },
+              p_legacy_import_key: calendarPayload.legacy_import_key || null,
+            }).then(function (result) {
+              assertCurrent(options, uid);
+              if (result && result.error) throw result.error;
+              return result && result.data;
+            });
+          }
           var table = mutation.type === "subscription.upsert" || mutation.type === "subscription.delete" ? TABLES.subscriptions :
             mutation.type === "read.upsert" ? TABLES.reads :
             mutation.type.indexOf("task.") === 0 ? TABLES.tasks :
@@ -197,7 +224,8 @@
                 return Promise.resolve(send(item, currentUid)).then(function () {
                   result.done.push(item.id); return result;
                 }).catch(function (error) {
-                  if (/feature unavailable/.test(String(error && error.message))) {
+                  var isCalendar = item.type && item.type.indexOf("calendar.") === 0;
+                  if (!isCalendar && /feature unavailable/.test(String(error && error.message))) {
                     result.done.push(item.id);
                     return result;
                   }
