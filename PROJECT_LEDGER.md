@@ -1561,3 +1561,16 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 回復演練：在獨立分支以新的前向 commit `757adc3` 僅將九個本次改動的 Pages UI 檔回復到發布前 `main` 精確內容；公告及爬蟲輸出不變。staging build PASS；Codespace 原生推送演練分支、遠端 parity PASS，Vercel status success。這證明測試站構建與前向修復路徑，不等於正式 Pages 已回滾。
 - PR #31 RLS run `36087027611` 仍 failure：`user_tasks_rls.test.sql` 的兩個 fixture 帳號只標為 approved，未授予目前 tasks RLS 需要的 `calendar` capability，造成六項失敗；calendar/PUBLIC 矩陣的前一輪記錄均 PASS。本次在發行分支只補測試 fixture，尚待雲端 CI 驗證。Preview Supabase 查詢回 `permission denied`，無法宣稱已完成真人登入／owner PUBLIC 控制；Production 的三個 migration 未套用。下一動作：推測試修正、核對 CI，再取得 Preview 權限和完成具身份的端到端驗收，才可先 Production DB 後 GitHub Pages。
 - 2026-09-25 後續驗證：測試 fixture 修正 commit `1843921` 由 Codespace 原生 git push，遠端 HEAD parity PASS。PR #31 的 Actions run `36087413926` 全部完成並成功：`user_tasks`、reminder、calendar RLS/mutation、PUBLIC capability/multi-owner 四組矩陣與本地 migration reset 均 PASS；Vercel commit status success。Preview Supabase 專案 `ebezqanvmgsgtatsbssn` 的 get_project 與 read-only execute_sql 仍回 `MCP error -32600: You do not have permission to perform this action`；尚無 Preview 即時 schema/具身分端到端驗收。正式資料庫與 GitHub Pages `main` 均未修改。正式發布前需恢復 Preview 讀取／完成具身分驗收，重新擷取 Production 匿名基準、按三個缺漏 migration 順序先更新 DB 並核對現有 capability，最後才透過 release PR 將 `main/docs` 發布；若發布失敗，以已在 staging 演練的前向 UI 修復 commit 回復原始 Pages UI，保留公告資料。
+
+## 2026-09-25 11:03（Asia/Taipei）｜PR #30 整合版正式發布完成
+
+### 已完成
+- Production Supabase `oppdhtnepjagdwovndra` 依序套用三筆缺漏 migration：`user_calendar_events`、`public_access_and_multi_owner`、`remove_public_notifications`；三筆均由 migration 工具成功執行並寫入 migration history。
+- 遷移前後匿名帳號基準完全一致：帳號 1 approved/full/none/5 項中 1 啟用；帳號 2 approved/full/co_admin/5/5；帳號 3 approved/full/none/5/5；帳號 4 approved/full/owner/5/5。既有 account capability 未被覆寫或重算。
+- 新增 `public.user_calendar_events` 與 `public.public_capabilities`，兩表 RLS 均啟用。PUBLIC 預設 assistant/calendar/member_content/timetable 全為 false；notifications 已移除。
+- 權限核對：calendar mutation/delete、owner 管理函式均拒絕 anon 與 PUBLIC execute，只授權 authenticated；公開讀取 RPC 授權 anon/authenticated；SECURITY DEFINER 函式均固定 search_path。
+- PR #31 已由 Draft 轉 Ready 並成功 merge；main merge commit `a93a43b5064680df05a3ad1437e89bb11359148a`。
+- GitHub Pages production 回應 HTTP 200，Last-Modified `2026-09-25 03:00:06 UTC`。實際 HTML 已核對 `calendar-state.js` 先於 `account-sync.js`、`app.js?v=88`、學校篩選與嘉中／嘉女／我的事件色彩圖例存在。
+
+### 最終狀態
+【已完成】Production DB migration、main merge、GitHub Pages 發布與靜態內容核對均成功。正式網址：https://tsaibohau.github.io/cy-school-news/
