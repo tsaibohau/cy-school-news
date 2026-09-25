@@ -9,7 +9,7 @@ const repo = path.resolve(__dirname, "..");
 const index = fs.readFileSync(path.join(repo, "docs", "index.html"), "utf8");
 const calendarTag = 'src="calendar-state.js?v=44"';
 const accountTag = 'src="account-sync.js?v=56"';
-const appTag = 'src="app.js?v=87"';
+const appTag = 'src="app.js?v=88"';
 
 assert(index.indexOf(calendarTag) >= 0, "calendar-state.js must be loaded");
 assert(index.indexOf(calendarTag) < index.indexOf(accountTag), "calendar-state.js must load before account-sync.js");
