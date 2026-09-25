@@ -1595,3 +1595,12 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 發布狀態
 - 程式、資料、測試與 PWA cache bump 均已準備；尚待提交、更新 `main`、等待 GitHub Pages 完成並驗證正式頁面。
 - 第一個正式 commit `489048e` 上線後的瀏覽器驗證發現三筆 `pksh-*` 公告仍顯示：初版 `visibleSchool` 先取 announcement `id`，未繼續檢查 `school=pksh`。已改為同時檢查 `school`、`school_id` 與 `id` 前綴並再 bump PWA cache；此為前向修正，不回退行事曆資料。
+
+### 最終發布驗證
+- 修正內容已直接以 fast-forward 更新 `main`，未建立、重開或合併任何 PR；產品 commit 為 `db9d5cb5bed5b91beace383a0995d6ebed70c0f1`，GitHub Pages run `36091175855` 完成且 conclusion 為 success。
+- 本地最終產品 tree 與遠端 `main` tree 均為 `6c2e7022ad99b23c27502ef95668d4165a77d26d`。
+- 正式站瀏覽器驗證載入 `app.js?v=90`：介面不存在「北港高中」，行事曆圖例為「嘉中／嘉女／我的事件」，兩校使用不同色彩；正式 JSON 共 270 筆，僅含嘉中與嘉女，指定破碎標題為 0 筆。
+- 北港歷史原始 JSON 僅保留作稽核；所有公開介面、提醒目標與後續排程均已隔離，狀態為 `damaged`。
+
+### 最終狀態
+【已完成】行事曆片段修復、學校分色、北港來源隔離、正式發布與正式站端到端驗證均完成。正式網址：https://tsaibohau.github.io/cy-school-news/
