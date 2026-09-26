@@ -6,7 +6,8 @@ const vm = require("node:vm");
 
 const addEvent = { hidden: true };
 const tabCalendar = { hidden: true };
-const nodes = { addEvent, tabCalendar };
+const tabToday = { hidden: true };
+const nodes = { addEvent, tabCalendar, tabToday };
 const document = {
   readyState: "loading",
   addEventListener() {},
@@ -17,7 +18,7 @@ const document = {
 let access = { status: "approved", admin_role: "none" };
 let memberCalendar = true;
 const client = { rpc(name) {
-  if (name === "current_public_capabilities") return Promise.resolve({ data: [{ capability: "calendar", enabled: true }] });
+  if (name === "current_public_capabilities") return Promise.resolve({ data: [{ capability: "calendar", enabled: true }, { capability: "today", enabled: true }] });
   if (name === "current_account_capabilities") return Promise.resolve({ data: [{ capability: "calendar", enabled: memberCalendar }] });
   throw new Error("Unexpected RPC: " + name);
 } };
@@ -33,6 +34,7 @@ vm.runInNewContext(fs.readFileSync(path.join(__dirname, "..", "docs", "capabilit
   const controller = root.CyNewsAccountAuth.createController();
   await controller.getPublicCapabilities();
   assert.equal(tabCalendar.hidden, false, "public calendar remains readable");
+  assert.equal(tabToday.hidden, false, "PUBLIC today is independently readable");
   assert.equal(addEvent.hidden, true, "visitor cannot see event creation even with PUBLIC calendar enabled");
 
   root.CyNewsCapabilities.setAuthenticated(true);
@@ -47,6 +49,8 @@ vm.runInNewContext(fs.readFileSync(path.join(__dirname, "..", "docs", "capabilit
   access = { status: "pending", admin_role: "none" };
   await controller.getAccountAccess();
   assert.equal(addEvent.hidden, true, "unapproved account cannot create events");
+  assert.equal(tabCalendar.hidden, false, "pending account retains PUBLIC calendar access");
+  assert.equal(tabToday.hidden, false, "pending account retains PUBLIC today access");
 
   root.CyNewsCapabilities.setAuthenticated(false);
   assert.equal(tabCalendar.hidden, false, "signing out retains public calendar reading");
