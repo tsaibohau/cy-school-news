@@ -1682,3 +1682,28 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 新唯一正確版本
 【CANONICAL】`main` 的 `5b48524` 及其後續只含本節 ledger 收尾的 commit 是唯一正確正式基準；不得回復到會快取舊法律頁或仍列輔仁來源的版本。
+
+## 2026-09-26 10:04（Asia/Taipei）｜登入介面兩步驟 UI 修正
+
+### 基準與範圍
+- 本輪以重新 clone 的遠端 `main` `6d3737f230fffba4c03339a5f729951c02f50c36` 為唯一工程基準；clone 後 `HEAD` 與 `origin/main` 完全一致。後續一次 `git pull --ff-only` 因 GitHub HTTP 502 失敗，但沒有本機或遠端變更，也未改用舊分支／舊部署。
+- branch：`codex/login-ui-step-flow-20260926`。
+- 只修改帳密登入 dialog 的畫面、步驟狀態、PWA cache 版本與對應測試；未修改 Supabase、帳號資料、Auth API、RLS、爬蟲、公告資料或 Production。
+
+### 已完成
+- 登入改為 `帳號／Email → 繼續 → 密碼 → 登入` 的兩步驟流程，第二步顯示已輸入身分並可返回更改。
+- 「沒有帳號？建立帳號」改為獨立提示，不再與登入、重設、取消等按鈕擠成同一列；忘記密碼只在密碼步驟顯示。
+- 保留 Google 登入、註冊、重設密碼及既有通用錯誤訊息。未新增「預先查帳號是否存在」API，避免帳號列舉與註冊名單外洩。
+- 加入步驟指示、全寬主要按鈕、關閉按鈕、帳號摘要與手機友善間距；PWA 更新為 `style.css?v=88`、`app.js?v=93`、`cy-news-v98`。
+
+### 驗證
+- PASS：`node --check docs/app.js`。
+- PASS：`node tests/test_account_auth.js`、`test_ui_visual_contract.js`、`test_calendar_browser_load_order.js`、`test_pwa_notification.js`、`test_staging_build.js`。
+- PASS：`git diff --check`。
+- 視覺瀏覽器驗證【無法執行】：本環境沒有 `agent-browser`，命令在啟動前即回傳 exit 1；本機靜態伺服器本身已成功啟動，未把缺少瀏覽器工具誤記為網站失敗。
+
+### 發布狀態與下一步
+- 本地產品 commit：`6f03aa9`（改善兩步驟登入介面）；working tree 在本段補記前乾淨。
+- `git push -u origin codex/login-ui-step-flow-20260926` 被環境安全閘門拒絕，理由是本輪雖授權修改 UI，但沒有明確授權把修改推送到遠端；命令未執行，遠端沒有變更。未重試、未繞過。
+- 目前僅完成 repo 修改、本地 commit 與本地驗證；尚未推送功能分支、建立 PR、合併 `main` 或部署正式站。
+- 下一個允許動作：等待使用者明確授權推送功能分支；推送後提供 Preview／PR 供實際手機驗收。未經另一次正式發布授權，不更新 `main` 或 Production。
