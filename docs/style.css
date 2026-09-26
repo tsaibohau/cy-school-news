@@ -441,7 +441,25 @@ body { background: var(--paper); }
 .nickname-sheet label { display: grid; gap: 6px; margin: 16px 0 10px; color: var(--muted); font-size: 13px; }
 .nickname-sheet label[hidden] { display: none !important; }
 .nickname-sheet input { width: 100%; border: 1px solid var(--line); border-radius: 11px; padding: 10px 11px; font: inherit; color: var(--ink); background: var(--paper); }
-#passwordGoogleLogin { margin-top: 12px; }
+.auth-sheet { padding: 26px; }
+.auth-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.auth-heading h2 { font-size: 25px; }
+.auth-close { width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--paper); color: var(--muted); font: 24px/1 sans-serif; cursor: pointer; }
+.auth-progress { display: grid; grid-template-columns: 26px 1fr 26px; align-items: center; gap: 8px; max-width: 126px; margin: 18px 0 20px; }
+.auth-progress span { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid var(--line); border-radius: 50%; color: var(--muted); background: var(--paper); font-size: 12px; font-weight: 900; }
+.auth-progress span.is-active { border-color: var(--cysh); color: #fff; background: var(--cysh); }
+.auth-progress i { height: 2px; background: var(--line); }
+.auth-progress.is-password i { background: var(--cysh); }
+.auth-identity { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 14px 0 4px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.auth-identity span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 800; }
+.auth-identity button, .auth-text-button { border: 0; padding: 2px; color: var(--cysh); background: transparent; font: inherit; font-weight: 800; cursor: pointer; }
+.auth-primary-actions { display: grid; gap: 10px; margin-top: 20px; }
+.auth-primary-actions .btn-primary { width: 100%; min-height: 46px; }
+.auth-signup-prompt { display: flex; justify-content: center; gap: 5px; margin-top: 18px; color: var(--muted); font-size: 14px; }
+.auth-divider { display: flex; align-items: center; gap: 12px; margin: 18px 0 12px; color: var(--muted); font-size: 12px; }
+.auth-divider::before, .auth-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+#passwordGoogleLogin { width: 100%; min-height: 44px; }
+#passwordAuthStatus:not(:empty) { margin: 14px 0 0; padding: 10px 12px; border-radius: 10px; background: var(--paper); }
 @media (min-width: 760px) {
   .wrap { max-width: 900px; padding: 0 24px; }
   .welcome { padding-top: 40px; }
