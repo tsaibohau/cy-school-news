@@ -1,6 +1,6 @@
 begin;
 create extension if not exists pgtap with schema extensions;
-select plan(15);
+select plan(16);
 
 insert into auth.users(id,aud,role,email,encrypted_password,email_confirmed_at) values
  ('00000000-0000-4000-8000-00000000a001','authenticated','authenticated','owner-a@local.test','',now()),
@@ -18,7 +18,8 @@ insert into public.app_admins(user_id,admin_role,created_by,revoked_at) values
 on conflict(user_id) do update set admin_role=excluded.admin_role,revoked_at=null;
 
 set local role anon;
-select is((select count(*)::int from public.current_public_capabilities()),4,'anon reads four PUBLIC capabilities');
+select is((select count(*)::int from public.current_public_capabilities()),5,'anon reads five PUBLIC capabilities');
+select ok(not public.has_public_capability('today'),'PUBLIC today defaults to disabled until owner enables it');
 select ok(not public.has_public_capability('notifications'),'PUBLIC can never receive personalized notifications');
 select throws_ok($$select public.owner_set_public_capabilities('{"calendar":true}'::jsonb)$$,'42501',null,'anon cannot write PUBLIC capabilities');
 select throws_ok($$select public.owner_auth_cutover_readiness()$$,'42501',null,'anon cannot inspect owner auth readiness');
