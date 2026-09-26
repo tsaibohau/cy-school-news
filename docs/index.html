@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=87">
+<link rel="stylesheet" href="style.css?v=88">
 </head>
 <body>
 
@@ -259,13 +259,17 @@
 </dialog>
 
 <dialog id="passwordAuthDialog" class="nickname-dialog" aria-labelledby="passwordAuthTitle">
-  <form id="passwordAuthForm" class="nickname-sheet">
-    <p class="eyebrow">ACCOUNT</p><h2 id="passwordAuthTitle">登入嘉義校訊</h2>
-    <p id="passwordAuthHint" class="hint">請輸入 Email 或帳號名稱與密碼。</p>
-    <label>登入 Email 或帳號名稱<input id="passwordAuthUsername" required maxlength="254" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="例如：name@example.com 或 hau_115"></label>
+  <form id="passwordAuthForm" class="nickname-sheet auth-sheet">
+    <div class="auth-heading"><div><p class="eyebrow">ACCOUNT</p><h2 id="passwordAuthTitle">登入嘉義校訊</h2></div><button id="passwordAuthCancel" class="auth-close" type="button" aria-label="關閉登入視窗">×</button></div>
+    <div id="passwordAuthProgress" class="auth-progress" aria-label="登入進度"><span class="is-active">1</span><i></i><span>2</span></div>
+    <p id="passwordAuthHint" class="hint">先輸入 Email 或帳號名稱。</p>
+    <label id="passwordAuthUsernameField">Email 或帳號名稱<input id="passwordAuthUsername" required maxlength="254" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="name@example.com 或 hau_115"></label>
+    <div id="passwordAuthIdentitySummary" class="auth-identity" hidden><span id="passwordAuthIdentityText"></span><button id="passwordAuthChangeIdentifier" type="button">更改</button></div>
     <label id="passwordAuthEmailField" hidden>救援 Email<input id="passwordAuthEmail" type="email" maxlength="254" autocomplete="email" inputmode="email" placeholder="name@example.com" disabled></label>
-    <label>密碼<input id="passwordAuthPassword" type="password" required minlength="6" maxlength="72" autocomplete="current-password" placeholder="至少 6 個字元"></label>
-    <div class="profile-actions"><button id="passwordSignIn" class="btn-primary" type="submit">登入</button><button id="passwordSignUp" class="btn-ghost" type="button">註冊</button><button id="passwordResetRequest" class="btn-ghost" type="button">重設密碼</button><button id="passwordAuthBack" class="btn-ghost" type="button" hidden>返回登入</button><button id="passwordAuthCancel" class="btn-ghost" type="button">取消</button></div>
+    <label id="passwordAuthPasswordField" hidden>密碼<input id="passwordAuthPassword" type="password" required minlength="6" maxlength="72" autocomplete="current-password" placeholder="輸入密碼"></label>
+    <div class="auth-primary-actions"><button id="passwordSignIn" class="btn-primary" type="submit">繼續</button><button id="passwordResetRequest" class="auth-text-button" type="button" hidden>忘記密碼？</button><button id="passwordAuthBack" class="btn-ghost" type="button" hidden>返回登入</button></div>
+    <div class="auth-signup-prompt"><span>沒有帳號？</span><button id="passwordSignUp" class="auth-text-button" type="button">建立帳號</button></div>
+    <div class="auth-divider"><span>或</span></div>
     <button id="passwordGoogleLogin" class="btn-ghost" type="button">改用 Google 登入</button>
     <p id="passwordAuthStatus" class="hint" role="status" aria-live="polite"></p>
   </form>
@@ -344,6 +348,6 @@
 <script src="announcement-cleanup.js?v=82"></script>
 <script src="assistant-qa.js?v=53"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=92"></script>
+<script src="app.js?v=93"></script>
 </body>
 </html>
