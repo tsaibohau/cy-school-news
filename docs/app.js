@@ -132,7 +132,7 @@
       adminCleanupScan: $("adminCleanupScan"), adminCleanupStatus: $("adminCleanupStatus"), adminCleanupFilters: $("adminCleanupFilters"), adminCleanupConfidence: $("adminCleanupConfidence"), adminCleanupReason: $("adminCleanupReason"), adminCleanupSchool: $("adminCleanupSchool"), adminCleanupMetrics: $("adminCleanupMetrics"), adminCleanupResults: $("adminCleanupResults"),
       adminArchiveToggle: $("adminArchiveToggle"), adminArchivePanel: $("adminArchivePanel"), adminArchiveStatus: $("adminArchiveStatus"), adminArchiveRefresh: $("adminArchiveRefresh"), adminArchiveFilters: $("adminArchiveFilters"), adminArchiveSearch: $("adminArchiveSearch"), adminArchiveSchool: $("adminArchiveSchool"), adminArchiveCategory: $("adminArchiveCategory"), adminArchiveYear: $("adminArchiveYear"), adminArchiveSemester: $("adminArchiveSemester"), adminArchiveReference: $("adminArchiveReference"), adminArchiveMetrics: $("adminArchiveMetrics"), adminArchiveResults: $("adminArchiveResults"),
       adminClassificationToggle: $("adminClassificationToggle"), adminClassificationPanel: $("adminClassificationPanel"), adminClassificationStatus: $("adminClassificationStatus"), adminClassificationRefresh: $("adminClassificationRefresh"), adminClassificationFilters: $("adminClassificationFilters"), adminClassificationMain: $("adminClassificationMain"), adminClassificationSub: $("adminClassificationSub"), adminClassificationSchool: $("adminClassificationSchool"), adminClassificationYear: $("adminClassificationYear"), adminClassificationConfidence: $("adminClassificationConfidence"), adminClassificationLow: $("adminClassificationLow"), adminClassificationUnclassified: $("adminClassificationUnclassified"), adminClassificationMetrics: $("adminClassificationMetrics"), adminClassificationResults: $("adminClassificationResults"),
-      passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
+      passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthProgress: $("passwordAuthProgress"), passwordAuthUsernameField: $("passwordAuthUsernameField"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthIdentitySummary: $("passwordAuthIdentitySummary"), passwordAuthIdentityText: $("passwordAuthIdentityText"), passwordAuthChangeIdentifier: $("passwordAuthChangeIdentifier"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPasswordField: $("passwordAuthPasswordField"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
@@ -1067,29 +1067,51 @@
           }
         });
       }
+      function setPasswordSignInStep(step) {
+        step = step === "password" ? "password" : "identifier";
+        el.passwordAuthDialog.dataset.step = step;
+        var passwordStep = step === "password";
+        el.passwordAuthUsernameField.hidden = passwordStep;
+        el.passwordAuthUsername.disabled = passwordStep;
+        el.passwordAuthIdentitySummary.hidden = !passwordStep;
+        el.passwordAuthIdentityText.textContent = passwordStep ? el.passwordAuthUsername.value.trim() : "";
+        el.passwordAuthPasswordField.hidden = !passwordStep;
+        el.passwordAuthPassword.disabled = !passwordStep;
+        el.passwordResetRequest.hidden = !passwordStep;
+        el.passwordSignIn.textContent = passwordStep ? "登入" : "繼續";
+        el.passwordAuthHint.textContent = passwordStep ? "輸入密碼以完成登入。" : "先輸入 Email 或帳號名稱。";
+        el.passwordAuthProgress.classList.toggle("is-password", passwordStep);
+        var progressSteps = el.passwordAuthProgress.querySelectorAll("span");
+        if (progressSteps[1]) progressSteps[1].classList.toggle("is-active", passwordStep);
+      }
       function setPasswordAuthMode(mode) {
         mode = mode === "signup" || mode === "reset" ? mode : "signin";
         var signup = mode === "signup";
         var reset = mode === "reset";
-        var usernameField = el.passwordAuthUsername.parentNode;
-        var passwordField = el.passwordAuthPassword.parentNode;
         el.passwordAuthDialog.dataset.mode = mode;
         el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉義校訊";
-        el.passwordAuthHint.textContent = signup ? "帳號名稱限 3～32 個英文字母、數字或底線，須以英文字母開頭；密碼至少 6 個字元。完成 Email 驗證後等待管理員核准。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "請輸入 Email 或帳號名稱與密碼。";
-        usernameField.hidden = reset;
+        el.passwordAuthHint.textContent = signup ? "設定帳號名稱、救援 Email 與密碼。完成 Email 驗證後，帳號會等待管理員核准。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "先輸入 Email 或帳號名稱。";
+        el.passwordAuthProgress.hidden = signup || reset;
+        el.passwordAuthIdentitySummary.hidden = true;
+        el.passwordAuthUsernameField.hidden = reset;
         el.passwordAuthUsername.disabled = reset;
         el.passwordAuthEmailField.hidden = !signup && !reset;
         el.passwordAuthEmail.disabled = !signup && !reset;
-        passwordField.hidden = reset;
+        el.passwordAuthPasswordField.hidden = reset;
         el.passwordAuthPassword.disabled = reset;
         el.passwordAuthPassword.autocomplete = signup ? "new-password" : "current-password";
         el.passwordSignIn.hidden = signup || reset;
         el.passwordSignUp.hidden = false;
-        el.passwordSignUp.textContent = signup ? "建立帳號" : reset ? "寄送重設信" : "註冊";
+        el.passwordSignUp.textContent = signup ? "建立帳號" : reset ? "寄送重設信" : "建立帳號";
         el.passwordSignUp.classList.toggle("btn-primary", signup || reset);
-        el.passwordSignUp.classList.toggle("btn-ghost", !signup && !reset);
+        el.passwordSignUp.classList.toggle("auth-text-button", !signup && !reset);
         el.passwordResetRequest.hidden = signup || reset;
-        el.passwordAuthBack.hidden = !reset;
+        el.passwordAuthBack.hidden = !signup && !reset;
+        el.passwordAuthBack.textContent = "返回登入";
+        var signupPrompt = el.passwordSignUp.parentNode;
+        var signupLead = signupPrompt && signupPrompt.querySelector("span");
+        if (signupLead) signupLead.textContent = signup ? "資料都填好了？" : reset ? "想起密碼了？" : "沒有帳號？";
+        if (!signup && !reset) setPasswordSignInStep("identifier");
       }
       function showPasswordAuth(mode) {
         if (!el.passwordAuthDialog || typeof el.passwordAuthDialog.showModal !== "function") { status("帳密登入介面暫時不可用"); return; }
@@ -1146,6 +1168,13 @@
         var mode = el.passwordAuthDialog.dataset.mode || "signin";
         if (mode === "signup") { el.passwordSignUp.click(); return; }
         if (mode === "reset") { requestPasswordReset(); return; }
+        if ((el.passwordAuthDialog.dataset.step || "identifier") === "identifier") {
+          if (!el.passwordAuthUsername.value.trim()) { el.passwordAuthStatus.textContent = "請輸入 Email 或帳號名稱。"; el.passwordAuthUsername.focus(); return; }
+          el.passwordAuthStatus.textContent = "";
+          setPasswordSignInStep("password");
+          el.passwordAuthPassword.focus();
+          return;
+        }
         beginPasswordSession(function () { return auth.signInWithIdentifier(el.passwordAuthUsername.value, el.passwordAuthPassword.value); });
       });
       if (el.passwordSignUp) el.passwordSignUp.addEventListener("click", function () {
@@ -1164,6 +1193,7 @@
       });
       if (el.passwordResetRequest) el.passwordResetRequest.addEventListener("click", function () { setPasswordAuthMode("reset"); el.passwordAuthStatus.textContent = ""; });
       if (el.passwordAuthBack) el.passwordAuthBack.addEventListener("click", function () { setPasswordAuthMode("signin"); el.passwordAuthStatus.textContent = ""; el.passwordAuthUsername.focus(); });
+      if (el.passwordAuthChangeIdentifier) el.passwordAuthChangeIdentifier.addEventListener("click", function () { el.passwordAuthPassword.value = ""; el.passwordAuthStatus.textContent = ""; setPasswordSignInStep("identifier"); el.passwordAuthUsername.focus(); });
       if (el.passwordAuthCancel) el.passwordAuthCancel.addEventListener("click", function () { el.passwordAuthPassword.value = ""; el.passwordAuthDialog.close(); });
       if (el.adminRefresh) el.adminRefresh.addEventListener("click", loadAdminAccounts);
       if (el.adminFilters) el.adminFilters.addEventListener("submit", function (event) { event.preventDefault(); state.adminOffset = 0; loadAdminAccounts(); });
