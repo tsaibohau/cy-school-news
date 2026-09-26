@@ -1714,3 +1714,11 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 改用已連線且具 repo push 權限的 GitHub App Contents API：從 canonical `main` `6d3737f` 建立 `codex/login-ui-step-flow-20260926`，只寫入本輪九個已提交檔案；未修改 `main`、未建立 PR、未部署正式站。
 - API 寫入後的遠端功能分支 HEAD 為 `e5357ecabcecb9019648d6888980ba2a20225b00`；九個遠端 blob SHA 均與本地工作樹對應內容一致。因 Contents API 逐檔建立 commit，遠端 commit SHA 不會等於本地兩筆 commit，但最終檔案內容一致。
 - 下一個允許動作：等待 Vercel 為該遠端功能分支建立 Preview，或建立 PR 供手機驗收；未經正式發布授權，不合併 `main`。
+
+### 2026-09-26 11:49 正式發布
+- 使用者明確授權推送正式站。發布前重新確認遠端 `main` 仍為 canonical `6d3737f`，功能分支 HEAD `ba586dd` 為其直接後代；沒有新的 Actions 公告 commit 需要整合。
+- 再次執行 account auth、UI visual contract、calendar load order、PWA notification、staging build 與 `git diff --check`，全部 PASS。
+- 以 GitHub App non-force fast-forward 將 `main` 更新至 `ba586dd4cd22861a76fea00ef1dc901569334b55`，回傳 success；未 force、未改寫歷史、未修改 Supabase／公告資料。
+- Vercel commit status：success。
+- GitHub Pages 正式網址最初仍回舊殼層 `app.js?v=92`／`style.css?v=87`；等待重新建置後再次以 HTTPS 直接核對，已回 `app.js?v=93`、`style.css?v=88`、`passwordAuthProgress`、`passwordAuthChangeIdentifier` 與「沒有帳號？」。正式站：https://tsaibohau.github.io/cy-school-news/
+- 【CANONICAL】自本 checkpoint 起，`main` `ba586dd` 及其後續 ledger-only commit 為唯一正確正式基準。
