@@ -1722,3 +1722,27 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - Vercel commit status：success。
 - GitHub Pages 正式網址最初仍回舊殼層 `app.js?v=92`／`style.css?v=87`；等待重新建置後再次以 HTTPS 直接核對，已回 `app.js?v=93`、`style.css?v=88`、`passwordAuthProgress`、`passwordAuthChangeIdentifier` 與「沒有帳號？」。正式站：https://tsaibohau.github.io/cy-school-news/
 - 【CANONICAL】自本 checkpoint 起，`main` `ba586dd` 及其後續 ledger-only commit 為唯一正確正式基準。
+
+## 2026-09-26 12:09（Asia/Taipei）｜PUBLIC「我的今天」與審核中帳號權限基線
+
+### 需求與判定
+- 使用者要求：審核中會員仍應擁有公開網站已開放的權限；PUBLIC 權限新增「我的今天」獨立項目。
+- 原因確認：capability layer 原本只在 `!authenticated` 時讀取 PUBLIC，導致 pending／rejected 一登入便失去訪客權限；「我的今天」也沒有獨立 capability，只以 assistant／timetable／calendar／notifications 任一開啟作為間接判斷。
+
+### Repo-only 實作
+- branch：`codex/public-today-pending-access-20260926`，基準 `origin/main` `16254454d22cb5c511a4e3802efb642b1875c3f0`。
+- PUBLIC 改為所有 session 的最低權限基線：anonymous、pending、rejected、approved 都保留 PUBLIC；approved 帳號能力只能增加權限，不能拿走公開能力。
+- PUBLIC_KEYS 新增 `today`，管理員 PUBLIC 編輯器新增「我的今天」；Today route、tab、首頁入口與 click guard 改讀獨立 today gate，同時保留 approved member 原有 personal capability 相容行為。
+- pending session 在取得 account access 前先讀 PUBLIC capabilities；提示文案明確區分公開功能與核准後才開放的個人資料／私人事件／通知。
+- 新增 forward-only migration `20260926121500_public_today_and_pending_access.sql`：加入 `today`（預設 false）、擴充 owner setter；會員摘要唯讀 RPC 改為 PUBLIC access floor 也適用 authenticated pending/rejected。owner 寫入仍限 authenticated owner；私人資料 RLS／mutation RPC 未放寬。
+- PWA 版本：`account-config.js?v=44`、`capability-layer.js?v=10`、`app.js?v=94`、cache `cy-news-v99`。
+
+### 驗證
+- PASS：`node --check docs/capability-layer.js`、`node --check docs/app.js`。
+- PASS：`test_public_access_contract.js`、`test_calendar_public_readonly.js`（新增 pending 保留 PUBLIC calendar/today 行為證據）、`test_account_auth.js`、`test_ui_visual_contract.js`、`test_calendar_browser_load_order.js`、`test_pwa_notification.js`、`test_staging_build.js`、`test_today.js`、`test_rls_sql_contract.js`。
+- PASS：`git diff --check`。
+- Supabase CLI 不存在（`supabase: command not found`），因此無法執行本地 migration reset／pgTAP；本輪沒有改用 Preview 或 Production 試跑，也沒有把 repo contract test 冒充資料庫實測。
+
+### 發布狀態與下一步
+- 尚未套用 Preview／Production migration，尚未推送遠端分支、建立 PR、部署測試站或正式站。
+- 下一個安全動作：經使用者授權後推送功能分支；先在 Preview 套 migration 並執行 pgTAP／匿名、pending、approved 三種 session 驗收，再另行授權 Production migration 與正式發布。
