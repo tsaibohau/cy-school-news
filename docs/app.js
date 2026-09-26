@@ -498,7 +498,7 @@
         if (el.publicAccountLogout) el.publicAccountLogout.hidden = false;
         if (el.publicAccountEntry) el.publicAccountEntry.dataset.state = "pending";
         if (el.publicAccessTitle) el.publicAccessTitle.textContent = "帳號已建立，正在等待核准";
-        if (el.publicAccessLead) el.publicAccessLead.textContent = "你現在仍可搜尋所有公告；核准後重新整理，就能使用個人功能。";
+        if (el.publicAccessLead) el.publicAccessLead.textContent = "你可以繼續使用目前開放的公開功能；核准後才會啟用個人資料、私人事件與通知。";
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = message;
         if (el.accountReapply) el.accountReapply.hidden = !(state.accountAccess && state.accountAccess.can_reapply);
       }
@@ -1014,12 +1014,13 @@
               });
             }
             setAccountUser(session.user);
-            return auth.getAccountAccess().then(function (access) {
+            var publicCapabilitiesReady = auth.getPublicCapabilities ? auth.getPublicCapabilities().catch(function () { return null; }) : Promise.resolve();
+            return publicCapabilitiesReady.then(function () { return auth.getAccountAccess(); }).then(function (access) {
               state.accountAccess = access;
               applyServiceAccess();
               if (access.status !== "approved") {
                 if (el.tabAdmin) el.tabAdmin.hidden = true;
-                showPendingAccountShell(access.status === "rejected" ? "本次申請未通過或存取權已移除；這不是黑名單，你可以重新送審。" : "帳號已登入，等待管理員核准後才能使用個人功能。");
+                showPendingAccountShell(access.status === "rejected" ? "本次申請未通過或存取權已移除；公開功能仍可使用，你也可以重新送審。" : "帳號已登入；等待管理員核准期間，仍可使用目前開放的公開功能。");
                 status(access.status === "rejected" ? "未獲核准" : "等待核准");
                 return;
               }
@@ -2541,7 +2542,8 @@
         publicOrAccountAllowed = tab === "assistant" && capabilities.has("assistant") ||
           tab === "timetable" && capabilities.has("timetable") ||
           tab === "calendar" && capabilities.has("calendar") ||
-          ["home", "today", "sub"].indexOf(tab) !== -1 && capabilities.anyPersonal();
+          tab === "today" && (capabilities.canUseToday ? capabilities.canUseToday() : capabilities.anyPersonal()) ||
+          ["home", "sub"].indexOf(tab) !== -1 && capabilities.anyPersonal();
       } else if (!publicOrAccountAllowed) {
         publicOrAccountAllowed = hasSignedInAccount();
       }
