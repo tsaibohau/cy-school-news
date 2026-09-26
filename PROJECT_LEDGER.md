@@ -1707,3 +1707,10 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - `git push -u origin codex/login-ui-step-flow-20260926` 被環境安全閘門拒絕，理由是本輪雖授權修改 UI，但沒有明確授權把修改推送到遠端；命令未執行，遠端沒有變更。未重試、未繞過。
 - 目前僅完成 repo 修改、本地 commit 與本地驗證；尚未推送功能分支、建立 PR、合併 `main` 或部署正式站。
 - 下一個允許動作：等待使用者明確授權推送功能分支；推送後提供 Preview／PR 供實際手機驗收。未經另一次正式發布授權，不更新 `main` 或 Production。
+
+### 2026-09-26 10:37 推送續接
+- 使用者已明確授權推送功能分支。
+- 原生 HTTPS `git push` 因本環境沒有 GitHub credential 而在傳輸前失敗：`could not read Username for 'https://github.com'`；未讀取或要求 PAT／Token。
+- 改用已連線且具 repo push 權限的 GitHub App Contents API：從 canonical `main` `6d3737f` 建立 `codex/login-ui-step-flow-20260926`，只寫入本輪九個已提交檔案；未修改 `main`、未建立 PR、未部署正式站。
+- API 寫入後的遠端功能分支 HEAD 為 `e5357ecabcecb9019648d6888980ba2a20225b00`；九個遠端 blob SHA 均與本地工作樹對應內容一致。因 Contents API 逐檔建立 commit，遠端 commit SHA 不會等於本地兩筆 commit，但最終檔案內容一致。
+- 下一個允許動作：等待 Vercel 為該遠端功能分支建立 Preview，或建立 PR 供手機驗收；未經正式發布授權，不合併 `main`。
