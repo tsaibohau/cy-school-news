@@ -3,8 +3,8 @@
   "use strict";
 
   var KEYS = ["member_content", "assistant", "timetable", "calendar", "notifications"];
-  var PUBLIC_KEYS = ["member_content", "assistant", "timetable", "calendar"];
-  var LABELS = { member_content: "會員摘要", assistant: "問校務", timetable: "課表", calendar: "行事曆", notifications: "訂閱通知" };
+  var PUBLIC_KEYS = ["member_content", "assistant", "timetable", "calendar", "today"];
+  var LABELS = { member_content: "會員摘要", assistant: "問校務", timetable: "課表", calendar: "行事曆", today: "我的今天", notifications: "訂閱通知" };
   var current = emptyMap();
   var publicCurrent = emptyMap();
   var adminRows = {};
@@ -14,7 +14,7 @@
   var observerStarted = false;
 
   function emptyMap() {
-    return { member_content: false, assistant: false, timetable: false, calendar: false, notifications: false };
+    return { member_content: false, assistant: false, timetable: false, calendar: false, today: false, notifications: false };
   }
   function normalizeFor(rows, allowedKeys) {
     var out = emptyMap();
@@ -30,9 +30,12 @@
   function normalize(rows) { return normalizeFor(rows, KEYS); }
   function normalizePublic(rows) { return normalizeFor(rows, PUBLIC_KEYS); }
   function snapshot() { return normalize(current); }
-  function has(key) { return (approved ? current[key] : !authenticated && publicCurrent[key]) === true; }
+  /* PUBLIC is the minimum access floor for every visitor, including signed-in
+     accounts that are pending/rejected and approved accounts. */
+  function has(key) { return publicCurrent[key] === true || approved && current[key] === true; }
   function any(keys) { return keys.some(function (key) { return has(key); }); }
   function anyPersonal() { return any(["assistant", "timetable", "calendar", "notifications"]); }
+  function canUseToday() { return has("today") || anyPersonal(); }
   function setHidden(node, hidden) {
     if (node && node.hidden !== !!hidden) node.hidden = !!hidden;
   }
@@ -56,14 +59,14 @@
 
   function applyVisibility() {
     if (typeof document === "undefined") return;
-    var publicEntry = !authenticated && any(["assistant", "timetable", "calendar"]);
+    var publicEntry = any(["assistant", "timetable", "calendar", "today"]);
     var map = {
       tabAssistant: has("assistant"),
       tabTimetable: has("timetable"),
       tabCalendar: has("calendar"),
-      tabSub: anyPersonal(),
+      tabSub: anyPersonal() || has("today"),
       tabHome: true,
-      tabToday: anyPersonal(),
+      tabToday: canUseToday(),
       functionDock: approved || publicEntry,
     };
     Object.keys(map).forEach(function (id) { setHidden(document.getElementById(id), !map[id]); });
@@ -71,7 +74,7 @@
 
     document.querySelectorAll("[data-home-tab]").forEach(function (button) {
       var tab = button.getAttribute("data-home-tab");
-      var allowed = tab === "latest" || tab === "sub" || tab === "today" && anyPersonal() || tab === "assistant" && has("assistant") || tab === "calendar" && has("calendar");
+      var allowed = tab === "latest" || tab === "sub" || tab === "today" && canUseToday() || tab === "assistant" && has("assistant") || tab === "calendar" && has("calendar");
       var reason = authenticated ? "此功能目前未開放" : "此功能目前未對訪客開放";
       setHidden(button, false);
       setButtonAvailability(button, allowed, reason);
@@ -193,14 +196,13 @@
     if (target.closest("#tabCalendar,[data-home-tab='calendar']")) return "calendar";
     if (target.closest("#addEvent,#eventForm,[data-edit-event],[data-delete-event]")) return "member_calendar";
     if (target.closest("#tabSub,[data-home-tab='sub'],#tabHome")) return null;
-    if (target.closest("#tabToday,[data-home-tab='today']")) return "personal";
+    if (target.closest("#tabToday,[data-home-tab='today']")) return "today";
     if (target.closest("[data-today-action='task'],button[data-add-task]")) return "calendar";
     if (target.closest("[data-today-action='keyword']")) return "notifications";
     if (target.closest("button[data-detail-id],button[data-read-id],.mark-read")) return "member_content";
     return null;
   }
   function allowedRequirement(requirement) {
-    if (requirement === "personal") return anyPersonal();
     if (requirement === "member_calendar") return authenticated && approved && current.calendar;
     return !requirement || has(requirement);
   }
@@ -296,6 +298,7 @@
     current: snapshot,
     has: has,
     anyPersonal: anyPersonal,
+    canUseToday: canUseToday,
     applyVisibility: applyVisibility,
     setAuthenticated: function (value) { authenticated = value === true; if (!authenticated) { approved = false; owner = false; current = emptyMap(); } applyVisibility(); },
   };
