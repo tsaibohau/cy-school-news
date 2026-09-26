@@ -1746,3 +1746,10 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 發布狀態與下一步
 - 尚未套用 Preview／Production migration，尚未推送遠端分支、建立 PR、部署測試站或正式站。
 - 下一個安全動作：經使用者授權後推送功能分支；先在 Preview 套 migration 並執行 pgTAP／匿名、pending、approved 三種 session 驗收，再另行授權 Production migration 與正式發布。
+
+### 2026-09-26 12:26 推送與 Preview migration 嘗試
+- 使用者明確授權推送功能分支並套用 Preview migration。
+- 已以 GitHub App 從 canonical `main` `16254454d22cb5c511a4e3802efb642b1875c3f0` 建立並推送 `codex/public-today-pending-access-20260926`；遠端最終程式 commit `89319ad34f51f27e4808fcb2a0e600a75d1aebb6`。只包含本輪 13 個檔案，未更新 `main`、未部署正式站。
+- Preview migration【未套用】：台帳指定的 Preview project ref `ebezqanvmgsgtatsbssn` 對 get project、list migrations、read-only SQL 均回 `INVALID_ARGUMENT`，沒有 SQL 進入資料庫。
+- 目前 Supabase connector 只列出 Production `oppdhtnepjagdwovndra` 與另一個 2026-09-24 建立、名稱為「嘉中嘉女公告索引」的 `ulvjexdsiufvaixsjofr`；沒有證據證明後者是既有 Preview，故未對它試套 migration，也未觸碰 Production。
+- 精確 blocker：目前連線帳號看不到／無法解析 canonical Preview project `ebezqanvmgsgtatsbssn`。下一個允許動作是由使用者確認新的 Preview project ref，或恢復該 Preview 專案對 Supabase connector 的存取；確認前不得把 migration 套到 `ulvjexdsiufvaixsjofr` 或 Production。
