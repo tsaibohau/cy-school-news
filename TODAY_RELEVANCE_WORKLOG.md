@@ -117,3 +117,81 @@ is explicitly verified.
 1. Finish development-only group breakdown and false-negative review; resolve generic date-range handling without title-specific rules.
 2. Rerun tests and development evaluator; freeze only after evidence, then commit and record SHA.
 3. Only after freeze, build a new blind sample from a fresh Production snapshot, verify both schools and blind/development intersection = 0, and keep scorer not run.
+
+
+## 2026-09-27 development error / subgroup / threshold checkpoint
+
+### Confirmed inputs and evaluation harness
+- Re-read and verified the reviewed development artifact at `/workspace/scratch/967bd5223805/upload/01-manual-ranking-label-view-2026-09-26-reviewed.json`: 150 records, 150 unique announcement IDs, label totals must_show=18, useful=36, optional=26, should_hide=70; teacher_related and announcement_missing are present. No human label was edited in this work session.
+- The evaluator creates **two contexts**, not ten: CYSH and CYGSH. Each context receives all 75 reviewed rows for that school, unknown grade, as_of=2026-09-25; displayed results are capped at 10/context. Total displayed=20 is the sum of the two contexts. There are zero duplicate displayed IDs across contexts.
+- Candidate input pools are selected by school only. Pool construction does not inspect human_label, predictions, output score, threshold, or ranking position. The candidate's intended output selection does use eligibility, score >= threshold, descending score / ascending ID tie-break, and max 10/context. This is the ranking being evaluated, not a pre-filter of the 150-row candidate pool.
+- Baseline calls current-main Today.build/current-main relevance. Same-school current relevance priorities tie; Today.build preserves the reviewed artifact's input order in ties, so baseline top-10 per school is sensitive to sample order.
+- Upstream development sample construction is score-aware: the existing sampling audit at `/workspace/scratch/6ba30abc5a1f/cy-school-news-relevance/artifacts/manual-ranking-sampling-audit-2026-09-26.json` records balanced school coverage, date/category coverage, old score-band coverage and inclusion of all known title-boost examples; `human_labels_filled=0`. Thus no human-label leakage is found in the evaluation harness, but this development set is not a prevalence-representative random sample and must not be described as a Production performance estimate.
+- Denominators are exact: must_show recall uses 18; useful recall uses 36; combined positive recall uses 54; precision uses all displayed rows (20 at threshold 45); should_hide leakage uses 70; optional display rate uses 26. The evaluator emits the four raw displayed/total label counts, so all percentages are reproducible from counts.
+
+### Raw development slate metrics
+All figures below are for the reviewed 150-row, two-school development slates only; they are not Production ranking metrics.
+
+| Run | Displayed | must_show | useful | optional | should_hide |
+|---|---:|---:|---:|---:|---:|
+| Baseline | 20 | 2/18 | 2/36 | 4/26 | 12/70 |
+| Candidate threshold 45, final local state | 20 | 6/18 | 12/36 | 2/26 | 0/70 |
+
+- Baseline: must_show recall 11.1%; useful recall 5.6%; positive recall 4/54=7.4%; displayed precision 4/20=20.0%; should_hide leakage 12/70=17.1%; optional display rate 4/26=15.4%.
+- Candidate final: must_show recall 6/18=33.3%; useful recall 12/36=33.3%; positive recall 18/54=33.3%; precision 18/20=90.0%; should_hide leakage 0/70=0%; optional display rate 2/26=7.7%.
+
+### Error analysis
+- Final candidate false negatives: 36 positives (13 must_show, 23 useful). By primary omission class:
+  - Below threshold: 23 (16 score <40; 7 score 42–44). IDs: cygsh-169126, cygsh-179665, cygsh-186366, cygsh-186576, cygsh-186585, cygsh-186592, cygsh-186609, cygsh-186622, cygsh-186623, cygsh-186639, cygsh-186640, cygsh-186661, cygsh-186714, cysh-133405, cysh-133929, cysh-136187, cysh-136540, cysh-136592, cysh-136609, cysh-136617, cysh-136629, cysh-136693, cysh-136735.
+  - Capacity/rank cutoff despite eligible score >=45: 13 (all ranked 11th or lower in their school). IDs: cygsh-173270, cygsh-185870, cygsh-186419, cygsh-186420, cygsh-186450, cygsh-186484, cygsh-186582, cygsh-186621, cygsh-186663, cygsh-186713, cysh-136417, cysh-136523, cysh-136733.
+- Overlapping failure patterns (counts can overlap): six positive items are older than 30 days (cygsh-169126, cygsh-179665, cygsh-185870, cysh-133405, cysh-133929, cysh-136187); six positive teacher_related=true items are all unshown (cygsh-186609, cygsh-186622, cygsh-186661, cysh-136617, cysh-136693, cysh-136735); seven positives have score 42–44 and are below threshold. Six teacher-related positives comprise one must_show and five useful. The policy uses the flag only as a soft audience component (-25), never as a hard eligibility rule, but its observed effect is currently equivalent to zero teacher_related=true display (0/6 positive and 0/22 total flagged records), which needs resolution or stronger rationale before freeze.
+- Date missing/ambiguity: zero development rows lack both published_date and first_seen_date (sampling audit: 75 use each date source); so missing-date subgroup is empty. No false-negative positive has announcement_missing=true. All 29 announcement_missing=true rows are should_hide and are excluded by eligibility.
+- Importance/category signal weakness appears across below-threshold positives, especially category 一般 (10 FN), 研習活動 (6 FN), and 社團 (3 FN). Examples include recent general items scoring 38–44. This is a broad signal coverage issue; no title-specific rule was added.
+- Deadline/event extraction example: cygsh-186623 has a title date 2026-11-13 not currently parsed as a temporal event; it scores 38 as category 一般. cygsh-173270 has a recognized 2026-10-05 application end date, score 54, but is rank 11 and misses the 10-item cap.
+- Final false positives among non-positive labels are both optional (not should_hide): cysh-136571, category 段考考試, score 60, age 15–30 days; cygsh-186696, category 升學, score 60, age 0–1 day. Both are explainable as category importance outweighing lower human importance; neither is teacher-only or known unavailable. Final should_hide leakage is zero.
+
+### Generalizable date-primitive changes and measured effect
+- Observed failure class: year-qualified date ranges on actionable registration notices were not being treated as temporal eligibility; prior output showed cysh-135952 (should_hide, 7/20–7/21 remediation registration) in Today after its dates had passed.
+- Primitive change: generic date-range end extraction for titles with an explicit ROC/Gregorian year and registration/application/remediation cues; expired end dates now fail eligibility with an explainable temporal/eligibility reason. This is not title- or school-specific.
+- Observed failure class: date-before-application text such as “2026年…9/30前自行完成線上申請” did not yield a deadline, leaving a must_show scholarship outside the display cutoff.
+- Primitive change: parse month/day deadlines followed by application/registration language when the title explicitly supplies the year. No label or threshold was changed.
+- Before date primitive changes (previous verified candidate): 20 displayed = 5 must_show, 12 useful, 2 optional, 1 should_hide; positive recall 31.5%, precision 85.0%, should_hide leakage 1.4%.
+- After range-end handling: cysh-135952 is suppressed and cysh-136366 (useful) enters; counts become 5/13/2/0, positive recall 33.3%, precision 90.0%, leakage 0%.
+- After date-before-deadline handling: cygsh-186451 (must_show, Sep 30 deadline) enters and cygsh-186713 (useful) is displaced by the school cap; counts become 6/12/2/0, positive recall remains 33.3%, must_show recall rises from 27.8% to 33.3%, useful recall falls from 36.1% to 33.3%, precision remains 90%, leakage remains zero.
+- Human labels were not modified.
+
+### Candidate threshold robustness (same final primitives)
+| Threshold | Displayed | must_show | useful | Positive recall | Precision | Optional display | should_hide leakage |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 35 | 20 | 6/18 (33.3%) | 12/36 (33.3%) | 18/54 (33.3%) | 90.0% | 2/26 (7.7%) | 0/70 |
+| 40 | 20 | 6/18 (33.3%) | 12/36 (33.3%) | 18/54 (33.3%) | 90.0% | 2/26 (7.7%) | 0/70 |
+| 42 | 20 | 6/18 (33.3%) | 12/36 (33.3%) | 18/54 (33.3%) | 90.0% | 2/26 (7.7%) | 0/70 |
+| 44 | 20 | 6/18 (33.3%) | 12/36 (33.3%) | 18/54 (33.3%) | 90.0% | 2/26 (7.7%) | 0/70 |
+| 45 | 20 | 6/18 (33.3%) | 12/36 (33.3%) | 18/54 (33.3%) | 90.0% | 2/26 (7.7%) | 0/70 |
+| 46 | 20 | 6/18 (33.3%) | 12/36 (33.3%) | 18/54 (33.3%) | 90.0% | 2/26 (7.7%) | 0/70 |
+| 48 | 20 | 6/18 (33.3%) | 12/36 (33.3%) | 18/54 (33.3%) | 90.0% | 2/26 (7.7%) | 0/70 |
+| 50 | 20 | 6/18 (33.3%) | 12/36 (33.3%) | 18/54 (33.3%) | 90.0% | 2/26 (7.7%) | 0/70 |
+| 55 | 19 | 6/18 (33.3%) | 11/36 (30.6%) | 17/54 (31.5%) | 89.5% | 2/26 (7.7%) | 0/70 |
+
+- Stable results from 35–50 are a top-10-per-school capacity plateau; they do not establish a uniquely optimal threshold. Threshold 55 removes one useful row; no cliff-like collapse near 45 was observed.
+
+### Final candidate primitive specification (local and not frozen)
+- Eligibility: exclude announcement_missing=true; lifecycle missing/archived/tombstoned; school mismatch unless all-school audience. Expired extracted/verifiable deadline or event end date is ineligible unless a verified valid_until still covers as_of.
+- Suppression reasons: structured `announcement_unavailable`, `school_mismatch`, `deadline_passed`, `verified_date_passed`.
+- Importance: category weights: 段考考試28; 升學22; 獎助學金22; 招生編班20; 競賽18; 社團12; 研習活動10; 榮譽榜8; 行政公告8; 一般6; unknown category 0. Action cue adds 12; importance multiplier=1.
+- Audience: school match +20; explicit grade match +8; teacher_related=true adds -25 as a soft audience adjustment. The latter is not an importance label or hard suppression.
+- Temporal: age <=7d +18; <=30d +12; <=90d +4; <=180d -10; >180d -20; unknown date -4 and confidence 0.65. Verified deadline/event within 0–3d +24, 4–7d +16; passed date is handled by eligibility.
+- Missing metadata: unrecognized category gives 0 importance; no school match contribution when school is absent; missing date receives the -4 fallback. Threshold 45; maximum 10 displayed per school context.
+- Today only. Query policy and Query `published` blocker remain unchanged/UNVERIFIED.
+
+### Validation and freeze decision
+- `node tests/test_relevance.js`: passed.
+- `node tests/test_today.js`: passed.
+- Development evaluator completed with raw confusion counts and subgroup output; `git diff --check`: passed.
+- No title-specific/school-specific rule and no human-label edit.
+- Freeze gate decision: **NOT READY TO FREEZE**. Main blocker is 12/18 must_show missed (6/18 recall), with 36/54 total positive FN; 13 positives are outside per-school top-10 and 23 are below threshold. The 0/6 teacher-related positive display outcome, score-aware development sample design, and some missing event-date recognition remain unresolved. The observed threshold plateau also means a threshold value is not independently justified by these metrics.
+- Current ranking branch: `codex/today-relevance-ranking-v2`, local dirty candidate based on `ec7c1b3d0c22d1e95df694e44aeab56efb9dd9b6`; no ranking code commit SHA exists and policy is not frozen. Candidate code/tests/evaluator remain local on that branch.
+- No new blind dataset was created. Blind scorer = NOT RUN. Production deployment, migration, DB edits, and main merge = NONE; Production impact = NONE.
+
+### Next safe checkpoint
+Continue development-only review of the 36 false negatives, especially audience signal treatment, category coverage and temporal/event-date representation. Preserve reviewed labels. Do not freeze unless the must_show miss pattern and teacher-related subgroup outcome have an adequate, explainable resolution. Do not create a blind dataset or run any blind scorer in this checkpoint.
