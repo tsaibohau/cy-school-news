@@ -195,3 +195,49 @@ All figures below are for the reviewed 150-row, two-school development slates on
 
 ### Next safe checkpoint
 Continue development-only review of the 36 false negatives, especially audience signal treatment, category coverage and temporal/event-date representation. Preserve reviewed labels. Do not freeze unless the must_show miss pattern and teacher-related subgroup outcome have an adequate, explainable resolution. Do not create a blind dataset or run any blind scorer in this checkpoint.
+
+
+### Full reviewed-150 candidate subgroup raw counts (threshold 45)
+Label tuple order in the tables is must_show / useful / optional / should_hide. Each cell is `displayed / subgroup total`. Small groups are retained as raw counts; percentages from tiny strata should not be treated as precise.
+
+| School | n | must_show | useful | optional | should_hide | Displayed |
+|---|---:|---:|---:|---:|---:|---:|
+| CYGSH | 75 | 2/10 | 6/22 | 1/6 | 0/37 | 10 |
+| CYSH | 75 | 3/8 | 6/14 | 1/20 | 0/33 | 10 |
+
+| Announcement age as of 2026-09-25 | n | must_show | useful | optional | should_hide | Displayed |
+|---|---:|---:|---:|---:|---:|---:|
+| 0–1 days | 9 | 1/2 | 3/6 | 1/1 | 0/0 | 5 |
+| 2–3 days | 15 | 2/2 | 4/6 | 0/2 | 0/5 | 6 |
+| 4–7 days | 10 | 2/3 | 4/6 | 0/0 | 0/1 | 6 |
+| 8–14 days | 20 | 0/3 | 0/8 | 0/6 | 0/3 | 0 |
+| 15–30 days | 30 | 1/7 | 1/5 | 1/4 | 0/14 | 3 |
+| >30 days | 66 | 0/1 | 0/5 | 0/13 | 0/47 | 0 |
+| missing date | 0 | 0/0 | 0/0 | 0/0 | 0/0 | 0 |
+
+| Category | n | must_show | useful | optional | should_hide | Displayed |
+|---|---:|---:|---:|---:|---:|---:|
+| 一般 | 23 | 0/3 | 1/8 | 0/6 | 0/6 | 1 |
+| 升學 | 25 | 2/4 | 4/5 | 1/4 | 0/12 | 7 |
+| 招生編班 | 9 | 0/1 | 1/5 | 0/1 | 0/2 | 1 |
+| 榮譽榜 | 7 | 0/0 | 0/0 | 0/5 | 0/2 | 0 |
+| 段考考試 | 9 | 1/2 | 0/0 | 1/1 | 0/6 | 2 |
+| 獎助學金 | 17 | 3/4 | 1/2 | 0/2 | 0/9 | 4 |
+| 研習活動 | 12 | 0/1 | 0/5 | 0/2 | 0/4 | 0 |
+| 社團 | 15 | 0/2 | 0/1 | 0/0 | 0/12 | 0 |
+| 競賽 | 22 | 0/1 | 5/9 | 0/0 | 0/12 | 5 |
+| 行政公告 | 11 | 0/0 | 0/1 | 0/5 | 0/5 | 0 |
+
+| teacher_related | n | must_show | useful | optional | should_hide | Displayed |
+|---|---:|---:|---:|---:|---:|---:|
+| false | 128 | 6/17 | 12/31 | 2/21 | 0/59 | 20 |
+| true | 22 | 0/1 | 0/5 | 0/5 | 0/11 | 0 |
+| null/unknown | 0 | 0/0 | 0/0 | 0/0 | 0/0 | 0 |
+
+| announcement_missing | n | must_show | useful | optional | should_hide | Displayed |
+|---|---:|---:|---:|---:|---:|---:|
+| false | 121 | 6/18 | 12/36 | 2/26 | 0/41 | 20 |
+| true | 29 | 0/0 | 0/0 | 0/0 | 0/29 | 0 |
+| null | 0 | 0/0 | 0/0 | 0/0 | 0/0 | 0 |
+
+All subgroup counts above sum to the full 150-row reviewed development set. Category labels and teacher_related/announcement_missing flags remain independent fields.
