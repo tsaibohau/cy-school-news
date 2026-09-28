@@ -5,7 +5,7 @@ const path = require("node:path");
 
 const root = __dirname;
 const output = path.join(root, "dist-review-station");
-const files = ["index.html", "cloud_review.js", "station-config.js"];
+const files = ["index.html", "cloud_review.js", "station-config.js", "password-set.html"];
 const forbidden = /service_role|sb_secret_|SUPABASE_SERVICE_ROLE_KEY|DATABASE_URL|database_password|oppdhtnepjagdwovndra|github_pat_|gh[pousr]_[A-Za-z0-9_]{20,}/i;
 
 const contents = Object.fromEntries(files.map((name) => [name, fs.readFileSync(path.join(root, name), "utf8")]));
@@ -19,6 +19,9 @@ if (contents["index.html"].includes('<option value="machine_review">')) throw ne
 if (!contents["cloud_review.js"].includes('let cloudMode = "blind"')) throw new Error("Blind mode is not the initial review mode");
 if (!contents["cloud_review.js"].includes('if (cloudMode === "machine_review")')) throw new Error("Machine query guard is missing");
 if (!contents["cloud_review.js"].includes('await supabase.auth.getSession()')) throw new Error("Session recovery on page load is missing");
+if (!contents["password-set.html"].includes("reviewer-password-set-once")) throw new Error("Temporary password setter endpoint missing");
+if (!contents["password-set.html"].includes("f0e28775-e740-4d40-bab6-52cd289db5af")) throw new Error("Password setter target UID mismatch");
+if (/localStorage\\.setItem|sessionStorage\\.setItem|URLSearchParams/.test(contents["password-set.html"])) throw new Error("Password setter may persist or place submitted values in a URL");
 
 fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output, { recursive: true });
