@@ -17,10 +17,21 @@
  <p class="muted">使用核准的 Supabase 帳號登入。人工答案與複查進度會存到 Training Supabase；本機儲存只暫存復原佇列。</p>
  <div id="cloudSignedOut" class="row">
   <label>Email <input id="authEmail" type="email" autocomplete="email" inputmode="email" placeholder="輸入你的登入 email"></label>
-  <button class="btn primary" id="sendOtp">寄送登入連結</button>
+  <label>密碼 <input id="authPassword" type="password" autocomplete="current-password" minlength="8" placeholder="至少 8 碼"></label>
+  <button class="btn primary" id="passwordSignIn">密碼登入</button>
+  <button class="btn" id="sendMagicLink">寄送登入連結</button>
  </div>
  <div id="cloudSignedIn" class="hidden">
   <div class="row spread"><span class="pill" id="authIdentity"></span><button class="btn small" id="signOut">登出</button></div>
+  <details class="details" id="passwordSettings" style="margin-top:12px">
+   <summary>設定／變更登入密碼</summary>
+   <div class="row" style="margin-top:10px">
+    <label>新密碼 <input id="newPassword" type="password" autocomplete="new-password" minlength="8" placeholder="至少 8 碼"></label>
+    <label>再次輸入 <input id="newPasswordConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="再次輸入密碼"></label>
+    <button class="btn" id="setPassword" type="button">儲存密碼</button>
+   </div>
+   <p class="muted">設定一次後，之後可直接用 Email + 密碼登入；Magic Link 只保留作為備援。</p>
+  </details>
   <div id="reviewerPending" class="notice hidden" style="margin-top:12px">登入已完成，但這個帳號尚未獲准讀取複查資料。請把下方 reviewer UID 傳給管理者核准；核准前不會載入任何 snapshot 或 review 資料。<div class="row" style="margin-top:8px"><code id="reviewerUid" class="selectable"></code><button class="btn small" id="copyReviewerUid" type="button">複製 UID</button></div></div>
   <div class="row" style="margin-top:12px"><label>Snapshot <select id="snapshotSelect" disabled><option value="">尚無 snapshot</option></select></label><label>Review mode <select id="cloudMode" disabled><option value="blind">MODE A · Blind human labeling</option></select></label><button class="btn primary" id="loadQueue" disabled>載入／恢復複查佇列</button><button class="btn" id="importSnapshot" disabled>建立唯讀驗證 snapshot</button><span class="pill" id="queueState">尚未載入</span></div>
   <p class="muted" id="snapshotNotice">Production feed 為 GitHub Pages 靜態 JSON；資料只匯入 Training Supabase，Production 僅讀取。</p>
