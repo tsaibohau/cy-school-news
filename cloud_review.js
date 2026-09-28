@@ -20,7 +20,7 @@
   try {
     const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2");
     supabase = createClient(cfg.supabaseUrl, cfg.publishableKey, {
-      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false },
+      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
     });
   } catch (error) {
     setMessage("無法載入安全登入元件；請檢查網路後重試。", true);
@@ -86,9 +86,10 @@
   }
 
   async function refreshSnapshotList() {
-    const { data, error } = await supabase.from("snapshots")
-      .select("id,captured_at,record_count,manifest")
-      .eq("source_project_ref", cfg.productionProjectRef)
+    let snapshotQuery = supabase.from("snapshots")
+      .select("id,captured_at,record_count,manifest");
+    if (cfg.snapshotId) snapshotQuery = snapshotQuery.eq("id", cfg.snapshotId);
+    const { data, error } = await snapshotQuery
       .order("captured_at", { ascending: false }).limit(20);
     if (error) {
       setMessage(`無法讀取 Training snapshot：${error.message}`, true);
@@ -457,7 +458,13 @@
     const email = $("authEmail").value.trim().toLowerCase();
     if (!email) { setMessage("請輸入你要登入的 email。", true); return; }
     $("sendOtp").disabled = true;
-    const { error } = await supabase.auth.signInWithOtp({ email, options: { shouldCreateUser: true } });
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        shouldCreateUser: true,
+        emailRedirectTo: window.location.origin + "/",
+      },
+    });
     $("sendOtp").disabled = false;
     if (error) { setMessage(`登入碼未寄出：${error.message}`, true); return; }
     $("otpWrap").classList.remove("hidden");
