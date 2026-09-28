@@ -21,7 +21,7 @@ if (!contents["cloud_review.js"].includes('if (cloudMode === "machine_review")')
 if (!contents["cloud_review.js"].includes('await supabase.auth.getSession()')) throw new Error("Session recovery on page load is missing");
 if (!contents["password-set.html"].includes("reviewer-password-set-once")) throw new Error("Temporary password setter endpoint missing");
 if (!contents["password-set.html"].includes("f0e28775-e740-4d40-bab6-52cd289db5af")) throw new Error("Password setter target UID mismatch");
-if (/localStorage\\.setItem|sessionStorage\\.setItem|URLSearchParams/.test(contents["password-set.html"])) throw new Error("Password setter may persist or place submitted values in a URL");
+if (contents["password-set.html"].includes("localStorage.setItem") || contents["password-set.html"].includes("sessionStorage.setItem") || contents["password-set.html"].includes("URLSearchParams")) throw new Error("Password setter may persist or place submitted values in a URL");
 
 fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output, { recursive: true });
