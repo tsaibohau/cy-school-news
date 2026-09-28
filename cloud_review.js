@@ -111,8 +111,10 @@
     activeSnapshot = latest.id;
     activeManifest = latest.manifest || {};
     $("snapshotNotice").textContent = `最新 immutable snapshot：${latest.captured_at} · ${latest.record_count} 筆 · ${activeManifest.source?.repository || "source metadata missing"} · ${activeManifest.source?.commit_sha?.slice(0,8) || "no commit"}`;
-    $("loadQueue").disabled = Number(latest.record_count) === 0;
-    setQueueState(`${latest.record_count} 筆待載入`);
+    const queueCount = Array.isArray(activeManifest.review_queue?.announcement_ids)
+      ? activeManifest.review_queue.announcement_ids.length : 0;
+    $("loadQueue").disabled = queueCount === 0;
+    setQueueState(queueCount ? `${queueCount} 筆 Blind queue 待載入` : "缺少 validation queue manifest");
     $("importSnapshot").disabled = true;
   }
 
@@ -457,7 +459,8 @@
   $("sendOtp").onclick = async () => {
     const email = $("authEmail").value.trim().toLowerCase();
     if (!email) { setMessage("請輸入你要登入的 email。", true); return; }
-    $("sendOtp").disabled = true;
+    const button = $("sendOtp");
+    button.disabled = true;
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
@@ -465,17 +468,25 @@
         emailRedirectTo: window.location.origin + "/",
       },
     });
-    $("sendOtp").disabled = false;
-    if (error) { setMessage(`登入碼未寄出：${error.message}`, true); return; }
-    $("otpWrap").classList.remove("hidden");
-    setMessage(`登入碼已寄送至 ${email}。輸入登入碼後，系統會以登入 session 的 UID 判斷存取權；尚未核准時不會載入 review 資料。`);
-  };
-  $("verifyOtp").onclick = async () => {
-    const email = $("authEmail").value.trim().toLowerCase();
-    const token = $("authOtp").value.trim();
-    const { data, error } = await supabase.auth.verifyOtp({ email, token, type: "email" });
-    if (error) { setMessage(`登入失敗：${error.message}`, true); return; }
-    await verifyReviewer(data.session);
+    if (error) {
+      button.disabled = false;
+      button.textContent = "寄送登入連結";
+      setMessage(`登入連結未寄出：${error.message}`, true);
+      return;
+    }
+    let remaining = 60;
+    button.textContent = `${remaining} 秒後可重寄`;
+    const cooldown = setInterval(() => {
+      remaining -= 1;
+      if (remaining <= 0) {
+        clearInterval(cooldown);
+        button.disabled = false;
+        button.textContent = "寄送登入連結";
+      } else {
+        button.textContent = `${remaining} 秒後可重寄`;
+      }
+    }, 1000);
+    setMessage(`登入連結已寄送至 ${email}。請開啟信件中的 Sign in 連結；回到本站後會自動使用登入 session 的 UID 驗證 reviewer 權限。`);
   };
   $("signOut").onclick = async () => {
     await supabase.auth.signOut();
