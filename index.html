@@ -14,6 +14,7 @@
 <header class="top"><div><h1>公告人工複查</h1><div class="muted">先做人工判斷；AI 建議預設收起。每次操作都會自動儲存。</div></div><span class="pill" id="saveState">尚未載入資料</span></header>
 <section class="card" id="cloudStation">
  <h2>私人雲端複查站</h2>
+ <div class="pill" id="reviewUiBuild">Review UI · password-reset-visible-v1</div>
  <p class="muted">使用核准的 Supabase 帳號登入。人工答案與複查進度會存到 Training Supabase；本機儲存只暫存復原佇列。</p>
  <div id="cloudSignedOut" class="row">
   <label>Email <input id="authEmail" type="email" autocomplete="email" inputmode="email" placeholder="輸入你的登入 email"></label>
@@ -22,16 +23,22 @@
   <button class="btn" id="sendMagicLink">寄送登入連結</button>
  </div>
  <div id="cloudSignedIn" class="hidden">
-  <div class="row spread"><span class="pill" id="authIdentity"></span><button class="btn small" id="signOut">登出</button></div>
-  <details class="details" id="passwordSettings" style="margin-top:12px">
-   <summary>設定／變更登入密碼</summary>
+  <div class="row spread">
+   <span class="pill" id="authIdentity"></span>
+   <div class="row">
+    <button class="btn primary" id="openPasswordReset" type="button">設定／重設密碼</button>
+    <button class="btn small" id="signOut">登出</button>
+   </div>
+  </div>
+  <div class="notice" id="passwordSettings" style="margin-top:12px">
+   <strong>登入密碼</strong>
    <div class="row" style="margin-top:10px">
     <label>新密碼 <input id="newPassword" type="password" autocomplete="new-password" minlength="8" placeholder="至少 8 碼"></label>
     <label>再次輸入 <input id="newPasswordConfirm" type="password" autocomplete="new-password" minlength="8" placeholder="再次輸入密碼"></label>
-    <button class="btn" id="setPassword" type="button">儲存密碼</button>
+    <button class="btn primary" id="setPassword" type="button">儲存新密碼</button>
    </div>
-   <p class="muted">設定一次後，之後可直接用 Email + 密碼登入；Magic Link 只保留作為備援。</p>
-  </details>
+   <p class="muted">不用舊密碼、不寄 Email。設定成功後即可用 Email + 密碼直接登入。</p>
+  </div>
   <div id="reviewerPending" class="notice hidden" style="margin-top:12px">登入已完成，但這個帳號尚未獲准讀取複查資料。請把下方 reviewer UID 傳給管理者核准；核准前不會載入任何 snapshot 或 review 資料。<div class="row" style="margin-top:8px"><code id="reviewerUid" class="selectable"></code><button class="btn small" id="copyReviewerUid" type="button">複製 UID</button></div></div>
   <div class="row" style="margin-top:12px"><label>Snapshot <select id="snapshotSelect" disabled><option value="">尚無 snapshot</option></select></label><label>Review mode <select id="cloudMode" disabled><option value="blind">MODE A · Blind human labeling</option></select></label><button class="btn primary" id="loadQueue" disabled>載入／恢復複查佇列</button><button class="btn" id="importSnapshot" disabled>建立唯讀驗證 snapshot</button><span class="pill" id="queueState">尚未載入</span></div>
   <p class="muted" id="snapshotNotice">Production feed 為 GitHub Pages 靜態 JSON；資料只匯入 Training Supabase，Production 僅讀取。</p>
