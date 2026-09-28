@@ -502,6 +502,11 @@
     setMessage(`登入連結已寄送至 ${email}。請開啟信件中的 Sign in 連結；密碼登入是主要方式，Magic Link 僅供備援。`);
   };
 
+  $("openPasswordReset").onclick = () => {
+    $("passwordSettings").scrollIntoView({ behavior: "smooth", block: "center" });
+    setTimeout(() => $("newPassword").focus(), 250);
+  };
+
   $("setPassword").onclick = async () => {
     const password = $("newPassword").value;
     const confirm = $("newPasswordConfirm").value;
@@ -514,7 +519,7 @@
     if (error) { setMessage(`密碼設定失敗：${error.message}`, true); return; }
     $("newPassword").value = "";
     $("newPasswordConfirm").value = "";
-    setMessage("密碼已設定。之後可直接使用 Email + 密碼登入，不必再寄登入信。");
+    setMessage("密碼已設定成功。之後直接使用 Email + 密碼登入；不需要再寄 Magic Link。");
   };
 
   $("signOut").onclick = async () => {
