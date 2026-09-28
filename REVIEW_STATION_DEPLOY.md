@@ -20,3 +20,29 @@ The browser connects only to the Training project `cy-school-news-training` (`ss
 Round 1 is blind-only in this station. The machine-review mode selector option is removed, and the client defaults to blind mode. Do not send an OTP or Magic Link until the actual Vercel Preview URL is known and has been added to the Training Supabase Auth Site URL / Redirect URLs. The existing sign-in screen uses email OTP code entry.
 
 The site entry is `/`. Its `index.html` loads the existing client adapter on every load and calls `getSession()` to restore an existing Auth session. No extra callback route is required.
+
+
+## Canonical review workflow
+
+This Vercel-hosted Review Station is the canonical human-review surface for subsequent rounds.
+
+- Do not create a new review website for each labeling round.
+- Human review answers are persisted to Training Supabase.
+- After a round is completed and locked, prepare the next round in Training Supabase and expose that queue through this same Review Station.
+- Keep machine predictions and human labels separate.
+- Blind rounds must not query or expose machine predictions.
+- Authentication is Magic Link only. Do not show or require a numeric OTP/code input in the Review Station UI.
+- The browser may request a Magic Link with `signInWithOtp`, but the user completes sign-in by clicking the email link and returning to the station.
+- Keep the client-side resend cooldown to reduce accidental Auth rate-limit hits.
+- Gate A snapshot/predictions remain frozen unless a later round explicitly creates a new version.
+- Never write review/training data to Production Supabase.
+
+Current validated Training backend:
+- project: `cy-school-news-training`
+- ref: `sshovpnepgswzvjwjuyz`
+
+Round 1 frozen snapshot:
+- `c7db661b-181a-4cd3-b869-b39f7edb3048`
+
+Round 1 blind queue:
+- 60 announcements
