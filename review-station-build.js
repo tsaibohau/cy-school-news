@@ -1,29 +1,19 @@
 "use strict";
-
 const fs = require("node:fs");
 const path = require("node:path");
-
 const root = __dirname;
-const output = path.join(root, "dist-review-station");
-const files = ["index.html", "cloud_review.js", "station-config.js", "password-set.html"];
-const forbidden = /service_role|sb_secret_|SUPABASE_SERVICE_ROLE_KEY|DATABASE_URL|database_password|oppdhtnepjagdwovndra|github_pat_|gh[pousr]_[A-Za-z0-9_]{20,}/i;
-
-const contents = Object.fromEntries(files.map((name) => [name, fs.readFileSync(path.join(root, name), "utf8")]));
-const bundle = Object.values(contents).join("\n");
-
-if (forbidden.test(bundle)) throw new Error("Review Station bundle contains a forbidden credential or Production reference");
-if (!contents["station-config.js"].includes("https://sshovpnepgswzvjwjuyz.supabase.co")) throw new Error("Training Supabase URL missing");
-if (!contents["station-config.js"].includes("sb_publishable_")) throw new Error("Training publishable key missing");
-if (/localhost|127\.0\.0\.1|file:\/\//i.test(bundle)) throw new Error("Local-only URL found in Review Station bundle");
-if (contents["index.html"].includes('<option value="machine_review">')) throw new Error("Machine review mode must not be offered in the Round 1 station");
-if (!contents["cloud_review.js"].includes('let cloudMode = "blind"')) throw new Error("Blind mode is not the initial review mode");
-if (!contents["cloud_review.js"].includes('if (cloudMode === "machine_review")')) throw new Error("Machine query guard is missing");
-if (!contents["cloud_review.js"].includes('await supabase.auth.getSession()')) throw new Error("Session recovery on page load is missing");
-if (!contents["password-set.html"].includes("reviewer-password-set-once")) throw new Error("Temporary password setter endpoint missing");
-if (!contents["password-set.html"].includes("f0e28775-e740-4d40-bab6-52cd289db5af")) throw new Error("Password setter target UID mismatch");
-if (contents["password-set.html"].includes("localStorage.setItem") || contents["password-set.html"].includes("sessionStorage.setItem") || contents["password-set.html"].includes("URLSearchParams")) throw new Error("Password setter may persist or place submitted values in a URL");
-
-fs.rmSync(output, { recursive: true, force: true });
-fs.mkdirSync(output, { recursive: true });
-for (const name of files) fs.copyFileSync(path.join(root, name), path.join(output, name));
-console.log(`Prepared ${files.length} static Review Station assets in ${path.relative(root, output)}`);
+const out = path.join(root, "dist-review-station");
+const names = ["index.html", "round-001-blind-review-data.js"];
+const assets = Object.fromEntries(names.map(name => [name, fs.readFileSync(path.join(root, name), "utf8")]));
+const bundle = Object.values(assets).join("\n");
+if (/\b(machine_label|machine_predictions|machine_confidence|machine_reasons|machine_ranking|machine_weight|machine_prediction)\b/i.test(bundle)) throw new Error("Blind browser bundle contains a prohibited model field");
+if (/service_role|sb_secret_|database_password|password|magic.?link|\botp\b|signInWith|supabase\.auth/i.test(bundle)) throw new Error("Blind browser bundle contains an authentication or private credential artifact");
+if (!assets["index.html"].includes("Round 1 Blind Human Review")) throw new Error("Round 1 review interface missing");
+if (!assets["index.html"].includes("localStorage")) throw new Error("Local autosave is missing");
+if (!assets["index.html"].includes("human_review_round_001.json")) throw new Error("JSON export is missing");
+const data = assets["round-001-blind-review-data.js"];
+if (!data.includes('"queue_count":60') || !data.includes('"cysh":30') || !data.includes('"cygsh":30')) throw new Error("Frozen queue metadata mismatch");
+fs.rmSync(out, { recursive: true, force: true });
+fs.mkdirSync(out, { recursive: true });
+for (const name of names) fs.copyFileSync(path.join(root, name), path.join(out, name));
+console.log("Prepared 2 static blind-review assets; model and auth scans passed.");
