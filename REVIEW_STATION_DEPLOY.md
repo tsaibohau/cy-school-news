@@ -46,3 +46,15 @@ Round 1 frozen snapshot:
 
 Round 1 blind queue:
 - 60 announcements
+
+
+## Authentication and queue behavior
+
+- Primary sign-in is Email + password.
+- Magic Link remains available only as a fallback/recovery path.
+- An already signed-in approved reviewer can set or change the account password from the Review Station.
+- Do not reintroduce numeric OTP/code entry UI.
+- After an approved reviewer session is established, automatically load the frozen blind-review queue for the configured snapshot.
+- Keep the manual “載入／恢復複查佇列” control only as a recovery/reload action.
+- Do not load the full snapshot as the human-labeling queue. Round 1 remains the 60 announcement IDs stored in `manifest.review_queue.announcement_ids`.
+- Subsequent rounds should be written to Training Supabase and surfaced through this same Review Station rather than creating another review site.
