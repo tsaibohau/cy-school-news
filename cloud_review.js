@@ -80,8 +80,9 @@
     reviewerApproved = true;
     $("reviewerPending").classList.add("hidden");
     $("cloudMode").disabled = false;
-    setMessage("已登入。公告與人工答案只會從 Training Supabase 載入。未覆核欄位仍保持 unreviewed。");
+    setMessage("已登入。正在載入本輪 Blind Review queue；公告與人工答案只會從 Training Supabase 讀寫。");
     await refreshSnapshotList();
+    if (activeManifest?.review_queue?.announcement_ids?.length) await loadQueue();
     return true;
   }
 
@@ -456,10 +457,22 @@
     setMessage(`雲端 autosave 失敗：${error?.message || error}`, true);
   }
 
-  $("sendOtp").onclick = async () => {
+  $("passwordSignIn").onclick = async () => {
+    const email = $("authEmail").value.trim().toLowerCase();
+    const password = $("authPassword").value;
+    if (!email || !password) { setMessage("請輸入 Email 與密碼。", true); return; }
+    const button = $("passwordSignIn");
+    button.disabled = true;
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    button.disabled = false;
+    if (error) { setMessage(`密碼登入失敗：${error.message}`, true); return; }
+    if (data.session && !reviewer) await verifyReviewer(data.session);
+  };
+
+  $("sendMagicLink").onclick = async () => {
     const email = $("authEmail").value.trim().toLowerCase();
     if (!email) { setMessage("請輸入你要登入的 email。", true); return; }
-    const button = $("sendOtp");
+    const button = $("sendMagicLink");
     button.disabled = true;
     const { error } = await supabase.auth.signInWithOtp({
       email,
@@ -486,8 +499,24 @@
         button.textContent = `${remaining} 秒後可重寄`;
       }
     }, 1000);
-    setMessage(`登入連結已寄送至 ${email}。請開啟信件中的 Sign in 連結；回到本站後會自動使用登入 session 的 UID 驗證 reviewer 權限。`);
+    setMessage(`登入連結已寄送至 ${email}。請開啟信件中的 Sign in 連結；密碼登入是主要方式，Magic Link 僅供備援。`);
   };
+
+  $("setPassword").onclick = async () => {
+    const password = $("newPassword").value;
+    const confirm = $("newPasswordConfirm").value;
+    if (password.length < 8) { setMessage("新密碼至少需要 8 碼。", true); return; }
+    if (password !== confirm) { setMessage("兩次輸入的密碼不一致。", true); return; }
+    const button = $("setPassword");
+    button.disabled = true;
+    const { error } = await supabase.auth.updateUser({ password });
+    button.disabled = false;
+    if (error) { setMessage(`密碼設定失敗：${error.message}`, true); return; }
+    $("newPassword").value = "";
+    $("newPasswordConfirm").value = "";
+    setMessage("密碼已設定。之後可直接使用 Email + 密碼登入，不必再寄登入信。");
+  };
+
   $("signOut").onclick = async () => {
     await supabase.auth.signOut();
     reviewer = null; reviewerApproved = false; activeSession = null; window.cloudReviewActive = false; data = null;
