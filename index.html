@@ -37,7 +37,7 @@
     <div class="group"><h3>期限／活動過期後仍有參考價值嗎？</h3><div class="seg" id="reference_value"></div></div>
     <div class="group"><h3>補充說明（選填）</h3><textarea id="notes" placeholder="可留白；一般標記不需打字"></textarea></div>
   </section>
-  <section class="card"><div class="footer"><button class="btn" id="export">完成並匯出 Round 1</button></div><p class="muted">完成後按此匯出 JSON；檔案只包含人工答案與審核資料。</p></section>
+  <section class="card"><div class="footer"><button class="btn" id="export">匯出／儲存 Round 1</button></div><p class="muted">iPhone 會開啟分享面板，可選「儲存到檔案」；其他瀏覽器會直接下載 JSON。檔案只包含人工答案與審核資料。</p></section>
   <div class="toast hidden" id="toast" role="status"></div>
 </main>
 <script src="round-001-blind-review-data.js"></script>
@@ -124,11 +124,29 @@
   $("next").onclick=()=>{state.position=Math.min(59,state.position+1);persist();render();};
   $("undo").onclick=()=>{const item=state.undo_stack.pop();if(!item){toast("沒有可復原的操作");return;}state.answers[item.id]=item.answer;persist();render();toast("已復原上一項變更");};
   $("addSpan").onclick=()=>{const list=clone(currentAnswer().human_temporal_spans||[]);list.push({start_month:null,end_month:null});change("human_temporal_spans",list);};
-  function exportJSON() {
+  async function exportJSON() {
     const records=bundle.records.map(r=>({announcement_id:r.announcement_id,human_answers:clone(state.answers[r.announcement_id]||emptyAnswer()),reviewed_fields:(state.answers[r.announcement_id]?.reviewed_fields||[]).slice(),review_status:state.answers[r.announcement_id]?.human_label?"in_progress":"unreviewed"}));
     const complete=records.filter(r=>r.human_answers.human_label).length;
     const result={format_version:"1.0",round_id:ROUND,snapshot_id:SNAPSHOT,exported_at:new Date().toISOString(),queue_count:60,reviewer_mode:"local_no_auth",completion_state:{completed_count:complete,remaining_count:60-complete,is_complete:complete===60},current_position:state.position,undo_stack:clone(state.undo_stack),records};
-    const blob=new Blob([JSON.stringify(result,null,2)+"\n"],{type:"application/json"}),link=document.createElement("a");link.href=URL.createObjectURL(blob);link.download="human_review_round_001.json";link.click();setTimeout(()=>URL.revokeObjectURL(link.href),1000);toast(`已匯出 ${complete}/60 筆；本機資料仍保留`);
+    const json=JSON.stringify(result,null,2)+"\n";
+    const file=new File([json],"human_review_round_001.json",{type:"application/json"});
+    try {
+      const shareData={files:[file],title:"Round 1 Human Review"};
+      if (navigator.share && (!navigator.canShare || navigator.canShare(shareData))) {
+        await navigator.share(shareData);
+        toast(`已開啟匯出 ${complete}/60 筆；本機資料仍保留`);
+        return;
+      }
+    } catch (error) {
+      if (error?.name==="AbortError") {
+        toast("已取消匯出；本機資料仍保留");
+        return;
+      }
+    }
+    const url=URL.createObjectURL(file),link=document.createElement("a");
+    link.href=url;link.download=file.name;link.style.display="none";document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);
+    toast(`已匯出 ${complete}/60 筆；本機資料仍保留`);
   }
   $("export").onclick=exportJSON;
   persist();render();
