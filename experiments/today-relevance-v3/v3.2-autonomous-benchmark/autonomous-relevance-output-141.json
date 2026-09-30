@@ -1,0 +1,3596 @@
+{
+  "format_version": "1.0",
+  "benchmark": "development_nonoverlap_141",
+  "evaluation_as_of": "2026-09-25",
+  "input_artifact": "autonomous-blind-input-141.json",
+  "input_sha256": "2f18368aaecfcf66a1799cbdab72b9f7dbbd70e3e663c7933ace9ba62a550709",
+  "evidence_output_artifact": "autonomous-evidence-output-141.json",
+  "inference_engine": "Work Luna semantic inference",
+  "expected_primary_count": 141,
+  "inferred_count": 140,
+  "withheld_count": 1,
+  "records": [
+    {
+      "announcement_id": "cygsh-154786",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "historical_reference",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-159428",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-163449",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-163572",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-169126",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "uncertain"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.12
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-169488",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "teacher_only",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-170397",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-172677",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-173270",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_near",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-174508",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "historical_reference"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-179665",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "uncertain"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.12
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-180530",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "useful"
+      },
+      "reason_codes": [
+        "rules_still_relevant",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-181281",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "uncertain"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.12
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-182068",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-185446",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "teacher_only",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-185541",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-185659",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "teacher_only"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-185668",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-185674",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-185870",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "useful"
+      },
+      "reason_codes": [
+        "historical_reference",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-185882",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "uncertain"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.12
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186056",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186160",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186182",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186216",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186266",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186323",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186341",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "teacher_only",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186345",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186366",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186375",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "teacher_only"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186405",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186419",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186420",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186439",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186445",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186450",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "long_term"
+      },
+      "reason_codes": [
+        "rules_still_relevant",
+        "historical_reference"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186451",
+      "today_label": "must_show",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "near_term",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_near",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.58,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186484",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186496",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186525",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186576",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "teacher_only"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186582",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186585",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186592",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186602",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186609",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186613",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186614",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186621",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186622",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186623",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186635",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186639",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186640",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186649",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186660",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186661",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186663",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186664",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186666",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_near",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186668",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186669",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186672",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "long_term"
+      },
+      "reason_codes": [
+        "rules_still_relevant"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186683",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "teacher_only"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186696",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186702",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186708",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186713",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-186714",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cygsh-59900",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_near",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-133228",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "long_term"
+      },
+      "reason_codes": [
+        "teacher_only"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-133229",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "long_term"
+      },
+      "reason_codes": [
+        "teacher_only"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-133247",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "historical_reference"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-133405",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-133809",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-133812",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-133929",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "long_term"
+      },
+      "reason_codes": [
+        "rules_still_relevant",
+        "historical_reference"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-133995",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "historical_reference",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-134040",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-134469",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-134501",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "useful"
+      },
+      "reason_codes": [
+        "historical_reference",
+        "rules_still_relevant"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-134543",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-134568",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "rules_still_relevant"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-134647",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "useful"
+      },
+      "reason_codes": [
+        "historical_reference",
+        "rules_still_relevant"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-134737",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "uncertain"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.12
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-134766",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135039",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135260",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "teacher_only",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135417",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135526",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135602",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135609",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135642",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135666",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "useful"
+      },
+      "reason_codes": [
+        "rules_still_relevant",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135667",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "useful"
+      },
+      "reason_codes": [
+        "rules_still_relevant",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135688",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135739",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "historical_reference",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135740",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "historical_reference",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135779",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135780",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "uncertain"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.12
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135901",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135944",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135952",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135971",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-135997",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136110",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136187",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136340",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136365",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136366",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136417",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136495",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136514",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136523",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136540",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136546",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "long_term"
+      },
+      "reason_codes": [
+        "teacher_only",
+        "rules_still_relevant"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136557",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136560",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136571",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "long_term"
+      },
+      "reason_codes": [
+        "rules_still_relevant",
+        "historical_reference"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136580",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136585",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_passed",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136592",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136605",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "teacher_only",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136609",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136617",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "teacher_only"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136629",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "uncertain",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "action_required",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136633",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136645",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136650",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "useful"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136654",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "uncertain",
+        "urgency": "uncertain",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "uncertain",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "content_insufficient"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.12,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136681",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136683",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "audience_specific",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136686",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "deadline_near",
+        "action_required"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136693",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "current",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "teacher_only"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136705",
+      "today_label": "optional",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "uncertain",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "no_current_action"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.15,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136712",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136719",
+      "today_label": "should_hide",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "historical",
+        "source_reliability": "uncertain",
+        "reference_value": "none"
+      },
+      "reason_codes": [
+        "deadline_passed",
+        "action_expired"
+      ],
+      "confidence": {
+        "label": 0.5,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.58,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136734",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "medium",
+        "urgency": "later",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.4,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    },
+    {
+      "announcement_id": "cysh-136736",
+      "today_label": "useful",
+      "reasoning_factors": {
+        "actionability": "low",
+        "urgency": "none",
+        "audience_relevance": "direct",
+        "temporal_relevance": "upcoming",
+        "source_reliability": "uncertain",
+        "reference_value": "limited"
+      },
+      "reason_codes": [
+        "event_upcoming",
+        "audience_specific"
+      ],
+      "confidence": {
+        "label": 0.28,
+        "actionability": 0.1,
+        "urgency": 0.24,
+        "audience_relevance": 0.42,
+        "temporal_relevance": 0.22,
+        "source_reliability": 0.08,
+        "reference_value": 0.27
+      },
+      "low_evidence_confidence": true
+    }
+  ]
+}
