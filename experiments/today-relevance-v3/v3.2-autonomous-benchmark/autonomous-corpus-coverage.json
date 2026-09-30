@@ -1,0 +1,96 @@
+{
+  "format_version": "1.0",
+  "snapshot_id": "c7db661b-181a-4cd3-b869-b39f7edb3048",
+  "evaluation_as_of": "2026-09-25",
+  "total": 150,
+  "primary_nonoverlap": 141,
+  "round1_overlap": 9,
+  "individual_label_leak_withheld": 1,
+  "actual_blind_input": 140,
+  "body_available_historical": 0,
+  "body_partial_historical": 0,
+  "body_unavailable_historical": 150,
+  "attachments_present_historical": 0,
+  "attachments_historically_available": 0,
+  "attachments_parsed": 0,
+  "attachment_parse_failed": 0,
+  "metadata_only": 150,
+  "historical_source_observations_available": 0,
+  "post_as_of_repository_observation_rows": 19,
+  "post_as_of_repository_observation_ids": 9,
+  "live_web_urls_checked": 2,
+  "live_post_as_of_page_body_available": 1,
+  "live_post_as_of_http_404": 1,
+  "post_as_of_only_ids": 11,
+  "completely_without_any_title_or_metadata": 0,
+  "insufficient_for_body_aware_autonomous_inference": 150,
+  "by_school": {
+    "cygsh": {
+      "total": 75,
+      "body_available": 0,
+      "metadata_only": 75
+    },
+    "cysh": {
+      "total": 75,
+      "body_available": 0,
+      "metadata_only": 75
+    }
+  },
+  "by_category": {
+    "獎助學金": {
+      "total": 17,
+      "body_available": 0,
+      "metadata_only": 17
+    },
+    "一般": {
+      "total": 23,
+      "body_available": 0,
+      "metadata_only": 23
+    },
+    "競賽": {
+      "total": 22,
+      "body_available": 0,
+      "metadata_only": 22
+    },
+    "研習活動": {
+      "total": 12,
+      "body_available": 0,
+      "metadata_only": 12
+    },
+    "行政公告": {
+      "total": 11,
+      "body_available": 0,
+      "metadata_only": 11
+    },
+    "社團": {
+      "total": 15,
+      "body_available": 0,
+      "metadata_only": 15
+    },
+    "升學": {
+      "total": 25,
+      "body_available": 0,
+      "metadata_only": 25
+    },
+    "招生編班": {
+      "total": 9,
+      "body_available": 0,
+      "metadata_only": 9
+    },
+    "段考考試": {
+      "total": 9,
+      "body_available": 0,
+      "metadata_only": 9
+    },
+    "榮譽榜": {
+      "total": 7,
+      "body_available": 0,
+      "metadata_only": 7
+    }
+  },
+  "definitions": {
+    "body_coverage": "Historical body usable only if evidence was observed at or before 2026-09-25. The frozen dataset and Training snapshot contain no body content.",
+    "post_as_of": "All 19 matching Training observations were observed 2026-09-28, later than as_of. Two live URLs were opened 2026-09-30.",
+    "completely_insufficient": "A record with no title and no source metadata; none in this set. All 150 are insufficient for body-aware reasoning because historical body/attachment evidence is absent."
+  }
+}
