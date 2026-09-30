@@ -44,7 +44,9 @@
 <script>
 "use strict";
 (() => {
-  const bundle = window.ROUND001_REREVIEW_A_DATA;
+  const dataNode = document.getElementById("round001-rereview-data");
+  let bundle = null;
+  try { bundle = dataNode ? JSON.parse(dataNode.textContent) : null; } catch {}
   const SNAPSHOT = "c7db661b-181a-4cd3-b869-b39f7edb3048";
   const ROUND = "round_001_rereview_a";
   const PARENT_ROUND = "round_001";
@@ -156,4 +158,3 @@
 </script>
 </body>
 </html>
-

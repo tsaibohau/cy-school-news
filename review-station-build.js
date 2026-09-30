@@ -17,7 +17,7 @@ if(prohibitedDataKeys.test(dataSource))throw new Error("Browser data contains a 
 const externalDataTag='<script src="round-001-rereview-batch-a-data.js"></script>';
 if(!ui.includes(externalDataTag))throw new Error("Review page is missing the expected data script slot");
 const inlineJson=JSON.stringify(parsed).replace(/</g,"\\\\u003c");
-const builtHtml=ui.replace(externalDataTag,`<script>window.ROUND001_REREVIEW_A_DATA = ${inlineJson};</script>`);
+const builtHtml=ui.replace(externalDataTag,`<script type="application/json" id="round001-rereview-data">${inlineJson}</script>`);
 const bundle=builtHtml+"\\n"+dataSource;
 if(/service_role|sb_secret_|database_password|createClient|supabase|magic.?link|otp|signInWith/i.test(bundle))throw new Error("Browser bundle contains Supabase/Auth/secret code");
 if(/machine_label|machine_predictions|machine_confidence|machine_reasons|machine_score|normalized_score|ranking_position|machine_ranking|machine_weight|weight_version|threshold|calibration_result/i.test(dataSource))throw new Error("Browser data contains machine prediction data");
