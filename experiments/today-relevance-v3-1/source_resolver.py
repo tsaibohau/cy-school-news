@@ -15,7 +15,8 @@ def resolve_source(current: dict[str, Any] | None, cached: dict[str, Any] | None
     body = str(obs.get("body_text") or "").strip()
     if code in (404, 410) or status in {"confirmed_missing", "tombstoned"}:
         canonical = "missing_confirmed"
-    elif status in {"timeout", "network_error", "tls_error", "temporarily_unreachable", "source_check_failed"} or error in {"timeout", "network_error", "tls_certificate_error", "ssl_error", "http_5xx"}:
+    elif (status in {"timeout", "network_error", "tls_error", "temporarily_unreachable", "source_check_failed"}
+          or any(token in error for token in ("timeout", "connection", "network", "dns", "tls", "ssl", "http_5"))):
         canonical = "temporarily_unreachable"
     elif code is not None and 500 <= int(code) <= 599:
         canonical = "temporarily_unreachable"
@@ -27,6 +28,8 @@ def resolve_source(current: dict[str, Any] | None, cached: dict[str, Any] | None
         canonical = "available"
     elif current is None and cached:
         canonical = "unknown"  # Stale cached text never proves a live source.
+    elif status in {"fetch_failed", "fetch_error", "error", "failed"} or error:
+        canonical = "unknown"
     elif current is not None and (code is not None or status):
         canonical = "partial"
     else:
