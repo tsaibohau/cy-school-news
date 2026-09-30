@@ -3,230 +3,15 @@
   "benchmark": "development_nonoverlap_141",
   "evaluation_as_of": "2026-09-25",
   "input_artifact": "autonomous-blind-input-141.json",
-  "input_sha256": "2f18368aaecfcf66a1799cbdab72b9f7dbbd70e3e663c7933ace9ba62a550709",
+  "input_sha256": "5e5202593eacd748fbee2249d94efaef883e11da167d7394b4253298820428e3",
   "inference_engine": "Work Luna semantic inference",
   "inference_mode": "metadata/title only: historical body, attachment and source-status observations unavailable at as_of",
   "expected_primary_count": 141,
-  "inferred_count": 140,
-  "withheld_count": 1,
+  "inferred_count": 138,
+  "withheld_count": 3,
   "withheld_announcement_id": "cygsh-146936",
   "round1_overlap_included": false,
   "records": [
-    {
-      "announcement_id": "cygsh-154786",
-      "evidence": {
-        "announcement_id": "cygsh-154786",
-        "source_status": {
-          "canonical_status": "unknown",
-          "page_available": false,
-          "attachments_checked": false,
-          "unparsed_attachment_count": 0
-        },
-        "content_quality": "title_only",
-        "dates": {
-          "published_date": null,
-          "deadline_date": null,
-          "event_dates": [],
-          "application_start": null,
-          "application_end": null,
-          "effective_until": null,
-          "exam_date": null,
-          "registration_start": null,
-          "registration_end": null,
-          "date_spans": []
-        },
-        "affected_audience": [],
-        "teacher_related": "uncertain",
-        "actions": [],
-        "actionability_status": "uncertain",
-        "temporal_status": "uncertain",
-        "long_lived_information": null,
-        "historical_reference": true,
-        "post_expiry_reference_value": "limited",
-        "evidence": [
-          {
-            "field": "today_relevance_basis",
-            "value": "optional",
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "113學年度嘉義女中學生參加英文檢定考試獎勵計畫之申請表單",
-            "confidence": 0.32
-          },
-          {
-            "field": "historical_reference",
-            "value": true,
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "113學年度嘉義女中學生參加英文檢定考試獎勵計畫之申請表單",
-            "confidence": 0.3
-          },
-          {
-            "field": "post_expiry_reference_value",
-            "value": "limited",
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "113學年度嘉義女中學生參加英文檢定考試獎勵計畫之申請表單",
-            "confidence": 0.3
-          }
-        ],
-        "confidence": {
-          "source_status": 0.08,
-          "content_quality": 0.98,
-          "dates": 0.15,
-          "audience": 0.15,
-          "actions": 0.1,
-          "temporal_status": 0.12,
-          "historical_reference": 0.27
-        }
-      },
-      "temporal": {
-        "evaluation_as_of": "2026-09-25",
-        "temporal_calculation": {
-          "days_until_deadline": null,
-          "days_since_deadline": null,
-          "days_until_event": [],
-          "days_since_event": [],
-          "days_until_application_start": null,
-          "days_until_application_end": null,
-          "days_until_effective_until": null
-        },
-        "actionability_status": "uncertain",
-        "temporal_status": "uncertain"
-      },
-      "low_evidence_confidence": true
-    },
-    {
-      "announcement_id": "cygsh-159428",
-      "evidence": {
-        "announcement_id": "cygsh-159428",
-        "source_status": {
-          "canonical_status": "unknown",
-          "page_available": false,
-          "attachments_checked": false,
-          "unparsed_attachment_count": 0
-        },
-        "content_quality": "title_only",
-        "dates": {
-          "published_date": null,
-          "deadline_date": "2025-06-06",
-          "event_dates": [],
-          "application_start": null,
-          "application_end": null,
-          "effective_until": null,
-          "exam_date": null,
-          "registration_start": null,
-          "registration_end": null,
-          "date_spans": []
-        },
-        "affected_audience": [],
-        "teacher_related": "uncertain",
-        "actions": [
-          {
-            "action": "register",
-            "status": "expired",
-            "deadline": "2025-06-06",
-            "audience": []
-          }
-        ],
-        "actionability_status": "action_expired",
-        "temporal_status": "closed",
-        "long_lived_information": false,
-        "historical_reference": false,
-        "post_expiry_reference_value": "none",
-        "evidence": [
-          {
-            "field": "dates.deadline_date",
-            "value": "2025-06-06",
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "【轉知】教育部第七屆「我的未來我作主」校園反毒、反霸凌影音創作競賽活動，開放報名至114年6月6日止，歡迎同學踴躍參加。",
-            "confidence": 0.72
-          },
-          {
-            "field": "actions",
-            "value": "register",
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "報名",
-            "confidence": 0.52
-          },
-          {
-            "field": "today_relevance_basis",
-            "value": "should_hide",
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "【轉知】教育部第七屆「我的未來我作主」校園反毒、反霸凌影音創作競賽活動，開放報名至114年6月6日止，歡迎同學踴躍參加。",
-            "confidence": 0.32
-          },
-          {
-            "field": "temporal_status",
-            "value": "closed",
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "【轉知】教育部第七屆「我的未來我作主」校園反毒、反霸凌影音創作競賽活動，開放報名至114年6月6日止，歡迎同學踴躍參加。",
-            "confidence": 0.3
-          },
-          {
-            "field": "actionability_status",
-            "value": "action_expired",
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "【轉知】教育部第七屆「我的未來我作主」校園反毒、反霸凌影音創作競賽活動，開放報名至114年6月6日止，歡迎同學踴躍參加。",
-            "confidence": 0.3
-          },
-          {
-            "field": "historical_reference",
-            "value": false,
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "【轉知】教育部第七屆「我的未來我作主」校園反毒、反霸凌影音創作競賽活動，開放報名至114年6月6日止，歡迎同學踴躍參加。",
-            "confidence": 0.3
-          },
-          {
-            "field": "post_expiry_reference_value",
-            "value": "none",
-            "source_id": "title",
-            "source_type": "title",
-            "source_name": "announcement title",
-            "evidence_text": "【轉知】教育部第七屆「我的未來我作主」校園反毒、反霸凌影音創作競賽活動，開放報名至114年6月6日止，歡迎同學踴躍參加。",
-            "confidence": 0.3
-          }
-        ],
-        "confidence": {
-          "source_status": 0.08,
-          "content_quality": 0.98,
-          "dates": 0.62,
-          "audience": 0.15,
-          "actions": 0.4,
-          "temporal_status": 0.58,
-          "historical_reference": 0.27
-        }
-      },
-      "temporal": {
-        "evaluation_as_of": "2026-09-25",
-        "temporal_calculation": {
-          "days_until_deadline": null,
-          "days_since_deadline": 476,
-          "days_until_event": [],
-          "days_since_event": [],
-          "days_until_application_start": null,
-          "days_until_application_end": null,
-          "days_until_effective_until": null
-        },
-        "actionability_status": "action_expired",
-        "temporal_status": "closed"
-      },
-      "low_evidence_confidence": true
-    },
     {
       "announcement_id": "cygsh-163449",
       "evidence": {
@@ -16255,5 +16040,10 @@
       },
       "low_evidence_confidence": true
     }
+  ],
+  "withheld_announcement_ids": [
+    "cygsh-146936",
+    "cygsh-154786",
+    "cygsh-159428"
   ]
 }
