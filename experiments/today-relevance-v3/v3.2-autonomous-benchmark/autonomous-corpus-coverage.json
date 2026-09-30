@@ -6,7 +6,7 @@
   "primary_nonoverlap": 141,
   "round1_overlap": 9,
   "individual_label_leak_withheld": 1,
-  "actual_blind_input": 140,
+  "actual_blind_input": 138,
   "body_available_historical": 0,
   "body_partial_historical": 0,
   "body_unavailable_historical": 150,
@@ -18,10 +18,10 @@
   "historical_source_observations_available": 0,
   "post_as_of_repository_observation_rows": 19,
   "post_as_of_repository_observation_ids": 9,
-  "live_web_urls_checked": 2,
-  "live_post_as_of_page_body_available": 1,
-  "live_post_as_of_http_404": 1,
-  "post_as_of_only_ids": 11,
+  "live_web_urls_checked": 12,
+  "live_post_as_of_page_body_available": 5,
+  "live_post_as_of_http_404": 7,
+  "post_as_of_only_ids": 12,
   "completely_without_any_title_or_metadata": 0,
   "insufficient_for_body_aware_autonomous_inference": 150,
   "by_school": {
@@ -90,7 +90,14 @@
   },
   "definitions": {
     "body_coverage": "Historical body usable only if evidence was observed at or before 2026-09-25. The frozen dataset and Training snapshot contain no body content.",
-    "post_as_of": "All 19 matching Training observations were observed 2026-09-28, later than as_of. Two live URLs were opened 2026-09-30.",
-    "completely_insufficient": "A record with no title and no source metadata; none in this set. All 150 are insufficient for body-aware reasoning because historical body/attachment evidence is absent."
-  }
+    "post_as_of": "All 19 matching Training observations were observed 2026-09-28, later than as_of. Two live URLs were opened 2026-09-30. Ten additional official URLs were checked on 2026-09-30 after outputs were frozen; all remain diagnostic only.",
+    "completely_insufficient": "A record with no title and no source metadata; none in this set. All 150 are insufficient for body-aware reasoning because historical body/attachment evidence is absent.",
+    "live_fetch": "The 12 live opens (5 HTTP 200, 7 HTTP 404) are post_as_of diagnostics; 4 returned body text and one returned title plus two PDF links. No live evidence entered blind input or inference."
+  },
+  "primary_inference_count": 138,
+  "withheld_before_inference": 3,
+  "post_as_of_content_opened_before_inference": 1,
+  "post_as_of_404_seen_before_inference": 1,
+  "live_post_as_of_title_only_or_attachment_link": 1,
+  "live_post_as_of_body_text": 5
 }
