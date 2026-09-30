@@ -4,12 +4,20 @@
   "evaluation_as_of": "2026-09-25",
   "source_dataset": "reviewed 150 frozen metadata only",
   "expected_primary_count": 141,
-  "eligible_for_inference_count": 140,
-  "withheld_count": 1,
+  "eligible_for_inference_count": 138,
+  "withheld_count": 3,
   "withheld_records": [
     {
       "announcement_id": "cygsh-146936",
-      "reason": "Individual human_label value was displayed to Work Luna during a prior dataset inspection; omitted from blind inference to preserve integrity."
+      "reason": "Individual human label value was displayed to Work Luna during dataset structure inspection; omitted before blind inference."
+    },
+    {
+      "announcement_id": "cygsh-154786",
+      "reason": "Post-as-of official page content was opened before inference; omitted to prevent future evidence contamination."
+    },
+    {
+      "announcement_id": "cygsh-159428",
+      "reason": "Post-as-of official HTTP 404 was observed before inference; omitted to prevent future evidence contamination."
     }
   ],
   "prohibited_fields_excluded": [
@@ -30,48 +38,6 @@
     "calibration result"
   ],
   "records": [
-    {
-      "announcement_id": "cygsh-154786",
-      "school": "cygsh",
-      "title": "113學年度嘉義女中學生參加英文檢定考試獎勵計畫之申請表單",
-      "published_date": null,
-      "first_seen_date": "2026-08-12",
-      "date_source": "first_seen_date",
-      "category": "一般",
-      "source_category": "最新消息",
-      "official_url": "https://www.cygsh.cy.edu.tw/p/406-1013-154786,r508.php",
-      "evaluation_as_of": "2026-09-25",
-      "source_status": "unknown",
-      "content_quality": "title_only",
-      "body": null,
-      "attachments": [],
-      "evidence_provenance": {
-        "type": "frozen_metadata",
-        "observed_at": "2026-09-25T12:12:52+08:00",
-        "temporal_validity": "valid_as_of"
-      }
-    },
-    {
-      "announcement_id": "cygsh-159428",
-      "school": "cygsh",
-      "title": "【轉知】教育部第七屆「我的未來我作主」校園反毒、反霸凌影音創作競賽活動，開放報名至114年6月6日止，歡迎同學踴躍參加。",
-      "published_date": null,
-      "first_seen_date": "2026-08-12",
-      "date_source": "first_seen_date",
-      "category": "競賽",
-      "source_category": "最新消息",
-      "official_url": "https://www.cygsh.cy.edu.tw/p/406-1013-159428,r508.php",
-      "evaluation_as_of": "2026-09-25",
-      "source_status": "unknown",
-      "content_quality": "title_only",
-      "body": null,
-      "attachments": [],
-      "evidence_provenance": {
-        "type": "frozen_metadata",
-        "observed_at": "2026-09-25T12:12:52+08:00",
-        "temporal_validity": "valid_as_of"
-      }
-    },
     {
       "announcement_id": "cygsh-163449",
       "school": "cygsh",
