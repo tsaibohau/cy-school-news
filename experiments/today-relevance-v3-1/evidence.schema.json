@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Announcement Autonomous Evidence v3.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["announcement_id", "source_status", "content_quality", "dates", "affected_audience", "teacher_related", "actions", "actionability_status", "temporal_status", "long_lived_information", "historical_reference", "post_expiry_reference_value", "evidence", "confidence"],
+  "properties": {
+    "announcement_id": {"type":"string","minLength":1},
+    "source_status": {"type":"object","required":["canonical_status","page_available","attachments_checked"],"additionalProperties":false,"properties":{"canonical_status":{"enum":["available","missing_confirmed","temporarily_unreachable","partial","unknown"]},"page_available":{"type":"boolean"},"attachments_checked":{"type":"boolean"},"unparsed_attachment_count":{"type":"integer","minimum":0}}},
+    "content_quality":{"enum":["full","partial","title_only","boilerplate_only","unavailable","uncertain"]},
+    "dates":{"type":"object","additionalProperties":false,"required":["published_date","deadline_date","event_dates","application_start","application_end","effective_until","exam_date","registration_start","registration_end","date_spans"],"properties":{"published_date":{"type":["string","null"],"format":"date"},"deadline_date":{"type":["string","null"],"format":"date"},"event_dates":{"type":"array","items":{"type":"object","required":["date"],"additionalProperties":false,"properties":{"date":{"type":"string","format":"date"},"kind":{"type":"string"},"precision":{"enum":["day","month","year"]}}}},"application_start":{"type":["string","null"],"format":"date"},"application_end":{"type":["string","null"],"format":"date"},"effective_until":{"type":["string","null"],"format":"date"},"exam_date":{"type":["string","null"],"format":"date"},"registration_start":{"type":["string","null"],"format":"date"},"registration_end":{"type":["string","null"],"format":"date"},"date_spans":{"type":"array","items":{"type":"object","required":["raw_text","precision"],"additionalProperties":false,"properties":{"raw_text":{"type":"string"},"precision":{"enum":["day","month","year","uncertain"]},"start_date":{"type":["string","null"],"format":"date"},"end_date":{"type":["string","null"],"format":"date"},"meaning":{"type":"string"}}}}}},
+    "affected_audience":{"type":"array","uniqueItems":true,"items":{"enum":["grade_1","grade_2","grade_3","teacher","all_students","uncertain"]}},
+    "teacher_related":{"enum":[true,false,"uncertain"]},
+    "actions":{"type":"array","items":{"type":"object","required":["action","status"],"additionalProperties":false,"properties":{"action":{"type":"string","minLength":1},"status":{"enum":["open","not_started","completed","expired","uncertain"]},"deadline":{"type":["string","null"],"format":"date"},"audience":{"type":"array","items":{"type":"string"}}}}},
+    "actionability_status":{"enum":["action_required_now","action_required_soon","action_available_later","information_only","action_completed","action_expired","uncertain"]},
+    "temporal_status":{"enum":["not_started","active","closing_soon","closed","expired","uncertain"]},
+    "long_lived_information":{"type":["boolean","null"]},
+    "historical_reference":{"type":["boolean","string"],"enum":[true,false,"uncertain"]},
+    "post_expiry_reference_value":{"enum":["none","limited","useful_reference","long_term_reference","uncertain"]},
+    "evidence":{"type":"array","items":{"type":"object","required":["field","value","source_id","source_type","source_name","evidence_text","confidence"],"additionalProperties":false,"properties":{"field":{"type":"string"},"value":{},"source_id":{"type":"string","minLength":1},"source_type":{"enum":["title","body","attachment","metadata","official_link"]},"source_name":{"type":"string","minLength":1},"evidence_text":{"type":"string","minLength":1},"confidence":{"type":"number","minimum":0,"maximum":1}}}},
+    "confidence":{"type":"object","additionalProperties":{"type":"number","minimum":0,"maximum":1},"required":["source_status","content_quality","dates","audience","actions","temporal_status","historical_reference"]}
+  }
+}
