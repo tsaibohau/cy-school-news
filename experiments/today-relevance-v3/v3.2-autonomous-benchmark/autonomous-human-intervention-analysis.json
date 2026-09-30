@@ -1,0 +1,29 @@
+{
+  "format_version": "1.0",
+  "benchmark": "development_nonoverlap_141",
+  "dataset_count": 150,
+  "expected_primary": 141,
+  "round1_overlap_diagnostic_only": 9,
+  "primary_clean_inference": 138,
+  "withheld_before_inference": 3,
+  "scored_count": 138,
+  "unscored_expected_primary": 3,
+  "evaluation_as_of": "2026-09-25",
+  "blind_input_sha256": "5e5202593eacd748fbee2249d94efaef883e11da167d7394b4253298820428e3",
+  "evidence_output_sha256": "93eb470a5a703a2ace22ebbc56eff89a0c783126bbab9d10e479ccdb6eccf487",
+  "relevance_output_sha256": "39b28fc70f37d5dea0a278eba5dd0ce38103069751efa64f9fb0250bbab0b6fb",
+  "inference_engine": "Work Luna semantic inference; no external provider/API",
+  "constraints": "Human truth joined only after inference outputs were frozen and remote hash verified. No Round 1 overlap in primary. No post-as_of evidence used.",
+  "policy": "Flag for human review if low_evidence_confidence, contradictory evidence, attachment parse failure with insufficient body, high-impact must_show at low confidence, or conflicting source-time observations.",
+  "records_flagged": 138,
+  "total": 138,
+  "rate": 1,
+  "reason_counts": {
+    "low_evidence_confidence": 138,
+    "contradictory_evidence": 0,
+    "attachment_parse_failure_with_insufficient_body": 0,
+    "low_confidence_must_show": 0,
+    "source_time_conflict": 0
+  },
+  "interpretation": "100% is a corpus limitation result: all historical evidence packages were title/metadata only. It does not estimate a mature body+attachment pipeline's operational intervention rate."
+}
