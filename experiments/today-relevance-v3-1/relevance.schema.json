@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Announcement Today Relevance v3.1",
+  "type":"object","additionalProperties":false,
+  "required":["announcement_id","today_label","reasoning_factors","reason_codes","confidence"],
+  "properties":{
+    "announcement_id":{"type":"string"},
+    "today_label":{"enum":["must_show","useful","optional","should_hide"]},
+    "reasoning_factors":{"type":"object","additionalProperties":false,"required":["actionability","urgency","audience_relevance","temporal_relevance","source_reliability","reference_value"],"properties":{"actionability":{"enum":["high","medium","low","none","uncertain"]},"urgency":{"enum":["immediate","near_term","later","none","uncertain"]},"audience_relevance":{"enum":["direct","broad","niche","none","uncertain"]},"temporal_relevance":{"enum":["current","upcoming","historical","none","uncertain"]},"source_reliability":{"enum":["high","medium","low","uncertain"]},"reference_value":{"enum":["none","limited","useful","long_term","uncertain"]}}},
+    "reason_codes":{"type":"array","uniqueItems":true,"items":{"enum":["deadline_near","deadline_passed","event_upcoming","event_passed","action_required","action_expired","not_started","closed","source_missing","source_uncertain","content_insufficient","audience_specific","teacher_only","rules_still_relevant","historical_reference","no_current_action","emergency","exam_soon","latest_unread"]}},
+    "confidence":{"type":"object","additionalProperties":{"type":"number","minimum":0,"maximum":1},"required":["label","actionability","urgency","audience_relevance","temporal_relevance","source_reliability","reference_value"]}
+  }
+}
