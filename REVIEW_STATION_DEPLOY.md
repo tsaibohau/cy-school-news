@@ -4,7 +4,7 @@ This hosting branch serves one static, no-auth human re-review batch.
 
 - Entry: `index.html`
 - Dataset source: `round-001-rereview-batch-a-data.js`, validated at build time and embedded as hidden HTML text for a single-file browser load
-- Parent snapshot: `c7db661b-181a-4d3c-b869-b39f7edb3048`
+- Parent snapshot: `c7db661b-181a-4cd3-b869-b39f7edb3048`
 - Parent round: `round_001`
 - Batch: `round_001_rereview_a` (13 unique announcements)
 - Browser fields: announcement ID, school, published date and date source, title, categories, available body, official URL, objective source/content/attachment status
