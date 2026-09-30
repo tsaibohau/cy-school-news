@@ -77,7 +77,7 @@ def make_stage1_payload(item: dict, *, current_observation: dict | None,
     # Explicit allowlist: human answers, old predictions, labels, and notes cannot enter inference.
     public_item = {key: item.get(key) for key in (
         "announcement_id", "school", "title", "category", "source_category",
-        "published_date", "first_seen_date", "official_url")}
+        "published_date", "date_source", "first_seen_date", "official_url")}
     if not public_item.get("announcement_id") or not public_item.get("title"):
         raise ValueError("announcement_id and title are required")
     source = resolve_source(current_observation, cached_observation)
@@ -92,9 +92,12 @@ def make_stage1_payload(item: dict, *, current_observation: dict | None,
                            "attachments_checked": source["attachments_checked"],
                            "unparsed_attachment_count": source["unparsed_attachment_count"]}
     sources = [{"source_id": "title", "source_type": "title", "source_name": "announcement title", "text": public_item["title"]}]
-    for field in ("school", "category", "source_category", "published_date", "first_seen_date", "official_url"):
+    for field in ("school", "category", "source_category", "published_date", "date_source", "first_seen_date"):
         if public_item.get(field) is not None:
             sources.append({"source_id": "metadata:" + field, "source_type": "metadata", "source_name": field, "text": str(public_item[field])})
+    if public_item.get("official_url"):
+        sources.append({"source_id":"official_link","source_type":"official_link",
+                        "source_name":"official announcement URL","text":str(public_item["official_url"])})
     if quality["usable_content"]:
         sources.append({"source_id": "body", "source_type": "body", "source_name": "official announcement body", "text": quality["text"]})
     for index, attachment in enumerate(prepared_attachments):
@@ -140,7 +143,8 @@ def validate_stage1(result: dict, payload: dict) -> dict:
             source["source_name"] != fact["source_name"] or not fact["evidence_text"] or
             fact["evidence_text"] not in source["text"]):
             raise ValueError("evidence snippet does not exactly match a supplied source")
-        if not 0 <= fact["confidence"] <= 1:
+        if (not isinstance(fact["confidence"], (int,float)) or isinstance(fact["confidence"],bool)
+            or not 0 <= fact["confidence"] <= 1):
             raise ValueError("evidence confidence must be in [0,1]")
     _confidence_map(result["confidence"], {"source_status", "content_quality", "dates", "audience", "actions", "temporal_status", "historical_reference"}, "Stage 1")
     normalized = dict(result)
@@ -163,23 +167,42 @@ def validate_stage1(result: dict, payload: dict) -> dict:
             raise ValueError("non-null date lacks exact cited evidence: " + field)
     if normalized["affected_audience"] and not any(x["field"] == "affected_audience" for x in normalized["evidence"]):
         raise ValueError("affected audience requires cited evidence")
-    if normalized["actions"] and not any(x["field"] == "actions" for x in normalized["evidence"]):
-        raise ValueError("actions require cited evidence")
+    if not isinstance(normalized["actions"], list):
+        raise ValueError("actions must be an array")
+    for action in normalized["actions"]:
+        if not isinstance(action,dict) or not {"action","status"}.issubset(action) or not set(action).issubset({"action","status","deadline","audience"}):
+            raise ValueError("invalid action object")
+        if not isinstance(action["action"],str) or not action["action"] or action["status"] not in {"open","not_started","completed","expired","uncertain"}:
+            raise ValueError("invalid action status")
+        if action.get("deadline") is not None and strict_date(action["deadline"]) is None:
+            raise ValueError("action deadline must be an ISO date")
+        if not any(x["field"]=="actions" and (x["value"]==action["action"] or x["value"]==action) for x in normalized["evidence"]):
+            raise ValueError("each action requires a matching cited action value")
+    if normalized["affected_audience"]:
+        cited_audience=[x["value"] for x in normalized["evidence"] if x["field"]=="affected_audience"]
+        if any(not any(value==audience or isinstance(value,list) and audience in value for value in cited_audience)
+               for audience in normalized["affected_audience"]):
+            raise ValueError("each affected audience needs a matching cited value")
     citation_fields = {x["field"] for x in normalized["evidence"]}
     for fact_name, value in (("teacher_related", normalized["teacher_related"]),
                              ("long_lived_information", normalized["long_lived_information"]),
                              ("historical_reference", normalized["historical_reference"]),
                              ("temporal_status", normalized["temporal_status"]),
                              ("post_expiry_reference_value", normalized["post_expiry_reference_value"])):
-        if value not in (None, "uncertain") and fact_name not in citation_fields:
-            raise ValueError(fact_name + " requires cited evidence")
+        if value not in (None, "uncertain"):
+            matching=[x for x in normalized["evidence"] if x["field"]==fact_name]
+            if not matching or not any(x["value"]==value for x in matching):
+                raise ValueError(fact_name + " requires a matching cited value")
     for event in dates["event_dates"]:
-        if not isinstance(event, dict) or strict_date(event.get("date")) is None:
+        if (not isinstance(event, dict) or not set(event).issubset({"date","kind","precision"})
+            or strict_date(event.get("date")) is None
+            or event.get("precision") not in (None,"day","month","year")):
             raise ValueError("event date must contain a valid ISO day; preserve month precision in date_spans")
         if ("dates.event_dates", json.dumps(event, ensure_ascii=False, sort_keys=True)) not in cited:
             raise ValueError("event date lacks exact cited evidence")
     for span in dates["date_spans"]:
-        if not isinstance(span, dict) or not isinstance(span.get("raw_text"), str) or span.get("precision") not in {"day", "month", "year", "uncertain"}:
+        if (not isinstance(span, dict) or not set(span).issubset({"raw_text","precision","start_date","end_date","meaning"})
+            or not isinstance(span.get("raw_text"), str) or span.get("precision") not in {"day", "month", "year", "uncertain"}):
             raise ValueError("invalid date span")
         if span.get("start_date") and strict_date(span["start_date"]) is None or span.get("end_date") and strict_date(span["end_date"]) is None:
             raise ValueError("date span boundaries must be real ISO dates")
