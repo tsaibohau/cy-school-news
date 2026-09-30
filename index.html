@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f5f7fb">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>Round 1 Blind Human Review</title>
+<title>Round 1 Re-review — Batch A</title>
 <style>
 :root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif;color:#172338;background:#f5f7fb;font-synthesis:none;--ink:#172338;--muted:#657188;--line:#dce3ed;--blue:#2448a5;--green:#137957;--card:#fff;--soft:#eff3f9}*{box-sizing:border-box}body{margin:0;min-height:100vh}.shell{max-width:900px;margin:auto;padding:12px 12px calc(35px + env(safe-area-inset-bottom))}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}h1{font-size:1.27rem;margin:4px 0}h2{font-size:1.03rem;margin:0 0 12px}h3{font-size:.93rem;margin:12px 0 8px}.muted{font-size:.87rem;color:var(--muted)}.pill{display:inline-flex;border-radius:99px;background:#eaf0fa;padding:6px 11px;font-weight:750;font-variant-numeric:tabular-nums}.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:15px;margin:11px 0;box-shadow:0 4px 16px #20324a0a}.nav{position:sticky;top:0;z-index:4;display:flex;gap:8px;align-items:center;background:#f5f7fbed;backdrop-filter:blur(12px);padding:8px 0}.nav .btn{flex:1}.progress{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}.btn{min-height:46px;padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink);font:inherit;font-weight:700;cursor:pointer;touch-action:manipulation}.btn:focus-visible,.choice:focus-visible,.chip:focus-visible{outline:3px solid #8ab1ff;outline-offset:2px}.btn.primary{color:#fff;background:var(--blue);border-color:var(--blue)}.btn:disabled{opacity:.45;cursor:default}.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;font-size:.9rem}.meta b{display:block;color:var(--muted);font-size:.76rem;margin-bottom:3px}.title{font-size:1.18rem;line-height:1.5;margin:10px 0}.body{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.68;margin:13px 0 0;font-size:.98rem}.source{display:inline-flex;min-height:46px;align-items:center;justify-content:center;margin-top:14px;padding:9px 15px;border-radius:10px;background:#173c91;color:#fff;text-decoration:none;font-weight:750}.notice{background:#edf4ff;border-radius:10px;padding:10px 12px;color:#344c76;font-size:.87rem}.choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.choice{min-height:68px;border:2px solid var(--line);border-radius:12px;background:white;color:var(--ink);font:inherit;font-weight:800;font-size:.99rem;cursor:pointer;touch-action:manipulation}.choice small{display:block;color:var(--muted);font-size:.72rem;font-weight:600;margin-top:3px}.choice.on{background:#edf2ff;border-color:var(--blue);color:#173c91}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{min-height:43px;padding:9px 12px;border:1px solid #cbd5e3;border-radius:999px;background:#fff;color:#26364f;font:inherit;font-weight:650;cursor:pointer;touch-action:manipulation}.chip.on{background:#e8f3ff;color:#124080;border-color:#79a9d7}.group{border-top:1px solid var(--line);padding:12px 0}.group:first-child{border-top:0}.seg{display:flex;flex-wrap:wrap;gap:7px}.seg .chip{flex:1;min-width:110px;border-radius:10px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fields label{font-size:.81rem;color:var(--muted)}input[type=date],textarea{display:block;width:100%;min-height:44px;padding:9px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink);font:inherit;margin-top:5px}textarea{min-height:76px}.status{color:var(--green);font-size:.83rem;font-weight:700}.footer{display:flex;gap:8px;flex-wrap:wrap}.footer .btn{flex:1}.toast{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:8;max-width:92vw;padding:10px 15px;background:#172338;color:#fff;border-radius:10px;box-shadow:0 4px 16px #0002}.attachments{margin:8px 0}.attachment{display:block;overflow-wrap:anywhere;margin:7px 0}.hidden{display:none!important}
 @media(min-width:700px){.shell{padding-top:23px}.choices{grid-template-columns:repeat(4,minmax(0,1fr))}.meta{grid-template-columns:repeat(4,minmax(0,1fr))}}
@@ -15,8 +15,8 @@
 <body>
 <main class="shell">
   <header class="top">
-    <div><h1>Round 1 Blind Human Review</h1><div class="muted">僅載入 frozen queue；答案只保存在這台裝置。</div></div>
-    <div><span class="pill" id="progress">0 / 60</span> <span class="status" id="saveStatus">已準備</span></div>
+    <div><h1>Round 1 Re-review — Batch A</h1><div class="muted">本批 13 筆公告；答案只保存在這台裝置。</div></div>
+    <div><span class="pill" id="progress">0 / 13</span> <span class="status" id="saveStatus">已準備</span></div>
   </header>
   <div class="nav" aria-label="審核導覽">
     <button class="btn" id="previous">上一筆</button><button class="btn" id="next">下一筆</button><button class="btn" id="undo">復原</button>
@@ -37,17 +37,18 @@
     <div class="group"><h3>期限／活動過期後仍有參考價值嗎？</h3><div class="seg" id="reference_value"></div></div>
     <div class="group"><h3>補充說明（選填）</h3><textarea id="notes" placeholder="可留白；一般標記不需打字"></textarea></div>
   </section>
-  <section class="card"><div class="footer"><button class="btn" id="export">匯出／儲存 Round 1</button></div><p class="muted">iPhone 會開啟分享面板，可選「儲存到檔案」；其他瀏覽器會直接下載 JSON。檔案只包含人工答案與審核資料。</p></section>
+  <section class="card"><div class="footer"><button class="btn" id="export">完成並匯出 Batch A</button></div><p class="muted">iPhone 會開啟分享面板，可選「儲存到檔案」；其他瀏覽器會直接下載 JSON。檔案只包含人工答案與審核資料。</p></section>
   <div class="toast hidden" id="toast" role="status"></div>
 </main>
-<script src="round-001-blind-review-data.js"></script>
+<script src="round-001-rereview-batch-a-data.js"></script>
 <script>
 "use strict";
 (() => {
-  const bundle = window.ROUND001_BLIND_DATA;
+  const bundle = window.ROUND001_REREVIEW_A_DATA;
   const SNAPSHOT = "c7db661b-181a-4cd3-b869-b39f7edb3048";
-  const ROUND = "round_001";
-  const STORE_KEY = `cyNews.review.round001.${SNAPSHOT.slice(0,8)}`;
+  const ROUND = "round_001_rereview_a";
+  const PARENT_ROUND = "round_001";
+  const STORE_KEY = `cyNews.review.${ROUND}.${SNAPSHOT}`;
   const labels = [["must_show","必看","近期行動／期限"],["useful","有用","有明確實際價值"],["optional","可選","有價值但不急"],["should_hide","隱藏","今天不需主動顯示"]];
   const audiences = [["grade_1","高一"],["grade_2","高二"],["grade_3","高三"],["teacher","老師"],["all_students","全校學生"],["uncertain","不確定"]];
   const types = [["notice","通知"],["regulation","法令／規定"],["event","活動／競賽"],["application","報名／申請"],["result","結果／名單"],["administrative","行政資訊"],["other","其他"],["uncertain","不確定"]];
@@ -63,18 +64,19 @@
   const $ = (id) => document.getElementById(id);
   const clone = (x) => JSON.parse(JSON.stringify(x));
   const emptyAnswer = () => ({human_label:null,human_affected_audience:[],human_teacher_related:null,human_announcement_type:null,human_regulatory_basis:null,human_availability:null,human_announcement_missing:null,human_post_expiry_reference_value:null,human_temporal_status:null,human_deadline_date:null,human_event_date:null,human_application_start:null,human_application_end:null,human_effective_until:null,human_long_lived_information:null,human_temporal_spans:[],reason_chips:[],human_notes:"",reviewed_fields:[],review_status:"unreviewed"});
-  if (!bundle || bundle.snapshot_id !== SNAPSHOT || bundle.records.length !== 60 || bundle.school_counts.cysh !== 30 || bundle.school_counts.cygsh !== 30) {
+  const allowedRecordKeys=["announcement_id","school","published_date","published_date_raw","date_source","title","category","source_category","content","content_availability","content_availability_label","source_status","source_status_label","official_url","attachments","attachment_status","attachment_status_label","temporal_evidence"];
+  if (!bundle || bundle.parent_snapshot_id !== SNAPSHOT || bundle.rereview_batch_id !== ROUND || bundle.records.length !== 13 || new Set(bundle.records.map(r=>r.announcement_id)).size !== 13 || bundle.records.some(r=>Object.keys(r).some(k=>!allowedRecordKeys.includes(k)))) {
     document.body.innerHTML = "<main class='shell'><section class='card'>審核資料載入驗證失敗，請不要開始標記。</section></main>"; return;
   }
   let saved = null;
   try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); } catch {}
   const state = saved?.snapshot_id === SNAPSHOT && saved?.round_id === ROUND ? saved : {snapshot_id:SNAPSHOT,round_id:ROUND,position:0,answers:{},undo_stack:[]};
-  state.answers ||= {}; state.undo_stack ||= []; state.position = Math.max(0,Math.min(59,Number(state.position)||0));
+  state.answers ||= {}; state.undo_stack ||= []; state.position = Math.max(0,Math.min(bundle.records.length-1,Number(state.position)||0));
   const currentRecord = () => bundle.records[state.position];
   const currentAnswer = () => state.answers[currentRecord().announcement_id] ||= emptyAnswer();
   const reviewed = (answer, field) => { if (!answer.reviewed_fields.includes(field)) answer.reviewed_fields.push(field); };
   function persist() { try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); $("saveStatus").textContent="已自動儲存"; } catch { $("saveStatus").textContent="儲存失敗"; toast("本機儲存空間不足，請先匯出"); } updateProgress(); }
-  function updateProgress() { const done=Object.values(state.answers).filter(a=>a.human_label).length; $("progress").textContent=`${done} / 60 · 第 ${state.position+1} 筆`; $("previous").disabled=state.position===0; $("next").disabled=state.position===59; }
+  function updateProgress() { const done=Object.values(state.answers).filter(a=>a.human_label).length; $("progress").textContent=`${done} / 13 · 第 ${state.position+1} 筆`; $("previous").disabled=state.position===0; $("next").disabled=state.position===bundle.records.length-1; }
   function toast(message) { const el=$("toast");el.textContent=message;el.classList.remove("hidden");clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.add("hidden"),1900); }
   function pushUndo() { state.undo_stack.push({id:currentRecord().announcement_id,answer:clone(currentAnswer())}); if(state.undo_stack.length>100)state.undo_stack.shift(); }
   function change(field,value) { const a=currentAnswer();pushUndo();a[field]=value;reviewed(a,field);a.review_status=a.human_label?"in_progress":"unreviewed";persist();render(); }
@@ -83,13 +85,13 @@
   function renderAnnouncement(r) {
     const el=$("announcement");el.replaceChildren();
     const m=document.createElement("div");m.className="meta";
-    const info=[["學校",r.school==="cysh"?"嘉義高中":"嘉義女中"],["發布日期",r.published_date||r.published_date_raw||"未提供"],["分類",r.category||"未分類"],["來源分類",r.source_category||"未提供"]];
+    const info=[["公告 ID",r.announcement_id],["學校",r.school==="cysh"?"嘉義高中":"嘉義女中"],["發布日期",r.published_date||r.published_date_raw||"未提供"],["日期來源",r.date_source||"未提供"],["分類",r.category||"未分類"],["來源分類",r.source_category||"未提供"]];
     for(const [k,v] of info){const d=document.createElement("div"),b=document.createElement("b");b.textContent=k;d.append(b,document.createTextNode(v));m.append(d);}el.append(m);
     const h=document.createElement("h2");h.className="title";h.textContent=r.title||"（無標題）";el.append(h);
     const avail=document.createElement("div");avail.className="muted";avail.textContent=`正文：${r.content_availability_label} · 來源：${r.source_status_label} · 附件：${r.attachment_status_label}`;el.append(avail);
     if(r.content){const body=document.createElement("div");body.className="body";body.textContent=r.content;el.append(body);}else{const p=document.createElement("p");p.className="notice";p.textContent="目前沒有已取得的正文。可用標題、日期、官方來源與附件狀態判斷。";el.append(p);}
     if(r.attachments?.length){const box=document.createElement("div");box.className="attachments";const b=document.createElement("b");b.textContent="附件";box.append(b);for(const file of r.attachments){const a=document.createElement("a");a.className="attachment";a.href=file.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=file.filename||"開啟附件";box.append(a);}el.append(box);}
-    if(r.temporal_evidence?.observed_at){const t=document.createElement("div");t.className="muted";t.textContent=`官方來源檢視：${new Date(r.temporal_evidence.observed_at).toLocaleString("zh-TW")}${r.temporal_evidence.http_status?` · HTTP ${r.temporal_evidence.http_status}`:""}`;el.append(t);}
+    if(r.temporal_evidence?.observed_at){const t=document.createElement("div");t.className="muted";t.textContent=`來源資料觀察：${new Date(r.temporal_evidence.observed_at).toLocaleString("zh-TW")}${r.temporal_evidence.http_status?` · HTTP ${r.temporal_evidence.http_status}`:""}`;el.append(t);}
     const link=document.createElement("a");link.className="source";link.href=r.official_url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="開啟官方公告";el.append(link);
   }
   function render() {
@@ -121,20 +123,20 @@
     });
   }
   $("previous").onclick=()=>{state.position=Math.max(0,state.position-1);persist();render();};
-  $("next").onclick=()=>{state.position=Math.min(59,state.position+1);persist();render();};
+  $("next").onclick=()=>{state.position=Math.min(bundle.records.length-1,state.position+1);persist();render();};
   $("undo").onclick=()=>{const item=state.undo_stack.pop();if(!item){toast("沒有可復原的操作");return;}state.answers[item.id]=item.answer;persist();render();toast("已復原上一項變更");};
   $("addSpan").onclick=()=>{const list=clone(currentAnswer().human_temporal_spans||[]);list.push({start_month:null,end_month:null});change("human_temporal_spans",list);};
   async function exportJSON() {
     const records=bundle.records.map(r=>({announcement_id:r.announcement_id,human_answers:clone(state.answers[r.announcement_id]||emptyAnswer()),reviewed_fields:(state.answers[r.announcement_id]?.reviewed_fields||[]).slice(),review_status:state.answers[r.announcement_id]?.human_label?"in_progress":"unreviewed"}));
     const complete=records.filter(r=>r.human_answers.human_label).length;
-    const result={format_version:"1.0",round_id:ROUND,snapshot_id:SNAPSHOT,exported_at:new Date().toISOString(),queue_count:60,reviewer_mode:"local_no_auth",completion_state:{completed_count:complete,remaining_count:60-complete,is_complete:complete===60},current_position:state.position,undo_stack:clone(state.undo_stack),records};
+    const result={format_version:"1.0",round_id:PARENT_ROUND,parent_round_id:PARENT_ROUND,rereview_batch_id:ROUND,snapshot_id:SNAPSHOT,exported_at:new Date().toISOString(),queue_count:13,reviewer_mode:"local_no_auth",completion_state:{completed_count:complete,remaining_count:13-complete,is_complete:complete===13},current_position:state.position,undo_stack:clone(state.undo_stack),records};
     const json=JSON.stringify(result,null,2)+"\n";
-    const file=new File([json],"human_review_round_001.json",{type:"application/json"});
+    const file=new File([json],"human_rereview_round_001_batch_a.json",{type:"application/json"});
     try {
-      const shareData={files:[file],title:"Round 1 Human Review"};
+      const shareData={files:[file],title:"Round 1 Re-review Batch A"};
       if (navigator.share && (!navigator.canShare || navigator.canShare(shareData))) {
         await navigator.share(shareData);
-        toast(`已開啟匯出 ${complete}/60 筆；本機資料仍保留`);
+        toast(`已開啟匯出 ${complete}/13 筆；本機資料仍保留`);
         return;
       }
     } catch (error) {
@@ -146,7 +148,7 @@
     const url=URL.createObjectURL(file),link=document.createElement("a");
     link.href=url;link.download=file.name;link.style.display="none";document.body.append(link);link.click();link.remove();
     setTimeout(()=>URL.revokeObjectURL(url),5000);
-    toast(`已匯出 ${complete}/60 筆；本機資料仍保留`);
+    toast(`已匯出 ${complete}/13 筆；本機資料仍保留`);
   }
   $("export").onclick=exportJSON;
   persist();render();

@@ -1,16 +1,18 @@
-# Round 1 No-Auth Blind Review Station
+# Round 1 Re-review Batch A No-Auth Review Station
 
-This branch hosts the frozen Round 1 human blind review only.
+This hosting branch serves one static, no-auth human re-review batch.
 
-- Entry: static `index.html`
-- Dataset: `round-001-blind-review-data.js`
-- Queue source: Training Supabase snapshot `c7db661b-181a-4d3-b869-b39f7edb3048`, only `manifest.review_queue.announcement_ids`
-- Queue: 60 unique IDs, CYSH 30 and CYGSH 30
-- Browser data: announcement metadata, available extracted body, content/source/attachment status, official links, and temporal evidence only
-- Browser behavior: local autosave in localStorage, reload recovery, undo, JSON download
-- Network behavior: no Supabase browser client and no browser writes
-- Secrets: none
+- Entry: `index.html`
+- Dataset: `round-001-rereview-batch-a-data.js`
+- Parent snapshot: `c7db661b-181a-4d3c-b869-b39f7edb3048`
+- Parent round: `round_001`
+- Batch: `round_001_rereview_a` (13 unique announcements)
+- Browser fields: announcement ID, school, published date and date source, title, categories, available body, official URL, objective source/content/attachment status
+- Browser storage: isolated localStorage key containing the batch ID and snapshot ID; reload restore and undo
+- Export: `human_rereview_round_001_batch_a.json`; iPhone Safari uses the Web Share API
+- Network: no Supabase browser client or browser writes
+- Build output: only `index.html` and the 13-record dataset
 
-The Vercel build outputs only `index.html` and `round-001-blind-review-data.js`. It scans the output for model artifacts, Auth flows, and private credentials. This is a no-auth URL: anyone who has the URL can read the static review dataset. Human answers remain in the reviewing browser until exported.
+The private audit manifest is stored separately and is not part of the repository's Vercel output. It contains selection reasons; neither the manifest nor evaluation metadata is loaded by the browser.
 
-After the user completes review and provides `human_review_round_001.json`, validate it server-side against the frozen manifest before any Training Supabase import. Do not import answers before that point. Training Supabase policies and Production remain unchanged.
+Round 1 original human labels and the frozen machine predictions are not modified. Re-review answers remain local until exported and later validated server-side. No Training Supabase migration or import is part of this deployment.
