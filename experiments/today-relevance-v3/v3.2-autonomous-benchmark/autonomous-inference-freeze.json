@@ -1,0 +1,31 @@
+{
+  "format_version": "1.0",
+  "benchmark": "development_nonoverlap_141",
+  "branch": "codex/today-relevance-ranking-v3",
+  "freeze_commit": "83a512f91c3d93f12772ce1e49ee6d05f97a3006",
+  "evaluation_as_of": "2026-09-25",
+  "frozen_before_human_truth_join": true,
+  "expected_primary_count": 141,
+  "inference_record_count": 138,
+  "withheld_records": [
+    {
+      "announcement_id": "cygsh-146936",
+      "reason": "individual label surfaced before inference"
+    },
+    {
+      "announcement_id": "cygsh-154786",
+      "reason": "post-as-of official page content surfaced before inference"
+    },
+    {
+      "announcement_id": "cygsh-159428",
+      "reason": "post-as-of HTTP 404 surfaced before inference"
+    }
+  ],
+  "files": {
+    "autonomous-blind-input-141.json": "5e5202593eacd748fbee2249d94efaef883e11da167d7394b4253298820428e3",
+    "autonomous-evidence-output-141.json": "93eb470a5a703a2ace22ebbc56eff89a0c783126bbba9d10e479ccdb6eccf487",
+    "autonomous-relevance-output-141.json": "39b28fc70f37d5dea0a278eba5dd0ce38103069751efa64f9fb0250bbab0b6fb"
+  },
+  "round1_overlap_in_primary": false,
+  "method": "Work Luna inference decisions used only the committed blind input fields. All 138 records were frozen metadata/title-only due zero historical body/attachment evidence."
+}
