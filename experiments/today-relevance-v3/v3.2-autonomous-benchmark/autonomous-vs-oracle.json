@@ -1,0 +1,49 @@
+{
+  "format_version": "1.0",
+  "benchmark": "development_nonoverlap_141",
+  "dataset_count": 150,
+  "expected_primary": 141,
+  "round1_overlap_diagnostic_only": 9,
+  "primary_clean_inference": 138,
+  "withheld_before_inference": 3,
+  "scored_count": 138,
+  "unscored_expected_primary": 3,
+  "evaluation_as_of": "2026-09-25",
+  "blind_input_sha256": "5e5202593eacd748fbee2249d94efaef883e11da167d7394b4253298820428e3",
+  "evidence_output_sha256": "93eb470a5a703a2ace22ebbc56eff89a0c783126bbab9d10e479ccdb6eccf487",
+  "relevance_output_sha256": "39b28fc70f37d5dea0a278eba5dd0ce38103069751efa64f9fb0250bbab0b6fb",
+  "inference_engine": "Work Luna semantic inference; no external provider/API",
+  "constraints": "Human truth joined only after inference outputs were frozen and remote hash verified. No Round 1 overlap in primary. No post-as_of evidence used.",
+  "autonomous": {
+    "positive_precision": 0.6756756756756757,
+    "positive_recall": 0.5,
+    "must_show_recall": 0.0625,
+    "useful_recall": 0.4117647058823529,
+    "should_hide_leakage": 0.171875,
+    "optional_positive_leakage": 0.041666666666666664,
+    "displayed_count": 37
+  },
+  "limited_oracle_diagnostic": {
+    "precision": 0.7272727272727273,
+    "recall": 0.48,
+    "TP": 24,
+    "FP": 9,
+    "FN": 26,
+    "displayed": 33,
+    "should_hide_leakage": 0.125,
+    "must_show_recall": 0.0625,
+    "useful_recall": 0.38235294117647056,
+    "optional_positive_leakage": 0.041666666666666664,
+    "applied_rule": "Post-inference only: suppress rows with human announcement_missing=true or human teacher_related=true; all other labels remain autonomous.",
+    "scope": "Limited post-inference diagnostic using human missing and teacher flags only; not a full oracle and not production capability."
+  },
+  "delta": {
+    "positive_precision": 0.051597051597051635,
+    "positive_recall": -0.020000000000000018,
+    "should_hide_leakage": -0.046875,
+    "optional_leakage": 0,
+    "must_show_recall": 0,
+    "useful_recall": -0.02941176470588236
+  },
+  "limitations": "No complete oracle over dates, audience, temporal status, actionability, or historical-reference fields can be computed because those gold primitives are unavailable."
+}
