@@ -1,0 +1,76 @@
+{
+  "format_version": "1.0",
+  "benchmark": "development_nonoverlap_141",
+  "dataset_count": 150,
+  "expected_primary": 141,
+  "round1_overlap_diagnostic_only": 9,
+  "primary_clean_inference": 138,
+  "withheld_before_inference": 3,
+  "scored_count": 138,
+  "unscored_expected_primary": 3,
+  "evaluation_as_of": "2026-09-25",
+  "blind_input_sha256": "5e5202593eacd748fbee2249d94efaef883e11da167d7394b4253298820428e3",
+  "evidence_output_sha256": "93eb470a5a703a2ace22ebbc56eff89a0c783126bbab9d10e479ccdb6eccf487",
+  "relevance_output_sha256": "39b28fc70f37d5dea0a278eba5dd0ce38103069751efa64f9fb0250bbab0b6fb",
+  "inference_engine": "Work Luna semantic inference; no external provider/API",
+  "constraints": "Human truth joined only after inference outputs were frozen and remote hash verified. No Round 1 overlap in primary. No post-as_of evidence used.",
+  "evidence_coverage": {
+    "historical_body_records": 0,
+    "historical_attachment_records": 0,
+    "all_inputs_title_metadata_only": true,
+    "low_evidence_confidence_records": 138
+  },
+  "date_extraction": {
+    "exact_match": {
+      "status": "not_evaluable",
+      "reason": "Development fixture has no human deadline/event/application/effective-until gold fields."
+    },
+    "extracted_date_claims": 14,
+    "records_with_date_claims": 13,
+    "cited_claims": 14,
+    "event_date_exact_match": "not_evaluable",
+    "application_start_end_exact_match": "not_evaluable",
+    "deadline_exact_match": "not_evaluable",
+    "effective_until_exact_match": "not_evaluable",
+    "caveat": "Extraction presence is not accuracy; no human date truth exists in the reviewed development artifact."
+  },
+  "audience": {
+    "exact_match": "not_evaluable",
+    "precision": "not_evaluable",
+    "recall": "not_evaluable",
+    "f1": "not_evaluable",
+    "reason": "Human affected-audience labels are absent from development fixture."
+  },
+  "teacher_related": {
+    "evaluable_n": 138,
+    "precision": 0.8666666666666667,
+    "recall": 0.65,
+    "f1": 0.7428571428571429,
+    "abstain_rate": 0.8913043478260869,
+    "truth_positive": 20,
+    "predicted_true": 15
+  },
+  "temporal_status": {
+    "accuracy": "not_evaluable",
+    "reason": "No development human temporal_status truth."
+  },
+  "historical_reference": {
+    "accuracy": "not_evaluable",
+    "reason": "No development human historical_reference or post-expiry-reference gold."
+  },
+  "source_status": {
+    "evaluable_n": 138,
+    "truth_missing": 27,
+    "truth_not_missing": 111,
+    "predicted_missing_confirmed": 0,
+    "recall_for_missing": 0,
+    "precision_for_missing": null,
+    "abstain_count": 138,
+    "abstain_rate": 1,
+    "coverage_of_confirmed_source_status": 0
+  },
+  "actionability": {
+    "accuracy": "not_evaluable",
+    "reason": "No direct human actionability field in development truth; no derived metric claimed."
+  }
+}
