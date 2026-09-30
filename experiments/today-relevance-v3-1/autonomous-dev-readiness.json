@@ -1,0 +1,36 @@
+{
+  "dataset": {
+    "rows": 150,
+    "unique_ids": 150,
+    "label_counts": {
+      "should_hide": 70,
+      "useful": 36,
+      "must_show": 18,
+      "optional": 26
+    },
+    "body_available_in_label_export": 0,
+    "attachment_bytes_or_text_in_label_export": 0,
+    "note": "The label export contains title/metadata, not official bodies or attachments. No HTTP source acquisition is performed here."
+  },
+  "split_audit": {
+    "round1_overlap_count": 9,
+    "clean_nonoverlap_count": 141
+  },
+  "extraction_ground_truth": {
+    "date_accuracy": "not_measurable: development label export has no adjudicated date fields",
+    "actionability_accuracy": "not_measurable",
+    "temporal_accuracy": "not_measurable",
+    "audience_primitive": "teacher_related boolean only; affected grade/audience ground truth absent",
+    "historical_reference_accuracy": "not_measurable"
+  },
+  "autonomous_metrics": null,
+  "clean_nonoverlap_metrics": null,
+  "extraction_counts": null,
+  "model_execution": {
+    "provider_configured": false,
+    "predictions_supplied": false,
+    "autonomous_run_performed": false,
+    "source_body_or_attachment_acquisition_performed": false,
+    "reason": "No structured model provider or objective source-content bundle is configured."
+  }
+}
