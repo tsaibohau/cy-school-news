@@ -1,0 +1,4 @@
+# Install only in the trusted inference/attachment worker, never in browser code.
+xlrd>=2.0.1  # legacy XLS support; network access and workbook macros are never run
+# DOC support uses the system `antiword` binary (invoke with shell=False and limits).
+# Image/scanned-PDF OCR uses the repository's local_ocr adapter and a local Tesseract binary.
