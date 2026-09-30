@@ -16,7 +16,7 @@
   "constraints": "Human truth joined only after inference outputs were frozen and remote hash verified. No Round 1 overlap in primary. No post-as_of evidence used.",
   "automated_checks": {
     "citation_count": 815,
-    "title_citations_supported_as_substrings": 815,
+    "title_citations_supported_as_substrings": 746,
     "unanchored_title_citations": 0,
     "unsupported_extracted_date_claims_by_citation_presence": 0,
     "date_claims_with_title_source_citation": 14,
@@ -25,7 +25,9 @@
     "hallucinated_attachment_claims": 0,
     "future_evidence_references": 0,
     "missing_confirmed_and_full_content_contradictions": 0,
-    "temporal_contradictions": "not fully machine-checked; requires semantic date/status truth unavailable"
+    "temporal_contradictions": "not fully machine-checked; requires semantic date/status truth unavailable",
+    "metadata_citations": 69,
+    "total_citations": 815
   },
   "semantic_entailment": "Not independently measurable from this set because no historical body/attachment was available. Citation presence and substring grounding are structural checks, not proof that the title semantically supports the judgment.",
   "findings": []
