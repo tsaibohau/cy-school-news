@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f7fb">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Round 1 Adjudication — Batch A</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans TC",sans-serif;color:#172338;background:#f5f7fb;font-synthesis:none;--ink:#172338;--muted:#657188;--line:#dce3ed;--blue:#2448a5;--green:#137957;--card:#fff;--soft:#eff3f9}
+*{box-sizing:border-box}body{margin:0;min-height:100vh}.shell{max-width:980px;margin:auto;padding:12px 12px calc(35px + env(safe-area-inset-bottom))}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}h1{font-size:1.25rem;margin:4px 0}h2{font-size:1.02rem;margin:0 0 10px}h3{font-size:.9rem;margin:11px 0 7px}.muted{font-size:.85rem;color:var(--muted)}.pill{display:inline-flex;border-radius:99px;background:#eaf0fa;padding:6px 11px;font-weight:750;font-variant-numeric:tabular-nums}.status{color:var(--green);font-size:.82rem;font-weight:700}.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:15px;margin:11px 0;box-shadow:0 4px 16px #20324a0a}
+.nav{position:sticky;top:0;z-index:4;display:flex;gap:8px;align-items:center;background:#f5f7fbed;backdrop-filter:blur(12px);padding:8px 0}.nav .btn{flex:1}.btn{min-height:46px;padding:10px 13px;border:1px solid var(--line);border-radius:11px;background:white;color:var(--ink);font:inherit;font-weight:700;cursor:pointer;touch-action:manipulation}.btn:focus-visible,.choice:focus-visible,.chip:focus-visible{outline:3px solid #8ab1ff;outline-offset:2px}.btn.primary{color:white;background:var(--blue);border-color:var(--blue)}.btn:disabled{opacity:.45;cursor:default}
+.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;font-size:.88rem}.meta b{display:block;color:var(--muted);font-size:.75rem;margin-bottom:3px}.title{font-size:1.12rem;line-height:1.5;margin:10px 0}.source{display:inline-flex;min-height:44px;align-items:center;justify-content:center;margin-top:12px;padding:9px 15px;border-radius:10px;background:#173c91;color:#fff;text-decoration:none;font-weight:750}.notice{background:#edf4ff;border-radius:10px;padding:10px 12px;color:#344c76;font-size:.87rem}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.review{background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:12px}.review h3{margin:0 0 7px}.label{font-weight:800;color:#173c91}.facts{margin:6px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem;line-height:1.55}.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.choice{min-height:58px;border:2px solid var(--line);border-radius:12px;background:white;color:var(--ink);font:inherit;font-weight:800;font-size:.97rem;cursor:pointer;touch-action:manipulation}.choice.on{background:#edf2ff;border-color:var(--blue);color:#173c91}
+.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{min-height:42px;padding:8px 11px;border:1px solid #cbd5e3;border-radius:999px;background:#fff;color:#26364f;font:inherit;font-weight:650;cursor:pointer;touch-action:manipulation}.chip.on{background:#e8f3ff;color:#124080;border-color:#79a9d7}
+.group{border-top:1px solid var(--line);padding:11px 0}.group:first-child{border-top:0}.seg{display:flex;flex-wrap:wrap;gap:7px}.seg .chip{flex:1;min-width:110px;border-radius:10px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fields label{font-size:.8rem;color:var(--muted)}input[type=date],textarea{display:block;width:100%;min-height:44px;padding:9px;border:1px solid var(--line);border-radius:9px;background:white;color:var(--ink);font:inherit;margin-top:5px}textarea{min-height:68px}.footer{display:flex;gap:8px}.footer .btn{flex:1}.toast{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:8;max-width:92vw;padding:10px 15px;background:#172338;color:white;border-radius:10px;box-shadow:0 4px 16px #0002}.hidden{display:none!important}
+@media(min-width:720px){.shell{padding-top:23px}.meta{grid-template-columns:repeat(3,minmax(0,1fr))}.choice-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:560px){.pair{grid-template-columns:1fr}.shell{padding-left:9px;padding-right:9px}.card{padding:13px}.nav{gap:5px}.nav .btn{padding:8px 7px;font-size:.88rem}.fields{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="shell">
+<header class="top">
+  <div><h1>Round 1 Adjudication — Batch A</h1><div class="muted">針對兩次人工判斷不一致的 5 筆公告；本機自動儲存。</div></div>
+  <div><span class="pill" id="progress">0 / 5</span> <span class="status" id="saveStatus">已準備</span></div>
+</header>
+<div class="nav" aria-label="審議導覽"><button class="btn" id="previous">上一筆</button><button class="btn" id="next">下一筆</button><button class="btn" id="undo">復原</button></div>
+<section class="card" id="announcement" aria-live="polite"></section>
+<section class="card"><h2>Round 1 與 Re-review 人工紀錄</h2><div class="pair"><div class="review" id="reviewA"></div><div class="review" id="reviewB"></div></div></section>
+<section class="card">
+  <h2>Final adjudication</h2>
+  <div class="group"><h3>最終重要程度</h3><div class="choice-grid" id="labels"></div></div>
+  <div class="group"><h3>影響對象（可複選）</h3><div class="chips" id="audience"></div></div>
+  <div class="group"><h3>時效判斷</h3><div class="seg" id="temporal"></div></div>
+  <div class="group"><h3>日期（有明確依據才填）</h3><div class="fields">
+    <label>截止日期<input type="date" data-field="human_deadline_date"></label><label>活動日期<input type="date" data-field="human_event_date"></label>
+    <label>申請開始<input type="date" data-field="human_application_start"></label><label>申請截止<input type="date" data-field="human_application_end"></label>
+    <label>有效至<input type="date" data-field="human_effective_until"></label>
+  </div></div>
+  <div class="group"><h3>理由（可複選）</h3><div class="chips" id="reasons"></div></div>
+  <div class="group"><label class="muted">Final notes（選填）<textarea id="notes" placeholder="可留白"></textarea></label></div>
+  <div class="group"><label class="muted">Adjudication rationale（選填）<textarea id="rationale" placeholder="可用短句說明裁定依據"></textarea></label></div>
+</section>
+<section class="card"><div class="footer"><button class="btn primary" id="export">完成並匯出 adjudication</button></div><p class="muted">iPhone Safari 會使用分享面板，可選「儲存到檔案」。答案僅在此瀏覽器保存，匯出不會寫入資料庫。</p></section>
+<div class="toast hidden" id="toast" role="status"></div>
+</main>
+<script src="round-001-adjudication-batch-a-data.js"></script>
+<script>
+"use strict";
+(()=>{
+ const SNAPSHOT="c7db661b-181a-4cd3-b869-b39f7edb3048", ROUND="round_001_adjudication_a";
+ const expected=["cygsh-147014","cygsh-185224","cysh-136699","cygsh-186125","cysh-136634"];
+ const bundle=window.ROUND001_ADJUDICATION_A_DATA;
+ const key="cyNews.adjudication.round_001_adjudication_a.c7db661b";
+ const labels=[["must_show","必看"],["useful","有用"],["optional","可選"],["should_hide","隱藏"]];
+ const audiences=[["grade_1","高一"],["grade_2","高二"],["grade_3","高三"],["teacher","老師"],["all_students","全校學生"],["uncertain","不確定"]];
+ const temporal=[["not_started","尚未開始"],["active","進行中"],["closing_soon","即將截止"],["closed","已截止"],["expired","已失效"],["uncertain","不確定"]];
+ const reasons=[["niche_audience","僅對關注者重要"],["grade_specific","特定年級"],["participant_specific","限參與者"],["action_required","需要採取行動"],["registration_required","需要報名"],["deadline_passed","截止日已過"],["event_upcoming","活動即將舉行"],["event_passed","活動已結束"],["old_but_valid","舊公告仍有效"],["not_urgent","資訊不急迫"],["link_invalid","公告連結無效"],["announcement_missing","公告已不存在"],["source_uncertain","來源狀態不確定"],["rules_still_relevant","規定仍有參考價值"],["historical_reference","有歷史查詢價值"]];
+ const $=id=>document.getElementById(id), clone=x=>JSON.parse(JSON.stringify(x));
+ const expectedSet=new Set(expected);
+ const bad=!bundle||bundle.snapshot_id!==SNAPSHOT||bundle.adjudication_batch_id!==ROUND||bundle.queue_count!==5||!Array.isArray(bundle.records)||bundle.records.length!==5||new Set(bundle.records.map(r=>r.announcement_id)).size!==5||expected.some(x=>!bundle.records.some(r=>r.announcement_id===x))||bundle.records.some(r=>!expectedSet.has(r.announcement_id));
+ if(bad){document.body.innerHTML="<main class=\"shell\"><section class=\"card\">審議資料驗證失敗，請勿開始。</section></main>";return;}
+ const empty=()=>({human_label:null,human_affected_audience:[],human_temporal_status:null,human_deadline_date:null,human_event_date:null,human_application_start:null,human_application_end:null,human_effective_until:null,reason_chips:[],human_notes:"",adjudication_rationale:"",reviewed_fields:[],review_status:"unreviewed"});
+ let saved=null;try{saved=JSON.parse(localStorage.getItem(key)||"null")}catch{}
+ const state=saved?.snapshot_id===SNAPSHOT&&saved?.adjudication_batch_id===ROUND?saved:{snapshot_id:SNAPSHOT,adjudication_batch_id:ROUND,position:0,answers:{},undo_stack:[]};
+ state.answers||={};state.undo_stack||=[];state.position=Math.max(0,Math.min(4,Number(state.position)||0));
+ const current=()=>bundle.records[state.position], answer=()=>state.answers[current().announcement_id]||=(empty()), mark=(a,f)=>{if(!a.reviewed_fields.includes(f))a.reviewed_fields.push(f)};
+ function persist(){try{localStorage.setItem(key,JSON.stringify(state));$("saveStatus").textContent="已自動儲存"}catch{$("saveStatus").textContent="儲存失敗";toast("本機儲存失敗，請先匯出")}progress()}
+ function progress(){const n=Object.values(state.answers).filter(a=>a.human_label).length;$("progress").textContent=n+" / 5 · 第 "+(state.position+1)+" 筆";$("previous").disabled=state.position===0;$("next").disabled=state.position===4}
+ function toast(s){const el=$("toast");el.textContent=s;el.classList.remove("hidden");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.add("hidden"),1800)}
+ function mutate(f,v){const a=answer();state.undo_stack.push({id:current().announcement_id,answer:clone(a)});if(state.undo_stack.length>100)state.undo_stack.shift();a[f]=v;mark(a,f);a.review_status=a.human_label?"in_progress":"unreviewed";persist();render()}
+ function infoCard(el,title,review){el.replaceChildren();const h=document.createElement("h3");h.textContent=title;el.append(h);const label=document.createElement("div");label.className="label";label.textContent="標記："+(review.human_label||"未標記");el.append(label);
+  const rows=[["理由",review.human_reasons||review.reason_chips],["影響對象",review.human_affected_audience],["教師相關",review.human_teacher_related],["公告性質",review.human_announcement_type],["法規依據",review.human_regulatory_basis],["可用性",review.human_availability],["時效",review.human_temporal_status],["截止日期",review.human_deadline_date],["活動日期",review.human_event_date],["申請期間",[review.human_application_start,review.human_application_end].filter(Boolean).join(" – ")||null],["有效至",review.human_effective_until],["期間",review.human_temporal_spans],["過期後參考價值",review.human_post_expiry_reference_value],["長期有效",review.human_long_lived_information],["Notes",review.human_notes]];
+  const p=document.createElement("div");p.className="facts";p.textContent=rows.filter(([,v])=>v!==null&&v!==undefined&&v!==""&&!(Array.isArray(v)&&!v.length)).map(([k,v])=>k+"："+(Array.isArray(v)?v.join("、"):typeof v==="object"?JSON.stringify(v):String(v))).join("\n")||"沒有其他已記錄欄位";el.append(p)
+ }
+ function render(){const r=current(),a=answer(),el=$("announcement");el.replaceChildren();const meta=document.createElement("div");meta.className="meta";
+  for(const [k,v] of [["公告 ID",r.announcement_id],["學校",r.school==="cysh"?"嘉義高中":"嘉義女中"],["發布日期",r.published_date||"未提供"],["日期來源",r.date_source||"未提供"],["分類",r.category||"未分類"],["來源分類",r.source_category||"未提供"],["正文狀態",r.content_availability||"未提供"],["來源狀態",r.source_check_status||"未提供"],["附件狀態",r.attachment_availability||"未提供"]]){const d=document.createElement("div"),b=document.createElement("b");b.textContent=k;d.append(b,document.createTextNode(v));meta.append(d)}el.append(meta);
+  const title=document.createElement("h2");title.className="title";title.textContent=r.title||"（無標題）";el.append(title);
+  const body=document.createElement("p");body.className="notice";body.textContent=r.content?"": "Frozen snapshot 未含正文（metadata_only）；目前沒有已取得的附件。請依標題、日期及可開啟的官方原始公告 adjudicate。";el.append(body);
+  const link=document.createElement("a");link.className="source";link.href=r.official_url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="開啟官方公告";el.append(link);
+  infoCard($("reviewA"),"Human Review A · Round 1",r.original_review);infoCard($("reviewB"),"Human Review B · Re-review",r.rereview_review);
+  const choice=(target,items,value,fn,multi=false)=>{const node=$(target);node.replaceChildren();for(const [k,label] of items){const b=document.createElement("button");b.type="button";b.className=(multi?(value||[]).includes(k):value===k)?"chip on":"chip";b.textContent=label;b.setAttribute("aria-pressed",String(multi?(value||[]).includes(k):value===k));b.onclick=()=>fn(k);node.append(b)}};
+  const labelNode=$("labels");labelNode.replaceChildren();for(const [k,t] of labels){const b=document.createElement("button");b.type="button";b.className="choice"+(a.human_label===k?" on":"");b.textContent=t;b.setAttribute("aria-pressed",String(a.human_label===k));b.onclick=()=>mutate("human_label",k);labelNode.append(b)}
+  choice("audience",audiences,a.human_affected_audience||[],v=>{const s=new Set(answer().human_affected_audience||[]);s.has(v)?s.delete(v):s.add(v);mutate("human_affected_audience",[...s])},true);
+  choice("temporal",temporal,a.human_temporal_status,v=>mutate("human_temporal_status",v));
+  choice("reasons",reasons,a.reason_chips||[],v=>{const s=new Set(answer().reason_chips||[]);s.has(v)?s.delete(v):s.add(v);mutate("reason_chips",[...s])},true);
+  document.querySelectorAll("[data-field]").forEach(i=>{const f=i.dataset.field;i.value=a[f]||"";i.onchange=()=>mutate(f,i.value||null)});
+  $("notes").value=a.human_notes||"";$("notes").onchange=()=>mutate("human_notes",$("notes").value);
+  $("rationale").value=a.adjudication_rationale||"";$("rationale").onchange=()=>mutate("adjudication_rationale",$("rationale").value);
+  progress()
+ }
+ $("previous").onclick=()=>{state.position=Math.max(0,state.position-1);persist();render()};$("next").onclick=()=>{state.position=Math.min(4,state.position+1);persist();render()};
+ $("undo").onclick=()=>{const x=state.undo_stack.pop();if(!x){toast("沒有可復原的操作");return}state.answers[x.id]=x.answer;persist();render();toast("已復原上一項變更")};
+ async function exportJSON(){const records=bundle.records.map(r=>{const a=clone(state.answers[r.announcement_id]||empty());return {announcement_id:r.announcement_id,final_answers:a,reviewed_fields:a.reviewed_fields.slice(),review_status:a.human_label?"completed":"in_progress"}});
+  const completed=records.filter(r=>r.final_answers.human_label).length;
+  const output={format_version:"1.0",round_id:"round_001",parent_round_id:"round_001",adjudication_batch_id:ROUND,snapshot_id:SNAPSHOT,exported_at:new Date().toISOString(),queue_count:5,reviewer_mode:"local_no_auth",completion_state:{completed_count:completed,remaining_count:5-completed,is_complete:completed===5},current_position:state.position,undo_stack:clone(state.undo_stack),records};
+  const file=new File([JSON.stringify(output,null,2)+"\n"],"human_adjudication_round_001_batch_a.json",{type:"application/json"});
+  try{const data={files:[file],title:"Round 1 Adjudication Batch A"};if(navigator.share&&(!navigator.canShare||navigator.canShare(data))){await navigator.share(data);toast("已開啟匯出 "+completed+"/5");return}}catch(e){if(e?.name==="AbortError"){toast("已取消匯出");return}}
+  const url=URL.createObjectURL(file),a=document.createElement("a");a.href=url;a.download=file.name;a.click();setTimeout(()=>URL.revokeObjectURL(url),4000);toast("已匯出 "+completed+"/5")
+ }
+ $("export").onclick=exportJSON;persist();render()
+})();
+</script>
+</body>
+</html>

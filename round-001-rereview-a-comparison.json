@@ -1,0 +1,155 @@
+{
+  "format_version": "1.0",
+  "snapshot_id": "c7db661b-181a-4cd3-b869-b39f7edb3048",
+  "parent_round_id": "round_001",
+  "rereview_batch_id": "round_001_rereview_a",
+  "source_export": "human_rereview_round_001_batch_a.json",
+  "source_export_sha256": "702e74261d56debddb75c9ed9f74f5782db6b9ae4a16a954880f810c0a38bce0",
+  "source_completion_state": {
+    "completed_count": 13,
+    "remaining_count": 0,
+    "is_complete": true
+  },
+  "export_review_status_anomaly": {
+    "records_review_status": "in_progress",
+    "completed_count": 13,
+    "queue_count": 13,
+    "is_complete": true,
+    "effective_status": "completed",
+    "note": "Preserved source status in the evidence table; not rewritten in the source export."
+  },
+  "agreement_count": 8,
+  "disagreement_count": 5,
+  "records": [
+    {
+      "announcement_id": "cygsh-186201",
+      "original_human_label": "should_hide",
+      "rereview_human_label": "should_hide",
+      "label_agreement": true,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": false,
+      "evidence_class": "stable_should_hide_leakage"
+    },
+    {
+      "announcement_id": "cygsh-186059",
+      "original_human_label": "should_hide",
+      "rereview_human_label": "should_hide",
+      "label_agreement": true,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": false,
+      "evidence_class": "stable_should_hide_leakage"
+    },
+    {
+      "announcement_id": "cygsh-186006",
+      "original_human_label": "should_hide",
+      "rereview_human_label": "should_hide",
+      "label_agreement": true,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": false,
+      "evidence_class": "stable_should_hide_leakage"
+    },
+    {
+      "announcement_id": "cysh-136634",
+      "original_human_label": "must_show",
+      "rereview_human_label": "optional",
+      "label_agreement": false,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": false,
+      "evidence_class": "human_label_disagreement"
+    },
+    {
+      "announcement_id": "cysh-136699",
+      "original_human_label": "useful",
+      "rereview_human_label": "optional",
+      "label_agreement": false,
+      "machine_label": "optional",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": true,
+      "evidence_class": "human_label_disagreement"
+    },
+    {
+      "announcement_id": "cysh-136689",
+      "original_human_label": "should_hide",
+      "rereview_human_label": "should_hide",
+      "label_agreement": true,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": false,
+      "evidence_class": "stable_should_hide_leakage"
+    },
+    {
+      "announcement_id": "cygsh-147014",
+      "original_human_label": "useful",
+      "rereview_human_label": "optional",
+      "label_agreement": false,
+      "machine_label": "optional",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": true,
+      "evidence_class": "human_label_disagreement"
+    },
+    {
+      "announcement_id": "cysh-136735",
+      "original_human_label": "must_show",
+      "rereview_human_label": "must_show",
+      "label_agreement": true,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": false,
+      "evidence_class": "stable_must_show_downgrade"
+    },
+    {
+      "announcement_id": "cysh-136717",
+      "original_human_label": "must_show",
+      "rereview_human_label": "must_show",
+      "label_agreement": true,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": false,
+      "evidence_class": "stable_must_show_downgrade"
+    },
+    {
+      "announcement_id": "cygsh-186306",
+      "original_human_label": "should_hide",
+      "rereview_human_label": "should_hide",
+      "label_agreement": true,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": false,
+      "evidence_class": "stable_should_hide_leakage"
+    },
+    {
+      "announcement_id": "cygsh-185508",
+      "original_human_label": "should_hide",
+      "rereview_human_label": "should_hide",
+      "label_agreement": true,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": false,
+      "evidence_class": "stable_should_hide_leakage"
+    },
+    {
+      "announcement_id": "cygsh-186125",
+      "original_human_label": "must_show",
+      "rereview_human_label": "useful",
+      "label_agreement": false,
+      "machine_label": "useful",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": true,
+      "evidence_class": "human_label_disagreement"
+    },
+    {
+      "announcement_id": "cygsh-185224",
+      "original_human_label": "useful",
+      "rereview_human_label": "optional",
+      "label_agreement": false,
+      "machine_label": "optional",
+      "machine_agrees_with_original": false,
+      "machine_agrees_with_rereview": true,
+      "evidence_class": "human_label_disagreement"
+    }
+  ]
+}
