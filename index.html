@@ -69,7 +69,7 @@
   const allowedRecordKeys=["announcement_id","school","published_date","published_date_raw","date_source","title","category","source_category","content","content_availability","content_availability_label","source_status","source_status_label","official_url","attachments","attachment_status","attachment_status_label","temporal_evidence"];
   const loadError = !dataNode ? "頁面資料區塊不存在" : !bundle ? "資料格式無法解析" : bundle.parent_snapshot_id !== SNAPSHOT ? "snapshot ID 不符" : bundle.rereview_batch_id !== ROUND ? "batch ID 不符" : !Array.isArray(bundle.records) || bundle.records.length !== 13 ? "公告數量不符" : new Set(bundle.records.map(r=>r.announcement_id)).size !== 13 ? "公告 ID 有重複" : bundle.records.some(r=>Object.keys(r).some(k=>!allowedRecordKeys.includes(k))) ? "資料欄位不符" : null;
   if (loadError) {
-    document.body.innerHTML = `<main class='shell'><section class='card'>審核資料載入驗證失敗，請不要開始標記。<p class='muted'>${loadError}</p></section></main>`; return;
+    const shell=document.createElement("main"),card=document.createElement("section"),detail=document.createElement("p");shell.className="shell";card.className="card";card.append(document.createTextNode("審核資料載入驗證失敗，請不要開始標記。"));detail.className="muted";detail.textContent=loadError==="snapshot ID 不符"?`${loadError}：讀取到 ${bundle?.parent_snapshot_id||"（空值）"}；頁面設定 ${SNAPSHOT}`:loadError;card.append(detail);shell.append(card);document.body.replaceChildren(shell);return;
   }
   let saved = null;
   try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || "null"); } catch {}
