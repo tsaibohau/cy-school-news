@@ -41,6 +41,8 @@ class PipelineTests(unittest.TestCase):
     def test_source_precedence_and_cache_never_live(self):
         self.assertEqual(resolve_source({"http_status":404,"body_text":"cached-looking text"})['canonical_status'],'missing_confirmed')
         self.assertEqual(resolve_source({"status":"timeout"},{"body_text":"old page"})['canonical_status'],'temporarily_unreachable')
+        self.assertEqual(resolve_source({"status":"fetch_failed","fetch_error":"ReadTimeout"})['canonical_status'],'temporarily_unreachable')
+        self.assertEqual(resolve_source({"status":"fetch_failed","fetch_error":"ParserFailure"})['canonical_status'],'unknown')
         old=resolve_source(None,{"body_text":"cached only"})
         self.assertEqual(old['canonical_status'],'unknown'); self.assertFalse(old['page_available'])
         self.assertEqual(resolve_source({"http_status":200,"body_text":"正文"})['canonical_status'],'available')
