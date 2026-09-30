@@ -3,65 +3,13 @@
   "benchmark": "development_nonoverlap_141",
   "evaluation_as_of": "2026-09-25",
   "input_artifact": "autonomous-blind-input-141.json",
-  "input_sha256": "2f18368aaecfcf66a1799cbdab72b9f7dbbd70e3e663c7933ace9ba62a550709",
+  "input_sha256": "5e5202593eacd748fbee2249d94efaef883e11da167d7394b4253298820428e3",
   "evidence_output_artifact": "autonomous-evidence-output-141.json",
   "inference_engine": "Work Luna semantic inference",
   "expected_primary_count": 141,
-  "inferred_count": 140,
-  "withheld_count": 1,
+  "inferred_count": 138,
+  "withheld_count": 3,
   "records": [
-    {
-      "announcement_id": "cygsh-154786",
-      "today_label": "optional",
-      "reasoning_factors": {
-        "actionability": "uncertain",
-        "urgency": "uncertain",
-        "audience_relevance": "uncertain",
-        "temporal_relevance": "uncertain",
-        "source_reliability": "uncertain",
-        "reference_value": "limited"
-      },
-      "reason_codes": [
-        "historical_reference",
-        "no_current_action"
-      ],
-      "confidence": {
-        "label": 0.28,
-        "actionability": 0.1,
-        "urgency": 0.24,
-        "audience_relevance": 0.15,
-        "temporal_relevance": 0.12,
-        "source_reliability": 0.08,
-        "reference_value": 0.27
-      },
-      "low_evidence_confidence": true
-    },
-    {
-      "announcement_id": "cygsh-159428",
-      "today_label": "should_hide",
-      "reasoning_factors": {
-        "actionability": "low",
-        "urgency": "none",
-        "audience_relevance": "uncertain",
-        "temporal_relevance": "historical",
-        "source_reliability": "uncertain",
-        "reference_value": "none"
-      },
-      "reason_codes": [
-        "deadline_passed",
-        "action_expired"
-      ],
-      "confidence": {
-        "label": 0.5,
-        "actionability": 0.4,
-        "urgency": 0.24,
-        "audience_relevance": 0.15,
-        "temporal_relevance": 0.58,
-        "source_reliability": 0.08,
-        "reference_value": 0.27
-      },
-      "low_evidence_confidence": true
-    },
     {
       "announcement_id": "cygsh-163449",
       "today_label": "optional",
@@ -3592,5 +3540,10 @@
       },
       "low_evidence_confidence": true
     }
+  ],
+  "withheld_announcement_ids": [
+    "cygsh-146936",
+    "cygsh-154786",
+    "cygsh-159428"
   ]
 }
