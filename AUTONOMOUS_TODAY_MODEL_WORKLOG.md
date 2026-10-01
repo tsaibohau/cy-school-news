@@ -39,3 +39,13 @@ Production is read-only and remains the sole product truth. This file records ex
 - Correction: preserve an explicit unknown-date stratum, sorting by source first_seen and ID without claiming first_seen is publication date.
 - Local deterministic selection now verifies 30 CYSH + 30 CYGSH with unique IDs. Title-only/noise-only and cross-domain safety probes passed.
 - Next decision: rerun acquisition; no human intervention needed.
+
+## 2026-10-01 phase 2 live capture and phase 3 tooling
+- Current acquisition run: 36820362487, commit 8cdef0ddee200f4db3c1271b3f78054c4ec944de.
+- CYSH raw detail, body, PDF and DOCX objects have been uploaded/read-back SHA verified. Parsed sources rerun offline identically. Body-only source captured too.
+- First CYGSH dated candidate returns school-provided not-found page (captured privately), correctly FAIL; runner continues remaining source-metadata candidates.
+- Created offline benchmark/citation evaluator and semantic prompt. Structural citation audit explicitly does not claim to prove semantic correctness.
+- Generic five-button Review UI drafted; no corpus or model answers embedded, no queue published. Future read capability is limited to one immutable <=15 batch through backend; no direct browser Storage access.
+- Workflow trigger narrowed to acquisition code/dependencies/explicit trigger so checkpoint/tooling commits do not refetch official sources.
+- Vercel connector cannot see existing projects/deployments. Browser dashboard has sign-in wall, but GitHub commit check output exposed the existing Preview hostname; direct Preview successfully opened without login. No Vercel authentication required for static verification.
+- Candidate remains NOT FROZEN. No semantic inference yet. Next: await runner completion, inspect private freeze report, then run Work semantic inference.

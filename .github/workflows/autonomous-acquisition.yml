@@ -2,7 +2,7 @@ name: Autonomous private content acquisition
 on:
   push:
     branches: [codex/autonomous-corpus-acquisition]
-    paths: [.github/workflows/autonomous-acquisition.yml, experiments/autonomous-corpus/**]
+    paths: [experiments/autonomous-corpus/acquire.py, experiments/autonomous-corpus/requirements.txt, experiments/autonomous-corpus/acquisition-trigger.json]
 permissions:
   contents: read
   id-token: write
