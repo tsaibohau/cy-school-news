@@ -19,7 +19,7 @@ Deno.serve(async req=>{
   const r=await fetch(`${base}/rest/v1/autonomous_review_capabilities?token_hash=eq.${h}&select=batch_path,expires_at,enabled`,{headers:auth});
   if(!r.ok)return json({error:'unauthorized'},401);const rows=await r.json();
   if(rows.length!==1||!rows[0].enabled||Date.parse(rows[0].expires_at)<Date.now())return json({error:'unauthorized'},401);
-  const path=rows[0].batch_path;if(!/^runs\/\d+\/batch-[ab]-review\.json$/.test(path))return json({error:'scope'},403);
+  const path=rows[0].batch_path;if(!/^runs\/\d+\/batch-[ab]-review(?:-v[0-9]+)?\.json$/.test(path))return json({error:'scope'},403);
   const s=await fetch(`${base}/storage/v1/object/autonomous-corpus-private/${path}`,{headers:auth});
   if(!s.ok)return json({error:'not_ready'},503);const batch=await s.json();
   if(!batch.model_freeze_sha256||batch.records.length>15)return json({error:'invalid_queue'},503);

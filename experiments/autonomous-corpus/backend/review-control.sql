@@ -1,7 +1,7 @@
 -- Apply only after private model inference freeze passes its audit.
 CREATE TABLE public.autonomous_review_capabilities (
   token_hash text PRIMARY KEY CHECK(token_hash ~ '^[a-f0-9]{64}$'),
-  batch_path text NOT NULL CHECK(batch_path ~ '^runs/[0-9]+/batch-[ab]-review\.json$'),
+  batch_path text NOT NULL CHECK(batch_path ~ '^runs/[0-9]+/batch-[ab]-review(-v[0-9]+)?\.json$'),
   expires_at timestamptz NOT NULL,
   enabled boolean NOT NULL DEFAULT false
 );
