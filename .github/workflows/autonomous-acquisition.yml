@@ -1,0 +1,26 @@
+name: Autonomous acquisition environment smoke
+on:
+  push:
+    branches: [codex/autonomous-corpus-acquisition]
+    paths: [.github/workflows/autonomous-acquisition.yml, experiments/autonomous-corpus/**]
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  environment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check official index connectivity without retaining content
+        shell: bash
+        run: |
+          python - <<'PY'
+          import urllib.request, hashlib, json
+          for school, url in [('cysh','https://www.cysh.cy.edu.tw/'),('cygsh','https://www.cygsh.cy.edu.tw/')]:
+              try:
+                  with urllib.request.urlopen(url, timeout=30) as r:
+                      data=r.read(4000000)
+                      print(json.dumps({'school':school,'status':r.status,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}))
+              except Exception as e:
+                  print(json.dumps({'school':school,'error_type':type(e).__name__}))
+          PY
