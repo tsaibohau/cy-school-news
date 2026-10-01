@@ -115,3 +115,9 @@ Production is read-only and remains the sole product truth. This file records ex
 - B queue contains raw content/source metadata only; SHA 0010d1f1fe6e9301f977cc4603a686aede8af0d3a422838aca06c049217292d1; path runs/36820362487/batch-b-review-v34.json. Private upload/read-back verified. B human labels absent; no validation metrics yet.
 - UI now uses dynamic A/B title/export filename and model-hash-separated local progress. General rubric explains active operations and continuation, with no model answer.
 - Next: enable B-only read capability and verify actual Preview + synthetic fixture autosave/undo/export without labeling real B records. Round2 HOLD; Production NONE.
+
+### 2026-10-01T16:40Z — Blind review capability and QA
+- Batch B immutable output and queue read-back SHA verified before opening capability.
+- Training-only read capability provisioned for one frozen Batch B queue, 30-day expiry; no public storage policy, no service key in browser.
+- Review Preview for ac2758144b08633cd4637cb646a66f81d0cefdb2 deployed successfully. Cloud browser showed Batch B, 15 records, 0 completed, no sign-in.
+- Next decision: test exact UI handlers with synthetic-only build fixture; never label real Batch B.
