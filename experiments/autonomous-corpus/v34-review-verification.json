@@ -1,0 +1,33 @@
+{
+  "candidate": "v3.4",
+  "status": "FROZEN_FOR_BATCH_B_BLIND_VALIDATION",
+  "round2": "HOLD",
+  "verified_at": "2026-10-01T16:47:11.513Z",
+  "preview_commit": "39f92b225f1727f47be6b631dd9a6cc89e42a0b3",
+  "real_batch_b": {
+    "batch_id": "autonomous-v34-B",
+    "records": 15,
+    "completed": 0,
+    "no_login": true,
+    "model_sha256": "9c401b9841fa19bc3d0f79e3d7ceb8e4ad62b123b52cea1c45f33bb44b7eae6c",
+    "no_labels_entered": true,
+    "export_identity_checked": true
+  },
+  "synthetic_fixture": {
+    "isolated_batch_id": "synthetic-qa-v34-B",
+    "autosave_reload": true,
+    "undo": true,
+    "clear_undo": true,
+    "all_five_labels": true,
+    "complete_export_reviews": 15,
+    "complete_export_flag": true,
+    "screenshot_sha256": "28082a4b4aefc78f60c3779cd8b71dca4006639d1ef37a439df4c7b225e512c1"
+  },
+  "limitations": [
+    "Cloud browser download bridge timed out for both scripted export and explicit blob anchor. Browser download transport is unverified; generated JSON and copyable JSON fallback were tested.",
+    "iPhone native share sheet was not tested."
+  ],
+  "production_changes": 0,
+  "stage1_changed": false,
+  "policy_changed_after_b_freeze": false
+}

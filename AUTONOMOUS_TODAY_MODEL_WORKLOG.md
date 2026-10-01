@@ -121,3 +121,12 @@ Production is read-only and remains the sole product truth. This file records ex
 - Training-only read capability provisioned for one frozen Batch B queue, 30-day expiry; no public storage policy, no service key in browser.
 - Review Preview for ac2758144b08633cd4637cb646a66f81d0cefdb2 deployed successfully. Cloud browser showed Batch B, 15 records, 0 completed, no sign-in.
 - Next decision: test exact UI handlers with synthetic-only build fixture; never label real Batch B.
+
+### 2026-10-01T16:48Z — Review verified, await human export
+- Exact UI handlers tested on isolated synthetic 15-record fixture: all five labels, autosave surviving reload, label-change undo, clear/undo, completed=true export with 15 synthetic IDs. These are QA records, not Batch B human labels.
+- Real Batch B reloaded after UI fixes: batch_id autonomous-v34-B, 0/15, completed=false, exact corpus and v3.4 model SHA in export, no login. No real B label entered.
+- Cloud browser download bridge timed out twice (share-triggered and explicit blob link). Added explicit download and copyable JSON fallback; JSON generation/identity/content verified. Native iPhone share sheet not tested. Do not claim download transport or iOS system share verified.
+- QA fixture initially failed object-return syntax, corrected. These UI/build-only commits did not change Stage 1, frozen policy, or B prediction bytes.
+- Private synthetic QA screenshot uploaded/read-back verified, SHA 28082a4b4aefc78f60c3779cd8b71dca4006639d1ef37a439df4c7b225e512c1. No private content/model answers are static build inputs.
+- Training-only writes: immutable development/validation artifacts and one B read capability/Vault entry. Existing private bucket policies unchanged; no Production write, merge, promotion, or alias change.
+- Final state: Candidate v3.4 = FROZEN FOR BATCH B BLIND VALIDATION. Round 2 HOLD. Stop awaiting real human Batch B export; never rerun frozen B predictions.
