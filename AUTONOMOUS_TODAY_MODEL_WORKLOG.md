@@ -32,3 +32,10 @@ Production is read-only and remains the sole product truth. This file records ex
 - Frozen selection requires 15 per school plus at least five body-only and five attachment-rich records.
 - Next decision: inspect private run report, extend metadata-selected pool if coverage is insufficient, otherwise freeze blind semantic outputs before creating human review.
 - Public logs contain IDs, counts and hashes only. No Actions artifact upload.
+
+## 2026-10-01 phase 2 initial runner correction
+- Runner 36820176306 installed all parsers and passed every existing scraper parser test.
+- Candidate selection initially excluded missing publication dates and failed the 60-count invariant before any official detail fetch.
+- Correction: preserve an explicit unknown-date stratum, sorting by source first_seen and ID without claiming first_seen is publication date.
+- Local deterministic selection now verifies 30 CYSH + 30 CYGSH with unique IDs. Title-only/noise-only and cross-domain safety probes passed.
+- Next decision: rerun acquisition; no human intervention needed.

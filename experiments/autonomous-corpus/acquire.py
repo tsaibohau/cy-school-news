@@ -249,12 +249,12 @@ def pool_select(items):
         for item in items:
             if item.get('school')!=school or not official(item.get('url',''),school):continue
             try:age=(today-dt.date.fromisoformat(item['date'][:10])).days
-            except Exception:continue
-            if age<0:continue
-            agebin=0 if age<=7 else 1 if age<=30 else 2 if age<=90 else 3 if age<=365 else 4
+            except Exception:age=None
+            if age is not None and age<0:continue
+            agebin=5 if age is None else 0 if age<=7 else 1 if age<=30 else 2 if age<=90 else 3 if age<=365 else 4
             strat=(agebin,item.get('category',''),bool(item.get('attachments') or item.get('has_attachments')))
             groups.setdefault(strat,[]).append(item)
-        for group in groups.values():group.sort(key=lambda x:(x['date'],x['id']),reverse=True)
+        for group in groups.values():group.sort(key=lambda x:(x.get('date') or x.get('first_seen',''),x['id']),reverse=True)
         selected=[]
         while len(selected)<30:
             added=False
