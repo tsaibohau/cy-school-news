@@ -13,5 +13,5 @@ const fixture = {
     attachment_content:[], metadata_content:[]
   }))
 };
-const qa = ui.replace("'use strict';", "'use strict';\nconst fetch=async()=>({ok:true,json:async()=>"+JSON.stringify(fixture)+"});");
+const qa = ui.replace("'use strict';", "'use strict';\nconst fetch=async()=>({ok:true,json:async()=>("+JSON.stringify(fixture)+")});");
 fs.writeFileSync('dist-autonomous-review/qa-fixture.html', qa);
