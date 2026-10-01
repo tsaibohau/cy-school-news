@@ -11,7 +11,7 @@ LABELS=['must_show','useful','optional','should_hide']
 POSITIVE=set(LABELS[:2])
 REFERENCE=['none','limited','useful_reference','long_term_reference','uncertain']
 ACTIONS=['action_required_now','action_required_soon','action_available_later','information_only','action_completed','action_expired','uncertain']
-DATE_KINDS=['deadline','event_date','application_start','application_end','effective_until']
+DATE_KINDS=['publication_date','deadline','event_date','application_start','application_end','effective_until']
 
 def canonical(x):return json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
 def sha(x):return hashlib.sha256(x).hexdigest()
@@ -20,6 +20,7 @@ def norm(x):return re.sub(r'\s+','',str(x))
 def sources(record):
     result={('title','title','title:1'):record['title']}
     if record.get('date'):result[('metadata','source-index.json','publication_date')]=record['date']
+    for b in record.get('metadata_content',[]):result[('metadata','source.html',b['locator'])]=b['text']
     for b in record['body_content']:result[('body','source.html',b['locator'])]=b['text']
     for a in record['attachment_content']:
         for u in (a.get('content') or {}).get('units',[]):result[('attachment',a['filename'],u['locator'])]=u['text']
@@ -70,8 +71,10 @@ def audit(corpus,outputs):
         if out.get('actionability')=='action_completed' and corpus['persona'].get('prior_actions')=='unknown':
             flags.append({'id':aid,'flag':'persona_completion_requires_evidence'})
         supported_recent=False
+        explicit_publication=[d for d in out.get('dates',[]) if d.get('kind')=='publication_date']
         try:
-            age=(dt.date.fromisoformat(corpus['as_of'])-dt.date.fromisoformat(rows[aid]['date'])).days
+            publication=explicit_publication[0]['value'] if explicit_publication else rows[aid]['date']
+            age=(dt.date.fromisoformat(corpus['as_of'])-dt.date.fromisoformat(publication)).days
             supported_recent=0<=age<=5
         except Exception:pass
         urgent_date=any(d.get('kind') in ['deadline','application_end'] and 0<=d.get('days_until',999)<=5 for d in out.get('dates',[]))

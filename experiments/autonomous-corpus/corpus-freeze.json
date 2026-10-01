@@ -1,0 +1,21 @@
+{
+  "status": "FROZEN",
+  "corpus_sha256": "0535de250b79a284cd9aa89f0a74fbe46da48e5c6f8e3a21a26389c161078a88",
+  "candidate_pool": 60,
+  "pass_pool": 42,
+  "schools": {
+    "cysh": 15,
+    "cygsh": 15
+  },
+  "body_coverage": 19,
+  "attachment_coverage": 21,
+  "body_only": 9,
+  "independent_replay": {
+    "body_only": 5,
+    "attachment_rich": 5,
+    "network_disabled": true,
+    "passed": true
+  },
+  "preliminary_status": "INVALIDATED_CONTENT_GATE",
+  "acquisition_run_id": "36820362487"
+}

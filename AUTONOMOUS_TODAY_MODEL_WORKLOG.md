@@ -49,3 +49,17 @@ Production is read-only and remains the sole product truth. This file records ex
 - Workflow trigger narrowed to acquisition code/dependencies/explicit trigger so checkpoint/tooling commits do not refetch official sources.
 - Vercel connector cannot see existing projects/deployments. Browser dashboard has sign-in wall, but GitHub commit check output exposed the existing Preview hostname; direct Preview successfully opened without login. No Vercel authentication required for static verification.
 - Candidate remains NOT FROZEN. No semantic inference yet. Next: await runner completion, inspect private freeze report, then run Work semantic inference.
+
+## 2026-10-01T06:20:00Z phase 2 quality correction and corrected freeze
+- Independent replay initially matched hashes but exposed repeated CYSH navigation content. This proved reproducibility alone was insufficient for content correctness.
+- Preliminary corpus db5cc48753a26ba18d87e55105141f5197361c956eea1281c4b2813c805af353 is INVALIDATED_CONTENT_GATE. Its private objects remain immutable; no model inference or human review occurred on it.
+- Corrected the RulingDigital body locator to article-scoped editors and removed header/footer containers. Added title-only/navigation-only regression probes.
+- Downloaded all 60 captured raw HTML sources from private Storage and re-extracted offline with networking blocked. No official sites were contacted from Work.
+- Corrected PASS pool: 42 (CYSH 21, CYGSH 21). 24 body extractions corrected; selection changes are solely objective acquisition quality corrections before inference, not model/human outcomes.
+- Corrected frozen corpus: 30 (15 per school), meaningful body 19, parsed attachment-rich 21, body-only 9.
+- Corrected corpus path: runs/36820362487/article-scoped-v2/frozen-corpus.json.
+- SHA-256: 0535de250b79a284cd9aa89f0a74fbe46da48e5c6f8e3a21a26389c161078a88.
+- Uploaded 30 corrected body objects and corpus; private backend download/read-back SHA checks passed.
+- Independent Work process replayed five body-only and five attachment-rich records across both schools, with socket/request networking disabled, all hashes identical. Attachment extraction was also repeated in pinned runner.
+- Official article publication metadata is captured separately as raw evidence, not confused with index first_seen or model primitives.
+- Fixed corpus IDs and content hashes may not change based on model results. Next: direct Work semantic inference for all 30; output freeze/audit before human queue publication.

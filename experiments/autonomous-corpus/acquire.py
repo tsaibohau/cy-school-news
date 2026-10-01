@@ -26,7 +26,7 @@ GATEWAY = 'https://sshovpnepgswzvjwjuyz.supabase.co/functions/v1/autonomous-corp
 AUDIENCE = 'cy-school-news-autonomous-training'
 MAX_BYTES = 10_000_000
 AS_OF = '2026-10-01'
-METHOD_VERSION = 'autonomous-content-v1'
+METHOD_VERSION = 'autonomous-content-v2-article-scoped'
 WORK = Path(tempfile.mkdtemp(prefix='private-corpus-'))
 RUN = os.environ['GITHUB_RUN_ID']
 ROOT = f'runs/{RUN}/'
@@ -88,10 +88,12 @@ def fetch(url,school,context=None):
 
 def body_extract(raw,title):
     soup=BeautifulSoup(raw.decode('utf-8','replace'),'html.parser')
-    for n in soup.select('script,style,nav,header,footer,form,.breadcrumb,.share,.social,.mptattach'):
+    for n in soup.select('script,style,nav,header,footer,form,#Dyn_head,#Dyn_footer,.mnav,.breadcrumb,.share,.social,.mptattach'):
         n.decompose()
     node=None
-    for sel in ['.meditor','.mpgdetail','.news_content','.news-content','article','#Dyn_2_2']:
+    # RulingDigital repeats .meditor in the site header/footer. Only article-
+    # scoped editors are allowed. Never choose the largest global editor/menu.
+    for sel in ['.module-detail .mpgdetail .meditor','.module-detail .meditor','.mpgdetail .meditor','.news_content','.news-content','article .meditor','article']:
         candidates=soup.select(sel)
         if candidates:
             node=max(candidates,key=lambda n:len(n.get_text()));break
@@ -117,6 +119,14 @@ def discover(raw,url,school):
         seen.add(link);ext=m.group(1).lower();filename=name or path.rsplit('/',1)[-1]
         out.append({'url':link,'filename':filename,'extension':ext})
     return out
+
+def metadata_extract(raw):
+    soup=BeautifulSoup(raw.decode('utf-8','replace'),'html.parser')
+    node=soup.select_one('.module-detail .mpgdetail') or soup.select_one('.mpgdetail')
+    if node is None:return []
+    for n in node.select('.meditor,.mptattach,script,style'):n.decompose()
+    text=clean(node.get_text(' ',strip=True))
+    return [{'locator':'article_metadata','text':text}] if text else []
 
 def parse_attachment(data,ext):
     units=[];method=ext
@@ -200,6 +210,7 @@ def acquire(item,context):
         except Exception:meta['browser_fallback']='failed'
     if not raw:meta['gate']='FAIL';meta['failure']='detail_unavailable';return meta
     meta['raw']=put(f'{aid}/source.html',raw);meta['acquisition']=acq
+    meta['metadata_content']=metadata_extract(raw)
     meta['body']=put(f'{aid}/body.json',canonical(blocks));meta['body_meaningful']=meaningful('\n'.join(x['text'] for x in blocks),title)
     parsed=[]
     for index,a in enumerate(attachments):
