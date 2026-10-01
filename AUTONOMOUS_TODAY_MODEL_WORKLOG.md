@@ -95,3 +95,14 @@ Production is read-only and remains the sole product truth. This file records ex
 - Date behavior: 64 normalized cited dates with deterministic day offsets; missing dates remain missing, recurring Chinese-number scholarship windows kept as source evidence rather than silently asserting current-year eligibility. This normalization gap and OCR loss are retained limitations, not human-supplied primitives.
 - Human workload A=15 final labels only, B=15 held. A result, B result, confusion matrix, model-human agreement, positive precision/recall, must_show/useful recall, should_hide/optional leakage and disagreement count: pending genuine human exports, never zero-filled or fabricated.
 - Durable milestone SHAs: acquisition 8cdef0ddee200f4db3c1271b3f78054c4ec944de; corrected corpus 574ae5b2abc83efeff69ad7f585d8f28749cb194; semantic freeze 1627120f07869787ac89f62480e82764e911d609; Review 1abaa586c0b7ac1b183f5e70f0669ef74c7bf834; ingestion/UI e499fbdfce5236916ba66d11e1aebcfe8b2331bc; verification aafbc901b8a7bdb3ef58fa69ee9ba2861aa62a59. All on codex/autonomous-corpus-acquisition, main untouched.
+
+
+## 2026-10-01T16:26:24.779Z v3.4 development and generic policy freeze
+- Human A original SHA verified: 13dfc87b8a6dd4acc64c80b93c29a51ce12c89c43719c7afcbe31aa6417d615e; preserved immutably in Training private Storage. Batch A is exposed development pilot, not validation.
+- Policy audit: 8 high-confidence mapping errors, 4 human-policy conflict candidates, 3 agreements. Human labels not changed. Conflict cases excluded from optimization. One generic policy revision; no weights/grid search or ID/title exception.
+- Stage 1 fields/citations/dates retained exactly; acquisition not rerun. Stage 2 separates applicability/action/opportunity/operational/continuation/eligibility/freshness.
+- A development outputs SHA 31c91e881092b697c3a796f36e53c17f67305e90f86ed659a9663a5bc2bdca16. Structural audit 15 records/63 citations/31 dates passed. 8/8 targeted mapping cases improve; four policy conflicts remain explicit disagreements.
+- A development agreement 11/15; positive precision 8/8; recall 8/10; must_show positive/exact 1/2; useful 7/8; optional leakage 0/5; should_hide denominator zero. Positive display 8, nonhidden 11. These are not validation performance.
+- Policy and gate freeze before Batch B inference; component hashes in v34-policy-freeze.json. B human labels absent/not accessed, B capability not enabled yet.
+- Engine native Work assistant / exact model identity unverified for both versions. No Luna identity backfill.
+- Next: one frozen-policy B semantic inference, audit/freeze/read-back, then publish B-only blind Preview. Round2 HOLD. Production impact NONE.
