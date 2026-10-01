@@ -106,3 +106,12 @@ Production is read-only and remains the sole product truth. This file records ex
 - Policy and gate freeze before Batch B inference; component hashes in v34-policy-freeze.json. B human labels absent/not accessed, B capability not enabled yet.
 - Engine native Work assistant / exact model identity unverified for both versions. No Luna identity backfill.
 - Next: one frozen-policy B semantic inference, audit/freeze/read-back, then publish B-only blind Preview. Round2 HOLD. Production impact NONE.
+
+
+## 2026-10-01T16:32:34.836Z Batch B single-pass prediction freeze
+- Generic policy committed before B inference: 7e5a6c2a0ad2cdb129c38b44542a0ddf48a7117a. Policy SHA 7f3fa34c7d099709232f9a9467144e4b9d7c8d6c77a3e6a9866b79175dc2aa50; code hash unchanged.
+- B inference input stripped all prior relevance labels/reasons and human truth. Native Work assistant reused exact Stage 1 source fields and read body/attachment evidence; structured Stage 2 semantic output produced once.
+- B private prediction SHA 9c401b9841fa19bc3d0f79e3d7ceb8e4ad62b123b52cea1c45f33bb44b7eae6c. Immutable Storage upload/read-back verified before any B capability exists. 15 outputs, 64 citations/33 dates structural audit pass, Stage 1 equality verified. Predictions remain sealed from reviewer; no distribution/case predictions published.
+- B queue contains raw content/source metadata only; SHA 0010d1f1fe6e9301f977cc4603a686aede8af0d3a422838aca06c049217292d1; path runs/36820362487/batch-b-review-v34.json. Private upload/read-back verified. B human labels absent; no validation metrics yet.
+- UI now uses dynamic A/B title/export filename and model-hash-separated local progress. General rubric explains active operations and continuation, with no model answer.
+- Next: enable B-only read capability and verify actual Preview + synthetic fixture autosave/undo/export without labeling real B records. Round2 HOLD; Production NONE.
