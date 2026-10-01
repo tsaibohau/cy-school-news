@@ -60,7 +60,7 @@ def audit(corpus,outputs):
             quote=' '.join(c['snippet'] for c in refs)
             raw=date.get('raw_value','')
             if not refs or not raw or norm(raw) not in norm(quote):errors.append({'id':aid,'error':'date_value_not_quoted'});continue
-            numbers=[int(v) for v in re.findall(r'\d+',raw)]
+            numbers=[int(v) for v in re.findall(r'\d+',norm(raw))]
             # Full-date or explicitly cited year + month/day only. An inferred year
             # must be declared and cited independently, never silently supplied.
             full=(value.year in numbers or value.year-1911 in numbers) and value.month in numbers and value.day in numbers

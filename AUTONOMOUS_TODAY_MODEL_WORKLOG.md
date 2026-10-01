@@ -50,7 +50,7 @@ Production is read-only and remains the sole product truth. This file records ex
 - Vercel connector cannot see existing projects/deployments. Browser dashboard has sign-in wall, but GitHub commit check output exposed the existing Preview hostname; direct Preview successfully opened without login. No Vercel authentication required for static verification.
 - Candidate remains NOT FROZEN. No semantic inference yet. Next: await runner completion, inspect private freeze report, then run Work semantic inference.
 
-## 2026-10-01T06:20:00Z phase 2 quality correction and corrected freeze
+## 2026-10-01T06:16:17Z phase 2 quality correction and corrected freeze
 - Independent replay initially matched hashes but exposed repeated CYSH navigation content. This proved reproducibility alone was insufficient for content correctness.
 - Preliminary corpus db5cc48753a26ba18d87e55105141f5197361c956eea1281c4b2813c805af353 is INVALIDATED_CONTENT_GATE. Its private objects remain immutable; no model inference or human review occurred on it.
 - Corrected the RulingDigital body locator to article-scoped editors and removed header/footer containers. Added title-only/navigation-only regression probes.
@@ -63,3 +63,13 @@ Production is read-only and remains the sole product truth. This file records ex
 - Independent Work process replayed five body-only and five attachment-rich records across both schools, with socket/request networking disabled, all hashes identical. Attachment extraction was also repeated in pinned runner.
 - Official article publication metadata is captured separately as raw evidence, not confused with index first_seen or model primitives.
 - Fixed corpus IDs and content hashes may not change based on model results. Next: direct Work semantic inference for all 30; output freeze/audit before human queue publication.
+
+## 2026-10-01T06:31:34Z phase 4: autonomous semantic output freeze
+- Native Work assistant read all 30 frozen records' captured body, article metadata and available parsed attachment units. No human truth or human primitives were inference inputs. Requested Luna identity is not verifiable in this runtime; engine is recorded transparently as native Work assistant, not claimed as Luna.
+- Immutable private model output: runs/36820362487/frozen-model-output.json, SHA-256 60d59dd38d11882d416b9dac2974283dacdc54fa3f8c2aa8edc860e85bbc8ca4. Private upload/read-back verified.
+- Citation audit: 30 outputs, 127 source/location/quotation checks, 64 date claims, zero structural errors. Day offsets computed deterministically from 2026-10-01. Five source/OCR contradictions have explicit resolutions; CYGSH corrected 45-minute writing versus old general exit rule remains a rule-scope limitation, not an invented resolved policy.
+- Distribution: must_show 2, useful 5, optional 12, should_hide 11. Actions: expired 4, information_only 10, available_later 11, required_soon 5. Reference: limited 9, useful_reference 14, long_term_reference 7.
+- Expired registration is separate from future event; current-term room assignment remains reference; first-year scholarship exclusions are read from attachments; expired does not imply persona completed.
+- Frozen A/B queues are fixed school-interleaved splits of 15 each, derived after predictions freeze and stripped of model labels/evidence/confidence. Both private read-back verified. B has no enabled access capability.
+- Human relevance results are pending, so agreement/precision/recall/leakage are undefined. No Round 2 set has been created. Candidate architecture NOT FROZEN / HUMAN VALIDATION PENDING; prediction artifact FROZEN.
+- Next: publish A-only Review Preview, verify actual link/UI and await only 15 final labels.
