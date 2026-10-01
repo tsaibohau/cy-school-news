@@ -33,7 +33,7 @@ def cite_audit(citation,index):
     return None
 
 def audit(corpus,outputs):
-    rows={r['id']:r for r in corpus['records']};seen=set();errors=[];count=0
+    rows={r['id']:r for r in corpus['records']};seen=set();errors=[];count=0;flags=[]
     for out in outputs:
         aid=out['id']
         if aid in seen:errors.append({'id':aid,'error':'duplicate_output'})
@@ -67,8 +67,20 @@ def audit(corpus,outputs):
             if not full and not partial:errors.append({'id':aid,'error':'unsupported_date_components'})
             delta=(value-dt.date.fromisoformat(corpus['as_of'])).days
             date['days_until']=delta;date['days_since']=-delta
+        if out.get('actionability')=='action_completed' and corpus['persona'].get('prior_actions')=='unknown':
+            flags.append({'id':aid,'flag':'persona_completion_requires_evidence'})
+        supported_recent=False
+        try:
+            age=(dt.date.fromisoformat(corpus['as_of'])-dt.date.fromisoformat(rows[aid]['date'])).days
+            supported_recent=0<=age<=5
+        except Exception:pass
+        urgent_date=any(d.get('kind') in ['deadline','application_end'] and 0<=d.get('days_until',999)<=5 for d in out.get('dates',[]))
+        if out.get('label')=='must_show' and not supported_recent and not urgent_date and not out.get('urgency_basis'):
+            flags.append({'id':aid,'flag':'must_show_requires_other_supported_urgency'})
+        if out.get('source_conflicts'):
+            flags.append({'id':aid,'flag':'source_conflict_requires_resolution','count':len(out['source_conflicts'])})
     if seen!=set(rows):errors.append({'error':'id_coverage','missing':sorted(set(rows)-seen)})
-    return {'passed':not errors,'records':len(outputs),'citations':count,'errors':errors,
+    return {'passed':not errors,'records':len(outputs),'citations':count,'errors':errors,'semantic_flags':flags,
         'label_distribution':dict(Counter(o['label'] for o in outputs)),
         'actionability_distribution':dict(Counter(o['actionability'] for o in outputs)),
         'historical_reference_distribution':dict(Counter(o['historical_reference'] for o in outputs)),
