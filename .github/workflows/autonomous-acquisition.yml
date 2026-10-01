@@ -1,4 +1,4 @@
-name: Autonomous acquisition environment smoke
+name: Autonomous private content acquisition
 on:
   push:
     branches: [codex/autonomous-corpus-acquisition]
@@ -6,21 +6,28 @@ on:
 permissions:
   contents: read
   id-token: write
+concurrency:
+  group: autonomous-private-acquisition
+  cancel-in-progress: false
 jobs:
-  environment:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+  acquisition:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
     steps:
-      - name: Check official index connectivity without retaining content
-        shell: bash
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Install bounded local parsers
         run: |
-          python - <<'PY'
-          import urllib.request, hashlib, json
-          for school, url in [('cysh','https://www.cysh.cy.edu.tw/'),('cygsh','https://www.cygsh.cy.edu.tw/')]:
-              try:
-                  with urllib.request.urlopen(url, timeout=30) as r:
-                      data=r.read(4000000)
-                      print(json.dumps({'school':school,'status':r.status,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}))
-              except Exception as e:
-                  print(json.dumps({'school':school,'error_type':type(e).__name__}))
-          PY
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq antiword poppler-utils tesseract-ocr tesseract-ocr-chi-tra
+          python -m venv /tmp/corpus-env
+          /tmp/corpus-env/bin/pip install -r experiments/autonomous-corpus/requirements.txt
+          /tmp/corpus-env/bin/python -m playwright install --with-deps chromium
+      - name: Verify parser invariants and unchanged scraper
+        run: |
+          /tmp/corpus-env/bin/python -m py_compile experiments/autonomous-corpus/acquire.py
+          /tmp/corpus-env/bin/python tests/test_parser.py
+      - name: Acquire two-school smoke and extend to frozen 30
+        run: /tmp/corpus-env/bin/python -u experiments/autonomous-corpus/acquire.py
+      # No artifact upload. Raw HTML, full body and attachments go only to private Storage.
