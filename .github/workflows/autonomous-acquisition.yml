@@ -2,7 +2,7 @@ name: Autonomous private content acquisition
 on:
   push:
     branches: [codex/autonomous-corpus-acquisition]
-    paths: [experiments/autonomous-corpus/acquire.py, experiments/autonomous-corpus/requirements.txt, experiments/autonomous-corpus/acquisition-trigger.json]
+    paths: [experiments/autonomous-corpus/acquire.py, experiments/autonomous-corpus/requirements.txt, experiments/autonomous-corpus/acquisition-trigger.json, experiments/autonomous-corpus/round2-qa-trigger.json]
 permissions:
   contents: read
   id-token: write
@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   acquisition:
-    if: ${{ !contains(github.event.head_commit.message, '[offline-only]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[offline-only]') && !contains(github.event.head_commit.message, '[review-qa]') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     steps:
@@ -32,3 +32,20 @@ jobs:
       - name: Acquire two-school smoke and extend to frozen 30
         run: /tmp/corpus-env/bin/python -u experiments/autonomous-corpus/acquire.py
       # No artifact upload. Raw HTML, full body and attachments go only to private Storage.
+
+  review-qa:
+    if: ${{ contains(github.event.head_commit.message, '[review-qa]') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Install isolated browser QA runtime
+        run: |
+          python -m venv /tmp/review-qa-env
+          /tmp/review-qa-env/bin/pip install requests==2.32.5 playwright==1.55.0
+          /tmp/review-qa-env/bin/python -m playwright install --with-deps chromium
+      - name: Synthetic controls and real queue read-only verification
+        run: /tmp/review-qa-env/bin/python -u experiments/autonomous-corpus/round2_browser_qa.py
+      # Screenshots/export proof/report only go to private Storage; no public artifact.
