@@ -152,3 +152,11 @@ Production is read-only and remains the sole product truth. This file records ex
 - Private artifacts: eight new immutable Storage objects (raw human export, raw-score checkpoint, separate evaluation reproduction, tentative audit, re-review queue, freeze manifest, screenshot, verification). Read-back SHA verified for every object. One new queue-scoped read capability + Vault entry, 30-day expiry. Bucket remains private, no RLS/schema/backend changes.
 - Re-review is post-blind diagnostic, never replacement blind score. After genuine export: validate/freeze separately; original != rereview or policy_uncertain go to adjudication, max15; retain raw blind metrics permanently. Canonical development truth not established.
 - STOP awaiting real 12-record re-review export. v3.5 tuning NOT STARTED; Round2 HOLD; corpus/evidence/predictions and frozen Round1 untouched; Production impact NONE.
+
+
+## 2026-10-02T10:10:16.508870+00:00 — Rereview ingestion and v3.5 development policy freeze
+- Exact raw rereview SHA a32459051298e91157ef5135362967e092eb559422c98f9b9f283d3b456ebd26 verified, immutable Training Storage copy read-back verified. Five stable targets, seven unresolved qualitative only; no third adjudication. Original exports/raw blind scores/v3.4 prediction unchanged.
+- Generic v3.5 distinguishes future eligibility/general learning from unrelated operations, current operational resources from archival references, conditional participant continuation, unknown strong eligibility, and independent freshness/correction/action priority. Exam threshold remains seven days. No ID/title exceptions or weights/search.
+- One exposed development diagnostic: A11+B5 targets agreement15/16 (v3.4 11/16); precision10/10, positive recall10/10; must exact2/3; optional leakage0/6. No should_hide target, undefined leakage. Twelve-day exam remains useful despite stable human must_show. This is not blind validation. Stage1 exact equality30, citations passed.
+- Components frozen in v3.5-policy-freeze.json before fresh Round2. Engine native Work assistant / exact identity unverified. Unresolved7 excluded from optimization.
+- Next: acquire a fresh official two-school snapshot excluding reviewed150, Round1 60 and pilot30; then native semantic inference/freeze before any human access. Production NONE.
