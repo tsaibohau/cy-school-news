@@ -160,3 +160,7 @@ Production is read-only and remains the sole product truth. This file records ex
 - One exposed development diagnostic: A11+B5 targets agreement15/16 (v3.4 11/16); precision10/10, positive recall10/10; must exact2/3; optional leakage0/6. No should_hide target, undefined leakage. Twelve-day exam remains useful despite stable human must_show. This is not blind validation. Stage1 exact equality30, citations passed.
 - Components frozen in v3.5-policy-freeze.json before fresh Round2. Engine native Work assistant / exact identity unverified. Unresolved7 excluded from optimization.
 - Next: acquire a fresh official two-school snapshot excluding reviewed150, Round1 60 and pilot30; then native semantic inference/freeze before any human access. Production NONE.
+
+## 2026-10-02T10:11:41.555947+00:00 — Round2 acquisition runner prepared
+- Official live index GET/browser fallback, immutable private index captures and source hashes. Exclusions contain IDs only from reviewed150, Round1 and pilot30. No human labels/scores in runner selection. As-of fixed to Asia/Taipei capture start date. Deterministic metadata strata60, content-only freeze15 per school, raw/parsed replay hashes. Formal scraper/output untouched.
+- Local syntax passed; GitHub-hosted workflow runs canonical parser invariants and acquisition. New commit allowed via existing Training OIDC allowlist; no credential export.

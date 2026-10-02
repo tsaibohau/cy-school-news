@@ -25,7 +25,7 @@ from playwright.sync_api import sync_playwright
 GATEWAY = 'https://sshovpnepgswzvjwjuyz.supabase.co/functions/v1/autonomous-corpus-gateway'
 AUDIENCE = 'cy-school-news-autonomous-training'
 MAX_BYTES = 10_000_000
-AS_OF = '2026-10-01'
+AS_OF = dt.datetime.now(dt.timezone(dt.timedelta(hours=8))).date().isoformat()
 METHOD_VERSION = 'autonomous-content-v2-article-scoped'
 WORK = Path(tempfile.mkdtemp(prefix='private-corpus-'))
 RUN = os.environ['GITHUB_RUN_ID']
@@ -276,6 +276,52 @@ def pool_select(items):
     assert len(pool)==60 and len({x['id'] for x in pool})==60
     return pool
 
+def fresh_indexes():
+    config=json.loads(Path('experiments/autonomous-corpus/round2-source-config.json').read_bytes())
+    exclusions=json.loads(Path('experiments/autonomous-corpus/round2-exclusions.json').read_bytes())
+    excluded=set(exclusions['excluded_ids']);items={};captures=[]
+    with sync_playwright() as p:
+        browser=p.chromium.launch(headless=True);context=browser.new_context()
+        for school in config:
+            sid=school['id'];pattern=re.compile(r'/p/406-'+school['unit']+r'-(\d+)(?:,r(\d+))?\.php')
+            for i,url in enumerate(school['pages']):
+                raw=None;method=None
+                try:raw,method=fetch(url,sid,context)
+                except Exception:
+                    page=context.new_page()
+                    try:
+                        page.goto(url,wait_until='domcontentloaded',timeout=40000);raw=page.content().encode();method={'method':'playwright_rendered_dom'}
+                    except Exception:pass
+                    finally:page.close()
+                if raw:
+                    artifact=put(f'indexes/{sid}-{i}.html',raw);soup=BeautifulSoup(raw.decode('utf-8','replace'),'html.parser');count=0
+                    for a in soup.select('a[href]'):
+                        m=pattern.search(a['href']);title=clean(a.get_text(' ',strip=True))
+                        if not m or len(title)<4:continue
+                        aid=sid+'-'+m.group(1);link=urljoin(url,a['href'])
+                        if aid in excluded or not official(link,sid):continue
+                        date='';node=a
+                        for _ in range(4):
+                            if node is None:break
+                            match=re.search(r'(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})',node.get_text(' ',strip=True))
+                            if match:
+                                try:
+                                    day=dt.date(*map(int,match.groups()))
+                                    if day<=dt.date.fromisoformat(AS_OF):date=day.isoformat()
+                                except Exception:pass
+                                if date:break
+                            node=node.parent
+                        if aid not in items:
+                            items[aid]={'id':aid,'school':sid,'title':title,'url':link,'date':date,'date_source':'live_list' if date else 'unknown','category':m.group(2) or str(i),'source_category':soup.title.get_text(strip=True) if soup.title else '', 'source_index_url':url,'first_seen':dt.datetime.now(dt.timezone.utc).isoformat()}
+                        count+=1
+                    captures.append({'school':sid,'url':url,'artifact':artifact,'method':method,'nonexcluded_links':count})
+                else:captures.append({'school':sid,'url':url,'status':'failed'})
+                time.sleep(1)
+        browser.close()
+    index={'as_of':AS_OF,'items':list(items.values()),'captures':captures,'exclusion_sha256':digest(canonical(exclusions)),'nonoverlap_verified':not(set(items)&excluded)}
+    put('source-index.json',canonical(index));print(json.dumps({'index_counts':{s:sum(x['school']==s for x in items.values()) for s in ['cysh','cygsh']},'excluded_ids':len(excluded),'as_of':AS_OF}),flush=True)
+    return index
+
 def freeze(records):
     chosen=[]
     for school in ['cysh','cygsh']:
@@ -292,9 +338,7 @@ def freeze(records):
     return chosen
 
 def main():
-    source=session.get('https://raw.githubusercontent.com/tsaibohau/cy-school-news/main/docs/data/announcements.json',timeout=30);source.raise_for_status()
-    index=source.json();pool=pool_select(index['items'])
-    put('source-index.json',source.content)
+    index=fresh_indexes();pool=pool_select(index['items'])
     put('candidate-pool.json',canonical(pool))
     with sync_playwright() as p:
         browser=p.chromium.launch(headless=True);context=browser.new_context(accept_downloads=True)
@@ -330,7 +374,7 @@ def main():
                 extracted=json.loads((WORK/a['extracted']['path'].removeprefix(ROOT)).read_bytes()) if a.get('extracted') else None
                 atts.append({**a,'content':extracted})
             payload.append({**record,'body_content':body,'attachment_content':atts})
-        frozen={'version':'v3.4-pilot','as_of':AS_OF,'persona':{'grade':1,'role':'student','school':'record.school','interests':[],'read_state':'unread','prior_actions':'unknown'},'records':payload}
+        frozen={'version':'round2-fresh-v35','as_of':AS_OF,'persona':{'grade':1,'role':'student','teacher':False,'school':'record.school','interests':[],'read_state':'unread','prior_actions':'unknown'},'records':payload}
         # Persona/date are frozen before inference. No primitive or human truth is added.
         report['frozen']=put('frozen-corpus.json',canonical(frozen))
         report['frozen_manifest_hash']=digest(canonical(chosen))
