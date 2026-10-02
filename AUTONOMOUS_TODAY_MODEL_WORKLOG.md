@@ -142,3 +142,13 @@ Production is read-only and remains the sole product truth. This file records ex
 - Training private Storage writes six new immutable objects; no bucket/RLS change. Existing backend path validation supports version v3401 and max15, so no backend deployment/schema change required.
 - Separate policy-rereview.html + synthetic-only qa-rereview.html; original A/B UI retained. Public builds contain generic UI/rubric and synthetic content only.
 - Next: provision one queue-scoped read capability, verify actual0/12/no-login/no-leakage and synthetic autosave/undo/export, then stop awaiting genuine re-review export. v3.5 NOT STARTED; Round2 HOLD; Production impact NONE.
+
+## 2026-10-02T04:00:10.823Z — Batch B Policy Re-review READY
+- Preview deployment confirmed by GitHub Vercel review/staging statuses for 519e54d03a34ad00ad35d79a4317a186c09f2a5b; no Production promote/alias change.
+- Actual cloud browser: policy-rereview.html, no sign-in, 12 records, completed0/12, correct new batch ID, queue SHA, fixed 2026-10-01 persona/date, rubric visible without expanding, and policy_uncertain button. No real human label entered.
+- Recursive offline leakage gate verifies raw record allowlist has no original/model labels, reasons, confidence, metrics or disagreement type; frozen source records byte-equivalent as JSON values. Static build private-content isolation passed. Original A/B HTML remains untouched.
+- Synthetic-only qa-rereview.html tested: policy_uncertain persisted after reload; label-change undo restored it; all five labels export at completed12/12 with synthetic IDs only. JSON export filename human_batch_b_policy_rereview.json; queue/rubric identity carried.
+- Download bridge timeout at8s persists; do not claim file transfer or native iPhone share-sheet tested. Copyable JSON export was parsed/validated, and direct download/iPhone Share alternatives remain available.
+- Private artifacts: eight new immutable Storage objects (raw human export, raw-score checkpoint, separate evaluation reproduction, tentative audit, re-review queue, freeze manifest, screenshot, verification). Read-back SHA verified for every object. One new queue-scoped read capability + Vault entry, 30-day expiry. Bucket remains private, no RLS/schema/backend changes.
+- Re-review is post-blind diagnostic, never replacement blind score. After genuine export: validate/freeze separately; original != rereview or policy_uncertain go to adjudication, max15; retain raw blind metrics permanently. Canonical development truth not established.
+- STOP awaiting real 12-record re-review export. v3.5 tuning NOT STARTED; Round2 HOLD; corpus/evidence/predictions and frozen Round1 untouched; Production impact NONE.

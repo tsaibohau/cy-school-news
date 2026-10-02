@@ -1,0 +1,37 @@
+{
+  "review": "Batch B Policy Re-review",
+  "status": "READY",
+  "verified_at": "2026-10-02T04:00:00.488Z",
+  "preview_commit": "519e54d03a34ad00ad35d79a4317a186c09f2a5b",
+  "actual": {
+    "records": 12,
+    "completed": 0,
+    "no_login": true,
+    "no_real_labels_entered": true,
+    "queue_sha256": "c2c4b529360164e7bc8981b77bd47b65c4dc2dd105f83ec4df00ca265088f081",
+    "rubric_sha256": "af853b23b286b6e9f52f120463e7f233d7a2235e75ee4fa99d01d0c77717b2be",
+    "fixed_persona_and_date": true,
+    "always_expanded_rubric": true,
+    "model_and_original_label_leakage_gate_passed": true,
+    "export_identity_verified": true
+  },
+  "synthetic_fixture": {
+    "autosave_reload": true,
+    "undo": true,
+    "all_five_labels_including_policy_uncertain": true,
+    "export_completed_flag": true,
+    "export_review_count": 12,
+    "synthetic_ids_only": true,
+    "export_filename": "human_batch_b_policy_rereview.json"
+  },
+  "limitations": [
+    "Cloud browser download bridge timed out after 8 seconds. JSON generation, schema/identity, complete synthetic export and copyable JSON fallback verified; file-download transport not verified.",
+    "Native iPhone share sheet not tested.",
+    "Supplied original blind evaluation SHA retained; original bytes not located. Reproduction artifact is separate and never replaces raw blind checkpoint."
+  ],
+  "production_impact": "NONE",
+  "stage1_changed": false,
+  "predictions_rewritten": false,
+  "v35_tuning_started": false,
+  "round2": "HOLD"
+}
