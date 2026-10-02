@@ -221,3 +221,10 @@ Production is read-only and remains the sole product truth. This file records ex
 - Original v3.5/30 predictions,original A blind export/score and B sealed unchanged. This exposed A registration diagnostic is not new blind score, not v3.5 improvement claim, not frozen full v3.6. No acquisition/model re-inference/Round3.
 - Policy boundary tests:6/5 days,future,expired,missing start,invalid ranges,same-day,multi-window PASS. Build/inline syntax PASS. Added registration-check.html plus synthetic QA page; click correct or select corrected class and reasons,autosave/undo/JSON export. Reference-value review not created.
 - Training-only immutable time export and registration review queue; one A-only read capability,existing gateway/bucket/RLS unchanged. Production NONE. Preview/browser verification pending.
+
+
+### Registration second review READY / wait genuine human feedback
+- Preview code commit d68fab50b747fbbf4269eb2190df320933a28fdb; Vercel review/staging success. Synthetic correct/incorrect correction-class+reason,autosave/reload,undo,complete15-ID JSON generation passed. No genuine answers entered. Native iPhone Share/download transport not tested; backup JSON generation verified.
+- Actual A-only registration-check.html loaded no-login,15 records,0/15,correct queue SHA 6b9c4aa93d7a354c60835ac4087c84772cf1091051e437cc5c7332f2d8cbeee5. Read-only navigation confirms first/second-semester reading/paper four separate windows/useful+useful+optional+optional and source positions. No reference-value classification shown.
+- Final private queue runs/36994119597/batch-a-review-v3504.json immutable read-back verified. Round2 B capability0; preliminary v3503 capability0;registration A capability1. No inference/acquisition rerun/frozen prediction change. All previous raw blind scores preserved. Production impact NONE.
+- User next step: click classification correct or choose corrected category/reasons,export human_round2_a_registration_rereview.json. Stop here; reference value is explicitly next step,not started.
