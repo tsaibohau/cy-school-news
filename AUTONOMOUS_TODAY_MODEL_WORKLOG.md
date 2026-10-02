@@ -228,3 +228,16 @@ Production is read-only and remains the sole product truth. This file records ex
 - Actual A-only registration-check.html loaded no-login,15 records,0/15,correct queue SHA 6b9c4aa93d7a354c60835ac4087c84772cf1091051e437cc5c7332f2d8cbeee5. Read-only navigation confirms first/second-semester reading/paper four separate windows/useful+useful+optional+optional and source positions. No reference-value classification shown.
 - Final private queue runs/36994119597/batch-a-review-v3504.json immutable read-back verified. Round2 B capability0; preliminary v3503 capability0;registration A capability1. No inference/acquisition rerun/frozen prediction change. All previous raw blind scores preserved. Production impact NONE.
 - User next step: click classification correct or choose corrected category/reasons,export human_round2_a_registration_rereview.json. Stop here; reference value is explicitly next step,not started.
+
+
+## 2026-10-02 — Registration time evidence v2 (post-blind only)
+
+User confirmed the registration classification and requested “即日起” and missing-year handling. Validated genuine completed export: 15 unique queue IDs, batch/corpus/model/queue identity match. All 15 verdicts correct; cysh-135407 separately marks missing windows, retained as an unresolved coverage concern (three administrative submission deadlines, outside registration scope). This is exposed-answer feedback, never a blind accuracy score.
+
+Immutable raw human export SHA: 7f29f1fae1eabbb56646319cd0bae8dd39459acd85133ce645249c0704985c71; Training private path runs/36994119597/human/registration-v1-original-7f29f1fae1eabbb56646319cd0bae8dd39459acd85133ce645249c0704985c71.json.
+
+Generic registration-time-v2: find same-deadline “即日起” in body/attachments; anchor to verified official publication metadata, never capture/update/document dispatch date. Explicit year or documented same-range year context wins; missing year falls back to publication year, marked inferred. No automatic next-year roll; contradictory cross-year assumptions stay unknown. Yearless ranges supported. Missing publication date remains unknown and shows matched source/page. Reposted documents may have opened earlier than school publication, explicitly disclosed.
+
+10 meaningful temporal rule checks PASS; deterministic reconstruction of all 15 private queue records PASS. Three immediate-opening clauses found, publication metadata unavailable in each; classification labels unchanged. New immutable A-only queue runs/36994119597/batch-a-review-v3505.json SHA 7f187b3a714c7b5f41e69ee29560dfa7abe92286fc64c9cde7f81197266c44fe, read-back verified. Existing v1 route/queue/export kept intact. New diagnostic route registration-check-v2.html. Round 2 B capabilities = 0. Build PASS; static build contains only UI and synthetic QA, no private sources.
+
+Production impact: NONE. Original corpus, v3.5 answers and raw blind score unchanged. Reference-value assessment remains deferred. No acquisition, inference, workflow dispatch, or Round 2 B opening.
