@@ -164,3 +164,10 @@ Production is read-only and remains the sole product truth. This file records ex
 ## 2026-10-02T10:11:41.555947+00:00 — Round2 acquisition runner prepared
 - Official live index GET/browser fallback, immutable private index captures and source hashes. Exclusions contain IDs only from reviewed150, Round1 and pilot30. No human labels/scores in runner selection. As-of fixed to Asia/Taipei capture start date. Deterministic metadata strata60, content-only freeze15 per school, raw/parsed replay hashes. Formal scraper/output untouched.
 - Local syntax passed; GitHub-hosted workflow runs canonical parser invariants and acquisition. New commit allowed via existing Training OIDC allowlist; no credential export.
+
+## 2026-10-02T10:42:04.496498+00:00 — Fresh Round2 corpus frozen and independently replayed
+- Actions run36994119597 / commit2b2f8377cd417a623203c2eec3b60a9105778077 SUCCESS, canonical parser tests passed. Official indexes631 nonexcluded (CYSH197/CYGSH434); deterministic pool60, PASS43; frozen30 (15+15), meaningful body23, parsed attachment14. Corpus SHA 5f902a3f0c255a19571d66943686fd4db143abe002028bf05d1d5d6f8c0741b1. As-of2026-10-02.
+- Nonoverlap0 with reviewed150, Round1 60 and pilot30 (219 distinct excluded IDs). Selection uses metadata/content gate only; no model/human labels. No subsequent replacement permitted.
+- All frozen source/extraction bytes replayed in runner; independent Work process replayed5 body-only +5 attachment-rich with network disabled and exact hashes. PDF text-layer cross-environment replay passed. DOC was captured but parse failed; Work apt-install failed due runtime UID limits, unnecessary for selected replay samples; no broad OCR used. No capture/parser evidence changed.
+- Full source bytes/private corpus only in Training private Storage. No Actions artifact upload. 
+- Next: native Work semantic reading of all30 full bodies/parsed attachments, citation/temporal audit, immutable prediction freeze; then enable only Round2 A review. Production NONE.

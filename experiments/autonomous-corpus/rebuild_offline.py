@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import socket
+import shutil
 from pathlib import Path
 
 os.environ.setdefault('GITHUB_RUN_ID','offline')
@@ -20,7 +21,7 @@ def selection(corpus):
     only=[r for r in records if r['body_meaningful'] and not r['attachments']]
     # Replay text-layer samples across environments. OCR samples have additionally
     # been replayed in the pinned runner environment, with its Chinese language data.
-    rich=[r for r in records if r['attachment_meaningful'] and not any('ocr' in u.get('parse_method','') for a in r['attachment_content'] for u in (a.get('content') or {}).get('units',[]))]
+    rich=[r for r in records if r['attachment_meaningful'] and not any('ocr' in u.get('parse_method','') for a in r['attachment_content'] for u in (a.get('content') or {}).get('units',[])) and not any(a.get('extracted') and a['extension']=='doc' and not shutil.which('antiword') for a in r['attachment_content'])]
     if len(only)<5 or len(rich)<5:raise ValueError('offline coverage needs 5 body-only and 5 non-OCR attachment-rich')
     def two_school(rows):
         selected=[r for r in rows if r['school']=='cysh'][:3]+[r for r in rows if r['school']=='cygsh'][:2]
