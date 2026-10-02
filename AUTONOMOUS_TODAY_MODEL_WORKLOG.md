@@ -130,3 +130,15 @@ Production is read-only and remains the sole product truth. This file records ex
 - Private synthetic QA screenshot uploaded/read-back verified, SHA 28082a4b4aefc78f60c3779cd8b71dca4006639d1ef37a439df4c7b225e512c1. No private content/model answers are static build inputs.
 - Training-only writes: immutable development/validation artifacts and one B read capability/Vault entry. Existing private bucket policies unchanged; no Production write, merge, promotion, or alias change.
 - Final state: Candidate v3.4 = FROZEN FOR BATCH B BLIND VALIDATION. Round 2 HOLD. Stop awaiting real human Batch B export; never rerun frozen B predictions.
+
+## 2026-10-02T03:55:06.674Z — Batch B post-blind policy re-review preparation
+- B human original exact SHA verified c56a8222cdccad801350606d4d6371b92e40179f191480d2f472d900eebced54; immutable private copy uploaded/read-back verified.
+- Remote frozen v3.4 B model SHA verified 9c401b9841fa19bc3d0f79e3d7ceb8e4ad62b123b52cea1c45f33bb44b7eae6c; no inference rerun or prediction rewrite.
+- Raw blind metrics independently reproduced unchanged: agreement3/15, precision5/6, recall5/11, must positive2/2 exact0/2, useful3/9, optional leakage1/4, disagreements12, human hide0.
+- Supplied original evaluation SHA 8641a97696b0010c224788b0c2703d4d5e0f6ff1025fc9794a84bb32eed723e4 retained verbatim. Original evaluation bytes not located; do not claim this SHA verified. New reproduction bytes SHA 6b34d97506c7f02205be2bfa6f5e15e4733b7d30e5f98b940e22f2428ce7f9c0 stored separately. Never replace original blind score with later adjudication.
+- Private consistency audit is tentative only: two strong identity human-policy conflict candidates, ten ambiguous boundary cases (includes exam-window/correction, future-reference, eligibility and continuation). No disagreement automatically treated as proven model error. No canonical truth or human answers supplied by assistant.
+- Frozen 12-record re-review queue SHA c2c4b529360164e7bc8981b77bd47b65c4dc2dd105f83ec4df00ca265088f081; exact original frozen source content, stripped to raw-content allowlist. No labels, confidence, model reasons, metrics or disagreement types in queue.
+- User-specified fixed rubric frozen SHA af853b23b286b6e9f52f120463e7f233d7a2235e75ee4fa99d01d0c77717b2be. Rubric remains visible; fifth label policy_uncertain. New batch/storage key prevents old human answers populating re-review.
+- Training private Storage writes six new immutable objects; no bucket/RLS change. Existing backend path validation supports version v3401 and max15, so no backend deployment/schema change required.
+- Separate policy-rereview.html + synthetic-only qa-rereview.html; original A/B UI retained. Public builds contain generic UI/rubric and synthetic content only.
+- Next: provision one queue-scoped read capability, verify actual0/12/no-login/no-leakage and synthetic autosave/undo/export, then stop awaiting genuine re-review export. v3.5 NOT STARTED; Round2 HOLD; Production impact NONE.

@@ -1,0 +1,35 @@
+{
+  "as_of": "2026-10-01",
+  "must_show": [
+    "最新且與 persona 相關的重要公告，通常 <=5 天",
+    "deadline <=5 天",
+    "exam <=7 天",
+    "緊急／異動",
+    "近期直接影響行動"
+  ],
+  "optional": [
+    "有參考價值",
+    "未來可能有用",
+    "今天不需要",
+    "非當前 persona 直接行動，但仍具有合理一般參考性"
+  ],
+  "persona": "來源學校高一學生；公告未讀；無指定特殊興趣；prior action = unknown。",
+  "policy_uncertain": [
+    "若覺得 rubric 本身不適用、規則衝突或無法據此判斷，可選 policy_uncertain；不必強迫四級。"
+  ],
+  "should_hide": [
+    "已完全過期",
+    "明確身份不適用",
+    "已結束且無合理後續",
+    "純其他年級／教師資訊，且對 persona 無 Today value",
+    "歷史內容沒有現在用途"
+  ],
+  "useful": [
+    "現在仍可使用",
+    "現在仍可報名／參加",
+    "current-term operational reference",
+    "對可能參與者仍有實際後續價值",
+    "有實際 Today relevance，但未達 must_show"
+  ],
+  "version": "batch-b-policy-rereview-r1"
+}

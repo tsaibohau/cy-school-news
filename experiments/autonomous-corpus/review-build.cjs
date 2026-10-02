@@ -15,3 +15,14 @@ const fixture = {
 };
 const qa = ui.replace("'use strict';", "'use strict';\nconst fetch=async()=>({ok:true,json:async()=>("+JSON.stringify(fixture)+")});");
 fs.writeFileSync('dist-autonomous-review/qa-fixture.html', qa);
+
+const rereview = fs.readFileSync('experiments/autonomous-corpus/review/policy-rereview.html','utf8');
+fs.writeFileSync('dist-autonomous-review/policy-rereview.html',rereview);
+const rubric = JSON.parse(fs.readFileSync('experiments/autonomous-corpus/batch-b-rereview-rubric.json','utf8'));
+const rereviewManifest = JSON.parse(fs.readFileSync('experiments/autonomous-corpus/batch-b-rereview-freeze.json','utf8'));
+const syntheticRereview = {...fixture, batch_id:'synthetic-policy-rereview-r1',review_kind:'policy_rereview',
+ rubric_sha256:rereviewManifest.rubric_sha256,rubric,
+ records:fixture.records.slice(0,12).map((r,i)=>({...r,id:'synthetic-rereview-'+(i+1)}))};
+fs.writeFileSync('dist-autonomous-review/qa-rereview.html',rereview.replace("'use strict';",
+ "'use strict';\nconst fetch=async()=>({ok:true,json:async()=>("+JSON.stringify(syntheticRereview)+")});"));
+
