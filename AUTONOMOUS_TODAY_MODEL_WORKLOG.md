@@ -241,3 +241,25 @@ Generic registration-time-v2: find same-deadline “即日起” in body/attachm
 10 meaningful temporal rule checks PASS; deterministic reconstruction of all 15 private queue records PASS. Three immediate-opening clauses found, publication metadata unavailable in each; classification labels unchanged. New immutable A-only queue runs/36994119597/batch-a-review-v3505.json SHA 7f187b3a714c7b5f41e69ee29560dfa7abe92286fc64c9cde7f81197266c44fe, read-back verified. Existing v1 route/queue/export kept intact. New diagnostic route registration-check-v2.html. Round 2 B capabilities = 0. Build PASS; static build contains only UI and synthetic QA, no private sources.
 
 Production impact: NONE. Original corpus, v3.5 answers and raw blind score unchanged. Reference-value assessment remains deferred. No acquisition, inference, workflow dispatch, or Round 2 B opening.
+
+
+## 2026-10-03 — Historical reference v1 development review, A only
+
+User accepted registration-time-v2 and authorized the next reference-value training stage. Genuine completed v2 feedback: identity matches batch/queue/policy/corpus/original model freeze; 15 unique IDs, 15/15 correct, missing_windows=0. Immutable raw export SHA 08f19e61cd3f73e8665216ace8ac8b50cbbfc3c4fe6734b01a9da140ef284264, private path runs/36994119597/human/registration-v2-original-08f19e61cd3f73e8665216ace8ac8b50cbbfc3c4fe6734b01a9da140ef284264.json. Original v1 missing-window feedback remains immutable; v2 does not rewrite it.
+
+Historical-reference-v1 is separate post-blind development analysis using exposed A sources only, never a rerun/replacement of v3.5 Today predictions. Engine: native Work assistant / exact model identity unverified. No model-weight update. Input title/body/attachments and frozen machine temporal claims; no human labels or primitives as inference features. User supplies general policy; assistant makes semantic grouping. New reference predictions locked before showing them to human; because A was already exposed, resulting feedback is development evidence only.
+
+15 records / 37 semantic groups: conditional reference, original-cycle only, targeted historical outcome lookup, current-version verification needed, no reference, insufficient. Generic rules distinguish activity procedures from old dates, notification-contained reusable instructions, admission roster versus award outcomes, scholarship/award application versus winners, resources without dates versus regulations. Old rules, amounts, eligibility, forms and headcounts are not assumed unchanged. Explicit personal result/historical performance questions can use outcome lists; no inference of current whole-school strength from a roster. Legal amendments and regulation citations require actual content/authority evidence and current effect verification; unread article text stays unavailable. One DOC parse failure stays unread; no reacquisition.
+
+Query experiment prioritizes same topic/school/requested cycle then latest known source. Current-cycle absence allows bounded historical fallback, labelled year and source. Frozen sample absence never proves unpublished. Future cycles never used as a previous cycle; new incomplete sources never silently bypassed by older same-year content; current legal effect must be externally verified. Production Query policy unchanged.
+
+Durable private artifacts, read-back SHA verified:
+- reference-semantic-output-v1.json: 4d7f1350cef24944dba555079ae66026446fb6b438dba73232ec851c13ca53ca
+- batch-a-review-v3506.json: c50cff78109a8f3c3b97f5341b22eb388b91d8e16dc0c62b05496b7d41c8a24e
+- reference-v1-structural-audit.json: f99d408fd5b31b917da8f9acba95dacddd13dd4ce216999ca32bd7d955d4341e
+- generic policy file SHA: 1774eb031b24e61743344ad2722b018536995610e434759b9fbb71652d8a2b77
+All private objects under runs/36994119597/. Full body/attachments only Training private Storage. Existing capabilities reused as a mechanism; one new A-only review capability, no new infrastructure.
+
+Validation before Preview: 63 citation references, 0 structural errors (not semantic correctness); 15 query-plan safety checks PASS; fabricated citation and ID mismatch rejected; build/script parse/private-content separation PASS. reference-check.html and synthetic-only qa-reference.html, local autosave/undo/download/text export, per-group correction or one-click accept remaining groups in current record. Corrections and missing-group flags preserved. New storage key does not overwrite prior human reviews. Round 2 B enabled capabilities=0.
+
+Production impact NONE. Prior frozen corpus/model/raw blind metrics unchanged. No new acquisition, workflow dispatch, Round 3 or B exposure. Not ready for Production; wait for genuine historical-reference development feedback after deployed UI QA.
