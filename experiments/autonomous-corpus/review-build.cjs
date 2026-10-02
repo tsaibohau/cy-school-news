@@ -26,3 +26,8 @@ const syntheticRereview = {...fixture, batch_id:'synthetic-policy-rereview-r1',r
 fs.writeFileSync('dist-autonomous-review/qa-rereview.html',rereview.replace("'use strict';",
  "'use strict';\nconst fetch=async()=>({ok:true,json:async()=>("+JSON.stringify(syntheticRereview)+")});"));
 
+
+const round2=fs.readFileSync('experiments/autonomous-corpus/review/round2.html','utf8');
+fs.writeFileSync('dist-autonomous-review/round2.html',round2);
+const syntheticRound2={...fixture,schema_version:2,review_kind:'round2_blind',batch_id:'synthetic-round2-v35-A',as_of:'2026-10-02',persona:{grade:1,teacher:false,unread:true,interests:[],prior_actions:'unknown'}};
+fs.writeFileSync('dist-autonomous-review/qa-round2.html',round2.replace("'use strict';", "'use strict';\nconst fetch=async()=>({ok:true,json:async()=>("+JSON.stringify(syntheticRound2)+")});"));

@@ -171,3 +171,13 @@ Production is read-only and remains the sole product truth. This file records ex
 - All frozen source/extraction bytes replayed in runner; independent Work process replayed5 body-only +5 attachment-rich with network disabled and exact hashes. PDF text-layer cross-environment replay passed. DOC was captured but parse failed; Work apt-install failed due runtime UID limits, unnecessary for selected replay samples; no broad OCR used. No capture/parser evidence changed.
 - Full source bytes/private corpus only in Training private Storage. No Actions artifact upload. 
 - Next: native Work semantic reading of all30 full bodies/parsed attachments, citation/temporal audit, immutable prediction freeze; then enable only Round2 A review. Production NONE.
+
+
+## 2026-10-02T11:16:26.312Z — Round 2 native model frozen / review queue prepared
+- Completed all 30 source reads from frozen fresh private corpus; no Round 2 human truth exists or is read.
+- Native Work assistant; exact model identity unverified. No external model API used. Stage 2 policy/prompt/code hashes unchanged.
+- Local apply_patch and exec_command ceased returning; calls terminated without assuming they completed. Continued through existing Training control backend and Work JavaScript serialization/audit; no secret added to repo/browser.
+- Immutable model SHA aefb417eff8156b1c85495439c586e971a392dd24a897f4568b61a2db8779f4a; audit SHA 63c9053ee0292530dfc199fd58a941e665f92470c78b68ee1fa69da6cb820ff2. 30 records, 151 citations, 71 dates, 0 structural errors; 4 source conflicts retained with structured resolution. Structural pass is not semantic validation.
+- Private audit-runtime freeze SHA 3155ef25d8d4e8ffd2f23da2cdecdd03acd78d885fcdc4a5378a3573de0220e1 records the generic checker used; generic mapping remains the prior frozen v3.5 policy.
+- Review queue A SHA b5879ab4d33fa0578f271fdc4fcb759cd6ea69e94d632f8566cc4c6d6a8b69b4; B SHA 285a74e3170917ade9301449cde3c0361d9f829ab87dc9b86528b959413fe84a; each 15. Recursive no-label/reason/confidence leakage gate passed. B remains held.
+- Next decision: create A-only read capability, Preview publish, synthetic UI QA and real 0/15 read-only verification. Never fill real human answers.

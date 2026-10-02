@@ -25,7 +25,7 @@ def build(corpus,model_sha,corpus_sha,letter):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--corpus',required=True);p.add_argument('--model',required=True);p.add_argument('--freeze',required=True);p.add_argument('--outdir',required=True);a=p.parse_args()
-    cb=Path(a.corpus).read_bytes();mb=Path(a.model).read_bytes();freeze=json.loads(Path(a.freeze).read_bytes());assert freeze['model_sha256']==b.sha(mb) and freeze['corpus_sha256']==b.sha(cb) and freeze['private_model_readback_verified']
+    cb=Path(a.corpus).read_bytes();mb=Path(a.model).read_bytes();freeze=json.loads(Path(a.freeze).read_bytes());assert (freeze.get('model_sha256') or freeze['model']['sha256'])==b.sha(mb) and freeze['corpus_sha256']==b.sha(cb) and freeze['private_model_readback_verified']
     corpus=json.loads(cb);out=Path(a.outdir);out.mkdir(parents=True,exist_ok=True)
     for letter in ['A','B']:
         data=b.canonical(build(corpus,b.sha(mb),b.sha(cb),letter));(out/f'batch-{letter.lower()}-review-v35.json').write_bytes(data);print(letter,len(json.loads(data)['records']),b.sha(data))
