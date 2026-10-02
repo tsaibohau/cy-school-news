@@ -181,3 +181,14 @@ Production is read-only and remains the sole product truth. This file records ex
 - Private audit-runtime freeze SHA 3155ef25d8d4e8ffd2f23da2cdecdd03acd78d885fcdc4a5378a3573de0220e1 records the generic checker used; generic mapping remains the prior frozen v3.5 policy.
 - Review queue A SHA b5879ab4d33fa0578f271fdc4fcb759cd6ea69e94d632f8566cc4c6d6a8b69b4; B SHA 285a74e3170917ade9301449cde3c0361d9f829ab87dc9b86528b959413fe84a; each 15. Recursive no-label/reason/confidence leakage gate passed. B remains held.
 - Next decision: create A-only read capability, Preview publish, synthetic UI QA and real 0/15 read-only verification. Never fill real human answers.
+
+
+## 2026-10-02T11:26:39.754Z — Round 2 Batch A READY / STOP for real human review
+- Work local execution environment returned environment_offline; isolated GitHub runner browser QA replaced Work browser. No new acquisition/inference rerun.
+- Browser QA run 37000670097, job 110817397743, SUCCESS; acquisition job skipped. 22 checks passed: synthetic autosave/reload, undo/change/clear, all-five-label complete JSON download; real A 15, no login, source/body/attachment rendering, recursive no-leak, exact queue SHA, 0/15 before/after read-only navigation.
+- Private verification SHA c49824cc0ea22cd2e3788acd5e82d7c212425f36bd3fc0f8a8346f5d4e2d26ed; screenshot SHA 42e4ee630ee567349d281934b729ca93f3af92321eb6377409d763f2af25a134. Screenshots and synthetic exports were not uploaded to public Actions artifacts. Real labels written: 0.
+- QA used a new Training-only custom OIDC broker (fixed workflow/ref/repo IDs + exact approved SHA + one-hour private configuration), returning only the already authorized A queue read capability. QA commit authorization expired immediately after success. No generic private read or model access granted.
+- Human Batch A capability remains valid until 2026-11-01; B has no capability and remains held. Private access URL omitted from repository.
+- Native iPhone Share sheet remains untested; Linux Chromium verified exact JSON file download and copyable JSON fallback.
+- Ready checkpoint private SHA f461d34b82fe15a6a61f5d7a6f333963f0b377321af0c48014149b9fa4f0f211. Candidate v3.5 FROZEN FOR ROUND 2 BLIND VALIDATION; Round 2 Batch A READY FOR HUMAN REVIEW. This is not a performance conclusion.
+- STOP: wait for genuine human Round2 A export. Do not fill answers or rerun frozen predictions. Preserve original raw Batch B blind score, rereview/raw evidence and all frozen outputs.
