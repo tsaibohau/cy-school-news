@@ -1,7 +1,8 @@
 """Network-free contextual pattern candidate; no per-record or human answers."""
 import argparse, datetime as dt, hashlib, json, re, unicodedata
 from pathlib import Path
-VERSION='v3.6-offline-contextual-development'
+from decision_flow import decide
+VERSION='v3.6-offline-evidence-flow-development'
 TZ=dt.timezone(dt.timedelta(hours=8))
 LEXICON={
  'registration':r'報名|申請|登記|受理|送件',
@@ -61,7 +62,9 @@ def extract_dates(u,pub,pub_refs):
   year=int(m['year']) if m['year'] else pub.year if pub else None
   if year and year<1911:year+=1911
   before,after=text[max(0,m.start()-45):m.start()],text[m.end():m.end()+35]
-  nearby=before+m.group()+after;kind='registration' if has('registration',nearby) else 'event' if has('event',nearby) else 'unknown'
+  nearby=before+m.group()+after
+  cues=[(x.start(),k) for k in ['registration','event'] for x in re.finditer(LEXICON[k],before)]
+  kind=max(cues)[1] if cues else 'event' if has('event',after[:15]) else 'registration' if has('registration',after[:15]) else 'unknown'
   value=None
   if year:
    try:value=dt.date(year,int(m['month']),int(m['day'])).isoformat()
@@ -122,29 +125,49 @@ def analyze(record,as_of):
   if d['purpose']=='unknown' or not d['value']:unknown.append('日期用途或年份待確認：'+d['raw_expression'])
   d.pop('_start');d.pop('_end')
  if any(w['label'] is None for w in windows):unknown.append('報名起訖不足／矛盾，無法確認開放')
- labels={w['label'] for w in windows};label,reason,refs='optional','未辨識到今日須處理的明確依據',[cite(units[0])]
- if elig=='ineligible':label,reason,refs='should_hide','原文限制不適用高一學生',elig_refs
- elif 'must_show' in labels:label,reason='must_show','仍可報名且五天內截止';refs=next(w['evidence'] for w in windows if w['label']==label)
- elif 'useful' in labels:label,reason='useful','仍可報名且未達五天急迫門檻';refs=next(w['evidence'] for w in windows if w['label']==label)
- elif windows and labels=={'should_hide'}:label,reason,refs='should_hide','辨識出的報名期限均已結束',windows[0]['evidence']
- elif not windows:
-  for u in units:
-   t=norm(u['text']);active=[d for d in dates if d['purpose']=='event' and d['value'] and any(e['source_id']==u['source_id'] for e in d['evidence']) and 0<=(moment(d['value']).date()-moment(as_of).date()).days<=7]
-   fresh=pub is not None and 0<=(moment(as_of).date()-pub).days<=5
-   urgent=has('urgent',t) and not re.search(r'無(?:須|需)?(?:停課|延期)|不(?:停課|延期)|未(?:取消|延期)',t)
-   if (urgent and (active or fresh)) or (active and re.search(r'段考|期中考|期末考|考試日期',t)):
-    label,reason,refs='must_show','近期異動／七天內考試有時間依據',[cite(u)];break
  for i,g in enumerate(groups):g['group_id']=record['id']+':reference:'+str(i)
  gaps=[a['filename'] for a in record.get('attachment_content',[]) if not (a.get('content') or {}).get('units')]
  if gaps:unknown.append('未讀到附件內容：'+'、'.join(gaps))
- return {'id':record['id'],'label':label,'today_reason':reason,'today_evidence':refs,'urgency':'urgent' if label=='must_show' else 'not_urgent','persona_applicability':elig,'persona_evidence':elig_refs,'dates':dates,'registration_windows':windows,'reference_groups':groups,'latest_source_status':'not_checked','current_effect_status':'not_verified','uncertainties':sorted(set(unknown)),'source_conflicts':conflicts,'needs_review':bool(unknown or conflicts),'engine':VERSION}
+ intentions=[];operations=[];continuations=[];exams=[];changes=[]
+ for u in units:
+  if u['source_id']=='publication' or u['source_id'].startswith('metadata:'):continue
+  t=norm(u['text'])
+  for kind in ['registration','event','resource','rules','award','law','notice']:
+   if has(kind,t):intentions.append({'kind':kind,'evidence':[cite(u)]})
+  related=[d for d in dates if d['value'] and any(e['source_id']==u['source_id'] for e in d['evidence'])]
+  future=[d for d in related if moment(d['value'],True)>=moment(as_of)]
+  near=[d for d in future if d['purpose']=='event' and 0<=(moment(d['value']).date()-moment(as_of).date()).days<=7]
+  fresh=pub is not None and 0<=(moment(as_of).date()-pub).days<=5
+  if near and re.search(r'段考|期中考|期末考|考試日期',t):exams.append({'evidence':[cite(u)]+[e for d in near for e in d['evidence']]})
+  for clause in re.split(r'[。；\n]+',t):
+   clause_dates=[d for d in related if norm(d['raw_expression']) in clause]
+   clause_future=[d for d in clause_dates if moment(d['value'],True)>=moment(as_of)]
+   clause_near=[d for d in clause_future if 0<=(moment(d['value']).date()-moment(as_of).date()).days<=7]
+   change=has('urgent',clause) and not re.search(r'無(?:須|需)?(?:停課|延期)|不(?:停課|延期)|未(?:取消|延期)',clause)
+   if change and (clause_near or fresh and not clause_dates):changes.append({'evidence':[cite(u)]+pub_refs})
+   if re.search(r'已報名者|錄取者|參賽者|參加者',clause) and re.search(r'報到|集合|繳費|領取|補件|後續',clause) and clause_future:
+    continuations.append({'evidence':[cite(u)]+[e for d in clause_future for e in d['evidence']]})
+  if has('resource',t) and re.search(r'本學期|本學年|現行|即日起適用',t) and pub and pub.year==moment(as_of).year and fresh:
+   operations.append({'evidence':[cite(u)]+pub_refs})
+ content=[u for u in units if u['source_id'].startswith(('body:','attachment:')) and u['text'].strip()]
+ facts={'coverage':{'content_available':bool(content),'gaps':gaps,'evidence':[cite(u) for u in content]},
+        'intentions':intentions,'audience':elig,'audience_evidence':elig_refs,'dates':dates,'windows':windows,
+        'participant_processes':continuations,'current_operations':operations,'near_exams':exams,'urgent_changes':changes,
+        'reference_groups':groups,'unparsed_registration':any(x.startswith('報名日期未解析') for x in unknown),
+        'material_conflict':bool(conflicts) or any(w['start'] and w['end'] and moment(w['start'])>moment(w['end'],True) for w in windows)}
+ decision=decide(facts)
+ return {'id':record['id'],**decision,'machine_facts':facts,'persona_applicability':elig,'persona_evidence':elig_refs,
+         'dates':dates,'registration_windows':windows,'reference_groups':groups,'latest_source_status':'not_checked',
+         'current_effect_status':'not_verified','uncertainties':sorted(set(unknown)),'source_conflicts':conflicts,
+         'needs_review':bool(unknown or conflicts or decision['label'] is None),'engine':VERSION}
+
 def main():
  p=argparse.ArgumentParser();p.add_argument('--corpus',required=True);p.add_argument('--out',required=True);a=p.parse_args()
  raw=Path(a.corpus).read_bytes();corpus=json.loads(raw)
  if len({r['id'] for r in corpus['records']})!=len(corpus['records']):raise ValueError('duplicate IDs')
  persona=corpus.get('persona',{'grade':1,'role':'student'})
  if persona.get('grade',1)!=1 or persona.get('role','student')!='student':raise ValueError('candidate supports first-year student only')
- result={'candidate':VERSION,'corpus_sha256':digest(raw),'code_sha256':digest(Path(__file__).read_bytes()),'as_of':corpus['as_of'],'persona':persona,'engine':'offline symbolic contextual NLP','network_calls':0,'human_features_used':False,'assistant_annotations_used':False,'outputs':[analyze(r,corpus['as_of']) for r in corpus['records']],'limitations':['Complex or unseen phrasing and Chinese numeral dates require validation.','Rule development; model weights not trained.']}
+ result={'candidate':VERSION,'corpus_sha256':digest(raw),'code_sha256':digest(Path(__file__).read_bytes()),'flow_sha256':digest((Path(__file__).parent/'decision_flow.py').read_bytes()),'as_of':corpus['as_of'],'persona':persona,'engine':'offline symbolic contextual NLP','network_calls':0,'human_features_used':False,'assistant_annotations_used':False,'outputs':[analyze(r,corpus['as_of']) for r in corpus['records']],'limitations':['Complex or unseen phrasing and Chinese numeral dates require validation.','Rule development; model weights not trained.']}
  data=canonical(result)
  with Path(a.out).open('xb') as f:f.write(data)
  print(json.dumps({'records':len(result['outputs']),'output_sha256':digest(data),'network_calls':0,'needs_review':sum(o['needs_review'] for o in result['outputs'])}))

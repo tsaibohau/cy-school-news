@@ -15,6 +15,10 @@ jobs:
           persist-credentials: false
       - name: Compile offline engine and run synthetic controls only
         run: |
-          python -m py_compile experiments/autonomous-corpus/system/offline.py experiments/autonomous-corpus/system/runner.py
+          python -m py_compile experiments/autonomous-corpus/system/offline.py experiments/autonomous-corpus/system/runner.py experiments/autonomous-corpus/system/decision_flow.py
           python -m unittest discover -s experiments/autonomous-corpus/system -p 'test_*.py' -v
+      - name: Verify unchanged school parser controls
+        run: |
+          python -m pip install -r scraper/requirements.txt
+          python tests/test_parser.py
       # No private corpus, secrets, acquisition, external inference or artifacts.
