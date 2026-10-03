@@ -1,0 +1,20 @@
+name: Offline autonomous text controls
+on:
+  push:
+    branches: [codex/autonomous-corpus-acquisition]
+    paths: ['experiments/autonomous-corpus/system/**', '.github/workflows/autonomous-offline-controls.yml']
+permissions:
+  contents: read
+jobs:
+  synthetic-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Compile offline engine and run synthetic controls only
+        run: |
+          python -m py_compile experiments/autonomous-corpus/system/offline.py experiments/autonomous-corpus/system/runner.py
+          python -m unittest discover -s experiments/autonomous-corpus/system -p 'test_*.py' -v
+      # No private corpus, secrets, acquisition, external inference or artifacts.

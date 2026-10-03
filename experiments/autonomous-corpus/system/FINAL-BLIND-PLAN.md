@@ -1,70 +1,54 @@
-# Final blind experiment — PREPARED, NOT STARTED
+# Offline candidate — development, not frozen for blind validation
 
-User authorized fresh announcements after executable readiness on 2026-10-03.
-Production remains read-only. Original v3.5/30 outputs and Round2 B remain immutable
-and sealed. No new acquisition, inference, paid call or review capability has run.
+User instruction 2026-10-03: external model services are refused permanently.
+The former paid adapter has been removed. runner.py invokes offline.py, using
+Python standard library only. It makes zero network calls and downloads no model.
+No credentials, billing or external inference configuration is required.
 
-The v3.6 executable development candidate integrates reviewed registration timing,
-Today importance/urgency and per-group historical-reference rules. This is prompt
-and software development; model weights have not been trained. The original v3.5
-identity and blind scores must never be reassigned to this API-backed candidate.
+This is symbolic contextual text analysis: machine-detected keyword families,
+local clauses, explicit audience restrictions, dates/ranges, immediate-publication
+start, deterministic urgency, negation and partial historical reference. It is
+NOT a pretrained general language model or model-weight training. Every answer is
+computed by code; no Work assistant annotation or human-prepared feature input.
 
-## Service gate
+Supported input is frozen raw source corpus with as_of/persona/records; each record
+has title/date/body_content/metadata_content/attachment_content. Quote evidence
+retains filename/locator/raw text. Raw attachments and bodies remain immutable.
+PDF binding-line cleaning continues to be display-only, in existing pdf-display.js.
+One paragraph can output both reusable rules and cycle-only dates.
 
-An OpenAI Responses API adapter is prepared. Model ID has no default; account
-authorization, explicit model/version, price and dollar budget are not yet set.
-No connected API-key tool exists, local provider variables are absent, and inspected
-Training Vault names/Edge Functions reveal no inference provider. GitHub secret
-APIs cannot be read by the available connector; their absence is not established.
-Do not ask the user to paste keys into chat. Configure secrets provider-side.
+Run:
+python experiments/autonomous-corpus/system/runner.py --corpus PRIVATE_SOURCE.json --out PRIVATE_NEW_OUTPUT.json
 
-`runner.py --corpus PRIVATE_PATH --out PRIVATE_NEW_DIRECTORY --model MODEL_ID`
-prints a hash-bound plan without API calls. The live flag
-`--execute-authorized-paid-run` requires explicit payment authorization and a
-server-side `OPENAI_API_KEY`. Do not use the flag before a budget-enforced execution
-wrapper and provider configuration have been reviewed and approved. The runner has
-one call per record, no retries, max 6000 output tokens per call, max 30 records;
-these are call/token bounds, not a guaranteed dollar spending cap.
+The output is immutable by exclusive creation. Save it only in private scratch or
+Training Storage; never repository/static/public Actions artifacts. Outputs have
+code/corpus hashes, dates/windows, Today/urgency, reference groups, citations and
+visible unknowns. Ineligible grade/teacher persona overrides registration urgency.
+The first-year student persona is currently the only supported persona.
 
-## Before consuming a new blind sample
+Readiness is DEVELOPMENT ONLY. Eleven synthetic tests cover date boundaries,
+explicit closing time, 即日起, publication year, missing start, audience override,
+teacher coordination, grade ranges, negation, multiple attachment windows, partial
+reference, expiry and human-feature exclusion. These are control checks, not human
+semantic evidence and not a claim that all natural-language constructions work.
 
-1. Finish provider setup and a hard dollar spending guard; validate real API/schema
-   compatibility on already exposed development sources, without claiming a blind
-   score. Record exact returned model identity, responses, token use and failures.
-2. Confirm source whitelisting, citations, missing years, 即日起, multi-window dates,
-   persona restrictions and reference groups. Any policy changes occur here.
-3. Freeze candidate code/prompt/schema/model/version/persona/Taiwan as-of time and
-   selection rules before new acquisition. Prepared code is not a frozen model.
-4. Use the existing acquisition program on a new run-specific private prefix.
-   Extend existing exclusions with every old frozen corpus ID, reviewed ID and
-   final development smoke ID; deduplicate by ID, source URL and raw content hash.
-   Inspect machine metadata/hashes for integrity; the Work assistant does not read
-   new content to author, repair or choose classifications.
-5. Target 30 usable sources, 15 per school, selected on acquisition coverage alone.
-   Predeclare extension/stop behavior if the quality gate fails. Exclusions and
-   sampling change must be code-reviewed before triggering the fresh workflow.
-6. The executable runner reads raw title/body/attachment text and independently
-   generates all semantics. Preserve original failed responses. No assistant labels,
-   record-specific patches, human primitives or post-human reruns are permitted.
-7. Upload original outputs to Training private Storage with no overwrite; verify
-   hashes by readback. Freeze predictions, citations, identity and coverage before
-   issuing any human-review capability. Structural validity is not correctness.
-8. A separate full-blind page displays source material only. Hide model dates,
-   urgency, labels, reference classes and reasons until human export is immutable.
-   PDF binding-line removal affects display only. Do not reuse hint-showing
-   development review pages. Review all dimensions, missing facts and source
-   limitations; up to 15 per private queue. Existing Round2 B stays sealed.
-9. Validate human identity/IDs/completeness and save immutable original bytes before
-   joining predictions. Report four-class matrix/precision/recall/urgent misses,
-   persona, date-role/value and per-group reference agreement/coverage separately.
-   Zero denominators are null. Any rereview/diagnostic is separate from raw blind
-   scores. Thirty records remain a small test, not a Production release decision.
+Known limitations: Chinese numeral dates, month-shorthand ranges, cross-paragraph
+application periods, qualifiers/negation and advanced recurring-year context may
+not parse. Date purpose in crowded contexts is heuristic. Unknown qualifications
+are surfaced; positive results with unknown audience still need quality assessment.
+General resources/participant continuation are not yet a comprehensive Today
+policy. This lightweight candidate must NOT be presented as having inherited the
+previous assistant's 37/37 confirmations or having passed full autonomous review.
 
-Current blockers: model service configuration and paid-call authorization. The
-fresh acquisition workflow and full-blind page have not been enabled or claimed
-complete. No new private corpus has been duplicated. This plan is not human model
-evidence, and offline fixture passes are not API compatibility proof.
+Next: run on already exposed development sources without assistant authoring
+answers; inspect machine structural metrics and human disagreements/coverage;
+fix generic rules; freeze exact code, policy, persona and Taiwan as-of time only
+after readiness review. Then authorize code to acquire genuinely new sources with
+all old corpus/reviewed IDs and content hashes excluded. This latest user request
+already authorizes alternative development; no further provider approval needed.
 
-API contract checked against official documentation:
-https://developers.openai.com/api/docs/guides/structured-outputs
-https://developers.openai.com/api/docs/guides/migrate-to-responses
+New final test has not started. Original v3.5 corpus/output/raw blind scores remain
+unchanged; Round2 B stays sealed. Future full-blind UI must show original sources
+only, hiding all machine date extractions/urgency/importance/reference/reasons until
+original human export is saved immutably. No assistant judges the new test notices.
+Production is read-only; no main merge, deploy, Production write or query change.
