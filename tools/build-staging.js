@@ -11,6 +11,8 @@ const root = path.resolve(__dirname, "..");
 require("node:child_process").execFileSync(process.execPath,
   [path.join(root, "tests", "test_admin_announcement_export.js")], { stdio: "inherit" });
 require("node:child_process").execFileSync(process.execPath,
+  [path.join(root, "tests", "test_production_announcement_export.js")], { stdio: "inherit" });
+require("node:child_process").execFileSync(process.execPath,
   [path.join(root, "tests", "test_mock_admin.js")], { stdio: "inherit" });
 require("node:child_process").execFileSync(process.execPath,
   [path.join(root, "tests", "test_mock_system.js")], { stdio: "inherit" });
@@ -22,6 +24,7 @@ const staging = path.join(root, "tools", "staging");
 const { sanitizePublicData } = require("./public-metadata-projection.js");
 const shellInputs = [
   "index.html", "legal.html", "legal-compliance.json", "style.css", "app.js", "detail-ui.js", "sw.js", "account-config.js", "capability-layer.js",
+  "admin-announcement-export-source.js", "admin-announcement-csv-ui.js", "announcement-csv.js", "admin-announcement-export.css",
   "supabase-sync.js", "account-auth.js", "task-state.js", "account-sync.js",
   "push-subscription.js",
   "reminder-rules.js", "announcement-cleanup.js",
