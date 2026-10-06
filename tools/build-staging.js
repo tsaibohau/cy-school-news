@@ -6,6 +6,10 @@ const crypto = require("node:crypto");
 const os = require("node:os");
 
 const root = path.resolve(__dirname, "..");
+// Run the export's authorization and lossless-CSV checks in the Preview build,
+// without contacting any Supabase project or changing GitHub Actions.
+require("node:child_process").execFileSync(process.execPath,
+  [path.join(root, "tests", "test_admin_announcement_export.js")], { stdio: "inherit" });
 const source = path.join(root, "docs");
 const configuredOutput = process.env.CYNEWS_STAGING_OUTPUT || "dist-staging";
 const outputName = path.isAbsolute(configuredOutput) ? path.basename(configuredOutput) : configuredOutput;
@@ -22,6 +26,9 @@ const shellInputs = [
   path.join("..", "tools", "staging", "acceptance-companion.html"),
   path.join("..", "artifacts", "calendar-parser-1151", "candidate-calendar-events.json"),
   path.join("..", "tools", "staging", "staging.css"),
+  path.join("..", "tools", "staging", "announcement-csv.js"),
+  path.join("..", "tools", "staging", "admin-announcement-export.js"),
+  path.join("..", "tools", "staging", "admin-announcement-export.css"),
 ];
 const shellRevision = "staging-" + crypto.createHash("sha256")
   .update(shellInputs.map((file) => fs.readFileSync(path.join(source, file))).join("\n"))
@@ -64,6 +71,9 @@ fs.copyFileSync(path.join(staging, "staging.css"), path.join(output, "staging.cs
 fs.copyFileSync(path.join(staging, "acceptance-user-tasks.js"), path.join(output, "acceptance-user-tasks.js"));
 fs.copyFileSync(path.join(staging, "acceptance-companion.html"), path.join(output, "acceptance-companion.html"));
 fs.copyFileSync(path.join(staging, "account-config.js"), path.join(output, "account-config.js"));
+for (const file of ["announcement-csv.js", "admin-announcement-export.js", "admin-announcement-export.css"]) {
+  fs.copyFileSync(path.join(staging, file), path.join(output, file));
+}
 
 const indexPath = path.join(output, "index.html");
 let html = fs.readFileSync(indexPath, "utf8");
@@ -72,9 +82,9 @@ html = html
   .replace("<head>", '<head>\n<meta name="robots" content="noindex,nofollow,noarchive">')
   .replace("<title>", "<title>STAGING｜")
   .replace('href="manifest.webmanifest"', 'href="manifest-staging.webmanifest"')
-  .replace('</head>', '<link rel="stylesheet" href="staging.css?v=' + shellRevision + '">\n</head>')
+  .replace('</head>', '<link rel="stylesheet" href="staging.css?v=' + shellRevision + '">\n<link rel="stylesheet" href="admin-announcement-export.css?v=' + shellRevision + '">\n</head>')
   .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站｜官方 PDF 解析候選資料仍待人工核對</div>')
-  .replace('</body>', '<script src="acceptance-user-tasks.js?v=' + shellRevision + '" defer></script>\n</body>');
+  .replace('</body>', '<script src="acceptance-user-tasks.js?v=' + shellRevision + '" defer></script>\n<script src="announcement-csv.js?v=' + shellRevision + '" defer></script>\n<script src="admin-announcement-export.js?v=' + shellRevision + '" defer></script>\n</body>');
 sourceVersions.forEach((sourceVersion) => { html = html.replaceAll(sourceVersion, stagedVersion); });
 fs.writeFileSync(indexPath, html);
 fs.writeFileSync(path.join(output, "robots.txt"), "User-agent: *\nDisallow: /\n");
