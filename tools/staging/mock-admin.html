@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'self'">
+<title>模擬管理員｜嘉義校訊 Preview</title>
+<link rel="stylesheet" href="mock-admin.css"><link rel="stylesheet" href="admin-announcement-export.css">
+<script src="mock-admin-client.js" defer></script><script src="announcement-csv.js" defer></script><script src="admin-announcement-export.js" defer></script>
+</head>
+<body>
+<div class="simulation-banner">模擬模式・合成資料・不連接 Supabase</div>
+<main>
+<header><p class="eyebrow">嘉義校訊 · PREVIEW</p><h1>模擬管理員</h1><p>使用臨時帳密測試管理介面及 CSV 匯出。所有帳號與公告均為虛構。</p></header>
+<section id="mockLogin" class="card">
+<h2>登入模擬管理員</h2>
+<form id="mockLoginForm"><label>帳號<input id="mockUsername" autocomplete="username" required></label><label>密碼<input id="mockPassword" type="password" autocomplete="current-password" required></label><button id="mockSignIn" class="btn-primary" type="submit">登入</button></form>
+<p id="mockLoginStatus" class="hint" role="status" aria-live="polite"></p>
+</section>
+<section id="viewAdmin" hidden>
+<div class="card admin-account"><div class="section-heading"><div><h2>主要管理員（模擬）</h2><p id="mockExpiry" class="hint"></p></div><button id="mockSignOut" class="btn-ghost" type="button">登出</button></div></div>
+<section class="card"><h3>帳號管理（模擬）</h3><p class="hint">審核、移除及角色調整只改變本頁的合成帳號。登出或重新整理會重設。</p><div id="mockAccounts"></div></section>
+<section class="card admin-cleanup"><div class="section-heading"><div><h3>公告管理（模擬）</h3><p class="hint">12 則合成公告，包含正文缺漏與未讀附件案例。</p></div><div class="cleanup-toolbar"></div></div></section>
+</section>
+<footer>這組帳密沒有正式站權限，也不代表取得真實公告資料。<a href="index.html">返回 Preview</a></footer>
+</main>
+</body></html>

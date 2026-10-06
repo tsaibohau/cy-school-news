@@ -41,7 +41,7 @@
       parse_status: object.parse_status || "unknown", attachment_content: JSON.stringify(attachmentRows),
       attachment_status: !detail ? "unknown" : !attachments.length ? "none_recorded" : attachmentRows.some(function (a) { return a.status === "unread"; }) ? "has_unread" : "read",
       detail_json: detail == null ? "" : JSON.stringify(sourceDetail), source_hash: record.source_hash || object.source_hash || "",
-      exported_at: exportedAt, data_source: "preview_supabase", csv_escaped_columns: "" };
+      exported_at: exportedAt, data_source: record.data_source || "preview_supabase", csv_escaped_columns: "" };
   }
   function quote(value) { return '"' + String(value == null ? "" : value).replace(/"/g, '""') + '"'; }
   function csv(records, exportedAt) {

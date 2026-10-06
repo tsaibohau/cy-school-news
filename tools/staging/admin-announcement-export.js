@@ -1,10 +1,11 @@
 /* Preview-only addon. Source text stays in memory until the owner downloads it. */
 (function () {
   "use strict";
-  if (!window.CyNewsAnnouncementCSV || !window.CyNewsAccountAuth) return;
+  var mock = window.CYNEWS_MOCK_ADMIN_MODE === true;
+  if (!window.CyNewsAnnouncementCSV || !(mock ? window.CyNewsMockAdmin : window.CyNewsAccountAuth)) return;
   var heading = document.querySelector("#viewAdmin .admin-cleanup .section-heading");
   if (!heading) return;
-  var controller = window.CyNewsAccountAuth.createController();
+  var controller = (mock ? window.CyNewsMockAdmin : window.CyNewsAccountAuth).createController();
   var button = document.createElement("button");
   button.id = "adminAnnouncementExportToggle"; button.type = "button"; button.className = "btn-ghost";
   button.textContent = "下載完整公告 CSV"; button.hidden = true;
@@ -24,6 +25,11 @@
     '<div class="cleanup-toolbar"><button id="announcementExportStart" type="button" class="btn-primary" disabled>產生 CSV</button><button id="announcementExportCancel" type="button" class="btn-ghost" hidden>取消</button><a id="announcementExportDownload" class="btn-primary" hidden>下載 CSV</a></div>' +
     '<progress id="announcementExportProgress" value="0" max="1" hidden></progress><p id="announcementExportStatus" class="hint" role="status" aria-live="polite">尚未載入公告。</p>';
   heading.insertAdjacentElement("afterend", panel);
+  if (mock) {
+    panel.querySelector(".hint").textContent = "資料來源：12 則合成公告。模擬主要管理員可測試篩選、勾選與 CSV 下載；不會讀取真實公告或 Supabase。";
+    document.getElementById("announcementExportTitle").textContent = "下載模擬公告 CSV";
+    button.textContent = "下載模擬公告 CSV";
+  }
   function node(suffix) { return document.getElementById("announcementExport" + suffix); }
   var catalog = [], selected = new Set(), page = 0, loading = null, currentUid = "", run = 0, authCheck = 0;
   var abort = null, downloadUrl = "", busy = false;
@@ -53,12 +59,16 @@
   async function loadCatalog() {
     if (loading) return loading;
     node("Status").textContent = "正在載入兩校公告索引…";
-    loading = Promise.all(["announcements", "archive"].map(async function (name) {
+    var sourcePromise = mock ? controller.getVerifiedSession().then(function (session) {
+      if (!session) throw new Error("請先登入模擬帳號。");
+      return window.CyNewsMockAdmin.request("catalog", {}, session.access_token).then(function (data) { return [data.items, []]; });
+    }) : Promise.all(["announcements", "archive"].map(async function (name) {
       var response = await fetch("data/" + name + ".json", { cache: "no-store" });
       if (!response.ok) throw new Error("公告索引載入失敗。");
       var data = await response.json(); if (!Array.isArray(data.items)) throw new Error("公告索引格式不符。");
       return data.items;
-    })).then(function (sources) {
+    }));
+    loading = sourcePromise.then(function (sources) {
       var map = new Map(); sources[1].concat(sources[0]).forEach(function (row) {
         if (/^(cysh|cygsh)-[A-Za-z0-9._-]+$/.test(row.id || "")) map.set(row.id, { id: row.id, title: String(row.title || "") });
       });
@@ -105,7 +115,7 @@
       if (activeRun !== run || currentUid !== uid) throw new Error("已取消或帳號已變更。");
       var session = await controller.getVerifiedSession();
       if (!session || session.user.id !== uid) throw new Error("登入已失效或帳號已變更。");
-      var response = await fetch("/api/admin-announcement-export", {
+      var response = await fetch(mock ? "/api/mock-admin?action=export" : "/api/admin-announcement-export", {
         method: "POST", headers: { Authorization: "Bearer " + session.access_token, "Content-Type": "application/json" },
         body: JSON.stringify({ ids: batch }), cache: "no-store", signal: abort.signal,
       });
@@ -115,7 +125,8 @@
       }
       var result;
       try { result = await response.json(); } catch (_) { throw new Error("匯出服務回應無法讀取，請確認 Preview 存取權限。"); }
-      if (!response.ok) throw new Error(messages[result.error] || "匯出失敗，沒有產生部分下載檔。");
+      if (!response.ok) throw new Error(messages[result.error] || "匯出失敗或模擬登入已失效，沒有產生部分下載檔。");
+      if (mock && result.data_source !== "simulated") throw new Error("模擬資料來源不符，下載已停止。");
       return window.CyNewsAnnouncementCSV.verifyBatch(batch, result.records);
     }
     try {
@@ -128,7 +139,7 @@
       var missing = records.filter(function (record) { return !window.CyNewsAnnouncementCSV.textOf(record.detail).trim(); }).length;
       var unread = records.filter(function (record) { return window.CyNewsAnnouncementCSV.project(record, exportedAt).attachment_status === "has_unread"; }).length;
       downloadUrl = URL.createObjectURL(new Blob([window.CyNewsAnnouncementCSV.csv(records, exportedAt)], { type: "text/csv;charset=utf-8" }));
-      node("Download").href = downloadUrl; node("Download").download = "嘉義校訊_完整公告_" + exportedAt.replace(/[:.]/g, "-") + ".csv";
+      node("Download").href = downloadUrl; node("Download").download = "嘉義校訊_" + (mock ? "模擬公告_" : "完整公告_") + exportedAt.replace(/[:.]/g, "-") + ".csv";
       node("Download").textContent = "下載 CSV（" + records.length + " 筆）"; node("Download").hidden = false;
       node("Status").textContent = "已準備 " + records.length + " 筆；缺少或空白正文 " + missing + " 筆；含未讀附件 " + unread + " 筆。請點「下載 CSV」，手機可儲存到「檔案」。";
     } catch (error) {

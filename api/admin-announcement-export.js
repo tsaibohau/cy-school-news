@@ -31,6 +31,8 @@ function createHandler(options = {}) {
     if (process.env.VERCEL_ENV === "production") return res.status(404).json({ error: "preview_only" });
     if (req.method !== "POST") { res.setHeader("Allow", "POST"); return res.status(405).json({ error: "method_not_allowed" }); }
     const bearer = String(req.headers.authorization || "");
+    // A synthetic session must never be forwarded to any real database.
+    if (bearer.startsWith("Bearer mock.")) return res.status(403).json({ error: "mock_token_not_allowed" });
     if (!/^Bearer [A-Za-z0-9._~-]{20,8192}$/.test(bearer)) return res.status(401).json({ error: "sign_in_required" });
     try {
       const settings = options.config || config();

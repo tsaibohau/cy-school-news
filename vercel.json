@@ -4,6 +4,9 @@
   "outputDirectory": "dist-staging",
   "cleanUrls": false,
   "functions": {
+    "api/mock-admin.js": {
+      "maxDuration": 10
+    },
     "api/admin-announcement-export.js": {
       "maxDuration": 60,
       "includeFiles": "{tools/staging/account-config.js,docs/data/announcements.json,docs/data/archive.json}"
