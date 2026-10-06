@@ -16,6 +16,10 @@ async function request(action, body = {}, token = "", config = settings, clock =
   for (const environment of ["production", "development", undefined]) assert.equal((await request("login", {}, "", { ...settings, environment })).code, 404);
   assert.equal((await request("login", {}, "", { ...settings, branch: "main" })).code, 404);
   assert.equal((await request("login", {}, "", { ...settings, secret: undefined })).code, 404);
+  const shortSettings = { ...settings, password: "sixchr" };
+  assert.equal((await request("login", { username: settings.username, password: shortSettings.password }, "", shortSettings)).code, 200);
+  assert.equal((await request("login", {}, "", { ...shortSettings, password: "short" })).code, 404);
+  assert.equal((await request("login", {}, "", { ...shortSettings, environment: "production" })).code, 404);
   const login = await request("login", { username: settings.username, password: settings.password });
   assert.equal(login.code, 200); assert(!JSON.stringify(login.body).includes(settings.password));
   const token = login.body.token;

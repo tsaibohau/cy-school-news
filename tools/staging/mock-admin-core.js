@@ -10,7 +10,7 @@ function settings(env = process.env) {
 function enabled(config) {
   return config.environment === "preview" && config.branch === BRANCH && !!config.deployment &&
     typeof config.username === "string" && !!config.username && typeof config.password === "string" &&
-    config.password.length >= 12 && typeof config.secret === "string" && config.secret.length >= 32 && Number.isFinite(config.expiresAt);
+    config.password.length >= 6 && typeof config.secret === "string" && config.secret.length >= 32 && Number.isFinite(config.expiresAt);
 }
 function equal(a, b) {
   return crypto.timingSafeEqual(crypto.createHash("sha256").update(String(a || "")).digest(),
