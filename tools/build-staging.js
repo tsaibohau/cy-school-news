@@ -12,6 +12,8 @@ require("node:child_process").execFileSync(process.execPath,
   [path.join(root, "tests", "test_admin_announcement_export.js")], { stdio: "inherit" });
 require("node:child_process").execFileSync(process.execPath,
   [path.join(root, "tests", "test_mock_admin.js")], { stdio: "inherit" });
+require("node:child_process").execFileSync(process.execPath,
+  [path.join(root, "tests", "test_mock_system.js")], { stdio: "inherit" });
 const source = path.join(root, "docs");
 const configuredOutput = process.env.CYNEWS_STAGING_OUTPUT || "dist-staging";
 const outputName = path.isAbsolute(configuredOutput) ? path.basename(configuredOutput) : configuredOutput;
@@ -34,6 +36,9 @@ const shellInputs = [
   path.join("..", "tools", "staging", "mock-admin.html"),
   path.join("..", "tools", "staging", "mock-admin.css"),
   path.join("..", "tools", "staging", "mock-admin-client.js"),
+  path.join("..", "tools", "staging", "mock-system-config.js"),
+  path.join("..", "tools", "staging", "mock-system-auth.js"),
+  path.join("..", "tools", "staging", "build-mock-system.js"),
 ];
 const shellRevision = "staging-" + crypto.createHash("sha256")
   .update(shellInputs.map((file) => fs.readFileSync(path.join(source, file))).join("\n"))
@@ -88,10 +93,11 @@ html = html
   .replace("<title>", "<title>STAGING｜")
   .replace('href="manifest.webmanifest"', 'href="manifest-staging.webmanifest"')
   .replace('</head>', '<link rel="stylesheet" href="staging.css?v=' + shellRevision + '">\n<link rel="stylesheet" href="admin-announcement-export.css?v=' + shellRevision + '">\n</head>')
-  .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站｜官方 PDF 解析候選資料仍待人工核對 · <a href="mock-admin.html">模擬管理員登入</a></div>')
+  .replace('<body>', '<body>\n<div class="cynews-staging-banner" role="status">STAGING／測試環境・非正式站｜官方 PDF 解析候選資料仍待人工核對 · <a href="mock-system.html">完整系統模擬登入</a></div>')
   .replace('</body>', '<script src="acceptance-user-tasks.js?v=' + shellRevision + '" defer></script>\n<script src="announcement-csv.js?v=' + shellRevision + '" defer></script>\n<script src="admin-announcement-export.js?v=' + shellRevision + '" defer></script>\n</body>');
 sourceVersions.forEach((sourceVersion) => { html = html.replaceAll(sourceVersion, stagedVersion); });
 fs.writeFileSync(indexPath, html);
+require("./staging/build-mock-system.js").buildMockSystem(output, shellRevision);
 fs.writeFileSync(path.join(output, "robots.txt"), "User-agent: *\nDisallow: /\n");
 
 const companionPath = path.join(output, "acceptance-companion.html");

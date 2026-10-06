@@ -87,6 +87,18 @@ for (const item of publicCurrent.items.concat(publicArchive.items)) {
   assert(item.title && item.url && item.school, "public metadata keeps title, school, and official URL");
 }
 assert(!fs.existsSync(path.join(output, "data", "details")), "staging must not publish downloadable detail files");
+const fullMock = fs.readFileSync(path.join(output, "mock-system.html"), "utf8");
+assert(fullMock.includes("connect-src 'self'"), "full mock system cannot contact real backends");
+assert(!/src="account-config\.js/.test(fullMock), "full mock uses no real Auth configuration");
+assert(fullMock.includes('id="viewAdmin"') && fullMock.includes('id="viewCalendar"'), "full mock keeps existing system views");
+assert(fullMock.indexOf('src="mock-system-auth.js') < fullMock.indexOf('src="mock-system-app.js'), "mock Auth is installed before the app");
+assert(!/src="acceptance-user-tasks\.js/.test(fullMock), "real account acceptance harness is excluded from mock page");
+const fullMockApp = fs.readFileSync(path.join(output, "mock-system-app.js"), "utf8");
+assert(fullMockApp.includes('"mock-data/announcements.json"') && fullMockApp.includes('if (false)'), "mock data and service worker registration are isolated");
+const allMockMetadata = JSON.parse(fs.readFileSync(path.join(output, "mock-data", "announcements.json"), "utf8"));
+const expectedMockIds = new Set(publicCurrent.items.concat(publicArchive.items).filter(row => ["cysh", "cygsh"].includes(row.school)).map(row => row.id));
+assert.deepEqual(new Set(allMockMetadata.items.map(row => row.id)), expectedMockIds, "every current and historical two-school announcement is included");
+assert(allMockMetadata.items.every(row => !row.id.includes("-sim-") && !row.body_content && !row.summary), "no synthetic announcement or fabricated body");
 assert(behavioral.includes("passed for USER_A and USER_B"));
 assert(deployedWorkflow.includes("Check dedicated Auth harness availability"));
 assert(deployedWorkflow.includes("if: steps.auth-gate.outputs.available == 'true'"));

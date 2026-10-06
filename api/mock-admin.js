@@ -1,5 +1,6 @@
 "use strict";
 const Core = require("../tools/staging/mock-admin-core.js");
+const { loadCorpus } = require("../tools/staging/preview-system-corpus.js");
 function createHandler(options = {}) {
   return async function handler(req, res) {
     res.setHeader("Cache-Control", "private, no-store, max-age=0");
@@ -22,6 +23,15 @@ function createHandler(options = {}) {
     const session = Core.verify(authorization.startsWith("Bearer ") ? authorization.slice(7) : "", config, now);
     if (!session) return res.status(401).json({ error: "mock_sign_in_required" });
     if (action === "session") return res.status(200).json({ user: { id: session.uid }, role: "owner", expires_at: new Date(config.expiresAt).toISOString(), mode: "simulated" });
+    if (action === "system-catalog" || action === "system-export") {
+      let items;
+      try { items = options.corpus ? options.corpus() : loadCorpus().items; }
+      catch (_) { return res.status(503).json({ error: "branch_snapshot_unavailable" }); }
+      if (action === "system-catalog") return res.status(200).json({ items, body_available: 0, data_source: "branch_metadata_snapshot" });
+      const ids = body.ids, map = new Map(items.map(item => [item.id, item]));
+      if (!Array.isArray(ids) || !ids.length || ids.length > 8 || new Set(ids).size !== ids.length || ids.some(id => !map.has(id))) return res.status(400).json({ error: "invalid_mock_ids" });
+      return res.status(200).json({ records: ids.map(id => ({ id, metadata: map.get(id), detail: null, updated_at: "", source_hash: "", data_source: "branch_metadata_snapshot" })), data_source: "branch_metadata_snapshot" });
+    }
     const records = Core.fixtures();
     if (action === "catalog") return res.status(200).json({ items: records.map(r => ({ id: r.id, title: r.metadata.title })), mode: "simulated" });
     if (action === "export") {

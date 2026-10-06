@@ -5,7 +5,8 @@
   "cleanUrls": false,
   "functions": {
     "api/mock-admin.js": {
-      "maxDuration": 10
+      "maxDuration": 10,
+      "includeFiles": "{docs/data/announcements.json,docs/data/archive.json}"
     },
     "api/admin-announcement-export.js": {
       "maxDuration": 60,
