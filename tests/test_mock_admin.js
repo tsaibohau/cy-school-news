@@ -1,6 +1,6 @@
 "use strict";
 const assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path");
-const Core = require("../tools/staging/mock-admin-core.js"), CSV = require("../tools/staging/announcement-csv.js");
+const Core = require("../tools/staging/mock-admin-core.js"), CSV = require("../docs/announcement-csv.js");
 const { createHandler } = require("../api/mock-admin.js");
 const { createHandler: realHandler } = require("../api/admin-announcement-export.js");
 const now = Date.parse("2026-10-06T13:00:00Z");

@@ -33,9 +33,7 @@ const shellInputs = [
   path.join("..", "tools", "staging", "acceptance-companion.html"),
   path.join("..", "artifacts", "calendar-parser-1151", "candidate-calendar-events.json"),
   path.join("..", "tools", "staging", "staging.css"),
-  path.join("..", "tools", "staging", "announcement-csv.js"),
   path.join("..", "tools", "staging", "admin-announcement-export.js"),
-  path.join("..", "tools", "staging", "admin-announcement-export.css"),
   path.join("..", "tools", "staging", "mock-admin.html"),
   path.join("..", "tools", "staging", "mock-admin.css"),
   path.join("..", "tools", "staging", "mock-admin-client.js"),
@@ -84,7 +82,8 @@ fs.copyFileSync(path.join(staging, "staging.css"), path.join(output, "staging.cs
 fs.copyFileSync(path.join(staging, "acceptance-user-tasks.js"), path.join(output, "acceptance-user-tasks.js"));
 fs.copyFileSync(path.join(staging, "acceptance-companion.html"), path.join(output, "acceptance-companion.html"));
 fs.copyFileSync(path.join(staging, "account-config.js"), path.join(output, "account-config.js"));
-for (const file of ["announcement-csv.js", "admin-announcement-export.js", "admin-announcement-export.css", "mock-admin.html", "mock-admin.css", "mock-admin-client.js"]) {
+// CSV serializer and export CSS are shared with docs and already copied above.
+for (const file of ["admin-announcement-export.js", "mock-admin.html", "mock-admin.css", "mock-admin-client.js"]) {
   fs.copyFileSync(path.join(staging, file), path.join(output, file));
 }
 

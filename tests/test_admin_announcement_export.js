@@ -1,6 +1,6 @@
 "use strict";
 const assert = require("node:assert/strict");
-const CSV = require("../tools/staging/announcement-csv.js");
+const CSV = require("../docs/announcement-csv.js");
 const { createHandler } = require("../api/admin-announcement-export.js");
 function parseCSV(text) {
   const rows = []; let row = [], cell = "", quoted = false;

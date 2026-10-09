@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "git": { "deploymentEnabled": { "codex/project-cleanup-20261009": false } },
   "buildCommand": "node tools/build-staging.js",
   "outputDirectory": "dist-staging",
   "cleanUrls": false,

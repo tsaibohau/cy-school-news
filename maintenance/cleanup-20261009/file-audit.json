@@ -1,0 +1,3445 @@
+{
+  "baseline": "5c697048e3742ff63dde88b6a6e5b066a26b8db0",
+  "method": "逐 tracked 檔名／路徑字串掃描；人工覆核刪除候選。非完整動態呼叫圖；測試、產生器、DB migration、外部引用不因零字串引用而刪除。",
+  "files": [
+    {
+      "path": ".github/workflows/assistant-attachments-v2-validation.yml",
+      "sha256": "cbce00afe0edb9227ca02d9410944c2966a3c91d91b9270933a93f472abcb9f9",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": ".github/workflows/assistant-ocr-live-preview.yml",
+      "sha256": "b2990c70e7548f05d6e69c664b49090c4a9174b216136d5e2025c14aa49fb342",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": ".github/workflows/assistant-ocr-staging-sync.yml",
+      "sha256": "4bb0f832a718465b71d5d952051ef4fbe3616be44f4e1d13f88004f2835c4281",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": ".github/workflows/calendar-daily.yml",
+      "sha256": "6bd092b000253e0d5a26d2d4f8bbf9f7ad8b9d1f1b0dd04044ca0a0ba0732d90",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "README.md",
+        "tests/test_calendar_workflow.js"
+      ]
+    },
+    {
+      "path": ".github/workflows/pksh-windows-production.yml",
+      "sha256": "57af581db4ab437ddd3802aa0538a4f918c8030be211300b54cd08d8eb9a84bd",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": ".github/workflows/rls-deployed.yml",
+      "sha256": "c0f07b6650bb5650454881909f6f005f86d4277df0ce919b690946b336867cc4",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/acceptance-dead-code-audit.md",
+        "tests/test_staging_build.js"
+      ]
+    },
+    {
+      "path": ".github/workflows/rls-local.yml",
+      "sha256": "8e8c5a7c79a36b91d53893ce1d1056357ef28bb7dfc899d0a31fb88456774d69",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/rls-acceptance-v2.md"
+      ]
+    },
+    {
+      "path": ".github/workflows/scrape-hourly.yml",
+      "sha256": "415c902dd7cff90fcdb4f20e722c63930582a7b2dd189b16566af58126a89e97",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/scrape-schedule.yml",
+        "README.md",
+        "tests/test_member_content_rls_contract.js",
+        "tests/test_reminder_target_sync.js",
+        "tests/test_reminder_targets.py"
+      ]
+    },
+    {
+      "path": ".github/workflows/scrape-schedule.yml",
+      "sha256": "e6dadbeee25de72d4607e199bb61a6d6fd86db2806417dd608ea1a4be4dc2f7a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": ".github/workflows/staging-detail-backfill.yml",
+      "sha256": "d9c5ca4a601c11301e9256666d5feb15357842fab0636d033382f18dd84f94f3",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_parser.py",
+        "tests/test_user_refresh.js"
+      ]
+    },
+    {
+      "path": ".github/workflows/staging-user-refresh.yml",
+      "sha256": "df9e5d0a328e2a0b8ef2f3ba4b40d4fbe8c1e6012ff471a85d1880f01ecff7d7",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "supabase/functions/request-staging-refresh/index.ts",
+        "tests/test_user_refresh.js"
+      ]
+    },
+    {
+      "path": ".github/workflows/staging-validation.yml",
+      "sha256": "76b7dba654daa0e7e22e0ed7d6b1a71f3357ed2a9fd67cbd8c47a360887cc6c5",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md",
+        "tests/test_pksh_windows_handoff.py"
+      ]
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "0c57df8e0e94ff5f1b56f573566e0b15f578ca9d9316c21a111b2ca6995a1de4",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "9c9c50c0f14929a8b044b6fa168ca02ff5aaf7c60bfd69d497e2debe8830e857",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "CLAUDE.md",
+      "sha256": "66ce3d6b871a2e342035e3e5601da02259a601cde723486a3983607edc0b297a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "PROJECT_LEDGER.md",
+      "sha256": "5b0595f911bbb688711d8ca4debca36f95315043700b4a15c13e7b9a0d75caa8",
+      "decision": "DELETE",
+      "reason": "過時開發 checkpoint；移除權威入口，歷史仍可從基線 commit 還原。",
+      "lexical_references": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "path": "README.md",
+      "sha256": "1683bc4b3cee1bd98fcdf908d3e29cfdaef89525a7af80841ffc6de4d9d8b51b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "api/admin-announcement-export.js",
+      "sha256": "bd16b0ef0070a59d2100196d980856a2312f5d6255478516cd959ff016c2517e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_admin_announcement_export.js",
+        "tests/test_mock_admin.js",
+        "tools/build-staging.js",
+        "tools/staging/mock-admin.html",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "api/mock-admin.js",
+      "sha256": "c7ea8cc4fcc0184ddf88bcb832c68a217b66ad492b7d40147bde58a8f2b310a9",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_mock_admin.js",
+        "tests/test_mock_system.js",
+        "tools/staging/admin-preview-access.md",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "artifacts/calendar-parser-1151/candidate-calendar-events.json",
+      "sha256": "14b302935d2f213d6b0e23cb02122e39efef5431f27402ab0cf4b9554bb58f65",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "artifacts/calendar-parser-1151/candidate-validation-report.json",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "artifacts/calendar-parser-1151/candidate-validation-report.json",
+      "sha256": "7d96b9a30a0f3db6b7107b707c04cd6c06b889e108e022af884d1bef22dadb06",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/acceptance-dead-code-audit.md",
+      "sha256": "1c837a4294511108d8e0016d3182a09ec38eebe0f2d2a663d5422085aca07320",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/account-administration.md",
+      "sha256": "7289bf2dcc48203361bf3bbd2561c3041addb67e0c1bafd0642dde99aaa8e484",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/account-auth.js",
+      "sha256": "4e8f6af0e2a01be90033a17bfd6f3e60e90e1e4916574e7c4a6a597fe3505429",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "docs/account-config.js",
+        "docs/account-sync-v2.md",
+        "docs/capability-layer.js",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_account_auth.js",
+        "tests/test_account_roles_contract.js",
+        "tests/test_announcement_classification_admin.js",
+        "tests/test_announcement_cleanup_contract.js",
+        "tests/test_member_content_rls_contract.js",
+        "tests/test_mock_system.js",
+        "tests/test_public_access_contract.js",
+        "tests/test_staging_build.js",
+        "tests/test_supabase_sync.js",
+        "tests/test_user_refresh.js",
+        "tools/build-staging.js",
+        "tools/staging/acceptance-companion.html"
+      ]
+    },
+    {
+      "path": "docs/account-config.example.js",
+      "sha256": "a50b5f4f55ffedcd4ceffc58e19bb713696b51532fe1599b67dde4af7f91fb5f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/account-sync-v2.md"
+      ]
+    },
+    {
+      "path": "docs/account-config.js",
+      "sha256": "ff8213e3a11589c861ed3be8698d4cb29c191e5c62d214ccb736097b7cbd2303",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "api/admin-announcement-export.js",
+        "docs/account-sync-v2.md",
+        "docs/index.html",
+        "docs/staging-runbook.md",
+        "docs/sw.js",
+        "tests/test_account_auth.js",
+        "tests/test_closed_app_push.js",
+        "tests/test_mock_admin.js",
+        "tests/test_public_access_contract.js",
+        "tests/test_staging_build.js",
+        "tests/test_user_refresh.js",
+        "tools/build-staging.js",
+        "tools/staging/acceptance-companion.html",
+        "tools/staging/admin-announcement-export.md",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "docs/account-sync-v1.md",
+      "sha256": "9267e4872e0e84fadb691f0abbcf795e111ab75537e89f996fc080f01b17a963",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/account-sync-v2.md",
+      "sha256": "e57f08b02539e0e2f60a93f653268ac680c706e08dc58f579e396ba30f1565d6",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/account-sync.js",
+      "sha256": "7223f3de93cccab022bc7d7529ea382e0b1ab69da9cb492dc0a3b15392379459",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-deployed.yml",
+        "PROJECT_LEDGER.md",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_account_auth.js",
+        "tests/test_account_switch_v3.js",
+        "tests/test_account_sync.js",
+        "tests/test_calendar_browser_load_order.js",
+        "tests/test_calendar_durable_contract.js",
+        "tests/test_calendar_persistence.js",
+        "tests/test_profile.js",
+        "tests/test_staging_build.js",
+        "tests/test_supabase_sync.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/admin-announcement-csv-ui.js",
+      "sha256": "9e7d2a9cb597ad8c1cb3d39014fd5b3f4fdc6c946994a1b8d42fd9766001bc26",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_production_announcement_export.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/admin-announcement-export-source.js",
+      "sha256": "ee8259a495814fd88cc9669bb2922d151a9ab734638f6efc922c331b20d04659",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_production_announcement_export.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/admin-announcement-export.css",
+      "sha256": "1047338fae8fc2d44ea3203eb37e1bf97ffa3d77211fff70573ac5f126197214",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_production_announcement_export.js",
+        "tools/build-staging.js",
+        "tools/staging/mock-admin.html"
+      ]
+    },
+    {
+      "path": "docs/announcement-cleanup.js",
+      "sha256": "20fe148826cf7f521f72dbc78f48a5a0ce39d6172edf31bb0775b4efd7515b09",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_announcement_cleanup.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/announcement-csv.js",
+      "sha256": "f5f9a434a1182cc7c31ed3a1aa84f0de598d07856c31a917e726739bb06d0ee0",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_admin_announcement_export.js",
+        "tests/test_mock_admin.js",
+        "tests/test_production_announcement_export.js",
+        "tools/build-staging.js",
+        "tools/staging/mock-admin.html"
+      ]
+    },
+    {
+      "path": "docs/announcement-validity-reviewed.js",
+      "sha256": "dcced44c70ca9984b60fc56aaa27fc04e5804bcea4019fd0cf76911c9b83939f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/announcement-validity.js",
+        "docs/index.html",
+        "docs/sw.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/announcement-validity.js",
+      "sha256": "7aa82f4797b3a9791df80ead22c13977f235dfa00f378191312d41a5ee803656",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/assistant-qa.js",
+        "docs/index.html",
+        "docs/search-query.js",
+        "docs/sw.js",
+        "tests/fixtures/benchmark-2026-08-30-assistant-qa.js",
+        "tests/test_announcement_validity.js",
+        "tests/test_reviewed_validity_cases.js",
+        "tests/test_search_ranking.js",
+        "tools/build-staging.js",
+        "tools/evaluate-search-ranking.js"
+      ]
+    },
+    {
+      "path": "docs/app.js",
+      "sha256": "316761a884f7ae3501a08180b27d5c313f7a66303b6e5f4e7e103238bc912748",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "docs/branch-reconciliation-2026-09-03.md",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_account_auth.js",
+        "tests/test_account_roles_contract.js",
+        "tests/test_account_switch_v3.js",
+        "tests/test_admin_account_contract.js",
+        "tests/test_announcement_classification_admin.js",
+        "tests/test_announcement_cleanup_contract.js",
+        "tests/test_calendar_browser_load_order.js",
+        "tests/test_calendar_durable_contract.js",
+        "tests/test_detail_ui.js",
+        "tests/test_member_content_rls_contract.js",
+        "tests/test_mock_admin.js",
+        "tests/test_nonmember_content_gate.js",
+        "tests/test_public_access_contract.js",
+        "tests/test_pwa_notification.js",
+        "tests/test_staging_build.js",
+        "tests/test_today.js",
+        "tests/test_ui_visual_contract.js",
+        "tests/test_user_refresh.js",
+        "tools/build-staging.js",
+        "tools/staging/build-mock-system.js"
+      ]
+    },
+    {
+      "path": "docs/assistant-feedback.js",
+      "sha256": "11db19240ede3ba43f1539ff2fb9d57ea083ca52a10645df1bd06e1369e49812",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_assistant_qa.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/assistant-qa.js",
+      "sha256": "bd7fd9e24ce2c852c57a746c34eb27f639f8a343d5d35c1a6d890479cb2b1776",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_assistant_attachment_qa.js",
+        "tests/test_assistant_qa.js",
+        "tests/test_reviewed_validity_cases.js",
+        "tools/build-staging.js",
+        "tools/check-legal-compliance.js",
+        "tools/evaluate-assistant-qa.js"
+      ]
+    },
+    {
+      "path": "docs/branch-reconciliation-2026-09-03.md",
+      "sha256": "557d48b107a397c62660915f0d580e570de03e9246ae08bbb28f8c129abd9173",
+      "decision": "DELETE",
+      "reason": "一次性整合紀錄；現行規範已保留 fetch、生成資料、驗收分離等必要原則。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/calendar-state.js",
+      "sha256": "0f192ac2af0d7abdbe621cbfb6a6696da422fb90e7f00ba4e965efba5e414f9c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "docs/account-sync.js",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_account_auth.js",
+        "tests/test_calendar_browser_load_order.js",
+        "tests/test_calendar_durable_contract.js",
+        "tests/test_calendar_persistence.js",
+        "tests/test_calendar_state.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/calendar.ics",
+      "sha256": "ccc581b8c9fc153fcc4871d586e666db2d86171e196a8e3cbae88ebb140addb2",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/calendar-daily.yml",
+        ".github/workflows/scrape-hourly.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "docs/index.html",
+        "scraper/schoolcal.py",
+        "tests/test_calendar_workflow.js"
+      ]
+    },
+    {
+      "path": "docs/capability-layer.js",
+      "sha256": "9f1da2117dfcaf01d202d466bce914ecab26cf194043fa172e0a4d2689e10ba2",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "docs/account-config.js",
+        "docs/sw.js",
+        "tests/test_calendar_public_readonly.js",
+        "tests/test_mock_system.js",
+        "tests/test_public_access_contract.js",
+        "tools/build-staging.js",
+        "tools/staging/account-config.js",
+        "tools/staging/build-mock-system.js",
+        "tools/staging/mock-system-config.js"
+      ]
+    },
+    {
+      "path": "docs/data/announcements.json",
+      "sha256": "6e0b5834ff42766bc53530c5c6655dd44ac4523e225e2b6be52c0a4917ed7fd8",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "api/admin-announcement-export.js",
+        "docs/app.js",
+        "scraper/config.json",
+        "scraper/detail_backfill.py",
+        "scraper/notify.py",
+        "scraper/reminder_targets.py",
+        "scraper/scrape.py",
+        "tests/test_member_content_export.js",
+        "tests/test_mock_system.js",
+        "tests/test_pksh_staging_overlay.js",
+        "tests/test_production_announcement_export.js",
+        "tests/test_reviewed_validity_cases.js",
+        "tests/test_search_ranking.js",
+        "tests/test_staging_build.js",
+        "tools/coverage_census.py",
+        "tools/export-member-content.js",
+        "tools/live_ocr_preview.py",
+        "tools/pksh-staging-overlay.js",
+        "tools/public-metadata-projection.js",
+        "tools/staging/admin-announcement-export.md",
+        "tools/staging/build-mock-system.js",
+        "tools/staging/preview-system-corpus.js",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "docs/data/archive.json",
+      "sha256": "3f933c3a33eb33ce3fa57052f336e7ae6f8df88c25873d441e93943a19f14327",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "api/admin-announcement-export.js",
+        "docs/app.js",
+        "docs/data/schools/manifest.json",
+        "scraper/config.json",
+        "scraper/detail_backfill.py",
+        "scraper/notify.py",
+        "scraper/public_shards.py",
+        "scraper/reminder_targets.py",
+        "scraper/scrape.py",
+        "tests/test_member_content_export.js",
+        "tests/test_mock_system.js",
+        "tests/test_reviewed_validity_cases.js",
+        "tests/test_search_ranking.js",
+        "tests/test_staging_build.js",
+        "tools/coverage_census.py",
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js",
+        "tools/export-member-content.js",
+        "tools/live_ocr_preview.py",
+        "tools/public-metadata-projection.js",
+        "tools/staging/admin-announcement-export.md",
+        "tools/staging/build-mock-system.js",
+        "tools/staging/preview-system-corpus.js",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "docs/data/calendar-events.json",
+      "sha256": "9ea301daa9fb220380de8a8ea3fd1ebfd36976c058a84d3c4a860771dab3821c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/calendar-daily.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "artifacts/calendar-parser-1151/candidate-validation-report.json",
+        "docs/app.js",
+        "docs/sw.js",
+        "scraper/reminder_targets.py",
+        "scraper/schoolcal.py",
+        "tests/test_calendar_workflow.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/data/calendar-source-status.json",
+      "sha256": "5c98c89269124e844571193aedabe556b4f6aab975e1f6eec909b774f8384192",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/calendar-daily.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        "docs/app.js",
+        "scraper/schoolcal.py",
+        "tests/test_calendar_workflow.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/data/class-timetables.json",
+      "sha256": "f452c9a6810e096bfb215a30359386bf797809f7d7194abdc85c7f5757052d9c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/app.js",
+        "docs/integration-v11.md",
+        "docs/sw.js",
+        "scraper/timetable.py"
+      ]
+    },
+    {
+      "path": "docs/data/official-calendar-events.json",
+      "sha256": "8af0090d6026b3ce0daf874842e46e1f59d8bf886c4d1169738fdeb31f5a6e60",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/calendar-daily.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        "scraper/schoolcal.py",
+        "tests/test_calendar_workflow.js"
+      ]
+    },
+    {
+      "path": "docs/data/reminder-targets.json",
+      "sha256": "d5af90a5e9122e3f65bc628116e66d97e4a0463b0620eae79f6b1f5ef1496559",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/calendar-daily.yml",
+        ".github/workflows/scrape-hourly.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "scraper/reminder_targets.py",
+        "tests/test_calendar_workflow.js",
+        "tests/test_reminder_targets.py"
+      ]
+    },
+    {
+      "path": "docs/data/schools/cygsh/archive.json",
+      "sha256": "e7bc1edda2550d00fc079a3edc44b837e706fb99d93d18a08f9a0de888403a09",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "api/admin-announcement-export.js",
+        "docs/app.js",
+        "docs/data/schools/manifest.json",
+        "scraper/config.json",
+        "scraper/detail_backfill.py",
+        "scraper/notify.py",
+        "scraper/public_shards.py",
+        "scraper/reminder_targets.py",
+        "scraper/scrape.py",
+        "tests/test_member_content_export.js",
+        "tests/test_mock_system.js",
+        "tests/test_reviewed_validity_cases.js",
+        "tests/test_search_ranking.js",
+        "tests/test_staging_build.js",
+        "tools/coverage_census.py",
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js",
+        "tools/export-member-content.js",
+        "tools/live_ocr_preview.py",
+        "tools/public-metadata-projection.js",
+        "tools/staging/admin-announcement-export.md",
+        "tools/staging/build-mock-system.js",
+        "tools/staging/preview-system-corpus.js",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "docs/data/schools/cygsh/current.json",
+      "sha256": "e94cf5323cad1cf671c112a7c4c49ae989e92777bda310f752f0e6c490a6b9e2",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        "docs/app.js",
+        "docs/data/schools/manifest.json",
+        "scraper/public_shards.py",
+        "tests/test_pksh_staging_overlay.js",
+        "tests/test_public_shards.py",
+        "tests/test_pwa_notification.js",
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js",
+        "tools/pksh-staging-overlay.js",
+        "tools/public-metadata-projection.js"
+      ]
+    },
+    {
+      "path": "docs/data/schools/cysh/archive.json",
+      "sha256": "fa8ee4d0622f962952d1479970408c80cd3badf8f0d30d9bb0b2ec8f60221653",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "api/admin-announcement-export.js",
+        "docs/app.js",
+        "docs/data/schools/manifest.json",
+        "scraper/config.json",
+        "scraper/detail_backfill.py",
+        "scraper/notify.py",
+        "scraper/public_shards.py",
+        "scraper/reminder_targets.py",
+        "scraper/scrape.py",
+        "tests/test_member_content_export.js",
+        "tests/test_mock_system.js",
+        "tests/test_reviewed_validity_cases.js",
+        "tests/test_search_ranking.js",
+        "tests/test_staging_build.js",
+        "tools/coverage_census.py",
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js",
+        "tools/export-member-content.js",
+        "tools/live_ocr_preview.py",
+        "tools/public-metadata-projection.js",
+        "tools/staging/admin-announcement-export.md",
+        "tools/staging/build-mock-system.js",
+        "tools/staging/preview-system-corpus.js",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "docs/data/schools/cysh/current.json",
+      "sha256": "861c28175a98e2f843faddda2b72092965fd1ab5df89b41c81ef420bff6cdb98",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        "docs/app.js",
+        "docs/data/schools/manifest.json",
+        "scraper/public_shards.py",
+        "tests/test_pksh_staging_overlay.js",
+        "tests/test_public_shards.py",
+        "tests/test_pwa_notification.js",
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js",
+        "tools/pksh-staging-overlay.js",
+        "tools/public-metadata-projection.js"
+      ]
+    },
+    {
+      "path": "docs/data/schools/fjsh/archive.json",
+      "sha256": "751fce59b648d38541a547619e3ebae9281b24940742f0c291e3603c17262210",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "api/admin-announcement-export.js",
+        "docs/app.js",
+        "docs/data/schools/manifest.json",
+        "scraper/config.json",
+        "scraper/detail_backfill.py",
+        "scraper/notify.py",
+        "scraper/public_shards.py",
+        "scraper/reminder_targets.py",
+        "scraper/scrape.py",
+        "tests/test_member_content_export.js",
+        "tests/test_mock_system.js",
+        "tests/test_reviewed_validity_cases.js",
+        "tests/test_search_ranking.js",
+        "tests/test_staging_build.js",
+        "tools/coverage_census.py",
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js",
+        "tools/export-member-content.js",
+        "tools/live_ocr_preview.py",
+        "tools/public-metadata-projection.js",
+        "tools/staging/admin-announcement-export.md",
+        "tools/staging/build-mock-system.js",
+        "tools/staging/preview-system-corpus.js",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "docs/data/schools/fjsh/current.json",
+      "sha256": "c641d6c7570142210f96a7de3bb7b75f79795c9117444a174e3224aa8161fbd5",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        "docs/app.js",
+        "docs/data/schools/manifest.json",
+        "scraper/public_shards.py",
+        "tests/test_pksh_staging_overlay.js",
+        "tests/test_public_shards.py",
+        "tests/test_pwa_notification.js",
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js",
+        "tools/pksh-staging-overlay.js",
+        "tools/public-metadata-projection.js"
+      ]
+    },
+    {
+      "path": "docs/data/schools/manifest.json",
+      "sha256": "aba910441a1c62ca71e24a63cb421d2fe6eaa86896af6ae5368666fb0ba3f511",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        "docs/app.js",
+        "scraper/public_shards.py",
+        "tests/test_pksh_staging_overlay.js",
+        "tools/pksh-staging-overlay.js",
+        "tools/staging/build-mock-system.js"
+      ]
+    },
+    {
+      "path": "docs/data/schools/pksh/archive.json",
+      "sha256": "85a138c3e3956f76b70dd7a0a04e1dbc0cf9aad7bec4cb57c5db346893ab2a75",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "api/admin-announcement-export.js",
+        "docs/app.js",
+        "docs/data/schools/manifest.json",
+        "scraper/config.json",
+        "scraper/detail_backfill.py",
+        "scraper/notify.py",
+        "scraper/public_shards.py",
+        "scraper/reminder_targets.py",
+        "scraper/scrape.py",
+        "tests/test_member_content_export.js",
+        "tests/test_mock_system.js",
+        "tests/test_reviewed_validity_cases.js",
+        "tests/test_search_ranking.js",
+        "tests/test_staging_build.js",
+        "tools/coverage_census.py",
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js",
+        "tools/export-member-content.js",
+        "tools/live_ocr_preview.py",
+        "tools/public-metadata-projection.js",
+        "tools/staging/admin-announcement-export.md",
+        "tools/staging/build-mock-system.js",
+        "tools/staging/preview-system-corpus.js",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "docs/data/schools/pksh/current.json",
+      "sha256": "e129353817949a020b4ffb0482ba656f50ae3ed1cf80b8f9546c15844d8739aa",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        "docs/app.js",
+        "docs/data/schools/manifest.json",
+        "scraper/public_shards.py",
+        "tests/test_pksh_staging_overlay.js",
+        "tests/test_public_shards.py",
+        "tests/test_pwa_notification.js",
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js",
+        "tools/pksh-staging-overlay.js",
+        "tools/public-metadata-projection.js"
+      ]
+    },
+    {
+      "path": "docs/detail-ui.js",
+      "sha256": "01a9c8865c806226b0d3614aa1c19cc46f52c1cc9681b102d342df3483efeeca",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_detail_ui.js",
+        "tests/test_staging_build.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/icons/icon-192.png",
+      "sha256": "21b4986211a2e0c9c32f51e8bed83c27e7ec9c65b21ac8801e170a6d9fda0f87",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/app.js",
+        "docs/index.html",
+        "docs/manifest.webmanifest",
+        "docs/sw.js",
+        "tools/staging/manifest.webmanifest"
+      ]
+    },
+    {
+      "path": "docs/icons/icon-512.png",
+      "sha256": "1ec08024008443558357ac64b9f620451038a5cca878086c05911125c34ebc4f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/manifest.webmanifest",
+        "docs/sw.js",
+        "tools/staging/manifest.webmanifest"
+      ]
+    },
+    {
+      "path": "docs/icons/icon-maskable-512.png",
+      "sha256": "7b04316d71c9495113e9302cef4a1ed1b8402f004cf696f9c3fbf615568bc32a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/manifest.webmanifest",
+        "tools/staging/manifest.webmanifest"
+      ]
+    },
+    {
+      "path": "docs/index.html",
+      "sha256": "ff80a0b7663c01c17daabbb3b789727772e733b8a0c348f216611140a6be280d",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "docs/sw.js",
+        "tests/fixtures/benchmark-2026-08-30-archive.json",
+        "tests/fixtures/benchmark-2026-08-30-current.json",
+        "tests/test_account_auth.js",
+        "tests/test_account_roles_contract.js",
+        "tests/test_announcement_classification_admin.js",
+        "tests/test_announcement_cleanup_contract.js",
+        "tests/test_calendar_browser_load_order.js",
+        "tests/test_calendar_durable_contract.js",
+        "tests/test_detail_ui.js",
+        "tests/test_nonmember_content_gate.js",
+        "tests/test_production_announcement_export.js",
+        "tests/test_public_access_contract.js",
+        "tests/test_pwa_notification.js",
+        "tests/test_staging_build.js",
+        "tests/test_ui_visual_contract.js",
+        "tools/build-staging.js",
+        "tools/check-legal-compliance.js",
+        "tools/staging/build-mock-system.js",
+        "tools/staging/mock-admin.html"
+      ]
+    },
+    {
+      "path": "docs/integration-v11.md",
+      "sha256": "032a581d15bd67ac6df12e643e0669feee0d061d976933a21456ec077611f50a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/legal-compliance.json",
+      "sha256": "98d7f9dff73b34f7a4ba6c73b53c29b7afd47ca270e46f37a90015afd3ad3222",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/production-release-evidence.md",
+        "docs/sw.js",
+        "tests/test_production_release_evidence.js",
+        "tools/build-staging.js",
+        "tools/check-legal-compliance.js"
+      ]
+    },
+    {
+      "path": "docs/legal.html",
+      "sha256": "04a7fcdb85ed7250c966040719a4d6c9265bb9cc556a62eed8737ab84c8871a0",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "docs/index.html",
+        "docs/sw.js",
+        "tools/build-staging.js",
+        "tools/check-legal-compliance.js"
+      ]
+    },
+    {
+      "path": "docs/manifest.webmanifest",
+      "sha256": "2fb28b30a3f2035c3260b8700231c0979bf6e9ebf1ea444743b7b06a5236d425",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "README.md",
+        "docs/index.html",
+        "docs/sw.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/notification-state.js",
+      "sha256": "c1f91f2284802398690201594cb7d7a8cb6142c4f4c9ba1ef6ae22799eef33e8",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/app.js",
+        "docs/sw.js",
+        "tests/test_pwa_notification.js"
+      ]
+    },
+    {
+      "path": "docs/personal-assistant-m3.5-notifications.md",
+      "sha256": "7898903c4fe3c57cfb2a3af8651846433235725bb06fcf5e0546b123923722cc",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/personal-assistant-m3.md",
+      "sha256": "68b9d7429e2f2e752a7e57287e00a307faf52d3cd20143eda6eb0d58037b576f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/personal-assistant-m4-task-design.md",
+      "sha256": "93b519a9786b792888acc9976a808cd00856f48bdee12011166819def839c8c7",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/pksh-windows-research.md",
+      "sha256": "59b144645fb12edd4e533dde25da03caecc2ccdda8ba2ab9e03b41d4b77ec172",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/privacy-retention-policy.md",
+      "sha256": "c4b60ed067ba54144fd2e3efc7fd9254125e6e52e7fe8e89487419914753136a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/legal-compliance.json",
+        "docs/legal.html",
+        "tools/check-legal-compliance.js"
+      ]
+    },
+    {
+      "path": "docs/production-release-evidence.md",
+      "sha256": "ae9b4bf6a7ab5110365504f98c8867a4bca96885436d6a8f061de332a5c33bf5",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_production_release_evidence.js"
+      ]
+    },
+    {
+      "path": "docs/profile.js",
+      "sha256": "50edf9a060efbee004f17194f6dc1057a1200ea2ded679cba0783195d4975fcd",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_profile.js",
+        "tests/test_pwa_notification.js",
+        "tests/test_relevance.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/push-subscription.js",
+      "sha256": "3a8ca4cd9664f1fee2eb120366229bc2b98d3d130e35cab4066d8b4016314816",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_push_subscription.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/relevance.js",
+      "sha256": "130c98a60687eb371b91dba85013bb218469666141b9d85431209599d1569404",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md",
+        "docs/index.html",
+        "docs/personal-assistant-m3.md",
+        "docs/sw.js",
+        "tests/test_pwa_notification.js",
+        "tests/test_relevance.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/reminder-architecture.md",
+      "sha256": "d8cfe33baac05a77f595e80631376019db17e855607e91cec704af52dd9b8e0e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/reminder-rules.js",
+      "sha256": "b32feb0d05a1e52941424865e847cdd839d3b09e1e325413a93db9ce5ba256de",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_reminder_historical_flood.js",
+        "tests/test_reminder_rules.js",
+        "tests/test_reminder_rules_client.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/rls-acceptance-v2.md",
+      "sha256": "a153e90e6861bf9c07b42980e8b456bf966250cfd72761f37e839a20702024aa",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_production_release_evidence.js"
+      ]
+    },
+    {
+      "path": "docs/rls-verification-2026-08-30.md",
+      "sha256": "a00aeede53f5fb2bcefec03f8681a4229f78f0b6ec496a9fcea1db9220d51f9f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/legal-compliance.json",
+        "tools/check-legal-compliance.js"
+      ]
+    },
+    {
+      "path": "docs/school-registry.js",
+      "sha256": "c4675fc4ff97a8ff9250a15cdadd5e9cebe18f3120c8bb23d8d0da3c54c3c93c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_assistant_qa.js",
+        "tests/test_pwa_notification.js",
+        "tests/test_relevance.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/search-query.js",
+      "sha256": "d4dc58ea929432c5633d6a1e84534c53f281d8f8d66e8c6e7555d82f6b4e618e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/assistant-qa.js",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/fixtures/benchmark-2026-08-30-assistant-qa.js",
+        "tests/test_pwa_notification.js",
+        "tests/test_search_ranking.js",
+        "tools/build-staging.js",
+        "tools/evaluate-search-ranking.js"
+      ]
+    },
+    {
+      "path": "docs/search-taxonomy.js",
+      "sha256": "8e9d57901b675cee07f346b441a987eb24647271335c100efb9158affe80fabe",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/search-query.js",
+        "docs/sw.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/source-rights-audit.md",
+      "sha256": "3fcaf1f72d517d9cd13114b7ad0b7dcee81b57f83efa7da7c81e0b0ebaf50016",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/legal-compliance.json",
+        "docs/legal.html",
+        "tools/check-legal-compliance.js"
+      ]
+    },
+    {
+      "path": "docs/staging-runbook.md",
+      "sha256": "15766187ae8e8a016d049fa210510ee6afe1c64cbe7a0ca813369c43facf951f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/staging-user-refresh.md",
+      "sha256": "8ef6cf0ec6ca39c53da88396e8bfde88dd5cc0221e5eb42bc5598bbabaef3c28",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "docs/style.css",
+      "sha256": "ed0a83f8c0f16d7432a4965c2f645d2f83c84f8e632c31aaa063e5d6c377a587",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "docs/index.html",
+        "docs/legal.html",
+        "docs/sw.js",
+        "tests/test_account_auth.js",
+        "tests/test_admin_account_contract.js",
+        "tests/test_ui_visual_contract.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/supabase-sync.js",
+      "sha256": "eebc2cfd10a5deebd99857179069ed129a68cc35d49a4e2a997dec04eaf6ad3e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-deployed.yml",
+        "PROJECT_LEDGER.md",
+        "docs/account-sync-v2.md",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_account_roles_contract.js",
+        "tests/test_account_switch_v3.js",
+        "tests/test_calendar_durable_contract.js",
+        "tests/test_mock_system.js",
+        "tests/test_supabase_sync.js",
+        "tests/test_timetable_only_sync.js",
+        "tools/build-staging.js",
+        "tools/staging/acceptance-companion.html"
+      ]
+    },
+    {
+      "path": "docs/sw.js",
+      "sha256": "b4c6b19ceab0d937b001166f5addfc8490cabc0588b62bbb38e83376da665178",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "docs/app.js",
+        "tests/test_account_auth.js",
+        "tests/test_closed_app_push.js",
+        "tests/test_detail_ui.js",
+        "tests/test_production_announcement_export.js",
+        "tests/test_pwa_notification.js",
+        "tests/test_staging_build.js",
+        "tests/test_sw_notification_click.js",
+        "tests/test_ui_visual_contract.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/task-state.js",
+      "sha256": "a4f11d1d0b7bdccacc2cfe8df6a73f7e511e777b708707eec932454a08ec9d5c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "docs/account-sync.js",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_account_sync.js",
+        "tests/test_task_state.js",
+        "tests/test_today.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/today.js",
+      "sha256": "782e0f2f1d80ea3db4f5c609d84f0e78604e3d51d336770ffa929fe230356e2d",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_reminder_historical_flood.js",
+        "tests/test_today.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "docs/校網爬蟲架設技術紀錄.md",
+      "sha256": "95f8da3ec55074c13bc01f77c98a88877e03d00be6ad7d54db59ac7d264159f9",
+      "decision": "DELETE",
+      "reason": "舊 staging 架設與驗收紀錄，不再用作開發啟動指令；現行資料邊界已有專用政策與測試。",
+      "lexical_references": [
+        "AGENTS.md"
+      ]
+    },
+    {
+      "path": "scraper/announcement_classifier.py",
+      "sha256": "bc7aef6f2cc11256a99160ee4702c4255699e2250e5bccde5508bed834408cb8",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "scraper/attachment_parser.py",
+      "sha256": "704e8710303906e20b2a7845547b95ee9f79a50a88c7eec172c1c3e6915a37ef",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/assistant-ocr-live-preview.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "scraper/calendar_adapter.py",
+      "sha256": "f4731b42547812044bd3fdd4f3dbe070ee91cce580e0e1a45faeccd2d05c6acd",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "scraper/calendar_schema.py",
+      "sha256": "7b08bd4625fe9f41eca7ecf79e5a249504b2c093fe98eea4466f9339080727ad",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "scraper/classification_index.py",
+      "sha256": "015fb5d267ee361fcfc328af8ee1ffc9e6124a799a5f2918a873fa3ae488a2d8",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "scraper/classification_taxonomy.py",
+      "sha256": "2929a316f566c17b8d5c74ce1135682b215f3f0fc6ff64446e34ceb0a9531954",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "scraper/config.json",
+      "sha256": "7fe7648fe8bc4ef93224f95ab8c5e6260a5d6f9d73b226528348605d110181be",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "README.md",
+        "scraper/coverage_gaps.json",
+        "scraper/discover.py",
+        "scraper/discovery_report.md",
+        "scraper/scrape.py",
+        "tests/test_user_refresh.js",
+        "tools/check-legal-compliance.js",
+        "tools/coverage_census.py"
+      ]
+    },
+    {
+      "path": "scraper/coverage_gaps.json",
+      "sha256": "e65f4ec95f14a04cb1466aa87f1ee1d92606db985b9b5c39755f962bc636d628",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/scrape-hourly.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "scraper/discovery_report.md",
+        "scraper/scrape.py"
+      ]
+    },
+    {
+      "path": "scraper/detail_backfill.py",
+      "sha256": "bd4d28d90f21f6dbd29fd7abc7486392616943f423bf09d9f0f82417d8cbef37",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/assistant-ocr-live-preview.yml",
+        ".github/workflows/assistant-ocr-staging-sync.yml",
+        ".github/workflows/scrape-hourly.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "scraper/detail_parser.py",
+      "sha256": "b4fc9e870dd551167ccd9189a282bdde90370048a5a4571cb5660d006e5d7f3b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "scraper/discover.py",
+      "sha256": "38fa1ba5aae41dfffce5a099a1ab5fe1c1f8d443817d0b865b2be78669e3e724",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "README.md",
+        "scraper/discovery_report.md"
+      ]
+    },
+    {
+      "path": "scraper/discovery_report.md",
+      "sha256": "976f8d383ed8009fbf1a589406e5be163d198bf10c792196bc1eaa90c64ace23",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "README.md",
+        "scraper/discover.py"
+      ]
+    },
+    {
+      "path": "scraper/events.json",
+      "sha256": "7a9c0b81a22cafc0bb1776bd255c4ca0629658830cdfb11c087c3612a148c068",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/calendar-daily.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "README.md",
+        "artifacts/calendar-parser-1151/candidate-validation-report.json",
+        "docs/app.js",
+        "docs/sw.js",
+        "scraper/reminder_targets.py",
+        "scraper/schoolcal.py",
+        "tests/test_calendar_workflow.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "scraper/extractive_summary.py",
+      "sha256": "6c2fa4eaefc1425533242afc0bbbfbecefcb9780b5ef40262916b085be17b61e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "scraper/fetch_state.json",
+      "sha256": "9b2d2b3704c0de49a46cde11bf22b7a2d74801fc12d1f3451fced0677cfef856",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/scrape-hourly.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "docs/branch-reconciliation-2026-09-03.md",
+        "scraper/detail_backfill.py",
+        "scraper/scrape.py"
+      ]
+    },
+    {
+      "path": "scraper/local_ocr.py",
+      "sha256": "0a0d2646c0bbc1fdb684b4be590a83757e5ebe6bda3ca2ab59c23f1948313ba9",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/assistant-ocr-live-preview.yml"
+      ]
+    },
+    {
+      "path": "scraper/notification_outbox.json",
+      "sha256": "e92199b2e85e78edb04c86acef49faacfcd904e2d37ffc772c53b128560fa48f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/scrape-hourly.yml",
+        "docs/branch-reconciliation-2026-09-03.md",
+        "scraper/notify.py"
+      ]
+    },
+    {
+      "path": "scraper/notify.py",
+      "sha256": "d3fb0c7583bd68acb477942c41d80e2487938e2908882c044c1dde3fb2843e30",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/scrape-hourly.yml",
+        "README.md",
+        "tests/test_parser.py"
+      ]
+    },
+    {
+      "path": "scraper/pksh_windows_fetch.ps1",
+      "sha256": "d5c79fb4e24b2769dfbe9b3bfe954efb74ba171a029aa30a58cc2367798d6a5b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/pksh-windows-research.md",
+        "tests/test_pksh_windows_handoff.py"
+      ]
+    },
+    {
+      "path": "scraper/public_shards.py",
+      "sha256": "1f10d298170628293479577bce4be7a1e3dfd8e25ef556d6c8a0d57b433c4cdc",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "scraper/reminder_targets.py",
+      "sha256": "f0c4c302a3a18b1e31371fcda0089e96b2d48c9863bca5355ea8fcd0edbfa52f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/calendar-daily.yml",
+        ".github/workflows/scrape-hourly.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md",
+        "docs/branch-reconciliation-2026-09-03.md",
+        "tests/test_calendar_workflow.js",
+        "tests/test_reminder_targets.py"
+      ]
+    },
+    {
+      "path": "scraper/requirements-ocr.txt",
+      "sha256": "70fb5e02595e95d2c7fe0356ee5c11d340f0037126226ceac435b703f0fa11e5",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/assistant-ocr-live-preview.yml",
+        ".github/workflows/assistant-ocr-staging-sync.yml"
+      ]
+    },
+    {
+      "path": "scraper/requirements.txt",
+      "sha256": "0a18ed82c2d16aa3303905f7991da1f237e93618e62a8c84420a7d5de269deca",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/calendar-daily.yml",
+        ".github/workflows/pksh-windows-production.yml",
+        ".github/workflows/scrape-hourly.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        ".github/workflows/staging-validation.yml",
+        "README.md",
+        "docs/branch-reconciliation-2026-09-03.md",
+        "scraper/requirements-ocr.txt"
+      ]
+    },
+    {
+      "path": "scraper/school_registry.py",
+      "sha256": "e449627098e72e8940948e5b14867f1d3b52ac2dd3852ade32fadb0b70e94d50",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "scraper/schoolcal.py",
+      "sha256": "6d8d1992991af38fc7058049373e3a12614cf3abf518649a387b9092f6b7b90e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/calendar-daily.yml",
+        ".github/workflows/scrape-hourly.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "tests/test_calendar_workflow.js"
+      ]
+    },
+    {
+      "path": "scraper/scrape.py",
+      "sha256": "ffdd6229496e54e117eeffd3ac97ddaa4790062681c87a1f47a58dbca9248cc4",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/scrape-hourly.yml",
+        ".github/workflows/staging-detail-backfill.yml",
+        ".github/workflows/staging-user-refresh.yml",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "scraper/discovery_report.md",
+        "scraper/school_registry.py",
+        "tests/test_parser.py",
+        "tools/check-legal-compliance.js"
+      ]
+    },
+    {
+      "path": "scraper/site_map.json",
+      "sha256": "378b7a660f9b34b92630eebdae538c75f3dab4c1df9fd110f85d805d924d6800",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "README.md",
+        "scraper/discover.py",
+        "tools/coverage_census.py"
+      ]
+    },
+    {
+      "path": "scraper/subscriptions.json",
+      "sha256": "9c6b27a0d28acb74305b96dc882fddee2eb1acd09b588d0f59f2ad6289529e86",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "README.md",
+        "scraper/notify.py"
+      ]
+    },
+    {
+      "path": "scraper/timetable.py",
+      "sha256": "ee4661f392301dbfd7817eb15538ac73b01c7c9cf5856aed6174236840602b10",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/scrape-hourly.yml"
+      ]
+    },
+    {
+      "path": "scraper/timetable_adapter.py",
+      "sha256": "1bdad51ca847a3dec3d9535645d41cf84b920184c5e1cd44cca29449be7842e4",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "staging-data/pksh-metadata.json",
+      "sha256": "43592386f0631ce3b0462461ba296b40706d1e18faa3e5d4bd9fbb19549a37e7",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        ".github/workflows/staging-validation.yml",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "supabase/config.toml",
+      "sha256": "11860dfd921f43270386f3fa9bba36813466af507de7c8025feaa9ce7b8bc184",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_closed_app_push.js",
+        "tests/test_reminder_target_sync.js",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js",
+        "tests/test_username_auth_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/contracts/staging_refresh_request.sql",
+      "sha256": "35ab9a01fbed455d8156f683028c5b1b1590d3396a4ed7eb244434d3929038cc",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/staging-user-refresh.md",
+        "tests/test_user_refresh.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/account-email-worker/deno.json",
+      "sha256": "862abebccdf628d9f7c439f2f7e15656bf7f6887af3cfe1bb4e9f43046d7ff42",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/account-email-worker/index.ts",
+      "sha256": "d848892879dee65eeb1e6eaa30c1fdce9d444036617afd52ce5efdc05f3d81f8",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_account_roles_contract.js",
+        "tests/test_closed_app_push.js",
+        "tests/test_reminder_target_sync.js",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js",
+        "tests/test_username_auth_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/announcement-content-sync/deno.json",
+      "sha256": "769fc43a3a09481c0d140a8ee564a5f2ec3ef8b1bd7a2afa7051a920d1fd4c09",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/announcement-content-sync/index.ts",
+      "sha256": "f3f99982995435180816cac86e7287162642a649fc9a5c3a178415af10011ba4",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_account_roles_contract.js",
+        "tests/test_closed_app_push.js",
+        "tests/test_reminder_target_sync.js",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js",
+        "tests/test_username_auth_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/reminder-target-sync/.npmrc",
+      "sha256": "93e6e27faa042dc04d2f4028618bec0097fd7b3b985ce6572e8509733062192d",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/functions/reminder-target-sync/deno.json",
+      "sha256": "862abebccdf628d9f7c439f2f7e15656bf7f6887af3cfe1bb4e9f43046d7ff42",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/reminder-target-sync/index.ts",
+      "sha256": "62371813bc3982493a5f043366349861c489efb0f98e8be350d43720d854501d",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_account_roles_contract.js",
+        "tests/test_closed_app_push.js",
+        "tests/test_reminder_target_sync.js",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js",
+        "tests/test_username_auth_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/reminder-worker/.npmrc",
+      "sha256": "2cc495d5b8918533470e2666eccfcc0532a2a75699e8ad7c887163c83322ab55",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/functions/reminder-worker/deno.json",
+      "sha256": "2575f03f759f5d9bfc3fb655a7df201c032857bb98cbf2cd6de8970232b4eb34",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/reminder-worker/index.ts",
+      "sha256": "b56c474d900e3481dd041db545d0a357924cc27fb17939f09992661d94a51060",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_account_roles_contract.js",
+        "tests/test_closed_app_push.js",
+        "tests/test_reminder_target_sync.js",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js",
+        "tests/test_username_auth_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/request-staging-refresh/deno.json",
+      "sha256": "862abebccdf628d9f7c439f2f7e15656bf7f6887af3cfe1bb4e9f43046d7ff42",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/request-staging-refresh/index.ts",
+      "sha256": "d15db6ae8032c041fa8930f995f2237d24b2f8eb1f4da60564288f6247f4f80f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_account_roles_contract.js",
+        "tests/test_closed_app_push.js",
+        "tests/test_reminder_target_sync.js",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js",
+        "tests/test_username_auth_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/username-auth/deno.json",
+      "sha256": "32c4b4de76e130e1df1dab3645319e94fb3c7041905602f3b7c5466444e579a6",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js"
+      ]
+    },
+    {
+      "path": "supabase/functions/username-auth/index.ts",
+      "sha256": "354daba5b9cfd5446e05fa1adecc1c95a2b5b478b7aed14117f28d0bafea47df",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "supabase/config.toml",
+        "tests/test_account_roles_contract.js",
+        "tests/test_closed_app_push.js",
+        "tests/test_reminder_target_sync.js",
+        "tests/test_reminder_worker.js",
+        "tests/test_user_refresh.js",
+        "tests/test_username_auth_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/001_account_sync_v1.sql",
+      "sha256": "c520db832ccdeef91e9e5f836c4d61f43c4f1b41a61dae605e46a82234c27d23",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/account-sync-v1.md",
+        "tests/test_account_security.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/0021_user_tasks.sql",
+      "sha256": "7bbdd245540aa1d7604316a03f1a9b49378a544a02d27e47463a45ea4e9b0845",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "tests/test_rls_sql_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/002_account_security_hardening.sql",
+      "sha256": "5020453c3d2a01321babc30c7e50f635886fc29efd8599eda45a972aa6a6aba8",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/003_reminder_push_foundation.sql",
+      "sha256": "eaf03fb637dbe00e8f7beb0da532fa8680764151bcc91d7f330cd8505820e970",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_reminder_schema.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260824064402_reminder_delivery_hardening.sql",
+      "sha256": "a7eb60c780e0781f0d8e0a08e242e560915b9c987d7d3698404214d0d304afd6",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260824072306_reminder_worker_rpc.sql",
+      "sha256": "ad33f849b3fe5e09bfec0f9b88f14af8476b2e1b18bdaccdb61bb6dd05c85a92",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260831000000_username_password_login.sql",
+      "sha256": "79e0806f5f194533630e99ee5f86c9233a0cd00c6455c1b1f524f6c59328475e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_username_auth_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260902164000_session_owned_user_data.sql",
+      "sha256": "40bc0959d43d4a6c59d66486d42cc28cceb8ccace5f48eac7f3b387c96285148",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260902165000_revoke_reminder_browser_delete.sql",
+      "sha256": "c437d28194700f0704ab6295e95037492f02a920562ed1c8eab973b92b5ed7f4",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260903224000_admin_account_panel.sql",
+      "sha256": "e8aa2d9eea3de8e71c5ff0c3290af035a56c3d922bc82190fac334ef4c8e5e82",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_admin_account_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260903224500_revoke_pending_account_trigger_rpc.sql",
+      "sha256": "79e57ab639f32fde985814c7e3107841df7c2047b9bbfac770db00716afc329f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260904010000_require_approved_account_access.sql",
+      "sha256": "b93edcda68472a628c52d9c40016eee5f89778424be38a16b53af00248d4f3d3",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_account_approval_rls_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260905073356_fix_admin_account_list_types.sql",
+      "sha256": "db5a5728acc3d47d1a0466c79763b1cd77a649e008289d74378bd63f73509feb",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260905083758_account_roles_service_levels_and_email_outbox.sql",
+      "sha256": "d93ff027ff4b26f7ae2b39b6972694f6db3a88a6895cc6e210bd242095f0608a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_account_roles_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260905085047_fix_account_email_outbox_arguments.sql",
+      "sha256": "520bf8482437ec66707d6739872cbbfaa890aab031f88926ed395180ef98551c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260905085250_remove_legacy_admin_path_and_add_indexes.sql",
+      "sha256": "5d3c53d7e2d058149c7d0d002b75b060b4a52575bd65054df86940e31afd9e99",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_account_roles_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260905115331_protected_announcement_member_content.sql",
+      "sha256": "00ef89e9b1a5295e3f79d20aa26ecc00fcc5a5388a588a002646b4957669c43b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_member_content_rls_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260910080000_account_capabilities_v1.sql",
+      "sha256": "b63c758c4e26141690ce4c7ff96e209fc3c63d76ef7f5d8e354c258a223ca541",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260910090000_account_capability_enforcement_v1.sql",
+      "sha256": "fe3416ae7091386594824d1f19d5a383c56a2a586306c21675f623a43d91fde9",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260910103000_account_capabilities_admin_and_enforcement_v2.sql",
+      "sha256": "b00ce369b5d8d0f8c37d7e75d2cb6b9376c40a4769a1420d50c3aa7cd92dcb5c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260910200700_capability_policy_cutover_v1.sql",
+      "sha256": "669ff6122e675cc4fcb22dbc77287a90bb14a34f4bc666474592df12c4b5b80e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260911004500_preserve_member_detail_during_summary_sync.sql",
+      "sha256": "d22299f5837de653fb3849e143799fe8f90008e07f7d0046e2bbf08fe4c4cddb",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_member_content_export.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260911160000_announcement_lifecycle_cleanup.sql",
+      "sha256": "05350bed54cdf342863a34565dd7ec9d28b85a241f67a6cee92d9f6d73e7bb14",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260911183000_announcement_archive_reference.sql",
+      "sha256": "f6b0761627e6b54b317d36e7d9bcfd796c62633b7c34de457a6f95db63d72f1c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_announcement_cleanup_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260911184000_archive_publish_date_guard.sql",
+      "sha256": "23b7182e2e450d1e80f1bc517d3843db5c149e9e59e47078131af7e7a285148d",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "supabase/migrations/20260912061752_announcement_classification_v1_recovery.sql",
+      "sha256": "32cd144dec709bd6c4b02c0e25e16d17adc2320de528b4ee6543ed575495a26b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "PROJECT_LEDGER.md",
+        "tests/test_announcement_classification.py",
+        "tests/test_announcement_classification_admin.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260916110000_user_calendar_events.sql",
+      "sha256": "0de8afebb2bf45c19abd236686e326d21d786949e350e29df4c123047ca6e802",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_calendar_rls_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260919123614_public_access_and_multi_owner.sql",
+      "sha256": "729f3edbeadc0a827dd627b6ab29215cb852273f1b8db5a00c7ca14fe679a3b6",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_public_access_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/migrations/20260920121839_remove_public_notifications.sql",
+      "sha256": "5fecef756ed2b2893e4af4d93636302f0eb8cdac4ee2b939b073e2ba1a48d3ba",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_public_access_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/scheduler/activate_account_email_cron.sql",
+      "sha256": "7f181f1e370a5ef24275a7c989f9bd4892349db2ef15aec0bd360096a4800d39",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/account-administration.md",
+        "tests/test_account_roles_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/scheduler/activate_reminder_cron.sql",
+      "sha256": "21a589f883cf1535d22d9914280fba0cc1ad68d39ba6c9e277b3d22ae634e760",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/reminder-architecture.md",
+        "tests/test_closed_app_push.js",
+        "tests/test_reminder_scheduler.js"
+      ]
+    },
+    {
+      "path": "supabase/tests/database/public_access_rls.test.sql",
+      "sha256": "a839b48f6daeace505bb286786eb854151b4bf599b246a185a917e4c259dee75",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-local.yml",
+        "tests/test_public_access_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/tests/database/reminder_rls.test.sql",
+      "sha256": "bea55fb61e6ad7c721922412cfeb28ea582c2a33314464ff6c299fae9369f586",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-local.yml",
+        "docs/rls-acceptance-v2.md",
+        "tests/test_rls_sql_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/tests/database/user_calendar_events.test.sql",
+      "sha256": "0569c143f16766dc44366e46162ce679b8df8298c2a884b1b7922e5945b77661",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-local.yml",
+        "tests/test_calendar_rls_contract.js"
+      ]
+    },
+    {
+      "path": "supabase/tests/database/user_tasks_rls.test.sql",
+      "sha256": "d9b1afbca53163670463f03249f88340f95fda5b68d7aaef9c04c7cabe624485",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-local.yml",
+        "PROJECT_LEDGER.md",
+        "docs/acceptance-dead-code-audit.md",
+        "docs/rls-acceptance-v2.md",
+        "tests/test_rls_sql_contract.js"
+      ]
+    },
+    {
+      "path": "tests/fixtures/assistant-qa-cases.json",
+      "sha256": "571c3624c2cfad46f112fe8b897d6b278a25452c38f2634080bb0238c7fe45d0",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/evaluate-assistant-qa.js"
+      ]
+    },
+    {
+      "path": "tests/fixtures/benchmark-2026-08-30-archive.json",
+      "sha256": "88caa72ea53a155be0ab4c1734a132f7ab21c5994b0610be6e29244933a63c86",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js"
+      ]
+    },
+    {
+      "path": "tests/fixtures/benchmark-2026-08-30-assistant-details.json",
+      "sha256": "db36d75fef1415f6230e7b8cea9bb063304553fcfe10bff94d5692dc3aa353c3",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/evaluate-assistant-qa.js"
+      ]
+    },
+    {
+      "path": "tests/fixtures/benchmark-2026-08-30-assistant-qa.js",
+      "sha256": "6fb43e2b0784079a5d188c5b5f3fe31822341859b16aae7b5e46a6860f4c142a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/evaluate-assistant-qa.js"
+      ]
+    },
+    {
+      "path": "tests/fixtures/benchmark-2026-08-30-current.json",
+      "sha256": "21c31a7b71db4f49c6d76f60557644257c16e52c7cbdd581620101985140e3bd",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/evaluate-assistant-qa.js",
+        "tools/evaluate-search-ranking.js"
+      ]
+    },
+    {
+      "path": "tests/fixtures/calendar_115_1_layout_sources.json",
+      "sha256": "5c19e2ce6e8714244bd296acca6bd64c4b8ec74ec38a357b1139d6a161a891e6",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/fixtures/calendar_cygsh_114_1.txt",
+      "sha256": "15fe675c829f85dd1199dcf0f09d29afddeb725869a106be951c6508d7432231",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/fixtures/calendar_cygsh_114_2.txt",
+      "sha256": "8cbf1d06b3ba766817ba97211bb01af639f353cfa2e3c5f0c9fa3223b882c12e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_calendar_adapter.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/calendar_cygsh_115_1_layout.txt",
+      "sha256": "f2a25fb426ddde54338094f035a4450d2c74cb9ee44d2d263ad0f912ad31cf38",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "artifacts/calendar-parser-1151/candidate-validation-report.json",
+        "tests/fixtures/calendar_115_1_layout_sources.json",
+        "tests/test_calendar_adapter.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/calendar_cysh_114_1.txt",
+      "sha256": "db5cc66bdfa292acda73ee8338c03c21dbe1e3d9f4f0edb4bda7d7fc920c475c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_calendar_adapter.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/calendar_cysh_114_2.txt",
+      "sha256": "bd3210df487efccc9288c83937ca02581b8c107d48eb7de0e35d8e47a89a024c",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/fixtures/calendar_cysh_115_1_layout.txt",
+      "sha256": "78b8c28eac8f5767a8dc26e6730a9355b2d9f7d6d5ec603af94f8340e861cde4",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "artifacts/calendar-parser-1151/candidate-validation-report.json",
+        "tests/fixtures/calendar_115_1_layout_sources.json",
+        "tests/test_calendar_adapter.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/calendar_cysh_115_summer.txt",
+      "sha256": "e9fe77be9cf98f43a9e38d4b549616fff3ec8cef860060e1a8db5b613ab28bfb",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/fixtures/classification_v1_cases.json",
+      "sha256": "5c9ea36f68c3d36ee744be65663a00db2403cbaa8b1db82eb4ff4301e79dc370",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_announcement_classification.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/detail_cygsh.html",
+      "sha256": "78915299601138014e2135873d304283be19173a60dd6fbee5dab6275a8f1a87",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_detail_parser.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/detail_cysh.html",
+      "sha256": "e11aa2488dcebf1c274af71185cd4070b565060848e924c51f7671735ff522d1",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_detail_parser.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/pksh_detail.html",
+      "sha256": "9aa4c1d34472df45d5667e396a1279710652284727dfef6c20f52a1f29cc347a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_pksh_adapter.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/pksh_detail_api.json",
+      "sha256": "ca2fa1ea63c1f60ed07e9447b5fd631fdef704d7e58396986a3c4ea7f1ec02e7",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_pksh_member_content.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/pksh_list.html",
+      "sha256": "fd88f2f2488a42221923f2a0ccaf06931f51bff10eb22749fac9438341d839c7",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_pksh_adapter.py",
+        "tests/test_pksh_windows_handoff.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/pksh_list_api.json",
+      "sha256": "be2bd2545c39f2252d9f111f38787c6f339d37ce1a52a2739179cd21bda91a75",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_pksh_windows_handoff.py"
+      ]
+    },
+    {
+      "path": "tests/fixtures/search-ranking-cases.json",
+      "sha256": "4d4da271e21a60056b2d11b229145a70e0a292efe9e77a7fa8e6bf554d3e1073",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/evaluate-search-ranking.js"
+      ]
+    },
+    {
+      "path": "tests/test_account_approval_rls_contract.js",
+      "sha256": "76efaf3cbfb76c77bb492a172f184966a3e2c70ab9b1ae080ab5d9496e59067b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_account_auth.js",
+      "sha256": "091769deae3aa323985dba6519bb1ac179296fc320302275aa59f8d052108e2a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_account_roles_contract.js",
+      "sha256": "44d666695775328a76e87d84c5dfc4eac572b9f0d1045b52bed0332cd241445b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_account_security.js",
+      "sha256": "ca3a8519a67ba7f99860b280db045987aa7c3a418cae943d1534bbbec45bd07a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_account_switch_v3.js",
+      "sha256": "08f41c01fd0f381ca6b17433ab71d8c2a0e49daee0e5ae3dbbd842049ed4f992",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-deployed.yml",
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_account_sync.js",
+      "sha256": "e950ef42c1b4d6f6df6b12bf542839481e0395e28f10222169926cc555b26537",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-deployed.yml",
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_admin_account_contract.js",
+      "sha256": "dd4d7344f39b9f47f7f3e1625a9d7b7a3e9a20c2b8647d087da4fae7f1aaf90b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_admin_announcement_export.js",
+      "sha256": "064066cf97f459a07af72bec87802543283d88d654375391b8edece7a32c897d",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/build-staging.js",
+        "tools/staging/admin-announcement-export.md"
+      ]
+    },
+    {
+      "path": "tests/test_announcement_classification.py",
+      "sha256": "fac7e87dfb111cf57ad9a7db63065fec04417bed17c4687f33cf37a5a6217ed3",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/test_announcement_classification_admin.js",
+      "sha256": "c3d4a725530327df3c13a36f80fc1edfa70b6cca944867f0b289e0c01f6adf42",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_announcement_cleanup.js",
+      "sha256": "b8a4d387deacd18ddd9e8803a96cd99662c95af6fcbf54bd39039836782c4837",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/test_announcement_cleanup_contract.js",
+      "sha256": "ba1e130c32d6a8602e0d0950d93fd740433ad6939c825740860e52e5050b4680",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/test_announcement_validity.js",
+      "sha256": "9edc68de5bacdb1c1b5dcced6ea0138eb9841af697821fd7ce9e914dab444fbb",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_assistant_attachment_qa.js",
+      "sha256": "92f371ff7462a938337d01151fe981a401c1653c2497c1e0929d52b688a573a0",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_assistant_qa.js",
+      "sha256": "90af1eac8bfb369a67532cbecf5f876c00da19110a289b012d93e2ac435a9897",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_attachment_parser.py",
+      "sha256": "56fedcf742e7f8fe4511f3cad570863c48500d68bf7725633b2affc372461866",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_calendar_adapter.py",
+      "sha256": "e592925e765868c091d3417245545ce80f56c8d1cb470669d9031401a09728ae",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_calendar_browser_load_order.js",
+      "sha256": "99d81983fee2be30ce171a4d1817afeea360b33276085890b59d4755764fd0cc",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_calendar_durable_contract.js",
+      "sha256": "5e8cdc2b48e1f8a9d731243d6ffae67aa1d9fd9cc4ba16ca52e57c9d1a78767f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_calendar_persistence.js",
+      "sha256": "d8498015a8b2ec2138c76c604d8b8cf591959503462346f9100fed8f29bdb600",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_calendar_public_readonly.js",
+      "sha256": "04b6814a4bb25ac9f2d9a73821a6971cb74eb7d49c98df27c89e7b7081539415",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/test_calendar_rls_contract.js",
+      "sha256": "155c8569161491d35ae9783eeb4000655f9d0c19a27f5314faa05ce090fabbdb",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-local.yml",
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_calendar_state.js",
+      "sha256": "1a4e25efceff692fc5588e284964fe8398e59a071b07a198fbeeb999c4c13b9b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_calendar_workflow.js",
+      "sha256": "a935353adcd1cd910ed0f01c8d92af822cb7f931ccb12978090b9238291d4a78",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_closed_app_push.js",
+      "sha256": "bda1f562ab212613d40924ca03530641d87230af8fb08ce885229bcd7775a5b5",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_detail_backfill.py",
+      "sha256": "6bd6733e79403ea7328aef0aba15359df4d4d7cc31ab99ec9f911516482bc847",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_detail_parser.py",
+      "sha256": "83abe29b4ce68b39ea813389ed991f0bff6fb0458e375d054f1773a3193351f9",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_detail_ui.js",
+      "sha256": "986708cf60568fafad8f93e42dd6edc7078e9128d319f1ebf71a1d8fdd6516de",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_extractive_summary.py",
+      "sha256": "c3bc4caca352928c0b0d415a7a04781ea10a7b748b9be24c384f60bed35f1863",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/test_local_ocr.py",
+      "sha256": "8a152f3bbf76777a6463c95b0272a33e443872f2171793d0f9e38851071e9e8d",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/assistant-ocr-live-preview.yml"
+      ]
+    },
+    {
+      "path": "tests/test_member_content_export.js",
+      "sha256": "72f31e9dffeff3846a9ed6bad48f6fe8c3a1916d2b43526a311a2f1a5b4c09bb",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_member_content_rls_contract.js",
+      "sha256": "2a71e5226c132102297568384580d387c8f156f8df8775e9c23e3612af970074",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_mock_admin.js",
+      "sha256": "a3cae570cfea6ef40c32715e8c8d110e127eae7f81da583cd9b24a25050e83d9",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "tests/test_mock_system.js",
+      "sha256": "777383eed507814635a3f8719d97cd9f65cbd1a49ce0f5e22405a9ad601b0665",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "tests/test_nonmember_content_gate.js",
+      "sha256": "f377daf0fdaa9a5ea8854e0f6131fae74880904e063900e06754b52f21924246",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_parser.py",
+      "sha256": "95989675ae3cb8b237ddf75cfe435d62ad8c5da627d6195dc99e612126e9037a",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "PROJECT_LEDGER.md",
+        "README.md",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_pksh_adapter.py",
+      "sha256": "684c2cd0b3abb093e79075d64aea30f7a432f875fe9562b753288b815f3fd423",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_pksh_member_content.py",
+      "sha256": "b4fa79c8562b3c8bde134f62e589c6dd8ab801b92adfaa3a40321a38d92fa139",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_pksh_staging_overlay.js",
+      "sha256": "015748bdd1d387e3322b2999d4d142fc2ae3bb0d51489b2945621ddf0a570cfb",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_pksh_windows_handoff.py",
+      "sha256": "d31e8996b0d97f1ae5d3bdc4728f24f80260252c6a9ee00d9556d8c5007eefc6",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_production_announcement_export.js",
+      "sha256": "58db962c5285f0a0c5dc940a1f321baf05dc926306bcc178819812248559effa",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "tests/test_production_release_evidence.js",
+      "sha256": "e8005f694e51ccdf3353aadbfe38bbd1586bc403452e0013cc0afaf8e869d67f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_profile.js",
+      "sha256": "9f778330c78e0aaa72fec526e02bd3add1effaef8c79a3f58e84b4cca975a9b9",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_public_access_contract.js",
+      "sha256": "8c82a34718687755bfe4b4acf02c53fc0460eefb2e5f88c523788c226f533958",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/test_public_shards.py",
+      "sha256": "b5078f818a9ccac32476e2a29524c6a0bc9c58057b2af2216a1ce2e42661f37f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/test_push_subscription.js",
+      "sha256": "4cecd44051647f20eaaf59c70bb53396c98b27e6b725eb86173cd77430fc31ce",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_pwa_notification.js",
+      "sha256": "7332c38d57f78acaac502d6b31a63dd0218ad2f5ed55f4d23ecb5927787b0d5e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_relevance.js",
+      "sha256": "15440438726045c85df50b51e78d86d0bc1bfb70af25915c30afafb182428f38",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_reminder_historical_flood.js",
+      "sha256": "bff1f798117e7ca65689511d956e0b5685c05a620451674c0cded090a4b545cb",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_reminder_rules.js",
+      "sha256": "6005d42642932a54b99ee21c7385935db38cc5d1650dd663004d98b25cc4a0ab",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_reminder_rules_client.js",
+      "sha256": "7b5f26514dc001057ace33028165f82bf0434d61519df3ee51286b31f09310d9",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_reminder_scheduler.js",
+      "sha256": "923e3839a7dde8a66ee772c42fa8aef35e5a86e45fecc04c7449c012a99d3024",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_reminder_schema.js",
+      "sha256": "a8835912d0a96776c8e8ce4477d9b8cc0e4ad7bcd1867f1c67375b38441b626d",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_reminder_target_sync.js",
+      "sha256": "c2361847f612cde569e6929250c359e1403c6cd6e6f32ba8e2200553d99f9aae",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_reminder_targets.py",
+      "sha256": "52a6b5fd2c18272cba2f01a6f0a7805acbd268e13f6d482ad903a05a91d67a68",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_reminder_worker.js",
+      "sha256": "c5c3aaee2f038ce998ff39b1ef13c818f0ceb2bb5785edb97d279e486f1b9aa2",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_reviewed_validity_cases.js",
+      "sha256": "2a671fb6737b8045d7d8ab7ffa4e5334d7217d3121bd70ecedc11118459964f0",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_rls_behavioral.js",
+      "sha256": "f57eccc62a9cbf9c6263d832b2f720bd6011434d050fa7301cc9c9863dd374f2",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-deployed.yml",
+        "docs/acceptance-dead-code-audit.md",
+        "docs/rls-verification-2026-08-30.md",
+        "tests/test_rls_deployed.js",
+        "tests/test_rls_deployed_contract.js",
+        "tests/test_staging_build.js"
+      ]
+    },
+    {
+      "path": "tests/test_rls_deployed.js",
+      "sha256": "b33b11981142c0740dff4d02054027c1e5c8b2bae8156dc220a00d993243fead",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-deployed.yml",
+        "docs/acceptance-dead-code-audit.md",
+        "docs/production-release-evidence.md",
+        "docs/rls-acceptance-v2.md",
+        "tests/test_rls_deployed_contract.js"
+      ]
+    },
+    {
+      "path": "tests/test_rls_deployed_contract.js",
+      "sha256": "e7b3dadf5148521b10731513682b68737a4e9d1fb19fa41cbb243d5d0579a733",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-deployed.yml",
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_rls_sql_contract.js",
+      "sha256": "ffc7f166cba5a0d99d96254d75e7510c342b40b48fd10c753ed49109b9cd4cbe",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-local.yml",
+        "PROJECT_LEDGER.md",
+        "docs/acceptance-dead-code-audit.md"
+      ]
+    },
+    {
+      "path": "tests/test_scraper_tombstones.py",
+      "sha256": "88c3d8c73093796bb9058bd4cd4784125618c6b2e5ae3297ce1d0fe9fabee302",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/test_search_ranking.js",
+      "sha256": "f3d4ccde12ebbdb1c9bc2516a72feaafb95129eaa3b07776074e2cff64193761",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_staging_build.js",
+      "sha256": "88d6500c922a358c57fa0aa03b829fc3dcc3aa5819d7bffafa5c9471970c1151",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md",
+        "tools/staging/admin-announcement-export.md"
+      ]
+    },
+    {
+      "path": "tests/test_supabase_sync.js",
+      "sha256": "2d1728719d896f5259173b63035a0367918342203bd725d0b9219bf4d78cbb04",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/rls-deployed.yml",
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_sw_notification_click.js",
+      "sha256": "8a09f47fbb39530f26939517425f1746be13f9b0a2c19e063c177c671a105b58",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tests/test_task_state.js",
+      "sha256": "ac22b44c5f11c7e13fb55a2af1682904ba96fe5e07f5354b40dc694cf90dce54",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_timetable_adapter.py",
+      "sha256": "2d7f4f8f77cdf9412957eb515270ebbe3e34cb51c0c892d12ec6a2d175a39095",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_timetable_only_sync.js",
+      "sha256": "eb7232d3cc268c7f0895da294757de9135bf2281f26bdc3f1f1e9d87c2e39c62",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md"
+      ]
+    },
+    {
+      "path": "tests/test_today.js",
+      "sha256": "3080ace246f4d6820f4fa862c2318ac849952188d41250faab61566f3276c4f4",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_ui_visual_contract.js",
+      "sha256": "49c1bf754ad9338aa5cb034427faa078cba2a52d645c89298b27f05bcb246d28",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "PROJECT_LEDGER.md",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tests/test_user_refresh.js",
+      "sha256": "89d237e9dc0dd65c548b048d7ad08cffca267732f28ffd082b8de65a9f50980f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tests/test_username_auth_contract.js",
+      "sha256": "60d3b7c33f1f3e7c1c73572427db10624efa34dc9d6167cd82bf78006320b636",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tools/backfill_announcement_classifications.py",
+      "sha256": "b0764d8ed16f0c6c2df68c0f0995d21b036048e09a77e98368f112442bf1d318",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_announcement_classification.py"
+      ]
+    },
+    {
+      "path": "tools/build-staging.js",
+      "sha256": "1a5bc1f8fff19cefd8718144e24df4d85edc2d6e3e31d4ed90d509e0e78df680",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/branch-reconciliation-2026-09-03.md",
+        "docs/staging-runbook.md",
+        "tests/test_staging_build.js",
+        "tools/staging/account-config.js",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "tools/check-legal-compliance.js",
+      "sha256": "e344c3556f151cd6e785e814887ac90f946f03077b6e793bdecd2e1d35282f75",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tools/coverage_census.py",
+      "sha256": "9b30a3759e49d38e51ff24f4e05fbee4aa934be8100f2d8de43a0ce16308f574",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tools/evaluate-assistant-qa.js",
+      "sha256": "82960ef17d72386dde5b9f447a643401143dd10ecd9c7b79477dafa55e5d4e16",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-attachments-v2-validation.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tools/evaluate-search-ranking.js",
+      "sha256": "5fc78a29e7583e0ce23c03425cecf8666b2be5313b9cac2da153c5ed0b3a10c1",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml",
+        "docs/branch-reconciliation-2026-09-03.md"
+      ]
+    },
+    {
+      "path": "tools/export-member-content.js",
+      "sha256": "16ba54b04116b00228849ebd532912db6e26867f4a5991fa900e47ba261f8b0e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-ocr-live-preview.yml",
+        ".github/workflows/assistant-ocr-staging-sync.yml",
+        ".github/workflows/scrape-hourly.yml",
+        "tests/test_member_content_export.js",
+        "tests/test_member_content_rls_contract.js"
+      ]
+    },
+    {
+      "path": "tools/live_ocr_preview.py",
+      "sha256": "9c1522faf24466e8b9ea106b13e628d11a05ff9972ce7047319c13ac83589b3b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-ocr-live-preview.yml"
+      ]
+    },
+    {
+      "path": "tools/pksh-staging-overlay.js",
+      "sha256": "a59c2c1ece127ccf6afe17f902aa335cc4b8dcbd87cf4f05b617ece7489e9bc3",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        "tests/test_pksh_staging_overlay.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "tools/pksh_member_content.py",
+      "sha256": "711d54e0fb4628036206f9a40451fe3d9eaa2b472f3fe721ce1f7478dd656787",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/staging-validation.yml"
+      ]
+    },
+    {
+      "path": "tools/pksh_snapshot.py",
+      "sha256": "d54ba46abe34f788ed2e05f3b2bb455b2c448cbb4bd1e25dea4023fd0deef5ff",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/pksh-windows-production.yml",
+        ".github/workflows/staging-validation.yml",
+        "docs/pksh-windows-research.md"
+      ]
+    },
+    {
+      "path": "tools/public-metadata-projection.js",
+      "sha256": "8468eabb4e133ee937cc5d9317287b2b75da7ff0f10d1b5eb1483108a7788614",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        ".github/workflows/assistant-ocr-live-preview.yml",
+        ".github/workflows/scrape-hourly.yml",
+        "tests/test_member_content_rls_contract.js",
+        "tests/test_nonmember_content_gate.js",
+        "tools/build-staging.js",
+        "tools/staging/preview-system-corpus.js"
+      ]
+    },
+    {
+      "path": "tools/staging/acceptance-companion.html",
+      "sha256": "13584ad9d6cd027a74012e0e96b0bf559322eec1ed56da828d9bbb7401eda338",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/acceptance-dead-code-audit.md",
+        "tests/test_staging_build.js",
+        "tools/build-staging.js",
+        "tools/staging/acceptance-user-tasks.js"
+      ]
+    },
+    {
+      "path": "tools/staging/acceptance-user-tasks.js",
+      "sha256": "8a573b17ead76fd0733dd330a24c6d9c134481e74630ffad65d473e26c37d55b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "docs/acceptance-dead-code-audit.md",
+        "tests/test_staging_build.js",
+        "tools/build-staging.js",
+        "tools/staging/acceptance-companion.html"
+      ]
+    },
+    {
+      "path": "tools/staging/account-config.js",
+      "sha256": "0a4325b6c00afd99e47396907a25f3343b4f1dbfb7d8b7ef9a46f27a9345a71f",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "api/admin-announcement-export.js",
+        "docs/account-sync-v2.md",
+        "docs/index.html",
+        "docs/staging-runbook.md",
+        "docs/sw.js",
+        "tests/test_account_auth.js",
+        "tests/test_closed_app_push.js",
+        "tests/test_mock_admin.js",
+        "tests/test_public_access_contract.js",
+        "tests/test_staging_build.js",
+        "tests/test_user_refresh.js",
+        "tools/build-staging.js",
+        "tools/staging/acceptance-companion.html",
+        "tools/staging/admin-announcement-export.md",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "tools/staging/admin-announcement-export.css",
+      "sha256": "1047338fae8fc2d44ea3203eb37e1bf97ffa3d77211fff70573ac5f126197214",
+      "decision": "DELETE",
+      "reason": "與 docs/admin-announcement-export.css 位元組完全相同；建置直接使用 docs 複製版本。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_production_announcement_export.js",
+        "tools/build-staging.js",
+        "tools/staging/mock-admin.html"
+      ]
+    },
+    {
+      "path": "tools/staging/admin-announcement-export.js",
+      "sha256": "70dcb8e032c688f31d4915c4e8b416d4671a2e2cc47e29f27c5acc57514180f7",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_admin_announcement_export.js",
+        "tests/test_mock_admin.js",
+        "tools/build-staging.js",
+        "tools/staging/mock-admin.html",
+        "vercel.json"
+      ]
+    },
+    {
+      "path": "tools/staging/admin-announcement-export.md",
+      "sha256": "719690f112e013273d648ec31713487a0fca040449ca04fc70c25314acbf52b1",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tools/staging/admin-preview-access.md",
+      "sha256": "33583af244303d06b996649c866f957255a9128354a4d68cdcf848991bc7da63",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    },
+    {
+      "path": "tools/staging/announcement-csv.js",
+      "sha256": "f5f9a434a1182cc7c31ed3a1aa84f0de598d07856c31a917e726739bb06d0ee0",
+      "decision": "DELETE",
+      "reason": "與 docs/announcement-csv.js 位元組完全相同；建置及測試改共用 docs 版本。",
+      "lexical_references": [
+        "docs/index.html",
+        "docs/sw.js",
+        "tests/test_admin_announcement_export.js",
+        "tests/test_mock_admin.js",
+        "tests/test_production_announcement_export.js",
+        "tools/build-staging.js",
+        "tools/staging/mock-admin.html"
+      ]
+    },
+    {
+      "path": "tools/staging/build-mock-system.js",
+      "sha256": "22532eacf05de60bef2d1af08c05c004c13103f12efd7e5f90d3805c4865461e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "tools/staging/manifest.webmanifest",
+      "sha256": "ff781077260e1f774d405caac928273c188329f4059d3835216d4d83be8f6c3e",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "README.md",
+        "docs/index.html",
+        "docs/sw.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "tools/staging/mock-admin-client.js",
+      "sha256": "de804b17bc3b4394b0c7ce809863f6d224437952f771346d8c73611a0c95595b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/build-staging.js",
+        "tools/staging/mock-admin.html"
+      ]
+    },
+    {
+      "path": "tools/staging/mock-admin-core.js",
+      "sha256": "a3a05fbad92ab370a8f8c15825c1f4898b1594bc560012b63d62d532117e8adf",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "api/mock-admin.js",
+        "tests/test_mock_admin.js"
+      ]
+    },
+    {
+      "path": "tools/staging/mock-admin.css",
+      "sha256": "f86ca4f41ac007879f2552ad895dc2b9ce660ba817dab9e2e365a6219bb7f01b",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/build-staging.js",
+        "tools/staging/mock-admin.html"
+      ]
+    },
+    {
+      "path": "tools/staging/mock-admin.html",
+      "sha256": "9c48ced0d3b988f52dbd814476b2db1874461255416c67bc9d146089aa19afbe",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_mock_admin.js",
+        "tools/build-staging.js",
+        "tools/staging/admin-preview-access.md"
+      ]
+    },
+    {
+      "path": "tools/staging/mock-system-auth.js",
+      "sha256": "6b05bd09a664cf71631351e66579c7335439f2c3814f325acc6e6828d29419c4",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_mock_system.js",
+        "tests/test_staging_build.js",
+        "tools/build-staging.js",
+        "tools/staging/build-mock-system.js"
+      ]
+    },
+    {
+      "path": "tools/staging/mock-system-config.js",
+      "sha256": "651a8e32ecf8d391e7ba7974ad21a2598d13727106b865c3a980164cdc50cd74",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tools/build-staging.js",
+        "tools/staging/build-mock-system.js"
+      ]
+    },
+    {
+      "path": "tools/staging/preview-system-corpus.js",
+      "sha256": "03627b7184bdfd9aee5643bece21e8a0ea0f9234dc4cfc2d84790b17e86659e1",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "api/mock-admin.js",
+        "tests/test_mock_system.js",
+        "tools/staging/build-mock-system.js"
+      ]
+    },
+    {
+      "path": "tools/staging/staging.css",
+      "sha256": "3ea79606dddfc5e9c138084e60fe35c4e21010b172f1267527ffe3f971d4d5c1",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": [
+        "tests/test_staging_build.js",
+        "tools/build-staging.js"
+      ]
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "720102bb5cce01d7f9d4d4f0de3b28440e129c48dbb3725a3ce6d028b1604b42",
+      "decision": "KEEP",
+      "reason": "保留；低引用數不作為未使用證據。",
+      "lexical_references": []
+    }
+  ]
+}

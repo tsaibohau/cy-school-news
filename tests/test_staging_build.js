@@ -104,6 +104,9 @@ assert(deployedWorkflow.includes("Check dedicated Auth harness availability"));
 assert(deployedWorkflow.includes("if: steps.auth-gate.outputs.available == 'true'"));
 assert(deployedWorkflow.includes("github.event_name == 'workflow_dispatch'"));
 assert(deployedWorkflow.includes("BLOCKED_EXTERNAL_AUTH"));
+for (const asset of ["announcement-csv.js", "admin-announcement-export.css"]) {
+  assert.equal(fs.readFileSync(path.join(output, asset), "utf8"), fs.readFileSync(path.join(root, "docs", asset), "utf8"), "Preview uses the canonical shared " + asset);
+}
 console.log("Staging build and sanitized acceptance harness tests passed");
 fs.rmSync(output, { recursive: true, force: true });
 

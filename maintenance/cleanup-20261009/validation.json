@@ -1,0 +1,114 @@
+{
+  "node_offline_files": 56,
+  "node_passed_files": 56,
+  "node_failed_files": 0,
+  "node_baseline_failed_files": [
+    "tests/test_account_roles_contract.js"
+  ],
+  "python": [
+    {
+      "path": "tests/test_announcement_classification.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_attachment_parser.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_calendar_adapter.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_detail_backfill.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_detail_parser.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_extractive_summary.py",
+      "exit_code": 1
+    },
+    {
+      "path": "tests/test_local_ocr.py",
+      "exit_code": 1
+    },
+    {
+      "path": "tests/test_parser.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_pksh_adapter.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_pksh_member_content.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_pksh_windows_handoff.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_public_shards.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_reminder_targets.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_scraper_tombstones.py",
+      "exit_code": 0
+    },
+    {
+      "path": "tests/test_timetable_adapter.py",
+      "exit_code": 0
+    }
+  ],
+  "intel_unit_tests_passed": 310,
+  "intel_restore_tracked_files": 389,
+  "production_entrypoints": [
+    {
+      "path": "index.html",
+      "status": "BYTE_EQUAL",
+      "sha256": "ff80a0b7663c01c17daabbb3b789727772e733b8a0c348f216611140a6be280d"
+    },
+    {
+      "path": "app.js",
+      "status": "BYTE_EQUAL",
+      "sha256": "316761a884f7ae3501a08180b27d5c313f7a66303b6e5f4e7e103238bc912748"
+    },
+    {
+      "path": "sw.js",
+      "status": "BYTE_EQUAL",
+      "sha256": "b4c6b19ceab0d937b001166f5addfc8490cabc0588b62bbb38e83376da665178"
+    }
+  ],
+  "unchanged_paths": [
+    ".github/workflows",
+    "docs/data",
+    "scraper",
+    "supabase",
+    "docs/index.html",
+    "docs/app.js",
+    "docs/sw.js",
+    "docs/announcement-csv.js",
+    "docs/admin-announcement-export.css"
+  ],
+  "search_benchmark": {
+    "train": "8/8",
+    "validation": "8/8"
+  },
+  "qa_frozen_benchmark": {
+    "train": "6/6",
+    "validation": "6/6",
+    "current_product_e2e": false
+  },
+  "legal_preview": "PASS",
+  "legal_production_existing_blockers": 6,
+  "external_rls_executed": false,
+  "deployment_performed": false,
+  "remote_branches_deleted": 0
+}

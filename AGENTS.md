@@ -1,23 +1,11 @@
-# 協作規範
+# 開發規範
 
-1. 開始任何修改前,先 git pull 同步 main。
-2. 開始任何修改前，必須依序閱讀 repo 根目錄的 `AGENTS.md` 與 `PROJECT_LEDGER.md`；若 `docs/校網爬蟲架設技術紀錄.md` 存在，也要一併閱讀相關段落。先找到「最後已確認成功 checkpoint」「上一次精確失敗／中斷點」「禁止重做項目」「下一個唯一允許動作」，再開始施工。不得因換 Work／換對話／換環境而從頭重做。
-3. 每次 Codex / Work 回報完成、失敗、中斷或等待狀態後，必須先把該次結果更新進 `PROJECT_LEDGER.md`，再產生下一輪施工指令。下一輪指令應優先寫成「讀 `AGENTS.md` 與 `PROJECT_LEDGER.md`，從最後 checkpoint 與精確失敗點繼續」，只補充本輪新增限制，不得重新貼整份歷史背景。
-4. 發生 CI failure、deployment failure、migration failure、timeout、Work 對話過長或工具中斷時，必須把「最後成功 checkpoint、精確失敗點、已排除原因、尚待驗證原因、下一個允許動作」更新進 `PROJECT_LEDGER.md`。不得只記錄「失敗」。
-5. `docs/data/announcements.json` 由 GitHub Actions 機器人專屬維護,任何人(含 AI)不得手動修改;合併衝突時一律採用 main 的版本。
-6. 修改一律在分支上進行(命名如 `claude/xxx` 或 `codex/xxx`),不直接 commit 到 main;合併由使用者在 PR 確認後執行。
-   (例外:使用者明確指示可直接推 main 的小修改)
-7. 修改爬蟲或解析邏輯後,必須執行 `python tests/test_parser.py` 且全數通過。
-8. 不改動 `.github/workflows` 的排程頻率,維持對學校伺服器友善的低頻抓取。
-9. 專案架構:`scraper/` 爬蟲與設定、`docs/` 為 GitHub Pages 網站(PWA);資料流:Actions 排程 → `scrape.py` → `announcements.json` → 網站讀取。
-
-# Cloud-first development
-
-1. GitHub remote is the canonical engineering source; local worktrees are optional caches.
-2. Start each Work cycle from current remote refs and finish meaningful work only after remote verification.
-3. Do not leave durable feature work only on one computer. If cloud write is unavailable, classify `CLOUD_WRITE_BLOCKED` and do not accumulate another large feature chain.
-4. GitHub-hosted CI is the canonical validation environment; Windows Docker is optional.
-5. Staging builds run through cloud CI/deployment; production remains `main` and is never changed by staging work.
-6. Supabase schema changes are committed migrations and must preserve authenticated ownership/RLS behavior.
-7. Secrets remain provider-side; never commit tokens, credentials, service keys, passwords, cookies, or private VAPID keys.
-8. Action-owned generated data is machine-owned; when conflicts occur, current `main` wins.
+1. 使用者本輪指令決定工作範圍。先核對遠端 ref、branch、HEAD、工作樹與相關 PR；不要自動 pull、merge、reset 或切換現有工作線。
+2. Production 實際行為是產品真相；遠端原始碼、測試與部署證據用來解釋它。README、架構說明與歷史紀錄不能證明功能已上線或 migration 已套用。
+3. 在獨立分支修改。除非本輪明確授權，不修改 main、Production、線上資料庫、正式生成資料、Actions 排程，不部署、不合併、不 force push。推送前檢查自動部署觸發。
+4. `docs/data/`、`docs/calendar.ics`、爬蟲狀態及 outbox 由既有產生流程維護；不要手改或用舊分支覆蓋。變更產生器與執行它是兩項不同授權。
+5. 刪檔前查 HTML／Service Worker、import／require、建置、workflow、測試、產生器及外部依賴。刪分支前核對完整 SHA、PR、部署引用與保全；有獨立成果先保存並驗證還原。
+6. 專用工作線的 checkpoint 只描述該分支。不得自動重跑 acquisition、模型推論、盲測、backfill 或產生人工標籤。失敗時記錄確切阻擋；同法失敗兩次改查根因。
+7. 只公開必要公告 metadata 與官方連結；受保護正文經既有會員授權讀取。保留 RLS、帳號隔離、tombstone、資料來源及日期未知處理；不提交私密憑證。
+8. 執行受影響的離線回歸與建置檢查。爬蟲／解析改動另跑 `python tests/test_parser.py`。會連線寫 DB 的 RLS 測試、通知、爬取、部署需獨立授權。
+9. 回報完整 Commit、分支、改動、驗證、未驗證項目與回復方式。測試通過、部署成功與產品驗收分開。架構導覽見 `ARCHITECTURE.md`；不要從歷史 ledger 接續。

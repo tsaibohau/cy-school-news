@@ -37,7 +37,8 @@ assert.match(auth, /admin_update_account/);
 assert.match(auth, /owner_set_admin_role/);
 assert.match(auth, /request_account_access/);
 assert.match(sync, /serviceLevel === "timetable_only"/);
-assert.match(sync, /feature unavailable for timetable-only account/);
+// Fine-grained capability cutover retains rejection; the old tier-specific wording is obsolete.
+assert.match(sync, /feature unavailable for this account capability set/);
 assert.match(app, /function isTimetableOnly\(\)/);
 assert.match(app, /此帳號目前只有課表服務/);
 assert.match(app, /data-admin-access="approved"/);
