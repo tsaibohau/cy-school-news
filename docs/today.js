@@ -23,6 +23,30 @@
     while (cursor <= end && limit-- > 0) { out.push(cursor); var d = new Date(cursor + "T12:00:00+08:00"); d.setDate(d.getDate() + 1); cursor = d.toISOString().slice(0, 10); }
     return out;
   }
+  var RECENT_DAYS = 30;
+  function validityApi() {
+    if (typeof window !== "undefined" && window.CyNewsAnnouncementValidity) return window.CyNewsAnnouncementValidity;
+    if (typeof module !== "undefined" && module.exports) { try { return require("./announcement-validity.js"); } catch (_) { return null; } }
+    return null;
+  }
+  // Is this announcement still worth showing today? Rules only, no AI:
+  // a known upcoming date keeps it; all known dates passed or marked expired drops it;
+  // otherwise only recently published items are kept.
+  function freshness(item, today, validity) {
+    var dates = (Array.isArray(item.calendar_events) ? item.calendar_events : [])
+      .filter(function (event) { return event && (event.kind === "deadline" || event.kind === "event") && date(event.date); })
+      .map(function (event) { return event.date; }).sort();
+    var upcoming = dates.filter(function (d) { return d >= today; });
+    if (upcoming.length) return { keep: true, next: upcoming[0] };
+    if (dates.length) return { keep: false, reason: "dates_passed" };
+    if (validity && validity.analyze) {
+      try { if (validity.analyze(item, null, { asOf: today }).status === "EXPIRED") return { keep: false, reason: "expired" }; } catch (_) {}
+    }
+    var published = date(item.date) ? item.date : String(item.first_seen || "").slice(0, 10);
+    if (!date(published)) return { keep: false, reason: "no_date" };
+    var age = diff(published, today);
+    return age >= 0 && age <= RECENT_DAYS ? { keep: true, published: published } : { keep: false, reason: "old" };
+  }
   function relevanceLabel(result) {
     return (result && Array.isArray(result.reasons) ? result.reasons : []).slice(0, 3)
       .map(function (reason) { return String(reason.label || reason.matched_value || "").trim(); })
@@ -107,11 +131,20 @@
     tasks.forEach(function (task) {
       if (date(task.due_date) && task.due_date >= today && diff(today, task.due_date) <= until) deadlines.push({ id: task.id, title: task.title, date: task.due_date, task: task });
     });
+    var validity = validityApi();
     var relevantRows = announcementItems.map(function (item) {
       var result = typeof input.relevance === "function" ? input.relevance(item, input.profile || {}) : null;
       return { item: item, result: result };
-    }).filter(function (row) { return row.result && row.result.reasons && row.result.reasons.length; })
-      .sort(function (a, b) { return Number(b.result.priority || 0) - Number(a.result.priority || 0); });
+    }).filter(function (row) { return row.result && row.result.reasons && row.result.reasons.length && !row.result.school_mismatch; })
+      .map(function (row) { row.fresh = freshness(row.item, today, validity); return row; })
+      .filter(function (row) { return row.fresh.keep; })
+      .sort(function (a, b) {
+        var p = Number(b.result.priority || 0) - Number(a.result.priority || 0);
+        if (p) return p;
+        var an = a.fresh.next || "9999-12-31", bn = b.fresh.next || "9999-12-31";
+        if (an !== bn) return an.localeCompare(bn);
+        return String(b.fresh.published || "").localeCompare(String(a.fresh.published || ""));
+      });
     var relevant = relevantRows.slice(0, 10).map(function (row) {
       return Object.assign({}, row.item, { assistant_relevance: row.result });
     });
@@ -141,5 +174,5 @@
       briefLabel: focusItems.length ? "今天優先處理 " + focusItems.length + " 項" : "今天沒有明確需要處理的事項",
       dueLabel: function (due) { return dueLabel(today, due); } };
   }
-  return { build: build, focusPlan: focusPlan, dueLabel: dueLabel, rangeDates: rangeDates, diff: diff };
+  return { build: build, freshness: freshness, focusPlan: focusPlan, dueLabel: dueLabel, rangeDates: rangeDates, diff: diff };
 });

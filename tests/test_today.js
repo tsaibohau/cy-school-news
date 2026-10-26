@@ -44,4 +44,20 @@ assert.match(app, /data-task-complete/, "daily brief tasks can be completed in p
 assert.match(app, /data-focus-dismiss/, "daily brief lets the user explicitly dismiss a suggestion");
 assert.match(app, /notificationEnabled:\s*typeof Notification !== "undefined" && Notification\.permission === "granted"/,
   "subscription notification status reflects this browser's actual permission");
+
+// Freshness: expired or stale announcements stay out of 與我相關.
+const strong = () => ({ tier: "strong", priority: 220, reasons: [{ rule: "school_match", label: "嘉中" }] });
+const fresh = Today.build({ today: "2026-10-26", relevance: strong, announcementItems: [
+  { id: "upcoming", title: "下週報名", date: "2026-08-01", calendar_events: [{ kind: "deadline", date: "2026-10-30", provenance: "verified_announcement_deadline" }] },
+  { id: "passed", title: "上週已截止", date: "2026-10-20", calendar_events: [{ kind: "deadline", date: "2026-10-22", provenance: "verified_announcement_deadline" }] },
+  { id: "recent", title: "本週公告", date: "2026-10-24" },
+  { id: "old", title: "去年公告", date: "2025-10-01" },
+  { id: "schoolyear", title: "112學年度獎學金申請", date: "2026-10-25" },
+  { id: "nodate", title: "沒有日期" },
+] });
+assert.deepEqual(fresh.relevantAnnouncements.map(row => row.id), ["upcoming", "recent"],
+  "keep upcoming deadlines and recent items; drop passed deadlines, old, past-school-year and undated items");
+const mismatch = Today.build({ today: "2026-10-26", announcementItems: [{ id: "other", title: "他校公告", date: "2026-10-25" }],
+  relevance: () => ({ tier: "strong", priority: 200, reasons: [{ label: "物理" }], school_mismatch: true }) });
+assert.equal(mismatch.relevantAnnouncements.length, 0, "other schools' announcements are not shown");
 console.log("Today projection tests passed");
