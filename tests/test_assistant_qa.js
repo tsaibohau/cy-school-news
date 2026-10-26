@@ -17,7 +17,7 @@ assert(result.evidence.some(row => row.announcement_id === "a1"));
 assert(result.answer_lines.some(row => row.includes("自行保管")), "direct answer stays grounded in the official sentence");
 assert.equal(result.plan.yes_no, true);
 assert.match(result.limitation, /官方|公告|附件/);
-assert.match(result.summary, /官方.*重點|先說結論/);
+assert.match(result.summary, /^根據嘉中 8 月 20 日的公告「學生行動載具管理規定」，學生攜帶之手機由學生自行保管。$/, "answer reads naturally: who said it, when, then the fact");
 assert(!result.summary.includes("整理出以下重點"), "answer lead should be natural instead of a generic result count");
 assert.equal(QA.smoothEvidence("主旨：請於九月十日前送件。"), "請於九月十日前送件。");
 assert.match(QA.composeSummary([{ text: "科學營於九月五日前報名。" }, { text: "寫作工作坊於九月十日前報名。" }], [{ id: "one" }, { id: "two" }], []), /不是同一項活動/);
