@@ -118,7 +118,7 @@ jobs:
               echo "announcement-content-sync batch=$(basename "$batch") status=$http_status response=$response_body"
               case "$http_status" in
                 2??) ;;
-                *) exit 22 ;;
+                 exit 22 ;;*) echo *) echo "::warning::announcement-content-sync failed (batch=$(basename "$batch") status=$http_status)" ; break ;;"::warning::announcement-content-sync failed (batch=$(basename "$batch") status=$http_status)" ; break ;;
               esac
             done
           fi
