@@ -142,14 +142,15 @@ async function flush() {
   await new Promise((resolve) => setImmediate(resolve));
 }
 
-async function createApp({ storage, responses, notification, controller = null, location = null, crypto = null, accountAuth = null, accountConfig = null }) {
+async function createApp({ storage, responses, notification, controller = null, location = null, crypto = null, accountAuth = null, accountConfig = null, swRegistration = null }) {
   const document = makeDocument();
   const queue = responses.slice();
   const fetchRequests = [];
   const window = {
     localStorage: storage,
     document,
-    navigator: { serviceWorker: { controller, register: () => Promise.resolve() } },
+    navigator: { serviceWorker: Object.assign({ controller, register: () => Promise.resolve() },
+      swRegistration ? { ready: Promise.resolve(swRegistration) } : {}) },
     Notification: notification,
     setTimeout,
     scrollTo() {},
@@ -190,6 +191,24 @@ async function createApp({ storage, responses, notification, controller = null, 
 function addSubscription(app, document, keyword) {
   document.elements.kwInput.value = keyword;
   document.elements.kwForm.emit("submit");
+}
+
+// 手機上 new Notification() 會丟錯；有 Service Worker 控制頁面時必須改用 showNotification。
+async function testMobileUsesServiceWorkerNotification() {
+  const storage = new MemoryStorage({ "cyNews.keywords": JSON.stringify(["考試"]) });
+  const future = item("cysh-sw", "2026-08-20T00:00:00Z", "期中考試程");
+  const shown = [];
+  const notification = makeNotification({ throwOnCreate: true });
+  const registration = { showNotification: (title, options) => { shown.push({ title, options }); return Promise.resolve(); } };
+  await createApp({ storage, responses: [response(dataOf([future]))], notification, controller: {}, swRegistration: registration });
+  await flush();
+  assert.equal(shown.length, 1, "phones receive the keyword notification through the service worker");
+  assert.equal(shown[0].title, "校訊");
+  const again = [];
+  await createApp({ storage, responses: [response(dataOf([future]))], notification: makeNotification({ throwOnCreate: true }), controller: {},
+    swRegistration: { showNotification: (title) => { again.push(title); return Promise.resolve(); } } });
+  await flush();
+  assert.equal(again.length, 0, "a delivered service-worker notification is recorded and not repeated");
 }
 
 async function testRepeatedAppOpens() {
@@ -686,7 +705,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v108/);
+  assert.match(swSource, /cy-news-v110/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
@@ -724,6 +743,7 @@ function testServiceWorkerContract() {
   await testRefreshStatusContract();
   await testAuthenticatedStagingRefreshContract();
   await testArchiveDoesNotNotify();
+  await testMobileUsesServiceWorkerNotification();
   await testTopicFirstSearchExcludesBodyOnlyMatches();
   await testSchoolScopedDataLoading();
   await testSchoolSelectionFallbackAndPersistence();

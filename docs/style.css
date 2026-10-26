@@ -605,8 +605,6 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   font-size: 11.5px; letter-spacing: .06em; cursor: pointer;
 }
 .tab[hidden] { display: none; }
-/* 有完整功能時課表已併入「今天」，分頁列只在僅課表帳號顯示課表。 */
-#tabHome:not([hidden]) ~ #tabTimetable { display: none; }
 .tab-icon {
   display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
   font: 700 16px/1 var(--serif); transition: background .15s ease, color .15s ease;
