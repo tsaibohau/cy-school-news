@@ -2089,13 +2089,17 @@
         return response.json();
       }).then(function (data) { return Array.isArray(data && data.items) ? data.items.filter(function (item) { return visibleSchool(item) && !linkGone(item); }) : []; });
     }
+    function inAssistantScope(scopeId) {
+      /* 查詢範圍選「我的學校」時，只能引用那所學校的公告 */
+      return function (item) { return scopeId === "all" || String(item && item.school || "") === String(scopeId); };
+    }
     function fetchAssistantCorpus(scopeId) {
-      if (scopeId === state.school) return ensureArchive().then(function () { return state.data && state.data.items || []; });
+      if (scopeId === state.school) return ensureArchive().then(function () { return (state.data && state.data.items || []).filter(inAssistantScope(scopeId)); });
       var current = scopeId === "all" ? "data/announcements.json" : "data/schools/" + encodeURIComponent(scopeId) + "/current.json";
       var archive = scopeId === "all" ? "data/archive.json" : "data/schools/" + encodeURIComponent(scopeId) + "/archive.json";
       return Promise.all([fetchJsonItems(current), fetchJsonItems(archive)]).then(function (parts) {
         var seen = {};
-        return parts[0].concat(parts[1]).filter(function (item) {
+        return parts[0].concat(parts[1]).filter(inAssistantScope(scopeId)).filter(function (item) {
           if (!item || !item.id || seen[item.id]) return false;
           seen[item.id] = true;
           return true;
@@ -2795,6 +2799,13 @@
 
     /* ── PWA ── */
     if ("serviceWorker" in navigator) {
+      /* 新版上線後重新整理一次，免得已開著的頁面繼續跑舊程式（首次安裝不重整） */
+      var hadController = !!navigator.serviceWorker.controller, reloadedForUpdate = false;
+      if (typeof navigator.serviceWorker.addEventListener === "function") navigator.serviceWorker.addEventListener("controllerchange", function () {
+        if (!hadController || reloadedForUpdate) return;
+        reloadedForUpdate = true;
+        window.location.reload();
+      });
       window.addEventListener("load", function () {
         navigator.serviceWorker.register("sw.js?v=82").catch(function () {});
       });
