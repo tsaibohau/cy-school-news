@@ -1,25 +1,22 @@
-"""One-off diagnostic: where does a 嘉女 article page show its publish date?"""
-import re
+"""One-off diagnostic: do 嘉女 list items get dates, old code vs new code?"""
+import importlib.util
 import sys
+from pathlib import Path
 
-import requests
-from bs4 import BeautifulSoup
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scraper"))
+import requests  # noqa: E402
+import scrape as new  # noqa: E402
 
-URLS = sys.argv[1:]
-for url in URLS:
-    r = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0 cy-school-news diagnostic"})
-    r.encoding = "utf-8"
-    print("==", url, r.status_code, len(r.text))
-    soup = BeautifulSoup(r.text, "html.parser")
-    text = soup.get_text(" ", strip=True)
-    for m in re.finditer(r"(發[佈布]日期|日期|最後更新|Date|date)[^0-9]{0,12}(\d{2,4}[-/.年]\d{1,2}[-/.月]\d{1,2})", text):
-        print("  label:", m.group(0)[:60])
-    for m in re.finditer(r"20\d{2}[-/.]\d{1,2}[-/.]\d{1,2}|1\d{2}[-/.年]\d{1,2}[-/.月]\d{1,2}", r.text):
-        start = max(0, m.start() - 160)
-        print("  raw:", re.sub(r"\s+", " ", r.text[start:m.end() + 40]))
-    for node in soup.find_all(class_=re.compile("date|time|info|meta", re.I))[:8]:
-        print("  class:", node.get("class"), node.get_text(" ", strip=True)[:80])
-    # List pages: show the HTML around the first few article links.
-    for a in soup.select("a[href*='/p/406-']")[:3]:
-        row = a.find_parent(["tr", "li", "div"])
-        print("  row:", re.sub(r"\s+", " ", str(row))[:700] if row else a)
+spec = importlib.util.spec_from_file_location("old_scrape", Path(__file__).with_name("_old_scrape_for_diag.py"))
+old = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(old)
+
+url = sys.argv[1]
+school = next(s for s in new.CONFIG["schools"] if s["id"] == "cygsh")
+session = requests.Session()
+session.headers.update({"User-Agent": new.UA})
+html = new.fetch(session, url, school)
+for name, mod in (("old", old), ("new", new)):
+    items = mod.extract_rulingdigital_items(html, school, url)
+    print(name, "items", len(items), "with date", sum(1 for i in items if i.get("date")))
+print("links per article:", html.count("406-1013-186869"))

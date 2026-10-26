@@ -2,7 +2,7 @@ name: 一次性診斷 嘉女日期格式
 on:
   push:
     branches: [claude/check-plan-alignment-gjywwi]
-    paths: [".github/workflows/diagnose-cygsh-date.yml", "tools/diagnose_cygsh_date.py"]
+    paths: [".github/workflows/diagnose-cygsh-date.yml", "tools/diagnose_cygsh_date.py", "scraper/scrape.py"]
 permissions:
   contents: read
 jobs:
@@ -14,5 +14,5 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - run: pip install requests beautifulsoup4
+      - run: pip install -r scraper/requirements.txt
       - run: python tools/diagnose_cygsh_date.py "https://www.cygsh.cy.edu.tw/p/403-1013-508-1.php"

@@ -231,20 +231,26 @@ def extract_rulingdigital_items(html: str, school: dict, source_url: str):
     unit = school["unit"]
     item_re = re.compile(r"/p/406-%s-(\d+)(?:,r(\d+))?\.php" % re.escape(unit))
     src_cat = page_category_name(soup)
-    items, seen = [], set()
+    items, seen = [], {}
     for a in soup.find_all("a", href=True):
         m = item_re.search(a["href"])
         if not m:
             continue
         art_id = m.group(1)
         if art_id in seen:
+            # Some pages list each article twice (desktop and mobile layouts) and
+            # only one copy sits next to the date column; keep the dated copy's date.
+            prev = seen[art_id]
+            if not prev.get("date"):
+                date = parse_date_near(a)
+                if date:
+                    prev["date"], prev["date_source"] = date, "list"
             continue
         title = a.get_text(" ", strip=True)
         # 官網 HTML 偶有 \x0b 等隱形空白字元,一律壓成單一空格
         title = re.sub(r"\s+", " ", title).strip()
         if not title or len(title) < 4 or title in ("MORE", "更多"):
             continue
-        seen.add(art_id)
         url = normalize_url(urljoin(school["base"], a["href"]))
         date = parse_date_near(a)
         items.append({
@@ -260,6 +266,7 @@ def extract_rulingdigital_items(html: str, school: dict, source_url: str):
             "source_category": src_cat if "403-" in source_url else "",
             "_source_url": source_url,
         })
+        seen[art_id] = items[-1]
     return items
 
 
