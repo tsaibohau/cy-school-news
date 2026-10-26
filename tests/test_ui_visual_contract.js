@@ -25,8 +25,9 @@ assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*\{ fjsh: true, pksh: true \}/, "disab
 assert.match(app, /\^\(\?:fjsh\|pksh\)\(\?:-\|\$\)\//, "disabled-school historical records are filtered even when id appears before school");
 assert.match(app, /HIDDEN_SCHOOL_NAMES[\s\S]*輔仁高中[\s\S]*北港高中/, "disabled schools are also rejected by display-name aliases");
 assert.match(app, /function cardHTML\(it\) \{[\s\S]*if \(!visibleSchool\(it\)\) return "";/, "card rendering fails closed for disabled sources");
-assert.match(index, /嘉義校訊/, "the interface identifies the active Chiayi-only service");
-assert.match(index, /從嘉義兩校公告中找到資訊/, "the interface describes the current two-school scope truthfully");
+assert.match(index, /<h1>校訊<\/h1>/, "the masthead uses the short service name");
+assert.match(index, /嘉中・嘉女公告彙整/, "the subtitle identifies the active Chiayi-only service");
+assert.match(index, /嘉中・嘉女公告彙整/, "the interface describes the current two-school scope truthfully");
 assert.doesNotMatch(index, /嘉雲校訊|從三校公告中/, "retired cross-county and three-school copy is removed");
 assert.match(index, /legal\.html\?v=20260925/, "the legal notice link bypasses stale installed-shell entries");
 
@@ -46,7 +47,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=90/);
+assert.match(index, /style\.css\?v=92/);
 assert.match(index, /search-taxonomy\.js\?v=53/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=54/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=54[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=56/, "reviewed validity loads before answers");
@@ -65,17 +66,24 @@ assert.match(app, /資料說明/, "assistant keeps limitations available without
 assert.match(app, /官方來源（/, "assistant answers use a source panel template");
 assert.match(app, /為什麼這樣回答/, "assistant evidence is available without interrupting the answer");
 assert.match(app, /searchTimer = setTimeout[\s\S]*200\);/, "full-corpus ranking is debounced while the user types");
-assert.match(index, /id="navMenuToggle"[^>]*aria-expanded="false"[^>]*aria-controls="navMenu"/, "mobile navigation is exposed through one accessible menu button");
-assert.match(index, /id="navMenu"[^>]*hidden/, "function menu starts closed");
+assert.doesNotMatch(index, /id="navMenuToggle"/, "navigation is an always-visible tab bar, not a hidden pop-up menu");
+assert.match(index, /<nav id="navMenu" class="tabbar" aria-label="主要功能">/, "primary navigation is one labelled tab bar");
+{
+  const nav = index.slice(index.indexOf('<nav id="navMenu"'), index.indexOf("</nav>"));
+  assert.ok((nav.match(/class="tab"/g) || []).length <= 6, "the tab bar stays short: at most five visible destinations plus the timetable-only fallback");
+  assert.doesNotMatch(nav, /id="tabAdmin"|id="tabToday"/, "admin and today live inside pages, not the tab bar");
+}
 assert.match(index, /id="tabAdmin"[^>]*hidden/, "administrator tab starts hidden");
-assert.match(style, /#tabAdmin:not\(\[hidden\]\)\s*\{\s*order:\s*-1/, "administrator entry stays visible at the front of the mobile navigation");
+assert.match(index, /id="viewSub"[\s\S]*id="tabAdmin"[\s\S]*id="viewAdmin"/, "administrator entry lives on the personal page");
+assert.match(style, /#tabHome:not\(\[hidden\]\) ~ #tabTimetable \{ display: none; \}/, "full-service accounts reach the timetable from home, timetable-only accounts from the tab bar");
+assert.match(style, /\.badge\[hidden\] \{ display: none; \}/, "an empty notification badge never shows 0");
 assert.match(style, /\.tab\[hidden\]\s*\{\s*display:\s*none;/, "hidden navigation tabs must override the tab display layout");
-assert.match(index, /id="navCurrentLabel">選單</);
 assert.match(index, /id="brandHome"[^>]*aria-label="返回主畫面"/, "the masthead always exposes a route back home");
 assert.match(app, /brandHome.*addEventListener\("click"[\s\S]*switchTab\("home"\)/, "the masthead returns approved accounts to the home view");
 assert.match(index, /id="viewHome"[^>]*aria-labelledby="homeTitle"/);
 assert.match(index, /id="homeTitle"[^>]*class="calligraphy-title"[^>]*>.*學校公告.*匯集系統/s);
-assert.ok((index.match(/data-home-tab=/g) || []).length >= 5);
+assert.match(index, /data-home-tab="today"/);
+assert.match(index, /data-home-tab="timetable"/);
 assert.match(index, /id="taskComposerToggle"[^>]*aria-expanded="false"/);
 assert.match(index, /id="taskForm"[^>]*hidden/);
 assert.match(index, /class="my-card/);
@@ -86,7 +94,7 @@ assert.match(index, /id="profileSchool" required/, "account settings require an 
 assert.match(index, /id="assistantScope"/, "school assistant exposes an explicit cross-school search scope");
 assert.match(app, /mentionedSchool\(question\)/, "a school named in the question overrides the default scope");
 assert.match(app, /applyPreferredSchool\(state\.profile\.school_id/, "the account school becomes the default data shard");
-assert.match(style, /\.function-dock/, "single-button function menu has a dedicated responsive layout");
+assert.match(style, /\.function-dock/, "the tab bar has a dedicated responsive layout");
 assert.match(index, /id="todayTimetable"/, "today view includes a class timetable region");
 assert.match(index, /我的班級（查看課表需要）/, "profile explains when a class is needed");
 assert.match(app, /data\/class-timetables\.json/, "today view loads the generated public timetable data");

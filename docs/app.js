@@ -136,7 +136,7 @@
       passwordAuthDialog: $("passwordAuthDialog"), passwordAuthForm: $("passwordAuthForm"), passwordAuthTitle: $("passwordAuthTitle"), passwordAuthHint: $("passwordAuthHint"), passwordAuthProgress: $("passwordAuthProgress"), passwordAuthUsernameField: $("passwordAuthUsernameField"), passwordAuthUsername: $("passwordAuthUsername"), passwordAuthIdentitySummary: $("passwordAuthIdentitySummary"), passwordAuthIdentityText: $("passwordAuthIdentityText"), passwordAuthChangeIdentifier: $("passwordAuthChangeIdentifier"), passwordAuthEmailField: $("passwordAuthEmailField"), passwordAuthEmail: $("passwordAuthEmail"), passwordAuthPasswordField: $("passwordAuthPasswordField"), passwordAuthPassword: $("passwordAuthPassword"), passwordSignIn: $("passwordSignIn"), passwordSignUp: $("passwordSignUp"), passwordResetRequest: $("passwordResetRequest"), passwordAuthBack: $("passwordAuthBack"), passwordAuthCancel: $("passwordAuthCancel"), passwordGoogleLogin: $("passwordGoogleLogin"), passwordAuthStatus: $("passwordAuthStatus"),
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
-      viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"), quickCalendar: $("quickCalendar"),
+      viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
       calendarSchoolFilter: $("calendarSchoolFilter"),
       prevMonth: $("prevMonth"), nextMonth: $("nextMonth"), todayCalendar: $("todayCalendar"),
@@ -164,7 +164,7 @@
       detailBody: $("detailBody"), detailClose: $("detailClose"),
       nicknameDialog: $("nicknameDialog"), nicknameForm: $("nicknameForm"), nicknameInput: $("nicknameInput"),
       nicknameSchool: $("nicknameSchool"), nicknameLater: $("nicknameLater"), nicknameStatus: $("nicknameStatus"),
-      navMenu: $("navMenu"), navMenuToggle: $("navMenuToggle"), navCurrentLabel: $("navCurrentLabel"),
+
     };
 
     function loadUserEvents(accountId) {
@@ -477,14 +477,13 @@
       function showAnonymousShell() {
         resetWelcome();
         if (el.functionDock) el.functionDock.hidden = true;
-        setNavMenu(false);
         if (el.publicAccountEntry) el.publicAccountEntry.hidden = false;
         if (el.publicAccountLogin) el.publicAccountLogin.hidden = false;
         if (el.publicAccountSignUp) el.publicAccountSignUp.hidden = false;
         if (el.publicAccountLogout) el.publicAccountLogout.hidden = true;
         if (el.publicAccountEntry) el.publicAccountEntry.dataset.state = "anonymous";
         if (el.publicAccessTitle) el.publicAccessTitle.textContent = "未登入可查看公告索引";
-        if (el.publicAccessLead) el.publicAccessLead.textContent = "提供標題、日期、處室、學校與校網原始連結；公告內文不對非會員提供。";
+        if (el.publicAccessLead) el.publicAccessLead.textContent = "公告內文不對非會員提供，登入後即可閱讀。";
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "";
         if (el.tabAdmin) el.tabAdmin.hidden = true;
         if (el.tabTimetable) el.tabTimetable.hidden = true;
@@ -1090,7 +1089,7 @@
         var signup = mode === "signup";
         var reset = mode === "reset";
         el.passwordAuthDialog.dataset.mode = mode;
-        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉義校訊";
+        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入校訊";
         el.passwordAuthHint.textContent = signup ? "設定帳號名稱、救援 Email 與密碼。完成 Email 驗證後，帳號會等待管理員核准。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "先輸入 Email 或帳號名稱。";
         el.passwordAuthProgress.hidden = signup || reset;
         el.passwordAuthIdentitySummary.hidden = true;
@@ -1867,22 +1866,22 @@
       var relevance = window.CyNewsRelevance && window.CyNewsProfile && window.CyNewsSchoolRegistry
         ? window.CyNewsRelevance.calculate(it, state.profile, window.CyNewsSchoolRegistry) : null;
       var relevanceLabel = relevance && relevance.reasons.length ? window.CyNewsRelevance.label(relevance) : "";
-      return '<article class="card' + catClass + '">' +
-        (isUnread(it) ? '<span class="new-dot" title="未讀公告"></span>' : "") +
+      var unread = member && isUnread(it);
+      return '<article class="card' + catClass + (unread ? ' is-unread' : '') + '">' +
         '<div class="card-meta">' +
-        '<span>' + esc(displayDate(it)) + '</span>' +
         '<span class="tag ' + schoolClass + '">' + esc(it.school_name) + '</span>' +
         '<span class="tag tag-cat">' + esc(it.category) + '</span>' +
         (member && relevanceLabel ? '<span class="relevance-note">與你相關 · ' + esc(relevanceLabel) + '</span>' : '') +
-        (member ? '<span class="read-state ' + (isUnread(it) ? 'is-unread' : '') + '">' + (isUnread(it) ? '未讀' : '已讀') + '</span>' : '') +
-        (member && isUnread(it) ? '<button type="button" class="mark-read" data-read-id="' + esc(it.id) + '">標記已讀</button>' : '') +
+        '<span class="card-date">' + esc(displayDate(it)) + '</span>' +
+        (isUnread(it) ? '<span class="new-dot" title="未讀公告">新</span>' : "") +
         '</div>' +
         '<h3 class="card-title"><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' +
         esc(displayTitle(it)) + '</a></h3>' +
         (displaySnippet(it) ? '<p class="card-snippet">' + esc(displaySnippet(it)) + '</p>' : "") +
         (member
-          ? '<div class="card-actions"><button type="button" class="btn-ghost" data-detail-id="' + esc(it.id) + '">查看會員內容</button><button type="button" class="btn-ghost" data-add-task="' + esc(it.id) + '">加入待辦</button></div>'
-          : '<div class="card-actions"><a class="btn-ghost" href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer">前往校網原文 ↗</a></div>') +
+          ? '<div class="card-actions"><button type="button" class="card-action" data-detail-id="' + esc(it.id) + '">看內文</button><button type="button" class="card-action" data-add-task="' + esc(it.id) + '">加入待辦</button>' +
+            (unread ? '<button type="button" class="card-action mark-read" data-read-id="' + esc(it.id) + '">標記已讀</button>' : '') + '</div>'
+          : '<div class="card-actions"><a class="card-action" href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer">前往校網原文 ↗</a></div>') +
         '</article>';
     }
 
@@ -1946,10 +1945,16 @@
     }
     function renderImportant() {
       if (!el.importantList) return;
-      var items = state.data ? state.data.items.filter(isExplicitlyImportant).slice(0, 3) : [];
-      el.importantList.innerHTML = items.length ? items.map(function (it) {
-        return '<article class="important-card"><span class="important-mark" aria-hidden="true">!</span><div><strong><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(displayTitle(it)) + '</a></strong><p>' + esc(it.school_name) + ' · ' + esc(displayDate(it)) + '</p></div></article>';
-      }).join("") : '<p class="hint">目前沒有來源明確標記的重要公告。</p>';
+      // 有來源明確標記的重要公告就優先顯示；沒有時改列最新三則，首頁不留空白。
+      var important = state.data ? state.data.items.filter(isExplicitlyImportant).slice(0, 3) : [];
+      var items = important.length ? important : (state.data ? state.data.items.filter(visibleSchool).slice(0, 3) : []);
+      var title = document.getElementById("importantTitle");
+      if (title) title.textContent = important.length ? "重要公告" : "最新公告";
+      el.importantList.innerHTML = items.map(function (it) {
+        return '<article class="important-card">' + (important.length ? '<span class="important-mark" aria-hidden="true">!</span>' : '') + '<div><strong><a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(displayTitle(it)) + '</a></strong><p>' + esc(it.school_name) + ' · ' + esc(displayDate(it)) + '</p></div></article>';
+      }).join("") + (important.length || !items.length ? "" : '<button type="button" class="card-action important-more" data-home-tab="latest">看全部公告 ›</button>');
+      var section = document.getElementById("importantSection");
+      if (section) section.hidden = !items.length;
     }
     function renderList(container, items, emptyMsg) {
       container.innerHTML = items.length
@@ -1960,16 +1965,14 @@
       var items = latestItems();
       var shown = Math.min(state.shown, items.length);
       var rest = items.length - shown;
-      el.countLine.textContent = (rest > 0
-        ? "共 " + items.length + " 則公告(已顯示 " + shown + " 則)"
-        : "共 " + items.length + " 則公告")
+      el.countLine.textContent = "共 " + items.length + " 則"
         + (state.archive === "loading" ? " · 搜尋歷史資料中…" : "");
       renderList(el.list, items.slice(0, shown),
         "找不到符合條件的公告,換個關鍵字或篩選試試。");
       if (rest > 0) {
         el.list.insertAdjacentHTML("beforeend",
           '<div class="more-wrap"><button type="button" id="btnMore" class="btn-ghost">' +
-          "載入更多(還有 " + rest + " 則)</button></div>");
+          "載入更多（還有 " + rest + " 則）</button></div>");
       }
     }
     function resetPaging() { state.shown = PAGE_SIZE; }
@@ -2273,7 +2276,7 @@
           ? (personalCount === 1 ? "與你相關的新公告：" + candidates.find(function (item) { return byId[item.id].personalized; }).title :
             "有 " + personalCount + " 則與你相關的新公告")
           : "有 " + candidates.length + " 則符合訂閱關鍵字的新公告";
-        new window.Notification("嘉義校訊", {
+        new window.Notification("校訊", {
           body: body,
           icon: "icons/icon-192.png",
         });
@@ -2541,12 +2544,6 @@
       });
     });
 
-    function setNavMenu(open) {
-      if (!el.navMenu || !el.navMenuToggle) return;
-      el.navMenu.hidden = !open;
-      el.navMenuToggle.setAttribute("aria-expanded", open ? "true" : "false");
-      el.navMenuToggle.classList.toggle("is-open", open);
-    }
     function hasSignedInAccount() {
       return !!(state.accountUser && typeof state.accountUser.id === "string" && state.accountUser.id && state.accountAccess && state.accountAccess.status === "approved");
     }
@@ -2580,8 +2577,6 @@
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此帳號目前只有課表服務。";
       }
       state.tab = tab;
-      setNavMenu(false);
-      if (el.navCurrentLabel) el.navCurrentLabel.textContent = "選單";
       var home = tab === "home";
       var latest = tab === "latest";
       var today = tab === "today";
@@ -2595,7 +2590,8 @@
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
       el.viewSub.hidden = tab !== "sub";
       if (el.viewAdmin) el.viewAdmin.hidden = tab !== "admin";
-      if (el.tabHome) el.tabHome.classList.toggle("is-active", home);
+      // 「今天」與「課表」由首頁進入，分頁列仍標示在首頁。
+      if (el.tabHome) el.tabHome.classList.toggle("is-active", home || today || timetable);
       el.tabLatest.classList.toggle("is-active", latest);
       if (el.tabToday) el.tabToday.classList.toggle("is-active", today);
       if (el.tabAssistant) el.tabAssistant.classList.toggle("is-active", assistant);
@@ -2679,16 +2675,6 @@
       else if (target.dataset.todayAction === "profile" && el.profileBox) el.profileBox.open = true;
       else if (target.dataset.todayAction === "keyword" && el.kwInput) el.kwInput.focus();
     });
-    if (el.navMenuToggle) el.navMenuToggle.addEventListener("click", function () {
-      setNavMenu(el.navMenuToggle.getAttribute("aria-expanded") !== "true");
-    });
-    if (document.addEventListener) {
-      document.addEventListener("click", function (event) {
-        if (!el.navMenu || el.navMenu.hidden || !event.target || !event.target.closest || event.target.closest(".function-dock")) return;
-        setNavMenu(false);
-      });
-      document.addEventListener("keydown", function (event) { if (event.key === "Escape") setNavMenu(false); });
-    }
 
     populateProfileSchools();
     renderProfile();

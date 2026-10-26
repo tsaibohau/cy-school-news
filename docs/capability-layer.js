@@ -71,9 +71,10 @@
 
     document.querySelectorAll("[data-home-tab]").forEach(function (button) {
       var tab = button.getAttribute("data-home-tab");
-      var allowed = tab === "latest" || tab === "sub" || tab === "today" && anyPersonal() || tab === "assistant" && has("assistant") || tab === "calendar" && has("calendar");
+      var allowed = tab === "latest" || tab === "sub" || tab === "today" && anyPersonal() || tab === "assistant" && has("assistant") || tab === "calendar" && has("calendar") || tab === "timetable" && has("timetable");
       var reason = authenticated ? "此功能目前未開放" : "此功能目前未對訪客開放";
-      setHidden(button, false);
+      // 課表入口只在有課表權限時出現；其他入口以停用狀態說明原因。
+      setHidden(button, tab === "timetable" && !allowed);
       setButtonAvailability(button, allowed, reason);
     });
     document.querySelectorAll("[data-today-action='task']").forEach(function (node) { setHidden(node, !has("calendar")); });
