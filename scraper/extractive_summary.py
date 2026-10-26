@@ -15,11 +15,17 @@ GENERIC_HEADINGS = {"說明", "公告內容", "主旨", "注意事項", "相關�
 NUMBERED_ITEM = re.compile(r"^(?:第[一二三四五六七八九十]+項|[一二三四五六七八九十]+[、.]|\(?\d{1,2}\)?[、.)．])\s*")
 PERSONAL_DATA = re.compile(r"(?:[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|(?:\d{2,4}[-\s]?)?\d{3,4}[-\s]?\d{3,4}|\b\d{8,10}\b)")
 SHORT_FACT_NOTICE_CHARS = 60
+# Likely personal names: class number + name + 同學, or name + 小姐/先生/女士.
+PERSON_NAME = re.compile(r"\d{3}\s*[\u4e00-\u9fff]{2,3}\s*同學|[\u4e00-\u9fff]{2,3}\s*(?:小姐|先生|女士)")
 # Background and routing phrases that say little about what the reader must do.
 BOILERPLATE = re.compile(r"^(?:說明\s*[：:]\s*)?(?:[一二三四五六七八九十]+、\s*)?(?:依據|依\S{0,12}函|檢送|本部|本會|本署|本局|為推動|為提升|為鼓勵|為落實|旨揭)|詳如附件|請參閱附件|如附件|請轉知|惠請|敬請|請查照|諒達")
 LEAD_IN = re.compile(r"^(?:說明\s*[：:]\s*|主旨\s*[：:]\s*)?(?:[一二三四五六七八九十]+、|\(?[0-9]{1,2}\)?[、.．])?\s*")
-SUMMARY_MIN_CHARS = 60
-SUMMARY_MAX_CHARS = 120
+# Accuracy over brevity (user decision 2026-10-26): keep more of the facts.
+SUMMARY_MIN_CHARS = 80
+SUMMARY_MAX_CHARS = 200
+MULTI_MAX_CHARS = 240
+SINGLE_MAX_SENTENCES = 3
+MAX_SENTENCE_CHARS = 240
 
 
 def _clean(value: object) -> str:
@@ -29,12 +35,29 @@ def _clean(value: object) -> str:
     return text
 
 
+def _split_long(part: str) -> list[str]:
+    """Break a run-on sentence at commas so it is kept instead of discarded."""
+    if len(part) <= MAX_SENTENCE_CHARS:
+        return [part]
+    chunks, current = [], ""
+    for piece in re.split(r"(?<=[，,、：:])", part):
+        if current and len(current) + len(piece) > MAX_SENTENCE_CHARS:
+            chunks.append(current)
+            current = ""
+        current += piece
+    if current:
+        chunks.append(current)
+    return [chunk[:MAX_SENTENCE_CHARS] for chunk in chunks]
+
+
 def _sentences(text: object) -> list[str]:
     rows = []
     for part in re.split(r"(?<=[。！？!?；;])|[\r\n]+", _clean(text)):
         part = _clean(part).strip("•·-–— ")
-        if 12 <= len(part) <= 240 and not NOISE.match(part):
-            rows.append(part)
+        for piece in _split_long(part):
+            piece = piece.strip()
+            if len(piece) >= 12 and not NOISE.match(piece):
+                rows.append(piece)
     return rows
 
 
@@ -58,6 +81,8 @@ def _score(sentence: str, title_terms: set[str], position: int, source: str) -> 
         score -= 6
     if BOILERPLATE.search(sentence):
         score -= 8
+    if PERSON_NAME.search(sentence) or PERSONAL_DATA.search(sentence):
+        score -= 12
     return score
 
 
@@ -109,6 +134,10 @@ def _candidate_rows(record: dict) -> tuple[list[dict], bool]:
             current_heading = _clean(block.get("text"))
             if current_heading and current_heading not in GENERIC_HEADINGS:
                 meaningful_headings.add(current_heading)
+            # Some posts are written entirely as bold headings; keep long ones as text.
+            if len(current_heading) >= 24:
+                for sentence in _sentences(current_heading):
+                    rows.append({"sentence": sentence, "source": "official_article", "label": "", "position": len(rows)})
             continue
         if block_type == "paragraph":
             values = [block.get("text")]
@@ -149,7 +178,8 @@ def summarize_detail(record: dict, title: str = "") -> dict:
     # A very short, factual notice cannot yield a readable 20% summary.  It may
     # be relayed verbatim only when it contains no detected personal data.
     full_notice = _clean(" ".join(row["sentence"] for row in candidates))
-    if 12 <= len(full_notice) <= SHORT_FACT_NOTICE_CHARS and not PERSONAL_DATA.search(full_notice):
+    if 12 <= len(full_notice) <= SHORT_FACT_NOTICE_CHARS and not PERSONAL_DATA.search(full_notice) \
+            and not PERSON_NAME.search(full_notice):
         sources = {row["source"] for row in candidates}
         return {"status": "extracted", "text": full_notice, "evidence": full_notice,
                 "items": [], "provenance": sources.pop() if len(sources) == 1 else "official_article", "mode": "short_fact_notice",
@@ -163,14 +193,22 @@ def summarize_detail(record: dict, title: str = "") -> dict:
     for row in ranked:
         if any(_too_similar(row["sentence"], chosen["sentence"]) for chosen in selected): continue
         selected.append(row)
-        if len(selected) >= (4 if explicit_multi else 1): break
+        if len(selected) >= (4 if explicit_multi else SINGLE_MAX_SENTENCES): break
     if not selected: selected = ranked[:1]
-    if not explicit_multi: selected = selected[:1]
+    if not explicit_multi:
+        # Keep the best sentence plus useful runners-up, read in document order.
+        best = selected[0]
+        extra = [row for row in selected[1:] if not BOILERPLATE.search(row["sentence"])
+                 and not PERSON_NAME.search(row["sentence"]) and not PERSONAL_DATA.search(row["sentence"])]
+        selected = [best] + extra
     items = [{"label": row["label"], "text": _short(row["sentence"]), "evidence": row["sentence"], "provenance": row["source"]} for row in selected]
     evidence, source = selected[0]["sentence"], selected[0]["source"]
-    if len(items) == 1:
-        text = _short(evidence, summary_limit)
+    if explicit_multi and len(items) > 1:
+        # Every point stays in the text so search can find it.
+        parts = [((item["label"] + "：") if item["label"] and not item["label"].startswith("項目 ") else "") + item["text"] for item in items]
+        text = _short("；".join(parts), MULTI_MAX_CHARS)
     else:
-        first = ((items[0]["label"] + "：") if items[0]["label"] and not items[0]["label"].startswith("項目 ") else "") + items[0]["text"]
-        text = _short(first, max(12, summary_limit - 18)) + f"（另有 {len(items) - 1} 項重點）"
+        ordered = sorted(selected, key=lambda row: row["position"])
+        text = _short(" ".join(LEAD_IN.sub("", row["sentence"], count=1) for row in ordered), summary_limit)
+        items = items[:1]
     return {"status": "extracted", "text": text, "evidence": evidence, "items": items, "provenance": source, "version": SUMMARY_VERSION}
