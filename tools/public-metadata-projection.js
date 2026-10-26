@@ -12,7 +12,8 @@ const Relevance = require("../docs/relevance.js");
 
 // Scraper bookkeeping, not announcement content. Keeping it lets the next run
 // skip pages it already fetched instead of re-requesting the newest ones forever.
-const PUBLIC_STATE_FIELDS = ["detail_status", "detail_attempts", "date_tried", "snippet_tried"];
+const PUBLIC_STATE_FIELDS = ["detail_status", "detail_attempts", "date_tried", "snippet_tried", "summary_version",
+  "link_status", "link_missing_checks", "link_missing_at"];
 
 // Short facts for 我的今日: labelled full-year dates and the target audience.
 // No body text is published; dates come from detail_parser's verified_dates.

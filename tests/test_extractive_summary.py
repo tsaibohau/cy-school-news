@@ -15,7 +15,7 @@ assert summary["provenance"] == "official_article"
 assert "8月26日" in summary["text"]
 assert "作者" not in summary["text"]
 assert summary["evidence"]
-assert summary["version"] == "extractive-v2"
+assert summary["version"] == "extractive-v4"
 
 multi_activity = {"title": "近期學生研習活動彙整", "blocks": [
     {"type": "heading", "text": "科學營"},
@@ -27,7 +27,7 @@ multi_activity = {"title": "近期學生研習活動彙整", "blocks": [
 ], "attachments": []}
 multi_summary = summarize_detail(multi_activity)
 assert len(multi_summary["items"]) >= 2
-assert "另有" in multi_summary["text"]
+assert "科學營" in multi_summary["text"] and "寫作工作坊" in multi_summary["text"], "every point stays searchable"
 assert {item["label"] for item in multi_summary["items"]} >= {"科學營", "寫作工作坊"}
 
 pdf_only = {"title": "申請公告", "blocks": [], "attachments": [{
@@ -36,4 +36,29 @@ pdf_only = {"title": "申請公告", "blocks": [], "attachments": [{
 }]}
 assert summarize_detail(pdf_only)["provenance"] == "official_attachment"
 assert summarize_detail({"title": "公告", "blocks": [], "attachments": []})["status"] == "insufficient"
+# The header label is removed without eating the content that follows it.
+header = summarize_detail({"title": "科普英文專班", "blocks": [{"type": "paragraph",
+    "text": "作者 : 教學組 發佈日期 : 2026-08-24 最後更新日期 : 2026-08-24 轉知-科教館辦理「2026 年暑期科學科普專業英文詞彙培力專班」，請有興趣學生於9月10日前報名。"}], "attachments": []})
+assert "2026 年暑期" in header["text"], header["text"]
+# Routing boilerplate loses to the sentence with the actual facts.
+routing = summarize_detail({"title": "青漫獎", "blocks": [{"type": "list", "items": [
+    "一、依據文化部115年8月1日文影字第1150001號函辦理。",
+    "二、競賽報名期限為115年10月31日，請有興趣同學至官網報名。",
+]}], "attachments": []})
+assert "報名期限" in routing["items"][0]["text"], routing
+# Truncation stops at a clause boundary instead of splitting a number.
+long_text = "，".join(["本次活動地點在本校圖書館三樓會議室"] * 12) + "。"
+cut = summarize_detail({"title": "活動", "blocks": [{"type": "paragraph", "text": long_text}], "attachments": []})["text"]
+assert cut.endswith("…") and len(cut) <= 200 and cut[-2] != "，", cut
+# Posts written only as bold headings still get a summary.
+bold = summarize_detail({"title": "得獎公告", "blocks": [{"type": "heading", "level": 3,
+    "text": "本校參加113學年度全國語文競賽勇奪佳績，得獎名單請參考附件，恭喜獲獎學生！"}], "attachments": []})
+assert "全國語文競賽" in bold["text"], bold
+# A run-on sentence without a full stop is split, not dropped.
+runon = "，".join(["申請日期為115年9月1日至9月30日"] + ["相關資格包含中低收入戶學生與原住民學生"] * 12)
+assert "申請日期" in summarize_detail({"title": "學產基金", "blocks": [{"type": "paragraph", "text": runon}], "attachments": []})["text"]
+# Sentences naming people rank below the facts.
+named = summarize_detail({"title": "化學競賽", "blocks": [{"type": "paragraph",
+    "text": "感謝實驗室管理員曾于珊小姐協助指導。本校於全國化學科能力競賽決賽共3人榮獲二等獎。"}], "attachments": []})
+assert "小姐" not in named["text"] and "二等獎" in named["text"], named
 print("Deterministic extractive summary tests passed")
