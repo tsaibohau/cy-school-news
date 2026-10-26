@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-26T18:56:53+08:00",
+ "generated_at": "2026-10-26T20:37:28+08:00",
  "school": {
   "id": "fjsh",
   "name": "嘉義市私立輔仁高級中學",
@@ -446,7 +446,9 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-2353,r59.php",
    "category": "招生編班",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1
   },
   {
    "id": "fjsh-2349",
@@ -457,7 +459,9 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-2349,r41.php",
    "category": "一般",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1
   },
   {
    "id": "fjsh-2344",
@@ -688,7 +692,15 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-2168,r36.php",
    "category": "一般",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "audience": {
+    "grades": [
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "fjsh-2151",
@@ -765,7 +777,14 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-2025,r36.php",
    "category": "段考考試",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "audience": {
+    "grades": [
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "fjsh-2026",
@@ -776,7 +795,14 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-2026,r36.php",
    "category": "段考考試",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "fjsh-2023",
