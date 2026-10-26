@@ -10,7 +10,7 @@
     var source = Array.isArray(value) ? value : String(value || "").split(",");
     var seen = {};
     return source.map(function (item) { return String(item || "").trim(); })
-      .filter(function (item) { var key = item.toLocaleLowerCase("zh-TW"); if (!item || seen[key]) return false; seen[key] = true; return true; });
+      .filter(function (item) { var key = item.toLowerCase(); if (!item || seen[key]) return false; seen[key] = true; return true; });
   }
   function grade(value) {
     var n = Number(value);

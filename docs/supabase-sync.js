@@ -50,7 +50,7 @@
     row = row || {};
     if (table === TABLES.subscriptions) return {
       keyword: row.keyword,
-      normalized_keyword: row.normalized_keyword || String(row.keyword || "").trim().toLocaleLowerCase("zh-TW"),
+      normalized_keyword: row.normalized_keyword || String(row.keyword || "").trim().toLowerCase(),
       created_at: row.created_at || row.createdAt,
       updated_at: row.updated_at || row.updatedAt || row.created_at || row.createdAt,
       deleted_at: row.deleted_at || null,
