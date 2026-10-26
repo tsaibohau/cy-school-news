@@ -35,6 +35,7 @@ DETAIL_ROOT = ROOT / "docs" / "data" / "details"
 
 TW_TZ = timezone(timedelta(hours=8))
 DATE_RE = re.compile(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
+ARTICLE_LINK_RE = re.compile(r"/p/406-\d+-\d+")
 # RulingDigital 文章頁的「發佈日期 : YYYY-MM-DD」欄位(嘉中文章頁固定會有)
 PUB_DATE_RE = re.compile(r"發[佈布](?:日期|時間)\s*[::：]\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
 
@@ -203,10 +204,16 @@ def _fmt_valid_date(y: int, mo: int, d: int) -> str:
 
 
 def parse_date_near(node) -> str:
-    """從連結節點往上找最近容器內的日期字串(未來日期視為活動日期,略過)。"""
+    """從連結節點往上找所在列的日期字串(未來日期視為活動日期,略過)。
+
+    最多往上 6 層；一旦容器內出現第二則公告連結就停止,
+    避免拿到相鄰公告的日期(嘉女列表的日期在第 4 層的 <tr>)。
+    """
     cur = node
-    for _ in range(4):
+    for _ in range(6):
         if cur is None:
+            break
+        if cur is not node and len({a.get("href") for a in cur.find_all("a", href=ARTICLE_LINK_RE)}) > 1:
             break
         m = DATE_RE.search(cur.get_text(" ", strip=True) or "")
         if m:
@@ -231,26 +238,20 @@ def extract_rulingdigital_items(html: str, school: dict, source_url: str):
     unit = school["unit"]
     item_re = re.compile(r"/p/406-%s-(\d+)(?:,r(\d+))?\.php" % re.escape(unit))
     src_cat = page_category_name(soup)
-    items, seen = [], {}
+    items, seen = [], set()
     for a in soup.find_all("a", href=True):
         m = item_re.search(a["href"])
         if not m:
             continue
         art_id = m.group(1)
         if art_id in seen:
-            # Some pages list each article twice (desktop and mobile layouts) and
-            # only one copy sits next to the date column; keep the dated copy's date.
-            prev = seen[art_id]
-            if not prev.get("date"):
-                date = parse_date_near(a)
-                if date:
-                    prev["date"], prev["date_source"] = date, "list"
             continue
         title = a.get_text(" ", strip=True)
         # 官網 HTML 偶有 \x0b 等隱形空白字元,一律壓成單一空格
         title = re.sub(r"\s+", " ", title).strip()
         if not title or len(title) < 4 or title in ("MORE", "更多"):
             continue
+        seen.add(art_id)
         url = normalize_url(urljoin(school["base"], a["href"]))
         date = parse_date_near(a)
         items.append({
@@ -266,7 +267,6 @@ def extract_rulingdigital_items(html: str, school: dict, source_url: str):
             "source_category": src_cat if "403-" in source_url else "",
             "_source_url": source_url,
         })
-        seen[art_id] = items[-1]
     return items
 
 

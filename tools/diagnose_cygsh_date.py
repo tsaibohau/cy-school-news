@@ -1,4 +1,4 @@
-"""One-off diagnostic: do 嘉女 list items get dates, old code vs new code?"""
+"""One-off diagnostic: list-page dates, old code vs new code, both schools."""
 import importlib.util
 import sys
 from pathlib import Path
@@ -11,26 +11,16 @@ spec = importlib.util.spec_from_file_location("old_scrape", Path(__file__).with_
 old = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(old)
 
-url = sys.argv[1]
-school = next(s for s in new.CONFIG["schools"] if s["id"] == "cygsh")
 session = requests.Session()
 session.headers.update({"User-Agent": new.UA})
-html = new.fetch(session, url, school)
-for name, mod in (("old", old), ("new", new)):
-    items = mod.extract_rulingdigital_items(html, school, url)
-    print(name, "items", len(items), "with date", sum(1 for i in items if i.get("date")))
-print("links per article:", html.count("406-1013-186869"))
-
-import re  # noqa: E402
-from bs4 import BeautifulSoup  # noqa: E402
-
-soup = BeautifulSoup(html, "html.parser")
-for a in soup.select("a[href*='/p/406-']")[:2]:
-    node = a
-    for depth in range(7):
-        node = node.parent
-        if node is None:
-            break
-        print(f"  depth {depth + 1} <{node.name} class={node.get('class')}>:", re.sub(r"\s+", " ", node.get_text(" ", strip=True))[:160])
-print("date-like strings in page:", re.findall(r"20\d{2}[-/.]\d{1,2}[-/.]\d{1,2}", html)[:8])
-print("d-txt count:", html.count("d-txt"), "mobilercglist:", html.count("mobilercglist"), "data-th:", html.count("data-th"))
+for school_id, url in (("cygsh", sys.argv[1]), ("cysh", sys.argv[2])):
+    school = next(s for s in new.CONFIG["schools"] if s["id"] == school_id)
+    html = new.fetch(session, url, school)
+    rows = {}
+    for name, mod in (("old", old), ("new", new)):
+        items = mod.extract_rulingdigital_items(html, school, url)
+        rows[name] = {i["id"]: i.get("date", "") for i in items}
+        print(school_id, name, "items", len(items), "with date", sum(1 for d in rows[name].values() if d))
+    changed = [(k, rows["old"][k], rows["new"].get(k)) for k in rows["old"] if rows["old"][k] and rows["old"][k] != rows["new"].get(k)]
+    print(school_id, "dates that changed from a non-empty old value:", changed[:5], len(changed))
+    print(school_id, "sample new:", list(rows["new"].items())[:3])
