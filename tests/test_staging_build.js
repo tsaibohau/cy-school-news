@@ -81,8 +81,12 @@ assert(!behavioral.includes("passed for A=${a}"), "behavioral test output must n
 assert.equal(publicCurrent.content_access, "approved-account-required");
 assert.equal(publicArchive.content_access, "approved-account-required");
 for (const item of publicCurrent.items.concat(publicArchive.items)) {
-  for (const field of ["summary", "snippet", "detail_ref", "detail_revision", "detail_status", "detail_available", "calendar_events"]) {
+  for (const field of ["summary", "snippet", "detail_ref", "detail_revision", "detail_available", "body", "attachments"]) {
     assert(!Object.prototype.hasOwnProperty.call(item, field), `public metadata must omit ${field}`);
+  }
+  // 我的今日 facts (option A, 2026-10-26): dates only, never text.
+  for (const event of item.calendar_events || []) {
+    assert.deepEqual(Object.keys(event).sort(), ["date", "kind", "provenance", "source_revision"], "public calendar facts carry no text");
   }
   assert(item.title && item.url && item.school, "public metadata keeps title, school, and official URL");
 }
