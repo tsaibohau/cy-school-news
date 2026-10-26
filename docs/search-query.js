@@ -15,7 +15,8 @@
   function compact(value) {
     var key = String(value == null ? "" : value), hit = COMPACT_CACHE.get(key);
     if (hit !== undefined) return hit;
-    var out = clean(key).toLowerCase().replace(/[^0-9a-z\u3400-\u9fff]+/g, "");
+    /* Variant characters schools use interchangeably: 佈置／布置, 臺／台, 裏／裡. */
+    var out = clean(key).toLowerCase().replace(/[^0-9a-z\u3400-\u9fff]+/g, "").replace(/佈/g, "布").replace(/臺/g, "台").replace(/裏/g, "裡");
     if (COMPACT_CACHE.size > 20000) COMPACT_CACHE.clear();
     COMPACT_CACHE.set(key, out);
     return out;
