@@ -19,3 +19,7 @@ for url in URLS:
         print("  raw:", re.sub(r"\s+", " ", r.text[start:m.end() + 40]))
     for node in soup.find_all(class_=re.compile("date|time|info|meta", re.I))[:8]:
         print("  class:", node.get("class"), node.get_text(" ", strip=True)[:80])
+    # List pages: show the HTML around the first few article links.
+    for a in soup.select("a[href*='/p/406-']")[:3]:
+        row = a.find_parent(["tr", "li", "div"])
+        print("  row:", re.sub(r"\s+", " ", str(row))[:700] if row else a)

@@ -15,4 +15,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install requests beautifulsoup4
-      - run: python tools/diagnose_cygsh_date.py "https://www.cygsh.cy.edu.tw/p/406-1013-187007,r508.php" "https://www.cygsh.cy.edu.tw/p/406-1013-186000,r508.php"
+      - run: python tools/diagnose_cygsh_date.py "https://www.cygsh.cy.edu.tw/p/403-1013-508-1.php"
