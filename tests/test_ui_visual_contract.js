@@ -25,7 +25,8 @@ assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*\{ fjsh: true, pksh: true \}/, "disab
 assert.match(app, /\^\(\?:fjsh\|pksh\)\(\?:-\|\$\)\//, "disabled-school historical records are filtered even when id appears before school");
 assert.match(app, /HIDDEN_SCHOOL_NAMES[\s\S]*輔仁高中[\s\S]*北港高中/, "disabled schools are also rejected by display-name aliases");
 assert.match(app, /function cardHTML\(it\) \{[\s\S]*if \(!visibleSchool\(it\)\) return "";/, "card rendering fails closed for disabled sources");
-assert.match(index, /嘉義校訊/, "the interface identifies the active Chiayi-only service");
+assert.match(index, /<h1>校訊<\/h1>/, "the masthead uses the short service name");
+assert.match(index, /嘉中・嘉女公告彙整/, "the subtitle identifies the active Chiayi-only service");
 assert.match(index, /嘉中・嘉女公告彙整/, "the interface describes the current two-school scope truthfully");
 assert.doesNotMatch(index, /嘉雲校訊|從三校公告中/, "retired cross-county and three-school copy is removed");
 assert.match(index, /legal\.html\?v=20260925/, "the legal notice link bypasses stale installed-shell entries");
@@ -46,7 +47,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=91/);
+assert.match(index, /style\.css\?v=92/);
 assert.match(index, /search-taxonomy\.js\?v=53/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=54/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=54[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=56/, "reviewed validity loads before answers");

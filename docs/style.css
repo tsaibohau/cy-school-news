@@ -211,9 +211,9 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .calligraphy-title span:last-child { margin-top: .9em; color: var(--muted); }
 .home-hero-copy { display: flex; flex-direction: column; justify-content: space-between; gap: 16px; min-width: 0; }
 .hero-seal {
-  display: grid; place-items: center; width: 52px; height: 52px; border-radius: 6px;
-  color: var(--seal); border: 2px solid var(--seal);
-  font: 900 15px/1.05 var(--serif); letter-spacing: .05em; text-align: center;
+  display: grid; place-items: center; width: 40px; height: 58px; border-radius: 6px;
+  color: var(--seal); border: 2px solid var(--seal); writing-mode: vertical-rl;
+  font: 900 19px/1 var(--serif); letter-spacing: .12em;
   transform: rotate(-4deg); opacity: .85;
 }
 .home-greeting { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.6; letter-spacing: .04em; }

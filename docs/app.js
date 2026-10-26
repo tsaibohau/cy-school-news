@@ -1089,7 +1089,7 @@
         var signup = mode === "signup";
         var reset = mode === "reset";
         el.passwordAuthDialog.dataset.mode = mode;
-        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入嘉義校訊";
+        el.passwordAuthTitle.textContent = signup ? "建立帳號・第 1 步" : reset ? "重設密碼" : "登入校訊";
         el.passwordAuthHint.textContent = signup ? "設定帳號名稱、救援 Email 與密碼。完成 Email 驗證後，帳號會等待管理員核准。" : reset ? "輸入註冊時的救援 Email，我們會寄送重設連結。" : "先輸入 Email 或帳號名稱。";
         el.passwordAuthProgress.hidden = signup || reset;
         el.passwordAuthIdentitySummary.hidden = true;
@@ -2276,7 +2276,7 @@
           ? (personalCount === 1 ? "與你相關的新公告：" + candidates.find(function (item) { return byId[item.id].personalized; }).title :
             "有 " + personalCount + " 則與你相關的新公告")
           : "有 " + candidates.length + " 則符合訂閱關鍵字的新公告";
-        new window.Notification("嘉義校訊", {
+        new window.Notification("校訊", {
           body: body,
           icon: "icons/icon-192.png",
         });
