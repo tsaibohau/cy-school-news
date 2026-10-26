@@ -685,6 +685,7 @@ def write_detail_record(item: dict, html: str, fetched_at: str, *, session=None,
         title=str(item.get("title", "")),
         source_url=str(item.get("url", "")),
         fetched_at=fetched_at,
+        published_on=str(item.get("date") or ""),
     )
     if session is not None and attachment_budget is not None:
         enrich_pdf_attachments(
