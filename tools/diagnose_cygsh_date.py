@@ -20,3 +20,17 @@ for name, mod in (("old", old), ("new", new)):
     items = mod.extract_rulingdigital_items(html, school, url)
     print(name, "items", len(items), "with date", sum(1 for i in items if i.get("date")))
 print("links per article:", html.count("406-1013-186869"))
+
+import re  # noqa: E402
+from bs4 import BeautifulSoup  # noqa: E402
+
+soup = BeautifulSoup(html, "html.parser")
+for a in soup.select("a[href*='/p/406-']")[:2]:
+    node = a
+    for depth in range(7):
+        node = node.parent
+        if node is None:
+            break
+        print(f"  depth {depth + 1} <{node.name} class={node.get('class')}>:", re.sub(r"\s+", " ", node.get_text(" ", strip=True))[:160])
+print("date-like strings in page:", re.findall(r"20\d{2}[-/.]\d{1,2}[-/.]\d{1,2}", html)[:8])
+print("d-txt count:", html.count("d-txt"), "mobilercglist:", html.count("mobilercglist"), "data-th:", html.count("data-th"))
