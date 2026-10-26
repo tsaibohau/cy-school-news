@@ -28,7 +28,8 @@ assert.match(layer,/owner_auth_cutover_readiness/);
 assert.match(layer,/PUBLIC_KEYS = \["member_content", "assistant", "timetable", "calendar"\]/);
 assert.doesNotMatch(layer,/PUBLIC_KEYS = \[[^\]]*notifications/);
 assert.match(layer,/functionDock: approved \|\| publicEntry/);
-assert.match(layer,/setHidden\(button, false\)/);
+// 首頁入口預設顯示並以停用說明原因；只有課表入口在無課表權限時直接隱藏。
+assert.match(layer,/setHidden\(button, tab === "timetable" && !allowed\)/);
 assert.match(layer,/button\.disabled = !allowed/);
 assert.match(layer,/tab === "latest" \|\| tab === "sub"/);
 assert.match(layer,/if \(!owner\) \{\s*if \(existing\) existing\.remove\(\)/);
