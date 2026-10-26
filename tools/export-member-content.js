@@ -45,16 +45,31 @@ function readCorpus(root) {
   return Array.from(records.values());
 }
 
+// Postgres text/jsonb rejects NUL and unpaired surrogates (error 22P05),
+// which can appear in text pulled out of PDF attachments.
+const UNSAFE_TEXT = /\u0000|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g;
+
+function sanitizeForDatabase(value) {
+  if (typeof value === "string") return value.replace(UNSAFE_TEXT, "");
+  if (Array.isArray(value)) return value.map(sanitizeForDatabase);
+  if (value && typeof value === "object") {
+    const out = {};
+    for (const [key, entry] of Object.entries(value)) out[sanitizeForDatabase(key)] = sanitizeForDatabase(entry);
+    return out;
+  }
+  return value;
+}
+
 function buildRows(root) {
   return readCorpus(root).map((item) => {
     const detail = loadProtectedDetail(root, item);
-    return {
+    return sanitizeForDatabase({
       announcement_id: String(item.id || ""),
       summary: String(item.summary || ""),
       snippet: String(item.snippet || ""),
       detail,
       source_hash: String((detail && detail.source_hash) || item.detail_revision || ""),
-    };
+    });
   }).filter((row) => row.announcement_id);
 }
 
@@ -98,7 +113,7 @@ function run(root, output) {
   return { rows: rows.length, detailCount, batchCount };
 }
 
-module.exports = { safeDetailPath, loadProtectedDetail, readCorpus, buildRows, writeBatches, run };
+module.exports = { sanitizeForDatabase, safeDetailPath, loadProtectedDetail, readCorpus, buildRows, writeBatches, run };
 
 if (require.main === module) {
   const root = path.resolve(__dirname, "..");
