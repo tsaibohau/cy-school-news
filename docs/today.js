@@ -135,7 +135,7 @@
     var relevantRows = announcementItems.map(function (item) {
       var result = typeof input.relevance === "function" ? input.relevance(item, input.profile || {}) : null;
       return { item: item, result: result };
-    }).filter(function (row) { return row.result && row.result.reasons && row.result.reasons.length && !row.result.school_mismatch; })
+    }).filter(function (row) { return row.result && row.result.reasons && row.result.reasons.length && !row.result.school_mismatch && !row.result.not_for_me; })
       .map(function (row) { row.fresh = freshness(row.item, today, validity); return row; })
       .filter(function (row) { return row.fresh.keep; })
       .sort(function (a, b) {
