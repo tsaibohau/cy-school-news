@@ -15,11 +15,11 @@
     return Object.assign({}, school, { aliases: (school.aliases || []).slice(), capabilities: Object.assign({}, school.capabilities) });
   }
   function mentionedSchool(value) {
-    var text = String(value || "").toLocaleLowerCase("zh-TW");
+    var text = String(value || "").toLowerCase();
     return schools.find(function (school) {
       if (school.visible === false) return false;
       return [school.short, school.name].concat(school.aliases || []).some(function (alias) {
-        return text.indexOf(String(alias).toLocaleLowerCase("zh-TW")) !== -1;
+        return text.indexOf(String(alias).toLowerCase()) !== -1;
       });
     }) || null;
   }

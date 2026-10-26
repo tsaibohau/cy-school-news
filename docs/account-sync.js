@@ -22,7 +22,7 @@
   }
 
   function normalizeKeyword(value) {
-    return String(value == null ? "" : value).trim().toLocaleLowerCase("zh-TW");
+    return String(value == null ? "" : value).trim().toLowerCase();
   }
   function accountId(value) {
     var id = String(value == null ? "" : value).trim();

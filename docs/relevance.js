@@ -6,7 +6,7 @@
 })(typeof window !== "undefined" ? window : globalThis, function () {
   "use strict";
   function clean(value) { return String(value == null ? "" : value).trim(); }
-  function lower(value) { return clean(value).toLocaleLowerCase("zh-TW"); }
+  function lower(value) { return clean(value).toLowerCase(); }
   function unique(values) { var seen = {}; return (values || []).filter(function (value) { var key = lower(value); if (!key || seen[key]) return false; seen[key] = true; return true; }); }
   function extractAudience(item) {
     item = item || {};

@@ -117,7 +117,7 @@
     var $ = function (id) { return document.getElementById(id); };
     var el = {
       appLoading: $("appLoading"), list: $("list"), subList: $("subList"), countLine: $("countLine"),
-      updatedAt: $("updatedAt"), q: $("q"),
+      updatedAt: $("updatedAt"), staleBanner: $("staleBanner"), q: $("q"),
       schoolFilter: $("schoolFilter"), catChips: $("catChips"),
       viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewTimetable: $("viewTimetable"), viewSub: $("viewSub"), viewAdmin: $("viewAdmin"), brandHome: $("brandHome"),
       tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabTimetable: $("tabTimetable"), tabSub: $("tabSub"), tabAdmin: $("tabAdmin"), subBadge: $("subBadge"),
@@ -789,10 +789,10 @@
         var now = new Date().toISOString();
         var existing = {};
         notificationState.subscriptions.forEach(function (sub) {
-          existing[sub.keyword.toLocaleLowerCase("zh-TW")] = sub;
+          existing[sub.keyword.toLowerCase()] = sub;
         });
         return (rows || []).filter(function (row) { return !row.deleted_at && row.keyword; }).map(function (row) {
-          var key = String(row.keyword).trim().toLocaleLowerCase("zh-TW");
+          var key = String(row.keyword).trim().toLowerCase();
           var old = existing[key];
           /* A subscription arriving from another device is new on this device:
              establish a local notification baseline now, never at its server age. */
@@ -2087,7 +2087,7 @@
         if (response.status === 404) return { items: [] };
         if (!response.ok) throw new Error("corpus HTTP " + response.status);
         return response.json();
-      }).then(function (data) { return Array.isArray(data && data.items) ? data.items.filter(visibleSchool) : []; });
+      }).then(function (data) { return Array.isArray(data && data.items) ? data.items.filter(function (item) { return visibleSchool(item) && !linkGone(item); }) : []; });
     }
     function fetchAssistantCorpus(scopeId) {
       if (scopeId === state.school) return ensureArchive().then(function () { return state.data && state.data.items || []; });
@@ -2114,7 +2114,12 @@
       if (!el.assistantAnswer) return;
       state.assistantAnswer = result;
       if (!result || result.status !== "answered") {
-        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>目前還無法回答這個問題</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p><small>可能是校方尚未公告、附件沒有可讀文字，或問題不在本站資料範圍。</small></div>';
+        var related = (result && result.related || []).map(function (item) {
+          var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
+          return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(item.title) + '</strong><small>' + esc(meta) + '</small></button>';
+        }).join("");
+        var relatedPanel = related ? '<details class="assistant-details" open><summary>可能相關的公告（請點開確認）</summary><div class="assistant-sources">' + related + '</div></details>' : '';
+        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>' + (related ? "沒有找到能直接回答的句子" : "目前還無法回答這個問題") + '</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p>' + (related ? '' : '<small>可能是校方尚未公告、附件沒有可讀文字，或問題不在本站資料範圍。</small>') + '</div>' + relatedPanel;
         return;
       }
       var evidence = result.evidence.map(function (row, index) {
@@ -2185,10 +2190,17 @@
       el.subBadge.hidden = n === 0;
       el.subBadge.textContent = n > 99 ? "99+" : String(n);
     }
+    var STALE_HOURS = 14; /* 夜間最長約 10 小時沒有排程，超過 14 小時代表抓取出問題 */
     function renderUpdatedAt() {
       if (!state.data || !state.data.generated_at) return;
       var t = state.data.generated_at.replace("T", " ").slice(5, 16);
+      var hours = (Date.now() - Date.parse(state.data.generated_at)) / 3600000;
+      var stale = isFinite(hours) && hours > STALE_HOURS;
       el.updatedAt.textContent = "更新於 " + t;
+      if (el.staleBanner) {
+        el.staleBanner.hidden = !stale;
+        el.staleBanner.textContent = stale ? "公告資料已超過 " + Math.floor(hours) + " 小時沒有更新（最後更新 " + t + "），最新消息請以校網為準。" : "";
+      }
     }
     function renderAll() {
       if (!state.data) return;

@@ -841,3 +841,4 @@ body { background: var(--paper); font-family: var(--sans); padding-bottom: calc(
   .home-actions { grid-template-columns: repeat(2,minmax(0,1fr)); }.home-action-primary { grid-column: auto; }.home-action:first-child { grid-column: 1/-1; }
   .home-action { min-height: 110px; }.card { padding: 14px 15px; }.card-title { font-size: 15px; }
 }
+.stale-banner { margin: 0; padding: 10px max(16px, env(safe-area-inset-left, 0px)); background: color-mix(in srgb, var(--seal) 12%, var(--card)); color: var(--seal); font-size: 14px; font-weight: 600; border-bottom: 1px solid color-mix(in srgb, var(--seal) 30%, var(--line)); }

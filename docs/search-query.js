@@ -9,7 +9,17 @@
   "use strict";
 
   function clean(value) { return String(value == null ? "" : value).replace(/\s+/g, " ").trim(); }
-  function compact(value) { return clean(value).toLocaleLowerCase("zh-TW").replace(/[^0-9a-z\u3400-\u9fff]+/g, ""); }
+  /* toLowerCase gives the same result as toLowerCase() for Chinese and
+     ASCII but is far faster; repeated texts are cached (問校務 took 20+ seconds). */
+  var COMPACT_CACHE = new Map();
+  function compact(value) {
+    var key = String(value == null ? "" : value), hit = COMPACT_CACHE.get(key);
+    if (hit !== undefined) return hit;
+    var out = clean(key).toLowerCase().replace(/[^0-9a-z\u3400-\u9fff]+/g, "");
+    if (COMPACT_CACHE.size > 20000) COMPACT_CACHE.clear();
+    COMPACT_CACHE.set(key, out);
+    return out;
+  }
   function unique(rows) { var seen = {}; return rows.filter(function (row) { if (!row || seen[row]) return false; seen[row] = true; return true; }); }
   var planCache = {};
   var fieldCache = typeof WeakMap !== "undefined" ? new WeakMap() : null;

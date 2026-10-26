@@ -35,6 +35,7 @@ DETAIL_ROOT = ROOT / "docs" / "data" / "details"
 
 TW_TZ = timezone(timedelta(hours=8))
 DATE_RE = re.compile(r"(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
+ARTICLE_LINK_RE = re.compile(r"/p/406-\d+-\d+")
 # RulingDigital 文章頁的「發佈日期 : YYYY-MM-DD」欄位(嘉中文章頁固定會有)
 PUB_DATE_RE = re.compile(r"發[佈布](?:日期|時間)\s*[::：]\s*(20\d{2})[-/.](\d{1,2})[-/.](\d{1,2})")
 
@@ -203,10 +204,16 @@ def _fmt_valid_date(y: int, mo: int, d: int) -> str:
 
 
 def parse_date_near(node) -> str:
-    """從連結節點往上找最近容器內的日期字串(未來日期視為活動日期,略過)。"""
+    """從連結節點往上找所在列的日期字串(未來日期視為活動日期,略過)。
+
+    最多往上 6 層；一旦容器內出現第二則公告連結就停止,
+    避免拿到相鄰公告的日期(嘉女列表的日期在第 4 層的 <tr>)。
+    """
     cur = node
-    for _ in range(4):
+    for _ in range(6):
         if cur is None:
+            break
+        if cur is not node and len({a.get("href") for a in cur.find_all("a", href=ARTICLE_LINK_RE)}) > 1:
             break
         m = DATE_RE.search(cur.get_text(" ", strip=True) or "")
         if m:

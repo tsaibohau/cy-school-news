@@ -38,12 +38,22 @@
   var SLOT_QUERY_WORDS = ["哪裡", "在哪", "去哪", "哪上", "哪個處室", "哪一個處室", "哪個組", "交到", "繳到", "送到", "交給誰", "怎麼", "如何", "何時", "什麼時候", "多少錢", "費用", "資格", "需要什麼", "要帶什麼", "一定要", "強制", "是否", "嗎"];
 
   function clean(value) { return String(value == null ? "" : value).replace(/\s+/g, " ").trim(); }
-  function compact(value) { return clean(value).toLocaleLowerCase("zh-TW").replace(/[^0-9a-z\u3400-\u9fff]+/g, ""); }
+  /* toLowerCase gives the same result as toLowerCase() for Chinese and
+     ASCII but is far faster; repeated texts are cached (問校務 took 20+ seconds). */
+  var COMPACT_CACHE = new Map();
+  function compact(value) {
+    var key = String(value == null ? "" : value), hit = COMPACT_CACHE.get(key);
+    if (hit !== undefined) return hit;
+    var out = clean(key).toLowerCase().replace(/[^0-9a-z\u3400-\u9fff]+/g, "");
+    if (COMPACT_CACHE.size > 20000) COMPACT_CACHE.clear();
+    COMPACT_CACHE.set(key, out);
+    return out;
+  }
   function unique(rows) { var seen = {}; return rows.filter(function (row) { if (!row || seen[row]) return false; seen[row] = true; return true; }); }
   function tokens(query) {
     var normalized = compact(query), base = normalized;
     STOP.forEach(function (word) { base = base.split(word).join(""); });
-    var out = clean(query).toLocaleLowerCase("zh-TW").split(/[\s,，。！？?、:：;；()（）]+/).filter(function (word) { return word.length >= 2; });
+    var out = clean(query).toLowerCase().split(/[\s,，。！？?、:：;；()（）]+/).filter(function (word) { return word.length >= 2; });
     if (base.length >= 2) {
       out.push(base);
       for (var size = Math.min(4, base.length); size >= 2; size--) {
@@ -231,7 +241,73 @@
     kept.forEach(function (row) { if (row && row.item) allowed[row.item.id] = true; });
     return ranked.filter(function (row) { return row && row.item && allowed[row.item.id]; });
   }
+  function currentAcademicYear(asOf) {
+    var year = Number(String(asOf).slice(0, 4)), month = Number(String(asOf).slice(5, 7));
+    return (month >= 8 ? year : year - 1) - 1911;
+  }
+  /* Students ask about what is happening now: newer announcements rank higher and titles
+     from earlier school years rank lower, unless the question names that year. */
+  function timeliness(item, query, asOf) {
+    var bonus = 0, day = String(item.date || item.first_seen || "").slice(0, 10);
+    if (/^\d{4}-\d{2}-\d{2}$/.test(day)) {
+      var age = (Date.parse(asOf + "T00:00:00Z") - Date.parse(day + "T00:00:00Z")) / 86400000;
+      if (age >= 0) bonus += Math.round(40 * Math.exp(-age / 120));
+    }
+    var titleYear = Number((periodToken(item.title || "").match(/^\d+/) || [])[0]);
+    var askedYear = Number((periodToken(query).match(/^\d+/) || [])[0]);
+    if (titleYear >= 90 && titleYear < 200 && !askedYear) {
+      var current = currentAcademicYear(asOf);
+      if (titleYear <= current - 2) bonus -= 40;
+      else if (titleYear === current - 1) bonus -= 15;
+    }
+    return bonus;
+  }
+  /* A long anchor such as 高三模擬考 should still match 高三第二次模擬考: count how many
+     of its two-character pieces appear in the announcement. */
+  var TITLE_TIME = /時間表|時程|日期|期程|試程|考程|行事曆|時間/;
+  var TITLE_METHOD = /注意事項|須知|流程|辦法|方式|說明|步驟|重要事項|要點/;
+  function anchorCoverage(row, anchorTokens) {
+    var pieces = unique([].concat.apply([], anchorTokens.filter(function (t) { return t.length >= 4; }).map(grams)));
+    if (!pieces.length) return 0;
+    var text = compact(clean((row.item && row.item.title || "") + " " + (row.text || "")));
+    return pieces.filter(function (piece) { return text.indexOf(piece) !== -1; }).length / pieces.length;
+  }
+  /* When no sentence answers the question, still point to the most related announcements
+     (title, date, link) instead of a bare 找不到. Old-year items are labelled as such. */
+  function subjectBigrams(query) {
+    var out = subjectTerms(query).filter(function (t) { return t.length === 2; });
+    anchors(query).filter(function (t) { return t.length >= 5; }).forEach(function (phrase) {
+      (phrase.match(/[a-z0-9]{2,}/g) || []).forEach(function (word) { out.push(word); });
+      (phrase.match(/[\u3400-\u9fff]+/g) || []).forEach(function (run) { out = out.concat(grams(run).filter(function (g) { return g.length === 2; })); });
+    });
+    return unique(out);
+  }
+  /* How much a text is about the question: 1 when it contains a short key term
+     (taxonomy terms and synonyms such as 手機／行動載具), else the share of the
+     question's two-character pieces it contains. */
+  function topicScore(text, query) {
+    text = compact(text);
+    var shortAnchors = anchors(query).filter(function (t) { return t.length >= 2 && t.length <= 4; });
+    if (shortAnchors.some(function (t) { return text.indexOf(t) !== -1; })) return 1;
+    var pieces = subjectBigrams(query);
+    if (!pieces.length) return 0;
+    return pieces.filter(function (t) { return text.indexOf(t) !== -1; }).length / pieces.length;
+  }
+  function relatedAnnouncements(query, ranked, options) {
+    var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var current = currentAcademicYear(asOf);
+    return (ranked || []).filter(function (row) {
+      return topicScore(row.item && row.item.title || "", query) >= 0.2;
+    }).slice(0, 3).map(function (row) {
+      var item = row.item, year = Number((periodToken(item.title || "").match(/^\d+/) || [])[0]);
+      var day = String(item.date || item.first_seen || "").slice(0, 10), note = "";
+      if (year >= 90 && year < current) note = "這是 " + year + " 學年度的資料，可能已改變";
+      else if (/^\d{4}-\d{2}-\d{2}$/.test(day) && (Date.parse(asOf) - Date.parse(day)) / 86400000 > 365) note = "這是 " + day.slice(0, 4) + " 年的資料，可能已改變";
+      return { id: item.id, title: item.title, date: day, school_name: item.school_name || "", url: item.url || "", note: note };
+    });
+  }
   function rank(query, items, details, options) {
+    var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var queryTokens = tokens(query), anchorTokens = anchors(query), literalTokens=literalAnchors(query), wanted = intent(query), detailMap = details || {}, slot = answerSlot(query);
     if (!SearchQuery || !queryTokens.length) return [];
     var sourceItems = Array.isArray(items) ? items : [];
@@ -257,19 +333,25 @@
       var intentBonus = 0, combined = clean(overview(item) + " " + body);
       wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
       var slotBonus = slot ? Math.min(30, cueHits(combined, slot) * 6) : 0;
-      return { item:item,detail:detailMap[item.id]||null,text:combined,score:metadataScore+reviewedScore+reviewedBonus+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus+slotBonus,anchorScore:anchorScore,reviewedMatch:reviewedScore>0,reviewedCoverage:reviewedCoverage,reviewedAnchorHits:reviewedAnchorHits,reviewedLongest:reviewedLongest,search_validity:metadataRow&&metadataRow.validity };
-    }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0 || row.reviewedMatch); }).sort(function (a, b) {
+      /* A title that is itself a schedule or a how-to answers 什麼時候 / 怎麼 questions directly. */
+      var titleText = clean(item.title || "");
+      if (wanted.indexOf("date") !== -1 && TITLE_TIME.test(titleText)) intentBonus += 200;
+      if (wanted.indexOf("method") !== -1 && TITLE_METHOD.test(titleText)) intentBonus += 120;
+      return { item:item,detail:detailMap[item.id]||null,text:combined,score:metadataScore+reviewedScore+reviewedBonus+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus+slotBonus+timeliness(item,query,asOf),anchorScore:anchorScore,reviewedMatch:reviewedScore>0,reviewedCoverage:reviewedCoverage,reviewedAnchorHits:reviewedAnchorHits,reviewedLongest:reviewedLongest,search_validity:metadataRow&&metadataRow.validity };
+    }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0 || row.reviewedMatch || anchorCoverage(row, anchorTokens) >= 0.6); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
     if (!ranked.length) return ranked;
     var strongReviewed=ranked.filter(function(row){return row.reviewedMatch&&row.reviewedLongest>=3&&row.reviewedAnchorHits>=2&&row.reviewedCoverage>=0.12;});
     if(strongReviewed.length){
       var related={};strongReviewed.forEach(function(row){related[row.item.id]=true;var record=Validity&&Validity.reviewedRecord?Validity.reviewedRecord(row.item):null;(record&&record.relations||[]).forEach(function(rel){if(rel.target_id)related[rel.target_id]=true;});});
-      ranked=ranked.filter(function(row){return related[row.item.id]||(row.reviewedMatch&&row.reviewedLongest>=3&&row.reviewedAnchorHits>=2&&row.reviewedCoverage>=0.12);});
+      /* Reviewed records keep their score bonus but no longer remove every other
+         announcement: a loose keyword overlap (e.g. 自主學習) hid the right answer. */
+      if(strongReviewed.some(function(row){return row.reviewedCoverage>=0.5;}))ranked=ranked.filter(function(row){return related[row.item.id]||(row.reviewedMatch&&row.reviewedCoverage>=0.5)||!row.reviewedMatch&&row.score>=strongReviewed[0].score*0.6;});
     }
     ranked = preferNewestRelated(query, ranked);
     if (!ranked.length) return ranked;
-    var floor = Math.max(70, ranked[0].score * 0.55);
+    var floor = Math.max(70, ranked[0].score * 0.4);
     return ranked.filter(function (row) { return row.score >= floor; });
   }
   function sentences(value) {
@@ -415,7 +497,10 @@
         }
       });
     });
-    if (!evidence.length) return { status: "insufficient", query: query, summary: "有找到可能相關的公告，但沒有找到能直接回答這個問題的官方句子。", evidence: [], sources: [] };
+    /* Evidence must be about the question's subject, not just share a common word
+       (學生證遺失 was answered with a 學生音樂比賽 notice). */
+    evidence = evidence.filter(function (row) { return topicScore((row.title || "") + " " + (row.text || "") + " " + (row.fragment && row.fragment.keywords || ""), query) >= 0.25; });
+    if (!evidence.length) return { status: "insufficient", query: query, summary: "有找到可能相關的公告，但沒有找到能直接回答這個問題的官方句子。", evidence: [], sources: [], related: relatedAnnouncements(query, ranked, options) };
     var sourceIds = {};
     evidence.forEach(function (row) { sourceIds[row.announcement_id] = true; });
     var sources = ranked.filter(function (row) { return sourceIds[row.item.id]; }).map(function (row) {
