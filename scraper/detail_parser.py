@@ -36,7 +36,15 @@ FULL_DATE = re.compile(
     r"(?P<month>\d{1,2})\s*[月./-]\s*(?P<day>\d{1,2})\s*日?"
 )
 PUBLICATION_LABELS = ("發布日期", "發佈日期", "發佈時間", "刊登日期", "最後更新日期", "公告日期")
-DEADLINE_LABELS = ("截止", "期限", "報名", "申請", "繳交", "繳費")
+DEADLINE_LABELS = ("截止", "期限", "報名", "申請", "繳交", "繳費", "選課", "選填", "登記")
+# Year-less dates such as 10/22(四) or 10月22日（星期四）. The year is inferred only
+# when the stated weekday matches exactly one nearby year, so a wrong guess fails closed.
+SHORT_DATE = re.compile(
+    r"(?<![\d年./-])(?P<month>\d{1,2})\s*[月/]\s*(?P<day>\d{1,2})\s*日?\s*"
+    r"[（(]\s*(?:星期|週|周)?\s*(?P<weekday>[一二三四五六日天])\s*[)）]"
+)
+WEEKDAYS = {"一": 0, "二": 1, "三": 2, "四": 3, "五": 4, "六": 5, "日": 6, "天": 6}
+RANGE_MARKS = ("~", "～", "至", "到", "－", "-", "—")
 EVENT_LABELS = ("活動日期", "辦理日期", "舉行日期", "比賽日期", "測驗日期", "報到日期")
 
 
@@ -178,7 +186,31 @@ def _explicit_date(match) -> str:
         return ""
 
 
-def _verified_dates(body, *, title: str, source_hash: str) -> list[dict]:
+def _short_date(match, anchor) -> str:
+    """Resolve a year-less date using its weekday; empty unless exactly one year fits."""
+    if anchor is None:
+        return ""
+    found = []
+    for year in (anchor.year - 1, anchor.year, anchor.year + 1):
+        try:
+            day = datetime(year, int(match.group("month")), int(match.group("day"))).date()
+        except ValueError:
+            continue
+        if day.weekday() == WEEKDAYS[match.group("weekday")] and -31 <= (day - anchor).days <= 200:
+            found.append(day)
+    return found[0].isoformat() if len(found) == 1 else ""
+
+
+def _short_dates_in(text: str, anchor) -> list[tuple[str, int, int]]:
+    rows = []
+    for match in SHORT_DATE.finditer(text):
+        date = _short_date(match, anchor)
+        if date:
+            rows.append((date, match.start(), match.end()))
+    return rows
+
+
+def _verified_dates(body, *, title: str, source_hash: str, anchor=None) -> list[dict]:
     """Extract only explicitly labelled, full-year deadline/event dates.
 
     Bare M/D values, publication metadata and arbitrary prose dates fail closed.
@@ -192,17 +224,29 @@ def _verified_dates(body, *, title: str, source_hash: str) -> list[dict]:
         if not text or any(label in text for label in PUBLICATION_LABELS):
             continue
         match = FULL_DATE.search(text)
-        if not match:
-            continue
-        date = _explicit_date(match)
+        verification = "explicit_full_date_with_label"
+        if match:
+            date = _explicit_date(match)
+            is_range = False
+        else:
+            shorts = _short_dates_in(text, anchor)
+            if not shorts:
+                continue
+            verification = "short_date_weekday_checked"
+            # A labelled range such as 10/16(四)~10/22(三) ends on its last date.
+            is_range = len(shorts) >= 2 and any(mark in text[shorts[-2][2]:shorts[-1][1]] for mark in RANGE_MARKS)
+            date = shorts[0][0]
         if not date:
             continue
         kind = None
         provenance = None
         if any(label in text for label in EVENT_LABELS):
             kind, provenance = "event", "verified_announcement_event"
-        elif any(label in text for label in DEADLINE_LABELS) and any(marker in text for marker in ("前", "止", "截止", "期限")):
+        elif any(label in text for label in DEADLINE_LABELS) and (
+                is_range or any(marker in text for marker in ("前", "止", "截止", "期限"))):
             kind, provenance = "deadline", "verified_announcement_deadline"
+            if verification == "short_date_weekday_checked":
+                date = shorts[-1][0]
         if not kind or (kind, date) in seen:
             continue
         seen.add((kind, date))
@@ -213,13 +257,23 @@ def _verified_dates(body, *, title: str, source_hash: str) -> list[dict]:
             "provenance": provenance,
             "source": "official_article",
             "source_revision": source_hash,
-            "verification": "explicit_full_date_with_label",
+            "verification": verification,
         })
     return rows
 
 
+def _anchor_date(published_on, fetched: str):
+    for value in (published_on, fetched):
+        try:
+            return datetime.fromisoformat(str(value or "")[:10]).date()
+        except ValueError:
+            continue
+    return None
+
+
 def parse_article_detail(html: str, *, announcement_id: str, school_id: str,
-                         title: str, source_url: str, fetched_at: str | None = None) -> dict:
+                         title: str, source_url: str, fetched_at: str | None = None,
+                         published_on: str | None = None) -> dict:
     raw_hash = hashlib.sha256(html.encode("utf-8", errors="replace")).hexdigest()
     fetched = fetched_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
     try:
@@ -231,7 +285,8 @@ def parse_article_detail(html: str, *, announcement_id: str, school_id: str,
                     "source_hash": raw_hash, "parser_version": "detail-v2",
                     "fetched_at": fetched, "parse_status": "empty",
                     "provenance": "official_article"}
-        verified_dates = _verified_dates(body, title=title, source_hash=raw_hash)
+        verified_dates = _verified_dates(body, title=title, source_hash=raw_hash,
+                                         anchor=_anchor_date(published_on, fetched))
         attachment_roots = [body] + [node for selector in ATTACHMENT_SELECTORS for node in soup.select(selector)]
         return {
             "announcement_id": announcement_id,

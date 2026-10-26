@@ -39,6 +39,20 @@
   function reason(rule, sourceField, matchedValue, label) {
     return { rule: rule, source_field: sourceField, matched_value: matchedValue, label: label };
   }
+  // Student-view rules derived from the 2026-10-26 manual review (嘉中高一, 30 items).
+  var STAFF_ONLY = /教師|老師研習|同仁|教職員|人事|公務人力|人才庫|調查表|校長|主任會議|導師會議/;
+  var STUDENT_WORDS = /學生|同學|高中生|學子|師生/;
+  var OTHER_LEVEL = /國中|國小|幼兒園/;
+  var SENIOR_ADMISSION = /特殊選才|招生簡章|學士班.*招生|甄選入學|個人申請|分科測驗|學測/;
+  var STUDENT_ACTION = /報名|競賽|比賽|名單|成績|講座|徵件|營隊|校對|選課|檢定|英檢/;
+  function notForMe(item, audience, profile) {
+    var title = clean(item.title), grade = Number(profile.grade_level);
+    if (grade && audience.grades.length && audience.grades.indexOf(grade) < 0 && !audience.all_school) return "other_grade";
+    if (STAFF_ONLY.test(title) && !STUDENT_WORDS.test(title)) return "staff_only";
+    if (OTHER_LEVEL.test(title)) return "other_school_level";
+    if (grade && grade < 3 && (SENIOR_ADMISSION.test(title) || clean(item.category) === "升學")) return "senior_admission";
+    return "";
+  }
   function calculate(item, profile, schoolRegistry) {
     item = item || {}; profile = profile || {};
     var audience = audienceFor(item), reasons = [], priority = 0;
@@ -57,9 +71,11 @@
     unique(profile.tracked_keywords).forEach(function (keyword) { if (text.indexOf(lower(keyword)) >= 0) { priority += 50; reasons.push(reason("tracked_keyword", "text", keyword, keyword)); } });
     unique(profile.tracked_categories).forEach(function (category) { if (lower(item.category) === lower(category)) { priority += 30; reasons.push(reason("tracked_category", "category", category, category)); } });
     unique(profile.interests).forEach(function (interest) { if (text.indexOf(lower(interest)) >= 0) { priority += 20; reasons.push(reason("interest", "text", interest, interest)); } });
+    var excluded = notForMe(item, audience, profile);
+    if (!excluded && STUDENT_ACTION.test(clean(item.title))) { priority += 40; reasons.push(reason("student_action", "title", "action", "可參加／需處理")); }
     var tier = priority >= 180 ? "strong" : priority > 0 ? "medium" : "none";
-    return { tier: tier, priority: priority, reasons: reasons, audience: audience, school_mismatch: schoolMismatch };
+    return { tier: tier, priority: priority, reasons: reasons, audience: audience, school_mismatch: schoolMismatch, not_for_me: excluded };
   }
   function label(result) { return result.reasons.slice(0, 3).map(function (item) { return item.label; }).join("・"); }
-  return { extractAudience: extractAudience, audienceFor: audienceFor, calculate: calculate, label: label };
+  return { extractAudience: extractAudience, audienceFor: audienceFor, notForMe: notForMe, calculate: calculate, label: label };
 });

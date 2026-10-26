@@ -33,4 +33,17 @@ assert(mismatch.priority < 0);
 const allSchool = Relevance.calculate({ school: "cygsh", title: "全校高一通知" }, Profile.normalize({ school_id: "cysh", grade_level: 1 }), Registry);
 assert.equal(allSchool.school_mismatch, false);
 assert(allSchool.reasons.some(x => x.rule === "grade_explicit"));
+
+// Student-view rules from the 2026-10-26 manual review (嘉中高一).
+const Reg = require("../docs/school-registry.js");
+const me = { school_id: "cysh", grade_level: 1 };
+const why = (title, category) => Relevance.calculate({ id: "x", school: "cysh", title, category }, me, Reg).not_for_me;
+assert.equal(why("【複習考】115學年度第一學期高三第三次複習考時間表"), "other_grade");
+assert.equal(why("嘉義縣政府辦理新興科技聯盟計畫中心學校教師研習"), "staff_only");
+assert.equal(why("鼓勵本校師生及同仁踴躍報名參加講座"), "", "師生 includes students");
+assert.equal(why("雲嘉南區國中數學競試－初試試題"), "other_school_level");
+assert.equal(why("國立聯合大學116學年度學士班特殊選才招生訊息"), "senior_admission");
+assert.equal(Relevance.calculate({ school: "cysh", title: "特殊選才招生簡章" }, { school_id: "cysh", grade_level: 3 }, Reg).not_for_me, "", "seniors still see admissions");
+assert.equal(why("【成績校對】115學年度第一學期第一次期中考成績校對通知"), "");
+assert.ok(Relevance.calculate({ school: "cysh", title: "400公尺決賽名單" }, me, Reg).reasons.some(r => r.rule === "student_action"));
 console.log("Deterministic relevance and audience tests passed");

@@ -57,6 +57,20 @@ def main():
       announcement_id="publication", school_id="cysh", title="日期測試",
       source_url="https://www.cysh.cy.edu.tw/p/406-1008-2.php")
     assert publication["verified_dates"] == [], "publication and unlabelled body dates are never reminder targets"
+    def short(html, published_on="2026-10-14"):
+        return parse_article_detail(html, announcement_id="short", school_id="cysh", title="高一微課程選課",
+                                    source_url="https://www.cysh.cy.edu.tw/p/406-1008-3.php",
+                                    fetched_at="2026-10-14T08:00:00+00:00", published_on=published_on)["verified_dates"]
+    # 2026-10-22 is a Thursday: weekday-checked year-less dates are accepted.
+    rows = short("<article><p>選課時間：10/16(五)~10/22(四)</p></article>")
+    assert [(r["kind"], r["date"], r["verification"]) for r in rows] == [("deadline", "2026-10-22", "short_date_weekday_checked")], rows
+    rows = short("<article><p>請於10月22日（星期四）前完成線上報名</p></article>")
+    assert [(r["kind"], r["date"]) for r in rows] == [("deadline", "2026-10-22")], rows
+    assert short("<article><p>選課時間：10/16(五)~10/22(五)</p></article>") == [], "a weekday that does not match fails closed"
+    assert short("<article><p>報名至10/22前</p></article>") == [], "no weekday, no year inference"
+    assert short("<article><p>校務說明10/22(四)</p></article>") == [], "unlabelled dates stay out"
+    rows = short("<article><p>報名截止：1/7(四)</p></article>", published_on="2026-12-20")
+    assert [r["date"] for r in rows] == ["2027-01-07"], "deadline in the next calendar year"
     encoded = parse_article_detail("""<article><p>附件如下</p>
       <a href='/download?filename=%E7%94%B3%E8%AB%8B%E8%A1%A8.xlsx'>下載</a>
       <a href='/files/%E6%B4%BB%E5%8B%95%E7%85%A7%E7%89%87.JPG?token=official'>附件</a>
