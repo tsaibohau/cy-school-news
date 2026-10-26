@@ -15,6 +15,7 @@ from datetime import datetime
 import requests
 from public_shards import build_school_shards
 from extractive_summary import SUMMARY_VERSION, summarize_detail
+from link_health import is_gone
 
 from scrape import (CONFIG, ROOT, TW_TZ, UA, atomic_write_text, decode_response,
                     extract_article_date_result, extract_article_snippet,
@@ -59,6 +60,10 @@ def backfill_existing_summaries(items, cap):
 
 
 def needs_detail(item):
+    if is_gone(item):
+        return False
+    if item.get("detail_status") == "parsed" and item.get("summary_version") != SUMMARY_VERSION:
+        return True
     corrupt = is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", ""))
     status = item.get("detail_status")
     retryable = (not status or status in {"pending", "temporary_error"}) \
@@ -239,7 +244,7 @@ def main():
             if is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", "")):
                 raise RuntimeError("decoded detail remains corrupted")
         except Exception as error:
-            record_detail_fetch_failure(item)
+            record_detail_fetch_failure(item, error=error, now_iso=fetched_at)
             print(f"[warn] detail backfill failed {item.get('id')}: {type(error).__name__}")
         time.sleep(delay)
 

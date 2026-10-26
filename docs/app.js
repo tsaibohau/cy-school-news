@@ -54,6 +54,7 @@
     var searchTimer = null;
     var HIDDEN_SCHOOL_IDS = { fjsh: true, pksh: true };
     var HIDDEN_SCHOOL_NAMES = /(?:輔仁高中|輔仁中學|私立輔仁高級中學|北港高中|北港高級中學)/;
+    function linkGone(item) { return !!item && item.link_status === "gone"; }
     function visibleSchool(row) {
       if (!row) return false;
       if ([row.school_name, row.schoolName, row.school_short, row.short, row.name].some(function (value) {
@@ -1437,7 +1438,8 @@
         data.category_slugs = manifest.category_slugs || {};
       }
       data.schools = (data.schools || []).filter(visibleSchool);
-      data.items = (data.items || []).filter(visibleSchool);
+      /* 校網原文已確認不存在（連續兩次 404）的公告不顯示 */
+      data.items = (data.items || []).filter(function (item) { return visibleSchool(item) && !linkGone(item); });
       return data;
     }
 
@@ -1576,7 +1578,7 @@
           state.data.items.forEach(function (it) { ids[it.id] = true; });
           (arc.items || []).forEach(function (it) {
             applyMemberContent(it);
-            if (!ids[it.id] && !state.deletedAnnouncements[it.id]) state.data.items.push(it);
+            if (!ids[it.id] && !state.deletedAnnouncements[it.id] && !linkGone(it)) state.data.items.push(it);
           });
           state.archive = "loaded";
           renderAll();

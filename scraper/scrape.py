@@ -22,7 +22,8 @@ from urllib.parse import parse_qs, urljoin, urlsplit, urlunsplit
 
 import requests
 from attachment_parser import enrich_pdf_attachments
-from extractive_summary import summarize_detail
+from extractive_summary import SUMMARY_VERSION, summarize_detail
+from link_health import GONE_HTTP_STATUS, http_status, is_gone, record_alive, record_missing
 from public_shards import build_school_shards
 from bs4 import BeautifulSoup
 
@@ -677,6 +678,7 @@ def _detail_filename(announcement_id: str) -> str:
 def write_detail_record(item: dict, html: str, fetched_at: str, *, session=None,
                         attachment_budget=None, request_delay_sec=None) -> dict:
     """Persist one validated sidecar without inflating announcement snapshots."""
+    record_alive(item)
     school_id = str(item.get("school_id") or item.get("school") or "unknown").lower()
     record = parse_article_detail(
         html,
@@ -715,8 +717,10 @@ def write_detail_record(item: dict, html: str, fetched_at: str, *, session=None,
     return record
 
 
-def record_detail_fetch_failure(item: dict, max_attempts: int = 5) -> str:
+def record_detail_fetch_failure(item: dict, max_attempts: int = 5, error=None, now_iso: str = "") -> str:
     """Persist bounded retry state without storing exception text or secrets."""
+    if http_status(error) in GONE_HTTP_STATUS:
+        record_missing(item, now_iso or datetime.now(timezone.utc).isoformat(timespec="seconds"))
     attempts = int(item.get("detail_attempts") or 0) + 1
     item["detail_attempts"] = attempts
     item["detail_available"] = False
@@ -920,7 +924,7 @@ def main() -> int:
             except Exception as e:
                 print(f"[warn] 內文抓取失敗 {it['url']}: {e}", file=sys.stderr)
                 it["snippet"] = ""
-                record_detail_fetch_failure(it)
+                record_detail_fetch_failure(it, error=e, now_iso=now_iso)
             time.sleep(delay)
 
         for it in collected.values():
@@ -980,7 +984,14 @@ def main() -> int:
                 or is_mojibake(it.get("title", ""))
                 or is_invalid_title(it.get("title", "")))
 
+    def stale_summary(it):
+        return it.get("detail_status") == "parsed" and it.get("summary_version") != SUMMARY_VERSION
+
     def needs_detail(it):
+        if is_gone(it):
+            return False
+        if stale_summary(it):
+            return True
         status = it.get("detail_status")
         corrupt = (it.get("title_status") == "repair_pending"
                    or is_mojibake(it.get("title", ""))
@@ -993,7 +1004,8 @@ def main() -> int:
     pending = [it for it in by_id.values()
                if it["id"] not in fetched_this_run
                and (needs_date(it) or needs_snippet(it) or needs_title(it) or needs_detail(it))] if run_backfill else []
-    pending.sort(key=lambda x: x.get("first_seen") or "", reverse=True)
+    # Never-fetched items first, then summaries made by an older summarizer.
+    pending.sort(key=lambda x: (not stale_summary(x), x.get("first_seen") or ""), reverse=True)
     filled_dates = filled_snippets = 0
     repaired_titles = 0
     for it in pending[:backfill_cap]:
@@ -1008,7 +1020,7 @@ def main() -> int:
         except Exception as e:
             print(f"[warn] 補抓失敗 {it['url']}: {e}", file=sys.stderr)
             if detail_needed:
-                record_detail_fetch_failure(it)
+                record_detail_fetch_failure(it, error=e, now_iso=now_iso)
             time.sleep(delay)
             continue
         if needs_date(it):

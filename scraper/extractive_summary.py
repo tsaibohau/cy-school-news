@@ -3,8 +3,9 @@ from __future__ import annotations
 
 import re
 
-SUMMARY_VERSION = "extractive-v3-public-minimized"
-META_PREFIX = re.compile(r"^(?:作者|發布日期|發佈日期|最後更新日期)\s*[：:]\s*[^。！？!?]{0,80}", re.I)
+SUMMARY_VERSION = "extractive-v4"
+# Strip only the label and its value (a date or a short unit name), never the text after it.
+META_PREFIX = re.compile(r"^(?:作者|發布日期|發佈日期|最後更新日期)\s*[：:]\s*(?:\d{4}[-/.]\d{1,2}[-/.]\d{1,2}|[^\s：:]{1,20})", re.I)
 NOISE = re.compile(r"^(?:下載附件|附件下載|回首頁|國立嘉義(?:女子)?高級中學)$")
 SIGNALS = {"請": 2, "須": 2, "務必": 3, "截止": 5, "期限": 4, "報名": 4,
            "申請": 4, "繳交": 4, "辦理": 3, "時間": 3, "地點": 3,
@@ -14,6 +15,11 @@ GENERIC_HEADINGS = {"說明", "公告內容", "主旨", "注意事項", "相關�
 NUMBERED_ITEM = re.compile(r"^(?:第[一二三四五六七八九十]+項|[一二三四五六七八九十]+[、.]|\(?\d{1,2}\)?[、.)．])\s*")
 PERSONAL_DATA = re.compile(r"(?:[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}|(?:\d{2,4}[-\s]?)?\d{3,4}[-\s]?\d{3,4}|\b\d{8,10}\b)")
 SHORT_FACT_NOTICE_CHARS = 60
+# Background and routing phrases that say little about what the reader must do.
+BOILERPLATE = re.compile(r"^(?:說明\s*[：:]\s*)?(?:[一二三四五六七八九十]+、\s*)?(?:依據|依\S{0,12}函|檢送|本部|本會|本署|本局|為推動|為提升|為鼓勵|為落實|旨揭)|詳如附件|請參閱附件|如附件|請轉知|惠請|敬請|請查照|諒達")
+LEAD_IN = re.compile(r"^(?:說明\s*[：:]\s*|主旨\s*[：:]\s*)?(?:[一二三四五六七八九十]+、|\(?[0-9]{1,2}\)?[、.．])?\s*")
+SUMMARY_MIN_CHARS = 60
+SUMMARY_MAX_CHARS = 120
 
 
 def _clean(value: object) -> str:
@@ -50,12 +56,21 @@ def _score(sentence: str, title_terms: set[str], position: int, source: str) -> 
         score += 3
     if len(re.findall(r"\d+", sentence)) > 10:
         score -= 6
+    if BOILERPLATE.search(sentence):
+        score -= 8
     return score
 
 
 def _short(value: str, limit: int = 150) -> str:
-    value = _clean(value)
-    return value if len(value) <= limit else value[:limit - 1].rstrip("，、；;：: ") + "…"
+    value = LEAD_IN.sub("", _clean(value), count=1) or _clean(value)
+    if len(value) <= limit:
+        return value
+    cut = value[:limit - 1]
+    # Prefer ending at a clause boundary so numbers and names are not split.
+    boundary = max(cut.rfind(mark) for mark in "，、；;。 ")
+    if boundary >= limit * .6:
+        cut = cut[:boundary]
+    return cut.rstrip("，、；;：: ") + "…"
 
 
 def _fingerprint(value: str) -> set[str]:
@@ -113,6 +128,12 @@ def _candidate_rows(record: dict) -> tuple[list[dict], bool]:
                 label = _item_label(raw, current_heading) or f"項目 {value_index + 1}"
             for sentence in _sentences(value):
                 rows.append({"sentence": sentence, "source": "official_article", "label": label, "position": len(rows)})
+    # Many notices only say 詳如附件; parsed attachment text then carries the facts.
+    for attachment in record.get("attachments") or []:
+        if attachment.get("parse_status") != "parsed" or attachment.get("provenance") != "official_attachment":
+            continue
+        for sentence in _sentences(str(attachment.get("embedded_text") or "")[:20000])[:200]:
+            rows.append({"sentence": sentence, "source": "official_attachment", "label": "", "position": len(rows)})
     return rows, structured_groups > 0 or numbered_count >= 2 or len(meaningful_headings) >= 2
 
 
@@ -124,15 +145,16 @@ def summarize_detail(record: dict, title: str = "") -> dict:
         str(block.get("text") or " ".join(map(str, block.get("items") or [])))
         for block in record.get("blocks") or []
     )))
-    summary_limit = int(safe_body_length * .20)
+    summary_limit = min(SUMMARY_MAX_CHARS, max(SUMMARY_MIN_CHARS, int(safe_body_length * .20)))
     # A very short, factual notice cannot yield a readable 20% summary.  It may
     # be relayed verbatim only when it contains no detected personal data.
     full_notice = _clean(" ".join(row["sentence"] for row in candidates))
     if 12 <= len(full_notice) <= SHORT_FACT_NOTICE_CHARS and not PERSONAL_DATA.search(full_notice):
+        sources = {row["source"] for row in candidates}
         return {"status": "extracted", "text": full_notice, "evidence": full_notice,
-                "items": [], "provenance": "official_article", "mode": "short_fact_notice",
+                "items": [], "provenance": sources.pop() if len(sources) == 1 else "official_article", "mode": "short_fact_notice",
                 "version": SUMMARY_VERSION}
-    if not candidates or summary_limit < 12:
+    if not candidates:
         return {"status": "insufficient", "text": "", "evidence": "",
                 "items": [], "provenance": "", "version": SUMMARY_VERSION}
     title_terms = _title_terms(normalized_title)
