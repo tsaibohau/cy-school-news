@@ -1617,7 +1617,8 @@
       if (!state.subscriptions.length) return false;
       var text = itemText(it);
       return state.subscriptions.some(function (sub) {
-        return text.indexOf(sub.keyword.toLowerCase()) !== -1;
+        var keyword = String(sub.keyword || "").trim().toLowerCase();
+        return !!keyword && text.indexOf(keyword) !== -1;
       });
     }
     function isNew(it) {
@@ -2270,17 +2271,13 @@
       var combined = Object.keys(byId).map(function (id) { return byId[id]; });
       var candidates = combined.map(function (entry) { return entry.item; });
       if (!candidates.length) return;
-      try {
-        var personalCount = combined.filter(function (entry) { return entry.personalized; }).length;
-        var body = personalCount
-          ? (personalCount === 1 ? "與你相關的新公告：" + candidates.find(function (item) { return byId[item.id].personalized; }).title :
-            "有 " + personalCount + " 則與你相關的新公告")
-          : "有 " + candidates.length + " 則符合訂閱關鍵字的新公告";
-        new window.Notification("校訊", {
-          body: body,
-          icon: "icons/icon-192.png",
-        });
-        /* 只有 Notification 建立成功後才寫入 IDs 與 first_seen 水位。 */
+      var personalCount = combined.filter(function (entry) { return entry.personalized; }).length;
+      var body = personalCount
+        ? (personalCount === 1 ? "與你相關的新公告：" + candidates.find(function (item) { return byId[item.id].personalized; }).title :
+          "有 " + personalCount + " 則與你相關的新公告")
+        : "有 " + candidates.length + " 則符合訂閱關鍵字的新公告";
+      /* 只有通知送出成功後才寫入 IDs 與 first_seen 水位。 */
+      function markDelivered() {
         var keywordOnly = combined.filter(function (entry) { return entry.keyword; }).map(function (entry) { return entry.item; });
         var personalOnly = combined.filter(function (entry) { return entry.personalized; }).map(function (entry) {
           return { item: entry.item, relevance: entry.relevance };
@@ -2289,7 +2286,25 @@
         if (personalOnly.length && NotificationState.markPersonalizedNotified) {
           NotificationState.markPersonalizedNotified(notificationState, personalOnly);
         }
-      } catch (e) { /* 通知建立失敗時不可寫入 notifiedIds */ }
+      }
+      showLocalNotification("校訊", { body: body, icon: "icons/icon-192.png", tag: "cynews-keyword" }, markDelivered);
+    }
+    /* 手機瀏覽器（Android Chrome、iPhone 主畫面 App）不允許 new Notification()，
+       必須透過 Service Worker 的 showNotification 送出；桌機與測試環境才退回建構子。 */
+    function showLocalNotification(title, options, onDelivered) {
+      function viaConstructor() {
+        try { new window.Notification(title, options); onDelivered(); }
+        catch (e) { /* 通知建立失敗時不可寫入 notifiedIds */ }
+      }
+      var sw = navigator.serviceWorker;
+      if (sw && sw.controller && sw.ready && typeof sw.ready.then === "function") {
+        sw.ready.then(function (registration) {
+          if (!registration || typeof registration.showNotification !== "function") return viaConstructor();
+          return registration.showNotification(title, options).then(onDelivered, viaConstructor);
+        }).catch(viaConstructor);
+        return;
+      }
+      viaConstructor();
     }
 
     /* ── 事件 ── */

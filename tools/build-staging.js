@@ -46,7 +46,7 @@ const shellInputs = [
 const shellRevision = "staging-" + crypto.createHash("sha256")
   .update(shellInputs.map((file) => fs.readFileSync(path.join(source, file))).join("\n"))
   .digest("hex").slice(0, 12);
-const sourceVersions = Array.from({ length: 60 }, (_, index) => "?v=" + (41 + index));
+const sourceVersions = Array.from({ length: 160 }, (_, index) => "?v=" + (41 + index)).reverse(); // 由大到小替換，避免 ?v=10x 被較短版本號誤配
 const stagedVersion = "?v=" + shellRevision;
 
 const isRootOutput = path.dirname(output) === root && /^dist-staging(?:-[A-Za-z0-9._-]+)?$/.test(outputName);
