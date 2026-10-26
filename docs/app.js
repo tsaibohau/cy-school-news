@@ -2590,8 +2590,8 @@
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
       el.viewSub.hidden = tab !== "sub";
       if (el.viewAdmin) el.viewAdmin.hidden = tab !== "admin";
-      // 「今天」與「課表」由首頁進入，分頁列仍標示在首頁。
-      if (el.tabHome) el.tabHome.classList.toggle("is-active", home || today || timetable);
+      // 「今天」由首頁進入，分頁列仍標示在首頁。
+      if (el.tabHome) el.tabHome.classList.toggle("is-active", home || today);
       el.tabLatest.classList.toggle("is-active", latest);
       if (el.tabToday) el.tabToday.classList.toggle("is-active", today);
       if (el.tabAssistant) el.tabAssistant.classList.toggle("is-active", assistant);
