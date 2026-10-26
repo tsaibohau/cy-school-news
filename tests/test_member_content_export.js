@@ -38,6 +38,12 @@ try {
   assert.equal(batch.records[0].detail.provenance, "official_article");
 
   assert.equal(Exporter.safeDetailPath(root, "../secrets.txt"), null, "detail_ref must remain inside protected detail staging path");
+
+  const dirty = Exporter.sanitizeForDatabase({
+    text: "報名\u0000表", list: ["a\uD800b", "😀"], nested: { lone: "x\uDC00y" }, count: 3, empty: null,
+  });
+  assert.deepEqual(dirty, { text: "報名表", list: ["ab", "😀"], nested: { lone: "xy" }, count: 3, empty: null },
+    "NUL and unpaired surrogates must be removed before the Postgres upsert (22P05)");
   const mismatch = Object.assign({}, item, { detail_revision: "wrong" });
   assert.equal(Exporter.loadProtectedDetail(root, mismatch), null, "revision mismatch must fail closed");
 
