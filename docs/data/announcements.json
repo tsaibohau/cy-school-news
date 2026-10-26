@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T20:56:15+08:00",
+ "generated_at": "2026-10-26T22:13:18+08:00",
  "schools": [
   {
    "id": "cysh",
@@ -11868,7 +11868,7 @@
    "category": "一般",
    "first_seen": "2026-08-28T21:01:26+08:00",
    "detail_status": "temporary_error",
-   "detail_attempts": 2,
+   "detail_attempts": 3,
    "link_missing_checks": 1,
    "link_missing_at": "2026-10-26T20:58:19+08:00"
   },
@@ -11924,7 +11924,7 @@
    "category": "競賽",
    "first_seen": "2026-08-28T21:01:26+08:00",
    "detail_status": "temporary_error",
-   "detail_attempts": 2,
+   "detail_attempts": 3,
    "link_missing_checks": 1,
    "link_missing_at": "2026-10-26T20:58:19+08:00"
   },
@@ -14557,8 +14557,8 @@
    "first_seen": "2026-08-28T23:35:18+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fjsh-2343",
@@ -14572,8 +14572,8 @@
    "first_seen": "2026-08-28T23:35:18+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cysh-136239",
@@ -15217,7 +15217,11 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-2342,r37.php",
    "category": "競賽",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "fjsh-2341",
@@ -15228,7 +15232,11 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-2341,r37.php",
    "category": "一般",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "cysh-136222",
