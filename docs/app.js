@@ -117,7 +117,7 @@
     var $ = function (id) { return document.getElementById(id); };
     var el = {
       appLoading: $("appLoading"), list: $("list"), subList: $("subList"), countLine: $("countLine"),
-      updatedAt: $("updatedAt"), q: $("q"),
+      updatedAt: $("updatedAt"), staleBanner: $("staleBanner"), q: $("q"),
       schoolFilter: $("schoolFilter"), catChips: $("catChips"),
       viewHome: $("viewHome"), viewToday: $("viewToday"), viewLatest: $("viewLatest"), viewAssistant: $("viewAssistant"), viewTimetable: $("viewTimetable"), viewSub: $("viewSub"), viewAdmin: $("viewAdmin"), brandHome: $("brandHome"),
       tabHome: $("tabHome"), tabToday: $("tabToday"), tabLatest: $("tabLatest"), tabAssistant: $("tabAssistant"), tabTimetable: $("tabTimetable"), tabSub: $("tabSub"), tabAdmin: $("tabAdmin"), subBadge: $("subBadge"),
@@ -2185,10 +2185,17 @@
       el.subBadge.hidden = n === 0;
       el.subBadge.textContent = n > 99 ? "99+" : String(n);
     }
+    var STALE_HOURS = 14; /* 夜間最長約 10 小時沒有排程，超過 14 小時代表抓取出問題 */
     function renderUpdatedAt() {
       if (!state.data || !state.data.generated_at) return;
       var t = state.data.generated_at.replace("T", " ").slice(5, 16);
+      var hours = (Date.now() - Date.parse(state.data.generated_at)) / 3600000;
+      var stale = isFinite(hours) && hours > STALE_HOURS;
       el.updatedAt.textContent = "更新於 " + t;
+      if (el.staleBanner) {
+        el.staleBanner.hidden = !stale;
+        el.staleBanner.textContent = stale ? "公告資料已超過 " + Math.floor(hours) + " 小時沒有更新（最後更新 " + t + "），最新消息請以校網為準。" : "";
+      }
     }
     function renderAll() {
       if (!state.data) return;

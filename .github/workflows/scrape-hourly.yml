@@ -22,6 +22,8 @@ on:
 
 permissions:
   contents: write
+  # Open/close the 自動抓取失敗 issue so failures are never silent.
+  issues: write
 
 concurrency:
   group: scrape
@@ -159,4 +161,30 @@ jobs:
           else
             git commit -m "更新公告 $(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M')"
             git push
+          fi
+
+      - name: 抓取失敗時開 issue 通知
+        if: failure() && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="自動抓取失敗"
+          number="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title $title" --json number,title --jq "map(select(.title == \"$title\")) | .[0].number // empty")"
+          body="$(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M') 的抓取失敗，網站資料暫停更新。執行紀錄：$RUN_URL"
+          if [ -n "$number" ]; then
+            gh issue comment "$number" --repo "$GITHUB_REPOSITORY" --body "$body"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body "$body（下一次成功時會自動關閉）"
+          fi
+
+      - name: 抓取恢復時關閉 issue
+        if: success() && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="自動抓取失敗"
+          number="$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title $title" --json number,title --jq "map(select(.title == \"$title\")) | .[0].number // empty")"
+          if [ -n "$number" ]; then
+            gh issue close "$number" --repo "$GITHUB_REPOSITORY" --comment "$(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M') 抓取已恢復正常。"
           fi
