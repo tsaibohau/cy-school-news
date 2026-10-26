@@ -2140,7 +2140,10 @@
       var evidencePanel = evidence ? '<details class="assistant-details"><summary>為什麼這樣回答</summary><ol class="assistant-evidence">' + evidence + '</ol></details>' : '';
       var limitation = result.limitation ? '<details class="assistant-details"><summary>資料說明</summary><p class="assistant-limitation">' + esc(result.limitation) + '</p></details>' : '';
       var title = result.query ? '關於「' + esc(result.query) + '」' : '回答';
-      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>' + title + '</h3><p class="assistant-lead">' + esc(result.summary) + '</p>' + directAnswer + sourcePanel + evidencePanel + limitation + '</section>';
+      var points = (result.key_points || []).map(function (point) { return '<div class="assistant-point"><dt>' + esc(point.label) + '</dt><dd>' + esc(point.value) + '</dd></div>'; }).join("");
+      var pointPanel = points ? '<dl class="assistant-points" aria-label="重點整理">' + points + '</dl>' : '';
+      var quotePanel = directAnswer ? '<details class="assistant-details"><summary>官方原文摘錄</summary>' + directAnswer + '</details>' : '';
+      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>' + title + '</h3><p class="assistant-lead">' + esc(result.summary) + '</p>' + pointPanel + (points ? quotePanel : directAnswer) + sourcePanel + evidencePanel + limitation + '</section>';
     }
     function askAssistant(question) {
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
@@ -2149,7 +2152,11 @@
       var scope = assistantScopeFor(question);
       if (el.assistantAsk) el.assistantAsk.disabled = true;
       if (el.assistantStatus) el.assistantStatus.textContent = "正在搜尋「" + scope.label + "」公告與官方附件文字…";
+      if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在翻找「' + esc(scope.label) + '」的公告…</p></div>';
       return fetchAssistantCorpus(scope.id).then(function (items) {
+        /* 讓載入動畫先畫出來，再開始比對（比對會佔用主執行緒約一秒） */
+        return new Promise(function (resolve) { setTimeout(function () { resolve(items); }, 30); });
+      }).then(function (items) {
         state.assistantItems = {};
         items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
         var candidates = window.CyNewsAssistantQA.rank(question, items, {}).slice(0, 8);
