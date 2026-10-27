@@ -10,13 +10,12 @@
 """
 import json
 import re
-import xml.etree.ElementTree as ET
 from urllib.parse import parse_qs, urlsplit
 
 from bs4 import BeautifulSoup
 
 from . import Adapter, register
-from .common import (absolute, clean_title, make_item, parse_date_text, parse_iso_datetime,
+from .common import (absolute, clean_title, make_item, parse_date_text, parse_feed_xml, parse_iso_datetime,
                      parse_rfc822, same_site, usable_title)
 
 POST_ID_RE = re.compile(r"[?&]p=(\d+)")
@@ -46,9 +45,8 @@ def detect_format(payload):
 
 
 def _rss_items(payload, school, source_url, today):
-    try:
-        root = ET.fromstring(str(payload).lstrip("﻿").encode("utf-8"))
-    except ET.ParseError:
+    root = parse_feed_xml(payload)
+    if root is None:
         return []
     out = []
     for node in root.iter("item"):

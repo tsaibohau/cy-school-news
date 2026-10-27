@@ -6,13 +6,13 @@
   page.php?nsn= 是「靜態頁面」（學校沿革等），不是公告，一律排除。
 """
 import re
-import xml.etree.ElementTree as ET
 from urllib.parse import parse_qs, urlsplit
 
 from bs4 import BeautifulSoup
 
 from . import Adapter, register
-from .common import absolute, clean_title, date_near, make_item, parse_rfc822, same_site, usable_title
+from .common import (absolute, clean_title, date_near, make_item, parse_feed_xml, parse_rfc822, same_site,
+                     usable_title)
 
 NEWS_LINK_RE = re.compile(r"modules/tadnews/index\.php\?(?:[^\"'#]*&)?nsn=\d+")
 
@@ -36,9 +36,8 @@ class TadnewsAdapter(Adapter):
         return self._html(text, school, source_url, today)
 
     def _rss(self, text, school, source_url, today):
-        try:
-            root = ET.fromstring(text.encode("utf-8"))
-        except ET.ParseError:
+        root = parse_feed_xml(text)
+        if root is None:
             return []
         items, seen = [], set()
         for node in root.iter("item"):

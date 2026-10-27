@@ -169,6 +169,25 @@ def test_tadnews_rss_bad_timezone():
                      "https://www.mhvs.cyc.edu.tw/modules/tadnews/rss.php"), 20)
 
 
+def test_rss_with_bare_ampersand_still_parses():
+    """興華 2026-10-27：一則標題含沒跳脫的「&」，整份 RSS 解析失敗、0 筆。跳脫後重試。"""
+    rss = """<?xml version="1.0" encoding="UTF-8" ?><rss version="2.0"><channel>
+<item><title>論壇政府策略 & 企產資源 &amp; 聯盟</title>
+<link>https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=1990</link>
+<pubDate>Tue, 27 Oct 2026 08:00:00 +0800</pubDate></item>
+<item><title>一般公告&#12290;</title>
+<link>https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=1991</link>
+<pubDate>Tue, 27 Oct 2026 09:00:00 +0800</pubDate></item>
+</channel></rss>"""
+    items = adapters.get_adapter("xoops-tadnews").extract(rss, school("hhsh", "https://www.hhsh.cy.edu.tw"), "x", today=TODAY)
+    assert [i["id"] for i in items] == ["hhsh-1990", "hhsh-1991"], items
+    assert items[0]["title"] == "論壇政府策略 & 企產資源 & 聯盟", items[0]["title"]
+    wp = rss.replace("modules/tadnews/index.php?nsn=1990", "?p=1990").replace("modules/tadnews/index.php?nsn=1991", "?p=1991")
+    wp_items = adapters.get_adapter("wordpress").extract(wp, school("hhsh", "https://www.hhsh.cy.edu.tw"), "x", today=TODAY)
+    assert len(wp_items) == 2, wp_items
+    assert adapters.get_adapter("xoops-tadnews").extract("<rss><item><title>壞", school("hhsh", "https://www.hhsh.cy.edu.tw"), "x") == []
+
+
 def test_tadnews_html_skips_static_pages_and_junk():
     items = run("xoops-tadnews", "hhsh_tadnews_list.html", "hhsh", "https://www.hhsh.cy.edu.tw",
                 "https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?tag_sn=14")
