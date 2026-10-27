@@ -38,8 +38,9 @@ assert(dom.nodes.sitesList.innerHTML.indexOf("嘉義市") < dom.nodes.sitesList.
 assert.match(dom.nodes.sitesList.innerHTML, /href="https:\/\/www\.pksh\.ylc\.edu\.tw\/" target="_blank" rel="noopener"/);
 dom.nodes.sitesSearch.value = "北港";
 dom.listeners["sitesSearch:input"]();
-assert.match(dom.nodes.sitesCount.textContent, /^1 \/ \d+ 校$/);
-assert.match(dom.nodes.sitesList.innerHTML, /北港/);
+assert.match(dom.nodes.sitesCount.textContent, /^2 \/ \d+ 校$/, "北港 matches 北港高中 and 北港農工");
+assert.match(dom.nodes.sitesList.innerHTML, /國立北港高級中學/);
+assert.match(dom.nodes.sitesList.innerHTML, /國立北港高級農工職業學校/);
 assert.doesNotMatch(dom.nodes.sitesList.innerHTML, /嘉義女子/);
 dom.nodes.sitesSearch.value = "不存在的學校";
 dom.listeners["sitesSearch:input"]();

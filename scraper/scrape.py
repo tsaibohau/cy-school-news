@@ -1051,7 +1051,8 @@ def main() -> int:
         new_for_school.sort(key=lambda x: x.get("date") or "", reverse=True)
 
         # 只對「新」項目補抓內文摘要,並設上限;順便從文章頁補回缺漏的日期
-        cap = CONFIG["fetch_content_max_per_school"] if adapter.fetch_articles else 0
+        # 學校可設定較小的 fetch_content_max（例如新上架時），避免第一輪抓太多文章頁拖長排程
+        cap = int(school.get("fetch_content_max", CONFIG["fetch_content_max_per_school"])) if adapter.fetch_articles else 0
         snippet_targets = new_for_school[:cap]
         if deep_crawl:
             # 回補的舊公告若沒日期,會被誤排成「今天」,一律補抓文章頁取得日期
