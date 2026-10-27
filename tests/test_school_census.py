@@ -126,6 +126,16 @@ def test_unknown_system_needs_new_adapter():
     assert len(s.calls) == 1  # 未知系統不多打列表頁
 
 
+def test_garbage_href_is_skipped():
+    base = "https://www.g.cyc.edu.tw/"
+    html = ('<a href="http://某校 網址：x.example 帳號：admin 密碼：secret">公告</a>'
+            '<a href="http://[bad">最新消息</a><a href="/news.php">最新消息</a>')
+    s = FakeSession({base: html})
+    row = sc.probe_school(s, {"id": "g", "url": base}, delay=0)
+    assert [c["url"] for c in row["announce_candidates"]] == [base + "news.php"]
+    assert "secret" not in repr(row)
+
+
 def test_markdown_report_renders():
     rows = [{"id": "t", "name": "測試", "county": "嘉義市", "system": "new-classic-cms",
              "verdict": "可直接套用", "list_url": "u", "list_test": {"count": 3, "dated": 3},

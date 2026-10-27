@@ -260,17 +260,17 @@ def find_redirect(html, base):
     if meta:
         m = re.search(r"url\s*=\s*['\"]?([^'\";]+)", meta.get("content") or "", re.I)
         if m:
-            return urljoin(base, m.group(1).strip())
+            return safe_join(base, m.group(1).strip())
     frame = soup.find("frame", src=True)
     if frame:
-        return urljoin(base, frame["src"])
+        return safe_join(base, frame["src"])
     if len(soup.find_all("a", href=True)) < 3:
         iframe = soup.find("iframe", src=True)
         if iframe:
-            return urljoin(base, iframe["src"])
+            return safe_join(base, iframe["src"])
     m = re.search(r"location(?:\.href)?\s*=\s*['\"]([^'\"]+)['\"]", html or "")
     if m and len(soup.find_all("a", href=True)) < 3:
-        return urljoin(base, m.group(1))
+        return safe_join(base, m.group(1))
     return ""
 
 
@@ -281,13 +281,28 @@ def unit_of(html):
     return max(set(units), key=units.count)
 
 
+def safe_join(base, href):
+    """解析不了、或含空白／非 http 的 href 一律略過（校網偶有把整段文字塞進 href）。"""
+    href = (href or "").strip()
+    if not href or len(href) > 300 or re.search(r"\s", href):
+        return ""
+    try:
+        url = urljoin(base, href)
+        parts = urlsplit(url)
+    except ValueError:
+        return ""
+    return url if parts.scheme in ("http", "https") and parts.hostname else ""
+
+
 def find_links(html, base, system):
     """從首頁找公告列表與行事曆候選連結。"""
     soup = BeautifulSoup(html or "", "html.parser")
     announce, calendar = [], []
     for a in soup.find_all("a", href=True):
         text = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
-        href = urljoin(base, a["href"])
+        href = safe_join(base, a["href"])
+        if not href:
+            continue
         title = a.get("title") or ""
         if CALENDAR_TEXT_RE.search(text) or CALENDAR_TEXT_RE.search(title):
             calendar.append({"text": text[:30] or title[:30], "url": href})
@@ -456,8 +471,9 @@ def probe_school(session, target, delay=DELAY):
             row["list_error"] = error_class(exc)
     elif list_url:
         row["list_url"] = list_url
-    if not row.get("list_test") and row["homepage_test"]["count"]:
-        row["list_test"] = dict(row["homepage_test"], from_homepage=True)
+    home = row["homepage_test"]
+    if home["count"] and home["count"] > (row.get("list_test") or {}).get("count", 0):
+        row["list_test"] = dict(home, from_homepage=True)
     row["requests"] = prober.count
     row["verdict"] = verdict(row)
     return row
@@ -493,6 +509,8 @@ def render_markdown(rows, meta):
         for r in group:
             test = r.get("list_test") or {}
             tested = f"{test.get('count', 0)} 則／{test.get('dated', 0)} 有日期" if test else ""
+            if test.get("from_homepage"):
+                tested += "（首頁）"
             note = "；".join(filter(None, [r.get("error"), r.get("list_error"),
                                             "網址來源:" + r.get("url_source", "")] + r.get("evidence", [])[:3]))
             lines.append("| {id} | {name} | {sys} | {v} | {lst} | {t} | {cal} | {note} |".format(
@@ -523,7 +541,12 @@ def main(argv=None):
 
     rows = []
     for t in targets:
-        row = probe_school(session, t)
+        try:
+            row = probe_school(session, t)
+        except Exception as exc:  # 單校出錯不影響整批；不印例外內容以免帶出頁面文字
+            row = {k: t.get(k, "") for k in ("id", "name", "county", "url", "url_source")}
+            row.update({"system": "", "evidence": [], "requests": MAX_REQUESTS_PER_SCHOOL,
+                        "error": "probe_error:" + type(exc).__name__, "verdict": "連不上"})
         rows.append(row)
         print(f"{row['id']:8} {row.get('system') or '-':16} {row['verdict']:10} "
               f"req={row['requests']} {row.get('error', '')}", flush=True)
