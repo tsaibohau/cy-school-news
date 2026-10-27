@@ -1,0 +1,123 @@
+{
+ "_note": "尚未上架的學校清單（使用者指示：學校自建網站的先列入清單，以後再處理；先把系統相似、可用共用 adapter 的學校處理完）。reason：custom＝學校自建網站，需要專用 adapter；unreachable＝普查時連不上，之後重試。上架後請從此清單移除。",
+ "updated": "2026-10-27",
+ "schools": [
+  {
+   "id": "tkvs",
+   "name": "國立土庫高級商工職業學校",
+   "short": "土庫商工",
+   "county": "雲林縣",
+   "site": "https://www.tkvs.ylc.edu.tw/",
+   "reason": "custom",
+   "notes": "自建 PHP 系統（index.php?option=module&task=showlist／pageinfo）；TLS 中繼憑證已在 intermediates.pem"
+  },
+  {
+   "id": "victoria",
+   "name": "雲林縣維多利亞實驗高級中學",
+   "short": "維多利亞",
+   "county": "雲林縣",
+   "site": "https://www.victoria.ylc.edu.tw/",
+   "reason": "custom",
+   "notes": "IIS 自建網站，首頁找不到公告連結樣式"
+  },
+  {
+   "id": "ynhs",
+   "name": "雲林縣私立永年高級中學",
+   "short": "永年高中",
+   "county": "雲林縣",
+   "site": "https://www.ynhs.ylc.edu.tw/",
+   "reason": "custom",
+   "notes": "自建 ASP.NET（首頁頁籤 #idx-tab-0）"
+  },
+  {
+   "id": "ytjh",
+   "name": "雲林縣私立揚子高級中學",
+   "short": "揚子高中",
+   "county": "雲林縣",
+   "site": "https://www.ytjh.ylc.edu.tw/",
+   "reason": "custom",
+   "notes": "自建系統，公告路徑 /teaching/53/117、/recruit/30/97"
+  },
+  {
+   "id": "chsh",
+   "name": "嘉義市私立嘉華高級中學",
+   "short": "嘉華高中",
+   "county": "嘉義市",
+   "site": "http://www.chsh.cy.edu.tw/",
+   "reason": "custom",
+   "notes": "Joomla（IIS），最新消息 /index.php/2012-12-06-10-02-52；可評估 Joomla 通用 adapter"
+  },
+  {
+   "id": "hjgs",
+   "name": "嘉義市私立宏仁女子高級中學",
+   "short": "宏仁高中",
+   "county": "嘉義市",
+   "site": "https://www.hjgs.cy.edu.tw/",
+   "reason": "custom",
+   "notes": "自建 ASP.NET，公告 news.aspx?nID=…&getId=…"
+  },
+  {
+   "id": "dwvs",
+   "name": "嘉義市私立東吳高級工業家事職業學校",
+   "short": "東吳工家",
+   "county": "嘉義市",
+   "site": "http://www.dwvs.cy.edu.tw/",
+   "reason": "custom",
+   "notes": "nginx 自建網站，首頁公告連到國教署公文平臺；行事曆用 Google 日曆"
+  },
+  {
+   "id": "wnvs",
+   "name": "嘉義縣私立萬能高級工商職業學校",
+   "short": "萬能工商",
+   "county": "嘉義縣",
+   "site": "http://www.wnvs.cyc.edu.tw/",
+   "reason": "custom",
+   "notes": "自建網站（Google Frontend），公告 /zh-hant/announcements/"
+  },
+  {
+   "id": "ligvs",
+   "name": "嘉義市私立立仁高級中學",
+   "short": "立仁高中",
+   "county": "嘉義市",
+   "site": "https://www.ligvs.cy.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-10-27 普查：https 憑證錯誤，改 http 逾時"
+  },
+  {
+   "id": "dcvs",
+   "name": "雲林縣私立大成高級商工職業學校",
+   "short": "大成商工",
+   "county": "雲林縣",
+   "site": "http://163.27.121.3/web/",
+   "reason": "unreachable",
+   "notes": "教育部名錄網址是 IP；2026-10-27 普查逾時"
+  },
+  {
+   "id": "ddvs",
+   "name": "雲林縣私立大德高級工商職業學校",
+   "short": "大德工商",
+   "county": "雲林縣",
+   "site": "https://www.ddvs.ylc.edu.tw/home",
+   "reason": "unreachable",
+   "notes": "2026-10-27 普查：https 憑證錯誤，改 http 逾時"
+  },
+  {
+   "id": "svsh",
+   "name": "雲林縣私立文生高級中學",
+   "short": "文生高中",
+   "county": "雲林縣",
+   "site": "http://www.svsh.ylc.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-10-27 普查逾時"
+  },
+  {
+   "id": "cmsh",
+   "name": "嘉義縣私立協同高級中學",
+   "short": "協同高中",
+   "county": "嘉義縣",
+   "site": "https://www.cmsh.cyc.edu.tw/",
+   "reason": "unreachable",
+   "notes": "WordPress（nt_table 佈景，/category/news 可用共用 wordpress adapter）；2026-10-27 從 GitHub Actions 兩輪都連線被拒（https 與 http），之後重試"
+  }
+ ]
+}

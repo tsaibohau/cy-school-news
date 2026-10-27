@@ -70,6 +70,17 @@
     return { total: total, parts: parts };
   }
 
+  // 停課／停班／颱風假：今天或昨天的公告標題有這些字就提醒（固定關鍵字，不判斷內容）
+  var CLOSURE = /停課|停班|停止上課|停止上班|颱風假|防颱/;
+  function closureNotices(items, today, isVisible) {
+    var yesterday = addDays(today, -1);
+    return (items || []).filter(function (item) {
+      if (!item || (typeof isVisible === "function" && !isVisible(item))) return false;
+      var day = itemDay(item);
+      return (day === today || day === yesterday) && CLOSURE.test(String(item.title || ""));
+    });
+  }
+
   /*
    * input: {
    *   today: "YYYY-MM-DD", nickname, projection（CyNewsToday.build 的結果）,
@@ -84,6 +95,11 @@
     var lines = [];
     var who = String(input.nickname || "").trim();
     lines.push((who ? who + "，" : "") + "今天是 " + dateLabel(today) + "。");
+
+    var closures = closureNotices(input.announcementItems, today, input.isVisible);
+    if (closures.length) {
+      lines.push("停課／停班消息：" + names(closures, function (item) { return (item.school_name ? item.school_name + "・" : "") + short(item.title); }) + "。");
+    }
 
     var todayEvents = Array.isArray(p.todayEvents) ? p.todayEvents : [];
     if (todayEvents.length) {
@@ -122,5 +138,5 @@
     return { lines: lines, text: lines.join("") };
   }
 
-  return { compose: compose, newToday: newToday, dateLabel: dateLabel };
+  return { compose: compose, newToday: newToday, closureNotices: closureNotices, dateLabel: dateLabel };
 });
