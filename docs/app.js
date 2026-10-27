@@ -83,6 +83,8 @@
       cat: "all",
       q: "",
       tab: "latest",
+      landedHome: false,      // 本次開啟是否已自動進入首頁（只在第一次取得完整服務時）
+      brief: { text: "", lines: [], played: false, timer: null },
       calendarMonth: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
       calendarSelected: new Date().toISOString().slice(0, 10),
       eventEditingId: null,
@@ -155,7 +157,7 @@
       eventFormTitle: $("eventFormTitle"),
       legacyEventImport: $("legacyEventImport"), legacyEventImportStatus: $("legacyEventImportStatus"),
       importantList: $("importantList"),
-      welcomeTitle: $("welcomeTitle"), assistantForm: $("assistantForm"), assistantQuestion: $("assistantQuestion"),
+      welcomeTitle: $("welcomeTitle"), dailyBriefText: $("dailyBriefText"), dailyBriefSr: $("dailyBriefSr"), dailyBriefSkip: $("dailyBriefSkip"), assistantForm: $("assistantForm"), assistantQuestion: $("assistantQuestion"),
       assistantAsk: $("assistantAsk"), assistantScope: $("assistantScope"), assistantStatus: $("assistantStatus"), assistantAnswer: $("assistantAnswer"),
       profileBox: $("profileBox"), profileHint: $("profileHint"), profileForm: $("profileForm"),
       profileNickname: $("profileNickname"),
@@ -569,6 +571,11 @@
         }
         if (el.accountReapply) el.accountReapply.hidden = !(state.accountAccess && state.accountAccess.can_reapply);
         if (!full && ["home", "today", "assistant", "calendar"].indexOf(state.tab) !== -1) switchTab(approved ? "timetable" : "latest");
+        // 一打開就進首頁看今日摘要（只在本次開啟第一次取得完整服務時；之後尊重使用者自己切換的分頁）
+        if (full && !state.landedHome) {
+          state.landedHome = true;
+          if (state.tab === "latest") switchTab("home");
+        }
       }
       function adminFilters() {
         return {
@@ -778,7 +785,10 @@
         if (localStorage.getItem("cyNews.onboardingLater.v2:" + user.id) === "true") return;
         el.nicknameInput.value = state.nickname || "";
         if (el.nicknameSchool) el.nicknameSchool.value = preferredSchoolId();
-        if (typeof el.nicknameDialog.showModal === "function" && !el.nicknameDialog.open) el.nicknameDialog.showModal();
+        if (typeof el.nicknameDialog.showModal === "function" && !el.nicknameDialog.open) {
+          el.nicknameDialog.showModal();
+          pauseBrief();
+        }
       }
       function renderReminderPush() {
         if (!el.reminderPushToggle || !el.reminderPushState) return;
@@ -2058,6 +2068,73 @@
       el.taskOpenList.innerHTML = open.length ? open.map(function (task) { return taskHTML(task, false); }).join("") : '<p class="empty">還沒有待辦。先新增一件小事。</p>';
       el.taskDoneList.innerHTML = done.length ? done.map(function (task) { return taskHTML(task, true); }).join("") : '<p class="empty">完成的待辦會放在這裡。</p>';
     }
+    /* ── 今日摘要（打字機樣式）── */
+    function prefersReducedMotion() {
+      try { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); } catch (_) { return false; }
+    }
+    function paintBrief(lines, typedChars) {
+      if (!el.dailyBriefText) return;
+      var remaining = typedChars == null ? Infinity : typedChars;
+      var html = "";
+      for (var i = 0; i < lines.length && remaining > 0; i += 1) {
+        var part = lines[i].slice(0, remaining);
+        remaining -= lines[i].length;
+        html += "<p>" + esc(part) + (remaining <= 0 && typedChars != null ? '<span class="daily-brief-caret" aria-hidden="true"></span>' : "") + "</p>";
+      }
+      el.dailyBriefText.innerHTML = html;
+    }
+    function finishBrief() {
+      if (state.brief.timer) clearTimeout(state.brief.timer);
+      state.brief.timer = null;
+      state.brief.played = true;
+      paintBrief(state.brief.lines, null);
+      if (el.dailyBriefSkip) el.dailyBriefSkip.hidden = true;
+    }
+    // 快速設定視窗蓋住首頁時：停下打字、清空，等視窗關掉再從頭寫
+    function pauseBrief() {
+      if (!state.brief.timer || state.brief.played) return;
+      clearTimeout(state.brief.timer);
+      state.brief.timer = null;
+      paintBrief([], 0);
+      if (el.dailyBriefSkip) el.dailyBriefSkip.hidden = true;
+    }
+    function playBrief() {
+      var lines = state.brief.lines;
+      if (!lines.length || state.brief.played || state.brief.timer) return;
+      // 第一次登入的「快速設定」視窗開著時先不打字，關掉後才開始，避免摘要在視窗後面播完
+      if (el.nicknameDialog && el.nicknameDialog.open) return;
+      if (prefersReducedMotion()) { finishBrief(); return; }
+      var total = lines.join("").length, typed = 0;
+      if (el.dailyBriefSkip) el.dailyBriefSkip.hidden = false;
+      (function step() {
+        typed += 1;
+        paintBrief(lines, typed);
+        if (typed >= total) { state.brief.timer = setTimeout(finishBrief, 600); return; }
+        // 句尾稍停，讀起來像一句一句寫出來
+        var boundary = 0, pause = 38;
+        for (var i = 0; i < lines.length; i += 1) { boundary += lines[i].length; if (typed === boundary) pause = 320; }
+        state.brief.timer = setTimeout(step, pause);
+      })();
+    }
+    function renderDailyBrief(projection) {
+      if (!el.dailyBriefText || !window.CyNewsDailyBrief) return;
+      var schoolId = String(state.profile && state.profile.school_id || "");
+      var school = schoolId && window.CyNewsSchoolRegistry ? window.CyNewsSchoolRegistry.find(schoolId) : null;
+      var brief = window.CyNewsDailyBrief.compose({
+        today: projection.today, nickname: state.nickname, projection: projection,
+        announcementItems: state.data ? state.data.items : [], isVisible: visibleSchool,
+        schoolShort: school ? school.short : "",
+      });
+      if (el.dailyBriefSr) el.dailyBriefSr.textContent = brief.text;
+      if (brief.text === state.brief.text) return;
+      var wasPlaying = !!state.brief.timer;
+      state.brief.text = brief.text;
+      state.brief.lines = brief.lines;
+      // 已播過（或正在播）就直接顯示新內容，不重新打字；首頁看得到時才開始打字
+      if (state.brief.played || wasPlaying) { finishBrief(); return; }
+      paintBrief([], 0);
+      if (state.tab === "home") playBrief();
+    }
     function renderToday() {
       if (!el.viewToday || !window.CyNewsToday) return;
       var projection = window.CyNewsToday.build({
@@ -2084,6 +2161,7 @@
       }
       function eventRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(row.provenance === "user_event" ? "自己的事件" : (row.sourceLabel || "學校行事曆")) + '</div></div></div>'; }
       function deadlineRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(projection.dueLabel(row.date)) + ' · ' + esc(row.date) + '</div></div></div>'; }
+      renderDailyBrief(projection);
       if (el.todayBriefSummary) el.todayBriefSummary.textContent = projection.briefLabel;
       if (el.todayFocus) el.todayFocus.innerHTML = projection.focusItems.length ? projection.focusItems.map(function (row, index) {
         var sourceId = row.source && row.source.id;
@@ -2720,6 +2798,7 @@
       var assistant = tab === "assistant";
       var timetable = tab === "timetable";
       if (el.viewHome) el.viewHome.hidden = !home;
+      if (home) playBrief();
       if (el.viewToday) el.viewToday.hidden = !today;
       el.viewLatest.hidden = !latest;
       if (el.viewAssistant) el.viewAssistant.hidden = !assistant;
@@ -2773,7 +2852,21 @@
       }
       window.scrollTo(0, 0);
     }
+    // 管理介面的學校下拉選單由登錄表產生，學校變多也不必改 HTML
+    ["adminClassificationSchool", "adminArchiveSchool"].forEach(function (id) {
+      var select = document.getElementById(id);
+      if (!select || !window.CyNewsSchoolRegistry) return;
+      window.CyNewsSchoolRegistry.schools().forEach(function (school) {
+        var option = document.createElement("option");
+        option.value = school.id;
+        option.textContent = school.name.replace(/^(國立|.{2}[市縣]立|.{2}[市縣]私立)/, "").replace("高級中學", "高中");
+        select.appendChild(option);
+      });
+    });
     if (el.tabHome) el.tabHome.addEventListener("click", function () { switchTab("home"); });
+    if (el.dailyBriefSkip) el.dailyBriefSkip.addEventListener("click", finishBrief);
+    if (el.nicknameDialog) el.nicknameDialog.addEventListener("close", function () { if (state.tab === "home") playBrief(); });
+    if (el.dailyBriefText) el.dailyBriefText.addEventListener("click", function () { if (state.brief.timer) finishBrief(); });
     if (el.brandHome) el.brandHome.addEventListener("click", function () { switchTab("home"); });
     el.tabLatest.addEventListener("click", function () { switchTab("latest"); });
     if (el.tabToday) el.tabToday.addEventListener("click", function () { switchTab("today"); });

@@ -4,6 +4,13 @@
   if (window.CYNEWS_MOCK_ADMIN_MODE === true) return;
   if (!window.CyNewsAnnouncementCSV || !window.CyNewsAnnouncementExportSource || !window.CyNewsAccountAuth) return;
   var source = window.CyNewsAnnouncementExportSource;
+  function escOption(value) { return String(value).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function schoolOptions() {
+    var registry = window.CyNewsSchoolRegistry;
+    return registry ? registry.schools().map(function (school) {
+      return '<option value="' + escOption(school.id) + '">' + escOption(school.short) + '</option>';
+    }).join("") : "";
+  }
   var heading = document.querySelector("#viewAdmin .admin-cleanup .section-heading");
   if (!heading) return;
   var controller = window.CyNewsAccountAuth.createController();
@@ -20,9 +27,9 @@
   panel.innerHTML = '<h4 id="announcementExportTitle">下載完整公告內文</h4>' +
     '<p class="hint">資料來源：目前登入環境的 Supabase。僅主要管理員可下載；缺少正文或未讀附件會明確標記。範圍包含本站現行、歷史及可讀取的內文索引，已歸檔或無權限讀取的內文可能缺漏。</p>' +
     '<fieldset id="announcementExportControls"><legend>選擇公告</legend><div class="announcement-export-filters">' +
-    '<label>學校<select id="announcementExportSchool"><option value="all">全部學校</option><option value="cysh">嘉義高中</option><option value="cygsh">嘉義女中</option><option value="fjsh">輔仁高中</option><option value="pksh">北港高中</option><option value="ccjh">竹崎高中</option></select></label>' +
+    '<label>學校<select id="announcementExportSchool"><option value="all">全部學校</option>' + schoolOptions() + '</select></label>' +
     '<label>搜尋標題或 ID<input id="announcementExportSearch" type="search" placeholder="留空顯示全部"></label>' +
-    '<label>匯出範圍<select id="announcementExportScope"><option value="filtered">符合目前篩選的公告</option><option value="selected">已勾選公告</option><option value="all">全部兩校公告</option></select></label></div>' +
+    '<label>匯出範圍<select id="announcementExportScope"><option value="filtered">符合目前篩選的公告</option><option value="selected">已勾選公告</option><option value="all">全部學校公告</option></select></label></div>' +
     '<p id="announcementExportCount" class="hint"></p><div class="cleanup-toolbar"><button id="announcementExportSelect" type="button" class="btn-ghost">勾選符合篩選的公告</button><button id="announcementExportClear" type="button" class="btn-ghost">清除勾選</button></div>' +
     '<div id="announcementExportList" class="announcement-export-list"></div><div class="admin-pagination"><button id="announcementExportPrevious" type="button" class="btn-ghost">上一頁</button><span id="announcementExportPage"></span><button id="announcementExportNext" type="button" class="btn-ghost">下一頁</button></div></fieldset>' +
     '<div class="cleanup-toolbar"><button id="announcementExportStart" type="button" class="btn-primary" disabled>產生 CSV</button><button id="announcementExportCancel" type="button" class="btn-ghost" hidden>取消</button><a id="announcementExportDownload" class="btn-primary" hidden>下載 CSV</a></div>' +
