@@ -10,6 +10,19 @@
 - 判定：可直接套用 7 校、同系統，需調整 3 校、連不上 8 校、需新 adapter 23 校
 - 系統：aspnet 9、（連不上） 8、wordpress 7、ischool 6、new-classic-cms 4、unknown 3、xoops 3、joomla 1
 
+## 系統家族（同家族可共用一個 adapter）
+
+| 家族 | 校數 | 做法 | 學校 |
+|---|---|---|---|
+| 連不上 | 8 | 需換來源或請校方協助 | ligvs、dcvs、ddvs、pksh、pkvs、svsh、tkvs、tlhc |
+| 單校自建 | 7 | 個別評估 | chsh、dwvs、hjgs、wnvs、victoria、ynhs、ytjh |
+| WordPress | 7 | 新 adapter（WordPress RSS／REST，分類各校不同） | cyivs、cmsh、bwjh、hlvs、hwaivs、shsh、tlsh |
+| 數位果子 iSchool | 6 | 北港 JSON 做法泛化為 ischool-site-news | cyhvs、cyvs、nehs、sgash、hwsh、yfsh |
+| 銳鼎新版 | 4 | 現有 new-classic-cms | cygsh、cysh、fjsh、ccjh |
+| 雲林縣網站平台（News.aspx?n=&sms=） | 4 | 新 adapter，一次涵蓋多校 | dnsh、gwehs、mljh、nsjh |
+| XOOPS + tadnews | 3 | 新 adapter（tadnews 列表頁或 RSS） | hhsh、mhvs、ycsh |
+| ASP 校網（latestevent/index.asp?Parser=） | 2 | 新 adapter | hnvs、tssh |
+
 ## 嘉義市
 
 | 代碼 | 學校 | 系統 | 判定 | 公告列表 | 實測 | 行事曆 | 備註 |

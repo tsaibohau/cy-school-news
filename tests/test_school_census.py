@@ -155,6 +155,18 @@ def test_garbage_href_is_skipped():
     assert "secret" not in repr(row)
 
 
+def test_family_rules():
+    ylc = {"system": "aspnet", "final_url": "https://nsjh.ylc.edu.tw/", "server": "Microsoft-IIS/10.0",
+           "announce_candidates": [{"url": "https://nsjh.ylc.edu.tw/News.aspx?n=99518&sms=53804"}]}
+    assert sc.family(ylc)[0] == "ylc-county-cms"
+    asp = {"system": "aspnet", "final_url": "https://www.hnvs.cy.edu.tw/",
+           "announce_candidates": [{"url": "https://www.hnvs.cy.edu.tw/latestevent/index.asp?Parser=9,3,15"}]}
+    assert sc.family(asp)[0] == "asp-latestevent"
+    assert sc.family({"system": "xoops"})[0] == "xoops-tadnews"
+    assert sc.family({"system": ""})[0] == "unreachable"
+    assert sc.family({"system": "joomla", "final_url": "http://x/"})[0] == "custom"
+
+
 def test_markdown_report_renders():
     rows = [{"id": "t", "name": "測試", "county": "嘉義市", "system": "new-classic-cms",
              "verdict": "可直接套用", "list_url": "u", "list_test": {"count": 3, "dated": 3},

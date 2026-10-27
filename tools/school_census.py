@@ -541,6 +541,38 @@ def probe_school(session, target, delay=DELAY):
     return row
 
 
+# ---- 系統家族（同家族可共用一個 adapter）----
+FAMILY_RULES = [
+    # (家族代碼, 說明, 現有 adapter 或建議做法, 判斷函式(row, 所有網址合併字串))
+    ("new-classic-cms", "銳鼎新版", "現有 new-classic-cms",
+     lambda r, u: r.get("system") == "new-classic-cms"),
+    ("ischool", "數位果子 iSchool", "北港 JSON 做法泛化為 ischool-site-news",
+     lambda r, u: r.get("system") == "ischool"),
+    ("ylc-county-cms", "雲林縣網站平台（News.aspx?n=&sms=）", "新 adapter，一次涵蓋多校",
+     lambda r, u: re.search(r"(?:News2?|cl|News_Content)\.aspx\?n=\d+", u) is not None
+     or (r.get("system") == "aspnet" and ".ylc.edu.tw" in (r.get("final_url") or "")
+         and "Microsoft-IIS" in (r.get("server") or ""))),
+    ("asp-latestevent", "ASP 校網（latestevent/index.asp?Parser=）", "新 adapter",
+     lambda r, u: "latestevent/index.as" in u.lower()),
+    ("xoops-tadnews", "XOOPS + tadnews", "新 adapter（tadnews 列表頁或 RSS）",
+     lambda r, u: r.get("system") == "xoops"),
+    ("wordpress", "WordPress", "新 adapter（WordPress RSS／REST，分類各校不同）",
+     lambda r, u: r.get("system") == "wordpress"),
+]
+
+
+def family(row):
+    urls = " ".join([row.get("final_url") or "", row.get("list_url") or ""] +
+                    [c["url"] for c in row.get("announce_candidates") or []] +
+                    [c["url"] for c in row.get("calendar_candidates") or []])
+    for code, label, plan, rule in FAMILY_RULES:
+        if rule(row, urls):
+            return code, label, plan
+    if not row.get("system"):
+        return "unreachable", "連不上", "需換來源或請校方協助"
+    return "custom", "單校自建", "個別評估"
+
+
 # ---- 報告 ----
 def md_escape(text):
     return str(text or "").replace("|", "／").replace("\n", " ")
@@ -561,6 +593,15 @@ def render_markdown(rows, meta):
     lines += ["## 摘要", "",
               "- 判定：" + "、".join(f"{k} {v} 校" for k, v in sorted(summary.items())),
               "- 系統：" + "、".join(f"{k} {v}" for k, v in sorted(systems.items(), key=lambda x: -x[1])), ""]
+    fams = {}
+    for r in rows:
+        code, label, plan = family(r)
+        fams.setdefault((code, label, plan), []).append(r["id"])
+    lines += ["## 系統家族（同家族可共用一個 adapter）", "",
+              "| 家族 | 校數 | 做法 | 學校 |", "|---|---|---|---|"]
+    for (code, label, plan), ids in sorted(fams.items(), key=lambda x: -len(x[1])):
+        lines.append(f"| {label} | {len(ids)} | {plan} | {'、'.join(ids)} |")
+    lines.append("")
     for county in ("嘉義市", "嘉義縣", "雲林縣"):
         group = [r for r in rows if r.get("county") == county]
         if not group:
@@ -590,7 +631,15 @@ def main(argv=None):
     ap.add_argument("--out-json", default=str(ROOT / "reports/census/yunchia.json"))
     ap.add_argument("--out-md", default=str(ROOT / "reports/census/yunchia_report.md"))
     ap.add_argument("--no-directory", action="store_true")
+    ap.add_argument("--rerender", action="store_true", help="只用既有 JSON 重算報告，不連網")
     args = ap.parse_args(argv)
+    if args.rerender:
+        data = json.loads(Path(args.out_json).read_text(encoding="utf-8"))
+        for r in data["schools"]:
+            r["family"] = family(r)[0]
+        Path(args.out_json).write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+        Path(args.out_md).write_text(render_markdown(data["schools"], data["meta"]), encoding="utf-8")
+        return 0
 
     spec = json.loads(Path(args.targets).read_text(encoding="utf-8"))
     session = requests.Session()
@@ -613,6 +662,8 @@ def main(argv=None):
         print(f"{row['id']:8} {row.get('system') or '-':16} {row['verdict']:10} "
               f"req={row['requests']} {row.get('error', '')}", flush=True)
 
+    for r in rows:
+        r["family"] = family(r)[0]
     meta = {"generated_at": now_tw(), "directory_source": source, "log": log,
             "total_requests": sum(r["requests"] for r in rows)}
     Path(args.out_json).parent.mkdir(parents=True, exist_ok=True)
