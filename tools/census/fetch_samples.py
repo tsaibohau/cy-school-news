@@ -20,7 +20,7 @@ PLAN = json.loads((ROOT / "tools/census/sample_plan.json").read_text(encoding="u
 OUT = ROOT / "samples"
 DELAY = 3.0
 TIMEOUT = 25
-MAX_PER_SITE = 4
+MAX_PER_SITE = 8
 UA = ("Mozilla/5.0 (compatible; cy-school-news-census/1.0; "
       "+https://github.com/tsaibohau/cy-school-news ; one-time low-rate sample)")
 
@@ -107,7 +107,7 @@ def fetch_site(session, site, bundle):
         method = "GET"
         if req.get("ischool_uid"):
             method = "POST"
-            kwargs["data"] = {"field": "time", "order": "DESC", "pageNum": "0", "maxRows": "20",
+            kwargs["data"] = {"field": "time", "order": "DESC", "pageNum": "0", "maxRows": req.get("rows", "20"),
                               "keyword": "", "uid": req["ischool_uid"], "tf": "2",
                               "auth_type": "user", "use_cache": "1"}
         resp = None
@@ -138,6 +138,24 @@ def fetch_site(session, site, bundle):
     return rows
 
 
+def discover_ischool(session, site, bundle):
+    """取首頁找出所有 site_news 小工具 uid，每個 uid 只要 3 筆，看日期格式。"""
+    time.sleep(DELAY)
+    url = site["discover_ischool"]
+    try:
+        r = session.get(url, timeout=TIMEOUT)
+    except requests.exceptions.SSLError:
+        time.sleep(DELAY)
+        r = session.get(url, timeout=TIMEOUT, verify=bundle)
+    d = OUT / site["id"]
+    d.mkdir(parents=True, exist_ok=True)
+    (d / "home.html").write_bytes(r.content)
+    uids = list(dict.fromkeys(re.findall(r"WID_0_2_[0-9a-f]{40}", r.text)))[:5]
+    root = url.split("/home")[0]
+    reqs = [{"url": root + "/ischool/widget/site_news/news_query_json.php", "ischool_uid": u, "rows": "3"} for u in uids]
+    return dict(site, requests=(reqs + site["requests"])[:MAX_PER_SITE - 1])
+
+
 def main():
     OUT.mkdir(exist_ok=True)
     session = requests.Session()
@@ -150,7 +168,10 @@ def main():
         print("tls", json.dumps(info, ensure_ascii=False), flush=True)
     bundle = build_bundle(inter) if inter else ""
     index = {"tls": tls_report, "sites": {}}
+    bundle = bundle or build_bundle(sorted((ROOT / "scraper" / "certs").glob("*.pem")) if (ROOT / "scraper" / "certs").exists() else [])
     for site in PLAN["sites"]:
+        if site.get("discover_ischool"):
+            site = discover_ischool(session, site, bundle)
         index["sites"][site["id"]] = fetch_site(session, site, bundle)
     (OUT / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding="utf-8")
     return 0
