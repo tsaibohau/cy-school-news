@@ -1,43 +1,19 @@
 {
- "_note": "嘉義縣市 11 校候選來源（第一輪）",
+ "_note": "嘉義縣市第二輪：嘉科、新港藝術改用 cyc.edu.tw；協同重試",
  "schools": [
-  {
-   "id": "cyhvs",
-   "name": "國立嘉義高級家事職業學校",
-   "short": "嘉義家職",
-   "base": "https://www.cyhvs.cy.edu.tw",
-   "adapter": "ischool-json",
-   "sources": [
-    "https://www.cyhvs.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_f9cb4dd227aa767e7494223ca89ccf8f44339512",
-    "https://www.cyhvs.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_204c4ac60298efc8d1a8832e3179debb64642857",
-    "https://www.cyhvs.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_68042dc36e14c76e212e086b124bf261db9433c9",
-    "https://www.cyhvs.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_18b5507071a18eb8e21a285e97b3264dde323a75"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
-  {
-   "id": "cyvs",
-   "name": "國立嘉義高級商業職業學校",
-   "short": "嘉義高商",
-   "base": "https://www.cyvs.cy.edu.tw",
-   "adapter": "ischool-json",
-   "sources": [
-    "https://www.cyvs.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_57bc88b3f1f17193b8774a5fa3aaeec82682bdb2",
-    "https://www.cyvs.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_78c08b97334457a6d95ff25d2382cdeab51a8d72",
-    "https://www.cyvs.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_92a523559950d46a84ac8463f81104e9ba0352c2",
-    "https://www.cyvs.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_216f43ac1f8ef4c9cac91f45f511b08f9185d1c3"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
   {
    "id": "nehs",
    "name": "國立嘉科實驗高級中學",
    "short": "嘉科實中",
-   "base": "https://www.nehs.cy.edu.tw",
+   "base": "https://www.nehs.cyc.edu.tw",
    "adapter": "ischool-json",
-   "discover": "https://www.nehs.cy.edu.tw/home",
    "sources": [
-    "https://www.nehs.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_fd93fba862434a040c0079031707ec287338e163"
+    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_fd93fba862434a040c0079031707ec287338e163",
+    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_f300a5311f544d7de3ed423c827cda8075cc5822",
+    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_aef2a2f512e15ae7fef570da3d5f165d71112ac5",
+    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_022a611b4cf0265da7bd9bcb2432173bef7c9407",
+    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_61fe36a74d74a62c7cf138602b5dcc81fb1413a4",
+    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_158f4f34a15ef0fe39ba1215f67b1aa07107d3f6"
    ],
    "tls_verify_fallback": "bundled-intermediates"
   },
@@ -45,26 +21,15 @@
    "id": "sgash",
    "name": "國立新港藝術高級中學",
    "short": "新港藝術高中",
-   "base": "https://www.sgash.cy.edu.tw",
+   "base": "https://www.sgash.cyc.edu.tw",
    "adapter": "ischool-json",
    "sources": [
-    "https://www.sgash.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_dd5103adfb4f9be36dc546fbe56649fd355adb2b",
-    "https://www.sgash.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_68a3175b5edfc7d3d8512df3cb646e79ffdc3e74",
-    "https://www.sgash.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_42c4b3020ff1332a9d251f4b75a360ea9a85bb80",
-    "https://www.sgash.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_e0ee6ef32ad3d2779821a8112eab5ff1dcdfecfd",
-    "https://www.sgash.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_d5f3408570cf751c32ea15b4d8577be3202244e6",
-    "https://www.sgash.cy.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_b4181df3a9f4a9df3d70cd728fd965e14c09072b"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
-  {
-   "id": "cyivs",
-   "name": "國立嘉義高級工業職業學校",
-   "short": "嘉義高工",
-   "base": "https://www.cyivs.cy.edu.tw",
-   "adapter": "wordpress",
-   "sources": [
-    "https://www.cyivs.cy.edu.tw/feed/"
+    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_dd5103adfb4f9be36dc546fbe56649fd355adb2b",
+    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_68a3175b5edfc7d3d8512df3cb646e79ffdc3e74",
+    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_42c4b3020ff1332a9d251f4b75a360ea9a85bb80",
+    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_e0ee6ef32ad3d2779821a8112eab5ff1dcdfecfd",
+    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_d5f3408570cf751c32ea15b4d8577be3202244e6",
+    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_b4181df3a9f4a9df3d70cd728fd965e14c09072b"
    ],
    "tls_verify_fallback": "bundled-intermediates"
   },
@@ -77,65 +42,7 @@
    "sources": [
     "https://www.cmsh.cyc.edu.tw/category/news",
     "https://www.cmsh.cyc.edu.tw/category/news/feed/",
-    "https://www.cmsh.cyc.edu.tw/feed/"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
-  {
-   "id": "hhsh",
-   "name": "私立興華高級中學",
-   "short": "興華高中",
-   "base": "https://www.hhsh.cy.edu.tw",
-   "adapter": "xoops-tadnews",
-   "sources": [
-    "https://www.hhsh.cy.edu.tw/modules/tadnews/rss.php",
-    "https://www.hhsh.cy.edu.tw/modules/tadnews/index.php"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
-  {
-   "id": "mhvs",
-   "name": "國立民雄高級農工職業學校",
-   "short": "民雄農工",
-   "base": "https://www.mhvs.cyc.edu.tw",
-   "adapter": "xoops-tadnews",
-   "sources": [
-    "https://www.mhvs.cyc.edu.tw/modules/tadnews/rss.php",
-    "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
-  {
-   "id": "ycsh",
-   "name": "嘉義縣立永慶高級中學",
-   "short": "永慶高中",
-   "base": "https://www.ycsh.cyc.edu.tw",
-   "adapter": "xoops-tadnews",
-   "sources": [
-    "https://www.ycsh.cyc.edu.tw/modules/tadnews/rss.php",
-    "https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
-  {
-   "id": "hnvs",
-   "name": "國立華南高級商業職業學校",
-   "short": "華南高商",
-   "base": "https://www.hnvs.cy.edu.tw",
-   "adapter": "asp-parser-cms",
-   "sources": [
-    "https://www.hnvs.cy.edu.tw/latestevent/index.asp?Parser=9,3,15"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
-  {
-   "id": "tssh",
-   "name": "國立東石高級中學",
-   "short": "東石高中",
-   "base": "https://www.tssh.cyc.edu.tw",
-   "adapter": "asp-parser-cms",
-   "sources": [
-    "https://www.tssh.cyc.edu.tw/latestevent/Index.aspx?Parser=9,9,79,46"
+    "http://www.cmsh.cyc.edu.tw/category/news"
    ],
    "tls_verify_fallback": "bundled-intermediates"
   }
