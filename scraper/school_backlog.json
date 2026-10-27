@@ -109,6 +109,15 @@
    "site": "http://www.svsh.ylc.edu.tw/",
    "reason": "unreachable",
    "notes": "2026-10-27 普查逾時"
+  },
+  {
+   "id": "cmsh",
+   "name": "嘉義縣私立協同高級中學",
+   "short": "協同高中",
+   "county": "嘉義縣",
+   "site": "https://www.cmsh.cyc.edu.tw/",
+   "reason": "unreachable",
+   "notes": "WordPress（nt_table 佈景，/category/news 可用共用 wordpress adapter）；2026-10-27 從 GitHub Actions 兩輪都連線被拒（https 與 http），之後重試"
   }
  ]
 }
