@@ -885,8 +885,182 @@
     return { status: picked.length ? "answered" : "insufficient", mode: "browse", query: query, summary: summary, evidence: [], sources: sources, related: [], key_points: [],
       plan: questionPlan(query), limitation: plan.deadlines ? "截止日來自公告標題或內文中明確寫出的日期；沒寫或只在附件裡的不會列出。" : "依公告日期排列；與你年級、關注主題相關的排在前面。" };
   }
+  /* Questions that name a day or range (明天、這週五、下週、11/5) are about what happens
+     then: answer from the school calendar and from dates written in announcement titles,
+     not from what was published recently. */
+  var WEEKDAY = "日一二三四五六";
+  function isoAdd(iso, days) { var t = new Date(Date.parse(iso + "T00:00:00Z") + days * 86400000); return t.toISOString().slice(0, 10); }
+  function weekdayOf(iso) { return new Date(Date.parse(iso + "T00:00:00Z")).getUTCDay(); }
+  function dayLabel(iso) { return Number(iso.slice(5, 7)) + "/" + Number(iso.slice(8, 10)) + "（週" + WEEKDAY.charAt(weekdayOf(iso)) + "）"; }
+  function rangeLabel(from, to) { return from === to ? dayLabel(from) : dayLabel(from) + "～" + dayLabel(to); }
+  var DAY_WORDS = /今天|今日|明天|明日|後天|大後天|這週末|本週末|週末|這個週末|下週|下星期|下禮拜|這週|本週|這星期|這禮拜|這個星期|這個禮拜|(?:週|星期|禮拜)[一二三四五六日天]|這個月|本月|下個月|\d{1,2}\s*[\/月]\s*\d{1,2}\s*[日號]?/;
+  function dateTarget(query, asOf) {
+    var q = clean(query), m, today = asOf, dow = weekdayOf(today), mondayOffset = (dow + 6) % 7;
+    var thisMonday = isoAdd(today, -mondayOffset), nextMonday = isoAdd(thisMonday, 7);
+    function one(label, iso) { return { label: label, from: iso, to: iso }; }
+    if (/大後天/.test(q)) return one("大後天", isoAdd(today, 3));
+    if (/後天/.test(q)) return one("後天", isoAdd(today, 2));
+    if (/明天|明日/.test(q)) return one("明天", isoAdd(today, 1));
+    if (/今天|今日/.test(q)) return one("今天", today);
+    if ((m = q.match(/(下)?(?:個)?(?:週|星期|禮拜)([一二三四五六日天])/))) {
+      var want = "日一二三四五六".indexOf(m[2] === "天" ? "日" : m[2]), offset = (want + 6) % 7;
+      var base = m[1] || /下週|下星期|下禮拜/.test(q) ? nextMonday : thisMonday, iso = isoAdd(base, offset);
+      if (!m[1] && !/下週|下星期|下禮拜/.test(q) && iso < today) iso = isoAdd(iso, 7);
+      return one((m[1] || /下週|下星期|下禮拜/.test(q) ? "下週" : "週") + (m[2] === "天" ? "日" : m[2]), iso);
+    }
+    if (/週末/.test(q)) { var sat = isoAdd(thisMonday, 5); return { label: "這個週末", from: sat < today ? today : sat, to: isoAdd(thisMonday, 6) }; }
+    if (/下週|下星期|下禮拜/.test(q)) return { label: "下週", from: nextMonday, to: isoAdd(nextMonday, 6) };
+    if (/這週|本週|這星期|這禮拜|這個星期|這個禮拜/.test(q)) return { label: "這週", from: today, to: isoAdd(thisMonday, 6) };
+    if (/下個月/.test(q)) {
+      var y = Number(today.slice(0, 4)), mo = Number(today.slice(5, 7)) + 1; if (mo > 12) { mo = 1; y++; }
+      var first = y + "-" + String(mo).padStart(2, "0") + "-01", nm = mo === 12 ? (y + 1) + "-01-01" : y + "-" + String(mo + 1).padStart(2, "0") + "-01";
+      return { label: "下個月", from: first, to: isoAdd(nm, -1) };
+    }
+    if (/這個月|本月/.test(q)) {
+      var y2 = Number(today.slice(0, 4)), mo2 = Number(today.slice(5, 7)), nx = mo2 === 12 ? (y2 + 1) + "-01-01" : y2 + "-" + String(mo2 + 1).padStart(2, "0") + "-01";
+      return { label: "這個月", from: today, to: isoAdd(nx, -1) };
+    }
+    if ((m = q.match(/(\d{1,2})\s*[\/月]\s*(\d{1,2})\s*[日號]?/))) {
+      var mm = Number(m[1]), dd = Number(m[2]);
+      if (mm < 1 || mm > 12 || dd < 1 || dd > 31) return null;
+      var iso2 = today.slice(0, 4) + "-" + String(mm).padStart(2, "0") + "-" + String(dd).padStart(2, "0");
+      if (iso2 < isoAdd(today, -60)) iso2 = (Number(today.slice(0, 4)) + 1) + iso2.slice(4);
+      return one(mm + "/" + dd, iso2);
+    }
+    return null;
+  }
+  var DATE_ASK = /有什麼|有哪些|有啥|有沒有|什麼活動|哪些活動|行程|安排|要做什麼|做什麼|幹嘛|嗎|呢|？|\?/;
+  var DATE_SPECIFIC = /哪裡|在哪|地點|怎麼|如何|多少錢|費用|要帶|帶什麼|找誰|聯絡/;
+  var DATE_STRIP = /大後天|後天|明天|明日|今天|今日|這個週末|這週末|本週末|週末|下個?(?:週|星期|禮拜)[一二三四五六日天]?|(?:這個?|本)(?:週|星期|禮拜)[一二三四五六日天]?|(?:週|星期|禮拜)[一二三四五六日天]|這個月|本月|下個月|\d{1,2}\s*[\/月]\s*\d{1,2}\s*[日號]?|學校|本校|嘉中|嘉女|請問|有什麼|有哪些|有啥|有沒有|什麼|哪些|要|會|有|的|嗎|呢|是|在|舉辦|舉行|辦|[？?！!。，,\s]/g;
+  var DATE_TOPIC_SYNONYMS = {
+    "講座": ["講座", "演講", "講堂", "分享會", "專題講"], "演講": ["講座", "演講", "講堂", "分享會"],
+    "考試": ["考試", "期中考", "期末考", "段考", "模擬考", "複習考", "小考", "英聽", "學測", "統測", "測驗", "考查"], "考": ["期中考", "期末考", "段考", "模擬考", "複習考", "考試", "英聽", "學測", "測驗"],
+    "比賽": ["比賽", "競賽", "初賽", "決賽", "複賽", "奧林匹亞"], "競賽": ["比賽", "競賽", "初賽", "決賽", "複賽", "奧林匹亞"],
+    "放假": ["放假", "停課", "補假", "假期", "連假", "國定假日", "調整放假"], "假": ["放假", "停課", "補假", "假期", "連假"],
+    "營隊": ["營隊", "冬令營", "夏令營", "營"], "說明會": ["說明會", "座談"], "活動": []
+  };
+  var DATE_STAFF = /行政會議|會議|教學研究會|導師|教師|教職員|職員|校長|主任|課發會|考核|檢核|研習\(教師|監考|命題|閱卷|整修|工程/;
+  function datePlan(query, asOf) {
+    query = clean(query);
+    var target = dateTarget(query, asOf);
+    if (!target || !DATE_ASK.test(query) || DATE_SPECIFIC.test(query)) return null;
+    var rest = query.replace(DATE_STRIP, "");
+    if (/^(?:活動|事|事情|東西|行程|安排|大事|特別|特別的|做什麼|幹嘛|上課)?$/.test(rest)) return { target: target, topic: "", terms: [] };
+    var terms = DATE_TOPIC_SYNONYMS[rest];
+    if (!terms && SearchQuery && SearchQuery.queryPlan) {
+      var plan = SearchQuery.queryPlan(rest), typed = (plan.term_matches || []).filter(function (row) { return row.kind === "topic"; }).map(function (row) { return row.term; });
+      terms = [];
+      typed.forEach(function (t) { terms = terms.concat(DATE_TOPIC_SYNONYMS[t] || OPEN_SYNONYMS[t] || [t]); });
+      (plan.remainder_terms || []).forEach(function (t) { if (t.length >= 2) terms.push(t); });
+      if (!terms.length) terms = [rest];
+    }
+    return { target: target, topic: rest, terms: unique((terms || []).map(compact)) };
+  }
+  /* Event dates written in a title: 「115年12月5日（星期六）辦理」「1月30至2月2日」「(11/7)」.
+     Dates before the publication date are references, not events; 「前」「止」 mark deadlines. */
+  function titleDates(item) {
+    var title = clean(item && item.title || ""), base = String(item && (item.date || item.first_seen) || "").slice(0, 10), out = [];
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(base)) return out;
+    var re = /(?:(\d{2,4})\s*年\s*)?(\d{1,2})\s*(?:月|\/)\s*(\d{1,2})\s*日?\s*(?:[（(][^）)]{1,4}[）)])?(?:\s*(?:[至~～到]|－|-(?!\d{1,2}\s*[學年]))\s*(?:(\d{1,2})\s*(?:月|\/)\s*)?(\d{1,2})\s*日?(?:\s*[（(][^）)]{1,4}[）)])?)?/g, m;
+    function iso(y, mo, d) {
+      if (mo < 1 || mo > 12 || d < 1 || d > 31) return "";
+      if (y && y < 1000) y += 1911;
+      var guess = (y || Number(base.slice(0, 4))) + "-" + String(mo).padStart(2, "0") + "-" + String(d).padStart(2, "0");
+      if (!y && guess < isoAdd(base, -30)) guess = (Number(base.slice(0, 4)) + 1) + guess.slice(4);
+      return guess;
+    }
+    while ((m = re.exec(title))) {
+      var y = m[1] ? Number(m[1]) : 0;
+      if (m[1] && m[1].length === 3 && (y < 100 || y > 200)) continue;
+      var from = iso(y, Number(m[2]), Number(m[3]));
+      var to = m[5] ? iso(y, m[4] ? Number(m[4]) : Number(m[2]), Number(m[5])) : from;
+      if (!from) continue;
+      if (!to || to < from) to = from;
+      if (to < base) continue;
+      var after = title.slice(m.index + m[0].length, m.index + m[0].length + 14);
+      var deadline = /^\s*(?:(?:上午|下午|中午|晚上)?\s*\d{1,2}\s*(?:[:：]\s*\d{2}|[時點](?:\s*\d{1,2}\s*分)?))?\s*(?:前|止|截止)/.test(after) || /截止|報名至|受理至/.test(title.slice(Math.max(0, m.index - 8), m.index));
+      out.push({ from: from, to: to, kind: deadline ? "deadline" : "event" });
+    }
+    return out;
+  }
+  function dateAnswer(query, items, plan, options) {
+    options = options || {};
+    var target = plan.target, scope = options.scopeLabel || "", rows = [], seen = {};
+    var asksStaff = DATE_STAFF.test(query);
+    function topicHit(text) { var t = compact(text); return !plan.terms.length || plan.terms.some(function (term) { return t.indexOf(term) !== -1; }); }
+    function overlaps(from, to, a, b) { return from <= b && to >= a; }
+    (options.calendarEvents || []).forEach(function (ev) {
+      var from = String(ev && (ev.start_date || ev.date) || "").slice(0, 10), to = String(ev && (ev.end_date || ev.endDate) || from).slice(0, 10), title = clean(ev && ev.title || "");
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(from) || !title || !topicHit(title)) return;
+      if (!asksStaff && DATE_STAFF.test(title)) return;
+      var key = "cal" + from + compact(title);
+      if (seen[key]) return; seen[key] = true;
+      /* 「學測報名」 on the calendar is a sign-up window, not something happening that day. */
+      rows.push({ source: "calendar", from: from, to: to, kind: /報名|申請|登記|繳交|收件/.test(title) ? "deadline" : "event", title: title, ev: ev });
+    });
+    (items || []).forEach(function (item) {
+      if (!item || item.link_status === "gone" || seen[item.id] || !topicHit(item.title || "")) return;
+      if (!asksStaff && STAFF_TITLE.test(clean(item.title || ""))) return;
+      var rel = typeof options.relevance === "function" ? options.relevance(item) : null;
+      if (rel && (rel.school_mismatch || rel.not_for_me)) return;
+      var dates = titleDates(item);
+      (item.calendar_events || []).forEach(function (ev) {
+        if (ev && /^\d{4}-\d{2}-\d{2}$/.test(String(ev.date || ""))) dates.push({ from: ev.date, to: ev.end_date || ev.date, kind: ev.kind === "deadline" ? "deadline" : "event" });
+      });
+      if (!dates.length) return;
+      seen[item.id] = true;
+      dates.forEach(function (d) { rows.push({ source: "announcement", from: d.from, to: d.to, kind: d.kind, title: clean(item.title || ""), item: item }); });
+    });
+    /* Month-long entries (團膳菜單, a 報名期間) say little about one particular day. */
+    var span = function (row) { return (Date.parse(row.to) - Date.parse(row.from)) / 86400000; };
+    var targetDays = (Date.parse(target.to) - Date.parse(target.from)) / 86400000;
+    var hits = rows.filter(function (row) {
+      if (!overlaps(row.from, row.to, target.from, target.to)) return false;
+      if (/菜單|午餐|團膳/.test(row.title) && !/菜單|午餐|團膳|吃/.test(query)) return false;
+      return !(span(row) > 14 && span(row) > targetDays * 2 && !plan.terms.length);
+    });
+    var picked = [], used = {};
+    hits.sort(function (a, b) {
+      return (a.kind === "event" ? 0 : 1) - (b.kind === "event" ? 0 : 1) || (a.source === "calendar" ? 0 : 1) - (b.source === "calendar" ? 0 : 1) || a.from.localeCompare(b.from);
+    }).forEach(function (row) { var k = row.item ? row.item.id : "cal" + row.from + row.title; if (!used[k]) { used[k] = true; picked.push(row); } });
+    function plain(iso) { return shortDay(iso) + " 週" + WEEKDAY.charAt(weekdayOf(iso)); }
+    var when;
+    if (target.from !== target.to) when = target.label + "（" + plain(target.from) + "～" + plain(target.to) + "）";
+    else if (/週.$/.test(target.label)) when = target.label + "（" + shortDay(target.from) + "）";
+    else if (/^\d/.test(target.label)) when = target.label + "（週" + WEEKDAY.charAt(weekdayOf(target.from)) + "）";
+    else when = target.label + "（" + plain(target.from) + "）";
+    var yesNo = /嗎[？?]?$/.test(query);
+    var what = plan.topic && plan.terms.length ? plan.topic : "安排", where = scope ? scope : "學校";
+    var events = picked.filter(function (r) { return r.kind === "event"; }), deadlines = picked.filter(function (r) { return r.kind === "deadline"; });
+    function short(t) { t = t.replace(/^(?:轉知|【轉知】|轉發)\s*[:：]?\s*/, ""); return t.length > 34 ? t.slice(0, 33) + "…" : t; }
+    var summary;
+    if (events.length) {
+      var names = events.slice(0, 3).map(function (r) { return "「" + short(r.title) + "」" + (target.from !== target.to ? "（" + shortDay(r.from < target.from ? target.from : r.from) + "）" : ""); }).join("、");
+      summary = (yesNo ? "有。" : "") + when + where + "有 " + events.length + " 項" + what + "：" + names + (events.length > 3 ? "等" : "") + "。";
+      if (deadlines.length) summary += "另外有 " + deadlines.length + " 項報名或繳交在" + (target.from === target.to ? "當天" : "這段時間") + "進行或截止。";
+    } else if (deadlines.length) {
+      summary = (yesNo ? "沒有。" : "") + when + where + "沒有排" + (plan.topic ? what : "活動") + "，但有 " + deadlines.length + " 項" + (plan.topic ? what : "") + "報名或繳交在" + (target.from === target.to ? "當天" : "這段時間") + "進行或截止：「" + short(deadlines[0].title) + "」" + (deadlines.length > 1 ? "等" : "") + "。";
+    } else {
+      summary = (yesNo ? "沒有。" : "") + when + "，" + where + "的行事曆和公告都沒有寫到" + (plan.topic ? what : "特別的安排") + "。";
+      var next = rows.filter(function (r) { return r.kind === "event" && r.from > target.to && r.from <= isoAdd(target.to, 60); }).sort(function (a, b) { return a.from.localeCompare(b.from); })[0];
+      if (next && plan.topic) summary += "之後最近的是 " + dayLabel(next.from) + "「" + short(next.title) + "」。";
+      else if (!plan.topic) summary += "臨時的安排可能只在班上宣布，可以問導師。";
+      if (next && plan.topic) picked = [next];
+    }
+    var sources = picked.slice(0, 8).map(function (row) {
+      var note = (row.kind === "deadline" ? (row.source === "calendar" ? (row.from === row.to ? shortDay(row.from) : shortDay(row.from) + "～" + shortDay(row.to)) + " 報名" : shortDay(row.from) + " 截止") : (row.from === row.to ? shortDay(row.from) : shortDay(row.from) + "～" + shortDay(row.to))) + (row.source === "calendar" ? " · 學校行事曆" : "");
+      if (row.source === "calendar") return { id: "calendar:" + (row.ev.id || row.from + row.title), kind: "calendar", title: row.title, school_id: row.ev.school_id || "", school_name: row.ev.school_name || scope, url: row.ev.source_url || "", date: row.from, category: "行事曆", note: note };
+      var item = row.item;
+      return { id: item.id, title: clean(item.title || "官方公告"), school_id: item.school || "", school_name: item.school_name || "", url: item.url || "", date: item.date || item.first_seen || "", category: item.category || "", note: note };
+    });
+    return { status: sources.length || !plan.topic ? "answered" : "insufficient", mode: "browse", list_label: "行程", query: query, summary: summary, evidence: [], sources: sources, related: [], key_points: [],
+      plan: questionPlan(query), limitation: "日期來自學校行事曆，以及公告標題裡寫明的活動日期；只寫在內文或附件裡的日期不會列出。" };
+  }
   function answer(query, items, details, options) {
     query = clean(query).slice(0, 160);
+    var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var dated = datePlan(query, asOfDay);
+    if (dated) return dateAnswer(query, items, dated, options);
     var browse = browsePlan(query);
     if (browse) return browseAnswer(query, items, browse, options);
     var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);
@@ -942,5 +1116,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, keyPoints: keyPoints, browsePlan: browsePlan, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });
