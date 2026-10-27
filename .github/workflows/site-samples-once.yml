@@ -1,0 +1,38 @@
+name: 一次性校網樣本抓取
+
+# 只在 claude/site-samples 分支觸發；分支不合併，用完刪除。
+on:
+  push:
+    branches: [claude/site-samples]
+    paths:
+      - "tools/census/**"
+      - ".github/workflows/site-samples-once.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-samples-once
+  cancel-in-progress: false
+
+jobs:
+  samples:
+    if: github.ref == 'refs/heads/claude/site-samples'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install -r scraper/requirements.txt certifi
+      - run: python tools/census/fetch_samples.py
+      - name: Commit samples to this branch
+        run: |
+          git config user.name "news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add samples
+          git commit -m "樣本：雲嘉校網共用 adapter 參考頁面" || exit 0
+          git pull --rebase origin claude/site-samples
+          git push origin HEAD:claude/site-samples
