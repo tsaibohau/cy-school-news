@@ -47,6 +47,8 @@ SCHOOL_HOST_RE = re.compile(r"(?:^|\.)([a-z0-9-]+)\.(cy|cyc|ylc)\.edu\.tw$")
 # ---- 系統辨識規則（依序比對，先命中先採用） ----
 NEW_CLASSIC_RE = re.compile(r"/p/(?:403|404|406|412)-(\d+)-\d+")
 OLD_CLASSIC_RE = re.compile(r"/files/(?:11|13|14|15|16)-(\d+)-\d+")
+ISCHOOL_UID_RE = re.compile(r"site_news/main2\.php\?[^\"'<>]*?uid=(WID_[0-9A-Za-z_]+)")
+ISCHOOL_JSON_PATH = "/ischool/widget/site_news/news_query_json.php"
 ISCHOOL_NEWS_RE = re.compile(r"/ischool/widget/site_news/main2\.php\?[^\"'\s<>]+")
 ANNOUNCE_TEXT_RE = re.compile(r"最新消息|公告|校園訊息|校園公佈|消息|news", re.I)
 CALENDAR_TEXT_RE = re.compile(r"行事曆")
@@ -307,6 +309,8 @@ def find_links(html, base, system):
         if CALENDAR_TEXT_RE.search(text) or CALENDAR_TEXT_RE.search(title):
             calendar.append({"text": text[:30] or title[:30], "url": href})
         elif ANNOUNCE_TEXT_RE.search(text) and len(text) <= 12:
+            if href.split("#")[0].rstrip("/") == base.split("#")[0].rstrip("/"):
+                continue  # 只是頁內錨點（頁籤），不是列表頁
             announce.append({"text": text, "url": href})
     if system == "new-classic-cms":
         announce.sort(key=lambda x: 0 if "/p/403-" in x["url"] else 1 if "/p/412-" in x["url"] else 2)
@@ -353,6 +357,26 @@ def parse_with_existing(system, html, base, school_id, source_url):
     return {"count": 0, "dated": 0, "sample": ""}
 
 
+def ischool_json_probe(prober, root, uid):
+    """iSchool 公告由 JS 向 news_query_json.php POST 取得（同北港做法），實測第一頁 10 筆。"""
+    from pksh_snapshot import _api_date
+    body = {"field": "time", "order": "DESC", "pageNum": "0", "maxRows": "10", "keyword": "",
+            "uid": uid, "tf": "2", "auth_type": "user", "use_cache": "1"}
+    resp = prober.post(root + ISCHOOL_JSON_PATH, body)
+    if not resp.ok:
+        return {"count": 0, "dated": 0, "sample": "", "error": f"http_{resp.status_code}"}
+    try:
+        records = json.loads(resp.content.decode("utf-8-sig"))
+    except ValueError:
+        return {"count": 0, "dated": 0, "sample": "", "error": "not_json"}
+    rows = [r for r in records if isinstance(r, dict) and r.get("newsId") and r.get("title")] \
+        if isinstance(records, list) else []
+    total = next((r.get("total") for r in records if isinstance(r, dict) and "total" in r), "") \
+        if isinstance(records, list) else ""
+    return {"count": len(rows), "dated": sum(1 for r in rows if _api_date(r.get("time"), "2026")),
+            "sample": str(rows[0]["title"])[:40] if rows else "", "total": total, "json": True}
+
+
 def verdict(row):
     if row.get("error") and not row.get("system"):
         return "連不上"
@@ -385,17 +409,37 @@ class Prober:
         self.count = 0
         self._last = 0.0
 
-    def get(self, url):
+    verify = True
+
+    def _wait(self):
         if self.count >= MAX_REQUESTS_PER_SCHOOL:
             raise RuntimeError("request budget exhausted")
         wait = self.delay - (time.monotonic() - self._last)
         if wait > 0:
             time.sleep(wait)
         self.count += 1
+
+    def get(self, url, verify=None):
+        self._wait()
         try:
-            return self.session.get(url, timeout=TIMEOUT, allow_redirects=True)
+            kw = {} if (verify if verify is not None else self.verify) is True else \
+                {"verify": verify if verify is not None else self.verify}
+            return self.session.get(url, timeout=TIMEOUT, allow_redirects=True, **kw)
         finally:
             self._last = time.monotonic()
+
+    def post(self, url, data):
+        self._wait()
+        try:
+            kw = {} if self.verify is True else {"verify": self.verify}
+            return self.session.post(url, data=data, timeout=TIMEOUT, **kw)
+        finally:
+            self._last = time.monotonic()
+
+
+def system_ca():
+    from scrape import system_ca_bundle
+    return system_ca_bundle()
 
 
 def decode_response(resp):
@@ -416,7 +460,18 @@ def probe_school(session, target, delay=DELAY):
         resp = prober.get(url)
     except Exception as exc:
         row["error"] = error_class(exc)
-        if row["error"] == "tls_error" and url.startswith("https://"):
+        ca = system_ca() if row["error"] == "tls_error" else ""
+        resp = None
+        if ca:
+            # 先用作業系統 CA 重新驗證（scrape.py 的 tls_verify_fallback 同一做法）
+            try:
+                resp = prober.get(url, verify=ca)
+                prober.verify = ca
+                row["evidence"].append("certifi 驗證失敗，系統 CA 驗證通過")
+                row["error"] = ""
+            except Exception:
+                resp = None
+        if resp is None and row["error"] == "tls_error" and url.startswith("https://"):
             # 憑證鏈不完整的校網很常見（北港高中即是），改用 http 只做系統辨識
             row["evidence"].append("https 憑證驗證失敗，改以 http 辨識")
             url = "http://" + url[len("https://"):]
@@ -425,8 +480,6 @@ def probe_school(session, target, delay=DELAY):
             except Exception as exc2:
                 row["error"] += "+" + error_class(exc2)
                 resp = None
-        else:
-            resp = None
     if resp is None:
         row["requests"] = prober.count
         row["verdict"] = verdict(row)
@@ -456,7 +509,16 @@ def probe_school(session, target, delay=DELAY):
     row["calendar_type"] = classify_calendar(calendar)
     row["homepage_test"] = parse_with_existing(system, html, row["final_url"], row["id"], row["final_url"])
     list_url = announce[0]["url"] if announce else ""
-    if list_url and system in ADAPTER_FOR_SYSTEM and prober.count < MAX_REQUESTS_PER_SCHOOL:
+    uid_match = ISCHOOL_UID_RE.search((html or "").replace("&amp;", "&"))
+    if system == "ischool" and uid_match and prober.count < MAX_REQUESTS_PER_SCHOOL:
+        root = "{0.scheme}://{0.netloc}".format(urlsplit(row["final_url"]))
+        row["ischool_uid"] = uid_match.group(1)
+        row["list_url"] = root + ISCHOOL_JSON_PATH
+        try:
+            row["list_test"] = ischool_json_probe(prober, root, uid_match.group(1))
+        except Exception as exc:
+            row["list_error"] = error_class(exc)
+    elif list_url and system in ADAPTER_FOR_SYSTEM and prober.count < MAX_REQUESTS_PER_SCHOOL:
         try:
             r3 = prober.get(list_url)
             if r3.ok:

@@ -1,40 +1,256 @@
 {
-  "_note": "雲嘉地區高級中等學校種子清單。網址為人工整理的起點；普查時會先下載教育部「高級中等學校名錄」(data.gov.tw 6089) 校正並補齊，報告會標示每校網址來源。",
-  "counties": ["嘉義市", "嘉義縣", "雲林縣"],
-  "schools": [
-    {"id": "cysh",   "name": "國立嘉義高級中學",         "county": "嘉義市", "url": "https://www.cysh.cy.edu.tw/"},
-    {"id": "cygsh",  "name": "國立嘉義女子高級中學",     "county": "嘉義市", "url": "https://www.cygsh.cy.edu.tw/"},
-    {"id": "hnvs",   "name": "國立華南高級商業職業學校", "county": "嘉義市", "url": "https://www.hnvs.cy.edu.tw/"},
-    {"id": "cyivs",  "name": "國立嘉義高級工業職業學校", "county": "嘉義市", "url": "https://www.cyivs.cy.edu.tw/"},
-    {"id": "cyvs",   "name": "國立嘉義高級商業職業學校", "county": "嘉義市", "url": "https://www.cyvs.cy.edu.tw/"},
-    {"id": "cyhvs",  "name": "國立嘉義高級家事職業學校", "county": "嘉義市", "url": "https://www.cyhvs.cy.edu.tw/"},
-    {"id": "fjsh",   "name": "嘉義市私立輔仁高級中學",   "county": "嘉義市", "url": "https://rpage.fjsh.cy.edu.tw/"},
-    {"id": "chsh",   "name": "嘉義市私立嘉華高級中學",   "county": "嘉義市", "url": "https://www.chsh.cy.edu.tw/"},
-    {"id": "hjgs",   "name": "嘉義市私立宏仁女子高級中學", "county": "嘉義市", "url": "https://www.hjgs.cy.edu.tw/"},
-    {"id": "hhsh",   "name": "嘉義市私立興華高級中學",   "county": "嘉義市", "url": "https://www.hhsh.cy.edu.tw/"},
-    {"id": "ljsh",   "name": "嘉義市私立立仁高級中學",   "county": "嘉義市", "url": "https://www.ljsh.cy.edu.tw/"},
-    {"id": "tssh",   "name": "國立東石高級中學",         "county": "嘉義縣", "url": "https://www.tssh.cyc.edu.tw/"},
-    {"id": "hkash",  "name": "國立新港藝術高級中學",     "county": "嘉義縣", "url": "https://www.hkash.cyc.edu.tw/"},
-    {"id": "mhvs",   "name": "國立民雄高級農工職業學校", "county": "嘉義縣", "url": "https://www.mhvs.cyc.edu.tw/"},
-    {"id": "yksh",   "name": "嘉義縣立永慶高級中學",     "county": "嘉義縣", "url": "https://www.yksh.cyc.edu.tw/"},
-    {"id": "wnvs",   "name": "嘉義縣私立萬能高級工商職業學校", "county": "嘉義縣", "url": "https://www.wnvs.cyc.edu.tw/"},
-    {"id": "tjsh",   "name": "嘉義縣私立同濟高級中學",   "county": "嘉義縣", "url": "https://www.tjsh.cyc.edu.tw/"},
-    {"id": "hwsh",   "name": "國立虎尾高級中學",         "county": "雲林縣", "url": "https://www.hwsh.ylc.edu.tw/"},
-    {"id": "tlsh",   "name": "國立斗六高級中學",         "county": "雲林縣", "url": "https://www.tlsh.ylc.edu.tw/"},
-    {"id": "pksh",   "name": "國立北港高級中學",         "county": "雲林縣", "url": "https://www.pksh.ylc.edu.tw/"},
-    {"id": "hlvs",   "name": "國立西螺高級農工職業學校", "county": "雲林縣", "url": "https://www.hlvs.ylc.edu.tw/"},
-    {"id": "hwaivs", "name": "國立虎尾高級農工職業學校", "county": "雲林縣", "url": "https://www.hwaivs.ylc.edu.tw/"},
-    {"id": "tlhc",   "name": "國立斗六高級家事商業職業學校", "county": "雲林縣", "url": "https://www.tlhc.ylc.edu.tw/"},
-    {"id": "pkvs",   "name": "國立北港高級農工職業學校", "county": "雲林縣", "url": "https://www.pkvs.ylc.edu.tw/"},
-    {"id": "tkvs",   "name": "國立土庫高級商工職業學校", "county": "雲林縣", "url": "https://www.tkvs.ylc.edu.tw/"},
-    {"id": "tnjh",   "name": "雲林縣立斗南高級中學",     "county": "雲林縣", "url": "https://www.tnjh.ylc.edu.tw/"},
-    {"id": "mljh",   "name": "雲林縣立麥寮高級中學",     "county": "雲林縣", "url": "https://www.mljh.ylc.edu.tw/"},
-    {"id": "tsjh",   "name": "雲林縣立蔦松藝術高級中學", "county": "雲林縣", "url": "https://www.tsjh.ylc.edu.tw/"},
-    {"id": "yfsh",   "name": "雲林縣私立義峰高級中學",   "county": "雲林縣", "url": "https://www.yfsh.ylc.edu.tw/"},
-    {"id": "cxhs",   "name": "雲林縣私立正心高級中學",   "county": "雲林縣", "url": "https://www.cxhs.ylc.edu.tw/"},
-    {"id": "ynhs",   "name": "雲林縣私立永年高級中學",   "county": "雲林縣", "url": "https://www.ynhs.ylc.edu.tw/"},
-    {"id": "dcvs",   "name": "雲林縣私立大成高級商工職業學校", "county": "雲林縣", "url": "https://www.dcvs.ylc.edu.tw/"},
-    {"id": "tdvs",   "name": "雲林縣私立大德高級工商職業學校", "county": "雲林縣", "url": "https://www.tdvs.ylc.edu.tw/"},
-    {"id": "bwsh",   "name": "雲林縣私立福智高級中學",   "county": "雲林縣", "url": "https://www.bwsh.ylc.edu.tw/"}
-  ]
+ "_note": "雲嘉地區高級中等學校清單，取自教育部 115 學年高級中等學校名錄 (stats.moe.gov.tw/files/school/115/high.csv)。普查時仍會重新下載名錄校正。",
+ "counties": [
+  "嘉義市",
+  "嘉義縣",
+  "雲林縣"
+ ],
+ "schools": [
+  {
+   "id": "chsh",
+   "name": "私立嘉華高中",
+   "county": "嘉義市",
+   "url": "http://www.chsh.cy.edu.tw/"
+  },
+  {
+   "id": "cygsh",
+   "name": "國立嘉義女中",
+   "county": "嘉義市",
+   "url": "http://www.cygsh.cy.edu.tw/"
+  },
+  {
+   "id": "cyhvs",
+   "name": "國立嘉義家職",
+   "county": "嘉義市",
+   "url": "https://www.cyhvs.cy.edu.tw/home"
+  },
+  {
+   "id": "cyivs",
+   "name": "國立嘉義高工",
+   "county": "嘉義市",
+   "url": "http://www.cyivs.cy.edu.tw/"
+  },
+  {
+   "id": "cysh",
+   "name": "國立嘉義高中",
+   "county": "嘉義市",
+   "url": "https://www.cysh.cy.edu.tw/"
+  },
+  {
+   "id": "cyvs",
+   "name": "國立嘉義高商",
+   "county": "嘉義市",
+   "url": "http://www.cyvs.cy.edu.tw/"
+  },
+  {
+   "id": "dwvs",
+   "name": "私立東吳工家",
+   "county": "嘉義市",
+   "url": "http://www.dwvs.cy.edu.tw/"
+  },
+  {
+   "id": "fjsh",
+   "name": "私立輔仁高中",
+   "county": "嘉義市",
+   "url": "https://rpage.fjsh.cy.edu.tw/"
+  },
+  {
+   "id": "hhsh",
+   "name": "私立興華高中",
+   "county": "嘉義市",
+   "url": "https://www.hhsh.cy.edu.tw/"
+  },
+  {
+   "id": "hjgs",
+   "name": "私立宏仁高中",
+   "county": "嘉義市",
+   "url": "https://www.hjgs.cy.edu.tw/"
+  },
+  {
+   "id": "hnvs",
+   "name": "國立華南高商",
+   "county": "嘉義市",
+   "url": "https://www.hnvs.cy.edu.tw/"
+  },
+  {
+   "id": "ligvs",
+   "name": "私立立仁高中",
+   "county": "嘉義市",
+   "url": "https://www.ligvs.cy.edu.tw/"
+  },
+  {
+   "id": "ccjh",
+   "name": "縣立竹崎高中",
+   "county": "嘉義縣",
+   "url": "http://www.ccjh.cyc.edu.tw/"
+  },
+  {
+   "id": "cmsh",
+   "name": "私立協同高中",
+   "county": "嘉義縣",
+   "url": "http://www.cmsh.cyc.edu.tw/"
+  },
+  {
+   "id": "mhvs",
+   "name": "國立民雄農工",
+   "county": "嘉義縣",
+   "url": "http://www.mhvs.cyc.edu.tw/"
+  },
+  {
+   "id": "nehs",
+   "name": "國立嘉科實驗高中",
+   "county": "嘉義縣",
+   "url": "https://www.nehs.cyc.edu.tw/home"
+  },
+  {
+   "id": "sgash",
+   "name": "國立新港藝術高中",
+   "county": "嘉義縣",
+   "url": "https://www.sgash.cyc.edu.tw/home"
+  },
+  {
+   "id": "tssh",
+   "name": "國立東石高中",
+   "county": "嘉義縣",
+   "url": "https://www.tssh.cyc.edu.tw/"
+  },
+  {
+   "id": "wnvs",
+   "name": "私立萬能工商",
+   "county": "嘉義縣",
+   "url": "http://www.wnvs.cyc.edu.tw/"
+  },
+  {
+   "id": "ycsh",
+   "name": "縣立永慶高中",
+   "county": "嘉義縣",
+   "url": "http://www.ycsh.cyc.edu.tw/"
+  },
+  {
+   "id": "dcvs",
+   "name": "私立大成商工",
+   "county": "雲林縣",
+   "url": "http://163.27.121.3/web/"
+  },
+  {
+   "id": "bwjh",
+   "name": "福智高中",
+   "county": "雲林縣",
+   "url": "https://www.bwjh.ylc.edu.tw/"
+  },
+  {
+   "id": "ddvs",
+   "name": "私立大德工商",
+   "county": "雲林縣",
+   "url": "https://www.ddvs.ylc.edu.tw/home"
+  },
+  {
+   "id": "dnsh",
+   "name": "縣立斗南高中",
+   "county": "雲林縣",
+   "url": "https://dnsh.ylc.edu.tw/"
+  },
+  {
+   "id": "gwehs",
+   "name": "縣立古坑華德福實驗高級中學",
+   "county": "雲林縣",
+   "url": "https://gwehs.ylc.edu.tw/"
+  },
+  {
+   "id": "hlvs",
+   "name": "國立西螺農工",
+   "county": "雲林縣",
+   "url": "http://www.hlvs.ylc.edu.tw/"
+  },
+  {
+   "id": "hwaivs",
+   "name": "國立虎尾農工",
+   "county": "雲林縣",
+   "url": "http://www.hwaivs.ylc.edu.tw/"
+  },
+  {
+   "id": "hwsh",
+   "name": "國立虎尾高中",
+   "county": "雲林縣",
+   "url": "http://www.hwsh.ylc.edu.tw/"
+  },
+  {
+   "id": "mljh",
+   "name": "縣立麥寮高中",
+   "county": "雲林縣",
+   "url": "https://mljh.ylc.edu.tw/"
+  },
+  {
+   "id": "nsjh",
+   "name": "縣立蔦松藝術高中",
+   "county": "雲林縣",
+   "url": "https://nsjh.ylc.edu.tw/"
+  },
+  {
+   "id": "pksh",
+   "name": "國立北港高中",
+   "county": "雲林縣",
+   "url": "http://www.pksh.ylc.edu.tw/"
+  },
+  {
+   "id": "pkvs",
+   "name": "國立北港農工",
+   "county": "雲林縣",
+   "url": "http://www.pkvs.ylc.edu.tw/"
+  },
+  {
+   "id": "shsh",
+   "name": "私立正心高中",
+   "county": "雲林縣",
+   "url": "https://www.shsh.ylc.edu.tw/"
+  },
+  {
+   "id": "svsh",
+   "name": "私立文生高中",
+   "county": "雲林縣",
+   "url": "http://www.svsh.ylc.edu.tw/"
+  },
+  {
+   "id": "tkvs",
+   "name": "國立土庫商工",
+   "county": "雲林縣",
+   "url": "https://www.tkvs.ylc.edu.tw/"
+  },
+  {
+   "id": "tlhc",
+   "name": "國立斗六家商",
+   "county": "雲林縣",
+   "url": "http://www.tlhc.ylc.edu.tw/"
+  },
+  {
+   "id": "tlsh",
+   "name": "國立斗六高中",
+   "county": "雲林縣",
+   "url": "http://www.tlsh.ylc.edu.tw/"
+  },
+  {
+   "id": "victoria",
+   "name": "雲林縣維多利亞實驗高中",
+   "county": "雲林縣",
+   "url": "https://www.victoria.ylc.edu.tw/"
+  },
+  {
+   "id": "yfsh",
+   "name": "私立義峰高中",
+   "county": "雲林縣",
+   "url": "https://www.yfsh.ylc.edu.tw/ischool/publish_page/0/"
+  },
+  {
+   "id": "ynhs",
+   "name": "私立永年高中",
+   "county": "雲林縣",
+   "url": "https://www.ynhs.ylc.edu.tw/"
+  },
+  {
+   "id": "ytjh",
+   "name": "私立揚子高中",
+   "county": "雲林縣",
+   "url": "https://www.ytjh.ylc.edu.tw/"
+  }
+ ]
 }

@@ -87,6 +87,12 @@ class FakeSession:
     def __init__(self, pages):
         self.pages, self.calls = pages, []
 
+    def post(self, url, data=None, **kw):
+        self.calls.append(("POST", url, dict(data or {})))
+        if url not in self.pages:
+            return FakeResp(url, "not found", 404)
+        return FakeResp(url, self.pages[url])
+
     def get(self, url, **kw):
         self.calls.append(url)
         if url not in self.pages:
@@ -105,16 +111,29 @@ def test_probe_new_classic_uses_existing_parser():
     assert len(s.calls) <= sc.MAX_REQUESTS_PER_SCHOOL
 
 
-def test_probe_ischool_and_budget():
+def test_probe_ischool_uses_json_endpoint_and_budget():
     base = "https://www.test.ylc.edu.tw/"
-    widget = base + "ischool/widget/site_news/main2.php?uid=WID_0_2_abc&maximize=1"
-    s = FakeSession({base: ISCHOOL_HOME, widget: ISCHOOL_LIST})
+    api = "https://www.test.ylc.edu.tw/ischool/widget/site_news/news_query_json.php"
+    payload = ('[{"total":"120"},{"newsId":"101","title":"期中考試範圍公告","time":"2026-10-20"},'
+               '{"newsId":"102","title":"新生訓練活動通知","time":"2026-10-21"},'
+               '{"newsId":"103","title":"圖書館閉館時間調整","time":"10-22"}]')
+    s = FakeSession({base: ISCHOOL_HOME, api: payload})
     row = sc.probe_school(s, {"id": "test", "url": base}, delay=0)
-    assert row["system"] == "ischool"
-    assert row["list_test"]["count"] == 3
+    assert row["system"] == "ischool" and row["ischool_uid"] == "WID_0_2_abc"
+    assert row["list_test"]["count"] == 3 and row["list_test"]["dated"] == 3
+    assert row["list_test"]["total"] == "120"
     assert row["verdict"] == "可直接套用"
     assert row["calendar_type"] == "PDF"
+    post = [c for c in s.calls if isinstance(c, tuple)][0]
+    assert post[2]["uid"] == "WID_0_2_abc" and post[2]["maxRows"] == "10"
     assert len(s.calls) <= sc.MAX_REQUESTS_PER_SCHOOL
+
+
+def test_fragment_tab_link_is_not_a_list_page():
+    base = "https://www.t.cy.edu.tw/"
+    links, _ = sc.find_links('<a href="#cmb_16_0">最新消息</a><a href="/p/403-1099-12-1.php">最新消息</a>',
+                             base, "new-classic-cms")
+    assert [l["url"] for l in links] == [base + "p/403-1099-12-1.php"]
 
 
 def test_unknown_system_needs_new_adapter():
