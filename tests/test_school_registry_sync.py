@@ -63,6 +63,20 @@ def test_source_urls_are_valid_for_their_adapter():
             assert school.get("notify_since"), school["id"] + " must not push its backlog"
 
 
+def test_history_capacity_has_headroom():
+    """max_items 只是防止刪資料的保護；目前資料量必須低於上限的一半，新增學校前就會先發現。
+
+    2026-10-27 上架雲林 13 校時，總數 6,369 超過舊上限 6,000，正式抓取因此失敗。
+    """
+    total = 0
+    for name in ("announcements.json", "archive.json"):
+        path = ROOT / "docs" / "data" / name
+        if path.exists():
+            total += len(json.loads(path.read_text(encoding="utf-8")).get("items", []))
+    new_school_backlog = 120 * sum(1 for s in CONFIG["schools"] if s.get("notify_since"))
+    assert CONFIG["max_items"] >= 2 * (total + new_school_backlog), (CONFIG["max_items"], total, new_school_backlog)
+
+
 def test_every_registry_adapter_is_registered():
     for definition in SCHOOLS.values():
         adapters.get_adapter(definition.announcement_adapter)
