@@ -1,0 +1,2888 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+    <head>
+                <!--目前$_SESSION['bootstrap']="4"; -->
+        <!--將目前的資料夾名稱，設定為樣板標籤變數 theme_name-->
+        
+
+
+
+                            
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        
+        <meta name="robots" content="index,follow">
+        <meta name="keywords" content="全國技能競賽青年組「建築舖面」、「配管與暖氣」、「門窗木工」、「麵包製作」、「3D數位遊戲藝術」、「雲端運算」及「旅館接待」等7職類裁判長公開遴選">
+        <meta name="description" content="">
+        <meta name="rating" content="general">
+        <meta name="author" content="XOOPS">
+        <meta name="copyright" content="Copyright © 2001-2020">
+        <meta name="generator" content="XOOPS">
+        <meta property="og:title" content="全國技能競賽青年組「建築舖面」、「配管與暖氣」、「門窗木工」、「麵包製作」、「3D數位遊戲藝術」、「雲端運算」及「旅館接待」等7職類裁判長公開遴選">
+        <meta property="og:type" content="website">
+
+
+        <meta property="og:site_name" content="國立民雄農工">
+        <!-- 網站的標題及標語 -->
+        <title>國立民雄農工 - 全國技能競賽青年組「建築舖面」、「配管與暖氣」、「門窗木工」、「麵包製作」、「3D數位遊戲藝術」、「雲端運算」及「旅館接待」等7職類裁判長公開遴選</title>
+
+                <!-- Rss -->
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.mhvs.cyc.edu.tw/backend.php">
+        <!-- icon -->
+        <link href="https://www.mhvs.cyc.edu.tw/favicon.ico" rel="SHORTCUT ICON">
+        <!-- Sheet Css -->
+        <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="https://www.mhvs.cyc.edu.tw/xoops.css">
+        <!-- XOOPS theme Sheet Css -->
+        <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="https://www.mhvs.cyc.edu.tw/themes/school2019/css/xoops.css?t=20260521">
+        <link href="https://www.mhvs.cyc.edu.tw/modules/tadtools/bootstrap4/css/bootstrap.css" rel="stylesheet" media="all">
+        <!-- theme_color= bootstrap4 -->
+
+        <!-- SmartMenus jQuery Bootstrap Addon CSS -->
+        <link href="https://www.mhvs.cyc.edu.tw/modules/tadtools/smartmenus/addons/bootstrap-4/jquery.smartmenus.bootstrap-4.css" media="all" rel="stylesheet">
+        <!-- Theme Sheet Css -->
+        <link rel="stylesheet" type="text/css" media="all" href="https://www.mhvs.cyc.edu.tw/themes/school2019/css/style.css">
+
+        <!-- 給模組套用的樣板標籤開始 -->
+<script src="https://www.mhvs.cyc.edu.tw/browse.php?Frameworks/jquery/jquery.js" type="text/javascript"></script>
+<script src="https://www.mhvs.cyc.edu.tw/browse.php?Frameworks/jquery/plugins/jquery.ui.js" type="text/javascript"></script>
+<script src="https://www.mhvs.cyc.edu.tw/modules/tadtools/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script src="https://www.mhvs.cyc.edu.tw/include/xoops.js" type="text/javascript"></script>
+<script src="https://www.mhvs.cyc.edu.tw/themes/school2019/language/tchinese_utf8/script.js" type="text/javascript"></script>
+<script src="https://www.mhvs.cyc.edu.tw/modules/tadtools/colorbox/jquery.colorbox.js" type="text/javascript"></script>
+<script src="https://www.mhvs.cyc.edu.tw/modules/tadtools/prism/prism.js" type="text/javascript"></script>
+<script src="https://www.mhvs.cyc.edu.tw/modules/tadtools/fancyBox/lib/jquery.mousewheel.pack.js" type="text/javascript"></script>
+<script src="https://www.mhvs.cyc.edu.tw/modules/tadtools/fancyBox/source/jquery.fancybox.js?t=20260525" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+                jQuery(document).ready(function(){
+                    $('.fancybox_nsn').fancybox({
+                    
+                    fitToView : true,
+                    width   : '1920',
+                    height    : '1080',
+                    
+                    
+                    autoSize  : false,
+                    closeClick  : false,
+                    openEffect  : 'none',
+                    closeEffect : 'none'
+                    
+                    
+                    ,
+        beforeShow: function () {
+            // 將 data-alt 的內容設定到圖片的 alt 屬性
+            var alt = this.element.data('alt');
+            this.inner.find('img').attr('alt', alt);
+        },
+        afterShow: function () {
+            // 取得圖片說明文字：優先用 data-alt，其次用 title，最後用索引提示
+            var speakText = this.element.data('alt')
+                         || this.element.attr('title')
+                         || ('第 ' + ($.fancybox.current.index + 1) + ' 張，共 ' + $.fancybox.current.group.length + ' 張');
+
+            // 透過 Web Speech API 朗讀圖片說明
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                var utterance = new SpeechSynthesisUtterance(speakText);
+                utterance.lang = 'zh-TW';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+                    });
+                });
+            
+//]]></script>
+<script type="text/javascript" src="https://www.mhvs.cyc.edu.tw/class/textsanitizer/image/image.js"></script>
+<script src="https://www.mhvs.cyc.edu.tw/modules/tadtools/sweet-alert/sweetalert2.all.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+            function delete_tad_news_func(nsn){
+                swal.fire({
+                    title: '確定要刪除此資料？',
+                    text: '相關資料通通都將會被移除！',
+                    html: '',
+                    timer: 0,
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: '確定刪除！',
+                    cancelButtonColor: '#8c8c8c',
+                    closeOnConfirm: false,
+                    allowOutsideClick: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        
+                    var form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '/modules/tadnews/index.php';
+                    var data = {'op': 'delete_tad_news', 'XOOPS_TOKEN_REQUEST': '4f6950d597c05dc447f8208bb7e80b12', 'nsn': nsn};
+                    for (var key in data) {
+                        if (data.hasOwnProperty(key)) {
+                            var input = document.createElement('input');
+                            input.type  = 'hidden';
+                            input.name  = key;
+                            input.value = data[key];
+                            form.appendChild(input);
+                        }
+                    }
+                    document.body.appendChild(form);
+                    form.submit();
+            
+                    }
+                });
+            }
+            
+//]]></script>
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/jquery/themes/base/jquery.ui.all.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/language/tchinese_utf8/style.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/css/vertical_menu.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/css/iconize.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/media/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/colorbox/colorbox.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/css/xoops.css?t=20260521" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/css/fontawesome6/css/all.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/prism/prism.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/fancyBox/source/jquery.fancybox.css?t=20260525" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/sweet-alert/sweetalert2.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/css/module.css" type="text/css" />
+<link rel="stylesheet" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/css/module2.css" type="text/css" />
+
+
+        <!-- 給模組套用的樣板標籤結束 -->
+
+        <!-- 局部套用的樣式，如果有載入完整樣式 theme_css.tpl 那就不需要這一部份 -->
+        <!--導覽工具列、區塊標題CSS設定開始-->
+<style type="text/css">
+    body {
+        color: #202020;
+        background-color: #dcffff;
+        background-image: url('https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/bg/bg_18_2.png');        background-position: center top;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: 100%;
+        font-size: 1rem;
+            }
+
+    a {
+        color:#005ca8;
+        /* font_family */
+            }
+
+    a:hover {
+        color:#a40019;
+    }
+
+    #logo-container{
+                background-color: transparent;
+            }
+
+    #logo-container-display{
+                background-color: transparent;
+            }
+
+
+    #slide-container{
+                background-color: transparent;
+            }
+
+    #slide-container-display{
+                background-color: #005371;
+            }
+
+
+    #nav-container{
+        position: relative;
+        z-index: 10;
+                    background-color:tranparent;
+            }
+
+    #nav-container-display{
+                                    background: #015a9a;
+                        }
+
+    #content-container{
+                    background-color: tranparent;
+            }
+
+    #content-container-display{
+                    background-color: #ffffff;
+            }
+
+    #footer-container{
+        position: relative;
+        z-index: 8;
+                    background-color: transparent;
+            margin-bottom:0px;
+            min-height:200px;
+            background:transparent ;
+            
+            }
+
+    #footer-container-display{
+        padding:20px;
+        color:#0000ff;
+        
+                    background-color:tranparent;
+            }
+
+        .leftBlock .blockTitle{
+        font-size: 1.2em;        color: #ffffff;        background-color: #6500b1;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .leftBlock a.block_config,
+    .leftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .leftBlock{
+        background: rgba(255, 255, 255, 0.5);
+border: 1px solid #efefef;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .leftBlock .blockTitle{
+        padding:6px;
+border-radius: 6px 6px 0px 0px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .leftBlock .blockContent{
+        padding: 5px 4px 10px;
+    }
+    
+    .rightBlock .blockTitle{
+        font-size: 1.2em;        color: #ffffff;        background-color: #6500b1;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .rightBlock a.block_config,
+    .rightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .rightBlock{
+        background: rgba(255, 255, 255, 0.5);
+border: 1px solid #efefef;
+border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .rightBlock .blockTitle{
+        padding:6px;
+border-radius: 6px 6px 0px 0px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .rightBlock .blockContent{
+        padding: 5px 4px 10px;
+    }
+    
+    .centerBlock .blockTitle{
+        font-size: 1.3em;        color: #fffbe5;        background-color: #015a9a;                background-repeat: no-repeat;        text-indent: 30px;                border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .centerBlock a.block_config,
+    .centerBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBlock{
+        /* background: rgba(255, 255, 255, 0.5); */
+border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .centerBlock .blockTitle{
+        padding:6px;
+text-align:center;
+font-family:  微軟正黑體;
+/* text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b; */
+    }
+    
+        .centerBlock .blockContent{
+        padding: 5px 0px 10px;
+    }
+    
+    .centerLeftBlock .blockTitle{
+        font-size: 1.3em;        color: #ffffff;        background-color: #007fa0;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .centerLeftBlock a.block_config,
+    .centerLeftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerLeftBlock{
+        background: rgba(255, 255, 255, 0.5);
+border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .centerLeftBlock .blockTitle{
+        padding:6px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .centerLeftBlock .blockContent{
+        padding: 5px 0px 10px;
+    }
+    
+    .centerRightBlock .blockTitle{
+        font-size: 1.3em;        color: #ffffff;        background-color: #007fa0;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .centerRightBlock a.block_config,
+    .centerRightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerRightBlock{
+        background: rgba(255, 255, 255, 0.5);
+border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .centerRightBlock .blockTitle{
+        padding:6px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .centerRightBlock .blockContent{
+        padding: 5px 0px 10px;
+    }
+    
+    .centerBottomBlock .blockTitle{
+        font-size: 1.3em;        color: #ffffff;        background-color: #007fa0;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .centerBottomBlock a.block_config,
+    .centerBottomBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBottomBlock{
+        background: rgba(255, 255, 255, 0.5);
+border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .centerBottomBlock .blockTitle{
+        padding:6px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .centerBottomBlock .blockContent{
+        padding: 5px 0px 10px;
+    }
+    
+    .centerBottomLeftBlock .blockTitle{
+        font-size: 1.3em;        color: #ffffff;        background-color: #007fa0;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .centerBottomLeftBlock a.block_config,
+    .centerBottomLeftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBottomLeftBlock{
+        background: rgba(255, 255, 255, 0.5);
+border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .centerBottomLeftBlock .blockTitle{
+        padding:6px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .centerBottomLeftBlock .blockContent{
+        padding: 5px 0px 10px;
+    }
+    
+    .centerBottomRightBlock .blockTitle{
+        font-size: 1.3em;        color: #ffffff;        background-color: #007fa0;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .centerBottomRightBlock a.block_config,
+    .centerBottomRightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBottomRightBlock{
+        background: rgba(255, 255, 255, 0.5);
+border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .centerBottomRightBlock .blockTitle{
+        padding:6px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .centerBottomRightBlock .blockContent{
+        padding: 5px 0px 10px;
+    }
+    
+    .footerCenterBlock .blockTitle{
+        font-size: 1.3em;        color: #ffffff;        background-color: #007fa0;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .footerCenterBlock a.block_config,
+    .footerCenterBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .footerCenterBlock{
+        border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .footerCenterBlock .blockTitle{
+        padding:6px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .footerCenterBlock .blockContent{
+        padding: 5px 0px 10px;
+    }
+    
+    .footerLeftBlock .blockTitle{
+        font-size: 1.3em;        color: #ffffff;        background-color: #007fa0;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .footerLeftBlock a.block_config,
+    .footerLeftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .footerLeftBlock{
+        border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .footerLeftBlock .blockTitle{
+        padding:6px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .footerLeftBlock .blockContent{
+        padding: 5px 0px 10px;
+    }
+    
+    .footerRightBlock .blockTitle{
+        font-size: 1.3em;        color: #ffffff;        background-color: #007fa0;                background-repeat: no-repeat;                        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        -khtml-border-radius:5px;
+            }
+
+    .footerRightBlock a.block_config,
+    .footerRightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .footerRightBlock{
+        border: none;
+border-radius: 6px;
+padding: 0px;
+margin:0px 0px 20px;
+    }
+    
+        .footerRightBlock .blockTitle{
+        padding:6px;
+text-align:center;
+font-family: 微軟正黑體;
+text-shadow: 0px 1px #0c4d5b, 1px 0px #0c4d5b, -1px 0px #0c4d5b, 0px -1px #0c4d5b, -1px -1px #0c4d5b, 1px 1px #0c4d5b, 1px -1px #0c4d5b, -1px 1px #0c4d5b;
+    }
+    
+        .footerRightBlock .blockContent{
+        padding: 5px 0px 10px;
+    }
+    
+
+    
+
+
+
+
+#main-nav {
+    border: none;
+    padding: 0rem 3rem;
+                        background: #015a9a;
+            }
+
+
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text,
+.navbar-custom .navbar-nav .nav-link,
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:focus .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+        font-size: 1.1rem;
+        color: #ffffff;
+    padding: px 15px;
+}
+
+
+.navbar-custom .nav-item:hover .nav-link,
+.navbar-custom .navbar-brand:hover {
+    background: #003039;
+    color: #fdff3d;
+}
+
+.navbar-custom .dropdown-menu {
+    background-color: rgb(255,255,255);
+    box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.5);
+    -o-box-shadow: 0px 3px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+
+.navbar-nav.sm-collapsible .sub-arrow {
+    border: 1px solid rgba(255, 255, 255);
+}
+
+
+.custom-toggler.navbar-toggler {
+    border-color: #ffffff;
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(255,255,255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+.navbar-toggler-icon {
+    color: #ffffff;
+}
+</style>
+<!--導覽工具列、區塊標題CSS設定 by hc-->
+        <style type="text/css">
+            #xoops_theme_left_zone{
+                            border-right:1px dashed gray;
+                        }
+
+            #xoops_theme_right_zone{
+                            border-left:1px dashed gray;
+                        }
+
+            #xoops_theme_footer a,
+            #xoops_theme_footer a:hover,
+            #xoops_theme_footer a:active ,
+            #xoops_theme_footer a:visited {
+                color:#0000ff;
+            }
+
+                            body{
+                    background-image: url('https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/config2/config2_bg_bg2_18_3.png'), url('https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/bg/bg_18_2.png');
+                    background-position: center bottom, center top;
+                    background-repeat: no-repeat, no-repeat;
+                    background-size: 100%, 100%;
+                }
+            
+
+            
+            #nav-container-display{
+                background-color: transparent;
+            }
+            /* 不透明時 */
+                            /* 沒有漸層 */
+                                    /* 非滿版狀態時 */
+                                            #main-nav {
+                            background-color: #015a9a;
+                        }
+                        #nav-container{
+                            background-color: transparent;
+                        }
+                                                
+            /* nav_display_type=not_full, navbar_pos=default */
+                                                    #main-nav {
+                    border-radius: 8px;
+                }
+            
+            
+
+            
+
+            #footer-container{
+                                    background-repeat: no-repeat;
+                    background-position: left top;
+                    background-size: auto;
+                            }
+
+            #footer-container-display{
+                            }
+
+            #xoops_theme_slide{
+                                            }
+
+            #logo-container>.container,
+            #slide-container>.container,
+            #content-container,
+            #footer-container
+            {
+                max-width: 100%;
+            }
+
+            @media (min-width: 768px) {
+
+                #logo-container>.container
+                {
+                    max-width: 83%;
+                }
+
+                #slide-container>.container
+                {
+                    max-width: 83%;
+                }
+
+                #content-container
+                {
+                    max-width: 83%;
+                }
+
+                #footer-container
+                {
+                    max-width: 83%;
+                }
+            }
+
+
+        </style>
+
+        <!-- 載入bootstrap -->
+                <!--Bootstrap js-->
+        <script src="https://www.mhvs.cyc.edu.tw/modules/tadtools/bootstrap4/js/bootstrap.bundle.js"></script>
+
+        <!-- SmartMenus jQuery plugin -->
+        <script type="text/javascript" src="https://www.mhvs.cyc.edu.tw/modules/tadtools/smartmenus/jquery.smartmenus.js"></script>
+
+        <!-- SmartMenus jQuery Bootstrap Addon -->
+        <script type="text/javascript" src="https://www.mhvs.cyc.edu.tw/modules/tadtools/smartmenus/addons/bootstrap-4/jquery.smartmenus.bootstrap-4.js"></script>
+
+            </head>
+
+    <body  >
+                <!-- logo區域 -->
+        
+        <!-- 導覽列區域 -->
+        
+        <!-- 滑動圖區域 -->
+                    <div id="slide-container">
+                <div class="container">
+                    <div id="xoops_theme_slide" class="row  ">
+                        <div id="slide-container-display" style="width:100%; position:relative; z-index:1;">
+                                            <link rel="stylesheet" type="text/css" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/tad_slide/tad-slide.css?t=20260813" >
+    <script type="text/javascript" src="https://www.mhvs.cyc.edu.tw/modules/tadtools/tad_slide/tad-slide.js?t=20260813"></script>
+
+    <div id="my-slider" class="tad-slide" aria-label="圖片輪播">
+        <ul class="tad-slide__list">
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_12_OFD.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_4_TTr.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_5_iTj.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_8_Eqg.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_6_iQr.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_9_rij.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_7_0gp.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_12_yTZ.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_10_Ttz.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_11_9Eo.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.mhvs.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.mhvs.cyc.edu.tw/uploads/tad_themes/school2019/slide/slide_4_2_I7I.jpg" alt="" />
+                    </a>
+                </li>
+                    </ul>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        tadSlide('#my-slider', {
+                    navMode : 'sides',
+                navMode : 'sides',
+        effect  : 'fade',
+        timeout : 4000,
+        speed   : 600,
+        });
+    });
+    </script>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        
+        <!-- 導覽列區域 -->
+                    <div id="nav-container" style="margin: 0px auto 18px;margin-left:auto; margin-right:auto;">
+    <div class="container" style="max-width: 83%;">
+        <div class="row">
+            <div id="nav-container-display" style="width:100%;">
+                
+    <script>
+        function tad_themes_popup(URL) {
+            $.colorbox({iframe:true, width:"80%", height:"90%",href : URL});
+        }
+    </script>
+
+    <!-- Navbar -->
+    <nav id="main-nav" class="navbar navbar-light navbar-expand-lg navbar-custom default">
+                            
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <a accesskey="U" href="#main-nav" id="xoops_theme_nav_key" class="sr-only-focusable" aria-label="跳到導覽工具列">:::</a>
+
+            <!-- Left nav -->
+            <ul id="main-menu" class="nav navbar-nav mr-auto">
+
+                                    <li><a class="nav-link" href="https://www.mhvs.cyc.edu.tw/index.php"><i class="fa fa-home" aria-hidden="true"></i> 回首頁</a></li>
+                                                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/ajax_file.php?op=remove_json" title="重取設定"><i class="fa fa-refresh" title="重整畫面圖示"></i><span class="sr-only visually-hidden">重新取得佈景設定</span>
+                    </a>
+                </li>
+
+                    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=918" target="_self" > 招生資訊</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=918&nsn=8760" target="_self"  title="免試續招"> 免試續招</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=918&nsn=1858" target="_self"  title="招生資訊"> 招生資訊</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=918&nsn=1862" target="_self"  title="體育班"> 體育班</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=918&nsn=1868" target="_self"  title="入學獎勵"> 入學獎勵</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=918&nsn=3009" target="_self"  title="收費標準"> 收費標準</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=918&nsn=1855" target="_self"  title="轉學"> 轉學</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=392" target="_self" > 新生專區</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=392&nsn=10650" target="_self"  title="115學年自行車及微二輪停車位公告"> 115學年自行車及微二輪停車位公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=392&nsn=10651" target="_self"  title="115民雄農工進出校園影片宣導"> 115民雄農工進出校園影片宣導</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=392&nsn=10287" target="_self"  title="<<榜單公告>>115學年度完全免試入學錄取名單暨報到資訊"> <<榜單公告>>115學年度完全免試入學錄取名單暨報到資訊</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=392&nsn=8566" target="_self"  title="本校115學年度適性輔導安置高級中等學校新生報到注意事項"> 本校115學年度適性輔導安置高級中等學校新生報到注意事項</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=392&nsn=8370" target="_self"  title="115學年專車資訊(各站請先參考附件)(專車未完成招標)"> 115學年專車資訊(各站請先參考附件)(專車未完成招標)</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=392&nsn=7539" target="_self"  title="學生服裝學號繡法"> 學生服裝學號繡法</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=392&nsn=7591" target="_self"  title="學生請假流程介紹"> 學生請假流程介紹</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=392&nsn=8781" target="_self"  title="115學年度高一新生編班名單"> 115學年度高一新生編班名單</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927" target="_self" > 媒體報導</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=8457" target="_self"  title="恭喜本校王俊雄老師、王瓊祥老師、陳秋庭主任、楊家勝老師、游朝煌老師及黃俊宇老師榮獲「全國高級中等學校專業群科專題實作及創意競賽」優良指導教師殊榮！"> 恭喜本校王俊雄老師、王瓊祥老師、陳秋庭主任、楊家勝老師、游朝煌老師及黃俊宇老師榮獲「全國高級中等學校專業群科專題實作及創意競賽」優良指導教師殊榮！</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=10430" target="_self"  title="感謝志鑫機械捐贈本校CNC雕銑機　"> 感謝志鑫機械捐贈本校CNC雕銑機　</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=9978" target="_self"  title="媒體報導115技優免試汽車科黃聖堯第一志願保送國立臺北科技大學"> 媒體報導115技優免試汽車科黃聖堯第一志願保送國立臺北科技大學</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=9979" target="_self"  title="媒體報導 斥資近千萬翻新設備食品科設備 打造全國競賽級食安人才培育基地"> 媒體報導 斥資近千萬翻新設備食品科設備 打造全國競賽級食安人才培育基地</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=9981" target="_self"  title="媒體報導 角力隊115年角力錦標賽傳捷報 勇奪多項佳績為校爭光"> 媒體報導 角力隊115年角力錦標賽傳捷報 勇奪多項佳績為校爭光</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=10037" target="_self"  title="媒體刊登報導第56屆全國技能競賽南區分區技能競賽汽車類中，吳哲勛同學勇奪「汽車噴漆」職類全國第 2 名，黃聖堯同學榮獲「汽車技術」職類全國第 3 名，雙雙創下佳績"> 媒體刊登報導第56屆全國技能競賽南區分區技能競賽汽車類中，吳哲勛同學勇奪「汽車噴漆」職類全國第 2 名，黃聖堯同學榮獲「汽車技術」職類全國第 3 名，雙雙創下佳績</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=10123" target="_self"  title="正聲廣播電台專訪洪芳芷校長"> 正聲廣播電台專訪洪芳芷校長</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=10216" target="_self"  title="電機科打造「雙乙四丙」證照傳奇 兼具「電、水、電腦」三大職類專長全方位技職教育"> 電機科打造「雙乙四丙」證照傳奇 兼具「電、水、電腦」三大職類專長全方位技職教育</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=9715" target="_self"  title="媒體報導攜手服務社若竹兒寒冬送暖關懷活動"> 媒體報導攜手服務社若竹兒寒冬送暖關懷活動</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=9746" target="_self"  title="恭喜汽車科黃聖堯、劉宗威分別勇奪114學年全國工業類學生技藝競賽金手獎第二、三名為校爭光新聞報導"> 恭喜汽車科黃聖堯、劉宗威分別勇奪114學年全國工業類學生技藝競賽金手獎第二、三名為校爭光新聞報導</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=9526" target="_self"  title="媒體刊登報導本校辦理114學年度農科技藝競賽活動"> 媒體刊登報導本校辦理114學年度農科技藝競賽活動</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=10625" target="_self"  title="恭喜本校游朝煌老師榮獲教育部115年師鐸獎媒體報導"> 恭喜本校游朝煌老師榮獲教育部115年師鐸獎媒體報導</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=9530" target="_self"  title="媒體刊登報導本校參加第65屆科展榮獲第二名"> 媒體刊登報導本校參加第65屆科展榮獲第二名</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=9529" target="_self"  title="媒體刊登本校承辦114學年度嘉義區免試入學招生委員會工作"> 媒體刊登本校承辦114學年度嘉義區免試入學招生委員會工作</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=7223" target="_self"  title="世新新聞 民雄農工學生從出行安全發想 專題及創意競賽奪雙金"> 世新新聞 民雄農工學生從出行安全發想 專題及創意競賽奪雙金</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=7657" target="_self"  title="接見國際技能競賽輪滑溜冰賽獲獎選手(民雄農工黃品睿同學)　黃敏惠感謝為國爭光"> 接見國際技能競賽輪滑溜冰賽獲獎選手(民雄農工黃品睿同學)　黃敏惠感謝為國爭光</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=7199" target="_self"  title="民雄農工學生發明提升駕駛安全 提全國金牌 | 公視台語台 | 20240614"> 民雄農工學生發明提升駕駛安全 提全國金牌 | 公視台語台 | 20240614</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=7176" target="_self"  title="發明自動補光頭燈！ 民雄農工學生創意競賽摘冠-youtube"> 發明自動補光頭燈！ 民雄農工學生創意競賽摘冠-youtube</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=7166" target="_self"  title="從行車安全發想！ 民雄農工「全國專題創意競賽」奪雙金"> 從行車安全發想！ 民雄農工「全國專題創意競賽」奪雙金</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=4452" target="_self"  title="民雄農工師生前往台南市佳里區延平社區進行「食農教育」回味無窮"> 民雄農工師生前往台南市佳里區延平社區進行「食農教育」回味無窮</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=3209" target="_self"  title="台鐵與民雄農工首次產學合作締約 培育鐵道人才"> 台鐵與民雄農工首次產學合作締約 培育鐵道人才</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=3726" target="_self"  title="全國技能競賽分區賽成績揭曉 勞發署雲嘉南分署奪牌全國第一"> 全國技能競賽分區賽成績揭曉 勞發署雲嘉南分署奪牌全國第一</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=4259" target="_self"  title="足球U19男子組5人制錦標賽 嘉義縣民雄農工、永慶高中包辦冠亞軍 2022/08/10 13:58"> 足球U19男子組5人制錦標賽 嘉義縣民雄農工、永慶高中包辦冠亞軍 2022/08/10 13:58</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=6499" target="_self"  title="堅持到最後一刻　黃品睿滑輪創佳績 國語日報2024/1/28第15版專題報導"> 堅持到最後一刻　黃品睿滑輪創佳績 國語日報2024/1/28第15版專題報導</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=2973" target="_self"  title="國立民雄農工參加第61屆全國科展農業與食品學科勇奪雙料冠軍"> 國立民雄農工參加第61屆全國科展農業與食品學科勇奪雙料冠軍</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=2137" target="_self"  title="培訓專才推向國際　民雄農工、吳鳳科大、金龍冠產學策略聯盟簽署"> 培訓專才推向國際　民雄農工、吳鳳科大、金龍冠產學策略聯盟簽署</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=927&nsn=2219" target="_self"  title="足球》嘉義天晴全勝登基 包辦公平競爭、最佳教練與金靴3項大獎"> 足球》嘉義天晴全勝登基 包辦公平競爭、最佳教練與金靴3項大獎</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=904" target="_self" > 學校簡介</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=904&nsn=1705" target="_self"  title="歷任校長"> 歷任校長</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=904&nsn=1706" target="_self"  title="學校短片"> 學校短片</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=904&nsn=1707" target="_self"  title="學校位置"> 學校位置</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=904&nsn=1708" target="_self"  title="校園平面圖"> 校園平面圖</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=904&nsn=1709" target="_self"  title="校史"> 校史</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=904&nsn=1710" target="_self"  title="校歌"> 校歌</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=904&nsn=1711" target="_self"  title="校徽"> 校徽</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=904&nsn=2218" target="_self"  title="校訓"> 校訓</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=923" target="_self" > 國立民雄農工課程計畫書</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=923&nsn=10714" target="_self"  title="115學年度課程計畫書"> 115學年度課程計畫書</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=923&nsn=8101" target="_self"  title="114學年度課程計畫書"> 114學年度課程計畫書</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=923&nsn=6557" target="_self"  title="113學年度課程計畫書"> 113學年度課程計畫書</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=923&nsn=4947" target="_self"  title="112學年度課程計畫書"> 112學年度課程計畫書</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=923&nsn=3659" target="_self"  title="111學年度課程計畫書"> 111學年度課程計畫書</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=923&nsn=1952" target="_self"  title="110學年度課程計畫書"> 110學年度課程計畫書</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=923&nsn=1951" target="_self"  title="109學年度課程計畫書"> 109學年度課程計畫書</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=923&nsn=1948" target="_self"  title="108學年課程計畫書"> 108學年課程計畫書</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1012" target="_self" > 高職優質化計畫</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1012&nsn=10623" target="_self"  title="114學年度優質化"> 114學年度優質化</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1012&nsn=8315" target="_self"  title="113學年度優質化"> 113學年度優質化</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1012&nsn=5810" target="_self"  title="112學年度優質化"> 112學年度優質化</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1012&nsn=5811" target="_self"  title="111學年度優質化"> 111學年度優質化</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1012&nsn=5812" target="_self"  title="110學年度優質化"> 110學年度優質化</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" > 升學資訊</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1042" target="_self"  title="榜單"> 榜單</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1043" target="_self"  title="升學管道"> 升學管道</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1044" target="_self"  title="升學資訊"> 升學資訊</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924" target="_self" > ODF文件</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=9835" target="_self"  title="1150223持續推動電子公文附件及相關行政與教學作業，應符合 ODF-CNS15251文件格式事宜"> 1150223持續推動電子公文附件及相關行政與教學作業，應符合 ODF-CNS15251文件格式事宜</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=10628" target="_self"  title="1150723持續推動行政院「政府文件標準格式（ODF-CNS15251）實施計畫（113-116年）」，推動電子公文附件採用ODF文件格式事宜"> 1150723持續推動行政院「政府文件標準格式（ODF-CNS15251）實施計畫（113-116年）」，推動電子公文附件採用ODF文件格式事宜</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=9758" target="_self"  title="1150203持續推動「政府文件標準格式（ODF-CNS15251）實 施計畫（113-116年）」關鍵績效指標要求事宜"> 1150203持續推動「政府文件標準格式（ODF-CNS15251）實 施計畫（113-116年）」關鍵績效指標要求事宜</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=9512" target="_self"  title="1141216持續推動電子公文附件及相關行政與教學作業，應符合 ODF-CNS15251文件格式事宜"> 1141216持續推動電子公文附件及相關行政與教學作業，應符合 ODF-CNS15251文件格式事宜</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=2748" target="_self"  title="轉知國發會ODF宣導短片"> 轉知國發會ODF宣導短片</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=7981" target="_self"  title="1131223持續推動電子公文附件及相關行政與教學作業，應符合 ODF-CNS15251文件格式事宜"> 1131223持續推動電子公文附件及相關行政與教學作業，應符合 ODF-CNS15251文件格式事宜</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=7458" target="_self"  title="1130812持續推動電子公文附件及相關行政與教學作業，應符合ODF-CNS15251文件格式事宜"> 1130812持續推動電子公文附件及相關行政與教學作業，應符合ODF-CNS15251文件格式事宜</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=6349" target="_self"  title="持續推動電子公文附件及相關行政與教學作業，應符合ODF-CNS15251文件格式事宜，請查照。"> 持續推動電子公文附件及相關行政與教學作業，應符合ODF-CNS15251文件格式事宜，請查照。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=6751" target="_self"  title="轉知行政院訂定「政府文件標準格式（ODF-CNS 15251）實施計畫」（113-116年）（如附件），並自即日起實施，請查照。"> 轉知行政院訂定「政府文件標準格式（ODF-CNS 15251）實施計畫」（113-116年）（如附件），並自即日起實施，請查照。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=8330" target="_self"  title="持續推動電子公文附件及相關行政與教學作業，應符合 ODF-CNS15251文件格式事宜"> 持續推動電子公文附件及相關行政與教學作業，應符合 ODF-CNS15251文件格式事宜</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=1656" target="_self"  title="轉知教育部國教署持續推動電子公文附件及相關行政、教學作業符合ODF-CNS15251文書格式事宜"> 轉知教育部國教署持續推動電子公文附件及相關行政、教學作業符合ODF-CNS15251文書格式事宜</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=2747" target="_self"  title="推動ODF-CNS15251為政府文件標準格式實施計畫"> 推動ODF-CNS15251為政府文件標準格式實施計畫</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=1661" target="_self"  title="何謂開放文件(ODF)檔?"> 何謂開放文件(ODF)檔?</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=924&nsn=2105" target="_self"  title="支援ODF文件格式軟體工具"> 支援ODF文件格式軟體工具</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item ">
+        <a class="nav-link " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/news.php?WebID=51" target="_blank" title="開新視窗並連至校務開放資料"><i class="fa fa-adjust"></i> 校務開放資料</a>
+            </li>
+    <li class="nav-item ">
+        <a class="nav-link " href="https://www.facebook.com/mhvs.no.81" target="_blank" title="開新視窗並連至民雄農工FB粉絲團"> 民雄農工FB粉絲團</a>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php" target="_blank" title="開新視窗並連至學生學習歷程公告"> 學生學習歷程公告</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=9878" target="_self"  title="115學年度四技二專各入學管道「備審資料準備指引」查詢平台"> 115學年度四技二專各入學管道「備審資料準備指引」查詢平台</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=8545" target="_self"  title="升學四技二專學習歷程備審資料準備手冊"> 升學四技二專學習歷程備審資料準備手冊</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=9547" target="_self"  title="114學年度民雄農工學習歷程檔案作業期程"> 114學年度民雄農工學習歷程檔案作業期程</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=8591" target="_self"  title="高級中等學校學生學習評量及學習歷程檔案使用「生成式人工智慧」注意事項"> 高級中等學校學生學習評量及學習歷程檔案使用「生成式人工智慧」注意事項</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=8355" target="_self"  title="【財團法人一零四希望基金會】提供「104學習歷程」、「影片教材」及「自述懶人包」"> 【財團法人一零四希望基金會】提供「104學習歷程」、「影片教材」及「自述懶人包」</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=6418" target="_self"  title="[104銀行] 學生服務-升學相關連結"> [104銀行] 學生服務-升學相關連結</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=4827" target="_self"  title="公告修正後「○○高級中等學校建置學生學習歷程檔案作業補充規定（範例）」"> 公告修正後「○○高級中等學校建置學生學習歷程檔案作業補充規定（範例）」</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=4500" target="_self"  title="學習歷程檔案補充規定"> 學習歷程檔案補充規定</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=4493" target="_self"  title="高級中等教育階段學生學習歷程檔案宣導事項"> 高級中等教育階段學生學習歷程檔案宣導事項</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1011&nsn=4806" target="_self"  title="修正「教育部國民及學前教育署補助偏遠地區高級中等學校充實學生學習歷程檔案要點」，名稱並修正為「教育部國民及學前教育署補助高級中等學校充實建置學生學習歷程檔案要點」"> 修正「教育部國民及學前教育署補助偏遠地區高級中等學校充實學生學習歷程檔案要點」，名稱並修正為「教育部國民及學前教育署補助高級中等學校充實建置學生學習歷程檔案要點」</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item ">
+        <a class="nav-link " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1008" target="_self" > 本土語言</a>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930" target="_self" > -重補修-</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9944" target="_self"  title="114(2)重補修暑期課表"> 114(2)重補修暑期課表</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=10070" target="_self"  title="114(2)重補修繳費於 4/8(三)截止，請同學把握時限，按時繳費。"> 114(2)重補修繳費於 4/8(三)截止，請同學把握時限，按時繳費。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9482" target="_self"  title="114(1)重補修課程公告:期末至寒假重補修時間地點更新公告，詳附件。"> 114(1)重補修課程公告:期末至寒假重補修時間地點更新公告，詳附件。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9509" target="_self"  title="114(1)重補修課程公告: 12/20(六)化學(農科、工科合上)重補修於品三甲；12/21 、 28(日)物理 8:00 於電三乙教室，請準時到課。名單如附件。"> 114(1)重補修課程公告: 12/20(六)化學(農科、工科合上)重補修於品三甲；12/21 、 28(日)物理 8:00 於電三乙教室，請準時到課。名單如附件。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9483" target="_self"  title="114(1)重補修課程公告: 12/13(六)、 12/14(日)開設食品微生物Ⅱ、汽車基本電學Ⅰ 、電機科"> 114(1)重補修課程公告: 12/13(六)、 12/14(日)開設食品微生物Ⅱ、汽車基本電學Ⅰ 、電機科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=10195" target="_self"  title="114(2)重補修課程公告:5/1(五)、 5/2(六)英文Ⅲ(二上)、5/1(五)生涯規劃Ⅰ、5/1(五)、 5/2(六)烘焙食品加工實習Ⅰ重補修"> 114(2)重補修課程公告:5/1(五)、 5/2(六)英文Ⅲ(二上)、5/1(五)生涯規劃Ⅰ、5/1(五)、 5/2(六)烘焙食品加工實習Ⅰ重補修</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=10350" target="_self"  title="114(2)重補修課程公告: 6/2(二)、 3(三)國文 V 重補修於園三甲教室，請準時到課，名單如附件。"> 114(2)重補修課程公告: 6/2(二)、 3(三)國文 V 重補修於園三甲教室，請準時到課，名單如附件。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9721" target="_self"  title="114(1)重補修寒假課程公告: 1/27(二)、 28(三)食品科"> 114(1)重補修寒假課程公告: 1/27(二)、 28(三)食品科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9677" target="_self"  title="114(1)重補修寒假課程:1/21(三)、22(四)歷史Ⅰ、地理Ⅰ 1/23(五)生涯規劃Ⅱ "> 114(1)重補修寒假課程:1/21(三)、22(四)歷史Ⅰ、地理Ⅰ 1/23(五)生涯規劃Ⅱ </a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9651" target="_self"  title="114(1)重補修課程公告: 1/17(六)食品科分析化學Ⅱ與電機科基本電學Ⅱ、汽車科底盤原理Ⅰ、機械科機械力學Ⅱ，名單如附件，請準時到課。"> 114(1)重補修課程公告: 1/17(六)食品科分析化學Ⅱ與電機科基本電學Ⅱ、汽車科底盤原理Ⅰ、機械科機械力學Ⅱ，名單如附件，請準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9625" target="_self"  title="114(1)重補修課程公告: 1/10(六)數學工科一下與 1/10(六)食品科烘焙概論；1/11(日)、 1/17(六)食品科分析化學Ⅱ與電機科基本電學Ⅱ、基礎電路實習，名單如附件，請準時到課。"> 114(1)重補修課程公告: 1/10(六)數學工科一下與 1/10(六)食品科烘焙概論；1/11(日)、 1/17(六)食品科分析化學Ⅱ與電機科基本電學Ⅱ、基礎電路實習，名單如附件，請準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=10226" target="_self"  title="114(2)重補修課程公告:5/23(六)國語文Ⅰ+國文精讀Ⅰ重補修於園三甲教室，請準時到課，名單如附件。"> 114(2)重補修課程公告:5/23(六)國語文Ⅰ+國文精讀Ⅰ重補修於園三甲教室，請準時到課，名單如附件。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9942" target="_self"  title="115-1 本學期重補修第二階段加退選 10/2 (五)開放-10/8(四)截止，補填意願至10/6(二)截止，請同學核對確認。"> 115-1 本學期重補修第二階段加退選 10/2 (五)開放-10/8(四)截止，補填意願至10/6(二)截止，請同學核對確認。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9901" target="_self"  title="114-2 重補修第二階段加退選因應轉學轉科生抵免會議延至三月中，請同學留意公告，按時完成選填手續。"> 114-2 重補修第二階段加退選因應轉學轉科生抵免會議延至三月中，請同學留意公告，按時完成選填手續。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=10605" target="_self"  title="主旨：轉知「教育部主管高級中等學校學生重修及補修學分補充規定」第2點，業經國教署於中華民國115年7月1日以臺教國署高字第1155403175A號令修正發布，檢送發布令影本及行政規則修正規定各1份"> 主旨：轉知「教育部主管高級中等學校學生重修及補修學分補充規定」第2點，業經國教署於中華民國115年7月1日以臺教國署高字第1155403175A號令修正發布，檢送發布令影本及行政規則修正規定各1份</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9806" target="_self"  title="114-2 本校本學期重補修意願選填 2/9 開放-2/23截止請同學踴躍選填"> 114-2 本校本學期重補修意願選填 2/9 開放-2/23截止請同學踴躍選填</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=10589" target="_self"  title="114(2)重補修課程公告:  7/13 、 14(一二)食品科分析化學； 7/15 、 16(三四)食品科食品微生物；7/13(一)機械科機械加工實習；7/14(二)機械科機械製圖實習；7/15(五)機械科機械製造，名單於附件，請準時到課。"> 114(2)重補修課程公告:  7/13 、 14(一二)食品科分析化學； 7/15 、 16(三四)食品科食品微生物；7/13(一)機械科機械加工實習；7/14(二)機械科機械製圖實習；7/15(五)機械科機械製造，名單於附件，請準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9319" target="_self"  title="114(1)重補修課程公告: 11/29(六)英文Ⅱ一下8:00於品二乙教室。 11/30(日)英文Ⅳ二下8:00於品三乙教室，請準時到課。名單如附件。"> 114(1)重補修課程公告: 11/29(六)英文Ⅱ一下8:00於品二乙教室。 11/30(日)英文Ⅳ二下8:00於品三乙教室，請準時到課。名單如附件。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9406" target="_self"  title="114(1)重補修課程12/6(六)、 12/7(日)國文Ⅳ二下 8:00 於園三甲教室，請準時到課。"> 114(1)重補修課程12/6(六)、 12/7(日)國文Ⅳ二下 8:00 於園三甲教室，請準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9320" target="_self"  title="114(1)重補修課程公告: 11/22(六)、11/29(六)英文Ⅱ一下8:00於品二乙教室。 11/23(日)、11/30(日)英文Ⅳ二下8:00於品三乙教室，請準時到課。名單如附件。"> 114(1)重補修課程公告: 11/22(六)、11/29(六)英文Ⅱ一下8:00於品二乙教室。 11/23(日)、11/30(日)英文Ⅳ二下8:00於品三乙教室，請準時到課。名單如附件。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9211" target="_self"  title="114(1)重補修課程公告:11/1(六)、 11/2(日)國文Ⅱ+國文精讀(甲)、(乙)班於品二甲、乙上課。 11/2(日)數學Ⅱ農科二下於園三甲上課。請準時到課。"> 114(1)重補修課程公告:11/1(六)、 11/2(日)國文Ⅱ+國文精讀(甲)、(乙)班於品二甲、乙上課。 11/2(日)數學Ⅱ農科二下於園三甲上課。請準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9178" target="_self"  title="114(1)重補修數學Ⅱ於10/24(五)-10/26(日)開設三種班級 (1)工科數學Ⅱ二下10/24-26 至品二甲(2)農科數學Ⅱ一下 10/24-25(3)農科數學Ⅱ二下 10/26、11/02皆請至園三甲上課"> 114(1)重補修數學Ⅱ於10/24(五)-10/26(日)開設三種班級 (1)工科數學Ⅱ二下10/24-26 至品二甲(2)農科數學Ⅱ一下 10/24-25(3)農科數學Ⅱ二下 10/26、11/02皆請至園三甲上課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9141" target="_self"  title="114(1)重補修國文二(一下) 10/19(日)、 11/1(六)、 11/2(日)上午 8:00 請至品二甲、乙上課。"> 114(1)重補修國文二(一下) 10/19(日)、 11/1(六)、 11/2(日)上午 8:00 請至品二甲、乙上課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9034" target="_self"  title="114(1)重補修國文一下時間因全校班親會順延變更為 10/19 、 11/1 、 11/2 公告"> 114(1)重補修國文一下時間因全校班親會順延變更為 10/19 、 11/1 、 11/2 公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9018" target="_self"  title="主旨:114(1)重補修加退選已開放 9/22(一)~9/26(五)"> 主旨:114(1)重補修加退選已開放 9/22(一)~9/26(五)</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=9026" target="_self"  title="114(1)重補修時間公告，繳費單已發放10/9(四)需完成繳費"> 114(1)重補修時間公告，繳費單已發放10/9(四)需完成繳費</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8926" target="_self"  title="114(1)重補修意願調查延至9/14(日)，請欠缺學分尚未處理的同學把握時間完成意願勾選。"> 114(1)重補修意願調查延至9/14(日)，請欠缺學分尚未處理的同學把握時間完成意願勾選。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8546" target="_self"  title="113(2)重補修 6/14(六)、 6/21(六)開設二上英文、 6/15(日)、 6/22(日)開設一上英文，名單於附件請修課同學準時到課"> 113(2)重補修 6/14(六)、 6/21(六)開設二上英文、 6/15(日)、 6/22(日)開設一上英文，名單於附件請修課同學準時到課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8551" target="_self"  title="113(2)重補修二上可程式控制實習於 6/13(五)8:00-17:00 上課(九節)名單於附件請修課同學上午準時到課"> 113(2)重補修二上可程式控制實習於 6/13(五)8:00-17:00 上課(九節)名單於附件請修課同學上午準時到課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8553" target="_self"  title="113(2)重補修一上藝術與生活於 6/28(六)8:00-15:00 上課(六節)名單於附件請修課同學上午準時到課"> 113(2)重補修一上藝術與生活於 6/28(六)8:00-15:00 上課(六節)名單於附件請修課同學上午準時到課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8530" target="_self"  title="113(2)重補修6/7(六)~6/8(日)開設一上物理、二上化學、二上造園景觀，名單於附件，請修課同學上午準時到課。"> 113(2)重補修6/7(六)~6/8(日)開設一上物理、二上化學、二上造園景觀，名單於附件，請修課同學上午準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8531" target="_self"  title="113(2)重補修二下機電整合實習於 6/6(五)8:00-17:00 上課(九節)，名單於附件，請修課同學上午準時到課。"> 113(2)重補修二下機電整合實習於 6/6(五)8:00-17:00 上課(九節)，名單於附件，請修課同學上午準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8532" target="_self"  title="113(2)重補修三上數位邏輯於 6/5(四)8:00-17:00 名單於附件請修課同學上午準時到課"> 113(2)重補修三上數位邏輯於 6/5(四)8:00-17:00 名單於附件請修課同學上午準時到課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8534" target="_self"  title="113(2)重補修 6/9(一)、 6/16(一)開設三上國文、三上食品化學與分析名單於附件請修課同學準時到課"> 113(2)重補修 6/9(一)、 6/16(一)開設三上國文、三上食品化學與分析名單於附件請修課同學準時到課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8477" target="_self"  title="113(2)重補修公告:重補修時間家長通知書請告知並給家長親簽5/23中午前繳回教務處實研組"> 113(2)重補修公告:重補修時間家長通知書請告知並給家長親簽5/23中午前繳回教務處實研組</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8494" target="_self"  title="113(2)重補修一上國文(乙、丙班)於 5/30(五)、 5/31(六)、 6/1(日)開課，機械實習課程於 5/30 、 6/1 上課，名單於附件，請修課同學上午 8:00 準時到課。"> 113(2)重補修一上國文(乙、丙班)於 5/30(五)、 5/31(六)、 6/1(日)開課，機械實習課程於 5/30 、 6/1 上課，名單於附件，請修課同學上午 8:00 準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8502" target="_self"  title="113(2)重補修三上英文於 6/3(三)10:00-17:00 、 6/4(四)8:00-15:00 上課，名單於附件，請修課同學上午準時到課。"> 113(2)重補修三上英文於 6/3(三)10:00-17:00 、 6/4(四)8:00-15:00 上課，名單於附件，請修課同學上午準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8422" target="_self"  title="113(2)重補修假日與暑期開課科目與時間表公告"> 113(2)重補修假日與暑期開課科目與時間表公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8373" target="_self"  title="113(2)重補修一上數學工科於 5/3(六)、 5/10(六)、 5/11(日)開課，名單於附件，請修課同學上午 8:00 準時到課。"> 113(2)重補修一上數學工科於 5/3(六)、 5/10(六)、 5/11(日)開課，名單於附件，請修課同學上午 8:00 準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8391" target="_self"  title="113(2)重補修一上基本電學、基本電學實習、電工實習於 5/4(日)、 5/25(日)開課，名單於附件，請修課同學上午 8:00 準時到電機科專業教室上課"> 113(2)重補修一上基本電學、基本電學實習、電工實習於 5/4(日)、 5/25(日)開課，名單於附件，請修課同學上午 8:00 準時到電機科專業教室上課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8838" target="_self"  title="114(1)重補修意願調查"> 114(1)重補修意願調查</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8619" target="_self"  title="113(2)重補修公告:暑期重補修時間更新公告"> 113(2)重補修公告:暑期重補修時間更新公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8621" target="_self"  title="113(2)重補修 6/28(六)開設一上藝術與生活，6/28(六) 6/29(日)一上電子學、一上電工大意，6/21(六)、 6/28(六)分析化學名單於附件，請修課同學準時到課。"> 113(2)重補修 6/28(六)開設一上藝術與生活，6/28(六) 6/29(日)一上電子學、一上電工大意，6/21(六)、 6/28(六)分析化學名單於附件，請修課同學準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8623" target="_self"  title="113(2)重補修:7/01(二)~7/03(四)開設一上工科數學 ； 7/01(二)~7/02(三)開設一上農科數學，名單於附件，請修課同學準時到課。"> 113(2)重補修:7/01(二)~7/03(四)開設一上工科數學 ； 7/01(二)~7/02(三)開設一上農科數學，名單於附件，請修課同學準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8652" target="_self"  title="113(2)重補修英文一上8/4-8/5，請同學準時到課。"> 113(2)重補修英文一上8/4-8/5，請同學準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8640" target="_self"  title="113(2)重補修 7/4(五)一上閩南語、7/5(六)一上健康與護理，名單如附件，請準時到課。 "> 113(2)重補修 7/4(五)一上閩南語、7/5(六)一上健康與護理，名單如附件，請準時到課。 </a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8648" target="_self"  title="113(2)重補修 7/17(五)、7/21(一)二上食品微生物，名單於附件，請上午 8:00 準時至食品科專業  教室上課"> 113(2)重補修 7/17(五)、7/21(一)二上食品微生物，名單於附件，請上午 8:00 準時至食品科專業  教室上課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8649" target="_self"  title="113(2)重補修一上英文8/4(一)、8/5(二)上課"> 113(2)重補修一上英文8/4(一)、8/5(二)上課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8650" target="_self"  title="113(2)重補修 原定7/9(三)一上生涯規劃因颱風校園修復暫停上課，課程順延至7/30(三)，修課同學請預留時間準時到課。"> 113(2)重補修 原定7/9(三)一上生涯規劃因颱風校園修復暫停上課，課程順延至7/30(三)，修課同學請預留時間準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8651" target="_self"  title="113(2)重補修 7/10(四)一上地理，名單於附件，請上午 8:00 準時至園三甲教室上課"> 113(2)重補修 7/10(四)一上地理，名單於附件，請上午 8:00 準時至園三甲教室上課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8688" target="_self"  title="113(2)重補修暑期最新時程"> 113(2)重補修暑期最新時程</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8689" target="_self"  title="113(2)重補修 7/22(二)-7/23(三)二上機件原理、 7/24(四)-7/25(五)一上機械製造  "> 113(2)重補修 7/22(二)-7/23(三)二上機件原理、 7/24(四)-7/25(五)一上機械製造  </a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8690" target="_self"  title="113(2)重補修 7/24(三)、 7/25(五)一上烘焙概論"> 113(2)重補修 7/24(三)、 7/25(五)一上烘焙概論</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8717" target="_self"  title="113(2)重補修體育 7/31(四)、 8/1(五)上課"> 113(2)重補修體育 7/31(四)、 8/1(五)上課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8709" target="_self"  title="113(2)重補修體育原訂 7/29(二)不用到校，因豪雨嘉縣停課，延後至 7/31(四)、 8/1(五)上課。"> 113(2)重補修體育原訂 7/29(二)不用到校，因豪雨嘉縣停課，延後至 7/31(四)、 8/1(五)上課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8316" target="_self"  title="113(2)重補修二上數學工科於4/12(六)、4/19(六)、4/20(日)開課，名單於附件，請修課同學上午8:00準時到課。"> 113(2)重補修二上數學工科於4/12(六)、4/19(六)、4/20(日)開課，名單於附件，請修課同學上午8:00準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8337" target="_self"  title="113(2)重補修二上數學農科於 4/19(六)、 4/20(日)開課，名單於附件，請修課同學上午 8:00 準時到課。"> 113(2)重補修二上數學農科於 4/19(六)、 4/20(日)開課，名單於附件，請修課同學上午 8:00 準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8357" target="_self"  title="113(2)重補修一上法律與生活、公民與社會於平日中午開課，名單於附件，請修課同學 12:05 準時到圖資大樓三樓 302 教室上課"> 113(2)重補修一上法律與生活、公民與社會於平日中午開課，名單於附件，請修課同學 12:05 準時到圖資大樓三樓 302 教室上課</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4588" target="_self"  title="※「重補修注意事項宣導」公告!"> ※「重補修注意事項宣導」公告!</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4584" target="_self"  title="※「重補修繳費提醒」重要公告!"> ※「重補修繳費提醒」重要公告!</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8155" target="_self"  title="113(2)重補修第一場次公告:請全校一二三年級同學上網填選重補修意願"> 113(2)重補修第一場次公告:請全校一二三年級同學上網填選重補修意願</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8189" target="_self"  title="113(2)重補修第一場次公告:請全校一二三年級同學上網填選重補修第二階段加退選"> 113(2)重補修第一場次公告:請全校一二三年級同學上網填選重補修第二階段加退選</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8250" target="_self"  title="113(2)重補修第一場次繳費公告:請全校一二三年級同學重補修同學於3/20(四)前繳費完畢"> 113(2)重補修第一場次繳費公告:請全校一二三年級同學重補修同學於3/20(四)前繳費完畢</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8258" target="_self"  title="113(2)重補修第一場:3/22(六)、23(日)辦理二上國文、園藝科植物識別實習重補修課程，請修課同學盡速繳費，準時上課。"> 113(2)重補修第一場:3/22(六)、23(日)辦理二上國文、園藝科植物識別實習重補修課程，請修課同學盡速繳費，準時上課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8299" target="_self"  title="113(2)重補修國文一上+精讀於4/4(五)-4/6(日)開課，名單於附件，請修課同學上午8:00準時到課。"> 113(2)重補修國文一上+精讀於4/4(五)-4/6(日)開課，名單於附件，請修課同學上午8:00準時到課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8016" target="_self"  title="113(1)重補修:114/1/11、1/12新開課程:藝術生活一下、生物一下(園藝科2天1/11-12、食品科1天1/12)，延續課程數學工科二下、、、等課程，名單公告如附件，請同學準時上課。欲加選請盡速洽教務處實研組。"> 113(1)重補修:114/1/11、1/12新開課程:藝術生活一下、生物一下(園藝科2天1/11-12、食品科1天1/12)，延續課程數學工科二下、、、等課程，名單公告如附件，請同學準時上課。欲加選請盡速洽教務處實研組。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7801" target="_self"  title="113(1)第1場次"> 113(1)第1場次</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7935" target="_self"  title="113(1)重補修第 1 場:12/12週四請各班學藝股長至教務處班級櫃領繳費單，請12/14、15上課同學12/13周五帶費用繳至實研組，其餘同學12/18周三前繳納完畢"> 113(1)重補修第 1 場:12/12週四請各班學藝股長至教務處班級櫃領繳費單，請12/14、15上課同學12/13周五帶費用繳至實研組，其餘同學12/18周三前繳納完畢</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7946" target="_self"  title="113(1)重補修第一場次開始，相關注意事項詳如內文及附件。請同學詳讀並配合任課教師與行政教師要求，順利修課取得學分。"> 113(1)重補修第一場次開始，相關注意事項詳如內文及附件。請同學詳讀並配合任課教師與行政教師要求，順利修課取得學分。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7947" target="_self"  title="113(1)重補修第一場:12/21(六)、12/22(日)生涯規劃下、烘焙概論下、及延續課程英文一下、數學一下甲乙班、基本電學下，名單如附件，請同學準時上課。"> 113(1)重補修第一場:12/21(六)、12/22(日)生涯規劃下、烘焙概論下、及延續課程英文一下、數學一下甲乙班、基本電學下，名單如附件，請同學準時上課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7967" target="_self"  title="113(1)重補修二下英文(甲班)12/22(日)、12/29(日)開課，請攜帶英文二下課本、筆記本，名單如附件。"> 113(1)重補修二下英文(甲班)12/22(日)、12/29(日)開課，請攜帶英文二下課本、筆記本，名單如附件。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7968" target="_self"  title="113(1)重補修:生涯規劃下12/21名單如附件，請同學準時上課。"> 113(1)重補修:生涯規劃下12/21名單如附件，請同學準時上課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7977" target="_self"  title="113(1)重補修第一場:12/28(六)、12/29(日)物理一下、分析化學一下、農業概論一下及延續課程國文一下(12/28)、英文二下(12/29)，名單如附件，請同學準時上課。"> 113(1)重補修第一場:12/28(六)、12/29(日)物理一下、分析化學一下、農業概論一下及延續課程國文一下(12/28)、英文二下(12/29)，名單如附件，請同學準時上課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7991" target="_self"  title="113(1)重補修:114/1/4、1/5新開課程:國文二下、數學農科一下甲乙班、數學工科二下、化學二下、食品加工二下、機件原理二下等課程，名單陸續公告如附件，請同學準時上課。欲加選請洽教務處實研組。"> 113(1)重補修:114/1/4、1/5新開課程:國文二下、數學農科一下甲乙班、數學工科二下、化學二下、食品加工二下、機件原理二下等課程，名單陸續公告如附件，請同學準時上課。欲加選請洽教務處實研組。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8041" target="_self"  title="113(1)重補修:114/1/18(六)新開課程:機械製造課程，名單公告如附件，請同學準時上課。欲加選請洽教務處實研組。"> 113(1)重補修:114/1/18(六)新開課程:機械製造課程，名單公告如附件，請同學準時上課。欲加選請洽教務處實研組。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8048" target="_self"  title="113(1)重補修寒假 1/21~24 新開課程:英文二下乙、丙班(1/21-22)、數學工科二下乙班(1/21-23)、機械力學二下(1/23-24)等課程，名單於附件公告於重補修專區，請同學前往察看，準時上課。"> 113(1)重補修寒假 1/21~24 新開課程:英文二下乙、丙班(1/21-22)、數學工科二下乙班(1/21-23)、機械力學二下(1/23-24)等課程，名單於附件公告於重補修專區，請同學前往察看，準時上課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8083" target="_self"  title="113(1)重補修:114/2/8(六)新開課程:電子學等課程，名單公告如附件，請同學準時上課。欲加選請洽教務處實研組。"> 113(1)重補修:114/2/8(六)新開課程:電子學等課程，名單公告如附件，請同學準時上課。欲加選請洽教務處實研組。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=8096" target="_self"  title="113(1)重補修:114/2/8(六)新開課程:電子學二下課程，名單公告如附件，請同學準時上課。"> 113(1)重補修:114/2/8(六)新開課程:電子學二下課程，名單公告如附件，請同學準時上課。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6776" target="_self"  title="※112學年度第二學期第1場次重補修課程規劃表暨相關開課公告"> ※112學年度第二學期第1場次重補修課程規劃表暨相關開課公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7193" target="_self"  title="※112學年度第二學期第2場次重補修課程規劃表暨相關開課公告"> ※112學年度第二學期第2場次重補修課程規劃表暨相關開課公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7288" target="_self"  title="※112學年第二學期第1場次(一、二上地理正式上課名單)重補修相關公告"> ※112學年第二學期第1場次(一、二上地理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7283" target="_self"  title="※112學年第二學期第1場次(二上機件原理正式上課名單)重補修相關公告"> ※112學年第二學期第1場次(二上機件原理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7284" target="_self"  title="※112學年第二學期第1場次(二上數學C(甲)正式上課名單)重補修相關公告"> ※112學年第二學期第1場次(二上數學C(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7286" target="_self"  title="※112學年第二學期第1場次(二上數學C(乙)正式上課名單)重補修相關公告"> ※112學年第二學期第1場次(二上數學C(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7289" target="_self"  title="※112學年第二學期第1場次(一、二上體育正式上課名單)重補修相關公告"> ※112學年第二學期第1場次(一、二上體育正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7290" target="_self"  title="※112學年第二學期第2場次(二上銑床實習、二上數值控制機械實習正式上課名單)重補修相關公告"> ※112學年第二學期第2場次(二上銑床實習、二上數值控制機械實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7280" target="_self"  title="112學年第二學期第1場次(二上數學B(乙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上數學B(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7279" target="_self"  title="112學年第二學期第1場次(二上數學B(甲)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上數學B(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7287" target="_self"  title="112學年第二學期第1場次(一上數學B(乙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上數學B(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7281" target="_self"  title="112學年第二學期第1場次(二上電工機械正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上電工機械正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7282" target="_self"  title="112學年第二學期第1場次(二上機械力學正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上機械力學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7277" target="_self"  title="112學年第二學期第1場次(電機科一上基本電學正式上課名單)重補修相關公告"> 112學年第二學期第1場次(電機科一上基本電學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7278" target="_self"  title="112學年第二學期第1場次(二上化學正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上化學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7276" target="_self"  title="112學年第二學期第1場次(一上健康與護理正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上健康與護理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7231" target="_self"  title="112學年第二學期第2場次(一上機械製圖實習、一上精密量測實習正式上課名單)重補修相關公告"> 112學年第二學期第2場次(一上機械製圖實習、一上精密量測實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7172" target="_self"  title="112學年第二學期第1場次(三上國語文+古今文選正式上課名單)重補修相關公告"> 112學年第二學期第1場次(三上國語文+古今文選正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7173" target="_self"  title="112學年第二學期第1場次(二上國語文(甲)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上國語文(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7174" target="_self"  title="112學年第二學期第1場次(二上國語文(乙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上國語文(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7139" target="_self"  title="112學年第二學期第1場次(三上英語文正式上課名單)重補修相關公告"> 112學年第二學期第1場次(三上英語文正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7071" target="_self"  title="112學年第二學期第1場次(一上數學C(甲)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上數學C(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7072" target="_self"  title="112學年第二學期第1場次(一上數學C(乙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上數學C(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7164" target="_self"  title="112學年第二學期第1場次(一、三上美術正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一、三上美術正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7165" target="_self"  title="112學年第二學期第1場次(一上機械製造正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上機械製造正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7168" target="_self"  title="112學年第二學期第1場次(二上食品檢驗分析正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上食品檢驗分析正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7111" target="_self"  title="112學年第二學期第1場次(三上機械材料正式上課名單)重補修相關公告"> 112學年第二學期第1場次(三上機械材料正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7070" target="_self"  title="112學年第二學期第1場次(一上閩南語文正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上閩南語文正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7074" target="_self"  title="112學年第二學期第1場次(二上食品加工正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上食品加工正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=7073" target="_self"  title="112學年第二學期第1場次(一上農業概論正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上農業概論正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6928" target="_self"  title="112學年第二學期第1場次(一上國語文+國文精讀(甲)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上國語文+國文精讀(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6929" target="_self"  title="112學年第二學期第1場次(一上國語文+國文精讀(乙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上國語文+國文精讀(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6930" target="_self"  title="112學年第二學期第1場次(一上國語文+國文精讀(丙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上國語文+國文精讀(丙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6934" target="_self"  title="112學年第二學期第1場次(一、二上藝術生活(乙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一、二上藝術生活(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6876" target="_self"  title="112學年第二學期第1場次(一上數學B(甲)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上數學B(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6877" target="_self"  title="112學年第二學期第1場次(一上物理正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上物理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6878" target="_self"  title="112學年第二學期第1場次(二上英語文(乙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上英語文(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6879" target="_self"  title="112學年第二學期第1場次(二上英語文(丙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上英語文(丙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6880" target="_self"  title="112學年第二學期第1場次(二上電子學正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上電子學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6834" target="_self"  title="112學年第二學期第1場次(二上英語文(甲)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上英語文(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6826" target="_self"  title="112學年第二學期第1場次(一、二上藝術生活(甲)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一、二上藝術生活(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6805" target="_self"  title="112學年第二學期第1場次(一上英語文(甲)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上英語文(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6806" target="_self"  title="112學年第二學期第1場次(一上英語文(乙)正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上英語文(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6808" target="_self"  title="112學年第二學期第1場次(一上電工大意正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上電工大意正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6807" target="_self"  title="112學年第二學期第1場次(一上基礎園藝正式上課名單)重補修相關公告"> 112學年第二學期第1場次(一上基礎園藝正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6809" target="_self"  title="112學年第二學期第1場次(二上食品微生物正式上課名單)重補修相關公告"> 112學年第二學期第1場次(二上食品微生物正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6810" target="_self"  title="112學年第二學期第1場次(三上數位邏輯正式上課名單)重補修相關公告"> 112學年第二學期第1場次(三上數位邏輯正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6772" target="_self"  title="112(2)第1場次重補修-校內繳費單公告"> 112(2)第1場次重補修-校內繳費單公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6040" target="_self"  title="112學年度第一學期第1場次重補修課程規劃表暨相關開課公告"> 112學年度第一學期第1場次重補修課程規劃表暨相關開課公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6407" target="_self"  title="112學年度第一學期第2場次(實習科目)重補修課程規劃表暨相關開課公告"> 112學年度第一學期第2場次(實習科目)重補修課程規劃表暨相關開課公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6437" target="_self"  title="112學年第一學期第1場次(一下數學B(甲)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下數學B(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6438" target="_self"  title="112學年第一學期第1場次(一下數學B(乙)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下數學B(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6455" target="_self"  title="112學年第一學期第2場次(一下機械製圖實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(一下機械製圖實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6448" target="_self"  title="112學年第一學期第2場次(二下機電整合實習、二下電子學實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(二下機電整合實習、二下電子學實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6444" target="_self"  title="112學年第一學期第2場次(一下引擎實習、二下電系實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(一下引擎實習、二下電系實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6449" target="_self"  title="112學年第一學期第2場次(二下電腦輔助製造實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(二下電腦輔助製造實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6443" target="_self"  title="112學年第一學期第2場次(一下基礎電學實習、一下電氣氣壓控制實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(一下基礎電學實習、一下電氣氣壓控制實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6446" target="_self"  title="112學年第一學期第2場次(一下植物栽培實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(一下植物栽培實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6442" target="_self"  title="112學年第一學期第2場次(一下電腦輔助設計實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(一下電腦輔助設計實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6445" target="_self"  title="112學年第一學期第2場次(一下機器腳踏車檢修實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(一下機器腳踏車檢修實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6451" target="_self"  title="112學年第一學期第2場次(二下植物識別實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(二下植物識別實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6450" target="_self"  title="112學年第一學期第2場次(二下綜合機械加工實習正式上課名單)重補修相關公告"> 112學年第一學期第2場次(二下綜合機械加工實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6411" target="_self"  title="112學年第一學期第1場次(二下國語文(甲)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(二下國語文(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6412" target="_self"  title="112學年第一學期第1場次(二下國語文(乙)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(二下國語文(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6312" target="_self"  title="112學年第一學期第1場次(二下機件原理正式上課名單)重補修相關公告"> 112學年第一學期第1場次(二下機件原理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6282" target="_self"  title="112學年第一學期第1場次(二下數學C正式上課名單)重補修相關公告"> 112學年第一學期第1場次(二下數學C正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6281" target="_self"  title="112學年第一學期第1場次(一下藝術生活正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下藝術生活正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6254" target="_self"  title="112學年第一學期第1場次(二下電子學(甲)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(二下電子學(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6255" target="_self"  title="112學年第一學期第1場次(二下電子學(乙)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(二下電子學(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6253" target="_self"  title="112學年第一學期第1場次(一下機械製造正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下機械製造正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6229" target="_self"  title="112學年第一學期第1場次(一下物理正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下物理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6230" target="_self"  title="112學年第一學期第1場次(二下機械力學正式上課名單)重補修相關公告"> 112學年第一學期第1場次(二下機械力學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6189" target="_self"  title="112學年第一學期第1場次(一下基本電學(甲)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下基本電學(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6190" target="_self"  title="112學年第一學期第1場次(一下基本電學(乙)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下基本電學(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6188" target="_self"  title="112學年第一學期第1場次(一下英語文(乙)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下英語文(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6171" target="_self"  title="112學年第一學期第1場次(一下底盤原理正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下底盤原理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6169" target="_self"  title="112學年第一學期第1場次(一下英語文(甲)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下英語文(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6170" target="_self"  title="112學年第一學期第1場次(二下英語文正式上課名單)重補修相關公告"> 112學年第一學期第1場次(二下英語文正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6072" target="_self"  title="112學年第一學期第1場次(一下國語文+國文精讀(甲)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下國語文+國文精讀(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6073" target="_self"  title="112學年第一學期第1場次(一下國語文+國文精讀(乙)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下國語文+國文精讀(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6052" target="_self"  title="112學年第一學期第1場次(一下數學C(甲)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下數學C(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6047" target="_self"  title="112學年第一學期第1場次(一下數學C(乙)正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下數學C(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=6045" target="_self"  title="112學年第一學期第1場次(一下分析化學正式上課名單)重補修相關公告"> 112學年第一學期第1場次(一下分析化學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5374" target="_self"  title="111學年度第二學期第三梯次((場次5)重補修課程規劃表暨相關開課公告"> 111學年度第二學期第三梯次((場次5)重補修課程規劃表暨相關開課公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5102" target="_self"  title="111學年度第二學期第二梯次((場次4)重補修課程規劃表暨相關開課公告"> 111學年度第二學期第二梯次((場次4)重補修課程規劃表暨相關開課公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5573" target="_self"  title="111學年第二學期第二梯次(一上物理正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上物理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5574" target="_self"  title="111學年第二學期第二梯次(一上數學C(乙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上數學C(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5575" target="_self"  title="111學年第二學期第二梯次(一上數學C(丁)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上數學C(丁)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5576" target="_self"  title="111學年第二學期第二梯次(一上數學B(乙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上數學B(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5577" target="_self"  title="111學年第二學期第二梯次(一上英語文(甲)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上英語文(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5593" target="_self"  title="111學年第二學期第三梯次(一上、二上機械製圖實習正式上課名單)重補修相關公告"> 111學年第二學期第三梯次(一上、二上機械製圖實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5594" target="_self"  title="111學年第二學期第三梯次(一上精密量測實習暨二上、三上電腦輔助製圖與實習正式上課名單)重補修相關公告"> 111學年第二學期第三梯次(一上精密量測實習暨二上、三上電腦輔助製圖與實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5595" target="_self"  title="111學年第二學期第三梯次(二上數值控制機械實習暨三上專題實作正式上課名單)重補修相關公告"> 111學年第二學期第三梯次(二上數值控制機械實習暨三上專題實作正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5596" target="_self"  title="111學年第二學期第三梯次(一上氣油壓控制實習正式上課名單)重補修相關公告"> 111學年第二學期第三梯次(一上氣油壓控制實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5341" target="_self"  title="111學年第二學期第二梯次(一上數學B(甲)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上數學B(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5342" target="_self"  title="111學年第二學期第二梯次(二上電子學(甲)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(二上電子學(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5343" target="_self"  title="111學年第二學期第二梯次(二上電子學(乙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(二上電子學(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5344" target="_self"  title="111學年第二學期第二梯次(二上機械力學正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(二上機械力學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5436" target="_self"  title="111學年第二學期第三梯次(一上烘焙食品加工實習正式上課名單)重補修相關公告"> 111學年第二學期第三梯次(一上烘焙食品加工實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5433" target="_self"  title="111學年第二學期第三梯次(一上機械工作法及實習正式上課名單)重補修相關公告"> 111學年第二學期第三梯次(一上機械工作法及實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5180" target="_self"  title="111學年第二學期第二梯次(一上歷史正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上歷史正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5474" target="_self"  title="111學年第二學期第二梯次(二上英語文(甲)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(二上英語文(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5475" target="_self"  title="111學年第二學期第二梯次(二上英語文(乙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(二上英語文(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5298" target="_self"  title="111學年第二學期第二梯次(一上生涯規劃正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上生涯規劃正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5434" target="_self"  title="111學年第二學期第三梯次(一上機械基礎實習(甲)正式上課名單)重補修相關公告"> 111學年第二學期第三梯次(一上機械基礎實習(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5435" target="_self"  title="111學年第二學期第三梯次(一上機械基礎實習(乙)正式上課名單)重補修相關公告"> 111學年第二學期第三梯次(一上機械基礎實習(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5425" target="_self"  title="111學年第二學期第二梯次(二上國語文(甲)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(二上國語文(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5424" target="_self"  title="111學年第二學期第二梯次(二上國語文(乙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(二上國語文(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5245" target="_self"  title="111學年第二學期第二梯次(二上數學C正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(二上數學C正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5376" target="_self"  title="111學年第二學期第二梯次(一上機器腳踏車基礎實習正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上機器腳踏車基礎實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5340" target="_self"  title="111學年第二學期第二梯次(一上分析化學正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上分析化學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5377" target="_self"  title="111學年第二學期第二梯次(一上植物栽培實習、三上專題實作正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上植物栽培實習、三上專題實作正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5179" target="_self"  title="111學年第二學期第二梯次(一上、二上公民與社會正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上、二上公民與社會正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5246" target="_self"  title="111學年第二學期第二梯次(一上國語文與國文精讀(甲)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上國語文與國文精讀(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5243" target="_self"  title="111學年第二學期第二梯次(一上國語文與國文精讀(乙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上國語文與國文精讀(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5244" target="_self"  title="111學年第二學期第二梯次(一上國語文與國文精讀(丙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上國語文與國文精讀(丙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5217" target="_self"  title="111學年第二學期第二梯次(一上英語文(丙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上英語文(丙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5218" target="_self"  title="111學年第二學期第二梯次(一上機械製造正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上機械製造正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5219" target="_self"  title="111學年第二學期第二梯次(一上引擎原理正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上引擎原理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5176" target="_self"  title="111學年第二學期第二梯次(一上英語文(乙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上英語文(乙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5177" target="_self"  title="111學年第二學期第二梯次(一上英語文(丁)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上英語文(丁)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5178" target="_self"  title="111學年第二學期第二梯次(一上生物正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上生物正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5181" target="_self"  title="111學年第二學期第二梯次(一上基本電學正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上基本電學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5157" target="_self"  title="111學年第二學期第二梯次(一上全民國防教育正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上全民國防教育正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5131" target="_self"  title="111學年第二學期第二梯次(一上數學C(甲)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上數學C(甲)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5132" target="_self"  title="111學年第二學期第二梯次(一上數學C(丙)正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上數學C(丙)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5133" target="_self"  title="111學年第二學期第二梯次(一上農業概論正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上農業概論正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5127" target="_self"  title="111學年第二學期第一梯次(一下數學B正式上課名單)重補修相關公告"> 111學年第二學期第一梯次(一下數學B正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4963" target="_self"  title="111學年第二學期第一梯次重補修課程規劃表暨相關開課公告"> 111學年第二學期第一梯次重補修課程規劃表暨相關開課公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5101" target="_self"  title="111學年第二學期第二梯次(一上藝術生活正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上藝術生活正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5052" target="_self"  title="111學年第二學期第二梯次(一上農為安全衛生正式上課名單)重補修相關公告"> 111學年第二學期第二梯次(一上農為安全衛生正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5011" target="_self"  title="111學年第二學期第一梯次(一下生物正式上課名單)重補修相關公告"> 111學年第二學期第一梯次(一下生物正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5010" target="_self"  title="111學年第二學期第一梯次(二下機件原理正式上課名單)重補修相關公告"> 111學年第二學期第一梯次(二下機件原理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=5009" target="_self"  title="111學年第二學期第一梯次(一下健康與護理正式上課名單)重補修相關公告"> 111學年第二學期第一梯次(一下健康與護理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4986" target="_self"  title="111學年第二學期第一梯次(一下藝術生活正式上課名單)重補修相關公告"> 111學年第二學期第一梯次(一下藝術生活正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4987" target="_self"  title="111學年第二學期第一梯次(二下化學正式上課名單)重補修相關公告"> 111學年第二學期第一梯次(二下化學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4833" target="_self"  title="111學年第一學期(寒假)第一、二梯次重補修課程規劃表暨相關開課公告"> 111學年第一學期(寒假)第一、二梯次重補修課程規劃表暨相關開課公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4835" target="_self"  title="111學年第一學期第二梯次(二下機電整合實習正式上課名單)重補修相關公告"> 111學年第一學期第二梯次(二下機電整合實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4836" target="_self"  title="111學年第一學期第二梯次(二下電腦輔助繪圖與進階實習、二下機械製圖實習正式上課名單)重補修相關公告"> 111學年第一學期第二梯次(二下電腦輔助繪圖與進階實習、二下機械製圖實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4837" target="_self"  title="111學年第一學期第二梯次(一下電腦輔助設計實習、二下綜合機械加工實習正式上課名單)重補修相關公告"> 111學年第一學期第二梯次(一下電腦輔助設計實習、二下綜合機械加工實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4838" target="_self"  title="111學年第一學期第二梯次(一下引擎實習正式上課名單)重補修相關公告"> 111學年第一學期第二梯次(一下引擎實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4839" target="_self"  title="111學年第一學期第二梯次(一下機器腳踏車檢修實習正式上課名單)重補修相關公告"> 111學年第一學期第二梯次(一下機器腳踏車檢修實習正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4840" target="_self"  title="111學年第一學期第二梯次(一下分析化學、二下食品檢驗分析正式上課名單)重補修相關公告"> 111學年第一學期第二梯次(一下分析化學、二下食品檢驗分析正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4768" target="_self"  title="111學年第一學期第一梯次(一下物理(A)正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(一下物理(A)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4815" target="_self"  title="111學年第一學期第一梯次(一下地理正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(一下地理正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4606" target="_self"  title="111學年第一學期第一梯次重補修課程規劃表(更新)暨相關開課公告"> 111學年第一學期第一梯次重補修課程規劃表(更新)暨相關開課公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4751" target="_self"  title="111學年第一學期第一梯次(二下機械力學正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(二下機械力學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4703" target="_self"  title="111學年第一學期第一梯次(一下地理)重補修"> 111學年第一學期第一梯次(一下地理)重補修</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4698" target="_self"  title="111學年第一學期第一梯次(二下食品微生物正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(二下食品微生物正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4697" target="_self"  title="111學年第一學期第一梯次(一下機械製造正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(一下機械製造正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4695" target="_self"  title="111學年第一學期第一梯次(一下基本電學正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(一下基本電學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4694" target="_self"  title="111學年第一學期第一梯次(一下物理(B)正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(一下物理(B)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4657" target="_self"  title="111學年第一學期第一梯次(一下數學(B)正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(一下數學(B)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4536" target="_self"  title="111學年第一學期第一梯次(二下數學正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(二下數學正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4640" target="_self"  title="111學年第一學期第一梯次(二下電子學)重補修相關公告"> 111學年第一學期第一梯次(二下電子學)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4634" target="_self"  title="111學年第一學期第一梯次(二下英語文正式上課名單)重補修相關公告(線上課程)"> 111學年第一學期第一梯次(二下英語文正式上課名單)重補修相關公告(線上課程)</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4635" target="_self"  title="111學年第一學期第一梯次(一下物理(A))重補修相關公告(延至寒假辦理)"> 111學年第一學期第一梯次(一下物理(A))重補修相關公告(延至寒假辦理)</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4581" target="_self"  title="111學年第一學期第一梯次(一下數學(A)正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(一下數學(A)正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4580" target="_self"  title="111學年第一學期第一梯次(二下國語文正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(二下國語文正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4492" target="_self"  title="111學年第一學期第一梯次(一下英語文正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(一下英語文正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4491" target="_self"  title="111學年第一學期第一梯次(一下國語文正式上課名單)重補修相關公告"> 111學年第一學期第一梯次(一下國語文正式上課名單)重補修相關公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4461" target="_self"  title="111學年第一學期第一梯次重補修公告"> 111學年第一學期第一梯次重補修公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4462" target="_self"  title="111學年第一學期第一梯次重補修繳費注意事項"> 111學年第一學期第一梯次重補修繳費注意事項</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4463" target="_self"  title="111學年第一學期第一梯次重補修課程規劃表暨重補修調查參加名單公告"> 111學年第一學期第一梯次重補修課程規劃表暨重補修調查參加名單公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3629" target="_self"  title="110-2-1重補修繳費注意事項"> 110-2-1重補修繳費注意事項</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3630" target="_self"  title="110-2-1重補修事項通告"> 110-2-1重補修事項通告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3663" target="_self"  title="110-2-1重補修課程規劃表（含增開科目及線上課程科目）"> 110-2-1重補修課程規劃表（含增開科目及線上課程科目）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3664" target="_self"  title="110-2-1重補修課程上課時間，二上數學（A）（B）、三上英語文"> 110-2-1重補修課程上課時間，二上數學（A）（B）、三上英語文</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3687" target="_self"  title="110-2-1重補修課程上課時間，一上國語文（A）（B）"> 110-2-1重補修課程上課時間，一上國語文（A）（B）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3697" target="_self"  title="110-2-1重補修課程上課時間，二上國語文（A）（B）"> 110-2-1重補修課程上課時間，二上國語文（A）（B）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3735" target="_self"  title="110-2-1重補修課程上課時間，一上英語文（A）"> 110-2-1重補修課程上課時間，一上英語文（A）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3774" target="_self"  title="110-2-1重補修課程上課時間，三上英語文"> 110-2-1重補修課程上課時間，三上英語文</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3777" target="_self"  title="110-2-1重補修課程上課時間，一上英語文（B）（線上課程）"> 110-2-1重補修課程上課時間，一上英語文（B）（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3780" target="_self"  title="110-2-1重補修課程上課時間，二上英語文（線上課程）"> 110-2-1重補修課程上課時間，二上英語文（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3786" target="_self"  title="110-2-1重補修課程上課時間，二上數學（A）（線上課程）"> 110-2-1重補修課程上課時間，二上數學（A）（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3953" target="_self"  title="110-2-1重補修課程上課時間，一上電工實習、一上資訊科技（線上課程）"> 110-2-1重補修課程上課時間，一上電工實習、一上資訊科技（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3972" target="_self"  title="110-2-1重補修課程上課時間，二上機械力學（線上課程）"> 110-2-1重補修課程上課時間，二上機械力學（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3967" target="_self"  title="110-2-1重補修課程上課時間，一上植物栽培實習（線上課程）"> 110-2-1重補修課程上課時間，一上植物栽培實習（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3968" target="_self"  title="110-2-1重補修課程上課時間，食品科專業及實習科目（線上課程）"> 110-2-1重補修課程上課時間，食品科專業及實習科目（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3964" target="_self"  title="110-2-1重補修課程上課時間，一上烘焙食品加工實習（線上課程）"> 110-2-1重補修課程上課時間，一上烘焙食品加工實習（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3973" target="_self"  title="110-2-1重補修課程上課時間，一上二上物理（線上課程）"> 110-2-1重補修課程上課時間，一上二上物理（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3974" target="_self"  title="110-2-1重補修課程上課時間，一上國文精讀（A）班（線上課程）"> 110-2-1重補修課程上課時間，一上國文精讀（A）班（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3975" target="_self"  title="110-2-1重補修課程上課時間，一上生涯規劃（線上課程）"> 110-2-1重補修課程上課時間，一上生涯規劃（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4015" target="_self"  title="110-2-1重補修課程上課時間，一上基本電學（線上課程）"> 110-2-1重補修課程上課時間，一上基本電學（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4016" target="_self"  title="110-2-1重補修課程上課時間，二上機件原理（線上課程）"> 110-2-1重補修課程上課時間，二上機件原理（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4018" target="_self"  title="110-2-1重補修課程上課時間，一上國文精讀（B）線上課程"> 110-2-1重補修課程上課時間，一上國文精讀（B）線上課程</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4019" target="_self"  title="110-2-1重補修課程上課時間，一上機械基礎實習、加工實習、機械科實習科目"> 110-2-1重補修課程上課時間，一上機械基礎實習、加工實習、機械科實習科目</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4020" target="_self"  title="110-2-1重補修課程上課時間，一上健康與護理"> 110-2-1重補修課程上課時間，一上健康與護理</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4050" target="_self"  title="110-2-1重補修課程上課時間，一上機械製造（線上課程）"> 110-2-1重補修課程上課時間，一上機械製造（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4051" target="_self"  title="110-2-1重補修課程上課時間，一上引擎原理（線上課程）"> 110-2-1重補修課程上課時間，一上引擎原理（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4052" target="_self"  title="110-2-1重補修課程上課時間，一上地理（線上課程）"> 110-2-1重補修課程上課時間，一上地理（線上課程）</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4074" target="_self"  title="110-2-1重補修課程上課時間，一上數學（A）（線上課程）-汽車、電機、生機科、體育"> 110-2-1重補修課程上課時間，一上數學（A）（線上課程）-汽車、電機、生機科、體育</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4075" target="_self"  title="110-2-1重補修課程上課時間，一上數學（B）（線上課程）-機械科"> 110-2-1重補修課程上課時間，一上數學（B）（線上課程）-機械科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=4077" target="_self"  title="110-2-1重補修課程上課時間，一上數學-食品、園藝科"> 110-2-1重補修課程上課時間，一上數學-食品、園藝科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3453" target="_self"  title="110-1-2寒假重補修課程規劃表"> 110-1-2寒假重補修課程規劃表</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3454" target="_self"  title="110-1-2寒假重補修課程上課時間，電機科實習科目、生機科實習科目、機械科實習科目"> 110-1-2寒假重補修課程上課時間，電機科實習科目、生機科實習科目、機械科實習科目</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=2089" target="_self"  title="110-1-1重補修課程規劃表、上課時間及注意事項"> 110-1-1重補修課程規劃表、上課時間及注意事項</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3202" target="_self"  title="110-1-1重補修課程上課時間及上課名單，一下國語文A班、B班"> 110-1-1重補修課程上課時間及上課名單，一下國語文A班、B班</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3228" target="_self"  title="110-1-1重補修課程上課時間及上課名單，二下英語文A班、B班"> 110-1-1重補修課程上課時間及上課名單，二下英語文A班、B班</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3229" target="_self"  title="110-1-1重補修課程上課名單-一下美術"> 110-1-1重補修課程上課名單-一下美術</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3246" target="_self"  title="110-1-1重補修課程上課時間及上課名單，一下英語文A班、B班"> 110-1-1重補修課程上課時間及上課名單，一下英語文A班、B班</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3266" target="_self"  title="110-1-1重補修課程上課時間及上課名單，一下數學A班、B班、二下數學"> 110-1-1重補修課程上課時間及上課名單，一下數學A班、B班、二下數學</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930&nsn=3313" target="_self"  title="110-1-1重補修課程上課名單-一下生涯規劃、一下國文精讀、一下基本電學、一下機件原理、一下機械力學、二下國語文、一下分析化學"> 110-1-1重補修課程上課名單-一下生涯規劃、一下國文精讀、一下基本電學、一下機件原理、一下機械力學、二下國語文、一下分析化學</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" > 競賽成果/優良事蹟</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=928" target="_self"  title="競賽成果"> 競賽成果</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=931" target="_self"  title="優良事蹟"> 優良事蹟</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" > 行政單位</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=7" target="_blank" title="開新視窗並連至校長室" title="校長室"> 校長室</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=4" target="_blank" title="開新視窗並連至教務處" title="教務處"> 教務處</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=8" target="_blank" title="開新視窗並連至學務處" title="學務處"> 學務處</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=10" target="_blank" title="開新視窗並連至總務處" title="總務處"> 總務處</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=37" target="_blank" title="開新視窗並連至實習處" title="實習處"> 實習處</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=12" target="_blank" title="開新視窗並連至輔導室" title="輔導室"> 輔導室</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=13" target="_blank" title="開新視窗並連至圖書館" title="圖書館"> 圖書館</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=9" target="_blank" title="開新視窗並連至教官室" title="教官室"> 教官室</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=14" target="_blank" title="開新視窗並連至人事室" title="人事室"> 人事室</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/news.php?WebID=15" target="_blank" title="開新視窗並連至主計室" title="主計室"> 主計室</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" > 教學單位</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=18" target="_blank" title="開新視窗並連至電機科" title="電機科"> 電機科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="modules/tad_web/index.php?WebID=19" target="_blank" title="開新視窗並連至機械科" title="機械科"> 機械科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="modules/tad_web/index.php?WebID=20" target="_blank" title="開新視窗並連至汽車科" title="汽車科"> 汽車科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="modules/tad_web/index.php?WebID=22" target="_blank" title="開新視窗並連至生物產業機電科" title="生物產業機電科"> 生物產業機電科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="modules/tad_web/index.php?WebID=21" target="_blank" title="開新視窗並連至食品加工科" title="食品加工科"> 食品加工科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="modules/tad_web/index.php?WebID=23" target="_blank" title="開新視窗並連至園藝科" title="園藝科"> 園藝科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=11" target="_blank" title="開新視窗並連至機車修護科(實技班)" title="機車修護科(實技班)"> 機車修護科(實技班)</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=36" target="_blank" title="開新視窗並連至體育班" title="體育班"> 體育班</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=24" target="_blank" title="開新視窗並連至餐飲服務科" title="餐飲服務科"> 餐飲服務科</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" > 共同科目</a>
+                                    <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=39" target="_blank" title="開新視窗並連至國文科" title="國文科"> 國文科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=25" target="_blank" title="開新視窗並連至英文科" title="英文科"> 英文科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=38" target="_blank" title="開新視窗並連至數理科" title="數理科"> 數理科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=26" target="_blank" title="開新視窗並連至社會科" title="社會科"> 社會科</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=27" target="_blank" title="開新視窗並連至藝能科" title="藝能科"> 藝能科</a>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914" target="_self" > 資安平台</a>
+                                    <ul class="dropdown-menu">
+                    <li class="dropdown">
+                <a class="dropdown-item dropdown-toggle" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914" target="_self"  title="資通安全服務"> 資通安全服務</a>
+                                                            <ul class="dropdown-menu">
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=10323" target="_self"  title="校務行政系統帳號密碼及個人資料安全宣導"> 校務行政系統帳號密碼及個人資料安全宣導</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=10131" target="_self"  title="重申公務用之資通訊產品不得使用大陸廠牌，且不得安裝非公務用軟體"> 重申公務用之資通訊產品不得使用大陸廠牌，且不得安裝非公務用軟體</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=10020" target="_self"  title="115年度資通安全教育訓練線上研習課程"> 115年度資通安全教育訓練線上研習課程</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=9892" target="_self"  title="資通安全異動申請相關表件"> 資通安全異動申請相關表件</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=7516" target="_self"  title="禁用陸牌軟體Apabi Reader"> 禁用陸牌軟體Apabi Reader</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=4664" target="_self"  title="函轉數位發展部修正「各機關對危害國家資通安全產品限 制使用原則」第三點、第四點、第五點，並自即日生效， 請查照並轉知所屬。"> 函轉數位發展部修正「各機關對危害國家資通安全產品限 制使用原則」第三點、第四點、第五點，並自即日生效， 請查照並轉知所屬。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=4658" target="_self"  title="轉知修正「各機關資通安全事件通報及應變處理作業程序」第三點，並自即日生效，請查照並轉知所屬-函。"> 轉知修正「各機關資通安全事件通報及應變處理作業程序」第三點，並自即日生效，請查照並轉知所屬-函。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=5903" target="_self"  title="辦理新進人員資安宣導相關事宜"> 辦理新進人員資安宣導相關事宜</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=5852" target="_self"  title="資通安全宣導"> 資通安全宣導</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=4805" target="_self"  title="數位發展部資通安全署函有關修正資通安全專業證照清單及資通安全專業證照認可審查作業流程"> 數位發展部資通安全署函有關修正資通安全專業證照清單及資通安全專業證照認可審查作業流程</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=4882" target="_self"  title="加強落實資通系統及資料庫主機資通安全及資料備份作業"> 加強落實資通系統及資料庫主機資通安全及資料備份作業</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=4573" target="_self"  title="111年第1次政府資通安全防護巡迴研討會 數位課程"> 111年第1次政府資通安全防護巡迴研討會 數位課程</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=4663" target="_self"  title="函轉數位發展部修正「各機關資通訊應用管理要點」，並溯自中華民國111年11月25日生效。"> 函轉數位發展部修正「各機關資通訊應用管理要點」，並溯自中華民國111年11月25日生效。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=6497" target="_self"  title="「資訊安全防護」之宣導資料"> 「資訊安全防護」之宣導資料</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=5394" target="_self"  title="教育部「先進資通安全實務人才培育計畫-高中職資安教學資源與推廣中心計畫」"> 教育部「先進資通安全實務人才培育計畫-高中職資安教學資源與推廣中心計畫」</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=5686" target="_self"  title="轉知衛生福利部為落實個資保護，維護民眾權益，重申須落實防疫個資管理稽核並進行宣導"> 轉知衛生福利部為落實個資保護，維護民眾權益，重申須落實防疫個資管理稽核並進行宣導</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=5830" target="_self"  title="政府機關資通安全防護精進建議"> 政府機關資通安全防護精進建議</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=5930" target="_self"  title="轉知數位發展部修正之「政府網站服務管理規範」，提供機關開發網站之遵循依據，並請主動檢視網站易用及安全性"> 轉知數位發展部修正之「政府網站服務管理規範」，提供機關開發網站之遵循依據，並請主動檢視網站易用及安全性</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=6210" target="_self"  title="國立民雄高級農工職業學校資訊設備及網路使用宣導"> 國立民雄高級農工職業學校資訊設備及網路使用宣導</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=6260" target="_self"  title="「學校使用資通系統或服務蒐集及使用個人資料注意事項」"> 「學校使用資通系統或服務蒐集及使用個人資料注意事項」</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=6377" target="_self"  title="112年下半年國立高級中等以下學校及特定非公務機關防範惡意電子郵件社交工程演練結果報告(附件1)"> 112年下半年國立高級中等以下學校及特定非公務機關防範惡意電子郵件社交工程演練結果報告(附件1)</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=6498" target="_self"  title="為防範詐騙及網路釣魚信件，教育部及校園雲端電子郵件服務系統已啟用SPF驗證檢查，請查照。"> 為防範詐騙及網路釣魚信件，教育部及校園雲端電子郵件服務系統已啟用SPF驗證檢查，請查照。</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=6523" target="_self"  title="更正「112年下半年國立高級中等以下學校及特定非公務機關防範惡意電子郵件社交工程演練結果報告」"> 更正「112年下半年國立高級中等以下學校及特定非公務機關防範惡意電子郵件社交工程演練結果報告」</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=6583" target="_self"  title="113.02.22轉貼教育部學術網路TANet網路維運中心公告"> 113.02.22轉貼教育部學術網路TANet網路維運中心公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=6584" target="_self"  title="轉貼教育部學術網路TANet網路維運中心公告"> 轉貼教育部學術網路TANet網路維運中心公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=6684" target="_self"  title="【國教署電子郵件系統向上集中】重要通知-本計畫將進行「電子郵件社交工程演練」"> 【國教署電子郵件系統向上集中】重要通知-本計畫將進行「電子郵件社交工程演練」</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=7039" target="_self"  title="轉知-社交工程防範與校園資安實務"> 轉知-社交工程防範與校園資安實務</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=7483" target="_self"  title="資通安全事件之通報應變處理相關注意事項"> 資通安全事件之通報應變處理相關注意事項</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=7484" target="_self"  title="部分學校教師不當引用宣導說明會疑似抄襲宣導案例"> 部分學校教師不當引用宣導說明會疑似抄襲宣導案例</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=7713" target="_self"  title="公務信箱使用宣導及安全管理指引"> 公務信箱使用宣導及安全管理指引</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=7865" target="_self"  title="各級學校使用資通系統或服務蒐集及使用個人資料注意事項"> 各級學校使用資通系統或服務蒐集及使用個人資料注意事項</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=7910" target="_self"  title="數位發展部「電子簽章法釋疑與應用參考指引」"> 數位發展部「電子簽章法釋疑與應用參考指引」</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=8054" target="_self"  title="「個人資料保護法部 分條文」修正草案預告公告"> 「個人資料保護法部 分條文」修正草案預告公告</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=8136" target="_self"  title="修正「學校使用資通系統或服務蒐集及使用個人資料 指引」及「學校使用生物特徵辨識技術個人資料保護指 引」"> 修正「學校使用資通系統或服務蒐集及使用個人資料 指引」及「學校使用生物特徵辨識技術個人資料保護指 引」</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=8352" target="_self"  title="為因應新型態數位服務延伸之新興資安風險，請遵循「各機關對危害國家資通安全產品限制使用原則」"> 為因應新型態數位服務延伸之新興資安風險，請遵循「各機關對危害國家資通安全產品限制使用原則」</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=4428" target="_self"  title="111 年教育體系資安專業課程訓練第3 梯次"> 111 年教育體系資安專業課程訓練第3 梯次</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=1596" target="_self"  title="國立民雄農工資通安全保密切結書"> 國立民雄農工資通安全保密切結書</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=1597" target="_self"  title="國立民雄農工人員資訊安全守則"> 國立民雄農工人員資訊安全守則</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=1716" target="_self"  title="資通安全平台"> 資通安全平台</a>
+                            </li>
+                    <li>
+                <a class="dropdown-item " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=914&nsn=2102" target="_self"  title="轉知恪遵資通安全管理法暨個人資料保護法等相關規定 "> 轉知恪遵資通安全管理法暨個人資料保護法等相關規定 </a>
+                            </li>
+            </ul>
+                            </li>
+            </ul>
+            </li>
+    <li class="nav-item ">
+        <a class="nav-link " href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=925" target="_self" > 內部控制</a>
+            </li>
+    <li class="nav-item ">
+        <a class="nav-link " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=53" target="_blank" title="開新視窗並連至職業安全與衛生"> 職業安全與衛生</a>
+            </li>
+    <li class="nav-item ">
+        <a class="nav-link " href="https://www.mhvs.cyc.edu.tw/modules/tad_web/news.php?WebID=50" target="_blank" title="開新視窗並連至交通安全"> 交通安全</a>
+            </li>
+            </ul>
+
+            <!-- Right nav -->
+            <ul class="nav navbar-nav">
+                
+                                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle">
+                        登入                        </a>
+                            <ul class="dropdown-menu">
+
+            <li class="nav-item">
+            <form action="https://www.mhvs.cyc.edu.tw/user.php" method="post">
+                <fieldset style="min-width: 200px; margin: 10px;">
+                    <legend>
+                    登入                    </legend>
+                                        <div class="form-group row row">
+                    <label class="col-md-4 col-form-label text-sm-right text-sm-end" for="uname">
+                        帳號
+                    </label>
+                    <div class="col-md-8">
+                        <input type="text" name="uname"  id="uname" placeholder="請輸入帳號"  class="form-control">
+                    </div>
+                    </div>
+
+                    <div class="form-group row row">
+                    <label class="col-md-4 col-form-label text-sm-right text-sm-end" for="pass">
+                        密碼
+                    </label>
+                    <div class="col-md-8">
+                    <input type="password" name="pass" id="pass" placeholder="請輸入密碼" class="form-control">
+                    </div>
+                    </div>
+
+                    <div class="form-group row row">
+                    <label class="col-md-4 col-form-label text-sm-right text-sm-end">
+                    </label>
+                    <div class="col-md-8">
+
+                                                                        <input type="hidden" name="xoops_redirect" value="/modules/tadnews/index.php?tag_sn=1">
+                        <input type="hidden" name="rememberme" value="On">
+                        <input type="hidden" name="op" value="login">
+                        <input type="hidden" name="xoops_login" value="1">
+                        <button type="submit" class="btn btn-primary btn-block">登入</button>
+                    </div>
+                    </div>
+
+                                    </fieldset>
+            </form>
+        </li>
+            <li class="nav-item">
+                    </li>
+    </ul>
+                    </li>
+                            </ul>
+        </div>
+    </nav>
+
+            <script type="text/javascript" src="https://www.mhvs.cyc.edu.tw/modules/tadtools/jquery.sticky/jquery.sticky.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $("#nav-container").sticky({topSpacing:0 , zIndex: 100});
+        });
+        </script>
+                </div>
+        </div>
+    </div>
+</div>        
+        <!-- 主內容區域 -->
+        <div class="container" id="content-container">
+            <div id="xoops_theme_content" class="row xoops_content_shadow">
+                <div id="content-container-display" style="background-color:#ffffff;" class="col-sm-12">
+                    <!-- 載入布局 -->
+                    <div id="xoops_theme_content_zone" class="row" style="background-color:#ffffff;">
+            <!-- 若是有左、右區塊 -->
+
+        <div id="xoops_theme_center_zone" class="col-xl-7 order-lg-2" style="">
+            <a accesskey="C" href="#xoops_theme_center_zone" title="主內容區（包含中間區塊及主內容）" id="xoops_theme_center_zone_key" class="sr-only-focusable" aria-label="跳到主內容區">:::</a>
+<div id="xoops_theme_center" style="">
+        <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+
+        <div id="xoops_contents">
+        
+        <nav class='toolbar_bootstrap_nav'>
+            <ul>
+            <li class='current' title='本站消息'><a href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php' ><i class='fa fa-home'></i> 本站消息</a></li>
+            </ul>
+        </nav>
+<!--TadNews Start-->
+<div style="margin-bottom: 30px;">
+    
+</div>
+
+<h2 class="sr-only visually-hidden">文章列表</h2>
+    <table class="table table-striped table-hover table-shadow">
+        <tbody>
+                                        <tr>
+                    <td>
+                        
+                        2026-10-27
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        <img src='https://www.mhvs.cyc.edu.tw/modules/tadnews/images/today.gif' alt='今日文章' title='今日文章' hspace=3 align='absmiddle'>
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11007">全國技能競賽青年組「建築舖面」、「配管與暖氣」、「門窗木工」、「麵包製作」、「3D數位遊戲藝術」、「雲端運算」及「旅館接待」等7職類裁判長公開遴選</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=44">實習組長</a> / 6 / <a href="index.php?ncsn=881">-實習處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11006">2026全國智慧科技創客挑戰賽報名資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 26 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11005">2026求真盃全國高中商管個案競賽報名資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 27 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11004">2026全國智慧型自走車競賽報名資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 27 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11003">紡織成衣產業探索營報名資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 28 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11002">文化任意門線上講座報名資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 29 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11001">2026萬能盃冬季全國高校生死鬥報名資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 29 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11000">2026全國智慧科技創客挑戰賽報名資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 25 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10999">青年百億海外圓夢基金計畫成果展活動資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 26 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10998">全明星街球派對全齡選手挑戰賽報名資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 29 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10997">教育部115年度臺灣女孩日策展活動資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 28 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-24
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10996">教育部115年度臺灣女孩日策展活動資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 27 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-22
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10995">國教署「社會情緒學習（SEL）融入教師輔導管教及班級經營」種子導師招募，即日起受理申請</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=27">生輔組長</a> / 49 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-21
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10991">轉知:臺灣菸酒股份有限公司115年從業職員及從 業評價職位人員甄試招募資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=46">就輔組長</a> / 44 / <a href="index.php?ncsn=881">-實習處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-21
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10922">【班會主題】家庭倫理</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 93 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-20
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10989">停電通知</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=39">電氣技士</a> / 79 / <a href="index.php?ncsn=908">-總務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-20
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10988">「AIoT－硬體組裝與鏡頭生成式偵測研習」及「3D列印與 SketchUp 建模研習」</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=44">實習組長</a> / 57 / <a href="index.php?ncsn=881">-實習處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-20
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10987">「足球無人機組裝、飛行與程式設計實務 (第一梯)」活動</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=44">實習組長</a> / 59 / <a href="index.php?ncsn=881">-實習處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-20
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10986">農業經營準備金實務工作坊課程</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=44">實習組長</a> / 53 / <a href="index.php?ncsn=881">-實習處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-18
+
+                        <a class='badge' style='background-color: blue; font-weight: normal; color: white; text-shadow:none;' href='https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?tag_sn=1'>公告</a>
+                                                
+                        
+                        <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=10968">115年白色恐怖認識與踏查推廣研習，歡迎符合資格教師報名</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=25">訓育組長</a> / 59 / <a href="index.php?ncsn=878">-學務處-</a>)</span>
+                        
+                    </td>
+                </tr>
+                    </tbody>
+    </table>
+    
+                <div class='text-center'>
+                    <nav>
+                        <ul class='pagination justify-content-center flex-wrap'>
+                        <li class="page-item disabled"><a class="page-link disabled" href="#" aria-disabled="true" aria-label="回到第1頁"><span aria-hidden="true">&laquo;</span></a></li><li class="page-item disabled"><a class="page-link disabled" href="#" aria-disabled="true" aria-label="上一頁"><span aria-hidden="true">&lsaquo;</span></a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" title="第1頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=1">1<span class="sr-only">(目前頁次)</span></a></li><li class="page-item"><a class="page-link" title="第2頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=2">2</a></li><li class="page-item"><a class="page-link" title="第3頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=3">3</a></li><li class="page-item"><a class="page-link" title="第4頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=4">4</a></li><li class="page-item"><a class="page-link" title="第5頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=5">5</a></li><li class="page-item"><a class="page-link" title="第6頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=6">6</a></li><li class="page-item"><a class="page-link" title="第7頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=7">7</a></li><li class="page-item"><a class="page-link" title="第8頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=8">8</a></li><li class="page-item"><a class="page-link" title="第9頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=9">9</a></li><li class="page-item"><a class="page-link" title="第10頁" href="/modules/tadnews/index.php?tag_sn=1&g2p=10">10</a></li>
+                        <li class="page-item"><a class="page-link" href="/modules/tadnews/index.php?tag_sn=1&g2p=2"><span aria-hidden="true" aria-label="下一頁">&rsaquo;</span><span class="sr-only">下一頁</span></a></li><li class="page-item"><a class="page-link" href="/modules/tadnews/index.php?tag_sn=1&g2p=51"><span aria-hidden="true" aria-label="跳到最後一頁">&raquo;</span><span class="sr-only">最後頁</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+        <div class="text-right text-end" style="color: #B5C7BB; padding-bottom: 4px; ">
+        <img src="images/rss.svg" alt="RSS" class="img-fluid rss-icon">
+        <span style="border-bottom: 1px solid #B5C7BB;">
+            https://www.mhvs.cyc.edu.tw/modules/tadnews/rss.php        </span>
+    </div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+</script>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+</div>        </div>
+
+        <div id="xoops_theme_left_zone" class="col-lg order-lg-1" style="background-color:#ebfffe;">
+            <div id="xoops_theme_left" style="">
+                <a accesskey="L" href="#xoops_theme_left_zone"  id="xoops_theme_left_zone_key" class="sr-only-focusable" aria-label="跳到左邊區域">:::</a>
+                
+                        <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            常用連結
+                    </h3>
+                    <div class="blockContent">
+                    <table border="0" height="50" width="100%">
+	<tbody>
+		<tr>
+			<td width="25%">
+			<div align="center"><a href="https://mhvs-cyc.k12ea.gov.tw/SCH_UI/" rel="noopener noreferrer" target="_blank" title="另開新視窗">校務系統整合平台</a></div>
+
+			<div align="center"> </div>
+			</td>
+			<td width="25%">
+			<div align="center"><a _blank="" href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=1015">學雜費&amp;獎助學金</a></div>
+
+			<div align="center"> </div>
+			</td>
+			<td width="25%">
+			<div align="center"><a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?nsn=1930" rel="noopener noreferrer" target="_blank" title="另開新視窗">行事曆</a></div>
+
+			<div align="center"> </div>
+			</td>
+			<td width="25%">
+			<div align="center"><a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/page.php?ncsn=930" rel="noopener noreferrer" target="_blank" title="另開新視窗">重補修</a></div>
+
+			<div align="center"> </div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div align="center"><a href="https://pk12.cloudhr.tw/" rel="noopener noreferrer" target="_blank" title="另開新視窗">差勤系統</a></div>
+
+			<div align="center"> </div>
+			</td>
+			<td>
+			<div align="center"><a href="https://www.cloudop.tw///" rel="noopener noreferrer" target="_blank" title="另開新視窗">雲端公文</a></div>
+
+			<div align="center"> </div>
+			</td>
+			<td>
+			<div align="center"><a href="http://163.27.22.11/" rel="noopener noreferrer" target="_blank" title="另開新視窗">請購系統</a></div>
+
+			<div align="center"> </div>
+			</td>
+			<td>
+			<div align="center"><a href="http://lib.mhvs.cyc.edu.tw/webopac/" rel="noopener noreferrer" target="_blank" title="另開新視窗">圖書系統</a></div>
+
+			<div align="center"> </div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<div align="center"><a class="a_link" href="http://tv.mhvs.cyc.edu.tw" rel="noopener noreferrer" target="_blank" title="另開新視窗">數位教學電視平台</a></div>
+			</td>
+			<td>
+			<div align="center"><a href="https://Cloud.shin-her.com.tw/ClassTableV2?sc=a94e9c7fde85a2714ec63db363ec3632" rel="noopener noreferrer" target="_blank" title="另開新視窗">課表查詢</a></div>
+			</td>
+			<td style="text-align: center;"><a href="https://easytest.mhvs.cyc.edu.tw/" rel="noopener noreferrer" target="_blank" title="另開新視窗">英文單字測驗系統</a></td>
+			<td>
+			<table border="0" height="50" width="100%">
+				<tbody>
+					<tr>
+						<td style="text-align: center;"><a href="https://eipnsh.k12ea.gov.tw/" rel="noopener noreferrer" target="_blank" title="另開新視窗">新版請購系統</a></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+			<td style="text-align: center;"> </td>
+			<td>
+			<div align="center"> </div>
+			</td>
+		</tr>
+		<!-- 註記
+<tr>
+<td><div align="center"><a href="https://accounts.google.com/" target="_blank">Gmail登入</a></div></td>
+<td><div align="center"><a href="http://ise.mhvs.cyc.edu.tw/ise" target="_blank">校務評鑑系統</a></div></td>
+<td><div align="center"><a href="http://163.27.22.32/iSE/" target="_blank">校務評鑑系統</a></div></td>
+<td><div align="center"><a href="http://163.27.22.2/SCH_UI/" target="_blank">心輔管理系統(老師)</a></div></td>
+<td><div align="center"><a href="http://163.27.22.2/SCH_UI/" target="_blank">心理輔導系統(學生)</a></div></td>
+<td><div align="center"><a href="http://163.27.22.2/SCH_UI/" target="_blank">學生成績查詢</a></div></td>  
+</tr>
+<tr>
+<td><div align="center"><a href="http://163.27.22.2/SCH_UI/" target="_blank">學生選社系統</a></div></td>
+<td><div align="center"><a href="https://docs.google.com/forms/d/1oey1V71fUhdpmvdvbxbReaunlCfmi2M7mx324Zlp4aI/viewform?edit_requested=true" target="_blank">資訊報修單</a></div></td>
+</tr>
+-->
+	</tbody>
+</table>
+
+
+                </div>
+            </div>
+                                    </div>
+        </div>
+
+        <div id="xoops_theme_right_zone" class="col-lg order-lg-3" style="background-color:#ebfffe;">
+            <div id="xoops_theme_right"  style="">
+                <a accesskey="B"  tabindex="-1" href="#xoops_theme_right_zone" id="xoops_theme_right_zone_key" class="sr-only-focusable" aria-label="跳到右邊區域">:::</a>
+                	                    <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            主選單
+                    </h3>
+                    <div class="blockContent">
+                    <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="https://www.mhvs.cyc.edu.tw/modules/tadtools/css/vertical_menu.css">
+<ul class="vertical_menu">
+    <li >
+        <a href="https://www.mhvs.cyc.edu.tw/" title="首頁">
+            <i class="fa fa-home" aria-hidden="true"></i> 首頁
+        </a>
+    </li>
+                        <li class="selected">
+                <a href="https://www.mhvs.cyc.edu.tw/modules/tadnews/" title="本站消息">
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                本站消息
+                </a>
+            </li>
+                                                            <li >
+                <a href="https://www.mhvs.cyc.edu.tw/modules/tad_timeline/" title="重要紀事">
+                <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                重要紀事
+                </a>
+            </li>
+                                                    </ul>
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            民農FB粉絲團
+                    </h3>
+                    <div class="blockContent">
+                    <p><a href="https://www.facebook.com/mhvs.no.81" target="_blank"><img alt="民農FB粉絲團" src="https://www.mhvs.cyc.edu.tw/uploads/tad_blocks/image/mhvsfb.jpg" style="width: 165px; height: 165px;" /><span class="sr-only">link to https://www.facebook.com/mhvs.no.81 \</span></a></p>
+
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            民雄農工IG
+                    </h3>
+                    <div class="blockContent">
+                    <p><a href="https://www.instagram.com/mhvs_no.81/" target="_blank"><img alt="" src="https://www.mhvs.cyc.edu.tw/uploads/tad_blocks/image/mhvsig.jpg" style="width: 160px; height: 160px;" /><span class="sr-only">link to https://www.instagram.com/mhvs_no.81/ \</span></a></p>
+
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                    <div>
+        </div>
+                <div class="blockContent">
+                    <a href="#main-nav">
+    <img src="https://campus-xoops.tn.edu.tw/uploads/top.png" style="width: 64px; z-index: 100; position: fixed; right: 10px; bottom: 10px;" alt="回頂端" title="點我回到上方">
+</a>
+<script src="https://campus-xoops.tn.edu.tw/uploads/smooth-scroll.js"></script>
+
+                </div>
+            </div>
+                      </div>
+        </div>
+        <div style="clear: both;"></div>
+</div>
+
+                    <!-- 顯示參數，開發用，開發完可刪除 -->
+                                    </div>
+            </div>
+        </div>
+
+        <!-- 頁尾區域 -->
+        <div class="container" id="footer-container">
+            <div id="xoops_theme_footer" class="row ">
+                <div id="footer-container-display" class="col-sm-12">
+                    
+                    
+                    校安中心緊急專線(反霸凌專線)、性騷擾性侵害申訴：(05)2269885
+<P>
+學校地址：621013 嘉義縣民雄鄉文隆村81號
+<P>
+學校代表號：(05)2267120 統一編號：66022602
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!-- 載入自訂js -->
+                <script type="text/javascript">
+            $(document).ready(function(){
+                $("select[name='xoops_theme_select']").addClass("form-control");
+                $("input[name='query']").addClass("form-control");
+                $("input[name='uname']").addClass("form-control");
+                $("input[name='pass']").addClass("form-control");
+                $('iframe:not([title])').attr('title','iframe content');
+            });
+        </script>
+
+        
+            </body>
+</html>

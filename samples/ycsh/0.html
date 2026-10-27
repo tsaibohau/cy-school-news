@@ -1,0 +1,3110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+                <!--目前$_SESSION['bootstrap']="5"; -->
+        <!--將目前的資料夾名稱，設定為樣板標籤變數 theme_name-->
+                
+        <!-- theme_id= 2-->
+        
+
+                            
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        
+        <meta name="robots" content="index,follow">
+        <meta name="keywords" content="2026學習扶助成長測驗時間及學扶考古題">
+        <meta name="description" content="">
+        <meta name="rating" content="general">
+        <meta name="author" content="XOOPS">
+        <meta name="copyright" content="Copyright © 2001-2019">
+        <meta name="generator" content="XOOPS">
+        <meta property="og:title" content="2026學習扶助成長測驗時間及學扶考古題">
+        <meta property="og:type" content="website">
+
+
+        <meta property="og:image" content="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/logo/logo_2_3_d9c.png">
+        <meta property="og:site_name" content="嘉義縣永慶高中">
+        <!-- 網站的標題及標語 -->
+        <title>嘉義縣永慶高中 - 2026學習扶助成長測驗時間及學扶考古題</title>
+
+                <!-- Rss -->
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.ycsh.cyc.edu.tw/backend.php">
+        <!-- icon -->
+        <link href="https://www.ycsh.cyc.edu.tw/favicon.ico" rel="SHORTCUT ICON">
+        <!-- Sheet Css -->
+        <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="https://www.ycsh.cyc.edu.tw/xoops.css">
+        <!-- XOOPS theme Sheet Css -->
+        <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="https://www.ycsh.cyc.edu.tw/themes/school2022/css/xoops.css?t=20260423">
+        <link href="https://www.ycsh.cyc.edu.tw/modules/tadtools/bootstrap5/css/bootstrap.css" rel="stylesheet" media="all">
+        <!-- theme_color= bootstrap5 -->
+
+        <!-- Theme Sheet Css -->
+        <link rel="stylesheet" type="text/css" media="all" href="https://www.ycsh.cyc.edu.tw/themes/school2022/css/style.css">
+
+        <!-- 給模組套用的樣板標籤開始 -->
+        <script src="https://www.ycsh.cyc.edu.tw/browse.php?Frameworks/jquery/jquery.js" type="text/javascript"></script>
+<script src="https://www.ycsh.cyc.edu.tw/browse.php?Frameworks/jquery/plugins/jquery.ui.js" type="text/javascript"></script>
+<script src="https://www.ycsh.cyc.edu.tw/modules/tadtools/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script src="https://www.ycsh.cyc.edu.tw/include/xoops.js" type="text/javascript"></script>
+<script src="https://www.ycsh.cyc.edu.tw/themes/school2022/language/tchinese_utf8/script.js" type="text/javascript"></script>
+<script src="https://www.ycsh.cyc.edu.tw/modules/tadtools/colorbox/jquery.colorbox.js" type="text/javascript"></script>
+<script src="https://www.ycsh.cyc.edu.tw/modules/tadtools/prism/prism.js" type="text/javascript"></script>
+<script src="https://www.ycsh.cyc.edu.tw/modules/tadtools/fancyBox/lib/jquery.mousewheel.pack.js" type="text/javascript"></script>
+<script src="https://www.ycsh.cyc.edu.tw/modules/tadtools/fancyBox/source/jquery.fancybox.js?t=20260525" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+                jQuery(document).ready(function(){
+                    $('.fancybox_nsn').fancybox({
+                    
+                    fitToView : true,
+                    width   : '1920',
+                    height    : '1080',
+                    
+                    
+                    autoSize  : false,
+                    closeClick  : false,
+                    openEffect  : 'none',
+                    closeEffect : 'none'
+                    
+                    
+                    ,
+        beforeShow: function () {
+            // 將 data-alt 的內容設定到圖片的 alt 屬性
+            var alt = this.element.data('alt');
+            this.inner.find('img').attr('alt', alt);
+        },
+        afterShow: function () {
+            // 取得圖片說明文字：優先用 data-alt，其次用 title，最後用索引提示
+            var speakText = this.element.data('alt')
+                         || this.element.attr('title')
+                         || ('第 ' + ($.fancybox.current.index + 1) + ' 張，共 ' + $.fancybox.current.group.length + ' 張');
+
+            // 透過 Web Speech API 朗讀圖片說明
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                var utterance = new SpeechSynthesisUtterance(speakText);
+                utterance.lang = 'zh-TW';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+                    });
+                });
+            
+//]]></script>
+<script type="text/javascript" src="https://www.ycsh.cyc.edu.tw/class/textsanitizer/image/image.js"></script>
+<script src="https://www.ycsh.cyc.edu.tw/modules/tadtools/sweet-alert/sweetalert2.all.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+            function delete_tad_news_func(nsn){
+                swal.fire({
+                    title: '確定要刪除此資料？',
+                    text: '相關資料通通都將會被移除！',
+                    html: '',
+                    timer: 0,
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: '確定刪除！',
+                    cancelButtonColor: '#8c8c8c',
+                    closeOnConfirm: false,
+                    allowOutsideClick: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        
+                    var form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '/modules/tadnews/index.php';
+                    var data = {'op': 'delete_tad_news', 'XOOPS_TOKEN_REQUEST': 'e13adc674f949c2dc1e41a14bc324d84', 'nsn': nsn};
+                    for (var key in data) {
+                        if (data.hasOwnProperty(key)) {
+                            var input = document.createElement('input');
+                            input.type  = 'hidden';
+                            input.name  = key;
+                            input.value = data[key];
+                            form.appendChild(input);
+                        }
+                    }
+                    document.body.appendChild(form);
+                    form.submit();
+            
+                    }
+                });
+            }
+            
+//]]></script>
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/jquery/themes/base/jquery.ui.all.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/language/tchinese_utf8/style.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/media/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/colorbox/colorbox.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/css/xoops.css?t=20260521" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/css/fontawesome6/css/all.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/prism/prism.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/css/iconize.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/fancyBox/source/jquery.fancybox.css?t=20260525" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/sweet-alert/sweetalert2.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadnews/css/module.css" type="text/css" />
+<link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadnews/css/module2.css" type="text/css" />
+
+
+        <!-- 給模組套用的樣板標籤結束 -->
+
+        <!-- 局部套用的樣式，如果有載入完整樣式 theme_css.tpl 那就不需要這一部份 -->
+        <!--導覽工具列、區塊標題CSS設定開始-->
+<style type="text/css">
+    body {
+        color: #202020;
+        background-color: transparent;
+        background-image: url('https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/bg/158.gif');        background-position: left top;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100%;
+        font-size: 1rem;
+        font-family: Iansui;    }
+
+    a {
+        color:#005ca8;
+        font-family: Iansui;    }
+
+    a:hover {
+        color:#a40019;
+    }
+
+    #nav-container, #nav-wrapper {
+                    /* position: relative; */
+                z-index: 11;
+                                    background: #80d3d6;
+                        }
+
+    #xoops_theme_nav {
+                    background-color: tranparent;
+            }
+
+    /* theme_css_blocks.tpl */
+        .leftBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .leftBlock a.block_config,
+    .leftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .leftBlock{
+        position: relative;
+background: #f5f5f5;
+overflow: hidden;
+margin: 15px 0px 15px;
+border-radius: 4px;
+    }
+    
+        .leftBlock .blockTitle{
+        border-bottom: 2px solid #7cb6b7;
+padding: 8px 15px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+    }
+    
+        .leftBlock .blockContent{
+        padding: 15px;
+    }
+    
+    .rightBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .rightBlock a.block_config,
+    .rightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .rightBlock{
+        position: relative;
+background: #f5f5f5;
+overflow: hidden;
+margin: 15px 0px 15px;
+border-radius: 4px;
+    }
+    
+        .rightBlock .blockTitle{
+        border-bottom: 2px solid #7cb6b7;
+padding: 8px 15px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+    }
+    
+        .rightBlock .blockContent{
+        padding: 15px;
+    }
+    
+    .centerBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .centerBlock a.block_config,
+    .centerBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBlock{
+        position: relative;
+background: #f5f5f5;
+overflow: hidden;
+margin: 15px 0px 15px;
+border-radius: 4px;
+    }
+    
+        .centerBlock .blockTitle{
+        border-bottom: 2px solid #7cb6b7;
+padding: 8px 15px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+    }
+    
+        .centerBlock .blockContent{
+        padding: 15px;
+    }
+    
+    .centerLeftBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .centerLeftBlock a.block_config,
+    .centerLeftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerLeftBlock{
+        position: relative;
+background: #f5f5f5;
+overflow: hidden;
+margin: 15px 0px 15px;
+border-radius: 4px;
+    }
+    
+        .centerLeftBlock .blockTitle{
+        border-bottom: 2px solid #7cb6b7;
+padding: 8px 15px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+    }
+    
+        .centerLeftBlock .blockContent{
+        padding: 15px;
+    }
+    
+    .centerRightBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .centerRightBlock a.block_config,
+    .centerRightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerRightBlock{
+        position: relative;
+background: #f5f5f5;
+overflow: hidden;
+margin: 15px 0px 15px;
+border-radius: 4px;
+    }
+    
+        .centerRightBlock .blockTitle{
+        border-bottom: 2px solid #7cb6b7;
+padding: 8px 15px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+    }
+    
+        .centerRightBlock .blockContent{
+        padding: 15px;
+    }
+    
+    .centerBottomBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .centerBottomBlock a.block_config,
+    .centerBottomBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBottomBlock{
+        position: relative;
+background: #f5f5f5;
+overflow: hidden;
+margin: 15px 0px 15px;
+border-radius: 4px;
+    }
+    
+        .centerBottomBlock .blockTitle{
+        border-bottom: 2px solid #7cb6b7;
+padding: 8px 15px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+    }
+    
+        .centerBottomBlock .blockContent{
+        padding: 15px;
+    }
+    
+    .centerBottomLeftBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .centerBottomLeftBlock a.block_config,
+    .centerBottomLeftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBottomLeftBlock{
+        position: relative;
+background: #f5f5f5;
+overflow: hidden;
+margin: 15px 0px 15px;
+border-radius: 4px;
+    }
+    
+        .centerBottomLeftBlock .blockTitle{
+        border-bottom: 2px solid #7cb6b7;
+padding: 8px 15px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+    }
+    
+        .centerBottomLeftBlock .blockContent{
+        padding: 15px;
+    }
+    
+    .centerBottomRightBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .centerBottomRightBlock a.block_config,
+    .centerBottomRightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBottomRightBlock{
+        position: relative;
+background: #f5f5f5;
+overflow: hidden;
+margin: 15px 0px 15px;
+border-radius: 4px;
+    }
+    
+        .centerBottomRightBlock .blockTitle{
+        border-bottom: 2px solid #7cb6b7;
+padding: 8px 15px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+    }
+    
+        .centerBottomRightBlock .blockContent{
+        padding: 15px;
+    }
+    
+    .footerCenterBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .footerCenterBlock a.block_config,
+    .footerCenterBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+    
+    
+    
+    .footerLeftBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .footerLeftBlock a.block_config,
+    .footerLeftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+    
+    
+    
+    .footerRightBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #98e0e2;                        text-indent: 9px;            }
+
+    .footerRightBlock a.block_config,
+    .footerRightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+    
+    
+    
+
+    /* theme_css_navbar.tpl */
+    </style>
+        <style type="text/css">
+            
+#xoops_theme_left_zone{
+    background-color:transparent;
+    padding: 0px 14px;
+}
+#xoops_theme_center_zone{
+    background-color:transparent;
+    padding: 0px 14px;
+}
+#xoops_theme_right_zone {
+    background-color:transparent;
+    padding: 0px 14px;
+}
+            #page-wrapper,
+#top-wrapper,#top-display,
+#logo-wrapper,#logo-display,
+#nav-wrapper,#nav-display,
+#slide-wrapper,#slide-display,
+#base-wrapper,#base-display,
+#footer-wrapper,#footer-display,
+#bottom-wrapper,#bottom-display
+{
+    max-width: 100%;
+}
+
+#page-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+                
+        background: #ffffff ;    margin-top: 30px;    margin-bottom: 60px;        
+            
+
+        padding: 10px;}
+
+#page-display{
+            margin: 0px auto;
+                    }
+
+#page-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+@media (min-width: 768px) {
+    #page-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #page-wrapper, #page-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+#top-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+                
+    z-index: 8;    background: #80d3d6 ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        font-size: 0.8rem;}
+
+#top-display{
+            max-width:90%;
+            margin: 0px auto;
+    padding: 6px 0px;        background-color: #80d3d6;        }
+
+#top-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #top-wrapper,
+    #top-display,
+    #top-display img {
+        border-radius: 0px;
+    }
+
+@media (min-width: 768px) {
+    #top-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #top-wrapper, #top-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+#logo-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+                        max-width:90%;
+            
+    z-index: 7;    background: #ffffff ;    margin-top: 0px;    margin-bottom: 0px;        
+                                
+                                        
+            
+                        
+
+    box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.4);    }
+
+#logo-display{
+            margin: 0px auto;
+    padding: 10px;        background-color: transparent;        }
+
+#logo-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+@media (min-width: 768px) {
+    #logo-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #logo-wrapper, #logo-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+#logo-wrapper{
+            background-image: url('https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/config2/config2_logo_bg_2_1_acH.png') ;
+        background-position: center center, left top;
+        background-repeat: no-repeat, repeat;
+        background-size: auto, auto;
+    }
+
+#nav-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+                
+    z-index: 8;    background: transparent ;    margin-top: 0px;    margin-bottom: 0px;        
+                                
+                                        
+            
+                        
+
+    box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.4);    }
+
+#nav-display{
+            margin: 0px auto;
+    padding: 0px;                }
+
+#nav-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #nav-wrapper,
+    #nav-display,
+    #nav-display img {
+        border-radius: 0px;
+    }
+
+@media (min-width: 768px) {
+    #nav-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #nav-wrapper, #nav-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}                        #nav-display {
+            background: #80d3d6 ;
+        }
+        #nav-wrapper{
+            background: transparent ;
+        }
+    
+#main-menu li {
+    color:#3b3b3b;
+}
+
+#slide-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+                        max-width:90%;
+            
+        background: transparent url(https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/config2/config2_slide_img_2_1_isc.jpg) no-repeat left top /contain;    margin-top: 0px;    margin-bottom: 0px;        
+                                            
+
+    box-shadow: 0px 0px 6px 3px rgba(50, 50, 50, 0.4);    }
+
+#slide-display{
+            margin: 0px auto;
+    padding: 0px;        background-color: transparent;        }
+
+#slide-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #slide-wrapper,
+    #slide-display,
+    #slide-display img {
+        border-radius: 10px;
+    }
+
+@media (min-width: 768px) {
+    #slide-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #slide-wrapper, #slide-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+#middle-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+                
+        background: transparent ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#middle-display{
+            max-width:90%;
+            margin: 0px auto;
+    padding: 10px;        background-color: transparent;        }
+
+#middle-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #middle-wrapper,
+    #middle-display,
+    #middle-display img {
+        border-radius: 0px;
+    }
+
+@media (min-width: 768px) {
+    #middle-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #middle-wrapper, #middle-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+#content-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+                        max-width:90%;
+            
+        background: #ffffff ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#content-display{
+            margin: 0px auto;
+    padding: 0px;                color: #202020;}
+
+#content-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #content-wrapper,
+    #content-display,
+    #content-display img {
+        border-radius: 0px;
+    }
+
+@media (min-width: 768px) {
+    #content-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #content-wrapper, #content-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+
+#footer-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+                
+        background: #f6f6f6 ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#footer-display{
+            max-width:90%;
+            margin: 0px auto;
+    padding: 60px 30px;        background-color: #f6f6f6;    min-height: 200px;    color: #555555;}
+
+#footer-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #footer-wrapper,
+    #footer-display,
+    #footer-display img {
+        border-radius: 0px;
+    }
+
+@media (min-width: 768px) {
+    #footer-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #footer-wrapper, #footer-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}    #footer-display a,
+    #footer-display a:hover,
+    #footer-display a:active ,
+    #footer-display a:visited {
+        color:#555555;
+    }
+
+
+#bottom-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+                
+        background: #585858 ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#bottom-display{
+            max-width:90%;
+            margin: 0px auto;
+    padding: 10px;        background-color: #585858;    min-height: 40px;    color: #ffffff;}
+
+#bottom-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #bottom-wrapper,
+    #bottom-display,
+    #bottom-display img {
+        border-radius: 0px;
+    }
+
+@media (min-width: 768px) {
+    #bottom-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #bottom-wrapper, #bottom-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}    #bottom-display a,
+    #bottom-display a:hover,
+    #bottom-display a:active ,
+    #bottom-display a:visited {
+        color:#ffffff;
+    }
+
+@media (min-width: 768px) {
+    #page-wrapper{
+        max-width: 90%;
+    }
+}        </style>
+
+        <!-- 載入bootstrap -->
+                <!--Bootstrap js-->
+        <script src="https://www.ycsh.cyc.edu.tw/modules/tadtools/bootstrap5/js/bootstrap.bundle.js"></script>
+    </head>
+
+    <body >
+        <!-- 增加跳至主要內容連結 (WCAG 2.4.1) -->
+                <a class="visually-hidden-focusable" href="#xoops_theme_center">跳至主內容區</a>
+
+        <h1 class="sr-only visually-hidden">嘉義縣永慶高中</h1>
+        <!-- 導覽列區域 -->
+                    <nav>
+                    <h2 class="sr-only visually-hidden">導覽列</h2>
+    <div id="nav-wrapper">
+        <div id="nav-display">
+            <link rel="stylesheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/tad_nav/tadnav.css?t=20260818">
+
+<script>
+    function tad_themes_popup(URL) {
+        $.colorbox({iframe:true, width:"80%", height:"90%",href : URL});
+    }
+</script>
+
+<!-- fixed-top -->
+<a accesskey="U" href="#main-menu" id="xoops_theme_nav_key" class="tadnav-skip" aria-label="跳到導覽工具列">:::</a>
+<nav class="tadnav-wrapper" role="navigation" id="main-nav" aria-label="導覽工具列">
+    <div class="tadnav-inner">
+                    <div class="tadnav-brand">
+                            </div>
+        
+        <!-- 漢堡按鈕（手機/放大時顯示）-->
+        <button class="tadnav-toggle"
+                aria-expanded="false"
+                aria-controls="main-menu"
+                aria-label="漢堡選單">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        </button>
+
+
+        <ul id="main-menu" class="tadnav-menu" role="menubar" aria-label="導覽列">
+                            <li role="none">
+                    <a href="https://www.ycsh.cyc.edu.tw/index.php" role="menuitem"><i class="fa fa-home" aria-hidden="true"></i> 回首頁</a>
+                </li>
+            
+            
+            
+                <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-file" aria-hidden="true"></i>
+        
+        關於永慶
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="關於永慶子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=29&nsn=95"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                設校沿革
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=29&nsn=96"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                設校理念
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=29&nsn=14026"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                組織架構
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=29&nsn=10488"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                大事紀
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=29&nsn=101"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                校園規劃
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=8933"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                交通方式
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bank" aria-hidden="true"></i>
+        
+        行政單位
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="行政單位子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=2&nsn=102"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學校分機
+                    </a>
+                            </li>
+                    <li role="none">
+                                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bank" aria-hidden="true"></i>
+        
+        校長室
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="校長室子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=3&nsn=11"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                校長
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=3&nsn=20975"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                品牌永慶・標配未來2.0
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=3&nsn=18906"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                品牌永慶，標配未來
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=3&nsn=13"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學校願景與辦學理念
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=3&nsn=12"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                秘書
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=3&nsn=6741"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                家長會
+                    </a>
+                            </li>
+            </ul>
+                            </li>
+                    <li role="none">
+                                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bank" aria-hidden="true"></i>
+        
+        教務處
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="教務處子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&nsn=10921"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                組織編制
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&nsn=14"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                教務主任
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&nsn=15"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                教學組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&nsn=16"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                註冊組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&nsn=19"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                設備組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&nsn=20"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                實驗研究組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&nsn=21"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                試務組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&nsn=13113"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                課務組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&nsn=17621"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學習扶助篩選測驗考古題
+                    </a>
+                            </li>
+            </ul>
+                            </li>
+                    <li role="none">
+                                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bank" aria-hidden="true"></i>
+        
+        學務處
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="學務處子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=16608"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                114-1預定行事曆
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=26"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學務主任
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=27"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                訓育組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=3297"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                生活輔導組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=33"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                體育組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=34"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                衛生組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=31"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                社團活動組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=32"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                健康中心
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=204"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學務創新人力
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=205"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                宿舍管理員
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=8933"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                永慶高中交通指引
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=10200"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                班聯會
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=10333"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                永慶青年大使團
+                    </a>
+                            </li>
+            </ul>
+                            </li>
+                    <li role="none">
+                                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bank" aria-hidden="true"></i>
+        
+        總務處
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="總務處子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=16&nsn=17"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                總務主任
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=16&nsn=22"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                庶務組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=16&nsn=24"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                文書組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=16&nsn=78"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                出納組
+                    </a>
+                            </li>
+            </ul>
+                            </li>
+                    <li role="none">
+                                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bank" aria-hidden="true"></i>
+        
+        輔導處
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="輔導處子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=18&nsn=41"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                輔導主任
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=18&nsn=59"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                輔導組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=18&nsn=60"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                資料組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=18&nsn=61"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                特教組
+                    </a>
+                            </li>
+            </ul>
+                            </li>
+                    <li role="none">
+                                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bank" aria-hidden="true"></i>
+        
+        圖書館
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="圖書館子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=19&nsn=62"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                圖書館主任
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=19&nsn=63"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                讀者服務組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=19&nsn=13112"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                技術服務組
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=19&nsn=64"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                資訊媒體組
+                    </a>
+                            </li>
+            </ul>
+                            </li>
+                    <li role="none">
+                                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bank" aria-hidden="true"></i>
+        
+        人事室
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="人事室子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=20&nsn=65"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                人事主任
+                    </a>
+                            </li>
+            </ul>
+                            </li>
+                    <li role="none">
+                                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bank" aria-hidden="true"></i>
+        
+        會計室
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="會計室子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=66"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                會計室
+                    </a>
+                            </li>
+            </ul>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bookmark" aria-hidden="true"></i>
+        
+        圖書館
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="圖書館子選單">
+                    <li role="none">
+                                    <a href="http://lib.ycsh.cyc.edu.tw/webopac/"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                圖書館館藏查詢系統
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=8"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                圖書館入口網
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://ebook.ycsh.cyc.edu.tw/index/index.php"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                電子書平台
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+        
+        高中課程
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="高中課程子選單">
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?nsn=977"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                課程計畫
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?nsn=978"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                課程地圖
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?nsn=979"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                學習歷程
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?ncsn=1&nsn=3584"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                選課專區
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?nsn=980"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                多元選修
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?nsn=981"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                彈性學習
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?nsn=982"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                自主學習
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=34&nsn=202"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                相關實施規範
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=43&nsn=3506"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                課程諮詢暨生涯輔導
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=43&nsn=2866"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                課業輔導辦理情形
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=43&nsn=5683"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                教科書
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+        
+        國中課程
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="國中課程子選單">
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=73&nsn=10949"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                課程計畫
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=73&nsn=10950"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                寒假營隊
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?nsn=985"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                相關實施規範
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=44&nsn=5684"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                教科書
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-mortar-board" aria-hidden="true"></i>
+        
+        升學資訊
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="升學資訊子選單">
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=33&nsn=117"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                大學升學資訊
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=33&nsn=166"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                高中升學資訊
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=34&nsn=115"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                升大學榜單
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+        
+        教育儲蓄戶
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="教育儲蓄戶子選單">
+                    <li role="none">
+                                    <a href="https://www.edusave.edu.tw/school/school_index.aspx?school_sn=3932"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                永慶教育儲蓄戶
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.edusave.edu.tw/news.aspx"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                學校教育儲蓄戶
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="/uploads/tadnews/file/tmp/apply.doc"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                教育儲蓄戶申請單
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-database" aria-hidden="true"></i>
+        
+        校務系統
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="校務系統子選單">
+                    <li role="none">
+                                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-database" aria-hidden="true"></i>
+        
+        校務行政
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="校務行政子選單">
+                    <li role="none">
+                                    <a href="https://web2.ischool.com.tw/?school=h.ycsh.cyc.edu.tw"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                高中部
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://web2.ischool.com.tw/?school=j.ycsh.cyc.edu.tw"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                國中部
+                    </a>
+                            </li>
+            </ul>
+                            </li>
+                    <li role="none">
+                                    <a href="https://cyhg1.cloudhr.tw/SCHOOL/login.aspx"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                雲端差勤管理系統
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://mail.cyc.edu.tw/cgi-bin/login?index"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                公務信箱
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://163.27.116.11:5000/"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                網路空間
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-list-alt" aria-hidden="true"></i>
+        
+        招生資訊
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="招生資訊子選單">
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=39&nsn=405"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                高中部
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=39&nsn=406"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                國中部
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-bullhorn" aria-hidden="true"></i>
+        
+        自主學習
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="自主學習子選單">
+                    <li role="none">
+                                    <a href="https://web.jhenggao.com/iLearning/Login.aspx"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                自主學習平台
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=43&nsn=982"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                最新公告暨慶學講堂：大學微課程體驗
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=57&nsn=6003"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                分組名單公告
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=57&nsn=6001"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                期末成果發表
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=57&nsn=6004"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                評鑑海報模板
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=57&nsn=6005"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                自主學習規範
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=57&nsn=6006"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                相關學習資源
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=57&nsn=6007"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                競賽資訊
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                                    
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+                    <i class="fa fa-circle" aria-hidden="true"></i>
+        
+        教育雲帳號
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="教育雲帳號子選單">
+                    <li role="none">
+                                    <a href="https://www.sso.edu.tw/register"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                申請帳號
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.sso.edu.tw"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                教育帳號身分驗證
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.sso.edu.tw/forgetaccount"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                取得教育雲帳號
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.sso.edu.tw/resetpwd"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                取得教育雲密碼
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.sso.edu.tw/activateaccount"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                啟用帳號
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.sso.edu.tw/register"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                申請教育雲(僅限教師)
+                    </a>
+                            </li>
+            </ul>
+            </li>
+
+            <!-- 靠右填充 -->
+            <li class="tadnav-spacer" role="none" aria-hidden="true"></li>
+
+            
+                            <li role="none">
+                                        <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        登入
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>                        <ul class="tadnav-submenu" role="menu" aria-label="登入選單">
+            <li role="none">
+            <form action="https://www.ycsh.cyc.edu.tw/user.php" method="post">
+                <div style="margin: 10px; padding: 10px;">
+                    <h2 class="h5 mb-3">
+                        登入                    </h2>
+                    
+                    <!-- 使用 Bootstrap 5 的 Floating labels -->
+                    <div class="form-floating mb-3">
+                        <input type="text" name="uname" id="menu_uname" class="form-control" placeholder="請輸入帳號" required aria-required="true" data-bs-toggle="tooltip" data-bs-title="帳號為必填">
+                        <label for="menu_uname">帳號 (必填) </label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" name="pass" id="menu_pass" class="form-control" placeholder="請輸入密碼" required aria-required="true" data-bs-toggle="tooltip" data-bs-title="密碼為必填">
+                        <label for="menu_pass">密碼 (必填) </label>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-grid gap-2">
+                                                                                    <input type="hidden" name="xoops_redirect" value="/modules/tadnews/index.php?ncsn=1">
+                            <input type="hidden" name="rememberme" value="On">
+                            <input type="hidden" name="op" value="login">
+                            <input type="hidden" name="xoops_login" value="1">
+                            <button type="submit" class="btn btn-primary btn-block py-2 btn-lg" aria-label="登入">
+                                登入
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                            </form>
+        </li>
+    
+    
+        <li role="none">
+            <a href="https://www.ycsh.cyc.edu.tw/modules/tadtools/ajax_file.php?op=remove_json" title="重整畫面圖示" role="menuitem" class="d-flex align-items-center px-3 py-2">
+                <i class="fa fa-refresh me-2" aria-hidden="true"></i> <span>重取設定</span>
+            </a>
+        </li>
+    </ul>
+                </li>
+                    </ul>
+    </div>
+</nav>
+
+<script type="text/javascript" src="https://www.ycsh.cyc.edu.tw/modules/tadtools/tad_nav/tadnav.js?t=2026082708"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 或指定 click 模式
+        var nav = new TadNav('#main-menu', { trigger: 'hover', hoverClose: true, mobileNavTheme:  'dark', theme: {
+        navBg:           'transparent',
+        fontFamily:      'Iansui',
+        navShadow:       'none',
+        itemColor:       '#3b3b3b',
+        itemHoverBg:     '#ecfdffaa',
+        itemHoverColor:  '#3b3b3b',
+        itemFontSize:    '1rem',
+        itemPaddingX:    '12px',
+        itemPaddingY:    '15px',
+        subItemPaddingX: '12px',
+        subItemPaddingY: '15px',
+        subBg:           '#ecfdff',
+        subItemColor:    '#3b3b3b',
+        subItemHoverBg:  '#ecfdffaa',
+        subItemHoverColor:  '#3b3b3b',
+        subItemFontSize: '1rem',
+        subDividerWidth: '1',
+        subDividerWidth: '1px',
+        subDivider:      '#00000011',
+        subShadow:       '0 4px 16px rgba(0,0,0,0.12)',
+        innerMaxWidth:   '1920px',
+        subScrollMargin: 24,   // 距視窗底部保留 24px
+        } });
+    });
+</script>
+
+<!-- $use_pin = 0 , $pin_zone = top , $navbar_pos = fixed-top -->
+        </div>
+    </div>
+            </nav>
+        
+        
+                
+
+
+
+
+
+
+
+    
+                <header>
+                <div id="logo-wrapper">
+                <div id="logo-display" class="container-fluid ">
+            <div class="row g-0">
+
+                                                    <div class="col-xl-3 text-start">
+                                                                
+    <a href="https://www.ycsh.cyc.edu.tw/index.php"
+        class="logo-link"
+        style="position: relative; z-index: 10;"
+    ><img id="website_logo"
+        src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/logo/logo_2_3_d9c.png"
+        style="max-width: 100%; display: block;"
+        alt="嘉義縣永慶高中"
+        title="點擊可回首頁"
+        class="img-fluid"></a>
+
+<style>
+/* 讓 logo 連結本身具備可見的焦點框，避免只在左側顯示 */
+.logo-link {
+    display: inline-block;
+    max-width: 100%;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.logo-link img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 鍵盤使用者可清楚看見目前焦點落在 logo 區塊 */
+.logo-link:focus,
+.logo-link:focus-visible {
+    outline: 3px solid #005FCC !important;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 3px #ffffff, 0 0 0 6px #005FCC !important;
+    border-radius: 4px;
+}
+
+/* 滑鼠點擊時不顯示焦點框 */
+.logo-link:focus:not(:focus-visible) {
+    outline: none !important;
+    box-shadow: none !important;
+}
+</style>                                                </div>
+                            <div class="col-xl-9 text-end">
+
+                                                                                                    
+                        
+                    <div class="d-inline-block">                     <a href="https://sites.google.com/ycsh.cyc.edu.tw/ycshenglishweb"
+        target="_blank"        rel="noopener noreferrer"
+        class="sidark"
+        aria-label="English Website（另開新視窗）">
+        <i class="fa fa-plane" data-bs-toggle="tooltip" data-bs-title="English Website" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/Yung.Ching.Senior.High.School"
+        target="_blank"        rel="noopener noreferrer"
+        class="sidark"
+        aria-label="永慶高中臉書（另開新視窗）">
+        <i class="fab fa-facebook" data-bs-toggle="tooltip" data-bs-title="永慶高中臉書" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/channel/UC26_G1PssBo2YmrP4uDHxhQ"
+        target="_blank"        rel="noopener noreferrer"
+        class="sidark"
+        aria-label="永慶高中社團（另開新視窗）">
+        <i class="fab fa-youtube" data-bs-toggle="tooltip" data-bs-title="永慶高中社團" aria-hidden="true"></i></a>
+    </div>
+    
+    
+            <div class="d-inline-block"> <div id="google_translate_element" class="form-control form-control-sm" style="position: relative; top: -4px; padding: 0px;">
+</div>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'zh-TW', includedLanguages: 'en,fr,ja,ko,zh-TW', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, multilanguagePage: true, autoDisplay: false}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script></div>
+    
+    
+    
+    
+                    </div>
+                        </div>
+        </div>
+    </div>
+        </header>
+
+                
+                            <div id="slide-wrapper">
+    <div id="slide-display">
+        <div>
+                                
+                <link rel="stylesheet" type="text/css" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/tad_slide/tad-slide.css?t=20260813" >
+    <script type="text/javascript" src="https://www.ycsh.cyc.edu.tw/modules/tadtools/tad_slide/tad-slide.js?t=20260813"></script>
+
+    <div id="my-slider" class="tad-slide" aria-label="圖片輪播">
+        <ul class="tad-slide__list">
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_15_BV9.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_16_aDW.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_14_YUp.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_17_pI7.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_15_nDR.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_16_zlz.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_15_cT3.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_13_QG8.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_14_KAz.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=8933" target='_blank' rel="noopener noreferrer" title=" (另開新視窗)">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_12_qXs.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=9748" target='_blank' rel="noopener noreferrer" title=" (另開新視窗)">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_8_0fs.jpg" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_14_008.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_15_Hww.png" alt="" />
+                    </a>
+                </li>
+                            <li class="tad-slide__item">
+                     <a href="https://www.ycsh.cyc.edu.tw"  rel="noopener noreferrer" title="點此回首頁">
+                        <img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2022/slide/slide_2_16_SRT.png" alt="" />
+                    </a>
+                </li>
+                    </ul>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        tadSlide('#my-slider', {
+                    navMode : 'sides',
+                navMode : 'sides',
+        effect  : 'fade',
+        timeout : 6000,
+        speed   : 600,
+        });
+    });
+    </script>
+                        </div>
+    </div>
+</div>        
+                
+        
+                
+
+
+
+
+
+
+                
+        <div class="d-flex flex-column">
+            <div class="flex-grow-1">
+                                <main>
+                    <div id="content-wrapper" tabindex="-1" style="outline: none;">
+    <div id="content-display">
+        <div class="container-fluid">
+            <!-- 載入布局 -->
+                        
+<div id="xoops_theme_content_zone" class="row g-0">
+            <!-- 若是有左、右區塊 -->
+        <div id="xoops_theme_left_zone" class="col-lg order-2 order-xl-1">
+            <div id="xoops_theme_left" style="">
+                <a accesskey="L" href="#xoops_theme_left_zone"  id="xoops_theme_left_zone_key" class="sr-only-focusable" aria-label="跳到左邊區域">:::</a>
+                <h2 class="sr-only visually-hidden">左邊區域內容</h2>
+
+                        <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            學校網站
+                    </h3>
+                    <div class="blockContent">
+                    <p><a href="https://script.google.com/macros/s/AKfycbxfwnFvU-eZgC3LCZ4L6u56nD_rnVTiDd4mvqCFi1C34kW1ol57RIshiPNmnN8XEPWD/exec" rel="noopener noreferrer" target="_blank" title="另開新視窗"><img alt="" class="img-responsive img-thumbnail img-fluid" role="presentation" src="https://www.ycsh.cyc.edu.tw/uploads/tadnews/image/yufong/LOGO/ABOUT_LOGO.jpg" style="height:auto;"><span class="sr-only">link to https://sites.google.com/ycsh.cyc.edu.tw/ycshenglishweb \</span></a></p>
+
+<p><a href="https://sites.google.com/ycsh.cyc.edu.tw/ycshenglishweb" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only" visually-hidden=""></span><span class="sr-only">link to https://sites.google.com/ycsh.cyc.edu.tw/ycshenglishweb \</span></a><a href="https://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=2" rel="noopener noreferrer" target="_blank" title="另開新視窗"><img alt="" class="img-responsive img-thumbnail img-fluid" role="presentation" src="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/image/AI_2.jpg" style="height:auto;"><span class="sr-only">link to https://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=2 \</span></a></p>
+
+<p><a href="https://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=2" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only"></span><span class="sr-only">link to https://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=2 \</span></a><a href="http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=5" rel="noopener noreferrer" target="_blank" title="另開新視窗"><img alt="" class="img-responsive img-thumbnail img-fluid" role="presentation" src="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/image/music_ycsh.jpg" style="height:auto;"><span class="sr-only">link to http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=5 \</span></a></p>
+
+<p><a href="http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=5" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only"></span><span class="sr-only">link to http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=5 \</span></a><a href="http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4" rel="noopener noreferrer" target="_blank" title="另開新視窗"><img alt="" class="img-responsive img-thumbnail img-fluid" role="presentation" src="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/image/ycsh_sports.jpg" style="height:auto;"><span class="sr-only">link to http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4 \</span></a><a href="http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4" rel="noopener noreferrer" style="font-family: var(--bs-body-font-family); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align); background-color: var(--bs-body-bg);" target="_blank" title="另開新視窗"><span class="sr-only" style="display: inline !important;">link to http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4 \</span></a><a href="http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4" rel="noopener noreferrer" style="background-color: var(--bs-body-bg); font-family: var(--bs-body-font-family); font-size: var(--bs-body-font-size); font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);" target="_blank" title="另開新視窗"><span class="sr-only" style="display: inline !important;">link to http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4 \</span></a></p>
+
+<p><a href="http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only"></span><span class="sr-only">link to http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4 \</span></a><a href="https://sites.google.com/ycsh.cyc.edu.tw/counseling-room/%E9%A6%96%E9%A0%81?authuser=0?WebID=5" rel="noopener noreferrer" target="_blank" title="另開新視窗"><img alt="" class="img-responsive img-thumbnail img-fluid" role="presentation" src="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/image/LOGO.jpg" style="height:auto;"><span class="sr-only">link to https://sites.google.com/ycsh.cyc.edu.tw/counseling-room/%E9%A6%96%E9%A0%81?authuser=0?WebID=5 \</span></a></p>
+
+<p><a href="https://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=7" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only"></span><img alt="" class="img-responsive img-thumbnail img-fluid" role="presentation" src="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/image/%E6%B0%B8%E6%85%B6%E9%AB%98%E4%B8%AD%E6%80%A7%E5%B9%B3%E5%B0%88%E5%8D%80Button.png"><span class="sr-only">link to https://sites.google.com/ycsh.cyc.edu.tw/counseling-room/%E9%A6%96%E9%A0%81?authuser=0?WebID=5 \</span></a><a href="/www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=7" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only"></span><br>
+<span class="sr-only">link to https://sites.google.com/ycsh.cyc.edu.tw/counseling-room/%E9%A6%96%E9%A0%81?authuser=0?WebID=5 \</span></a><a href="http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=7" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only">link to http://https://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=7 \</span></a></p>
+
+<p><a href="https://sites.google.com/ycsh.cyc.edu.tw/counseling-room/%E9%A6%96%E9%A0%81?authuser=0?WebID=5" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only">link to https://sites.google.com/ycsh.cyc.edu.tw/counseling-room/%E9%A6%96%E9%A0%81?authuser=0?WebID=5 \</span></a><a href="http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only">link to http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=4 \</span></a><a href="http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=5" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only">link to http://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=5 \</span></a><a href="https://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=2" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only">link to https://www.ycsh.cyc.edu.tw/modules/tad_web/index.php?WebID=2 \</span></a><a href="https://sites.google.com/ycsh.cyc.edu.tw/ycshenglishweb" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only" visually-hidden="">link to http://ycsh.at.tw </span></a></p>
+
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            本學期重要資訊
+                    </h3>
+                    <div class="blockContent">
+                    <p><a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=34&amp;nsn=3959" target="_blank"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #ff0000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">校園無障礙設施指引</span></span> </a></p>
+
+<p><a href="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/file/%E6%9C%AC%E5%AD%B8%E6%9C%9F%E9%87%8D%E8%A6%81%E8%B3%87%E8%A8%8A/114%E7%B7%8A%E6%80%A5%E5%82%B7%E7%97%85%E8%A8%88%E7%95%AB.pdf" target="_blank"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">學生傷病緊急處理辦法</span></span> </a></p>
+
+<p><a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=34&amp;nsn=1914" target="_self"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">校外人士協助教學辦法</span></span> </a></p>
+
+<p><a href="http://163.27.116.20:8080/" target="_blank"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #0011ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">遠距課表查詢</span></span> </a></p>
+
+<p><a href="http://10.0.3.83:8080" target="_blank"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">課表查詢</span></span> </a></p>
+
+<p><a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=33&amp;nsn=240" target="_self"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">公開觀課</span></span> </a></p>
+
+<p><a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=34&amp;nsn=2936" target="_self"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">行事曆</span></span> </a></p>
+
+<p><a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?nsn=16805"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">學雜費及代收代辦費</span></span></a></p>
+
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            校園規章
+                    </h3>
+                    <div class="blockContent">
+                    <p><span style="font-size: 1.13rem;"><a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=34&amp;nsn=202" target="_self"><span style="color:#00b3ff;"><span style="text-decoration: none; font-weight: 700">★</span> </span><span style="color:#000000;"><span style="text-decoration: none; font-weight: 700">校務行政規章</span></span></a></span></p>
+
+<p><a href="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/file/%E7%B8%BD%E5%8B%99%E8%99%95/%E8%81%B7%E6%A5%AD%E5%AE%89%E5%85%A8%E8%A1%9B%E7%94%9F%E7%AE%A1%E7%90%86%E8%A8%88%E7%95%AB-%E6%B0%B8%E6%85%B6%E9%AB%98%E4%B8%AD.pdf" rel="noopener noreferrer" target="_blank" title="另開新視窗（PDF格式）"><span style="font-size: 1.13rem;"><span style="color:#00b3ff;"><span style="text-decoration: none; font-weight: 700">★</span> </span><span style="color:#000000;"><strong>職業安全衛生管理計畫</strong></span></span></a></p>
+
+<p><strong><span style="font-size: 1.13rem;"><a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=35&amp;nsn=4618" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color:#00b3ff;"><span style="text-decoration: none; font-weight: 700">★</span> </span><span style="color:#000000;">性騷擾防治申訴及懲處規範</span><span style="color:#3498db;"></span></a></span></strong></p>
+
+<p><strong><a href="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/file/2025%E5%8D%88%E9%A4%90%E5%9F%B7%E7%A7%98/114%E5%8D%88%E9%A4%90%E5%B7%A5%E4%BD%9C%E5%AF%A6%E6%96%BD%E8%A8%88%E7%95%AB.pdf" rel="noopener noreferrer" target="_blank" title="另開新視窗（PDF格式）"><span style="font-size: 1.13rem;"><span style="color:#00b3ff;"><span style="text-decoration: none; font-weight: 700">★</span> </span><span style="color:#000000;"><span style="text-decoration: none; font-weight: 700">營養午餐工作實施計畫</span> </span></span></a></strong></p>
+
+<p><strong><a href="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/file/2025%E5%8D%88%E9%A4%90%E5%9F%B7%E7%A7%98/114%E5%AD%B8%E5%B9%B4%E5%8D%88%E9%A4%90%E4%BE%9B%E6%87%89%E5%A7%94%E5%93%A1%E6%9C%83%E5%90%8D%E5%96%AE%20.pdf" rel="noopener noreferrer" target="_blank" title="另開新視窗（PDF格式）"><span style="font-size: 1.13rem;"><span style="color:#00b3ff;"><span style="text-decoration: none; font-weight: 700">★</span> </span><span style="color:#000000;"><span style="text-decoration: none; font-weight: 700">午餐委員名單</span></span></span></a></strong></p>
+
+<p><strong><span style="font-size: 1.13rem;"><a href="https://food.cyc.edu.tw/lunch/pub/fund/fund.php?q_uid=104326" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color:#00b3ff;"><span style="text-decoration: none; font-weight: 700">★</span> </span><span style="color:#000000;"><span style="text-decoration: none; font-weight: 700">營養午餐經費收支概況</span> </span></a></span></strong></p>
+
+<p><a href="https://www.ycsh.cyc.edu.tw/uploads/tad_blocks/file/2025%E5%8D%88%E9%A4%90%E5%9F%B7%E7%A7%98/1150522%E4%BF%AE%E8%A8%82%E5%8D%88%E9%A4%90%E9%80%80%E8%B2%BB%E8%BE%A6%E6%B3%95-%E5%85%AC%E5%91%8A%20.pdf" rel="noopener noreferrer" target="_blank" title="另開新視窗（PDF格式）"><strong><span style="font-size: 1.13rem;"><span style="color:#00b3ff;"><span style="text-decoration: none; font-weight: 700">★</span> </span><span style="color:#000000;"><span style="text-decoration: none; font-weight: 700"></span></span></span><span style="font-size: 1.13rem;"><span style="color:#000000;"><span style="text-decoration: none; font-weight: 700">營養午餐退費辦法</span></span></span><span style="font-size: 1.13rem;"><span style="color:#000000;"><span style="text-decoration: none; font-weight: 700"></span></span></span></strong></a></p>
+
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            數位學習
+                    </h3>
+                    <div class="blockContent">
+                    <p><a href="https://ycsh.teamslite.com.tw/login.html"><span style="color: rgb(0, 179, 255);"><span style="text-decoration: none; font-weight: 700">★</span></span></a><a href="https://ycsh.teamslite.com.tw/login.html"><span style="font-size: 1.25rem;"><strong>翰林雲端學院</strong></span></a></p>
+
+<p><a href="https://www.pagamo.org" target="_blank"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #ff0000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">PaGaMo</span></span> </a></p>
+
+<p><a href="https://chiayi.onestudy.oneclass.com.tw/" target="_self"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">oneStudy</span></span> </a></p>
+
+<p><a href="https://etesting.cyc.edu.tw/teacher_login.aspx" target="_self"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">嘉義縣E-Testing 單字檢測系統</span></span> </a></p>
+
+<p><a href="https://adl.edu.tw/HomePage/home/" target="_self"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">因材網</span></span> </a></p>
+
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            校園數位軟體連結
+                    </h3>
+                    <div class="blockContent">
+                    <p><u><a href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=34&amp;nsn=2936" target="_self">★&nbsp;</a><b>1 Campus校務系統操作手冊</b></u></p>
+
+<p>【家長版:：<a href="https://www.ycsh.cyc.edu.tw/uploads/tadnews/file/a01/%E5%AE%B6%E9%95%B7%E7%89%88%E6%A0%A1%E5%8B%99%E7%B3%BB%E7%B5%B1%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8AAndroid%E7%B3%BB%E7%B5%B1.pdf">Android 系統</a>、<a href="https://www.ycsh.cyc.edu.tw/uploads/tadnews/file/a01/%E5%AE%B6%E9%95%B7%E7%89%88%E6%A0%A1%E5%8B%99%E7%B3%BB%E7%B5%B1%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8AIOS%E7%B3%BB%E7%B5%B1.pdf">IOS 系統</a>(手機版)<b>】</b></p>
+
+<p><b>【</b>學生版：<a href="https://www.ycsh.cyc.edu.tw/uploads/tadnews/file/a01/%E5%AD%B8%E7%94%9F%E7%89%88%E6%A0%A1%E5%8B%99%E7%B3%BB%E7%B5%B1%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8AAndroid%E7%B3%BB%E7%B5%B1.pdf">Android 系統</a>、<a href="https://www.ycsh.cyc.edu.tw/uploads/tadnews/file/a01/%E5%AD%B8%E7%94%9F%E7%89%88%E6%A0%A1%E5%8B%99%E7%B3%BB%E7%B5%B1%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8AIOS%E7%B3%BB%E7%B5%B1.pdf">IOS 系統</a>(手機版)<b>】</b></p>
+
+<p>★<a href="http://永慶中學 匯入完成 (check mark)網址：ycsh.teamslite.com.tw 管理員 帳號：admin 密碼：n77F64  (double arrow right)老師 帳號：信箱 密碼：aa1234  (double arrow right)學生 帳號：學號 密碼：身分證全碼">&nbsp;</a><b>翰林學院</b>&nbsp;&nbsp;<strong><a href="https://docs.google.com/document/d/1GxLAhk0aojBE1X_ng3fLmz1kO2I5j16u54Yjkb_5pwg/edit" target="_blank">操作指南</a>&nbsp;&nbsp;</strong></p>
+
+<p><b>[<a href="https://youtu.be/JhZuG9l20xY">學生端教育訓練</a>]</b></p>
+
+<p><b>[<a href="https://drive.google.com/file/d/1I03WqHOGGXVCdG3Ieb-J6UiCGZEsJAvu/view?usp=sharing">老師端教育訓練</a>1] </b></p>
+
+<p><b>[<a href="https://drive.google.com/file/d/1I03WqHOGGXVCdG3Ieb-J6UiCGZEsJAvu/view?usp=sharing">老師端教育訓練</a><a href="https://drive.google.com/file/d/1IsC1zIIi_dvR-ggpGOYUT4geI46y8VOh/view?usp=drive_link">2</a>]</b></p>
+
+<p>★&nbsp;<strong><a href="https://temp.18code.tw:7073/diceweb/dindex.html" target="_blank">18豆</a>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=35&amp;nsn=10290" target="_blank">操作指南及說明</a></strong></p>
+
+<p>★&nbsp;<strong><a href="https://www.ycsh.cyc.edu.tw/uploads/tadnews/file/lib03/Student-2.7.5601-4edu.apk">4EDU</a>&nbsp; &nbsp; &nbsp; &nbsp;<a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=35&amp;nsn=10294">操作指南及說明</a></strong></p>
+
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            慶學講堂
+                    </h3>
+                    <div class="blockContent">
+                    <a target="_self" href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=49&nsn=2667"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span>
+<span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">朝會閱讀心得分享</span></span>
+</a></p>
+
+<a target="_self" href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=49&nsn=2966"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span>
+<span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">游於藝畫作導覽</span></span>
+</a></p>
+
+<a target="_self" href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=49&nsn=2967"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span>
+<span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">與書一同午餐</span></span>
+</a></p>
+
+<a target="_self" href="http://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=49&nsn=2968"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span>
+<span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">Youtuber說書</span></span>
+</a></p>
+
+
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            網路問卷&評量
+                    </h3>
+                    <div class="blockContent">
+                    <p><span style="font-size: 1.13rem;"><a href="https://web.a3b6.com.tw/114cyc/" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color:#c0392b;">★</span></a> </span><a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=4&amp;nsn=17621" rel="noopener noreferrer" target="_blank" title="另開新視窗">學習扶助篩選測驗考古題</a></p>
+
+<p><span style="font-size: 1.13rem;"><a href="https://www.open-health.com.tw/115cyc/" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color:#c0392b;">★ 115學年度健康促進問卷調查</span></a></span></p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfA2toybC4BKfMKZqD-knzmxlosq_GBJqF2jTyCzUzdJNTLMA/viewform" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #0000ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">教學回饋意見調查</span></span> </a></p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfFriiMTRfTb0Fc0ut2HFDk_OLNUGxSed0MtLEUT8vKybt5EQ/viewform" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #0000ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">高中優質化研習回饋問卷</span></span></a></p>
+
+<p><a href="https://career.ceec.edu.tw/Account/StudentLogin" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">大學學系探索量表</span></span> </a></p>
+
+<p><span style="font-size: 1.13rem;"><a href="https://career.ceec.edu.tw/Account/StudentLogin" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: rgb(0, 179, 255);"><span style="text-decoration: none; font-weight: 700">★</span></span> </a><strong><a href="https://cbsc.mytest.com.tw/SelfLS_j/Default.aspx">國一學習策略量表</a></strong></span></p>
+
+<p><a href="https://career.ceec.edu.tw/Account/StudentLogin" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: #00b3ff; font-size: 1.2rem;"></span><span class="sr-only">link to https://career.ceec.edu.tw/Account/StudentLogin _blank</span></a><span class="sr-only"><a href="https://career.ceec.edu.tw/Account/StudentLogin" rel="noopener noreferrer" target="_blank" title="另開新視窗">link to https://career.ceec.edu.tw/Account/StudentLogin _blank</a></span></p>
+
+<p><a href="https://ppt.cc/fdhxRx" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">線上綜合紀錄表-高中部</span></span> </a></p>
+
+<p><a href="https://ppt.cc/fahPHx" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">線上綜合紀錄表-國中部</span></span> </a></p>
+
+<p><a href="https://ppt.cc/fahPHx" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: #00b3ff; font-size: 1.2rem;"></span><span class="sr-only">link to https://ppt.cc/fahPHx \</span></a><a href="https://exam2.tcte.edu.tw/teac_school/"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span></a> <a href="https://exam2.tcte.edu.tw/teac_school/"><span style=""><span style="font-size: 1.2rem;"><strong>科技化評量扶助學習測驗（國中）</strong></span></span></a></p>
+
+<p><a href="http://140.122.146.34/oa-zhtw/pages/attendee/atd-login.php?Code=OwQbOjv5&amp;pass=EFh6IJWa" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">masia 國中</span></span> </a></p>
+
+<p><a href="http://140.122.146.34/oa-zhtw/pages/attendee/atd-login.php?Code=MSanjRYf&amp;pass=hGLnc19A" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">masia 評量示範</span></span> </a></p>
+
+<p> </p>
+
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            英漢字典 
+                    </h3>
+                    <div class="blockContent">
+                    <script type="text/javascript">
+ 
+  $(document).ready(function(){
+ 
+    $('#get_dreyedict').colorbox({iframe:true , width:'640' , height:'90%'});
+ 
+    $("#get_dreyedict").click(function(event) {
+      $("#get_dreyedict").attr("href","https://yun.dreye.com/dict_new/dict_min.php?w="+$('#search_dreyedict').val());
+    });
+ 
+    $("#search_dreyedict").keypress(function(e){
+      code = (e.keyCode ? e.keyCode : e.which);
+      if (code == 13)
+      {
+        $.colorbox({
+          href:"https://yun.dreye.com/dict_new/dict_min.php?w="+$('#search_dreyedict').val(),
+          iframe:true ,
+          width:'640' ,
+          height:'90%'});
+      }
+    });
+  });
+</script>
+<div class="input-group">
+  <label for="search_dreyedict" class="sr-only">英文單字</label>
+  <input title=input type="text" id="search_dreyedict" class="form-control" placeholder="英文單字">
+  <span class="input-group-btn">
+    <a href="#" class="btn btn-primary" id="get_dreyedict">查單字</a>
+  </span>
+</div>
+
+                </div>
+            </div>
+                        </div>
+        </div>
+
+        <div id="xoops_theme_center_zone" class="col-xl-7 order-1 order-xl-2" style="">
+            <a accesskey="C" href="#xoops_theme_center_zone" title="主內容區（包含中間區塊及主內容）" id="xoops_theme_center_zone_key" class="sr-only-focusable" aria-label="跳到主內容區">:::</a>
+<div id="xoops_theme_center" style="">
+        <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+
+        <h2 class="sr-only visually-hidden">主內容區域</h2>
+    <div id="xoops_contents">
+        
+        <nav class='toolbar_bootstrap_nav'>
+            <ul>
+            <li class='current' title='本站消息'><a href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php' ><i class='fa fa-home'></i> 本站消息</a></li>
+            </ul>
+        </nav>
+<!--TadNews Start-->
+<div style="margin-bottom: 30px;">
+    
+        <nav aria-label='breadcrumb'>
+        <ol class='breadcrumb'>
+            <li class='breadcrumb-item '><a href='index.php?ncsn=0'><i class='fa fa-home'></i><span class='sr-only visually-hidden'>回首頁</span></a></li><li class='breadcrumb-item active'><a href='index.php?ncsn=1'>最新公告</a></li>
+        </ol>
+        </nav>
+</div>
+
+<h2 class="sr-only visually-hidden">文章列表</h2>
+    <table class="table table-striped table-hover table-shadow">
+        <tbody>
+                            <tr class="my">
+                    <th>最新公告</th>
+                </tr>
+                                        <tr>
+                    <td>
+                        
+                        2026-10-16
+
+                        <a class='badge' style='background-color: #0000ff; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?tag_sn=7'>教務處</a>
+                                                
+                        <img src='https://www.ycsh.cyc.edu.tw/modules/tadnews/images/top.gif' alt='置頂文章' title='置頂文章' hspace=3 align='absmiddle'>
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21214">2026學習扶助成長測驗時間及學扶考古題</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=66">課務組</a> / 142 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-22
+
+                        <a class='badge' style='background-color: #0000ff; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?tag_sn=7'>教務處</a>
+                                                
+                        
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21274">因應颱風薔琵來襲，10/22(四)晚自習暫停一次</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=10">註冊組</a> / 91 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-22
+
+                        <a class='badge' style='background-color: #0000ff; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?tag_sn=8'>學務處</a>
+                                                
+                        
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21270">高級中等以上學校115學年度第1學期配合交通部公路局「推動機車駕訓制度」補助計畫調查案</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=18">生活輔導組</a> / 34 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-21
+
+                        <a class='badge' style='background-color: #0000ff; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?tag_sn=18'>大學升學</a>
+                                                
+                        
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=17248">台灣大學116學年度「希望入學」及「特殊人才甄選入學」招生資訊(校內報名事宜)</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=12">試務組</a> / 909 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-21
+
+                        <a class='badge' style='background-color: #0000ff; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?tag_sn=18'>大學升學</a>
+                                                
+                        
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21269">國立中正大學116學年度學士班【特殊選才】(含新住民入學)招生相關資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=12">試務組</a> / 44 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-21
+
+                        <a class='badge' style='background-color: #0000ff; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?tag_sn=18'>大學升學</a>
+                                                
+                        
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21267">真理大學116學年度學士班【特殊選才】招生訊息</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=12">試務組</a> / 32 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-21
+
+                        <a class='badge' style='background-color: #0000ff; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?tag_sn=7'>教務處</a>
+                                                
+                        
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21266">115學年度教育部高中優質化輔助方案課程與教學創新方案甄選</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=52">實驗研究組</a> / 38 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-21
+
+                        <a class='badge' style='background-color: #0000ff; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?tag_sn=18'>大學升學</a>
+                                                
+                        
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21264">國立臺北教育大學116學年度學士班音樂學系【單獨招生】相關資訊</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=12">試務組</a> / 35 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-20
+
+                        
+                                                
+                        
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21259">反詐騙宣導_游安順-盜用LINE帳號假冒親友催票</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=18">生活輔導組</a> / 30 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-10-20
+
+                        <a class='badge' style='background-color: #0000ff; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?tag_sn=8'>學務處</a>
+                                                
+                        
+                        <a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21256">迷你廚房玩具安全宣導事項</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=18">生活輔導組</a> / 48 / <a href="index.php?ncsn=1">最新公告</a>)</span>
+                        
+                    </td>
+                </tr>
+                    </tbody>
+    </table>
+    
+                <div class='text-center'>
+                    <nav>
+                        <ul class='pagination justify-content-center flex-wrap'>
+                        <li class="page-item disabled"><a class="page-link disabled" href="#" aria-disabled="true" aria-label="回到第1頁"><span aria-hidden="true">&laquo;</span></a></li><li class="page-item disabled"><a class="page-link disabled" href="#" aria-disabled="true" aria-label="上一頁"><span aria-hidden="true">&lsaquo;</span></a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" title="第1頁" href="/modules/tadnews/index.php?ncsn=1&g2p=1">1<span class="sr-only">(目前頁次)</span></a></li><li class="page-item"><a class="page-link" title="第2頁" href="/modules/tadnews/index.php?ncsn=1&g2p=2">2</a></li><li class="page-item"><a class="page-link" title="第3頁" href="/modules/tadnews/index.php?ncsn=1&g2p=3">3</a></li><li class="page-item"><a class="page-link" title="第4頁" href="/modules/tadnews/index.php?ncsn=1&g2p=4">4</a></li><li class="page-item"><a class="page-link" title="第5頁" href="/modules/tadnews/index.php?ncsn=1&g2p=5">5</a></li><li class="page-item"><a class="page-link" title="第6頁" href="/modules/tadnews/index.php?ncsn=1&g2p=6">6</a></li><li class="page-item"><a class="page-link" title="第7頁" href="/modules/tadnews/index.php?ncsn=1&g2p=7">7</a></li><li class="page-item"><a class="page-link" title="第8頁" href="/modules/tadnews/index.php?ncsn=1&g2p=8">8</a></li><li class="page-item"><a class="page-link" title="第9頁" href="/modules/tadnews/index.php?ncsn=1&g2p=9">9</a></li><li class="page-item"><a class="page-link" title="第10頁" href="/modules/tadnews/index.php?ncsn=1&g2p=10">10</a></li>
+                        <li class="page-item"><a class="page-link" href="/modules/tadnews/index.php?ncsn=1&g2p=2"><span aria-hidden="true" aria-label="下一頁">&rsaquo;</span><span class="sr-only">下一頁</span></a></li><li class="page-item"><a class="page-link" href="/modules/tadnews/index.php?ncsn=1&g2p=331"><span aria-hidden="true" aria-label="跳到最後一頁">&raquo;</span><span class="sr-only">最後頁</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+    
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+</script>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+</div>        </div>
+
+        <div id="xoops_theme_right_zone" class="col-lg order-3 order-xl-3">
+            <div id="xoops_theme_right"  style="">
+                <a accesskey="B"  href="#xoops_theme_right_zone" id="xoops_theme_right_zone_key" class="sr-only-focusable" aria-label="跳到右邊區域">:::</a>
+                    <h2 class="sr-only visually-hidden">右邊區域內容</h2>
+	                    <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            數位巡堂點名
+                    </h3>
+                    <div class="blockContent">
+                    <p><a href="https://campus.ycsh.cyc.edu.tw/school/Landing" target="_blank"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">教師點名登入</span></span> </a></p>
+
+<p>&nbsp;</p>
+
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            學生證遺失申請
+                    </h3>
+                    <div class="blockContent">
+                    <p><span style="font-size: 1.13rem;"><span style="color: rgb(0, 179, 255);"><span style="text-decoration: none; font-weight: 700">★</span></span><a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?ncsn=1&amp;nsn=16736"><span style="color:#000000;"><span style="text-decoration: none; font-weight: 700">學生證遺失申請/新辦領取步驟說明</span></span></a></span></p>
+
+<p><span style="font-size: 1.13rem;"><a href="https://forms.gle/AWDuAAxzpwC89T8u7" target="_blank"><span style="color: rgb(0, 179, 255);"><span style="text-decoration: none; font-weight: 700">★</span></span><span style="color: rgb(0, 0, 0);"><span style="text-decoration: none; font-weight: 700">學生證遺失申請表單(以學校信箱登入)</span></span> </a></span></p>
+
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            教室/場地/設備預約(新)
+                    </h3>
+                    <div class="blockContent">
+                    <div class="blockContent">
+<p><a href="https://www.ycsh.cyc.edu.tw/modules/tad_booking/index.php" target="_blank" title="另開新視窗" rel="noopener noreferrer"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">場地 / 設備預約</span></span> </a></p>
+
+<p><a href="https://www.ycsh.cyc.edu.tw/modules/tad_booking/batch.php" target="_blank" title="另開新視窗" rel="noopener noreferrer"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">批次預約</span></span></a></p>
+
+<p><a href="https://www.ycsh.cyc.edu.tw/modules/tad_booking/manager.php" target="_blank" title="另開新視窗" rel="noopener noreferrer"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">預約管理</span></span> </a></p>
+
+<p><a href="https://www.ycsh.cyc.edu.tw/modules/tad_booking/manager.php" target="_blank" title="另開新視窗" rel="noopener noreferrer"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700"></span></span><span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">專科教室使用紀錄表</span></span><span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700"></span></span></a></p>
+</div>
+
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            科技中心
+                    </h3>
+                    <div class="blockContent">
+                    <p><a href="https://www.facebook.com/%E5%98%89%E7%BE%A9%E7%B8%A3%E6%B0%B8%E6%85%B6%E8%87%AA%E9%80%A0%E6%95%99%E8%82%B2%E5%8F%8A%E7%A7%91%E6%8A%80%E4%B8%AD%E5%BF%83-121431782585270" target="_blank"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">Facebook</span></span> </a></p>
+
+<p><a href="https://tech.k12ea.gov.tw/" target="_blank"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">自造教育及科技中心</span></span> </a></p>
+
+<p><a href="https://tech.k12ea.gov.tw/admin/" target="_blank"><span style="color: #00b3ff; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">★</span></span> <span style="color: #000000; font-size: 1.2rem;"><span style="text-decoration: none; font-weight: 700">管理平台</span></span> </a></p>
+
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            政令宣導網站
+                    </h3>
+                    <div class="blockContent">
+                                <div class="row">
+                        <div class="col-sm-6" >
+                <div class="thumbnail my-2" >
+                    <a href='https://www.gender.edu.tw/web/index.php/m7/m7_08_02_index' target='_blank' title='校園性侵害性騷擾或性霸凌防治'><img src='https://www.ycsh.cyc.edu.tw/uploads/tad_link/13.jpg' alt='https://www.gender.edu.tw/web/index.php/m7/m7_08_02_index' class='img-responsive img-fluid'></a>
+                                            <div class="caption">
+                            <p style="font-size: 0.75rem;height: 1.2rem; overflow: hidden;"><a href='https://www.gender.edu.tw/web/index.php/m7/m7_08_02_index' target='_blank' title='校園性侵害性騷擾或性霸凌防治'>校園性侵害性騷擾或性霸凌防治</a></p>                                                    </div>
+                                    </div>
+            </div>
+                        <div class="col-sm-6" >
+                <div class="thumbnail my-2" >
+                    <a href='https://enc.moe.edu.tw/VideoList' target='_blank' title='教育部防制學生藥物濫用資源網'><img src='https://www.ycsh.cyc.edu.tw/uploads/tad_link/3.jpg' alt='https://enc.moe.edu.tw/VideoList' class='img-responsive img-fluid'></a>
+                                            <div class="caption">
+                            <p style="font-size: 0.75rem;height: 1.2rem; overflow: hidden;"><a href='https://enc.moe.edu.tw/VideoList' target='_blank' title='教育部防制學生藥物濫用資源網'>教育部防制學生藥物濫用資源網</a></p>                                                    </div>
+                                    </div>
+            </div>
+                        <div class="col-sm-6" >
+                <div class="thumbnail my-2" >
+                    <a href='http://www.cdc.gov.tw/' target='_blank' title='衛生福利部疾病管制署一般民眾版'><img src='https://www.ycsh.cyc.edu.tw/uploads/tad_link/2.jpg' alt='http://www.cdc.gov.tw/' class='img-responsive img-fluid'></a>
+                                            <div class="caption">
+                            <p style="font-size: 0.75rem;height: 1.2rem; overflow: hidden;"><a href='http://www.cdc.gov.tw/' target='_blank' title='衛生福利部疾病管制署一般民眾版'>衛生福利部疾病管制署一般民眾版</a></p>                                                    </div>
+                                    </div>
+            </div>
+                        <div class="col-sm-6" >
+                <div class="thumbnail my-2" >
+                    <a href='https://isafe.moe.edu.tw/event/' target='_blank' title='全民資安素養自我評量首頁'><img src='https://www.ycsh.cyc.edu.tw/uploads/tad_link/4.jpg' alt='https://isafe.moe.edu.tw/event/' class='img-responsive img-fluid'></a>
+                                            <div class="caption">
+                            <p style="font-size: 0.75rem;height: 1.2rem; overflow: hidden;"><a href='https://isafe.moe.edu.tw/event/' target='_blank' title='全民資安素養自我評量首頁'>全民資安素養自我評量首頁</a></p>                                                    </div>
+                                    </div>
+            </div>
+                    </div>
+    
+            <div style="text-align:right;">
+            [ <a href="https://www.ycsh.cyc.edu.tw/modules/tad_link/index.php?cate_sn=1">more...</a> ]
+        </div>
+    
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            學校家庭教育資源專區
+                    </h3>
+                    <div class="blockContent">
+                    <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="https://www.ycsh.cyc.edu.tw/modules/tadtools/css/vertical_menu.css">
+        <ul id="tad_block_link_154" class="vertical_menu"><li style=""><a href="https://cic.familyedu.moe.gov.tw/downloadList.aspx?uid=3423&pid=3422&rn=-26104" target="_blank"><span style="">嘉義縣家庭教育中心</span></a></li></ul>
+
+                </div>
+            </div>
+                      </div>
+        </div>
+        <div style="clear: both;"></div>
+</div>
+
+<!-- 根據寬度動態調整區塊的 DOM 順序，以修正鍵盤焦點 (Tab) 的導覽順序 -->
+<script type="text/javascript">
+    (function() {
+        /**
+         * 調整 Tab 焦點順序的邏輯：
+         * 1. 寬屏 (Desktop / xl 以上)：左 (Left) -> 中 (Center) -> 右 (Right)
+         * 2. 窄屏 (Mobile / 1200px 以下)：中 (Center) -> 左 (Left) -> 右 (Right)
+         */
+        
+        // 記錄目前的螢幕類別，避免重複操作 DOM
+        let isLastDesktop = null;
+
+        function adjustTabOrder(e) {
+            const container = document.getElementById('xoops_theme_content_zone');
+            if (!container) return;
+
+            const left = document.getElementById('xoops_theme_left_zone');
+            const center = document.getElementById('xoops_theme_center_zone');
+            const right = document.getElementById('xoops_theme_right_zone');
+
+            // 判斷是否為 xl 以上的寬屏 (1200px 為 Bootstrap 5 的 xl 斷點)
+            const isDesktop = e ? e.matches : window.matchMedia('(min-width: 1200px)').matches;
+
+            // 如果寬度分類沒有改變，就不要觸發 DOM 操作，避免手機版 Chrome 因虛擬鍵盤彈出觸發 resize 導致輸入框失去焦點
+            if (isLastDesktop === isDesktop) return;
+            isLastDesktop = isDesktop;
+
+            if (isDesktop) {
+                // 桌機版：左 -> 中 -> 右
+                if (left && center) {
+                    container.insertBefore(left, center);
+                }
+                if (center && right) {
+                    container.insertBefore(center, right);
+                } else if (left && right) {
+                    container.insertBefore(left, right);
+                }
+            } else {
+                // 行動版：中 -> 左 -> 右 (優先顯示主內容)
+                if (center && left) {
+                    container.insertBefore(center, left);
+                }
+                if (left && right) {
+                    container.insertBefore(left, right);
+                } else if (center && right) {
+                    container.insertBefore(center, right);
+                }
+            }
+        }
+
+        const mediaQuery = window.matchMedia('(min-width: 1200px)');
+
+        // 監聽媒體查詢的變更事件，只有在跨越 1200px 斷點時才觸發，這在手機上彈出虛擬鍵盤時不會被觸發
+        if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', adjustTabOrder);
+        } else if (mediaQuery.addListener) {
+            mediaQuery.addListener(adjustTabOrder);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            adjustTabOrder(mediaQuery);
+        });
+
+        // 立即執行一次
+        adjustTabOrder(mediaQuery);
+    })();
+</script>
+        </div>
+    </div>
+</div>
+
+<!-- 顯示參數，開發用，開發完可刪除 -->
+                </main>
+            </div>
+            <h2 class="sr-only visually-hidden">頁尾區域</h2>
+            <footer>
+                                    <div id="footer-wrapper">
+        <div id="footer-display">
+            <div>
+                                                <table background="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2019/config2/config2_footer_img_1_2.gif"><tr>
+<td width=102px>
+<img alt=img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2019/config2/config2_footer_img_1_1.jpg" style="margin-top: -1px;">
+</td>
+<td >
+<p align="center">嘉義縣立永慶高級中學 電話：05-3627226 <b>
+<a href="https://www.ycsh.cyc.edu.tw/modules/tadnews/page.php?ncsn=29&nsn=102">
+<span style="color: #800070;">分機表</span></a></b> 傳真：05-3627216<br>
+本校地址：61248 嘉義縣太保市信義二路1號 公務信箱 ycsh@mail.cyc.edu.tw</p>
+</td>
+<td width=21px>
+<img alt=img src="https://www.ycsh.cyc.edu.tw/uploads/tad_themes/school2019/config2/config2_footer_img_1_3.gif" style="margin-top: -1px;">
+</td>
+</tr></table>
+            </div>
+        </div>
+    </div>
+
+                                
+
+
+
+
+
+
+            </footer>
+        </div>
+        
+                
+                
+        <!-- 載入自訂js -->
+        <script type="text/javascript" src="https://www.ycsh.cyc.edu.tw/modules/tadtools/jquery.sticky/jquery.sticky.js"></script>
+
+<script type="text/javascript">
+(function () {
+    /**
+     * 無障礙跳轉區塊聚焦提示 (無障礙 WCAG 2.4.7)
+     *
+     * 以 JS 動態加掛 .skip-target-active class 取代 CSS :target 偽類。
+     *
+     * :target 的根本問題：
+     *   樣式由 URL hash 驅動，瀏覽器「先更新 hash，再移動焦點」，
+     *   導致任何以 focusout + zone.id 比對 hash 的清除邏輯都有時序 Bug。
+     *   即便改用 history.replaceState，也只是在補救，而非從根本解決。
+     *
+     * 新方案優點：
+     *   1. 觸發（加 class）與清除（移除 class）均由 JS 直接控制，無時序問題。
+     *   2. 不需要 history.replaceState，不操作 URL，對瀏覽歷史無副作用。
+     *   3. 重複跳轉到同一區塊時，動畫可正確重播（透過 requestAnimationFrame 重設）。
+     */
+
+    var ACTIVE_CLASS = 'skip-target-active';
+
+    /**
+     * 移除頁面上所有目前套用聚焦提示的區塊樣式
+     */
+    function clearAllActive() {
+        var actives = document.querySelectorAll('.' + ACTIVE_CLASS);
+        actives.forEach(function (el) {
+            el.classList.remove(ACTIVE_CLASS);
+        });
+    }
+
+    /**
+     * 對目標區塊加掛聚焦提示 class
+     * 若目標已有 class（重複激活），先移除再於下一個影格重新加入，以重播動畫
+     * @param {string} targetId 目標區塊的 id
+     */
+    function activateZone(targetId) {
+        clearAllActive();
+        var zone = document.getElementById(targetId);
+        if (!zone) return;
+
+        if (zone.classList.contains(ACTIVE_CLASS)) {
+            // 重複跳轉同一區塊時，先移除讓瀏覽器重新渲染，再加回以觸發動畫
+            zone.classList.remove(ACTIVE_CLASS);
+            requestAnimationFrame(function () {
+                zone.classList.add(ACTIVE_CLASS);
+            });
+        } else {
+            zone.classList.add(ACTIVE_CLASS);
+        }
+    }
+
+    /**
+     * 若 targetEl 不在任何 .skip-target-active 區塊內，移除所有提示樣式
+     * @param {Element} targetEl 目前取得焦點或被點擊的元素
+     */
+    function clearIfOutside(targetEl) {
+        var actives = document.querySelectorAll('.' + ACTIVE_CLASS);
+        actives.forEach(function (zone) {
+            if (!zone.contains(targetEl)) {
+                zone.classList.remove(ACTIVE_CLASS);
+            }
+        });
+    }
+
+    function attachListeners() {
+        // 監聽頁面上所有帶有 accesskey 且 href 指向 #id 的跳轉連結
+        var skipLinks = document.querySelectorAll('a[accesskey][href^="#"]');
+        skipLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                var targetId = link.getAttribute('href').slice(1);
+                activateZone(targetId);
+            });
+        });
+
+        // 全域 focusin：焦點移入任何元素時，若已離開目前 active 區塊則清除
+        document.addEventListener('focusin', function (event) {
+            clearIfOutside(event.target);
+        });
+
+        // 全域 pointerdown（捕獲）：點擊非可聚焦區域時同樣清除（focusin 此時不觸發）
+        document.addEventListener('pointerdown', function (event) {
+            clearIfOutside(event.target);
+        }, true);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attachListeners);
+    } else {
+        attachListeners();
+    }
+})();
+
+
+    $(document).ready(function(){
+        $("select[name='xoops_theme_select']").addClass("form-control");
+        $("input[name='query']").addClass("form-control");
+        $("input[name='uname']").addClass("form-control");
+        $("input[name='pass']").addClass("form-control");
+
+                    $('[data-bs-toggle="tooltip"]').tooltip();
+        
+                                                        
+                                                
+            if($( window ).width() > 768){
+                $("#top-wrapper").sticky({topSpacing:0 , zIndex: 8, getWidthFrom:'#top-wrapper'});
+            }else{
+                $("#top-wrapper").unstick();
+            }
+            });
+
+        // pin_zone=top
+        $(window).resize(function() {
+            if($(window).width() > 768){
+                // 避免在手機狀態下無法上下選擇選項
+                $("#top-wrapper").sticky({topSpacing:0 , zIndex: 8, getWidthFrom:'#top-wrapper'});
+            }else{
+                $("#top-wrapper").unstick();
+            }
+        });
+    </script>
+
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Noto+Serif+TC&display=swap" rel="stylesheet" media="all">
+    </body>
+</html>

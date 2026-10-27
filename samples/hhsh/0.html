@@ -1,0 +1,2834 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+    <head>
+                <!--目前$_SESSION['bootstrap']="5"; -->
+        <!--將目前的資料夾名稱，設定為樣板標籤變數 theme_name-->
+                
+        <!-- theme_id= 4-->
+        
+
+                            
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        
+        <meta name="robots" content="index,follow">
+        <meta name="keywords" content="行政院公告修正「管制藥品分級及品項」部分分級及品項1份">
+        <meta name="description" content="">
+        <meta name="rating" content="general">
+        <meta name="author" content="XOOPS">
+        <meta name="copyright" content="Copyright © 2001-2026">
+        <meta name="generator" content="XOOPS">
+        <meta property="og:title" content="行政院公告修正「管制藥品分級及品項」部分分級及品項1份">
+        <meta property="og:type" content="website">
+
+
+        <meta property="og:site_name" content="嘉義市興華高級中學－存好心、說好話、做好事、學好樣、讀好書">
+        <!-- 網站的標題及標語 -->
+        <title>嘉義市興華高級中學－存好心、說好話、做好事、學好樣、讀好書 - 行政院公告修正「管制藥品分級及品項」部分分級及品項1份</title>
+
+                <!-- Rss -->
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="https://www.hhsh.cy.edu.tw/backend.php">
+        <!-- icon -->
+        <link href="https://www.hhsh.cy.edu.tw/favicon.ico" rel="SHORTCUT ICON">
+        <!-- Sheet Css -->
+        <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="https://www.hhsh.cy.edu.tw/xoops.css">
+        <!-- XOOPS theme Sheet Css -->
+        <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="https://www.hhsh.cy.edu.tw/themes/school2022/css/xoops.css?t=20260423">
+        <link href="https://www.hhsh.cy.edu.tw/modules/tadtools/bootstrap5/css/bootstrap.css" rel="stylesheet" media="all">
+        <!-- theme_color= bootstrap5 -->
+
+        <!-- Theme Sheet Css -->
+        <link rel="stylesheet" type="text/css" media="all" href="https://www.hhsh.cy.edu.tw/themes/school2022/css/style.css">
+
+        <!-- 給模組套用的樣板標籤開始 -->
+        <script src="https://www.hhsh.cy.edu.tw/browse.php?Frameworks/jquery/jquery.js" type="text/javascript"></script>
+<script src="https://www.hhsh.cy.edu.tw/browse.php?Frameworks/jquery/plugins/jquery.ui.js" type="text/javascript"></script>
+<script src="https://www.hhsh.cy.edu.tw/modules/tadtools/jquery/jquery.ui.touch-punch.min.js" type="text/javascript"></script>
+<script src="https://www.hhsh.cy.edu.tw/include/xoops.js" type="text/javascript"></script>
+<script src="https://www.hhsh.cy.edu.tw/themes/school2022/language/tchinese_utf8/script.js" type="text/javascript"></script>
+<script src="https://www.hhsh.cy.edu.tw/modules/tadtools/colorbox/jquery.colorbox.js" type="text/javascript"></script>
+<script src="https://www.hhsh.cy.edu.tw/modules/tadtools/prism/prism.js" type="text/javascript"></script>
+<script src="https://www.hhsh.cy.edu.tw/modules/tadtools/fancyBox/lib/jquery.mousewheel.pack.js" type="text/javascript"></script>
+<script src="https://www.hhsh.cy.edu.tw/modules/tadtools/fancyBox/source/jquery.fancybox.js?t=20260525" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+                jQuery(document).ready(function(){
+                    $('.fancybox_nsn').fancybox({
+                    
+                    fitToView : true,
+                    width   : '1920',
+                    height    : '1080',
+                    
+                    
+                    autoSize  : false,
+                    closeClick  : false,
+                    openEffect  : 'none',
+                    closeEffect : 'none'
+                    
+                    
+                    ,
+        beforeShow: function () {
+            // 將 data-alt 的內容設定到圖片的 alt 屬性
+            var alt = this.element.data('alt');
+            this.inner.find('img').attr('alt', alt);
+        },
+        afterShow: function () {
+            // 取得圖片說明文字：優先用 data-alt，其次用 title，最後用索引提示
+            var speakText = this.element.data('alt')
+                         || this.element.attr('title')
+                         || ('第 ' + ($.fancybox.current.index + 1) + ' 張，共 ' + $.fancybox.current.group.length + ' 張');
+
+            // 透過 Web Speech API 朗讀圖片說明
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                var utterance = new SpeechSynthesisUtterance(speakText);
+                utterance.lang = 'zh-TW';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+                    });
+                });
+            
+//]]></script>
+<script type="text/javascript" src="https://www.hhsh.cy.edu.tw/class/textsanitizer/image/image.js"></script>
+<script src="https://www.hhsh.cy.edu.tw/modules/tadtools/sweet-alert/sweetalert2.all.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+            function delete_tad_news_func(nsn){
+                swal.fire({
+                    title: '確定要刪除此資料？',
+                    text: '相關資料通通都將會被移除！',
+                    html: '',
+                    timer: 0,
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: '確定刪除！',
+                    cancelButtonColor: '#8c8c8c',
+                    closeOnConfirm: false,
+                    allowOutsideClick: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        
+                    var form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '/modules/tadnews/index.php';
+                    var data = {'op': 'delete_tad_news', 'XOOPS_TOKEN_REQUEST': '411c3739f606fe2e3c479b5971e651cc', 'nsn': nsn};
+                    for (var key in data) {
+                        if (data.hasOwnProperty(key)) {
+                            var input = document.createElement('input');
+                            input.type  = 'hidden';
+                            input.name  = key;
+                            input.value = data[key];
+                            form.appendChild(input);
+                        }
+                    }
+                    document.body.appendChild(form);
+                    form.submit();
+            
+                    }
+                });
+            }
+            
+//]]></script>
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/jquery/themes/base/jquery.ui.all.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/language/tchinese_utf8/style.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tad_gphotos/css/module.css?t=1793070147" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/css/vertical_menu.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/media/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/colorbox/colorbox.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/css/xoops.css?t=20260521" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/css/fontawesome6/css/all.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/prism/prism.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/css/iconize.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/fancyBox/source/jquery.fancybox.css?t=20260525" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/sweet-alert/sweetalert2.min.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadnews/css/module.css" type="text/css" />
+<link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadnews/css/module2.css" type="text/css" />
+
+
+        <!-- 給模組套用的樣板標籤結束 -->
+
+        <!-- 局部套用的樣式，如果有載入完整樣式 theme_css.tpl 那就不需要這一部份 -->
+        <!--導覽工具列、區塊標題CSS設定開始-->
+<style type="text/css">
+    body {
+        color: #202020;
+        background-color: #d8dcff;
+                background-position: left top;
+        background-repeat: repeat;
+        background-attachment: scroll;
+        background-size: auto;
+        font-size: 1rem;
+            }
+
+    a {
+        color:#005ca8;
+            }
+
+    a:hover {
+        color:#a40019;
+    }
+
+    #nav-container, #nav-wrapper {
+                    /* position: relative; */
+                z-index: 11;
+                    background-color:tranparent;
+            }
+
+    #xoops_theme_nav {
+                                    background: linear-gradient(#fdffd8c1, #f0f2d8);
+                        }
+
+    /* theme_css_blocks.tpl */
+        .leftBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #00bf76;                        text-indent: 9px;            }
+
+    .leftBlock a.block_config,
+    .leftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .leftBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .leftBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+/*text-shadow:none;  移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 40px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .leftBlock .blockContent{
+        padding: 10px;
+border: 1.5px solid skyblue;
+border-radius: 5px; /* 圓角 */
+font-family:"Microsoft JhengHei", sans-serif;
+    }
+    
+    .rightBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #00bf76;                        text-indent: 9px;            }
+
+    .rightBlock a.block_config,
+    .rightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .rightBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .rightBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+/*text-shadow:none;  移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容background: #003153; /* 設*/
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 40px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .rightBlock .blockContent{
+        padding: 10px;
+border: 1.5px solid skyblue;
+border-radius: 5px; /* 圓角 */
+font-family:"Microsoft JhengHei", sans-serif;
+    }
+    
+    .centerBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #00c3bc;                        text-indent: 9px;            }
+
+    .centerBlock a.block_config,
+    .centerBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .centerBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+/*text-shadow:none;  移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 40px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .centerBlock .blockContent{
+        padding: 10px;
+border: 1.5px solid skyblue;
+border-radius: 5px; /* 圓角 */
+font-family:"Microsoft JhengHei", sans-serif;
+    }
+    
+    .centerLeftBlock .blockTitle{
+        font-size: 1.3rem;        color: #ffffff;        background-color: #00c3b3;                        text-indent: 9px;            }
+
+    .centerLeftBlock a.block_config,
+    .centerLeftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerLeftBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .centerLeftBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+/*text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;*/
+text-shadow:none; /* 移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+background: #003153; /* 設定底色為 Prussian Blue (#003153) */
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 50px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .centerLeftBlock .blockContent{
+        padding: 10px;
+border: 1px solid skyblue;
+border-radius: 0px; /* 移除圓角，讓四周都是直角 */
+    }
+    
+    .centerRightBlock .blockTitle{
+        font-size: 1.3rem;        color: #ffffff;        background-color: #00c3b3;                        text-indent: 9px;            }
+
+    .centerRightBlock a.block_config,
+    .centerRightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerRightBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .centerRightBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+/*text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;*/
+text-shadow:none; /* 移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+background: #003153; /* 設定底色為 Prussian Blue (#003153) */
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 50px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .centerRightBlock .blockContent{
+        padding: 10px;
+border: 1px solid skyblue;
+border-radius: 0px; /* 移除圓角，讓四周都是直角 */
+    }
+    
+    .centerBottomBlock .blockTitle{
+        font-size: 1.1rem;        color: #ffffff;        background-color: #00c3b3;                        text-indent: 9px;            }
+
+    .centerBottomBlock a.block_config,
+    .centerBottomBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBottomBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .centerBottomBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;
+/*text-shadow:none;  移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 40px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .centerBottomBlock .blockContent{
+        padding: 10px;
+border: 1.5px solid skyblue;
+border-radius: 5px; /* 圓角 */
+font-family:"Microsoft JhengHei", sans-serif;
+    }
+    
+    .centerBottomLeftBlock .blockTitle{
+        font-size: 1.3rem;        color: #ffffff;        background-color: #007b79;                        text-indent: 9px;            }
+
+    .centerBottomLeftBlock a.block_config,
+    .centerBottomLeftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBottomLeftBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .centerBottomLeftBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+/*text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;*/
+text-shadow:none; /* 移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+background: #003153; /* 設定底色為 Prussian Blue (#003153) */
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 50px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .centerBottomLeftBlock .blockContent{
+        padding: 10px;
+border: 1px solid skyblue;
+border-radius: 0px; /* 移除圓角，讓四周都是直角 */
+    }
+    
+    .centerBottomRightBlock .blockTitle{
+        font-size: 1.3rem;        color: #ffffff;        background-color: #007b79;                        text-indent: 9px;            }
+
+    .centerBottomRightBlock a.block_config,
+    .centerBottomRightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .centerBottomRightBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .centerBottomRightBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+/*text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;*/
+text-shadow:none; /* 移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+background: #003153; /* 設定底色為 Prussian Blue (#003153) */
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 50px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .centerBottomRightBlock .blockContent{
+        padding: 10px;
+border: 1px solid skyblue;
+border-radius: 0px; /* 移除圓角，讓四周都是直角 */
+    }
+    
+    .footerCenterBlock .blockTitle{
+        font-size: 1.3rem;        color: #ffffff;        background-color: #007b79;                        text-indent: 9px;            }
+
+    .footerCenterBlock a.block_config,
+    .footerCenterBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .footerCenterBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .footerCenterBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+/*text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;*/
+text-shadow:none; /* 移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+background: #003153; /* 設定底色為 Prussian Blue (#003153) */
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 50px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .footerCenterBlock .blockContent{
+        padding: 10px;
+border: 1px solid skyblue;
+border-radius: 0px; /* 移除圓角，讓四周都是直角 */
+    }
+    
+    .footerLeftBlock .blockTitle{
+        font-size: 1.3rem;        color: #ffffff;        background-color: #007b79;                        text-indent: 9px;            }
+
+    .footerLeftBlock a.block_config,
+    .footerLeftBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .footerLeftBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .footerLeftBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+/*text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;*/
+text-shadow:none; /* 移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+background: #003153; /* 設定底色為 Prussian Blue (#003153) */
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 50px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .footerLeftBlock .blockContent{
+        padding: 10px;
+border: 1px solid skyblue;
+border-radius: 0px; /* 移除圓角，讓四周都是直角 */
+    }
+    
+    .footerRightBlock .blockTitle{
+        font-size: 1.3rem;        color: #ffffff;        background-color: #007b79;                        text-indent: 9px;            }
+
+    .footerRightBlock a.block_config,
+    .footerRightBlock a.tad_block_config{
+        float: right;
+        position: relative;
+        z-index: 1;
+    }
+
+        .footerRightBlock{
+        position: relative;
+margin: 15px 0px 25px;
+
+
+
+    }
+    
+        .footerRightBlock .blockTitle{
+        /*border-bottom: 2px solid #7cb6b7;*/
+padding: 10px;
+
+font-weight:normal;
+text-align:center;
+color: #ffffff; /* 設定文字顏色為全白 */
+font-family:"Microsoft JhengHei", sans-serif; /* 設定文字為微軟正黑體 */
+border-radius: 5px;
+/*text-shadow: 0px 1px #0d4e5c, 1px 0px #0d4e5c, -1px 0px #0d4e5c, 0px -1px #0d4e5c, -1px -1px #0d4e5c, 1px 1px #0d4e5c, 1px -1px #0d4e5c, -1px 1px #0d4e5c;*/
+text-shadow:none; /* 移除文字陰影 */
+border: none; /* 確保沒有邊框 */
+margin-bottom: 0px; /* 保持底部沒有外距 */
+display: flex; /* 使用 flexbox 來置中內容 */
+justify-content: center; /* 水平置中 */
+align-items: center; /* 垂直置中 */
+text-align: center; /* 讓多行文字也置中 */
+background: #003153; /* 設定底色為 Prussian Blue (#003153) */
+overflow: hidden;
+
+text-align: center; /* 讓多行文字也置中 */
+height: 50px; /* 設定區塊高度 (可依需求調整) */
+    }
+    
+        .footerRightBlock .blockContent{
+        padding: 10px;
+border: 1px solid skyblue;
+border-radius: 0px; /* 移除圓角，讓四周都是直角 */
+    }
+    
+
+    /* theme_css_navbar.tpl */
+    </style>
+        <style type="text/css">
+            
+#xoops_theme_left_zone{
+    background-color:#edfcff;
+    padding: 0px 14px;
+}
+#xoops_theme_center_zone{
+    background-color:#edfcff;
+    padding: 0px 14px;
+}
+#xoops_theme_right_zone {
+    background-color:#edfcff;
+    padding: 0px 14px;
+}
+            #page-wrapper,
+#top-wrapper,#top-display,
+#logo-wrapper,#logo-display,
+#nav-wrapper,#nav-display,
+#slide-wrapper,#slide-display,
+#base-wrapper,#base-display,
+#footer-wrapper,#footer-display,
+#bottom-wrapper,#bottom-display
+{
+    max-width: 100%;
+}
+
+#page-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+    
+        background: #ffffff ;    margin-top: 60px;    margin-bottom: 60px;        
+                                            
+
+    box-shadow: 0px 0px 6px 3px rgba(50, 50, 50, 0.4);    padding: 10px;}
+
+#page-display{
+            margin: 0px auto;
+                    }
+
+#page-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+@media (min-width: 768px) {
+    #page-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #page-wrapper, #page-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+#top-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+    
+    z-index: 8;    background: #edfcff ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        font-size: 0.8rem;
+font-family:"Microsoft JhengHei", sans-serif; }
+
+#top-display{
+            margin: 0px auto;
+    padding: 0px 0px;        background-color: #edfcff;    min-height: 5px;    color: #47000d;}
+
+#top-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #top-wrapper,
+    #top-display,
+    #top-display img {
+        border-radius: 10px;
+    }
+
+@media (min-width: 768px) {
+    #top-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #top-wrapper, #top-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}    #top-display a,
+    #top-display a:hover,
+    #top-display a:active ,
+    #top-display a:visited {
+        color:#47000d;
+    }
+
+
+#logo-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+    
+    z-index: 7;    background: transparent ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#logo-display{
+            margin: 0px auto;
+    padding: 10px;        background-color: transparent;        }
+
+#logo-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+
+@media (min-width: 768px) {
+    #logo-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #logo-wrapper, #logo-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+#logo-wrapper{
+    }
+
+#nav-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+    
+    z-index: 8;    background: transparent ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#nav-display{
+            margin: 0px auto;
+    padding: 0px;                }
+
+#nav-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #nav-wrapper,
+    #nav-display,
+    #nav-display img {
+        border-radius: 5px;
+    }
+
+@media (min-width: 768px) {
+    #nav-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #nav-wrapper, #nav-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}                    #nav-display {
+            background: linear-gradient(#fdffd8c1,#f0f2d8) ;
+        }
+        #nav-wrapper{
+            background: transparent;
+        }
+    
+#main-menu li {
+    color:#3b3b3b;
+}
+
+#slide-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+    
+        background: transparent ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#slide-display{
+            margin: 0px auto;
+    padding: 0px;        background-color: transparent;        }
+
+#slide-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #slide-wrapper,
+    #slide-display,
+    #slide-display img {
+        border-radius: 10px;
+    }
+
+@media (min-width: 768px) {
+    #slide-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #slide-wrapper, #slide-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+#middle-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+    
+        background: transparent ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#middle-display{
+            margin: 0px auto;
+    padding: 0px;        background-color: #779300;    min-height: 10;    color: #f5ffe0;}
+
+#middle-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #middle-wrapper,
+    #middle-display,
+    #middle-display img {
+        border-radius: 5px;
+    }
+
+@media (min-width: 768px) {
+    #middle-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #middle-wrapper, #middle-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}    #middle-display a,
+    #middle-display a:hover,
+    #middle-display a:active ,
+    #middle-display a:visited {
+        color:#f5ffe0;
+    }
+
+#content-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+    
+        background: #ffffff ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#content-display{
+            margin: 0px auto;
+    padding: 0px;                color: #202020;}
+
+#content-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #content-wrapper,
+    #content-display,
+    #content-display img {
+        border-radius: 0px;
+    }
+
+@media (min-width: 768px) {
+    #content-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #content-wrapper, #content-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}
+
+
+#footer-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+    
+        background: #f6f6f6 ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#footer-display{
+            margin: 0px auto;
+    padding: 30px 30px;        background-color: #f6f6f6;    min-height: 10px;    color: #555555;}
+
+#footer-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #footer-wrapper,
+    #footer-display,
+    #footer-display img {
+        border-radius: 0px;
+    }
+
+@media (min-width: 768px) {
+    #footer-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #footer-wrapper, #footer-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}    #footer-display a,
+    #footer-display a:hover,
+    #footer-display a:active ,
+    #footer-display a:visited {
+        color:#555555;
+    }
+
+
+#bottom-wrapper{
+    position: relative;
+    padding: 0px;
+    margin: auto;
+    
+        background: #585858 ;    margin-top: 0px;    margin-bottom: 0px;        
+            
+
+        }
+
+#bottom-display{
+            margin: 0px auto;
+    padding: 10px;        background-color: #585858;    min-height: 60px;    color: #ffffff;}
+
+#bottom-display>div{
+    padding: 0px;
+    margin: 0px;
+}
+
+    #bottom-wrapper,
+    #bottom-display,
+    #bottom-display img {
+        border-radius: 0px;
+    }
+
+@media (min-width: 768px) {
+    #bottom-wrapper{
+            }
+}
+
+
+@media (max-width: 768px) {
+    #bottom-wrapper, #bottom-display{
+        max-width: 100%;
+    }
+
+    #page-wrapper{
+        padding: 0px;
+        margin: 0px;
+    }
+}    #bottom-display a,
+    #bottom-display a:hover,
+    #bottom-display a:active ,
+    #bottom-display a:visited {
+        color:#ffffff;
+    }
+
+@media (min-width: 768px) {
+    #page-wrapper{
+        max-width: 90%;
+    }
+}        </style>
+
+        <!-- 載入bootstrap -->
+                <!--Bootstrap js-->
+        <script src="https://www.hhsh.cy.edu.tw/modules/tadtools/bootstrap5/js/bootstrap.bundle.js"></script>
+    </head>
+
+    <body >
+        <!-- 增加跳至主要內容連結 (WCAG 2.4.1) -->
+                <a class="visually-hidden-focusable" href="#xoops_theme_center_zone">跳至主內容區</a>
+
+        <h1 class="sr-only visually-hidden">嘉義市興華高級中學－存好心、說好話、做好事、學好樣、讀好書</h1>
+        <!-- 導覽列區域 -->
+        
+                <div id="page-wrapper">
+        
+                
+
+
+
+
+
+
+
+        <div id="top-wrapper">
+        <div id="top-display">
+            <div style="font-size: 0.8rem;
+font-family:"Microsoft JhengHei", sans-serif; " class="row">
+                                
+                
+                                    <div class="col-xl-12 text-xl-end">
+                                                                                                                                                    
+                    <div class="d-inline-block">                     <a href="https://www.facebook.com/profile.php?id=100057530405585&locale=zh_TW"
+        target="_blank"        rel="noopener noreferrer"
+        class="sidark"
+        aria-label="學校粉專（另開新視窗）">
+        <i class="fab fa-facebook" data-bs-toggle="tooltip" data-bs-title="學校粉專" aria-hidden="true"></i></a>
+                        <a href="https://youtube.com/channel/UCKWPY7nprdQ6sNj3o4SkkTQ?si=ZorGOXYe-GdmkGAW"
+        target="_blank"        rel="noopener noreferrer"
+        class="sidark"
+        aria-label="學校頻道（另開新視窗）">
+        <i class="fab fa-youtube" data-bs-toggle="tooltip" data-bs-title="學校頻道" aria-hidden="true"></i></a>
+    </div>
+    
+    
+    
+    
+            <div class="d-inline-block"> <form role="search" action="https://www.hhsh.cy.edu.tw/search.php" method="get">
+    <div class="input-group input-group-sm">
+        <input class="form-control" type="text" name="query" title="search" placeholder="請輸入關鍵字" aria-label="請輸入關鍵字">
+        <input type="hidden" name="action" value="results">
+        <button class="btn btn-secondary" type="submit"><i class="fa fa-magnifying-glass" aria-hidden="true"></i><span class="sr-only visually-hidden">search</span></button>
+    </div>
+</form></div>
+    
+    
+                        </div>
+                            </div>
+        </div>
+    </div>
+
+                <header>
+                    </header>
+
+                
+                            <div id="slide-wrapper">
+    <div id="slide-display">
+        <div>
+                            
+            <link rel="stylesheet" type="text/css" media="all"  href="https://www.hhsh.cy.edu.tw/modules/tadtools/themes_common/slider/templatemo/nivo-slider.css">
+<script type="text/javascript" src="https://www.hhsh.cy.edu.tw/modules/tadtools/jquery/jquery-migrate-1.4.1.min.js"></script>
+<script type="text/javascript" src="https://www.hhsh.cy.edu.tw/modules/tadtools/themes_common/slider/templatemo/jquery.nivo.slider.pack.js"></script>
+
+<script type='text/javascript'>
+$(function(){
+    $('#nivoSlider').nivoSlider({
+        pauseTime: 10000,
+                directionNav: true,
+        controlNav: true,
+                boxCols: 16
+    });
+});
+</script>
+
+    <!-- 滑動圖片 -->
+    <div id="templatemo_slider">
+        <div id="slider-wrapper">
+            <div id="nivoSlider" class="nivoSlider">
+                                                            <a href="https://www.hhsh.cy.edu.tw"  點此回首頁 title="點此回首頁"                        >
+                            <img src="https://www.hhsh.cy.edu.tw/uploads/tad_themes/school2022/slide/slide_4_8_xFh.png" alt="Slider" title="">
+                        </a>
+                                                                                <a href="https://www.hhsh.cy.edu.tw"  點此回首頁 title="點此回首頁"                        >
+                            <img src="https://www.hhsh.cy.edu.tw/uploads/tad_themes/school2022/slide/slide_4_9_xhz.png" alt="Slider" title="">
+                        </a>
+                                                                                <a href="https://www.hhsh.cy.edu.tw"  點此回首頁 title="點此回首頁"                        >
+                            <img src="https://www.hhsh.cy.edu.tw/uploads/tad_themes/school2022/slide/slide_4_7_qIY.png" alt="Slider" title="">
+                        </a>
+                                                                                <a href="https://www.hhsh.cy.edu.tw"  點此回首頁 title="點此回首頁"                        >
+                            <img src="https://www.hhsh.cy.edu.tw/uploads/tad_themes/school2022/slide/slide_4_10_pBk.png" alt="Slider" title="">
+                        </a>
+                                                                                <a href="https://www.hhsh.cy.edu.tw"  點此回首頁 title="點此回首頁"                        >
+                            <img src="https://www.hhsh.cy.edu.tw/uploads/tad_themes/school2022/slide/slide_4_8_J1j.png" alt="Slider" title="">
+                        </a>
+                                                                                <a href="https://www.hhsh.cy.edu.tw"  點此回首頁 title="點此回首頁"                        >
+                            <img src="https://www.hhsh.cy.edu.tw/uploads/tad_themes/school2022/slide/slide_4_9_rcm.png" alt="Slider" title="">
+                        </a>
+                                                                                <a href="https://www.hhsh.cy.edu.tw"  點此回首頁 title="點此回首頁"                        >
+                            <img src="https://www.hhsh.cy.edu.tw/uploads/tad_themes/school2022/slide/slide_4_10_VQk.png" alt="Slider" title="">
+                        </a>
+                                                </div>
+            <div id="htmlcaption" class="nivo-html-caption">
+                <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+            </div>
+        </div>
+    </div>
+                        </div>
+    </div>
+</div>        
+                            <nav>
+                    <h2 class="sr-only visually-hidden">導覽列</h2>
+    <div id="nav-wrapper">
+        <div id="nav-display">
+            <link rel="stylesheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/tad_nav/tadnav.css?t=20260818">
+
+<script>
+    function tad_themes_popup(URL) {
+        $.colorbox({iframe:true, width:"80%", height:"90%",href : URL});
+    }
+</script>
+
+<!-- default -->
+<a accesskey="U" href="#main-menu" id="xoops_theme_nav_key" class="tadnav-skip" aria-label="跳到導覽工具列">:::</a>
+<nav class="tadnav-wrapper" role="navigation" id="main-nav" aria-label="導覽工具列">
+    <div class="tadnav-inner">
+                    <div class="tadnav-brand">
+                            </div>
+        
+        <!-- 漢堡按鈕（手機/放大時顯示）-->
+        <button class="tadnav-toggle"
+                aria-expanded="false"
+                aria-controls="main-menu"
+                aria-label="漢堡選單">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        </button>
+
+
+        <ul id="main-menu" class="tadnav-menu" role="menubar" aria-label="導覽列">
+                            <li role="none">
+                    <a href="https://www.hhsh.cy.edu.tw/index.php" role="menuitem"><i class="fa fa-home" aria-hidden="true"></i> 回首頁</a>
+                </li>
+            
+            
+            
+                <li role="none">
+                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        學校簡介
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="學校簡介子選單">
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=2&nsn=30"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學校沿革
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=2&nsn=29"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學校特色及發展目標
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=2&nsn=71"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                歷任董事長
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=2&nsn=27"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                歷任校長
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=2&nsn=57"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                興華校徽、校歌、校旗
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=2&nsn=28"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學校位置
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        行政單位
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="行政單位子選單">
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=52"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學校分機
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=56"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                校長室
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=58"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                教務處
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=60"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學務處
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=62"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                總務處
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=65"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                輔導室
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=59"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                圖書資訊處
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=66"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                實習處
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=63"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                會計室
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=651"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                人事室
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=21&nsn=74"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                國際暨推廣教育處
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        協力組織
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="協力組織子選單">
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=53"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                董事會
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=54"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                家長會
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=55"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                校友會
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=1021"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                親師志工團
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=14&nsn=473"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                學生會
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        招生資訊
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="招生資訊子選單">
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=115&nsn=1941"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                國中部招生
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        興華臉書
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="興華臉書子選單">
+                    <li role="none">
+                                    <a href="https://www.facebook.com/profile.php?id=100057530405585"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                興華粉絲專頁
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.facebook.com/profile.php?id=100068103245273"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                羽球隊粉專
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        教育儲蓄戶
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="教育儲蓄戶子選單">
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=49&nsn=31"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                興華高級中學教育儲蓄戶執行規定
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.edusave.edu.tw/"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                教育儲蓄戶
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.edu.tw/helpdreams/Default.aspx"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                圓夢助學網
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        英文版
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="英文版子選單">
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=84&nsn=80"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                About Us
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=84&nsn=82"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                Our Departments
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=84&nsn=81"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                International cultural exchange
+                    </a>
+                            </li>
+                    <li role="none">
+                                    <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=84&nsn=83"
+                        role="menuitem"
+                                                    target="_self"
+                                                    >
+                                                Contact us
+                    </a>
+                            </li>
+            </ul>
+            </li>
+    <li role="none">
+                        
+    <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        舊版網站
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>
+    <ul class="tadnav-submenu" role="menu" aria-label="舊版網站子選單">
+                    <li role="none">
+                                    <a href="http://163.27.14.2/one.php"
+                        role="menuitem"
+                                                    target="_blank"
+                                                            title="另開新視窗"
+                                                    >
+                                                舊版網站
+                    </a>
+                            </li>
+            </ul>
+            </li>
+
+            <!-- 靠右填充 -->
+            <li class="tadnav-spacer" role="none" aria-hidden="true"></li>
+
+            
+                            <li role="none">
+                                        <button class="tadnav-submenu-toggle"
+        role="menuitem"
+        aria-haspopup="true"
+        aria-expanded="false">
+        
+        登入
+        <span class="tadnav-arrow" aria-hidden="true"></span>
+</button>                        <ul class="tadnav-submenu" role="menu" aria-label="登入選單">
+            <li role="none">
+            <form action="https://www.hhsh.cy.edu.tw/user.php" method="post">
+                <div style="margin: 10px; padding: 10px;">
+                    <h2 class="h5 mb-3">
+                        登入                    </h2>
+                    
+                    <!-- 使用 Bootstrap 5 的 Floating labels -->
+                    <div class="form-floating mb-3">
+                        <input type="text" name="uname" id="menu_uname" class="form-control" placeholder="請輸入帳號" required aria-required="true" data-bs-toggle="tooltip" data-bs-title="帳號為必填">
+                        <label for="menu_uname">帳號 (必填) </label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input type="password" name="pass" id="menu_pass" class="form-control" placeholder="請輸入密碼" required aria-required="true" data-bs-toggle="tooltip" data-bs-title="密碼為必填">
+                        <label for="menu_pass">密碼 (必填) </label>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-grid gap-2">
+                                                                                    <input type="hidden" name="xoops_redirect" value="/modules/tadnews/index.php?tag_sn=14">
+                            <input type="hidden" name="rememberme" value="On">
+                            <input type="hidden" name="op" value="login">
+                            <input type="hidden" name="xoops_login" value="1">
+                            <button type="submit" class="btn btn-primary btn-block py-2 btn-lg" aria-label="登入">
+                                登入
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                            </form>
+        </li>
+    
+    
+        <li role="none">
+            <a href="https://www.hhsh.cy.edu.tw/modules/tadtools/ajax_file.php?op=remove_json" title="重整畫面圖示" role="menuitem" class="d-flex align-items-center px-3 py-2">
+                <i class="fa fa-refresh me-2" aria-hidden="true"></i> <span>重取設定</span>
+            </a>
+        </li>
+    </ul>
+                </li>
+                    </ul>
+    </div>
+</nav>
+
+<script type="text/javascript" src="https://www.hhsh.cy.edu.tw/modules/tadtools/tad_nav/tadnav.js?t=2026082708"></script>
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        // 或指定 click 模式
+        var nav = new TadNav('#main-menu', { trigger: 'hover', hoverClose: true, mobileNavTheme:  'dark', theme: {
+        navBg:           'transparent',
+        fontFamily:      '',
+        navShadow:       'none',
+        itemColor:       '#3b3b3b',
+        itemHoverBg:     '#ecfdffaa',
+        itemHoverColor:  '#3b3b3b',
+        itemFontSize:    '1rem',
+        itemPaddingX:    '8px',
+        itemPaddingY:    '15px',
+        subItemPaddingX: '8px',
+        subItemPaddingY: '15px',
+        subBg:           '#ecfdff',
+        subItemColor:    '#3b3b3b',
+        subItemHoverBg:  '#ecfdffaa',
+        subItemHoverColor:  '#3b3b3b',
+        subItemFontSize: '1rem',
+        subDividerWidth: '0',
+        subDividerWidth: '1px',
+        subDivider:      '#00000011',
+        subShadow:       '0 4px 16px rgba(0,0,0,0.12)',
+        innerMaxWidth:   '1920px',
+        subScrollMargin: 24,   // 距視窗底部保留 24px
+        } });
+    });
+</script>
+
+<!-- $use_pin = 0 , $pin_zone = top , $navbar_pos = default -->
+        </div>
+    </div>
+            </nav>
+        
+        
+                
+
+
+
+
+
+    <div id="middle-wrapper">
+        <div id="middle-display">
+            <div style="" class="row">
+                                                    <div class="col-xl-12 text-xl-start">
+                        
+                                                                                                                            
+    
+            <div class="d-block">
+            <!-- bid=  63 (跑馬燈[hide]) -->
+                                        <link href='https://www.hhsh.cy.edu.tw/modules/tadtools/tad_marquee/tad_marquee.css' rel='stylesheet' type='text/css'>
+<script type='text/javascript' src='https://www.hhsh.cy.edu.tw/modules/tadtools/tad_marquee/tad_marquee.js'></script>
+<div id='tad_blocks_marquee_63' style='width:100%; height:2.5rem;' class='dont-print'></div>
+<script>
+    const marquee = new TadMarquee('tad_blocks_marquee_63', {
+        direction: 'left',
+        speed: 50,
+        pauseButtonPosition: 'right',
+        containerStyle: 'background-color: transparent; border: 1px solid transparent;',
+        itemStyle: 'font-size: 1.25em; color: #ffffff; padding: 5px 5px;',
+        items: [{"type":"text","content":"(小六升國一)嘉義市興華中學國中部116學年度小六競試，即日起開始報名，洽教務處註冊組或負責招生輔導老師。","link":"https:\/\/signup.hhsh.cy.edu.tw\/","target":"_self","rel":"noopener noreferrer","ariaLabel":"前往 (小六升國一)嘉義市興華中學國中部116學年度小六競試，即日起開始報名，洽教務處註冊組或負責招生輔導老師。"}]
+    });
+</script>
+
+
+                        </div>
+    
+    
+    
+    
+    
+                        </div>
+                
+                
+                            </div>
+        </div>
+    </div>
+
+                
+        <div class="d-flex flex-column">
+            <div class="flex-grow-1">
+                                <main>
+                    <div id="content-wrapper" tabindex="-1" style="outline: none;">
+    <div id="content-display">
+        <div class="container-fluid">
+            <!-- 載入布局 -->
+                        
+<div id="xoops_theme_content_zone" class="row g-0">
+            <!-- 若是有左、右區塊 -->
+        <div id="xoops_theme_left_zone" class="col-lg order-2 order-xl-1">
+            <div id="xoops_theme_left" style="">
+                <a accesskey="L" href="#xoops_theme_left_zone"  id="xoops_theme_left_zone_key" class="sr-only-focusable" aria-label="跳到左邊區域">:::</a>
+                <h2 class="sr-only visually-hidden">左邊區域內容</h2>
+
+                        <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            招生專區
+                    </h3>
+                    <div class="blockContent">
+                    <p style="text-align: center;"><a href="http://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=19&amp;nsn=1209"><span class="sr-only">p://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=19&amp;nsn=1209</span></a></p>
+
+<p style="text-align: center;"><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=99"><span class="sr-only">o https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=99</span></a><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=101&amp;nsn=907"><span class="sr-only"><img alt="" class="img-fluid" role="presentation" src="https://www.hhsh.cy.edu.tw/uploads/tad_blocks/image/116%E5%B0%8F%E5%85%AD.png" style="width: 100%; height: 100%;">to https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=19&amp;nsn=1209</span></a></p>
+
+<p style="text-align: center;"><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=19&amp;nsn=1209"><span class="sr-only" style="display: inline !important;">link to https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=19&amp;nsn=1209</span></a></p>
+
+<p style="text-align: center;"><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=115&amp;nsn=1941" rel="noopener noreferrer" target="_blank" title="另開新視窗"><img alt="" class="img-fluid" role="presentation" src="https://www.hhsh.cy.edu.tw/uploads/tad_blocks/image/%E5%B0%8F%E5%85%AD%E6%8B%9B%E7%94%9F.png" style="width: 100%; height: 100%;"></a><br>
+<a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=101&amp;nsn=1196"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=101&amp;nsn=907</span></a></p>
+
+<p style="text-align: center;"><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=101&amp;nsn=1196"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=101&amp;nsn=1196</span></a><a href="https://www.hhsh.cy.edu.tw/uploads/tad_blocks/file/02-08%E9%AB%98%E4%B8%AD%E8%81%B7115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%85%A5%E5%AD%B8%E5%B0%88%E6%A1%88%EF%BC%9A%E5%8F%B0%E7%81%A3%E5%81%8F%E9%84%89%E5%85%92%E7%AB%A5%E6%95%99%E8%82%B2%E5%9F%BA%E9%87%91%E6%9C%83%E8%88%87%E5%98%89%E7%BE%A9%E5%B8%82%E8%88%88%E8%8F%AF%E9%AB%98%E7%B4%9A%E4%B8%AD%E5%AD%B8%E5%90%88%E8%BE%A6%E9%9B%B2%E5%98%89%E5%98%89.pdf" title="（PDF格式）"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/uploads/tad_blocks/file/02-08%E9%AB%98%E4%B8%AD%E8%81%B7115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E5%85%A5%E5%AD%B8%E5%B0%88%E6%A1%88%EF%BC%9A%E5%8F%B0%E7%81%A3%E5%81%8F%E9%84%89%E5%85%92%E7%AB%A5%E6%95%99%E8%82%B2%E5%9F%BA%E9%87%91%E6%9C%83%E8%88%87%E5%98%89%E7%BE%A9%E5%B8%82%E8%88%88%E8%8F%AF%E9%AB%98%E7%B4%9A%E4%B8%AD%E5%AD%B8%E5%90%88%E8%BE%A6%E9%9B%B2%E5%98%89%E5%98%89.pdf</span></a><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=19&amp;nsn=1209"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=19&amp;nsn=1209</span></a><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=19&amp;nsn=753"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=19&amp;nsn=753</span></a><span class="sr-only">ink to https://signup.hhsh.cy.edu.tw/ _blank</span><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=734"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=734</span></a><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?nsn=177"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?nsn=177</span></a></p>
+
+<p><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=734"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=734</span></a></p>
+
+<p><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=20&amp;nsn=409"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=20&amp;nsn=409</span></a><a href="https://forms.gle/mZnXcKHRBqo8RBeJA" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only">link to https://forms.gle/mZnXcKHRBqo8RBeJA _blank</span></a></p>
+
+<p><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?nsn=177"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?nsn=177</span></a></p>
+
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            倒數計時
+                    </h3>
+                    <div class="blockContent">
+                    
+<link href='https://www.hhsh.cy.edu.tw/modules/tad_web/class/Countdown/timeTo.css' rel='stylesheet' />
+<script src='https://www.hhsh.cy.edu.tw/modules/tad_web/class/Countdown/jquery.time-to.js'></script>
+<style>
+.timeTo ul li{color: #FFFFFF;}
+</style>
+<div class='text-center'>
+  <div style='font-size: 1.5em; margin-bottom:10px;'>116年學測</div>
+  <div id='countdownzbvH'></div>
+</div>
+
+<script type='text/javascript'>
+  $(function () {
+    $('#countdownzbvH').timeTo({
+        timeTo: new Date(new Date('2027-01-22')),
+        displayDays: 3,
+        theme: 'black',
+        displayCaptions: true,
+        fontSize: 20,
+        captionSize: 12,
+        lang:'zh'
+    });
+  });
+</script>
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            倒數計時
+                    </h3>
+                    <div class="blockContent">
+                    
+<link href='https://www.hhsh.cy.edu.tw/modules/tad_web/class/Countdown/timeTo.css' rel='stylesheet' />
+<script src='https://www.hhsh.cy.edu.tw/modules/tad_web/class/Countdown/jquery.time-to.js'></script>
+<style>
+.timeTo ul li{color: #FFFFFF;}
+</style>
+<div class='text-center'>
+  <div style='font-size: 1.5em; margin-bottom:10px;'>116年統測</div>
+  <div id='countdown3uKV'></div>
+</div>
+
+<script type='text/javascript'>
+  $(function () {
+    $('#countdown3uKV').timeTo({
+        timeTo: new Date(new Date('2027-04-30')),
+        displayDays: 3,
+        theme: 'black',
+        displayCaptions: true,
+        fontSize: 20,
+        captionSize: 12,
+        lang:'zh'
+    });
+  });
+</script>
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            倒數計時
+                    </h3>
+                    <div class="blockContent">
+                    
+<link href='https://www.hhsh.cy.edu.tw/modules/tad_web/class/Countdown/timeTo.css' rel='stylesheet' />
+<script src='https://www.hhsh.cy.edu.tw/modules/tad_web/class/Countdown/jquery.time-to.js'></script>
+<style>
+.timeTo ul li{color: #FFFFFF;}
+</style>
+<div class='text-center'>
+  <div style='font-size: 1.5em; margin-bottom:10px;'>116年國中會考</div>
+  <div id='countdownZIkv'></div>
+</div>
+
+<script type='text/javascript'>
+  $(function () {
+    $('#countdownZIkv').timeTo({
+        timeTo: new Date(new Date('2027-05-15')),
+        displayDays: 3,
+        theme: 'black',
+        displayCaptions: true,
+        fontSize: 20,
+        captionSize: 12,
+        lang:'zh'
+    });
+  });
+</script>
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            倒數計時
+                    </h3>
+                    <div class="blockContent">
+                    
+<link href='https://www.hhsh.cy.edu.tw/modules/tad_web/class/Countdown/timeTo.css' rel='stylesheet' />
+<script src='https://www.hhsh.cy.edu.tw/modules/tad_web/class/Countdown/jquery.time-to.js'></script>
+<style>
+.timeTo ul li{color: #FFFFFF;}
+</style>
+<div class='text-center'>
+  <div style='font-size: 1.5em; margin-bottom:10px;'>116年分科測驗</div>
+  <div id='countdowndwyr'></div>
+</div>
+
+<script type='text/javascript'>
+  $(function () {
+    $('#countdowndwyr').timeTo({
+        timeTo: new Date(new Date('2027-07-10')),
+        displayDays: 3,
+        theme: 'black',
+        displayCaptions: true,
+        fontSize: 20,
+        captionSize: 12,
+        lang:'zh'
+    });
+  });
+</script>
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            自主學習專區
+                    </h3>
+                    <div class="blockContent">
+                                            <select onChange="window.open(this.value,'_blank');" style='background-color: ;color: ;' class="form-control form-control form-select" title="select cate">
+                <option value="">數位學習平台</option>
+                                    <option value='https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=112&nsn=539'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        AILEAD365 線上教學平臺
+                    </option>
+                                    <option value='https://adl.edu.tw/HomePage/home/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        教育部因材網
+                    </option>
+                                    <option value='https://www.coolenglish.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        Cool English酷英網
+                    </option>
+                                    <option value='https://www.pagamo.org/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        PaGamo素養學習
+                    </option>
+                                    <option value='https://udncollege.udn.com/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        聯合學苑
+                    </option>
+                                    <option value='https://tempd.18code.tw:7173/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        十八豆教育科技
+                    </option>
+                            </select>
+                    <select onChange="window.open(this.value,'_blank');" style='background-color: ;color: ;' class="form-control form-control form-select" title="select cate">
+                <option value="">自主學習資源</option>
+                                    <option value='https://coocplus.tp.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        臺北酷課雲
+                    </option>
+                                    <option value='https://e-peer.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        e-Peer共學平台
+                    </option>
+                                    <option value='https://sdl.ntl.edu.tw/sdl/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        高級中等學校自主學習資源網
+                    </option>
+                                    <option value='https://www.junyiacademy.org/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        均一教育平台
+                    </option>
+                                    <option value='https://www.learnmode.net/home/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        LearnMode 學習吧
+                    </option>
+                                    <option value='https://ipac.nlpi.edu.tw/index'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        國立公共資訊圖書館
+                    </option>
+                                    <option value='https://moocs.moe.edu.tw/moocs/#/home'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        教育部磨課師平台
+                    </option>
+                                    <option value='https://shs.k12ea.gov.tw/site/12basic/category?root=42&cid=16614&oid=92008'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        108課綱資訊網
+                    </option>
+                                    <option value='https://stv.naer.edu.tw/learning/index.jsp'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        愛學網
+                    </option>
+                                    <option value='https://oidcebook.nlpi.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        教育雲電子書服務平台
+                    </option>
+                            </select>
+                    <select onChange="window.open(this.value,'_blank');" style='background-color: ;color: ;' class="form-control form-control form-select" title="select cate">
+                <option value="">加深加廣學習資源</option>
+                                    <option value='https://elearn.arte.gov.tw/mooc/index.php'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        臺灣藝術教育館-網路藝學園
+                    </option>
+                                    <option value='https://scitechvista.nat.gov.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        科技大觀園
+                    </option>
+                                    <option value='https://teric.naer.edu.tw/wSite/mp?mp=teric_b'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        台灣教育研究院資訊網
+                    </option>
+                                    <option value='https://cis.ncu.edu.tw/ApcourseSys/home'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        大學先修課程資訊平台
+                    </option>
+                            </select>
+                    <select onChange="window.open(this.value,'_blank');" style='background-color: ;color: ;' class="form-control form-control form-select" title="select cate">
+                <option value="">中/日/英文 檢定資訊</option>
+                                    <option value='https://www.toeic.com.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        TOEIC臺灣區官方網站
+                    </option>
+                                    <option value='https://www.gept.org.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        GEPT全民英檢網
+                    </option>
+                                    <option value='https://www.cwt.org.tw/CWTFrontEnd/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        CWT 全民中檢 專業中文檢定
+                    </option>
+                                    <option value='https://tw.myet.com/MyETWeb/PersonalizedPage.aspx'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        My ET、My CT、My JT
+                    </option>
+                                    <option value='https://www.jlpt.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        日本與能力試驗JLPT
+                    </option>
+                            </select>
+                    <select onChange="window.open(this.value,'_blank');" style='background-color: ;color: ;' class="form-control form-control form-select" title="select cate">
+                <option value="">技術士 技能檢定資訊</option>
+                                    <option value='https://www.wdasec.gov.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        勞動部勞動力發展署技能檢定中心
+                    </option>
+                            </select>
+                    <select onChange="window.open(this.value,'_blank');" style='background-color: ;color: ;' class="form-control form-control form-select" title="select cate">
+                <option value="">學習歷程檔案資源</option>
+                                    <option value='https://www.108epo.com/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        作伙學
+                    </option>
+                                    <option value='https://shs.k12ea.gov.tw/site/12basic/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        學習歷程說明
+                    </option>
+                                    <option value='https://www.youtube.com/playlist?list=PLOG4pyKCUrsT5VjIA4Q4-KE0YagwCCCSL'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        數位學習資源中心
+                    </option>
+                                    <option value='https://www.youtube.com/watch?v=BnyxtjaDq3M'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        學習歷程檔案(操作教學-學生)
+                    </option>
+                            </select>
+            
+    <div style="text-align:right;">
+        [ <a href="https://www.hhsh.cy.edu.tw/modules/tad_link/index.php">more...</a> ]
+    </div>
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            欣河校務系統
+                    </h3>
+                    <div class="blockContent">
+                    <link href="https://www.hhsh.cy.edu.tw/modules/tadtools/css/vertical_menu.css" media="all" rel="stylesheet" title="Style sheet" type="text/css" />
+<ul class="vertical_menu" id="tad_block_link_86">
+	<li style=""><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=52" target="_blank"><span jhenghei="" microsoft="" style="font-family:"></span><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=52 _blank</span></a><a href="https://shinher.hhsh.cy.edu.tw/online_jnr/" target="_blank">線上查詢系統-國中部</a></li>
+	<li style=""><a href="https://shinher.hhsh.cy.edu.tw/online/" target="_blank">線上查詢系統-高中職</a></li>
+	<li style=""><a href="https://shinher.hhsh.cy.edu.tw/ePortfolio/" target="_blank">學生學習歷程檔案系統</a></li>
+	<li style=""><a href="https://shinher.hhsh.cy.edu.tw/online_assoko/" target="_blank">社團選社-國中部</a></li>
+	<li style=""><a href="https://shinher.hhsh.cy.edu.tw/online_asso/" target="_blank">社團選社-高中職</a><br />
+	<a href="https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=53" target="_blank"><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=53 _blank</span></a></li>
+</ul>
+
+
+                </div>
+            </div>
+                                <div class="leftBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            升學相關網站
+                    </h3>
+                    <div class="blockContent">
+                                            <select onChange="window.open(this.value,'_blank');" style='background-color: ;color: ;' class="form-control form-control form-select" title="select cate">
+                <option value="">國中部升學資源網</option>
+                                    <option value='https://cap.rcpet.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        國中教育會考
+                    </option>
+                                    <option value='https://shs.k12ea.gov.tw/site/adapt-k12ea'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        國中生適性入學網
+                    </option>
+                                    <option value='https://www.entry.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        全國免試入學委員會
+                    </option>
+                                    <option value='https://12basic.rcpet.edu.tw/Login.aspx'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        12年國教適性入學資料管理平台
+                    </option>
+                                    <option value='https://cyc.entry.edu.tw/NoExamImitate_CY/NoExamImitate/Apps/Page/Public/ChooseSys.aspx'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        免試入學委員會
+                    </option>
+                            </select>
+                    <select onChange="window.open(this.value,'_blank');" style='background-color: ;color: ;' class="form-control form-control form-select" title="select cate">
+                <option value="">高中部升學資源網</option>
+                                    <option value='https://www.jbcrc.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        大學招生委員會聯合會
+                    </option>
+                                    <option value='https://www.uac.edu.tw/#'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        大學考試入學分發委員會
+                    </option>
+                                    <option value='https://www.cac.edu.tw/apply114/index.php'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        大學甄選入學委員會-申請入學
+                    </option>
+                                    <option value='https://www.cac.edu.tw/star114/index.php'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        大學甄選入學委員會-繁星推薦
+                    </option>
+                                    <option value='https://collego.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        大學選才與高中育才輔助系統
+                    </option>
+                                    <option value='https://ioh.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        開放個人經驗平台
+                    </option>
+                                    <option value='https://srecruit.moe.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        大學特殊選才
+                    </option>
+                                    <option value='https://www.reallygood.com.tw/newExam/inside?str=932DEFBF9A06471E3A1436C3808D1BB7'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        115學年度大學辦理特殊選才招生網頁：(民間彙集版)
+                    </option>
+                                    <option value='https://nsdua.moe.edu.tw/#/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        多元入學升學網
+                    </option>
+                                    <option value='https://www.ceec.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        大學入學考試中心
+                    </option>
+                                    <option value='https://swellplan.github.io/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        長浪計畫：特殊選才分享
+                    </option>
+                            </select>
+                    <select onChange="window.open(this.value,'_blank');" style='background-color: ;color: ;' class="form-control form-control form-select" title="select cate">
+                <option value="">高職部升學資源網</option>
+                                    <option value='https://www.tcte.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        技專校院入學測驗中心
+                    </option>
+                                    <option value='https://www.jctv.ntut.edu.tw/'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        技專校院招生聯合會
+                    </option>
+                                    <option value='https://www.techadmi.edu.tw/search.php'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        技專校院招生策略委員會
+                    </option>
+                                    <option value='https://exam.taiwanjobs.gov.tw/jobexam/home/landingpage'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        勞動部勞動力發展署-職業心理測驗線上評量網
+                    </option>
+                                    <option value='https://ycnp.yda.gov.tw/about/understanding'>
+                        <i class="fa fa-caret-right" aria-hidden="true"></i>
+                        青年生涯領航計畫
+                    </option>
+                            </select>
+            
+    <div style="text-align:right;">
+        [ <a href="https://www.hhsh.cy.edu.tw/modules/tad_link/index.php">more...</a> ]
+    </div>
+
+                </div>
+            </div>
+                        </div>
+        </div>
+
+        <div id="xoops_theme_center_zone" class="col-xl-7 order-1 order-xl-2" style="">
+            <a accesskey="C" href="#xoops_theme_center_zone" title="主內容區（包含中間區塊及主內容）" id="xoops_theme_center_zone_key" class="sr-only-focusable" aria-label="跳到主內容區">:::</a>
+<div id="xoops_theme_center" style="">
+        <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+
+        <h2 class="sr-only visually-hidden">主內容區域</h2>
+    <div id="xoops_contents">
+        
+        <nav class='toolbar_bootstrap_nav'>
+            <ul>
+            <li class='current' title='本站消息'><a href='https://www.hhsh.cy.edu.tw/modules/tadnews/index.php' ><i class='fa fa-home'></i> 本站消息</a></li>
+            </ul>
+        </nav>
+<!--TadNews Start-->
+<div style="margin-bottom: 30px;">
+    
+</div>
+
+<h2 class="sr-only visually-hidden">文章列表</h2>
+    <table class="table table-striped table-hover table-shadow">
+        <tbody>
+                                        <tr>
+                    <td>
+                        
+                        2026-10-02
+
+                        <a class='badge' style='background-color: #ad00c1; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?tag_sn=14'>公告</a>
+                                                
+                        
+                        <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=1938">行政院公告修正「管制藥品分級及品項」部分分級及品項1份</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=4">教務處</a> / 100 / <a href="index.php?ncsn=61">宣導事項</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-09-29
+
+                        <a class='badge' style='background-color: #ad00c1; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?tag_sn=14'>公告</a>
+                                                
+                        
+                        <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=1922">修正「管制藥品分級及品項」部分分級及品項</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=4">教務處</a> / 95 / <a href="index.php?ncsn=61">宣導事項</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-09-04
+
+                        <a class='badge' style='background-color: #ad00c1; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?tag_sn=14'>公告</a>
+                                                
+                        
+                        <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=1819">威權統治時期國家不法行為之具教職及學生身分被害者名譽回復處理原則</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=8">人事室</a> / 99 / <a href="index.php?ncsn=7">人事</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2026-09-04
+
+                        <a class='badge' style='background-color: #ad00c1; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?tag_sn=14'>公告</a>
+                                                
+                        
+                        <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=1818">國立彰師大116學年度碩士班、博士班推薦甄試招生訊息</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=8">人事室</a> / 126 / <a href="index.php?ncsn=7">人事</a>)</span>
+                        
+                    </td>
+                </tr>
+                            <tr>
+                    <td>
+                        
+                        2025-11-11
+
+                        <a class='badge' style='background-color: #ad00c1; font-weight: normal; color: #ffffff; text-shadow:none;' href='https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?tag_sn=14'>公告</a>
+                                                
+                        
+                        <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=439">公告：交通部中央氣象署颱風消息。</a>
+                        <span style="color:gray;font-size: 0.8rem;"> (<a href="index.php?show_uid=3">訪客</a> / 313 / <a href="index.php?ncsn=39">學務</a>)</span>
+                        
+                    </td>
+                </tr>
+                    </tbody>
+    </table>
+    
+                <div class='text-center'>
+                    <nav>
+                        <ul class='pagination justify-content-center flex-wrap'>
+                        <li class="page-item disabled"><a class="page-link disabled" href="#" aria-disabled="true" aria-label="回到第1頁"><span aria-hidden="true">&laquo;</span></a></li><li class="page-item disabled"><a class="page-link disabled" href="#" aria-disabled="true" aria-label="上一頁"><span aria-hidden="true">&lsaquo;</span></a></li>
+                        <li class="page-item active" aria-current="page"><a class="page-link" title="第1頁" href="/modules/tadnews/index.php?tag_sn=14&g2p=1">1<span class="sr-only">(目前頁次)</span></a></li>
+                        <li class="page-item disabled"><a class="page-link disabled" href="#" aria-disabled="true" aria-label="下一頁"><span aria-hidden="true">&rsaquo;</span></a></li><li class="page-item disabled"><a class="page-link disabled" href="#" aria-disabled="true" aria-label="跳到最後一頁"><span aria-hidden="true">&raquo;</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+    
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-bs-toggle="tooltip"]').tooltip();
+    });
+</script>
+    </div>
+
+    
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+</div>        </div>
+
+        <div id="xoops_theme_right_zone" class="col-lg order-3 order-xl-3">
+            <div id="xoops_theme_right"  style="">
+                <a accesskey="B"  href="#xoops_theme_right_zone" id="xoops_theme_right_zone_key" class="sr-only-focusable" aria-label="跳到右邊區域">:::</a>
+                    <h2 class="sr-only visually-hidden">右邊區域內容</h2>
+	                    <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            粉絲專頁
+                    </h3>
+                    <div class="blockContent">
+                    <iframe title=iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100057530405585%26locale%3Dzh_TW&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            教職員專區
+                    </h3>
+                    <div class="blockContent">
+                    <link href="https://www.hhsh.cy.edu.tw/modules/tadtools/css/vertical_menu.css" media="all" rel="stylesheet" title="Style sheet" type="text/css">
+<ul class="vertical_menu" id="tad_block_link_86">
+	<li style="text-align: justify;"><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=52" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span jhenghei="" microsoft="" style="font-family:"></span><span class="sr-only">link to https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=52 _blank</span></a><span class="sr-only"><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=52" rel="noopener noreferrer" target="_blank" title="另開新視窗">link to https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=52 _blank</a>教師</span><a href="https://www.hhsh.cy.edu.tw/uploads/tad_blocks/file/115.1%E8%A1%8C%E4%BA%8B%E6%9B%86%E5%85%A8%E6%A0%A1%28%E5%AE%9A%E7%A8%BF%29115.09.02.pdf" rel="noopener noreferrer" target="_blank" title="另開新視窗（PDF格式）">行事曆</a></li>
+	<li style=""><a href="https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php">檔案下載 /上傳</a></li>
+	<li style=""><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=85">教師數位資源</a></li>
+	<li style=""><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=53" rel="noopener noreferrer" target="_blank" title="另開新視窗"><span class="sr-only" style="display: inline !important;">link to https://www.hhsh.cy.edu.tw/modules/tadnews/admin/page.php?ncsn=53 _blank</span></a></li>
+</ul>
+
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            課程規劃
+                    </h3>
+                    <div class="blockContent">
+                    <link rel="stylesheet" type="text/css" media="all" title="Style sheet" href="https://www.hhsh.cy.edu.tw/modules/tadtools/css/vertical_menu.css">
+        <ul id="tad_block_link_86" class="vertical_menu"><li style=""><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?nsn=34" target="_self"><span style="font-family:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">國中課程</span></a></li><li style=""><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?nsn=68" target="_self"><span style="font-family:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">普通高中課程</span></a></li><li style=""><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?nsn=70" target="_self"><span style="font-family:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">群科(技術型)課程</span></a></li><li style=""><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=89&nsn=95" target="_self"><span style="font-family:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">本土語文開課</span></a></li><li style=""><a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?nsn=69" target="_self"><span style="font-family:\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\">課業輔導實施計畫</span></a></li></ul>
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            興華(google)相簿
+                    </h3>
+                    <div class="blockContent">
+                        
+            <div class="text-center">
+                            <div class="polaroid" style="width: 80px; height: 60px; margin: 8px;">
+                    <a href="https://www.hhsh.cy.edu.tw/modules/tad_gphotos/index.php?album_sn=12" style="color: transparent; ">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMBDBXENB0YeJu-hdAUJMkmBjN7l3qLmhpvd-RNWx5EXwD7-oAnZKb8f5VAFtdeXj2Z4nJGwSqa69jNqmJpPXvTzxiE_6zk_wwYXKlj85pBaouTqZw" class="thumb-img" style="height: 30px;" alt="img_"><span class="sr-only visually-hidden">1140919(五)-114學年度第一學期全校家長日</span>
+                    </a>
+                    <div class="polaroid-container">
+                        <p>
+                            1140919(五)-114學年度第一學期全校家長日
+                        </p>
+                    </div>
+                </div>
+                            <div class="polaroid" style="width: 80px; height: 60px; margin: 8px;">
+                    <a href="https://www.hhsh.cy.edu.tw/modules/tad_gphotos/index.php?album_sn=37" style="color: transparent; ">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOkqqAg77AxWF6E03KHVM6UItQzdi1rvvHX5UlRW1q4416UQu2Hx-Wkkw6BtQL0-VF7NvF3a9PDFwPzOk4fPVunRJDg6EEIiI7yTnGXyrQS32-XeZA" class="thumb-img" style="height: 30px;" alt="img_"><span class="sr-only visually-hidden">1141101(六)-國中部學校日暨多元進路家長說明會(含國三分科體驗)</span>
+                    </a>
+                    <div class="polaroid-container">
+                        <p>
+                            1141101(六)-國中部學校日暨多元進路家長說明會(含國三分科體驗)
+                        </p>
+                    </div>
+                </div>
+                            <div class="polaroid" style="width: 80px; height: 60px; margin: 8px;">
+                    <a href="https://www.hhsh.cy.edu.tw/modules/tad_gphotos/index.php?album_sn=36" style="color: transparent; ">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczOeD8lG3mgDP2vWA782Ld4ZDa_MzXmnxGJu4NKOkBOZosCfHy1SN530SJ9auFEc-sEztwm64Qjtt5GK0nsR5UD25mZRGxDN1zU0wG1CIaV2Mruh4og" class="thumb-img" style="height: 30px;" alt="img_"><span class="sr-only visually-hidden">1141031(四)高二1優質化生命教育-青春進行式x時光到流術-人體新生與老化的交錯奇蹟</span>
+                    </a>
+                    <div class="polaroid-container">
+                        <p>
+                            1141031(四)高二1優質化生命教育-青春進行式x時光到流術-人體新生與老化的交錯奇蹟
+                        </p>
+                    </div>
+                </div>
+                            <div class="polaroid" style="width: 80px; height: 60px; margin: 8px;">
+                    <a href="https://www.hhsh.cy.edu.tw/modules/tad_gphotos/index.php?album_sn=30" style="color: transparent; ">
+                        <img src="https://lh3.googleusercontent.com/pw/AP1GczMBQKNRPhBhzTjoMwIHfiQrqock6yF3_jHu8ZOxCm4vGzOXV6U3R09zH_UYjzkX5yTfEBsnIkQcOsKr3YSmMz2wF459hUVji-mXSGFAWWJ83eSBI8s" class="thumb-img" style="height: 30px;" alt="img_"><span class="sr-only visually-hidden">1141018(六)高中職部-學校日親職講座暨多元升學宣導</span>
+                    </a>
+                    <div class="polaroid-container">
+                        <p>
+                            1141018(六)高中職部-學校日親職講座暨多元升學宣導
+                        </p>
+                    </div>
+                </div>
+                    </div>
+        <div class="text-right text-end">
+        <span class="badge">
+            <a href="https://www.hhsh.cy.edu.tw/modules/tad_gphotos/index.php">more...</a>
+        </span>
+    </div>
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            其他專區
+                    </h3>
+                    <div class="blockContent">
+                    <link href="https://www.hhsh.cy.edu.tw/modules/tad_blocks/type/toolbar/hover-min.css" rel="stylesheet">
+<link href="https://www.hhsh.cy.edu.tw/modules/tad_blocks/type/toolbar/freq_toolbar.css" rel="stylesheet">
+<div id="freq-link_94" class="freq-link">
+    <ul class="text-center">        <li>
+            <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?nsn=73"  target="_self" style="font-size: 0.75em;"><img src="https://www.hhsh.cy.edu.tw/uploads/tad_blocks/image/01性別平等.png" alt="性別平等 icon" class="hvr-wobble-vertical"><p>性別平等</p></a>
+        </li>        <li>
+            <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=105&nsn=198"  target="_self" style="font-size: 0.75em;"><img src="https://www.hhsh.cy.edu.tw/uploads/tad_blocks/image/02生命教育.png" alt="生命教育 icon" class="hvr-wobble-vertical"><p>生命教育</p></a>
+        </li>        <li>
+            <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=107&nsn=1130"  target="_self" style="font-size: 0.75em;"><img src="https://www.hhsh.cy.edu.tw/uploads/tad_blocks/image/03學習歷程.png" alt="學習歷程 icon" class="hvr-wobble-vertical"><p>學習歷程</p></a>
+        </li>        <li>
+            <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=108&nsn=994"  target="_self" style="font-size: 0.75em;"><img src="https://www.hhsh.cy.edu.tw/uploads/tad_blocks/image/生涯.png" alt="生涯規劃 icon" class="hvr-wobble-vertical"><p>生涯規劃</p></a>
+        </li>        <li>
+            <a href="https://www.hhsh.cy.edu.tw/modules/tadnews/page.php?ncsn=111&nsn=449"  target="_self" style="font-size: 0.75em;"><img src="https://www.hhsh.cy.edu.tw/uploads/tad_blocks/image/興華網站-其他專區小圖示 (1).png" alt="反霸凌 icon" class="hvr-wobble-vertical"><p>反霸凌</p></a>
+        </li>   </ul></div>
+
+                </div>
+            </div>
+                              <div class="rightBlock dont-print">
+                
+            <h3 class="blockTitle dont-print">
+            
+                            宣導網站
+                    </h3>
+                    <div class="blockContent">
+                                <div class="row">
+                        <div class="col-sm-4" >
+                <div class="thumbnail my-2" >
+                    <a href='https://www.gender.edu.tw/web/index.php/home' target='_blank' title='教育部性別平等全球資訊網'><img src='https://www.hhsh.cy.edu.tw/uploads/tad_link/31.jpg' alt='https://www.gender.edu.tw/web/index.php/home' class='img-responsive img-fluid'></a>
+                                            <div class="caption">
+                            <p style="font-size: 0.75rem;height: 1.2rem; overflow: hidden;"><a href='https://www.gender.edu.tw/web/index.php/home' target='_blank' title='教育部性別平等全球資訊網'>教育部性別平等全球資訊網</a></p>                                                    </div>
+                                    </div>
+            </div>
+                        <div class="col-sm-4" >
+                <div class="thumbnail my-2" >
+                    <a href='https://enc.moe.edu.tw/home' target='_blank' title='防治學生藥物濫用資源網'><img src='https://www.hhsh.cy.edu.tw/uploads/tad_link/32.jpg' alt='https://enc.moe.edu.tw/home' class='img-responsive img-fluid'></a>
+                                            <div class="caption">
+                            <p style="font-size: 0.75rem;height: 1.2rem; overflow: hidden;"><a href='https://enc.moe.edu.tw/home' target='_blank' title='防治學生藥物濫用資源網'>防治學生藥物濫用資源網</a></p>                                                    </div>
+                                    </div>
+            </div>
+                        <div class="col-sm-4" >
+                <div class="thumbnail my-2" >
+                    <a href='https://enc.moe.edu.tw/' target='_blank' title='校園安全防護資源網'><img src='https://www.hhsh.cy.edu.tw/uploads/tad_link/33.jpg' alt='https://enc.moe.edu.tw/' class='img-responsive img-fluid'></a>
+                                            <div class="caption">
+                            <p style="font-size: 0.75rem;height: 1.2rem; overflow: hidden;"><a href='https://enc.moe.edu.tw/' target='_blank' title='校園安全防護資源網'>校園安全防護資源網</a></p>                                                    </div>
+                                    </div>
+            </div>
+                    </div>
+    
+            <div style="text-align:right;">
+            [ <a href="https://www.hhsh.cy.edu.tw/modules/tad_link/index.php?cate_sn=10">more...</a> ]
+        </div>
+    
+                </div>
+            </div>
+                      </div>
+        </div>
+        <div style="clear: both;"></div>
+</div>
+
+<!-- 根據寬度動態調整區塊的 DOM 順序，以修正鍵盤焦點 (Tab) 的導覽順序 -->
+<script type="text/javascript">
+    (function() {
+        /**
+         * 調整 Tab 焦點順序的邏輯：
+         * 1. 寬屏 (Desktop / xl 以上)：左 (Left) -> 中 (Center) -> 右 (Right)
+         * 2. 窄屏 (Mobile / 1200px 以下)：中 (Center) -> 左 (Left) -> 右 (Right)
+         */
+        
+        // 記錄目前的螢幕類別，避免重複操作 DOM
+        let isLastDesktop = null;
+
+        function adjustTabOrder(e) {
+            const container = document.getElementById('xoops_theme_content_zone');
+            if (!container) return;
+
+            const left = document.getElementById('xoops_theme_left_zone');
+            const center = document.getElementById('xoops_theme_center_zone');
+            const right = document.getElementById('xoops_theme_right_zone');
+
+            // 判斷是否為 xl 以上的寬屏 (1200px 為 Bootstrap 5 的 xl 斷點)
+            const isDesktop = e ? e.matches : window.matchMedia('(min-width: 1200px)').matches;
+
+            // 如果寬度分類沒有改變，就不要觸發 DOM 操作，避免手機版 Chrome 因虛擬鍵盤彈出觸發 resize 導致輸入框失去焦點
+            if (isLastDesktop === isDesktop) return;
+            isLastDesktop = isDesktop;
+
+            if (isDesktop) {
+                // 桌機版：左 -> 中 -> 右
+                if (left && center) {
+                    container.insertBefore(left, center);
+                }
+                if (center && right) {
+                    container.insertBefore(center, right);
+                } else if (left && right) {
+                    container.insertBefore(left, right);
+                }
+            } else {
+                // 行動版：中 -> 左 -> 右 (優先顯示主內容)
+                if (center && left) {
+                    container.insertBefore(center, left);
+                }
+                if (left && right) {
+                    container.insertBefore(left, right);
+                } else if (center && right) {
+                    container.insertBefore(center, right);
+                }
+            }
+        }
+
+        const mediaQuery = window.matchMedia('(min-width: 1200px)');
+
+        // 監聽媒體查詢的變更事件，只有在跨越 1200px 斷點時才觸發，這在手機上彈出虛擬鍵盤時不會被觸發
+        if (mediaQuery.addEventListener) {
+            mediaQuery.addEventListener('change', adjustTabOrder);
+        } else if (mediaQuery.addListener) {
+            mediaQuery.addListener(adjustTabOrder);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            adjustTabOrder(mediaQuery);
+        });
+
+        // 立即執行一次
+        adjustTabOrder(mediaQuery);
+    })();
+</script>
+        </div>
+    </div>
+</div>
+
+<!-- 顯示參數，開發用，開發完可刪除 -->
+                </main>
+            </div>
+            <h2 class="sr-only visually-hidden">頁尾區域</h2>
+            <footer>
+                                    <div id="footer-wrapper">
+        <div id="footer-display">
+            <div>
+                                                Powered by XOOPS © 2001-2026 <a href="https://xoops.org" rel="external" title="The XOOPS Project">The XOOPS Project</a>
+            </div>
+        </div>
+    </div>
+
+                                
+
+
+
+
+
+
+    <div id="bottom-wrapper">
+        <div id="bottom-display">
+            <div style="" class="row">
+                                                    <div class="col-xl-4 text-xl-start">
+                        
+                                                                                                                                    <div class="d-inline-block"><p>嘉義市私立興華高級中學</p>
+<p> Private Hsing-Hwa Senior High School</p>
+<p>地址：嘉義市林森東路239號</p>
+</div>    
+    
+    
+    
+    
+    
+    
+                        </div>
+                
+                                    <div class="col-xl-4 text-xl-center">
+                                                                                                                                                            <div class="d-inline-block"><span class="ci">
+    <i class="fa fa-phone"></i>  (05) 276-4317
+</span>
+<p>
+<span class="ci">
+    <i class="fa fa-envelope"></i> school@hhsh.cy.edu.tw
+</span>
+</p>
+<p>版權所有 嘉義市私立興華高級中學</p></div>    
+    
+    
+    
+    
+    
+    
+                        </div>
+                
+                                    <div class="col-xl-4 text-xl-end">
+                                                                                                                                                                    </div>
+                            </div>
+        </div>
+    </div>
+            </footer>
+        </div>
+                </div>
+        
+                
+                
+        <!-- 載入自訂js -->
+        <script type="text/javascript" src="https://www.hhsh.cy.edu.tw/modules/tadtools/jquery.sticky/jquery.sticky.js"></script>
+
+<script type="text/javascript">
+(function () {
+    /**
+     * 無障礙跳轉區塊聚焦提示 (無障礙 WCAG 2.4.7)
+     *
+     * 以 JS 動態加掛 .skip-target-active class 取代 CSS :target 偽類。
+     *
+     * :target 的根本問題：
+     *   樣式由 URL hash 驅動，瀏覽器「先更新 hash，再移動焦點」，
+     *   導致任何以 focusout + zone.id 比對 hash 的清除邏輯都有時序 Bug。
+     *   即便改用 history.replaceState，也只是在補救，而非從根本解決。
+     *
+     * 新方案優點：
+     *   1. 觸發（加 class）與清除（移除 class）均由 JS 直接控制，無時序問題。
+     *   2. 不需要 history.replaceState，不操作 URL，對瀏覽歷史無副作用。
+     *   3. 重複跳轉到同一區塊時，動畫可正確重播（透過 requestAnimationFrame 重設）。
+     */
+
+    var ACTIVE_CLASS = 'skip-target-active';
+
+    /**
+     * 移除頁面上所有目前套用聚焦提示的區塊樣式
+     */
+    function clearAllActive() {
+        var actives = document.querySelectorAll('.' + ACTIVE_CLASS);
+        actives.forEach(function (el) {
+            el.classList.remove(ACTIVE_CLASS);
+        });
+    }
+
+    /**
+     * 對目標區塊加掛聚焦提示 class
+     * 若目標已有 class（重複激活），先移除再於下一個影格重新加入，以重播動畫
+     * @param {string} targetId 目標區塊的 id
+     */
+    function activateZone(targetId) {
+        clearAllActive();
+        var zone = document.getElementById(targetId);
+        if (!zone) return;
+
+        if (zone.classList.contains(ACTIVE_CLASS)) {
+            // 重複跳轉同一區塊時，先移除讓瀏覽器重新渲染，再加回以觸發動畫
+            zone.classList.remove(ACTIVE_CLASS);
+            requestAnimationFrame(function () {
+                zone.classList.add(ACTIVE_CLASS);
+            });
+        } else {
+            zone.classList.add(ACTIVE_CLASS);
+        }
+    }
+
+    /**
+     * 若 targetEl 不在任何 .skip-target-active 區塊內，移除所有提示樣式
+     * @param {Element} targetEl 目前取得焦點或被點擊的元素
+     */
+    function clearIfOutside(targetEl) {
+        var actives = document.querySelectorAll('.' + ACTIVE_CLASS);
+        actives.forEach(function (zone) {
+            if (!zone.contains(targetEl)) {
+                zone.classList.remove(ACTIVE_CLASS);
+            }
+        });
+    }
+
+    function attachListeners() {
+        // 監聽頁面上所有帶有 accesskey 且 href 指向 #id 的跳轉連結
+        var skipLinks = document.querySelectorAll('a[accesskey][href^="#"]');
+        skipLinks.forEach(function (link) {
+            link.addEventListener('click', function () {
+                var targetId = link.getAttribute('href').slice(1);
+                activateZone(targetId);
+            });
+        });
+
+        // 全域 focusin：焦點移入任何元素時，若已離開目前 active 區塊則清除
+        document.addEventListener('focusin', function (event) {
+            clearIfOutside(event.target);
+        });
+
+        // 全域 pointerdown（捕獲）：點擊非可聚焦區域時同樣清除（focusin 此時不觸發）
+        document.addEventListener('pointerdown', function (event) {
+            clearIfOutside(event.target);
+        }, true);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attachListeners);
+    } else {
+        attachListeners();
+    }
+})();
+
+
+    $(document).ready(function(){
+        $("select[name='xoops_theme_select']").addClass("form-control");
+        $("input[name='query']").addClass("form-control");
+        $("input[name='uname']").addClass("form-control");
+        $("input[name='pass']").addClass("form-control");
+
+                    $('[data-bs-toggle="tooltip"]').tooltip();
+        
+        
+                                                
+            if($( window ).width() > 768){
+                $("#top-wrapper").sticky({topSpacing:0 , zIndex: 8, getWidthFrom:'#top-wrapper'});
+            }else{
+                $("#top-wrapper").unstick();
+            }
+            });
+
+        // pin_zone=top
+        $(window).resize(function() {
+            if($(window).width() > 768){
+                // 避免在手機狀態下無法上下選擇選項
+                $("#top-wrapper").sticky({topSpacing:0 , zIndex: 8, getWidthFrom:'#top-wrapper'});
+            }else{
+                $("#top-wrapper").unstick();
+            }
+        });
+    </script>
+
+        <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Noto+Serif+TC&display=swap" rel="stylesheet" media="all">
+    </body>
+</html>
