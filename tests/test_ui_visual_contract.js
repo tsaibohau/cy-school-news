@@ -18,7 +18,10 @@ const cygshColor = style.match(/--cygsh:\s*([^;]+);/);
 assert.ok(cyshColor && cygshColor && cyshColor[1] !== cygshColor[1], "the two schools use distinct calendar colors");
 assert.match(style, /\.day-dot\.school-cysh[\s\S]*var\(--cysh\)/, "CYSH calendar events use the CYSH color");
 assert.match(style, /\.day-dot\.school-cygsh[\s\S]*var\(--cygsh\)/, "CYGSH calendar events use the CYGSH color");
-for (const id of ["fjsh", "pksh", "ccjh"]) assert.match(index, new RegExp('<option value="' + id + '">'), "active school " + id + " appears in admin selectors");
+assert.doesNotMatch(index, /<option value="(?:cysh|cygsh|fjsh|pksh|ccjh)">/, "school options are generated from the registry, never hardcoded");
+assert.match(app, /\["adminClassificationSchool", "adminArchiveSchool"\][\s\S]*CyNewsSchoolRegistry\.schools\(\)/, "admin school selectors come from the registry");
+assert.match(index, /<footer class="foot">[\s\S]*<a href="schools\.html">各校官網與使用說明<\/a>/, "the footer links to the school-site list instead of enumerating schools");
+assert.doesNotMatch(index.slice(index.indexOf('<footer class="foot">')), /cy\.edu\.tw|ylc\.edu\.tw|cyc\.edu\.tw/, "no per-school links crowd the footer");
 assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*SCHOOL_REGISTRY && SCHOOL_REGISTRY\.hiddenIds/, "hidden schools come from the registry, not hardcoded ids");
 assert.match(app, /HIDDEN_SCHOOL_NAMES\s*=\s*SCHOOL_REGISTRY && SCHOOL_REGISTRY\.hiddenNames/, "hidden display names come from the registry");
 assert.match(app, /row\.date_status === "unverified" \|\| row\.date_source === "legacy_unverified"\) return false/, "unverified legacy dates are never shown");
@@ -62,7 +65,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=95/);
+assert.match(index, /style\.css\?v=96/);
 assert.match(index, /search-taxonomy\.js\?v=53/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=54/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=54[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=57/, "reviewed validity loads before answers");

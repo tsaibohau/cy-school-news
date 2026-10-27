@@ -370,9 +370,235 @@
         "https://www.ccjh.cyc.edu.tw/p/403-1000-22-1.php"
       ],
       "notify_since": "2026-10-27"
+    },
+    {
+      "id": "hwsh",
+      "name": "國立虎尾高級中學",
+      "short": "虎尾高中",
+      "base": "https://www.hwsh.ylc.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.hwsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_03d0018c3de9208ccd8c3fd63724751b451b410e",
+          "tier": "hot"
+        },
+        "https://www.hwsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_2cab01ac31360396f811bd99f531dd98e27b6e6c"
+      ]
+    },
+    {
+      "id": "yfsh",
+      "name": "雲林縣私立義峰高級中學",
+      "short": "義峰高中",
+      "base": "https://www.yfsh.ylc.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.yfsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_a2c4db1b778c971d21fe244011b3cc547850073f",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "pkvs",
+      "name": "國立北港高級農工職業學校",
+      "short": "北港農工",
+      "base": "https://www.pkvs.ylc.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.pkvs.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_ae7789b57835bad294fb23aedd9efa68d4540a18",
+          "tier": "hot"
+        },
+        "https://www.pkvs.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_494de4e00614d7489224b00e1e68960106d6e82f"
+      ]
+    },
+    {
+      "id": "tlhc",
+      "name": "國立斗六高級家事商業職業學校",
+      "short": "斗六家商",
+      "base": "https://www.tlhc.ylc.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.tlhc.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_abc7ae57a34e402e184d9146fadf48b1f35410bf",
+          "tier": "hot"
+        },
+        "https://www.tlhc.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_67a48d8b5a9af73131895223c537e828f83febc0",
+        "https://www.tlhc.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_2c7442d039bd1db0886fecc35e3cb8e44d1af944"
+      ]
+    },
+    {
+      "id": "tlsh",
+      "name": "國立斗六高級中學",
+      "short": "斗六高中",
+      "base": "https://www.tlsh.ylc.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.tlsh.ylc.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "hlvs",
+      "name": "國立西螺高級農工職業學校",
+      "short": "西螺農工",
+      "base": "https://www.hlvs.ylc.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.hlvs.ylc.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "hwaivs",
+      "name": "國立虎尾高級農工職業學校",
+      "short": "虎尾農工",
+      "base": "https://www.hwaivs.ylc.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.hwaivs.ylc.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "shsh",
+      "name": "雲林縣私立正心高級中學",
+      "short": "正心高中",
+      "base": "https://www.shsh.ylc.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.shsh.ylc.edu.tw/category/news/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "bwjh",
+      "name": "雲林縣私立福智高級中學",
+      "short": "福智高中",
+      "base": "https://www.bwjh.ylc.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.bwjh.ylc.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "dnsh",
+      "name": "雲林縣立斗南高級中學",
+      "short": "斗南高中",
+      "base": "https://dnsh.ylc.edu.tw",
+      "adapter": "ylc-ccms",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://dnsh.ylc.edu.tw/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "gwehs",
+      "name": "雲林縣立古坑華德福實驗高級中學",
+      "short": "古坑華德福",
+      "base": "https://gwehs.ylc.edu.tw",
+      "adapter": "ylc-ccms",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://gwehs.ylc.edu.tw/",
+          "tier": "hot"
+        },
+        "https://gwehs.ylc.edu.tw/News.aspx?n=115981&sms=57074"
+      ]
+    },
+    {
+      "id": "mljh",
+      "name": "雲林縣立麥寮高級中學",
+      "short": "麥寮高中",
+      "base": "https://mljh.ylc.edu.tw",
+      "adapter": "ylc-ccms",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://mljh.ylc.edu.tw/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "nsjh",
+      "name": "雲林縣立蔦松藝術高級中學",
+      "short": "蔦松藝術高中",
+      "base": "https://nsjh.ylc.edu.tw",
+      "adapter": "ylc-ccms",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-10-28",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://nsjh.ylc.edu.tw/",
+          "tier": "hot"
+        }
+      ]
     }
   ],
-  "max_items": 6000,
+  "max_items": 20000,
   "fetch_content_max_per_school": 20,
   "backfill_max_per_run": 80,
   "backfill_hours": [

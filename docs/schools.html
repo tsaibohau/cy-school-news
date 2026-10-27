@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>各校網站｜校訊</title>
+  <link rel="stylesheet" href="style.css?v=96">
+  <style>
+    .sites-page { padding-block: 24px 48px; }
+    .sites-head h1 { margin: 0 0 6px; font-size: 24px; letter-spacing: .08em; }
+    .sites-head p { margin: 0; color: var(--muted); line-height: 1.7; }
+    .sites-howto { margin: 18px 0; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+    .sites-howto h2 { margin: 0 0 8px; font-size: 15px; letter-spacing: .12em; color: var(--seal); }
+    .sites-howto ul { margin: 0; padding-left: 1.2em; line-height: 1.8; }
+    .sites-filter { display: flex; gap: 10px; align-items: center; margin: 18px 0 6px; }
+    .sites-filter input {
+      flex: 1; min-width: 0; padding: 10px 12px; font: inherit; color: var(--ink);
+      background: var(--card); border: 1px solid var(--line); border-radius: 999px;
+    }
+    .sites-filter input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .sites-count { color: var(--muted); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .sites-county { margin: 22px 0 8px; font-size: 14px; letter-spacing: .2em; color: var(--muted); }
+    .sites-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .site-card {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: center;
+      padding: 12px 14px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    }
+    .site-card strong { font-size: 16px; }
+    .site-card small { grid-column: 1; color: var(--muted); font-size: 13px; }
+    .site-card a {
+      grid-row: 1 / span 2; grid-column: 2; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px;
+      color: var(--accent); text-decoration: none; font-size: 14px; white-space: nowrap;
+    }
+    .site-card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .sites-empty { color: var(--muted); }
+    .sites-back { display: inline-block; margin-top: 24px; color: var(--accent); }
+  </style>
+</head>
+<body>
+<main class="wrap sites-page">
+  <header class="sites-head">
+    <p class="eyebrow">校訊</p>
+    <h1>各校網站</h1>
+    <p>本站是非官方的公告索引，只整理下列學校官網公開的公告標題、日期與連結。內容、期限與效力一律以學校官網為準。</p>
+  </header>
+
+  <section class="sites-howto" aria-labelledby="howtoTitle">
+    <h2 id="howtoTitle">怎麼使用</h2>
+    <ul>
+      <li>公告頁可依學校篩選；在「我的」設定學校後，首頁的今日摘要與問校務會以你的學校為主。</li>
+      <li>每則公告都附官方連結，報名、繳費等請一律在學校官網完成。</li>
+      <li>本站每小時低頻抓取一次，新公告最慢約一小時後出現；急件請直接看學校官網。</li>
+    </ul>
+  </section>
+
+  <div class="sites-filter">
+    <label for="sitesSearch" class="visually-hidden">搜尋學校</label>
+    <input id="sitesSearch" type="search" placeholder="搜尋學校，例如：北港、嘉義" autocomplete="off">
+    <span id="sitesCount" class="sites-count" aria-live="polite"></span>
+  </div>
+  <div id="sitesList"></div>
+  <noscript><p class="sites-empty">需要開啟 JavaScript 才能顯示學校清單。</p></noscript>
+
+  <a class="sites-back" href="./">← 回到校訊</a>
+</main>
+<script src="school-registry.js?v=45"></script>
+<script>
+(function () {
+  "use strict";
+  var registry = window.CyNewsSchoolRegistry;
+  var list = document.getElementById("sitesList");
+  var count = document.getElementById("sitesCount");
+  var search = document.getElementById("sitesSearch");
+  var COUNTY_ORDER = ["嘉義市", "嘉義縣", "雲林縣", "臺南市"];
+  function esc(value) {
+    return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function safeSite(url) {
+    try { var u = new URL(url); return u.protocol === "https:" || u.protocol === "http:" ? u.href : ""; } catch (_) { return ""; }
+  }
+  function features(school) {
+    var caps = school.capabilities || {};
+    return [caps.announcements ? "公告" : "", caps.official_calendar ? "行事曆" : ""].filter(Boolean).join("・") || "整理中";
+  }
+  function render() {
+    var schools = registry ? registry.schools() : [];
+    var q = String(search.value || "").trim().toLowerCase();
+    var shown = schools.filter(function (s) {
+      if (!q) return true;
+      return [s.name, s.short, s.county].concat(s.aliases || []).some(function (v) { return String(v || "").toLowerCase().indexOf(q) !== -1; });
+    });
+    count.textContent = q ? shown.length + " / " + schools.length + " 校" : "共 " + schools.length + " 校";
+    if (!shown.length) { list.innerHTML = '<p class="sites-empty">找不到符合的學校。</p>'; return; }
+    var groups = {};
+    shown.forEach(function (s) { (groups[s.county || "其他"] = groups[s.county || "其他"] || []).push(s); });
+    var counties = Object.keys(groups).sort(function (a, b) {
+      var ia = COUNTY_ORDER.indexOf(a), ib = COUNTY_ORDER.indexOf(b);
+      return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib) || a.localeCompare(b, "zh-Hant");
+    });
+    list.innerHTML = counties.map(function (county) {
+      return '<h2 class="sites-county">' + esc(county) + '</h2><ul class="sites-list">' + groups[county].map(function (s) {
+        var site = safeSite(s.site);
+        return '<li class="site-card"><strong>' + esc(s.name) + '</strong><small>' + esc(s.short) + '・本站收錄：' + esc(features(s)) + '</small>' +
+          (site ? '<a href="' + esc(site) + '" target="_blank" rel="noopener">官網 ↗</a>' : '') + '</li>';
+      }).join("") + '</ul>';
+    }).join("");
+  }
+  search.addEventListener("input", render);
+  render();
+})();
+</script>
+</body>
+</html>

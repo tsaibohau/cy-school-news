@@ -120,7 +120,9 @@ def run():
     )
     assert pending["status"] == "awaiting_official_source"
     assert get_school("cysh").capabilities["official_calendar"] is True
-    assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh", "fjsh", "pksh", "ccjh"}
+    assert {"cysh", "cygsh", "fjsh", "pksh", "ccjh"} <= {row["school_id"] for row in registry_snapshot()}
+    # 只有嘉中、嘉女有官方行事曆來源；其餘學校只上公告
+    assert {row["school_id"] for row in registry_snapshot() if row["capabilities"].get("official_calendar")} == {"cysh", "cygsh"}
     for school_id in ("fjsh", "pksh", "ccjh"):
         # 公告上架；目前沒有官方行事曆來源
         assert get_school(school_id).capabilities["official_calendar"] is False
