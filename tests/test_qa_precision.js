@@ -78,3 +78,42 @@ assert.match(lost.summary, /「學生證遺失」/);
 assert.ok(!shown(QA.answer("愛校服務", items, {}, { asOf })).some(t => /校服|志願服務/.test(t)));
 
 console.log("問校務 precision tests passed");
+
+/* 2026-10-27 user report: 「明天有什麼講座？」 listed recent notices instead of what happens
+   tomorrow. Questions naming a day answer from the school calendar and title dates. */
+{
+  const calendar = [
+    { id: "c1", school_id: "cysh", title: "校友返校講座成大都市計畫系陳彥仲教授", start_date: "2026-10-28", end_date: "2026-10-28" },
+    { id: "c2", school_id: "cysh", title: "高三第三次模擬考", start_date: "2026-10-28", end_date: "2026-10-29" },
+    { id: "c3", school_id: "cysh", title: "行政會議", start_date: "2026-10-28", end_date: "2026-10-28" },
+    { id: "c4", school_id: "cysh", title: "學測報名", start_date: "2026-10-28", end_date: "2026-10-28" },
+    { id: "c5", school_id: "cysh", title: "行憲紀念日放假一天", start_date: "2026-12-25", end_date: "2026-12-25" },
+  ];
+  const lectures = [
+    item("轉知：國立陽明交通大學於115年12月5日（星期六）辦理「科普系列講座」", "2026-10-21"),
+    item("某大學講座報名(10/28前)", "2026-10-20"),
+    item("9-12週10/27-11/20團膳菜單", "2026-10-26"),
+  ];
+  const ask = (q) => QA.answer(q, lectures, {}, { asOf, scopeLabel: "嘉中", calendarEvents: calendar });
+  assert.deepEqual(QA.dateTarget("明天有什麼講座？", asOf), { label: "明天", from: "2026-10-28", to: "2026-10-28" });
+  assert.equal(QA.dateTarget("週五有什麼活動", asOf).from, "2026-10-30");
+  assert.equal(QA.dateTarget("下週一", asOf).from, "2026-11-02");
+  assert.deepEqual([QA.dateTarget("這週有什麼", asOf).from, QA.dateTarget("這週有什麼", asOf).to], ["2026-10-27", "2026-11-01"]);
+  assert.equal(QA.dateTarget("12/5有什麼講座", asOf).from, "2026-12-05");
+  assert.equal(QA.datePlan("明天講座在哪裡", asOf), null, "a specific question about a dated event still uses the normal search");
+
+  const tomorrow = ask("明天有什麼講座？");
+  assert.match(tomorrow.summary, /^明天（10\/28 週三）嘉中有 1 項講座：「校友返校講座/);
+  assert.equal(tomorrow.sources[0].kind, "calendar");
+  assert.ok(!tomorrow.sources.some(s => /陽明交通/.test(s.title)), "a 12/5 lecture is not tomorrow's");
+  assert.match(tomorrow.summary, /報名或繳交在當天/, "a deadline tomorrow is mentioned separately");
+  const activities = ask("明天有什麼活動");
+  assert.ok(!activities.sources.some(s => /行政會議|菜單/.test(s.title)), "staff meetings and month-long menus are not tomorrow's activities");
+  assert.match(ask("明天要考試嗎").summary, /^有。.*模擬考/);
+  assert.match(ask("明天放假嗎").summary, /^沒有。.*12\/25（週五）「行憲紀念日放假一天」/);
+  assert.match(ask("12/5有什麼講座").summary, /12\/5（週六）嘉中有 1 項講座：「國立陽明交通大學/);
+  assert.deepEqual(QA.titleDates({ title: "於115年12月5日（星期六）辦理", date: "2026-10-21" }), [{ from: "2026-12-05", to: "2026-12-05", kind: "event" }]);
+  assert.equal(QA.titleDates({ title: "報名(10/28前)", date: "2026-10-20" })[0].kind, "deadline");
+  assert.equal(QA.titleDates({ title: "依113年11月12日令修正", date: "2026-10-20" }).length, 0, "dates before publication are references");
+  console.log("問校務 dated-question tests passed");
+}

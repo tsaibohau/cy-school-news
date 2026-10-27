@@ -2259,11 +2259,12 @@
       var sources = result.sources.slice(0, result.mode === "browse" ? 8 : 5).map(function (item) {
         var validityLabel = window.CyNewsAnnouncementValidity && item.validity ? window.CyNewsAnnouncementValidity.label(item.validity) : "";
         var sourceMeta = (item.school_name || "官方公告") + " · " + displayDate(item) + (validityLabel ? " · " + validityLabel : "") + (item.note ? " · " + item.note : "");
+        if (item.kind === "calendar") return '<div class="assistant-source"><strong>' + esc(item.title) + '</strong><small>' + esc((item.school_name || "學校") + " · " + (item.note || "學校行事曆")) + '</small></div>';
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc(sourceMeta) + '</small></button>';
       }).join("");
       var answerLines = (result.answer_lines || []).map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("");
       var directAnswer = answerLines ? '<ul class="assistant-answer-lines">' + answerLines + '</ul>' : '';
-      var sourcePanel = sources ? '<details class="assistant-details" open><summary>' + (result.mode === "browse" ? "公告清單（" : "官方來源（") + result.sources.length + '）</summary><div class="assistant-sources">' + sources + '</div></details>' : '';
+      var sourcePanel = sources ? '<details class="assistant-details" open><summary>' + (result.list_label === "行程" ? "行程清單（" : result.mode === "browse" ? "公告清單（" : "官方來源（") + result.sources.length + '）</summary><div class="assistant-sources">' + sources + '</div></details>' : '';
       var evidencePanel = evidence ? '<details class="assistant-details"><summary>為什麼這樣回答</summary><ol class="assistant-evidence">' + evidence + '</ol></details>' : '';
       var limitation = result.limitation ? '<details class="assistant-details"><summary>資料說明</summary><p class="assistant-limitation">' + esc(result.limitation) + '</p></details>' : '';
       var title = result.query ? '關於「' + esc(result.query) + '」' : '回答';
@@ -2278,6 +2279,11 @@
       if (scope && scope.id !== "all") profile.school_id = scope.id; else profile.school_id = "";
       return {
         scopeLabel: label === "所有學校" ? "" : label,
+        /* 「明天有什麼講座」 is answered from the school calendar as well as announcements. */
+        calendarEvents: (state.officialEvents || []).filter(function (ev) { return !scope || scope.id === "all" || ev.school_id === scope.id; }).map(function (ev) {
+          var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(ev.school_id);
+          return Object.assign({}, ev, { school_name: school ? school.short : "" });
+        }),
         relevance: function (item) { return window.CyNewsRelevance && window.CyNewsSchoolRegistry ? window.CyNewsRelevance.calculate(item, profile, window.CyNewsSchoolRegistry) : null; },
       };
     }
@@ -2350,7 +2356,8 @@
       if (el.assistantAsk) el.assistantAsk.disabled = true;
       if (el.assistantStatus) el.assistantStatus.textContent = "正在搜尋「" + scope.label + "」公告與官方附件文字…";
       if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在翻找「' + esc(scope.label) + '」的公告…</p></div>';
-      return fetchAssistantCorpus(scope.id).then(function (items) {
+      var calendarReady = state.officialEvents && state.officialEvents.length ? Promise.resolve() : loadOfficialEvents();
+      return Promise.all([fetchAssistantCorpus(scope.id), calendarReady]).then(function (loaded) { return loaded[0]; }).then(function (items) {
         /* 讓載入動畫先畫出來，再開始比對（比對會佔用主執行緒約一秒） */
         return new Promise(function (resolve) { setTimeout(function () { resolve(items); }, 30); });
       }).then(function (items) {
@@ -2359,7 +2366,7 @@
         rememberAssistantQuestion(question);
         var options = assistantOptions(scope);
         /* 「最近有什麼新消息」這類問題直接列公告，不必先做逐句比對 */
-        var candidates = window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question) ? [] : window.CyNewsAssistantQA.rank(question, items, {}, options).slice(0, 8);
+        var candidates = (window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question)) || (window.CyNewsAssistantQA.datePlan && window.CyNewsAssistantQA.datePlan(question, new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }))) ? [] : window.CyNewsAssistantQA.rank(question, items, {}, options).slice(0, 8);
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
           var details = {};
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
