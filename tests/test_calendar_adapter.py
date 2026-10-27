@@ -37,9 +37,41 @@ def run():
         source_document="115學年度第一學期行事曆",
         source_revision_value="fixture-cygsh-115-1",
     )
-    assert len(cysh_115) == 100 and len(cysh_115) > 2
-    assert len(cygsh_115) == 170
-    assert all(row["parser_provenance"]["parser_version"] == "2" for row in cysh_115 + cygsh_115)
+    # v3：嘉中折行接回同一則、找回被週次列誤判丟掉的事件；嘉女去除字間空白與表格雜訊。
+    assert len(cysh_115) == 134
+    assert len(cygsh_115) == 169  # 兩欄重複印的「日本姊妹校國際交流出訪」合併為一則
+    assert all(row["parser_provenance"]["parser_version"] == "3" for row in cysh_115 + cygsh_115)
+    cysh_titles = {row["title"] for row in cysh_115}
+    cygsh_titles = {row["title"] for row in cygsh_115}
+    for expected in ("導師知能研習(上午全體、下午高一)", "高一興趣量表測驗(第6節101-110、第7節111-120)",
+                     "第一次學生圖書借閱逾期通知", "中秋節放假一天", "元旦放假一天", "歲末感恩晚會",
+                     "高三第三次複習考", "中等學校籃球聯賽嘉義區預賽", "國慶日適逢星期六，9日補假一天"):
+        assert expected in cysh_titles, expected
+    assert not any(title.endswith(("(上", "興趣量", "學生圖書")) for title in cysh_titles)
+    assert not any("(教官室)" in title for title in cysh_titles), "承辦單位標註不放進事件名稱"
+    assert not any(title.startswith("補假") or title == "補假一天" for title in cysh_titles), "句中日期不再切成新事件"
+    holiday = next(row for row in cysh_115 if row["title"] == "中秋節放假一天")
+    assert holiday["start_date"] == "2026-09-25"
+    for expected in ("新進教師輔導知能研習", "全校輔導知能研習(13:30-16:00國際會議廳)", "大學學科能力測驗報名",
+                     "高三親師座談", "紅土網球場整修工程", "各科財產盤點", "9/14前公告選社結果並進行人工補選",
+                     "閱讀心得投稿時間：9/1-10/8中午12時止"):
+        assert expected in cygsh_titles, expected
+    exam_signup = next(row for row in cygsh_115 if row["title"] == "大學學科能力測驗報名")
+    assert (exam_signup["start_date"], exam_signup["end_date"]) == ("2026-10-27", "2026-11-10")
+    import re as _re
+    for title in cygsh_titles | cysh_titles:
+        assert not _re.search(r"[\u4e00-\u9fff] [\u4e00-\u9fff]", title), title
+        assert "第 二 週" not in title and "國立嘉義女子高級中學" not in title, title
+        assert title.count("(") == title.count(")"), title
+        assert not title.endswith("。"), title
+        assert "()" not in title, title
+    # 標題整理不改事件 ID：既有提醒仍對得上（ID 由原始抽字計算）。
+    legacy_ids = {
+        "official-calendar:cysh:115-1:2026-08-24:1:31bda457ac",
+        "official-calendar:cygsh:115-1:2026-08-27:0:" + __import__("hashlib").sha1(
+            "新 進 教 師 輔 導 知 能 研 習(8/27)。".encode("utf-8")).hexdigest()[:10],
+    }
+    assert legacy_ids <= {row["id"] for row in cysh_115 + cygsh_115}
     forbidden_fragments = {")", ")。", "）。", "第 5-6 節)。", "第 5-6 節）。", "12:10", "中午 12 時"}
     assert not forbidden_fragments.intersection(row["title"] for row in cygsh_115)
     assert not any(row["title"] == "V1" for row in cysh_115)
@@ -47,7 +79,8 @@ def run():
     assert any(row["start_date"].startswith("2027-01-") for row in cygsh_115)
     assert calendar_quality_gate(cysh_115, school_id="cysh", academic_year=115, semester=1)["passed"]
     cygsh_quality = calendar_quality_gate(cygsh_115, school_id="cygsh", academic_year=115, semester=1)
-    assert cygsh_quality["passed"] and cygsh_quality["fragment_count"] == 0
+    # 去掉日期後「休業式」這類本來就短的名稱會被品質門檻計為短標題，只允許零星幾則。
+    assert cygsh_quality["passed"] and cygsh_quality["fragment_count"] <= 2
     assert cygsh_quality["duplicate_count"] == 0
 
     collapsed = calendar_quality_gate(

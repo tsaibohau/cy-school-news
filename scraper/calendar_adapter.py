@@ -90,15 +90,104 @@ def _normal_title(value):
     return re.sub(r"^[\s:：、。()）]+|[\s]+$", "", title)
 
 
+CJK = "\u3400-\u9fff"
+CJK_PUNCT = "（）()【】「」，。、：；！？"
+OFFICE_TAG = re.compile(r"[(（](?:教官室|教務處|學務處|總務處|輔導室|圖書館|人事室|主計室)[)）]")
+# PDF 表格的頁首、週次列與校名會被抽進最後一格；遇到這些標記就截斷。
+TABLE_NOISE = re.compile(
+    r"[一二三四五六七八九十]+月第[一二三四五六七八九十]+週|第[一二三四五六七八九十]+週(?:\d+\s*){3,}"
+    r"|國立嘉義(?:女子)?高(?:級)?中(?:學)?\d*學年度|月週份次日")
+
+
+def _squeeze_cjk(text):
+    """移除 PDF 抽字在中文字之間插入的空白（「新 進 教 師」→「新進教師」）。"""
+    text = re.sub(rf"(?<=[{CJK}{CJK_PUNCT}])\s+(?=[{CJK}{CJK_PUNCT}])", "", text)
+    text = re.sub(rf"(?<=[{CJK}{CJK_PUNCT}])\s+(?=\d)|(?<=\d)\s+(?=[{CJK}{CJK_PUNCT}])", "", text)
+    text = re.sub(r"(?<=\d)\s*/\s*(?=\d)", "/", text)
+    text = re.sub(r"(?<=[\d:])\s*[-~–]\s*(?=\d)", "-", text)
+    return " ".join(text.split())
+
+
+def _balance_parens(text):
+    """補齊或移除 PDF 斷行造成的單邊括號。"""
+    text = text.replace("（", "(").replace("）", ")")
+    text = re.sub(r"\({2,}", "(", re.sub(r"\){2,}", ")", text))
+    out, depth = [], 0
+    for index, char in enumerate(text):
+        if char == "(":
+            depth += 1
+        elif char == ")":
+            if depth == 0:
+                # 「座談 9/19)」：把缺的左括號補在最近的日期前；找不到就丟掉這個右括號。
+                prefix = "".join(out)
+                opened = prefix.rfind(")") + 1
+                dates = list(re.finditer(r"\d{1,2}/\d{1,2}", prefix[opened:]))
+                times = list(re.finditer(r"\d{1,2}:\d{2}", prefix[opened:]))
+                stamp = [dates[-1]] if dates else times[:1]
+                if stamp:
+                    cut = opened + stamp[-1].start()
+                    out = list(prefix[:cut] + "(" + prefix[cut:])
+                    out.append(char)
+                continue
+            depth -= 1
+        out.append(char)
+    text = "".join(out)
+    if depth > 0:
+        text = text.rstrip("。，、 ") + ")" * depth
+    return text
+
+
+def clean_calendar_title(raw, start=None, end=None):
+    """把官方行事曆的一格文字整理成可直接閱讀的事件名稱（固定規則，不用 AI）。
+
+    - 去除中文字間的多餘空白、表格頁首與週次雜訊、承辦單位標註。
+    - 與事件日期重複的「(8/28)」只留時間地點；「● 」條列改成「；」。
+    - 單邊括號補齊，結尾句號移除。
+    """
+    text = _squeeze_cjk(str(raw or "").replace("\u3000", " "))
+    noise = TABLE_NOISE.search(text)
+    if noise:
+        text = text[:noise.start()]
+    # 「工程。08/31開學日…」：句號後面若不是條列，多半是鄰格雜訊。
+    sentence = re.match(r"^(.+?。)\s*(\d.*)$", text)
+    if sentence and "●" not in text:
+        text = sentence.group(1)
+    text = OFFICE_TAG.sub("", text)
+    text = _balance_parens(text)
+    if start is not None:
+        stamps = {f"{start.month}/{start.day}"}
+        if end is not None and end != start:
+            stamps.add(f"{start.month}/{start.day}-{end.month}/{end.day}")
+            stamps.add(f"{start.month}/{start.day}-{end.day}")
+        # 只刪括號裡與事件日期重複的日期；「9/14前公告…」這種句首日期是內容的一部分。
+        pattern = "|".join(re.escape(stamp) for stamp in sorted(stamps, key=len, reverse=True))
+        text = re.sub(rf"\(([^()]*)\)", lambda m: "(" + re.sub(
+            rf"(?<![\d/])(?:{pattern})(?![\d/]|-\d)\s*", "", m.group(1)) + ")", text)
+    for _ in range(3):
+        text = re.sub(r"\(\s*[，、,]?\s*\d?\s*\)", "", text)  # 移除日期後留下的空括號
+    text = re.sub(r"\(\s*[，、,]\s*", "(", text)
+    text = re.sub(r"\s*[，、,]\s*\)", ")", text)
+    text = re.sub(r"[。\s]*●\s*", "；", text)
+    text = re.sub(r"[：:]\s*；", "：", text)
+    text = re.sub(r"】；", "】", text)
+    text = re.sub(r"^；|；$", "", text)
+    text = re.sub(r"。+", "。", text)
+    text = re.sub(r"\s+(?=[)）；，。])|(?<=[(（])\s+", "", text)
+    text = re.sub(r"[。．\s]+$", "", text)
+    text = re.sub(r"^[\s:：、。，)）]+", "", text)
+    return text.strip()
+
+
 def _event(*, school_id, academic_year, semester, start, end, title, index,
-           source_url, source_document, source_revision_value, fetched_at):
-    digest = hashlib.sha1(title.encode("utf-8")).hexdigest()[:10]
+           source_url, source_document, source_revision_value, fetched_at, id_title=None):
+    # 事件 ID 用原始抽字計算，整理標題不會讓使用者已設定的提醒失效。
+    digest = hashlib.sha1((id_title if id_title is not None else title).encode("utf-8")).hexdigest()[:10]
     return normalize_event(
         event_id=f"official-calendar:{school_id}:{academic_year}-{semester}:{start.isoformat()}:{index}:{digest}",
         school_id=school_id, title=title, start_date=start.isoformat(), end_date=end.isoformat(),
         event_type="school_activity", source_url=source_url, source_document=source_document,
         source_revision=source_revision_value, fetched_at=fetched_at or "",
-        parser_provenance={"adapter": f"{school_id}-layout-table", "parser_version": "2"},
+        parser_provenance={"adapter": f"{school_id}-layout-table", "parser_version": "3"},
     )
 
 
@@ -123,22 +212,84 @@ def _cysh_week_anchors(lines, academic_year, semester):
 
 
 def _parse_cysh_layout(text, **context):
+    """嘉中行事曆：每格一行一事，長標題會折到下一行。
+
+    折行（不以「N 日」開頭的行）接回同一格上一則事件；句中的「9 日補假」不再被當成新事件。
+    事件索引與 ID 沿用舊版切法計算，讓既有提醒對得上。
+    """
     lines = str(text).splitlines()
     anchors = _cysh_week_anchors(lines, context["academic_year"], context["semester"])
+    anchor_lines = {index for index, _ in anchors}
+    first_anchor = min(anchor_lines) if anchor_lines else len(lines)
     date_token = re.compile(r"(?<![\d/:])(?P<d1>\d{1,2})(?:\s*[-~]\s*(?P<d2>\d{1,2}))?\s*日")
-    rows = []
+    pending, last, raw_index, recovered = [], None, 0, 0
     for line_index, line in enumerate(lines):
         if not anchors:
             break
-        week = min(anchors, key=lambda item: abs(item[0] - line_index))[1]
+        stripped = line.strip()
+        if not stripped or line_index < first_anchor:
+            last = None
+            continue
+        if line_index in anchor_lines:
+            # 週次列本身也可能接著寫事件（「二 15 16 … 21 17-18 日高三複習考」）。
+            last = None
+        # 舊版以「最近的週次列」定週；正確應是「上方最近的週次列」。兩者都試，
+        # 舊版接受過的事件索引照舊累加，新找回的事件另外編號，既有 ID 不變。
+        nearest = min(anchors, key=lambda item: abs(item[0] - line_index))[1]
+        above = [week for index, week in anchors if index < line_index]
+        above = above[-1] if above else nearest
         matches = list(date_token.finditer(line))
+        starts_with_date = bool(matches) and (line_index in anchor_lines or
+                                              re.fullmatch(r"\s*(?:\d{1,2}\s*月\s*)?", line[:matches[0].start()]) is not None)
+        if line_index in anchor_lines and not matches:
+            continue
+        if not starts_with_date:
+            # 左側直書的月份／年份／寒暑假標籤（「十」「月」「116」「寒」「假」）不是事件內容。
+            label = re.fullmatch(r"[一二三四五六七八九十月年寒暑假]|\d{2,3}", stripped)
+            span = re.match(r"^\s*(\d{1,2})/(\d{1,2})(?:\s*-\s*(\d{1,2})/(\d{1,2}))?\s*(.+)$", line)
+            if span and len(_normal_title(span.group(5))) >= 2:
+                # 「11/30-12/4 中等學校籃球聯賽」：以月/日開頭的是另一則事件。
+                try:
+                    start = _term_date(context["academic_year"], context["semester"], int(span.group(1)), int(span.group(2)))
+                    end = start
+                    if span.group(3):
+                        candidate = _term_date(context["academic_year"], context["semester"], int(span.group(3)), int(span.group(4)))
+                        if 0 < (candidate - start).days <= 31:
+                            end = candidate
+                    recovered += 1
+                    last = {"start": start, "end": end, "index": f"r{recovered}",
+                            "id_title": _normal_title(span.group(5)), "text": span.group(5)}
+                    pending.append(last)
+                    continue
+                except ValueError:
+                    pass
+            if last is not None and not label:
+                last["text"] += " " + stripped
+            # 舊版會把句中的日期也切成一則；照算索引但不輸出，事件 ID 才不會位移。
+            for match in matches:
+                if len(_normal_title(line[match.end():])) >= 2 and [d for d in nearest if d.day == int(match["d1"])]:
+                    raw_index += 1
+            continue
         for match_index, match in enumerate(matches):
             end_pos = matches[match_index + 1].start() if match_index + 1 < len(matches) else len(line)
-            title = _normal_title(re.split(r"\s{12,}", line[match.end():end_pos], 1)[0])
+            segment = re.split(r"\s{12,}", line[match.end():end_pos], 1)[0]
+            title = _normal_title(segment)
             if len(title) < 2 or title in {"V1", "星期", "None"}:
                 continue
-            options = [day for day in week if day.day == int(match["d1"])]
+            legacy = [day for day in nearest if day.day == int(match["d1"])]
+            options = legacy or [day for day in above if day.day == int(match["d1"])]
             if not options:
+                last = None
+                continue
+            if legacy:
+                index = raw_index
+                raw_index += 1
+            else:
+                recovered += 1
+                index = f"r{recovered}"
+            mid_sentence = match_index > 0 and match.start() > 0 and not line[match.start() - 1].isspace()
+            if mid_sentence and last is not None:
+                last["text"] += " " + line[match.start():end_pos].strip()
                 continue
             start, end = options[0], options[0]
             if match["d2"]:
@@ -147,7 +298,13 @@ def _parse_cysh_layout(text, **context):
                     if candidate.day == int(match["d2"]):
                         end = candidate
                         break
-            rows.append(_event(start=start, end=end, title=title, index=len(rows), **context))
+            last = {"start": start, "end": end, "index": index, "id_title": title, "text": segment}
+            pending.append(last)
+    rows = []
+    for row in pending:
+        title = clean_calendar_title(row["text"], row["start"], row["end"]) or row["id_title"]
+        rows.append(_event(start=row["start"], end=row["end"], title=title, index=row["index"],
+                           id_title=row["id_title"], **context))
     return rows
 
 
@@ -164,7 +321,7 @@ def _parse_cygsh_layout(text, **context):
             current += " " + line
     if current:
         items.append(current)
-    rows, seen = [], set()
+    rows, seen, cleaned_seen, index = [], set(), set(), 0
     for item in items:
         title = _normal_title(item)
         stamp = RANGE.search(title) or MD.search(title)
@@ -180,7 +337,23 @@ def _parse_cygsh_layout(text, **context):
         if key in seen:
             continue
         seen.add(key)
-        rows.append(_event(start=start, end=start, title=title, index=len(rows), **context))
+        end = start
+        if stamp.re is RANGE:
+            try:
+                candidate = _term_date(context["academic_year"], context["semester"],
+                                       int(stamp["m2"] or month), int(stamp["d2"]))
+                # 超過一個月的區間（例如投稿期間）保留在標題文字裡，不當成連續事件。
+                if 0 < (candidate - start).days <= 31:
+                    end = candidate
+            except ValueError:
+                pass
+        clean = clean_calendar_title(title, start, end) or title
+        index += 1
+        # PDF 有時把同一事件印在兩欄，整理後完全相同就只留一則（索引照算，既有 ID 不位移）。
+        if (start, clean) in cleaned_seen:
+            continue
+        cleaned_seen.add((start, clean))
+        rows.append(_event(start=start, end=end, title=clean, index=index - 1, id_title=title, **context))
     return rows
 
 

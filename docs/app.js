@@ -26,7 +26,8 @@
     var LS_SEEN = "cyNews.lastSeen";
     var LS_EVENTS = "cyNews.calendarEvents.v1"; /* import candidate only; never the active account store */
     var LS_SCHOOL = "cyNews.school.v1";
-    var LS_CALENDAR_SCHOOL = "cyNews.calendarSchool.v1";
+    // v2：只記錄使用者「主動改看」的學校；沒記錄時行事曆跟著個人設定的學校。
+    var LS_CALENDAR_SCHOOL = "cyNews.calendarSchool.v2";
     var CalendarState = window.CyNewsCalendarState || (function () {
       function validDate(value) { return /^\d{4}-\d{2}-\d{2}$/.test(String(value || "")); }
       function normalize(rows) {
@@ -69,7 +70,8 @@
     var state = {
       data: null,
       school: HIDDEN_SCHOOL_IDS[loadSchool()] ? "all" : loadSchool(),
-      calendarSchool: HIDDEN_SCHOOL_IDS[localStorage.getItem(LS_CALENDAR_SCHOOL)] ? "all" : (localStorage.getItem(LS_CALENDAR_SCHOOL) || "all"),
+      calendarSchool: "all",
+      calendarSchoolChoice: HIDDEN_SCHOOL_IDS[localStorage.getItem(LS_CALENDAR_SCHOOL)] ? "" : (localStorage.getItem(LS_CALENDAR_SCHOOL) || ""),
       cat: "all",
       q: "",
       tab: "latest",
@@ -1717,7 +1719,32 @@
     function calendarColorClass(ev) {
       return ev.school_id === "cysh" || ev.school_id === "cygsh" ? "school-" + ev.school_id : "school-personal";
     }
+    function calendarSchoolOptions() {
+      return [{ id: "all", short: "所有學校" }].concat((state.data && state.data.schools || []).filter(visibleSchool));
+    }
+    function preferredCalendarSchool() {
+      var preferred = String(state.profile && state.profile.school_id || "");
+      return calendarSchoolOptions().some(function (s) { return s.id === preferred && s.id !== "all"; }) ? preferred : "all";
+    }
+    /* 行事曆預設只看個人設定的學校；使用者在選單改看其他學校或「所有學校」才記住。
+       學校變多時，行事曆不會一打開就混進所有學校的事件。 */
+    function syncCalendarSchool() {
+      var schools = calendarSchoolOptions();
+      var preferred = preferredCalendarSchool();
+      var choice = state.calendarSchoolChoice;
+      state.calendarSchool = choice && schools.some(function (s) { return s.id === choice; }) ? choice : preferred;
+      if (!el.calendarSchoolFilter) return;
+      el.calendarSchoolFilter.innerHTML = schools.map(function (s) {
+        var label = s.id === preferred && s.id !== "all" ? s.short + "（我的學校）" : s.short;
+        return '<option value="' + esc(s.id) + '">' + esc(label) + "</option>";
+      }).join("");
+      el.calendarSchoolFilter.value = state.calendarSchool;
+      if (document.querySelectorAll) Array.prototype.forEach.call(document.querySelectorAll(".calendar-legend [data-legend-school]"), function (node) {
+        node.hidden = state.calendarSchool !== "all" && node.getAttribute("data-legend-school") !== state.calendarSchool;
+      });
+    }
     function renderCalendar() {
+      syncCalendarSchool();
       if (el.addEvent) el.addEvent.hidden = !canEditCalendar();
       if (!canEditCalendar() && el.eventFormWrap) el.eventFormWrap.hidden = true;
       var y = state.calendarMonth.getFullYear(), m = state.calendarMonth.getMonth();
@@ -2018,7 +2045,11 @@
     function renderToday() {
       if (!el.viewToday || !window.CyNewsToday) return;
       var projection = window.CyNewsToday.build({
-        officialEvents: state.officialEvents,
+        // 「今天」只放自己學校的校曆；沒設定學校時才全部列出。
+        officialEvents: state.officialEvents.filter(function (ev) {
+          var school = String(state.profile && state.profile.school_id || "");
+          return !school || ev.school_id === school;
+        }),
         announcementItems: state.data ? state.data.items : [],
         tasks: state.tasks,
         reminderRules: state.reminderRules,
@@ -2035,7 +2066,7 @@
         el.todayCoverage.hidden = state.calendarStatus === "complete";
         el.todayCoverage.textContent = state.calendarStatus === "complete" ? "" : "官方學期行事曆尚未完整公布，先顯示目前已確認的資料。";
       }
-      function eventRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(row.provenance === "user_event" ? "自己的事件" : (row.event_type || row.kind || "正式行程")) + '</div></div></div>'; }
+      function eventRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(row.provenance === "user_event" ? "自己的事件" : (row.sourceLabel || "學校行事曆")) + '</div></div></div>'; }
       function deadlineRow(row) { return '<div class="today-item"><div class="today-item-main"><div class="today-item-title">' + esc(row.title) + '</div><div class="today-item-meta">' + esc(projection.dueLabel(row.date)) + ' · ' + esc(row.date) + '</div></div></div>'; }
       if (el.todayBriefSummary) el.todayBriefSummary.textContent = projection.briefLabel;
       if (el.todayFocus) el.todayFocus.innerHTML = projection.focusItems.length ? projection.focusItems.map(function (row, index) {
@@ -2185,11 +2216,7 @@
         return '<option value="' + esc(s.id) + '">' + esc(s.short) + "</option>";
       }).join("");
       el.schoolFilter.value = schools.some(function (s) { return s.id === state.school; }) ? state.school : "all";
-      el.calendarSchoolFilter.innerHTML = schools.map(function (s) {
-        return '<option value="' + esc(s.id) + '">' + esc(s.short) + "</option>";
-      }).join("");
-      if (!schools.some(function (s) { return s.id === state.calendarSchool; })) state.calendarSchool = "all";
-      el.calendarSchoolFilter.value = state.calendarSchool;
+      syncCalendarSchool();
 
       var used = {};
       state.data.items.forEach(function (it) { used[it.category] = true; });
@@ -2411,8 +2438,12 @@
       if (readButton) markRead(readButton.dataset.readId);
     });
     el.calendarSchoolFilter.addEventListener("change", function () {
-      state.calendarSchool = el.calendarSchoolFilter.value;
-      localStorage.setItem(LS_CALENDAR_SCHOOL, state.calendarSchool);
+      var value = el.calendarSchoolFilter.value;
+      // 選回自己的學校就不再記錄，之後改個人設定的學校時行事曆會跟著換。
+      state.calendarSchoolChoice = value === preferredCalendarSchool() ? "" : value;
+      if (state.calendarSchoolChoice) localStorage.setItem(LS_CALENDAR_SCHOOL, state.calendarSchoolChoice);
+      else localStorage.removeItem(LS_CALENDAR_SCHOOL);
+      syncCalendarSchool();
       renderCalendar();
       loadCalendarStatus();
     });
@@ -2611,7 +2642,18 @@
       if (el.tabToday) el.tabToday.classList.toggle("is-active", today);
       if (el.tabAssistant) el.tabAssistant.classList.toggle("is-active", assistant);
       if (el.tabTimetable) el.tabTimetable.classList.toggle("is-active", timetable);
-      if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar");
+      // 課表從行事曆頁切換進入：看得到行事曆時，分頁列仍標示在行事曆。
+      var calendarAvailable = !!(el.tabCalendar && !el.tabCalendar.hidden);
+      var timetableAvailable = !!(el.tabTimetable && !el.tabTimetable.hidden);
+      if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar" || timetable && calendarAvailable);
+      if (document.querySelectorAll) Array.prototype.forEach.call(document.querySelectorAll(".view-switch"), function (node) {
+        node.hidden = !(calendarAvailable && timetableAvailable);
+        Array.prototype.forEach.call(node.querySelectorAll("button[data-view-switch]"), function (button) {
+          var active = button.dataset.viewSwitch === tab;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+      });
       el.tabSub.classList.toggle("is-active", tab === "sub");
       if (el.tabAdmin) el.tabAdmin.classList.toggle("is-active", tab === "admin");
       if (el.tabHome) el.tabHome.setAttribute("aria-current", home ? "page" : "false");
@@ -2648,6 +2690,9 @@
     if (el.tabTimetable) el.tabTimetable.addEventListener("click", function () { switchTab("timetable"); });
     el.tabSub.addEventListener("click", function () { switchTab("sub"); });
     if (el.tabAdmin) el.tabAdmin.addEventListener("click", function () { switchTab("admin"); });
+    if (document.querySelectorAll) Array.prototype.forEach.call(document.querySelectorAll("button[data-view-switch]"), function (button) {
+      button.addEventListener("click", function () { switchTab(button.dataset.viewSwitch); });
+    });
     if (el.tabCalendar) {
       el.tabCalendar.addEventListener("click", function () { switchTab("calendar"); });
       el.calendarGrid.addEventListener("click", function (e) {
