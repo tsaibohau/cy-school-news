@@ -27,12 +27,12 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r scraper/requirements.txt certifi
-      - run: python tools/census/fetch_samples.py
+      - run: python tools/census/validate_sources.py
       - name: Commit samples to this branch
         run: |
           git config user.name "news-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add samples
-          git commit -m "樣本：雲嘉校網共用 adapter 參考頁面" || exit 0
+          git commit -m "驗證：雲林候選來源實測結果" || exit 0
           git pull --rebase origin claude/site-samples
           git push origin HEAD:claude/site-samples

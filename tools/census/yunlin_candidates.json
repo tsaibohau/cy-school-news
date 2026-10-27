@@ -1,0 +1,168 @@
+{
+ "_note": "雲林候選來源（一次性驗證，不合併）",
+ "schools": [
+  {
+   "id": "hwsh",
+   "name": "國立虎尾高級中學",
+   "short": "虎尾高中",
+   "base": "https://www.hwsh.ylc.edu.tw",
+   "adapter": "ischool-json",
+   "sources": [
+    "https://www.hwsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_2cab01ac31360396f811bd99f531dd98e27b6e6c",
+    "https://www.hwsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_03d0018c3de9208ccd8c3fd63724751b451b410e",
+    "https://www.hwsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_b82e04c6456b352aaa436de05d904fa62d3e57da"
+   ],
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "yfsh",
+   "name": "雲林縣私立義峰高級中學",
+   "short": "義峰高中",
+   "base": "https://www.yfsh.ylc.edu.tw",
+   "adapter": "ischool-json",
+   "sources": [
+    "https://www.yfsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_a2c4db1b778c971d21fe244011b3cc547850073f",
+    "https://www.yfsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_da2c845320272cc836725abf2af73aedb372df31"
+   ],
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "tlsh",
+   "name": "國立斗六高級中學",
+   "short": "斗六高中",
+   "base": "https://www.tlsh.ylc.edu.tw",
+   "adapter": "wordpress",
+   "sources": [
+    "https://www.tlsh.ylc.edu.tw/feed/",
+    "https://www.tlsh.ylc.edu.tw/category/new-post/feed/"
+   ],
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "hlvs",
+   "name": "國立西螺高級農工職業學校",
+   "short": "西螺農工",
+   "base": "https://www.hlvs.ylc.edu.tw",
+   "adapter": "wordpress",
+   "sources": [
+    "https://www.hlvs.ylc.edu.tw/feed/"
+   ],
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "hwaivs",
+   "name": "國立虎尾高級農工職業學校",
+   "short": "虎尾農工",
+   "base": "https://www.hwaivs.ylc.edu.tw",
+   "adapter": "wordpress",
+   "sources": [
+    "https://www.hwaivs.ylc.edu.tw/feed/"
+   ],
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "shsh",
+   "name": "雲林縣私立正心高級中學",
+   "short": "正心高中",
+   "base": "https://www.shsh.ylc.edu.tw",
+   "adapter": "wordpress",
+   "sources": [
+    "https://www.shsh.ylc.edu.tw/category/news/",
+    "https://www.shsh.ylc.edu.tw/feed/"
+   ],
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "bwjh",
+   "name": "雲林縣私立福智高級中學",
+   "short": "福智高中",
+   "base": "https://www.bwjh.ylc.edu.tw",
+   "adapter": "wordpress",
+   "sources": [
+    "https://www.bwjh.ylc.edu.tw/feed/",
+    "https://www.bwjh.ylc.edu.tw/category/ann/"
+   ],
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "dnsh",
+   "name": "雲林縣立斗南高級中學",
+   "short": "斗南高中",
+   "base": "https://dnsh.ylc.edu.tw",
+   "adapter": "ylc-ccms",
+   "sources": [
+    "https://dnsh.ylc.edu.tw/"
+   ],
+   "discover": "https://dnsh.ylc.edu.tw/",
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "gwehs",
+   "name": "雲林縣立古坑華德福實驗高級中學",
+   "short": "古坑華德福",
+   "base": "https://gwehs.ylc.edu.tw",
+   "adapter": "ylc-ccms",
+   "sources": [
+    "https://gwehs.ylc.edu.tw/",
+    "https://gwehs.ylc.edu.tw/News.aspx?n=115981&sms=57074"
+   ],
+   "discover": "https://gwehs.ylc.edu.tw/",
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "mljh",
+   "name": "雲林縣立麥寮高級中學",
+   "short": "麥寮高中",
+   "base": "https://mljh.ylc.edu.tw",
+   "adapter": "ylc-ccms",
+   "sources": [
+    "https://mljh.ylc.edu.tw/"
+   ],
+   "discover": "https://mljh.ylc.edu.tw/",
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "nsjh",
+   "name": "雲林縣立蔦松藝術高級中學",
+   "short": "蔦松藝術高中",
+   "base": "https://nsjh.ylc.edu.tw",
+   "adapter": "ylc-ccms",
+   "sources": [
+    "https://nsjh.ylc.edu.tw/News2.aspx?n=99488&sms=53921",
+    "https://nsjh.ylc.edu.tw/"
+   ],
+   "discover": "https://nsjh.ylc.edu.tw/",
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "pkvs",
+   "name": "國立北港高級農工職業學校",
+   "short": "北港農工",
+   "base": "https://www.pkvs.ylc.edu.tw",
+   "adapter": "new-classic-cms",
+   "sources": [],
+   "discover": "https://www.pkvs.ylc.edu.tw/",
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "tlhc",
+   "name": "國立斗六高級家事商業職業學校",
+   "short": "斗六家商",
+   "base": "https://www.tlhc.ylc.edu.tw",
+   "adapter": "new-classic-cms",
+   "sources": [],
+   "discover": "https://www.tlhc.ylc.edu.tw/",
+   "tls_verify_fallback": "bundled-intermediates"
+  },
+  {
+   "id": "tkvs",
+   "name": "國立土庫高級商工職業學校",
+   "short": "土庫商工",
+   "base": "https://www.tkvs.ylc.edu.tw",
+   "adapter": "new-classic-cms",
+   "sources": [],
+   "discover": "https://www.tkvs.ylc.edu.tw/",
+   "tls_verify_fallback": "bundled-intermediates"
+  }
+ ]
+}
