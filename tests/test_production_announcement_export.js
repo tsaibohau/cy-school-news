@@ -88,7 +88,7 @@ async function uiFlow() {
   for (const asset of ["announcement-csv.js", "admin-announcement-export-source.js", "admin-announcement-csv-ui.js", "admin-announcement-export.css"]) {
     assert(index.includes(asset + "?v=1")); assert(sw.includes(asset + "?v=1"));
   }
-  assert.match(sw, /cy-news-v111/);
+  assert.match(sw, /cy-news-v112/);
   assert(!read("docs/admin-announcement-csv-ui.js").includes("/api/"), "Pages export uses existing authenticated reads instead of server routes");
   await uiFlow();
   console.log("PASS: Production owner button/download/logout, real-session guard, complete catalog union, bounded read-only export, cancellation/errors, identity checks, cache assets");

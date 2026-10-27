@@ -159,3 +159,11 @@ console.log("Editorial UI and honest refresh status contract tests passed");
   const cssSource = fs.readFileSync(path.join(__dirname, "../docs/style.css"), "utf8");
   assert.match(cssSource, /\.access-card\[hidden\]\s*\{\s*display:\s*none/);
 }
+
+// 行事曆預設只看個人設定的學校；只有使用者主動改看別校或「所有學校」才記住（之後學校變多也不混亂）。
+assert.match(app, /LS_CALENDAR_SCHOOL = "cyNews\.calendarSchool\.v2"/, "old 'all schools' defaults are not carried over");
+assert.match(app, /state\.calendarSchool = choice && [\s\S]*?\? choice : preferred;/, "calendar falls back to the profile school");
+assert.match(app, /state\.calendarSchoolChoice = value === preferredCalendarSchool\(\) \? "" : value;/, "choosing your own school again stops overriding");
+assert.match(app, /officialEvents: state\.officialEvents\.filter\(function \(ev\) \{[\s\S]*?ev\.school_id === school/, "today only lists your own school's calendar");
+assert.doesNotMatch(app, /row\.event_type \|\| row\.kind/, "internal event types are never shown as labels");
+console.log("Calendar school preference contract passed");
