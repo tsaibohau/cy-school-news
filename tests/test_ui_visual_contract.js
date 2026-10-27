@@ -18,27 +18,42 @@ const cygshColor = style.match(/--cygsh:\s*([^;]+);/);
 assert.ok(cyshColor && cygshColor && cyshColor[1] !== cygshColor[1], "the two schools use distinct calendar colors");
 assert.match(style, /\.day-dot\.school-cysh[\s\S]*var\(--cysh\)/, "CYSH calendar events use the CYSH color");
 assert.match(style, /\.day-dot\.school-cygsh[\s\S]*var\(--cygsh\)/, "CYGSH calendar events use the CYGSH color");
-assert.doesNotMatch(index, /<option value="pksh">/, "damaged PKSH source stays out of static selectors");
-assert.doesNotMatch(index, /<option value="fjsh">/, "disabled FJSH source stays out of static selectors");
-assert.doesNotMatch(index, /輔仁高中/, "disabled FJSH source stays out of public interface copy");
-assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*\{ fjsh: true, pksh: true \}/, "disabled schools are filtered before rendering");
-assert.match(app, /\^\(\?:fjsh\|pksh\)\(\?:-\|\$\)\//, "disabled-school historical records are filtered even when id appears before school");
-assert.match(app, /HIDDEN_SCHOOL_NAMES[\s\S]*輔仁高中[\s\S]*北港高中/, "disabled schools are also rejected by display-name aliases");
+for (const id of ["fjsh", "pksh", "ccjh"]) assert.match(index, new RegExp('<option value="' + id + '">'), "active school " + id + " appears in admin selectors");
+assert.match(app, /HIDDEN_SCHOOL_IDS\s*=\s*SCHOOL_REGISTRY && SCHOOL_REGISTRY\.hiddenIds/, "hidden schools come from the registry, not hardcoded ids");
+assert.match(app, /HIDDEN_SCHOOL_NAMES\s*=\s*SCHOOL_REGISTRY && SCHOOL_REGISTRY\.hiddenNames/, "hidden display names come from the registry");
+assert.match(app, /row\.date_status === "unverified" \|\| row\.date_source === "legacy_unverified"\) return false/, "unverified legacy dates are never shown");
+assert.doesNotMatch(app, /fjsh: true|pksh: true/, "no hardcoded hidden-school list");
 assert.match(app, /function cardHTML\(it\) \{[\s\S]*if \(!visibleSchool\(it\)\) return "";/, "card rendering fails closed for disabled sources");
 assert.match(index, /<h1>校訊<\/h1>/, "the masthead uses the short service name");
-assert.match(index, /嘉中・嘉女公告彙整/, "the subtitle identifies the active Chiayi-only service");
-assert.match(index, /嘉中・嘉女公告彙整/, "the interface describes the current two-school scope truthfully");
+assert.match(index, /嘉義・雲林公告彙整/, "the subtitle describes the current Chiayi + Yunlin scope truthfully");
+assert.doesNotMatch(index, /嘉中・嘉女公告彙整/, "the retired two-school subtitle is gone");
 assert.doesNotMatch(index, /嘉雲校訊|從三校公告中/, "retired cross-county and three-school copy is removed");
 assert.match(index, /legal\.html\?v=20260925/, "the legal notice link bypasses stale installed-shell entries");
 
 {
   const vm = require("vm");
-  const context = vm.createContext({});
-  const start = app.indexOf("    var HIDDEN_SCHOOL_IDS");
+  // 用一份假的登錄表（含一所隱藏學校）驗證篩選規則完全由登錄表決定
+  const Registry = require("../docs/school-registry.js");
+  const fakeRegistry = Object.assign({}, Registry, {
+    hiddenIds: () => ({ xxsh: true }),
+    hiddenNames: () => ["停用測試高中", "停用高中"],
+  });
+  const context = vm.createContext({ window: { CyNewsSchoolRegistry: fakeRegistry } });
+  const start = app.indexOf("    // 停用或隱藏的學校");
   const end = app.indexOf("    var state = {", start);
   vm.runInContext(app.slice(start, end), context);
-  assert.equal(context.visibleSchool({ id: "legacy-1", school: "unknown", school_name: "輔仁高中" }), false,
-    "a malformed legacy row cannot bypass FJSH filtering through its display name");
+  assert.equal(context.visibleSchool({ id: "legacy-1", school: "unknown", school_name: "停用高中" }), false,
+    "a malformed legacy row cannot bypass a hidden school through its display name");
+  assert.equal(context.visibleSchool({ id: "xxsh-9", school: "unknown" }), false,
+    "hidden-school ids are filtered even when the id appears before school");
+  assert.equal(context.visibleSchool({ id: "pksh-1", school: "pksh", school_name: "北港高中" }), true,
+    "PKSH is public again");
+  assert.equal(context.visibleSchool({ id: "pksh-3", school: "pksh", date_status: "unverified" }), false,
+    "the persisted public marker also hides the item");
+  assert.equal(context.visibleSchool({ id: "pksh-4", school: "pksh", date_status: "verified" }), true,
+    "confirmed legacy items are shown");
+  assert.equal(context.visibleSchool({ id: "pksh-2", school: "pksh", date_source: "legacy_unverified" }), false,
+    "unverified legacy dates stay hidden until the official article confirms them");
   assert.equal(context.visibleSchool({ id: "legacy-2", school: "cysh", school_name: "嘉義高中" }), true,
     "an active Chiayi school remains visible");
 }
@@ -47,7 +62,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=94/);
+assert.match(index, /style\.css\?v=95/);
 assert.match(index, /search-taxonomy\.js\?v=53/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=54/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=54[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=57/, "reviewed validity loads before answers");

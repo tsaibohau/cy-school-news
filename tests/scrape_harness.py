@@ -121,7 +121,8 @@ class FakeSession:
 
 
 def harness_config(scrape):
-    cfg = copy.deepcopy(scrape.CONFIG)
+    # 凍結的設定快照：之後在 config.json 新增或啟用學校，不會改變這份黃金比對的基準
+    cfg = json.loads((FIXTURES / "scrape_golden_config.json").read_text(encoding="utf-8"))
     for school in cfg["schools"]:
         if school["id"] == "pksh":
             school["enabled"] = True  # 覆蓋 iSchool 分支

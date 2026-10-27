@@ -62,6 +62,9 @@ def test_frontend_registry_matches_backend():
         assert row.get("status", "active") == definition.status, school_id
         assert (row.get("visible", True) is not False) == definition.visible, school_id
         assert row["capabilities"] == dict(definition.capabilities), school_id
+    # 前端的舊日期截止日必須與 config.json 相同，確保爬蟲尚未標記前也不會顯示錯的日期
+    for school in CONFIG["schools"]:
+        assert front[school["id"]].get("dateUnverifiedBefore") == school.get("date_unverified_before"), school["id"]
 
 
 def test_scrape_has_no_school_specific_branches():
