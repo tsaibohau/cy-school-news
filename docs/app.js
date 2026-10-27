@@ -2611,7 +2611,18 @@
       if (el.tabToday) el.tabToday.classList.toggle("is-active", today);
       if (el.tabAssistant) el.tabAssistant.classList.toggle("is-active", assistant);
       if (el.tabTimetable) el.tabTimetable.classList.toggle("is-active", timetable);
-      if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar");
+      // 課表從行事曆頁切換進入：看得到行事曆時，分頁列仍標示在行事曆。
+      var calendarAvailable = !!(el.tabCalendar && !el.tabCalendar.hidden);
+      var timetableAvailable = !!(el.tabTimetable && !el.tabTimetable.hidden);
+      if (el.tabCalendar) el.tabCalendar.classList.toggle("is-active", tab === "calendar" || timetable && calendarAvailable);
+      if (document.querySelectorAll) Array.prototype.forEach.call(document.querySelectorAll(".view-switch"), function (node) {
+        node.hidden = !(calendarAvailable && timetableAvailable);
+        Array.prototype.forEach.call(node.querySelectorAll("button[data-view-switch]"), function (button) {
+          var active = button.dataset.viewSwitch === tab;
+          button.classList.toggle("is-active", active);
+          button.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+      });
       el.tabSub.classList.toggle("is-active", tab === "sub");
       if (el.tabAdmin) el.tabAdmin.classList.toggle("is-active", tab === "admin");
       if (el.tabHome) el.tabHome.setAttribute("aria-current", home ? "page" : "false");
@@ -2648,6 +2659,9 @@
     if (el.tabTimetable) el.tabTimetable.addEventListener("click", function () { switchTab("timetable"); });
     el.tabSub.addEventListener("click", function () { switchTab("sub"); });
     if (el.tabAdmin) el.tabAdmin.addEventListener("click", function () { switchTab("admin"); });
+    if (document.querySelectorAll) Array.prototype.forEach.call(document.querySelectorAll("button[data-view-switch]"), function (button) {
+      button.addEventListener("click", function () { switchTab(button.dataset.viewSwitch); });
+    });
     if (el.tabCalendar) {
       el.tabCalendar.addEventListener("click", function () { switchTab("calendar"); });
       el.calendarGrid.addEventListener("click", function (e) {

@@ -47,7 +47,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=93/);
+assert.match(index, /style\.css\?v=94/);
 assert.match(index, /search-taxonomy\.js\?v=53/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=54/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=54[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=56/, "reviewed validity loads before answers");
@@ -75,8 +75,10 @@ assert.match(index, /<nav id="navMenu" class="tabbar" aria-label="主要功能">
 }
 assert.match(index, /id="tabAdmin"[^>]*hidden/, "administrator tab starts hidden");
 assert.match(index, /id="viewSub"[\s\S]*id="tabAdmin"[\s\S]*id="viewAdmin"/, "administrator entry lives on the personal page");
-assert.match(index, /<nav id="navMenu"[\s\S]*id="tabTimetable"[\s\S]*<\/nav>/, "the class timetable is a daily task and stays in the tab bar");
-assert.doesNotMatch(style, /#tabTimetable \{ display: none/, "the timetable tab is never hidden by layout rules");
+assert.match(index, /id="tabCalendar"[\s\S]*id="tabTimetable"[\s\S]*<\/nav>/, "timetable-only accounts still reach the timetable from the tab bar");
+assert.match(style, /#tabCalendar:not\(\[hidden\]\) ~ #tabTimetable \{ display: none; \}/, "accounts with a calendar reach the timetable inside the calendar page");
+assert.match(index, /id="viewCalendar"[\s\S]*data-view-switch="timetable"/, "the calendar page has a timetable switch");
+assert.match(index, /id="viewTimetable"[\s\S]*data-view-switch="calendar"/, "the timetable page switches back to the calendar");
 assert.match(style, /\.badge\[hidden\] \{ display: none; \}/, "an empty notification badge never shows 0");
 assert.match(style, /\.tab\[hidden\]\s*\{\s*display:\s*none;/, "hidden navigation tabs must override the tab display layout");
 assert.match(index, /id="brandHome"[^>]*aria-label="返回主畫面"/, "the masthead always exposes a route back home");

@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=93">
+<link rel="stylesheet" href="style.css?v=94">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -105,6 +105,7 @@
 
   <section id="viewTimetable" class="today-view" hidden aria-labelledby="timetableTitle">
     <div class="section-heading"><h2 id="timetableTitle">我的課表</h2></div>
+    <div class="view-switch" role="group" aria-label="切換行事曆與課表" hidden><button type="button" data-view-switch="calendar">行事曆</button><button type="button" data-view-switch="timetable">課表</button></div>
     <div id="standaloneTimetable" class="today-list"></div>
   </section>
 
@@ -136,6 +137,7 @@
       <h2>行事曆</h2>
       <button id="addEvent" class="btn-primary compact-button" type="button" hidden>新增事件</button>
     </div>
+    <div class="view-switch" role="group" aria-label="切換行事曆與課表" hidden><button type="button" data-view-switch="calendar">行事曆</button><button type="button" data-view-switch="timetable">課表</button></div>
     <div class="calendar-import">
       <button id="legacyEventImport" class="btn-ghost" type="button" hidden>匯入此裝置的舊事件</button>
       <span id="legacyEventImportStatus" class="hint" aria-live="polite" hidden></span>
@@ -302,9 +304,9 @@
 <nav id="navMenu" class="tabbar" aria-label="主要功能">
   <button id="tabHome" class="tab is-active" aria-current="page"><span class="tab-icon" aria-hidden="true">首</span><span class="tab-label">首頁</span></button>
   <button id="tabLatest" class="tab"><span class="tab-icon" aria-hidden="true">告</span><span class="tab-label">公告</span></button>
-  <button id="tabTimetable" class="tab"><span class="tab-icon" aria-hidden="true">課</span><span class="tab-label">課表</span></button>
   <button id="tabAssistant" class="tab"><span class="tab-icon" aria-hidden="true">問</span><span class="tab-label">問校務</span></button>
   <button id="tabCalendar" class="tab"><span class="tab-icon" aria-hidden="true">曆</span><span class="tab-label">行事曆</span></button>
+  <button id="tabTimetable" class="tab"><span class="tab-icon" aria-hidden="true">課</span><span class="tab-label">課表</span></button>
   <button id="tabSub" class="tab"><span class="tab-icon" aria-hidden="true">我</span><span class="tab-label">我的</span><em id="subBadge" class="badge" hidden></em></button>
 </nav>
 </div>
@@ -329,7 +331,7 @@
 <script src="announcement-cleanup.js?v=82"></script>
 <script src="assistant-qa.js?v=56"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=101"></script>
+<script src="app.js?v=102"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

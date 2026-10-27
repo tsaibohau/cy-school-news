@@ -403,6 +403,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .timetable-grid-cell { display: grid; place-items: center; text-align: center; }
 
 /* ── 行事曆 ── */
+/* 行事曆／課表切換：一條細框長籤，選中的一側為墨底 */
+.view-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: -4px 0 14px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); }
+.view-switch button { min-height: 38px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font-size: 14.5px; font-weight: 700; letter-spacing: .2em; cursor: pointer; }
+.view-switch button.is-active { background: var(--ink); color: var(--paper); }
 .calendar-import { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
 .calendar-import:has(> :not([hidden])) { margin: 0 0 12px; }
 .calendar-panel { padding: 12px; }
@@ -605,6 +609,8 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   font-size: 11.5px; letter-spacing: .06em; cursor: pointer;
 }
 .tab[hidden] { display: none; }
+/* 課表收在行事曆頁內切換；只有看不到行事曆的帳號（僅課表）才在分頁列顯示課表。 */
+#tabCalendar:not([hidden]) ~ #tabTimetable { display: none; }
 .tab-icon {
   display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
   font: 700 16px/1 var(--serif); transition: background .15s ease, color .15s ease;
