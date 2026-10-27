@@ -1,0 +1,79 @@
+# -*- coding: utf-8 -*-
+"""學校登錄表一致性：school_registry.py ↔ config.json ↔ docs/school-registry.js ↔ adapter 登錄表。
+
+新增學校時只改登錄表；這支測試確保三處不會互相矛盾。
+執行：python tests/test_school_registry_sync.py
+"""
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scraper"))
+
+import scrape  # noqa: E402,F401  (登錄 new-classic-cms / ischool-site-news)
+import adapters  # noqa: E402
+from school_registry import SCHOOLS  # noqa: E402
+
+CONFIG = json.loads((ROOT / "scraper/config.json").read_text(encoding="utf-8"))
+
+
+def frontend_schools():
+    js = ("const r=require(process.argv[1]);"
+          "const all=['cysh','cygsh','fjsh','pksh'].concat(%s).map(id=>r.find(id)).filter(Boolean);"
+          "console.log(JSON.stringify(all));")
+    ids = json.dumps(sorted(SCHOOLS))
+    out = subprocess.run(["node", "-e", js % ids, str(ROOT / "docs/school-registry.js")],
+                         capture_output=True, text=True, check=True).stdout
+    return {row["id"]: row for row in json.loads(out)}
+
+
+def test_config_and_registry_agree():
+    config_ids = [s["id"] for s in CONFIG["schools"]]
+    assert sorted(config_ids) == sorted(SCHOOLS), (config_ids, sorted(SCHOOLS))
+    for school in CONFIG["schools"]:
+        definition = SCHOOLS[school["id"]]
+        assert school["name"] == definition.name, school["id"]
+        assert school["short"] == definition.short_name, school["id"]
+        assert school["base"].rstrip("/") == definition.base_url.rstrip("/"), school["id"]
+        enabled = school.get("enabled", True) is not False
+        assert enabled == (definition.status == "active"), (school["id"], enabled, definition.status)
+        assert enabled == bool(definition.capabilities.get("announcements")), school["id"]
+        # config 寫的 adapter 與登錄表必須指向同一個 adapter
+        assert adapters.get_adapter(school) is adapters.get_adapter(definition.announcement_adapter), school["id"]
+
+
+def test_every_registry_adapter_is_registered():
+    for definition in SCHOOLS.values():
+        adapters.get_adapter(definition.announcement_adapter)
+    assert "new-classic-cms" in adapters.registered_names()
+    assert "rulingdigital" in adapters.registered_names()
+
+
+def test_frontend_registry_matches_backend():
+    front = frontend_schools()
+    assert sorted(front) == sorted(SCHOOLS), sorted(front)
+    for school_id, definition in SCHOOLS.items():
+        row = front[school_id]
+        assert row["name"] == definition.name, school_id
+        assert row["short"] == definition.short_name, school_id
+        assert row.get("status", "active") == definition.status, school_id
+        assert (row.get("visible", True) is not False) == definition.visible, school_id
+        assert row["capabilities"] == dict(definition.capabilities), school_id
+
+
+def test_scrape_has_no_school_specific_branches():
+    """主迴圈依 adapter 分派，不得再出現特定學校或系統名稱的判斷。"""
+    src = (ROOT / "scraper/scrape.py").read_text(encoding="utf-8")
+    main_src = src[src.index("def main()"):]
+    for needle in ('"cysh"', '"cygsh"', '"pksh"', '"fjsh"', '== "ischool-site-news"', '== "rulingdigital"'):
+        assert needle not in main_src, needle
+
+
+if __name__ == "__main__":
+    for name, fn in list(globals().items()):
+        if name.startswith("test_"):
+            fn()
+            print("ok", name)
