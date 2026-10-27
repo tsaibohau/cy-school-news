@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-27T15:12:24+08:00",
+ "generated_at": "2026-10-27T15:47:01+08:00",
  "school": {
   "id": "tlsh",
   "name": "國立斗六高級中學",
@@ -8,6 +8,74 @@
   "base": "https://www.tlsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "tlsh-68510",
+   "title": "華梵大學「大觸特觸全國高中職設計大賽」",
+   "date": "2026-10-27",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68510/",
+   "category": "一般",
+   "first_seen": "2026-10-27T15:47:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
+  {
+   "id": "tlsh-68499",
+   "title": "淡江大學「116一日淡江會計挑戰營」",
+   "date": "2026-10-27",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68499/",
+   "category": "一般",
+   "first_seen": "2026-10-27T15:47:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ac459c41898788fd18ee0267e8d2991812d93ac1298e614cecd39efe3ecc79ea"
+    }
+   ]
+  },
+  {
+   "id": "tlsh-68475",
+   "title": "華梵大學「2027風起雲遊全國高中職插畫A4秀」",
+   "date": "2026-10-27",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68475/",
+   "category": "競賽",
+   "first_seen": "2026-10-27T15:47:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
+  {
+   "id": "tlsh-68468",
+   "title": "國立嘉義大學「農生營」",
+   "date": "2026-10-27",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68468/",
+   "category": "競賽",
+   "first_seen": "2026-10-27T15:47:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
   {
    "id": "tlsh-68500",
    "title": "【語文競賽】115語文競賽-國語朗讀抽籤時間",
@@ -20,8 +88,8 @@
    "first_seen": "2026-10-27T15:12:24+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "tlsh-68402",
@@ -35,8 +103,8 @@
    "first_seen": "2026-10-27T15:12:24+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "tlsh-68414",
@@ -50,8 +118,8 @@
    "first_seen": "2026-10-27T15:12:24+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "tlsh-68463",
@@ -65,8 +133,8 @@
    "first_seen": "2026-10-27T15:12:24+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -87,8 +155,8 @@
    "first_seen": "2026-10-27T15:12:24+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "tlsh-68454",
@@ -100,7 +168,18 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68454/",
    "category": "競賽",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-30",
+     "provenance": "verified_announcement_event",
+     "source_revision": "e9cbf299d9d370ca3768896fa6b9fb93a1192b75664e76b2fe8ad340047f2598"
+    }
+   ]
   },
   {
    "id": "tlsh-68450",
@@ -112,7 +191,24 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68450/",
    "category": "競賽",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-25",
+     "provenance": "verified_announcement_event",
+     "source_revision": "be80e228bbf6fc732f3659ae6a42e2e76bdba8bba14d5eace1d3e3e9338561c0"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-08",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "be80e228bbf6fc732f3659ae6a42e2e76bdba8bba14d5eace1d3e3e9338561c0"
+    }
+   ]
   },
   {
    "id": "tlsh-68448",
@@ -124,7 +220,18 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68448/",
    "category": "競賽",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "52640718c9532c1f20f6d5b50ddac8823a5380c9295f529e6f23358f2b6bef07"
+    }
+   ]
   },
   {
    "id": "tlsh-68442",
@@ -136,7 +243,31 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68442/",
    "category": "競賽",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ab72a63e24f93baa70d1e74dbe7dd83a64439bf86e6afd43f5951893e8e39129"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-19",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ab72a63e24f93baa70d1e74dbe7dd83a64439bf86e6afd43f5951893e8e39129"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "tlsh-68429",
@@ -148,7 +279,10 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68429/",
    "category": "競賽",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "tlsh-68422",
@@ -160,7 +294,18 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68422/",
    "category": "競賽",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d5fae7900d797ffb8a385ff1d9379b922f6246ea6428e572a59460729b7c54bd"
+    }
+   ]
   },
   {
    "id": "tlsh-68416",
@@ -172,7 +317,17 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68416/",
    "category": "競賽",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "tlsh-68409",
@@ -184,7 +339,18 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68409/",
    "category": "競賽",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "19946d753f2ef7244b4361233b5ce47a82e218a6825cd5331ca43b48e5505a89"
+    }
+   ]
   },
   {
    "id": "tlsh-68404",
@@ -196,7 +362,10 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68404/",
    "category": "一般",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "tlsh-68334",
@@ -208,7 +377,10 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68334/",
    "category": "競賽",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "tlsh-68324",
@@ -220,7 +392,10 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68324/",
    "category": "研習活動",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "tlsh-68321",
@@ -232,7 +407,18 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68321/",
    "category": "一般",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ccaee39fb106366928ad208abbb2c9820149d0bd520f818e297348217192bf76"
+    }
+   ]
   },
   {
    "id": "tlsh-68318",
@@ -244,7 +430,10 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68318/",
    "category": "招生編班",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "tlsh-68447",
@@ -256,7 +445,10 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68447/",
    "category": "研習活動",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "tlsh-68423",
@@ -268,7 +460,10 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/10/27/68423/",
    "category": "一般",
    "first_seen": "2026-10-27T15:12:24+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "tlsh-68390",
