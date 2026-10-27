@@ -43,6 +43,8 @@ jobs:
           tests/test_relevance.js
           tests/test_assistant_qa.js
           tests/test_search_ranking.js
+          tests/test_qa_gold.js
+          tests/test_qa_precision.js
           tests/test_nonmember_content_gate.js
           tests/test_member_content_rls_contract.js
           tests/test_production_release_evidence.js

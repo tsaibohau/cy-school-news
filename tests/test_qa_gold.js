@@ -25,9 +25,9 @@ assert.equal(wrong, 0, "never answer with an announcement the user marked as not
 assert.equal(noAnswerOk, noAnswer, "questions without an official answer must not get a direct answer");
 /* Two questions have two equally valid notices (two GEPT notices; the 2nd and 3rd mock-exam
    timetables) where only one was labelled, so top-3 is the stable measure. */
-assert.ok(top1 >= 7, "correct announcement ranked first for at least 7 of 13");
-assert.ok(top3 >= 9, "correct announcement in the top 3 for at least 9 of 13");
-assert.ok(found >= 8, "answer or related list includes a correct announcement for at least 8 of 13");
+assert.ok(top1 >= 8, "correct announcement ranked first for at least 8 of 13");
+assert.ok(top3 >= 11, "correct announcement in the top 3 for at least 11 of 13");
+assert.ok(found >= 13, "answer or related list includes a correct announcement for all 13");
 console.log("問校務 gold-set tests passed");
 
 /* 2026-10-27 real-device report: 「學生證丟了怎麼辦」 was answered with a 學生音樂比賽 notice
@@ -63,7 +63,7 @@ for (const group of para.groups) {
   }
 }
 console.log(`wordings: top3 ${variantHits}/${variants}`);
-assert.ok(variantHits >= 24, "reworded questions keep finding the labelled notices");
+assert.ok(variantHits >= 28, "reworded questions keep finding the labelled notices");
 for (const row of para.exclusive) {
   const top = QA.rank(row.q, corpus, {}, { asOf: "2026-10-27" }).slice(0, 3);
   assert.ok(top.length && top[0].item.title.includes(row.must), row.q + " should lead with " + row.must);

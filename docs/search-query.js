@@ -37,7 +37,18 @@
   ];
   function allRules() { return (taxonomy.topics || []).map(function (row) { return { kind: "topic", row: row }; })
     .concat((taxonomy.actions || []).map(function (row) { return { kind: "action", row: row }; })); }
-  function findTerms(value, choices) { return (choices || []).filter(function (term) { return value.indexOf(compact(term)) !== -1; })
+  /* Words that contain a term without meaning it: 選課輔導 is not 課輔, 愛校服務 is not
+     校服, 社團法人 is not a school club. */
+  var FALSE_FRIENDS = { "課輔": ["選課輔導"], "校服": ["愛校服務"], "社團": ["社團法人"], "輔導課": ["輔導課程"] };
+  function termIn(value, term) {
+    term = compact(term);
+    if (value.indexOf(term) === -1) return false;
+    var traps = FALSE_FRIENDS[term];
+    if (!traps || !traps.length) return true;
+    traps.forEach(function (trap) { value = value.split(trap).join("\u0001"); });
+    return value.indexOf(term) !== -1;
+  }
+  function findTerms(value, choices) { return (choices || []).filter(function (term) { return termIn(value, term); })
     .sort(function (a, b) { return compact(b).length - compact(a).length; }); }
   function queryPlan(query) {
     var cacheKey = clean(query), cached = planCache[cacheKey];
@@ -49,15 +60,25 @@
       facets.push(facet.id);
       found.forEach(function (term) { termMatches.push({ kind: "facet", id: facet.id, term: compact(term) }); });
     });
-    ["請問", "幫我", "我想知道", "有沒有", "有什麼", "有哪些", "怎麼辦", "如何", "怎麼", "辦法", "規定", "資訊", "公告", "相關", "現在", "目前", "最新", "什麼時候", "何時", "日期", "截止", "期限", "時間", "流程", "方式", "需不需要", "需要", "上繳", "可以", "可否", "能否", "還能不能", "能不能", "還能", "是否", "會不會", "使用", "一下", "這個", "這", "能", "嗎", "呢"].forEach(function (word) {
+    ["請問", "幫我", "我想知道", "有沒有", "有什麼", "有哪些", "怎麼辦", "如何", "怎麼", "辦法", "規定", "公告", "相關", "現在", "目前", "最新", "什麼時候", "何時", "日期", "截止", "期限", "時間", "流程", "方式", "需不需要", "需要", "上繳", "可以", "可否", "能否", "還能不能", "能不能", "還能", "是否", "會不會", "使用", "一下", "這個", "這", "嗎", "呢"].forEach(function (word) {
       value = value.split(compact(word)).join("");
     });
+    /* 資訊 and 能 are filler in 「相關資訊」「能報名嗎」 but part of names such as
+       數理及資訊學科能力競賽. */
+    value = value.replace(/資訊(?!學科|科|工程|安全|社|能力|月|展|教育|研究)/g, "").replace(/能(?!力|源)/g, "");
     var remainder = value;
     termMatches.filter(function (row) { return row.kind === "facet"; }).forEach(function (row) {
       remainder = remainder.split(row.term).join("");
     });
+    /* Longest term first: 愛校服務 is about volunteering, so the 校服 inside it must not
+       also pull in uniform notices. */
+    var masked = value, hit = {};
+    allRules().map(function (rule) { return rule.row.terms.map(compact); }).reduce(function (all, rows) { return all.concat(rows); }, [])
+      .sort(function (a, b) { return b.length - a.length; }).forEach(function (term) {
+        if (term && masked.indexOf(term) !== -1) { hit[term] = true; masked = masked.split(term).join("\u0001"); }
+      });
     allRules().forEach(function (rule) {
-      var found = findTerms(value, rule.row.terms);
+      var found = rule.row.terms.filter(function (term) { return hit[compact(term)]; }).sort(function (a, b) { return compact(b).length - compact(a).length; });
       if (!found.length) return;
       (rule.kind === "topic" ? topics : actions).push(rule.row.id);
       found.forEach(function (term) {
@@ -360,6 +381,7 @@
     var floor = cutoff(rows.map(function (row) { return row.score; }));
     return rows.filter(function (row) { return row.score >= floor; });
   }
-  return { compact: compact, concepts: concepts, terms: terms, matches: matches, queryPlan: queryPlan,
+  function taxonomyTopics() { return taxonomy.topics || []; }
+  return { compact: compact, concepts: concepts, taxonomyTopics: taxonomyTopics, findTerms: findTerms, terms: terms, matches: matches, queryPlan: queryPlan,
     primaryTopicsMatch: primaryTopicsMatch, announcementScore: announcementScore, cutoff: cutoff, rank: rank, select: select, taxonomyVersion: taxonomy.version };
 });
