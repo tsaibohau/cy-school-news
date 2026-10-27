@@ -1097,8 +1097,9 @@ def main() -> int:
                 it.setdefault("detail_status", "pending")
                 it.setdefault("detail_available", False)
                 by_id[it["id"]] = it
-                # 新上架學校：上架前的舊公告只收錄、不推播（notify_since 未設定的學校不受影響）
-                if not school.get("notify_since") or (it.get("date") or "9999") >= school["notify_since"]:
+                # 新上架學校：上架前的舊公告只收錄、不推播（notify_since 未設定的學校不受影響）。
+                # 列表沒有日期的也不推播：無法證明是上架後的新公告。
+                if not school.get("notify_since") or (it.get("date") or "") >= school["notify_since"]:
                     all_new.append(it)
 
         # 覆蓋率哨兵:首頁出現的文章,其分類若不在 config 就記下來

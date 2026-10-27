@@ -500,7 +500,7 @@ def test_new_school_backlog_is_not_pushed():
         new_items = json.loads((tmp / config["new_items_path"]).read_text(encoding="utf-8"))
         stored = json.loads((tmp / "docs/data/announcements.json").read_text(encoding="utf-8"))["items"]
     assert len(stored) == 12
-    assert new_items and all(i["date"] >= "2026-10-27" for i in new_items), [i["date"] for i in new_items]
+    assert new_items and all(i["date"] and i["date"] >= "2026-10-27" for i in new_items), [i["date"] for i in new_items]
     assert len(new_items) < len(stored)
 
 

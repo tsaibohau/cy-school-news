@@ -120,11 +120,30 @@ def _latest_announcements() -> dict:
     return latest
 
 
-def prepare_notification_items(new_items, queued_items, latest: dict) -> tuple[list, list]:
+def _notify_since_by_school() -> dict:
+    """config.json 裡新上架學校的 notify_since（上架前的舊公告不推播）。"""
+    try:
+        config = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    return {s["id"]: s["notify_since"] for s in config.get("schools", []) if s.get("notify_since")}
+
+
+def before_notify_since(item: dict, since_by_school: dict) -> bool:
+    since = since_by_school.get(str(item.get("school") or ""))
+    return bool(since) and (item.get("date") or "") < since
+
+
+def prepare_notification_items(new_items, queued_items, latest: dict,
+                               since_by_school: dict | None = None) -> tuple[list, list]:
     """Hydrate pending notices from the corpus and defer rows without real content."""
+    since_by_school = _notify_since_by_school() if since_by_school is None else since_by_school
     merged = {}
     for item in list(queued_items or []) + list(new_items or []):
         item_id = str(item.get("id") or "")
+        hydrated_date = {**item, **latest.get(item_id, {})}
+        if before_notify_since(hydrated_date, since_by_school):
+            continue  # 新上架學校的舊公告（含已在佇列中的）一律不推播
         if item_id:
             merged[item_id] = {**merged.get(item_id, {}), **item}
     ready, pending = [], []
