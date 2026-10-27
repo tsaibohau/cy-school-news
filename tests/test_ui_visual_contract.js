@@ -65,7 +65,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=96/);
+assert.match(index, /style\.css\?v=97/);
 assert.match(index, /search-taxonomy\.js\?v=53/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=54/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=54[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=57/, "reviewed validity loads before answers");
@@ -100,7 +100,7 @@ assert.match(index, /id="viewTimetable"[\s\S]*data-view-switch="calendar"/, "the
 assert.match(style, /\.badge\[hidden\] \{ display: none; \}/, "an empty notification badge never shows 0");
 assert.match(style, /\.tab\[hidden\]\s*\{\s*display:\s*none;/, "hidden navigation tabs must override the tab display layout");
 assert.match(index, /id="brandHome"[^>]*aria-label="返回主畫面"/, "the masthead always exposes a route back home");
-assert.match(app, /brandHome.*addEventListener\("click"[\s\S]*switchTab\("home"\)/, "the masthead returns approved accounts to the home view");
+assert.match(app, /brandHome.*addEventListener\("click"[\s\S]*(?:pickTab|switchTab)\("home"\)/, "the masthead returns approved accounts to the home view");
 assert.match(index, /id="viewHome"[^>]*aria-labelledby="homeTitle"/);
 assert.match(index, /id="homeTitle"[^>]*class="calligraphy-title"[^>]*>.*學校公告.*匯集系統/s);
 assert.match(index, /data-home-tab="today"/);

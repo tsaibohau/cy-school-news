@@ -15,6 +15,20 @@ const today = "2026-10-27";  // 星期二
   assert.strictEqual(r.text, r.lines.join(""));
 }
 
+// 停課／停班：今天或昨天的公告標題有關鍵字就放在日期句後面；前天的不算
+{
+  const items = [
+    { id: "cysh-9", school: "cysh", school_name: "國立嘉義高級中學", title: "康芮颱風明(28)日停止上班上課", date: "2026-10-27" },
+    { id: "cygsh-9", school: "cygsh", school_name: "國立嘉義女子高級中學", title: "因應豪雨停課公告", date: "2026-10-25" },
+    { id: "fjsh-9", school: "fjsh", school_name: "私立輔仁高級中學", title: "防颱準備注意事項", date: "2026-10-26" },
+  ];
+  const r = Brief.compose({ today, projection: {}, announcementItems: items });
+  assert.strictEqual(r.lines[1], "停課／停班消息：國立嘉義高級中學・康芮颱風明(28)日停止上班上課、私立輔仁高級中學・防颱準備注意事項。");
+  const hidden = Brief.compose({ today, projection: {}, announcementItems: items, isVisible: (i) => i.school !== "fjsh" });
+  assert(!hidden.text.includes("輔仁"), "hidden schools are not mentioned");
+  assert.strictEqual(Brief.closureNotices(items, today).length, 2, "two-day-old notices are skipped");
+}
+
 // 完整的一天：行事曆、期限、待辦、新公告、相關公告、明天
 {
   const projection = Today.build({
@@ -86,12 +100,13 @@ const today = "2026-10-27";  // 星期二
   const sw = fs.readFileSync(path.join(root, "docs/sw.js"), "utf8");
   const brief = fs.readFileSync(path.join(root, "docs/daily-brief.js"), "utf8");
   assert.match(index, /id="dailyBrief"[\s\S]*id="dailyBriefText"[^>]*aria-hidden="true"[\s\S]*id="dailyBriefSr"/);
-  assert(index.indexOf('src="daily-brief.js?v=1"') > index.indexOf('src="today.js'), "brief loads after today.js");
-  assert(index.indexOf('src="daily-brief.js?v=1"') < index.indexOf('src="app.js'), "brief loads before app.js");
-  assert(sw.includes("./daily-brief.js?v=1"), "service worker caches the brief module");
+  assert(index.indexOf('src="daily-brief.js?v=2"') > index.indexOf('src="today.js'), "brief loads after today.js");
+  assert(index.indexOf('src="daily-brief.js?v=2"') < index.indexOf('src="app.js'), "brief loads before app.js");
+  assert(sw.includes("./daily-brief.js?v=2"), "service worker caches the brief module");
   assert.match(app, /prefers-reduced-motion: reduce/, "typewriter respects reduced motion");
   assert.match(app, /el\.dailyBriefSr\.textContent = brief\.text/, "screen readers get the full text at once");
-  assert.match(app, /if \(full && !state\.landedHome\)/, "full-service members land on home once per open");
+  assert.match(app, /if \(full && !state\.userPickedTab && state\.tab === "latest"\) switchTab\("home"\)/, "full-service members land on home until they pick a tab themselves");
+  assert.match(app, /el\.tabLatest\.addEventListener\("click", function \(\) \{ pickTab\("latest"\); \}\)/, "tapping a tab marks it as the user's own choice");
   assert.match(app, /if \(el\.nicknameDialog && el\.nicknameDialog\.open\) return;/, "typing waits while the first-run setup dialog is open");
   assert.match(app, /el\.nicknameDialog\.showModal\(\);\s*pauseBrief\(\);/, "opening the setup dialog mid-typing pauses and resets the brief");
   assert.match(app, /el\.nicknameDialog\.addEventListener\("close", function \(\) \{ if \(state\.tab === "home"\) playBrief\(\); \}\)/, "typing starts when the setup dialog closes");
