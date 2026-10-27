@@ -181,7 +181,7 @@
       <details id="profileBox" class="my-card my-disclosure" aria-labelledby="profileTitle">
         <summary><span class="my-card-icon" aria-hidden="true">設</span><span><strong id="profileTitle">個人設定</strong><small>學校、年級與關注內容</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary>
         <div class="my-card-body"><p id="profileHint" class="hint" hidden></p><form id="profileForm" class="profile-form">
-          <fieldset><legend>基本資料</legend><label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級（查看課表需要）<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="例如 109"></label></fieldset><fieldset class="full-service-only"><legend>讓內容更符合我 <span>（選填）</span></legend><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課"></label><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知</label></fieldset><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存設定</button><span id="profileStatus" class="hint" aria-live="polite"></span></div>
+          <fieldset><legend>基本資料</legend><label>我的暱稱<input id="profileNickname" maxlength="32" autocomplete="nickname" placeholder="例如：Hau"></label><label>我的學校<select id="profileSchool" required><option value="">請選擇學校</option></select></label><label>我的年級<select id="profileGrade"><option value="">尚未設定</option><option value="1">高一</option><option value="2">高二</option><option value="3">高三</option></select></label><label>我的班級（查看課表需要）<input id="profileClass" maxlength="20" inputmode="numeric" placeholder="三位數班級，例如 101"></label></fieldset><fieldset class="full-service-only"><legend>讓內容更符合我 <span>（選填）</span></legend><label>關注主題<input id="profileInterests" maxlength="160" placeholder="例如 物理, 社團"></label><label>關注分類<input id="profileCategories" maxlength="160" placeholder="例如 競賽, 獎助學金"></label><label>關鍵字<input id="profileKeywords" maxlength="240" placeholder="例如 物理競賽, 選課"></label><label class="personalized-toggle"><input id="personalizedToggle" type="checkbox"> 個人化通知</label></fieldset><div class="profile-actions"><button id="profileSave" class="btn-primary" type="submit">儲存設定</button><span id="profileStatus" class="hint" aria-live="polite"></span></div>
         </form></div>
       </details>
       <section class="my-card full-service-only" aria-labelledby="subscriptionTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">追</span><div><h3 id="subscriptionTitle">關鍵字追蹤</h3><p>有新公告時提醒你</p></div></div></div><form id="kwForm" class="kw-form"><input id="kwInput" type="text" maxlength="20" placeholder="例如：物理競賽" aria-label="新增訂閱關鍵字"><button type="submit" class="btn-primary">新增</button></form><div id="kwChips" class="kw-chips"></div><div class="notify-row"><button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button><span id="notifyState" class="hint"></span></div></section>
@@ -329,9 +329,9 @@
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
-<script src="assistant-qa.js?v=56"></script>
+<script src="assistant-qa.js?v=57"></script>
 <script src="detail-ui.js?v=41"></script>
-<script src="app.js?v=103"></script>
+<script src="app.js?v=104"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>
