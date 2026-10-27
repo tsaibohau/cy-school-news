@@ -26,6 +26,7 @@ from extractive_summary import SUMMARY_VERSION, summarize_detail
 from link_health import GONE_HTTP_STATUS, http_status, is_gone, record_alive, record_missing
 from public_shards import build_school_shards
 from bs4 import BeautifulSoup
+import adapters as source_adapters
 
 from detail_parser import parse_article_detail
 
@@ -76,6 +77,9 @@ SOURCE_STATUS_KEY = "__source_status__"
 # without this field are treated as reliable persisted observations, never as
 # weak list-page observations.
 DATE_SOURCE_RANK = {
+    # 舊來源整批匯入、年份不可信的日期（例如 iSchool「10/27」短日期被補成錯的年份）；
+    # 任何列表或文章頁日期都能取代它，前端在取代前不顯示該則公告。
+    "legacy_unverified": -1,
     "first_seen": 0,
     "list": 1,
     "persisted": 2,
@@ -352,10 +356,53 @@ def extract_ischool_next_page(html: str, school: dict, source_url: str) -> str:
     return ""
 
 
-def extract_items(html: str, school: dict, source_url: str):
-    if school.get("adapter", "rulingdigital") == "ischool-site-news":
+class NewClassicCmsAdapter(source_adapters.Adapter):
+    """銳鼎新版校網（/p/403-、/p/412-、/p/406-）：嘉中、嘉女。"""
+    name = "new-classic-cms"
+    coverage_sentinel = True
+
+    def extract(self, html, school, source_url):
+        return extract_rulingdigital_items(html, school, source_url)
+
+    def deep_crawl_pages(self, page_url):
+        if "/p/403-" not in page_url:
+            return []
+        return [list_page_with_number(page_url, n) for n in range(2, DEEP_CRAWL_MAX_PAGES + 1)]
+
+
+class IschoolSiteNewsAdapter(source_adapters.Adapter):
+    """iSchool 消息公佈欄 HTML（main2.php），沿真正的「下一頁」連結翻頁。"""
+    name = "ischool-site-news"
+
+    def extract(self, html, school, source_url):
         return extract_ischool_items(html, school, source_url)
-    return extract_rulingdigital_items(html, school, source_url)
+
+    def follow_pages(self, session, school, page_url, html, fetch, on_items, sleep):
+        visited_pages = {page_url}
+        current_url, current_html = page_url, html
+        max_pages = max(1, min(int(school.get("max_list_pages", 3)), 5))
+        for _ in range(1, max_pages):
+            next_url = extract_ischool_next_page(current_html, school, current_url)
+            if not next_url or next_url in visited_pages:
+                break
+            try:
+                current_html = fetch(session, next_url, school)
+            except Exception as e:
+                print(f"[warn] iSchool 分頁略過 {next_url}: {e}", file=sys.stderr)
+                break
+            visited_pages.add(next_url)
+            current_url = next_url
+            on_items(self.extract(current_html, school, current_url))
+            sleep()
+
+
+# "rulingdigital" 是 config.json 未標示 adapter 時的舊名稱，與 new-classic-cms 相同
+source_adapters.register(NewClassicCmsAdapter(), "rulingdigital")
+source_adapters.register(IschoolSiteNewsAdapter())
+
+
+def extract_items(html: str, school: dict, source_url: str):
+    return source_adapters.get_adapter(school).extract(html, school, source_url)
 
 
 def list_page_urls(school: dict) -> list:
@@ -482,7 +529,7 @@ def validate_history_capacity(items, max_items: int) -> None:
 
 def configured_categories(school: dict) -> set:
     """該校 config 裡已納入的 403 分類編號。"""
-    if school.get("adapter", "rulingdigital") != "rulingdigital" or not school.get("unit"):
+    if not source_adapters.get_adapter(school).coverage_sentinel or not school.get("unit"):
         return set()
     ids = set()
     for url in list_page_urls(school):
@@ -627,18 +674,48 @@ def system_ca_bundle() -> str:
     return ""
 
 
-def fetch(session: requests.Session, url: str, school: dict | None = None) -> str:
+INTERMEDIATES_PEM = ROOT / "scraper" / "certs" / "intermediates.pem"
+
+
+def intermediate_ca_bundle() -> str:
+    """certifi 根憑證 + 專案固定的中繼憑證（來自憑證機構 AIA 網址，不是學校）。
+
+    部分校網伺服器沒有送出中繼憑證，Linux 上會驗證失敗；補上中繼憑證後
+    仍是完整的憑證鏈驗證，絕不關閉 TLS 檢查。
+    """
+    import certifi
+    import tempfile
+    target = Path(tempfile.gettempdir()) / "cy-school-news-ca-bundle.pem"
+    if not target.exists() or target.stat().st_mtime < INTERMEDIATES_PEM.stat().st_mtime:
+        target.write_bytes(Path(certifi.where()).read_bytes() + b"\n" + INTERMEDIATES_PEM.read_bytes())
+    return str(target)
+
+
+def _tls_fallback_bundle(school: dict | None) -> str:
+    mode = (school or {}).get("tls_verify_fallback")
+    if mode == "system-ca":
+        return system_ca_bundle()
+    if mode == "bundled-intermediates" and INTERMEDIATES_PEM.is_file():
+        return intermediate_ca_bundle()
+    return ""
+
+
+def fetch(session: requests.Session, url: str, school: dict | None = None,
+          method: str = "GET", data: dict | None = None) -> str:
+    def send(**extra):
+        if method == "GET":
+            return session.get(url, timeout=CONFIG["timeout_sec"], **extra)
+        return session.post(url, data=data, timeout=CONFIG["timeout_sec"], **extra)
+
     try:
-        resp = session.get(url, timeout=CONFIG["timeout_sec"])
+        resp = send()
     except requests.exceptions.SSLError:
-        if not school or school.get("tls_verify_fallback") != "system-ca":
-            raise
-        ca_bundle = system_ca_bundle()
+        ca_bundle = _tls_fallback_bundle(school)
         if not ca_bundle:
             raise
-        print(f"[info] {school['id']}: 使用系統 CA bundle 重新驗證 TLS",
+        print(f"[info] {school['id']}: 使用 {school['tls_verify_fallback']} 重新驗證 TLS",
               file=sys.stderr)
-        resp = session.get(url, timeout=CONFIG["timeout_sec"], verify=ca_bundle)
+        resp = send(verify=ca_bundle)
     resp.raise_for_status()
     return decode_response(resp)
 
@@ -755,6 +832,83 @@ def load_existing_items(data_path: Path, archive_path: Path) -> dict:
     return by_id
 
 
+def mark_unverified_legacy_dates(by_id: dict, schools: list) -> int:
+    """學校設定 date_unverified_before 時，把該日前匯入、未經文章頁確認的日期標為不可信。
+
+    公開資料只保留 date_status（"unverified"／"verified"），date_source 不會發布，
+    所以每輪都由 date_status 還原：verified 的不再標記，unverified 的繼續等待確認。
+    """
+    marked = 0
+    cutoffs = {s["id"]: s["date_unverified_before"] for s in schools
+               if s.get("date_unverified_before") and s.get("enabled") is not False}
+    for item in by_id.values():
+        cutoff = cutoffs.get(item.get("school"))
+        if not cutoff or item.get("date_status") == "verified":
+            continue
+        if item.get("date_status") != "unverified":
+            if not item.get("date") or str(item.get("first_seen") or "")[:10] >= cutoff:
+                continue
+            if item.get("date_source") not in (None, "", "persisted"):
+                continue
+        item["date_status"] = "unverified"
+        if item.get("date"):
+            item["date_source"] = "legacy_unverified"
+        marked += 1
+    return marked
+
+
+def settle_date_status(items) -> int:
+    """日期已被列表或文章頁取代（或確認取不到）的舊項目，標為 verified，之後就會公開顯示。"""
+    settled = 0
+    for item in items:
+        if item.get("date_status") == "unverified" and item.get("date_source") != "legacy_unverified":
+            item["date_status"] = "verified"
+            settled += 1
+    return settled
+
+
+def repair_legacy_dates(session, school: dict, by_id: dict, adapter, now_iso: str,
+                        delay: float, fetched_this_run: set) -> int:
+    """每輪最多 date_repair_per_run 則：抓官方文章頁，以發佈時間取代不可信的日期。
+
+    同時寫入內文紀錄，之後的補齊不必再抓同一頁。新的公告（ID 較大）優先。
+    """
+    budget = int(school.get("date_repair_per_run") or 0)
+    if budget <= 0 or not adapter.fetch_articles:
+        return 0
+    targets = [it for it in by_id.values()
+               if it.get("school") == school["id"] and it.get("date_source") == "legacy_unverified"
+               and it["id"] not in fetched_this_run]
+    targets.sort(key=lambda it: (len(it["id"]), it["id"]), reverse=True)
+    repaired = 0
+    for it in targets[:budget]:
+        try:
+            html = fetch(session, it["url"], school)
+        except Exception as e:
+            print(f"[warn] 日期修復略過 {it['url']}: {fetch_error_class(e)}", file=sys.stderr)
+            it["date_repair_attempts"] = int(it.get("date_repair_attempts") or 0) + 1
+            if it["date_repair_attempts"] >= 3:
+                it["date"], it["date_source"] = "", ""   # 官方頁連續取不到：不顯示猜測的日期
+            time.sleep(delay)
+            continue
+        date_result = extract_article_date_result(html)
+        if date_result.get("date"):
+            choose_date(it, date_result)
+            repaired += 1
+        else:
+            it["date"], it["date_source"], it["date_tried"] = "", "", True
+        merge_title(it, extract_article_title(html), authoritative=adapter.trust_article_title)
+        if not it.get("snippet"):
+            it["snippet"] = extract_article_snippet(html, it["title"])
+        write_detail_record(it, html, now_iso)
+        it.pop("date_repair_attempts", None)
+        fetched_this_run.add(it["id"])
+        time.sleep(delay)
+    left = len(targets) - min(len(targets), budget)
+    print(f"[info] {school['short']}: 舊日期修復 {repaired} 則,剩餘 {left} 則待確認")
+    return repaired
+
+
 def load_deleted_announcement_ids(path_value: str) -> set[str]:
     """Load the small server-issued tombstone list; never infer deletion locally."""
     if not path_value:
@@ -800,6 +954,9 @@ def main() -> int:
     if deleted_ids:
         print(f"[info] 套用 {len(deleted_ids)} 筆刪除紀錄,移除既有公告 {removed_deleted} 筆")
     known_ids = set(by_id)
+    unverified = mark_unverified_legacy_dates(by_id, CONFIG["schools"])
+    if unverified:
+        print(f"[info] {unverified} 筆舊匯入日期待官方文章頁確認,確認前不公開顯示")
 
     session = requests.Session()
     session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
@@ -835,9 +992,10 @@ def main() -> int:
         if school.get("enabled") is False:
             print(f"[warn] 跳過已停用來源 {school['id']}: {school.get('status', 'disabled')}")
             continue
+        adapter = source_adapters.get_adapter(school)
         collected = {}
         scan_pages = list(school.get("scan_pages", []))
-        entries = [(u, "hot") for u in scan_pages] + page_entries(school)
+        entries = adapter.entries(school)
         scanned_items = []
         skipped_cold = 0
         for page_url, tier in entries:
@@ -845,7 +1003,7 @@ def main() -> int:
                 skipped_cold += 1
                 continue
             try:
-                html = fetch(session, page_url, school)
+                html = adapter.fetch_page(session, page_url, school, fetch)
             except Exception as e:
                 source_status = record_source_status(fetch_state, school["id"], page_url, now_iso, e)
                 print(f"[warn] 略過 {page_url}: {e}", file=sys.stderr)
@@ -853,7 +1011,7 @@ def main() -> int:
                 time.sleep(delay)
                 continue
             record_source_status(fetch_state, school["id"], page_url, now_iso)
-            page_items = extract_items(html, school, page_url)
+            page_items = adapter.extract(html, school, page_url)
             if page_url in scan_pages:
                 scanned_items += page_items
             for it in page_items:
@@ -862,29 +1020,16 @@ def main() -> int:
                 merge_collected_item(collected, it)
             time.sleep(delay)
 
-            if school.get("adapter") == "ischool-site-news":
-                visited_pages = {page_url}
-                current_url, current_html = page_url, html
-                max_pages = max(1, min(int(school.get("max_list_pages", 3)), 5))
-                for _ in range(1, max_pages):
-                    next_url = extract_ischool_next_page(current_html, school, current_url)
-                    if not next_url or next_url in visited_pages:
-                        break
-                    try:
-                        current_html = fetch(session, next_url, school)
-                    except Exception as e:
-                        print(f"[warn] iSchool 分頁略過 {next_url}: {e}", file=sys.stderr)
-                        break
-                    visited_pages.add(next_url)
-                    current_url = next_url
-                    for it in extract_items(current_html, school, current_url):
-                        merge_collected_item(collected, it)
-                    time.sleep(delay)
+            def merge_items(items):
+                for it in items:
+                    merge_collected_item(collected, it)
 
-            # 深度回補:對 403 分類頁繼續抓第 2、3…頁
-            if deep_crawl and "/p/403-" in page_url:
-                for page_no in range(2, DEEP_CRAWL_MAX_PAGES + 1):
-                    deep_url = list_page_with_number(page_url, page_no)
+            adapter.follow_pages(session, school, page_url, html, fetch, merge_items,
+                                 lambda: time.sleep(delay))
+
+            # 深度回補:對分類頁繼續抓第 2、3…頁(只有支援的 adapter 會回傳網址)
+            if deep_crawl:
+                for deep_url in adapter.deep_crawl_pages(page_url):
                     try:
                         deep_html = fetch(session, deep_url)
                     except Exception as e:
@@ -892,7 +1037,7 @@ def main() -> int:
                         time.sleep(delay)
                         break
                     time.sleep(delay)
-                    deep_items = extract_items(deep_html, school, deep_url)
+                    deep_items = adapter.extract(deep_html, school, deep_url)
                     reason = deep_stop_reason(deep_items, set(collected))
                     if reason in ("無公告", "整頁重複"):
                         break
@@ -906,17 +1051,18 @@ def main() -> int:
         new_for_school.sort(key=lambda x: x.get("date") or "", reverse=True)
 
         # 只對「新」項目補抓內文摘要,並設上限;順便從文章頁補回缺漏的日期
-        cap = CONFIG["fetch_content_max_per_school"]
+        cap = CONFIG["fetch_content_max_per_school"] if adapter.fetch_articles else 0
         snippet_targets = new_for_school[:cap]
         if deep_crawl:
             # 回補的舊公告若沒日期,會被誤排成「今天」,一律補抓文章頁取得日期
             snippet_targets = snippet_targets + [
-                it for it in new_for_school[cap:] if not it.get("date")]
+                it for it in new_for_school[cap:] if not it.get("date")] \
+                if adapter.fetch_articles else []
         for it in snippet_targets:
             try:
                 html = fetch(session, it["url"], school)
                 detail_title = extract_article_title(html)
-                merge_title(it, detail_title, authoritative=True)
+                merge_title(it, detail_title, authoritative=adapter.trust_article_title)
                 it["snippet"] = extract_article_snippet(html, it["title"])
                 write_detail_record(it, html, now_iso, session=session,
                                     attachment_budget=attachment_budget, request_delay_sec=delay)
@@ -951,12 +1097,15 @@ def main() -> int:
                 it.setdefault("detail_status", "pending")
                 it.setdefault("detail_available", False)
                 by_id[it["id"]] = it
-                all_new.append(it)
+                # 新上架學校：上架前的舊公告只收錄、不推播（notify_since 未設定的學校不受影響）。
+                # 列表沒有日期的也不推播：無法證明是上架後的新公告。
+                if not school.get("notify_since") or (it.get("date") or "") >= school["notify_since"]:
+                    all_new.append(it)
 
         # 覆蓋率哨兵:首頁出現的文章,其分類若不在 config 就記下來
         gaps = coverage_gaps(scanned_items, configured_categories(school),
                              CONFIG.get("coverage_ignore", {}).get(school["id"], [])) \
-            if school.get("adapter", "rulingdigital") == "rulingdigital" else []
+            if adapter.coverage_sentinel else []
         for g in gaps:
             g["school_name"] = school["short"]
             g["list_page"] = (f'{school["base"]}/p/403-{school["unit"]}'
@@ -965,6 +1114,9 @@ def main() -> int:
                   f"首頁有 {g['count']} 則未收錄,例:{g['example_title'][:30]} "
                   f"→ 可加入 {g['list_page']}", file=sys.stderr)
         all_gaps += gaps
+
+        if not hot_only:
+            repair_legacy_dates(session, school, by_id, adapter, now_iso, delay, fetched_this_run)
 
         print(f"[info] {school['short']}: 抓取 {len(entries) - skipped_cold}/{len(entries)} 頁"
               f"(略過 cold {skipped_cold} 頁),共 {len(collected)} 筆,"
@@ -1008,8 +1160,12 @@ def main() -> int:
 
     if not run_backfill:
         print(f"[info] 本輪不執行補齊(補齊班次:台灣時間 {sorted(backfill_hours)} 點)")
+    article_schools = {school["id"]: source_adapters.get_adapter(school)
+                       for school in CONFIG["schools"] if school.get("enabled") is not False}
     pending = [it for it in by_id.values()
                if it["id"] not in fetched_this_run
+               and (it.get("school") not in article_schools
+                    or article_schools[it.get("school")].fetch_articles)
                and (needs_date(it) or needs_snippet(it) or needs_title(it) or needs_detail(it))] if run_backfill else []
     # Never-fetched items first, then summaries made by an older summarizer.
     pending.sort(key=lambda x: (not stale_summary(x), x.get("first_seen") or ""), reverse=True)
@@ -1030,6 +1186,8 @@ def main() -> int:
                 record_detail_fetch_failure(it, error=e, now_iso=now_iso)
             time.sleep(delay)
             continue
+        if it.get("date_source") == "legacy_unverified":
+            choose_date(it, extract_article_date_result(html))
         if needs_date(it):
             date_result = extract_article_date_result(html)
             if date_result.get("date"):
@@ -1048,7 +1206,8 @@ def main() -> int:
         if needs_title(it):
             detail_title = extract_article_title(html)
             before = it.get("title", "")
-            merge_title(it, detail_title, authoritative=True)
+            merge_title(it, detail_title,
+                        authoritative=article_schools[item_school["id"]].trust_article_title)
             if it.get("title", "") != before:
                 repaired_titles += 1
         if detail_needed:
@@ -1061,6 +1220,9 @@ def main() -> int:
               f"剩餘 {len(pending) - done} 筆待補")
 
     items = list(by_id.values())
+    settled = settle_date_status(items)
+    if settled:
+        print(f"[info] {settled} 筆舊匯入日期已由官方頁面確認,開始公開顯示")
     quarantined_titles = quarantine_corrupt_titles(items)
     if quarantined_titles:
         print(f"[warn] {quarantined_titles} 筆歷史標題待後續修復；已保留 ID 與官方連結",

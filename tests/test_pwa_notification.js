@@ -497,12 +497,12 @@ async function testSchoolScopedDataLoading() {
   assert.match(run.fetchRequests[0].url, /data\/schools\/manifest\.json/);
   assert.match(run.fetchRequests[1].url, /data\/schools\/cysh\/current\.json/);
   assert.equal(run.app.getState().data.items[0].id, "cysh-only");
-  assert.equal(run.app.getState().data.schools.length, 2, "damaged schools stay out of public selectors");
+  assert.equal(run.app.getState().data.schools.length, 3, "active schools from the manifest appear in selectors");
   assert.equal(run.document.elements.schoolFilter.value, "cysh");
   assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="all">所有學校<\/option>/);
   assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="cysh">嘉中<\/option>/);
   assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="cygsh">嘉女<\/option>/);
-  assert.doesNotMatch(run.document.elements.schoolFilter.innerHTML, /pksh|北港高中/);
+  assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="pksh">北港高中<\/option>/);
 
   run.queue.push(response({ items: [] }));
   run.app.ensureArchive();
@@ -705,7 +705,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v113/);
+  assert.match(swSource, /cy-news-v114/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);

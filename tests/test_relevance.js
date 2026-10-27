@@ -4,10 +4,17 @@ const Profile = require("../docs/profile.js");
 const Registry = require("../docs/school-registry.js");
 
 assert.equal(Registry.find("pksh").short, "北港高中");
-assert.equal(Registry.find("pksh").status, "damaged");
-assert.equal(Registry.find("pksh").visible, false);
-assert.equal(Registry.schools().some((school) => school.id === "pksh"), false);
-assert.equal(Registry.mentionedSchool("北高課表"), null, "damaged school aliases are not public assistant scopes");
+assert.equal(Registry.find("pksh").visible, undefined, "PKSH is public again after the TLS/date repair");
+assert.equal(Registry.schools().some((school) => school.id === "pksh"), true);
+assert.equal(Registry.mentionedSchool("北高課表").id, "pksh", "public school aliases are assistant scopes");
+assert.equal(Registry.mentionedSchool("竹崎高中段考").id, "ccjh");
+assert.deepEqual(Registry.hiddenIds(), {}, "hidden schools come only from registry visible:false");
+// 北港舊匯入資料：爬蟲尚未標記前，前端依登錄表的截止日就先隱藏
+const legacy = { id: "pksh-25944", school: "pksh", date: "2026-12-18", first_seen: "2026-09-07T03:55:21+00:00" };
+assert.equal(Registry.unverifiedLegacyDate(legacy), true);
+assert.equal(Registry.unverifiedLegacyDate(Object.assign({}, legacy, { date_status: "verified" })), false);
+assert.equal(Registry.unverifiedLegacyDate({ id: "pksh-28640", school: "pksh", date: "2026-10-27", first_seen: "2026-10-27T09:00:00+08:00" }), false);
+assert.equal(Registry.unverifiedLegacyDate({ id: "cysh-1", school: "cysh", date: "2026-01-01", first_seen: "2024-01-01T00:00:00+08:00" }), false);
 
 const audience = Relevance.extractAudience({ title: "高一新生 109班 物理競賽報名" });
 assert.deepEqual(audience.grades, [1]);

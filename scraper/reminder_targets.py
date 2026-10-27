@@ -17,7 +17,12 @@ ALLOWED_ANNOUNCEMENT = {
     ("deadline", "verified_announcement_deadline"): "announcement_deadline",
     ("event", "verified_announcement_event"): "announcement_event",
 }
-DISABLED_SCHOOLS = {"fjsh", "pksh"}
+try:
+    from school_registry import SCHOOLS as _REGISTRY
+    DISABLED_SCHOOLS = {sid for sid, school in _REGISTRY.items()
+                        if school.status != "active" or not school.visible}
+except ImportError:  # pragma: no cover
+    DISABLED_SCHOOLS = set()
 
 
 def _https(value):
@@ -37,7 +42,8 @@ def build_targets(announcements, calendars, *, today=None):
     targets = []
     seen = set()
     for item in announcements or []:
-        if item.get("school") in DISABLED_SCHOOLS:
+        if (item.get("school") in DISABLED_SCHOOLS or item.get("date_status") == "unverified"
+                or item.get("date_source") == "legacy_unverified"):
             continue
         for index, event in enumerate(item.get("calendar_events") or []):
             target_kind = ALLOWED_ANNOUNCEMENT.get((event.get("kind"), event.get("provenance")))

@@ -120,16 +120,14 @@ def run():
     )
     assert pending["status"] == "awaiting_official_source"
     assert get_school("cysh").capabilities["official_calendar"] is True
-    assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh", "fjsh", "pksh"}
-    assert get_school("fjsh").capabilities["official_calendar"] is False
-    assert get_school("fjsh").capabilities["announcements"] is False
-    assert get_school("fjsh").status == "disabled"
-    assert get_school("fjsh").visible is False
-    assert get_school("pksh").capabilities["official_calendar"] is False
-    assert get_school("pksh").capabilities["announcements"] is False
-    assert get_school("pksh").status == "damaged"
-    assert get_school("pksh").visible is False
-    assert get_school("pksh").announcement_adapter == "ischool-site-news"
+    assert {row["school_id"] for row in registry_snapshot()} == {"cysh", "cygsh", "fjsh", "pksh", "ccjh"}
+    for school_id in ("fjsh", "pksh", "ccjh"):
+        # 公告上架；目前沒有官方行事曆來源
+        assert get_school(school_id).capabilities["official_calendar"] is False
+        assert get_school(school_id).capabilities["announcements"] is True
+        assert get_school(school_id).status == "active"
+        assert get_school(school_id).visible is True
+    assert get_school("pksh").announcement_adapter == "ischool-json"
     assert get_school("cygsh").calendar_sources[0].url.endswith("/p/412-1013-1827.php")
 
     nested = discover_calendar_attachments(

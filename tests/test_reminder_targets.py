@@ -3,6 +3,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scraper"))
+import reminder_targets  # noqa: E402
 from reminder_targets import build_targets  # noqa: E402
 
 
@@ -17,10 +18,18 @@ def main():
             {"kind": "deadline", "date": "2099-01-01", "provenance": "publication"},
         ],
     }, {"id": "publication-only", "title": "發布", "date": "2099-12-31", "url": "https://school.example/p"}, {
-        "id": "fjsh-disabled", "school": "fjsh", "title": "停用來源事件",
-        "url": "https://school.example/fjsh", "detail_revision": revision,
+        "id": "xxsh-disabled", "school": "xxsh", "title": "停用來源事件",
+        "url": "https://school.example/xxsh", "detail_revision": revision,
         "calendar_events": [{"kind": "event", "date": "2099-09-21", "provenance": "verified_announcement_event", "source_revision": revision}],
+    }, {
+        "id": "pksh-legacy", "school": "pksh", "title": "舊匯入日期未確認", "date": "2099-01-01",
+        "date_source": "legacy_unverified",
+        "url": "https://school.example/pksh", "detail_revision": revision,
+        "calendar_events": [{"kind": "event", "date": "2099-09-22", "provenance": "verified_announcement_event", "source_revision": revision}],
     }]
+    # 停用名單由 school_registry 產生（status 非 active 或不顯示的學校）
+    assert reminder_targets.DISABLED_SCHOOLS == set()
+    reminder_targets.DISABLED_SCHOOLS = {"xxsh"}
     calendars = [{
         "id": "exam", "title": "段考", "start_date": "2099-10-01",
         "source_url": "https://school.example/calendar.pdf", "source_revision": revision,
@@ -31,7 +40,8 @@ def main():
     assert all(row["target_at"].endswith("+08:00") for row in rows)
     assert all(row["source_revision"] == revision for row in rows)
     assert not any("publication-only" in row["target_id"] for row in rows)
-    assert not any("fjsh-disabled" in row["target_id"] for row in rows)
+    assert not any("xxsh-disabled" in row["target_id"] for row in rows)
+    assert not any("pksh-legacy" in row["target_id"] for row in rows), "unverified legacy dates never create reminders"
     workflow = (ROOT / ".github/workflows/scrape-hourly.yml").read_text(encoding="utf-8")
     source = (ROOT / "scraper/reminder_targets.py").read_text(encoding="utf-8")
     assert "python scraper/reminder_targets.py" in workflow

@@ -329,6 +329,17 @@ def run():
         [{"id": "repair-1", "title": "公告標題待修復（請查看原公告）",
           "title_status": "repair_pending", "summary": "已有摘要"}], [], {})
     assert not ready and pending, "標題仍待修復時不得送出通知"
+    since = {"fjsh": "2026-10-27"}
+    queued_old = [{"id": "fjsh-1", "school": "fjsh", "title": "上架前舊公告", "date": "", "summary": "有摘要"},
+                  {"id": "fjsh-2", "school": "fjsh", "title": "上架前舊公告二", "date": "2026-09-01", "summary": "有摘要"}]
+    fresh = [{"id": "fjsh-3", "school": "fjsh", "title": "上架後新公告", "date": "2026-10-27", "summary": "有摘要"},
+             {"id": "cysh-9", "school": "cysh", "title": "嘉中沒日期也照常", "date": "", "summary": "有摘要"}]
+    ready, pending = prepare_notification_items(fresh, queued_old, {}, since)
+    assert sorted(i["id"] for i in ready) == ["cysh-9", "fjsh-3"] and not pending, \
+        "新上架學校上架前（或沒日期）的舊公告，就算已在佇列中也不推播；其他學校不受影響"
+    ready, _ = prepare_notification_items([], [{"id": "fjsh-4", "school": "fjsh", "title": "佇列中沒日期", "summary": "x"}],
+                                          {"fjsh-4": {"date": "2026-10-28"}}, since)
+    assert [i["id"] for i in ready] == ["fjsh-4"], "corpus 補上上架後日期的，照常推播"
     cygsh_header, cygsh_body = notification_payload({
         "title": "國立嘉義女子高級中學",
         "snippet": "新生始業輔導時間配當表更新版",

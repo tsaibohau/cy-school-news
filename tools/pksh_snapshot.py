@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scraper"))
 
-from scrape import CONFIG, extract_items  # noqa: E402
+from scrape import CONFIG, extract_ischool_items  # noqa: E402
 
 
 PUBLIC_FIELDS = (
@@ -71,7 +71,8 @@ def build_snapshot(payload: str, fetched_at: str = "") -> dict:
     school = pksh_config()
     source_url = school["list_pages"][0]["url"]
     stripped = payload.lstrip()
-    items = _api_items(payload, school, fetched_at) if stripped.startswith("[") else extract_items(payload, school, source_url)
+    # Windows 交接檔可能是 API JSON 或 main2.php HTML；HTML 一律用 iSchool HTML 解析器
+    items = _api_items(payload, school, fetched_at) if stripped.startswith("[") else extract_ischool_items(payload, school, source_url)
     if not items or len(items) > MAX_PKSH_ANNOUNCEMENTS:
         raise ValueError("PKSH collection produced an unexpected announcement count")
     public_items = [{key: item.get(key, "") for key in PUBLIC_FIELDS} for item in items]
