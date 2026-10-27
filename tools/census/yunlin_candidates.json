@@ -1,50 +1,18 @@
 {
- "_note": "嘉義縣市第二輪：嘉科、新港藝術改用 cyc.edu.tw；協同重試",
+ "_note": "興華第三輪：正式抓取得 0 筆，存原始 RSS 比對",
  "schools": [
   {
-   "id": "nehs",
-   "name": "國立嘉科實驗高級中學",
-   "short": "嘉科實中",
-   "base": "https://www.nehs.cyc.edu.tw",
-   "adapter": "ischool-json",
+   "id": "hhsh",
+   "name": "嘉義市私立興華高級中學",
+   "short": "興華高中",
+   "base": "https://www.hhsh.cy.edu.tw",
+   "adapter": "xoops-tadnews",
+   "tls_verify_fallback": "bundled-intermediates",
+   "discover": "https://www.hhsh.cy.edu.tw/modules/tadnews/rss.php",
    "sources": [
-    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_fd93fba862434a040c0079031707ec287338e163",
-    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_f300a5311f544d7de3ed423c827cda8075cc5822",
-    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_aef2a2f512e15ae7fef570da3d5f165d71112ac5",
-    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_022a611b4cf0265da7bd9bcb2432173bef7c9407",
-    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_61fe36a74d74a62c7cf138602b5dcc81fb1413a4",
-    "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_158f4f34a15ef0fe39ba1215f67b1aa07107d3f6"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
-  {
-   "id": "sgash",
-   "name": "國立新港藝術高級中學",
-   "short": "新港藝術高中",
-   "base": "https://www.sgash.cyc.edu.tw",
-   "adapter": "ischool-json",
-   "sources": [
-    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_dd5103adfb4f9be36dc546fbe56649fd355adb2b",
-    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_68a3175b5edfc7d3d8512df3cb646e79ffdc3e74",
-    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_42c4b3020ff1332a9d251f4b75a360ea9a85bb80",
-    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_e0ee6ef32ad3d2779821a8112eab5ff1dcdfecfd",
-    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_d5f3408570cf751c32ea15b4d8577be3202244e6",
-    "https://www.sgash.cyc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_b4181df3a9f4a9df3d70cd728fd965e14c09072b"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
-  },
-  {
-   "id": "cmsh",
-   "name": "私立協同高級中學",
-   "short": "協同高中",
-   "base": "https://www.cmsh.cyc.edu.tw",
-   "adapter": "wordpress",
-   "sources": [
-    "https://www.cmsh.cyc.edu.tw/category/news",
-    "https://www.cmsh.cyc.edu.tw/category/news/feed/",
-    "http://www.cmsh.cyc.edu.tw/category/news"
-   ],
-   "tls_verify_fallback": "bundled-intermediates"
+    "https://www.hhsh.cy.edu.tw/modules/tadnews/rss.php",
+    "https://www.hhsh.cy.edu.tw/modules/tadnews/index.php"
+   ]
   }
  ]
 }
