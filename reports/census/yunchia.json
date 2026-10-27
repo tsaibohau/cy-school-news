@@ -1,12 +1,12 @@
 {
  "meta": {
-  "generated_at": "2026-10-27 10:24",
+  "generated_at": "2026-10-27 10:30",
   "directory_source": "https://stats.moe.gov.tw/files/school/115/high.csv",
   "log": [
    "data.gov.tw 6089: HTTP 200, CSV 13 個",
    "名錄 https://stats.moe.gov.tw/files/school/115/high.csv: 目標縣市 42 校"
   ],
-  "total_requests": 66
+  "total_requests": 59
  },
  "schools": [
   {
@@ -66,16 +66,11 @@
     "unit=1013"
    ],
    "error": "",
-   "requests": 2,
+   "requests": 1,
    "http_status": 200,
    "final_url": "https://www.cygsh.cy.edu.tw/",
    "server": "",
-   "announce_candidates": [
-    {
-     "text": "最新消息",
-     "url": "https://www.cygsh.cy.edu.tw/#cmb_16_0"
-    }
-   ],
+   "announce_candidates": [],
    "calendar_candidates": [],
    "calendar_type": "首頁找不到",
    "homepage_test": {
@@ -83,11 +78,11 @@
     "dated": 0,
     "sample": "2026麗水國際自由式滑輪青年女子組冠軍"
    },
-   "list_url": "https://www.cygsh.cy.edu.tw/#cmb_16_0",
    "list_test": {
     "count": 4,
     "dated": 0,
-    "sample": "2026麗水國際自由式滑輪青年女子組冠軍"
+    "sample": "2026麗水國際自由式滑輪青年女子組冠軍",
+    "from_homepage": true
    },
    "verdict": "同系統，需調整"
   },
@@ -134,13 +129,16 @@
     "dated": 0,
     "sample": ""
    },
-   "list_url": "https://www.cyhvs.cy.edu.tw/ischool/widget/site_news/main2.php?uid=WID_0_2_204c4ac60298efc8d1a8832e3179debb64642857&maximize=1&allbtn=0",
+   "ischool_uid": "WID_0_2_f9cb4dd227aa767e7494223ca89ccf8f44339512",
+   "list_url": "https://www.cyhvs.cy.edu.tw/ischool/widget/site_news/news_query_json.php",
    "list_test": {
-    "count": 0,
-    "dated": 0,
-    "sample": ""
+    "count": 10,
+    "dated": 10,
+    "sample": "【公告】115學年度第一學期重補修開課時間表",
+    "total": "",
+    "json": true
    },
-   "verdict": "同系統，需調整"
+   "verdict": "可直接套用"
   },
   {
    "id": "cyivs",
@@ -215,10 +213,6 @@
     {
      "text": "考試範圍公告",
      "url": "https://campus.cysh.cy.edu.tw/exam_range/"
-    },
-    {
-     "text": "校園訊息",
-     "url": "https://www.cysh.cy.edu.tw/#cmb_3_0"
     }
    ],
    "calendar_candidates": [
@@ -303,7 +297,7 @@
    "code": "201408",
    "ownership": "私立",
    "url": "http://www.dwvs.cy.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "unknown",
    "system_label": "未辨識",
    "evidence": [],
@@ -348,16 +342,11 @@
     "rpage 子網域"
    ],
    "error": "",
-   "requests": 2,
+   "requests": 1,
    "http_status": 200,
    "final_url": "https://rpage.fjsh.cy.edu.tw/",
    "server": "",
-   "announce_candidates": [
-    {
-     "text": "最新公告",
-     "url": "https://rpage.fjsh.cy.edu.tw/#cmb_1_0"
-    }
-   ],
+   "announce_candidates": [],
    "calendar_candidates": [
     {
      "text": "學校行事曆",
@@ -370,11 +359,11 @@
     "dated": 28,
     "sample": "賀！輔仁中學115年大學榜單表現卓越 再創新高錄取台大電機清交成政等頂大與藥學系"
    },
-   "list_url": "https://rpage.fjsh.cy.edu.tw/#cmb_1_0",
    "list_test": {
     "count": 42,
     "dated": 28,
-    "sample": "賀！輔仁中學115年大學榜單表現卓越 再創新高錄取台大電機清交成政等頂大與藥學系"
+    "sample": "賀！輔仁中學115年大學榜單表現卓越 再創新高錄取台大電機清交成政等頂大與藥學系",
+    "from_homepage": true
    },
    "verdict": "可直接套用"
   },
@@ -534,29 +523,14 @@
    "code": "201314",
    "ownership": "私立",
    "url": "https://www.ligvs.cy.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "",
    "system_label": "",
    "evidence": [
     "https 憑證驗證失敗，改以 http 辨識"
    ],
    "error": "tls_error+timeout",
-   "requests": 2,
-   "verdict": "連不上"
-  },
-  {
-   "id": "ljsh",
-   "name": "嘉義市私立立仁高級中學",
-   "county": "嘉義市",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.ljsh.cy.edu.tw/",
-   "url_source": "seed",
-   "system": "",
-   "system_label": "",
-   "evidence": [],
-   "error": "dns_error",
-   "requests": 1,
+   "requests": 3,
    "verdict": "連不上"
   },
   {
@@ -566,7 +540,7 @@
    "code": "104319",
    "ownership": "公立",
    "url": "http://www.ccjh.cyc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "new-classic-cms",
    "system_label": "銳鼎 RulingDigital 新版（/p/403-、/p/412-、/p/406-）",
    "evidence": [
@@ -585,10 +559,6 @@
     {
      "text": "國中部招生公告",
      "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-118.php"
-    },
-    {
-     "text": "一般公告",
-     "url": "https://www.ccjh.cyc.edu.tw/#cmb_1_1"
     }
    ],
    "calendar_candidates": [
@@ -619,7 +589,7 @@
    "code": "101304",
    "ownership": "私立",
    "url": "http://www.cmsh.cyc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "wordpress",
    "system_label": "WordPress",
    "evidence": [],
@@ -632,10 +602,6 @@
     {
      "text": "校園公告",
      "url": "https://www.cmsh.cyc.edu.tw/category/news"
-    },
-    {
-     "text": "最新消息",
-     "url": "https://www.cmsh.cyc.edu.tw/#news1"
     },
     {
      "text": "最新消息",
@@ -660,21 +626,6 @@
    },
    "list_url": "https://www.cmsh.cyc.edu.tw/category/news",
    "verdict": "需新 adapter"
-  },
-  {
-   "id": "hkash",
-   "name": "國立新港藝術高級中學",
-   "county": "嘉義縣",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.hkash.cyc.edu.tw/",
-   "url_source": "seed",
-   "system": "",
-   "system_label": "",
-   "evidence": [],
-   "error": "dns_error",
-   "requests": 1,
-   "verdict": "連不上"
   },
   {
    "id": "mhvs",
@@ -738,7 +689,7 @@
    "code": "100303",
    "ownership": "公立",
    "url": "https://www.nehs.cyc.edu.tw/home",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "ischool",
    "system_label": "iSchool（/ischool/ widget）",
    "evidence": [
@@ -778,13 +729,16 @@
     "dated": 0,
     "sample": ""
    },
-   "list_url": "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/main2.php?uid=WID_0_2_f300a5311f544d7de3ed423c827cda8075cc5822&maximize=1&allbtn=0",
+   "ischool_uid": "WID_0_2_fd93fba862434a040c0079031707ec287338e163",
+   "list_url": "https://www.nehs.cyc.edu.tw/ischool/widget/site_news/news_query_json.php",
    "list_test": {
-    "count": 0,
-    "dated": 0,
-    "sample": ""
+    "count": 10,
+    "dated": 10,
+    "sample": "第三屆校慶運動會Logo設計比賽-正式決選投票開跑~請全校同學踴躍投票！",
+    "total": "",
+    "json": true
    },
-   "verdict": "同系統，需調整"
+   "verdict": "可直接套用"
   },
   {
    "id": "sgash",
@@ -793,7 +747,7 @@
    "code": "100302",
    "ownership": "公立",
    "url": "https://www.sgash.cyc.edu.tw/home",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "ischool",
    "system_label": "iSchool（/ischool/ widget）",
    "evidence": [
@@ -813,21 +767,6 @@
     "sample": ""
    },
    "verdict": "同系統，需調整"
-  },
-  {
-   "id": "tjsh",
-   "name": "嘉義縣私立同濟高級中學",
-   "county": "嘉義縣",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.tjsh.cyc.edu.tw/",
-   "url_source": "seed",
-   "system": "",
-   "system_label": "",
-   "evidence": [],
-   "error": "timeout",
-   "requests": 1,
-   "verdict": "連不上"
   },
   {
    "id": "tssh",
@@ -917,7 +856,7 @@
    "code": "104326",
    "ownership": "公立",
    "url": "http://www.ycsh.cyc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "xoops",
    "system_label": "XOOPS / Tad 系列模組",
    "evidence": [
@@ -962,43 +901,13 @@
    "verdict": "需新 adapter"
   },
   {
-   "id": "yksh",
-   "name": "嘉義縣立永慶高級中學",
-   "county": "嘉義縣",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.yksh.cyc.edu.tw/",
-   "url_source": "seed",
-   "system": "",
-   "system_label": "",
-   "evidence": [],
-   "error": "dns_error",
-   "requests": 1,
-   "verdict": "連不上"
-  },
-  {
-   "id": "163.27.121.3",
-   "name": "私立大成商工",
-   "county": "雲林縣",
-   "code": "091410",
-   "ownership": "私立",
-   "url": "http://163.27.121.3/web/",
-   "url_source": "moe",
-   "system": "",
-   "system_label": "",
-   "evidence": [],
-   "error": "timeout",
-   "requests": 1,
-   "verdict": "連不上"
-  },
-  {
    "id": "bwjh",
    "name": "福智高中",
    "county": "雲林縣",
    "code": "091319",
    "ownership": "私立",
    "url": "https://www.bwjh.ylc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "wordpress",
    "system_label": "WordPress",
    "evidence": [
@@ -1026,60 +935,17 @@
    "verdict": "需新 adapter"
   },
   {
-   "id": "bwsh",
-   "name": "雲林縣私立福智高級中學",
-   "county": "雲林縣",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.bwsh.ylc.edu.tw/",
-   "url_source": "seed",
-   "system": "unknown",
-   "system_label": "未辨識",
-   "evidence": [
-    "https 憑證驗證失敗，改以 http 辨識"
-   ],
-   "error": "tls_error",
-   "requests": 2,
-   "http_status": 200,
-   "final_url": "http://www.bwsh.ylc.edu.tw/",
-   "server": "Microsoft-IIS/10.0",
-   "announce_candidates": [],
-   "calendar_candidates": [],
-   "calendar_type": "首頁找不到",
-   "homepage_test": {
-    "count": 0,
-    "dated": 0,
-    "sample": ""
-   },
-   "verdict": "需新 adapter"
-  },
-  {
-   "id": "cxhs",
-   "name": "雲林縣私立正心高級中學",
-   "county": "雲林縣",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.cxhs.ylc.edu.tw/",
-   "url_source": "seed",
-   "system": "",
-   "system_label": "",
-   "evidence": [],
-   "error": "dns_error",
-   "requests": 1,
-   "verdict": "連不上"
-  },
-  {
    "id": "dcvs",
-   "name": "雲林縣私立大成高級商工職業學校",
+   "name": "私立大成商工",
    "county": "雲林縣",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.dcvs.ylc.edu.tw/",
-   "url_source": "seed",
+   "code": "091410",
+   "ownership": "私立",
+   "url": "http://163.27.121.3/web/",
+   "url_source": "moe+seed",
    "system": "",
    "system_label": "",
    "evidence": [],
-   "error": "dns_error",
+   "error": "timeout",
    "requests": 1,
    "verdict": "連不上"
   },
@@ -1090,14 +956,14 @@
    "code": "091414",
    "ownership": "私立",
    "url": "https://www.ddvs.ylc.edu.tw/home",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "",
    "system_label": "",
    "evidence": [
     "https 憑證驗證失敗，改以 http 辨識"
    ],
    "error": "tls_error+timeout",
-   "requests": 2,
+   "requests": 3,
    "verdict": "連不上"
   },
   {
@@ -1107,7 +973,7 @@
    "code": "094301",
    "ownership": "公立",
    "url": "https://dnsh.ylc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "aspnet",
    "system_label": "ASP.NET 自建",
    "evidence": [],
@@ -1116,24 +982,7 @@
    "http_status": 200,
    "final_url": "https://dnsh.ylc.edu.tw/",
    "server": "Microsoft-IIS/10.0",
-   "announce_candidates": [
-    {
-     "text": "校內公告",
-     "url": "https://dnsh.ylc.edu.tw/#Group_825615_EayRNesoMM"
-    },
-    {
-     "text": "校外公告",
-     "url": "https://dnsh.ylc.edu.tw/#Group_825616_yfweGyorQp"
-    },
-    {
-     "text": "教育處公告",
-     "url": "https://dnsh.ylc.edu.tw/#Group_825617_cProeNhdYt"
-    },
-    {
-     "text": "徵才公告",
-     "url": "https://dnsh.ylc.edu.tw/#Group_825618_SqLgATgctS"
-    }
-   ],
+   "announce_candidates": [],
    "calendar_candidates": [
     {
      "text": "校務行事曆",
@@ -1146,7 +995,6 @@
     "dated": 0,
     "sample": ""
    },
-   "list_url": "https://dnsh.ylc.edu.tw/#Group_825615_EayRNesoMM",
    "verdict": "需新 adapter"
   },
   {
@@ -1156,7 +1004,7 @@
    "code": "094308",
    "ownership": "公立",
    "url": "https://gwehs.ylc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "aspnet",
    "system_label": "ASP.NET 自建",
    "evidence": [],
@@ -1376,13 +1224,16 @@
     "dated": 0,
     "sample": ""
    },
-   "list_url": "https://www.hwsh.ylc.edu.tw/ischool/widget/site_news/main2.php?uid=WID_0_2_03d0018c3de9208ccd8c3fd63724751b451b410e&maximize=1&allbtn=0",
+   "ischool_uid": "WID_0_2_2cab01ac31360396f811bd99f531dd98e27b6e6c",
+   "list_url": "https://www.hwsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php",
    "list_test": {
-    "count": 0,
-    "dated": 0,
-    "sample": ""
+    "count": 10,
+    "dated": 10,
+    "sample": "【緊急公告｜家長會長交接典禮延期】  受薔琵颱風影響，會長及校長考量各位貴賓往返",
+    "total": "",
+    "json": true
    },
-   "verdict": "同系統，需調整"
+   "verdict": "可直接套用"
   },
   {
    "id": "mljh",
@@ -1404,18 +1255,6 @@
     {
      "text": "發佈公告",
      "url": "https://mgr.ylc.edu.tw/"
-    },
-    {
-     "text": "最新消息",
-     "url": "https://mljh.ylc.edu.tw/#Group_645197_uGdLwfgPsr"
-    },
-    {
-     "text": "教育處公告",
-     "url": "https://mljh.ylc.edu.tw/#Group_645202_EodrNdQdeg"
-    },
-    {
-     "text": "校內公告",
-     "url": "https://mljh.ylc.edu.tw/#Group_645204_tdpYfrKRQX"
     }
    ],
    "calendar_candidates": [],
@@ -1435,7 +1274,7 @@
    "code": "094326",
    "ownership": "公立",
    "url": "https://nsjh.ylc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "aspnet",
    "system_label": "ASP.NET 自建",
    "evidence": [],
@@ -1456,10 +1295,6 @@
     {
      "text": "最新消息",
      "url": "https://nsjh.ylc.edu.tw/News2.aspx?n=99488&sms=53921"
-    },
-    {
-     "text": "校務公告",
-     "url": "https://nsjh.ylc.edu.tw/#Group_805044_WgbATcJtvs"
     }
    ],
    "calendar_candidates": [
@@ -1489,7 +1324,7 @@
    "system_label": "",
    "evidence": [],
    "error": "tls_error",
-   "requests": 1,
+   "requests": 2,
    "verdict": "連不上"
   },
   {
@@ -1504,7 +1339,7 @@
    "system_label": "",
    "evidence": [],
    "error": "tls_error",
-   "requests": 1,
+   "requests": 2,
    "verdict": "連不上"
   },
   {
@@ -1514,7 +1349,7 @@
    "code": "091308",
    "ownership": "私立",
    "url": "https://www.shsh.ylc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "wordpress",
    "system_label": "WordPress",
    "evidence": [
@@ -1533,10 +1368,6 @@
     {
      "text": "行政公告",
      "url": "https://www.shsh.ylc.edu.tw/category/news/news_01/"
-    },
-    {
-     "text": "行政公告",
-     "url": "https://www.shsh.ylc.edu.tw/#news_01"
     }
    ],
    "calendar_candidates": [
@@ -1561,26 +1392,11 @@
    "code": "091311",
    "ownership": "私立",
    "url": "http://www.svsh.ylc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "",
    "system_label": "",
    "evidence": [],
    "error": "timeout",
-   "requests": 1,
-   "verdict": "連不上"
-  },
-  {
-   "id": "tdvs",
-   "name": "雲林縣私立大德高級工商職業學校",
-   "county": "雲林縣",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.tdvs.ylc.edu.tw/",
-   "url_source": "seed",
-   "system": "",
-   "system_label": "",
-   "evidence": [],
-   "error": "dns_error",
    "requests": 1,
    "verdict": "連不上"
   },
@@ -1598,7 +1414,7 @@
     "https 憑證驗證失敗，改以 http 辨識"
    ],
    "error": "tls_error+connection_error",
-   "requests": 2,
+   "requests": 3,
    "verdict": "連不上"
   },
   {
@@ -1613,7 +1429,7 @@
    "system_label": "",
    "evidence": [],
    "error": "tls_error",
-   "requests": 1,
+   "requests": 2,
    "verdict": "連不上"
   },
   {
@@ -1640,10 +1456,6 @@
      "url": "https://www.tlsh.ylc.edu.tw/test-2/"
     },
     {
-     "text": "最新公告",
-     "url": "https://www.tlsh.ylc.edu.tw/"
-    },
-    {
      "text": "不分類公告",
      "url": "https://www.tlsh.ylc.edu.tw/all-news/"
     },
@@ -1668,43 +1480,13 @@
    "verdict": "需新 adapter"
   },
   {
-   "id": "tnjh",
-   "name": "雲林縣立斗南高級中學",
-   "county": "雲林縣",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.tnjh.ylc.edu.tw/",
-   "url_source": "seed",
-   "system": "",
-   "system_label": "",
-   "evidence": [],
-   "error": "dns_error",
-   "requests": 1,
-   "verdict": "連不上"
-  },
-  {
-   "id": "tsjh",
-   "name": "雲林縣立蔦松藝術高級中學",
-   "county": "雲林縣",
-   "code": "",
-   "ownership": "",
-   "url": "https://www.tsjh.ylc.edu.tw/",
-   "url_source": "seed",
-   "system": "",
-   "system_label": "",
-   "evidence": [],
-   "error": "timeout",
-   "requests": 1,
-   "verdict": "連不上"
-  },
-  {
    "id": "victoria",
    "name": "雲林縣維多利亞實驗高中",
    "county": "雲林縣",
    "code": "091320",
    "ownership": "私立",
    "url": "https://www.victoria.ylc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "unknown",
    "system_label": "未辨識",
    "evidence": [],
@@ -1779,13 +1561,16 @@
     "dated": 0,
     "sample": ""
    },
-   "list_url": "https://www.yfsh.ylc.edu.tw/ischool/widget/site_news/main2.php?uid=WID_0_2_da2c845320272cc836725abf2af73aedb372df31&maximize=1&allbtn=0",
+   "ischool_uid": "WID_0_2_a2c4db1b778c971d21fe244011b3cc547850073f",
+   "list_url": "https://www.yfsh.ylc.edu.tw/ischool/widget/site_news/news_query_json.php",
    "list_test": {
-    "count": 0,
-    "dated": 0,
-    "sample": ""
+    "count": 10,
+    "dated": 10,
+    "sample": "~本校115學年度第2學期寒假轉學考報名開跑~報名到116/1/27(三 )止!",
+    "total": "",
+    "json": true
    },
-   "verdict": "同系統，需調整"
+   "verdict": "可直接套用"
   },
   {
    "id": "ynhs",
@@ -1803,12 +1588,7 @@
    "http_status": 200,
    "final_url": "https://www.ynhs.ylc.edu.tw/",
    "server": "nginx",
-   "announce_candidates": [
-    {
-     "text": "一般公告",
-     "url": "https://www.ynhs.ylc.edu.tw/#idx-tab-0"
-    }
-   ],
+   "announce_candidates": [],
    "calendar_candidates": [],
    "calendar_type": "首頁找不到",
    "homepage_test": {
@@ -1816,7 +1596,6 @@
     "dated": 0,
     "sample": ""
    },
-   "list_url": "https://www.ynhs.ylc.edu.tw/#idx-tab-0",
    "verdict": "需新 adapter"
   },
   {
@@ -1826,7 +1605,7 @@
    "code": "091316",
    "ownership": "私立",
    "url": "https://www.ytjh.ylc.edu.tw/",
-   "url_source": "moe",
+   "url_source": "moe+seed",
    "system": "aspnet",
    "system_label": "ASP.NET 自建",
    "evidence": [],
