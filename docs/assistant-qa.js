@@ -23,7 +23,7 @@
   var GENERIC = ["有什麼", "什麼", "哪些", "最近", "目前", "相關", "規定", "辦法", "如何", "怎麼", "何時", "時間", "日期", "截止", "活動", "資訊", "資料", "請問", "快", "或"];
   var PERSONAL_DATA_QUERY = /名單|姓名|學號|座號|身分證|電話|地址|成績|獎懲|缺曠|請假紀錄|健康檢查結果|病歷|診斷|低收入|補助名冊|誰錄取|誰得獎/;
   /* Asking when or how to check grades is a schedule question, not a request for records. */
-  var PROCEDURE_QUESTION = /什麼時候|何時|哪天|哪一天|期程|時間|日期|怎麼查|如何查|在哪查|哪裡查|怎麼申請|如何申請|校對/;
+  var PROCEDURE_QUESTION = /要注意|注意事項|重點|什麼時候|何時|哪天|哪一天|期程|時間|日期|怎麼查|如何查|在哪查|哪裡查|怎麼申請|如何申請|校對/;
   var RECORD_ONLY = /名單|姓名|學號|座號|身分證|電話|地址|病歷|診斷|誰錄取|誰得獎/;
   function personalDataQuery(query) {
     query = clean(query);
@@ -266,8 +266,8 @@
     var askedYear = Number((periodToken(query).match(/^\d+/) || [])[0]);
     if (titleYear >= 90 && titleYear < 200 && !askedYear) {
       var current = currentAcademicYear(asOf);
-      if (titleYear <= current - 2) bonus -= 40;
-      else if (titleYear === current - 1) bonus -= 15;
+      if (titleYear <= current - 2) bonus -= 240;
+      else if (titleYear === current - 1) bonus -= 60;
     }
     return bonus;
   }
@@ -616,8 +616,100 @@
       limitation:"為降低個資再次散布風險，問校務只提供必要的官方入口，不顯示姓名、學號、健康、獎懲或其他個人紀錄。",
       confidence:"high",plan:questionPlan(query),evidence:[],sources:ranked.slice(0,4).map(function(row){return safeSource(row,options);}),validity_warnings:[] };
   }
+  /* Open questions such as 「最近有什麼新消息？」「有什麼快截止的？」「這週有什麼比賽？」
+     have no single sentence that answers them: list recent (or soon-due) announcements
+     for the user's school instead, filtered by the same relevance rules as 我的今日. */
+  var BROWSE_CUE = /最近|最新|近期|這週|本週|這禮拜|這星期|這個月|今天|明天|新消息|新公告|快截止|快到期|要注意/;
+  var BROWSE_ASK = /有什麼|有哪些|有啥|什麼新|新消息|新公告|快截止|快到期|要注意|消息/;
+  var BROWSE_STRIP = /最近|最新|近期|這週|本週|這禮拜|這星期|這個月|今天|明天|新消息|新公告|消息|公告|快截止|快到期|截止|要注意|注意|事情|事項|有什麼|有哪些|有啥|什麼|哪些|新的|可以|參加|報名|申請|嗎|呢|的|是|有|在|我|學校|嘉中|嘉女|[？?！!。，,\s]/g;
+  var DEADLINE_ASK = /快截止|快到期|截止|期限|deadline/i;
+  function browsePlan(query) {
+    query = clean(query);
+    if (!BROWSE_CUE.test(query) || !BROWSE_ASK.test(query)) return null;
+    var rest = query.replace(BROWSE_STRIP, "");
+    var topicTerms = [];
+    if (/^(?:活動|事情|事|東西|資訊)$/.test(rest)) rest = "";   // too broad to filter on
+    if (rest && SearchQuery && SearchQuery.terms) topicTerms = SearchQuery.terms(rest).filter(function (t) { return t.length >= 2; });
+    if (rest && !topicTerms.length) {
+      if (rest.length > 6) return null;   // a specific subject: use the normal search instead
+      topicTerms = [rest];
+    }
+    return { deadlines: DEADLINE_ASK.test(query), topicTerms: topicTerms, topicLabel: rest };
+  }
+  /* Many titles state their own deadline, e.g. 「(至11/27止)」「報名截止日期為116年1月31日」. */
+  function titleDeadline(item) {
+    var title = clean(item && item.title || "");
+    if (!/截止|止|前|期限/.test(title)) return "";
+    var m = title.match(/(?:(\d{2,4})\s*[年\/.-]\s*)?(\d{1,2})\s*[月\/.]\s*(\d{1,2})\s*日?\s*(?:[（(][^）)]{1,4}[）)])?\s*(?:前|止|截止)/);
+    if (!m) { m = title.match(/(?:截止|期限)[^\d]{0,6}(?:(\d{2,4})\s*[年\/.-]\s*)?(\d{1,2})\s*[月\/.]\s*(\d{1,2})/); }
+    if (!m) return "";
+    var base = String(item.date || item.first_seen || "").slice(0, 10), month = Number(m[2]), day = Number(m[3]);
+    if (month < 1 || month > 12 || day < 1 || day > 31) return "";
+    var year = m[1] ? Number(m[1]) : Number(base.slice(0, 4));
+    if (year > 0 && year < 1000) year += 1911;
+    if (!year) return "";
+    var iso = year + "-" + String(month).padStart(2, "0") + "-" + String(day).padStart(2, "0");
+    if (!m[1] && base && iso < base) iso = (year + 1) + iso.slice(4);
+    return iso;
+  }
+  function shortDay(day) { return /^\d{4}-\d{2}-\d{2}$/.test(day) ? Number(day.slice(5, 7)) + "/" + Number(day.slice(8, 10)) : ""; }
+  function browseAnswer(query, items, plan, options) {
+    options = options || {};
+    var asOf = /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var dayMs = 86400000, today = Date.parse(asOf + "T00:00:00Z");
+    function age(day) { return /^\d{4}-\d{2}-\d{2}$/.test(day) ? (today - Date.parse(day + "T00:00:00Z")) / dayMs : Infinity; }
+    var rows = (items || []).filter(function (item) {
+      if (!item || item.link_status === "gone") return false;
+      if (plan.topicTerms.length && !plan.topicTerms.some(function (t) { return compact(item.title || "").indexOf(compact(t)) !== -1; })) return false;
+      var rel = typeof options.relevance === "function" ? options.relevance(item) : null;
+      if (rel && (rel.school_mismatch || rel.not_for_me)) return false;
+      item.__rel = rel;
+      return true;
+    });
+    var picked = [], summary = "", topic = plan.topicLabel ? "「" + plan.topicLabel + "」相關的" : "";
+    var scope = options.scopeLabel || "";
+    if (plan.deadlines) {
+      rows.forEach(function (item) {
+        var dates = (item.calendar_events || []).filter(function (ev) { return ev && ev.kind === "deadline"; }).map(function (ev) { return ev.date; });
+        var fromTitle = titleDeadline(item);
+        if (fromTitle) dates.push(fromTitle);
+        dates.forEach(function (day) {
+          var days = -age(day);
+          if (days >= 0 && days <= 21 && !picked.some(function (p) { return p.item.id === item.id; })) picked.push({ item: item, day: day, days: days });
+        });
+      });
+      picked.sort(function (a, b) { return a.days - b.days; });
+      picked = picked.slice(0, 8);
+      if (picked.length) summary = (scope ? scope + "接下來" : "接下來") + "三週有 " + picked.length + " 個" + topic + "截止日，最近的是 " + shortDay(picked[0].day) + "「" + clean(picked[0].item.title) + "」。";
+      else summary = "目前抓到的公告裡，接下來三週沒有已記錄的" + topic + "截止日。截止日是從公告內文讀出來的，有些公告還沒讀到內文，可以到「公告」頁看最新消息。";
+    } else {
+      var windowDays = 14;
+      var recent = rows.filter(function (item) { var a = age(String(item.date || item.first_seen || "").slice(0, 10)); return a >= 0 && a <= windowDays; });
+      if (recent.length < 3) { windowDays = 30; recent = rows.filter(function (item) { var a = age(String(item.date || item.first_seen || "").slice(0, 10)); return a >= 0 && a <= windowDays; }); }
+      recent.sort(function (a, b) {
+        var pa = a.__rel && a.__rel.tier === "strong" ? 1 : 0, pb = b.__rel && b.__rel.tier === "strong" ? 1 : 0;
+        if (pa !== pb) return pb - pa;
+        return String(b.date || b.first_seen || "").localeCompare(String(a.date || a.first_seen || ""));
+      });
+      picked = recent.slice(0, 8).map(function (item) { return { item: item, day: String(item.date || item.first_seen || "").slice(0, 10) }; });
+      var span = windowDays === 14 ? "最近兩週" : "最近一個月";
+      var leadStrong = picked.length && picked[0].item.__rel && picked[0].item.__rel.tier === "strong";
+      if (picked.length) summary = (scope ? scope : "") + span + "有 " + recent.length + " 則" + topic + "新公告" + (recent.length > picked.length ? "，下面列出跟你最相關的 " + picked.length + " 則" : "") + "。" + (leadStrong ? "跟你最相關的是 " : "最新的是 ") + shortDay(picked[0].day) + "「" + clean(picked[0].item.title) + "」。";
+      else summary = (scope ? scope : "") + span + "沒有" + topic + "新公告。";
+    }
+    var sources = picked.map(function (p) {
+      var item = p.item, rel = item.__rel, reasons = rel && rel.reasons ? rel.reasons.filter(function (r) { return r.rule !== "school_match"; }).map(function (r) { return r.label; }).slice(0, 2) : [];
+      return { id: item.id, title: clean(item.title || "官方公告"), school_id: item.school || "", school_name: item.school_name || "", url: item.url || "",
+        date: item.date || item.first_seen || "", category: item.category || "", note: plan.deadlines ? shortDay(p.day) + " 截止" : (reasons.length ? "與你相關：" + reasons.join("、") : "") };
+    });
+    (items || []).forEach(function (item) { if (item) delete item.__rel; });
+    return { status: picked.length ? "answered" : "insufficient", mode: "browse", query: query, summary: summary, evidence: [], sources: sources, related: [], key_points: [],
+      plan: questionPlan(query), limitation: plan.deadlines ? "截止日來自公告標題或內文中明確寫出的日期；沒寫或只在附件裡的不會列出。" : "依公告日期排列；與你年級、關注主題相關的排在前面。" };
+  }
   function answer(query, items, details, options) {
     query = clean(query).slice(0, 160);
+    var browse = browsePlan(query);
+    if (browse) return browseAnswer(query, items, browse, options);
     var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);
     if (ranked.length) {
       var relevanceFloor = Math.max(8, ranked[0].score * 0.35);
@@ -671,5 +763,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, keyPoints: keyPoints,answer: answer };
+    isPersonalDataQuery:personalDataQuery, keyPoints: keyPoints, browsePlan: browsePlan, titleDeadline: titleDeadline,answer: answer };
 });

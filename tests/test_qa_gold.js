@@ -81,3 +81,38 @@ assert.deepEqual(QA.keyPoints("請有興趣同學於 115年10月31日(五) 前�
 assert(!QA.keyPoints("請電洽國立東石高級中學圖書館張世宗主任。").length, "contact lines with names are never listed");
 assert(!JSON.stringify(QA.keyPoints("報名費 200 元，洽詢電話 05-2763060。")).includes("2763060"), "phone numbers are dropped");
 console.log("重點整理 tests passed");
+
+/* 2026-10-27 real-device report: 「最近有什麼新消息？」 could not be answered. Open questions
+   list recent or soon-due announcements for the user's school instead. */
+assert.ok(QA.browsePlan("最近有什麼新消息？"), "what's-new questions are browse questions");
+assert.ok(QA.browsePlan("有哪些活動快截止？").deadlines);
+assert.deepEqual(QA.browsePlan("有哪些活動快截止？").topicTerms, [], "活動 is too broad to filter on");
+assert.ok(QA.browsePlan("最近有哪些獎助學金？").topicTerms.includes("獎學金"));
+assert.equal(QA.browsePlan("高一微課程怎麼選課"), null, "specific questions still use the normal search");
+assert.equal(QA.titleDeadline({ title: "【公告】畢業紀念冊封面設計徵稿(至11/27止)", date: "2026-09-11" }), "2026-11-27");
+assert.equal(QA.titleDeadline({ title: "福群慈善基金會獎助學金(於115.10.31前自行寄送)", date: "2026-10-01" }), "2026-10-31");
+assert.equal(QA.titleDeadline({ title: "報名截止日期為116年1月31日", date: "2026-08-14" }), "2027-01-31");
+assert.equal(QA.titleDeadline({ title: "寒假營隊開放報名", date: "2026-10-01" }), "");
+const browseItems = [
+  { id: "n1", school: "cysh", school_name: "嘉中", title: "高一微課程選課重要事項", date: "2026-10-20" },
+  { id: "n2", school: "cysh", school_name: "嘉中", title: "高三複習考時間表", date: "2026-10-25" },
+  { id: "n3", school: "cysh", school_name: "嘉中", title: "校慶運動會賽程", date: "2026-10-24" },
+  { id: "old", school: "cysh", school_name: "嘉中", title: "去年的公告", date: "2025-10-01" },
+  { id: "due", school: "cysh", school_name: "嘉中", title: "畢業紀念冊封面設計徵稿(至11/5止)", date: "2026-10-01" },
+];
+const Rel = require("../docs/relevance.js"), Reg = require("../docs/school-registry.js");
+const me1 = { school_id: "cysh", grade_level: 1 };
+const news = QA.answer("最近有什麼新消息？", browseItems, {}, { asOf: "2026-10-27", scopeLabel: "嘉中", relevance: i => Rel.calculate(i, me1, Reg) });
+assert.equal(news.status, "answered");
+assert.equal(news.mode, "browse");
+assert(!news.sources.some(s => s.id === "old"), "old announcements are not news");
+assert(!news.sources.some(s => s.id === "n2"), "another grade's notice is filtered for a 高一 student");
+assert.equal(news.sources[0].id, "n1", "the notice for my grade comes first");
+assert.match(news.summary, /^嘉中最近(?:兩週|一個月)有 \d+ 則新公告/);
+const due = QA.answer("有什麼快截止的？", browseItems, {}, { asOf: "2026-10-27", scopeLabel: "嘉中" });
+assert.deepEqual(due.sources.map(s => s.id), ["due"]);
+assert.match(due.summary, /最近的是 11\/5/);
+assert.equal(QA.isPersonalDataQuery("高二、高三重修成績開放查詢有什麼要注意？"), false);
+const appSource = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
+assert.match(appSource, /function renderAssistantExamples\(\)/, "suggested questions are built from the user's data");
+console.log("問校務 open-question tests passed");
