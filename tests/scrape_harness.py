@@ -4,7 +4,7 @@
 用途：重構爬蟲主程式時，確認輸出逐位元不變。
 - 每個網址回傳由網址決定的固定 HTML（列表頁、首頁、文章頁、iSchool 列表）。
 - 時間凍結在 2026-10-27 09:00（台灣時間）。
-- 跑兩輪：第一輪 FETCH_ALL（含補齊），第二輪一般排程（cold 頁應被略過）。
+- 跑三輪：FETCH_ALL（含補齊）→ 一般排程（cold 頁應被略過）→ DEEP_CRAWL 深度翻頁。
 - 回傳所有輸出檔的 SHA-256 與請求順序。
 """
 import copy
@@ -175,6 +175,8 @@ def run_harness():
             scrape.main()
             run1 = len(FakeSession.log)
             os.environ.pop("FETCH_ALL")
+            scrape.main()
+            os.environ["DEEP_CRAWL"] = "1"  # 第三輪：深度回補翻頁
             scrape.main()
         finally:
             for k, v in saved.items():
