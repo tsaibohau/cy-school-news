@@ -4,6 +4,7 @@
 不 import scrape.py（避免循環匯入與 `python scraper/scrape.py` 時的雙重載入）。
 """
 import re
+import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from urllib.parse import urljoin, urlsplit, urlunsplit
@@ -154,3 +155,20 @@ def page_title_tail(soup):
     title = soup.title.get_text(" ", strip=True) if soup.title else ""
     parts = [p.strip() for p in re.split(r"[-|>｜]", title) if p.strip()]
     return parts[-1] if len(parts) > 1 else ""
+
+
+# 不是實體開頭的「&」（例如標題「A & B」）；校網 RSS 常沒跳脫，整份 XML 會解析失敗
+BARE_AMP_RE = re.compile(r"&(?!(?:[A-Za-z][A-Za-z0-9]*|#[0-9]+|#x[0-9A-Fa-f]+);)")
+
+
+def parse_feed_xml(text):
+    """解析 RSS；若因沒跳脫的「&」失敗，跳脫後再試一次。仍失敗回傳 None。"""
+    data = str(text or "").lstrip("\ufeff")
+    try:
+        return ET.fromstring(data.encode("utf-8"))
+    except ET.ParseError:
+        pass
+    try:
+        return ET.fromstring(BARE_AMP_RE.sub("&amp;", data).encode("utf-8"))
+    except ET.ParseError:
+        return None
