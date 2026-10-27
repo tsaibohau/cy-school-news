@@ -24,6 +24,16 @@
     { id: "gwehs", county: "雲林縣", site: "https://gwehs.ylc.edu.tw/", name: "雲林縣立古坑華德福實驗高級中學", short: "古坑華德福", aliases: ["古坑華德福", "華德福", "gwehs"], capabilities: { announcements: true, official_calendar: false } },
     { id: "mljh", county: "雲林縣", site: "https://mljh.ylc.edu.tw/", name: "雲林縣立麥寮高級中學", short: "麥寮高中", aliases: ["麥寮高中", "麥寮", "mljh"], capabilities: { announcements: true, official_calendar: false } },
     { id: "nsjh", county: "雲林縣", site: "https://nsjh.ylc.edu.tw/", name: "雲林縣立蔦松藝術高級中學", short: "蔦松藝術高中", aliases: ["蔦松", "蔦松藝中", "蔦松藝術高中", "nsjh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "cyhvs", county: "嘉義市", site: "https://www.cyhvs.cy.edu.tw/", name: "國立嘉義高級家事職業學校", short: "嘉義家職", aliases: ["嘉義家職", "嘉家", "嘉義家事", "cyhvs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "cyvs", county: "嘉義市", site: "https://www.cyvs.cy.edu.tw/", name: "國立嘉義高級商業職業學校", short: "嘉義高商", aliases: ["嘉義高商", "嘉商", "cyvs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "cyivs", county: "嘉義市", site: "https://www.cyivs.cy.edu.tw/", name: "國立嘉義高級工業職業學校", short: "嘉義高工", aliases: ["嘉義高工", "嘉工", "cyivs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "hhsh", county: "嘉義市", site: "https://www.hhsh.cy.edu.tw/", name: "嘉義市私立興華高級中學", short: "興華高中", aliases: ["興華", "興華高中", "興華中學", "hhsh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "hnvs", county: "嘉義市", site: "https://www.hnvs.cy.edu.tw/", name: "國立華南高級商業職業學校", short: "華南高商", aliases: ["華南高商", "華南", "hnvs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "nehs", county: "嘉義縣", site: "https://www.nehs.cyc.edu.tw/", name: "國立嘉科實驗高級中學", short: "嘉科實中", aliases: ["嘉科實中", "嘉科", "嘉科實驗", "nehs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "sgash", county: "嘉義縣", site: "https://www.sgash.cyc.edu.tw/", name: "國立新港藝術高級中學", short: "新港藝術高中", aliases: ["新港藝術高中", "新港藝中", "新港藝術", "sgash"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "mhvs", county: "嘉義縣", site: "https://www.mhvs.cyc.edu.tw/", name: "國立民雄高級農工職業學校", short: "民雄農工", aliases: ["民雄農工", "民雄", "mhvs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "ycsh", county: "嘉義縣", site: "https://www.ycsh.cyc.edu.tw/", name: "嘉義縣立永慶高級中學", short: "永慶高中", aliases: ["永慶", "永慶高中", "ycsh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "tssh", county: "嘉義縣", site: "https://www.tssh.cyc.edu.tw/", name: "國立東石高級中學", short: "東石高中", aliases: ["東石", "東石高中", "tssh"], capabilities: { announcements: true, official_calendar: false } },
   ];
   function copy(school) {
     return Object.assign({}, school, { aliases: (school.aliases || []).slice(), capabilities: Object.assign({}, school.capabilities) });
