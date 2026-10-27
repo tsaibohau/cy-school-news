@@ -11,6 +11,19 @@
     { id: "fjsh", county: "嘉義市", site: "https://rpage.fjsh.cy.edu.tw/", name: "嘉義市私立輔仁高級中學", short: "輔仁高中", aliases: ["輔仁", "輔仁高中", "輔仁中學", "fjsh"], capabilities: { announcements: true, official_calendar: false } },
     { id: "pksh", county: "雲林縣", site: "https://www.pksh.ylc.edu.tw/", name: "國立北港高級中學", short: "北港高中", aliases: ["北高", "北港高中", "北港高級中學", "pksh"], dateUnverifiedBefore: "2026-09-08", capabilities: { announcements: true, official_calendar: false } },
     { id: "ccjh", county: "嘉義縣", site: "https://www.ccjh.cyc.edu.tw/", name: "嘉義縣立竹崎高級中學", short: "竹崎高中", aliases: ["竹崎", "竹崎高中", "竹崎高級中學", "ccjh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "hwsh", county: "雲林縣", site: "https://www.hwsh.ylc.edu.tw/", name: "國立虎尾高級中學", short: "虎尾高中", aliases: ["虎尾高中", "虎中", "hwsh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "yfsh", county: "雲林縣", site: "https://www.yfsh.ylc.edu.tw/", name: "雲林縣私立義峰高級中學", short: "義峰高中", aliases: ["義峰", "義峰高中", "yfsh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "pkvs", county: "雲林縣", site: "https://www.pkvs.ylc.edu.tw/", name: "國立北港高級農工職業學校", short: "北港農工", aliases: ["北港農工", "北農", "pkvs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "tlhc", county: "雲林縣", site: "https://www.tlhc.ylc.edu.tw/", name: "國立斗六高級家事商業職業學校", short: "斗六家商", aliases: ["斗六家商", "斗家", "tlhc"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "tlsh", county: "雲林縣", site: "https://www.tlsh.ylc.edu.tw/", name: "國立斗六高級中學", short: "斗六高中", aliases: ["斗六高中", "斗中", "tlsh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "hlvs", county: "雲林縣", site: "https://www.hlvs.ylc.edu.tw/", name: "國立西螺高級農工職業學校", short: "西螺農工", aliases: ["西螺農工", "螺農", "hlvs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "hwaivs", county: "雲林縣", site: "https://www.hwaivs.ylc.edu.tw/", name: "國立虎尾高級農工職業學校", short: "虎尾農工", aliases: ["虎尾農工", "虎農", "hwaivs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "shsh", county: "雲林縣", site: "https://www.shsh.ylc.edu.tw/", name: "雲林縣私立正心高級中學", short: "正心高中", aliases: ["正心", "正心中學", "正心高中", "shsh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "bwjh", county: "雲林縣", site: "https://www.bwjh.ylc.edu.tw/", name: "雲林縣私立福智高級中學", short: "福智高中", aliases: ["福智", "福智高中", "bwjh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "dnsh", county: "雲林縣", site: "https://dnsh.ylc.edu.tw/", name: "雲林縣立斗南高級中學", short: "斗南高中", aliases: ["斗南高中", "斗南", "dnsh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "gwehs", county: "雲林縣", site: "https://gwehs.ylc.edu.tw/", name: "雲林縣立古坑華德福實驗高級中學", short: "古坑華德福", aliases: ["古坑華德福", "華德福", "gwehs"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "mljh", county: "雲林縣", site: "https://mljh.ylc.edu.tw/", name: "雲林縣立麥寮高級中學", short: "麥寮高中", aliases: ["麥寮高中", "麥寮", "mljh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "nsjh", county: "雲林縣", site: "https://nsjh.ylc.edu.tw/", name: "雲林縣立蔦松藝術高級中學", short: "蔦松藝術高中", aliases: ["蔦松", "蔦松藝中", "蔦松藝術高中", "nsjh"], capabilities: { announcements: true, official_calendar: false } },
   ];
   function copy(school) {
     return Object.assign({}, school, { aliases: (school.aliases || []).slice(), capabilities: Object.assign({}, school.capabilities) });

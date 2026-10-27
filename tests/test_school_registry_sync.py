@@ -45,6 +45,24 @@ def test_config_and_registry_agree():
         assert adapters.get_adapter(school) is adapters.get_adapter(definition.announcement_adapter), school["id"]
 
 
+def test_source_urls_are_valid_for_their_adapter():
+    """每個來源網址都在學校自己的網域；iSchool 來源帶有效 uid；新上架學校有 notify_since。"""
+    from urllib.parse import urlsplit
+    from adapters.ischool_json import source_uid
+    from adapters.common import same_site
+    original = {"cysh", "cygsh"}
+    for school in CONFIG["schools"]:
+        urls = list(school.get("scan_pages", [])) + [p if isinstance(p, str) else p["url"] for p in school.get("list_pages", [])]
+        assert urls, school["id"]
+        for url in urls:
+            assert urlsplit(url).scheme == "https", (school["id"], url)
+            assert same_site(url, school), (school["id"], url)
+            if adapters.get_adapter(school).name == "ischool-json":
+                assert source_uid(url), (school["id"], url)
+        if school["id"] not in original:
+            assert school.get("notify_since"), school["id"] + " must not push its backlog"
+
+
 def test_every_registry_adapter_is_registered():
     for definition in SCHOOLS.values():
         adapters.get_adapter(definition.announcement_adapter)
