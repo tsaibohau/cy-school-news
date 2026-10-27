@@ -26,6 +26,7 @@ from extractive_summary import SUMMARY_VERSION, summarize_detail
 from link_health import GONE_HTTP_STATUS, http_status, is_gone, record_alive, record_missing
 from public_shards import build_school_shards
 from bs4 import BeautifulSoup
+import adapters as source_adapters
 
 from detail_parser import parse_article_detail
 
@@ -352,10 +353,53 @@ def extract_ischool_next_page(html: str, school: dict, source_url: str) -> str:
     return ""
 
 
-def extract_items(html: str, school: dict, source_url: str):
-    if school.get("adapter", "rulingdigital") == "ischool-site-news":
+class NewClassicCmsAdapter(source_adapters.Adapter):
+    """銳鼎新版校網（/p/403-、/p/412-、/p/406-）：嘉中、嘉女。"""
+    name = "new-classic-cms"
+    coverage_sentinel = True
+
+    def extract(self, html, school, source_url):
+        return extract_rulingdigital_items(html, school, source_url)
+
+    def deep_crawl_pages(self, page_url):
+        if "/p/403-" not in page_url:
+            return []
+        return [list_page_with_number(page_url, n) for n in range(2, DEEP_CRAWL_MAX_PAGES + 1)]
+
+
+class IschoolSiteNewsAdapter(source_adapters.Adapter):
+    """iSchool 消息公佈欄 HTML（main2.php），沿真正的「下一頁」連結翻頁。"""
+    name = "ischool-site-news"
+
+    def extract(self, html, school, source_url):
         return extract_ischool_items(html, school, source_url)
-    return extract_rulingdigital_items(html, school, source_url)
+
+    def follow_pages(self, session, school, page_url, html, fetch, on_items, sleep):
+        visited_pages = {page_url}
+        current_url, current_html = page_url, html
+        max_pages = max(1, min(int(school.get("max_list_pages", 3)), 5))
+        for _ in range(1, max_pages):
+            next_url = extract_ischool_next_page(current_html, school, current_url)
+            if not next_url or next_url in visited_pages:
+                break
+            try:
+                current_html = fetch(session, next_url, school)
+            except Exception as e:
+                print(f"[warn] iSchool 分頁略過 {next_url}: {e}", file=sys.stderr)
+                break
+            visited_pages.add(next_url)
+            current_url = next_url
+            on_items(self.extract(current_html, school, current_url))
+            sleep()
+
+
+# "rulingdigital" 是 config.json 未標示 adapter 時的舊名稱，與 new-classic-cms 相同
+source_adapters.register(NewClassicCmsAdapter(), "rulingdigital")
+source_adapters.register(IschoolSiteNewsAdapter())
+
+
+def extract_items(html: str, school: dict, source_url: str):
+    return source_adapters.get_adapter(school).extract(html, school, source_url)
 
 
 def list_page_urls(school: dict) -> list:
@@ -482,7 +526,7 @@ def validate_history_capacity(items, max_items: int) -> None:
 
 def configured_categories(school: dict) -> set:
     """該校 config 裡已納入的 403 分類編號。"""
-    if school.get("adapter", "rulingdigital") != "rulingdigital" or not school.get("unit"):
+    if not source_adapters.get_adapter(school).coverage_sentinel or not school.get("unit"):
         return set()
     ids = set()
     for url in list_page_urls(school):
@@ -835,9 +879,10 @@ def main() -> int:
         if school.get("enabled") is False:
             print(f"[warn] 跳過已停用來源 {school['id']}: {school.get('status', 'disabled')}")
             continue
+        adapter = source_adapters.get_adapter(school)
         collected = {}
         scan_pages = list(school.get("scan_pages", []))
-        entries = [(u, "hot") for u in scan_pages] + page_entries(school)
+        entries = adapter.entries(school)
         scanned_items = []
         skipped_cold = 0
         for page_url, tier in entries:
@@ -845,7 +890,7 @@ def main() -> int:
                 skipped_cold += 1
                 continue
             try:
-                html = fetch(session, page_url, school)
+                html = adapter.fetch_page(session, page_url, school, fetch)
             except Exception as e:
                 source_status = record_source_status(fetch_state, school["id"], page_url, now_iso, e)
                 print(f"[warn] 略過 {page_url}: {e}", file=sys.stderr)
@@ -853,7 +898,7 @@ def main() -> int:
                 time.sleep(delay)
                 continue
             record_source_status(fetch_state, school["id"], page_url, now_iso)
-            page_items = extract_items(html, school, page_url)
+            page_items = adapter.extract(html, school, page_url)
             if page_url in scan_pages:
                 scanned_items += page_items
             for it in page_items:
@@ -862,29 +907,16 @@ def main() -> int:
                 merge_collected_item(collected, it)
             time.sleep(delay)
 
-            if school.get("adapter") == "ischool-site-news":
-                visited_pages = {page_url}
-                current_url, current_html = page_url, html
-                max_pages = max(1, min(int(school.get("max_list_pages", 3)), 5))
-                for _ in range(1, max_pages):
-                    next_url = extract_ischool_next_page(current_html, school, current_url)
-                    if not next_url or next_url in visited_pages:
-                        break
-                    try:
-                        current_html = fetch(session, next_url, school)
-                    except Exception as e:
-                        print(f"[warn] iSchool 分頁略過 {next_url}: {e}", file=sys.stderr)
-                        break
-                    visited_pages.add(next_url)
-                    current_url = next_url
-                    for it in extract_items(current_html, school, current_url):
-                        merge_collected_item(collected, it)
-                    time.sleep(delay)
+            def merge_items(items):
+                for it in items:
+                    merge_collected_item(collected, it)
 
-            # 深度回補:對 403 分類頁繼續抓第 2、3…頁
-            if deep_crawl and "/p/403-" in page_url:
-                for page_no in range(2, DEEP_CRAWL_MAX_PAGES + 1):
-                    deep_url = list_page_with_number(page_url, page_no)
+            adapter.follow_pages(session, school, page_url, html, fetch, merge_items,
+                                 lambda: time.sleep(delay))
+
+            # 深度回補:對分類頁繼續抓第 2、3…頁(只有支援的 adapter 會回傳網址)
+            if deep_crawl:
+                for deep_url in adapter.deep_crawl_pages(page_url):
                     try:
                         deep_html = fetch(session, deep_url)
                     except Exception as e:
@@ -892,7 +924,7 @@ def main() -> int:
                         time.sleep(delay)
                         break
                     time.sleep(delay)
-                    deep_items = extract_items(deep_html, school, deep_url)
+                    deep_items = adapter.extract(deep_html, school, deep_url)
                     reason = deep_stop_reason(deep_items, set(collected))
                     if reason in ("無公告", "整頁重複"):
                         break
@@ -956,7 +988,7 @@ def main() -> int:
         # 覆蓋率哨兵:首頁出現的文章,其分類若不在 config 就記下來
         gaps = coverage_gaps(scanned_items, configured_categories(school),
                              CONFIG.get("coverage_ignore", {}).get(school["id"], [])) \
-            if school.get("adapter", "rulingdigital") == "rulingdigital" else []
+            if adapter.coverage_sentinel else []
         for g in gaps:
             g["school_name"] = school["short"]
             g["list_page"] = (f'{school["base"]}/p/403-{school["unit"]}'

@@ -112,6 +112,8 @@ jobs:
           PYTHONIOENCODING: utf-8
         run: |
           python tests/test_parser.py
+          python tests/test_scrape_golden.py
+          python tests/test_school_registry_sync.py
           python tests/test_calendar_adapter.py
           python tests/test_detail_parser.py
           python tests/test_detail_backfill.py
