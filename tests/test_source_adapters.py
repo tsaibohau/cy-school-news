@@ -88,7 +88,8 @@ def test_ischool_json_fetch_posts_with_uid():
         raise AssertionError("invalid uid must fail closed")
     except ValueError:
         pass
-    assert adapter.fetch_articles is False and adapter.trust_article_title is False
+    # show.php 是一般網頁（有完整發佈時間），照常抓文章頁
+    assert adapter.fetch_articles is True and adapter.trust_article_title is True
 
 
 # ---- WordPress ----
@@ -251,7 +252,7 @@ def test_fetch_retries_with_bundled_intermediates():
 
 
 def test_main_loop_end_to_end_with_new_adapters():
-    """scrape.main() 跑 iSchool JSON 與 WordPress 兩校：POST 取得列表、不抓 iSchool 文章頁、RSS 標題不被覆蓋。"""
+    """scrape.main() 跑 iSchool JSON 與 WordPress 兩校：POST 取得列表、文章頁抓取受上限控制、RSS 標題不被覆蓋。"""
     import json
     import os
     import tempfile
@@ -312,7 +313,9 @@ def test_main_loop_end_to_end_with_new_adapters():
     assert sum(1 for i in items if i.startswith("pksh-")) == 20
     assert sum(1 for i in items if i.startswith("cyivs-")) == 12
     assert ("POST", PKSH + ischool_json.JSON_PATH, "WID_0_2_0a14b8dc17bb7190f9566cc9fece58668f20208a") in log
-    assert not any("show.php" in entry[1] for entry in log), "iSchool article shells must not be fetched"
+    show_fetches = [entry for entry in log if "show.php" in entry[1]]
+    limit = config["fetch_content_max_per_school"] + config["backfill_max_per_run"]
+    assert 0 < len(show_fetches) <= limit, (len(show_fetches), limit)
     assert items["cyivs-25423"]["title"].startswith("公告教務處115學年度"), items["cyivs-25423"]["title"]
     assert any("cyivs.cy.edu.tw/announcement" in entry[1] for entry in log), "WordPress articles still fetched for summaries"
 

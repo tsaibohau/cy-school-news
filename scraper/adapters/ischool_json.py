@@ -5,7 +5,8 @@ iSchool 首頁的公告是 JS 向 /ischool/widget/site_news/news_query_json.php 
 直接抓 HTML 只會得到空殼。來源網址寫成
   https://<校網>/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_xxx
 adapter 從網址取出 uid 後 POST（參數與北港原本的 Windows 抓取相同）。
-文章頁 show.php 也是 JS 空殼，所以不抓文章頁（fetch_articles=False）。
+文章頁 show.php 是一般網頁，有完整標題、內文與「發佈時間 : 2025-09-10 09:28:20」，
+所以照常抓文章頁：列表若只給「10/27」短日期，文章頁的完整發佈時間會覆蓋推測的年份。
 """
 import json
 import re
@@ -40,8 +41,6 @@ def item_date(value, today=None):
 
 class IschoolJsonAdapter(Adapter):
     name = "ischool-json"
-    fetch_articles = False       # show.php 是 JS 空殼
-    trust_article_title = False
 
     def fetch_page(self, session, url, school, fetch):
         uid = source_uid(url)
