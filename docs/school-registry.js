@@ -6,11 +6,11 @@
 })(typeof window !== "undefined" ? window : globalThis, function () {
   "use strict";
   var schools = [
-    { id: "cysh", name: "國立嘉義高級中學", short: "嘉中", aliases: ["嘉義高中", "嘉義高級中學", "cysh"], capabilities: { announcements: true, official_calendar: true } },
-    { id: "cygsh", name: "國立嘉義女子高級中學", short: "嘉女", aliases: ["嘉義女中", "嘉義女子高級中學", "cygsh"], capabilities: { announcements: true, official_calendar: true } },
-    { id: "fjsh", name: "嘉義市私立輔仁高級中學", short: "輔仁高中", aliases: ["輔仁", "輔仁高中", "輔仁中學", "fjsh"], capabilities: { announcements: true, official_calendar: false } },
-    { id: "pksh", name: "國立北港高級中學", short: "北港高中", aliases: ["北高", "北港高中", "北港高級中學", "pksh"], dateUnverifiedBefore: "2026-09-08", capabilities: { announcements: true, official_calendar: false } },
-    { id: "ccjh", name: "嘉義縣立竹崎高級中學", short: "竹崎高中", aliases: ["竹崎", "竹崎高中", "竹崎高級中學", "ccjh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "cysh", county: "嘉義市", site: "https://www.cysh.cy.edu.tw/", name: "國立嘉義高級中學", short: "嘉中", aliases: ["嘉義高中", "嘉義高級中學", "cysh"], capabilities: { announcements: true, official_calendar: true } },
+    { id: "cygsh", county: "嘉義市", site: "https://www.cygsh.cy.edu.tw/", name: "國立嘉義女子高級中學", short: "嘉女", aliases: ["嘉義女中", "嘉義女子高級中學", "cygsh"], capabilities: { announcements: true, official_calendar: true } },
+    { id: "fjsh", county: "嘉義市", site: "https://rpage.fjsh.cy.edu.tw/", name: "嘉義市私立輔仁高級中學", short: "輔仁高中", aliases: ["輔仁", "輔仁高中", "輔仁中學", "fjsh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "pksh", county: "雲林縣", site: "https://www.pksh.ylc.edu.tw/", name: "國立北港高級中學", short: "北港高中", aliases: ["北高", "北港高中", "北港高級中學", "pksh"], dateUnverifiedBefore: "2026-09-08", capabilities: { announcements: true, official_calendar: false } },
+    { id: "ccjh", county: "嘉義縣", site: "https://www.ccjh.cyc.edu.tw/", name: "嘉義縣立竹崎高級中學", short: "竹崎高中", aliases: ["竹崎", "竹崎高中", "竹崎高級中學", "ccjh"], capabilities: { announcements: true, official_calendar: false } },
   ];
   function copy(school) {
     return Object.assign({}, school, { aliases: (school.aliases || []).slice(), capabilities: Object.assign({}, school.capabilities) });

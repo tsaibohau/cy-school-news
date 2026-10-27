@@ -217,6 +217,26 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   transform: rotate(-4deg); opacity: .85;
 }
 .home-greeting { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.6; letter-spacing: .04em; }
+/* 今日摘要：書卷上的朱筆批註，逐字寫出 */
+.daily-brief {
+  margin: 14px 0 0; padding: 16px 18px 18px;
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  border-left: 3px solid var(--seal);
+}
+.daily-brief-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+.daily-brief-head h2 { margin: 0; font-size: 14px; letter-spacing: .24em; color: var(--seal); }
+.daily-brief-skip {
+  border: 0; background: none; padding: 4px 0; color: var(--muted); font: inherit; font-size: 13px; cursor: pointer;
+}
+.daily-brief-skip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.daily-brief-text { min-height: 3.4em; cursor: pointer; }
+.daily-brief-text p { margin: 0 0 6px; font-size: 16px; line-height: 1.75; letter-spacing: .03em; }
+.daily-brief-text p:first-child { font-weight: 700; }
+.daily-brief-caret {
+  display: inline-block; width: 2px; height: 1.05em; margin-left: 2px; vertical-align: -0.15em;
+  background: var(--seal); animation: brief-caret 1s steps(1) infinite;
+}
+@keyframes brief-caret { 50% { opacity: 0; } }
 .home-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 14px 0 0; }
 .home-action {
   display: grid; grid-template-columns: 40px 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: center;
