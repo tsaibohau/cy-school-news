@@ -77,6 +77,18 @@ def test_history_capacity_has_headroom():
     assert CONFIG["max_items"] >= 2 * (total + new_school_backlog), (CONFIG["max_items"], total, new_school_backlog)
 
 
+def test_backlog_does_not_overlap_live_schools():
+    """待處理清單（自建網站／連不上）與已上架學校不得重疊；上架後要從清單移除。"""
+    backlog = json.loads((ROOT / "scraper/school_backlog.json").read_text(encoding="utf-8"))
+    ids = [row["id"] for row in backlog["schools"]]
+    assert len(ids) == len(set(ids)), ids
+    live = {s["id"] for s in CONFIG["schools"]}
+    assert not (set(ids) & live), set(ids) & live
+    for row in backlog["schools"]:
+        assert row["reason"] in ("custom", "unreachable"), row
+        assert row["county"] and row["site"].startswith("http") and row["notes"], row
+
+
 def test_every_registry_adapter_is_registered():
     for definition in SCHOOLS.values():
         adapters.get_adapter(definition.announcement_adapter)
