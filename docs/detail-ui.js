@@ -17,8 +17,17 @@
       return url.protocol === "https:" && url.hostname !== "invalid.local" ? url.href : "";
     } catch (_) { return ""; }
   }
+  function knownSchoolIds() {
+    // 只接受登錄表裡的學校資料夾；不是登錄表的路徑一律拒絕
+    var registry = typeof window !== "undefined" && window.CyNewsSchoolRegistry;
+    if (!registry && typeof require === "function") {
+      try { registry = require("./school-registry.js"); } catch (_) { registry = null; }
+    }
+    return registry && registry.ids ? registry.ids() : ["cysh", "cygsh"];
+  }
   function validDetailRef(value) {
-    return /^data\/details\/(cysh|cygsh|pksh)\/[A-Za-z0-9._-]+\.json$/.test(String(value || ""));
+    var m = /^data\/details\/([a-z][a-z0-9]{1,15})\/[A-Za-z0-9._-]+\.json$/.exec(String(value || ""));
+    return !!m && knownSchoolIds().indexOf(m[1]) !== -1;
   }
   function statusMessage(status) {
     return {

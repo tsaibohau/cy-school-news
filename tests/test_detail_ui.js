@@ -10,6 +10,7 @@ assert.equal(Detail.safeUrl("http://example.test/a"), "");
 assert.equal(Detail.safeUrl("https://example.test/a"), "https://example.test/a");
 assert.equal(Detail.validDetailRef("data/details/cysh/cysh-1.json"), true);
 assert.equal(Detail.validDetailRef("data/details/pksh/pksh-28123.json"), true);
+assert.equal(Detail.validDetailRef("data/details/ccjh/ccjh-1.json"), true, "registry schools are accepted");
 for (const ref of ["https://evil.test/a.json", "//evil.test/a.json", "data/details/other/a.json", "data/details/cysh/../a.json", "data/details/cysh/a.json?x=1", "data/details/cysh/%2e%2e.json"]) {
   assert.equal(Detail.validDetailRef(ref), false, "unsafe detail ref rejected: " + ref);
 }
@@ -66,12 +67,12 @@ for (const state of ["pending", "empty", "unsupported", "temporary_error", "perm
 const app = fs.readFileSync(path.join(__dirname, "..", "docs", "app.js"), "utf8");
 const index = fs.readFileSync(path.join(__dirname, "..", "docs", "index.html"), "utf8");
 const sw = fs.readFileSync(path.join(__dirname, "..", "docs", "sw.js"), "utf8");
-assert(index.includes('id="detailDialog"') && index.includes('src="detail-ui.js?v=41"'));
+assert(index.includes('id="detailDialog"') && index.includes('src="detail-ui.js?v=42"'));
 assert(app.includes('button[data-detail-id]'), "detail fetch is delegated from an explicit open action");
 assert(app.includes('displaySnippet(item) ? \'<p class="detail-paragraph">\''), "detail failure retains the safe existing summary");
 assert(app.includes('getMemberAnnouncementDetail(item.id)'), "selected detail is requested through the approved-member service");
 assert(!app.includes('fetch(item.detail_ref'), "public detail sidecars are never fetched");
 assert(app.includes("detailRequestGeneration"), "stale detail responses are generation guarded");
 assert(app.includes("detailCache[cacheKey]"), "repeat opens reuse revision-scoped cache");
-assert(sw.includes('detail-ui.js?v=41'));
+assert(sw.includes('detail-ui.js?v=42'));
 console.log("Detail UI structured rendering tests passed");

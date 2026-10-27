@@ -53,17 +53,25 @@
     var createTaskReminder = function () { return Promise.reject(new Error("account not ready")); };
     var accountAuth = null;
     var searchTimer = null;
-    var HIDDEN_SCHOOL_IDS = { fjsh: true, pksh: true };
-    var HIDDEN_SCHOOL_NAMES = /(?:輔仁高中|輔仁中學|私立輔仁高級中學|北港高中|北港高級中學)/;
+    // 停用或隱藏的學校一律由 school-registry.js 決定（visible: false），不在這裡寫死
+    var SCHOOL_REGISTRY = window.CyNewsSchoolRegistry || null;
+    var HIDDEN_SCHOOL_IDS = SCHOOL_REGISTRY && SCHOOL_REGISTRY.hiddenIds ? SCHOOL_REGISTRY.hiddenIds() : {};
+    var HIDDEN_SCHOOL_NAMES = SCHOOL_REGISTRY && SCHOOL_REGISTRY.hiddenNames ? SCHOOL_REGISTRY.hiddenNames() : [];
+    var HIDDEN_SCHOOL_PREFIX = Object.keys(HIDDEN_SCHOOL_IDS).length
+      ? new RegExp("^(?:" + Object.keys(HIDDEN_SCHOOL_IDS).join("|") + ")(?:-|$)") : null;
     function linkGone(item) { return !!item && item.link_status === "gone"; }
     function visibleSchool(row) {
       if (!row) return false;
+      // 舊來源整批匯入、年份未經官方文章頁確認的日期：確認前不顯示，避免錯的日期出現在清單
+      if (row.date_status === "unverified" || row.date_source === "legacy_unverified") return false;
+      if (SCHOOL_REGISTRY && SCHOOL_REGISTRY.unverifiedLegacyDate && SCHOOL_REGISTRY.unverifiedLegacyDate(row)) return false;
       if ([row.school_name, row.schoolName, row.school_short, row.short, row.name].some(function (value) {
-        return HIDDEN_SCHOOL_NAMES.test(String(value || ""));
+        value = String(value || "");
+        return !!value && HIDDEN_SCHOOL_NAMES.indexOf(value) !== -1;
       })) return false;
       return [row.school, row.school_id, row.source_id, row.id].every(function (value) {
         value = String(value || "");
-        return !HIDDEN_SCHOOL_IDS[value] && !/^(?:fjsh|pksh)(?:-|$)/.test(value);
+        return !HIDDEN_SCHOOL_IDS[value] && !(HIDDEN_SCHOOL_PREFIX && HIDDEN_SCHOOL_PREFIX.test(value));
       });
     }
 
@@ -1897,7 +1905,7 @@
     function cardHTML(it) {
       if (!visibleSchool(it)) return "";
       var member = hasSignedInAccount();
-      var schoolClass = it.school === "cysh" ? "tag-cysh" : (it.school === "fjsh" ? "tag-fjsh" : "tag-cygsh");
+      var schoolClass = "tag-school tag-" + String(it.school || "").replace(/[^a-z0-9]/g, "");
       var catClass = it.category === "榮譽榜" ? " cat-honor" : "";
       var relevance = window.CyNewsRelevance && window.CyNewsProfile && window.CyNewsSchoolRegistry
         ? window.CyNewsRelevance.calculate(it, state.profile, window.CyNewsSchoolRegistry) : null;

@@ -8,8 +8,9 @@
   var schools = [
     { id: "cysh", name: "國立嘉義高級中學", short: "嘉中", aliases: ["嘉義高中", "嘉義高級中學", "cysh"], capabilities: { announcements: true, official_calendar: true } },
     { id: "cygsh", name: "國立嘉義女子高級中學", short: "嘉女", aliases: ["嘉義女中", "嘉義女子高級中學", "cygsh"], capabilities: { announcements: true, official_calendar: true } },
-    { id: "fjsh", name: "嘉義市私立輔仁高級中學", short: "輔仁高中", aliases: ["輔仁", "輔仁高中", "輔仁中學", "fjsh"], status: "disabled", visible: false, capabilities: { announcements: false, official_calendar: false } },
-    { id: "pksh", name: "國立北港高級中學", short: "北港高中", aliases: ["北高", "北港高中", "北港高級中學", "pksh"], status: "damaged", visible: false, capabilities: { announcements: false, official_calendar: false } },
+    { id: "fjsh", name: "嘉義市私立輔仁高級中學", short: "輔仁高中", aliases: ["輔仁", "輔仁高中", "輔仁中學", "fjsh"], capabilities: { announcements: true, official_calendar: false } },
+    { id: "pksh", name: "國立北港高級中學", short: "北港高中", aliases: ["北高", "北港高中", "北港高級中學", "pksh"], dateUnverifiedBefore: "2026-09-08", capabilities: { announcements: true, official_calendar: false } },
+    { id: "ccjh", name: "嘉義縣立竹崎高級中學", short: "竹崎高中", aliases: ["竹崎", "竹崎高中", "竹崎高級中學", "ccjh"], capabilities: { announcements: true, official_calendar: false } },
   ];
   function copy(school) {
     return Object.assign({}, school, { aliases: (school.aliases || []).slice(), capabilities: Object.assign({}, school.capabilities) });
@@ -23,7 +24,31 @@
       });
     }) || null;
   }
+  function hiddenIds() {
+    var out = {};
+    schools.forEach(function (school) { if (school.visible === false) out[school.id] = true; });
+    return out;
+  }
+  function hiddenNames() {
+    var names = [];
+    schools.forEach(function (school) {
+      if (school.visible === false) names = names.concat([school.name, school.short], school.aliases || []);
+    });
+    return names;
+  }
+  // 舊匯入日期尚未經官方文章頁確認的公告（首見早於 dateUnverifiedBefore 且未標 verified）
+  function unverifiedLegacyDate(item) {
+    if (!item) return false;
+    if (item.date_status === "unverified" || item.date_source === "legacy_unverified") return true;
+    var school = schools.find(function (row) { return row.id === String(item.school || ""); });
+    var cutoff = school && school.dateUnverifiedBefore;
+    return !!cutoff && item.date_status !== "verified" && !!item.date && String(item.first_seen || "").slice(0, 10) < cutoff;
+  }
   return {
+    unverifiedLegacyDate: unverifiedLegacyDate,
+    ids: function () { return schools.map(function (school) { return school.id; }); },
+    hiddenIds: hiddenIds,
+    hiddenNames: hiddenNames,
     schools: function () { return schools.filter(function (school) { return school.visible !== false; }).map(copy); },
     find: function (id) { var school = schools.find(function (row) { return row.id === String(id); }); return school ? copy(school) : null; },
     mentionedSchool: function (value) { var school = mentionedSchool(value); return school ? copy(school) : null; },

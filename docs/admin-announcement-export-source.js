@@ -5,7 +5,7 @@
   else root.CyNewsAnnouncementExportSource = api;
 })(typeof self !== "undefined" ? self : this, function () {
   "use strict";
-  function validId(id) { return typeof id === "string" && /^(cysh|cygsh)-[A-Za-z0-9._-]{1,150}$/.test(id); }
+  function validId(id) { return typeof id === "string" && /^[a-z][a-z0-9]{1,15}-[A-Za-z0-9._-]{1,150}$/.test(id); }
   async function requireOwner(controller, expectedUid) {
     var session = await controller.getVerifiedSession();
     if (!session || !session.user || !session.user.id || !session.access_token || /^mock\./.test(session.access_token)) throw new Error("請使用正式帳號登入。");

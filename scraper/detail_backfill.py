@@ -29,6 +29,12 @@ BACKFILL_STATE_KEY = "__member_detail_backfill__"
 OCR_BACKFILL_STATE_KEY = "__member_ocr_backfill__"
 SEARCHABLE_ATTACHMENT_EXTENSIONS = {".pdf", ".docx", ".xlsx", ".pptx"}
 OCR_TARGET_SCHOOLS = {"cysh", "cygsh"}
+try:
+    from school_registry import SCHOOLS as _REGISTRY
+    DETAIL_SCHOOLS = "|".join(sorted(_REGISTRY))
+except ImportError:  # pragma: no cover
+    DETAIL_SCHOOLS = "cysh|cygsh"
+DETAIL_REF_RE = re.compile(r"^data/details/(?:%s)/[A-Za-z0-9._-]+\.json$" % DETAIL_SCHOOLS)
 
 
 def backfill_existing_summaries(items, cap):
@@ -39,7 +45,7 @@ def backfill_existing_summaries(items, cap):
         if updated >= cap:
             break
         detail_ref = str(item.get("detail_ref") or "")
-        if not re.match(r"^data/details/(?:cysh|cygsh|pksh)/[A-Za-z0-9._-]+\.json$", detail_ref):
+        if not DETAIL_REF_RE.match(detail_ref):
             continue
         path = ROOT / "docs" / detail_ref
         try:

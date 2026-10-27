@@ -292,6 +292,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .card-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; font-size: 12.5px; color: var(--muted); }
 .card-date { margin-left: auto; font-variant-numeric: tabular-nums; }
 .tag { padding: 1px 8px; border-radius: 4px; font-size: 12px; font-weight: 700; letter-spacing: .06em; }
+.tag-school { color: var(--gold); background: var(--chip-bg); }
 .tag-cysh { color: var(--cysh); background: var(--cysh-bg); }
 .tag-cygsh { color: var(--cygsh); background: var(--cygsh-bg); }
 .tag-fjsh { color: var(--gold); background: var(--chip-bg); }

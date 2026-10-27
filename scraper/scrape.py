@@ -77,6 +77,9 @@ SOURCE_STATUS_KEY = "__source_status__"
 # without this field are treated as reliable persisted observations, never as
 # weak list-page observations.
 DATE_SOURCE_RANK = {
+    # 舊來源整批匯入、年份不可信的日期（例如 iSchool「10/27」短日期被補成錯的年份）；
+    # 任何列表或文章頁日期都能取代它，前端在取代前不顯示該則公告。
+    "legacy_unverified": -1,
     "first_seen": 0,
     "list": 1,
     "persisted": 2,
@@ -829,6 +832,83 @@ def load_existing_items(data_path: Path, archive_path: Path) -> dict:
     return by_id
 
 
+def mark_unverified_legacy_dates(by_id: dict, schools: list) -> int:
+    """學校設定 date_unverified_before 時，把該日前匯入、未經文章頁確認的日期標為不可信。
+
+    公開資料只保留 date_status（"unverified"／"verified"），date_source 不會發布，
+    所以每輪都由 date_status 還原：verified 的不再標記，unverified 的繼續等待確認。
+    """
+    marked = 0
+    cutoffs = {s["id"]: s["date_unverified_before"] for s in schools
+               if s.get("date_unverified_before") and s.get("enabled") is not False}
+    for item in by_id.values():
+        cutoff = cutoffs.get(item.get("school"))
+        if not cutoff or item.get("date_status") == "verified":
+            continue
+        if item.get("date_status") != "unverified":
+            if not item.get("date") or str(item.get("first_seen") or "")[:10] >= cutoff:
+                continue
+            if item.get("date_source") not in (None, "", "persisted"):
+                continue
+        item["date_status"] = "unverified"
+        if item.get("date"):
+            item["date_source"] = "legacy_unverified"
+        marked += 1
+    return marked
+
+
+def settle_date_status(items) -> int:
+    """日期已被列表或文章頁取代（或確認取不到）的舊項目，標為 verified，之後就會公開顯示。"""
+    settled = 0
+    for item in items:
+        if item.get("date_status") == "unverified" and item.get("date_source") != "legacy_unverified":
+            item["date_status"] = "verified"
+            settled += 1
+    return settled
+
+
+def repair_legacy_dates(session, school: dict, by_id: dict, adapter, now_iso: str,
+                        delay: float, fetched_this_run: set) -> int:
+    """每輪最多 date_repair_per_run 則：抓官方文章頁，以發佈時間取代不可信的日期。
+
+    同時寫入內文紀錄，之後的補齊不必再抓同一頁。新的公告（ID 較大）優先。
+    """
+    budget = int(school.get("date_repair_per_run") or 0)
+    if budget <= 0 or not adapter.fetch_articles:
+        return 0
+    targets = [it for it in by_id.values()
+               if it.get("school") == school["id"] and it.get("date_source") == "legacy_unverified"
+               and it["id"] not in fetched_this_run]
+    targets.sort(key=lambda it: (len(it["id"]), it["id"]), reverse=True)
+    repaired = 0
+    for it in targets[:budget]:
+        try:
+            html = fetch(session, it["url"], school)
+        except Exception as e:
+            print(f"[warn] 日期修復略過 {it['url']}: {fetch_error_class(e)}", file=sys.stderr)
+            it["date_repair_attempts"] = int(it.get("date_repair_attempts") or 0) + 1
+            if it["date_repair_attempts"] >= 3:
+                it["date"], it["date_source"] = "", ""   # 官方頁連續取不到：不顯示猜測的日期
+            time.sleep(delay)
+            continue
+        date_result = extract_article_date_result(html)
+        if date_result.get("date"):
+            choose_date(it, date_result)
+            repaired += 1
+        else:
+            it["date"], it["date_source"], it["date_tried"] = "", "", True
+        merge_title(it, extract_article_title(html), authoritative=adapter.trust_article_title)
+        if not it.get("snippet"):
+            it["snippet"] = extract_article_snippet(html, it["title"])
+        write_detail_record(it, html, now_iso)
+        it.pop("date_repair_attempts", None)
+        fetched_this_run.add(it["id"])
+        time.sleep(delay)
+    left = len(targets) - min(len(targets), budget)
+    print(f"[info] {school['short']}: 舊日期修復 {repaired} 則,剩餘 {left} 則待確認")
+    return repaired
+
+
 def load_deleted_announcement_ids(path_value: str) -> set[str]:
     """Load the small server-issued tombstone list; never infer deletion locally."""
     if not path_value:
@@ -874,6 +954,9 @@ def main() -> int:
     if deleted_ids:
         print(f"[info] 套用 {len(deleted_ids)} 筆刪除紀錄,移除既有公告 {removed_deleted} 筆")
     known_ids = set(by_id)
+    unverified = mark_unverified_legacy_dates(by_id, CONFIG["schools"])
+    if unverified:
+        print(f"[info] {unverified} 筆舊匯入日期待官方文章頁確認,確認前不公開顯示")
 
     session = requests.Session()
     session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
@@ -1014,7 +1097,9 @@ def main() -> int:
                 it.setdefault("detail_status", "pending")
                 it.setdefault("detail_available", False)
                 by_id[it["id"]] = it
-                all_new.append(it)
+                # 新上架學校：上架前的舊公告只收錄、不推播（notify_since 未設定的學校不受影響）
+                if not school.get("notify_since") or (it.get("date") or "9999") >= school["notify_since"]:
+                    all_new.append(it)
 
         # 覆蓋率哨兵:首頁出現的文章,其分類若不在 config 就記下來
         gaps = coverage_gaps(scanned_items, configured_categories(school),
@@ -1028,6 +1113,9 @@ def main() -> int:
                   f"首頁有 {g['count']} 則未收錄,例:{g['example_title'][:30]} "
                   f"→ 可加入 {g['list_page']}", file=sys.stderr)
         all_gaps += gaps
+
+        if not hot_only:
+            repair_legacy_dates(session, school, by_id, adapter, now_iso, delay, fetched_this_run)
 
         print(f"[info] {school['short']}: 抓取 {len(entries) - skipped_cold}/{len(entries)} 頁"
               f"(略過 cold {skipped_cold} 頁),共 {len(collected)} 筆,"
@@ -1097,6 +1185,8 @@ def main() -> int:
                 record_detail_fetch_failure(it, error=e, now_iso=now_iso)
             time.sleep(delay)
             continue
+        if it.get("date_source") == "legacy_unverified":
+            choose_date(it, extract_article_date_result(html))
         if needs_date(it):
             date_result = extract_article_date_result(html)
             if date_result.get("date"):
@@ -1129,6 +1219,9 @@ def main() -> int:
               f"剩餘 {len(pending) - done} 筆待補")
 
     items = list(by_id.values())
+    settled = settle_date_status(items)
+    if settled:
+        print(f"[info] {settled} 筆舊匯入日期已由官方頁面確認,開始公開顯示")
     quarantined_titles = quarantine_corrupt_titles(items)
     if quarantined_titles:
         print(f"[warn] {quarantined_titles} 筆歷史標題待後續修復；已保留 ID 與官方連結",
