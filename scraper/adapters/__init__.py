@@ -12,6 +12,8 @@ scrape.py 的主迴圈只透過這裡取得 adapter，不再針對個別學校�
 - follow_pages(...)          → 額外分頁（可選）
 - deep_crawl_pages(url)      → 深度回補要翻的頁（可選）
 - coverage_sentinel          → 是否啟用「首頁有、分類頁沒收」的覆蓋率哨兵
+- fetch_articles             → 新公告是否抓文章頁補摘要／日期（文章頁是 JS 空殼時關掉）
+- trust_article_title        → 文章頁標題是否可覆蓋列表標題（og:title 常帶網站名稱時關掉）
 """
 from typing import Callable, Dict, List, Tuple
 
@@ -21,6 +23,8 @@ DEFAULT_ADAPTER = "new-classic-cms"
 class Adapter:
     name = ""
     coverage_sentinel = False
+    fetch_articles = True
+    trust_article_title = True
 
     def entries(self, school: dict) -> List[Tuple[str, str]]:
         """首頁類的 scan_pages 一律 hot，其後接 list_pages（未標示 tier 者為 cold）。"""
@@ -81,3 +85,7 @@ def get_adapter(school_or_name) -> Adapter:
 
 def registered_names() -> List[str]:
     return sorted(_REGISTRY)
+
+
+# 各校網系統的 adapter 模組（匯入即登錄）
+from . import ccms, ischool_json, parser_cms, tadnews, wordpress  # noqa: E402,F401

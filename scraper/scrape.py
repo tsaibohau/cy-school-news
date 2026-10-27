@@ -671,18 +671,48 @@ def system_ca_bundle() -> str:
     return ""
 
 
-def fetch(session: requests.Session, url: str, school: dict | None = None) -> str:
+INTERMEDIATES_PEM = ROOT / "scraper" / "certs" / "intermediates.pem"
+
+
+def intermediate_ca_bundle() -> str:
+    """certifi 根憑證 + 專案固定的中繼憑證（來自憑證機構 AIA 網址，不是學校）。
+
+    部分校網伺服器沒有送出中繼憑證，Linux 上會驗證失敗；補上中繼憑證後
+    仍是完整的憑證鏈驗證，絕不關閉 TLS 檢查。
+    """
+    import certifi
+    import tempfile
+    target = Path(tempfile.gettempdir()) / "cy-school-news-ca-bundle.pem"
+    if not target.exists() or target.stat().st_mtime < INTERMEDIATES_PEM.stat().st_mtime:
+        target.write_bytes(Path(certifi.where()).read_bytes() + b"\n" + INTERMEDIATES_PEM.read_bytes())
+    return str(target)
+
+
+def _tls_fallback_bundle(school: dict | None) -> str:
+    mode = (school or {}).get("tls_verify_fallback")
+    if mode == "system-ca":
+        return system_ca_bundle()
+    if mode == "bundled-intermediates" and INTERMEDIATES_PEM.is_file():
+        return intermediate_ca_bundle()
+    return ""
+
+
+def fetch(session: requests.Session, url: str, school: dict | None = None,
+          method: str = "GET", data: dict | None = None) -> str:
+    def send(**extra):
+        if method == "GET":
+            return session.get(url, timeout=CONFIG["timeout_sec"], **extra)
+        return session.post(url, data=data, timeout=CONFIG["timeout_sec"], **extra)
+
     try:
-        resp = session.get(url, timeout=CONFIG["timeout_sec"])
+        resp = send()
     except requests.exceptions.SSLError:
-        if not school or school.get("tls_verify_fallback") != "system-ca":
-            raise
-        ca_bundle = system_ca_bundle()
+        ca_bundle = _tls_fallback_bundle(school)
         if not ca_bundle:
             raise
-        print(f"[info] {school['id']}: 使用系統 CA bundle 重新驗證 TLS",
+        print(f"[info] {school['id']}: 使用 {school['tls_verify_fallback']} 重新驗證 TLS",
               file=sys.stderr)
-        resp = session.get(url, timeout=CONFIG["timeout_sec"], verify=ca_bundle)
+        resp = send(verify=ca_bundle)
     resp.raise_for_status()
     return decode_response(resp)
 
@@ -938,17 +968,18 @@ def main() -> int:
         new_for_school.sort(key=lambda x: x.get("date") or "", reverse=True)
 
         # 只對「新」項目補抓內文摘要,並設上限;順便從文章頁補回缺漏的日期
-        cap = CONFIG["fetch_content_max_per_school"]
+        cap = CONFIG["fetch_content_max_per_school"] if adapter.fetch_articles else 0
         snippet_targets = new_for_school[:cap]
         if deep_crawl:
             # 回補的舊公告若沒日期,會被誤排成「今天」,一律補抓文章頁取得日期
             snippet_targets = snippet_targets + [
-                it for it in new_for_school[cap:] if not it.get("date")]
+                it for it in new_for_school[cap:] if not it.get("date")] \
+                if adapter.fetch_articles else []
         for it in snippet_targets:
             try:
                 html = fetch(session, it["url"], school)
                 detail_title = extract_article_title(html)
-                merge_title(it, detail_title, authoritative=True)
+                merge_title(it, detail_title, authoritative=adapter.trust_article_title)
                 it["snippet"] = extract_article_snippet(html, it["title"])
                 write_detail_record(it, html, now_iso, session=session,
                                     attachment_budget=attachment_budget, request_delay_sec=delay)
@@ -1040,8 +1071,12 @@ def main() -> int:
 
     if not run_backfill:
         print(f"[info] 本輪不執行補齊(補齊班次:台灣時間 {sorted(backfill_hours)} 點)")
+    article_schools = {school["id"]: source_adapters.get_adapter(school)
+                       for school in CONFIG["schools"] if school.get("enabled") is not False}
     pending = [it for it in by_id.values()
                if it["id"] not in fetched_this_run
+               and (it.get("school") not in article_schools
+                    or article_schools[it.get("school")].fetch_articles)
                and (needs_date(it) or needs_snippet(it) or needs_title(it) or needs_detail(it))] if run_backfill else []
     # Never-fetched items first, then summaries made by an older summarizer.
     pending.sort(key=lambda x: (not stale_summary(x), x.get("first_seen") or ""), reverse=True)
@@ -1080,7 +1115,8 @@ def main() -> int:
         if needs_title(it):
             detail_title = extract_article_title(html)
             before = it.get("title", "")
-            merge_title(it, detail_title, authoritative=True)
+            merge_title(it, detail_title,
+                        authoritative=article_schools[item_school["id"]].trust_article_title)
             if it.get("title", "") != before:
                 repaired_titles += 1
         if detail_needed:
