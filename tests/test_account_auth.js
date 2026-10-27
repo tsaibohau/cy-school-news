@@ -267,7 +267,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.indexOf('src="calendar-state.js?v=44"') < index.indexOf('src="account-sync.js?v=56"'), "Calendar State must load before Account Sync");
   assert(index.includes('src="account-config.js?v=43"'), "index must load versioned account config");
   assert(index.includes('src="account-auth.js?v=79"'), "index must load current account auth");
-  assert(index.includes('src="app.js?v=106"'), "index must load current app shell");
+  assert(index.includes('src="app.js?v=107"'), "index must load current app shell");
   assert(sw.includes('"./calendar-state.js?v=44"'), "Service Worker shell must cache current Calendar State");
   assert(sw.includes('"./account-sync.js?v=56"'), "Service Worker shell must cache versioned Account Sync");
   assert(sw.includes('"./account-auth.js?v=79"'), "Service Worker shell must cache current account auth");

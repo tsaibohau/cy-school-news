@@ -83,7 +83,7 @@
       cat: "all",
       q: "",
       tab: "latest",
-      landedHome: false,      // 本次開啟是否已自動進入首頁（只在第一次取得完整服務時）
+      userPickedTab: false,   // 使用者本次開啟是否自己點過分頁；沒點過就自動進首頁
       brief: { text: "", lines: [], played: false, timer: null },
       calendarMonth: new Date(new Date().getFullYear(), new Date().getMonth(), 1),
       calendarSelected: new Date().toISOString().slice(0, 10),
@@ -571,11 +571,9 @@
         }
         if (el.accountReapply) el.accountReapply.hidden = !(state.accountAccess && state.accountAccess.can_reapply);
         if (!full && ["home", "today", "assistant", "calendar"].indexOf(state.tab) !== -1) switchTab(approved ? "timetable" : "latest");
-        // 一打開就進首頁看今日摘要（只在本次開啟第一次取得完整服務時；之後尊重使用者自己切換的分頁）
-        if (full && !state.landedHome) {
-          state.landedHome = true;
-          if (state.tab === "latest") switchTab("home");
-        }
+        // 一打開就進首頁看今日摘要。登入過程可能先短暫顯示未登入畫面（切回公告），
+        // 所以只要使用者還沒自己點過分頁，取得完整服務時都回到首頁。
+        if (full && !state.userPickedTab && state.tab === "latest") switchTab("home");
       }
       function adminFilters() {
         return {
@@ -2109,10 +2107,10 @@
       (function step() {
         typed += 1;
         paintBrief(lines, typed);
-        if (typed >= total) { state.brief.timer = setTimeout(finishBrief, 600); return; }
+        if (typed >= total) { state.brief.timer = setTimeout(finishBrief, 400); return; }
         // 句尾稍停，讀起來像一句一句寫出來
-        var boundary = 0, pause = 38;
-        for (var i = 0; i < lines.length; i += 1) { boundary += lines[i].length; if (typed === boundary) pause = 320; }
+        var boundary = 0, pause = 16;
+        for (var i = 0; i < lines.length; i += 1) { boundary += lines[i].length; if (typed === boundary) pause = 150; }
         state.brief.timer = setTimeout(step, pause);
       })();
     }
@@ -2771,6 +2769,7 @@
     function isTimetableOnly() {
       return !!(state.accountAccess && state.accountAccess.status === "approved" && state.accountAccess.service_level === "timetable_only");
     }
+    function pickTab(tab) { state.userPickedTab = true; switchTab(tab); }
     function switchTab(tab) {
       var capabilities = window.CyNewsCapabilities;
       var publicOrAccountAllowed = tab === "latest" || tab === "home" || tab === "sub" || tab === "admin";
@@ -2863,22 +2862,22 @@
         select.appendChild(option);
       });
     });
-    if (el.tabHome) el.tabHome.addEventListener("click", function () { switchTab("home"); });
+    if (el.tabHome) el.tabHome.addEventListener("click", function () { pickTab("home"); });
     if (el.dailyBriefSkip) el.dailyBriefSkip.addEventListener("click", finishBrief);
     if (el.nicknameDialog) el.nicknameDialog.addEventListener("close", function () { if (state.tab === "home") playBrief(); });
     if (el.dailyBriefText) el.dailyBriefText.addEventListener("click", function () { if (state.brief.timer) finishBrief(); });
-    if (el.brandHome) el.brandHome.addEventListener("click", function () { switchTab("home"); });
-    el.tabLatest.addEventListener("click", function () { switchTab("latest"); });
-    if (el.tabToday) el.tabToday.addEventListener("click", function () { switchTab("today"); });
-    if (el.tabAssistant) el.tabAssistant.addEventListener("click", function () { switchTab("assistant"); });
-    if (el.tabTimetable) el.tabTimetable.addEventListener("click", function () { switchTab("timetable"); });
-    el.tabSub.addEventListener("click", function () { switchTab("sub"); });
-    if (el.tabAdmin) el.tabAdmin.addEventListener("click", function () { switchTab("admin"); });
+    if (el.brandHome) el.brandHome.addEventListener("click", function () { pickTab("home"); });
+    el.tabLatest.addEventListener("click", function () { pickTab("latest"); });
+    if (el.tabToday) el.tabToday.addEventListener("click", function () { pickTab("today"); });
+    if (el.tabAssistant) el.tabAssistant.addEventListener("click", function () { pickTab("assistant"); });
+    if (el.tabTimetable) el.tabTimetable.addEventListener("click", function () { pickTab("timetable"); });
+    el.tabSub.addEventListener("click", function () { pickTab("sub"); });
+    if (el.tabAdmin) el.tabAdmin.addEventListener("click", function () { pickTab("admin"); });
     if (document.querySelectorAll) Array.prototype.forEach.call(document.querySelectorAll("button[data-view-switch]"), function (button) {
       button.addEventListener("click", function () { switchTab(button.dataset.viewSwitch); });
     });
     if (el.tabCalendar) {
-      el.tabCalendar.addEventListener("click", function () { switchTab("calendar"); });
+      el.tabCalendar.addEventListener("click", function () { pickTab("calendar"); });
       el.calendarGrid.addEventListener("click", function (e) {
         var b = e.target.closest("button[data-day]"); if (!b) return;
         state.calendarSelected = b.dataset.day; renderCalendar();
