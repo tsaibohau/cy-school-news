@@ -75,6 +75,15 @@
       });
     }
 
+    function normalizeEmailDigest(value) {
+      value = value && typeof value === "object" ? value : {};
+      var enabledAt = typeof value.enabled_at === "string" && !isNaN(Date.parse(value.enabled_at)) ? value.enabled_at : "";
+      return {
+        enabled: value.enabled === true,
+        frequency: value.frequency === "instant" ? "instant" : "daily",
+        enabled_at: enabledAt,
+      };
+    }
     var state = {
       data: null,
       school: HIDDEN_SCHOOL_IDS[loadSchool()] ? "all" : loadSchool(),
@@ -116,6 +125,7 @@
       assistantScope: "preferred",
       assistantItems: {},
       personalizedNotifications: false,
+      emailDigest: normalizeEmailDigest(null),
       reminderPreset: "single",
       reminderCustomOffsets: "1",
       reminderRules: [],
@@ -163,7 +173,7 @@
       profileNickname: $("profileNickname"),
       profileSchool: $("profileSchool"), profileGrade: $("profileGrade"), profileClass: $("profileClass"),
       profileInterests: $("profileInterests"), profileCategories: $("profileCategories"), profileKeywords: $("profileKeywords"),
-      profileSave: $("profileSave"), profileStatus: $("profileStatus"), personalizedToggle: $("personalizedToggle"),
+      profileSave: $("profileSave"), profileStatus: $("profileStatus"), personalizedToggle: $("personalizedToggle"), emailDigestMode: $("emailDigestMode"), emailDigestState: $("emailDigestState"),
       tasksBox: $("tasksBox"), taskForm: $("taskForm"), taskTitle: $("taskTitle"), taskDue: $("taskDue"),
       taskPriority: $("taskPriority"), taskNotes: $("taskNotes"), taskSave: $("taskSave"), taskCancel: $("taskCancel"),
       taskStatus: $("taskStatus"), taskOpenList: $("taskOpenList"), taskDoneList: $("taskDoneList"),
@@ -294,7 +304,10 @@
         schema_version: 1,
         preferences: {
           profile: window.CyNewsProfile.normalize(Object.prototype.hasOwnProperty.call(overrides, "profile") ? overrides.profile : state.profile),
-          notification_preferences: { personalized: Object.prototype.hasOwnProperty.call(overrides, "personalized") ? !!overrides.personalized : !!state.personalizedNotifications },
+          notification_preferences: {
+            personalized: Object.prototype.hasOwnProperty.call(overrides, "personalized") ? !!overrides.personalized : !!state.personalizedNotifications,
+            email: normalizeEmailDigest(Object.prototype.hasOwnProperty.call(overrides, "emailDigest") ? overrides.emailDigest : state.emailDigest),
+          },
           reminder: { preset: overrides.reminderPreset || state.reminderPreset || "single",
             custom_offsets: Object.prototype.hasOwnProperty.call(overrides, "reminderCustomOffsets") ? overrides.reminderCustomOffsets : (state.reminderCustomOffsets || "1") },
           assistant_feedback: window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize(state.assistantFeedback) : {},
@@ -326,6 +339,17 @@
     }
     function renderPersonalizedSetting() {
       if (el.personalizedToggle) el.personalizedToggle.checked = !!state.personalizedNotifications;
+      renderEmailDigestSetting();
+    }
+    function renderEmailDigestSetting() {
+      if (!el.emailDigestMode) return;
+      var digest = normalizeEmailDigest(state.emailDigest);
+      el.emailDigestMode.value = digest.enabled ? digest.frequency : "off";
+      el.emailDigestMode.disabled = !state.accountUser;
+      if (el.emailDigestState) {
+        el.emailDigestState.textContent = !state.accountUser ? "登入後可用" :
+          digest.enabled ? "會寄到登入信箱；符合關鍵字的新公告才會寄" : "";
+      }
     }
     function editUserEvent(id) {
       if (!canEditCalendar()) return false;
@@ -841,6 +865,7 @@
         state.tasks = window.CyNewsTaskState ? window.CyNewsTaskState.visible(merged.tasks || []) : [];
         var notificationPreferences = merged.preferences && merged.preferences.preferences && merged.preferences.preferences.notification_preferences;
         state.personalizedNotifications = !!(notificationPreferences && notificationPreferences.personalized);
+        state.emailDigest = normalizeEmailDigest(notificationPreferences && notificationPreferences.email);
         var reminderPreferences = merged.preferences && merged.preferences.preferences && merged.preferences.preferences.reminder;
         state.reminderPreset = reminderPreferences && ["single", "standard", "dense", "custom"].indexOf(reminderPreferences.preset) !== -1 ? reminderPreferences.preset : "single";
         state.reminderCustomOffsets = reminderPreferences && typeof reminderPreferences.custom_offsets === "string" ? reminderPreferences.custom_offsets : "1";
@@ -879,6 +904,7 @@
         state.tasks = [];
         state.userEvents = [];
         state.personalizedNotifications = false;
+        state.emailDigest = normalizeEmailDigest(null);
         state.reminderPreset = "single";
         state.reminderCustomOffsets = "1";
         state.reminderRules = [];
@@ -3008,6 +3034,22 @@
       state.personalizedNotifications = enabled;
       establishPersonalizedBaseline(state.activeAccountId);
       el.profileStatus.textContent = enabled ? "個人化通知已開啟" : "個人化通知已關閉";
+    });
+    if (el.emailDigestMode) el.emailDigestMode.addEventListener("change", function () {
+      var mode = el.emailDigestMode.value;
+      var previous = state.emailDigest;
+      var next = mode === "off" ? normalizeEmailDigest(Object.assign({}, previous, { enabled: false })) :
+        normalizeEmailDigest({ enabled: true, frequency: mode,
+          enabled_at: previous.enabled && previous.enabled_at ? previous.enabled_at : new Date().toISOString() });
+      var result = queueAccountMutation("preferences.upsert", preferencePayload({ emailDigest: next }));
+      if (!result) {
+        renderEmailDigestSetting();
+        if (el.emailDigestState) el.emailDigestState.textContent = "請先登入並完成同步";
+        return;
+      }
+      state.emailDigest = next;
+      renderEmailDigestSetting();
+      if (el.emailDigestState) el.emailDigestState.textContent = next.enabled ? "已開啟 Email 通知，只會寄開啟後的新公告" : "已關閉 Email 通知";
     });
     function saveReminderPreference() {
       var preset = el.reminderPreset.value;

@@ -1722,3 +1722,18 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - Vercel commit status：success。
 - GitHub Pages 正式網址最初仍回舊殼層 `app.js?v=92`／`style.css?v=87`；等待重新建置後再次以 HTTPS 直接核對，已回 `app.js?v=93`、`style.css?v=88`、`passwordAuthProgress`、`passwordAuthChangeIdentifier` 與「沒有帳號？」。正式站：https://tsaibohau.github.io/cy-school-news/
 - 【CANONICAL】自本 checkpoint 起，`main` `ba586dd` 及其後續 ledger-only commit 為唯一正確正式基準。
+
+## 2026-10-28（Asia/Taipei）｜公告 Email 通知 V1（分支 claude/email-digest）
+
+### 範圍
+- 基準：`origin/main` `efeec21`。branch：`claude/email-digest`。未修改 `announcements.json`、workflows 排程、爬蟲或正式 Supabase。
+- 新增 migration `20261028120000_announcement_email_digest.sql`、Edge Function `announcement-email-digest`、owner-run 排程 `activate_announcement_email_digest_cron.sql`、說明 `docs/announcement-email-digest.md`。
+- 前端「關鍵字追蹤」新增 Email 通知選單（關閉／每日摘要／即時），偏好寫入 `notification_preferences.email`；`app.js?v=109`、`cy-news-v121`。
+
+### 驗證
+- PASS：`tests/test_announcement_email_digest.js`（比對、排程、跳脫、退訂 token、權限契約）及其餘 JS 測試。
+- `test_account_roles_contract`、`test_rls_behavioral`、`test_rls_deployed` 在 main 同樣失敗（需實際資料庫），非本次造成。
+- 本機 PostgreSQL 16 以最小 stub schema 套用 migration：收件人篩選、刪除關鍵字排除、紀錄、退訂、anon/authenticated 拒絕皆正確。
+
+### 下一個允許動作
+- 使用者審 PR 後合併；擁有者依 `docs/announcement-email-digest.md` 驗證 Resend 寄件網域、設定 secrets、部署函式、套用 migration，dryRun 確認後才啟用排程。
