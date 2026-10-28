@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-28T17:34:56+08:00",
+ "generated_at": "2026-10-29T00:36:14+08:00",
  "school": {
   "id": "tlsh",
   "name": "國立斗六高級中學",
@@ -8,6 +8,38 @@
   "base": "https://www.tlsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "tlsh-66647",
+   "title": "教務處【週六自習】115學年度第1學期第一次段考後週六自習新增名單，請點閱。",
+   "date": "2026-10-28",
+   "source_category": "教務處",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/10/28/66647/",
+   "category": "段考考試",
+   "first_seen": "2026-10-29T00:36:14+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "bb8fc726a48bb38ad6fb984d0d20a0f3439d148e2ca37a22e33490214aad9916"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1
+    ],
+    "classes": [
+     "306"
+    ],
+    "all_school": false
+   }
+  },
   {
    "id": "tlsh-68567",
    "title": "行政院人事行政總處公務人力發展學院 116年度研習實施計畫預開班期需求調查表",
@@ -20,8 +52,8 @@
    "first_seen": "2026-10-28T17:34:56+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "tlsh-68550",
@@ -35,8 +67,8 @@
    "first_seen": "2026-10-28T17:34:56+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -58,8 +90,8 @@
    "first_seen": "2026-10-28T17:34:56+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
