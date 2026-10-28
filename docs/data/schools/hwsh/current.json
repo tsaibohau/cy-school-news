@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-27T22:26:14+08:00",
+ "generated_at": "2026-10-28T10:12:15+08:00",
  "school": {
   "id": "hwsh",
   "name": "國立虎尾高級中學",
@@ -8,6 +8,57 @@
   "base": "https://www.hwsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "hwsh-13602",
+   "title": "115-1生活輔導通報17",
+   "date": "2026-10-28",
+   "source_category": "公告",
+   "school": "hwsh",
+   "school_name": "虎尾高中",
+   "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13602",
+   "category": "一般",
+   "first_seen": "2026-10-28T10:12:15+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-01-01",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "74cabde4ebc9e07d006a12f8a53d262c272a7bd3b7a2c6152883de65d6fc8dd2"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-10-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "74cabde4ebc9e07d006a12f8a53d262c272a7bd3b7a2c6152883de65d6fc8dd2"
+    }
+   ],
+   "audience": {
+    "grades": [
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   }
+  },
+  {
+   "id": "hwsh-13601",
+   "title": "國立花蓮女子高級中學辦理「116年度全國公私立高級中等學校原住民族文化研習營」活動",
+   "date": "2026-10-28",
+   "source_category": "公告",
+   "school": "hwsh",
+   "school_name": "虎尾高中",
+   "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13601",
+   "category": "研習活動",
+   "first_seen": "2026-10-28T10:12:15+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
   {
    "id": "hwsh-13600",
    "title": "【教職員訊息】115年度觸動創新教學工作坊",
