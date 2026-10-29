@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-29T00:36:14+08:00",
+ "generated_at": "2026-10-29T10:24:22+08:00",
  "school": {
   "id": "fjsh",
   "name": "嘉義市私立輔仁高級中學",
@@ -1627,8 +1627,8 @@
    "first_seen": "2026-08-28T23:35:18+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2
@@ -1671,8 +1671,8 @@
    "first_seen": "2026-08-28T23:35:18+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fjsh-2018",
@@ -1683,7 +1683,10 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-2018,r41.php",
    "category": "一般",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fjsh-1995",
@@ -1694,7 +1697,11 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-1995,r39.php",
    "category": "一般",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "fjsh-2106",
