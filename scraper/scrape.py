@@ -48,28 +48,48 @@ UA = ("Mozilla/5.0 (compatible; cy-school-news/1.0; "
       "+https://github.com/ ; personal non-commercial announcement reader)")
 
 # 依序比對,先命中先分類
+STAFF_CATEGORY = "教職員"
+# 只跟教職員有關的公告(資安通報、會計、人事、徵才)。學生端預設不顯示。
+STAFF_HARD = ["漏洞預警", "攻擊預警", "資安訊息", "資安通報", "會計月報", "決算", "預算", "主計",
+              "請購", "人事室", "人事行政", "提敘", "教職員", "教師甄選", "代理教師", "人員甄選",
+              "助理人員", "約用", "臨時人員", "招標", "採購", "徵才", "子女教育補助",
+              "政策及業務宣導", "在職專班", "公務人員"]
+# 多半寫給教職員,但若同時提到學生就不算。
+STAFF_SOFT = ["同仁", "員工", "公教", "請查照", "教師"]
+STUDENT_HINT = re.compile(r"學生|同學|師生|高中生|高中職|青年|青少年|親子")
+# 「暑期資工營」「主播營！」:營字後面接標點或結尾才算營隊,避免「營養」「經營」。
+CAMP_RE = re.compile(r"[\u4e00-\u9fffA-Za-z0-9]營(?:[」』》”\"!！?？\s(（]|$)")
 CATEGORY_RULES = [
     ("段考考試", ["段考", "期中考", "期末考", "定期考", "補考", "考試範圍", "考試訊息", "模擬考",
                   "學測", "分科測驗", "會考", "英聽", "試場", "考程", "准考證", "重補修"]),
     ("升學",     ["升學", "繁星", "申請入學", "分發", "特殊選才", "學習歷程", "志願",
                   "大學營", "科系", "面試", "選填", "四技二專"]),
-    ("獎助學金", ["獎學", "獎助", "助學", "就學貸款", "學雜費減免", "補助金", "工讀"]),
+    ("獎助學金", ["獎學", "獎助", "助學", "就學貸款", "學雜費減免", "補助金", "工讀", "圓夢計畫"]),
     ("榮譽榜",   ["榮獲", "恭賀", "恭喜", "得獎名單", "佳績", "獲獎", "金牌", "銀牌",
                   "銅牌", "特優", "冠軍", "亞軍", "季軍", "入選"]),
-    ("競賽",     ["競賽", "比賽", "初賽", "決賽", "複賽", "奧林匹亞", "科展", "徵文",
-                  "徵稿", "盃", "語文競賽", "辯論"]),
+    ("競賽",     ["競賽", "比賽", "初賽", "決賽", "複賽", "預賽", "奧林匹亞", "科展", "徵文",
+                  "徵稿", "盃", "語文競賽", "辯論", "大賽", "挑戰賽", "邀請賽", "選拔賽",
+                  "錦標賽", "競試"]),
     ("社團",     ["社團", "社課", "社博", "成果發表", "班聯會", "熱音", "熱舞", "校隊",
                   "迎新", "社慶"]),
-    ("研習活動", ["研習", "講座", "營隊", "工作坊", "參訪", "體驗", "博覽會", "宣導",
-                  "演講", "活動"]),
-    ("招生編班", ["招生", "簡章", "甄選入學", "編班", "新生", "轉學", "報到", "入學"]),
-    ("行政公告", ["招標", "採購", "徵才", "代理教師", "教師甄選", "場地", "停車",
-                  "系統維護", "停電", "施工", "問卷"]),
+    ("選課",     ["選課", "微課程", "多元選修", "加深加廣", "彈性學習", "自主學習", "加退選",
+                  "課程異動", "充實補強", "選修"]),
+    ("生活學務", ["校服", "制服", "運動服", "服儀", "請假", "出缺席", "缺曠", "學生證", "疫苗",
+                  "健康檢查", "健檢", "午餐", "團膳", "宿舍", "住宿", "交通車", "校車"]),
+    ("研習活動", ["研習", "講座", "營隊", "令營", "工作坊", "參訪", "體驗", "博覽會", "宣導",
+                  "演講", "活動", "學程", "課程", "展覽", "成果展", "教育展", "論壇", "閱讀",
+                  "青年節", "豐年祭"]),
+    ("招生編班", ["招生", "簡章", "甄選入學", "編班", "新生", "轉學", "報到", "入學", "資優班",
+                  "實驗班", "鑑定", "錄取"]),
+    ("行政公告", ["場地", "停車", "系統維護", "停電", "施工", "修繕", "問卷", "暫停服務",
+                  "車輛管制"]),
+    (STAFF_CATEGORY, STAFF_HARD + STAFF_SOFT),
 ]
 CATEGORY_SLUGS = {
     "段考考試": "exam", "升學": "admission", "獎助學金": "scholarship",
-    "榮譽榜": "honor", "競賽": "contest", "社團": "club",
-    "研習活動": "event", "招生編班": "enroll", "行政公告": "admin", "一般": "general",
+    "榮譽榜": "honor", "競賽": "contest", "社團": "club", "選課": "course",
+    "生活學務": "life", "研習活動": "event", "招生編班": "enroll", "行政公告": "admin",
+    STAFF_CATEGORY: "staff", "一般": "general",
 }
 SOURCE_STATUS_KEY = "__source_status__"
 
@@ -177,8 +197,30 @@ def merge_collected_item(collected: dict, item: dict) -> None:
     else:
         choose_date(prev, item)
 def classify(text: str) -> str:
-    for cat, keywords in CATEGORY_RULES:
-        if any(k in text for k in keywords):
+    """Keyword classification. Exams come first; staff-only notices are checked next so
+    that 「教師甄選」 or 資安通報 never show up as student activities; softer staff words
+    (同仁、請查照) only count when the notice does not also address students."""
+    rules = dict(CATEGORY_RULES)
+
+    def hit(cat: str) -> bool:
+        return any(k in text for k in rules[cat])
+
+    if hit("段考考試"):
+        return "段考考試"
+    if any(k in text for k in STAFF_HARD):
+        return STAFF_CATEGORY
+    for cat in ("升學", "獎助學金"):
+        if hit(cat):
+            return cat
+    if any(k in text for k in STAFF_SOFT) and not STUDENT_HINT.search(text):
+        return STAFF_CATEGORY
+    for cat in ("榮譽榜", "競賽", "社團", "選課", "生活學務"):
+        if hit(cat):
+            return cat
+    if hit("研習活動") or CAMP_RE.search(text):
+        return "研習活動"
+    for cat in ("招生編班", "行政公告"):
+        if hit(cat):
             return cat
     return "一般"
 
@@ -1228,6 +1270,10 @@ def main() -> int:
     if quarantined_titles:
         print(f"[warn] {quarantined_titles} 筆歷史標題待後續修復；已保留 ID 與官方連結",
               file=sys.stderr)
+    # 分類規則調整後,沒有重新出現在列表頁的舊公告也要套用新規則。
+    for it in items:
+        if it.get("title_status") != "repair_pending":
+            it["category"] = classify(it.get("title", "") + " " + it.get("source_category", ""))
     items.sort(key=lambda x: (display_date(x), x.get("first_seen") or ""),
                reverse=True)
     all_ids_before_cap = validate_snapshot_items(items, "merged corpus")

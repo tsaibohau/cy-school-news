@@ -1686,6 +1686,8 @@
         if (!visibleSchool(it)) return false;
         if (state.school !== "all" && it.school !== state.school) return false;
         if (state.cat !== "all" && it.category !== state.cat) return false;
+        /* 資安通報、會計、人事等教職員公告不出現在「全部分類」；點「教職員」或搜尋仍找得到。 */
+        if (state.cat === "all" && !state.q && it.category === "教職員") return false;
         return true;
       });
       if (state.q && window.CyNewsSearchQuery && typeof window.CyNewsSearchQuery.select === "function") {
@@ -2276,7 +2278,8 @@
           return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(item.title) + '</strong><small>' + esc(meta) + '</small></button>';
         }).join("");
         var relatedPanel = related ? '<details class="assistant-details" open><summary>可能相關的公告（請點開確認）</summary><div class="assistant-sources">' + related + '</div></details>' : '';
-        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>' + (related ? "沒有找到能直接回答的句子" : "目前還無法回答這個問題") + '</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p>' + (related ? '' : '<small>可能是校方尚未公告、附件沒有可讀文字，或問題不在本站資料範圍。</small>') + '</div>' + relatedPanel;
+        var office = result && result.office_link && /^https:\/\//.test(result.office_link.url) ? '<p class="assistant-office"><a class="btn-ghost" href="' + esc(result.office_link.url) + '" target="_blank" rel="noopener">前往' + esc(result.office_link.label) + '</a></p>' : '';
+        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>' + (related ? "沒有找到能直接回答的句子" : "目前還無法回答這個問題") + '</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p>' + office + (related || office ? '' : '<small>可能是校方尚未公告、附件沒有可讀文字，或問題不在本站資料範圍。</small>') + '</div>' + relatedPanel;
         return;
       }
       var evidence = result.evidence.map(function (row, index) {
@@ -2305,6 +2308,7 @@
       if (scope && scope.id !== "all") profile.school_id = scope.id; else profile.school_id = "";
       return {
         scopeLabel: label === "所有學校" ? "" : label,
+        schoolId: scope && scope.id !== "all" ? scope.id : "",
         /* 「明天有什麼講座」 is answered from the school calendar as well as announcements. */
         calendarEvents: (state.officialEvents || []).filter(function (ev) { return !scope || scope.id === "all" || ev.school_id === scope.id; }).map(function (ev) {
           var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(ev.school_id);
