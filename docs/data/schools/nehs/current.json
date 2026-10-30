@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-30T00:54:05+08:00",
+ "generated_at": "2026-10-30T10:34:25+08:00",
  "school": {
   "id": "nehs",
   "name": "國立嘉科實驗高級中學",
@@ -8,6 +8,35 @@
   "base": "https://www.nehs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "nehs-4672",
+   "title": "教育部第六屆防災青年國際領袖培訓營",
+   "date": "2026-10-30",
+   "source_category": "最新消息",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4672",
+   "category": "一般",
+   "first_seen": "2026-10-30T10:34:25+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "61dff29972fd000c368802c2860ca59b26e5959cf77657e5e110d2c1d0f7535f"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "61dff29972fd000c368802c2860ca59b26e5959cf77657e5e110d2c1d0f7535f"
+    }
+   ]
+  },
   {
    "id": "nehs-4671",
    "title": "轉知 : 中英文學科適性診斷系統及中英文適性閱讀平台相關簡介資訊",
