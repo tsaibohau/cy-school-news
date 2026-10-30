@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-30T10:34:25+08:00",
+ "generated_at": "2026-10-30T17:56:28+08:00",
  "school": {
   "id": "pkvs",
   "name": "國立北港高級農工職業學校",
@@ -8,6 +8,59 @@
   "base": "https://www.pkvs.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "pkvs-11963",
+   "title": "【重要公告】高級中等教育階段學生學習歷程檔案宣導事項",
+   "date": "2026-10-30",
+   "source_category": "公告",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11963",
+   "category": "升學",
+   "first_seen": "2026-10-30T17:56:28+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-14",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "970ae30a397d8e674694db94572067518584b8baf61f8f8f770b84d2256ab5a0"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": true
+   }
+  },
+  {
+   "id": "pkvs-11962",
+   "title": "轉知-115年度學生學習歷程檔案分享會系列活動 第3場次分享會實施計畫",
+   "date": "2026-10-30",
+   "source_category": "公告",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11962",
+   "category": "升學",
+   "first_seen": "2026-10-30T17:56:28+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-21",
+     "provenance": "verified_announcement_event",
+     "source_revision": "40f8e3a7f639bed1856339a4657f647dda2483fe15e6d7aafee9d8902f90192b"
+    }
+   ]
+  },
   {
    "id": "pkvs-11959",
    "title": "轉知_運動部全民運動署主辦，承辦「全民電子競技運動聯賽」活動",
@@ -20,8 +73,8 @@
    "first_seen": "2026-10-30T10:34:25+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -49,8 +102,8 @@
    "first_seen": "2026-10-30T10:34:25+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "pkvs-11957",
@@ -64,8 +117,8 @@
    "first_seen": "2026-10-30T10:34:25+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "pkvs-11955",
@@ -79,8 +132,8 @@
    "first_seen": "2026-10-30T10:34:25+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "pkvs-11953",
@@ -903,8 +956,8 @@
    "first_seen": "2026-10-30T10:34:25+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   }
  ],
  "content_access": "approved-account-required"

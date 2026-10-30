@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-30T10:34:25+08:00",
+ "generated_at": "2026-10-30T17:56:28+08:00",
  "school": {
   "id": "fjsh",
   "name": "嘉義市私立輔仁高級中學",
@@ -8,6 +8,44 @@
   "base": "https://rpage.fjsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "fjsh-2721",
+   "title": "花蓮女子高級中學「116年度全國公私立高級中等學校原住民族文化研習營」",
+   "date": "2026-10-30",
+   "source_category": "最新公告",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "http://rpage.fjsh.cy.edu.tw/p/406-1000-2721,r59.php",
+   "category": "研習活動",
+   "first_seen": "2026-10-30T17:56:28+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
+  {
+   "id": "fjsh-2720",
+   "title": "轉知教育部「第六屆防災青年國際領袖培訓營」",
+   "date": "2026-10-30",
+   "source_category": "最新公告",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "http://rpage.fjsh.cy.edu.tw/p/406-1000-2720,r59.php",
+   "category": "一般",
+   "first_seen": "2026-10-30T17:56:28+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0e226ba06f9a3475f62c95ef63cb7f59461b14fa56432a7d517997cc0c82c72c"
+    }
+   ]
+  },
   {
    "id": "fjsh-2717",
    "title": "「全民電子競技運動聯賽」《特戰英豪》《傳說對決》",
@@ -20,8 +58,8 @@
    "first_seen": "2026-10-30T10:34:25+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fjsh-2703",
@@ -1490,7 +1528,11 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-1693,r40.php",
    "category": "一般",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "fjsh-2184",
@@ -1849,8 +1891,8 @@
    "first_seen": "2026-08-28T23:35:18+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fjsh-1763",
@@ -1864,8 +1906,8 @@
    "first_seen": "2026-08-28T23:35:18+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fjsh-1739",
@@ -1876,7 +1918,10 @@
    "school_name": "輔仁",
    "url": "https://rpage.fjsh.cy.edu.tw/p/406-1000-1739,r41.php",
    "category": "一般",
-   "first_seen": "2026-08-28T23:35:18+08:00"
+   "first_seen": "2026-08-28T23:35:18+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fjsh-1563",
