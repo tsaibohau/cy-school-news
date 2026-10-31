@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-10-31T17:31:40+08:00",
+ "generated_at": "2026-10-31T17:39:00+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1592": {
@@ -330,7 +330,23 @@
   },
   "1800": {
    "page_id": 1800,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:45+08:00",
+   "path": [
+    "認識嘉女",
+    "關於嘉女"
+   ],
+   "changed_at": "2026-10-31T17:38:45+08:00",
+   "content_hash": "abe02c902b93be9f2160b4dce0e752d82efa7e34938cd37a9a8614efe4fb3380",
+   "doc_links": [],
+   "keywords": [
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1800.json",
+   "detail_revision": "656516f57fa4f838fe85698f29585e75d4dcf1d4ca29cfdc11d2a65b64cd4a15",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1723": {
    "page_id": 1723,
@@ -424,7 +440,22 @@
   },
   "1827": {
    "page_id": 1827,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:58+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "行事曆"
+   ],
+   "changed_at": "2026-10-31T17:38:58+08:00",
+   "content_hash": "f81ecd84f939ed52309db643781598cf322bbc35c56b5878af665d6623029276",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1827.json",
+   "detail_revision": "dfeebf6171033db9950fe8bf389d266d5a7d7dcac0e7d77607f586ea45b43b93",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "5412": {
    "page_id": 5412,
@@ -452,27 +483,151 @@
   },
   "1813": {
    "page_id": 1813,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:47+08:00",
+   "path": [
+    "教學單位",
+    "國文科"
+   ],
+   "changed_at": "2026-10-31T17:38:47+08:00",
+   "content_hash": "9ef20c72bd26ea372abd491157fcd98adf906a96f6fb7f5dcb2336d324bdd8ab",
+   "doc_links": [],
+   "keywords": [
+    "研習",
+    "入學",
+    "學習歷程",
+    "宣導",
+    "工作坊",
+    "考試",
+    "選修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1813.json",
+   "detail_revision": "33a735b01ae68075d40b2fba742e4901662988977cebda71f56790f5d0825616",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1816": {
    "page_id": 1816,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:53+08:00",
+   "path": [
+    "教學單位",
+    "英文科"
+   ],
+   "changed_at": "2026-10-31T17:38:53+08:00",
+   "content_hash": "14b70650b34ab01a4ed41d5cf0cf8216d6f81773dfb7ff231f7d5ebb990fd7df",
+   "doc_links": [],
+   "keywords": [
+    "研習",
+    "學分",
+    "學習歷程",
+    "宣導",
+    "工作坊",
+    "英檢"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1816.json",
+   "detail_revision": "da66facab9e7bf01ed68e7a21034eb4f4675e2cf84332d8fdf33f870cc12bd31",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1814": {
    "page_id": 1814,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:49+08:00",
+   "path": [
+    "教學單位",
+    "數學科"
+   ],
+   "changed_at": "2026-10-31T17:38:49+08:00",
+   "content_hash": "822262bd18fd748f1fae3651ab37ca77ef110d882b537678988c203db0cd806b",
+   "doc_links": [],
+   "keywords": [
+    "研習",
+    "學習歷程",
+    "定期考",
+    "宣導",
+    "工作坊"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1814.json",
+   "detail_revision": "4ac5cd8d26147d20d7cacf1f7f61fd8d465aede3f35624dc66b525a6adab7f4a",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1815": {
    "page_id": 1815,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:51+08:00",
+   "path": [
+    "教學單位",
+    "自然科"
+   ],
+   "changed_at": "2026-10-31T17:38:51+08:00",
+   "content_hash": "625fe3581fd4458434e145336872eaced5746532fbc0918e0a6cdc3c782758d2",
+   "doc_links": [],
+   "keywords": [
+    "研習",
+    "講座",
+    "報名",
+    "學習歷程",
+    "宣導",
+    "工作坊",
+    "體驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1815.json",
+   "detail_revision": "ccf844301882bf17d602ce309e9ae8c9cd6b1d688adfa7224e5939bf3f999397",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1817": {
    "page_id": 1817,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:55+08:00",
+   "path": [
+    "教學單位",
+    "社會科"
+   ],
+   "changed_at": "2026-10-31T17:38:55+08:00",
+   "content_hash": "8f52857664975335d35b689718abc77213805c54c1b734d40bdb5c7b1dcfd483",
+   "doc_links": [],
+   "keywords": [
+    "研習",
+    "競賽",
+    "奧林匹亞",
+    "學習歷程",
+    "宣導",
+    "工作坊"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1817.json",
+   "detail_revision": "d5072dae9c9f47e43b182597807ef2671cfc90dd2820393fa1d0e4d979d5eb5a",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1818": {
    "page_id": 1818,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:56+08:00",
+   "path": [
+    "教學單位",
+    "藝能科"
+   ],
+   "changed_at": "2026-10-31T17:38:56+08:00",
+   "content_hash": "bc17d6816f596172903cf57c60d164963d11ec175d45d95427ef1dc9628e5729",
+   "doc_links": [],
+   "keywords": [
+    "研習",
+    "學習歷程",
+    "宣導"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1818.json",
+   "detail_revision": "f4e9a07acc52fafe75ef6817dee6aaa043db9cd3d57347e4f3855802120ea488",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1718": {
    "page_id": 1718,
@@ -541,7 +696,21 @@
   },
   "1730": {
    "page_id": 1730,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:41+08:00",
+   "path": [
+    "新生專區",
+    "新生報到"
+   ],
+   "changed_at": "2026-10-31T17:38:41+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1730.json",
+   "detail_revision": "36c833450421251d156607daba99c79269b4d7374b7564fe45542f002a2e4216",
+   "detail_status": "empty",
+   "attachments": []
   },
   "2083": {
    "page_id": 2083,
@@ -641,7 +810,31 @@
   },
   "1786": {
    "page_id": 1786,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T17:38:43+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "報修專區"
+   ],
+   "changed_at": "2026-10-31T17:38:43+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [
+    {
+     "name": "報修表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSfw6nO3Os6y7n-LDlXM5hpmG9GlEt4GHnqiEwUn5jidcgGfpg/viewform"
+    },
+    {
+     "name": "維修進度查詢",
+     "url": "https://docs.google.com/spreadsheets/d/1t-JdhLplm5VxqtAHaMpc_yygPFs7bSj-DWjnn4Gou5M/edit?gid=835872122#gid=835872122"
+    }
+   ],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1786.json",
+   "detail_revision": "d068bb16533a7e1e98fa0c64ec76a645edbbe2b90ae32b60722bdf3c16aeac7f",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "3257": {
    "page_id": 3257,
@@ -749,6 +942,10 @@
   },
   "4562": {
    "page_id": 4562,
+   "status": "pending"
+  },
+  "5531": {
+   "page_id": 5531,
    "status": "pending"
   }
  },
@@ -1149,6 +1346,23 @@
    "detail_status": "empty"
   },
   {
+   "id": "cygsh-info-1730",
+   "kind": "school_info",
+   "title": "新生專區 › 新生報到",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1730.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1730.json",
+   "detail_revision": "36c833450421251d156607daba99c79269b4d7374b7564fe45542f002a2e4216",
+   "detail_status": "empty"
+  },
+  {
    "id": "cygsh-info-1752",
    "kind": "school_info",
    "title": "認識嘉女 › 行政單位聯絡資訊",
@@ -1171,6 +1385,213 @@
    "documents": [],
    "detail_ref": "data/details/cygsh/cygsh-info-1752.json",
    "detail_revision": "2cdb1fa518c42cbe99f67aeead7f4d1bb2791f5dbf8277f389fa9f369667d46e",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1786",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 報修專區",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1786.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [
+    "報修表單",
+    "維修進度查詢"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "報修表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSfw6nO3Os6y7n-LDlXM5hpmG9GlEt4GHnqiEwUn5jidcgGfpg/viewform"
+    },
+    {
+     "name": "維修進度查詢",
+     "url": "https://docs.google.com/spreadsheets/d/1t-JdhLplm5VxqtAHaMpc_yygPFs7bSj-DWjnn4Gou5M/edit?gid=835872122#gid=835872122"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-1786.json",
+   "detail_revision": "d068bb16533a7e1e98fa0c64ec76a645edbbe2b90ae32b60722bdf3c16aeac7f",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1800",
+   "kind": "school_info",
+   "title": "認識嘉女 › 關於嘉女",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1800.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1800.json",
+   "detail_revision": "656516f57fa4f838fe85698f29585e75d4dcf1d4ca29cfdc11d2a65b64cd4a15",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1813",
+   "kind": "school_info",
+   "title": "教學單位 › 國文科",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1813.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "研習",
+    "入學",
+    "學習歷程",
+    "宣導",
+    "工作坊",
+    "考試",
+    "選修"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1813.json",
+   "detail_revision": "33a735b01ae68075d40b2fba742e4901662988977cebda71f56790f5d0825616",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1814",
+   "kind": "school_info",
+   "title": "教學單位 › 數學科",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1814.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "研習",
+    "學習歷程",
+    "定期考",
+    "宣導",
+    "工作坊"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1814.json",
+   "detail_revision": "4ac5cd8d26147d20d7cacf1f7f61fd8d465aede3f35624dc66b525a6adab7f4a",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1815",
+   "kind": "school_info",
+   "title": "教學單位 › 自然科",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1815.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "研習",
+    "講座",
+    "報名",
+    "學習歷程",
+    "宣導",
+    "工作坊",
+    "體驗"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1815.json",
+   "detail_revision": "ccf844301882bf17d602ce309e9ae8c9cd6b1d688adfa7224e5939bf3f999397",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1816",
+   "kind": "school_info",
+   "title": "教學單位 › 英文科",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1816.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "研習",
+    "學分",
+    "學習歷程",
+    "宣導",
+    "工作坊",
+    "英檢"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1816.json",
+   "detail_revision": "da66facab9e7bf01ed68e7a21034eb4f4675e2cf84332d8fdf33f870cc12bd31",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1817",
+   "kind": "school_info",
+   "title": "教學單位 › 社會科",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1817.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "研習",
+    "競賽",
+    "奧林匹亞",
+    "學習歷程",
+    "宣導",
+    "工作坊"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1817.json",
+   "detail_revision": "d5072dae9c9f47e43b182597807ef2671cfc90dd2820393fa1d0e4d979d5eb5a",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1818",
+   "kind": "school_info",
+   "title": "教學單位 › 藝能科",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1818.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "研習",
+    "學習歷程",
+    "宣導"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1818.json",
+   "detail_revision": "f4e9a07acc52fafe75ef6817dee6aaa043db9cd3d57347e4f3855802120ea488",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1827",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 行事曆",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1827.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1827.json",
+   "detail_revision": "dfeebf6171033db9950fe8bf389d266d5a7d7dcac0e7d77607f586ea45b43b93",
    "detail_status": "parsed"
   },
   {
