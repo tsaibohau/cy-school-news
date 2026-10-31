@@ -27,8 +27,11 @@
   var RECORD_ONLY = /名單|姓名|學號|座號|身分證|電話|地址|病歷|診斷|誰錄取|誰得獎/;
   var EXAM_RESULTS = /(?:期中考|期末考|段考|模擬考|複習考|補考|重修|重補修|學期|學測|統測|分科|英檢|會考|英聽|競賽|比賽)(?:的)?成績/;
   var PERSON_TARGET = /我的|他的|她的|同學的|[\u4e00-\u9fff]{2,3}的成績|幾分|多少分|排名|名次/;
+  /* 「教務處電話」「圖書館分機」 ask for an office number, not a person's. */
+  var OFFICE_CONTACT = /(?:處|室|組|館|中心|總機|學校|宿舍|合作社|校門|傳達室)(?:的)?(?:電話|分機|專線|傳真|地址)|(?:電話|分機|專線)(?:是|多少|幾號)|校址/;
   function personalDataQuery(query) {
     query = clean(query);
+    if (OFFICE_CONTACT.test(query) && !/學生|同學|老師的|[\u4e00-\u9fff]{2,3}的電話/.test(query.replace(/(?:處|室|組|館|中心)的電話/, ""))) return false;
     if (!PERSONAL_DATA_QUERY.test(query)) return false;
     if (RECORD_ONLY.test(query)) return true;
     /* 「期中考成績」「模擬考成績」 ask when results come out, not for someone's record. */
@@ -396,11 +399,18 @@
     });
   }
   function rank(query, items, details, options) {
+    query = stripSchoolNames(clean(query));
     var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var queryTokens = tokens(query), anchorTokens = anchors(query), literalTokens=literalAnchors(query), wanted = intent(query), detailMap = details || {}, slot = answerSlot(query);
     if (!SearchQuery || !queryTokens.length) return [];
     var sourceItems = Array.isArray(items) ? items : [];
-    var metadataRows = SearchQuery.rank ? SearchQuery.rank(sourceItems, query, { asOf: options && options.asOf, details: detailMap, validity: Validity }) : [];
+    /* 學生手冊 has day-school and 進修部 versions of the same rules; use 進修部 only when asked. */
+    if (!/進修|夜間部/.test(query)) sourceItems = sourceItems.filter(function (item) { return !(isSchoolDoc(item) && /進修部/.test(item.title || "")); });
+    /* Rules quote old dates (「108年修訂」) but do not expire like announcements, so their
+       text must not feed the announcement validity check. */
+    var metadataDetails = {};
+    sourceItems.forEach(function (item) { if (item && detailMap[item.id] && !isSchoolDoc(item)) metadataDetails[item.id] = detailMap[item.id]; });
+    var metadataRows = SearchQuery.rank ? SearchQuery.rank(sourceItems, query, { asOf: options && options.asOf, details: metadataDetails, validity: Validity }) : [];
     var metadataById = {};
     metadataRows.forEach(function (row) { metadataById[row.item.id] = row; });
     var ranked = sourceItems.map(function (item) {
@@ -413,7 +423,8 @@
       var overviewScore = scoreText(overview(item), queryTokens, 3);
       var body = detailText(detailMap[item.id]);
       var bodyScore = scoreText(body, queryTokens, 1);
-      var anchorScore = scoreText(clean(item.title || "") + " " + overview(item) + " " + body+" "+reviewedText, anchorTokens, 1);
+      var keywordText = Array.isArray(item.keywords) ? item.keywords.join(" ") : "";
+      var anchorScore = scoreText(clean(item.title || "") + " " + overview(item) + " " + keywordText + " " + body+" "+reviewedText, anchorTokens, 1);
       var reviewedNormalized=compact(reviewedText);
       var reviewedAnchorHits=literalTokens.filter(function(token){return reviewedNormalized.indexOf(token)!==-1;}).length;
       var reviewedCoverage=literalTokens.length?reviewedAnchorHits/literalTokens.length:0;
@@ -476,7 +487,12 @@
     if ((wanted.indexOf("date") !== -1 || slot === "deadline") && TIME_PHRASE.test(sentence)) score += 40;
     return score;
   }
+  /* 「94年2月訂定，97年3月14日修訂」 at the top of a rule is its revision history, never an answer. */
+  var REVISION_HISTORY = /^[\s\d年月日,，、.。()（）～~-]*(?:(?:校務會議|行政會議)?(?:訂定|修訂|修正|通過|核定|發布)[\s\d年月日,，、.。()（）]*)+$|^(?:中華民國)?\d{2,3}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日.{0,20}(?:校務會議|行政會議|部字第|號令|號函)/;
   function candidateQualifies(candidate, plan) {
+    if (REVISION_HISTORY.test(clean(candidate.text))) return false;
+    /* A bare fragment such as 「記警告。」 cut from a list says nothing on its own. */
+    if (compact(candidate.text).replace(/[。，、；：.,;:]/g, "").length < 8) return false;
     var slot = plan && plan.answer_slot || "";
     if (!slot) return candidate.score >= 4;
     var hits = cueHits(candidate.text, slot);
@@ -1074,6 +1090,128 @@
     return { status: sources.length || !plan.topic ? "answered" : "insufficient", mode: "browse", list_label: "行程", query: query, summary: summary, evidence: [], sources: sources, related: [], key_points: [],
       plan: questionPlan(query), limitation: "日期來自學校行事曆，以及公告標題裡寫明的活動日期；只寫在內文或附件裡的日期不會列出。" };
   }
+  /* School pages and handbook chapters (scraper/school_info.py, school_handbook.py). */
+  function isSchoolDoc(item) { return !!item && (item.kind === "school_handbook" || item.kind === "school_info"); }
+  /* Rules are numbered (一、 (一) 1. 第三條) or are timetable rows (12:35-13:10 午休). */
+  var CLAUSE_START = /^\s*(?:[一二三四五六七八九十]+、|[壹貳參肆伍陸柒捌玖拾]+、|[（(][一二三四五六七八九十]+[)）]|\d{1,2}[.、](?!\d)|第[一二三四五六七八九十百]+條|※|\d{1,2}:\d{2})/;
+  var RULE_SKIP = /^(?:[一二三四五六七八九十]+、|[壹貳參肆伍陸柒捌玖拾]+、|第[一二三四五六七八九十]+條\s*)?(?:實施)?依據|經校務會議.*(?:實施|修正)|^本(?:要點|辦法|規定|細則)(?:經|自)/;
+  function ruleClauses(text) {
+    var out = [], current = "", previous = "";
+    String(text || "").split(/\n/).forEach(function (line) {
+      line = line.replace(/\s+$/, "");
+      if (!line.trim()) return;
+      /* PDF lines wrap at ~40 characters; a shorter previous line (a heading or a table
+         row) or one that ended a sentence means this line starts something new. */
+      var wrapped = previous.trim().length >= 34 && !/[。：:；;]$/.test(previous.trim());
+      if (CLAUSE_START.test(line) || !current || !wrapped) { if (current) out.push(current); current = line.trim(); }
+      else current += line.trim();
+      previous = line;
+    });
+    if (current) out.push(current);
+    return out.map(clean).filter(function (c) { return c.length >= 6; });
+  }
+  function ruleText(record) {
+    return (record && record.attachments || []).map(function (a) { return a && a.embedded_text || ""; }).join("\n") ||
+      (record && record.blocks || []).map(function (b) { return b && (b.text || (b.items || []).join("\n") || (b.rows || []).map(function (r) { return (r || []).join(" "); }).join("\n")) || ""; }).join("\n");
+  }
+  function ruleTerms(query) {
+    var plan = SearchQuery && SearchQuery.queryPlan ? SearchQuery.queryPlan(query) : { term_matches: [], remainder_terms: [] };
+    var topics = SearchQuery && SearchQuery.taxonomyTopics ? SearchQuery.taxonomyTopics() : [], literal = [], related = [], rest = [];
+    (plan.term_matches || []).forEach(function (row) {
+      if (row.kind !== "topic") { rest.push(compact(row.term)); return; }
+      literal.push(compact(row.term));
+      var topic = topics.filter(function (t) { return t.id === row.id; })[0];
+      (topic ? topic.terms : []).forEach(function (t) { related.push(compact(t)); });
+    });
+    (plan.remainder_terms || []).forEach(function (t) { t = compact(t); if (t.length >= 2) rest.push(t); });
+    return { literal: unique(literal), related: unique(related), rest: unique(rest) };
+  }
+  function scoreClause(clause, terms, query, title) {
+    var c = compact(clause), score = 0;
+    if (RULE_SKIP.test(clause) || REVISION_HISTORY.test(clause)) return 0;
+    if (compact(title).indexOf(c.replace(/[。．.]$/, "")) !== -1) return 0;
+    var chapter = compact(title.split("›").pop() || "");
+    if (chapter && c.indexOf(chapter) !== -1 && c.length < chapter.length + 14) return 0;
+    terms.literal.forEach(function (t) { if (c.indexOf(t) !== -1) score += 10; });
+    if (!score) terms.related.forEach(function (t) { if (t.length >= 2 && c.indexOf(t) !== -1) score = Math.max(score, 6); });
+    terms.rest.forEach(function (t) {
+      if (c.indexOf(t) !== -1) score += 5;
+      else for (var i = 0; i + 2 <= t.length; i++) if (c.indexOf(t.slice(i, i + 2)) !== -1) score += 1;
+    });
+    if (/幾點|時間|多久|何時|什麼時候|幾天|期限/.test(query) && /\d{1,2}[:：]\d{2}|[一二三四五六七八九十兩\d]+\s*(?:週|天|日|分鐘|小時|次|冊)/.test(clause)) score += 4;
+    if (/可以|可不可以|能不能|能否|嗎|是否|准不准/.test(query) && /不得|禁止|不可|應|須|得|准|始可|限/.test(clause)) score += 3;
+    if (/怎麼|如何|申請|辦理|流程|手續/.test(query) && /應|須|申請|填寫|辦理|系統|向|持/.test(clause)) score += 3;
+    if (score && score < 10 && terms.literal.some(function (t) { return compact(title).indexOf(t) !== -1; })) score += 5;
+    if (clause.length > 260) score -= 2;
+    return score;
+  }
+  function ruleAnswer(query, ranked, details) {
+    var terms = ruleTerms(query);
+    if (!terms.literal.length && !terms.rest.length) return null;
+    var best = null;
+    ranked.slice(0, 8).forEach(function (row, position) {
+      if (!isSchoolDoc(row.item) || !details[row.item.id]) return;
+      var title = clean(row.item.title || ""), compactTitle = compact(title);
+      /* A chapter whose own title is about the subject (行動載具 for 手機) beats one that only mentions it. */
+      var titleBonus = terms.literal.concat(terms.related).some(function (t) { return t.length >= 2 && compactTitle.indexOf(t) !== -1; }) ? 4 : 0;
+      ruleClauses(ruleText(details[row.item.id])).forEach(function (clause, index, all) {
+        var base = scoreClause(clause, terms, query, title);
+        var score = base ? base + titleBonus - position : 0;
+        if (!best || score > best.score) best = { score: score, clause: clause, index: index, all: all, row: row };
+      });
+    });
+    if (!best || best.score < 10) return null;
+    var picked = [best.clause];
+    /* 「作息時間表如下：」 needs the rows after it. */
+    if (/[：:]$|如下/.test(best.clause)) picked = picked.concat(best.all.slice(best.index + 1, best.index + 5));
+    else {
+      var second = null;
+      best.all.forEach(function (clause, index) {
+        if (index === best.index) return;
+        var score = scoreClause(clause, terms, query, best.row.item.title || "");
+        if (score >= Math.max(10, best.score * 0.8) && (!second || score > second.score)) second = { score: score, clause: clause, index: index };
+      });
+      if (second) picked = second.index < best.index ? [second.clause, best.clause] : [best.clause, second.clause];
+    }
+    var item = best.row.item, pages = Array.isArray(item.page_range) ? "（第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁）" : "";
+    var quote = picked.map(function (c) { return c.length > 220 ? c.slice(0, 219) + "…" : c; });
+    return { status: "answered", query: query, mode: "rule", key_points: [], summary: "依" + (item.school_name || "學校") + "「" + clean(item.title) + "」" + pages + "：" + quote.join(" "),
+      answer_lines: quote, evidence: quote.map(function (text) { return { text: text, announcement_id: item.id, title: item.title, score: best.score, source_meta: { source_type: "school_doc" } }; }),
+      sources: [Object.assign({}, item, { note: "學校規定原文" })], related: [], confidence: "high",
+      limitation: "引用學校官網公告的規定原文；規定可能修訂，以學校最新公告為準。", plan: questionPlan(query) };
+  }
+  /* 「101 星期三第3節是什麼課」「明天有什麼課」: answered from the official class timetable.
+     The class comes from the question or the student's profile (options.className). */
+  var TIMETABLE_ASK = /課表|什麼課|哪一?堂|上什麼|第\s*[一二三四五六七八1-8]\s*節|幾堂/;
+  var WEEKDAY_NAMES = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+  function timetableAnswer(query, options) {
+    options = options || {};
+    var tables = (options.timetables || []).filter(function (t) { return t && Array.isArray(t.classes); });
+    if (!tables.length || !TIMETABLE_ASK.test(query) || /重補修|微課程|多元選修|加深加廣|考試/.test(query)) return null;
+    var table = tables.slice().sort(function (a, b) { return (b.academic_year * 10 + b.semester) - (a.academic_year * 10 + a.semester); })[0];
+    var m = query.match(/(?:^|[^\d])(\d{3})(?!\d)/), className = m ? m[1] : String(options.className || "").trim();
+    var label = table.academic_year + "-" + table.semester + " 課表";
+    if (!className) return { status: "insufficient", query: query, summary: "要查哪一班？請在問題裡寫班級（例如「101 星期三課表」），或到「我的 → 個人設定」填班級。", evidence: [], sources: [], related: [] };
+    var cls = table.classes.filter(function (c) { return String(c.class_name) === className; })[0];
+    if (!cls) return { status: "insufficient", query: query, summary: label + "裡找不到 " + className + " 班。", evidence: [], sources: [], related: [] };
+    var asOf = options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }), dow = weekdayOf(asOf), dayName;
+    var wm = query.match(/(?:星期|週|禮拜)([一二三四五六日天])/);
+    if (wm) dayName = "星期" + (wm[1] === "天" ? "日" : wm[1]);
+    else if (/後天/.test(query)) dayName = WEEKDAY_NAMES[(dow + 2) % 7];
+    else if (/明天|明日/.test(query)) dayName = WEEKDAY_NAMES[(dow + 1) % 7];
+    else dayName = WEEKDAY_NAMES[dow];
+    var pm = query.match(/第\s*([一二三四五六七八1-8])\s*節/), period = pm ? ("一二三四五六七八".indexOf(pm[1]) + 1 || Number(pm[1])) : 0;
+    var slots = cls.slots.filter(function (slot) { return slot.weekday === dayName && (!period || Number(slot.period) === period); })
+      .sort(function (a, b) { return a.period - b.period; });
+    function hhmm(v) { v = String(v || ""); return v.length === 4 ? v.slice(0, 2) + ":" + v.slice(2) : v; }
+    var summary;
+    if (!slots.length) summary = className + " 班" + dayName + (period ? "第 " + period + " 節" : "") + "沒有排課。";
+    else if (period) summary = className + " 班" + dayName + "第 " + period + " 節（" + hhmm(slots[0].start) + "–" + hhmm(slots[0].end) + "）是「" + slots[0].subject + "」。";
+    else summary = className + " 班" + dayName + "：" + slots.map(function (slot) { return slot.period + " " + slot.subject; }).join("、") + "。";
+    return { status: "answered", query: query, mode: "timetable", summary: summary, key_points: [], evidence: [], related: [],
+      sources: [{ id: "timetable:" + className, kind: "calendar", title: label + "（" + className + " 班）", school_id: table.school_id, school_name: "嘉中", url: table.source_url || "", note: "官方班級課表" }],
+      limitation: "依學校公告的" + (table.version === "formal" ? "正式" : "") + "班級課表；調課、段考與活動以老師或學校通知為準。" };
+  }
   /* 「第二次段考是哪幾天」「學習歷程上傳期限」: questions asking WHEN something is.
      The school calendar is the most reliable source, so check it before announcements.
      Every topic in the question must appear in the calendar title, and the title must not
@@ -1172,6 +1310,8 @@
   }
   function answerCore(query, items, details, options) {
     var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var timed = timetableAnswer(query, Object.assign({}, options, { asOf: asOfDay }));
+    if (timed) return timed;
     var dated = datePlan(query, asOfDay);
     if (dated) return dateAnswer(query, items, dated, options);
     var when = whenAnswer(query, items, Object.assign({}, options, { asOf: asOfDay }));
@@ -1179,6 +1319,12 @@
     var browse = browsePlan(query);
     if (browse) return browseAnswer(query, items, browse, options);
     var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);
+    /* 學生手冊 has day-school and 進修部 versions of the same rules; use 進修部 only when asked. */
+    if (!/進修/.test(query) && ranked.some(function (row) { return !/進修部/.test(row.item.title || ""); })) {
+      ranked = ranked.filter(function (row) { return !/進修部/.test(row.item.title || ""); });
+    }
+    var ruled = ruleAnswer(query, ranked, details || {});
+    if (ruled && !personalDataQuery(query)) return ruled;
     if (ranked.length) {
       var relevanceFloor = Math.max(8, ranked[0].score * 0.35);
       ranked = ranked.filter(function (row) { return row.score >= relevanceFloor; }).slice(0, 5);
@@ -1231,5 +1377,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, timetableAnswer: timetableAnswer, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });

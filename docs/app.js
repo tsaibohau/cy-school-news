@@ -2248,17 +2248,32 @@
       /* 查詢範圍選「我的學校」時，只能引用那所學校的公告 */
       return function (item) { return scopeId === "all" || String(item && item.school || "") === String(scopeId); };
     }
-    function fetchAssistantCorpus(scopeId) {
+    /* Schools whose public pages and student handbook are indexed (scraper/school_info.py). */
+    var SCHOOL_INFO_IDS = ["cysh"];
+    function fetchSchoolInfo(scopeId) {
+      var ids = SCHOOL_INFO_IDS.filter(function (id) { return scopeId === "all" || scopeId === id; });
+      state.schoolInfo = state.schoolInfo || {};
+      return Promise.all(ids.map(function (id) {
+        if (state.schoolInfo[id]) return state.schoolInfo[id];
+        state.schoolInfo[id] = fetchJsonItems("data/school-info/" + encodeURIComponent(id) + ".json").catch(function () { delete state.schoolInfo[id]; return []; });
+        return state.schoolInfo[id];
+      })).then(function (parts) { return [].concat.apply([], parts); });
+    }
+    function announcementCorpus(scopeId) {
       if (scopeId === state.school) return ensureArchive().then(function () { return (state.data && state.data.items || []).filter(inAssistantScope(scopeId)); });
       var current = scopeId === "all" ? "data/announcements.json" : "data/schools/" + encodeURIComponent(scopeId) + "/current.json";
       var archive = scopeId === "all" ? "data/archive.json" : "data/schools/" + encodeURIComponent(scopeId) + "/archive.json";
-      return Promise.all([fetchJsonItems(current), fetchJsonItems(archive)]).then(function (parts) {
+      return Promise.all([fetchJsonItems(current), fetchJsonItems(archive)]).then(function (parts) { return parts[0].concat(parts[1]); });
+    }
+    /* 問校務 searches announcements plus school pages and handbook chapters. */
+    function fetchAssistantCorpus(scopeId) {
+      return Promise.all([announcementCorpus(scopeId), fetchSchoolInfo(scopeId)]).then(function (parts) {
         var seen = {};
         return parts[0].concat(parts[1]).filter(inAssistantScope(scopeId)).filter(function (item) {
           if (!item || !item.id || seen[item.id]) return false;
           seen[item.id] = true;
           return true;
-        }).map(applyMemberContent);
+        }).map(function (item) { return item.kind === "school_info" || item.kind === "school_handbook" ? applyMemberContent(Object.assign({}, item)) : applyMemberContent(item); });
       });
     }
     function assistantScopeFor(question) {
@@ -2309,6 +2324,8 @@
       return {
         scopeLabel: label === "所有學校" ? "" : label,
         schoolId: scope && scope.id !== "all" ? scope.id : "",
+        timetables: state.timetables || [],
+        className: state.profile && state.profile.class_name || "",
         /* 「明天有什麼講座」 is answered from the school calendar as well as announcements. */
         calendarEvents: (state.officialEvents || []).filter(function (ev) { return !scope || scope.id === "all" || ev.school_id === scope.id; }).map(function (ev) {
           var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(ev.school_id);
@@ -2387,7 +2404,8 @@
       if (el.assistantStatus) el.assistantStatus.textContent = "正在搜尋「" + scope.label + "」公告與官方附件文字…";
       if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在翻找「' + esc(scope.label) + '」的公告…</p></div>';
       var calendarReady = state.officialEvents && state.officialEvents.length ? Promise.resolve() : loadOfficialEvents();
-      return Promise.all([fetchAssistantCorpus(scope.id), calendarReady]).then(function (loaded) { return loaded[0]; }).then(function (items) {
+      var timetablesReady = Array.isArray(state.timetables) && state.timetables.length ? Promise.resolve() : loadTimetables();
+      return Promise.all([fetchAssistantCorpus(scope.id), calendarReady, timetablesReady]).then(function (loaded) { return loaded[0]; }).then(function (items) {
         /* 讓載入動畫先畫出來，再開始比對（比對會佔用主執行緒約一秒） */
         return new Promise(function (resolve) { setTimeout(function () { resolve(items); }, 30); });
       }).then(function (items) {
