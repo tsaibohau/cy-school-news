@@ -197,6 +197,8 @@ def write_public(school_id: str, school: dict, index: dict) -> Path:
     items = [public_item(school_id, school, v) for _, v in sorted(index["pages"].items(), key=lambda kv: int(kv[0]))
              if v.get("status") == "ok"]
     items += list((index.get("handbook") or {}).get("items") or [])
+    import school_services
+    items += school_services.public_items(school_id, school["short"], (index.get("services") or {}).get("systems") or [])
     out = {
         "schema_version": SCHEMA_VERSION,
         "school": school_id,
@@ -204,6 +206,7 @@ def write_public(school_id: str, school: dict, index: dict) -> Path:
         "content_access": "approved-account-required",
         "pages": index["pages"],
         "handbook": index.get("handbook") or {},
+        "services": index.get("services") or {},
         "items": items,
     }
     INDEX_ROOT.mkdir(parents=True, exist_ok=True)
@@ -298,6 +301,14 @@ def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
         print(f"[info] 學生手冊 {school_id}: {status}")
     except Exception as exc:  # keep the previous chapters; try again next run
         print(f"[warn] 學生手冊 {school_id}: {exc}", file=sys.stderr)
+    try:
+        import school_services
+        status = school_services.update(index, school_id, session,
+                                        lambda sess, url: scrape.fetch(sess, url, config_school),
+                                        delay=delay, now=datetime.now(TW_TZ))
+        print(f"[info] 網路服務入口 {school_id}: {status}")
+    except Exception as exc:
+        print(f"[warn] 網路服務入口 {school_id}: {exc}", file=sys.stderr)
     write_public(school_id, school, index)
     ok = sum(1 for v in index["pages"].values() if v.get("status") == "ok")
     pending = sum(1 for v in index["pages"].values() if v.get("status") == "pending")

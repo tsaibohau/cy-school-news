@@ -114,6 +114,26 @@ def main():
     picked = si.pick_pages(index, {"roots": [86]}, 10, now)
     assert picked[:2] == [86, 7] and 5 in picked and 6 not in picked
     print("✓ 每 30 天重新檢查一次")
+    # Login systems: entry links only, staff and campus-only systems are not suggested.
+    import school_services as ss
+    menu = ('<div>網路服務</div><a href="https://cysh-cy.k12ea.gov.tw/SCH_UI/">校務行政系統</a>'
+            '<a href="https://e-school.k12ea.gov.tw/Schoolcysh/Landing">自修室預約系統</a>'
+            '<a href="https://campus.cysh.cy.edu.tw/exam_range/">考試範圍公告</a>'
+            '<a href="http://192.168.62.56/exam/query.asp">試卷題庫(限校內)</a>'
+            '<a href="https://pk12.cloudhr.tw/">雲端差勤系統</a>'
+            '<a href="https://www.cysh.cy.edu.tw/p/412-1008-96.php">地理位置圖</a>'
+            '<a href="https://goo.gl/maps/x">Google地圖</a>')
+    systems = ss.build_services([("https://www.cysh.cy.edu.tw/", menu)])
+    by_name = {row["name"]: row for row in systems}
+    assert by_name["校務行政系統"]["audience"] == "student" and by_name["校務行政系統"]["login"] is True
+    assert "成績" in by_name["校務行政系統"]["keywords"]
+    assert by_name["考試範圍公告"]["login"] is None, "login not confirmed for this host"
+    assert by_name["試卷題庫"]["audience"] == "internal" and by_name["雲端差勤系統"]["audience"] == "staff"
+    assert "地理位置圖" not in by_name and "Google地圖" not in by_name
+    items = ss.public_items("cysh", "嘉中", systems)
+    assert sorted(i["title"] for i in items) == ["網路服務 › 校務行政系統", "網路服務 › 考試範圍公告", "網路服務 › 自修室預約系統"]
+    assert all(i["kind"] == "school_service" and i["url"].startswith("https://") for i in items)
+    print("✓ 需登入系統只記錄入口連結")
     print("所有校園資訊測試通過 ✅")
 
 

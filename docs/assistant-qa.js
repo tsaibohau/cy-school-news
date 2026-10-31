@@ -1283,9 +1283,37 @@
     var rest = clean(query.replace(SCHOOL_NAME_RE, " "));
     return compact(rest).length >= 2 ? rest : query;
   }
+  /* Entry links to the school's login systems (scraper/school_services.py): 「成績怎麼查」
+     → 校務行政系統. Nothing inside those systems is read; only the official link is given. */
+  function serviceLinks(query, items) {
+    var q = compact(query);
+    return (items || []).filter(function (item) {
+      return item && item.kind === "school_service" && (item.keywords || []).some(function (k) { k = compact(k); return k.length >= 2 && q.indexOf(k) !== -1; });
+    }).map(function (item) {
+      var hits = (item.keywords || []).filter(function (k) { return q.indexOf(compact(k)) !== -1; });
+      return { item: item, weight: hits.reduce(function (n, k) { return n + compact(k).length; }, 0) };
+    }).sort(function (a, b) { return b.weight - a.weight; }).slice(0, 2).map(function (row) {
+      var item = row.item;
+      return { id: item.id, name: clean(item.title).replace(/^網路服務\s*›\s*/, ""), url: item.url, purpose: item.purpose || "", login_required: item.login_required, weight: row.weight };
+    });
+  }
+  var SERVICE_ASK = /查|登入|系統|網址|網站|哪裡|在哪|去哪|怎麼|如何|預約|列印|下載|紀錄/;
   function answer(query, items, details, options) {
     query = stripSchoolNames(clean(query).slice(0, 160));
     var result = answerCore(query, items, details, options);
+    var services = serviceLinks(query, items);
+    if (result && services.length) {
+      result.service_links = services;
+      /* 「成績怎麼查」「考試範圍在哪看」: the answer is the system itself. */
+      var strong = services[0].weight >= 4 && SERVICE_ASK.test(query) && result.mode !== "timetable" && result.list_label !== "行事曆";
+      if (strong || (result.status !== "answered" && (SERVICE_ASK.test(query) || services[0].weight >= 3))) {
+        var first = services[0];
+        result = Object.assign({}, result, { status: "answered", mode: "service", evidence: [], related: result.related || [], key_points: [],
+          summary: "這要到「" + first.name + "」" + (first.purpose ? "（" + first.purpose + "）" : "") + "查看" + (first.login_required ? "，需要用學校帳號登入；本站不會讀取系統裡的個人資料。" : "。"),
+          sources: services.map(function (s) { return { id: s.id, kind: "service", title: s.name, url: s.url, school_name: "", note: s.login_required ? "需登入" : "官方系統" }; }),
+          limitation: "系統入口來自學校官網「網路服務」頁；帳號密碼問題請洽學校。", service_links: services });
+      }
+    }
     if (result && result.status !== "answered") {
       var link = officeLink(query, options && options.schoolId);
       if (link) {
@@ -1377,5 +1405,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, timetableAnswer: timetableAnswer, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, timetableAnswer: timetableAnswer, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });

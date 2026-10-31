@@ -67,6 +67,27 @@ assert.match(t("999 課表").summary, /找不到 999 班/);
 assert.equal(t("重補修課表", { className: "101" }).mode, undefined, "重補修 is not the class timetable");
 console.log("✓ 班級課表");
 
+/* Login systems: 問校務 gives the official entry link, never reads inside. */
+const services = [
+  { id: "cysh-service-sch", kind: "school_service", title: "網路服務 › 校務行政系統", school: "cysh", url: "https://cysh-cy.k12ea.gov.tw/SCH_UI/",
+    purpose: "查成績、缺曠與獎懲紀錄", login_required: true, keywords: ["成績", "缺曠", "缺曠紀錄", "請假"] },
+  { id: "cysh-service-exam", kind: "school_service", title: "網路服務 › 考試範圍公告", school: "cysh", url: "https://campus.cysh.cy.edu.tw/exam_range/",
+    purpose: "查段考各科考試範圍", login_required: null, keywords: ["考試範圍", "期中考範圍"] },
+];
+const withServices = items.concat(services);
+r = QA.answer("成績怎麼查", withServices, details, opts);
+assert.equal(r.mode, "service");
+assert.match(r.summary, /校務行政系統.*需要用學校帳號登入/);
+r = QA.answer("期中考範圍", withServices, details, opts);
+assert.equal(r.mode, "service");
+assert.doesNotMatch(r.summary, /登入/, "login is not claimed when it was not confirmed");
+r = QA.answer("我的缺曠紀錄", withServices, details, opts);
+assert.equal(r.service_links[0].name, "校務行政系統", "personal records point to the system");
+r = QA.answer("請假要怎麼請", withServices, details, opts);
+assert.equal(r.mode, "rule", "a rule answer stays; the system link is added");
+assert.equal(r.service_links[0].name, "校務行政系統");
+console.log("✓ 需登入系統的入口連結");
+
 /* The public school-info index (when present) never carries page text. */
 const indexFile = path.join(__dirname, "..", "docs", "data", "school-info", "cysh.json");
 if (fs.existsSync(indexFile)) {
