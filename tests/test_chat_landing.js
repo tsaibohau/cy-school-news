@@ -16,8 +16,15 @@ assert.ok(index.indexOf('id="tabAssistant"') < index.indexOf('id="tabHome"'), "�
 assert.match(index, /id="assistantWelcome" class="chat-welcome"/);
 assert.match(index, /id="assistantThread" class="chat-thread"/);
 assert.match(index, /<textarea id="assistantQuestion"/);
-assert.match(app, /function startAssistantTurn\(question\)/);
+assert.match(app, /function startAssistantTurn\(question, context\)/);
 assert.match(app, /e\.key === "Enter" && !e\.shiftKey && !e\.isComposing/, "Enter sends; IME composition and Shift+Enter do not");
 assert.match(css, /\.chat-composer \{\s*position: sticky;/);
 assert.match(css, /\.chat-view\.has-turns \.chat-welcome \{ display: none; \}/);
+/* Sources for every answer live in one shared panel under the conversation. */
+assert.match(index, /<details id="assistantEvidence" class="chat-evidence" hidden>/);
+assert.ok(index.indexOf('id="assistantThread"') < index.indexOf('id="assistantEvidence"') && index.indexOf('id="assistantEvidence"') < index.indexOf('id="assistantForm"'));
+assert.doesNotMatch(app, /'<details class="assistant-details"[^']*'\s*\+\s*'<summary>為什麼這樣回答/, "no evidence panel inside each answer");
+assert.match(app, /function showAssistantEvidence\(index, open\)/);
+assert.match(app, /data-assistant-cite="/);
+assert.match(app, /resolveFollowUp\(question, previous && \{ query: previous\.query \}\)/, "follow-up questions read the previous turn");
 console.log("Chat landing and layout contract passed");

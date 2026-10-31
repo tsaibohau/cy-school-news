@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=98">
+<link rel="stylesheet" href="style.css?v=99">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -76,6 +76,10 @@
     <div id="assistantThread" class="chat-thread" aria-live="polite">
       <div id="assistantAnswer" class="assistant-answer"></div>
     </div>
+    <details id="assistantEvidence" class="chat-evidence" hidden>
+      <summary id="assistantEvidenceTitle">依據與來源</summary>
+      <div id="assistantEvidenceBody"></div>
+    </details>
     <form id="assistantForm" class="assistant-form chat-composer">
       <div class="assistant-examples chat-suggestions" aria-label="問題範例">
         <button type="button" data-assistant-example="請假要怎麼請？">請假要怎麼請</button>
@@ -345,9 +349,9 @@
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
-<script src="assistant-qa.js?v=63"></script>
+<script src="assistant-qa.js?v=64"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=114"></script>
+<script src="app.js?v=115"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

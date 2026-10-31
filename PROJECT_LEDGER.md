@@ -1815,3 +1815,29 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 下一個允許動作
 - 使用者先合併 PR #64，再合併本分支 PR。
+
+## 2026-10-31 問校務口語回答、接續上一題、來源集中、校園資訊一次補抓（`claude/qa-natural-context`）
+
+- 補記：PR #65 合進了 #64 的舊分支，main 沒拿到；已用 PR #66 補進 main。
+- 使用者要求：回答像 AI 一樣通順；依據與來源不要每題一個，集中放下面；能讀上下文；先把學生手冊與校規抓進資料庫。
+- 未修改 `announcements.json`、每小時排程頻率或 Supabase schema；仍不呼叫 AI 模型。
+
+### 回答
+- `assistant-qa.js` 新增 `conversational()`：規定答案改為「根據學生手冊的〈X〉（第 n 頁），…」一段話；去掉條號、重複的表格欄位與多餘標籤；時間表列改成「午休是 12:35–13:10」；少數文言詞換白話（皆可→都可以、如無→如果沒有、方為完畢→才算完成…）。條文意思不變，原文仍在來源區。
+- 每則回答只顯示這段話（必要時加幾個重點），不再顯示標題、重點表、原文摘錄。
+- `resolveFollowUp()`：「那要多久？」「那進修部呢」「那嘉女呢」「星期四呢」會接上一題的主題、學校、星期或節次；完整的新問題不受影響。使用者問題下方顯示「接續上一題：…」。
+
+### 介面
+- 依據與來源（官方來源、為什麼這樣回答、資料說明）集中在對話下方一個區塊；每則回答只有一個小按鈕「依據與來源 ↓」切換到該題。
+- 版本：`app.js?v=115`、`assistant-qa.js?v=64`、`style.css?v=99`、`cy-news-v127`。
+
+### 補抓
+- 新增手動流程 `.github/workflows/school-info-backfill.yml`（只有 workflow_dispatch，沒有排程）：每校最多 250 頁、40 個 PDF，請求仍依序間隔 `request_delay_sec`，完成後同步內文到受保護資料庫並只提交 `docs/data/school-info`。
+- 已確認：同步函式在沒有內文時保留資料庫裡的舊內文，之後每小時流程不會把補抓的內文蓋掉。
+
+### 驗證
+- PASS：`python tests/test_parser.py`、`tests/test_school_info.py`、`tests/test_qa_school_docs.js`（新增口語化與接續題）、`tests/test_chat_landing.js`（新增來源區塊）、版本釘選測試；其餘同前（4 個既有失敗不變）。
+- Playwright 手機截圖（注入假內文）確認回答與來源區塊，無頁面錯誤。
+
+### 下一個允許動作
+- 使用者合併 PR 後，到 Actions 手動執行「校園資訊一次補抓（手動）」一次（或請 Claude 觸發）。
