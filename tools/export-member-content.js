@@ -42,6 +42,17 @@ function readCorpus(root) {
       if (id) records.set(id, item);
     }
   }
+  // School pages and handbook chapters (scraper/school_info.py) use the same protected path.
+  const infoRoot = path.join(root, "docs", "data", "school-info");
+  if (fs.existsSync(infoRoot)) {
+    for (const name of fs.readdirSync(infoRoot).filter((file) => file.endsWith(".json")).sort()) {
+      const index = JSON.parse(fs.readFileSync(path.join(infoRoot, name), "utf8"));
+      for (const item of index.items || []) {
+        const id = String(item.id || "");
+        if (id && item.detail_ref) records.set(id, item);
+      }
+    }
+  }
   return Array.from(records.values());
 }
 

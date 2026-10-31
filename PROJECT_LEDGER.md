@@ -1759,3 +1759,35 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 下一個允許動作
 - 使用者審 PR 合併；開放 `www.cysh.cy.edu.tw` 網域後，調查嘉中官網規章頁面（學生手冊、請假、獎懲、圖書館、宿舍、處室聯絡），列清單供確認後再收錄。
+
+## 2026-10-31（Asia/Taipei）｜嘉中官網盤查與問校務校園資訊（分支 claude/cysh-school-info）
+
+### 基準與範圍
+- 基準：`origin/main` `7b226d27`（PR #63 已合併）。使用者開放 `www.cysh.cy.edu.tw` 網域後執行。
+- 未修改 `announcements.json`、排程頻率或 Supabase schema；workflow 只在既有每小時流程新增一步（continue-on-error）。
+
+### 盤查
+- 低頻掃描 430 個選單頁（請求間隔 1.6 秒）：收錄 343、排除教職員／非文字專區 59、公告列表 20、個人介紹 2、名單 1。詳見 `docs/school-info-cysh.md`。
+- 115 學年度學生手冊完整版（134 頁 PDF）依目錄拆成 47 章。
+
+### 已完成
+- `scraper/school_info.py`：選單頁收錄、排除規則、公開索引（無內文）與受保護內文；每次最多 10 頁、30 天重新檢查。
+- `scraper/school_handbook.py`：每 14 天檢查手冊、改版才下載、依目錄拆章、PDF 相似字正規化。
+- `tools/export-member-content.js`：校園資訊與手冊章節併入會員受保護同步。
+- 問校務：規定原文回答（條文分段、跳過修訂沿革／依據、引用頁碼）、班級課表回答、進修部規定只在問到時使用、處室電話與學校地址不再誤判為個資、規定文字不進入公告時效判斷。
+- 搜尋詞新增午休、作息、出缺席、獎懲、聯絡電話、申訴、霸凌、成績及格、學校簡介等。
+- 版本：`app.js?v=111`、`assistant-qa.js?v=61`、`search-query.js?v=56`、`search-taxonomy.js?v=56`、`cy-news-v123`。
+
+### 驗證
+- PASS：`python tests/test_parser.py`、新增 `tests/test_school_info.py`、`tests/test_qa_school_docs.js`、問校務 gold（top1 8/13、top3 11/13、wrong 0、no-answer 7/7 不變）及其餘測試。
+- 既有失敗（main 同樣失敗）：`test_account_roles_contract`、`test_rls_behavioral`、`test_rls_deployed`、`test_local_ocr.py`。
+- 實際對嘉中官網執行一次 `school_info.py discover`（2 頁＋手冊）成功；本機模擬會員問 30 題常見校規問題：29 題引用到規定，其中約 22 題引用的條文正好回答問題；遲到／曠課、校長是誰、學雜費減免、模範生等仍會引用到同章但不是最貼切的條文，待後續調整。
+
+### 下一個允許動作
+- 使用者審 PR 合併；合併後每小時流程約 2 天內完成全部頁面首次收錄，手冊於第一次執行即收錄。之後可依同樣方式評估嘉女。
+
+### 2026-10-31 補充｜需登入系統的入口連結
+- 使用者要求：需要登入的系統也要記錄入口，並讓問校務找得到。
+- 新增 `scraper/school_services.py`：每 30 天從官網首頁「網路服務」與「網路系統服務」頁整理系統入口（名稱、連結、用途、對象、是否需登入），只記錄連結、不讀取系統內容；教職員與限校內系統記錄但不推薦給學生。
+- 問校務：「成績怎麼查」「期中考範圍」「學雜費繳費單」等直接給系統入口；規定類回答（如請假）附上相關系統按鈕；個人紀錄問題（缺曠紀錄）仍不讀取，但指向校務行政系統。
+- `campus.cysh.cy.edu.tw`、`library.cysh.cy.edu.tw` 不在本環境允許網域，未確認是否需登入，因此不標「需登入」。

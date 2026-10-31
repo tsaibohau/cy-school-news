@@ -82,6 +82,16 @@ jobs:
       - name: 更新公開班級課表
         run: python scraper/timetable.py discover
 
+      - name: 更新校園資訊與學生手冊（每次少量頁面）
+        # Pages are refreshed at most every 30 days and the handbook list every 14 days,
+        # so each run makes only a handful of extra requests. A failure must not block
+        # the announcement update.
+        continue-on-error: true
+        env:
+          SCHOOL_INFO_PAGE_CAP: '10'
+          SCHOOL_INFO_PDF_CAP: '2'
+        run: python scraper/school_info.py discover
+
       - name: 推播新公告 (ntfy)
         env:
           # Secret first (topic URL or name), then legacy repository variable.

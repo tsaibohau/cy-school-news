@@ -2248,17 +2248,32 @@
       /* 查詢範圍選「我的學校」時，只能引用那所學校的公告 */
       return function (item) { return scopeId === "all" || String(item && item.school || "") === String(scopeId); };
     }
-    function fetchAssistantCorpus(scopeId) {
+    /* Schools whose public pages and student handbook are indexed (scraper/school_info.py). */
+    var SCHOOL_INFO_IDS = ["cysh"];
+    function fetchSchoolInfo(scopeId) {
+      var ids = SCHOOL_INFO_IDS.filter(function (id) { return scopeId === "all" || scopeId === id; });
+      state.schoolInfo = state.schoolInfo || {};
+      return Promise.all(ids.map(function (id) {
+        if (state.schoolInfo[id]) return state.schoolInfo[id];
+        state.schoolInfo[id] = fetchJsonItems("data/school-info/" + encodeURIComponent(id) + ".json").catch(function () { delete state.schoolInfo[id]; return []; });
+        return state.schoolInfo[id];
+      })).then(function (parts) { return [].concat.apply([], parts); });
+    }
+    function announcementCorpus(scopeId) {
       if (scopeId === state.school) return ensureArchive().then(function () { return (state.data && state.data.items || []).filter(inAssistantScope(scopeId)); });
       var current = scopeId === "all" ? "data/announcements.json" : "data/schools/" + encodeURIComponent(scopeId) + "/current.json";
       var archive = scopeId === "all" ? "data/archive.json" : "data/schools/" + encodeURIComponent(scopeId) + "/archive.json";
-      return Promise.all([fetchJsonItems(current), fetchJsonItems(archive)]).then(function (parts) {
+      return Promise.all([fetchJsonItems(current), fetchJsonItems(archive)]).then(function (parts) { return parts[0].concat(parts[1]); });
+    }
+    /* 問校務 searches announcements plus school pages and handbook chapters. */
+    function fetchAssistantCorpus(scopeId) {
+      return Promise.all([announcementCorpus(scopeId), fetchSchoolInfo(scopeId)]).then(function (parts) {
         var seen = {};
         return parts[0].concat(parts[1]).filter(inAssistantScope(scopeId)).filter(function (item) {
           if (!item || !item.id || seen[item.id]) return false;
           seen[item.id] = true;
           return true;
-        }).map(applyMemberContent);
+        }).map(function (item) { return item.kind === "school_info" || item.kind === "school_handbook" ? applyMemberContent(Object.assign({}, item)) : applyMemberContent(item); });
       });
     }
     function assistantScopeFor(question) {
@@ -2268,6 +2283,14 @@
       var preferred = preferredSchoolId() || (state.school !== "all" ? state.school : "all");
       var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(preferred);
       return { id: preferred, label: school ? school.short : "所有學校" };
+    }
+    /* Entry links to the school's login systems (校務行政系統、自修室預約…). */
+    function assistantServiceLinks(result) {
+      var links = (result && result.service_links || []).filter(function (link) { return link && /^https:\/\//.test(String(link.url || "")); });
+      if (!links.length) return "";
+      return '<div class="assistant-office">' + links.map(function (link) {
+        return '<a class="btn-ghost" href="' + esc(link.url) + '" target="_blank" rel="noopener">前往' + esc(link.name) + (link.login_required ? "（需登入）" : "") + '</a>';
+      }).join(" ") + '</div>';
     }
     function renderAssistantAnswer(result) {
       if (!el.assistantAnswer) return;
@@ -2279,7 +2302,7 @@
         }).join("");
         var relatedPanel = related ? '<details class="assistant-details" open><summary>可能相關的公告（請點開確認）</summary><div class="assistant-sources">' + related + '</div></details>' : '';
         var office = result && result.office_link && /^https:\/\//.test(result.office_link.url) ? '<p class="assistant-office"><a class="btn-ghost" href="' + esc(result.office_link.url) + '" target="_blank" rel="noopener">前往' + esc(result.office_link.label) + '</a></p>' : '';
-        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>' + (related ? "沒有找到能直接回答的句子" : "目前還無法回答這個問題") + '</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p>' + office + (related || office ? '' : '<small>可能是校方尚未公告、附件沒有可讀文字，或問題不在本站資料範圍。</small>') + '</div>' + relatedPanel;
+        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>' + (related ? "沒有找到能直接回答的句子" : "目前還無法回答這個問題") + '</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p>' + office + assistantServiceLinks(result) + (related || office ? '' : '<small>可能是校方尚未公告、附件沒有可讀文字，或問題不在本站資料範圍。</small>') + '</div>' + relatedPanel;
         return;
       }
       var evidence = result.evidence.map(function (row, index) {
@@ -2288,6 +2311,7 @@
       var sources = result.sources.slice(0, result.mode === "browse" ? 8 : 5).map(function (item) {
         var validityLabel = window.CyNewsAnnouncementValidity && item.validity ? window.CyNewsAnnouncementValidity.label(item.validity) : "";
         var sourceMeta = (item.school_name || "官方公告") + " · " + displayDate(item) + (validityLabel ? " · " + validityLabel : "") + (item.note ? " · " + item.note : "");
+        if (item.kind === "service") return '<a class="assistant-source" href="' + esc(/^https:\/\//.test(String(item.url || "")) ? item.url : "#") + '" target="_blank" rel="noopener"><strong>' + esc(item.title) + '</strong><small>' + esc(item.note || "官方系統") + '</small></a>';
         if (item.kind === "calendar") return '<div class="assistant-source"><strong>' + esc(item.title) + '</strong><small>' + esc((item.school_name || "學校") + " · " + (item.note || "學校行事曆")) + '</small></div>';
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc(sourceMeta) + '</small></button>';
       }).join("");
@@ -2300,7 +2324,7 @@
       var points = (result.key_points || []).map(function (point) { return '<div class="assistant-point"><dt>' + esc(point.label) + '</dt><dd>' + esc(point.value) + '</dd></div>'; }).join("");
       var pointPanel = points ? '<dl class="assistant-points" aria-label="重點整理">' + points + '</dl>' : '';
       var quotePanel = directAnswer ? '<details class="assistant-details"><summary>官方原文摘錄</summary>' + directAnswer + '</details>' : '';
-      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>' + title + '</h3><p class="assistant-lead">' + esc(result.summary) + '</p>' + pointPanel + (points ? quotePanel : directAnswer) + sourcePanel + evidencePanel + limitation + '</section>';
+      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>' + title + '</h3><p class="assistant-lead">' + esc(result.summary) + '</p>' + (result.mode === "service" ? "" : assistantServiceLinks(result)) + pointPanel + (points ? quotePanel : directAnswer) + sourcePanel + evidencePanel + limitation + '</section>';
     }
     function assistantOptions(scope) {
       var label = String(scope && scope.label || "").replace(/（.*?）/g, "");
@@ -2309,6 +2333,8 @@
       return {
         scopeLabel: label === "所有學校" ? "" : label,
         schoolId: scope && scope.id !== "all" ? scope.id : "",
+        timetables: state.timetables || [],
+        className: state.profile && state.profile.class_name || "",
         /* 「明天有什麼講座」 is answered from the school calendar as well as announcements. */
         calendarEvents: (state.officialEvents || []).filter(function (ev) { return !scope || scope.id === "all" || ev.school_id === scope.id; }).map(function (ev) {
           var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(ev.school_id);
@@ -2387,7 +2413,8 @@
       if (el.assistantStatus) el.assistantStatus.textContent = "正在搜尋「" + scope.label + "」公告與官方附件文字…";
       if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在翻找「' + esc(scope.label) + '」的公告…</p></div>';
       var calendarReady = state.officialEvents && state.officialEvents.length ? Promise.resolve() : loadOfficialEvents();
-      return Promise.all([fetchAssistantCorpus(scope.id), calendarReady]).then(function (loaded) { return loaded[0]; }).then(function (items) {
+      var timetablesReady = Array.isArray(state.timetables) && state.timetables.length ? Promise.resolve() : loadTimetables();
+      return Promise.all([fetchAssistantCorpus(scope.id), calendarReady, timetablesReady]).then(function (loaded) { return loaded[0]; }).then(function (items) {
         /* 讓載入動畫先畫出來，再開始比對（比對會佔用主執行緒約一秒） */
         return new Promise(function (resolve) { setTimeout(function () { resolve(items); }, 30); });
       }).then(function (items) {
