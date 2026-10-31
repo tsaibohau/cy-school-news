@@ -753,3 +753,61 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* ── 問校務：對話式介面 ──
+   歡迎畫面置中、問答一則則往下排、輸入框固定在底部分頁列上方。 */
+.chat-view { display: flex; flex-direction: column; min-height: calc(100vh - 210px); padding-bottom: 0; }
+.chat-view[hidden] { display: none; }
+.chat-welcome { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 48px 8px 24px; }
+.chat-view.has-turns .chat-welcome { display: none; }
+.chat-mark {
+  display: inline-grid; place-items: center; width: 44px; height: 44px; margin-bottom: 14px;
+  border-radius: 12px; background: var(--seal); color: #FBF4EA; font-weight: 900; font-size: 20px; transform: rotate(-4deg);
+}
+.chat-greeting { margin: 0; font-size: clamp(26px, 7vw, 36px); font-weight: 500; letter-spacing: .04em; line-height: 1.3; }
+.chat-subtitle { max-width: 30em; margin: 12px auto 0; color: var(--muted); line-height: 1.8; }
+.chat-thread { display: grid; gap: 22px; padding: 8px 0 18px; }
+.chat-thread > .assistant-answer:empty { display: none; }
+.chat-turn { display: grid; gap: 12px; scroll-margin-top: 16px; }
+.chat-user { display: flex; justify-content: flex-end; }
+.chat-user p {
+  max-width: 85%; margin: 0; padding: 10px 14px; border-radius: 18px 18px 4px 18px;
+  background: var(--paper-deep); color: var(--ink); line-height: 1.7; overflow-wrap: anywhere; white-space: pre-wrap;
+}
+/* 回覆像一般文字，不再包在卡片裡；問題已顯示在上方，不重複標題。 */
+.chat-reply .assistant-result, .chat-reply .assistant-empty, .chat-reply .assistant-loading {
+  margin: 0; padding: 4px 2px; border: 0; background: transparent; box-shadow: none;
+}
+.chat-reply .assistant-result > h3 { display: none; }
+.chat-reply .assistant-empty h3 { font-size: 15px; color: var(--muted); }
+.chat-reply .assistant-lead { font-size: 16.5px; }
+.chat-reply .assistant-office { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.chat-composer {
+  position: sticky; z-index: 30; bottom: calc(max(10px, env(safe-area-inset-bottom)) + 80px);
+  padding: 0; border: 0; background: transparent; box-shadow: none;
+}
+.chat-suggestions { justify-content: center; margin-bottom: 10px; }
+.chat-view.has-turns .chat-suggestions { display: none; }
+.chat-box {
+  padding: 10px 10px 8px 14px; border: 1px solid var(--line); border-radius: 22px;
+  background: var(--card); box-shadow: 0 6px 24px rgba(40, 28, 16, .12);
+}
+.chat-box:focus-within { border-color: var(--muted); }
+.chat-box textarea {
+  display: block; width: 100%; min-height: 28px; max-height: 160px; padding: 6px 2px; resize: none;
+  border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 16px; line-height: 1.6;
+}
+.chat-box-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 4px; }
+.chat-send {
+  display: inline-grid; place-items: center; width: 38px; height: 38px; border: 0; border-radius: 12px;
+  background: var(--seal); color: #FBF4EA; font-size: 19px; font-weight: 700; cursor: pointer;
+}
+.chat-send:disabled { opacity: .45; cursor: default; }
+.chat-status { min-height: 1em; margin: 6px 4px 0; color: var(--muted); font-size: 12px; text-align: center; }
+.chat-status:empty { display: none; }
+@media (max-width: 520px) {
+  .chat-welcome { padding-top: 28px; }
+  .chat-user p { max-width: 92%; }
+}
+/* 對話畫面不顯示頁尾，讓輸入框下方保持乾淨。 */
+body.is-chat .foot { display: none; }

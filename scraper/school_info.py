@@ -47,6 +47,14 @@ SCHOOLS = {
         # Menu roots from the site navigation (網站導覽). Children are discovered.
         "roots": [86, 94, 97, 184, 194, 195, 196, 199, 206, 117, 132, 151, 3951],
     },
+    "cygsh": {
+        "name": "國立嘉義女中",
+        "short": "嘉女",
+        "origin": "https://www.cygsh.cy.edu.tw",
+        "unit": "1013",
+        # 認識嘉女、行政單位、教學單位、學校夥伴、招生資訊、升學資訊、新生專區、處室分機.
+        "roots": [1592, 1591, 1674, 1675, 1727, 3258, 2082, 1752],
+    },
 }
 
 # Sections that are for staff, contain people or are not text information.
@@ -118,6 +126,41 @@ def menu_path(html: str) -> list[str]:
     return [name for name in names if name and name not in ("首頁", ":::")][:8]
 
 
+DOC_HOST = re.compile(r"^https://(?:drive|docs)\.google\.com/")
+
+
+def doc_links(html: str, base_url: str) -> list[dict]:
+    """Rules some schools keep on Google Drive: 「學籍管理辦法」 etc. Names and links only."""
+    out, seen = [], set()
+    body = html[html.find("module-path"):] if "module-path" in html else html
+    for href, label in re.findall(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', body, re.S):
+        url = urljoin(base_url, unescape(href).strip())
+        name = _text(label)
+        if DOC_HOST.match(url) and name and len(name) >= 4 and url not in seen and not EXCLUDED_PATH.search(name):
+            seen.add(url)
+            out.append({"name": name[:60], "url": url})
+    return out[:20]
+
+
+BLOCK_END = re.compile(r"<br\s*/?>|</(?:p|div|li|tr|h[1-6]|section|article|td|th)>", re.I)
+
+
+def page_text_lines(html: str) -> list[str]:
+    """Visible text of the page body, one line per block. Used when a school page is built
+    from custom <div> layouts that the announcement parser does not read."""
+    start = html.find('class="mpgdetail"')
+    if start == -1:
+        return []
+    start = html.find(">", start) + 1
+    end = html.find(":::", start)
+    body = html[start:end if end != -1 else start + 200000]
+    body = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", body, flags=re.S | re.I)
+    body = BLOCK_END.sub("\n", body)
+    text = unescape(TAG.sub(" ", body))
+    lines = [re.sub(r"[ \t\u00a0\u200b]+", " ", line).strip() for line in text.split("\n")]
+    return [line for line in lines if line][:2000]
+
+
 def child_pages(school: dict, html: str, base_url: str) -> list[int]:
     out = []
     for href in re.findall(r'href="([^"]+)"', html):
@@ -163,8 +206,10 @@ def pick_pages(index: dict, school: dict, cap: int, now: datetime) -> list[int]:
         pages.setdefault(str(root), {"page_id": root, "status": "pending"})
     stale_before = (now - timedelta(days=REFRESH_DAYS)).isoformat(timespec="seconds")
     pending = [int(k) for k, v in pages.items() if v.get("status") == "pending"]
+    retry_before = (now - timedelta(days=1)).isoformat(timespec="seconds")
     stale = sorted((v.get("checked_at") or "", int(k)) for k, v in pages.items()
-                   if v.get("status") != "pending" and (v.get("checked_at") or "") < stale_before)
+                   if v.get("status") != "pending" and ((v.get("checked_at") or "") < stale_before or
+                   (v.get("attachments_pending") and (v.get("checked_at") or "") < retry_before)))
     pending.sort(key=lambda pid: (pid not in school["roots"], pid))
     return (pending + [pid for _, pid in stale])[:cap]
 
@@ -184,8 +229,12 @@ def public_item(school_id: str, school: dict, entry: dict) -> dict:
         # Menu pages carry no publication date; the check time is not one.
         "date": "",
         "updated_at": (entry.get("changed_at") or "")[:10],
-        "attachment_names": [a["name"] for a in entry.get("attachments", [])][:20],
+        "attachment_names": ([a["name"] for a in entry.get("attachments", [])] +
+                             [d["name"] for d in entry.get("doc_links", [])])[:30],
         "keywords": list(entry.get("keywords") or [])[:40],
+        # Official documents on this page (school PDFs and Google Drive links): names and links only.
+        "documents": ([{"name": a["name"], "url": a["url"]} for a in entry.get("attachments", []) if a.get("url")] +
+                      list(entry.get("doc_links") or []))[:30],
     }
     for key in ("detail_ref", "detail_revision", "detail_status"):
         if entry.get(key):
@@ -245,12 +294,26 @@ def process_page(school_id: str, school: dict, index: dict, page_id: int, html: 
         return entry
     record = scrape.write_detail_record(item, html, entry["checked_at"], session=session,
                                         attachment_budget=attachment_budget, request_delay_sec=delay)
+    # Custom-layout pages: the parser saw far less text than the page shows.
+    lines = page_text_lines(html)
+    visible = sum(len(line) for line in lines)
+    if visible > 2 * len(body_text) + 120:
+        record["blocks"] = [{"type": "paragraph", "text": line} for line in lines]
+        record["parse_status"] = "parsed"
+        body_text = "\n".join(lines)
+        target = ROOT / "docs" / item["detail_ref"]
+        target.write_text(json.dumps(record, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        item["detail_status"] = "parsed"
     new_revision = record.get("source_hash", "")
     if entry.get("content_hash") != hashlib.sha256(body_text.encode("utf-8")).hexdigest():
         entry["changed_at"] = entry["checked_at"]
         entry["content_hash"] = hashlib.sha256(body_text.encode("utf-8")).hexdigest()
-    entry["keywords"] = index_keywords(body_text + " " + " ".join(
+    entry["doc_links"] = doc_links(html, record_url)
+    entry["keywords"] = index_keywords(body_text + " " + " ".join(link["name"] for link in entry["doc_links"]) + " " + " ".join(
         str(a.get("embedded_text") or "") for a in record.get("attachments", [])))
+    unread = [a for a in record.get("attachments", []) if str(a.get("extension") or "").lower().lstrip(".") in ("pdf", "docx")
+              and a.get("parse_status") not in ("parsed", "unsupported", "unparsed", "needs_ocr")]
+    entry["attachments_pending"] = bool(unread)
     entry["detail_ref"] = item["detail_ref"]
     entry["detail_revision"] = new_revision
     entry["detail_status"] = item["detail_status"]
@@ -333,11 +396,12 @@ def build_from_cache(school_id: str, cache_dir: str) -> dict:
 if __name__ == "__main__":
     command = sys.argv[1] if len(sys.argv) > 1 else "discover"
     if command == "discover":
-        try:
-            discover()
-        except Exception as exc:  # never block the hourly announcement update
-            print(f"[warn] 校園資訊更新失敗: {exc}", file=sys.stderr)
-    elif command == "seed" and len(sys.argv) > 2:
-        build_from_cache("cysh", sys.argv[2])
+        for school_id in SCHOOLS:
+            try:
+                discover(school_id)
+            except Exception as exc:  # never block the hourly announcement update
+                print(f"[warn] 校園資訊 {school_id} 更新失敗: {exc}", file=sys.stderr)
+    elif command == "seed" and len(sys.argv) > 3:
+        build_from_cache(sys.argv[2], sys.argv[3])
     else:
-        sys.exit("usage: school_info.py discover | seed <cache-dir>")
+        sys.exit("usage: school_info.py discover | seed <school-id> <cache-dir>")

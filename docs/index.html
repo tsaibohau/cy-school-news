@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=97">
+<link rel="stylesheet" href="style.css?v=98">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -66,23 +66,32 @@
     </section>
   </section>
 
-  <!-- 免費、可追溯的校務資料問答；只整理官方公告，不呼叫生成式 AI。 -->
-  <section id="viewAssistant" class="assistant-view" hidden aria-labelledby="assistantTitle">
-    <div class="section-heading"><h2 id="assistantTitle">問校務</h2></div>
-    <form id="assistantForm" class="assistant-form">
-      <label for="assistantQuestion" class="visually-hidden">想問什麼？</label>
-      <div class="assistant-input-row"><input id="assistantQuestion" type="search" required maxlength="160" placeholder="例如：學生音樂比賽什麼時候截止？"><button id="assistantAsk" class="btn-primary" type="submit">查詢</button></div>
-      <div class="assistant-form-foot">
-        <div class="assistant-examples" aria-label="問題範例">
-          <button type="button" data-assistant-example="最近有哪些獎助學金？">獎助學金</button>
-          <button type="button" data-assistant-example="有哪些活動快截止？">快截止的活動</button>
-          <button type="button" data-assistant-example="學生音樂比賽什麼時候截止？">音樂比賽截止日</button>
-        </div>
-        <label class="assistant-scope">範圍<select id="assistantScope"><option value="preferred">我的學校</option><option value="all">所有學校</option></select></label>
+  <!-- 問校務：對話式校園資訊助理。只整理官方公告、學校規定、行事曆與課表，不呼叫生成式 AI。 -->
+  <section id="viewAssistant" class="assistant-view chat-view" hidden aria-labelledby="assistantTitle">
+    <div id="assistantWelcome" class="chat-welcome">
+      <span class="chat-mark" aria-hidden="true">問</span>
+      <h2 id="assistantTitle" class="chat-greeting">想問學校什麼？</h2>
+      <p class="chat-subtitle">規定、行事曆、課表、公告，都可以直接問。答案會附上學校的官方出處。</p>
+    </div>
+    <div id="assistantThread" class="chat-thread" aria-live="polite">
+      <div id="assistantAnswer" class="assistant-answer"></div>
+    </div>
+    <form id="assistantForm" class="assistant-form chat-composer">
+      <div class="assistant-examples chat-suggestions" aria-label="問題範例">
+        <button type="button" data-assistant-example="請假要怎麼請？">請假要怎麼請</button>
+        <button type="button" data-assistant-example="第二次段考是哪幾天？">第二次段考</button>
+        <button type="button" data-assistant-example="明天有什麼課？">明天的課</button>
       </div>
+      <div class="chat-box">
+        <label for="assistantQuestion" class="visually-hidden">想問什麼？</label>
+        <textarea id="assistantQuestion" rows="1" required maxlength="160" enterkeyhint="send" placeholder="問問學校的事，例如：書可以借多久？"></textarea>
+        <div class="chat-box-foot">
+          <label class="assistant-scope">範圍<select id="assistantScope"><option value="preferred">我的學校</option><option value="all">所有學校</option></select></label>
+          <button id="assistantAsk" class="chat-send" type="submit" aria-label="送出問題"><span aria-hidden="true">↑</span></button>
+        </div>
+      </div>
+      <p id="assistantStatus" class="chat-status" role="status" aria-live="polite"></p>
     </form>
-    <p id="assistantStatus" class="hint" role="status" aria-live="polite"></p>
-    <div id="assistantAnswer" class="assistant-answer"></div>
   </section>
 
   <!-- 今日：由既有行事曆、公告與待辦即時投影，不另存資料。 -->
@@ -308,9 +317,9 @@
 
 <div id="functionDock" class="function-dock" hidden>
 <nav id="navMenu" class="tabbar" aria-label="主要功能">
-  <button id="tabHome" class="tab is-active" aria-current="page"><span class="tab-icon" aria-hidden="true">首</span><span class="tab-label">首頁</span></button>
-  <button id="tabLatest" class="tab"><span class="tab-icon" aria-hidden="true">告</span><span class="tab-label">公告</span></button>
   <button id="tabAssistant" class="tab"><span class="tab-icon" aria-hidden="true">問</span><span class="tab-label">問校務</span></button>
+  <button id="tabHome" class="tab"><span class="tab-icon" aria-hidden="true">首</span><span class="tab-label">首頁</span></button>
+  <button id="tabLatest" class="tab is-active" aria-current="page"><span class="tab-icon" aria-hidden="true">告</span><span class="tab-label">公告</span></button>
   <button id="tabCalendar" class="tab"><span class="tab-icon" aria-hidden="true">曆</span><span class="tab-label">行事曆</span></button>
   <button id="tabTimetable" class="tab"><span class="tab-icon" aria-hidden="true">課</span><span class="tab-label">課表</span></button>
   <button id="tabSub" class="tab"><span class="tab-icon" aria-hidden="true">我</span><span class="tab-label">我的</span><em id="subBadge" class="badge" hidden></em></button>
@@ -332,13 +341,13 @@
 <script src="today.js?v=42"></script>
 <script src="daily-brief.js?v=2"></script>
 <script src="search-taxonomy.js?v=56"></script>
-<script src="search-query.js?v=56"></script>
+<script src="search-query.js?v=57"></script>
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
-<script src="assistant-qa.js?v=62"></script>
+<script src="assistant-qa.js?v=63"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=112"></script>
+<script src="app.js?v=114"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

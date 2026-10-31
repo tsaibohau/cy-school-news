@@ -23,7 +23,7 @@
   var GENERIC = ["有什麼", "什麼", "哪些", "最近", "目前", "相關", "規定", "辦法", "如何", "怎麼", "何時", "時間", "日期", "截止", "活動", "資訊", "資料", "請問", "快", "或"];
   var PERSONAL_DATA_QUERY = /名單|姓名|學號|座號|身分證|電話|地址|成績|獎懲|缺曠|請假紀錄|健康檢查結果|病歷|診斷|低收入|補助名冊|誰錄取|誰得獎/;
   /* Asking when or how to check grades is a schedule question, not a request for records. */
-  var PROCEDURE_QUESTION = /要注意|注意事項|重點|什麼時候|何時|哪天|哪一天|期程|時間|日期|怎麼查|如何查|在哪查|哪裡查|怎麼申請|如何申請|校對/;
+  var PROCEDURE_QUESTION = /規定|辦法|要點|規範|準則|標準表|要注意|注意事項|重點|什麼時候|何時|哪天|哪一天|期程|時間|日期|怎麼查|如何查|在哪查|哪裡查|怎麼申請|如何申請|校對/;
   var RECORD_ONLY = /名單|姓名|學號|座號|身分證|電話|地址|病歷|診斷|誰錄取|誰得獎/;
   var EXAM_RESULTS = /(?:期中考|期末考|段考|模擬考|複習考|補考|重修|重補修|學期|學測|統測|分科|英檢|會考|英聽|競賽|比賽)(?:的)?成績/;
   var PERSON_TARGET = /我的|他的|她的|同學的|[\u4e00-\u9fff]{2,3}的成績|幾分|多少分|排名|名次/;
@@ -1102,7 +1102,9 @@
       if (!line.trim()) return;
       /* PDF lines wrap at ~40 characters; a shorter previous line (a heading or a table
          row) or one that ended a sentence means this line starts something new. */
-      var wrapped = previous.trim().length >= 34 && !/[。：:；;]$/.test(previous.trim());
+      var prev = previous.trim();
+      /* 「三、借閱時間：」 continues on the next line unless that line starts a new item. */
+      var wrapped = prev.length >= 34 && !/[。：:；;]$/.test(prev) || /[：:]$/.test(prev) && prev.length < 40;
       if (CLAUSE_START.test(line) || !current || !wrapped) { if (current) out.push(current); current = line.trim(); }
       else current += line.trim();
       previous = line;
@@ -1129,6 +1131,8 @@
   function scoreClause(clause, terms, query, title) {
     var c = compact(clause), score = 0;
     if (RULE_SKIP.test(clause) || REVISION_HISTORY.test(clause)) return 0;
+    /* A short heading (「圖書館借閱辦法」) names the rule but does not answer anything. */
+    if (clause.length < 14 && !/[。；;：:]|\d|[一二三四五六七八九十]+(?:天|日|週|冊|次|時|分)/.test(clause)) return 0;
     if (compact(title).indexOf(c.replace(/[。．.]$/, "")) !== -1) return 0;
     var chapter = compact(title.split("›").pop() || "");
     if (chapter && c.indexOf(chapter) !== -1 && c.length < chapter.length + 14) return 0;
@@ -1138,7 +1142,7 @@
       if (c.indexOf(t) !== -1) score += 5;
       else for (var i = 0; i + 2 <= t.length; i++) if (c.indexOf(t.slice(i, i + 2)) !== -1) score += 1;
     });
-    if (/幾點|時間|多久|何時|什麼時候|幾天|期限/.test(query) && /\d{1,2}[:：]\d{2}|[一二三四五六七八九十兩\d]+\s*(?:週|天|日|分鐘|小時|次|冊)/.test(clause)) score += 4;
+    if (/幾點|時間|多久|何時|什麼時候|幾天|期限|開放|開館/.test(query) && /\d{1,2}[:：]\d{2}|[上下]午[一二三四五六七八九十\d]+時|[一二三四五六七八九十兩\d]+\s*(?:週|天|日|分鐘|小時|次|冊)/.test(clause)) score += 4;
     if (/可以|可不可以|能不能|能否|嗎|是否|准不准/.test(query) && /不得|禁止|不可|應|須|得|准|始可|限/.test(clause)) score += 3;
     if (/怎麼|如何|申請|辦理|流程|手續/.test(query) && /應|須|申請|填寫|辦理|系統|向|持/.test(clause)) score += 3;
     if (score && score < 10 && terms.literal.some(function (t) { return compact(title).indexOf(t) !== -1; })) score += 5;
@@ -1152,10 +1156,15 @@
     ranked.slice(0, 8).forEach(function (row, position) {
       if (!isSchoolDoc(row.item) || !details[row.item.id]) return;
       var title = clean(row.item.title || ""), compactTitle = compact(title);
+      var linkLabels = {};
+      (row.item.documents || []).forEach(function (doc) { linkLabels[compact(doc && doc.name || "")] = true; });
       /* A chapter whose own title is about the subject (行動載具 for 手機) beats one that only mentions it. */
       var titleBonus = terms.literal.concat(terms.related).some(function (t) { return t.length >= 2 && compactTitle.indexOf(t) !== -1; }) ? 4 : 0;
       ruleClauses(ruleText(details[row.item.id])).forEach(function (clause, index, all) {
-        var base = scoreClause(clause, terms, query, title);
+        /* A clause made only of link labels (「服裝儀容委員名單 服裝儀容規定」) is not an answer. */
+        var rest = compact(clause);
+        Object.keys(linkLabels).forEach(function (label) { if (label) rest = rest.split(label).join(""); });
+        var base = rest.replace(/[。．.、，,]/g, "").length < 6 ? 0 : scoreClause(clause, terms, query, title);
         var score = base ? base + titleBonus - position : 0;
         if (!best || score > best.score) best = { score: score, clause: clause, index: index, all: all, row: row };
       });
@@ -1298,10 +1307,49 @@
     });
   }
   var SERVICE_ASK = /查|登入|系統|網址|網站|哪裡|在哪|去哪|怎麼|如何|預約|列印|下載|紀錄/;
+  /* Official documents a school page links to (嘉女 keeps 學生獎懲規定 etc. on Google Drive).
+     Only the name and link are known; the answer points to the document. */
+  var DOC_JUNK = /請按我|點此|點我|連結$|\.(?:jpe?g|png|gif|mp4)$|^\d+\.pdf$|影像|摸彩|授證|交接|活動紀錄|餐會/;
+  function documentLinks(query, items, scopeSchool) {
+    var GENERIC_DOC = /^(?:規定|辦法|要點|規範|相關|資料|文件|怎麼|如何|申請|查詢)$/;
+    var terms = ruleTerms(query), wanted = terms.literal.concat(terms.rest).filter(function (t) { return t.length >= 2 && !GENERIC_DOC.test(t); });
+    if (!wanted.length) return [];
+    var related = terms.related.filter(function (t) { return t.length >= 2; }), rows = [], seen = {};
+    var subject = compact(stripSchoolNames(query).replace(/請問|我想知道|怎麼辦|怎麼|如何|是什麼|有哪些|有沒有|在哪裡|在哪|哪裡|可以|嗎|呢|的|[？?！!。，,\s]/g, ""));
+    (items || []).forEach(function (item) {
+      if (!item || item.kind !== "school_info" || (scopeSchool && item.school !== scopeSchool)) return;
+      (item.documents || []).forEach(function (doc) {
+        var name = clean(doc && doc.name || ""), c = compact(name);
+        if (!name || name.length < 4 || DOC_JUNK.test(name) || !/^https:\/\//.test(String(doc.url || "")) || seen[doc.url]) return;
+        var score = 0;
+        wanted.forEach(function (t) { if (c.indexOf(t) !== -1) score += 10; });
+        if (!score) related.forEach(function (t) { if (c.indexOf(t) !== -1) score = Math.max(score, 6); });
+        if (/規定|辦法|要點|規範|章程|須知/.test(name)) score += 2;
+        if (score && subject.length >= 3 && c.indexOf(subject) !== -1) score += 5;
+        if (score >= 8) { seen[doc.url] = true; rows.push({ score: score, name: name, url: doc.url, page: clean(item.title || ""), school_name: item.school_name || "" }); }
+      });
+    });
+    return rows.sort(function (a, b) { return b.score - a.score; }).slice(0, 3);
+  }
   function answer(query, items, details, options) {
     query = stripSchoolNames(clean(query).slice(0, 160));
     var result = answerCore(query, items, details, options);
     var services = serviceLinks(query, items);
+    var documents = result && result.mode !== "timetable" ? documentLinks(query, items, options && options.schoolId) : [];
+    if (result && documents.length) {
+      result.document_links = documents;
+      /* A document named after exactly what was asked beats a weak sentence from a menu page. */
+      var topSource = (result.sources || [])[0];
+      var shortQuote = result.mode !== "rule" || clean(result.summary || "").replace(/^依.*?：/, "").length < 40;
+      var weakPageAnswer = result.status === "answered" && result.mode !== "service" && topSource && topSource.kind === "school_info" && documents[0].score >= 12 && shortQuote;
+      if ((result.status !== "answered" && documents[0].score >= 8) || weakPageAnswer) {
+        var doc = documents[0];
+        result = Object.assign({}, result, { status: "answered", mode: "document", evidence: [], key_points: [],
+          summary: (doc.school_name || "學校") + "的相關規定在官方文件「" + doc.name + "」（" + doc.page + "）。本站讀不到這份文件的內文，請點開查看。",
+          sources: documents.map(function (d) { return { id: "doc:" + d.url, kind: "service", title: d.name, url: d.url, school_name: d.school_name, note: d.page }; }),
+          limitation: "文件連結來自學校官網；內容以學校公告的文件為準。", document_links: documents });
+      }
+    }
     if (result && services.length) {
       result.service_links = services;
       /* 「成績怎麼查」「考試範圍在哪看」: the answer is the system itself. */
@@ -1405,5 +1453,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, timetableAnswer: timetableAnswer, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });
