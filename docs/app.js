@@ -2461,8 +2461,11 @@
     function setupMascot() {
       if (!window.CyNewsMascot) return;
       var hero = $("mascotHero");
-      if (hero && !hero.firstChild) hero.innerHTML = window.CyNewsMascot.svg();
-      if (!mascot) mascot = window.CyNewsMascot.mount($("mascotStage"));
+      if (hero && !hero.firstChild) {
+        var heroMascot = window.CyNewsMascot.mount(hero, { walk: false, pixel: 4 });
+        if (heroMascot) heroMascot.play("wave");
+      }
+      if (!mascot) mascot = window.CyNewsMascot.mount($("mascotStage"), { pixel: 2 });
     }
     function mascotMood(mood, text) { try { if (mascot) mascot.setMood(mood, text); } catch (_) {} }
     function renderAssistantGreeting() {
