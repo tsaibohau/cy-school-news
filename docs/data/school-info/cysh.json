@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-10-31T16:19:24+08:00",
+ "generated_at": "2026-10-31T16:27:45+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -126,11 +126,39 @@
   },
   "199": {
    "page_id": 199,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:14+08:00",
+   "path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "changed_at": "2026-10-31T16:27:14+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-199.json",
+   "detail_revision": "cba98e0d4f4fe60ecf4ea570a6d01a9280560658f09b3d1c5ff7c97072ce4c6f",
+   "detail_status": "empty",
+   "attachments": []
   },
   "206": {
    "page_id": 206,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:17+08:00",
+   "path": [
+    "行政單位",
+    "進修部"
+   ],
+   "changed_at": "2026-10-31T16:27:17+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-206.json",
+   "detail_revision": "a85402399f355db41be5d662ee08fe4ac453fd1bdcd4205e662709db5b594c01",
+   "detail_status": "empty",
+   "attachments": []
   },
   "117": {
    "page_id": 117,
@@ -179,35 +207,171 @@
   },
   "3951": {
    "page_id": 3951,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:19+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "學生手冊"
+   ],
+   "changed_at": "2026-10-31T16:27:19+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-3951.json",
+   "detail_revision": "d301c231dc157e3deb92cce78d0eb0c62ab82eac760a120b4ccf8378a8125a23",
+   "detail_status": "empty",
+   "attachments": []
   },
   "89": {
    "page_id": 89,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:29+08:00",
+   "path": [
+    "關於嘉中",
+    "嘉中簡介"
+   ],
+   "changed_at": "2026-10-31T16:27:29+08:00",
+   "content_hash": "cb7b42bd1cc890c8e786d0bc95a1962dca41c2172840aacafb365e975237feef",
+   "doc_links": [],
+   "keywords": [
+    "圖書館",
+    "宿舍",
+    "校長",
+    "歷任校長",
+    "競賽",
+    "考試"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-89.json",
+   "detail_revision": "032a56b76cdc540b278668adf08b5653b3397b6d696c33dc22e5ce0031b0dd08",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "87": {
    "page_id": 87,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:21+08:00",
+   "path": [
+    "關於嘉中",
+    "嘉中校史"
+   ],
+   "changed_at": "2026-10-31T16:27:21+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-87.json",
+   "detail_revision": "2915e372685180b028d6928cb7d8c24f58f3c373b6b91e7ad9fb9f64e9f5d8c4",
+   "detail_status": "empty",
+   "attachments": []
   },
   "88": {
    "page_id": 88,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:26+08:00",
+   "path": [
+    "關於嘉中",
+    "歷任校長"
+   ],
+   "changed_at": "2026-10-31T16:27:26+08:00",
+   "content_hash": "984a80426c049e915a9dceffffa7dd02d91455b78c0ce041baa09408e20cbf43",
+   "doc_links": [],
+   "keywords": [
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-88.json",
+   "detail_revision": "421349baa82b6abfa429f2b5b8a556615031b8947cda680cce651ebc6a8daa0f",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "90": {
    "page_id": 90,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:31+08:00",
+   "path": [
+    "關於嘉中",
+    "嘉中校訓"
+   ],
+   "changed_at": "2026-10-31T16:27:31+08:00",
+   "content_hash": "e63f7631fb0ed0f0e4ad0775e1c9b590b3df51fac95bda3efa767ab04cd67665",
+   "doc_links": [],
+   "keywords": [
+    "校訓",
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-90.json",
+   "detail_revision": "cb9896301f0f3773e737ba7cb575d98c06aedd089d04df2191896403ecc2c808",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "91": {
    "page_id": 91,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:33+08:00",
+   "path": [
+    "關於嘉中",
+    "嘉中校徽"
+   ],
+   "changed_at": "2026-10-31T16:27:33+08:00",
+   "content_hash": "36a9e7f1c95b82ffb99743e0c5c4ce95d83c9a430aac59f84ef3cbfab6145068",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-91.json",
+   "detail_revision": "1f9c8f7928463b34e89c24b0466410ee31a0ce7a5a43d768a160fbda2d71d76e",
+   "detail_status": "empty",
+   "attachments": []
   },
   "92": {
    "page_id": 92,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:35+08:00",
+   "path": [
+    "關於嘉中",
+    "嘉中校歌"
+   ],
+   "changed_at": "2026-10-31T16:27:35+08:00",
+   "content_hash": "4e6efbb4b134cabeea21fec146456761113de50842c75b47984e2b38444ca922",
+   "doc_links": [],
+   "keywords": [
+    "校歌",
+    "校慶",
+    "校訓"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-92.json",
+   "detail_revision": "ee7f79959b0bf97e45ec8c7c9ae82af45096d50e735d458e5439ed3fcd4a7d83",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "新版舊版校歌對照表PDF檔下載",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/2/409707963.pdf"
+    }
+   ]
   },
   "93": {
    "page_id": 93,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T16:27:43+08:00",
+   "path": [
+    "關於嘉中",
+    "嘉中校樹"
+   ],
+   "changed_at": "2026-10-31T16:27:43+08:00",
+   "content_hash": "9cfffd7e8ecdd614cb91f5498ce7d65262e35b2d998f16849a1bebf668022c7e",
+   "doc_links": [],
+   "keywords": [
+    "校樹"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-93.json",
+   "detail_revision": "9ca1a75fa97178057b6e7a203d0b0fa7760669ecd3bd481dd6d717e1cd87b9d8",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "95": {
    "page_id": 95,
@@ -571,6 +735,54 @@
   },
   "5081": {
    "page_id": 5081,
+   "status": "pending"
+  },
+  "1431": {
+   "page_id": 1431,
+   "status": "pending"
+  },
+  "790": {
+   "page_id": 790,
+   "status": "pending"
+  },
+  "792": {
+   "page_id": 792,
+   "status": "pending"
+  },
+  "793": {
+   "page_id": 793,
+   "status": "pending"
+  },
+  "795": {
+   "page_id": 795,
+   "status": "pending"
+  },
+  "1391": {
+   "page_id": 1391,
+   "status": "pending"
+  },
+  "5122": {
+   "page_id": 5122,
+   "status": "pending"
+  },
+  "1760": {
+   "page_id": 1760,
+   "status": "pending"
+  },
+  "1004": {
+   "page_id": 1004,
+   "status": "pending"
+  },
+  "1369": {
+   "page_id": 1369,
+   "status": "pending"
+  },
+  "1382": {
+   "page_id": 1382,
+   "status": "pending"
+  },
+  "1003": {
+   "page_id": 1003,
    "status": "pending"
   }
  },
@@ -2439,9 +2651,154 @@
    "updated_at": "2026-10-31",
    "attachment_names": [],
    "keywords": [],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-86.json",
    "detail_revision": "3c7203ad704368dd11bb0b5bf087208942ccf32a63a865b75372b5e3cfea60d6",
    "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-87",
+   "kind": "school_info",
+   "title": "關於嘉中 › 嘉中校史",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-87.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-87.json",
+   "detail_revision": "2915e372685180b028d6928cb7d8c24f58f3c373b6b91e7ad9fb9f64e9f5d8c4",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-88",
+   "kind": "school_info",
+   "title": "關於嘉中 › 歷任校長",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-88.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-88.json",
+   "detail_revision": "421349baa82b6abfa429f2b5b8a556615031b8947cda680cce651ebc6a8daa0f",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-89",
+   "kind": "school_info",
+   "title": "關於嘉中 › 嘉中簡介",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-89.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "圖書館",
+    "宿舍",
+    "校長",
+    "歷任校長",
+    "競賽",
+    "考試"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-89.json",
+   "detail_revision": "032a56b76cdc540b278668adf08b5653b3397b6d696c33dc22e5ce0031b0dd08",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-90",
+   "kind": "school_info",
+   "title": "關於嘉中 › 嘉中校訓",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-90.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "校訓",
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-90.json",
+   "detail_revision": "cb9896301f0f3773e737ba7cb575d98c06aedd089d04df2191896403ecc2c808",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-91",
+   "kind": "school_info",
+   "title": "關於嘉中 › 嘉中校徽",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-91.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-91.json",
+   "detail_revision": "1f9c8f7928463b34e89c24b0466410ee31a0ce7a5a43d768a160fbda2d71d76e",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-92",
+   "kind": "school_info",
+   "title": "關於嘉中 › 嘉中校歌",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-92.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [
+    "新版舊版校歌對照表PDF檔下載"
+   ],
+   "keywords": [
+    "校歌",
+    "校慶",
+    "校訓"
+   ],
+   "documents": [
+    {
+     "name": "新版舊版校歌對照表PDF檔下載",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/2/409707963.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cysh/cysh-info-92.json",
+   "detail_revision": "ee7f79959b0bf97e45ec8c7c9ae82af45096d50e735d458e5439ed3fcd4a7d83",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-93",
+   "kind": "school_info",
+   "title": "關於嘉中 › 嘉中校樹",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-93.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "校樹"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-93.json",
+   "detail_revision": "9ca1a75fa97178057b6e7a203d0b0fa7760669ecd3bd481dd6d717e1cd87b9d8",
+   "detail_status": "parsed"
   },
   {
    "id": "cysh-info-94",
@@ -2465,6 +2822,7 @@
     "社團",
     "衛生"
    ],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-94.json",
    "detail_revision": "c8c706b9c13648ffa1402952dee95b920edd73a22981e0e93f92fef66c77590c",
    "detail_status": "parsed"
@@ -2481,6 +2839,7 @@
    "updated_at": "2026-10-31",
    "attachment_names": [],
    "keywords": [],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-97.json",
    "detail_revision": "cc8adff8209b1c640cf714b61266edab713c5c05692d82dca21f894aa45578a3",
    "detail_status": "empty"
@@ -2497,6 +2856,7 @@
    "updated_at": "2026-10-31",
    "attachment_names": [],
    "keywords": [],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-117.json",
    "detail_revision": "128a89c8ead5f1595d90cedb686dfb2420ebb7ee317115508edceed53fc77100",
    "detail_status": "empty"
@@ -2513,6 +2873,7 @@
    "updated_at": "2026-10-31",
    "attachment_names": [],
    "keywords": [],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-132.json",
    "detail_revision": "0e28eaedc8ae0f2df07ce381603cea44757fcd8406ff5877e729a160afe22727",
    "detail_status": "empty"
@@ -2529,6 +2890,7 @@
    "updated_at": "2026-10-31",
    "attachment_names": [],
    "keywords": [],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-151.json",
    "detail_revision": "35fce1808f2132da4e5476fa440ea8c27bdd877e58647795dcf9b9b2833d25c9",
    "detail_status": "empty"
@@ -2545,6 +2907,7 @@
    "updated_at": "2026-10-31",
    "attachment_names": [],
    "keywords": [],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-184.json",
    "detail_revision": "8ba0c2e79c214de3cb346d70baaa48466f82f5eebc7cc3991ed0a953a1e00b3a",
    "detail_status": "empty"
@@ -2561,6 +2924,7 @@
    "updated_at": "2026-10-31",
    "attachment_names": [],
    "keywords": [],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-194.json",
    "detail_revision": "b0616b910568eb405de4e5fd84574cb4295ba689dce709e8f74e3daa777908ee",
    "detail_status": "empty"
@@ -2577,6 +2941,7 @@
    "updated_at": "2026-10-31",
    "attachment_names": [],
    "keywords": [],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-195.json",
    "detail_revision": "b1335bf3fd93057b8bd83b3f28fc077b87bfee557d6dbdb253cf315a93a4714d",
    "detail_status": "empty"
@@ -2593,8 +2958,60 @@
    "updated_at": "2026-10-31",
    "attachment_names": [],
    "keywords": [],
+   "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-196.json",
    "detail_revision": "a3229672929863720735c88fb7ba202b032dbffba9e31bea2cc36626c2edcebb",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-199",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導室",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-199.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-199.json",
+   "detail_revision": "cba98e0d4f4fe60ecf4ea570a6d01a9280560658f09b3d1c5ff7c97072ce4c6f",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-206",
+   "kind": "school_info",
+   "title": "行政單位 › 進修部",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-206.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-206.json",
+   "detail_revision": "a85402399f355db41be5d662ee08fe4ac453fd1bdcd4205e662709db5b594c01",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-3951",
+   "kind": "school_info",
+   "title": "行政單位 › 學務處 › 學生手冊",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-3951.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-3951.json",
+   "detail_revision": "d301c231dc157e3deb92cce78d0eb0c62ab82eac760a120b4ccf8378a8125a23",
    "detail_status": "empty"
   },
   {
