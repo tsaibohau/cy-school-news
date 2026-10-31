@@ -98,9 +98,13 @@
     setHidden(profileExtra, !(has("assistant") || has("notifications")));
 
     document.querySelectorAll("button[data-detail-id], button[data-read-id], .read-state, .mark-read").forEach(function (node) {
+      /* 問校務列出的公告和依據人人都看得到（訪客點了會看到標題並連到校網原文）。 */
+      if (closest(node, "#viewAssistant")) return;
       setHidden(node, !has("member_content"));
     });
     document.querySelectorAll("button[data-add-task]").forEach(function (node) { setHidden(node, !has("calendar")); });
+    /* Lets the app react (for example, open 問校務 once it becomes available). */
+    if (typeof CustomEvent === "function" && document.dispatchEvent) document.dispatchEvent(new CustomEvent("cy-capabilities-applied"));
   }
 
   /* 一般使用者功能: one policy for every regular member, set by a primary administrator.

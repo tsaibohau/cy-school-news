@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=107">
+<link rel="stylesheet" href="style.css?v=108">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -72,6 +72,11 @@
 
   <!-- 問校務：對話式校園資訊助理。只整理官方公告、學校規定、行事曆與課表，不呼叫生成式 AI。 -->
   <section id="viewAssistant" class="assistant-view chat-view" hidden aria-labelledby="assistantTitle">
+    <div id="sidebarHint" class="sidebar-hint" role="note" hidden>
+      <span class="sidebar-hint-arrow" aria-hidden="true">↖</span>
+      <p>這裡是問校務，直接問學校的事就好。想自己翻<strong>所有公告</strong>，點左上角的 <b aria-hidden="true">☰</b> 打開側欄。</p>
+      <div class="sidebar-hint-actions"><button type="button" class="btn-primary" data-hint-open>打開側欄看看</button><button type="button" class="btn-ghost" data-hint-close>知道了</button></div>
+    </div>
     <div id="assistantWelcome" class="chat-welcome">
       <span id="mascotHero" class="chat-mark mascot-hero" aria-hidden="true"></span>
       <h2 id="assistantTitle" class="chat-greeting">想問學校什麼？</h2>
@@ -355,7 +360,7 @@
 </div>
 </div>
 
-<script src="account-config.js?v=44"></script>
+<script src="account-config.js?v=45"></script>
 <script src="supabase-sync.js?v=58"></script>
 <script src="account-auth.js?v=79"></script>
 <script src="push-subscription.js?v=41"></script>
@@ -379,7 +384,7 @@
 <script src="announcement-sort.js?v=1"></script>
 <script src="google-calendar.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=123"></script>
+<script src="app.js?v=124"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>
