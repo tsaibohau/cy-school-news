@@ -198,4 +198,21 @@ assert.equal(none.status, "insufficient");
 assert.match(none.reply.text, /都沒查到「宿舍門禁」/);
 assert.match(QA.compareResults("", rows).reply.text, /比什麼|給我一個主題/);
 
+/* 「學校有什麼新鮮事」 lists recent notices; doubt follow-ups search the last question again;
+   last year's notice is reported as last year's. */
+assert.ok(QA.browsePlan("學校有什麼新鮮事？"), "新鮮事 is a what's-new question");
+assert.ok(QA.browsePlan("嘉中最近發生什麼事"));
+assert.equal(QA.browsePlan("請假規定"), null);
+const doubtPrev = { query: "閱讀心得報告什麼時候要交？", answered: false };
+assert.deepEqual(QA.resolveFollowUp("你確定115年沒有嗎？", doubtPrev), { query: "閱讀心得報告什麼時候要交？ 115年", context: "閱讀心得報告什麼時候要交？", doubt: true });
+assert.equal(QA.resolveFollowUp("真的沒有嗎", doubtPrev).doubt, true, "doubt continues even after a miss");
+assert.equal(QA.resolveFollowUp("謝謝", doubtPrev).query, "謝謝");
+const reading = [{ id: "cysh-r1", school: "cysh", school_name: "嘉中", date: "2025-10-15", title: "國立嘉義高中114學年度推展閱讀運動閱讀心得報告繳交流程", category: "學務" }];
+const readingOpts = { asOf: "2026-11-01", scopeLabel: "嘉中", schoolId: "cysh" };
+r = QA.answer("閱讀心得報告什麼時候要交？", reading, {}, readingOpts);
+assert.match(r.reply.text, /115 學年度的「閱讀心得報告」我還沒看到公告。最近一次是 114 學年度/);
+r = QA.answer("閱讀心得報告什麼時候要交？ 115年", reading, {}, Object.assign({ doubt: true }, readingOpts));
+assert.match(r.reply.text, /^(?:被你懷疑了|不信我|我再確認).*115 學年度的「閱讀心得報告」我還沒看到公告/);
+assert.doesNotMatch(r.reply.text, /亂掰|考倒/, "one opener, not two");
+
 console.log("問校務 school documents and timetable tests passed");

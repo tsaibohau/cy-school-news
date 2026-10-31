@@ -363,6 +363,8 @@
   }
   function topicScore(text, query, stats) {
     text = compact(text);
+    /* 「115年」 names the year asked about, not the subject: titles of other years still match. */
+    query = clean(String(query || "").replace(YEAR_WORD, " "));
     /* The question names a known subject (愛校服務, 選組, 學生證): the text must mention
        that subject or one of its synonyms, not just share a word such as 服務. */
     if (SearchQuery && SearchQuery.queryPlan && SearchQuery.taxonomyTopics) {
@@ -672,8 +674,10 @@
     return hit ? "想確認的話，可以問導師或" + hit.office + "。" : "想確認的話，可以問導師或相關處室。";
   }
   var SUBJECT_STRIP = /怎麼辦|怎麼選|怎麼報名|怎麼申請|怎麼請|怎麼繳|怎麼查|要去哪裡|請問|我想知道|想知道|可以幫我|幫我|什麼時候|何時|哪一天|哪天|哪幾天|幾號|幾點|要怎麼|怎麼|如何|在哪裡|在哪|哪裡|去哪|有沒有|有什麼|有哪些|是什麼|是否|需不需要|要不要|可以|需要|一定要|的時間|時間|日期|報名|申請|辦法|規定|呢|嗎|吧|啊|是|要|[？?！!。，,、\s]/g;
+  var askedYearNow = 0;   // set while answer() retries a 「115年」 question without the year
+  var YEAR_WORD = /(?:民國\s*)?1[0-2]\d\s*(?:學年度?|年)(?:第?\s*[一二12]\s*學期)?/g;
   function questionSubject(query) {
-    var rest = clean(query).replace(SUBJECT_STRIP, "");
+    var rest = clean(query).replace(YEAR_WORD, "").replace(SUBJECT_STRIP, "").replace(/(?:要|需要|得)?(?:繳交|交出|上交|交)$/, "");
     return rest.length >= 2 && rest.length <= 12 ? rest : "";
   }
   function ordinalOf(text) { var m = String(text).match(/第\s*([一二三四五12345])\s*次/); return m ? "一二三四五".indexOf(m[1]) + 1 || Number(m[1]) : 0; }
@@ -711,6 +715,17 @@
     if (askedOrdinal && topOrdinal && askedOrdinal !== topOrdinal) {
       return "目前只看到第" + "一二三四五".charAt(topOrdinal - 1) + "次的公告「" + title + "」" + (when ? "（" + when + "）" : "") +
         "，第" + "一二三四五".charAt(askedOrdinal - 1) + "次的還沒公告。" + officeHint(query);
+    }
+    /* The closest match is last year's (or not the year asked for): say that plainly instead of
+       sending the user to an old notice. 「115 學年度的還沒公告，最近一次是 114 學年度的…」 */
+    var topYear = Number((periodToken(title).match(/^\d+/) || [])[0]) || 0;
+    var askedYear = Number((query.match(/(1[0-2]\d)\s*(?:學年度?|年)/) || [])[1]) || askedYearNow;
+    var wantYear = askedYear || (asOf ? currentAcademicYear(asOf) : 0);
+    if (topYear >= 90 && wantYear && topYear < wantYear) {
+      var topic = subject || "這項資料";
+      return wantYear + " 學年度的「" + topic + "」我還沒看到公告。最近一次是 " + topYear + " 學年度的「" + title + "」" +
+        (when ? "，那次是 " + when + " 公告的" : "") + "，時間和做法可以參考，但今年可能不一樣。" +
+        (asksTime ? "等新的公告出來我就查得到；急的話直接問導師或承辦處室。" : officeHint(query));
     }
     var fact = asksTime ? titleTime(title) : "";
     if (fact) {
@@ -755,9 +770,9 @@
   /* Open questions such as 「最近有什麼新消息？」「有什麼快截止的？」「這週有什麼比賽？」
      have no single sentence that answers them: list recent (or soon-due) announcements
      for the user's school instead, filtered by the same relevance rules as 我的今日. */
-  var BROWSE_CUE = /最近|最新|近期|這週|本週|這禮拜|這星期|這個月|今天|明天|新消息|新公告|快截止|快到期|要注意/;
-  var BROWSE_ASK = /有什麼|有哪些|有啥|什麼新|新消息|新公告|快截止|快到期|要注意|消息/;
-  var BROWSE_STRIP = /最近|最新|近期|這週|本週|這禮拜|這星期|這個月|今天|明天|新消息|新公告|消息|公告|快截止|快到期|截止|要注意|注意|事情|事項|有什麼|有哪些|有啥|什麼|哪些|新的|可以|參加|報名|申請|嗎|呢|的|是|有|在|我|學校|嘉中|嘉女|[？?！!。，,\s]/g;
+  var BROWSE_CUE = /新鮮事|新鮮|新聞|大事|動態|八卦|近況|發生(?:了)?(?:什麼|啥)|好玩|好康|有趣|最近|最新|近期|這週|本週|這禮拜|這星期|這個月|今天|明天|新消息|新公告|快截止|快到期|要注意/;
+  var BROWSE_ASK = /新鮮事|新鮮|新聞|大事|動態|八卦|近況|發生(?:了)?(?:什麼|啥)|好玩|好康|有趣|有什麼|有哪些|有啥|什麼新|新消息|新公告|快截止|快到期|要注意|消息/;
+  var BROWSE_STRIP = /新鮮事|新鮮|新聞|大事|動態|八卦|近況|發生(?:了)?(?:什麼|啥)|好玩|好康|有趣|最近|最新|近期|這週|本週|這禮拜|這星期|這個月|今天|明天|新消息|新公告|消息|公告|快截止|快到期|截止|要注意|注意|事情|事項|有什麼|有哪些|有啥|什麼|哪些|新的|可以|參加|報名|申請|嗎|呢|的|是|有|在|我|學校|嘉中|嘉女|[？?！!。，,\s]/g;
   var DEADLINE_ASK = /快截止|快到期|截止|期限|deadline/i;
   /* 「現在有哪些獎學金可以申請」「有什麼比賽可以報名」: list the ones still open
      instead of quoting one announcement. */
@@ -1534,6 +1549,7 @@
   };
   var GREETING_LATE = ["這麼晚還不睡？明天第一節會很痛苦喔😑 要問什麼快問。", "半夜還在問學校的事，你是不是作業沒寫完？", "夜貓子你好。我在，但你應該去睡了。"];
   var GREETING_EARLY = ["這麼早就在問學校的事，很認真嘛。", "早安～第一節還沒開始，先問先贏。"];
+  var DOUBT_OPENERS = ["被你懷疑了，我又從頭翻了一遍：", "不信我？好，再查一次給你看：", "我再確認一次喔，結果是："];
   var REPEAT_OPENERS = ["你剛剛才問過欸😑 再講一次：", "同一題問兩次，是在考我嗎？好啦：", "金魚腦嗎？沒關係，我再說一次："];
   function smallTalkAnswer(kind, question, options) {
     var hour = options && typeof options.hour === "number" ? options.hour : -1;
@@ -1549,8 +1565,17 @@
     return { status: "answered", mode: "chat", chat: kind, query: clean(question), summary: text, evidence: [], sources: [], related: [], key_points: [],
       reply: { text: text, bullets: kind === "help" ? HELP_LINES.slice() : [] } };
   }
+  /* 「你確定嗎」「真的沒有嗎」「你確定115年沒有嗎」「再找找」: search the previous question again
+     (with whatever new detail was added), even when the last answer found nothing. */
+  var DOUBT = /^(?:你|妳)?(?:確定|真的|肯定|有沒有搞錯|是不是搞錯|騙人|不可能)|真的沒有|確定沒有|沒有嗎[？?]?$|再(?:找|查|翻|看)(?:一次|找|看|一下)?|重新找/;
+  var DOUBT_WORDS = /^(?:你|妳)|確定|真的|肯定|有沒有搞錯|是不是搞錯|騙人|不可能|沒有|嗎|呢|吧|再(?:找|查|翻|看)(?:一次|找|看|一下)?|重新找|一下|幫我|[？?！!。，,~～\s]/g;
   function resolveFollowUp(question, previous) {
     var q = clean(question);
+    if (previous && previous.query && q && DOUBT.test(q)) {
+      var extra = clean(q.replace(DOUBT_WORDS, " "));
+      var base = clean(previous.query);
+      return { query: clean(base + (extra && compact(base).indexOf(compact(extra)) === -1 ? " " + extra : "")), context: base, doubt: true };
+    }
     /* Only a real, answered question can be continued, and small talk never continues one. */
     if (!previous || !previous.query || !q || previous.answered === false || smallTalk(q)) return { query: q, context: "" };
     var prev = clean(previous.query), bare = compact(q.replace(SCHOOL_WORD, "").replace(/^(?:那麼?|那|還有|另外)/, "").replace(/呢|嗎|[？?！!。，,]/g, ""));
@@ -1578,6 +1603,26 @@
     if (talk) return smallTalkAnswer(talk, query, options);
     query = stripSchoolNames(clean(query).slice(0, 160));
     var result = answerCore(query, items, details, options);
+    /* 「閱讀心得報告 115年」 found nothing for that year: look again without the year, and if only an
+       older year's notice exists, say exactly that (「115 學年度的還沒公告，最近一次是 114…」). */
+    var askedYear = Number((query.match(/(1[0-2]\d)\s*(?:學年度?|年)/) || [])[1]) || 0;
+    var bareQuery = clean(query.replace(YEAR_WORD, " "));
+    if (result && result.status !== "answered" && result.mode !== "timetable" && askedYear && compact(bareQuery).length >= 2) {
+      var alt;
+      askedYearNow = askedYear;
+      try { alt = answerCore(bareQuery, items, details, options); } finally { askedYearNow = 0; }
+      if (alt && alt.status !== "answered") result = Object.assign({}, alt, { query: query });
+      else if (alt) {
+        var top = (alt.sources || [])[0], topYear = top ? Number((periodToken(top.title || "").match(/^\d+/) || [])[0]) || 0 : 0;
+        if (topYear >= 90 && topYear < askedYear) {
+          var older = (alt.sources || []).slice(0, 3).map(function (item) {
+            return { id: item.id, title: item.title, date: String(item.date || "").slice(0, 10), school_name: item.school_name || "", url: item.url || "", note: "這是 " + topYear + " 學年度的資料" };
+          });
+          result = { status: "insufficient", query: query, evidence: [], sources: [], related: older,
+            summary: insufficientSummary(older, options && options.asOf, query, options && options.scopeLabel) };
+        }
+      }
+    }
     var services = serviceLinks(query, items);
     var documents = result && result.mode !== "timetable" ? documentLinks(query, items, options && options.schoolId) : [];
     if (result && documents.length) {
@@ -1627,6 +1672,12 @@
       }
     }
     if (result) result.reply = conversational(result);
+    if (result && result.reply && result.mode !== "chat" && options && options.doubt) {
+      /* The doubt line replaces the usual opener instead of stacking a second one. */
+      var doubtText = result.status === "answered" ? result.reply.text : clean(result.summary || result.reply.text);
+      result.reply = Object.assign({}, result.reply, { text: pickLine(DOUBT_OPENERS, query) + doubtText });
+      return result;
+    }
     /* Same question twice in a row: answer again, with a little eye-roll. */
     if (result && result.reply && result.mode !== "chat" && options && options.lastQuestion && compact(options.lastQuestion) === compact(query) && !personalDataQuery(query)) {
       result.reply = Object.assign({}, result.reply, { text: pickLine(REPEAT_OPENERS, query) + result.reply.text });

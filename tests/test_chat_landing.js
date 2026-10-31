@@ -39,7 +39,7 @@ assert.ok(Mascot.animations.walk.some(p => p.legs === "walkA") && Mascot.animati
 assert.doesNotMatch(read("mascot.js"), /scaleX\(-1\)|is-facing-left/, "the sprite is never mirrored, so 訊 stays readable");
 assert.ok(Mascot.lines.thinking.length && Mascot.lines.happy.length && Mascot.lines.sad.length);
 assert.match(index, /id="mascotStage" class="mascot-stage"/);
-assert.match(index, /<script src="mascot\.js\?v=3"><\/script>\s*<script src="assistant-qa\.js/);
+assert.match(index, /<script src="mascot\.js\?v=4"><\/script>\s*<script src="assistant-qa\.js/);
 assert.match(read("mascot.js"), /prefers-reduced-motion: reduce/, "the mascot stops moving for reduced motion");
 assert.doesNotMatch(css, /transition: transform 1\.4s/, "no smooth sliding: the mascot walks step by step");
 assert.match(app, /mascotMood\("thinking"\)/);
@@ -67,4 +67,21 @@ assert.match(app, /prop: "books"/, "brings books and tells you to study");
 assert.match(app, /CAMEO_MAX = 4/, "at most a few cameos per visit");
 assert.match(app, /function cameoBlocked\(\)[\s\S]*INPUT\|TEXTAREA\|SELECT/, "never pops out while the user is typing");
 assert.match(css, /\.mascot-cameo \{ position: fixed;/);
+
+/* 小訊 does things on its own (read, write, draw, phone game) and perches in the header on
+   every page except 問校務, where the chat has its own 小訊. */
+const anims = typeof Mascot.animations === "function" ? Mascot.animations() : Mascot.animations;
+for (const name of ["read", "write", "draw", "game", "gameWin", "gameLose"]) assert.ok(anims[name] && anims[name].length >= 3, name);
+const reading = Mascot.frame(anims.read[0]).map(r => r.join(""));
+assert.ok(reading.slice(18, 24).some(r => /E{5}/.test(r)), "the open book is drawn in front of the body");
+assert.notDeepEqual(Mascot.frame(anims.write[0]), Mascot.frame(anims.write[6]), "the writing grows");
+assert.match(index, /<div class="mast-tools">\s*<span id="mascotPerch" class="mascot-perch-slot" hidden><\/span>/, "the perch sits in the header, not over the content");
+assert.match(app, /var show = state\.tab !== "assistant";/, "one 小訊 at a time: the chat page has its own");
+assert.match(app, /if \(perched\) perched\.style\.visibility = "hidden";/, "the perch hides during a cameo");
+assert.match(css, /\.mascot-perch \.mascot-bubble \{ bottom: auto; top: calc\(100% \+ 2px\)/, "the perch talks below the header");
+/* Drawer: account, log out and the settings gear at the bottom. */
+assert.match(index, /<\/nav>\s*<!--[^>]*-->\s*<div class="side-account">[\s\S]*id="sideLogout"[\s\S]*id="tabSub" class="side-settings"/);
+assert.match(css, /\.side-account \{\s*display: flex; align-items: center; gap: 8px; margin-top: auto;/, "pinned to the bottom of the drawer");
+assert.match(app, /new MutationObserver\(renderSideAccount\)\.observe\(box/, "follows the real account state");
+assert.match(index, /<h2>設定<\/h2>/);
 console.log("Chat landing and layout contract passed");

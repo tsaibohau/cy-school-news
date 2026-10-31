@@ -621,6 +621,33 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 body.menu-open .function-dock { transform: none; }
 .function-dock[hidden] { display: none !important; }
 .side-title { margin: 4px 8px 14px; color: var(--muted); font-size: 13px; letter-spacing: .12em; }
+/* 側欄是直欄：選單在上，帳號列固定在最下方。 */
+.function-dock:not([hidden]) { display: flex; flex-direction: column; }
+.side-account {
+  display: flex; align-items: center; gap: 8px; margin-top: auto; padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.side-account-info {
+  display: flex; align-items: center; gap: 10px; flex: 1 1 auto; min-width: 0; padding: 6px 4px;
+  border: 0; border-radius: 12px; background: transparent; color: var(--ink); text-align: left; cursor: pointer;
+}
+.side-account-info:hover { background: var(--paper-deep); }
+.side-avatar {
+  display: inline-grid; place-items: center; flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--seal); color: #FBF4EA; font: 900 15px/1 var(--serif);
+}
+.side-account-text { display: grid; min-width: 0; }
+.side-account-text strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
+.side-account-text small { color: var(--muted); font-size: 12px; }
+.side-account-btn { flex: 0 0 auto; min-height: 36px; padding: 6px 12px; font-size: 13px; }
+.side-settings {
+  position: relative; display: inline-grid; place-items: center; flex: 0 0 auto; width: 40px; height: 40px;
+  border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); cursor: pointer;
+}
+.side-settings:hover, .side-settings.is-active { background: var(--paper-deep); }
+.side-settings[hidden] { display: none; }
+.side-settings .badge { position: absolute; top: -4px; right: -4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .side-backdrop { position: fixed; inset: 0; z-index: 55; background: rgba(30, 22, 15, .35); opacity: 0; pointer-events: none; transition: opacity .2s ease; }
 body.menu-open .side-backdrop { opacity: 1; pointer-events: auto; }
 .menu-toggle { position: relative; margin-right: 4px; }
@@ -858,3 +885,9 @@ body.is-chat .foot { display: none; }
 .mascot-cameo .mascot-bubble { bottom: auto; top: 30%; left: calc(100% + 4px); right: auto; max-width: min(240px, 58vw); }
 .mascot-cameo.is-right-half .mascot-bubble { left: auto; right: calc(100% + 4px); }
 .chat-view:not(.has-turns) .mascot-stage { display: none; }
+/* 坐在刊頭的小訊：在其他頁面自己看書、寫字、畫畫、打手遊；不佔內容區，不擋使用者。 */
+.mascot-perch-slot { position: relative; flex: 0 0 auto; width: 52px; height: 56px; }
+.mascot-perch { top: 0; bottom: auto; }
+.mascot-perch .mascot-bubble { bottom: auto; top: calc(100% + 2px); left: auto; right: 0; max-width: min(220px, 70vw); z-index: 30; }
+@media (max-width: 399px) { .mascot-perch-slot { width: 39px; height: 42px; } .mast-tools { gap: 6px; } }
+@media (max-width: 339px) { .mascot-perch-slot { display: none; } }
