@@ -65,10 +65,10 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=101/);
+assert.match(index, /style\.css\?v=102/);
 assert.match(index, /search-taxonomy\.js\?v=56/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=57/, "semantic search terms load before the application");
-assert.match(index, /search-query\.js\?v=57[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=66/, "reviewed validity loads before answers");
+assert.match(index, /search-query\.js\?v=57[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=67/, "reviewed validity loads before answers");
 const appVersion = index.match(/src="app\.js\?v=(\d+)"/);
 assert.ok(appVersion, "application script has a numeric cache version");
 const serviceWorker = fs.readFileSync(path.join(root, "docs", "sw.js"), "utf8");
@@ -84,7 +84,10 @@ assert.match(app, /資料說明/, "assistant keeps limitations available without
 assert.match(app, /官方來源（/, "assistant answers use a source panel template");
 assert.match(app, /為什麼這樣回答/, "assistant evidence is available without interrupting the answer");
 assert.match(app, /searchTimer = setTimeout[\s\S]*200\);/, "full-corpus ranking is debounced while the user types");
-assert.doesNotMatch(index, /id="navMenuToggle"/, "navigation is an always-visible tab bar, not a hidden pop-up menu");
+/* 2026-10-31: 問校務 is the main screen; the other destinations live in a side drawer opened by one button. */
+assert.match(index, /id="sideMenuToggle"[^>]*aria-controls="functionDock"[^>]*aria-expanded="false"/, "one button opens the side menu");
+assert.match(style, /body\.menu-open \.function-dock \{ transform: none; \}/, "the side menu slides in when open");
+assert.match(app, /function setSideMenu\(open\)/);
 assert.match(index, /<nav id="navMenu" class="tabbar" aria-label="主要功能">/, "primary navigation is one labelled tab bar");
 {
   const nav = index.slice(index.indexOf('<nav id="navMenu"'), index.indexOf("</nav>"));
@@ -100,7 +103,7 @@ assert.match(index, /id="viewTimetable"[\s\S]*data-view-switch="calendar"/, "the
 assert.match(style, /\.badge\[hidden\] \{ display: none; \}/, "an empty notification badge never shows 0");
 assert.match(style, /\.tab\[hidden\]\s*\{\s*display:\s*none;/, "hidden navigation tabs must override the tab display layout");
 assert.match(index, /id="brandHome"[^>]*aria-label="返回主畫面"/, "the masthead always exposes a route back home");
-assert.match(app, /brandHome.*addEventListener\("click"[\s\S]*(?:pickTab|switchTab)\("home"\)/, "the masthead returns approved accounts to the home view");
+assert.match(app, /brandHome.*addEventListener\("click"[\s\S]*pickTab\(window\.CyNewsCapabilities && window\.CyNewsCapabilities\.has\("assistant"\) \? "assistant" : "home"\)/, "the masthead returns to 問校務 (or home without it)");
 assert.match(index, /id="viewHome"[^>]*aria-labelledby="homeTitle"/);
 assert.match(index, /id="homeTitle"[^>]*class="calligraphy-title"[^>]*>.*學校公告.*匯集系統/s);
 assert.match(index, /data-home-tab="today"/);

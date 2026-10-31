@@ -149,6 +149,13 @@ def main():
     found = {row["name"] for row in ss.build_services([("https://www.cygsh.cy.edu.tw/p/412-1013-4239.php", no_menu)])}
     assert found == {"校務行政系統", "圖書館館藏查詢"}, "without a 網路服務 menu only known systems are kept"
     print("✓ 嘉女：雲端文件、自訂版面頁面、系統入口")
+    # Other Rpage schools: roots come from the home-page menu, links to other sites are ignored.
+    fj = si.SCHOOLS["fjsh"]
+    assert fj["roots"] == "auto" and si.SCHOOLS["ccjh"]["roots"] == "auto"
+    home = ('<a href="/p/412-1000-12.php">學校簡介</a><a href="https://rpage.fjsh.cy.edu.tw/p/412-1000-34.php">學務處</a>'
+            '<a href="/p/412-1000-12.php">dup</a><a href="https://www.cysh.cy.edu.tw/p/412-1008-86.php">x</a>')
+    assert si.home_roots(fj, home) == [12, 34]
+    print("✓ 其他學校從首頁選單找起點")
     print("所有校園資訊測試通過 ✅")
 
 
