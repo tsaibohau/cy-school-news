@@ -243,6 +243,28 @@
         el.nicknameSchool.value = onboardingCurrent;
       }
     }
+    /* 問校務的範圍：有設定學校時多一個「我的學校」；所有人都能直接挑任何一間學校或所有學校。 */
+    var LS_ASK_SCOPE = "cy-news-ask-scope";
+    function renderAssistantScope() {
+      var select = el.assistantScope, registry = window.CyNewsSchoolRegistry;
+      if (!select || !registry) return;
+      var mine = preferredSchoolId(), saved = "";
+      try { saved = localStorage.getItem(LS_ASK_SCOPE) || ""; } catch (_) {}
+      var current = select.getAttribute("data-ready") ? select.value : saved;
+      var groups = {}, order = [];
+      registry.schools().forEach(function (school) {
+        var county = school.county || "其他";
+        if (!groups[county]) { groups[county] = []; order.push(county); }
+        groups[county].push('<option value="' + esc(school.id) + '">' + esc(school.short) + '</option>');
+      });
+      select.innerHTML = (mine ? '<option value="preferred">我的學校（' + esc(registry.find(mine).short) + '）</option>' : "") +
+        '<option value="all">所有學校</option>' +
+        order.map(function (county) { return '<optgroup label="' + esc(county) + '">' + groups[county].join("") + '</optgroup>'; }).join("");
+      var valid = function (value) { return value === "all" || value === "preferred" && !!mine || !!(value && registry.find(value)); };
+      /* 沒選過：有我的學校就用它；訪客沿用公告頁選的學校，否則所有學校。 */
+      select.value = valid(current) ? current : mine ? "preferred" : state.school && state.school !== "all" && registry.find(state.school) ? state.school : "all";
+      select.setAttribute("data-ready", "1");
+    }
     function preferredSchoolId() {
       var id = String(state.profile && state.profile.school_id || "");
       return window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(id) ? id : "";
@@ -253,7 +275,7 @@
       var changed = state.school !== id;
       state.school = id;
       localStorage.setItem(LS_SCHOOL, id);
-      if (el.assistantScope) el.assistantScope.options[0].textContent = "我的學校（" + window.CyNewsSchoolRegistry.find(id).short + "）";
+      renderAssistantScope();
       if (changed) {
         state.archive = "none";
         state.archivePromise = null;
@@ -280,6 +302,7 @@
       window.CyNewsCapabilities.setSchoolSupport({ timetable: !!(school && school.capabilities && school.capabilities.class_timetable) });
     }
     function renderProfile() {
+      try { renderAssistantScope(); } catch (_) {}
       updateSchoolSupport();
       if (!el.profileForm || !window.CyNewsProfile) return;
       var profile = window.CyNewsProfile.toInputs(state.profile || {});
@@ -543,6 +566,7 @@
         if (el.accountReapply) el.accountReapply.hidden = true;
         if (el.accountService) el.accountService.hidden = true;
         if (state.tab !== "latest") switchTab("latest");
+        landOnAssistant();
       }
       function showPendingAccountShell(message) {
         showAnonymousShell();
@@ -608,8 +632,7 @@
            顯示未登入畫面，所以只要使用者還沒自己點過分頁，取得權限時就切過去。 */
         /* The member policy and school support decide the feature tabs; apply them last. */
         if (window.CyNewsCapabilities && window.CyNewsCapabilities.applyVisibility) window.CyNewsCapabilities.applyVisibility();
-        var canAsk = full && window.CyNewsCapabilities && window.CyNewsCapabilities.has("assistant");
-        if (canAsk && !state.userPickedTab && (state.tab === "latest" || state.tab === "home")) switchTab("assistant");
+        landOnAssistant();
       }
       function adminFilters() {
         return {
@@ -2343,7 +2366,10 @@
     function assistantScopeFor(question) {
       var mentioned = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.mentionedSchool(question);
       if (mentioned) return { id: mentioned.id, label: mentioned.short + "（依問題指定）" };
-      if (el.assistantScope && el.assistantScope.value === "all") return { id: "all", label: "所有學校" };
+      var picked = el.assistantScope ? el.assistantScope.value : "preferred";
+      if (picked === "all") return { id: "all", label: "所有學校" };
+      var chosen = picked !== "preferred" && window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(picked);
+      if (chosen) return { id: chosen.id, label: chosen.short };
       var preferred = preferredSchoolId() || (state.school !== "all" ? state.school : "all");
       var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(preferred);
       return { id: preferred, label: school ? school.short : "所有學校" };
@@ -3155,6 +3181,37 @@
     function isTimetableOnly() {
       return !!(state.accountAccess && state.accountAccess.status === "approved" && state.accountAccess.service_level === "timetable_only");
     }
+    /* 進站頁面是問校務：會員和訪客都一樣，只要問校務有開放、使用者這次還沒自己點過分頁。
+       權限常在畫面出現後才載入（登入、訪客設定），所以每次權限更新都再檢查一次。 */
+    function landOnAssistant() {
+      if (state.userPickedTab || (state.tab !== "latest" && state.tab !== "home")) return;
+      if (!window.CyNewsCapabilities || !window.CyNewsCapabilities.has("assistant")) return;
+      if (isTimetableOnly()) return;
+      switchTab("assistant");
+      showSidebarHint();
+    }
+    if (typeof document !== "undefined" && document.addEventListener) document.addEventListener("cy-capabilities-applied", function () { try { landOnAssistant(); } catch (_) {} });
+    /* 第一次進到問校務時提醒一次：公告總庫和其他功能在左上角的側欄。 */
+    var LS_SIDEBAR_HINT = "cy-news-sidebar-hint";
+    function showSidebarHint() {
+      var hint = $("sidebarHint");
+      if (!hint) return;
+      try { if (localStorage.getItem(LS_SIDEBAR_HINT)) return; } catch (_) {}
+      hint.hidden = false;
+    }
+    function dismissSidebarHint() {
+      var hint = $("sidebarHint");
+      if (hint) hint.hidden = true;
+      try { localStorage.setItem(LS_SIDEBAR_HINT, "1"); } catch (_) {}
+    }
+    (function () {
+      var hint = $("sidebarHint");
+      if (!hint) return;
+      hint.addEventListener("click", function (e) {
+        if (e.target.closest("[data-hint-open]")) { dismissSidebarHint(); setSideMenu(true); }
+        else if (e.target.closest("[data-hint-close]")) dismissSidebarHint();
+      });
+    })();
     function pickTab(tab) { state.userPickedTab = true; setSideMenu(false); switchTab(tab); }
     /* 其他功能收在左側抽屜，左上角一個按鈕開關。 */
     function setSideMenu(open) {
@@ -3297,7 +3354,7 @@
       pickTab(window.CyNewsCapabilities && window.CyNewsCapabilities.has("assistant") ? "assistant" : "home");
     });
     var sideMenuToggle = $("sideMenuToggle"), sideBackdrop = $("sideBackdrop");
-    if (sideMenuToggle) sideMenuToggle.addEventListener("click", function () { setSideMenu(!document.body.classList.contains("menu-open")); });
+    if (sideMenuToggle) sideMenuToggle.addEventListener("click", function () { dismissSidebarHint(); setSideMenu(!document.body.classList.contains("menu-open")); });
     if (sideBackdrop) sideBackdrop.addEventListener("click", function () { setSideMenu(false); });
     try { setupSideAccount(); } catch (_) {}
     try { updatePerch(); } catch (_) {}
@@ -3355,6 +3412,8 @@
     });
 
     populateProfileSchools();
+    renderAssistantScope();
+    if (el.assistantScope) el.assistantScope.addEventListener("change", function () { try { localStorage.setItem(LS_ASK_SCOPE, el.assistantScope.value); } catch (_) {} });
     renderProfile();
     if (el.profileForm) el.profileForm.addEventListener("submit", function (e) {
       e.preventDefault();

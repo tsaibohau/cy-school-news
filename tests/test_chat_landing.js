@@ -7,8 +7,16 @@ const read = f => fs.readFileSync(path.join(__dirname, "..", "docs", f), "utf8")
 const app = read("app.js"), index = read("index.html"), css = read("style.css");
 
 assert.match(app, /tab: "latest",/, "visitors start on the announcement list");
-assert.match(app, /var canAsk = full && window\.CyNewsCapabilities && window\.CyNewsCapabilities\.has\("assistant"\);/);
-assert.match(app, /if \(canAsk && !state\.userPickedTab && \(state\.tab === "latest" \|\| state\.tab === "home"\)\) switchTab\("assistant"\);/);
+/* 2026-10-31: everyone with 問校務 (members and guests) lands on it; a hint points to the sidebar. */
+assert.match(app, /function landOnAssistant\(\) \{\s*if \(state\.userPickedTab \|\| \(state\.tab !== "latest" && state\.tab !== "home"\)\) return;\s*if \(!window\.CyNewsCapabilities \|\| !window\.CyNewsCapabilities\.has\("assistant"\)\) return;/);
+assert.match(app, /document\.addEventListener\("cy-capabilities-applied", function \(\) \{ try \{ landOnAssistant\(\); \} catch \(_\) \{\} \}\)/, "guests land on 問校務 once public features load");
+assert.match(read("capability-layer.js"), /dispatchEvent\(new CustomEvent\("cy-capabilities-applied"\)\)/);
+assert.match(read("capability-layer.js"), /if \(closest\(node, "#viewAssistant"\)\) return;/, "問校務 lists stay visible to guests");
+assert.match(index, /id="sidebarHint" class="sidebar-hint" role="note" hidden>[\s\S]*data-hint-open[\s\S]*data-hint-close/);
+assert.match(app, /sideMenuToggle\.addEventListener\("click", function \(\) \{ dismissSidebarHint\(\);/, "opening the sidebar retires the hint");
+assert.match(app, /function renderAssistantScope\(\)/);
+assert.match(app, /'<optgroup label="' \+ esc\(county\) \+ '">'/, "every school can be picked as the 問校務 scope");
+assert.match(app, /\(mine \? '<option value="preferred">我的學校（'/, "我的學校 only appears when a school is set");
 assert.doesNotMatch(app, /switchTab\("home"\);\s*\n\s*}\s*\n\s*function adminFilters/, "no automatic jump to 首頁 any more");
 assert.match(index, /<button id="tabLatest" class="tab is-active" aria-current="page">/, "公告 is highlighted until access is known");
 assert.ok(index.indexOf('id="tabAssistant"') < index.indexOf('id="tabHome"'), "問校務 is the first tab");

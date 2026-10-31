@@ -908,3 +908,16 @@ body.is-chat .foot { display: none; }
 .urgency-tag[data-level="-1"] { background: transparent; color: var(--muted); border: 1px solid var(--line); }
 .calendar-export { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .calendar-export .hint { margin: 6px 0 0; font-size: 12px; }
+
+/* 第一次進問校務的提示：公告總庫在左上角側欄。 */
+.sidebar-hint {
+  position: relative; margin: 12px 4px 0; padding: 12px 14px 12px 40px; border: 1px solid var(--line, rgba(127,127,127,.35));
+  border-radius: 14px; background: var(--card); color: var(--ink); font-size: 14px; line-height: 1.6;
+}
+.sidebar-hint[hidden] { display: none; }
+.sidebar-hint p { margin: 0; }
+.sidebar-hint-arrow { position: absolute; left: 12px; top: 10px; font-size: 20px; color: var(--accent, #c0392b); animation: sidebar-hint-nudge 1.2s steps(2) infinite; }
+.sidebar-hint-actions { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+.sidebar-hint-actions button { font-size: 13px; padding: 6px 12px; }
+@keyframes sidebar-hint-nudge { 50% { transform: translate(-2px, -2px); } }
+@media (prefers-reduced-motion: reduce) { .sidebar-hint-arrow { animation: none; } }

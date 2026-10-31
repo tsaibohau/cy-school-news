@@ -65,7 +65,7 @@ assert.match(style, /@media \(prefers-reduced-motion: reduce\)/, "motion prefere
 assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >= 2,
   "the final editorial palette preserves a readable dark variant");
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
-assert.match(index, /style\.css\?v=107/);
+assert.match(index, /style\.css\?v=108/);
 assert.match(index, /search-taxonomy\.js\?v=56/, "search taxonomy loads before the query parser");
 assert.match(index, /search-query\.js\?v=57/, "semantic search terms load before the application");
 assert.match(index, /search-query\.js\?v=57[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=69/, "reviewed validity loads before answers");
@@ -145,7 +145,7 @@ console.log("Editorial UI and honest refresh status contract tests passed");
   const el = { publicAccountEntry: card };
   for (const key of ["functionDock", "publicAccountLogin", "publicAccountSignUp", "publicAccountLogout", "publicAccessTitle", "publicAccessLead", "publicAccessStatus", "tabAdmin"]) el[key] = {};
   const state = { accountUser: { id: "user-a" }, tab: "latest" };
-  const context = vm.createContext({ el, state, setNavMenu() {}, switchTab() {},
+  const context = vm.createContext({ el, state, setNavMenu() {}, switchTab() {}, landOnAssistant() {},
     setTimeout(fn, delay) { const id = ++nextId; timers.set(id, { fn, at: clock + delay }); return id; },
     clearTimeout(id) { timers.delete(id); }
   });

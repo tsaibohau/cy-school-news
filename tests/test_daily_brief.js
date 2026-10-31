@@ -106,7 +106,7 @@ const today = "2026-10-27";  // 星期二
   assert.match(app, /prefers-reduced-motion: reduce/, "typewriter respects reduced motion");
   assert.match(app, /el\.dailyBriefSr\.textContent = brief\.text/, "screen readers get the full text at once");
   /* 2026-10-31: members with 問校務 now land on 問校務 (chat); others stay on 公告總庫. */
-  assert.match(app, /if \(canAsk && !state\.userPickedTab && \(state\.tab === "latest" \|\| state\.tab === "home"\)\) switchTab\("assistant"\)/, "members with 問校務 land on it until they pick a tab themselves");
+  assert.match(app, /if \(state\.userPickedTab \|\| \(state\.tab !== "latest" && state\.tab !== "home"\)\) return;[\s\S]{0,200}switchTab\("assistant"\)/, "people with 問校務 land on it until they pick a tab themselves");
   assert.match(app, /el\.tabLatest\.addEventListener\("click", function \(\) \{ pickTab\("latest"\); \}\)/, "tapping a tab marks it as the user's own choice");
   assert.match(app, /if \(el\.nicknameDialog && el\.nicknameDialog\.open\) return;/, "typing waits while the first-run setup dialog is open");
   assert.match(app, /el\.nicknameDialog\.showModal\(\);\s*pauseBrief\(\);/, "opening the setup dialog mid-typing pauses and resets the brief");
