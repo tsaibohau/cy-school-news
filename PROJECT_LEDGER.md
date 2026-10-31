@@ -1853,3 +1853,4 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 版本：`app.js?v=116`、`assistant-qa.js?v=65`、`style.css?v=100`、`cy-news-v128`。
 - 驗證：`tests/test_qa_school_docs.js`（新增閒聊與不亂接續）、`tests/test_chat_landing.js`、`python tests/test_parser.py` 通過；其餘同前（既有失敗不變）；深色模式手機截圖重現使用者對話確認。
 - 同時手動啟動「校園資訊一次補抓（手動）」。
+- 補抓第一次執行（run 41189336685）：嘉中本次 124 頁（收錄 131、仍待抓 244，因為新頁面又帶出子頁），嘉女 71 頁（收錄 71、待抓 99）；161 筆內文同步到受保護資料庫全數 200。最後提交索引失敗（runner 上有其他產生檔未暫存，`git pull --rebase` 拒絕），改用 `--autostash`。合併後需再執行一次補抓。
