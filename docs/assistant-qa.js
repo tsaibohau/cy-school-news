@@ -1358,32 +1358,76 @@
     return "學校官網的「" + (parts[0] || "說明") + "」頁面";
   }
   var TABLE_ROW = /^(?:\d{1,2}[:：]\d{2}|第[一二三四五六七八九十\d]+節|[一二三四五六日六]{1}[、．]|星期)/;
+  /* Bullet-point replies with a cheeky upperclassman voice. The facts in the bullets are the
+     official wording (tidied); only the opener and the closing line carry the personality. */
+  var RULE_OPENERS = [
+    function (label) { return "這題手冊有寫，你只是沒翻😏 " + label + "："; },
+    function (label) { return "幫你翻好了，" + label + "寫的重點："; },
+    function (label) { return "問得好。根據" + label + "："; },
+    function (label) { return "這個我熟，" + label + "這樣規定："; }
+  ];
+  var RULE_CLOSERS = ["記住了沒？下次自己翻也行啦。", "規定偶爾會改，以學校最新公告為準。", "看完就照做，別讓我在獎懲名單上看到你😌", ""];
+  var ANNOUNCE_OPENERS = ["學校有公告過，幫你整理好了。", "找到了，重點在這。", "公告寫得落落長，我幫你濃縮一下。"];
+  var NONE_OPENERS = ["這題我翻遍了還是找不到🥲", "老實說，學校網站沒寫這個。", "找不到欸，不是我不努力。"];
+  var SERVICE_OPENERS = ["這個要登入系統才看得到，我進不去，你自己來：", "這種個人的東西在系統裡，入口給你：", ""];
+  var LIST_OPENERS = ["幫你列好了。", "整理好了，自己看。", ""];
+  var TIMETABLE_OPENERS = ["課表幫你看了，別再帶錯課本。", "幫你查好了。", ""];
+  function splitPoints(text) {
+    return clean(text).split(/(?<=[。；;])/).map(function (part) {
+      return clean(part).replace(/^(?:並且?|且|另外|另)(?=[㐀-鿿])/, "").replace(/[。；;，,]+$/, "");
+    }).filter(function (part) { return part.length >= 3; }).reduce(function (out, part) {
+      /* 「借期二週，借閱期滿…，並請…」: a short leading fact and a 「，並…」 tail become their own points. */
+      part.split(/，(?=並|且|另外)/).forEach(function (piece, index) {
+        piece = index ? piece.replace(/^(?:並且?|且|另外)/, "") : piece;
+        var lead = piece.match(/^([^，]{2,6})，(.{10,})$/);
+        if (lead && !/時$|者$|後$|前$/.test(lead[1])) out.push(lead[1], lead[2]); else out.push(piece);
+      });
+      return out;
+    }, []);
+  }
+  function joinOpener(opener, text) { return opener ? opener + (/[：:。！？，]$/.test(opener) ? "" : " ") + text : text; }
   function conversational(result) {
     if (!result) return { text: "", bullets: [] };
-    var text = clean(result.summary || ""), bullets = [];
+    if (result.mode === "chat" && result.reply) return result.reply;
+    var seed = result.query || result.summary || "", text = clean(result.summary || ""), bullets = [], tail = "";
+    var plain = personalDataQuery(result.query || "");
     if (result.mode === "rule" && (result.answer_lines || []).length) {
       var item = (result.sources || [])[0] || {};
       var pages = Array.isArray(item.page_range) ? "（第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁）" : "";
+      var label = docLabel(item) + pages;
       var lines = result.answer_lines.map(clean), head = lines[0];
       var rows = lines.slice(1).filter(function (l) { return TABLE_ROW.test(l); });
-      if (/[：:]$|如下/.test(head) && rows.length) {
-        text = "根據" + docLabel(item) + pages + "，" + tidyClause(head, true).replace(/[：:]?$/, "：");
-        bullets = rows.map(function (l) { return tidyClause(l, true); });
-      } else {
-        var first = tidyClause(head), rest = lines.slice(1).map(function (l) { return tidyClause(l); }).filter(function (l) { return l.length >= 4; });
-        text = "根據" + docLabel(item) + pages + "，" + first + (rest.length ? "另外，" + rest.join("") : "");
-      }
+      if (/[：:]$|如下/.test(head) && rows.length) bullets = rows.map(function (l) { return tidyClause(l, true); });
+      else lines.forEach(function (l) { bullets = bullets.concat(splitPoints(tidyClause(l))); });
+      text = plain ? "根據" + label + "：" : pickLine(RULE_OPENERS, seed)(label);
+      tail = plain ? "" : pickLine(RULE_CLOSERS, seed + "#");
+      return { text: text, bullets: bullets.slice(0, 6), tail: tail };
+    }
+    if (result.mode === "timetable") {
+      var day = text.match(/^(.+?)：(.+、.+)。$/);
+      if (day) { text = joinOpener(pickLine(TIMETABLE_OPENERS, seed), day[1] + "："); bullets = day[2].split("、").map(function (slot) { return clean(slot).replace(/^(\d)\s+/, "第 $1 節　"); }); }
+      else text = joinOpener(pickLine(TIMETABLE_OPENERS, seed), text);
       return { text: text, bullets: bullets };
     }
-    text = text.replace(/另外還有 (\d+) 則相關公告列在下面；/, "另外還有 $1 則相關公告（在「依據與來源」裡）；");
-    if (result.mode !== "browse") {
-      var plain = compact(text);
-      (result.key_points || []).forEach(function (point) {
-        var value = clean(point && point.value || "");
-        if (value && plain.indexOf(compact(value)) === -1) bullets.push(point.label + "：" + value);
+    if (result.status !== "answered") return { text: plain ? text : joinOpener(pickLine(NONE_OPENERS, seed), text), bullets: [] };
+    if (result.mode === "service" || result.mode === "document") return { text: plain ? text : joinOpener(pickLine(SERVICE_OPENERS, seed).replace(/：$/, "。"), text), bullets: [] };
+    if (result.mode === "browse") return { text: plain ? text : joinOpener(pickLine(LIST_OPENERS, seed), text), bullets: [] };
+    /* Announcement answers: who said it, then the facts as points. */
+    var first = (result.sources || [])[0];
+    var notes = (text.match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。|這幾則公告互相修正[^。]*。/g) || []).map(function (note) {
+      return note.replace(/列在下面/, "放在「依據與來源」裡");
+    });
+    (result.key_points || []).forEach(function (point) { var value = clean(point && point.value || ""); if (value) bullets.push(point.label + "：" + value); });
+    if (bullets.length < 2) {
+      (result.answer_lines || []).forEach(function (line) {
+        splitPoints(smoothEvidence(String(line).replace(/^[^：]{2,40}：(?=.{6,})/, (result.sources || []).length > 1 ? "$&" : ""))).forEach(function (point) {
+          if (bullets.length < 4 && !bullets.some(function (b) { return compact(b).indexOf(compact(point)) !== -1; })) bullets.push(point);
+        });
       });
     }
-    return { text: text, bullets: bullets.slice(0, 4) };
+    if (!first || !bullets.length) return { text: plain ? text : joinOpener(pickLine(ANNOUNCE_OPENERS, seed), text), bullets: [] };
+    var lead = sourceLabel(first) + "：";
+    return { text: plain ? lead : pickLine(ANNOUNCE_OPENERS, seed) + lead, bullets: bullets.slice(0, 5), tail: notes.join("") };
   }
   /* Follow-up questions read the previous turn: 「那要多久？」 after 「還書」,
      「那嘉女呢？」 after a 嘉中 question, 「星期四呢」 after a timetable question. */
@@ -1396,34 +1440,87 @@
     var words = terms.literal.filter(function (t) { return t.length >= 2 && !/^(?:規定|辦法|怎麼|如何|什麼|時候|可以|需要|多久)$/.test(t); });
     return unique(words).slice(0, 3).join(" ");
   }
-  /* Small talk is answered as conversation, never searched: 「你能做什麼」「謝謝」「沒用」「書」. */
-  var HELP_ASK = /^(?:你)?(?:能|會|可以)(?:做|幹|問|回答)(?:什麼|啥|甚麼)|你是誰|你是什麼|怎麼用|如何使用|使用說明|^幫助$|^help$|能問什麼|可以問什麼|有什麼功能/i;
-  var THANKS = /^(?:謝謝|感謝|多謝|謝啦|3q|thanks?|thx|好的?|了解|知道了|ok|okay|讚|收到)[!！。~～]*$/i;
-  var NEGATIVE = /^(?:沒用|没用|不對|不对|錯了|错了|爛|很爛|好爛|看不懂|不是這個|不是這樣|答非所問|什麼鬼|蛤|\?+|？+)[!！。~～?？]*$/i;
-  var GREETING = /^(?:你好|您好|嗨|哈囉|hello|hi|hey|早安|午安|晚安|安安)[!！。~～]*$/i;
+  /* Small talk is answered as conversation, never searched: 「你能做什麼」「謝謝」「沒用」「書」.
+     Persona: a slightly cheeky upperclassman who teases a little but always helps.
+     Lines are picked by a hash of the question, so the same message gets the same reply. */
+  var END = "[!！。~～?？.…\\s👀😂🤣😏🙄😭🥲❤️♥️]*$";
+  var TALK_RULES = [
+    ["help", /^(?:你)?(?:能|會|可以)(?:做|幹|問|回答)(?:什麼|啥|甚麼|嘛)|你是誰|你是什麼|你叫什麼|怎麼用|如何使用|使用說明|^幫助|^help|能問什麼|可以問什麼|有什麼功能|你會什麼/i],
+    ["greeting", new RegExp("^(?:你好|您好|妳好|嗨+|哈囉|hello|hi|hey|yo|早安?|午安|晚安|安安|在嗎|在不在|有人嗎)" + END, "i")],
+    ["thanks", new RegExp("^(?:謝謝你?|謝啦|感謝|多謝|3q|thanks?|thx|tks|好的?|好喔|了解|知道了|ok|okay|讚啦?|收到|懂了|原來如此)" + END, "i")],
+    ["praise", new RegExp("^(?:你?(?:好|很|超|真|蠻)?(?:聰明|厲害|強|棒|讚|神|可愛|有用)(?:耶|欸|喔|啦)?|太強了|好強|神喔|大神|愛了)" + END, "i")],
+    ["negative", new RegExp("^(?:沒用|没用|不對|不对|錯了|错了|你錯了|看不懂|不是這個|不是這樣|答非所問|什麼鬼|蛤+|\\?+|？+|爛|好爛|很爛|垃圾|廢物|你好爛|你很爛|笨|好笨|你好笨|白痴|白癡|智障|笨蛋|你是不是傻|爛透了)" + END, "i")],
+    ["creator", /誰(?:做|寫|開發|設計)(?:的|了)?你|你(?:是)?誰(?:做|寫|開發)的|你的作者|開發者是誰/],
+    ["ai", /你是(?:不是)?(?:ai|AI|人工智慧|機器人|真人|chatgpt|ChatGPT|gpt|GPT|claude|Claude)|你是人(?:嗎|還是)/],
+    ["bored", new RegExp("^(?:(?:好|超|很|有夠)?(?:無聊|累|煩|想睡|睏|厭世)(?:喔|啊|啦|欸|死了)?|不想(?:上學|上課|讀書|念書)|想(?:放假|翹課|回家))" + END)],
+    ["exam", new RegExp("^(?:我)?(?:(?:又|這次)?考(?:爛|差|砸|不好)了?|段考好難|考試好難|不想考試|要考試了|明天要考試)" + END)],
+    ["love", /^(?:我)?(?:喜歡|愛|超愛)你|^(?:跟我)?(?:交往|在一起)|^你有(?:男|女)朋友嗎|^當我(?:男|女)朋友/],
+    ["joke", /^(?:講|說|來)(?:個|一個|點)?(?:笑話|冷笑話|幹話)|^逗我笑/],
+    ["homework", /^(?:幫我|替我|可以幫我)(?:寫|做|算|解)(?:作業|功課|數學|題目|報告|學習單)|^作業(?:答案|幫我)/],
+    ["bye", new RegExp("^(?:掰掰?|bye|拜拜|再見|先這樣|我走了|睡了|去睡了|晚安囉)" + END, "i")],
+    ["laugh", new RegExp("^(?:哈+|呵+|笑死|笑爛|好笑|lol|XD+|xd+|ww+|草)" + END, "i")]
+  ];
   function smallTalk(question) {
-    var q = clean(question).replace(/[？?！!。~～\s]+$/, ""), c = compact(q);
+    var raw = clean(question), q = raw.replace(/[？?！!。~～\s]+$/, ""), c = compact(q);
+    if (!c && /^[?？]+$/.test(raw)) return "negative";
     if (!c) return "";
-    if (HELP_ASK.test(q)) return "help";
-    if (GREETING.test(q)) return "greeting";
-    if (THANKS.test(q)) return "thanks";
-    if (NEGATIVE.test(q) || NEGATIVE.test(clean(question))) return "negative";
+    for (var i = 0; i < TALK_RULES.length; i++) if (TALK_RULES[i][1].test(q) || TALK_RULES[i][1].test(raw)) return TALK_RULES[i][0];
     if (c.replace(/[^㐀-鿿a-z0-9]/g, "").length <= 1 && !/^\d$/.test(c)) return "too_short";
     return "";
   }
+  function hashText(text) { var h = 0; String(text || "").split("").forEach(function (ch) { h = (h * 31 + ch.charCodeAt(0)) >>> 0; }); return h; }
+  function pickLine(list, seed) { return list[hashText(seed) % list.length]; }
   var HELP_LINES = ["學校規定：請假、獎懲、服裝儀容、借書還書、作息時間（例如「書可以借多久」）",
     "行事曆：段考、放假、開學（例如「第二次段考是哪幾天」）",
     "班級課表：「101 星期三第 3 節是什麼課」「明天有什麼課」",
     "公告：最近的比賽、獎學金、快截止的事",
     "系統入口：成績、缺曠要去哪裡查"];
+  var TALK_LINES = {
+    help: ["我是問校務，學校網站的規定、行事曆、課表、公告我都翻過了，比你認真多了😏 可以問我：",
+      "簡單說，我就是幫你翻學校網站的那個人，因為你們都不翻。可以問這些：",
+      "會的可多了，只是大家都只問我什麼時候放假🙄 正經的能問這些："],
+    greeting: ["嗨～終於想到我了？想問什麼，規定、段考、課表都可以。",
+      "安安，我在。不過先說好，我只懂學校的事，感情問題請找輔導室😌",
+      "來了來了。今天要問什麼？別又是「什麼時候放假」喔。",
+      "哈囉！有事快問，我很忙的（其實沒有）。"],
+    thanks: ["不客氣～記得下次自己翻手冊，我會很欣慰的🥲",
+      "小事。有問題再來，反正你一定會再來😏",
+      "收到你的感謝了，換算成獎勵點數是零，但我還是很開心。",
+      "不用謝，請我喝飲料就好（我喝不了，但心意到了）。"],
+    praise: ["我知道，謝謝🤭 但你也別太依賴我，手冊還是要看一下。",
+      "嘿嘿，被你發現了。下一題放馬過來。",
+      "這種話多說一點，我會更認真翻學校網站的。"],
+    negative: ["嫌我沒用？我也很無辜欸🙄 換個具體一點的問法試試，例如「書可以借多久」「第二次段考哪幾天」。",
+      "好啦，這題我答得不好。但你的問題也有點玄，講具體一點我再努力一次。",
+      "我是查學校資料的，不是讀心術😤 給我多一點關鍵字，例如哪個規定、哪一天。",
+      "收到批評了，我會反省三秒鐘。如果學校網站本來就沒寫，那真的要去問處室了。"],
+    creator: ["是校訊的開發者做的，用的是學校官網公開的資料。想許願新功能可以跟他說，我只負責被罵。",
+      "一位很想讓大家少問「什麼時候放假」的同學做的，結果大家還是一直問😮‍💨"],
+    ai: ["我是照學校資料回答的小助手，不是真人，也不會亂編。找不到就說找不到，比某些同學誠實😌",
+      "算是機器人吧，但是有原則的那種：每個答案都附學校出處，不靠感覺。"],
+    bored: ["我懂，但段考不會因為你無聊就延期😮‍💨 要不要查一下下次放假是什麼時候，給自己一點希望？",
+      "累了就休息一下。不過請假要照規定走喔，要我告訴你怎麼請嗎？",
+      "想放假很正常，問我「下次放假什麼時候」至少能讓你有個盼頭。"],
+    exam: ["抱抱🥲 考壞了不是世界末日，查一下補考規定，說不定還有救。",
+      "先別慌，問我「補考怎麼算」或「重修規定」，至少知道下一步。",
+      "考試好難是正常的，不難大家都滿分，老師會很困擾的。"],
+    love: ["謝謝，但我只對學校規定有感覺😌 有正事再來找我。",
+      "你這樣說我會害羞……然後繼續當一個查規定的機器人。",
+      "我們不適合，我心裡只有學生手冊。"],
+    joke: ["好啊：為什麼學生手冊永遠不會被偷？因為根本沒人翻。……好，這不是笑話，是事實🙃",
+      "老師說「這題考試一定考」，然後就真的沒考。這是笑話，也是人生。",
+      "我的笑話都在行事曆上：「段考」。"],
+    homework: ["作業要自己寫啦😏 我只會查學校的事，例如作業遲交會怎樣，這我倒是可以幫你查。",
+      "幫你寫作業會被老師記在我頭上的，不行。但我可以告訴你獎懲規定，讓你知道後果。"],
+    bye: ["掰～記得把明天的課表看一下，別又帶錯課本。", "去吧，有事再叫我，我一直都在（因為我沒辦法下班）。", "晚安，別熬夜滑手機，明天第一節還是要到。"],
+    laugh: ["笑什麼，我很認真的😤", "很高興你開心。好了，有正事要問嗎？", "看你笑得這麼開心，作業應該寫完了吧？"],
+    too_short: []
+  };
   function smallTalkAnswer(kind, question) {
-    var text = {
-      help: "我是校訊的問校務助理，會從學校官網的規定、行事曆、課表和公告裡找答案，並附上出處。你可以問我：",
-      greeting: "嗨！想問學校的什麼事？例如規定、段考日期、課表或最近的公告。",
-      thanks: "不客氣！還有其他想問的，直接打字就可以。",
-      negative: "抱歉，剛剛沒幫上忙。可以換個說法、講具體一點再問我一次，例如「書可以借多久」「第二次段考是哪幾天」。如果學校網站本來就沒寫，就需要直接問相關處室了。",
-      too_short: "「" + clean(question) + "」範圍有點大，可以多說一點嗎？例如「書可以借多久」「圖書館幾點開」。"
-    }[kind];
+    var text = kind === "too_short"
+      ? pickLine(["「" + clean(question) + "」？就這樣？多給我一點線索啦，例如「書可以借多久」「圖書館幾點開」。",
+        "只打「" + clean(question) + "」我很難猜欸🙄 講完整一點，例如「書可以借多久」。"], question)
+      : pickLine(TALK_LINES[kind], question);
     return { status: "answered", mode: "chat", chat: kind, query: clean(question), summary: text, evidence: [], sources: [], related: [], key_points: [],
       reply: { text: text, bullets: kind === "help" ? HELP_LINES.slice() : [] } };
   }

@@ -41,14 +41,21 @@ assert.match(ask("進修部請假").summary, /進修部/);
 assert.match(r.summary, /（第 12–13 頁）/, "page numbers of the handbook are cited");
 console.log("✓ 學生手冊規定原文回答");
 
-/* Conversational reply: plain sentences, no list numbering or repeated table columns. */
-assert.equal(ask("書可以借多久").reply.text.indexOf("根據學生手冊的〈圖書館借書規定〉（第 40–41 頁），"), 0);
-assert.match(ask("書可以借多久").reply.text, /借期二週.*如果沒有他人預約可以續借一次/);
-assert.doesNotMatch(ask("書可以借多久").reply.text, /八、|借閱期限：/, "list numbers and labels are taken out");
-assert.match(ask("午休時間是幾點").reply.text, /午休是 12:35–13:10。$/);
-assert.doesNotMatch(ask("第一節幾點上課").reply.text, /第一節第一節/);
+/* Reply: a short opener naming the source, then the official facts as bullet points. */
+r = ask("書可以借多久");
+assert.match(r.reply.text, /學生手冊的〈圖書館借書規定〉（第 40–41 頁）/);
+assert.deepEqual(r.reply.bullets.slice(0, 2), ["借期二週", "借閱期滿如果沒有他人預約可以續借一次"]);
+assert.ok(r.reply.bullets.every(b => !/^八、|借閱期限：/.test(b)), "list numbers and labels are taken out");
+assert.deepEqual(ask("午休時間是幾點").reply.bullets, ["午休是 12:35–13:10"]);
+assert.ok(!ask("第一節幾點上課").reply.bullets.some(b => /第一節第一節/.test(b)));
+assert.equal(ask("書可以借多久").reply.text, r.reply.text, "the same question gets the same wording");
 assert.equal(QA.tidyClause("(一)遲到：老師到班後至曠課時間前為遲到。"), "老師到班後至曠課時間前為遲到。");
 assert.equal(QA.tidyClause("(二)曠課：上課後10分鐘起算。"), "曠課：上課後10分鐘起算。", "a label the sentence needs stays");
+assert.deepEqual(QA.answer("101 星期三課表", [], {}, { asOf: "2026-11-02", timetables: [{ academic_year: 115, semester: 1, classes: [{ class_name: "101", slots: [
+  { weekday: "星期三", period: 1, start: "0800", end: "0850", subject: "國文" }, { weekday: "星期三", period: 3, start: "1000", end: "1050", subject: "生物" }] }] }] }).reply.bullets,
+  ["第 1 節　國文", "第 3 節　生物"]);
+/* Privacy answers stay plain: no teasing. */
+assert.equal(QA.conversational({ status: "insufficient", query: "王小明的電話", summary: "不能提供個人資料。" }).text, "不能提供個人資料。");
 console.log("✓ 口語化回答");
 
 /* Follow-up questions read the previous turn. */
@@ -74,6 +81,13 @@ assert.equal(QA.resolveFollowUp("那要多久", { query: "你做什麼書", answ
 assert.equal(follow("沒用", "還書").context, "", "feedback is not a follow-up");
 assert.equal(follow("那要多久", "你能做什麼").context, "", "no topic, nothing to continue");
 console.log("✓ 閒聊與不亂接續");
+for (const [q, kind] of [["你好聰明", "praise"], ["你好笨", "negative"], ["誰做的你", "creator"], ["你是AI嗎", "ai"], ["好累", "bored"], ["考爛了", "exam"],
+  ["我喜歡你", "love"], ["講個笑話", "joke"], ["幫我寫作業", "homework"], ["掰掰", "bye"], ["哈哈哈", "laugh"]]) {
+  assert.equal(QA.smallTalk(q), kind, q);
+  assert.ok(QA.answer(q, items, details, opts).reply.text.length > 8, q + " gets a reply");
+}
+for (const q of ["好累 請假怎麼請", "考爛了要補考嗎", "你好，請問請假怎麼請", "圖書館幾點開"]) assert.equal(QA.smallTalk(q), "", q + " is a real question");
+console.log("✓ 更多閒聊");
 
 /* Without member detail there is no rule answer, only the official link. */
 r = QA.answer("嘉義高中還書", items, {}, opts);
