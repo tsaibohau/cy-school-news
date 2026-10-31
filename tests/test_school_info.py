@@ -134,6 +134,21 @@ def main():
     assert sorted(i["title"] for i in items) == ["網路服務 › 校務行政系統", "網路服務 › 考試範圍公告", "網路服務 › 自修室預約系統"]
     assert all(i["kind"] == "school_service" and i["url"].startswith("https://") for i in items)
     print("✓ 需登入系統只記錄入口連結")
+    # 嘉女: same collector, documents on Google Drive, custom-layout pages, no 網路服務 menu.
+    assert si.SCHOOLS["cygsh"]["unit"] == "1013" and si.SCHOOLS["cygsh"]["short"] == "嘉女"
+    drive = ('<div class="module-path"></div><a href="https://drive.google.com/file/d/abc/view">學生獎懲規定</a>'
+             '<a href="https://drive.google.com/x">（請按我連結）</a><a href="https://drive.google.com/y">得獎名單</a>')
+    names = [d["name"] for d in si.doc_links(drive, "https://www.cygsh.cy.edu.tw/p/412-1013-1843.php")]
+    assert names == ["學生獎懲規定", "（請按我連結）"], names
+    custom = ('<div class="mpgdetail"><style>.x{color:red}</style><div class="protocol"><div>圖書館借閱辦法</div>'
+              '<div>(4)學 生：借出圖書總數為五冊，圖書借期14天。</div></div></div>:::')
+    lines = si.page_text_lines(custom)
+    assert lines == ["圖書館借閱辦法", "(4)學 生：借出圖書總數為五冊，圖書借期14天。"], lines
+    no_menu = ('<a href="https://cygsh-cy.k12ea.gov.tw/SCH_UI/">校務系統入口</a>'
+               '<a href="https://www.ceec.edu.tw/">大學入學考試中心</a><a href="https://library.cygsh.cy.edu.tw">圖書查詢與借閱</a>')
+    found = {row["name"] for row in ss.build_services([("https://www.cygsh.cy.edu.tw/p/412-1013-4239.php", no_menu)])}
+    assert found == {"校務行政系統", "圖書館館藏查詢"}, "without a 網路服務 menu only known systems are kept"
+    print("✓ 嘉女：雲端文件、自訂版面頁面、系統入口")
     print("所有校園資訊測試通過 ✅")
 
 
