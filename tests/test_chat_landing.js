@@ -26,5 +26,5 @@ assert.ok(index.indexOf('id="assistantThread"') < index.indexOf('id="assistantEv
 assert.doesNotMatch(app, /'<details class="assistant-details"[^']*'\s*\+\s*'<summary>為什麼這樣回答/, "no evidence panel inside each answer");
 assert.match(app, /function showAssistantEvidence\(index, open\)/);
 assert.match(app, /data-assistant-cite="/);
-assert.match(app, /resolveFollowUp\(question, previous && \{ query: previous\.query \}\)/, "follow-up questions read the previous turn");
+assert.match(app, /resolveFollowUp\(question, previous && \{ query: previous\.query, answered: answeredBefore \}\)/, "follow-up questions read the previous answered turn");
 console.log("Chat landing and layout contract passed");
