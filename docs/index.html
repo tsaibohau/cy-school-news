@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=104">
+<link rel="stylesheet" href="style.css?v=105">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -33,6 +33,7 @@
       <span class="brand-text"><h1>校訊</h1><span class="mast-sub">嘉義・雲林公告彙整</span></span>
     </button>
     <div class="mast-tools">
+      <span id="mascotPerch" class="mascot-perch-slot" hidden></span>
       <span id="updatedAt" class="updated"></span>
       <button id="btnRefresh" class="icon-btn" title="立即檢查更新" aria-label="立即檢查更新" aria-describedby="refreshState">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
@@ -195,7 +196,7 @@
 
   <section id="viewSub" hidden>
     <div class="sub-head">
-      <div class="section-heading"><h2>我的</h2></div>
+      <div class="section-heading"><h2>設定</h2></div>
       <section class="my-card account-card" aria-labelledby="accountTitle">
         <div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">人</span><div><h3 id="accountTitle">帳號</h3><p>同步學校、偏好與待辦</p></div></div></div>
         <div id="accountBox" class="account-actions"><div class="account-identity"><span id="accountState" class="hint">未登入</span><span id="accountService" class="account-service" hidden></span><span id="accountEmail" class="account-email" hidden></span></div><button id="accountLogin" class="btn-primary">登入或註冊</button><button id="accountSwitch" class="btn-ghost" hidden>切換 Google 帳號</button><button id="accountLogout" class="btn-ghost" hidden>登出</button><button id="accountDeleteCloud" class="btn-ghost danger-button" type="button" hidden>刪除已同步資料</button></div>
@@ -331,8 +332,17 @@
   <button id="tabLatest" class="tab is-active" aria-current="page"><span class="tab-icon" aria-hidden="true">告</span><span class="tab-label">公告</span></button>
   <button id="tabCalendar" class="tab"><span class="tab-icon" aria-hidden="true">曆</span><span class="tab-label">行事曆</span></button>
   <button id="tabTimetable" class="tab"><span class="tab-icon" aria-hidden="true">課</span><span class="tab-label">課表</span></button>
-  <button id="tabSub" class="tab"><span class="tab-icon" aria-hidden="true">我</span><span class="tab-label">我的</span><em id="subBadge" class="badge" hidden></em></button>
 </nav>
+<!-- 側欄最下方：帳號、登出，旁邊的齒輪進設定（原「我的」頁：帳號、學校與通知設定）。 -->
+<div class="side-account">
+  <button id="sideAccountInfo" class="side-account-info" type="button" aria-label="帳號與設定">
+    <span id="sideAvatar" class="side-avatar" aria-hidden="true">訪</span>
+    <span class="side-account-text"><strong id="sideAccountName">訪客</strong><small id="sideAccountRole">未登入</small></span>
+  </button>
+  <button id="sideLogin" class="btn-primary side-account-btn" type="button">登入</button>
+  <button id="sideLogout" class="btn-ghost side-account-btn" type="button" hidden>登出</button>
+  <button id="tabSub" class="side-settings" type="button" aria-label="設定" title="設定"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="sr-only">設定</span><em id="subBadge" class="badge" hidden></em></button>
+</div>
 </div>
 
 <script src="account-config.js?v=44"></script>
@@ -354,10 +364,10 @@
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
-<script src="mascot.js?v=3"></script>
-<script src="assistant-qa.js?v=68"></script>
+<script src="mascot.js?v=4"></script>
+<script src="assistant-qa.js?v=69"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=121"></script>
+<script src="app.js?v=122"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

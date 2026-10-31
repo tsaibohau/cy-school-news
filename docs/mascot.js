@@ -42,7 +42,12 @@
     dance2: [[[3, 11], [2, 12], [1, 12], [0, 12]], [[22, 8], [23, 7], [24, 6], [25, 5]]],
     hold: [[[3, 5], [2, 4], [2, 3], [2, 2], [2, 1], [3, 0], [4, -1], [5, -1]], [[22, 5], [23, 4], [23, 3], [23, 2], [23, 1], [22, 0], [21, -1], [20, -1]]],
     point: [[[3, 10], [2, 11], [2, 12], [1, 13]], [[22, 8], [23, 7], [24, 7], [25, 7]]],
-    type: [[[3, 11], [3, 13], [4, 14], [5, 15]], [[22, 11], [22, 13], [21, 14], [20, 15]]]
+    type: [[[3, 11], [3, 13], [4, 14], [5, 15]], [[22, 11], [22, 13], [21, 14], [20, 15]]],
+    /* both hands in front of the body, holding something low (book, paper, phone) */
+    front: [[[3, 10], [3, 11], [4, 12], [5, 13]], [[22, 10], [22, 11], [21, 12], [20, 13]]],
+    front2: [[[3, 10], [3, 11], [4, 12], [5, 13]], [[22, 10], [22, 11], [21, 11], [20, 12]]],
+    /* right hand up, holding a pen or pencil */
+    pen: [[[3, 10], [3, 11], [4, 12], [5, 13]], [[22, 9], [22, 10], [21, 10], [20, 10]]]
   };
   var LEGS = {
     stand: [[9, 18], [9, 19], [8, 20], [9, 20], [16, 18], [16, 19], [16, 20], [17, 20]],
@@ -93,6 +98,41 @@
       if (fx === "sign") {
         for (var sx = 6; sx <= 19; sx++) for (var sy = -6; sy <= -1; sy++) put(g, sx, sy + dy, sx === 6 || sx === 19 || sy === -6 || sy === -1 ? "D" : "E");
         draw(g, [[12, -5], [13, -5], [12, -4], [13, -4], [12, -2], [13, -2]], "H", dy);
+      }
+      /* activities: props in front of the lower body (rows 11..17) */
+      if (fx === "book" || fx === "bookFlip") {
+        for (var kx = 5; kx <= 20; kx++) for (var ky = 12; ky <= 17; ky++) {
+          put(g, kx, ky + dy, ky === 17 || kx === 5 || kx === 20 ? "N" : kx === 12 || kx === 13 ? "Z" : "E");
+        }
+        draw(g, [[7, 13], [8, 13], [9, 13], [10, 13], [7, 15], [8, 15], [9, 15], [15, 13], [16, 13], [17, 13], [18, 13], [15, 15], [16, 15], [17, 15]], "Z", dy);
+        if (fx === "bookFlip") draw(g, [[14, 9], [15, 9], [14, 10], [15, 10], [16, 10], [14, 11], [15, 11], [16, 11], [17, 11]], "E", dy);
+      }
+      if (fx === "paper") {
+        for (var qx = 5; qx <= 20; qx++) for (var qy = 12; qy <= 17; qy++) put(g, qx, qy + dy, qy === 17 ? "Z" : "E");
+      }
+      if (fx === "ink1" || fx === "ink2" || fx === "ink3") {
+        /* handwriting: short blue "words" on every other row, one line more each step */
+        draw(g, [[7, 13], [8, 13], [9, 13], [11, 13], [12, 13]], "N", dy);
+        if (fx !== "ink1") draw(g, [[14, 13], [15, 13], [16, 13], [18, 13], [7, 15], [8, 15], [10, 15], [11, 15]], "N", dy);
+        if (fx === "ink3") draw(g, [[12, 15], [14, 15], [15, 15], [16, 15]], "N", dy);
+      }
+      if (fx === "penA" || fx === "penB" || fx === "penC") {
+        var tip = fx === "penA" ? 12 : fx === "penB" ? 16 : 10, row = fx === "penC" ? 15 : fx === "penB" ? 15 : 13;
+        draw(g, [[tip + 2, row - 4], [tip + 2, row - 3], [tip + 1, row - 2], [tip + 1, row - 1]], fx === "penC" ? "G" : "Y", dy);
+        put(g, tip, row + dy, "K");
+      }
+      if (fx === "art1" || fx === "art2" || fx === "art3") {
+        for (var ax = 5; ax <= 20; ax++) for (var ay = 12; ay <= 17; ay++) put(g, ax, ay + dy, ax === 5 || ax === 20 || ay === 12 || ay === 17 ? "Z" : "E");
+        draw(g, [[10, 13], [11, 13], [14, 13], [15, 13], [9, 14], [12, 14], [13, 14], [16, 14]], "H", dy);
+        if (fx !== "art1") draw(g, [[10, 14], [11, 14], [14, 14], [15, 14], [10, 15], [11, 15], [12, 15], [13, 15], [14, 15], [15, 15], [11, 16], [12, 16], [13, 16], [14, 16]], "H", dy);
+        if (fx === "art3") draw(g, [[7, 13], [18, 15], [7, 16]], "Y", dy);
+      }
+      if (fx === "phone" || fx === "game1" || fx === "game2" || fx === "game3") {
+        for (var fx2 = 7; fx2 <= 18; fx2++) for (var fy = 12; fy <= 15; fy++) put(g, fx2, fy + dy, fx2 === 7 || fx2 === 18 || fy === 12 || fy === 15 ? "K" : "B");
+        draw(g, [[8, 14], [9, 14], [10, 14], [11, 14], [12, 14], [13, 14], [14, 14], [15, 14], [16, 14], [17, 14]], "G", dy);
+        var hero = fx === "game1" ? [9, 13] : fx === "game2" ? [12, 12] : [15, 13];
+        put(g, hero[0], hero[1] + dy, "Y");
+        put(g, fx === "game3" ? 16 : 17, 13 + dy, "H");
       }
       if (fx === "sweat") draw(g, [[22, 3 + dy], [22, 4 + dy], [21, 4 + dy]], "B");
       if (fx === "sparkle") { draw(g, [[1, 1], [0, 2], [2, 2], [1, 3]], "Y"); draw(g, [[24, 0], [23, 1], [25, 1], [24, 2]], "Y"); }
@@ -164,6 +204,26 @@
     signWalk: [{ legs: "walkA", arms: "hold", fx: ["sign"] }, { legs: "walkA", arms: "hold", fx: ["sign"], dy: -1 }, { legs: "walkB", arms: "hold", fx: ["sign"] }, { legs: "walkB", arms: "hold", fx: ["sign"], dy: -1 }],
     signShow: [{ arms: "hold", fx: ["sign"], eyes: "wide" }, { arms: "hold", fx: ["sign"], eyes: "wide", dy: -1 }, { arms: "hold", fx: ["sign"], eyes: "wide" },
       { arms: "hold", fx: ["sign"], eyes: "wide", dy: -1 }, { arms: "hold", fx: ["sign"] }, { arms: "hold", fx: ["sign"] }, { arms: "hold", fx: ["sign"], eyes: "closed" }, { arms: "hold", fx: ["sign"] }],
+    /* Things 小訊 does on its own: read, write, draw, play a phone game. */
+    read: [{ legs: "sit", arms: "front", eyes: "down", fx: ["book"] }, { legs: "sit", arms: "front", eyes: "down", fx: ["book"] }, { legs: "sit", arms: "front", eyes: "down", fx: ["book"], dy: 1 },
+      { legs: "sit", arms: "front", eyes: "down", fx: ["book"], dy: 1 }, { legs: "sit", arms: "front", eyes: "down", fx: ["book"] }, { legs: "sit", arms: "front", eyes: "closed", fx: ["book"] },
+      { legs: "sit", arms: "front", eyes: "down", fx: ["book"] }, { legs: "sit", arms: "front2", eyes: "down", fx: ["bookFlip"] }, { legs: "sit", arms: "front2", eyes: "down", fx: ["bookFlip"] },
+      { legs: "sit", arms: "front", eyes: "down", fx: ["book"] }, { legs: "sit", arms: "front", eyes: "down", fx: ["book"] }, { legs: "sit", arms: "front", eyes: "down", fx: ["book"] }],
+    write: [{ legs: "sit", arms: "pen", eyes: "down", fx: ["paper", "penA"] }, { legs: "sit", arms: "pen", eyes: "down", fx: ["paper", "penA"], dy: 1 },
+      { legs: "sit", arms: "pen", eyes: "down", fx: ["paper", "ink1", "penB"] }, { legs: "sit", arms: "pen", eyes: "down", fx: ["paper", "ink1", "penB"], dy: 1 },
+      { legs: "sit", arms: "pen", eyes: "down", fx: ["paper", "ink2", "penA"] }, { legs: "sit", arms: "pen", eyes: "down", fx: ["paper", "ink2", "penB"], dy: 1 },
+      { legs: "sit", arms: "pen", eyes: "down", fx: ["paper", "ink3", "penA"] }, { legs: "sit", arms: "pen", eyes: "down", fx: ["paper", "ink3", "penB"] },
+      { legs: "sit", arms: "front", eyes: "happy", fx: ["paper", "ink3"] }, { legs: "sit", arms: "front", eyes: "happy", fx: ["paper", "ink3"] }],
+    draw: [{ legs: "sit", arms: "pen", eyes: "down", fx: ["art1", "penC"] }, { legs: "sit", arms: "pen", eyes: "down", fx: ["art1", "penC"], dy: 1 },
+      { legs: "sit", arms: "pen", eyes: "left", fx: ["art1", "penC"] }, { legs: "sit", arms: "pen", eyes: "down", fx: ["art2", "penC"] },
+      { legs: "sit", arms: "pen", eyes: "down", fx: ["art2", "penC"], dy: 1 }, { legs: "sit", arms: "pen", eyes: "down", fx: ["art2", "penC"] },
+      { legs: "sit", arms: "front", eyes: "happy", fx: ["art3", "sparkle"] }, { legs: "sit", arms: "front", eyes: "happy", fx: ["art3"] }, { legs: "sit", arms: "front", eyes: "happy", fx: ["art3", "sparkle"] }],
+    game: [{ legs: "sit", arms: "front", eyes: "down", fx: ["game1"] }, { legs: "sit", arms: "front2", eyes: "down", fx: ["game1"] },
+      { legs: "sit", arms: "front", eyes: "down", fx: ["game2"] }, { legs: "sit", arms: "front2", eyes: "down", fx: ["game2"] },
+      { legs: "sit", arms: "front", eyes: "down", fx: ["game3"] }, { legs: "sit", arms: "front2", eyes: "wide", fx: ["game3"] },
+      { legs: "sit", arms: "front", eyes: "down", fx: ["game1"] }, { legs: "sit", arms: "front2", eyes: "down", fx: ["game2"] }],
+    gameWin: [{ legs: "sit", arms: "front", eyes: "happy", fx: ["game3", "sparkle"], dy: -1 }, { legs: "sit", arms: "front", eyes: "happy", fx: ["game3"] }, { legs: "sit", arms: "front", eyes: "happy", fx: ["game3", "sparkle"], dy: -1 }],
+    gameLose: [{ legs: "sit", arms: "front", eyes: "sad", fx: ["phone", "sweat"] }, { legs: "sit", arms: "front", eyes: "sad", fx: ["phone", "sweat"], dy: 1 }, { legs: "sit", arms: "front", eyes: "sad", fx: ["phone"] }],
     hello: [{ arms: "wave", eyes: "happy" }, { arms: "wave2", eyes: "happy" }, { arms: "wave", eyes: "happy", dy: -1 }, { arms: "wave2", eyes: "happy" }, { arms: "point" }, { arms: "point" }, { arms: "point", eyes: "right" }]
   };
   /* Pre-render every frame once. */
@@ -179,8 +239,15 @@
     thinking: ["翻手冊中…", "等我一下，在找了。", "學校網站好難翻…"],
     happy: ["找到了！快誇我。", "這題簡單。", "嘿嘿，我果然很厲害。"],
     sad: ["找不到…不是我的錯🥲", "學校網站沒寫啦。", "這題考倒我了。"],
-    wake: ["嚇死我了！我沒在睡喔。", "我只是閉目養神。", "誰！喔，是你。"]
+    wake: ["嚇死我了！我沒在睡喔。", "我只是閉目養神。", "誰！喔，是你。"],
+    read: ["看書中，別吵📖", "這本比學生手冊好看多了。", "你也該翻一下課本了吧？"],
+    write: ["練字中✍️", "我在寫你的悔過書（騙你的）。", "字醜？我是像素，不能怪我。"],
+    draw: ["在畫畫🎨 不准偷看。", "畫了一顆愛心，送給認真讀書的人。", "我是畫家，像素派的。"],
+    game: ["再一場就好🎮", "不要跟老師說我在打電動。", "差一點就破關了！"],
+    busy: ["欸，我在忙耶。", "好啦好啦，有事快說。", "被抓到了…我只是休息一下。"]
   };
+  /* Activities with their follow-up (a phone game ends in a win or a loss). */
+  var ACTIVITIES = ["read", "write", "draw", "game"];
   function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
   function reducedMotion() {
     try { return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (_) { return false; }
@@ -191,11 +258,15 @@
     if (!stage || typeof document === "undefined") return null;
     options = options || {};
     var scale = options.pixel || 3, walks = options.walk !== false, still = reducedMotion();
-    var el = document.createElement(walks ? "button" : "span");
-    if (walks) { el.type = "button"; el.setAttribute("aria-label", "小訊（點我聊天）"); }
-    el.className = "mascot" + (walks ? "" : " mascot-still");
+    /* perch: sits in one place (the header) and mostly does its own thing; never walks. */
+    var perch = !!options.perch, activities = options.activities !== false;
+    var clickable = walks || perch;
+    if (perch) walks = false;
+    var el = document.createElement(clickable ? "button" : "span");
+    if (clickable) { el.type = "button"; el.setAttribute("aria-label", "小訊（點我）"); }
+    el.className = "mascot" + (clickable ? "" : " mascot-still") + (perch ? " mascot-perch" : "");
     el.style.width = W * scale + "px"; el.style.height = H * scale + "px";
-    el.innerHTML = (walks ? '<span class="mascot-bubble" role="status" aria-live="polite"></span>' : "") + '<span class="mascot-figure"></span>';
+    el.innerHTML = (clickable ? '<span class="mascot-bubble" role="status" aria-live="polite"></span>' : "") + '<span class="mascot-figure"></span>';
     stage.appendChild(el);
     var figure = el.querySelector(".mascot-figure"), bubble = el.querySelector(".mascot-bubble");
     var x = 0, target = null, queue = [], current = null, step = 0, mood = "idle", lastPoke = Date.now(), bubbleTimer = null, timer = null, shown = "";
@@ -217,6 +288,16 @@
       var asleep = Date.now() - lastPoke > 45000;
       if (asleep) return "sleep";
       var r = Math.random();
+      /* Sometimes settle down and do something: read, write, draw or play a game. */
+      if (activities && r < 0.3) {
+        var act = pick(ACTIVITIES);
+        var loops = act === "game" ? 2 : 1;
+        for (var i = 1; i < loops; i++) queue.push(act);
+        if (act === "game") queue.push(Math.random() < 0.6 ? "gameWin" : "gameLose");
+        if (Math.random() < 0.25) say(pick(LINES[act]), 2600);
+        return act;
+      }
+      r = Math.random();
       if (walks && r < 0.3) { target = Math.random() * width(); return "walk"; }
       if (r < 0.45) return "look";
       if (r < 0.55) return "wave";
@@ -254,15 +335,16 @@
       if (text !== false) say(text || pick(LINES[next] || LINES.idle), next === "thinking" ? 60000 : 3200);
       lastPoke = Date.now();
     }
-    if (walks) el.addEventListener("click", function () {
-      var wasAsleep = current === "sleep";
+    if (clickable) el.addEventListener("click", function () {
+      var wasAsleep = current === "sleep", wasBusy = ACTIVITIES.indexOf(current) !== -1 || /^game/.test(current || "");
       lastPoke = Date.now();
       queue = []; target = null; current = Math.random() < 0.2 ? "love" : "startle"; step = 0;
-      say(wasAsleep ? pick(LINES.wake) : pick(LINES.idle));
+      say(wasAsleep ? pick(LINES.wake) : wasBusy ? pick(LINES.busy) : pick(LINES.idle));
     });
-    x = width() * 0.75; place();
+    x = perch ? 0 : width() * 0.75; place();
     show(STAND);
     if (!still) timer = setInterval(function () { if (!document.hidden) tick(); }, TICK);
+    else if (perch) show({ legs: "sit", arms: "front", eyes: "down", fx: ["book"] });
     else if (!walks) show({ arms: "wave", eyes: "happy" });
     return { el: el, setMood: setMood, say: say, play: play, stop: function () { clearInterval(timer); } };
   }

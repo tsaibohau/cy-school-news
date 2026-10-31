@@ -2477,6 +2477,16 @@
       }
       if (!mascot) mascot = window.CyNewsMascot.mount($("mascotStage"), { pixel: 2 });
     }
+    /* 刊頭的小訊：問校務以外的頁面都坐在右上角，自己看書、寫字、畫畫、打手遊。
+       問校務有自己那隻，客串時也先躲起來，畫面上永遠只有一隻。 */
+    var perch = null;
+    function updatePerch() {
+      var slot = $("mascotPerch");
+      if (!slot || !window.CyNewsMascot) return;
+      var show = state.tab !== "assistant";
+      if (show && !perch) perch = window.CyNewsMascot.mount(slot, { perch: true, pixel: window.innerWidth < 400 ? 1.5 : 2 });
+      slot.hidden = !show;
+    }
     /* 小訊客串：偶爾從畫面旁邊衝出來或從左上角冒出來。
        有快到期的事（3 天內的公告期限或待辦）就舉牌提醒，段考快到就搬書叫你讀書，否則隨口唸兩句。 */
     var CAMEO_FIRST_MS = 25000, CAMEO_GAP_MS = [240000, 420000], CAMEO_MAX = 4;
@@ -2533,9 +2543,10 @@
       cameoTimer = null;
       if (!window.CyNewsMascot || !window.CyNewsMascot.cameo || !state.data || cameoCount >= CAMEO_MAX) return;
       if (cameoBlocked()) { cameoTimer = setTimeout(runMascotCameo, 30000); return; }
-      var plan = planMascotCameo(), stage = mascot && mascot.el;
+      var plan = planMascotCameo(), stage = mascot && mascot.el, perched = perch && perch.el;
       if (stage) stage.style.visibility = "hidden";
-      plan.onDone = function () { if (stage) stage.style.visibility = ""; scheduleMascotCameo(); };
+      if (perched) perched.style.visibility = "hidden";
+      plan.onDone = function () { if (stage) stage.style.visibility = ""; if (perched) perched.style.visibility = ""; scheduleMascotCameo(); };
       if (window.CyNewsMascot.cameo(plan)) cameoCount++;
       else plan.onDone();
     }
@@ -2596,6 +2607,7 @@
         var options = assistantOptions(scope);
         options.hour = Number(new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei", hour: "numeric", hour12: false })) % 24;
         options.lastQuestion = previous ? previous.question : "";
+        options.doubt = !!followUp.doubt;
         /* 「最近有什麼新消息」這類問題直接列公告，不必先做逐句比對 */
         var candidates = (window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question)) || (window.CyNewsAssistantQA.datePlan && window.CyNewsAssistantQA.datePlan(question, new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }))) ? [] : window.CyNewsAssistantQA.rank(question, items, {}, options).slice(0, 8);
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
@@ -3066,6 +3078,37 @@
       document.body.classList.toggle("menu-open", !!open);
       var toggle = $("sideMenuToggle");
       if (toggle) { toggle.setAttribute("aria-expanded", open ? "true" : "false"); toggle.setAttribute("aria-label", open ? "關閉功能選單" : "開啟功能選單"); }
+      if (open) renderSideAccount();
+    }
+    /* 側欄最下方的帳號列，跟「我的」頁的帳號區同步（登入狀態由那裡的按鈕決定）。 */
+    function renderSideAccount() {
+      var name = $("sideAccountName"), role = $("sideAccountRole"), avatar = $("sideAvatar");
+      if (!name || !role) return;
+      var logout = $("accountLogout"), signedIn = !!(logout && !logout.hidden);
+      var access = state.accountAccess || {};
+      var email = signedIn && window.CyNewsAccountAuth && state.accountUser ? window.CyNewsAccountAuth.displayEmail(state.accountUser) : "";
+      var label = signedIn ? (state.nickname || email || "已登入") : "訪客";
+      var roleText = !signedIn ? "未登入" : access.admin_role === "owner" ? "主要管理員" : access.admin_role === "co_admin" ? "聯席管理員" :
+        access.status === "pending" ? "等待審核" : access.status === "approved" ? "一般使用者" : "已登入";
+      if (name.textContent !== label) name.textContent = label;
+      if (role.textContent !== roleText) role.textContent = roleText;
+      if (avatar) { var first = String(label).trim().charAt(0) || "訪"; if (avatar.textContent !== first) avatar.textContent = first; }
+      var login = $("sideLogin"), out = $("sideLogout");
+      if (login && login.hidden !== signedIn) login.hidden = signedIn;
+      if (out && out.hidden !== !signedIn) out.hidden = !signedIn;
+    }
+    function setupSideAccount() {
+      var box = $("accountBox");
+      if (box && typeof MutationObserver === "function") new MutationObserver(renderSideAccount).observe(box, { attributes: true, childList: true, subtree: true, characterData: true });
+      var info = $("sideAccountInfo"), login = $("sideLogin"), out = $("sideLogout");
+      if (info) info.addEventListener("click", function () {
+        var settings = $("tabSub");
+        if (settings && !settings.hidden) pickTab("sub");
+        else { setSideMenu(false); var signIn = $("publicAccountLogin") || $("accountLogin"); if (signIn) signIn.click(); }
+      });
+      if (login) login.addEventListener("click", function () { setSideMenu(false); var signIn = $("publicAccountLogin") || $("accountLogin"); if (signIn) signIn.click(); });
+      if (out) out.addEventListener("click", function () { setSideMenu(false); var real = $("accountLogout"); if (real) real.click(); });
+      renderSideAccount();
     }
     function switchTab(tab) {
       var capabilities = window.CyNewsCapabilities;
@@ -3088,6 +3131,7 @@
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此帳號目前只有課表服務。";
       }
       state.tab = tab;
+      try { updatePerch(); } catch (_) {}
       var home = tab === "home";
       var latest = tab === "latest";
       var today = tab === "today";
@@ -3171,6 +3215,8 @@
     var sideMenuToggle = $("sideMenuToggle"), sideBackdrop = $("sideBackdrop");
     if (sideMenuToggle) sideMenuToggle.addEventListener("click", function () { setSideMenu(!document.body.classList.contains("menu-open")); });
     if (sideBackdrop) sideBackdrop.addEventListener("click", function () { setSideMenu(false); });
+    try { setupSideAccount(); } catch (_) {}
+    try { updatePerch(); } catch (_) {}
     if (typeof document.addEventListener === "function") document.addEventListener("keydown", function (e) { if (e.key === "Escape") setSideMenu(false); });
     el.tabLatest.addEventListener("click", function () { pickTab("latest"); });
     if (el.tabToday) el.tabToday.addEventListener("click", function () { pickTab("today"); });
