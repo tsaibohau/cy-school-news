@@ -333,7 +333,9 @@ def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
     todo = pick_pages(index, school, max(0, cap), datetime.now(TW_TZ))
     session = requests.Session()
     session.headers.update({"User-Agent": scrape.UA, "Accept-Language": "zh-TW,zh;q=0.9"})
-    budget = {"remaining": min(4, max(0, int(os.environ.get("SCHOOL_INFO_PDF_CAP", "2"))))}
+    # The hourly run reads at most 4 PDFs; the one-off backfill workflow raises the ceiling.
+    ceiling = int(os.environ.get("SCHOOL_INFO_PDF_CEILING", "4"))
+    budget = {"remaining": min(ceiling, max(0, int(os.environ.get("SCHOOL_INFO_PDF_CAP", "2"))))}
     delay = float(scrape.CONFIG.get("request_delay_sec", 1.5))
     config_school = next((s for s in scrape.CONFIG["schools"] if s["id"] == school_id), None)
     summary = {"fetched": 0, "failed": 0, "gone": 0}

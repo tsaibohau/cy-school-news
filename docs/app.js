@@ -122,6 +122,7 @@
       nickname: "",
       assistantFeedback: window.CyNewsAssistantFeedback ? window.CyNewsAssistantFeedback.normalize({}) : {},
       assistantAnswer: null,
+      assistantTurns: [],
       assistantScope: "preferred",
       assistantItems: {},
       personalizedNotifications: false,
@@ -2290,7 +2291,7 @@
     /* Entry links to the school's login systems (校務行政系統、自修室預約…). */
     function assistantServiceLinks(result) {
       var links = (result && result.service_links || []).filter(function (link) { return link && /^https:\/\//.test(String(link.url || "")); });
-      var docs = result && result.mode !== "document" ? (result.document_links || []).filter(function (doc) { return doc && /^https:\/\//.test(String(doc.url || "")); }) : [];
+      var docs = result ? (result.document_links || []).filter(function (doc) { return doc && /^https:\/\//.test(String(doc.url || "")); }) : [];
       if (!links.length && !docs.length) return "";
       return '<div class="assistant-office">' + links.map(function (link) {
         return '<a class="btn-ghost" href="' + esc(link.url) + '" target="_blank" rel="noopener">前往' + esc(link.name) + (link.login_required ? "（需登入）" : "") + '</a>';
@@ -2298,39 +2299,63 @@
         return '<a class="btn-ghost" href="' + esc(doc.url) + '" target="_blank" rel="noopener">官方文件：' + esc(doc.name) + '</a>';
       })).join(" ") + '</div>';
     }
-    function renderAssistantAnswer(result) {
-      if (!el.assistantAnswer) return;
-      state.assistantAnswer = result;
-      if (!result || result.status !== "answered") {
-        var related = (result && result.related || []).map(function (item) {
-          var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
-          return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(item.title) + '</strong><small>' + esc(meta) + '</small></button>';
-        }).join("");
-        var relatedPanel = related ? '<details class="assistant-details" open><summary>可能相關的公告（請點開確認）</summary><div class="assistant-sources">' + related + '</div></details>' : '';
-        var office = result && result.office_link && /^https:\/\//.test(result.office_link.url) ? '<p class="assistant-office"><a class="btn-ghost" href="' + esc(result.office_link.url) + '" target="_blank" rel="noopener">前往' + esc(result.office_link.label) + '</a></p>' : '';
-        el.assistantAnswer.innerHTML = '<div class="assistant-empty"><h3>' + (related ? "沒有找到能直接回答的句子" : "目前還無法回答這個問題") + '</h3><p>' + esc(result && result.summary || "請換一種問法，或查看官方公告。") + '</p>' + office + assistantServiceLinks(result) + (related || office ? '' : '<small>可能是校方尚未公告、附件沒有可讀文字，或問題不在本站資料範圍。</small>') + '</div>' + relatedPanel;
-        return;
-      }
-      var evidence = result.evidence.map(function (row, index) {
-        return '<li><span class="assistant-evidence-rank">' + (index + 1) + '</span><div><strong class="assistant-evidence-title">' + esc(row.title || "官方公告") + '</strong><p>' + esc(row.text) + '</p><button type="button" class="btn-ghost" data-detail-id="' + esc(row.announcement_id) + '">查看這則官方依據</button></div></li>';
-      }).join("");
-      var sources = result.sources.slice(0, result.mode === "browse" ? 8 : 5).map(function (item) {
+    /* One answer = a few plain sentences. Sources, quoted evidence and data notes for every
+       answer go to one shared 依據與來源 panel under the conversation. */
+    function assistantSourceButtons(result) {
+      return (result.sources || []).slice(0, result.mode === "browse" ? 8 : 5).map(function (item) {
         var validityLabel = window.CyNewsAnnouncementValidity && item.validity ? window.CyNewsAnnouncementValidity.label(item.validity) : "";
         var sourceMeta = (item.school_name || "官方公告") + " · " + displayDate(item) + (validityLabel ? " · " + validityLabel : "") + (item.note ? " · " + item.note : "");
         if (item.kind === "service") return '<a class="assistant-source" href="' + esc(/^https:\/\//.test(String(item.url || "")) ? item.url : "#") + '" target="_blank" rel="noopener"><strong>' + esc(item.title) + '</strong><small>' + esc(item.note || "官方系統") + '</small></a>';
         if (item.kind === "calendar") return '<div class="assistant-source"><strong>' + esc(item.title) + '</strong><small>' + esc((item.school_name || "學校") + " · " + (item.note || "學校行事曆")) + '</small></div>';
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc(sourceMeta) + '</small></button>';
       }).join("");
-      var answerLines = (result.answer_lines || []).map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("");
-      var directAnswer = answerLines ? '<ul class="assistant-answer-lines">' + answerLines + '</ul>' : '';
-      var sourcePanel = sources ? '<details class="assistant-details" open><summary>' + (result.list_label === "行程" ? "行程清單（" : result.mode === "browse" ? "公告清單（" : "官方來源（") + result.sources.length + '）</summary><div class="assistant-sources">' + sources + '</div></details>' : '';
-      var evidencePanel = evidence ? '<details class="assistant-details"><summary>為什麼這樣回答</summary><ol class="assistant-evidence">' + evidence + '</ol></details>' : '';
-      var limitation = result.limitation ? '<details class="assistant-details"><summary>資料說明</summary><p class="assistant-limitation">' + esc(result.limitation) + '</p></details>' : '';
-      var title = result.query ? '關於「' + esc(result.query) + '」' : '回答';
-      var points = (result.key_points || []).map(function (point) { return '<div class="assistant-point"><dt>' + esc(point.label) + '</dt><dd>' + esc(point.value) + '</dd></div>'; }).join("");
-      var pointPanel = points ? '<dl class="assistant-points" aria-label="重點整理">' + points + '</dl>' : '';
-      var quotePanel = directAnswer ? '<details class="assistant-details"><summary>官方原文摘錄</summary>' + directAnswer + '</details>' : '';
-      el.assistantAnswer.innerHTML = '<section class="assistant-result"><h3>' + title + '</h3><p class="assistant-lead">' + esc(result.summary) + '</p>' + (result.mode === "service" ? "" : assistantServiceLinks(result)) + pointPanel + (points ? quotePanel : directAnswer) + sourcePanel + evidencePanel + limitation + '</section>';
+    }
+    function assistantEvidenceHtml(turn) {
+      var result = turn.result || {}, parts = [];
+      var sources = result.mode === "browse" ? "" : assistantSourceButtons(result);
+      if (sources) parts.push('<h4>官方來源（' + result.sources.length + '）</h4><div class="assistant-sources">' + sources + '</div>');
+      var evidence = (result.evidence || []).map(function (row, index) {
+        return '<li><span class="assistant-evidence-rank">' + (index + 1) + '</span><div><strong class="assistant-evidence-title">' + esc(row.title || "官方公告") + '</strong><p>' + esc(row.text) + '</p><button type="button" class="btn-ghost" data-detail-id="' + esc(row.announcement_id) + '">查看這則官方依據</button></div></li>';
+      }).join("");
+      if (evidence) parts.push('<h4>為什麼這樣回答（官方原文）</h4><ol class="assistant-evidence">' + evidence + '</ol>');
+      if (result.limitation) parts.push('<h4>資料說明</h4><p class="assistant-limitation">' + esc(result.limitation) + '</p>');
+      return parts.join("");
+    }
+    function showAssistantEvidence(index, open) {
+      var panel = document.getElementById("assistantEvidence"), body = document.getElementById("assistantEvidenceBody"), label = document.getElementById("assistantEvidenceTitle");
+      var turn = state.assistantTurns[index];
+      if (!panel || !body || !turn) return;
+      var html = assistantEvidenceHtml(turn);
+      panel.hidden = !html;
+      body.innerHTML = html;
+      if (label) label.textContent = "依據與來源：「" + (turn.question.length > 14 ? turn.question.slice(0, 13) + "…" : turn.question) + "」";
+      Array.prototype.forEach.call(document.querySelectorAll("[data-assistant-cite]"), function (button) {
+        button.classList.toggle("is-current", Number(button.dataset.assistantCite) === index);
+      });
+      if (open) { panel.open = true; if (panel.scrollIntoView) panel.scrollIntoView({ block: "start", behavior: "smooth" }); }
+    }
+    function renderAssistantAnswer(result, turnIndex) {
+      if (!el.assistantAnswer) return;
+      state.assistantAnswer = result;
+      var index = typeof turnIndex === "number" ? turnIndex : state.assistantTurns.length - 1, turn = state.assistantTurns[index];
+      if (turn) turn.result = result;
+      var reply = result && result.reply || { text: result && result.summary || "", bullets: [] };
+      var html = '<p class="assistant-lead">' + esc(reply.text || "請換一種問法，或查看官方公告。") + '</p>';
+      if (reply.bullets && reply.bullets.length) html += '<ul class="chat-bullets">' + reply.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>';
+      if (result && result.status === "answered" && result.mode === "browse" && (result.sources || []).length) html += '<div class="assistant-sources chat-list">' + assistantSourceButtons(result) + '</div>';
+      var related = (result && result.status !== "answered" && result.related || []).slice(0, 3).map(function (item) {
+        var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
+        return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(item.title) + '</strong><small>' + esc(meta) + '</small></button>';
+      }).join("");
+      if (related) html += '<p class="chat-aside">這幾則公告可能有關，可以點開看看：</p><div class="assistant-sources chat-list">' + related + '</div>';
+      var office = result && result.status !== "answered" && result.office_link && /^https:\/\//.test(result.office_link.url) ? '<a class="btn-ghost" href="' + esc(result.office_link.url) + '" target="_blank" rel="noopener">前往' + esc(result.office_link.label) + '</a>' : '';
+      var links = assistantServiceLinks(result);
+      if (office) links = links ? links.replace('</div>', ' ' + office + '</div>') : '<div class="assistant-office">' + office + '</div>';
+      html += links;
+      var hasEvidence = turn && assistantEvidenceHtml(turn);
+      if (hasEvidence) html += '<button type="button" class="chat-cite" data-assistant-cite="' + index + '">依據與來源 ↓</button>';
+      el.assistantAnswer.innerHTML = '<div class="assistant-result chat-answer">' + html + '</div>';
+      showAssistantEvidence(index, false);
     }
     function assistantOptions(scope) {
       var label = String(scope && scope.label || "").replace(/（.*?）/g, "");
@@ -2411,12 +2436,13 @@
       box.innerHTML = chips.map(function (chip) { return '<button type="button" data-assistant-example="' + esc(chip.question) + '">' + esc(chip.label) + '</button>'; }).join("");
     }
     /* 對話式問校務：每個問題一則，像聊天一樣往下排（只存在這次開啟的頁面裡）。 */
-    function startAssistantTurn(question) {
+    function startAssistantTurn(question, context) {
+      state.assistantTurns.push({ question: question, query: question, result: null });
       var thread = document.getElementById("assistantThread");
       if (!thread || typeof document.createElement !== "function") return;
       var turn = document.createElement("article");
       turn.className = "chat-turn";
-      turn.innerHTML = '<div class="chat-user"><p>' + esc(question) + '</p></div><div class="chat-reply assistant-answer"></div>';
+      turn.innerHTML = '<div class="chat-user"><p>' + esc(question) + '</p>' + (context ? '<small class="chat-context">接續上一題：' + esc(context) + '</small>' : '') + '</div><div class="chat-reply assistant-answer"></div>';
       thread.appendChild(turn);
       el.assistantAnswer = turn.querySelector(".chat-reply");
       if (el.viewAssistant) el.viewAssistant.classList.add("has-turns");
@@ -2440,8 +2466,20 @@
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
       question = String(question || "").trim().slice(0, 160);
       if (!question) return Promise.resolve(null);
+      /* 「那要多久？」「那嘉女呢？」 continue the previous question. */
+      var asked = question, previous = state.assistantTurns[state.assistantTurns.length - 1];
+      var followUp = window.CyNewsAssistantQA.resolveFollowUp ? window.CyNewsAssistantQA.resolveFollowUp(question, previous && { query: previous.query }) : { query: question, context: "" };
+      question = followUp.query || question;
       var scope = assistantScopeFor(question);
-      startAssistantTurn(question);
+      if (followUp.context && previous && previous.scopeId && !(window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.mentionedSchool(asked))) {
+        var keep = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(previous.scopeId);
+        if (keep) scope = { id: keep.id, label: keep.short };
+      }
+      startAssistantTurn(asked, followUp.context);
+      var current = state.assistantTurns[state.assistantTurns.length - 1];
+      if (current) { current.query = question; current.scopeId = scope.id; }
+      /* A second question sent before this one finishes must not take over its answer. */
+      var turnIndex = state.assistantTurns.length - 1, target = el.assistantAnswer;
       if (el.assistantAsk) el.assistantAsk.disabled = true;
       if (el.assistantStatus) el.assistantStatus.textContent = "正在查「" + scope.label + "」的規定、行事曆與公告…";
       if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在翻找「' + esc(scope.label) + '」的規定與公告…</p></div>';
@@ -2453,7 +2491,7 @@
       }).then(function (items) {
         state.assistantItems = {};
         items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
-        rememberAssistantQuestion(question);
+        rememberAssistantQuestion(asked);
         var options = assistantOptions(scope);
         /* 「最近有什麼新消息」這類問題直接列公告，不必先做逐句比對 */
         var candidates = (window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question)) || (window.CyNewsAssistantQA.datePlan && window.CyNewsAssistantQA.datePlan(question, new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }))) ? [] : window.CyNewsAssistantQA.rank(question, items, {}, options).slice(0, 8);
@@ -2461,14 +2499,16 @@
           var details = {};
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
           var result = window.CyNewsAssistantQA.answer(question, items, details, options);
-          renderAssistantAnswer(result);
+          el.assistantAnswer = target;
+          renderAssistantAnswer(result, turnIndex);
           renderAssistantExamples();
           if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已從「" + scope.label + "」官方資料整理，請對照下方依據" : "「" + scope.label + "」尚缺可用的官方資料，請查看相關公告";
           return result;
         });
       }).catch(function () {
         var result = { status: "insufficient", summary: "目前無法讀取資料，請稍後再試。", evidence: [], sources: [] };
-        renderAssistantAnswer(result);
+        el.assistantAnswer = target;
+        renderAssistantAnswer(result, turnIndex);
         if (el.assistantStatus) el.assistantStatus.textContent = "資料讀取失敗";
         return result;
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
@@ -2727,6 +2767,8 @@
     if (el.viewAssistant) el.viewAssistant.addEventListener("click", function (e) {
       var example = e.target.closest("button[data-assistant-example]");
       if (example) { el.assistantQuestion.value = example.dataset.assistantExample; askAssistant(el.assistantQuestion.value); return; }
+      var cite = e.target.closest("button[data-assistant-cite]");
+      if (cite) { showAssistantEvidence(Number(cite.dataset.assistantCite), true); return; }
       var source = e.target.closest("button[data-detail-id]");
       if (source) openDetail(source.dataset.detailId);
     });

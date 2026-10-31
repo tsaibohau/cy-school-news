@@ -1,0 +1,87 @@
+name: 校園資訊一次補抓（手動）
+
+# Run by hand once after adding a school, so its rules and handbook reach 問校務 right away
+# instead of over two days of hourly runs. Requests stay sequential with the usual
+# request_delay_sec pause; this workflow has no schedule.
+on:
+  workflow_dispatch:
+    inputs:
+      pages:
+        description: "每校最多抓幾頁"
+        required: false
+        default: "250"
+      pdfs:
+        description: "每校最多讀幾個 PDF"
+        required: false
+        default: "40"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: 安裝相依套件
+        run: pip install -r scraper/requirements.txt
+
+      - name: 收錄校園資訊、學生手冊與 PDF 規定
+        env:
+          SCHOOL_INFO_PAGE_CAP: ${{ github.event.inputs.pages }}
+          SCHOOL_INFO_PDF_CAP: ${{ github.event.inputs.pdfs }}
+          SCHOOL_INFO_PDF_CEILING: ${{ github.event.inputs.pdfs }}
+        run: python scraper/school_info.py discover
+
+      - name: 同步內文到受保護資料庫
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          node tools/export-member-content.js .member-content-sync
+          if [ -z "$ANNOUNCEMENT_CONTENT_SYNC_TOKEN" ] || [ -z "$ANNOUNCEMENT_CONTENT_SYNC_URL" ] || [ -z "$SUPABASE_PUBLISHABLE_KEY" ]; then
+            echo "ANNOUNCEMENT_CONTENT_SYNC_NOT_CONFIGURED"
+            exit 1
+          fi
+          for batch in .member-content-sync/batch-*.json; do
+            response_file="$(mktemp)"
+            http_status="$(curl --silent --show-error --output "$response_file" --write-out "%{http_code}" --request POST "$ANNOUNCEMENT_CONTENT_SYNC_URL" \
+              --header "apikey: $SUPABASE_PUBLISHABLE_KEY" \
+              --header "x-announcement-content-sync-token: $ANNOUNCEMENT_CONTENT_SYNC_TOKEN" \
+              --header "content-type: application/json" \
+              --data-binary "@$batch")"
+            response_body="$(tr -d '\n' < "$response_file")"
+            rm -f "$response_file"
+            echo "announcement-content-sync batch=$(basename "$batch") status=$http_status response=$response_body"
+            case "$http_status" in
+              2??) ;;
+              *) echo "::error::announcement-content-sync failed (batch=$(basename "$batch") status=$http_status)"; exit 1 ;;
+            esac
+          done
+
+      - name: 移除公開產物中的會員內容
+        run: node tools/public-metadata-projection.js docs
+
+      - name: 提交校園資訊索引
+        run: |
+          git config user.name "news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/school-info
+          if git diff --cached --quiet; then
+            echo "沒有變更,略過提交"
+          else
+            git commit -m "補抓校園資訊 $(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M')"
+            git pull --rebase origin main
+            git push
+          fi

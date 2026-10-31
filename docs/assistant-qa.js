@@ -1331,6 +1331,95 @@
     });
     return rows.sort(function (a, b) { return b.score - a.score; }).slice(0, 3);
   }
+  /* Conversational reply (no AI model): the answer as plain sentences, with list numbering,
+     column repeats and short labels taken out of the quoted rule text. The official wording
+     itself is kept; sources and the original quote live in the separate 依據與來源 panel. */
+  var ENUM_PREFIX = /^(?:[（(]?[一二三四五六七八九十]{1,3}[)）、．.]|[（(]\d{1,2}[)）]|\d{1,2}[、．)]|\d{1,2}\.(?!\d)|[①-⑳]|[壹貳參肆伍陸柒捌玖拾]{1,2}、|第[一二三四五六七八九十]{1,3}條)\s*/;
+  /* A few formal rule words read more easily in everyday Chinese; the meaning does not change. */
+  var PLAIN_WORDS = [[/皆可/g, "都可以"], [/如無/g, "如果沒有"], [/得(?=續借|申請|辦理|請假|參加|補考)/g, "可以"], [/方為完畢/g, "才算完成"], [/應於/g, "要在"], [/須於/g, "要在"], [/應使用/g, "要使用"], [/請自行/g, "請自己"]];
+  function tidyClause(text, keepEnd) {
+    var t = clean(text).replace(/…$/, "");
+    for (var i = 0; i < 3; i++) { var next = t.replace(ENUM_PREFIX, ""); if (next === t) break; t = next; }
+    t = t.replace(/(\S{2,})\s+\1$/, "$1");
+    var span = t.match(/^(\d{1,2})[:：](\d{2})\s*[-~～－]\s*(\d{1,2})[:：](\d{2})\s*([㐀-鿿].{0,12})$/);
+    if (span) t = span[5] + "是 " + span[1] + ":" + span[2] + "–" + span[3] + ":" + span[4];
+    var at = t.match(/^(\d{1,2})[:：](\d{2})\s+([㐀-鿿].{0,12})$/);
+    if (at) t = at[3] + "時間是 " + at[1] + ":" + at[2];
+    t = t.replace(/([㐀-鿿])\s+(?=[㐀-鿿])/g, "$1");
+    PLAIN_WORDS.forEach(function (row) { t = t.replace(row[0], row[1]); });
+    var label = t.match(/^([^：:，。；\d]{2,8})[：:]\s*(.{4,})$/);
+    if (label && grams(compact(label[1])).some(function (g) { return g.length === 2 && compact(label[2]).indexOf(g) !== -1; })) t = label[2];
+    return keepEnd ? t : endSentence(t);
+  }
+  function docLabel(item) {
+    var parts = clean(item && item.title || "").split(/\s*›\s*/).filter(Boolean);
+    if (item && item.kind === "school_handbook") return "學生手冊的〈" + (parts[parts.length - 1] || "規定") + "〉";
+    if (parts.length >= 2) return parts[0] + "的「" + parts[parts.length - 1] + "」頁面";
+    return "學校官網的「" + (parts[0] || "說明") + "」頁面";
+  }
+  var TABLE_ROW = /^(?:\d{1,2}[:：]\d{2}|第[一二三四五六七八九十\d]+節|[一二三四五六日六]{1}[、．]|星期)/;
+  function conversational(result) {
+    if (!result) return { text: "", bullets: [] };
+    var text = clean(result.summary || ""), bullets = [];
+    if (result.mode === "rule" && (result.answer_lines || []).length) {
+      var item = (result.sources || [])[0] || {};
+      var pages = Array.isArray(item.page_range) ? "（第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁）" : "";
+      var lines = result.answer_lines.map(clean), head = lines[0];
+      var rows = lines.slice(1).filter(function (l) { return TABLE_ROW.test(l); });
+      if (/[：:]$|如下/.test(head) && rows.length) {
+        text = "根據" + docLabel(item) + pages + "，" + tidyClause(head, true).replace(/[：:]?$/, "：");
+        bullets = rows.map(function (l) { return tidyClause(l, true); });
+      } else {
+        var first = tidyClause(head), rest = lines.slice(1).map(function (l) { return tidyClause(l); }).filter(function (l) { return l.length >= 4; });
+        text = "根據" + docLabel(item) + pages + "，" + first + (rest.length ? "另外，" + rest.join("") : "");
+      }
+      return { text: text, bullets: bullets };
+    }
+    text = text.replace(/另外還有 (\d+) 則相關公告列在下面；/, "另外還有 $1 則相關公告（在「依據與來源」裡）；");
+    if (result.mode !== "browse") {
+      var plain = compact(text);
+      (result.key_points || []).forEach(function (point) {
+        var value = clean(point && point.value || "");
+        if (value && plain.indexOf(compact(value)) === -1) bullets.push(point.label + "：" + value);
+      });
+    }
+    return { text: text, bullets: bullets.slice(0, 4) };
+  }
+  /* Follow-up questions read the previous turn: 「那要多久？」 after 「還書」,
+     「那嘉女呢？」 after a 嘉中 question, 「星期四呢」 after a timetable question. */
+  var FOLLOW_START = /^(?:那麼?|那如果|如果|還有|然後|另外|所以|它|這個|那個|這樣|要是|那要|那我)/;
+  var FOLLOW_END = /呢[？?]?$|[那這]樣[？?]?$/;
+  var SCHOOL_WORD = /國立嘉義女子高級中學|國立嘉義高級中學|嘉義女中|嘉義高中|嘉中|嘉女/;
+  var SWAPPABLE = [/星期[一二三四五六日天]|週[一二三四五六日]|禮拜[一二三四五六日天]|今天|明天|後天|昨天/g, /第\s*[一二三四五六七八1-8]\s*節/g, /(?:^|\D)[1-3]\d{2}(?=\D|$)\s*班?/g];
+  function followUpSubject(query) {
+    var terms = ruleTerms(stripSchoolNames(query));
+    var words = (terms.literal.length ? terms.literal : terms.rest).filter(function (t) { return t.length >= 2 && !/^(?:規定|辦法|怎麼|如何|什麼|時候|可以|需要|多久)$/.test(t); });
+    return unique(words).slice(0, 3).join(" ");
+  }
+  function resolveFollowUp(question, previous) {
+    var q = clean(question);
+    if (!previous || !previous.query || !q) return { query: q, context: "" };
+    var prev = clean(previous.query), bare = compact(q.replace(SCHOOL_WORD, "").replace(/^(?:那麼?|那|還有|另外)/, "").replace(/呢|嗎|[？?！!。，,]/g, ""));
+    var marked = FOLLOW_START.test(q) || FOLLOW_END.test(q);
+    /* 「那嘉女呢」: same question, another school. */
+    var school = (q.match(SCHOOL_WORD) || [""])[0];
+    if (school && bare.length <= 1) return { query: school + " " + prev.replace(SCHOOL_WORD, "").trim(), context: prev };
+    /* 「星期四呢」「第5節呢」: swap the day, period or class in the previous question. */
+    var swapped = prev, changed = false;
+    SWAPPABLE.forEach(function (re) {
+      var mine = q.match(re);
+      if (mine && re.test(prev)) { re.lastIndex = 0; swapped = swapped.replace(re, " "); changed = true; }
+      re.lastIndex = 0;
+    });
+    if (changed && (marked || bare.length <= 6)) return { query: clean(swapped + " " + q.replace(/^(?:那麼?|那|還有)/, "").replace(/呢[？?]?$/, "")), context: prev };
+    var ownTerms = ruleTerms(stripSchoolNames(q)), own = ownTerms.literal.length > 0;
+    if (own && !marked) return { query: q, context: "" };
+    if (!marked && bare.length > 6) return { query: q, context: "" };
+    var subject = followUpSubject(prev);
+    if (!subject || compact(q).indexOf(compact(subject)) !== -1) return { query: q, context: "" };
+    var rest = q.replace(/^(?:那麼?|那如果|還有|然後|另外|所以|那要|那我)/, "").replace(/呢([？?])?$/, "$1");
+    return { query: clean(subject + " " + rest), context: subject };
+  }
   function answer(query, items, details, options) {
     query = stripSchoolNames(clean(query).slice(0, 160));
     var result = answerCore(query, items, details, options);
@@ -1382,6 +1471,7 @@
         result.summary = String(result.summary || "").replace(/想確認的話，可以問導師或[^。]*。$/, "") + "可以先看" + link.label + "，或直接問" + link.office + "。";
       }
     }
+    if (result) result.reply = conversational(result);
     return result;
   }
   function answerCore(query, items, details, options) {
@@ -1453,5 +1543,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });

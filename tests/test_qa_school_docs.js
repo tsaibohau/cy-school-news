@@ -41,6 +41,27 @@ assert.match(ask("進修部請假").summary, /進修部/);
 assert.match(r.summary, /（第 12–13 頁）/, "page numbers of the handbook are cited");
 console.log("✓ 學生手冊規定原文回答");
 
+/* Conversational reply: plain sentences, no list numbering or repeated table columns. */
+assert.equal(ask("書可以借多久").reply.text.indexOf("根據學生手冊的〈圖書館借書規定〉（第 40–41 頁），"), 0);
+assert.match(ask("書可以借多久").reply.text, /借期二週.*如果沒有他人預約可以續借一次/);
+assert.doesNotMatch(ask("書可以借多久").reply.text, /八、|借閱期限：/, "list numbers and labels are taken out");
+assert.match(ask("午休時間是幾點").reply.text, /午休是 12:35–13:10。$/);
+assert.doesNotMatch(ask("第一節幾點上課").reply.text, /第一節第一節/);
+assert.equal(QA.tidyClause("(一)遲到：老師到班後至曠課時間前為遲到。"), "老師到班後至曠課時間前為遲到。");
+assert.equal(QA.tidyClause("(二)曠課：上課後10分鐘起算。"), "曠課：上課後10分鐘起算。", "a label the sentence needs stays");
+console.log("✓ 口語化回答");
+
+/* Follow-up questions read the previous turn. */
+const follow = (q, prev) => QA.resolveFollowUp(q, { query: prev });
+assert.equal(follow("那要多久？", "還書").query, "還書 要多久？");
+assert.equal(follow("那嘉女呢", "請假要怎麼請").query, "嘉女 請假要怎麼請");
+assert.match(follow("星期四呢", "101 星期三第3節是什麼課").query, /101.*第3節.*星期四/);
+assert.doesNotMatch(follow("星期四呢", "101 星期三第3節是什麼課").query, /星期三/);
+assert.equal(follow("午休時間是幾點", "請假要怎麼請").context, "", "a complete new question stands alone");
+assert.equal(follow("那要多久？", "").context, "", "no previous turn, no context");
+assert.match(ask(follow("那進修部呢", "請假要怎麼請").query).summary, /進修部學生請假/, "the follow-up is answered with the previous subject");
+console.log("✓ 接續上一題");
+
 /* Without member detail there is no rule answer, only the official link. */
 r = QA.answer("嘉義高中還書", items, {}, opts);
 assert.notEqual(r.mode, "rule");
