@@ -88,10 +88,27 @@ assert.equal(r.mode, "rule", "a rule answer stays; the system link is added");
 assert.equal(r.service_links[0].name, "校務行政系統");
 console.log("✓ 需登入系統的入口連結");
 
+/* 嘉女 keeps rules as linked documents: point to the document, never pretend to quote it. */
+const cygshPages = [{ id: "cygsh-info-1843", kind: "school_info", title: "學務處 › 生活輔導組 › 學生獎懲", school: "cygsh", school_name: "嘉女", date: "",
+  url: "https://www.cygsh.cy.edu.tw/p/412-1013-1843.php", keywords: ["獎懲"], documents: [
+    { name: "學生獎懲委員會運作要點", url: "https://drive.google.com/a" },
+    { name: "學生獎懲規定", url: "https://drive.google.com/b" },
+    { name: "（請按我連結）", url: "https://drive.google.com/c" }] },
+  { id: "cygsh-info-2133", kind: "school_info", title: "學務處 › 生活輔導組 › 生活教育及輔導", school: "cygsh", school_name: "嘉女", date: "",
+  url: "https://www.cygsh.cy.edu.tw/p/412-1013-2133.php", keywords: [], documents: [{ name: "校園行動載具使用管理規範", url: "https://drive.google.com/d" }] }];
+const g = q => QA.answer(q, cygshPages, {}, { asOf: "2026-10-31", scopeLabel: "嘉女", schoolId: "cygsh" });
+r = g("獎懲規定");
+assert.equal(r.mode, "document");
+assert.match(r.summary, /官方文件「學生獎懲規定」.*讀不到這份文件的內文/);
+assert.equal(g("手機可以帶到學校嗎").document_links[0].name, "校園行動載具使用管理規範");
+assert.equal(QA.isPersonalDataQuery("獎懲規定"), false, "asking for the rules is not a records request");
+assert.equal(QA.isPersonalDataQuery("王小明的獎懲"), true);
+assert.ok(!g("獎懲規定").document_links.some(d => /請按我/.test(d.name)), "link labels like 請按我連結 are not documents");
+console.log("✓ 嘉女官方文件連結");
+
 /* The public school-info index (when present) never carries page text. */
-const indexFile = path.join(__dirname, "..", "docs", "data", "school-info", "cysh.json");
-if (fs.existsSync(indexFile)) {
-  const raw = fs.readFileSync(indexFile, "utf8");
-  assert.doesNotMatch(raw, /embedded_text|"blocks"|"summary"/);
+for (const school of ["cysh", "cygsh"]) {
+  const indexFile = path.join(__dirname, "..", "docs", "data", "school-info", school + ".json");
+  if (fs.existsSync(indexFile)) assert.doesNotMatch(fs.readFileSync(indexFile, "utf8"), /embedded_text|"blocks"|"summary"/);
 }
 console.log("問校務 school documents and timetable tests passed");

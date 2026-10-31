@@ -1791,3 +1791,27 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 新增 `scraper/school_services.py`：每 30 天從官網首頁「網路服務」與「網路系統服務」頁整理系統入口（名稱、連結、用途、對象、是否需登入），只記錄連結、不讀取系統內容；教職員與限校內系統記錄但不推薦給學生。
 - 問校務：「成績怎麼查」「期中考範圍」「學雜費繳費單」等直接給系統入口；規定類回答（如請假）附上相關系統按鈕；個人紀錄問題（缺曠紀錄）仍不讀取，但指向校務行政系統。
 - `campus.cysh.cy.edu.tw`、`library.cysh.cy.edu.tw` 不在本環境允許網域，未確認是否需登入，因此不標「需登入」。
+
+## 2026-10-31（Asia/Taipei）｜嘉女校園資訊與對話式問校務（分支 claude/cygsh-info-chat-ui，疊在 PR #64 上）
+
+### 範圍
+- 使用者要求：PR #64 已開；嘉女比照嘉中收錄；改版成「會員進站即問校務（像 Claude 的對話介面），沒有權限的看公告總庫」。
+- 未修改 `announcements.json`、排程頻率或 Supabase schema。
+
+### 嘉女
+- 掃描 269 頁：收錄 235、排除 34。細節見 `docs/school-info-cygsh.md`。
+- `school_info.py` 改為每次執行依序處理嘉中、嘉女（各最多 10 頁）；PDF 因每次上限沒讀完的頁面隔天補抓；自訂版面頁面改用可見文字；Google 雲端文件只記錄名稱與連結。
+- `school_services.py` 支援沒有「網路服務」選單的學校（只認已知系統）。
+- 問校務：新增「官方文件連結」回答（嘉女規定多在 Google 雲端）；「獎懲規定」等規定問題不再被當成個資。
+
+### 介面
+- 有問校務權限的會員進站自動進入問校務；其他人留在公告總庫（不再自動跳首頁）。
+- 問校務改為對話式：置中的時段問候與建議問題、問答一則則往下排、底部固定輸入框（Enter 送出、Shift+Enter 換行、輸入法組字不誤送）；問校務移到分頁列第一個；對話時隱藏頁尾。
+- 版本：`app.js?v=114`、`assistant-qa.js?v=63`、`search-query.js?v=57`、`style.css?v=98`、`cy-news-v126`。
+
+### 驗證
+- PASS：`python tests/test_parser.py`、`tests/test_school_info.py`、`tests/test_qa_school_docs.js`、新增 `tests/test_chat_landing.js`、問校務 gold 不退步，其餘測試同前（4 個既有失敗不變）。
+- Playwright 手機尺寸截圖確認歡迎畫面、對話排列與底部輸入框，無頁面錯誤。
+
+### 下一個允許動作
+- 使用者先合併 PR #64，再合併本分支 PR。

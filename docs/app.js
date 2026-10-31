@@ -597,7 +597,10 @@
         if (!full && ["home", "today", "assistant", "calendar"].indexOf(state.tab) !== -1) switchTab(approved ? "timetable" : "latest");
         // 一打開就進首頁看今日摘要。登入過程可能先短暫顯示未登入畫面（切回公告），
         // 所以只要使用者還沒自己點過分頁，取得完整服務時都回到首頁。
-        if (full && !state.userPickedTab && state.tab === "latest") switchTab("home");
+        /* 進站：有問校務權限的會員直接進問校務，其他人留在公告總庫。登入過程可能先短暫
+           顯示未登入畫面，所以只要使用者還沒自己點過分頁，取得權限時就切過去。 */
+        var canAsk = full && window.CyNewsCapabilities && window.CyNewsCapabilities.has("assistant");
+        if (canAsk && !state.userPickedTab && (state.tab === "latest" || state.tab === "home")) switchTab("assistant");
       }
       function adminFilters() {
         return {
@@ -2249,7 +2252,7 @@
       return function (item) { return scopeId === "all" || String(item && item.school || "") === String(scopeId); };
     }
     /* Schools whose public pages and student handbook are indexed (scraper/school_info.py). */
-    var SCHOOL_INFO_IDS = ["cysh"];
+    var SCHOOL_INFO_IDS = ["cysh", "cygsh"];
     function fetchSchoolInfo(scopeId) {
       var ids = SCHOOL_INFO_IDS.filter(function (id) { return scopeId === "all" || scopeId === id; });
       state.schoolInfo = state.schoolInfo || {};
@@ -2287,10 +2290,13 @@
     /* Entry links to the school's login systems (校務行政系統、自修室預約…). */
     function assistantServiceLinks(result) {
       var links = (result && result.service_links || []).filter(function (link) { return link && /^https:\/\//.test(String(link.url || "")); });
-      if (!links.length) return "";
+      var docs = result && result.mode !== "document" ? (result.document_links || []).filter(function (doc) { return doc && /^https:\/\//.test(String(doc.url || "")); }) : [];
+      if (!links.length && !docs.length) return "";
       return '<div class="assistant-office">' + links.map(function (link) {
         return '<a class="btn-ghost" href="' + esc(link.url) + '" target="_blank" rel="noopener">前往' + esc(link.name) + (link.login_required ? "（需登入）" : "") + '</a>';
-      }).join(" ") + '</div>';
+      }).concat(docs.map(function (doc) {
+        return '<a class="btn-ghost" href="' + esc(doc.url) + '" target="_blank" rel="noopener">官方文件：' + esc(doc.name) + '</a>';
+      })).join(" ") + '</div>';
     }
     function renderAssistantAnswer(result) {
       if (!el.assistantAnswer) return;
@@ -2404,14 +2410,41 @@
       if (chips.length < 3) add("最近的比賽", "最近有什麼比賽？");
       box.innerHTML = chips.map(function (chip) { return '<button type="button" data-assistant-example="' + esc(chip.question) + '">' + esc(chip.label) + '</button>'; }).join("");
     }
+    /* 對話式問校務：每個問題一則，像聊天一樣往下排（只存在這次開啟的頁面裡）。 */
+    function startAssistantTurn(question) {
+      var thread = document.getElementById("assistantThread");
+      if (!thread || typeof document.createElement !== "function") return;
+      var turn = document.createElement("article");
+      turn.className = "chat-turn";
+      turn.innerHTML = '<div class="chat-user"><p>' + esc(question) + '</p></div><div class="chat-reply assistant-answer"></div>';
+      thread.appendChild(turn);
+      el.assistantAnswer = turn.querySelector(".chat-reply");
+      if (el.viewAssistant) el.viewAssistant.classList.add("has-turns");
+      if (el.assistantQuestion) { el.assistantQuestion.value = ""; resizeAssistantInput(); }
+      if (turn.scrollIntoView) turn.scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+    function resizeAssistantInput() {
+      var input = el.assistantQuestion;
+      if (!input || !input.style) return;
+      input.style.height = "auto";
+      input.style.height = Math.min(input.scrollHeight || 0, 160) + "px";
+    }
+    function renderAssistantGreeting() {
+      var title = document.getElementById("assistantTitle");
+      if (!title) return;
+      var hour = Number(new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei", hour: "numeric", hour12: false })) % 24;
+      var hello = hour < 5 ? "夜深了" : hour < 11 ? "早安" : hour < 18 ? "午安" : "晚安";
+      title.textContent = state.nickname ? hello + "，" + state.nickname : hello + "，想問學校什麼？";
+    }
     function askAssistant(question) {
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
       question = String(question || "").trim().slice(0, 160);
       if (!question) return Promise.resolve(null);
       var scope = assistantScopeFor(question);
+      startAssistantTurn(question);
       if (el.assistantAsk) el.assistantAsk.disabled = true;
-      if (el.assistantStatus) el.assistantStatus.textContent = "正在搜尋「" + scope.label + "」公告與官方附件文字…";
-      if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在翻找「' + esc(scope.label) + '」的公告…</p></div>';
+      if (el.assistantStatus) el.assistantStatus.textContent = "正在查「" + scope.label + "」的規定、行事曆與公告…";
+      if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在翻找「' + esc(scope.label) + '」的規定與公告…</p></div>';
       var calendarReady = state.officialEvents && state.officialEvents.length ? Promise.resolve() : loadOfficialEvents();
       var timetablesReady = Array.isArray(state.timetables) && state.timetables.length ? Promise.resolve() : loadTimetables();
       return Promise.all([fetchAssistantCorpus(scope.id), calendarReady, timetablesReady]).then(function (loaded) { return loaded[0]; }).then(function (items) {
@@ -2685,6 +2718,12 @@
     if (el.assistantForm) el.assistantForm.addEventListener("submit", function (e) {
       e.preventDefault(); askAssistant(el.assistantQuestion.value);
     });
+    if (el.assistantQuestion) {
+      el.assistantQuestion.addEventListener("input", resizeAssistantInput);
+      el.assistantQuestion.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" && !e.shiftKey && !e.isComposing) { e.preventDefault(); askAssistant(el.assistantQuestion.value); }
+      });
+    }
     if (el.viewAssistant) el.viewAssistant.addEventListener("click", function (e) {
       var example = e.target.closest("button[data-assistant-example]");
       if (example) { el.assistantQuestion.value = example.dataset.assistantExample; askAssistant(el.assistantQuestion.value); return; }
@@ -2865,6 +2904,7 @@
       if (el.viewToday) el.viewToday.hidden = !today;
       el.viewLatest.hidden = !latest;
       if (el.viewAssistant) el.viewAssistant.hidden = !assistant;
+      if (document.body && document.body.classList) document.body.classList.toggle("is-chat", assistant);
       if (el.viewTimetable) el.viewTimetable.hidden = !timetable;
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
       el.viewSub.hidden = tab !== "sub";
@@ -2898,6 +2938,7 @@
       el.tabSub.setAttribute("aria-current", tab === "sub" ? "page" : "false");
       if (el.tabAdmin) el.tabAdmin.setAttribute("aria-current", tab === "admin" ? "page" : "false");
       if (today) { loadOfficialEvents(); loadCalendarStatus(); loadTimetables(); renderToday(); }
+      if (assistant) { renderAssistantGreeting(); if (el.assistantQuestion && !("ontouchstart" in window)) el.assistantQuestion.focus(); }
       if (timetable && el.standaloneTimetable) {
         el.standaloneTimetable.innerHTML = '<p class="empty">正在讀取課表…</p>';
         loadTimetables().then(function () { el.standaloneTimetable.innerHTML = timetableHTML(); });
