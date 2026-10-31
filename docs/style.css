@@ -921,3 +921,9 @@ body.is-chat .foot { display: none; }
 .sidebar-hint-actions button { font-size: 13px; padding: 6px 12px; }
 @keyframes sidebar-hint-nudge { 50% { transform: translate(-2px, -2px); } }
 @media (prefers-reduced-motion: reduce) { .sidebar-hint-arrow { animation: none; } }
+
+/* 問校務回答裡的連結：名稱＋完整網址，整列可點。 */
+.assistant-links { display: grid; gap: 8px; margin: 10px 0 4px; }
+.assistant-link { display: block; padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); text-decoration: none; }
+.assistant-link strong { display: block; font-size: 15px; }
+.assistant-link small { display: block; margin-top: 2px; color: var(--accent); font-size: 12px; word-break: break-all; }
