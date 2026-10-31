@@ -23,6 +23,9 @@ CHECK_DAYS = 30
 
 SOURCES = {
     "cysh": ["https://www.cysh.cy.edu.tw/", "https://www.cysh.cy.edu.tw/p/412-1008-5084.php"],
+    # 嘉女 has no single 網路服務 menu: 首頁、網站導覽、教務處「校務行政-教務-學生」.
+    "cygsh": ["https://www.cygsh.cy.edu.tw/", "https://www.cygsh.cy.edu.tw/p/17-1013.php",
+              "https://www.cygsh.cy.edu.tw/p/412-1013-4239.php"],
 }
 # Where the 網路服務 menu sits on each page, so other links are not mistaken for systems.
 MENU_MARKERS = ("網路服務", "網路系統服務")
@@ -41,6 +44,11 @@ KNOWN = [
     {"match": "campus.cysh.cy.edu.tw/exam_range", "name": "考試範圍公告", "audience": "student", "login": None,
      "purpose": "查段考（期中考、期末考）各科考試範圍",
      "keywords": ["考試範圍", "段考範圍", "期中考範圍", "期末考範圍", "範圍"]},
+    {"match": "library.cygsh.cy.edu.tw", "name": "圖書館館藏查詢", "audience": "student", "login": None,
+     "purpose": "查館藏、自己的借閱紀錄，辦理續借與預約",
+     "keywords": ["館藏", "查書", "續借", "預約書", "借閱紀錄", "館藏查詢"]},
+    {"match": "hyread.com.tw", "name": "HyRead 電子書", "audience": "student", "login": None,
+     "purpose": "借閱學校訂閱的電子書", "keywords": ["電子書", "HyRead"]},
     {"match": "library.cysh.cy.edu.tw/webopac", "name": "圖書館館藏查詢", "audience": "student", "login": None,
      "purpose": "查館藏、自己的借閱紀錄，辦理續借與預約",
      "keywords": ["館藏", "查書", "續借", "預約書", "借閱紀錄", "館藏查詢"]},
@@ -68,28 +76,32 @@ def now_iso() -> str:
     return datetime.now(TW_TZ).isoformat(timespec="seconds")
 
 
-def _menu_block(html: str) -> str:
-    """The part of the page from the 網路服務 menu onward (falls back to the whole page)."""
+def _menu_block(html: str) -> tuple[str, bool]:
+    """The part of the page from the 網路服務 menu onward, and whether such a menu exists."""
     for marker in MENU_MARKERS:
         at = html.find(marker)
         if at != -1:
-            return html[at:at + 40000]
-    return html
+            return html[at:at + 40000], True
+    return html, False
 
 
 def extract_links(html: str, base_url: str) -> list[dict]:
     out, seen = [], set()
-    for href, label in re.findall(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', _menu_block(html), re.S):
+    block, has_menu = _menu_block(html)
+    for href, label in re.findall(r'<a[^>]+href="([^"]+)"[^>]*>(.*?)</a>', block, re.S):
         name = re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", "", label))).strip()
         url = urljoin(base_url, unescape(href).strip())
         if not name or not url.startswith("http") or url in seen:
             continue
         host = urlsplit(url).netloc
-        own_site = host.endswith("www.cysh.cy.edu.tw")
+        own_site = host.endswith("www.cysh.cy.edu.tw") or host.endswith("www.cygsh.cy.edu.tw")
         # Keep outside systems and the one known own-site tool; skip ordinary menu pages.
         if own_site and not any(k["match"] in url for k in KNOWN):
             continue
         if re.search(r"goo\.gl/maps|accessibility\.moda|facebook|instagram|youtube", url):
+            continue
+        # Without a 網路服務 menu the page links to everything; keep only known systems.
+        if not has_menu and not any(k["match"] in url for k in KNOWN):
             continue
         seen.add(url)
         out.append({"name": name[:40], "url": url})

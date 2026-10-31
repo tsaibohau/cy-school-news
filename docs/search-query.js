@@ -107,7 +107,8 @@
       /* A school page's most frequent index words describe what it is about, like a title. */
       primary: compact([item.title, item.category, item.source_category].concat(Array.isArray(item.keywords) ? item.keywords.slice(0, 8) : []).filter(Boolean).join(" ")),
       /* keywords: index words of a school page or handbook chapter (no body text). */
-      supporting: compact([item.summary, item.snippet].concat(Array.isArray(item.keywords) ? item.keywords : []).filter(Boolean).join(" "))
+      supporting: compact([item.summary, item.snippet].concat(Array.isArray(item.keywords) ? item.keywords : [],
+        Array.isArray(item.attachment_names) ? item.attachment_names : []).filter(Boolean).join(" "))
     };
     if (fieldCache && item && typeof item === "object") fieldCache.set(item, fields);
     return fields;
