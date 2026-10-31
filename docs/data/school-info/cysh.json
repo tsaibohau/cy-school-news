@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-10-31T20:21:06+08:00",
+ "generated_at": "2026-10-31T22:57:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5338,23 +5338,74 @@
   },
   "426": {
    "page_id": 426,
-   "status": "pending"
+   "status": "announcement_list",
+   "checked_at": "2026-10-31T22:57:05+08:00",
+   "path": [
+    "教學單位",
+    "數學科",
+    "公告事項"
+   ]
   },
   "427": {
    "page_id": 427,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T22:57:07+08:00",
+   "path": [
+    "教學單位",
+    "數學科",
+    "師資陣容"
+   ],
+   "changed_at": "2026-10-31T22:57:07+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-427.json",
+   "detail_revision": "286cab6cef53a336a87570ed59758327d20a57e23269d8d92776a915d981a3fc",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "430": {
    "page_id": 430,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T22:57:10+08:00",
+   "path": [
+    "教學單位",
+    "數學科",
+    "嘉中數學日"
+   ],
+   "changed_at": "2026-10-31T22:57:10+08:00",
+   "content_hash": "32a95299f4bb3bee9656a15ddd732e9d2d3e5f2934044071be3960002503ba58",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "颱風"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-430.json",
+   "detail_revision": "e6ee2324aa02d2d9c3a42b727d606d81e312b241db4c1c61ed7f4e4b31aa3c19",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "431": {
    "page_id": 431,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-10-31T22:57:12+08:00",
+   "path": [
+    "教學單位",
+    "數學科",
+    "榮譽榜"
+   ]
   },
   "432": {
    "page_id": 432,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-10-31T22:57:14+08:00",
+   "path": [
+    "教學單位",
+    "數學科",
+    "相簿"
+   ]
   },
   "1120": {
    "page_id": 1120,
@@ -5474,11 +5525,91 @@
   },
   "246": {
    "page_id": 246,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T22:56:54+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "校務發展計畫"
+   ],
+   "changed_at": "2026-10-31T22:56:54+08:00",
+   "content_hash": "424214ac05561fd2924d6ad5b21c976784309ed64b2ddb459484a49a7b5c1fe3",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "社團",
+    "宣導",
+    "競賽",
+    "安全",
+    "研習",
+    "比賽",
+    "講座",
+    "入學",
+    "新生",
+    "招生",
+    "演講",
+    "自修室",
+    "宿舍",
+    "校長",
+    "測驗",
+    "分發",
+    "校史",
+    "申請",
+    "科展",
+    "衛生",
+    "志工",
+    "期中考",
+    "考試",
+    "英檢",
+    "選修",
+    "選擇",
+    "銷過",
+    "閱覽室",
+    "住宿",
+    "借還書",
+    "博覽會",
+    "多元選修",
+    "學分",
+    "學生宿舍",
+    "平面圖",
+    "改過銷過",
+    "申請入學",
+    "繁星",
+    "請假"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-246.json",
+   "detail_revision": "be796744b2db175f87854fc09924bdb259094ef5942a9001041992694884e71e",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "國立嘉義高中校務發展計畫（PDF檔）",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/4/187419722.pdf"
+    }
+   ]
   },
   "245": {
    "page_id": 245,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T22:56:52+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "學校特色"
+   ],
+   "changed_at": "2026-10-31T22:56:52+08:00",
+   "content_hash": "31e9cbd8266118ba8038cf778284e8fea1cfa9a105ec5e6e69bb3f62cd38eaf8",
+   "doc_links": [],
+   "keywords": [
+    "圖書館",
+    "演講",
+    "社團"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-245.json",
+   "detail_revision": "21b526663df938bcf7494f9f98fe896dedd427725be6720d1ec529386fcd5c84",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1133": {
    "page_id": 1133,
@@ -5498,11 +5629,47 @@
   },
   "249": {
    "page_id": 249,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T22:57:01+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "校內會議",
+    "校務會議"
+   ],
+   "changed_at": "2026-10-31T22:57:01+08:00",
+   "content_hash": "e332b5eee55014dcd7b6fdb1ad5975f264fa2c7116bb09be9dfba24f00c0d5ac",
+   "doc_links": [],
+   "keywords": [
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-249.json",
+   "detail_revision": "0539896307837dbb261f09c8ac0b673f532d95f77bbbbd191eef5688d9c16bd3",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "250": {
    "page_id": 250,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T22:57:03+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "校內會議",
+    "行政會議"
+   ],
+   "changed_at": "2026-10-31T22:57:03+08:00",
+   "content_hash": "500f110b9b270b44006eae04bb94ac71ffe5ace2771d406cd08eca5d99cc0c8a",
+   "doc_links": [],
+   "keywords": [
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-250.json",
+   "detail_revision": "2e1ff97af6ad432efe02109ce9234c476cbadaf457a8d4022d2b9e5e6af1f8d4",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1134": {
    "page_id": 1134,
@@ -5790,7 +5957,22 @@
   },
   "229": {
    "page_id": 229,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-10-31T22:56:50+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "出納組"
+   ],
+   "changed_at": "2026-10-31T22:56:50+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-229.json",
+   "detail_revision": "023e132cabb15362752607eb29bc020480d5a509508d755ee12203710047460d",
+   "detail_status": "empty",
+   "attachments": []
   },
   "981": {
    "page_id": 981,
@@ -5978,6 +6160,10 @@
   },
   "5127": {
    "page_id": 5127,
+   "status": "pending"
+  },
+  "1130": {
+   "page_id": 1130,
    "status": "pending"
   }
  },
@@ -8541,6 +8727,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cysh-info-229",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 出納組",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-229.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-229.json",
+   "detail_revision": "023e132cabb15362752607eb29bc020480d5a509508d755ee12203710047460d",
+   "detail_status": "empty"
+  },
+  {
    "id": "cysh-info-230",
    "kind": "school_info",
    "title": "行政單位 › 總務處 › 文書組",
@@ -8609,6 +8812,130 @@
    "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-239.json",
    "detail_revision": "95aefbf2fd453b941782f7f4dd86c74698a94c56025cd4de119659dfe9070c41",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-245",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室 › 學校特色",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-245.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "圖書館",
+    "演講",
+    "社團"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-245.json",
+   "detail_revision": "21b526663df938bcf7494f9f98fe896dedd427725be6720d1ec529386fcd5c84",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-246",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室 › 校務發展計畫",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-246.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [
+    "國立嘉義高中校務發展計畫（PDF檔）"
+   ],
+   "keywords": [
+    "升學",
+    "社團",
+    "宣導",
+    "競賽",
+    "安全",
+    "研習",
+    "比賽",
+    "講座",
+    "入學",
+    "新生",
+    "招生",
+    "演講",
+    "自修室",
+    "宿舍",
+    "校長",
+    "測驗",
+    "分發",
+    "校史",
+    "申請",
+    "科展",
+    "衛生",
+    "志工",
+    "期中考",
+    "考試",
+    "英檢",
+    "選修",
+    "選擇",
+    "銷過",
+    "閱覽室",
+    "住宿",
+    "借還書",
+    "博覽會",
+    "多元選修",
+    "學分",
+    "學生宿舍",
+    "平面圖",
+    "改過銷過",
+    "申請入學",
+    "繁星",
+    "請假"
+   ],
+   "documents": [
+    {
+     "name": "國立嘉義高中校務發展計畫（PDF檔）",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/4/187419722.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cysh/cysh-info-246.json",
+   "detail_revision": "be796744b2db175f87854fc09924bdb259094ef5942a9001041992694884e71e",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-249",
+   "kind": "school_info",
+   "title": "校長室 › 校內會議 › 校務會議",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-249.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-249.json",
+   "detail_revision": "0539896307837dbb261f09c8ac0b673f532d95f77bbbbd191eef5688d9c16bd3",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-250",
+   "kind": "school_info",
+   "title": "校長室 › 校內會議 › 行政會議",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-250.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-250.json",
+   "detail_revision": "2e1ff97af6ad432efe02109ce9234c476cbadaf457a8d4022d2b9e5e6af1f8d4",
    "detail_status": "parsed"
   },
   {
@@ -9100,6 +9427,43 @@
    "detail_ref": "data/details/cysh/cysh-info-407.json",
    "detail_revision": "b20312851795d63e042b41097f60b6b95201bb1c2816ee1dace56c78669f2bde",
    "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-427",
+   "kind": "school_info",
+   "title": "教學單位 › 數學科 › 師資陣容",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-427.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-427.json",
+   "detail_revision": "286cab6cef53a336a87570ed59758327d20a57e23269d8d92776a915d981a3fc",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-430",
+   "kind": "school_info",
+   "title": "教學單位 › 數學科 › 嘉中數學日",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-430.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-10-31",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "颱風"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-430.json",
+   "detail_revision": "e6ee2324aa02d2d9c3a42b727d606d81e312b241db4c1c61ed7f4e4b31aa3c19",
+   "detail_status": "parsed"
   },
   {
    "id": "cysh-info-472",
