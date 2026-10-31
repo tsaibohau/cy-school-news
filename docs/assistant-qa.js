@@ -1393,17 +1393,49 @@
   var SWAPPABLE = [/星期[一二三四五六日天]|週[一二三四五六日]|禮拜[一二三四五六日天]|今天|明天|後天|昨天/g, /第\s*[一二三四五六七八1-8]\s*節/g, /(?:^|\D)[1-3]\d{2}(?=\D|$)\s*班?/g];
   function followUpSubject(query) {
     var terms = ruleTerms(stripSchoolNames(query));
-    var words = (terms.literal.length ? terms.literal : terms.rest).filter(function (t) { return t.length >= 2 && !/^(?:規定|辦法|怎麼|如何|什麼|時候|可以|需要|多久)$/.test(t); });
+    var words = terms.literal.filter(function (t) { return t.length >= 2 && !/^(?:規定|辦法|怎麼|如何|什麼|時候|可以|需要|多久)$/.test(t); });
     return unique(words).slice(0, 3).join(" ");
+  }
+  /* Small talk is answered as conversation, never searched: 「你能做什麼」「謝謝」「沒用」「書」. */
+  var HELP_ASK = /^(?:你)?(?:能|會|可以)(?:做|幹|問|回答)(?:什麼|啥|甚麼)|你是誰|你是什麼|怎麼用|如何使用|使用說明|^幫助$|^help$|能問什麼|可以問什麼|有什麼功能/i;
+  var THANKS = /^(?:謝謝|感謝|多謝|謝啦|3q|thanks?|thx|好的?|了解|知道了|ok|okay|讚|收到)[!！。~～]*$/i;
+  var NEGATIVE = /^(?:沒用|没用|不對|不对|錯了|错了|爛|很爛|好爛|看不懂|不是這個|不是這樣|答非所問|什麼鬼|蛤|\?+|？+)[!！。~～?？]*$/i;
+  var GREETING = /^(?:你好|您好|嗨|哈囉|hello|hi|hey|早安|午安|晚安|安安)[!！。~～]*$/i;
+  function smallTalk(question) {
+    var q = clean(question).replace(/[？?！!。~～\s]+$/, ""), c = compact(q);
+    if (!c) return "";
+    if (HELP_ASK.test(q)) return "help";
+    if (GREETING.test(q)) return "greeting";
+    if (THANKS.test(q)) return "thanks";
+    if (NEGATIVE.test(q) || NEGATIVE.test(clean(question))) return "negative";
+    if (c.replace(/[^㐀-鿿a-z0-9]/g, "").length <= 1 && !/^\d$/.test(c)) return "too_short";
+    return "";
+  }
+  var HELP_LINES = ["學校規定：請假、獎懲、服裝儀容、借書還書、作息時間（例如「書可以借多久」）",
+    "行事曆：段考、放假、開學（例如「第二次段考是哪幾天」）",
+    "班級課表：「101 星期三第 3 節是什麼課」「明天有什麼課」",
+    "公告：最近的比賽、獎學金、快截止的事",
+    "系統入口：成績、缺曠要去哪裡查"];
+  function smallTalkAnswer(kind, question) {
+    var text = {
+      help: "我是校訊的問校務助理，會從學校官網的規定、行事曆、課表和公告裡找答案，並附上出處。你可以問我：",
+      greeting: "嗨！想問學校的什麼事？例如規定、段考日期、課表或最近的公告。",
+      thanks: "不客氣！還有其他想問的，直接打字就可以。",
+      negative: "抱歉，剛剛沒幫上忙。可以換個說法、講具體一點再問我一次，例如「書可以借多久」「第二次段考是哪幾天」。如果學校網站本來就沒寫，就需要直接問相關處室了。",
+      too_short: "「" + clean(question) + "」範圍有點大，可以多說一點嗎？例如「書可以借多久」「圖書館幾點開」。"
+    }[kind];
+    return { status: "answered", mode: "chat", chat: kind, query: clean(question), summary: text, evidence: [], sources: [], related: [], key_points: [],
+      reply: { text: text, bullets: kind === "help" ? HELP_LINES.slice() : [] } };
   }
   function resolveFollowUp(question, previous) {
     var q = clean(question);
-    if (!previous || !previous.query || !q) return { query: q, context: "" };
+    /* Only a real, answered question can be continued, and small talk never continues one. */
+    if (!previous || !previous.query || !q || previous.answered === false || smallTalk(q)) return { query: q, context: "" };
     var prev = clean(previous.query), bare = compact(q.replace(SCHOOL_WORD, "").replace(/^(?:那麼?|那|還有|另外)/, "").replace(/呢|嗎|[？?！!。，,]/g, ""));
     var marked = FOLLOW_START.test(q) || FOLLOW_END.test(q);
     /* 「那嘉女呢」: same question, another school. */
     var school = (q.match(SCHOOL_WORD) || [""])[0];
-    if (school && bare.length <= 1) return { query: school + " " + prev.replace(SCHOOL_WORD, "").trim(), context: prev };
+    if (school && bare.length <= 1 && marked) return { query: school + " " + prev.replace(SCHOOL_WORD, "").trim(), context: prev.replace(SCHOOL_WORD, "").trim() };
     /* 「星期四呢」「第5節呢」: swap the day, period or class in the previous question. */
     var swapped = prev, changed = false;
     SWAPPABLE.forEach(function (re) {
@@ -1411,16 +1443,17 @@
       if (mine && re.test(prev)) { re.lastIndex = 0; swapped = swapped.replace(re, " "); changed = true; }
       re.lastIndex = 0;
     });
-    if (changed && (marked || bare.length <= 6)) return { query: clean(swapped + " " + q.replace(/^(?:那麼?|那|還有)/, "").replace(/呢[？?]?$/, "")), context: prev };
-    var ownTerms = ruleTerms(stripSchoolNames(q)), own = ownTerms.literal.length > 0;
-    if (own && !marked) return { query: q, context: "" };
-    if (!marked && bare.length > 6) return { query: q, context: "" };
+    if (changed && marked && bare.length <= 6) return { query: clean(swapped + " " + q.replace(/^(?:那麼?|那|還有)/, "").replace(/呢[？?]?$/, "")), context: prev };
+    /* Anything else continues only when it says so (那…／…呢) and the last question had a topic. */
+    if (!marked) return { query: q, context: "" };
     var subject = followUpSubject(prev);
     if (!subject || compact(q).indexOf(compact(subject)) !== -1) return { query: q, context: "" };
     var rest = q.replace(/^(?:那麼?|那如果|還有|然後|另外|所以|那要|那我)/, "").replace(/呢([？?])?$/, "$1");
     return { query: clean(subject + " " + rest), context: subject };
   }
   function answer(query, items, details, options) {
+    var talk = smallTalk(query);
+    if (talk) return smallTalkAnswer(talk, query);
     query = stripSchoolNames(clean(query).slice(0, 160));
     var result = answerCore(query, items, details, options);
     var services = serviceLinks(query, items);
@@ -1543,5 +1576,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, smallTalk: smallTalk, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });

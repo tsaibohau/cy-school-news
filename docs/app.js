@@ -2468,7 +2468,8 @@
       if (!question) return Promise.resolve(null);
       /* 「那要多久？」「那嘉女呢？」 continue the previous question. */
       var asked = question, previous = state.assistantTurns[state.assistantTurns.length - 1];
-      var followUp = window.CyNewsAssistantQA.resolveFollowUp ? window.CyNewsAssistantQA.resolveFollowUp(question, previous && { query: previous.query }) : { query: question, context: "" };
+      var answeredBefore = !!(previous && previous.result && previous.result.status === "answered" && previous.result.mode !== "chat");
+      var followUp = window.CyNewsAssistantQA.resolveFollowUp ? window.CyNewsAssistantQA.resolveFollowUp(question, previous && { query: previous.query, answered: answeredBefore }) : { query: question, context: "" };
       question = followUp.query || question;
       var scope = assistantScopeFor(question);
       if (followUp.context && previous && previous.scopeId && !(window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.mentionedSchool(asked))) {
@@ -2502,7 +2503,7 @@
           el.assistantAnswer = target;
           renderAssistantAnswer(result, turnIndex);
           renderAssistantExamples();
-          if (el.assistantStatus) el.assistantStatus.textContent = result.status === "answered" ? "已從「" + scope.label + "」官方資料整理，請對照下方依據" : "「" + scope.label + "」尚缺可用的官方資料，請查看相關公告";
+          if (el.assistantStatus) el.assistantStatus.textContent = "";
           return result;
         });
       }).catch(function () {

@@ -61,6 +61,19 @@ assert.equal(follow("午休時間是幾點", "請假要怎麼請").context, "", 
 assert.equal(follow("那要多久？", "").context, "", "no previous turn, no context");
 assert.match(ask(follow("那進修部呢", "請假要怎麼請").query).summary, /進修部學生請假/, "the follow-up is answered with the previous subject");
 console.log("✓ 接續上一題");
+/* Small talk is answered as conversation and never glued onto the next question. */
+assert.equal(QA.answer("你能做什麼", items, details, opts).mode, "chat");
+assert.ok(QA.answer("你能做什麼", items, details, opts).reply.bullets.length >= 4, "help lists what can be asked");
+assert.equal(QA.smallTalk("沒用"), "negative");
+assert.equal(QA.smallTalk("謝謝！"), "thanks");
+assert.equal(QA.smallTalk("書"), "too_short");
+assert.equal(QA.smallTalk("書可以借多久"), "");
+assert.equal(QA.smallTalk("101"), "", "a class number is a real question");
+assert.equal(follow("書", "你能做什麼").context, "", "an unmarked short question stands alone");
+assert.equal(QA.resolveFollowUp("那要多久", { query: "你做什麼書", answered: false }).context, "", "an unanswered question is not continued");
+assert.equal(follow("沒用", "還書").context, "", "feedback is not a follow-up");
+assert.equal(follow("那要多久", "你能做什麼").context, "", "no topic, nothing to continue");
+console.log("✓ 閒聊與不亂接續");
 
 /* Without member detail there is no rule answer, only the official link. */
 r = QA.answer("嘉義高中還書", items, {}, opts);

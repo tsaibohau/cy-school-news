@@ -797,7 +797,12 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .chat-evidence h4 { margin: 14px 0 8px; font-size: 13px; color: var(--muted); letter-spacing: .04em; }
 .chat-composer {
   position: sticky; z-index: 30; bottom: calc(max(10px, env(safe-area-inset-bottom)) + 80px);
-  padding: 0; border: 0; background: transparent; box-shadow: none;
+  padding: 14px 0 0; border: 0; box-shadow: none;
+  /* Text scrolling under the composer must not show through around it. */
+  background: linear-gradient(to bottom, transparent, var(--paper) 14px);
+}
+.chat-composer::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 120px; background: var(--paper); pointer-events: none;
 }
 .chat-suggestions { justify-content: center; margin-bottom: 10px; }
 .chat-view.has-turns .chat-suggestions { display: none; }
