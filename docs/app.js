@@ -2396,7 +2396,7 @@
     }
     /* 推薦問題依使用者而變：快到的截止日、關注的主題與關鍵字、與年級班級相關的最新公告、最近問過的問題 */
     function renderAssistantExamples() {
-      try { setupMascot(); } catch (_) {}
+      try { setupMascot(); if (!cameoCount && !cameoTimer) scheduleMascotCameo(true); } catch (_) {}
       /* 推薦問題只是加分功能，任何錯誤都不能影響通知或其他畫面 */
       try { buildAssistantExamples(); } catch (_) {}
     }
@@ -2466,6 +2466,73 @@
         if (heroMascot) heroMascot.play("wave");
       }
       if (!mascot) mascot = window.CyNewsMascot.mount($("mascotStage"), { pixel: 2 });
+    }
+    /* 小訊客串：偶爾從畫面旁邊衝出來或從左上角冒出來。
+       有快到期的事（3 天內的公告期限或待辦）就舉牌提醒，段考快到就搬書叫你讀書，否則隨口唸兩句。 */
+    var CAMEO_FIRST_MS = 25000, CAMEO_GAP_MS = [240000, 420000], CAMEO_MAX = 4;
+    var cameoTimer = null, cameoCount = 0;
+    function taipeiToday() { return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }); }
+    function daysFromToday(day) { return Math.round((Date.parse(day + "T00:00:00Z") - Date.parse(taipeiToday() + "T00:00:00Z")) / 86400000); }
+    function shortTitle(title, max) { title = String(title || "").replace(/^\s*(?:【[^】]{1,10}】|\[[^\]]{1,10}\])\s*/, "").trim(); return title.length > max ? title.slice(0, max - 1) + "…" : title; }
+    function whenWord(days) { return days <= 0 ? "今天" : days === 1 ? "明天" : days + " 天後"; }
+    function planMascotCameo() {
+      var school = preferredSchoolId() || (state.school !== "all" ? state.school : "");
+      var deadlines = [];
+      (state.tasks || []).forEach(function (task) {
+        if (!task || task.status === "done" || !/^\d{4}-\d{2}-\d{2}$/.test(String(task.due_date || ""))) return;
+        var days = daysFromToday(task.due_date);
+        if (days >= 0 && days <= 2) deadlines.push({ days: days, title: task.title, task: true });
+      });
+      ((state.data && state.data.items) || []).forEach(function (item) {
+        if (!item || linkGone(item) || (school && item.school !== school)) return;
+        var dates = (item.calendar_events || []).filter(function (ev) { return ev && ev.kind === "deadline" && ev.date; }).map(function (ev) { return String(ev.date).slice(0, 10); });
+        var fromTitle = window.CyNewsAssistantQA && window.CyNewsAssistantQA.titleDeadline ? window.CyNewsAssistantQA.titleDeadline(item) : "";
+        if (fromTitle) dates.push(fromTitle);
+        dates.forEach(function (day) { var days = daysFromToday(day); if (days >= 0 && days <= 3) deadlines.push({ days: days, title: item.title, id: item.id }); });
+      });
+      deadlines.sort(function (a, b) { return a.days - b.days; });
+      var entries = ["left", "right", "corner"], entry = entries[Math.floor(Math.random() * entries.length)];
+      if (deadlines.length && Math.random() < 0.7) {
+        var d = deadlines[Math.floor(Math.random() * Math.min(3, deadlines.length))];
+        return { entry: entry, prop: "sign", text: "「" + shortTitle(d.title, 18) + "」" + whenWord(d.days) + (d.task ? "要完成，別拖了！" : "截止，你弄了沒？"),
+          onClick: function () { if (d.id) openDetail(d.id); else pickTab("today"); } };
+      }
+      var exam = (state.officialEvents || []).filter(function (ev) {
+        if (school && ev.school_id && ev.school_id !== school) return false;
+        var days = daysFromToday(String(ev.start_date || ev.date));
+        return /段考|期中考|期末考|模擬考|學測|統測/.test(ev.title || "") && days >= 1 && days <= 21;
+      }).sort(function (a, b) { return String(a.start_date || a.date).localeCompare(String(b.start_date || b.date)); })[0];
+      if (exam) {
+        var left = daysFromToday(String(exam.start_date || exam.date));
+        return { entry: entry, prop: "books", text: "離「" + shortTitle(exam.title, 12) + "」剩 " + left + " 天，書我都搬來了，去讀📚" };
+      }
+      var lines = ["滑手機滑夠了沒？書都搬來了，去讀書📚", "我搬了一疊書，你至少翻一本吧。", "這些書在等你，不要讓它們失望。"];
+      var hello = ["路過一下，有問題記得問我😏", "我只是出來透透氣，你繼續。", "偷看你在幹嘛……是在讀書吧？"];
+      return Math.random() < 0.6 ? { entry: entry, prop: "books", text: lines[Math.floor(Math.random() * lines.length)] }
+        : { entry: entry, prop: "", text: hello[Math.floor(Math.random() * hello.length)] };
+    }
+    function cameoBlocked() {
+      if (typeof document === "undefined" || document.hidden) return true;
+      if (document.body && document.body.classList && document.body.classList.contains("menu-open")) return true;
+      if (el.nicknameDialog && el.nicknameDialog.open) return true;
+      if (el.detailDialog && el.detailDialog.open) return true;
+      var active = document.activeElement;
+      return !!(active && /^(INPUT|TEXTAREA|SELECT)$/.test(active.tagName || ""));
+    }
+    function runMascotCameo() {
+      cameoTimer = null;
+      if (!window.CyNewsMascot || !window.CyNewsMascot.cameo || !state.data || cameoCount >= CAMEO_MAX) return;
+      if (cameoBlocked()) { cameoTimer = setTimeout(runMascotCameo, 30000); return; }
+      var plan = planMascotCameo(), stage = mascot && mascot.el;
+      if (stage) stage.style.visibility = "hidden";
+      plan.onDone = function () { if (stage) stage.style.visibility = ""; scheduleMascotCameo(); };
+      if (window.CyNewsMascot.cameo(plan)) cameoCount++;
+      else plan.onDone();
+    }
+    function scheduleMascotCameo(first) {
+      if (cameoTimer || cameoCount >= CAMEO_MAX || typeof setTimeout !== "function" || !window.CyNewsMascot || !window.CyNewsMascot.cameo) return;
+      var wait = first ? CAMEO_FIRST_MS : CAMEO_GAP_MS[0] + Math.random() * (CAMEO_GAP_MS[1] - CAMEO_GAP_MS[0]);
+      cameoTimer = setTimeout(runMascotCameo, wait);
     }
     function mascotMood(mood, text) { try { if (mascot) mascot.setMood(mood, text); } catch (_) {} }
     function renderAssistantGreeting() {

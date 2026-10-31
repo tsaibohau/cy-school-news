@@ -39,11 +39,32 @@ assert.ok(Mascot.animations.walk.some(p => p.legs === "walkA") && Mascot.animati
 assert.doesNotMatch(read("mascot.js"), /scaleX\(-1\)|is-facing-left/, "the sprite is never mirrored, so 訊 stays readable");
 assert.ok(Mascot.lines.thinking.length && Mascot.lines.happy.length && Mascot.lines.sad.length);
 assert.match(index, /id="mascotStage" class="mascot-stage"/);
-assert.match(index, /<script src="mascot\.js\?v=2"><\/script>\s*<script src="assistant-qa\.js/);
+assert.match(index, /<script src="mascot\.js\?v=3"><\/script>\s*<script src="assistant-qa\.js/);
 assert.match(read("mascot.js"), /prefers-reduced-motion: reduce/, "the mascot stops moving for reduced motion");
 assert.doesNotMatch(css, /transition: transform 1\.4s/, "no smooth sliding: the mascot walks step by step");
 assert.match(app, /mascotMood\("thinking"\)/);
 const manifest = JSON.parse(read("manifest.webmanifest"));
 assert.ok(manifest.icons.some(i => i.purpose === "maskable"), "home-screen icon has a maskable version");
 assert.match(index, /rel="apple-touch-icon" href="icons\/apple-touch-icon\.png\?v=3"/);
+/* Square body: the red seal is as wide as it is tall. */
+{
+  const rows = Mascot.frame({}).map(r => r.join(""));
+  const bodyRows = rows.filter(r => /[RL]/.test(r));
+  const widths = bodyRows.map(r => r.lastIndexOf("D") - r.indexOf("D") + 1).filter(w => w > 0);
+  const body = rows.map((r, y) => /[RL]/.test(r) ? y : -1).filter(y => y >= 0);
+  assert.equal(body[body.length - 1] - body[0] + 3, 18, "body is 18 pixels tall");
+  assert.ok(rows.some(r => /^\.{4}D[RLCEKP]{16}D\.{4}$/.test(r)), "body is 18 pixels wide");
+}
+/* Cameos: dash in from a side or pop out of the top-left corner, carrying books or a deadline sign. */
+for (const name of ["booksWalk", "booksShow", "signWalk", "signShow", "run", "hello"]) assert.ok(Mascot.animations[name].length >= 2, name);
+assert.ok(Mascot.frame({ arms: "hold", fx: ["books"] }).flat().includes("N"), "a stack of books");
+assert.ok(Mascot.frame({ arms: "hold", fx: ["sign"] }).flat().includes("H"), "a sign with a red !");
+assert.equal(typeof Mascot.cameo, "function");
+assert.match(app, /function planMascotCameo\(\)/);
+assert.match(app, /entries = \["left", "right", "corner"\]/, "enters from the left, the right or the top-left corner");
+assert.match(app, /prop: "sign", text: "「" \+ shortTitle\(d\.title, 18\) \+ "」" \+ whenWord\(d\.days\)/, "deadline reminders name the item and when it is due");
+assert.match(app, /prop: "books"/, "brings books and tells you to study");
+assert.match(app, /CAMEO_MAX = 4/, "at most a few cameos per visit");
+assert.match(app, /function cameoBlocked\(\)[\s\S]*INPUT\|TEXTAREA\|SELECT/, "never pops out while the user is typing");
+assert.match(css, /\.mascot-cameo \{ position: fixed;/);
 console.log("Chat landing and layout contract passed");

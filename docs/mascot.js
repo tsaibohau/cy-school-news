@@ -8,10 +8,10 @@
   root.CyNewsMascot = api;
 })(typeof window !== "undefined" ? window : this, function () {
   "use strict";
-  var W = 26, H = 28, TOP = 4; /* 4 rows of headroom for jumps and effects */
+  var W = 26, H = 28, TOP = 6; /* 6 rows of headroom for jumps, props and effects */
   var COLORS = {
     D: "#5E1A15", R: "#B13A2E", L: "#C9503F", C: "#FBF4EA", E: "#FFFFFF", K: "#241C18",
-    P: "#F39A9A", B: "#8FD3F4", Y: "#F6C344", Z: "#6B5E52", H: "#E8556B"
+    P: "#F39A9A", B: "#8FD3F4", Y: "#F6C344", Z: "#6B5E52", H: "#E8556B", G: "#4C8C4A", N: "#3E6FA8"
   };
   /* 訊 in pixels: 言 (4 wide), gap, 卂 (7 wide); 10 rows. */
   var GLYPH = [
@@ -26,28 +26,30 @@
     "#..#...#..#.",
     "####...#..##"
   ];
-  var BX0 = 4, BX1 = 21, BH = 20; /* body columns 4..21, rows 0..19 (before TOP) */
+  var BX0 = 4, BX1 = 21, BH = 18; /* square body: columns 4..21, rows 0..17 (before TOP) */
 
   function blank() { var g = []; for (var y = 0; y < H; y++) g.push(new Array(W).fill(".")); return g; }
   function put(g, x, y, c) { if (x >= 0 && x < W && y >= 0 && y < H) g[y][x] = c; }
   function draw(g, cells, c, dy) { cells.forEach(function (p) { put(g, p[0], p[1] + (dy || 0), c); }); }
 
   var ARMS = {
-    down: [[[3, 11], [2, 12], [2, 13], [1, 14]], [[22, 11], [23, 12], [23, 13], [24, 14]]],
-    up: [[[3, 9], [2, 8], [2, 7], [1, 6]], [[22, 9], [23, 8], [23, 7], [24, 6]]],
-    wave: [[[3, 11], [2, 12], [2, 13], [1, 14]], [[22, 9], [23, 8], [23, 7], [24, 6], [24, 5]]],
-    wave2: [[[3, 11], [2, 12], [2, 13], [1, 14]], [[22, 9], [23, 8], [22, 7], [23, 6], [22, 5]]],
-    think: [[[3, 11], [2, 12], [2, 13], [1, 14]], [[22, 8], [23, 7], [23, 6], [22, 5]]],
-    dance1: [[[3, 9], [2, 8], [1, 7], [0, 6]], [[22, 12], [23, 13], [24, 13], [25, 13]]],
-    dance2: [[[3, 12], [2, 13], [1, 13], [0, 13]], [[22, 9], [23, 8], [24, 7], [25, 6]]],
-    type: [[[3, 12], [3, 14], [4, 15], [5, 16]], [[22, 12], [22, 14], [21, 15], [20, 16]]]
+    down: [[[3, 10], [2, 11], [2, 12], [1, 13]], [[22, 10], [23, 11], [23, 12], [24, 13]]],
+    up: [[[3, 8], [2, 7], [2, 6], [1, 5]], [[22, 8], [23, 7], [23, 6], [24, 5]]],
+    wave: [[[3, 10], [2, 11], [2, 12], [1, 13]], [[22, 8], [23, 7], [23, 6], [24, 5], [24, 4]]],
+    wave2: [[[3, 10], [2, 11], [2, 12], [1, 13]], [[22, 8], [23, 7], [22, 6], [23, 5], [22, 4]]],
+    think: [[[3, 10], [2, 11], [2, 12], [1, 13]], [[22, 7], [23, 6], [23, 5], [22, 4]]],
+    dance1: [[[3, 8], [2, 7], [1, 6], [0, 5]], [[22, 11], [23, 12], [24, 12], [25, 12]]],
+    dance2: [[[3, 11], [2, 12], [1, 12], [0, 12]], [[22, 8], [23, 7], [24, 6], [25, 5]]],
+    hold: [[[3, 5], [2, 4], [2, 3], [2, 2], [2, 1], [3, 0], [4, -1], [5, -1]], [[22, 5], [23, 4], [23, 3], [23, 2], [23, 1], [22, 0], [21, -1], [20, -1]]],
+    point: [[[3, 10], [2, 11], [2, 12], [1, 13]], [[22, 8], [23, 7], [24, 7], [25, 7]]],
+    type: [[[3, 11], [3, 13], [4, 14], [5, 15]], [[22, 11], [22, 13], [21, 14], [20, 15]]]
   };
   var LEGS = {
-    stand: [[9, 20], [9, 21], [8, 22], [9, 22], [16, 20], [16, 21], [16, 22], [17, 22]],
-    walkA: [[8, 20], [8, 21], [7, 22], [8, 22], [16, 20], [17, 21], [18, 21]],
-    walkB: [[9, 20], [8, 21], [7, 21], [16, 20], [17, 21], [17, 22], [18, 22]],
-    tuck: [[9, 20], [8, 21], [9, 21], [16, 20], [16, 21], [17, 21]],
-    sit: [[8, 20], [7, 20], [6, 20], [17, 20], [18, 20], [19, 20]]
+    stand: [[9, 18], [9, 19], [8, 20], [9, 20], [16, 18], [16, 19], [16, 20], [17, 20]],
+    walkA: [[8, 18], [8, 19], [7, 20], [8, 20], [16, 18], [17, 19], [18, 19]],
+    walkB: [[9, 18], [8, 19], [7, 19], [16, 18], [17, 19], [17, 20], [18, 20]],
+    tuck: [[9, 18], [8, 19], [9, 19], [16, 18], [16, 19], [17, 19]],
+    sit: [[8, 18], [7, 18], [6, 18], [17, 18], [18, 18], [19, 18]]
   };
   /* One frame: pose = { eyes, arms, legs, fx, dy } */
   function frame(pose) {
@@ -60,26 +62,38 @@
       put(g, x, y + dy, edge ? "D" : (y === 1 || x === BX0 + 1 ? "L" : "R"));
     }
     GLYPH.forEach(function (row, gy) {
-      row.split("").forEach(function (ch, gx) { if (ch === "#") put(g, 7 + gx, 8 + gy + dy, "C"); });
+      row.split("").forEach(function (ch, gx) { if (ch === "#") put(g, 7 + gx, 6 + gy + dy, "C"); });
     });
     var e = pose.eyes || "normal", L = 8, Rx = 15;
-    if (e === "closed") draw(g, [[L, 5], [L + 1, 5], [L + 2, 5], [Rx, 5], [Rx + 1, 5], [Rx + 2, 5]], "K", dy);
-    else if (e === "happy") draw(g, [[L, 5], [L + 1, 4], [L + 2, 5], [Rx, 5], [Rx + 1, 4], [Rx + 2, 5]], "K", dy);
+    if (e === "closed") draw(g, [[L, 4], [L + 1, 4], [L + 2, 4], [Rx, 4], [Rx + 1, 4], [Rx + 2, 4]], "K", dy);
+    else if (e === "happy") draw(g, [[L, 4], [L + 1, 3], [L + 2, 4], [Rx, 4], [Rx + 1, 3], [Rx + 2, 4]], "K", dy);
     else {
       var whites = [];
-      for (var ey = 3; ey <= 5; ey++) for (var ex = 0; ex < 3; ex++) { whites.push([L + ex, ey]); whites.push([Rx + ex, ey]); }
+      for (var ey = 2; ey <= 4; ey++) for (var ex = 0; ex < 3; ex++) { whites.push([L + ex, ey]); whites.push([Rx + ex, ey]); }
       draw(g, whites, "E", dy);
-      var px = e === "left" ? 0 : e === "right" ? 2 : 1, py = e === "up" ? 3 : e === "down" || e === "sad" ? 5 : 4;
-      if (e === "wide") draw(g, [[L + 1, 4], [Rx + 1, 4]], "K", dy);
-      else draw(g, [[L + px, py], [L + px, Math.min(5, py + 1)], [Rx + px, py], [Rx + px, Math.min(5, py + 1)]], "K", dy);
-      if (e === "sad") draw(g, [[L, 2], [L + 1, 2], [Rx + 1, 2], [Rx + 2, 2]], "D", dy);
-      if (e !== "sad" && e !== "wide") draw(g, [[L + 2, 3], [Rx + 2, 3]], "E", dy); /* sparkle in the eye */
+      var px = e === "left" ? 0 : e === "right" ? 2 : 1, py = e === "up" ? 2 : e === "down" || e === "sad" ? 4 : 3;
+      if (e === "wide") draw(g, [[L + 1, 3], [Rx + 1, 3]], "K", dy);
+      else draw(g, [[L + px, py], [L + px, Math.min(4, py + 1)], [Rx + px, py], [Rx + px, Math.min(4, py + 1)]], "K", dy);
+      if (e === "sad") draw(g, [[L, 1], [L + 1, 1], [Rx + 1, 1], [Rx + 2, 1]], "D", dy);
+      if (e !== "sad" && e !== "wide") draw(g, [[L + 2, 2], [Rx + 2, 2]], "E", dy); /* sparkle in the eye */
     }
-    draw(g, [[6, 6], [7, 6], [18, 6], [19, 6]], "P", dy);
+    draw(g, [[6, 5], [7, 5], [18, 5], [19, 5]], "P", dy);
     var arms = ARMS[pose.arms] || ARMS.down;
     draw(g, arms[0], "D", dy); draw(g, arms[1], "D", dy);
     draw(g, LEGS[pose.legs] || LEGS.stand, "D", dy);
     (pose.fx || []).forEach(function (fx) {
+      /* props held over the head (rows above the body) */
+      if (fx === "books") {
+        draw(g, [[9, -5], [10, -5], [11, -5], [12, -5], [13, -5], [14, -5], [15, -5], [16, -5]], "Y", dy);
+        draw(g, [[16, -5]], "C", dy);
+        for (var bx = 7; bx <= 18; bx++) { put(g, bx, -4 + dy, bx === 18 ? "C" : "G"); put(g, bx, -3 + dy, bx === 18 ? "C" : "G"); }
+        for (var cx = 6; cx <= 19; cx++) { put(g, cx, -2 + dy, cx === 6 ? "C" : "N"); put(g, cx, -1 + dy, cx === 6 ? "C" : "N"); }
+        draw(g, [[9, -4], [9, -3], [12, -2], [12, -1]], "Y", dy);
+      }
+      if (fx === "sign") {
+        for (var sx = 6; sx <= 19; sx++) for (var sy = -6; sy <= -1; sy++) put(g, sx, sy + dy, sx === 6 || sx === 19 || sy === -6 || sy === -1 ? "D" : "E");
+        draw(g, [[12, -5], [13, -5], [12, -4], [13, -4], [12, -2], [13, -2]], "H", dy);
+      }
       if (fx === "sweat") draw(g, [[22, 3 + dy], [22, 4 + dy], [21, 4 + dy]], "B");
       if (fx === "sparkle") { draw(g, [[1, 1], [0, 2], [2, 2], [1, 3]], "Y"); draw(g, [[24, 0], [23, 1], [25, 1], [24, 2]], "Y"); }
       if (fx === "z1") draw(g, [[20, 1], [21, 1], [21, 2], [20, 3], [21, 3]], "Z");
@@ -142,7 +156,15 @@
       { eyes: "sad", dy: 1, fx: ["sweat"] }, { eyes: "sad", dy: 2, fx: ["sweat"] }, { eyes: "sad", dy: 2 }, { eyes: "sad", dy: 1 }, STAND],
     startle: [{ eyes: "wide", arms: "up", legs: "tuck", dy: -3, fx: ["bang"] }, { eyes: "wide", arms: "up", dy: -1, fx: ["bang"] }, { eyes: "wide", arms: "up", fx: ["bang"] }, STAND],
     love: [{ eyes: "happy", fx: ["heart"] }, { eyes: "happy", dy: -1, fx: ["heart"] }, { eyes: "happy", fx: ["heart"] }, { eyes: "happy", dy: -1, fx: ["heart"] }, STAND],
-    walk: [{ legs: "walkA" }, { legs: "walkA", dy: -1 }, { legs: "walkB" }, { legs: "walkB", dy: -1 }]
+    walk: [{ legs: "walkA" }, { legs: "walkA", dy: -1 }, { legs: "walkB" }, { legs: "walkB", dy: -1 }],
+    run: [{ legs: "walkA", arms: "dance1", dy: -1 }, { legs: "walkB", arms: "dance2" }],
+    booksWalk: [{ legs: "walkA", arms: "hold", fx: ["books"] }, { legs: "walkA", arms: "hold", fx: ["books"], dy: -1 }, { legs: "walkB", arms: "hold", fx: ["books"] }, { legs: "walkB", arms: "hold", fx: ["books"], dy: -1 }],
+    booksShow: [{ arms: "hold", fx: ["books"], eyes: "happy" }, { arms: "hold", fx: ["books"], eyes: "happy" }, { arms: "hold", fx: ["books"], eyes: "happy", dy: 1 },
+      { arms: "hold", fx: ["books"], eyes: "normal" }, { arms: "hold", fx: ["books"], eyes: "left" }, { arms: "hold", fx: ["books"], eyes: "left" }, { arms: "hold", fx: ["books"], eyes: "normal", dy: 1 }],
+    signWalk: [{ legs: "walkA", arms: "hold", fx: ["sign"] }, { legs: "walkA", arms: "hold", fx: ["sign"], dy: -1 }, { legs: "walkB", arms: "hold", fx: ["sign"] }, { legs: "walkB", arms: "hold", fx: ["sign"], dy: -1 }],
+    signShow: [{ arms: "hold", fx: ["sign"], eyes: "wide" }, { arms: "hold", fx: ["sign"], eyes: "wide", dy: -1 }, { arms: "hold", fx: ["sign"], eyes: "wide" },
+      { arms: "hold", fx: ["sign"], eyes: "wide", dy: -1 }, { arms: "hold", fx: ["sign"] }, { arms: "hold", fx: ["sign"] }, { arms: "hold", fx: ["sign"], eyes: "closed" }, { arms: "hold", fx: ["sign"] }],
+    hello: [{ arms: "wave", eyes: "happy" }, { arms: "wave2", eyes: "happy" }, { arms: "wave", eyes: "happy", dy: -1 }, { arms: "wave2", eyes: "happy" }, { arms: "point" }, { arms: "point" }, { arms: "point", eyes: "right" }]
   };
   /* Pre-render every frame once. */
   var CACHE = {};
@@ -244,5 +266,74 @@
     else if (!walks) show({ arms: "wave", eyes: "happy" });
     return { el: el, setMood: setMood, say: say, play: play, stop: function () { clearInterval(timer); } };
   }
-  return { svg: svg, frame: frame, mount: mount, lines: LINES, animations: ANIM, size: { width: W, height: H } };
+  /* Cameo: 小訊 dashes in from a side or pops out of the top-left corner anywhere on the page,
+     shows something (books to study, a sign for a deadline), then leaves.
+     options: { entry: "left"|"right"|"corner", prop: "books"|"sign"|"", text, onClick, holdMs, pixel } */
+  var activeCameo = null;
+  function cameo(options) {
+    if (typeof document === "undefined" || !document.body || activeCameo) return null;
+    options = options || {};
+    var scale = options.pixel || 3, still = reducedMotion();
+    var vw = window.innerWidth || 390, vh = window.innerHeight || 700, w = W * scale, h = H * scale;
+    var entry = options.entry || "left", prop = options.prop || "";
+    var walkAnim = prop === "books" ? "booksWalk" : prop === "sign" ? "signWalk" : "run";
+    var showAnim = prop === "books" ? "booksShow" : prop === "sign" ? "signShow" : "hello";
+    var el = document.createElement("button");
+    el.type = "button";
+    el.className = "mascot mascot-cameo is-entry-" + entry;
+    el.setAttribute("aria-label", options.text ? "小訊：" + options.text : "小訊");
+    el.style.width = w + "px"; el.style.height = h + "px";
+    el.innerHTML = '<span class="mascot-bubble" role="status" aria-live="polite"></span><span class="mascot-figure"></span>';
+    document.body.appendChild(el);
+    var figure = el.querySelector(".mascot-figure"), bubble = el.querySelector(".mascot-bubble");
+    var top = entry === "corner" ? Math.max(64, Math.round(vh * 0.1)) : Math.round(vh * (0.25 + Math.random() * 0.35));
+    var stopX = entry === "right" ? Math.round(vw - w - vw * 0.1) : entry === "corner" ? 10 : Math.round(vw * 0.08);
+    var x = entry === "right" ? vw : entry === "corner" ? -w : -w, y = entry === "corner" ? -h : top;
+    var phase = "in", step = 0, shownAt = 0, timer = null, finished = false, shown = "";
+    el.classList.toggle("is-right-half", stopX > vw / 2);
+    function place() { el.style.transform = "translate(" + Math.round(x / scale) * scale + "px," + Math.round(y / scale) * scale + "px)"; }
+    function show(pose) { var html = frameSvg(pose); if (html !== shown) { figure.innerHTML = html; shown = html; } }
+    function leave() { if (phase !== "out") { phase = "out"; step = 0; el.classList.remove("is-talking"); } }
+    function finish() {
+      if (finished) return;
+      finished = true; clearInterval(timer);
+      if (el.parentNode) el.parentNode.removeChild(el);
+      activeCameo = null;
+      if (options.onDone) try { options.onDone(); } catch (_) {}
+    }
+    el.addEventListener("click", function () {
+      if (options.onClick) try { options.onClick(); } catch (_) {}
+      leave();
+    });
+    function tick() {
+      var speed = scale * 3;
+      if (phase === "in") {
+        if (entry === "corner") { x = Math.min(stopX, x + speed); y = Math.min(top, y + speed); }
+        else x = entry === "right" ? Math.max(stopX, x - speed) : Math.min(stopX, x + speed);
+        show(Object.assign({}, ANIM[walkAnim][step % ANIM[walkAnim].length], { eyes: entry === "right" ? "left" : "right" }));
+        if (x === stopX && y === top) { phase = "show"; step = 0; shownAt = Date.now(); bubble.textContent = options.text || ""; if (options.text) el.classList.add("is-talking"); }
+      } else if (phase === "show") {
+        show(ANIM[showAnim][step % ANIM[showAnim].length]);
+        if (Date.now() - shownAt > (options.holdMs || 6500)) leave();
+      } else {
+        if (entry === "corner") { x -= speed; y -= speed; }
+        else x += entry === "right" ? speed : -speed;
+        show(Object.assign({}, ANIM[walkAnim][step % ANIM[walkAnim].length], { eyes: entry === "right" ? "right" : "left" }));
+        if (x < -w - 4 || x > vw + 4 || y < -h - 4) finish();
+      }
+      place();
+      step++;
+    }
+    if (still) {
+      x = stopX; y = top; phase = "show"; place(); show(ANIM[showAnim][0]);
+      bubble.textContent = options.text || ""; if (options.text) el.classList.add("is-talking");
+      timer = setTimeout(finish, options.holdMs || 6500);
+    } else {
+      place(); show(ANIM[walkAnim][0]);
+      timer = setInterval(tick, TICK);
+    }
+    activeCameo = { el: el, leave: leave, finish: finish };
+    return activeCameo;
+  }
+  return { svg: svg, frame: frame, mount: mount, cameo: cameo, lines: LINES, animations: ANIM, size: { width: W, height: H } };
 });
