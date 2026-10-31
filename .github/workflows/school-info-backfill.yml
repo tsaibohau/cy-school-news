@@ -27,7 +27,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
+      # Start from the newest main, not the commit the run was queued on: this run waits
+      # behind the hourly scrape (same concurrency group), which also rewrites school-info.
       - uses: actions/checkout@v5
+        with:
+          ref: main
 
       - uses: actions/setup-python@v6
         with:
@@ -81,8 +85,18 @@ jobs:
           if git diff --cached --quiet; then
             echo "沒有變更,略過提交"
           else
-            git commit -m "補抓校園資訊 $(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M')"
+            message="補抓校園資訊 $(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M')"
+            git commit -q -m "$message"
             # Other generated files changed on the runner are not part of this commit.
-            git pull --rebase --autostash origin main
-            git push
+            if ! git pull --rebase --autostash origin main; then
+              # The backfill read more pages than anything newer on main, so keep its whole files.
+              git rebase --abort || true
+              saved="$RUNNER_TEMP/school-info"
+              rm -rf "$saved" && cp -r docs/data/school-info "$saved"
+              git reset -q --hard origin/main
+              rm -rf docs/data/school-info && cp -r "$saved" docs/data/school-info
+              git add docs/data/school-info
+              git commit -q -m "$message"
+            fi
+            git push origin HEAD:main
           fi
