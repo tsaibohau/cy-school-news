@@ -272,7 +272,14 @@
       el.profileClass.placeholder = grade >= 1 && grade <= 3 ? "例如 " + grade + "01" : "三位數班級，例如 101";
     }
     if (el.profileGrade) el.profileGrade.addEventListener("change", syncClassPlaceholder);
+    /* Features the user's school does not have are hidden (only 嘉中 has class timetables). */
+    function updateSchoolSupport() {
+      if (!window.CyNewsCapabilities || !window.CyNewsCapabilities.setSchoolSupport) return;
+      var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(preferredSchoolId());
+      window.CyNewsCapabilities.setSchoolSupport({ timetable: !!(school && school.capabilities && school.capabilities.class_timetable) });
+    }
     function renderProfile() {
+      updateSchoolSupport();
       if (!el.profileForm || !window.CyNewsProfile) return;
       var profile = window.CyNewsProfile.toInputs(state.profile || {});
       if (el.profileNickname) el.profileNickname.value = state.nickname || "";
@@ -590,16 +597,16 @@
         [el.tabHome, el.tabToday, el.tabAssistant, el.tabCalendar].forEach(function (node) { if (node) node.hidden = !full; });
         if (el.tabTimetable) el.tabTimetable.hidden = !approved;
         document.querySelectorAll(".full-service-only").forEach(function (node) { node.hidden = !full; });
-        if (el.accountService) {
-          el.accountService.hidden = !approved;
-          el.accountService.textContent = isTimetableOnly() ? "服務：僅課表" : "服務：完整功能";
-        }
+        /* No service tiers any more: features are one policy for all members. */
+        if (el.accountService) el.accountService.hidden = true;
         if (el.accountReapply) el.accountReapply.hidden = !(state.accountAccess && state.accountAccess.can_reapply);
         if (!full && ["home", "today", "assistant", "calendar"].indexOf(state.tab) !== -1) switchTab(approved ? "timetable" : "latest");
         // 一打開就進首頁看今日摘要。登入過程可能先短暫顯示未登入畫面（切回公告），
         // 所以只要使用者還沒自己點過分頁，取得完整服務時都回到首頁。
         /* 進站：有問校務權限的會員直接進問校務，其他人留在公告總庫。登入過程可能先短暫
            顯示未登入畫面，所以只要使用者還沒自己點過分頁，取得權限時就切過去。 */
+        /* The member policy and school support decide the feature tabs; apply them last. */
+        if (window.CyNewsCapabilities && window.CyNewsCapabilities.applyVisibility) window.CyNewsCapabilities.applyVisibility();
         var canAsk = full && window.CyNewsCapabilities && window.CyNewsCapabilities.has("assistant");
         if (canAsk && !state.userPickedTab && (state.tab === "latest" || state.tab === "home")) switchTab("assistant");
       }
@@ -608,7 +615,7 @@
           search: el.adminSearch ? el.adminSearch.value : "",
           status: el.adminStatusFilter ? el.adminStatusFilter.value : "all",
           role: el.adminRoleFilter ? el.adminRoleFilter.value : "all",
-          service: el.adminServiceFilter ? el.adminServiceFilter.value : "all",
+          service: "all",
           limit: 50,
           offset: state.adminOffset,
         };
@@ -624,10 +631,11 @@
         el.adminAccounts.innerHTML = rows.length ? rows.map(function (row) {
           var statusLabel = row.status === "pending" ? "等待審核" : row.status === "approved" ? "已核准" : "已拒絕／已移除・可重新送審";
           var roleLabel = row.admin_role === "owner" ? "主要管理員" : row.admin_role === "co_admin" ? "聯席管理員" : "一般會員";
-          var serviceLabel = row.service_level === "timetable_only" ? "僅課表" : "完整服務";
+          /* Every regular member gets the same features (一般使用者功能, set by a primary
+             administrator); administrators keep everything. No per-account tiers. */
+          var featureLabel = row.admin_role ? "全部功能" : "一般使用者功能";
           var protectedAdmin = !!row.admin_role;
-          var serviceSelect = '<label class="admin-service-label">服務<select data-admin-service="' + esc(row.user_id) + '"' + (protectedAdmin ? " disabled" : "") + '><option value="full"' + (row.service_level === "full" ? " selected" : "") + '>完整服務</option><option value="timetable_only"' + (row.service_level === "timetable_only" ? " selected" : "") + '>僅課表</option></select></label>';
-          var accessActions = protectedAdmin ? "" : '<button class="btn-primary" type="button" data-admin-access="approved" data-admin-user="' + esc(row.user_id) + '">' + (row.status === "approved" ? "儲存服務" : "核准") + '</button><button class="btn-ghost danger-button" type="button" data-admin-access="rejected" data-admin-user="' + esc(row.user_id) + '">' + (row.status === "pending" ? "拒絕本次申請" : "移除存取權") + '</button>';
+          var accessActions = protectedAdmin ? "" : (row.status === "approved" ? "" : '<button class="btn-primary" type="button" data-admin-access="approved" data-admin-user="' + esc(row.user_id) + '">核准</button>') + '<button class="btn-ghost danger-button" type="button" data-admin-access="rejected" data-admin-user="' + esc(row.user_id) + '">' + (row.status === "pending" ? "拒絕本次申請" : "移除存取權") + '</button>';
           var self = state.accountUser && row.user_id === state.accountUser.id;
           var roleAction = "";
           if (owner && !self && row.status === "approved") {
@@ -635,7 +643,7 @@
             else if (row.admin_role === "co_admin") roleAction = '<button class="btn-ghost" type="button" data-admin-role="owner" data-admin-user="' + esc(row.user_id) + '">升為主要管理員</button><button class="btn-ghost danger-button" type="button" data-admin-role="none" data-admin-user="' + esc(row.user_id) + '">移除聯席管理員</button>';
             else roleAction = '<button class="btn-ghost" type="button" data-admin-role="owner" data-admin-user="' + esc(row.user_id) + '">設為主要管理員</button><button class="btn-ghost" type="button" data-admin-role="co_admin" data-admin-user="' + esc(row.user_id) + '">設為聯席管理員</button>';
           }
-          return '<article class="admin-account"><div class="admin-account-main"><div class="admin-account-title"><strong>' + esc(row.email) + '</strong><span class="admin-role-badge" data-role="' + esc(row.admin_role || "member") + '">' + esc(roleLabel) + '</span></div><div class="admin-account-meta"><span>' + esc(statusLabel) + '</span><span>' + esc(serviceLabel) + '</span><span>申請：' + esc(String(row.requested_at || "").slice(0, 10)) + '</span></div></div><div class="admin-account-actions">' + serviceSelect + accessActions + roleAction + '</div></article>';
+          return '<article class="admin-account"><div class="admin-account-main"><div class="admin-account-title"><strong>' + esc(row.email) + '</strong><span class="admin-role-badge" data-role="' + esc(row.admin_role || "member") + '">' + esc(roleLabel) + '</span></div><div class="admin-account-meta"><span>' + esc(statusLabel) + '</span><span>' + esc(featureLabel) + '</span><span>申請：' + esc(String(row.requested_at || "").slice(0, 10)) + '</span></div></div><div class="admin-account-actions">' + accessActions + roleAction + '</div></article>';
         }).join("") : '<p class="empty">目前沒有符合條件的帳號。</p>';
       }
       function loadAdminAccounts() {
@@ -1300,8 +1308,7 @@
         var operation;
         if (roleAction) operation = accountAuth.setAdminRole(userId, roleAction);
         else {
-          var service = el.adminAccounts.querySelector('select[data-admin-service="' + userId + '"]');
-          operation = accountAuth.updateAccountAccess(userId, accessAction, service ? service.value : "full");
+          operation = accountAuth.updateAccountAccess(userId, accessAction, "full");
         }
         operation.then(function () { el.adminStatus.textContent = roleAction === "owner" ? "已設為主要管理員。" : roleAction === "co_admin" ? "已設為聯席管理員。" : roleAction === "none" ? "已移除管理員身分。" : accessAction === "approved" ? "帳號權限已更新。" : "存取權已移除；對方仍可重新送審。"; loadAdminAccounts(); }).catch(function () { el.adminStatus.textContent = "無法更新帳號狀態；請確認主要管理員權限，且不可移除最後一位主要管理員。"; });
       });
@@ -2252,10 +2259,13 @@
       /* 查詢範圍選「我的學校」時，只能引用那所學校的公告 */
       return function (item) { return scopeId === "all" || String(item && item.school || "") === String(scopeId); };
     }
-    /* Schools whose public pages and student handbook are indexed (scraper/school_info.py). */
-    var SCHOOL_INFO_IDS = ["cysh", "cygsh", "fjsh", "ccjh"];
+    /* Every school's public pages and handbook (scraper/school_info.py); a school not collected yet is a 404 = nothing. */
+    function schoolInfoIds() {
+      var all = window.CyNewsSchoolRegistry ? window.CyNewsSchoolRegistry.schools().map(function (school) { return school.id; }) : [];
+      return all.length ? all : ["cysh", "cygsh", "fjsh", "ccjh"];
+    }
     function fetchSchoolInfo(scopeId) {
-      var ids = SCHOOL_INFO_IDS.filter(function (id) { return scopeId === "all" || scopeId === id; });
+      var ids = schoolInfoIds().filter(function (id) { return scopeId === "all" || scopeId === id; });
       state.schoolInfo = state.schoolInfo || {};
       return Promise.all(ids.map(function (id) {
         if (state.schoolInfo[id]) return state.schoolInfo[id];
@@ -2552,6 +2562,13 @@
       var answeredBefore = !!(previous && previous.result && previous.result.status === "answered" && previous.result.mode !== "chat");
       var followUp = window.CyNewsAssistantQA.resolveFollowUp ? window.CyNewsAssistantQA.resolveFollowUp(question, previous && { query: previous.query, answered: answeredBefore }) : { query: question, context: "" };
       question = followUp.query || question;
+      /* 「嘉中跟嘉女的請假規定差在哪」: answer once per school, then side by side.
+         A follow-up after a comparison (「那服裝儀容呢」) compares the same schools again. */
+      var registry = window.CyNewsSchoolRegistry, QA = window.CyNewsAssistantQA;
+      var named = registry && registry.mentionedSchools ? registry.mentionedSchools(asked) : [];
+      var plan = QA.comparePlan ? QA.comparePlan(asked, named, previous && { scopeId: previous.scopeId, query: previous.query }) : null;
+      if (!plan && previous && previous.compare && followUp.context && !named.length) plan = { schools: previous.compare, topic: question };
+      if (plan) return askAssistantCompare(asked, plan);
       var scope = assistantScopeFor(question);
       if (followUp.context && previous && previous.scopeId && !(window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.mentionedSchool(asked))) {
         var keep = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(previous.scopeId);
@@ -2598,6 +2615,46 @@
         renderAssistantAnswer(result, turnIndex);
         mascotMood("sad", "網路好像怪怪的…");
         if (el.assistantStatus) el.assistantStatus.textContent = "資料讀取失敗";
+        return result;
+      }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
+    }
+    /* One question answered for several schools, each from its own data, then laid side by side. */
+    function askAssistantCompare(asked, plan) {
+      var QA = window.CyNewsAssistantQA, registry = window.CyNewsSchoolRegistry;
+      var schools = plan.schools.map(function (id) { return registry.find(id); }).filter(Boolean);
+      startAssistantTurn(asked, "");
+      setupMascot();
+      mascotMood("thinking");
+      var turnIndex = state.assistantTurns.length - 1, target = el.assistantAnswer, current = state.assistantTurns[turnIndex];
+      if (current) { current.query = plan.topic; current.scopeId = schools[0] && schools[0].id; current.compare = plan.schools.slice(); }
+      var names = schools.map(function (school) { return school.short; }).join("、");
+      if (el.assistantAsk) el.assistantAsk.disabled = true;
+      if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在對照' + esc(names) + '的資料…</p></div>';
+      state.assistantItems = {};
+      var calendarReady = state.officialEvents && state.officialEvents.length ? Promise.resolve() : loadOfficialEvents();
+      var work = !plan.topic ? Promise.resolve([]) : calendarReady.then(function () {
+        return Promise.all(schools.map(function (school) {
+          var scope = { id: school.id, label: school.short };
+          return fetchAssistantCorpus(school.id).then(function (items) {
+            items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
+            var options = assistantOptions(scope);
+            var candidates = QA.rank(plan.topic, items, {}, options).slice(0, 6);
+            return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
+              var details = {};
+              records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
+              return { school: school, result: QA.answer(plan.topic, items, details, options) };
+            });
+          }).catch(function () { return { school: school, result: null }; });
+        }));
+      });
+      return work.then(function (rows) {
+        if (!plan.topic) rows = schools.map(function (school) { return { school: school, result: null }; });
+        rememberAssistantQuestion(asked);
+        var result = QA.compareResults(plan.topic, rows);
+        el.assistantAnswer = target;
+        renderAssistantAnswer(result, turnIndex);
+        mascotMood(result.status === "answered" ? "happy" : "sad");
+        renderAssistantExamples();
         return result;
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
     }

@@ -156,6 +156,61 @@ def main():
             '<a href="/p/412-1000-12.php">dup</a><a href="https://www.cysh.cy.edu.tw/p/412-1008-86.php">x</a>')
     assert si.home_roots(fj, home) == [12, 34]
     print("✓ 其他學校從首頁選單找起點")
+    # Every other school: general site mode (iSchool, WordPress, XOOPS, CCMS, ASP).
+    schools = si.all_schools()
+    import json as _json
+    config_ids = [row["id"] for row in _json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))["schools"]]
+    assert set(config_ids) <= set(schools), "every school in config.json is collected"
+    tl = schools["tlsh"]
+    assert si.is_site(tl) and tl["origin"] == "https://www.tlsh.ylc.edu.tw" and not si.is_site(schools["cysh"])
+    home = ('<nav><a href="/">首頁</a></nav><a href="/about/">學校簡介</a><a href="https://tlsh.ylc.edu.tw/office/affairs/">學務處</a>'
+            '<a href="/2026/10/sports-day/">運動會花絮</a><a href="/category/news/">最新消息</a><a href="/feed/">RSS</a>'
+            '<a href="/wp-content/uploads/a.pdf">手冊.pdf</a><a href="https://www.cysh.cy.edu.tw/">嘉中</a>'
+            '<a href="/about/#top">學校簡介</a><a href="/staff/">人事室</a><a href="/?p=12">文章</a>'
+            '<a href="/modules/tad_page/index.php?tad_page_id=3">校規彙編</a><a href="/album/">相簿</a>')
+    links = si.site_links(tl, home, "https://www.tlsh.ylc.edu.tw/")
+    assert [l["label"] for l in links] == ["學校簡介", "學務處", "校規彙編"], links
+    assert links[0]["page_id"] == si.site_page_id("https://www.tlsh.ylc.edu.tw/about/")
+    assert all(l["page_id"] < 2 ** 53 for l in links), "ids stay exact in JavaScript"
+    page_html = ('<html><head><title>學生請假規定 | 斗六高中</title></head><body><header class="site-header">校名 選單</header>'
+                 '<div class="menu"><a href="/about/">學校簡介</a></div><main><h1>學生請假規定</h1>'
+                 '<p>一、學生因病請假應於三日內辦理。</p><p>二、事假須家長簽章。</p><p>聯絡電話 05-5322039</p></main>'
+                 '<footer>版權所有</footer></body></html>')
+    lines = si.site_text_lines(page_html)
+    assert lines[:3] == ["學生請假規定", "一、學生因病請假應於三日內辦理。", "二、事假須家長簽章。"], lines
+    assert "版權所有" not in lines and "校名 選單" not in lines
+    assert si.site_title_path(page_html, "請假規定", ["學務處"]) == ["學務處", "請假規定"]
+    assert si.site_title_path(page_html) == ["學生請假規定"]
+    crumb = '<ol class="breadcrumb"><li><a href="/">首頁</a></li><li><a href="/x">學務處</a></li><li>生輔組</li></ol>'
+    assert si.site_title_path(crumb, "x") == ["學務處", "生輔組"]
+    # Processing a site page: text without the home-page boilerplate, children one level down.
+    import hashlib
+    with tempfile.TemporaryDirectory() as tmp:
+        import scrape
+        old_root, old_detail = si.ROOT, scrape.DETAIL_ROOT
+        scrape.DETAIL_ROOT = Path(tmp) / "docs" / "data" / "details"
+        try:
+            url = "https://www.tlsh.ylc.edu.tw/office/affairs/"
+            pid = si.site_page_id(url)
+            index = {"pages": {str(pid): {"page_id": pid, "url": url, "label": "學務處", "depth": 0, "status": "pending"}},
+                     "boiler": [hashlib.sha1("聯絡電話 05-5322039".encode("utf-8")).hexdigest()[:10]]}
+            body = page_html.replace("</main>", '<a href="/office/affairs/leave/">請假辦法</a></main>')
+            real_root = si.ROOT
+            si.ROOT = Path(tmp)
+            (Path(tmp) / "docs").mkdir(exist_ok=True)
+            try:
+                entry = si.process_page("tlsh", tl, index, pid, body)
+            finally:
+                si.ROOT = real_root
+        finally:
+            scrape.DETAIL_ROOT = old_detail
+    assert entry["status"] == "ok" and entry["path"] == ["學務處"], entry
+    child = [v for k, v in index["pages"].items() if k != str(pid)]
+    leave = [c for c in child if c["label"] == "請假辦法"]
+    assert leave and leave[0]["depth"] == 1 and leave[0]["parent_path"] == ["學務處"], child
+    item = si.public_item("tlsh", tl, entry)
+    assert item["url"] == url and item["id"] == f"tlsh-info-{pid}" and item["school_name"] == "斗六高中"
+    print("✓ 其他 24 校：一般網站模式（首頁選單、去掉選單與頁尾、只往下兩層）")
     print("所有校園資訊測試通過 ✅")
 
 

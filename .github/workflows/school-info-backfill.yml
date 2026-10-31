@@ -14,6 +14,10 @@ on:
         description: "每校最多讀幾個 PDF"
         required: false
         default: "40"
+      schools:
+        description: "只抓這些學校（代號用逗號分隔，空白＝全部 28 校）"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -25,7 +29,7 @@ concurrency:
 jobs:
   backfill:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 75
     steps:
       # Start from the newest main, not the commit the run was queued on: this run waits
       # behind the hourly scrape (same concurrency group), which also rewrites school-info.
@@ -45,6 +49,9 @@ jobs:
           SCHOOL_INFO_PAGE_CAP: ${{ github.event.inputs.pages }}
           SCHOOL_INFO_PDF_CAP: ${{ github.event.inputs.pdfs }}
           SCHOOL_INFO_PDF_CEILING: ${{ github.event.inputs.pdfs }}
+          SCHOOL_INFO_SCHOOLS: ${{ github.event.inputs.schools }}
+          # 50 minutes shared by the schools; run it again to continue where it stopped.
+          SCHOOL_INFO_TIME_BUDGET_SEC: '3000'
         run: python scraper/school_info.py discover
 
       - name: 同步內文到受保護資料庫

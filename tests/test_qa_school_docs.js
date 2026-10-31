@@ -163,4 +163,39 @@ for (const school of ["cysh", "cygsh"]) {
   const indexFile = path.join(__dirname, "..", "docs", "data", "school-info", school + ".json");
   if (fs.existsSync(indexFile)) assert.doesNotMatch(fs.readFileSync(indexFile, "utf8"), /embedded_text|"blocks"|"summary"/);
 }
+/* Comparing schools: each school answers from its own data, then the answers sit side by side. */
+const Registry = require("../docs/school-registry.js");
+const plan = (q, prev) => QA.comparePlan(q, Registry.mentionedSchools(q), prev);
+assert.deepEqual(plan("嘉中跟嘉女的請假規定差在哪"), { schools: ["cysh", "cygsh"], topic: "請假規定" });
+assert.deepEqual(plan("比較民雄農工、嘉義高工的手機規定").schools, ["mhvs", "cyivs"]);
+assert.equal(plan("嘉中和嘉女哪個比較早段考").topic, "段考");
+assert.equal(plan("嘉中的請假規定"), null, "one school without a compare word is a normal question");
+assert.equal(plan("嘉女的請假規定呢", { scopeId: "cysh", query: "請假規定" }), null, "「那嘉女呢」 switches school, it does not compare");
+assert.deepEqual(plan("那跟嘉女比呢", { scopeId: "cysh", query: "嘉中請假規定" }), { schools: ["cysh", "cygsh"], topic: "請假" });
+assert.equal(plan("嘉中跟嘉女").topic, "");
+const girls = [{ item: { id: "cygsh-info-1", kind: "school_info", title: "學務處 › 生輔組 › 學生請假辦法", school: "cygsh", school_name: "嘉女",
+  url: "https://www.cygsh.cy.edu.tw/p/412-1013-1.php", category: "校園資訊", date: "", keywords: ["請假"] },
+  detail: { announcement_id: "cygsh-info-1", provenance: "official_article", source_hash: "g1", attachments: [],
+    blocks: [{ type: "paragraph", text: "學生請假辦法：學生請假應於返校後三日內，持家長證明至學務處生輔組辦理。" }] } }];
+const girlItems = girls.map(d => d.item), girlDetails = Object.fromEntries(girls.map(d => [d.item.id, d.detail]));
+const rows = [
+  { school: { id: "cysh", short: "嘉中" }, result: QA.answer("請假規定", items, details, opts) },
+  { school: { id: "cygsh", short: "嘉女" }, result: QA.answer("請假規定", girlItems, girlDetails, { asOf: "2026-10-31", scopeLabel: "嘉女", schoolId: "cygsh" }) },
+  { school: { id: "tlsh", short: "斗六高中" }, result: QA.answer("請假規定", [], {}, { asOf: "2026-10-31", scopeLabel: "斗六高中", schoolId: "tlsh" }) },
+];
+const compared = QA.compareResults("請假規定", rows);
+assert.equal(compared.status, "answered");
+assert.equal(compared.mode, "compare");
+assert.match(compared.reply.text, /請假規定/);
+assert.match(compared.reply.bullets[0], /^嘉中：.*線上請假系統/);
+assert.match(compared.reply.bullets[1], /^嘉女：.*三日內/);
+assert.match(compared.reply.bullets[2], /^斗六高中：沒查到/);
+assert.match(compared.reply.tail, /斗六高中 的資料我還在收錄中/);
+assert.ok(compared.sources.some(s => s.school === "cysh") && compared.sources.some(s => s.school === "cygsh"), "both schools' sources are kept");
+assert.ok(compared.evidence.every(e => /^(?:嘉中|嘉女)｜/.test(e.title)), "evidence says which school it is from");
+const none = QA.compareResults("宿舍門禁", rows.map(r => ({ school: r.school, result: { status: "insufficient" } })));
+assert.equal(none.status, "insufficient");
+assert.match(none.reply.text, /都沒查到「宿舍門禁」/);
+assert.match(QA.compareResults("", rows).reply.text, /比什麼|給我一個主題/);
+
 console.log("問校務 school documents and timetable tests passed");

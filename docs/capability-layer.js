@@ -7,7 +7,10 @@
   var LABELS = { member_content: "會員摘要", assistant: "問校務", timetable: "課表", calendar: "行事曆", notifications: "訂閱通知" };
   var current = emptyMap();
   var publicCurrent = emptyMap();
-  var adminRows = {};
+  var memberPolicy = null;
+  /* Features the user's school cannot offer (no class timetable for that school, …) are hidden
+     whatever the policy says. Set by the app from its data: { timetable: false }. */
+  var schoolSupport = {};
   var approved = false;
   var authenticated = false;
   var owner = false;
@@ -30,7 +33,10 @@
   function normalize(rows) { return normalizeFor(rows, KEYS); }
   function normalizePublic(rows) { return normalizeFor(rows, PUBLIC_KEYS); }
   function snapshot() { return normalize(current); }
-  function has(key) { return (approved ? current[key] : !authenticated && publicCurrent[key]) === true; }
+  function has(key) {
+    if (schoolSupport[key] === false) return false;
+    return (approved ? current[key] : !authenticated && publicCurrent[key]) === true;
+  }
   function any(keys) { return keys.some(function (key) { return has(key); }); }
   function anyPersonal() { return any(["assistant", "timetable", "calendar", "notifications"]); }
   function setHidden(node, hidden) {
@@ -97,67 +103,32 @@
     document.querySelectorAll("button[data-add-task]").forEach(function (node) { setHidden(node, !has("calendar")); });
   }
 
-  function capabilitySummary(map) {
-    var enabled = KEYS.filter(function (key) { return map[key]; }).map(function (key) { return LABELS[key]; });
-    return enabled.length ? enabled.join("、") : "未開放功能";
-  }
-
-  function renderAdminCapabilities() {
+  /* 一般使用者功能: one policy for every regular member, set by a primary administrator.
+     Administrators always keep every feature. Co-admins see the policy read-only. */
+  function renderMemberPolicy() {
     if (typeof document === "undefined") return;
-    var rootNode = document.getElementById("adminAccounts");
-    if (!rootNode) return;
-    rootNode.querySelectorAll(".admin-account").forEach(function (card) {
-      var role = card.querySelector(".admin-role-badge");
-      if (role && role.getAttribute("data-role") !== "member") return;
-      var action = card.querySelector("button[data-admin-user]");
-      var userId = action && action.getAttribute("data-admin-user");
-      var map = userId && adminRows[userId];
-      if (!userId || !map) return;
-
-      var legacy = card.querySelector(".admin-service-label");
-      if (legacy) legacy.hidden = true;
-      var meta = card.querySelectorAll(".admin-account-meta span");
-      if (meta.length > 1) {
-        var summary = "功能權限：" + capabilitySummary(map);
-        if (meta[1].textContent !== summary) meta[1].textContent = summary;
-      }
-      card.querySelectorAll("button[data-admin-access='approved']").forEach(function (button) {
-        if (button.textContent.indexOf("儲存服務") !== -1) button.hidden = true;
-      });
-
-      if (card.querySelector(".capability-editor")) return;
-      var box = document.createElement("fieldset");
-      box.className = "capability-editor";
-      box.setAttribute("data-capability-user", userId);
-      box.innerHTML = '<legend>功能權限</legend><div class="capability-grid">' + KEYS.map(function (key) {
-        return '<label class="capability-option"><input type="checkbox" data-capability="' + key + '"' + (map[key] ? " checked" : "") + '> <span>' + LABELS[key] + '</span></label>';
-      }).join("") + '</div><button type="button" class="btn-primary capability-save">儲存權限</button><span class="capability-save-state" aria-live="polite"></span>';
-      box.querySelector(".capability-save").addEventListener("click", function () {
-        var next = emptyMap();
-        KEYS.forEach(function (key) {
-          var input = box.querySelector('input[data-capability="' + key + '"]');
-          next[key] = !!(input && input.checked);
-        });
-        var state = box.querySelector(".capability-save-state");
-        box.disabled = true;
-        state.textContent = "儲存中";
-        if (typeof root.__CYNEWS_SET_CAPABILITIES !== "function") {
-          state.textContent = "儲存失敗";
-          box.disabled = false;
-          return;
-        }
-        root.__CYNEWS_SET_CAPABILITIES(userId, next).then(function () {
-          adminRows[userId] = normalize(next);
-          state.textContent = "已儲存";
-          var metaRows = card.querySelectorAll(".admin-account-meta span");
-          if (metaRows.length > 1) metaRows[1].textContent = "功能權限：" + capabilitySummary(adminRows[userId]);
-        }).catch(function () {
-          state.textContent = "儲存失敗";
-        }).finally(function () { box.disabled = false; });
-      });
-      var actions = card.querySelector(".admin-account-actions") || card;
-      actions.insertBefore(box, actions.firstChild);
+    var existing = document.getElementById("memberCapabilityEditor");
+    var admin = document.getElementById("viewAdmin");
+    if (!memberPolicy || !admin) { if (existing && !memberPolicy) existing.remove(); return; }
+    if (existing) return;
+    var box = document.createElement("fieldset");
+    box.id = "memberCapabilityEditor";
+    box.className = "capability-editor";
+    box.innerHTML = '<legend>一般使用者功能</legend><p class="hint">所有已核准的一般使用者都使用同一組功能；管理員永遠擁有全部功能。使用者設定的學校不支援的功能（例如該校沒有班級課表）會自動隱藏。' +
+      (owner ? '' : '只有主要管理員可以修改。') + '</p><div class="capability-grid">' + KEYS.map(function (key) {
+      return '<label class="capability-option"><input type="checkbox" data-member-capability="' + key + '"' + (memberPolicy[key] ? " checked" : "") + (owner ? "" : " disabled") + '> <span>' + LABELS[key] + '</span></label>';
+    }).join("") + '</div>' + (owner ? '<button type="button" class="btn-primary">儲存一般使用者功能</button>' : '') + '<span class="capability-save-state" aria-live="polite"></span>';
+    var save = box.querySelector("button");
+    if (save) save.addEventListener("click", function () {
+      var next = emptyMap(), state = box.querySelector(".capability-save-state");
+      KEYS.forEach(function (key) { next[key] = box.querySelector('[data-member-capability="' + key + '"]').checked; });
+      box.disabled = true; state.textContent = "儲存中";
+      root.__CYNEWS_SET_MEMBER_CAPABILITIES(next).then(function () {
+        memberPolicy = normalize(next); state.textContent = "已儲存，所有一般使用者下次開啟網站時生效";
+      }).catch(function () { state.textContent = "儲存失敗：僅主要管理員可修改"; }).finally(function () { box.disabled = false; });
     });
+    var heading = admin.querySelector(".admin-subheading");
+    admin.insertBefore(box, heading ? heading.nextSibling : admin.firstChild);
   }
 
   function renderPublicCapabilities() {
@@ -219,11 +190,11 @@
     }, true);
     new MutationObserver(function () {
       applyVisibility();
-      renderAdminCapabilities();
+      renderMemberPolicy();
       renderPublicCapabilities();
     }).observe(document.documentElement, { childList: true, subtree: true });
     applyVisibility();
-    renderAdminCapabilities();
+    renderMemberPolicy();
   }
 
   function wrapAuth(api) {
@@ -260,30 +231,27 @@
       controller.getAuthCutoverReadiness = function () {
         return controller.getClient().then(function (client) { return client.rpc("owner_auth_cutover_readiness"); }).then(function (result) { if (result.error) throw result.error; return result.data && result.data[0]; });
       };
-      controller.getAdminAccounts = function (filters) {
-        return originalAdmin.call(controller, filters).then(function (rows) {
-          var ids = rows.map(function (row) { return row.user_id; }).filter(Boolean);
-          adminRows = {};
-          if (!ids.length) return rows;
-          return controller.getClient().then(function (client) {
-            return client.rpc("admin_account_capabilities", { target_user_ids: ids });
-          }).then(function (result) {
-            if (result.error) throw result.error;
-            rows.forEach(function (row) { adminRows[row.user_id] = emptyMap(); });
-            (result.data || []).forEach(function (row) {
-              if (adminRows[row.user_id] && KEYS.indexOf(row.capability) !== -1) adminRows[row.user_id][row.capability] = row.enabled === true;
-            });
-            setTimeout(renderAdminCapabilities, 0);
-            return rows;
-          });
+      controller.getMemberCapabilities = function () {
+        return controller.getClient().then(function (client) { return client.rpc("current_member_capabilities"); }).then(function (result) {
+          if (result.error) throw result.error;
+          memberPolicy = normalize(result.data);
+          var stale = typeof document !== "undefined" && document.getElementById("memberCapabilityEditor");
+          if (stale) stale.remove();
+          setTimeout(renderMemberPolicy, 0);
+          return normalize(memberPolicy);
         });
       };
-      controller.setAccountCapabilities = function (userId, capabilities) {
-        return controller.getClient().then(function (client) {
-          return client.rpc("admin_set_account_capabilities", { target_user_id: userId, next_capabilities: normalize(capabilities) });
-        }).then(function (result) { if (result.error) throw result.error; });
+      controller.setMemberCapabilities = function (capabilities) {
+        return controller.getClient().then(function (client) { return client.rpc("owner_set_member_capabilities", { next_capabilities: normalize(capabilities) }); }).then(function (result) { if (result.error) throw result.error; });
       };
-      root.__CYNEWS_SET_CAPABILITIES = controller.setAccountCapabilities;
+      controller.getAdminAccounts = function (filters) {
+        return originalAdmin.call(controller, filters).then(function (rows) {
+          /* The policy editor sits above the account list; a database without the policy yet is skipped. */
+          controller.getMemberCapabilities().catch(function () {});
+          return rows;
+        });
+      };
+      root.__CYNEWS_SET_MEMBER_CAPABILITIES = controller.setMemberCapabilities;
       root.__CYNEWS_SET_PUBLIC_CAPABILITIES = controller.setPublicCapabilities;
       return controller;
     };
@@ -298,7 +266,15 @@
     has: has,
     anyPersonal: anyPersonal,
     applyVisibility: applyVisibility,
-    setAuthenticated: function (value) { authenticated = value === true; if (!authenticated) { approved = false; owner = false; current = emptyMap(); } applyVisibility(); },
+    /* { timetable: false } hides features the user's school does not have. */
+    setSchoolSupport: function (map) {
+      var next = {};
+      Object.keys(map || {}).forEach(function (key) { if (KEYS.indexOf(key) !== -1 && map[key] === false) next[key] = false; });
+      if (JSON.stringify(next) === JSON.stringify(schoolSupport)) return;
+      schoolSupport = next;
+      applyVisibility();
+    },
+    setAuthenticated: function (value) { authenticated = value === true; if (!authenticated) { approved = false; owner = false; current = emptyMap(); memberPolicy = null; } applyVisibility(); },
   };
 
   var assignedAuth = root.CyNewsAccountAuth;
