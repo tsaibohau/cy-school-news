@@ -7,12 +7,12 @@
 <meta name="description" content="嘉義高中與嘉義女中官網最新公告即時彙整:段考、社團、升學、獎學金分類與關鍵字訂閱。非官方服務。">
 <meta name="theme-color" content="#F3ECDD">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="icons/icon-192.png">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" href="icons/icon-192.png?v=2">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=101">
+<link rel="stylesheet" href="style.css?v=102">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -25,6 +25,9 @@
 
 <header class="mast">
   <div class="wrap mast-row">
+    <button id="sideMenuToggle" class="icon-btn menu-toggle" type="button" aria-controls="functionDock" aria-expanded="false" aria-label="開啟功能選單">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+    </button>
     <button id="brandHome" class="brand brand-button" type="button" aria-label="返回主畫面">
       <span class="seal" aria-hidden="true">訊</span>
       <span class="brand-text"><h1>校訊</h1><span class="mast-sub">嘉義・雲林公告彙整</span></span>
@@ -69,7 +72,7 @@
   <!-- 問校務：對話式校園資訊助理。只整理官方公告、學校規定、行事曆與課表，不呼叫生成式 AI。 -->
   <section id="viewAssistant" class="assistant-view chat-view" hidden aria-labelledby="assistantTitle">
     <div id="assistantWelcome" class="chat-welcome">
-      <span class="chat-mark" aria-hidden="true">問</span>
+      <span id="mascotHero" class="chat-mark mascot-hero" aria-hidden="true"></span>
       <h2 id="assistantTitle" class="chat-greeting">想問學校什麼？</h2>
       <p class="chat-subtitle">規定、行事曆、課表、公告，都可以直接問。答案會附上學校的官方出處。</p>
     </div>
@@ -86,6 +89,7 @@
         <button type="button" data-assistant-example="第二次段考是哪幾天？">第二次段考</button>
         <button type="button" data-assistant-example="明天有什麼課？">明天的課</button>
       </div>
+      <div id="mascotStage" class="mascot-stage"></div>
       <div class="chat-box">
         <label for="assistantQuestion" class="visually-hidden">想問什麼？</label>
         <textarea id="assistantQuestion" rows="1" required maxlength="160" enterkeyhint="send" placeholder="問問學校的事，例如：書可以借多久？"></textarea>
@@ -319,7 +323,9 @@
   </form>
 </dialog>
 
+<div id="sideBackdrop" class="side-backdrop"></div>
 <div id="functionDock" class="function-dock" hidden>
+<p class="side-title">校訊・功能</p>
 <nav id="navMenu" class="tabbar" aria-label="主要功能">
   <button id="tabAssistant" class="tab"><span class="tab-icon" aria-hidden="true">問</span><span class="tab-label">問校務</span></button>
   <button id="tabHome" class="tab"><span class="tab-icon" aria-hidden="true">首</span><span class="tab-label">首頁</span></button>
@@ -349,9 +355,10 @@
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
-<script src="assistant-qa.js?v=66"></script>
+<script src="mascot.js?v=1"></script>
+<script src="assistant-qa.js?v=67"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=117"></script>
+<script src="app.js?v=118"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

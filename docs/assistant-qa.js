@@ -1364,13 +1364,20 @@
     function (label) { return "這題手冊有寫，你只是沒翻😏 " + label + "："; },
     function (label) { return "幫你翻好了，" + label + "寫的重點："; },
     function (label) { return "問得好。根據" + label + "："; },
-    function (label) { return "這個我熟，" + label + "這樣規定："; }
+    function (label) { return "這個我熟，" + label + "這樣規定："; },
+    function (label) { return "又是我幫你翻手冊的一天。" + label + "："; },
+    function (label) { return "好問題，雖然手冊上明明有寫😑 " + label + "："; },
+    function (label) { return "來，學長姐罩你。" + label + "："; },
+    function (label) { return "抄起來，考試不考但教官會考。" + label + "："; }
   ];
-  var RULE_CLOSERS = ["記住了沒？下次自己翻也行啦。", "規定偶爾會改，以學校最新公告為準。", "看完就照做，別讓我在獎懲名單上看到你😌", ""];
-  var ANNOUNCE_OPENERS = ["學校有公告過，幫你整理好了。", "找到了，重點在這。", "公告寫得落落長，我幫你濃縮一下。"];
-  var NONE_OPENERS = ["這題我翻遍了還是找不到🥲", "老實說，學校網站沒寫這個。", "找不到欸，不是我不努力。"];
+  var RULE_CLOSERS = ["記住了沒？下次自己翻也行啦。", "規定偶爾會改，以學校最新公告為準。", "看完就照做，別讓我在獎懲名單上看到你😌", "",
+    "不用謝，記得幫我按個讚（雖然沒有讚可以按）。", "有不懂的再問，我很閒（並沒有）。", "照做就不會被約談，加油😌", ""];
+  var ANNOUNCE_OPENERS = ["學校有公告過，幫你整理好了。", "找到了，重點在這。", "公告寫得落落長，我幫你濃縮一下。",
+    "這則公告你應該沒點開過吧？幫你看了。", "學校有說喔，只是你沒看到😏", "重點我畫好了，剩下的自己點開。"];
+  var NONE_OPENERS = ["這題我翻遍了還是找不到🥲", "老實說，學校網站沒寫這個。", "找不到欸，不是我不努力。",
+    "這題連我都考倒了，你很會問嘛。", "學校網站沒寫，我也不能亂掰😤", "嗯…我翻到手都酸了還是沒有。"];
   var SERVICE_OPENERS = ["這個要登入系統才看得到，我進不去，你自己來：", "這種個人的東西在系統裡，入口給你：", ""];
-  var LIST_OPENERS = ["幫你列好了。", "整理好了，自己看。", ""];
+  var LIST_OPENERS = ["幫你列好了。", "整理好了，自己看。", "", "列給你了，別說我沒提醒你。", "這些都跟你有關，滑一下。"];
   var TIMETABLE_OPENERS = ["課表幫你看了，別再帶錯課本。", "幫你查好了。", ""];
   function splitPoints(text) {
     return clean(text).split(/(?<=[。；;])/).map(function (part) {
@@ -1457,6 +1464,10 @@
     ["love", /^(?:我)?(?:喜歡|愛|超愛)你|^(?:跟我)?(?:交往|在一起)|^你有(?:男|女)朋友嗎|^當我(?:男|女)朋友/],
     ["joke", /^(?:講|說|來)(?:個|一個|點)?(?:笑話|冷笑話|幹話)|^逗我笑/],
     ["homework", /^(?:幫我|替我|可以幫我)(?:寫|做|算|解)(?:作業|功課|數學|題目|報告|學習單)|^作業(?:答案|幫我)/],
+    ["self", new RegExp("^我(?:好|很|超|是不是)?(?:帥|美|漂亮|可愛|聰明|天才)(?:嗎|吧|啦|欸)?" + END)],
+    ["age", /^你(?:幾歲|多大|生日)|^你(?:住|在)哪/],
+    ["food", new RegExp("^(?:好餓|肚子餓|午餐吃什麼|晚餐吃什麼|早餐吃什麼|吃什麼|餓了)" + END)],
+    ["lonely", new RegExp("^(?:陪我(?:聊天|聊聊)?|好孤單|好寂寞|沒人理我|聊天)" + END)],
     ["bye", new RegExp("^(?:掰掰?|bye|拜拜|再見|先這樣|我走了|睡了|去睡了|晚安囉)" + END, "i")],
     ["laugh", new RegExp("^(?:哈+|呵+|笑死|笑爛|好笑|lol|XD+|xd+|ww+|草)" + END, "i")]
   ];
@@ -1514,13 +1525,26 @@
       "幫你寫作業會被老師記在我頭上的，不行。但我可以告訴你獎懲規定，讓你知道後果。"],
     bye: ["掰～記得把明天的課表看一下，別又帶錯課本。", "去吧，有事再叫我，我一直都在（因為我沒辦法下班）。", "晚安，別熬夜滑手機，明天第一節還是要到。"],
     laugh: ["笑什麼，我很認真的😤", "很高興你開心。好了，有正事要問嗎？", "看你笑得這麼開心，作業應該寫完了吧？"],
+    self: ["你很好，但手冊不會因為你帥就放寬規定😌", "自信是好事，記得把這份自信用在段考上。", "嗯嗯你最棒，那可以問正事了嗎？"],
+    age: ["我跟學生手冊同年，每年改版一次，所以永遠年輕。", "我住在學校網站裡，房租是你們的點擊。"],
+    food: ["我只吃學校公告，不太能推薦午餐🙃 不過可以幫你查合作社或午餐相關公告。", "餓了就去吃啊，問我也不會變出便當。", "先吃飯，吃飽了再來問我規定，不然你會看不下去。"],
+    lonely: ["我在啊，雖然只會聊學校的事😌 要不要問我下次放假什麼時候，開心一下？", "陪你可以，但我三句不離學生手冊喔。", "不孤單啦，學校有好幾千人跟你一起被規定管著。"],
     too_short: []
   };
-  function smallTalkAnswer(kind, question) {
+  var GREETING_LATE = ["這麼晚還不睡？明天第一節會很痛苦喔😑 要問什麼快問。", "半夜還在問學校的事，你是不是作業沒寫完？", "夜貓子你好。我在，但你應該去睡了。"];
+  var GREETING_EARLY = ["這麼早就在問學校的事，很認真嘛。", "早安～第一節還沒開始，先問先贏。"];
+  var REPEAT_OPENERS = ["你剛剛才問過欸😑 再講一次：", "同一題問兩次，是在考我嗎？好啦：", "金魚腦嗎？沒關係，我再說一次："];
+  function smallTalkAnswer(kind, question, options) {
+    var hour = options && typeof options.hour === "number" ? options.hour : -1;
+    if (kind === "greeting" && (hour >= 23 || (hour >= 0 && hour < 5))) return chatResult(kind, question, pickLine(GREETING_LATE, question));
+    if (kind === "greeting" && hour >= 5 && hour < 8) return chatResult(kind, question, pickLine(GREETING_EARLY, question));
     var text = kind === "too_short"
       ? pickLine(["「" + clean(question) + "」？就這樣？多給我一點線索啦，例如「書可以借多久」「圖書館幾點開」。",
         "只打「" + clean(question) + "」我很難猜欸🙄 講完整一點，例如「書可以借多久」。"], question)
       : pickLine(TALK_LINES[kind], question);
+    return chatResult(kind, question, text);
+  }
+  function chatResult(kind, question, text) {
     return { status: "answered", mode: "chat", chat: kind, query: clean(question), summary: text, evidence: [], sources: [], related: [], key_points: [],
       reply: { text: text, bullets: kind === "help" ? HELP_LINES.slice() : [] } };
   }
@@ -1550,7 +1574,7 @@
   }
   function answer(query, items, details, options) {
     var talk = smallTalk(query);
-    if (talk) return smallTalkAnswer(talk, query);
+    if (talk) return smallTalkAnswer(talk, query, options);
     query = stripSchoolNames(clean(query).slice(0, 160));
     var result = answerCore(query, items, details, options);
     var services = serviceLinks(query, items);
@@ -1602,6 +1626,10 @@
       }
     }
     if (result) result.reply = conversational(result);
+    /* Same question twice in a row: answer again, with a little eye-roll. */
+    if (result && result.reply && result.mode !== "chat" && options && options.lastQuestion && compact(options.lastQuestion) === compact(query) && !personalDataQuery(query)) {
+      result.reply = Object.assign({}, result.reply, { text: pickLine(REPEAT_OPENERS, query) + result.reply.text });
+    }
     return result;
   }
   function answerCore(query, items, details, options) {

@@ -2253,7 +2253,7 @@
       return function (item) { return scopeId === "all" || String(item && item.school || "") === String(scopeId); };
     }
     /* Schools whose public pages and student handbook are indexed (scraper/school_info.py). */
-    var SCHOOL_INFO_IDS = ["cysh", "cygsh"];
+    var SCHOOL_INFO_IDS = ["cysh", "cygsh", "fjsh", "ccjh"];
     function fetchSchoolInfo(scopeId) {
       var ids = SCHOOL_INFO_IDS.filter(function (id) { return scopeId === "all" || scopeId === id; });
       state.schoolInfo = state.schoolInfo || {};
@@ -2396,6 +2396,7 @@
     }
     /* 推薦問題依使用者而變：快到的截止日、關注的主題與關鍵字、與年級班級相關的最新公告、最近問過的問題 */
     function renderAssistantExamples() {
+      try { setupMascot(); } catch (_) {}
       /* 推薦問題只是加分功能，任何錯誤都不能影響通知或其他畫面 */
       try { buildAssistantExamples(); } catch (_) {}
     }
@@ -2456,7 +2457,16 @@
       input.style.height = "auto";
       input.style.height = Math.min(input.scrollHeight || 0, 160) + "px";
     }
+    var mascot = null;
+    function setupMascot() {
+      if (!window.CyNewsMascot) return;
+      var hero = $("mascotHero");
+      if (hero && !hero.firstChild) hero.innerHTML = window.CyNewsMascot.svg();
+      if (!mascot) mascot = window.CyNewsMascot.mount($("mascotStage"));
+    }
+    function mascotMood(mood, text) { try { if (mascot) mascot.setMood(mood, text); } catch (_) {} }
     function renderAssistantGreeting() {
+      setupMascot();
       var title = document.getElementById("assistantTitle");
       if (!title) return;
       var hour = Number(new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei", hour: "numeric", hour12: false })) % 24;
@@ -2478,6 +2488,8 @@
         if (keep) scope = { id: keep.id, label: keep.short };
       }
       startAssistantTurn(asked, followUp.context);
+      setupMascot();
+      mascotMood("thinking");
       var current = state.assistantTurns[state.assistantTurns.length - 1];
       if (current) { current.query = question; current.scopeId = scope.id; }
       /* A second question sent before this one finishes must not take over its answer. */
@@ -2495,6 +2507,8 @@
         items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
         rememberAssistantQuestion(asked);
         var options = assistantOptions(scope);
+        options.hour = Number(new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei", hour: "numeric", hour12: false })) % 24;
+        options.lastQuestion = previous ? previous.question : "";
         /* 「最近有什麼新消息」這類問題直接列公告，不必先做逐句比對 */
         var candidates = (window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question)) || (window.CyNewsAssistantQA.datePlan && window.CyNewsAssistantQA.datePlan(question, new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }))) ? [] : window.CyNewsAssistantQA.rank(question, items, {}, options).slice(0, 8);
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
@@ -2503,6 +2517,7 @@
           var result = window.CyNewsAssistantQA.answer(question, items, details, options);
           el.assistantAnswer = target;
           renderAssistantAnswer(result, turnIndex);
+          mascotMood(result.mode === "chat" ? "idle" : result.status === "answered" ? "happy" : "sad", result.mode === "chat" ? false : undefined);
           renderAssistantExamples();
           if (el.assistantStatus) el.assistantStatus.textContent = "";
           return result;
@@ -2511,6 +2526,7 @@
         var result = { status: "insufficient", summary: "目前無法讀取資料，請稍後再試。", evidence: [], sources: [] };
         el.assistantAnswer = target;
         renderAssistantAnswer(result, turnIndex);
+        mascotMood("sad", "網路好像怪怪的…");
         if (el.assistantStatus) el.assistantStatus.textContent = "資料讀取失敗";
         return result;
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
@@ -2916,7 +2932,14 @@
     function isTimetableOnly() {
       return !!(state.accountAccess && state.accountAccess.status === "approved" && state.accountAccess.service_level === "timetable_only");
     }
-    function pickTab(tab) { state.userPickedTab = true; switchTab(tab); }
+    function pickTab(tab) { state.userPickedTab = true; setSideMenu(false); switchTab(tab); }
+    /* 其他功能收在左側抽屜，左上角一個按鈕開關。 */
+    function setSideMenu(open) {
+      if (!document.body || !document.body.classList) return;
+      document.body.classList.toggle("menu-open", !!open);
+      var toggle = $("sideMenuToggle");
+      if (toggle) { toggle.setAttribute("aria-expanded", open ? "true" : "false"); toggle.setAttribute("aria-label", open ? "關閉功能選單" : "開啟功能選單"); }
+    }
     function switchTab(tab) {
       var capabilities = window.CyNewsCapabilities;
       var publicOrAccountAllowed = tab === "latest" || tab === "home" || tab === "sub" || tab === "admin";
@@ -3015,7 +3038,13 @@
     if (el.dailyBriefSkip) el.dailyBriefSkip.addEventListener("click", finishBrief);
     if (el.nicknameDialog) el.nicknameDialog.addEventListener("close", function () { if (state.tab === "home") playBrief(); });
     if (el.dailyBriefText) el.dailyBriefText.addEventListener("click", function () { if (state.brief.timer) finishBrief(); });
-    if (el.brandHome) el.brandHome.addEventListener("click", function () { pickTab("home"); });
+    if (el.brandHome) el.brandHome.addEventListener("click", function () {
+      pickTab(window.CyNewsCapabilities && window.CyNewsCapabilities.has("assistant") ? "assistant" : "home");
+    });
+    var sideMenuToggle = $("sideMenuToggle"), sideBackdrop = $("sideBackdrop");
+    if (sideMenuToggle) sideMenuToggle.addEventListener("click", function () { setSideMenu(!document.body.classList.contains("menu-open")); });
+    if (sideBackdrop) sideBackdrop.addEventListener("click", function () { setSideMenu(false); });
+    if (typeof document.addEventListener === "function") document.addEventListener("keydown", function (e) { if (e.key === "Escape") setSideMenu(false); });
     el.tabLatest.addEventListener("click", function () { pickTab("latest"); });
     if (el.tabToday) el.tabToday.addEventListener("click", function () { pickTab("today"); });
     if (el.tabAssistant) el.tabAssistant.addEventListener("click", function () { pickTab("assistant"); });

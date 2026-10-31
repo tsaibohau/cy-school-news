@@ -27,4 +27,16 @@ assert.doesNotMatch(app, /'<details class="assistant-details"[^']*'\s*\+\s*'<sum
 assert.match(app, /function showAssistantEvidence\(index, open\)/);
 assert.match(app, /data-assistant-cite="/);
 assert.match(app, /resolveFollowUp\(question, previous && \{ query: previous\.query, answered: answeredBefore \}\)/, "follow-up questions read the previous answered turn");
+/* Mascot 小訊: the 訊 seal with eyes, arms and legs, walking above the composer. */
+const Mascot = require("../docs/mascot.js");
+const svg = Mascot.svg();
+assert.match(svg, /class="mascot-eyes"/); assert.match(svg, /mascot-arm-l/); assert.match(svg, /mascot-leg-r/);
+assert.ok(Mascot.lines.thinking.length && Mascot.lines.happy.length && Mascot.lines.sad.length);
+assert.match(index, /id="mascotStage" class="mascot-stage"/);
+assert.match(index, /<script src="mascot\.js\?v=1"><\/script>\s*<script src="assistant-qa\.js/);
+assert.match(css, /prefers-reduced-motion: reduce\) \{\s*\.mascot, \.mascot \*/, "the mascot stops moving for reduced motion");
+assert.match(app, /mascotMood\("thinking"\)/);
+const manifest = JSON.parse(read("manifest.webmanifest"));
+assert.ok(manifest.icons.some(i => i.purpose === "maskable"), "home-screen icon has a maskable version");
+assert.match(index, /rel="apple-touch-icon" href="icons\/apple-touch-icon\.png\?v=2"/);
 console.log("Chat landing and layout contract passed");

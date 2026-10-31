@@ -55,7 +55,29 @@ SCHOOLS = {
         # 認識嘉女、行政單位、教學單位、學校夥伴、招生資訊、升學資訊、新生專區、處室分機.
         "roots": [1592, 1591, 1674, 1675, 1727, 3258, 2082, 1752],
     },
+    # Same Rpage CMS. Not surveyed by hand: the menu pages linked from the home page are the
+    # roots (found on the first run and kept in the index); the same exclusion rules apply.
+    "fjsh": {
+        "name": "嘉義市私立輔仁高級中學",
+        "short": "輔仁高中",
+        "origin": "https://rpage.fjsh.cy.edu.tw",
+        "unit": "1000",
+        "roots": "auto",
+    },
+    "ccjh": {
+        "name": "嘉義縣立竹崎高級中學",
+        "short": "竹崎高中",
+        "origin": "https://www.ccjh.cyc.edu.tw",
+        "unit": "1000",
+        "roots": "auto",
+    },
 }
+AUTO_ROOT_CAP = 40
+
+
+def home_roots(school: dict, html: str) -> list[int]:
+    """Menu pages linked from a school's home page, in menu order (at most AUTO_ROOT_CAP)."""
+    return child_pages(school, html, school["origin"] + "/")[:AUTO_ROOT_CAP]
 
 # Sections that are for staff, contain people or are not text information.
 EXCLUDED_PATH = re.compile(
@@ -258,6 +280,8 @@ def write_public(school_id: str, school: dict, index: dict) -> Path:
         "services": index.get("services") or {},
         "items": items,
     }
+    if index.get("roots"):
+        out["roots"] = index["roots"]
     INDEX_ROOT.mkdir(parents=True, exist_ok=True)
     target = INDEX_ROOT / f"{school_id}.json"
     target.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
@@ -330,6 +354,14 @@ def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
     school = SCHOOLS[school_id]
     cap = cap if cap is not None else int(os.environ.get("SCHOOL_INFO_PAGE_CAP", "8"))
     index = load_index(school_id)
+    config_school = next((s for s in scrape.CONFIG["schools"] if s["id"] == school_id), None)
+    if school["roots"] == "auto":
+        if not index.get("roots"):
+            boot = requests.Session()
+            boot.headers.update({"User-Agent": scrape.UA, "Accept-Language": "zh-TW,zh;q=0.9"})
+            index["roots"] = home_roots(school, scrape.fetch(boot, school["origin"] + "/", config_school))
+            print(f"[info] 校園資訊 {school_id}: 從首頁選單找到 {len(index['roots'])} 個起點頁")
+        school = dict(school, roots=index["roots"])
     todo = pick_pages(index, school, max(0, cap), datetime.now(TW_TZ))
     session = requests.Session()
     session.headers.update({"User-Agent": scrape.UA, "Accept-Language": "zh-TW,zh;q=0.9"})
@@ -337,7 +369,6 @@ def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
     ceiling = int(os.environ.get("SCHOOL_INFO_PDF_CEILING", "4"))
     budget = {"remaining": min(ceiling, max(0, int(os.environ.get("SCHOOL_INFO_PDF_CAP", "2"))))}
     delay = float(scrape.CONFIG.get("request_delay_sec", 1.5))
-    config_school = next((s for s in scrape.CONFIG["schools"] if s["id"] == school_id), None)
     summary = {"fetched": 0, "failed": 0, "gone": 0}
     for page_id in todo:
         url = page_url(school, page_id)
