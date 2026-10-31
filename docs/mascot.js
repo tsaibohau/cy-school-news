@@ -1,95 +1,248 @@
-/* 校訊吉祥物「小訊」：「訊」字印章長了眼睛、手和腳。會在問校務的輸入框上面走來走去，
-   查資料時會思考，找到答案會跳一下，找不到會垂頭喪氣。不呼叫任何外部服務。 */
+/* 校訊吉祥物「小訊」：像素風的「訊」字印章，長了眼睛、手和腳。
+   每個動作都是逐格的像素畫面（約 8 格／秒），走路是一步一步踏，不是滑動。
+   會走路、眨眼、東張西望、揮手、跳舞、坐下打哈欠、睡著；查資料時思考，找到答案跳起來，
+   找不到冒冷汗。不呼叫任何外部服務。 */
 (function (root, factory) {
   var api = factory();
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   root.CyNewsMascot = api;
 })(typeof window !== "undefined" ? window : this, function () {
   "use strict";
-  var GLYPH = "M65.10000000000001 93.4Q65.10000000000001 94.0 62.25000000000001 95.5Q59.400000000000006 97.0 54.300000000000004 97.0H51.900000000000006V13.099999999999994H65.10000000000001ZM71.10000000000001 11.799999999999997 77.7 4.199999999999989 90.2 14.700000000000003Q89.80000000000001 15.299999999999997 88.70000000000002 15.799999999999997Q87.60000000000001 16.299999999999997 85.80000000000001 16.700000000000003Q85.30000000000001 22.200000000000003 85.05000000000001 29.4Q84.80000000000001 36.599999999999994 84.9 44.099999999999994Q85.0 51.6 85.6 58.25Q86.2 64.9 87.4 69.45Q88.60000000000001 74.0 90.60000000000001 75.2Q91.80000000000001 76.0 92.5 74.1Q93.5 71.5 94.15 68.9Q94.80000000000001 66.3 95.5 63.2L96.5 63.3L95.7 80.7Q97.4 85.0 97.65 88.55Q97.9 92.1 96.60000000000001 93.5Q93.7 96.3 90.25 95.6Q86.80000000000001 94.9 83.7 92.4Q79.7 89.2 77.30000000000001 83.0Q74.9 76.8 73.7 68.44999999999999Q72.5 60.099999999999994 72.15 50.5Q71.8 40.9 71.9 30.999999999999996Q72.0 21.099999999999994 72.3 11.799999999999997ZM83.60000000000001 11.799999999999997V14.5H44.5L43.7 11.799999999999997ZM68.5 37.599999999999994Q68.5 37.599999999999994 69.85 39.14999999999999Q71.2 40.699999999999996 72.9 42.8Q74.60000000000001 44.9 75.8 46.699999999999996Q75.5 48.3 73.3 48.3H44.6L43.900000000000006 45.5H64.2ZM12.8 4.3999999999999915Q20.3 4.099999999999994 24.55 5.599999999999994Q28.8 7.099999999999994 30.450000000000003 9.449999999999996Q32.1 11.799999999999997 31.75 14.199999999999996Q31.400000000000002 16.599999999999994 29.5 18.349999999999994Q27.6 20.099999999999994 24.8 20.349999999999994Q22.0 20.599999999999994 18.8 18.599999999999994Q18.3 14.799999999999997 16.35 11.049999999999997Q14.4 7.299999999999997 12.200000000000001 4.8999999999999915ZM33.6 83.7V86.5H15.700000000000001V83.7ZM28.8 61.5 34.300000000000004 55.6 45.7 64.2Q44.800000000000004 65.4 42.2 66.0V88.8Q42.2 89.2 40.5 90.0Q38.800000000000004 90.8 36.400000000000006 91.5Q34.0 92.2 31.900000000000002 92.2H29.700000000000003V61.5ZM20.400000000000002 92.5Q20.400000000000002 93.1 18.85 94.0Q17.3 94.9 14.9 95.65Q12.5 96.4 9.9 96.4H8.1V61.5V56.5L20.8 61.5H32.800000000000004V64.3H20.400000000000002ZM38.5 15.200000000000003Q38.5 15.200000000000003 40.2 16.6Q41.900000000000006 18.0 44.25 19.949999999999996Q46.6 21.89999999999999 48.400000000000006 23.599999999999994Q48.0 25.199999999999996 45.7 25.199999999999996H3.7L2.9000000000000004 22.39999999999999H33.1ZM35.0 41.4Q35.0 41.4 36.650000000000006 42.7Q38.300000000000004 44.0 40.550000000000004 45.9Q42.800000000000004 47.8 44.6 49.5Q44.2 51.1 42.0 51.1H7.9L7.1000000000000005 48.3H29.8ZM35.0 28.299999999999997Q35.0 28.299999999999997 36.650000000000006 29.599999999999998Q38.300000000000004 30.9 40.550000000000004 32.8Q42.800000000000004 34.699999999999996 44.6 36.4Q44.2 38.0 42.0 38.0H7.9L7.1000000000000005 35.199999999999996H29.8Z";
-  /* viewBox 0 0 120 132: body (seal) 18..102 x 8..100, arms at the sides, legs below. */
-  function svg(options) {
-    options = options || {};
-    var title = options.title ? "<title>" + options.title + "</title>" : "";
-    return '<svg class="mascot-svg" viewBox="0 0 120 132" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="' + (options.title ? "false" : "true") + '">' + title +
-      '<g class="mascot-legs" stroke="#7E241D" stroke-width="7" stroke-linecap="round">' +
-        '<path class="mascot-leg mascot-leg-l" d="M46 98 L44 118"/><path class="mascot-leg mascot-leg-r" d="M74 98 L76 118"/></g>' +
-      '<g fill="#7E241D"><ellipse class="mascot-foot mascot-foot-l" cx="41" cy="121" rx="9" ry="5"/><ellipse class="mascot-foot mascot-foot-r" cx="79" cy="121" rx="9" ry="5"/></g>' +
-      '<g class="mascot-arm mascot-arm-l"><path d="M22 60 Q8 62 6 74" fill="none" stroke="#7E241D" stroke-width="7" stroke-linecap="round"/><circle cx="6" cy="76" r="6" fill="#7E241D"/></g>' +
-      '<g class="mascot-arm mascot-arm-r"><path d="M98 60 Q112 62 114 74" fill="none" stroke="#7E241D" stroke-width="7" stroke-linecap="round"/><circle cx="114" cy="76" r="6" fill="#7E241D"/></g>' +
-      '<g class="mascot-body">' +
-        '<rect x="18" y="8" width="84" height="92" rx="16" fill="#A8352B"/>' +
-        '<rect x="23" y="13" width="74" height="82" rx="12" fill="none" stroke="#FBF4EA" stroke-opacity=".75" stroke-width="2"/>' +
-        '<g transform="translate(36 42) scale(.48)"><path d="' + GLYPH + '" fill="#FBF4EA"/></g>' +
-        '<g class="mascot-eyes">' +
-          '<ellipse cx="46" cy="29" rx="8" ry="9" fill="#FFFDF8"/><ellipse cx="74" cy="29" rx="8" ry="9" fill="#FFFDF8"/>' +
-          '<circle class="mascot-pupil" cx="48" cy="31" r="4.2" fill="#2A2420"/><circle class="mascot-pupil" cx="76" cy="31" r="4.2" fill="#2A2420"/>' +
-          '<circle cx="49.5" cy="29" r="1.4" fill="#fff"/><circle cx="77.5" cy="29" r="1.4" fill="#fff"/></g>' +
-        '<ellipse cx="34" cy="40" rx="5" ry="3" fill="#F4A3A0" opacity=".75"/><ellipse cx="86" cy="40" rx="5" ry="3" fill="#F4A3A0" opacity=".75"/>' +
-      '</g></svg>';
+  var W = 26, H = 28, TOP = 4; /* 4 rows of headroom for jumps and effects */
+  var COLORS = {
+    D: "#5E1A15", R: "#B13A2E", L: "#C9503F", C: "#FBF4EA", E: "#FFFFFF", K: "#241C18",
+    P: "#F39A9A", B: "#8FD3F4", Y: "#F6C344", Z: "#6B5E52", H: "#E8556B"
+  };
+  /* 訊 in pixels: 言 (4 wide), gap, 卂 (7 wide); 10 rows. */
+  var GLYPH = [
+    ".#...######.",
+    "####...#..#.",
+    ".....####.#.",
+    "###....#..#.",
+    ".......#..#.",
+    "###....#..#.",
+    ".......#..#.",
+    "####...#..#.",
+    "#..#...#..#.",
+    "####...#..##"
+  ];
+  var BX0 = 4, BX1 = 21, BH = 20; /* body columns 4..21, rows 0..19 (before TOP) */
+
+  function blank() { var g = []; for (var y = 0; y < H; y++) g.push(new Array(W).fill(".")); return g; }
+  function put(g, x, y, c) { if (x >= 0 && x < W && y >= 0 && y < H) g[y][x] = c; }
+  function draw(g, cells, c, dy) { cells.forEach(function (p) { put(g, p[0], p[1] + (dy || 0), c); }); }
+
+  var ARMS = {
+    down: [[[3, 11], [2, 12], [2, 13], [1, 14]], [[22, 11], [23, 12], [23, 13], [24, 14]]],
+    up: [[[3, 9], [2, 8], [2, 7], [1, 6]], [[22, 9], [23, 8], [23, 7], [24, 6]]],
+    wave: [[[3, 11], [2, 12], [2, 13], [1, 14]], [[22, 9], [23, 8], [23, 7], [24, 6], [24, 5]]],
+    wave2: [[[3, 11], [2, 12], [2, 13], [1, 14]], [[22, 9], [23, 8], [22, 7], [23, 6], [22, 5]]],
+    think: [[[3, 11], [2, 12], [2, 13], [1, 14]], [[22, 8], [23, 7], [23, 6], [22, 5]]],
+    dance1: [[[3, 9], [2, 8], [1, 7], [0, 6]], [[22, 12], [23, 13], [24, 13], [25, 13]]],
+    dance2: [[[3, 12], [2, 13], [1, 13], [0, 13]], [[22, 9], [23, 8], [24, 7], [25, 6]]],
+    type: [[[3, 12], [3, 14], [4, 15], [5, 16]], [[22, 12], [22, 14], [21, 15], [20, 16]]]
+  };
+  var LEGS = {
+    stand: [[9, 20], [9, 21], [8, 22], [9, 22], [16, 20], [16, 21], [16, 22], [17, 22]],
+    walkA: [[8, 20], [8, 21], [7, 22], [8, 22], [16, 20], [17, 21], [18, 21]],
+    walkB: [[9, 20], [8, 21], [7, 21], [16, 20], [17, 21], [17, 22], [18, 22]],
+    tuck: [[9, 20], [8, 21], [9, 21], [16, 20], [16, 21], [17, 21]],
+    sit: [[8, 20], [7, 20], [6, 20], [17, 20], [18, 20], [19, 20]]
+  };
+  /* One frame: pose = { eyes, arms, legs, fx, dy } */
+  function frame(pose) {
+    pose = pose || {};
+    var g = blank(), dy = TOP + (pose.dy || 0);
+    for (var y = 0; y < BH; y++) for (var x = BX0; x <= BX1; x++) {
+      var corner = (y === 0 || y === BH - 1) && (x === BX0 || x === BX1);
+      if (corner) continue;
+      var edge = y === 0 || y === BH - 1 || x === BX0 || x === BX1;
+      put(g, x, y + dy, edge ? "D" : (y === 1 || x === BX0 + 1 ? "L" : "R"));
+    }
+    GLYPH.forEach(function (row, gy) {
+      row.split("").forEach(function (ch, gx) { if (ch === "#") put(g, 7 + gx, 8 + gy + dy, "C"); });
+    });
+    var e = pose.eyes || "normal", L = 8, Rx = 15;
+    if (e === "closed") draw(g, [[L, 5], [L + 1, 5], [L + 2, 5], [Rx, 5], [Rx + 1, 5], [Rx + 2, 5]], "K", dy);
+    else if (e === "happy") draw(g, [[L, 5], [L + 1, 4], [L + 2, 5], [Rx, 5], [Rx + 1, 4], [Rx + 2, 5]], "K", dy);
+    else {
+      var whites = [];
+      for (var ey = 3; ey <= 5; ey++) for (var ex = 0; ex < 3; ex++) { whites.push([L + ex, ey]); whites.push([Rx + ex, ey]); }
+      draw(g, whites, "E", dy);
+      var px = e === "left" ? 0 : e === "right" ? 2 : 1, py = e === "up" ? 3 : e === "down" || e === "sad" ? 5 : 4;
+      if (e === "wide") draw(g, [[L + 1, 4], [Rx + 1, 4]], "K", dy);
+      else draw(g, [[L + px, py], [L + px, Math.min(5, py + 1)], [Rx + px, py], [Rx + px, Math.min(5, py + 1)]], "K", dy);
+      if (e === "sad") draw(g, [[L, 2], [L + 1, 2], [Rx + 1, 2], [Rx + 2, 2]], "D", dy);
+      if (e !== "sad" && e !== "wide") draw(g, [[L + 2, 3], [Rx + 2, 3]], "E", dy); /* sparkle in the eye */
+    }
+    draw(g, [[6, 6], [7, 6], [18, 6], [19, 6]], "P", dy);
+    var arms = ARMS[pose.arms] || ARMS.down;
+    draw(g, arms[0], "D", dy); draw(g, arms[1], "D", dy);
+    draw(g, LEGS[pose.legs] || LEGS.stand, "D", dy);
+    (pose.fx || []).forEach(function (fx) {
+      if (fx === "sweat") draw(g, [[22, 3 + dy], [22, 4 + dy], [21, 4 + dy]], "B");
+      if (fx === "sparkle") { draw(g, [[1, 1], [0, 2], [2, 2], [1, 3]], "Y"); draw(g, [[24, 0], [23, 1], [25, 1], [24, 2]], "Y"); }
+      if (fx === "z1") draw(g, [[20, 1], [21, 1], [21, 2], [20, 3], [21, 3]], "Z");
+      if (fx === "z2") draw(g, [[23, 0], [24, 0], [24, 1], [23, 2], [24, 2]], "Z");
+      if (fx === "dots1") draw(g, [[20, 1]], "Z");
+      if (fx === "dots2") draw(g, [[20, 1], [22, 1]], "Z");
+      if (fx === "dots3") draw(g, [[20, 1], [22, 1], [24, 1]], "Z");
+      if (fx === "bang") draw(g, [[24, 0], [24, 1], [24, 3]], "H");
+      if (fx === "heart") draw(g, [[21, 0], [23, 0], [20, 1], [21, 1], [22, 1], [23, 1], [24, 1], [21, 2], [22, 2], [23, 2], [22, 3]], "H");
+    });
+    return g;
   }
+  /* Pixel grid → SVG rects (horizontal runs merged). */
+  function rects(g) {
+    var out = "";
+    g.forEach(function (row, y) {
+      var x = 0;
+      while (x < W) {
+        var c = row[x];
+        if (c === ".") { x++; continue; }
+        var start = x;
+        while (x < W && row[x] === c) x++;
+        out += '<rect x="' + start + '" y="' + y + '" width="' + (x - start) + '" height="1" fill="' + COLORS[c] + '"/>';
+      }
+    });
+    return out;
+  }
+  function svg(pose, options) {
+    options = options || {};
+    return '<svg class="mascot-svg" viewBox="0 0 ' + W + " " + H + '" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" aria-hidden="true">' +
+      (options.title ? "<title>" + options.title + "</title>" : "") + rects(frame(pose)) + "</svg>";
+  }
+
+  /* Animations: lists of poses played one per tick (TICK ms). */
+  var TICK = 125;
+  var STAND = { eyes: "normal" };
+  var ANIM = {
+    idle: [STAND, STAND, STAND, { dy: 1 }, { dy: 1 }, STAND, STAND, STAND],
+    blink: [STAND, { eyes: "closed" }, STAND],
+    look: [{ eyes: "left" }, { eyes: "left" }, { eyes: "left" }, { eyes: "left" }, STAND, { eyes: "right" }, { eyes: "right" }, { eyes: "right" }, { eyes: "right" }, STAND],
+    wave: [{ arms: "wave", eyes: "happy" }, { arms: "wave2", eyes: "happy" }, { arms: "wave", eyes: "happy" }, { arms: "wave2", eyes: "happy" }, { arms: "wave", eyes: "happy" }, { arms: "wave2", eyes: "happy" }, STAND],
+    dance: [
+      { arms: "dance1", legs: "walkA", dy: -1, eyes: "happy" }, { arms: "dance1", legs: "walkA", eyes: "happy" },
+      { arms: "dance2", legs: "walkB", dy: -1, eyes: "happy" }, { arms: "dance2", legs: "walkB", eyes: "happy" },
+      { arms: "dance1", legs: "walkA", dy: -1, eyes: "happy" }, { arms: "dance1", legs: "walkA", eyes: "happy" },
+      { arms: "dance2", legs: "walkB", dy: -1, eyes: "happy" }, { arms: "dance2", legs: "walkB", eyes: "happy" },
+      { arms: "up", legs: "tuck", dy: -2, eyes: "happy", fx: ["sparkle"] }, { arms: "up", eyes: "happy" }, STAND],
+    yawn: [{ legs: "sit", dy: 1 }, { legs: "sit", dy: 1, eyes: "closed" }, { legs: "sit", dy: 1, eyes: "closed", arms: "up" }, { legs: "sit", dy: 1, eyes: "closed", arms: "up" },
+      { legs: "sit", dy: 1, eyes: "closed" }, { legs: "sit", dy: 1 }, { legs: "sit", dy: 1 }, { legs: "sit", dy: 1, eyes: "closed" }, { legs: "sit", dy: 1 }, STAND],
+    sleep: [{ legs: "sit", dy: 1, eyes: "closed" }, { legs: "sit", dy: 1, eyes: "closed", fx: ["z1"] }, { legs: "sit", dy: 1, eyes: "closed", fx: ["z1"] },
+      { legs: "sit", dy: 2, eyes: "closed", fx: ["z1", "z2"] }, { legs: "sit", dy: 2, eyes: "closed", fx: ["z2"] }, { legs: "sit", dy: 1, eyes: "closed" }],
+    think: [{ arms: "think", eyes: "up", fx: ["dots1"] }, { arms: "think", eyes: "up", fx: ["dots1"] }, { arms: "think", eyes: "up", fx: ["dots2"] },
+      { arms: "think", eyes: "up", fx: ["dots2"] }, { arms: "type", eyes: "down", fx: ["dots3"] }, { arms: "type", eyes: "down", dy: 1, fx: ["dots3"] },
+      { arms: "type", eyes: "down", fx: ["dots3"] }, { arms: "type", eyes: "down", dy: 1 }],
+    happy: [{ arms: "up", legs: "tuck", dy: -2, eyes: "happy" }, { arms: "up", legs: "tuck", dy: -4, eyes: "happy", fx: ["sparkle"] },
+      { arms: "up", legs: "tuck", dy: -2, eyes: "happy", fx: ["sparkle"] }, { arms: "up", eyes: "happy", dy: 1 },
+      { arms: "up", legs: "tuck", dy: -2, eyes: "happy" }, { arms: "up", legs: "tuck", dy: -4, eyes: "happy", fx: ["sparkle"] },
+      { arms: "up", legs: "tuck", dy: -2, eyes: "happy" }, { eyes: "happy", dy: 1 }, { eyes: "happy" }, STAND],
+    sad: [{ eyes: "sad", dy: 1, fx: ["sweat"] }, { eyes: "sad", dy: 1, fx: ["sweat"] }, { eyes: "sad", dy: 2, fx: ["sweat"] }, { eyes: "sad", dy: 2, fx: ["sweat"] },
+      { eyes: "sad", dy: 1, fx: ["sweat"] }, { eyes: "sad", dy: 2, fx: ["sweat"] }, { eyes: "sad", dy: 2 }, { eyes: "sad", dy: 1 }, STAND],
+    startle: [{ eyes: "wide", arms: "up", legs: "tuck", dy: -3, fx: ["bang"] }, { eyes: "wide", arms: "up", dy: -1, fx: ["bang"] }, { eyes: "wide", arms: "up", fx: ["bang"] }, STAND],
+    love: [{ eyes: "happy", fx: ["heart"] }, { eyes: "happy", dy: -1, fx: ["heart"] }, { eyes: "happy", fx: ["heart"] }, { eyes: "happy", dy: -1, fx: ["heart"] }, STAND],
+    walk: [{ legs: "walkA" }, { legs: "walkA", dy: -1 }, { legs: "walkB" }, { legs: "walkB", dy: -1 }]
+  };
+  /* Pre-render every frame once. */
+  var CACHE = {};
+  function frameSvg(pose) {
+    var key = JSON.stringify(pose);
+    if (!CACHE[key]) CACHE[key] = svg(pose);
+    return CACHE[key];
+  }
+
   var LINES = {
-    idle: ["有問題就問啊，我又不會咬人😏", "手冊我翻過了，你翻過嗎？", "今天也是被問「什麼時候放假」的一天。", "戳我幹嘛，問問題啦。", "我只是個字，但我很努力。", "別一直戳，我會長繭。"],
+    idle: ["有問題就問啊，我又不會咬人😏", "手冊我翻過了，你翻過嗎？", "今天也是被問「什麼時候放假」的一天。", "戳我幹嘛，問問題啦。", "我只是個字，但我很努力。", "別一直戳，我會長繭。", "我是像素做的，戳太大力會掉格。"],
     thinking: ["翻手冊中…", "等我一下，在找了。", "學校網站好難翻…"],
     happy: ["找到了！快誇我。", "這題簡單。", "嘿嘿，我果然很厲害。"],
-    sad: ["找不到…不是我的錯🥲", "學校網站沒寫啦。", "這題考倒我了。"]
+    sad: ["找不到…不是我的錯🥲", "學校網站沒寫啦。", "這題考倒我了。"],
+    wake: ["嚇死我了！我沒在睡喔。", "我只是閉目養神。", "誰！喔，是你。"]
   };
   function pick(list) { return list[Math.floor(Math.random() * list.length)]; }
   function reducedMotion() {
     try { return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (_) { return false; }
   }
-  /* A mascot that walks along the top of the chat composer. */
-  function mount(stage) {
+
+  /* An animated mascot. options.walk: walks along the stage; options.pixel: screen px per sprite pixel. */
+  function mount(stage, options) {
     if (!stage || typeof document === "undefined") return null;
-    var el = document.createElement("button");
-    el.type = "button";
-    el.className = "mascot is-idle";
-    el.setAttribute("aria-label", "小訊（點我聊天）");
-    el.innerHTML = '<span class="mascot-bubble" role="status" aria-live="polite"></span><span class="mascot-figure">' + svg() + "</span>";
+    options = options || {};
+    var scale = options.pixel || 3, walks = options.walk !== false, still = reducedMotion();
+    var el = document.createElement(walks ? "button" : "span");
+    if (walks) { el.type = "button"; el.setAttribute("aria-label", "小訊（點我聊天）"); }
+    el.className = "mascot" + (walks ? "" : " mascot-still");
+    el.style.width = W * scale + "px"; el.style.height = H * scale + "px";
+    el.innerHTML = (walks ? '<span class="mascot-bubble" role="status" aria-live="polite"></span>' : "") + '<span class="mascot-figure"></span>';
     stage.appendChild(el);
-    var bubble = el.querySelector(".mascot-bubble"), x = 0, timer = null, bubbleTimer = null, mood = "idle";
-    function width() { return Math.max(0, (stage.clientWidth || 0) - 64); }
-    function place(next) {
-      x = Math.max(0, Math.min(width(), next));
-      el.style.transform = "translateX(" + x + "px)";
+    var figure = el.querySelector(".mascot-figure"), bubble = el.querySelector(".mascot-bubble");
+    var x = 0, target = null, queue = [], current = null, step = 0, mood = "idle", lastPoke = Date.now(), bubbleTimer = null, timer = null, shown = "";
+    function width() { return Math.max(0, (stage.clientWidth || 0) - W * scale); }
+    function place() {
+      el.style.transform = "translateX(" + Math.round(x / scale) * scale + "px)";
       el.classList.toggle("is-right-half", x > width() / 2);
     }
+    function show(pose) { var html = frameSvg(pose); if (html !== shown) { figure.innerHTML = html; shown = html; } }
+    function play(name) { queue.push(name); }
     function say(text, ms) {
-      if (!text) return;
+      if (!text || !bubble) return;
       bubble.textContent = text;
       el.classList.add("is-talking");
       clearTimeout(bubbleTimer);
       bubbleTimer = setTimeout(function () { el.classList.remove("is-talking"); }, ms || 3200);
     }
-    function wander() {
-      clearTimeout(timer);
-      if (reducedMotion() || mood === "thinking") return;
-      timer = setTimeout(function () {
-        if (mood === "idle" && !document.hidden) {
-          var target = Math.random() * width();
-          el.classList.toggle("is-facing-left", target < x);
-          el.classList.add("is-walking");
-          place(target);
-          setTimeout(function () { el.classList.remove("is-walking"); }, 1400);
+    function chooseIdle() {
+      var asleep = Date.now() - lastPoke > 45000;
+      if (asleep) return "sleep";
+      var r = Math.random();
+      if (walks && r < 0.3) { target = Math.random() * width(); return "walk"; }
+      if (r < 0.45) return "look";
+      if (r < 0.55) return "wave";
+      if (r < 0.63) return "dance";
+      if (r < 0.7) return "yawn";
+      if (r < 0.85) return "blink";
+      return "idle";
+    }
+    function tick() {
+      if (!current || step >= ANIM[current].length) {
+        if (current === "walk" && target !== null && Math.abs(target - x) > scale * 2) step = 0;
+        else {
+          target = current === "walk" ? null : target;
+          current = queue.shift() || (mood === "thinking" ? "think" : mood === "idle" ? chooseIdle() : "idle");
+          step = 0;
         }
-        wander();
-      }, 3500 + Math.random() * 5000);
+      }
+      if (current === "walk" && target !== null) {
+        var dir = target > x ? 1 : -1;
+        x += dir * scale * 2;
+        if ((dir > 0 && x > target) || (dir < 0 && x < target)) x = target;
+        place();
+      }
+      var pose = ANIM[current][step];
+      /* Walking: look where you are going (the sprite is never mirrored, so 訊 stays readable). */
+      if (current === "walk" && target !== null) pose = Object.assign({}, pose, { eyes: target > x ? "right" : "left" });
+      show(pose);
+      step++;
     }
     function setMood(next, text) {
-      mood = next;
-      el.className = el.className.replace(/\bis-(idle|thinking|happy|sad)\b/g, "").trim() + " is-" + next;
+      mood = next === "happy" || next === "sad" ? "idle" : next;
+      queue = []; target = null;
+      if (next === "thinking") { current = "think"; step = 0; }
+      if (next === "happy" || next === "sad") { current = next; step = 0; }
       if (text !== false) say(text || pick(LINES[next] || LINES.idle), next === "thinking" ? 60000 : 3200);
-      if (next === "thinking") { clearTimeout(timer); el.classList.remove("is-walking"); }
-      if (next === "happy" || next === "sad") setTimeout(function () { if (mood === next) setMood("idle", false); }, 2600);
-      if (next === "idle") wander();
+      lastPoke = Date.now();
     }
-    el.addEventListener("click", function () {
-      el.classList.remove("is-poked"); void el.offsetWidth; el.classList.add("is-poked");
-      say(pick(LINES.idle));
+    if (walks) el.addEventListener("click", function () {
+      var wasAsleep = current === "sleep";
+      lastPoke = Date.now();
+      queue = []; target = null; current = Math.random() < 0.2 ? "love" : "startle"; step = 0;
+      say(wasAsleep ? pick(LINES.wake) : pick(LINES.idle));
     });
-    place(width() * 0.75);
-    wander();
-    return { el: el, setMood: setMood, say: say };
+    x = width() * 0.75; place();
+    show(STAND);
+    if (!still) timer = setInterval(function () { if (!document.hidden) tick(); }, TICK);
+    else if (!walks) show({ arms: "wave", eyes: "happy" });
+    return { el: el, setMood: setMood, say: say, play: play, stop: function () { clearInterval(timer); } };
   }
-  return { svg: svg, mount: mount, lines: LINES };
+  return { svg: svg, frame: frame, mount: mount, lines: LINES, animations: ANIM, size: { width: W, height: H } };
 });

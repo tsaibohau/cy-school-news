@@ -30,13 +30,20 @@ assert.match(app, /resolveFollowUp\(question, previous && \{ query: previous\.qu
 /* Mascot 小訊: the 訊 seal with eyes, arms and legs, walking above the composer. */
 const Mascot = require("../docs/mascot.js");
 const svg = Mascot.svg();
-assert.match(svg, /class="mascot-eyes"/); assert.match(svg, /mascot-arm-l/); assert.match(svg, /mascot-leg-r/);
+/* Pixel art: crisp square pixels, the 訊 glyph in cream, eyes, arms and legs in every pose. */
+assert.match(svg, /shape-rendering="crispEdges"/);
+const grid = Mascot.frame({}).map(r => r.join(""));
+assert.ok(grid.join("").includes("C"), "the 訊 glyph is drawn"); assert.ok(grid.join("").includes("E") && grid.join("").includes("K"), "eyes");
+for (const name of ["idle", "blink", "look", "wave", "dance", "yawn", "sleep", "think", "happy", "sad", "startle", "love", "walk"]) assert.ok(Mascot.animations[name].length >= 3, name + " has frames");
+assert.ok(Mascot.animations.walk.some(p => p.legs === "walkA") && Mascot.animations.walk.some(p => p.legs === "walkB"), "walking alternates feet");
+assert.doesNotMatch(read("mascot.js"), /scaleX\(-1\)|is-facing-left/, "the sprite is never mirrored, so 訊 stays readable");
 assert.ok(Mascot.lines.thinking.length && Mascot.lines.happy.length && Mascot.lines.sad.length);
 assert.match(index, /id="mascotStage" class="mascot-stage"/);
-assert.match(index, /<script src="mascot\.js\?v=1"><\/script>\s*<script src="assistant-qa\.js/);
-assert.match(css, /prefers-reduced-motion: reduce\) \{\s*\.mascot, \.mascot \*/, "the mascot stops moving for reduced motion");
+assert.match(index, /<script src="mascot\.js\?v=2"><\/script>\s*<script src="assistant-qa\.js/);
+assert.match(read("mascot.js"), /prefers-reduced-motion: reduce/, "the mascot stops moving for reduced motion");
+assert.doesNotMatch(css, /transition: transform 1\.4s/, "no smooth sliding: the mascot walks step by step");
 assert.match(app, /mascotMood\("thinking"\)/);
 const manifest = JSON.parse(read("manifest.webmanifest"));
 assert.ok(manifest.icons.some(i => i.purpose === "maskable"), "home-screen icon has a maskable version");
-assert.match(index, /rel="apple-touch-icon" href="icons\/apple-touch-icon\.png\?v=2"/);
+assert.match(index, /rel="apple-touch-icon" href="icons\/apple-touch-icon\.png\?v=3"/);
 console.log("Chat landing and layout contract passed");

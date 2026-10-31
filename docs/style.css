@@ -835,48 +835,22 @@ body:has(#subBadge:not([hidden])) .menu-toggle::after { content: ""; position: a
 /* 對話畫面不顯示頁尾，讓輸入框下方保持乾淨。 */
 body.is-chat .foot { display: none; }
 
-/* 吉祥物「小訊」：在輸入框上方走來走去。 */
+/* 吉祥物「小訊」：像素風，逐格動畫由 mascot.js 控制（走路一步一步踏，不用 CSS 滑動）。 */
 .mascot-stage { position: relative; height: 0; }
 .mascot {
-  position: absolute; left: 0; bottom: 2px; z-index: 2; width: 56px; height: 62px; padding: 0; border: 0; background: none; cursor: pointer;
-  transition: transform 1.4s ease-in-out; -webkit-tap-highlight-color: transparent;
+  position: absolute; left: 0; bottom: 0; z-index: 2; padding: 0; border: 0; background: none; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-.mascot-figure { display: block; width: 100%; height: 100%; transform-origin: 50% 100%; }
-.mascot-svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.mascot.is-facing-left .mascot-figure { transform: scaleX(-1); }
-.mascot.is-idle .mascot-svg { animation: mascot-breathe 2.6s ease-in-out infinite; transform-origin: 50% 100%; }
-.mascot.is-walking .mascot-svg { animation: mascot-hop .35s ease-in-out infinite; }
-.mascot.is-walking .mascot-leg-l, .mascot.is-walking .mascot-foot-l { animation: mascot-step .35s ease-in-out infinite; }
-.mascot.is-walking .mascot-leg-r, .mascot.is-walking .mascot-foot-r { animation: mascot-step .35s ease-in-out infinite reverse; }
-.mascot.is-thinking .mascot-svg { animation: mascot-sway 1.2s ease-in-out infinite; transform-origin: 50% 100%; }
-.mascot.is-thinking .mascot-arm-r { animation: mascot-scratch .6s ease-in-out infinite; transform-origin: 98px 60px; }
-.mascot.is-thinking .mascot-pupil { transform: translate(-2px, -3px); }
-.mascot.is-happy .mascot-svg { animation: mascot-jump .5s ease-out 3; }
-.mascot.is-happy .mascot-arm-l { transform: rotate(40deg); transform-origin: 22px 60px; }
-.mascot.is-happy .mascot-arm-r { transform: rotate(-40deg); transform-origin: 98px 60px; }
-.mascot.is-sad .mascot-svg { transform: translateY(4px) rotate(-6deg); transform-origin: 50% 100%; transition: transform .3s ease; }
-.mascot.is-sad .mascot-pupil { transform: translateY(3px); }
-.mascot.is-poked .mascot-svg { animation: mascot-jump .4s ease-out 1; }
-.mascot-eyes { animation: mascot-blink 4.5s infinite; transform-origin: 60px 30px; }
+.mascot-figure { display: block; width: 100%; height: 100%; }
+.mascot-svg { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
 .mascot-bubble {
-  position: absolute; bottom: calc(100% + 6px); left: 0; transform: scale(.9); transform-origin: 20px 100%; width: max-content; max-width: 220px;
-  padding: 7px 11px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); color: var(--ink);
-  font-size: 13px; line-height: 1.5; box-shadow: var(--shadow); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease;
+  position: absolute; bottom: calc(100% - 4px); left: 0; width: max-content; max-width: 220px;
+  padding: 6px 10px; border: 2px solid var(--ink); border-radius: 0; background: var(--card); color: var(--ink);
+  font-size: 13px; line-height: 1.5; box-shadow: 3px 3px 0 var(--ink); opacity: 0; pointer-events: none;
+  transform: translateY(4px); transition: opacity .15s steps(2), transform .15s steps(2);
 }
-.mascot.is-talking .mascot-bubble { opacity: 1; transform: scale(1); }
-.mascot.is-right-half .mascot-bubble { left: auto; right: 0; transform-origin: calc(100% - 20px) 100%; }
-.mascot-hero { width: 88px; height: 96px; background: none; transform: none; margin-bottom: 10px; }
-.mascot-hero .mascot-svg { animation: mascot-hop 1.6s ease-in-out infinite; transform-origin: 50% 100%; }
-.mascot-hero .mascot-arm-r { animation: mascot-wave 1.2s ease-in-out infinite; transform-origin: 98px 60px; }
-@keyframes mascot-breathe { 50% { transform: scaleY(.96) translateY(1px); } }
-@keyframes mascot-hop { 50% { transform: translateY(-6px); } }
-@keyframes mascot-step { 50% { transform: translateY(-4px); } }
-@keyframes mascot-sway { 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
-@keyframes mascot-scratch { 50% { transform: rotate(-30deg); } }
-@keyframes mascot-wave { 0%, 100% { transform: rotate(0); } 50% { transform: rotate(-35deg); } }
-@keyframes mascot-jump { 0% { transform: translateY(0); } 40% { transform: translateY(-18px) scaleY(1.04); } 70% { transform: translateY(0) scaleY(.94); } 100% { transform: none; } }
-@keyframes mascot-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
-@media (prefers-reduced-motion: reduce) {
-  .mascot, .mascot *, .mascot-hero * { animation: none !important; transition: none !important; }
-}
+.mascot.is-talking .mascot-bubble { opacity: 1; transform: none; }
+.mascot.is-right-half .mascot-bubble { left: auto; right: 0; }
+.mascot-hero { display: inline-block; width: auto; height: auto; background: none; transform: none; margin-bottom: 10px; }
+.mascot-hero .mascot { position: relative; cursor: default; }
 .chat-view:not(.has-turns) .mascot-stage { display: none; }
