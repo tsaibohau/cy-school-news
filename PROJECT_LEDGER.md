@@ -1781,7 +1781,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ### 驗證
 - PASS：`python tests/test_parser.py`、新增 `tests/test_school_info.py`、`tests/test_qa_school_docs.js`、問校務 gold（top1 8/13、top3 11/13、wrong 0、no-answer 7/7 不變）及其餘測試。
 - 既有失敗（main 同樣失敗）：`test_account_roles_contract`、`test_rls_behavioral`、`test_rls_deployed`、`test_local_ocr.py`。
-- 實際對嘉中官網執行一次 `school_info.py discover`（2 頁＋手冊）成功；本機模擬會員問 30 題常見校規問題，約 26 題能引用規定原文。
+- 實際對嘉中官網執行一次 `school_info.py discover`（2 頁＋手冊）成功；本機模擬會員問 30 題常見校規問題：29 題引用到規定，其中約 22 題引用的條文正好回答問題；遲到／曠課、校長是誰、學雜費減免、模範生等仍會引用到同章但不是最貼切的條文，待後續調整。
 
 ### 下一個允許動作
 - 使用者審 PR 合併；合併後每小時流程約 2 天內完成全部頁面首次收錄，手冊於第一次執行即收錄。之後可依同樣方式評估嘉女。
