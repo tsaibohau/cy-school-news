@@ -853,4 +853,8 @@ body.is-chat .foot { display: none; }
 .mascot.is-right-half .mascot-bubble { left: auto; right: 0; }
 .mascot-hero { display: inline-block; width: auto; height: auto; background: none; transform: none; margin-bottom: 10px; }
 .mascot-hero .mascot { position: relative; cursor: default; }
+/* 客串：從畫面左右衝出來或從左上角冒出來，泡泡在旁邊。 */
+.mascot-cameo { position: fixed; z-index: 70; top: 0; left: 0; }
+.mascot-cameo .mascot-bubble { bottom: auto; top: 30%; left: calc(100% + 4px); right: auto; max-width: min(240px, 58vw); }
+.mascot-cameo.is-right-half .mascot-bubble { left: auto; right: calc(100% + 4px); }
 .chat-view:not(.has-turns) .mascot-stage { display: none; }
