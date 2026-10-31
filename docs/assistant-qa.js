@@ -631,8 +631,26 @@
     { office: "學務處", re: /社團|請假|公假|缺曠|獎懲|銷過|愛校服務|學生證|制服|校服|服儀|校慶|運動會|畢業典禮|志工|服務學習|校車|交通車|晚自習|班聯會|營隊|比賽|競賽|獎學金|助學金/ },
     { office: "總務處", re: /學雜費|代辦費|繳費|註冊費|停車|午餐|便當/ },
     { office: "健康中心", re: /健康檢查|健檢|疫苗|體檢/ },
-    { office: "圖書館", re: /圖書館|借書|自修室|自習室/ }
+    { office: "圖書館", re: /圖書館|借書|還書|借還|借閱|續借|逾期|閱覽|自修室|自習室/ }
   ];
+  /* Official office pages, from the site navigation recorded in scraper/discovery_report.md.
+     Shown when the announcements cannot answer, so the student still knows where to look. */
+  var OFFICE_PAGES = {
+    cysh: {
+      "教務處": "https://www.cysh.cy.edu.tw/p/412-1008-579.php",
+      "輔導室": "https://www.cysh.cy.edu.tw/p/412-1008-1431.php",
+      "學務處": "https://www.cysh.cy.edu.tw/p/412-1008-946.php",
+      "總務處": "https://www.cysh.cy.edu.tw/p/412-1008-228.php",
+      "健康中心": "https://www.cysh.cy.edu.tw/p/412-1008-626.php",
+      "圖書館": "https://www.cysh.cy.edu.tw/p/412-1008-1376.php"
+    }
+  };
+  var SCHOOL_SHORT = { cysh: "嘉中", cygsh: "嘉女" };
+  function officeLink(query, schoolId) {
+    var hit = OFFICE_RULES.filter(function (row) { return row.re.test(query); })[0];
+    var url = hit && OFFICE_PAGES[schoolId] && OFFICE_PAGES[schoolId][hit.office];
+    return url ? { office: hit.office, label: (SCHOOL_SHORT[schoolId] || "") + hit.office + "網頁", url: url } : null;
+  }
   function officeHint(query) {
     var hit = OFFICE_RULES.filter(function (row) { return row.re.test(query); })[0];
     return hit ? "想確認的話，可以問導師或" + hit.office + "。" : "想確認的話，可以問導師或相關處室。";
@@ -1056,11 +1074,108 @@
     return { status: sources.length || !plan.topic ? "answered" : "insufficient", mode: "browse", list_label: "行程", query: query, summary: summary, evidence: [], sources: sources, related: [], key_points: [],
       plan: questionPlan(query), limitation: "日期來自學校行事曆，以及公告標題裡寫明的活動日期；只寫在內文或附件裡的日期不會列出。" };
   }
+  /* 「第二次段考是哪幾天」「學習歷程上傳期限」: questions asking WHEN something is.
+     The school calendar is the most reliable source, so check it before announcements.
+     Every topic in the question must appear in the calendar title, and the title must not
+     add a different subject (期中考成績繳交 is not 期中考). */
+  var WHEN_ASK = /什麼時候|何時|哪一天|哪天|哪幾天|幾號|幾月幾|日期|期限|截止|到什麼時候|時間是/;
+  var WHEN_SKIP = /哪裡|在哪|地點|怎麼|如何|多少錢|費用|要帶|帶什麼|找誰|聯絡|成績|名單|結果|錄取/;
+  var WHEN_FILLER = /^(?:哪幾天|哪一天|哪天|幾號|檔案|資料|日期|時間|期限|截止|高[一二三]|第[一二三四五]次)$/;
+  var WHEN_QUALIFIERS = ["成績", "繳交", "命題", "監考", "閱卷", "檢討", "會議", "說明會", "講座", "補考", "報名", "試題", "公告", "IEP"];
+  var GRADE_RE = /高[一二三]/g;
+  function whenAnswer(query, items, options) {
+    options = options || {};
+    var calendar = options.calendarEvents || [];
+    if (!calendar.length || !SearchQuery || !SearchQuery.queryPlan || !WHEN_ASK.test(query) || WHEN_SKIP.test(query)) return null;
+    var plan = SearchQuery.queryPlan(query), topics = SearchQuery.taxonomyTopics ? SearchQuery.taxonomyTopics() : [];
+    var groups = [];
+    (plan.term_matches || []).forEach(function (row) {
+      if (row.kind === "topic") {
+        var topic = topics.filter(function (t) { return t.id === row.id; })[0];
+        groups.push(unique((topic ? topic.terms : [row.term]).concat(DATE_TOPIC_SYNONYMS[row.term] || []).map(compact)));
+      } else if (row.kind === "action") groups.push([compact(row.term)]);
+    });
+    (plan.remainder_terms || []).forEach(function (term) {
+      term = compact(term);
+      if (term.length >= 2 && !WHEN_FILLER.test(term)) groups.push([term]);
+    });
+    if (!groups.some(function (g) { return g.length > 1; }) && groups.length < 2) return null;
+    var asOf = options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var ordinal = ordinalOf(query), grades = query.match(GRADE_RE) || [], asksStaff = DATE_STAFF.test(query);
+    function fits(title) {
+      var t = compact(title);
+      if (!groups.every(function (g) { return g.some(function (term) { return t.indexOf(term) !== -1; }); })) return false;
+      if (ordinal && ordinalOf(title) !== ordinal) return false;
+      var titleGrades = title.match(GRADE_RE) || [];
+      if (grades.length && titleGrades.length && !titleGrades.some(function (g) { return grades.indexOf(g) !== -1; })) return false;
+      if (!asksStaff && DATE_STAFF.test(title)) return false;
+      return !WHEN_QUALIFIERS.some(function (word) { return title.indexOf(word) !== -1 && query.indexOf(word) === -1; });
+    }
+    var rows = [], seen = {};
+    calendar.forEach(function (ev) {
+      var from = String(ev && (ev.start_date || ev.date) || "").slice(0, 10), to = String(ev && (ev.end_date || ev.endDate) || from).slice(0, 10), title = clean(ev && ev.title || "");
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(from) || !title || !fits(title)) return;
+      var key = from + compact(title);
+      if (seen[key]) return; seen[key] = true;
+      rows.push({ from: from, to: to < from ? from : to, title: title, ev: ev });
+    });
+    if (!rows.length) return null;
+    var upcoming = rows.filter(function (r) { return r.to >= asOf; }).sort(function (a, b) { return a.from.localeCompare(b.from); });
+    var past = rows.filter(function (r) { return r.to < asOf && r.to >= isoAdd(asOf, -150); }).sort(function (a, b) { return b.from.localeCompare(a.from); });
+    var picked = upcoming.length ? upcoming.slice(0, 4) : past.slice(0, 1);
+    if (!picked.length) return null;
+    var where = options.scopeLabel ? options.scopeLabel + "行事曆" : "學校行事曆";
+    var names = picked.slice(0, 3).map(function (r) { return rangeLabel(r.from, r.to) + "「" + r.title + "」"; }).join("、");
+    var summary = upcoming.length ? "依" + where + "，" + names + (picked.length > 3 ? "等" : "") + "。"
+      : "依" + where + "，最近一次是 " + names + "，已經過了；下一次還沒排進行事曆。";
+    var sources = picked.map(function (r) {
+      return { id: "calendar:" + (r.ev.id || r.from + r.title), kind: "calendar", title: r.title, school_id: r.ev.school_id || "", school_name: r.ev.school_name || options.scopeLabel || "",
+        url: r.ev.source_url || "", date: r.from, category: "行事曆", note: (r.from === r.to ? shortDay(r.from) : shortDay(r.from) + "～" + shortDay(r.to)) + " · 學校行事曆" };
+    });
+    /* Announcements about the same thing (e.g. 第二次期中考時間表) give the details. */
+    (items || []).filter(function (item) { return item && item.link_status !== "gone" && fits(item.title || ""); })
+      .sort(function (a, b) { return String(b.date || "").localeCompare(String(a.date || "")); }).slice(0, 2).forEach(function (item) {
+        sources.push({ id: item.id, title: clean(item.title || "官方公告"), school_id: item.school || "", school_name: item.school_name || "", url: item.url || "", date: item.date || item.first_seen || "", category: item.category || "", note: "相關公告" });
+      });
+    return { status: "answered", mode: "browse", list_label: "行事曆", query: query, summary: summary, evidence: [], sources: sources, related: [], key_points: [],
+      plan: questionPlan(query), limitation: "日期來自學校行事曆；學校臨時調整時以最新公告為準。" };
+  }
+  var SCHOOL_NAME_RE = /國立嘉義女子高級中學|國立嘉義高級中學|嘉義女子高級中學|嘉義高級中學|嘉義女中|嘉義高中|嘉中|嘉女/g;
+  function stripSchoolNames(query) {
+    var rest = clean(query.replace(SCHOOL_NAME_RE, " "));
+    return compact(rest).length >= 2 ? rest : query;
+  }
   function answer(query, items, details, options) {
-    query = clean(query).slice(0, 160);
+    query = stripSchoolNames(clean(query).slice(0, 160));
+    var result = answerCore(query, items, details, options);
+    if (result && result.status !== "answered") {
+      var link = officeLink(query, options && options.schoolId);
+      if (link) {
+        result.office_link = link;
+        /* With an office page to point to, only keep related notices that use the asked words
+           (「還書」 should not list a 玩具圖書館 contest found through the synonym 圖書館). */
+        var literal = [];
+        if (SearchQuery && SearchQuery.queryPlan) {
+          var lp = SearchQuery.queryPlan(query);
+          (lp.term_matches || []).forEach(function (row) { if (row.kind === "topic") literal.push(compact(row.term)); });
+          (lp.remainder_terms || []).forEach(function (term) { if (compact(term).length >= 2) literal.push(compact(term)); });
+        }
+        var kept = (result.related || []).filter(function (row) { var t = compact(row.title || ""); return literal.some(function (term) { return t.indexOf(term) !== -1; }); });
+        if (kept.length !== (result.related || []).length) {
+          result.related = kept;
+          result.summary = insufficientSummary(kept, options && options.asOf, query, options && options.scopeLabel);
+        }
+        result.summary = String(result.summary || "").replace(/想確認的話，可以問導師或[^。]*。$/, "") + "可以先看" + link.label + "，或直接問" + link.office + "。";
+      }
+    }
+    return result;
+  }
+  function answerCore(query, items, details, options) {
     var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var dated = datePlan(query, asOfDay);
     if (dated) return dateAnswer(query, items, dated, options);
+    var when = whenAnswer(query, items, Object.assign({}, options, { asOf: asOfDay }));
+    if (when) return when;
     var browse = browsePlan(query);
     if (browse) return browseAnswer(query, items, browse, options);
     var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);

@@ -1737,3 +1737,25 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 
 ### 下一個允許動作
 - 使用者審 PR 後合併；擁有者依 `docs/announcement-email-digest.md` 驗證 Resend 寄件網域、設定 secrets、部署函式、套用 migration，dryRun 確認後才啟用排程。
+
+## 2026-10-30（Asia/Taipei）｜嘉中優先：問校務行事曆查詢與公告分類（分支 claude/cysh-classify-synonyms）
+
+### 方向
+- 使用者確認：暫停新增學校，先把嘉中做到完整，再複製到嘉女與其他學校。
+
+### 調查結果
+- 嘉中 1,552 則公告中 586 則（38%）為「一般」，混有資安通報、會計／人事、校外營隊、選課與資優班。
+- 問校務 10/26 標記的 20 題中 7 題答不出：部分是行事曆有資料卻沒用到（「X 是什麼時候」只在問題含日期詞時查行事曆）、「段考／期中考」用詞，以及官網規章類問題（還書、學生證補辦、颱風停課）。
+- 本環境網路政策封鎖 `www.cysh.cy.edu.tw`，官網規章調查待使用者開放網域後進行。
+
+### 已完成
+- 問校務：新增「什麼時候」類問題的行事曆查詢（主題需全部命中、次數與年級需一致、成績繳交等不同事項排除）；問題中的校名不再當搜尋詞；答不出時附上嘉中對應處室網頁（依 discovery_report 導覽頁）；圖書館同義詞加入還書、借閱、續借。
+- 分類：新增「教職員」「選課」「生活學務」；營隊比對、競賽詞補強；每次執行對全部公告重新分類；「全部分類」預設不顯示教職員公告。嘉中「一般」586→198、嘉女 372→244（依現有資料模擬）。
+- 版本：`app.js?v=110`、`assistant-qa.js?v=60`、`search-taxonomy.js?v=55`、`cy-news-v122`；黃金快照已更新（請求不變）。
+
+### 驗證
+- PASS：`python tests/test_parser.py`、`test_scrape_golden.py`、新增 `tests/test_qa_when_calendar.js`、問校務 gold（top1 8/13、top3 11/13、wrong 0、no-answer 7/7 不變）及其餘測試。
+- 既有失敗（main 同樣失敗）：`test_account_roles_contract`、`test_rls_behavioral`、`test_rls_deployed`、`test_local_ocr.py`。
+
+### 下一個允許動作
+- 使用者審 PR 合併；開放 `www.cysh.cy.edu.tw` 網域後，調查嘉中官網規章頁面（學生手冊、請假、獎懲、圖書館、宿舍、處室聯絡），列清單供確認後再收錄。
