@@ -885,6 +885,10 @@ body.is-chat .foot { display: none; }
 .mascot-cameo .mascot-bubble { bottom: auto; top: 30%; left: calc(100% + 4px); right: auto; max-width: min(240px, 58vw); }
 .mascot-cameo.is-right-half .mascot-bubble { left: auto; right: calc(100% + 4px); }
 .chat-view:not(.has-turns) .mascot-stage { display: none; }
+/* 對話中的小訊有自己的一排，不疊在回答上；泡泡出現在身體旁邊。 */
+.chat-view.has-turns .mascot-stage { height: 58px; margin-top: 6px; }
+.mascot-stage .mascot-bubble { bottom: 6px; left: calc(100% + 6px); right: auto; max-width: min(240px, calc(100vw - 120px)); }
+.mascot-stage .mascot.is-right-half .mascot-bubble { left: auto; right: calc(100% + 6px); }
 /* 坐在刊頭的小訊：在其他頁面自己看書、寫字、畫畫、打手遊；不佔內容區，不擋使用者。 */
 .mascot-perch-slot { position: relative; flex: 0 0 auto; width: 52px; height: 56px; }
 .mascot-perch { top: 0; bottom: auto; }
