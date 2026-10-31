@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=105">
+<link rel="stylesheet" href="style.css?v=106">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -150,6 +150,16 @@
           </select>
         </label>
       </div>
+      <div class="sort-row">
+        <label class="sort-filter" for="sortSelect"><span>排序</span>
+          <select id="sortSelect" aria-label="公告排序">
+            <option value="newest">最新在前</option>
+            <option value="oldest">最早在前</option>
+            <option value="office">依處室</option>
+            <option value="urgent">依急迫性（快截止的在前）</option>
+          </select>
+        </label>
+      </div>
       <div class="chips" id="catChips" aria-label="分類篩選"></div>
     </div>
     <main id="list" class="list"></main>
@@ -211,7 +221,7 @@
       <section class="my-card full-service-only" aria-labelledby="subscriptionTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">追</span><div><h3 id="subscriptionTitle">關鍵字追蹤</h3><p>有新公告時提醒你</p></div></div></div><form id="kwForm" class="kw-form"><input id="kwInput" type="text" maxlength="20" placeholder="例如：物理競賽" aria-label="新增訂閱關鍵字"><button type="submit" class="btn-primary">新增</button></form><div id="kwChips" class="kw-chips"></div><div class="notify-row"><button id="btnNotify" class="btn-ghost">開啟瀏覽器通知</button><span id="notifyState" class="hint"></span></div><div class="notify-row email-digest-row"><label class="reminder-preset">Email 通知<select id="emailDigestMode" disabled><option value="off">關閉</option><option value="daily">每天早上 7 點一封摘要</option><option value="instant">有新公告就寄（每小時最多一封）</option></select></label><span id="emailDigestState" class="hint" aria-live="polite">登入後可用</span></div></section>
       <section class="my-card matched-card full-service-only" aria-labelledby="matchedTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">訊</span><div><h3 id="matchedTitle">符合追蹤的公告</h3><p>依關鍵字篩選</p></div></div></div><main id="subList" class="list"></main></section>
       <details class="my-card my-disclosure full-service-only" aria-labelledby="reminderPushTitle"><summary><span class="my-card-icon" aria-hidden="true">鈴</span><span><strong id="reminderPushTitle">提醒推播</strong><small>日期接近時在此裝置提醒</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary><div class="my-card-body"><div class="notify-row"><button id="reminderPushToggle" class="btn-primary" type="button">在此裝置開啟</button><span id="reminderPushState" class="hint" aria-live="polite">請先登入</span></div><label class="reminder-preset">預設提醒頻率<select id="reminderPreset"><option value="single">單次：1 天前</option><option value="standard">標準：3 天前、1 天前、當天</option><option value="dense">密集：7 天前、3 天前、1 天前、當天</option><option value="custom">自訂</option></select></label><label id="reminderCustomWrap" class="reminder-preset" hidden>自訂提前天數<input id="reminderCustomOffsets" inputmode="numeric" maxlength="32" placeholder="例如：5,2,0"></label><p id="nextReminder" class="hint">尚無已排程提醒</p></div></details>
-      <section id="tasksBox" class="my-card tasks-box full-service-only" aria-labelledby="tasksTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">辦</span><div><h3 id="tasksTitle">待辦事項</h3><p>未完成的事項</p></div></div><button id="taskComposerToggle" class="btn-primary compact-button" type="button" aria-expanded="false" aria-controls="taskForm">新增待辦</button></div><form id="taskForm" class="task-form task-composer" hidden><label class="task-title-field">要做什麼？<input id="taskTitle" required maxlength="120" placeholder="例如：繳住宿資料"></label><div class="task-form-row"><label>截止日期（選填）<input id="taskDue" type="date"></label><label>優先度（選填）<select id="taskPriority"><option value="">一般</option><option value="5">高</option><option value="3">中</option><option value="1">低</option></select></label></div><label>備註（選填）<textarea id="taskNotes" maxlength="500" rows="2" placeholder="補充資料、地點或注意事項"></textarea></label><div class="profile-actions"><button id="taskSave" class="btn-primary" type="submit">新增待辦</button><button id="taskCancel" class="btn-ghost" type="button">取消</button><span id="taskStatus" class="hint" aria-live="polite"></span></div></form><div class="task-section-heading"><h4>待處理</h4><span id="taskOpenCount" class="hint"></span></div><div id="taskOpenList" class="task-list"></div><details class="completed-tasks"><summary>查看已完成 <span id="taskDoneCount"></span></summary><div id="taskDoneList" class="task-list"></div></details></section>
+      <section id="tasksBox" class="my-card tasks-box full-service-only" aria-labelledby="tasksTitle"><div class="my-card-heading"><div><span class="my-card-icon" aria-hidden="true">辦</span><div><h3 id="tasksTitle">待辦事項</h3><p>未完成的事項</p></div></div><button id="taskComposerToggle" class="btn-primary compact-button" type="button" aria-expanded="false" aria-controls="taskForm">新增待辦</button></div><form id="taskForm" class="task-form task-composer" hidden><label class="task-title-field">要做什麼？<input id="taskTitle" required maxlength="120" placeholder="例如：繳住宿資料"></label><div class="task-form-row"><label>截止日期（選填）<input id="taskDue" type="date"></label><label>優先度（選填）<select id="taskPriority"><option value="">一般</option><option value="5">高</option><option value="3">中</option><option value="1">低</option></select></label></div><label>備註（選填）<textarea id="taskNotes" maxlength="500" rows="2" placeholder="補充資料、地點或注意事項"></textarea></label><div class="profile-actions"><button id="taskSave" class="btn-primary" type="submit">新增待辦</button><button id="taskCancel" class="btn-ghost" type="button">取消</button><span id="taskStatus" class="hint" aria-live="polite"></span></div></form><div class="task-section-heading"><h4>待處理</h4><span id="taskOpenCount" class="hint"></span></div><div id="taskOpenList" class="task-list"></div><details class="completed-tasks"><summary>查看已完成 <span id="taskDoneCount"></span></summary><div id="taskDoneList" class="task-list"></div></details><div class="calendar-export"><button id="taskIcsExport" class="btn-ghost" type="button">把有日期的待辦存成日曆檔（.ics）</button><p class="hint">可匯入 Google、Apple 或 Outlook 日曆。單一件事可在「•••」裡直接加入 Google 日曆。</p></div></section>
     </div>
   </section>
 
@@ -364,10 +374,12 @@
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
-<script src="mascot.js?v=4"></script>
+<script src="mascot.js?v=5"></script>
 <script src="assistant-qa.js?v=69"></script>
+<script src="announcement-sort.js?v=1"></script>
+<script src="google-calendar.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=122"></script>
+<script src="app.js?v=123"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

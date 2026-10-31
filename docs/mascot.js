@@ -294,7 +294,8 @@
         var loops = act === "game" ? 2 : 1;
         for (var i = 1; i < loops; i++) queue.push(act);
         if (act === "game") queue.push(Math.random() < 0.6 ? "gameWin" : "gameLose");
-        if (Math.random() < 0.25) say(pick(LINES[act]), 2600);
+        /* The header perch talks only when tapped: its bubble would cover the page. */
+        if (!perch && Math.random() < 0.25) say(pick(LINES[act]), 2600);
         return act;
       }
       r = Math.random();
