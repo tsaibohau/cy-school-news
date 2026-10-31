@@ -1910,3 +1910,42 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 修正：checkout 改用 `ref: main`，拿到鎖後才讀最新 main；萬一仍衝突，保留補抓的整份 school-info 檔案，重新疊在最新 main 上再推送（`git push origin HEAD:main`）。
 - 驗證：用本機假遠端模擬「每小時抓取先推、補抓後推」，結果補抓版本成功推上、歷史接在最新 main 後面。
 - 合併後需再手動跑一次補抓。目前 main（每小時抓取寫入）：嘉中 196 頁 ok／160 待抓，嘉女 82／102，輔仁 10／26（17 個起點），竹崎 10／44（25 個起點）。
+
+## 2026-11-01 全部學校收錄問校務、學校比較、一般使用者功能統一設定（`claude/all-schools-qa`）
+
+- 使用者要求：所有已加入學校都開始做問校務資料整合；能回答學校之間的比較；取消會員差異，改為主要管理員一次決定所有一般使用者能用的功能，學校不支援的功能自動隱藏；管理員仍是管理員。
+- 全部 28 校收錄（`scraper/school_info.py`）：
+  - 嘉中、嘉女、輔仁、竹崎照舊用 Rpage 選單模式。
+  - 其他 24 校（iSchool、WordPress、XOOPS、雲林 CCMS、ASP）用新的「一般網站模式」：從首頁選單找起點，只追同網站頁面、最多往下兩層、每校最多 300 頁。
+  - 一般網站模式不追公告、RSS、登入、搜尋、相簿、下載、WordPress 文章與分類；排除規則與原本相同（人事、名單、榜單等）。
+  - 內文只取主要區塊，去掉選單與頁尾；首頁出現過的行視為版型文字，各頁都會去掉；沒有文字的頁面（JS 產生或純選單）標為 empty。
+  - 頁面編號為網址雜湊（48 位元，JS 數字可精確表示）。
+- 時間預算：
+  - 每小時工作 `SCHOOL_INFO_TIME_BUDGET_SEC=240`，28 校平分，最久沒更新的學校先跑；連續 3 次失敗就換下一校。
+  - 手動補抓 50 分鐘預算，可指定學校（`schools` 輸入），timeout 75 分鐘。
+  - 排程頻率未改。
+- 前端：問校務讀取所有學校的 school-info，尚未收錄的學校是 404，視為空。
+- 學校比較：
+  - `CyNewsSchoolRegistry.mentionedSchools` 找出問題中提到的所有學校。
+  - `comparePlan` 判斷是不是比較題：兩校以上一定是；一校需要比較詞，並和上一題的學校比。上一題是比較題時，「那服裝儀容呢」會用同一組學校再比一次。
+  - App 用各校自己的資料各回答一次，`compareResults` 把結果並排成「嘉中：…／嘉女：…」，查不到的學校標「還在收錄中」，來源與原文都標學校名。
+  - 沒說要比什麼時，會回一句請使用者說主題。
+- 一般使用者功能（migration `20261101090000_member_capability_policy.sql`）：
+  - 新表 `member_capabilities`：所有一般使用者共用一組功能。
+  - `has_account_capability`：有效管理員（owner、co_admin）永遠全開，其他人看這張表。所有 RLS 與受保護 RPC 都經過這個函式，自動跟著改。
+  - 初始值：各功能在現有一般會員中過半開啟就開。
+  - `owner_set_member_capabilities` 只有主要管理員能改；`current_member_capabilities` 管理員可讀。
+  - `admin_set_account_capabilities` 改為拒絕（per_account_capabilities_retired）；`service_level` 一律 full，由 trigger 固定。舊的逐帳號資料保留但不再生效。
+- 管理介面：
+  - 移除逐帳號的服務選單、「儲存服務」按鈕和服務範圍篩選。
+  - 新增「一般使用者功能」設定：主要管理員可改，聯席管理員唯讀。
+  - 帳號卡片顯示「一般使用者功能」或「全部功能」。
+- 學校不支援的功能自動隱藏：登錄表新增 `class_timetable`（目前只有嘉中），`CyNewsCapabilities.setSchoolSupport` 依使用者設定的學校隱藏課表。
+- 驗證：
+  - `test_school_info.py` 新增一般網站模式測試；`test_qa_school_docs.js` 新增比較測試；`test_parser.py` 通過。
+  - 本機 PostgreSQL 16 以 stub schema 套用 migration：初始值、管理員全開、RLS 跟著政策、主要管理員才能改、待審帳號無權限、舊函式拒絕、service_level 固定 full、降級管理員改依政策，全部正確。
+  - 新增 pgTAP `supabase/tests/database/member_capability_policy.test.sql`（已加入 rls-local）。
+  - 瀏覽器確認主要管理員可儲存、聯席管理員唯讀、無課表學校隱藏課表分頁。
+  - 其他測試只剩原本就失敗的 3 個與 OCR。
+- 版本：`app.js?v=121`、`assistant-qa.js?v=68`、`capability-layer.js?v=11`、`account-config.js?v=44`、`school-registry.js?v=47`、`cy-news-v133`。
+- 需要擁有者套用 migration；前端在 migration 套用前仍可運作（讀不到政策時不顯示設定區，原本的逐帳號權限繼續有效）。

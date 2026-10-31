@@ -1485,7 +1485,8 @@
     "行事曆：段考、放假、開學（例如「第二次段考是哪幾天」）",
     "班級課表：「101 星期三第 3 節是什麼課」「明天有什麼課」",
     "公告：最近的比賽、獎學金、快截止的事",
-    "系統入口：成績、缺曠要去哪裡查"];
+    "系統入口：成績、缺曠要去哪裡查",
+    "比較學校：「嘉中跟嘉女的請假規定差在哪」"];
   var TALK_LINES = {
     help: ["我是問校務，學校網站的規定、行事曆、課表、公告我都翻過了，比你認真多了😏 可以問我：",
       "簡單說，我就是幫你翻學校網站的那個人，因為你們都不翻。可以問這些：",
@@ -1632,6 +1633,89 @@
     }
     return result;
   }
+  /* Comparing schools: 「嘉中跟嘉女的請假規定差在哪」. The app answers the topic once per school
+     with that school's own data, then compareResults() lays the answers side by side. */
+  var COMPARE_WORD = /比較|比一比|比看看|差(?:在哪|在那|別|異|多少|很多)|不同|不一樣|一樣嗎|有(?:什麼|啥|甚麼)差|哪(?:個|間|所|一間|一所)(?:比較|最)|相比|對比|\bvs\.?\b|跟.{1,10}比|和.{1,10}比/i;
+  var COMPARE_FILLER = /(?:哪(?:個|間|所|一間|一所))?(?:比較|最)[早晚多少嚴鬆長短快慢好]?|比一比|比看看|差(?:在哪|在那|別|異|多少|很多)?|不同|不一樣|一樣嗎|有(?:什麼|啥|甚麼)差|相比|對比|\bvs\.?\b|^(?:請問|那麼?|所以)|幫我|一下|看看|兩(?:間|所|校)|這(?:兩|幾)(?:間|所|校)|各校|學校|的|跟|和|與|及|還有|以及|比|、|，|,|？|\?|嗎|呢|哪(?:個|間|所|一間|一所)/gi;
+  /* schools: registry entries named in the question, in order; previous: the last turn.
+     Returns { schools: [ids], topic } or null when this is not a comparison. */
+  function comparePlan(question, schools, previous) {
+    var text = clean(question);
+    schools = (schools || []).filter(Boolean);
+    /* Two schools in one question is a comparison; one school needs a compare word. */
+    if (schools.length < 2 && !COMPARE_WORD.test(text)) return null;
+    var names = [];
+    schools.forEach(function (school) { names = names.concat([school.name, school.short], school.aliases || []); });
+    names.sort(function (a, b) { return String(b).length - String(a).length; });
+    var topic = text;
+    names.forEach(function (name) { if (name) topic = topic.split(String(name)).join(" "); });
+    topic = clean(topic.replace(COMPARE_FILLER, " "));
+    var ids = schools.map(function (school) { return school.id; });
+    /* 「那跟嘉女比呢？」 after a 嘉中 question: compare the previous school with the new one. */
+    if (ids.length === 1 && previous && previous.scopeId && previous.scopeId !== "all" && previous.scopeId !== ids[0]) {
+      ids.unshift(previous.scopeId);
+      if (compact(topic).length < 2) topic = followUpSubject(previous.query || "") || clean(previous.query || "");
+    }
+    if (ids.length < 2) return null;
+    return { schools: ids.slice(0, 4), topic: compact(topic).length >= 2 ? topic : "" };
+  }
+  var COMPARE_OPENERS = [
+    function (t) { return "「" + t + "」各校怎麼規定，我幫你排好了，自己看差在哪："; },
+    function (t) { return "比「" + t + "」是吧？好，並排給你看，不准說我偏心："; },
+    function (t) { return "幫你把各校的「" + t + "」翻出來對照了，這種事本來要你自己做的😏"; },
+  ];
+  var COMPARE_CLOSERS = ["細節以各校官方原文為準，原文都放在「依據與來源」。",
+    "比完了喔，不要比一比就想轉學😏 原文在「依據與來源」。",
+    "看起來差不多？魔鬼都在細節裡，原文在「依據與來源」自己點。"];
+  var COMPARE_NO_TOPIC = ["要比什麼你要說啊，比校服？比請假？比誰的段考比較早？說清楚我才幫你翻。",
+    "兩間學校直接比，我會很難做人欸。給我一個主題，例如「嘉中跟嘉女的請假規定」。"];
+  function schoolPoints(result) {
+    if (!result || result.mode === "chat" || result.status !== "answered") return [];
+    var reply = result.reply || conversational(result);
+    var points = (reply.bullets || []).slice(0, 2).map(function (line) { return clean(line); });
+    if (!points.length) {
+      var summary = clean(result.summary || "").replace(/^(?:根據|依據)[^：]{0,40}：/, "");
+      if (summary) points = [summary.length > 90 ? summary.slice(0, 88) + "…" : summary];
+    }
+    return points.map(function (line) {
+      line = line.replace(/^(?:[一二三四五六七八九十]+、|[（(][一二三四五六七八九十\d]+[)）]|\d+[.、])\s*/, "");
+      return line.length > 90 ? line.slice(0, 88) + "…" : line;
+    });
+  }
+  /* rows: [{ school: { id, short }, result }] in the order the user named them. */
+  function compareResults(topic, rows) {
+    rows = (rows || []).filter(function (row) { return row && row.school; });
+    if (!topic) {
+      var ask = pickLine(COMPARE_NO_TOPIC, rows.map(function (r) { return r.school.id; }).join(","));
+      return { status: "insufficient", mode: "chat", query: "", summary: ask, evidence: [], sources: [], reply: { text: ask, bullets: [] } };
+    }
+    var bullets = [], sources = [], evidence = [], missing = [];
+    rows.forEach(function (row) {
+      var points = schoolPoints(row.result);
+      if (!points.length) {
+        missing.push(row.school.short);
+        bullets.push(row.school.short + "：沒查到相關規定（可能還沒收錄，或學校沒公開）");
+        return;
+      }
+      bullets.push(row.school.short + "：" + points.join("；"));
+      (row.result.sources || []).slice(0, 3).forEach(function (item) { sources.push(Object.assign({}, item, { school_name: item.school_name || row.school.short })); });
+      (row.result.evidence || []).slice(0, 2).forEach(function (item) { evidence.push(Object.assign({}, item, { title: row.school.short + "｜" + (item.title || "官方原文") })); });
+    });
+    var found = rows.length - missing.length;
+    if (!found) {
+      var none = "這幾間我都沒查到「" + topic + "」的規定。換個說法試試，例如用手冊上的名稱（請假、獎懲、服裝儀容）？";
+      return { status: "insufficient", mode: "compare", query: topic, summary: none, evidence: [], sources: [], reply: { text: none, bullets: bullets } };
+    }
+    var text = pickLine(COMPARE_OPENERS, topic)(topic);
+    var tail = pickLine(COMPARE_CLOSERS, topic + "#");
+    if (missing.length) tail = missing.join("、") + " 的資料我還在收錄中，查不到不代表沒有規定。" + tail;
+    return {
+      status: "answered", mode: "compare", query: topic, summary: text + bullets.join("；"),
+      evidence: evidence, sources: sources,
+      limitation: "各校條文用字不同，我只把各自的重點並排；正式規定以各校官方原文為準。",
+      reply: { text: text, bullets: bullets, tail: tail },
+    };
+  }
   function answerCore(query, items, details, options) {
     var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var timed = timetableAnswer(query, Object.assign({}, options, { asOf: asOfDay }));
@@ -1701,5 +1785,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, smallTalk: smallTalk, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, comparePlan: comparePlan, compareResults: compareResults, smallTalk: smallTalk, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });

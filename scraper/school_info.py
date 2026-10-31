@@ -73,6 +73,124 @@ SCHOOLS = {
     },
 }
 AUTO_ROOT_CAP = 40
+# Every other school in scraper/config.json runs on another CMS (iSchool, WordPress, XOOPS,
+# 雲林 CCMS, ASP). Those use the general "site" mode below: start from the home-page menu,
+# follow same-site pages at most SITE_MAX_DEPTH levels down, never announcements or files.
+SITE_MAX_DEPTH = 2
+SITE_MAX_PAGES = 300
+
+
+def all_schools() -> dict:
+    """SCHOOLS plus every other school in scraper/config.json (general site mode)."""
+    out = dict(SCHOOLS)
+    try:
+        config = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return out
+    for row in config.get("schools", []):
+        sid = row.get("id")
+        if not sid or sid in out or not row.get("base"):
+            continue
+        out[sid] = {"name": row.get("name") or sid, "short": row.get("short") or row.get("name") or sid,
+                    "origin": row["base"].rstrip("/"), "mode": "site", "roots": "auto"}
+    return out
+
+
+def is_site(school: dict) -> bool:
+    return school.get("mode") == "site"
+
+
+# Links never followed in site mode: announcements (collected elsewhere), feeds, logins,
+# searches, calendars, albums, downloads and WordPress archives.
+SITE_SKIP_URL = re.compile(
+    r"news|tadnews|bulletin|latestevent|announce|board|forum|rss|feed|atom|login|logout|signin|signup|"
+    r"register|passwd|password|search|calendar|album|gallery|photo|video|youtube|download|print|"
+    r"wp-admin|wp-login|wp-json|xmlrpc|/tag/|/category/|/author/|/page/\d|replytocom|share=|lang=|"
+    r"/20\d\d/\d\d/|\?p=\d|/p/40[3-6]-|ischool/widget|ischool/public|modules/(?:system|profile|pm|newbb)|"
+    r"mailto:|javascript:|tel:",
+    re.I,
+)
+SITE_PAGE_EXT = re.compile(r"(?:/|/[^./]*|\.(?:php|asp|aspx|htm|html|jsp|do))$", re.I)
+SITE_SKIP_LABEL = re.compile(r"^(?:首頁|回首頁|HOME|Home|more|MORE|更多|更多\.\.\.|English|EN|登入|登出|:::|\d+)$")
+
+
+def site_page_id(url: str) -> int:
+    """Stable number for a page URL (48 bits, safe as a JavaScript number)."""
+    return int(hashlib.sha1(url.encode("utf-8")).hexdigest()[:12], 16)
+
+
+def _same_site(host: str, origin: str) -> bool:
+    strip = lambda h: h.lower().removeprefix("www.")
+    return strip(host) == strip(urlsplit(origin).netloc)
+
+
+def site_links(school: dict, html: str, base_url: str) -> list[dict]:
+    """Same-site menu and content links worth reading: [{page_id, url, label}]."""
+    out, seen = [], set()
+    for href, label in re.findall(r'<a\b[^>]*?href\s*=\s*["\']([^"\'#][^"\']*)["\'][^>]*>(.*?)</a>', html, re.S | re.I):
+        url = urljoin(base_url, unescape(href).strip())
+        parts = urlsplit(url)
+        if parts.scheme not in ("http", "https") or not _same_site(parts.netloc, school["origin"]):
+            continue
+        url = parts._replace(scheme="https", fragment="").geturl()
+        text = _text(label)
+        if (SITE_SKIP_URL.search(url) or not SITE_PAGE_EXT.search(parts.path or "/") or
+                (parts.path in ("", "/") and not parts.query) or url in seen):
+            continue
+        if not text or len(text) > 40 or SITE_SKIP_LABEL.match(text) or EXCLUDED_PATH.search(text) or NEWS_TITLE.match(text):
+            continue
+        seen.add(url)
+        out.append({"page_id": site_page_id(url), "url": url, "label": text})
+    return out
+
+
+SITE_NOISE = re.compile(r"(?:^|[\s_-])(?:nav|navbar|menu|header|footer|sidebar|breadcrumb|banner|marquee|login|search|copyright)", re.I)
+
+
+def site_text_lines(html: str) -> list[str]:
+    """Main text of a general CMS page, one line per block, without menus and footers."""
+    from bs4 import BeautifulSoup
+
+    soup = BeautifulSoup(html, "html.parser")
+    for node in soup(["script", "style", "noscript", "nav", "header", "footer", "aside", "form", "iframe"]):
+        node.decompose()
+    for node in soup.find_all(True):
+        if node.attrs is None:
+            continue
+        marker = " ".join(node.get("class") or []) + " " + str(node.get("id") or "")
+        if SITE_NOISE.search(marker) and node.name not in ("body", "html"):
+            node.decompose()
+    main = None
+    for selector in ("main", "article", ".entry-content", "#content", ".content", "#main", ".main", "#center", ".page"):
+        found = soup.select_one(selector)
+        if found and len(found.get_text(" ", strip=True)) >= 40:
+            main = found
+            break
+    if main is None:
+        divs = sorted(soup.find_all(["div", "td"]), key=lambda n: len(n.get_text(" ", strip=True)), reverse=True)
+        main = divs[0] if divs else soup.body or soup
+    for br in main.find_all("br"):
+        br.replace_with("\n")
+    text = main.get_text("\n")
+    lines = [re.sub(r"[ \t\u00a0\u200b\u3000]+", " ", line).strip() for line in text.split("\n")]
+    return [line for line in lines if line][:2000]
+
+
+def site_title_path(html: str, label: str = "", parent_path: list[str] | None = None) -> list[str]:
+    """Breadcrumb if the page has one, else the parent's path plus the link text, else <h1>/<title>."""
+    crumb = re.search(r'<(?:ol|ul|div|nav)[^>]*(?:class|id)="[^"]*(?:breadcrumb|crumb|path)[^"]*"[^>]*>(.*?)</(?:ol|ul|div|nav)>', html, re.S | re.I)
+    if crumb:
+        names = [unescape(t).strip().strip("›>/»|").strip() for t in re.findall(r">([^<>]+)<", crumb.group(0))]
+        names = [n for n in names if n and len(n) <= 30 and n not in ("首頁", "回首頁", "Home", "HOME", ":::", "您的位置", "目前位置")]
+        if len(names) >= 2:
+            return names[:8]
+    if label:
+        return (list(parent_path or [])[-2:] + [label])[:8]
+    for pattern in (r"<h1[^>]*>(.*?)</h1>", r"<title[^>]*>(.*?)</title>"):
+        match = re.search(pattern, html, re.S | re.I)
+        if match and _text(match.group(1)):
+            return [re.split(r"\s*[|｜\-–]\s*", _text(match.group(1)))[0][:40]]
+    return []
 
 
 def home_roots(school: dict, html: str) -> list[int]:
@@ -122,6 +240,8 @@ def now_iso() -> str:
 
 
 def page_url(school: dict, page_id: int) -> str:
+    if is_site(school):  # site-mode entries keep their own "url"
+        return school["origin"] + "/"
     return f"{school['origin']}/p/412-{school['unit']}-{page_id}.php"
 
 
@@ -225,6 +345,9 @@ def load_index(school_id: str) -> dict:
 def pick_pages(index: dict, school: dict, cap: int, now: datetime) -> list[int]:
     pages = index["pages"]
     for root in school["roots"]:
+        if isinstance(root, dict):  # site mode: {page_id, url, label}
+            pages.setdefault(str(root["page_id"]), dict(root, status="pending", depth=0))
+            continue
         pages.setdefault(str(root), {"page_id": root, "status": "pending"})
     stale_before = (now - timedelta(days=REFRESH_DAYS)).isoformat(timespec="seconds")
     pending = [int(k) for k, v in pages.items() if v.get("status") == "pending"]
@@ -232,7 +355,10 @@ def pick_pages(index: dict, school: dict, cap: int, now: datetime) -> list[int]:
     stale = sorted((v.get("checked_at") or "", int(k)) for k, v in pages.items()
                    if v.get("status") != "pending" and ((v.get("checked_at") or "") < stale_before or
                    (v.get("attachments_pending") and (v.get("checked_at") or "") < retry_before)))
-    pending.sort(key=lambda pid: (pid not in school["roots"], pid))
+    root_ids = {r["page_id"] if isinstance(r, dict) else r for r in school["roots"]}
+    # Site mode: shallow pages first, in the order they were found.
+    pending.sort(key=lambda pid: (pid not in root_ids, pages[str(pid)].get("depth", 0),
+                                  pages[str(pid)].get("order", 0) if is_site(school) else pid))
     return (pending + [pid for _, pid in stale])[:cap]
 
 
@@ -246,7 +372,7 @@ def public_item(school_id: str, school: dict, entry: dict) -> dict:
         "title": title,
         "school": school_id,
         "school_name": school["short"],
-        "url": page_url(school, entry["page_id"]),
+        "url": entry.get("url") or page_url(school, entry["page_id"]),
         "category": "校園資訊",
         # Menu pages carry no publication date; the check time is not one.
         "date": "",
@@ -280,8 +406,9 @@ def write_public(school_id: str, school: dict, index: dict) -> Path:
         "services": index.get("services") or {},
         "items": items,
     }
-    if index.get("roots"):
-        out["roots"] = index["roots"]
+    for key in ("roots", "boiler", "last_run_at"):
+        if index.get(key):
+            out[key] = index[key]
     INDEX_ROOT.mkdir(parents=True, exist_ok=True)
     target = INDEX_ROOT / f"{school_id}.json"
     target.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
@@ -296,13 +423,25 @@ def process_page(school_id: str, school: dict, index: dict, page_id: int, html: 
     pages = index["pages"]
     entry = pages.setdefault(str(page_id), {"page_id": page_id})
     entry["checked_at"] = now_iso()
-    path = menu_path(html)
+    if is_site(school):
+        record_url = entry.get("url") or page_url(school, page_id)
+        path = site_title_path(html, entry.get("label", ""), entry.get("parent_path"))
+        depth = int(entry.get("depth") or 0)
+        if depth < SITE_MAX_DEPTH:
+            for link in site_links(school, html, record_url):
+                if len(pages) >= SITE_MAX_PAGES:
+                    break
+                if str(link["page_id"]) not in pages:
+                    pages[str(link["page_id"])] = dict(link, status="pending", depth=depth + 1,
+                                                        parent_path=path[-2:], order=len(pages))
+    else:
+        path = menu_path(html)
+        record_url = page_url(school, page_id)
+        for child in child_pages(school, html, record_url):
+            if len(pages) >= MAX_PAGES:
+                break
+            pages.setdefault(str(child), {"page_id": child, "status": "pending"})
     entry["path"] = path
-    record_url = page_url(school, page_id)
-    for child in child_pages(school, html, record_url):
-        if len(pages) >= MAX_PAGES:
-            break
-        pages.setdefault(str(child), {"page_id": child, "status": "pending"})
     item = {"id": f"{school_id}-info-{page_id}", "school": school_id,
             "title": " › ".join(path[-3:]) or f"頁面 {page_id}", "url": record_url, "date": ""}
     from detail_parser import parse_article_detail
@@ -311,6 +450,13 @@ def process_page(school_id: str, school: dict, index: dict, page_id: int, html: 
     body_text = " ".join(str(b.get("text") or " ".join(" ".join(r) for r in b.get("rows") or []))
                          for b in preview.get("blocks", []))
     status = classify_page(path, html, body_text)
+    site_lines = []
+    if is_site(school) and status == "ok":
+        boiler = set(index.get("boiler") or [])
+        site_lines = [line for line in site_text_lines(html)
+                      if hashlib.sha1(line.encode("utf-8")).hexdigest()[:10] not in boiler]
+        if sum(len(line) for line in site_lines) < 30:
+            status = "empty"  # script-built page or a bare menu: nothing to read
     entry["status"] = status
     if status != "ok":
         for key in ("detail_ref", "detail_revision", "detail_status", "attachments"):
@@ -319,9 +465,10 @@ def process_page(school_id: str, school: dict, index: dict, page_id: int, html: 
     record = scrape.write_detail_record(item, html, entry["checked_at"], session=session,
                                         attachment_budget=attachment_budget, request_delay_sec=delay)
     # Custom-layout pages: the parser saw far less text than the page shows.
-    lines = page_text_lines(html)
+    lines = site_lines or page_text_lines(html)
     visible = sum(len(line) for line in lines)
-    if visible > 2 * len(body_text) + 120:
+    # Site mode always uses its own main-text lines (the parser may keep menus).
+    if site_lines or visible > 2 * len(body_text) + 120:
         record["blocks"] = [{"type": "paragraph", "text": line} for line in lines]
         record["parse_status"] = "parsed"
         body_text = "\n".join(lines)
@@ -347,11 +494,12 @@ def process_page(school_id: str, school: dict, index: dict, page_id: int, html: 
     return entry
 
 
-def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
+def discover(school_id: str = "cysh", cap: int | None = None, deadline: float | None = None) -> dict:
+    """Fetch up to ``cap`` pages for one school, stopping early at ``deadline`` (time.time())."""
     import requests
     import scrape
 
-    school = SCHOOLS[school_id]
+    school = all_schools()[school_id]
     cap = cap if cap is not None else int(os.environ.get("SCHOOL_INFO_PAGE_CAP", "8"))
     index = load_index(school_id)
     config_school = next((s for s in scrape.CONFIG["schools"] if s["id"] == school_id), None)
@@ -359,7 +507,14 @@ def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
         if not index.get("roots"):
             boot = requests.Session()
             boot.headers.update({"User-Agent": scrape.UA, "Accept-Language": "zh-TW,zh;q=0.9"})
-            index["roots"] = home_roots(school, scrape.fetch(boot, school["origin"] + "/", config_school))
+            home = scrape.fetch(boot, school["origin"] + "/", config_school)
+            if is_site(school):
+                index["roots"] = site_links(school, home, school["origin"] + "/")[:AUTO_ROOT_CAP]
+                # Lines on the home page are menus and footers; drop them from every page.
+                index["boiler"] = sorted({hashlib.sha1(line.encode("utf-8")).hexdigest()[:10]
+                                          for line in site_text_lines(home)})
+            else:
+                index["roots"] = home_roots(school, home)
             print(f"[info] 校園資訊 {school_id}: 從首頁選單找到 {len(index['roots'])} 個起點頁")
         school = dict(school, roots=index["roots"])
     todo = pick_pages(index, school, max(0, cap), datetime.now(TW_TZ))
@@ -370,10 +525,17 @@ def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
     budget = {"remaining": min(ceiling, max(0, int(os.environ.get("SCHOOL_INFO_PDF_CAP", "2"))))}
     delay = float(scrape.CONFIG.get("request_delay_sec", 1.5))
     summary = {"fetched": 0, "failed": 0, "gone": 0}
+    failures_in_row = 0
     for page_id in todo:
-        url = page_url(school, page_id)
+        if deadline is not None and time.time() >= deadline:
+            print(f"[info] 校園資訊 {school_id}: 本次時間用完，其餘下次再抓")
+            break
+        if failures_in_row >= 3:  # the site is down or blocking us; try again next run
+            break
+        url = index["pages"].get(str(page_id), {}).get("url") or page_url(school, page_id)
         try:
             html = scrape.fetch(session, url, config_school)
+            failures_in_row = 0
         except Exception as exc:  # network trouble: try again next run
             status = scrape.http_status(exc) if hasattr(scrape, "http_status") else None
             entry = index["pages"].setdefault(str(page_id), {"page_id": page_id})
@@ -382,6 +544,7 @@ def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
                 summary["gone"] += 1
             else:
                 summary["failed"] += 1
+                failures_in_row += 1
             print(f"[warn] 校園資訊 {url}: {exc}", file=sys.stderr)
             time.sleep(delay)
             continue
@@ -405,6 +568,7 @@ def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
         print(f"[info] 網路服務入口 {school_id}: {status}")
     except Exception as exc:
         print(f"[warn] 網路服務入口 {school_id}: {exc}", file=sys.stderr)
+    index["last_run_at"] = now_iso()
     write_public(school_id, school, index)
     ok = sum(1 for v in index["pages"].values() if v.get("status") == "ok")
     pending = sum(1 for v in index["pages"].values() if v.get("status") == "pending")
@@ -414,7 +578,7 @@ def discover(school_id: str = "cysh", cap: int | None = None) -> dict:
 
 def build_from_cache(school_id: str, cache_dir: str) -> dict:
     """Seed the index from pages saved by a one-time survey (no network)."""
-    school = SCHOOLS[school_id]
+    school = all_schools()[school_id]
     index = load_index(school_id)
     for name in sorted(os.listdir(cache_dir)):
         match = re.fullmatch(r"(\d+)\.html", name)
@@ -429,9 +593,20 @@ def build_from_cache(school_id: str, cache_dir: str) -> dict:
 if __name__ == "__main__":
     command = sys.argv[1] if len(sys.argv) > 1 else "discover"
     if command == "discover":
-        for school_id in SCHOOLS:
+        # SCHOOL_INFO_TIME_BUDGET_SEC shares a fixed time among all schools so the hourly job
+        # stays short; the school updated longest ago goes first, so every school gets turns.
+        budget = float(os.environ.get("SCHOOL_INFO_TIME_BUDGET_SEC", "0") or 0)
+        only = {x.strip() for x in os.environ.get("SCHOOL_INFO_SCHOOLS", "").split(",") if x.strip()}
+        ids = [sid for sid in all_schools() if not only or sid in only]
+        ids.sort(key=lambda sid: load_index(sid).get("last_run_at") or "")
+        end = time.time() + budget if budget > 0 else None
+        for position, school_id in enumerate(ids):
+            if end is not None and time.time() >= end:
+                print(f"[info] 校園資訊：時間用完，{len(ids) - position} 校下次再抓")
+                break
+            deadline = None if end is None else time.time() + (end - time.time()) / (len(ids) - position)
             try:
-                discover(school_id)
+                discover(school_id, deadline=deadline)
             except Exception as exc:  # never block the hourly announcement update
                 print(f"[warn] 校園資訊 {school_id} 更新失敗: {exc}", file=sys.stderr)
     elif command == "seed" and len(sys.argv) > 3:

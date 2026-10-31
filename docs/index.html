@@ -217,13 +217,12 @@
   <section id="viewAdmin" class="admin-view" hidden aria-labelledby="adminTitle">
     <div class="section-heading"><h2 id="adminTitle">管理員介面</h2></div>
     <div class="section-heading admin-subheading"><div><h3>帳號管理</h3></div><button id="adminRefresh" class="btn-ghost" type="button">重新整理</button></div>
-    <p class="assistant-intro">搜尋、篩選及調整一般帳號。聯席管理員可處理一般帳號，但只有主要管理員能授予或移除管理員身分。</p>
+    <p class="assistant-intro">搜尋、審核一般帳號。一般使用者能用哪些功能由上方「一般使用者功能」統一決定（只有主要管理員能改）；管理員永遠擁有全部功能。只有主要管理員能授予或移除管理員身分。</p>
     <div id="adminMetrics" class="admin-metrics" aria-label="帳號統計"></div>
     <form id="adminFilters" class="admin-filters">
       <label>搜尋帳號<input id="adminSearch" type="search" maxlength="120" placeholder="輸入 Email"></label>
       <label>申請狀態<select id="adminStatusFilter"><option value="all">全部</option><option value="pending">等待審核</option><option value="approved">已核准</option><option value="rejected">已拒絕／已移除</option></select></label>
       <label>管理角色<select id="adminRoleFilter"><option value="all">全部</option><option value="owner">主要管理員</option><option value="co_admin">聯席管理員</option><option value="member">一般會員</option></select></label>
-      <label>服務範圍<select id="adminServiceFilter"><option value="all">全部</option><option value="full">完整服務</option><option value="timetable_only">僅課表</option></select></label>
       <button class="btn-primary" type="submit">套用</button>
     </form>
     <p id="adminStatus" class="hint" role="status" aria-live="polite"></p>
@@ -336,7 +335,7 @@
 </nav>
 </div>
 
-<script src="account-config.js?v=43"></script>
+<script src="account-config.js?v=44"></script>
 <script src="supabase-sync.js?v=58"></script>
 <script src="account-auth.js?v=79"></script>
 <script src="push-subscription.js?v=41"></script>
@@ -344,7 +343,7 @@
 <script src="task-state.js?v=41"></script>
 <script src="calendar-state.js?v=44"></script>
 <script src="account-sync.js?v=56"></script>
-<script src="school-registry.js?v=46"></script>
+<script src="school-registry.js?v=47"></script>
 <script src="profile.js?v=41"></script>
 <script src="relevance.js?v=43"></script>
 <script src="assistant-feedback.js?v=41"></script>
@@ -356,9 +355,9 @@
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
 <script src="mascot.js?v=3"></script>
-<script src="assistant-qa.js?v=67"></script>
+<script src="assistant-qa.js?v=68"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=120"></script>
+<script src="app.js?v=121"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

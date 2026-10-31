@@ -87,9 +87,11 @@ jobs:
         # so each run makes only a handful of extra requests. A failure must not block
         # the announcement update.
         continue-on-error: true
+        # All 28 schools share a fixed time budget, the least recently updated school first.
         env:
           SCHOOL_INFO_PAGE_CAP: '10'
           SCHOOL_INFO_PDF_CAP: '2'
+          SCHOOL_INFO_TIME_BUDGET_SEC: '240'
         run: python scraper/school_info.py discover
 
       - name: 推播新公告 (ntfy)

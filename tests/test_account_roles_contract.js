@@ -45,7 +45,7 @@ assert.match(app, /data-admin-role="co_admin"/);
 assert.match(index, /id="adminSearch"/);
 assert.match(index, /id="adminStatusFilter"/);
 assert.match(index, /id="adminRoleFilter"/);
-assert.match(index, /id="adminServiceFilter"/);
+assert.doesNotMatch(index, /id="adminServiceFilter"/, "service tiers are retired: one member policy for everyone");
 assert.match(index, /id="viewTimetable"/);
 assert.match(index, /id="accountReapply"/);
 assert.match(worker, /x-account-email-worker-token/);

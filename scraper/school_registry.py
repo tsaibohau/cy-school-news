@@ -43,7 +43,7 @@ SCHOOLS: Dict[str, SchoolDefinition] = {
             "https://www.cysh.cy.edu.tw/p/412-1008-151.php",
             ("115", "114", "行事曆"),
         ),),
-        capabilities={"announcements": True, "official_calendar": True},
+        capabilities={"announcements": True, "official_calendar": True, "class_timetable": True},
     ),
     "cygsh": SchoolDefinition(
         school_id="cygsh",

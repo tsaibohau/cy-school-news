@@ -37,6 +37,9 @@ jobs:
       - name: Run PUBLIC capability and multi-owner matrix
         if: always()
         run: supabase test db --local supabase/tests/database/public_access_rls.test.sql
+      - name: Run member capability policy matrix
+        if: always()
+        run: supabase test db --local supabase/tests/database/member_capability_policy.test.sql
       - name: Stop local Supabase
         if: always()
         run: supabase stop
