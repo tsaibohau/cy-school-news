@@ -39,7 +39,7 @@ assert.ok(Mascot.animations.walk.some(p => p.legs === "walkA") && Mascot.animati
 assert.doesNotMatch(read("mascot.js"), /scaleX\(-1\)|is-facing-left/, "the sprite is never mirrored, so 訊 stays readable");
 assert.ok(Mascot.lines.thinking.length && Mascot.lines.happy.length && Mascot.lines.sad.length);
 assert.match(index, /id="mascotStage" class="mascot-stage"/);
-assert.match(index, /<script src="mascot\.js\?v=4"><\/script>\s*<script src="assistant-qa\.js/);
+assert.match(index, /<script src="mascot\.js\?v=5"><\/script>\s*<script src="assistant-qa\.js/);
 assert.match(read("mascot.js"), /prefers-reduced-motion: reduce/, "the mascot stops moving for reduced motion");
 assert.doesNotMatch(css, /transition: transform 1\.4s/, "no smooth sliding: the mascot walks step by step");
 assert.match(app, /mascotMood\("thinking"\)/);

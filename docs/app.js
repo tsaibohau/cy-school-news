@@ -103,6 +103,7 @@
       userEvents: loadUserEvents("anonymous"),
       reads: loadReads(),
       shown: PAGE_SIZE,
+      sort: (function () { try { var v = localStorage.getItem("cy-news-sort"); return /^(?:newest|oldest|office|urgent)$/.test(v || "") ? v : "newest"; } catch (_) { return "newest"; } })(),
       archive: "none",  /* none | loading | loaded:歷史封存資料的載入狀態 */
       archivePromise: null,
       subscriptions: notificationState.subscriptions,
@@ -1970,12 +1971,21 @@
         esc(displayTitle(it)) + '</a></h3>' +
         (displaySnippet(it) ? '<p class="card-snippet">' + esc(displaySnippet(it)) + '</p>' : "") +
         (member
-          ? '<div class="card-actions"><button type="button" class="card-action" data-detail-id="' + esc(it.id) + '">看內文</button><button type="button" class="card-action" data-add-task="' + esc(it.id) + '">加入待辦</button>' +
+          ? '<div class="card-actions"><button type="button" class="card-action" data-detail-id="' + esc(it.id) + '">看內文</button><button type="button" class="card-action" data-add-task="' + esc(it.id) + '">加入待辦</button>' + googleCalendarLink(it) +
             (unread ? '<button type="button" class="card-action mark-read" data-read-id="' + esc(it.id) + '">標記已讀</button>' : '') + '</div>'
           : '<div class="card-actions"><a class="card-action" href="' + esc(it.url) + '" target="_blank" rel="noopener noreferrer">前往校網原文 ↗</a></div>') +
         '</article>';
     }
 
+    /* 有還沒到的截止日：一鍵開啟 Google 日曆「新增活動」，內容已填好，使用者按儲存就寫進自己的日曆。 */
+    function googleCalendarLink(it) {
+      var Cal = window.CyNewsGoogleCalendar, Sort = window.CyNewsAnnouncementSort;
+      if (!Cal || !Sort) return "";
+      var today = taipeiToday(), due = Sort.deadline(it, today, window.CyNewsAssistantQA && window.CyNewsAssistantQA.titleDeadline);
+      if (!due || due < today) return "";
+      var url = Cal.eventUrl({ title: "截止：" + displayTitle(it), date: due, url: it.url, details: (it.school_name || "") + "公告" });
+      return url ? '<a class="card-action" href="' + esc(url) + '" target="_blank" rel="noopener">加入 Google 日曆</a>' : "";
+    }
     function detailItem(id) {
       var current = state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
       return current || state.assistantItems[String(id)] || null;
@@ -2052,14 +2062,53 @@
         ? items.map(cardHTML).join("")
         : '<p class="empty">' + emptyMsg + '</p>';
     }
+    /* 排序：最新／最早／依處室（分組標題）／依急迫性（快截止的在前，卡片標「剩 N 天」）。
+       搜尋時預設照相關程度排，使用者選了其他排序才改。 */
+    function sortedLatest(items) {
+      var Sort = window.CyNewsAnnouncementSort;
+      if (!Sort || (state.q && state.sort === "newest")) return items;
+      if (state.sort === "office" && state.office) items = items.filter(function (it) { return Sort.office(it) === state.office; });
+      return Sort.sort(items, state.sort, { today: taipeiToday(), titleDeadline: window.CyNewsAssistantQA && window.CyNewsAssistantQA.titleDeadline });
+    }
+    function latestCardsHTML(items, all) {
+      var Sort = window.CyNewsAnnouncementSort;
+      if (!Sort || (state.sort !== "office" && state.sort !== "urgent")) return items.map(function (it) { return cardHTML(it); }).join("");
+      var counts = {}, last = null, today = taipeiToday(), titleDeadline = window.CyNewsAssistantQA && window.CyNewsAssistantQA.titleDeadline;
+      if (state.sort === "office") all.forEach(function (it) { var o = Sort.office(it); counts[o] = (counts[o] || 0) + 1; });
+      /* 依處室：每個處室先列最新 10 則，按「看全部」只看那個處室。 */
+      if (state.sort === "office" && state.office) {
+        return '<div class="office-focus"><h3 class="list-group">' + esc(state.office) + '<small>' + all.length + ' 則</small></h3><button type="button" class="btn-ghost" data-office="">← 所有處室</button></div>' +
+          items.map(function (it) { return cardHTML(it); }).join("");
+      }
+      if (state.sort === "office") {
+        var groups = [], byOffice = {};
+        all.forEach(function (it) { var o = Sort.office(it); if (!byOffice[o]) { byOffice[o] = []; groups.push(o); } byOffice[o].push(it); });
+        return groups.map(function (o) {
+          var rows = byOffice[o];
+          return '<h3 class="list-group">' + esc(o) + '<small>' + rows.length + ' 則</small></h3>' + rows.slice(0, 10).map(function (it) { return cardHTML(it); }).join("") +
+            (rows.length > 10 ? '<div class="more-wrap"><button type="button" class="btn-ghost" data-office="' + esc(o) + '">看' + esc(o) + '全部 ' + rows.length + ' 則</button></div>' : "");
+        }).join("");
+      }
+      return items.map(function (it) {
+        var card = cardHTML(it);
+        if (state.sort === "office") {
+          var office = Sort.office(it), head = office !== last ? '<h3 class="list-group">' + esc(office) + '<small>' + counts[office] + ' 則</small></h3>' : "";
+          last = office;
+          return head + card;
+        }
+        var u = Sort.urgency(it, today, titleDeadline);
+        if (!u.label) return card;
+        return card.replace('<div class="card-meta">', '<div class="card-meta"><span class="urgency-tag" data-level="' + u.level + '" title="截止日 ' + esc(u.due) + '">' + esc(u.label) + '</span>');
+      }).join("");
+    }
     function renderLatest() {
-      var items = latestItems();
+      var items = sortedLatest(latestItems());
       var shown = Math.min(state.shown, items.length);
       var rest = items.length - shown;
       el.countLine.textContent = "共 " + items.length + " 則"
         + (state.archive === "loading" ? " · 搜尋歷史資料中…" : "");
-      renderList(el.list, items.slice(0, shown),
-        "找不到符合條件的公告,換個關鍵字或篩選試試。");
+      el.list.innerHTML = shown ? latestCardsHTML(items.slice(0, shown), items) : '<p class="empty">找不到符合條件的公告,換個關鍵字或篩選試試。</p>';
+      if (state.sort === "office" && !state.office) rest = 0;  // every office is already listed
       if (rest > 0) {
         el.list.insertAdjacentHTML("beforeend",
           '<div class="more-wrap"><button type="button" id="btnMore" class="btn-ghost">' +
@@ -2089,6 +2138,7 @@
       var more = '<details class="task-more"><summary aria-label="更多待辦操作">•••</summary><div>' +
         (canRemind ? '<button type="button" class="btn-ghost" data-task-reminder="' + esc(task.id) + '">設定提醒</button>' : '') +
         (!completed ? '<button type="button" class="btn-ghost" data-task-edit="' + esc(task.id) + '">編輯</button>' : '') +
+        (!completed && task.due_date && window.CyNewsGoogleCalendar ? '<a class="btn-ghost" href="' + esc(window.CyNewsGoogleCalendar.eventUrl({ title: task.title, date: task.due_date, details: task.notes || "" })) + '" target="_blank" rel="noopener">加入 Google 日曆</a>' : '') +
         '<button type="button" class="btn-ghost danger-button" data-task-delete="' + esc(task.id) + '">刪除</button></div></details>';
       return '<article class="task-item' + (completed ? ' is-completed' : '') + '">' +
         '<div class="task-item-main"><div class="task-item-title">' + esc(task.title) + '</div>' +
@@ -2806,6 +2856,40 @@
         else renderLatest();
       }, 200);
     });
+    var taskIcs = $("taskIcsExport");
+    if (taskIcs) taskIcs.addEventListener("click", function () {
+      var Cal = window.CyNewsGoogleCalendar, today = taipeiToday();
+      var open = (window.CyNewsTaskState ? window.CyNewsTaskState.visible(state.tasks || []) : state.tasks || []).filter(function (task) {
+        return task && task.status !== "completed" && /^\d{4}-\d{2}-\d{2}$/.test(String(task.due_date || "")) && task.due_date >= today;
+      });
+      if (!Cal || !open.length) { if (el.taskStatus) el.taskStatus.textContent = "沒有今天以後、有截止日期的待辦可以匯出。"; return; }
+      var text = Cal.ics(open.map(function (task) { return { id: task.id, title: task.title, date: task.due_date, details: task.notes || "" }; }));
+      var link = document.createElement("a");
+      link.href = URL.createObjectURL(new Blob([text], { type: "text/calendar;charset=utf-8" }));
+      link.download = "校訊待辦-" + today + ".ics";
+      document.body.appendChild(link); link.click(); link.remove();
+      setTimeout(function () { URL.revokeObjectURL(link.href); }, 4000);
+    });
+    if (el.list) el.list.addEventListener("click", function (event) {
+      var button = event.target.closest && event.target.closest("button[data-office]");
+      if (!button) return;
+      state.office = button.getAttribute("data-office") || "";
+      resetPaging();
+      renderLatest();
+      var top = $("sortSelect");
+      if (top && top.scrollIntoView) top.scrollIntoView({ block: "start" });
+    });
+    var sortSelect = $("sortSelect");
+    if (sortSelect) {
+      sortSelect.value = state.sort;
+      sortSelect.addEventListener("change", function () {
+        state.sort = /^(?:newest|oldest|office|urgent)$/.test(sortSelect.value) ? sortSelect.value : "newest";
+        state.office = "";
+        try { localStorage.setItem("cy-news-sort", state.sort); } catch (_) {}
+        resetPaging();
+        renderLatest();
+      });
+    }
     el.schoolFilter.addEventListener("change", function () {
       var selected = String(el.schoolFilter.value || "all");
       if (selected !== "all" && (!window.CyNewsSchoolRegistry || !window.CyNewsSchoolRegistry.find(selected))) {

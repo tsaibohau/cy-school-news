@@ -891,3 +891,16 @@ body.is-chat .foot { display: none; }
 .mascot-perch .mascot-bubble { bottom: auto; top: calc(100% + 2px); left: auto; right: 0; max-width: min(220px, 70vw); z-index: 30; }
 @media (max-width: 399px) { .mascot-perch-slot { width: 39px; height: 42px; } .mast-tools { gap: 6px; } }
 @media (max-width: 339px) { .mascot-perch-slot { display: none; } }
+
+/* 公告排序 */
+.sort-row { display: flex; justify-content: flex-end; margin: 8px 0 2px; }
+.sort-filter { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; }
+.sort-filter select { min-height: 36px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font: inherit; font-size: 14px; }
+.list-group { display: flex; align-items: baseline; gap: 8px; margin: 18px 4px 8px; font: 700 17px/1.3 var(--serif); }
+.list-group small { color: var(--muted); font-size: 12px; font-weight: 400; }
+.urgency-tag { padding: 1px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #fff; background: var(--muted); }
+.urgency-tag[data-level="4"], .urgency-tag[data-level="3"] { background: var(--seal); }
+.urgency-tag[data-level="2"] { background: #C07A2C; }
+.urgency-tag[data-level="-1"] { background: transparent; color: var(--muted); border: 1px solid var(--line); }
+.calendar-export { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.calendar-export .hint { margin: 6px 0 0; font-size: 12px; }
