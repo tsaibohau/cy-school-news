@@ -2342,6 +2342,7 @@
       var reply = result && result.reply || { text: result && result.summary || "", bullets: [] };
       var html = '<p class="assistant-lead">' + esc(reply.text || "請換一種問法，或查看官方公告。") + '</p>';
       if (reply.bullets && reply.bullets.length) html += '<ul class="chat-bullets">' + reply.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>';
+      if (reply.tail) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
       if (result && result.status === "answered" && result.mode === "browse" && (result.sources || []).length) html += '<div class="assistant-sources chat-list">' + assistantSourceButtons(result) + '</div>';
       var related = (result && result.status !== "answered" && result.related || []).slice(0, 3).map(function (item) {
         var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
