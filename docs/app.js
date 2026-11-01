@@ -261,10 +261,13 @@
         if (!groups[county]) { groups[county] = []; order.push(county); }
         groups[county].push('<option value="' + esc(school.id) + '">' + esc(school.short) + '</option>');
       });
+      /* 縣市整區（「臺南市的學校」）也可以當範圍：一次問同一縣市的所有學校。 */
+      var regions = order.filter(function (county) { return county !== "其他" && groups[county].length >= 2; });
       select.innerHTML = (mine ? '<option value="preferred">我的學校（' + esc(registry.find(mine).short) + '）</option>' : "") +
         '<option value="all">所有學校</option>' +
+        (regions.length > 1 ? '<optgroup label="整個縣市">' + regions.map(function (county) { return '<option value="region:' + esc(county) + '">' + esc(county) + '（' + groups[county].length + ' 校）</option>'; }).join("") + '</optgroup>' : "") +
         order.map(function (county) { return '<optgroup label="' + esc(county) + '">' + groups[county].join("") + '</optgroup>'; }).join("");
-      var valid = function (value) { return value === "all" || value === "preferred" && !!mine || !!(value && registry.find(value)); };
+      var valid = function (value) { return value === "all" || value === "preferred" && !!mine || isRegionScope(value) && regions.indexOf(value.slice(7)) !== -1 || !!(value && registry.find(value)); };
       /* 沒選過：有我的學校就用它；訪客沿用公告頁選的學校，否則所有學校。 */
       select.value = valid(current) ? current : mine ? "preferred" : state.school && state.school !== "all" && registry.find(state.school) ? state.school : "all";
       select.setAttribute("data-ready", "1");
@@ -2332,9 +2335,21 @@
         return response.json();
       }).then(function (data) { return Array.isArray(data && data.items) ? data.items.filter(function (item) { return visibleSchool(item) && !linkGone(item); }) : []; });
     }
+    /* 問校務的範圍：所有學校、一個縣市（"region:臺南市"）、或一間學校。回傳學校代碼清單；所有學校回傳 null。 */
+    function scopeMembers(scopeId) {
+      if (!scopeId || scopeId === "all") return null;
+      var registry = window.CyNewsSchoolRegistry;
+      if (String(scopeId).indexOf("region:") === 0) {
+        var county = String(scopeId).slice(7);
+        return registry ? registry.schools().filter(function (school) { return school.county === county; }).map(function (school) { return school.id; }) : [];
+      }
+      return [String(scopeId)];
+    }
+    function isRegionScope(scopeId) { return String(scopeId || "").indexOf("region:") === 0; }
     function inAssistantScope(scopeId) {
-      /* 查詢範圍選「我的學校」時，只能引用那所學校的公告 */
-      return function (item) { return scopeId === "all" || String(item && item.school || "") === String(scopeId); };
+      /* 查詢範圍選「我的學校」時，只能引用那所學校的公告；選縣市時只引用那個縣市的學校 */
+      var members = scopeMembers(scopeId);
+      return function (item) { return !members || members.indexOf(String(item && item.school || "")) !== -1; };
     }
     /* Every school's public pages and handbook (scraper/school_info.py); a school not collected yet is a 404 = nothing. */
     function schoolInfoIds() {
@@ -2342,7 +2357,8 @@
       return all.length ? all : ["cysh", "cygsh", "fjsh", "ccjh"];
     }
     function fetchSchoolInfo(scopeId) {
-      var ids = schoolInfoIds().filter(function (id) { return scopeId === "all" || scopeId === id; });
+      var members = scopeMembers(scopeId);
+      var ids = schoolInfoIds().filter(function (id) { return !members || members.indexOf(id) !== -1; });
       state.schoolInfo = state.schoolInfo || {};
       return Promise.all(ids.map(function (id) {
         if (state.schoolInfo[id]) return state.schoolInfo[id];
@@ -2352,8 +2368,9 @@
     }
     function announcementCorpus(scopeId) {
       if (scopeId === state.school) return ensureArchive().then(function () { return (state.data && state.data.items || []).filter(inAssistantScope(scopeId)); });
-      var current = scopeId === "all" ? "data/announcements.json" : "data/schools/" + encodeURIComponent(scopeId) + "/current.json";
-      var archive = scopeId === "all" ? "data/archive.json" : "data/schools/" + encodeURIComponent(scopeId) + "/archive.json";
+      var wide = scopeId === "all" || isRegionScope(scopeId);
+      var current = wide ? "data/announcements.json" : "data/schools/" + encodeURIComponent(scopeId) + "/current.json";
+      var archive = wide ? "data/archive.json" : "data/schools/" + encodeURIComponent(scopeId) + "/archive.json";
       return Promise.all([fetchJsonItems(current), fetchJsonItems(archive)]).then(function (parts) { return parts[0].concat(parts[1]); });
     }
     /* 問校務 searches announcements plus school pages and handbook chapters. */
@@ -2367,11 +2384,19 @@
         }).map(function (item) { return item.kind === "school_info" || item.kind === "school_handbook" ? applyMemberContent(Object.assign({}, item)) : applyMemberContent(item); });
       });
     }
+    var AREA_IN_QUESTION = /(臺南|台南|高雄|雲林|嘉義市|嘉義縣)(?:市|縣)?(?:的|地區|區)?(?:學校|高中|高職|各校|每間)(?:的)?/;
     function assistantScopeFor(question) {
       var mentioned = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.mentionedSchool(question);
       if (mentioned) return { id: mentioned.id, label: mentioned.short + "（依問題指定）" };
+      /* 「台南的學校」「高雄地區各校」: the question names a 縣市 (not 「高雄醫學大學」). */
+      var area = String(question || "").match(AREA_IN_QUESTION);
+      if (area && window.CyNewsSchoolRegistry) {
+        var county = { "台南": "臺南市", "臺南": "臺南市", "高雄": "高雄市", "雲林": "雲林縣", "嘉義市": "嘉義市", "嘉義縣": "嘉義縣" }[area[1]];
+        if (scopeMembers("region:" + county).length >= 2) return { id: "region:" + county, label: county + "的學校（依問題指定）" };
+      }
       var picked = el.assistantScope ? el.assistantScope.value : "preferred";
       if (picked === "all") return { id: "all", label: "所有學校" };
+      if (isRegionScope(picked)) return { id: picked, label: picked.slice(7) + "的學校" };
       var chosen = picked !== "preferred" && window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(picked);
       if (chosen) return { id: chosen.id, label: chosen.short };
       var preferred = preferredSchoolId() || (state.school !== "all" ? state.school : "all");
@@ -2508,14 +2533,15 @@
     function assistantOptions(scope) {
       var label = String(scope && scope.label || "").replace(/（.*?）/g, "");
       var profile = Object.assign({}, state.profile || {});
-      if (scope && scope.id !== "all") profile.school_id = scope.id; else profile.school_id = "";
+      var single = scope && scope.id !== "all" && !isRegionScope(scope.id), members = scopeMembers(scope && scope.id);
+      if (single) profile.school_id = scope.id; else profile.school_id = "";
       return {
         scopeLabel: label === "所有學校" ? "" : label,
-        schoolId: scope && scope.id !== "all" ? scope.id : "",
+        schoolId: single ? scope.id : "",
         timetables: state.timetables || [],
         className: state.profile && state.profile.class_name || "",
         /* 「明天有什麼講座」 is answered from the school calendar as well as announcements. */
-        calendarEvents: (state.officialEvents || []).filter(function (ev) { return !scope || scope.id === "all" || ev.school_id === scope.id; }).map(function (ev) {
+        calendarEvents: (state.officialEvents || []).filter(function (ev) { return !members || members.indexOf(ev.school_id) !== -1; }).map(function (ev) {
           var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(ev.school_id);
           return Object.assign({}, ev, { school_name: school ? school.short : "" });
         }),
@@ -2873,7 +2899,7 @@
       return crossSchoolGroups().then(function (groups) {
         var group = CrossSchool.find(groups, question);
         if (!group) return null;
-        return CrossSchool.answer(group, { today: taipeiToday(), schoolId: preferredSchoolId() || (scope && scope.id !== "all" ? scope.id : ""), query: question });
+        return CrossSchool.answer(group, { today: taipeiToday(), schoolId: preferredSchoolId() || (scope && scope.id !== "all" && !isRegionScope(scope.id) ? scope.id : ""), query: question });
       });
     }
     function askAssistant(question) {
@@ -2896,6 +2922,8 @@
       if (!plan && previous && previous.compare && followUp.context && !named.length) plan = { schools: previous.compare, topic: question };
       if (plan) return askAssistantCompare(asked, plan);
       var scope = assistantScopeFor(question);
+      /* The 縣市 is now the scope; searching for 「嘉義市學校」 as a topic would find nothing. */
+      if (isRegionScope(scope.id) && /依問題指定/.test(scope.label)) question = question.replace(AREA_IN_QUESTION, "").trim() || question;
       if (followUp.context && previous && previous.scopeId && !(window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.mentionedSchool(asked))) {
         var keep = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(previous.scopeId);
         if (keep) scope = { id: keep.id, label: keep.short };
