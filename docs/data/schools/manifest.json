@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-01T11:08:54+08:00",
+ "generated_at": "2026-11-01T22:46:31+08:00",
  "categories": [
   "段考考試",
   "升學",
@@ -239,7 +239,7 @@
    "base": "https://www.cyivs.cy.edu.tw",
    "current": "data/schools/cyivs/current.json",
    "archive": "data/schools/cyivs/archive.json",
-   "current_count": 19,
+   "current_count": 20,
    "archive_count": 0
   },
   {
@@ -310,6 +310,306 @@
    "current": "data/schools/tssh/current.json",
    "archive": "data/schools/tssh/archive.json",
    "current_count": 30,
+   "archive_count": 0
+  },
+  {
+   "id": "hyivs",
+   "name": "國立新營高工",
+   "short": "新營高工",
+   "base": "https://www.hyivs.tn.edu.tw",
+   "current": "data/schools/hyivs/current.json",
+   "archive": "data/schools/hyivs/archive.json",
+   "current_count": 30,
+   "archive_count": 0
+  },
+  {
+   "id": "hysh",
+   "name": "國立新營高中",
+   "short": "新營高中",
+   "base": "https://www.hysh.tn.edu.tw",
+   "current": "data/schools/hysh/current.json",
+   "archive": "data/schools/hysh/archive.json",
+   "current_count": 30,
+   "archive_count": 0
+  },
+  {
+   "id": "ksis",
+   "name": "臺南市崑山高中",
+   "short": "崑山高中",
+   "base": "https://www.ksis.tn.edu.tw",
+   "current": "data/schools/ksis/current.json",
+   "archive": "data/schools/ksis/archive.json",
+   "current_count": 21,
+   "archive_count": 0
+  },
+  {
+   "id": "nnkieh",
+   "name": "國立南科國際實驗高中",
+   "short": "南科實中",
+   "base": "https://www.nnkieh.tn.edu.tw",
+   "current": "data/schools/nnkieh/current.json",
+   "archive": "data/schools/nnkieh/archive.json",
+   "current_count": 73,
+   "archive_count": 0
+  },
+  {
+   "id": "pmai",
+   "name": "國立北門農工",
+   "short": "北門農工",
+   "base": "https://www.pmai.tn.edu.tw",
+   "current": "data/schools/pmai/current.json",
+   "archive": "data/schools/pmai/archive.json",
+   "current_count": 12,
+   "archive_count": 0
+  },
+  {
+   "id": "ptivs",
+   "name": "國立成大附屬南工",
+   "short": "成大附工",
+   "base": "https://www.ptivs.tn.edu.tw",
+   "current": "data/schools/ptivs/current.json",
+   "archive": "data/schools/ptivs/archive.json",
+   "current_count": 73,
+   "archive_count": 0
+  },
+  {
+   "id": "tncvs",
+   "name": "國立臺南高商",
+   "short": "臺南高商",
+   "base": "https://www.tncvs.tn.edu.tw",
+   "current": "data/schools/tncvs/current.json",
+   "archive": "data/schools/tncvs/archive.json",
+   "current_count": 35,
+   "archive_count": 0
+  },
+  {
+   "id": "tngs",
+   "name": "國立臺南女中",
+   "short": "臺南女中",
+   "base": "https://www.tngs.tn.edu.tw",
+   "current": "data/schools/tngs/current.json",
+   "archive": "data/schools/tngs/archive.json",
+   "current_count": 10,
+   "archive_count": 0
+  },
+  {
+   "id": "tnssh",
+   "name": "國立臺南二中",
+   "short": "臺南二中",
+   "base": "https://www.tnssh.tn.edu.tw",
+   "current": "data/schools/tnssh/current.json",
+   "archive": "data/schools/tnssh/archive.json",
+   "current_count": 10,
+   "archive_count": 0
+  },
+  {
+   "id": "tnvs",
+   "name": "國立臺南海事",
+   "short": "臺南海事",
+   "base": "https://www.tnvs.tn.edu.tw",
+   "current": "data/schools/tnvs/current.json",
+   "archive": "data/schools/tnvs/archive.json",
+   "current_count": 10,
+   "archive_count": 0
+  },
+  {
+   "id": "twivs",
+   "name": "國立曾文農工",
+   "short": "曾文農工",
+   "base": "https://www.twivs.tn.edu.tw",
+   "current": "data/schools/twivs/current.json",
+   "archive": "data/schools/twivs/archive.json",
+   "current_count": 78,
+   "archive_count": 0
+  },
+  {
+   "id": "twvs",
+   "name": "國立曾文家商",
+   "short": "曾文家商",
+   "base": "https://www.twvs.tn.edu.tw",
+   "current": "data/schools/twvs/current.json",
+   "archive": "data/schools/twvs/archive.json",
+   "current_count": 10,
+   "archive_count": 0
+  },
+  {
+   "id": "cmvs",
+   "name": "私立旗美商工",
+   "short": "旗美商工",
+   "base": "https://cm.cmvsedu.tw",
+   "current": "data/schools/cmvs/current.json",
+   "archive": "data/schools/cmvs/archive.json",
+   "current_count": 8,
+   "archive_count": 11
+  },
+  {
+   "id": "dystcs",
+   "name": "私立大榮高中",
+   "short": "大榮高中",
+   "base": "https://www.dystcs.kh.edu.tw",
+   "current": "data/schools/dystcs/current.json",
+   "archive": "data/schools/dystcs/archive.json",
+   "current_count": 20,
+   "archive_count": 0
+  },
+  {
+   "id": "hkhs",
+   "name": "市立小港高中",
+   "short": "小港高中",
+   "base": "https://www.hkhs.kh.edu.tw",
+   "current": "data/schools/hkhs/current.json",
+   "archive": "data/schools/hkhs/archive.json",
+   "current_count": 89,
+   "archive_count": 0
+  },
+  {
+   "id": "kghs",
+   "name": "市立高雄女中",
+   "short": "高雄女中",
+   "base": "https://www.kghs.kh.edu.tw",
+   "current": "data/schools/kghs/current.json",
+   "archive": "data/schools/kghs/archive.json",
+   "current_count": 66,
+   "archive_count": 5
+  },
+  {
+   "id": "kmhjh",
+   "name": "國立高餐大附屬餐旅中學",
+   "short": "高餐大附中",
+   "base": "https://nkhhs.kmhjh.kh.edu.tw",
+   "current": "data/schools/kmhjh/current.json",
+   "archive": "data/schools/kmhjh/archive.json",
+   "current_count": 12,
+   "archive_count": 0
+  },
+  {
+   "id": "nknush",
+   "name": "國立高師大附中",
+   "short": "高師大附中",
+   "base": "https://www.nknush.kh.edu.tw",
+   "current": "data/schools/nknush/current.json",
+   "archive": "data/schools/nknush/archive.json",
+   "current_count": 24,
+   "archive_count": 0
+  },
+  {
+   "id": "sgsh",
+   "name": "財團法人新光高中",
+   "short": "新光高中",
+   "base": "https://sg.sgshedu.tw",
+   "current": "data/schools/sgsh/current.json",
+   "archive": "data/schools/sgsh/archive.json",
+   "current_count": 20,
+   "archive_count": 0
+  },
+  {
+   "id": "fhsh",
+   "name": "國立鳳新高中",
+   "short": "鳳新高中",
+   "base": "https://www.fhsh.khc.edu.tw",
+   "current": "data/schools/fhsh/current.json",
+   "archive": "data/schools/fhsh/archive.json",
+   "current_count": 20,
+   "archive_count": 0
+  },
+  {
+   "id": "fssh",
+   "name": "國立鳳山高中",
+   "short": "鳳山高中",
+   "base": "https://www.fssh.khc.edu.tw",
+   "current": "data/schools/fssh/current.json",
+   "archive": "data/schools/fssh/archive.json",
+   "current_count": 87,
+   "archive_count": 0
+  },
+  {
+   "id": "fsvs",
+   "name": "國立鳳山商工",
+   "short": "鳳山商工",
+   "base": "https://www.fsvs.khc.edu.tw",
+   "current": "data/schools/fsvs/current.json",
+   "archive": "data/schools/fsvs/archive.json",
+   "current_count": 5,
+   "archive_count": 0
+  },
+  {
+   "id": "kssh",
+   "name": "國立岡山高中",
+   "short": "岡山高中",
+   "base": "https://www.kssh.khc.edu.tw",
+   "current": "data/schools/kssh/current.json",
+   "archive": "data/schools/kssh/archive.json",
+   "current_count": 15,
+   "archive_count": 0
+  },
+  {
+   "id": "ksaivs",
+   "name": "國立岡山農工",
+   "short": "岡山農工",
+   "base": "https://www.ksvs.khc.edu.tw",
+   "current": "data/schools/ksaivs/current.json",
+   "archive": "data/schools/ksaivs/archive.json",
+   "current_count": 4,
+   "archive_count": 0
+  },
+  {
+   "id": "hhvs",
+   "name": "國立新化高工",
+   "short": "新化高工",
+   "base": "https://www.hhvs.tn.edu.tw",
+   "current": "data/schools/hhvs/current.json",
+   "archive": "data/schools/hhvs/archive.json",
+   "current_count": 79,
+   "archive_count": 0
+  },
+  {
+   "id": "hpsh",
+   "name": "國立後壁高中",
+   "short": "後壁高中",
+   "base": "https://www.hpsh.tn.edu.tw",
+   "current": "data/schools/hpsh/current.json",
+   "archive": "data/schools/hpsh/archive.json",
+   "current_count": 57,
+   "archive_count": 1
+  },
+  {
+   "id": "lmsh",
+   "name": "私立黎明高中",
+   "short": "黎明高中",
+   "base": "https://www.lmsh.tn.edu.tw",
+   "current": "data/schools/lmsh/current.json",
+   "archive": "data/schools/lmsh/archive.json",
+   "current_count": 73,
+   "archive_count": 1
+  },
+  {
+   "id": "sfsh",
+   "name": "國立新豐高中",
+   "short": "新豐高中",
+   "base": "https://www.sfsh.tn.edu.tw",
+   "current": "data/schools/sfsh/current.json",
+   "archive": "data/schools/sfsh/archive.json",
+   "current_count": 90,
+   "archive_count": 0
+  },
+  {
+   "id": "cchs",
+   "name": "市立中正高中",
+   "short": "中正高中",
+   "base": "https://www.cchs.kh.edu.tw",
+   "current": "data/schools/cchs/current.json",
+   "archive": "data/schools/cchs/archive.json",
+   "current_count": 85,
+   "archive_count": 0
+  },
+  {
+   "id": "chimei",
+   "name": "國立旗美高中",
+   "short": "旗美高中",
+   "base": "https://www.cmsh.khc.edu.tw",
+   "current": "data/schools/chimei/current.json",
+   "archive": "data/schools/chimei/archive.json",
+   "current_count": 77,
    "archive_count": 0
   }
  ]

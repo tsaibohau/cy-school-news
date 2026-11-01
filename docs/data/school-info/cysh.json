@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-01T11:18:05+08:00",
+ "generated_at": "2026-11-01T23:04:17+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5873,11 +5873,64 @@
   },
   "552": {
    "page_id": 552,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T23:04:11+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "新生專區"
+   ],
+   "changed_at": "2026-11-01T23:04:11+08:00",
+   "content_hash": "aa5ad8e03f89bae1c598e10dec45f02b03b3ccce7ce4c44b2c14e3d70dd1e0bf",
+   "doc_links": [],
+   "keywords": [
+    "新生",
+    "選課",
+    "微課程",
+    "校服",
+    "上課地點",
+    "健康檢查",
+    "健檢",
+    "充實補強",
+    "報名",
+    "多元選修",
+    "競賽",
+    "編班",
+    "補強課程",
+    "語文競賽",
+    "選修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-552.json",
+   "detail_revision": "ddc70cd6b9e551b9b0d1a8c228f787309fd7fe7af8f5ab2428d33e9a4a885aea",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "555": {
    "page_id": 555,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T23:04:13+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "獎助學金資訊"
+   ],
+   "changed_at": "2026-11-01T23:04:13+08:00",
+   "content_hash": "52484585e3edb48a12b54f07eb7beddf571002d2e7ab5ba89f41b7082fc3a8b5",
+   "doc_links": [],
+   "keywords": [
+    "獎學金",
+    "助學金",
+    "獎助學金",
+    "入學"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-555.json",
+   "detail_revision": "ec202e4ff0dce7125e76bd488b1b09312b074720febef2f05dde99e9938cb7f5",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "551": {
    "page_id": 551,
@@ -5908,7 +5961,23 @@
   },
   "576": {
    "page_id": 576,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T23:04:15+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "學雜費減免與免學費申請"
+   ],
+   "changed_at": "2026-11-01T23:04:15+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-576.json",
+   "detail_revision": "aa0a859bdc2cca1cce21398e9b0531bf4e4bec8e3d498152db97dbdf3fc1610a",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1142": {
    "page_id": 1142,
@@ -9949,6 +10018,78 @@
    "detail_ref": "data/details/cysh/cysh-info-544.json",
    "detail_revision": "23d10b4498989a44e2a31597b960d8916d3ce99172ee881239e865717eebc685",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-552",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 新生專區",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-552.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "新生",
+    "選課",
+    "微課程",
+    "校服",
+    "上課地點",
+    "健康檢查",
+    "健檢",
+    "充實補強",
+    "報名",
+    "多元選修",
+    "競賽",
+    "編班",
+    "補強課程",
+    "語文競賽",
+    "選修"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-552.json",
+   "detail_revision": "ddc70cd6b9e551b9b0d1a8c228f787309fd7fe7af8f5ab2428d33e9a4a885aea",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-555",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 獎助學金資訊",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-555.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "獎學金",
+    "助學金",
+    "獎助學金",
+    "入學"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-555.json",
+   "detail_revision": "ec202e4ff0dce7125e76bd488b1b09312b074720febef2f05dde99e9938cb7f5",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-576",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 學雜費減免與免學費申請",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-576.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-576.json",
+   "detail_revision": "aa0a859bdc2cca1cce21398e9b0531bf4e4bec8e3d498152db97dbdf3fc1610a",
+   "detail_status": "empty"
   },
   {
    "id": "cysh-info-586",
@@ -14622,5 +14763,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-01T11:18:05+08:00"
+ "last_run_at": "2026-11-01T23:04:17+08:00"
 }

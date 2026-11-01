@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nsjh",
- "generated_at": "2026-11-01T11:20:34+08:00",
+ "generated_at": "2026-11-01T23:05:55+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179628626610013": {
@@ -89,15 +89,25 @@
    "page_id": 199212654543626,
    "url": "https://nsjh.ylc.edu.tw/cl.aspx?n=99718",
    "label": "網路硬碟",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:05:51+08:00",
+   "path": [
+    "主選單",
+    "網路硬碟"
+   ]
   },
   "28662842811943": {
    "page_id": 28662842811943,
    "url": "https://nsjh.ylc.edu.tw/cl.aspx?n=101118",
    "label": "好站連結",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:05:54+08:00",
+   "path": [
+    "主選單",
+    "好站連結"
+   ]
   },
   "259933074109678": {
    "page_id": 259933074109678,
@@ -1064,5 +1074,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-01T11:20:34+08:00"
+ "last_run_at": "2026-11-01T23:05:55+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tssh",
- "generated_at": "2026-11-01T11:21:52+08:00",
+ "generated_at": "2026-11-01T23:06:35+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "212970716483767": {
@@ -169,22 +169,34 @@
    "page_id": 74027415705585,
    "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=2,7,69,43",
    "label": "升學資訊",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:06:30+08:00",
+   "path": [
+    "升學資訊"
+   ]
   },
   "269615037902245": {
    "page_id": 269615037902245,
    "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=2,7,71,43",
    "label": "線上填報系統",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:06:32+08:00",
+   "path": [
+    "線上填報系統"
+   ]
   },
   "164292195632715": {
    "page_id": 164292195632715,
    "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=2,7,374,43",
    "label": "自主學習專區",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:06:34+08:00",
+   "path": [
+    "自主學習專區"
+   ]
   },
   "19290333652781": {
    "page_id": 19290333652781,
@@ -2345,6 +2357,215 @@
     "校園分機一覽表"
    ],
    "order": 221
+  },
+  "200711953052215": {
+   "page_id": 200711953052215,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,69,43,,,5300",
+   "label": "116學年度實踐大學高雄校區藝術設計領域單獨招生資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "升學資訊"
+   ],
+   "order": 222
+  },
+  "31122743790034": {
+   "page_id": 31122743790034,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,69,43,,,5219",
+   "label": "國立臺灣大學學士班線上直播招生座談會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "升學資訊"
+   ],
+   "order": 223
+  },
+  "151368540950050": {
+   "page_id": 151368540950050,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,69,43,,,5208",
+   "label": "真理大學115學年度宗教文化與資訊管理學系單獨招生訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "升學資訊"
+   ],
+   "order": 224
+  },
+  "154968828768232": {
+   "page_id": 154968828768232,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,69,43,,,5207",
+   "label": "國立東華大學特殊教育學系招生宣傳海報",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "升學資訊"
+   ],
+   "order": 225
+  },
+  "42014236546120": {
+   "page_id": 42014236546120,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,69,43,,,5182",
+   "label": "115學年度四技二專聯合登記分發網路選填登記志願系統練習版開放事宜",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "升學資訊"
+   ],
+   "order": 226
+  },
+  "13584228406701": {
+   "page_id": 13584228406701,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,69,43,,,5179",
+   "label": "弘光科技大學老人福利與長期照顧事業系辦理115學年進修部獨立招生及說明會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "升學資訊"
+   ],
+   "order": 227
+  },
+  "37976311953825": {
+   "page_id": 37976311953825,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,71,43,,,4661",
+   "label": "總務處公物維修線上填報",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "線上填報系統"
+   ],
+   "order": 228
+  },
+  "83785198212937": {
+   "page_id": 83785198212937,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,71,43,,,3727",
+   "label": "115全國高級中等學校 英文作文 英文演講 英文單字 比賽報名",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "線上填報系統"
+   ],
+   "order": 229
+  },
+  "280360272168263": {
+   "page_id": 280360272168263,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,71,43,,,562",
+   "label": "山林教育報名系統",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "線上填報系統"
+   ],
+   "order": 230
+  },
+  "216583340767236": {
+   "page_id": 216583340767236,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,71,43,,,1684",
+   "label": "二樓會議室預約",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "線上填報系統"
+   ],
+   "order": 231
+  },
+  "57701227291688": {
+   "page_id": 57701227291688,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,374,43,,,1962",
+   "label": "東石高中自主學習平臺",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "自主學習專區"
+   ],
+   "order": 232
+  },
+  "31289315480475": {
+   "page_id": 31289315480475,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,374,43,,,1026",
+   "label": "國立東石高級中學學生自主學習實施規範",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "自主學習專區"
+   ],
+   "order": 233
+  },
+  "103596511200645": {
+   "page_id": 103596511200645,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,374,43,,,1963",
+   "label": "108課綱資訊網",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "自主學習專區"
+   ],
+   "order": 234
+  },
+  "142982959824879": {
+   "page_id": 142982959824879,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,374,43,,,3284",
+   "label": "學生自主學習相關表件(職科專用)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "自主學習專區"
+   ],
+   "order": 235
+  },
+  "181032515656218": {
+   "page_id": 181032515656218,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,374,43,,,1964",
+   "label": "(NEW！)東石高中學生自主學習說明會(內含自主學習平臺操作方法)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "自主學習專區"
+   ],
+   "order": 236
+  },
+  "188121914680034": {
+   "page_id": 188121914680034,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,374,43,,,2025",
+   "label": "學生申請111學年度自主學習指導教師共備暨共識營會議資料",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "自主學習專區"
+   ],
+   "order": 237
+  },
+  "14853380105919": {
+   "page_id": 14853380105919,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,374,43,,,1040",
+   "label": "學生自主學習分類學科與大學學群關聯表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "自主學習專區"
+   ],
+   "order": 238
+  },
+  "217670364139081": {
+   "page_id": 217670364139081,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,374,43,,,1027",
+   "label": "語文相關資源網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "自主學習專區"
+   ],
+   "order": 239
+  },
+  "136517688809693": {
+   "page_id": 136517688809693,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,374,43,,,1031",
+   "label": "數學相關資源網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "自主學習專區"
+   ],
+   "order": 240
   }
  },
  "handbook": {},
@@ -2547,5 +2768,5 @@
    "label": "報廢產品變賣專區"
   }
  ],
- "last_run_at": "2026-11-01T11:21:52+08:00"
+ "last_run_at": "2026-11-01T23:06:35+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-01T11:18:15+08:00",
+ "generated_at": "2026-11-01T23:04:23+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1592": {
@@ -2406,11 +2406,71 @@
   },
   "1845": {
    "page_id": 1845,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T23:04:19+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "生活輔導組",
+    "校園安全與災害防制"
+   ],
+   "changed_at": "2026-11-01T23:04:19+08:00",
+   "content_hash": "77ed6d1dba74bf99451d0b05611cf6fac90b1dbb3c80c5cffd264e633a4b3dbb",
+   "doc_links": [
+    {
+     "name": "校園安全應變計畫",
+     "url": "https://drive.google.com/file/d/1KMXQ0t_RVs-HMyf-t0A0hBqw_yeuckND/view?usp=sharing"
+    },
+    {
+     "name": "校園安全管理實施計畫—緊急應變計畫",
+     "url": "https://drive.google.com/file/d/1KVWN1l5vtru0B5B-kqVbtKf950eY0WNx/view?usp=sharing"
+    },
+    {
+     "name": "校園防火防震演習實施計畫",
+     "url": "https://drive.google.com/file/d/1s7UKs8QwjRBcs9FoAnxoR3Ai_WZseNVz/view?usp=drive_link"
+    },
+    {
+     "name": "校園災害管理實施計畫",
+     "url": "https://drive.google.com/file/d/17g2oVjmL9tH5KnMHAGQ9bPyPHsG8C5cF/view?usp=sharing"
+    },
+    {
+     "name": "校園安全檢查規定",
+     "url": "https://drive.google.com/file/d/1Zud7YhCVzmMf5ZOqlDk73MfV7mHGnnh3/view?usp=sharing"
+    },
+    {
+     "name": "校園安全檢查操作手冊QA",
+     "url": "https://drive.google.com/file/d/1IH7pazKo28P9FhcjDfZVMUawG2UzAIwD/view?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "安全",
+    "災害"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1845.json",
+   "detail_revision": "526fa70dcd8b36a46d167c2491cdba38b639776546df7e3d37d6d925f3c8d424",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1846": {
    "page_id": 1846,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T23:04:21+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "生活輔導組",
+    "家庭暴力防制"
+   ],
+   "changed_at": "2026-11-01T23:04:21+08:00",
+   "content_hash": "ea5f0feea5413c0e40eb9e0d0c6681913bceb68a8ad9bc7279e3c3c817461a5d",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1846.json",
+   "detail_revision": "79a6ee53c6baf4f4ad65d8eb5733746471474e3a114a78d9029bc5908aa27b32",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1847": {
    "page_id": 1847,
@@ -3137,6 +3197,51 @@
   },
   "1764": {
    "page_id": 1764,
+   "status": "ok",
+   "checked_at": "2026-11-01T23:04:17+08:00",
+   "path": [
+    "功能快捷選單"
+   ],
+   "changed_at": "2026-11-01T23:04:17+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1764.json",
+   "detail_revision": "2cc9cdf72aa13df9c74a37cfbc2b3992d7b561905273f3c48cd1f771638deb80",
+   "detail_status": "empty",
+   "attachments": []
+  },
+  "1765": {
+   "page_id": 1765,
+   "status": "pending"
+  },
+  "1766": {
+   "page_id": 1766,
+   "status": "pending"
+  },
+  "1767": {
+   "page_id": 1767,
+   "status": "pending"
+  },
+  "1768": {
+   "page_id": 1768,
+   "status": "pending"
+  },
+  "1772": {
+   "page_id": 1772,
+   "status": "pending"
+  },
+  "1773": {
+   "page_id": 1773,
+   "status": "pending"
+  },
+  "1774": {
+   "page_id": 1774,
+   "status": "pending"
+  },
+  "4359": {
+   "page_id": 4359,
    "status": "pending"
   }
  },
@@ -3761,6 +3866,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cygsh-info-1764",
+   "kind": "school_info",
+   "title": "功能快捷選單",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1764.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1764.json",
+   "detail_revision": "2cc9cdf72aa13df9c74a37cfbc2b3992d7b561905273f3c48cd1f771638deb80",
+   "detail_status": "empty"
+  },
+  {
    "id": "cygsh-info-1769",
    "kind": "school_info",
    "title": "功能快捷選單 › 獎助學金",
@@ -4295,6 +4417,75 @@
    "documents": [],
    "detail_ref": "data/details/cygsh/cygsh-info-1844.json",
    "detail_revision": "8a1fff17d52eb0c56b8d50cd99781d0da0eb7d621c417c43dd2d8d081ec07832",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1845",
+   "kind": "school_info",
+   "title": "學務處 › 生活輔導組 › 校園安全與災害防制",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1845.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "校園安全應變計畫",
+    "校園安全管理實施計畫—緊急應變計畫",
+    "校園防火防震演習實施計畫",
+    "校園災害管理實施計畫",
+    "校園安全檢查規定",
+    "校園安全檢查操作手冊QA"
+   ],
+   "keywords": [
+    "安全",
+    "災害"
+   ],
+   "documents": [
+    {
+     "name": "校園安全應變計畫",
+     "url": "https://drive.google.com/file/d/1KMXQ0t_RVs-HMyf-t0A0hBqw_yeuckND/view?usp=sharing"
+    },
+    {
+     "name": "校園安全管理實施計畫—緊急應變計畫",
+     "url": "https://drive.google.com/file/d/1KVWN1l5vtru0B5B-kqVbtKf950eY0WNx/view?usp=sharing"
+    },
+    {
+     "name": "校園防火防震演習實施計畫",
+     "url": "https://drive.google.com/file/d/1s7UKs8QwjRBcs9FoAnxoR3Ai_WZseNVz/view?usp=drive_link"
+    },
+    {
+     "name": "校園災害管理實施計畫",
+     "url": "https://drive.google.com/file/d/17g2oVjmL9tH5KnMHAGQ9bPyPHsG8C5cF/view?usp=sharing"
+    },
+    {
+     "name": "校園安全檢查規定",
+     "url": "https://drive.google.com/file/d/1Zud7YhCVzmMf5ZOqlDk73MfV7mHGnnh3/view?usp=sharing"
+    },
+    {
+     "name": "校園安全檢查操作手冊QA",
+     "url": "https://drive.google.com/file/d/1IH7pazKo28P9FhcjDfZVMUawG2UzAIwD/view?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-1845.json",
+   "detail_revision": "526fa70dcd8b36a46d167c2491cdba38b639776546df7e3d37d6d925f3c8d424",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1846",
+   "kind": "school_info",
+   "title": "學務處 › 生活輔導組 › 家庭暴力防制",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1846.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1846.json",
+   "detail_revision": "79a6ee53c6baf4f4ad65d8eb5733746471474e3a114a78d9029bc5908aa27b32",
    "detail_status": "parsed"
   },
   {
@@ -5791,5 +5982,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-01T11:18:15+08:00"
+ "last_run_at": "2026-11-01T23:04:23+08:00"
 }

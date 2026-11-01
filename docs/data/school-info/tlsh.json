@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-01T11:18:55+08:00",
+ "generated_at": "2026-11-01T23:05:02+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -118,22 +118,34 @@
    "page_id": 29565495065444,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/aca-affairs/",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:04:57+08:00",
+   "path": [
+    "教務處"
+   ]
   },
   "6960970710924": {
    "page_id": 6960970710924,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/aca-affairs/tlsh1/",
    "label": "教學組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:04:59+08:00",
+   "path": [
+    "教學組"
+   ]
   },
   "90387339681175": {
    "page_id": 90387339681175,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/aca-affairs/tlsh2/",
    "label": "註冊組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:05:01+08:00",
+   "path": [
+    "註冊組"
+   ]
   },
   "221816411969133": {
    "page_id": 221816411969133,
@@ -635,5 +647,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-01T11:18:55+08:00"
+ "last_run_at": "2026-11-01T23:05:02+08:00"
 }

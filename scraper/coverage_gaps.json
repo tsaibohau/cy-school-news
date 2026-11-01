@@ -1,4 +1,68 @@
 {
  "note": "首頁出現、但所屬分類的列表頁不在 config 的公告。把 list_page 加進 config.json 即可收錄;確定不要的分類請加進 config.json 的 coverage_ignore。檢查時間見本檔的 git 提交紀錄。",
- "gaps": []
+ "gaps": [
+  {
+   "cat_ref": "28",
+   "school": "ksis",
+   "count": 7,
+   "example_title": "【毒駕，就是開上家破人亡的單行道，遠離毒品，拒絕毒駕！】",
+   "example_url": "https://www.ksis.tn.edu.tw/p/406-1000-14226,r28.php",
+   "school_name": "崑山高中",
+   "list_page": "https://www.ksis.tn.edu.tw/p/403-1000-28-1.php"
+  },
+  {
+   "cat_ref": "15",
+   "school": "ksis",
+   "count": 6,
+   "example_title": "轉知-教育部116年持續辦理高級中等以下學校教師在職進修學分班",
+   "example_url": "https://www.ksis.tn.edu.tw/p/406-1000-14268,r15.php",
+   "school_name": "崑山高中",
+   "list_page": "https://www.ksis.tn.edu.tw/p/403-1000-15-1.php"
+  },
+  {
+   "cat_ref": "31",
+   "school": "ksis",
+   "count": 4,
+   "example_title": "轉知-教育部辦理「2026⾃主學習節公開授課」及「⾃主學習節暨AI賦能教與學研討會」",
+   "example_url": "https://www.ksis.tn.edu.tw/p/406-1000-14250,r31.php",
+   "school_name": "崑山高中",
+   "list_page": "https://www.ksis.tn.edu.tw/p/403-1000-31-1.php"
+  },
+  {
+   "cat_ref": "34",
+   "school": "ksis",
+   "count": 4,
+   "example_title": "轉知-財團法人教育部接受捐助獎學基金會115學年度獎學金自9月1日至9月30日受理",
+   "example_url": "https://www.ksis.tn.edu.tw/p/406-1000-14214,r34.php",
+   "school_name": "崑山高中",
+   "list_page": "https://www.ksis.tn.edu.tw/p/403-1000-34-1.php"
+  },
+  {
+   "cat_ref": "11",
+   "school": "fsvs",
+   "count": 5,
+   "example_title": "本校115年庶務組長應試名單",
+   "example_url": "https://www.fsvs.khc.edu.tw/p/406-1003-195716,r11.php",
+   "school_name": "鳳山商工",
+   "list_page": "https://www.fsvs.khc.edu.tw/p/403-1003-11-1.php"
+  },
+  {
+   "cat_ref": "88",
+   "school": "kssh",
+   "count": 15,
+   "example_title": "【輔導室公告】🌳116青年領航計畫校內學生/家長說明會",
+   "example_url": "https://www.kssh.khc.edu.tw/p/406-1001-190054,r88.php",
+   "school_name": "岡山高中",
+   "list_page": "https://www.kssh.khc.edu.tw/p/403-1001-88-1.php"
+  },
+  {
+   "cat_ref": "18",
+   "school": "ksaivs",
+   "count": 4,
+   "example_title": "國立岡山高級農工職業學校進修部約僱人員甄選簡章",
+   "example_url": "https://www.ksvs.khc.edu.tw/p/406-1004-189807,r18.php",
+   "school_name": "岡山農工",
+   "list_page": "https://www.ksvs.khc.edu.tw/p/403-1004-18-1.php"
+  }
+ ]
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-01T11:21:11+08:00",
+ "generated_at": "2026-11-01T23:06:17+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -272,8 +272,28 @@
    "page_id": 136838313524581,
    "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,4,25",
    "label": "校內通訊",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:06:15+08:00",
+   "path": [
+    "校內通訊"
+   ],
+   "changed_at": "2026-11-01T23:06:15+08:00",
+   "content_hash": "254356af89bd2e654ebfc353b0424ff1410bb9eb3428a16dd48c561911e9e586",
+   "doc_links": [],
+   "keywords": [
+    "傳真",
+    "分機",
+    "圖書館",
+    "專線",
+    "校長",
+    "衛生"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-136838313524581.json",
+   "detail_revision": "79604baa92115920e49ff16971c0baaea03d776f96c806dfa3de0a809fcda2d7",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "196188571931543": {
    "page_id": 196188571931543,
@@ -3461,6 +3481,30 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-136838313524581",
+   "kind": "school_info",
+   "title": "校內通訊",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,4,25",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "傳真",
+    "分機",
+    "圖書館",
+    "專線",
+    "校長",
+    "衛生"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-136838313524581.json",
+   "detail_revision": "79604baa92115920e49ff16971c0baaea03d776f96c806dfa3de0a809fcda2d7",
+   "detail_status": "parsed"
+  },
+  {
    "id": "hnvs-info-151117057407702",
    "kind": "school_info",
    "title": "--> 新生專區",
@@ -3867,5 +3911,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-01T11:21:11+08:00"
+ "last_run_at": "2026-11-01T23:06:17+08:00"
 }

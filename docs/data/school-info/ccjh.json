@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-01T11:18:36+08:00",
+ "generated_at": "2026-11-01T23:04:49+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "98": {
@@ -370,11 +370,30 @@
   },
   "163": {
    "page_id": 163,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T23:04:46+08:00",
+   "path": [
+    "教師專區",
+    "無聲廣播"
+   ]
   },
   "165": {
    "page_id": 165,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T23:04:48+08:00",
+   "path": [
+    "協力組織",
+    "家長會"
+   ],
+   "changed_at": "2026-11-01T23:04:48+08:00",
+   "content_hash": "00f3aa62bd9a1210c08a8afc7fd1db306bfb09690b0e41689ff7dc550a296ac0",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-165.json",
+   "detail_revision": "13ade82eb759ace89551f87d9df004d5a429c90a4afc498414d7c06052b6b840",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "166": {
    "page_id": 166,
@@ -574,6 +593,14 @@
   },
   "152": {
    "page_id": 152,
+   "status": "pending"
+  },
+  "101": {
+   "page_id": 101,
+   "status": "pending"
+  },
+  "103": {
+   "page_id": 103,
    "status": "pending"
   }
  },
@@ -956,6 +983,23 @@
    "detail_ref": "data/details/ccjh/ccjh-info-153.json",
    "detail_revision": "77fa0b9e244feebc55aec91e82a16550594b9a271a7c1dc698f91595d73226a1",
    "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-165",
+   "kind": "school_info",
+   "title": "協力組織 › 家長會",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-165.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-165.json",
+   "detail_revision": "13ade82eb759ace89551f87d9df004d5a429c90a4afc498414d7c06052b6b840",
+   "detail_status": "parsed"
   }
  ],
  "roots": [
@@ -985,5 +1029,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-01T11:18:36+08:00"
+ "last_run_at": "2026-11-01T23:04:49+08:00"
 }

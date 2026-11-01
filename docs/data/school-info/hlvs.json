@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-01T11:19:06+08:00",
+ "generated_at": "2026-11-01T23:05:10+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -252,15 +252,80 @@
    "page_id": 159033423341341,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=379",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:05:03+08:00",
+   "path": [
+    "圖書館"
+   ],
+   "changed_at": "2026-11-01T23:05:03+08:00",
+   "content_hash": "31b9116257a473dff9301ee13fdb42a30d69f4af933bee73a48b58f01ea0c1b5",
+   "doc_links": [],
+   "keywords": [
+    "圖書館",
+    "簡介",
+    "考試"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-159033423341341.json",
+   "detail_revision": "225da037045cc20c6aa73bf7304fe890415a8123826eb05c1d94200e24f62568",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "115年10月納瓦爾寶典",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/10/115年10月納瓦爾寶典.pdf"
+    }
+   ]
   },
   "188531775288515": {
    "page_id": 188531775288515,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=415",
    "label": "進修部",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:05:08+08:00",
+   "path": [
+    "進修部"
+   ],
+   "changed_at": "2026-11-01T23:05:08+08:00",
+   "content_hash": "8416f745cc4a7a9bcd4044081ca4e135627945a455067548f6de209d6592d195",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "獎懲",
+    "考試",
+    "請假",
+    "入學",
+    "宣導",
+    "新生",
+    "申請",
+    "轉學",
+    "銷過",
+    "代辦費",
+    "健康檢查",
+    "制服",
+    "助學金",
+    "學雜費",
+    "就學貸款",
+    "工讀",
+    "曠課",
+    "段考",
+    "比賽",
+    "演講",
+    "獎助學金",
+    "獎學金",
+    "研習",
+    "第一次段考",
+    "缺曠",
+    "衛生",
+    "記過",
+    "醫療"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-188531775288515.json",
+   "detail_revision": "ca6baec78c516948bdd38cf340b4a1c6ae996c2ba0a4a861c016199ce87d2f07",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "210609447501446": {
    "page_id": 210609447501446,
@@ -1194,6 +1259,72 @@
     "總務處"
    ],
    "order": 106
+  },
+  "180832619727926": {
+   "page_id": 180832619727926,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=48373",
+   "label": "圖書館簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館"
+   ],
+   "order": 107
+  },
+  "58420342577088": {
+   "page_id": 58420342577088,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=66963",
+   "label": "圖書館使用規則",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館"
+   ],
+   "order": 108
+  },
+  "154741886538516": {
+   "page_id": 154741886538516,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=4770",
+   "label": "進修部主任",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進修部"
+   ],
+   "order": 109
+  },
+  "202051666002467": {
+   "page_id": 202051666002467,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=4772",
+   "label": "教務組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進修部"
+   ],
+   "order": 110
+  },
+  "136903354296533": {
+   "page_id": 136903354296533,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=4775",
+   "label": "學生事務組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進修部"
+   ],
+   "order": 111
+  },
+  "248419518088302": {
+   "page_id": 248419518088302,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=8160",
+   "label": "各科介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進修部"
+   ],
+   "order": 112
   }
  },
  "handbook": {},
@@ -1275,6 +1406,34 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hlvs-info-159033423341341",
+   "kind": "school_info",
+   "title": "圖書館",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=379",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "115年10月納瓦爾寶典"
+   ],
+   "keywords": [
+    "圖書館",
+    "簡介",
+    "考試"
+   ],
+   "documents": [
+    {
+     "name": "115年10月納瓦爾寶典",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/10/115年10月納瓦爾寶典.pdf"
+    }
+   ],
+   "detail_ref": "data/details/hlvs/hlvs-info-159033423341341.json",
+   "detail_revision": "225da037045cc20c6aa73bf7304fe890415a8123826eb05c1d94200e24f62568",
+   "detail_status": "parsed"
+  },
+  {
    "id": "hlvs-info-179902303618669",
    "kind": "school_info",
    "title": "實習處",
@@ -1302,6 +1461,53 @@
    "documents": [],
    "detail_ref": "data/details/hlvs/hlvs-info-179902303618669.json",
    "detail_revision": "e72915a256233c3970911a4f2ae8bed6f3b8be82bdf05efc7088a6eabc1cb572",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-188531775288515",
+   "kind": "school_info",
+   "title": "進修部",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=415",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "獎懲",
+    "考試",
+    "請假",
+    "入學",
+    "宣導",
+    "新生",
+    "申請",
+    "轉學",
+    "銷過",
+    "代辦費",
+    "健康檢查",
+    "制服",
+    "助學金",
+    "學雜費",
+    "就學貸款",
+    "工讀",
+    "曠課",
+    "段考",
+    "比賽",
+    "演講",
+    "獎助學金",
+    "獎學金",
+    "研習",
+    "第一次段考",
+    "缺曠",
+    "衛生",
+    "記過",
+    "醫療"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-188531775288515.json",
+   "detail_revision": "ca6baec78c516948bdd38cf340b4a1c6ae996c2ba0a4a861c016199ce87d2f07",
    "detail_status": "parsed"
   },
   {
@@ -1713,5 +1919,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-01T11:19:06+08:00"
+ "last_run_at": "2026-11-01T23:05:10+08:00"
 }

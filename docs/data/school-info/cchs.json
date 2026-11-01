@@ -1,0 +1,970 @@
+{
+ "schema_version": 1,
+ "school": "cchs",
+ "generated_at": "2026-11-01T23:04:10+08:00",
+ "content_access": "approved-account-required",
+ "pages": {
+  "153498002047988": {
+   "page_id": 153498002047988,
+   "url": "https://www.cchs.kh.edu.tw/home",
+   "label": "進入首頁",
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-01T23:04:08+08:00",
+   "path": [
+    "進入首頁"
+   ],
+   "changed_at": "2026-11-01T23:04:08+08:00",
+   "content_hash": "e2032021f51dd6b35ce632ddede8a1e659c79d5b8741f41eedc4579fc3d1652a",
+   "doc_links": [],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-153498002047988.json",
+   "detail_revision": "371890f8a1c61a99da4e342273dc85c06e295d96036e5ce9e44c06292e42d4b9",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ]
+  },
+  "134820249247619": {
+   "page_id": 134820249247619,
+   "url": "https://www.cchs.kh.edu.tw/english",
+   "label": "雙語網頁(English Version)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 1
+  },
+  "37045107764138": {
+   "page_id": 37045107764138,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1326",
+   "label": "學校簡介(About Us)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 2
+  },
+  "85659664264510": {
+   "page_id": 85659664264510,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/45",
+   "label": "校史",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 3
+  },
+  "178907865446781": {
+   "page_id": 178907865446781,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1362",
+   "label": "地理位置",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 4
+  },
+  "137802978837002": {
+   "page_id": 137802978837002,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1363",
+   "label": "校旗校訓校歌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 5
+  },
+  "187006686182403": {
+   "page_id": 187006686182403,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1364",
+   "label": "歷任校長",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 6
+  },
+  "124245018730755": {
+   "page_id": 124245018730755,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1324",
+   "label": "行政單位(Organization)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 7
+  },
+  "122540673584160": {
+   "page_id": 122540673584160,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/104",
+   "label": "校長室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 8
+  },
+  "240233643298103": {
+   "page_id": 240233643298103,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/11",
+   "label": "秘書室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 9
+  },
+  "14419362427452": {
+   "page_id": 14419362427452,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/3",
+   "label": "教務處",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 10
+  },
+  "202686614828057": {
+   "page_id": 202686614828057,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/4",
+   "label": "學務處",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 11
+  },
+  "117253854350800": {
+   "page_id": 117253854350800,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5",
+   "label": "總務處",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 12
+  },
+  "135169227169795": {
+   "page_id": 135169227169795,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6",
+   "label": "輔導室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 13
+  },
+  "134017460526150": {
+   "page_id": 134017460526150,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/7",
+   "label": "圖書館",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 14
+  },
+  "37011783784663": {
+   "page_id": 37011783784663,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/9",
+   "label": "會計室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 15
+  },
+  "81669184082924": {
+   "page_id": 81669184082924,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/10",
+   "label": "教官室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 16
+  },
+  "269410831564571": {
+   "page_id": 269410831564571,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1325",
+   "label": "教學單位(Teachers)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 17
+  },
+  "145273639196836": {
+   "page_id": 145273639196836,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/46",
+   "label": "高中部教學研究會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 18
+  },
+  "91704428140079": {
+   "page_id": 91704428140079,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/25",
+   "label": "國中部教學研究會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 19
+  },
+  "214747491513658": {
+   "page_id": 214747491513658,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/90/",
+   "label": "新生專區(New_Students)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 20
+  },
+  "78496038285670": {
+   "page_id": 78496038285670,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1484",
+   "label": "中正之光 (Prizes and Awards)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 21
+  },
+  "86613490228332": {
+   "page_id": 86613490228332,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/91",
+   "label": "國際/英外語(International Activities)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 22
+  },
+  "33688108191602": {
+   "page_id": 33688108191602,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1389",
+   "label": "課程計畫 Academic Curriculum",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 23
+  },
+  "120207440576928": {
+   "page_id": 120207440576928,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/80",
+   "label": "高中(含選課手冊)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 24
+  },
+  "262208168112803": {
+   "page_id": 262208168112803,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/81",
+   "label": "國中",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 25
+  },
+  "150310668259065": {
+   "page_id": 150310668259065,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1569",
+   "label": "專案計畫 Projects",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 26
+  },
+  "150196012371792": {
+   "page_id": 150196012371792,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/63",
+   "label": "高中優質化",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 27
+  },
+  "157585501873108": {
+   "page_id": 157585501873108,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1571",
+   "label": "高中均質化",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 28
+  },
+  "94198173265933": {
+   "page_id": 94198173265933,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1379",
+   "label": "校務系統 School System",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 29
+  },
+  "103035898658625": {
+   "page_id": 103035898658625,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1380",
+   "label": "高中成績",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 30
+  },
+  "224124752886903": {
+   "page_id": 224124752886903,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1381",
+   "label": "國中成績",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 31
+  },
+  "169851591424990": {
+   "page_id": 169851591424990,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1575",
+   "label": "圖書系統 Library",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 32
+  },
+  "220985165922736": {
+   "page_id": 220985165922736,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=3246",
+   "label": "正常教學視導 Teaching Normalization",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 33
+  },
+  "40386154528787": {
+   "page_id": 40386154528787,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1583",
+   "label": "校園刊物 School Publications",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 34
+  },
+  "19274551057463": {
+   "page_id": 19274551057463,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=2062",
+   "label": "親師月刊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 35
+  },
+  "1450458944397": {
+   "page_id": 1450458944397,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/4/?cid=26",
+   "label": "中正文瀚",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 36
+  },
+  "266986810253134": {
+   "page_id": 266986810253134,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1589",
+   "label": "中正學報",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 37
+  },
+  "103200484870201": {
+   "page_id": 103200484870201,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/94/",
+   "label": "學校國際教育 International Education",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 38
+  },
+  "186297067436159": {
+   "page_id": 186297067436159,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/87/",
+   "label": "本土教育網 Native Education",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 39
+  },
+  "178952457711940": {
+   "page_id": 178952457711940,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/89/",
+   "label": "校外人士協助教學活動 Outsiders",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 40
+  },
+  "279025260777124": {
+   "page_id": 279025260777124,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/8/?cid=2720",
+   "label": "補助交易身分關係揭露專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 41
+  },
+  "45715105992579": {
+   "page_id": 45715105992579,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1558",
+   "label": "教師課表 Class Timetable",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 42
+  },
+  "74292569197923": {
+   "page_id": 74292569197923,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1559",
+   "label": "電子郵件 E-mail",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 43
+  },
+  "177092040219267": {
+   "page_id": 177092040219267,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1561",
+   "label": "成績/點名系統 Grades and Attendance",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 44
+  },
+  "161149072559212": {
+   "page_id": 161149072559212,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1562",
+   "label": "高中",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 45
+  },
+  "240159098788858": {
+   "page_id": 240159098788858,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1563",
+   "label": "國中",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 46
+  },
+  "39110089457060": {
+   "page_id": 39110089457060,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/76",
+   "label": "公開觀議課 Class Observation and Discussion",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 47
+  },
+  "99877454231624": {
+   "page_id": 99877454231624,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/85",
+   "label": "家長會 Parents' Association",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 48
+  },
+  "258591998499107": {
+   "page_id": 258591998499107,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6/?cid=2062",
+   "label": "親師月刊 Publications",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 49
+  },
+  "243752083699515": {
+   "page_id": 243752083699515,
+   "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab",
+   "label": "學生手冊(含學生獎懲規定) Student Handbook",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 50
+  },
+  "158967854032842": {
+   "page_id": 158967854032842,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1538",
+   "label": "成績/點名/選社團系統 Grades/Attendance/Clubs",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 51
+  },
+  "217701904047422": {
+   "page_id": 217701904047422,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1539",
+   "label": "高中",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 52
+  },
+  "169387821119277": {
+   "page_id": 169387821119277,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1540",
+   "label": "國中",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 53
+  },
+  "191978629263413": {
+   "page_id": 191978629263413,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/3?cid=2067",
+   "label": "高中重補修 Make-up Course",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 54
+  },
+  "39461924449590": {
+   "page_id": 39461924449590,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/84/?cid=3110",
+   "label": "高中學習歷程檔案 Student Portfolios",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 55
+  },
+  "241429767849534": {
+   "page_id": 241429767849534,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1547",
+   "label": "線上學習 Online Learning",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 56
+  },
+  "125951644130611": {
+   "page_id": 125951644130611,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/51/",
+   "label": "高中彈性學習專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 57
+  },
+  "163042028638357": {
+   "page_id": 163042028638357,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1555",
+   "label": "中正翰林雲端學院(國中部)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 58
+  },
+  "140621898600000": {
+   "page_id": 140621898600000,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=2329",
+   "label": "如何加入Classroom",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 59
+  },
+  "258458993273832": {
+   "page_id": 258458993273832,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=2035",
+   "label": "獎學金訊息 Scholarships",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 60
+  },
+  "265910867745105": {
+   "page_id": 265910867745105,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=2141",
+   "label": "生涯輔導資訊 Guidance & Counseling",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 61
+  },
+  "262861709340533": {
+   "page_id": 262861709340533,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6/?cid=1662",
+   "label": "高中",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 62
+  },
+  "176943968430183": {
+   "page_id": 176943968430183,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6/?cid=1663",
+   "label": "國中",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 63
+  },
+  "66908212445301": {
+   "page_id": 66908212445301,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1548",
+   "label": "升學資訊 Pathways to Universities",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 64
+  },
+  "118420180010290": {
+   "page_id": 118420180010290,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/74/",
+   "label": "高中",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 65
+  },
+  "10795785435135": {
+   "page_id": 10795785435135,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/83/",
+   "label": "國中",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 66
+  },
+  "91700236218271": {
+   "page_id": 91700236218271,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/10?cid=2288",
+   "label": "防制霸凌專區 Anti-bullying",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 67
+  },
+  "170819275483442": {
+   "page_id": 170819275483442,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6/?cid=2717",
+   "label": "學生申訴 Student Appeal",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 68
+  },
+  "216223208548968": {
+   "page_id": 216223208548968,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=3189",
+   "label": "操作說明",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 69
+  },
+  "115797153858714": {
+   "page_id": 115797153858714,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1507",
+   "label": "教科書版本 Textbooks",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 70
+  },
+  "52084311113517": {
+   "page_id": 52084311113517,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1508",
+   "label": "表單下載 Forms",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 71
+  },
+  "275901927915066": {
+   "page_id": 275901927915066,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/3/?cid=126",
+   "label": "教務處表單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 72
+  },
+  "185716876429674": {
+   "page_id": 185716876429674,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/4/?cid=151",
+   "label": "學務處表單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 73
+  },
+  "197519734085349": {
+   "page_id": 197519734085349,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1511",
+   "label": "其他常用表單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 74
+  },
+  "80989493142044": {
+   "page_id": 80989493142044,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1512",
+   "label": "網路服務 Internet Service",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 75
+  },
+  "169470487502484": {
+   "page_id": 169470487502484,
+   "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1",
+   "label": "新生加入班務專區操作說明",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 76
+  },
+  "21084953456839": {
+   "page_id": 21084953456839,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=3190",
+   "label": "中正翰林雲端學院(國中部+高一)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 77
+  },
+  "178673976185582": {
+   "page_id": 178673976185582,
+   "url": "https://www.cchs.kh.edu.tw/home?cid=3194",
+   "label": "操作說明",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 78
+  },
+  "100738786614480": {
+   "page_id": 100738786614480,
+   "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85",
+   "label": "一卡通數位學生證遺失補卡處理方式",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "進入首頁"
+   ],
+   "order": 79
+  }
+ },
+ "handbook": {},
+ "services": {},
+ "items": [
+  {
+   "id": "cchs-info-153498002047988",
+   "kind": "school_info",
+   "title": "進入首頁",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/home",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "學生手冊(含學生獎懲規定) Student Handbook",
+    "新生加入班務專區操作說明",
+    "一卡通數位學生證遺失補卡處理方式"
+   ],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會"
+   ],
+   "documents": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "detail_ref": "data/details/cchs/cchs-info-153498002047988.json",
+   "detail_revision": "371890f8a1c61a99da4e342273dc85c06e295d96036e5ce9e44c06292e42d4b9",
+   "detail_status": "parsed"
+  }
+ ],
+ "roots": [
+  {
+   "page_id": 153498002047988,
+   "url": "https://www.cchs.kh.edu.tw/home",
+   "label": "進入首頁"
+  }
+ ],
+ "last_run_at": "2026-11-01T23:04:10+08:00"
+}
