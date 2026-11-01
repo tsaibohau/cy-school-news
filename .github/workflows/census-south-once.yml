@@ -1,0 +1,40 @@
+name: 一次性校網普查（台南、高雄）
+
+# 只在 claude/census-south 分支觸發；分支不合併，用完刪除。不進排程。
+on:
+  push:
+    branches: [claude/census-south]
+    paths:
+      - "tools/census/**"
+      - "tools/school_census.py"
+      - ".github/workflows/census-south-once.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: census-south-once
+  cancel-in-progress: false
+
+jobs:
+  census:
+    if: github.ref == 'refs/heads/claude/census-south'
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install -r scraper/requirements.txt certifi
+      - name: Census and source validation (low rate, 3 s between requests)
+        run: python tools/census/south_pipeline.py
+      - name: Commit report to this branch
+        if: always()
+        run: |
+          git config user.name "news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/census || true
+          git commit -m "普查報告：台南、高雄校網系統與來源實測" || exit 0
+          git pull --rebase origin claude/census-south
+          git push origin HEAD:claude/census-south
