@@ -1,0 +1,2067 @@
+{
+ "meta": {
+  "generated_at": "2026-11-01 18:28",
+  "directory_source": "https://stats.moe.gov.tw/files/school/115/high.csv",
+  "log": [
+   "data.gov.tw 6089: HTTP 200, CSV 13 個",
+   "名錄 https://stats.moe.gov.tw/files/school/115/high.csv: 目標縣市 100 校"
+  ],
+  "total_requests": 97,
+  "today": "2026-11-01"
+ },
+ "schools": [
+  {
+   "id": "cjshs",
+   "name": "私立長榮高中",
+   "county": "臺南市",
+   "code": "211301",
+   "ownership": "私立",
+   "url": "http://www.cjshs.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "new-classic-cms",
+   "adapter": "new-classic-cms",
+   "sources": [
+    {
+     "url": "https://www.cjshs.tn.edu.tw/",
+     "count": 11,
+     "dated": 0,
+     "newest": "",
+     "samples": [
+      [
+       "",
+       "長榮中學創校141週年校慶 跨越六十載的情誼揭牌與《尋找湯德"
+      ],
+      [
+       "",
+       "長榮中學國中會考五科A表現突出 再創優質辦學佳績"
+      ],
+      [
+       "",
+       "長榮中學科技繁星再創佳績 多元群科銜接頂尖國立科大 展現技職"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.cjshs.tn.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.cjshs.tn.edu.tw/p/426-1000-4.php?Lang=zh-tw"
+    }
+   ],
+   "unit": "1000",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "ctbchs",
+   "name": "臺南市中信國際高中",
+   "county": "臺南市",
+   "code": "111321",
+   "ownership": "私立",
+   "url": "https://ctbchs.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "wordpress",
+   "adapter": "wordpress",
+   "sources": [
+    {
+     "url": "https://ctbchs.tn.edu.tw/feed/",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://ctbchs.tn.edu.tw/",
+   "calendar_candidates": [],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "dwhs",
+   "name": "市立大灣高中",
+   "county": "臺南市",
+   "code": "114306",
+   "ownership": "公立",
+   "url": "http://www.dwhs.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "xoops",
+   "adapter": "xoops-tadnews",
+   "sources": [
+    {
+     "url": "https://www.dwhs.tn.edu.tw/modules/tadnews/rss.php",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.dwhs.tn.edu.tw/",
+   "calendar_candidates": [],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "hhvs",
+   "name": "國立新化高工",
+   "county": "臺南市",
+   "code": "110401",
+   "ownership": "公立",
+   "url": "http://www.hhvs.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [
+    {
+     "url": "https://www.hhvs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_9d81afa8d77764325c47478991b6199181d34b4b",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "【環境教育】10/31 補修環境教育時數時間地點通知"
+      ],
+      [
+       "2026-10-30",
+       "115年11-12月份學生交通車異動通知"
+      ],
+      [
+       "2026-10-29",
+       "【獎助學金-校外】115學年度第一學期「長老教會新化教會清寒"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.hhvs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_e28444f92c0614741cfe85441459c3332dc15152",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-05-12",
+       "轉傳內政部國土管理署重申有關300億元中央擴大租金補貼專案計"
+      ],
+      [
+       "2025-11-24",
+       "【新化高工_在校學生須知】"
+      ],
+      [
+       "2026-10-30",
+       "轉知《輕鬆搞定學習歷程檔案》活動資訊"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.hhvs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_cc8a072b14a105ab769dcef82dc7f0870593ae0a",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "弘光科技大學「第三屆長期照顧永續發展論壇暨研討會」"
+      ],
+      [
+       "2026-10-30",
+       "轉知國立臺灣師範大學成癮防制碩士在職學位學程116學年度招生"
+      ],
+      [
+       "2026-10-30",
+       "115-1-78 「光•在－臺南城市光環境改造計畫走讀課程」"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 5,
+   "final_url": "https://www.hhvs.tn.edu.tw/home",
+   "calendar_candidates": [],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "hhvs",
+    "name": "國立新化高工",
+    "short": "新化高工",
+    "county": "臺南市",
+    "base": "https://www.hhvs.tn.edu.tw",
+    "adapter": "ischool-json",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.hhvs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_9d81afa8d77764325c47478991b6199181d34b4b",
+      "tier": "hot"
+     },
+     {
+      "url": "https://www.hhvs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_cc8a072b14a105ab769dcef82dc7f0870593ae0a",
+      "tier": "cold"
+     },
+     {
+      "url": "https://www.hhvs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_e28444f92c0614741cfe85441459c3332dc15152",
+      "tier": "cold"
+     }
+    ]
+   }
+  },
+  {
+   "id": "hpsh",
+   "name": "國立後壁高中",
+   "county": "臺南市",
+   "code": "110314",
+   "ownership": "公立",
+   "url": "http://www.hpsh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [
+    {
+     "url": "https://www.hpsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_79336d38e7272b924102603db347c1766564d30e",
+     "count": 30,
+     "dated": 28,
+     "newest": "2026-10-20",
+     "samples": [
+      [
+       "2026-10-06",
+       "國立臺灣藝術大學116學年度日間學士班特殊選才招生訊息，歡迎"
+      ],
+      [
+       "2026-07-12",
+       "高一普通科新生夏日樂學參加名單"
+      ],
+      [
+       "2026-06-26",
+       "國立後壁高中因應6/26 停班停課重要公告"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.hpsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_c6089d98219acfc8abf5051e407a0e6edd3398fe",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-14",
+     "samples": [
+      [
+       "2026-10-14",
+       "因材網e度工作坊"
+      ],
+      [
+       "2026-10-14",
+       "Gemini AI教育家認證研習－屏東高工場"
+      ],
+      [
+       "2026-10-14",
+       "《中小學AI之學習 應用手冊》競賽"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.hpsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_2b3f0d4dab664d8fbf65ac31743151bbe0543c78",
+     "count": 30,
+     "dated": 27,
+     "newest": "2026-03-05",
+     "samples": [
+      [
+       "2026-03-05",
+       "函轉桃園市政府教育局「113年度財團法人臻鼎教育基金會優良學"
+      ],
+      [
+       "2026-03-05",
+       "轉社團法人中華佛教善緣慈善會「高中職專、大、碩、【誌善】清寒"
+      ],
+      [
+       "2026-03-05",
+       "函轉屏東縣政府「112學年度第2學期中等以上學校清寒及優秀學"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 5,
+   "final_url": "https://www.hpsh.tn.edu.tw/home",
+   "calendar_candidates": [],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "hpsh",
+    "name": "國立後壁高中",
+    "short": "後壁高中",
+    "county": "臺南市",
+    "base": "https://www.hpsh.tn.edu.tw",
+    "adapter": "ischool-json",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.hpsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_79336d38e7272b924102603db347c1766564d30e",
+      "tier": "hot"
+     },
+     {
+      "url": "https://www.hpsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_c6089d98219acfc8abf5051e407a0e6edd3398fe",
+      "tier": "cold"
+     }
+    ]
+   }
+  },
+  {
+   "id": "lmsh",
+   "name": "私立黎明高中",
+   "county": "臺南市",
+   "code": "111323",
+   "ownership": "私立",
+   "url": "http://www.lmsh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [
+    {
+     "url": "https://www.lmsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_c7825b9fddc18272d24e339ed4ec60c379350068",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-29",
+     "samples": [
+      [
+       "2026-10-29",
+       "115年「南瀛獅子盃第14屆反毒宣導書法比賽」"
+      ],
+      [
+       "2026-08-17",
+       "115年大學分科測驗放榜 黎明學子金榜題名再創升學佳績"
+      ],
+      [
+       "2026-07-27",
+       "黎明中學國際邀請賽勇奪兩項大獎並締造全場最高分"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.lmsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_f31c5d76f7e0c85046bb4e61684f7c3214fe0ced",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "「臺南市115學年度學生音樂比賽暨師生本土語及新住民語歌謠比"
+      ],
+      [
+       "2026-10-29",
+       "115年「南瀛獅子盃第14屆反毒宣導書法比賽」"
+      ],
+      [
+       "2026-10-01",
+       "黎明中學115學年度第㇐學期 多元智能培育營假日A週 專車路"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.lmsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_3e0dd0133b9f4976b98f128d3b54f53b4b38b6a2",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-02",
+     "samples": [
+      [
+       "2026-08-17",
+       "115年大學分科測驗放榜 黎明學子金榜題名再創升學佳績"
+      ],
+      [
+       "2026-07-27",
+       "黎明中學國際邀請賽勇奪兩項大獎並締造全場最高分"
+      ],
+      [
+       "2026-06-05",
+       "115年國三教育會考放榜 黎明中學再創佳績"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 5,
+   "final_url": "https://www.lmsh.tn.edu.tw/ischool",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.lmsh.tn.edu.tw/home?cid=223"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "lmsh",
+    "name": "私立黎明高中",
+    "short": "黎明高中",
+    "county": "臺南市",
+    "base": "https://www.lmsh.tn.edu.tw",
+    "adapter": "ischool-json",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.lmsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_3e0dd0133b9f4976b98f128d3b54f53b4b38b6a2",
+      "tier": "hot"
+     },
+     {
+      "url": "https://www.lmsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_c7825b9fddc18272d24e339ed4ec60c379350068",
+      "tier": "cold"
+     },
+     {
+      "url": "https://www.lmsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_f31c5d76f7e0c85046bb4e61684f7c3214fe0ced",
+      "tier": "cold"
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnjh",
+   "name": "市立南寧高中",
+   "county": "臺南市",
+   "code": "213303",
+   "ownership": "公立",
+   "url": "http://www.nnjh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "xoops",
+   "adapter": "xoops-tadnews",
+   "sources": [
+    {
+     "url": "https://www.nnjh.tn.edu.tw/modules/tadnews/rss.php",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.nnjh.tn.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "南寧高中行事曆",
+     "url": "https://www.nnjh.tn.edu.tw/modules/school/index.php?department_id=7&page_id=63"
+    },
+    {
+     "text": "行事曆",
+     "url": "https://calendar.google.com/calendar/u/0/embed?src=nnjh.tn.edu.tw_nf9oa8b2p0c22rmdaq4j6khkfs@group.calendar.google.com&ctz=Asia/Taipei&pli=1"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "nnkieh",
+   "name": "國立南科國際實驗高中",
+   "county": "臺南市",
+   "code": "110328",
+   "ownership": "公立",
+   "url": "http://www.nnkieh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [
+    {
+     "url": "https://www.nnkieh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_c4063c6325d22f4d1efd2abf469f81ac1af6f281",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-29",
+     "samples": [
+      [
+       "2026-10-28",
+       "✨115學年高中部校內語文競賽-【國語朗讀、臺灣台語朗讀篇目"
+      ],
+      [
+       "2026-10-29",
+       "勞動部勞動力發展署「少年就業資源寶典電子書」－ 少年版、民間"
+      ],
+      [
+       "2026-10-29",
+       "【大學營隊】臺灣師範大學「2027教育營—小木偶奇育記」"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.nnkieh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_024b7dfbc500480e6e9518522e2b5ebefe45862a",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-20",
+       "2027年國中部暑期紐西蘭姊妹校國際教育交流活動開始報名~"
+      ],
+      [
+       "2026-10-30",
+       "研習資訊｜本市國教輔導團性平團辦理「數位性別暴力防治工作坊」"
+      ],
+      [
+       "2026-10-28",
+       "衛生福利部心快活平台115年度心理健康知識PK賽競賽辦法"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.nnkieh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_627489b28f0b6ca30dfe31137a497102eb8ad358",
+     "count": 20,
+     "dated": 20,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "高中部新生暑假作業鋒芒筆露競賽-國文科、自然科得獎名單"
+      ],
+      [
+       "2026-10-22",
+       "賀！本校田徑隊參加臺南市115年中小學田徑錦標賽榮獲佳績！"
+      ],
+      [
+       "2026-10-19",
+       "115學年度暑假「閱讀心得」徵文得獎名單"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 5,
+   "final_url": "https://www.nnkieh.tn.edu.tw/ischool",
+   "calendar_candidates": [
+    {
+     "text": "115學年第1學期全校行事曆",
+     "url": "https://www.nnkieh.tn.edu.tw/ischool/publish_page/0?cid=27"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "nnkieh",
+    "name": "國立南科國際實驗高中",
+    "short": "南科國際實驗高中",
+    "county": "臺南市",
+    "base": "https://www.nnkieh.tn.edu.tw",
+    "adapter": "ischool-json",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.nnkieh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_024b7dfbc500480e6e9518522e2b5ebefe45862a",
+      "tier": "hot"
+     },
+     {
+      "url": "https://www.nnkieh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_c4063c6325d22f4d1efd2abf469f81ac1af6f281",
+      "tier": "cold"
+     },
+     {
+      "url": "https://www.nnkieh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_627489b28f0b6ca30dfe31137a497102eb8ad358",
+      "tier": "cold"
+     }
+    ]
+   }
+  },
+  {
+   "id": "phvs",
+   "name": "國立白河商工",
+   "county": "臺南市",
+   "code": "110403",
+   "ownership": "公立",
+   "url": "http://www.phvs.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [],
+   "error": "",
+   "requests": 1,
+   "final_url": "https://www.phvs.tn.edu.tw/",
+   "calendar_candidates": [],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "pmai",
+   "name": "國立北門農工",
+   "county": "臺南市",
+   "code": "110404",
+   "ownership": "公立",
+   "url": "http://www.pmai.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "wordpress",
+   "adapter": "wordpress",
+   "sources": [
+    {
+     "url": "https://www.pmai.tn.edu.tw/feed/",
+     "count": 12,
+     "dated": 12,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "115學年度第1學期第2次期中考試時間表、命題教師一覽表"
+      ],
+      [
+       "2026-10-30",
+       "115年交通部公路局「推動機車駕訓制度」補助計畫調查。"
+      ],
+      [
+       "2026-10-29",
+       "115學年度第一學期補考申請截止公告"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.pmai.tn.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.pmai.tn.edu.tw/category/school-calendar"
+    },
+    {
+     "text": "雲端學期行事曆",
+     "url": "https://calendar.google.com/calendar/u/0/embed?src=c_nbtiskrng1pkrcj168db62l4hg@group.calendar.google.com&ctz=Asia/Taipei"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "pmai",
+    "name": "國立北門農工",
+    "short": "北門農工",
+    "county": "臺南市",
+    "base": "https://www.pmai.tn.edu.tw",
+    "adapter": "wordpress",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.pmai.tn.edu.tw/feed/",
+      "tier": "hot"
+     }
+    ]
+   }
+  },
+  {
+   "id": "sfsh",
+   "name": "國立新豐高中",
+   "county": "臺南市",
+   "code": "110302",
+   "ownership": "公立",
+   "url": "http://www.sfsh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [
+    {
+     "url": "https://www.sfsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_0a34fb9d4004781d3b88d6d7ae2c8f7437e9d254",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-23",
+     "samples": [
+      [
+       "2026-09-22",
+       "賀！309蕭又禎同學參加臺南市115年度語文競賽決賽高中學生"
+      ],
+      [
+       "2026-09-22",
+       "賀！201李安蓁同學參加臺南市115年度語文競賽決賽高中學生"
+      ],
+      [
+       "2026-09-05",
+       "賀！309蕭又禎同學參加臺南市115年度語文競賽分區預賽(南"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.sfsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_55a1a38188ec3b531596e3f3855aad54ad8232fc",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "115學年度第1學期第2次擴大行政會報會議紀錄"
+      ],
+      [
+       "2026-10-22",
+       "2027 日本教育旅行參訪活動"
+      ],
+      [
+       "2026-10-21",
+       "115年全校運動會報名，請康樂股長儘速完成。"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.sfsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_681da983c4777cbf091dd783a839cb0dfbb43abc",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-09-24",
+     "samples": [
+      [
+       "2026-09-24",
+       "轉知115年度社團法人台南市冬陽愛心會-低收入戶子女獎助學金"
+      ],
+      [
+       "2026-09-24",
+       "轉知財團法人白曉燕文教基金會114學年度第二學期警察子女獎助"
+      ],
+      [
+       "2026-09-14",
+       "函轉-財團法人大碩青年關懷基金會獎助學金"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 5,
+   "final_url": "https://www.sfsh.tn.edu.tw/ischool",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.sfsh.tn.edu.tw/home?cid=2279"
+    },
+    {
+     "text": "校園行事曆(Google日曆)",
+     "url": "https://www.sfsh.tn.edu.tw/home?cid=2280"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "sfsh",
+    "name": "國立新豐高中",
+    "short": "新豐高中",
+    "county": "臺南市",
+    "base": "https://www.sfsh.tn.edu.tw",
+    "adapter": "ischool-json",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.sfsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_0a34fb9d4004781d3b88d6d7ae2c8f7437e9d254",
+      "tier": "hot"
+     },
+     {
+      "url": "https://www.sfsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_55a1a38188ec3b531596e3f3855aad54ad8232fc",
+      "tier": "cold"
+     },
+     {
+      "url": "https://www.sfsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_681da983c4777cbf091dd783a839cb0dfbb43abc",
+      "tier": "cold"
+     }
+    ]
+   }
+  },
+  {
+   "id": "slsh",
+   "name": "市立沙崙國際高中",
+   "county": "臺南市",
+   "code": "114344",
+   "ownership": "公立",
+   "url": "https://www.slsh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ccms",
+   "adapter": "ylc-ccms",
+   "sources": [
+    {
+     "url": "https://www.slsh.tn.edu.tw/",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.slsh.tn.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.slsh.tn.edu.tw/modules/school/index.php?department_id=9&page_id=87"
+    },
+    {
+     "text": "行事曆",
+     "url": "https://www.slsh.tn.edu.tw/modules/school/index.php?department_id=2&page_id=17"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "tcjh",
+   "name": "市立土城高中",
+   "county": "臺南市",
+   "code": "213316",
+   "ownership": "公立",
+   "url": "http://www.tcjh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "xoops",
+   "adapter": "xoops-tadnews",
+   "sources": [
+    {
+     "url": "https://www.tcjh.tn.edu.tw/modules/tadnews/rss.php",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.tcjh.tn.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.tcjh.tn.edu.tw/modules/school/index.php?department_id=8&page_id=77"
+    },
+    {
+     "text": "行事曆",
+     "url": "https://www.tcjh.tn.edu.tw/modules/school/index.php?department_id=2&page_id=17"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "tnfsh",
+   "name": "國立臺南一中",
+   "county": "臺南市",
+   "code": "210305",
+   "ownership": "公立",
+   "url": "https://www.tnfsh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "asp-parser",
+   "adapter": "asp-parser-cms",
+   "sources": [],
+   "error": "",
+   "requests": 1,
+   "final_url": "https://www.tnfsh.tn.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.tnfsh.tn.edu.tw/form/index.aspx?Parser=2,8,48"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "tngs",
+   "name": "國立臺南女中",
+   "county": "臺南市",
+   "code": "210306",
+   "ownership": "公立",
+   "url": "http://www.tngs.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "wordpress",
+   "adapter": "wordpress",
+   "sources": [
+    {
+     "url": "https://www.tngs.tn.edu.tw/feed/",
+     "count": 10,
+     "dated": 10,
+     "newest": "2026-10-31",
+     "samples": [
+      [
+       "2026-10-31",
+       "【轉知】教育部「教育部海洋教育推手獎遴選及表揚計畫」"
+      ],
+      [
+       "2026-10-31",
+       "【轉知】教育部辦理「2026自主學習節」資訊"
+      ],
+      [
+       "2026-10-31",
+       "【轉知】國立嘉義女子高級中學歷史學科中心參與辦理115學年度"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.tngs.tn.edu.tw/",
+   "calendar_candidates": [],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "tngs",
+    "name": "國立臺南女中",
+    "short": "臺南女中",
+    "county": "臺南市",
+    "base": "https://www.tngs.tn.edu.tw",
+    "adapter": "wordpress",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.tngs.tn.edu.tw/feed/",
+      "tier": "hot"
+     }
+    ]
+   }
+  },
+  {
+   "id": "tntcsh",
+   "name": "國立臺南大學附中",
+   "county": "臺南市",
+   "code": "110308",
+   "ownership": "公立",
+   "url": "http://www.tntcsh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.tntcsh.tn.edu.tw/portal",
+   "calendar_candidates": [],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "twvs",
+   "name": "國立曾文家商",
+   "county": "臺南市",
+   "code": "110405",
+   "ownership": "公立",
+   "url": "http://www.twvs.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "wordpress",
+   "adapter": "wordpress",
+   "sources": [
+    {
+     "url": "https://www.twvs.tn.edu.tw/feed/",
+     "count": 10,
+     "dated": 10,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "公告本校115年度第1次庶務組長外補甄選簡章，請踴躍報名。"
+      ],
+      [
+       "2026-10-30",
+       "轉知教育部國民及學前教育署115年度『雲端廉政教室』法紀宣導"
+      ],
+      [
+       "2026-10-30",
+       "教育部海洋教育推手獎遴選及表揚計畫"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.twvs.tn.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.twvs.tn.edu.tw/calendar/"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "twvs",
+    "name": "國立曾文家商",
+    "short": "曾文家商",
+    "county": "臺南市",
+    "base": "https://www.twvs.tn.edu.tw",
+    "adapter": "wordpress",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.twvs.tn.edu.tw/feed/",
+      "tier": "hot"
+     }
+    ]
+   }
+  },
+  {
+   "id": "yhsh",
+   "name": "私立瀛海國際高中",
+   "county": "臺南市",
+   "code": "211315",
+   "ownership": "私立",
+   "url": "https://www.yhsh.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [],
+   "error": "",
+   "requests": 1,
+   "final_url": "https://www.yhsh.tn.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "最新行事曆",
+     "url": "https://www.yhsh.tn.edu.tw/userfiles/files/20261021055815442.pdf"
+    },
+    {
+     "text": "115學年度暑假行事曆",
+     "url": "https://www.yhsh.tn.edu.tw/yinghainews4.html"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "yrhs",
+   "name": "市立永仁高中",
+   "county": "臺南市",
+   "code": "114307",
+   "ownership": "公立",
+   "url": "https://www.yrhs.tn.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [],
+   "error": "",
+   "requests": 1,
+   "final_url": "https://www.yrhs.tn.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://drive.google.com/file/d/1-RgRCkMQTEPh5KkdHBi2eN6nQbEiEaYt/view?usp=drive_link"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "cchs",
+   "name": "市立中正高中",
+   "county": "高雄市",
+   "code": "583301",
+   "ownership": "公立",
+   "url": "http://www.cchs.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [
+    {
+     "url": "https://www.cchs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_d858f68d210b3976cc6ba11477c1b6e273c98d3a",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-31",
+     "samples": [
+      [
+       "2026-09-30",
+       "❣️115年度國一版「多元探索、適性輔導（國一探索篇）」暨 "
+      ],
+      [
+       "2026-09-16",
+       "115學年度第一學期 English Table 錄取名單"
+      ],
+      [
+       "2026-08-26",
+       "★ 115-1重點行事曆 ★0924修正公告"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.cchs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_8b4bcd016899e6a9d1e783a8022bedc85c3b7b94",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-31",
+     "samples": [
+      [
+       "2026-10-31",
+       "高中氣候變遷教育線上課程《與2050淨零世代的對話》"
+      ],
+      [
+       "2026-10-29",
+       "轉知三民高中辦理跨校SEL社群「【覺察與選擇】步步為營的 人"
+      ],
+      [
+       "2026-10-28",
+       "轉知教育部國民及學前教育署委請臺中市立臺中第二高級中等學校辦"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.cchs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_51d4629144194b2a89106693504f8c07ce64ff24",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "2027育達觀休盃創意遊程設計暨專題製作競賽（報名至2027"
+      ],
+      [
+       "2026-10-28",
+       "數學互動探究×AI實作：輕鬆搞定學習歷程檔案"
+      ],
+      [
+       "2026-10-28",
+       "2027國際太空站(ISS)零重力實驗提案比賽 Asian "
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 5,
+   "final_url": "https://www.cchs.kh.edu.tw/home",
+   "calendar_candidates": [
+    {
+     "text": "學校行事曆 School Calendar",
+     "url": "https://calendar.google.com/calendar/embed?src=khcchs802@gmail.com&ctz=Asia/Taipei"
+    },
+    {
+     "text": "查看完整行事曆",
+     "url": "https://calendar.google.com/calendar/u/0/embed?src=khcchs802@gmail.com&ctz=Asia/Taipei&pli=1"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "cchs",
+    "name": "市立中正高中",
+    "short": "中正高中",
+    "county": "高雄市",
+    "base": "https://www.cchs.kh.edu.tw",
+    "adapter": "ischool-json",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.cchs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_51d4629144194b2a89106693504f8c07ce64ff24",
+      "tier": "hot"
+     },
+     {
+      "url": "https://www.cchs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_8b4bcd016899e6a9d1e783a8022bedc85c3b7b94",
+      "tier": "cold"
+     },
+     {
+      "url": "https://www.cchs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_d858f68d210b3976cc6ba11477c1b6e273c98d3a",
+      "tier": "cold"
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccvs",
+   "name": "市立中正高工",
+   "county": "高雄市",
+   "code": "593401",
+   "ownership": "公立",
+   "url": "http://www.ccvs.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "new-classic-cms",
+   "adapter": "new-classic-cms",
+   "sources": [
+    {
+     "url": "https://www.ccvs.kh.edu.tw/",
+     "count": 5,
+     "dated": 0,
+     "newest": "",
+     "samples": [
+      [
+       "",
+       "【訓育組】47週年校慶系列活動才藝競賽參賽名單公告"
+      ],
+      [
+       "",
+       "【訓育組】47週年校慶園遊會實施計畫暨攤位申請表"
+      ],
+      [
+       "",
+       "【衛生組】115-1中正高工生活榮譽競賽整潔評比第八週績優班"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.ccvs.kh.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://bit.ly/11202CCVS"
+    },
+    {
+     "text": "教育局及校內重要行事曆",
+     "url": "https://www.ccvs.kh.edu.tw/p/403-1000-208.php"
+    }
+   ],
+   "unit": "1000",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "hchs",
+   "name": "市立新莊高中",
+   "county": "高雄市",
+   "code": "533302",
+   "ownership": "公立",
+   "url": "https://www.hchs.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "wordpress",
+   "adapter": "wordpress",
+   "sources": [
+    {
+     "url": "https://www.hchs.kh.edu.tw/feed/",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.hchs.kh.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "全校行事曆",
+     "url": "https://www.hchs.kh.edu.tw/category/calendar_line/"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "kghs",
+   "name": "市立高雄女中",
+   "county": "高雄市",
+   "code": "573301",
+   "ownership": "公立",
+   "url": "http://www.kghs.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [
+    {
+     "url": "https://www.kghs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_b1fbad0b84c904dee4f4a1cbc1cbb4a722dfe6e7",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-28",
+     "samples": [
+      [
+       "2025-11-15",
+       "宣導:高雄女中大門臨時停車區示圖"
+      ],
+      [
+       "2025-11-15",
+       "請同學協助勸導家長在校門口前切勿併排停車與遵守停車熄火"
+      ],
+      [
+       "2026-09-07",
+       "2026 WinterREP沖繩尚學冬季互惠交流活動招募!!"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.kghs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_63e9fe55a54ad008c7a67ebead2d639754da4dd1",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-07",
+     "samples": [
+      [
+       "2026-09-29",
+       "AERC2026 亞洲機器 人運動競技大賽"
+      ],
+      [
+       "2026-09-07",
+       "2026 WinterREP沖繩尚學冬季互惠交流活動招募!!"
+      ],
+      [
+       "2025-11-14",
+       "2026年寒假Python程式設計系列、ACP與SSE色彩學"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.kghs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_ba2d9104ffbcaf7c6df49bf0b4d94dada5dfd12c",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-24",
+     "samples": [
+      [
+       "2026-09-07",
+       "2026 WinterREP沖繩尚學冬季互惠交流活動招募!!"
+      ],
+      [
+       "2026-03-05",
+       "檢送「高雄市政府健康檢查資訊宣導」1份，請同仁參考運用"
+      ],
+      [
+       "2026-05-15",
+       "國立中央大學主辦「STEAM能源創新教學探索營」高中職教師增"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 5,
+   "final_url": "https://www.kghs.kh.edu.tw/home",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.kghs.kh.edu.tw/home?cid=676"
+    },
+    {
+     "text": "行事曆",
+     "url": "https://www.kghs.kh.edu.tw/home?cid=1003"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "kghs",
+    "name": "市立高雄女中",
+    "short": "高雄女中",
+    "county": "高雄市",
+    "base": "https://www.kghs.kh.edu.tw",
+    "adapter": "ischool-json",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.kghs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_63e9fe55a54ad008c7a67ebead2d639754da4dd1",
+      "tier": "hot"
+     },
+     {
+      "url": "https://www.kghs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_b1fbad0b84c904dee4f4a1cbc1cbb4a722dfe6e7",
+      "tier": "cold"
+     },
+     {
+      "url": "https://www.kghs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_ba2d9104ffbcaf7c6df49bf0b4d94dada5dfd12c",
+      "tier": "cold"
+     }
+    ]
+   }
+  },
+  {
+   "id": "kksh.nsysu.edu.tw",
+   "name": "國立中山大學附屬國光高中",
+   "county": "高雄市",
+   "code": "540301",
+   "ownership": "公立",
+   "url": "https://kksh.nsysu.edu.tw/",
+   "url_source": "moe",
+   "system": "new-classic-cms",
+   "adapter": "new-classic-cms",
+   "sources": [
+    {
+     "url": "https://kksh.nsysu.edu.tw/",
+     "count": 8,
+     "dated": 0,
+     "newest": "",
+     "samples": [
+      [
+       "",
+       "參加115年度Cool English英閱王比賽-榮獲英閱王"
+      ],
+      [
+       "",
+       "115學年英文單字比賽 頒獎"
+      ],
+      [
+       "",
+       "11508圖書館利用教育"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://kksh.nsysu.edu.tw/",
+   "calendar_candidates": [],
+   "unit": "1047",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "lcvs",
+   "name": "私立立志高中",
+   "county": "高雄市",
+   "code": "551301",
+   "ownership": "私立",
+   "url": "https://w5.lcvs.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "wordpress",
+   "adapter": "wordpress",
+   "sources": [
+    {
+     "url": "https://w5.lcvs.kh.edu.tw/feed/",
+     "error": "HTTPError"
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://w5.lcvs.kh.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "校園行事曆",
+     "url": "https://www.lcvs.kh.edu.tw/web_ap/schedule/schedule.asp"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "ly",
+   "name": "市立林園高中",
+   "county": "高雄市",
+   "code": "124311",
+   "ownership": "公立",
+   "url": "http://www.ly.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "xoops",
+   "adapter": "xoops-tadnews",
+   "sources": [
+    {
+     "url": "https://www.ly.kh.edu.tw/modules/tadnews/rss.php",
+     "error": "HTTPError"
+    }
+   ],
+   "error": "",
+   "requests": 3,
+   "final_url": "https://www.ly.kh.edu.tw/view/index.php?WebID=336",
+   "calendar_candidates": [
+    {
+     "text": "》林園高中行事曆",
+     "url": "https://schoolmgn.kh.edu.tw/upload/336/104_64614/115%E5%AD%B8%E5%B9%B4%E5%BA%A6%E7%AC%AC%E4%B8%80%E5%AD%B8%E6%9C%9F%E8%A1%8C%E4%BA%8B%E6%9B%86.pdf"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "nknush",
+   "name": "國立高師大附中",
+   "county": "高雄市",
+   "code": "580301",
+   "ownership": "公立",
+   "url": "http://www.nknush.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "wordpress",
+   "adapter": "wordpress",
+   "sources": [
+    {
+     "url": "https://www.nknush.kh.edu.tw/feed/",
+     "count": 24,
+     "dated": 24,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "公告訓育組 🎤高師大附中115學年度校慶歌唱比賽國小部獲獎名"
+      ],
+      [
+       "2026-10-30",
+       "公告訓育組 🎤115學年度校慶歌唱比賽入選決賽同學名單"
+      ],
+      [
+       "2026-10-30",
+       "公告訓育組 2027金車曙光寒假物資贊助計劃"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.nknush.kh.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "校務行事曆",
+     "url": "https://sites.google.com/tea.nknush.kh.edu.tw/jiaowu/%E8%A1%8C%E4%BA%8B%E6%9B%86"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "nknush",
+    "name": "國立高師大附中",
+    "short": "高師大附中",
+    "county": "高雄市",
+    "base": "https://www.nknush.kh.edu.tw",
+    "adapter": "wordpress",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.nknush.kh.edu.tw/feed/",
+      "tier": "hot"
+     }
+    ]
+   }
+  },
+  {
+   "id": "rwm",
+   "name": "市立仁武高中",
+   "county": "高雄市",
+   "code": "124313",
+   "ownership": "公立",
+   "url": "http://www.rwm.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "wordpress",
+   "adapter": "wordpress",
+   "sources": [
+    {
+     "url": "https://www.rwm.kh.edu.tw/feed/",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.rwm.kh.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "置頂 重要 115學年度校內重要考試行事曆",
+     "url": "https://www.rwm.kh.edu.tw/news/115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e9%87%8d%e8%a6%81%e8%80%83%e8%a9%a6%e8%a1%8c%e4%ba%8b%e6%9b%86/"
+    },
+    {
+     "text": "校園行事曆",
+     "url": "http://www.rwm.kh.edu.tw/calendar/"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "smvhs",
+   "name": "市立三民家商",
+   "county": "高雄市",
+   "code": "533402",
+   "ownership": "公立",
+   "url": "http://www.smvhs.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "new-classic-cms",
+   "adapter": "new-classic-cms",
+   "sources": [
+    {
+     "url": "https://www.smvhs.kh.edu.tw/",
+     "count": 7,
+     "dated": 0,
+     "newest": "",
+     "samples": [
+      [
+       "",
+       "本校通過教育部優質高級中等學校認證"
+      ],
+      [
+       "",
+       "本校115高雄市美術比賽得獎名單"
+      ],
+      [
+       "",
+       "本校115高雄市語文競賽得獎名單"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.smvhs.kh.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.smvhs.kh.edu.tw/p/412-1000-118.php?Lang=zh-tw"
+    }
+   ],
+   "unit": "1000",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "wsm",
+   "name": "市立文山高中",
+   "county": "高雄市",
+   "code": "124302",
+   "ownership": "公立",
+   "url": "http://www.wsm.kh.edu.tw/",
+   "url_source": "moe",
+   "system": "new-classic-cms",
+   "adapter": "new-classic-cms",
+   "sources": [
+    {
+     "url": "https://www.wsm.kh.edu.tw/",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.wsm.kh.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.wsm.kh.edu.tw/p/404-1000-369.php"
+    }
+   ],
+   "unit": "1000",
+   "verdict": "同系統，需調整"
+  },
+  {
+   "id": "www.cmsh.khc.edu.tw",
+   "name": "國立旗美高中",
+   "county": "高雄市",
+   "code": "120311",
+   "ownership": "公立",
+   "url": "http://www.cmsh.khc.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [
+    {
+     "url": "https://www.cmsh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_8a7d68a5b64a56c3777238a7b2470c8b167c37f1",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "彈性課程第2階段編班"
+      ],
+      [
+       "2026-10-27",
+       "2027印尼國際教育交流學員甄選結果公告"
+      ],
+      [
+       "2026-10-27",
+       "11５學年度制服繳費通知"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.cmsh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_45e39a5ef97f90f262a35f6e62df46df18085f76",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-29",
+       "轉知國立中山大學舉辦「海洋專題展」"
+      ],
+      [
+       "2026-10-27",
+       "2027印尼國際教育交流學員甄選結果公告"
+      ],
+      [
+       "2026-10-30",
+       "轉知「中研講堂──跨縣市科普演講」"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.cmsh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_2de0863e364fbf3b8b8036a89ef21210361b9a6d",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-29",
+     "samples": [
+      [
+       "2026-10-27",
+       "2027印尼國際教育交流學員甄選結果公告"
+      ],
+      [
+       "2026-10-05",
+       "轉知「115-116年中小學媒體素養主題式線上講座」"
+      ],
+      [
+       "2026-10-29",
+       "轉知「《寫一片生活風景》——從生活採集到書法創 作的SEL體"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 5,
+   "final_url": "https://www.cmsh.khc.edu.tw/home",
+   "calendar_candidates": [
+    {
+     "text": "行政版行事曆",
+     "url": "https://www.cmsh.khc.edu.tw/home"
+    },
+    {
+     "text": "雲端行事曆",
+     "url": "https://www.cmsh.khc.edu.tw/home?cid=1043"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "www.cmsh.khc.edu.tw",
+    "name": "國立旗美高中",
+    "short": "旗美高中",
+    "county": "高雄市",
+    "base": "https://www.cmsh.khc.edu.tw",
+    "adapter": "ischool-json",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.cmsh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_2de0863e364fbf3b8b8036a89ef21210361b9a6d",
+      "tier": "hot"
+     },
+     {
+      "url": "https://www.cmsh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_45e39a5ef97f90f262a35f6e62df46df18085f76",
+      "tier": "cold"
+     },
+     {
+      "url": "https://www.cmsh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_8a7d68a5b64a56c3777238a7b2470c8b167c37f1",
+      "tier": "cold"
+     }
+    ]
+   }
+  },
+  {
+   "id": "www.fhsh.khc.edu.tw",
+   "name": "國立鳳新高中",
+   "county": "高雄市",
+   "code": "120319",
+   "ownership": "公立",
+   "url": "http://www.fhsh.khc.edu.tw/",
+   "url_source": "moe",
+   "system": "wordpress",
+   "adapter": "wordpress",
+   "sources": [
+    {
+     "url": "https://www.fhsh.khc.edu.tw/feed/",
+     "count": 20,
+     "dated": 20,
+     "newest": "2026-11-01",
+     "samples": [
+      [
+       "2026-11-01",
+       "【公告】115學年度「高雄市臺加(加拿大)雙聯學制」第2屆合"
+      ],
+      [
+       "2026-10-30",
+       "【研習】115學年度南區高優學校SDGs與地方學聯合諮輔會議"
+      ],
+      [
+       "2026-10-30",
+       "【公告】115-1國立臺中教育大學116學年度學士班特殊選才"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.fhsh.khc.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "學期行事曆",
+     "url": "https://www.fhsh.khc.edu.tw/ga/calendars"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "www.fhsh.khc.edu.tw",
+    "name": "國立鳳新高中",
+    "short": "鳳新高中",
+    "county": "高雄市",
+    "base": "https://www.fhsh.khc.edu.tw",
+    "adapter": "wordpress",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.fhsh.khc.edu.tw/feed/",
+      "tier": "hot"
+     }
+    ]
+   }
+  },
+  {
+   "id": "www.fssh.khc.edu.tw",
+   "name": "國立鳳山高中",
+   "county": "高雄市",
+   "code": "120303",
+   "ownership": "公立",
+   "url": "http://www.fssh.khc.edu.tw/",
+   "url_source": "moe",
+   "system": "ischool",
+   "adapter": "ischool-json",
+   "sources": [
+    {
+     "url": "https://www.fssh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_0f075596d6cfd282f38872677912f105e9857086",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-30",
+       "【公告】本校115年度庶務組長進入甄選名單"
+      ],
+      [
+       "2026-10-30",
+       "86 級畢業 30 週年重聚專屬網站"
+      ],
+      [
+       "2026-10-30",
+       "數學互動探究×AI實作：輕鬆搞定學習歷程檔案"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.fssh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_52f7d9b727b90d372d48a288302b8dc81a5c393d",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-19",
+       "狂賀! 本校學生參加「115學年度學生美術比賽高雄市初賽」表"
+      ],
+      [
+       "2026-10-30",
+       "【杏壇傳愛，攜手築夢】感謝鳳山扶輪社蒞臨鳳山高中頒發獎助學金"
+      ],
+      [
+       "2026-10-15",
+       "國際交流狂吸睛！鳳山高中雙語數學專題驚豔華盛頓大學專家與菲國"
+      ]
+     ]
+    },
+    {
+     "url": "https://www.fssh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_92de523419ba7f57265000a06f478212aab74f00",
+     "count": 30,
+     "dated": 30,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-27",
+       "116第一次英聽成績公布與複查重要時程提醒"
+      ],
+      [
+       "2026-09-07",
+       "升讀大學之考試、招生資訊網站"
+      ],
+      [
+       "2026-10-30",
+       "轉知逢甲大學國際科技與管理學院2+2國際專班獨招訊息"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 5,
+   "final_url": "https://www.fssh.khc.edu.tw/home",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.fssh.khc.edu.tw/ischool/rfile/c26ae18125eab612b9a3ddd36dbc28f3"
+    }
+   ],
+   "unit": "",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "www.fssh.khc.edu.tw",
+    "name": "國立鳳山高中",
+    "short": "鳳山高中",
+    "county": "高雄市",
+    "base": "https://www.fssh.khc.edu.tw",
+    "adapter": "ischool-json",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "scan_pages": [],
+    "list_pages": [
+     {
+      "url": "https://www.fssh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_0f075596d6cfd282f38872677912f105e9857086",
+      "tier": "hot"
+     },
+     {
+      "url": "https://www.fssh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_52f7d9b727b90d372d48a288302b8dc81a5c393d",
+      "tier": "cold"
+     },
+     {
+      "url": "https://www.fssh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_92de523419ba7f57265000a06f478212aab74f00",
+      "tier": "cold"
+     }
+    ]
+   }
+  },
+  {
+   "id": "www.kssh.khc.edu.tw",
+   "name": "國立岡山高中",
+   "county": "高雄市",
+   "code": "120304",
+   "ownership": "公立",
+   "url": "http://www.kssh.khc.edu.tw/",
+   "url_source": "moe",
+   "system": "new-classic-cms",
+   "adapter": "new-classic-cms",
+   "sources": [
+    {
+     "url": "https://www.kssh.khc.edu.tw/p/403-1001-1128-1.php",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    },
+    {
+     "url": "https://www.kssh.khc.edu.tw/",
+     "count": 15,
+     "dated": 15,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-16",
+       "【輔導室公告】🌳116青年領航計畫校內學生/家長說明會"
+      ],
+      [
+       "2026-10-21",
+       "【學務處公告】115學年度日本教育旅行 x 岡山縣立西大寺高"
+      ],
+      [
+       "2026-10-22",
+       "【試務組公告】🐸115-1高二第１次抽考時間及範圍🐸"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 3,
+   "final_url": "https://www.kssh.khc.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆 📅",
+     "url": "https://www.kssh.khc.edu.tw/p/412-1001-1515.php"
+    }
+   ],
+   "unit": "1001",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "www.kssh.khc.edu.tw",
+    "name": "國立岡山高中",
+    "short": "岡山高中",
+    "county": "高雄市",
+    "base": "https://www.kssh.khc.edu.tw",
+    "adapter": "new-classic-cms",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "unit": "1001",
+    "scan_pages": [
+     "https://www.kssh.khc.edu.tw/"
+    ],
+    "list_pages": []
+   }
+  },
+  {
+   "id": "www.ksvs.khc.edu.tw",
+   "name": "國立岡山農工",
+   "county": "高雄市",
+   "code": "120402",
+   "ownership": "公立",
+   "url": "http://www.ksvs.khc.edu.tw/",
+   "url_source": "moe",
+   "system": "new-classic-cms",
+   "adapter": "new-classic-cms",
+   "sources": [
+    {
+     "url": "https://www.ksvs.khc.edu.tw/",
+     "count": 4,
+     "dated": 4,
+     "newest": "2026-10-30",
+     "samples": [
+      [
+       "2026-10-21",
+       "國立岡山高級農工職業學校進修部約僱人員甄選簡章"
+      ],
+      [
+       "2026-10-20",
+       "1151012修正國立岡山高級農工職業學校教職員工文康活動實"
+      ],
+      [
+       "2026-10-30",
+       "【體育組】90週年校慶-學生組田賽高女高一男決賽成績記錄表"
+      ]
+     ]
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.ksvs.khc.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "行事曆",
+     "url": "https://www.ksvs.khc.edu.tw/p/404-1004-708.php"
+    }
+   ],
+   "unit": "1004",
+   "verdict": "可上架",
+   "proposed": {
+    "id": "www.ksvs.khc.edu.tw",
+    "name": "國立岡山農工",
+    "short": "岡山農工",
+    "county": "高雄市",
+    "base": "https://www.ksvs.khc.edu.tw",
+    "adapter": "new-classic-cms",
+    "tls_verify_fallback": "bundled-intermediates",
+    "notify_since": "2026-11-02",
+    "fetch_content_max": 5,
+    "unit": "1004",
+    "scan_pages": [
+     "https://www.ksvs.khc.edu.tw/"
+    ],
+    "list_pages": []
+   }
+  },
+  {
+   "id": "www.pmsh.khc.edu.tw",
+   "name": "財團法人普門中學",
+   "county": "高雄市",
+   "code": "121307",
+   "ownership": "私立",
+   "url": "https://www.pmsh.khc.edu.tw/",
+   "url_source": "moe",
+   "system": "ccms",
+   "adapter": "ylc-ccms",
+   "sources": [
+    {
+     "url": "https://www.pmsh.khc.edu.tw/",
+     "count": 0,
+     "dated": 0,
+     "newest": "",
+     "samples": []
+    }
+   ],
+   "error": "",
+   "requests": 2,
+   "final_url": "https://www.pmsh.khc.edu.tw/",
+   "calendar_candidates": [
+    {
+     "text": "學校行事曆",
+     "url": "https://www.pmsh.khc.edu.tw/category/calendar/"
+    }
+   ],
+   "unit": "",
+   "verdict": "同系統，需調整"
+  }
+ ]
+}
