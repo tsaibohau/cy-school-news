@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "sgsh",
- "generated_at": "2026-11-01T23:03:44+08:00",
+ "generated_at": "2026-11-02T01:13:55+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "247594578953018": {
@@ -30,22 +30,34 @@
    "page_id": 68653447462011,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/",
    "label": "檔案下載",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:49+08:00",
+   "path": [
+    "檔案下載"
+   ]
   },
   "265466144349781": {
    "page_id": 265466144349781,
    "url": "https://sg.sgshedu.tw/modules/tad_booking/",
    "label": "場地設備預約",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:51+08:00",
+   "path": [
+    "場地設備預約"
+   ]
   },
   "271453283833412": {
    "page_id": 271453283833412,
    "url": "https://sg.sgshedu.tw/modules/tad_form/",
    "label": "線上報名",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:53+08:00",
+   "path": [
+    "線上報名"
+   ]
   },
   "67487829081456": {
    "page_id": 67487829081456,
@@ -265,6 +277,94 @@
     "好站連結"
    ],
    "order": 25
+  },
+  "238935310500132": {
+   "page_id": 238935310500132,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php",
+   "label": "所有檔案",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 26
+  },
+  "51651709513370": {
+   "page_id": 51651709513370,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=icon&of_cat_sn=",
+   "label": "圖示",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 27
+  },
+  "229609378749472": {
+   "page_id": 229609378749472,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=more&of_cat_sn=",
+   "label": "列表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 28
+  },
+  "59089719536693": {
+   "page_id": 59089719536693,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?of_cat_sn=1",
+   "label": "教務處",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 29
+  },
+  "183640284438417": {
+   "page_id": 183640284438417,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?of_cat_sn=2",
+   "label": "學務處",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 30
+  },
+  "200535617580608": {
+   "page_id": 200535617580608,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?of_cat_sn=3",
+   "label": "總務處",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 31
+  },
+  "15329105283980": {
+   "page_id": 15329105283980,
+   "url": "https://sg.sgshedu.tw/modules/tad_booking/index.php",
+   "label": "我要預約",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "場地設備預約"
+   ],
+   "order": 32
+  },
+  "129113431056088": {
+   "page_id": 129113431056088,
+   "url": "https://sg.sgshedu.tw/modules/tad_form/index.php",
+   "label": "表單一覽",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "線上報名"
+   ],
+   "order": 33
   }
  },
  "handbook": {},
@@ -440,5 +540,5 @@
   "fcc13700e3",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-01T23:03:44+08:00"
+ "last_run_at": "2026-11-02T01:13:55+08:00"
 }

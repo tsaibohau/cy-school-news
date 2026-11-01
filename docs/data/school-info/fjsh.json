@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-01T23:04:45+08:00",
+ "generated_at": "2026-11-02T01:14:44+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "495": {
@@ -509,15 +509,108 @@
   },
   "475": {
    "page_id": 475,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:38+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "業務職掌"
+   ],
+   "changed_at": "2026-11-02T01:14:38+08:00",
+   "content_hash": "9b7b43a51cc30d5ba930558b03a103e55ab96280b6ce92c9dc2efeccf26fd5db",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "電話",
+    "分機",
+    "申請",
+    "入學",
+    "助學金",
+    "地址",
+    "報名",
+    "學業成績",
+    "專線",
+    "招生",
+    "獎助學金",
+    "獎學金",
+    "編班",
+    "課業輔導",
+    "轉學",
+    "選修",
+    "重修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-475.json",
+   "detail_revision": "27da1a471352eecb9a4d9acf08acd618af68f0378c0adef5a93c536dad5bf2a9",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "476": {
    "page_id": 476,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:41+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組"
+   ],
+   "changed_at": "2026-11-02T01:14:41+08:00",
+   "content_hash": "6e27c2679962a72ab82d688b97cf7c545fc47786c175f0e50278ce9fc0a40468",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "會考",
+    "模擬考",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-476.json",
+   "detail_revision": "e3fae77a7c503f2912e1d524f10c6623bfd3f3c145cbba7a572e82a7556ebde9",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "477": {
    "page_id": 477,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:43+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組"
+   ],
+   "changed_at": "2026-11-02T01:14:43+08:00",
+   "content_hash": "79ab4c78b0a7adaf446f0ff64e3ec58f5f50c9e519d1729de8ac43db4da43f05",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "補考",
+    "地址",
+    "學期成績",
+    "學習歷程",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-477.json",
+   "detail_revision": "78c7b3ab23098632449a607a64b9d4340139e32b2bd42be82aa414669ad3898b",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "478": {
    "page_id": 478,
@@ -773,6 +866,34 @@
   },
   "632": {
    "page_id": 632,
+   "status": "pending"
+  },
+  "481": {
+   "page_id": 481,
+   "status": "pending"
+  },
+  "482": {
+   "page_id": 482,
+   "status": "pending"
+  },
+  "483": {
+   "page_id": 483,
+   "status": "pending"
+  },
+  "484": {
+   "page_id": 484,
+   "status": "pending"
+  },
+  "486": {
+   "page_id": 486,
+   "status": "pending"
+  },
+  "487": {
+   "page_id": 487,
+   "status": "pending"
+  },
+  "488": {
+   "page_id": 488,
    "status": "pending"
   }
  },
@@ -1175,6 +1296,111 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fjsh-info-475",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 業務職掌",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-475.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "電話",
+    "分機",
+    "申請",
+    "入學",
+    "助學金",
+    "地址",
+    "報名",
+    "學業成績",
+    "專線",
+    "招生",
+    "獎助學金",
+    "獎學金",
+    "編班",
+    "課業輔導",
+    "轉學",
+    "選修",
+    "重修"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-475.json",
+   "detail_revision": "27da1a471352eecb9a4d9acf08acd618af68f0378c0adef5a93c536dad5bf2a9",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-476",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 教學組",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-476.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "會考",
+    "模擬考",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-476.json",
+   "detail_revision": "e3fae77a7c503f2912e1d524f10c6623bfd3f3c145cbba7a572e82a7556ebde9",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-477",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 註冊組",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-477.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "補考",
+    "地址",
+    "學期成績",
+    "學習歷程",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-477.json",
+   "detail_revision": "78c7b3ab23098632449a607a64b9d4340139e32b2bd42be82aa414669ad3898b",
+   "detail_status": "parsed"
+  },
+  {
    "id": "fjsh-info-495",
    "kind": "school_info",
    "title": "教務處 › 註冊組 › 招生資訊",
@@ -1303,5 +1529,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-01T23:04:45+08:00"
+ "last_run_at": "2026-11-02T01:14:44+08:00"
 }

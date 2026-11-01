@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-01T23:04:23+08:00",
+ "generated_at": "2026-11-02T01:14:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1592": {
@@ -3214,15 +3214,57 @@
   },
   "1765": {
    "page_id": 1765,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:32+08:00",
+   "path": [
+    "功能快捷選單",
+    "線上課表"
+   ],
+   "changed_at": "2026-11-02T01:14:32+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1765.json",
+   "detail_revision": "08148f7e0d92a8eb25797bb7fd4427403f5ebf7970eb5473d0c2524023c96fb1",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1766": {
    "page_id": 1766,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:34+08:00",
+   "path": [
+    "功能快捷選單",
+    "自學計畫系統"
+   ],
+   "changed_at": "2026-11-02T01:14:34+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1766.json",
+   "detail_revision": "2a25b0f70751e85595815e6798880bf189fa9b37f0704175b19b1988091f8452",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1767": {
    "page_id": 1767,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:36+08:00",
+   "path": [
+    "功能快捷選單",
+    "成績查詢"
+   ],
+   "changed_at": "2026-11-02T01:14:36+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1767.json",
+   "detail_revision": "df85737fcb4a316874e27cbce6447ec7bbac0f38a60fef3013f08ab80ea58026",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1768": {
    "page_id": 1768,
@@ -3880,6 +3922,57 @@
    "documents": [],
    "detail_ref": "data/details/cygsh/cygsh-info-1764.json",
    "detail_revision": "2cc9cdf72aa13df9c74a37cfbc2b3992d7b561905273f3c48cd1f771638deb80",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cygsh-info-1765",
+   "kind": "school_info",
+   "title": "功能快捷選單 › 線上課表",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1765.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1765.json",
+   "detail_revision": "08148f7e0d92a8eb25797bb7fd4427403f5ebf7970eb5473d0c2524023c96fb1",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cygsh-info-1766",
+   "kind": "school_info",
+   "title": "功能快捷選單 › 自學計畫系統",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1766.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1766.json",
+   "detail_revision": "2a25b0f70751e85595815e6798880bf189fa9b37f0704175b19b1988091f8452",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cygsh-info-1767",
+   "kind": "school_info",
+   "title": "功能快捷選單 › 成績查詢",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1767.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1767.json",
+   "detail_revision": "df85737fcb4a316874e27cbce6447ec7bbac0f38a60fef3013f08ab80ea58026",
    "detail_status": "empty"
   },
   {
@@ -5982,5 +6075,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-01T23:04:23+08:00"
+ "last_run_at": "2026-11-02T01:14:37+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-01T23:05:41+08:00",
+ "generated_at": "2026-11-02T01:15:42+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -114,15 +114,25 @@
    "page_id": 143852859154203,
    "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=57124",
    "label": "寒暑假作業",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:38+08:00",
+   "path": [
+    "校園成果",
+    "寒暑假作業"
+   ]
   },
   "37178222016289": {
    "page_id": 37178222016289,
    "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=57121",
    "label": "高中優質化",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:41+08:00",
+   "path": [
+    "校園成果",
+    "高中優質化"
+   ]
   },
   "200667291836605": {
    "page_id": 200667291836605,
@@ -337,6 +347,18 @@
     "認識本校"
    ],
    "order": 40
+  },
+  "7247197859832": {
+   "page_id": 7247197859832,
+   "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=98650",
+   "label": "經營計畫書",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校園成果",
+    "高中優質化"
+   ],
+   "order": 41
   }
  },
  "handbook": {},
@@ -547,5 +569,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-01T23:05:41+08:00"
+ "last_run_at": "2026-11-02T01:15:42+08:00"
 }

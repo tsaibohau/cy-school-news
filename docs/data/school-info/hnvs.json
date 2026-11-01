@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-01T23:06:17+08:00",
+ "generated_at": "2026-11-02T01:16:26+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -299,15 +299,48 @@
    "page_id": 196188571931543,
    "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,4,26",
    "label": "交通路線",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:16:21+08:00",
+   "path": [
+    "交通路線"
+   ],
+   "changed_at": "2026-11-02T01:16:21+08:00",
+   "content_hash": "2c60558b9077684cf30eb359d53b3910855e946d3e027a4f6ff593f0db9c970d",
+   "doc_links": [],
+   "keywords": [
+    "公車"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-196188571931543.json",
+   "detail_revision": "685b15af70ecce2e436718f8501d7f80b3becce5f72c783657f3efc6801efa1e",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "74150307746498": {
    "page_id": 74150307746498,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,4,28",
    "label": "校務發展計畫",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:16:23+08:00",
+   "path": [
+    "校務發展計畫"
+   ],
+   "changed_at": "2026-11-02T01:16:23+08:00",
+   "content_hash": "8d0705d2c70bb6f700b687fd3cbe7a21e1b3a20dada7896336d1108371502a0b",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-74150307746498.json",
+   "detail_revision": "1f526f9ace096d666ce70cdf58f5b827429055f0f088b90274feca5d163ca58f",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "1020527國立華南高商校務發展委員會組織章程.pdf",
+     "url": "https://www.hnvs.cy.edu.tw/df_ufiles/b/1020527國立華南高商校務發展委員會組織章程.pdf"
+    }
+   ]
   },
   "115340714866332": {
    "page_id": 115340714866332,
@@ -3392,6 +3425,30 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-74150307746498",
+   "kind": "school_info",
+   "title": "校務發展計畫",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,4,28",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "1020527國立華南高商校務發展委員會組織章程.pdf"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "1020527國立華南高商校務發展委員會組織章程.pdf",
+     "url": "https://www.hnvs.cy.edu.tw/df_ufiles/b/1020527國立華南高商校務發展委員會組織章程.pdf"
+    }
+   ],
+   "detail_ref": "data/details/hnvs/hnvs-info-74150307746498.json",
+   "detail_revision": "1f526f9ace096d666ce70cdf58f5b827429055f0f088b90274feca5d163ca58f",
+   "detail_status": "parsed"
+  },
+  {
    "id": "hnvs-info-106377775275408",
    "kind": "school_info",
    "title": "網站導覽",
@@ -3546,6 +3603,25 @@
    ],
    "detail_ref": "data/details/hnvs/hnvs-info-151117057407702.json",
    "detail_revision": "0eaa31683c944ffb12668065513727c4d685da14ec75e7bbc45c1a14ff757751",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hnvs-info-196188571931543",
+   "kind": "school_info",
+   "title": "交通路線",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,4,26",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "公車"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-196188571931543.json",
+   "detail_revision": "685b15af70ecce2e436718f8501d7f80b3becce5f72c783657f3efc6801efa1e",
    "detail_status": "parsed"
   },
   {
@@ -3911,5 +3987,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-01T23:06:17+08:00"
+ "last_run_at": "2026-11-02T01:16:26+08:00"
 }

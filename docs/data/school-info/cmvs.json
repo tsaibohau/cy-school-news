@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-01T23:03:26+08:00",
+ "generated_at": "2026-11-02T01:13:33+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -30,22 +30,34 @@
    "page_id": 165039121664330,
    "url": "https://cm.cmvsedu.tw/modules/tad_form/",
    "label": "招生資訊",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:28+08:00",
+   "path": [
+    "招生資訊"
+   ]
   },
   "50495379207809": {
    "page_id": 50495379207809,
    "url": "https://cm.cmvsedu.tw/modules/tad_sitemap/",
    "label": "網站地圖",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:30+08:00",
+   "path": [
+    "網站地圖"
+   ]
   },
   "103339498936819": {
    "page_id": 103339498936819,
    "url": "https://cm.cmvsedu.tw/modules/jill_booking/",
    "label": "場地預約",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:32+08:00",
+   "path": [
+    "場地預約"
+   ]
   },
   "152330031398451": {
    "page_id": 152330031398451,
@@ -163,6 +175,182 @@
     "關於旗美"
    ],
    "order": 19
+  },
+  "177637329297639": {
+   "page_id": 177637329297639,
+   "url": "https://cm.cmvsedu.tw/modules/tad_form/index.php",
+   "label": "主選單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "招生資訊"
+   ],
+   "order": 20
+  },
+  "219715358215361": {
+   "page_id": 219715358215361,
+   "url": "https://cm.cmvsedu.tw/modules/tad_sitemap/index.php",
+   "label": "主選單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 21
+  },
+  "54300301964056": {
+   "page_id": 54300301964056,
+   "url": "https://cm.cmvsedu.tw/modules/tad_sitemap/privacy_policy.php",
+   "label": "隱私權政策",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 22
+  },
+  "245390587543705": {
+   "page_id": 245390587543705,
+   "url": "https://cm.cmvsedu.tw/modules/tad_sitemap/remove_data.php",
+   "label": "用戶資料刪除方法",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 23
+  },
+  "217440419786448": {
+   "page_id": 217440419786448,
+   "url": "https://cm.cmvsedu.tw/modules/tad_sitemap/admin/main.php",
+   "label": "管理介面",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 24
+  },
+  "39607478017432": {
+   "page_id": 39607478017432,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php",
+   "label": "好站連結首頁",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 25
+  },
+  "40393873378648": {
+   "page_id": 40393873378648,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php",
+   "label": "檔案下載首頁",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 26
+  },
+  "11220257367759": {
+   "page_id": 11220257367759,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=icon&of_cat_sn=0",
+   "label": "<i class='fa fa-th-large'></i>",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 27
+  },
+  "100010736817480": {
+   "page_id": 100010736817480,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=more&of_cat_sn=0",
+   "label": "<i class='fa fa-th-list'></i>",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 28
+  },
+  "19622378905353": {
+   "page_id": 19622378905353,
+   "url": "https://cm.cmvsedu.tw/modules/tad_repair/repair.php",
+   "label": "填寫維修單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 29
+  },
+  "29599855318064": {
+   "page_id": 29599855318064,
+   "url": "https://cm.cmvsedu.tw/modules/tad_repair/index.php",
+   "label": "維修通報首頁",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 30
+  },
+  "207495558960062": {
+   "page_id": 207495558960062,
+   "url": "https://cm.cmvsedu.tw/modules/ugm_contact_us/index.php",
+   "label": "聯絡我們首頁",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站地圖"
+   ],
+   "order": 31
+  },
+  "94497894568856": {
+   "page_id": 94497894568856,
+   "url": "https://cm.cmvsedu.tw/modules/jill_booking/index.php",
+   "label": "主選單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "場地預約"
+   ],
+   "order": 32
+  },
+  "66521642298084": {
+   "page_id": 66521642298084,
+   "url": "https://cm.cmvsedu.tw/modules/jill_booking/batch.php",
+   "label": "批次預約",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "場地預約"
+   ],
+   "order": 33
+  },
+  "59489831417948": {
+   "page_id": 59489831417948,
+   "url": "https://cm.cmvsedu.tw/modules/jill_booking/list.php",
+   "label": "個人預約清單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "場地預約"
+   ],
+   "order": 34
+  },
+  "81691326605081": {
+   "page_id": 81691326605081,
+   "url": "https://cm.cmvsedu.tw/modules/jill_booking/listapproval.php",
+   "label": "審核清單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "場地預約"
+   ],
+   "order": 35
   }
  },
  "handbook": {},
@@ -458,5 +646,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-01T23:03:26+08:00"
+ "last_run_at": "2026-11-02T01:13:33+08:00"
 }

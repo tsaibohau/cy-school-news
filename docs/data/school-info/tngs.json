@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-01T23:03:03+08:00",
+ "generated_at": "2026-11-02T01:13:10+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -30,22 +30,35 @@
    "page_id": 267986607350054,
    "url": "https://www.tngs.tn.edu.tw/about/",
    "label": "學校簡介",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:05+08:00",
+   "path": [
+    "學校簡介"
+   ]
   },
   "104376634822504": {
    "page_id": 104376634822504,
    "url": "https://www.tngs.tn.edu.tw/about/japanese/",
    "label": "日本語",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:07+08:00",
+   "path": [
+    "學校簡介",
+    "日本語"
+   ]
   },
   "243711852929251": {
    "page_id": 243711852929251,
    "url": "https://www.tngs.tn.edu.tw/department/",
    "label": "行政組織",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:08+08:00",
+   "path": [
+    "行政組織"
+   ]
   },
   "64040361139875": {
    "page_id": 64040361139875,
@@ -351,6 +364,361 @@
     "校務資訊"
    ],
    "order": 43
+  },
+  "248893182547255": {
+   "page_id": 248893182547255,
+   "url": "https://www.tngs.tn.edu.tw/about",
+   "label": "中文",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 44
+  },
+  "192655707288013": {
+   "page_id": 192655707288013,
+   "url": "https://www.tngs.tn.edu.tw/about/badge/",
+   "label": "校徽與校訓",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 45
+  },
+  "6943411454195": {
+   "page_id": 6943411454195,
+   "url": "https://www.tngs.tn.edu.tw/about/lyrics/",
+   "label": "校歌歌詞",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 46
+  },
+  "68731398349927": {
+   "page_id": 68731398349927,
+   "url": "https://www.tngs.tn.edu.tw/about/song/",
+   "label": "校歌音樂",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 47
+  },
+  "199179338153785": {
+   "page_id": 199179338153785,
+   "url": "https://www.tngs.tn.edu.tw/about/flower/",
+   "label": "校花",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 48
+  },
+  "132896120152572": {
+   "page_id": 132896120152572,
+   "url": "https://www.tngs.tn.edu.tw/about/chronicle/",
+   "label": "大事紀",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 49
+  },
+  "218364924173501": {
+   "page_id": 218364924173501,
+   "url": "https://www.tngs.tn.edu.tw/about/%e6%a0%a1%e5%8f%b2-%e6%b2%bf%e9%9d%a9/",
+   "label": "校史 / 沿革",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 50
+  },
+  "60337246573667": {
+   "page_id": 60337246573667,
+   "url": "https://www.tngs.tn.edu.tw/about/%e8%aa%b2%e7%a8%8b%e8%a6%8f%e5%8a%83/",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 51
+  },
+  "230188204574767": {
+   "page_id": 230188204574767,
+   "url": "https://www.tngs.tn.edu.tw/about/%e5%b8%ab%e8%b3%87%e8%a8%ad%e5%82%99/",
+   "label": "師資設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 52
+  },
+  "17895930797997": {
+   "page_id": 17895930797997,
+   "url": "https://www.tngs.tn.edu.tw/about/%e5%ad%b8%e7%94%9f%e6%88%90%e5%b0%b1/",
+   "label": "學生成就",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 53
+  },
+  "7511858436068": {
+   "page_id": 7511858436068,
+   "url": "https://www.tngs.tn.edu.tw/about/%e5%ad%b8%e7%94%9f%e7%94%9f%e6%b4%bb/",
+   "label": "學生生活",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 54
+  },
+  "92271687838681": {
+   "page_id": 92271687838681,
+   "url": "https://www.tngs.tn.edu.tw/about/%e7%a4%be%e5%9c%98%e6%b4%bb%e5%8b%95/",
+   "label": "社團活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 55
+  },
+  "136466866286165": {
+   "page_id": 136466866286165,
+   "url": "https://www.tngs.tn.edu.tw/about/%e5%9c%8b%e9%9a%9b%e4%ba%a4%e6%b5%81/",
+   "label": "國際交流",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 56
+  },
+  "102298052564565": {
+   "page_id": 102298052564565,
+   "url": "https://www.tngs.tn.edu.tw/about/%e5%bf%97%e5%b7%a5%e6%b4%bb%e5%8b%95/",
+   "label": "志工活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 57
+  },
+  "6122073475226": {
+   "page_id": 6122073475226,
+   "url": "https://www.tngs.tn.edu.tw/about/%e5%ad%b8%e7%94%9f%e8%bc%94%e5%b0%8e/",
+   "label": "學生輔導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 58
+  },
+  "47095212239031": {
+   "page_id": 47095212239031,
+   "url": "https://www.tngs.tn.edu.tw/about/%e6%94%af%e6%8f%b4%e7%b3%bb%e7%b5%b1/",
+   "label": "支援系統",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 59
+  },
+  "192618376194427": {
+   "page_id": 192618376194427,
+   "url": "https://www.tngs.tn.edu.tw/about/%E7%BE%8E%E9%BA%97%E6%A0%A1%E5%9C%92/",
+   "label": "美麗校園",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介"
+   ],
+   "order": 60
+  },
+  "129683258761239": {
+   "page_id": 129683258761239,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e5%ad%a6%e6%a0%a1%e3%81%ae%e6%ad%b4%e5%8f%b2/",
+   "label": "学校の歴史",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 61
+  },
+  "3836631059356": {
+   "page_id": 3836631059356,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e3%82%ab%e3%83%aa%e3%82%ad%e3%83%a5%e3%83%a9%e3%83%a0/",
+   "label": "カリキュラム",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 62
+  },
+  "50236620009513": {
+   "page_id": 50236620009513,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e6%95%99%e5%b8%ab%e8%a8%ad%e5%82%99/",
+   "label": "教師設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 63
+  },
+  "59504748527964": {
+   "page_id": 59504748527964,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e5%ae%9f%e7%b8%be/",
+   "label": "実績",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 64
+  },
+  "225069389367803": {
+   "page_id": 225069389367803,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e5%ad%a6%e6%a0%a1%e7%94%9f%e6%b4%bb/",
+   "label": "学校生活",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 65
+  },
+  "52050597795991": {
+   "page_id": 52050597795991,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e8%aa%b2%e5%a4%96%e6%b4%bb%e5%8b%95/",
+   "label": "課外活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 66
+  },
+  "4744451092271": {
+   "page_id": 4744451092271,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e5%9b%bd%e9%9a%9b%e4%ba%a4%e6%b5%81/",
+   "label": "国際交流",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 67
+  },
+  "124437537023282": {
+   "page_id": 124437537023282,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e3%83%9c%e3%83%a9%e3%83%b3%e3%83%86%e3%82%a3%e3%82%a2%e6%b4%bb%e5%8b%95/",
+   "label": "ボランティア活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 68
+  },
+  "116321893465504": {
+   "page_id": 116321893465504,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e5%ad%a6%e7%94%9f%e6%8c%87%e5%b0%8e/",
+   "label": "学生指導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 69
+  },
+  "82224588001215": {
+   "page_id": 82224588001215,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e9%80%b2%e5%ad%a6%e7%8a%b6%e6%b3%81/",
+   "label": "進学状況",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 70
+  },
+  "243343451953655": {
+   "page_id": 243343451953655,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e5%bf%83%e5%bc%b7%e3%81%84%e6%94%af%e6%8f%b4%e4%bd%93%e5%88%b6/",
+   "label": "心強い支援体制",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 71
+  },
+  "143037873441362": {
+   "page_id": 143037873441362,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e6%a0%a1%e6%ad%8c/",
+   "label": "校歌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 72
+  },
+  "268034561566886": {
+   "page_id": 268034561566886,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e7%be%8e%e3%81%97%e3%81%84%e3%82%ad%e3%83%a3%e3%83%b3%e3%83%91%e3%82%b9/",
+   "label": "美しいキャンパス",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 73
+  },
+  "29924395730733": {
+   "page_id": 29924395730733,
+   "url": "https://www.tngs.tn.edu.tw/about/japanese/%e5%a0%b4%e6%89%80/",
+   "label": "場所",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學校簡介",
+    "日本語"
+   ],
+   "order": 74
   }
  },
  "handbook": {},
@@ -681,5 +1049,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-01T23:03:03+08:00"
+ "last_run_at": "2026-11-02T01:13:10+08:00"
 }

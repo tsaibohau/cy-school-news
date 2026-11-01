@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-01T22:46:31+08:00",
+ "generated_at": "2026-11-02T01:05:58+08:00",
  "school": {
   "id": "nsjh",
   "name": "雲林縣立蔦松藝術高級中學",
@@ -895,6 +895,30 @@
    "category": "選課",
    "first_seen": "2026-10-27T15:12:24+08:00",
    "detail_status": "pending"
+  },
+  {
+   "id": "nsjh-389948",
+   "title": "﹝選課公告﹞選課表單網址公告",
+   "date": "2026-08-17",
+   "source_category": "",
+   "school": "nsjh",
+   "school_name": "蔦松藝術高中",
+   "url": "https://nsjh.ylc.edu.tw/News_Content.aspx?n=100113&s=389948",
+   "category": "選課",
+   "first_seen": "2026-11-02T01:05:58+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1,
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "nsjh-383177",

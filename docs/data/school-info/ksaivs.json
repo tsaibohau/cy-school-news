@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-01T23:04:04+08:00",
+ "generated_at": "2026-11-02T01:14:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -73,22 +73,77 @@
    "page_id": 21112690938014,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-160.php",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:14:09+08:00",
+   "path": [
+    "行政單位",
+    "教務處"
+   ],
+   "changed_at": "2026-11-02T01:14:09+08:00",
+   "content_hash": "a72d9ddd9ee978240a9b2e48f9ba27aac1dee6b922158e3f53aeb9f351325e4f",
+   "doc_links": [],
+   "keywords": [
+    "招生",
+    "特殊選才",
+    "入學",
+    "報名",
+    "申請",
+    "研習",
+    "競賽",
+    "考試",
+    "自主學習",
+    "衛生",
+    "身心調適假",
+    "防災"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-21112690938014.json",
+   "detail_revision": "3ce8a7cfeeeba0c39203127732561462f81e20e309cda5ee87cb538ae8836948",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "162406327427102": {
    "page_id": 162406327427102,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-208.php",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:14:11+08:00",
+   "path": [
+    "行政單位",
+    "學務處"
+   ],
+   "changed_at": "2026-11-02T01:14:11+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-162406327427102.json",
+   "detail_revision": "4b68854c6b77bcbab5f2e933a8e25445d08f88bfa6449f4a4c82182beaf4f299",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "223664676159128": {
    "page_id": 223664676159128,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-163.php",
    "label": "實習處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:14:13+08:00",
+   "path": [
+    "行政單位",
+    "實習處"
+   ],
+   "changed_at": "2026-11-02T01:14:13+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-223664676159128.json",
+   "detail_revision": "87f0f230c6085f1bb0c7bc88d2656c9fb9abfa2d526463af1c3aecdea3c6484d",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "45729182690021": {
    "page_id": 45729182690021,
@@ -427,11 +482,665 @@
     "校長室"
    ],
    "order": 47
+  },
+  "197183669305382": {
+   "page_id": 197183669305382,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-249.php",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 48
+  },
+  "93539503277740": {
+   "page_id": 93539503277740,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-261.php",
+   "label": "教學組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 49
+  },
+  "148704601299884": {
+   "page_id": 148704601299884,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-259.php",
+   "label": "註冊組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 50
+  },
+  "75777295361232": {
+   "page_id": 75777295361232,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-263.php",
+   "label": "設備組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 51
+  },
+  "53794374766188": {
+   "page_id": 53794374766188,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-265.php",
+   "label": "學生家長專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 52
+  },
+  "96121054329248": {
+   "page_id": 96121054329248,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1172.php",
+   "label": "學習歷程檔案",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 53
+  },
+  "25691683864785": {
+   "page_id": 25691683864785,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-266.php",
+   "label": "升學專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 54
+  },
+  "43867022293560": {
+   "page_id": 43867022293560,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-250.php",
+   "label": "教務處章程",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 55
+  },
+  "217622514787942": {
+   "page_id": 217622514787942,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1214.php",
+   "label": "高職優質化",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 56
+  },
+  "142102843192113": {
+   "page_id": 142102843192113,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-355.php",
+   "label": "就近入學獎勵",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 57
+  },
+  "123534069407645": {
+   "page_id": 123534069407645,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-213.php",
+   "label": "處室成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 58
+  },
+  "141945655090636": {
+   "page_id": 141945655090636,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-754.php",
+   "label": "學務規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 59
+  },
+  "149296188273853": {
+   "page_id": 149296188273853,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-408.php",
+   "label": "工作重點",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 60
+  },
+  "90888275966397": {
+   "page_id": 90888275966397,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-329.php",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 61
+  },
+  "182100438277208": {
+   "page_id": 182100438277208,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-330.php",
+   "label": "環境設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 62
+  },
+  "6001598348579": {
+   "page_id": 6001598348579,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-331.php",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 63
+  },
+  "223638684441471": {
+   "page_id": 223638684441471,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-332.php",
+   "label": "運動校隊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 64
+  },
+  "153374147351749": {
+   "page_id": 153374147351749,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-333.php",
+   "label": "體育活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 65
+  },
+  "114072081569641": {
+   "page_id": 114072081569641,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-334.php",
+   "label": "運動社團",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 66
+  },
+  "194277226517960": {
+   "page_id": 194277226517960,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-336.php",
+   "label": "網路資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 67
+  },
+  "247707468331328": {
+   "page_id": 247707468331328,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-247.php",
+   "label": "生輔組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 68
+  },
+  "144145154488896": {
+   "page_id": 144145154488896,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-338.php",
+   "label": "垃圾分類",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 69
+  },
+  "27230229069287": {
+   "page_id": 27230229069287,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-339.php",
+   "label": "整潔區域分配",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 70
+  },
+  "26717206800180": {
+   "page_id": 26717206800180,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-342.php",
+   "label": "團膳業務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 71
+  },
+  "209603699575985": {
+   "page_id": 209603699575985,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-344.php",
+   "label": "環境教育",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 72
+  },
+  "257887272934396": {
+   "page_id": 257887272934396,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-345.php",
+   "label": "表格下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 73
+  },
+  "4714314615127": {
+   "page_id": 4714314615127,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-589.php",
+   "label": "健康中心業務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 74
+  },
+  "81428142618617": {
+   "page_id": 81428142618617,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-588.php",
+   "label": "新生健檢",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 75
+  },
+  "154921216264133": {
+   "page_id": 154921216264133,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-586.php",
+   "label": "學生平安保險",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 76
+  },
+  "84635005362191": {
+   "page_id": 84635005362191,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-587.php",
+   "label": "流感疫苗接種",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 77
+  },
+  "84968598861281": {
+   "page_id": 84968598861281,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-312.php",
+   "label": "健康促進",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 78
+  },
+  "148530018803151": {
+   "page_id": 148530018803151,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-632.php",
+   "label": "傳染病防治",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 79
+  },
+  "421595385945": {
+   "page_id": 421595385945,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-947.php",
+   "label": "校園緊急救護及AED資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 80
+  },
+  "231847416817484": {
+   "page_id": 231847416817484,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-306.php",
+   "label": "菸害防制",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 81
+  },
+  "33345135573934": {
+   "page_id": 33345135573934,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-310.php",
+   "label": "衛教資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 82
+  },
+  "4947463599007": {
+   "page_id": 4947463599007,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-311.php",
+   "label": "資料下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 83
+  },
+  "36055097916534": {
+   "page_id": 36055097916534,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-540.php",
+   "label": "導師職務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 84
+  },
+  "213796223880008": {
+   "page_id": 213796223880008,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-541.php",
+   "label": "導師辦法",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 85
+  },
+  "139751634200390": {
+   "page_id": 139751634200390,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-542.php",
+   "label": "導師會報",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 86
+  },
+  "279146360124251": {
+   "page_id": 279146360124251,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-548.php",
+   "label": "班級位置",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 87
+  },
+  "159735446130992": {
+   "page_id": 159735446130992,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-551.php",
+   "label": "性別平等委員會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 88
+  },
+  "58351649648777": {
+   "page_id": 58351649648777,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-552.php",
+   "label": "年度工作計畫",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 89
+  },
+  "225887670835498": {
+   "page_id": 225887670835498,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-553.php",
+   "label": "性平事件處理流程及表單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 90
+  },
+  "225296406424759": {
+   "page_id": 225296406424759,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-554.php",
+   "label": "性別平等教育網站資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 91
+  },
+  "157197950776151": {
+   "page_id": 157197950776151,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1065.php",
+   "label": "校慶成果",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 92
+  },
+  "272167150627524": {
+   "page_id": 272167150627524,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-411.php",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 93
+  },
+  "227003160742412": {
+   "page_id": 227003160742412,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-838.php",
+   "label": "實習組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "實習處"
+   ],
+   "order": 94
+  },
+  "251686428961919": {
+   "page_id": 251686428961919,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-839.php",
+   "label": "技能檢定組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "實習處"
+   ],
+   "order": 95
+  },
+  "125659645632087": {
+   "page_id": 125659645632087,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-837.php",
+   "label": "職掌表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "實習處"
+   ],
+   "order": 96
+  },
+  "260643821066142": {
+   "page_id": 260643821066142,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-836.php",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "實習處"
+   ],
+   "order": 97
+  },
+  "49184157577331": {
+   "page_id": 49184157577331,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1361.php",
+   "label": "職業安全衛生委員會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "實習處"
+   ],
+   "order": 98
+  },
+  "242488142099101": {
+   "page_id": 242488142099101,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1362.php",
+   "label": "職業安全衛生20項規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "實習處"
+   ],
+   "order": 99
   }
  },
  "handbook": {},
  "services": {},
  "items": [
+  {
+   "id": "ksaivs-info-21112690938014",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-160.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "招生",
+    "特殊選才",
+    "入學",
+    "報名",
+    "申請",
+    "研習",
+    "競賽",
+    "考試",
+    "自主學習",
+    "衛生",
+    "身心調適假",
+    "防災"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-21112690938014.json",
+   "detail_revision": "3ce8a7cfeeeba0c39203127732561462f81e20e309cda5ee87cb538ae8836948",
+   "detail_status": "parsed"
+  },
   {
    "id": "ksaivs-info-101763829322214",
    "kind": "school_info",
@@ -470,6 +1179,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-162406327427102",
+   "kind": "school_info",
+   "title": "行政單位 › 學務處",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-208.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-162406327427102.json",
+   "detail_revision": "4b68854c6b77bcbab5f2e933a8e25445d08f88bfa6449f4a4c82182beaf4f299",
+   "detail_status": "parsed"
+  },
+  {
    "id": "ksaivs-info-193029198059858",
    "kind": "school_info",
    "title": "學校介紹",
@@ -484,6 +1210,23 @@
    "documents": [],
    "detail_ref": "data/details/ksaivs/ksaivs-info-193029198059858.json",
    "detail_revision": "a28f740efced191573815dd45b096dc503c537c8eecc233ba02056c2f9d5ff5f",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-223664676159128",
+   "kind": "school_info",
+   "title": "行政單位 › 實習處",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-163.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-223664676159128.json",
+   "detail_revision": "87f0f230c6085f1bb0c7bc88d2656c9fb9abfa2d526463af1c3aecdea3c6484d",
    "detail_status": "parsed"
   }
  ],
@@ -719,5 +1462,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-01T23:04:04+08:00"
+ "last_run_at": "2026-11-02T01:14:14+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-01T23:03:51+08:00",
+ "generated_at": "2026-11-02T01:14:02+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -85,22 +85,97 @@
    "page_id": 122807622643303,
    "url": "https://www.fhsh.khc.edu.tw/aboutfhsh",
    "label": "關於鳳新",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:56+08:00",
+   "path": [
+    "關於鳳新"
+   ],
+   "changed_at": "2026-11-02T01:13:56+08:00",
+   "content_hash": "0b09d834d93ee3b67f107a26c1758676a80e1169ef3aceedf60c01db7f3f60dc",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "分機",
+    "校史",
+    "校園地圖",
+    "校徽",
+    "校歌",
+    "校訓"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-122807622643303.json",
+   "detail_revision": "a27f39b5f37a7201aa30de27382cf63412bd6c623e1b1aa8c46ee48b8cd07bbb",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "178037915853432": {
    "page_id": 178037915853432,
    "url": "https://www.fhsh.khc.edu.tw/about/20210614/228",
    "label": "鳳新校史",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:58+08:00",
+   "path": [
+    "鳳新校史"
+   ],
+   "changed_at": "2026-11-02T01:13:58+08:00",
+   "content_hash": "1bf9f65b8f719bed4c51d73ce3cc03dcf518b27a1fdc406503e0b0cad919723a",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "校長",
+    "升學",
+    "圖書館",
+    "社團",
+    "參訪",
+    "宿舍",
+    "新生",
+    "校史",
+    "獎學金",
+    "選組",
+    "選課"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-178037915853432.json",
+   "detail_revision": "10862575e753e1cf709a53aed3e10706de94ee730300f255f85ee583f562ec6a",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "273326460305627": {
    "page_id": 273326460305627,
    "url": "https://www.fhsh.khc.edu.tw/aa/20230822/205",
    "label": "鳳新大事紀",
-   "status": "pending",
-   "depth": 0
+   "status": "personal_data",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:14:00+08:00",
+   "path": [
+    "鳳新大事紀"
+   ]
   },
   "21715492170575": {
    "page_id": 21715492170575,
@@ -1156,11 +1231,120 @@
     "網站導覽"
    ],
    "order": 112
+  },
+  "115797596272057": {
+   "page_id": 115797596272057,
+   "url": "https://www.fhsh.khc.edu.tw/about/20230607/15874",
+   "label": "學校基本資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "關於鳳新"
+   ],
+   "order": 113
+  },
+  "3293336391228": {
+   "page_id": 3293336391228,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20230824/18017",
+   "label": "下一篇文章 【公告】台灣癲癇之友協會「112年新光鋼添澄癲癇之友獎、助學金」",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "鳳新大事紀"
+   ],
+   "order": 114
   }
  },
  "handbook": {},
  "services": {},
  "items": [
+  {
+   "id": "fhsh-info-122807622643303",
+   "kind": "school_info",
+   "title": "關於鳳新",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aboutfhsh",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "分機",
+    "校史",
+    "校園地圖",
+    "校徽",
+    "校歌",
+    "校訓"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-122807622643303.json",
+   "detail_revision": "a27f39b5f37a7201aa30de27382cf63412bd6c623e1b1aa8c46ee48b8cd07bbb",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fhsh-info-178037915853432",
+   "kind": "school_info",
+   "title": "鳳新校史",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/about/20210614/228",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "校長",
+    "升學",
+    "圖書館",
+    "社團",
+    "參訪",
+    "宿舍",
+    "新生",
+    "校史",
+    "獎學金",
+    "選組",
+    "選課"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-178037915853432.json",
+   "detail_revision": "10862575e753e1cf709a53aed3e10706de94ee730300f255f85ee583f562ec6a",
+   "detail_status": "parsed"
+  },
   {
    "id": "fhsh-info-196514779464320",
    "kind": "school_info",
@@ -1477,5 +1661,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-01T23:03:51+08:00"
+ "last_run_at": "2026-11-02T01:14:02+08:00"
 }

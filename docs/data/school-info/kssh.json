@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-01T23:03:58+08:00",
+ "generated_at": "2026-11-02T01:14:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -58,22 +58,101 @@
    "page_id": 152836902652291,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-236.php",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:14:04+08:00",
+   "path": [
+    "行政單位",
+    "學務處"
+   ],
+   "changed_at": "2026-11-02T01:14:04+08:00",
+   "content_hash": "6e5426cf0b1fc1a1a6d87cab5457d9d6da444811ff3ff0fb9a8051b8c41fb1af",
+   "doc_links": [],
+   "keywords": [
+    "就學貸款",
+    "社團",
+    "上課地點",
+    "申請",
+    "申辦"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-152836902652291.json",
+   "detail_revision": "67daebcec41a7f5a96c2e0bb11f6fb8fb599d14263374e88f7f2b320a7eec0cf",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "265744219737499": {
    "page_id": 265744219737499,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5194.php",
    "label": "總務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:14:05+08:00",
+   "path": [
+    "行政單位",
+    "總務處"
+   ],
+   "changed_at": "2026-11-02T01:14:05+08:00",
+   "content_hash": "d1ae4344b93257633ea875f7976e11bf1a02c2f04beb53cd988fe04dc6ff0d13",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-265744219737499.json",
+   "detail_revision": "d7133c57eec7cceeed8391ff3cf0b2c718d359f5827c0762a244c9a5338db15d",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "140039901727931": {
    "page_id": 140039901727931,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-241.php",
    "label": "輔導室",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:14:07+08:00",
+   "path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "changed_at": "2026-11-02T01:14:07+08:00",
+   "content_hash": "480781359f8207b6c25051f2e6047fe6e1d04b419468f05b3a8462abd99c7115",
+   "doc_links": [
+    {
+     "name": "預約晤談表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSdFJP8l7O1aPuYl_KSWTX3X6rQsTaHP0AB1Mp5jC8vtv1LzuA/viewform?usp=pp_url"
+    }
+   ],
+   "keywords": [
+    "入學",
+    "講座",
+    "申請",
+    "測驗",
+    "升學",
+    "報名",
+    "宣導",
+    "申請入學",
+    "課業輔導",
+    "分發",
+    "博覽會",
+    "參訪",
+    "大學營",
+    "學分",
+    "小過",
+    "志工",
+    "招生",
+    "營隊",
+    "特殊選才",
+    "登記",
+    "繁星",
+    "考試",
+    "警告",
+    "銷過",
+    "面試"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-140039901727931.json",
+   "detail_revision": "7e6c681233db908425ca786f53e0858eefc400d90020fce98a9b997dd200f56e",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "64906662526285": {
    "page_id": 64906662526285,
@@ -199,6 +278,102 @@
     "教務處"
    ],
    "order": 19
+  },
+  "280145998943755": {
+   "page_id": 280145998943755,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5200.php",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 20
+  },
+  "225884442670662": {
+   "page_id": 225884442670662,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5197.php",
+   "label": "庶 務 組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 21
+  },
+  "108409169298673": {
+   "page_id": 108409169298673,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5196.php",
+   "label": "文 書 組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 22
+  },
+  "155930967448084": {
+   "page_id": 155930967448084,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5198.php",
+   "label": "出 納 組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 23
+  },
+  "251980738626280": {
+   "page_id": 251980738626280,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5195.php",
+   "label": "財管幹事",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 24
+  },
+  "14334021011520": {
+   "page_id": 14334021011520,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5202.php",
+   "label": "校園環境",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 25
+  },
+  "138528581396824": {
+   "page_id": 138528581396824,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5199.php",
+   "label": "助理員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 26
+  },
+  "46542080167281": {
+   "page_id": 46542080167281,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5201.php",
+   "label": "常用表單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 27
   }
  },
  "handbook": {},
@@ -243,6 +418,96 @@
    "documents": [],
    "detail_ref": "data/details/kssh/kssh-info-79814434365433.json",
    "detail_revision": "356da7be101cfb90f58b69acb61f76fa7a389b5c54584760b6e4e4300993217c",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-140039901727931",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導室",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-241.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "預約晤談表單"
+   ],
+   "keywords": [
+    "入學",
+    "講座",
+    "申請",
+    "測驗",
+    "升學",
+    "報名",
+    "宣導",
+    "申請入學",
+    "課業輔導",
+    "分發",
+    "博覽會",
+    "參訪",
+    "大學營",
+    "學分",
+    "小過",
+    "志工",
+    "招生",
+    "營隊",
+    "特殊選才",
+    "登記",
+    "繁星",
+    "考試",
+    "警告",
+    "銷過",
+    "面試"
+   ],
+   "documents": [
+    {
+     "name": "預約晤談表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSdFJP8l7O1aPuYl_KSWTX3X6rQsTaHP0AB1Mp5jC8vtv1LzuA/viewform?usp=pp_url"
+    }
+   ],
+   "detail_ref": "data/details/kssh/kssh-info-140039901727931.json",
+   "detail_revision": "7e6c681233db908425ca786f53e0858eefc400d90020fce98a9b997dd200f56e",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-152836902652291",
+   "kind": "school_info",
+   "title": "行政單位 › 學務處",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-236.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "就學貸款",
+    "社團",
+    "上課地點",
+    "申請",
+    "申辦"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-152836902652291.json",
+   "detail_revision": "67daebcec41a7f5a96c2e0bb11f6fb8fb599d14263374e88f7f2b320a7eec0cf",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-265744219737499",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5194.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-265744219737499.json",
+   "detail_revision": "d7133c57eec7cceeed8391ff3cf0b2c718d359f5827c0762a244c9a5338db15d",
    "detail_status": "parsed"
   }
  ],
@@ -408,5 +673,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-01T23:03:58+08:00"
+ "last_run_at": "2026-11-02T01:14:09+08:00"
 }

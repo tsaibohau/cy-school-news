@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-01T23:04:17+08:00",
+ "generated_at": "2026-11-02T01:14:31+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5869,7 +5869,14 @@
   },
   "579": {
    "page_id": 579,
-   "status": "pending"
+   "status": "announcement_list",
+   "checked_at": "2026-11-02T01:14:28+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "最新消息"
+   ]
   },
   "552": {
    "page_id": 552,
@@ -5945,7 +5952,27 @@
   },
   "580": {
    "page_id": 580,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:30+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "註冊組各項規定"
+   ],
+   "changed_at": "2026-11-02T01:14:30+08:00",
+   "content_hash": "afa87f53a0c74133b529ea6fbdf30ed93c7df3b3e873f7493522e513b4c670c8",
+   "doc_links": [],
+   "keywords": [
+    "繁星",
+    "學習歷程",
+    "編班"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-580.json",
+   "detail_revision": "d32c8a4085b12c3734a14973821a504c8dc90cb2e47ea0b70c810b7eb4184cb9",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "3471": {
    "page_id": 3471,
@@ -5957,7 +5984,28 @@
   },
   "577": {
    "page_id": 577,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:26+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "學生證補發與各項文件申請"
+   ],
+   "changed_at": "2026-11-02T01:14:26+08:00",
+   "content_hash": "9497727a387bdaf0d0a1dbf9b1570eeb9f60e1fb1c40e903c5c9f6fc6b24b6db",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "學生證",
+    "數位學生證",
+    "申辦"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-577.json",
+   "detail_revision": "a979332b786d87eec1edf31616d6a77cdaa284dcee50402701bb038410bc6d22",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "576": {
    "page_id": 576,
@@ -10090,6 +10138,49 @@
    "detail_ref": "data/details/cysh/cysh-info-576.json",
    "detail_revision": "aa0a859bdc2cca1cce21398e9b0531bf4e4bec8e3d498152db97dbdf3fc1610a",
    "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-577",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 學生證補發與各項文件申請",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-577.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "申請",
+    "學生證",
+    "數位學生證",
+    "申辦"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-577.json",
+   "detail_revision": "a979332b786d87eec1edf31616d6a77cdaa284dcee50402701bb038410bc6d22",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-580",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 註冊組各項規定",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-580.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "繁星",
+    "學習歷程",
+    "編班"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-580.json",
+   "detail_revision": "d32c8a4085b12c3734a14973821a504c8dc90cb2e47ea0b70c810b7eb4184cb9",
+   "detail_status": "parsed"
   },
   {
    "id": "cysh-info-586",
@@ -14763,5 +14854,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-01T23:04:17+08:00"
+ "last_run_at": "2026-11-02T01:14:31+08:00"
 }

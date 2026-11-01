@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-01T23:05:10+08:00",
+ "generated_at": "2026-11-02T01:15:17+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -331,22 +331,57 @@
    "page_id": 210609447501446,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=350",
    "label": "軍訓室",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:12+08:00",
+   "path": [
+    "行政單位",
+    "學務處"
+   ],
+   "changed_at": "2026-11-02T01:15:12+08:00",
+   "content_hash": "7020f709bed8f04213b2289eef1f1b0f987bd4bd40eaf53dae35eec4eca40cf9",
+   "doc_links": [],
+   "keywords": [
+    "安全",
+    "專車",
+    "霸凌"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-210609447501446.json",
+   "detail_revision": "a9a1ce451b385f127a950604f907b5eeeb08e48ae5d42e0973a581b84620f2bd",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "229801994118831": {
    "page_id": 229801994118831,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=100",
    "label": "招生科別",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:14+08:00",
+   "path": [
+    "招生科別"
+   ]
   },
   "62796428066927": {
    "page_id": 62796428066927,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=173",
    "label": "綜合高中",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:16+08:00",
+   "path": [
+    "綜合高中"
+   ],
+   "changed_at": "2026-11-02T01:15:16+08:00",
+   "content_hash": "58e9787c877ed2a87ef83286d0d59c632d154756598f35887804bf7e8b4ae8d0",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-62796428066927.json",
+   "detail_revision": "e9fe1249b12400947b74636dbf2b5a05b144f4f780011649650f68e11fbeedcc",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "224264791554967": {
    "page_id": 224264791554967,
@@ -1325,6 +1360,90 @@
     "進修部"
    ],
    "order": 112
+  },
+  "76122996133611": {
+   "page_id": 76122996133611,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=7964",
+   "label": "業務介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 113
+  },
+  "104928065698930": {
+   "page_id": 104928065698930,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=7973",
+   "label": "防制學生藥物濫用",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 114
+  },
+  "200865230978898": {
+   "page_id": 200865230978898,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=7981",
+   "label": "學生專車",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 115
+  },
+  "145885992554009": {
+   "page_id": 145885992554009,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=7988",
+   "label": "反霸凌專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 116
+  },
+  "143698462211954": {
+   "page_id": 143698462211954,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=7997",
+   "label": "交通安全",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 117
+  },
+  "100857030515100": {
+   "page_id": 100857030515100,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=8059",
+   "label": "全民國防教育",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 118
+  },
+  "166577780097010": {
+   "page_id": 166577780097010,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=8280",
+   "label": "活動花絮",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 119
   }
  },
  "handbook": {},
@@ -1359,6 +1478,23 @@
    "documents": [],
    "detail_ref": "data/details/hlvs/hlvs-info-8591527071103.json",
    "detail_revision": "7534025d2e7408fced11f0d20b1a60209fa44473ff9dae802027d3ff960d3685",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-62796428066927",
+   "kind": "school_info",
+   "title": "綜合高中",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=173",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-62796428066927.json",
+   "detail_revision": "e9fe1249b12400947b74636dbf2b5a05b144f4f780011649650f68e11fbeedcc",
    "detail_status": "parsed"
   },
   {
@@ -1536,6 +1672,27 @@
    "documents": [],
    "detail_ref": "data/details/hlvs/hlvs-info-209684137677274.json",
    "detail_revision": "7ea9353283f800ff5364b312f73b6befc56e7cec51863d0293d2abb4279af70c",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-210609447501446",
+   "kind": "school_info",
+   "title": "行政單位 › 學務處",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=350",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "安全",
+    "專車",
+    "霸凌"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-210609447501446.json",
+   "detail_revision": "a9a1ce451b385f127a950604f907b5eeeb08e48ae5d42e0973a581b84620f2bd",
    "detail_status": "parsed"
   },
   {
@@ -1919,5 +2076,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-01T23:05:10+08:00"
+ "last_run_at": "2026-11-02T01:15:17+08:00"
 }

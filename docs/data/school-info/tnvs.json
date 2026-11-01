@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-01T23:03:14+08:00",
+ "generated_at": "2026-11-02T01:13:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -42,22 +42,51 @@
    "page_id": 51902306409415,
    "url": "https://www.tnvs.tn.edu.tw/about/tnvs-intro/",
    "label": "南水簡介",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:17+08:00",
+   "path": [
+    "南水簡介"
+   ],
+   "changed_at": "2026-11-02T01:13:17+08:00",
+   "content_hash": "ba409982f04d8c1a9dc5501d92009fdd9c79cc0612efd35c1d82f2223f42b822",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "宿舍",
+    "新生",
+    "校史",
+    "校徽",
+    "校歌",
+    "招生"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-51902306409415.json",
+   "detail_revision": "6cbd35c640830879f694627309c4a9ea041e7eda98fb2ce1b333247bad3b8043",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "230192464244230": {
    "page_id": 230192464244230,
    "url": "https://www.tnvs.tn.edu.tw/about/tnvs-map/",
    "label": "校內地圖",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:19+08:00",
+   "path": [
+    "校內地圖"
+   ]
   },
   "244756101278278": {
    "page_id": 244756101278278,
    "url": "https://www.tnvs.tn.edu.tw/about/tnvs-org/",
    "label": "組織架構",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:21+08:00",
+   "path": [
+    "組織架構"
+   ]
   },
   "191788479103454": {
    "page_id": 191788479103454,
@@ -424,11 +453,113 @@
     "看見南水"
    ],
    "order": 50
+  },
+  "94635983030601": {
+   "page_id": 94635983030601,
+   "url": "https://www.tnvs.tn.edu.tw/aquaculture/",
+   "label": "養殖科",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "南水簡介"
+   ],
+   "order": 51
+  },
+  "259174798480558": {
+   "page_id": 259174798480558,
+   "url": "https://www.tnvs.tn.edu.tw/fishery-food/",
+   "label": "水產食品科",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "南水簡介"
+   ],
+   "order": 52
+  },
+  "37467989501273": {
+   "page_id": 37467989501273,
+   "url": "https://www.tnvs.tn.edu.tw/electronics/",
+   "label": "電子科",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "南水簡介"
+   ],
+   "order": 53
+  },
+  "139542087457870": {
+   "page_id": 139542087457870,
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/",
+   "label": "機電科",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "南水簡介"
+   ],
+   "order": 54
+  },
+  "219627612733927": {
+   "page_id": 219627612733927,
+   "url": "https://www.tnvs.tn.edu.tw/business/",
+   "label": "商業經營科",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "南水簡介"
+   ],
+   "order": 55
+  },
+  "168264606507368": {
+   "page_id": 168264606507368,
+   "url": "https://www.tnvs.tn.edu.tw/marine/",
+   "label": "輪機科",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "南水簡介"
+   ],
+   "order": 56
+  },
+  "170993583273783": {
+   "page_id": 170993583273783,
+   "url": "https://www.tnvs.tn.edu.tw/e-commence/",
+   "label": "電子商務科",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "南水簡介"
+   ],
+   "order": 57
   }
  },
  "handbook": {},
  "services": {},
  "items": [
+  {
+   "id": "tnvs-info-51902306409415",
+   "kind": "school_info",
+   "title": "南水簡介",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/about/tnvs-intro/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "宿舍",
+    "新生",
+    "校史",
+    "校徽",
+    "校歌",
+    "招生"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-51902306409415.json",
+   "detail_revision": "6cbd35c640830879f694627309c4a9ea041e7eda98fb2ce1b333247bad3b8043",
+   "detail_status": "parsed"
+  },
   {
    "id": "tnvs-info-175903128611513",
    "kind": "school_info",
@@ -834,5 +965,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-01T23:03:14+08:00"
+ "last_run_at": "2026-11-02T01:13:22+08:00"
 }

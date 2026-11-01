@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-01T23:05:19+08:00",
+ "generated_at": "2026-11-02T01:15:23+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -393,15 +393,57 @@
    "page_id": 184647343972996,
    "url": "https://www.hwaivs.ylc.edu.tw/%e5%8d%87%e5%ad%b8%e5%b0%88%e5%8d%80/",
    "label": "升學專區",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:19+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "升學專區"
+   ],
+   "changed_at": "2026-11-02T01:15:19+08:00",
+   "content_hash": "44d8b5ae983da67ad2543f521d083f28d6ab91475d05e840ffe915949985d045",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "升學",
+    "學測",
+    "招生",
+    "測驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-184647343972996.json",
+   "detail_revision": "f065c9af750fc0c936c4499c27eae50608b57ba8ed2167d214468d8e88026502",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "87001172833261": {
    "page_id": 87001172833261,
    "url": "https://www.hwaivs.ylc.edu.tw/%e5%8d%87%e5%ad%b8%e5%b0%88%e5%8d%80/%e5%8d%87%e5%ad%b8%e8%b3%87%e8%a8%8a%e5%85%ac%e5%91%8a/",
    "label": "升學資訊公告",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:22+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "升學專區",
+    "升學資訊公告"
+   ],
+   "changed_at": "2026-11-02T01:15:22+08:00",
+   "content_hash": "fa93be73d9fba6bd8b424006ab55a9253ea734a09756f80a6b7e3f1453fc9051",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "升學",
+    "四技二專",
+    "學測",
+    "招生",
+    "測驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-87001172833261.json",
+   "detail_revision": "26538de4e854b757ed22c451b69d8c836862bb98df0ea5ce7f0b316cc74831e0",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "253951948358924": {
    "page_id": 253951948358924,
@@ -3760,6 +3802,30 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hwaivs-info-87001172833261",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 升學專區 › 升學資訊公告",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e5%8d%87%e5%ad%b8%e5%b0%88%e5%8d%80/%e5%8d%87%e5%ad%b8%e8%b3%87%e8%a8%8a%e5%85%ac%e5%91%8a/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "入學",
+    "升學",
+    "四技二專",
+    "學測",
+    "招生",
+    "測驗"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-87001172833261.json",
+   "detail_revision": "26538de4e854b757ed22c451b69d8c836862bb98df0ea5ce7f0b316cc74831e0",
+   "detail_status": "parsed"
+  },
+  {
    "id": "hwaivs-info-95148601971581",
    "kind": "school_info",
    "title": "教務處工作職掌 › 實驗研究組 › 課程計畫書",
@@ -3989,6 +4055,29 @@
    ],
    "detail_ref": "data/details/hwaivs/hwaivs-info-118660946148050.json",
    "detail_revision": "c6c795f72fd473525215111a27b48ecf61b054a53b095f43d4f2a4f98cc97710",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hwaivs-info-184647343972996",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 升學專區",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e5%8d%87%e5%ad%b8%e5%b0%88%e5%8d%80/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "入學",
+    "升學",
+    "學測",
+    "招生",
+    "測驗"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-184647343972996.json",
+   "detail_revision": "f065c9af750fc0c936c4499c27eae50608b57ba8ed2167d214468d8e88026502",
    "detail_status": "parsed"
   },
   {
@@ -4327,5 +4416,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-01T23:05:19+08:00"
+ "last_run_at": "2026-11-02T01:15:23+08:00"
 }

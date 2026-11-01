@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-01T23:03:33+08:00",
+ "generated_at": "2026-11-02T01:13:43+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -31,22 +31,37 @@
    "page_id": 139112461971929,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/about-us/history/",
    "label": "附中簡史",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:38+08:00",
+   "path": [
+    "附中簡介",
+    "附中簡史"
+   ]
   },
   "58988151349046": {
    "page_id": 58988151349046,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/about-us/philosophy/",
    "label": "治校理念",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:39+08:00",
+   "path": [
+    "附中簡介",
+    "治校理念"
+   ]
   },
   "23336660914927": {
    "page_id": 23336660914927,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/about-us/location/",
    "label": "地理位置",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:13:41+08:00",
+   "path": [
+    "附中簡介",
+    "地理位置"
+   ]
   },
   "81960307637584": {
    "page_id": 81960307637584,
@@ -391,6 +406,30 @@
     "附中簡介"
    ],
    "order": 48
+  },
+  "188056452628029": {
+   "page_id": 188056452628029,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/principal-office/1/",
+   "label": "校長介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "附中簡介",
+    "治校理念"
+   ],
+   "order": 49
+  },
+  "139075737957437": {
+   "page_id": 139075737957437,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/principal-office/2/",
+   "label": "校長的話",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "附中簡介",
+    "治校理念"
+   ],
+   "order": 50
   }
  },
  "handbook": {},
@@ -643,5 +682,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-01T23:03:33+08:00"
+ "last_run_at": "2026-11-02T01:13:43+08:00"
 }

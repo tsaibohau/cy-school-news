@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-01T23:05:02+08:00",
+ "generated_at": "2026-11-02T01:15:10+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -151,22 +151,34 @@
    "page_id": 221816411969133,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/aca-affairs/tlsh3/",
    "label": "設備組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:05+08:00",
+   "path": [
+    "設備組"
+   ]
   },
   "149049317185376": {
    "page_id": 149049317185376,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/aca-affairs/tlsh5/",
    "label": "特教組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:07+08:00",
+   "path": [
+    "特教組"
+   ]
   },
   "190583470085548": {
    "page_id": 190583470085548,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/aca-affairs/tlsh4/",
    "label": "試務組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:15:09+08:00",
+   "path": [
+    "試務組"
+   ]
   },
   "45908356321629": {
    "page_id": 45908356321629,
@@ -379,6 +391,39 @@
     "分類公告"
    ],
    "order": 43
+  },
+  "174080013114173": {
+   "page_id": 174080013114173,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/aca-affairs/tlsh3/tlsh3-1/",
+   "label": "設備組簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "設備組"
+   ],
+   "order": 44
+  },
+  "108668334708264": {
+   "page_id": 108668334708264,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/aca-affairs/tlsh3/tlsh3-2/",
+   "label": "實驗室管理規則",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "設備組"
+   ],
+   "order": 45
+  },
+  "67487135472569": {
+   "page_id": 67487135472569,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/aca-affairs/tlsh3/tlsh3-3/",
+   "label": "數資班歷屆表現",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "設備組"
+   ],
+   "order": 46
   }
  },
  "handbook": {},
@@ -647,5 +692,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-01T23:05:02+08:00"
+ "last_run_at": "2026-11-02T01:15:10+08:00"
 }

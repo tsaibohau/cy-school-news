@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tssh",
- "generated_at": "2026-11-01T23:06:35+08:00",
+ "generated_at": "2026-11-02T01:16:49+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "212970716483767": {
@@ -202,29 +202,45 @@
    "page_id": 19290333652781,
    "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=2,7,376,43",
    "label": "課程諮詢",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:16:42+08:00",
+   "path": [
+    "課程諮詢"
+   ]
   },
   "177658958440143": {
    "page_id": 177658958440143,
    "url": "https://www.tssh.cyc.edu.tw/sub/form/index.aspx?Parser=28,22,481,92",
    "label": "科技自主學習",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:16:44+08:00",
+   "path": [
+    "科技自主學習"
+   ]
   },
   "190318297373501": {
    "page_id": 190318297373501,
    "url": "https://www.tssh.cyc.edu.tw/sub/form/index.aspx?Parser=2,22,354",
    "label": "高職優質化計畫",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:16:45+08:00",
+   "path": [
+    "高職優質化計畫"
+   ]
   },
   "221074013601307": {
    "page_id": 221074013601307,
    "url": "https://www.tssh.cyc.edu.tw/df_sys/",
    "label": ".",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T01:16:47+08:00",
+   "path": [
+    "."
+   ]
   },
   "195345472180031": {
    "page_id": 195345472180031,
@@ -2566,6 +2582,94 @@
     "自主學習專區"
    ],
    "order": 240
+  },
+  "241895645118879": {
+   "page_id": 241895645118879,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,376,43,,,4545",
+   "label": "114學年度入學新生選課輔導手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程諮詢"
+   ],
+   "order": 241
+  },
+  "151138457349935": {
+   "page_id": 151138457349935,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,376,43,,,4546",
+   "label": "114學年度新生課程家長說明會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程諮詢"
+   ],
+   "order": 242
+  },
+  "56198803828672": {
+   "page_id": 56198803828672,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,376,43,,,3997",
+   "label": "國立東石高級中學113學年度課程諮詢輔導手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程諮詢"
+   ],
+   "order": 243
+  },
+  "172499283291346": {
+   "page_id": 172499283291346,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,376,43,,,3998",
+   "label": "國立東石高級中學113學年度新生課程家長說明會簡報",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程諮詢"
+   ],
+   "order": 244
+  },
+  "199206877637287": {
+   "page_id": 199206877637287,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,376,43,,,5289",
+   "label": "115學年度入學新生選課輔導手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程諮詢"
+   ],
+   "order": 245
+  },
+  "117617243912910": {
+   "page_id": 117617243912910,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,7,376,43,,,3655",
+   "label": "國立東石高級中學112年度課程諮詢輔導手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程諮詢"
+   ],
+   "order": 246
+  },
+  "209046782469533": {
+   "page_id": 209046782469533,
+   "url": "https://www.tssh.cyc.edu.tw/sub/form/Details.aspx?Parser=2,22,354,,,,605",
+   "label": "高職優質化資訊網",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高職優質化計畫"
+   ],
+   "order": 247
+  },
+  "129418472919940": {
+   "page_id": 129418472919940,
+   "url": "https://www.tssh.cyc.edu.tw/sub/form/Details.aspx?Parser=2,22,354,,,,956",
+   "label": "108_子計畫3【編號：106-3(A3)】深化教師教學專業_執行",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高職優質化計畫"
+   ],
+   "order": 248
   }
  },
  "handbook": {},
@@ -2768,5 +2872,5 @@
    "label": "報廢產品變賣專區"
   }
  ],
- "last_run_at": "2026-11-01T23:06:35+08:00"
+ "last_run_at": "2026-11-02T01:16:49+08:00"
 }

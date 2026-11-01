@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-01T23:04:49+08:00",
+ "generated_at": "2026-11-02T01:14:52+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "98": {
@@ -397,15 +397,57 @@
   },
   "166": {
    "page_id": 166,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:45+08:00",
+   "path": [
+    "協力組織",
+    "合作社"
+   ],
+   "changed_at": "2026-11-02T01:14:45+08:00",
+   "content_hash": "95660db5018bd7a17df3d8421276a079ba91e126a5b91be5fab5143cd6d34385",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-166.json",
+   "detail_revision": "ba5733f7d3dff5e0b48dfade214f958095fb71fd688d431351c37f249fdc44cb",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "167": {
    "page_id": 167,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:48+08:00",
+   "path": [
+    "協力組織",
+    "教育事務基金會"
+   ],
+   "changed_at": "2026-11-02T01:14:48+08:00",
+   "content_hash": "a83e1e45f5d80d6ae9ab958a04930a3cb9d86e7f795e7163712583baead29653",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-167.json",
+   "detail_revision": "4e41a11c35e316084e24867158cf251395a46294deaf3b7f01fdb702f2e974bb",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "168": {
    "page_id": 168,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T01:14:50+08:00",
+   "path": [
+    "協力組織",
+    "校友會"
+   ],
+   "changed_at": "2026-11-02T01:14:50+08:00",
+   "content_hash": "0d6292a0e33378db08a952e2abc0ca3c0238fd84e8fefdb72b7d61bf9c31cd92",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-168.json",
+   "detail_revision": "c227c0913996f0aa4d0a218f155b57fdea2a8b88bc70b2c7a799bf6491806835",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "86": {
    "page_id": 86,
@@ -1000,6 +1042,57 @@
    "detail_ref": "data/details/ccjh/ccjh-info-165.json",
    "detail_revision": "13ade82eb759ace89551f87d9df004d5a429c90a4afc498414d7c06052b6b840",
    "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-166",
+   "kind": "school_info",
+   "title": "協力組織 › 合作社",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-166.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-166.json",
+   "detail_revision": "ba5733f7d3dff5e0b48dfade214f958095fb71fd688d431351c37f249fdc44cb",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-167",
+   "kind": "school_info",
+   "title": "協力組織 › 教育事務基金會",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-167.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-167.json",
+   "detail_revision": "4e41a11c35e316084e24867158cf251395a46294deaf3b7f01fdb702f2e974bb",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-168",
+   "kind": "school_info",
+   "title": "協力組織 › 校友會",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-168.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-168.json",
+   "detail_revision": "c227c0913996f0aa4d0a218f155b57fdea2a8b88bc70b2c7a799bf6491806835",
+   "detail_status": "parsed"
   }
  ],
  "roots": [
@@ -1029,5 +1122,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-01T23:04:49+08:00"
+ "last_run_at": "2026-11-02T01:14:52+08:00"
 }
