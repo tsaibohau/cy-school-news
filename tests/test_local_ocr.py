@@ -92,3 +92,47 @@ assert blank_result["text"] == ""
 assert blank_result["reason"] in {"ocr_too_little_text", "ocr_low_confidence"}
 
 print("Local Traditional-Chinese OCR tests passed")
+
+
+# --- local-ocr-v2: blurry scans, vertical posters, clean-up rules -------------------------
+from PIL import ImageFilter  # noqa: E402
+from local_ocr import installed_languages, postprocess  # noqa: E402
+
+SCAN_LINES = ["一、報名期間：即日起至115年11月15日止。", "二、參加對象：全國高級中等學校在學學生。"]
+
+
+def make_blurry_scan() -> Image.Image:
+    font = ImageFont.truetype(font_path(), 30)
+    image = Image.new("L", (1400, 160), 255)
+    draw = ImageDraw.Draw(image)
+    for index, line in enumerate(SCAN_LINES):
+        draw.text((40, 30 + index * 54), line, font=font, fill=0)
+    # half resolution, blurred, washed out: a phone photo of a printed notice
+    image = image.resize((700, 80)).filter(ImageFilter.GaussianBlur(0.8))
+    return image.point(lambda value: int(70 + value * 0.6))
+
+
+scan = extract_ocr_text(as_png(make_blurry_scan()), "png", min_confidence=0)
+scan_score = SequenceMatcher(None, compact("".join(SCAN_LINES)), compact(scan["text"])).ratio()
+assert scan_score >= 0.55, (scan_score, scan["text"])
+assert "115年11月15日" in compact(scan["text"]) or "11月15日" in compact(scan["text"]), scan["text"]
+
+if "chi_tra_vert" in installed_languages():
+    columns = ["校慶運動會", "十一月二十日", "全校師生參加", "請準時集合"]
+    font = ImageFont.truetype(font_path(), 34)
+    poster = Image.new("L", (80 * len(columns) + 60, 420), 255)
+    draw = ImageDraw.Draw(poster)
+    for col, text in enumerate(columns):
+        x = 40 + 80 * (len(columns) - 1 - col)
+        for row, char in enumerate(text):
+            draw.text((x, 30 + row * 42), char, font=font, fill=0)
+    vertical = extract_ocr_text(as_png(poster), "png", min_confidence=0)
+    vertical_score = SequenceMatcher(None, compact("".join(columns)), compact(vertical["text"])).ratio()
+    assert vertical_score >= 0.8, (vertical_score, vertical["text"])
+
+assert postprocess("國 立 嘉 義 115 年 12 月 8 日 (二 ) 至") == "國立嘉義115年12月8日（二）至"
+assert postprocess("主 旨 : 獎金 新 臺 幣 30,000 元") == "主旨：獎金新臺幣30,000元"
+assert postprocess("民國 1l5 年") == "民國115年", postprocess("民國 1l5 年")
+assert postprocess("Tel: 05-2763208 ext 203") == "Tel: 05-2763208 ext 203", "English stays as is"
+assert postprocess("獎金 30,00g 元").startswith("獎金30,00g"), "ambiguous look-alikes are not guessed"
+print("Local OCR v2 (scan, vertical, clean-up) tests passed")

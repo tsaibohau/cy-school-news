@@ -18,7 +18,7 @@ import tempfile
 from io import BytesIO
 from pathlib import Path
 
-OCR_VERSION = "local-ocr-v1"
+OCR_VERSION = "local-ocr-v2"
 DEFAULT_LANGUAGES = "chi_tra+eng"
 DEFAULT_MIN_CONFIDENCE = 55.0
 DEFAULT_MIN_CHARS = 8
@@ -27,6 +27,13 @@ DEFAULT_MAX_CHARS = 120_000
 DEFAULT_MAX_IMAGE_PIXELS = 40_000_000
 DEFAULT_PAGE_SCALE = 2.0
 DEFAULT_PAGE_TIMEOUT_SEC = 30
+# A second, cleaner pass (2x upscale + median filter) runs only when the first pass is unsure;
+# blurry or low-resolution scans gain the most. Vertical posters get a chi_tra_vert pass.
+RETRY_BELOW_CONFIDENCE = 80.0
+VERTICAL_BELOW_CONFIDENCE = 70.0
+MAX_UPSCALE_PIXELS = 24_000_000
+# Optional directory with better free models (tessdata_best); see the OCR workflows.
+TESSDATA_DIR_ENV = "OCR_TESSDATA_DIR"
 
 
 def _clean_lines(lines, max_chars: int) -> str:
@@ -53,13 +60,22 @@ def _mark_insufficient_evidence(text: str, confidence: float, max_chars: int) ->
     return "\n".join(marked)[:max_chars]
 
 
+def _tessdata_args() -> list[str]:
+    """Use OCR_TESSDATA_DIR (e.g. tessdata_best) when it has the Chinese model."""
+    import os
+    directory = os.environ.get(TESSDATA_DIR_ENV, "").strip()
+    if directory and (Path(directory) / "chi_tra.traineddata").is_file():
+        return ["--tessdata-dir", directory]
+    return []
+
+
 def installed_languages(timeout_sec: int = 5) -> set[str]:
     binary = shutil.which("tesseract")
     if not binary:
         return set()
     try:
         proc = subprocess.run(
-            [binary, "--list-langs"], capture_output=True, text=True,
+            [binary, *_tessdata_args(), "--list-langs"], capture_output=True, text=True,
             timeout=max(1, timeout_sec), check=False,
         )
     except (OSError, subprocess.SubprocessError):
@@ -106,23 +122,132 @@ def _parse_tsv(raw: str) -> tuple[str, float, int]:
                 str(row.get("par_num") or "0"),
                 str(row.get("line_num") or "0"),
             )
-            lines.setdefault(key, []).append(text)
-    text = "\n".join(" ".join(words) for words in lines.values() if words)
+            lines.setdefault(key, []).append((text, confidence))
+    text = "\n".join(_join_words(words) for words in lines.values() if words)
     confidence = weighted_confidence / confidence_weight if confidence_weight else 0.0
     return text, confidence, candidate_chars
 
 
-def _ocr_png(path: Path, *, languages: str, timeout_sec: int) -> tuple[str, float, int]:
+_CJK = r"\u3400-\u9fff\uf900-\ufaff"
+_CJK_RE = re.compile(f"[{_CJK}]")
+_LATIN_JUNK = re.compile(r"^[A-Za-z|\\/_~^`'\".,:;!?()\[\]{}<>*#@$%&+=-]{1,5}$")
+
+
+def _join_words(words: list[tuple[str, float]]) -> str:
+    """Tesseract splits Chinese into one word per character or two; join them without spaces.
+
+    Low-confidence Latin fragments inside a Chinese line ("OMAP", "RS") are usually noise
+    from stamps, lines or texture and are dropped. English words in English lines are kept.
+    """
+    cjk_chars = sum(len(_CJK_RE.findall(text)) for text, _ in words)
+    total_chars = sum(len(text) for text, _ in words) or 1
+    chinese_line = cjk_chars / total_chars >= 0.5
+    kept = [text for text, conf in words
+            if not (chinese_line and conf < 60 and _LATIN_JUNK.match(text) and not _CJK_RE.search(text))]
+    out = ""
+    for text in kept:
+        if out and not (_CJK_RE.search(out[-1]) or _CJK_RE.search(text[0])
+                        or re.match(r"[，。、：；！？（）「」『』]", out[-1] + text[0])):
+            out += " "
+        elif out and not (_CJK_RE.search(out[-1]) or _CJK_RE.search(text[0])):
+            out += " "
+        out += text
+    return out
+
+
+_FULLWIDTH = {",": "，", ":": "：", ";": "；", "(": "（", ")": "）", "!": "！", "?": "？"}
+_DIGIT_LOOKALIKE = str.maketrans({"O": "0", "o": "0", "l": "1", "I": "1", "|": "1"})
+
+
+def postprocess(text: str) -> str:
+    """Fixed-rule clean-up of Tesseract output for Traditional Chinese notices.
+
+    * no spaces between Chinese characters, digits and punctuation (「115 年 12 月」→「115年12月」);
+    * half-width punctuation next to Chinese becomes full-width (「主旨:」→「主旨：」);
+    * inside a number, O/o read as 0 and l/I/| read as 1 (「2O26」→「2026」). Other look-alikes
+      are left alone: guessing them could invent a wrong date or amount.
+    """
+    tight = f"{_CJK}，。、：；！？（）「」『』【】"
+    lines = []
+    for line in str(text or "").splitlines():
+        def fix_number(match):
+            token = match.group(0)
+            letters = [ch for ch in token if not ch.isdigit() and ch not in ",./-:"]
+            if len(letters) == 1 and sum(ch.isdigit() for ch in token) >= 2:
+                return token.translate(_DIGIT_LOOKALIKE)
+            return token
+        line = re.sub(r"(?<![A-Za-z])[0-9OolI|][0-9OolI|,./:-]{2,}(?![A-Za-z])", fix_number, line)
+        # Half-width punctuation touching Chinese (spaces allowed) becomes full-width.
+        line = re.sub(f"(?<=[{_CJK}）」])\\s*([,:;!?()])|([,:;!?()])\\s*(?=[{_CJK}（「])",
+                      lambda m: _FULLWIDTH[m.group(1) or m.group(2)], line)
+        line = re.sub(f"(?<=[{_CJK}])\\s*\\(", "（", line)
+        line = re.sub(f"\\)\\s*(?=[{_CJK}])", "）", line)
+        for _ in range(2):
+            line = re.sub(f"(?<=[{tight}])\\s+(?=[{tight}0-9])|(?<=[0-9])\\s+(?=[{tight}])", "", line)
+        lines.append(re.sub(r"[ \t]{2,}", " ", line).strip())
+    return "\n".join(line for line in lines if line)
+
+
+def _ocr_png(path: Path, *, languages: str, timeout_sec: int, psm: int = 6) -> tuple[str, float, int]:
     binary = shutil.which("tesseract")
     if not binary:
         return "", 0.0, 0
-    proc = subprocess.run(
-        [binary, str(path), "stdout", "-l", languages, "--psm", "6", "tsv"],
-        capture_output=True, text=True, timeout=max(5, timeout_sec), check=False,
-    )
+    command = [binary, str(path), "stdout", "-l", languages, "--psm", str(psm), "-c", "tessedit_create_tsv=1"]
+    best_models = _tessdata_args()
+    try:
+        proc = subprocess.run(command[:1] + best_models + command[1:], capture_output=True, text=True,
+                              timeout=max(5, timeout_sec), check=False)
+    except subprocess.TimeoutExpired:
+        if not best_models:
+            raise
+        # The best models are slower; a page they cannot finish is read with the system models.
+        proc = subprocess.run(command, capture_output=True, text=True,
+                              timeout=max(5, timeout_sec), check=False)
     if proc.returncode != 0:
         return "", 0.0, 0
     return _parse_tsv(proc.stdout)
+
+
+def _looks_vertical(text: str) -> bool:
+    """Vertical columns read as horizontal lines give many very short Chinese lines."""
+    lines = [re.sub(r"\s+", "", line) for line in str(text or "").splitlines()]
+    lines = [line for line in lines if _CJK_RE.search(line)]
+    if len(lines) < 3:
+        return False
+    short = sum(1 for line in lines if len(line) <= 5)
+    return short / len(lines) >= 0.7 and not any(re.search(r"[，。：；]", line) for line in lines)
+
+
+def _ocr_page(image, directory: Path, name: str, *, languages: str,
+              timeout_sec: int) -> tuple[str, float, int]:
+    """OCR one page image, retrying with cleaner preprocessing only when unsure.
+
+    Pass 1: grayscale + autocontrast (the v1 behaviour).
+    Pass 2: 2x upscale + median filter, when pass 1 confidence < RETRY_BELOW_CONFIDENCE.
+    Pass 3: vertical Chinese model, when still < VERTICAL_BELOW_CONFIDENCE and it is installed.
+    The result with the highest Tesseract confidence wins.
+    """
+    from PIL import Image, ImageFilter, ImageOps
+
+    gray = ImageOps.autocontrast(image.convert("L"), cutoff=1)
+    path = directory / f"{name}-a.png"
+    gray.save(path, format="PNG")
+    best = _ocr_png(path, languages=languages, timeout_sec=timeout_sec)
+    if best[1] < RETRY_BELOW_CONFIDENCE and gray.width * gray.height * 4 <= MAX_UPSCALE_PIXELS:
+        sharp = gray.resize((gray.width * 2, gray.height * 2), Image.LANCZOS).filter(ImageFilter.MedianFilter(3))
+        path = directory / f"{name}-b.png"
+        sharp.save(path, format="PNG")
+        second = _ocr_png(path, languages=languages, timeout_sec=timeout_sec)
+        if second[1] > best[1]:
+            best = second
+    looks_vertical = _looks_vertical(best[0])
+    if (best[1] < VERTICAL_BELOW_CONFIDENCE or looks_vertical) and "chi_tra_vert" in installed_languages():
+        vertical = _ocr_png(directory / f"{name}-a.png", languages="chi_tra_vert", timeout_sec=timeout_sec, psm=5)
+        # Confidence alone cannot tell: columns read sideways still score high. When the horizontal
+        # result is made of many 1–5 character lines, prefer the vertical reading unless it is clearly worse.
+        if vertical[1] > best[1] + 5 or (looks_vertical and vertical[1] >= best[1] - 5 and not _looks_vertical(vertical[0])):
+            best = vertical
+    return postprocess(best[0]), best[1], best[2]
 
 
 def _quality_result(text: str, confidence: float, candidate_chars: int, *,
@@ -138,6 +263,7 @@ def _quality_result(text: str, confidence: float, candidate_chars: int, *,
         "ocr_candidate_chars": int(candidate_chars),
         "ocr_searchable_chars": searchable_chars,
         "ocr_attempted": True,
+        "ocr_models": "tessdata_best" if _tessdata_args() else "system",
     }
     if page_count is not None:
         common["page_count"] = page_count
@@ -168,11 +294,9 @@ def _ocr_image(data: bytes, *, languages: str, max_chars: int,
                 return {"text": "", "parse_status": "unsupported", "reason": "ocr_image_size_limit",
                         "ocr_version": OCR_VERSION, "ocr_attempted": False}
             image = ImageOps.exif_transpose(source).convert("L")
-            image = ImageOps.autocontrast(image)
             with tempfile.TemporaryDirectory(prefix="cynews-ocr-") as directory:
-                path = Path(directory) / "page.png"
-                image.save(path, format="PNG", optimize=True)
-                text, confidence, chars = _ocr_png(path, languages=languages, timeout_sec=timeout_sec)
+                text, confidence, chars = _ocr_page(image, Path(directory), "page",
+                                                    languages=languages, timeout_sec=timeout_sec)
     except (UnidentifiedImageError, OSError, ValueError):
         return {"text": "", "parse_status": "unsupported", "reason": "ocr_invalid_image",
                 "ocr_version": OCR_VERSION, "ocr_attempted": False}
@@ -212,11 +336,12 @@ def _ocr_pdf(data: bytes, *, languages: str, max_chars: int, max_pdf_pages: int,
                     return {"text": "", "parse_status": "unsupported", "reason": "ocr_image_size_limit",
                             "ocr_version": OCR_VERSION, "ocr_attempted": attempted,
                             "page_count": page_count}
-                path = Path(directory) / f"page-{index + 1}.png"
-                pixmap.save(path)
+                from PIL import Image
+                image = Image.frombytes("RGB", (pixmap.width, pixmap.height), pixmap.samples)
                 attempted = True
                 try:
-                    text, confidence, chars = _ocr_png(path, languages=languages, timeout_sec=timeout_sec)
+                    text, confidence, chars = _ocr_page(image, Path(directory), f"page-{index + 1}",
+                                                        languages=languages, timeout_sec=timeout_sec)
                 except subprocess.TimeoutExpired:
                     return {"text": "", "parse_status": "temporary_error", "reason": "ocr_timeout",
                             "ocr_version": OCR_VERSION, "ocr_attempted": True,

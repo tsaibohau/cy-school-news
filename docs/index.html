@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=109">
+<link rel="stylesheet" href="style.css?v=110">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -168,6 +168,36 @@
       <div class="chips" id="catChips" aria-label="分類篩選"></div>
     </div>
     <main id="list" class="list"></main>
+  </section>
+
+  <!-- 跨校比對：同一項活動在不同學校的公告，與各校公告的時間點 -->
+  <section id="viewCross" class="cross-view" hidden aria-labelledby="crossTitle">
+    <div class="section-heading"><h2 id="crossTitle">跨校比對</h2><p id="crossCount" class="count-line"></p></div>
+    <p class="cross-lead">同一場比賽、營隊、招生或講座，常由好幾間學校轉知。這裡把它們歸成一組：哪些學校公告了、各在哪天公告、截止日是哪天。</p>
+    <div class="controls">
+      <div class="search-row">
+        <input id="crossQ" type="search" inputmode="search" placeholder="搜尋活動，例如：特殊選才" aria-label="搜尋跨校活動">
+        <label class="school-filter" for="crossSchool"><span class="visually-hidden">學校</span>
+          <select id="crossSchool" aria-label="以學校篩選"><option value="all">所有學校</option></select>
+        </label>
+      </div>
+      <div class="sort-row">
+        <label class="sort-filter" for="crossSort"><span>排序</span>
+          <select id="crossSort" aria-label="跨校比對排序">
+            <option value="recent">最近有學校公告</option>
+            <option value="schools">最多學校公告</option>
+            <option value="deadline">快截止的在前</option>
+          </select>
+        </label>
+        <label class="cross-missing-toggle"><input id="crossMissing" type="checkbox"> 只看這間學校還沒公告的</label>
+      </div>
+    </div>
+    <details id="crossSpeedBox" class="cross-speed">
+      <summary>各校公告速度：多久跟上第一間學校</summary>
+      <div id="crossSpeed"></div>
+    </details>
+    <main id="crossList" class="list" aria-live="polite"></main>
+    <button id="crossMore" class="btn-ghost cross-more" type="button" hidden>顯示更多</button>
   </section>
 
   <!-- 行事曆 -->
@@ -345,6 +375,7 @@
   <button id="tabAssistant" class="tab"><span class="tab-icon" aria-hidden="true">問</span><span class="tab-label">問校務</span></button>
   <button id="tabHome" class="tab"><span class="tab-icon" aria-hidden="true">首</span><span class="tab-label">首頁</span></button>
   <button id="tabLatest" class="tab is-active" aria-current="page"><span class="tab-icon" aria-hidden="true">告</span><span class="tab-label">公告</span></button>
+  <button id="tabCross" class="tab"><span class="tab-icon" aria-hidden="true">比</span><span class="tab-label">跨校比對</span></button>
   <button id="tabCalendar" class="tab"><span class="tab-icon" aria-hidden="true">曆</span><span class="tab-label">行事曆</span></button>
   <button id="tabTimetable" class="tab"><span class="tab-icon" aria-hidden="true">課</span><span class="tab-label">課表</span></button>
 </nav>
@@ -383,8 +414,9 @@
 <script src="assistant-qa.js?v=70"></script>
 <script src="announcement-sort.js?v=1"></script>
 <script src="google-calendar.js?v=1"></script>
+<script src="cross-school.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=125"></script>
+<script src="app.js?v=126"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>
