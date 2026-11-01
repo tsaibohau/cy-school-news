@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=110">
+<link rel="stylesheet" href="style.css?v=111">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -168,6 +168,26 @@
       <div class="chips" id="catChips" aria-label="分類篩選"></div>
     </div>
     <main id="list" class="list"></main>
+  </section>
+
+  <!-- 活動總覽：所有學校還能報名的活動，不分學校，依類別與截止日 -->
+  <section id="viewActivities" class="activity-view" hidden aria-labelledby="activitiesTitle">
+    <div class="section-heading"><h2 id="activitiesTitle">活動總覽</h2><p id="activityCount" class="count-line"></p></div>
+    <p class="cross-lead">所有學校公告裡還能報名的比賽、營隊、講座、招生和獎助學金，不分學校整理；好幾間學校都轉知的活動只列一次。</p>
+    <div class="controls">
+      <div class="search-row">
+        <input id="activityQ" type="search" inputmode="search" placeholder="搜尋活動，例如：營隊" aria-label="搜尋活動">
+        <label class="school-filter" for="activitySort"><span class="visually-hidden">排序</span>
+          <select id="activitySort" aria-label="活動排序">
+            <option value="category">依類別</option>
+            <option value="deadline">依截止日</option>
+          </select>
+        </label>
+      </div>
+      <div class="chips" id="activityChips" aria-label="活動類別"></div>
+    </div>
+    <main id="activityList" class="list" aria-live="polite"></main>
+    <button id="activityMore" class="btn-ghost cross-more" type="button" hidden>顯示更多</button>
   </section>
 
   <!-- 跨校比對：同一項活動在不同學校的公告，與各校公告的時間點 -->
@@ -375,6 +395,7 @@
   <button id="tabAssistant" class="tab"><span class="tab-icon" aria-hidden="true">問</span><span class="tab-label">問校務</span></button>
   <button id="tabHome" class="tab"><span class="tab-icon" aria-hidden="true">首</span><span class="tab-label">首頁</span></button>
   <button id="tabLatest" class="tab is-active" aria-current="page"><span class="tab-icon" aria-hidden="true">告</span><span class="tab-label">公告</span></button>
+  <button id="tabActivities" class="tab"><span class="tab-icon" aria-hidden="true">活</span><span class="tab-label">活動總覽</span></button>
   <button id="tabCross" class="tab"><span class="tab-icon" aria-hidden="true">比</span><span class="tab-label">跨校比對</span></button>
   <button id="tabCalendar" class="tab"><span class="tab-icon" aria-hidden="true">曆</span><span class="tab-label">行事曆</span></button>
   <button id="tabTimetable" class="tab"><span class="tab-icon" aria-hidden="true">課</span><span class="tab-label">課表</span></button>
@@ -415,8 +436,10 @@
 <script src="announcement-sort.js?v=1"></script>
 <script src="google-calendar.js?v=1"></script>
 <script src="cross-school.js?v=1"></script>
+<script src="activity-overview.js?v=1"></script>
+<script src="schedule-compare.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=126"></script>
+<script src="app.js?v=128"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

@@ -92,4 +92,16 @@ assert.match(index, /<\/nav>\s*<!--[^>]*-->\s*<div class="side-account">[\s\S]*i
 assert.match(css, /\.side-account \{\s*display: flex; align-items: center; gap: 8px; margin-top: auto;/, "pinned to the bottom of the drawer");
 assert.match(app, /new MutationObserver\(renderSideAccount\)\.observe\(box/, "follows the real account state");
 assert.match(index, /<h2>設定<\/h2>/);
+/* 2026-11-01: answers type out like a typewriter; tap to show all; reduced motion skips it. */
+assert.match(app, /function typeAnswer\(box\) \{\s*if \(!box \|\| !box\.querySelectorAll \|\| prefersReducedMotion\(\)\) return;/);
+assert.match(app, /finishAnswerTyping\(\);\s*el\.assistantAnswer\.innerHTML = '<div class="assistant-result chat-answer">' \+ html \+ '<\/div>';\s*typeAnswer\(el\.assistantAnswer\.firstChild\);/);
+assert.match(app, /spoken\.className = "visually-hidden";/, "screen readers get the whole answer at once");
+assert.match(app, /box\.addEventListener\("click", finish\);/, "tap shows the whole answer");
+assert.match(css, /\.chat-answer \.is-typing-hidden \{ display: none; \}/, "sources wait until the text is typed");
+assert.match(css, /@media \(prefers-reduced-motion: reduce\) \{ \.type-caret \{ animation: none; \}/);
+/* 活動總覽 is a public page in the sidebar. */
+assert.match(index, /<button id="tabActivities" class="tab">[\s\S]*?活動總覽/);
+assert.match(index, /<section id="viewActivities" class="activity-view" hidden/);
+assert.match(app, /tab === "latest" \|\| tab === "cross" \|\| tab === "activities"/);
+
 console.log("Chat landing and layout contract passed");
