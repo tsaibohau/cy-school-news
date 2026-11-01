@@ -1756,7 +1756,7 @@
     /* ── 畫面渲染 ── */
     function displayDate(it) {
       /* 沒有公告日期時,退而顯示首次抓到的日期 */
-      return it.date || (it.first_seen || "").slice(0, 10) || "—";
+      return String(it.date || "").slice(0, 10) || (it.first_seen || "").slice(0, 10) || "—";
     }
     function displaySnippet(it) {
       if (!hasSignedInAccount()) return "";
@@ -2378,8 +2378,12 @@
     function assistantServiceLinks(result) {
       var links = (result && result.service_links || []).filter(function (link) { return link && /^https:\/\//.test(String(link.url || "")); });
       var docs = result ? (result.document_links || []).filter(function (doc) { return doc && /^https:\/\//.test(String(doc.url || "")); }) : [];
-      if (!links.length && !docs.length) return "";
-      return '<div class="assistant-office">' + links.map(function (link) {
+      var asked = (result && result.links || []).filter(function (link) { return link && /^https?:\/\/[^\s]+$/i.test(String(link.url || "")); });
+      var askedHtml = asked.length ? '<div class="assistant-links">' + asked.map(function (link) {
+        return '<a class="assistant-link" href="' + esc(link.url) + '" target="_blank" rel="noopener noreferrer"><strong>' + esc(link.name) + '</strong><small>' + esc(link.url) + '</small></a>';
+      }).join("") + '</div>' : "";
+      if (!links.length && !docs.length) return askedHtml;
+      return askedHtml + '<div class="assistant-office">' + links.map(function (link) {
         return '<a class="btn-ghost" href="' + esc(link.url) + '" target="_blank" rel="noopener">前往' + esc(link.name) + (link.login_required ? "（需登入）" : "") + '</a>';
       }).concat(docs.map(function (doc) {
         return '<a class="btn-ghost" href="' + esc(doc.url) + '" target="_blank" rel="noopener">官方文件：' + esc(doc.name) + '</a>';

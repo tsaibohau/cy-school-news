@@ -215,4 +215,27 @@ r = QA.answer("閱讀心得報告什麼時候要交？ 115年", reading, {}, Obj
 assert.match(r.reply.text, /^(?:被你懷疑了|不信我|我再確認).*115 學年度的「閱讀心得報告」我還沒看到公告/);
 assert.doesNotMatch(r.reply.text, /亂掰|考倒/, "one opener, not two");
 
+/* 「給我…的連結」 answers with links: the activity site written in the notice, then the notice itself. */
+{
+  const link = [{ id: "shsh-1", school: "shsh", school_name: "正心高中", title: "元智大學 2026 AI妙用大挑戰－高中組", date: "2026-10-29", category: "競賽", url: "https://www.shsh.ylc.edu.tw/news/1/" }];
+  const linkDetails = { "shsh-1": { announcement_id: "shsh-1", provenance: "official_article", blocks: [{ type: "paragraph",
+    text: "元智大學管理學院於2026年10月29日公告辦理2026 AI妙用大挑戰，報名截止日為115年11月15日（日），請於截止日前至活動網站完成報名及作品投稿，總獎金高達新臺幣100,000元，歡迎同學踴躍參加。",
+    links: [{ text: "活動網站", url: "https://aichallenge.example.edu.tw/" }] }] } };
+  let a = QA.answer("給我元智大學「2026 AI妙用大挑戰」的連結", link, linkDetails, { asOf: "2026-10-31" });
+  assert.equal(a.status, "answered");
+  assert.deepEqual(a.links.map(l => l.url), ["https://aichallenge.example.edu.tw/", "https://www.shsh.ylc.edu.tw/news/1/"]);
+  assert.match(a.reply.text, /連結幫你找到了/);
+  const bullets = a.reply.bullets.join("|");
+  assert.match(bullets, /截止：115年11月15日（日）(?:\||$)/, "the closing bracket stays");
+  assert.match(bullets, /獎金：總獎金高達新臺幣100,000元/, "100,000 is not split at the comma");
+  assert.doesNotMatch(bullets, /時間：2026年10月29日/, "the posting date is not the event time");
+  a = QA.answer("AI妙用大挑戰什麼時候截止", link, linkDetails, { asOf: "2026-10-31" });
+  assert.deepEqual(a.links, [], "links only when asked");
+  /* Guests (no notice text): the official notices' links instead of 「找不到」. */
+  a = QA.answer("給我元智大學「2026 AI妙用大挑戰」的連結", link, {}, { asOf: "2026-10-31" });
+  assert.equal(a.links[0].url, "https://www.shsh.ylc.edu.tw/news/1/");
+  assert.match(a.reply.text, /學校公告的原文連結/);
+  assert.deepEqual(QA.keyPoints("本校訂於10月29日（三）舉行段考說明會", { published: "2026-10-29" }).map(p => p.label), ["時間"], "an event on the posting day is kept");
+}
+
 console.log("問校務 school documents and timetable tests passed");
