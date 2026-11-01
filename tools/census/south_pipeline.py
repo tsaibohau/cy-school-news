@@ -77,7 +77,7 @@ def system_of(html, url):
 
 def candidates(system, html, home):
     """(adapter, 來源網址清單, 額外設定)。"""
-    root = "{0.scheme}://{0.netloc}".format(urlsplit(home))
+    root = "https://" + urlsplit(home).netloc
     if system == "ischool":
         uids = list(dict.fromkeys(ISCHOOL_UID.findall(html)))[:3]
         return "ischool-json", [root + census.ISCHOOL_JSON_PATH + "?uid=" + uid for uid in uids], {}
@@ -89,8 +89,14 @@ def candidates(system, html, home):
             text = re.sub(r"<[^>]+>|\s+", "", text)
             if ANNOUNCE_TEXT.search(text):
                 lists.append(urljoin(home, href))
+        if not lists:
+            counts = {}
+            for href, _t in soup_links:
+                url = urljoin(home, href)
+                counts[url] = counts.get(url, 0) + 1
+            lists = sorted(counts, key=lambda u: -counts[u])
         lists = list(dict.fromkeys(lists))[:3]
-        return "new-classic-cms", [home] + lists, {"unit": unit}
+        return "new-classic-cms", lists + [home], {"unit": unit}
     if system == "wordpress":
         return "wordpress", [root + "/feed/"], {}
     if system == "xoops":
@@ -134,7 +140,15 @@ def probe(session, target, today):
     budget = Budget(session, school)
     try:
         home = target["url"]
-        html = budget.get(home)
+        if home.startswith("http://"):
+            # 名錄多是 http；正式爬蟲只用 https，先試 https
+            try:
+                html = budget.get("https://" + home[len("http://"):])
+                home = "https://" + home[len("http://"):]
+            except Exception:
+                html = budget.get(home)
+        else:
+            html = budget.get(home)
         nxt = census.find_redirect(html, home)
         if nxt and nxt != home:
             html = budget.get(nxt)
@@ -222,6 +236,11 @@ def main():
     targets = census.merge_targets(seed, directory)
     existing = {s["id"] for s in json.loads((ROOT / "scraper/config.json").read_text(encoding="utf-8"))["schools"]}
     targets = [t for t in targets if t.get("county") in COUNTIES and t["id"] not in existing]
+    import os
+    only = [x for x in os.environ.get("ONLY_IDS", "").split(",") if x]
+    if only:
+        targets = [t for t in targets if t["id"] in only]
+    tag = os.environ.get("REPORT_TAG", "")
     print(f"targets: {len(targets)} (directory {len(directory)})", flush=True)
     today = now().date()
     rows = []
@@ -237,10 +256,10 @@ def main():
         print(f"{row['id']:10} {row.get('system') or '-':16} {row.get('verdict') or '-':8} {best.get('count', '')}/{best.get('dated', '')} {row.get('error', '')}", flush=True)
     meta = {"generated_at": now().strftime("%Y-%m-%d %H:%M"), "directory_source": source, "log": log,
             "total_requests": sum(r.get("requests", 0) for r in rows), "today": str(today)}
-    (OUT / "south.json").write_text(json.dumps({"meta": meta, "schools": rows}, ensure_ascii=False, indent=1), encoding="utf-8")
-    (OUT / "south_report.md").write_text(render(rows, meta), encoding="utf-8")
+    (OUT / f"south{tag}.json").write_text(json.dumps({"meta": meta, "schools": rows}, ensure_ascii=False, indent=1), encoding="utf-8")
+    (OUT / f"south{tag}_report.md").write_text(render(rows, meta), encoding="utf-8")
     proposed = [r["proposed"] for r in rows if r.get("proposed")]
-    (OUT / "south_proposed_config.json").write_text(json.dumps({"schools": proposed}, ensure_ascii=False, indent=1), encoding="utf-8")
+    (OUT / f"south{tag}_proposed_config.json").write_text(json.dumps({"schools": proposed}, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"done: {len(rows)} schools, {len(proposed)} ready", flush=True)
     return 0
 

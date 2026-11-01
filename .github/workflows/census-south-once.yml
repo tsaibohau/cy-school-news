@@ -28,6 +28,10 @@ jobs:
           python-version: '3.12'
       - run: pip install -r scraper/requirements.txt certifi
       - name: Census and source validation (low rate, 3 s between requests)
+        env:
+          # 第二輪：只重測需調整、或只有 http 通過的學校（https 優先、銳鼎改用公告列表頁）
+          ONLY_IDS: "cjshs,ctbchs,dwhs,hhvs,hpsh,lmsh,nnjh,nnkieh,phvs,pmai,sfsh,slsh,tcjh,tnfsh,tngs,tntcsh,twvs,yhsh,yrhs,cchs,ccvs,hchs,kghs,kksh.nsysu.edu.tw,lcvs,ly,nknush,rwm,smvhs,wsm,www.cmsh.khc.edu.tw,www.fhsh.khc.edu.tw,www.fssh.khc.edu.tw,www.kssh.khc.edu.tw,www.ksvs.khc.edu.tw,www.pmsh.khc.edu.tw"
+          REPORT_TAG: "_round2"
         run: python tools/census/south_pipeline.py
       - name: Commit report to this branch
         if: always()
@@ -35,6 +39,6 @@ jobs:
           git config user.name "news-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reports/census || true
-          git commit -m "普查報告：台南、高雄校網系統與來源實測" || exit 0
+          git commit -m "普查報告：台南、高雄（第二輪）" || exit 0
           git pull --rebase origin claude/census-south
           git push origin HEAD:claude/census-south
