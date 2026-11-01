@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-01T10:16:27+08:00",
+ "generated_at": "2026-11-01T11:18:25+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "495": {
@@ -38,11 +38,46 @@
   },
   "636": {
    "page_id": 636,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T11:18:21+08:00",
+   "path": [
+    "學生家長"
+   ],
+   "changed_at": "2026-11-01T11:18:21+08:00",
+   "content_hash": "87a78d5b22007d98e3bed0622afb19b141ad1fe9ff121e25012a5dbf1e0e457c",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "電話",
+    "分機",
+    "地址",
+    "專線",
+    "招生",
+    "校車",
+    "模擬考",
+    "段考",
+    "申請",
+    "社團",
+    "英檢",
+    "課表"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-636.json",
+   "detail_revision": "80489e227335ff50545b06800c5dd5f1fc9714389119a9a5682d64d36ec246f0",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "629": {
    "page_id": 629,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T11:18:18+08:00",
+   "path": [
+    "教師專區"
+   ]
   },
   "159": {
    "page_id": 159,
@@ -406,11 +441,67 @@
   },
   "627": {
    "page_id": 627,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T11:18:16+08:00",
+   "path": [
+    "校務系統"
+   ],
+   "changed_at": "2026-11-01T11:18:16+08:00",
+   "content_hash": "9ac5b7325c0eae23d761beb51d4df3e00a6a22bd1501f348ea6550e959008d9e",
+   "doc_links": [
+    {
+     "name": "補充教材訂閱表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc5uA0WpCodB-q3qeYX4-oqh4NqXnS6nU7fe17Iw8tUnozk4A/viewform?usp=sharing"
+    },
+    {
+     "name": "補充教材異動表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSeD7kgH8sYuh-zlTgGtKv0OR6-vl-L0RTkyuv6KJsUjFlEnXg/viewform?usp=sharing"
+    },
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "學習歷程",
+    "專線",
+    "招生",
+    "社團",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-627.json",
+   "detail_revision": "1803f389d87c19686bd56a97d5eee4b7e69266b21d03db64f37141ace41c68c1",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "129": {
    "page_id": 129,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T11:18:24+08:00",
+   "path": [
+    "認識輔仁"
+   ],
+   "changed_at": "2026-11-01T11:18:24+08:00",
+   "content_hash": "76d7ac831d26b11c926849c99b4003ef4249132bb00d764c288da2b97bb05f52",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-129.json",
+   "detail_revision": "7050312c6e5bb2086704d7311f3dfa8d088b3dc7d0865fe8d555efe28b2eb275",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "607": {
    "page_id": 607,
@@ -679,11 +770,44 @@
   "630": {
    "page_id": 630,
    "status": "pending"
+  },
+  "632": {
+   "page_id": 632,
+   "status": "pending"
   }
  },
  "handbook": {},
  "services": {},
  "items": [
+  {
+   "id": "fjsh-info-129",
+   "kind": "school_info",
+   "title": "認識輔仁",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-129.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-129.json",
+   "detail_revision": "7050312c6e5bb2086704d7311f3dfa8d088b3dc7d0865fe8d555efe28b2eb275",
+   "detail_status": "parsed"
+  },
   {
    "id": "fjsh-info-159",
    "kind": "school_info",
@@ -1080,6 +1204,84 @@
    "detail_ref": "data/details/fjsh/fjsh-info-495.json",
    "detail_revision": "6ede052d386fb0e1b67624ed2c8804e63d5f96b37da590eef33ee1b1ce60ee80",
    "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-627",
+   "kind": "school_info",
+   "title": "校務系統",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-627.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "補充教材訂閱表單",
+    "補充教材異動表單",
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "學習歷程",
+    "專線",
+    "招生",
+    "社團",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "補充教材訂閱表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc5uA0WpCodB-q3qeYX4-oqh4NqXnS6nU7fe17Iw8tUnozk4A/viewform?usp=sharing"
+    },
+    {
+     "name": "補充教材異動表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSeD7kgH8sYuh-zlTgGtKv0OR6-vl-L0RTkyuv6KJsUjFlEnXg/viewform?usp=sharing"
+    },
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-627.json",
+   "detail_revision": "1803f389d87c19686bd56a97d5eee4b7e69266b21d03db64f37141ace41c68c1",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-636",
+   "kind": "school_info",
+   "title": "學生家長",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-636.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "電話",
+    "分機",
+    "地址",
+    "專線",
+    "招生",
+    "校車",
+    "模擬考",
+    "段考",
+    "申請",
+    "社團",
+    "英檢",
+    "課表"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-636.json",
+   "detail_revision": "80489e227335ff50545b06800c5dd5f1fc9714389119a9a5682d64d36ec246f0",
+   "detail_status": "parsed"
   }
  ],
  "roots": [
@@ -1101,5 +1303,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-01T10:16:27+08:00"
+ "last_run_at": "2026-11-01T11:18:25+08:00"
 }

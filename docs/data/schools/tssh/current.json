@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-01T10:10:30+08:00",
+ "generated_at": "2026-11-01T11:08:54+08:00",
  "school": {
   "id": "tssh",
   "name": "國立東石高級中學",
@@ -469,7 +469,10 @@
    "url": "https://www.tssh.cyc.edu.tw/latestevent/Details.aspx?Parser=9,9,79,46,,,20812",
    "category": "段考考試",
    "first_seen": "2026-10-30T10:34:25+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "tssh-9-21129",
@@ -481,7 +484,10 @@
    "url": "https://www.tssh.cyc.edu.tw/latestevent/Details.aspx?Parser=9,9,79,46,,,21129",
    "category": "一般",
    "first_seen": "2026-10-30T10:34:25+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   }
  ],
  "content_access": "approved-account-required"

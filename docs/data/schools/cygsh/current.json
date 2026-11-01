@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-01T10:10:30+08:00",
+ "generated_at": "2026-11-01T11:08:54+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -663,8 +663,8 @@
    "first_seen": "2026-11-01T10:10:30+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-187023",
@@ -6834,7 +6834,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186364,r508.php",
    "category": "招生編班",
-   "first_seen": "2026-08-27T10:54:04+08:00"
+   "first_seen": "2026-08-27T10:54:04+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-01T11:17:30+08:00"
   },
   {
    "id": "cygsh-186363",
@@ -6845,7 +6849,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186363,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-27T10:54:04+08:00"
+   "first_seen": "2026-08-27T10:54:04+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-01T11:17:30+08:00"
   },
   {
    "id": "cygsh-186361",

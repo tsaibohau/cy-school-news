@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-01T10:10:30+08:00",
+ "generated_at": "2026-11-01T11:08:54+08:00",
  "school": {
   "id": "nehs",
   "name": "國立嘉科實驗高級中學",
@@ -120,7 +120,10 @@
    "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4675",
    "category": "競賽",
    "first_seen": "2026-10-30T17:56:28+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "nehs-4674",
@@ -132,7 +135,10 @@
    "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4674",
    "category": "教職員",
    "first_seen": "2026-10-30T17:56:28+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "nehs-4673",
@@ -144,7 +150,18 @@
    "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4673",
    "category": "競賽",
    "first_seen": "2026-10-30T17:56:28+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "fcb30a45eaf22372d5079900d0c886c80574b01c5038cda3e4945e9f6c16f00f"
+    }
+   ]
   },
   {
    "id": "nehs-4672",
@@ -274,7 +291,24 @@
    "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4657",
    "category": "研習活動",
    "first_seen": "2026-10-29T17:52:57+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "28e7ce51111209950690859990efd47e2393233c0b74299d457489848f294ff0"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-10",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "28e7ce51111209950690859990efd47e2393233c0b74299d457489848f294ff0"
+    }
+   ]
   },
   {
    "id": "nehs-4668",
@@ -286,7 +320,10 @@
    "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4668",
    "category": "競賽",
    "first_seen": "2026-10-29T17:52:57+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "nehs-4653",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cyivs",
- "generated_at": "2026-11-01T10:18:37+08:00",
+ "generated_at": "2026-11-01T11:20:48+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "176898544836631": {
@@ -88,36 +88,69 @@
    "page_id": 162741141201887,
    "url": "https://www.cyivs.cy.edu.tw/home/about-cyivs/internal-communications/",
    "label": "校內通訊",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:20:39+08:00",
+   "path": [
+    "．",
+    "認識嘉工",
+    "．",
+    "校內通訊"
+   ]
   },
   "7879764654054": {
    "page_id": 7879764654054,
    "url": "https://www.cyivs.cy.edu.tw/home/about-cyivs/transportation/",
    "label": "交通位置",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:20:40+08:00",
+   "path": [
+    "．",
+    "認識嘉工",
+    "．",
+    "交通位置"
+   ]
   },
   "77554260766419": {
    "page_id": 77554260766419,
    "url": "https://www.cyivs.cy.edu.tw/home/administration/",
    "label": "行政單位",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:20:42+08:00",
+   "path": [
+    "．",
+    "行政單位"
+   ]
   },
   "152476466276616": {
    "page_id": 152476466276616,
    "url": "https://www.cyivs.cy.edu.tw/home/administration/president-office/",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:20:45+08:00",
+   "path": [
+    "．",
+    "行政單位",
+    "．",
+    "校長室"
+   ]
   },
   "120442910046322": {
    "page_id": 120442910046322,
    "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:20:47+08:00",
+   "path": [
+    "．",
+    "行政單位",
+    "．",
+    "教務處"
+   ]
   },
   "271616278152946": {
    "page_id": 271616278152946,
@@ -669,6 +702,666 @@
     "公布欄"
    ],
    "order": 68
+  },
+  "96079934499718": {
+   "page_id": 96079934499718,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/internship-office/",
+   "label": "實習處",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "行政單位"
+   ],
+   "order": 69
+  },
+  "40327096747072": {
+   "page_id": 40327096747072,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/president-office/%e6%a0%a1%e9%95%b7%e6%b2%bb%e6%a0%a1%e7%90%86%e5%bf%b5/",
+   "label": "校長治校理念",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "校長室"
+   ],
+   "order": 70
+  },
+  "101204603522284": {
+   "page_id": 101204603522284,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/president-office/%e7%a7%98%e6%9b%b8%e4%bb%8b%e7%b4%b9/",
+   "label": "秘書介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "校長室"
+   ],
+   "order": 71
+  },
+  "70745004118328": {
+   "page_id": 70745004118328,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/president-office/%e6%ad%b7%e4%bb%bb%e6%a0%a1%e9%95%b7/",
+   "label": "歷任校長",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "校長室"
+   ],
+   "order": 72
+  },
+  "256215320918963": {
+   "page_id": 256215320918963,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e7%99%bc%e5%b1%95%e8%a8%88%e5%8a%83/",
+   "label": "發展計劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 73
+  },
+  "122664233409746": {
+   "page_id": 122664233409746,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1/",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 74
+  },
+  "97104424910911": {
+   "page_id": 97104424910911,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/116%e5%8d%87%e5%ad%b8%e8%b3%87%e8%a8%8a%e5%b0%88%e5%8d%80/",
+   "label": "116升學資訊專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 75
+  },
+  "241528002849694": {
+   "page_id": 241528002849694,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e6%95%99%e5%ad%b8%e7%b5%84/",
+   "label": "教學組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 76
+  },
+  "7116094833578": {
+   "page_id": 7116094833578,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%bb%e5%86%8a%e7%b5%84/",
+   "label": "註冊組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 77
+  },
+  "85160270014618": {
+   "page_id": 85160270014618,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%ad%e5%82%99%e7%b5%84/",
+   "label": "設備組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 78
+  },
+  "77987190734155": {
+   "page_id": 77987190734155,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84-2/",
+   "label": "課務組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 79
+  },
+  "32066758614119": {
+   "page_id": 32066758614119,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84/",
+   "label": "學務組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 80
+  },
+  "63735533812279": {
+   "page_id": 63735533812279,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e5%af%a6%e9%a9%97%e7%a0%94%e7%a9%b6%e7%b5%84/",
+   "label": "實驗研究組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 81
+  },
+  "278217632327631": {
+   "page_id": 278217632327631,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e7%89%b9%e6%95%99%e7%b5%84%e7%89%b9%e6%95%99%e7%b5%84/",
+   "label": "特教組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 82
+  },
+  "197669156883035": {
+   "page_id": 197669156883035,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%b3%87%e6%ba%90%e7%8f%ad/",
+   "label": "資源班",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 83
+  },
+  "31519878870060": {
+   "page_id": 31519878870060,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e6%95%99%e5%ad%b8%e7%b5%84/%e6%95%99%e5%ad%b8%e7%b5%84%e9%87%8d%e9%bb%9e%e5%b7%a5%e4%bd%9c/",
+   "label": "教學組重點工作",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 84
+  },
+  "82715705795325": {
+   "page_id": 82715705795325,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e6%95%99%e5%ad%b8%e7%b5%84/%e8%81%b7%e5%8b%99%e5%85%a7%e5%ae%b9/",
+   "label": "教學組職務內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 85
+  },
+  "272918817028872": {
+   "page_id": 272918817028872,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e6%95%99%e5%ad%b8%e7%b5%84/%e8%a1%a8%e4%bb%b6%e4%b8%8b%e8%bc%89/",
+   "label": "教學組表件下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 86
+  },
+  "146369665276195": {
+   "page_id": 146369665276195,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e6%95%99%e5%ad%b8%e7%b5%84/%e7%9b%b8%e9%97%9c%e6%b3%95%e8%a6%8f/",
+   "label": "教學組相關法規",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 87
+  },
+  "220198747971182": {
+   "page_id": 220198747971182,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e6%95%99%e5%ad%b8%e7%b5%84/%e6%95%99%e5%ad%b8%e7%b5%84%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90/",
+   "label": "教學組相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 88
+  },
+  "75818761218341": {
+   "page_id": 75818761218341,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%bb%e5%86%8a%e7%b5%84/%e8%a8%bb%e5%86%8a%e7%b5%84%e9%87%8d%e9%bb%9e%e5%b7%a5%e4%bd%9c/",
+   "label": "註冊組重點工作",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 89
+  },
+  "10631907417321": {
+   "page_id": 10631907417321,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%bb%e5%86%8a%e7%b5%84/%e8%a8%bb%e5%86%8a%e7%b5%84%e8%81%b7%e5%8b%99%e5%85%a7%e5%ae%b9/",
+   "label": "註冊組職務內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 90
+  },
+  "121069683432875": {
+   "page_id": 121069683432875,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%bb%e5%86%8a%e7%b5%84/%e8%a8%bb%e5%86%8a%e7%b5%84%e8%a1%a8%e4%bb%b6%e4%b8%8b%e8%bc%89/",
+   "label": "註冊組表件下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 91
+  },
+  "18105473396897": {
+   "page_id": 18105473396897,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%bb%e5%86%8a%e7%b5%84/%e8%a8%bb%e5%86%8a%e7%b5%84%e7%9b%b8%e9%97%9c%e6%b3%95%e8%a6%8f/",
+   "label": "註冊組相關法規",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 92
+  },
+  "107294799574980": {
+   "page_id": 107294799574980,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%bb%e5%86%8a%e7%b5%84/%e8%a8%bb%e5%86%8a%e7%b5%84%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90/",
+   "label": "註冊組相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 93
+  },
+  "141280938378428": {
+   "page_id": 141280938378428,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%ad%e5%82%99%e7%b5%84/%e8%a8%ad%e5%82%99%e7%b5%84%e9%87%8d%e9%bb%9e%e5%b7%a5%e4%bd%9c/",
+   "label": "設備組重點工作",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 94
+  },
+  "240616030721495": {
+   "page_id": 240616030721495,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%ad%e5%82%99%e7%b5%84/%e8%a8%ad%e5%82%99%e7%b5%84%e8%81%b7%e5%8b%99%e5%85%a7%e5%ae%b9/",
+   "label": "設備組職務內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 95
+  },
+  "204349453612359": {
+   "page_id": 204349453612359,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%ad%e5%82%99%e7%b5%84/%e8%a8%ad%e5%82%99%e7%b5%84%e8%a1%a8%e4%bb%b6%e4%b8%8b%e8%bc%89/",
+   "label": "設備組表件下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 96
+  },
+  "266984658364320": {
+   "page_id": 266984658364320,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%ad%e5%82%99%e7%b5%84/%e8%a8%ad%e5%82%99%e7%b5%84%e7%9b%b8%e9%97%9c%e6%b3%95%e8%a6%8f/",
+   "label": "設備組相關法規",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 97
+  },
+  "25144046058091": {
+   "page_id": 25144046058091,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%a8%ad%e5%82%99%e7%b5%84/%e8%a8%ad%e5%82%99%e7%b5%84%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90/",
+   "label": "設備組相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 98
+  },
+  "75468587788555": {
+   "page_id": 75468587788555,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84-2/%e8%aa%b2%e5%8b%99%e7%b5%84%e9%87%8d%e9%bb%9e%e5%b7%a5%e4%bd%9c/",
+   "label": "課務組重點工作",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 99
+  },
+  "104923317643490": {
+   "page_id": 104923317643490,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84-2/%e8%aa%b2%e5%8b%99%e7%b5%84%e8%81%b7%e5%8b%99%e5%85%a7%e5%ae%b9/",
+   "label": "課務組職務內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 100
+  },
+  "152628751719898": {
+   "page_id": 152628751719898,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84-2/%e8%a1%a8%e4%bb%b6%e4%b8%8b%e8%bc%89/",
+   "label": "課務組表件下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 101
+  },
+  "189526825703380": {
+   "page_id": 189526825703380,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84-2/%e8%aa%b2%e5%8b%99%e7%b5%84%e7%9b%b8%e9%97%9c%e6%b3%95%e8%a6%8f/",
+   "label": "課務組相關法規",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 102
+  },
+  "184304827758453": {
+   "page_id": 184304827758453,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84-2/%e8%aa%b2%e5%8b%99%e7%b5%84%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90/",
+   "label": "課務組相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 103
+  },
+  "5676892641173": {
+   "page_id": 5676892641173,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84/%e5%ad%b8%e5%8b%99%e7%b5%84%e9%87%8d%e9%bb%9e%e5%b7%a5%e4%bd%9c/",
+   "label": "學務組重點工作",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 104
+  },
+  "272173658258009": {
+   "page_id": 272173658258009,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84/%e5%ad%b8%e5%8b%99%e7%b5%84%e8%81%b7%e5%8b%99%e5%85%a7%e5%ae%b9/",
+   "label": "學務組職務內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 105
+  },
+  "147225740003877": {
+   "page_id": 147225740003877,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84/%e5%ad%b8%e5%8b%99%e7%b5%84%e8%a1%a8%e4%bb%b6%e4%b8%8b%e8%bc%89/",
+   "label": "學務組表件下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 106
+  },
+  "167477084460924": {
+   "page_id": 167477084460924,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84/%e5%ad%b8%e5%8b%99%e7%b5%84%e7%9b%b8%e9%97%9c%e6%b3%95%e8%a6%8f/",
+   "label": "學務組相關法規",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 107
+  },
+  "6718815378023": {
+   "page_id": 6718815378023,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%aa%b2%e5%8b%99%e7%b5%84/%e5%ad%b8%e5%8b%99%e7%b5%84%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90/",
+   "label": "學務組相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 108
+  },
+  "227859063103293": {
+   "page_id": 227859063103293,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e5%af%a6%e9%a9%97%e7%a0%94%e7%a9%b6%e7%b5%84/%e5%af%a6%e7%a0%94%e7%b5%84%e9%87%8d%e9%bb%9e%e5%b7%a5%e4%bd%9c/",
+   "label": "實研組重點工作",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 109
+  },
+  "131376269663690": {
+   "page_id": 131376269663690,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e5%af%a6%e9%a9%97%e7%a0%94%e7%a9%b6%e7%b5%84/%e5%af%a6%e7%a0%94%e7%b5%84%e8%81%b7%e5%8b%99%e5%85%a7%e5%ae%b9/",
+   "label": "實研組職務內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 110
+  },
+  "38063881938898": {
+   "page_id": 38063881938898,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/實驗研究組/實研組表件下載/",
+   "label": "實研組表件下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 111
+  },
+  "18114536217761": {
+   "page_id": 18114536217761,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e5%af%a6%e9%a9%97%e7%a0%94%e7%a9%b6%e7%b5%84/%e5%af%a6%e7%a0%94%e7%b5%84%e7%9b%b8%e9%97%9c%e6%b3%95%e8%a6%8f/",
+   "label": "實研組相關法規",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 112
+  },
+  "214271893070567": {
+   "page_id": 214271893070567,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e5%af%a6%e9%a9%97%e7%a0%94%e7%a9%b6%e7%b5%84/%e5%af%a6%e7%a0%94%e7%b5%84%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90/",
+   "label": "實研組相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 113
+  },
+  "71581516671390": {
+   "page_id": 71581516671390,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e7%89%b9%e6%95%99%e7%b5%84%e7%89%b9%e6%95%99%e7%b5%84/%e7%89%b9%e6%95%99%e7%b5%84%e9%87%8d%e9%bb%9e%e5%b7%a5%e4%bd%9c/",
+   "label": "特教組重點工作",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 114
+  },
+  "101815763289658": {
+   "page_id": 101815763289658,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e7%89%b9%e6%95%99%e7%b5%84%e7%89%b9%e6%95%99%e7%b5%84/%e7%89%b9%e6%95%99%e7%b5%84%e8%81%b7%e5%8b%99%e5%85%a7%e5%ae%b9/",
+   "label": "特教組職務內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 115
+  },
+  "55286014689065": {
+   "page_id": 55286014689065,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e7%89%b9%e6%95%99%e7%b5%84%e7%89%b9%e6%95%99%e7%b5%84/%e8%a1%a8%e4%bb%b6%e4%b8%8b%e8%bc%89/",
+   "label": "特教組表件下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 116
+  },
+  "157867552221545": {
+   "page_id": 157867552221545,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e7%89%b9%e6%95%99%e7%b5%84%e7%89%b9%e6%95%99%e7%b5%84/%e7%9b%b8%e9%97%9c%e6%b3%95%e8%a6%8f/",
+   "label": "特教組相關法規",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 117
+  },
+  "151322040068990": {
+   "page_id": 151322040068990,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e7%89%b9%e6%95%99%e7%b5%84%e7%89%b9%e6%95%99%e7%b5%84/%e7%89%b9%e6%95%99%e7%b5%84%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90/",
+   "label": "特教組相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 118
+  },
+  "2058843006604": {
+   "page_id": 2058843006604,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%b3%87%e6%ba%90%e7%8f%ad/%e8%b3%87%e6%ba%90%e7%8f%ad%e9%87%8d%e9%bb%9e%e5%b7%a5%e4%bd%9c/",
+   "label": "資源班訊息公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 119
+  },
+  "209970304473224": {
+   "page_id": 209970304473224,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%b3%87%e6%ba%90%e7%8f%ad/%e8%b3%87%e6%ba%90%e7%8f%ad%e8%81%b7%e5%8b%99%e5%85%a7%e5%ae%b9/",
+   "label": "資源班職務內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 120
+  },
+  "187339861730160": {
+   "page_id": 187339861730160,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%b3%87%e6%ba%90%e7%8f%ad/%e8%b3%87%e6%ba%90%e7%8f%ad%e8%a1%a8%e4%bb%b6%e4%b8%8b%e8%bc%89/",
+   "label": "資源班表件下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 121
+  },
+  "269966868753096": {
+   "page_id": 269966868753096,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%b3%87%e6%ba%90%e7%8f%ad/%e8%b3%87%e6%ba%90%e7%8f%ad%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90/",
+   "label": "資源班相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 122
+  },
+  "130955036980458": {
+   "page_id": 130955036980458,
+   "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e8%b3%87%e6%ba%90%e7%8f%ad/%e8%b3%87%e6%ba%90%e7%8f%ad%e7%9b%b8%e9%97%9c%e6%b3%95%e8%a6%8f/",
+   "label": "資源班相關法規",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "．",
+    "教務處"
+   ],
+   "order": 123
   }
  },
  "handbook": {},
@@ -959,5 +1652,5 @@
   "f3ef66c885",
   "fb63c59ff7"
  ],
- "last_run_at": "2026-11-01T10:18:37+08:00"
+ "last_run_at": "2026-11-01T11:20:48+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-01T10:17:04+08:00",
+ "generated_at": "2026-11-01T11:19:06+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -121,36 +121,132 @@
    "page_id": 10193874356367,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=113",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "personal_data",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:18:57+08:00",
+   "path": [
+    "教務處"
+   ]
   },
   "65635967223279": {
    "page_id": 65635967223279,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=135",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:18:59+08:00",
+   "path": [
+    "學務處"
+   ],
+   "changed_at": "2026-11-01T11:18:59+08:00",
+   "content_hash": "36fd55f85b1972b760c62dd9f45e5c1d073a5320aca3db3cca80bdff9a93c04e",
+   "doc_links": [],
+   "keywords": [
+    "傳真",
+    "分機",
+    "社團",
+    "衛生",
+    "安全",
+    "演講",
+    "競賽",
+    "簡介",
+    "銷過"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-65635967223279.json",
+   "detail_revision": "13e91146be7c842df8c107a80bcef2e1eef3678fa7d54f0a9c941961d35df063",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "179902303618669": {
    "page_id": 179902303618669,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=367",
    "label": "實習處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:19:01+08:00",
+   "path": [
+    "實習處"
+   ],
+   "changed_at": "2026-11-01T11:19:01+08:00",
+   "content_hash": "11ad6d9b9c5a9975afa004b1991a8751c8718d6ae40dd5d7bf96ba8bf9626dca",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "分機",
+    "決賽",
+    "安全",
+    "研習",
+    "衛生",
+    "傳真",
+    "分發",
+    "宣導",
+    "檢定",
+    "簡介",
+    "選擇"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-179902303618669.json",
+   "detail_revision": "e72915a256233c3970911a4f2ae8bed6f3b8be82bdf05efc7088a6eabc1cb572",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "8591527071103": {
    "page_id": 8591527071103,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=375",
    "label": "輔導室",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:19:03+08:00",
+   "path": [
+    "輔導室"
+   ],
+   "changed_at": "2026-11-01T11:19:03+08:00",
+   "content_hash": "f0f9f31145af41785772c59de94beca0e66e20a4d7e5ea179ea6da2c70b4c825",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "招生",
+    "申請",
+    "申請入學",
+    "工作坊",
+    "測驗",
+    "申訴",
+    "選擇",
+    "分科測驗",
+    "四技二專",
+    "報名",
+    "學測",
+    "新生"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-8591527071103.json",
+   "detail_revision": "7534025d2e7408fced11f0d20b1a60209fa44473ff9dae802027d3ff960d3685",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "248390110514321": {
    "page_id": 248390110514321,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=358",
    "label": "總務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:19:05+08:00",
+   "path": [
+    "總務處"
+   ],
+   "changed_at": "2026-11-01T11:19:05+08:00",
+   "content_hash": "5f39122cf4317d153dc74062ab56d302908386e057923b1ac3e17a0cc83a078b",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "宣導"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-248390110514321.json",
+   "detail_revision": "b505ae578caa754d76a3625a53c623daef118f2c42e2bc4261d34d650ecbbcf5",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "159033423341341": {
    "page_id": 159033423341341,
@@ -702,11 +798,465 @@
     "認識本校"
    ],
    "order": 70
+  },
+  "133385023810685": {
+   "page_id": 133385023810685,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=115",
+   "label": "教學組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教務處"
+   ],
+   "order": 71
+  },
+  "95201321052990": {
+   "page_id": 95201321052990,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=117",
+   "label": "註冊組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教務處"
+   ],
+   "order": 72
+  },
+  "50047949743975": {
+   "page_id": 50047949743975,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=129",
+   "label": "設備組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教務處"
+   ],
+   "order": 73
+  },
+  "247331726893814": {
+   "page_id": 247331726893814,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=131",
+   "label": "課務組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教務處"
+   ],
+   "order": 74
+  },
+  "118220777207020": {
+   "page_id": 118220777207020,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=133",
+   "label": "實驗研究組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教務處"
+   ],
+   "order": 75
+  },
+  "216469551938662": {
+   "page_id": 216469551938662,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=137",
+   "label": "訓育組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 76
+  },
+  "111863136640588": {
+   "page_id": 111863136640588,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=168",
+   "label": "衛生組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 77
+  },
+  "84241081300043": {
+   "page_id": 84241081300043,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=170",
+   "label": "社團活動組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 78
+  },
+  "245666587499955": {
+   "page_id": 245666587499955,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=3913",
+   "label": "體育組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 79
+  },
+  "15287890265848": {
+   "page_id": 15287890265848,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=947",
+   "label": "生輔組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 80
+  },
+  "255546320387894": {
+   "page_id": 255546320387894,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=4818",
+   "label": "實習組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 81
+  },
+  "91788931170745": {
+   "page_id": 91788931170745,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=4931",
+   "label": "就業輔導組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 82
+  },
+  "588712136303": {
+   "page_id": 588712136303,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5097",
+   "label": "實用技能組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 83
+  },
+  "39821069240944": {
+   "page_id": 39821069240944,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5161",
+   "label": "最新公告 事項",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 84
+  },
+  "236642913606660": {
+   "page_id": 236642913606660,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=1271",
+   "label": "實習組 檔案下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 85
+  },
+  "273443098456288": {
+   "page_id": 273443098456288,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5307",
+   "label": "實習處 行事曆",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 86
+  },
+  "198289303313868": {
+   "page_id": 198289303313868,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5391",
+   "label": "各科 網頁",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 87
+  },
+  "122142065060774": {
+   "page_id": 122142065060774,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5040",
+   "label": "實習處業務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 88
+  },
+  "96204825181623": {
+   "page_id": 96204825181623,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5060",
+   "label": "組織架構",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 89
+  },
+  "50882908378591": {
+   "page_id": 50882908378591,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5070",
+   "label": "組織職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 90
+  },
+  "194850619520315": {
+   "page_id": 194850619520315,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5132",
+   "label": "服務團隊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 91
+  },
+  "265567486409935": {
+   "page_id": 265567486409935,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5460",
+   "label": "檔案下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 92
+  },
+  "168851411740757": {
+   "page_id": 168851411740757,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5325",
+   "label": "工安網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 93
+  },
+  "270917527593240": {
+   "page_id": 270917527593240,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2515",
+   "label": "處室成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 94
+  },
+  "243280801592633": {
+   "page_id": 243280801592633,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=34767",
+   "label": "生命教育及教育部學生自我傷害防治相關資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 95
+  },
+  "155496923882911": {
+   "page_id": 155496923882911,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2578",
+   "label": "生涯輔導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 96
+  },
+  "57132408362969": {
+   "page_id": 57132408362969,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2595",
+   "label": "學生懷孕受教權相關",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 97
+  },
+  "247081702673456": {
+   "page_id": 247081702673456,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2603",
+   "label": "特殊教育",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 98
+  },
+  "95842839505784": {
+   "page_id": 95842839505784,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2610",
+   "label": "輔導室圖書影片",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 99
+  },
+  "184661239797354": {
+   "page_id": 184661239797354,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2615",
+   "label": "個別輔導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 100
+  },
+  "110570957780560": {
+   "page_id": 110570957780560,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2628",
+   "label": "團體輔導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 101
+  },
+  "232687019407468": {
+   "page_id": 232687019407468,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2547",
+   "label": "心理測驗",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 102
+  },
+  "56610069406929": {
+   "page_id": 56610069406929,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=27540",
+   "label": "高級中等學校學生申訴及再申訴制度",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 103
+  },
+  "137217037298869": {
+   "page_id": 137217037298869,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=365",
+   "label": "庶務組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "總務處"
+   ],
+   "order": 104
+  },
+  "260493983618556": {
+   "page_id": 260493983618556,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=362",
+   "label": "出納組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "總務處"
+   ],
+   "order": 105
+  },
+  "55052423914874": {
+   "page_id": 55052423914874,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=360",
+   "label": "文書組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "總務處"
+   ],
+   "order": 106
   }
  },
  "handbook": {},
  "services": {},
  "items": [
+  {
+   "id": "hlvs-info-8591527071103",
+   "kind": "school_info",
+   "title": "輔導室",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=375",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "入學",
+    "招生",
+    "申請",
+    "申請入學",
+    "工作坊",
+    "測驗",
+    "申訴",
+    "選擇",
+    "分科測驗",
+    "四技二專",
+    "報名",
+    "學測",
+    "新生"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-8591527071103.json",
+   "detail_revision": "7534025d2e7408fced11f0d20b1a60209fa44473ff9dae802027d3ff960d3685",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-65635967223279",
+   "kind": "school_info",
+   "title": "學務處",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=135",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "傳真",
+    "分機",
+    "社團",
+    "衛生",
+    "安全",
+    "演講",
+    "競賽",
+    "簡介",
+    "銷過"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-65635967223279.json",
+   "detail_revision": "13e91146be7c842df8c107a80bcef2e1eef3678fa7d54f0a9c941961d35df063",
+   "detail_status": "parsed"
+  },
   {
    "id": "hlvs-info-126768121864287",
    "kind": "school_info",
@@ -722,6 +1272,36 @@
    "documents": [],
    "detail_ref": "data/details/hlvs/hlvs-info-126768121864287.json",
    "detail_revision": "44c3b83611a557a015d0211e0d38b44ef4d678f5fcd0091061a8ab3a22fa55f5",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-179902303618669",
+   "kind": "school_info",
+   "title": "實習處",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=367",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "分機",
+    "決賽",
+    "安全",
+    "研習",
+    "衛生",
+    "傳真",
+    "分發",
+    "宣導",
+    "檢定",
+    "簡介",
+    "選擇"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-179902303618669.json",
+   "detail_revision": "e72915a256233c3970911a4f2ae8bed6f3b8be82bdf05efc7088a6eabc1cb572",
    "detail_status": "parsed"
   },
   {
@@ -750,6 +1330,26 @@
    "documents": [],
    "detail_ref": "data/details/hlvs/hlvs-info-209684137677274.json",
    "detail_revision": "7ea9353283f800ff5364b312f73b6befc56e7cec51863d0293d2abb4279af70c",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-248390110514321",
+   "kind": "school_info",
+   "title": "總務處",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=358",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "宣導"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-248390110514321.json",
+   "detail_revision": "b505ae578caa754d76a3625a53c623daef118f2c42e2bc4261d34d650ecbbcf5",
    "detail_status": "parsed"
   },
   {
@@ -1113,5 +1713,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-01T10:17:04+08:00"
+ "last_run_at": "2026-11-01T11:19:06+08:00"
 }

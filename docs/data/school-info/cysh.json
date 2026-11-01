@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-01T10:16:08+08:00",
+ "generated_at": "2026-11-01T11:18:05+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5431,7 +5431,40 @@
   },
   "522": {
    "page_id": 522,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T11:17:58+08:00",
+   "path": [
+    "教學單位",
+    "音樂科",
+    "音樂班簡介"
+   ],
+   "changed_at": "2026-11-01T11:17:58+08:00",
+   "content_hash": "5080f0132e5cd177666fc732d0fea7e4e608b90d2bba9988226224f33a4a794e",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "升學",
+    "招生",
+    "測驗",
+    "比賽",
+    "選修",
+    "分發",
+    "參訪",
+    "報名",
+    "科系",
+    "選擇",
+    "志願",
+    "會考",
+    "競賽",
+    "考試",
+    "講座",
+    "運動會"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-522.json",
+   "detail_revision": "543fcde12f525fb048f6a729ffd3a3565ab393fb0175223e908e146fefc5eaf2",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "846": {
    "page_id": 846,
@@ -5482,7 +5515,22 @@
   },
   "514": {
    "page_id": 514,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T11:17:53+08:00",
+   "path": [
+    "教學單位",
+    "美術科",
+    "師資陣容"
+   ],
+   "changed_at": "2026-11-01T11:17:53+08:00",
+   "content_hash": "dcee017050152bd85b7fad81627ec543782c91e1d4cfb8f80c9aeef5f540563e",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-514.json",
+   "detail_revision": "183fd891c2f1a3fb35a89db1b11b0cc9c7cc98d155be7b1010821dd54bb72c1c",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "842": {
    "page_id": 842,
@@ -5502,7 +5550,13 @@
   },
   "516": {
    "page_id": 516,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T11:17:56+08:00",
+   "path": [
+    "教學單位",
+    "美術科",
+    "教學及活動剪影"
+   ]
   },
   "995": {
    "page_id": 995,
@@ -5827,7 +5881,14 @@
   },
   "551": {
    "page_id": 551,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T11:18:03+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "歷屆大學榜單"
+   ]
   },
   "580": {
    "page_id": 580,
@@ -9799,6 +9860,58 @@
    "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-513.json",
    "detail_revision": "edbe2755fec713cc4de7fbee55a76de0438eb80b543a4a7e509114d522568130",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-514",
+   "kind": "school_info",
+   "title": "教學單位 › 美術科 › 師資陣容",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-514.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-514.json",
+   "detail_revision": "183fd891c2f1a3fb35a89db1b11b0cc9c7cc98d155be7b1010821dd54bb72c1c",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-522",
+   "kind": "school_info",
+   "title": "教學單位 › 音樂科 › 音樂班簡介",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-522.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "入學",
+    "升學",
+    "招生",
+    "測驗",
+    "比賽",
+    "選修",
+    "分發",
+    "參訪",
+    "報名",
+    "科系",
+    "選擇",
+    "志願",
+    "會考",
+    "競賽",
+    "考試",
+    "講座",
+    "運動會"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-522.json",
+   "detail_revision": "543fcde12f525fb048f6a729ffd3a3565ab393fb0175223e908e146fefc5eaf2",
    "detail_status": "parsed"
   },
   {
@@ -14509,5 +14622,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-01T10:16:08+08:00"
+ "last_run_at": "2026-11-01T11:18:05+08:00"
 }

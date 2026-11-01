@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-01T10:10:30+08:00",
+ "generated_at": "2026-11-01T11:08:54+08:00",
  "school": {
   "id": "nsjh",
   "name": "雲林縣立蔦松藝術高級中學",
@@ -138,7 +138,19 @@
    "url": "https://nsjh.ylc.edu.tw/News_Content.aspx?n=100115&s=401080",
    "category": "一般",
    "first_seen": "2026-10-30T17:56:28+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1,
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "nsjh-400906",

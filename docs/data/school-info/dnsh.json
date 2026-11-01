@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-01T10:17:47+08:00",
+ "generated_at": "2026-11-01T11:20:03+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -55,15 +55,25 @@
    "page_id": 21936961937927,
    "url": "https://dnsh.ylc.edu.tw/cp.aspx?n=57059",
    "label": "校歌詠唱",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:19:57+08:00",
+   "path": [
+    "認識本校",
+    "校歌詠唱"
+   ]
   },
   "232018945602355": {
    "page_id": 232018945602355,
    "url": "https://dnsh.ylc.edu.tw/cp.aspx?n=57060",
    "label": "交通位置",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-01T11:20:02+08:00",
+   "path": [
+    "認識本校",
+    "交通位置"
+   ]
   },
   "102965025197274": {
    "page_id": 102965025197274,
@@ -523,5 +533,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-01T10:17:47+08:00"
+ "last_run_at": "2026-11-01T11:20:03+08:00"
 }

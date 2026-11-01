@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-01T10:16:17+08:00",
+ "generated_at": "2026-11-01T11:18:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1592": {
@@ -3014,7 +3014,29 @@
   },
   "1710": {
    "page_id": 1710,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T11:18:06+08:00",
+   "path": [
+    "行政單位",
+    "圖書館",
+    "相關管理辦法",
+    "圖書館開放社區民眾借閱辦法"
+   ],
+   "changed_at": "2026-11-01T11:18:06+08:00",
+   "content_hash": "ebb1c290c37f93fcdb541c676cdce15e5dbaec23b1723805910cb2aba22add61",
+   "doc_links": [],
+   "keywords": [
+    "借閱",
+    "圖書館",
+    "借書",
+    "續借",
+    "借期"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1710.json",
+   "detail_revision": "1c08696db67a54864fb6f3fc4a2c302dbb93c2b156573276987fc12b050cfcc3",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1709": {
    "page_id": 1709,
@@ -3042,7 +3064,27 @@
   },
   "1769": {
    "page_id": 1769,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T11:18:08+08:00",
+   "path": [
+    "功能快捷選單",
+    "獎助學金"
+   ],
+   "changed_at": "2026-11-01T11:18:08+08:00",
+   "content_hash": "cff20a7091d120440bb8443ec7fcee75e59b410132276d5cfdb0abff122d9bc2",
+   "doc_links": [],
+   "keywords": [
+    "助學金",
+    "獎助學金",
+    "申請",
+    "新生",
+    "獎學金"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1769.json",
+   "detail_revision": "eb91c9734e7eec6056e06256de6cb8a7b9ae16cdfb85f9736662e19400fac3ca",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "2592": {
    "page_id": 2592,
@@ -3050,15 +3092,36 @@
   },
   "1829": {
    "page_id": 1829,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T11:18:09+08:00",
+   "path": [
+    "行政單位",
+    "圖書館",
+    "資訊安全與軟體教學專區",
+    "資安公告"
+   ]
   },
   "1830": {
    "page_id": 1830,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T11:18:11+08:00",
+   "path": [
+    "行政單位",
+    "圖書館",
+    "資訊安全與軟體教學專區",
+    "資通安全及服務相關表單"
+   ]
   },
   "1832": {
    "page_id": 1832,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T11:18:13+08:00",
+   "path": [
+    "行政單位",
+    "圖書館",
+    "資訊安全與軟體教學專區",
+    "資通安全維護計畫"
+   ]
   },
   "3949": {
    "page_id": 3949,
@@ -3070,6 +3133,10 @@
   },
   "5520": {
    "page_id": 5520,
+   "status": "pending"
+  },
+  "1764": {
+   "page_id": 1764,
    "status": "pending"
   }
  },
@@ -3455,6 +3522,29 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cygsh-info-1710",
+   "kind": "school_info",
+   "title": "圖書館 › 相關管理辦法 › 圖書館開放社區民眾借閱辦法",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1710.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "借閱",
+    "圖書館",
+    "借書",
+    "續借",
+    "借期"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1710.json",
+   "detail_revision": "1c08696db67a54864fb6f3fc4a2c302dbb93c2b156573276987fc12b050cfcc3",
+   "detail_status": "parsed"
+  },
+  {
    "id": "cygsh-info-1718",
    "kind": "school_info",
    "title": "學校夥伴 › 家長會",
@@ -3668,6 +3758,29 @@
    "documents": [],
    "detail_ref": "data/details/cygsh/cygsh-info-1752.json",
    "detail_revision": "2cdb1fa518c42cbe99f67aeead7f4d1bb2791f5dbf8277f389fa9f369667d46e",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1769",
+   "kind": "school_info",
+   "title": "功能快捷選單 › 獎助學金",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1769.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "助學金",
+    "獎助學金",
+    "申請",
+    "新生",
+    "獎學金"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1769.json",
+   "detail_revision": "eb91c9734e7eec6056e06256de6cb8a7b9ae16cdfb85f9736662e19400fac3ca",
    "detail_status": "parsed"
   },
   {
@@ -5678,5 +5791,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-01T10:16:17+08:00"
+ "last_run_at": "2026-11-01T11:18:15+08:00"
 }
