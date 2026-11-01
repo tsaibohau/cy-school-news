@@ -1,6 +1,6 @@
 {
  "_note": "尚未上架的學校清單（使用者指示：學校自建網站的先列入清單，以後再處理；先把系統相似、可用共用 adapter 的學校處理完）。reason：custom＝學校自建網站，需要專用 adapter；unreachable＝普查時連不上，之後重試。上架後請從此清單移除。",
- "updated": "2026-10-27",
+ "updated": "2026-11-01",
  "schools": [
   {
    "id": "tkvs",
@@ -118,6 +118,609 @@
    "site": "https://www.cmsh.cyc.edu.tw/",
    "reason": "unreachable",
    "notes": "WordPress（nt_table 佈景，/category/news 可用共用 wordpress adapter）；2026-10-27 從 GitHub Actions 兩輪都連線被拒（https 與 http），之後重試"
+  },
+  {
+   "id": "asvs",
+   "name": "私立亞洲餐旅",
+   "short": "亞洲餐旅",
+   "county": "臺南市",
+   "site": "http://www.asvs.tn.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：connection_error"
+  },
+  {
+   "id": "bmsh",
+   "name": "國立北門高中",
+   "short": "北門高中",
+   "county": "臺南市",
+   "site": "http://www.bmsh.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "NUWeb，需新 adapter"
+  },
+  {
+   "id": "ccsh",
+   "name": "國立家齊高中",
+   "short": "家齊高中",
+   "county": "臺南市",
+   "site": "https://www.ccsh.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "cjshs",
+   "name": "私立長榮高中",
+   "short": "長榮高中",
+   "county": "臺南市",
+   "site": "https://www.cjshs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "銳鼎新版，但共用 adapter 實測 11 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "ckgsh",
+   "name": "私立長榮女中",
+   "short": "長榮女中",
+   "county": "臺南市",
+   "site": "http://www.ckgsh.tn.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：timeout"
+  },
+  {
+   "id": "ctbchs",
+   "name": "臺南市中信國際高中",
+   "short": "中信國際高中",
+   "county": "臺南市",
+   "site": "https://ctbchs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "WordPress，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "dwhs",
+   "name": "市立大灣高中",
+   "short": "大灣高中",
+   "county": "臺南市",
+   "site": "https://www.dwhs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "XOOPS tadnews，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "khgs",
+   "name": "臺南市光華高中",
+   "short": "光華高中",
+   "county": "臺南市",
+   "site": "http://www.khgs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "frameset 外框，需新 adapter"
+  },
+  {
+   "id": "kmsh",
+   "name": "私立港明高中",
+   "short": "港明高中",
+   "county": "臺南市",
+   "site": "http://www.kmsh.tn.edu.tw/km107/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：timeout"
+  },
+  {
+   "id": "lhvs",
+   "name": "私立六信高中",
+   "short": "六信高中",
+   "county": "臺南市",
+   "site": "http://www.lhvs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "未辨識的自建系統，需新 adapter"
+  },
+  {
+   "id": "mdsh",
+   "name": "私立明達高中",
+   "short": "明達高中",
+   "county": "臺南市",
+   "site": "http://www.mdsh.tn.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：dns_error"
+  },
+  {
+   "id": "nkhs",
+   "name": "私立南光高中",
+   "short": "南光高中",
+   "county": "臺南市",
+   "site": "http://www.nkhs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "NUWeb，需新 adapter"
+  },
+  {
+   "id": "nnjh",
+   "name": "市立南寧高中",
+   "short": "南寧高中",
+   "county": "臺南市",
+   "site": "https://www.nnjh.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "XOOPS tadnews，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "nyvs",
+   "name": "私立南英商工",
+   "short": "南英商工",
+   "county": "臺南市",
+   "site": "https://www.nyvs.tn.edu.tw/?full=yes",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "phvs",
+   "name": "國立白河商工",
+   "short": "白河商工",
+   "county": "臺南市",
+   "site": "https://www.phvs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "iSchool，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "skgsh",
+   "name": "財團法人聖功女中",
+   "short": "聖功女中",
+   "county": "臺南市",
+   "site": "https://www.skgsh.tn.edu.tw/Platform/Index",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "slsh",
+   "name": "市立沙崙國際高中",
+   "short": "沙崙國際高中",
+   "county": "臺南市",
+   "site": "https://www.slsh.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "縣市 CCMS，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "ssvs",
+   "name": "私立慈幼工商",
+   "short": "慈幼工商",
+   "county": "臺南市",
+   "site": "http://www.ssvs.tn.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：timeout"
+  },
+  {
+   "id": "tcjh",
+   "name": "市立土城高中",
+   "short": "土城高中",
+   "county": "臺南市",
+   "site": "https://www.tcjh.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "XOOPS tadnews，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "tcsh",
+   "name": "財團法人慈濟高中",
+   "short": "慈濟高中",
+   "county": "臺南市",
+   "site": "https://www.tcsh.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "tkgsh",
+   "name": "私立德光高中",
+   "short": "德光高中",
+   "county": "臺南市",
+   "site": "http://www.tkgsh.tn.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：timeout"
+  },
+  {
+   "id": "tnfsh",
+   "name": "國立臺南一中",
+   "short": "臺南一中",
+   "county": "臺南市",
+   "site": "https://www.tnfsh.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP Parser，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "tntcsh",
+   "name": "國立臺南大學附中",
+   "short": "臺南大學附中",
+   "county": "臺南市",
+   "site": "https://www.tntcsh.tn.edu.tw/portal",
+   "reason": "custom",
+   "notes": "iSchool，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "ycvs",
+   "name": "國立玉井工商",
+   "short": "玉井工商",
+   "county": "臺南市",
+   "site": "https://www.ycvs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "yhsh",
+   "name": "私立瀛海國際高中",
+   "short": "瀛海國際高中",
+   "county": "臺南市",
+   "site": "https://www.yhsh.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "iSchool，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "ymvs",
+   "name": "私立陽明工商",
+   "short": "陽明工商",
+   "county": "臺南市",
+   "site": "http://www.ymvs.tn.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：timeout"
+  },
+  {
+   "id": "yrhs",
+   "name": "市立永仁高中",
+   "short": "永仁高中",
+   "county": "臺南市",
+   "site": "https://www.yrhs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "iSchool，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "ytvs",
+   "name": "私立育德工家",
+   "short": "育德工家",
+   "county": "臺南市",
+   "site": "http://www.ytvs.tn.edu.tw/",
+   "reason": "custom",
+   "notes": "未辨識的自建系統，需新 adapter"
+  },
+  {
+   "id": "ccvs",
+   "name": "市立中正高工",
+   "short": "中正高工",
+   "county": "高雄市",
+   "site": "https://www.ccvs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "銳鼎新版，但共用 adapter 實測 5 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "charts",
+   "name": "私立中華藝校",
+   "short": "中華藝校",
+   "county": "高雄市",
+   "site": "https://www.charts.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "未辨識的自建系統，需新 adapter"
+  },
+  {
+   "id": "cjhs",
+   "name": "市立前鎮高中",
+   "short": "前鎮高中",
+   "county": "高雄市",
+   "site": "http://www.cjhs.kh.edu.tw/view/index.php?WebID=340",
+   "reason": "custom",
+   "notes": "NUWeb，需新 adapter"
+  },
+  {
+   "id": "cshs",
+   "name": "市立中山高中",
+   "short": "中山高中",
+   "county": "高雄市",
+   "site": "http://www.cshs.kh.edu.tw/view/index.php?WebID=330",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "dmhs",
+   "name": "天主教道明中學",
+   "short": "道明中學",
+   "county": "高雄市",
+   "site": "http://www.dmhs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "未辨識的自建系統，需新 adapter"
+  },
+  {
+   "id": "fhhs",
+   "name": "私立復華高中",
+   "short": "復華高中",
+   "county": "高雄市",
+   "site": "http://www.fhhs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "未辨識的自建系統，需新 adapter"
+  },
+  {
+   "id": "ftm",
+   "name": "市立福誠高中",
+   "short": "福誠高中",
+   "county": "高雄市",
+   "site": "https://www.ftm.kh.edu.tw/view/index.php?WebID=76",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "hchs",
+   "name": "市立新莊高中",
+   "short": "新莊高中",
+   "county": "高雄市",
+   "site": "https://www.hchs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "WordPress，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "hcvs",
+   "name": "市立海青工商",
+   "short": "海青工商",
+   "county": "高雄市",
+   "site": "http://www.hcvs.kh.edu.tw/passport?from=",
+   "reason": "custom",
+   "notes": "NUWeb，需新 adapter"
+  },
+  {
+   "id": "hdvs",
+   "name": "私立華德工家",
+   "short": "華德工家",
+   "county": "高雄市",
+   "site": "http://www.hdvs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "hhhs",
+   "name": "市立新興高中",
+   "short": "新興高中",
+   "county": "高雄市",
+   "site": "https://www.hhhs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "iis",
+   "name": "私立義大國際高中",
+   "short": "義大國際高中",
+   "county": "高雄市",
+   "site": "https://www.iis.kh.edu.tw/tw",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：connection_error"
+  },
+  {
+   "id": "kksh",
+   "name": "國立中山大學附屬國光高中",
+   "short": "中山大學附屬國光高中",
+   "county": "高雄市",
+   "site": "https://kksh.nsysu.edu.tw/",
+   "reason": "custom",
+   "notes": "銳鼎新版，但共用 adapter 實測 8 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "kshs",
+   "name": "市立高雄中學",
+   "short": "高雄中學",
+   "county": "高雄市",
+   "site": "https://www.kshs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "ksvcs",
+   "name": "市立高雄高商",
+   "short": "高雄高商",
+   "county": "高雄市",
+   "site": "https://www.ksvcs.kh.edu.tw/ksvcs/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "ksvs",
+   "name": "市立高雄高工",
+   "short": "高雄高工",
+   "county": "高雄市",
+   "site": "http://www.ksvs.kh.edu.tw/v4/",
+   "reason": "custom",
+   "notes": "NUWeb，需新 adapter"
+  },
+  {
+   "id": "kusjh",
+   "name": "市立鼓山高中",
+   "short": "鼓山高中",
+   "county": "高雄市",
+   "site": "http://www.kusjh.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "kyvs",
+   "name": "私立高苑工商",
+   "short": "高苑工商",
+   "county": "高雄市",
+   "site": "https://www.kyvs.kh.edu.tw/home",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：HTTPError"
+  },
+  {
+   "id": "lchs",
+   "name": "市立路竹高中",
+   "short": "路竹高中",
+   "county": "高雄市",
+   "site": "https://www.lchs.kh.edu.tw/view/index.php?WebID=312",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "lcvs",
+   "name": "私立立志高中",
+   "short": "立志高中",
+   "county": "高雄市",
+   "site": "https://w5.lcvs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "WordPress，但共用 adapter 實測 0 則／0 有日期（HTTPError），需調整來源"
+  },
+  {
+   "id": "lgm",
+   "name": "市立六龜高中",
+   "short": "六龜高中",
+   "county": "高雄市",
+   "site": "https://www.lgm.kh.edu.tw/lgm/main.php",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "ly",
+   "name": "市立林園高中",
+   "short": "林園高中",
+   "county": "高雄市",
+   "site": "https://www.ly.kh.edu.tw/view/index.php?WebID=336",
+   "reason": "custom",
+   "notes": "XOOPS tadnews，但共用 adapter 實測 0 則／0 有日期（HTTPError），需調整來源"
+  },
+  {
+   "id": "mcsh",
+   "name": "天主教明誠高中",
+   "short": "明誠高中",
+   "county": "高雄市",
+   "site": "https://www.mcsh.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "未辨識的自建系統，需新 adapter"
+  },
+  {
+   "id": "mzu",
+   "name": "市立巴楠花部落實驗高中",
+   "short": "巴楠花部落實驗高中",
+   "county": "高雄市",
+   "site": "https://www.mzu.kh.edu.tw/view/index.php?WebID=346",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "nths",
+   "name": "市立楠梓高中",
+   "short": "楠梓高中",
+   "county": "高雄市",
+   "site": "http://www.nths.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "rssh",
+   "name": "市立瑞祥高中",
+   "short": "瑞祥高中",
+   "county": "高雄市",
+   "site": "http://www.rssh.kh.edu.tw/view/index.php?WebID=238",
+   "reason": "custom",
+   "notes": "未辨識的自建系統，需新 adapter"
+  },
+  {
+   "id": "rwm",
+   "name": "市立仁武高中",
+   "short": "仁武高中",
+   "county": "高雄市",
+   "site": "https://www.rwm.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "WordPress，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "shute",
+   "name": "私立樹德家商",
+   "short": "樹德家商",
+   "county": "高雄市",
+   "site": "http://www.shute.kh.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：HTTPError"
+  },
+  {
+   "id": "smhs",
+   "name": "市立三民高中",
+   "short": "三民高中",
+   "county": "高雄市",
+   "site": "http://www.smhs.kh.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：connection_error"
+  },
+  {
+   "id": "smvhs",
+   "name": "市立三民家商",
+   "short": "三民家商",
+   "county": "高雄市",
+   "site": "https://www.smvhs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "銳鼎新版，但共用 adapter 實測 7 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "tyhs",
+   "name": "市立左營高中",
+   "short": "左營高中",
+   "county": "高雄市",
+   "site": "https://www.tyhs.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "NUWeb，需新 adapter"
+  },
+  {
+   "id": "khwaldorf",
+   "name": "光禾華德福實驗學校",
+   "short": "光禾華德福實驗學校",
+   "county": "高雄市",
+   "site": "https://waldorf-tw-kh.weebly.com/",
+   "reason": "custom",
+   "notes": "未辨識的自建系統，需新 adapter"
+  },
+  {
+   "id": "cyshkh",
+   "name": "私立正義高中",
+   "short": "正義高中",
+   "county": "高雄市",
+   "site": "https://web.cysh.khc.edu.tw/zh",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
+  },
+  {
+   "id": "wsm",
+   "name": "市立文山高中",
+   "short": "文山高中",
+   "county": "高雄市",
+   "site": "https://www.wsm.kh.edu.tw/",
+   "reason": "custom",
+   "notes": "銳鼎新版，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "csic",
+   "name": "私立中山工商",
+   "short": "中山工商",
+   "county": "高雄市",
+   "site": "http://www.csic.khc.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：connection_error"
+  },
+  {
+   "id": "csvs",
+   "name": "國立旗山農工",
+   "short": "旗山農工",
+   "county": "高雄市",
+   "site": "http://www.csvs.khc.edu.tw/",
+   "reason": "unreachable",
+   "notes": "2026-11-01 普查（GitHub Actions）連不上：tls_error"
+  },
+  {
+   "id": "kyicvs",
+   "name": "私立高英工商",
+   "short": "高英工商",
+   "county": "高雄市",
+   "site": "http://www.kyicvs.khc.edu.tw/",
+   "reason": "custom",
+   "notes": "NUWeb，需新 adapter"
+  },
+  {
+   "id": "pmsh",
+   "name": "財團法人普門中學",
+   "short": "普門中學",
+   "county": "高雄市",
+   "site": "https://www.pmsh.khc.edu.tw/",
+   "reason": "custom",
+   "notes": "縣市 CCMS，但共用 adapter 實測 0 則／0 有日期（來源或日期格式不同），需調整來源"
+  },
+  {
+   "id": "sanhsin",
+   "name": "私立三信家商",
+   "short": "三信家商",
+   "county": "高雄市",
+   "site": "http://www.sanhsin.edu.tw/",
+   "reason": "custom",
+   "notes": "ASP.NET 自建，需新 adapter"
   }
  ]
 }

@@ -34,7 +34,8 @@ jobs:
     runs-on: ubuntu-latest
     # A stuck source must not keep the shared scrape queue occupied and make
     # later scheduled runs appear stale to readers.
-    timeout-minutes: 15
+    # 2026-11-01: 28 → 58 校（台南、高雄上架），一次約 13 分鐘會變成約 25 分鐘；上限放寬到 35 分鐘，仍在下一次排程前結束。
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v5
 
