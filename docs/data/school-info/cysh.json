@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-10-31T22:57:15+08:00",
+ "generated_at": "2026-11-01T10:16:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5413,7 +5413,13 @@
   },
   "436": {
    "page_id": 436,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T10:16:00+08:00",
+   "path": [
+    "教學單位",
+    "數學科",
+    "歷屆試題暨模擬試題"
+   ]
   },
   "1115": {
    "page_id": 1115,
@@ -5441,7 +5447,13 @@
   },
   "510": {
    "page_id": 510,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T10:16:04+08:00",
+   "path": [
+    "教學單位",
+    "音樂科",
+    "教學及活動剪影"
+   ]
   },
   "847": {
    "page_id": 847,
@@ -5449,7 +5461,24 @@
   },
   "513": {
    "page_id": 513,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T10:16:06+08:00",
+   "path": [
+    "教學單位",
+    "美術科",
+    "美術班緣起"
+   ],
+   "changed_at": "2026-11-01T10:16:06+08:00",
+   "content_hash": "686fe0563ae74f547a688178884e2df3cb4de2b0536a5afda28d9a1eaae2969a",
+   "doc_links": [],
+   "keywords": [
+    "科系"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-513.json",
+   "detail_revision": "edbe2755fec713cc4de7fbee55a76de0438eb80b543a4a7e509114d522568130",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "514": {
    "page_id": 514,
@@ -5493,7 +5522,8 @@
   },
   "462": {
    "page_id": 462,
-   "status": "pending"
+   "status": "gone",
+   "checked_at": "2026-11-01T10:16:02+08:00"
   },
   "1013": {
    "page_id": 1013,
@@ -9750,6 +9780,25 @@
    "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-492.json",
    "detail_revision": "bfd3096d517a696130651f77a918de26af2451f047381e2b822ba4a271535268",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-513",
+   "kind": "school_info",
+   "title": "教學單位 › 美術科 › 美術班緣起",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-513.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "科系"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-513.json",
+   "detail_revision": "edbe2755fec713cc4de7fbee55a76de0438eb80b543a4a7e509114d522568130",
    "detail_status": "parsed"
   },
   {
@@ -14459,5 +14508,6 @@
     "繳款"
    ]
   }
- ]
+ ],
+ "last_run_at": "2026-11-01T10:16:08+08:00"
 }

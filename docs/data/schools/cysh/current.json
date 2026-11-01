@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-10-31T22:51:38+08:00",
+ "generated_at": "2026-11-01T10:10:30+08:00",
  "school": {
   "id": "cysh",
   "name": "國立嘉義高級中學",
@@ -6474,7 +6474,7 @@
    "category": "競賽",
    "first_seen": "2026-08-27T22:49:35+08:00",
    "detail_status": "temporary_error",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "link_missing_checks": 1,
    "link_missing_at": "2026-10-31T17:30:31+08:00"
   },
@@ -6502,7 +6502,19 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-136356,r12.php",
    "category": "競賽",
-   "first_seen": "2026-08-27T10:54:04+08:00"
+   "first_seen": "2026-08-27T10:54:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-09-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "4fc18916010b2f32a26244cd55971746ae0baec27aa31531aaa95bec7ca7de09"
+    }
+   ]
   },
   {
    "id": "cysh-136669",
@@ -18399,28 +18411,6 @@
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-133498,r1053.php",
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00"
-  },
-  {
-   "id": "cysh-133483",
-   "title": "「2025中學教師物理探究暨演示實驗研習會－從量子看世界，從STEAM啟發未來」實施計畫1份",
-   "date": "2025-10-31",
-   "source_category": "研習活動",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133483,r14.php",
-   "category": "教職員",
-   "first_seen": "2026-08-12T00:00:23+08:00"
-  },
-  {
-   "id": "cysh-133473",
-   "title": "【轉知】陸委會「常態化制度化查核軍公教人員不得在中國大陸設籍、領用中共相關身分證件」查核機制自115年1月1日起正式實施",
-   "date": "2025-10-31",
-   "source_category": "宣導事項",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133473,r21.php",
-   "category": "教職員",
-   "first_seen": "2026-08-11T12:52:49+08:00"
   }
  ],
  "content_access": "approved-account-required"

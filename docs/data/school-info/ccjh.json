@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-10-31T22:58:33+08:00",
+ "generated_at": "2026-11-01T10:16:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "98": {
@@ -128,19 +128,106 @@
   },
   "110": {
    "page_id": 110,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T10:16:28+08:00",
+   "path": [
+    "認識竹中",
+    "處室分機"
+   ],
+   "changed_at": "2026-11-01T10:16:28+08:00",
+   "content_hash": "40c1816a3ba1da2c0f7b7bc8d1af71033cc0a1b17f4376d0612ca8681c27c962",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "圖書館",
+    "校長",
+    "傳真",
+    "社團",
+    "衛生"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-110.json",
+   "detail_revision": "d69b399d5c5d2a80f5247c637372e3cb8e755d10ddbfd33d09a7b1d36f4b8c7a",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "115": {
    "page_id": 115,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T10:16:31+08:00",
+   "path": [
+    "認識竹中",
+    "無障礙地圖"
+   ],
+   "changed_at": "2026-11-01T10:16:31+08:00",
+   "content_hash": "bfa2d5fa891b9f846f3ba9b0fab795d533af8ddabb5471a17271994962e0c33c",
+   "doc_links": [],
+   "keywords": [
+    "圖書館",
+    "安全"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-115.json",
+   "detail_revision": "bc3cc971ebe901ef130a370b2f2326e6a910750e3f6488532230a16dd22b94e2",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "600335906.jpg",
+     "url": "https://www.ccjh.cyc.edu.tw/var/file/0/1000/img/1/600335906.jpg"
+    }
+   ]
   },
   "117": {
    "page_id": 117,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T10:16:33+08:00",
+   "path": [
+    "招生資訊",
+    "高中部招生公告"
+   ],
+   "changed_at": "2026-11-01T10:16:33+08:00",
+   "content_hash": "1a247976dc4764afc7d49162c8f3b48ebd52c551c12c585c479b5fc33a07ecc6",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "傳真",
+    "升學",
+    "會考",
+    "獎學金",
+    "轉學",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-117.json",
+   "detail_revision": "30f01d931bcf7e82f461ffb93f83a7211b218ff8caffce7a353ebf74bb78d456",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "118": {
    "page_id": 118,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T10:16:36+08:00",
+   "path": [
+    "招生資訊",
+    "國中部招生公告"
+   ],
+   "changed_at": "2026-11-01T10:16:36+08:00",
+   "content_hash": "9a9ade1bea39e474c655ac63e1420a889e9635fad4ee50e1909d5b5c59c4185e",
+   "doc_links": [],
+   "keywords": [
+    "傳真",
+    "入學",
+    "招生",
+    "新生",
+    "登記",
+    "轉學",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-118.json",
+   "detail_revision": "05a07ffe47a571a24c05c52116415294204baef2441f2fa4ec9a9da5bed1967d",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "170": {
    "page_id": 170,
@@ -401,6 +488,10 @@
   "155": {
    "page_id": 155,
    "status": "pending"
+  },
+  "116": {
+   "page_id": 116,
+   "status": "pending"
   }
  },
  "handbook": {},
@@ -619,6 +710,107 @@
    "detail_ref": "data/details/ccjh/ccjh-info-109.json",
    "detail_revision": "a4a68794d94373a2662f3cae8d18d796ad547c13a83239ee57724aac65a8e48b",
    "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-110",
+   "kind": "school_info",
+   "title": "認識竹中 › 處室分機",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-110.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "圖書館",
+    "校長",
+    "傳真",
+    "社團",
+    "衛生"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-110.json",
+   "detail_revision": "d69b399d5c5d2a80f5247c637372e3cb8e755d10ddbfd33d09a7b1d36f4b8c7a",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-115",
+   "kind": "school_info",
+   "title": "認識竹中 › 無障礙地圖",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-115.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "600335906.jpg"
+   ],
+   "keywords": [
+    "圖書館",
+    "安全"
+   ],
+   "documents": [
+    {
+     "name": "600335906.jpg",
+     "url": "https://www.ccjh.cyc.edu.tw/var/file/0/1000/img/1/600335906.jpg"
+    }
+   ],
+   "detail_ref": "data/details/ccjh/ccjh-info-115.json",
+   "detail_revision": "bc3cc971ebe901ef130a370b2f2326e6a910750e3f6488532230a16dd22b94e2",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-117",
+   "kind": "school_info",
+   "title": "招生資訊 › 高中部招生公告",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-117.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "入學",
+    "傳真",
+    "升學",
+    "會考",
+    "獎學金",
+    "轉學",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-117.json",
+   "detail_revision": "30f01d931bcf7e82f461ffb93f83a7211b218ff8caffce7a353ebf74bb78d456",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-118",
+   "kind": "school_info",
+   "title": "招生資訊 › 國中部招生公告",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-118.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [],
+   "keywords": [
+    "傳真",
+    "入學",
+    "招生",
+    "新生",
+    "登記",
+    "轉學",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-118.json",
+   "detail_revision": "05a07ffe47a571a24c05c52116415294204baef2441f2fa4ec9a9da5bed1967d",
+   "detail_status": "parsed"
   }
  ],
  "roots": [
@@ -647,5 +839,6 @@
   168,
   86,
   153
- ]
+ ],
+ "last_run_at": "2026-11-01T10:16:37+08:00"
 }

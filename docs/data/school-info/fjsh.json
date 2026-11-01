@@ -1,12 +1,40 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-10-31T22:58:08+08:00",
+ "generated_at": "2026-11-01T10:16:27+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "495": {
    "page_id": 495,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T10:16:26+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "招生資訊"
+   ],
+   "changed_at": "2026-11-01T10:16:26+08:00",
+   "content_hash": "b42635d3256ba319a5e55457600d0a62f757dd8eca705b5485025cbca7535c15",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "入學",
+    "地址",
+    "專線",
+    "招生",
+    "轉學",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-495.json",
+   "detail_revision": "6ede052d386fb0e1b67624ed2c8804e63d5f96b37da590eef33ee1b1ce60ee80",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "636": {
    "page_id": 636,
@@ -309,15 +337,72 @@
   },
   "471": {
    "page_id": 471,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T10:16:18+08:00",
+   "path": [
+    "行政單位",
+    "輔導處"
+   ],
+   "changed_at": "2026-11-01T10:16:18+08:00",
+   "content_hash": "7b40a83ee5f126e031276421d549258548f980dc81645c26ae0a1e17790e1130",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "衛生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-471.json",
+   "detail_revision": "32597bb2da183bf97ef824345240a2dfb390285283e0d9e7c6dd83829190c75b",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "472": {
    "page_id": 472,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-01T10:16:21+08:00",
+   "path": [
+    "行政單位",
+    "人事室"
+   ]
   },
   "473": {
    "page_id": 473,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-01T10:16:23+08:00",
+   "path": [
+    "行政單位",
+    "會計室"
+   ],
+   "changed_at": "2026-11-01T10:16:23+08:00",
+   "content_hash": "a9058d4b308b0431f13cb18a90a80b4dcaa72c492bf96346dea537b9a0a41b9c",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "收費",
+    "註冊費",
+    "代辦費",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-473.json",
+   "detail_revision": "26243e829c45a4176ca3eff8bdaa8e4c2ca55db6bd1923e93485be89b5444ee4",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "627": {
    "page_id": 627,
@@ -397,6 +482,202 @@
   },
   "546": {
    "page_id": 546,
+   "status": "pending"
+  },
+  "548": {
+   "page_id": 548,
+   "status": "pending"
+  },
+  "560": {
+   "page_id": 560,
+   "status": "pending"
+  },
+  "561": {
+   "page_id": 561,
+   "status": "pending"
+  },
+  "562": {
+   "page_id": 562,
+   "status": "pending"
+  },
+  "563": {
+   "page_id": 563,
+   "status": "pending"
+  },
+  "564": {
+   "page_id": 564,
+   "status": "pending"
+  },
+  "565": {
+   "page_id": 565,
+   "status": "pending"
+  },
+  "566": {
+   "page_id": 566,
+   "status": "pending"
+  },
+  "567": {
+   "page_id": 567,
+   "status": "pending"
+  },
+  "568": {
+   "page_id": 568,
+   "status": "pending"
+  },
+  "569": {
+   "page_id": 569,
+   "status": "pending"
+  },
+  "570": {
+   "page_id": 570,
+   "status": "pending"
+  },
+  "571": {
+   "page_id": 571,
+   "status": "pending"
+  },
+  "572": {
+   "page_id": 572,
+   "status": "pending"
+  },
+  "573": {
+   "page_id": 573,
+   "status": "pending"
+  },
+  "574": {
+   "page_id": 574,
+   "status": "pending"
+  },
+  "553": {
+   "page_id": 553,
+   "status": "pending"
+  },
+  "575": {
+   "page_id": 575,
+   "status": "pending"
+  },
+  "576": {
+   "page_id": 576,
+   "status": "pending"
+  },
+  "577": {
+   "page_id": 577,
+   "status": "pending"
+  },
+  "578": {
+   "page_id": 578,
+   "status": "pending"
+  },
+  "579": {
+   "page_id": 579,
+   "status": "pending"
+  },
+  "580": {
+   "page_id": 580,
+   "status": "pending"
+  },
+  "601": {
+   "page_id": 601,
+   "status": "pending"
+  },
+  "557": {
+   "page_id": 557,
+   "status": "pending"
+  },
+  "581": {
+   "page_id": 581,
+   "status": "pending"
+  },
+  "582": {
+   "page_id": 582,
+   "status": "pending"
+  },
+  "583": {
+   "page_id": 583,
+   "status": "pending"
+  },
+  "584": {
+   "page_id": 584,
+   "status": "pending"
+  },
+  "606": {
+   "page_id": 606,
+   "status": "pending"
+  },
+  "586": {
+   "page_id": 586,
+   "status": "pending"
+  },
+  "587": {
+   "page_id": 587,
+   "status": "pending"
+  },
+  "588": {
+   "page_id": 588,
+   "status": "pending"
+  },
+  "589": {
+   "page_id": 589,
+   "status": "pending"
+  },
+  "590": {
+   "page_id": 590,
+   "status": "pending"
+  },
+  "591": {
+   "page_id": 591,
+   "status": "pending"
+  },
+  "592": {
+   "page_id": 592,
+   "status": "pending"
+  },
+  "594": {
+   "page_id": 594,
+   "status": "pending"
+  },
+  "596": {
+   "page_id": 596,
+   "status": "pending"
+  },
+  "597": {
+   "page_id": 597,
+   "status": "pending"
+  },
+  "598": {
+   "page_id": 598,
+   "status": "pending"
+  },
+  "599": {
+   "page_id": 599,
+   "status": "pending"
+  },
+  "496": {
+   "page_id": 496,
+   "status": "pending"
+  },
+  "497": {
+   "page_id": 497,
+   "status": "pending"
+  },
+  "498": {
+   "page_id": 498,
+   "status": "pending"
+  },
+  "499": {
+   "page_id": 499,
+   "status": "pending"
+  },
+  "500": {
+   "page_id": 500,
+   "status": "pending"
+  },
+  "501": {
+   "page_id": 501,
+   "status": "pending"
+  },
+  "630": {
+   "page_id": 630,
    "status": "pending"
   }
  },
@@ -706,6 +987,99 @@
    "detail_ref": "data/details/fjsh/fjsh-info-470.json",
    "detail_revision": "79034a96401aacbd56ac8e411473f3f51b2557ddc5f2a41f249ac1906893abd4",
    "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-471",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導處",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-471.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "衛生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-471.json",
+   "detail_revision": "32597bb2da183bf97ef824345240a2dfb390285283e0d9e7c6dd83829190c75b",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-473",
+   "kind": "school_info",
+   "title": "行政單位 › 會計室",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-473.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "收費",
+    "註冊費",
+    "代辦費",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-473.json",
+   "detail_revision": "26243e829c45a4176ca3eff8bdaa8e4c2ca55db6bd1923e93485be89b5444ee4",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-495",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 招生資訊",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-495.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-01",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "入學",
+    "地址",
+    "專線",
+    "招生",
+    "轉學",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-495.json",
+   "detail_revision": "6ede052d386fb0e1b67624ed2c8804e63d5f96b37da590eef33ee1b1ce60ee80",
+   "detail_status": "parsed"
   }
  ],
  "roots": [
@@ -726,5 +1100,6 @@
   472,
   473,
   627
- ]
+ ],
+ "last_run_at": "2026-11-01T10:16:27+08:00"
 }
