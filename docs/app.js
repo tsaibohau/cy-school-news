@@ -2889,6 +2889,9 @@
          A follow-up after a comparison (「那服裝儀容呢」) compares the same schools again. */
       var registry = window.CyNewsSchoolRegistry, QA = window.CyNewsAssistantQA;
       var named = registry && registry.mentionedSchools ? registry.mentionedSchools(asked) : [];
+      /* 「哪間學校段考最早」「嘉中跟嘉女誰先放寒假」: compare dates across schools. */
+      var schedulePlan = window.CyNewsScheduleCompare && window.CyNewsScheduleCompare.asks(asked, named.map(function (school) { return school.id; }));
+      if (schedulePlan) return askScheduleCompare(asked, schedulePlan, named);
       var plan = QA.comparePlan ? QA.comparePlan(asked, named, previous && { scopeId: previous.scopeId, query: previous.query }) : null;
       if (!plan && previous && previous.compare && followUp.context && !named.length) plan = { schools: previous.compare, topic: question };
       if (plan) return askAssistantCompare(asked, plan);
@@ -2949,6 +2952,39 @@
         renderAssistantAnswer(result, turnIndex);
         mascotMood("sad", "網路好像怪怪的…");
         if (el.assistantStatus) el.assistantStatus.textContent = "資料讀取失敗";
+        return result;
+      }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
+    }
+    /* Dates of one kind of event (段考, 寒假, 校慶…) at every school, earliest first. Uses the
+       school calendars and the dates written in announcement titles; schools without a date are named. */
+    function askScheduleCompare(asked, plan, named) {
+      startAssistantTurn(asked, "");
+      setupMascot();
+      mascotMood("thinking");
+      var turnIndex = state.assistantTurns.length - 1, target = el.assistantAnswer;
+      if (el.assistantAsk) el.assistantAsk.disabled = true;
+      if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在對照各校的行事曆…</p></div>';
+      var calendarReady = state.officialEvents && state.officialEvents.length ? Promise.resolve() : loadOfficialEvents();
+      return Promise.all([calendarReady, crossSchoolGroups()]).then(function () {
+        rememberAssistantQuestion(asked);
+        var items = Object.keys(crossCache.items || {}).map(function (id) { return crossCache.items[id]; });
+        items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
+        var only = named.length >= 2 ? named.map(function (school) { return school.id; }) : [];
+        var grade = state.profile && Number(state.profile.grade_level) ? "高" + "一二三"[Number(state.profile.grade_level) - 1] : "";
+        var result = window.CyNewsScheduleCompare.compare(asked, plan, {
+          calendarEvents: state.officialEvents || [], items: items, today: taipeiToday(), onlySchools: only, grade: grade,
+          schools: window.CyNewsSchoolRegistry.schools().filter(visibleSchool),
+          titleDates: window.CyNewsAssistantQA && window.CyNewsAssistantQA.titleDates
+        });
+        el.assistantAnswer = target;
+        renderAssistantAnswer(result, turnIndex);
+        mascotMood(result.status === "answered" ? "happy" : "sad");
+        renderAssistantExamples();
+        return result;
+      }).catch(function () {
+        var result = { status: "insufficient", summary: "目前無法讀取資料，請稍後再試。", evidence: [], sources: [] };
+        el.assistantAnswer = target;
+        renderAssistantAnswer(result, turnIndex);
         return result;
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
     }
