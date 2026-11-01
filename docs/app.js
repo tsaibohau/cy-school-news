@@ -161,6 +161,8 @@
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"),
+      viewActivities: $("viewActivities"), tabActivities: $("tabActivities"), activityQ: $("activityQ"), activitySort: $("activitySort"),
+      activityChips: $("activityChips"), activityList: $("activityList"), activityMore: $("activityMore"), activityCount: $("activityCount"),
       viewCross: $("viewCross"), tabCross: $("tabCross"), crossQ: $("crossQ"), crossSchool: $("crossSchool"), crossSort: $("crossSort"),
       crossMissing: $("crossMissing"), crossList: $("crossList"), crossMore: $("crossMore"), crossCount: $("crossCount"), crossSpeed: $("crossSpeed"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
@@ -2426,6 +2428,57 @@
       });
       if (open) { panel.open = true; if (panel.scrollIntoView) panel.scrollIntoView({ block: "start", behavior: "smooth" }); }
     }
+    /* 打字機效果：回答的文字一個字一個字出現（句讀稍停），整段最多約 3 秒；
+       來源、連結和「依據與來源」等打完再出現。點一下回答就直接顯示全部。
+       螢幕閱讀器一次讀到完整的回答；系統設定「減少動態效果」時不打字。 */
+    var answerTyping = null;
+    function finishAnswerTyping() { if (answerTyping) answerTyping.finish(); }
+    function typeAnswer(box) {
+      if (!box || !box.querySelectorAll || prefersReducedMotion()) return;
+      var targets = Array.prototype.slice.call(box.querySelectorAll(".assistant-lead, .chat-bullets li, .chat-tail"));
+      var texts = targets.map(function (node) { return node.textContent; });
+      var total = texts.join("").length;
+      if (!targets.length || total < 4) return;
+      var rest = Array.prototype.filter.call(box.children, function (node) {
+        return targets.indexOf(node) === -1 && !(node.querySelector && node.querySelector(".assistant-lead, .chat-bullets li, .chat-tail"));
+      });
+      var caret = document.createElement("span");
+      caret.className = "type-caret";
+      caret.setAttribute("aria-hidden", "true");
+      var spoken = document.createElement("p");
+      spoken.className = "visually-hidden";
+      spoken.textContent = texts.join(" ");
+      box.insertBefore(spoken, box.firstChild);
+      rest.forEach(function (node) { node.classList.add("is-typing-hidden"); });
+      targets.forEach(function (node, i) { node.setAttribute("aria-hidden", "true"); node.textContent = ""; if (i > 0 && node.tagName === "LI") node.hidden = true; });
+      box.classList.add("is-typing");
+      var line = 0, typed = 0, timer = null, chunk = Math.max(1, Math.ceil(total / 170));
+      function paint() { var node = targets[line]; node.hidden = false; node.textContent = texts[line].slice(0, typed); node.appendChild(caret); }
+      function finish() {
+        clearTimeout(timer);
+        targets.forEach(function (node, i) { node.hidden = false; node.textContent = texts[i]; node.removeAttribute("aria-hidden"); });
+        if (caret.parentNode) caret.parentNode.removeChild(caret);
+        if (spoken.parentNode) spoken.parentNode.removeChild(spoken);
+        rest.forEach(function (node) { node.classList.remove("is-typing-hidden"); node.classList.add("typing-reveal"); });
+        box.classList.remove("is-typing");
+        box.removeEventListener("click", finish);
+        if (answerTyping && answerTyping.box === box) answerTyping = null;
+      }
+      function step() {
+        typed = Math.min(texts[line].length, typed + chunk);
+        paint();
+        if (typed >= texts[line].length) {
+          line += 1; typed = 0;
+          if (line >= targets.length) { timer = setTimeout(finish, 150); return; }
+          timer = setTimeout(step, 140);
+          return;
+        }
+        timer = setTimeout(step, /[，。！？：；、]/.test(texts[line].charAt(typed - 1)) ? 90 : 18);
+      }
+      box.addEventListener("click", finish);
+      answerTyping = { box: box, finish: finish };
+      step();
+    }
     function renderAssistantAnswer(result, turnIndex) {
       if (!el.assistantAnswer) return;
       state.assistantAnswer = result;
@@ -2447,7 +2500,9 @@
       html += links;
       var hasEvidence = turn && assistantEvidenceHtml(turn);
       if (hasEvidence) html += '<button type="button" class="chat-cite" data-assistant-cite="' + index + '">依據與來源 ↓</button>';
+      finishAnswerTyping();
       el.assistantAnswer.innerHTML = '<div class="assistant-result chat-answer">' + html + '</div>';
+      typeAnswer(el.assistantAnswer.firstChild);
       showAssistantEvidence(index, false);
     }
     function assistantOptions(scope) {
@@ -2731,6 +2786,84 @@
             return '<li' + (row.school === schoolId ? ' class="is-mine"' : '') + '><strong>' + esc(row.school_name) + '</strong><span>中位數 ' + (row.median_lag ? "晚 " + row.median_lag + " 天" : "當天") + '・最早 ' + row.first_count + '／' + row.groups + ' 項</span></li>';
           }).join("") + '</ol>' : '<p class="cross-speed-note">資料還不夠。</p>';
         }
+      });
+    }
+    /* 活動總覽：所有學校還能報名的活動，不分學校，依類別、再依報名截止日。
+       跟跨校比對共用同一份全部學校的公告與分組，同一項活動只列一次。 */
+    var activityView = { shown: 40, category: "all", cache: null, cacheKey: "" };
+    function activityEntries() {
+      var Overview = window.CyNewsActivityOverview, CrossSchool = window.CyNewsCrossSchool;
+      if (!Overview) return Promise.resolve([]);
+      return crossSchoolGroups().then(function (groups) {
+        var key = crossCache.key + "|" + taipeiToday();
+        if (activityView.cache && activityView.cacheKey === key) return activityView.cache;
+        var items = Object.keys(crossCache.items || {}).map(function (id) { return crossCache.items[id]; });
+        activityView.cache = Overview.build(items, { groups: groups, today: taipeiToday(), titleDeadline: window.CyNewsAssistantQA && window.CyNewsAssistantQA.titleDeadline,
+          normalize: CrossSchool ? function (text) { return CrossSchool.normalize(text, []); } : null });
+        activityView.cacheKey = key;
+        return activityView.cache;
+      });
+    }
+    function activityCardHTML(entry) {
+      var Overview = window.CyNewsActivityOverview, left = entry.days_left;
+      var due = '<span class="cross-due' + (!entry.deadline ? " is-unknown" : left <= 3 ? " is-soon" : "") + '">' + esc(Overview.deadlineLabel(entry)) + '</span>';
+      var schools = entry.schools.map(function (s) {
+        return '<li><button type="button" class="cross-stop" data-cross-open="' + esc(s.id) + '"><strong>' + esc(s.school_name) + '</strong><small>' + md(s.date) + ' 公告</small></button></li>';
+      }).join("");
+      var calendar = entry.deadline && window.CyNewsGoogleCalendar ? window.CyNewsGoogleCalendar.eventUrl({ title: "報名截止：" + entry.name, date: entry.deadline,
+        details: (entry.organizer ? "主辦：" + entry.organizer + "\n" : "") + entry.schools.map(function (s) { return s.school_name; }).join("、") + " 公告", url: entry.schools[0].url }) : "";
+      return '<article class="card cross-card activity-card">' +
+        '<h3 class="cross-name">' + esc(entry.name) + '</h3>' +
+        '<p class="cross-meta">' + (entry.organizer ? esc(entry.organizer) + " " : "") + due + '</p>' +
+        '<p class="cross-sum">' + (entry.schools.length > 1 ? '<b>' + entry.schools.length + ' 校公告</b>，點學校看公告：' : '點開看公告：') + '</p>' +
+        '<ol class="cross-timeline">' + schools + '</ol>' +
+        (calendar ? '<p class="activity-actions"><a class="card-action" href="' + esc(calendar) + '" target="_blank" rel="noopener">把截止日加入 Google 日曆</a></p>' : '') +
+        '</article>';
+    }
+    function renderActivities() {
+      var Overview = window.CyNewsActivityOverview;
+      if (!el.activityList || !Overview) return;
+      if (!activityView.cache) el.activityList.innerHTML = '<p class="empty">正在整理各校的活動…</p>';
+      activityEntries().then(function (entries) {
+        var CrossSchool = window.CyNewsCrossSchool, q = String(el.activityQ && el.activityQ.value || "").trim();
+        var qKey = q && CrossSchool ? CrossSchool.normalize(q, []) : q;
+        var matched = entries.filter(function (entry) {
+          if (!qKey) return true;
+          var text = entry.name + " " + entry.organizer + " " + entry.schools.map(function (s) { return s.title + " " + s.school_name; }).join(" ");
+          return (CrossSchool ? CrossSchool.normalize(text, []) : text).indexOf(qKey) !== -1;
+        });
+        var counts = {};
+        matched.forEach(function (entry) { counts[entry.category] = (counts[entry.category] || 0) + 1; });
+        if (el.activityChips) el.activityChips.innerHTML = [{ id: "all", label: "全部" }].concat(Overview.CATEGORIES).map(function (cat) {
+          var n = cat.id === "all" ? matched.length : counts[cat.id] || 0;
+          return '<button type="button" class="chip' + (activityView.category === cat.id ? " is-active" : "") + '" data-activity-category="' + cat.id + '"' + (n || cat.id === "all" ? "" : " disabled") + '>' + esc(cat.label) + ' ' + n + '</button>';
+        }).join("");
+        var mode = el.activitySort ? el.activitySort.value : "category";
+        var list = Overview.sort(matched.filter(function (entry) { return activityView.category === "all" || entry.category === activityView.category; }), mode);
+        var dated = entries.filter(function (entry) { return entry.deadline; }).length;
+        if (el.activityCount) el.activityCount.textContent = entries.length ? entries.length + " 項可報名，" + dated + " 項有截止日" : "";
+        /* 「全部」依類別時，每類先列最快截止的 6 項，按「看全部」進那一類；其他情況分頁顯示。 */
+        var preview = mode === "category" && activityView.category === "all", perCategory = {};
+        var shown = preview ? list.filter(function (entry) { perCategory[entry.category] = (perCategory[entry.category] || 0) + 1; return perCategory[entry.category] <= 6; }) : list.slice(0, activityView.shown);
+        var html = "", lastCategory = "", undatedOpen = false;
+        function moreButton(category) {
+          return preview && (counts[category] || 0) > 6 ? '<button type="button" class="btn-ghost activity-see-all" data-activity-category="' + esc(category) + '">看全部 ' + counts[category] + ' 項' + esc(Overview.label(category)) + '</button>' : "";
+        }
+        shown.forEach(function (entry) {
+          if (mode === "category" && entry.category !== lastCategory) {
+            if (lastCategory) html += moreButton(lastCategory);
+            lastCategory = entry.category; undatedOpen = false;
+            html += '<h3 class="list-group">' + esc(Overview.label(entry.category)) + '<small>' + (counts[entry.category] || 0) + ' 項</small></h3>';
+          }
+          if (!entry.deadline && !undatedOpen) {
+            undatedOpen = true;
+            html += '<p class="activity-undated-note">以下的截止日沒寫在標題裡（近 30 天公告），報名前請點開公告確認。</p>';
+          }
+          html += activityCardHTML(entry);
+        });
+        if (lastCategory) html += moreButton(lastCategory);
+        el.activityList.innerHTML = html || '<p class="empty">' + (entries.length ? "沒有符合的活動。" : "目前沒有可報名的活動。") + '</p>';
+        if (el.activityMore) el.activityMore.hidden = preview || list.length <= activityView.shown;
       });
     }
     /* 問校務：「哪些學校有公告 X」「X 各校什麼時候公告」由跨校比對回答。 */
@@ -3366,7 +3499,7 @@
     }
     function switchTab(tab) {
       var capabilities = window.CyNewsCapabilities;
-      var publicOrAccountAllowed = tab === "latest" || tab === "cross" || tab === "home" || tab === "sub" || tab === "admin";
+      var publicOrAccountAllowed = tab === "latest" || tab === "cross" || tab === "activities" || tab === "home" || tab === "sub" || tab === "admin";
       if (!publicOrAccountAllowed && capabilities) {
         publicOrAccountAllowed = tab === "assistant" && capabilities.has("assistant") ||
           tab === "timetable" && capabilities.has("timetable") ||
@@ -3375,7 +3508,7 @@
       } else if (!publicOrAccountAllowed) {
         publicOrAccountAllowed = hasSignedInAccount();
       }
-      if (tab !== "latest" && tab !== "cross" && tab !== "admin" && !publicOrAccountAllowed) {
+      if (tab !== "latest" && tab !== "cross" && tab !== "activities" && tab !== "admin" && !publicOrAccountAllowed) {
         tab = "latest";
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能目前未開放。";
       }
@@ -3400,6 +3533,9 @@
       if (el.viewTimetable) el.viewTimetable.hidden = !timetable;
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
       if (el.viewCross) el.viewCross.hidden = tab !== "cross";
+      if (el.viewActivities) el.viewActivities.hidden = tab !== "activities";
+      if (el.tabActivities) { el.tabActivities.classList.toggle("is-active", tab === "activities"); el.tabActivities.setAttribute("aria-current", tab === "activities" ? "page" : "false"); }
+      if (tab === "activities") renderActivities();
       if (el.tabCross) { el.tabCross.classList.toggle("is-active", tab === "cross"); el.tabCross.setAttribute("aria-current", tab === "cross" ? "page" : "false"); }
       if (tab === "cross") renderCrossSchool();
       el.viewSub.hidden = tab !== "sub";
@@ -3477,6 +3613,21 @@
     if (typeof document.addEventListener === "function") document.addEventListener("keydown", function (e) { if (e.key === "Escape") setSideMenu(false); });
     el.tabLatest.addEventListener("click", function () { pickTab("latest"); });
     if (el.tabCross) el.tabCross.addEventListener("click", function () { pickTab("cross"); });
+    if (el.tabActivities) el.tabActivities.addEventListener("click", function () { pickTab("activities"); });
+    if (el.activitySort) el.activitySort.addEventListener("change", function () { activityView.shown = 40; renderActivities(); });
+    if (el.activityQ) { var activityTyping = null; el.activityQ.addEventListener("input", function () { clearTimeout(activityTyping); activityTyping = setTimeout(function () { activityView.shown = 40; renderActivities(); }, 250); }); }
+    if (el.activityMore) el.activityMore.addEventListener("click", function () { activityView.shown += 40; renderActivities(); });
+    if (el.activityChips) el.activityChips.addEventListener("click", function (e) {
+      var chip = e.target.closest("[data-activity-category]");
+      if (!chip || chip.disabled) return;
+      activityView.category = chip.getAttribute("data-activity-category"); activityView.shown = 40; renderActivities();
+    });
+    if (el.activityList) el.activityList.addEventListener("click", function (e) {
+      var seeAll = e.target.closest("[data-activity-category]");
+      if (seeAll) { activityView.category = seeAll.getAttribute("data-activity-category"); activityView.shown = 40; renderActivities(); if (el.viewActivities && el.viewActivities.scrollIntoView) el.viewActivities.scrollIntoView({ block: "start" }); return; }
+      var stop = e.target.closest("[data-cross-open]");
+      if (stop) openDetail(stop.getAttribute("data-cross-open"));
+    });
     [el.crossSchool, el.crossSort, el.crossMissing].forEach(function (node) { if (node) node.addEventListener("change", function () { crossView.shown = 30; renderCrossSchool(); }); });
     if (el.crossQ) { var crossTyping = null; el.crossQ.addEventListener("input", function () { clearTimeout(crossTyping); crossTyping = setTimeout(function () { crossView.shown = 30; renderCrossSchool(); }, 250); }); }
     if (el.crossMore) el.crossMore.addEventListener("click", function () { crossView.shown += 30; renderCrossSchool(); });
