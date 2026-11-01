@@ -2086,6 +2086,11 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 縣市範圍讀全部學校的公告檔與校園資訊，只保留那個縣市的學校；行事曆也只用那些學校的。
 - 驗證：Playwright 選「雲林縣」問最新消息只列雲林學校；「嘉義市的學校最近有什麼比賽」列出嘉中、嘉女、興華的比賽。其他測試只剩原本就失敗的 3 個。
 - 版本：`app.js?v=129`、`cy-news-v142`。
+## 2026-11-01 自動抓取：提交被拒時接上最新分支重試（`claude/scrape-push-retry`）
+- 事件：10:22 的排程抓取跑到最後一步「提交更新後的資料」時，使用者剛好合併了 PR #85（10:34），main 前進，`git push` 被拒，workflow 失敗並自動開了 issue #86。抓到的資料本身沒問題，只是沒存進去；下一次排程會補上。
+- 修正 `scrape-hourly.yml` 的提交步驟：push 被拒時 fetch 最新分支、`git rebase -X theirs` 接上（衝突只可能在機器人專屬資料檔，以本次抓到的新資料為準）再推，最多三次。推送目標改為目前執行的分支（`GITHUB_REF_NAME`）。
+- 不改排程頻率。
+- 附註：PR #85 是一次性普查分支（原本不打算合併）；合併進 main 的只是普查工具、報告與只在該分支觸發的 workflow，不影響正式網站與抓取。
 
 ## 2026-11-01 上架台南、高雄 30 校（`claude/add-tainan-kaohsiung`，以 #84 為基底）
 - 普查：教育部 115 學年高級中等學校名錄，臺南市 44 校、高雄市 53 校（不含已上架）；GitHub Actions 兩輪實測（`reports/census/south*`，工具 `tools/census/south_pipeline.py`）。

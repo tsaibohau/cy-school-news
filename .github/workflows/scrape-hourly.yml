@@ -173,7 +173,20 @@ jobs:
             echo "沒有變更,略過提交"
           else
             git commit -m "更新公告 $(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M')"
-            git push
+            # 抓取期間若有人合併 PR，分支會前進、直接 push 會被拒。先接上最新的分支再推，最多三次。
+            # 衝突只可能出在機器人專屬的資料檔：以這次抓到的新資料為準（rebase 時 theirs＝本次提交）。
+            for attempt in 1 2 3; do
+              if git push origin "HEAD:${GITHUB_REF_NAME}"; then exit 0; fi
+              echo "push 被拒（第 $attempt 次），接上最新的 ${GITHUB_REF_NAME} 後重試"
+              git fetch origin "${GITHUB_REF_NAME}"
+              if ! git rebase -X theirs "origin/${GITHUB_REF_NAME}"; then
+                git rebase --abort || true
+                echo "::error::無法接上最新的 ${GITHUB_REF_NAME}"
+                exit 1
+              fi
+              sleep $((attempt * 5))
+            done
+            exit 1
           fi
 
       - name: 抓取失敗時開 issue 通知
