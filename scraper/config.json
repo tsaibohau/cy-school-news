@@ -818,6 +818,608 @@
           "tier": "hot"
         }
       ]
+    },
+    {
+      "id": "hyivs",
+      "name": "國立新營高工",
+      "short": "新營高工",
+      "base": "https://www.hyivs.tn.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.hyivs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_da8172edf58839cf893cf8a2cc3f9161254a57f4",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "hysh",
+      "name": "國立新營高中",
+      "short": "新營高中",
+      "base": "https://www.hysh.tn.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.hysh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_bcdf750b929381400125624ebd0b8b1ba6adbc9e",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "ksis",
+      "name": "臺南市崑山高中",
+      "short": "崑山高中",
+      "base": "https://www.ksis.tn.edu.tw",
+      "unit": "1000",
+      "adapter": "new-classic-cms",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [
+        "https://www.ksis.tn.edu.tw/"
+      ],
+      "list_pages": []
+    },
+    {
+      "id": "nnkieh",
+      "name": "國立南科國際實驗高中",
+      "short": "南科實中",
+      "base": "https://www.nnkieh.tn.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.nnkieh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_024b7dfbc500480e6e9518522e2b5ebefe45862a",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.nnkieh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_c4063c6325d22f4d1efd2abf469f81ac1af6f281",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.nnkieh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_627489b28f0b6ca30dfe31137a497102eb8ad358",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "pmai",
+      "name": "國立北門農工",
+      "short": "北門農工",
+      "base": "https://www.pmai.tn.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.pmai.tn.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "ptivs",
+      "name": "國立成大附屬南工",
+      "short": "成大附工",
+      "base": "https://www.ptivs.tn.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.ptivs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_22749e6d8fb2804243c3bca0c39eeba20118abc9",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.ptivs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_87859c1237809b2453de03fa11fa4ca3aa6e1a69",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.ptivs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_87abf6c84afbbe3e377e8f5241bb6673462c2d38",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "tncvs",
+      "name": "國立臺南高商",
+      "short": "臺南高商",
+      "base": "https://www.tncvs.tn.edu.tw",
+      "adapter": "asp-parser-cms",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.tncvs.tn.edu.tw/latestevent/index.asp?Parser=9,3,15",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.tncvs.tn.edu.tw/latestevent/index.asp?Parser=9,3,16",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.tncvs.tn.edu.tw/latestevent/index.asp?Parser=9,3,17",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "tngs",
+      "name": "國立臺南女中",
+      "short": "臺南女中",
+      "base": "https://www.tngs.tn.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.tngs.tn.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "tnssh",
+      "name": "國立臺南二中",
+      "short": "臺南二中",
+      "base": "https://www.tnssh.tn.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.tnssh.tn.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "tnvs",
+      "name": "國立臺南海事",
+      "short": "臺南海事",
+      "base": "https://www.tnvs.tn.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.tnvs.tn.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "twivs",
+      "name": "國立曾文農工",
+      "short": "曾文農工",
+      "base": "https://www.twivs.tn.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.twivs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_77d06fd7602c8305312825f1b0d57e75d9993138",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.twivs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_cdff891525500c9e98093082bb8104f0bb58bc97",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.twivs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_1c2af46e06d8bddea3c7541d18babcd20afc408d",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "twvs",
+      "name": "國立曾文家商",
+      "short": "曾文家商",
+      "base": "https://www.twvs.tn.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.twvs.tn.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "cmvs",
+      "name": "私立旗美商工",
+      "short": "旗美商工",
+      "base": "https://cm.cmvsedu.tw",
+      "adapter": "xoops-tadnews",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://cm.cmvsedu.tw/modules/tadnews/rss.php",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "dystcs",
+      "name": "私立大榮高中",
+      "short": "大榮高中",
+      "base": "https://www.dystcs.kh.edu.tw",
+      "adapter": "xoops-tadnews",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.dystcs.kh.edu.tw/modules/tadnews/rss.php",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "hkhs",
+      "name": "市立小港高中",
+      "short": "小港高中",
+      "base": "https://www.hkhs.kh.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.hkhs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_104d94228e3ba9feeded6f53e4282a9d52f48834",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.hkhs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_698e7c86ffc1918be74884d34022096f35b11af1",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.hkhs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_9d9f66532ad0f2ce22d347aa86df72b055343efc",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "kghs",
+      "name": "市立高雄女中",
+      "short": "高雄女中",
+      "base": "https://www.kghs.kh.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.kghs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_63e9fe55a54ad008c7a67ebead2d639754da4dd1",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.kghs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_b1fbad0b84c904dee4f4a1cbc1cbb4a722dfe6e7",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.kghs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_ba2d9104ffbcaf7c6df49bf0b4d94dada5dfd12c",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "kmhjh",
+      "name": "國立高餐大附屬餐旅中學",
+      "short": "高餐大附中",
+      "base": "https://nkhhs.kmhjh.kh.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://nkhhs.kmhjh.kh.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "nknush",
+      "name": "國立高師大附中",
+      "short": "高師大附中",
+      "base": "https://www.nknush.kh.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.nknush.kh.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "sgsh",
+      "name": "財團法人新光高中",
+      "short": "新光高中",
+      "base": "https://sg.sgshedu.tw",
+      "adapter": "xoops-tadnews",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://sg.sgshedu.tw/modules/tadnews/rss.php",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "fhsh",
+      "name": "國立鳳新高中",
+      "short": "鳳新高中",
+      "base": "https://www.fhsh.khc.edu.tw",
+      "adapter": "wordpress",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.fhsh.khc.edu.tw/feed/",
+          "tier": "hot"
+        }
+      ]
+    },
+    {
+      "id": "fssh",
+      "name": "國立鳳山高中",
+      "short": "鳳山高中",
+      "base": "https://www.fssh.khc.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.fssh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_0f075596d6cfd282f38872677912f105e9857086",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.fssh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_52f7d9b727b90d372d48a288302b8dc81a5c393d",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.fssh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_92de523419ba7f57265000a06f478212aab74f00",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "fsvs",
+      "name": "國立鳳山商工",
+      "short": "鳳山商工",
+      "base": "https://www.fsvs.khc.edu.tw",
+      "unit": "1003",
+      "adapter": "new-classic-cms",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [
+        "https://www.fsvs.khc.edu.tw/"
+      ],
+      "list_pages": []
+    },
+    {
+      "id": "kssh",
+      "name": "國立岡山高中",
+      "short": "岡山高中",
+      "base": "https://www.kssh.khc.edu.tw",
+      "unit": "1001",
+      "adapter": "new-classic-cms",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [
+        "https://www.kssh.khc.edu.tw/"
+      ],
+      "list_pages": []
+    },
+    {
+      "id": "ksaivs",
+      "name": "國立岡山農工",
+      "short": "岡山農工",
+      "base": "https://www.ksvs.khc.edu.tw",
+      "unit": "1004",
+      "adapter": "new-classic-cms",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [
+        "https://www.ksvs.khc.edu.tw/"
+      ],
+      "list_pages": []
+    },
+    {
+      "id": "hhvs",
+      "name": "國立新化高工",
+      "short": "新化高工",
+      "base": "https://www.hhvs.tn.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.hhvs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_9d81afa8d77764325c47478991b6199181d34b4b",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.hhvs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_cc8a072b14a105ab769dcef82dc7f0870593ae0a",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.hhvs.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_e28444f92c0614741cfe85441459c3332dc15152",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "hpsh",
+      "name": "國立後壁高中",
+      "short": "後壁高中",
+      "base": "https://www.hpsh.tn.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.hpsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_79336d38e7272b924102603db347c1766564d30e",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.hpsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_c6089d98219acfc8abf5051e407a0e6edd3398fe",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "lmsh",
+      "name": "私立黎明高中",
+      "short": "黎明高中",
+      "base": "https://www.lmsh.tn.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.lmsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_3e0dd0133b9f4976b98f128d3b54f53b4b38b6a2",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.lmsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_c7825b9fddc18272d24e339ed4ec60c379350068",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.lmsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_f31c5d76f7e0c85046bb4e61684f7c3214fe0ced",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "sfsh",
+      "name": "國立新豐高中",
+      "short": "新豐高中",
+      "base": "https://www.sfsh.tn.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.sfsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_0a34fb9d4004781d3b88d6d7ae2c8f7437e9d254",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.sfsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_55a1a38188ec3b531596e3f3855aad54ad8232fc",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.sfsh.tn.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_681da983c4777cbf091dd783a839cb0dfbb43abc",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "cchs",
+      "name": "市立中正高中",
+      "short": "中正高中",
+      "base": "https://www.cchs.kh.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.cchs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_51d4629144194b2a89106693504f8c07ce64ff24",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.cchs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_8b4bcd016899e6a9d1e783a8022bedc85c3b7b94",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.cchs.kh.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_d858f68d210b3976cc6ba11477c1b6e273c98d3a",
+          "tier": "cold"
+        }
+      ]
+    },
+    {
+      "id": "chimei",
+      "name": "國立旗美高中",
+      "short": "旗美高中",
+      "base": "https://www.cmsh.khc.edu.tw",
+      "adapter": "ischool-json",
+      "tls_verify_fallback": "bundled-intermediates",
+      "notify_since": "2026-11-02",
+      "fetch_content_max": 5,
+      "scan_pages": [],
+      "list_pages": [
+        {
+          "url": "https://www.cmsh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_2de0863e364fbf3b8b8036a89ef21210361b9a6d",
+          "tier": "hot"
+        },
+        {
+          "url": "https://www.cmsh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_45e39a5ef97f90f262a35f6e62df46df18085f76",
+          "tier": "cold"
+        },
+        {
+          "url": "https://www.cmsh.khc.edu.tw/ischool/widget/site_news/news_query_json.php?uid=WID_0_2_8a7d68a5b64a56c3777238a7b2470c8b167c37f1",
+          "tier": "cold"
+        }
+      ]
     }
   ],
   "max_items": 30000,
