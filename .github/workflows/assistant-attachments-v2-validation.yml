@@ -30,8 +30,19 @@ jobs:
       - name: Install local Traditional Chinese OCR runtime
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-chi-tra fonts-arphic-uming
+          sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-chi-tra tesseract-ocr-chi-tra-vert fonts-arphic-uming
           tesseract --list-langs | grep -Fx chi_tra
+          # Free, more accurate LSTM models (tessdata_best, Apache-2.0). If any download fails the
+          # system models are used, so OCR never depends on this step.
+          mkdir -p "$RUNNER_TEMP/tessdata"
+          for lang in chi_tra chi_tra_vert eng; do
+            curl -fsSL --retry 3 -o "$RUNNER_TEMP/tessdata/$lang.traineddata" "https://github.com/tesseract-ocr/tessdata_best/raw/main/$lang.traineddata" || rm -f "$RUNNER_TEMP/tessdata/$lang.traineddata"
+          done
+          cp /usr/share/tesseract-ocr/*/tessdata/osd.traineddata "$RUNNER_TEMP/tessdata/" 2>/dev/null || true
+          if [ -s "$RUNNER_TEMP/tessdata/chi_tra.traineddata" ] && [ -s "$RUNNER_TEMP/tessdata/chi_tra_vert.traineddata" ] && [ -s "$RUNNER_TEMP/tessdata/eng.traineddata" ]; then
+            echo "OCR_TESSDATA_DIR=$RUNNER_TEMP/tessdata" >> "$GITHUB_ENV"
+            tesseract --tessdata-dir "$RUNNER_TEMP/tessdata" --list-langs
+          fi
 
       - name: Required parser regression
         env:

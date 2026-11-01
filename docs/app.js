@@ -161,6 +161,8 @@
       passwordRecoveryDialog: $("passwordRecoveryDialog"), passwordRecoveryForm: $("passwordRecoveryForm"), passwordRecoveryPassword: $("passwordRecoveryPassword"), passwordRecoveryConfirm: $("passwordRecoveryConfirm"), passwordRecoveryCancel: $("passwordRecoveryCancel"), passwordRecoveryStatus: $("passwordRecoveryStatus"),
       accountDeleteCloud: $("accountDeleteCloud"),
       viewCalendar: $("viewCalendar"), tabCalendar: $("tabCalendar"),
+      viewCross: $("viewCross"), tabCross: $("tabCross"), crossQ: $("crossQ"), crossSchool: $("crossSchool"), crossSort: $("crossSort"),
+      crossMissing: $("crossMissing"), crossList: $("crossList"), crossMore: $("crossMore"), crossCount: $("crossCount"), crossSpeed: $("crossSpeed"),
       calendarTitle: $("calendarTitle"), calendarGrid: $("calendarGrid"), agenda: $("agenda"), agendaTitle: $("agendaTitle"),
       calendarSchoolFilter: $("calendarSchoolFilter"),
       prevMonth: $("prevMonth"), nextMonth: $("nextMonth"), todayCalendar: $("todayCalendar"),
@@ -2011,7 +2013,7 @@
     }
     function detailItem(id) {
       var current = state.data && state.data.items.find(function (row) { return String(row.id) === String(id); });
-      return current || state.assistantItems[String(id)] || null;
+      return current || state.assistantItems[String(id)] || (crossCache.items && crossCache.items[String(id)]) || null;
     }
     function showDetailDialog() {
       if (!el.detailDialog) return;
@@ -2392,7 +2394,7 @@
     /* One answer = a few plain sentences. Sources, quoted evidence and data notes for every
        answer go to one shared 依據與來源 panel under the conversation. */
     function assistantSourceButtons(result) {
-      return (result.sources || []).slice(0, result.mode === "browse" ? 8 : 5).map(function (item) {
+      return (result.sources || []).slice(0, result.cross_school ? 20 : result.mode === "browse" ? 8 : 5).map(function (item) {
         var validityLabel = window.CyNewsAnnouncementValidity && item.validity ? window.CyNewsAnnouncementValidity.label(item.validity) : "";
         var sourceMeta = (item.school_name || "官方公告") + " · " + displayDate(item) + (validityLabel ? " · " + validityLabel : "") + (item.note ? " · " + item.note : "");
         if (item.kind === "service") return '<a class="assistant-source" href="' + esc(/^https:\/\//.test(String(item.url || "")) ? item.url : "#") + '" target="_blank" rel="noopener"><strong>' + esc(item.title) + '</strong><small>' + esc(item.note || "官方系統") + '</small></a>';
@@ -2644,6 +2646,103 @@
       var hello = hour < 5 ? "夜深了" : hour < 11 ? "早安" : hour < 18 ? "午安" : "晚安";
       title.textContent = state.nickname ? hello + "，" + state.nickname : hello + "，想問學校什麼？";
     }
+    /* 跨校比對：用所有學校的公告找出同一項活動，算一次後重用（約 0.3–1 秒）。
+       選了單一學校時 state.data 只有那間學校，所以另外讀全部學校的公告檔。 */
+    var crossCache = { key: "", groups: null, promise: null };
+    function crossSchoolGroups() {
+      var CrossSchool = window.CyNewsCrossSchool, registry = window.CyNewsSchoolRegistry;
+      if (!CrossSchool || !registry) return Promise.resolve([]);
+      var source = state.school === "all" && state.data && Array.isArray(state.data.items) ? Promise.resolve(state.data.items) : fetchJsonItems("data/announcements.json");
+      var key = (state.data && state.data.updated_at || "") + "|" + Object.keys(state.deletedAnnouncements || {}).length;
+      if (crossCache.groups && crossCache.key === key) return Promise.resolve(crossCache.groups);
+      if (crossCache.promise && crossCache.key === key) return crossCache.promise;
+      crossCache.key = key;
+      crossCache.promise = source.then(function (items) {
+        return new Promise(function (resolve) { setTimeout(function () { resolve(items); }, 20); });
+      }).then(function (items) {
+        var visible = items.filter(function (item) { return item && !state.deletedAnnouncements[item.id] && !linkGone(item); });
+        crossCache.items = {};
+        visible.forEach(function (item) { crossCache.items[String(item.id)] = item; });
+        crossCache.groups = CrossSchool.build(visible, { schools: registry.schools(), titleDeadline: window.CyNewsAssistantQA && window.CyNewsAssistantQA.titleDeadline });
+        crossCache.promise = null;
+        return crossCache.groups;
+      }).catch(function () { crossCache.promise = null; return []; });
+      return crossCache.promise;
+    }
+    var crossView = { shown: 30, ready: false };
+    function crossSchoolId() {
+      var v = el.crossSchool ? el.crossSchool.value : "all";
+      return v && v !== "all" && window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(v) ? v : "";
+    }
+    function md(d) { return Number(String(d).slice(5, 7)) + "/" + Number(String(d).slice(8, 10)); }
+    function crossCardHTML(group, schoolId, today) {
+      var n = group.schools.length, first = group.schools[0], last = group.schools[n - 1];
+      var left = group.deadline ? daysFromToday(group.deadline) : null;
+      var due = group.deadline ? '<span class="cross-due' + (left !== null && left >= 0 && left <= 3 ? " is-soon" : left !== null && left < 0 ? " is-past" : "") + '">' +
+        (left < 0 ? md(group.deadline) + " 已截止" : left === 0 ? "今天截止" : md(group.deadline) + " 截止・剩 " + left + " 天") + '</span>' : "";
+      var meta = [group.organizer, group.category].filter(Boolean).map(esc).join(" · ");
+      var mineMissing = schoolId && !group.schools.some(function (s) { return s.school === schoolId; });
+      var mineName = schoolId && window.CyNewsSchoolRegistry.find(schoolId) ? window.CyNewsSchoolRegistry.find(schoolId).short : "";
+      var timeline = group.schools.map(function (s) {
+        return '<li class="' + (s.school === schoolId ? "is-mine" : "") + '"><button type="button" class="cross-stop" data-cross-open="' + esc(s.id) + '">' +
+          '<strong>' + esc(s.school_name) + '</strong><small>' + md(s.date) + (s.lag_days ? "・+" + s.lag_days + " 天" : "・最早") + '</small></button></li>';
+      }).join("");
+      return '<article class="card cross-card">' +
+        '<h3 class="cross-name">' + esc(group.name) + '</h3>' +
+        (meta || due ? '<p class="cross-meta">' + meta + (meta && due ? " " : "") + due + '</p>' : "") +
+        '<p class="cross-sum"><b>' + n + ' 校公告</b>　最早 ' + esc(first.school_name) + ' ' + md(first.date) +
+        (n > 1 ? '，最晚 ' + esc(last.school_name) + ' ' + md(last.date) + (group.spread_days ? '（相差 ' + group.spread_days + ' 天）' : '（同一天）') : '') + '</p>' +
+        (mineMissing ? '<p class="cross-missing-note">' + esc(mineName) + '還沒公告這項；可以點其他學校的公告看內容。</p>' : "") +
+        '<ol class="cross-timeline">' + timeline + '</ol></article>';
+    }
+    function renderCrossSchool() {
+      if (!el.crossList) return;
+      if (!crossView.ready) {
+        crossView.ready = true;
+        var options = '<option value="all">所有學校</option>' + window.CyNewsSchoolRegistry.schools().map(function (school) { return '<option value="' + esc(school.id) + '">' + esc(school.short) + '</option>'; }).join("");
+        el.crossSchool.innerHTML = options;
+        var start = preferredSchoolId() || (state.school !== "all" ? state.school : "all");
+        el.crossSchool.value = window.CyNewsSchoolRegistry.find(start) ? start : "all";
+      }
+      if (!crossCache.groups) el.crossList.innerHTML = '<p class="empty">正在比對各校公告…</p>';
+      crossSchoolGroups().then(function (groups) {
+        var CrossSchool = window.CyNewsCrossSchool, schoolId = crossSchoolId(), today = taipeiToday();
+        var q = String(el.crossQ && el.crossQ.value || "").trim(), qKey = q && CrossSchool ? CrossSchool.normalize(q, []) : "";
+        if (el.crossMissing) { el.crossMissing.disabled = !schoolId; if (!schoolId) el.crossMissing.checked = false; }
+        var list = groups.filter(function (g) {
+          if (qKey && CrossSchool.normalize(g.name + " " + g.organizer + " " + g.schools.map(function (s) { return s.title; }).join(" "), []).indexOf(qKey) === -1) return false;
+          var has = schoolId && g.schools.some(function (s) { return s.school === schoolId; });
+          if (el.crossMissing && el.crossMissing.checked) return !has;
+          return !schoolId || has;
+        });
+        var sort = el.crossSort ? el.crossSort.value : "recent";
+        if (sort === "schools") list.sort(function (a, b) { return b.schools.length - a.schools.length || b.last_date.localeCompare(a.last_date); });
+        else if (sort === "deadline") list.sort(function (a, b) {
+          var da = a.deadline && a.deadline >= today ? a.deadline : "9999", db = b.deadline && b.deadline >= today ? b.deadline : "9999";
+          return da.localeCompare(db) || b.last_date.localeCompare(a.last_date);
+        });
+        if (el.crossCount) el.crossCount.textContent = groups.length ? "共 " + groups.length + " 項活動被 2 間以上學校公告" + (list.length !== groups.length ? "；符合條件 " + list.length + " 項" : "") : "";
+        el.crossList.innerHTML = list.length ? list.slice(0, crossView.shown).map(function (g) { return crossCardHTML(g, schoolId, today); }).join("") :
+          '<p class="empty">' + (groups.length ? "沒有符合條件的活動。" : "目前沒有可比對的公告。") + '</p>';
+        if (el.crossMore) el.crossMore.hidden = list.length <= crossView.shown;
+        if (el.crossSpeed && CrossSchool) {
+          var speed = CrossSchool.schoolSpeed(groups, 8);
+          el.crossSpeed.innerHTML = speed.length ? '<p class="cross-speed-note">只算 8 項以上的學校。「中位數」是比第一間公告的學校晚幾天；「最早」是它第一個公告的次數。</p><ol class="cross-speed-list">' + speed.map(function (row) {
+            return '<li' + (row.school === schoolId ? ' class="is-mine"' : '') + '><strong>' + esc(row.school_name) + '</strong><span>中位數 ' + (row.median_lag ? "晚 " + row.median_lag + " 天" : "當天") + '・最早 ' + row.first_count + '／' + row.groups + ' 項</span></li>';
+          }).join("") + '</ol>' : '<p class="cross-speed-note">資料還不夠。</p>';
+        }
+      });
+    }
+    /* 問校務：「哪些學校有公告 X」「X 各校什麼時候公告」由跨校比對回答。 */
+    function crossSchoolAnswer(question, scope) {
+      var CrossSchool = window.CyNewsCrossSchool;
+      if (!CrossSchool || !CrossSchool.asksAcrossSchools(question)) return Promise.resolve(null);
+      return crossSchoolGroups().then(function (groups) {
+        var group = CrossSchool.find(groups, question);
+        if (!group) return null;
+        return CrossSchool.answer(group, { today: taipeiToday(), schoolId: preferredSchoolId() || (scope && scope.id !== "all" ? scope.id : ""), query: question });
+      });
+    }
     function askAssistant(question) {
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
       question = String(question || "").trim().slice(0, 160);
@@ -2688,6 +2787,15 @@
         options.hour = Number(new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei", hour: "numeric", hour12: false })) % 24;
         options.lastQuestion = previous ? previous.question : "";
         options.doubt = !!followUp.doubt;
+        return crossSchoolAnswer(question, scope).then(function (cross) {
+        if (cross) {
+          el.assistantAnswer = target;
+          renderAssistantAnswer(cross, turnIndex);
+          mascotMood("happy");
+          renderAssistantExamples();
+          if (el.assistantStatus) el.assistantStatus.textContent = "";
+          return cross;
+        }
         /* 「最近有什麼新消息」這類問題直接列公告，不必先做逐句比對 */
         var candidates = (window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question)) || (window.CyNewsAssistantQA.datePlan && window.CyNewsAssistantQA.datePlan(question, new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }))) ? [] : window.CyNewsAssistantQA.rank(question, items, {}, options).slice(0, 8);
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
@@ -2700,6 +2808,7 @@
           renderAssistantExamples();
           if (el.assistantStatus) el.assistantStatus.textContent = "";
           return result;
+        });
         });
       }).catch(function () {
         var result = { status: "insufficient", summary: "目前無法讀取資料，請稍後再試。", evidence: [], sources: [] };
@@ -3257,7 +3366,7 @@
     }
     function switchTab(tab) {
       var capabilities = window.CyNewsCapabilities;
-      var publicOrAccountAllowed = tab === "latest" || tab === "home" || tab === "sub" || tab === "admin";
+      var publicOrAccountAllowed = tab === "latest" || tab === "cross" || tab === "home" || tab === "sub" || tab === "admin";
       if (!publicOrAccountAllowed && capabilities) {
         publicOrAccountAllowed = tab === "assistant" && capabilities.has("assistant") ||
           tab === "timetable" && capabilities.has("timetable") ||
@@ -3266,7 +3375,7 @@
       } else if (!publicOrAccountAllowed) {
         publicOrAccountAllowed = hasSignedInAccount();
       }
-      if (tab !== "latest" && tab !== "admin" && !publicOrAccountAllowed) {
+      if (tab !== "latest" && tab !== "cross" && tab !== "admin" && !publicOrAccountAllowed) {
         tab = "latest";
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能目前未開放。";
       }
@@ -3290,6 +3399,9 @@
       if (document.body && document.body.classList) document.body.classList.toggle("is-chat", assistant);
       if (el.viewTimetable) el.viewTimetable.hidden = !timetable;
       if (el.viewCalendar) el.viewCalendar.hidden = tab !== "calendar";
+      if (el.viewCross) el.viewCross.hidden = tab !== "cross";
+      if (el.tabCross) { el.tabCross.classList.toggle("is-active", tab === "cross"); el.tabCross.setAttribute("aria-current", tab === "cross" ? "page" : "false"); }
+      if (tab === "cross") renderCrossSchool();
       el.viewSub.hidden = tab !== "sub";
       if (el.viewAdmin) el.viewAdmin.hidden = tab !== "admin";
       // 「今天」由首頁進入，分頁列仍標示在首頁。
@@ -3364,6 +3476,14 @@
     try { updatePerch(); } catch (_) {}
     if (typeof document.addEventListener === "function") document.addEventListener("keydown", function (e) { if (e.key === "Escape") setSideMenu(false); });
     el.tabLatest.addEventListener("click", function () { pickTab("latest"); });
+    if (el.tabCross) el.tabCross.addEventListener("click", function () { pickTab("cross"); });
+    [el.crossSchool, el.crossSort, el.crossMissing].forEach(function (node) { if (node) node.addEventListener("change", function () { crossView.shown = 30; renderCrossSchool(); }); });
+    if (el.crossQ) { var crossTyping = null; el.crossQ.addEventListener("input", function () { clearTimeout(crossTyping); crossTyping = setTimeout(function () { crossView.shown = 30; renderCrossSchool(); }, 250); }); }
+    if (el.crossMore) el.crossMore.addEventListener("click", function () { crossView.shown += 30; renderCrossSchool(); });
+    if (el.crossList) el.crossList.addEventListener("click", function (e) {
+      var stop = e.target.closest("[data-cross-open]");
+      if (stop) openDetail(stop.getAttribute("data-cross-open"));
+    });
     if (el.tabToday) el.tabToday.addEventListener("click", function () { pickTab("today"); });
     if (el.tabAssistant) el.tabAssistant.addEventListener("click", function () { pickTab("assistant"); });
     if (el.tabTimetable) el.tabTimetable.addEventListener("click", function () { pickTab("timetable"); });
