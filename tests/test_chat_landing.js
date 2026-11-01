@@ -104,4 +104,11 @@ assert.match(index, /<button id="tabActivities" class="tab">[\s\S]*?活動總覽
 assert.match(index, /<section id="viewActivities" class="activity-view" hidden/);
 assert.match(app, /tab === "latest" \|\| tab === "cross" \|\| tab === "activities"/);
 
+/* 2026-11-01: 問校務 can cover a whole 縣市 (menu or 「台南的學校…」 in the question). */
+assert.match(app, /function scopeMembers\(scopeId\) \{[\s\S]*?String\(scopeId\)\.indexOf\("region:"\) === 0/);
+assert.match(app, /'<optgroup label="整個縣市">'/);
+assert.match(app, /var AREA_IN_QUESTION = \/\(臺南\|台南\|高雄\|雲林\|嘉義市\|嘉義縣\)/);
+assert.match(app, /var wide = scopeId === "all" \|\| isRegionScope\(scopeId\);/, "a 縣市 reads the all-school files, then keeps its schools");
+assert.ok(!"高雄醫學大學招生".match(/(臺南|台南|高雄|雲林|嘉義市|嘉義縣)(?:市|縣)?(?:的|地區|區)?(?:學校|高中|高職|各校|每間)/), "a university name is not a 縣市 scope");
+
 console.log("Chat landing and layout contract passed");
