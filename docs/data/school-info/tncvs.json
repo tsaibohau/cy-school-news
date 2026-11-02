@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tncvs",
- "generated_at": "2026-11-02T19:13:02+08:00",
+ "generated_at": "2026-11-03T04:52:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179102805842520": {
@@ -145,8 +145,54 @@
    "page_id": 221469417634061,
    "url": "https://www.tncvs.tn.edu.tw/form/index.asp?Parser=2,5,242,34,241",
    "label": "輔導處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:08+08:00",
+   "path": [
+    "輔導處"
+   ],
+   "changed_at": "2026-11-03T04:52:08+08:00",
+   "content_hash": "7c1c59d2b72a5737635f4b02a0b040faecf8f3aada75f6456faf0502407272a8",
+   "doc_links": [],
+   "keywords": [
+    "選擇",
+    "電話",
+    "新生",
+    "選填",
+    "入學",
+    "安全",
+    "手機",
+    "競賽",
+    "住宿",
+    "學習歷程",
+    "傳真",
+    "升學",
+    "嘉獎",
+    "宣導",
+    "就學貸款",
+    "校長",
+    "測驗",
+    "社團",
+    "科系",
+    "聯絡電話",
+    "衛生",
+    "講座",
+    "醫療"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tncvs/tncvs-info-221469417634061.json",
+   "detail_revision": "3436a78a63ba0712c8eb098a23076f4da6fe0e44db10a7edeff5f802fd3eb636",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "115新生輔導資料輸入指引.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/115新生輔導資料輸入指引.pdf"
+    },
+    {
+     "name": "115舊生輔導資料輸入指引(1).pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/115舊生輔導資料輸入指引(1).pdf"
+    }
+   ]
   },
   "190742239534012": {
    "page_id": 190742239534012,
@@ -3232,6 +3278,59 @@
    "detail_ref": "data/details/tncvs/tncvs-info-126956744512565.json",
    "detail_revision": "281fff8520d8f5545cb7e8241d8419a5592fd9a061749365cc87ca19cfe8fdb6",
    "detail_status": "parsed"
+  },
+  {
+   "id": "tncvs-info-221469417634061",
+   "kind": "school_info",
+   "title": "輔導處",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/form/index.asp?Parser=2,5,242,34,241",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "115新生輔導資料輸入指引.pdf",
+    "115舊生輔導資料輸入指引(1).pdf"
+   ],
+   "keywords": [
+    "選擇",
+    "電話",
+    "新生",
+    "選填",
+    "入學",
+    "安全",
+    "手機",
+    "競賽",
+    "住宿",
+    "學習歷程",
+    "傳真",
+    "升學",
+    "嘉獎",
+    "宣導",
+    "就學貸款",
+    "校長",
+    "測驗",
+    "社團",
+    "科系",
+    "聯絡電話",
+    "衛生",
+    "講座",
+    "醫療"
+   ],
+   "documents": [
+    {
+     "name": "115新生輔導資料輸入指引.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/115新生輔導資料輸入指引.pdf"
+    },
+    {
+     "name": "115舊生輔導資料輸入指引(1).pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/115舊生輔導資料輸入指引(1).pdf"
+    }
+   ],
+   "detail_ref": "data/details/tncvs/tncvs-info-221469417634061.json",
+   "detail_revision": "3436a78a63ba0712c8eb098a23076f4da6fe0e44db10a7edeff5f802fd3eb636",
+   "detail_status": "parsed"
   }
  ],
  "roots": [
@@ -3542,5 +3641,5 @@
   "fd93751649",
   "fdbcaf30e1"
  ],
- "last_run_at": "2026-11-02T19:13:02+08:00"
+ "last_run_at": "2026-11-03T04:52:14+08:00"
 }

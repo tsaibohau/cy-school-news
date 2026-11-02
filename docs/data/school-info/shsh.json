@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-02T19:15:34+08:00",
+ "generated_at": "2026-11-03T04:54:54+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -728,22 +728,72 @@
    "page_id": 197137405121860,
    "url": "https://www.shsh.ylc.edu.tw/privacy/%e8%91%97%e4%bd%9c%e6%ac%8a%e8%81%b2%e6%98%8e/",
    "label": "著作權聲明",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:54:48+08:00",
+   "path": [
+    "網站政策",
+    "著作權聲明"
+   ],
+   "changed_at": "2026-11-03T04:54:48+08:00",
+   "content_hash": "b7e0c8b99f063153b04e6a81587fff036c33f8bcc46e4d638574a715ce6c8e5e",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-197137405121860.json",
+   "detail_revision": "f21d5fd6fa7cd33afe880f0a0d04416adb4559b8e30db27ca0c602e0229b3dd2",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "239097242878199": {
    "page_id": 239097242878199,
    "url": "https://www.shsh.ylc.edu.tw/privacy/%e9%9a%b1%e7%a7%81%e6%ac%8a%e6%94%bf%e7%ad%96/",
    "label": "隱私權政策",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:54:50+08:00",
+   "path": [
+    "網站政策",
+    "隱私權政策"
+   ],
+   "changed_at": "2026-11-03T04:54:50+08:00",
+   "content_hash": "c6a1fdc609d22ade407e318b75036c4e6fa9c7987ca0a695bdc4735b8783887a",
+   "doc_links": [],
+   "keywords": [
+    "安全"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-239097242878199.json",
+   "detail_revision": "bb1bd51a5cc55cf72d51230acb716a226104a4894a03e68db835657796cd7b4d",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "231180721614861": {
    "page_id": 231180721614861,
    "url": "https://www.shsh.ylc.edu.tw/about/分機一覽表/",
    "label": "( 分機一覽表 )",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:54:52+08:00",
+   "path": [
+    "( 分機一覽表 )"
+   ],
+   "changed_at": "2026-11-03T04:54:52+08:00",
+   "content_hash": "2593b62996e2972f41df78df38d5b7f0b24bab13c47fc1c7b0ff298b6414bcd3",
+   "doc_links": [],
+   "keywords": [
+    "宿舍",
+    "圖書館",
+    "校長",
+    "分機",
+    "學生宿舍",
+    "衛生"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-231180721614861.json",
+   "detail_revision": "aeae575e95f276f26732535be00aa0bae3670ff0287a1efd14048631bf647f4c",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "9395079066839": {
    "page_id": 9395079066839,
@@ -3479,6 +3529,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "shsh-info-197137405121860",
+   "kind": "school_info",
+   "title": "網站政策 › 著作權聲明",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/privacy/%e8%91%97%e4%bd%9c%e6%ac%8a%e8%81%b2%e6%98%8e/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-197137405121860.json",
+   "detail_revision": "f21d5fd6fa7cd33afe880f0a0d04416adb4559b8e30db27ca0c602e0229b3dd2",
+   "detail_status": "parsed"
+  },
+  {
    "id": "shsh-info-213849054956230",
    "kind": "school_info",
    "title": "交通資訊",
@@ -3495,6 +3562,49 @@
    "documents": [],
    "detail_ref": "data/details/shsh/shsh-info-213849054956230.json",
    "detail_revision": "1e1736b810eb3e6b5c90907102c5a19f70400c787d5e0489a3f1f94a0d8d1221",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "shsh-info-231180721614861",
+   "kind": "school_info",
+   "title": "( 分機一覽表 )",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/about/分機一覽表/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "宿舍",
+    "圖書館",
+    "校長",
+    "分機",
+    "學生宿舍",
+    "衛生"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-231180721614861.json",
+   "detail_revision": "aeae575e95f276f26732535be00aa0bae3670ff0287a1efd14048631bf647f4c",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "shsh-info-239097242878199",
+   "kind": "school_info",
+   "title": "網站政策 › 隱私權政策",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/privacy/%e9%9a%b1%e7%a7%81%e6%ac%8a%e6%94%bf%e7%ad%96/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "安全"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-239097242878199.json",
+   "detail_revision": "bb1bd51a5cc55cf72d51230acb716a226104a4894a03e68db835657796cd7b4d",
    "detail_status": "parsed"
   },
   {
@@ -4137,5 +4247,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-02T19:15:34+08:00"
+ "last_run_at": "2026-11-03T04:54:54+08:00"
 }

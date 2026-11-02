@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-02T19:13:18+08:00",
+ "generated_at": "2026-11-03T04:52:31+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -258,15 +258,50 @@
    "page_id": 25469034902519,
    "url": "https://www.tnvs.tn.edu.tw/teaching-unit/business/",
    "label": "商業經營科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:27+08:00",
+   "path": [
+    "商業經營科"
+   ],
+   "changed_at": "2026-11-03T04:52:27+08:00",
+   "content_hash": "30f1428be3d3dd5fc49f0560d481ff40e4d12eb7eeddf4a898f7a9d3ffdc7f4e",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "特殊選才",
+    "繁星",
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-25469034902519.json",
+   "detail_revision": "325e99a6c71451e5d04647f076ab931c13e4db28dd1aa0303cc9344e3eafac74",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "83678224443892": {
    "page_id": 83678224443892,
    "url": "https://www.tnvs.tn.edu.tw/teaching-unit/e-commence/",
    "label": "電子商務科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:29+08:00",
+   "path": [
+    "電子商務科"
+   ],
+   "changed_at": "2026-11-03T04:52:29+08:00",
+   "content_hash": "4fb9cfba30773f350ba0779df7c3f69af90fa465016b1d6c609f629884231119",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-83678224443892.json",
+   "detail_revision": "fcef101465039a9cccbe5f4f31d85a1f41ff3db2a8561670fab348009ba6dd32",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "218930160176923": {
    "page_id": 218930160176923,
@@ -786,6 +821,138 @@
     "水產養殖科"
    ],
    "order": 69
+  },
+  "211248787502586": {
+   "page_id": 211248787502586,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/business/%e6%9c%ac%e7%a7%91%e7%b0%a1%e4%bb%8b/",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "商業經營科"
+   ],
+   "order": 70
+  },
+  "123702024166680": {
+   "page_id": 123702024166680,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/business/business-teacher",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "商業經營科"
+   ],
+   "order": 71
+  },
+  "51994994399746": {
+   "page_id": 51994994399746,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/business/business-class",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "商業經營科"
+   ],
+   "order": 72
+  },
+  "199636788228659": {
+   "page_id": 199636788228659,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/business/business-equ",
+   "label": "教學設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "商業經營科"
+   ],
+   "order": 73
+  },
+  "236530246120161": {
+   "page_id": 236530246120161,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/business/business-school",
+   "label": "升學資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "商業經營科"
+   ],
+   "order": 74
+  },
+  "218653593301075": {
+   "page_id": 218653593301075,
+   "url": "https://www.tnvs.tn.edu.tw/%e6%95%99%e5%ad%b8%e8%b3%87%e6%ba%90/",
+   "label": "教學資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "商業經營科"
+   ],
+   "order": 75
+  },
+  "97517782591136": {
+   "page_id": 97517782591136,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/e-commence/e-commence-intro",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子商務科"
+   ],
+   "order": 76
+  },
+  "44158499919455": {
+   "page_id": 44158499919455,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/e-commence/e-commence-teacher",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子商務科"
+   ],
+   "order": 77
+  },
+  "174466572232613": {
+   "page_id": 174466572232613,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/e-commence/e-commence-class",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子商務科"
+   ],
+   "order": 78
+  },
+  "140841435582596": {
+   "page_id": 140841435582596,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/e-commence/e-commence-equ",
+   "label": "教學設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子商務科"
+   ],
+   "order": 79
+  },
+  "244490177292535": {
+   "page_id": 244490177292535,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/e-commence/e-commence-school",
+   "label": "升學資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子商務科"
+   ],
+   "order": 80
+  },
+  "167100066149725": {
+   "page_id": 167100066149725,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/e-commence/e-commence-teach",
+   "label": "教學資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子商務科"
+   ],
+   "order": 81
   }
  },
  "handbook": {},
@@ -852,6 +1019,29 @@
    "detail_status": "parsed"
   },
   {
+   "id": "tnvs-info-25469034902519",
+   "kind": "school_info",
+   "title": "商業經營科",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/business/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "特殊選才",
+    "繁星",
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-25469034902519.json",
+   "detail_revision": "325e99a6c71451e5d04647f076ab931c13e4db28dd1aa0303cc9344e3eafac74",
+   "detail_status": "parsed"
+  },
+  {
    "id": "tnvs-info-51902306409415",
    "kind": "school_info",
    "title": "南水簡介",
@@ -874,6 +1064,26 @@
    "documents": [],
    "detail_ref": "data/details/tnvs/tnvs-info-51902306409415.json",
    "detail_revision": "6cbd35c640830879f694627309c4a9ea041e7eda98fb2ce1b333247bad3b8043",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-83678224443892",
+   "kind": "school_info",
+   "title": "電子商務科",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/e-commence/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-83678224443892.json",
+   "detail_revision": "fcef101465039a9cccbe5f4f31d85a1f41ff3db2a8561670fab348009ba6dd32",
    "detail_status": "parsed"
   },
   {
@@ -1371,5 +1581,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-02T19:13:18+08:00"
+ "last_run_at": "2026-11-03T04:52:31+08:00"
 }

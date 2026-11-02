@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nsjh",
- "generated_at": "2026-11-02T19:16:05+08:00",
+ "generated_at": "2026-11-03T04:55:21+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179628626610013": {
@@ -183,15 +183,25 @@
    "page_id": 59586058359648,
    "url": "https://nsjh.ylc.edu.tw/cp.aspx?n=99432",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:55:17+08:00",
+   "path": [
+    "行政單位",
+    "校長室"
+   ]
   },
   "149112139425592": {
    "page_id": 149112139425592,
    "url": "https://nsjh.ylc.edu.tw/cp.aspx?n=99435",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:55:19+08:00",
+   "path": [
+    "行政單位",
+    "教務處"
+   ]
   },
   "164028356615654": {
    "page_id": 164028356615654,
@@ -1103,5 +1113,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-02T19:16:05+08:00"
+ "last_run_at": "2026-11-03T04:55:21+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-02T19:14:03+08:00",
+ "generated_at": "2026-11-03T04:53:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -322,22 +322,65 @@
    "page_id": 64530537523419,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-248.php",
    "label": "家長會",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:53:09+08:00",
+   "path": [
+    "學校簡介",
+    "協力團體",
+    "家長會"
+   ],
+   "changed_at": "2026-11-03T04:53:09+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-64530537523419.json",
+   "detail_revision": "7a3b3a8435902e43d93bb989756ed61d6f80aee8081db5864d2dd59f0b7b0cb0",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "112967414483477": {
    "page_id": 112967414483477,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-629.php",
    "label": "文教基金會",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:53:11+08:00",
+   "path": [
+    "學校簡介",
+    "協力團體",
+    "文教基金會"
+   ],
+   "changed_at": "2026-11-03T04:53:11+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-112967414483477.json",
+   "detail_revision": "d91189469dd8b67c8a608c474082df97b828f10e223ab87764c6c388b4328004",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "276800107259709": {
    "page_id": 276800107259709,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-550.php",
    "label": "員生社",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:53:12+08:00",
+   "path": [
+    "員生社"
+   ],
+   "changed_at": "2026-11-03T04:53:12+08:00",
+   "content_hash": "dfecf064d97bfeb0bd9bdf0c9618d46d540e88ea32d4d24f00c97af35db3a4ee",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-276800107259709.json",
+   "detail_revision": "fbe3c0343f5814048266ec832b23fc6b10213472850499dbcf68d2dd64fabf61",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "37759074565994": {
    "page_id": 37759074565994,
@@ -765,6 +808,160 @@
     "校務資料開放專區"
    ],
    "order": 50
+  },
+  "114132324506201": {
+   "page_id": 114132324506201,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-86.php",
+   "label": "學校簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "家長會"
+   ],
+   "order": 51
+  },
+  "73545669410792": {
+   "page_id": 73545669410792,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-159.php",
+   "label": "協力團體",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "家長會"
+   ],
+   "order": 52
+  },
+  "181505037922759": {
+   "page_id": 181505037922759,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-753.php",
+   "label": "歷任會長",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "家長會"
+   ],
+   "order": 53
+  },
+  "214033180655279": {
+   "page_id": 214033180655279,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-754.php",
+   "label": "組織章程",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "家長會"
+   ],
+   "order": 54
+  },
+  "234016845245949": {
+   "page_id": 234016845245949,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-755.php",
+   "label": "會務報告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "家長會"
+   ],
+   "order": 55
+  },
+  "152768543008936": {
+   "page_id": 152768543008936,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-756.php",
+   "label": "家長會收支結算表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "家長會"
+   ],
+   "order": 56
+  },
+  "209761808438991": {
+   "page_id": 209761808438991,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-757.php",
+   "label": "活動花絮",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "家長會"
+   ],
+   "order": 57
+  },
+  "235482854373561": {
+   "page_id": 235482854373561,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-228.php",
+   "label": "技術服務組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "文教基金會"
+   ],
+   "order": 58
+  },
+  "1964838388116": {
+   "page_id": 1964838388116,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-640.php",
+   "label": "岡山高中文教基金會捐助章程",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "文教基金會"
+   ],
+   "order": 59
+  },
+  "95292673708038": {
+   "page_id": 95292673708038,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-630.php",
+   "label": "董事名冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "文教基金會"
+   ],
+   "order": 60
+  },
+  "9827401930768": {
+   "page_id": 9827401930768,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5594.php",
+   "label": "高一新生入學獎學金",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "協力團體",
+    "文教基金會"
+   ],
+   "order": 61
+  },
+  "230885373089015": {
+   "page_id": 230885373089015,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-552.php",
+   "label": "有限責任 國立岡山高級中學員工（生）消費合作社章程",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "員生社"
+   ],
+   "order": 62
+  },
+  "161839849072080": {
+   "page_id": 161839849072080,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-553.php",
+   "label": "108年合作社股長代表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "員生社"
+   ],
+   "order": 63
   }
  },
  "handbook": {},
@@ -788,6 +985,23 @@
    "documents": [],
    "detail_ref": "data/details/kssh/kssh-info-28783346175483.json",
    "detail_revision": "d8378161069b95b6ff24b69c1d9da31bdc89165a3b90815b46b5bf7928446a62",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-64530537523419",
+   "kind": "school_info",
+   "title": "學校簡介 › 協力團體 › 家長會",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-248.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-64530537523419.json",
+   "detail_revision": "7a3b3a8435902e43d93bb989756ed61d6f80aee8081db5864d2dd59f0b7b0cb0",
    "detail_status": "parsed"
   },
   {
@@ -835,6 +1049,23 @@
    "documents": [],
    "detail_ref": "data/details/kssh/kssh-info-79814434365433.json",
    "detail_revision": "356da7be101cfb90f58b69acb61f76fa7a389b5c54584760b6e4e4300993217c",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-112967414483477",
+   "kind": "school_info",
+   "title": "學校簡介 › 協力團體 › 文教基金會",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-629.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-112967414483477.json",
+   "detail_revision": "d91189469dd8b67c8a608c474082df97b828f10e223ab87764c6c388b4328004",
    "detail_status": "parsed"
   },
   {
@@ -1054,6 +1285,23 @@
    "detail_ref": "data/details/kssh/kssh-info-265744219737499.json",
    "detail_revision": "d7133c57eec7cceeed8391ff3cf0b2c718d359f5827c0762a244c9a5338db15d",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-276800107259709",
+   "kind": "school_info",
+   "title": "員生社",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-550.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-276800107259709.json",
+   "detail_revision": "fbe3c0343f5814048266ec832b23fc6b10213472850499dbcf68d2dd64fabf61",
+   "detail_status": "parsed"
   }
  ],
  "roots": [
@@ -1218,5 +1466,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-02T19:14:03+08:00"
+ "last_run_at": "2026-11-03T04:53:14+08:00"
 }

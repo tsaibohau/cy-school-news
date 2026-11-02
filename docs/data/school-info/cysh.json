@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-02T19:14:27+08:00",
+ "generated_at": "2026-11-03T04:53:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5327,7 +5327,22 @@
   },
   "707": {
    "page_id": 707,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T04:53:35+08:00",
+   "path": [
+    "協同單位",
+    "家長會",
+    "服務團隊"
+   ],
+   "changed_at": "2026-11-03T04:53:35+08:00",
+   "content_hash": "fd19d0c186e3aa48eaa4124a615fcd7e47602e88f3aeedc79a5db866df7e3a04",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-707.json",
+   "detail_revision": "205575229f09136d3a2e7940f37a6ce98638e7f97bd525655ded1d65a5ece77f",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "620": {
    "page_id": 620,
@@ -5825,7 +5840,22 @@
   },
   "696": {
    "page_id": 696,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T04:53:33+08:00",
+   "path": [
+    "協同單位",
+    "員生社",
+    "服務項目"
+   ],
+   "changed_at": "2026-11-03T04:53:33+08:00",
+   "content_hash": "fa9022b92976f6bbaf7a0bb0fc33eec8b81ed6ce0fe7d292bd3603f1e0f386b7",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-696.json",
+   "detail_revision": "7e5b70d062d4c249872f26066345000cccf79b64f6e8340d82b8711b51f5174c",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1262": {
    "page_id": 1262,
@@ -6193,7 +6223,23 @@
   },
   "660": {
    "page_id": 660,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T04:53:31+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "科學班",
+    "服務項目"
+   ],
+   "changed_at": "2026-11-03T04:53:31+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-660.json",
+   "detail_revision": "0e54c1aeed2f8e390f3d0ef33bb53d7d8a47d62a0691ad182ae4f3c1ccc41ab0",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1354": {
    "page_id": 1354,
@@ -6504,6 +6550,26 @@
   },
   "1130": {
    "page_id": 1130,
+   "status": "pending"
+  },
+  "890": {
+   "page_id": 890,
+   "status": "pending"
+  },
+  "891": {
+   "page_id": 891,
+   "status": "pending"
+  },
+  "893": {
+   "page_id": 893,
+   "status": "pending"
+  },
+  "894": {
+   "page_id": 894,
+   "status": "pending"
+  },
+  "990": {
+   "page_id": 990,
    "status": "pending"
   }
  },
@@ -10529,6 +10595,23 @@
    "detail_status": "empty"
   },
   {
+   "id": "cysh-info-660",
+   "kind": "school_info",
+   "title": "教務處 › 科學班 › 服務項目",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-660.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-660.json",
+   "detail_revision": "0e54c1aeed2f8e390f3d0ef33bb53d7d8a47d62a0691ad182ae4f3c1ccc41ab0",
+   "detail_status": "empty"
+  },
+  {
    "id": "cysh-info-661",
    "kind": "school_info",
    "title": "科學班 › 科學班介紹 › 科學班計畫",
@@ -10652,6 +10735,40 @@
    "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-678.json",
    "detail_revision": "f7f96357d909e237fc2e6eb97d5dd2bebf0bb569459de25d275082a1209e0743",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-696",
+   "kind": "school_info",
+   "title": "協同單位 › 員生社 › 服務項目",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-696.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-696.json",
+   "detail_revision": "7e5b70d062d4c249872f26066345000cccf79b64f6e8340d82b8711b51f5174c",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-707",
+   "kind": "school_info",
+   "title": "協同單位 › 家長會 › 服務團隊",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-707.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-707.json",
+   "detail_revision": "205575229f09136d3a2e7940f37a6ce98638e7f97bd525655ded1d65a5ece77f",
    "detail_status": "parsed"
   },
   {
@@ -15122,5 +15239,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-02T19:14:27+08:00"
+ "last_run_at": "2026-11-03T04:53:37+08:00"
 }

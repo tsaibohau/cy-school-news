@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-02T19:16:24+08:00",
+ "generated_at": "2026-11-03T04:55:38+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -418,8 +418,21 @@
    "page_id": 184660922987067,
    "url": "https://www.hnvs.cy.edu.tw/sub_content/index.asp?Parser=22,6,218,211",
    "label": "科別介紹",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:55:37+08:00",
+   "path": [
+    "科別介紹"
+   ],
+   "changed_at": "2026-11-03T04:55:37+08:00",
+   "content_hash": "197ad4d965710838e791d0218bf07d85a379ef3d9a0be58450e18a6f4c0a2b4c",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-184660922987067.json",
+   "detail_revision": "c7610fcd8e0cf14ceb8797e66582b5151bf25e87c6cb63ede554d3737dca22d4",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "215922252962857": {
    "page_id": 215922252962857,
@@ -3697,6 +3710,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-184660922987067",
+   "kind": "school_info",
+   "title": "科別介紹",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/sub_content/index.asp?Parser=22,6,218,211",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-184660922987067.json",
+   "detail_revision": "c7610fcd8e0cf14ceb8797e66582b5151bf25e87c6cb63ede554d3737dca22d4",
+   "detail_status": "parsed"
+  },
+  {
    "id": "hnvs-info-196188571931543",
    "kind": "school_info",
    "title": "交通路線",
@@ -4102,5 +4132,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-02T19:16:24+08:00"
+ "last_run_at": "2026-11-03T04:55:38+08:00"
 }

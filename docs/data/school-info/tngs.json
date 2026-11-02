@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-02T19:13:08+08:00",
+ "generated_at": "2026-11-03T04:52:20+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -171,22 +171,37 @@
    "page_id": 124373960943286,
    "url": "https://www.tngs.tn.edu.tw/teaching/math/",
    "label": "數學科",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:15+08:00",
+   "path": [
+    "教學單位",
+    "數學科"
+   ]
   },
   "278795484713548": {
    "page_id": 278795484713548,
    "url": "https://www.tngs.tn.edu.tw/teaching/science/",
    "label": "自然科",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:17+08:00",
+   "path": [
+    "教學單位",
+    "自然科"
+   ]
   },
   "66138393822736": {
    "page_id": 66138393822736,
    "url": "https://www.tngs.tn.edu.tw/teaching/society/",
    "label": "社會科",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:18+08:00",
+   "path": [
+    "教學單位",
+    "社會科"
+   ]
   },
   "215244021095423": {
    "page_id": 215244021095423,
@@ -1027,6 +1042,78 @@
     "英文科"
    ],
    "order": 96
+  },
+  "271299723592852": {
+   "page_id": 271299723592852,
+   "url": "https://www.tngs.tn.edu.tw/teaching/math/staff/",
+   "label": "授課教師",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "數學科"
+   ],
+   "order": 97
+  },
+  "46215494238751": {
+   "page_id": 46215494238751,
+   "url": "https://www.tngs.tn.edu.tw/teaching/math/resource/",
+   "label": "學習資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "數學科"
+   ],
+   "order": 98
+  },
+  "234341837235031": {
+   "page_id": 234341837235031,
+   "url": "https://www.tngs.tn.edu.tw/teaching/science/staff/",
+   "label": "授課教師",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "自然科"
+   ],
+   "order": 99
+  },
+  "177917399922643": {
+   "page_id": 177917399922643,
+   "url": "https://www.tngs.tn.edu.tw/teaching/science/resource/",
+   "label": "學習資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "自然科"
+   ],
+   "order": 100
+  },
+  "117870259251818": {
+   "page_id": 117870259251818,
+   "url": "https://www.tngs.tn.edu.tw/teaching/society/staff/",
+   "label": "授課教師",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "社會科"
+   ],
+   "order": 101
+  },
+  "161192496616510": {
+   "page_id": 161192496616510,
+   "url": "https://www.tngs.tn.edu.tw/teaching/society/resource/",
+   "label": "學習資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "社會科"
+   ],
+   "order": 102
   }
  },
  "handbook": {},
@@ -1358,5 +1445,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-02T19:13:08+08:00"
+ "last_run_at": "2026-11-03T04:52:20+08:00"
 }

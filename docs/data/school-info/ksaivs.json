@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-02T19:14:08+08:00",
+ "generated_at": "2026-11-03T04:53:20+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -311,22 +311,56 @@
    "page_id": 271630506844261,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-771.php",
    "label": "電子科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:53:15+08:00",
+   "path": [
+    "教學單位",
+    "電子科"
+   ],
+   "changed_at": "2026-11-03T04:53:15+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-271630506844261.json",
+   "detail_revision": "c7bd9492d9ceaccf9a044a4b13becae8e586b5618e3ce5ace5e9b6458bdf2e70",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "95234546257200": {
    "page_id": 95234546257200,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-174.php",
    "label": "電機科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:53:16+08:00",
+   "path": [
+    "教學單位",
+    "電機科"
+   ],
+   "changed_at": "2026-11-03T04:53:16+08:00",
+   "content_hash": "a3a9bf009f97e36cda594cfaf899895864f31c8d593159d63933105dd8c6e335",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-95234546257200.json",
+   "detail_revision": "ead5f2cf86c2e621bd15d0966dea4a177b5a6c4306eb8a5d0385006358293bad",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "73592797441805": {
    "page_id": 73592797441805,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1167.php",
    "label": "建築科",
-   "status": "pending",
-   "depth": 0
+   "status": "announcement_list",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:53:18+08:00",
+   "path": [
+    "教學單位",
+    "建築科",
+    "公告訊息"
+   ]
   },
   "77275746710141": {
    "page_id": 77275746710141,
@@ -1663,6 +1697,438 @@
     "汽車科"
    ],
    "order": 136
+  },
+  "267749831409913": {
+   "page_id": 267749831409913,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-772.php",
+   "label": "最新訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電子科"
+   ],
+   "order": 137
+  },
+  "238183262860248": {
+   "page_id": 238183262860248,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-773.php",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電子科"
+   ],
+   "order": 138
+  },
+  "12444527688110": {
+   "page_id": 12444527688110,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-824.php",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電子科"
+   ],
+   "order": 139
+  },
+  "132446090671822": {
+   "page_id": 132446090671822,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-822.php",
+   "label": "課程地圖",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電子科"
+   ],
+   "order": 140
+  },
+  "179930342736243": {
+   "page_id": 179930342736243,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-790.php",
+   "label": "師資成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電子科"
+   ],
+   "order": 141
+  },
+  "157800543820526": {
+   "page_id": 157800543820526,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-778.php",
+   "label": "設備環境",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電子科"
+   ],
+   "order": 142
+  },
+  "66484772628972": {
+   "page_id": 66484772628972,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-783.php",
+   "label": "線上不停學平台",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電子科"
+   ],
+   "order": 143
+  },
+  "245553967269185": {
+   "page_id": 245553967269185,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-884.php",
+   "label": "業界參觀",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電子科"
+   ],
+   "order": 144
+  },
+  "36374049468561": {
+   "page_id": 36374049468561,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-885.php",
+   "label": "競賽相片",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電子科"
+   ],
+   "order": 145
+  },
+  "114786291260337": {
+   "page_id": 114786291260337,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-905.php",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 146
+  },
+  "22875134116962": {
+   "page_id": 22875134116962,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-896.php",
+   "label": "課程地圖",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 147
+  },
+  "43556336991354": {
+   "page_id": 43556336991354,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-897.php",
+   "label": "學分數表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 148
+  },
+  "28241180402372": {
+   "page_id": 28241180402372,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-899.php",
+   "label": "部定課程教學大綱",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 149
+  },
+  "247863494335133": {
+   "page_id": 247863494335133,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1057.php",
+   "label": "校定課程教學大綱",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 150
+  },
+  "117534407799457": {
+   "page_id": 117534407799457,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-793.php",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 151
+  },
+  "79907405116699": {
+   "page_id": 79907405116699,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-907.php",
+   "label": "工業配線實習工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 152
+  },
+  "105883663778054": {
+   "page_id": 105883663778054,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-908.php",
+   "label": "室內配線實習工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 153
+  },
+  "108451547941546": {
+   "page_id": 108451547941546,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-912.php",
+   "label": "電子學實習工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 154
+  },
+  "181404572530036": {
+   "page_id": 181404572530036,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-910.php",
+   "label": "微處理實習工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 155
+  },
+  "56833743504244": {
+   "page_id": 56833743504244,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-909.php",
+   "label": "可程式控制實習工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 156
+  },
+  "255486094718373": {
+   "page_id": 255486094718373,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-911.php",
+   "label": "電工機械實習工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 157
+  },
+  "45057874324211": {
+   "page_id": 45057874324211,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-913.php",
+   "label": "選手培訓室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 158
+  },
+  "230187171145925": {
+   "page_id": 230187171145925,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-892.php",
+   "label": "技藝(能)競賽",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 159
+  },
+  "237633117180632": {
+   "page_id": 237633117180632,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1048.php",
+   "label": "科展與專題",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 160
+  },
+  "262267578091226": {
+   "page_id": 262267578091226,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-743.php",
+   "label": "升學管道",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 161
+  },
+  "214777956011876": {
+   "page_id": 214777956011876,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-746.php",
+   "label": "相關網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 162
+  },
+  "118583335684345": {
+   "page_id": 118583335684345,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-887.php",
+   "label": "電機科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 163
+  },
+  "25597674960154": {
+   "page_id": 25597674960154,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-735.php",
+   "label": "教育目標",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 164
+  },
+  "158713926324812": {
+   "page_id": 158713926324812,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1055.php",
+   "label": "學生生涯發展",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 165
+  },
+  "150472397244391": {
+   "page_id": 150472397244391,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1054.php",
+   "label": "專業能力",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 166
+  },
+  "150367927178913": {
+   "page_id": 150367927178913,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-738.php",
+   "label": "未來展望",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "電機科"
+   ],
+   "order": 167
+  },
+  "259235924944776": {
+   "page_id": 259235924944776,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-246.php",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "建築科",
+    "公告訊息"
+   ],
+   "order": 168
+  },
+  "194983144133383": {
+   "page_id": 194983144133383,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-237.php",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "建築科",
+    "公告訊息"
+   ],
+   "order": 169
+  },
+  "44840942874994": {
+   "page_id": 44840942874994,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-243.php",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "建築科",
+    "公告訊息"
+   ],
+   "order": 170
+  },
+  "226871972379402": {
+   "page_id": 226871972379402,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-423.php",
+   "label": "土木與建築群 影片介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "建築科",
+    "公告訊息"
+   ],
+   "order": 171
+  },
+  "57091920000012": {
+   "page_id": 57091920000012,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1351.php",
+   "label": "獎助學金訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "建築科",
+    "公告訊息"
+   ],
+   "order": 172
   }
  },
  "handbook": {},
@@ -1736,6 +2202,23 @@
    "documents": [],
    "detail_ref": "data/details/ksaivs/ksaivs-info-45729182690021.json",
    "detail_revision": "67632bc5d9eb63a7b4fc4da21c91162ed231ece7f46861394072b2c3308ad03f",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-95234546257200",
+   "kind": "school_info",
+   "title": "教學單位 › 電機科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-174.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-95234546257200.json",
+   "detail_revision": "ead5f2cf86c2e621bd15d0966dea4a177b5a6c4306eb8a5d0385006358293bad",
    "detail_status": "parsed"
   },
   {
@@ -1919,6 +2402,23 @@
    "documents": [],
    "detail_ref": "data/details/ksaivs/ksaivs-info-259547869481600.json",
    "detail_revision": "0294ba8535fa21a28b49ccfa63b9a5f9e49e77400f0c3432aab063df4128a1f5",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-271630506844261",
+   "kind": "school_info",
+   "title": "教學單位 › 電子科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-771.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-271630506844261.json",
+   "detail_revision": "c7bd9492d9ceaccf9a044a4b13becae8e586b5618e3ce5ace5e9b6458bdf2e70",
    "detail_status": "parsed"
   }
  ],
@@ -2154,5 +2654,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-02T19:14:08+08:00"
+ "last_run_at": "2026-11-03T04:53:20+08:00"
 }

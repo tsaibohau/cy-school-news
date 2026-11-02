@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-02T19:14:52+08:00",
+ "generated_at": "2026-11-03T04:54:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1592": {
@@ -2682,7 +2682,23 @@
   },
   "1854": {
    "page_id": 1854,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T04:53:37+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "學務處好站連結",
+    "ｏ生輔組好站連結用"
+   ],
+   "changed_at": "2026-11-03T04:53:37+08:00",
+   "content_hash": "44bc0921797bc624177a01f0813d549fe39ba665042a7ab20f069599ca0ccb52",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1854.json",
+   "detail_revision": "96cb87cbed362b66d19fdabcb73a1348681c2dcf1f3f26205d5ea831f9d419e9",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "2996": {
    "page_id": 2996,
@@ -2869,7 +2885,43 @@
   },
   "1996": {
    "page_id": 1996,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T04:53:39+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "防疫專區"
+   ],
+   "changed_at": "2026-11-03T04:53:39+08:00",
+   "content_hash": "9e89ec78335b1a6453136be690bd304f95910c0996d5ca16489c9e02aa9c0440",
+   "doc_links": [],
+   "keywords": [
+    "作息",
+    "新生",
+    "衛生",
+    "3C",
+    "午睡",
+    "專線",
+    "手機"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/cygsh/cygsh-info-1996.json",
+   "detail_revision": "98b209db5c35ba70fa11b366790e5eb3297fb44697b988742ff3b1b3e88df5bd",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "防疫生活文宣-六月誌",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/859914854.pdf"
+    },
+    {
+     "name": "防疫生活文宣-七月誌",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/162905526.pdf"
+    },
+    {
+     "name": "防疫生活文宣-八月誌",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/641886577.pdf"
+    }
+   ]
   },
   "1779": {
    "page_id": 1779,
@@ -3439,6 +3491,10 @@
    "detail_revision": "d03ae791ca751affd6ccd21134506615b778dba2fbd67bf70e51d4cae9059af4",
    "detail_status": "parsed",
    "attachments": []
+  },
+  "1985": {
+   "page_id": 1985,
+   "status": "pending"
   }
  },
  "handbook": {},
@@ -3936,9 +3992,235 @@
      "detail_status": "parsed"
     },
     "chars": 777
+   },
+   "https://drive.google.com/uc?export=download&id=19PDNMrVOQ2us7vqUfHF_R_okTi94z9rm": {
+    "name": "校外競賽績優獎勵要點",
+    "url": "https://drive.google.com/file/d/19PDNMrVOQ2us7vqUfHF_R_okTi94z9rm/view?usp=sharing",
+    "page": "行政單位 › 學務處 › 生活輔導組 › 學生獎懲",
+    "checked_at": "2026-11-03T04:53:48+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-63d0ade217",
+     "kind": "school_handbook",
+     "title": "學生規定 › 校外競賽績優獎勵要點",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/19PDNMrVOQ2us7vqUfHF_R_okTi94z9rm/view?usp=sharing",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 生活輔導組 › 學生獎懲",
+     "keywords": [
+      "嘉獎",
+      "小功",
+      "比賽",
+      "競賽",
+      "校長",
+      "獎懲",
+      "大功"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-63d0ade217.json",
+     "detail_revision": "f5d4b239cea78696538e30d78cec3445ce7f96b90ceb3214d46665dd8568a807",
+     "detail_status": "parsed"
+    },
+    "chars": 868
+   },
+   "https://drive.google.com/uc?export=download&id=1KVWN1l5vtru0B5B-kqVbtKf950eY0WNx": {
+    "name": "校園安全管理實施計畫—緊急應變計畫",
+    "url": "https://drive.google.com/file/d/1KVWN1l5vtru0B5B-kqVbtKf950eY0WNx/view?usp=sharing",
+    "page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+    "checked_at": "2026-11-03T04:53:48+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-149ca4dece",
+     "kind": "school_handbook",
+     "title": "學生規定 › 校園安全管理實施計畫—緊急應變計畫",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/1KVWN1l5vtru0B5B-kqVbtKf950eY0WNx/view?usp=sharing",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+     "keywords": [
+      "安全",
+      "災害",
+      "宿舍",
+      "校長",
+      "衛生",
+      "醫療",
+      "電話",
+      "學生宿舍",
+      "宣導",
+      "請假",
+      "防災",
+      "颱風"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-149ca4dece.json",
+     "detail_revision": "db36887f99cfdaea4474a5b52328b25f349534ddac9a4494061bf12ac00e00c5",
+     "detail_status": "parsed"
+    },
+    "chars": 2757
+   },
+   "https://drive.google.com/uc?export=download&id=1s7UKs8QwjRBcs9FoAnxoR3Ai_WZseNVz": {
+    "name": "校園防火防震演習實施計畫",
+    "url": "https://drive.google.com/file/d/1s7UKs8QwjRBcs9FoAnxoR3Ai_WZseNVz/view?usp=drive_link",
+    "page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+    "checked_at": "2026-11-03T04:53:48+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-336c1b23fe",
+     "kind": "school_handbook",
+     "title": "學生規定 › 校園防火防震演習實施計畫",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/1s7UKs8QwjRBcs9FoAnxoR3Ai_WZseNVz/view?usp=drive_link",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+     "keywords": [
+      "升旗",
+      "安全",
+      "災害",
+      "宣導",
+      "衛生"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-336c1b23fe.json",
+     "detail_revision": "89eff604be831fcef901b8bfd329a840228623e1bee96f9ed4b70fbaee8a90a5",
+     "detail_status": "parsed"
+    },
+    "chars": 1551
+   },
+   "https://drive.google.com/uc?export=download&id=17g2oVjmL9tH5KnMHAGQ9bPyPHsG8C5cF": {
+    "name": "校園災害管理實施計畫",
+    "url": "https://drive.google.com/file/d/17g2oVjmL9tH5KnMHAGQ9bPyPHsG8C5cF/view?usp=sharing",
+    "page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+    "checked_at": "2026-11-03T04:53:48+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-f65bd5434d",
+     "kind": "school_handbook",
+     "title": "學生規定 › 校園災害管理實施計畫",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/17g2oVjmL9tH5KnMHAGQ9bPyPHsG8C5cF/view?usp=sharing",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+     "keywords": [
+      "災害",
+      "安全",
+      "宣導",
+      "防災",
+      "衛生",
+      "校長",
+      "申請",
+      "醫療",
+      "電話",
+      "地址",
+      "霸凌",
+      "颱風",
+      "放學",
+      "比賽",
+      "停課",
+      "傳真",
+      "圖書館",
+      "公車",
+      "宿舍",
+      "手機",
+      "新生",
+      "演講",
+      "研習",
+      "競賽",
+      "課業輔導",
+      "課輔"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-f65bd5434d.json",
+     "detail_revision": "62f866a6581c8df7bdd6a39ca33985dfa5a6baa6d01d88b777fe20b859105ece",
+     "detail_status": "parsed"
+    },
+    "chars": 19522
+   },
+   "https://drive.google.com/uc?export=download&id=1Zud7YhCVzmMf5ZOqlDk73MfV7mHGnnh3": {
+    "name": "校園安全檢查規定",
+    "url": "https://drive.google.com/file/d/1Zud7YhCVzmMf5ZOqlDk73MfV7mHGnnh3/view?usp=sharing",
+    "page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+    "checked_at": "2026-11-03T04:53:48+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-a0233840ed",
+     "kind": "school_handbook",
+     "title": "學生規定 › 校園安全檢查規定",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/1Zud7YhCVzmMf5ZOqlDk73MfV7mHGnnh3/view?usp=sharing",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+     "keywords": [
+      "安全",
+      "申請",
+      "宣導",
+      "校長",
+      "申訴",
+      "繳交",
+      "上傳",
+      "作息",
+      "圖書館",
+      "放學",
+      "登記",
+      "聯絡電話",
+      "電話"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-a0233840ed.json",
+     "detail_revision": "74f50c82fc02575d1d1c73042ec040e99333aeda1cf67a8923d2637b77724ec3",
+     "detail_status": "parsed"
+    },
+    "chars": 6220
+   },
+   "https://drive.google.com/uc?export=download&id=1kDsicHMT88YDkzaVDxlmf61FKpEL58fc": {
+    "name": "班聯會組織章程",
+    "url": "https://drive.google.com/file/d/1kDsicHMT88YDkzaVDxlmf61FKpEL58fc/view?usp=sharing",
+    "page": "行政單位 › 學務處 › 班聯會",
+    "checked_at": "2026-11-03T04:53:48+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-495410af52",
+     "kind": "school_handbook",
+     "title": "學生規定 › 班聯會組織章程",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/1kDsicHMT88YDkzaVDxlmf61FKpEL58fc/view?usp=sharing",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 班聯會",
+     "keywords": [
+      "班聯會",
+      "收費",
+      "繳費",
+      "記過",
+      "及格",
+      "學業成績",
+      "申訴",
+      "補考",
+      "代辦費",
+      "公假",
+      "學生證",
+      "徵稿",
+      "服裝",
+      "獎懲",
+      "登記",
+      "講座",
+      "轉學",
+      "霸凌",
+      "面試"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-495410af52.json",
+     "detail_revision": "337fa0a40870175983b775a0914edeba51c5c9f8e73aaa1f232bd1c41ac088ed",
+     "detail_status": "parsed"
+    },
+    "chars": 10608
    }
   },
-  "checked_at": "2026-11-02T19:14:33+08:00",
+  "checked_at": "2026-11-03T04:53:48+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -4335,6 +4617,184 @@
     ],
     "detail_ref": "data/details/cygsh/cygsh-rule-2d75e7fbc3.json",
     "detail_revision": "7ad0039c5012b29284a33f3e58e012b645742e2f842ce4a6554310351c716157",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-63d0ade217",
+    "kind": "school_handbook",
+    "title": "學生規定 › 校外競賽績優獎勵要點",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/19PDNMrVOQ2us7vqUfHF_R_okTi94z9rm/view?usp=sharing",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 生活輔導組 › 學生獎懲",
+    "keywords": [
+     "嘉獎",
+     "小功",
+     "比賽",
+     "競賽",
+     "校長",
+     "獎懲",
+     "大功"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-63d0ade217.json",
+    "detail_revision": "f5d4b239cea78696538e30d78cec3445ce7f96b90ceb3214d46665dd8568a807",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-149ca4dece",
+    "kind": "school_handbook",
+    "title": "學生規定 › 校園安全管理實施計畫—緊急應變計畫",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/1KVWN1l5vtru0B5B-kqVbtKf950eY0WNx/view?usp=sharing",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+    "keywords": [
+     "安全",
+     "災害",
+     "宿舍",
+     "校長",
+     "衛生",
+     "醫療",
+     "電話",
+     "學生宿舍",
+     "宣導",
+     "請假",
+     "防災",
+     "颱風"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-149ca4dece.json",
+    "detail_revision": "db36887f99cfdaea4474a5b52328b25f349534ddac9a4494061bf12ac00e00c5",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-336c1b23fe",
+    "kind": "school_handbook",
+    "title": "學生規定 › 校園防火防震演習實施計畫",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/1s7UKs8QwjRBcs9FoAnxoR3Ai_WZseNVz/view?usp=drive_link",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+    "keywords": [
+     "升旗",
+     "安全",
+     "災害",
+     "宣導",
+     "衛生"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-336c1b23fe.json",
+    "detail_revision": "89eff604be831fcef901b8bfd329a840228623e1bee96f9ed4b70fbaee8a90a5",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-f65bd5434d",
+    "kind": "school_handbook",
+    "title": "學生規定 › 校園災害管理實施計畫",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/17g2oVjmL9tH5KnMHAGQ9bPyPHsG8C5cF/view?usp=sharing",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+    "keywords": [
+     "災害",
+     "安全",
+     "宣導",
+     "防災",
+     "衛生",
+     "校長",
+     "申請",
+     "醫療",
+     "電話",
+     "地址",
+     "霸凌",
+     "颱風",
+     "放學",
+     "比賽",
+     "停課",
+     "傳真",
+     "圖書館",
+     "公車",
+     "宿舍",
+     "手機",
+     "新生",
+     "演講",
+     "研習",
+     "競賽",
+     "課業輔導",
+     "課輔"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-f65bd5434d.json",
+    "detail_revision": "62f866a6581c8df7bdd6a39ca33985dfa5a6baa6d01d88b777fe20b859105ece",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-a0233840ed",
+    "kind": "school_handbook",
+    "title": "學生規定 › 校園安全檢查規定",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/1Zud7YhCVzmMf5ZOqlDk73MfV7mHGnnh3/view?usp=sharing",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+    "keywords": [
+     "安全",
+     "申請",
+     "宣導",
+     "校長",
+     "申訴",
+     "繳交",
+     "上傳",
+     "作息",
+     "圖書館",
+     "放學",
+     "登記",
+     "聯絡電話",
+     "電話"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-a0233840ed.json",
+    "detail_revision": "74f50c82fc02575d1d1c73042ec040e99333aeda1cf67a8923d2637b77724ec3",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-495410af52",
+    "kind": "school_handbook",
+    "title": "學生規定 › 班聯會組織章程",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/1kDsicHMT88YDkzaVDxlmf61FKpEL58fc/view?usp=sharing",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 班聯會",
+    "keywords": [
+     "班聯會",
+     "收費",
+     "繳費",
+     "記過",
+     "及格",
+     "學業成績",
+     "申訴",
+     "補考",
+     "代辦費",
+     "公假",
+     "學生證",
+     "徵稿",
+     "服裝",
+     "獎懲",
+     "登記",
+     "講座",
+     "轉學",
+     "霸凌",
+     "面試"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-495410af52.json",
+    "detail_revision": "337fa0a40870175983b775a0914edeba51c5c9f8e73aaa1f232bd1c41ac088ed",
     "detail_status": "parsed"
    }
   ]
@@ -5805,6 +6265,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cygsh-info-1854",
+   "kind": "school_info",
+   "title": "學務處 › 學務處好站連結 › ｏ生輔組好站連結用",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1854.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1854.json",
+   "detail_revision": "96cb87cbed362b66d19fdabcb73a1348681c2dcf1f3f26205d5ea831f9d419e9",
+   "detail_status": "parsed"
+  },
+  {
    "id": "cygsh-info-1865",
    "kind": "school_info",
    "title": "學校夥伴 › 家長會 › 109學年家長委員會",
@@ -5826,6 +6303,48 @@
    ],
    "detail_ref": "data/details/cygsh/cygsh-info-1865.json",
    "detail_revision": "fd5320af00cfa234b443f3ec7e6169ffc9e729390f5ba4f64bb308f4b2e1c7a6",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1996",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導室 › 防疫專區",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1996.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "防疫生活文宣-六月誌",
+    "防疫生活文宣-七月誌",
+    "防疫生活文宣-八月誌"
+   ],
+   "keywords": [
+    "作息",
+    "新生",
+    "衛生",
+    "3C",
+    "午睡",
+    "專線",
+    "手機"
+   ],
+   "documents": [
+    {
+     "name": "防疫生活文宣-六月誌",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/859914854.pdf"
+    },
+    {
+     "name": "防疫生活文宣-七月誌",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/162905526.pdf"
+    },
+    {
+     "name": "防疫生活文宣-八月誌",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/641886577.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-1996.json",
+   "detail_revision": "98b209db5c35ba70fa11b366790e5eb3297fb44697b988742ff3b1b3e88df5bd",
    "detail_status": "parsed"
   },
   {
@@ -7634,6 +8153,184 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cygsh-rule-63d0ade217",
+   "kind": "school_handbook",
+   "title": "學生規定 › 校外競賽績優獎勵要點",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/19PDNMrVOQ2us7vqUfHF_R_okTi94z9rm/view?usp=sharing",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 生活輔導組 › 學生獎懲",
+   "keywords": [
+    "嘉獎",
+    "小功",
+    "比賽",
+    "競賽",
+    "校長",
+    "獎懲",
+    "大功"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-63d0ade217.json",
+   "detail_revision": "f5d4b239cea78696538e30d78cec3445ce7f96b90ceb3214d46665dd8568a807",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-rule-149ca4dece",
+   "kind": "school_handbook",
+   "title": "學生規定 › 校園安全管理實施計畫—緊急應變計畫",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/1KVWN1l5vtru0B5B-kqVbtKf950eY0WNx/view?usp=sharing",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+   "keywords": [
+    "安全",
+    "災害",
+    "宿舍",
+    "校長",
+    "衛生",
+    "醫療",
+    "電話",
+    "學生宿舍",
+    "宣導",
+    "請假",
+    "防災",
+    "颱風"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-149ca4dece.json",
+   "detail_revision": "db36887f99cfdaea4474a5b52328b25f349534ddac9a4494061bf12ac00e00c5",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-rule-336c1b23fe",
+   "kind": "school_handbook",
+   "title": "學生規定 › 校園防火防震演習實施計畫",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/1s7UKs8QwjRBcs9FoAnxoR3Ai_WZseNVz/view?usp=drive_link",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+   "keywords": [
+    "升旗",
+    "安全",
+    "災害",
+    "宣導",
+    "衛生"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-336c1b23fe.json",
+   "detail_revision": "89eff604be831fcef901b8bfd329a840228623e1bee96f9ed4b70fbaee8a90a5",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-rule-f65bd5434d",
+   "kind": "school_handbook",
+   "title": "學生規定 › 校園災害管理實施計畫",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/17g2oVjmL9tH5KnMHAGQ9bPyPHsG8C5cF/view?usp=sharing",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+   "keywords": [
+    "災害",
+    "安全",
+    "宣導",
+    "防災",
+    "衛生",
+    "校長",
+    "申請",
+    "醫療",
+    "電話",
+    "地址",
+    "霸凌",
+    "颱風",
+    "放學",
+    "比賽",
+    "停課",
+    "傳真",
+    "圖書館",
+    "公車",
+    "宿舍",
+    "手機",
+    "新生",
+    "演講",
+    "研習",
+    "競賽",
+    "課業輔導",
+    "課輔"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-f65bd5434d.json",
+   "detail_revision": "62f866a6581c8df7bdd6a39ca33985dfa5a6baa6d01d88b777fe20b859105ece",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-rule-a0233840ed",
+   "kind": "school_handbook",
+   "title": "學生規定 › 校園安全檢查規定",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/1Zud7YhCVzmMf5ZOqlDk73MfV7mHGnnh3/view?usp=sharing",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 生活輔導組 › 校園安全與災害防制",
+   "keywords": [
+    "安全",
+    "申請",
+    "宣導",
+    "校長",
+    "申訴",
+    "繳交",
+    "上傳",
+    "作息",
+    "圖書館",
+    "放學",
+    "登記",
+    "聯絡電話",
+    "電話"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-a0233840ed.json",
+   "detail_revision": "74f50c82fc02575d1d1c73042ec040e99333aeda1cf67a8923d2637b77724ec3",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-rule-495410af52",
+   "kind": "school_handbook",
+   "title": "學生規定 › 班聯會組織章程",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/1kDsicHMT88YDkzaVDxlmf61FKpEL58fc/view?usp=sharing",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 班聯會",
+   "keywords": [
+    "班聯會",
+    "收費",
+    "繳費",
+    "記過",
+    "及格",
+    "學業成績",
+    "申訴",
+    "補考",
+    "代辦費",
+    "公假",
+    "學生證",
+    "徵稿",
+    "服裝",
+    "獎懲",
+    "登記",
+    "講座",
+    "轉學",
+    "霸凌",
+    "面試"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-495410af52.json",
+   "detail_revision": "337fa0a40870175983b775a0914edeba51c5c9f8e73aaa1f232bd1c41ac088ed",
+   "detail_status": "parsed"
+  },
+  {
    "id": "cygsh-service-library-cygsh-cy-edu-tw",
    "kind": "school_service",
    "title": "網路服務 › 圖書館館藏查詢",
@@ -7695,5 +8392,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-02T19:14:52+08:00"
+ "last_run_at": "2026-11-03T04:54:09+08:00"
 }

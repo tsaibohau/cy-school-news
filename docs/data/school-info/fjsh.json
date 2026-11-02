@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-02T19:14:57+08:00",
+ "generated_at": "2026-11-03T04:54:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "495": {
@@ -1047,11 +1047,65 @@
   },
   "484": {
    "page_id": 484,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T04:54:10+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組",
+    "課業輔導&寒暑假輔導"
+   ],
+   "changed_at": "2026-11-03T04:54:10+08:00",
+   "content_hash": "1c8861336316ed1dcef2021207eadf3ad02de0da2ef1b82d036169c3a73c5562",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "課業輔導",
+    "寒假輔導",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-484.json",
+   "detail_revision": "cc7f85397d46d1eccd767bdcd547d08505a62214eefdf6e584cdcf4ed810cc46",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "486": {
    "page_id": 486,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T04:54:12+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組",
+    "行事曆"
+   ],
+   "changed_at": "2026-11-03T04:54:12+08:00",
+   "content_hash": "a14d790408319045510f156b0fc91d42fff58d990eb1bc4ac95fa994649cfd2f",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-486.json",
+   "detail_revision": "420022feaf70a6520162145e83eb2e79bf706c47de4d57b47310d06e3c68ac1e",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "487": {
    "page_id": 487,
@@ -1817,6 +1871,66 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fjsh-info-484",
+   "kind": "school_info",
+   "title": "教務處 › 教學組 › 課業輔導&寒暑假輔導",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-484.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "課業輔導",
+    "寒假輔導",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-484.json",
+   "detail_revision": "cc7f85397d46d1eccd767bdcd547d08505a62214eefdf6e584cdcf4ed810cc46",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-486",
+   "kind": "school_info",
+   "title": "教務處 › 教學組 › 行事曆",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-486.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-486.json",
+   "detail_revision": "420022feaf70a6520162145e83eb2e79bf706c47de4d57b47310d06e3c68ac1e",
+   "detail_status": "parsed"
+  },
+  {
    "id": "fjsh-info-495",
    "kind": "school_info",
    "title": "教務處 › 註冊組 › 招生資訊",
@@ -1945,5 +2059,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-02T19:14:57+08:00"
+ "last_run_at": "2026-11-03T04:54:14+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-02T19:13:30+08:00",
+ "generated_at": "2026-11-03T04:52:43+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -162,22 +162,34 @@
    "page_id": 97526521392821,
    "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=4",
    "label": "課程計畫",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:38+08:00",
+   "path": [
+    "課程計畫"
+   ]
   },
   "33706683017437": {
    "page_id": 33706683017437,
    "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=62",
    "label": "課業輔導實施正常化檢核表",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:40+08:00",
+   "path": [
+    "課業輔導實施正常化檢核表"
+   ]
   },
   "245614732806161": {
    "page_id": 245614732806161,
    "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=17",
    "label": "學生學習歷程檔案製作",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:42+08:00",
+   "path": [
+    "學生學習歷程檔案製作"
+   ]
   },
   "200125362093305": {
    "page_id": 200125362093305,
@@ -966,6 +978,116 @@
     "本校行事曆"
    ],
    "order": 87
+  },
+  "256254233350987": {
+   "page_id": 256254233350987,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=icon&of_cat_sn=4",
+   "label": "",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程計畫"
+   ],
+   "order": 88
+  },
+  "2934976573651": {
+   "page_id": 2934976573651,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=more&of_cat_sn=4",
+   "label": "",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程計畫"
+   ],
+   "order": 89
+  },
+  "267814316281872": {
+   "page_id": 267814316281872,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=14&cat_sn=4&name=114課程發展委員會組織成員.docx",
+   "label": "旗美商工課程發展委員會組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程計畫"
+   ],
+   "order": 90
+  },
+  "156509330044236": {
+   "page_id": 156509330044236,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=71&cat_sn=4&name=108_profile.pdf",
+   "label": "教育部高級中等學校學生學習歷程檔案建置說明",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程計畫"
+   ],
+   "order": 91
+  },
+  "16712370445702": {
+   "page_id": 16712370445702,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=73&cat_sn=4&name=courseflow.pdf",
+   "label": "選課流程圖",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程計畫"
+   ],
+   "order": 92
+  },
+  "42593708541710": {
+   "page_id": 42593708541710,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=133&cat_sn=4&name=",
+   "label": "109學年度服務群學生選課輔導手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課程計畫"
+   ],
+   "order": 93
+  },
+  "42127331456660": {
+   "page_id": 42127331456660,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=icon&of_cat_sn=62",
+   "label": "",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課業輔導實施正常化檢核表"
+   ],
+   "order": 94
+  },
+  "109556350510466": {
+   "page_id": 109556350510466,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=more&of_cat_sn=62",
+   "label": "",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "課業輔導實施正常化檢核表"
+   ],
+   "order": 95
+  },
+  "152772372314008": {
+   "page_id": 152772372314008,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=icon&of_cat_sn=17",
+   "label": "",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學生學習歷程檔案製作"
+   ],
+   "order": 96
+  },
+  "122599764737693": {
+   "page_id": 122599764737693,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=more&of_cat_sn=17",
+   "label": "",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學生學習歷程檔案製作"
+   ],
+   "order": 97
   }
  },
  "handbook": {},
@@ -1282,5 +1404,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-02T19:13:30+08:00"
+ "last_run_at": "2026-11-03T04:52:43+08:00"
 }

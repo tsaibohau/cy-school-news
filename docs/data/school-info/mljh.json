@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mljh",
- "generated_at": "2026-11-02T19:15:59+08:00",
+ "generated_at": "2026-11-03T04:55:16+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31793209037602": {
@@ -174,15 +174,25 @@
    "page_id": 90239466938402,
    "url": "https://mljh.ylc.edu.tw/library.htm",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:55:11+08:00",
+   "path": [
+    "行政處室",
+    "圖書館"
+   ]
   },
   "60496546768125": {
    "page_id": 60496546768125,
    "url": "https://mljh.ylc.edu.tw/cp.aspx?n=100888",
    "label": "會計室",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:55:14+08:00",
+   "path": [
+    "行政處室",
+    "會計室"
+   ]
   },
   "16948606147618": {
    "page_id": 16948606147618,
@@ -561,5 +571,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-02T19:15:59+08:00"
+ "last_run_at": "2026-11-03T04:55:16+08:00"
 }

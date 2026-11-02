@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-02T19:15:02+08:00",
+ "generated_at": "2026-11-03T04:54:19+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "98": {
@@ -779,11 +779,29 @@
   },
   "101": {
    "page_id": 101,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-03T04:54:15+08:00",
+   "path": [
+    "教師專區"
+   ]
   },
   "103": {
    "page_id": 103,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T04:54:17+08:00",
+   "path": [],
+   "changed_at": "2026-11-03T04:54:17+08:00",
+   "content_hash": "351db77dfe6c39704dc0781cc77f5f623b02d2dba61057b17d94273bc5fa6bd2",
+   "doc_links": [],
+   "keywords": [
+    "傳真",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-103.json",
+   "detail_revision": "f956fbdac15a408c4268cdd015c72d1074178cbbe4fcab08e81bc411a32f8ffc",
+   "detail_status": "parsed",
+   "attachments": []
   }
  },
  "handbook": {},
@@ -1010,6 +1028,26 @@
    "documents": [],
    "detail_ref": "data/details/ccjh/ccjh-info-100.json",
    "detail_revision": "768ecf74a9fce73cd8cce3455afbd00ce8e899fab69b15e49a36d47757efb3fc",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-103",
+   "kind": "school_info",
+   "title": "",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-103.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "傳真",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-103.json",
+   "detail_revision": "f956fbdac15a408c4268cdd015c72d1074178cbbe4fcab08e81bc411a32f8ffc",
    "detail_status": "parsed"
   },
   {
@@ -1419,5 +1457,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-02T19:15:02+08:00"
+ "last_run_at": "2026-11-03T04:54:19+08:00"
 }

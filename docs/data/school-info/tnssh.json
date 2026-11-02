@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-02T19:13:13+08:00",
+ "generated_at": "2026-11-03T04:52:26+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -129,15 +129,23 @@
    "page_id": 80189433408740,
    "url": "https://www.tnssh.tn.edu.tw/aa/cur/",
    "label": "教學組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:22+08:00",
+   "path": [
+    "教學組"
+   ]
   },
   "113631922762025": {
    "page_id": 113631922762025,
    "url": "https://www.tnssh.tn.edu.tw/aa/reg/",
    "label": "註冊組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:24+08:00",
+   "path": [
+    "註冊組"
+   ]
   },
   "263399573889860": {
    "page_id": 263399573889860,
@@ -591,6 +599,17 @@
     "教務處"
    ],
    "order": 63
+  },
+  "29213270849862": {
+   "page_id": 29213270849862,
+   "url": "https://www.tnssh.tn.edu.tw/aa/cur/curdoc/",
+   "label": "表格下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學組"
+   ],
+   "order": 64
   }
  },
  "handbook": {},
@@ -877,5 +896,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-02T19:13:13+08:00"
+ "last_run_at": "2026-11-03T04:52:26+08:00"
 }

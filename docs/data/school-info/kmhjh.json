@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-02T19:13:35+08:00",
+ "generated_at": "2026-11-03T04:52:50+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -150,22 +150,36 @@
    "page_id": 72206835063382,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/counseling/",
    "label": "輔導處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:44+08:00",
+   "path": [
+    "行政組織",
+    "輔導處"
+   ]
   },
   "173606653648099": {
    "page_id": 173606653648099,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:46+08:00",
+   "path": [
+    "行政組織",
+    "圖書館"
+   ]
   },
   "210313307791268": {
    "page_id": 210313307791268,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/admin-system/",
    "label": "行政系統",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T04:52:48+08:00",
+   "path": [
+    "行政系統"
+   ]
   },
   "253431137398655": {
    "page_id": 253431137398655,
@@ -800,6 +814,186 @@
     "總務處"
    ],
    "order": 78
+  },
+  "51526507420190": {
+   "page_id": 51526507420190,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/counseling/1/",
+   "label": "最新公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "輔導處"
+   ],
+   "order": 79
+  },
+  "280647872501894": {
+   "page_id": 280647872501894,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/counseling/2/",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "輔導處"
+   ],
+   "order": 80
+  },
+  "119168117893234": {
+   "page_id": 119168117893234,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/nkhhs.kmhjh.kh.edu.tw/administration/counseling/3/",
+   "label": "法令規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "輔導處"
+   ],
+   "order": 81
+  },
+  "147665220503144": {
+   "page_id": 147665220503144,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/counseling/4/",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "輔導處"
+   ],
+   "order": 82
+  },
+  "95851188851746": {
+   "page_id": 95851188851746,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/counseling/5/",
+   "label": "相關業務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "輔導處"
+   ],
+   "order": 83
+  },
+  "201431064274008": {
+   "page_id": 201431064274008,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/counseling/6/",
+   "label": "學生申訴",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "輔導處"
+   ],
+   "order": 84
+  },
+  "102222699748314": {
+   "page_id": 102222699748314,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/1/",
+   "label": "最新公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 85
+  },
+  "189986065063074": {
+   "page_id": 189986065063074,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/2/",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 86
+  },
+  "97137272807793": {
+   "page_id": 97137272807793,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/3/",
+   "label": "介紹圖書館",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 87
+  },
+  "90146347444837": {
+   "page_id": 90146347444837,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/4/",
+   "label": "圖書館典藏",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 88
+  },
+  "259677975195666": {
+   "page_id": 259677975195666,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/5/",
+   "label": "閱讀活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 89
+  },
+  "252615684862183": {
+   "page_id": 252615684862183,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/6/",
+   "label": "自主學習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 90
+  },
+  "75809937476237": {
+   "page_id": 75809937476237,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/7/",
+   "label": "活動花絮",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 91
+  },
+  "144406642290100": {
+   "page_id": 144406642290100,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/8/",
+   "label": "法令規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 92
+  },
+  "164362652015063": {
+   "page_id": 164362652015063,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/library/9/",
+   "label": "網路資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 93
   }
  },
  "handbook": {},
@@ -1053,5 +1247,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-02T19:13:35+08:00"
+ "last_run_at": "2026-11-03T04:52:50+08:00"
 }
