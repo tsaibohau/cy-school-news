@@ -307,10 +307,10 @@
   }
   var TITLE_TIME = /時間表|時程|日期|期程|試程|考程|行事曆|時間/;
   var TITLE_METHOD = /注意事項|須知|流程|辦法|方式|說明|步驟|重要事項|要點/;
-  var NARROW_AUDIENCE = /無學籍|自學生|教師|教職員|職員|代理代課|校長/;
+  var NARROW_AUDIENCE = /無學籍|自學生|教師|教職員|職員|代理代課|校長|教學工作坊|賦能教學/;
   var CAMPUS_LIFE = /畢業旅行|畢旅|校外教學|社會組|自然組|校慶|運動會|園遊會|畢業典禮|畢典|圖書館|社團|選組|類組|段考|期中考|期末考|課輔|晚自習|自修室|請假|學生證|制服|校服|校車|午餐|開學|放假|上課|班會|週會|朝會/;
   var ASKS_OUTSIDE = /大學|科大|基金會|協會|校外|全國|縣|市立|國家|公共/;
-  var OUTSIDE_TITLE = /^\s*[【\[]?\s*轉知|^\s*轉發|大學|科技大學|基金會|協會|社團法人|國家圖書館|國立臺灣圖書館|國立台灣圖書館|公共資訊圖書館|公共圖書館|e化|教育部|國教署|私立[\u4e00-\u9fff]{1,8}(?:高級中學|高中|中學)|[市縣]立[\u4e00-\u9fff]{1,8}(?:高級中學|高中|中學|國中)/;
+  var OUTSIDE_TITLE = /^\s*[【\[]?\s*轉知|^\s*轉發|大學|科技大學|基金會|協會|社團法人|國家圖書館|國立臺灣圖書館|國立台灣圖書館|公共資訊圖書館|公共圖書館|e化|(?:高級中等學校|高級中學)辦理|教育部|國教署|私立[\u4e00-\u9fff]{1,8}(?:高級中學|高中|中學)|[市縣]立[\u4e00-\u9fff]{1,8}(?:高級中學|高中|中學|國中)/;
   var TITLE_RESULT = /名單|結果|得獎|獲獎|榮獲|錄取|榜單|決審|賀[!！：:]|狂賀|恭喜/;
   var TITLE_INFO = /活動資訊|報名資訊|相關資訊|簡章|表件|實施計畫|時間表|時程/;
   var ASKS_RESULT = /結果|名單|得獎|獲獎|錄取|榜單|誰|名次|成績/;
@@ -1003,6 +1003,7 @@
   var DATE_STRIP = /大後天|後天|明天|明日|今天|今日|這個週末|這週末|本週末|週末|下個?(?:週|星期|禮拜)[一二三四五六日天]?|(?:這個?|本)(?:週|星期|禮拜)[一二三四五六日天]?|(?:週|星期|禮拜)[一二三四五六日天]|這個月|本月|下個月|\d{1,2}\s*[\/月]\s*\d{1,2}\s*[日號]?|學校|本校|嘉中|嘉女|請問|有什麼|有哪些|有啥|有沒有|什麼|哪些|要|會|有|的|嗎|呢|是|在|舉辦|舉行|辦|[？?！!。，,\s]/g;
   var DATE_TOPIC_SYNONYMS = {
     "講座": ["講座", "演講", "講堂", "分享會", "專題講"], "演講": ["講座", "演講", "講堂", "分享會"],
+    "段考": ["段考", "期中考", "期末考", "定期考"], "定期考": ["定期考", "段考", "期中考", "期末考"],
     "考試": ["考試", "期中考", "期末考", "段考", "模擬考", "複習考", "小考", "英聽", "學測", "統測", "測驗", "考查"], "考": ["期中考", "期末考", "段考", "模擬考", "複習考", "考試", "英聽", "學測", "測驗"],
     "比賽": ["比賽", "競賽", "初賽", "決賽", "複賽", "奧林匹亞"], "競賽": ["比賽", "競賽", "初賽", "決賽", "複賽", "奧林匹亞"],
     "放假": ["放假", "停課", "補假", "假期", "連假", "國定假日", "調整放假"], "假": ["放假", "停課", "補假", "假期", "連假"],
@@ -1262,7 +1263,9 @@
      add a different subject (期中考成績繳交 is not 期中考). */
   var WHEN_ASK = /什麼時候|何時|哪一天|哪天|哪幾天|幾號|幾月幾|日期|期限|截止|到什麼時候|時間是/;
   var WHEN_SKIP = /哪裡|在哪|地點|怎麼|如何|多少錢|費用|要帶|帶什麼|找誰|聯絡|成績|名單|結果|錄取/;
-  var WHEN_FILLER = /^(?:哪幾天|哪一天|哪天|幾號|檔案|資料|日期|時間|期限|截止|高[一二三]|第[一二三四五]次)$/;
+  var WHEN_FILLER_WORDS = /下一次|下次|下個|最近一次|接下來|這次|哪幾天|哪一天|哪天|幾號/g;
+  var NEXT_ASK = /下次|下一次|下個|最近一次|接下來/;
+  var WHEN_FILLER = /^(?:下次|下一次|下個|最近一次|最近|接下來|這次|哪幾天|哪一天|哪天|幾號|檔案|資料|日期|時間|期限|截止|高[一二三]|第[一二三四五]次)$/;
   var WHEN_QUALIFIERS = ["成績", "繳交", "命題", "監考", "閱卷", "檢討", "會議", "說明會", "講座", "補考", "報名", "試題", "公告", "IEP"];
   var GRADE_RE = /高[一二三]/g;
   function whenAnswer(query, items, options) {
@@ -1274,11 +1277,13 @@
     (plan.term_matches || []).forEach(function (row) {
       if (row.kind === "topic") {
         var topic = topics.filter(function (t) { return t.id === row.id; })[0];
-        groups.push(unique((topic ? topic.terms : [row.term]).concat(DATE_TOPIC_SYNONYMS[row.term] || []).map(compact)));
+        /* 「段考」 means 期中考／期末考, not every 考試 (a university's 招生考試). */
+        var own = DATE_TOPIC_SYNONYMS[row.term];
+        groups.push(unique((own && own.length ? own : (topic ? topic.terms : [row.term])).map(compact)));
       } else if (row.kind === "action") groups.push([compact(row.term)]);
     });
     (plan.remainder_terms || []).forEach(function (term) {
-      term = compact(term);
+      term = compact(term).replace(WHEN_FILLER_WORDS, "");
       if (term.length >= 2 && !WHEN_FILLER.test(term)) groups.push([term]);
     });
     if (!groups.some(function (g) { return g.length > 1; }) && groups.length < 2) return null;
@@ -1304,7 +1309,7 @@
     if (!rows.length) return null;
     var upcoming = rows.filter(function (r) { return r.to >= asOf; }).sort(function (a, b) { return a.from.localeCompare(b.from); });
     var past = rows.filter(function (r) { return r.to < asOf && r.to >= isoAdd(asOf, -150); }).sort(function (a, b) { return b.from.localeCompare(a.from); });
-    var picked = upcoming.length ? upcoming.slice(0, 4) : past.slice(0, 1);
+    var picked = upcoming.length ? upcoming.slice(0, NEXT_ASK.test(query) ? 1 : 4) : past.slice(0, 1);
     if (!picked.length) return null;
     var where = options.scopeLabel ? options.scopeLabel + "行事曆" : "學校行事曆";
     var names = picked.slice(0, 3).map(function (r) { return rangeLabel(r.from, r.to) + "「" + r.title + "」"; }).join("、");
