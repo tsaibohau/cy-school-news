@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-02T01:14:31+08:00",
+ "generated_at": "2026-11-02T10:42:18+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5980,7 +5980,35 @@
   },
   "584": {
    "page_id": 584,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T10:42:14+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "校內志願選填及大學資訊"
+   ],
+   "changed_at": "2026-11-02T10:42:14+08:00",
+   "content_hash": "2632639abec5a500d80f79a79ad706e7d55869febff2748ff66880084f902c74",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "報名",
+    "繁星",
+    "選填",
+    "上傳",
+    "入學",
+    "升學",
+    "測驗",
+    "申請入學",
+    "繳費",
+    "英聽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-584.json",
+   "detail_revision": "23735fa070c056f5216a68d8099ab42c62b59819ed5badb63e198468dc646c14",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "577": {
    "page_id": 577,
@@ -6336,7 +6364,23 @@
   },
   "588": {
    "page_id": 588,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T10:42:17+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "教官室",
+    "好站相關"
+   ],
+   "changed_at": "2026-11-02T10:42:17+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-588.json",
+   "detail_revision": "724df2ad983869791f20fc27e93aea8a532bb2fbf0f79ca9589b3a16335d80dd",
+   "detail_status": "empty",
+   "attachments": []
   },
   "4650": {
    "page_id": 4650,
@@ -10183,6 +10227,35 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cysh-info-584",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 校內志願選填及大學資訊",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-584.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "申請",
+    "報名",
+    "繁星",
+    "選填",
+    "上傳",
+    "入學",
+    "升學",
+    "測驗",
+    "申請入學",
+    "繳費",
+    "英聽"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-584.json",
+   "detail_revision": "23735fa070c056f5216a68d8099ab42c62b59819ed5badb63e198468dc646c14",
+   "detail_status": "parsed"
+  },
+  {
    "id": "cysh-info-586",
    "kind": "school_info",
    "title": "學務處 › 教官室 › 賃居生服務",
@@ -10200,6 +10273,23 @@
    "detail_ref": "data/details/cysh/cysh-info-586.json",
    "detail_revision": "b7a4b14dfb92ca02f5bc9249005bcf2551aa22df58ef8ada05b522ce2ca9e6c3",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-588",
+   "kind": "school_info",
+   "title": "學務處 › 教官室 › 好站相關",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-588.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-588.json",
+   "detail_revision": "724df2ad983869791f20fc27e93aea8a532bb2fbf0f79ca9589b3a16335d80dd",
+   "detail_status": "empty"
   },
   {
    "id": "cysh-info-590",
@@ -14854,5 +14944,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-02T01:14:31+08:00"
+ "last_run_at": "2026-11-02T10:42:18+08:00"
 }

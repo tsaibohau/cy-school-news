@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-02T01:13:22+08:00",
+ "generated_at": "2026-11-02T10:40:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -92,15 +92,51 @@
    "page_id": 191788479103454,
    "url": "https://www.tnvs.tn.edu.tw/about/tnvs-tel/",
    "label": "校內分機",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:40:04+08:00",
+   "path": [
+    "校內分機"
+   ],
+   "changed_at": "2026-11-02T10:40:04+08:00",
+   "content_hash": "6443e2fcde0de1399459a986e501fe497515ea36deb065c3bcbb98aeda772216",
+   "doc_links": [],
+   "keywords": [
+    "傳真",
+    "專線",
+    "分機",
+    "圖書館",
+    "校長",
+    "衛生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-191788479103454.json",
+   "detail_revision": "0e10f21ddbdeb2b3779fd0909feb744bd23d1ab1c4c05b083c168c7651395568",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "264787222763492": {
    "page_id": 264787222763492,
    "url": "https://www.tnvs.tn.edu.tw/about/tnvs-traf/",
    "label": "交通資訊",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:40:06+08:00",
+   "path": [
+    "交通資訊"
+   ],
+   "changed_at": "2026-11-02T10:40:06+08:00",
+   "content_hash": "81dfdf54e6059b59e396cfdf3faff450f86d4893f59f2594dd6e5efffce60069",
+   "doc_links": [],
+   "keywords": [
+    "地址"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-264787222763492.json",
+   "detail_revision": "e152b37b582de82c332ad002148e5e49a6dfe3eeee758281edee261e0dae40ac",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "14030893984672": {
    "page_id": 14030893984672,
@@ -579,6 +615,50 @@
    "detail_ref": "data/details/tnvs/tnvs-info-175903128611513.json",
    "detail_revision": "38185298a03c58ade88c069eb07f8ff6622ec627d3db90beadf169672b62beac",
    "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-191788479103454",
+   "kind": "school_info",
+   "title": "校內分機",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/about/tnvs-tel/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "傳真",
+    "專線",
+    "分機",
+    "圖書館",
+    "校長",
+    "衛生",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-191788479103454.json",
+   "detail_revision": "0e10f21ddbdeb2b3779fd0909feb744bd23d1ab1c4c05b083c168c7651395568",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-264787222763492",
+   "kind": "school_info",
+   "title": "交通資訊",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/about/tnvs-traf/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "地址"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-264787222763492.json",
+   "detail_revision": "e152b37b582de82c332ad002148e5e49a6dfe3eeee758281edee261e0dae40ac",
+   "detail_status": "parsed"
   }
  ],
  "roots": [
@@ -965,5 +1045,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-02T01:13:22+08:00"
+ "last_run_at": "2026-11-02T10:40:08+08:00"
 }

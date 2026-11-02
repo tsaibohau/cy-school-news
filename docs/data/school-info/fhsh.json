@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-02T01:14:02+08:00",
+ "generated_at": "2026-11-02T10:41:39+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -181,15 +181,67 @@
    "page_id": 21715492170575,
    "url": "https://www.fhsh.khc.edu.tw/about/20210614/231",
    "label": "鳳新校歌",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:35+08:00",
+   "path": [
+    "鳳新校歌"
+   ],
+   "changed_at": "2026-11-02T10:41:35+08:00",
+   "content_hash": "38e2875bb743ef4cd4596188431f2664e044dba6deb2320fe2a0f6b52eadc8bd",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-21715492170575.json",
+   "detail_revision": "be5c0989a49dacfc7129551f45f8e4fb17dd7b90a62f6e6bc4c84e44291061de",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "114929895056078": {
    "page_id": 114929895056078,
    "url": "https://www.fhsh.khc.edu.tw/about/20210614/233",
    "label": "校訓與校徽",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:37+08:00",
+   "path": [
+    "校訓與校徽"
+   ],
+   "changed_at": "2026-11-02T10:41:37+08:00",
+   "content_hash": "0000909961462dbb3e9d8ec4d31441d45e1797ad1d17f4365cabe24d9adfe139",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-114929895056078.json",
+   "detail_revision": "348faa326ad8f57b1d5758aefd24d1e6927866464ce5d1f4b82e9bd543b01ae2",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "234713306177090": {
    "page_id": 234713306177090,
@@ -1259,6 +1311,74 @@
  "services": {},
  "items": [
   {
+   "id": "fhsh-info-21715492170575",
+   "kind": "school_info",
+   "title": "鳳新校歌",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/about/20210614/231",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-21715492170575.json",
+   "detail_revision": "be5c0989a49dacfc7129551f45f8e4fb17dd7b90a62f6e6bc4c84e44291061de",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fhsh-info-114929895056078",
+   "kind": "school_info",
+   "title": "校訓與校徽",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/about/20210614/233",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-114929895056078.json",
+   "detail_revision": "348faa326ad8f57b1d5758aefd24d1e6927866464ce5d1f4b82e9bd543b01ae2",
+   "detail_status": "parsed"
+  },
+  {
    "id": "fhsh-info-122807622643303",
    "kind": "school_info",
    "title": "關於鳳新",
@@ -1661,5 +1781,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-02T01:14:02+08:00"
+ "last_run_at": "2026-11-02T10:41:39+08:00"
 }

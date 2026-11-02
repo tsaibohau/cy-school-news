@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "sgsh",
- "generated_at": "2026-11-02T01:13:55+08:00",
+ "generated_at": "2026-11-02T10:41:34+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "247594578953018": {
@@ -63,15 +63,23 @@
    "page_id": 67487829081456,
    "url": "https://sg.sgshedu.tw/user.php",
    "label": "忘記密碼",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:31+08:00",
+   "path": [
+    "忘記密碼"
+   ]
   },
   "876111206797": {
    "page_id": 876111206797,
    "url": "https://sg.sgshedu.tw/modules/tad_honor/index.php?honor_sn=18",
    "label": "本校116學年度入學登記 歡迎報名",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:33+08:00",
+   "path": [
+    "本校116學年度入學登記 歡迎報名"
+   ]
   },
   "216923967871560": {
    "page_id": 216923967871560,
@@ -540,5 +548,5 @@
   "fcc13700e3",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-02T01:13:55+08:00"
+ "last_run_at": "2026-11-02T10:41:34+08:00"
 }

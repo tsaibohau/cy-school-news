@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-02T01:13:10+08:00",
+ "generated_at": "2026-11-02T10:39:57+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -64,22 +64,37 @@
    "page_id": 64040361139875,
    "url": "https://www.tngs.tn.edu.tw/department/president/",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:39:51+08:00",
+   "path": [
+    "行政組織",
+    "校長室"
+   ]
   },
   "221190951332023": {
    "page_id": 221190951332023,
    "url": "https://www.tngs.tn.edu.tw/department/acad/",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:39:53+08:00",
+   "path": [
+    "行政組織",
+    "教務處"
+   ]
   },
   "138324537601640": {
    "page_id": 138324537601640,
    "url": "https://www.tngs.tn.edu.tw/department/sa/",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:39:55+08:00",
+   "path": [
+    "行政組織",
+    "學務處"
+   ]
   },
   "228134311457718": {
    "page_id": 228134311457718,
@@ -719,6 +734,78 @@
     "日本語"
    ],
    "order": 74
+  },
+  "207776066347732": {
+   "page_id": 207776066347732,
+   "url": "https://www.tngs.tn.edu.tw/department/president/staff/",
+   "label": "組織職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "校長室"
+   ],
+   "order": 75
+  },
+  "193003382498444": {
+   "page_id": 193003382498444,
+   "url": "https://www.tngs.tn.edu.tw/department/president/principal/",
+   "label": "現任校長",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "校長室"
+   ],
+   "order": 76
+  },
+  "64076574613593": {
+   "page_id": 64076574613593,
+   "url": "https://www.tngs.tn.edu.tw/department/president/director/",
+   "label": "歷任校長",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "校長室"
+   ],
+   "order": 77
+  },
+  "46388308320132": {
+   "page_id": 46388308320132,
+   "url": "https://www.tngs.tn.edu.tw/department/acad/staff/",
+   "label": "組織職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "教務處"
+   ],
+   "order": 78
+  },
+  "197962584266528": {
+   "page_id": 197962584266528,
+   "url": "https://www.tngs.tn.edu.tw/department/acad/music/",
+   "label": "音樂班",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "教務處"
+   ],
+   "order": 79
+  },
+  "161892531367005": {
+   "page_id": 161892531367005,
+   "url": "https://www.tngs.tn.edu.tw/department/sa/staff/",
+   "label": "組織職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "學務處"
+   ],
+   "order": 80
   }
  },
  "handbook": {},
@@ -1049,5 +1136,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-02T01:13:10+08:00"
+ "last_run_at": "2026-11-02T10:39:57+08:00"
 }

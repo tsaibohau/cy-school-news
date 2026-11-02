@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-02T01:13:43+08:00",
+ "generated_at": "2026-11-02T10:41:25+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -67,15 +67,24 @@
    "page_id": 81960307637584,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/",
    "label": "行政組織",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:22+08:00",
+   "path": [
+    "行政組織"
+   ]
   },
   "148018188862687": {
    "page_id": 148018188862687,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/principal-office/",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:24+08:00",
+   "path": [
+    "行政組織",
+    "校長室"
+   ]
   },
   "144475996291": {
    "page_id": 144475996291,
@@ -682,5 +691,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-02T01:13:43+08:00"
+ "last_run_at": "2026-11-02T10:41:25+08:00"
 }

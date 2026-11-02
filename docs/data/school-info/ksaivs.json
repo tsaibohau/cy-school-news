@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-02T01:14:14+08:00",
+ "generated_at": "2026-11-02T10:41:48+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -149,15 +149,45 @@
    "page_id": 45729182690021,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-167.php",
    "label": "輔導室",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:45+08:00",
+   "path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "changed_at": "2026-11-02T10:41:45+08:00",
+   "content_hash": "a5e5f3f2875dccd6e28ad54a28f4b0f0c929b378745bfe309acc4ba3cebd490b",
+   "doc_links": [],
+   "keywords": [
+    "傳真"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-45729182690021.json",
+   "detail_revision": "67632bc5d9eb63a7b4fc4da21c91162ed231ece7f46861394072b2c3308ad03f",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "259547869481600": {
    "page_id": 259547869481600,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-385.php",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:47+08:00",
+   "path": [
+    "行政單位",
+    "圖書館"
+   ],
+   "changed_at": "2026-11-02T10:41:47+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-259547869481600.json",
+   "detail_revision": "0294ba8535fa21a28b49ccfa63b9a5f9e49e77400f0c3432aab063df4128a1f5",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "199329525544673": {
    "page_id": 199329525544673,
@@ -1106,6 +1136,126 @@
     "實習處"
    ],
    "order": 99
+  },
+  "120731123883216": {
+   "page_id": 120731123883216,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-233.php",
+   "label": "處室成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 100
+  },
+  "90498796780880": {
+   "page_id": 90498796780880,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-271.php",
+   "label": "資源班",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 101
+  },
+  "94492756980053": {
+   "page_id": 94492756980053,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-273.php",
+   "label": "各委員會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 102
+  },
+  "150672506949940": {
+   "page_id": 150672506949940,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-291.php",
+   "label": "下載中心",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 103
+  },
+  "213805611701948": {
+   "page_id": 213805611701948,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-295.php",
+   "label": "處室規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 104
+  },
+  "40773646400196": {
+   "page_id": 40773646400196,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-307.php",
+   "label": "岡農輔導刊物",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 105
+  },
+  "39485844073982": {
+   "page_id": 39485844073982,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-392.php",
+   "label": "電子書資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "圖書館"
+   ],
+   "order": 106
+  },
+  "154211882260629": {
+   "page_id": 154211882260629,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-390.php",
+   "label": "書籍介購",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "圖書館"
+   ],
+   "order": 107
+  },
+  "71147478593684": {
+   "page_id": 71147478593684,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-389.php",
+   "label": "讀者服務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "圖書館"
+   ],
+   "order": 108
+  },
+  "260220835180526": {
+   "page_id": 260220835180526,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1058.php",
+   "label": "利用教育微電影",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "圖書館"
+   ],
+   "order": 109
   }
  },
  "handbook": {},
@@ -1139,6 +1289,25 @@
    "documents": [],
    "detail_ref": "data/details/ksaivs/ksaivs-info-21112690938014.json",
    "detail_revision": "3ce8a7cfeeeba0c39203127732561462f81e20e309cda5ee87cb538ae8836948",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-45729182690021",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導室",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-167.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "傳真"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-45729182690021.json",
+   "detail_revision": "67632bc5d9eb63a7b4fc4da21c91162ed231ece7f46861394072b2c3308ad03f",
    "detail_status": "parsed"
   },
   {
@@ -1227,6 +1396,23 @@
    "documents": [],
    "detail_ref": "data/details/ksaivs/ksaivs-info-223664676159128.json",
    "detail_revision": "87f0f230c6085f1bb0c7bc88d2656c9fb9abfa2d526463af1c3aecdea3c6484d",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-259547869481600",
+   "kind": "school_info",
+   "title": "行政單位 › 圖書館",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-385.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-259547869481600.json",
+   "detail_revision": "0294ba8535fa21a28b49ccfa63b9a5f9e49e77400f0c3432aab063df4128a1f5",
    "detail_status": "parsed"
   }
  ],
@@ -1462,5 +1648,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-02T01:14:14+08:00"
+ "last_run_at": "2026-11-02T10:41:48+08:00"
 }

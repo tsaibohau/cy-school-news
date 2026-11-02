@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-02T01:16:26+08:00",
+ "generated_at": "2026-11-02T10:43:34+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -346,8 +346,23 @@
    "page_id": 115340714866332,
    "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,4,31,29",
    "label": "優質認證",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:43:33+08:00",
+   "path": [
+    "優質認證"
+   ],
+   "changed_at": "2026-11-02T10:43:33+08:00",
+   "content_hash": "04b2b629c4970497755a3435ab520fcf2606f792a768b64e21fdab119c61d5cb",
+   "doc_links": [],
+   "keywords": [
+    "學分"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-115340714866332.json",
+   "detail_revision": "158bb02a0a635064dfa51f6057d2f74c02f15d0b2c2ed4251bbf85d1227c23b4",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "116061505090164": {
    "page_id": 116061505090164,
@@ -3499,6 +3514,25 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-115340714866332",
+   "kind": "school_info",
+   "title": "優質認證",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,4,31,29",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "學分"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-115340714866332.json",
+   "detail_revision": "158bb02a0a635064dfa51f6057d2f74c02f15d0b2c2ed4251bbf85d1227c23b4",
+   "detail_status": "parsed"
+  },
+  {
    "id": "hnvs-info-115983233628736",
    "kind": "school_info",
    "title": "公布欄",
@@ -3987,5 +4021,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-02T01:16:26+08:00"
+ "last_run_at": "2026-11-02T10:43:34+08:00"
 }

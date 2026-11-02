@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-02T01:14:44+08:00",
+ "generated_at": "2026-11-02T10:42:27+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "495": {
@@ -614,11 +614,66 @@
   },
   "478": {
    "page_id": 478,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T10:42:23+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組"
+   ],
+   "changed_at": "2026-11-02T10:42:23+08:00",
+   "content_hash": "9566781b199cf9d74fd257c533f6b3345d5a8817bc20ce2aa39b1070505b7f6e",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "報名",
+    "初賽",
+    "地址",
+    "奧林匹亞",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-478.json",
+   "detail_revision": "2a188ae0b98bb6b0c404dd899c3049f4d215473c4db5d4def938ff72668fdcbb",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "479": {
    "page_id": 479,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T10:42:26+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "實驗研究組"
+   ],
+   "changed_at": "2026-11-02T10:42:26+08:00",
+   "content_hash": "4e9524df09f777a049e78b7ed0573aa2334a84dba0e37855fdfac7cb4dd08f39",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "自主學習",
+    "講座",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-479.json",
+   "detail_revision": "5b0ab9b3274f2c73486428b897b73b04145399073358127f7806c4061ad68b64",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "480": {
    "page_id": 480,
@@ -894,6 +949,58 @@
   },
   "488": {
    "page_id": 488,
+   "status": "pending"
+  },
+  "502": {
+   "page_id": 502,
+   "status": "pending"
+  },
+  "508": {
+   "page_id": 508,
+   "status": "pending"
+  },
+  "504": {
+   "page_id": 504,
+   "status": "pending"
+  },
+  "505": {
+   "page_id": 505,
+   "status": "pending"
+  },
+  "507": {
+   "page_id": 507,
+   "status": "pending"
+  },
+  "503": {
+   "page_id": 503,
+   "status": "pending"
+  },
+  "509": {
+   "page_id": 509,
+   "status": "pending"
+  },
+  "510": {
+   "page_id": 510,
+   "status": "pending"
+  },
+  "511": {
+   "page_id": 511,
+   "status": "pending"
+  },
+  "512": {
+   "page_id": 512,
+   "status": "pending"
+  },
+  "513": {
+   "page_id": 513,
+   "status": "pending"
+  },
+  "603": {
+   "page_id": 603,
+   "status": "pending"
+  },
+  "604": {
+   "page_id": 604,
    "status": "pending"
   }
  },
@@ -1401,6 +1508,69 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fjsh-info-478",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 設備組",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-478.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "報名",
+    "初賽",
+    "地址",
+    "奧林匹亞",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-478.json",
+   "detail_revision": "2a188ae0b98bb6b0c404dd899c3049f4d215473c4db5d4def938ff72668fdcbb",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-479",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 實驗研究組",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-479.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "自主學習",
+    "講座",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-479.json",
+   "detail_revision": "5b0ab9b3274f2c73486428b897b73b04145399073358127f7806c4061ad68b64",
+   "detail_status": "parsed"
+  },
+  {
    "id": "fjsh-info-495",
    "kind": "school_info",
    "title": "教務處 › 註冊組 › 招生資訊",
@@ -1529,5 +1699,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-02T01:14:44+08:00"
+ "last_run_at": "2026-11-02T10:42:27+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-02T01:15:10+08:00",
+ "generated_at": "2026-11-02T10:42:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -184,8 +184,12 @@
    "page_id": 45908356321629,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/stu-affairs/",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:42:45+08:00",
+   "path": [
+    "學務處"
+   ]
   },
   "231353479771919": {
    "page_id": 231353479771919,
@@ -424,6 +428,28 @@
     "設備組"
    ],
    "order": 46
+  },
+  "27464298219619": {
+   "page_id": 27464298219619,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/stu-affairs/%e6%96%97%e5%85%ad%e9%ab%98%e4%b8%ad%e6%95%99%e8%82%b2%e5%84%b2%e8%93%84%e6%88%b6/",
+   "label": "斗六高中 教育儲蓄戶專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 47
+  },
+  "25204486151551": {
+   "page_id": 25204486151551,
+   "url": "https://www.tlsh.ylc.edu.tw/115%e5%b9%b4%e5%ba%a6%e6%96%b0%e4%b8%96%e7%b4%80%e9%a0%98%e5%b0%8e%e4%ba%ba%e6%89%8d%e5%9c%8b%e5%a4%96%e5%8f%83%e8%a8%aa%e9%ab%94%e9%a9%97%e5%85%ac%e5%91%8a/",
+   "label": "115年度新世紀領導人才國外參訪體驗",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 48
   }
  },
  "handbook": {},
@@ -692,5 +718,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-02T01:15:10+08:00"
+ "last_run_at": "2026-11-02T10:42:46+08:00"
 }

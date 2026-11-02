@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-02T01:14:09+08:00",
+ "generated_at": "2026-11-02T10:41:44+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -158,15 +158,56 @@
    "page_id": 64906662526285,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-174.php",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:41+08:00",
+   "path": [
+    "行政單位",
+    "圖書館"
+   ],
+   "changed_at": "2026-11-02T10:41:41+08:00",
+   "content_hash": "dad930fcb2362da502ad4f85aa03fb2a8e38d8b7306402f04d7e28f96a384021",
+   "doc_links": [],
+   "keywords": [
+    "圖書館",
+    "安全",
+    "徵稿",
+    "研習",
+    "社團",
+    "自主學習",
+    "講座"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-64906662526285.json",
+   "detail_revision": "0fdc6f429e6f0753800106c96c5b774448aa21fea7320016303978b018cfee26",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "213718098397888": {
    "page_id": 213718098397888,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-244.php",
    "label": "教官室",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:41:43+08:00",
+   "path": [
+    "行政單位",
+    "教官室"
+   ],
+   "changed_at": "2026-11-02T10:41:43+08:00",
+   "content_hash": "ce0b47ba108d0a69c26e27d429ba6b60e52c99c9525c4ff29d8e80c74f5bbdc4",
+   "doc_links": [],
+   "keywords": [
+    "宣導",
+    "專線",
+    "聯絡電話",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-213718098397888.json",
+   "detail_revision": "bb7e6515fcd25a24540662f2ca6ef4f04086ccd26b35a02dcfcf04957743cebb",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "148635007083087": {
    "page_id": 148635007083087,
@@ -374,6 +415,18 @@
     "總務處"
    ],
    "order": 27
+  },
+  "263478500316531": {
+   "page_id": 263478500316531,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-206.php",
+   "label": "圖書館相關規定",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "圖書館"
+   ],
+   "order": 28
   }
  },
  "handbook": {},
@@ -396,6 +449,31 @@
    "documents": [],
    "detail_ref": "data/details/kssh/kssh-info-28783346175483.json",
    "detail_revision": "d8378161069b95b6ff24b69c1d9da31bdc89165a3b90815b46b5bf7928446a62",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-64906662526285",
+   "kind": "school_info",
+   "title": "行政單位 › 圖書館",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-174.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "圖書館",
+    "安全",
+    "徵稿",
+    "研習",
+    "社團",
+    "自主學習",
+    "講座"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-64906662526285.json",
+   "detail_revision": "0fdc6f429e6f0753800106c96c5b774448aa21fea7320016303978b018cfee26",
    "detail_status": "parsed"
   },
   {
@@ -491,6 +569,28 @@
    "documents": [],
    "detail_ref": "data/details/kssh/kssh-info-152836902652291.json",
    "detail_revision": "67daebcec41a7f5a96c2e0bb11f6fb8fb599d14263374e88f7f2b320a7eec0cf",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-213718098397888",
+   "kind": "school_info",
+   "title": "行政單位 › 教官室",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-244.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "宣導",
+    "專線",
+    "聯絡電話",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-213718098397888.json",
+   "detail_revision": "bb7e6515fcd25a24540662f2ca6ef4f04086ccd26b35a02dcfcf04957743cebb",
    "detail_status": "parsed"
   },
   {
@@ -673,5 +773,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-02T01:14:09+08:00"
+ "last_run_at": "2026-11-02T10:41:44+08:00"
 }

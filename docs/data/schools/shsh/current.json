@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-02T01:05:58+08:00",
+ "generated_at": "2026-11-02T10:27:53+08:00",
  "school": {
   "id": "shsh",
   "name": "雲林縣私立正心高級中學",
@@ -8,6 +8,35 @@
   "base": "https://www.shsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "shsh-11842",
+   "title": "國立中山大學 主辦「2027年臺灣電信年會」",
+   "date": "2026-11-02",
+   "source_category": "來文宣導",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e5%9c%8b%e7%ab%8b%e4%b8%ad%e5%b1%b1%e5%a4%a7%e5%ad%b8-%e4%b8%bb%e8%be%a6%e3%80%8c2027%e5%b9%b4%e8%87%ba%e7%81%a3%e9%9b%bb%e4%bf%a1%e5%b9%b4%e6%9c%83%e3%80%8d/",
+   "category": "研習活動",
+   "first_seen": "2026-11-02T10:27:53+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-21",
+     "provenance": "verified_announcement_event",
+     "source_revision": "79751abe4b72cc6819115c5917b22ef7207034418d51ecb51faa3a39ce407fe8"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "79751abe4b72cc6819115c5917b22ef7207034418d51ecb51faa3a39ce407fe8"
+    }
+   ]
+  },
   {
    "id": "shsh-11840",
    "title": "教育部116年3月臺灣台語語言能力認證考試",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-02T01:14:52+08:00",
+ "generated_at": "2026-11-02T10:42:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "98": {
@@ -231,11 +231,60 @@
   },
   "170": {
    "page_id": 170,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T10:42:28+08:00",
+   "path": [
+    "行政單位",
+    "校長室"
+   ],
+   "changed_at": "2026-11-02T10:42:28+08:00",
+   "content_hash": "1fb140e1c15b8045a37fd762492aada8d7a1915fcbb67d24d2e7681d8615c326",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "宣導",
+    "傳真",
+    "入學",
+    "分機",
+    "升學",
+    "專線",
+    "放學",
+    "檢定",
+    "研習",
+    "競賽",
+    "面試"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-170.json",
+   "detail_revision": "44213a8cf520c9b9309e0192b7493320b18a5ecceea9964a04e4cc5d6a1b8a3a",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "171": {
    "page_id": 171,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T10:42:31+08:00",
+   "path": [
+    "行政單位",
+    "秘書室"
+   ],
+   "changed_at": "2026-11-02T10:42:31+08:00",
+   "content_hash": "e09b6e1e8dee9d8251f50cfe02d2181145a4acaeb7567d58761ce94d3b88c436",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "霸凌",
+    "決賽",
+    "分機",
+    "招生",
+    "聯絡電話",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-171.json",
+   "detail_revision": "8c727fac6c6451751a9fde6e7228038f3f1abbb2d4c5405b26aee5b18b30a55d",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "89": {
    "page_id": 89,
@@ -1093,6 +1142,61 @@
    "detail_ref": "data/details/ccjh/ccjh-info-168.json",
    "detail_revision": "c227c0913996f0aa4d0a218f155b57fdea2a8b88bc70b2c7a799bf6491806835",
    "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-170",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-170.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "宣導",
+    "傳真",
+    "入學",
+    "分機",
+    "升學",
+    "專線",
+    "放學",
+    "檢定",
+    "研習",
+    "競賽",
+    "面試"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-170.json",
+   "detail_revision": "44213a8cf520c9b9309e0192b7493320b18a5ecceea9964a04e4cc5d6a1b8a3a",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-171",
+   "kind": "school_info",
+   "title": "行政單位 › 秘書室",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-171.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "霸凌",
+    "決賽",
+    "分機",
+    "招生",
+    "聯絡電話",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-171.json",
+   "detail_revision": "8c727fac6c6451751a9fde6e7228038f3f1abbb2d4c5405b26aee5b18b30a55d",
+   "detail_status": "parsed"
   }
  ],
  "roots": [
@@ -1122,5 +1226,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-02T01:14:52+08:00"
+ "last_run_at": "2026-11-02T10:42:32+08:00"
 }

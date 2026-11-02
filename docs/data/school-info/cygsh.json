@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-02T01:14:37+08:00",
+ "generated_at": "2026-11-02T10:42:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1592": {
@@ -3268,11 +3268,39 @@
   },
   "1768": {
    "page_id": 1768,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T10:42:19+08:00",
+   "path": [
+    "功能快捷選單",
+    "學習歷程檔案"
+   ],
+   "changed_at": "2026-11-02T10:42:19+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1768.json",
+   "detail_revision": "6c8a124e181a21bf69a4eff860bbc465acd9340c9155464d1ba22708837b238f",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1772": {
    "page_id": 1772,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T10:42:21+08:00",
+   "path": [
+    "功能快捷選單",
+    "報修專區"
+   ],
+   "changed_at": "2026-11-02T10:42:21+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1772.json",
+   "detail_revision": "1a0f3cb40e79034f7f627fb99347b920aadf5dcdd2d3b309ea8d3b04d8abe372",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1773": {
    "page_id": 1773,
@@ -3976,6 +4004,23 @@
    "detail_status": "empty"
   },
   {
+   "id": "cygsh-info-1768",
+   "kind": "school_info",
+   "title": "功能快捷選單 › 學習歷程檔案",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1768.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1768.json",
+   "detail_revision": "6c8a124e181a21bf69a4eff860bbc465acd9340c9155464d1ba22708837b238f",
+   "detail_status": "empty"
+  },
+  {
    "id": "cygsh-info-1769",
    "kind": "school_info",
    "title": "功能快捷選單 › 獎助學金",
@@ -3997,6 +4042,23 @@
    "detail_ref": "data/details/cygsh/cygsh-info-1769.json",
    "detail_revision": "eb91c9734e7eec6056e06256de6cb8a7b9ae16cdfb85f9736662e19400fac3ca",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1772",
+   "kind": "school_info",
+   "title": "功能快捷選單 › 報修專區",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1772.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1772.json",
+   "detail_revision": "1a0f3cb40e79034f7f627fb99347b920aadf5dcdd2d3b309ea8d3b04d8abe372",
+   "detail_status": "empty"
   },
   {
    "id": "cygsh-info-1779",
@@ -6075,5 +6137,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-02T01:14:37+08:00"
+ "last_run_at": "2026-11-02T10:42:22+08:00"
 }

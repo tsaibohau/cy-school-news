@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-02T01:13:33+08:00",
+ "generated_at": "2026-11-02T10:40:21+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -63,22 +63,34 @@
    "page_id": 152330031398451,
    "url": "https://cm.cmvsedu.tw/modules/tad_link/",
    "label": "好站連結",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:40:15+08:00",
+   "path": [
+    "好站連結"
+   ]
   },
   "132202725593860": {
    "page_id": 132202725593860,
    "url": "https://cm.cmvsedu.tw/modules/tad_uploader/",
    "label": "檔案下載",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:40:17+08:00",
+   "path": [
+    "檔案下載"
+   ]
   },
   "191667462333514": {
    "page_id": 191667462333514,
    "url": "https://cm.cmvsedu.tw/modules/tad_repair/",
    "label": "維修通報",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T10:40:19+08:00",
+   "path": [
+    "維修通報"
+   ]
   },
   "60542751610260": {
    "page_id": 60542751610260,
@@ -351,6 +363,501 @@
     "場地預約"
    ],
    "order": 35
+  },
+  "177226433047728": {
+   "page_id": 177226433047728,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=27",
+   "label": "不迷小紅書，青春不迷途",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 36
+  },
+  "124454263579534": {
+   "page_id": 124454263579534,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?cate_sn=3",
+   "label": "優質網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 37
+  },
+  "250576632026121": {
+   "page_id": 250576632026121,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=26",
+   "label": "學生事務資訊網",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 38
+  },
+  "174667846905394": {
+   "page_id": 174667846905394,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=23",
+   "label": "社會福利地圖",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 39
+  },
+  "8305491230390": {
+   "page_id": 8305491230390,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=23",
+   "label": "https://socmap.kcg.gov.tw/",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 40
+  },
+  "84733038144712": {
+   "page_id": 84733038144712,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=5",
+   "label": "技專校院招生策略委員會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 41
+  },
+  "261335969450751": {
+   "page_id": 261335969450751,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?cate_sn=4",
+   "label": "升學資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 42
+  },
+  "216763509813420": {
+   "page_id": 216763509813420,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=5",
+   "label": "https://www.techadmi.edu.tw/",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 43
+  },
+  "269262358142712": {
+   "page_id": 269262358142712,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=12",
+   "label": "北科大-校務行政系統",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 44
+  },
+  "67365800904906": {
+   "page_id": 67365800904906,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=25",
+   "label": "國教署性別平等教育資源中心",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 45
+  },
+  "101988736042538": {
+   "page_id": 101988736042538,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?cate_sn=5",
+   "label": "教師進修",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 46
+  },
+  "199354363195382": {
+   "page_id": 199354363195382,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=25",
+   "label": "http://gender.nhes.edu.tw/",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 47
+  },
+  "138778385465679": {
+   "page_id": 138778385465679,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=4",
+   "label": "首頁 | 大考中心",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 48
+  },
+  "166467414803890": {
+   "page_id": 166467414803890,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=4",
+   "label": "https://www.ceec.edu.tw/",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 49
+  },
+  "202986693733184": {
+   "page_id": 202986693733184,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=3",
+   "label": "技專校院入學測驗中心",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 50
+  },
+  "24941004299602": {
+   "page_id": 24941004299602,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=3",
+   "label": "https://www.tcte.edu.tw/page_new.php",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 51
+  },
+  "57873706612335": {
+   "page_id": 57873706612335,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=9",
+   "label": "即測即評服務網",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 52
+  },
+  "90121422008646": {
+   "page_id": 90121422008646,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?cate_sn=6",
+   "label": "就業資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 53
+  },
+  "91952996944510": {
+   "page_id": 91952996944510,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=9",
+   "label": "https://etest.wdasec.gov.tw/eTest/Forms/",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 54
+  },
+  "108046353001627": {
+   "page_id": 108046353001627,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=24",
+   "label": "高雄市福利專家諮詢系統",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 55
+  },
+  "259841250433150": {
+   "page_id": 259841250433150,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=24",
+   "label": "https://socprt.kcg.gov.tw/appkssaplay/",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 56
+  },
+  "24334166047848": {
+   "page_id": 24334166047848,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?g2p=1",
+   "label": "1 (current)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 57
+  },
+  "85313266067326": {
+   "page_id": 85313266067326,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?g2p=2",
+   "label": "›",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "好站連結"
+   ],
+   "order": 58
+  },
+  "69530113356377": {
+   "page_id": 69530113356377,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=0",
+   "label": "",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 59
+  },
+  "275389757151202": {
+   "page_id": 275389757151202,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=1",
+   "label": "網頁圖片",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 60
+  },
+  "195002175482614": {
+   "page_id": 195002175482614,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=2",
+   "label": "人事規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 61
+  },
+  "51033586805218": {
+   "page_id": 51033586805218,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=3",
+   "label": "財務報表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 62
+  },
+  "62611030519704": {
+   "page_id": 62611030519704,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=5",
+   "label": "學務規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 63
+  },
+  "222782091729327": {
+   "page_id": 222782091729327,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=6",
+   "label": "實習規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 64
+  },
+  "53061256822292": {
+   "page_id": 53061256822292,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=8",
+   "label": "教務規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 65
+  },
+  "223176400839464": {
+   "page_id": 223176400839464,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=9",
+   "label": "活動紀錄",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 66
+  },
+  "58683445172880": {
+   "page_id": 58683445172880,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=10",
+   "label": "總務處",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 67
+  },
+  "57691743211941": {
+   "page_id": 57691743211941,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=12",
+   "label": "推廣教育中心",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 68
+  },
+  "231937531508611": {
+   "page_id": 231937531508611,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=13",
+   "label": "教務處",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 69
+  },
+  "280111376697176": {
+   "page_id": 280111376697176,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=23",
+   "label": "進修部",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 70
+  },
+  "38949276141439": {
+   "page_id": 38949276141439,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=42&cat_sn=0&name=111-1行事曆.pdf",
+   "label": "111學年度第一學期行事曆",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 71
+  },
+  "192705912781465": {
+   "page_id": 192705912781465,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=130&cat_sn=0&name=",
+   "label": "109年服務群學生選課輔導手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 72
+  },
+  "230279618039270": {
+   "page_id": 230279618039270,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=132&cat_sn=0&name=",
+   "label": "109學年度服務群學生選課輔導手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 73
+  },
+  "109040229571675": {
+   "page_id": 109040229571675,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=171&cat_sn=0&name=111-2行事曆.pdf",
+   "label": "111學年度第2學期行事曆.pdf",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 74
+  },
+  "12059066083832": {
+   "page_id": 12059066083832,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=245&cat_sn=0&name=109-2-1_餐飲○_科目名稱.docx",
+   "label": "109-2-1_餐飲○_科目名稱",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 75
+  },
+  "4959854230556": {
+   "page_id": 4959854230556,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=246&cat_sn=0&name=109-2-2_餐飲○_科目名稱.docx",
+   "label": "109-2空白試卷",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案下載"
+   ],
+   "order": 76
+  },
+  "6973225759562": {
+   "page_id": 6973225759562,
+   "url": "https://cm.cmvsedu.tw/modules/tad_repair/index.php?repair_sn=3",
+   "label": "教學大樓一樓東側女廁",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "維修通報"
+   ],
+   "order": 77
+  },
+  "41533305556769": {
+   "page_id": 41533305556769,
+   "url": "https://cm.cmvsedu.tw/modules/tad_repair/index.php?repair_sn=2",
+   "label": "教學大樓二樓東側男廁",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "維修通報"
+   ],
+   "order": 78
+  },
+  "153351975993696": {
+   "page_id": 153351975993696,
+   "url": "https://cm.cmvsedu.tw/modules/tad_repair/index.php?repair_sn=1",
+   "label": "廁所水箱損壞",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "維修通報"
+   ],
+   "order": 79
+  },
+  "148702858850564": {
+   "page_id": 148702858850564,
+   "url": "https://cm.cmvsedu.tw/modules/tad_repair/index.php?g2p=1",
+   "label": "1 (current)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "維修通報"
+   ],
+   "order": 80
   }
  },
  "handbook": {},
@@ -646,5 +1153,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-02T01:13:33+08:00"
+ "last_run_at": "2026-11-02T10:40:21+08:00"
 }
