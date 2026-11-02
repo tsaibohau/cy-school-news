@@ -394,6 +394,7 @@ def write_public(school_id: str, school: dict, index: dict) -> Path:
     items = [public_item(school_id, school, v) for _, v in sorted(index["pages"].items(), key=lambda kv: int(kv[0]))
              if v.get("status") == "ok"]
     items += list((index.get("handbook") or {}).get("items") or [])
+    items += list((index.get("rules") or {}).get("items") or [])
     import school_services
     items += school_services.public_items(school_id, school["short"], (index.get("services") or {}).get("systems") or [])
     out = {
@@ -403,6 +404,7 @@ def write_public(school_id: str, school: dict, index: dict) -> Path:
         "content_access": "approved-account-required",
         "pages": index["pages"],
         "handbook": index.get("handbook") or {},
+        "rules": index.get("rules") or {},
         "services": index.get("services") or {},
         "items": items,
     }
@@ -560,6 +562,15 @@ def discover(school_id: str = "cysh", cap: int | None = None, deadline: float | 
         print(f"[info] 學生手冊 {school_id}: {status}")
     except Exception as exc:  # keep the previous chapters; try again next run
         print(f"[warn] 學生手冊 {school_id}: {exc}", file=sys.stderr)
+    try:
+        import school_rules
+        if school_id in school_rules.RULES:
+            status = school_rules.update(index, school_id, school["short"], session, delay=delay,
+                                         now=datetime.now(TW_TZ),
+                                         limit=int(os.environ.get("SCHOOL_RULES_CAP", "6")))
+            print(f"[info] 學生規定 {school_id}: {status}")
+    except Exception as exc:  # keep the previous rules; try again next run
+        print(f"[warn] 學生規定 {school_id}: {exc}", file=sys.stderr)
     try:
         import school_services
         status = school_services.update(index, school_id, session,

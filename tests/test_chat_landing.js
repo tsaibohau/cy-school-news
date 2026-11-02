@@ -93,7 +93,7 @@ assert.match(app, /new MutationObserver\(renderSideAccount\)\.observe\(box/, "fo
 assert.match(index, /<h2>設定<\/h2>/);
 /* 2026-11-01: answers type out like a typewriter; tap to show all; reduced motion skips it. */
 assert.match(app, /function typeAnswer\(box\) \{\s*if \(!box \|\| !box\.querySelectorAll \|\| prefersReducedMotion\(\)\) return;/);
-assert.match(app, /finishAnswerTyping\(\);\s*el\.assistantAnswer\.innerHTML = '<div class="assistant-result chat-answer">' \+ html \+ '<\/div>';\s*typeAnswer\(el\.assistantAnswer\.firstChild\);/);
+assert.match(app, /finishAnswerTyping\(\);[\s\S]{0,400}?oldPanel\.hidden = true;[\s\S]{0,200}?el\.assistantAnswer\.innerHTML = '<div class="assistant-result chat-answer">' \+ html \+ '<\/div>';\s*typeAnswer\(el\.assistantAnswer\.firstChild\);/);
 assert.match(app, /spoken\.className = "visually-hidden";/, "screen readers get the whole answer at once");
 assert.match(app, /box\.addEventListener\("click", finish\);/, "tap shows the whole answer");
 assert.match(css, /\.chat-answer \.is-typing-hidden \{ display: none; \}/, "sources wait until the text is typed");
