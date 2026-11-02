@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-02T17:49:33+08:00",
+ "generated_at": "2026-11-02T18:56:52+08:00",
  "school": {
   "id": "ksaivs",
   "name": "國立岡山農工",
@@ -8,6 +8,37 @@
   "base": "https://www.ksvs.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "ksaivs-189845",
+   "title": "【課務組】公告115學年度第2學期線上選課資訊",
+   "date": "2026-11-02",
+   "source_category": "",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/406-1004-189845,r18.php",
+   "category": "選課",
+   "first_seen": "2026-11-02T18:56:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "c23d377850a614d07c497d68b8ab605ceeedeab7450bed424a6ccc5d8eec195d"
+    }
+   ],
+   "audience": {
+    "grades": [
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
+  },
   {
    "id": "ksaivs-189844",
    "title": "【體育組】90週年校慶-學生組田賽高女高一男決賽成績記錄表",

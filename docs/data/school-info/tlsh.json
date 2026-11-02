@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-02T18:03:30+08:00",
+ "generated_at": "2026-11-02T19:15:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -206,22 +206,34 @@
    "page_id": 28793963119608,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/library/",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:09+08:00",
+   "path": [
+    "圖書館"
+   ]
   },
   "45776902379585": {
    "page_id": 45776902379585,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/",
    "label": "輔導室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:11+08:00",
+   "path": [
+    "輔導室"
+   ]
   },
   "277521808204715": {
    "page_id": 277521808204715,
    "url": "https://www.tlsh.ylc.edu.tw/calender/",
    "label": "行事曆",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:13+08:00",
+   "path": [
+    "行事曆"
+   ]
   },
   "82635477371450": {
    "page_id": 82635477371450,
@@ -454,6 +466,160 @@
     "學務處"
    ],
    "order": 48
+  },
+  "198121951131775": {
+   "page_id": 198121951131775,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/intro/",
+   "label": "輔導室簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 49
+  },
+  "84279894029304": {
+   "page_id": 84279894029304,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/counselor1/",
+   "label": "輔導室成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 50
+  },
+  "169652813495128": {
+   "page_id": 169652813495128,
+   "url": "https://www.tlsh.ylc.edu.tw/%e8%bc%94%e5%b0%8e%e5%ae%a4-%e7%94%9f%e6%b6%af%e8%bc%94%e5%b0%8e/",
+   "label": "生涯輔導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 51
+  },
+  "106440260225302": {
+   "page_id": 106440260225302,
+   "url": "https://www.tlsh.ylc.edu.tw/gender1/",
+   "label": "性別教育",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 52
+  },
+  "60320388423428": {
+   "page_id": 60320388423428,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/learn1/",
+   "label": "學習輔導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 53
+  },
+  "135385832175577": {
+   "page_id": 135385832175577,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/pr/",
+   "label": "人際關係",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 54
+  },
+  "209889264676286": {
+   "page_id": 209889264676286,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/eq/",
+   "label": "心理衛教",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 55
+  },
+  "105730815634475": {
+   "page_id": 105730815634475,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/parent/",
+   "label": "家庭教育",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 56
+  },
+  "232841869059127": {
+   "page_id": 232841869059127,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/life/",
+   "label": "生命教育",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 57
+  },
+  "191330329478450": {
+   "page_id": 191330329478450,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/laws",
+   "label": "輔導室章則",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 58
+  },
+  "4988790501587": {
+   "page_id": 4988790501587,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/greentown-xinyu/",
+   "label": "綠城心語",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 59
+  },
+  "273550893750523": {
+   "page_id": 273550893750523,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/parenthood/",
+   "label": "親職刊物",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 60
+  },
+  "224318950342112": {
+   "page_id": 224318950342112,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/frequently-used-forms/",
+   "label": "常用表單",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 61
+  },
+  "149530988469089": {
+   "page_id": 149530988469089,
+   "url": "https://www.tlsh.ylc.edu.tw/%e8%bc%94%e5%b0%8e%e5%ae%a4-%e5%ad%b8%e7%94%9f%e7%94%b3%e8%a8%b4/",
+   "label": "學生申訴",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 62
   }
  },
  "handbook": {},
@@ -723,5 +889,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-02T18:03:30+08:00"
+ "last_run_at": "2026-11-02T19:15:14+08:00"
 }

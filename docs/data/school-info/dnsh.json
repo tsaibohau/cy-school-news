@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-02T18:03:55+08:00",
+ "generated_at": "2026-11-02T19:15:47+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -162,15 +162,24 @@
    "page_id": 79253937021400,
    "url": "https://dnsh.ylc.edu.tw/cp.aspx?n=130281",
    "label": "公開觀課",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:42+08:00",
+   "path": [
+    "校園成果",
+    "公開觀課"
+   ]
   },
   "62267658813399": {
    "page_id": 62267658813399,
    "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=57043",
    "label": "校務E化",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:45+08:00",
+   "path": [
+    "校務E化"
+   ]
   },
   "236629489967609": {
    "page_id": 236629489967609,
@@ -592,5 +601,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-02T18:03:55+08:00"
+ "last_run_at": "2026-11-02T19:15:47+08:00"
 }

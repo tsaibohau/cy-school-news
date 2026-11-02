@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-02T18:02:00+08:00",
+ "generated_at": "2026-11-02T19:13:53+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -431,22 +431,109 @@
    "page_id": 43519019928067,
    "url": "https://www.fhsh.khc.edu.tw/about/20250605/240",
    "label": "校園地圖",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:47+08:00",
+   "path": [
+    "校園地圖"
+   ],
+   "changed_at": "2026-11-02T19:13:47+08:00",
+   "content_hash": "16e7308555951992a92eb27c427f6d962c39294405799ed4c3e155288c274274",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-43519019928067.json",
+   "detail_revision": "e88c6ae452fadaf5516836249309d162eedfdc70fdee2366f01a7482538127f4",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "6920133587568": {
    "page_id": 6920133587568,
    "url": "https://www.fhsh.khc.edu.tw/about/20210614/246",
    "label": "交通路線",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:49+08:00",
+   "path": [
+    "交通路線"
+   ],
+   "changed_at": "2026-11-02T19:13:49+08:00",
+   "content_hash": "a2ce0a6b9c3a79ae5c9513ac9b9c298d40c2398a39511ae17b8f516222188f84",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "公車"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-6920133587568.json",
+   "detail_revision": "cb6d5ce56dcc30c4c81eed630c64602fbdaa243b068b03d9358bc5e1af68ffc8",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "70942425545653": {
    "page_id": 70942425545653,
    "url": "https://www.fhsh.khc.edu.tw/about/20260731/242",
    "label": "分機表",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:51+08:00",
+   "path": [
+    "分機表"
+   ],
+   "changed_at": "2026-11-02T19:13:51+08:00",
+   "content_hash": "a33d68fee05fbb132f1c2f13bdce74c63d828f8e1bb638e867ea5d3c05d8391d",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "115學年度電話分機表",
+     "url": "https://drive.google.com/file/d/1b5fcdnF_fowYBS3HLV-P1okdU9Cntpr6/preview"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "分機",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-70942425545653.json",
+   "detail_revision": "af71ea36165d9e49f181db52958cc9e47fa41ba1f945f299d989c6d3996a447e",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "71256550166980": {
    "page_id": 71256550166980,
@@ -1493,6 +1580,42 @@
  "services": {},
  "items": [
   {
+   "id": "fhsh-info-6920133587568",
+   "kind": "school_info",
+   "title": "交通路線",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/about/20210614/246",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "公車"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-6920133587568.json",
+   "detail_revision": "cb6d5ce56dcc30c4c81eed630c64602fbdaa243b068b03d9358bc5e1af68ffc8",
+   "detail_status": "parsed"
+  },
+  {
    "id": "fhsh-info-21715492170575",
    "kind": "school_info",
    "title": "鳳新校歌",
@@ -1524,6 +1647,82 @@
    ],
    "detail_ref": "data/details/fhsh/fhsh-info-21715492170575.json",
    "detail_revision": "be5c0989a49dacfc7129551f45f8e4fb17dd7b90a62f6e6bc4c84e44291061de",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fhsh-info-43519019928067",
+   "kind": "school_info",
+   "title": "校園地圖",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/about/20250605/240",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-43519019928067.json",
+   "detail_revision": "e88c6ae452fadaf5516836249309d162eedfdc70fdee2366f01a7482538127f4",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fhsh-info-70942425545653",
+   "kind": "school_info",
+   "title": "分機表",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/about/20260731/242",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "115學年度電話分機表",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "分機",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "115學年度電話分機表",
+     "url": "https://drive.google.com/file/d/1b5fcdnF_fowYBS3HLV-P1okdU9Cntpr6/preview"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-70942425545653.json",
+   "detail_revision": "af71ea36165d9e49f181db52958cc9e47fa41ba1f945f299d989c6d3996a447e",
    "detail_status": "parsed"
   },
   {
@@ -2167,5 +2366,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-02T18:02:00+08:00"
+ "last_run_at": "2026-11-02T19:13:53+08:00"
 }

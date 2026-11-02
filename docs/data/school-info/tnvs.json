@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-02T18:01:20+08:00",
+ "generated_at": "2026-11-02T19:13:18+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -206,15 +206,53 @@
    "page_id": 88125011970407,
    "url": "https://www.tnvs.tn.edu.tw/teaching-unit/mechanical/",
    "label": "機電科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:15+08:00",
+   "path": [
+    "機電科"
+   ],
+   "changed_at": "2026-11-02T19:13:15+08:00",
+   "content_hash": "f86f872d4414c3c617e9a010151e644704ae3a34b742292071ace0a305ed3484",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "報名",
+    "研習",
+    "升學",
+    "安全",
+    "社團",
+    "簡介",
+    "繁星"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-88125011970407.json",
+   "detail_revision": "d8008637cda490bc8ac6d1af0befacc3d058d30f7fb64b8bb3b07242e8c2dbda",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "170419026183731": {
    "page_id": 170419026183731,
    "url": "https://www.tnvs.tn.edu.tw/teaching-unit/aquaculture/",
    "label": "水產養殖科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:16+08:00",
+   "path": [
+    "水產養殖科"
+   ],
+   "changed_at": "2026-11-02T19:13:16+08:00",
+   "content_hash": "68fcd7bb443cd453cd296098da42746a2c552e771fc0c776f3b9bd9f4a817524",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-170419026183731.json",
+   "detail_revision": "ff6bee331b82af11921fc1272c4f0ea2120865a4aada7b6a532b8863e09617e4",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "25469034902519": {
    "page_id": 25469034902519,
@@ -616,6 +654,138 @@
     "南水簡介"
    ],
    "order": 57
+  },
+  "234784464705896": {
+   "page_id": 234784464705896,
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-intro/",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "機電科"
+   ],
+   "order": 58
+  },
+  "195535099377964": {
+   "page_id": 195535099377964,
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-teacher/",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "機電科"
+   ],
+   "order": 59
+  },
+  "122416383984323": {
+   "page_id": 122416383984323,
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-class/",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "機電科"
+   ],
+   "order": 60
+  },
+  "52789488375909": {
+   "page_id": 52789488375909,
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-equ/",
+   "label": "教學設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "機電科"
+   ],
+   "order": 61
+  },
+  "76014471549581": {
+   "page_id": 76014471549581,
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-school/",
+   "label": "升學資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "機電科"
+   ],
+   "order": 62
+  },
+  "216708920769127": {
+   "page_id": 216708920769127,
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-teach/",
+   "label": "教學資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "機電科"
+   ],
+   "order": 63
+  },
+  "235830683618751": {
+   "page_id": 235830683618751,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/aquaculture/aqua-intro/",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產養殖科"
+   ],
+   "order": 64
+  },
+  "214200032385436": {
+   "page_id": 214200032385436,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/aquaculture/aqua-teacher/",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產養殖科"
+   ],
+   "order": 65
+  },
+  "98823845042474": {
+   "page_id": 98823845042474,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/aquaculture/aqua-class/",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產養殖科"
+   ],
+   "order": 66
+  },
+  "103571431129073": {
+   "page_id": 103571431129073,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/aquaculture/aqua-equ/",
+   "label": "教學設施",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產養殖科"
+   ],
+   "order": 67
+  },
+  "11663221238344": {
+   "page_id": 11663221238344,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/aquaculture/aqua-honor/",
+   "label": "英雄榮譽",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產養殖科"
+   ],
+   "order": 68
+  },
+  "29089147250672": {
+   "page_id": 29089147250672,
+   "url": "https://www.tnvs.tn.edu.tw/%e6%b0%b4%e7%94%a2%e9%a4%8a%e6%ae%96%e7%a7%91-%e5%8f%8b%e5%a5%bd%e9%80%a3%e7%b5%90/",
+   "label": "友好連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產養殖科"
+   ],
+   "order": 69
   }
  },
  "handbook": {},
@@ -704,6 +874,52 @@
    "documents": [],
    "detail_ref": "data/details/tnvs/tnvs-info-51902306409415.json",
    "detail_revision": "6cbd35c640830879f694627309c4a9ea041e7eda98fb2ce1b333247bad3b8043",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-88125011970407",
+   "kind": "school_info",
+   "title": "機電科",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/mechanical/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "報名",
+    "研習",
+    "升學",
+    "安全",
+    "社團",
+    "簡介",
+    "繁星"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-88125011970407.json",
+   "detail_revision": "d8008637cda490bc8ac6d1af0befacc3d058d30f7fb64b8bb3b07242e8c2dbda",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-170419026183731",
+   "kind": "school_info",
+   "title": "水產養殖科",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/aquaculture/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-170419026183731.json",
+   "detail_revision": "ff6bee331b82af11921fc1272c4f0ea2120865a4aada7b6a532b8863e09617e4",
    "detail_status": "parsed"
   },
   {
@@ -1155,5 +1371,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-02T18:01:20+08:00"
+ "last_run_at": "2026-11-02T19:13:18+08:00"
 }

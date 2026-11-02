@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-02T18:03:36+08:00",
+ "generated_at": "2026-11-02T19:15:21+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -460,22 +460,90 @@
    "page_id": 67184694639250,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=181",
    "label": "汽車科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:16+08:00",
+   "path": [
+    "汽車科"
+   ],
+   "changed_at": "2026-11-02T19:15:16+08:00",
+   "content_hash": "bc0f42121d6811848decb750b63ee30aed78fa5c094bacd543ca786b665c0362",
+   "doc_links": [],
+   "keywords": [
+    "宣導",
+    "招生"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-67184694639250.json",
+   "detail_revision": "5b641efb31e00737f7dc60506ea40e08675da41defa520b7bcff5ea71bed5c63",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "254461027853377": {
    "page_id": 254461027853377,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=183",
    "label": "電子科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:18+08:00",
+   "path": [
+    "電子科"
+   ],
+   "changed_at": "2026-11-02T19:15:18+08:00",
+   "content_hash": "824a35d53ea886c6ad50948a946d9e8199a10532c0a76d5f099f746573559b00",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "升學",
+    "決賽",
+    "入學",
+    "分發",
+    "博覽會",
+    "四技二專",
+    "模擬考",
+    "檢定",
+    "申請",
+    "申請入學",
+    "登記",
+    "科展",
+    "簡介",
+    "繁星",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-254461027853377.json",
+   "detail_revision": "36052389e96f8431c83c0354e9e7f47b0381c8f53fb2bb69e38f9f34a42d35f7",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "17436244430559": {
    "page_id": 17436244430559,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=185",
    "label": "電機科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:20+08:00",
+   "path": [
+    "電機科"
+   ],
+   "changed_at": "2026-11-02T19:15:20+08:00",
+   "content_hash": "5182f8af0196dd59a2e5342adbd9899d682a920ffe93a4884365ea8bb1e78340",
+   "doc_links": [],
+   "keywords": [
+    "檢定",
+    "分機",
+    "升學",
+    "競賽",
+    "簡介",
+    "聯絡電話",
+    "衛生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-17436244430559.json",
+   "detail_revision": "75fdaf2408e53eb4b0cc5928ef6fce70c18b1df7c8232acbf8526d82606cff34",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "35603066307103": {
    "page_id": 35603066307103,
@@ -1793,6 +1861,215 @@
     "機械科"
    ],
    "order": 146
+  },
+  "254149476209100": {
+   "page_id": 254149476209100,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=7732",
+   "label": "招生宣導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "汽車科"
+   ],
+   "order": 147
+  },
+  "225861184984009": {
+   "page_id": 225861184984009,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=7208",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "汽車科"
+   ],
+   "order": 148
+  },
+  "75910452838423": {
+   "page_id": 75910452838423,
+   "url": "https://www.hlvs.ylc.edu.tw/test",
+   "label": "教育目標",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "汽車科"
+   ],
+   "order": 149
+  },
+  "157733090816626": {
+   "page_id": 157733090816626,
+   "url": "https://www.hlvs.ylc.edu.tw/hlvs.ylc.edu.tw/?page_id=6266",
+   "label": "教育目標",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 150
+  },
+  "174486037443561": {
+   "page_id": 174486037443561,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=6237",
+   "label": "課程地圖",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 151
+  },
+  "263522909413026": {
+   "page_id": 263522909413026,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=6253",
+   "label": "師資團隊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 152
+  },
+  "197709377972767": {
+   "page_id": 197709377972767,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=52439",
+   "label": "教學環境",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 153
+  },
+  "161253041910974": {
+   "page_id": 161253041910974,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=67155",
+   "label": "專題製作競賽",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 154
+  },
+  "217728705773981": {
+   "page_id": 217728705773981,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=6259",
+   "label": "升學/檢定網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 155
+  },
+  "76492231386837": {
+   "page_id": 76492231386837,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=68359",
+   "label": "電學相關 網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 156
+  },
+  "157593939747814": {
+   "page_id": 157593939747814,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=68279",
+   "label": "實習處最新消息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 157
+  },
+  "247233013283261": {
+   "page_id": 247233013283261,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2901",
+   "label": "電機科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電機科"
+   ],
+   "order": 158
+  },
+  "255061627700126": {
+   "page_id": 255061627700126,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=3365",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電機科"
+   ],
+   "order": 159
+  },
+  "268360457699118": {
+   "page_id": 268360457699118,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=3607",
+   "label": "課程大綱",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電機科"
+   ],
+   "order": 160
+  },
+  "179723951800225": {
+   "page_id": 179723951800225,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=3666",
+   "label": "教學資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電機科"
+   ],
+   "order": 161
+  },
+  "249094147844761": {
+   "page_id": 249094147844761,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=3668",
+   "label": "工廠設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電機科"
+   ],
+   "order": 162
+  },
+  "203301708243055": {
+   "page_id": 203301708243055,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=3670",
+   "label": "變壓器檢定",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電機科"
+   ],
+   "order": 163
+  },
+  "62768431183762": {
+   "page_id": 62768431183762,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=3672",
+   "label": "室內配線檢定",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電機科"
+   ],
+   "order": 164
+  },
+  "131890831733957": {
+   "page_id": 131890831733957,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=3674",
+   "label": "好站連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電機科"
+   ],
+   "order": 165
   }
  },
  "handbook": {},
@@ -1828,6 +2105,32 @@
    "documents": [],
    "detail_ref": "data/details/hlvs/hlvs-info-8591527071103.json",
    "detail_revision": "7534025d2e7408fced11f0d20b1a60209fa44473ff9dae802027d3ff960d3685",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-17436244430559",
+   "kind": "school_info",
+   "title": "電機科",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=185",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "檢定",
+    "分機",
+    "升學",
+    "競賽",
+    "簡介",
+    "聯絡電話",
+    "衛生",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-17436244430559.json",
+   "detail_revision": "75fdaf2408e53eb4b0cc5928ef6fce70c18b1df7c8232acbf8526d82606cff34",
    "detail_status": "parsed"
   },
   {
@@ -1872,6 +2175,26 @@
    "documents": [],
    "detail_ref": "data/details/hlvs/hlvs-info-65635967223279.json",
    "detail_revision": "13e91146be7c842df8c107a80bcef2e1eef3678fa7d54f0a9c941961d35df063",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-67184694639250",
+   "kind": "school_info",
+   "title": "汽車科",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=181",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "宣導",
+    "招生"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-67184694639250.json",
+   "detail_revision": "5b641efb31e00737f7dc60506ea40e08675da41defa520b7bcff5ea71bed5c63",
    "detail_status": "parsed"
   },
   {
@@ -2127,6 +2450,40 @@
    "documents": [],
    "detail_ref": "data/details/hlvs/hlvs-info-248390110514321.json",
    "detail_revision": "b505ae578caa754d76a3625a53c623daef118f2c42e2bc4261d34d650ecbbcf5",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-254461027853377",
+   "kind": "school_info",
+   "title": "電子科",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=183",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "升學",
+    "決賽",
+    "入學",
+    "分發",
+    "博覽會",
+    "四技二專",
+    "模擬考",
+    "檢定",
+    "申請",
+    "申請入學",
+    "登記",
+    "科展",
+    "簡介",
+    "繁星",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-254461027853377.json",
+   "detail_revision": "36052389e96f8431c83c0354e9e7f47b0381c8f53fb2bb69e38f9f34a42d35f7",
    "detail_status": "parsed"
   },
   {
@@ -2490,5 +2847,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-02T18:03:36+08:00"
+ "last_run_at": "2026-11-02T19:15:21+08:00"
 }

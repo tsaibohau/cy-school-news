@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-02T17:49:33+08:00",
+ "generated_at": "2026-11-02T18:56:52+08:00",
  "school": {
   "id": "pksh",
   "name": "國立北港高級中學",
@@ -52,6 +52,51 @@
    }
   },
   {
+   "id": "pksh-28715",
+   "title": "11/3、11/4高一學生參加公民訓練活動。一義及商經一未參加活動學生照常上課，敬請任課老師到班授課，其餘高一班級停課。",
+   "date": "2026-11-02",
+   "source_category": "公告",
+   "school": "pksh",
+   "school_name": "北港高中",
+   "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=28715",
+   "category": "研習活動",
+   "first_seen": "2026-11-02T18:56:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1
+    ],
+    "classes": [],
+    "all_school": false
+   }
+  },
+  {
+   "id": "pksh-28714",
+   "title": "115-1普二北港學(第二階段)線上選課預計11/4(三)09:00開始",
+   "date": "2026-11-02",
+   "source_category": "公告",
+   "school": "pksh",
+   "school_name": "北港高中",
+   "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=28714",
+   "category": "選課",
+   "first_seen": "2026-11-02T18:56:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "86efe164abc4dd368a9991127cb55715b6fee20369bba64db745df8d69b94e0c"
+    }
+   ]
+  },
+  {
    "id": "pksh-28713",
    "title": "【116身心障礙學生升學大專校院甄試】校內報名提醒(11/9下午5點止)",
    "date": "2026-11-02",
@@ -63,8 +108,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -86,8 +131,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "pksh-28709",
@@ -15089,7 +15134,7 @@
   },
   {
    "id": "pksh-27186",
-   "title": "114-2  四技二專甄選入學第二階段-模擬面試指導調查報名表",
+   "title": "114-2 四技二專甄選入學第二階段-模擬面試指導調查報名表",
    "date": "2026-05-15",
    "source_category": "輔導室",
    "school": "pksh",
@@ -15097,7 +15142,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27186",
    "category": "升學",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27219",
@@ -15183,9 +15232,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27215",
@@ -15199,9 +15248,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -15223,9 +15272,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27213",
@@ -15239,9 +15288,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27212",
@@ -15255,9 +15304,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -15279,9 +15328,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27210",
@@ -15295,9 +15344,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -15319,9 +15368,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "event",
@@ -15355,9 +15404,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27208",
@@ -15371,9 +15420,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27206",
@@ -15387,9 +15436,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -15411,9 +15460,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27204",
@@ -15427,9 +15476,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27203",
@@ -15443,9 +15492,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -15474,9 +15523,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27201",
@@ -15490,9 +15539,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -15514,9 +15563,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27199",
@@ -15530,9 +15579,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27198",
@@ -15546,9 +15595,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27197",
@@ -15562,9 +15611,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27195",
@@ -15578,9 +15627,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -15602,9 +15651,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -15626,9 +15675,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27191",
@@ -15642,9 +15691,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "date_status": "verified",
-   "snippet_tried": true
+   "date_status": "verified"
   },
   {
    "id": "pksh-27188",
@@ -15656,7 +15705,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27188",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27187",
@@ -15668,7 +15721,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27187",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27196",
@@ -15682,9 +15739,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -15730,7 +15787,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27185",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27183",
@@ -15742,7 +15803,19 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27183",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-05-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "25ba2d675ad6f16785d6116863ec443c2a2c05af0016a6083c7b445020a835e8"
+    }
+   ]
   },
   {
    "id": "pksh-27182",
@@ -15754,7 +15827,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27182",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27181",
@@ -15766,7 +15843,19 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27181",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-05-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9bece7814d9f2d6fa1518b4634fee8cdcbc9511fbe31b7fd607849e452f42852"
+    }
+   ]
   },
   {
    "id": "pksh-27180",
@@ -15778,7 +15867,31 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27180",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-08-03",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6c8ca3f2e5526e7d0ea874f6e1c0063de98b31c79d0a5dac6d33102a38a97c97"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-06-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6c8ca3f2e5526e7d0ea874f6e1c0063de98b31c79d0a5dac6d33102a38a97c97"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-06-01",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6c8ca3f2e5526e7d0ea874f6e1c0063de98b31c79d0a5dac6d33102a38a97c97"
+    }
+   ]
   },
   {
    "id": "pksh-27179",
@@ -15790,7 +15903,19 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27179",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "06f582a575120f3ab408abe98f3004659a4a5e2b56d9a46c0be2726734e8aaca"
+    }
+   ]
   },
   {
    "id": "pksh-27177",
@@ -15802,7 +15927,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27177",
    "category": "社團",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27178",
@@ -15814,7 +15943,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27178",
    "category": "段考考試",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
    "audience": {
     "grades": [
      3
@@ -15833,7 +15966,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27176",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27175",
@@ -15845,7 +15982,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27175",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27174",
@@ -15857,7 +15998,19 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27174",
    "category": "招生編班",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-05-14",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e0738ffd31a6cb833bc36b116cbf3fe1cabe0faa4ae0bb0cd0904a3ef35cd139"
+    }
+   ]
   },
   {
    "id": "pksh-27173",
@@ -15869,7 +16022,19 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27173",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-07-08",
+     "provenance": "verified_announcement_event",
+     "source_revision": "dc556169f1f2a3a2d0077239236678dfecb0ce365a79d7e667fd00e5fcfded2b"
+    }
+   ]
   },
   {
    "id": "pksh-27172",
@@ -15881,7 +16046,25 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27172",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-08-01",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b7b383c8654a0b70ce8932ae3a693262f1811495ddd3a488197eda1e6389225e"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-05-31",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b7b383c8654a0b70ce8932ae3a693262f1811495ddd3a488197eda1e6389225e"
+    }
+   ]
   },
   {
    "id": "pksh-27169",
@@ -15893,7 +16076,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27169",
    "category": "教職員",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27170",
@@ -15905,7 +16092,19 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27170",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-05-13",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d534025e501a840a8931dfeead867798b536274cad76ddddde7f3e1628236e2b"
+    }
+   ]
   },
   {
    "id": "pksh-27168",
@@ -15917,7 +16116,19 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27168",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-08-15",
+     "provenance": "verified_announcement_event",
+     "source_revision": "b07f9652156e5bd586d948a5d73054d88f6c5666d9914b768a6b674304117031"
+    }
+   ]
   },
   {
    "id": "pksh-27167",
@@ -15929,7 +16140,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27167",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27166",
@@ -15941,7 +16156,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27166",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27165",
@@ -15953,7 +16172,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27165",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27164",
@@ -15965,7 +16188,19 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27164",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-06-22",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "81e37c9106b03ccc4bf5b8b6a08319e5147afcb7b55666de0e8e29e57c5dc150"
+    }
+   ]
   },
   {
    "id": "pksh-27163",
@@ -15977,7 +16212,11 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27163",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true
   },
   {
    "id": "pksh-27155",
@@ -15989,7 +16228,19 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27155",
    "category": "段考考試",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-05-12",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "27bc49702426cb12944c10c750ca7007134d7087d3d4d726b4aad8296ea32657"
+    }
+   ],
    "audience": {
     "grades": [
      3

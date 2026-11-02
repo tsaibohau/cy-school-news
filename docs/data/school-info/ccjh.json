@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-02T18:03:10+08:00",
+ "generated_at": "2026-11-02T19:15:02+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "98": {
@@ -575,11 +575,61 @@
   },
   "95": {
    "page_id": 95,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T19:14:58+08:00",
+   "path": [
+    "行政單位",
+    "竹中教務處",
+    "註冊組"
+   ],
+   "changed_at": "2026-11-02T19:14:58+08:00",
+   "content_hash": "071ae51f721ce3f761104a664a9752fa83c9a5364f07e71b67045393b1463fe4",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "分機",
+    "助學金",
+    "報到",
+    "報名",
+    "新生",
+    "獎助學金",
+    "登記",
+    "編班",
+    "考試",
+    "轉學"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-95.json",
+   "detail_revision": "87fea88ea68060759ed73c06cc145536e4730052e40c6e0b76acdc15f13f6801",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "96": {
    "page_id": 96,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T19:15:00+08:00",
+   "path": [
+    "行政單位",
+    "竹中教務處",
+    "設備組"
+   ],
+   "changed_at": "2026-11-02T19:15:00+08:00",
+   "content_hash": "5d74e20bfe2b0929a9326c049c2ecf9f92c24f9ebe0cd853c6ac827ea50327fa",
+   "doc_links": [],
+   "keywords": [
+    "研習",
+    "分機",
+    "分發",
+    "安全",
+    "登記",
+    "科展",
+    "競賽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-96.json",
+   "detail_revision": "d10480e4728ba9625ff85bc017f5a43df3684f9335067e50d97c4406a2ffa5fe",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "120": {
    "page_id": 120,
@@ -859,6 +909,60 @@
    "documents": [],
    "detail_ref": "data/details/ccjh/ccjh-info-94.json",
    "detail_revision": "387b56ad8c688e212fffbb3a6cb9c19d85af70a41bebf4a6318f94a11355ff4a",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-95",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中教務處 › 註冊組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-95.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "入學",
+    "分機",
+    "助學金",
+    "報到",
+    "報名",
+    "新生",
+    "獎助學金",
+    "登記",
+    "編班",
+    "考試",
+    "轉學"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-95.json",
+   "detail_revision": "87fea88ea68060759ed73c06cc145536e4730052e40c6e0b76acdc15f13f6801",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-96",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中教務處 › 設備組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-96.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "研習",
+    "分機",
+    "分發",
+    "安全",
+    "登記",
+    "科展",
+    "競賽"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-96.json",
+   "detail_revision": "d10480e4728ba9625ff85bc017f5a43df3684f9335067e50d97c4406a2ffa5fe",
    "detail_status": "parsed"
   },
   {
@@ -1315,5 +1419,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-02T18:03:10+08:00"
+ "last_run_at": "2026-11-02T19:15:02+08:00"
 }

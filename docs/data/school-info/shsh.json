@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-02T18:03:45+08:00",
+ "generated_at": "2026-11-02T19:15:34+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -682,22 +682,47 @@
    "page_id": 80835173939088,
    "url": "https://www.shsh.ylc.edu.tw/magazine/2025/",
    "label": "電子校刊 風箏",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:29+08:00",
+   "path": [
+    "電子校刊 風箏"
+   ]
   },
   "178623634960126": {
    "page_id": 178623634960126,
    "url": "https://www.shsh.ylc.edu.tw/magazine/2026/",
    "label": "電子校刊 Life",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:30+08:00",
+   "path": [
+    "電子校刊 Life"
+   ]
   },
   "22700933303108": {
    "page_id": 22700933303108,
    "url": "https://www.shsh.ylc.edu.tw/privacy/%e7%b6%b2%e7%ab%99%e5%ae%89%e5%85%a8%e6%94%bf%e7%ad%96/",
    "label": "網站安全政策",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:15:33+08:00",
+   "path": [
+    "網站政策",
+    "網站安全政策"
+   ],
+   "changed_at": "2026-11-02T19:15:33+08:00",
+   "content_hash": "ee9ded2025477917c8483d91990577989ea29bc5dc4e309d7235eb604c9d6c9b",
+   "doc_links": [],
+   "keywords": [
+    "安全",
+    "災害"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-22700933303108.json",
+   "detail_revision": "9015d1b5c4bad6cf078819033667d7c0416ba4059376a54ec3c265e6f6ad0107",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "197137405121860": {
    "page_id": 197137405121860,
@@ -2800,12 +2825,43 @@
     "網站導覽"
    ],
    "order": 206
+  },
+  "136374919188372": {
+   "page_id": 136374919188372,
+   "url": "https://www.shsh.ylc.edu.tw/magazine/2025/files/basic-html/page1.html",
+   "label": "Pages",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子校刊 風箏"
+   ],
+   "order": 207
   }
  },
  "handbook": {},
  "rules": {},
  "services": {},
  "items": [
+  {
+   "id": "shsh-info-22700933303108",
+   "kind": "school_info",
+   "title": "網站政策 › 網站安全政策",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/privacy/%e7%b6%b2%e7%ab%99%e5%ae%89%e5%85%a8%e6%94%bf%e7%ad%96/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "安全",
+    "災害"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-22700933303108.json",
+   "detail_revision": "9015d1b5c4bad6cf078819033667d7c0416ba4059376a54ec3c265e6f6ad0107",
+   "detail_status": "parsed"
+  },
   {
    "id": "shsh-info-57294024069779",
    "kind": "school_info",
@@ -4081,5 +4137,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-02T18:03:45+08:00"
+ "last_run_at": "2026-11-02T19:15:34+08:00"
 }

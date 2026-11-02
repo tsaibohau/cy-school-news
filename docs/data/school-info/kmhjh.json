@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-02T18:01:40+08:00",
+ "generated_at": "2026-11-02T19:13:35+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -126,15 +126,25 @@
    "page_id": 210504357308564,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/internship-office/",
    "label": "實習處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:32+08:00",
+   "path": [
+    "行政組織",
+    "實習處"
+   ]
   },
   "260211338516191": {
    "page_id": 260211338516191,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/general-affairs/",
    "label": "總務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:33+08:00",
+   "path": [
+    "行政組織",
+    "總務處"
+   ]
   },
   "72206835063382": {
    "page_id": 72206835063382,
@@ -646,6 +656,150 @@
     "學務處"
    ],
    "order": 66
+  },
+  "62117594379714": {
+   "page_id": 62117594379714,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/internship-office/1/",
+   "label": "最新公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "實習處"
+   ],
+   "order": 67
+  },
+  "268980237982131": {
+   "page_id": 268980237982131,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/internship-office/2/",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "實習處"
+   ],
+   "order": 68
+  },
+  "242850756941393": {
+   "page_id": 242850756941393,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/internship-office/3/",
+   "label": "法令規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "實習處"
+   ],
+   "order": 69
+  },
+  "25662949593073": {
+   "page_id": 25662949593073,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/internship-office/4/",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "實習處"
+   ],
+   "order": 70
+  },
+  "150620185116207": {
+   "page_id": 150620185116207,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/internship-office/5/",
+   "label": "相關業務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "實習處"
+   ],
+   "order": 71
+  },
+  "43669412920112": {
+   "page_id": 43669412920112,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/general-affairs/1/",
+   "label": "最新公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 72
+  },
+  "169026414217667": {
+   "page_id": 169026414217667,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/general-affairs/2/",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 73
+  },
+  "223235563072200": {
+   "page_id": 223235563072200,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/general-affairs/3/",
+   "label": "法令規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 74
+  },
+  "164341425107909": {
+   "page_id": 164341425107909,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/general-affairs/4/",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 75
+  },
+  "24041943666277": {
+   "page_id": 24041943666277,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/general-affairs/5/",
+   "label": "代收代辦",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 76
+  },
+  "12730752226450": {
+   "page_id": 12730752226450,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/general-affairs/6/",
+   "label": "會議記錄",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 77
+  },
+  "82438586019996": {
+   "page_id": 82438586019996,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/general-affairs/7/",
+   "label": "公開資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 78
   }
  },
  "handbook": {},
@@ -899,5 +1053,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-02T18:01:40+08:00"
+ "last_run_at": "2026-11-02T19:13:35+08:00"
 }

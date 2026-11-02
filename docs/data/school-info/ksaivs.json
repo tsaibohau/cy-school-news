@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-02T18:02:13+08:00",
+ "generated_at": "2026-11-02T19:14:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -266,15 +266,46 @@
    "page_id": 187701472752311,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-171.php",
    "label": "生物產業機電科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:14:05+08:00",
+   "path": [
+    "教學單位",
+    "機電科"
+   ],
+   "changed_at": "2026-11-02T19:14:05+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-187701472752311.json",
+   "detail_revision": "330261302f10797282aae16e6ee56cf322bbf5218447bee9dd33aba98c5d1fbd",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "29440400751565": {
    "page_id": 29440400751565,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-172.php",
    "label": "汽車科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:14:06+08:00",
+   "path": [
+    "教學單位",
+    "汽車科"
+   ],
+   "changed_at": "2026-11-02T19:14:06+08:00",
+   "content_hash": "50b7379e240f673f663f6566f002c5897f2bb00166ec91778b76ad0370fe3b46",
+   "doc_links": [],
+   "keywords": [
+    "檢定",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-29440400751565.json",
+   "detail_revision": "093553cf190939ecefea0405cac634c7fa9152a9f3f18920584c5732c78eef35",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "271630506844261": {
    "page_id": 271630506844261,
@@ -1560,6 +1591,78 @@
     "資訊科"
    ],
    "order": 130
+  },
+  "259844341333014": {
+   "page_id": 259844341333014,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-672.php",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "汽車科"
+   ],
+   "order": 131
+  },
+  "179162032409013": {
+   "page_id": 179162032409013,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-675.php",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "汽車科"
+   ],
+   "order": 132
+  },
+  "116416399530061": {
+   "page_id": 116416399530061,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-679.php",
+   "label": "環境設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "汽車科"
+   ],
+   "order": 133
+  },
+  "213899875136467": {
+   "page_id": 213899875136467,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-810.php",
+   "label": "實習課教學概況",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "汽車科"
+   ],
+   "order": 134
+  },
+  "281031149730469": {
+   "page_id": 281031149730469,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-811.php",
+   "label": "職場體驗教學概況",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "汽車科"
+   ],
+   "order": 135
+  },
+  "115132883815608": {
+   "page_id": 115132883815608,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-812.php",
+   "label": "研習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "汽車科"
+   ],
+   "order": 136
   }
  },
  "handbook": {},
@@ -1594,6 +1697,26 @@
    "documents": [],
    "detail_ref": "data/details/ksaivs/ksaivs-info-21112690938014.json",
    "detail_revision": "3ce8a7cfeeeba0c39203127732561462f81e20e309cda5ee87cb538ae8836948",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-29440400751565",
+   "kind": "school_info",
+   "title": "教學單位 › 汽車科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-172.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "檢定",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-29440400751565.json",
+   "detail_revision": "093553cf190939ecefea0405cac634c7fa9152a9f3f18920584c5732c78eef35",
    "detail_status": "parsed"
   },
   {
@@ -1686,6 +1809,23 @@
    "documents": [],
    "detail_ref": "data/details/ksaivs/ksaivs-info-162406327427102.json",
    "detail_revision": "4b68854c6b77bcbab5f2e933a8e25445d08f88bfa6449f4a4c82182beaf4f299",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-187701472752311",
+   "kind": "school_info",
+   "title": "教學單位 › 機電科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-171.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-187701472752311.json",
+   "detail_revision": "330261302f10797282aae16e6ee56cf322bbf5218447bee9dd33aba98c5d1fbd",
    "detail_status": "parsed"
   },
   {
@@ -2014,5 +2154,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-02T18:02:13+08:00"
+ "last_run_at": "2026-11-02T19:14:08+08:00"
 }

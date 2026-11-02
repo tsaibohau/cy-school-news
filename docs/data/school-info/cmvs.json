@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-02T18:01:33+08:00",
+ "generated_at": "2026-11-02T19:13:30+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -129,15 +129,34 @@
    "page_id": 86702907244905,
    "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=402&cat_sn=3&name=113%E6%94%B6%E8%B2%BB%E6%A8%99%E6%BA%96.pdf",
    "label": "部訂收費標準",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:27+08:00",
+   "path": [
+    "部訂收費標準"
+   ],
+   "changed_at": "2026-11-02T19:13:27+08:00",
+   "content_hash": "4064002ee1bc52c0a76c9def7906e9b08de4296d22ecdc47185052e2f08a59d7",
+   "doc_links": [],
+   "keywords": [
+    "3C"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cmvs/cmvs-info-86702907244905.json",
+   "detail_revision": "255684a73cc4da0fd2e3c2cbcaaa2611a7f671ffcf5c479a91c5b00b45cad74a",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "26410898020666": {
    "page_id": 26410898020666,
    "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=7",
    "label": "本校行事曆",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:29+08:00",
+   "path": [
+    "本校行事曆"
+   ]
   },
   "97526521392821": {
    "page_id": 97526521392821,
@@ -870,12 +889,109 @@
     "維修通報"
    ],
    "order": 80
+  },
+  "7572273856341": {
+   "page_id": 7572273856341,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=icon&of_cat_sn=7",
+   "label": "",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "本校行事曆"
+   ],
+   "order": 81
+  },
+  "28818148308257": {
+   "page_id": 28818148308257,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=more&of_cat_sn=7",
+   "label": "",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "本校行事曆"
+   ],
+   "order": 82
+  },
+  "261824171852329": {
+   "page_id": 261824171852329,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=58",
+   "label": "113學年度",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "本校行事曆"
+   ],
+   "order": 83
+  },
+  "211841997382568": {
+   "page_id": 211841997382568,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=61",
+   "label": "114學年度",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "本校行事曆"
+   ],
+   "order": 84
+  },
+  "194865816896351": {
+   "page_id": 194865816896351,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=31",
+   "label": "112學年度",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "本校行事曆"
+   ],
+   "order": 85
+  },
+  "78118053929850": {
+   "page_id": 78118053929850,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=30",
+   "label": "111學年度",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "本校行事曆"
+   ],
+   "order": 86
+  },
+  "249730459304618": {
+   "page_id": 249730459304618,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?of_cat_sn=32",
+   "label": "110學年度",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "本校行事曆"
+   ],
+   "order": 87
   }
  },
  "handbook": {},
  "rules": {},
  "services": {},
- "items": [],
+ "items": [
+  {
+   "id": "cmvs-info-86702907244905",
+   "kind": "school_info",
+   "title": "部訂收費標準",
+   "school": "cmvs",
+   "school_name": "旗美商工",
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=402&cat_sn=3&name=113%E6%94%B6%E8%B2%BB%E6%A8%99%E6%BA%96.pdf",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "3C"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cmvs/cmvs-info-86702907244905.json",
+   "detail_revision": "255684a73cc4da0fd2e3c2cbcaaa2611a7f671ffcf5c479a91c5b00b45cad74a",
+   "detail_status": "parsed"
+  }
+ ],
  "roots": [
   {
    "page_id": 31498799623197,
@@ -1166,5 +1282,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-02T18:01:33+08:00"
+ "last_run_at": "2026-11-02T19:13:30+08:00"
 }

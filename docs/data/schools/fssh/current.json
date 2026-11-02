@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-02T17:49:33+08:00",
+ "generated_at": "2026-11-02T18:56:52+08:00",
  "school": {
   "id": "fssh",
   "name": "國立鳳山高中",
@@ -20,8 +20,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fssh-18663",
@@ -35,8 +35,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fssh-18662",
@@ -50,8 +50,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -79,8 +79,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fssh-18660",
@@ -94,8 +94,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "fssh-18659",
@@ -107,7 +107,10 @@
    "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18659",
    "category": "一般",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "fssh-18658",
@@ -119,7 +122,24 @@
    "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18658",
    "category": "研習活動",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-26",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "eba16a262ff1055db9af2141e204d3017aa90000db415ad0288ed24c597c9984"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "eba16a262ff1055db9af2141e204d3017aa90000db415ad0288ed24c597c9984"
+    }
+   ]
   },
   {
    "id": "fssh-18657",
@@ -131,7 +151,18 @@
    "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18657",
    "category": "研習活動",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-25",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f812b70ef9a5e1f6faade409fbb6463dfe78f85907d7ffbedc01f87cde2b430f"
+    }
+   ]
   },
   {
    "id": "fssh-18656",
@@ -143,7 +174,24 @@
    "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18656",
    "category": "競賽",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e46000626249cf7826579a1670c9ee897e41f78139635d7910aca0d8ed9ef8c1"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e46000626249cf7826579a1670c9ee897e41f78139635d7910aca0d8ed9ef8c1"
+    }
+   ]
   },
   {
    "id": "fssh-18655",
@@ -155,7 +203,18 @@
    "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18655",
    "category": "研習活動",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0a25e3ca9d95d2ad6c16237550f3ae7738417a2f595eb449a87c7a41164fb66b"
+    }
+   ]
   },
   {
    "id": "fssh-18652",
@@ -167,7 +226,10 @@
    "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18652",
    "category": "一般",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "fssh-18651",
@@ -179,7 +241,10 @@
    "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18651",
    "category": "一般",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "fssh-18650",
@@ -191,7 +256,24 @@
    "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18650",
    "category": "研習活動",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "01108a388368f40dfdbf3810dff70c09b5bed0b909b373eacfe104efcddb1478"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-17",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "01108a388368f40dfdbf3810dff70c09b5bed0b909b373eacfe104efcddb1478"
+    }
+   ]
   },
   {
    "id": "fssh-18643",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-02T18:02:31+08:00",
+ "generated_at": "2026-11-02T19:14:27+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -6109,15 +6109,63 @@
   },
   "655": {
    "page_id": 655,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T19:14:22+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "科學班",
+    "科學班介紹"
+   ],
+   "changed_at": "2026-11-02T19:14:22+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-655.json",
+   "detail_revision": "233a7c2677e2f7e0e357211bf84d7200d2a763f2d9d2493a1c00a129c9dde2ff",
+   "detail_status": "empty",
+   "attachments": []
   },
   "656": {
    "page_id": 656,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T19:14:24+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "科學班",
+    "招生專區"
+   ],
+   "changed_at": "2026-11-02T19:14:24+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-656.json",
+   "detail_revision": "db9bb2f8e20d3d2eba8f3422eec954988d3de19de7c3ec8107e3e78a73ff6189",
+   "detail_status": "empty",
+   "attachments": []
   },
   "658": {
    "page_id": 658,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T19:14:26+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "科學班",
+    "課程資訊"
+   ],
+   "changed_at": "2026-11-02T19:14:26+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-658.json",
+   "detail_revision": "9b296dd70de2ad076abecaf49efc7d3f9faa7979fde84c9064af476fb3b99298",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1338": {
    "page_id": 1338,
@@ -10428,6 +10476,57 @@
    "detail_ref": "data/details/cysh/cysh-info-620.json",
    "detail_revision": "9138e9047e43c82181aa48307a13b17280b28fd84f2cca6bf99dc470fa6de227",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-655",
+   "kind": "school_info",
+   "title": "教務處 › 科學班 › 科學班介紹",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-655.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-655.json",
+   "detail_revision": "233a7c2677e2f7e0e357211bf84d7200d2a763f2d9d2493a1c00a129c9dde2ff",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-656",
+   "kind": "school_info",
+   "title": "教務處 › 科學班 › 招生專區",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-656.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-656.json",
+   "detail_revision": "db9bb2f8e20d3d2eba8f3422eec954988d3de19de7c3ec8107e3e78a73ff6189",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-658",
+   "kind": "school_info",
+   "title": "教務處 › 科學班 › 課程資訊",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-658.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-658.json",
+   "detail_revision": "9b296dd70de2ad076abecaf49efc7d3f9faa7979fde84c9064af476fb3b99298",
+   "detail_status": "empty"
   },
   {
    "id": "cysh-info-661",
@@ -15023,5 +15122,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-02T18:02:31+08:00"
+ "last_run_at": "2026-11-02T19:14:27+08:00"
 }

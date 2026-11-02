@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-02T18:03:05+08:00",
+ "generated_at": "2026-11-02T19:14:57+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "495": {
@@ -981,11 +981,69 @@
   },
   "482": {
    "page_id": 482,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T19:14:53+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組",
+    "國中課程計畫"
+   ],
+   "changed_at": "2026-11-02T19:14:53+08:00",
+   "content_hash": "b5354beae05cc145f3b59e669eefac30415a3404272c03a3b884a47d8cd33480",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-482.json",
+   "detail_revision": "a39fbd6fba6e85f513c951867f8d46e58d9059a5ae5ea5b5115480dc85817e72",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "483": {
    "page_id": 483,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T19:14:55+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組",
+    "學生競賽"
+   ],
+   "changed_at": "2026-11-02T19:14:55+08:00",
+   "content_hash": "a3775ccdd15e89672b1660285c3b95dc8d3a62db0e8bcc40b5e9a88f61e4c15d",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "比賽",
+    "競賽",
+    "地址",
+    "報名",
+    "奧林匹亞",
+    "專線",
+    "招生",
+    "語文競賽",
+    "辯論",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-483.json",
+   "detail_revision": "e70193787e9fa3d975bcf22ecfc426dc0f084a619d71b0ae595d2e72f5d0cccc",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "484": {
    "page_id": 484,
@@ -1695,6 +1753,70 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fjsh-info-482",
+   "kind": "school_info",
+   "title": "教務處 › 教學組 › 國中課程計畫",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-482.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-482.json",
+   "detail_revision": "a39fbd6fba6e85f513c951867f8d46e58d9059a5ae5ea5b5115480dc85817e72",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-483",
+   "kind": "school_info",
+   "title": "教務處 › 教學組 › 學生競賽",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-483.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "比賽",
+    "競賽",
+    "地址",
+    "報名",
+    "奧林匹亞",
+    "專線",
+    "招生",
+    "語文競賽",
+    "辯論",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-483.json",
+   "detail_revision": "e70193787e9fa3d975bcf22ecfc426dc0f084a619d71b0ae595d2e72f5d0cccc",
+   "detail_status": "parsed"
+  },
+  {
    "id": "fjsh-info-495",
    "kind": "school_info",
    "title": "教務處 › 註冊組 › 招生資訊",
@@ -1823,5 +1945,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-02T18:03:05+08:00"
+ "last_run_at": "2026-11-02T19:14:57+08:00"
 }

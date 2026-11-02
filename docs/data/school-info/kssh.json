@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-02T18:02:07+08:00",
+ "generated_at": "2026-11-02T19:14:03+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -243,8 +243,80 @@
    "page_id": 238776332606298,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4448.php",
    "label": "校務資料開放專區",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:57+08:00",
+   "path": [
+    "校務資料開放專區"
+   ],
+   "changed_at": "2026-11-02T19:13:57+08:00",
+   "content_hash": "db9cfeb4318bf23c6a3700954401c92ebfa3c16f8db1b411aff184c9a2210459",
+   "doc_links": [
+    {
+     "name": "減免學雜費相關資訊",
+     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpblbBRULs5R6j3mvmpnZVJNltx7nxY4IIgDPe-pEF5IOqfBMVo2ygYbuFo_AiEA/pubhtml?gid=1647660162&single=true"
+    },
+    {
+     "name": "政府、學校與民間機構提供之各項助學措施資訊(獎助學金",
+     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyjP-L-ofmjaBnwcLYo4DZsWpa6TvDeLSOJAj5m0WQKHSiNZFulUurrCmoYpSWwg/pubhtml?gid=204970461&single=true"
+    }
+   ],
+   "keywords": [
+    "申請",
+    "收費",
+    "午休",
+    "社團",
+    "校長",
+    "作息",
+    "學雜費",
+    "安全",
+    "作息時間",
+    "放學",
+    "服務學習",
+    "登記",
+    "第一節",
+    "輔導課",
+    "圖書館",
+    "檢定",
+    "考試",
+    "課業輔導",
+    "上學時間",
+    "代辦費",
+    "入學",
+    "公假",
+    "出缺席",
+    "分機",
+    "分發",
+    "到校時間",
+    "升學",
+    "學業成績",
+    "學生宿舍",
+    "定期考",
+    "宿舍",
+    "就學貸款",
+    "工讀",
+    "曠課",
+    "服裝",
+    "校慶",
+    "校車",
+    "研習",
+    "缺席",
+    "缺曠"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-238776332606298.json",
+   "detail_revision": "5b873149254ef4bde6784a89876d3df5f726ed0ef5779a8512dce1609091452c",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "在校作息時間",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/4/155177286.pdf"
+    },
+    {
+     "name": "場地租借及收費標準",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/541659507.pdf"
+    }
+   ]
   },
   "64530537523419": {
    "page_id": 64530537523419,
@@ -462,6 +534,237 @@
     "各年級導師"
    ],
    "order": 29
+  },
+  "249836646961431": {
+   "page_id": 249836646961431,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4110.php",
+   "label": "學校沿革",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 30
+  },
+  "102145295088097": {
+   "page_id": 102145295088097,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4460.php",
+   "label": "組織架構",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 31
+  },
+  "220417356157942": {
+   "page_id": 220417356157942,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4464.php",
+   "label": "近3年學生人數與班級數",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 32
+  },
+  "47604525079125": {
+   "page_id": 47604525079125,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4467.php",
+   "label": "學校校地總面積、校舍樓地板總面積",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 33
+  },
+  "89907306228635": {
+   "page_id": 89907306228635,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4115.php",
+   "label": "學校校舍空間配置",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 34
+  },
+  "92380448215049": {
+   "page_id": 92380448215049,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4114.php",
+   "label": "交通資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 35
+  },
+  "4109304343210": {
+   "page_id": 4109304343210,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4465.php",
+   "label": "學校特色說明",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 36
+  },
+  "39677151748038": {
+   "page_id": 39677151748038,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4468.php",
+   "label": "學校未來發展願景或短中長程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 37
+  },
+  "215452440202311": {
+   "page_id": 215452440202311,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4469.php",
+   "label": "近期各類評鑑結果",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 38
+  },
+  "26091836638420": {
+   "page_id": 26091836638420,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4470.php",
+   "label": "其他與學校績效表現有關之訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 39
+  },
+  "64123942048132": {
+   "page_id": 64123942048132,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4471.php",
+   "label": "學雜費及代收代辦費收費標準",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 40
+  },
+  "195128619221838": {
+   "page_id": 195128619221838,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4119.php",
+   "label": "重要補充規定",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 41
+  },
+  "117653800084672": {
+   "page_id": 117653800084672,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4122.php",
+   "label": "校務基金預算書",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 42
+  },
+  "222425196456650": {
+   "page_id": 222425196456650,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4477.php",
+   "label": "校園開放時間",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 43
+  },
+  "74148713421051": {
+   "page_id": 74148713421051,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4461.php",
+   "label": "基本資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 44
+  },
+  "181427945960182": {
+   "page_id": 181427945960182,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4462.php",
+   "label": "學校特色與發展願景",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 45
+  },
+  "128029969640905": {
+   "page_id": 128029969640905,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4463.php",
+   "label": "學校績效表現",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 46
+  },
+  "131797466688985": {
+   "page_id": 131797466688985,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4456.php",
+   "label": "學雜費與就學補助資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 47
+  },
+  "106834856822297": {
+   "page_id": 106834856822297,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4457.php",
+   "label": "課程相關資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 48
+  },
+  "182889241642544": {
+   "page_id": 182889241642544,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4458.php",
+   "label": "學習事務資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 49
+  },
+  "50962831119871": {
+   "page_id": 50962831119871,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4453.php",
+   "label": "社區服務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 50
   }
  },
  "handbook": {},
@@ -656,6 +959,86 @@
    "detail_status": "parsed"
   },
   {
+   "id": "kssh-info-238776332606298",
+   "kind": "school_info",
+   "title": "校務資料開放專區",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4448.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "在校作息時間",
+    "場地租借及收費標準",
+    "減免學雜費相關資訊",
+    "政府、學校與民間機構提供之各項助學措施資訊(獎助學金"
+   ],
+   "keywords": [
+    "申請",
+    "收費",
+    "午休",
+    "社團",
+    "校長",
+    "作息",
+    "學雜費",
+    "安全",
+    "作息時間",
+    "放學",
+    "服務學習",
+    "登記",
+    "第一節",
+    "輔導課",
+    "圖書館",
+    "檢定",
+    "考試",
+    "課業輔導",
+    "上學時間",
+    "代辦費",
+    "入學",
+    "公假",
+    "出缺席",
+    "分機",
+    "分發",
+    "到校時間",
+    "升學",
+    "學業成績",
+    "學生宿舍",
+    "定期考",
+    "宿舍",
+    "就學貸款",
+    "工讀",
+    "曠課",
+    "服裝",
+    "校慶",
+    "校車",
+    "研習",
+    "缺席",
+    "缺曠"
+   ],
+   "documents": [
+    {
+     "name": "在校作息時間",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/4/155177286.pdf"
+    },
+    {
+     "name": "場地租借及收費標準",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/541659507.pdf"
+    },
+    {
+     "name": "減免學雜費相關資訊",
+     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRpblbBRULs5R6j3mvmpnZVJNltx7nxY4IIgDPe-pEF5IOqfBMVo2ygYbuFo_AiEA/pubhtml?gid=1647660162&single=true"
+    },
+    {
+     "name": "政府、學校與民間機構提供之各項助學措施資訊(獎助學金",
+     "url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vTyjP-L-ofmjaBnwcLYo4DZsWpa6TvDeLSOJAj5m0WQKHSiNZFulUurrCmoYpSWwg/pubhtml?gid=204970461&single=true"
+    }
+   ],
+   "detail_ref": "data/details/kssh/kssh-info-238776332606298.json",
+   "detail_revision": "5b873149254ef4bde6784a89876d3df5f726ed0ef5779a8512dce1609091452c",
+   "detail_status": "parsed"
+  },
+  {
    "id": "kssh-info-265744219737499",
    "kind": "school_info",
    "title": "行政單位 › 總務處",
@@ -835,5 +1218,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-02T18:02:07+08:00"
+ "last_run_at": "2026-11-02T19:14:03+08:00"
 }

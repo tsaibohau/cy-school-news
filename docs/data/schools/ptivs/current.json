@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-02T17:49:33+08:00",
+ "generated_at": "2026-11-02T18:56:52+08:00",
  "school": {
   "id": "ptivs",
   "name": "國立成大附屬南工",
@@ -20,8 +20,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "ptivs-20244",
@@ -35,8 +35,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "ptivs-20243",
@@ -50,8 +50,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -79,8 +79,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "ptivs-20241",
@@ -94,8 +94,8 @@
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -115,7 +115,10 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20239",
    "category": "研習活動",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "ptivs-20238",
@@ -127,7 +130,10 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20238",
    "category": "教職員",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "ptivs-20236",
@@ -139,7 +145,10 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20236",
    "category": "研習活動",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "ptivs-20235",
@@ -151,7 +160,25 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20235",
    "category": "研習活動",
    "first_seen": "2026-11-02T17:49:33+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "fd70e3c4b624c33bc224ad8bb881f937ce5c85f6a8b27c860b5a055b84217a5b"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "ptivs-20234",

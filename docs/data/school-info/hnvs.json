@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-02T18:04:28+08:00",
+ "generated_at": "2026-11-02T19:16:24+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -391,8 +391,28 @@
    "page_id": 249480265844905,
    "url": "https://www.hnvs.cy.edu.tw/sub/content/index.asp?Parser=1,5,50,36",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:16:23+08:00",
+   "path": [
+    "校長室"
+   ],
+   "changed_at": "2026-11-02T19:16:23+08:00",
+   "content_hash": "5969501f5d158fe43d00ca11146b3eaa3235a8a839b3558dd38ada4c4d1dedd7",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "學分",
+    "簡介",
+    "學習歷程",
+    "安全",
+    "衛生"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-249480265844905.json",
+   "detail_revision": "fb905adfed157b780edc0c1ceb6c4806e395cd1a9b9811386fa5d843e3f95d0d",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "184660922987067": {
    "page_id": 184660922987067,
@@ -3756,6 +3776,30 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-249480265844905",
+   "kind": "school_info",
+   "title": "校長室",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/sub/content/index.asp?Parser=1,5,50,36",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "學分",
+    "簡介",
+    "學習歷程",
+    "安全",
+    "衛生"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-249480265844905.json",
+   "detail_revision": "fb905adfed157b780edc0c1ceb6c4806e395cd1a9b9811386fa5d843e3f95d0d",
+   "detail_status": "parsed"
+  },
+  {
    "id": "hnvs-info-254740829859223",
    "kind": "school_info",
    "title": "升學資訊",
@@ -4058,5 +4102,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-02T18:04:28+08:00"
+ "last_run_at": "2026-11-02T19:16:24+08:00"
 }

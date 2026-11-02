@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-02T18:01:45+08:00",
+ "generated_at": "2026-11-02T19:13:41+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -114,15 +114,25 @@
    "page_id": 145678739873480,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:37+08:00",
+   "path": [
+    "行政單位",
+    "學務處"
+   ]
   },
   "22668725453502": {
    "page_id": 22668725453502,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/",
    "label": "總務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:39+08:00",
+   "path": [
+    "行政單位",
+    "總務處"
+   ]
   },
   "153091118885268": {
    "page_id": 153091118885268,
@@ -397,6 +407,162 @@
     "教務處"
    ],
    "order": 42
+  },
+  "100488426283583": {
+   "page_id": 100488426283583,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/學務處業務職掌/",
+   "label": "業務職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 43
+  },
+  "112170978374225": {
+   "page_id": 112170978374225,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/%e8%a8%93%e8%82%b2%e7%b5%84/",
+   "label": "訓育組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 44
+  },
+  "173830454427502": {
+   "page_id": 173830454427502,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/生輔組/",
+   "label": "生輔組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 45
+  },
+  "64967749312091": {
+   "page_id": 64967749312091,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/衛生組/",
+   "label": "衛生組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 46
+  },
+  "113046428861619": {
+   "page_id": 113046428861619,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/體育組/",
+   "label": "體育組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 47
+  },
+  "189938834069835": {
+   "page_id": 189938834069835,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/總務處業務職掌/",
+   "label": "業務職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 48
+  },
+  "243630918401596": {
+   "page_id": 243630918401596,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/代收代辦/",
+   "label": "代收代辦",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 49
+  },
+  "227874953903069": {
+   "page_id": 227874953903069,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/職業安全/",
+   "label": "職業安全",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 50
+  },
+  "89144176392083": {
+   "page_id": 89144176392083,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/勞健保專區/",
+   "label": "勞健保專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 51
+  },
+  "51635462032854": {
+   "page_id": 51635462032854,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/規章及表單下載/",
+   "label": "規章及表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 52
+  },
+  "136123351888897": {
+   "page_id": 136123351888897,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/節能專區/",
+   "label": "能源公告 / 節能專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 53
+  },
+  "192706264128416": {
+   "page_id": 192706264128416,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/防災專區/",
+   "label": "消防與防災專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 54
+  },
+  "197047025865174": {
+   "page_id": 197047025865174,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/採購專區/",
+   "label": "財產與採購專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "總務處"
+   ],
+   "order": 55
   }
  },
  "handbook": {},
@@ -698,5 +864,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-02T18:01:45+08:00"
+ "last_run_at": "2026-11-02T19:13:41+08:00"
 }

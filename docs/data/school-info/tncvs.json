@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tncvs",
- "generated_at": "2026-11-02T18:01:03+08:00",
+ "generated_at": "2026-11-02T19:13:02+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179102805842520": {
@@ -96,22 +96,50 @@
    "page_id": 61378775605266,
    "url": "https://www.tncvs.tn.edu.tw/form/index.asp?Parser=2,4,611,1075,51",
    "label": "專案計畫",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:12:57+08:00",
+   "path": [
+    "專案計畫"
+   ]
   },
   "72826480655931": {
    "page_id": 72826480655931,
    "url": "https://www.tncvs.tn.edu.tw/sub_content/index.asp?Parser=1,5,91,28",
    "label": "行政單位",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:12:58+08:00",
+   "path": [
+    "行政單位"
+   ]
   },
   "126956744512565": {
    "page_id": 126956744512565,
    "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,5,1157,28",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T19:13:00+08:00",
+   "path": [
+    "校長室"
+   ],
+   "changed_at": "2026-11-02T19:13:00+08:00",
+   "content_hash": "8d0f9f6a232f55283566b4a436ad2e864cb8ce7836f8c9432d8441e326a05779",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "學分",
+    "分機",
+    "聯絡電話",
+    "電話",
+    "體驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tncvs/tncvs-info-126956744512565.json",
+   "detail_revision": "281fff8520d8f5545cb7e8241d8419a5592fd9a061749365cc87ca19cfe8fdb6",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "221469417634061": {
    "page_id": 221469417634061,
@@ -3180,7 +3208,32 @@
  "handbook": {},
  "rules": {},
  "services": {},
- "items": [],
+ "items": [
+  {
+   "id": "tncvs-info-126956744512565",
+   "kind": "school_info",
+   "title": "校長室",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,5,1157,28",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "學分",
+    "分機",
+    "聯絡電話",
+    "電話",
+    "體驗"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tncvs/tncvs-info-126956744512565.json",
+   "detail_revision": "281fff8520d8f5545cb7e8241d8419a5592fd9a061749365cc87ca19cfe8fdb6",
+   "detail_status": "parsed"
+  }
+ ],
  "roots": [
   {
    "page_id": 179102805842520,
@@ -3489,5 +3542,5 @@
   "fd93751649",
   "fdbcaf30e1"
  ],
- "last_run_at": "2026-11-02T18:01:03+08:00"
+ "last_run_at": "2026-11-02T19:13:02+08:00"
 }
