@@ -1465,9 +1465,11 @@
     if (label && grams(compact(label[1])).some(function (g) { return g.length === 2 && compact(label[2]).indexOf(g) !== -1; })) t = label[2];
     return keepEnd ? t : endSentence(t);
   }
+  /* 嘉中: one 學生手冊 split into chapters; 嘉女: separate 學生規定 files (school_rules.py). */
+  function bookName(item) { return /^學生規定/.test(clean(item && item.title || "")) ? "學校規定" : "學生手冊"; }
   function docLabel(item) {
     var parts = clean(item && item.title || "").split(/\s*›\s*/).filter(Boolean);
-    if (item && item.kind === "school_handbook") return "學生手冊的〈" + (parts[parts.length - 1] || "規定") + "〉";
+    if (item && item.kind === "school_handbook") return bookName(item) + "的〈" + (parts[parts.length - 1] || "規定") + "〉";
     if (parts.length >= 2) return parts[0] + "的「" + parts[parts.length - 1] + "」頁面";
     return "學校官網的「" + (parts[0] || "說明") + "」頁面";
   }
@@ -1978,9 +1980,9 @@
     var pages = Array.isArray(item.page_range) ? "第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁" : "";
     var url = /^https:\/\//.test(String(item.url || "")) ? item.url : "";
     return { status: "answered", mode: "document", query: query, evidence: [], key_points: [], related: [],
-      summary: (item.school_name || "學校") + "學生手冊的「" + chapter + "」" + (pages ? "（" + pages + "）" : "") + "就是在講這個，點開看原文" + (details[item.id] ? "。" : "；登入後我可以直接引用條文。"),
-      sources: [{ id: item.id, kind: url ? "service" : "", title: "學生手冊 › " + chapter, url: url, school_name: item.school_name || "", note: pages || "學生手冊" }],
-      limitation: "學生手冊來自學校官網；規定可能修訂，以學校最新公告為準。", plan: questionPlan(query) };
+      summary: (item.school_name || "學校") + bookName(item) + "的「" + chapter + "」" + (pages ? "（" + pages + "）" : "") + "就是在講這個，點開看原文" + (details[item.id] ? "。" : "；登入後我可以直接引用條文。"),
+      sources: [{ id: item.id, kind: url ? "service" : "", title: bookName(item) + " › " + chapter, url: url, school_name: item.school_name || "", note: pages || bookName(item) }],
+      limitation: bookName(item) + "來自學校官網；規定可能修訂，以學校最新公告為準。", plan: questionPlan(query) };
   }
   function calendarLayer(query, items, options, asOfDay) {
     var opts = Object.assign({}, options, { asOf: asOfDay });

@@ -86,7 +86,7 @@ def candidates(index: dict, school_id: str) -> list[dict]:
                 continue
             seen.add(target[0])
             # 「本校補充規定」「申請須知」 say nothing alone: add the page they sit on.
-            if re.match(r"^(?:本校|校內)?(?:補充)?(?:規定|辦法|要點|須知|注意事項|申請須知)$", name.replace("本校補充", "補充")) or len(name) <= 5:
+            if re.match(r"^(?:本校|校內)?(?:補充)?(?:規定|辦法|要點|須知|注意事項|申請須知)$", name.replace("本校補充", "補充")):
                 section = re.sub(r"[○●★☆]+", "", (entry.get("path") or [""])[-1]).strip()
                 if section and section not in name:
                     name = f"{section}{name}"
@@ -195,7 +195,7 @@ def update(index: dict, school_id: str, short: str, session, *, delay: float, no
     counts = {"parsed": 0, "empty": 0, "failed": 0}
     for doc in todo:
         entry = files.setdefault(doc["download"], {})
-        entry.update(name=doc["name"], url=doc["url"], page=doc["page"], checked_at=now.isoformat(timespec="seconds"))
+        entry.update(name=doc["name"], url=doc["url"], page=doc["page"])
         try:
             data, content_type = fetch_file(session, doc["download"])
             extension = detect_extension(data, doc["extension"], content_type)
@@ -209,6 +209,7 @@ def update(index: dict, school_id: str, short: str, session, *, delay: float, no
             time.sleep(delay)
             continue
         entry.pop("error", None)
+        entry["checked_at"] = now.isoformat(timespec="seconds")  # a failed download is retried next run
         if len(text) < 40:
             entry.update(status=status if status != "parsed" else "empty", item=None)
             counts["empty"] += 1
