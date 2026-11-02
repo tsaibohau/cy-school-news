@@ -823,6 +823,24 @@ body:has(#subBadge:not([hidden])) .menu-toggle::after { content: ""; position: a
 .chat-also .chat-aside { margin-top: 0; color: var(--ink, inherit); }
 .chat-context { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; text-align: right; }
 .chat-user { flex-direction: column; align-items: flex-end; }
+/* 參考資料：問校務上方的按鈕與面板（每題一段，接在下面；可關閉） */
+.chat-topbar { position: sticky; top: var(--mast-h, 0px); z-index: 6; display: flex; align-items: flex-start; justify-content: flex-end; height: 0; overflow: visible; }
+.chat-sources-toggle { flex: none; margin-top: 8px; display: inline-flex; white-space: nowrap; line-height: 1.4; align-items: center; gap: 6px; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font: inherit; font-size: 13px; cursor: pointer; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.chat-sources-toggle[hidden] { display: none; }
+.chat-sources-toggle[aria-expanded="true"] { border-color: var(--muted); }
+.chat-sources-count { min-width: 20px; padding: 0 6px; border-radius: 999px; background: var(--line-soft); font-size: 12px; text-align: center; }
+.chat-sources-toggle.is-new .chat-sources-count { animation: chat-sources-pulse .9s ease-out 1; }
+@keyframes chat-sources-pulse { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .chat-sources-toggle.is-new .chat-sources-count { animation: none; } }
+.chat-sources { position: sticky; top: calc(var(--mast-h, 0px) + 44px); z-index: 6; margin: 44px 0 12px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.chat-sources[hidden] { display: none; }
+.chat-sources-head { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-bottom: 1px solid var(--line-soft); }
+.chat-sources-close { border: 0; background: transparent; color: var(--muted); font-size: 16px; cursor: pointer; padding: 4px 6px; }
+.chat-sources-body { max-height: calc(70vh - var(--mast-h, 0px)); overflow-y: auto; padding: 4px 14px 14px; overscroll-behavior: contain; }
+.chat-sources-turn { padding: 10px 0; border-bottom: 1px dashed var(--line-soft); }
+.chat-sources-turn:last-child { border-bottom: 0; }
+.chat-sources-turn h4 { margin: 4px 0 8px; font-size: 14px; }
+.chat-sources-turn h5 { margin: 10px 0 6px; font-size: 12.5px; color: var(--muted); letter-spacing: .04em; }
 .chat-cite { margin-top: 12px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--muted); font: inherit; font-size: 12.5px; cursor: pointer; }
 .chat-cite.is-current { color: var(--ink); border-color: var(--muted); }
 .chat-evidence { margin: 4px 0 18px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); scroll-margin-top: 16px; }

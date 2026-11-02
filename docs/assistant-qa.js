@@ -10,6 +10,8 @@
   if (!SearchQuery && typeof module !== "undefined" && module.exports) SearchQuery = require("./search-query.js");
   var Validity = typeof window !== "undefined" ? window.CyNewsAnnouncementValidity : null;
   if (!Validity && typeof module !== "undefined" && module.exports) Validity = require("./announcement-validity.js");
+  var Composer = typeof window !== "undefined" ? window.CyNewsAnswerComposer : null;
+  if (!Composer && typeof module !== "undefined" && module.exports) Composer = require("./answer-composer.js");
   var Synonyms = typeof window !== "undefined" ? window.CyNewsSynonyms : null;
   if (!Synonyms && typeof module !== "undefined" && module.exports) Synonyms = require("./qa-synonyms.js");
   /* All the ways to write a term (synonym database), or just the term. */
@@ -1514,6 +1516,9 @@
     if (result.mode === "chat" && result.reply) return result.reply;
     var seed = result.query || result.summary || "", text = clean(result.summary || ""), bullets = [], tail = "";
     var plain = personalDataQuery(result.query || "");
+    /* 先把找到的句子拆成事實，再用句型模板說出來（不是貼原文；原文在參考資料裡）。 */
+    var composed = !plain && Composer && result.status === "answered" && !result.mode && !(result.links || []).length ? composedReply(result) : null;
+    if (composed) return composed;
     if (result.mode === "rule" && (result.answer_lines || []).length) {
       var item = (result.sources || [])[0] || {};
       var pages = Array.isArray(item.page_range) ? "（第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁）" : "";
@@ -1524,6 +1529,9 @@
       else lines.forEach(function (l) { bullets = bullets.concat(splitPoints(tidyClause(l))); });
       text = plain ? "根據" + label + "：" : pickLine(RULE_OPENERS, seed)(label);
       tail = plain ? "" : pickLine(RULE_CLOSERS, seed + "#");
+      /* The opening line is said in our own words (template); the clauses stay as tidy points. */
+      var head = !plain && Composer ? Composer.compose({ query: result.query || "", source: (item.school_name || "") + label.replace(/的〈/, "〈"), text: lines.join("。") }) : null;
+      if (head && head.text) text = head.text;
       return { text: text, bullets: bullets.slice(0, 6), tail: tail };
     }
     if (result.mode === "rule_pointer") return { text: text, bullets: [] };
@@ -1556,6 +1564,18 @@
     if (!first || !bullets.length) return { text: plain ? text : joinOpener(pickLine(ANNOUNCE_OPENERS, seed), text), bullets: [] };
     var lead = sourceLabel(first) + "：";
     return { text: plain ? lead : pickLine(ANNOUNCE_OPENERS, seed) + lead, bullets: bullets.slice(0, 5), tail: notes.join("") };
+  }
+  function composedReply(result) {
+    var first = (result.sources || [])[0] || {};
+    var texts = (result.evidence || []).filter(function (row) { return !first.id || row.announcement_id === first.id; }).map(function (row) { return row.text; });
+    if (!texts.length) texts = (result.answer_lines || []).slice();
+    if (!texts.length) return null;
+    var source = result.mode === "rule" ? (first.school_name || "") + docLabel(first).replace(/的〈/, "〈") : sourceLabel(first).replace(/^根據/, "");
+    var out = Composer.compose({ query: result.query || "", subject: questionSubject(result.query || ""), source: source, text: texts.join("。"), points: result.key_points || [] });
+    if (!out.text) return null;
+    var notes = (clean(result.summary || "").match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。/g) || []).map(function (note) { return note.replace(/列在下面/, "放在參考資料裡"); });
+    var pointBullets = (result.key_points || []).filter(function (p) { return p && p.value && out.text.indexOf(p.value) === -1; }).map(function (p) { return p.label + "：" + clean(p.value); });
+    return { text: out.text, bullets: out.bullets.concat(pointBullets).slice(0, 5), tail: notes.join(""), composed: out.type };
   }
   /* Follow-up questions read the previous turn: 「那要多久？」 after 「還書」,
      「那嘉女呢？」 after a 嘉中 question, 「星期四呢」 after a timetable question. */
@@ -1988,12 +2008,50 @@
     return { id: item.id, title: clean(item.title || ""), date: String(item.date || "").slice(0, 10), school_name: item.school_name || "", url: item.url || "",
       kind: isSchoolDoc(item) ? "school_doc" : "", note: isSchoolDoc(item) ? "學校網頁" : "公告" };
   }
+  /* Sentences that say what happens if you don't (懲處、記過、扣分、零分、曠課…), from the
+     subject's rules and notices that can be read here. */
+  function penaltySentence(part, overview, items, details, options) {
+    var forms = (Synonyms ? Synonyms.concepts(part.subject) : [part.subject]).filter(function (f) { return f.length >= 2; });
+    var rows = rank(part.subject, items, details, options).slice(0, 8);
+    var pool = [];
+    (overview.evidence || []).forEach(function (row) { pool.push({ text: row.text, id: row.announcement_id }); });
+    rows.forEach(function (row) { detailSegments(row.detail || (details || {})[row.item.id]).forEach(function (seg) { pool.push({ text: seg.text, id: row.item.id, about: true }); }); });
+    var hit = null;
+    pool.forEach(function (row) {
+      if (hit) return;
+      sentences(row.text).forEach(function (sentence) {
+        if (hit || !Composer.PENALTY.test(sentence) || !/未|逾期|沒有|不依|違反|遲交|缺交|不交|拒/.test(sentence)) return;
+        if (!row.about && !forms.some(function (f) { return compact(sentence).indexOf(f) !== -1; })) return;
+        hit = { text: sentence, id: row.id };
+      });
+    });
+    if (!hit) return null;
+    var item = (items || []).filter(function (it) { return it && it.id === hit.id; })[0] || {};
+    return { text: hit.text, item: item };
+  }
+  function consequenceSection(part, overview, items, details, options, shown) {
+    var ask = "「" + part.clause.replace(/[？?]$/, "") + "」";
+    var hit = penaltySentence(part, overview, items, details, options);
+    if (hit) {
+      var source = isSchoolDoc(hit.item) ? (hit.item.school_name || "") + docLabel(hit.item).replace(/的〈/, "〈") : sourceLabel(hit.item).replace(/^根據/, "");
+      var said = Composer.consequence({ query: part.clause, text: hit.text, source: source });
+      var src = hit.item.id ? [{ id: hit.item.id, title: clean(hit.item.title || ""), date: String(hit.item.date || "").slice(0, 10), school_name: hit.item.school_name || "", url: hit.item.url || "" }] : [];
+      return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: said.text, text: ask + "：" + said.text, sources: src.filter(function (s) { return !shown[s.id]; }) };
+    }
+    var tease = Composer.consequence({ query: part.clause, text: "" }).text;
+    var where = aspectDocument(part, items, details, options) || ((overview.layer === "rule" || overview.mode === "rule_pointer") && (overview.sources || [])[0]) || null;
+    var hint = where ? " 真的想知道細節，可以看〈" + clean(where.title).split("›").pop().trim() + "〉。" : "";
+    return { layer: "tease", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: "", text: ask + "：" + tease + hint,
+      sources: where && !shown[where.id] ? [where] : [] };
+  }
   function answerParts(query, split, items, details, options) {
     var overview = answerCore(split.subject, items, details, options) || { status: "insufficient", evidence: [], sources: [] };
     var shown = {};
     (overview.sources || []).concat(overview.related || []).forEach(function (row) { shown[row.id] = true; });
     var sections = [];
     split.parts.forEach(function (part) {
+      /* 「沒寫會怎樣」: look for a penalty first; none found → tease (and say where to look). */
+      if (part.aspect.id === "consequence" && Composer) { sections.push(consequenceSection(part, overview, items, details, options, shown)); return; }
       var sub = part.subject + part.aspect.phrase, found = answerCore(sub, items, details, options);
       /* An aspect counts as answered only by a sentence that is about it (逾期、扣分… for 沒交會怎樣),
          not by the subject's overview again. */
@@ -2018,7 +2076,7 @@
         }
         sections.push(where
           ? { layer: "pointer", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [where],
-              text: ask + "：我讀得到的內容沒有直接寫，最可能寫在下面這份" + (where.kind === "school_doc" ? "規定" : "公告") + "裡，點開看。" }
+              text: ask + "：我讀得到的內容沒有直接寫，最可能寫在〈" + clean(where.title).split("›").pop().trim() + "〉裡（在上方「參考資料」）。" }
           : { layer: "none", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [],
               text: ask + "：規定、行事曆、公告裡都沒有寫到，建議直接問導師或承辦處室。" });
       }
@@ -2086,7 +2144,7 @@
          pulls in 手機互動遊戲 and 1campus 手機 app notices. */
       var subjectForms = subjectWords(query);
       var more = notices.related.filter(function (row) { var t = compact(row.title || ""); return !shown[row.id] && subjectForms.some(function (f) { return t.indexOf(f) !== -1; }); }).slice(0, 2);
-      if (more.length) main.also.push({ layer: "announcement", label: "公告", summary: "", text: "相關公告，點開看細節：", sources: more });
+      if (more.length) main.also.push({ layer: "announcement", label: "公告", summary: "", text: "還有相關公告，放在上方「參考資料」裡。", sources: more });
     }
     main.layers_checked = order.slice();
     return main;

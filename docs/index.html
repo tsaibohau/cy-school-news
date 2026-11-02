@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=112">
+<link rel="stylesheet" href="style.css?v=113">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -77,6 +77,14 @@
       <p>這裡是問校務，直接問學校的事就好。想自己翻<strong>所有公告</strong>，點左上角的 <b aria-hidden="true">☰</b> 打開側欄。</p>
       <div class="sidebar-hint-actions"><button type="button" class="btn-primary" data-hint-open>打開側欄看看</button><button type="button" class="btn-ghost" data-hint-close>知道了</button></div>
     </div>
+    <!-- 參考資料：像 Claude 上方的用量按鈕，點開看每一題的來源，每問一題就接在下面；可以關掉。 -->
+    <div class="chat-topbar">
+      <button type="button" id="assistantSourcesToggle" class="chat-sources-toggle" aria-expanded="false" aria-controls="assistantSources" hidden>參考資料 <span id="assistantSourcesCount" class="chat-sources-count">0</span></button>
+    </div>
+    <aside id="assistantSources" class="chat-sources" aria-label="參考資料" hidden>
+      <div class="chat-sources-head"><strong>參考資料</strong><button type="button" id="assistantSourcesClose" class="chat-sources-close" aria-label="關閉參考資料">✕</button></div>
+      <div id="assistantSourcesBody" class="chat-sources-body"></div>
+    </aside>
     <div id="assistantWelcome" class="chat-welcome">
       <span id="mascotHero" class="chat-mark mascot-hero" aria-hidden="true"></span>
       <h2 id="assistantTitle" class="chat-greeting">想問學校什麼？</h2>
@@ -85,10 +93,6 @@
     <div id="assistantThread" class="chat-thread" aria-live="polite">
       <div id="assistantAnswer" class="assistant-answer"></div>
     </div>
-    <details id="assistantEvidence" class="chat-evidence" hidden>
-      <summary id="assistantEvidenceTitle">依據與來源</summary>
-      <div id="assistantEvidenceBody"></div>
-    </details>
     <form id="assistantForm" class="assistant-form chat-composer">
       <div class="assistant-examples chat-suggestions" aria-label="問題範例">
         <button type="button" data-assistant-example="請假要怎麼請？">請假要怎麼請</button>
@@ -432,15 +436,17 @@
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
+<script src="answer-composer.js?v=1"></script>
 <script src="mascot.js?v=5"></script>
-<script src="assistant-qa.js?v=73"></script>
+<script src="assistant-qa.js?v=74"></script>
+<script src="weather.js?v=1"></script>
 <script src="announcement-sort.js?v=1"></script>
 <script src="google-calendar.js?v=1"></script>
 <script src="cross-school.js?v=1"></script>
 <script src="activity-overview.js?v=1"></script>
 <script src="schedule-compare.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=131"></script>
+<script src="app.js?v=132"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

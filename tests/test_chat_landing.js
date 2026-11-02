@@ -27,12 +27,18 @@ assert.match(app, /function startAssistantTurn\(question, context\)/);
 assert.match(app, /e\.key === "Enter" && !e\.shiftKey && !e\.isComposing/, "Enter sends; IME composition and Shift+Enter do not");
 assert.match(css, /\.chat-composer \{\s*position: sticky;/);
 assert.match(css, /\.chat-view\.has-turns \.chat-welcome \{ display: none; \}/);
-/* Sources for every answer live in one shared panel under the conversation. */
-assert.match(index, /<details id="assistantEvidence" class="chat-evidence" hidden>/);
-assert.ok(index.indexOf('id="assistantThread"') < index.indexOf('id="assistantEvidence"') && index.indexOf('id="assistantEvidence"') < index.indexOf('id="assistantForm"'));
-assert.doesNotMatch(app, /'<details class="assistant-details"[^']*'\s*\+\s*'<summary>為什麼這樣回答/, "no evidence panel inside each answer");
-assert.match(app, /function showAssistantEvidence\(index, open\)/);
-assert.match(app, /data-assistant-cite="/);
+/* 2026-11-02: sources live behind a 「參考資料」 button at the top of 問校務 (like Claude's usage
+   button): one section per question, appended in order; the panel can be closed. Nothing is
+   listed under the answer any more. */
+assert.match(index, /<button type="button" id="assistantSourcesToggle" class="chat-sources-toggle"[^>]*hidden>參考資料/);
+assert.match(index, /<aside id="assistantSources" class="chat-sources"[^>]*hidden>[\s\S]*?id="assistantSourcesClose"/);
+assert.ok(index.indexOf('id="assistantSources"') < index.indexOf('id="assistantThread"'), "the panel sits above the conversation");
+assert.doesNotMatch(index, /id="assistantEvidence"/);
+assert.doesNotMatch(app, /data-assistant-cite=/, "no source button under each answer");
+assert.match(app, /function recordAssistantSources\(index\)/);
+assert.match(app, /section\.setAttribute\("data-turn", String\(index\)\);/);
+assert.match(app, /if \(e\.target\.closest\("#assistantSourcesClose"\)\) \{ toggleAssistantSources\(false\); return; \}/);
+assert.match(css, /\.chat-topbar \{ position: sticky; top: var\(--mast-h, 0px\);/, "the button stays under the sticky header");
 assert.match(app, /resolveFollowUp\(question, previous && \{ query: previous\.query, answered: answeredBefore \}\)/, "follow-up questions read the previous answered turn");
 /* Mascot 小訊: the 訊 seal with eyes, arms and legs, walking above the composer. */
 const Mascot = require("../docs/mascot.js");
@@ -93,7 +99,7 @@ assert.match(app, /new MutationObserver\(renderSideAccount\)\.observe\(box/, "fo
 assert.match(index, /<h2>設定<\/h2>/);
 /* 2026-11-01: answers type out like a typewriter; tap to show all; reduced motion skips it. */
 assert.match(app, /function typeAnswer\(box\) \{\s*if \(!box \|\| !box\.querySelectorAll \|\| prefersReducedMotion\(\)\) return;/);
-assert.match(app, /finishAnswerTyping\(\);[\s\S]{0,400}?oldPanel\.hidden = true;[\s\S]{0,200}?el\.assistantAnswer\.innerHTML = '<div class="assistant-result chat-answer">' \+ html \+ '<\/div>';\s*typeAnswer\(el\.assistantAnswer\.firstChild\);/);
+assert.match(app, /finishAnswerTyping\(\);\s*el\.assistantAnswer\.innerHTML = '<div class="assistant-result chat-answer">' \+ html \+ '<\/div>';\s*typeAnswer\(el\.assistantAnswer\.firstChild\);/);
 assert.match(app, /spoken\.className = "visually-hidden";/, "screen readers get the whole answer at once");
 assert.match(app, /box\.addEventListener\("click", finish\);/, "tap shows the whole answer");
 assert.match(css, /\.chat-answer \.is-typing-hidden \{ display: none; \}/, "sources wait until the text is typed");

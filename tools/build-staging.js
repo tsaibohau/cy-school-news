@@ -28,7 +28,7 @@ const shellInputs = [
   "supabase-sync.js", "account-auth.js", "task-state.js", "account-sync.js",
   "push-subscription.js",
   "reminder-rules.js", "announcement-cleanup.js",
-  "school-registry.js", "profile.js", "relevance.js", "assistant-feedback.js", "today.js", "search-taxonomy.js", "qa-synonyms.js", "search-query.js", "announcement-validity-reviewed.js", "announcement-validity.js", "assistant-qa.js", "calendar-state.js",
+  "school-registry.js", "profile.js", "relevance.js", "assistant-feedback.js", "today.js", "search-taxonomy.js", "qa-synonyms.js", "search-query.js", "announcement-validity-reviewed.js", "announcement-validity.js", "answer-composer.js", "assistant-qa.js", "weather.js", "calendar-state.js",
   path.join("..", "tools", "staging", "acceptance-user-tasks.js"),
   path.join("..", "tools", "staging", "acceptance-companion.html"),
   path.join("..", "artifacts", "calendar-parser-1151", "candidate-calendar-events.json"),
