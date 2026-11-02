@@ -67,8 +67,8 @@ assert.ok((style.match(/@media \(prefers-color-scheme: dark\)/g) || []).length >
 assert.match(index, /Noto\+Serif\+TC:wght@400;500;700;900/, "the complete readable font family is loaded");
 assert.match(index, /style\.css\?v=111/);
 assert.match(index, /search-taxonomy\.js\?v=56/, "search taxonomy loads before the query parser");
-assert.match(index, /search-query\.js\?v=57/, "semantic search terms load before the application");
-assert.match(index, /search-query\.js\?v=57[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=70/, "reviewed validity loads before answers");
+assert.match(index, /search-query\.js\?v=58/, "semantic search terms load before the application");
+assert.match(index, /search-query\.js\?v=58[\s\S]*announcement-validity-reviewed\.js\?v=52[\s\S]*announcement-validity\.js\?v=52[\s\S]*assistant-qa\.js\?v=70/, "reviewed validity loads before answers");
 const appVersion = index.match(/src="app\.js\?v=(\d+)"/);
 assert.ok(appVersion, "application script has a numeric cache version");
 const serviceWorker = fs.readFileSync(path.join(root, "docs", "sw.js"), "utf8");
