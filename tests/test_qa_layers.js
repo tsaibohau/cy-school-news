@@ -120,3 +120,36 @@ assert.equal(ask("段考什麼時候").split, undefined);
 /* Every answer says which layers were checked, in order. */
 assert.deepEqual(ask("手機可以帶嗎").layers_checked, ["rule", "calendar", "announcement"]);
 console.log("問校務 three-layer and synonym tests passed");
+
+/* 2026-11-03 screenshots. */
+{
+  /* 〈圖書館閱覽規定〉 says the library closes on 段考 days; that is not when 段考 is. */
+  const lib = { id: "hb-118", kind: "school_handbook", school: "cysh", school_name: "嘉中", title: "學生手冊 › 圖書館閱覽規定", url: "https://www.cysh.cy.edu.tw/hb.pdf", page_range: [118, 118] };
+  const libDetail = { "hb-118": { announcement_id: "hb-118", provenance: "official_article", blocks: [{ type: "paragraph", text:
+    "一、上課日開放時間，星期一至星期五，每日8:00至17:30。\n二、全校性活動(例如校慶、校運會、段考、複習考)或經政府公告之放假日則不開放。" }], attachments: [] } };
+  const cal = [{ id: "c3", school_id: "cysh", school_name: "嘉中", start_date: "2026-11-26", end_date: "2026-11-27", title: "第二次期中考" },
+    { id: "c4", school_id: "cysh", school_name: "嘉中", start_date: "2027-01-18", end_date: "2027-01-20", title: "高一高二期末考" }];
+  const o = { asOf: "2026-11-03", scopeLabel: "嘉中", schoolId: "cysh", calendarEvents: cal };
+  let a = QA.answer("什麼時候段考", [lib], libDetail, o);
+  assert.equal(a.layer, "calendar", a.summary);
+  assert.equal(a.headline, "下一次：11/26（週四）～11/27（週五）「第二次期中考」", "the key fact is said first");
+  assert.ok(!(a.also || []).some((row) => /閱覽規定/.test(JSON.stringify(row))), "a rule that only mentions 段考 is left out");
+
+  /* 「閱讀心得報告怎麼寫」 is not answered with 得獎名單; 「你查的是得獎名單」 re-asks without it. */
+  const notices = [
+    { id: "w1", school: "cysh", school_name: "嘉中", date: "2025-11-20", title: "第1141009梯次全國高級中等學校閱讀心得寫作比賽 得獎名單" },
+    { id: "n1", school: "cysh", school_name: "嘉中", date: "2026-10-19", title: "國立嘉義高中115學年度推展閱讀運動閱讀心得繳交流程、時程與電子檔" },
+  ];
+  a = QA.answer("閱讀心得報告怎麼寫", notices, {}, o);
+  assert.doesNotMatch(a.summary + JSON.stringify(a.related || []) + JSON.stringify(a.also || []), /得獎名單/);
+  const fix = QA.correction("你查得是得獎名單", { query: "閱讀心得報告怎麼寫", result: { sources: [], related: [{ id: "w1" }] } });
+  assert.deepEqual(fix.exclude, ["w1"]);
+  assert.equal(fix.dropResults, true);
+  assert.match(fix.apology, /^抱歉，剛剛給的是得獎名單/);
+  assert.equal(QA.correction("那嘉女呢", { query: "x" }), null, "a follow-up is not a correction");
+  assert.equal(QA.correction("你查得是得獎名單", null), null, "nothing to correct without a previous question");
+  a = QA.answer(fix.query, notices, {}, Object.assign({}, o, { exclude: fix.exclude, dropResults: true }));
+  assert.doesNotMatch(JSON.stringify(a), /得獎名單/);
+  assert.match(JSON.stringify(a), /閱讀心得繳交流程/);
+}
+console.log("2026-11-03 focus and correction tests passed");

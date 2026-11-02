@@ -349,8 +349,9 @@
     else if (!walks) show({ arms: "wave", eyes: "happy" });
     return { el: el, setMood: setMood, say: say, play: play, stop: function () { clearInterval(timer); } };
   }
-  /* Cameo: 小訊 dashes in from a side or pops out of the top-left corner anywhere on the page,
-     shows something (books to study, a sign for a deadline), then leaves.
+  /* Cameo: 小訊 first only peeks in from a screen edge (half a head, eyes looking in). Nothing
+     is covered and nothing is said. Tapped, it runs out and shows something (books to study,
+     a sign for a deadline), then leaves; left alone, it slips back out after a while.
      options: { entry: "left"|"right"|"corner", prop: "books"|"sign"|"", text, onClick, holdMs, pixel } */
   var activeCameo = null;
   function cameo(options) {
@@ -372,7 +373,13 @@
     var top = entry === "corner" ? Math.max(64, Math.round(vh * 0.1)) : Math.round(vh * (0.25 + Math.random() * 0.35));
     var stopX = entry === "right" ? Math.round(vw - w - vw * 0.1) : entry === "corner" ? 10 : Math.round(vw * 0.08);
     var x = entry === "right" ? vw : entry === "corner" ? -w : -w, y = entry === "corner" ? -h : top;
-    var phase = "in", step = 0, shownAt = 0, timer = null, finished = false, shown = "";
+    /* Where the peeking head sits: just inside the edge it came from. */
+    var peekX = entry === "right" ? Math.round(vw - w * 0.45) : entry === "corner" ? 6 : Math.round(-w * 0.55);
+    var peekY = entry === "corner" ? Math.round(-h * 0.5) : top;
+    var phase = "peek", step = 0, shownAt = 0, peekAt = Date.now(), timer = null, finished = false, shown = "";
+    if (entry === "corner") x = peekX;   // drops down from the top edge, already in place sideways
+    el.classList.add("is-peeking");
+    el.setAttribute("aria-label", "小訊在偷看，點我");
     el.classList.toggle("is-right-half", stopX > vw / 2);
     function place() { el.style.transform = "translate(" + Math.round(x / scale) * scale + "px," + Math.round(y / scale) * scale + "px)"; }
     function show(pose) { var html = frameSvg(pose); if (html !== shown) { figure.innerHTML = html; shown = html; } }
@@ -385,12 +392,18 @@
       if (options.onDone) try { options.onDone(); } catch (_) {}
     }
     el.addEventListener("click", function () {
+      if (phase === "peek") { phase = "in"; step = 0; el.classList.remove("is-peeking"); el.setAttribute("aria-label", options.text ? "小訊：" + options.text : "小訊"); return; }
       if (options.onClick) try { options.onClick(); } catch (_) {}
       leave();
     });
     function tick() {
       var speed = scale * 3;
-      if (phase === "in") {
+      if (phase === "peek") {
+        /* Slide to the edge, then look in and blink now and then. */
+        if (entry === "corner") y = Math.min(peekY, y + scale); else x = entry === "right" ? Math.max(peekX, x - scale) : Math.min(peekX, x + scale);
+        show({ eyes: entry === "right" ? "left" : entry === "corner" ? "down" : "right", arms: step % 40 < 20 ? "front" : "wave" });
+        if (Date.now() - peekAt > (options.peekMs || 25000)) { phase = "out"; step = 0; }
+      } else if (phase === "in") {
         if (entry === "corner") { x = Math.min(stopX, x + speed); y = Math.min(top, y + speed); }
         else x = entry === "right" ? Math.max(stopX, x - speed) : Math.min(stopX, x + speed);
         show(Object.assign({}, ANIM[walkAnim][step % ANIM[walkAnim].length], { eyes: entry === "right" ? "left" : "right" }));
@@ -408,9 +421,10 @@
       step++;
     }
     if (still) {
-      x = stopX; y = top; phase = "show"; place(); show(ANIM[showAnim][0]);
-      bubble.textContent = options.text || ""; if (options.text) el.classList.add("is-talking");
-      timer = setTimeout(finish, options.holdMs || 6500);
+      /* Reduced motion: the head is just there at the edge; a tap shows the message. */
+      x = peekX; y = peekY; place(); show({ eyes: "front" });
+      el.addEventListener("click", function () { if (phase === "in") { x = stopX; y = top; phase = "show"; place(); show(ANIM[showAnim][0]); bubble.textContent = options.text || ""; if (options.text) el.classList.add("is-talking"); timer = setTimeout(finish, options.holdMs || 6500); } });
+      timer = setTimeout(function () { if (phase === "peek") finish(); }, options.peekMs || 25000);
     } else {
       place(); show(ANIM[walkAnim][0]);
       timer = setInterval(tick, TICK);
