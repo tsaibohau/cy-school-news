@@ -2476,7 +2476,7 @@
     }
     /* The 參考資料 button stays just under the sticky site header. */
     function syncMastHeight() {
-      var mast = document.querySelector(".mast");
+      var mast = typeof document.querySelector === "function" ? document.querySelector(".mast") : null;
       if (mast && document.documentElement.style.setProperty) document.documentElement.style.setProperty("--mast-h", mast.offsetHeight + "px");
     }
     syncMastHeight();
@@ -2954,6 +2954,9 @@
          A follow-up after a comparison (「那服裝儀容呢」) compares the same schools again. */
       var registry = window.CyNewsSchoolRegistry, QA = window.CyNewsAssistantQA;
       var named = registry && registry.mentionedSchools ? registry.mentionedSchools(asked) : [];
+      /* 「明天要不要帶傘」: the weather forecast for the school's 縣市, not the notices. */
+      var weatherPlan = window.CyNewsWeather && window.CyNewsWeather.asks(asked);
+      if (weatherPlan) return askWeather(asked, weatherPlan);
       var closedNamed = named.filter(function (school) { return !assistantOpen(school.id); });
       if (closedNamed.length) return assistantClosedAnswer(asked, closedNamed);
       /* 「哪間學校段考最早」「嘉中跟嘉女誰先放寒假」: compare dates across schools. */
@@ -3027,6 +3030,33 @@
         if (el.assistantStatus) el.assistantStatus.textContent = "資料讀取失敗";
         return result;
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
+    }
+    /* Weather from Open-Meteo (free, no key). One request per place every 30 minutes. */
+    var weatherCache = {};
+    function askWeather(asked, plan) {
+      var Weather = window.CyNewsWeather, registry = window.CyNewsSchoolRegistry;
+      var scope = assistantScopeFor(asked), school = registry && scope.id !== "all" ? registry.find(scope.id) : null;
+      var where = Weather.place(school && school.county);
+      startAssistantTurn(asked, "");
+      setupMascot();
+      mascotMood("thinking");
+      var turnIndex = state.assistantTurns.length - 1, target = el.assistantAnswer;
+      if (el.assistantAsk) el.assistantAsk.disabled = true;
+      if (el.assistantAnswer) el.assistantAnswer.innerHTML = '<div class="assistant-loading" role="status" aria-live="polite"><span class="assistant-loading-dots" aria-hidden="true"><i></i><i></i><i></i></span><p>正在看' + esc(where.name) + '的天氣預報…</p></div>';
+      var cached = weatherCache[where.name];
+      var load = cached && Date.now() - cached.at < 30 * 60 * 1000 ? Promise.resolve(cached.data)
+        : fetch(Weather.url(where), { cache: "no-store" }).then(function (response) { if (!response.ok) throw new Error("weather " + response.status); return response.json(); })
+          .then(function (data) { weatherCache[where.name] = { at: Date.now(), data: data }; return data; });
+      return load.then(function (data) { return Weather.answer(data, plan, where, asked) || Weather.failure(asked); })
+        .catch(function () { return Weather.failure(asked); })
+        .then(function (result) {
+          rememberAssistantQuestion(asked);
+          el.assistantAnswer = target;
+          renderAssistantAnswer(result, turnIndex);
+          mascotMood(result.status === "answered" ? "happy" : "sad");
+          renderAssistantExamples();
+          return result;
+        }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
     }
     /* Dates of one kind of event (段考, 寒假, 校慶…) at every school, earliest first. Uses the
        school calendars and the dates written in announcement titles; schools without a date are named. */

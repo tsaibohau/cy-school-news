@@ -38,7 +38,7 @@ assert.doesNotMatch(app, /data-assistant-cite=/, "no source button under each an
 assert.match(app, /function recordAssistantSources\(index\)/);
 assert.match(app, /section\.setAttribute\("data-turn", String\(index\)\);/);
 assert.match(app, /if \(e\.target\.closest\("#assistantSourcesClose"\)\) \{ toggleAssistantSources\(false\); return; \}/);
-assert.match(css, /\.chat-topbar \{ position: sticky; top: 0;/);
+assert.match(css, /\.chat-topbar \{ position: sticky; top: var\(--mast-h, 0px\);/, "the button stays under the sticky header");
 assert.match(app, /resolveFollowUp\(question, previous && \{ query: previous\.query, answered: answeredBefore \}\)/, "follow-up questions read the previous answered turn");
 /* Mascot 小訊: the 訊 seal with eyes, arms and legs, walking above the composer. */
 const Mascot = require("../docs/mascot.js");
