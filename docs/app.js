@@ -2435,29 +2435,59 @@
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(displayTitle(item)) + '</strong><small>' + esc(sourceMeta) + '</small></button>';
       }).join("");
     }
+    /* 參考資料面板：每一題一段（問題、官方來源、其他地方也找到的、可能有關的公告、官方原文、
+       資料說明），依提問順序接下去。上方按鈕開關，不擠在回答下面。 */
     function assistantEvidenceHtml(turn) {
       var result = turn.result || {}, parts = [];
       var sources = result.mode === "browse" ? "" : assistantSourceButtons(result);
-      if (sources) parts.push('<h4>官方來源（' + result.sources.length + '）</h4><div class="assistant-sources">' + sources + '</div>');
+      if (sources) parts.push('<h5>官方來源（' + result.sources.length + '）</h5><div class="assistant-sources">' + sources + '</div>');
+      (result.also || []).forEach(function (row) {
+        if (!(row.sources || []).length) return;
+        parts.push('<h5>' + esc(row.label || "其他") + '</h5><div class="assistant-sources">' + assistantSourceButtons({ sources: row.sources, mode: "browse" }) + '</div>');
+      });
+      var related = (result.status !== "answered" ? result.related || [] : []).slice(0, 4).map(function (item) {
+        var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
+        return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(item.title) + '</strong><small>' + esc(meta) + '</small></button>';
+      }).join("");
+      if (related) parts.push('<h5>可能有關的公告</h5><div class="assistant-sources">' + related + '</div>');
       var evidence = (result.evidence || []).map(function (row, index) {
         return '<li><span class="assistant-evidence-rank">' + (index + 1) + '</span><div><strong class="assistant-evidence-title">' + esc(row.title || "官方公告") + '</strong><p>' + esc(row.text) + '</p><button type="button" class="btn-ghost" data-detail-id="' + esc(row.announcement_id) + '">查看這則官方依據</button></div></li>';
       }).join("");
-      if (evidence) parts.push('<h4>為什麼這樣回答（官方原文）</h4><ol class="assistant-evidence">' + evidence + '</ol>');
-      if (result.limitation) parts.push('<h4>資料說明</h4><p class="assistant-limitation">' + esc(result.limitation) + '</p>');
+      if (evidence) parts.push('<h5>為什麼這樣回答（官方原文，回答由這些句子整理）</h5><ol class="assistant-evidence">' + evidence + '</ol>');
+      if (result.limitation) parts.push('<h5>資料說明</h5><p class="assistant-limitation">' + esc(result.limitation) + '</p>');
       return parts.join("");
     }
-    function showAssistantEvidence(index, open) {
-      var panel = document.getElementById("assistantEvidence"), body = document.getElementById("assistantEvidenceBody"), label = document.getElementById("assistantEvidenceTitle");
+    function recordAssistantSources(index) {
+      var body = document.getElementById("assistantSourcesBody"), toggle = document.getElementById("assistantSourcesToggle"), count = document.getElementById("assistantSourcesCount");
       var turn = state.assistantTurns[index];
-      if (!panel || !body || !turn) return;
-      var html = assistantEvidenceHtml(turn);
-      panel.hidden = !html;
-      body.innerHTML = html;
-      if (label) label.textContent = "依據與來源：「" + (turn.question.length > 14 ? turn.question.slice(0, 13) + "…" : turn.question) + "」";
-      Array.prototype.forEach.call(document.querySelectorAll("[data-assistant-cite]"), function (button) {
-        button.classList.toggle("is-current", Number(button.dataset.assistantCite) === index);
-      });
-      if (open) { panel.open = true; if (panel.scrollIntoView) panel.scrollIntoView({ block: "start", behavior: "smooth" }); }
+      if (!body || !turn) return;
+      var html = assistantEvidenceHtml(turn), old = body.querySelector('[data-turn="' + index + '"]');
+      if (!html) { if (old) old.remove(); }
+      else {
+        var section = old || document.createElement("section");
+        section.className = "chat-sources-turn";
+        section.setAttribute("data-turn", String(index));
+        section.innerHTML = '<h4>' + esc(turn.question) + '</h4>' + html;
+        if (!old) body.appendChild(section);
+      }
+      var n = body.querySelectorAll(".chat-sources-turn").length;
+      if (count) count.textContent = String(n);
+      if (toggle) { toggle.hidden = !n; if (html) { toggle.classList.remove("is-new"); void toggle.offsetWidth; toggle.classList.add("is-new"); } }
+    }
+    /* The 參考資料 button stays just under the sticky site header. */
+    function syncMastHeight() {
+      var mast = document.querySelector(".mast");
+      if (mast && document.documentElement.style.setProperty) document.documentElement.style.setProperty("--mast-h", mast.offsetHeight + "px");
+    }
+    syncMastHeight();
+    if (typeof window.addEventListener === "function") window.addEventListener("resize", syncMastHeight);
+    function toggleAssistantSources(open) {
+      var panel = document.getElementById("assistantSources"), toggle = document.getElementById("assistantSourcesToggle");
+      if (!panel) return;
+      var show = typeof open === "boolean" ? open : panel.hidden;
+      panel.hidden = !show;
+      if (toggle) toggle.setAttribute("aria-expanded", show ? "true" : "false");
+      if (show) { var last = panel.querySelector(".chat-sources-turn:last-child"); var bodyBox = document.getElementById("assistantSourcesBody"); if (last && bodyBox) bodyBox.scrollTop = last.offsetTop - bodyBox.offsetTop; }
     }
     /* 打字機效果：回答的文字一個字一個字出現（句讀稍停），整段最多約 3 秒；
        來源、連結和「依據與來源」等打完再出現。點一下回答就直接顯示全部。
@@ -2522,26 +2552,22 @@
       if (result && result.status === "answered" && result.mode === "browse" && (result.sources || []).length) html += '<div class="assistant-sources chat-list">' + assistantSourceButtons(result) + '</div>';
       /* 規定 → 行事曆 → 公告：主答案以外，其他地方也找到的，依序列在後面。 */
       (result && result.also || []).forEach(function (row) {
-        html += '<div class="chat-also"><p class="chat-aside">' + esc(row.text || row.label + "也有寫到：" + row.summary) + '</p><div class="assistant-sources chat-list">' + assistantSourceButtons({ sources: row.sources, mode: "browse" }) + '</div></div>';
+        html += '<div class="chat-also"><p class="chat-aside">' + esc(row.text || row.label + "也有寫到：" + row.summary) + '</p></div>';
       });
       var related = (result && result.status !== "answered" && result.related || []).slice(0, 3).map(function (item) {
         var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(item.title) + '</strong><small>' + esc(meta) + '</small></button>';
       }).join("");
-      if (related) html += '<p class="chat-aside">這幾則公告可能有關，可以點開看看：</p><div class="assistant-sources chat-list">' + related + '</div>';
+      if (related) html += '<p class="chat-aside">有幾則公告可能有關，放在上方的「參考資料」裡。</p>';
       var office = result && result.status !== "answered" && result.office_link && /^https:\/\//.test(result.office_link.url) ? '<a class="btn-ghost" href="' + esc(result.office_link.url) + '" target="_blank" rel="noopener">前往' + esc(result.office_link.label) + '</a>' : '';
       var links = assistantServiceLinks(result);
       if (office) links = links ? links.replace('</div>', ' ' + office + '</div>') : '<div class="assistant-office">' + office + '</div>';
       html += links;
-      var hasEvidence = turn && assistantEvidenceHtml(turn);
-      if (hasEvidence) html += '<button type="button" class="chat-cite" data-assistant-cite="' + index + '">依據與來源 ↓</button>';
+
       finishAnswerTyping();
-      /* A new answer never shows the previous question's sources, even if this one has none. */
-      var oldPanel = document.getElementById("assistantEvidence");
-      if (oldPanel) { oldPanel.hidden = true; oldPanel.open = false; var oldBody = document.getElementById("assistantEvidenceBody"); if (oldBody) oldBody.innerHTML = ""; }
       el.assistantAnswer.innerHTML = '<div class="assistant-result chat-answer">' + html + '</div>';
       typeAnswer(el.assistantAnswer.firstChild);
-      showAssistantEvidence(index, false);
+      recordAssistantSources(index);
     }
     function assistantOptions(scope) {
       var label = String(scope && scope.label || "").replace(/（.*?）/g, "");
@@ -3363,8 +3389,8 @@
     if (el.viewAssistant) el.viewAssistant.addEventListener("click", function (e) {
       var example = e.target.closest("button[data-assistant-example]");
       if (example) { el.assistantQuestion.value = example.dataset.assistantExample; askAssistant(el.assistantQuestion.value); return; }
-      var cite = e.target.closest("button[data-assistant-cite]");
-      if (cite) { showAssistantEvidence(Number(cite.dataset.assistantCite), true); return; }
+      if (e.target.closest("#assistantSourcesToggle")) { toggleAssistantSources(); return; }
+      if (e.target.closest("#assistantSourcesClose")) { toggleAssistantSources(false); return; }
       var source = e.target.closest("button[data-detail-id]");
       if (source) openDetail(source.dataset.detailId);
     });

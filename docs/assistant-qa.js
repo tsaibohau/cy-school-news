@@ -2076,7 +2076,7 @@
         }
         sections.push(where
           ? { layer: "pointer", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [where],
-              text: ask + "：我讀得到的內容沒有直接寫，最可能寫在下面這份" + (where.kind === "school_doc" ? "規定" : "公告") + "裡，點開看。" }
+              text: ask + "：我讀得到的內容沒有直接寫，最可能寫在〈" + clean(where.title).split("›").pop().trim() + "〉裡（在上方「參考資料」）。" }
           : { layer: "none", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [],
               text: ask + "：規定、行事曆、公告裡都沒有寫到，建議直接問導師或承辦處室。" });
       }
@@ -2144,7 +2144,7 @@
          pulls in 手機互動遊戲 and 1campus 手機 app notices. */
       var subjectForms = subjectWords(query);
       var more = notices.related.filter(function (row) { var t = compact(row.title || ""); return !shown[row.id] && subjectForms.some(function (f) { return t.indexOf(f) !== -1; }); }).slice(0, 2);
-      if (more.length) main.also.push({ layer: "announcement", label: "公告", summary: "", text: "相關公告，點開看細節：", sources: more });
+      if (more.length) main.also.push({ layer: "announcement", label: "公告", summary: "", text: "還有相關公告，放在上方「參考資料」裡。", sources: more });
     }
     main.layers_checked = order.slice();
     return main;
