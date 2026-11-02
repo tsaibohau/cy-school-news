@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=113">
+<link rel="stylesheet" href="style.css?v=114">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -77,10 +77,7 @@
       <p>這裡是問校務，直接問學校的事就好。想自己翻<strong>所有公告</strong>，點左上角的 <b aria-hidden="true">☰</b> 打開側欄。</p>
       <div class="sidebar-hint-actions"><button type="button" class="btn-primary" data-hint-open>打開側欄看看</button><button type="button" class="btn-ghost" data-hint-close>知道了</button></div>
     </div>
-    <!-- 參考資料：像 Claude 上方的用量按鈕，點開看每一題的來源，每問一題就接在下面；可以關掉。 -->
-    <div class="chat-topbar">
-      <button type="button" id="assistantSourcesToggle" class="chat-sources-toggle" aria-expanded="false" aria-controls="assistantSources" hidden>參考資料 <span id="assistantSourcesCount" class="chat-sources-count">0</span></button>
-    </div>
+    <!-- 參考資料：輸入框那一排的按鈕開關；點開是一張可關閉的面板，每問一題就接在下面，不擋回答文字。 -->
     <aside id="assistantSources" class="chat-sources" aria-label="參考資料" hidden>
       <div class="chat-sources-head"><strong>參考資料</strong><button type="button" id="assistantSourcesClose" class="chat-sources-close" aria-label="關閉參考資料">✕</button></div>
       <div id="assistantSourcesBody" class="chat-sources-body"></div>
@@ -99,12 +96,13 @@
         <button type="button" data-assistant-example="第二次段考是哪幾天？">第二次段考</button>
         <button type="button" data-assistant-example="明天有什麼課？">明天的課</button>
       </div>
-      <div id="mascotStage" class="mascot-stage"></div>
       <div class="chat-box">
         <label for="assistantQuestion" class="visually-hidden">想問什麼？</label>
         <textarea id="assistantQuestion" rows="1" required maxlength="160" enterkeyhint="send" placeholder="問問學校的事，例如：書可以借多久？"></textarea>
         <div class="chat-box-foot">
           <label class="assistant-scope">範圍<select id="assistantScope"><option value="preferred">我的學校</option><option value="all">所有學校</option></select></label>
+          <button type="button" id="assistantSourcesToggle" class="chat-sources-toggle" aria-expanded="false" aria-controls="assistantSources" hidden>參考資料 <span id="assistantSourcesCount" class="chat-sources-count">0</span></button>
+          <div id="mascotStage" class="mascot-stage"></div>
           <button id="assistantAsk" class="chat-send" type="submit" aria-label="送出問題"><span aria-hidden="true">↑</span></button>
         </div>
       </div>
@@ -431,14 +429,14 @@
 <script src="today.js?v=42"></script>
 <script src="daily-brief.js?v=2"></script>
 <script src="search-taxonomy.js?v=56"></script>
-<script src="qa-synonyms.js?v=1"></script>
+<script src="qa-synonyms.js?v=2"></script>
 <script src="search-query.js?v=59"></script>
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
 <script src="answer-composer.js?v=1"></script>
-<script src="mascot.js?v=5"></script>
-<script src="assistant-qa.js?v=74"></script>
+<script src="mascot.js?v=6"></script>
+<script src="assistant-qa.js?v=75"></script>
 <script src="weather.js?v=1"></script>
 <script src="announcement-sort.js?v=1"></script>
 <script src="google-calendar.js?v=1"></script>
@@ -446,7 +444,7 @@
 <script src="activity-overview.js?v=1"></script>
 <script src="schedule-compare.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
-<script src="app.js?v=132"></script>
+<script src="app.js?v=133"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

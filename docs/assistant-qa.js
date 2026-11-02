@@ -415,8 +415,11 @@
     var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var current = currentAcademicYear(asOf);
     var ownSchool = CAMPUS_LIFE.test(query) && !ASKS_OUTSIDE.test(query);
+    var asksResult = ASKS_RESULT.test(query);
     return (ranked || []).filter(function (row) {
       if (ownSchool && OUTSIDE_TITLE.test(clean(row.item && row.item.title || ""))) return false;
+      /* 得獎名單 is not how to write one (「閱讀心得報告怎麼寫」). */
+      if (!asksResult && TITLE_RESULT.test(clean(row.item && row.item.title || ""))) return false;
       return topicScore(row.item && row.item.title || "", query, stats) >= 0.5;
     }).slice(0, 3).map(function (row) {
       var item = row.item, year = Number((periodToken(item.title || "").match(/^\d+/) || [])[0]);
@@ -1361,6 +1364,8 @@
     var picked = upcoming.length ? upcoming.slice(0, NEXT_ASK.test(query) ? 1 : 4) : past.slice(0, 1);
     if (!picked.length) return null;
     var where = options.scopeLabel ? options.scopeLabel + "行事曆" : "學校行事曆";
+    /* The one thing asked, said first and big: 「下一次：11/26（週四）～11/27（週五）第二次期中考」. */
+    var headline = upcoming.length ? (picked.length > 1 ? "下一次：" : "") + rangeLabel(picked[0].from, picked[0].to) + "「" + picked[0].title + "」" : "";
     var names = picked.slice(0, 3).map(function (r) { return rangeLabel(r.from, r.to) + "「" + r.title + "」"; }).join("、");
     var summary = upcoming.length ? "依" + where + "，" + names + (picked.length > 3 ? "等" : "") + "。"
       : "依" + where + "，最近一次是 " + names + "，已經過了；下一次還沒排進行事曆。";
@@ -1373,7 +1378,7 @@
       .sort(function (a, b) { return String(b.date || "").localeCompare(String(a.date || "")); }).slice(0, 2).forEach(function (item) {
         sources.push({ id: item.id, title: clean(item.title || "官方公告"), school_id: item.school || "", school_name: item.school_name || "", url: item.url || "", date: item.date || item.first_seen || "", category: item.category || "", note: "相關公告" });
       });
-    return { status: "answered", mode: "browse", list_label: "行事曆", query: query, summary: summary, evidence: [], sources: sources, related: [], key_points: [],
+    return { status: "answered", mode: "browse", list_label: "行事曆", query: query, headline: headline, summary: summary, evidence: [], sources: sources, related: [], key_points: [],
       plan: questionPlan(query), limitation: "日期來自學校行事曆；學校臨時調整時以最新公告為準。" };
   }
   /* 「寒假什麼時候」: calendars rarely list 寒假 itself, but the 結業式／休業式 is the last day
@@ -1754,6 +1759,11 @@
     var talk = smallTalk(query);
     if (talk) return smallTalkAnswer(talk, query, options);
     query = stripSchoolNames(clean(query).slice(0, 160));
+    /* A re-ask after 「找錯了」: leave out what was already shown (and result lists). */
+    if (options && (options.exclude || options.dropResults)) {
+      var skip = {}; (options.exclude || []).forEach(function (id) { skip[id] = true; });
+      items = (items || []).filter(function (item) { return item && !skip[String(item.id)] && !(options.dropResults && TITLE_RESULT.test(clean(item.title || ""))); });
+    }
     var split = splitQuestion(query);
     var result = split ? answerParts(query, split, items, details, options) : answerCore(query, items, details, options);
     /* Splitting found nothing but the whole question does: keep the whole-question answer. */
@@ -1978,7 +1988,7 @@
     if (!parts.length) return null;
     /* One clause asking one plain thing (「成績怎麼查」「段考什麼時候」) is answered as it is;
        split when there are several clauses, or when it asks what happens if you don't. */
-    if (clauses.length === 1 && !parts.some(function (p) { return p.aspect.id === "consequence"; })) return null;
+    if (clauses.length === 1 && !parts.some(function (p) { return p.aspect.id === "consequence" || (p.aspect.id === "method" && /怎麼(?:寫|做|交|繳|準備)|格式/.test(p.clause)); })) return null;
     return { subject: parts[0].subject, parts: parts };
   }
   function subjectWords(query) {
@@ -2044,6 +2054,20 @@
     return { layer: "tease", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: "", text: ask + "：" + tease + hint,
       sources: where && !shown[where.id] ? [where] : [] };
   }
+  /* 「你查的是得獎名單」「不是這個」「找錯了」: the user says the last answer missed. Re-ask the
+     previous question without what was shown, and without result lists unless it asked for them. */
+  var CORRECTION = /^(?:你|妳)?(?:查|找|給|回|答)(?:的|得|了)?(?:是|都是)|不是(?:這個|這則|我要的|這樣|問這個)|答非所問|找錯|查錯|搞錯|弄錯|錯了|不對|牛頭不對馬嘴|沒回答到|我是問|我問的是/;
+  function correction(question, previous) {
+    var q = clean(question);
+    if (!previous || !previous.query || !CORRECTION.test(q)) return null;
+    var exclude = [];
+    var result = previous.result || {};
+    (result.sources || []).concat(result.related || []).forEach(function (row) { if (row && row.id) exclude.push(String(row.id)); });
+    (result.also || []).forEach(function (row) { (row.sources || []).forEach(function (s) { if (s && s.id) exclude.push(String(s.id)); }); });
+    var what = (q.match(/(得獎名單|名單|結果|去年|舊的|別間學校|比賽|活動)/) || [])[1] || "";
+    var apology = what ? "抱歉，剛剛給的是" + what + "，不是你要的。我重新找：" : "抱歉，剛剛沒答到重點。我重新找：";
+    return { query: previous.query, exclude: unique(exclude), dropResults: !ASKS_RESULT.test(previous.query), apology: apology };
+  }
   function answerParts(query, split, items, details, options) {
     var overview = answerCore(split.subject, items, details, options) || { status: "insufficient", evidence: [], sources: [] };
     var shown = {};
@@ -2076,7 +2100,7 @@
         }
         sections.push(where
           ? { layer: "pointer", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [where],
-              text: ask + "：我讀得到的內容沒有直接寫，最可能寫在〈" + clean(where.title).split("›").pop().trim() + "〉裡（在上方「參考資料」）。" }
+              text: ask + "：我讀得到的內容沒有直接寫，最可能寫在〈" + clean(where.title).split("›").pop().trim() + "〉裡（在下方「參考資料」）。" }
           : { layer: "none", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [],
               text: ask + "：規定、行事曆、公告裡都沒有寫到，建議直接問導師或承辦處室。" });
       }
@@ -2112,8 +2136,12 @@
     if (browse && !calendar) return browseAnswer(query, items, browse, options);
     /* A class timetable or a day's schedule is the whole answer. */
     if (calendar && (calendar.mode === "timetable" || datePlan(query, asOfDay))) return calendar;
+    var ruled = personalDataQuery(query) ? null : ruleLayer(query, all.filter(isSchoolDoc), details, options);
+    /* A rule chapter that only mentions the subject in passing (〈圖書館閱覽規定〉 says the library
+       closes on 段考 days) is not the answer to 「什麼時候段考」. */
+    if (ruled && ruled.mode === "rule" && !chapterAbout(ruled.sources && ruled.sources[0], query)) ruled = null;
     var layers = {
-      rule: personalDataQuery(query) ? null : ruleLayer(query, all.filter(isSchoolDoc), details, options),
+      rule: ruled,
       calendar: calendar,
       announcement: announcementLayer(query, all, details, options)
     };
@@ -2144,10 +2172,20 @@
          pulls in 手機互動遊戲 and 1campus 手機 app notices. */
       var subjectForms = subjectWords(query);
       var more = notices.related.filter(function (row) { var t = compact(row.title || ""); return !shown[row.id] && subjectForms.some(function (f) { return t.indexOf(f) !== -1; }); }).slice(0, 2);
-      if (more.length) main.also.push({ layer: "announcement", label: "公告", summary: "", text: "還有相關公告，放在上方「參考資料」裡。", sources: more });
+      if (more.length) main.also.push({ layer: "announcement", label: "公告", summary: "", text: "還有相關公告，放在下方「參考資料」裡。", sources: more });
     }
     main.layers_checked = order.slice();
     return main;
+  }
+  function chapterAbout(item, query) {
+    if (!item) return false;
+    var chapter = compact(String(item.title || "").split("›").pop());
+    var words = subjectWords(query).concat((function () {
+      var terms = ruleTerms(query), out = [];
+      terms.literal.concat(terms.rest).forEach(function (t) { out = out.concat(Synonyms ? Synonyms.concepts(t) : [t]); });
+      return out.concat(terms.related);   // same topic: 還書 → 圖書館、借書
+    })()).filter(function (w) { return w.length >= 2 && ALWAYS_GENERIC.indexOf(w) === -1; });
+    return !words.length || words.some(function (w) { return chapter.indexOf(compact(w)) !== -1; });
   }
   function ruleLayer(query, docs, details, options) {
     if (!docs.length) return null;
@@ -2273,5 +2311,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, comparePlan: comparePlan, compareResults: compareResults, smallTalk: smallTalk, wantsLink: wantsLink, answerLinks: answerLinks, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, correction: correction, comparePlan: comparePlan, compareResults: compareResults, smallTalk: smallTalk, wantsLink: wantsLink, answerLinks: answerLinks, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });

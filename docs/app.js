@@ -2546,7 +2546,9 @@
       var index = typeof turnIndex === "number" ? turnIndex : state.assistantTurns.length - 1, turn = state.assistantTurns[index];
       if (turn) turn.result = result;
       var reply = result && result.reply || { text: result && result.summary || "", bullets: [] };
-      var html = '<p class="assistant-lead">' + esc(reply.text || "請換一種問法，或查看官方公告。") + '</p>';
+      /* The key fact first, in bold (「下一次：11/26～11/27 第二次期中考」); the explanation follows. */
+      var html = (result && result.headline ? '<p class="chat-headline">' + esc(result.headline) + '</p>' : "") +
+        '<p class="assistant-lead">' + esc(reply.text || "請換一種問法，或查看官方公告。") + '</p>';
       if (reply.bullets && reply.bullets.length) html += '<ul class="chat-bullets">' + reply.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>';
       if (reply.tail) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
       if (result && result.status === "answered" && result.mode === "browse" && (result.sources || []).length) html += '<div class="assistant-sources chat-list">' + assistantSourceButtons(result) + '</div>';
@@ -2558,7 +2560,7 @@
         var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(item.title) + '</strong><small>' + esc(meta) + '</small></button>';
       }).join("");
-      if (related) html += '<p class="chat-aside">有幾則公告可能有關，放在上方的「參考資料」裡。</p>';
+      if (related) html += '<p class="chat-aside">有幾則公告可能有關，放在下方的「參考資料」裡。</p>';
       var office = result && result.status !== "answered" && result.office_link && /^https:\/\//.test(result.office_link.url) ? '<a class="btn-ghost" href="' + esc(result.office_link.url) + '" target="_blank" rel="noopener">前往' + esc(result.office_link.label) + '</a>' : '';
       var links = assistantServiceLinks(result);
       if (office) links = links ? links.replace('</div>', ' ' + office + '</div>') : '<div class="assistant-office">' + office + '</div>';
@@ -2677,7 +2679,8 @@
         var heroMascot = window.CyNewsMascot.mount(hero, { walk: false, pixel: 4 });
         if (heroMascot) heroMascot.play("wave");
       }
-      if (!mascot) mascot = window.CyNewsMascot.mount($("mascotStage"), { pixel: 2 });
+      /* 輸入框那一排的小訊：坐著做自己的事，點了才說話，不擋回答。 */
+      if (!mascot) mascot = window.CyNewsMascot.mount($("mascotStage"), { perch: true, pixel: 1.5 });
     }
     /* 刊頭的小訊：問校務以外的頁面都坐在右上角，自己看書、寫字、畫畫、打手遊。
        問校務有自己那隻，客串時也先躲起來，畫面上永遠只有一隻。 */
@@ -2757,7 +2760,8 @@
       var wait = first ? CAMEO_FIRST_MS : CAMEO_GAP_MS[0] + Math.random() * (CAMEO_GAP_MS[1] - CAMEO_GAP_MS[0]);
       cameoTimer = setTimeout(runMascotCameo, wait);
     }
-    function mascotMood(mood, text) { try { if (mascot) mascot.setMood(mood, text); } catch (_) {} }
+    /* Moods change its pose only; it speaks only with a real message (「網路好像怪怪的…」). */
+    function mascotMood(mood, text) { try { if (mascot) mascot.setMood(mood, text === undefined ? false : text); } catch (_) {} }
     function renderAssistantGreeting() {
       setupMascot();
       var title = document.getElementById("assistantTitle");
@@ -2947,6 +2951,9 @@
       if (!question) return Promise.resolve(null);
       /* 「那要多久？」「那嘉女呢？」 continue the previous question. */
       var asked = question, previous = state.assistantTurns[state.assistantTurns.length - 1];
+      /* 「你查的是得獎名單」: the last answer missed; ask the previous question again without it. */
+      var fix = window.CyNewsAssistantQA.correction ? window.CyNewsAssistantQA.correction(question, previous && { query: previous.query, result: previous.result }) : null;
+      if (fix) return askAssistantAgain(asked, fix, previous);
       var answeredBefore = !!(previous && previous.result && previous.result.status === "answered" && previous.result.mode !== "chat");
       var followUp = window.CyNewsAssistantQA.resolveFollowUp ? window.CyNewsAssistantQA.resolveFollowUp(question, previous && { query: previous.query, answered: answeredBefore }) : { query: question, context: "" };
       question = followUp.query || question;
@@ -3029,6 +3036,41 @@
         mascotMood("sad", "網路好像怪怪的…");
         if (el.assistantStatus) el.assistantStatus.textContent = "資料讀取失敗";
         return result;
+      }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
+    }
+    function askAssistantAgain(asked, fix, previous) {
+      var QA = window.CyNewsAssistantQA, registry = window.CyNewsSchoolRegistry;
+      var keep = previous && previous.scopeId && registry && registry.find(previous.scopeId);
+      var scope = keep ? { id: keep.id, label: keep.short } : assistantScopeFor(fix.query);
+      startAssistantTurn(asked, fix.query);
+      setupMascot();
+      mascotMood("thinking");
+      var turnIndex = state.assistantTurns.length - 1, target = el.assistantAnswer, current = state.assistantTurns[turnIndex];
+      if (current) { current.query = fix.query; current.scopeId = scope.id; }
+      if (el.assistantAsk) el.assistantAsk.disabled = true;
+      var calendarReady = state.officialEvents && state.officialEvents.length ? Promise.resolve() : loadOfficialEvents();
+      return Promise.all([fetchAssistantCorpus(scope.id), calendarReady]).then(function (loaded) {
+        var items = loaded[0], options = assistantOptions(scope);
+        options.exclude = fix.exclude; options.dropResults = fix.dropResults;
+        items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
+        var isDoc = function (item) { return item && (item.kind === "school_handbook" || item.kind === "school_info"); };
+        var skip = {}; fix.exclude.forEach(function (id) { skip[id] = true; });
+        var pool = items.filter(function (item) { return !skip[String(item.id)]; });
+        var candidates = QA.rank(fix.query, pool.filter(isDoc), {}, options).slice(0, 6).concat(QA.rank(fix.query, pool.filter(function (item) { return !isDoc(item); }), {}, options).slice(0, 6));
+        return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
+          var details = {};
+          records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
+          var result = QA.answer(fix.query, items, details, options);
+          result.reply = Object.assign({}, result.reply || { text: result.summary || "", bullets: [] });
+          result.reply.text = fix.apology + (result.status === "answered" ? "" : "還是沒找到更準的。") + result.reply.text;
+          el.assistantAnswer = target;
+          renderAssistantAnswer(result, turnIndex);
+          mascotMood(result.status === "answered" ? "happy" : "sad");
+          return result;
+        });
+      }).catch(function () {
+        var result = { status: "insufficient", summary: "目前無法讀取資料，請稍後再試。", evidence: [], sources: [] };
+        el.assistantAnswer = target; renderAssistantAnswer(result, turnIndex); return result;
       }).finally(function () { if (el.assistantAsk) el.assistantAsk.disabled = false; });
     }
     /* Weather from Open-Meteo (free, no key). One request per place every 30 minutes. */

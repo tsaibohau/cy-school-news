@@ -38,7 +38,8 @@ assert.doesNotMatch(app, /data-assistant-cite=/, "no source button under each an
 assert.match(app, /function recordAssistantSources\(index\)/);
 assert.match(app, /section\.setAttribute\("data-turn", String\(index\)\);/);
 assert.match(app, /if \(e\.target\.closest\("#assistantSourcesClose"\)\) \{ toggleAssistantSources\(false\); return; \}/);
-assert.match(css, /\.chat-topbar \{ position: sticky; top: var\(--mast-h, 0px\);/, "the button stays under the sticky header");
+assert.match(index, /class="chat-box-foot">[\s\S]*?id="assistantSourcesToggle"[\s\S]*?id="mascotStage"[\s\S]*?id="assistantAsk"/, "the 參考資料 button and 小訊 sit in the input row, not over the answer");
+assert.match(css, /\.chat-sources \{ position: fixed;/);
 assert.match(app, /resolveFollowUp\(question, previous && \{ query: previous\.query, answered: answeredBefore \}\)/, "follow-up questions read the previous answered turn");
 /* Mascot 小訊: the 訊 seal with eyes, arms and legs, walking above the composer. */
 const Mascot = require("../docs/mascot.js");
@@ -52,7 +53,7 @@ assert.ok(Mascot.animations.walk.some(p => p.legs === "walkA") && Mascot.animati
 assert.doesNotMatch(read("mascot.js"), /scaleX\(-1\)|is-facing-left/, "the sprite is never mirrored, so 訊 stays readable");
 assert.ok(Mascot.lines.thinking.length && Mascot.lines.happy.length && Mascot.lines.sad.length);
 assert.match(index, /id="mascotStage" class="mascot-stage"/);
-assert.match(index, /<script src="mascot\.js\?v=5"><\/script>\s*<script src="assistant-qa\.js/);
+assert.match(index, /<script src="mascot\.js\?v=6"><\/script>\s*<script src="assistant-qa\.js/);
 assert.match(read("mascot.js"), /prefers-reduced-motion: reduce/, "the mascot stops moving for reduced motion");
 assert.doesNotMatch(css, /transition: transform 1\.4s/, "no smooth sliding: the mascot walks step by step");
 assert.match(app, /mascotMood\("thinking"\)/);
