@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-02T10:41:44+08:00",
+ "generated_at": "2026-11-02T18:02:07+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -213,8 +213,31 @@
    "page_id": 148635007083087,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5229.php",
    "label": "各年級導師",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:02:03+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組",
+    "各年級導師"
+   ],
+   "changed_at": "2026-11-02T18:02:03+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [
+    "分機"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-148635007083087.json",
+   "detail_revision": "bc4158581caabda89f4cf66e05d5190ca68f652f36971dc03b269b22c9f2a58e",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "115-1導師名單",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/33/300807143.pdf"
+    }
+   ]
   },
   "238776332606298": {
    "page_id": 238776332606298,
@@ -427,9 +450,22 @@
     "圖書館"
    ],
    "order": 28
+  },
+  "77805136686968": {
+   "page_id": 77805136686968,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-507.php",
+   "label": "訓育組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "訓育組",
+    "各年級導師"
+   ],
+   "order": 29
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [
   {
@@ -546,6 +582,32 @@
    ],
    "detail_ref": "data/details/kssh/kssh-info-140039901727931.json",
    "detail_revision": "7e6c681233db908425ca786f53e0858eefc400d90020fce98a9b997dd200f56e",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-148635007083087",
+   "kind": "school_info",
+   "title": "學務處 › 訓育組 › 各年級導師",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5229.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "115-1導師名單"
+   ],
+   "keywords": [
+    "分機"
+   ],
+   "documents": [
+    {
+     "name": "115-1導師名單",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/33/300807143.pdf"
+    }
+   ],
+   "detail_ref": "data/details/kssh/kssh-info-148635007083087.json",
+   "detail_revision": "bc4158581caabda89f4cf66e05d5190ca68f652f36971dc03b269b22c9f2a58e",
    "detail_status": "parsed"
   },
   {
@@ -773,5 +835,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-02T10:41:44+08:00"
+ "last_run_at": "2026-11-02T18:02:07+08:00"
 }

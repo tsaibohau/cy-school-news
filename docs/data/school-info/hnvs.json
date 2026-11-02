@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-02T10:43:34+08:00",
+ "generated_at": "2026-11-02T18:04:28+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -368,8 +368,24 @@
    "page_id": 116061505090164,
    "url": "https://www.hnvs.cy.edu.tw/sub_content/index.asp?Parser=1,5,50,36",
    "label": "行政單位",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:04:26+08:00",
+   "path": [
+    "行政單位"
+   ],
+   "changed_at": "2026-11-02T18:04:26+08:00",
+   "content_hash": "e37f542bb8a1be21e6b22daa860ba30089534b015edd186237071c8a67d34d98",
+   "doc_links": [],
+   "keywords": [
+    "圖書館",
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-116061505090164.json",
+   "detail_revision": "3e5a59c03f90cb4757d5fd904ce5487eba4b6b3662483ef1fa10bd5ddd5a9a9a",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "249480265844905": {
    "page_id": 249480265844905,
@@ -3415,6 +3431,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [
   {
@@ -3550,6 +3567,26 @@
    "documents": [],
    "detail_ref": "data/details/hnvs/hnvs-info-115983233628736.json",
    "detail_revision": "e15c262012d048b82452901c3188c0d2a0a47f094b8016d136b1e05186e33562",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hnvs-info-116061505090164",
+   "kind": "school_info",
+   "title": "行政單位",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/sub_content/index.asp?Parser=1,5,50,36",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "圖書館",
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-116061505090164.json",
+   "detail_revision": "3e5a59c03f90cb4757d5fd904ce5487eba4b6b3662483ef1fa10bd5ddd5a9a9a",
    "detail_status": "parsed"
   },
   {
@@ -4021,5 +4058,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-02T10:43:34+08:00"
+ "last_run_at": "2026-11-02T18:04:28+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "gwehs",
- "generated_at": "2026-11-02T10:43:12+08:00",
+ "generated_at": "2026-11-02T18:03:59+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "112287735641889": {
@@ -154,8 +154,14 @@
    "page_id": 124910684302694,
    "url": "https://gwehs.ylc.edu.tw/cp.aspx?n=93656",
    "label": "會計室",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:03:58+08:00",
+   "path": [
+    "行政組織",
+    "會計室",
+    "會計室首頁"
+   ]
   },
   "36551015477884": {
    "page_id": 36551015477884,
@@ -293,6 +299,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -445,5 +452,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-02T10:43:12+08:00"
+ "last_run_at": "2026-11-02T18:03:59+08:00"
 }

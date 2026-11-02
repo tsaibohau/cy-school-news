@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-02T10:42:53+08:00",
+ "generated_at": "2026-11-02T18:03:40+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -462,8 +462,33 @@
    "page_id": 120233827165152,
    "url": "https://www.hwaivs.ylc.edu.tw/%e7%b7%9a%e4%b8%8a%e6%95%99%e5%ad%b8%e5%b0%88%e5%8d%80/",
    "label": "線上教學專區",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:03:38+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "線上教學專區"
+   ],
+   "changed_at": "2026-11-02T18:03:38+08:00",
+   "content_hash": "bf979f8df17d8aa99aa2f5a7b59888a2589a45cb2ee004e9c083611d546ef701",
+   "doc_links": [
+    {
+     "name": "國文即戰力",
+     "url": "https://drive.google.com/drive/folders/1cFfk8j1aolMbaqYVp8ibAlow1X2rHIHo?usp=share_link"
+    }
+   ],
+   "keywords": [
+    "研習",
+    "停課",
+    "宣導",
+    "畢業典禮",
+    "自主學習"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-120233827165152.json",
+   "detail_revision": "4f3aee0d8dcba27e8bcc854646ac498f78d5adf7a6b758b1fc15e5cb73978d07",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "175983352543256": {
    "page_id": 175983352543256,
@@ -3769,6 +3794,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [
   {
@@ -4061,6 +4087,36 @@
    ],
    "detail_ref": "data/details/hwaivs/hwaivs-info-118660946148050.json",
    "detail_revision": "c6c795f72fd473525215111a27b48ecf61b054a53b095f43d4f2a4f98cc97710",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hwaivs-info-120233827165152",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 線上教學專區",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e7%b7%9a%e4%b8%8a%e6%95%99%e5%ad%b8%e5%b0%88%e5%8d%80/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "國文即戰力"
+   ],
+   "keywords": [
+    "研習",
+    "停課",
+    "宣導",
+    "畢業典禮",
+    "自主學習"
+   ],
+   "documents": [
+    {
+     "name": "國文即戰力",
+     "url": "https://drive.google.com/drive/folders/1cFfk8j1aolMbaqYVp8ibAlow1X2rHIHo?usp=share_link"
+    }
+   ],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-120233827165152.json",
+   "detail_revision": "4f3aee0d8dcba27e8bcc854646ac498f78d5adf7a6b758b1fc15e5cb73978d07",
    "detail_status": "parsed"
   },
   {
@@ -4422,5 +4478,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-02T10:42:53+08:00"
+ "last_run_at": "2026-11-02T18:03:40+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-02T10:40:02+08:00",
+ "generated_at": "2026-11-02T18:01:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -85,15 +85,23 @@
    "page_id": 119148489426743,
    "url": "https://www.tnssh.tn.edu.tw/pri/",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:11+08:00",
+   "path": [
+    "校長室"
+   ]
   },
   "43515423164878": {
    "page_id": 43515423164878,
    "url": "https://www.tnssh.tn.edu.tw/pri/sec/",
    "label": "秘書室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:13+08:00",
+   "path": [
+    "秘書室"
+   ]
   },
   "238646954649125": {
    "page_id": 238646954649125,
@@ -531,9 +539,43 @@
     "認識二中"
    ],
    "order": 59
+  },
+  "279659709824875": {
+   "page_id": 279659709824875,
+   "url": "https://www.tnssh.tn.edu.tw/pri/pri01/",
+   "label": "內控聲明書",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校長室"
+   ],
+   "order": 60
+  },
+  "174020950771849": {
+   "page_id": 174020950771849,
+   "url": "https://www.tnssh.tn.edu.tw/pri/pri02/",
+   "label": "校長文稿",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校長室"
+   ],
+   "order": 61
+  },
+  "226738312951843": {
+   "page_id": 226738312951843,
+   "url": "https://www.tnssh.tn.edu.tw/pri/2123-2/",
+   "label": "校長公開觀課",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校長室"
+   ],
+   "order": 62
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -816,5 +858,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-02T10:40:02+08:00"
+ "last_run_at": "2026-11-02T18:01:15+08:00"
 }

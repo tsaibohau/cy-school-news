@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "sgsh",
- "generated_at": "2026-11-02T10:41:34+08:00",
+ "generated_at": "2026-11-02T18:01:51+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "247594578953018": {
@@ -85,30 +85,44 @@
    "page_id": 216923967871560,
    "url": "https://sg.sgshedu.tw/modules/tad_honor/index.php?honor_sn=13",
    "label": "賀 本校115學年度招收國中部學生 歡迎報名",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:45+08:00",
+   "path": [
+    "賀 本校115學年度招收國中部學生 歡迎報名"
+   ]
   },
   "279186241118989": {
    "page_id": 279186241118989,
    "url": "https://sg.sgshedu.tw/modules/tad_link/index.php",
    "label": "所有連結",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 8
+   "order": 8,
+   "checked_at": "2026-11-02T18:01:48+08:00",
+   "path": [
+    "好站連結",
+    "所有連結"
+   ]
   },
   "157482583201627": {
    "page_id": 157482583201627,
    "url": "https://sg.sgshedu.tw/modules/tad_link/index.php?link_sn=27",
    "label": "不迷小紅書，青春不迷途",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 9
+   "order": 9,
+   "checked_at": "2026-11-02T18:01:50+08:00",
+   "path": [
+    "好站連結",
+    "不迷小紅書，青春不迷途"
+   ]
   },
   "185289257857208": {
    "page_id": 185289257857208,
@@ -376,6 +390,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -548,5 +563,5 @@
   "fcc13700e3",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-02T10:41:34+08:00"
+ "last_run_at": "2026-11-02T18:01:51+08:00"
 }

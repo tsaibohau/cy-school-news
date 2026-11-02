@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-02T10:41:25+08:00",
+ "generated_at": "2026-11-02T18:01:40+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -90,22 +90,37 @@
    "page_id": 144475996291,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/secretary-office/",
    "label": "秘書室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:34+08:00",
+   "path": [
+    "行政組織",
+    "秘書室"
+   ]
   },
   "109547044935110": {
    "page_id": 109547044935110,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/academic-affairs/",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:36+08:00",
+   "path": [
+    "行政組織",
+    "教務處"
+   ]
   },
   "46241737750255": {
    "page_id": 46241737750255,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/student-affairs/",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:38+08:00",
+   "path": [
+    "行政組織",
+    "學務處"
+   ]
   },
   "210504357308564": {
    "page_id": 210504357308564,
@@ -439,9 +454,202 @@
     "治校理念"
    ],
    "order": 50
+  },
+  "257095248402975": {
+   "page_id": 257095248402975,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/secretary-office/1/",
+   "label": "最新公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "秘書室"
+   ],
+   "order": 51
+  },
+  "7012645209972": {
+   "page_id": 7012645209972,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/secretary-office/2/",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "秘書室"
+   ],
+   "order": 52
+  },
+  "80144419407849": {
+   "page_id": 80144419407849,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/secretary-office/3/",
+   "label": "法令規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "秘書室"
+   ],
+   "order": 53
+  },
+  "7488318916563": {
+   "page_id": 7488318916563,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/secretary-office/4/",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "秘書室"
+   ],
+   "order": 54
+  },
+  "66449101284961": {
+   "page_id": 66449101284961,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/secretary-office/5/",
+   "label": "相關業務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "秘書室"
+   ],
+   "order": 55
+  },
+  "84210665689969": {
+   "page_id": 84210665689969,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/academic-affairs/1/",
+   "label": "最新公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "教務處"
+   ],
+   "order": 56
+  },
+  "132456487981701": {
+   "page_id": 132456487981701,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/academic-affairs/2/",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "教務處"
+   ],
+   "order": 57
+  },
+  "61305207369021": {
+   "page_id": 61305207369021,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/academic-affairs/3/",
+   "label": "法令規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "教務處"
+   ],
+   "order": 58
+  },
+  "68730683232756": {
+   "page_id": 68730683232756,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/academic-affairs/4/",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "教務處"
+   ],
+   "order": 59
+  },
+  "88304913158102": {
+   "page_id": 88304913158102,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/academic-affairs/5/",
+   "label": "相關業務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "教務處"
+   ],
+   "order": 60
+  },
+  "245189485539656": {
+   "page_id": 245189485539656,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/teacher-training/5246/%e3%80%8c%e6%95%99%e8%82%b2%e9%83%a8%e6%b5%b7%e6%b4%8b%e6%95%99%e8%82%b2%e6%8e%a8%e6%89%8b%e7%8d%8e%e9%81%b4%e9%81%b8%e5%8f%8a%e8%a1%a8%e6%8f%9a%e8%a8%88%e7%95%ab%e3%80%8d/",
+   "label": "「教育部海洋教育推手獎遴選及表揚計畫」",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "教務處"
+   ],
+   "order": 61
+  },
+  "264514658307370": {
+   "page_id": 264514658307370,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/student-affairs/1/",
+   "label": "最新公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "學務處"
+   ],
+   "order": 62
+  },
+  "101652975751808": {
+   "page_id": 101652975751808,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/student-affairs/2/",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "學務處"
+   ],
+   "order": 63
+  },
+  "219581954218906": {
+   "page_id": 219581954218906,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/student-affairs/3/",
+   "label": "法令規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "學務處"
+   ],
+   "order": 64
+  },
+  "158072107808916": {
+   "page_id": 158072107808916,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/student-affairs/4/",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "學務處"
+   ],
+   "order": 65
+  },
+  "23538766788299": {
+   "page_id": 23538766788299,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/administration/student-affairs/5/",
+   "label": "相關業務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "學務處"
+   ],
+   "order": 66
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -691,5 +899,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-02T10:41:25+08:00"
+ "last_run_at": "2026-11-02T18:01:40+08:00"
 }

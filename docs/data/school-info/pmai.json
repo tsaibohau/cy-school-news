@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "pmai",
- "generated_at": "2026-11-02T10:39:46+08:00",
+ "generated_at": "2026-11-02T18:00:56+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "128225757814606": {
@@ -79,8 +79,13 @@
    "page_id": 227124112163859,
    "url": "https://www.pmai.tn.edu.tw/about/school-badge",
    "label": "校徽",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:00:54+08:00",
+   "path": [
+    "認識北農",
+    "校徽"
+   ]
   },
   "163717592005969": {
    "page_id": 163717592005969,
@@ -392,6 +397,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -646,5 +652,5 @@
   "f7e502496b",
   "fd7193de53"
  ],
- "last_run_at": "2026-11-02T10:39:46+08:00"
+ "last_run_at": "2026-11-02T18:00:56+08:00"
 }

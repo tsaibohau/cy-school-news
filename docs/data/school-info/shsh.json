@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-02T10:43:00+08:00",
+ "generated_at": "2026-11-02T18:03:45+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -640,8 +640,43 @@
    "page_id": 99266782567526,
    "url": "https://www.shsh.ylc.edu.tw/office/div_300/section_310/s3101/%e6%9c%8d%e8%a3%9d%e5%84%80%e5%ae%b9%e8%a6%8f%e5%ae%9a/",
    "label": "學生服裝儀容規定",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:03:41+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "生輔組",
+    "生輔組各項規定辦法",
+    "服裝儀容規定"
+   ],
+   "changed_at": "2026-11-02T18:03:41+08:00",
+   "content_hash": "7e7418fc9322b82c052e17007289a7683686f5fce8ba317fcf32ac6d2099c370",
+   "doc_links": [],
+   "keywords": [
+    "服裝",
+    "安全",
+    "校服",
+    "衛生",
+    "運動服",
+    "便服",
+    "參訪",
+    "放學",
+    "校慶",
+    "畢業典禮",
+    "競賽",
+    "選擇"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-99266782567526.json",
+   "detail_revision": "731e1bee68a1b8f3a8691ed7e9c558e6d618db69106ceff03fc0bdc001d8dcd6",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "新視窗開啟檔案",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/yusheng5230/服裝儀容規範.pdf"
+    }
+   ]
   },
   "80835173939088": {
    "page_id": 80835173939088,
@@ -2768,6 +2803,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [
   {
@@ -3028,6 +3064,43 @@
    ],
    "detail_ref": "data/details/shsh/shsh-info-93412670516552.json",
    "detail_revision": "79e0b26f7a27c69b6bdac810df41d222a5b7adf44505ec3299df079eed5a0915",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "shsh-info-99266782567526",
+   "kind": "school_info",
+   "title": "生輔組 › 生輔組各項規定辦法 › 服裝儀容規定",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_300/section_310/s3101/%e6%9c%8d%e8%a3%9d%e5%84%80%e5%ae%b9%e8%a6%8f%e5%ae%9a/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "新視窗開啟檔案"
+   ],
+   "keywords": [
+    "服裝",
+    "安全",
+    "校服",
+    "衛生",
+    "運動服",
+    "便服",
+    "參訪",
+    "放學",
+    "校慶",
+    "畢業典禮",
+    "競賽",
+    "選擇"
+   ],
+   "documents": [
+    {
+     "name": "新視窗開啟檔案",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/yusheng5230/服裝儀容規範.pdf"
+    }
+   ],
+   "detail_ref": "data/details/shsh/shsh-info-99266782567526.json",
+   "detail_revision": "731e1bee68a1b8f3a8691ed7e9c558e6d618db69106ceff03fc0bdc001d8dcd6",
    "detail_status": "parsed"
   },
   {
@@ -4008,5 +4081,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-02T10:43:00+08:00"
+ "last_run_at": "2026-11-02T18:03:45+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "bwjh",
- "generated_at": "2026-11-02T10:43:04+08:00",
+ "generated_at": "2026-11-02T18:03:51+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "115174826298911": {
@@ -174,15 +174,26 @@
    "page_id": 175085235063138,
    "url": "https://www.bwjh.ylc.edu.tw/sequl/",
    "label": "性別平等教育專區",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:03:47+08:00",
+   "path": [
+    "福智高中",
+    "性別平等教育專區"
+   ]
   },
   "11310068824423": {
    "page_id": 11310068824423,
    "url": "https://www.bwjh.ylc.edu.tw/sequl/se-regulations/",
    "label": "性別平等相關法規",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:03:49+08:00",
+   "path": [
+    "福智高中",
+    "性別平等教育專區",
+    "性別平等相關法規"
+   ]
   },
   "273285244151195": {
    "page_id": 273285244151195,
@@ -421,6 +432,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -734,5 +746,5 @@
   "fb9a0fa8b3",
   "fce367420e"
  ],
- "last_run_at": "2026-11-02T10:43:04+08:00"
+ "last_run_at": "2026-11-02T18:03:51+08:00"
 }

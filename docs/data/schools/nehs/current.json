@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-02T10:27:53+08:00",
+ "generated_at": "2026-11-02T17:49:33+08:00",
  "school": {
   "id": "nehs",
   "name": "國立嘉科實驗高級中學",
@@ -8,6 +8,29 @@
   "base": "https://www.nehs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "nehs-4686",
+   "title": "【錄取公告】國立嘉科實中115學年度生涯暨生命教育講座 家長錄取名單（115/11/10）",
+   "date": "2026-11-02",
+   "source_category": "最新消息",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4686",
+   "category": "研習活動",
+   "first_seen": "2026-11-02T17:49:33+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-10",
+     "provenance": "verified_announcement_event",
+     "source_revision": "3150fafdd325c0ed8efae12dcd96ea10ea3b12b97f7595f62060c26abaaf73d1"
+    }
+   ]
+  },
   {
    "id": "nehs-4685",
    "title": "公告本校115年第6次約僱職務代理人甄選簡章",
@@ -20,8 +43,8 @@
    "first_seen": "2026-11-02T10:27:53+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",

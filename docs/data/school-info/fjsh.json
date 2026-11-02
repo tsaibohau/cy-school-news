@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-02T10:42:27+08:00",
+ "generated_at": "2026-11-02T18:03:05+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "495": {
@@ -677,7 +677,32 @@
   },
   "480": {
    "page_id": 480,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T18:03:00+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "國際教育組"
+   ],
+   "changed_at": "2026-11-02T18:03:00+08:00",
+   "content_hash": "b1e74453654482dbeb4c35947bf342b6c3618330640768e71d60c785653a4662",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-480.json",
+   "detail_revision": "da48509c937635a64eba1f5c40224989e97476e277df57fdd201caa489dc073b",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "491": {
    "page_id": 491,
@@ -925,7 +950,34 @@
   },
   "481": {
    "page_id": 481,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T18:03:03+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組",
+    "課表"
+   ],
+   "changed_at": "2026-11-02T18:03:03+08:00",
+   "content_hash": "545ef0f646d5104bd04d2f1a445f35dcd815dbc7729b6d77be987edc420b031b",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "課表",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-481.json",
+   "detail_revision": "46566d45514cea85c511dc92946bda656d72b1e0af1dbb321e6167966d03653b",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "482": {
    "page_id": 482,
@@ -1002,9 +1054,22 @@
   "604": {
    "page_id": 604,
    "status": "pending"
+  },
+  "611": {
+   "page_id": 611,
+   "status": "pending"
+  },
+  "610": {
+   "page_id": 610,
+   "status": "pending"
+  },
+  "612": {
+   "page_id": 612,
+   "status": "pending"
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [
   {
@@ -1571,6 +1636,65 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fjsh-info-480",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 國際教育組",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-480.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-480.json",
+   "detail_revision": "da48509c937635a64eba1f5c40224989e97476e277df57fdd201caa489dc073b",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-481",
+   "kind": "school_info",
+   "title": "教務處 › 教學組 › 課表",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-481.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "課表",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-481.json",
+   "detail_revision": "46566d45514cea85c511dc92946bda656d72b1e0af1dbb321e6167966d03653b",
+   "detail_status": "parsed"
+  },
+  {
    "id": "fjsh-info-495",
    "kind": "school_info",
    "title": "教務處 › 註冊組 › 招生資訊",
@@ -1699,5 +1823,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-02T10:42:27+08:00"
+ "last_run_at": "2026-11-02T18:03:05+08:00"
 }

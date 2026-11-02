@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-02T10:42:22+08:00",
+ "generated_at": "2026-11-02T18:02:59+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1592": {
@@ -2474,7 +2474,47 @@
   },
   "1847": {
    "page_id": 1847,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T18:02:35+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "生活輔導組",
+    "防制校園霸凌"
+   ],
+   "changed_at": "2026-11-02T18:02:35+08:00",
+   "content_hash": "22b69d4621bd547aafcfff85d635cffdec5407bccb93336b2579052ff0072826",
+   "doc_links": [
+    {
+     "name": "本學年度嘉義女中校園霸凌防制計畫",
+     "url": "https://drive.google.com/file/d/1ORD9UElRjXbkTjaoF62CgaZSCh_yOZtq/view?usp=drive_link"
+    },
+    {
+     "name": "國立嘉義女中校園 平面暨安全地圖",
+     "url": "https://drive.google.com/file/d/1GL8ClzvSZQX3b6HB7xboLG9AZW-7LJB4/view?usp=drive_link"
+    },
+    {
+     "name": "霸凌防制政令宣導",
+     "url": "https://drive.google.com/drive/folders/13zbtzasZbrsy7CvUqUcIahOMKJ1YrOcd?usp=sharing"
+    },
+    {
+     "name": "疑似校園霸凌事件檢舉書",
+     "url": "https://docs.google.com/document/d/1kNcA_PNt7Tnzir3N55jgdM9YRAis_6MV/edit?usp=drive_link&ouid=101541302583661990540&rtpof=true&sd=true"
+    }
+   ],
+   "keywords": [
+    "霸凌",
+    "電話",
+    "安全",
+    "宣導",
+    "專線",
+    "申訴"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1847.json",
+   "detail_revision": "43e3113d1384608716eb6083daf3f1525c55062e3c9015bd01af576d8689b88f",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "1848": {
    "page_id": 1848,
@@ -3304,18 +3344,429 @@
   },
   "1773": {
    "page_id": 1773,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T18:02:31+08:00",
+   "path": [
+    "功能快捷選單",
+    "行事曆"
+   ],
+   "changed_at": "2026-11-02T18:02:31+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1773.json",
+   "detail_revision": "4e3c69d5a8986b4e2a5504d165b917fc6694337be2e4ed8d2d3c7391e6b49795",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1774": {
    "page_id": 1774,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T18:02:33+08:00",
+   "path": [
+    "功能快捷選單",
+    "晚自習"
+   ],
+   "changed_at": "2026-11-02T18:02:33+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1774.json",
+   "detail_revision": "d00224aeb0b357fcfa342faf881cc196a15236a9514db3a331124f38b346f594",
+   "detail_status": "empty",
+   "attachments": []
   },
   "4359": {
    "page_id": 4359,
    "status": "pending"
+  },
+  "1778": {
+   "page_id": 1778,
+   "status": "pending"
   }
  },
  "handbook": {},
+ "rules": {
+  "files": {
+   "https://drive.google.com/uc?export=download&id=1re2pl1Xd16WAKcYt1XCLZLFk_YCtI6br": {
+    "name": "學習歷程檔案本校補充規定",
+    "url": "https://drive.google.com/file/d/1re2pl1Xd16WAKcYt1XCLZLFk_YCtI6br/view?usp=sharing",
+    "page": "行政單位 › 教務處 › 註冊組 › 學習歷程檔案",
+    "checked_at": "2026-11-02T18:02:37+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-630da2ca88",
+     "kind": "school_handbook",
+     "title": "學生規定 › 學習歷程檔案本校補充規定",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/1re2pl1Xd16WAKcYt1XCLZLFk_YCtI6br/view?usp=sharing",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 教務處 › 註冊組 › 學習歷程檔案",
+     "keywords": [
+      "學習歷程",
+      "競賽",
+      "上傳",
+      "研習",
+      "社團",
+      "志工",
+      "選修",
+      "選課",
+      "學業成績",
+      "入學",
+      "出缺席",
+      "曠課",
+      "校長",
+      "檢定",
+      "簡介",
+      "缺席",
+      "缺曠",
+      "衛生",
+      "課輔",
+      "圖書館",
+      "學分",
+      "安全",
+      "宣導",
+      "測驗",
+      "申請",
+      "轉學"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-630da2ca88.json",
+     "detail_revision": "d0cf6c6dd1d8652f6e6b601e7097cf8c58b25ab2560fdd93573a7624a03925de",
+     "detail_status": "parsed"
+    },
+    "chars": 3919
+   },
+   "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/104/357848876.pdf": {
+    "name": "教育部高級中等學校學生學習歷程檔案作業要點",
+    "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/104/357848876.pdf",
+    "page": "行政單位 › 教務處 › 註冊組 › 學習歷程檔案",
+    "checked_at": "2026-11-02T18:02:37+08:00",
+    "status": "needs_ocr",
+    "item": null
+   },
+   "https://drive.google.com/uc?export=download&id=1Z1knEdbtV7K_zjzONWvkDXMXZk75kRgA": {
+    "name": "服裝儀容委員會設置要點",
+    "url": "https://drive.google.com/file/d/1Z1knEdbtV7K_zjzONWvkDXMXZk75kRgA/view?usp=sharing",
+    "page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+    "checked_at": "2026-11-02T18:02:37+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-335b9ad805",
+     "kind": "school_handbook",
+     "title": "學生規定 › 服裝儀容委員會設置要點",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/1Z1knEdbtV7K_zjzONWvkDXMXZk75kRgA/view?usp=sharing",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+     "keywords": [
+      "服裝",
+      "班聯會",
+      "校服",
+      "校長",
+      "制服",
+      "放學",
+      "申請",
+      "社團",
+      "運動服"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-335b9ad805.json",
+     "detail_revision": "48ee6758cbc67824f02603427c81a832a97e2fb52b0489dbcae8deb9c4b69e7e",
+     "detail_status": "parsed"
+    },
+    "chars": 764
+   },
+   "https://drive.google.com/uc?export=download&id=1JEULAC42rGbNe9vMtdiWcHjKufJxgpSV": {
+    "name": "校園行動載具使用管理規範",
+    "url": "https://drive.google.com/file/d/1JEULAC42rGbNe9vMtdiWcHjKufJxgpSV/view?usp=sharing",
+    "page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+    "checked_at": "2026-11-02T18:02:37+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-d065288251",
+     "kind": "school_handbook",
+     "title": "學生規定 › 校園行動載具使用管理規範",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/1JEULAC42rGbNe9vMtdiWcHjKufJxgpSV/view?usp=sharing",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+     "keywords": [
+      "行動載具",
+      "手機",
+      "安全",
+      "平板",
+      "測驗",
+      "考試"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-d065288251.json",
+     "detail_revision": "eb8014d429dfdaab41c14e9f2a55bde005138c5e99b237bf16ab9a8e7fa73d00",
+     "detail_status": "parsed"
+    },
+    "chars": 761
+   },
+   "https://drive.google.com/uc?export=download&id=1DwfUdDVnD_D4I7f3ARReRSCxmdenPuii": {
+    "name": "服裝儀容規定",
+    "url": "https://drive.google.com/file/d/1DwfUdDVnD_D4I7f3ARReRSCxmdenPuii/view?usp=sharing",
+    "page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+    "checked_at": "2026-11-02T18:02:37+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-9da96fb554",
+     "kind": "school_handbook",
+     "title": "學生規定 › 服裝儀容規定",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/1DwfUdDVnD_D4I7f3ARReRSCxmdenPuii/view?usp=sharing",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+     "keywords": [
+      "服裝",
+      "校服",
+      "運動服",
+      "制服",
+      "校隊",
+      "便服",
+      "安全",
+      "放學",
+      "服儀",
+      "校慶",
+      "畢業典禮",
+      "社團",
+      "豪雨",
+      "選擇"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-9da96fb554.json",
+     "detail_revision": "1d48c5c8cc0a518c533985fec5f3cc9e0c3f1609a86629a65a7441312e6fde80",
+     "detail_status": "parsed"
+    },
+    "chars": 1164
+   },
+   "https://drive.google.com/uc?export=download&id=1e6A1_M-cMSSf-QiBk3HslqArXHldpNRf": {
+    "name": "在校作息時間相關規定",
+    "url": "https://drive.google.com/file/d/1e6A1_M-cMSSf-QiBk3HslqArXHldpNRf/view?usp=share_link",
+    "page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+    "checked_at": "2026-11-02T18:02:37+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-56f2f13fec",
+     "kind": "school_handbook",
+     "title": "學生規定 › 在校作息時間相關規定",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://drive.google.com/file/d/1e6A1_M-cMSSf-QiBk3HslqArXHldpNRf/view?usp=share_link",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+     "keywords": [
+      "輔導課",
+      "午休",
+      "作息",
+      "作息時間",
+      "第一節",
+      "放學",
+      "登記",
+      "社團",
+      "請假",
+      "上課地點",
+      "升旗",
+      "學業成績",
+      "第八節",
+      "入學",
+      "出缺席",
+      "升學",
+      "圖書館",
+      "曠課",
+      "服裝",
+      "段考",
+      "申請",
+      "缺席",
+      "自主學習",
+      "記過",
+      "課業輔導",
+      "遲到",
+      "選修"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-56f2f13fec.json",
+     "detail_revision": "c8ba5e8805977b28743385573e9901a8d73e197d86684b8cddf154b8affc5c3f",
+     "detail_status": "parsed"
+    },
+    "chars": 1677
+   }
+  },
+  "checked_at": "2026-11-02T18:02:37+08:00",
+  "items": [
+   {
+    "id": "cygsh-rule-630da2ca88",
+    "kind": "school_handbook",
+    "title": "學生規定 › 學習歷程檔案本校補充規定",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/1re2pl1Xd16WAKcYt1XCLZLFk_YCtI6br/view?usp=sharing",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 教務處 › 註冊組 › 學習歷程檔案",
+    "keywords": [
+     "學習歷程",
+     "競賽",
+     "上傳",
+     "研習",
+     "社團",
+     "志工",
+     "選修",
+     "選課",
+     "學業成績",
+     "入學",
+     "出缺席",
+     "曠課",
+     "校長",
+     "檢定",
+     "簡介",
+     "缺席",
+     "缺曠",
+     "衛生",
+     "課輔",
+     "圖書館",
+     "學分",
+     "安全",
+     "宣導",
+     "測驗",
+     "申請",
+     "轉學"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-630da2ca88.json",
+    "detail_revision": "d0cf6c6dd1d8652f6e6b601e7097cf8c58b25ab2560fdd93573a7624a03925de",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-335b9ad805",
+    "kind": "school_handbook",
+    "title": "學生規定 › 服裝儀容委員會設置要點",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/1Z1knEdbtV7K_zjzONWvkDXMXZk75kRgA/view?usp=sharing",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+    "keywords": [
+     "服裝",
+     "班聯會",
+     "校服",
+     "校長",
+     "制服",
+     "放學",
+     "申請",
+     "社團",
+     "運動服"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-335b9ad805.json",
+    "detail_revision": "48ee6758cbc67824f02603427c81a832a97e2fb52b0489dbcae8deb9c4b69e7e",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-d065288251",
+    "kind": "school_handbook",
+    "title": "學生規定 › 校園行動載具使用管理規範",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/1JEULAC42rGbNe9vMtdiWcHjKufJxgpSV/view?usp=sharing",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+    "keywords": [
+     "行動載具",
+     "手機",
+     "安全",
+     "平板",
+     "測驗",
+     "考試"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-d065288251.json",
+    "detail_revision": "eb8014d429dfdaab41c14e9f2a55bde005138c5e99b237bf16ab9a8e7fa73d00",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-9da96fb554",
+    "kind": "school_handbook",
+    "title": "學生規定 › 服裝儀容規定",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/1DwfUdDVnD_D4I7f3ARReRSCxmdenPuii/view?usp=sharing",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+    "keywords": [
+     "服裝",
+     "校服",
+     "運動服",
+     "制服",
+     "校隊",
+     "便服",
+     "安全",
+     "放學",
+     "服儀",
+     "校慶",
+     "畢業典禮",
+     "社團",
+     "豪雨",
+     "選擇"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-9da96fb554.json",
+    "detail_revision": "1d48c5c8cc0a518c533985fec5f3cc9e0c3f1609a86629a65a7441312e6fde80",
+    "detail_status": "parsed"
+   },
+   {
+    "id": "cygsh-rule-56f2f13fec",
+    "kind": "school_handbook",
+    "title": "學生規定 › 在校作息時間相關規定",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://drive.google.com/file/d/1e6A1_M-cMSSf-QiBk3HslqArXHldpNRf/view?usp=share_link",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+    "keywords": [
+     "輔導課",
+     "午休",
+     "作息",
+     "作息時間",
+     "第一節",
+     "放學",
+     "登記",
+     "社團",
+     "請假",
+     "上課地點",
+     "升旗",
+     "學業成績",
+     "第八節",
+     "入學",
+     "出缺席",
+     "升學",
+     "圖書館",
+     "曠課",
+     "服裝",
+     "段考",
+     "申請",
+     "缺席",
+     "自主學習",
+     "記過",
+     "課業輔導",
+     "遲到",
+     "選修"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-56f2f13fec.json",
+    "detail_revision": "c8ba5e8805977b28743385573e9901a8d73e197d86684b8cddf154b8affc5c3f",
+    "detail_status": "parsed"
+   }
+  ]
+ },
  "services": {
   "checked_at": "2026-10-31T16:28:06+08:00",
   "systems": [
@@ -4061,6 +4512,40 @@
    "detail_status": "empty"
   },
   {
+   "id": "cygsh-info-1773",
+   "kind": "school_info",
+   "title": "功能快捷選單 › 行事曆",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1773.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1773.json",
+   "detail_revision": "4e3c69d5a8986b4e2a5504d165b917fc6694337be2e4ed8d2d3c7391e6b49795",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cygsh-info-1774",
+   "kind": "school_info",
+   "title": "功能快捷選單 › 晚自習",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1774.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1774.json",
+   "detail_revision": "d00224aeb0b357fcfa342faf881cc196a15236a9514db3a331124f38b346f594",
+   "detail_status": "empty"
+  },
+  {
    "id": "cygsh-info-1779",
    "kind": "school_info",
    "title": "教務處 › 教學組 › 線上課表",
@@ -4641,6 +5126,52 @@
    "documents": [],
    "detail_ref": "data/details/cygsh/cygsh-info-1846.json",
    "detail_revision": "79a6ee53c6baf4f4ad65d8eb5733746471474e3a114a78d9029bc5908aa27b32",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-info-1847",
+   "kind": "school_info",
+   "title": "學務處 › 生活輔導組 › 防制校園霸凌",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1847.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "本學年度嘉義女中校園霸凌防制計畫",
+    "國立嘉義女中校園 平面暨安全地圖",
+    "霸凌防制政令宣導",
+    "疑似校園霸凌事件檢舉書"
+   ],
+   "keywords": [
+    "霸凌",
+    "電話",
+    "安全",
+    "宣導",
+    "專線",
+    "申訴"
+   ],
+   "documents": [
+    {
+     "name": "本學年度嘉義女中校園霸凌防制計畫",
+     "url": "https://drive.google.com/file/d/1ORD9UElRjXbkTjaoF62CgaZSCh_yOZtq/view?usp=drive_link"
+    },
+    {
+     "name": "國立嘉義女中校園 平面暨安全地圖",
+     "url": "https://drive.google.com/file/d/1GL8ClzvSZQX3b6HB7xboLG9AZW-7LJB4/view?usp=drive_link"
+    },
+    {
+     "name": "霸凌防制政令宣導",
+     "url": "https://drive.google.com/drive/folders/13zbtzasZbrsy7CvUqUcIahOMKJ1YrOcd?usp=sharing"
+    },
+    {
+     "name": "疑似校園霸凌事件檢舉書",
+     "url": "https://docs.google.com/document/d/1kNcA_PNt7Tnzir3N55jgdM9YRAis_6MV/edit?usp=drive_link&ouid=101541302583661990540&rtpof=true&sd=true"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-1847.json",
+   "detail_revision": "43e3113d1384608716eb6083daf3f1525c55062e3c9015bd01af576d8689b88f",
    "detail_status": "parsed"
   },
   {
@@ -6076,6 +6607,168 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cygsh-rule-630da2ca88",
+   "kind": "school_handbook",
+   "title": "學生規定 › 學習歷程檔案本校補充規定",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/1re2pl1Xd16WAKcYt1XCLZLFk_YCtI6br/view?usp=sharing",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 教務處 › 註冊組 › 學習歷程檔案",
+   "keywords": [
+    "學習歷程",
+    "競賽",
+    "上傳",
+    "研習",
+    "社團",
+    "志工",
+    "選修",
+    "選課",
+    "學業成績",
+    "入學",
+    "出缺席",
+    "曠課",
+    "校長",
+    "檢定",
+    "簡介",
+    "缺席",
+    "缺曠",
+    "衛生",
+    "課輔",
+    "圖書館",
+    "學分",
+    "安全",
+    "宣導",
+    "測驗",
+    "申請",
+    "轉學"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-630da2ca88.json",
+   "detail_revision": "d0cf6c6dd1d8652f6e6b601e7097cf8c58b25ab2560fdd93573a7624a03925de",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-rule-335b9ad805",
+   "kind": "school_handbook",
+   "title": "學生規定 › 服裝儀容委員會設置要點",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/1Z1knEdbtV7K_zjzONWvkDXMXZk75kRgA/view?usp=sharing",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+   "keywords": [
+    "服裝",
+    "班聯會",
+    "校服",
+    "校長",
+    "制服",
+    "放學",
+    "申請",
+    "社團",
+    "運動服"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-335b9ad805.json",
+   "detail_revision": "48ee6758cbc67824f02603427c81a832a97e2fb52b0489dbcae8deb9c4b69e7e",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-rule-d065288251",
+   "kind": "school_handbook",
+   "title": "學生規定 › 校園行動載具使用管理規範",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/1JEULAC42rGbNe9vMtdiWcHjKufJxgpSV/view?usp=sharing",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+   "keywords": [
+    "行動載具",
+    "手機",
+    "安全",
+    "平板",
+    "測驗",
+    "考試"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-d065288251.json",
+   "detail_revision": "eb8014d429dfdaab41c14e9f2a55bde005138c5e99b237bf16ab9a8e7fa73d00",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-rule-9da96fb554",
+   "kind": "school_handbook",
+   "title": "學生規定 › 服裝儀容規定",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/1DwfUdDVnD_D4I7f3ARReRSCxmdenPuii/view?usp=sharing",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+   "keywords": [
+    "服裝",
+    "校服",
+    "運動服",
+    "制服",
+    "校隊",
+    "便服",
+    "安全",
+    "放學",
+    "服儀",
+    "校慶",
+    "畢業典禮",
+    "社團",
+    "豪雨",
+    "選擇"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-9da96fb554.json",
+   "detail_revision": "1d48c5c8cc0a518c533985fec5f3cc9e0c3f1609a86629a65a7441312e6fde80",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cygsh-rule-56f2f13fec",
+   "kind": "school_handbook",
+   "title": "學生規定 › 在校作息時間相關規定",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://drive.google.com/file/d/1e6A1_M-cMSSf-QiBk3HslqArXHldpNRf/view?usp=share_link",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 學務處 › 生活輔導組 › 生活教育及輔導",
+   "keywords": [
+    "輔導課",
+    "午休",
+    "作息",
+    "作息時間",
+    "第一節",
+    "放學",
+    "登記",
+    "社團",
+    "請假",
+    "上課地點",
+    "升旗",
+    "學業成績",
+    "第八節",
+    "入學",
+    "出缺席",
+    "升學",
+    "圖書館",
+    "曠課",
+    "服裝",
+    "段考",
+    "申請",
+    "缺席",
+    "自主學習",
+    "記過",
+    "課業輔導",
+    "遲到",
+    "選修"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-56f2f13fec.json",
+   "detail_revision": "c8ba5e8805977b28743385573e9901a8d73e197d86684b8cddf154b8affc5c3f",
+   "detail_status": "parsed"
+  },
+  {
    "id": "cygsh-service-library-cygsh-cy-edu-tw",
    "kind": "school_service",
    "title": "網路服務 › 圖書館館藏查詢",
@@ -6137,5 +6830,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-02T10:42:22+08:00"
+ "last_run_at": "2026-11-02T18:02:59+08:00"
 }

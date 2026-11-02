@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-02T10:41:30+08:00",
+ "generated_at": "2026-11-02T18:01:45+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -90,15 +90,25 @@
    "page_id": 81524880334348,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/principal-office/",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:41+08:00",
+   "path": [
+    "行政單位",
+    "校長室"
+   ]
   },
   "55658482920421": {
    "page_id": 55658482920421,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:43+08:00",
+   "path": [
+    "行政單位",
+    "教務處"
+   ]
   },
   "145678739873480": {
    "page_id": 145678739873480,
@@ -267,9 +277,130 @@
    "label": "防疫專區",
    "status": "pending",
    "depth": 0
+  },
+  "109205620742526": {
+   "page_id": 109205620742526,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/principal-office/%e6%a0%a1%e9%95%b7%e7%9a%84%e8%a9%b1/",
+   "label": "校長的話",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "校長室"
+   ],
+   "order": 33
+  },
+  "138740647053495": {
+   "page_id": 138740647053495,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/principal-office/%e6%ad%b7%e4%bb%bb%e6%a0%a1%e9%95%b7/",
+   "label": "歷任校長",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "校長室"
+   ],
+   "order": 34
+  },
+  "227336891229433": {
+   "page_id": 227336891229433,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/principal-office/%e6%b2%bb%e6%a0%a1%e7%90%86%e5%bf%b5/",
+   "label": "治校理念",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "校長室"
+   ],
+   "order": 35
+  },
+  "210135677038766": {
+   "page_id": 210135677038766,
+   "url": "https://www.nknush.kh.edu.tw/%e7%a7%98%e6%9b%b8%e5%ae%a4/",
+   "label": "祕書室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "校長室"
+   ],
+   "order": 36
+  },
+  "267999973737068": {
+   "page_id": 267999973737068,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/教務處業務職掌/",
+   "label": "業務職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 37
+  },
+  "144256785123237": {
+   "page_id": 144256785123237,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/教學組/",
+   "label": "教學組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 38
+  },
+  "269463845289158": {
+   "page_id": 269463845289158,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/註冊組/",
+   "label": "註冊組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 39
+  },
+  "88280511900365": {
+   "page_id": 88280511900365,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/設備組",
+   "label": "設備組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 40
+  },
+  "121127351610290": {
+   "page_id": 121127351610290,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/實研組/",
+   "label": "實研組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 41
+  },
+  "91916813180763": {
+   "page_id": 91916813180763,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/國小課務組/",
+   "label": "國小課務組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 42
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -567,5 +698,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-02T10:41:30+08:00"
+ "last_run_at": "2026-11-02T18:01:45+08:00"
 }

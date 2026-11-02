@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hhsh",
- "generated_at": "2026-11-02T10:43:28+08:00",
+ "generated_at": "2026-11-02T18:04:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "151128910348640": {
@@ -255,12 +255,17 @@
    "page_id": 5073451320306,
    "url": "https://www.hhsh.cy.edu.tw/modules/tad_link/index.php?link_sn=76",
    "label": "免試入學委員會",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "more..."
    ],
-   "order": 17
+   "order": 17,
+   "checked_at": "2026-11-02T18:04:20+08:00",
+   "path": [
+    "more...",
+    "免試入學委員會"
+   ]
   },
   "13665562156118": {
    "page_id": 13665562156118,
@@ -933,6 +938,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -1271,5 +1277,5 @@
   "ff9c890f55",
   "fff273069d"
  ],
- "last_run_at": "2026-11-02T10:43:28+08:00"
+ "last_run_at": "2026-11-02T18:04:22+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "twvs",
- "generated_at": "2026-11-02T10:40:15+08:00",
+ "generated_at": "2026-11-02T18:01:27+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "210511608049060": {
@@ -91,22 +91,37 @@
    "page_id": 28557401062891,
    "url": "https://www.twvs.tn.edu.tw/about-us/%e8%81%af%e7%b5%a1%e9%80%9a%e8%a8%8a/",
    "label": "聯絡通訊",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:22+08:00",
+   "path": [
+    "關於本校",
+    "聯絡通訊"
+   ]
   },
   "228907007781580": {
    "page_id": 228907007781580,
    "url": "https://www.twvs.tn.edu.tw/about-us/%e8%a1%8c%e6%94%bf%e7%b5%84%e7%b9%94%e5%9c%96/",
    "label": "行政組織圖",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:24+08:00",
+   "path": [
+    "關於本校",
+    "行政組織圖"
+   ]
   },
   "140110608896277": {
    "page_id": 140110608896277,
    "url": "https://www.twvs.tn.edu.tw/about-us/campus-safety-map/",
    "label": "校園安全地圖",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:26+08:00",
+   "path": [
+    "關於本校",
+    "校園安全地圖"
+   ]
   },
   "65475916598970": {
    "page_id": 65475916598970,
@@ -573,6 +588,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -850,5 +866,5 @@
   "f3ef66c885",
   "f9693f2c0a"
  ],
- "last_run_at": "2026-11-02T10:40:15+08:00"
+ "last_run_at": "2026-11-02T18:01:27+08:00"
 }

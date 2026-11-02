@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-02T10:40:21+08:00",
+ "generated_at": "2026-11-02T18:01:33+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -96,22 +96,34 @@
    "page_id": 60542751610260,
    "url": "https://cm.cmvsedu.tw/modules/ugm_contact_us/",
    "label": "聯絡我們",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:28+08:00",
+   "path": [
+    "聯絡我們"
+   ]
   },
   "175540314682003": {
    "page_id": 175540314682003,
    "url": "https://cm.cmvsedu.tw/modules/cmvs1/index.php?id=2",
    "label": "未來發展",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:30+08:00",
+   "path": [
+    "未來發展"
+   ]
   },
   "232551997525278": {
    "page_id": 232551997525278,
    "url": "https://cm.cmvsedu.tw/modules/cmvs1/index.php?id=3",
    "label": "地理位置",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:32+08:00",
+   "path": [
+    "地理位置"
+   ]
   },
   "86702907244905": {
    "page_id": 86702907244905,
@@ -861,6 +873,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -1153,5 +1166,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-02T10:40:21+08:00"
+ "last_run_at": "2026-11-02T18:01:33+08:00"
 }

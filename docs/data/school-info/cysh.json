@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-02T10:42:18+08:00",
+ "generated_at": "2026-11-02T18:02:31+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5306,7 +5306,24 @@
   },
   "618": {
    "page_id": 618,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T18:02:24+08:00",
+   "path": [
+    "協同單位",
+    "家長會",
+    "現任會長簡介"
+   ],
+   "changed_at": "2026-11-02T18:02:24+08:00",
+   "content_hash": "10892ab8725ff2ff0ed9343534de6cc13878f2f2f36f1e537193bdfc573b82df",
+   "doc_links": [],
+   "keywords": [
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-618.json",
+   "detail_revision": "8b2bfe7771c427b328e39e832b264c240ad4db4e8d8328a0763713a3d1c62e44",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "707": {
    "page_id": 707,
@@ -5314,7 +5331,24 @@
   },
   "620": {
    "page_id": 620,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T18:02:27+08:00",
+   "path": [
+    "協同單位",
+    "家長會",
+    "歷任家長會長"
+   ],
+   "changed_at": "2026-11-02T18:02:27+08:00",
+   "content_hash": "5976d40832d0636ef08d4fe957e1e38a6c85a253bcd8e7b961470aadd1ebf83e",
+   "doc_links": [],
+   "keywords": [
+    "醫療"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-620.json",
+   "detail_revision": "9138e9047e43c82181aa48307a13b17280b28fd84f2cca6bf99dc470fa6de227",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "5136": {
    "page_id": 5136,
@@ -5542,7 +5576,13 @@
   },
   "631": {
    "page_id": 631,
-   "status": "pending"
+   "status": "announcement_list",
+   "checked_at": "2026-11-02T18:02:29+08:00",
+   "path": [
+    "教學單位",
+    "美術科",
+    "最新消息"
+   ]
   },
   "853": {
    "page_id": 853,
@@ -8032,6 +8072,7 @@
    }
   ]
  },
+ "rules": {},
  "services": {
   "checked_at": "2026-10-31T16:19:20+08:00",
   "systems": [
@@ -10348,6 +10389,44 @@
    "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-595.json",
    "detail_revision": "eb53ebdcae5a879a5992e3a97a47b88593e5a7009ed116ba21a5db51cc40906c",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-618",
+   "kind": "school_info",
+   "title": "協同單位 › 家長會 › 現任會長簡介",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-618.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-618.json",
+   "detail_revision": "8b2bfe7771c427b328e39e832b264c240ad4db4e8d8328a0763713a3d1c62e44",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-620",
+   "kind": "school_info",
+   "title": "協同單位 › 家長會 › 歷任家長會長",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-620.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "醫療"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-620.json",
+   "detail_revision": "9138e9047e43c82181aa48307a13b17280b28fd84f2cca6bf99dc470fa6de227",
    "detail_status": "parsed"
   },
   {
@@ -14944,5 +15023,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-02T10:42:18+08:00"
+ "last_run_at": "2026-11-02T18:02:31+08:00"
 }

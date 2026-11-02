@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nsjh",
- "generated_at": "2026-11-02T10:43:19+08:00",
+ "generated_at": "2026-11-02T18:04:10+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179628626610013": {
@@ -148,8 +148,13 @@
    "page_id": 184484219970059,
    "url": "https://nsjh.ylc.edu.tw/cp.aspx?n=99421",
    "label": "校歌校徽",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:04:09+08:00",
+   "path": [
+    "認識本校",
+    "校歌校徽"
+   ]
   },
   "157182476740369": {
    "page_id": 157182476740369,
@@ -881,6 +886,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -1088,5 +1094,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-02T10:43:19+08:00"
+ "last_run_at": "2026-11-02T18:04:10+08:00"
 }

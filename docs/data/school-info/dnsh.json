@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-02T10:43:08+08:00",
+ "generated_at": "2026-11-02T18:03:55+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -150,8 +150,13 @@
    "page_id": 248836202446852,
    "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=108822",
    "label": "資優教育",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:03:53+08:00",
+   "path": [
+    "校園成果",
+    "資優教育"
+   ]
   },
   "79253937021400": {
    "page_id": 79253937021400,
@@ -364,9 +369,22 @@
     "高中優質化"
    ],
    "order": 41
+  },
+  "213032640120861": {
+   "page_id": 213032640120861,
+   "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=110446",
+   "label": "109學年度資優方案成果",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校園成果",
+    "資優教育"
+   ],
+   "order": 42
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -574,5 +592,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-02T10:43:08+08:00"
+ "last_run_at": "2026-11-02T18:03:55+08:00"
 }

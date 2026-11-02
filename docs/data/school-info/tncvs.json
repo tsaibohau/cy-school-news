@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tncvs",
- "generated_at": "2026-11-02T10:39:51+08:00",
+ "generated_at": "2026-11-02T18:01:03+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179102805842520": {
@@ -63,22 +63,34 @@
    "page_id": 127584469646760,
    "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,4,26",
    "label": "交通資訊",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:00:57+08:00",
+   "path": [
+    "交通資訊"
+   ]
   },
   "173853857018870": {
    "page_id": 173853857018870,
    "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,4,27",
    "label": "南商榮耀",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:00:59+08:00",
+   "path": [
+    "南商榮耀"
+   ]
   },
   "99611011053730": {
    "page_id": 99611011053730,
    "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,4,915,914",
    "label": "公共藝術",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:01+08:00",
+   "path": [
+    "公共藝術"
+   ]
   },
   "61378775605266": {
    "page_id": 61378775605266,
@@ -3166,6 +3178,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -3476,5 +3489,5 @@
   "fd93751649",
   "fdbcaf30e1"
  ],
- "last_run_at": "2026-11-02T10:39:51+08:00"
+ "last_run_at": "2026-11-02T18:01:03+08:00"
 }

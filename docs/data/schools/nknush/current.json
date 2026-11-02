@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-02T10:27:53+08:00",
+ "generated_at": "2026-11-02T17:49:33+08:00",
  "school": {
   "id": "nknush",
   "name": "國立高師大附中",
@@ -8,6 +8,87 @@
   "base": "https://www.nknush.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "nknush-22249",
+   "title": "公告【國小部】115年12月29日低年級硬筆教學講座——開放家長報名旁聽課務組",
+   "date": "2026-11-02",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22249/%e5%85%ac%e5%91%8a%e3%80%90%e5%9c%8b%e5%b0%8f%e9%83%a8%e3%80%91115%e5%b9%b412%e6%9c%8829%e6%97%a5%e4%bd%8e%e5%b9%b4%e7%b4%9a%e7%a1%ac%e7%ad%86%e6%95%99%e5%ad%b8%e8%ac%9b%e5%ba%a7/",
+   "category": "研習活動",
+   "first_seen": "2026-11-02T17:49:33+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-12-29",
+     "provenance": "verified_announcement_event",
+     "source_revision": "57d5ce55e34e65e52b9321df08a3ae6ef3506b28faaef1979b1ded0efaa4803d"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "57d5ce55e34e65e52b9321df08a3ae6ef3506b28faaef1979b1ded0efaa4803d"
+    }
+   ],
+   "audience": {
+    "grades": [
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   }
+  },
+  {
+   "id": "nknush-22245",
+   "title": "研習2026前瞻趨勢教師線上增能研習教務處",
+   "date": "2026-11-02",
+   "source_category": "教師研習",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/%e6%95%99%e5%b8%ab%e7%a0%94%e7%bf%92/22245/%e7%a0%94%e7%bf%922026%e5%89%8d%e7%9e%bb%e8%b6%a8%e5%8b%a2%e6%95%99%e5%b8%ab%e7%b7%9a%e4%b8%8a%e5%a2%9e%e8%83%bd%e7%a0%94%e7%bf%92%e6%95%99%e5%8b%99%e8%99%95/",
+   "category": "教職員",
+   "first_seen": "2026-11-02T17:49:33+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
+  {
+   "id": "nknush-22226",
+   "title": "公告115-1康春枝老師獎學金名單公告註冊組",
+   "date": "2026-11-02",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22226/%e5%85%ac%e5%91%8a115-1%e5%ba%b7%e6%98%a5%e6%9e%9d%e8%80%81%e5%b8%ab%e7%8d%8e%e5%ad%b8%e9%87%91%e5%90%8d%e5%96%ae%e5%85%ac%e5%91%8a%e8%a8%bb%e5%86%8a%e7%b5%84/",
+   "category": "獎助學金",
+   "first_seen": "2026-11-02T17:49:33+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
+  {
+   "id": "nknush-6140",
+   "title": "公告國立高師大附中康春枝老師獎學金要點教務處",
+   "date": "2026-11-02",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/6140/%e5%9c%8b%e7%ab%8b%e9%ab%98%e5%b8%ab%e5%a4%a7%e9%99%84%e4%b8%ad%e5%ba%b7%e6%98%a5%e6%9e%9d%e8%80%81%e5%b8%ab%e7%8d%8e%e5%ad%b8%e9%87%91%e8%a6%81%e9%bb%9e/",
+   "category": "獎助學金",
+   "first_seen": "2026-11-02T17:49:33+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
   {
    "id": "nknush-22218",
    "title": "公告「科學技能Maker營」 輔導室",
@@ -20,8 +101,8 @@
    "first_seen": "2026-11-02T10:27:53+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "nknush-22205",
@@ -35,8 +116,8 @@
    "first_seen": "2026-11-02T10:27:53+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "nknush-22207",
@@ -50,8 +131,8 @@
    "first_seen": "2026-11-02T10:27:53+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "nknush-22201",
@@ -65,8 +146,8 @@
    "first_seen": "2026-11-02T10:27:53+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "nknush-22197",
@@ -80,8 +161,8 @@
    "first_seen": "2026-11-02T10:27:53+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "nknush-22194",

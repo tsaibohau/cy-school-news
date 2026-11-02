@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-02T10:41:48+08:00",
+ "generated_at": "2026-11-02T18:02:13+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -193,22 +193,74 @@
    "page_id": 199329525544673,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1286.php",
    "label": "進修部",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:02:08+08:00",
+   "path": [
+    "行政單位",
+    "進修部"
+   ],
+   "changed_at": "2026-11-02T18:02:08+08:00",
+   "content_hash": "4b32d0f2c54710cfd466cf20127236a0176adc035aa6b7cb420d202d604e02b5",
+   "doc_links": [],
+   "keywords": [
+    "報名",
+    "入學",
+    "四技二專",
+    "學測",
+    "測驗",
+    "考試",
+    "課表"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-199329525544673.json",
+   "detail_revision": "850bd258abd2a033f140203129b3e6b2da23245508b181b9444e00f1dee3cd09",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "156753558783688": {
    "page_id": 156753558783688,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-169.php",
    "label": "機械科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:02:10+08:00",
+   "path": [
+    "教學單位",
+    "機械科"
+   ],
+   "changed_at": "2026-11-02T18:02:10+08:00",
+   "content_hash": "df16f52f5025ec90cd9cdb7578219d487bb8b8c6088a7e509e17c9b2ae770392",
+   "doc_links": [],
+   "keywords": [
+    "選課"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-156753558783688.json",
+   "detail_revision": "49558a6767012b0fb428c29679a1a570b4ab37713cbec94e430526321ee8e09d",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "256448333079639": {
    "page_id": 256448333079639,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-170.php",
    "label": "資訊科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:02:12+08:00",
+   "path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "changed_at": "2026-11-02T18:02:12+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-256448333079639.json",
+   "detail_revision": "c3657aa4a0ce719cf3bf2183e5aa3517b9d5cd98c557c09bf07ec952f715ed15",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "187701472752311": {
    "page_id": 187701472752311,
@@ -1256,9 +1308,262 @@
     "圖書館"
    ],
    "order": 109
+  },
+  "104206420542422": {
+   "page_id": 104206420542422,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-451.php",
+   "label": "機械科位置圖",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 110
+  },
+  "219721250135083": {
+   "page_id": 219721250135083,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-319.php",
+   "label": "教師團隊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 111
+  },
+  "205779948023739": {
+   "page_id": 205779948023739,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-449.php",
+   "label": "開課規畫表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 112
+  },
+  "194361287814857": {
+   "page_id": 194361287814857,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-321.php",
+   "label": "課程計畫書地圖與架構",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 113
+  },
+  "133068243391376": {
+   "page_id": 133068243391376,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-496.php",
+   "label": "合格技能檢定場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 114
+  },
+  "29814572455474": {
+   "page_id": 29814572455474,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-489.php",
+   "label": "第一工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 115
+  },
+  "103513085648991": {
+   "page_id": 103513085648991,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-490.php",
+   "label": "第二工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 116
+  },
+  "191553199531107": {
+   "page_id": 191553199531107,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-491.php",
+   "label": "第三工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 117
+  },
+  "86903272722426": {
+   "page_id": 86903272722426,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-492.php",
+   "label": "CNC數控工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 118
+  },
+  "42871241451886": {
+   "page_id": 42871241451886,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-493.php",
+   "label": "車床工場",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 119
+  },
+  "71539247732587": {
+   "page_id": 71539247732587,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-494.php",
+   "label": "電腦教室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 120
+  },
+  "142217359699199": {
+   "page_id": 142217359699199,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-495.php",
+   "label": "專題教室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "機械科"
+   ],
+   "order": 121
+  },
+  "224760002713023": {
+   "page_id": 224760002713023,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1278.php",
+   "label": "資訊科師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "order": 122
+  },
+  "120453796929067": {
+   "page_id": 120453796929067,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1279.php",
+   "label": "資訊科課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "order": 123
+  },
+  "3155420937783": {
+   "page_id": 3155420937783,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1269.php",
+   "label": "升學就業",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "order": 124
+  },
+  "82826527076900": {
+   "page_id": 82826527076900,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1271.php",
+   "label": "電腦教室A",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "order": 125
+  },
+  "235742672503799": {
+   "page_id": 235742672503799,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1272.php",
+   "label": "電腦教室B",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "order": 126
+  },
+  "227210266906023": {
+   "page_id": 227210266906023,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1273.php",
+   "label": "電腦教室C",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "order": 127
+  },
+  "6082726252999": {
+   "page_id": 6082726252999,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1274.php",
+   "label": "電腦教室D",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "order": 128
+  },
+  "267043100882853": {
+   "page_id": 267043100882853,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1275.php",
+   "label": "選手室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "order": 129
+  },
+  "141196783901580": {
+   "page_id": 141196783901580,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1276.php",
+   "label": "電子實習工廠",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "資訊科"
+   ],
+   "order": 130
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [
   {
@@ -1348,6 +1653,25 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-156753558783688",
+   "kind": "school_info",
+   "title": "教學單位 › 機械科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-169.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "選課"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-156753558783688.json",
+   "detail_revision": "49558a6767012b0fb428c29679a1a570b4ab37713cbec94e430526321ee8e09d",
+   "detail_status": "parsed"
+  },
+  {
    "id": "ksaivs-info-162406327427102",
    "kind": "school_info",
    "title": "行政單位 › 學務處",
@@ -1382,6 +1706,31 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-199329525544673",
+   "kind": "school_info",
+   "title": "行政單位 › 進修部",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1286.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "報名",
+    "入學",
+    "四技二專",
+    "學測",
+    "測驗",
+    "考試",
+    "課表"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-199329525544673.json",
+   "detail_revision": "850bd258abd2a033f140203129b3e6b2da23245508b181b9444e00f1dee3cd09",
+   "detail_status": "parsed"
+  },
+  {
    "id": "ksaivs-info-223664676159128",
    "kind": "school_info",
    "title": "行政單位 › 實習處",
@@ -1396,6 +1745,23 @@
    "documents": [],
    "detail_ref": "data/details/ksaivs/ksaivs-info-223664676159128.json",
    "detail_revision": "87f0f230c6085f1bb0c7bc88d2656c9fb9abfa2d526463af1c3aecdea3c6484d",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-256448333079639",
+   "kind": "school_info",
+   "title": "教學單位 › 資訊科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-170.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-256448333079639.json",
+   "detail_revision": "c3657aa4a0ce719cf3bf2183e5aa3517b9d5cd98c557c09bf07ec952f715ed15",
    "detail_status": "parsed"
   },
   {
@@ -1648,5 +2014,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-02T10:41:48+08:00"
+ "last_run_at": "2026-11-02T18:02:13+08:00"
 }

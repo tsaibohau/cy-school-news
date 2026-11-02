@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-02T10:39:57+08:00",
+ "generated_at": "2026-11-02T18:01:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -100,22 +100,37 @@
    "page_id": 228134311457718,
    "url": "https://www.tngs.tn.edu.tw/department/gene/",
    "label": "總務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:04+08:00",
+   "path": [
+    "行政組織",
+    "總務處"
+   ]
   },
   "175443508756984": {
    "page_id": 175443508756984,
    "url": "https://www.tngs.tn.edu.tw/department/counsel/",
    "label": "輔導室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:05+08:00",
+   "path": [
+    "行政組織",
+    "輔導室"
+   ]
   },
   "9219240082311": {
    "page_id": 9219240082311,
    "url": "https://www.tngs.tn.edu.tw/department/lib/",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:07+08:00",
+   "path": [
+    "行政組織",
+    "圖書館"
+   ]
   },
   "238932331562864": {
    "page_id": 238932331562864,
@@ -806,9 +821,154 @@
     "學務處"
    ],
    "order": 80
+  },
+  "134094958471378": {
+   "page_id": 134094958471378,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/staff/",
+   "label": "組織職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 81
+  },
+  "120015077598042": {
+   "page_id": 120015077598042,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/goal/",
+   "label": "工作目標",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 82
+  },
+  "259209281497812": {
+   "page_id": 259209281497812,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/construction/",
+   "label": "施工資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 83
+  },
+  "69714958682886": {
+   "page_id": 69714958682886,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/landscape/",
+   "label": "校園景觀",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 84
+  },
+  "95632245234264": {
+   "page_id": 95632245234264,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/link/",
+   "label": "相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "總務處"
+   ],
+   "order": 85
+  },
+  "140046463685676": {
+   "page_id": 140046463685676,
+   "url": "https://www.tngs.tn.edu.tw/department/counsel/staff/",
+   "label": "組織職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "輔導室"
+   ],
+   "order": 86
+  },
+  "213202005872598": {
+   "page_id": 213202005872598,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/staff/",
+   "label": "組織職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 87
+  },
+  "209705327298731": {
+   "page_id": 209705327298731,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/rules/",
+   "label": "規章辦法",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 88
+  },
+  "193396456984885": {
+   "page_id": 193396456984885,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/ebook/",
+   "label": "電子書專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 89
+  },
+  "66180432413212": {
+   "page_id": 66180432413212,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/resources/",
+   "label": "線上資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 90
+  },
+  "274255652802445": {
+   "page_id": 274255652802445,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/shs/",
+   "label": "閱讀心得與小論文指引",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 91
+  },
+  "38884662057078": {
+   "page_id": 38884662057078,
+   "url": "https://www.tngs.tn.edu.tw/ie/",
+   "label": "國際交流",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政組織",
+    "圖書館"
+   ],
+   "order": 92
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -1136,5 +1296,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-02T10:39:57+08:00"
+ "last_run_at": "2026-11-02T18:01:09+08:00"
 }

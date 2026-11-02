@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-02T10:42:46+08:00",
+ "generated_at": "2026-11-02T18:03:30+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -195,8 +195,12 @@
    "page_id": 231353479771919,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/general/",
    "label": "總務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:03:29+08:00",
+   "path": [
+    "總務處"
+   ]
   },
   "28793963119608": {
    "page_id": 28793963119608,
@@ -453,6 +457,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -718,5 +723,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-02T10:42:46+08:00"
+ "last_run_at": "2026-11-02T18:03:30+08:00"
 }

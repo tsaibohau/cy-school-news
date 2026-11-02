@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tssh",
- "generated_at": "2026-11-02T01:16:49+08:00",
+ "generated_at": "2026-11-02T18:00:43+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "212970716483767": {
@@ -246,15 +246,23 @@
    "page_id": 195345472180031,
    "url": "https://www.tssh.cyc.edu.tw/content/index.aspx?Parser=1,10,52",
    "label": "隱私權政策",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:00:40+08:00",
+   "path": [
+    "隱私權政策"
+   ]
   },
   "141953418346767": {
    "page_id": 141953418346767,
    "url": "https://www.tssh.cyc.edu.tw/content/index.aspx?Parser=1,10,197",
    "label": "網站安全政策",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:00:42+08:00",
+   "path": [
+    "網站安全政策"
+   ]
   },
   "64371082741783": {
    "page_id": 64371082741783,
@@ -2673,6 +2681,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -2872,5 +2881,5 @@
    "label": "報廢產品變賣專區"
   }
  ],
- "last_run_at": "2026-11-02T01:16:49+08:00"
+ "last_run_at": "2026-11-02T18:00:43+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-02T10:40:08+08:00",
+ "generated_at": "2026-11-02T18:01:20+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -142,15 +142,65 @@
    "page_id": 14030893984672,
    "url": "https://www.tnvs.tn.edu.tw/about/tnvs-story/",
    "label": "細說南水",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:16+08:00",
+   "path": [
+    "細說南水"
+   ],
+   "changed_at": "2026-11-02T18:01:16+08:00",
+   "content_hash": "86da9f23c46e54489ce8ca63c0b2d0192bd9afd6aa6be4f25a0385ff7270238e",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-14030893984672.json",
+   "detail_revision": "a3eb897cd31939420d17e3dc492828bac226b3575310950352a51a6beb428846",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "民52校門-1.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民52校門-1.jpg"
+    },
+    {
+     "name": "民54校門-1.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民54校門-1.jpg"
+    },
+    {
+     "name": "民65校門_頁面_1.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民65校門_頁面_1.jpg"
+    },
+    {
+     "name": "民73校門-1.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民73校門-1.jpg"
+    },
+    {
+     "name": "民78校門-scaled.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民78校門-scaled.jpg"
+    },
+    {
+     "name": "民90校門-1-scaled.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民90校門-1-scaled.jpg"
+    },
+    {
+     "name": "DSC_1012.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/DSC_1012.jpg"
+    },
+    {
+     "name": "IMG_7506-scaled.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/IMG_7506-scaled.jpg"
+    }
+   ]
   },
   "222688011558756": {
    "page_id": 222688011558756,
    "url": "https://www.tnvs.tn.edu.tw/teaching-unit/",
    "label": "教學單位",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:01:18+08:00",
+   "path": [
+    "教學單位"
+   ]
   },
   "88125011970407": {
    "page_id": 88125011970407,
@@ -569,8 +619,68 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [
+  {
+   "id": "tnvs-info-14030893984672",
+   "kind": "school_info",
+   "title": "細說南水",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/about/tnvs-story/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [
+    "民52校門-1.jpg",
+    "民54校門-1.jpg",
+    "民65校門_頁面_1.jpg",
+    "民73校門-1.jpg",
+    "民78校門-scaled.jpg",
+    "民90校門-1-scaled.jpg",
+    "DSC_1012.jpg",
+    "IMG_7506-scaled.jpg"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "民52校門-1.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民52校門-1.jpg"
+    },
+    {
+     "name": "民54校門-1.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民54校門-1.jpg"
+    },
+    {
+     "name": "民65校門_頁面_1.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民65校門_頁面_1.jpg"
+    },
+    {
+     "name": "民73校門-1.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民73校門-1.jpg"
+    },
+    {
+     "name": "民78校門-scaled.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民78校門-scaled.jpg"
+    },
+    {
+     "name": "民90校門-1-scaled.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/民90校門-1-scaled.jpg"
+    },
+    {
+     "name": "DSC_1012.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/DSC_1012.jpg"
+    },
+    {
+     "name": "IMG_7506-scaled.jpg",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/06/IMG_7506-scaled.jpg"
+    }
+   ],
+   "detail_ref": "data/details/tnvs/tnvs-info-14030893984672.json",
+   "detail_revision": "a3eb897cd31939420d17e3dc492828bac226b3575310950352a51a6beb428846",
+   "detail_status": "parsed"
+  },
   {
    "id": "tnvs-info-51902306409415",
    "kind": "school_info",
@@ -1045,5 +1155,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-02T10:40:08+08:00"
+ "last_run_at": "2026-11-02T18:01:20+08:00"
 }

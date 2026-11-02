@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-02T10:42:32+08:00",
+ "generated_at": "2026-11-02T18:03:10+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "98": {
@@ -548,7 +548,30 @@
   },
   "90": {
    "page_id": 90,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T18:03:08+08:00",
+   "path": [
+    "行政單位",
+    "竹中教務處",
+    "教學組"
+   ],
+   "changed_at": "2026-11-02T18:03:08+08:00",
+   "content_hash": "c9b6888147dbd5682cd6171522c35ad6f65b3d6fc1b3d79f0eb9b8f2ba940e8b",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "升學",
+    "研習",
+    "競賽",
+    "缺課",
+    "考試",
+    "課表"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-90.json",
+   "detail_revision": "06d9eab8d912a0e2cffbaccb7e0ca32dc3a3f35695470e57aeed835b090d2cb8",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "95": {
    "page_id": 95,
@@ -572,7 +595,25 @@
   },
   "88": {
    "page_id": 88,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-02T18:03:06+08:00",
+   "path": [
+    "行政單位"
+   ],
+   "changed_at": "2026-11-02T18:03:06+08:00",
+   "content_hash": "232c10184b4565f817a1b91e5ce79e3a60bced5d2f7f93f8b679c491ccaa2b7b",
+   "doc_links": [],
+   "keywords": [
+    "傳真",
+    "圖書館",
+    "校長",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-88.json",
+   "detail_revision": "746cc7d4dbea2afb992456b08603a434b512e3ef0037c58717c33d0cc918d1d9",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "124": {
    "page_id": 124,
@@ -696,6 +737,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [
   {
@@ -720,6 +762,28 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ccjh-info-88",
+   "kind": "school_info",
+   "title": "行政單位",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-88.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "傳真",
+    "圖書館",
+    "校長",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-88.json",
+   "detail_revision": "746cc7d4dbea2afb992456b08603a434b512e3ef0037c58717c33d0cc918d1d9",
+   "detail_status": "parsed"
+  },
+  {
    "id": "ccjh-info-89",
    "kind": "school_info",
    "title": "行政單位 › 竹中教務處",
@@ -736,6 +800,31 @@
    "documents": [],
    "detail_ref": "data/details/ccjh/ccjh-info-89.json",
    "detail_revision": "c1cf7dff7cd4025a9335c75141319b6db06381309ec2c77e917d5dcff5d32267",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ccjh-info-90",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中教務處 › 教學組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-90.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-02",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "升學",
+    "研習",
+    "競賽",
+    "缺課",
+    "考試",
+    "課表"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-90.json",
+   "detail_revision": "06d9eab8d912a0e2cffbaccb7e0ca32dc3a3f35695470e57aeed835b090d2cb8",
    "detail_status": "parsed"
   },
   {
@@ -1226,5 +1315,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-02T10:42:32+08:00"
+ "last_run_at": "2026-11-02T18:03:10+08:00"
 }

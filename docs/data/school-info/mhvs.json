@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mhvs",
- "generated_at": "2026-11-02T01:16:39+08:00",
+ "generated_at": "2026-11-02T18:00:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "234958134093923": {
@@ -298,15 +298,23 @@
    "page_id": 276837867021569,
    "url": "https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=28",
    "label": "家長會",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:00:34+08:00",
+   "path": [
+    "家長會"
+   ]
   },
   "221129677297628": {
    "page_id": 221129677297628,
    "url": "https://www.mhvs.cyc.edu.tw/modules/tad_web/index.php?WebID=29",
    "label": "校友會",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-02T18:00:36+08:00",
+   "path": [
+    "校友會"
+   ]
   },
   "168132691505924": {
    "page_id": 168132691505924,
@@ -3287,6 +3295,7 @@
   }
  },
  "handbook": {},
+ "rules": {},
  "services": {},
  "items": [],
  "roots": [
@@ -3852,5 +3861,5 @@
   "fdae5d8dc9",
   "ffc51e2322"
  ],
- "last_run_at": "2026-11-02T01:16:39+08:00"
+ "last_run_at": "2026-11-02T18:00:37+08:00"
 }
