@@ -1,0 +1,48 @@
+name: 嘉女學生規定試抓（一次性，合併前刪除）
+
+# Downloads 嘉女's rule files once and prints only names, sizes and text lengths, to check
+# that Google Drive links download and parse. Nothing is committed or uploaded.
+on:
+  push:
+    branches: [claude/cygsh-rules]
+    paths: [.github/workflows/rules-probe-once.yml, scraper/school_rules.py]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: 安裝相依套件與 OCR
+        run: |
+          pip install -r scraper/requirements.txt
+          sudo apt-get update -qq && sudo apt-get install -y -qq tesseract-ocr tesseract-ocr-chi-tra poppler-utils >/dev/null
+      - name: 試抓（只印統計，不印內文）
+        working-directory: scraper
+        run: |
+          python - <<'PY'
+          import json, time, requests, re
+          import school_rules
+          index = json.load(open("../docs/data/school-info/cygsh.json", encoding="utf-8"))
+          docs = school_rules.candidates(index, "cygsh")
+          print("candidates", len(docs))
+          s = requests.Session()
+          s.headers["User-Agent"] = "Mozilla/5.0 (cy-school-news rules probe)"
+          for d in docs:
+              try:
+                  data, ctype = school_rules.fetch_file(s, d["download"])
+                  ext = school_rules.detect_extension(data, d["extension"], ctype)
+                  text, status = school_rules.rule_text(data, ext) if ext in ("pdf", "docx") else ("", "not_document")
+                  # Only counts and a few structural markers, never the text itself.
+                  clauses = len(re.findall(r"(?m)^\s*[一二三四五六七八九十]+、", text))
+                  print(f"OK   {d['name'][:24]:<24} ext={ext or '?':5} bytes={len(data):>8} chars={len(text):>6} clauses={clauses:>3} status={status}")
+              except Exception as exc:
+                  print(f"FAIL {d['name'][:24]:<24} {type(exc).__name__}: {str(exc)[:80]}")
+              time.sleep(1.5)
+          PY
