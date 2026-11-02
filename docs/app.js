@@ -2536,6 +2536,9 @@
       var hasEvidence = turn && assistantEvidenceHtml(turn);
       if (hasEvidence) html += '<button type="button" class="chat-cite" data-assistant-cite="' + index + '">依據與來源 ↓</button>';
       finishAnswerTyping();
+      /* A new answer never shows the previous question's sources, even if this one has none. */
+      var oldPanel = document.getElementById("assistantEvidence");
+      if (oldPanel) { oldPanel.hidden = true; oldPanel.open = false; var oldBody = document.getElementById("assistantEvidenceBody"); if (oldBody) oldBody.innerHTML = ""; }
       el.assistantAnswer.innerHTML = '<div class="assistant-result chat-answer">' + html + '</div>';
       typeAnswer(el.assistantAnswer.firstChild);
       showAssistantEvidence(index, false);

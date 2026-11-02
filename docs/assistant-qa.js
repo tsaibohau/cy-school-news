@@ -1466,7 +1466,7 @@
     return keepEnd ? t : endSentence(t);
   }
   /* 嘉中: one 學生手冊 split into chapters; 嘉女: separate 學生規定 files (school_rules.py). */
-  function bookName(item) { return /^學生規定/.test(clean(item && item.title || "")) ? "學校規定" : "學生手冊"; }
+  function bookName(item) { return item && item.kind === "school_info" ? "學校網頁" : /^學生規定/.test(clean(item && item.title || "")) ? "學校規定" : "學生手冊"; }
   function docLabel(item) {
     var parts = clean(item && item.title || "").split(/\s*›\s*/).filter(Boolean);
     if (item && item.kind === "school_handbook") return bookName(item) + "的〈" + (parts[parts.length - 1] || "規定") + "〉";
@@ -1526,6 +1526,7 @@
       tail = plain ? "" : pickLine(RULE_CLOSERS, seed + "#");
       return { text: text, bullets: bullets.slice(0, 6), tail: tail };
     }
+    if (result.mode === "rule_pointer") return { text: text, bullets: [] };
     if (result.mode === "timetable") {
       var day = text.match(/^(.+?)：(.+、.+)。$/);
       if (day) { text = joinOpener(pickLine(TIMETABLE_OPENERS, seed), day[1] + "："); bullets = day[2].split("、").map(function (slot) { return clean(slot).replace(/^(\d)\s+/, "第 $1 節　"); }); }
@@ -1733,7 +1734,13 @@
     var talk = smallTalk(query);
     if (talk) return smallTalkAnswer(talk, query, options);
     query = stripSchoolNames(clean(query).slice(0, 160));
-    var result = answerCore(query, items, details, options);
+    var split = splitQuestion(query);
+    var result = split ? answerParts(query, split, items, details, options) : answerCore(query, items, details, options);
+    /* Splitting found nothing but the whole question does: keep the whole-question answer. */
+    if (split && result && result.status !== "answered") {
+      var whole = answerCore(query, items, details, options);
+      if (whole && whole.status === "answered") result = whole;
+    }
     /* 「閱讀心得報告 115年」 found nothing for that year: look again without the year, and if only an
        older year's notice exists, say exactly that (「115 學年度的還沒公告，最近一次是 114…」). */
     var askedYear = Number((query.match(/(1[0-2]\d)\s*(?:學年度?|年)/) || [])[1]) || 0;
@@ -1762,6 +1769,8 @@
       var topSource = (result.sources || [])[0];
       var shortQuote = result.mode !== "rule" || clean(result.summary || "").replace(/^依.*?：/, "").length < 40;
       var weakPageAnswer = result.status === "answered" && result.mode !== "service" && topSource && topSource.kind === "school_info" && documents[0].score >= 12 && shortQuote;
+      /* Pointing at a page is weaker than the rule file on it named after the question. */
+      if (result.mode === "rule_pointer" && result.pointer_kind === "school_info" && documents[0].score >= 10) weakPageAnswer = true;
       if ((result.status !== "answered" && documents[0].score >= 8) || weakPageAnswer) {
         var doc = documents[0];
         result = Object.assign({}, result, { status: "answered", mode: "document", evidence: [], key_points: [],
@@ -1910,6 +1919,128 @@
       reply: { text: text, bullets: bullets, tail: tail },
     };
   }
+  /* 一題拆成關鍵字分頭找：「閱讀心得報告怎麼寫？沒寫會發生什麼事情？」→ 主題「閱讀心得報告」，
+     問的面向「怎麼寫」「沒寫會怎樣」。主題先自己翻一遍（規定、行事曆、公告全部翻），每個面向再
+     各自找；找不到的面向照實說，不拿別的東西硬湊。 */
+  var ASPECTS = [
+    { id: "consequence", label: "沒做會怎樣", ask: /沒(?:有)?(?:寫|交|繳|去|到|參加|做|完成|帶|請)|不(?:寫|交|繳|去|到|參加|做|帶|請)|遲交|晚交|會怎(?:麼)?樣|會發生|後果|會被|會不會被|怎麼辦|罰/,
+      phrase: "未繳交會怎樣", titles: /規定|辦法|要點|須知|流程|注意事項|實施計畫/, cues: /逾期|未繳|未交|未完成|未依|未於|遲交|補交|扣分|扣減|不予|不計|零分|懲處|記(?:警告|小過|大過)|曠課|視同|取消/ },
+    { id: "method", label: "怎麼做", ask: /怎麼(?:寫|做|交|繳|申請|報名|弄|填|辦|請|借|還|查|用|處理|準備|參加|選|登記|上傳)|如何|方式|流程|步驟|格式|要寫什麼|寫什麼/,
+      phrase: "如何繳交", titles: /流程|方式|格式|說明|須知|規定|辦法|要點|範本|電子檔|注意事項|實施計畫/, cues: /方式|流程|步驟|格式|字數|上傳|繳交至|交至|填寫|系統|檔名|範本|規格|頁數|A4/ },
+    { id: "deadline", label: "什麼時候", ask: /什麼時候|何時|哪天|哪一天|幾號|期限|截止|多久/, phrase: "什麼時候", titles: /時程|日程|期限|截止|行事曆/, cues: /截止|期限|前|日|月/ },
+    { id: "requirement", label: "一定要嗎", ask: /要交嗎|一定要|必須|強制|需不需要|要不要|是不是都要/, phrase: "一定要嗎", titles: /規定|辦法|要點|須知|實施計畫/, cues: /必須|須|應|強制|全體|所有|一律|自由|自願/ }
+  ];
+  var CLAUSE_FILLER = /請問|想問|我想知道|那(?=麼|個)|那麼|那個|如果|要是|的話|這個|這樣|發生|什麼|甚麼|啥|事情|事|會|要|是|嗎|呢|啊|吧|欸|喔|了|的|有|還|就|都/g;
+  function clauseSubject(clause) {
+    var text = clean(clause);
+    /* A known word that contains an ask word (「借多久」 holds 多久) is the subject itself. */
+    var known = Synonyms ? Synonyms.find(text).filter(function (term) { return ASPECTS.some(function (aspect) { return aspect.ask.test(term); }); }) : [];
+    if (known.length) return known[0];
+    ASPECTS.forEach(function (aspect) { text = text.replace(new RegExp(aspect.ask.source, "g"), " "); });
+    text = text.replace(/怎麼|怎樣|如何|為什麼|可以|能不能|需要/g, " ").replace(CLAUSE_FILLER, " ");
+    /* A verb left at either end (「閱讀心得報告交」「寫閱讀心得」) is part of the ask, not the subject. */
+    var subject = compact(text).replace(/^(?:沒有|沒|不|未)(?=.{2,})/, "").replace(/^(?:交|繳|寫|做|帶|去)+|(?:交|繳|寫|做|帶|去)+$/g, "");
+    return subject.length >= 2 ? subject : "";
+  }
+  function splitQuestion(query) {
+    var clauses = clean(query).split(/[？?。！!；;，,\n]+|(?:然後|還有|另外|以及)(?=.{2,})/).map(clean).filter(function (c) { return compact(c).length >= 2; });
+    var parts = [], subject = "";
+    clauses.forEach(function (clause) {
+      var own = clauseSubject(clause);
+      if (own) subject = own;
+      ASPECTS.forEach(function (aspect) {
+        if (aspect.ask.test(clause) && !parts.some(function (p) { return p.aspect.id === aspect.id && p.subject === (own || subject); })) parts.push({ clause: clause, subject: own || subject, aspect: aspect });
+      });
+    });
+    parts = parts.filter(function (p) { return p.subject; });
+    /* Only worth splitting when a subject comes with 「怎麼寫／沒做會怎樣」 or with several asks;
+       a plain 「段考什麼時候」 stays one question. */
+    if (!parts.length) return null;
+    /* One clause asking one plain thing (「成績怎麼查」「段考什麼時候」) is answered as it is;
+       split when there are several clauses, or when it asks what happens if you don't. */
+    if (clauses.length === 1 && !parts.some(function (p) { return p.aspect.id === "consequence"; })) return null;
+    return { subject: parts[0].subject, parts: parts };
+  }
+  function subjectWords(query) {
+    var plan = SearchQuery && SearchQuery.queryPlan ? SearchQuery.queryPlan(query) : { term_matches: [], remainder_terms: [] }, words = [];
+    (plan.term_matches || []).forEach(function (row) { if (row.kind === "topic") words.push(row.term); });
+    (plan.remainder_terms || []).forEach(function (t) { words.push(t); if (Synonyms) words = words.concat(Synonyms.find(t)); });
+    var out = [];
+    words.forEach(function (w) { (Synonyms ? Synonyms.expand(w, { includes: false }) : [compact(w)]).forEach(function (f) { if (f.length >= 3) out.push(f); }); });
+    return unique(out);
+  }
+  function aspectDocument(part, items, details, options) {
+    var ranked = rank(part.subject, items, details, options).slice(0, 12);
+    var asOf = options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }), current = currentAcademicYear(asOf);
+    var forms = (Synonyms ? Synonyms.concepts(part.subject) : [part.subject]).filter(function (f) { return f.length >= 2; });
+    /* Rules first: a school page named after the subject before an announcement. */
+    ranked = ranked.filter(function (row) { return isSchoolDoc(row.item); }).concat(ranked.filter(function (row) { return !isSchoolDoc(row.item); }));
+    var pick = ranked.filter(function (row) {
+      var title = clean(row.item.title || ""), year = Number((periodToken(title).match(/^\d+/) || [])[0]) || 0;
+      if (year && year < current) return false;              // last year's 流程 may have changed
+      var t = compact(title);
+      if (!forms.some(function (f) { return t.indexOf(f) !== -1; })) return false;   // must be about the subject
+      if (TITLE_RESULT.test(title)) return false;            // 得獎名單 is not how to do it
+      return part.aspect.titles.test(title) || (isSchoolDoc(row.item) && compact(title.split("›").pop()).indexOf(part.subject.slice(0, 4)) !== -1);
+    })[0];
+    if (!pick) return null;
+    var item = pick.item;
+    return { id: item.id, title: clean(item.title || ""), date: String(item.date || "").slice(0, 10), school_name: item.school_name || "", url: item.url || "",
+      kind: isSchoolDoc(item) ? "school_doc" : "", note: isSchoolDoc(item) ? "學校網頁" : "公告" };
+  }
+  function answerParts(query, split, items, details, options) {
+    var overview = answerCore(split.subject, items, details, options) || { status: "insufficient", evidence: [], sources: [] };
+    var shown = {};
+    (overview.sources || []).concat(overview.related || []).forEach(function (row) { shown[row.id] = true; });
+    var sections = [];
+    split.parts.forEach(function (part) {
+      var sub = part.subject + part.aspect.phrase, found = answerCore(sub, items, details, options);
+      /* An aspect counts as answered only by a sentence that is about it (逾期、扣分… for 沒交會怎樣),
+         not by the subject's overview again. */
+      var text = clean(found && found.status === "answered" ? found.summary || "" : "");
+      var onPoint = text && part.aspect.cues.test(text) && (found.sources || []).some(function (s) { return !shown[s.id] || found.mode === "rule"; });
+      if (onPoint) {
+        var sources = (found.sources || []).filter(function (s) { return !shown[s.id]; }).slice(0, 3);
+        sources.forEach(function (s) { shown[s.id] = true; });
+        sections.push({ layer: found.layer || "announcement", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: text,
+          text: "「" + part.clause.replace(/[？?]$/, "") + "」：" + text, sources: sources.length ? sources : (found.sources || []).slice(0, 1) });
+      } else {
+        /* No sentence says it here (the text may be in the notice or its file): point to the
+           document most likely to hold it, e.g. a 「…繳交流程」 notice for 「怎麼寫」. */
+        var where = aspectDocument(part, items, details, options);
+        var ask = "「" + part.clause.replace(/[？?]$/, "") + "」";
+        /* The main answer is already the rule about this subject: that is where to look. */
+        if (!where && overview.status === "answered" && (overview.layer === "rule" || overview.mode === "rule_pointer") && (overview.sources || [])[0]) where = overview.sources[0];
+        if (where && shown[where.id]) {
+          sections.push({ layer: "same", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [],
+            text: ask + "：我讀得到的內容沒有直接寫，最可能就寫在上面那份〈" + clean(where.title).split("›").pop().trim() + "〉裡。" });
+          return;
+        }
+        sections.push(where
+          ? { layer: "pointer", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [where],
+              text: ask + "：我讀得到的內容沒有直接寫，最可能寫在下面這份" + (where.kind === "school_doc" ? "規定" : "公告") + "裡，點開看。" }
+          : { layer: "none", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [],
+              text: ask + "：規定、行事曆、公告裡都沒有寫到，建議直接問導師或承辦處室。" });
+      }
+    });
+    /* Several asks that point to the same document become one line. */
+    var merged = [];
+    sections.forEach(function (row) {
+      var same = row.layer === "pointer" ? merged.filter(function (m) { return m.layer === "pointer" && m.sources[0].id === row.sources[0].id; })[0]
+        : row.layer === "same" ? merged.filter(function (m) { return m.layer === "same" && m.text.split("：")[1] === row.text.split("：")[1]; })[0] : null;
+      if (same) { same.text = same.text.replace(/：我讀得到/, "、" + row.text.split("：")[0] + "：我讀得到"); return; }
+      merged.push(row);
+    });
+    sections = merged;
+    sections.forEach(function (row) { row.sources.forEach(function (s) { shown[s.id] = true; }); });
+    (overview.also || []).forEach(function (row) { row.sources = (row.sources || []).filter(function (s) { return !shown[s.id] || row.layer !== "announcement"; }); });
+    overview.also = (overview.also || []).filter(function (row) { return row.sources.length; });
+    var result = Object.assign({}, overview, { query: query, split: { subject: split.subject, aspects: split.parts.map(function (p) { return p.aspect.id; }) } });
+    result.also = sections.concat(overview.also || []);
+    if (result.status !== "answered" && sections.some(function (s) { return s.sources.length; })) result.status = "answered";
+    if (!clean(result.summary || "")) result.summary = "關於「" + split.subject + "」：";
+    return result;
+  }
   /* 翻找順序：先翻規定（學生手冊、校規、學校網頁），再翻行事曆（含課表），最後翻公告。
      三層都翻；第一個找到答案的當主答案，其他層找到的依同樣順序附在後面（result.also）。 */
   var LAYER_LABELS = { rule: "學校規定", calendar: "行事曆", announcement: "公告" };
@@ -1951,7 +2082,10 @@
     /* No direct answer in the announcements, but related ones exist: list them to open. */
     var notices = layers.announcement;
     if (main.status === "answered" && answered.indexOf("announcement") === -1 && notices && (notices.related || []).length) {
-      var more = notices.related.filter(function (row) { return !shown[row.id]; }).slice(0, 2);
+      /* Must share a real subject word (3+ characters, or a synonym of one): 「手機」 alone
+         pulls in 手機互動遊戲 and 1campus 手機 app notices. */
+      var subjectForms = subjectWords(query);
+      var more = notices.related.filter(function (row) { var t = compact(row.title || ""); return !shown[row.id] && subjectForms.some(function (f) { return t.indexOf(f) !== -1; }); }).slice(0, 2);
       if (more.length) main.also.push({ layer: "announcement", label: "公告", summary: "", text: "相關公告，點開看細節：", sources: more });
     }
     main.layers_checked = order.slice();
@@ -1971,7 +2105,7 @@
       .filter(function (t) { return t.length >= 2 && ALWAYS_GENERIC.indexOf(t) === -1 && !/^(?:規定|辦法|要點|怎麼|如何|可以|時間)$/.test(t); });
     if (!forms.length) return null;
     var hit = ranked.filter(function (row) {
-      if (row.item.kind !== "school_handbook") return false;
+      if (!isSchoolDoc(row.item)) return false;
       var chapter = compact(String(row.item.title || "").split("›").pop());
       return !STAFF_DOC.test(chapter) && forms.some(function (t) { return chapter.indexOf(t) !== -1; });
     })[0];
@@ -1979,7 +2113,7 @@
     var item = hit.item, chapter = clean(String(item.title || "").split("›").pop());
     var pages = Array.isArray(item.page_range) ? "第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁" : "";
     var url = /^https:\/\//.test(String(item.url || "")) ? item.url : "";
-    return { status: "answered", mode: "document", query: query, evidence: [], key_points: [], related: [],
+    return { status: "answered", mode: "rule_pointer", pointer_kind: item.kind, query: query, evidence: [], key_points: [], related: [],
       summary: (item.school_name || "學校") + bookName(item) + "的「" + chapter + "」" + (pages ? "（" + pages + "）" : "") + "就是在講這個，點開看原文" + (details[item.id] ? "。" : "；登入後我可以直接引用條文。"),
       sources: [{ id: item.id, kind: url ? "service" : "", title: bookName(item) + " › " + chapter, url: url, school_name: item.school_name || "", note: pages || bookName(item) }],
       limitation: bookName(item) + "來自學校官網；規定可能修訂，以學校最新公告為準。", plan: questionPlan(query) };

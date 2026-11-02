@@ -50,8 +50,10 @@ assert.equal(r.layer, "rule", r.summary);
 /* The notice about it leads (its 內文 has the details); the calendar adds the due date, and the
    reply does not open with 「找不到」. */
 r = ask("閱讀心得報告要交？不交會怎樣？");
-assert.match(r.summary, /閱讀心得繳交流程/);
-assert.ok((r.also || []).some((row) => row.layer === "calendar" && /11\/20.*高一閱讀心得繳交截止/.test(row.text)), JSON.stringify(r.also));
+assert.deepEqual(r.split, { subject: "閱讀心得報告", aspects: ["consequence"] }, "the question is split into its subject and what is asked");
+assert.match(JSON.stringify(r), /閱讀心得繳交流程/);
+assert.match(r.summary + JSON.stringify(r.also || []), /11\/20.*高一閱讀心得繳交截止/);
+assert.ok((r.also || []).some((row) => /^「不交會怎樣」：/.test(row.text)), "the 不交會怎樣 part gets its own line");
 assert.doesNotMatch(r.reply.text, /找不到/);
 /* 「期末考範圍」 asks for the 範圍: exam dates are a side note, not the answer. */
 r = ask("期中考範圍");
@@ -100,6 +102,20 @@ const editions = [
 ];
 assert.equal(QA.rank("閱讀心得報告要交嗎", editions, {}, { asOf: "2026-11-02" })[0].item.id, "new");
 assert.equal(QA.rank("114學年度閱讀心得報告", editions, {}, { asOf: "2026-11-02" })[0].item.id, "old");
+
+/* 2026-11-02 screenshot: two clauses. 「發生什麼事情」 is not 「最近發生什麼新鮮事」; the subject
+   is searched on its own everywhere, then each ask gets its own line. */
+r = ask("閱讀心得報告怎麼寫？沒寫會發生什麼事情？");
+assert.deepEqual(r.split, { subject: "閱讀心得報告", aspects: ["method", "consequence"] });
+assert.doesNotMatch(r.summary, /最近一個月/);
+assert.match(r.summary + JSON.stringify(r.also), /高一閱讀心得繳交截止/);
+assert.ok(r.also.some((row) => /閱讀心得報告怎麼寫/.test(row.text)) && r.also.some((row) => /沒寫會發生什麼事情/.test(row.text)), JSON.stringify(r.also));
+/* A clause without its own subject borrows the one before; 「沒請假」 is about 請假. */
+r = ask("請假要怎麼請？沒請假會怎樣？");
+assert.deepEqual(r.split, { subject: "請假", aspects: ["method", "consequence"] });
+assert.equal(r.layer, "rule");
+/* One plain clause is not split. */
+assert.equal(ask("段考什麼時候").split, undefined);
 
 /* Every answer says which layers were checked, in order. */
 assert.deepEqual(ask("手機可以帶嗎").layers_checked, ["rule", "calendar", "announcement"]);
