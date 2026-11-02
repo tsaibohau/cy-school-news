@@ -249,27 +249,29 @@
     }
     /* 問校務的範圍：有設定學校時多一個「我的學校」；所有人都能直接挑任何一間學校或所有學校。 */
     var LS_ASK_SCOPE = "cy-news-ask-scope";
+    /* 問校務目前只開放這幾間學校（規定、行事曆、公告都收齊的學校）；其他學校顯示「尚未開放」。 */
+    var ASSISTANT_OPEN_SCHOOLS = ["cysh", "cygsh"];
+    function assistantOpen(id) { return ASSISTANT_OPEN_SCHOOLS.indexOf(String(id || "")) !== -1; }
+    function assistantOpenNames() {
+      var registry = window.CyNewsSchoolRegistry;
+      return ASSISTANT_OPEN_SCHOOLS.map(function (id) { var school = registry && registry.find(id); return school ? school.short : id; }).join("、");
+    }
     function renderAssistantScope() {
       var select = el.assistantScope, registry = window.CyNewsSchoolRegistry;
       if (!select || !registry) return;
       var mine = preferredSchoolId(), saved = "";
       try { saved = localStorage.getItem(LS_ASK_SCOPE) || ""; } catch (_) {}
       var current = select.getAttribute("data-ready") ? select.value : saved;
-      var groups = {}, order = [];
-      registry.schools().forEach(function (school) {
-        var county = school.county || "其他";
-        if (!groups[county]) { groups[county] = []; order.push(county); }
-        groups[county].push('<option value="' + esc(school.id) + '">' + esc(school.short) + '</option>');
-      });
-      /* 縣市整區（「臺南市的學校」）也可以當範圍：一次問同一縣市的所有學校。 */
-      var regions = order.filter(function (county) { return county !== "其他" && groups[county].length >= 2; });
-      select.innerHTML = (mine ? '<option value="preferred">我的學校（' + esc(registry.find(mine).short) + '）</option>' : "") +
-        '<option value="all">所有學校</option>' +
-        (regions.length > 1 ? '<optgroup label="整個縣市">' + regions.map(function (county) { return '<option value="region:' + esc(county) + '">' + esc(county) + '（' + groups[county].length + ' 校）</option>'; }).join("") + '</optgroup>' : "") +
-        order.map(function (county) { return '<optgroup label="' + esc(county) + '">' + groups[county].join("") + '</optgroup>'; }).join("");
-      var valid = function (value) { return value === "all" || value === "preferred" && !!mine || isRegionScope(value) && regions.indexOf(value.slice(7)) !== -1 || !!(value && registry.find(value)); };
-      /* 沒選過：有我的學校就用它；訪客沿用公告頁選的學校，否則所有學校。 */
-      select.value = valid(current) ? current : mine ? "preferred" : state.school && state.school !== "all" && registry.find(state.school) ? state.school : "all";
+      var open = registry.schools().filter(function (school) { return assistantOpen(school.id); });
+      var closed = registry.schools().filter(function (school) { return !assistantOpen(school.id); });
+      var mineOpen = !!mine && assistantOpen(mine);
+      select.innerHTML = (mineOpen ? '<option value="preferred">我的學校（' + esc(registry.find(mine).short) + '）</option>' : "") +
+        open.map(function (school) { return '<option value="' + esc(school.id) + '">' + esc(school.short) + '</option>'; }).join("") +
+        (open.length > 1 ? '<option value="all">' + esc(assistantOpenNames()) + '都問</option>' : "") +
+        (closed.length ? '<optgroup label="尚未開放">' + closed.map(function (school) { return '<option value="' + esc(school.id) + '" disabled>' + esc(school.short) + '（尚未開放）</option>'; }).join("") + '</optgroup>' : "");
+      var valid = function (value) { return value === "all" || value === "preferred" && mineOpen || assistantOpen(value); };
+      /* 沒選過：有我的學校就用它；訪客沿用公告頁選的學校（有開放的話），否則第一間開放的學校。 */
+      select.value = valid(current) ? current : mineOpen ? "preferred" : assistantOpen(state.school) ? state.school : ASSISTANT_OPEN_SCHOOLS[0];
       select.setAttribute("data-ready", "1");
     }
     function preferredSchoolId() {
@@ -2337,7 +2339,7 @@
     }
     /* 問校務的範圍：所有學校、一個縣市（"region:臺南市"）、或一間學校。回傳學校代碼清單；所有學校回傳 null。 */
     function scopeMembers(scopeId) {
-      if (!scopeId || scopeId === "all") return null;
+      if (!scopeId || scopeId === "all") return ASSISTANT_OPEN_SCHOOLS.slice();
       var registry = window.CyNewsSchoolRegistry;
       if (String(scopeId).indexOf("region:") === 0) {
         var county = String(scopeId).slice(7);
@@ -2350,6 +2352,16 @@
       /* 查詢範圍選「我的學校」時，只能引用那所學校的公告；選縣市時只引用那個縣市的學校 */
       var members = scopeMembers(scopeId);
       return function (item) { return !members || members.indexOf(String(item && item.school || "")) !== -1; };
+    }
+    /* 問到尚未開放的學校：照實說，不拿別間學校的資料硬答。 */
+    function assistantClosedAnswer(asked, schools) {
+      startAssistantTurn(asked, "");
+      var names = schools.map(function (school) { return school.short; }).join("、");
+      var text = names + "的問校務還沒開放，目前只開放" + assistantOpenNames() + "。" + names + "的公告可以到「公告總庫」看。";
+      var result = { status: "insufficient", mode: "closed", query: asked, summary: text, reply: { text: text, bullets: [] }, evidence: [], sources: [], related: [] };
+      renderAssistantAnswer(result, state.assistantTurns.length - 1);
+      mascotMood("sad");
+      return Promise.resolve(result);
     }
     /* Every school's public pages and handbook (scraper/school_info.py); a school not collected yet is a 404 = nothing. */
     function schoolInfoIds() {
@@ -2388,18 +2400,12 @@
     function assistantScopeFor(question) {
       var mentioned = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.mentionedSchool(question);
       if (mentioned) return { id: mentioned.id, label: mentioned.short + "（依問題指定）" };
-      /* 「台南的學校」「高雄地區各校」: the question names a 縣市 (not 「高雄醫學大學」). */
-      var area = String(question || "").match(AREA_IN_QUESTION);
-      if (area && window.CyNewsSchoolRegistry) {
-        var county = { "台南": "臺南市", "臺南": "臺南市", "高雄": "高雄市", "雲林": "雲林縣", "嘉義市": "嘉義市", "嘉義縣": "嘉義縣" }[area[1]];
-        if (scopeMembers("region:" + county).length >= 2) return { id: "region:" + county, label: county + "的學校（依問題指定）" };
-      }
       var picked = el.assistantScope ? el.assistantScope.value : "preferred";
-      if (picked === "all") return { id: "all", label: "所有學校" };
-      if (isRegionScope(picked)) return { id: picked, label: picked.slice(7) + "的學校" };
-      var chosen = picked !== "preferred" && window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(picked);
+      if (picked === "all") return { id: "all", label: assistantOpenNames() };
+      var chosen = picked !== "preferred" && assistantOpen(picked) && window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(picked);
       if (chosen) return { id: chosen.id, label: chosen.short };
-      var preferred = preferredSchoolId() || (state.school !== "all" ? state.school : "all");
+      var preferred = preferredSchoolId() || state.school;
+      if (!assistantOpen(preferred)) preferred = ASSISTANT_OPEN_SCHOOLS[0];
       var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(preferred);
       return { id: preferred, label: school ? school.short : "所有學校" };
     }
@@ -2514,6 +2520,10 @@
       if (reply.bullets && reply.bullets.length) html += '<ul class="chat-bullets">' + reply.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>';
       if (reply.tail) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
       if (result && result.status === "answered" && result.mode === "browse" && (result.sources || []).length) html += '<div class="assistant-sources chat-list">' + assistantSourceButtons(result) + '</div>';
+      /* 規定 → 行事曆 → 公告：主答案以外，其他地方也找到的，依序列在後面。 */
+      (result && result.also || []).forEach(function (row) {
+        html += '<div class="chat-also"><p class="chat-aside">' + esc(row.text || row.label + "也有寫到：" + row.summary) + '</p><div class="assistant-sources chat-list">' + assistantSourceButtons({ sources: row.sources, mode: "browse" }) + '</div></div>';
+      });
       var related = (result && result.status !== "answered" && result.related || []).slice(0, 3).map(function (item) {
         var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(item.title) + '</strong><small>' + esc(meta) + '</small></button>';
@@ -2536,7 +2546,7 @@
       var single = scope && scope.id !== "all" && !isRegionScope(scope.id), members = scopeMembers(scope && scope.id);
       if (single) profile.school_id = scope.id; else profile.school_id = "";
       return {
-        scopeLabel: label === "所有學校" ? "" : label,
+        scopeLabel: label === "所有學校" || (scope && scope.id === "all") ? "" : label,
         schoolId: single ? scope.id : "",
         timetables: state.timetables || [],
         className: state.profile && state.profile.class_name || "",
@@ -2915,6 +2925,8 @@
          A follow-up after a comparison (「那服裝儀容呢」) compares the same schools again. */
       var registry = window.CyNewsSchoolRegistry, QA = window.CyNewsAssistantQA;
       var named = registry && registry.mentionedSchools ? registry.mentionedSchools(asked) : [];
+      var closedNamed = named.filter(function (school) { return !assistantOpen(school.id); });
+      if (closedNamed.length) return assistantClosedAnswer(asked, closedNamed);
       /* 「哪間學校段考最早」「嘉中跟嘉女誰先放寒假」: compare dates across schools. */
       var schedulePlan = window.CyNewsScheduleCompare && window.CyNewsScheduleCompare.asks(asked, named.map(function (school) { return school.id; }));
       if (schedulePlan) return askScheduleCompare(asked, schedulePlan, named);
@@ -2961,7 +2973,11 @@
           return cross;
         }
         /* 「最近有什麼新消息」這類問題直接列公告，不必先做逐句比對 */
-        var candidates = (window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question)) || (window.CyNewsAssistantQA.datePlan && window.CyNewsAssistantQA.datePlan(question, new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }))) ? [] : window.CyNewsAssistantQA.rank(question, items, {}, options).slice(0, 8);
+        /* 規定與公告分開挑候選，規定（學生手冊、學校網頁）不會被大量公告擠掉。 */
+        var isDoc = function (item) { return item && (item.kind === "school_handbook" || item.kind === "school_info"); };
+        var listOnly = window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question);
+        var candidates = listOnly ? [] : window.CyNewsAssistantQA.rank(question, items.filter(isDoc), {}, options).slice(0, 6)
+          .concat(window.CyNewsAssistantQA.rank(question, items.filter(function (item) { return !isDoc(item); }), {}, options).slice(0, 6));
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
           var details = {};
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
@@ -3001,7 +3017,7 @@
         var grade = state.profile && Number(state.profile.grade_level) ? "高" + "一二三"[Number(state.profile.grade_level) - 1] : "";
         var result = window.CyNewsScheduleCompare.compare(asked, plan, {
           calendarEvents: state.officialEvents || [], items: items, today: taipeiToday(), onlySchools: only, grade: grade,
-          schools: window.CyNewsSchoolRegistry.schools().filter(visibleSchool),
+          schools: window.CyNewsSchoolRegistry.schools().filter(function (school) { return visibleSchool(school) && assistantOpen(school.id); }),
           titleDates: window.CyNewsAssistantQA && window.CyNewsAssistantQA.titleDates
         });
         el.assistantAnswer = target;

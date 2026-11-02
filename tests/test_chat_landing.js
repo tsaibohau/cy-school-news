@@ -15,8 +15,7 @@ assert.match(read("capability-layer.js"), /if \(closest\(node, "#viewAssistant"\
 assert.match(index, /id="sidebarHint" class="sidebar-hint" role="note" hidden>[\s\S]*data-hint-open[\s\S]*data-hint-close/);
 assert.match(app, /sideMenuToggle\.addEventListener\("click", function \(\) \{ dismissSidebarHint\(\);/, "opening the sidebar retires the hint");
 assert.match(app, /function renderAssistantScope\(\)/);
-assert.match(app, /'<optgroup label="' \+ esc\(county\) \+ '">'/, "every school can be picked as the 問校務 scope");
-assert.match(app, /\(mine \? '<option value="preferred">我的學校（'/, "我的學校 only appears when a school is set");
+assert.match(app, /\(mineOpen \? '<option value="preferred">我的學校（'/, "我的學校 only appears when that school's 問校務 is open");
 assert.doesNotMatch(app, /switchTab\("home"\);\s*\n\s*}\s*\n\s*function adminFilters/, "no automatic jump to 首頁 any more");
 assert.match(index, /<button id="tabLatest" class="tab is-active" aria-current="page">/, "公告 is highlighted until access is known");
 assert.ok(index.indexOf('id="tabAssistant"') < index.indexOf('id="tabHome"'), "問校務 is the first tab");
@@ -104,11 +103,12 @@ assert.match(index, /<button id="tabActivities" class="tab">[\s\S]*?活動總覽
 assert.match(index, /<section id="viewActivities" class="activity-view" hidden/);
 assert.match(app, /tab === "latest" \|\| tab === "cross" \|\| tab === "activities"/);
 
-/* 2026-11-01: 問校務 can cover a whole 縣市 (menu or 「台南的學校…」 in the question). */
-assert.match(app, /function scopeMembers\(scopeId\) \{[\s\S]*?String\(scopeId\)\.indexOf\("region:"\) === 0/);
-assert.match(app, /'<optgroup label="整個縣市">'/);
-assert.match(app, /var AREA_IN_QUESTION = \/\(臺南\|台南\|高雄\|雲林\|嘉義市\|嘉義縣\)/);
-assert.match(app, /var wide = scopeId === "all" \|\| isRegionScope\(scopeId\);/, "a 縣市 reads the all-school files, then keeps its schools");
-assert.ok(!"高雄醫學大學招生".match(/(臺南|台南|高雄|雲林|嘉義市|嘉義縣)(?:市|縣)?(?:的|地區|區)?(?:學校|高中|高職|各校|每間)/), "a university name is not a 縣市 scope");
+/* 2026-11-02: 問校務 is open for 嘉中 and 嘉女 only; other schools are listed as 尚未開放 and
+   a question naming one gets a plain "not open yet" reply. */
+assert.match(app, /var ASSISTANT_OPEN_SCHOOLS = \["cysh", "cygsh"\];/);
+assert.match(app, /'<optgroup label="尚未開放">' \+ closed\.map[^\n]*\+ '" disabled>'/);
+assert.match(app, /if \(!scopeId \|\| scopeId === "all"\) return ASSISTANT_OPEN_SCHOOLS\.slice\(\);/, "「兩校都問」 means the open schools, not all 58");
+assert.match(app, /if \(closedNamed\.length\) return assistantClosedAnswer\(asked, closedNamed\);/);
+assert.doesNotMatch(app, /'<optgroup label="整個縣市">'/);
 
 console.log("Chat landing and layout contract passed");
