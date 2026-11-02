@@ -127,3 +127,27 @@ console.log("問校務 precision tests passed");
     assert.ok(QA.rank(q, [notice], {}, { asOf: "2026-11-02" }).some((row) => row.item.id === "r1"), q);
   }
 }
+
+/* 「段考什麼時候」: 段考 means 期中考／期末考 on the school calendar, not a university's
+   招生考試 or another school's teacher workshop about 段考. */
+{
+  const cal = [
+    { school_id: "cysh", title: "第二次期中考", start_date: "2026-11-26", end_date: "2026-11-27" },
+    { school_id: "cysh", title: "高一高二期末考", start_date: "2027-01-18", end_date: "2027-01-20" },
+    { school_id: "cysh", title: "第一次期中考成績繳交截止", start_date: "2026-10-21" },
+  ];
+  const notices = [
+    { id: "w1", school: "cysh", school_name: "嘉中", title: "臺中第二高級中等學校辦理γ-1 AI賦能教學工作坊「從『見』到『學』- AI醫療診斷式段考精準檢討術」", date: "2026-10-29" },
+    { id: "u1", school: "cysh", school_name: "嘉中", title: "大葉大學116學年度特殊選才招生考試相關訊息", date: "2026-10-30" },
+  ];
+  const opts = { schoolId: "cysh", scopeLabel: "嘉中", calendarEvents: cal, asOf: "2026-11-02" };
+  let r = QA.answer("段考什麼時候", notices, {}, opts);
+  assert.equal(r.status, "answered");
+  assert.match(r.summary, /11\/26.*第二次期中考.*高一高二期末考/);
+  assert.ok(!r.sources.some((s) => s.id === "w1" || s.id === "u1"), r.sources.map((s) => s.title).join(" | "));
+  r = QA.answer("下次段考是哪幾天", notices, {}, opts);
+  assert.match(r.summary, /^依嘉中行事曆，11\/26（週四）～11\/27（週五）「第二次期中考」。$/);
+  /* Without a calendar, the teacher workshop is not offered as the answer. */
+  r = QA.answer("段考什麼時候", notices, {}, { schoolId: "cysh", scopeLabel: "嘉中", asOf: "2026-11-02" });
+  assert.doesNotMatch(r.summary + JSON.stringify(r.related || []), /賦能教學/, r.summary);
+}
