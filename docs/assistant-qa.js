@@ -10,6 +10,10 @@
   if (!SearchQuery && typeof module !== "undefined" && module.exports) SearchQuery = require("./search-query.js");
   var Validity = typeof window !== "undefined" ? window.CyNewsAnnouncementValidity : null;
   if (!Validity && typeof module !== "undefined" && module.exports) Validity = require("./announcement-validity.js");
+  var Synonyms = typeof window !== "undefined" ? window.CyNewsSynonyms : null;
+  if (!Synonyms && typeof module !== "undefined" && module.exports) Synonyms = require("./qa-synonyms.js");
+  /* All the ways to write a term (synonym database), or just the term. */
+  function synonymsOf(term) { return Synonyms ? Synonyms.expand(term) : [compact(term)]; }
 
   var INTENTS = {
     date: ["何時", "什麼時候", "日期", "截止", "幾點", "時間", "多久", "哪天", "哪一天", "哪幾天", "幾號", "幾月"],
@@ -30,7 +34,8 @@
   /* 「教務處電話」「圖書館分機」 ask for an office number, not a person's. */
   var OFFICE_CONTACT = /(?:處|室|組|館|中心|總機|學校|宿舍|合作社|校門|傳達室)(?:的)?(?:電話|分機|專線|傳真|地址)|(?:電話|分機|專線)(?:是|多少|幾號)|校址/;
   function personalDataQuery(query) {
-    query = clean(query);
+    /* 行動電話 is a phone the student carries, not someone's phone number. */
+    query = clean(query).replace(/行動電話/g, "手機");
     if (OFFICE_CONTACT.test(query) && !/學生|同學|老師的|[\u4e00-\u9fff]{2,3}的電話/.test(query.replace(/(?:處|室|組|館|中心)的電話/, ""))) return false;
     if (!PERSONAL_DATA_QUERY.test(query)) return false;
     if (RECORD_ONLY.test(query)) return true;
@@ -233,6 +238,25 @@
     return cueHits(clean((row && row.item && row.item.title || "") + " " + (row && row.text || "")), slot) > 0;
   }
   function stageWord(title) { return (String(title).match(/初賽|複賽|決賽|初審|複審|決審|第[一二三四五12345]次|第[一二三四五12345]階段/) || [""])[0]; }
+  /* The same yearly notice (「114學年度閱讀心得報告繳交流程」 → 「115學年度閱讀心得繳交流程」):
+     an old year's edition must not outrank this year's just because its wording matches the
+     question more literally. Asking for a given year (「114學年度…」) keeps the year asked. */
+  function newerEditionFirst(query, ranked, asOf) {
+    if (ranked.length < 2 || periodToken(query)) return ranked;
+    var current = currentAcademicYear(asOf), changed = false;
+    ranked.forEach(function (old) {
+      var year = Number((periodToken(old.item.title || "").match(/^\d+/) || [])[0]) || 0;
+      if (!year || year >= current) return;
+      ranked.forEach(function (row) {
+        if (row === old || !sameSchool(row, old) || rowDate(row) <= rowDate(old) || row.score > old.score) return;
+        var rowYear = Number((periodToken(row.item.title || "").match(/^\d+/) || [])[0]) || 0;
+        if (rowYear && rowYear <= year) return;
+        if (familySimilarity(row, old) < 0.6) return;
+        row.score = old.score + 1; changed = true;
+      });
+    });
+    return changed ? ranked.sort(function (a, b) { return b.score - a.score || rowDate(b).localeCompare(rowDate(a)); }) : ranked;
+  }
   function preferNewestRelated(query, ranked) {
     ranked = Array.isArray(ranked) ? ranked.slice() : [];
     if (ranked.length < 2) return ranked;
@@ -466,6 +490,7 @@
          announcement: a loose keyword overlap (e.g. 自主學習) hid the right answer. */
       if(strongReviewed.some(function(row){return row.reviewedCoverage>=0.5;}))ranked=ranked.filter(function(row){return related[row.item.id]||(row.reviewedMatch&&row.reviewedCoverage>=0.5)||!row.reviewedMatch&&row.score>=strongReviewed[0].score*0.6;});
     }
+    ranked = newerEditionFirst(query, ranked, asOf);
     ranked = preferNewestRelated(query, ranked);
     if (!ranked.length) return ranked;
     var floor = Math.max(70, ranked[0].score * 0.4);
@@ -1162,6 +1187,9 @@
       (topic ? topic.terms : []).forEach(function (t) { related.push(compact(t)); });
     });
     (plan.remainder_terms || []).forEach(function (t) { t = compact(t); if (t.length >= 2) rest.push(t); });
+    /* The synonym database: 「手機」 also finds a clause that says 行動載具. */
+    literal.concat(rest).forEach(function (t) { synonymsOf(t).forEach(function (s) { if (s !== t && s.length >= 2) related.push(s); }); });
+    rest.forEach(function (t) { if (Synonyms) Synonyms.find(t).forEach(function (k) { synonymsOf(k).forEach(function (s) { if (s.length >= 2) related.push(s); }); }); });
     return { literal: unique(literal), related: unique(related), rest: unique(rest) };
   }
   function scoreClause(clause, terms, query, title) {
@@ -1268,6 +1296,13 @@
   var WHEN_FILLER = /^(?:下次|下一次|下個|最近一次|最近|接下來|這次|哪幾天|哪一天|哪天|幾號|檔案|資料|日期|時間|期限|截止|高[一二三]|第[一二三四五]次)$/;
   var WHEN_QUALIFIERS = ["成績", "繳交", "命題", "監考", "閱卷", "檢討", "會議", "說明會", "講座", "補考", "報名", "試題", "公告", "IEP"];
   var GRADE_RE = /高[一二三]/g;
+  /* 「要交」 asks about 繳交; 「報名」 also covers 「參加」 (synonym database for the rest). */
+  var QUALIFIER_SHORT = { "繳交": /交|繳|上傳/, "報名": /報名|參加|登記/ };
+  function qualifierAsked(word, query) {
+    if (query.indexOf(word) !== -1 || (QUALIFIER_SHORT[word] && QUALIFIER_SHORT[word].test(query))) return true;
+    var q = compact(query);
+    return synonymsOf(word).some(function (alt) { return alt.length >= 2 && q.indexOf(alt) !== -1; });
+  }
   function whenAnswer(query, items, options) {
     options = options || {};
     var calendar = options.calendarEvents || [];
@@ -1279,12 +1314,16 @@
         var topic = topics.filter(function (t) { return t.id === row.id; })[0];
         /* 「段考」 means 期中考／期末考, not every 考試 (a university's 招生考試). */
         var own = DATE_TOPIC_SYNONYMS[row.term];
-        groups.push(unique((own && own.length ? own : (topic ? topic.terms : [row.term])).map(compact)));
+        var topicTerms = topic ? topic.terms : [row.term];
+        var known = Synonyms && Synonyms.find(row.term).join() === compact(row.term);
+        /* 「學測」 means 學科能力測驗, not every 大考 word (英聽). */
+        var base = own && own.length ? own : known ? [row.term] : topicTerms;
+        groups.push(unique([].concat.apply([], base.map(synonymsOf)).map(compact)));
       } else if (row.kind === "action") groups.push([compact(row.term)]);
     });
     (plan.remainder_terms || []).forEach(function (term) {
       term = compact(term).replace(WHEN_FILLER_WORDS, "");
-      if (term.length >= 2 && !WHEN_FILLER.test(term)) groups.push([term]);
+      if (term.length >= 2 && !WHEN_FILLER.test(term)) groups.push(Synonyms ? Synonyms.variants(term, 8) : [term]);
     });
     if (!groups.some(function (g) { return g.length > 1; }) && groups.length < 2) return null;
     var asOf = options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
@@ -1296,7 +1335,7 @@
       var titleGrades = title.match(GRADE_RE) || [];
       if (grades.length && titleGrades.length && !titleGrades.some(function (g) { return grades.indexOf(g) !== -1; })) return false;
       if (!asksStaff && DATE_STAFF.test(title)) return false;
-      return !WHEN_QUALIFIERS.some(function (word) { return title.indexOf(word) !== -1 && query.indexOf(word) === -1; });
+      return !WHEN_QUALIFIERS.some(function (word) { return title.indexOf(word) !== -1 && !qualifierAsked(word, query); });
     }
     var rows = [], seen = {};
     calendar.forEach(function (ev) {
@@ -1306,7 +1345,15 @@
       if (seen[key]) return; seen[key] = true;
       rows.push({ from: from, to: to < from ? from : to, title: title, ev: ev });
     });
-    if (!rows.length) return null;
+    if (!rows.length) {
+      var standin = breakStandin(query, calendar, asOf, options);
+      if (standin) return standin;
+      return null;
+    }
+    /* 「【高三】英文閱讀期中考(第5節)」 is one class period, not the 段考 itself: when the
+       calendar also has whole-day entries, leave the single-period ones out. */
+    var PERIOD_ONLY = /[（(]第\s*\d(?:\s*[-~～、]\s*\d)?\s*節[)）]/;
+    if (rows.some(function (r) { return !PERIOD_ONLY.test(r.title); })) rows = rows.filter(function (r) { return !PERIOD_ONLY.test(r.title); });
     var upcoming = rows.filter(function (r) { return r.to >= asOf; }).sort(function (a, b) { return a.from.localeCompare(b.from); });
     var past = rows.filter(function (r) { return r.to < asOf && r.to >= isoAdd(asOf, -150); }).sort(function (a, b) { return b.from.localeCompare(a.from); });
     var picked = upcoming.length ? upcoming.slice(0, NEXT_ASK.test(query) ? 1 : 4) : past.slice(0, 1);
@@ -1326,6 +1373,23 @@
       });
     return { status: "answered", mode: "browse", list_label: "行事曆", query: query, summary: summary, evidence: [], sources: sources, related: [], key_points: [],
       plan: questionPlan(query), limitation: "日期來自學校行事曆；學校臨時調整時以最新公告為準。" };
+  }
+  /* 「寒假什麼時候」: calendars rarely list 寒假 itself, but the 結業式／休業式 is the last day
+     before it (Jan–Feb for 寒假, Jun–Jul for 暑假). */
+  function breakStandin(query, calendar, asOf, options) {
+    var winter = /寒假|寒休/.test(query), summer = /暑假|暑休/.test(query);
+    if (!winter && !summer) return null;
+    var months = winter ? ["01", "02"] : ["06", "07"];
+    var hit = (calendar || []).filter(function (ev) {
+      var from = String(ev && (ev.start_date || ev.date) || "").slice(0, 10);
+      return /^\d{4}-\d{2}-\d{2}$/.test(from) && from >= asOf && months.indexOf(from.slice(5, 7)) !== -1 && /結業式|休業式/.test(ev.title || "") && !/高三/.test(ev.title || "");
+    }).sort(function (a, b) { return String(a.start_date).localeCompare(String(b.start_date)); })[0];
+    if (!hit) return null;
+    var from = String(hit.start_date || hit.date).slice(0, 10), next = isoAdd(from, 1), where = options && options.scopeLabel ? options.scopeLabel + "行事曆" : "學校行事曆";
+    var summary = "依" + where + "，" + rangeLabel(from, from) + "「" + clean(hit.title) + "」，隔天 " + rangeLabel(next, next) + "起放" + (winter ? "寒假" : "暑假") + "。";
+    return { status: "answered", mode: "browse", list_label: "行事曆", query: query, summary: summary, evidence: [], related: [], key_points: [],
+      sources: [{ id: "calendar:" + (hit.id || from + hit.title), kind: "calendar", title: clean(hit.title), school_id: hit.school_id || "", school_name: hit.school_name || "", url: hit.source_url || "", date: from, category: "行事曆", note: shortDay(from) + " · 學校行事曆" }],
+      plan: questionPlan(query), limitation: "行事曆沒有直接寫假期，用結業式推算；以學校公告為準。" };
   }
   var SCHOOL_NAME_RE = /國立嘉義女子高級中學|國立嘉義高級中學|嘉義女子高級中學|嘉義高級中學|嘉義女中|嘉義高中|嘉中|嘉女/g;
   function stripSchoolNames(query) {
@@ -1350,11 +1414,17 @@
   /* Official documents a school page links to (嘉女 keeps 學生獎懲規定 etc. on Google Drive).
      Only the name and link are known; the answer points to the document. */
   var DOC_JUNK = /請按我|點此|點我|連結$|\.(?:jpe?g|png|gif|mp4)$|^\d+\.pdf$|影像|摸彩|授證|交接|活動紀錄|餐會/;
+  /* Rules for staff (工友、教師、職員), not students. */
+  var STAFF_DOC = /工友|教師|職員|教職員|約用|約僱|人事|技工|駕駛|代理代課/;
   function documentLinks(query, items, scopeSchool) {
     var GENERIC_DOC = /^(?:規定|辦法|要點|規範|相關|資料|文件|怎麼|如何|申請|查詢)$/;
     var terms = ruleTerms(query), wanted = terms.literal.concat(terms.rest).filter(function (t) { return t.length >= 2 && !GENERIC_DOC.test(t); });
     if (!wanted.length) return [];
-    var related = terms.related.filter(function (t) { return t.length >= 2; }), rows = [], seen = {};
+    /* Only same-meaning words (synonym database), not every word of the topic: 「颱風停課」 is
+       not answered by 職業衛生「安全」辦法. */
+    var related = unique([].concat.apply([], wanted.map(function (t) { return Synonyms ? Synonyms.concepts(t) : [t]; }))).filter(function (t) { return t.length >= 2 && wanted.indexOf(t) === -1; }), rows = [], seen = {};
+    var ACTION_ONLY = /^(?:報名|申請|登記|繳交|上傳|填表|送件|查詢|選填|繳費)$/;
+    var subjects = wanted.filter(function (t) { return !ACTION_ONLY.test(t); });
     var subject = compact(stripSchoolNames(query).replace(/請問|我想知道|怎麼辦|怎麼|如何|是什麼|有哪些|有沒有|在哪裡|在哪|哪裡|可以|嗎|呢|的|[？?！!。，,\s]/g, ""));
     (items || []).forEach(function (item) {
       if (!item || item.kind !== "school_info" || (scopeSchool && item.school !== scopeSchool)) return;
@@ -1362,6 +1432,10 @@
         var name = clean(doc && doc.name || ""), c = compact(name);
         if (!name || name.length < 4 || DOC_JUNK.test(name) || !/^https:\/\//.test(String(doc.url || "")) || seen[doc.url]) return;
         var score = 0;
+        /* 「重補修報名」: a form named 報名表 for something else is not it; the subject must match. */
+        if (STAFF_DOC.test(name) && !STAFF_DOC.test(query)) return;
+        var subjectHit = !subjects.length || subjects.some(function (t) { return c.indexOf(t) !== -1; }) || related.some(function (t) { return c.indexOf(t) !== -1; });
+        if (!subjectHit) return;
         wanted.forEach(function (t) { if (c.indexOf(t) !== -1) score += 10; });
         if (!score) related.forEach(function (t) { if (c.indexOf(t) !== -1) score = Math.max(score, 6); });
         if (/規定|辦法|要點|規範|章程|須知/.test(name)) score += 2;
@@ -1727,6 +1801,8 @@
       }
     }
     if (result) result.reply = conversational(result);
+    /* The calendar or rules found something even though the announcements did not: no 「找不到」 opener. */
+    if (result && result.status !== "answered" && (result.also || []).length && result.reply) result.reply = Object.assign({}, result.reply, { text: clean(result.summary || result.reply.text) });
     /* Asked for a link but the notice text isn't readable here (guests): still give the official
        notices' own links; the activity's sign-up address is written inside them. */
     if (result && result.status !== "answered" && result.mode !== "chat" && wantsLink(query) && (result.related || []).length) {
@@ -1832,23 +1908,124 @@
       reply: { text: text, bullets: bullets, tail: tail },
     };
   }
+  /* 翻找順序：先翻規定（學生手冊、校規、學校網頁），再翻行事曆（含課表），最後翻公告。
+     三層都翻；第一個找到答案的當主答案，其他層找到的依同樣順序附在後面（result.also）。 */
+  var LAYER_LABELS = { rule: "學校規定", calendar: "行事曆", announcement: "公告" };
+  var HAS_TIME = /\d{1,2}\s*[\/／月]\s*\d{1,2}|\d{1,2}[:：]\d{2}|[一二三四五六七八九十\d]+\s*(?:月|日|號|週|天|點|時|節)|星期|週[一二三四五六日]|開學|結業|學期/;
   function answerCore(query, items, details, options) {
     var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
-    var timed = timetableAnswer(query, Object.assign({}, options, { asOf: asOfDay }));
+    /* 「最近有什麼新消息」 is a list of announcements, not a question for the three layers. */
+    var all = Array.isArray(items) ? items : [];
+    var calendar = calendarLayer(query, all, options, asOfDay);
+    var browse = browsePlan(query);
+    if (browse && !calendar) return browseAnswer(query, items, browse, options);
+    /* A class timetable or a day's schedule is the whole answer. */
+    if (calendar && (calendar.mode === "timetable" || datePlan(query, asOfDay))) return calendar;
+    var layers = {
+      rule: personalDataQuery(query) ? null : ruleLayer(query, all.filter(isSchoolDoc), details, options),
+      calendar: calendar,
+      announcement: announcementLayer(query, all, details, options)
+    };
+    var order = ["rule", "calendar", "announcement"];
+    /* A rule clause without any date does not answer 「什麼時候」: the calendar goes first then. */
+    var asksWhen = WHEN_ASK.test(query) || !!datePlan(query, asOfDay);
+    if (asksWhen && layers.rule && !HAS_TIME.test(layers.rule.summary || "")) order = ["calendar", "rule", "announcement"];
+    var answered = order.filter(function (key) { return layers[key] && layers[key].status === "answered" && !layers[key].weak; });
+    var weak = order.filter(function (key) { return layers[key] && layers[key].status === "answered" && layers[key].weak; });
+    if (!answered.length && !weak.length) return layers.calendar || layers.announcement || layers.rule;
+    /* Only a calendar date for a question about something else (「期末考範圍」): the date is
+       a side note under the announcements' answer, not the answer. */
+    var main = answered.length ? Object.assign({}, layers[answered[0]], { layer: answered[0] })
+      : Object.assign({}, layers.announcement || layers.rule || { status: "insufficient", query: query, summary: "", evidence: [], sources: [] }, { layer: "announcement" });
+    var rest = (answered.length ? answered.slice(1) : []).concat(weak);
+    var shown = {};
+    (main.sources || []).forEach(function (source) { shown[source.id] = true; });
+    (main.related || []).forEach(function (row) { shown[row.id] = true; });
+    main.also = rest.map(function (key) {
+      var layer = layers[key], sources = (layer.sources || []).filter(function (source) { return !shown[source.id]; }).slice(0, 3);
+      sources.forEach(function (source) { shown[source.id] = true; });
+      return { layer: key, label: LAYER_LABELS[key], summary: clean(layer.summary || ""), text: LAYER_LABELS[key] + "也有寫到：" + clean(layer.summary || ""), sources: sources };
+    }).filter(function (row) { return row.summary && row.sources.length; });
+    /* No direct answer in the announcements, but related ones exist: list them to open. */
+    var notices = layers.announcement;
+    if (main.status === "answered" && answered.indexOf("announcement") === -1 && notices && (notices.related || []).length) {
+      var more = notices.related.filter(function (row) { return !shown[row.id]; }).slice(0, 2);
+      if (more.length) main.also.push({ layer: "announcement", label: "公告", summary: "", text: "相關公告，點開看細節：", sources: more });
+    }
+    main.layers_checked = order.slice();
+    return main;
+  }
+  function ruleLayer(query, docs, details, options) {
+    if (!docs.length) return null;
+    var ranked = rank(query, docs, details, options).slice(0, 8);
+    if (!/進修/.test(query)) ranked = ranked.filter(function (row) { return !/進修部/.test(row.item.title || ""); });
+    return ruleAnswer(query, ranked, details || {}) || handbookPointer(query, ranked, details || {}, options);
+  }
+  /* The handbook chapter named after the question (學生在校作息時間規定 for 「幾點放學」), when
+     its text cannot be quoted here (guests) or no single clause answers: point to that chapter. */
+  function handbookPointer(query, ranked, details, options) {
+    var terms = ruleTerms(query), wanted = terms.literal.concat(terms.rest);
+    var forms = unique([].concat.apply([], wanted.map(function (t) { return Synonyms ? Synonyms.concepts(t) : [t]; })).concat(wanted))
+      .filter(function (t) { return t.length >= 2 && ALWAYS_GENERIC.indexOf(t) === -1 && !/^(?:規定|辦法|要點|怎麼|如何|可以|時間)$/.test(t); });
+    if (!forms.length) return null;
+    var hit = ranked.filter(function (row) {
+      if (row.item.kind !== "school_handbook") return false;
+      var chapter = compact(String(row.item.title || "").split("›").pop());
+      return !STAFF_DOC.test(chapter) && forms.some(function (t) { return chapter.indexOf(t) !== -1; });
+    })[0];
+    if (!hit) return null;
+    var item = hit.item, chapter = clean(String(item.title || "").split("›").pop());
+    var pages = Array.isArray(item.page_range) ? "第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁" : "";
+    var url = /^https:\/\//.test(String(item.url || "")) ? item.url : "";
+    return { status: "answered", mode: "document", query: query, evidence: [], key_points: [], related: [],
+      summary: (item.school_name || "學校") + "學生手冊的「" + chapter + "」" + (pages ? "（" + pages + "）" : "") + "就是在講這個，點開看原文" + (details[item.id] ? "。" : "；登入後我可以直接引用條文。"),
+      sources: [{ id: item.id, kind: url ? "service" : "", title: "學生手冊 › " + chapter, url: url, school_name: item.school_name || "", note: pages || "學生手冊" }],
+      limitation: "學生手冊來自學校官網；規定可能修訂，以學校最新公告為準。", plan: questionPlan(query) };
+  }
+  function calendarLayer(query, items, options, asOfDay) {
+    var opts = Object.assign({}, options, { asOf: asOfDay });
+    var timed = timetableAnswer(query, opts);
     if (timed) return timed;
     var dated = datePlan(query, asOfDay);
     if (dated) return dateAnswer(query, items, dated, options);
-    var when = whenAnswer(query, items, Object.assign({}, options, { asOf: asOfDay }));
-    if (when) return when;
-    var browse = browsePlan(query);
-    if (browse) return browseAnswer(query, items, browse, options);
+    return whenAnswer(query, items, opts) || calendarMentions(query, opts);
+  }
+  /* Not a 「什麼時候」 question, but the topic is on the calendar (「校慶」「家長日」): list the
+     upcoming entries whose titles name it, through the synonym database. */
+  /* Asking about something of the event (its 範圍, rules, what happens if…), not when it is. */
+  var ATTRIBUTE_ASK = /範圍|幾科|科目|規定|怎麼|如何|可以|能不能|能否|會怎樣|怎樣|要帶|帶什麼|資格|費用|多少|分數|地點|哪裡|在哪|流程|方式|嗎|為什麼|誰/;
+  function calendarMentions(query, options) {
+    var calendar = options.calendarEvents || [];
+    if (!calendar.length || !SearchQuery || !SearchQuery.queryPlan || !Synonyms || WHEN_SKIP.test(query)) return null;
+    var plan = SearchQuery.queryPlan(query), wanted = [];
+    (plan.term_matches || []).forEach(function (row) { if (row.kind === "topic") wanted.push(row.term); });
+    (plan.remainder_terms || []).forEach(function (term) { Synonyms.find(term).forEach(function (t) { wanted.push(t); }); });
+    wanted = unique(wanted.map(compact)).filter(function (t) { return t.length >= 2 && ALWAYS_GENERIC.indexOf(t) === -1; });
+    if (!wanted.length) return null;
+    var groups = wanted.map(synonymsOf);
+    var asOf = options.asOf, rows = [];
+    calendar.forEach(function (ev) {
+      var from = String(ev && (ev.start_date || ev.date) || "").slice(0, 10), to = String(ev && ev.end_date || from).slice(0, 10), title = clean(ev && ev.title || "");
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(from) || to < asOf || DATE_STAFF.test(title)) return;
+      var t = compact(title);
+      /* Every subject asked must be in the title. */
+      if (!groups.every(function (forms) { return forms.some(function (f) { return t.indexOf(f) !== -1; }); })) return;
+      rows.push({ from: from, to: to < from ? from : to, title: title, ev: ev });
+    });
+    if (!rows.length) return null;
+    rows.sort(function (a, b) { return a.from.localeCompare(b.from); });
+    var picked = rows.slice(0, 3), where = options.scopeLabel ? options.scopeLabel + "行事曆" : "學校行事曆";
+    return { status: "answered", mode: "browse", list_label: "行事曆", query: query, weak: ATTRIBUTE_ASK.test(query),
+      summary: "依" + where + "，" + picked.map(function (r) { return rangeLabel(r.from, r.to) + "「" + r.title + "」"; }).join("、") + "。",
+      sources: picked.map(function (r) { return { id: "calendar:" + (r.ev.id || r.from + r.title), kind: "calendar", title: r.title, school_id: r.ev.school_id || "", school_name: r.ev.school_name || options.scopeLabel || "", url: r.ev.source_url || "", date: r.from, category: "行事曆", note: (r.from === r.to ? shortDay(r.from) : shortDay(r.from) + "～" + shortDay(r.to)) + " · 學校行事曆" }; }),
+      evidence: [], related: [], key_points: [], plan: questionPlan(query), limitation: "日期來自學校行事曆；學校臨時調整時以最新公告為準。" };
+  }
+  function announcementLayer(query, items, details, options) {
     var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);
     /* 學生手冊 has day-school and 進修部 versions of the same rules; use 進修部 only when asked. */
     if (!/進修/.test(query) && ranked.some(function (row) { return !/進修部/.test(row.item.title || ""); })) {
       ranked = ranked.filter(function (row) { return !/進修部/.test(row.item.title || ""); });
     }
-    var ruled = ruleAnswer(query, ranked, details || {});
-    if (ruled && !personalDataQuery(query)) return ruled;
     if (ranked.length) {
       var relevanceFloor = Math.max(8, ranked[0].score * 0.35);
       ranked = ranked.filter(function (row) { return row.score >= relevanceFloor; }).slice(0, 5);

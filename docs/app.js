@@ -2520,6 +2520,10 @@
       if (reply.bullets && reply.bullets.length) html += '<ul class="chat-bullets">' + reply.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>';
       if (reply.tail) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
       if (result && result.status === "answered" && result.mode === "browse" && (result.sources || []).length) html += '<div class="assistant-sources chat-list">' + assistantSourceButtons(result) + '</div>';
+      /* 規定 → 行事曆 → 公告：主答案以外，其他地方也找到的，依序列在後面。 */
+      (result && result.also || []).forEach(function (row) {
+        html += '<div class="chat-also"><p class="chat-aside">' + esc(row.text || row.label + "也有寫到：" + row.summary) + '</p><div class="assistant-sources chat-list">' + assistantSourceButtons({ sources: row.sources, mode: "browse" }) + '</div></div>';
+      });
       var related = (result && result.status !== "answered" && result.related || []).slice(0, 3).map(function (item) {
         var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
         return '<button type="button" class="assistant-source" data-detail-id="' + esc(item.id) + '"><strong>' + esc(item.title) + '</strong><small>' + esc(meta) + '</small></button>';
@@ -2969,7 +2973,11 @@
           return cross;
         }
         /* 「最近有什麼新消息」這類問題直接列公告，不必先做逐句比對 */
-        var candidates = (window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question)) || (window.CyNewsAssistantQA.datePlan && window.CyNewsAssistantQA.datePlan(question, new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }))) ? [] : window.CyNewsAssistantQA.rank(question, items, {}, options).slice(0, 8);
+        /* 規定與公告分開挑候選，規定（學生手冊、學校網頁）不會被大量公告擠掉。 */
+        var isDoc = function (item) { return item && (item.kind === "school_handbook" || item.kind === "school_info"); };
+        var listOnly = window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question);
+        var candidates = listOnly ? [] : window.CyNewsAssistantQA.rank(question, items.filter(isDoc), {}, options).slice(0, 6)
+          .concat(window.CyNewsAssistantQA.rank(question, items.filter(function (item) { return !isDoc(item); }), {}, options).slice(0, 6));
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
           var details = {};
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });

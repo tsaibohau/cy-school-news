@@ -2,10 +2,12 @@
 (function (root, factory) {
   var taxonomy = root.CyNewsSearchTaxonomy;
   if (!taxonomy && typeof module !== "undefined" && module.exports) taxonomy = require("./search-taxonomy.js");
-  var api = factory(taxonomy || { version: 0, topics: [], actions: [] }, root);
+  var synonyms = root.CyNewsSynonyms;
+  if (!synonyms && typeof module !== "undefined" && module.exports) synonyms = require("./qa-synonyms.js");
+  var api = factory(taxonomy || { version: 0, topics: [], actions: [] }, root, synonyms || null);
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   root.CyNewsSearchQuery = api;
-})(typeof window !== "undefined" ? window : this, function (taxonomy, root) {
+})(typeof window !== "undefined" ? window : this, function (taxonomy, root, Synonyms) {
   "use strict";
 
   function clean(value) { return String(value == null ? "" : value).replace(/\s+/g, " ").trim(); }
@@ -35,6 +37,15 @@
     { id: "location", terms: ["地點", "位置", "哪裡", "教室", "站牌"] },
     { id: "availability", terms: ["開放時間", "開館時間", "營業時間", "開放", "開館"] }
   ];
+  /* The synonym database widens each topic: 行動電話 is the 行動載具 topic too. Only same-meaning
+     words are added (not the narrower ones), so topics do not spread into each other. */
+  if (Synonyms && !taxonomy.__synonyms) {
+    taxonomy = Object.assign({}, taxonomy, { __synonyms: true, topics: (taxonomy.topics || []).map(function (row) {
+      var terms = row.terms.slice();
+      row.terms.forEach(function (term) { Synonyms.expand(term, { includes: false }).forEach(function (alt) { if (alt.length >= 2 && terms.map(compact).indexOf(alt) === -1) terms.push(alt); }); });
+      return Object.assign({}, row, { terms: terms });
+    }) });
+  }
   function allRules() { return (taxonomy.topics || []).map(function (row) { return { kind: "topic", row: row }; })
     .concat((taxonomy.actions || []).map(function (row) { return { kind: "action", row: row }; })); }
   /* Words that contain a term without meaning it: 選課輔導 is not 課輔, 愛校服務 is not
@@ -169,7 +180,7 @@
       var selected = rule.kind === "topic" ? plan.topics : plan.actions;
       if (selected.indexOf(rule.row.id) !== -1) rows = rows.concat(rule.row.terms);
     });
-    rows = rows.concat(plan.remainder_terms || []);
+    (plan.remainder_terms || []).forEach(function (term) { rows = rows.concat(Synonyms ? Synonyms.variants(term, 6) : [term]); });
     return unique(rows.map(compact));
   }
   function concepts(query) { return terms(query).map(function (term) { return [term]; }); }
@@ -187,7 +198,13 @@
       return clean(fragment.keywords) + " " + clean(fragment.text);
     }).join(" "));
   }
+  /* A term written another way in the title (閱讀心得報告 ↔ 讀書心得) still counts: the best
+     score over the term's synonym variants (qa-synonyms.js). */
   function termEvidenceScore(fields, reviewed, term) {
+    var forms = Synonyms ? Synonyms.variants(term, 8) : [term];
+    return forms.reduce(function (best, form) { return Math.max(best, termEvidenceScoreOne(fields, reviewed, form)); }, 0);
+  }
+  function termEvidenceScoreOne(fields, reviewed, term) {
     var titleCoverage = phraseCoverage(fields.title, term);
     var primaryCoverage = phraseCoverage(fields.primary, term);
     var reviewedCoverage = phraseCoverage(reviewed, term);
