@@ -43,7 +43,8 @@ console.log("✓ 學生手冊規定原文回答");
 
 /* Reply: a short opener naming the source, then the official facts as bullet points. */
 r = ask("書可以借多久");
-assert.match(r.reply.text, /學生手冊的〈圖書館借書規定〉（第 40–41 頁）/);
+assert.match(r.reply.text, /學生手冊〈圖書館借書規定〉（第 40–41 頁）/);
+assert.doesNotMatch(r.reply.text, /借期二週/, "the opening line is our own sentence; the facts are the points");
 assert.deepEqual(r.reply.bullets.slice(0, 2), ["借期二週", "借閱期滿如果沒有他人預約可以續借一次"]);
 assert.ok(r.reply.bullets.every(b => !/^八、|借閱期限：/.test(b)), "list numbers and labels are taken out");
 assert.deepEqual(ask("午休時間是幾點").reply.bullets, ["午休是 12:35–13:10"]);
