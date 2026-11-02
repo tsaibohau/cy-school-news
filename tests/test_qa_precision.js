@@ -117,3 +117,13 @@ console.log("問校務 precision tests passed");
   assert.equal(QA.titleDates({ title: "依113年11月12日令修正", date: "2026-10-20" }).length, 0, "dates before publication are references");
   console.log("問校務 dated-question tests passed");
 }
+
+/* 「閱讀心得報告要交？不交會怎樣？」: consequence words (要交、不交、會怎樣) are question
+   filler, not part of the subject; the long glued phrase used to match nothing. */
+{
+  const notice = { id: "r1", school: "cysh", school_name: "嘉中", title: "國立嘉義高中115學年度推展閱讀運動閱讀心得繳交流程、時程與電子檔", date: "2026-10-19" };
+  for (const q of ["閱讀心得報告要交？不交會怎樣？", "閱讀心得不交會怎樣", "閱讀心得報告要不要交"]) {
+    assert.ok(SQ.announcementScore(notice, q) > 0, q);
+    assert.ok(QA.rank(q, [notice], {}, { asOf: "2026-11-02" }).some((row) => row.item.id === "r1"), q);
+  }
+}
