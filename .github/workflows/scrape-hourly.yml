@@ -83,6 +83,10 @@ jobs:
       - name: 更新公開班級課表
         run: python scraper/timetable.py discover
 
+      - name: 更新嘉女公開班級課表（每週最多一次）
+        continue-on-error: true
+        run: python scraper/timetable_cygsh.py
+
       - name: 更新校園資訊與學生手冊（每次少量頁面）
         # Pages are refreshed at most every 30 days and the handbook list every 14 days,
         # so each run makes only a handful of extra requests. A failure must not block
