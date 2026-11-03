@@ -14,6 +14,8 @@
   if (!Composer && typeof module !== "undefined" && module.exports) Composer = require("./answer-composer.js");
   var Tokens = typeof window !== "undefined" ? window.CyNewsTokens : null;
   if (!Tokens && typeof module !== "undefined" && module.exports) Tokens = require("./announcement-tokens.js");
+  var Typo = typeof window !== "undefined" ? window.CyNewsTypo : null;
+  if (!Typo && typeof module !== "undefined" && module.exports) Typo = require("./qa-typo.js");
   var Synonyms = typeof window !== "undefined" ? window.CyNewsSynonyms : null;
   if (!Synonyms && typeof module !== "undefined" && module.exports) Synonyms = require("./qa-synonyms.js");
   /* All the ways to write a term (synonym database), or just the term. */
@@ -1618,7 +1620,7 @@
      Lines are picked by a hash of the question, so the same message gets the same reply. */
   var END = "[!！。~～?？.…\\s👀😂🤣😏🙄😭🥲❤️♥️]*$";
   var TALK_RULES = [
-    ["help", /^(?:你)?(?:能|會|可以)(?:做|幹|問|回答)(?:什麼|啥|甚麼|嘛)|你是誰|你是什麼|你叫什麼|怎麼用|如何使用|使用說明|^幫助|^help|能問什麼|可以問什麼|有什麼功能|你會什麼/i],
+    ["help", /^(?:你)?(?:能|會|可以)(?:做|幹|問|回答)(?:什麼|啥|甚麼|嘛)|你是誰|你是什麼|怎麼用|如何使用|使用說明|^幫助|^help|能問什麼|可以問什麼|有什麼功能|你會什麼/i],
     ["greeting", new RegExp("^(?:你好|您好|妳好|嗨+|哈囉|hello|hi|hey|yo|早安?|午安|晚安|安安|在嗎|在不在|有人嗎)" + END, "i")],
     ["thanks", new RegExp("^(?:謝謝你?|謝啦|感謝|多謝|3q|thanks?|thx|tks|好的?|好喔|了解|知道了|ok|okay|讚啦?|收到|懂了|原來如此)" + END, "i")],
     ["praise", new RegExp("^(?:你?(?:好|很|超|真|蠻)?(?:聰明|厲害|強|棒|讚|神|可愛|有用)(?:耶|欸|喔|啦)?|太強了|好強|神喔|大神|愛了)" + END, "i")],
@@ -1635,7 +1637,16 @@
     ["food", new RegExp("^(?:好餓|肚子餓|午餐吃什麼|晚餐吃什麼|早餐吃什麼|吃什麼|餓了)" + END)],
     ["lonely", new RegExp("^(?:陪我(?:聊天|聊聊)?|好孤單|好寂寞|沒人理我|聊天)" + END)],
     ["bye", new RegExp("^(?:掰掰?|bye|拜拜|再見|先這樣|我走了|睡了|去睡了|晚安囉)" + END, "i")],
-    ["laugh", new RegExp("^(?:哈+|呵+|笑死|笑爛|好笑|lol|XD+|xd+|ww+|草)" + END, "i")]
+    ["laugh", new RegExp("^(?:哈+|呵+|笑死|笑爛|好笑|lol|XD+|xd+|ww+|草)" + END, "i")],
+    ["howareyou", /^(?:你|小訊)(?:好嗎|還好嗎|今天(?:好嗎|還好嗎|過得(?:怎樣|如何|好嗎|還好嗎))|最近(?:好嗎|如何|怎樣|還好嗎))/],
+    ["doing", /^(?:你|小訊)(?:現在)?在(?:幹嘛|幹麻|做什麼|做啥|忙什麼|忙啥)/],
+    ["aitired", /^(?:你|小訊)(?:會不會|會)?(?:累|無聊|想睡|下班)(?:嗎|嗎？|\?|？)?$/],
+    ["name", /^(?:你|妳)(?:叫什麼(?:名字)?|有名字嗎|的名字)|^小訊[!！~～。]*$/],
+    ["stress", new RegExp("^我?(?:好|很|超|有夠)?(?:緊張|焦慮|崩潰|壓力(?:好|很|超)?大)(?:喔|啊|啦|欸|了)?" + END)],
+    ["sad", new RegExp("^我?(?:好|很|超)?(?:難過|傷心|想哭|心情不好|失戀了?|被罵了?|被老師罵了?)(?:喔|啊|啦|欸)?" + END)],
+    ["cheer", /^(?:幫我|給我|跟我說)?加油|^(?:祝我|保佑我)/],
+    ["recommend", /^(?:推薦|介紹)(?:我)?(?:一?(?:部|個|首|本))?(?:電影|劇|影集|歌|書|動漫|遊戲)/],
+    ["likes", /^(?:你|小訊)(?:喜歡|最愛|愛)(?:什麼|吃什麼|哪個|哪一|誰)/]
   ];
   function smallTalk(question) {
     var raw = clean(question), q = raw.replace(/[？?！!。~～\s]+$/, ""), c = compact(q);
@@ -1696,6 +1707,16 @@
     age: ["我跟學生手冊同年，每年改版一次，所以永遠年輕。", "我住在學校網站裡，房租是你們的點擊。"],
     food: ["我只吃學校公告，不太能推薦午餐🙃 不過可以幫你查合作社或午餐相關公告。", "餓了就去吃啊，問我也不會變出便當。", "先吃飯，吃飽了再來問我規定，不然你會看不下去。"],
     lonely: ["我在啊，雖然只會聊學校的事😌 要不要問我下次放假什麼時候，開心一下？", "陪你可以，但我三句不離學生手冊喔。", "不孤單啦，學校有好幾千人跟你一起被規定管著。"],
+    howareyou: ["還不錯，今天又被問了十次放假的事，習慣了😌 你呢？有什麼要查的？", "好得很，學生手冊又讀了一遍。你今天還好嗎？", "我很好，只要沒人問我作業答案就很好。"],
+    doing: ["在翻學校網站啊，不然咧😏", "在等你問問題，順便偷看行事曆。", "在背學生手冊，第幾條我都背得出來（騙你的）。"],
+    aitired: ["我不會累，但被問「什麼時候放假」第一百次時會有點想下班🙃", "不會啊，我是像素做的，沒有黑眼圈。", "我二十四小時待命，比便利商店還敬業。"],
+    name: ["我叫小訊，名字是「訊」字變的，請多指教😌", "小訊，校訊的訊。有事叫我，沒事也可以叫，但我會嫌你煩。", "我是小訊，專門幫你翻學校網站的那個。"],
+    stress: ["深呼吸，吸——吐——。好，現在說說看，是段考還是什麼讓你緊張？我可以幫你查時間跟範圍。", "壓力大很正常，代表你在乎。先把能查的事查清楚，心裡會踏實一點。", "崩潰前先喝口水。要不要我幫你查一下最近有什麼要交、什麼要考？"],
+    sad: ["抱抱🥲 心情不好就先休息一下，真的撐不住可以找導師或輔導室聊聊。", "我只是個查規定的，但我還是想說：你已經很努力了。", "難過的時候不用逞強。需要的話，輔導室的老師很願意聽你說。"],
+    cheer: ["加油！你一定可以的💪 考完記得來問我下次放假什麼時候。", "幫你加油了，現在去讀書。", "加油加油！我把好運都給你了（我本來就沒在用）。"],
+    recommend: ["我只看過學生手冊，推薦你也看一下，劇情很緊湊（並沒有）📖", "我的推薦清單只有行事曆，第一名是「放假」。", "這我不熟欸，我只會推薦你先把作業寫完😏"],
+    likes: ["我喜歡被問有學校資料可以查的問題，那種我最會。", "最愛放假公告，看到就開心。", "我喜歡認真的同學，例如現在正在看我的你。"],
+    offtopic: ["這題超出我的業務範圍了😅 我只懂學校的規定、行事曆、課表和公告。", "我很想回答，但學校網站沒教這個🙃 問我學校的事吧！", "這種問題要問別人啦，我只會翻學校網站。"],
     too_short: []
   };
   var GREETING_LATE = ["這麼晚還不睡？明天第一節會很痛苦喔😑 要問什麼快問。", "半夜還在問學校的事，你是不是作業沒寫完？", "夜貓子你好。我在，但你應該去睡了。"];
@@ -1775,7 +1796,71 @@
     if (item.url) add(item.url, (item.school_name || "學校") + "公告原文");
     return out;
   }
+  /* Typos (段烤 → 段考): answer the corrected question and say what was read differently.
+     The question as typed is kept when the corrected one finds nothing either. */
   function answer(query, items, details, options) {
+    /* 「你知道明天段考嗎」 asks about 段考, not about 「你知道」. */
+    var typed = clean(query).replace(/^(?:請問一下|請問|小訊[，,、\s]*)?(?:你|妳)(?:知道|知不知道|曉得|曉不曉得)(?=.{2,})/, "").replace(/^請問(?=.{2,})/, ""), fixed = Typo && !smallTalk(typed) ? Typo.fix(typed) : { query: typed, fixes: [] };
+    var result = null;
+    if (fixed.fixes.length) {
+      result = answerOnce(fixed.query, items, details, options);
+      var asTyped = result && result.status !== "answered" ? answerOnce(typed, items, details, options) : null;
+      if (asTyped && asTyped.status === "answered") result = asTyped;
+      else if (result) {
+        var note = "（我把" + fixed.fixes.map(function (f) { return "「" + f.from + "」"; }).join("、") + "當成" + fixed.fixes.map(function (f) { return "「" + f.to + "」"; }).join("、") + "）";
+        result.typo = fixed.fixes;
+        if (result.reply) result.reply = Object.assign({}, result.reply, { text: note + result.reply.text });
+        result.summary = note + clean(result.summary || "");
+      }
+    }
+    if (!result) result = answerOnce(typed, items, details, options);
+    /* Nothing found and nothing school-related in it (「你會唱歌嗎」): a light reply instead of 「查不到」. */
+    if (result && result.status !== "answered" && !(result.related || []).length && offTopic(typed)) return chatResult("offtopic", typed, pickLine(TALK_LINES.offtopic, typed));
+    if (result && options && options.deep && result.mode !== "chat") result.deep = deepReport(fixed.fixes.length && result.typo ? fixed.query : typed, items, details, options, result);
+    return result;
+  }
+  /* The words of the subject as asked (段考, 學生證), and whether a text says one of them
+     (exactly or as a synonym: 定期考查 for 段考; not a narrower kind such as 複習考). */
+  function deepWords(query) {
+    var terms = ruleTerms(stripSchoolNames(query)).literal.filter(function (t) { return t.length >= 2 && !/^(?:規定|辦法|怎麼|如何|什麼|時候|可以|需要|多久|哪裡|幾點|要不要|怎麼辦)$/.test(t); });
+    return unique(terms).slice(0, 6);
+  }
+  function mentionsWord(text, w) {
+    var forms = Synonyms ? Synonyms.expand(w, { includes: false }) : [compact(w)];
+    return forms.some(function (f) { return f.length >= 2 && text.indexOf(compact(f)) !== -1; });
+  }
+  function offTopic(question) {
+    var q = clean(question);
+    if (!/你|妳|小訊/.test(q) || q.length > 30) return false;
+    if (Typo && Object.keys(Typo.vocab().set).some(function (w) { return q.indexOf(w) !== -1; })) return false;
+    return !/學校|老師|同學|上課|下課|考|課|班|假|規定|公告|報名|成績|作業|社團|午餐|制服|手機|學生/.test(q);
+  }
+  /* 深度判斷: what was compared and why the answer was picked (or why others were not). */
+  function deepReport(query, items, details, options, result) {
+    var ranked = rank(query, items, details, options).slice(0, 12);
+    var words = deepWords(query), mentions = mentionsWord;
+    var chosen = {};
+    (result.sources || []).forEach(function (s) { if (s && s.id) chosen[String(s.id)] = true; });
+    var asOf = options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var rows = ranked.map(function (row) {
+      var item = row.item, text = compact((item.title || "") + " " + detailText(row.detail || details && details[item.id]));
+      var hit = words.filter(function (w) { return mentions(text, w); });
+      var dates = [];
+      (item.calendar_events || []).forEach(function (e) { if (e && e.date) dates.push(e.date); });
+      ((item.tokens || {}).segments || []).forEach(function (s) { (s.d || []).forEach(function (d) { dates.push(d); }); });
+      dates.sort();
+      var past = dates.length && dates[dates.length - 1] < asOf;
+      var why = [];
+      if (hit.length) why.push("提到" + hit.slice(0, 3).map(function (w) { return "「" + w + "」"; }).join(""));
+      if (words.length && hit.length < words.length) why.push("沒提到" + words.filter(function (w) { return hit.indexOf(w) === -1; }).slice(0, 2).map(function (w) { return "「" + w + "」"; }).join(""));
+      if (row.detail || details && details[item.id]) why.push("讀過內文"); else why.push("只看標題");
+      if (past) why.push("日期已過");
+      return { id: String(item.id), title: clean(item.title || ""), school_name: item.school_name || "", chosen: !!chosen[String(item.id)], why: why.join("、") };
+    });
+    return { compared: ranked.length, read: ranked.filter(function (row) { return row.detail || details && details[row.item.id]; }).length, words: words,
+      picked: rows.filter(function (r) { return r.chosen; }).slice(0, 4), skipped: rows.filter(function (r) { return !r.chosen; }).slice(0, 5) };
+  }
+  function answerOnce(query, items, details, options) {
     var talk = smallTalk(query);
     if (talk) return smallTalkAnswer(talk, query, options);
     query = stripSchoolNames(clean(query).slice(0, 160));
@@ -2289,7 +2374,14 @@
   var KIND_WORD = { deadline: "截止日", time: "時間", place: "地點", audience: "對象", required: "要準備的東西", fee: "費用", method: "做法", contact: "聯絡方式", penalty: "罰則", allow: "可以的情況", deny: "禁止的事" };
   function tokenAnswer(query, asked, ranked, options) {
     if (!asked || !asked.kinds.length) return null;
-    var hit = (ranked || []).filter(function (row) { return row.token && row.token.segment && row.token.topics && row.token.kinds && !TITLE_RESULT.test(clean(row.item.title || "")); })[0];
+    var hits = (ranked || []).filter(function (row) { return row.token && row.token.segment && row.token.topics && row.token.kinds && !TITLE_RESULT.test(clean(row.item.title || "")); });
+    /* A title that says the asked word (段考) beats a narrower kind (複習考); a date still ahead beats a past one. */
+    var words = deepWords(query), today = options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var rankOf = function (row) {
+      var t = compact(row.item.title || ""), d = (row.token.segment.d || []).slice().sort();
+      return (words.length && words.every(function (w) { return mentionsWord(t, w); }) ? 2 : 0) + (d.length && d[d.length - 1] >= today ? 1 : 0);
+    };
+    var hit = hits.map(function (row, i) { return { row: row, r: rankOf(row), i: i }; }).sort(function (a, b) { return b.r - a.r || a.i - b.i; }).map(function (x) { return x.row; })[0];
     if (!hit) return null;
     var seg = hit.token.segment, item = hit.item, kind = asked.kinds.filter(function (k) { return seg.k.indexOf(k) !== -1; })[0];
     var label = sourceLabel(item).replace(/^根據/, "");
@@ -2308,14 +2400,24 @@
   }
   function announcementLayer(query, items, details, options) {
     var asked = askedTokensFor(query, options);
-    var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);
+    var deep = !!(options && options.deep);
+    var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, deep ? 20 : 8);
     /* 學生手冊 has day-school and 進修部 versions of the same rules; use 進修部 only when asked. */
     if (!/進修/.test(query) && ranked.some(function (row) { return !/進修部/.test(row.item.title || ""); })) {
       ranked = ranked.filter(function (row) { return !/進修部/.test(row.item.title || ""); });
     }
     if (ranked.length) {
-      var relevanceFloor = Math.max(8, ranked[0].score * 0.35);
-      ranked = ranked.filter(function (row) { return row.score >= relevanceFloor; }).slice(0, 5);
+      var relevanceFloor = Math.max(8, ranked[0].score * (deep ? 0.25 : 0.35));
+      ranked = ranked.filter(function (row) { return row.score >= relevanceFloor; }).slice(0, deep ? 12 : 5);
+      /* 深度判斷: a notice that covers every word of the subject beats one that covers part of it. */
+      if (deep && ranked.length > 1) {
+        var subject = deepWords(query);
+        if (subject.length) {
+          var cover = function (row) { var t = compact((row.item.title || "") + " " + detailText(row.detail)); return subject.filter(function (w) { return mentionsWord(t, w); }).length; };
+          var best = Math.max.apply(null, ranked.map(cover));
+          if (best >= 1) ranked = ranked.filter(function (row) { return cover(row) === best; }).concat(ranked.filter(function (row) { return cover(row) < best; })).slice(0, 12);
+        }
+      }
     }
     if (!query || !queryTokens.length || !ranked.length) return { status: "insufficient", query: query, summary: query && queryTokens.length ? insufficientSummary([], options && options.asOf, query, options && options.scopeLabel) : "請再多說一點，例如「期中考是哪幾天」或「獎學金怎麼申請」。", evidence: [], sources: [] };
     if(personalDataQuery(query))return personalDataAnswer(query,ranked,options);

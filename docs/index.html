@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://oppdhtnepjagdwovndra.supabase.co" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=115">
+<link rel="stylesheet" href="style.css?v=116">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -104,6 +104,7 @@
         <textarea id="assistantQuestion" rows="1" required maxlength="160" enterkeyhint="send" placeholder="問問學校的事，例如：書可以借多久？"></textarea>
         <div class="chat-box-foot">
           <label class="assistant-scope">範圍<select id="assistantScope"><option value="preferred">我的學校</option><option value="all">所有學校</option></select></label>
+          <button type="button" id="assistantDeep" class="chat-deep-toggle" aria-pressed="false" title="多讀幾則公告內文，比對每個關鍵字，並說明為什麼選這則">深度判斷</button>
           <button type="button" id="assistantSourcesToggle" class="chat-sources-toggle" aria-expanded="false" aria-controls="assistantSources" hidden>參考資料 <span id="assistantSourcesCount" class="chat-sources-count">0</span></button>
           <div id="mascotStage" class="mascot-stage"></div>
           <button id="assistantAsk" class="chat-send" type="submit" aria-label="送出問題"><span aria-hidden="true">↑</span></button>
@@ -433,13 +434,14 @@
 <script src="daily-brief.js?v=2"></script>
 <script src="search-taxonomy.js?v=56"></script>
 <script src="qa-synonyms.js?v=2"></script>
+<script src="qa-typo.js?v=1"></script>
 <script src="search-query.js?v=59"></script>
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
 <script src="announcement-tokens.js?v=1"></script>
 <script src="answer-composer.js?v=1"></script>
-<script src="assistant-qa.js?v=78"></script>
+<script src="assistant-qa.js?v=79"></script>
 <script src="weather.js?v=1"></script>
 <script src="announcement-sort.js?v=1"></script>
 <script src="google-calendar.js?v=1"></script>
@@ -448,7 +450,7 @@
 <script src="schedule-compare.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
 <script src="notification-state.js"></script>
-<script src="app.js?v=135"></script>
+<script src="app.js?v=136"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

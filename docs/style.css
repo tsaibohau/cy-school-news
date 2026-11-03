@@ -999,3 +999,19 @@ body.is-chat .foot { display: none; }
 .chat-box-foot .assistant-scope { flex: 0 1 auto; min-width: 0; }
 .chat-box-foot .assistant-scope select { min-width: 0; max-width: 34vw; }
 .chat-box-foot .assistant-scope { white-space: nowrap; }
+
+/* 深度判斷開關與判斷過程 */
+.chat-deep-toggle { flex: none; padding: 5px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--muted); font: inherit; font-size: 12.5px; line-height: 1.4; white-space: nowrap; cursor: pointer; }
+.chat-deep-toggle.is-on { border-color: var(--seal); background: var(--seal); color: #FBF4EA; }
+.chat-deep { margin-top: 12px; padding: 8px 12px; border: 1px dashed var(--line); border-radius: 10px; color: var(--muted); font-size: 13px; }
+.chat-deep summary { cursor: pointer; }
+.chat-deep ul { margin: 8px 0 0; padding-left: 18px; }
+.chat-deep li { margin: 4px 0; line-height: 1.5; }
+/* With the 深度判斷 button the footer is tight on phones: keep the school menu readable. */
+.chat-box-foot { gap: 6px; }
+.chat-box-foot .assistant-scope select { min-width: 84px; }
+@media (max-width: 430px) {
+  .chat-box-foot .assistant-scope { font-size: 0; gap: 0; }
+  .chat-box-foot .assistant-scope select { font-size: 13px; min-width: 76px; max-width: 30vw; }
+  .chat-deep-toggle, .chat-sources-toggle { padding: 5px 8px; }
+}
