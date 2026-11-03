@@ -2234,3 +2234,10 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - `notification-state.js` 直接放進頁面，少一次等候；預先連線 jsdelivr 和 Supabase。
 - 問校務：拆題後的「怎麼做」只用主題（學生證）比對 token，不再因為補上的「如何繳交」而對到無關的北港公告；單獨的「怎麼辦」不再當成「沒做會怎樣」。
 - 字型（Noto Serif TC 四種粗細，約 2 MB 以上）沒動：測試要求完整字重。
+
+## 2026-11-03 嘉女班級課表
+- 來源：嘉女官網「115學年度第一學期正式課表公告」寫的學校課表查詢系統 `https://classtable.cygsh.cy.edu.tw/classtable/`。不需登入；這個網站沒有 robots.txt，嘉女官網的 robots.txt 是全部允許。
+- `scraper/timetable_cygsh.py`：讀學期與班級清單，每班一個請求（間隔至少 1.5 秒），只存星期、節次、時間、科目，不存教師與教室。每週最多更新一次；任何一班讀不到就保留前一份資料。實測 115-1 共 51 班。
+- 排程：在每小時的工作流程加一個步驟（不改頻率；一週內已更新就直接略過）。
+- 前端：嘉女加上 `class_timetable` 能力，「今日」課表與問校務都讀得到；兩校都有 101 班，所以課表依查詢的學校或使用者自己的學校選擇。
+- 已知：`tests/test_school_registry_sync.py` 的歷史容量檢查在 main 上就失敗（資料量成長），與這次無關。
