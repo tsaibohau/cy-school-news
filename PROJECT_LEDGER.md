@@ -2222,3 +2222,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
   - 讀到的內文同步到受保護資料庫，公開檔只留標籤。
   - 每小時排程讀到的公告也會自動產生標籤。
 - **版本**：`announcement-tokens.js?v=1`、`assistant-qa.js?v=76`、`cy-news-v150`。
+
+## 2026-11-03 公告 token 補建：已 404 的頁面不再每輪重抓
+- 前 5 輪補建把 token 從 23 則補到 598 則（嘉中、嘉女共 3,986 則）。已回 404 的頁面因為還沒有 token，每輪都會被重新挑中排在最前面，第 5 輪 300 則裡有 266 則是失敗。
+- `select_token_targets` 跳過已回過一次 404（`link_missing_checks` ≥ 1）或連續失敗五次（`permanent_error`）的頁面，這些頁面交給 link_health 判斷是否下架，補建只讀還沒讀過的公告。

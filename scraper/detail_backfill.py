@@ -211,7 +211,11 @@ def select_token_targets(items, cap):
     makes the labels from the detail fetched here). Newest first, both schools in turn."""
     rows = [item for item in items
             if str(item.get("school") or "") in OCR_TARGET_SCHOOLS and item.get("url")
-            and not is_gone(item) and (item.get("tokens") or {}).get("v") != TOKEN_VERSION]
+            and not is_gone(item) and (item.get("tokens") or {}).get("v") != TOKEN_VERSION
+            # A page that already answered 404, or failed five times, waits for link_health to decide;
+            # retrying it every round would crowd out pages never read.
+            and not int(item.get("link_missing_checks") or 0)
+            and item.get("detail_status") != "permanent_error"]
     rows.sort(key=_cursor_key, reverse=True)
     return _round_robin(rows)[:cap]
 
