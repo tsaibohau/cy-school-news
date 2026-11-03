@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-03T18:06:03+08:00",
+ "generated_at": "2026-11-03T18:21:05+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -1764,11 +1764,11 @@
    "label": "分類公告",
    "status": "ok",
    "depth": 0,
-   "checked_at": "2026-11-03T18:06:01+08:00",
+   "checked_at": "2026-11-03T18:21:00+08:00",
    "path": [
     "分類公告"
    ],
-   "changed_at": "2026-11-03T18:06:01+08:00",
+   "changed_at": "2026-11-03T18:21:00+08:00",
    "content_hash": "6610816df4e2ea131a37e919543f15de0131ee6b8e2985ffeeacfe06cfc53974",
    "doc_links": [],
    "keywords": [
@@ -1815,7 +1815,7 @@
    ],
    "attachments_pending": false,
    "detail_ref": "data/details/hlvs/hlvs-info-6224085141396.json",
-   "detail_revision": "9d220b0d28adc4aaa8c9caa290559469083080908ec1ade40a9a3773af520d4e",
+   "detail_revision": "19d0ef2f9674bd90be3d05a9b920570072f14d9e902e20b30f7c33025fdde079",
    "detail_status": "parsed",
    "attachments": [],
    "tokens": {
@@ -2315,8 +2315,248 @@
    "page_id": 39957022014548,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=63686",
    "label": "重要公告",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:21:03+08:00",
+   "path": [
+    "重要公告"
+   ],
+   "changed_at": "2026-11-03T18:21:03+08:00",
+   "content_hash": "4f9b371c87cab33b9232072c0f066db066e11dfecd4c63c138a8c965d157d1a7",
+   "doc_links": [],
+   "keywords": [
+    "學測",
+    "模擬考",
+    "報到",
+    "報名",
+    "宣導",
+    "段考",
+    "考試",
+    "補修",
+    "重補修",
+    "上課地點",
+    "分發",
+    "多元選修",
+    "晚自習",
+    "社團",
+    "第一次段考",
+    "選修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-39957022014548.json",
+   "detail_revision": "a4c239e90b93d308869290ff6aeb62f2ec253e3f03c0ad3f4eca3b6eeb61933e",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "段考",
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1921-12-10"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "段考",
+       "考試",
+       "#exam",
+       "#midterm"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "晚自習",
+       "家長",
+       "#study_hall"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "模擬考",
+       "學測",
+       "報名",
+       "#mock",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "多元選修",
+       "#admission",
+       "#elective"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "輔導室",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience",
+       "required"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "模擬考",
+       "學測",
+       "考試",
+       "#exam",
+       "#mock",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     }
+    ]
+   }
   },
   "95361407642114": {
    "page_id": 95361407642114,
@@ -4326,7 +4566,7 @@
    ],
    "documents": [],
    "detail_ref": "data/details/hlvs/hlvs-info-6224085141396.json",
-   "detail_revision": "9d220b0d28adc4aaa8c9caa290559469083080908ec1ade40a9a3773af520d4e",
+   "detail_revision": "19d0ef2f9674bd90be3d05a9b920570072f14d9e902e20b30f7c33025fdde079",
    "detail_status": "parsed",
    "tokens": {
     "v": 1,
@@ -4902,6 +5142,250 @@
    "detail_ref": "data/details/hlvs/hlvs-info-35603066307103.json",
    "detail_revision": "6a3a2c40d232e64f1e8c341e37cabe69640ab75d9c2570898d9aac9d6cce3f77",
    "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-39957022014548",
+   "kind": "school_info",
+   "title": "重要公告",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=63686",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "學測",
+    "模擬考",
+    "報到",
+    "報名",
+    "宣導",
+    "段考",
+    "考試",
+    "補修",
+    "重補修",
+    "上課地點",
+    "分發",
+    "多元選修",
+    "晚自習",
+    "社團",
+    "第一次段考",
+    "選修"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-39957022014548.json",
+   "detail_revision": "a4c239e90b93d308869290ff6aeb62f2ec253e3f03c0ad3f4eca3b6eeb61933e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "段考",
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1921-12-10"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "段考",
+       "考試",
+       "#exam",
+       "#midterm"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "晚自習",
+       "家長",
+       "#study_hall"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "模擬考",
+       "學測",
+       "報名",
+       "#mock",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "多元選修",
+       "#admission",
+       "#elective"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "輔導室",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience",
+       "required"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "模擬考",
+       "學測",
+       "考試",
+       "#exam",
+       "#mock",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-info-62796428066927",
@@ -6773,5 +7257,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-03T18:06:03+08:00"
+ "last_run_at": "2026-11-03T18:21:05+08:00"
 }

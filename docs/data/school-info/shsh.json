@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-03T18:06:10+08:00",
+ "generated_at": "2026-11-03T18:21:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -1558,14 +1558,14 @@
     "網站導覽"
    ],
    "order": 28,
-   "checked_at": "2026-11-03T18:06:09+08:00",
+   "checked_at": "2026-11-03T18:21:11+08:00",
    "path": [
     "行政單位",
     "校長室",
     "歷任校長",
     "陳憲一校長"
    ],
-   "changed_at": "2026-11-03T18:06:09+08:00",
+   "changed_at": "2026-11-03T18:21:11+08:00",
    "content_hash": "b47838009fbcf58e581335f76a2fcbf0a5b0b85b94ad38619c3bbb8c89f665d8",
    "doc_links": [],
    "keywords": [
@@ -1574,7 +1574,7 @@
    ],
    "attachments_pending": false,
    "detail_ref": "data/details/shsh/shsh-info-63310810732030.json",
-   "detail_revision": "f06342bbe75914eac7fb3bf1277d5bfcdd5941d3427006b1812e12415ba136e8",
+   "detail_revision": "ba9e5b1461e1f5d93ed8ea27f192334c72faf78d8eb39f4e5d8e2fcb3ea1e24b",
    "detail_status": "parsed",
    "attachments": [],
    "tokens": {
@@ -1671,12 +1671,100 @@
    "page_id": 122330239867351,
    "url": "https://www.shsh.ylc.edu.tw/office/div_100/all_principals/%e4%b8%81%e6%8c%af%e6%ba%90%e6%a0%a1%e9%95%b7/",
    "label": "丁振源校長",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 29
+   "order": 29,
+   "checked_at": "2026-11-03T18:21:13+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "歷任校長",
+    "丁振源校長"
+   ],
+   "changed_at": "2026-11-03T18:21:13+08:00",
+   "content_hash": "6542bdcb916115dd54d06024716ffa59c9b982393e55fa7d47b56a4c79396d45",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "升學",
+    "圖書館",
+    "志願"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-122330239867351.json",
+   "detail_revision": "d47434e78cb8f718ccf4c574194879fa0379bde962cfc4f53c9893bd118c0e8e",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "總務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "升學",
+       "#admission",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "志願",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "午餐"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   "237235671191244": {
    "page_id": 237235671191244,
@@ -3917,7 +4005,7 @@
    ],
    "documents": [],
    "detail_ref": "data/details/shsh/shsh-info-63310810732030.json",
-   "detail_revision": "f06342bbe75914eac7fb3bf1277d5bfcdd5941d3427006b1812e12415ba136e8",
+   "detail_revision": "ba9e5b1461e1f5d93ed8ea27f192334c72faf78d8eb39f4e5d8e2fcb3ea1e24b",
    "detail_status": "parsed",
    "tokens": {
     "v": 1,
@@ -4623,6 +4711,95 @@
       "t": [],
       "k": [
        "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-info-122330239867351",
+   "kind": "school_info",
+   "title": "校長室 › 歷任校長 › 丁振源校長",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_100/all_principals/%e4%b8%81%e6%8c%af%e6%ba%90%e6%a0%a1%e9%95%b7/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "升學",
+    "圖書館",
+    "志願"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-122330239867351.json",
+   "detail_revision": "d47434e78cb8f718ccf4c574194879fa0379bde962cfc4f53c9893bd118c0e8e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "總務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "升學",
+       "#admission",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "志願",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "午餐"
+      ],
+      "k": [
+       "audience"
       ]
      }
     ]
@@ -5766,5 +5943,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T18:06:10+08:00"
+ "last_run_at": "2026-11-03T18:21:15+08:00"
 }
