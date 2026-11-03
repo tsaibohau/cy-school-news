@@ -15,7 +15,6 @@ from scrape import UA  # noqa: E402
 
 ORIGIN = "https://www.cygsh.cy.edu.tw"
 PAGES = [ORIGIN + "/p/406-1013-186482,r508.php",   # 115-1 正式課表公告
-         ORIGIN + "/p/406-1013-186383,r508.php",   # 115-1 試行課表
          ORIGIN + "/p/412-1013-1779.php",           # 教務處 › 教學組 › 線上課表
          ORIGIN + "/p/412-1013-1765.php"]           # 功能快捷選單 › 線上課表
 WANT = re.compile(r"課表|課程表|timetable|schedule|\.pdf|\.xlsx?|\.ods|\.html?$|drive\.google|docs\.google|kebiao|class", re.I)
@@ -51,6 +50,11 @@ for page in PAGES:
     m = re.search(r'<div[^>]+class="[^"]*(?:mpgdetail|module-detail|art-text|mptattach)[^"]*"[\s\S]*', main)
     region = m.group(0)[:60000] if m else main
     every = anchors(main, page)
+    plain = re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)[\s\S]*?</\1>", " ", main, flags=re.I))
+    print("  urls in text:", sorted(set(re.findall(r"https?://[\w./?=&%#:-]+", plain)))[:15])
+    for word in ("校務行政", "1campus", "登入", "Google", "雲端", "附件", "下載", "PDF", "首頁", "線上課表", "課表查詢", "img", "圖"):
+        print("  has", word, word in plain)
+    print("  images in content:", len(re.findall(r"<img\b[^>]+/var/file/13/1013/img", main, re.I)))
     skip = re.compile(r"/p/40[34]-|/p/412-|javascript:|#|mailto:|facebook|instagram|youtube|line\.me|/app/index\.php|Lang=|/p/1[0-9]{2}-1013|/var/file/13/1013/msys|rss", re.I)
     print("  all links:", len(every))
     for tag, url, label in every:
