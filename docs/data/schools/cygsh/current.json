@@ -807,7 +807,7 @@
    "category": "一般",
    "first_seen": "2026-11-03T11:55:01+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 8,
+   "detail_attempts": 9,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -30748,7 +30748,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-09-11T13:56:35+08:00",
    "detail_status": "empty",
-   "detail_attempts": 7,
+   "detail_attempts": 8,
    "summary_version": "extractive-v4"
   },
   {
@@ -30762,7 +30762,7 @@
    "category": "競賽",
    "first_seen": "2026-09-11T13:56:35+08:00",
    "detail_status": "empty",
-   "detail_attempts": 7,
+   "detail_attempts": 8,
    "summary_version": "extractive-v4"
   },
   {
@@ -30797,7 +30797,7 @@
    "category": "競賽",
    "first_seen": "2026-09-11T13:56:35+08:00",
    "detail_status": "empty",
-   "detail_attempts": 7,
+   "detail_attempts": 8,
    "summary_version": "extractive-v4"
   },
   {
@@ -43130,7 +43130,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-12T13:52:01+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 6,
+   "detail_attempts": 7,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -49864,7 +49864,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "summary_version": "extractive-v4"
   },
   {
@@ -51889,7 +51889,7 @@
    "category": "教職員",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "summary_version": "extractive-v4"
   },
   {
@@ -51940,7 +51940,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "summary_version": "extractive-v4"
   },
   {
@@ -52224,7 +52224,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "summary_version": "extractive-v4"
   },
   {
@@ -52320,7 +52320,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "summary_version": "extractive-v4"
   },
   {
@@ -56347,8 +56347,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2,
@@ -57228,8 +57228,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -57731,8 +57731,130 @@
    "category": "教職員",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
-   "summary_version": "extractive-v4"
+   "detail_attempts": 2,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 94,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 96,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 103,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 116,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 218,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 219,
+      "t": [
+       "借期",
+       "#library"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-08-01",
+       "2027-07-31"
+      ]
+     },
+     {
+      "s": 220,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 224,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-07-23"
+      ]
+     },
+     {
+      "s": 225,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 226,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 227,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-186068",
@@ -57760,9 +57882,231 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 96,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 97,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 98,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 99,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-06-04"
+      ]
+     },
+     {
+      "s": 116,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 123,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-06-08"
+      ]
+     },
+     {
+      "s": 218,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 220,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 221,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 222,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 223,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 228,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 234,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-06-04"
+      ]
+     },
+     {
+      "s": 243,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-06-04"
+      ]
+     },
+     {
+      "s": 247,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 248,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 250,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 253,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 255,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 258,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 259,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 265,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 269,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 272,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 274,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 275,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-186059",
@@ -57925,8 +58269,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -57965,8 +58309,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -58989,8 +59333,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -59724,8 +60068,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2
@@ -59816,8 +60160,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -59876,8 +60220,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -62644,7 +62988,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T20:04:51+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4"
   },
   {
@@ -62658,7 +63002,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T20:04:51+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4",
    "audience": {
     "grades": [],
@@ -62861,7 +63205,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4"
   },
   {
@@ -65423,7 +65767,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4"
   },
   {
@@ -65480,7 +65824,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4"
   },
   {
@@ -66258,7 +66602,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 2,
+   "detail_attempts": 3,
    "summary_version": "extractive-v4"
   },
   {
@@ -66373,7 +66717,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 2,
+   "detail_attempts": 3,
    "summary_version": "extractive-v4"
   },
   {
@@ -66387,7 +66731,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "empty",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "summary_version": "extractive-v4"
   },
   {
@@ -66583,7 +66927,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4"
   },
   {
@@ -66842,7 +67186,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "empty",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "summary_version": "extractive-v4"
   },
   {
@@ -67159,7 +67503,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4"
   },
   {
@@ -67173,7 +67517,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4"
   },
   {
@@ -67322,7 +67666,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "empty",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "summary_version": "extractive-v4"
   },
   {
