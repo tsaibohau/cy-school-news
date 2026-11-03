@@ -7527,7 +7527,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-10-22T21:44:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 20,
+   "detail_attempts": 21,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -11833,7 +11833,7 @@
    "category": "一般",
    "first_seen": "2026-10-20T15:29:12+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 19,
+   "detail_attempts": 20,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -23966,7 +23966,7 @@
    "category": "競賽",
    "first_seen": "2026-10-02T17:41:48+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 18,
+   "detail_attempts": 19,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -24682,7 +24682,7 @@
    "category": "競賽",
    "first_seen": "2026-10-02T17:41:48+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 18,
+   "detail_attempts": 19,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -28254,7 +28254,7 @@
    "category": "競賽",
    "first_seen": "2026-09-22T15:40:52+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 17,
+   "detail_attempts": 18,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -49749,7 +49749,7 @@
    "category": "研習活動",
    "first_seen": "2026-09-01T14:30:21+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 14,
+   "detail_attempts": 15,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -49889,7 +49889,7 @@
    "category": "一般",
    "first_seen": "2026-09-01T08:34:52+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 14,
+   "detail_attempts": 15,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -58785,7 +58785,7 @@
    "category": "教職員",
    "first_seen": "2026-08-14T13:18:38+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 13,
+   "detail_attempts": 14,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -59123,7 +59123,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-13T16:06:36+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 13,
+   "detail_attempts": 14,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -60429,7 +60429,41 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-136167,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-09-17",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "899dc8c7dec1ed2ccf7a4e8b91bc1a8e7511a338abe7dc683369e24c9aebe321"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-09-17"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-136157",
@@ -60751,7 +60785,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 2,
+   "detail_attempts": 3,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -60870,8 +60904,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1
@@ -62052,7 +62086,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-136104,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-136098",
@@ -63133,8 +63171,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1,
@@ -63194,8 +63232,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "event",
@@ -63914,8 +63952,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -64189,9 +64227,9 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "detail_attempts": 2,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cysh-136028",
@@ -64202,7 +64240,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-136028,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-136021",
@@ -64689,8 +64731,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -64745,7 +64787,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-136019,r173.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "cysh-136007",
@@ -64895,8 +64941,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -65275,8 +65321,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -65303,8 +65349,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -65351,7 +65397,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135999,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-135993",
@@ -65958,8 +66008,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -66197,9 +66247,9 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "detail_attempts": 2,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cysh-135976",
@@ -66213,8 +66263,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -66279,8 +66329,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -66379,12 +66429,23 @@
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135967,r122.php",
    "category": "競賽",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
    "audience": {
     "grades": [
      2
     ],
     "classes": [],
     "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
    }
   },
   {
@@ -66397,12 +66458,23 @@
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135970,r122.php",
    "category": "競賽",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
    "audience": {
     "grades": [
      3
     ],
     "classes": [],
     "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
    }
   },
   {
@@ -66415,6 +66487,10 @@
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135971,r122.php",
    "category": "競賽",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00",
    "audience": {
     "grades": [
      3
@@ -66432,7 +66508,31 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135965,r122.php",
    "category": "榮譽榜",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-07-13",
+       "2026-07-12"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-135956",
@@ -66744,7 +66844,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135948,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-135944",
@@ -67214,7 +67318,36 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135937,r122.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest",
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "颱風假",
+       "#contest",
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-08",
+       "2026-07-11",
+       "2026-07-12"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-135918",
@@ -67661,8 +67794,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -68800,8 +68933,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -68966,8 +69099,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -71423,8 +71556,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -73198,8 +73331,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -73655,8 +73788,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -73880,7 +74013,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -73958,7 +74091,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135810,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-135809",
@@ -73969,7 +74106,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135809,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-135801",
@@ -74021,8 +74162,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -75397,9 +75538,9 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "detail_attempts": 2,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cysh-135800",
@@ -75413,8 +75554,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1,
@@ -75483,8 +75624,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2,
@@ -75926,8 +76067,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -75977,8 +76118,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1,
@@ -76027,7 +76168,97 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135742,r122.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-06-23",
+       "2026-06-17"
+      ],
+      "g": [
+       2,
+       3
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ],
+      "d": [
+       "2026-07-07",
+       "2026-07-10"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-06-22"
+      ],
+      "g": [
+       2,
+       3
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-135772",
@@ -76720,8 +76951,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -76905,8 +77136,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -76957,8 +77188,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2,
@@ -77084,7 +77315,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -77166,8 +77397,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -77268,7 +77499,29 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135739,r18.php",
    "category": "升學",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#admission",
+     "#scholarship",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-135731",
@@ -78325,8 +78578,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -78966,7 +79219,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135707,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-135487",
@@ -78977,7 +79234,61 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135487,r122.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1,
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-06-15"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-06-22"
+      ],
+      "g": [
+       1,
+       2,
+       3
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-135700",
@@ -79468,8 +79779,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -80008,7 +80319,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -80592,8 +80903,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -80753,7 +81064,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135666,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-135648",
@@ -81201,7 +81516,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -81217,8 +81532,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -82322,7 +82637,7 @@
    "category": "招生編班",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -82338,8 +82653,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -82658,7 +82973,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135617,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-135606",
@@ -83621,8 +83940,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -83691,8 +84010,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -85910,8 +86229,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -86016,8 +86335,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -86692,8 +87011,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -87736,8 +88055,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -88111,8 +88430,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -88674,8 +88993,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -90113,8 +90432,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2,
@@ -92136,8 +92455,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -92224,7 +92543,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135438,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-135411",
@@ -92939,8 +93262,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -93743,8 +94066,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -93773,8 +94096,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -93804,9 +94127,9 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "detail_attempts": 2,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cysh-135400",
@@ -93820,8 +94143,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -93983,8 +94306,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -95201,8 +95524,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2,
@@ -95242,8 +95565,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -95450,7 +95773,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135336,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-135329",
@@ -95609,8 +95936,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -95734,7 +96061,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135313,r17.php",
    "category": "榮譽榜",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "cysh-135275",
@@ -96873,8 +97204,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1
@@ -97037,7 +97368,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 10,
+   "detail_attempts": 11,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -97115,7 +97446,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -97246,8 +97577,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -98080,7 +98411,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -98093,7 +98424,18 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135163,r17.php",
    "category": "榮譽榜",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cysh-135117",
@@ -98119,7 +98461,26 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135112,r324.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-135104",
@@ -98236,8 +98597,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1
@@ -98302,8 +98663,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -98355,8 +98716,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -98412,8 +98773,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -99432,7 +99793,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-135035,r17.php",
    "category": "榮譽榜",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "cysh-135017",
@@ -99733,8 +100098,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -99773,8 +100138,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -99818,8 +100183,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1
@@ -100185,8 +100550,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1,
@@ -100726,8 +101091,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -101005,7 +101370,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "empty",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "summary_version": "extractive-v4"
   },
   {
@@ -101020,8 +101385,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2,
@@ -101073,7 +101438,18 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134874,r17.php",
    "category": "榮譽榜",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cysh-135575",
@@ -101396,8 +101772,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -101538,7 +101914,362 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-133880,r174.php",
    "category": "升學",
-   "first_seen": "2026-08-11T12:52:49+08:00"
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1,
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ],
+      "d": [
+       "2025-11-21"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "繳交",
+       "#grading"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2025-11-01",
+       "2026-02-24",
+       "2026-03-09",
+       "2026-07-24"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-12-01",
+       "2026-03-03",
+       "2026-03-09",
+       "2025-07-31"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-12-01",
+       "2026-09-01"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "自主學習",
+       "微課程",
+       "社團",
+       "繳交",
+       "#club",
+       "#microcourse",
+       "#remedial",
+       "#self_learning"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2025-11-01",
+       "2026-09-01"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-11-01",
+       "2026-09-01"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "社團",
+       "繳交",
+       "#club"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "開學"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-02-23"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ],
+      "d": [
+       "2026-03-30"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "繳交",
+       "#grading"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2025-11-01",
+       "2026-02-24",
+       "2026-03-09",
+       "2026-04-07"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-12-01",
+       "2026-03-03",
+       "2026-03-09",
+       "2026-04-12"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-12-01",
+       "2026-04-12"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-13",
+       "2026-04-15"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "自主學習",
+       "微課程",
+       "社團",
+       "繳交",
+       "#club",
+       "#microcourse",
+       "#remedial",
+       "#self_learning"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2025-11-01",
+       "2026-04-12"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-11-01",
+       "2026-04-12"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-13",
+       "2026-04-15"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "社團",
+       "繳交",
+       "#club"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-13",
+       "2026-04-15"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-13",
+       "2026-04-15"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "開學"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-02-23"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "申請入學",
+       "繳交",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       3
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134829",
@@ -101597,7 +102328,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134810,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-134797",
@@ -101800,7 +102535,31 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134795,r147.php",
    "category": "招生編班",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "考試",
+       "#exam"
+      ],
+      "k": [],
+      "d": [
+       "2026-03-25"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134775",
@@ -102327,7 +103086,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -102341,12 +103100,42 @@
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134779,r17.php",
    "category": "榮譽榜",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
    "audience": {
     "grades": [],
     "classes": [
      "218"
     ],
     "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [],
+      "d": [
+       "2026-03-24",
+       "2026-03-30"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
    }
   },
   {
@@ -102361,8 +103150,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -102411,8 +103200,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -102497,7 +103286,18 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134765,r147.php",
    "category": "招生編班",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cysh-134746",
@@ -102510,7 +103310,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -102678,7 +103478,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134737,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-134736",
@@ -102689,7 +103493,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134736,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-134716",
@@ -102702,7 +103510,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -102858,8 +103666,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -103051,8 +103859,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -103306,7 +104114,30 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134672,r17.php",
    "category": "榮譽榜",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [],
+      "d": [
+       "2026-03-16"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134664",
@@ -103863,8 +104694,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -104178,7 +105009,18 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134581,r17.php",
    "category": "榮譽榜",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cysh-134568",
@@ -104246,7 +105088,255 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134567,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-02-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "12a828fbe7acc019674f30cc5dd75cf83684163e9fbbecb32b99af2ab1214c59"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "獎學金",
+       "家長",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "penalty",
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ],
+      "d": [
+       "2026-02-23",
+       "2026-03-11"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "教務處",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134552",
@@ -104260,8 +105350,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -104363,8 +105453,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -104437,8 +105527,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -104479,8 +105569,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -104513,12 +105603,31 @@
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134548,r17.php",
    "category": "榮譽榜",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
    "audience": {
     "grades": [],
     "classes": [
      "317"
     ],
     "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
    }
   },
   {
@@ -104767,8 +105876,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -104808,8 +105917,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -104930,7 +106039,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -104977,8 +106086,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -105007,7 +106116,216 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134469,r439.php",
    "category": "段考考試",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [],
+    "classes": [
+     "318"
+    ],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學測",
+     "#national"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學測",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學測",
+       "考試",
+       "升學",
+       "#admission",
+       "#exam",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-02-25"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "特殊選才",
+       "學測",
+       "升學",
+       "#admission",
+       "#national",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "學測",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "升學",
+       "#admission",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "學測",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學測",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "志願",
+       "#admission",
+       "#national",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "學測",
+       "#national",
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "學測",
+       "#national",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "導師",
+       "家長",
+       "志工",
+       "#volunteer"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "學測",
+       "志願",
+       "開學",
+       "升學",
+       "#admission",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "繁星",
+       "申請入學",
+       "家長",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "教務處",
+       "手機",
+       "#device",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134440",
@@ -105448,7 +106766,26 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134456,r184.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134428",
@@ -105461,7 +106798,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -105519,7 +106856,35 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134424,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-02-13",
+       "2026-03-23"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134411",
@@ -105807,7 +107172,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -105823,8 +107188,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -105926,7 +107291,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -105939,7 +107304,255 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134362,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-02-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b71dbfacd81ab2ef4bff05c3396fe599ab64c886da2fa17d73ec926c56c31356"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "獎學金",
+       "家長",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "penalty",
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ],
+      "d": [
+       "2026-02-23",
+       "2026-03-11"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "教務處",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134355",
@@ -105953,8 +107566,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -106220,7 +107833,26 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134342,r184.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134339",
@@ -106483,8 +108115,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1
@@ -106556,7 +108188,40 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134307,r18.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-31",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "c5dfa77a60b5908a1cb9e07e851bbf31377530048c93f7b17a10957f5e9968c8"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "獎學金",
+       "截止",
+       "#scholarship"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134283",
@@ -106608,7 +108273,36 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134289,r184.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "考試",
+     "#exam",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-01-29",
+       "2025-01-31"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134279",
@@ -106621,7 +108315,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 9,
+   "detail_attempts": 10,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -106918,7 +108612,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -106933,7 +108627,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -107194,9 +108888,9 @@
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "detail_attempts": 2,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cysh-134591",
@@ -107684,7 +109378,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -107866,9 +109560,9 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "detail_attempts": 2,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cysh-134204",
@@ -108511,8 +110205,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -108733,8 +110427,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -109793,7 +111487,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -109890,7 +111584,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -110262,7 +111956,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -110542,8 +112236,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -110575,7 +112269,30 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134021,r21.php",
    "category": "研習活動",
-   "first_seen": "2026-08-11T12:52:49+08:00"
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "志工",
+     "#health",
+     "#volunteer"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "志工",
+       "#health",
+       "#volunteer"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134022",
@@ -110589,8 +112306,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -111471,7 +113188,36 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-133965,r21.php",
    "category": "生活學務",
-   "first_seen": "2026-08-11T12:52:49+08:00"
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#health",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2025-12-19",
+       "2025-12-24",
+       "2026-01-01"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-133928",
@@ -112318,7 +114064,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -112333,7 +114079,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -113201,7 +114947,25 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-133745,r21.php",
    "category": "研習活動",
-   "first_seen": "2026-08-11T12:52:49+08:00"
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-133492",
@@ -113766,7 +115530,72 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-133677,r21.php",
    "category": "研習活動",
-   "first_seen": "2026-08-11T12:52:49+08:00"
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-133671",
@@ -113972,7 +115801,31 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-133643,r21.php",
    "category": "研習活動",
-   "first_seen": "2026-08-11T12:52:49+08:00"
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "生活"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-01-01"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-133862",
@@ -114034,7 +115887,30 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-133611,r136.php",
    "category": "榮譽榜",
-   "first_seen": "2026-08-11T12:52:49+08:00"
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [],
+      "d": [
+       "2025-11-13"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-133610",
@@ -114703,7 +116579,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-133569,r21.php",
    "category": "研習活動",
-   "first_seen": "2026-08-11T12:52:49+08:00"
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-133565",
@@ -114784,7 +116664,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-133523,r21.php",
    "category": "研習活動",
-   "first_seen": "2026-08-11T12:52:49+08:00"
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T16:11:10+08:00"
   },
   {
    "id": "cysh-133505",
