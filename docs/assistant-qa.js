@@ -1179,6 +1179,32 @@
   }
   /* School pages and handbook chapters (scraper/school_info.py, school_handbook.py). */
   function isSchoolDoc(item) { return !!item && (item.kind === "school_handbook" || item.kind === "school_info"); }
+  /* Penalties (記過、警告、愛校服務…) are written only in the handbook's 獎懲 chapters, whose titles never
+     name the act (遲到、打架、段考). A question about what happens must always read those chapters. */
+  var PENALTY_ASK = /會怎樣|會怎麼樣|會如何|後果|下場|記過|記(?:幾|一|兩)?支|被記|處罰|懲處|處分|懲罰|被罰|罰則|扣分|警告|申誡|小過|大過|退學|留校察看|違規|愛校服務/;
+  var PENALTY_DOC = /獎懲規定|獎懲辦法|懲處|改過銷過|銷過|愛校服務/;
+  function asksPenalty(query) { return PENALTY_ASK.test(clean(query)); }
+  function penaltyDocs(items, query) {
+    var evening = /進修|夜間部/.test(query || "");
+    return (items || []).filter(function (item) {
+      var title = clean(item && item.title || "");
+      return isSchoolDoc(item) && PENALTY_DOC.test(title) && !/委員會|獎勵標準|績優獎勵/.test(title) && (evening || !/進修部/.test(title));
+    });
+  }
+  /* Which documents to read in full before answering (their text is fetched one by one):
+     the best-ranked handbook chapters and notices, plus the 獎懲 chapters for a penalty question. */
+  function readList(question, items, options) {
+    var docs = (items || []).filter(isSchoolDoc), notices = (items || []).filter(function (item) { return item && !isSchoolDoc(item); });
+    var per = options && options.deep ? 15 : 6, seen = {}, out = [];
+    var fixed = Typo ? Typo.fix(question).query : question;
+    function add(item) { var id = item && String(item.id); if (id && !seen[id]) { seen[id] = true; out.push(item); } }
+    unique([question, fixed]).forEach(function (q) {
+      rank(q, docs, {}, options).slice(0, per).forEach(function (row) { add(row.item); });
+      rank(q, notices, {}, options).slice(0, per).forEach(function (row) { add(row.item); });
+    });
+    if (asksPenalty(question) || asksPenalty(fixed)) penaltyDocs(docs, question).forEach(add);
+    return out;
+  }
   /* Rules are numbered (一、 (一) 1. 第三條) or are timetable rows (12:35-13:10 午休). */
   var CLAUSE_START = /^\s*(?:[一二三四五六七八九十]+、|[壹貳參肆伍陸柒捌玖拾]+、|[（(][一二三四五六七八九十]+[)）]|\d{1,2}[.、](?!\d)|第[一二三四五六七八九十百]+條|※|\d{1,2}:\d{2})/;
   var RULE_SKIP = /^(?:[一二三四五六七八九十]+、|[壹貳參肆伍陸柒捌玖拾]+、|第[一二三四五六七八九十]+條\s*)?(?:實施)?依據|經校務會議.*(?:實施|修正)|^本(?:要點|辦法|規定|細則)(?:經|自)/;
@@ -1218,8 +1244,15 @@
     return (record && record.attachments || []).map(function (a) { return a && a.embedded_text || ""; }).join("\n") ||
       (record && record.blocks || []).map(function (b) { return b && (b.text || (b.items || []).join("\n") || (b.rows || []).map(function (r) { return (r || []).join(" "); }).join("\n")) || ""; }).join("\n");
   }
+  /* 「抽菸會記幾支過」: the planner leaves unknown words as one phrase; split it on question and
+     filler words, and read 「記幾支過」 as 記過. */
+  var RULE_FILLER = /會不會被|會不會|會被|會怎麼樣|會怎樣|怎麼樣|怎樣|怎麼|如何|為什麼|可不可以|可以|能不能|能否|要不要|有沒有|是不是|是否|嗎|呢|吧|啊|幾支|幾次|幾個|多少|會|被|要|的/g;
   function ruleTerms(query) {
+    query = clean(query).replace(/記(?:幾|一|兩|二|三|多少)(?:支|次|個)?過/g, "記過");
     var plan = SearchQuery && SearchQuery.queryPlan ? SearchQuery.queryPlan(query) : { term_matches: [], remainder_terms: [] };
+    plan = Object.assign({}, plan, { remainder_terms: [].concat.apply([], (plan.remainder_terms || []).map(function (t) {
+      return String(t).replace(RULE_FILLER, " ").split(/\s+/).filter(function (x) { return x.length >= 2; });
+    })) });
     var topics = SearchQuery && SearchQuery.taxonomyTopics ? SearchQuery.taxonomyTopics() : [], literal = [], related = [], rest = [];
     (plan.term_matches || []).forEach(function (row) {
       if (row.kind !== "topic") { rest.push(compact(row.term)); return; }
@@ -1277,7 +1310,7 @@
     var terms = ruleTerms(query);
     if (!terms.literal.length && !terms.rest.length) return null;
     var best = null;
-    ranked.slice(0, 8).forEach(function (row, position) {
+    ranked.slice(0, 12).forEach(function (row, position) {
       if (!isSchoolDoc(row.item) || !details[row.item.id]) return;
       var title = clean(row.item.title || ""), compactTitle = compact(title);
       var linkLabels = {};
@@ -2167,9 +2200,16 @@
   function penaltySentence(part, overview, items, details, options) {
     var forms = (Synonyms ? Synonyms.concepts(part.subject) : [part.subject]).filter(function (f) { return f.length >= 2; });
     var rows = rank(part.subject, items, details, options).slice(0, 8);
+    /* Penalties are written in the handbook: its 獎懲 chapters are read first, then the subject's
+       own chapters, and notices only when the handbook says nothing. */
+    var ranked = {}; rows.forEach(function (row) { ranked[row.item.id] = true; });
+    penaltyDocs(items, part.subject).forEach(function (item) { if (!ranked[item.id] && (details || {})[item.id]) rows.push({ item: item, detail: details[item.id], penaltyDoc: true }); });
+    var docFirst = function (row) { return row.penaltyDoc ? 0 : isSchoolDoc(row.item) ? 1 : 2; };
+    rows = rows.map(function (row, i) { return { row: row, i: i }; }).sort(function (a, b) { return docFirst(a.row) - docFirst(b.row) || a.i - b.i; }).map(function (x) { return x.row; });
     var pool = [];
+    rows.forEach(function (row) { if (isSchoolDoc(row.item)) detailSegments(row.detail || (details || {})[row.item.id]).forEach(function (seg) { pool.push({ text: seg.text, id: row.item.id, about: true }); }); });
     (overview.evidence || []).forEach(function (row) { pool.push({ text: row.text, id: row.announcement_id }); });
-    rows.forEach(function (row) { detailSegments(row.detail || (details || {})[row.item.id]).forEach(function (seg) { pool.push({ text: seg.text, id: row.item.id, about: true }); }); });
+    rows.forEach(function (row) { if (!isSchoolDoc(row.item)) detailSegments(row.detail || (details || {})[row.item.id]).forEach(function (seg) { pool.push({ text: seg.text, id: row.item.id, about: true }); }); });
     /* A penalty sentence that names the subject (考試舞弊者，記大過) beats one that only sits in the
        same document (記大過以上通知家長). A list item counts with its heading (記小過：(一)考試…). */
     var hit = null, loose = null;
@@ -2316,7 +2356,8 @@
     var ruled = personalDataQuery(query) ? null : ruleLayer(query, all.filter(isSchoolDoc), details, options);
     /* A rule chapter that only mentions the subject in passing (〈圖書館閱覽規定〉 says the library
        closes on 段考 days) is not the answer to 「什麼時候段考」. */
-    if (ruled && ruled.mode === "rule" && !chapterAbout(ruled.sources && ruled.sources[0], query)) ruled = null;
+    if (ruled && ruled.mode === "rule" && !chapterAbout(ruled.sources && ruled.sources[0], query) &&
+        !(asksPenalty(query) && penaltyDocs(ruled.sources || [], query).length)) ruled = null;
     var layers = {
       rule: ruled,
       calendar: calendar,
@@ -2368,6 +2409,11 @@
     if (!docs.length) return null;
     var ranked = rank(query, docs, details, options).slice(0, 8);
     if (!/進修/.test(query)) ranked = ranked.filter(function (row) { return !/進修部/.test(row.item.title || ""); });
+    /* 「遲到會被記過嗎」: the answer is in 〈學生獎懲規定〉 even though its title says nothing about 遲到. */
+    if (asksPenalty(query)) {
+      var have = {}; ranked.forEach(function (row) { have[row.item.id] = true; });
+      penaltyDocs(docs, query).forEach(function (item) { if (!have[item.id] && (details || {})[item.id]) ranked.push({ item: item, detail: details[item.id], score: 0, penaltyDoc: true }); });
+    }
     return ruleAnswer(query, ranked, details || {}) || handbookPointer(query, ranked, details || {}, options);
   }
   /* The handbook chapter named after the question (學生在校作息時間規定 for 「幾點放學」), when
@@ -2533,7 +2579,7 @@
       answer_lines: lines, limitation: evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
       plan: plan, evidence: evidence, sources: sources, validity_warnings: unique(validityWarnings) };
   }
-  return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank,
+  return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank, readList: readList, asksPenalty: asksPenalty, penaltyDocs: penaltyDocs,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
     isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, correction: correction, comparePlan: comparePlan, compareResults: compareResults, smallTalk: smallTalk, wantsLink: wantsLink, answerLinks: answerLinks, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });

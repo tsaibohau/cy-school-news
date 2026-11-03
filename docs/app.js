@@ -3091,17 +3091,10 @@
           return cross;
         }
         /* 「最近有什麼新消息」這類問題直接列公告，不必先做逐句比對 */
-        /* 規定與公告分開挑候選，規定（學生手冊、學校網頁）不會被大量公告擠掉。 */
-        var isDoc = function (item) { return item && (item.kind === "school_handbook" || item.kind === "school_info"); };
+        /* Handbook chapters and notices are picked separately (rules are not crowded out by
+           notices), and a penalty question always reads the 獎懲 chapters (CyNewsAssistantQA.readList). */
         var listOnly = window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question);
-        var per = options.deep ? 15 : 6;
-        /* 「段烤」: pick the bodies to read with the corrected words too. */
-        var fixedQuestion = window.CyNewsTypo ? window.CyNewsTypo.fix(question).query : question;
-        var seenCandidate = {};
-        var candidates = listOnly ? [] : [question].concat(fixedQuestion !== question ? [fixedQuestion] : []).reduce(function (all, q) {
-          return all.concat(window.CyNewsAssistantQA.rank(q, items.filter(isDoc), {}, options).slice(0, per))
-            .concat(window.CyNewsAssistantQA.rank(q, items.filter(function (item) { return !isDoc(item); }), {}, options).slice(0, per));
-        }, []).filter(function (row) { var id = String(row.item.id); if (seenCandidate[id]) return false; seenCandidate[id] = true; return true; });
+        var candidates = listOnly ? [] : window.CyNewsAssistantQA.readList(question, items, options).map(function (item) { return { item: item }; });
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
           var details = {};
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
@@ -3138,10 +3131,9 @@
         var items = loaded[0], options = assistantOptions(scope);
         options.exclude = fix.exclude; options.dropResults = fix.dropResults;
         items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
-        var isDoc = function (item) { return item && (item.kind === "school_handbook" || item.kind === "school_info"); };
         var skip = {}; fix.exclude.forEach(function (id) { skip[id] = true; });
         var pool = items.filter(function (item) { return !skip[String(item.id)]; });
-        var candidates = QA.rank(fix.query, pool.filter(isDoc), {}, options).slice(0, 6).concat(QA.rank(fix.query, pool.filter(function (item) { return !isDoc(item); }), {}, options).slice(0, 6));
+        var candidates = QA.readList(fix.query, pool, options).map(function (item) { return { item: item }; });
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
           var details = {};
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
@@ -3238,7 +3230,7 @@
           return fetchAssistantCorpus(school.id).then(function (items) {
             items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
             var options = assistantOptions(scope);
-            var candidates = QA.rank(plan.topic, items, {}, options).slice(0, 6);
+            var candidates = QA.readList(plan.topic, items, options).map(function (item) { return { item: item }; });
             return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
               var details = {};
               records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });
