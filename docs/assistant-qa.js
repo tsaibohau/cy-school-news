@@ -1199,6 +1199,21 @@
     if (current) out.push(current);
     return out.map(clean).filter(function (c) { return c.length >= 6; });
   }
+  /* A list item inherits the heading above it: 「學生有下列情形之一者，記小過：」 then
+     「(一)考試時夾帶…」 means 考試時夾帶 → 記小過. Returns [{ text, ctx, heading }]. */
+  var LIST_ITEM = /^(?:[（(][一二三四五六七八九十\d]+[)）]|\d+[.、．]|[一二三四五六七八九十]+[、．])/;
+  var HEADING_END = /[：:]$|如下[：:。]?$|之一者[，,]?[^。]{0,12}[：:]?$/;
+  function withHeadings(list) {
+    var heading = "", out = [];
+    list.forEach(function (text) {
+      text = clean(text);
+      var item = LIST_ITEM.test(text) && heading && !HEADING_END.test(text);
+      out.push({ text: text, heading: item ? heading : "", ctx: item ? heading + " " + text : text });
+      if (HEADING_END.test(text)) heading = text.replace(LIST_ITEM, "");
+      else if (!LIST_ITEM.test(text)) heading = "";
+    });
+    return out;
+  }
   function ruleText(record) {
     return (record && record.attachments || []).map(function (a) { return a && a.embedded_text || ""; }).join("\n") ||
       (record && record.blocks || []).map(function (b) { return b && (b.text || (b.items || []).join("\n") || (b.rows || []).map(function (r) { return (r || []).join(" "); }).join("\n")) || ""; }).join("\n");
@@ -1216,7 +1231,16 @@
     /* The synonym database: 「手機」 also finds a clause that says 行動載具. */
     literal.concat(rest).forEach(function (t) { synonymsOf(t).forEach(function (s) { if (s !== t && s.length >= 2) related.push(s); }); });
     rest.forEach(function (t) { if (Synonyms) Synonyms.find(t).forEach(function (k) { synonymsOf(k).forEach(function (s) { if (s.length >= 2) related.push(s); }); }); });
-    return { literal: unique(literal), related: unique(related), rest: unique(rest) };
+    /* One group per asked word: every way to write it (段考: 定期考查、考試、試場…; 記過: 記大過、小過…).
+       A clause is scored by how many of the asked words it covers, not by how many synonyms it has. */
+    var groups = unique(literal.concat(rest)).filter(function (t) { return t.length >= 2 && !/^(?:會被|怎樣|怎麼|如何|什麼|可以|需要|規定)$/.test(t); }).map(function (t) {
+      var forms = synonymsOf(t).concat(Synonyms && Synonyms.INCLUDES && Synonyms.INCLUDES[t] || []);
+      var topic = (plan.term_matches || []).filter(function (row) { return row.kind === "topic" && compact(row.term) === t; })[0];
+      var tt = topic && topics.filter(function (x) { return x.id === topic.id; })[0];
+      if (tt) forms = forms.concat(tt.terms.map(compact));
+      return { word: t, forms: unique([t].concat(forms.map(compact))).filter(function (f) { return f.length >= 2; }) };
+    });
+    return { literal: unique(literal), related: unique(related), rest: unique(rest), groups: groups };
   }
   function scoreClause(clause, terms, query, title) {
     var c = compact(clause), score = 0;
@@ -1236,6 +1260,16 @@
     if (/可以|可不可以|能不能|能否|嗎|是否|准不准/.test(query) && /不得|禁止|不可|應|須|得|准|始可|限/.test(clause)) score += 3;
     if (/怎麼|如何|申請|辦理|流程|手續/.test(query) && /應|須|申請|填寫|辦理|系統|向|持/.test(clause)) score += 3;
     if (score && score < 10 && terms.literal.some(function (t) { return compact(title).indexOf(t) !== -1; })) score += 5;
+    /* 「段考怎樣會被記過」: a clause about the exam AND the penalty beats one about either alone.
+       Asked words the chapter title already covers (獎懲 for 記過) count as covered. */
+    var groups = terms.groups || [];
+    if (groups.length >= 2) {
+      var t = compact(title);
+      var inClause = groups.filter(function (g) { return g.forms.some(function (f) { return c.indexOf(f) !== -1; }); }).length;
+      var inTitle = groups.filter(function (g) { return g.forms.some(function (f) { return t.indexOf(f) !== -1; }); }).length;
+      score += inClause * 8;
+      if (inClause + Math.min(inTitle, 1) < groups.length) score -= 8;
+    }
     if (clause.length > 260) score -= 2;
     return score;
   }
@@ -1250,27 +1284,31 @@
       (row.item.documents || []).forEach(function (doc) { linkLabels[compact(doc && doc.name || "")] = true; });
       /* A chapter whose own title is about the subject (行動載具 for 手機) beats one that only mentions it. */
       var titleBonus = terms.literal.concat(terms.related).some(function (t) { return t.length >= 2 && compactTitle.indexOf(t) !== -1; }) ? 4 : 0;
-      ruleClauses(ruleText(details[row.item.id])).forEach(function (clause, index, all) {
+      var clauses = ruleClauses(ruleText(details[row.item.id])), framed = withHeadings(clauses);
+      clauses.forEach(function (clause, index, all) {
         /* A clause made only of link labels (「服裝儀容委員名單 服裝儀容規定」) is not an answer. */
         var rest = compact(clause);
         Object.keys(linkLabels).forEach(function (label) { if (label) rest = rest.split(label).join(""); });
-        var base = rest.replace(/[。．.、，,]/g, "").length < 6 ? 0 : scoreClause(clause, terms, query, title);
+        var ctx = framed[index] && framed[index].heading ? framed[index].ctx : clause;
+        var base = rest.replace(/[。．.、，,]/g, "").length < 6 ? 0 : scoreClause(ctx, terms, query, title);
         var score = base ? base + titleBonus - position : 0;
-        if (!best || score > best.score) best = { score: score, clause: clause, index: index, all: all, row: row };
+        if (!best || score > best.score) best = { score: score, clause: clause, heading: framed[index] && framed[index].heading || "", index: index, all: all, row: row };
       });
     });
     if (!best || best.score < 10) return null;
-    var picked = [best.clause];
+    var picked = [best.heading ? best.heading.replace(/[：:]$/, "") + "：" + best.clause.replace(LIST_ITEM, "") : best.clause];
     /* 「作息時間表如下：」 needs the rows after it. */
-    if (/[：:]$|如下/.test(best.clause)) picked = picked.concat(best.all.slice(best.index + 1, best.index + 5));
+    if (!best.heading && /[：:]$|如下/.test(best.clause)) picked = picked.concat(best.all.slice(best.index + 1, best.index + 5));
     else {
-      var second = null;
+      var second = null, bestFramed = withHeadings(best.all);
       best.all.forEach(function (clause, index) {
         if (index === best.index) return;
-        var score = scoreClause(clause, terms, query, best.row.item.title || "");
-        if (score >= Math.max(10, best.score * 0.8) && (!second || score > second.score)) second = { score: score, clause: clause, index: index };
+        var f = bestFramed[index] || { ctx: clause, heading: "" };
+        var score = scoreClause(f.heading ? f.ctx : clause, terms, query, best.row.item.title || "");
+        var text = f.heading ? f.heading.replace(/[：:]$/, "") + "：" + clause.replace(LIST_ITEM, "") : clause;
+        if (score >= Math.max(10, best.score * 0.8) && (!second || score > second.score)) second = { score: score, clause: text, index: index };
       });
-      if (second) picked = second.index < best.index ? [second.clause, best.clause] : [best.clause, second.clause];
+      if (second) picked = second.index < best.index ? [second.clause, picked[0]] : [picked[0], second.clause];
     }
     var item = best.row.item, pages = Array.isArray(item.page_range) ? "（第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁）" : "";
     var quote = picked.map(function (c) { return c.length > 220 ? c.slice(0, 219) + "…" : c; });
@@ -2132,15 +2170,32 @@
     var pool = [];
     (overview.evidence || []).forEach(function (row) { pool.push({ text: row.text, id: row.announcement_id }); });
     rows.forEach(function (row) { detailSegments(row.detail || (details || {})[row.item.id]).forEach(function (seg) { pool.push({ text: seg.text, id: row.item.id, about: true }); }); });
-    var hit = null;
-    pool.forEach(function (row) {
+    /* A penalty sentence that names the subject (考試舞弊者，記大過) beats one that only sits in the
+       same document (記大過以上通知家長). A list item counts with its heading (記小過：(一)考試…). */
+    var hit = null, loose = null;
+    var mentions = function (text) { var c = compact(text); return forms.some(function (f) { return c.indexOf(f) !== -1; }); };
+    var titleAbout = {};
+    rows.forEach(function (row) { if (mentions(row.item.title || "")) titleAbout[row.item.id] = true; });
+    /* Headings carry across a document's segments, so frame each document's segments in order. */
+    var framedPool = [], byDoc = {};
+    pool.forEach(function (row) { var key = row.id + (row.about ? ":d" : ":e"); (byDoc[key] = byDoc[key] || { id: row.id, about: row.about, texts: [] }).texts.push(row.text); });
+    Object.keys(byDoc).forEach(function (key) {
+      var doc = byDoc[key], list = [];
+      doc.texts.forEach(function (t) { var s = sentences(t); (s.length > 1 ? s : [t]).forEach(function (x) { list.push(x); }); });
+      framedPool.push({ id: doc.id, about: doc.about, framed: withHeadings(list) });
+    });
+    framedPool.forEach(function (row) {
       if (hit) return;
-      sentences(row.text).forEach(function (sentence) {
-        if (hit || !Composer.PENALTY.test(sentence) || !/未|逾期|沒有|不依|違反|遲交|缺交|不交|拒/.test(sentence)) return;
-        if (!row.about && !forms.some(function (f) { return compact(sentence).indexOf(f) !== -1; })) return;
-        hit = { text: sentence, id: row.id };
+      row.framed.forEach(function (s) {
+        if (hit) return;
+        var penal = Composer.PENALTY.test(s.ctx) && (/未|逾期|沒有|不依|違反|遲交|缺交|不交|拒|情形之一|者/.test(s.ctx));
+        if (!penal) return;
+        var text = s.heading ? s.heading.replace(/[：:]$/, "") + "：" + s.text.replace(LIST_ITEM, "") : s.text;
+        if (mentions(s.text)) { hit = { text: text, id: row.id }; return; }
+        if (!loose && row.about && titleAbout[row.id] && /未|逾期|沒有|不依|遲交|缺交|不交|拒/.test(s.ctx)) loose = { text: text, id: row.id };
       });
     });
+    hit = hit || loose;
     if (!hit) return null;
     var item = (items || []).filter(function (it) { return it && it.id === hit.id; })[0] || {};
     return { text: hit.text, item: item };
@@ -2148,6 +2203,9 @@
   function consequenceSection(part, overview, items, details, options, shown) {
     var ask = "「" + part.clause.replace(/[？?]$/, "") + "」";
     var hit = penaltySentence(part, overview, items, details, options);
+    /* The main answer already quotes this penalty: saying it twice adds nothing. */
+    var quoted = compact((overview.answer_lines || []).concat((overview.evidence || []).map(function (e) { return e.text; })).join(" "));
+    if (hit && quoted && quoted.indexOf(compact(hit.text).replace(/[。．.]$/, "")) !== -1) return null;
     if (hit) {
       var source = isSchoolDoc(hit.item) ? (hit.item.school_name || "") + docLabel(hit.item).replace(/的〈/, "〈") : sourceLabel(hit.item).replace(/^根據/, "");
       var said = Composer.consequence({ query: part.clause, text: hit.text, source: source });
@@ -2194,7 +2252,7 @@
     var sections = [];
     split.parts.forEach(function (part) {
       /* 「沒寫會怎樣」: look for a penalty first; none found → tease (and say where to look). */
-      if (part.aspect.id === "consequence" && Composer) { sections.push(consequenceSection(part, overview, items, details, options, shown)); return; }
+      if (part.aspect.id === "consequence" && Composer) { var said = consequenceSection(part, overview, items, details, options, shown); if (said) sections.push(said); return; }
       var sub = part.subject + part.aspect.phrase, found = answerCore(sub, items, details, Object.assign({}, options, { tokenSubject: part.subject }));
       /* An aspect counts as answered only by a sentence that is about it (逾期、扣分… for 沒交會怎樣),
          not by the subject's overview again. */
@@ -2436,8 +2494,11 @@
       var labelled = row.detail && Tokens && asked ? Tokens.match(Tokens.tokenize(row.detail, { title: row.item.title, date: String(row.item.date || "").slice(0, 10) }), asked) : null;
       var pointed = labelled && labelled.segment && labelled.kinds ? labelled.segment.s : -1;
       if (!segments.length) segments = sentences(clean((row.item.summary || "") + " " + (row.item.snippet || ""))).map(function (text) { return { text: text, meta: { source_type: "summary" } }; });
+      /* 「(一)考試舞弊者」 under 「…記大過：」 is quoted with its heading. */
+      var framed = withHeadings(segments.map(function (segment) { return segment.text; }));
       segments.map(function (segment, index) {
-        return { text: segment.text, meta: segment.meta || {}, score: evidenceScore(segment.text, queryTokens, wanted, plan, row.item) + (index === pointed ? 60 : 0), item: row.item };
+        var f = framed[index], text = f && f.heading ? f.heading.replace(/[：:]$/, "") + "：" + segment.text.replace(LIST_ITEM, "") : segment.text;
+        return { text: text, meta: segment.meta || {}, score: evidenceScore(text, queryTokens, wanted, plan, row.item) + (index === pointed ? 60 : 0), item: row.item };
       }).filter(function (candidate) {
         return candidateQualifies(candidate, plan) && (!Validity || Validity.sentencePolicy(candidate.text, row.validity, query) !== "exclude");
       }).sort(function (a, b) { return b.score - a.score; }).slice(0, 2).forEach(function (candidate) {
