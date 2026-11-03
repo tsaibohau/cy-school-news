@@ -494,6 +494,39 @@
         }
         renderLegacyImport();
       }
+      /* Settings, keywords and reads go to the server right away (they used to wait for the next
+         page load, so another device, or a cleared cache, showed the old values). Only the newest
+         pending settings row is sent: each one already carries the whole settings object. */
+      var accountDrainRunning = false, accountDrainTimer = null;
+      function scheduleAccountDrain() {
+        clearTimeout(accountDrainTimer);
+        accountDrainTimer = setTimeout(drainAccountOutbox, 400);
+      }
+      function drainAccountOutbox() {
+        if (accountDrainRunning || accountPhase !== "ACCOUNT_READY" || !readyUid || !activeSyncAdapter) return Promise.resolve([]);
+        var owner = readyUid;
+        var outbox = new window.CyNewsAccountSync.Outbox(localStorage, owner);
+        var items = outbox.pending().filter(function (item) { return item.type && item.type.indexOf("calendar.") !== 0; });
+        if (!items.length) return Promise.resolve([]);
+        var lastPreferences = items.filter(function (item) { return item.type === "preferences.upsert"; }).pop();
+        var superseded = items.filter(function (item) { return item.type === "preferences.upsert" && item !== lastPreferences; }).map(function (item) { return item.id; });
+        if (superseded.length) outbox.ack(superseded, null, owner);
+        items = items.filter(function (item) { return superseded.indexOf(item.id) === -1; });
+        accountDrainRunning = true;
+        status("同步中");
+        return items.reduce(function (chain, item) {
+          return chain.then(function () {
+            if (accountPhase !== "ACCOUNT_READY" || readyUid !== owner) throw new Error("account sync superseded");
+            return activeSyncAdapter.sendMutation(item).then(function () { outbox.ack([item.id], null, owner); });
+          });
+        }, Promise.resolve()).then(function () {
+          if (readyUid === owner) status("已同步");
+        }).catch(function () {
+          if (readyUid === owner) status("已存在此裝置，等待同步");
+        }).finally(function () {
+          accountDrainRunning = false;
+        });
+      }
       function drainCalendarOutbox() {
         if (calendarDrainRunning || accountPhase !== "ACCOUNT_READY" || !readyUid || !activeSyncAdapter) return Promise.resolve([]);
         var owner = readyUid;
@@ -1089,6 +1122,7 @@
         if (payload && payload.outbox_id) mutation.id = payload.outbox_id;
         new window.CyNewsAccountSync.Outbox(localStorage, readyUid).enqueue(mutation);
         status("等待同步");
+        if (type.indexOf("calendar.") !== 0) scheduleAccountDrain();
         if (type.indexOf("calendar.") === 0) {
           state.userEvents = CalendarState.visible(next.calendar_events || []);
           saveUserEvents();
@@ -2580,6 +2614,7 @@
       var links = assistantServiceLinks(result);
       if (office) links = links ? links.replace('</div>', ' ' + office + '</div>') : '<div class="assistant-office">' + office + '</div>';
       html += links;
+      html += deepReportHTML(result && result.deep);
 
       finishAnswerTyping();
       el.assistantAnswer.innerHTML = '<div class="assistant-result chat-answer">' + html + '</div>';
@@ -2604,7 +2639,34 @@
           return Object.assign({}, ev, { school_name: school ? school.short : "" });
         }),
         relevance: function (item) { return window.CyNewsRelevance && window.CyNewsSchoolRegistry ? window.CyNewsRelevance.calculate(item, profile, window.CyNewsSchoolRegistry) : null; },
+        deep: assistantDeep(),
       };
+    }
+    /* 深度判斷: read more notice bodies, prefer notices that cover every asked word, explain the pick. */
+    var ASSISTANT_DEEP_KEY = "cynews-assistant-deep";
+    function assistantDeep() { try { return localStorage.getItem(ASSISTANT_DEEP_KEY) === "1"; } catch (_) { return false; } }
+    function renderAssistantDeep() {
+      var button = document.getElementById("assistantDeep");
+      if (!button) return;
+      var on = assistantDeep();
+      button.setAttribute("aria-pressed", on ? "true" : "false");
+      button.classList.toggle("is-on", on);
+    }
+    (function () {
+      var button = document.getElementById("assistantDeep");
+      if (!button) return;
+      renderAssistantDeep();
+      button.addEventListener("click", function () {
+        try { localStorage.setItem(ASSISTANT_DEEP_KEY, assistantDeep() ? "0" : "1"); } catch (_) {}
+        renderAssistantDeep();
+        if (el.assistantStatus) el.assistantStatus.textContent = assistantDeep() ? "深度判斷已開啟：會多讀幾則公告，比較慢一點。" : "深度判斷已關閉。";
+      });
+    })();
+    function deepReportHTML(deep) {
+      if (!deep || !deep.compared) return "";
+      var rows = deep.picked.map(function (r) { return '<li><strong>選了</strong>「' + esc(r.title) + '」：' + esc(r.why) + '</li>'; })
+        .concat(deep.skipped.slice(0, 3).map(function (r) { return '<li>沒選「' + esc(r.title) + '」：' + esc(r.why) + '</li>'; }));
+      return '<details class="chat-deep"><summary>判斷過程（比對 ' + deep.compared + ' 則，讀了 ' + deep.read + ' 則內文' + (deep.words.length ? '，關鍵字：' + esc(deep.words.join("、")) : '') + '）</summary><ul>' + rows.join("") + '</ul></details>';
     }
     var ASSISTANT_HISTORY_KEY = "cynews-assistant-history";
     function assistantHistory() {
@@ -3032,8 +3094,14 @@
         /* 規定與公告分開挑候選，規定（學生手冊、學校網頁）不會被大量公告擠掉。 */
         var isDoc = function (item) { return item && (item.kind === "school_handbook" || item.kind === "school_info"); };
         var listOnly = window.CyNewsAssistantQA.browsePlan && window.CyNewsAssistantQA.browsePlan(question);
-        var candidates = listOnly ? [] : window.CyNewsAssistantQA.rank(question, items.filter(isDoc), {}, options).slice(0, 6)
-          .concat(window.CyNewsAssistantQA.rank(question, items.filter(function (item) { return !isDoc(item); }), {}, options).slice(0, 6));
+        var per = options.deep ? 15 : 6;
+        /* 「段烤」: pick the bodies to read with the corrected words too. */
+        var fixedQuestion = window.CyNewsTypo ? window.CyNewsTypo.fix(question).query : question;
+        var seenCandidate = {};
+        var candidates = listOnly ? [] : [question].concat(fixedQuestion !== question ? [fixedQuestion] : []).reduce(function (all, q) {
+          return all.concat(window.CyNewsAssistantQA.rank(q, items.filter(isDoc), {}, options).slice(0, per))
+            .concat(window.CyNewsAssistantQA.rank(q, items.filter(function (item) { return !isDoc(item); }), {}, options).slice(0, per));
+        }, []).filter(function (row) { var id = String(row.item.id); if (seenCandidate[id]) return false; seenCandidate[id] = true; return true; });
         return Promise.all(candidates.map(function (row) { return assistantDetail(row.item); })).then(function (records) {
           var details = {};
           records.forEach(function (record) { if (record && record.announcement_id) details[record.announcement_id] = record; });

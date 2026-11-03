@@ -135,6 +135,7 @@
     admin.insertBefore(box, heading ? heading.nextSibling : admin.firstChild);
   }
 
+  var publicVersion = 0;
   function renderPublicCapabilities() {
     if (typeof document === "undefined") return;
     var existing = document.getElementById("publicCapabilityEditor");
@@ -143,9 +144,14 @@
       return;
     }
     var admin = document.getElementById("viewAdmin");
-    if (!admin || existing) return;
+    if (!admin) return;
+    /* Rebuild only when newer values came from the server (the old editor kept its first values).
+       The DOM observer calls this on every change, so an unchanged editor is left alone. */
+    if (existing && existing.getAttribute("data-version") === String(publicVersion)) return;
+    if (existing) existing.remove();
     var box = document.createElement("fieldset");
     box.id = "publicCapabilityEditor";
+    box.setAttribute("data-version", String(publicVersion));
     box.className = "capability-editor";
     box.innerHTML = '<legend>PUBLIC／未登入權限</legend><p class="hint">這些開關影響所有未登入訪客，並由資料庫 RPC 同步強制執行。個人化通知必須登入，不屬於 PUBLIC 權限。</p><div class="capability-grid">' + PUBLIC_KEYS.map(function (key) {
       return '<label class="capability-option"><input type="checkbox" data-public-capability="' + key + '"' + (publicCurrent[key] ? " checked" : "") + '> <span>' + LABELS[key] + '</span></label>';
@@ -218,6 +224,8 @@
             owner = access.admin_role === "owner";
             access.capabilities = snapshot();
             setTimeout(applyVisibility, 0);
+            /* A signed-in owner edits PUBLIC settings: read them as they are on the server now. */
+            if (owner) controller.getPublicCapabilities().catch(function () {});
             return access;
           });
         });
@@ -225,7 +233,7 @@
       controller.getPublicCapabilities = function () {
         return controller.getClient().then(function (client) { return client.rpc("current_public_capabilities"); }).then(function (result) {
           if (result.error) throw result.error;
-          publicCurrent = normalizePublic(result.data); setTimeout(function () { applyVisibility(); renderPublicCapabilities(); }, 0);
+          publicCurrent = normalizePublic(result.data); publicVersion += 1; setTimeout(function () { applyVisibility(); renderPublicCapabilities(); }, 0);
           return normalizePublic(publicCurrent);
         });
       };
