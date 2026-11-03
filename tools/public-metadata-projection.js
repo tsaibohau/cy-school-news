@@ -9,6 +9,21 @@ const PUBLIC_ITEM_FIELDS = [
 ];
 
 const Relevance = require("../docs/relevance.js");
+const Tokens = require("../docs/announcement-tokens.js");
+
+/* Token labels per segment (topics, kinds, dates, grades; no text): made from the protected
+   detail while it is still on the runner, kept from the last run otherwise. */
+function itemTokens(item, root) {
+  const ref = String(item.detail_ref || "");
+  if (root && /^data\/details\/[A-Za-z0-9_-]+\/[A-Za-z0-9._-]+\.json$/.test(ref)) {
+    try {
+      const record = JSON.parse(fs.readFileSync(path.join(root, ref), "utf8"));
+      const tokens = Tokens.tokenize(record, { title: item.title, date: String(item.date || item.first_seen || "").slice(0, 10) });
+      if (tokens.segments.length || tokens.title.length) return tokens;
+    } catch (_) { /* no sidecar this run */ }
+  }
+  return item.tokens && item.tokens.v === Tokens.VERSION ? item.tokens : null;
+}
 
 // Scraper bookkeeping, not announcement content. Keeping it lets the next run
 // skip pages it already fetched instead of re-requesting the newest ones forever.
@@ -40,7 +55,7 @@ function publicAudience(item) {
   return grades.length || classes.length || allSchool ? { grades, classes, all_school: allSchool } : null;
 }
 
-function projectItem(item) {
+function projectItem(item, root) {
   item = item || {};
   const projected = {};
   PUBLIC_ITEM_FIELDS.concat(PUBLIC_STATE_FIELDS).forEach((field) => {
@@ -52,13 +67,15 @@ function projectItem(item) {
   if (events.length) projected.calendar_events = events;
   const audience = publicAudience(item);
   if (audience) projected.audience = audience;
+  const tokens = itemTokens(item, root);
+  if (tokens) projected.tokens = tokens;
   return projected;
 }
 
-function projectCorpusFile(file) {
+function projectCorpusFile(file, root) {
   const data = JSON.parse(fs.readFileSync(file, "utf8"));
   if (!Array.isArray(data.items)) return false;
-  data.items = data.items.map(projectItem);
+  data.items = data.items.map((item) => projectItem(item, root));
   data.content_access = "approved-account-required";
   fs.writeFileSync(file, JSON.stringify(data, null, 1) + "\n");
   return true;
@@ -78,13 +95,38 @@ function sanitizePublicData(root) {
       corpusFiles.push(path.join(schoolsRoot, entry.name, "archive.json"));
     });
   }
-  corpusFiles.filter(fs.existsSync).forEach(projectCorpusFile);
+  corpusFiles.filter(fs.existsSync).forEach((file) => projectCorpusFile(file, root));
+  /* School pages and rule chapters keep their own public fields; they only gain token labels. */
+  const infoRoot = path.join(dataRoot, "school-info");
+  if (fs.existsSync(infoRoot)) {
+    fs.readdirSync(infoRoot).filter((name) => /\.json$/.test(name)).forEach((name) => {
+      const file = path.join(infoRoot, name);
+      const data = JSON.parse(fs.readFileSync(file, "utf8"));
+      if (!Array.isArray(data.items)) return;
+      let changed = false;
+      /* The index records the next run rebuilds items from (pages, handbook, rules) keep the
+         labels too, so they survive until the page or chapter is read again. */
+      const records = [];
+      Object.values(data.pages || {}).forEach((entry) => records.push({ id: data.school + "-info-" + entry.page_id, entry }));
+      ((data.handbook || {}).items || []).forEach((entry) => records.push({ id: entry.id, entry }));
+      ((data.rules || {}).items || []).forEach((entry) => records.push({ id: entry.id, entry }));
+      Object.values((data.rules || {}).files || {}).forEach((file) => { if (file && file.item) records.push({ id: file.item.id, entry: file.item }); });
+      data.items.forEach((item) => {
+        if (!item || item.kind === "school_service") return;
+        const tokens = itemTokens(item, root);
+        if (!tokens || JSON.stringify(tokens) === JSON.stringify(item.tokens)) return;
+        item.tokens = tokens; changed = true;
+        records.filter((row) => row.id === item.id).forEach((row) => { row.entry.tokens = tokens; });
+      });
+      if (changed) fs.writeFileSync(file, JSON.stringify(data, null, 1) + "\n");
+    });
+  }
 
   const detailsRoot = path.join(dataRoot, "details");
   if (fs.existsSync(detailsRoot)) fs.rmSync(detailsRoot, { recursive: true, force: true });
 }
 
-module.exports = { PUBLIC_ITEM_FIELDS, PUBLIC_STATE_FIELDS, publicCalendarEvents, publicAudience, projectItem, projectCorpusFile, sanitizePublicData };
+module.exports = { PUBLIC_ITEM_FIELDS, PUBLIC_STATE_FIELDS, publicCalendarEvents, publicAudience, itemTokens, projectItem, projectCorpusFile, sanitizePublicData };
 
 if (require.main === module) {
   const target = process.argv[2] ? path.resolve(process.argv[2]) : null;

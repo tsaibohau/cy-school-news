@@ -384,7 +384,7 @@ def public_item(school_id: str, school: dict, entry: dict) -> dict:
         "documents": ([{"name": a["name"], "url": a["url"]} for a in entry.get("attachments", []) if a.get("url")] +
                       list(entry.get("doc_links") or []))[:30],
     }
-    for key in ("detail_ref", "detail_revision", "detail_status"):
+    for key in ("detail_ref", "detail_revision", "detail_status", "tokens"):
         if entry.get(key):
             item[key] = entry[key]
     return item
