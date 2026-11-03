@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-03T04:55:38+08:00",
+ "generated_at": "2026-11-03T12:03:23+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -438,15 +438,57 @@
    "page_id": 215922252962857,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,384,383",
    "label": "專案計畫",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:03:20+08:00",
+   "path": [
+    "專案計畫"
+   ],
+   "changed_at": "2026-11-03T12:03:20+08:00",
+   "content_hash": "d2956aa239ff21c37d22df68891c9b698f3e686c36fac4b51a8c6ab73bcda290",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-215922252962857.json",
+   "detail_revision": "4b82dd2ade24e517fed53ca1d3fe1bb0958c94b720a71e01c7e59d7635dcd2f0",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "43761581328870": {
    "page_id": 43761581328870,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=3,8,331",
    "label": "優質化計畫",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:03:22+08:00",
+   "path": [
+    "優質化計畫"
+   ],
+   "changed_at": "2026-11-03T12:03:22+08:00",
+   "content_hash": "be37c0f9384d03b64965f8edba8d610b06c4a4244192159ada7e14bff5257ad1",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-43761581328870.json",
+   "detail_revision": "a25f179eb9234717c961eebfac2c7a101603a1f8c9da3699aec36811d61a5a6c",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2020-12-22"
+      ]
+     }
+    ]
+   }
   },
   "23012211157513": {
    "page_id": 23012211157513,
@@ -3490,6 +3532,39 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-43761581328870",
+   "kind": "school_info",
+   "title": "優質化計畫",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=3,8,331",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-43761581328870.json",
+   "detail_revision": "a25f179eb9234717c961eebfac2c7a101603a1f8c9da3699aec36811d61a5a6c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2020-12-22"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-74150307746498",
    "kind": "school_info",
    "title": "校務發展計畫",
@@ -3762,6 +3837,23 @@
    "documents": [],
    "detail_ref": "data/details/hnvs/hnvs-info-201116190266573.json",
    "detail_revision": "0516647a2863dc3e062e07f9c279911a0d72cb100fd30678addad94b4dfbcb18",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "hnvs-info-215922252962857",
+   "kind": "school_info",
+   "title": "專案計畫",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,384,383",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-215922252962857.json",
+   "detail_revision": "4b82dd2ade24e517fed53ca1d3fe1bb0958c94b720a71e01c7e59d7635dcd2f0",
    "detail_status": "parsed"
   },
   {
@@ -4132,5 +4224,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T04:55:38+08:00"
+ "last_run_at": "2026-11-03T12:03:23+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cchs",
- "generated_at": "2026-11-03T09:59:38+08:00",
+ "generated_at": "2026-11-03T12:05:12+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "153498002047988": {
@@ -828,34 +828,127 @@
    "page_id": 134017460526150,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/7",
    "label": "圖書館",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 14
+   "order": 14,
+   "checked_at": "2026-11-03T12:05:07+08:00",
+   "path": [
+    "進入首頁",
+    "圖書館"
+   ],
+   "changed_at": "2026-11-03T12:05:07+08:00",
+   "content_hash": "6091d1082d3b5d93e80064ee1274f44f2197ba663d0175742cbb7be6756ed000",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-134017460526150.json",
+   "detail_revision": "00b7e274df5f3cf4fec39ddfd99a98e3d7f05d6dd624c7c10f4d865c7eefa3ed",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": []
+   }
   },
   "37011783784663": {
    "page_id": 37011783784663,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/9",
    "label": "會計室",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 15
+   "order": 15,
+   "checked_at": "2026-11-03T12:05:09+08:00",
+   "path": [
+    "進入首頁",
+    "會計室"
+   ],
+   "changed_at": "2026-11-03T12:05:09+08:00",
+   "content_hash": "90fef7d193c553cbf39e320f225b566a2b0e26fca0f94781b3e667b60418e0b4",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-37011783784663.json",
+   "detail_revision": "42fc72fc7b6e59360a7db29e81a3ec3f17a5291e66d181fbf63fb88d6fb95d27",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "81669184082924": {
    "page_id": 81669184082924,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/10",
    "label": "教官室",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 16
+   "order": 16,
+   "checked_at": "2026-11-03T12:05:11+08:00",
+   "path": [
+    "進入首頁",
+    "教官室"
+   ],
+   "changed_at": "2026-11-03T12:05:11+08:00",
+   "content_hash": "649c90b6237d005d62d4732ad3293135e265533c254d978ca99bbb15af105b62",
+   "doc_links": [],
+   "keywords": [
+    "宣導",
+    "安全"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-81669184082924.json",
+   "detail_revision": "d3142921577da38fadbc55e4d2475698fe96982a7fa91419fd476d90a0010e94",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "115學年度校園安全地圖",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/11c93300b66c662a959caab497af9f49"
+    },
+    {
+     "name": "轉發導師群組通知",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/10cea3307119c6a4763fccf101e68160"
+    },
+    {
+     "name": "防災海報",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/aa50fbce69c225ba62be90bcd1e05a56"
+    },
+    {
+     "name": "中正高中校園防災疏散地圖(地震/火災)",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/32ee0a8191da0f67f5ec31b0bdc1ab7a"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "269410831564571": {
    "page_id": 269410831564571,
@@ -4213,6 +4306,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-37011783784663",
+   "kind": "school_info",
+   "title": "進入首頁 › 會計室",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/9",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-37011783784663.json",
+   "detail_revision": "42fc72fc7b6e59360a7db29e81a3ec3f17a5291e66d181fbf63fb88d6fb95d27",
+   "detail_status": "parsed"
+  },
+  {
    "id": "cchs-info-37045107764138",
    "kind": "school_info",
    "title": "進入首頁 › 學校簡介(About Us)",
@@ -4257,6 +4367,71 @@
    "detail_ref": "data/details/cchs/cchs-info-37045107764138.json",
    "detail_revision": "7f2e7cfe687b2d130201dbd4ede18d6cb9eb2ab8515e7d19739e3baf445ca646",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cchs-info-81669184082924",
+   "kind": "school_info",
+   "title": "進入首頁 › 教官室",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/10",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "115學年度校園安全地圖",
+    "轉發導師群組通知",
+    "防災海報",
+    "中正高中校園防災疏散地圖(地震/火災)"
+   ],
+   "keywords": [
+    "宣導",
+    "安全"
+   ],
+   "documents": [
+    {
+     "name": "115學年度校園安全地圖",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/11c93300b66c662a959caab497af9f49"
+    },
+    {
+     "name": "轉發導師群組通知",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/10cea3307119c6a4763fccf101e68160"
+    },
+    {
+     "name": "防災海報",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/aa50fbce69c225ba62be90bcd1e05a56"
+    },
+    {
+     "name": "中正高中校園防災疏散地圖(地震/火災)",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/32ee0a8191da0f67f5ec31b0bdc1ab7a"
+    }
+   ],
+   "detail_ref": "data/details/cchs/cchs-info-81669184082924.json",
+   "detail_revision": "d3142921577da38fadbc55e4d2475698fe96982a7fa91419fd476d90a0010e94",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cchs-info-85659664264510",
@@ -4365,6 +4540,31 @@
    "detail_ref": "data/details/cchs/cchs-info-124245018730755.json",
    "detail_revision": "266af86e9d71f8b707a11f8a1ab107c88bfbd4eb2d80ef7f301fcdde7d7ee114",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cchs-info-134017460526150",
+   "kind": "school_info",
+   "title": "進入首頁 › 圖書館",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/7",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-134017460526150.json",
+   "detail_revision": "00b7e274df5f3cf4fec39ddfd99a98e3d7f05d6dd624c7c10f4d865c7eefa3ed",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cchs-info-134820249247619",
@@ -4948,5 +5148,5 @@
    "label": "進入首頁"
   }
  ],
- "last_run_at": "2026-11-03T09:59:38+08:00"
+ "last_run_at": "2026-11-03T12:05:12+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-03T10:00:17+08:00",
+ "generated_at": "2026-11-03T12:05:40+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -608,15 +608,282 @@
   },
   "120": {
    "page_id": 120,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:34+08:00",
+   "path": [
+    "行政單位",
+    "竹中教務處",
+    "試務組"
+   ],
+   "changed_at": "2026-11-03T12:05:34+08:00",
+   "content_hash": "0df920a80d0513878ecb9ef27a26f3b63a4c5ca52c6b97992dc121ff64f29d61",
+   "doc_links": [],
+   "keywords": [
+    "比賽",
+    "競賽",
+    "分機",
+    "考試",
+    "補修",
+    "補考",
+    "重補修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-120.json",
+   "detail_revision": "7487592a45f858e2faf0b90d2a50596e1df7acb3ade00370a5b91acc4554fe35",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "重補修",
+       "補考",
+       "#makeup"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "121": {
    "page_id": 121,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:36+08:00",
+   "path": [
+    "行政單位",
+    "竹中教務處",
+    "實驗研究組"
+   ],
+   "changed_at": "2026-11-03T12:05:36+08:00",
+   "content_hash": "1fe4c62d2c97fcc4787caac78d63f770b5c1af5a24d11552991357fe5f9f7759",
+   "doc_links": [],
+   "keywords": [
+    "考試",
+    "升學",
+    "報名",
+    "學測",
+    "宣導",
+    "申請",
+    "競賽",
+    "入學",
+    "分機",
+    "學習歷程",
+    "研習",
+    "繁星",
+    "英聽",
+    "語文競賽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-121.json",
+   "detail_revision": "f3ab3f855e698e2056715540035e4057d3efad761ef4f3914aa4b19f0b629952",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學測",
+       "#national",
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "學習歷程",
+       "學測",
+       "繁星",
+       "家長",
+       "報名",
+       "考試",
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     }
+    ]
+   }
   },
   "122": {
    "page_id": 122,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:38+08:00",
+   "path": [
+    "行政單位",
+    "竹中教務處",
+    "課務組"
+   ],
+   "changed_at": "2026-11-03T12:05:38+08:00",
+   "content_hash": "6655fe0a59c8311fdd1ed6f35069b478842c1539ce8bca9827de8eedfc1e47f6",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "升學",
+    "研習",
+    "競賽",
+    "缺課",
+    "考試",
+    "課表"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-122.json",
+   "detail_revision": "caa82b13edfd297ba6e8d6cce990ba351fffdb3bc0c21554e0f6ed6c2dffcd8d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "課表",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "補課",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "輔導室",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "123": {
    "page_id": 123,
@@ -1524,6 +1791,279 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ccjh-info-120",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中教務處 › 試務組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-120.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "比賽",
+    "競賽",
+    "分機",
+    "考試",
+    "補修",
+    "補考",
+    "重補修"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-120.json",
+   "detail_revision": "7487592a45f858e2faf0b90d2a50596e1df7acb3ade00370a5b91acc4554fe35",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "重補修",
+       "補考",
+       "#makeup"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccjh-info-121",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中教務處 › 實驗研究組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-121.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "考試",
+    "升學",
+    "報名",
+    "學測",
+    "宣導",
+    "申請",
+    "競賽",
+    "入學",
+    "分機",
+    "學習歷程",
+    "研習",
+    "繁星",
+    "英聽",
+    "語文競賽"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-121.json",
+   "detail_revision": "f3ab3f855e698e2056715540035e4057d3efad761ef4f3914aa4b19f0b629952",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學測",
+       "#national",
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "學習歷程",
+       "學測",
+       "繁星",
+       "家長",
+       "報名",
+       "考試",
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccjh-info-122",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中教務處 › 課務組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-122.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "升學",
+    "研習",
+    "競賽",
+    "缺課",
+    "考試",
+    "課表"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-122.json",
+   "detail_revision": "caa82b13edfd297ba6e8d6cce990ba351fffdb3bc0c21554e0f6ed6c2dffcd8d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "課表",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "補課",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "輔導室",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-143",
    "kind": "school_info",
    "title": "行政單位 › 竹中輔導處",
@@ -1736,5 +2276,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-03T10:00:17+08:00"
+ "last_run_at": "2026-11-03T12:05:40+08:00"
 }

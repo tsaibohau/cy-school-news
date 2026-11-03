@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-03T10:01:09+08:00",
+ "generated_at": "2026-11-03T12:06:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -882,46 +882,233 @@
    "page_id": 276330499124658,
    "url": "https://www.shsh.ylc.edu.tw/freshman/%e6%96%b0%e7%94%9f%e5%b8%b8%e7%94%a8%e9%80%a3%e7%b5%90/",
    "label": "新生常用連結",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "新生專區",
     "115學年正心中學國中部招生"
    ],
-   "order": 19
+   "order": 19,
+   "checked_at": "2026-11-03T12:06:14+08:00",
+   "path": [
+    "新生專區",
+    "新生常用連結"
+   ]
   },
   "115713823335887": {
    "page_id": 115713823335887,
    "url": "https://www.shsh.ylc.edu.tw/about/sister_school/%e6%96%b0%e5%8a%a0%e5%9d%a1%e7%ab%8b%e5%8c%96%e4%b8%ad%e5%ad%b8/",
    "label": "新加坡立化中學",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 20
+   "order": 20,
+   "checked_at": "2026-11-03T12:06:16+08:00",
+   "path": [
+    "認識正心",
+    "海外姊妹校",
+    "新加坡立化中學"
+   ],
+   "changed_at": "2026-11-03T12:06:16+08:00",
+   "content_hash": "fddd768e5c40988a223f4b78e7028dba96f47afc3cf585c55c101b3950325178",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "考試"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-115713823335887.json",
+   "detail_revision": "3fb7345b94932bda2201a25369aa12304eda1f2854e1b03e105f48c006cdded1",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "特殊選才"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "163354120843490": {
    "page_id": 163354120843490,
    "url": "https://www.shsh.ylc.edu.tw/about/sister_school/%e6%97%a5%e6%9c%ac%e7%9c%9f%e5%b2%a1%e8%a5%bf%e4%b8%ad%e5%ad%b8%e6%a0%a1/",
    "label": "日本真岡西中學校",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 21
+   "order": 21,
+   "checked_at": "2026-11-03T12:06:18+08:00",
+   "path": [
+    "認識正心",
+    "海外姊妹校",
+    "日本真岡西中學校"
+   ],
+   "changed_at": "2026-11-03T12:06:18+08:00",
+   "content_hash": "b979eb701713d5c9143b01b2c6665dbc59c9d7196ad1968b15ce2a5bcbcd8f3f",
+   "doc_links": [],
+   "keywords": [
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-163354120843490.json",
+   "detail_revision": "3b1b7bf43c30ad748fdc45402113577e921c129d9358ec98f7feab8fc1b64a14",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "真岡西中學校.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/真岡西中學校.jpg"
+    },
+    {
+     "name": "與日本姊妹校交流.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/與日本姊妹校交流.jpg"
+    },
+    {
+     "name": "吳校長時代真岡西中來訪.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/吳校長時代真岡西中來訪.jpg"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "家長",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長",
+       "#school_profile"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1993-07-23"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "256902119598853": {
    "page_id": 256902119598853,
    "url": "https://www.shsh.ylc.edu.tw/about/sister_school/%e6%97%a5%e6%9c%ac%e4%ba%ac%e9%83%bd%e5%ba%9c%e5%85%b1%e6%a6%ae%e5%ad%b8%e5%9c%92%e4%b8%ad%e5%ad%b8-%e9%ab%98%e7%ad%89%e5%ad%b8%e6%a0%a1/",
    "label": "日本京都府共榮學園中學.高等學校",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 22
+   "order": 22,
+   "checked_at": "2026-11-03T12:06:20+08:00",
+   "path": [
+    "認識正心",
+    "海外姊妹校",
+    "日本京都府共榮學園中學.高等學校"
+   ],
+   "changed_at": "2026-11-03T12:06:20+08:00",
+   "content_hash": "43586bfee0e408b6e4fb76fdfda7c2030b38b4a56eeae5970c1f2b6c2d90834a",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "校訓"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-256902119598853.json",
+   "detail_revision": "a57d9513c1bf02ea40f25bde835a0739875532de336e65f0ab31be0f146c38fc",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "歡迎立牌.png",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/歡迎立牌.png"
+    },
+    {
+     "name": "校園一角.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/校園一角.jpg"
+    },
+    {
+     "name": "學生至校園歡迎我們到訪.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/學生至校園歡迎我們到訪.jpg"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "187748626388169": {
    "page_id": 187748626388169,
@@ -3531,6 +3718,74 @@
    "detail_status": "parsed"
   },
   {
+   "id": "shsh-info-115713823335887",
+   "kind": "school_info",
+   "title": "認識正心 › 海外姊妹校 › 新加坡立化中學",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/about/sister_school/%e6%96%b0%e5%8a%a0%e5%9d%a1%e7%ab%8b%e5%8c%96%e4%b8%ad%e5%ad%b8/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "考試"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-115713823335887.json",
+   "detail_revision": "3fb7345b94932bda2201a25369aa12304eda1f2854e1b03e105f48c006cdded1",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "特殊選才"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "shsh-info-122790001643117",
    "kind": "school_info",
    "title": "認識正心 › 教育理念",
@@ -3610,6 +3865,76 @@
    "detail_ref": "data/details/shsh/shsh-info-140037031608106.json",
    "detail_revision": "f9b2379aff2e63e3b12d3d9b9947d2d90313933539a32505aed6631d33d0461b",
    "detail_status": "parsed"
+  },
+  {
+   "id": "shsh-info-163354120843490",
+   "kind": "school_info",
+   "title": "認識正心 › 海外姊妹校 › 日本真岡西中學校",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/about/sister_school/%e6%97%a5%e6%9c%ac%e7%9c%9f%e5%b2%a1%e8%a5%bf%e4%b8%ad%e5%ad%b8%e6%a0%a1/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "真岡西中學校.jpg",
+    "與日本姊妹校交流.jpg",
+    "吳校長時代真岡西中來訪.jpg"
+   ],
+   "keywords": [
+    "校長"
+   ],
+   "documents": [
+    {
+     "name": "真岡西中學校.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/真岡西中學校.jpg"
+    },
+    {
+     "name": "與日本姊妹校交流.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/與日本姊妹校交流.jpg"
+    },
+    {
+     "name": "吳校長時代真岡西中來訪.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/吳校長時代真岡西中來訪.jpg"
+    }
+   ],
+   "detail_ref": "data/details/shsh/shsh-info-163354120843490.json",
+   "detail_revision": "3b1b7bf43c30ad748fdc45402113577e921c129d9358ec98f7feab8fc1b64a14",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "家長",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長",
+       "#school_profile"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1993-07-23"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "shsh-info-179032372992959",
@@ -3751,6 +4076,64 @@
    "detail_ref": "data/details/shsh/shsh-info-239097242878199.json",
    "detail_revision": "bb1bd51a5cc55cf72d51230acb716a226104a4894a03e68db835657796cd7b4d",
    "detail_status": "parsed"
+  },
+  {
+   "id": "shsh-info-256902119598853",
+   "kind": "school_info",
+   "title": "認識正心 › 海外姊妹校 › 日本京都府共榮學園中學.高等學校",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/about/sister_school/%e6%97%a5%e6%9c%ac%e4%ba%ac%e9%83%bd%e5%ba%9c%e5%85%b1%e6%a6%ae%e5%ad%b8%e5%9c%92%e4%b8%ad%e5%ad%b8-%e9%ab%98%e7%ad%89%e5%ad%b8%e6%a0%a1/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "歡迎立牌.png",
+    "校園一角.jpg",
+    "學生至校園歡迎我們到訪.jpg"
+   ],
+   "keywords": [
+    "升學",
+    "校訓"
+   ],
+   "documents": [
+    {
+     "name": "歡迎立牌.png",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/歡迎立牌.png"
+    },
+    {
+     "name": "校園一角.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/校園一角.jpg"
+    },
+    {
+     "name": "學生至校園歡迎我們到訪.jpg",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/erin/學生至校園歡迎我們到訪.jpg"
+    }
+   ],
+   "detail_ref": "data/details/shsh/shsh-info-256902119598853.json",
+   "detail_revision": "a57d9513c1bf02ea40f25bde835a0739875532de336e65f0ab31be0f146c38fc",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "shsh-info-279296858853119",
@@ -4392,5 +4775,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T10:01:09+08:00"
+ "last_run_at": "2026-11-03T12:06:22+08:00"
 }

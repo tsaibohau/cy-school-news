@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-03T09:59:45+08:00",
+ "generated_at": "2026-11-03T12:05:19+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -2085,7 +2085,13 @@
   },
   "515": {
    "page_id": 515,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-03T12:05:13+08:00",
+   "path": [
+    "教學單位",
+    "美術科",
+    "榮譽榜單"
+   ]
   },
   "516": {
    "page_id": 516,
@@ -3299,11 +3305,40 @@
   },
   "843": {
    "page_id": 843,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-03T12:05:16+08:00",
+   "path": [
+    "教學單位",
+    "美術科",
+    "榮譽榜單",
+    "大學榜單"
+   ]
   },
   "846": {
    "page_id": 846,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:18+08:00",
+   "path": [
+    "教學單位",
+    "音樂科",
+    "師資簡介"
+   ],
+   "changed_at": "2026-11-03T12:05:18+08:00",
+   "content_hash": "6d1413d8873f45683c0ae26026e39532316eefa217ce34bed1bb0b639ffd5973",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-846.json",
+   "detail_revision": "803bf522b7d77e4b0f27e7083a4e1fa0c089ef2a8b3e735cc62a061b1b707b0e",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
   },
   "847": {
    "page_id": 847,
@@ -11380,6 +11415,30 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cysh-info-846",
+   "kind": "school_info",
+   "title": "教學單位 › 音樂科 › 師資簡介",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-846.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-846.json",
+   "detail_revision": "803bf522b7d77e4b0f27e7083a4e1fa0c089ef2a8b3e735cc62a061b1b707b0e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "cysh-info-877",
    "kind": "school_info",
    "title": "科學班 › 科學班介紹 › 法令規章",
@@ -15494,5 +15553,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-03T09:59:45+08:00"
+ "last_run_at": "2026-11-03T12:05:19+08:00"
 }

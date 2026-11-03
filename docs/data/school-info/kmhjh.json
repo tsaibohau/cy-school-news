@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-03T09:58:42+08:00",
+ "generated_at": "2026-11-03T12:04:31+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -221,22 +221,40 @@
    "page_id": 139885700950369,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/english/",
    "label": "英文領域",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:26+08:00",
+   "path": [
+    "教學單位",
+    "國中部",
+    "英文領域"
+   ]
   },
   "47112810808494": {
    "page_id": 47112810808494,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/math/",
    "label": "數學領域",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:28+08:00",
+   "path": [
+    "教學單位",
+    "國中部",
+    "數學領域"
+   ]
   },
   "241215740629542": {
    "page_id": 241215740629542,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/science-technology/",
    "label": "自然及科技領域",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:30+08:00",
+   "path": [
+    "教學單位",
+    "國中部",
+    "自然及科技領域"
+   ]
   },
   "5158881065668": {
    "page_id": 5158881065668,
@@ -1033,6 +1051,78 @@
     "國文領域"
    ],
    "order": 95
+  },
+  "139460930651070": {
+   "page_id": 139460930651070,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/english/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "英文領域"
+   ],
+   "order": 96
+  },
+  "147883149746935": {
+   "page_id": 147883149746935,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/english/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "英文領域"
+   ],
+   "order": 97
+  },
+  "191564736584463": {
+   "page_id": 191564736584463,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/math/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "數學領域"
+   ],
+   "order": 98
+  },
+  "85617292193736": {
+   "page_id": 85617292193736,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/math/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "數學領域"
+   ],
+   "order": 99
+  },
+  "131616550637430": {
+   "page_id": 131616550637430,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/science-technology/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "自然及科技領域"
+   ],
+   "order": 100
+  },
+  "156489147606990": {
+   "page_id": 156489147606990,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/science-technology/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "自然及科技領域"
+   ],
+   "order": 101
   }
  },
  "handbook": {},
@@ -1286,5 +1376,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-03T09:58:42+08:00"
+ "last_run_at": "2026-11-03T12:04:31+08:00"
 }

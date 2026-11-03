@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T09:46:54+08:00",
+ "generated_at": "2026-11-03T11:55:01+08:00",
  "school": {
   "id": "tncvs",
   "name": "國立臺南高商",
@@ -8,6 +8,89 @@
   "base": "https://www.tncvs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "tncvs-9-24333",
+   "title": "【公告】本校115年校慶表揚本校資深教職員工獎勵名單，如有錯誤或遺漏者，請於115年11月9日下班前向人事室提出更正。",
+   "date": "2026-11-03",
+   "source_category": "校園公告",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/latestevent/index-1.asp?Parser=9,3,15,,,,24333",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "c8ef7bf657220fc0bf8d764263eb28d6739cc929537732281aca7b2cb9d8b003"
+    }
+   ],
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "校慶",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "校慶",
+       "截止",
+       "#celebration"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "tncvs-9-24332",
    "title": "🎉【恭喜】本校蔡政翰學長榮獲「企業金峰獎」 🏆 十大傑出企業獎 🏆 十大傑出商品獎！！！🎉",

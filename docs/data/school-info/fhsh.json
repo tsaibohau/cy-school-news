@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-03T09:58:59+08:00",
+ "generated_at": "2026-11-03T12:04:48+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -1385,22 +1385,812 @@
    "page_id": 59414490275548,
    "url": "https://www.fhsh.khc.edu.tw/aa/%e6%95%99%e5%8b%99%e8%99%95%e5%85%ac%e5%91%8a",
    "label": "處室公告",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:43+08:00",
+   "path": [
+    "處室公告"
+   ],
+   "changed_at": "2026-11-03T12:04:43+08:00",
+   "content_hash": "1a92dcfd80617f037f810dfbb90ade1af322d51f63b16ad1e7ffeaa3d0333b33",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "招生",
+    "特殊選才",
+    "競賽",
+    "入學",
+    "考試",
+    "講座",
+    "升學",
+    "新生",
+    "獎學金",
+    "繁星",
+    "自主學習",
+    "英聽",
+    "衛生",
+    "試場"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-59414490275548.json",
+   "detail_revision": "890fe7d07cb0d2f49496b6aa546d4d14dd2a95960799bee4526cb2a3d694bdb0",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "處室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#health",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "大考",
+       "升學",
+       "#admission",
+       "#exam",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "繁星",
+       "獎學金",
+       "#admission",
+       "#scholarship",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   "257542662741225": {
    "page_id": 257542662741225,
    "url": "https://www.fhsh.khc.edu.tw/aa/%e6%95%99%e5%b8%ab%e7%a0%94%e7%bf%92",
    "label": "教師研習",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:45+08:00",
+   "path": [
+    "教師研習"
+   ],
+   "changed_at": "2026-11-03T12:04:45+08:00",
+   "content_hash": "33b50b7b5a9b9e4fdc4fee6733ccfbe8ad05f39f4592f50afb4439423fccb8d6",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "研習",
+    "工作坊",
+    "體驗",
+    "徵稿",
+    "競賽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-257542662741225.json",
+   "detail_revision": "46fc350c4868fef5e98bf9da9307d60d20c81589199547986f1aba2677744819",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "生活",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "77685652444872": {
    "page_id": 77685652444872,
    "url": "https://www.fhsh.khc.edu.tw/aa/%e7%87%9f%e9%9a%8a%e7%ab%b6%e8%b3%bd",
    "label": "營隊競賽",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:47+08:00",
+   "path": [
+    "營隊競賽"
+   ],
+   "changed_at": "2026-11-03T12:04:47+08:00",
+   "content_hash": "3a8f851079503952c7e499fbaeff3e87acb638bb9bd7252e01633ce6de97bef8",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "競賽",
+    "營隊",
+    "報名",
+    "講座",
+    "奧林匹亞",
+    "學習歷程",
+    "工作坊",
+    "校長",
+    "演講",
+    "考試",
+    "運動會"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-77685652444872.json",
+   "detail_revision": "afe1e4e70f34142d2e99ec1a28aa0c5df68f484552e11d4d498a2b80636074d9",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "運動會",
+       "#contest",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-17"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "網路",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "報名",
+       "考試",
+       "#exam",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "家長",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "248845876505546": {
    "page_id": 248845876505546,
@@ -2377,6 +3167,457 @@
     "校務章則"
    ],
    "order": 115
+  },
+  "187389821695633": {
+   "page_id": 187389821695633,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261103/47182",
+   "label": "【公告】115-1國立聯合大學 文化觀光產業學系116學年度特殊選才管道招生訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 116
+  },
+  "202780627543911": {
+   "page_id": 202780627543911,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261103/47150",
+   "label": "【公告】「115年選送高級中等學校教師海外短期進修」經驗分享會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 117
+  },
+  "62113229738257": {
+   "page_id": 62113229738257,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261102/47148",
+   "label": "【公告】中央大學115學年度招生專業化高中諮詢會議",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 118
+  },
+  "24203711948954": {
+   "page_id": 24203711948954,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261102/47132",
+   "label": "【公告】第一屆（115年度）全國中小學純植永續教育創新教案徵選",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 119
+  },
+  "161527036815064": {
+   "page_id": 161527036815064,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47123",
+   "label": "【公告】115-1國立臺中教育大學116學年度學士班特殊選才入學招生訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 120
+  },
+  "105354742128191": {
+   "page_id": 105354742128191,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47099",
+   "label": "【公告】教育部海洋教育推手獎遴選及表揚計畫",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 121
+  },
+  "243557514585720": {
+   "page_id": 243557514585720,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47097",
+   "label": "【公告】2026自主學習節",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 122
+  },
+  "275726819819027": {
+   "page_id": 275726819819027,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47095",
+   "label": "【公告】115學年度高中資優教育論壇-人文與科學共創：未來人才的想像",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 123
+  },
+  "169819488823349": {
+   "page_id": 169819488823349,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261029/47080",
+   "label": "【公告】115-1大葉大學116學年度特殊選才招生考試相關訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 124
+  },
+  "11284309397049": {
+   "page_id": 11284309397049,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261029/47071",
+   "label": "【公告】藝教30－全國藝術教育論壇",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 125
+  },
+  "120046053778764": {
+   "page_id": 120046053778764,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261029/47069",
+   "label": "【公告】2027視覺藝術與設計新思維學術研討會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 126
+  },
+  "230630270805164": {
+   "page_id": 230630270805164,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261028/47047",
+   "label": "【公告】2026全國幼老共學教案設計暨教學成果競賽",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 127
+  },
+  "139316553664003": {
+   "page_id": 139316553664003,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261027/47024",
+   "label": "【公告】115-1國立臺灣海洋大116學年度大學部特殊選才招生考試相關資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 128
+  },
+  "260344232425272": {
+   "page_id": 260344232425272,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261027/47020",
+   "label": "【公告】115-1 南華大學116學年度學士班特殊選才招生簡章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 129
+  },
+  "268180810702152": {
+   "page_id": 268180810702152,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261022/47005",
+   "label": "【公告】115-1 真理大學116學年度學士班特殊選才招生訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 130
+  },
+  "93515361358341": {
+   "page_id": 93515361358341,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261022/47003",
+   "label": "【公告】115-1國立中正大學116學年度學士班特殊選才(含新住民入學)招生訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 131
+  },
+  "221154958533118": {
+   "page_id": 221154958533118,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261021/46931",
+   "label": "【公告】115-1國立臺北教育大學116學年度學士班音樂學系單獨招生相關資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 132
+  },
+  "235245249825928": {
+   "page_id": 235245249825928,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261019/46845",
+   "label": "【公告】115-1國立暨南國際大學「特殊選才單獨招生」訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 133
+  },
+  "70570423878683": {
+   "page_id": 70570423878683,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261016/46824",
+   "label": "【公告】115-1實踐大學高雄校區藝術設計領域單獨招生相關資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 134
+  },
+  "119624968195326": {
+   "page_id": 119624968195326,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261014/46779",
+   "label": "【公告】115-1 亞洲大學特殊選才及運動績優學系探索說明會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 135
+  },
+  "227991528484198": {
+   "page_id": 227991528484198,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261014/46775",
+   "label": "【公告】115-1長庚大學116學年度特殊選才招生資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 136
+  },
+  "258893696409503": {
+   "page_id": 258893696409503,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261013/46730",
+   "label": "【升學】大考中心116年第一次英聽試場公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 137
+  },
+  "132139005545774": {
+   "page_id": 132139005545774,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261012/46697",
+   "label": "【公告】115-1 實踐大學16學年度大學特殊選才招生訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 138
+  },
+  "132540161965323": {
+   "page_id": 132540161965323,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261103/47186",
+   "label": "【研習】分主題發展專業研習－固定翼無人機應用與實作",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 139
+  },
+  "114689348874545": {
+   "page_id": 114689348874545,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261102/47143",
+   "label": "【研習】AI調香師－AI芳療應用實作研習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 140
+  },
+  "213014286987662": {
+   "page_id": 213014286987662,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261102/47139",
+   "label": "【研習】生命教育教師研習活動「生命的圓滿—尋覓教師的春天」",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 141
+  },
+  "37628388166369": {
+   "page_id": 37628388166369,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47125",
+   "label": "【研習】115學年度南區高優學校SDGs與地方學聯合諮輔會議",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 142
+  },
+  "88886012524689": {
+   "page_id": 88886012524689,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47121",
+   "label": "【研習】「性之所向-性別平權運動的理念與實踐」",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 143
+  },
+  "169862726933224": {
+   "page_id": 169862726933224,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47119",
+   "label": "【研習】技高×技專×產業交流暨食品體驗活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 144
+  },
+  "146785968868426": {
+   "page_id": 146785968868426,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47117",
+   "label": "【研習】芳香療法融入教學與高齡照顧實務應用",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 145
+  },
+  "134774057421683": {
+   "page_id": 134774057421683,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47115",
+   "label": "【研習】AI導入實務分享與實作研習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 146
+  },
+  "125747843434172": {
+   "page_id": 125747843434172,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47112",
+   "label": "【研習】「數位學習教師增能工作坊」系列線上研習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 147
+  },
+  "24790545138735": {
+   "page_id": 24790545138735,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47109",
+   "label": "【研習】高屏區高中AI思考力研習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 148
+  },
+  "13038881158897": {
+   "page_id": 13038881158897,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47106",
+   "label": "【研習】全英暨雙語教學研習「提問導向教學工作坊」",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 149
+  },
+  "102247289626580": {
+   "page_id": 102247289626580,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47092",
+   "label": "【研習】「3D 列印暨生態保育教學」實戰工作坊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 150
+  },
+  "192583318642118": {
+   "page_id": 192583318642118,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261030/47090",
+   "label": "【研習】「《寫一片生活風景》——從生活採集到書法創作的SEL體驗」教師研習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 151
+  },
+  "178156991143764": {
+   "page_id": 178156991143764,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261029/47078",
+   "label": "【研習】「Google AI 行政自動化：打造你的智慧行政小助手」研習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 152
+  },
+  "46463052280073": {
+   "page_id": 46463052280073,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261029/47075",
+   "label": "【研習】AI賦能教與學工作坊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 153
+  },
+  "276242854866931": {
+   "page_id": 276242854866931,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261029/47073",
+   "label": "【研習】115年B4科目、議題數位教學工作坊─高中物理",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 154
+  },
+  "237944555413780": {
+   "page_id": 237944555413780,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261029/47062",
+   "label": "【公告】2026高中職公益教材徵稿競賽",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 155
+  },
+  "153392679448468": {
+   "page_id": 153392679448468,
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261028/47056",
+   "label": "【研習】光•在－臺南城市光環境改造計畫走讀課程",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教師研習"
+   ],
+   "order": 156
   }
  },
  "handbook": {},
@@ -2672,6 +3913,336 @@
    }
   },
   {
+   "id": "fhsh-info-59414490275548",
+   "kind": "school_info",
+   "title": "處室公告",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/%e6%95%99%e5%8b%99%e8%99%95%e5%85%ac%e5%91%8a",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "招生",
+    "特殊選才",
+    "競賽",
+    "入學",
+    "考試",
+    "講座",
+    "升學",
+    "新生",
+    "獎學金",
+    "繁星",
+    "自主學習",
+    "英聽",
+    "衛生",
+    "試場"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-59414490275548.json",
+   "detail_revision": "890fe7d07cb0d2f49496b6aa546d4d14dd2a95960799bee4526cb2a3d694bdb0",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "處室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#health",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "大考",
+       "升學",
+       "#admission",
+       "#exam",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "繁星",
+       "獎學金",
+       "#admission",
+       "#scholarship",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-70942425545653",
    "kind": "school_info",
    "title": "分機表",
@@ -2712,6 +4283,288 @@
    "detail_ref": "data/details/fhsh/fhsh-info-70942425545653.json",
    "detail_revision": "af71ea36165d9e49f181db52958cc9e47fa41ba1f945f299d989c6d3996a447e",
    "detail_status": "parsed"
+  },
+  {
+   "id": "fhsh-info-77685652444872",
+   "kind": "school_info",
+   "title": "營隊競賽",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/%e7%87%9f%e9%9a%8a%e7%ab%b6%e8%b3%bd",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "競賽",
+    "營隊",
+    "報名",
+    "講座",
+    "奧林匹亞",
+    "學習歷程",
+    "工作坊",
+    "校長",
+    "演講",
+    "考試",
+    "運動會"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-77685652444872.json",
+   "detail_revision": "afe1e4e70f34142d2e99ec1a28aa0c5df68f484552e11d4d498a2b80636074d9",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "運動會",
+       "#contest",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-17"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "網路",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "報名",
+       "考試",
+       "#exam",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "家長",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "fhsh-info-101085825826745",
@@ -3715,6 +5568,208 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fhsh-info-257542662741225",
+   "kind": "school_info",
+   "title": "教師研習",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/%e6%95%99%e5%b8%ab%e7%a0%94%e7%bf%92",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "研習",
+    "工作坊",
+    "體驗",
+    "徵稿",
+    "競賽"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-257542662741225.json",
+   "detail_revision": "46fc350c4868fef5e98bf9da9307d60d20c81589199547986f1aba2677744819",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "生活",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-266477902341081",
    "kind": "school_info",
    "title": "校務反映",
@@ -3998,5 +6053,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-03T09:58:59+08:00"
+ "last_run_at": "2026-11-03T12:04:48+08:00"
 }

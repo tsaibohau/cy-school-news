@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-03T09:59:17+08:00",
+ "generated_at": "2026-11-03T12:05:02+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -532,22 +532,135 @@
    "page_id": 2546312611315,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-180.php",
    "label": "食品加工科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:57+08:00",
+   "path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "changed_at": "2026-11-03T12:04:57+08:00",
+   "content_hash": "37e9dd57ba7adcb9ae99abaa219a11e8215808e04d1cc09ab61dadc46c9f9e1e",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "競賽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-2546312611315.json",
+   "detail_revision": "7cad20c564c7a3a962b53f39460a1fd61b6d10ce0d9669b86c87ce9da326a01c",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "133408159699094": {
    "page_id": 133408159699094,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-701.php",
    "label": "園藝科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:59+08:00",
+   "path": [
+    "教學單位",
+    "園藝科"
+   ],
+   "changed_at": "2026-11-03T12:04:59+08:00",
+   "content_hash": "8e2a41425184ea1296a64f6521c31a8428581b695dfc8d7c3f3f7abd060808ca",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-133408159699094.json",
+   "detail_revision": "6a5acc7ea04c884d48713bfee9e92a6c47d089e63b31cc19880d0bb4cb811bca",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "41128050815012": {
    "page_id": 41128050815012,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-181.php",
    "label": "綜合職能科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:05:00+08:00",
+   "path": [
+    "教學單位",
+    "綜合職能科"
+   ],
+   "changed_at": "2026-11-03T12:05:00+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-41128050815012.json",
+   "detail_revision": "27d82b1e0662b1d9c7f45a4d44c3cdb9bfcd051ac3ffa52ed90c969643e765b6",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "139946157861962": {
    "page_id": 139946157861962,
@@ -2454,12 +2567,248 @@
     "化工科"
    ],
    "order": 187
+  },
+  "53285367294831": {
+   "page_id": 53285367294831,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-256.php",
+   "label": "歷史沿革",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "order": 188
+  },
+  "142865845126827": {
+   "page_id": 142865845126827,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-401.php",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "order": 189
+  },
+  "69119004105456": {
+   "page_id": 69119004105456,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-404.php",
+   "label": "學習內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "order": 190
+  },
+  "206312289878980": {
+   "page_id": 206312289878980,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-405.php",
+   "label": "專業教室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "order": 191
+  },
+  "274097191648058": {
+   "page_id": 274097191648058,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-707.php",
+   "label": "科展專題",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "order": 192
+  },
+  "169960400660454": {
+   "page_id": 169960400660454,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-714.php",
+   "label": "技藝競賽",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "order": 193
+  },
+  "6664667516446": {
+   "page_id": 6664667516446,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-715.php",
+   "label": "技能檢定",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "order": 194
+  },
+  "142293617812207": {
+   "page_id": 142293617812207,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-717.php",
+   "label": "論文心得",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "order": 195
+  },
+  "105402782515542": {
+   "page_id": 105402782515542,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-846.php",
+   "label": "升學就業",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "食品加工科"
+   ],
+   "order": 196
+  },
+  "41797346886142": {
+   "page_id": 41797346886142,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1345.php",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "綜合職能科"
+   ],
+   "order": 197
+  },
+  "230730332656391": {
+   "page_id": 230730332656391,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1346.php",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "綜合職能科"
+   ],
+   "order": 198
+  },
+  "23874401233881": {
+   "page_id": 23874401233881,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1347.php",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "綜合職能科"
+   ],
+   "order": 199
+  },
+  "193622857049685": {
+   "page_id": 193622857049685,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1348.php",
+   "label": "職場實習情形",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "綜合職能科"
+   ],
+   "order": 200
+  },
+  "7461824035992": {
+   "page_id": 7461824035992,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1349.php",
+   "label": "校外參觀",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "綜合職能科"
+   ],
+   "order": 201
+  },
+  "35251130316401": {
+   "page_id": 35251130316401,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1350.php",
+   "label": "發展願景與理念",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "綜合職能科"
+   ],
+   "order": 202
   }
  },
  "handbook": {},
  "rules": {},
  "services": {},
  "items": [
+  {
+   "id": "ksaivs-info-2546312611315",
+   "kind": "school_info",
+   "title": "教學單位 › 食品加工科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-180.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "競賽"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-2546312611315.json",
+   "detail_revision": "7cad20c564c7a3a962b53f39460a1fd61b6d10ce0d9669b86c87ce9da326a01c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "ksaivs-info-21112690938014",
    "kind": "school_info",
@@ -2508,6 +2857,23 @@
    "documents": [],
    "detail_ref": "data/details/ksaivs/ksaivs-info-29440400751565.json",
    "detail_revision": "093553cf190939ecefea0405cac634c7fa9152a9f3f18920584c5732c78eef35",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-41128050815012",
+   "kind": "school_info",
+   "title": "教學單位 › 綜合職能科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-181.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-41128050815012.json",
+   "detail_revision": "27d82b1e0662b1d9c7f45a4d44c3cdb9bfcd051ac3ffa52ed90c969643e765b6",
    "detail_status": "parsed"
   },
   {
@@ -2664,6 +3030,55 @@
       "s": 5,
       "t": [
        "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ksaivs-info-133408159699094",
+   "kind": "school_info",
+   "title": "教學單位 › 園藝科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-701.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-133408159699094.json",
+   "detail_revision": "6a5acc7ea04c884d48713bfee9e92a6c47d089e63b31cc19880d0bb4cb811bca",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "升學",
+       "#admission"
       ],
       "k": []
      }
@@ -3135,5 +3550,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-03T09:59:17+08:00"
+ "last_run_at": "2026-11-03T12:05:02+08:00"
 }

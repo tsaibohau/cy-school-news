@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "pmai",
- "generated_at": "2026-11-03T09:57:57+08:00",
+ "generated_at": "2026-11-03T12:03:47+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "128225757814606": {
@@ -151,15 +151,24 @@
    "page_id": 51203662153515,
    "url": "https://www.pmai.tn.edu.tw/media/",
    "label": "北門農工粉絲專頁",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:03:44+08:00",
+   "path": [
+    "公佈欄",
+    "媒體專區"
+   ]
   },
   "50808297389129": {
    "page_id": 50808297389129,
    "url": "https://www.pmai.tn.edu.tw/%e5%aa%92%e9%ab%94%e5%b0%88%e5%8d%80",
    "label": "媒體專區",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:03:46+08:00",
+   "path": [
+    "媒體專區"
+   ]
   },
   "251475999350313": {
    "page_id": 251475999350313,
@@ -419,6 +428,78 @@
     "認識北農"
    ],
    "order": 46
+  },
+  "128483823704602": {
+   "page_id": 128483823704602,
+   "url": "https://www.pmai.tn.edu.tw/media/%e7%b2%89%e7%b5%b2%e5%b0%88%e9%a0%81-page27894",
+   "label": "粉絲專頁",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "公佈欄",
+    "媒體專區"
+   ],
+   "order": 47
+  },
+  "205863089229606": {
+   "page_id": 205863089229606,
+   "url": "https://www.pmai.tn.edu.tw/campus-activities/112%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%95%ac%e5%b8%ab%e6%b5%b7%e5%a0%b1%e6%af%94%e8%b3%bd%e5%be%97%e7%8d%8e%e7%8f%ad%e7%b4%9a-page15379",
+   "label": "閱讀全文",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "公佈欄",
+    "媒體專區"
+   ],
+   "order": 48
+  },
+  "38424444211839": {
+   "page_id": 38424444211839,
+   "url": "https://www.pmai.tn.edu.tw/activities-tidbits/112%e5%b9%b4%e4%b8%ad%e5%ad%b8%e7%94%9f%e9%96%b1%e8%ae%80%e5%bf%83%e5%be%97%e5%af%ab%e4%bd%9c%e6%af%94%e8%b3%bd%e9%a0%92%e7%8d%8e-page13715",
+   "label": "112年中學生閱讀心得寫作比賽頒獎",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "公佈欄",
+    "媒體專區"
+   ],
+   "order": 49
+  },
+  "175604385357179": {
+   "page_id": 175604385357179,
+   "url": "https://www.pmai.tn.edu.tw/media/%e5%ad%b8%e6%a0%a1%e7%a7%91%e5%88%a5%e4%bb%8b%e7%b4%b9-page12849",
+   "label": "學校科別介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "公佈欄",
+    "媒體專區"
+   ],
+   "order": 50
+  },
+  "267191209925045": {
+   "page_id": 267191209925045,
+   "url": "https://www.pmai.tn.edu.tw/campus-activities/111%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%95%ac%e5%b8%ab%e6%b5%b7%e5%a0%b1%e6%af%94%e8%b3%bd%e5%be%97%e7%8d%8e%e7%8f%ad%e7%b4%9a-page10183",
+   "label": "閱讀全文",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "公佈欄",
+    "媒體專區"
+   ],
+   "order": 51
+  },
+  "174930033841131": {
+   "page_id": 174930033841131,
+   "url": "https://www.pmai.tn.edu.tw/campus-activities/110-10-05%e6%95%ac%e5%b8%ab%e6%b5%b7%e5%a0%b1%e8%a8%ad%e8%a8%88%e6%af%94%e8%b3%bd%e9%a0%92%e7%8d%8e-page1617",
+   "label": "110.10.05敬師海報設計比賽頒獎",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "公佈欄",
+    "媒體專區"
+   ],
+   "order": 52
   }
  },
  "handbook": {},
@@ -677,5 +758,5 @@
   "f7e502496b",
   "fd7193de53"
  ],
- "last_run_at": "2026-11-03T09:57:57+08:00"
+ "last_run_at": "2026-11-03T12:03:47+08:00"
 }

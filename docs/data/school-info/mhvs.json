@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mhvs",
- "generated_at": "2026-11-03T09:57:41+08:00",
+ "generated_at": "2026-11-03T12:03:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "234958134093923": {
@@ -391,23 +391,33 @@
    "page_id": 61852174492643,
    "url": "https://www.mhvs.cyc.edu.tw/modules/tad_web/aboutus.php?WebID=7",
    "label": "團隊成員",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "校長室"
    ],
-   "order": 35
+   "order": 35,
+   "checked_at": "2026-11-03T12:03:29+08:00",
+   "path": [
+    "校長室",
+    "團隊成員"
+   ]
   },
   "149761159073597": {
    "page_id": 149761159073597,
    "url": "https://www.mhvs.cyc.edu.tw/modules/tad_web/page.php?WebID=7",
    "label": "文章列表",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "校長室"
    ],
-   "order": 36
+   "order": 36,
+   "checked_at": "2026-11-03T12:03:31+08:00",
+   "path": [
+    "校長室",
+    "文章列表"
+   ]
   },
   "152316252264858": {
    "page_id": 152316252264858,
@@ -3870,5 +3880,5 @@
   "fdae5d8dc9",
   "ffc51e2322"
  ],
- "last_run_at": "2026-11-03T09:57:41+08:00"
+ "last_run_at": "2026-11-03T12:03:32+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tssh",
- "generated_at": "2026-11-03T09:57:47+08:00",
+ "generated_at": "2026-11-03T12:03:38+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "212970716483767": {
@@ -334,15 +334,23 @@
    "page_id": 129478345671258,
    "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=2,3,54,33",
    "label": "組織團體",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:03:34+08:00",
+   "path": [
+    "組織團體"
+   ]
   },
   "275018627861986": {
    "page_id": 275018627861986,
    "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=2,6,36",
    "label": "招生科別",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:03:36+08:00",
+   "path": [
+    "招生科別"
+   ]
   },
   "82606443717843": {
    "page_id": 82606443717843,
@@ -2889,6 +2897,28 @@
     "近年績效"
    ],
    "order": 265
+  },
+  "249141873992221": {
+   "page_id": 249141873992221,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=2,3,54,33,,,15",
+   "label": "現任及歷任會長",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "組織團體"
+   ],
+   "order": 266
+  },
+  "182497386506742": {
+   "page_id": 182497386506742,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=28,6,37,,,,4859",
+   "label": "運動成績優良學生單獨招生 簡章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "招生科別"
+   ],
+   "order": 267
   }
  },
  "handbook": {},
@@ -3092,5 +3122,5 @@
    "label": "報廢產品變賣專區"
   }
  ],
- "last_run_at": "2026-11-03T09:57:47+08:00"
+ "last_run_at": "2026-11-03T12:03:38+08:00"
 }

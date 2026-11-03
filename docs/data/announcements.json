@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-03T09:46:54+08:00",
+ "generated_at": "2026-11-03T11:55:01+08:00",
  "schools": [
   {
    "id": "cysh",
@@ -422,6 +422,5443 @@
     ],
     "classes": [],
     "all_school": false
+   }
+  },
+  {
+   "id": "cygsh-187109",
+   "title": "115-1 11/4 高三英閱期中考",
+   "date": "2026-11-03",
+   "source_category": "考試訊息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187109,r11.php",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "期中考",
+     "#midterm"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "期中考",
+       "#midterm"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-04"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "考程表",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "段考",
+       "補考",
+       "請假",
+       "考試",
+       "#exam",
+       "#makeup",
+       "#leave"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "請假",
+       "公假",
+       "考試",
+       "#exam",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "考試",
+       "大考",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "place",
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "手機",
+       "記過",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "期中考",
+       "#exam",
+       "#midterm"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "期中考",
+       "#midterm"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "考程表",
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "課表",
+       "考試",
+       "#exam",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "教務處",
+       "繳交",
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "教務處",
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "段考",
+       "請假",
+       "考試",
+       "#exam",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "補考",
+       "考試",
+       "#exam",
+       "#makeup"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "請假",
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "考試",
+       "大考",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "手機",
+       "記過",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187114",
+   "title": "【重修成績查詢】高二、三重修成績開放查詢(第三梯次)",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187114,r508.php",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "重補修",
+     "#makeup"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       2,
+       3
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學期成績",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "學期成績",
+       "補考",
+       "重補修",
+       "#makeup",
+       "#grading"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學期成績",
+       "重補修",
+       "#makeup",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "學期成績",
+       "#grading"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187113",
+   "title": "11/4(三)開放老師領取第三次模擬考餘卷",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187113,r508.php",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "模擬考",
+     "#mock"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "模擬考",
+       "教務處",
+       "學測",
+       "#mock",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "allow"
+      ],
+      "d": [
+       "2026-11-04"
+      ],
+      "g": [
+       3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187112",
+   "title": "【轉知】勞動部勞動力發展署所送「少年就業資源寶典電子書」，歡迎具就業需求學生資源參閱使用。",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187112,r508.php",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
+  {
+   "id": "cygsh-187110",
+   "title": "【轉知】華德福教育實驗高級中等學校函送第五屆青年哲學體驗營資訊，歡迎本校有興趣同學踴躍參與。",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187110,r508.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-29",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "567b4989c8565391ca1c80e427effbafdab1f92efe158790450bf1fcebd42c58"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-12-07"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "required",
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "fee"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187111",
+   "title": "【轉知】國立聯合大學文化觀光產業學系116學年度特殊選才管道招生",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187111,r508.php",
+   "category": "升學",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ea29c1845529753d47b5d2fdb686847ba86f36133a77436b8a4d27398c6cfb82"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "特殊選才",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-23",
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "社團",
+       "閱讀心得",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-23",
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "網路",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "pksh-28719",
+   "title": "新書來囉！11/3~11/5，歡迎到館閱覽。11/6開放借閱~",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "pksh",
+   "school_name": "北港高中",
+   "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=28719",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "借書",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03",
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "圖書館",
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-03",
+       "2026-11-06",
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03",
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlhc-7165",
+   "title": "115年度第3梯次-11月8日(日) 全國技術士技能檢定考生注意事項",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "tlhc",
+   "school_name": "斗六家商",
+   "url": "https://www.tlhc.ylc.edu.tw/ischool/public/news_view/show.php?nid=7165",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#certificate"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "機車",
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "機車",
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68777",
+   "title": "弘光科技大學辦理「香氣探索與樂齡關懷-高齡照顧體驗及職涯探索」活動",
+   "date": "2026-11-03",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68777/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "126697c1f1274f53732de5c4bbb30dc6c5fe95996fa839424deeeb46c22bee07"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-23"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "午餐",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-17"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-18"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hlvs-70126",
+   "title": "轉知~中研院辦理「中研講堂──跨縣市科普演講」",
+   "date": "2026-11-03",
+   "source_category": "教職員公告",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?p=70126",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "運動會",
+       "輔導室",
+       "社團",
+       "#club",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-11851",
+   "title": "高二自然組115學年第一學期 公民科期中評量參考題庫",
+   "date": "2026-11-03",
+   "source_category": "行政公告",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e9%ab%98%e4%ba%8c%e8%87%aa%e7%84%b6%e7%b5%84115%e5%ad%b8%e5%b9%b4%e7%ac%ac%e4%b8%80%e5%ad%b8%e6%9c%9f-%e5%85%ac%e6%b0%91%e7%a7%91%e6%9c%9f%e4%b8%ad%e8%a9%95%e9%87%8f%e5%8f%83%e8%80%83%e9%a1%8c/",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "期中考",
+     "#track"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "期中考",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "期中考",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-11850",
+   "title": "115年度臺灣手語語言能力認證",
+   "date": "2026-11-03",
+   "source_category": "活動競賽",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/115%e5%b9%b4%e5%ba%a6%e8%87%ba%e7%81%a3%e6%89%8b%e8%aa%9e%e8%aa%9e%e8%a8%80%e8%83%bd%e5%8a%9b%e8%aa%8d%e8%ad%89/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#certificate"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-02-05"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "期中考",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "d": [
+       "2026-11-03"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-11849",
+   "title": "🌟 英語超新星大賞—TOEIC Bridge英語學習獎學金計畫",
+   "date": "2026-11-03",
+   "source_category": "活動競賽",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%f0%9f%8c%9f-%e8%8b%b1%e8%aa%9e%e8%b6%85%e6%96%b0%e6%98%9f%e5%a4%a7%e8%b3%9e-toeic-bridge%e8%8b%b1%e8%aa%9e%e5%ad%b8%e7%bf%92%e7%8d%8e%e5%ad%b8%e9%87%91%e8%a8%88%e7%95%ab/",
+   "category": "獎助學金",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-12",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "eb9e240a25bfbc0bcdc04da6a45f57fd61043d246c44366cad8b28303bac25e4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "生活",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "成績單",
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名",
+       "繳交",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-12-12"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "獎學金",
+       "報名",
+       "截止",
+       "#scholarship",
+       "#certificate"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-12-12"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-12"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "報名",
+       "#certificate"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-11848",
+   "title": "📢 第十九屆「APX全國高中數理能力檢定」開始報名",
+   "date": "2026-11-03",
+   "source_category": "活動競賽",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%f0%9f%93%a2-%e7%ac%ac%e5%8d%81%e4%b9%9d%e5%b1%86%e3%80%8capx%e5%85%a8%e5%9c%8b%e9%ab%98%e4%b8%ad%e6%95%b8%e7%90%86%e8%83%bd%e5%8a%9b%e6%aa%a2%e5%ae%9a%e3%80%8d%e9%96%8b%e5%a7%8b%e5%a0%b1%e5%90%8d/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-28",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e9774bf7d4bd3ff07db17e7f5c69c9889fcdea4e13dff67db125a60ae2af9dd1"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#certificate"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "報名",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "升學",
+       "#admission",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "費用",
+       "報名",
+       "升學",
+       "#admission",
+       "#certificate"
+      ],
+      "k": [
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2027-01-28",
+       "2026-11-04",
+       "2026-12-02"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名",
+       "截止",
+       "#certificate",
+       "#contact"
+      ],
+      "k": [
+       "deadline",
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "dnsh-401410",
+   "title": "115年度學生學習歷程檔案分享會第3 場次，歡迎師生及家長報名參加~",
+   "date": "2026-11-03",
+   "source_category": "",
+   "school": "dnsh",
+   "school_name": "斗南高中",
+   "url": "https://dnsh.ylc.edu.tw/News_Content.aspx?n=57048&s=401410",
+   "category": "升學",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "報名",
+     "家長",
+     "#admission"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cyhvs-23681",
+   "title": "公告-「115年選送高級中等學校教師海外短期進修」經驗 分享會資訊",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "cyhvs",
+   "school_name": "嘉義家職",
+   "url": "https://www.cyhvs.cy.edu.tw/ischool/public/news_view/show.php?nid=23681",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cyvs-25245",
+   "title": "轉知因應115年地方公職人員選舉，為維護選舉之公平性，並積極查察賄選、暴力、選舉賭盤、假訊息及境外勢力介選等妨害選舉之不法行為，廉政署版宣導影片「2026反賄選愛臺灣公益宣導影片－出遊篇」(如附件)",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "cyvs",
+   "school_name": "嘉義高商",
+   "url": "https://www.cyvs.cy.edu.tw/ischool/public/news_view/show.php?nid=25245",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhsh-2011",
+   "title": "「第45屆全球華文學生文學獎」開始徵稿",
+   "date": "2026-11-03",
+   "source_category": "",
+   "school": "hhsh",
+   "school_name": "興華高中",
+   "url": "https://www.hhsh.cy.edu.tw/modules/tadnews/index.php?nsn=2011",
+   "category": "競賽",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "課輔",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [
+       "家長日"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "hnvs-9-14187",
+   "title": "「第六屆防災青年國際領袖培訓營」",
+   "date": "2026-11-03",
+   "source_category": "公告訊息",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/latestevent/index-1.asp?Parser=9,3,15,,,,14187",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ycsh-21369",
+   "title": "第23屆竹園岡全國高中職學生流音大賽」及「第20屆竹園岡全國高中職學生流舞大賽」歡迎報名參加",
+   "date": "2026-11-03",
+   "source_category": "",
+   "school": "ycsh",
+   "school_name": "永慶高中",
+   "url": "https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21369",
+   "category": "競賽",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "permanent_error",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "ycsh-21368",
+   "title": "2027金車曙光寒假物資贊助計劃",
+   "date": "2026-11-03",
+   "source_category": "",
+   "school": "ycsh",
+   "school_name": "永慶高中",
+   "url": "https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21368",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "permanent_error",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "hysh-13908",
+   "title": "2026反賄選愛臺灣公益宣 導影片",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hysh",
+   "school_name": "新營高中",
+   "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13908",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnkieh-878",
+   "title": "臺南市政府「親子一起上，急救不慌張」親子活動計畫11/21登場!",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=878",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處",
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tncvs-9-24333",
+   "title": "【公告】本校115年校慶表揚本校資深教職員工獎勵名單，如有錯誤或遺漏者，請於115年11月9日下班前向人事室提出更正。",
+   "date": "2026-11-03",
+   "source_category": "校園公告",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/latestevent/index-1.asp?Parser=9,3,15,,,,24333",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "c8ef7bf657220fc0bf8d764263eb28d6739cc929537732281aca7b2cb9d8b003"
+    }
+   ],
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "校慶",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "校慶",
+       "截止",
+       "#celebration"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92361",
+   "title": "【轉知】國立嘉義女子高級中學「萬相天后：臺灣媽祖信仰文化特展入門」專題講座",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e5%98%89%e7%be%a9%e5%a5%b3%e5%ad%90%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8%e3%80%8c%e8%90%ac%e7%9b%b8%e5%a4%a9%e5%90%8e%ef%bc%9a%e8%87%ba%e7%81%a3/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-13",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "a9949326b6b6a1c371111b3ce94d2fb93c8f34f64388e33a66308760f9f7e5a6"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "公假"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92359",
+   "title": "【轉知】高雄市立高雄高級中學「高中化學專業實作工作坊-從黃金雨到黃金雨瀑布（中區）」",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e9%ab%98%e9%9b%84%e5%b8%82%e7%ab%8b%e9%ab%98%e9%9b%84%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8%e3%80%8c%e9%ab%98%e4%b8%ad%e5%8c%96%e5%ad%b8%e5%b0%88%e6%a5%ad%e5%af%a6/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92357",
+   "title": "【轉知】國立臺灣海洋大學「建構國家級海洋素養治理架構：Ocean & Society Survey 國際調查與 EMSEA 2026前瞻趨勢教師線上增能研習」",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e8%87%ba%e7%81%a3%e6%b5%b7%e6%b4%8b%e5%a4%a7%e5%ad%b8%e3%80%8c%e5%bb%ba%e6%a7%8b%e5%9c%8b%e5%ae%b6%e7%b4%9a%e6%b5%b7%e6%b4%8b%e7%b4%a0%e9%a4%8a/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92355",
+   "title": "【轉知】國立臺南第二高級中學「AI調香師－AI芳療應用實作研習」",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e8%87%ba%e5%8d%97%e7%ac%ac%e4%ba%8c%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8%e3%80%8cai%e8%aa%bf%e9%a6%99%e5%b8%ab%ef%bc%8dai%e8%8a%b3%e7%99%82/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "3830e572aa8993900aedfb19997b2259d79a5f91c849fe2796e3a056435e8e52"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-17"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92353",
+   "title": "【轉知】臺北市立陽明高級中學教育部因材網 B4 高中數學數位教學工作坊",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e8%87%ba%e5%8c%97%e5%b8%82%e7%ab%8b%e9%99%bd%e6%98%8e%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8%e6%95%99%e8%82%b2%e9%83%a8%e5%9b%a0%e6%9d%90%e7%b6%b2-b4-%e9%ab%98/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-23"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "截止",
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92351",
+   "title": "【轉知】臺北市立建國高級中學「速戰數決工作坊」",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e8%87%ba%e5%8c%97%e5%b8%82%e7%ab%8b%e5%bb%ba%e5%9c%8b%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8%e3%80%8c%e9%80%9f%e6%88%b0%e6%95%b8%e6%b1%ba%e5%b7%a5%e4%bd%9c%e5%9d%8a/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tngs-92349",
+   "title": "【轉知】臺中市立臺中女子高級中等學校「115學年度種子教師培訓研習—虎尾壠風雲-主題式田野實察活動設計與實踐」",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e8%87%ba%e4%b8%ad%e5%b8%82%e7%ab%8b%e8%87%ba%e4%b8%ad%e5%a5%b3%e5%ad%90%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e3%80%8c115%e5%ad%b8%e5%b9%b4/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tngs-92346",
+   "title": "【轉知】國立臺南第一高級中學「115學年度社會領域探究與實作桃園航空城田野實地踏查教師增能工作坊」",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e8%87%ba%e5%8d%97%e7%ac%ac%e4%b8%80%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8%e3%80%8c115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%a4%be%e6%9c%83%e9%a0%98-2/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tngs-92344",
+   "title": "【轉知】臺中市立臺中女子高級中等學校「當AI遇上空間資訊科技:地理教學的挑戰與新可能」研習",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e8%87%ba%e4%b8%ad%e5%b8%82%e7%ab%8b%e8%87%ba%e4%b8%ad%e5%a5%b3%e5%ad%90%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e3%80%8c%e7%95%b6ai%e9%81%87%e4%b8%8a/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tngs-92342",
+   "title": "【轉知】國立彰化師範大學「115年至116年高中英語文適性教學教材開發計畫-108課綱高中英語文教材編製工作坊」",
+   "date": "2026-11-03",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e5%bd%b0%e5%8c%96%e5%b8%ab%e7%af%84%e5%a4%a7%e5%ad%b8%e3%80%8c115%e5%b9%b4%e8%87%b3116%e5%b9%b4%e9%ab%98%e4%b8%ad%e8%8b%b1%e8%aa%9e%e6%96%87/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tnssh-56753",
+   "title": "【教學組】🏆115學年度第1學期數學競試得獎名單",
+   "date": "2026-11-03",
+   "source_category": "教學組",
+   "school": "tnssh",
+   "school_name": "臺南二中",
+   "url": "https://www.tnssh.tn.edu.tw/2026/11/03/%e3%80%90%e6%95%99%e5%ad%b8%e7%b5%84%e3%80%91%f0%9f%8f%86115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac1%e5%ad%b8%e6%9c%9f%e6%95%b8%e5%ad%b8%e7%ab%b6%e8%a9%a6%e5%be%97%e7%8d%8e%e5%90%8d%e5%96%ae/",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1,
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnssh-56750",
+   "title": "轉知「2026反賄選愛臺灣公益宣導影片─出遊篇」宣導影片￼",
+   "date": "2026-11-03",
+   "source_category": "人事室公告",
+   "school": "tnssh",
+   "school_name": "臺南二中",
+   "url": "https://www.tnssh.tn.edu.tw/2026/11/03/%e8%bd%89%e7%9f%a5%e3%80%8c2026%e5%8f%8d%e8%b3%84%e9%81%b8%e6%84%9b%e8%87%ba%e7%81%a3%e5%85%ac%e7%9b%8a%e5%ae%a3%e5%b0%8e%e5%bd%b1%e7%89%87%e2%94%80%e5%87%ba%e9%81%8a%e7%af%87%e3%80%8d%e5%ae%a3/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnssh-56743",
+   "title": "【特教組】公告特殊教育學生情緒行為問題教學現場處遇參考指引",
+   "date": "2026-11-03",
+   "source_category": "教務處",
+   "school": "tnssh",
+   "school_name": "臺南二中",
+   "url": "https://www.tnssh.tn.edu.tw/2026/11/03/%e3%80%90%e7%89%b9%e6%95%99%e7%b5%84%e3%80%91%e5%85%ac%e5%91%8a%e7%89%b9%e6%ae%8a%e6%95%99%e8%82%b2%e5%ad%b8%e7%94%9f%e6%83%85%e7%b7%92%e8%a1%8c%e7%82%ba%e5%95%8f%e9%a1%8c%e6%95%99%e5%ad%b8%e7%8f%be/",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "twvs-47074",
+   "title": "「2026第四屆諾大師海洋大數據競賽」決賽學生報告開放現場觀賽和線上直播",
+   "date": "2026-11-03",
+   "source_category": "學務處公告",
+   "school": "twvs",
+   "school_name": "曾文家商",
+   "url": "https://www.twvs.tn.edu.tw/news/administrative-unit-news/%e3%80%8c2026%e7%ac%ac%e5%9b%9b%e5%b1%86%e8%ab%be%e5%a4%a7%e5%b8%ab%e6%b5%b7%e6%b4%8b%e5%a4%a7%e6%95%b8%e6%93%9a%e7%ab%b6%e8%b3%bd%e3%80%8d%e6%b1%ba%e8%b3%bd%e5%ad%b8%e7%94%9f%e5%a0%b1%e5%91%8a/47074/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-26"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-26"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "twvs-47070",
+   "title": "轉知「2027金車曙光寒假物資贊助計劃」",
+   "date": "2026-11-03",
+   "source_category": "學務處公告",
+   "school": "twvs",
+   "school_name": "曾文家商",
+   "url": "https://www.twvs.tn.edu.tw/news/%e8%bd%89%e7%9f%a5%e3%80%8c2027%e9%87%91%e8%bb%8a%e6%9b%99%e5%85%89%e5%af%92%e5%81%87%e7%89%a9%e8%b3%87%e8%b4%8a%e5%8a%a9%e8%a8%88%e5%8a%83%e3%80%8d/47070/",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "寒假",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "twvs-47066",
+   "title": "為避免社會大眾未諳政治獻金法規定觸法而受處罰，宣導政治獻金法相關規定，請參閱~",
+   "date": "2026-11-03",
+   "source_category": "人事室公告",
+   "school": "twvs",
+   "school_name": "曾文家商",
+   "url": "https://www.twvs.tn.edu.tw/news/%e7%82%ba%e9%81%bf%e5%85%8d%e7%a4%be%e6%9c%83%e5%a4%a7%e7%9c%be%e6%9c%aa%e8%ab%b3%e6%94%bf%e6%b2%bb%e7%8d%bb%e9%87%91%e6%b3%95%e8%a6%8f%e5%ae%9a%e8%a7%b8%e6%b3%95%e8%80%8c%e5%8f%97%e8%99%95%e7%bd%b0/47066/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-08-20",
+       "2026-11-28",
+       "2027-04-25"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-08-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "繳交",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "twvs-47062",
+   "title": "「第23屆竹園岡全國高中職學生流音大賽」及「第20屆竹園岡全國高中職學生流舞大賽」",
+   "date": "2026-11-03",
+   "source_category": "學務處公告",
+   "school": "twvs",
+   "school_name": "曾文家商",
+   "url": "https://www.twvs.tn.edu.tw/news/administrative-unit-news/%e3%80%8c%e7%ac%ac23%e5%b1%86%e7%ab%b9%e5%9c%92%e5%b2%a1%e5%85%a8%e5%9c%8b%e9%ab%98%e4%b8%ad%e8%81%b7%e5%ad%b8%e7%94%9f%e6%b5%81%e9%9f%b3%e5%a4%a7%e8%b3%bd%e3%80%8d%e5%8f%8a%e3%80%8c%e7%ac%ac20/47062/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "8d78d5a28ab58ced2961724ab8396744bd0bdb42ae4e5fa52ffeb32d223c86fd"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-13"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-14"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路",
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "twvs-47058",
+   "title": "轉知教育部「2026反賄選愛臺灣公益宣導影片─出遊篇」，請參閱~",
+   "date": "2026-11-03",
+   "source_category": "人事室公告",
+   "school": "twvs",
+   "school_name": "曾文家商",
+   "url": "https://www.twvs.tn.edu.tw/news/%e8%bd%89%e7%9f%a5%e6%95%99%e8%82%b2%e9%83%a8%e3%80%8c2026%e5%8f%8d%e8%b3%84%e9%81%b8%e6%84%9b%e8%87%ba%e7%81%a3%e5%85%ac%e7%9b%8a%e5%ae%a3%e5%b0%8e%e5%bd%b1%e7%89%87%e2%94%80%e5%87%ba%e9%81%8a/47058/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "twvs-47056",
+   "title": "國立高雄餐旅大學「2027「餐」聚開飯啦！展開「冬」遊世界！」冬令營活動",
+   "date": "2026-11-03",
+   "source_category": "教學單位公告",
+   "school": "twvs",
+   "school_name": "曾文家商",
+   "url": "https://www.twvs.tn.edu.tw/news/teaching-unit-news/%e5%9c%8b%e7%ab%8b%e9%ab%98%e9%9b%84%e9%a4%90%e6%97%85%e5%a4%a7%e5%ad%b8%e3%80%8c2027%e3%80%8c%e9%a4%90%e3%80%8d%e8%81%9a%e9%96%8b%e9%a3%af%e5%95%a6%ef%bc%81%e5%b1%95%e9%96%8b%e3%80%8c%e5%86%ac/47056/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "hkhs-11682",
+   "title": "高雄市立小港高中115學年度國文科攝影詩比賽得獎名單",
+   "date": "2026-11-03",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11682",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47186",
+   "title": "【研習】分主題發展專業研習－固定翼無人機應用與實作",
+   "date": "2026-11-03",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261103/47186",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-08-31",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "1391ced757dd28825b6f0e5430aa7a90e8cdc00e396b3b05c24b2467c3076ce6"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-23"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47182",
+   "title": "【公告】115-1國立聯合大學 文化觀光產業學系116學年度特殊選才管道招生訊息",
+   "date": "2026-11-03",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261103/47182",
+   "category": "升學",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "00c5d6bbd11ba27dd43515ae911817f0ded5c1795455f2643e2f8b7117e55329"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "特殊選才",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "考試",
+       "升學",
+       "#admission",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-23",
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47180",
+   "title": "【公告】1151-1國立中央大學 臺灣科學特殊人才提升計畫將於115年11月21日舉辦「蓋婭科普講座系列第65講」",
+   "date": "2026-11-03",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261103/47180",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "1ab08332d1023a33dbb3290de801af11c226c15a57434d2c630af0e45ea83353"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "考試",
+       "升學",
+       "#admission",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47176",
+   "title": "【活動】國立臺灣科學教育館（以下簡稱科教館）辦理「第一屆臺灣青少年科學發展論壇」活動資訊",
+   "date": "2026-11-03",
+   "source_category": "教務處公告",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/news-aa/20261103/47176",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47172",
+   "title": "【競賽】國立高雄科技大學主辦「H2GP Taiwan 2027大獎賽－全球最大跨學科氫能教育活動」",
+   "date": "2026-11-03",
+   "source_category": "教務處公告",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/news-aa/20261103/47172",
+   "category": "競賽",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fssh-18670",
+   "title": "115-1 第二次段考考試範圍",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18670",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "考試範圍",
+     "段考",
+     "#exam",
+     "#midterm"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "考試範圍",
+       "段考",
+       "#exam",
+       "#midterm"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12505",
+   "title": "「2026高中生醫療科技人才培育計畫」",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12505",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#health"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "升學",
+       "#admission",
+       "#health",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest",
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "校外教學",
+       "#field_trip"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "費用",
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "升學",
+       "#admission",
+       "#health",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest",
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "校外教學",
+       "#field_trip"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "費用",
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12502",
+   "title": "國家圖書館檢送115年臺灣閱讀節主視覺海報電子檔",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12502",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12503",
+   "title": "國立花蓮女子高級中學辦理「116年度全國公私立高級中等學校原住民族文化研習營」活動相關資訊",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12503",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-26",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ccbc6970fcd3ecbcade07dc091859a820da46821e88218a7b0de25fdf3ac9db3"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ccbc6970fcd3ecbcade07dc091859a820da46821e88218a7b0de25fdf3ac9db3"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-26",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "家長",
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "家長",
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-16"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-26",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "家長",
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-16"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12500",
+   "title": "桃園市政府辦理「2026 TAxT桃園科技藝術節：Be Tokens現實＞＞＞生成中」",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12500",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "2811ae7fc981514518d33d34827e317c8a24e8e5e264394266e3ed8ee9e51b56"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-30",
+       "2026-11-22"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-30",
+       "2026-11-22"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12499",
+   "title": "國家太空中心與臺南市政府將於115年11月8日至11日於大臺南會展中心共同主辦「2026台灣太空國際年會暨產業博覽會」",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12499",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "fee",
+       "allow"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "fee",
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12501",
+   "title": "臺中市私立明道高級中學舉辦「第45屆全球華文學生文學獎」競賽",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12501",
+   "category": "競賽",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "chimei-25174",
+   "title": "轉知AI × 生命教育：教學實務與臺灣生命教育意象館體驗研習",
+   "date": "2026-11-03",
+   "source_category": "教師活動",
+   "school": "chimei",
+   "school_name": "旗美高中",
+   "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25174",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "chimei-25173",
+   "title": "轉知115年高中教師海外短期進修「經驗分享會」",
+   "date": "2026-11-03",
+   "source_category": "教師活動",
+   "school": "chimei",
+   "school_name": "旗美高中",
+   "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25173",
+   "category": "教職員",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
    }
   },
   {
@@ -106947,8 +112384,8 @@
    "first_seen": "2026-09-16T09:23:22+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -113221,8 +118658,8 @@
    "first_seen": "2026-09-09T17:26:11+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2
@@ -113278,8 +118715,8 @@
    "first_seen": "2026-09-09T15:26:18+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -113481,8 +118918,8 @@
    "first_seen": "2026-09-09T14:30:47+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -113600,8 +119037,8 @@
    "first_seen": "2026-09-09T13:24:01+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -113985,8 +119422,8 @@
    "first_seen": "2026-09-09T13:24:01+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -114886,8 +120323,8 @@
    "first_seen": "2026-09-08T15:25:50+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -115016,8 +120453,8 @@
    "first_seen": "2026-09-08T11:24:52+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -115139,8 +120576,8 @@
    "first_seen": "2026-09-08T11:24:52+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -115355,8 +120792,8 @@
    "first_seen": "2026-09-08T10:24:58+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -115434,8 +120871,8 @@
    "first_seen": "2026-09-08T10:24:58+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -115969,8 +121406,8 @@
    "first_seen": "2026-09-08T09:24:07+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -117397,8 +122834,8 @@
    "first_seen": "2026-09-07T17:27:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -117846,8 +123283,8 @@
    "first_seen": "2026-09-07T17:27:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -118289,8 +123726,8 @@
    "first_seen": "2026-09-07T16:27:28+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -118358,8 +123795,8 @@
    "first_seen": "2026-09-07T15:26:52+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -118444,8 +123881,8 @@
    "first_seen": "2026-09-07T15:26:52+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -118995,8 +124432,8 @@
    "first_seen": "2026-09-07T15:26:52+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -119103,8 +124540,8 @@
    "first_seen": "2026-09-07T15:26:52+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -119149,8 +124586,8 @@
    "first_seen": "2026-09-07T14:32:27+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -119247,8 +124684,8 @@
    "first_seen": "2026-09-07T14:32:27+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -119371,8 +124808,8 @@
    "first_seen": "2026-09-07T13:23:46+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -119393,8 +124830,8 @@
    "first_seen": "2026-09-07T13:23:46+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -119539,8 +124976,8 @@
    "first_seen": "2026-09-07T11:25:58+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -120877,8 +126314,8 @@
    "first_seen": "2026-09-04T15:24:08+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -121009,8 +126446,8 @@
    "first_seen": "2026-09-04T13:22:55+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -127545,7 +132982,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-136308,r144.php",
    "category": "一般",
-   "first_seen": "2026-08-25T07:53:43+08:00"
+   "first_seen": "2026-08-25T07:53:43+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T12:02:50+08:00"
   },
   {
    "id": "cysh-136329",
@@ -127556,7 +132997,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-136329,r13.php",
    "category": "研習活動",
-   "first_seen": "2026-08-24T19:01:23+08:00"
+   "first_seen": "2026-08-24T19:01:23+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T12:02:50+08:00"
   },
   {
    "id": "cygsh-171327",
@@ -127567,7 +133012,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-171327,r547.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-24T16:30:49+08:00"
+   "first_seen": "2026-08-24T16:30:49+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T12:02:50+08:00"
   },
   {
    "id": "cysh-136311",
@@ -127658,7 +133107,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186332,r508.php",
    "category": "招生編班",
-   "first_seen": "2026-08-24T11:35:19+08:00"
+   "first_seen": "2026-08-24T11:35:19+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T12:02:50+08:00"
   },
   {
    "id": "cysh-136303",
@@ -161950,7 +167403,47 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27057",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27088",
@@ -162812,7 +168305,68 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27071",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "生活",
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "生活",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-06"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-135265",
@@ -163262,7 +168816,120 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27077",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-05-13",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "a85628c37eb494fdf0b49e0416048c19bf8002d17d9586fc64e3c6d26b86e2a1"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "生活",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路",
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "生活",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "網路",
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-13"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27076",
@@ -163274,7 +168941,189 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27076",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "334466aedab62d604987d1f8d182d16f3e86c720fcf2ecf99c7cd0c9d4d5a1d4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#contest",
+       "#track"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-11"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-06-01"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "#contest",
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-11"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-06-01"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27075",
@@ -163286,7 +169135,76 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27075",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-15"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-15"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27074",
@@ -163298,7 +169216,167 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27074",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-05-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "98c7b0a79cc186cc4fda1b97b237cde80962666bb8761dc09655f49b2c37777f"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "選組",
+       "報名",
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-05",
+       "2026-07-24"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "選組",
+       "報名",
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-05",
+       "2026-07-24"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27073",
@@ -163310,7 +169388,39 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27073",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-05"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27072",
@@ -163322,7 +169432,27 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27072",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-05"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-135260",
@@ -163473,7 +169603,240 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27069",
    "category": "招生編班",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-05-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0bef4e2ffa929ea5f4cdee578ae1db8dd34f7c4773b4e957df738f912d20629f"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1,
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "四技二專",
+     "統測",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "四技二專",
+       "統測",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-01"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "統測",
+       "四技二專",
+       "家長",
+       "升學",
+       "#admission",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-18"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-05-22"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-05-23"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-24"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-26"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "統測",
+       "四技二專",
+       "家長",
+       "升學",
+       "#admission",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-18"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-05-22"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-05-23"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-24"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-26"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27068",
@@ -163485,7 +169848,115 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27068",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-06-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9e70cfa12a742db13291252bc72173297bcf5614db23d7b507a2a59efa7ff138"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-01"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-06-05"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-06-05"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27067",
@@ -163497,7 +169968,83 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27067",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-01"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-20",
+       "2026-07-23"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-20",
+       "2026-07-23"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27066",
@@ -163509,7 +170056,155 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27066",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-04-30",
+     "provenance": "verified_announcement_event",
+     "source_revision": "ef24b555ddf15dc686f588bf3d25371ce28d4dd9c0bf2bb5262c3be9d67801c1"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-01"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-09"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-09"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27065",
@@ -163521,7 +170216,83 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27065",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-01"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "圖書館",
+       "#library",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "圖書館",
+       "#library",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27064",
@@ -163533,7 +170304,127 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27064",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-01"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-30"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-30"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sfsh-22096",
@@ -163557,7 +170448,74 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27063",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-04-24",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e4ee590e1cf56c77f311b7e77a2dfdb296694b55f5e017b573d4012a648ec48e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "contact",
+       "allow"
+      ],
+      "d": [
+       "2026-08-07"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27062",
@@ -163569,7 +170527,65 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27062",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "網路"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-11"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#certificate",
+       "#event",
+       "#grading"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27060",
@@ -163581,7 +170597,78 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27060",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-06-06",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "37484117d8911bb5c69b64c00f652fd9554a3ddac4cbbdc19d131f4514bbaaf3"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "午餐",
+       "報名"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-06-06",
+       "2026-05-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27059",
@@ -163593,7 +170680,85 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27059",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "導師",
+       "#admission",
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "導師",
+       "#admission",
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27055",
@@ -163605,7 +170770,38 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27055",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27054",
@@ -163617,7 +170813,105 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27054",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-04-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f11e130c5d315d34fe2c77eaacdd0c42194cf516abdc72e2bbebb0f4fd1e5522"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-08-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f11e130c5d315d34fe2c77eaacdd0c42194cf516abdc72e2bbebb0f4fd1e5522"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-08-21"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-08-21"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27053",
@@ -163629,7 +170923,471 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27053",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-04-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "faf00531b0ce44dcc1edeae5bda5aa7b2124d7a2eb4e0588d0d753d7af09ef69"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "繳交"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "繳交",
+       "截止",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "費用",
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學習歷程",
+       "截止",
+       "繳交",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "學習歷程",
+       "申請入學",
+       "繳交",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "平板",
+       "手機",
+       "#device"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "繳交",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "學生證",
+       "教務處",
+       "截止",
+       "註冊組",
+       "繳交",
+       "#student_id"
+      ],
+      "k": [
+       "deadline",
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "學習歷程",
+       "繳交",
+       "#admission"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "費用",
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "學習歷程",
+       "繳交",
+       "#admission"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "截止",
+       "繳交"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "學習歷程",
+       "申請入學",
+       "繳交",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "平板",
+       "手機",
+       "#device"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "繳交",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "學生證",
+       "教務處",
+       "註冊組",
+       "繳交",
+       "#student_id"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "截止",
+       "繳交"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27052",
@@ -163641,7 +171399,69 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27052",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-07-31"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-07-31"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27050",
@@ -163653,7 +171473,291 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27050",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-08-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "5e61c5c23944a9c9bd64a2071ac084fa3fca6d7889896cae551cbea6db894a6c"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-02-03",
+       "2027-02-05"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-06-05",
+       "2026-06-07"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-01",
+       "2026-07-03"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-04",
+       "2026-07-06"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-13",
+       "2026-08-15"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-16",
+       "2026-08-18"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "網路",
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "公假",
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-02-03",
+       "2027-02-05"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-06-05",
+       "2026-06-07"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-01",
+       "2026-07-03"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-04",
+       "2026-07-06"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-13",
+       "2026-08-15"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-16",
+       "2026-08-18"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "網路",
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "公假",
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27051",
@@ -163665,7 +171769,126 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27051",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-05-19",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9d9f02ffff1ef1b2909a02aaa984abd821ae001e32a14a00cfd0a085dc1f0ac8"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-05-19"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-18"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-05-18"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27049",
@@ -163677,7 +171900,75 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=27049",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "嘉獎",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "嘉獎",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-27048",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T09:46:54+08:00",
+ "generated_at": "2026-11-03T11:55:01+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -8,6 +8,1159 @@
   "base": "https://www.cygsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cygsh-187109",
+   "title": "115-1 11/4 高三英閱期中考",
+   "date": "2026-11-03",
+   "source_category": "考試訊息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187109,r11.php",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "期中考",
+     "#midterm"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "期中考",
+       "#midterm"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-04"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "考程表",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "段考",
+       "補考",
+       "請假",
+       "考試",
+       "#exam",
+       "#makeup",
+       "#leave"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "請假",
+       "公假",
+       "考試",
+       "#exam",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "考試",
+       "大考",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "place",
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "手機",
+       "記過",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "期中考",
+       "#exam",
+       "#midterm"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "期中考",
+       "#midterm"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "考程表",
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "課表",
+       "考試",
+       "#exam",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "教務處",
+       "繳交",
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "教務處",
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "段考",
+       "請假",
+       "考試",
+       "#exam",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "補考",
+       "考試",
+       "#exam",
+       "#makeup"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "請假",
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "考試",
+       "大考",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "手機",
+       "記過",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187114",
+   "title": "【重修成績查詢】高二、三重修成績開放查詢(第三梯次)",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187114,r508.php",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "重補修",
+     "#makeup"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       2,
+       3
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學期成績",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "學期成績",
+       "補考",
+       "重補修",
+       "#makeup",
+       "#grading"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學期成績",
+       "重補修",
+       "#makeup",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "學期成績",
+       "#grading"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187113",
+   "title": "11/4(三)開放老師領取第三次模擬考餘卷",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187113,r508.php",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "模擬考",
+     "#mock"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "模擬考",
+       "教務處",
+       "學測",
+       "#mock",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "allow"
+      ],
+      "d": [
+       "2026-11-04"
+      ],
+      "g": [
+       3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187112",
+   "title": "【轉知】勞動部勞動力發展署所送「少年就業資源寶典電子書」，歡迎具就業需求學生資源參閱使用。",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187112,r508.php",
+   "category": "一般",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
+  {
+   "id": "cygsh-187110",
+   "title": "【轉知】華德福教育實驗高級中等學校函送第五屆青年哲學體驗營資訊，歡迎本校有興趣同學踴躍參與。",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187110,r508.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-29",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "567b4989c8565391ca1c80e427effbafdab1f92efe158790450bf1fcebd42c58"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-12-07"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "required",
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "fee"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187111",
+   "title": "【轉知】國立聯合大學文化觀光產業學系116學年度特殊選才管道招生",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187111,r508.php",
+   "category": "升學",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ea29c1845529753d47b5d2fdb686847ba86f36133a77436b8a4d27398c6cfb82"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "特殊選才",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-23",
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "社團",
+       "閱讀心得",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-23",
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "網路",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cygsh-187107",
    "title": "115-1 11/20 高一二英聽期中考",
@@ -28175,8 +29328,8 @@
    "first_seen": "2026-09-16T09:23:22+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -31315,7 +32468,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-171327,r547.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-24T16:30:49+08:00"
+   "first_seen": "2026-08-24T16:30:49+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T12:02:50+08:00"
   },
   {
    "id": "cygsh-186332",
@@ -31326,7 +32483,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186332,r508.php",
    "category": "招生編班",
-   "first_seen": "2026-08-24T11:35:19+08:00"
+   "first_seen": "2026-08-24T11:35:19+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T12:02:50+08:00"
   },
   {
    "id": "cygsh-186331",

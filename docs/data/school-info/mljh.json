@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mljh",
- "generated_at": "2026-11-03T10:01:24+08:00",
+ "generated_at": "2026-11-03T12:07:03+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31793209037602": {
@@ -210,8 +210,13 @@
    "page_id": 31364446025639,
    "url": "https://mljh.ylc.edu.tw/cl.aspx?n=54702",
    "label": "教師專業成長",
-   "status": "pending",
-   "depth": 0
+   "status": "excluded_section",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:07:01+08:00",
+   "path": [
+    "教師專區",
+    "教師專業成長"
+   ]
   },
   "260218140575979": {
    "page_id": 260218140575979,
@@ -576,5 +581,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-03T10:01:24+08:00"
+ "last_run_at": "2026-11-03T12:07:03+08:00"
 }

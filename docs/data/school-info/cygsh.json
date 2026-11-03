@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-03T10:00:07+08:00",
+ "generated_at": "2026-11-03T12:05:25+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -1747,15 +1747,81 @@
   },
   "1999": {
    "page_id": 1999,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:20+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "生涯輔導"
+   ],
+   "changed_at": "2026-11-03T12:05:20+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-1999.json",
+   "detail_revision": "771da5b28cc44f52956e92755258c2797dc4a87352629cb0f9cd6431154f3e47",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
   },
   "2000": {
    "page_id": 2000,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:22+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "同儕輔導"
+   ],
+   "changed_at": "2026-11-03T12:05:22+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2000.json",
+   "detail_revision": "0c352df1a98d1db2867e60a5e48cee275f6041d826eec5adec6c3ea319ea9a2e",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
   },
   "2001": {
    "page_id": 2001,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:23+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "生命教育"
+   ],
+   "changed_at": "2026-11-03T12:05:23+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2001.json",
+   "detail_revision": "635d03be3da34da3a5b6ba8bc687779a46292b0993e7b6184f061620dca377bd",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
   },
   "2002": {
    "page_id": 2002,
@@ -1783,6 +1849,58 @@
   },
   "2011": {
    "page_id": 2011,
+   "status": "pending"
+  },
+  "2013": {
+   "page_id": 2013,
+   "status": "pending"
+  },
+  "2014": {
+   "page_id": 2014,
+   "status": "pending"
+  },
+  "2015": {
+   "page_id": 2015,
+   "status": "pending"
+  },
+  "2016": {
+   "page_id": 2016,
+   "status": "pending"
+  },
+  "2018": {
+   "page_id": 2018,
+   "status": "pending"
+  },
+  "2019": {
+   "page_id": 2019,
+   "status": "pending"
+  },
+  "2020": {
+   "page_id": 2020,
+   "status": "pending"
+  },
+  "2021": {
+   "page_id": 2021,
+   "status": "pending"
+  },
+  "2022": {
+   "page_id": 2022,
+   "status": "pending"
+  },
+  "2023": {
+   "page_id": 2023,
+   "status": "pending"
+  },
+  "2024": {
+   "page_id": 2024,
+   "status": "pending"
+  },
+  "2025": {
+   "page_id": 2025,
+   "status": "pending"
+  },
+  "2026": {
+   "page_id": 2026,
    "status": "pending"
   },
   "2082": {
@@ -2806,6 +2924,10 @@
    "page_id": 3570,
    "status": "pending"
   },
+  "3595": {
+   "page_id": 3595,
+   "status": "pending"
+  },
   "3644": {
    "page_id": 3644,
    "status": "ok",
@@ -2829,6 +2951,10 @@
    "detail_revision": "ef705222046228672fc765351da2793479fb941410f26d3ec336248c9663cb4a",
    "detail_status": "parsed",
    "attachments": []
+  },
+  "3691": {
+   "page_id": 3691,
+   "status": "pending"
   },
   "3746": {
    "page_id": 3746,
@@ -6074,7 +6200,7 @@
     "chars": 1484
    }
   },
-  "checked_at": "2026-11-03T09:59:51+08:00",
+  "checked_at": "2026-11-03T12:05:25+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -9992,6 +10118,78 @@
    }
   },
   {
+   "id": "cygsh-info-1999",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導室 › 生涯輔導",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-1999.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-1999.json",
+   "detail_revision": "771da5b28cc44f52956e92755258c2797dc4a87352629cb0f9cd6431154f3e47",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cygsh-info-2000",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導室 › 同儕輔導",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2000.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-2000.json",
+   "detail_revision": "0c352df1a98d1db2867e60a5e48cee275f6041d826eec5adec6c3ea319ea9a2e",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cygsh-info-2001",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導室 › 生命教育",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2001.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-2001.json",
+   "detail_revision": "635d03be3da34da3a5b6ba8bc687779a46292b0993e7b6184f061620dca377bd",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "cygsh-info-2082",
    "kind": "school_info",
    "title": "新生專區",
@@ -13743,5 +13941,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-03T10:00:07+08:00"
+ "last_run_at": "2026-11-03T12:05:25+08:00"
 }

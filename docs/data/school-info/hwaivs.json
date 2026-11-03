@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-03T10:01:06+08:00",
+ "generated_at": "2026-11-03T12:06:13+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -571,15 +571,74 @@
    "page_id": 251387111338414,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%9c%92%e5%ae%89%e5%85%a8%e5%9c%b0%e5%9c%96/",
    "label": "校園安全地圖",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:06:07+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校園安全地圖"
+   ],
+   "changed_at": "2026-11-03T12:06:07+08:00",
+   "content_hash": "1457ea7e70c9a8733d723ffb38fc17e50dc59725b104204845d137bf08ddac0c",
+   "doc_links": [],
+   "keywords": [
+    "安全"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-251387111338414.json",
+   "detail_revision": "dc4f14123f8dd43ba32ce0a9c2452e82aaac5bcbe15b875231c66c504f90b1e8",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "112年度校園安全地圖-",
+     "url": "https://www.hwaivs.ylc.edu.tw/wp-content/uploads/sites/112/2023/08/112年度校園安全地圖-.pdf"
+    },
+    {
+     "name": "校園安全地圖1130708版-2",
+     "url": "https://www.hwaivs.ylc.edu.tw/wp-content/uploads/sites/112/2024/07/校園安全地圖1130708版-2.jpg"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "104003962276724": {
    "page_id": 104003962276724,
    "url": "https://www.hwaivs.ylc.edu.tw/%e7%8d%8e%e5%8a%a9%e5%ad%b8%e9%87%91%e5%b0%88%e5%8d%80/",
    "label": "獎助學金專區",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:06:11+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "獎助學金專區"
+   ]
   },
   "139535134848489": {
    "page_id": 139535134848489,
@@ -4253,6 +4312,66 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hwaivs-info-251387111338414",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 校園安全地圖",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%9c%92%e5%ae%89%e5%85%a8%e5%9c%b0%e5%9c%96/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "112年度校園安全地圖-",
+    "校園安全地圖1130708版-2"
+   ],
+   "keywords": [
+    "安全"
+   ],
+   "documents": [
+    {
+     "name": "112年度校園安全地圖-",
+     "url": "https://www.hwaivs.ylc.edu.tw/wp-content/uploads/sites/112/2023/08/112年度校園安全地圖-.pdf"
+    },
+    {
+     "name": "校園安全地圖1130708版-2",
+     "url": "https://www.hwaivs.ylc.edu.tw/wp-content/uploads/sites/112/2024/07/校園安全地圖1130708版-2.jpg"
+    }
+   ],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-251387111338414.json",
+   "detail_revision": "dc4f14123f8dd43ba32ce0a9c2452e82aaac5bcbe15b875231c66c504f90b1e8",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "hwaivs-info-254578793326658",
    "kind": "school_info",
    "title": "國立虎尾高級農工職業學校 › 快速連結區 › 虎尾農工校訊",
@@ -4513,5 +4632,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-03T10:01:06+08:00"
+ "last_run_at": "2026-11-03T12:06:13+08:00"
 }

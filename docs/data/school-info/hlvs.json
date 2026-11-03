@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-03T10:01:03+08:00",
+ "generated_at": "2026-11-03T12:06:06+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -742,29 +742,238 @@
    "page_id": 11410427346331,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=102",
    "label": "相關單位",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:05:59+08:00",
+   "path": [
+    "相關單位"
+   ]
   },
   "2889661985772": {
    "page_id": 2889661985772,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=466",
    "label": "學生家長會",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:06:01+08:00",
+   "path": [
+    "學生家長會"
+   ]
   },
   "194735888374908": {
    "page_id": 194735888374908,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=410",
    "label": "員生消費合作社",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:06:02+08:00",
+   "path": [
+    "員生消費合作社"
+   ],
+   "changed_at": "2026-11-03T12:06:02+08:00",
+   "content_hash": "efaa994f747742c43aea079e46df605060840ed2ebc23173a2f728f46641b6d2",
+   "doc_links": [],
+   "keywords": [
+    "申請"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-194735888374908.json",
+   "detail_revision": "b4c69a7c49b99cfff9b6315fb50f100b214f75f25d4419e57610537c17b9c7bd",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "公益金申請表",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2023/08/112學年度-公益金申請表.doc"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "合作社"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "合作社"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "合作社"
+      ],
+      "k": [],
+      "d": [
+       "2016-01-19"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   "87785471338422": {
    "page_id": 87785471338422,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=408",
    "label": "文教基金會",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:06:04+08:00",
+   "path": [
+    "文教基金會"
+   ],
+   "changed_at": "2026-11-03T12:06:04+08:00",
+   "content_hash": "eb0ae27d65dda6f502235423c89fe55c35c4426fd807290a8480628b5741a7be",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "校長",
+    "助學金",
+    "獎助學金",
+    "入學",
+    "園遊會",
+    "模擬考",
+    "檢定",
+    "歷任校長",
+    "比賽",
+    "獎學金",
+    "畢業典禮",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-87785471338422.json",
+   "detail_revision": "6be42225ec0aa2e16d6ec4585da08653225f2c1640229e98abed5976db13e514",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1999-12-30"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [
+       "模擬考",
+       "統測",
+       "#mock",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "費用",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "費用",
+       "#certificate",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [
+       "獎學金",
+       "小論文",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 61,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "75721050774014": {
    "page_id": 75721050774014,
@@ -2593,6 +2802,159 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hlvs-info-87785471338422",
+   "kind": "school_info",
+   "title": "文教基金會",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=408",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "校長",
+    "助學金",
+    "獎助學金",
+    "入學",
+    "園遊會",
+    "模擬考",
+    "檢定",
+    "歷任校長",
+    "比賽",
+    "獎學金",
+    "畢業典禮",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-87785471338422.json",
+   "detail_revision": "6be42225ec0aa2e16d6ec4585da08653225f2c1640229e98abed5976db13e514",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1999-12-30"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [
+       "模擬考",
+       "統測",
+       "#mock",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "費用",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "費用",
+       "#certificate",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [
+       "獎學金",
+       "小論文",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 61,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "hlvs-info-88597416057110",
    "kind": "school_info",
    "title": "商用資訊科(實用技能班)",
@@ -2895,6 +3257,64 @@
    "detail_ref": "data/details/hlvs/hlvs-info-188531775288515.json",
    "detail_revision": "ca6baec78c516948bdd38cf340b4a1c6ae996c2ba0a4a861c016199ce87d2f07",
    "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-194735888374908",
+   "kind": "school_info",
+   "title": "員生消費合作社",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=410",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "公益金申請表"
+   ],
+   "keywords": [
+    "申請"
+   ],
+   "documents": [
+    {
+     "name": "公益金申請表",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2023/08/112學年度-公益金申請表.doc"
+    }
+   ],
+   "detail_ref": "data/details/hlvs/hlvs-info-194735888374908.json",
+   "detail_revision": "b4c69a7c49b99cfff9b6315fb50f100b214f75f25d4419e57610537c17b9c7bd",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "合作社"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "合作社"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "合作社"
+      ],
+      "k": [],
+      "d": [
+       "2016-01-19"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-info-199813463423413",
@@ -3405,5 +3825,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-03T10:01:03+08:00"
+ "last_run_at": "2026-11-03T12:06:06+08:00"
 }

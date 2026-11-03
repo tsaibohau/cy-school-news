@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-03T10:00:12+08:00",
+ "generated_at": "2026-11-03T12:05:33+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -882,7 +882,530 @@
   },
   "491": {
    "page_id": 491,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:26+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "業務職掌"
+   ],
+   "changed_at": "2026-11-03T12:05:26+08:00",
+   "content_hash": "6d332d36c0523fff4497596d0c4687acc4c73f7bc4a85a66d4cca4ecd058629f",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "電話",
+    "分機",
+    "申請",
+    "安全",
+    "工讀",
+    "招生",
+    "新生",
+    "獎懲",
+    "班聯會",
+    "衛生",
+    "住宿",
+    "全勤",
+    "制服",
+    "助學金",
+    "園遊會",
+    "地址",
+    "宣導",
+    "專線",
+    "就學貸款",
+    "服儀",
+    "校隊",
+    "比賽",
+    "測驗",
+    "獎助學金",
+    "獎學金",
+    "申辦",
+    "畢業典禮",
+    "競賽",
+    "課表",
+    "講座",
+    "運動會",
+    "防災",
+    "霸凌"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-491.json",
+   "detail_revision": "76cc69f71985af4ffbf95856675cec027114be915395077dbdcc80bd3ad2a059",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "開學",
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "課表",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#club",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "全勤",
+       "#attendance"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "服儀",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "霸凌",
+       "#safety",
+       "#event",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "運動會",
+       "#contest",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "#club",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "打掃",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 74,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 79,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 82,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 85,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 86,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 89,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 90,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [
+       "就學貸款",
+       "#scholarship"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 95,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 97,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "495": {
    "page_id": 495,
@@ -918,11 +1441,243 @@
   },
   "496": {
    "page_id": 496,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:29+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "成績評量"
+   ],
+   "changed_at": "2026-11-03T12:05:29+08:00",
+   "content_hash": "3a7ff2cf8409ad2e473083e8cbce89d66f09e53a3b19f9a946882f8d36899754",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "補考",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-496.json",
+   "detail_revision": "e50eec483773e307f96293efbb6bc0fc280b9b68e8a1eb5c08aa74bc50108ae5",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "補考",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "補考",
+       "#makeup"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "497": {
    "page_id": 497,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:05:31+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "政府補助"
+   ],
+   "changed_at": "2026-11-03T12:05:31+08:00",
+   "content_hash": "5d3f32c8b2fadbc752e5b37ec8bfe9c4b4aa42109a4eda53c5f9dd41375f5e0b",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "助學金",
+    "地址",
+    "學雜費",
+    "學雜費減免",
+    "專線",
+    "招生",
+    "獎學金",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-497.json",
+   "detail_revision": "6a3dec4f627a20b6f3a01c2382d79dbb14585213680e6e223a28a6918dc5eb07",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學雜費減免",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "498": {
    "page_id": 498,
@@ -2187,6 +2942,533 @@
    }
   },
   {
+   "id": "fjsh-info-491",
+   "kind": "school_info",
+   "title": "行政單位 › 學務處 › 業務職掌",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-491.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "電話",
+    "分機",
+    "申請",
+    "安全",
+    "工讀",
+    "招生",
+    "新生",
+    "獎懲",
+    "班聯會",
+    "衛生",
+    "住宿",
+    "全勤",
+    "制服",
+    "助學金",
+    "園遊會",
+    "地址",
+    "宣導",
+    "專線",
+    "就學貸款",
+    "服儀",
+    "校隊",
+    "比賽",
+    "測驗",
+    "獎助學金",
+    "獎學金",
+    "申辦",
+    "畢業典禮",
+    "競賽",
+    "課表",
+    "講座",
+    "運動會",
+    "防災",
+    "霸凌"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-491.json",
+   "detail_revision": "76cc69f71985af4ffbf95856675cec027114be915395077dbdcc80bd3ad2a059",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "開學",
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "課表",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#club",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "全勤",
+       "#attendance"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "服儀",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "霸凌",
+       "#safety",
+       "#event",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "運動會",
+       "#contest",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "#club",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "打掃",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 74,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 79,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 82,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 85,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 86,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 89,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 90,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [
+       "就學貸款",
+       "#scholarship"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 95,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 97,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-495",
    "kind": "school_info",
    "title": "教務處 › 註冊組 › 招生資訊",
@@ -2216,6 +3498,244 @@
    "detail_ref": "data/details/fjsh/fjsh-info-495.json",
    "detail_revision": "6ede052d386fb0e1b67624ed2c8804e63d5f96b37da590eef33ee1b1ce60ee80",
    "detail_status": "parsed"
+  },
+  {
+   "id": "fjsh-info-496",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 成績評量",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-496.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "補考",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-496.json",
+   "detail_revision": "e50eec483773e307f96293efbb6bc0fc280b9b68e8a1eb5c08aa74bc50108ae5",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "補考",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "補考",
+       "#makeup"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-497",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 政府補助",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-497.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "助學金",
+    "地址",
+    "學雜費",
+    "學雜費減免",
+    "專線",
+    "招生",
+    "獎學金",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-497.json",
+   "detail_revision": "6a3dec4f627a20b6f3a01c2382d79dbb14585213680e6e223a28a6918dc5eb07",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學雜費減免",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "fjsh-info-627",
@@ -2315,5 +3835,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-03T10:00:12+08:00"
+ "last_run_at": "2026-11-03T12:05:33+08:00"
 }

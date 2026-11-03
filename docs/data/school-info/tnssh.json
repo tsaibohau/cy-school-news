@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-03T09:58:15+08:00",
+ "generated_at": "2026-11-03T12:04:07+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -173,22 +173,34 @@
    "page_id": 72729188805779,
    "url": "https://www.tnssh.tn.edu.tw/aa/equ/",
    "label": "設備組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:01+08:00",
+   "path": [
+    "設備組"
+   ]
   },
   "161925652965786": {
    "page_id": 161925652965786,
    "url": "https://www.tnssh.tn.edu.tw/sam/",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:03+08:00",
+   "path": [
+    "學務處"
+   ]
   },
   "171886361330328": {
    "page_id": 171886361330328,
    "url": "https://www.tnssh.tn.edu.tw/sa/",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:05+08:00",
+   "path": [
+    "學務處"
+   ]
   },
   "202586988112469": {
    "page_id": 202586988112469,
@@ -629,6 +641,61 @@
     "特教組"
    ],
    "order": 65
+  },
+  "224828751160812": {
+   "page_id": 224828751160812,
+   "url": "https://www.tnssh.tn.edu.tw/honor/honor2/",
+   "label": "競賽表現",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "設備組"
+   ],
+   "order": 66
+  },
+  "250100720738336": {
+   "page_id": 250100720738336,
+   "url": "https://www.tnssh.tn.edu.tw/aa/equ/lab/",
+   "label": "實驗室安全",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "設備組"
+   ],
+   "order": 67
+  },
+  "108914512003351": {
+   "page_id": 108914512003351,
+   "url": "https://www.tnssh.tn.edu.tw/?page_id=6381",
+   "label": "實驗室安全衛生規範",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "設備組"
+   ],
+   "order": 68
+  },
+  "230217733535329": {
+   "page_id": 230217733535329,
+   "url": "https://www.tnssh.tn.edu.tw/sa/saw/",
+   "label": "業務職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 69
+  },
+  "108159147684177": {
+   "page_id": 108159147684177,
+   "url": "https://www.tnssh.tn.edu.tw/sa/parent/",
+   "label": "家長會",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 70
   }
  },
  "handbook": {},
@@ -915,5 +982,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-03T09:58:15+08:00"
+ "last_run_at": "2026-11-03T12:04:07+08:00"
 }

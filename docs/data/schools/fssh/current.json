@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T09:46:54+08:00",
+ "generated_at": "2026-11-03T11:55:01+08:00",
  "school": {
   "id": "fssh",
   "name": "國立鳳山高中",
@@ -8,6 +8,54 @@
   "base": "https://www.fssh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fssh-18670",
+   "title": "115-1 第二次段考考試範圍",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18670",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T11:55:01+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "考試範圍",
+     "段考",
+     "#exam",
+     "#midterm"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "考試範圍",
+       "段考",
+       "#exam",
+       "#midterm"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "fssh-18669",
    "title": "「青年百億海外圓夢基金計畫—海外翱翔組」兩項法國棒球交流蹲點案",

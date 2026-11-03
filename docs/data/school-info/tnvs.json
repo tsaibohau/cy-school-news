@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-03T09:58:24+08:00",
+ "generated_at": "2026-11-03T12:04:12+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -989,15 +989,56 @@
    "page_id": 21298262165184,
    "url": "https://www.tnvs.tn.edu.tw/teaching-unit/marine/",
    "label": "輪機科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:08+08:00",
+   "path": [
+    "輪機科"
+   ],
+   "changed_at": "2026-11-03T12:04:08+08:00",
+   "content_hash": "580b25269749aab6facb0d5eb2117d0d0a8bbc3ba5b0e4f2a64d968ee2af7f58",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-21298262165184.json",
+   "detail_revision": "62f27003d1be87ddb2ecf03fd6a4d61b21872662904f85b2058e4f4d4153d37d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "220760910318477": {
    "page_id": 220760910318477,
    "url": "https://www.tnvs.tn.edu.tw/administrative-unit/",
    "label": "行政單位",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:04:10+08:00",
+   "path": [
+    "行政單位"
+   ]
   },
   "154519713332460": {
    "page_id": 154519713332460,
@@ -1742,6 +1783,72 @@
     "水產食品科"
    ],
    "order": 92
+  },
+  "57831002749428": {
+   "page_id": 57831002749428,
+   "url": "https://www.tnvs.tn.edu.tw/marine/marine-intro/",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輪機科"
+   ],
+   "order": 93
+  },
+  "75369253954259": {
+   "page_id": 75369253954259,
+   "url": "https://www.tnvs.tn.edu.tw/marine/marine-teacher/",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輪機科"
+   ],
+   "order": 94
+  },
+  "229111070495395": {
+   "page_id": 229111070495395,
+   "url": "https://www.tnvs.tn.edu.tw/marine/marine-class/",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輪機科"
+   ],
+   "order": 95
+  },
+  "45812437376627": {
+   "page_id": 45812437376627,
+   "url": "https://www.tnvs.tn.edu.tw/marine/marine-equ/",
+   "label": "教學設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輪機科"
+   ],
+   "order": 96
+  },
+  "179238535649781": {
+   "page_id": 179238535649781,
+   "url": "https://www.tnvs.tn.edu.tw/marine/marine-school/",
+   "label": "升學資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輪機科"
+   ],
+   "order": 97
+  },
+  "204944132952042": {
+   "page_id": 204944132952042,
+   "url": "https://www.tnvs.tn.edu.tw/marine/marine-teach/",
+   "label": "教學資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輪機科"
+   ],
+   "order": 98
   }
  },
  "handbook": {},
@@ -1806,6 +1913,47 @@
    "detail_ref": "data/details/tnvs/tnvs-info-14030893984672.json",
    "detail_revision": "a3eb897cd31939420d17e3dc492828bac226b3575310950352a51a6beb428846",
    "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-21298262165184",
+   "kind": "school_info",
+   "title": "輪機科",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/marine/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-21298262165184.json",
+   "detail_revision": "62f27003d1be87ddb2ecf03fd6a4d61b21872662904f85b2058e4f4d4153d37d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tnvs-info-25469034902519",
@@ -3051,5 +3199,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-03T09:58:24+08:00"
+ "last_run_at": "2026-11-03T12:04:12+08:00"
 }

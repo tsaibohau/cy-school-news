@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hhsh",
- "generated_at": "2026-11-03T04:55:33+08:00",
+ "generated_at": "2026-11-03T12:03:19+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "151128910348640": {
@@ -351,23 +351,33 @@
    "page_id": 81118335946836,
    "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=icon&of_cat_sn=",
    "label": "圖示",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "檔案下載 /上傳"
    ],
-   "order": 23
+   "order": 23,
+   "checked_at": "2026-11-03T12:03:15+08:00",
+   "path": [
+    "檔案下載 /上傳",
+    "圖示"
+   ]
   },
   "114538371412268": {
    "page_id": 114538371412268,
    "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=more&of_cat_sn=",
    "label": "列表",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "檔案下載 /上傳"
    ],
-   "order": 24
+   "order": 24,
+   "checked_at": "2026-11-03T12:03:17+08:00",
+   "path": [
+    "檔案下載 /上傳",
+    "列表"
+   ]
   },
   "171663671759660": {
    "page_id": 171663671759660,
@@ -1482,5 +1492,5 @@
   "ff9c890f55",
   "fff273069d"
  ],
- "last_run_at": "2026-11-03T04:55:33+08:00"
+ "last_run_at": "2026-11-03T12:03:19+08:00"
 }
