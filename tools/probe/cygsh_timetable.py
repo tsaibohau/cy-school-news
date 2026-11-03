@@ -15,6 +15,7 @@ from scrape import UA  # noqa: E402
 
 ORIGIN = "https://www.cygsh.cy.edu.tw"
 PAGES = [ORIGIN + "/p/406-1013-186482,r508.php",   # 115-1 正式課表公告
+         ORIGIN + "/p/406-1013-186383,r508.php",   # 115-1 試行課表
          ORIGIN + "/p/412-1013-1779.php",           # 教務處 › 教學組 › 線上課表
          ORIGIN + "/p/412-1013-1765.php"]           # 功能快捷選單 › 線上課表
 WANT = re.compile(r"課表|課程表|timetable|schedule|\.pdf|\.xlsx?|\.ods|\.html?$|drive\.google|docs\.google|kebiao|class", re.I)
@@ -49,7 +50,13 @@ for page in PAGES:
     main = resp.text
     m = re.search(r'<div[^>]+class="[^"]*(?:mpgdetail|module-detail|art-text|mptattach)[^"]*"[\s\S]*', main)
     region = m.group(0)[:60000] if m else main
-    rows = [a for a in anchors(region, page) if WANT.search(a[1] + " " + a[2])]
+    every = anchors(main, page)
+    skip = re.compile(r"/p/40[34]-|/p/412-|javascript:|#|mailto:|facebook|instagram|youtube|line\.me|/app/index\.php|Lang=|/p/1[0-9]{2}-1013|/var/file/13/1013/msys|rss", re.I)
+    print("  all links:", len(every))
+    for tag, url, label in every:
+        if not skip.search(url):
+            print("  .", tag, "|", label, "|", url[:150])
+    rows = [a for a in every if WANT.search(a[1] + " " + a[2]) and not skip.search(a[1])]
     for tag, url, label in rows[:40]:
         print(" ", tag, "|", label, "|", url)
         host = urlparse(url).hostname or ""
