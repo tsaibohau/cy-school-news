@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mljh",
- "generated_at": "2026-11-03T18:21:33+08:00",
+ "generated_at": "2026-11-03T23:40:42+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31793209037602": {
@@ -258,8 +258,13 @@
    "page_id": 158230453048764,
    "url": "https://mljh.ylc.edu.tw/cl.aspx?n=128594",
    "label": "教師手冊",
-   "status": "pending",
-   "depth": 0
+   "status": "excluded_section",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:40:40+08:00",
+   "path": [
+    "教師專區",
+    "教師手冊"
+   ]
   },
   "185629673889954": {
    "page_id": 185629673889954,
@@ -596,5 +601,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-03T18:21:33+08:00"
+ "last_run_at": "2026-11-03T23:40:42+08:00"
 }

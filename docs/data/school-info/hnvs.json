@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-03T20:01:13+08:00",
+ "generated_at": "2026-11-03T23:41:04+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -829,15 +829,266 @@
    "page_id": 12992228456648,
    "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,13,424,409",
    "label": "校務開放資料",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:41:01+08:00",
+   "path": [
+    "校務開放資料"
+   ],
+   "changed_at": "2026-11-03T23:41:01+08:00",
+   "content_hash": "9fcec5424c5df8cdcf6809ef2a7d436cafaa8f5be6d8fa883a813c1f74cb9eef",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "校史"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-12992228456648.json",
+   "detail_revision": "1af4f30625b28e43324726eb1ab27def71c7be7fffbf9db367da6be8f070d91c",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-03-26"
+      ]
+     }
+    ]
+   }
   },
   "48016651586876": {
    "page_id": 48016651586876,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,429,425,428",
    "label": "學生專區",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:41:03+08:00",
+   "path": [
+    "學生專區"
+   ],
+   "changed_at": "2026-11-03T23:41:03+08:00",
+   "content_hash": "1b6952dc8f9cdbe06fd68b0eb2d826e3d90fe195cd420880afa18da13302e998",
+   "doc_links": [],
+   "keywords": [
+    "學雜費",
+    "收費",
+    "代辦費"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-48016651586876.json",
+   "detail_revision": "0b5069cce13f227832a506d4308554987153e6170007be8b79cafdeb23cec601",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-01-18"
+      ]
+     }
+    ]
+   }
   },
   "127901116031406": {
    "page_id": 127901116031406,
@@ -3818,6 +4069,182 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-12992228456648",
+   "kind": "school_info",
+   "title": "校務開放資料",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,13,424,409",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "校史"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-12992228456648.json",
+   "detail_revision": "1af4f30625b28e43324726eb1ab27def71c7be7fffbf9db367da6be8f070d91c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-03-26"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-23012211157513",
    "kind": "school_info",
    "title": "優質認證",
@@ -3895,6 +4322,89 @@
       ],
       "d": [
        "2020-12-22"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hnvs-info-48016651586876",
+   "kind": "school_info",
+   "title": "學生專區",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,429,425,428",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "學雜費",
+    "收費",
+    "代辦費"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-48016651586876.json",
+   "detail_revision": "0b5069cce13f227832a506d4308554987153e6170007be8b79cafdeb23cec601",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-01-18"
       ]
      }
     ]
@@ -4824,5 +5334,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T20:01:13+08:00"
+ "last_run_at": "2026-11-03T23:41:04+08:00"
 }

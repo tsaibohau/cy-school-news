@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-03T20:04:38+08:00",
+ "generated_at": "2026-11-03T23:44:21+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -2028,23 +2028,376 @@
    "page_id": 101707251286139,
    "url": "https://www.shsh.ylc.edu.tw/office/div_200/%e6%95%99%e5%8b%99%e8%99%95%e5%b7%a5%e4%bd%9c%e8%81%b7%e6%8e%8c/",
    "label": "教務處工作職掌",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 32
+   "order": 32,
+   "checked_at": "2026-11-03T23:44:17+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教務處工作職掌"
+   ],
+   "changed_at": "2026-11-03T23:44:17+08:00",
+   "content_hash": "384f1a93f3d6117627a498659f29defb26e29870dd528891b9e2127c9033b784",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "競賽",
+    "升學",
+    "申請",
+    "入學",
+    "助學金",
+    "學生證",
+    "宣導",
+    "獎助學金",
+    "科展",
+    "補考",
+    "語文競賽",
+    "課業輔導",
+    "轉學",
+    "送件",
+    "選修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-101707251286139.json",
+   "detail_revision": "18034393ea8eba74824fb6d39188a82b685da2787cfeec782a77561f320d4a4a",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 23,
+      "t": [
+       "註冊組",
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "教務處",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "課輔",
+       "選課",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "轉學",
+       "休學",
+       "復學",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [
+       "重補修",
+       "補考",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "成績單",
+       "學生證",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 74,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "258060267439917": {
    "page_id": 258060267439917,
    "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_210/%e6%95%99%e5%ad%b8%e7%b5%84%e5%b7%a5%e4%bd%9c%e8%81%b7%e6%8e%8c/",
    "label": "教學組工作職掌",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 33
+   "order": 33,
+   "checked_at": "2026-11-03T23:44:19+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組",
+    "教學組工作職掌"
+   ],
+   "changed_at": "2026-11-03T23:44:19+08:00",
+   "content_hash": "676e865ac1117b2eb3ef8d37c0f1f4d1d0a1308f920bba346ca129bfbb1a5488",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "分機",
+    "語文競賽",
+    "課業輔導",
+    "選修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-258060267439917.json",
+   "detail_revision": "0cf3d594c33ae19fb372e58d301fb3e1140b6a10f6ef086622f36b1ac4b8a869",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "課輔",
+       "選課",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   "42026010223680": {
    "page_id": 42026010223680,
@@ -4566,6 +4919,299 @@
    "detail_status": "parsed"
   },
   {
+   "id": "shsh-info-101707251286139",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 教務處工作職掌",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_200/%e6%95%99%e5%8b%99%e8%99%95%e5%b7%a5%e4%bd%9c%e8%81%b7%e6%8e%8c/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "競賽",
+    "升學",
+    "申請",
+    "入學",
+    "助學金",
+    "學生證",
+    "宣導",
+    "獎助學金",
+    "科展",
+    "補考",
+    "語文競賽",
+    "課業輔導",
+    "轉學",
+    "送件",
+    "選修"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-101707251286139.json",
+   "detail_revision": "18034393ea8eba74824fb6d39188a82b685da2787cfeec782a77561f320d4a4a",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 23,
+      "t": [
+       "註冊組",
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "教務處",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "課輔",
+       "選課",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "轉學",
+       "休學",
+       "復學",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [
+       "重補修",
+       "補考",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "成績單",
+       "學生證",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 74,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "shsh-info-105972222407381",
    "kind": "school_info",
    "title": "校長室 › 歷任校長 › 吳友梅校長",
@@ -5713,6 +6359,69 @@
    }
   },
   {
+   "id": "shsh-info-258060267439917",
+   "kind": "school_info",
+   "title": "教務處 › 教學組 › 教學組工作職掌",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_210/%e6%95%99%e5%ad%b8%e7%b5%84%e5%b7%a5%e4%bd%9c%e8%81%b7%e6%8e%8c/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "分機",
+    "語文競賽",
+    "課業輔導",
+    "選修"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-258060267439917.json",
+   "detail_revision": "0cf3d594c33ae19fb372e58d301fb3e1140b6a10f6ef086622f36b1ac4b8a869",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "課輔",
+       "選課",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "shsh-info-263824873246436",
    "kind": "school_info",
    "title": "校長室 › 歷任校長 › 郭　藩校長",
@@ -6418,5 +7127,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T20:04:38+08:00"
+ "last_run_at": "2026-11-03T23:44:21+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-03T20:03:02+08:00",
+ "generated_at": "2026-11-03T23:42:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -4591,22 +4591,78 @@
    "page_id": 33499256995425,
    "url": "https://www.fhsh.khc.edu.tw/sa/%e7%92%b0%e5%a2%83%e8%a1%9b%e7%94%9f",
    "label": "環境衛生",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:42:27+08:00",
+   "path": [
+    "環境衛生"
+   ]
   },
   "149763357069977": {
    "page_id": 149763357069977,
    "url": "https://www.fhsh.khc.edu.tw/sa/%e7%92%b0%e5%a2%83%e8%a1%9b%e7%94%9f/%e6%8e%83%e5%9c%b0%e5%8d%80%e5%9f%9f",
    "label": "掃地區域",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:42:29+08:00",
+   "path": [
+    "學務處",
+    "環境衛生"
+   ],
+   "changed_at": "2026-11-03T23:42:29+08:00",
+   "content_hash": "8ffa48ed281ba5a393d5c05e80fded3a834a8d4fa660e871352d084e843ade68",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "一年級各班獨立檔案",
+     "url": "https://drive.google.com/drive/folders/1TV7hRJ8bzPrWGzSCzTIYnr6_SDmvg3uF?usp=sharing"
+    },
+    {
+     "name": "二年級各班獨立檔案",
+     "url": "https://drive.google.com/drive/folders/1jROfLHoHZ0ZM-bS7NoLQ6Es_MiqXFP9b?usp=sharing"
+    },
+    {
+     "name": "三年級各班獨立檔案",
+     "url": "https://drive.google.com/drive/folders/16uLL6u6JD55MA8-Nj5qsSj7c50EXy69N?usp=sharing"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-149763357069977.json",
+   "detail_revision": "cb8d0db9d6c5b8babca4fe90ae5f8c5a4758a9b687fe73363f28d74e52b7e53c",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "#health"
+    ],
+    "segments": []
+   }
   },
   "152689167286171": {
    "page_id": 152689167286171,
    "url": "https://www.fhsh.khc.edu.tw/sa/%e7%92%b0%e5%a2%83%e8%a1%9b%e7%94%9f/%e8%a1%9b%e7%94%9f%e7%b3%be%e5%af%9f",
    "label": "衛生糾察",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:42:30+08:00",
+   "path": [
+    "學務處",
+    "環境衛生"
+   ]
   },
   "82533206687982": {
    "page_id": 82533206687982,
@@ -8816,6 +8872,63 @@
    }
   },
   {
+   "id": "fhsh-info-149763357069977",
+   "kind": "school_info",
+   "title": "學務處 › 環境衛生",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/sa/%e7%92%b0%e5%a2%83%e8%a1%9b%e7%94%9f/%e6%8e%83%e5%9c%b0%e5%8d%80%e5%9f%9f",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "一年級各班獨立檔案",
+    "二年級各班獨立檔案",
+    "三年級各班獨立檔案",
+    "教育雲端硬碟"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "一年級各班獨立檔案",
+     "url": "https://drive.google.com/drive/folders/1TV7hRJ8bzPrWGzSCzTIYnr6_SDmvg3uF?usp=sharing"
+    },
+    {
+     "name": "二年級各班獨立檔案",
+     "url": "https://drive.google.com/drive/folders/1jROfLHoHZ0ZM-bS7NoLQ6Es_MiqXFP9b?usp=sharing"
+    },
+    {
+     "name": "三年級各班獨立檔案",
+     "url": "https://drive.google.com/drive/folders/16uLL6u6JD55MA8-Nj5qsSj7c50EXy69N?usp=sharing"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-149763357069977.json",
+   "detail_revision": "cb8d0db9d6c5b8babca4fe90ae5f8c5a4758a9b687fe73363f28d74e52b7e53c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "#health"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "fhsh-info-155408795879373",
    "kind": "school_info",
    "title": "營養午餐",
@@ -11149,5 +11262,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-03T20:03:02+08:00"
+ "last_run_at": "2026-11-03T23:42:32+08:00"
 }

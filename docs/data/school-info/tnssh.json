@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-03T20:02:26+08:00",
+ "generated_at": "2026-11-03T23:41:48+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -294,15 +294,23 @@
    "page_id": 7093796562818,
    "url": "https://www.tnssh.tn.edu.tw/ga/",
    "label": "總務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:41:45+08:00",
+   "path": [
+    "總務處"
+   ]
   },
   "45314423340640": {
    "page_id": 45314423340640,
    "url": "https://www.tnssh.tn.edu.tw/ga/pur/",
    "label": "庶務組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:41:47+08:00",
+   "path": [
+    "庶務組"
+   ]
   },
   "140250941780567": {
    "page_id": 140250941780567,
@@ -794,6 +802,39 @@
     "健康中心"
    ],
    "order": 76
+  },
+  "231194927575420": {
+   "page_id": 231194927575420,
+   "url": "https://www.tnssh.tn.edu.tw/ga/gaw/",
+   "label": "業務職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "總務處"
+   ],
+   "order": 77
+  },
+  "3847680211365": {
+   "page_id": 3847680211365,
+   "url": "https://www.tnssh.tn.edu.tw/sa/gaw/",
+   "label": "業務職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "庶務組"
+   ],
+   "order": 78
+  },
+  "88404920796662": {
+   "page_id": 88404920796662,
+   "url": "https://www.tnssh.tn.edu.tw/ga/pur/place/",
+   "label": "場地借用申請單與收費標準",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "庶務組"
+   ],
+   "order": 79
   }
  },
  "handbook": {},
@@ -1080,5 +1121,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-03T20:02:26+08:00"
+ "last_run_at": "2026-11-03T23:41:48+08:00"
 }

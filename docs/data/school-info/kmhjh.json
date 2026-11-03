@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-03T20:02:46+08:00",
+ "generated_at": "2026-11-03T23:42:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -402,22 +402,38 @@
    "page_id": 15040543534265,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/counseling/",
    "label": "輔導活動科",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:42:09+08:00",
+   "path": [
+    "教學單位",
+    "高中部",
+    "輔導活動科"
+   ]
   },
   "250482601386619": {
    "page_id": 250482601386619,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/military-health/",
    "label": "軍訓健護科",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:42:11+08:00",
+   "path": [
+    "教學單位",
+    "高中部",
+    "軍訓健護科"
+   ]
   },
   "134505245813386": {
    "page_id": 134505245813386,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/school-data/",
    "label": "校務資料",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:42:13+08:00",
+   "path": [
+    "校務資料"
+   ]
   },
   "76714790719173": {
    "page_id": 76714790719173,
@@ -1632,6 +1648,54 @@
     "烹調技術科"
    ],
    "order": 138
+  },
+  "122608286838827": {
+   "page_id": 122608286838827,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/counseling/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "輔導活動科"
+   ],
+   "order": 139
+  },
+  "187986150543550": {
+   "page_id": 187986150543550,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/counseling/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "輔導活動科"
+   ],
+   "order": 140
+  },
+  "86355605067581": {
+   "page_id": 86355605067581,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/military-health/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "軍訓健護科"
+   ],
+   "order": 141
+  },
+  "19283510379343": {
+   "page_id": 19283510379343,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/military-health/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "軍訓健護科"
+   ],
+   "order": 142
   }
  },
  "handbook": {},
@@ -1885,5 +1949,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-03T20:02:46+08:00"
+ "last_run_at": "2026-11-03T23:42:15+08:00"
 }

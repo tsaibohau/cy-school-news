@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-03T20:02:21+08:00",
+ "generated_at": "2026-11-03T23:41:42+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -425,30 +425,44 @@
    "page_id": 55756874500878,
    "url": "https://www.tngs.tn.edu.tw/privacy/",
    "label": "隱私權保護政策",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:41:37+08:00",
+   "path": [
+    "隱私權保護政策"
+   ]
   },
   "7250608223978": {
    "page_id": 7250608223978,
    "url": "https://www.tngs.tn.edu.tw/sitemap/",
    "label": "網站導覽",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 36
+   "order": 36,
+   "checked_at": "2026-11-03T23:41:39+08:00",
+   "path": [
+    "網站導覽",
+    "網站導覽"
+   ]
   },
   "36694313236568": {
    "page_id": 36694313236568,
    "url": "https://www.tngs.tn.edu.tw/about/organization/",
    "label": "學校組織架構圖",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "校務資訊"
    ],
-   "order": 37
+   "order": 37,
+   "checked_at": "2026-11-03T23:41:41+08:00",
+   "path": [
+    "學校簡介",
+    "組織編制"
+   ]
   },
   "113084031077053": {
    "page_id": 113084031077053,
@@ -1717,5 +1731,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-03T20:02:21+08:00"
+ "last_run_at": "2026-11-03T23:41:42+08:00"
 }

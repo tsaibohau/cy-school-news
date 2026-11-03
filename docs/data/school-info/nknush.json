@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-03T20:02:53+08:00",
+ "generated_at": "2026-11-03T23:42:20+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -290,15 +290,26 @@
    "page_id": 110715232906179,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/library/%E5%9C%8B%E9%9A%9B%E4%BA%A4%E6%B5%81/",
    "label": "國際教育網",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:42:16+08:00",
+   "path": [
+    "行政單位",
+    "圖書館",
+    "國際交流"
+   ]
   },
   "56434183120942": {
    "page_id": 56434183120942,
    "url": "https://www.nknush.kh.edu.tw/秘書室/內控說明書/",
    "label": "內控說明書",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:42:18+08:00",
+   "path": [
+    "祕書室",
+    "內控說明書"
+   ]
   },
   "13318019334944": {
    "page_id": 13318019334944,
@@ -792,6 +803,30 @@
     "圖書館"
    ],
    "order": 69
+  },
+  "212428382175947": {
+   "page_id": 212428382175947,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/library/%e5%9c%8b%e9%9a%9b%e4%ba%a4%e6%b5%81/",
+   "label": "國際交流",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "國際交流"
+   ],
+   "order": 70
+  },
+  "235507959107089": {
+   "page_id": 235507959107089,
+   "url": "https://www.nknush.kh.edu.tw/%e7%a7%98%e6%9b%b8%e5%ae%a4/%e5%85%a7%e6%8e%a7%e8%aa%aa%e6%98%8e%e6%9b%b8/",
+   "label": "內控說明書",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "祕書室",
+    "內控說明書"
+   ],
+   "order": 71
   }
  },
  "handbook": {},
@@ -1093,5 +1128,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-03T20:02:53+08:00"
+ "last_run_at": "2026-11-03T23:42:20+08:00"
 }

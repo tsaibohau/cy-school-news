@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "pmai",
- "generated_at": "2026-11-03T20:02:11+08:00",
+ "generated_at": "2026-11-03T23:41:29+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "128225757814606": {
@@ -269,15 +269,25 @@
    "page_id": 187224624831924,
    "url": "https://www.pmai.tn.edu.tw/administrative-unit/con",
    "label": "輔導室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:41:26+08:00",
+   "path": [
+    "行政單位",
+    "輔導室"
+   ]
   },
   "54337809791737": {
    "page_id": 54337809791737,
    "url": "https://www.pmai.tn.edu.tw/administrative-unit/continuing-education-dep",
    "label": "進修部",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:41:28+08:00",
+   "path": [
+    "行政單位",
+    "進修部"
+   ]
   },
   "99046560457448": {
    "page_id": 99046560457448,
@@ -1018,6 +1028,126 @@
     "實習處"
    ],
    "order": 92
+  },
+  "61633090624050": {
+   "page_id": 61633090624050,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e5%bf%83%e7%90%86%e6%b8%ac%e9%a9%97",
+   "label": "心理測驗",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 93
+  },
+  "274431241142259": {
+   "page_id": 274431241142259,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e5%bf%83%e8%bc%94%e5%9c%98%e9%ab%94",
+   "label": "心輔團體",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 94
+  },
+  "238256124259467": {
+   "page_id": 238256124259467,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e8%a8%88%e7%95%ab%e6%88%90%e6%9e%9c",
+   "label": "計畫成果",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 95
+  },
+  "41371142563206": {
+   "page_id": 41371142563206,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e5%80%8b%e5%88%a5%e8%ab%ae%e8%a9%a2",
+   "label": "個別諮詢",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 96
+  },
+  "109093789509435": {
+   "page_id": 109093789509435,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e7%94%9f%e5%91%bd%e6%9a%a8%e6%80%a7%e5%88%a5%e5%b9%b3%e7%ad%89%e6%95%99%e8%82%b2",
+   "label": "生命暨性別平等教育",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 97
+  },
+  "171286224238713": {
+   "page_id": 171286224238713,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e7%94%9f%e6%b6%af%e8%88%87%e5%ad%b8%e7%bf%92",
+   "label": "生涯與學習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 98
+  },
+  "215601384962167": {
+   "page_id": 215601384962167,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e8%aa%8d%e8%bc%94%e5%88%b6%e5%ba%a6",
+   "label": "認輔制度",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 99
+  },
+  "101609080335703": {
+   "page_id": 101609080335703,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e5%90%8c%e5%84%95%e8%bc%94%e5%b0%8e",
+   "label": "同儕輔導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 100
+  },
+  "164316603583831": {
+   "page_id": 164316603583831,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e6%95%99%e5%b8%ab%e7%a0%94%e7%bf%92",
+   "label": "教師研習",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 101
+  },
+  "63441022473666": {
+   "page_id": 63441022473666,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/con/%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90",
+   "label": "相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "輔導室"
+   ],
+   "order": 102
   }
  },
  "handbook": {},
@@ -1276,5 +1406,5 @@
   "f7e502496b",
   "fd7193de53"
  ],
- "last_run_at": "2026-11-03T20:02:11+08:00"
+ "last_run_at": "2026-11-03T23:41:29+08:00"
 }

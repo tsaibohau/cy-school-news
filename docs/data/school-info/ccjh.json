@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-03T20:04:08+08:00",
+ "generated_at": "2026-11-03T23:43:50+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -1551,11 +1551,162 @@
   },
   "132": {
    "page_id": 132,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T23:43:46+08:00",
+   "path": [
+    "行政單位",
+    "竹中學務處",
+    "專任運動教練"
+   ],
+   "changed_at": "2026-11-03T23:43:46+08:00",
+   "content_hash": "f3999e2722b6aa8846f3899e9b955974a277227945b20cbd05a2b71d0e9280aa",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "校隊",
+    "比賽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-132.json",
+   "detail_revision": "e85f68aaa727ba2a93de5d910af7f256123e2ada90d5ee86f4cb4829e66ca8a9",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "寒假",
+       "暑假",
+       "#club"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "133": {
    "page_id": 133,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T23:43:48+08:00",
+   "path": [
+    "行政單位",
+    "竹中學務處",
+    "宿舍管理員"
+   ],
+   "changed_at": "2026-11-03T23:43:48+08:00",
+   "content_hash": "c3b8cbde8ed91c3211aa87cc7953b787369ec1fa4583c9b9313102ad9b8a2ce5",
+   "doc_links": [],
+   "keywords": [
+    "宿舍",
+    "住宿",
+    "學生宿舍",
+    "宿舍生",
+    "作息",
+    "安全"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-133.json",
+   "detail_revision": "9512cf1c93fc764feeff7e06699138f8b8c0b72ccaebacd18b020b5b479d130c",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "宿舍",
+     "#accommodation"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "作息",
+       "宿舍",
+       "#accommodation",
+       "#safety",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "宿舍",
+       "導師",
+       "家長",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "宿舍",
+       "生活",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "宿舍",
+       "生活",
+       "#accommodation"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "134": {
    "page_id": 134,
@@ -3322,6 +3473,161 @@
    }
   },
   {
+   "id": "ccjh-info-132",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中學務處 › 專任運動教練",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-132.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "校隊",
+    "比賽"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-132.json",
+   "detail_revision": "e85f68aaa727ba2a93de5d910af7f256123e2ada90d5ee86f4cb4829e66ca8a9",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "寒假",
+       "暑假",
+       "#club"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccjh-info-133",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中學務處 › 宿舍管理員",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-133.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "宿舍",
+    "住宿",
+    "學生宿舍",
+    "宿舍生",
+    "作息",
+    "安全"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-133.json",
+   "detail_revision": "9512cf1c93fc764feeff7e06699138f8b8c0b72ccaebacd18b020b5b479d130c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "宿舍",
+     "#accommodation"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "作息",
+       "宿舍",
+       "#accommodation",
+       "#safety",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "宿舍",
+       "導師",
+       "家長",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "宿舍",
+       "生活",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "宿舍",
+       "生活",
+       "#accommodation"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-143",
    "kind": "school_info",
    "title": "行政單位 › 竹中輔導處",
@@ -3534,5 +3840,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-03T20:04:08+08:00"
+ "last_run_at": "2026-11-03T23:43:50+08:00"
 }

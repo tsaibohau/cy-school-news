@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-03T20:04:33+08:00",
+ "generated_at": "2026-11-03T23:44:16+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -1740,15 +1740,90 @@
    "page_id": 145937902663514,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e6%ad%b7%e4%bb%bb%e6%a0%a1%e9%95%b7/",
    "label": "歷任校長",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:44:12+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校務資料開放",
+    "認識虎農",
+    "歷任校長"
+   ],
+   "changed_at": "2026-11-03T23:44:12+08:00",
+   "content_hash": "0a7f2a7fd304a6e89000c15674833b05b560e045e18d11d01c1cba8fa1e67d73",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "歷任校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-145937902663514.json",
+   "detail_revision": "18e07c6232a648c0e208efe237c1bb10f55c5f7c3c5d940af4b58052ccc75e88",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "165883895427263": {
    "page_id": 165883895427263,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e6%a0%a1%e6%ad%8c%e6%a0%a1%e8%a8%93/",
    "label": "校歌校訓",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T23:44:14+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校務資料開放",
+    "認識虎農",
+    "校歌校訓"
+   ],
+   "changed_at": "2026-11-03T23:44:14+08:00",
+   "content_hash": "0eee10371508cf3fb5084ae2acc42c72845470e7a4c015d104f1324a3e23ed78",
+   "doc_links": [],
+   "keywords": [
+    "校歌",
+    "校訓"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-165883895427263.json",
+   "detail_revision": "9700ce2192b640255037eae14db161f9972f99f644ce0c30d433176926aaeab8",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "156540777689270": {
    "page_id": 156540777689270,
@@ -6362,6 +6437,83 @@
    }
   },
   {
+   "id": "hwaivs-info-145937902663514",
+   "kind": "school_info",
+   "title": "校務資料開放 › 認識虎農 › 歷任校長",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e6%ad%b7%e4%bb%bb%e6%a0%a1%e9%95%b7/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "歷任校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-145937902663514.json",
+   "detail_revision": "18e07c6232a648c0e208efe237c1bb10f55c5f7c3c5d940af4b58052ccc75e88",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "hwaivs-info-165883895427263",
+   "kind": "school_info",
+   "title": "校務資料開放 › 認識虎農 › 校歌校訓",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e6%a0%a1%e6%ad%8c%e6%a0%a1%e8%a8%93/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "校歌",
+    "校訓"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-165883895427263.json",
+   "detail_revision": "9700ce2192b640255037eae14db161f9972f99f644ce0c30d433176926aaeab8",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "hwaivs-info-184647343972996",
    "kind": "school_info",
    "title": "國立虎尾高級農工職業學校 › 升學專區",
@@ -6780,5 +6932,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-03T20:04:33+08:00"
+ "last_run_at": "2026-11-03T23:44:16+08:00"
 }

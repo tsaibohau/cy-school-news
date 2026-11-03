@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-03T20:02:42+08:00",
+ "generated_at": "2026-11-03T23:42:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -478,34 +478,49 @@
    "page_id": 59489831417948,
    "url": "https://cm.cmvsedu.tw/modules/jill_booking/list.php",
    "label": "個人預約清單",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "場地預約"
    ],
-   "order": 34
+   "order": 34,
+   "checked_at": "2026-11-03T23:42:01+08:00",
+   "path": [
+    "場地預約",
+    "個人預約清單"
+   ]
   },
   "81691326605081": {
    "page_id": 81691326605081,
    "url": "https://cm.cmvsedu.tw/modules/jill_booking/listapproval.php",
    "label": "審核清單",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "場地預約"
    ],
-   "order": 35
+   "order": 35,
+   "checked_at": "2026-11-03T23:42:03+08:00",
+   "path": [
+    "場地預約",
+    "審核清單"
+   ]
   },
   "177226433047728": {
    "page_id": 177226433047728,
    "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=27",
    "label": "不迷小紅書，青春不迷途",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 36
+   "order": 36,
+   "checked_at": "2026-11-03T23:42:07+08:00",
+   "path": [
+    "好站連結",
+    "不迷小紅書，青春不迷途"
+   ]
   },
   "124454263579534": {
    "page_id": 124454263579534,
@@ -1273,6 +1288,18 @@
     "<i class='fa fa-th-large'></i>"
    ],
    "order": 105
+  },
+  "87226551932743": {
+   "page_id": 87226551932743,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=27",
+   "label": "title:優質網站",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "好站連結",
+    "不迷小紅書，青春不迷途"
+   ],
+   "order": 106
   }
  },
  "handbook": {},
@@ -1589,5 +1616,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-03T20:02:42+08:00"
+ "last_run_at": "2026-11-03T23:42:09+08:00"
 }
