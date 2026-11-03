@@ -434,6 +434,14 @@
       return { id: item.id, title: item.title, date: day, school_name: item.school_name || "", url: item.url || "", note: note };
     });
   }
+  /* Question tokens. A split part (「學生證丟了」+「如何繳交」) takes its topics from the subject only:
+     the words added for the part (繳交) would otherwise match any notice about handing something in. */
+  function askedTokensFor(query, options) {
+    if (!Tokens) return null;
+    var asked = Tokens.tokenizeQuestion(query);
+    if (options && options.tokenSubject) asked.topics = Tokens.tokenizeQuestion(options.tokenSubject).topics;
+    return asked;
+  }
   function rank(query, items, details, options) {
     query = stripSchoolNames(clean(query));
     var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
@@ -449,7 +457,7 @@
     var metadataRows = SearchQuery.rank ? SearchQuery.rank(sourceItems, query, { asOf: options && options.asOf, details: metadataDetails, validity: Validity }) : [];
     var metadataById = {};
     metadataRows.forEach(function (row) { metadataById[row.item.id] = row; });
-    var askedTokens = Tokens ? Tokens.tokenizeQuestion(query) : null;
+    var askedTokens = askedTokensFor(query, options);
     var ranked = sourceItems.map(function (item) {
       var metadataRow = metadataById[item.id];
       var metadataScore = metadataRow ? metadataRow.score : SearchQuery.announcementScore(item, query);
@@ -1964,7 +1972,8 @@
      問的面向「怎麼寫」「沒寫會怎樣」。主題先自己翻一遍（規定、行事曆、公告全部翻），每個面向再
      各自找；找不到的面向照實說，不拿別的東西硬湊。 */
   var ASPECTS = [
-    { id: "consequence", label: "沒做會怎樣", ask: /沒(?:有)?(?:寫|交|繳|去|到|參加|做|完成|帶|請)|不(?:寫|交|繳|去|到|參加|做|帶|請)|遲交|晚交|會怎(?:麼)?樣|會發生|後果|會被|會不會被|怎麼辦|罰/,
+    /* A bare 「怎麼辦」 is not about a penalty: 「學生證丟了怎麼辦」 asks how to get a new one. */
+    { id: "consequence", label: "沒做會怎樣", ask: /沒(?:有)?(?:寫|交|繳|去|到|參加|做|完成|帶|請)|不(?:寫|交|繳|去|到|參加|做|帶|請)|遲交|晚交|會怎(?:麼)?樣|會發生|後果|會被|會不會被|忘(?:了|記)|罰/,
       phrase: "未繳交會怎樣", titles: /規定|辦法|要點|須知|流程|注意事項|實施計畫/, cues: /逾期|未繳|未交|未完成|未依|未於|遲交|補交|扣分|扣減|不予|不計|零分|懲處|記(?:警告|小過|大過)|曠課|視同|取消/ },
     { id: "method", label: "怎麼做", ask: /怎麼(?:寫|做|交|繳|申請|報名|弄|填|辦|請|借|還|查|用|處理|準備|參加|選|登記|上傳)|如何|方式|流程|步驟|格式|要寫什麼|寫什麼/,
       phrase: "如何繳交", titles: /流程|方式|格式|說明|須知|規定|辦法|要點|範本|電子檔|注意事項|實施計畫/, cues: /方式|流程|步驟|格式|字數|上傳|繳交至|交至|填寫|系統|檔名|範本|規格|頁數|A4/ },
@@ -2100,7 +2109,7 @@
     split.parts.forEach(function (part) {
       /* 「沒寫會怎樣」: look for a penalty first; none found → tease (and say where to look). */
       if (part.aspect.id === "consequence" && Composer) { sections.push(consequenceSection(part, overview, items, details, options, shown)); return; }
-      var sub = part.subject + part.aspect.phrase, found = answerCore(sub, items, details, options);
+      var sub = part.subject + part.aspect.phrase, found = answerCore(sub, items, details, Object.assign({}, options, { tokenSubject: part.subject }));
       /* An aspect counts as answered only by a sentence that is about it (逾期、扣分… for 沒交會怎樣),
          not by the subject's overview again. */
       var text = clean(found && found.status === "answered" ? found.summary || "" : "");
@@ -2297,7 +2306,7 @@
       limitation: "依公告的分段標籤（日期與類型）回答；內文細節以公告原文為準。" };
   }
   function announcementLayer(query, items, details, options) {
-    var asked = Tokens ? Tokens.tokenizeQuestion(query) : null;
+    var asked = askedTokensFor(query, options);
     var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);
     /* 學生手冊 has day-school and 進修部 versions of the same rules; use 進修部 only when asked. */
     if (!/進修/.test(query) && ranked.some(function (row) { return !/進修部/.test(row.item.title || ""); })) {

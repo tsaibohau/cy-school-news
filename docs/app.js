@@ -17,6 +17,7 @@
   function finishInitialLoading() {
     var loading = document.getElementById("appLoading");
     if (loading) loading.hidden = true;
+    if (window.__cyNewsLoadingDance) window.__cyNewsLoadingDance.stop();
   }
 
   function startApp() {
@@ -1510,14 +1511,20 @@
       return !(navigator.serviceWorker && navigator.serviceWorker.controller);
     }
 
-    function fetchManifest() {
-      return fetch("data/schools/manifest.json?_=" + Date.now(), { cache: "no-store" })
+    /* First load asks the browser to revalidate (a 304 when nothing changed) instead of
+       downloading every file again; the refresh button still bypasses every cache. */
+    function dataFetch(url, revalidate) {
+      return revalidate ? fetch(url, { cache: "no-cache" }) : fetch(url + "?_=" + Date.now(), { cache: "no-store" });
+    }
+
+    function fetchManifest(revalidate) {
+      return dataFetch("data/schools/manifest.json", revalidate)
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
     }
 
-    function currentDataRequest() {
+    function currentDataRequest(revalidate) {
       if (state.school === "all") return Promise.resolve({ url: "data/announcements.json", manifest: null });
-      return fetchManifest().then(function (manifest) {
+      return fetchManifest(revalidate).then(function (manifest) {
         var school = (manifest.schools || []).find(function (row) { return row.id === state.school; });
         if (!school || !school.current) throw new Error("unknown school shard");
         return { url: school.current, manifest: manifest };
@@ -1538,22 +1545,26 @@
       return data;
     }
 
-    function fetchData(skipNotifications) {
+    function fetchData(skipNotifications, options) {
+      var revalidate = !!(options && options.revalidate);
       var deletedIds = accountAuth && typeof accountAuth.getDeletedAnnouncementIds === "function" ?
         accountAuth.getDeletedAnnouncementIds().catch(function () { return Object.keys(state.deletedAnnouncements); }) :
         Promise.resolve(Object.keys(state.deletedAnnouncements));
-      return deletedIds.then(function (ids) {
-        state.deletedAnnouncements = {};
-        ids.forEach(function (id) { state.deletedAnnouncements[id] = true; });
-        return currentDataRequest();
-      }).then(function (request) {
-        return fetch(request.url + "?_=" + Date.now(), { cache: "no-store" })
+      /* The deleted list (account service) and the data file download at the same time. */
+      var download = currentDataRequest(revalidate).then(function (request) {
+        return dataFetch(request.url, revalidate)
         .then(function (r) {
           if (!r.ok) throw new Error(r.status);
           return r.json().then(function (data) {
             return { data: normalizeCurrentData(data, request.manifest), freshNetwork: isFreshNetworkResponse(r) };
           });
         });
+      });
+      download.catch(function () { /* handled below, after the deleted list */ });
+      return deletedIds.then(function (ids) {
+        state.deletedAnnouncements = {};
+        ids.forEach(function (id) { state.deletedAnnouncements[id] = true; });
+        return download;
       })
         .then(function (result) {
           var data = result.data;
@@ -4026,7 +4037,7 @@
 
     refreshNotifyState();
     setupAccountSync();
-    fetchData().then(finishInitialLoading);
+    fetchData(false, { revalidate: true }).then(finishInitialLoading);
   }
 
   loadNotificationStateScript(startApp);

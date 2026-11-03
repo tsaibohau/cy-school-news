@@ -43,6 +43,11 @@ for (const q of ["學生證丟了怎麼辦", "學生證遺失要怎麼補辦"]) 
   assert.notEqual(result.status, "answered", q + " must not be answered by an unrelated notice");
   assert(!(result.sources || []).some(s => s.id === "cygsh-186135"), q + " must not cite the music contest");
 }
+/* 2026-11-03: after the token backfill, the 「怎麼做」 part (「學生證丟如何繳交」) matched a 北港 notice on
+   「繳交」 alone, and a bare 「怎麼辦」 drew a penalty tease. */
+const lost = QA.answer("學生證丟了怎麼辦", corpus, {}, { asOf: "2026-10-27" });
+assert(!(lost.also || []).some(row => row.aspect === "consequence"), "losing a card is not a penalty question");
+assert(!(lost.also || []).some(row => (row.sources || []).some(s => s.id === "pksh-27053")), "a part is matched on its subject, not on the words added for it");
 if (music) assert.equal(QA.answer("音樂比賽鋼琴調音標準", corpus, {}, { asOf: "2026-10-27" }).status, "answered", "the music question itself still works");
 assert.equal(QA.isPersonalDataQuery("期中考成績什麼時候可以查"), false, "asking when grades open is not a records request");
 assert.equal(QA.isPersonalDataQuery("王小明的成績"), true);

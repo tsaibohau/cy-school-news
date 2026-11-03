@@ -97,6 +97,10 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
   font: 900 44px/1 var(--serif); transform: rotate(-3deg);
   animation: seal-breathe 1.2s ease-in-out infinite alternate;
 }
+/* 小訊在載入畫面跳舞（像素逐格，mascot.js 換格） */
+.app-loading-mascot { display: block; width: 104px; height: 112px; margin-bottom: 4px; image-rendering: pixelated; }
+.app-loading-mascot svg { display: block; width: 100%; height: 100%; }
+.app-loading-mascot::after { content: ""; display: block; width: 56px; height: 8px; margin: -6px auto 0; border-radius: 50%; background: rgba(94, 26, 21, .14); }
 @keyframes seal-breathe { from { opacity: .7; transform: rotate(-3deg) scale(.96); } to { opacity: 1; transform: rotate(-3deg) scale(1); } }
 
 /* ── 刊頭 ── */

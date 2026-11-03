@@ -6,6 +6,7 @@
   var api = factory();
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   root.CyNewsMascot = api;
+  if (typeof window !== "undefined") window.__cyNewsLoadingDance = api.loadingDance();
 })(typeof window !== "undefined" ? window : this, function () {
   "use strict";
   var W = 26, H = 28, TOP = 6; /* 6 rows of headroom for jumps, props and effects */
@@ -432,5 +433,20 @@
     activeCameo = { el: el, leave: leave, finish: finish };
     return activeCameo;
   }
-  return { svg: svg, frame: frame, mount: mount, cameo: cameo, lines: LINES, animations: ANIM, size: { width: W, height: H } };
+  /* First-visit splash: 小訊 dances on #appLoading until app.js hides it. The seal stays as the fallback. */
+  function loadingDance() {
+    if (typeof document === "undefined") return null;
+    var box = document.getElementById("appLoading"), spot = box && box.querySelector(".app-loading-seal");
+    if (!box || box.hidden || !spot) return null;
+    var figure = document.createElement("span"), moves = ANIM.dance.concat(ANIM.wave, ANIM.dance, ANIM.happy), i = 0, timer = null;
+    figure.className = "app-loading-mascot";
+    figure.setAttribute("aria-hidden", "true");
+    spot.replaceWith(figure);
+    function show() { figure.innerHTML = frameSvg(moves[i % moves.length]); i += 1; }
+    show();
+    if (!reducedMotion()) timer = setInterval(function () { if (box.hidden) { clearInterval(timer); return; } show(); }, TICK);
+    return { stop: function () { clearInterval(timer); } };
+  }
+
+  return { svg: svg, frame: frame, mount: mount, cameo: cameo, loadingDance: loadingDance, lines: LINES, animations: ANIM, size: { width: W, height: H } };
 });
