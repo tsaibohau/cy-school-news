@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "fssh",
   "name": "國立鳳山高中",
@@ -8,6 +8,91 @@
   "base": "https://www.fssh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fssh-18681",
+   "title": "115學年度第1學期圖書館實體書班級借閱競賽得奬名單出爐囉",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18681",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "借書",
+     "#contest",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "借書",
+       "#contest",
+       "#library"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "結業式",
+       "圖書館",
+       "借書",
+       "#contest",
+       "#library"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "圖書館",
+       "借書",
+       "#contest",
+       "#library"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "結業式"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "fssh-18670",
    "title": "115-1 第二次段考考試範圍",

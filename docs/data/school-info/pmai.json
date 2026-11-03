@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "pmai",
- "generated_at": "2026-11-03T12:34:06+08:00",
+ "generated_at": "2026-11-03T17:31:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "128225757814606": {
@@ -197,15 +197,25 @@
    "page_id": 186726282519274,
    "url": "https://www.pmai.tn.edu.tw/administrative-unit/secretary-office",
    "label": "秘書室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T17:31:28+08:00",
+   "path": [
+    "行政單位",
+    "秘書室"
+   ]
   },
   "250721157567116": {
    "page_id": 250721157567116,
    "url": "https://www.pmai.tn.edu.tw/administrative-unit/edu",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T17:31:30+08:00",
+   "path": [
+    "行政單位",
+    "教務處"
+   ]
   },
   "167091310020158": {
    "page_id": 167091310020158,
@@ -520,6 +530,90 @@
     "行政單位"
    ],
    "order": 53
+  },
+  "132270959789336": {
+   "page_id": 132270959789336,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/edu/teachinggroup",
+   "label": "教學組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 54
+  },
+  "74771821884630": {
+   "page_id": 74771821884630,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/edu/devicegroup",
+   "label": "設備組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 55
+  },
+  "204821479491802": {
+   "page_id": 204821479491802,
+   "url": "https://www.pmai.tn.edu.tw/rules/edu-rules/%e8%a3%9c%e6%95%91%e6%95%99%e5%ad%b8%e5%af%a6%e6%96%bd%e6%83%85%e5%bd%a2%e7%99%bb%e8%a8%98%e8%a1%a8-page3373",
+   "label": "補救教學實施情形登記表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 56
+  },
+  "147535878118851": {
+   "page_id": 147535878118851,
+   "url": "https://www.pmai.tn.edu.tw/rules/edu-rules/%e8%a3%9c%e6%95%91%e6%95%99%e5%ad%b8%e5%af%a6%e6%96%bd%e8%be%a6%e6%b3%95-page3370",
+   "label": "補救教學實施辦法",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 57
+  },
+  "168638493469776": {
+   "page_id": 168638493469776,
+   "url": "https://www.pmai.tn.edu.tw/rules/edu-rules/%e5%a2%9e%e5%bb%a3%e6%95%99%e5%ad%b8%e5%af%a6%e6%96%bd%e6%83%85%e5%bd%a2%e7%99%bb%e8%a8%98%e8%a1%a8-page3367",
+   "label": "增廣教學實施情形登記表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 58
+  },
+  "49474099538610": {
+   "page_id": 49474099538610,
+   "url": "https://www.pmai.tn.edu.tw/rules/edu-rules/%e5%a2%9e%e5%bb%a3%e6%95%99%e5%ad%b8%e5%af%a6%e6%96%bd%e8%be%a6%e6%b3%95-page3364",
+   "label": "增廣教學實施辦法",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 59
+  },
+  "56612433029961": {
+   "page_id": 56612433029961,
+   "url": "https://www.pmai.tn.edu.tw/rules/edu-rules/%e9%ab%98%e4%b8%ad%e8%81%b7%e8%ba%ab%e5%bf%83%e9%9a%9c%e7%a4%99%e5%ad%b8%e7%94%9f%e5%80%8b%e6%a1%88%e8%bd%89%e9%8a%9c%e6%9c%8d%e5%8b%99%e8%b3%87%e6%96%99%e9%80%9a%e5%a0%b1%e6%b3%a8%e6%84%8f%e4%ba%8b-page3361",
+   "label": "高(中)職身心障礙學生個案轉銜服務資料通報注意事項",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 60
   }
  },
  "handbook": {},
@@ -778,5 +872,5 @@
   "f7e502496b",
   "fd7193de53"
  ],
- "last_run_at": "2026-11-03T12:34:06+08:00"
+ "last_run_at": "2026-11-03T17:31:32+08:00"
 }

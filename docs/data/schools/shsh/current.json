@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "shsh",
   "name": "雲林縣私立正心高級中學",
@@ -8,6 +8,362 @@
   "base": "https://www.shsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "shsh-11854",
+   "title": "國立嘉義大學獸醫學系辦理第十四屆獸醫營活動簡章",
+   "date": "2026-11-03",
+   "source_category": "營隊資訊",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e5%9c%8b%e7%ab%8b%e5%98%89%e7%be%a9%e5%a4%a7%e5%ad%b8%e7%8d%b8%e9%86%ab%e5%ad%b8%e7%b3%bb%e8%be%a6%e7%90%86%e7%ac%ac%e5%8d%81%e5%9b%9b%e5%b1%86%e7%8d%b8%e9%86%ab%e7%87%9f%e6%b4%bb%e5%8b%95%e7%b0%a1/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-25",
+     "provenance": "verified_announcement_event",
+     "source_revision": "61296c05bf064ee2fcb9f9eb3e546662ef1a93808464dbaa70f371aab23a26fc"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "61296c05bf064ee2fcb9f9eb3e546662ef1a93808464dbaa70f371aab23a26fc"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-11853",
+   "title": "國立臺灣科學教育館辦理「第一屆臺灣青少年科學發展論壇」活動",
+   "date": "2026-11-03",
+   "source_category": "活動競賽",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e5%9c%8b%e7%ab%8b%e8%87%ba%e7%81%a3%e7%a7%91%e5%ad%b8%e6%95%99%e8%82%b2%e9%a4%a8%e8%be%a6%e7%90%86%e3%80%8c%e7%ac%ac%e4%b8%80%e5%b1%86%e8%87%ba%e7%81%a3%e9%9d%92%e5%b0%91%e5%b9%b4%e7%a7%91%e5%ad%b8/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-25"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-9308",
+   "title": "[正心文藝獎徵稿] 創作，讓你被世界看見！",
+   "date": "2026-11-03",
+   "source_category": "行政公告",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e6%ad%a3%e5%bf%83%e6%96%87%e8%97%9d%e7%8d%8e%e5%be%b5%e7%a8%bf-%e5%89%b5%e4%bd%9c%ef%bc%8c%e8%ae%93%e4%bd%a0%e8%a2%ab%e4%b8%96%e7%95%8c%e7%9c%8b%e8%a6%8b%ef%bc%81/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-25"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "penalty",
+       "audience",
+       "contact",
+       "deny"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "期中考",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "d": [
+       "2026-11-03"
+      ],
+      "g": [
+       2
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "shsh-11851",
    "title": "高二自然組115學年第一學期 公民科期中評量參考題庫",

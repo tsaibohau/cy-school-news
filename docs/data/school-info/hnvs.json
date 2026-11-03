@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-03T12:33:42+08:00",
+ "generated_at": "2026-11-03T17:31:03+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -550,8 +550,21 @@
    "page_id": 104245133408029,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,380",
    "label": "公開觀課",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T17:31:02+08:00",
+   "path": [
+    "公開觀課"
+   ],
+   "changed_at": "2026-11-03T17:31:02+08:00",
+   "content_hash": "f4427b82f2b4b568dc9d54e43f21b7e7fa80ce071fa1a8f0b2d218ac5ba10fa6",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-104245133408029.json",
+   "detail_revision": "e87015992f4ed812f05893e46d28716009669c3fe09e9d8ca791f9cc6e91ab0f",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "40741118150238": {
    "page_id": 40741118150238,
@@ -3681,6 +3694,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-104245133408029",
+   "kind": "school_info",
+   "title": "公開觀課",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,380",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-104245133408029.json",
+   "detail_revision": "e87015992f4ed812f05893e46d28716009669c3fe09e9d8ca791f9cc6e91ab0f",
+   "detail_status": "parsed"
+  },
+  {
    "id": "hnvs-info-106377775275408",
    "kind": "school_info",
    "title": "網站導覽",
@@ -4316,5 +4346,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T12:33:42+08:00"
+ "last_run_at": "2026-11-03T17:31:03+08:00"
 }

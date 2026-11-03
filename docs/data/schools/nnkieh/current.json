@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "nnkieh",
   "name": "國立南科國際實驗高中",
@@ -8,6 +8,1081 @@
   "base": "https://www.nnkieh.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "nnkieh-879",
+   "title": "清華大學資訊工程學系與臺灣大專院校人工智慧學程聯盟(TAICA)等單位訂於116年1月25日至28日共同辦理「2027Fun AI Camp」人工智慧營隊",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=879",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-25",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d208327b73aeaf2abc023741da8c93c40cd43fad805d83a2fe1cebadcbc0adc0"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d208327b73aeaf2abc023741da8c93c40cd43fad805d83a2fe1cebadcbc0adc0"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "自主學習",
+       "#contest",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-28"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "自主學習",
+       "報名",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "繳交",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "自主學習",
+       "#contest",
+       "#self_learning",
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-28"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "自主學習",
+       "報名",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "繳交",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnkieh-877",
+   "title": "弘光科技大學「第三屆長期照顧永續發展論壇暨研討會」",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=877",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "學務處",
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnkieh-876",
+   "title": "國立臺東大學115年12月16日（星期三）舉辦「115年度草地野餐日暨大學校園體驗」活動",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=876",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9646502f69b29e57eca39f852ce19fadf3e2c2bf904bfd72b66a3dbf9fba0ae6"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9646502f69b29e57eca39f852ce19fadf3e2c2bf904bfd72b66a3dbf9fba0ae6"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "學雜費減免",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "required",
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "學雜費減免",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "required",
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnkieh-873",
+   "title": "轉知:明道高級中學舉辦「第45屆全球華文學生文學獎」競賽，歡迎參加",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=873",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-03-01",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "13cea68c014bb03d7b65569534c495a5ef9a9408b18662a03431c63fd57eafea"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-03-01"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-03-01"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnkieh-872",
+   "title": "「第六屆防災青年國際領袖培訓營」",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=872",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nnkieh-878",
    "title": "臺南市政府「親子一起上，急救不慌張」親子活動計畫11/21登場!",

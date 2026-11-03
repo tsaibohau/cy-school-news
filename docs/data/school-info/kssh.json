@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-03T12:35:15+08:00",
+ "generated_at": "2026-11-03T17:32:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -1523,25 +1523,102 @@
    "page_id": 246420489931675,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5302.php",
    "label": "秘書",
-   "status": "pending",
+   "status": "staff_profile",
    "depth": 1,
    "parent_path": [
     "校長室",
     "校長"
    ],
-   "order": 18
+   "order": 18,
+   "checked_at": "2026-11-03T17:32:43+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "秘書"
+   ]
   },
   "233203109690101": {
    "page_id": 233203109690101,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-2587.php",
    "label": "試務組",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "教務處"
    ],
-   "order": 19
+   "order": 19,
+   "checked_at": "2026-11-03T17:32:45+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "試務組"
+   ],
+   "changed_at": "2026-11-03T17:32:45+08:00",
+   "content_hash": "a78fc61f44c15a3422e9b6c06261b17fc909fd34467168b4af77a7d5f8536fef",
+   "doc_links": [],
+   "keywords": [
+    "期中考",
+    "考程",
+    "學測",
+    "模擬考",
+    "補考"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-233203109690101.json",
+   "detail_revision": "e3951191bc3dc5157155a10f25015e093229f383b1973cbb2bfe3ee5f6653d87",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "模擬考",
+       "考程表",
+       "學測",
+       "#exam",
+       "#mock",
+       "#national"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "期中考",
+       "補考",
+       "#midterm",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "期中考",
+       "考程表",
+       "#exam",
+       "#midterm"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     }
+    ]
+   }
   },
   "280145998943755": {
    "page_id": 280145998943755,
@@ -3493,6 +3570,79 @@
    "detail_status": "parsed"
   },
   {
+   "id": "kssh-info-233203109690101",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 試務組",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-2587.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "期中考",
+    "考程",
+    "學測",
+    "模擬考",
+    "補考"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-233203109690101.json",
+   "detail_revision": "e3951191bc3dc5157155a10f25015e093229f383b1973cbb2bfe3ee5f6653d87",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "模擬考",
+       "考程表",
+       "學測",
+       "#exam",
+       "#mock",
+       "#national"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "期中考",
+       "補考",
+       "#midterm",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "期中考",
+       "考程表",
+       "#exam",
+       "#midterm"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "kssh-info-238776332606298",
    "kind": "school_info",
    "title": "校務資料開放專區",
@@ -3769,5 +3919,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-03T12:35:15+08:00"
+ "last_run_at": "2026-11-03T17:32:46+08:00"
 }

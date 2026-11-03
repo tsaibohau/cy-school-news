@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-03T12:34:30+08:00",
+ "generated_at": "2026-11-03T17:32:01+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -1532,8 +1532,143 @@
    "page_id": 42054884206677,
    "url": "https://www.tnvs.tn.edu.tw/administrative-unit/principal/risk-management/",
    "label": "校長室-內部控制",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T17:31:53+08:00",
+   "path": [
+    "校長室-內部控制"
+   ],
+   "changed_at": "2026-11-03T17:31:53+08:00",
+   "content_hash": "7599fb5e4f313fd394abbb6225f0c86f9720653ded66d5f9233cd10395a3ee48",
+   "doc_links": [],
+   "keywords": [
+    "宣導",
+    "校長",
+    "上傳",
+    "研習"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/tnvs/tnvs-info-42054884206677.json",
+   "detail_revision": "695b5dc77a787c15bc81b92a6ce42319478840c76b3ae7640c84bbb42a7e1b85",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "114年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2026/03/114年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "113年度內部控制申明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/02/113年度內部控制申明書.pdf"
+    },
+    {
+     "name": "112年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/02/112年度內部控制聲明書-1.pdf"
+    },
+    {
+     "name": "111年度內部控制申明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2023/02/111年度內部控制申明書.pdf"
+    },
+    {
+     "name": "110年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2022/01/110年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "109年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/109年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "108年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/108年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "107年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/107年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校風險管理及危機處理(含內部控制)專案小組組織章程",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/國立臺南高級海事水產職業學校風險管理及危機處理含內部控制專案小組組織章程.doc"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "273708049502119": {
    "page_id": 273708049502119,
@@ -2495,6 +2630,155 @@
    "detail_ref": "data/details/tnvs/tnvs-info-25469034902519.json",
    "detail_revision": "325e99a6c71451e5d04647f076ab931c13e4db28dd1aa0303cc9344e3eafac74",
    "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-42054884206677",
+   "kind": "school_info",
+   "title": "校長室-內部控制",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/administrative-unit/principal/risk-management/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "114年度內部控制聲明書",
+    "113年度內部控制申明書",
+    "112年度內部控制聲明書",
+    "111年度內部控制申明書",
+    "110年度內部控制聲明書",
+    "109年度內部控制聲明書",
+    "108年度內部控制聲明書",
+    "107年度內部控制聲明書",
+    "國立臺南高級海事水產職業學校風險管理及危機處理(含內部控制)專案小組組織章程"
+   ],
+   "keywords": [
+    "宣導",
+    "校長",
+    "上傳",
+    "研習"
+   ],
+   "documents": [
+    {
+     "name": "114年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2026/03/114年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "113年度內部控制申明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/02/113年度內部控制申明書.pdf"
+    },
+    {
+     "name": "112年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2025/02/112年度內部控制聲明書-1.pdf"
+    },
+    {
+     "name": "111年度內部控制申明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2023/02/111年度內部控制申明書.pdf"
+    },
+    {
+     "name": "110年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2022/01/110年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "109年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/109年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "108年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/108年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "107年度內部控制聲明書",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/107年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校風險管理及危機處理(含內部控制)專案小組組織章程",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/國立臺南高級海事水產職業學校風險管理及危機處理含內部控制專案小組組織章程.doc"
+    }
+   ],
+   "detail_ref": "data/details/tnvs/tnvs-info-42054884206677.json",
+   "detail_revision": "695b5dc77a787c15bc81b92a6ce42319478840c76b3ae7640c84bbb42a7e1b85",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tnvs-info-51902306409415",
@@ -4199,5 +4483,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-03T12:34:30+08:00"
+ "last_run_at": "2026-11-03T17:32:01+08:00"
 }

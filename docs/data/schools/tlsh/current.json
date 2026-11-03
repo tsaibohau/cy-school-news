@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "tlsh",
   "name": "國立斗六高級中學",
@@ -8,6 +8,669 @@
   "base": "https://www.tlsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "tlsh-68800",
+   "title": "國立陽明交通大學「心智圖超記憶親子免費講座」及「2027寒假-心智圖超記憶學習營」",
+   "date": "2026-11-03",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68800/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "dc566c5161beb04daad3e943ef4f1a96f1f75de9fb8bcf2435a90c7db1f364f7"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "dc566c5161beb04daad3e943ef4f1a96f1f75de9fb8bcf2435a90c7db1f364f7"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "寒假",
+       "家長",
+       "報名",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "audience",
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "fee"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "寒假",
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-12-27"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "寒假",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-01-21",
+       "2027-02-03"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68801",
+   "title": "【交通安全】轉知交通部公路局機車駕訓補助宣導",
+   "date": "2026-11-03",
+   "source_category": "學務處",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68801/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0011ad858b58a80ac562edfff284f6d3f168293b3929ce0c6df0c733de4e3557"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "機車",
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處",
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "機車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "機車"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2025-12-16",
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "機車",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "機車",
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68796",
+   "title": "國立中山大學「2027年臺灣電信年會」",
+   "date": "2026-11-03",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68796/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-21",
+     "provenance": "verified_announcement_event",
+     "source_revision": "9e6eb7a79c3c65e7a7c1be0e5df14e443ebab9adb05a71351e78dbfe2f0faebf"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9e6eb7a79c3c65e7a7c1be0e5df14e443ebab9adb05a71351e78dbfe2f0faebf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-21",
+       "2027-01-22"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "註冊組",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-02",
+       "2027-01-22"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68790",
+   "title": "中國科技大學「全國高中職校際AI × 日語創意行銷競賽」",
+   "date": "2026-11-03",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68790/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68784",
+   "title": "「115年運動賽事學生志工招募及培訓」實施計畫",
+   "date": "2026-11-03",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68784/",
+   "category": "一般",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6d6feaf101b37e6b60acf623c395ef55268329a9e4aab86fd95c9f88a739f7d4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "志工",
+     "#volunteer"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "志工",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "志工",
+       "家長",
+       "報名",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68785",
+   "title": "教育部「第六屆防災青年國際領袖培訓營」",
+   "date": "2026-11-03",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68785/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68781",
+   "title": "116年度全國公私立高級中等學校原住民族文化研習營",
+   "date": "2026-11-03",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68781/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68808",
+   "title": "有關選務工作人員「補假申請」於雲端差勤操作說明",
+   "date": "2026-11-03",
+   "source_category": "人事室",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68808/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "tlsh-68777",
    "title": "弘光科技大學辦理「香氣探索與樂齡關懷-高齡照顧體驗及職涯探索」活動",
@@ -180,6 +843,18 @@
      }
     ]
    }
+  },
+  {
+   "id": "tlsh-68645",
+   "title": "育達科技大學「上銀機械手臂模擬工作坊」",
+   "date": "2026-11-02",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/02/68645/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "pending"
   },
   {
    "id": "tlsh-68760",

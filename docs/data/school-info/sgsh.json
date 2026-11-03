@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "sgsh",
- "generated_at": "2026-11-03T12:34:59+08:00",
+ "generated_at": "2026-11-03T17:32:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "247594578953018": {
@@ -368,34 +368,49 @@
    "page_id": 113801727874046,
    "url": "https://sg.sgshedu.tw/modules/tad_link/index.php?g2p=3",
    "label": "»",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 25
+   "order": 25,
+   "checked_at": "2026-11-03T17:32:26+08:00",
+   "path": [
+    "好站連結",
+    "»"
+   ]
   },
   "238935310500132": {
    "page_id": 238935310500132,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php",
    "label": "所有檔案",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "檔案下載"
    ],
-   "order": 26
+   "order": 26,
+   "checked_at": "2026-11-03T17:32:28+08:00",
+   "path": [
+    "檔案下載",
+    "所有檔案"
+   ]
   },
   "51651709513370": {
    "page_id": 51651709513370,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=icon&of_cat_sn=",
    "label": "圖示",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "檔案下載"
    ],
-   "order": 27
+   "order": 27,
+   "checked_at": "2026-11-03T17:32:31+08:00",
+   "path": [
+    "檔案下載",
+    "圖示"
+   ]
   },
   "229609378749472": {
    "page_id": 229609378749472,
@@ -890,5 +905,5 @@
   "fcc13700e3",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T12:34:59+08:00"
+ "last_run_at": "2026-11-03T17:32:32+08:00"
 }

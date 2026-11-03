@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "pmai",
   "name": "國立北門農工",
@@ -8,6 +8,102 @@
   "base": "https://www.pmai.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "pmai-26207",
+   "title": "吳其熊獎學金申請說明會",
+   "date": "2026-11-03",
+   "source_category": "圖書館公告",
+   "school": "pmai",
+   "school_name": "北門農工",
+   "url": "https://www.pmai.tn.edu.tw/news/%e5%90%b3%e5%85%b6%e7%86%8a%e7%8d%8e%e5%ad%b8%e9%87%91%e7%94%b3%e8%ab%8b%e8%aa%aa%e6%98%8e%e6%9c%83-page26207",
+   "category": "獎助學金",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "獎學金",
+       "圖書館",
+       "#scholarship",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "獎學金",
+       "圖書館",
+       "公假",
+       "#scholarship",
+       "#leave",
+       "#library"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "學期成績",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "記過",
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "銷過",
+       "記過",
+       "#discipline",
+       "#merit"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "pmai-28304",
    "title": "「教育部國教署高級中等學校數位習推動辦公室資訊網路組 專任人員」甄選簡章",
