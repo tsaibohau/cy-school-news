@@ -114,10 +114,15 @@
      grades. Only segments that carry at least a topic or a kind are kept. */
   function tokenize(record, options) {
     options = options || {};
-    var titleTopics = topicsOf(options.title || ""), out = [];
+    var titleTopics = topicsOf(options.title || ""), out = [], headingKinds = [];
     segmentsOf(record).slice(0, 400).forEach(function (seg, index) {
       if (out.length >= MAX_SEGMENTS) return;
       var topics = topicsOf(seg.text), kinds = kindsOf(seg.text);
+      /* 「學生有下列情形之一者，記大過：」 then 「(一)考試舞弊者」: the item is a penalty too. */
+      var isItem = /^(?:[（(][一二三四五六七八九十\d]+[)）]|\d+[.、．]|[一二三四五六七八九十]+[、．])/.test(seg.text);
+      var isHeading = /[：:]$|如下[：:。]?$/.test(seg.text);
+      if (isItem && !isHeading) headingKinds.forEach(function (k) { if ((k === "penalty" || k === "deadline" || k === "required" || k === "deny") && kinds.indexOf(k) === -1) kinds.push(k); });
+      if (isHeading) headingKinds = kinds.slice(); else if (!isItem) headingKinds = [];
       /* 「依據…年…月…日…函辦理」 dates a letter, not the event. */
       var letter = /函|字第|號令|號函|^依據|發文/.test(seg.text);
       if (letter) kinds = kinds.filter(function (k) { return k !== "time" && k !== "deadline"; });
@@ -160,11 +165,16 @@
     var titleHit = asked.topics.filter(function (t) { return (tokens.title || []).indexOf(t) !== -1; }).length;
     var best = null;
     tokens.segments.forEach(function (seg) {
-      var topicHit = asked.topics.filter(function (t) { return seg.t.indexOf(t) !== -1; }).length;
+      /* A word asked (段考) also hits its broader or narrower word in a segment (考試), and a word
+         counts more than a category tag (#exam), so 「考試…記小過」 beats the bare heading. */
+      var topicHit = asked.topics.filter(function (t) {
+        return seg.t.indexOf(t) !== -1 || (t.charAt(0) !== "#" && Synonyms && seg.t.some(function (s) { return s.charAt(0) !== "#" && Synonyms.related(s, t); }));
+      }).length;
+      var wordHit = asked.topics.filter(function (t) { return t.charAt(0) !== "#" && seg.t.some(function (s) { return s === t || (s.charAt(0) !== "#" && Synonyms && Synonyms.related(s, t)); }); }).length;
       var kindHit = asked.kinds.filter(function (k) { return seg.k.indexOf(k) !== -1; }).length;
       if (!topicHit && !(titleHit && kindHit)) return;
       var gradeOk = !asked.grades.length || !seg.g || seg.g.some(function (g) { return asked.grades.indexOf(g) !== -1; });
-      var score = topicHit * 10 + (titleHit ? 6 : 0) + kindHit * (topicHit || titleHit ? 14 : 4) + (gradeOk ? 0 : -12);
+      var score = topicHit * 10 + wordHit * 2 + (titleHit ? 6 : 0) + kindHit * (topicHit || titleHit ? 14 : 4) + (gradeOk ? 0 : -12);
       if (!best || score > best.score) best = { segment: seg, score: score, topics: topicHit, kinds: kindHit };
     });
     if (!best && titleHit) best = { segment: null, score: titleHit * 6, topics: 0, kinds: 0 };
