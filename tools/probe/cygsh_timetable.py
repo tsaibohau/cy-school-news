@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""一次性：看嘉女官網公開的課表放在哪裡。只列連結、檔案類型與大小，不存內文。
+"""一次性：看嘉女線上課表系統的結構（是否公開、怎麼分頁）。只印網址與結構，不印課表內容。
 每次請求間隔 3 秒，遵守 robots.txt。"""
 import re
 import sys
 import time
 from html import unescape
-from urllib.parse import urljoin, urlparse
+from urllib.parse import urljoin
 from urllib import robotparser
 
 import requests
@@ -13,71 +13,52 @@ import requests
 sys.path.insert(0, "scraper")
 from scrape import UA  # noqa: E402
 
-ORIGIN = "https://www.cygsh.cy.edu.tw"
-PAGES = [ORIGIN + "/p/406-1013-186482,r508.php",   # 115-1 正式課表公告
-         ORIGIN + "/p/412-1013-1779.php",           # 教務處 › 教學組 › 線上課表
-         ORIGIN + "/p/412-1013-1765.php"]           # 功能快捷選單 › 線上課表
-WANT = re.compile(r"課表|課程表|timetable|schedule|\.pdf|\.xlsx?|\.ods|\.html?$|drive\.google|docs\.google|kebiao|class", re.I)
+BASE = "https://classtable.cygsh.cy.edu.tw/classtable/"
 s = requests.Session()
 s.headers.update({"User-Agent": UA})
-
+r = s.get("https://classtable.cygsh.cy.edu.tw/robots.txt", timeout=20)
+print("robots.txt", r.status_code, r.headers.get("content-type"), repr(r.text[:600]) if r.ok else "")
 rp = robotparser.RobotFileParser()
-r = s.get(ORIGIN + "/robots.txt", timeout=20)
-print("robots.txt", r.status_code)
-print(r.text[:1500] if r.ok else "")
-rp.parse(r.text.splitlines() if r.ok else [])
+rp.parse(r.text.splitlines() if r.ok and "text/plain" in r.headers.get("content-type", "") else [])
 time.sleep(3)
 
 
-def anchors(html, base):
-    out = []
-    for tag, attr in (("a", "href"), ("iframe", "src"), ("embed", "src"), ("object", "data")):
-        for m in re.finditer(r"<%s\b[^>]*\b%s=[\"']([^\"']+)[\"'][^>]*>(.*?)(?:</%s>|$)" % (tag, attr, tag), html, re.I | re.S):
-            label = " ".join(unescape(re.sub(r"<[^>]+>", " ", m.group(2)[:300])).split())[:60]
-            out.append((tag, urljoin(base, unescape(m.group(1))), label))
-    return out
-
-
-followed = set()
-for page in PAGES:
-    print("\n=== PAGE", page, "allowed" if rp.can_fetch(UA, page) else "DISALLOWED")
-    if not rp.can_fetch(UA, page):
-        continue
-    resp = s.get(page, timeout=30)
-    print("status", resp.status_code)
+def look(url, depth):
+    print("\n=== ", url, "robots:", rp.can_fetch(UA, url))
+    if not rp.can_fetch(UA, url):
+        return []
+    resp = s.get(url, timeout=30)
     resp.encoding = resp.apparent_encoding or "utf-8"
-    main = resp.text
-    m = re.search(r'<div[^>]+class="[^"]*(?:mpgdetail|module-detail|art-text|mptattach)[^"]*"[\s\S]*', main)
-    region = m.group(0)[:60000] if m else main
-    every = anchors(main, page)
-    plain = re.sub(r"<[^>]+>", " ", re.sub(r"<(script|style)[\s\S]*?</\1>", " ", main, flags=re.I))
-    print("  urls in text:", sorted(set(re.findall(r"https?://[\w./?=&%#:-]+", plain)))[:15])
-    for word in ("校務行政", "1campus", "登入", "Google", "雲端", "附件", "下載", "PDF", "首頁", "線上課表", "課表查詢", "img", "圖"):
-        print("  has", word, word in plain)
-    print("  images in content:", len(re.findall(r"<img\b[^>]+/var/file/13/1013/img", main, re.I)))
-    skip = re.compile(r"/p/40[34]-|/p/412-|javascript:|#|mailto:|facebook|instagram|youtube|line\.me|/app/index\.php|Lang=|/p/1[0-9]{2}-1013|/var/file/13/1013/msys|rss", re.I)
-    print("  all links:", len(every))
-    for tag, url, label in every:
-        if not skip.search(url):
-            print("  .", tag, "|", label, "|", url[:150])
-    rows = [a for a in every if WANT.search(a[1] + " " + a[2]) and not skip.search(a[1])]
-    for tag, url, label in rows[:40]:
-        print(" ", tag, "|", label, "|", url)
-        host = urlparse(url).hostname or ""
-        if url in followed or len(followed) >= 8:
-            continue
-        followed.add(url)
-        time.sleep(3)
-        try:
-            if host.endswith("cygsh.cy.edu.tw") and not rp.can_fetch(UA, url):
-                print("     robots disallows"); continue
-            h = s.get(url, timeout=30, stream=True, allow_redirects=True)
-            ctype = h.headers.get("content-type", ""); size = h.headers.get("content-length", "?")
-            first = h.raw.read(400, decode_content=True) if "html" in ctype else b""
-            h.close()
-            title = re.search(rb"<title>(.*?)</title>", first or b"", re.I | re.S)
-            print("     ->", h.status_code, ctype, size, "final:", h.url[:120],
-                  "title:", (title.group(1).decode("utf-8", "ignore").strip()[:60] if title else ""))
-        except Exception as e:  # noqa: BLE001
-            print("     -> error", type(e).__name__)
+    html = resp.text
+    title = re.search(r"<title>(.*?)</title>", html, re.I | re.S)
+    print("status", resp.status_code, resp.headers.get("content-type"), "len", len(html), "final", resp.url,
+          "title", (title.group(1).strip()[:60] if title else ""))
+    print("forms", len(re.findall(r"<form\b", html, re.I)), "password inputs", len(re.findall(r"type=[\"']?password", html, re.I)),
+          "selects", len(re.findall(r"<select\b", html, re.I)), "options", len(re.findall(r"<option\b", html, re.I)),
+          "tables", len(re.findall(r"<table\b", html, re.I)), "frames", re.findall(r"<i?frame\b[^>]*src=[\"']([^\"']+)", html, re.I)[:6])
+    links = [(urljoin(resp.url, unescape(h)), " ".join(re.sub(r"<[^>]+>", " ", t).split())[:30])
+             for h, t in re.findall(r"<a\b[^>]*href=[\"']([^\"']+)[\"'][^>]*>(.*?)</a>", html, re.I | re.S)]
+    print("links", len(links))
+    pats = {}
+    for u, t in links:
+        key = re.sub(r"\d+", "N", u)
+        pats.setdefault(key, []).append((u, t))
+    for k, v in list(pats.items())[:25]:
+        print("  pattern", k, "x", len(v), "e.g.", v[0][0][:120], "|", v[0][1])
+    opts = re.findall(r"<option[^>]*value=[\"']?([^\"'>]*)[\"']?[^>]*>([^<]{0,20})", html, re.I)
+    print("  option samples", opts[:12])
+    scripts = re.findall(r"<script[^>]*src=[\"']([^\"']+)", html, re.I)
+    print("  scripts", scripts[:8])
+    print("  json/xhr hints", sorted(set(re.findall(r"[\"']([\w/.-]+\.(?:json|php|aspx|asp|xml|txt))[\"']", html)))[:20])
+    return [u for u, _ in links] + [urljoin(resp.url, f) for f in re.findall(r"<i?frame\b[^>]*src=[\"']([^\"']+)", html, re.I)]
+
+
+nxt = look(BASE, 0)
+time.sleep(3)
+seen = {BASE}
+for u in nxt:
+    if len(seen) >= 4 or u in seen or "classtable.cygsh" not in u:
+        continue
+    seen.add(u)
+    look(u, 1)
     time.sleep(3)
