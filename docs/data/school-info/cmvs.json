@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-03T23:42:09+08:00",
+ "generated_at": "2026-11-04T04:13:57+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -526,34 +526,49 @@
    "page_id": 124454263579534,
    "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?cate_sn=3",
    "label": "優質網站",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 37
+   "order": 37,
+   "checked_at": "2026-11-04T04:13:51+08:00",
+   "path": [
+    "好站連結",
+    "優質網站"
+   ]
   },
   "250576632026121": {
    "page_id": 250576632026121,
    "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=26",
    "label": "學生事務資訊網",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 38
+   "order": 38,
+   "checked_at": "2026-11-04T04:13:53+08:00",
+   "path": [
+    "好站連結",
+    "學生事務資訊網"
+   ]
   },
   "174667846905394": {
    "page_id": 174667846905394,
    "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=23",
    "label": "社會福利地圖",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 39
+   "order": 39,
+   "checked_at": "2026-11-04T04:13:55+08:00",
+   "path": [
+    "好站連結",
+    "社會福利地圖"
+   ]
   },
   "8305491230390": {
    "page_id": 8305491230390,
@@ -1300,6 +1315,54 @@
     "不迷小紅書，青春不迷途"
    ],
    "order": 106
+  },
+  "73054076726339": {
+   "page_id": 73054076726339,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?link_sn=2",
+   "label": "高職優質化資訊網",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "好站連結",
+    "優質網站"
+   ],
+   "order": 107
+  },
+  "121778136373562": {
+   "page_id": 121778136373562,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=2",
+   "label": "http://203.71.198.29/iQuality/",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "好站連結",
+    "優質網站"
+   ],
+   "order": 108
+  },
+  "24944116709367": {
+   "page_id": 24944116709367,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?cate_sn=3&g2p=1",
+   "label": "1 (current)",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "好站連結",
+    "優質網站"
+   ],
+   "order": 109
+  },
+  "41974836709702": {
+   "page_id": 41974836709702,
+   "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php?op=go&link_sn=26",
+   "label": "title:優質網站",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "好站連結",
+    "學生事務資訊網"
+   ],
+   "order": 110
   }
  },
  "handbook": {},
@@ -1616,5 +1679,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-03T23:42:09+08:00"
+ "last_run_at": "2026-11-04T04:13:57+08:00"
 }

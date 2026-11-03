@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-03T23:41:54+08:00",
+ "generated_at": "2026-11-04T04:13:43+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -3858,8 +3858,243 @@
    "page_id": 235327206754693,
    "url": "https://www.tnvs.tn.edu.tw/academic/experiment/",
    "label": "實驗研究組",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T04:13:41+08:00",
+   "path": [
+    "實驗研究組"
+   ],
+   "changed_at": "2026-11-04T04:13:41+08:00",
+   "content_hash": "7b10225b607fdab96ccb5feedd7fe35704b25fb5cf584452a1e43a02b56c5a08",
+   "doc_links": [],
+   "keywords": [
+    "補修",
+    "重補修",
+    "體驗",
+    "課表",
+    "報名",
+    "上課教室",
+    "學習歷程",
+    "上課地點",
+    "假單",
+    "申請",
+    "競賽",
+    "課程異動",
+    "請假"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-235327206754693.json",
+   "detail_revision": "bfeb4df8c083f6ea4d9b0ca7b1148a518ee4c9b4d032fb778b003061f1170a2e",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "重補修",
+       "課表",
+       "#makeup",
+       "#course"
+      ],
+      "k": [
+       "place",
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "重補修",
+       "課表",
+       "#makeup",
+       "#course"
+      ],
+      "k": [
+       "place",
+       "audience"
+      ],
+      "g": [
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "重補修",
+       "請假",
+       "#makeup",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "重補修",
+       "課表",
+       "#makeup",
+       "#course"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "重補修",
+       "課表",
+       "家長",
+       "#makeup",
+       "#course"
+      ],
+      "k": [
+       "place",
+       "audience",
+       "required"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "165061585630985": {
    "page_id": 165061585630985,
@@ -7450,6 +7685,245 @@
    }
   },
   {
+   "id": "tnvs-info-235327206754693",
+   "kind": "school_info",
+   "title": "實驗研究組",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/academic/experiment/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "補修",
+    "重補修",
+    "體驗",
+    "課表",
+    "報名",
+    "上課教室",
+    "學習歷程",
+    "上課地點",
+    "假單",
+    "申請",
+    "競賽",
+    "課程異動",
+    "請假"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-235327206754693.json",
+   "detail_revision": "bfeb4df8c083f6ea4d9b0ca7b1148a518ee4c9b4d032fb778b003061f1170a2e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "重補修",
+       "課表",
+       "#makeup",
+       "#course"
+      ],
+      "k": [
+       "place",
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "重補修",
+       "課表",
+       "#makeup",
+       "#course"
+      ],
+      "k": [
+       "place",
+       "audience"
+      ],
+      "g": [
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "重補修",
+       "請假",
+       "#makeup",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "重補修",
+       "課表",
+       "#makeup",
+       "#course"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "重補修",
+       "課表",
+       "家長",
+       "#makeup",
+       "#course"
+      ],
+      "k": [
+       "place",
+       "audience",
+       "required"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-254008508211269",
    "kind": "school_info",
    "title": "註冊組",
@@ -8918,5 +9392,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-03T23:41:54+08:00"
+ "last_run_at": "2026-11-04T04:13:43+08:00"
 }

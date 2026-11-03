@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-03T23:42:32+08:00",
+ "generated_at": "2026-11-04T04:14:21+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -4668,22 +4668,73 @@
    "page_id": 82533206687982,
    "url": "https://www.fhsh.khc.edu.tw/sa/%e7%92%b0%e5%a2%83%e8%a1%9b%e7%94%9f/%e7%9b%b8%e9%97%9c%e8%a6%8f%e5%ae%9a",
    "label": "相關規定",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T04:14:16+08:00",
+   "path": [
+    "學務處",
+    "環境衛生"
+   ]
   },
   "223938314069229": {
    "page_id": 223938314069229,
    "url": "https://www.fhsh.khc.edu.tw/sa/%e7%92%b0%e5%a2%83%e8%a1%9b%e7%94%9f/5614-2",
    "label": "會議資料",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T04:14:18+08:00",
+   "path": [
+    "學務處",
+    "環境衛生"
+   ]
   },
   "50224223994797": {
    "page_id": 50224223994797,
    "url": "https://www.fhsh.khc.edu.tw/sa/%e7%92%b0%e5%a2%83%e8%a1%9b%e7%94%9f/%e5%a1%ab%e5%a0%b1%e8%b3%87%e6%96%99",
    "label": "填報/領用",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T04:14:19+08:00",
+   "path": [
+    "學務處",
+    "環境衛生"
+   ],
+   "changed_at": "2026-11-04T04:14:19+08:00",
+   "content_hash": "d6f5cc9563b24125ca9eb7416705a915070d38f5ec5661bfe77dbddda1ca62e3",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "登革熱防治自我檢查表",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSflBCMTDIpjCgnqAJj-eWDtc4XEE774aWl0xHZi4F4J1Mrzaw/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "登記"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-50224223994797.json",
+   "detail_revision": "d1908571d7ba444b7c61e9695fcf47c6d5fb34bfb7e46569de93ce2611cdcf65",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "#health"
+    ],
+    "segments": []
+   }
   },
   "176044429849005": {
    "page_id": 176044429849005,
@@ -7367,6 +7418,55 @@
       "k": []
      }
     ]
+   }
+  },
+  {
+   "id": "fhsh-info-50224223994797",
+   "kind": "school_info",
+   "title": "學務處 › 環境衛生",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/sa/%e7%92%b0%e5%a2%83%e8%a1%9b%e7%94%9f/%e5%a1%ab%e5%a0%b1%e8%b3%87%e6%96%99",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "登革熱防治自我檢查表",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "登記"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "登革熱防治自我檢查表",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSflBCMTDIpjCgnqAJj-eWDtc4XEE774aWl0xHZi4F4J1Mrzaw/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-50224223994797.json",
+   "detail_revision": "d1908571d7ba444b7c61e9695fcf47c6d5fb34bfb7e46569de93ce2611cdcf65",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "#health"
+    ],
+    "segments": []
    }
   },
   {
@@ -11262,5 +11362,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-03T23:42:32+08:00"
+ "last_run_at": "2026-11-04T04:14:21+08:00"
 }

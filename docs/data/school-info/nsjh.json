@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nsjh",
- "generated_at": "2026-11-03T23:40:48+08:00",
+ "generated_at": "2026-11-04T04:12:36+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179628626610013": {
@@ -314,8 +314,13 @@
    "page_id": 30859592788018,
    "url": "https://nsjh.ylc.edu.tw/cp.aspx?n=100320",
    "label": "普通科",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T04:12:35+08:00",
+   "path": [
+    "學術單位",
+    "普通科"
+   ]
   },
   "261740013028709": {
    "page_id": 261740013028709,
@@ -1157,5 +1162,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-03T23:40:48+08:00"
+ "last_run_at": "2026-11-04T04:12:36+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-03T23:41:48+08:00",
+ "generated_at": "2026-11-04T04:13:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -316,15 +316,23 @@
    "page_id": 140250941780567,
    "url": "https://www.tnssh.tn.edu.tw/ga/doc/",
    "label": "文書組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T04:13:33+08:00",
+   "path": [
+    "文書組"
+   ]
   },
   "78591384695911": {
    "page_id": 78591384695911,
    "url": "https://www.tnssh.tn.edu.tw/ga/cash/",
    "label": "出納組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T04:13:35+08:00",
+   "path": [
+    "出納組"
+   ]
   },
   "113390600140739": {
    "page_id": 113390600140739,
@@ -835,6 +843,28 @@
     "庶務組"
    ],
    "order": 79
+  },
+  "111830699032704": {
+   "page_id": 111830699032704,
+   "url": "https://www.tnssh.tn.edu.tw/ga/cash/casheet/",
+   "label": "表格下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "出納組"
+   ],
+   "order": 80
+  },
+  "198900922696294": {
+   "page_id": 198900922696294,
+   "url": "https://www.tnssh.tn.edu.tw/ga/cash/cashlink/",
+   "label": "網站連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "出納組"
+   ],
+   "order": 81
   }
  },
  "handbook": {},
@@ -1121,5 +1151,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-03T23:41:48+08:00"
+ "last_run_at": "2026-11-04T04:13:37+08:00"
 }

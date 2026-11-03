@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-03T23:42:42+08:00",
+ "generated_at": "2026-11-04T04:14:38+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -2232,13 +2232,108 @@
    "page_id": 14334021011520,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5202.php",
    "label": "校園環境",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 25
+   "order": 25,
+   "checked_at": "2026-11-04T04:14:26+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "校園環境"
+   ],
+   "changed_at": "2026-11-04T04:14:26+08:00",
+   "content_hash": "ec759b9eea0bdeadd545e406e67ddfb458d0bfd0e8b5580bdb0501fcd5d2d400",
+   "doc_links": [],
+   "keywords": [
+    "圖書館",
+    "學生宿舍",
+    "宿舍"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/kssh/kssh-info-14334021011520.json",
+   "detail_revision": "d6af00e63b70c6f8e5924bee48db0fc16ceb5e2929477dd30905683337af104f",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "無障礙校園",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/408283921.pdf"
+    },
+    {
+     "name": "校園建物",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/741199368.pdf"
+    },
+    {
+     "name": "校園的花",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/573152807.pdf"
+    },
+    {
+     "name": "校園景觀",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/879388014.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 87,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 89,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "138528581396824": {
    "page_id": 138528581396824,
@@ -2786,6 +2881,108 @@
  "rules": {},
  "services": {},
  "items": [
+  {
+   "id": "kssh-info-14334021011520",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 校園環境",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5202.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "無障礙校園",
+    "校園建物",
+    "校園的花",
+    "校園景觀"
+   ],
+   "keywords": [
+    "圖書館",
+    "學生宿舍",
+    "宿舍"
+   ],
+   "documents": [
+    {
+     "name": "無障礙校園",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/408283921.pdf"
+    },
+    {
+     "name": "校園建物",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/741199368.pdf"
+    },
+    {
+     "name": "校園的花",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/573152807.pdf"
+    },
+    {
+     "name": "校園景觀",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/879388014.pdf"
+    }
+   ],
+   "detail_ref": "data/details/kssh/kssh-info-14334021011520.json",
+   "detail_revision": "d6af00e63b70c6f8e5924bee48db0fc16ceb5e2929477dd30905683337af104f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 87,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 89,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "kssh-info-28362482408635",
    "kind": "school_info",
@@ -5032,5 +5229,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-03T23:42:42+08:00"
+ "last_run_at": "2026-11-04T04:14:38+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-03T23:42:50+08:00",
+ "generated_at": "2026-11-04T04:14:45+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3124,8 +3124,109 @@
    "page_id": 273051335279497,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1110.php",
    "label": "資訊中心",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T04:14:39+08:00",
+   "path": [
+    "檔案櫃",
+    "資訊中心"
+   ],
+   "changed_at": "2026-11-04T04:14:39+08:00",
+   "content_hash": "277367511011031fa64018845707affdb85871f32879b5e73c50f5518c8f8c9e",
+   "doc_links": [
+    {
+     "name": "LibreOffice64位元",
+     "url": "https://drive.google.com/file/d/1ldLgWeWEBTpeGtQKKaPngt_7yf2FCMW5/view?usp=sharing"
+    },
+    {
+     "name": "岡農無線上網( eduroam)方式(手機、平板)",
+     "url": "https://drive.google.com/file/d/1gmK-gnibiBvcnP_1pjt_VcOAJVKvjlKs/view?usp=sharing"
+    },
+    {
+     "name": "岡農無線上網(eduroam)方式(win7筆電)",
+     "url": "https://drive.google.com/file/d/1wV3L9ClDOAVWsIB7MGYlM7gXjfZev4jD/view?usp=sharing"
+    },
+    {
+     "name": "岡農網站網頁編輯說明手冊",
+     "url": "https://drive.google.com/open?id=1P3TF2pqP_6LfcmTsdGbmtKDpFyjxl7OI"
+    },
+    {
+     "name": "網頁編輯教學影片",
+     "url": "https://drive.google.com/file/d/1Tn6Tozxse-tI-V_p7HpT0AqyHr_B_CqD/view?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "申請",
+    "平板",
+    "手機",
+    "研習"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-273051335279497.json",
+   "detail_revision": "878f1b1e94fd26a7755141bba3b57c0c6c1f16a1f033753a6c9a422e1df04a10",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "手機",
+       "平板",
+       "#device"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "101652075826990": {
    "page_id": 101652075826990,
@@ -3138,8 +3239,63 @@
    "page_id": 13285655574205,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1094.php",
    "label": "學生會",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T04:14:43+08:00",
+   "path": [
+    "校內團體",
+    "學生會"
+   ],
+   "changed_at": "2026-11-04T04:14:43+08:00",
+   "content_hash": "a0667ac2ba4f370dd764f7828bc798bac28e49f96597117af97158a53bef54c4",
+   "doc_links": [],
+   "keywords": [
+    "登記",
+    "報名"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-13285655574205.json",
+   "detail_revision": "d0f1901b7465817a76ebf76219bf55227a93cce270561328130538e595956268",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "結業式"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "結業式"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "打掃"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "201191619269020": {
    "page_id": 201191619269020,
@@ -5373,6 +5529,78 @@
     "選課輔導手冊"
    ],
    "order": 222
+  },
+  "265030856223704": {
+   "page_id": 265030856223704,
+   "url": "https://www.ksvs.khc.edu.tw/p/426-1004-202.php",
+   "label": "微軟認證、防毒軟體、作業系統、文書軟體下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "檔案櫃",
+    "資訊中心"
+   ],
+   "order": 223
+  },
+  "15801613327240": {
+   "page_id": 15801613327240,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1095.php",
+   "label": "組織章程",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "學生會"
+   ],
+   "order": 224
+  },
+  "75262983390852": {
+   "page_id": 75262983390852,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1098.php",
+   "label": "第一屆",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "學生會"
+   ],
+   "order": 225
+  },
+  "255605367643957": {
+   "page_id": 255605367643957,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1099.php",
+   "label": "第二屆",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "學生會"
+   ],
+   "order": 226
+  },
+  "116262618943229": {
+   "page_id": 116262618943229,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1100.php",
+   "label": "第三屆",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "學生會"
+   ],
+   "order": 227
+  },
+  "72752064341021": {
+   "page_id": 72752064341021,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1097.php",
+   "label": "選舉罷免辦法",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "學生會"
+   ],
+   "order": 228
   }
  },
  "handbook": {},
@@ -5429,6 +5657,64 @@
       "t": [
        "升學",
        "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ksaivs-info-13285655574205",
+   "kind": "school_info",
+   "title": "校內團體 › 學生會",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1094.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "登記",
+    "報名"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-13285655574205.json",
+   "detail_revision": "d0f1901b7465817a76ebf76219bf55227a93cce270561328130538e595956268",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "結業式"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "結業式"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "打掃"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
       ],
       "k": []
      }
@@ -8423,6 +8709,116 @@
    "detail_ref": "data/details/ksaivs/ksaivs-info-271630506844261.json",
    "detail_revision": "c7bd9492d9ceaccf9a044a4b13becae8e586b5618e3ce5ace5e9b6458bdf2e70",
    "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-273051335279497",
+   "kind": "school_info",
+   "title": "檔案櫃 › 資訊中心",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1110.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "LibreOffice64位元",
+    "岡農無線上網( eduroam)方式(手機、平板)",
+    "岡農無線上網(eduroam)方式(win7筆電)",
+    "岡農網站網頁編輯說明手冊",
+    "網頁編輯教學影片"
+   ],
+   "keywords": [
+    "申請",
+    "平板",
+    "手機",
+    "研習"
+   ],
+   "documents": [
+    {
+     "name": "LibreOffice64位元",
+     "url": "https://drive.google.com/file/d/1ldLgWeWEBTpeGtQKKaPngt_7yf2FCMW5/view?usp=sharing"
+    },
+    {
+     "name": "岡農無線上網( eduroam)方式(手機、平板)",
+     "url": "https://drive.google.com/file/d/1gmK-gnibiBvcnP_1pjt_VcOAJVKvjlKs/view?usp=sharing"
+    },
+    {
+     "name": "岡農無線上網(eduroam)方式(win7筆電)",
+     "url": "https://drive.google.com/file/d/1wV3L9ClDOAVWsIB7MGYlM7gXjfZev4jD/view?usp=sharing"
+    },
+    {
+     "name": "岡農網站網頁編輯說明手冊",
+     "url": "https://drive.google.com/open?id=1P3TF2pqP_6LfcmTsdGbmtKDpFyjxl7OI"
+    },
+    {
+     "name": "網頁編輯教學影片",
+     "url": "https://drive.google.com/file/d/1Tn6Tozxse-tI-V_p7HpT0AqyHr_B_CqD/view?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-273051335279497.json",
+   "detail_revision": "878f1b1e94fd26a7755141bba3b57c0c6c1f16a1f033753a6c9a422e1df04a10",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "手機",
+       "平板",
+       "#device"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   }
  ],
  "roots": [
@@ -8657,5 +9053,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-03T23:42:50+08:00"
+ "last_run_at": "2026-11-04T04:14:45+08:00"
 }
