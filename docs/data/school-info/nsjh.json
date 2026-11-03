@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nsjh",
- "generated_at": "2026-11-03T12:07:06+08:00",
+ "generated_at": "2026-11-03T12:37:28+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179628626610013": {
@@ -231,8 +231,13 @@
    "page_id": 98003220179659,
    "url": "https://nsjh.ylc.edu.tw/cp.aspx?n=99439",
    "label": "輔導室",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:37:26+08:00",
+   "path": [
+    "行政單位",
+    "輔導室"
+   ]
   },
   "110556606899282": {
    "page_id": 110556606899282,
@@ -1123,5 +1128,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-03T12:07:06+08:00"
+ "last_run_at": "2026-11-03T12:37:28+08:00"
 }

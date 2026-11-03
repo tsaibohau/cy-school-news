@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-03T12:05:25+08:00",
+ "generated_at": "2026-11-03T12:35:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -1825,15 +1825,96 @@
   },
   "2002": {
    "page_id": 2002,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:35:41+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "學生申訴"
+   ],
+   "changed_at": "2026-11-03T12:35:41+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2002.json",
+   "detail_revision": "54029a77aae826cbfe8a51d47149adf1da164ed5700ab8a892ab3a11b1a5e7bf",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室",
+     "申訴",
+     "#appeal"
+    ],
+    "segments": []
+   }
   },
   "2003": {
    "page_id": 2003,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:35:43+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "教育部學生輔導諮商中心"
+   ],
+   "changed_at": "2026-11-03T12:35:43+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2003.json",
+   "detail_revision": "bb3ffe37fe7f52caca464a58cf686069c19681872a9c4894ce356b422306e709",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
   },
   "2004": {
    "page_id": 2004,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:35:45+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "輔導概況",
+    "輔導室成員"
+   ],
+   "changed_at": "2026-11-03T12:35:45+08:00",
+   "content_hash": "1b5e832a6df08ac85c57001e5f378229993924fb144a5746c2e8d2b12f77c04d",
+   "doc_links": [],
+   "keywords": [
+    "分機"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2004.json",
+   "detail_revision": "3967b0ac17dde65c5575b7a38735425f5c7de3349a16cff49db55481d2469aa3",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "2005": {
    "page_id": 2005,
@@ -1901,6 +1982,30 @@
   },
   "2026": {
    "page_id": 2026,
+   "status": "pending"
+  },
+  "2027": {
+   "page_id": 2027,
+   "status": "pending"
+  },
+  "2028": {
+   "page_id": 2028,
+   "status": "pending"
+  },
+  "2029": {
+   "page_id": 2029,
+   "status": "pending"
+  },
+  "2030": {
+   "page_id": 2030,
+   "status": "pending"
+  },
+  "2031": {
+   "page_id": 2031,
+   "status": "pending"
+  },
+  "2032": {
+   "page_id": 2032,
    "status": "pending"
   },
   "2082": {
@@ -2958,6 +3063,10 @@
   },
   "3746": {
    "page_id": 3746,
+   "status": "pending"
+  },
+  "3799": {
+   "page_id": 3799,
    "status": "pending"
   },
   "3801": {
@@ -6200,7 +6309,7 @@
     "chars": 1484
    }
   },
-  "checked_at": "2026-11-03T12:05:25+08:00",
+  "checked_at": "2026-11-03T12:35:46+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -10190,6 +10299,92 @@
    }
   },
   {
+   "id": "cygsh-info-2002",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導室 › 學生申訴",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2002.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-2002.json",
+   "detail_revision": "54029a77aae826cbfe8a51d47149adf1da164ed5700ab8a892ab3a11b1a5e7bf",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室",
+     "申訴",
+     "#appeal"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cygsh-info-2003",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導室 › 教育部學生輔導諮商中心",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2003.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-2003.json",
+   "detail_revision": "bb3ffe37fe7f52caca464a58cf686069c19681872a9c4894ce356b422306e709",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cygsh-info-2004",
+   "kind": "school_info",
+   "title": "輔導室 › 輔導概況 › 輔導室成員",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2004.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "分機"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-2004.json",
+   "detail_revision": "3967b0ac17dde65c5575b7a38735425f5c7de3349a16cff49db55481d2469aa3",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-info-2082",
    "kind": "school_info",
    "title": "新生專區",
@@ -13941,5 +14136,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-03T12:05:25+08:00"
+ "last_run_at": "2026-11-03T12:35:46+08:00"
 }

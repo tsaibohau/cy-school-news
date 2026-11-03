@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cchs",
- "generated_at": "2026-11-03T12:05:12+08:00",
+ "generated_at": "2026-11-03T12:35:33+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "153498002047988": {
@@ -954,34 +954,492 @@
    "page_id": 269410831564571,
    "url": "https://www.cchs.kh.edu.tw/home?cid=1325",
    "label": "教學單位(Teachers)",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 17
+   "order": 17,
+   "checked_at": "2026-11-03T12:35:27+08:00",
+   "path": [
+    "進入首頁",
+    "教學單位(Teachers)"
+   ],
+   "changed_at": "2026-11-03T12:35:27+08:00",
+   "content_hash": "540e14862fc63504d0a30cc79e46d5984ee5b0ccbf4052b24702babce62540e5",
+   "doc_links": [],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-269410831564571.json",
+   "detail_revision": "6ff711e93d23e3e84854b95219f0cde0537df296ef7930101441a8d810481c55",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "145273639196836": {
    "page_id": 145273639196836,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/46",
    "label": "高中部教學研究會",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 18
+   "order": 18,
+   "checked_at": "2026-11-03T12:35:30+08:00",
+   "path": [
+    "進入首頁",
+    "高中部教學研究會"
+   ],
+   "changed_at": "2026-11-03T12:35:30+08:00",
+   "content_hash": "9e523e072aff8b7b7b603d1bc94bffb2b0a12a0239ae9fee28636d0e6632200f",
+   "doc_links": [],
+   "keywords": [
+    "比賽",
+    "競賽",
+    "語文競賽",
+    "研習",
+    "科展",
+    "升學",
+    "英檢",
+    "補修",
+    "講座",
+    "重補修",
+    "入學",
+    "加深加廣",
+    "徵文",
+    "會考",
+    "檢定"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-145273639196836.json",
+   "detail_revision": "eb9bbb7ba1a73f29d71a6eced27e1ddd0e63db1e9c3981a5d42b1387761089b3",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 6,
+      "t": [
+       "閱讀心得",
+       "網路",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "腳踏車",
+       "#national",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "處室",
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "重補修",
+       "網路",
+       "#makeup"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "升學",
+       "#admission",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "加深加廣",
+       "#advanced"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "重補修",
+       "網路",
+       "#makeup"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 61,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     }
+    ]
+   }
   },
   "91704428140079": {
    "page_id": 91704428140079,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/25",
    "label": "國中部教學研究會",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 19
+   "order": 19,
+   "checked_at": "2026-11-03T12:35:32+08:00",
+   "path": [
+    "進入首頁",
+    "國中部教學研究會"
+   ],
+   "changed_at": "2026-11-03T12:35:32+08:00",
+   "content_hash": "14223e77109a8fcf42b1d064836feb9b62987f65d0dcbcb9773d2bd9d1993cde",
+   "doc_links": [],
+   "keywords": [
+    "宣導",
+    "研習",
+    "補修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-91704428140079.json",
+   "detail_revision": "06ba9468b9dd46c1a5e111639906f3a34e69fa0134f0b2f69fb85cb8f5810121",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "214747491513658": {
    "page_id": 214747491513658,
@@ -4451,6 +4909,55 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-91704428140079",
+   "kind": "school_info",
+   "title": "進入首頁 › 國中部教學研究會",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/25",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "宣導",
+    "研習",
+    "補修"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-91704428140079.json",
+   "detail_revision": "06ba9468b9dd46c1a5e111639906f3a34e69fa0134f0b2f69fb85cb8f5810121",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cchs-info-117253854350800",
    "kind": "school_info",
    "title": "進入首頁 › 總務處",
@@ -4974,6 +5481,329 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-145273639196836",
+   "kind": "school_info",
+   "title": "進入首頁 › 高中部教學研究會",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/46",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "比賽",
+    "競賽",
+    "語文競賽",
+    "研習",
+    "科展",
+    "升學",
+    "英檢",
+    "補修",
+    "講座",
+    "重補修",
+    "入學",
+    "加深加廣",
+    "徵文",
+    "會考",
+    "檢定"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-145273639196836.json",
+   "detail_revision": "eb9bbb7ba1a73f29d71a6eced27e1ddd0e63db1e9c3981a5d42b1387761089b3",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 6,
+      "t": [
+       "閱讀心得",
+       "網路",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "腳踏車",
+       "#national",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "處室",
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "重補修",
+       "網路",
+       "#makeup"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "升學",
+       "#admission",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "加深加廣",
+       "#advanced"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "重補修",
+       "網路",
+       "#makeup"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 61,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cchs-info-153498002047988",
    "kind": "school_info",
    "title": "進入首頁",
@@ -5139,6 +5969,105 @@
    "detail_ref": "data/details/cchs/cchs-info-240233643298103.json",
    "detail_revision": "485a896f127e338137fb7bc2c026944d805537d93cde81cda1626aea2d207bad",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cchs-info-269410831564571",
+   "kind": "school_info",
+   "title": "進入首頁 › 教學單位(Teachers)",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1325",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "學生手冊(含學生獎懲規定) Student Handbook",
+    "新生加入班務專區操作說明",
+    "一卡通數位學生證遺失補卡處理方式"
+   ],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會"
+   ],
+   "documents": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "detail_ref": "data/details/cchs/cchs-info-269410831564571.json",
+   "detail_revision": "6ff711e93d23e3e84854b95219f0cde0537df296ef7930101441a8d810481c55",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
   }
  ],
  "roots": [
@@ -5148,5 +6077,5 @@
    "label": "進入首頁"
   }
  ],
- "last_run_at": "2026-11-03T12:05:12+08:00"
+ "last_run_at": "2026-11-03T12:35:33+08:00"
 }

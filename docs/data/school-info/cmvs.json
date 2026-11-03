@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-03T12:04:25+08:00",
+ "generated_at": "2026-11-03T12:34:42+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -286,34 +286,49 @@
    "page_id": 54300301964056,
    "url": "https://cm.cmvsedu.tw/modules/tad_sitemap/privacy_policy.php",
    "label": "隱私權政策",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 22
+   "order": 22,
+   "checked_at": "2026-11-03T12:34:37+08:00",
+   "path": [
+    "網站地圖",
+    "隱私權政策"
+   ]
   },
   "245390587543705": {
    "page_id": 245390587543705,
    "url": "https://cm.cmvsedu.tw/modules/tad_sitemap/remove_data.php",
    "label": "用戶資料刪除方法",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 23
+   "order": 23,
+   "checked_at": "2026-11-03T12:34:39+08:00",
+   "path": [
+    "網站地圖",
+    "用戶資料刪除方法"
+   ]
   },
   "217440419786448": {
    "page_id": 217440419786448,
    "url": "https://cm.cmvsedu.tw/modules/tad_sitemap/admin/main.php",
    "label": "管理介面",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 24
+   "order": 24,
+   "checked_at": "2026-11-03T12:34:41+08:00",
+   "path": [
+    "網站地圖",
+    "管理介面"
+   ]
   },
   "39607478017432": {
    "page_id": 39607478017432,
@@ -1117,6 +1132,30 @@
     "學生學習歷程檔案製作"
    ],
    "order": 97
+  },
+  "174505065395945": {
+   "page_id": 174505065395945,
+   "url": "https://cm.cmvsedu.tw/user.php",
+   "label": "https://cm.cmvsedu.tw/user.php",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站地圖",
+    "用戶資料刪除方法"
+   ],
+   "order": 98
+  },
+  "128378528490411": {
+   "page_id": 128378528490411,
+   "url": "https://cm.cmvsedu.tw/modules/tad_sitemap/admin/index.php",
+   "label": "主選單",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站地圖",
+    "管理介面"
+   ],
+   "order": 99
   }
  },
  "handbook": {},
@@ -1433,5 +1472,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-03T12:04:25+08:00"
+ "last_run_at": "2026-11-03T12:34:42+08:00"
 }

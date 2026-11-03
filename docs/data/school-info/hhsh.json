@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hhsh",
- "generated_at": "2026-11-03T12:03:19+08:00",
+ "generated_at": "2026-11-03T12:33:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "151128910348640": {
@@ -383,23 +383,33 @@
    "page_id": 171663671759660,
    "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?of_cat_sn=8",
    "label": "學校LOGO及QRCode",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "檔案下載 /上傳"
    ],
-   "order": 25
+   "order": 25,
+   "checked_at": "2026-11-03T12:33:34+08:00",
+   "path": [
+    "檔案下載 /上傳",
+    "學校LOGO及QRCode"
+   ]
   },
   "97045420793895": {
    "page_id": 97045420793895,
    "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?of_cat_sn=1",
    "label": "教務處表單",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "檔案下載 /上傳"
    ],
-   "order": 26
+   "order": 26,
+   "checked_at": "2026-11-03T12:33:36+08:00",
+   "path": [
+    "檔案下載 /上傳",
+    "教務處表單"
+   ]
   },
   "196540897251076": {
    "page_id": 196540897251076,
@@ -1150,6 +1160,102 @@
     "» 最後頁"
    ],
    "order": 90
+  },
+  "189106138156115": {
+   "page_id": 189106138156115,
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=3&cat_sn=8&fn=logo.png",
+   "label": "興華五好LOGO(桃紅)",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載 /上傳",
+    "學校LOGO及QRCode"
+   ],
+   "order": 91
+  },
+  "66777537968113": {
+   "page_id": 66777537968113,
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=10&cat_sn=8&fn=IMG_0250.png",
+   "label": "興華五好LOGO(綠)",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載 /上傳",
+    "學校LOGO及QRCode"
+   ],
+   "order": 92
+  },
+  "112812968013700": {
+   "page_id": 112812968013700,
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=11&cat_sn=8&fn=hhsh_www.png",
+   "label": "興華網站QRCode",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載 /上傳",
+    "學校LOGO及QRCode"
+   ],
+   "order": 93
+  },
+  "136358066877968": {
+   "page_id": 136358066877968,
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=12&cat_sn=8&fn=hhsh_fb.png",
+   "label": "興華FB粉絲專業QRCode",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載 /上傳",
+    "學校LOGO及QRCode"
+   ],
+   "order": 94
+  },
+  "146511599713197": {
+   "page_id": 146511599713197,
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=13&cat_sn=8&fn=hhsh_IG.png",
+   "label": "興華IG QRCode",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載 /上傳",
+    "學校LOGO及QRCode"
+   ],
+   "order": 95
+  },
+  "205616817349608": {
+   "page_id": 205616817349608,
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?of_cat_sn=12",
+   "label": "註冊組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載 /上傳",
+    "教務處表單"
+   ],
+   "order": 96
+  },
+  "246905151085523": {
+   "page_id": 246905151085523,
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?of_cat_sn=13",
+   "label": "教學組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載 /上傳",
+    "教務處表單"
+   ],
+   "order": 97
+  },
+  "157980635097481": {
+   "page_id": 157980635097481,
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?of_cat_sn=15",
+   "label": "高中職彈性學習表單",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載 /上傳",
+    "教務處表單"
+   ],
+   "order": 98
   }
  },
  "handbook": {},
@@ -1492,5 +1598,5 @@
   "ff9c890f55",
   "fff273069d"
  ],
- "last_run_at": "2026-11-03T12:03:19+08:00"
+ "last_run_at": "2026-11-03T12:33:37+08:00"
 }

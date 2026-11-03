@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tssh",
- "generated_at": "2026-11-03T12:03:38+08:00",
+ "generated_at": "2026-11-03T12:33:56+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "212970716483767": {
@@ -356,8 +356,12 @@
    "page_id": 82606443717843,
    "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=28,6,37",
    "label": "招生類別",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:33:55+08:00",
+   "path": [
+    "招生類別"
+   ]
   },
   "67268133806658": {
    "page_id": 67268133806658,
@@ -2919,6 +2923,61 @@
     "招生科別"
    ],
    "order": 267
+  },
+  "75377132178220": {
+   "page_id": 75377132178220,
+   "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=28,6,37,,,,,7,,,0",
+   "label": "運動績優",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "招生類別"
+   ],
+   "order": 268
+  },
+  "143089135466775": {
+   "page_id": 143089135466775,
+   "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=28,6,37,,,,,43,,,0",
+   "label": "免試入學",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "招生類別"
+   ],
+   "order": 269
+  },
+  "5421765722818": {
+   "page_id": 5421765722818,
+   "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=28,6,37,,,,,44,,,0",
+   "label": "完免免試",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "招生類別"
+   ],
+   "order": 270
+  },
+  "146148717757249": {
+   "page_id": 146148717757249,
+   "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=28,6,37,,,,,45,,,0",
+   "label": "技藝優良",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "招生類別"
+   ],
+   "order": 271
+  },
+  "30136708634678": {
+   "page_id": 30136708634678,
+   "url": "https://www.tssh.cyc.edu.tw/form/Details.aspx?Parser=28,6,37,,,,4864",
+   "label": "【免試入學】共同就學區_115臺南區免試入學簡章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "招生類別"
+   ],
+   "order": 272
   }
  },
  "handbook": {},
@@ -3122,5 +3181,5 @@
    "label": "報廢產品變賣專區"
   }
  ],
- "last_run_at": "2026-11-03T12:03:38+08:00"
+ "last_run_at": "2026-11-03T12:33:56+08:00"
 }

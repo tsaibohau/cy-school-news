@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "twvs",
- "generated_at": "2026-11-03T12:04:19+08:00",
+ "generated_at": "2026-11-03T12:34:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "210511608049060": {
@@ -270,22 +270,37 @@
    "page_id": 29740781421041,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/educational-affairs-division/special-admissions-of-food-management-dep/",
    "label": "餐管科特色招生",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:34:31+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "餐管科特色招生"
+   ]
   },
   "179370757309612": {
    "page_id": 179370757309612,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/student-affairs-office/",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:34:33+08:00",
+   "path": [
+    "行政單位",
+    "學務處"
+   ]
   },
   "78576923438112": {
    "page_id": 78576923438112,
    "url": "https://www.twvs.tn.edu.tw/%e5%b0%8e%e5%b8%ab%e6%9c%83%e8%ad%b0/",
    "label": "導師會議",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:34:35+08:00",
+   "path": [
+    "導師會議"
+   ]
   },
   "111080086524012": {
    "page_id": 111080086524012,
@@ -716,6 +731,102 @@
     "教務處"
    ],
    "order": 68
+  },
+  "155679396644015": {
+   "page_id": 155679396644015,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/student-affairs-office/2",
+   "label": "訓育組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 69
+  },
+  "48902479497089": {
+   "page_id": 48902479497089,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/student-affairs-office/3",
+   "label": "體育組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 70
+  },
+  "27960540526153": {
+   "page_id": 27960540526153,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/student-affairs-office/4",
+   "label": "衛生組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 71
+  },
+  "228978812196420": {
+   "page_id": 228978812196420,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/student-affairs-office/5",
+   "label": "健康中心",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 72
+  },
+  "256189612993126": {
+   "page_id": 256189612993126,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/student-affairs-office/anti-bullying/",
+   "label": "反霸凌宣導專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 73
+  },
+  "32874310966644": {
+   "page_id": 32874310966644,
+   "url": "https://www.twvs.tn.edu.tw/導師會議/",
+   "label": "導師會議",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 74
+  },
+  "53988329981095": {
+   "page_id": 53988329981095,
+   "url": "https://www.twvs.tn.edu.tw/rules/rules-stu/%e5%9c%8b%e7%ab%8b%e6%9b%be%e6%96%87%e9%ab%98%e7%b4%9a%e5%ae%b6%e4%ba%8b%e5%95%86%e6%a5%ad%e8%81%b7%e6%a5%ad%e5%ad%b8%e6%a0%a1%e6%a0%a1%e5%9c%92%e6%80%a7%e4%be%b5%e5%ae%b3%e6%80%a7%e9%a8%b7%e6%93%be/22456/",
+   "label": "國立曾文高級家事商業職業學校校園性侵害性騷擾或性霸凌防治規定",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 75
+  },
+  "223484363090028": {
+   "page_id": 223484363090028,
+   "url": "https://www.twvs.tn.edu.tw/rules/rules-stu/%e9%81%8b%e5%8b%95%e5%a0%b4%e9%a4%a8%e4%bd%bf%e7%94%a8%e8%a6%8f%e5%ae%9a/2084/",
+   "label": "體育組 運動場館使用規定",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 76
   }
  },
  "handbook": {},
@@ -997,5 +1108,5 @@
   "f3ef66c885",
   "f9693f2c0a"
  ],
- "last_run_at": "2026-11-03T12:04:19+08:00"
+ "last_run_at": "2026-11-03T12:34:37+08:00"
 }

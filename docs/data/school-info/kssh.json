@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-03T12:04:56+08:00",
+ "generated_at": "2026-11-03T12:35:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -1398,25 +1398,126 @@
    "page_id": 28362482408635,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-108.php",
    "label": "行政單位",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校長室",
     "校長"
    ],
-   "order": 16
+   "order": 16,
+   "checked_at": "2026-11-03T12:35:12+08:00",
+   "path": [
+    "校長室",
+    "校長",
+    "行政單位"
+   ],
+   "changed_at": "2026-11-03T12:35:12+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-28362482408635.json",
+   "detail_revision": "c0a624b022d8f352a5b5f9cb828843457b30d770d720382bbb09760200ba5ffe",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
   },
   "91111307193695": {
    "page_id": 91111307193695,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-88.php",
    "label": "校長室",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校長室",
     "校長"
    ],
-   "order": 17
+   "order": 17,
+   "checked_at": "2026-11-03T12:35:14+08:00",
+   "path": [
+    "行政單位",
+    "校長室"
+   ],
+   "changed_at": "2026-11-03T12:35:14+08:00",
+   "content_hash": "bdcd2e156acbe708b10de6575595c1f593907e507df14907355d04fad72a8c27",
+   "doc_links": [],
+   "keywords": [
+    "安全",
+    "校長",
+    "分機"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-91111307193695.json",
+   "detail_revision": "ea94b0e5b89e47a249e0d14fe7e121a7b19a98748cc69326b5ae50bf5e723e3b",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "合作社",
+       "家長",
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "246420489931675": {
    "page_id": 246420489931675,
@@ -2061,6 +2162,30 @@
  "services": {},
  "items": [
   {
+   "id": "kssh-info-28362482408635",
+   "kind": "school_info",
+   "title": "校長室 › 校長 › 行政單位",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-108.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-28362482408635.json",
+   "detail_revision": "c0a624b022d8f352a5b5f9cb828843457b30d770d720382bbb09760200ba5ffe",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "kssh-info-28783346175483",
    "kind": "school_info",
    "title": "行政單位 › 教務處",
@@ -2178,6 +2303,88 @@
    "detail_ref": "data/details/kssh/kssh-info-79814434365433.json",
    "detail_revision": "356da7be101cfb90f58b69acb61f76fa7a389b5c54584760b6e4e4300993217c",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-91111307193695",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-88.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "安全",
+    "校長",
+    "分機"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-91111307193695.json",
+   "detail_revision": "ea94b0e5b89e47a249e0d14fe7e121a7b19a98748cc69326b5ae50bf5e723e3b",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "合作社",
+       "家長",
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "kssh-info-112967414483477",
@@ -3562,5 +3769,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-03T12:04:56+08:00"
+ "last_run_at": "2026-11-03T12:35:15+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T11:55:01+08:00",
+ "generated_at": "2026-11-03T12:26:35+08:00",
  "school": {
   "id": "kmhjh",
   "name": "國立高餐大附屬餐旅中學",
@@ -8,6 +8,71 @@
   "base": "https://nkhhs.kmhjh.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "kmhjh-5258",
+   "title": "第一屆全國中小學純植永續教育創新教案徵選",
+   "date": "2026-11-03",
+   "source_category": "教師研習",
+   "school": "kmhjh",
+   "school_name": "高餐大附中",
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/teacher-training/5258/%e7%ac%ac%e4%b8%80%e5%b1%86%e5%85%a8%e5%9c%8b%e4%b8%ad%e5%b0%8f%e5%ad%b8%e7%b4%94%e6%a4%8d%e6%b0%b8%e7%ba%8c%e6%95%99%e8%82%b2%e5%89%b5%e6%96%b0%e6%95%99%e6%a1%88%e5%be%b5%e9%81%b8/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T12:26:35+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ed787cdb29686df2a7864b70aa8aef08e6a9ab57301299270e3267fb65529b97"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-20"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "kmhjh-5255",
    "title": "【公告】本校115學年度第3次代理教師甄選(第三階段)成績公告",

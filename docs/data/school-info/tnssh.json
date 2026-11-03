@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-03T12:04:07+08:00",
+ "generated_at": "2026-11-03T12:34:24+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -206,15 +206,23 @@
    "page_id": 202586988112469,
    "url": "https://www.tnssh.tn.edu.tw/sa/dis/",
    "label": "訓育組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:34:20+08:00",
+   "path": [
+    "訓育組"
+   ]
   },
   "209540248598262": {
    "page_id": 209540248598262,
    "url": "https://www.tnssh.tn.edu.tw/sa/gui/",
    "label": "生輔組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:34:22+08:00",
+   "path": [
+    "生輔組"
+   ]
   },
   "85894063654319": {
    "page_id": 85894063654319,
@@ -696,6 +704,17 @@
     "學務處"
    ],
    "order": 70
+  },
+  "199437033500939": {
+   "page_id": 199437033500939,
+   "url": "https://www.tnssh.tn.edu.tw/sa/gui/guidata/",
+   "label": "資料下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "生輔組"
+   ],
+   "order": 71
   }
  },
  "handbook": {},
@@ -982,5 +1001,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-03T12:04:07+08:00"
+ "last_run_at": "2026-11-03T12:34:24+08:00"
 }

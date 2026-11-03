@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-03T12:05:02+08:00",
+ "generated_at": "2026-11-03T12:35:21+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -666,22 +666,91 @@
    "page_id": 139946157861962,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1385.php",
    "label": "學生選修課程專區",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:35:16+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "學生選修專區"
+   ],
+   "changed_at": "2026-11-03T12:35:16+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-139946157861962.json",
+   "detail_revision": "cd74b99cb8167b8584feda59f86af230182e9d480e4c8b0f19156135228e7ff7",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "選課"
+    ],
+    "segments": []
+   }
   },
   "104244555394653": {
    "page_id": 104244555394653,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1251.php",
    "label": "校園植栽",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:35:18+08:00",
+   "path": [
+    "校園植栽"
+   ],
+   "changed_at": "2026-11-03T12:35:18+08:00",
+   "content_hash": "c8b9e835091411c32163f6c7f469b50f852a51199db0f72b13f2d710533e3580",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-104244555394653.json",
+   "detail_revision": "5360be62d66a7ab64e2368be9e81c37520dfe553a8424038374b03d0da221945",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "155419639824894": {
    "page_id": 155419639824894,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1389.php",
    "label": "ENGLISH",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:35:20+08:00",
+   "path": [
+    "ENGLISH"
+   ],
+   "changed_at": "2026-11-03T12:35:20+08:00",
+   "content_hash": "c8a367f5fd747efd4e32097b3952509898911bef17ff76fd25ffaf9a36174741",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-155419639824894.json",
+   "detail_revision": "22a49096132da08037f67a9c4c04fa1d4c2550291e905957b733d14c86446dab",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "102112191326672": {
    "page_id": 102112191326672,
@@ -2747,6 +2816,182 @@
     "綜合職能科"
    ],
    "order": 202
+  },
+  "197049649467614": {
+   "page_id": 197049649467614,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1391.php",
+   "label": "Features",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 203
+  },
+  "271205301363113": {
+   "page_id": 271205301363113,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1392.php",
+   "label": "History",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 204
+  },
+  "187876493501341": {
+   "page_id": 187876493501341,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1408.php",
+   "label": "Architecture",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 205
+  },
+  "278337140465914": {
+   "page_id": 278337140465914,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1420.php",
+   "label": "Auto Mechanics",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 206
+  },
+  "38438689418272": {
+   "page_id": 38438689418272,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1404.php",
+   "label": "Bio-Industrial Mechatronics",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 207
+  },
+  "236584468042892": {
+   "page_id": 236584468042892,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1419.php",
+   "label": "Chemical Engineering",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 208
+  },
+  "191991552069168": {
+   "page_id": 191991552069168,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1423.php",
+   "label": "Comprehensive Vocational Skill Training",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 209
+  },
+  "145788316160821": {
+   "page_id": 145788316160821,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1424.php",
+   "label": "Electrical Engineering",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 210
+  },
+  "260273746299106": {
+   "page_id": 260273746299106,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1401.php",
+   "label": "Electronic Engineering",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 211
+  },
+  "59913495763447": {
+   "page_id": 59913495763447,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1421.php",
+   "label": "Food Processing",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 212
+  },
+  "76565138170312": {
+   "page_id": 76565138170312,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1403.php",
+   "label": "Home Economics",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 213
+  },
+  "69546278309911": {
+   "page_id": 69546278309911,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1422.php",
+   "label": "Horticulture",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 214
+  },
+  "100637506615851": {
+   "page_id": 100637506615851,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1399.php",
+   "label": "Information Technology",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 215
+  },
+  "204403536415660": {
+   "page_id": 204403536415660,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1405.php",
+   "label": "Interior Design",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 216
+  },
+  "103481738312863": {
+   "page_id": 103481738312863,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1409.php",
+   "label": "Mechanical Engineering",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 217
+  },
+  "41590346810378": {
+   "page_id": 41590346810378,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1400.php",
+   "label": "Night School",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "ENGLISH"
+   ],
+   "order": 218
   }
  },
  "handbook": {},
@@ -2970,6 +3215,43 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-104244555394653",
+   "kind": "school_info",
+   "title": "校園植栽",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1251.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-104244555394653.json",
+   "detail_revision": "5360be62d66a7ab64e2368be9e81c37520dfe553a8424038374b03d0da221945",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-105249649836963",
    "kind": "school_info",
    "title": "行政單位 › 校長室",
@@ -3084,6 +3366,48 @@
      }
     ]
    }
+  },
+  {
+   "id": "ksaivs-info-139946157861962",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 學生選修專區",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1385.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-139946157861962.json",
+   "detail_revision": "cd74b99cb8167b8584feda59f86af230182e9d480e4c8b0f19156135228e7ff7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "選課"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "ksaivs-info-155419639824894",
+   "kind": "school_info",
+   "title": "ENGLISH",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1389.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-155419639824894.json",
+   "detail_revision": "22a49096132da08037f67a9c4c04fa1d4c2550291e905957b733d14c86446dab",
+   "detail_status": "parsed"
   },
   {
    "id": "ksaivs-info-156753558783688",
@@ -3550,5 +3874,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-03T12:05:02+08:00"
+ "last_run_at": "2026-11-03T12:35:21+08:00"
 }

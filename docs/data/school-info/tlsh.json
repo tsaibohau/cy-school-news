@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-03T12:05:57+08:00",
+ "generated_at": "2026-11-03T12:36:19+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -316,22 +316,34 @@
    "page_id": 108340461369870,
    "url": "https://www.tlsh.ylc.edu.tw/phone-list/",
    "label": "校內分機",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:36:14+08:00",
+   "path": [
+    "校內分機"
+   ]
   },
   "274253371927486": {
    "page_id": 274253371927486,
    "url": "https://www.tlsh.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/",
    "label": "校務資料開放專區",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:36:16+08:00",
+   "path": [
+    "校務資料開放專區"
+   ]
   },
   "37790914835202": {
    "page_id": 37790914835202,
    "url": "https://www.tlsh.ylc.edu.tw/sitemap/",
    "label": "網頁導覽",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:36:18+08:00",
+   "path": [
+    "網頁導覽"
+   ]
   },
   "60640782873538": {
    "page_id": 60640782873538,
@@ -648,6 +660,50 @@
     "輔導室"
    ],
    "order": 62
+  },
+  "257221626017117": {
+   "page_id": 257221626017117,
+   "url": "https://www.tlsh.ylc.edu.tw/organization/",
+   "label": "組織架構",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 63
+  },
+  "206223377808279": {
+   "page_id": 206223377808279,
+   "url": "https://www.tlsh.ylc.edu.tw/building/",
+   "label": "校地及校舍配置",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校務資料開放專區"
+   ],
+   "order": 64
+  },
+  "158785593304579": {
+   "page_id": 158785593304579,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/president/",
+   "label": "校長室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網頁導覽"
+   ],
+   "order": 65
+  },
+  "253476700359407": {
+   "page_id": 253476700359407,
+   "url": "https://www.tlsh.ylc.edu.tw/english/",
+   "label": "TLSH(英文版簡介)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網頁導覽"
+   ],
+   "order": 66
   }
  },
  "handbook": {},
@@ -917,5 +973,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-03T12:05:57+08:00"
+ "last_run_at": "2026-11-03T12:36:19+08:00"
 }

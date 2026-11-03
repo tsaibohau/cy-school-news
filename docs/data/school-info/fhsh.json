@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-03T12:04:48+08:00",
+ "generated_at": "2026-11-03T12:35:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -2196,15 +2196,683 @@
    "page_id": 248845876505546,
    "url": "https://www.fhsh.khc.edu.tw/aa/%e5%8d%87%e5%ad%b8%e8%80%83%e8%a9%a6",
    "label": "升學考試",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:35:00+08:00",
+   "path": [
+    "升學考試"
+   ],
+   "changed_at": "2026-11-03T12:35:00+08:00",
+   "content_hash": "9dfa68eb4159aec98f3328f797408acee4ed746bb58a54bfb173bdabac6fb51c",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "招生",
+    "特殊選才",
+    "入學",
+    "考試",
+    "升學",
+    "新生",
+    "獎學金",
+    "繁星",
+    "英聽",
+    "衛生",
+    "試場",
+    "講座"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-248845876505546.json",
+   "detail_revision": "e1c72cfd7b52373c9b585b39662440d1e9b03151bcddb57cec68e82370840610",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "考試",
+     "升學",
+     "#admission",
+     "#exam"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "考試",
+       "升學",
+       "#admission",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#health",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "大考",
+       "升學",
+       "#admission",
+       "#exam",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "繁星",
+       "獎學金",
+       "#admission",
+       "#scholarship",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   "96997573251373": {
    "page_id": 96997573251373,
    "url": "https://www.fhsh.khc.edu.tw/aa/%e6%aa%94%e6%a1%88%e4%b8%8b%e8%bc%89",
    "label": "檔案下載",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:35:02+08:00",
+   "path": [
+    "檔案下載"
+   ],
+   "changed_at": "2026-11-03T12:35:02+08:00",
+   "content_hash": "fd3a75002847a6d90356b83157294eeed5380a69ac609c708ead563ac1f0524e",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教職進修網研習代碼申請資料",
+     "url": "https://drive.google.com/file/d/1Gp9nZfNLPG9aILFkJFcZAWaTiYeYwzlz/view?usp=sharing"
+    },
+    {
+     "name": "實習教師請假單",
+     "url": "https://drive.google.com/file/d/1KUhK45W83UbQXjVe-rd7ynuJUsctRHSw/view?usp=sharing"
+    },
+    {
+     "name": "實習教師教學演示需求表",
+     "url": "https://drive.google.com/file/d/1twCc1f5J-sPWtJq0QGaaIZm6WMtEa8II/view?usp=sharing"
+    },
+    {
+     "name": "實習教師教學演意見表",
+     "url": "https://drive.google.com/file/d/16ndGFv6TeaD_fgF05v9DV_2efnnRti5n/view?usp=sharing"
+    },
+    {
+     "name": "實習教師演示表",
+     "url": "https://drive.google.com/file/d/1QZSuBIoobYw6KaJ43EVMEtp9N264X_l7/view?usp=sharing"
+    },
+    {
+     "name": "實習教師加班補休單",
+     "url": "https://drive.google.com/file/d/1SEe6-w-JQlxPeIEp7-AZnNtOvX8jcjYD/view?usp=sharing"
+    },
+    {
+     "name": "處室實習規劃表",
+     "url": "https://drive.google.com/file/d/1Uxs3qwF46aCMiGspf_ptVh4tXp_5zBN6/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學課程異動申請表",
+     "url": "https://drive.google.com/file/d/1kBhuWt5jOYTrOo3vMw-R4_uXtk9DqqiI/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學課程異動申請表",
+     "url": "https://drive.google.com/file/d/1sNmKXBxIX6bMrrf1DnqFvvvQCQ0wQxdm/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學校外人士協助教學或活動要點(110.1.19校務會議訂定通過)",
+     "url": "https://drive.google.com/file/d/1N25_ajjBa06oLMUL2Og_0vplAYTRWpxf/view?usp=sharing"
+    },
+    {
+     "name": "鳳新高中校外人士協助教學或活動 入校須知",
+     "url": "https://drive.google.com/file/d/1p9oYNO9y1DyNi7VQvdK0LgXIDQ3hIiVA/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學校外人士協助教學或活動申請表",
+     "url": "https://drive.google.com/file/d/11u-AplqGFrHk-FHjwwuBlHM_KxOOqeYN/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學校外人士協助教活動非部定、校訂課程時段教學計畫審查表",
+     "url": "https://drive.google.com/file/d/1FX8KsR666oB14hj0LCU67L_Jkv_sdTMe/view?usp=sharing"
+    },
+    {
+     "name": "兼任教師請假單(代課鐘點依據)-1150226更新",
+     "url": "https://drive.google.com/file/d/1mxG6y6tQzB--4_9BVA2lDYpsz3Au5-lB/view?usp=sharing"
+    },
+    {
+     "name": "校外教學申請表",
+     "url": "https://drive.google.com/file/d/1BcR02N8u32OK_bXpH81jGjhIhaG20JXf/view?usp=sharing"
+    },
+    {
+     "name": "自修課離開教室進行教學活動申請表",
+     "url": "https://drive.google.com/file/d/11dnoIjMGgvXbpRn-nF1dsmxgt-JaaOMH/view?usp=sharing"
+    },
+    {
+     "name": "教師研習心得",
+     "url": "https://drive.google.com/file/d/1kpiRB1kP6g5PLbJhKWk_LFAPDgLPYLHT/view?usp=sharing"
+    },
+    {
+     "name": "學期進度表",
+     "url": "https://drive.google.com/file/d/1a3_d0KhNx5eFZiXex_SDUqiDC20jHt-5/view?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "申請",
+    "研習",
+    "假單",
+    "收費",
+    "課程異動",
+    "請假",
+    "校外教學",
+    "考試",
+    "報名",
+    "學期成績",
+    "定期考",
+    "手機",
+    "期末考",
+    "校長",
+    "社團",
+    "補考",
+    "輔導課",
+    "電話",
+    "類組"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/fhsh/fhsh-info-96997573251373.json",
+   "detail_revision": "e3f67d8b20406d638935d3b813ef92273c6020e51bf6657d5054f349460b3023",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "學籍與成績證明文件申請表",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2022/04/學籍與成績證明文件申請表.pdf"
+    },
+    {
+     "name": "國立鳳新高級中學擔任小老師證明範本(PDF)",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2022/01/國立鳳新高級中學擔任小老師證明範本.pdf"
+    },
+    {
+     "name": "國立鳳新高中學生考試規則及舞弊懲罰細則110.07.01",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2022/02/國立鳳新高中學生考試規則及舞弊懲罰細則110.07.01.pdf"
+    },
+    {
+     "name": "補考申請表A5",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2022/02/補考申請表A5.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "補假"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#course"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#course"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "校外教學",
+       "#field_trip"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "place",
+       "required"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "課輔",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty"
+      ],
+      "d": [
+       "2021-07-01"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "補考",
+       "#makeup"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "手機",
+       "#device",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "段考",
+       "成績單",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "期末考",
+       "開學",
+       "#final"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "學期成績",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "成績單"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "成績單"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "選組",
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "成績單",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "成績單",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "241052930385736": {
    "page_id": 241052930385736,
@@ -4567,6 +5235,453 @@
    }
   },
   {
+   "id": "fhsh-info-96997573251373",
+   "kind": "school_info",
+   "title": "檔案下載",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/%e6%aa%94%e6%a1%88%e4%b8%8b%e8%bc%89",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "學籍與成績證明文件申請表",
+    "國立鳳新高級中學擔任小老師證明範本(PDF)",
+    "國立鳳新高中學生考試規則及舞弊懲罰細則110.07.01",
+    "補考申請表A5",
+    "數位黑板回報",
+    "設備報修",
+    "教職進修網研習代碼申請資料",
+    "實習教師請假單",
+    "實習教師教學演示需求表",
+    "實習教師教學演意見表",
+    "實習教師演示表",
+    "實習教師加班補休單",
+    "處室實習規劃表",
+    "國立鳳新高級中學課程異動申請表",
+    "國立鳳新高級中學課程異動申請表",
+    "國立鳳新高級中學校外人士協助教學或活動要點(110.1.19校務會議訂定通過)",
+    "鳳新高中校外人士協助教學或活動 入校須知",
+    "國立鳳新高級中學校外人士協助教學或活動申請表",
+    "國立鳳新高級中學校外人士協助教活動非部定、校訂課程時段教學計畫審查表",
+    "兼任教師請假單(代課鐘點依據)-1150226更新",
+    "校外教學申請表",
+    "自修課離開教室進行教學活動申請表",
+    "教師研習心得",
+    "學期進度表"
+   ],
+   "keywords": [
+    "申請",
+    "研習",
+    "假單",
+    "收費",
+    "課程異動",
+    "請假",
+    "校外教學",
+    "考試",
+    "報名",
+    "學期成績",
+    "定期考",
+    "手機",
+    "期末考",
+    "校長",
+    "社團",
+    "補考",
+    "輔導課",
+    "電話",
+    "類組"
+   ],
+   "documents": [
+    {
+     "name": "學籍與成績證明文件申請表",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2022/04/學籍與成績證明文件申請表.pdf"
+    },
+    {
+     "name": "國立鳳新高級中學擔任小老師證明範本(PDF)",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2022/01/國立鳳新高級中學擔任小老師證明範本.pdf"
+    },
+    {
+     "name": "國立鳳新高中學生考試規則及舞弊懲罰細則110.07.01",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2022/02/國立鳳新高中學生考試規則及舞弊懲罰細則110.07.01.pdf"
+    },
+    {
+     "name": "補考申請表A5",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2022/02/補考申請表A5.pdf"
+    },
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教職進修網研習代碼申請資料",
+     "url": "https://drive.google.com/file/d/1Gp9nZfNLPG9aILFkJFcZAWaTiYeYwzlz/view?usp=sharing"
+    },
+    {
+     "name": "實習教師請假單",
+     "url": "https://drive.google.com/file/d/1KUhK45W83UbQXjVe-rd7ynuJUsctRHSw/view?usp=sharing"
+    },
+    {
+     "name": "實習教師教學演示需求表",
+     "url": "https://drive.google.com/file/d/1twCc1f5J-sPWtJq0QGaaIZm6WMtEa8II/view?usp=sharing"
+    },
+    {
+     "name": "實習教師教學演意見表",
+     "url": "https://drive.google.com/file/d/16ndGFv6TeaD_fgF05v9DV_2efnnRti5n/view?usp=sharing"
+    },
+    {
+     "name": "實習教師演示表",
+     "url": "https://drive.google.com/file/d/1QZSuBIoobYw6KaJ43EVMEtp9N264X_l7/view?usp=sharing"
+    },
+    {
+     "name": "實習教師加班補休單",
+     "url": "https://drive.google.com/file/d/1SEe6-w-JQlxPeIEp7-AZnNtOvX8jcjYD/view?usp=sharing"
+    },
+    {
+     "name": "處室實習規劃表",
+     "url": "https://drive.google.com/file/d/1Uxs3qwF46aCMiGspf_ptVh4tXp_5zBN6/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學課程異動申請表",
+     "url": "https://drive.google.com/file/d/1kBhuWt5jOYTrOo3vMw-R4_uXtk9DqqiI/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學課程異動申請表",
+     "url": "https://drive.google.com/file/d/1sNmKXBxIX6bMrrf1DnqFvvvQCQ0wQxdm/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學校外人士協助教學或活動要點(110.1.19校務會議訂定通過)",
+     "url": "https://drive.google.com/file/d/1N25_ajjBa06oLMUL2Og_0vplAYTRWpxf/view?usp=sharing"
+    },
+    {
+     "name": "鳳新高中校外人士協助教學或活動 入校須知",
+     "url": "https://drive.google.com/file/d/1p9oYNO9y1DyNi7VQvdK0LgXIDQ3hIiVA/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學校外人士協助教學或活動申請表",
+     "url": "https://drive.google.com/file/d/11u-AplqGFrHk-FHjwwuBlHM_KxOOqeYN/view?usp=sharing"
+    },
+    {
+     "name": "國立鳳新高級中學校外人士協助教活動非部定、校訂課程時段教學計畫審查表",
+     "url": "https://drive.google.com/file/d/1FX8KsR666oB14hj0LCU67L_Jkv_sdTMe/view?usp=sharing"
+    },
+    {
+     "name": "兼任教師請假單(代課鐘點依據)-1150226更新",
+     "url": "https://drive.google.com/file/d/1mxG6y6tQzB--4_9BVA2lDYpsz3Au5-lB/view?usp=sharing"
+    },
+    {
+     "name": "校外教學申請表",
+     "url": "https://drive.google.com/file/d/1BcR02N8u32OK_bXpH81jGjhIhaG20JXf/view?usp=sharing"
+    },
+    {
+     "name": "自修課離開教室進行教學活動申請表",
+     "url": "https://drive.google.com/file/d/11dnoIjMGgvXbpRn-nF1dsmxgt-JaaOMH/view?usp=sharing"
+    },
+    {
+     "name": "教師研習心得",
+     "url": "https://drive.google.com/file/d/1kpiRB1kP6g5PLbJhKWk_LFAPDgLPYLHT/view?usp=sharing"
+    },
+    {
+     "name": "學期進度表",
+     "url": "https://drive.google.com/file/d/1a3_d0KhNx5eFZiXex_SDUqiDC20jHt-5/view?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-96997573251373.json",
+   "detail_revision": "e3f67d8b20406d638935d3b813ef92273c6020e51bf6657d5054f349460b3023",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "補假"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#course"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#course"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "校外教學",
+       "#field_trip"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "place",
+       "required"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "課輔",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty"
+      ],
+      "d": [
+       "2021-07-01"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "補考",
+       "#makeup"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "手機",
+       "#device",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "段考",
+       "成績單",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "期末考",
+       "開學",
+       "#final"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "學期成績",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "成績單"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "成績單"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "選組",
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "成績單",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "成績單",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-101085825826745",
    "kind": "school_info",
    "title": "校務章則",
@@ -5568,6 +6683,263 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fhsh-info-248845876505546",
+   "kind": "school_info",
+   "title": "升學考試",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/%e5%8d%87%e5%ad%b8%e8%80%83%e8%a9%a6",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "招生",
+    "特殊選才",
+    "入學",
+    "考試",
+    "升學",
+    "新生",
+    "獎學金",
+    "繁星",
+    "英聽",
+    "衛生",
+    "試場",
+    "講座"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-248845876505546.json",
+   "detail_revision": "e1c72cfd7b52373c9b585b39662440d1e9b03151bcddb57cec68e82370840610",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "考試",
+     "升學",
+     "#admission",
+     "#exam"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "考試",
+       "升學",
+       "#admission",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#health",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "大考",
+       "升學",
+       "#admission",
+       "#exam",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "繁星",
+       "獎學金",
+       "#admission",
+       "#scholarship",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-257542662741225",
    "kind": "school_info",
    "title": "教師研習",
@@ -6053,5 +7425,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-03T12:04:48+08:00"
+ "last_run_at": "2026-11-03T12:35:08+08:00"
 }

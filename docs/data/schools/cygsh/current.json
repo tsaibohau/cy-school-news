@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T11:55:01+08:00",
+ "generated_at": "2026-11-03T12:26:35+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -20,8 +20,8 @@
    "first_seen": "2026-11-03T11:55:01+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -657,8 +657,8 @@
    "first_seen": "2026-11-03T11:55:01+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2,
@@ -756,8 +756,8 @@
    "first_seen": "2026-11-03T11:55:01+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -808,8 +808,8 @@
    "first_seen": "2026-11-03T11:55:01+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-187110",
@@ -823,8 +823,8 @@
    "first_seen": "2026-11-03T11:55:01+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -948,8 +948,8 @@
    "first_seen": "2026-11-03T11:55:01+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -32498,7 +32498,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186331,r508.php",
    "category": "招生編班",
-   "first_seen": "2026-08-24T07:53:19+08:00"
+   "first_seen": "2026-08-24T07:53:19+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T12:33:09+08:00"
   },
   {
    "id": "cygsh-186317",
@@ -32509,7 +32513,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186317,r677.php",
    "category": "一般",
-   "first_seen": "2026-08-22T07:56:45+08:00"
+   "first_seen": "2026-08-22T07:56:45+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T12:33:09+08:00"
   },
   {
    "id": "cygsh-186330",

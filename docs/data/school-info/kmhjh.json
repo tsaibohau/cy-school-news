@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-03T12:04:31+08:00",
+ "generated_at": "2026-11-03T12:34:49+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -260,22 +260,40 @@
    "page_id": 5158881065668,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/social-studies/",
    "label": "社會領域",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:34:43+08:00",
+   "path": [
+    "教學單位",
+    "國中部",
+    "社會領域"
+   ]
   },
   "146849582873334": {
    "page_id": 146849582873334,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/health-pe/",
    "label": "健康與體育領域",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:34:45+08:00",
+   "path": [
+    "教學單位",
+    "國中部",
+    "健康與體育領域"
+   ]
   },
   "8386167094910": {
    "page_id": 8386167094910,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/integrated-activities/",
    "label": "綜合活動領域",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:34:47+08:00",
+   "path": [
+    "教學單位",
+    "國中部",
+    "綜合活動領域"
+   ]
   },
   "207038827917062": {
    "page_id": 207038827917062,
@@ -1123,6 +1141,78 @@
     "自然及科技領域"
    ],
    "order": 101
+  },
+  "100724331990277": {
+   "page_id": 100724331990277,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/social-studies/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "社會領域"
+   ],
+   "order": 102
+  },
+  "103554263665851": {
+   "page_id": 103554263665851,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/social-studies/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "社會領域"
+   ],
+   "order": 103
+  },
+  "95333534575705": {
+   "page_id": 95333534575705,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/health-pe/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "健康與體育領域"
+   ],
+   "order": 104
+  },
+  "185378430070139": {
+   "page_id": 185378430070139,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/health-pe/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "健康與體育領域"
+   ],
+   "order": 105
+  },
+  "6535282285737": {
+   "page_id": 6535282285737,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/integrated-activities/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "綜合活動領域"
+   ],
+   "order": 106
+  },
+  "225100473302108": {
+   "page_id": 225100473302108,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/integrated-activities/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "綜合活動領域"
+   ],
+   "order": 107
   }
  },
  "handbook": {},
@@ -1376,5 +1466,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-03T12:04:31+08:00"
+ "last_run_at": "2026-11-03T12:34:49+08:00"
 }

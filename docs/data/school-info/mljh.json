@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mljh",
- "generated_at": "2026-11-03T12:07:03+08:00",
+ "generated_at": "2026-11-03T12:37:24+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31793209037602": {
@@ -222,8 +222,13 @@
    "page_id": 260218140575979,
    "url": "https://mljh.ylc.edu.tw/cl.aspx?n=54700",
    "label": "學生事務",
-   "status": "pending",
-   "depth": 0
+   "status": "excluded_section",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:37:23+08:00",
+   "path": [
+    "教師專區",
+    "學生事務"
+   ]
   },
   "219645504874438": {
    "page_id": 219645504874438,
@@ -581,5 +586,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-03T12:07:03+08:00"
+ "last_run_at": "2026-11-03T12:37:24+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-03T12:03:23+08:00",
+ "generated_at": "2026-11-03T12:33:42+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -494,15 +494,57 @@
    "page_id": 23012211157513,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=3,8,334",
    "label": "優質認證",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:33:38+08:00",
+   "path": [
+    "優質認證"
+   ],
+   "changed_at": "2026-11-03T12:33:38+08:00",
+   "content_hash": "e01e466aee12862a928d0cdd2f8848cbb9c78cfd1cdd493aff3ddc4428d712d6",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-23012211157513.json",
+   "detail_revision": "79de3849366b936c90575c89193978f66b308d2c24ed73023633650df556f4ee",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2018-06-25"
+      ]
+     }
+    ]
+   }
   },
   "69538394571608": {
    "page_id": 69538394571608,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,379",
    "label": "學習扶助(補救教學)",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T12:33:40+08:00",
+   "path": [
+    "學習扶助(補救教學)"
+   ],
+   "changed_at": "2026-11-03T12:33:40+08:00",
+   "content_hash": "b32544cf29f6e97b1e8fd611a33c8cf920cd37ed932e6073d7fa4a26b19a4488",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-69538394571608.json",
+   "detail_revision": "cdcfeee1eb2510868ebfd8656c2bf55a30229ec4cdc5f1dbb98f8805a42a8ab5",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "104245133408029": {
    "page_id": 104245133408029,
@@ -3532,6 +3574,39 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-23012211157513",
+   "kind": "school_info",
+   "title": "優質認證",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=3,8,334",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-23012211157513.json",
+   "detail_revision": "79de3849366b936c90575c89193978f66b308d2c24ed73023633650df556f4ee",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2018-06-25"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-43761581328870",
    "kind": "school_info",
    "title": "優質化計畫",
@@ -3563,6 +3638,23 @@
      }
     ]
    }
+  },
+  {
+   "id": "hnvs-info-69538394571608",
+   "kind": "school_info",
+   "title": "學習扶助(補救教學)",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,379",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-69538394571608.json",
+   "detail_revision": "cdcfeee1eb2510868ebfd8656c2bf55a30229ec4cdc5f1dbb98f8805a42a8ab5",
+   "detail_status": "parsed"
   },
   {
    "id": "hnvs-info-74150307746498",
@@ -4224,5 +4316,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T12:03:23+08:00"
+ "last_run_at": "2026-11-03T12:33:42+08:00"
 }

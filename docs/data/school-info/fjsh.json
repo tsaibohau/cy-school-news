@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-03T12:05:33+08:00",
+ "generated_at": "2026-11-03T12:35:54+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -1681,15 +1681,374 @@
   },
   "498": {
    "page_id": 498,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:35:47+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "證明申請"
+   ],
+   "changed_at": "2026-11-03T12:35:47+08:00",
+   "content_hash": "9a06fe69b416dd6a1ad197dc7a0dc671687e3a4a43fc0f9a520ef919132a3d50",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "申請",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-498.json",
+   "detail_revision": "6426ffbe86b1c94179322944081484a308df790d1d8aea5915f8d3ba412cd8fa",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "499": {
    "page_id": 499,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:35:50+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "國高中升學"
+   ],
+   "changed_at": "2026-11-03T12:35:50+08:00",
+   "content_hash": "4f6d56bf6fb5eaedcf4bdceac14ac954871020ef44b68ede6d14243a4ed807a0",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "招生",
+    "入學",
+    "地址",
+    "專線",
+    "特殊選才",
+    "考試",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-499.json",
+   "detail_revision": "0a26c887ff4a32585b8d4dba54ce854c5bcd734e33855186e771866a9a6c5285",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組",
+     "升學",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "500": {
    "page_id": 500,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:35:53+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "編班轉班"
+   ],
+   "changed_at": "2026-11-03T12:35:53+08:00",
+   "content_hash": "981136b0313435c8f90ed2c6d08da0ab4d256c62e11ca4801c571a2afdaf4653",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "編班",
+    "地址",
+    "專線",
+    "招生",
+    "新生",
+    "社會組",
+    "自然組",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-500.json",
+   "detail_revision": "9031f253fd2158fb170bd3222d0e681f34648d52b7e4c96c4e41964ca8d1f094",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "導師",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "501": {
    "page_id": 501,
@@ -3738,6 +4097,374 @@
    }
   },
   {
+   "id": "fjsh-info-498",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 證明申請",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-498.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "申請",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-498.json",
+   "detail_revision": "6426ffbe86b1c94179322944081484a308df790d1d8aea5915f8d3ba412cd8fa",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-499",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 國高中升學",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-499.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "招生",
+    "入學",
+    "地址",
+    "專線",
+    "特殊選才",
+    "考試",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-499.json",
+   "detail_revision": "0a26c887ff4a32585b8d4dba54ce854c5bcd734e33855186e771866a9a6c5285",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組",
+     "升學",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-500",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 編班轉班",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-500.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "編班",
+    "地址",
+    "專線",
+    "招生",
+    "新生",
+    "社會組",
+    "自然組",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-500.json",
+   "detail_revision": "9031f253fd2158fb170bd3222d0e681f34648d52b7e4c96c4e41964ca8d1f094",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "導師",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -3835,5 +4562,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-03T12:05:33+08:00"
+ "last_run_at": "2026-11-03T12:35:54+08:00"
 }

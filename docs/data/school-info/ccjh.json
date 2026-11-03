@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-03T12:05:40+08:00",
+ "generated_at": "2026-11-03T12:36:01+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -887,15 +887,137 @@
   },
   "123": {
    "page_id": 123,
-   "status": "pending"
+   "status": "staff_profile",
+   "checked_at": "2026-11-03T12:35:55+08:00",
+   "path": [
+    "行政單位",
+    "竹中教務處",
+    "教務主任"
+   ]
   },
   "124": {
    "page_id": 124,
-   "status": "pending"
+   "status": "staff_profile",
+   "checked_at": "2026-11-03T12:35:58+08:00",
+   "path": [
+    "行政單位",
+    "竹中學務處",
+    "學務主任"
+   ]
   },
   "125": {
    "page_id": 125,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T12:36:00+08:00",
+   "path": [
+    "行政單位",
+    "竹中學務處",
+    "訓育組"
+   ],
+   "changed_at": "2026-11-03T12:36:00+08:00",
+   "content_hash": "34c40c605b51b879582737f140253a27842c8a3f075406bab3a8174a23c56aa4",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "比賽",
+    "班聯會",
+    "就學貸款",
+    "新生",
+    "校外教學",
+    "校慶",
+    "畢業典禮",
+    "畢業旅行"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-125.json",
+   "detail_revision": "cfed28ead7999a9b1ef0b19c92ba661166e28ebe741894535f6f21e4c4de0ecd",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "週會",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "班會"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "就學貸款",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "畢業典禮",
+       "畢業旅行",
+       "校外教學",
+       "校慶",
+       "#celebration",
+       "#graduation",
+       "#field_trip"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "126": {
    "page_id": 126,
@@ -2064,6 +2186,118 @@
    }
   },
   {
+   "id": "ccjh-info-125",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中學務處 › 訓育組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-125.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "比賽",
+    "班聯會",
+    "就學貸款",
+    "新生",
+    "校外教學",
+    "校慶",
+    "畢業典禮",
+    "畢業旅行"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-125.json",
+   "detail_revision": "cfed28ead7999a9b1ef0b19c92ba661166e28ebe741894535f6f21e4c4de0ecd",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "週會",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "班會"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "就學貸款",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "畢業典禮",
+       "畢業旅行",
+       "校外教學",
+       "校慶",
+       "#celebration",
+       "#graduation",
+       "#field_trip"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-143",
    "kind": "school_info",
    "title": "行政單位 › 竹中輔導處",
@@ -2276,5 +2510,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-03T12:05:40+08:00"
+ "last_run_at": "2026-11-03T12:36:01+08:00"
 }
