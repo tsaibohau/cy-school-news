@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-03T12:36:49+08:00",
+ "generated_at": "2026-11-03T17:34:17+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -1318,8 +1318,213 @@
    "page_id": 132067796065701,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%95%99%e8%82%b2%e5%84%b2%e8%93%84%e5%b0%88%e6%88%b6/",
    "label": "教育儲蓄專戶",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T17:34:13+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "教育儲蓄專戶"
+   ],
+   "changed_at": "2026-11-03T17:34:13+08:00",
+   "content_hash": "2b24b0750f07fcf5cf2ba2addbf34e4530735c42e06b8792df2abeedede131e2",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "代辦費",
+    "學雜費",
+    "補助金"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-132067796065701.json",
+   "detail_revision": "cea4759b7eb209aa3e6065718faf3b8bd870a5db0c67c30b24698798160a7efd",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "虎尾農工教育儲蓄戶申請表-1229",
+     "url": "https://www.hwaivs.ylc.edu.tw/wp-content/uploads/sites/112/2026/01/虎尾農工教育儲蓄戶申請表-1229.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "費用",
+       "生活"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "#scholarship"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "導師",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   "8749722468186": {
    "page_id": 8749722468186,
@@ -4881,6 +5086,216 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hwaivs-info-132067796065701",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 教育儲蓄專戶",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%95%99%e8%82%b2%e5%84%b2%e8%93%84%e5%b0%88%e6%88%b6/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "虎尾農工教育儲蓄戶申請表-1229"
+   ],
+   "keywords": [
+    "申請",
+    "代辦費",
+    "學雜費",
+    "補助金"
+   ],
+   "documents": [
+    {
+     "name": "虎尾農工教育儲蓄戶申請表-1229",
+     "url": "https://www.hwaivs.ylc.edu.tw/wp-content/uploads/sites/112/2026/01/虎尾農工教育儲蓄戶申請表-1229.pdf"
+    }
+   ],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-132067796065701.json",
+   "detail_revision": "cea4759b7eb209aa3e6065718faf3b8bd870a5db0c67c30b24698798160a7efd",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "費用",
+       "生活"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "#scholarship"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "導師",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hwaivs-info-139535134848489",
    "kind": "school_info",
    "title": "國立虎尾高級農工職業學校 › 獎助學金專區 › 各項獎助學金",
@@ -5989,5 +6404,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-03T12:36:49+08:00"
+ "last_run_at": "2026-11-03T17:34:17+08:00"
 }

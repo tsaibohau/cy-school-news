@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-03T12:36:01+08:00",
+ "generated_at": "2026-11-03T17:33:50+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -1021,11 +1021,242 @@
   },
   "126": {
    "page_id": 126,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T17:33:46+08:00",
+   "path": [
+    "行政單位",
+    "竹中學務處",
+    "生輔組"
+   ],
+   "changed_at": "2026-11-03T17:33:46+08:00",
+   "content_hash": "f561059b2547fe6c8d52b8544fa751a04ab1afd9b64ce141b05a89b0ee8132c7",
+   "doc_links": [],
+   "keywords": [
+    "安全",
+    "出缺席",
+    "分機",
+    "宣導",
+    "專車",
+    "志願",
+    "志願服務",
+    "服儀",
+    "服務學習",
+    "服裝",
+    "獎懲",
+    "競賽",
+    "缺席",
+    "衛生",
+    "請假",
+    "防災",
+    "霸凌"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-126.json",
+   "detail_revision": "a1b09a78a64915cd79cbfb23b8a14a6852d79484a0d1da6586ccd1eaa3edd58f",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教官室",
+       "獎懲",
+       "#merit",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "出缺席",
+       "請假",
+       "#leave",
+       "#attendance"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "服儀",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "志工",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "打掃",
+       "#contest",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "127": {
    "page_id": 127,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T17:33:49+08:00",
+   "path": [
+    "行政單位",
+    "竹中學務處",
+    "體育組"
+   ],
+   "changed_at": "2026-11-03T17:33:49+08:00",
+   "content_hash": "bbc52f412c64ff0a8eb3f67c132b185dd162c7bd26320da1b1d87403d4243e54",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "報名",
+    "安全",
+    "比賽",
+    "競賽",
+    "運動會"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-127.json",
+   "detail_revision": "13925a21a9c4cd1d78f4d7611bf210b65b018ec23a9550cb2ecb46185bd5524d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "128": {
    "page_id": 128,
@@ -2298,6 +2529,241 @@
    }
   },
   {
+   "id": "ccjh-info-126",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中學務處 › 生輔組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-126.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "安全",
+    "出缺席",
+    "分機",
+    "宣導",
+    "專車",
+    "志願",
+    "志願服務",
+    "服儀",
+    "服務學習",
+    "服裝",
+    "獎懲",
+    "競賽",
+    "缺席",
+    "衛生",
+    "請假",
+    "防災",
+    "霸凌"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-126.json",
+   "detail_revision": "a1b09a78a64915cd79cbfb23b8a14a6852d79484a0d1da6586ccd1eaa3edd58f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教官室",
+       "獎懲",
+       "#merit",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "出缺席",
+       "請假",
+       "#leave",
+       "#attendance"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "服儀",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "志工",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "打掃",
+       "#contest",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccjh-info-127",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中學務處 › 體育組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-127.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "報名",
+    "安全",
+    "比賽",
+    "競賽",
+    "運動會"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-127.json",
+   "detail_revision": "13925a21a9c4cd1d78f4d7611bf210b65b018ec23a9550cb2ecb46185bd5524d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-143",
    "kind": "school_info",
    "title": "行政單位 › 竹中輔導處",
@@ -2510,5 +2976,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-03T12:36:01+08:00"
+ "last_run_at": "2026-11-03T17:33:50+08:00"
 }

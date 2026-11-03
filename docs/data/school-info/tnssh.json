@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-03T12:34:24+08:00",
+ "generated_at": "2026-11-03T17:31:51+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -228,15 +228,23 @@
    "page_id": 85894063654319,
    "url": "https://www.tnssh.tn.edu.tw/sa/hyg/",
    "label": "衛生組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T17:31:48+08:00",
+   "path": [
+    "衛生組"
+   ]
   },
   "212934729570128": {
    "page_id": 212934729570128,
    "url": "https://www.tnssh.tn.edu.tw/sa/club/",
    "label": "社團活動組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T17:31:50+08:00",
+   "path": [
+    "社團活動組"
+   ]
   },
   "164104867166257": {
    "page_id": 164104867166257,
@@ -715,6 +723,17 @@
     "生輔組"
    ],
    "order": 71
+  },
+  "201172402443094": {
+   "page_id": 201172402443094,
+   "url": "https://www.tnssh.tn.edu.tw/sa/club/clubdoc/",
+   "label": "活動申請相關文件",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "社團活動組"
+   ],
+   "order": 72
   }
  },
  "handbook": {},
@@ -1001,5 +1020,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-03T12:34:24+08:00"
+ "last_run_at": "2026-11-03T17:31:51+08:00"
 }

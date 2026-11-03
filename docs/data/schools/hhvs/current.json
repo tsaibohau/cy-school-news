@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "hhvs",
   "name": "國立新化高工",
@@ -8,6 +8,100 @@
   "base": "https://www.hhvs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "hhvs-12504",
+   "title": "清華大學舉辦116年寒假「探索半導體高中創客營」活動",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12504",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hhvs-12505",
    "title": "「2026高中生醫療科技人才培育計畫」",

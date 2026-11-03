@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "tnssh",
   "name": "國立臺南二中",
@@ -8,6 +8,300 @@
   "base": "https://www.tnssh.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "tnssh-56772",
+   "title": "【學務處】115年11月13、20及27日(連續3週的星期五)四樓會議室辦理活動，故晚自習不開放，請同學移至K館！",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "tnssh",
+   "school_name": "臺南二中",
+   "url": "https://www.tnssh.tn.edu.tw/2026/11/03/%e3%80%90%e5%ad%b8%e5%8b%99%e8%99%95%e3%80%91115%e5%b9%b411%e6%9c%8813%e3%80%8120%e5%8f%8a27%e6%97%a5%e9%80%a3%e7%ba%8c3%e9%80%b1%e7%9a%84%e6%98%9f%e6%9c%9f%e4%ba%94%e5%9b%9b%e6%a8%93%e6%9c%83/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "晚自習",
+     "學務處",
+     "#study_hall"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnssh-56763",
+   "title": "【轉知】竹園岡全國高中職學生流音、流舞大賽",
+   "date": "2026-11-03",
+   "source_category": "學務處",
+   "school": "tnssh",
+   "school_name": "臺南二中",
+   "url": "https://www.tnssh.tn.edu.tw/2026/11/03/tnfshpopularmusicanddance2027/",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "5aacf330e0dceacbc25336e0536ade97948bcc19cb30e68bb3e1d338a015cbe3"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "社團",
+       "學務處",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-13"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-14"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路",
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnssh-56768",
+   "title": "【轉知】十九屆中臺灣模擬聯合國會議（CENTMUNXIX）",
+   "date": "2026-11-03",
+   "source_category": "學務處",
+   "school": "tnssh",
+   "school_name": "臺南二中",
+   "url": "https://www.tnssh.tn.edu.tw/2026/11/03/centmunxix/",
+   "category": "一般",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "社團",
+       "學務處",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05",
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnssh-56760",
+   "title": "【轉知】2027金車曙光寒假物資贊助計劃",
+   "date": "2026-11-03",
+   "source_category": "學務處",
+   "school": "tnssh",
+   "school_name": "臺南二中",
+   "url": "https://www.tnssh.tn.edu.tw/2026/11/03/kingcar2027charity/",
+   "category": "一般",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "社團",
+       "學務處",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-12-15"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "tnssh-56756",
    "title": "【教學組】🏆115學年度第1學期國文競試得獎名單",

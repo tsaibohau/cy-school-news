@@ -968,6 +968,16 @@ def load_deleted_announcement_ids(path_value: str) -> set[str]:
     return deleted
 
 
+def load_removed_announcement_ids() -> set[str]:
+    """IDs removed by scraper/announcement_prune.py (official page gone); never collected again."""
+    path = ROOT / "docs" / "data" / "removed-announcements.json"
+    try:
+        rows = json.loads(path.read_text(encoding="utf-8")).get("removed") or []
+    except Exception:
+        return set()
+    return {str(r.get("id") or "") for r in rows if isinstance(r, dict)} - {""}
+
+
 def purge_deleted_announcements(by_id: dict, deleted_ids: set[str]) -> int:
     """Remove active records and their private detail sidecars, retaining no body copy."""
     removed = 0
@@ -996,6 +1006,7 @@ def main() -> int:
     if deleted_ids:
         print(f"[info] 套用 {len(deleted_ids)} 筆刪除紀錄,移除既有公告 {removed_deleted} 筆")
     known_ids = set(by_id)
+    removed_ids = load_removed_announcement_ids()
     unverified = mark_unverified_legacy_dates(by_id, CONFIG["schools"])
     if unverified:
         print(f"[info] {unverified} 筆舊匯入日期待官方文章頁確認,確認前不公開顯示")
@@ -1125,6 +1136,8 @@ def main() -> int:
 
         for it in collected.values():
             base_text = it["title"] + " " + it.get("source_category", "")
+            if it["id"] in removed_ids:
+                continue  # removed after its official page was confirmed gone
             if it["id"] in known_ids:
                 old = by_id[it["id"]]
                 # 保留舊資料的 first_seen / snippet,更新可能修訂過的標題與分類來源
@@ -1190,7 +1203,7 @@ def main() -> int:
         return it.get("detail_status") == "parsed" and it.get("summary_version") != SUMMARY_VERSION
 
     def needs_detail(it):
-        if is_gone(it):
+        if is_gone(it) or it.get("body_condensed"):
             return False
         if stale_summary(it):
             return True

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "tngs",
   "name": "國立臺南女中",
@@ -8,6 +8,345 @@
   "base": "https://www.tngs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "tngs-92380",
+   "title": "【轉知】國立嘉義大學獸醫學系辦理第十四屆獸醫營活動簡章",
+   "date": "2026-11-03",
+   "source_category": "02.學生活動",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e5%98%89%e7%be%a9%e5%a4%a7%e5%ad%b8%e7%8d%b8%e9%86%ab%e5%ad%b8%e7%b3%bb%e8%be%a6%e7%90%86%e7%ac%ac%e5%8d%81%e5%9b%9b%e5%b1%86%e7%8d%b8%e9%86%ab/",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-25",
+     "provenance": "verified_announcement_event",
+     "source_revision": "3c7ed3ce2055c5e2e08e6ba7ea348f48a2f1f630348fe1d04638ff0464cc7a48"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "3c7ed3ce2055c5e2e08e6ba7ea348f48a2f1f630348fe1d04638ff0464cc7a48"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "生活",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92377",
+   "title": "✨✨✨[公告] 龍野接待家庭錄取名單✨✨✨",
+   "date": "2026-11-03",
+   "source_category": "_置頂公告",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e2%9c%a8%e2%9c%a8%e2%9c%a8%e5%85%ac%e5%91%8a-%e9%be%8d%e9%87%8e%e6%8e%a5%e5%be%85%e5%ae%b6%e5%ba%ad%e9%8c%84%e5%8f%96%e5%90%8d%e5%96%ae%e2%9c%a8%e2%9c%a8%e2%9c%a8/",
+   "category": "招生編班",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "圖書館",
+       "報名",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92367",
+   "title": "【教學研究會】115學年度第一學期〔第2次〕教學研究會",
+   "date": "2026-11-03",
+   "source_category": "_置頂公告",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/11501b/",
+   "category": "一般",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "期中考",
+       "#midterm"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "contact",
+       "allow"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92363",
+   "title": "[轉知] 「115年選送高級中等學校教師海外短期進修」經驗分享會資訊",
+   "date": "2026-11-03",
+   "source_category": "09.圖書館",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e8%bd%89%e7%9f%a5-%e3%80%8c115%e5%b9%b4%e9%81%b8%e9%80%81%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e6%95%99%e5%b8%ab%e6%b5%b7%e5%a4%96%e7%9f%ad%e6%9c%9f%e9%80%b2%e4%bf%ae%e3%80%8d/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "tngs-92361",
    "title": "【轉知】國立嘉義女子高級中學「萬相天后：臺灣媽祖信仰文化特展入門」專題講座",

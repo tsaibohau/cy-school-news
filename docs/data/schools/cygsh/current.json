@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -8,6 +8,96 @@
   "base": "https://www.cygsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cygsh-187115",
+   "title": "【公告】116學年度大學申請入學、大學繁星推薦、大學分發入學校系分則查詢系統",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187115,r508.php",
+   "category": "升學",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "繁星",
+     "申請入學",
+     "#admission",
+     "#enrollment",
+     "#grading"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "申請入學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "繁星",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#admission",
+       "#enrollment",
+       "#grading"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cygsh-187109",
    "title": "115-1 11/4 高三英閱期中考",
@@ -39699,7 +39789,7 @@
    "category": "競賽",
    "first_seen": "2026-08-21T17:59:51+08:00",
    "detail_status": "temporary_error",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "link_missing_checks": 1,
    "link_missing_at": "2026-11-03T13:09:54+08:00"
   },
@@ -39714,7 +39804,7 @@
    "category": "競賽",
    "first_seen": "2026-08-21T17:59:51+08:00",
    "detail_status": "temporary_error",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "link_missing_checks": 1,
    "link_missing_at": "2026-11-03T13:09:54+08:00"
   },
@@ -44043,7 +44133,7 @@
    "school": "cygsh",
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185839,r508.php",
-   "category": "一般",
+   "category": "競賽",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,

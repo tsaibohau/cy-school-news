@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "ksaivs",
   "name": "國立岡山農工",
@@ -8,6 +8,217 @@
   "base": "https://www.ksvs.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "ksaivs-189857",
+   "title": "【學藝競賽】高科大-「H2GP Taiwan 2027大獎賽－全球最大跨學科氫能教育活動」",
+   "date": "2026-11-03",
+   "source_category": "",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/406-1004-189857,r18.php",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "bbcf6c6ce1a5514e9885220f001dc8284071ef091caf4cfeaacbd4422e018259"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "選組",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "費用",
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "還書",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "費用",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04",
+       "2026-12-14"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-04"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-01-16"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-05-01"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "ksaivs-189849",
    "title": "【輔導室】轉知 正覺教育基金會 辦理生命教育教師研習活動",

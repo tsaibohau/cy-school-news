@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cchs",
- "generated_at": "2026-11-03T12:35:33+08:00",
+ "generated_at": "2026-11-03T17:33:07+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "153498002047988": {
@@ -1445,34 +1445,161 @@
    "page_id": 214747491513658,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/90/",
    "label": "新生專區(New_Students)",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 20
+   "order": 20,
+   "checked_at": "2026-11-03T17:33:01+08:00",
+   "path": [
+    "進入首頁",
+    "新生專區(New_Students)"
+   ],
+   "changed_at": "2026-11-03T17:33:01+08:00",
+   "content_hash": "033e3d2db44ea9dca0c070d35004027f8f24a0ccb7696b616b8e66b032ede185",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-214747491513658.json",
+   "detail_revision": "8d1746c5eccdffb46dd6821fefd999fac45a7a89bbef39fbaaab82102bb90e60",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": []
+   }
   },
   "78496038285670": {
    "page_id": 78496038285670,
    "url": "https://www.cchs.kh.edu.tw/home?cid=1484",
    "label": "中正之光 (Prizes and Awards)",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 21
+   "order": 21,
+   "checked_at": "2026-11-03T17:33:03+08:00",
+   "path": [
+    "進入首頁",
+    "中正之光 (Prizes and Awards)"
+   ],
+   "changed_at": "2026-11-03T17:33:03+08:00",
+   "content_hash": "c43eb63d3d3ebe8d7b10822cafa09ed6dc3bcc1a085eeb929db62e8c88f08ac7",
+   "doc_links": [],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-78496038285670.json",
+   "detail_revision": "5ab0c546b60b616a7e78e4eb88f704bcf3f436353099dab91e44af8664958dff",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "86613490228332": {
    "page_id": 86613490228332,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/91",
    "label": "國際/英外語(International Activities)",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 22
+   "order": 22,
+   "checked_at": "2026-11-03T17:33:06+08:00",
+   "path": [
+    "進入首頁",
+    "國際/英外語(International Activities)"
+   ],
+   "changed_at": "2026-11-03T17:33:06+08:00",
+   "content_hash": "033e3d2db44ea9dca0c070d35004027f8f24a0ccb7696b616b8e66b032ede185",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-86613490228332.json",
+   "detail_revision": "2eb95409b99a0abb7ae324f531b4adbff41d43e22011b6b9c1a876fb8b063c79",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "33688108191602": {
    "page_id": 33688108191602,
@@ -4827,6 +4954,105 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-78496038285670",
+   "kind": "school_info",
+   "title": "進入首頁 › 中正之光 (Prizes and Awards)",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1484",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "學生手冊(含學生獎懲規定) Student Handbook",
+    "新生加入班務專區操作說明",
+    "一卡通數位學生證遺失補卡處理方式"
+   ],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會"
+   ],
+   "documents": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "detail_ref": "data/details/cchs/cchs-info-78496038285670.json",
+   "detail_revision": "5ab0c546b60b616a7e78e4eb88f704bcf3f436353099dab91e44af8664958dff",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cchs-info-81669184082924",
    "kind": "school_info",
    "title": "進入首頁 › 教官室",
@@ -4906,6 +5132,23 @@
    "documents": [],
    "detail_ref": "data/details/cchs/cchs-info-85659664264510.json",
    "detail_revision": "46b4424b294e69753838c2dc0a912bae0c5d8be74d56c0ef5d26e185981a636f",
+   "detail_status": "parsed"
+  },
+  {
+   "id": "cchs-info-86613490228332",
+   "kind": "school_info",
+   "title": "進入首頁 › 國際/英外語(International Activities)",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/91",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-86613490228332.json",
+   "detail_revision": "2eb95409b99a0abb7ae324f531b4adbff41d43e22011b6b9c1a876fb8b063c79",
    "detail_status": "parsed"
   },
   {
@@ -5954,6 +6197,30 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-214747491513658",
+   "kind": "school_info",
+   "title": "進入首頁 › 新生專區(New_Students)",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/90/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-214747491513658.json",
+   "detail_revision": "8d1746c5eccdffb46dd6821fefd999fac45a7a89bbef39fbaaab82102bb90e60",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "cchs-info-240233643298103",
    "kind": "school_info",
    "title": "進入首頁 › 秘書室",
@@ -6077,5 +6344,5 @@
    "label": "進入首頁"
   }
  ],
- "last_run_at": "2026-11-03T12:35:33+08:00"
+ "last_run_at": "2026-11-03T17:33:07+08:00"
 }

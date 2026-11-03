@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "kmhjh",
   "name": "國立高餐大附屬餐旅中學",
@@ -8,6 +8,91 @@
   "base": "https://nkhhs.kmhjh.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "kmhjh-5270",
+   "title": "116學年度文化觀光產業學系",
+   "date": "2026-11-03",
+   "source_category": "升學資訊",
+   "school": "kmhjh",
+   "school_name": "高餐大附中",
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/news/academic-affairs-news/admission-info/5270/116%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%96%87%e5%8c%96%e8%a7%80%e5%85%89%e7%94%a2%e6%a5%ad%e5%ad%b8%e7%b3%bb/",
+   "category": "升學",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "教務處",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "kmhjh-5265",
+   "title": "重要 【公告】本校115學年度第3次代理教師甄選(第三階段)正(備)取名單",
+   "date": "2026-11-03",
+   "source_category": "人事室 公告",
+   "school": "kmhjh",
+   "school_name": "高餐大附中",
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/news/5265/%e9%87%8d%e8%a6%81-%e3%80%90%e5%85%ac%e5%91%8a%e3%80%91%e6%9c%ac%e6%a0%a1115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac3%e6%ac%a1%e4%bb%a3%e7%90%86%e6%95%99%e5%b8%ab%e7%94%84%e9%81%b8%e7%ac%ac%e4%b8%89/",
+   "category": "教職員",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "繳交",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "健康檢查",
+       "#health",
+       "#enrollment"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "kmhjh-5258",
    "title": "第一屆全國中小學純植永續教育創新教案徵選",

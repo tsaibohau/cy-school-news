@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "sfsh",
   "name": "國立新豐高中",
@@ -8,6 +8,306 @@
   "base": "https://www.sfsh.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "sfsh-23241",
+   "title": "公告：115-1高二數學接力賽得獎名單，恭喜得獎同學，感謝數學老師用心指導。",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "sfsh",
+   "school_name": "新豐高中",
+   "url": "https://www.sfsh.tn.edu.tw/ischool/public/news_view/show.php?nid=23241",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "audience",
+       "allow"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sfsh-23238",
+   "title": "賀！本校304許庭瑜同學、204郭詠晴同學、209向芷瑄同學參加台南市學生美術比賽成績優異。",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "sfsh",
+   "school_name": "新豐高中",
+   "url": "https://www.sfsh.tn.edu.tw/ischool/public/news_view/show.php?nid=23238",
+   "category": "競賽",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "選組",
+       "#contest",
+       "#track"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "選組",
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "選組",
+       "#track"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "sfsh-23242",
+   "title": "國立中央大學臺灣太空科學聯盟舉辦「2026臺灣太空科學聯盟TSU學生日」活動，歡迎有興趣的學生報名參加。",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "sfsh",
+   "school_name": "新豐高中",
+   "url": "https://www.sfsh.tn.edu.tw/ischool/public/news_view/show.php?nid=23242",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sfsh-23240",
+   "title": "國立清華大學資訊工程學系與臺灣大專院校人工智慧學程聯盟(TAICA)辦理「2027Fun AI Camp」人工智慧營隊，歡迎有興趣的同學報名參加。",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "sfsh",
+   "school_name": "新豐高中",
+   "url": "https://www.sfsh.tn.edu.tw/ischool/public/news_view/show.php?nid=23240",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sfsh-23239",
+   "title": "國立嘉義大學獸醫學系辦理第十四屆獸醫營活動，鼓勵對獸醫領域有興趣之學生報名參加。",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "sfsh",
+   "school_name": "新豐高中",
+   "url": "https://www.sfsh.tn.edu.tw/ischool/public/news_view/show.php?nid=23239",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sfsh-23235",
+   "title": "轉知：臺師大12月辦理「115年選送高級中等學校教師海外短期進修」經驗分享會，詳如附件。",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "sfsh",
+   "school_name": "新豐高中",
+   "url": "https://www.sfsh.tn.edu.tw/ischool/public/news_view/show.php?nid=23235",
+   "category": "教職員",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "sfsh-23234",
+   "title": "115年地方公職人員選舉「2026反賄選愛臺灣公益宣 導影片─出遊篇」",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "sfsh",
+   "school_name": "新豐高中",
+   "url": "https://www.sfsh.tn.edu.tw/ischool/public/news_view/show.php?nid=23234",
+   "category": "一般",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "sfsh-23233",
+   "title": "台南市青少年福利服務中心「親子一起上，急救不慌張」親子活動",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "sfsh",
+   "school_name": "新豐高中",
+   "url": "https://www.sfsh.tn.edu.tw/ischool/public/news_view/show.php?nid=23233",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "sfsh-23232",
    "title": "轉知 聯合大學文化觀光產業系特殊選才",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T12:26:35+08:00",
+ "generated_at": "2026-11-03T17:14:09+08:00",
  "school": {
   "id": "hysh",
   "name": "國立新營高中",
@@ -8,6 +8,119 @@
   "base": "https://www.hysh.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "hysh-13909",
+   "title": "2026年暑假未返校打掃同學注意事項",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hysh",
+   "school_name": "新營高中",
+   "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13909",
+   "category": "一般",
+   "first_seen": "2026-11-03T17:14:09+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "打掃",
+     "暑假"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "打掃",
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處",
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "午休",
+       "打掃",
+       "#lunch_break"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#health",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "請假",
+       "打掃",
+       "#leave",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "午休",
+       "打掃",
+       "#lunch_break"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#health",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "請假",
+       "#leave",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "打掃"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "hysh-13908",
    "title": "2026反賄選愛臺灣公益宣 導影片",

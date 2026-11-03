@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-03T12:34:42+08:00",
+ "generated_at": "2026-11-03T17:32:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -334,34 +334,49 @@
    "page_id": 39607478017432,
    "url": "https://cm.cmvsedu.tw/modules/tad_link/index.php",
    "label": "好站連結首頁",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 25
+   "order": 25,
+   "checked_at": "2026-11-03T17:32:08+08:00",
+   "path": [
+    "網站地圖",
+    "好站連結首頁"
+   ]
   },
   "40393873378648": {
    "page_id": 40393873378648,
    "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php",
    "label": "檔案下載首頁",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 26
+   "order": 26,
+   "checked_at": "2026-11-03T17:32:10+08:00",
+   "path": [
+    "網站地圖",
+    "檔案下載首頁"
+   ]
   },
   "11220257367759": {
    "page_id": 11220257367759,
    "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=icon&of_cat_sn=0",
    "label": "<i class='fa fa-th-large'></i>",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 27
+   "order": 27,
+   "checked_at": "2026-11-03T17:32:13+08:00",
+   "path": [
+    "網站地圖",
+    "<i class='fa fa-th-large'></i>"
+   ]
   },
   "100010736817480": {
    "page_id": 100010736817480,
@@ -1156,6 +1171,78 @@
     "管理介面"
    ],
    "order": 99
+  },
+  "30134861893785": {
+   "page_id": 30134861893785,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=42&cat_sn=0",
+   "label": "111學年度第一學期行事曆",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站地圖",
+    "<i class='fa fa-th-large'></i>"
+   ],
+   "order": 100
+  },
+  "24620275807155": {
+   "page_id": 24620275807155,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=130&cat_sn=0",
+   "label": "109年服務群學生選課輔導手冊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站地圖",
+    "<i class='fa fa-th-large'></i>"
+   ],
+   "order": 101
+  },
+  "248560135925970": {
+   "page_id": 248560135925970,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=132&cat_sn=0",
+   "label": "109學年度服務群學生選課輔導手冊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站地圖",
+    "<i class='fa fa-th-large'></i>"
+   ],
+   "order": 102
+  },
+  "251605760133706": {
+   "page_id": 251605760133706,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=171&cat_sn=0",
+   "label": "111學年度第2學期行事曆.pdf",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站地圖",
+    "<i class='fa fa-th-large'></i>"
+   ],
+   "order": 103
+  },
+  "109874814891834": {
+   "page_id": 109874814891834,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=245&cat_sn=0",
+   "label": "109-2-1_餐飲○_科目名稱",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站地圖",
+    "<i class='fa fa-th-large'></i>"
+   ],
+   "order": 104
+  },
+  "207338519600341": {
+   "page_id": 207338519600341,
+   "url": "https://cm.cmvsedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=246&cat_sn=0",
+   "label": "109-2空白試卷",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站地圖",
+    "<i class='fa fa-th-large'></i>"
+   ],
+   "order": 105
   }
  },
  "handbook": {},
@@ -1472,5 +1559,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-03T12:34:42+08:00"
+ "last_run_at": "2026-11-03T17:32:14+08:00"
 }

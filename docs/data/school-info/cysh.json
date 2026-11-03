@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-03T12:35:40+08:00",
+ "generated_at": "2026-11-03T17:33:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -2033,6 +2033,16 @@
    "detail_status": "parsed",
    "attachments": []
   },
+  "509": {
+   "page_id": 509,
+   "status": "excluded_section",
+   "checked_at": "2026-11-03T17:33:09+08:00",
+   "path": [
+    "教學單位",
+    "音樂科",
+    "榮譽榜單"
+   ]
+  },
   "510": {
    "page_id": 510,
    "status": "excluded_section",
@@ -3386,7 +3396,29 @@
   },
   "853": {
    "page_id": 853,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T17:33:11+08:00",
+   "path": [
+    "教學單位",
+    "美術科",
+    "美術班甄選入學"
+   ],
+   "changed_at": "2026-11-03T17:33:11+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-853.json",
+   "detail_revision": "555fe4008a6bd77921b460d62eb1b768cea019bab2cf3b68a0ea7a411049967f",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": []
+   }
   },
   "873": {
    "page_id": 873,
@@ -3477,7 +3509,24 @@
   },
   "890": {
    "page_id": 890,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T17:33:13+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "科學班",
+    "服務項目",
+    "實驗資源"
+   ],
+   "changed_at": "2026-11-03T17:33:13+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-890.json",
+   "detail_revision": "96917f28e36e39f9a2dd7d66a3e6ce7b7cf6d62d77259dc86cd99b7c567d40df",
+   "detail_status": "empty",
+   "attachments": []
   },
   "891": {
    "page_id": 891,
@@ -6757,10 +6806,6 @@
     "財務資訊",
     "代辦費收入及支出情形"
    ]
-  },
-  "509": {
-   "page_id": 509,
-   "status": "pending"
   }
  },
  "handbook": {
@@ -11463,6 +11508,30 @@
    }
   },
   {
+   "id": "cysh-info-853",
+   "kind": "school_info",
+   "title": "教學單位 › 美術科 › 美術班甄選入學",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-853.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-853.json",
+   "detail_revision": "555fe4008a6bd77921b460d62eb1b768cea019bab2cf3b68a0ea7a411049967f",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "cysh-info-877",
    "kind": "school_info",
    "title": "科學班 › 科學班介紹 › 法令規章",
@@ -11504,6 +11573,23 @@
    "detail_ref": "data/details/cysh/cysh-info-879.json",
    "detail_revision": "7cdf1949773620675d116832a12b724e5a46cbe8b4cde7a5fa1aeaeaf81af2ba",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-890",
+   "kind": "school_info",
+   "title": "科學班 › 服務項目 › 實驗資源",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-890.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-890.json",
+   "detail_revision": "96917f28e36e39f9a2dd7d66a3e6ce7b7cf6d62d77259dc86cd99b7c567d40df",
+   "detail_status": "empty"
   },
   {
    "id": "cysh-info-918",
@@ -15577,5 +15663,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-03T12:35:40+08:00"
+ "last_run_at": "2026-11-03T17:33:15+08:00"
 }
