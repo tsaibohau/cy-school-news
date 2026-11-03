@@ -1,0 +1,25 @@
+name: 一次性：找嘉女公開課表
+
+# 只在 claude/cygsh-timetable-probe 分支觸發；分支不合併，用完刪除。不進排程。
+on:
+  push:
+    branches: [claude/cygsh-timetable-probe]
+    paths:
+      - "tools/probe/cygsh_timetable.py"
+      - ".github/workflows/cygsh-timetable-probe-once.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    if: github.ref == 'refs/heads/claude/cygsh-timetable-probe'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install -r scraper/requirements.txt
+      - run: python tools/probe/cygsh_timetable.py
