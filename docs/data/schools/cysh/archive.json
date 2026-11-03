@@ -906,7 +906,11 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134932,r17.php",
    "category": "競賽",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "cysh-133007",
@@ -6010,7 +6014,18 @@
    "school_name": "嘉中",
    "url": "https://www.cysh.cy.edu.tw/p/406-1008-134937,r17.php",
    "category": "榮譽榜",
-   "first_seen": "2026-08-12T00:00:23+08:00"
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cysh-128901",
@@ -8730,7 +8745,7 @@
    "category": "選課",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -13137,7 +13152,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -14479,7 +14494,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -15460,7 +15475,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -16510,7 +16525,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -18814,7 +18829,7 @@
    "category": "招生編班",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -18879,7 +18894,7 @@
    "category": "招生編班",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -18962,9 +18977,123 @@
    "category": "招生編班",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "snippet_tried": true,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 37,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 99,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 107,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 112,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 159,
+      "t": [
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 160,
+      "t": [
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 170,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 174,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2011-09-08",
+       "2011-05-08"
+      ]
+     },
+     {
+      "s": 250,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 268,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 270,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 399,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-1711",
@@ -19011,9 +19140,228 @@
    "category": "招生編班",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "snippet_tried": true,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 95,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 97,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 114,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 115,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 116,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 117,
+      "t": [
+       "冷氣"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 118,
+      "t": [
+       "冷氣"
+      ],
+      "k": []
+     },
+     {
+      "s": 119,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 120,
+      "t": [
+       "冷氣",
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 134,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 167,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 168,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 169,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 174,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 177,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 180,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 181,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 191,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 203,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 204,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 232,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 236,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 254,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 269,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-1293",
