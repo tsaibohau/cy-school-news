@@ -203,13 +203,28 @@ def _ocr_metrics(targets):
     return counts
 
 
+TOKEN_VERSION = 1  # docs/announcement-tokens.js VERSION
+
+
+def select_token_targets(items, cap):
+    """問校務 schools' notices whose segment labels are missing (tools/public-metadata-projection.js
+    makes the labels from the detail fetched here). Newest first, both schools in turn."""
+    rows = [item for item in items
+            if str(item.get("school") or "") in OCR_TARGET_SCHOOLS and item.get("url")
+            and not is_gone(item) and (item.get("tokens") or {}).get("v") != TOKEN_VERSION]
+    rows.sort(key=_cursor_key, reverse=True)
+    return _round_robin(rows)[:cap]
+
+
 def main():
     mode = str(os.environ.get("BACKFILL_MODE", "detail")).strip().lower() or "detail"
-    if mode not in {"detail", "ocr"}:
+    if mode not in {"detail", "ocr", "tokens"}:
         raise RuntimeError(f"unsupported BACKFILL_MODE={mode}")
     ocr_mode = mode == "ocr"
+    token_mode = mode == "tokens"
     cap_default = "8" if ocr_mode else "10"
-    cap = min(12, max(1, int(os.environ.get("DETAIL_BACKFILL_CAP", cap_default))))
+    # The manual token backfill reads more pages in one run (still one at a time, request_delay_sec apart).
+    cap = min(400 if token_mode else 12, max(1, int(os.environ.get("DETAIL_BACKFILL_CAP", cap_default))))
     delay = max(1.5, float(CONFIG.get("request_delay_sec", 1.5)))
     recent_doc = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     archive_doc = json.loads(ARCHIVE_PATH.read_text(encoding="utf-8"))
@@ -219,11 +234,12 @@ def main():
     fetch_state = load_fetch_state()
     state_key = OCR_BACKFILL_STATE_KEY if ocr_mode else BACKFILL_STATE_KEY
     cursor_state = fetch_state.get(state_key, {})
-    targets = select_ocr_targets(items, cap, cursor_state) if ocr_mode else select_targets(items, cap, cursor_state)
+    targets = (select_token_targets(items, cap) if token_mode else
+               select_ocr_targets(items, cap, cursor_state) if ocr_mode else select_targets(items, cap, cursor_state))
 
     session = requests.Session()
     session.headers.update({"User-Agent": UA, "Accept-Language": "zh-TW,zh;q=0.9"})
-    attachment_cap = min(6, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))
+    attachment_cap = min(60 if token_mode else 6, max(0, int(os.environ.get("ATTACHMENT_PDF_CAP", "4"))))
     ocr_cap = min(2, max(0, int(os.environ.get("OCR_ATTACHMENT_CAP", "0"))))
     enable_ocr = os.environ.get("ENABLE_LOCAL_OCR", "").strip() == "1"
     if ocr_mode and (not enable_ocr or ocr_cap <= 0):
@@ -257,7 +273,8 @@ def main():
     atomic_write_text(DATA_PATH, json.dumps(recent_doc, ensure_ascii=False, indent=1))
     atomic_write_text(ARCHIVE_PATH, json.dumps(archive_doc, ensure_ascii=False, indent=1))
     build_school_shards(recent_doc, archive_doc, ROOT / "docs" / "data" / "schools")
-    save_cursor(fetch_state, targets[-1] if targets else None, state_key=state_key)
+    if not token_mode:
+        save_cursor(fetch_state, targets[-1] if targets else None, state_key=state_key)
     metrics = _ocr_metrics(targets) if ocr_mode else None
     message = (
         f"DETAIL_BACKFILL_MODE={mode} PROCESSED={len(targets)} CAP={cap} "

@@ -12,6 +12,8 @@
   if (!Validity && typeof module !== "undefined" && module.exports) Validity = require("./announcement-validity.js");
   var Composer = typeof window !== "undefined" ? window.CyNewsAnswerComposer : null;
   if (!Composer && typeof module !== "undefined" && module.exports) Composer = require("./answer-composer.js");
+  var Tokens = typeof window !== "undefined" ? window.CyNewsTokens : null;
+  if (!Tokens && typeof module !== "undefined" && module.exports) Tokens = require("./announcement-tokens.js");
   var Synonyms = typeof window !== "undefined" ? window.CyNewsSynonyms : null;
   if (!Synonyms && typeof module !== "undefined" && module.exports) Synonyms = require("./qa-synonyms.js");
   /* All the ways to write a term (synonym database), or just the term. */
@@ -157,6 +159,9 @@
     });
   }
   function detailSegments(record) {
+    /* One segmentation for quoting and for token labels, so a label's segment number points
+       at the same sentence. */
+    if (Tokens) return Tokens.segmentsOf(record);
     if (!record || record.provenance !== "official_article") return [];
     var parts = [];
     (record.blocks || []).forEach(function (block) {
@@ -444,9 +449,15 @@
     var metadataRows = SearchQuery.rank ? SearchQuery.rank(sourceItems, query, { asOf: options && options.asOf, details: metadataDetails, validity: Validity }) : [];
     var metadataById = {};
     metadataRows.forEach(function (row) { metadataById[row.item.id] = row; });
+    var askedTokens = Tokens ? Tokens.tokenizeQuestion(query) : null;
     var ranked = sourceItems.map(function (item) {
       var metadataRow = metadataById[item.id];
       var metadataScore = metadataRow ? metadataRow.score : SearchQuery.announcementScore(item, query);
+      /* Token labels: one segment with the asked topic and the asked kind beats a title that
+         merely shares a word. A notice can be found by a segment even when its title says nothing. */
+      var tokenHit = askedTokens && item.tokens ? Tokens.match(item.tokens, askedTokens) : null;
+      var tokenScore = tokenHit && tokenHit.topics ? tokenHit.score * 5 : tokenHit ? tokenHit.score : 0;
+      if (!metadataScore && tokenHit && tokenHit.topics && tokenHit.kinds) metadataScore = tokenScore;
       var reviewed=Validity&&Validity.reviewedRecord?Validity.reviewedRecord(item):null;
       var reviewedText=reviewed?(reviewed.fragments||[]).map(function(f){return clean(f.keywords+" "+f.text);}).join(" "):"";
       var reviewedScore=scoreText(reviewedText,queryTokens,8);if(!metadataScore&&!reviewedScore)return null;
@@ -483,7 +494,7 @@
       if (wanted.indexOf("date") !== -1 && titleTime(titleText)) intentBonus += 120;
       /* 學測什麼時候 asks about the real exam, not a cram school's mock exam. */
       if (/學測|統測|分科測驗|會考/.test(query) && !/模擬|模考|擬真/.test(query) && /模擬考|模考|擬真/.test(titleText)) intentBonus -= 300;
-      return { item:item,detail:detailMap[item.id]||null,text:combined,score:metadataScore+reviewedScore+reviewedBonus+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus+slotBonus+timeliness(item,query,asOf)-exclusivePenalty(query,item.title||""),anchorScore:anchorScore,reviewedMatch:reviewedScore>0,reviewedCoverage:reviewedCoverage,reviewedAnchorHits:reviewedAnchorHits,reviewedLongest:reviewedLongest,search_validity:metadataRow&&metadataRow.validity };
+      return { item:item,detail:detailMap[item.id]||null,text:combined,token:tokenHit,score:tokenScore+metadataScore+reviewedScore+reviewedBonus+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus+slotBonus+timeliness(item,query,asOf)-exclusivePenalty(query,item.title||""),anchorScore:anchorScore,reviewedMatch:reviewedScore>0,reviewedCoverage:reviewedCoverage,reviewedAnchorHits:reviewedAnchorHits,reviewedLongest:reviewedLongest,search_validity:metadataRow&&metadataRow.validity };
     }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0 || row.reviewedMatch || anchorCoverage(row, anchorTokens) >= 0.6); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
@@ -2048,6 +2059,19 @@
       var src = hit.item.id ? [{ id: hit.item.id, title: clean(hit.item.title || ""), date: String(hit.item.date || "").slice(0, 10), school_name: hit.item.school_name || "", url: hit.item.url || "" }] : [];
       return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: said.text, text: ask + "：" + said.text, sources: src.filter(function (s) { return !shown[s.id]; }) };
     }
+    /* No readable text, but a notice's labels say one of its segments is a penalty. */
+    if (Tokens) {
+      var asked = Tokens.tokenizeQuestion(part.subject + "沒交會怎樣");
+      var labelled = (items || []).map(function (item) { return { item: item, hit: item && item.tokens ? Tokens.match(item.tokens, asked) : null }; })
+        .filter(function (row) { return row.hit && row.hit.segment && row.hit.kinds && row.hit.segment.k.indexOf("penalty") !== -1 && !TITLE_RESULT.test(clean(row.item.title || "")); })
+        .sort(function (a, b) { return b.hit.score - a.hit.score || String(b.item.date || "").localeCompare(String(a.item.date || "")); })[0];
+      if (labelled) {
+        var it = labelled.item, label = isSchoolDoc(it) ? (it.school_name || "") + docLabel(it).replace(/的〈/, "〈") : sourceLabel(it).replace(/^根據/, "");
+        return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: "",
+          text: ask + "：有罰則喔，" + label + "的第 " + (labelled.hit.segment.s + 1) + " 段寫到罰則，點開看；登入後我可以直接引用。",
+          sources: shown[it.id] ? [] : [{ id: it.id, title: clean(it.title || ""), date: String(it.date || "").slice(0, 10), school_name: it.school_name || "", url: it.url || "" }] };
+      }
+    }
     var tease = Composer.consequence({ query: part.clause, text: "" }).text;
     var where = aspectDocument(part, items, details, options) || ((overview.layer === "rule" || overview.mode === "rule_pointer") && (overview.sources || [])[0]) || null;
     var hint = where ? " 真的想知道細節，可以看〈" + clean(where.title).split("›").pop().trim() + "〉。" : "";
@@ -2252,7 +2276,28 @@
       sources: picked.map(function (r) { return { id: "calendar:" + (r.ev.id || r.from + r.title), kind: "calendar", title: r.title, school_id: r.ev.school_id || "", school_name: r.ev.school_name || options.scopeLabel || "", url: r.ev.source_url || "", date: r.from, category: "行事曆", note: (r.from === r.to ? shortDay(r.from) : shortDay(r.from) + "～" + shortDay(r.to)) + " · 學校行事曆" }; }),
       evidence: [], related: [], key_points: [], plan: questionPlan(query), limitation: "日期來自學校行事曆；學校臨時調整時以最新公告為準。" };
   }
+  var KIND_WORD = { deadline: "截止日", time: "時間", place: "地點", audience: "對象", required: "要準備的東西", fee: "費用", method: "做法", contact: "聯絡方式", penalty: "罰則", allow: "可以的情況", deny: "禁止的事" };
+  function tokenAnswer(query, asked, ranked, options) {
+    if (!asked || !asked.kinds.length) return null;
+    var hit = (ranked || []).filter(function (row) { return row.token && row.token.segment && row.token.topics && row.token.kinds && !TITLE_RESULT.test(clean(row.item.title || "")); })[0];
+    if (!hit) return null;
+    var seg = hit.token.segment, item = hit.item, kind = asked.kinds.filter(function (k) { return seg.k.indexOf(k) !== -1; })[0];
+    var label = sourceLabel(item).replace(/^根據/, "");
+    var asOf = options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var summary;
+    if ((kind === "deadline" || kind === "time") && seg.d && seg.d.length) {
+      var day = seg.d.slice().sort()[seg.d.length - 1], past = day < asOf;
+      summary = "依" + label + "，" + KIND_WORD[kind] + "是 " + dayLabel(day) + (past ? "（已經過了）" : "") + "。";
+    } else {
+      summary = label + "的第 " + (seg.s + 1) + " 段寫到" + (KIND_WORD[kind] || "這件事") + "，點開原文就看得到；登入後我可以直接引用。";
+    }
+    return { status: "answered", query: query, mode: "token", headline: (kind === "deadline" || kind === "time") && seg.d ? KIND_WORD[kind] + "：" + dayLabel(seg.d.slice().sort()[seg.d.length - 1]) : "",
+      summary: summary, evidence: [], key_points: [], related: [], plan: questionPlan(query),
+      sources: [Object.assign({}, item, { note: "第 " + (seg.s + 1) + " 段・" + (KIND_WORD[kind] || "相關") })],
+      limitation: "依公告的分段標籤（日期與類型）回答；內文細節以公告原文為準。" };
+  }
   function announcementLayer(query, items, details, options) {
+    var asked = Tokens ? Tokens.tokenizeQuestion(query) : null;
     var queryTokens = tokens(query), plan = questionPlan(query), wanted = plan.intents, ranked = rank(query, items, details, options).slice(0, 8);
     /* 學生手冊 has day-school and 進修部 versions of the same rules; use 進修部 only when asked. */
     if (!/進修/.test(query) && ranked.some(function (row) { return !/進修部/.test(row.item.title || ""); })) {
@@ -2275,9 +2320,12 @@
     ranked.forEach(function (row) {
       var reviewedCandidates=fragmentEvidence(row,queryTokens,wanted,query,plan);if(reviewedCandidates.length){reviewedCandidates.slice(0,4).forEach(function(c){var k=compact(c.text);if(!seen[k]&&evidence.length<6){seen[k]=true;evidence.push({text:c.text.slice(0,220),announcement_id:c.item.id,title:c.item.title,score:c.score,validity:row.validity,fragment:c.fragment});}});return;}
       var segments = detailSegments(row.detail);
+      /* The segment whose labels hold the asked topic and the asked kind (截止、罰則…). */
+      var labelled = row.detail && Tokens && asked ? Tokens.match(Tokens.tokenize(row.detail, { title: row.item.title, date: String(row.item.date || "").slice(0, 10) }), asked) : null;
+      var pointed = labelled && labelled.segment && labelled.kinds ? labelled.segment.s : -1;
       if (!segments.length) segments = sentences(clean((row.item.summary || "") + " " + (row.item.snippet || ""))).map(function (text) { return { text: text, meta: { source_type: "summary" } }; });
-      segments.map(function (segment) {
-        return { text: segment.text, meta: segment.meta || {}, score: evidenceScore(segment.text, queryTokens, wanted, plan, row.item), item: row.item };
+      segments.map(function (segment, index) {
+        return { text: segment.text, meta: segment.meta || {}, score: evidenceScore(segment.text, queryTokens, wanted, plan, row.item) + (index === pointed ? 60 : 0), item: row.item };
       }).filter(function (candidate) {
         return candidateQualifies(candidate, plan) && (!Validity || Validity.sentencePolicy(candidate.text, row.validity, query) !== "exclude");
       }).sort(function (a, b) { return b.score - a.score; }).slice(0, 2).forEach(function (candidate) {
@@ -2292,6 +2340,9 @@
        (學生證遺失 was answered with a 學生音樂比賽 notice). */
     var stats = pieceStats(items);
     evidence = evidence.filter(function (row) { return topicScore((row.title || "") + " " + (row.text || "") + " " + (row.fragment && row.fragment.keywords || ""), query, stats) >= 0.5; });
+    /* No text to quote (guests), but a notice's labels say which segment holds the asked kind:
+       answer the date from it, or say where it is written. */
+    if (!evidence.length) { var fromLabels = tokenAnswer(query, asked, ranked, options); if (fromLabels) return fromLabels; }
     if (!evidence.length) { var relatedRows = relatedAnnouncements(query, ranked, options, stats); return { status: "insufficient", query: query, summary: insufficientSummary(relatedRows, options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }), query, options && options.scopeLabel), evidence: [], sources: [], related: relatedRows }; }
     var sourceIds = {};
     evidence.forEach(function (row) { sourceIds[row.announcement_id] = true; });
