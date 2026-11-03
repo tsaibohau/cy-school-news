@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tssh",
- "generated_at": "2026-11-03T17:31:19+08:00",
+ "generated_at": "2026-11-03T18:02:57+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "212970716483767": {
@@ -378,15 +378,23 @@
    "page_id": 235354756709341,
    "url": "https://www.tssh.cyc.edu.tw/content/index.aspx?Parser=1,6,39",
    "label": "入學獎助辦法",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:02:54+08:00",
+   "path": [
+    "入學獎助辦法"
+   ]
   },
   "61941911772869": {
    "page_id": 61941911772869,
    "url": "https://www.tssh.cyc.edu.tw/sub/content/index.aspx?Parser=1,22,455,91",
    "label": "新生專區",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:02:56+08:00",
+   "path": [
+    "新生專區"
+   ]
   },
   "168415047490341": {
    "page_id": 168415047490341,
@@ -2982,6 +2990,17 @@
     "招生類別"
    ],
    "order": 272
+  },
+  "58376939685951": {
+   "page_id": 58376939685951,
+   "url": "https://www.tssh.cyc.edu.tw/sub/form/Details.aspx?Parser=2,22,94,,,,5180",
+   "label": "115年8月24日(一)至8月25日(二)，上午9點至12點。",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 273
   }
  },
  "handbook": {},
@@ -3185,5 +3204,5 @@
    "label": "報廢產品變賣專區"
   }
  ],
- "last_run_at": "2026-11-03T17:31:19+08:00"
+ "last_run_at": "2026-11-03T18:02:57+08:00"
 }

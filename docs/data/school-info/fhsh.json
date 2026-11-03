@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-03T17:32:38+08:00",
+ "generated_at": "2026-11-03T18:04:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -3162,22 +3162,928 @@
    "page_id": 132264428718467,
    "url": "https://www.fhsh.khc.edu.tw/sa",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:04:09+08:00",
+   "path": [
+    "學務處"
+   ],
+   "changed_at": "2026-11-03T18:04:09+08:00",
+   "content_hash": "2ec82746a5b856be3cbdd532077e99a0db017a2a307395e32f4095476f9ce13d",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "校慶",
+    "運動會",
+    "社團",
+    "競賽",
+    "簡介",
+    "講座"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-132264428718467.json",
+   "detail_revision": "76e1165d2b42762c85514a96e193c0471a2e0d652f85be92eb51dadade20ddbf",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "運動會",
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "269283703976444": {
    "page_id": 269283703976444,
    "url": "https://www.fhsh.khc.edu.tw/sa/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
    "label": "組織成員",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:04:11+08:00",
+   "path": [
+    "組織成員"
+   ],
+   "changed_at": "2026-11-03T18:04:11+08:00",
+   "content_hash": "dac3accd1d3cbb00fcb462cdb6f8e5677fd3c31d6bf46b11af692a3731d059f2",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "分機",
+    "安全",
+    "競賽",
+    "衛生",
+    "申請",
+    "社團",
+    "健康檢查",
+    "助學金",
+    "就學貸款",
+    "工讀",
+    "志工",
+    "新生",
+    "校慶",
+    "校歌",
+    "獎懲",
+    "畢業典禮",
+    "簡介",
+    "請假",
+    "講座",
+    "運動會",
+    "霸凌"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-269283703976444.json",
+   "detail_revision": "f8cd89de12ef68412b578792766f8ffeaf664047ae743aa1e8a66b94e37e7562",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "升旗"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "畢業典禮",
+       "校慶",
+       "#celebration",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "家長日"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest",
+       "#school_profile"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "就學貸款",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "校外教學"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "健康中心"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "健康檢查",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 73,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 80,
+      "t": [
+       "學務處",
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "43525258649815": {
    "page_id": 43525258649815,
    "url": "https://www.fhsh.khc.edu.tw/sa/%e5%ad%b8%e5%8b%99%e8%99%95%e5%85%ac%e5%91%8a",
    "label": "處室公告",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:04:13+08:00",
+   "path": [
+    "處室公告"
+   ],
+   "changed_at": "2026-11-03T18:04:13+08:00",
+   "content_hash": "8b08e8e0a7aec64121c7f6d2ebd6b30076226a00dcd219b4029ba7a2d5abe54a",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "宣導",
+    "競賽",
+    "衛生",
+    "報名",
+    "專線",
+    "校慶",
+    "比賽",
+    "安全",
+    "徵文",
+    "徵稿",
+    "運動會"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-43525258649815.json",
+   "detail_revision": "248d3c32ea6263864492d73cced2a405fe9285d8706a06fc244fd6e0699eb5e6",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "處室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#contest",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "家長日",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#contest",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "運動會",
+       "#contest",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "校慶",
+       "家長",
+       "#contest",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "網路",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#health",
+       "#event",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "生活",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "健康中心",
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "健康中心"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "45720889368393": {
    "page_id": 45720889368393,
@@ -4714,6 +5620,127 @@
     "獎學金"
    ],
    "order": 171
+  },
+  "221226073549067": {
+   "page_id": 221226073549067,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20261102/47137",
+   "label": "【公告】財團法人金車文教基金會「2027金車曙光寒假物資贊助計劃」",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 172
+  },
+  "252960875164274": {
+   "page_id": 252960875164274,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20261029/47066",
+   "label": "【公告】本校34周年校慶邀請卡(內含時程表)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 173
+  },
+  "194509910610447": {
+   "page_id": 194509910610447,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20261007/46641",
+   "label": "【公告】有關近期性別平等教育重要宣導事項",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 174
+  },
+  "102304735633066": {
+   "page_id": 102304735633066,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20260930/46483",
+   "label": "【公告】衛生福利部增設「電子煙回收桶」之資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 175
+  },
+  "117610252059932": {
+   "page_id": 117610252059932,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20260930/46481",
+   "label": "【公告】高雄市衛生局電子煙危害防制及宣導電子煙回收措施",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 176
+  },
+  "127955454291923": {
+   "page_id": 127955454291923,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20260930/46476",
+   "label": "【公告】《菸害防制法》修正草案,請務必遵守電子煙回收機制",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 177
+  },
+  "111301628971419": {
+   "page_id": 111301628971419,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20260930/46467",
+   "label": "【公告】校園菸檳危害防制教育「影爆倡議」短片競賽，請踴躍報名",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 178
+  },
+  "31489927693194": {
+   "page_id": 31489927693194,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20260922/46255",
+   "label": "【公告】115學年度親師座談家長意見彙整一覽表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 179
+  },
+  "221241739221686": {
+   "page_id": 221241739221686,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20260319/41639",
+   "label": "【競賽】教育部國教署「115年全國高級中等學校『孝道教育』微電影徵件競賽」",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 180
+  },
+  "98642117746513": {
+   "page_id": 98642117746513,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20220118/4995",
+   "label": "【宣導】衛福部青少年人際關係及性健康識能宣導影片",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 181
+  },
+  "204541802731092": {
+   "page_id": 204541802731092,
+   "url": "https://www.fhsh.khc.edu.tw/sa/20211102/3040",
+   "label": "【衛教】蚊媒傳染病防疫宣導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "處室公告"
+   ],
+   "order": 182
   }
  },
  "handbook": {},
@@ -4823,6 +5850,304 @@
    "detail_ref": "data/details/fhsh/fhsh-info-43519019928067.json",
    "detail_revision": "e88c6ae452fadaf5516836249309d162eedfdc70fdee2366f01a7482538127f4",
    "detail_status": "parsed"
+  },
+  {
+   "id": "fhsh-info-43525258649815",
+   "kind": "school_info",
+   "title": "處室公告",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/sa/%e5%ad%b8%e5%8b%99%e8%99%95%e5%85%ac%e5%91%8a",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "宣導",
+    "競賽",
+    "衛生",
+    "報名",
+    "專線",
+    "校慶",
+    "比賽",
+    "安全",
+    "徵文",
+    "徵稿",
+    "運動會"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-43525258649815.json",
+   "detail_revision": "248d3c32ea6263864492d73cced2a405fe9285d8706a06fc244fd6e0699eb5e6",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "處室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#contest",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "家長日",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#contest",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "運動會",
+       "#contest",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "校慶",
+       "家長",
+       "#contest",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "網路",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#health",
+       "#event",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "生活",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "健康中心",
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "健康中心"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "fhsh-info-45992714929957",
@@ -6392,6 +7717,125 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fhsh-info-132264428718467",
+   "kind": "school_info",
+   "title": "學務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/sa",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "校慶",
+    "運動會",
+    "社團",
+    "競賽",
+    "簡介",
+    "講座"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-132264428718467.json",
+   "detail_revision": "76e1165d2b42762c85514a96e193c0471a2e0d652f85be92eb51dadade20ddbf",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "運動會",
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-163015127226118",
    "kind": "school_info",
    "title": "本土語專區",
@@ -7890,6 +9334,519 @@
      }
     ]
    }
+  },
+  {
+   "id": "fhsh-info-269283703976444",
+   "kind": "school_info",
+   "title": "組織成員",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/sa/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "分機",
+    "安全",
+    "競賽",
+    "衛生",
+    "申請",
+    "社團",
+    "健康檢查",
+    "助學金",
+    "就學貸款",
+    "工讀",
+    "志工",
+    "新生",
+    "校慶",
+    "校歌",
+    "獎懲",
+    "畢業典禮",
+    "簡介",
+    "請假",
+    "講座",
+    "運動會",
+    "霸凌"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-269283703976444.json",
+   "detail_revision": "f8cd89de12ef68412b578792766f8ffeaf664047ae743aa1e8a66b94e37e7562",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "升旗"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "畢業典禮",
+       "校慶",
+       "#celebration",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "家長日"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest",
+       "#school_profile"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "就學貸款",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "校外教學"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "健康中心"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "健康檢查",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 73,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 80,
+      "t": [
+       "學務處",
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   }
  ],
  "roots": [
@@ -8128,5 +10085,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-03T17:32:38+08:00"
+ "last_run_at": "2026-11-03T18:04:15+08:00"
 }

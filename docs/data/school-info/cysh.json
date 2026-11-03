@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-03T17:33:15+08:00",
+ "generated_at": "2026-11-03T18:05:11+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -3530,11 +3530,45 @@
   },
   "891": {
    "page_id": 891,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T18:05:07+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "科學班",
+    "服務項目",
+    "科學班圖書"
+   ],
+   "changed_at": "2026-11-03T18:05:07+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-891.json",
+   "detail_revision": "fd1ccbc63fcebd771b6766fc0472e629801a0750309f31e902ea39d9b8fdd23b",
+   "detail_status": "empty",
+   "attachments": []
   },
   "893": {
    "page_id": 893,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T18:05:09+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "科學班",
+    "服務項目",
+    "檔案下載"
+   ],
+   "changed_at": "2026-11-03T18:05:09+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-893.json",
+   "detail_revision": "34ff98c1ba2e47d0d3ca1b0ffa3e6f60ae803a7ac016cc11b1150a89c1e9cb17",
+   "detail_status": "empty",
+   "attachments": []
   },
   "894": {
    "page_id": 894,
@@ -11592,6 +11626,40 @@
    "detail_status": "empty"
   },
   {
+   "id": "cysh-info-891",
+   "kind": "school_info",
+   "title": "科學班 › 服務項目 › 科學班圖書",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-891.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-891.json",
+   "detail_revision": "fd1ccbc63fcebd771b6766fc0472e629801a0750309f31e902ea39d9b8fdd23b",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-893",
+   "kind": "school_info",
+   "title": "科學班 › 服務項目 › 檔案下載",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-893.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-893.json",
+   "detail_revision": "34ff98c1ba2e47d0d3ca1b0ffa3e6f60ae803a7ac016cc11b1150a89c1e9cb17",
+   "detail_status": "empty"
+  },
+  {
    "id": "cysh-info-918",
    "kind": "school_info",
    "title": "行政單位 › 學務處 › 體育組",
@@ -15663,5 +15731,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-03T17:33:15+08:00"
+ "last_run_at": "2026-11-03T18:05:11+08:00"
 }

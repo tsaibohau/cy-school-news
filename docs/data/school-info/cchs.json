@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cchs",
- "generated_at": "2026-11-03T17:33:07+08:00",
+ "generated_at": "2026-11-03T18:05:06+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "153498002047988": {
@@ -1605,23 +1605,146 @@
    "page_id": 33688108191602,
    "url": "https://www.cchs.kh.edu.tw/home?cid=1389",
    "label": "課程計畫 Academic Curriculum",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 23
+   "order": 23,
+   "checked_at": "2026-11-03T18:05:02+08:00",
+   "path": [
+    "進入首頁",
+    "課程計畫 Academic Curriculum"
+   ],
+   "changed_at": "2026-11-03T18:05:02+08:00",
+   "content_hash": "f6a54ec4b6dc088014286b09f5064fbec21b64b7e115e53aa218ce141f4bed5a",
+   "doc_links": [],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會",
+    "選課"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-33688108191602.json",
+   "detail_revision": "9b4726723d1bf487847caf1965d6e1b25983e9419a155513648e9c512b3808a4",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "選課",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "120207440576928": {
    "page_id": 120207440576928,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/80",
    "label": "高中(含選課手冊)",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 24
+   "order": 24,
+   "checked_at": "2026-11-03T18:05:04+08:00",
+   "path": [
+    "進入首頁",
+    "高中(含選課手冊)"
+   ],
+   "changed_at": "2026-11-03T18:05:04+08:00",
+   "content_hash": "033e3d2db44ea9dca0c070d35004027f8f24a0ccb7696b616b8e66b032ede185",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-120207440576928.json",
+   "detail_revision": "257231f77de0070b580c92ed67bc5f5cc55ee2b590cfdfcca1569f529fe0a94b",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "選課",
+     "#course"
+    ],
+    "segments": []
+   }
   },
   "262208168112803": {
    "page_id": 262208168112803,
@@ -4891,6 +5014,114 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-33688108191602",
+   "kind": "school_info",
+   "title": "進入首頁 › 課程計畫 Academic Curriculum",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1389",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "學生手冊(含學生獎懲規定) Student Handbook",
+    "新生加入班務專區操作說明",
+    "一卡通數位學生證遺失補卡處理方式"
+   ],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會",
+    "選課"
+   ],
+   "documents": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "detail_ref": "data/details/cchs/cchs-info-33688108191602.json",
+   "detail_revision": "9b4726723d1bf487847caf1965d6e1b25983e9419a155513648e9c512b3808a4",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "選課",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cchs-info-37011783784663",
    "kind": "school_info",
    "title": "進入首頁 › 會計室",
@@ -5220,6 +5451,31 @@
     "v": 1,
     "title": [
      "總務處"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cchs-info-120207440576928",
+   "kind": "school_info",
+   "title": "進入首頁 › 高中(含選課手冊)",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/80",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-120207440576928.json",
+   "detail_revision": "257231f77de0070b580c92ed67bc5f5cc55ee2b590cfdfcca1569f529fe0a94b",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "選課",
+     "#course"
     ],
     "segments": []
    }
@@ -6344,5 +6600,5 @@
    "label": "進入首頁"
   }
  ],
- "last_run_at": "2026-11-03T17:33:07+08:00"
+ "last_run_at": "2026-11-03T18:05:06+08:00"
 }

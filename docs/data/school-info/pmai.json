@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "pmai",
- "generated_at": "2026-11-03T17:31:32+08:00",
+ "generated_at": "2026-11-03T18:03:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "128225757814606": {
@@ -221,15 +221,25 @@
    "page_id": 167091310020158,
    "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:03:04+08:00",
+   "path": [
+    "行政單位",
+    "學務處"
+   ]
   },
   "102389092312516": {
    "page_id": 102389092312516,
    "url": "https://www.pmai.tn.edu.tw/administrative-unit/instructor-room",
    "label": "校安中心",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:03:06+08:00",
+   "path": [
+    "行政單位",
+    "校安中心"
+   ]
   },
   "213237135589400": {
    "page_id": 213237135589400,
@@ -614,6 +624,234 @@
     "教務處"
    ],
    "order": 60
+  },
+  "266675491551288": {
+   "page_id": 266675491551288,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/%e8%a1%a8%e5%96%ae%e4%b8%8b%e8%bc%89",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 61
+  },
+  "157328160588988": {
+   "page_id": 157328160588988,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/%e5%b7%a5%e4%bd%9c%e8%81%b7%e6%8e%8c",
+   "label": "工作職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 62
+  },
+  "155407085670081": {
+   "page_id": 155407085670081,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/%e6%95%99%e8%82%b2%e5%84%b2%e8%93%84%e5%b0%88%e6%88%b6",
+   "label": "教育儲蓄專戶",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 63
+  },
+  "82348268044674": {
+   "page_id": 82348268044674,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90",
+   "label": "相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 64
+  },
+  "168940342828571": {
+   "page_id": 168940342828571,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/%e8%a8%93%e8%82%b2%e7%b5%84",
+   "label": "訓育組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 65
+  },
+  "206945077862783": {
+   "page_id": 206945077862783,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/healthgroup",
+   "label": "衛生組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 66
+  },
+  "225067838199600": {
+   "page_id": 225067838199600,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/%e9%ab%94%e8%82%b2%e7%b5%84-2",
+   "label": "體育組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 67
+  },
+  "190226518610483": {
+   "page_id": 190226518610483,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/%e6%b4%bb%e5%8b%95%e7%b5%84",
+   "label": "社團活動組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 68
+  },
+  "246854180273586": {
+   "page_id": 246854180273586,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/healthcenter",
+   "label": "健康中心",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 69
+  },
+  "52687497752169": {
+   "page_id": 52687497752169,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/%e6%80%a7%e5%88%a5%e5%b9%b3%e7%ad%89%e6%95%99%e8%82%b2%e5%b0%88%e5%8d%80",
+   "label": "性別平等教育專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 70
+  },
+  "87658058516293": {
+   "page_id": 87658058516293,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/stu/%e6%96%b0%e7%94%9f%e5%b0%88%e5%8d%80",
+   "label": "新生專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 71
+  },
+  "69789765822012": {
+   "page_id": 69789765822012,
+   "url": "https://www.pmai.tn.edu.tw/rules/instructor-rules/%e5%9c%8b%e7%ab%8b%e5%8c%97%e9%96%80%e9%ab%98%e7%b4%9a%e8%be%b2%e5%b7%a5%e8%81%b7%e6%a5%ad%e5%ad%b8%e6%a0%a1%e9%81%ba%e5%a4%b1%e7%89%a9%e7%ae%a1%e7%90%86%e8%be%a6%e6%b3%951130829%e6%a0%a1%e5%8b%99-page20128",
+   "label": "國立北門高級農工職業學校遺失物管理辦法(1130829校務會議通過)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 72
+  },
+  "131441608962554": {
+   "page_id": 131441608962554,
+   "url": "https://www.pmai.tn.edu.tw/rules/instructor-rules/%e5%9c%8b%e7%ab%8b%e5%8c%97%e9%96%80%e9%ab%98%e7%b4%9a%e8%be%b2%e5%b7%a5%e8%81%b7%e6%a5%ad%e5%ad%b8%e6%a0%a1%e5%ad%b8%e7%94%9f%e6%94%b9%e9%81%8e%e9%8a%b7%e9%81%8e%e5%af%a6%e6%96%bd%e8%be%a6%e6%b3%95-2-page19811",
+   "label": "國立北門高級農工職業學校學生改過銷過實施辦法(1130215校務會議修正通過)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 73
+  },
+  "35902202954001": {
+   "page_id": 35902202954001,
+   "url": "https://www.pmai.tn.edu.tw/rules/instructor-rules/%e5%9c%8b%e7%ab%8b%e5%8c%97%e9%96%80%e9%ab%98%e7%b4%9a%e8%be%b2%e5%b7%a5%e8%81%b7%e6%a5%ad%e5%ad%b8%e6%a0%a1%e6%a6%ae%e8%ad%bd%e7%a7%a9%e5%ba%8f%e7%ab%b6%e8%b3%bd%e8%a6%8f%e5%89%871110211%e6%a0%a1-page3216",
+   "label": "國立北門高級農工職業學校榮譽秩序競賽規則(1110211校務會議通過)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 74
+  },
+  "200983490333132": {
+   "page_id": 200983490333132,
+   "url": "https://www.pmai.tn.edu.tw/stu/stubook",
+   "label": "學生手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 75
+  },
+  "246914921579817": {
+   "page_id": 246914921579817,
+   "url": "https://www.pmai.tn.edu.tw/rules/stu-rules/stubook/114%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%ad%b8%e7%94%9f%e6%89%8b%e5%86%8a-page23812",
+   "label": "114學年度學生手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 76
+  },
+  "132990846562375": {
+   "page_id": 132990846562375,
+   "url": "https://www.pmai.tn.edu.tw/rules/113%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%ad%b8%e7%94%9f%e6%89%8b%e5%86%8a-page20954",
+   "label": "113學年度學生手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "學務處"
+   ],
+   "order": 77
+  },
+  "112419145173438": {
+   "page_id": 112419145173438,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/instructor-room/%e7%9b%b8%e9%97%9c%e9%80%a3%e7%b5%90",
+   "label": "相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "校安中心"
+   ],
+   "order": 78
+  },
+  "184357743746622": {
+   "page_id": 184357743746622,
+   "url": "https://www.pmai.tn.edu.tw/administrative-unit/instructor-room/%e8%a1%a8%e5%96%ae%e4%b8%8b%e8%bc%89",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "校安中心"
+   ],
+   "order": 79
   }
  },
  "handbook": {},
@@ -872,5 +1110,5 @@
   "f7e502496b",
   "fd7193de53"
  ],
- "last_run_at": "2026-11-03T17:31:32+08:00"
+ "last_run_at": "2026-11-03T18:03:08+08:00"
 }

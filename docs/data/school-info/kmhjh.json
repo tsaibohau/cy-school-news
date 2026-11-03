@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-03T17:32:20+08:00",
+ "generated_at": "2026-11-03T18:03:57+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -337,22 +337,40 @@
    "page_id": 186187203717067,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/english/",
    "label": "英文科",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:03:52+08:00",
+   "path": [
+    "教學單位",
+    "高中部",
+    "英文科"
+   ]
   },
   "31250036956917": {
    "page_id": 31250036956917,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/math/",
    "label": "數學科",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:03:53+08:00",
+   "path": [
+    "教學單位",
+    "高中部",
+    "數學科"
+   ]
   },
   "260429145482553": {
    "page_id": 260429145482553,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/hospitality-management/",
    "label": "餐飲管理科",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:03:55+08:00",
+   "path": [
+    "教學單位",
+    "高中部",
+    "餐飲管理科"
+   ]
   },
   "32585209047023": {
    "page_id": 32585209047023,
@@ -1254,6 +1272,150 @@
     "國文科"
    ],
    "order": 109
+  },
+  "37147880652350": {
+   "page_id": 37147880652350,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/english/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "英文科"
+   ],
+   "order": 110
+  },
+  "3700294683926": {
+   "page_id": 3700294683926,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/english/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "英文科"
+   ],
+   "order": 111
+  },
+  "104237815631270": {
+   "page_id": 104237815631270,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/math/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "數學科"
+   ],
+   "order": 112
+  },
+  "270946023590822": {
+   "page_id": 270946023590822,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/math/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "數學科"
+   ],
+   "order": 113
+  },
+  "133060540322332": {
+   "page_id": 133060540322332,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/hospitality-management/1/",
+   "label": "最新公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "餐飲管理科"
+   ],
+   "order": 114
+  },
+  "106417430139110": {
+   "page_id": 106417430139110,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/hospitality-management/2/",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "餐飲管理科"
+   ],
+   "order": 115
+  },
+  "3452722975604": {
+   "page_id": 3452722975604,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/hospitality-management/3/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "餐飲管理科"
+   ],
+   "order": 116
+  },
+  "78593134413503": {
+   "page_id": 78593134413503,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/hospitality-management/4/",
+   "label": "課程概要",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "餐飲管理科"
+   ],
+   "order": 117
+  },
+  "54157486000485": {
+   "page_id": 54157486000485,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/hospitality-management/5/",
+   "label": "競賽證照",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "餐飲管理科"
+   ],
+   "order": 118
+  },
+  "27936211755346": {
+   "page_id": 27936211755346,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/hospitality-management/6/",
+   "label": "活動花絮",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "餐飲管理科"
+   ],
+   "order": 119
+  },
+  "89255433784421": {
+   "page_id": 89255433784421,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/hospitality-management/7/",
+   "label": "專業教室",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "餐飲管理科"
+   ],
+   "order": 120
+  },
+  "119369665683472": {
+   "page_id": 119369665683472,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/senior-high/hospitality-management/8/",
+   "label": "網路資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "高中部",
+    "餐飲管理科"
+   ],
+   "order": 121
   }
  },
  "handbook": {},
@@ -1507,5 +1669,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-03T17:32:20+08:00"
+ "last_run_at": "2026-11-03T18:03:57+08:00"
 }

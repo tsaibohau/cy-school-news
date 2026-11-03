@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-03T17:31:51+08:00",
+ "generated_at": "2026-11-03T18:03:27+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -250,15 +250,23 @@
    "page_id": 164104867166257,
    "url": "https://www.tnssh.tn.edu.tw/sa/pe/",
    "label": "體育組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:03:23+08:00",
+   "path": [
+    "體育組"
+   ]
   },
   "39023068849004": {
    "page_id": 39023068849004,
    "url": "https://www.tnssh.tn.edu.tw/sa/health/",
    "label": "健康中心",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:03:25+08:00",
+   "path": [
+    "健康中心"
+   ]
   },
   "16962157405803": {
    "page_id": 16962157405803,
@@ -734,6 +742,50 @@
     "社團活動組"
    ],
    "order": 72
+  },
+  "214439498845765": {
+   "page_id": 214439498845765,
+   "url": "https://www.tnssh.tn.edu.tw/sa/health/healthedu/",
+   "label": "衛教專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "健康中心"
+   ],
+   "order": 73
+  },
+  "27285212538610": {
+   "page_id": 27285212538610,
+   "url": "https://www.tnssh.tn.edu.tw/sa/health/infect/",
+   "label": "傳染病專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "健康中心"
+   ],
+   "order": 74
+  },
+  "79074379822984": {
+   "page_id": 79074379822984,
+   "url": "https://www.tnssh.tn.edu.tw/sa/health/healthform/",
+   "label": "學生團體保險",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "健康中心"
+   ],
+   "order": 75
+  },
+  "205613438885711": {
+   "page_id": 205613438885711,
+   "url": "https://www.tnssh.tn.edu.tw/sa/health/healthrule/",
+   "label": "相關辦法",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "健康中心"
+   ],
+   "order": 76
   }
  },
  "handbook": {},
@@ -1020,5 +1072,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-03T17:31:51+08:00"
+ "last_run_at": "2026-11-03T18:03:27+08:00"
 }

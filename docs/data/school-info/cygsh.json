@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-03T17:33:22+08:00",
+ "generated_at": "2026-11-03T18:05:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -2517,7 +2517,89 @@
   },
   "2006": {
    "page_id": 2006,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T18:05:12+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "輔導概況",
+    "個案轉介單"
+   ],
+   "changed_at": "2026-11-03T18:05:12+08:00",
+   "content_hash": "335bcf1b5c874767a12b4cd79828f97f06901ffa7e2cd6978ffbc2c2bf149718",
+   "doc_links": [],
+   "keywords": [
+    "聯絡電話",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2006.json",
+   "detail_revision": "923ef38d770453efd10de37a1a74bfd55e5cad0ca52de0244a25806df8f798d4",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "個案轉介單",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/381962582.pdf"
+    },
+    {
+     "name": "odt檔",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/699605527.odt"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 8,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "2010": {
    "page_id": 2010,
@@ -6904,7 +6986,7 @@
     "chars": 1484
    }
   },
-  "checked_at": "2026-11-03T17:33:22+08:00",
+  "checked_at": "2026-11-03T18:05:15+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -11597,6 +11679,92 @@
    }
   },
   {
+   "id": "cygsh-info-2006",
+   "kind": "school_info",
+   "title": "輔導室 › 輔導概況 › 個案轉介單",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2006.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "個案轉介單",
+    "odt檔"
+   ],
+   "keywords": [
+    "聯絡電話",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "個案轉介單",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/381962582.pdf"
+    },
+    {
+     "name": "odt檔",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/699605527.odt"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2006.json",
+   "detail_revision": "923ef38d770453efd10de37a1a74bfd55e5cad0ca52de0244a25806df8f798d4",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 8,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-info-2082",
    "kind": "school_info",
    "title": "新生專區",
@@ -15348,5 +15516,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-03T17:33:22+08:00"
+ "last_run_at": "2026-11-03T18:05:15+08:00"
 }

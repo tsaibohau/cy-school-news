@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "sgsh",
- "generated_at": "2026-11-03T17:32:32+08:00",
+ "generated_at": "2026-11-03T18:04:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "247594578953018": {
@@ -416,34 +416,49 @@
    "page_id": 229609378749472,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=more&of_cat_sn=",
    "label": "列表",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "檔案下載"
    ],
-   "order": 28
+   "order": 28,
+   "checked_at": "2026-11-03T18:04:03+08:00",
+   "path": [
+    "檔案下載",
+    "列表"
+   ]
   },
   "59089719536693": {
    "page_id": 59089719536693,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?of_cat_sn=1",
    "label": "教務處",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "檔案下載"
    ],
-   "order": 29
+   "order": 29,
+   "checked_at": "2026-11-03T18:04:05+08:00",
+   "path": [
+    "檔案下載",
+    "教務處"
+   ]
   },
   "183640284438417": {
    "page_id": 183640284438417,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?of_cat_sn=2",
    "label": "學務處",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "檔案下載"
    ],
-   "order": 30
+   "order": 30,
+   "checked_at": "2026-11-03T18:04:07+08:00",
+   "path": [
+    "檔案下載",
+    "學務處"
+   ]
   },
   "200535617580608": {
    "page_id": 200535617580608,
@@ -729,6 +744,246 @@
     "›"
    ],
    "order": 54
+  },
+  "110518432294896": {
+   "page_id": 110518432294896,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?of_cat_sn=4",
+   "label": "相關法規",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 55
+  },
+  "133895791705540": {
+   "page_id": 133895791705540,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=1&cat_sn=1&name=",
+   "label": "招生DM",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 56
+  },
+  "51759367793621": {
+   "page_id": 51759367793621,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=2&cat_sn=1&name=免試入學登記表.docx",
+   "label": "免試入學登記表.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 57
+  },
+  "214001959156689": {
+   "page_id": 214001959156689,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=3&cat_sn=1&name=自編教材編輯.docx",
+   "label": "自編教材編輯.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 58
+  },
+  "36639879571744": {
+   "page_id": 36639879571744,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=4&cat_sn=1&name=重修學分實施要點.docx",
+   "label": "重修學分實施要點.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 59
+  },
+  "153188040017356": {
+   "page_id": 153188040017356,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=5&cat_sn=1&name=校外教學活動實施辦法.docx",
+   "label": "校外教學活動實施辦法.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 60
+  },
+  "103249447123320": {
+   "page_id": 103249447123320,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=6&cat_sn=1&name=採用教科書會議記錄.docx",
+   "label": "採用教科書會議記錄.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 61
+  },
+  "38826138963986": {
+   "page_id": 38826138963986,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=7&cat_sn=1&name=教科書評鑑表.docx",
+   "label": "教科書評鑑表.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 62
+  },
+  "170257275043436": {
+   "page_id": 170257275043436,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=8&cat_sn=1&name=教科書選用採購辦法.docx",
+   "label": "教科書選用採購辦法.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 63
+  },
+  "107434181291003": {
+   "page_id": 107434181291003,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=9&cat_sn=1&name=教師專業發展評鑑工具.docx",
+   "label": "教師專業發展評鑑工具.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 64
+  },
+  "26297376088586": {
+   "page_id": 26297376088586,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=10&cat_sn=1&name=教學進度表.docx",
+   "label": "教學進度表.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 65
+  },
+  "191520947623859": {
+   "page_id": 191520947623859,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=11&cat_sn=1&name=期末導師評語.xlsx",
+   "label": "期末導師評語.xlsx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 66
+  },
+  "148256775156563": {
+   "page_id": 148256775156563,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=12&cat_sn=1&name=試卷格式範本.docx",
+   "label": "試卷格式範本.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 67
+  },
+  "225773889526079": {
+   "page_id": 225773889526079,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=13&cat_sn=1&name=課業輔導實施計畫.docx",
+   "label": "課業輔導實施計畫.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 68
+  },
+  "27111899015024": {
+   "page_id": 27111899015024,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=14&cat_sn=1&name=學分抵免補充規定.docx",
+   "label": "學分抵免補充規定.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "教務處"
+   ],
+   "order": 69
+  },
+  "204791024293152": {
+   "page_id": 204791024293152,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=15&cat_sn=2&name=教師輔導與管教學生實施要點.docx",
+   "label": "教師輔導與管教學生實施要點.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "學務處"
+   ],
+   "order": 70
+  },
+  "150251606742883": {
+   "page_id": 150251606742883,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=16&cat_sn=2&name=新式獎勵懲罰單.xlsx",
+   "label": "新式獎勵懲罰單.xlsx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "學務處"
+   ],
+   "order": 71
+  },
+  "4331874694712": {
+   "page_id": 4331874694712,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=17&cat_sn=2&name=學生出缺勤及德行評量考查實施要點.docx",
+   "label": "學生出缺勤及德行評量考查實施要點.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "學務處"
+   ],
+   "order": 72
+  },
+  "278465334069237": {
+   "page_id": 278465334069237,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=18&cat_sn=2&name=學生獎懲單.xlsx",
+   "label": "學生獎懲單.xlsx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "學務處"
+   ],
+   "order": 73
+  },
+  "100096174850704": {
+   "page_id": 100096174850704,
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=19&cat_sn=2&name=學生獎懲標準實施要點.docx",
+   "label": "學生獎懲標準實施要點.docx",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "檔案下載",
+    "學務處"
+   ],
+   "order": 74
   }
  },
  "handbook": {},
@@ -905,5 +1160,5 @@
   "fcc13700e3",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T17:32:32+08:00"
+ "last_run_at": "2026-11-03T18:04:08+08:00"
 }

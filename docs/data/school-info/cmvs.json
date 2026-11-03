@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-03T17:32:14+08:00",
+ "generated_at": "2026-11-03T18:03:51+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -382,34 +382,49 @@
    "page_id": 100010736817480,
    "url": "https://cm.cmvsedu.tw/modules/tad_uploader/op.php?op=list_mode&list_mode=more&of_cat_sn=0",
    "label": "<i class='fa fa-th-list'></i>",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 28
+   "order": 28,
+   "checked_at": "2026-11-03T18:03:45+08:00",
+   "path": [
+    "網站地圖",
+    "<i class='fa fa-th-list'></i>"
+   ]
   },
   "19622378905353": {
    "page_id": 19622378905353,
    "url": "https://cm.cmvsedu.tw/modules/tad_repair/repair.php",
    "label": "填寫維修單",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 29
+   "order": 29,
+   "checked_at": "2026-11-03T18:03:47+08:00",
+   "path": [
+    "網站地圖",
+    "填寫維修單"
+   ]
   },
   "29599855318064": {
    "page_id": 29599855318064,
    "url": "https://cm.cmvsedu.tw/modules/tad_repair/index.php",
    "label": "維修通報首頁",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 30
+   "order": 30,
+   "checked_at": "2026-11-03T18:03:49+08:00",
+   "path": [
+    "網站地圖",
+    "維修通報首頁"
+   ]
   },
   "207495558960062": {
    "page_id": 207495558960062,
@@ -1559,5 +1574,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-03T17:32:14+08:00"
+ "last_run_at": "2026-11-03T18:03:51+08:00"
 }

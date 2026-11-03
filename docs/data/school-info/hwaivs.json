@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-03T17:34:17+08:00",
+ "generated_at": "2026-11-03T18:06:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -1530,8 +1530,70 @@
    "page_id": 8749722468186,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/",
    "label": "校務資料開放",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:06:06+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校務資料開放"
+   ],
+   "changed_at": "2026-11-03T18:06:06+08:00",
+   "content_hash": "6b7694e98b73518fc68684898e1d618506166597f1794eae8ec3f2cc990abe7e",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-8749722468186.json",
+   "detail_revision": "b7ad0b0a2ee1191a4307c816df874d9d47f74068436f84fda8efac5e7385f547",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "258175691655792": {
    "page_id": 258175691655792,
@@ -4783,6 +4845,71 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hwaivs-info-8749722468186",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 校務資料開放",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-8749722468186.json",
+   "detail_revision": "b7ad0b0a2ee1191a4307c816df874d9d47f74068436f84fda8efac5e7385f547",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hwaivs-info-44222696521714",
    "kind": "school_info",
    "title": "國立虎尾高級農工職業學校 › 網站連結",
@@ -6404,5 +6531,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-03T17:34:17+08:00"
+ "last_run_at": "2026-11-03T18:06:08+08:00"
 }

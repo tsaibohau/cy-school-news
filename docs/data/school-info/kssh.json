@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-03T17:32:46+08:00",
+ "generated_at": "2026-11-03T18:04:23+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -1624,25 +1624,171 @@
    "page_id": 280145998943755,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5200.php",
    "label": "組織成員",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 20
+   "order": 20,
+   "checked_at": "2026-11-03T18:04:19+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "組織成員"
+   ],
+   "changed_at": "2026-11-03T18:04:19+08:00",
+   "content_hash": "351e054947f0c8dac3d5c5c63c0622f7a5dd38564490682da98a1dddaeeb7a1e",
+   "doc_links": [],
+   "keywords": [
+    "傳真",
+    "分機",
+    "安全",
+    "宣導",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-280145998943755.json",
+   "detail_revision": "c528b4e19d29059c1f182d28b87bff914095801727c8ecfea81161ab5bfbbd0b",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "225884442670662": {
    "page_id": 225884442670662,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5197.php",
    "label": "庶 務 組",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 21
+   "order": 21,
+   "checked_at": "2026-11-03T18:04:21+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "庶務組"
+   ],
+   "changed_at": "2026-11-03T18:04:21+08:00",
+   "content_hash": "02bd4130ba99ad2a8b4d48a368f1cf353def0f954e72a1f126278fd0e4e490b9",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "安全"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-225884442670662.json",
+   "detail_revision": "68b9aef20aaa093b1846d4f503d9e850420a89946c4443846fe201cf1c895c23",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "108409169298673": {
    "page_id": 108409169298673,
@@ -3570,6 +3716,65 @@
    "detail_status": "parsed"
   },
   {
+   "id": "kssh-info-225884442670662",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 庶務組",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5197.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "安全"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-225884442670662.json",
+   "detail_revision": "68b9aef20aaa093b1846d4f503d9e850420a89946c4443846fe201cf1c895c23",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "kssh-info-233203109690101",
    "kind": "school_info",
    "title": "行政單位 › 教務處 › 試務組",
@@ -3755,6 +3960,97 @@
    "detail_ref": "data/details/kssh/kssh-info-276800107259709.json",
    "detail_revision": "fbe3c0343f5814048266ec832b23fc6b10213472850499dbcf68d2dd64fabf61",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-280145998943755",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 組織成員",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5200.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "傳真",
+    "分機",
+    "安全",
+    "宣導",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-280145998943755.json",
+   "detail_revision": "c528b4e19d29059c1f182d28b87bff914095801727c8ecfea81161ab5bfbbd0b",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   }
  ],
  "roots": [
@@ -3919,5 +4215,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-03T17:32:46+08:00"
+ "last_run_at": "2026-11-03T18:04:23+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "gwehs",
- "generated_at": "2026-11-03T17:34:42+08:00",
+ "generated_at": "2026-11-03T18:06:25+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "112287735641889": {
@@ -284,8 +284,13 @@
    "page_id": 198749824035531,
    "url": "https://gwehs.ylc.edu.tw/cl.aspx?n=113636",
    "label": "學生會",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T18:06:24+08:00",
+   "path": [
+    "學生專區",
+    "學生會"
+   ]
   },
   "208173190366546": {
    "page_id": 208173190366546,
@@ -499,5 +504,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-03T17:34:42+08:00"
+ "last_run_at": "2026-11-03T18:06:25+08:00"
 }
