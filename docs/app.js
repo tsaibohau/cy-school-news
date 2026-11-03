@@ -305,7 +305,7 @@
       el.profileClass.placeholder = grade >= 1 && grade <= 3 ? "例如 " + grade + "01" : "三位數班級，例如 101";
     }
     if (el.profileGrade) el.profileGrade.addEventListener("change", syncClassPlaceholder);
-    /* Features the user's school does not have are hidden (only 嘉中 has class timetables). */
+    /* Features the user's school does not have are hidden (class timetables: 嘉中、嘉女). */
     function updateSchoolSupport() {
       if (!window.CyNewsCapabilities || !window.CyNewsCapabilities.setSchoolSupport) return;
       var school = window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(preferredSchoolId());
@@ -1935,15 +1935,19 @@
     function officialTimetableUrl(value) {
       try {
         var url = new URL(String(value || ""), window.location.href);
-        return url.protocol === "https:" && url.hostname === "www.cysh.cy.edu.tw" ? url.href : "";
+        return url.protocol === "https:" && (url.hostname === "www.cysh.cy.edu.tw" || url.hostname === "classtable.cygsh.cy.edu.tw") ? url.href : "";
       } catch (_) { return ""; }
+    }
+    function timetableSchool(id) {
+      var school = id && window.CyNewsSchoolRegistry && window.CyNewsSchoolRegistry.find(id);
+      return !!(school && school.capabilities && school.capabilities.class_timetable);
     }
     function timetableForProfile() {
       var profile = state.profile || {};
       var className = String(profile.class_name || "").trim();
-      if (profile.school_id !== "cysh" || !/^\d{3}$/.test(className)) return null;
+      if (!timetableSchool(profile.school_id) || !/^\d{3}$/.test(className)) return null;
       var candidates = (state.timetables || []).filter(function (row) {
-        return row && row.school_id === "cysh" && Array.isArray(row.classes);
+        return row && row.school_id === profile.school_id && Array.isArray(row.classes);
       }).sort(function (left, right) {
         var leftTerm = Number(left.academic_year || 0) * 2 + Number(left.semester || 0);
         var rightTerm = Number(right.academic_year || 0) * 2 + Number(right.semester || 0);
@@ -1967,7 +1971,7 @@
       var profile = state.profile || {};
       var className = String(profile.class_name || "").trim();
       if (!profile.school_id) return '<p class="empty">先登入並在「我的」選擇學校與班級，才能顯示課表。</p>';
-      if (profile.school_id !== "cysh") return '<p class="empty">目前只讀取嘉義高中已公開的班級課表。</p>';
+      if (!timetableSchool(profile.school_id)) return '<p class="empty">目前只讀取嘉義高中、嘉義女中已公開的班級課表。</p>';
       if (!/^\d{3}$/.test(className)) return '<p class="empty">請先到「我的」填入三位數班級，例如 ' + ((Number(state.profile && state.profile.grade_level) || 1) + "01") + '。</p>';
       var found = timetableForProfile();
       if (!found) return '<p class="empty">校方目前沒有這個班級可讀取的公開課表。</p>';
@@ -2591,6 +2595,8 @@
         scopeLabel: label === "所有學校" || (scope && scope.id === "all") ? "" : label,
         schoolId: single ? scope.id : "",
         timetables: state.timetables || [],
+        /* 嘉中、嘉女 both have a class 101: the timetable comes from the asked school, else the student's own. */
+        timetableSchool: single ? scope.id : (state.profile && state.profile.school_id || ""),
         className: state.profile && state.profile.class_name || "",
         /* 「明天有什麼講座」 is answered from the school calendar as well as announcements. */
         calendarEvents: (state.officialEvents || []).filter(function (ev) { return !members || members.indexOf(ev.school_id) !== -1; }).map(function (ev) {

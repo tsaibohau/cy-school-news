@@ -118,6 +118,12 @@ assert.match(t("今天有什麼課", { className: "101" }).summary, /101 班星�
 assert.match(t("今天課表").summary, /要查哪一班/);
 assert.match(t("999 課表").summary, /找不到 999 班/);
 assert.equal(t("重補修課表", { className: "101" }).mode, undefined, "重補修 is not the class timetable");
+/* 2026-11-03: 嘉女 has a class 101 too; the asked (or the student's) school decides which table. */
+const both = timetables.concat([{ school_id: "cygsh", academic_year: 115, semester: 1, version: "formal", source_url: "https://classtable.cygsh.cy.edu.tw/classtable/", classes: [
+  { class_name: "101", slots: [{ weekday: "星期三", period: 3, start: "1010", end: "1100", subject: "數學" }] }] }]);
+assert.match(t("101 星期三第3節是什麼課", { timetables: both, schoolId: "cygsh" }).summary, /數學/);
+assert.match(t("101 星期三第3節是什麼課", { timetables: both, timetableSchool: "cysh" }).summary, /生物/);
+assert.equal(t("101 星期三第3節是什麼課", { timetables: both, schoolId: "cygsh" }).sources[0].school_name, "嘉女");
 console.log("✓ 班級課表");
 
 /* Login systems: 問校務 gives the official entry link, never reads inside. */

@@ -1283,7 +1283,8 @@
   var WEEKDAY_NAMES = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
   function timetableAnswer(query, options) {
     options = options || {};
-    var tables = (options.timetables || []).filter(function (t) { return t && Array.isArray(t.classes); });
+    var school = options.timetableSchool || options.schoolId || "";
+    var tables = (options.timetables || []).filter(function (t) { return t && Array.isArray(t.classes) && (!school || !t.school_id || t.school_id === school); });
     if (!tables.length || !TIMETABLE_ASK.test(query) || /重補修|微課程|多元選修|加深加廣|考試/.test(query)) return null;
     var table = tables.slice().sort(function (a, b) { return (b.academic_year * 10 + b.semester) - (a.academic_year * 10 + a.semester); })[0];
     var m = query.match(/(?:^|[^\d])(\d{3})(?!\d)/), className = m ? m[1] : String(options.className || "").trim();
@@ -1306,7 +1307,7 @@
     else if (period) summary = className + " 班" + dayName + "第 " + period + " 節（" + hhmm(slots[0].start) + "–" + hhmm(slots[0].end) + "）是「" + slots[0].subject + "」。";
     else summary = className + " 班" + dayName + "：" + slots.map(function (slot) { return slot.period + " " + slot.subject; }).join("、") + "。";
     return { status: "answered", query: query, mode: "timetable", summary: summary, key_points: [], evidence: [], related: [],
-      sources: [{ id: "timetable:" + className, kind: "calendar", title: label + "（" + className + " 班）", school_id: table.school_id, school_name: "嘉中", url: table.source_url || "", note: "官方班級課表" }],
+      sources: [{ id: "timetable:" + className, kind: "calendar", title: label + "（" + className + " 班）", school_id: table.school_id, school_name: table.school_id === "cygsh" ? "嘉女" : "嘉中", url: table.source_url || "", note: "官方班級課表" }],
       limitation: "依學校公告的" + (table.version === "formal" ? "正式" : "") + "班級課表；調課、段考與活動以老師或學校通知為準。" };
   }
   /* 「第二次段考是哪幾天」「學習歷程上傳期限」: questions asking WHEN something is.
