@@ -556,18 +556,22 @@ def discover(school_id: str = "cysh", cap: int | None = None, deadline: float | 
         time.sleep(delay)
     try:
         import school_handbook
+        # SCHOOL_DOCS_FORCE=1 (manual run): read the handbook and rule files again even when
+        # unchanged, so chapters get labels (tokens) made by the current tokenizer.
+        force_docs = os.environ.get("SCHOOL_DOCS_FORCE") == "1"
         status = school_handbook.update(index, school_id, school["short"], session,
                                         lambda sess, url: scrape.fetch(sess, url, config_school),
-                                        delay=delay, now=datetime.now(TW_TZ))
+                                        delay=delay, now=datetime.now(TW_TZ), force=force_docs)
         print(f"[info] 學生手冊 {school_id}: {status}")
     except Exception as exc:  # keep the previous chapters; try again next run
         print(f"[warn] 學生手冊 {school_id}: {exc}", file=sys.stderr)
     try:
         import school_rules
         if school_id in school_rules.RULES:
+            force_rules = os.environ.get("SCHOOL_DOCS_FORCE") == "1"
             status = school_rules.update(index, school_id, school["short"], session, delay=delay,
-                                         now=datetime.now(TW_TZ),
-                                         limit=int(os.environ.get("SCHOOL_RULES_CAP", "6")))
+                                         now=datetime.now(TW_TZ), force=force_rules,
+                                         limit=school_rules.MAX_FILES_PER_RUN if force_rules else int(os.environ.get("SCHOOL_RULES_CAP", "6")))
             print(f"[info] 學生規定 {school_id}: {status}")
     except Exception as exc:  # keep the previous rules; try again next run
         print(f"[warn] 學生規定 {school_id}: {exc}", file=sys.stderr)

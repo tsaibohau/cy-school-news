@@ -18,6 +18,10 @@ on:
         description: "只抓這些學校（代號用逗號分隔，空白＝全部 28 校）"
         required: false
         default: ""
+      reread_docs:
+        description: "學生手冊與規定檔沒更新也重讀一次（補上標籤）：1＝重讀"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -50,6 +54,7 @@ jobs:
           SCHOOL_INFO_PDF_CAP: ${{ github.event.inputs.pdfs }}
           SCHOOL_INFO_PDF_CEILING: ${{ github.event.inputs.pdfs }}
           SCHOOL_INFO_SCHOOLS: ${{ github.event.inputs.schools }}
+          SCHOOL_DOCS_FORCE: ${{ github.event.inputs.reread_docs }}
           # 50 minutes shared by the schools; run it again to continue where it stopped.
           SCHOOL_INFO_TIME_BUDGET_SEC: '3000'
         run: python scraper/school_info.py discover
