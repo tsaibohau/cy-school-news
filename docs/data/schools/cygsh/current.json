@@ -807,7 +807,7 @@
    "category": "一般",
    "first_seen": "2026-11-03T11:55:01+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 7,
+   "detail_attempts": 8,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -30748,7 +30748,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-09-11T13:56:35+08:00",
    "detail_status": "empty",
-   "detail_attempts": 6,
+   "detail_attempts": 7,
    "summary_version": "extractive-v4"
   },
   {
@@ -30762,7 +30762,7 @@
    "category": "競賽",
    "first_seen": "2026-09-11T13:56:35+08:00",
    "detail_status": "empty",
-   "detail_attempts": 6,
+   "detail_attempts": 7,
    "summary_version": "extractive-v4"
   },
   {
@@ -30797,7 +30797,7 @@
    "category": "競賽",
    "first_seen": "2026-09-11T13:56:35+08:00",
    "detail_status": "empty",
-   "detail_attempts": 6,
+   "detail_attempts": 7,
    "summary_version": "extractive-v4"
   },
   {
@@ -43130,7 +43130,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-12T13:52:01+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 5,
+   "detail_attempts": 6,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -49864,7 +49864,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "summary_version": "extractive-v4"
   },
   {
@@ -51889,7 +51889,7 @@
    "category": "教職員",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "summary_version": "extractive-v4"
   },
   {
@@ -51940,7 +51940,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 4,
+   "detail_attempts": 5,
    "summary_version": "extractive-v4"
   },
   {
@@ -52224,7 +52224,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "summary_version": "extractive-v4"
   },
   {
@@ -52320,7 +52320,7 @@
    "category": "一般",
    "first_seen": "2026-08-12T00:00:23+08:00",
    "detail_status": "empty",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "summary_version": "extractive-v4"
   },
   {
@@ -56216,6 +56216,10 @@
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186151,r508.php",
    "category": "生活學務",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00",
    "audience": {
     "grades": [
      1,
@@ -56280,7 +56284,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186094,r508.php",
    "category": "段考考試",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186109",
@@ -56292,6 +56300,10 @@
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186109,r508.php",
    "category": "招生編班",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00",
    "audience": {
     "grades": [
      1
@@ -56310,6 +56322,10 @@
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186028,r508.php",
    "category": "生活學務",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00",
    "audience": {
     "grades": [
      2,
@@ -56328,7 +56344,105 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185963,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "暑假"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "開學",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "暑輔",
+       "#track",
+       "#tutoring"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#track"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "結業式"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "模擬考",
+       "學測",
+       "暑假",
+       "#mock",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "學測",
+       "#national"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-184677",
@@ -56339,7 +56453,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-184677,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186235",
@@ -56368,8 +56486,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -56516,8 +56634,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -56843,8 +56961,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -56984,8 +57102,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -57107,7 +57225,95 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186166,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-09-01",
+       "2026-10-25"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "繳交",
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "繳交",
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-186165",
@@ -57118,7 +57324,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186165,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186162",
@@ -57129,7 +57339,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186162,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186161",
@@ -57140,7 +57354,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186161,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186160",
@@ -57151,7 +57369,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186160,r508.php",
    "category": "社團",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186156",
@@ -57162,7 +57384,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186156,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186155",
@@ -57173,7 +57399,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186155,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186152",
@@ -57184,7 +57414,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186152,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186150",
@@ -57195,7 +57429,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186150,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186148",
@@ -57206,7 +57444,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186148,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186147",
@@ -57217,7 +57459,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186147,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186146",
@@ -57228,7 +57474,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186146,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186145",
@@ -57239,7 +57489,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186145,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186141",
@@ -57250,7 +57504,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186141,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186135",
@@ -57261,7 +57519,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186135,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186117",
@@ -57272,7 +57534,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186117,r508.php",
    "category": "教職員",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186113",
@@ -57283,7 +57549,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186113,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186108",
@@ -57294,7 +57564,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186108,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186100",
@@ -57305,7 +57579,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186100,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186098",
@@ -57316,7 +57594,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186098,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186090",
@@ -57327,7 +57609,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186090,r508.php",
    "category": "招生編班",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186085",
@@ -57338,7 +57624,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186085,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186084",
@@ -57349,7 +57639,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186084,r508.php",
    "category": "教職員",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186083",
@@ -57360,7 +57654,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186083,r508.php",
    "category": "教職員",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186080",
@@ -57371,7 +57669,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186080,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186076",
@@ -57382,7 +57684,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186076,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-185979",
@@ -57393,7 +57699,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185979,r508.php",
    "category": "升學",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186026",
@@ -57404,7 +57714,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186026,r508.php",
    "category": "段考考試",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186070",
@@ -57415,7 +57729,10 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186070,r508.php",
    "category": "教職員",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-186068",
@@ -57426,7 +57743,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186068,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186061",
@@ -57437,7 +57758,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186061,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "cygsh-186059",
@@ -57448,7 +57773,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186059,r508.php",
    "category": "招生編班",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186056",
@@ -57460,6 +57789,10 @@
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186056,r508.php",
    "category": "升學",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00",
    "audience": {
     "grades": [
      3
@@ -57478,6 +57811,10 @@
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186044,r508.php",
    "category": "招生編班",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00",
    "audience": {
     "grades": [
      2
@@ -57495,7 +57832,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186045,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186032",
@@ -57506,7 +57847,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186032,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186021",
@@ -57517,7 +57862,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186021,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186014",
@@ -57528,7 +57877,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186014,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186008",
@@ -57539,7 +57892,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186008,r508.php",
    "category": "一般",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186006",
@@ -57550,7 +57907,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186006,r508.php",
    "category": "升學",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186002",
@@ -57561,7 +57922,36 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186002,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-08-29",
+       "2026-08-30",
+       "2026-08-07"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-185994",
@@ -57572,7 +57962,72 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185994,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "社團",
+       "週會",
+       "#club",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-185991",
@@ -57583,7 +58038,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185991,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-185988",
@@ -57594,7 +58053,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185988,r508.php",
    "category": "教職員",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186202",
@@ -57608,8 +58071,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -57769,8 +58232,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2
@@ -57854,8 +58317,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -58282,7 +58745,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186168,r508.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T14:18:52+08:00"
   },
   {
    "id": "cygsh-186153",
@@ -58337,7 +58804,18 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186118,r508.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "就學貸款",
+     "#scholarship"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cygsh-186103",
@@ -58508,7 +58986,28 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186047,r508.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "就學貸款",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "就學貸款",
+       "#scholarship"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-186015",
@@ -59223,12 +59722,86 @@
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186005,r508.php",
    "category": "選課",
    "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
    "audience": {
     "grades": [
      2
     ],
     "classes": [],
     "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "#self_learning"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-08-31"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-08-31"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "圖書館",
+       "#library",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
    }
   },
   {
@@ -59240,7 +59813,56 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186004,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "#contest",
+     "#self_learning"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-09-30"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-186003",
@@ -59251,7 +59873,166 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186003,r508.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "閱讀心得",
+     "小論文",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "閱讀心得",
+       "#contest"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "註冊組",
+       "報名",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-09-01",
+       "2026-10-08"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-02-01",
+       "2027-03-10"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-04-16"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "小論文",
+       "圖書館",
+       "註冊組",
+       "報名",
+       "#contest",
+       "#library"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-09-01",
+       "2027-02-01",
+       "2026-10-15",
+       "2027-03-15"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-26"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-04-26"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-185995",
@@ -61861,7 +62642,10 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185625,r786.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T20:04:51+08:00"
+   "first_seen": "2026-08-10T20:04:51+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-185622",
@@ -61873,6 +62657,9 @@
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185622,r786.php",
    "category": "研習活動",
    "first_seen": "2026-08-10T20:04:51+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [],
     "classes": [
@@ -61890,7 +62677,18 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185621,r786.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T20:04:51+08:00"
+   "first_seen": "2026-08-10T20:04:51+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "志工",
+     "#volunteer"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cygsh-185605",
@@ -62061,7 +62859,10 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185599,r786.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-185594",
@@ -63646,8 +64447,79 @@
    "category": "競賽",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
-   "summary_version": "extractive-v4"
+   "detail_attempts": 2,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 94,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 95,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 96,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 102,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 109,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [
+       "嘉獎",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 119,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-185287",
@@ -63661,8 +64533,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -63683,8 +64555,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -63913,8 +64785,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -63975,8 +64847,483 @@
    "category": "競賽",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
-   "summary_version": "extractive-v4"
+   "detail_attempts": 2,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 94,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 95,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 96,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 103,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 107,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-04-27"
+      ]
+     },
+     {
+      "s": 115,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 118,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 218,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 222,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 239,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 247,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 253,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 257,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 262,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 269,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 270,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 284,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 286,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 287,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 292,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 293,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact",
+       "allow"
+      ]
+     },
+     {
+      "s": 295,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 296,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 300,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 302,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 303,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-05-15"
+      ]
+     },
+     {
+      "s": 304,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 307,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 311,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 313,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 314,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 315,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 317,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 320,
+      "t": [
+       "學生證",
+       "#student_id",
+       "#grading"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 321,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 323,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 324,
+      "t": [],
+      "k": [
+       "audience",
+       "required"
+      ]
+     },
+     {
+      "s": 325,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 328,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 329,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 330,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 335,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 336,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 338,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 339,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 344,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 345,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 346,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 347,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 352,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 361,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 369,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 371,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 375,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 377,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 386,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 388,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 389,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-185159",
@@ -63990,8 +65337,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -64074,7 +65421,10 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185116,r786.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-185115",
@@ -64085,7 +65435,18 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185115,r786.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest",
+     "#health"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cygsh-185117",
@@ -64096,7 +65457,17 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185117,r786.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cygsh-185118",
@@ -64107,7 +65478,10 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-185118,r786.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-185037",
@@ -64218,8 +65592,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -64278,8 +65652,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -64378,8 +65752,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -64631,8 +66005,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -64884,7 +66258,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4"
   },
   {
@@ -64899,8 +66273,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -64952,8 +66326,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -64999,7 +66373,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4"
   },
   {
@@ -65013,7 +66387,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "empty",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "summary_version": "extractive-v4"
   },
   {
@@ -65144,7 +66518,17 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-184356,r786.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cygsh-184355",
@@ -65155,7 +66539,17 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-184355,r786.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cygsh-184357",
@@ -65166,7 +66560,17 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-184357,r786.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cygsh-184358",
@@ -65177,7 +66581,10 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-184358,r786.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-184339",
@@ -65191,8 +66598,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -65435,7 +66842,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "empty",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "summary_version": "extractive-v4"
   },
   {
@@ -65450,8 +66857,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -65750,7 +67157,10 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-183782,r786.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-183783",
@@ -65761,7 +67171,10 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-183783,r786.php",
    "category": "研習活動",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-183780",
@@ -65772,7 +67185,17 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-183780,r786.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cygsh-183781",
@@ -65783,7 +67206,17 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-183781,r786.php",
    "category": "競賽",
-   "first_seen": "2026-08-10T21:40:05+08:00"
+   "first_seen": "2026-08-10T21:40:05+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cygsh-183415",
@@ -65797,8 +67230,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -65889,7 +67322,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "empty",
-   "detail_attempts": 3,
+   "detail_attempts": 4,
    "summary_version": "extractive-v4"
   },
   {
@@ -65932,8 +67365,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
