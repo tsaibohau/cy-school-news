@@ -66,7 +66,7 @@ def backfill_existing_summaries(items, cap):
 
 
 def needs_detail(item):
-    if is_gone(item):
+    if is_gone(item) or item.get("body_condensed"):
         return False
     if item.get("detail_status") == "parsed" and item.get("summary_version") != SUMMARY_VERSION:
         return True
