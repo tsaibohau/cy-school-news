@@ -1,0 +1,115 @@
+name: 公告清理（手動）
+
+# Run by hand. For 嘉中、嘉女 only:
+#   1. re-check pages that answered 404 once (at least 20 hours ago); two 404s mean the page is gone;
+#   2. remove gone notices from the public data and empty their protected copy;
+#   3. re-read expired notices and keep a condensed version without dates or times
+#      (title, what the activity is, notes and how-to), replacing the original text.
+# Requests go one at a time with the usual request_delay_sec pause. No schedule.
+on:
+  workflow_dispatch:
+    inputs:
+      recheck:
+        description: "最多再確認幾個 404 頁面（上限 600）"
+        required: false
+        default: "400"
+      condense:
+        description: "最多整理幾則過期公告（上限 400）"
+        required: false
+        default: "300"
+      pdfs:
+        description: "整理時最多讀幾個附件 PDF（上限 60）"
+        required: false
+        default: "30"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scrape
+  cancel-in-progress: false
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: 安裝相依套件
+        run: pip install -r scraper/requirements.txt
+
+      - name: 確認 404、移除下架公告、重讀過期公告
+        env:
+          RECHECK_CAP: ${{ github.event.inputs.recheck }}
+          CONDENSE_CAP: ${{ github.event.inputs.condense }}
+          ATTACHMENT_PDF_CAP: ${{ github.event.inputs.pdfs }}
+        run: python scraper/announcement_prune.py
+
+      - name: 過期公告改成整理版（不含時間）
+        run: node tools/condense-expired.js
+
+      - name: 同步內文到受保護資料庫
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: |
+          node tools/export-member-content.js .member-content-sync
+          # Removed notices: empty their protected copy too (the endpoint only upserts).
+          node -e 'const fs=require("fs");const w=JSON.parse(fs.readFileSync(".announcement-wipe.json","utf8"));if(w.records.length)fs.writeFileSync(".member-content-sync/batch-wipe.json",JSON.stringify(w));console.log("wipe records: "+w.records.length)'
+          if [ -z "$ANNOUNCEMENT_CONTENT_SYNC_TOKEN" ] || [ -z "$ANNOUNCEMENT_CONTENT_SYNC_URL" ] || [ -z "$SUPABASE_PUBLISHABLE_KEY" ]; then
+            echo "ANNOUNCEMENT_CONTENT_SYNC_NOT_CONFIGURED"
+            exit 1
+          fi
+          for batch in .member-content-sync/batch-*.json; do
+            response_file="$(mktemp)"
+            http_status="$(curl --silent --show-error --output "$response_file" --write-out "%{http_code}" --request POST "$ANNOUNCEMENT_CONTENT_SYNC_URL" \
+              --header "apikey: $SUPABASE_PUBLISHABLE_KEY" \
+              --header "x-announcement-content-sync-token: $ANNOUNCEMENT_CONTENT_SYNC_TOKEN" \
+              --header "content-type: application/json" \
+              --data-binary "@$batch")"
+            response_body="$(tr -d '\n' < "$response_file")"
+            rm -f "$response_file"
+            echo "announcement-content-sync batch=$(basename "$batch") status=$http_status response=$response_body"
+            case "$http_status" in
+              2??) ;;
+              *) echo "::error::announcement-content-sync failed (batch=$(basename "$batch") status=$http_status)"; exit 1 ;;
+            esac
+          done
+
+      - name: 移除公開產物中的會員內容（留下段落標籤）
+        run: node tools/public-metadata-projection.js docs
+
+      - name: 統計
+        run: |
+          node -e '
+          const d = require("./docs/data/announcements.json").items, a = require("./docs/data/archive.json").items;
+          const all = d.concat(a).filter((i) => i.school === "cysh" || i.school === "cygsh");
+          const removed = require("./docs/data/removed-announcements.json").removed.length;
+          console.log("嘉中、嘉女公告 " + all.length + " 則；已整理 " + all.filter((i) => i.body_condensed).length +
+            " 則；待確認 404 " + all.filter((i) => i.link_missing_checks && i.link_status !== "gone").length + " 則；累計移除 " + removed + " 則");'
+
+      - name: 提交
+        run: |
+          git config user.name "news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/announcements.json docs/data/archive.json docs/data/schools docs/data/removed-announcements.json
+          if git diff --cached --quiet; then
+            echo "沒有變更,略過提交"
+            exit 0
+          fi
+          git commit -q -m "公告清理 $(TZ=Asia/Taipei date +'%Y-%m-%d %H:%M')"
+          for attempt in 1 2 3; do
+            if git push origin HEAD:main; then exit 0; fi
+            git fetch origin main
+            if ! git rebase -X theirs origin/main; then git rebase --abort || true; exit 1; fi
+            sleep $((attempt * 5))
+          done
+          exit 1
