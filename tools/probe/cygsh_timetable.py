@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
-"""一次性：讀嘉女課表系統的前端程式，找取課表的請求格式。間隔 3 秒。"""
-import re, sys, time, requests
+"""一次性：存兩班樣本課表頁給解析用（存成 workflow artifact）。間隔 3 秒。"""
+import os, re, sys, time, requests
 sys.path.insert(0, "scraper")
 from scrape import UA  # noqa: E402
 B = "https://classtable.cygsh.cy.edu.tw/classtable/"
 s = requests.Session(); s.headers.update({"User-Agent": UA})
-r = s.get(B + "JS/top.js", timeout=30); r.encoding = "big5"; js = r.text
-i = js.find("function go(")
-k = js.find("down.asp", i); print([m.start() for m in re.finditer(r"\.asp", js)]); tail = js[i + 13000:i + 26000]; print("\n".join(l for l in tail.splitlines() if re.search(r"url|asp|target|open|sql|yt|\.src|action|submit", l)))
-print("=====get_xtype")
-j = js.find("function get_xtype"); print(js[j:j + 1500])
-time.sleep(3)
-r = s.get(B + "JS/ajax.js", timeout=30); r.encoding = "big5"; print("=====ajax.js"); print(r.text[:3000])
+os.makedirs("probe-out", exist_ok=True)
+r = s.get(B + "top.asp", timeout=30)
+open("probe-out/top.html", "wb").write(r.content)
+html = r.content.decode("big5", "ignore")
+for sel in re.finditer(r"<select\b[^>]*id=[\"']?(\w+)[\s\S]*?</select>", html, re.I):
+    opts = re.findall(r"<option[^>]*value=[\"']?([^\"'> ]*)", sel.group(0), re.I)
+    print("select", sel.group(1), len(opts), opts[:6] if sel.group(1) not in ("s2", "s6") else "(teachers)")
+for cls in ("101", "301"):
+    time.sleep(3)
+    url = B + "down.asp?sqlstr=%s&type=class&selArrange=ST&selWindow=Left&yt=115,1" % cls
+    r = s.get(url, timeout=30)
+    print(cls, r.status_code, r.headers.get("content-type"), len(r.content))
+    open("probe-out/class-%s.html" % cls, "wb").write(r.content)

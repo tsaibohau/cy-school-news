@@ -23,3 +23,8 @@ jobs:
           python-version: '3.12'
       - run: pip install -r scraper/requirements.txt
       - run: python tools/probe/cygsh_timetable.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: probe-out
+          path: probe-out/
+          retention-days: 1
