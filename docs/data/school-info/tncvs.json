@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tncvs",
- "generated_at": "2026-11-03T04:52:14+08:00",
+ "generated_at": "2026-11-03T09:58:04+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179102805842520": {
@@ -198,22 +198,75 @@
    "page_id": 190742239534012,
    "url": "https://www.tncvs.tn.edu.tw/sub_content/index.asp?Parser=22,6,431,40",
    "label": "科別介紹",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:57:59+08:00",
+   "path": [
+    "科別介紹"
+   ]
   },
   "152085992605950": {
    "page_id": 152085992605950,
    "url": "https://www.tncvs.tn.edu.tw/sub/content/index.asp?Parser=1,5,795,29,117",
    "label": "共同科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:00+08:00",
+   "path": [
+    "共同科"
+   ],
+   "changed_at": "2026-11-03T09:58:00+08:00",
+   "content_hash": "76d8442ebbb9392711a8c6b3cb71170a985dc2931684352d35746b7138c854b5",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tncvs/tncvs-info-152085992605950.json",
+   "detail_revision": "40712d95a3aa28cae8b92f567188d24a03d917324c9d079837cde84d86d879a1",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2019-02-13"
+      ]
+     }
+    ]
+   }
   },
   "128679082259481": {
    "page_id": 128679082259481,
    "url": "https://www.tncvs.tn.edu.tw/fixarea/index-1.asp?Parser=99,8,65",
    "label": "校務系統",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:02+08:00",
+   "path": [
+    "校務系統"
+   ]
   },
   "191092154534697": {
    "page_id": 191092154534697,
@@ -3280,6 +3333,55 @@
    "detail_status": "parsed"
   },
   {
+   "id": "tncvs-info-152085992605950",
+   "kind": "school_info",
+   "title": "共同科",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/sub/content/index.asp?Parser=1,5,795,29,117",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/tncvs/tncvs-info-152085992605950.json",
+   "detail_revision": "40712d95a3aa28cae8b92f567188d24a03d917324c9d079837cde84d86d879a1",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2019-02-13"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "tncvs-info-221469417634061",
    "kind": "school_info",
    "title": "輔導處",
@@ -3641,5 +3743,5 @@
   "fd93751649",
   "fdbcaf30e1"
  ],
- "last_run_at": "2026-11-03T04:52:14+08:00"
+ "last_run_at": "2026-11-03T09:58:04+08:00"
 }

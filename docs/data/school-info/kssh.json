@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-03T04:53:14+08:00",
+ "generated_at": "2026-11-03T09:59:11+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -386,8 +386,40 @@
    "page_id": 37759074565994,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-1515.php",
    "label": "行事曆",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:59:01+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組",
+    "行事曆"
+   ],
+   "changed_at": "2026-11-03T09:59:01+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [
+    {
+     "name": "國立岡山高級中學115學年第一學期行事曆",
+     "url": "https://drive.google.com/file/d/1qsJxAUyGdIj59SepRbO9bbYHrVFeoUo7/view?usp=sharing"
+    },
+    {
+     "name": "歷屆行事曆連結",
+     "url": "https://drive.google.com/drive/folders/1sgmMpn_QTyt3BfuS6bVm80mE0NR29dbz?usp=share_link"
+    }
+   ],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-37759074565994.json",
+   "detail_revision": "5ca74ff402853b01e93e6fac5de6d64d1bd342ddfa96c2aeb5ea7956a260c37c",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": []
+   }
   },
   "134485745702713": {
    "page_id": 134485745702713,
@@ -400,8 +432,582 @@
    "page_id": 179870262472431,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4238.php",
    "label": "學生申訴專區",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:59:05+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "學生申訴專區"
+   ],
+   "changed_at": "2026-11-03T09:59:05+08:00",
+   "content_hash": "94c04f850aead632a48b4cc4b4f23efaab0a2475c31dd4c5170c95dfbff1a3e4",
+   "doc_links": [],
+   "keywords": [
+    "申訴",
+    "申請",
+    "校長",
+    "電話",
+    "獎懲",
+    "霸凌",
+    "公假",
+    "安全",
+    "宣導",
+    "缺席"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-179870262472431.json",
+   "detail_revision": "6d443d8d7d14cf080cca1bcc926ad7ca8e652b6bfd9d5fb88f1ba2a8cbb74e1f",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "國立岡山高級中學學生申訴評議委員會組織及運作辦法(1110829)",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/477582194.pdf"
+    },
+    {
+     "name": "學生申訴案件流程圖",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/465762941.pdf"
+    },
+    {
+     "name": "國立岡山高級中學學生申訴書(本人申請)",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/373476242.odt"
+    },
+    {
+     "name": "國立岡山高級中學學生申訴書（代為申請）",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/611150697.odt"
+    },
+    {
+     "name": "國立岡山高級中學學生自治組織申訴書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/346904886.odt"
+    },
+    {
+     "name": "國立岡山高級中學學生申訴評議委員會撤回申訴書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/368886671.odt"
+    },
+    {
+     "name": "國立岡山高級中學選定代表人共同提起申訴聲明書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/442010109.odt"
+    },
+    {
+     "name": "國立岡山高級中學學生申訴委任書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/205858535.odt"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "申訴",
+     "#appeal",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2001-09-02"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2011-06-24"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2013-06-28"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2014-06-30"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2016-01-21"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-08-29"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 78,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 79,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 80,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 81,
+      "t": [
+       "申訴",
+       "#contact",
+       "#appeal"
+      ],
+      "k": [
+       "required",
+       "contact"
+      ]
+     },
+     {
+      "s": 82,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 84,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 85,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 86,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "147119594588212": {
    "page_id": 147119594588212,
@@ -962,6 +1568,78 @@
     "員生社"
    ],
    "order": 63
+  },
+  "60556549186364": {
+   "page_id": 60556549186364,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-464.php",
+   "label": "教學組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學組",
+    "行事曆"
+   ],
+   "order": 64
+  },
+  "273087339870407": {
+   "page_id": 273087339870407,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-613.php",
+   "label": "課程計畫書",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學組",
+    "行事曆"
+   ],
+   "order": 65
+  },
+  "149167611492591": {
+   "page_id": 149167611492591,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-467.php",
+   "label": "各學期教學計畫表",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學組",
+    "行事曆"
+   ],
+   "order": 66
+  },
+  "132641558482030": {
+   "page_id": 132641558482030,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-1516.php",
+   "label": "各項文件申請單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學組",
+    "行事曆"
+   ],
+   "order": 67
+  },
+  "215870184529759": {
+   "page_id": 215870184529759,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-1858.php",
+   "label": "課程評鑑專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學組",
+    "行事曆"
+   ],
+   "order": 68
+  },
+  "66805232424591": {
+   "page_id": 66805232424591,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-1860.php",
+   "label": "公開授課專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學組",
+    "行事曆"
+   ],
+   "order": 69
   }
  },
  "handbook": {},
@@ -986,6 +1664,42 @@
    "detail_ref": "data/details/kssh/kssh-info-28783346175483.json",
    "detail_revision": "d8378161069b95b6ff24b69c1d9da31bdc89165a3b90815b46b5bf7928446a62",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-37759074565994",
+   "kind": "school_info",
+   "title": "教務處 › 教學組 › 行事曆",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-1515.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "國立岡山高級中學115學年第一學期行事曆",
+    "歷屆行事曆連結"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "國立岡山高級中學115學年第一學期行事曆",
+     "url": "https://drive.google.com/file/d/1qsJxAUyGdIj59SepRbO9bbYHrVFeoUo7/view?usp=sharing"
+    },
+    {
+     "name": "歷屆行事曆連結",
+     "url": "https://drive.google.com/drive/folders/1sgmMpn_QTyt3BfuS6bVm80mE0NR29dbz?usp=share_link"
+    }
+   ],
+   "detail_ref": "data/details/kssh/kssh-info-37759074565994.json",
+   "detail_revision": "5ca74ff402853b01e93e6fac5de6d64d1bd342ddfa96c2aeb5ea7956a260c37c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "kssh-info-64530537523419",
@@ -1166,6 +1880,591 @@
    "detail_ref": "data/details/kssh/kssh-info-152836902652291.json",
    "detail_revision": "67daebcec41a7f5a96c2e0bb11f6fb8fb599d14263374e88f7f2b320a7eec0cf",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-179870262472431",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室 › 學生申訴專區",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4238.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "國立岡山高級中學學生申訴評議委員會組織及運作辦法(1110829)",
+    "學生申訴案件流程圖",
+    "國立岡山高級中學學生申訴書(本人申請)",
+    "國立岡山高級中學學生申訴書（代為申請）",
+    "國立岡山高級中學學生自治組織申訴書",
+    "國立岡山高級中學學生申訴評議委員會撤回申訴書",
+    "國立岡山高級中學選定代表人共同提起申訴聲明書",
+    "國立岡山高級中學學生申訴委任書"
+   ],
+   "keywords": [
+    "申訴",
+    "申請",
+    "校長",
+    "電話",
+    "獎懲",
+    "霸凌",
+    "公假",
+    "安全",
+    "宣導",
+    "缺席"
+   ],
+   "documents": [
+    {
+     "name": "國立岡山高級中學學生申訴評議委員會組織及運作辦法(1110829)",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/477582194.pdf"
+    },
+    {
+     "name": "學生申訴案件流程圖",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/465762941.pdf"
+    },
+    {
+     "name": "國立岡山高級中學學生申訴書(本人申請)",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/373476242.odt"
+    },
+    {
+     "name": "國立岡山高級中學學生申訴書（代為申請）",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/611150697.odt"
+    },
+    {
+     "name": "國立岡山高級中學學生自治組織申訴書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/346904886.odt"
+    },
+    {
+     "name": "國立岡山高級中學學生申訴評議委員會撤回申訴書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/368886671.odt"
+    },
+    {
+     "name": "國立岡山高級中學選定代表人共同提起申訴聲明書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/442010109.odt"
+    },
+    {
+     "name": "國立岡山高級中學學生申訴委任書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/44/205858535.odt"
+    }
+   ],
+   "detail_ref": "data/details/kssh/kssh-info-179870262472431.json",
+   "detail_revision": "6d443d8d7d14cf080cca1bcc926ad7ca8e652b6bfd9d5fb88f1ba2a8cbb74e1f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "申訴",
+     "#appeal",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2001-09-02"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2011-06-24"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2013-06-28"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2014-06-30"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2016-01-21"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-08-29"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 78,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 79,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 80,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 81,
+      "t": [
+       "申訴",
+       "#contact",
+       "#appeal"
+      ],
+      "k": [
+       "required",
+       "contact"
+      ]
+     },
+     {
+      "s": 82,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 84,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 85,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 86,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "kssh-info-213718098397888",
@@ -1466,5 +2765,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-03T04:53:14+08:00"
+ "last_run_at": "2026-11-03T09:59:11+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T04:44:29+08:00",
+ "generated_at": "2026-11-03T09:46:54+08:00",
  "school": {
   "id": "yfsh",
   "name": "雲林縣私立義峰高級中學",
@@ -8,6 +8,66 @@
   "base": "https://www.yfsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "yfsh-3425",
+   "title": "函轉教育部辦理交通部公路局「推動機車駕訓制度」補助計畫調查案，詳如說明",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "yfsh",
+   "school_name": "義峰高中",
+   "url": "https://www.yfsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=3425",
+   "category": "一般",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "機車"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "機車",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "機車",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "yfsh-3424",
    "title": "I want to Test My English英語自主檢測系統115學年度普技高線上教師研習實施計畫",

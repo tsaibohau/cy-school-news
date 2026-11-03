@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-03T04:52:50+08:00",
+ "generated_at": "2026-11-03T09:58:42+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -185,22 +185,37 @@
    "page_id": 253431137398655,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/",
    "label": "教學單位",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:37+08:00",
+   "path": [
+    "教學單位"
+   ]
   },
   "239232741005442": {
    "page_id": 239232741005442,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/",
    "label": "國中部",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:39+08:00",
+   "path": [
+    "教學單位",
+    "國中部"
+   ]
   },
   "118126480179584": {
    "page_id": 118126480179584,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/chinese/",
    "label": "國文領域",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:41+08:00",
+   "path": [
+    "教學單位",
+    "國中部",
+    "國文領域"
+   ]
   },
   "139885700950369": {
    "page_id": 139885700950369,
@@ -994,6 +1009,30 @@
     "圖書館"
    ],
    "order": 93
+  },
+  "172876670868646": {
+   "page_id": 172876670868646,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/chinese/1/",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "國文領域"
+   ],
+   "order": 94
+  },
+  "61246008298264": {
+   "page_id": 61246008298264,
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/academic-departments/junior-high/chinese/2/",
+   "label": "領域活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "國中部",
+    "國文領域"
+   ],
+   "order": 95
   }
  },
  "handbook": {},
@@ -1247,5 +1286,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-03T04:52:50+08:00"
+ "last_run_at": "2026-11-03T09:58:42+08:00"
 }

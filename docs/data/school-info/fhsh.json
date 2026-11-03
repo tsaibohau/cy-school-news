@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-03T04:53:07+08:00",
+ "generated_at": "2026-11-03T09:58:59+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -597,22 +597,789 @@
    "page_id": 266477902341081,
    "url": "https://www.fhsh.khc.edu.tw/principal/%e6%a0%a1%e5%8b%99%e5%8f%8d%e6%98%a0",
    "label": "校務反映",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:54+08:00",
+   "path": [
+    "校務反映"
+   ],
+   "changed_at": "2026-11-03T09:58:54+08:00",
+   "content_hash": "17aa0f647f5051c7e64401a7713f61ce201fe542df4f25e98d0887cfccd027a8",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-266477902341081.json",
+   "detail_revision": "02efc8e31bae610327629ec82686509d7c7adaf7a5990019b4c1378cd88b2a1d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "45992714929957": {
    "page_id": 45992714929957,
    "url": "https://www.fhsh.khc.edu.tw/aa",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:56+08:00",
+   "path": [
+    "教務處"
+   ],
+   "changed_at": "2026-11-03T09:58:56+08:00",
+   "content_hash": "0d961c2a140d91f87d0d1c61f75ba90f55c556cae84246f595c265b15b1a8717",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "競賽",
+    "升學",
+    "學分",
+    "招生",
+    "檢定",
+    "研習",
+    "簡介",
+    "考試",
+    "補強課程",
+    "輔導課"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-45992714929957.json",
+   "detail_revision": "2047553fa2db277a7f32172eb5a16ac71b64dfc789db992136937fb8bfd89e44",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "課輔",
+       "#remedial",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "升學",
+       "#admission",
+       "#certificate",
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "學習歷程"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "考試",
+       "升學",
+       "#admission",
+       "#exam",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "191779173330958": {
    "page_id": 191779173330958,
    "url": "https://www.fhsh.khc.edu.tw/aa/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
    "label": "組織成員",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:57+08:00",
+   "path": [
+    "組織成員"
+   ],
+   "changed_at": "2026-11-03T09:58:57+08:00",
+   "content_hash": "312cc763b1965435b6c986913d5d274f43084aa6004b085ec34ac332af707e21",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "分機",
+    "報名",
+    "競賽",
+    "升學",
+    "申請",
+    "研習",
+    "考試",
+    "學習歷程",
+    "定期考",
+    "比賽",
+    "科展",
+    "課業輔導",
+    "重修",
+    "上傳",
+    "入學",
+    "加深加廣",
+    "助學金",
+    "參訪",
+    "奧林匹亞",
+    "學測",
+    "學生證",
+    "學雜費",
+    "學雜費減免",
+    "招生",
+    "會考",
+    "校慶",
+    "校長",
+    "模擬考",
+    "檢定",
+    "獎助學金",
+    "登記",
+    "繁星",
+    "缺課",
+    "補考",
+    "送件",
+    "選組",
+    "選課",
+    "體驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-191779173330958.json",
+   "detail_revision": "157a5c6eeb71e5ebbe3dfaa052be4ec5ec916a6f9c2df3f793de2c4cc0514ac0",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "選課",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "段考",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "模擬考",
+       "升學",
+       "#admission",
+       "#mock"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "報名",
+       "考試",
+       "升學",
+       "#admission",
+       "#exam"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "大考"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [
+       "#certificate",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "段考",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 78,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 83,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 84,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 85,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 87,
+      "t": [
+       "課輔",
+       "家長",
+       "#tutoring"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [
+       "補課",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 89,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 91,
+      "t": [
+       "課輔",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 93,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 96,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 101,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 102,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 103,
+      "t": [
+       "加深加廣",
+       "#advanced"
+      ],
+      "k": []
+     },
+     {
+      "s": 107,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 109,
+      "t": [
+       "學習歷程",
+       "繳交",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 112,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 113,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "59414490275548": {
    "page_id": 59414490275548,
@@ -1721,6 +2488,190 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fhsh-info-45992714929957",
+   "kind": "school_info",
+   "title": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "競賽",
+    "升學",
+    "學分",
+    "招生",
+    "檢定",
+    "研習",
+    "簡介",
+    "考試",
+    "補強課程",
+    "輔導課"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-45992714929957.json",
+   "detail_revision": "2047553fa2db277a7f32172eb5a16ac71b64dfc789db992136937fb8bfd89e44",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "課輔",
+       "#remedial",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "升學",
+       "#admission",
+       "#certificate",
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "學習歷程"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "考試",
+       "升學",
+       "#admission",
+       "#exam",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-70942425545653",
    "kind": "school_info",
    "title": "分機表",
@@ -2091,6 +3042,566 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fhsh-info-191779173330958",
+   "kind": "school_info",
+   "title": "組織成員",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "分機",
+    "報名",
+    "競賽",
+    "升學",
+    "申請",
+    "研習",
+    "考試",
+    "學習歷程",
+    "定期考",
+    "比賽",
+    "科展",
+    "課業輔導",
+    "重修",
+    "上傳",
+    "入學",
+    "加深加廣",
+    "助學金",
+    "參訪",
+    "奧林匹亞",
+    "學測",
+    "學生證",
+    "學雜費",
+    "學雜費減免",
+    "招生",
+    "會考",
+    "校慶",
+    "校長",
+    "模擬考",
+    "檢定",
+    "獎助學金",
+    "登記",
+    "繁星",
+    "缺課",
+    "補考",
+    "送件",
+    "選組",
+    "選課",
+    "體驗"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-191779173330958.json",
+   "detail_revision": "157a5c6eeb71e5ebbe3dfaa052be4ec5ec916a6f9c2df3f793de2c4cc0514ac0",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "選課",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "段考",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "模擬考",
+       "升學",
+       "#admission",
+       "#mock"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "報名",
+       "考試",
+       "升學",
+       "#admission",
+       "#exam"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "大考"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [
+       "#certificate",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "段考",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 78,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 83,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 84,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 85,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 87,
+      "t": [
+       "課輔",
+       "家長",
+       "#tutoring"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [
+       "補課",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 89,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 91,
+      "t": [
+       "課輔",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 93,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 96,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 101,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 102,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 103,
+      "t": [
+       "加深加廣",
+       "#advanced"
+      ],
+      "k": []
+     },
+     {
+      "s": 107,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 109,
+      "t": [
+       "學習歷程",
+       "繳交",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 112,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 113,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-196514779464320",
    "kind": "school_info",
    "title": "網站導覽",
@@ -2202,6 +3713,53 @@
    "detail_ref": "data/details/fhsh/fhsh-info-234713306177090.json",
    "detail_revision": "b05ed464682d4890bd7b7cdc9d012c24c00fe30c91e387cdaaff76420607b1ae",
    "detail_status": "parsed"
+  },
+  {
+   "id": "fhsh-info-266477902341081",
+   "kind": "school_info",
+   "title": "校務反映",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/principal/%e6%a0%a1%e5%8b%99%e5%8f%8d%e6%98%a0",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-266477902341081.json",
+   "detail_revision": "02efc8e31bae610327629ec82686509d7c7adaf7a5990019b4c1378cd88b2a1d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   }
  ],
  "roots": [
@@ -2440,5 +3998,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-03T04:53:07+08:00"
+ "last_run_at": "2026-11-03T09:58:59+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T04:44:29+08:00",
+ "generated_at": "2026-11-03T09:46:54+08:00",
  "school": {
   "id": "tssh",
   "name": "國立東石高級中學",
@@ -8,6 +8,56 @@
   "base": "https://www.tssh.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "tssh-9-21409",
+   "title": "【寒假營隊】國立臺灣大學學生社團「傳統醫學研究社」舉辦「2027臺灣大學傳統醫學研究社全國高中生中醫體驗營-華佗營」",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "tssh",
+   "school_name": "東石高中",
+   "url": "https://www.tssh.cyc.edu.tw/latestevent/Details.aspx?Parser=9,9,79,46,,,21409",
+   "category": "社團",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "社團",
+     "寒假",
+     "#club",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-01-25"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "tssh-9-21407",
    "title": "【輔導資訊】衛生福利部「心快活」心理健康學習平台 115年度心理健康知識PK賽競賽辦法",

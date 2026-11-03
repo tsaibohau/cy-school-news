@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T04:44:29+08:00",
+ "generated_at": "2026-11-03T09:46:54+08:00",
  "school": {
   "id": "hhvs",
   "name": "國立新化高工",
@@ -8,6 +8,251 @@
   "base": "https://www.hhvs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "hhvs-12493",
+   "title": "【親師座談會】教務處業務宣導資料(多元升學與學習歷程全解析)",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12493",
+   "category": "升學",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "家長日",
+     "教務處",
+     "升學",
+     "#admission",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學習歷程",
+       "家長日",
+       "教務處",
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "家長日",
+       "教務處",
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長日",
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "學習歷程",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12498",
+   "title": "【漏洞預警】凱發科技｜WebITR - Insecure Deserialization",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12498",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12497",
+   "title": "【漏洞預警】Oracle Java SE與Oracle GraalVM存在高風險安全漏洞(CVE-2026-91403)，請儘速確認並進行處置",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12497",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12496",
+   "title": "【漏洞預警】Go存在高風險安全漏洞(CVE-2026-111943)，請儘速確認並進行處置",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12496",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12495",
+   "title": "【漏洞預警】GitLab存在2項高風險安全漏洞(CVE-2026-97229與CVE-2026-110264)，請儘速確認並進行處置",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12495",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12494",
+   "title": "【漏洞預警】Citrix NetScaler ADC與Citrix NetScaler Gateway存在高風險安全漏洞(CVE-2026-107406)，請儘速確認並進行處置",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12494",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "hhvs-12492",
    "title": "115年度校慶表揚資深人員名單",

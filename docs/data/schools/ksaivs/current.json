@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T04:44:29+08:00",
+ "generated_at": "2026-11-03T09:46:54+08:00",
  "school": {
   "id": "ksaivs",
   "name": "國立岡山農工",
@@ -8,6 +8,121 @@
   "base": "https://www.ksvs.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "ksaivs-189849",
+   "title": "【輔導室】轉知 正覺教育基金會 辦理生命教育教師研習活動",
+   "date": "2026-11-03",
+   "source_category": "",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/406-1004-189849,r18.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-09-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f55057cc3905ae569f0d57fa1dfab91c68f1ff00059fcd029b4b64c6dabaeb86"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-23",
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-09-21"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "ksaivs-189845",
    "title": "【課務組】公告115學年度第2學期線上選課資訊",

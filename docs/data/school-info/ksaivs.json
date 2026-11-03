@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-03T04:53:20+08:00",
+ "generated_at": "2026-11-03T09:59:17+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -366,22 +366,167 @@
    "page_id": 77275746710141,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-176.php",
    "label": "室內空間設計科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:59:12+08:00",
+   "path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "changed_at": "2026-11-03T09:59:12+08:00",
+   "content_hash": "31a27df3319cd01c219c061851dab25226e5bf2a4b3bbfda9ae63258395735d5",
+   "doc_links": [],
+   "keywords": [
+    "升學"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-77275746710141.json",
+   "detail_revision": "98d3c89cc32647ec341f8f14f6ff1d241a4192fd029d57383764c864a9a5bd2d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "112747488146426": {
    "page_id": 112747488146426,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-177.php",
    "label": "化工科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:59:14+08:00",
+   "path": [
+    "教學單位",
+    "化工科"
+   ],
+   "changed_at": "2026-11-03T09:59:14+08:00",
+   "content_hash": "d0de51d7ccd7bba437d6a06b303664a6d55ad8fac51f6bbb9f4a54b5a70c2308",
+   "doc_links": [],
+   "keywords": [
+    "檢定",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-112747488146426.json",
+   "detail_revision": "4a9bb38ac4f4755e673ba3495f111bf4591073175d688a37e8dba55e4671b9d9",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "~~~化工科介紹影片~~~",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/21/691395996.mp4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "192120185056009": {
    "page_id": 192120185056009,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-178.php",
    "label": "家政科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:59:16+08:00",
+   "path": [
+    "教學單位",
+    "家政科"
+   ],
+   "changed_at": "2026-11-03T09:59:16+08:00",
+   "content_hash": "78ab15ca4db10248a2f65acac8cb683b4112698644079675bad39dd0311ea1a0",
+   "doc_links": [],
+   "keywords": [
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-192120185056009.json",
+   "detail_revision": "fb77c34697655add129ee4ba409d7560cd9145fcfc49133567f3281b0682ad43",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "小論文"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "2546312611315": {
    "page_id": 2546312611315,
@@ -2129,6 +2274,186 @@
     "公告訊息"
    ],
    "order": 172
+  },
+  "123276717228616": {
+   "page_id": 123276717228616,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-236.php",
+   "label": "關於本科",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "order": 173
+  },
+  "189123624481375": {
+   "page_id": 189123624481375,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-238.php",
+   "label": "師資介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "order": 174
+  },
+  "94656476826093": {
+   "page_id": 94656476826093,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-239.php",
+   "label": "課程規畫",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "order": 175
+  },
+  "190043511011652": {
+   "page_id": 190043511011652,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-244.php",
+   "label": "環境設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "order": 176
+  },
+  "129277933179956": {
+   "page_id": 129277933179956,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-245.php",
+   "label": "升學就業",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "order": 177
+  },
+  "207434532822693": {
+   "page_id": 207434532822693,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-248.php",
+   "label": "學生作品",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "order": 178
+  },
+  "110767774303709": {
+   "page_id": 110767774303709,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1268.php",
+   "label": "室設科Facebook",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "order": 179
+  },
+  "256811862607953": {
+   "page_id": 256811862607953,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1267.php",
+   "label": "成果展",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "order": 180
+  },
+  "165247411310435": {
+   "page_id": 165247411310435,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1280.php",
+   "label": "室設科影片",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "室內空間設計科"
+   ],
+   "order": 181
+  },
+  "267843729746883": {
+   "page_id": 267843729746883,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-657.php",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "化工科"
+   ],
+   "order": 182
+  },
+  "237490301324514": {
+   "page_id": 237490301324514,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-658.php",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "化工科"
+   ],
+   "order": 183
+  },
+  "176753211676497": {
+   "page_id": 176753211676497,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-659.php",
+   "label": "教學概況",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "化工科"
+   ],
+   "order": 184
+  },
+  "185166011447474": {
+   "page_id": 185166011447474,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-660.php",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "化工科"
+   ],
+   "order": 185
+  },
+  "43056683552799": {
+   "page_id": 43056683552799,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-662.php",
+   "label": "環境設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "化工科"
+   ],
+   "order": 186
+  },
+  "125909727320086": {
+   "page_id": 125909727320086,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-815.php",
+   "label": "教學績效",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "化工科"
+   ],
+   "order": 187
   }
  },
  "handbook": {},
@@ -2205,6 +2530,46 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-77275746710141",
+   "kind": "school_info",
+   "title": "教學單位 › 室內空間設計科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-176.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "升學"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-77275746710141.json",
+   "detail_revision": "98d3c89cc32647ec341f8f14f6ff1d241a4192fd029d57383764c864a9a5bd2d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-95234546257200",
    "kind": "school_info",
    "title": "教學單位 › 電機科",
@@ -2259,6 +2624,53 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-112747488146426",
+   "kind": "school_info",
+   "title": "教學單位 › 化工科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-177.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "~~~化工科介紹影片~~~"
+   ],
+   "keywords": [
+    "檢定",
+    "簡介"
+   ],
+   "documents": [
+    {
+     "name": "~~~化工科介紹影片~~~",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/21/691395996.mp4"
+    }
+   ],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-112747488146426.json",
+   "detail_revision": "4a9bb38ac4f4755e673ba3495f111bf4591073175d688a37e8dba55e4671b9d9",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-156753558783688",
    "kind": "school_info",
    "title": "教學單位 › 機械科",
@@ -2310,6 +2722,75 @@
    "detail_ref": "data/details/ksaivs/ksaivs-info-187701472752311.json",
    "detail_revision": "330261302f10797282aae16e6ee56cf322bbf5218447bee9dd33aba98c5d1fbd",
    "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-192120185056009",
+   "kind": "school_info",
+   "title": "教學單位 › 家政科",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-178.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-192120185056009.json",
+   "detail_revision": "fb77c34697655add129ee4ba409d7560cd9145fcfc49133567f3281b0682ad43",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "小論文"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ksaivs-info-193029198059858",
@@ -2654,5 +3135,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-03T04:53:20+08:00"
+ "last_run_at": "2026-11-03T09:59:17+08:00"
 }

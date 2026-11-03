@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-03T04:54:54+08:00",
+ "generated_at": "2026-11-03T10:01:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -799,13 +799,84 @@
    "page_id": 9395079066839,
    "url": "https://www.shsh.ylc.edu.tw/freshman/%e6%96%b0%e7%94%9f%e5%b0%88%e5%8d%80%e6%9c%80%e6%96%b0%e6%b6%88%e6%81%af/",
    "label": "新生專區最新消息",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "新生專區",
     "115學年正心中學國中部招生"
    ],
-   "order": 18
+   "order": 18,
+   "checked_at": "2026-11-03T10:01:07+08:00",
+   "path": [
+    "新生專區",
+    "新生專區最新消息"
+   ],
+   "changed_at": "2026-11-03T10:01:07+08:00",
+   "content_hash": "0613aae92c6f15ce6b409ab92626676d561314bc16c37c84c4e7b79ca73c8e97",
+   "doc_links": [],
+   "keywords": [
+    "多元選修",
+    "志願",
+    "選修",
+    "選填"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-9395079066839.json",
+   "detail_revision": "75d1c67ec09d5161deae1d89ecd0fdeeac404b113d5cf468b4d69908ce67bb61",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "多元選修",
+       "志願",
+       "#admission",
+       "#elective"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "期末考",
+       "生活"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "多元選修",
+       "志願",
+       "#admission",
+       "#elective"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     }
+    ]
+   }
   },
   "276330499124658": {
    "page_id": 276330499124658,
@@ -2893,6 +2964,80 @@
  "services": {},
  "items": [
   {
+   "id": "shsh-info-9395079066839",
+   "kind": "school_info",
+   "title": "新生專區 › 新生專區最新消息",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/freshman/%e6%96%b0%e7%94%9f%e5%b0%88%e5%8d%80%e6%9c%80%e6%96%b0%e6%b6%88%e6%81%af/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "多元選修",
+    "志願",
+    "選修",
+    "選填"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-9395079066839.json",
+   "detail_revision": "75d1c67ec09d5161deae1d89ecd0fdeeac404b113d5cf468b4d69908ce67bb61",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "多元選修",
+       "志願",
+       "#admission",
+       "#elective"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "期末考",
+       "生活"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "多元選修",
+       "志願",
+       "#admission",
+       "#elective"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "shsh-info-22700933303108",
    "kind": "school_info",
    "title": "網站政策 › 網站安全政策",
@@ -4247,5 +4392,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T04:54:54+08:00"
+ "last_run_at": "2026-11-03T10:01:09+08:00"
 }

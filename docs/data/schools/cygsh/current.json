@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T04:44:29+08:00",
+ "generated_at": "2026-11-03T09:46:54+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -8,6 +8,526 @@
   "base": "https://www.cygsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cygsh-187107",
+   "title": "115-1 11/20 高一二英聽期中考",
+   "date": "2026-11-03",
+   "source_category": "考試訊息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187107,r11.php",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1,
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "期中考",
+     "#midterm",
+     "#national"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "期中考",
+       "#midterm",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-20"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "考程表",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "期中考",
+       "#midterm"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "段考",
+       "補考",
+       "請假",
+       "考試",
+       "#exam",
+       "#makeup",
+       "#leave"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "請假",
+       "公假",
+       "考試",
+       "#exam",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "考試",
+       "大考",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "place",
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "手機",
+       "考試",
+       "#exam",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "手機",
+       "記過",
+       "#contact"
+      ],
+      "k": [
+       "penalty",
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187108",
+   "title": "【高三英文閱讀期中考成績查詢】高三英文閱讀期中考學生查詢成績期程",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187108,r508.php",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "期中考",
+     "#midterm"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "期中考",
+       "#midterm"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-10",
+       "2026-11-11"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "註冊組",
+       "截止",
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "deadline"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187106",
+   "title": "【高三英文閱讀期中考成績登錄】高三英文閱讀期中考教師登錄成績期程",
+   "date": "2026-11-03",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187106,r508.php",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "期中考",
+     "#midterm"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "期中考",
+       "#midterm"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-04",
+       "2026-11-09"
+      ],
+      "g": [
+       3
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187101",
+   "title": "【轉知】「 I want to Test My English英語自主檢測系統115學 年度普技高線上教師研習實施計畫」",
+   "date": "2026-11-02",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187101,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cygsh-187100",
+   "title": "【教師研習】數位學習神助攻，談自主翻轉與適性教學新攻略",
+   "date": "2026-11-02",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187100,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187099",
+   "title": "【教師研習】115學年度南區高優學校SDGs與地方學聯合諮輔會議",
+   "date": "2026-11-02",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187099,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187098",
+   "title": "【教師研習】淺談Classroom教學進階應用、Gemini Spark：打造智慧教學與自動化備課的 AI 新紀元、Canva AI 教學神助手｜生成設計 × 資訊圖卡 × AI 圖片編修",
+   "date": "2026-11-02",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187098,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cygsh-187105",
    "title": "【轉知】AI調香師－AI芳療應用實作研習",
@@ -20,8 +540,8 @@
    "first_seen": "2026-11-03T04:44:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-187104",
@@ -114,6 +634,395 @@
    "detail_attempts": 1,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
+  },
+  {
+   "id": "cygsh-187091",
+   "title": "【教師研習】芳香療法融入教學與高齡照顧實務應用",
+   "date": "2026-10-30",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187091,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-23"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-17",
+       "2027-01-18"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "午餐",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187081",
+   "title": "【教師研習】Google AI 行政自動化：打造你的智慧行政小助手",
+   "date": "2026-10-30",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187081,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187080",
+   "title": "【教師研習】 AI工具資料整理術—以課程諮詢工作為例",
+   "date": "2026-10-30",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187080,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187079",
+   "title": "【教師研習】「Gemini NoteBook & Canvas」、「GAS 部屬實戰，打造前後台連動的教學系統」（北區場）",
+   "date": "2026-10-30",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187079,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187077",
+   "title": "【教師研習】「Gemini NoteBook & Canvas」、「GAS 部屬實戰，打造前後台連動的教學系統」（中區場）",
+   "date": "2026-10-30",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187077,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187078",
+   "title": "【教師研習】「用AI幫老師數位減壓：Gemini+Notebook+GAS教學場域應用與實作」、「Edcafe融入課堂教學」",
+   "date": "2026-10-30",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187078,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187068",
+   "title": "【轉知】藝教30－全國藝術教育論壇",
+   "date": "2026-10-30",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187068,r548.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-26",
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-187092",
@@ -348,6 +1257,593 @@
      "source_revision": "0d6a4ee425efd5eb2215be293f35d137604929ba5e60bd2a644aeb542af08e03"
     }
    ]
+  },
+  {
+   "id": "cygsh-187058",
+   "title": "【轉知】第三屆長期照顧永續發展論壇暨研討會",
+   "date": "2026-10-29",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187058,r548.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187054",
+   "title": "【轉知】國立中興大學「NCHU Nobel Laureate Lecture 2026」講座活動",
+   "date": "2026-10-29",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187054,r548.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "報名",
+       "#library"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187046",
+   "title": "【轉知】客語教學實習輔導員及教學支援教師增能研習工作坊",
+   "date": "2026-10-29",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187046,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-29",
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-22"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "午餐",
+       "宿舍",
+       "費用",
+       "#accommodation"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-02-03"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187039",
+   "title": "【教師研習】115年度觸動創新教學工作坊",
+   "date": "2026-10-29",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187039,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187040",
+   "title": "【教師研習】「115學年度中小學國際教育校長暨教師培力研習」11月研習場次",
+   "date": "2026-10-29",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187040,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18",
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23",
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187035",
+   "title": "【教師研習】閱讀聚場10.0 AI時代教師不能被取代的能力",
+   "date": "2026-10-29",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187035,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05",
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cygsh-187063",
@@ -770,8 +2266,8 @@
    "first_seen": "2026-11-03T04:44:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-187016",
@@ -7359,7 +8855,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-91393,r508.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-25T11:27:28+08:00"
+   "first_seen": "2026-08-25T11:27:28+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T09:57:14+08:00"
   },
   {
    "id": "cygsh-172516",
@@ -7370,7 +8870,11 @@
    "school_name": "嘉女",
    "url": "https://www.cygsh.cy.edu.tw/p/406-1013-172516,r547.php",
    "category": "獎助學金",
-   "first_seen": "2026-08-25T11:27:28+08:00"
+   "first_seen": "2026-08-25T11:27:28+08:00",
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-03T09:57:14+08:00"
   },
   {
    "id": "cygsh-171327",

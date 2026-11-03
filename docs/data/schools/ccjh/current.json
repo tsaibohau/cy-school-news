@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T04:44:29+08:00",
+ "generated_at": "2026-11-03T09:46:54+08:00",
  "school": {
   "id": "ccjh",
   "name": "嘉義縣立竹崎高級中學",
@@ -8,6 +8,98 @@
   "base": "https://www.ccjh.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "ccjh-8118",
+   "title": "竹崎高中70+1校慶暖身起跑 跨域雙語嘉年華翻轉萬聖節",
+   "date": "2026-11-03",
+   "source_category": "校園焦點",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "http://www.ccjh.cyc.edu.tw/p/406-1000-8118,r12.php",
+   "category": "一般",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "校慶",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "校慶",
+       "霸凌",
+       "#celebration",
+       "#bullying"
+      ],
+      "k": [
+       "audience"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "ccjh-8069",
    "title": "嘉義縣立竹崎高級中學「第二屆揚雄畫嘉盃」學生繪畫比賽，歡迎同學踴躍參加！",

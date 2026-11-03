@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-03T04:52:43+08:00",
+ "generated_at": "2026-11-03T09:58:36+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -195,30 +195,44 @@
    "page_id": 200125362093305,
    "url": "https://cm.cmvsedu.tw/modules/tad_form/index.php?op=sign&ofsn=1",
    "label": "招生訊息",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:31+08:00",
+   "path": [
+    "招生訊息"
+   ]
   },
   "200825521586202": {
    "page_id": 200825521586202,
    "url": "https://cm.cmvsedu.tw/modules/cmvs1/index.php",
    "label": "主選單",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於旗美"
    ],
-   "order": 17
+   "order": 17,
+   "checked_at": "2026-11-03T09:58:33+08:00",
+   "path": [
+    "關於旗美",
+    "主選單"
+   ]
   },
   "245594122295727": {
    "page_id": 245594122295727,
    "url": "https://cm.cmvsedu.tw/modules/cmvs1/index.php?id=1",
    "label": "創校沿革",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於旗美"
    ],
-   "order": 18
+   "order": 18,
+   "checked_at": "2026-11-03T09:58:35+08:00",
+   "path": [
+    "關於旗美",
+    "創校沿革"
+   ]
   },
   "221556516894837": {
    "page_id": 221556516894837,
@@ -1404,5 +1418,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-03T04:52:43+08:00"
+ "last_run_at": "2026-11-03T09:58:36+08:00"
 }

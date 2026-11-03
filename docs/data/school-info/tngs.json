@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-03T04:52:20+08:00",
+ "generated_at": "2026-11-03T09:58:10+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -207,22 +207,36 @@
    "page_id": 215244021095423,
    "url": "https://www.tngs.tn.edu.tw/teaching/artistic/",
    "label": "藝能科",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:05+08:00",
+   "path": [
+    "教學單位",
+    "藝能科"
+   ]
   },
   "179930803251034": {
    "page_id": 179930803251034,
    "url": "https://www.tngs.tn.edu.tw/teaching/nl/",
    "label": "本土語文",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:06+08:00",
+   "path": [
+    "教學單位",
+    "本土語文"
+   ]
   },
   "261759518833537": {
    "page_id": 261759518833537,
    "url": "https://www.tngs.tn.edu.tw/partner/",
    "label": "協力單位",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:08+08:00",
+   "path": [
+    "協力單位"
+   ]
   },
   "267430390299421": {
    "page_id": 267430390299421,
@@ -1114,6 +1128,54 @@
     "社會科"
    ],
    "order": 102
+  },
+  "176360295766888": {
+   "page_id": 176360295766888,
+   "url": "https://www.tngs.tn.edu.tw/teaching/artistic/staff/",
+   "label": "授課教師",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "藝能科"
+   ],
+   "order": 103
+  },
+  "39415235767057": {
+   "page_id": 39415235767057,
+   "url": "https://www.tngs.tn.edu.tw/teaching/artistic/resource/",
+   "label": "學習資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "藝能科"
+   ],
+   "order": 104
+  },
+  "55044525954406": {
+   "page_id": 55044525954406,
+   "url": "https://www.tngs.tn.edu.tw/teaching/nl/staff/",
+   "label": "授課教師",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "本土語文"
+   ],
+   "order": 105
+  },
+  "184807800913076": {
+   "page_id": 184807800913076,
+   "url": "https://www.tngs.tn.edu.tw/teaching/nl/resource/",
+   "label": "學習資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教學單位",
+    "本土語文"
+   ],
+   "order": 106
   }
  },
  "handbook": {},
@@ -1445,5 +1507,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-03T04:52:20+08:00"
+ "last_run_at": "2026-11-03T09:58:10+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T04:44:29+08:00",
+ "generated_at": "2026-11-03T09:46:54+08:00",
  "school": {
   "id": "cyhvs",
   "name": "國立嘉義高級家事職業學校",
@@ -8,6 +8,215 @@
   "base": "https://www.cyhvs.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cyhvs-23680",
+   "title": "「115學年度中小學國際教育校 長暨教師培力研習」11月研習資訊公告",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "cyhvs",
+   "school_name": "嘉義家職",
+   "url": "https://www.cyhvs.cy.edu.tw/ischool/public/news_view/show.php?nid=23680",
+   "category": "教職員",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-18",
+     "provenance": "verified_announcement_event",
+     "source_revision": "486ed587f09d691215e4ad18562da32aebbff354b9cc26312487074265c5c699"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-18",
+       "2026-11-19",
+       "2026-11-23",
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18",
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23",
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "cyhvs-23677",
    "title": "生命教育教師研習活動「生命的圓滿—尋覓教師的春天」",

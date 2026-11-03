@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-03T04:52:31+08:00",
+ "generated_at": "2026-11-03T09:58:24+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -307,15 +307,683 @@
    "page_id": 218930160176923,
    "url": "https://www.tnvs.tn.edu.tw/teaching-unit/electronics/",
    "label": "電子科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:16+08:00",
+   "path": [
+    "電子科"
+   ],
+   "changed_at": "2026-11-03T09:58:16+08:00",
+   "content_hash": "85e0758a2ce6613a6898589ed541813d76a9eefdbf20fa6d27b43356c8c7d392",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "比賽",
+    "研習",
+    "決賽",
+    "升學",
+    "報名",
+    "衛生",
+    "體驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-218930160176923.json",
+   "detail_revision": "3a5f64fff1710bb451d4d219bcc7a831849c421a6d5585cee352b9c26ee4f963",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 74,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 75,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 76,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 79,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 80,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 82,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 83,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "100624286833690": {
    "page_id": 100624286833690,
    "url": "https://www.tnvs.tn.edu.tw/teaching-unit/fishery-food/",
    "label": "水產食品科",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:18+08:00",
+   "path": [
+    "水產食品科"
+   ],
+   "changed_at": "2026-11-03T09:58:18+08:00",
+   "content_hash": "c0dc7b664cc3cc20b99359abda8a1a7ba885c8e75dfa57914d7c62234c56aa19",
+   "doc_links": [],
+   "keywords": [
+    "檢定",
+    "申請",
+    "校長",
+    "作息",
+    "作息時間",
+    "入學",
+    "升學",
+    "特殊選才",
+    "科系",
+    "競賽",
+    "代辦費",
+    "學生證",
+    "安全",
+    "簡介",
+    "繁星"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/tnvs/tnvs-info-100624286833690.json",
+   "detail_revision": "4d0de2dc6d53f3d86f2bbe6d93cadbcb8c6ab83b552acd842386ad8f1308321e",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "111學年度海事類技藝競賽-水產食品選手名單",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2022/07/111學年度海事類技藝競賽選手名單-3.docx"
+    },
+    {
+     "name": "水產食品科/烘焙實用學程提昇學生技能檢定輔 導要點",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/證照班訓練計畫書及申請表-1.pdf"
+    },
+    {
+     "name": "110學年度第一學期-實習課公共區域分配表",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/110學年度第一學期-實習課公共區域分配表-1.pdf"
+    },
+    {
+     "name": "水產食品科全國技藝競賽水產食品職種校內選手甄選辦法",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/臺南海事水產食品科全國技藝競賽水產食品職種校內選手甄選辦法.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "繁星",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 109,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 110,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 112,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2018-05-18"
+      ]
+     },
+     {
+      "s": 113,
+      "t": [
+       "升學",
+       "#admission",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 116,
+      "t": [
+       "學生證",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 117,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 119,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 122,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 123,
+      "t": [
+       "暑假",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 124,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 125,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 126,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 127,
+      "t": [
+       "處室",
+       "#school_profile"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 128,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 130,
+      "t": [
+       "費用",
+       "開學"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 136,
+      "t": [
+       "費用",
+       "家長"
+      ],
+      "k": [
+       "place",
+       "required",
+       "fee"
+      ]
+     },
+     {
+      "s": 137,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 140,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 141,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 142,
+      "t": [
+       "補假"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 145,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 146,
+      "t": [
+       "嘉獎"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 147,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 150,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 155,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 156,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 160,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 168,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 169,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 172,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 173,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "21298262165184": {
    "page_id": 21298262165184,
@@ -953,6 +1621,127 @@
     "電子商務科"
    ],
    "order": 81
+  },
+  "160581327731214": {
+   "page_id": 160581327731214,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/electronics/elec-intro/",
+   "label": "本科介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 82
+  },
+  "85579210762638": {
+   "page_id": 85579210762638,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/electronics/elec-teacher/",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 83
+  },
+  "223195632002758": {
+   "page_id": 223195632002758,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/electronics/elec-class/",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 84
+  },
+  "1122676149751": {
+   "page_id": 1122676149751,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/electronics/elec-equ/",
+   "label": "教學設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 85
+  },
+  "233796365108695": {
+   "page_id": 233796365108695,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/electronics/elec-school/",
+   "label": "升學資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 86
+  },
+  "27641581144952": {
+   "page_id": 27641581144952,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/electronics/elec-teach/",
+   "label": "教學資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "電子科"
+   ],
+   "order": 87
+  },
+  "105812617694104": {
+   "page_id": 105812617694104,
+   "url": "https://www.tnvs.tn.edu.tw/fishery-food/fishery-food-intr/",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產食品科"
+   ],
+   "order": 88
+  },
+  "255674969830509": {
+   "page_id": 255674969830509,
+   "url": "https://www.tnvs.tn.edu.tw/fishery-food/fishery-food-teacher/",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產食品科"
+   ],
+   "order": 89
+  },
+  "35040686933875": {
+   "page_id": 35040686933875,
+   "url": "https://www.tnvs.tn.edu.tw/fishery-food/fishery-food-class/",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產食品科"
+   ],
+   "order": 90
+  },
+  "169851890493084": {
+   "page_id": 169851890493084,
+   "url": "https://www.tnvs.tn.edu.tw/fishery-food/fishery-food-equ/",
+   "label": "教學設備",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產食品科"
+   ],
+   "order": 91
+  },
+  "255125885554350": {
+   "page_id": 255125885554350,
+   "url": "https://www.tnvs.tn.edu.tw/fishery-food/fishery-food-school/",
+   "label": "升學資訊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "水產食品科"
+   ],
+   "order": 92
   }
  },
  "handbook": {},
@@ -1113,6 +1902,403 @@
    "detail_status": "parsed"
   },
   {
+   "id": "tnvs-info-100624286833690",
+   "kind": "school_info",
+   "title": "水產食品科",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/fishery-food/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "111學年度海事類技藝競賽-水產食品選手名單",
+    "水產食品科/烘焙實用學程提昇學生技能檢定輔 導要點",
+    "110學年度第一學期-實習課公共區域分配表",
+    "水產食品科全國技藝競賽水產食品職種校內選手甄選辦法"
+   ],
+   "keywords": [
+    "檢定",
+    "申請",
+    "校長",
+    "作息",
+    "作息時間",
+    "入學",
+    "升學",
+    "特殊選才",
+    "科系",
+    "競賽",
+    "代辦費",
+    "學生證",
+    "安全",
+    "簡介",
+    "繁星"
+   ],
+   "documents": [
+    {
+     "name": "111學年度海事類技藝競賽-水產食品選手名單",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2022/07/111學年度海事類技藝競賽選手名單-3.docx"
+    },
+    {
+     "name": "水產食品科/烘焙實用學程提昇學生技能檢定輔 導要點",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/證照班訓練計畫書及申請表-1.pdf"
+    },
+    {
+     "name": "110學年度第一學期-實習課公共區域分配表",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/110學年度第一學期-實習課公共區域分配表-1.pdf"
+    },
+    {
+     "name": "水產食品科全國技藝競賽水產食品職種校內選手甄選辦法",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/10/臺南海事水產食品科全國技藝競賽水產食品職種校內選手甄選辦法.pdf"
+    }
+   ],
+   "detail_ref": "data/details/tnvs/tnvs-info-100624286833690.json",
+   "detail_revision": "4d0de2dc6d53f3d86f2bbe6d93cadbcb8c6ab83b552acd842386ad8f1308321e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "繁星",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 109,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 110,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 112,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2018-05-18"
+      ]
+     },
+     {
+      "s": 113,
+      "t": [
+       "升學",
+       "#admission",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 116,
+      "t": [
+       "學生證",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 117,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 119,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 122,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 123,
+      "t": [
+       "暑假",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 124,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 125,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 126,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 127,
+      "t": [
+       "處室",
+       "#school_profile"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 128,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 130,
+      "t": [
+       "費用",
+       "開學"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 136,
+      "t": [
+       "費用",
+       "家長"
+      ],
+      "k": [
+       "place",
+       "required",
+       "fee"
+      ]
+     },
+     {
+      "s": 137,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 140,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 141,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 142,
+      "t": [
+       "補假"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 145,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 146,
+      "t": [
+       "嘉獎"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 147,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 150,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 155,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 156,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 160,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 168,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 169,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 172,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 173,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-170419026183731",
    "kind": "school_info",
    "title": "水產養殖科",
@@ -1176,6 +2362,290 @@
    "detail_ref": "data/details/tnvs/tnvs-info-191788479103454.json",
    "detail_revision": "0e10f21ddbdeb2b3779fd0909feb744bd23d1ab1c4c05b083c168c7651395568",
    "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-218930160176923",
+   "kind": "school_info",
+   "title": "電子科",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/electronics/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "比賽",
+    "研習",
+    "決賽",
+    "升學",
+    "報名",
+    "衛生",
+    "體驗"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-218930160176923.json",
+   "detail_revision": "3a5f64fff1710bb451d4d219bcc7a831849c421a6d5585cee352b9c26ee4f963",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 74,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 75,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 76,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 79,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 80,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 82,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 83,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tnvs-info-264787222763492",
@@ -1581,5 +3051,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-03T04:52:31+08:00"
+ "last_run_at": "2026-11-03T09:58:24+08:00"
 }

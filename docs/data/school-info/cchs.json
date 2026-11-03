@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cchs",
- "generated_at": "2026-11-03T04:53:30+08:00",
+ "generated_at": "2026-11-03T09:59:38+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "153498002047988": {
@@ -455,23 +455,374 @@
    "page_id": 117253854350800,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5",
    "label": "總務處",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 12
+   "order": 12,
+   "checked_at": "2026-11-03T09:59:21+08:00",
+   "path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "changed_at": "2026-11-03T09:59:21+08:00",
+   "content_hash": "f6d53dc5697aeb7824cbd906afccfbcf32862bc149982e1d6aa17e19cba4dc24",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-117253854350800.json",
+   "detail_revision": "6cc12ec60a15d29a2d27be1e8abe2a9c8087fea2aded1ac506fa8a09484b0eea",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": []
+   }
   },
   "135169227169795": {
    "page_id": 135169227169795,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6",
    "label": "輔導室",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 13
+   "order": 13,
+   "checked_at": "2026-11-03T09:59:24+08:00",
+   "path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "changed_at": "2026-11-03T09:59:24+08:00",
+   "content_hash": "0f3015048447edd4eed3d64710c7dab36db7d6725051bc5cc00a66321afb146e",
+   "doc_links": [],
+   "keywords": [
+    "安全",
+    "專線",
+    "醫療",
+    "簡介",
+    "災害",
+    "校長",
+    "電話",
+    "霸凌",
+    "宣導",
+    "申請",
+    "聯絡電話"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/cchs/cchs-info-135169227169795.json",
+   "detail_revision": "02e30a96c5adc38f2c7015979903e3d674d7746c37a2793ef9746f271ba5a230",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "教育人員兒童及少年保護工作手冊_上冊",
+     "url": "https://www.cchs.kh.edu.tw/ischool/resources/WID_6_2_f75ff4e0b98b1996cfcac17b247e798f32e96b96/NEWS_6_2_1c41e0d5b46d621a630b465dd50c930c05f7bc40/a55e21fc16fe9642ef8db87629671ea5.pdf"
+    },
+    {
+     "name": "教育人員兒童及少年保護工作手冊_下冊",
+     "url": "https://www.cchs.kh.edu.tw/ischool/resources/WID_6_2_f75ff4e0b98b1996cfcac17b247e798f32e96b96/NEWS_6_2_1c41e0d5b46d621a630b465dd50c930c05f7bc40/c1cc31e0091f6611881d43ded1125f58.pdf"
+    },
+    {
+     "name": "高雄市社政目睹兒少輔導資源彙整",
+     "url": "https://www.cchs.kh.edu.tw/ischool/resources/WID_6_2_f75ff4e0b98b1996cfcac17b247e798f32e96b96/NEWS_6_2_1c41e0d5b46d621a630b465dd50c930c05f7bc40/f44dd5ae38fbcd159e3745783d9e4027.pdf"
+    },
+    {
+     "name": "高雄市高級中等學校學生穩定就學及中途離校學生相關資源彙整表",
+     "url": "https://www.cchs.kh.edu.tw/ischool/public/resource_view/open.php?file=430c0d60461376f19a28c0adbef64f9e.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 72,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 76,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 135,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 138,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 141,
+      "t": [
+       "#safety",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 142,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 143,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 144,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 145,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 160,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 161,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 165,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 166,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 215,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 220,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 236,
+      "t": [
+       "#safety",
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "134017460526150": {
    "page_id": 134017460526150,
@@ -3286,6 +3637,558 @@
     "學務處"
    ],
    "order": 253
+  },
+  "215034926950809": {
+   "page_id": 215034926950809,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=46",
+   "label": "網站導覽",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 254
+  },
+  "138277959111164": {
+   "page_id": 138277959111164,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=57",
+   "label": "組織分工",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 255
+  },
+  "13875210859221": {
+   "page_id": 13875210859221,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=58",
+   "label": "工作目標",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 256
+  },
+  "265712233515568": {
+   "page_id": 265712233515568,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=59",
+   "label": "未來展望",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 257
+  },
+  "142888522650661": {
+   "page_id": 142888522650661,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=60",
+   "label": "工作同仁",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 258
+  },
+  "142307852717499": {
+   "page_id": 142307852717499,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=61",
+   "label": "庶務組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 259
+  },
+  "209706397543087": {
+   "page_id": 209706397543087,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=62",
+   "label": "文書",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 260
+  },
+  "264268176907474": {
+   "page_id": 264268176907474,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=63",
+   "label": "出納組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 261
+  },
+  "271366905832298": {
+   "page_id": 271366905832298,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=52",
+   "label": "相關法令",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 262
+  },
+  "219218295402728": {
+   "page_id": 219218295402728,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=53",
+   "label": "文件下載",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 263
+  },
+  "24686761313062": {
+   "page_id": 24686761313062,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=56",
+   "label": "表格下載",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 264
+  },
+  "123773148667714": {
+   "page_id": 123773148667714,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5?cid=3436",
+   "label": "校園開放時間",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "總務處"
+   ],
+   "order": 265
+  },
+  "268348911809864": {
+   "page_id": 268348911809864,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6/?cid=285",
+   "label": "輔導專線：749-3798(高中)、719-1208(國中)",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 266
+  },
+  "98415923716687": {
+   "page_id": 98415923716687,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=3074",
+   "label": "暖心輔導信箱",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 267
+  },
+  "25923366034120": {
+   "page_id": 25923366034120,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=308",
+   "label": "組織分工",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 268
+  },
+  "259068975978475": {
+   "page_id": 259068975978475,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=1661",
+   "label": "生涯輔導專區",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 269
+  },
+  "21362154299110": {
+   "page_id": 21362154299110,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=2472",
+   "label": "輔導諮商及轉介服務流程",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 270
+  },
+  "34568365551703": {
+   "page_id": 34568365551703,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=36",
+   "label": "心理衛生及社區諮商資源",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 271
+  },
+  "85590114046354": {
+   "page_id": 85590114046354,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=819",
+   "label": "特殊教育",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 272
+  },
+  "56722463757896": {
+   "page_id": 56722463757896,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=2666",
+   "label": "責任通報專區",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 273
+  },
+  "122198357066575": {
+   "page_id": 122198357066575,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=2583",
+   "label": "兒少保護專區",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 274
+  },
+  "89523828903292": {
+   "page_id": 89523828903292,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=2815",
+   "label": "性別平等教育",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 275
+  },
+  "27651621973001": {
+   "page_id": 27651621973001,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=2717",
+   "label": "學生申訴專區",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 276
+  },
+  "157797165551025": {
+   "page_id": 157797165551025,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=305",
+   "label": "檔案下載",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 277
+  },
+  "141176504402049": {
+   "page_id": 141176504402049,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6/",
+   "label": "→回輔導室首頁",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 278
+  },
+  "243598079500772": {
+   "page_id": 243598079500772,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=276",
+   "label": "輔導工作委員會章則",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 279
+  },
+  "275605181016726": {
+   "page_id": 275605181016726,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=277",
+   "label": "主任輔導教師",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 280
+  },
+  "5567210549510": {
+   "page_id": 5567210549510,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=275",
+   "label": "輔導室團隊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 281
+  },
+  "76123903206167": {
+   "page_id": 76123903206167,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=310",
+   "label": "輔導組業務",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 282
+  },
+  "52321191421583": {
+   "page_id": 52321191421583,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=285",
+   "label": "輔導組執掌",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 283
+  },
+  "60645721277461": {
+   "page_id": 60645721277461,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=398",
+   "label": "升學資訊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 284
+  },
+  "222277946250907": {
+   "page_id": 222277946250907,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=284",
+   "label": "103年高中升學輔導",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 285
+  },
+  "121766812399941": {
+   "page_id": 121766812399941,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=453",
+   "label": "12年國民教育",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 286
+  },
+  "233993824952741": {
+   "page_id": 233993824952741,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=458",
+   "label": "升學輔導相關活動",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 287
+  },
+  "11909963561567": {
+   "page_id": 11909963561567,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=459",
+   "label": "100高三多元入學家長說明會",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 288
+  },
+  "204274966088602": {
+   "page_id": 204274966088602,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=461",
+   "label": "101國三多元入學方案暨直升宣導家長說明會",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 289
+  },
+  "130208519523779": {
+   "page_id": 130208519523779,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=468",
+   "label": "高中升學輔導相關網站",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 290
+  },
+  "245572831317975": {
+   "page_id": 245572831317975,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=471",
+   "label": "國中升學輔導相關網站",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 291
+  },
+  "45274375830642": {
+   "page_id": 45274375830642,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=472",
+   "label": "認輔制度",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 292
+  },
+  "217777728409836": {
+   "page_id": 217777728409836,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=473",
+   "label": "相關活動與研習",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 293
+  },
+  "444131866420": {
+   "page_id": 444131866420,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=478",
+   "label": "相關文件下載",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 294
+  },
+  "221310164281188": {
+   "page_id": 221310164281188,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=479",
+   "label": "相關網站連結",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 295
+  },
+  "49176009426200": {
+   "page_id": 49176009426200,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=480",
+   "label": "個案管理",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 296
+  },
+  "136119780860279": {
+   "page_id": 136119780860279,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=485",
+   "label": "學生申訴",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 297
+  },
+  "103107256802424": {
+   "page_id": 103107256802424,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=487",
+   "label": "相關規定與表格",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 298
+  },
+  "98783755069398": {
+   "page_id": 98783755069398,
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6?cid=505",
+   "label": "輔導資源",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "進入首頁",
+    "輔導室"
+   ],
+   "order": 299
   }
  },
  "handbook": {},
@@ -3371,6 +4274,30 @@
    "detail_ref": "data/details/cchs/cchs-info-85659664264510.json",
    "detail_revision": "46b4424b294e69753838c2dc0a912bae0c5d8be74d56c0ef5d26e185981a636f",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cchs-info-117253854350800",
+   "kind": "school_info",
+   "title": "進入首頁 › 總務處",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/5",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-117253854350800.json",
+   "detail_revision": "6cc12ec60a15d29a2d27be1e8abe2a9c8087fea2aded1ac506fa8a09484b0eea",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "cchs-info-122540673584160",
@@ -3464,6 +4391,344 @@
    "detail_ref": "data/details/cchs/cchs-info-134820249247619.json",
    "detail_revision": "46df03aa45b955ee4c1ebab44b51803cddb61162174d7f1e5732fbc33d9e2f9e",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cchs-info-135169227169795",
+   "kind": "school_info",
+   "title": "進入首頁 › 輔導室",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/6",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "教育人員兒童及少年保護工作手冊_上冊",
+    "教育人員兒童及少年保護工作手冊_下冊",
+    "高雄市社政目睹兒少輔導資源彙整",
+    "高雄市高級中等學校學生穩定就學及中途離校學生相關資源彙整表"
+   ],
+   "keywords": [
+    "安全",
+    "專線",
+    "醫療",
+    "簡介",
+    "災害",
+    "校長",
+    "電話",
+    "霸凌",
+    "宣導",
+    "申請",
+    "聯絡電話"
+   ],
+   "documents": [
+    {
+     "name": "教育人員兒童及少年保護工作手冊_上冊",
+     "url": "https://www.cchs.kh.edu.tw/ischool/resources/WID_6_2_f75ff4e0b98b1996cfcac17b247e798f32e96b96/NEWS_6_2_1c41e0d5b46d621a630b465dd50c930c05f7bc40/a55e21fc16fe9642ef8db87629671ea5.pdf"
+    },
+    {
+     "name": "教育人員兒童及少年保護工作手冊_下冊",
+     "url": "https://www.cchs.kh.edu.tw/ischool/resources/WID_6_2_f75ff4e0b98b1996cfcac17b247e798f32e96b96/NEWS_6_2_1c41e0d5b46d621a630b465dd50c930c05f7bc40/c1cc31e0091f6611881d43ded1125f58.pdf"
+    },
+    {
+     "name": "高雄市社政目睹兒少輔導資源彙整",
+     "url": "https://www.cchs.kh.edu.tw/ischool/resources/WID_6_2_f75ff4e0b98b1996cfcac17b247e798f32e96b96/NEWS_6_2_1c41e0d5b46d621a630b465dd50c930c05f7bc40/f44dd5ae38fbcd159e3745783d9e4027.pdf"
+    },
+    {
+     "name": "高雄市高級中等學校學生穩定就學及中途離校學生相關資源彙整表",
+     "url": "https://www.cchs.kh.edu.tw/ischool/public/resource_view/open.php?file=430c0d60461376f19a28c0adbef64f9e.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cchs/cchs-info-135169227169795.json",
+   "detail_revision": "02e30a96c5adc38f2c7015979903e3d674d7746c37a2793ef9746f271ba5a230",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 72,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 76,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 135,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 138,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 141,
+      "t": [
+       "#safety",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 142,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 143,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 144,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 145,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 160,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 161,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 165,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 166,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 215,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 220,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 236,
+      "t": [
+       "#safety",
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cchs-info-137802978837002",
@@ -3683,5 +4948,5 @@
    "label": "進入首頁"
   }
  ],
- "last_run_at": "2026-11-03T04:53:30+08:00"
+ "last_run_at": "2026-11-03T09:59:38+08:00"
 }

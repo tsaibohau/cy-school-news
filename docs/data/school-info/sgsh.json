@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "sgsh",
- "generated_at": "2026-11-03T04:53:01+08:00",
+ "generated_at": "2026-11-03T09:58:53+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "247594578953018": {
@@ -224,34 +224,49 @@
    "page_id": 107459354360995,
    "url": "https://sg.sgshedu.tw/modules/tad_link/index.php?link_sn=23",
    "label": "新課綱專區",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 16
+   "order": 16,
+   "checked_at": "2026-11-03T09:58:48+08:00",
+   "path": [
+    "好站連結",
+    "新課綱專區"
+   ]
   },
   "3685620320795": {
    "page_id": 3685620320795,
    "url": "https://sg.sgshedu.tw/modules/tad_link/index.php?link_sn=22",
    "label": "台灣就業通",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 17
+   "order": 17,
+   "checked_at": "2026-11-03T09:58:50+08:00",
+   "path": [
+    "好站連結",
+    "台灣就業通"
+   ]
   },
   "193877665071359": {
    "page_id": 193877665071359,
    "url": "https://sg.sgshedu.tw/modules/tad_link/index.php?cate_sn=4",
    "label": "就業服務",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "好站連結"
    ],
-   "order": 18
+   "order": 18,
+   "checked_at": "2026-11-03T09:58:51+08:00",
+   "path": [
+    "好站連結",
+    "就業服務"
+   ]
   },
   "146912570212804": {
    "page_id": 146912570212804,
@@ -633,6 +648,18 @@
     "教學資源"
    ],
    "order": 51
+  },
+  "275175063783164": {
+   "page_id": 275175063783164,
+   "url": "https://sg.sgshedu.tw/modules/tad_link/index.php?cate_sn=4&g2p=1",
+   "label": "1 (current)",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "好站連結",
+    "就業服務"
+   ],
+   "order": 52
   }
  },
  "handbook": {},
@@ -809,5 +836,5 @@
   "fcc13700e3",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T04:53:01+08:00"
+ "last_run_at": "2026-11-03T09:58:53+08:00"
 }

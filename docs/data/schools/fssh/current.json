@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T04:44:29+08:00",
+ "generated_at": "2026-11-03T09:46:54+08:00",
  "school": {
   "id": "fssh",
   "name": "國立鳳山高中",
@@ -8,6 +8,134 @@
   "base": "https://www.fssh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fssh-18669",
+   "title": "「青年百億海外圓夢基金計畫—海外翱翔組」兩項法國棒球交流蹲點案",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18669",
+   "category": "一般",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fssh-18668",
+   "title": "二次英聽報名截止提醒",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18668",
+   "category": "段考考試",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "截止",
+     "#national"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "截止",
+       "#national"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "繳交",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "required",
+       "fee"
+      ],
+      "d": [
+       "2026-10-20",
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "繳交",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "required",
+       "fee"
+      ],
+      "d": [
+       "2026-10-20",
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "繳交",
+       "#national"
+      ],
+      "k": [
+       "time",
+       "required",
+       "fee"
+      ],
+      "d": [
+       "2026-10-20",
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "fssh-18664",
    "title": "忠孝國民小學徵求運動會志工",

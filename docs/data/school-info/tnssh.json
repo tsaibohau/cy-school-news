@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-03T04:52:26+08:00",
+ "generated_at": "2026-11-03T09:58:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -151,15 +151,23 @@
    "page_id": 263399573889860,
    "url": "https://www.tnssh.tn.edu.tw/aa/exam/",
    "label": "試務組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:11+08:00",
+   "path": [
+    "試務組"
+   ]
   },
   "221886792127824": {
    "page_id": 221886792127824,
    "url": "https://www.tnssh.tn.edu.tw/aa/se/",
    "label": "特教組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:13+08:00",
+   "path": [
+    "特教組"
+   ]
   },
   "72729188805779": {
    "page_id": 72729188805779,
@@ -610,6 +618,17 @@
     "教學組"
    ],
    "order": 64
+  },
+  "206428446892078": {
+   "page_id": 206428446892078,
+   "url": "https://www.tnssh.tn.edu.tw/tnssh/aa/aaw/",
+   "label": "業務職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "特教組"
+   ],
+   "order": 65
   }
  },
  "handbook": {},
@@ -896,5 +915,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-03T04:52:26+08:00"
+ "last_run_at": "2026-11-03T09:58:15+08:00"
 }

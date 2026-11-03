@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "twvs",
- "generated_at": "2026-11-03T04:52:38+08:00",
+ "generated_at": "2026-11-03T09:58:31+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "210511608049060": {
@@ -195,22 +195,37 @@
    "page_id": 127621913823597,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/principal-office/",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:25+08:00",
+   "path": [
+    "行政單位",
+    "校長室"
+   ]
   },
   "165983749135633": {
    "page_id": 165983749135633,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/secretary-office/",
    "label": "秘書室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:27+08:00",
+   "path": [
+    "行政單位",
+    "秘書室"
+   ]
   },
   "24515678944465": {
    "page_id": 24515678944465,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/educational-affairs-division/",
    "label": "教務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T09:58:29+08:00",
+   "path": [
+    "行政單位",
+    "教務處"
+   ]
   },
   "154993972461096": {
    "page_id": 154993972461096,
@@ -611,6 +626,78 @@
     "關於本校"
    ],
    "order": 62
+  },
+  "119849316979216": {
+   "page_id": 119849316979216,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/educational-affairs-division/2/",
+   "label": "教學組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 63
+  },
+  "2522211738280": {
+   "page_id": 2522211738280,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/educational-affairs-division/3/",
+   "label": "註冊組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 64
+  },
+  "246927720520583": {
+   "page_id": 246927720520583,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/educational-affairs-division/4/",
+   "label": "設備組",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 65
+  },
+  "33658844842384": {
+   "page_id": 33658844842384,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/educational-affairs-division/6/",
+   "label": "相關規章辦法",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 66
+  },
+  "276185151461165": {
+   "page_id": 276185151461165,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/educational-affairs-division/7/",
+   "label": "文件下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 67
+  },
+  "14833703745205": {
+   "page_id": 14833703745205,
+   "url": "https://www.twvs.tn.edu.tw/administrative-unit/educational-affairs-division/9/",
+   "label": "相關網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "行政單位",
+    "教務處"
+   ],
+   "order": 68
   }
  },
  "handbook": {},
@@ -892,5 +979,5 @@
   "f3ef66c885",
   "f9693f2c0a"
  ],
- "last_run_at": "2026-11-03T04:52:38+08:00"
+ "last_run_at": "2026-11-03T09:58:31+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-03T04:54:41+08:00",
+ "generated_at": "2026-11-03T10:01:03+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -599,8 +599,144 @@
    "page_id": 88597416057110,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=191",
    "label": "商用資訊科(實用技能班)",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T10:00:34+08:00",
+   "path": [
+    "商用資訊科(實用技能班)"
+   ],
+   "changed_at": "2026-11-03T10:00:34+08:00",
+   "content_hash": "a67c4454c00a1f0756552962c36caa1cd038acafe1ddf089b3fbfd691f4cb7dd",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "學分",
+    "體驗",
+    "參訪",
+    "分機",
+    "四技二專",
+    "招生",
+    "科系",
+    "簡介",
+    "聯絡電話",
+    "講座",
+    "電話"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/hlvs/hlvs-info-88597416057110.json",
+   "detail_revision": "1898a1498a5b24844ab8aebe23c5b87591eeb1b32f10f45c7a10f68d921d0d78",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "114入學教學科目學分數",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2025/09/114學年度商用資訊科課程計畫書-1.pdf"
+    },
+    {
+     "name": "113入學教學科目學分數",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2025/09/113學年度商用資訊科課程計畫書-1.pdf"
+    },
+    {
+     "name": "112入學教學科目學分數",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2023/08/112入學教學科目學分數.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "四技二專",
+       "網路",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#enrollment",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#enrollment",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "11410427346331": {
    "page_id": 11410427346331,
@@ -2282,6 +2418,28 @@
     "生物產業機電科"
    ],
    "order": 181
+  },
+  "177317114965969": {
+   "page_id": 177317114965969,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=5230",
+   "label": "招生科班",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "商用資訊科(實用技能班)"
+   ],
+   "order": 182
+  },
+  "191995243810408": {
+   "page_id": 191995243810408,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=34989",
+   "label": "課程計劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "商用資訊科(實用技能班)"
+   ],
+   "order": 183
   }
  },
  "handbook": {},
@@ -2433,6 +2591,150 @@
    "detail_ref": "data/details/hlvs/hlvs-info-67184694639250.json",
    "detail_revision": "5b641efb31e00737f7dc60506ea40e08675da41defa520b7bcff5ea71bed5c63",
    "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-88597416057110",
+   "kind": "school_info",
+   "title": "商用資訊科(實用技能班)",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=191",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "114入學教學科目學分數",
+    "113入學教學科目學分數",
+    "112入學教學科目學分數"
+   ],
+   "keywords": [
+    "入學",
+    "學分",
+    "體驗",
+    "參訪",
+    "分機",
+    "四技二專",
+    "招生",
+    "科系",
+    "簡介",
+    "聯絡電話",
+    "講座",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "114入學教學科目學分數",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2025/09/114學年度商用資訊科課程計畫書-1.pdf"
+    },
+    {
+     "name": "113入學教學科目學分數",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2025/09/113學年度商用資訊科課程計畫書-1.pdf"
+    },
+    {
+     "name": "112入學教學科目學分數",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2023/08/112入學教學科目學分數.pdf"
+    }
+   ],
+   "detail_ref": "data/details/hlvs/hlvs-info-88597416057110.json",
+   "detail_revision": "1898a1498a5b24844ab8aebe23c5b87591eeb1b32f10f45c7a10f68d921d0d78",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "四技二專",
+       "網路",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#enrollment",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#enrollment",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-info-123024105921618",
@@ -3103,5 +3405,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-03T04:54:41+08:00"
+ "last_run_at": "2026-11-03T10:01:03+08:00"
 }

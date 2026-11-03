@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T04:44:29+08:00",
+ "generated_at": "2026-11-03T09:46:54+08:00",
  "school": {
   "id": "bwjh",
   "name": "雲林縣私立福智高級中學",
@@ -156,6 +156,109 @@
    "category": "獎助學金",
    "first_seen": "2026-10-27T15:12:24+08:00",
    "detail_status": "pending"
+  },
+  {
+   "id": "bwjh-6370",
+   "title": "澎湖縣115學年度第1學期清寒優秀學生獎學金申請",
+   "date": "2026-09-29",
+   "source_category": "教務處",
+   "school": "bwjh",
+   "school_name": "福智高中",
+   "url": "https://www.bwjh.ylc.edu.tw/ann/6370/",
+   "category": "獎助學金",
+   "first_seen": "2026-11-03T09:46:54+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d094c350a2f2fb44f8ec3923719a2ad130169108e13344257191655304c30c8e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "penalty",
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-15"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學期成績",
+       "獎學金",
+       "#scholarship",
+       "#campus_map",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-09-16"
+      ]
+     }
+    ]
+   }
   }
  ],
  "content_access": "approved-account-required"
