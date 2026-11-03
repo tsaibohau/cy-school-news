@@ -1,20 +1,10 @@
 # -*- coding: utf-8 -*-
-"""一次性：存兩班樣本課表頁給解析用（存成 workflow artifact）。間隔 3 秒。"""
-import os, re, sys, time, requests
-sys.path.insert(0, "scraper")
-from scrape import UA  # noqa: E402
-B = "https://classtable.cygsh.cy.edu.tw/classtable/"
-s = requests.Session(); s.headers.update({"User-Agent": UA})
-os.makedirs("probe-out", exist_ok=True)
-r = s.get(B + "top.asp", timeout=30)
-open("probe-out/top.html", "wb").write(r.content)
-html = r.content.decode("big5", "ignore")
-for sel in re.finditer(r"<select\b[^>]*id=[\"']?(\w+)[\s\S]*?</select>", html, re.I):
-    opts = re.findall(r"<option[^>]*value=[\"']?([^\"'> ]*)", sel.group(0), re.I)
-    print("select", sel.group(1), len(opts), opts[:6] if sel.group(1) not in ("s2", "s6") else "(teachers)")
-for cls in ("101", "301"):
-    time.sleep(3)
-    url = B + "down.asp?sqlstr=%s&type=class&selArrange=ST&selWindow=Left&yt=115,1" % cls
-    r = s.get(url, timeout=30)
-    print(cls, r.status_code, r.headers.get("content-type"), len(r.content))
-    open("probe-out/class-%s.html" % cls, "wb").write(r.content)
+"""一次性：實跑嘉女課表抓取，只印統計。"""
+import json, subprocess, sys
+r = subprocess.run([sys.executable, "scraper/timetable_cygsh.py", "--force"], capture_output=True, text=True)
+print(r.stdout[-800:], r.stderr[-800:])
+d = json.load(open("docs/data/class-timetables.json", encoding="utf-8"))
+for t in d["timetables"]:
+    n = [len(c["slots"]) for c in t["classes"]]
+    print(t["school_id"], t["academic_year"], t["semester"], "classes", len(n), "slots min/max", min(n) if n else 0, max(n) if n else 0,
+          "names", [c["class_name"] for c in t["classes"]][:3], "...", [c["class_name"] for c in t["classes"]][-3:])

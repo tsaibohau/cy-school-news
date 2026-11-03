@@ -6,6 +6,7 @@ on:
     branches: [claude/cygsh-timetable-probe]
     paths:
       - "tools/probe/cygsh_timetable.py"
+      - "scraper/timetable_cygsh.py"
       - ".github/workflows/cygsh-timetable-probe-once.yml"
 
 permissions:
@@ -23,9 +24,3 @@ jobs:
           python-version: '3.12'
       - run: pip install -r scraper/requirements.txt
       - run: python tools/probe/cygsh_timetable.py
-      - name: Commit samples to this probe branch
-        run: |
-          git config user.name "news-bot"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add probe-out
-          git commit -m "probe samples" && git push origin HEAD:claude/cygsh-timetable-probe
