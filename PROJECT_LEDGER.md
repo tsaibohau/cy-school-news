@@ -2234,3 +2234,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - `notification-state.js` 直接放進頁面，少一次等候；預先連線 jsdelivr 和 Supabase。
 - 問校務：拆題後的「怎麼做」只用主題（學生證）比對 token，不再因為補上的「如何繳交」而對到無關的北港公告；單獨的「怎麼辦」不再當成「沒做會怎樣」。
 - 字型（Noto Serif TC 四種粗細，約 2 MB 以上）沒動：測試要求完整字重。
+
+## 2026-11-03 公告 token 補建：讀過但沒有標籤的公告不再重讀
+- 約 155 則（賀詞、純圖片公告）讀得到內文，但沒有日期、對象、做法可標，每輪都被重新挑中。
+- token 補建讀成功後記 `tokens_tried`（公開狀態欄位，不含內容）；`select_token_targets` 跳過同版本已讀過的公告。
