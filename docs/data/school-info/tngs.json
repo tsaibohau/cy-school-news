@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-03T18:18:32+08:00",
+ "generated_at": "2026-11-03T20:02:21+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -386,22 +386,40 @@
    "page_id": 250410248644084,
    "url": "https://www.tngs.tn.edu.tw/department/sa/edusave/",
    "label": "教育儲蓄專戶",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:02:16+08:00",
+   "path": [
+    "行政組織",
+    "學務處",
+    "教育儲蓄專戶"
+   ]
   },
   "139200053758336": {
    "page_id": 139200053758336,
    "url": "https://www.tngs.tn.edu.tw/department/lib/pads/",
    "label": "數位學習",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:02:18+08:00",
+   "path": [
+    "行政組織",
+    "圖書館",
+    "推動數位學習精進方案"
+   ]
   },
   "257516380974213": {
    "page_id": 257516380974213,
    "url": "https://www.tngs.tn.edu.tw/department/acad/fellowship/",
    "label": "獎助學金",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:02:20+08:00",
+   "path": [
+    "行政組織",
+    "教務處",
+    "獎學金專區"
+   ]
   },
   "55756874500878": {
    "page_id": 55756874500878,
@@ -1236,6 +1254,138 @@
     "本土語文"
    ],
    "order": 106
+  },
+  "179458822397382": {
+   "page_id": 179458822397382,
+   "url": "https://www.tngs.tn.edu.tw/department/sa/edusave/origin/",
+   "label": "推動緣起",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處",
+    "教育儲蓄專戶"
+   ],
+   "order": 107
+  },
+  "179050419521920": {
+   "page_id": 179050419521920,
+   "url": "https://www.tngs.tn.edu.tw/department/sa/edusave/purpose/",
+   "label": "捐款用途",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處",
+    "教育儲蓄專戶"
+   ],
+   "order": 108
+  },
+  "17735759044039": {
+   "page_id": 17735759044039,
+   "url": "https://www.tngs.tn.edu.tw/department/sa/edusave/link",
+   "label": "相關連結",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處",
+    "教育儲蓄專戶"
+   ],
+   "order": 109
+  },
+  "243071987262546": {
+   "page_id": 243071987262546,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/pads/intro/",
+   "label": "方案說明",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "推動數位學習精進方案"
+   ],
+   "order": 110
+  },
+  "203474889219993": {
+   "page_id": 203474889219993,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/pads/device/",
+   "label": "學習載具",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "推動數位學習精進方案"
+   ],
+   "order": 111
+  },
+  "135063014224634": {
+   "page_id": 135063014224634,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/pads/content/",
+   "label": "數位內容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "推動數位學習精進方案"
+   ],
+   "order": 112
+  },
+  "18120590632810": {
+   "page_id": 18120590632810,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/pads/guide/",
+   "label": "使用指引",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "推動數位學習精進方案"
+   ],
+   "order": 113
+  },
+  "145993853586375": {
+   "page_id": 145993853586375,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/pads/teacher/",
+   "label": "教師培訓",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "推動數位學習精進方案"
+   ],
+   "order": 114
+  },
+  "197111264980801": {
+   "page_id": 197111264980801,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/pads/group/",
+   "label": "共備社群",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "推動數位學習精進方案"
+   ],
+   "order": 115
+  },
+  "144497099948232": {
+   "page_id": 144497099948232,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/pads/view/",
+   "label": "公開觀課",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "推動數位學習精進方案"
+   ],
+   "order": 116
+  },
+  "131246354226297": {
+   "page_id": 131246354226297,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/pads/assistance/",
+   "label": "諮詢輔導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "推動數位學習精進方案"
+   ],
+   "order": 117
   }
  },
  "handbook": {},
@@ -1567,5 +1717,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-03T18:18:32+08:00"
+ "last_run_at": "2026-11-03T20:02:21+08:00"
 }

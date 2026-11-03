@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-03T18:21:10+08:00",
+ "generated_at": "2026-11-03T20:04:33+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -1599,15 +1599,142 @@
    "page_id": 258175691655792,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/",
    "label": "認識虎農",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:04:29+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校務資料開放",
+    "認識虎農"
+   ]
   },
   "97585269973137": {
    "page_id": 97585269973137,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e6%ad%b7%e5%8f%b2%e6%b2%bf%e9%9d%a9/",
    "label": "歷史沿革",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:04:31+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校務資料開放",
+    "認識虎農",
+    "歷史沿革"
+   ],
+   "changed_at": "2026-11-03T20:04:31+08:00",
+   "content_hash": "903cdfe4159810569ae261770da904a1879313bc2683061c462ed1a68e2fc2a7",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "招生",
+    "地址",
+    "歷任校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-97585269973137.json",
+   "detail_revision": "44c857c061417dbbb3314f236c525f5a9654fa2f24cc9a632de5e58bb0f386a7",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "生活",
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "145937902663514": {
    "page_id": 145937902663514,
@@ -5100,6 +5227,128 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hwaivs-info-97585269973137",
+   "kind": "school_info",
+   "title": "校務資料開放 › 認識虎農 › 歷史沿革",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e6%ad%b7%e5%8f%b2%e6%b2%bf%e9%9d%a9/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "招生",
+    "地址",
+    "歷任校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-97585269973137.json",
+   "detail_revision": "44c857c061417dbbb3314f236c525f5a9654fa2f24cc9a632de5e58bb0f386a7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "生活",
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "hwaivs-info-118660946148050",
    "kind": "school_info",
    "title": "國立虎尾高級農工職業學校 › 新生專區 › 115學年度新生報到",
@@ -6531,5 +6780,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-03T18:21:10+08:00"
+ "last_run_at": "2026-11-03T20:04:33+08:00"
 }

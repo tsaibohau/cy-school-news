@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-03T18:19:30+08:00",
+ "generated_at": "2026-11-03T20:03:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -1794,25 +1794,203 @@
    "page_id": 108409169298673,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5196.php",
    "label": "文 書 組",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 22
+   "order": 22,
+   "checked_at": "2026-11-03T20:03:06+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "文書組"
+   ],
+   "changed_at": "2026-11-03T20:03:06+08:00",
+   "content_hash": "e914c2c72642d818c09227c76015990bc96c5910eef2a76438cbc77ff23c0d24",
+   "doc_links": [],
+   "keywords": [
+    "登記",
+    "獎懲",
+    "分機",
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-108409169298673.json",
+   "detail_revision": "4e652b8236c0d3a81bf6774dd977de298f8826465e524e67ac1e13db63dfdb70",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "155930967448084": {
    "page_id": 155930967448084,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5198.php",
    "label": "出 納 組",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 23
+   "order": 23,
+   "checked_at": "2026-11-03T20:03:08+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "出納組"
+   ],
+   "changed_at": "2026-11-03T20:03:08+08:00",
+   "content_hash": "a8dc03b3fe8285e7a5010d5220bae09d678f2c1aed214e5cee9202704970cd8f",
+   "doc_links": [],
+   "keywords": [
+    "收費",
+    "分機",
+    "學分",
+    "學雜費",
+    "學雜費減免",
+    "獎學金",
+    "登記",
+    "補修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-155930967448084.json",
+   "detail_revision": "ba3161cadd57d66c79f101ff5c44460ca6c8b4e77e28ce9f9f4532831fef4def",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "重補修",
+       "費用",
+       "#makeup",
+       "#grading"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "學雜費減免",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   "251980738626280": {
    "page_id": 251980738626280,
@@ -2610,6 +2788,89 @@
    }
   },
   {
+   "id": "kssh-info-108409169298673",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 文書組",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5196.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "登記",
+    "獎懲",
+    "分機",
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-108409169298673.json",
+   "detail_revision": "4e652b8236c0d3a81bf6774dd977de298f8826465e524e67ac1e13db63dfdb70",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "kssh-info-112967414483477",
    "kind": "school_info",
    "title": "學校簡介 › 協力團體 › 文教基金會",
@@ -3107,6 +3368,105 @@
    "detail_ref": "data/details/kssh/kssh-info-152836902652291.json",
    "detail_revision": "67daebcec41a7f5a96c2e0bb11f6fb8fb599d14263374e88f7f2b320a7eec0cf",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-155930967448084",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 出納組",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5198.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "收費",
+    "分機",
+    "學分",
+    "學雜費",
+    "學雜費減免",
+    "獎學金",
+    "登記",
+    "補修"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-155930967448084.json",
+   "detail_revision": "ba3161cadd57d66c79f101ff5c44460ca6c8b4e77e28ce9f9f4532831fef4def",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "重補修",
+       "費用",
+       "#makeup",
+       "#grading"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "學雜費減免",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "kssh-info-179870262472431",
@@ -4215,5 +4575,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-03T18:19:30+08:00"
+ "last_run_at": "2026-11-03T20:03:09+08:00"
 }

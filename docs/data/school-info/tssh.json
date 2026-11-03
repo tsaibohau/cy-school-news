@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tssh",
- "generated_at": "2026-11-03T18:18:10+08:00",
+ "generated_at": "2026-11-03T20:02:00+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "212970716483767": {
@@ -400,8 +400,12 @@
    "page_id": 168415047490341,
    "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=28,6,510",
    "label": "轉學考資訊",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:01:58+08:00",
+   "path": [
+    "轉學考資訊"
+   ]
   },
   "189586397799830": {
    "page_id": 189586397799830,
@@ -3001,6 +3005,17 @@
     "新生專區"
    ],
    "order": 273
+  },
+  "192026955396629": {
+   "page_id": 192026955396629,
+   "url": "https://www.tssh.cyc.edu.tw/form/index.aspx?Parser=28,6,510,,,,,56,,,0",
+   "label": "轉學考",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "轉學考資訊"
+   ],
+   "order": 274
   }
  },
  "handbook": {},
@@ -3204,5 +3219,5 @@
    "label": "報廢產品變賣專區"
   }
  ],
- "last_run_at": "2026-11-03T18:18:10+08:00"
+ "last_run_at": "2026-11-03T20:02:00+08:00"
 }

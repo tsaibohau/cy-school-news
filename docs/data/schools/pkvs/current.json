@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T18:08:12+08:00",
+ "generated_at": "2026-11-03T19:53:39+08:00",
  "school": {
   "id": "pkvs",
   "name": "國立北港高級農工職業學校",
@@ -8,6 +8,50 @@
   "base": "https://www.pkvs.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "pkvs-11969",
+   "title": "生命教育教師研習「生命的圓滿—尋覓教師的春天」，歡迎有興趣師長報名",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11969",
+   "category": "教職員",
+   "first_seen": "2026-11-03T19:53:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "pkvs-11968",
    "title": "115年度孝道教育種子教師研習，歡迎有興趣師長報名",
@@ -20,8 +64,8 @@
    "first_seen": "2026-11-03T18:08:12+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -64,8 +108,8 @@
    "first_seen": "2026-11-03T18:08:12+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],

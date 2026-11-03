@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-03T18:20:16+08:00",
+ "generated_at": "2026-11-03T20:03:33+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -3617,15 +3617,162 @@
   },
   "920": {
    "page_id": 920,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T20:03:27+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "體育組",
+    "師資陣容"
+   ],
+   "changed_at": "2026-11-03T20:03:27+08:00",
+   "content_hash": "81ea4a7ed04b271eaf3d658d8424244b2b205b005e92c93d2636eefbbd097a78",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-920.json",
+   "detail_revision": "7f22fc6136a64374764be8319edf6b48996c03d54795ce57279ca6485afa1e07",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": []
+   }
   },
   "921": {
    "page_id": 921,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T20:03:29+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "體育組",
+    "運動代表隊"
+   ],
+   "changed_at": "2026-11-03T20:03:29+08:00",
+   "content_hash": "60685e986f789e312a84f9f26011c977ace0691602c7fb38d07fd38ba2a1b7d2",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-921.json",
+   "detail_revision": "ccc505ad0dc89b214df55fc7e18f91e21e26c97e615880f804c34d2226a206e5",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "922": {
    "page_id": 922,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T20:03:31+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "體育組",
+    "場館使用"
+   ],
+   "changed_at": "2026-11-03T20:03:31+08:00",
+   "content_hash": "c131195728b0551dd99d5b3c726c8e4daa860078a382d1652e880604e56264d4",
+   "doc_links": [],
+   "keywords": [
+    "上課時間",
+    "安全"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-922.json",
+   "detail_revision": "c78f8ddebe96da50cbeb45c9994a7109707a7543dac12d8132d37bdbce2096f7",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "游泳課"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "作息",
+       "游泳課",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "deadline"
+      ]
+     }
+    ]
+   }
   },
   "923": {
    "page_id": 923,
@@ -11716,6 +11863,156 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cysh-info-920",
+   "kind": "school_info",
+   "title": "學務處 › 體育組 › 師資陣容",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-920.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-920.json",
+   "detail_revision": "7f22fc6136a64374764be8319edf6b48996c03d54795ce57279ca6485afa1e07",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cysh-info-921",
+   "kind": "school_info",
+   "title": "學務處 › 體育組 › 運動代表隊",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-921.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-921.json",
+   "detail_revision": "ccc505ad0dc89b214df55fc7e18f91e21e26c97e615880f804c34d2226a206e5",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-info-922",
+   "kind": "school_info",
+   "title": "學務處 › 體育組 › 場館使用",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-922.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "上課時間",
+    "安全"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-922.json",
+   "detail_revision": "c78f8ddebe96da50cbeb45c9994a7109707a7543dac12d8132d37bdbce2096f7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "游泳課"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "作息",
+       "游泳課",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "deadline"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-968",
    "kind": "school_info",
    "title": "行政單位 › 進修部 › 教務組",
@@ -15765,5 +16062,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-03T18:20:16+08:00"
+ "last_run_at": "2026-11-03T20:03:33+08:00"
 }

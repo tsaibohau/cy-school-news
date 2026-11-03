@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "bwjh",
- "generated_at": "2026-11-03T18:21:20+08:00",
+ "generated_at": "2026-11-03T20:04:41+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "115174826298911": {
@@ -399,8 +399,15 @@
    "page_id": 25584147877513,
    "url": "https://www.bwjh.ylc.edu.tw/ann/6160/",
    "label": "福智高中115學年度大學甄選入學 繁星推薦校內 第二次推薦作業",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:04:40+08:00",
+   "path": [
+    "福智高中",
+    "處室公告",
+    "教務處",
+    "升學資訊"
+   ]
   },
   "140506998695371": {
    "page_id": 140506998695371,
@@ -560,6 +567,18 @@
     "升學資訊"
    ],
    "order": 47
+  },
+  "18449463183075": {
+   "page_id": 18449463183075,
+   "url": "https://www.bwjh.ylc.edu.tw/ann/6168/",
+   "label": "← 財團法人台北市關渡宮115年「助學金」申請",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教務處",
+    "升學資訊"
+   ],
+   "order": 48
   }
  },
  "handbook": {},
@@ -877,5 +896,5 @@
   "fb9a0fa8b3",
   "fce367420e"
  ],
- "last_run_at": "2026-11-03T18:21:20+08:00"
+ "last_run_at": "2026-11-03T20:04:41+08:00"
 }

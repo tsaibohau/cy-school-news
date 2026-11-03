@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-03T18:20:20+08:00",
+ "generated_at": "2026-11-03T20:03:41+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -2603,7 +2603,299 @@
   },
   "2010": {
    "page_id": 2010,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T20:03:34+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "心輔系統",
+    "校務系統-輔導(學生端)"
+   ],
+   "changed_at": "2026-11-03T20:03:34+08:00",
+   "content_hash": "279f4d573922b665ca9fc866b948b8c72f9dd0e1a98e95233df45b310a4a3508",
+   "doc_links": [],
+   "keywords": [
+    "測驗",
+    "地址",
+    "電話",
+    "入學",
+    "手機",
+    "新生",
+    "選擇"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2010.json",
+   "detail_revision": "f64a3e09fc6fdac3d7ed988e864461cd08215498a1fba6762feebaffd359758f",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "登入說明",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/407491825.jpg"
+    },
+    {
+     "name": "學生端操作說明下載處",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/740844967.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact",
+       "allow"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 84,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 86,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 88,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 89,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 90,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 93,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 102,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 103,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 105,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 107,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "2011": {
    "page_id": 2011,
@@ -6986,7 +7278,7 @@
     "chars": 1484
    }
   },
-  "checked_at": "2026-11-03T18:20:20+08:00",
+  "checked_at": "2026-11-03T20:03:41+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -11765,6 +12057,302 @@
    }
   },
   {
+   "id": "cygsh-info-2010",
+   "kind": "school_info",
+   "title": "輔導室 › 心輔系統 › 校務系統-輔導(學生端)",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2010.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "登入說明",
+    "學生端操作說明下載處"
+   ],
+   "keywords": [
+    "測驗",
+    "地址",
+    "電話",
+    "入學",
+    "手機",
+    "新生",
+    "選擇"
+   ],
+   "documents": [
+    {
+     "name": "登入說明",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/407491825.jpg"
+    },
+    {
+     "name": "學生端操作說明下載處",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/740844967.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2010.json",
+   "detail_revision": "f64a3e09fc6fdac3d7ed988e864461cd08215498a1fba6762feebaffd359758f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact",
+       "allow"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 84,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 86,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 88,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 89,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 90,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 93,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 102,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 103,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 105,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 107,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-info-2082",
    "kind": "school_info",
    "title": "新生專區",
@@ -15516,5 +16104,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-03T18:20:20+08:00"
+ "last_run_at": "2026-11-03T20:03:41+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cchs",
- "generated_at": "2026-11-03T18:20:07+08:00",
+ "generated_at": "2026-11-03T20:03:26+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "153498002047988": {
@@ -1750,12 +1750,573 @@
    "page_id": 262208168112803,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/81",
    "label": "國中",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 25
+   "order": 25,
+   "checked_at": "2026-11-03T20:03:19+08:00",
+   "path": [
+    "進入首頁",
+    "國中"
+   ],
+   "changed_at": "2026-11-03T20:03:19+08:00",
+   "content_hash": "033e3d2db44ea9dca0c070d35004027f8f24a0ccb7696b616b8e66b032ede185",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "段考",
+    "校長",
+    "測驗",
+    "繳交",
+    "第八節",
+    "簡介",
+    "上課時間",
+    "報到",
+    "宣導",
+    "新生",
+    "社團",
+    "競賽",
+    "上課地點",
+    "加深加廣",
+    "學分",
+    "平板",
+    "收費",
+    "早自習",
+    "暑輔",
+    "校慶",
+    "第一次段考",
+    "編班",
+    "繳費",
+    "課業輔導",
+    "課表",
+    "選修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-262208168112803.json",
+   "detail_revision": "eda51e2cc2cf9e11045d18bc0155562b3b06d37ec509a3d0d5930cc7c389d809",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "分科教學通過會議紀錄",
+     "url": "https://www.cchs.kh.edu.tw/ischool/wr/file/1/3168/fd27487ddf947be5d0dc9dd40fb163f4.pdf"
+    },
+    {
+     "name": "3.自編教材審查通過會議",
+     "url": "https://www.cchs.kh.edu.tw/ischool/wr/file/1/3168/306a42697aecec192d3849a3eed9b87b.pdf"
+    },
+    {
+     "name": "分科教學通過會議紀錄",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/4ce9b5b6bc14c6687cb8d73dbb425542"
+    },
+    {
+     "name": "課程實施規劃一覽表",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/c3cf5332301edad1cc1be573ecabb94b"
+    },
+    {
+     "name": "115學年度課程評鑑規劃",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/1ede4ec90952ed1828a0a8347ae56553"
+    },
+    {
+     "name": "115學年度課程總體架構設計評鑑",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/4d3fcf7b7c333555b326aa642a1f7157"
+    },
+    {
+     "name": "教材選用",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/b5c1d4378282f3b4bc231319e7c72074"
+    },
+    {
+     "name": "各彈性學習課程評量機制",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/a2d25f9e3983d01e8ec04c243e1c9a91"
+    },
+    {
+     "name": "自編教材審查通過會議",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88c2e7ffeaa94fa2c1bcb61c3bb4e8bc"
+    },
+    {
+     "name": "評鑑雙向表",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/062e7aefdba6afc32d9946452940d50e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-03-28"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "課輔",
+       "暑輔",
+       "#tutoring",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "早自習",
+       "課輔",
+       "#tutoring",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "段考",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 61,
+      "t": [],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 72,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1916-07-06"
+      ]
+     },
+     {
+      "s": 73,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "time",
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [
+       "課輔",
+       "#tutoring",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 81,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 95,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 110,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 130,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 132,
+      "t": [
+       "彈性學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 135,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 160,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 161,
+      "t": [
+       "彈性學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 163,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 169,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 176,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 184,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 186,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 188,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 190,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 191,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 192,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 194,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 195,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 198,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 199,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 208,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 209,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 210,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 211,
+      "t": [
+       "暑輔",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 212,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "150310668259065": {
    "page_id": 150310668259065,
@@ -6494,6 +7055,581 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-262208168112803",
+   "kind": "school_info",
+   "title": "進入首頁 › 國中",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/81",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [
+    "分科教學通過會議紀錄",
+    "3.自編教材審查通過會議",
+    "分科教學通過會議紀錄",
+    "課程實施規劃一覽表",
+    "115學年度課程評鑑規劃",
+    "115學年度課程總體架構設計評鑑",
+    "教材選用",
+    "各彈性學習課程評量機制",
+    "自編教材審查通過會議",
+    "評鑑雙向表"
+   ],
+   "keywords": [
+    "申請",
+    "段考",
+    "校長",
+    "測驗",
+    "繳交",
+    "第八節",
+    "簡介",
+    "上課時間",
+    "報到",
+    "宣導",
+    "新生",
+    "社團",
+    "競賽",
+    "上課地點",
+    "加深加廣",
+    "學分",
+    "平板",
+    "收費",
+    "早自習",
+    "暑輔",
+    "校慶",
+    "第一次段考",
+    "編班",
+    "繳費",
+    "課業輔導",
+    "課表",
+    "選修"
+   ],
+   "documents": [
+    {
+     "name": "分科教學通過會議紀錄",
+     "url": "https://www.cchs.kh.edu.tw/ischool/wr/file/1/3168/fd27487ddf947be5d0dc9dd40fb163f4.pdf"
+    },
+    {
+     "name": "3.自編教材審查通過會議",
+     "url": "https://www.cchs.kh.edu.tw/ischool/wr/file/1/3168/306a42697aecec192d3849a3eed9b87b.pdf"
+    },
+    {
+     "name": "分科教學通過會議紀錄",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/4ce9b5b6bc14c6687cb8d73dbb425542"
+    },
+    {
+     "name": "課程實施規劃一覽表",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/c3cf5332301edad1cc1be573ecabb94b"
+    },
+    {
+     "name": "115學年度課程評鑑規劃",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/1ede4ec90952ed1828a0a8347ae56553"
+    },
+    {
+     "name": "115學年度課程總體架構設計評鑑",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/4d3fcf7b7c333555b326aa642a1f7157"
+    },
+    {
+     "name": "教材選用",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/b5c1d4378282f3b4bc231319e7c72074"
+    },
+    {
+     "name": "各彈性學習課程評量機制",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/a2d25f9e3983d01e8ec04c243e1c9a91"
+    },
+    {
+     "name": "自編教材審查通過會議",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88c2e7ffeaa94fa2c1bcb61c3bb4e8bc"
+    },
+    {
+     "name": "評鑑雙向表",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/062e7aefdba6afc32d9946452940d50e"
+    }
+   ],
+   "detail_ref": "data/details/cchs/cchs-info-262208168112803.json",
+   "detail_revision": "eda51e2cc2cf9e11045d18bc0155562b3b06d37ec509a3d0d5930cc7c389d809",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-03-28"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "課輔",
+       "暑輔",
+       "#tutoring",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "早自習",
+       "課輔",
+       "#tutoring",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "段考",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 61,
+      "t": [],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 72,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1916-07-06"
+      ]
+     },
+     {
+      "s": 73,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "time",
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [
+       "課輔",
+       "#tutoring",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 81,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 95,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 110,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 130,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 132,
+      "t": [
+       "彈性學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 135,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 160,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 161,
+      "t": [
+       "彈性學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 163,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 169,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 176,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 184,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 186,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 188,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 190,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 191,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 192,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 194,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 195,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 198,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 199,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 208,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 209,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 210,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 211,
+      "t": [
+       "暑輔",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 212,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cchs-info-269410831564571",
    "kind": "school_info",
    "title": "進入首頁 › 教學單位(Teachers)",
@@ -6600,5 +7736,5 @@
    "label": "進入首頁"
   }
  ],
- "last_run_at": "2026-11-03T18:20:07+08:00"
+ "last_run_at": "2026-11-03T20:03:26+08:00"
 }

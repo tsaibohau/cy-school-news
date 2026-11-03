@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-03T18:20:47+08:00",
+ "generated_at": "2026-11-03T20:04:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -1396,11 +1396,158 @@
   },
   "130": {
    "page_id": 130,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T20:04:04+08:00",
+   "path": [
+    "行政單位",
+    "竹中學務處",
+    "護理師"
+   ],
+   "changed_at": "2026-11-03T20:04:04+08:00",
+   "content_hash": "1a91e75a522196103a568596e2adff228313f3e489daa6fff33d2ff37b7e776e",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "健康檢查",
+    "衛生"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-130.json",
+   "detail_revision": "252106796f5631838b19b135ae1bfc8e93ae361d1e20bbfd819b4f16999e6b32",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "健康檢查",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "131": {
    "page_id": 131,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-03T20:04:07+08:00",
+   "path": [
+    "行政單位",
+    "竹中學務處",
+    "校安教師"
+   ],
+   "changed_at": "2026-11-03T20:04:07+08:00",
+   "content_hash": "8de4e11dcdad9bfba4d2e3ed3a6310552d1f0a04e0cc84e4fd3d316bcf8dbfaa",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "安全",
+    "工讀",
+    "放學"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-131.json",
+   "detail_revision": "c8f2a8d5c4deeb360104a06e51c6bebbe263c7399dcac80177dd44e3e38de5eb",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety",
+       "#contact"
+      ],
+      "k": [
+       "place",
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "放學",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "132": {
    "page_id": 132,
@@ -3024,6 +3171,157 @@
    }
   },
   {
+   "id": "ccjh-info-130",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中學務處 › 護理師",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-130.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "健康檢查",
+    "衛生"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-130.json",
+   "detail_revision": "252106796f5631838b19b135ae1bfc8e93ae361d1e20bbfd819b4f16999e6b32",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "健康檢查",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccjh-info-131",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中學務處 › 校安教師",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-131.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "安全",
+    "工讀",
+    "放學"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-131.json",
+   "detail_revision": "c8f2a8d5c4deeb360104a06e51c6bebbe263c7399dcac80177dd44e3e38de5eb",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety",
+       "#contact"
+      ],
+      "k": [
+       "place",
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "放學",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-143",
    "kind": "school_info",
    "title": "行政單位 › 竹中輔導處",
@@ -3236,5 +3534,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-03T18:20:47+08:00"
+ "last_run_at": "2026-11-03T20:04:08+08:00"
 }

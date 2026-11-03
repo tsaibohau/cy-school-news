@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cmvs",
- "generated_at": "2026-11-03T18:19:00+08:00",
+ "generated_at": "2026-11-03T20:02:42+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31498799623197": {
@@ -430,34 +430,49 @@
    "page_id": 207495558960062,
    "url": "https://cm.cmvsedu.tw/modules/ugm_contact_us/index.php",
    "label": "聯絡我們首頁",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "網站地圖"
    ],
-   "order": 31
+   "order": 31,
+   "checked_at": "2026-11-03T20:02:37+08:00",
+   "path": [
+    "網站地圖",
+    "聯絡我們首頁"
+   ]
   },
   "94497894568856": {
    "page_id": 94497894568856,
    "url": "https://cm.cmvsedu.tw/modules/jill_booking/index.php",
    "label": "主選單",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "場地預約"
    ],
-   "order": 32
+   "order": 32,
+   "checked_at": "2026-11-03T20:02:38+08:00",
+   "path": [
+    "場地預約",
+    "主選單"
+   ]
   },
   "66521642298084": {
    "page_id": 66521642298084,
    "url": "https://cm.cmvsedu.tw/modules/jill_booking/batch.php",
    "label": "批次預約",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "場地預約"
    ],
-   "order": 33
+   "order": 33,
+   "checked_at": "2026-11-03T20:02:40+08:00",
+   "path": [
+    "場地預約",
+    "批次預約"
+   ]
   },
   "59489831417948": {
    "page_id": 59489831417948,
@@ -1574,5 +1589,5 @@
   "fcd42012d8",
   "fdaea55223"
  ],
- "last_run_at": "2026-11-03T18:19:00+08:00"
+ "last_run_at": "2026-11-03T20:02:42+08:00"
 }

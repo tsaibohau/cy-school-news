@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T18:08:12+08:00",
+ "generated_at": "2026-11-03T19:53:39+08:00",
  "school": {
   "id": "tngs",
   "name": "國立臺南女中",
@@ -8,6 +8,71 @@
   "base": "https://www.tngs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "tngs-92384",
+   "title": "【學生競賽】115學年度數理及資訊學科能力競賽(化學、生物及資訊)複賽-得獎名單",
+   "date": "2026-11-03",
+   "source_category": "_置頂公告",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/03/115skillscompetition/",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-03T19:53:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "獎學金",
+       "#scholarship",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "contact",
+       "allow"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "tngs-92380",
    "title": "【轉知】國立嘉義大學獸醫學系辦理第十四屆獸醫營活動簡章",

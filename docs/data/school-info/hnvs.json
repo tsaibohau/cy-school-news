@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-03T18:17:55+08:00",
+ "generated_at": "2026-11-03T20:01:13+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -647,15 +647,183 @@
    "page_id": 50352665861906,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,406",
    "label": "自主學習",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:01:10+08:00",
+   "path": [
+    "自主學習"
+   ],
+   "changed_at": "2026-11-03T20:01:10+08:00",
+   "content_hash": "adeb2c5a91f11d90256b1b64ee71642ba2e77ac7d15de416efeafcf0694fd447",
+   "doc_links": [],
+   "keywords": [
+    "自主學習"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-50352665861906.json",
+   "detail_revision": "5dea86369b58e7631814a680f235ea89c2b1d791a845fb9ba61db42ff179f7bd",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "#self_learning"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2020-06-08"
+      ]
+     }
+    ]
+   }
   },
   "122038888965887": {
    "page_id": 122038888965887,
    "url": "https://www.hnvs.cy.edu.tw/links/index.asp?Parser=11,7,354",
    "label": "校務系統",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:01:12+08:00",
+   "path": [
+    "校務系統"
+   ],
+   "changed_at": "2026-11-03T20:01:12+08:00",
+   "content_hash": "25f95c649480b90aaf746e9c1e293d134926e8d5200168f5cfc0b1dcc15125be",
+   "doc_links": [],
+   "keywords": [
+    "學測",
+    "學習歷程",
+    "申請",
+    "繁星",
+    "選課"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-122038888965887.json",
+   "detail_revision": "fa0167cc4860864210d36da146b76edbc19ec369ced16072917324adbb849156",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "學測",
+       "繁星",
+       "#admission",
+       "#national"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "選課",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     }
+    ]
+   }
   },
   "12992228456648": {
    "page_id": 12992228456648,
@@ -3733,6 +3901,68 @@
    }
   },
   {
+   "id": "hnvs-info-50352665861906",
+   "kind": "school_info",
+   "title": "自主學習",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,406",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "自主學習"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-50352665861906.json",
+   "detail_revision": "5dea86369b58e7631814a680f235ea89c2b1d791a845fb9ba61db42ff179f7bd",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "#self_learning"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2020-06-08"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-69538394571608",
    "kind": "school_info",
    "title": "學習扶助(補救教學)",
@@ -3917,6 +4147,120 @@
    "detail_ref": "data/details/hnvs/hnvs-info-117498074847995.json",
    "detail_revision": "dd4f7fa9fd88aa743c67dc9ef70790cb9e01f741b6f17492bbbfe7bc3a0c74f4",
    "detail_status": "parsed"
+  },
+  {
+   "id": "hnvs-info-122038888965887",
+   "kind": "school_info",
+   "title": "校務系統",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/links/index.asp?Parser=11,7,354",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "學測",
+    "學習歷程",
+    "申請",
+    "繁星",
+    "選課"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-122038888965887.json",
+   "detail_revision": "fa0167cc4860864210d36da146b76edbc19ec369ced16072917324adbb849156",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "學測",
+       "繁星",
+       "#admission",
+       "#national"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "選課",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hnvs-info-136838313524581",
@@ -4480,5 +4824,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T18:17:55+08:00"
+ "last_run_at": "2026-11-03T20:01:13+08:00"
 }

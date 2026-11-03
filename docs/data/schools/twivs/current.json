@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-03T18:08:12+08:00",
+ "generated_at": "2026-11-03T19:53:39+08:00",
  "school": {
   "id": "twivs",
   "name": "國立曾文農工",
@@ -8,6 +8,271 @@
   "base": "https://www.twivs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "twivs-17753",
+   "title": "國立臺灣海洋大學116學年度大學部特殊選才招生考試，有興趣同學請參考",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "twivs",
+   "school_name": "曾文農工",
+   "url": "https://www.twivs.tn.edu.tw/ischool/public/news_view/show.php?nid=17753",
+   "category": "升學",
+   "first_seen": "2026-11-03T19:53:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "aa2f421acdaf7c409dbfca1800953dfa43158d1b310bab71ea7a492085b2b256"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "特殊選才",
+     "考試",
+     "#admission",
+     "#exam",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "特殊選才",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "特殊選才",
+       "報名",
+       "#admission"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-21",
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "考試",
+       "#admission",
+       "#exam"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "教務處",
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "特殊選才",
+       "報名",
+       "#admission"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-21",
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "考試",
+       "#admission",
+       "#exam"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "教務處",
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "twivs-17751",
    "title": "【公告】115學年度高一生校內轉科(班)期程與注意事項",

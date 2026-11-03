@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-03T18:21:15+08:00",
+ "generated_at": "2026-11-03T20:04:38+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -1770,23 +1770,259 @@
    "page_id": 237235671191244,
    "url": "https://www.shsh.ylc.edu.tw/office/div_100/all_principals/%e6%9e%97%e4%bd%b3%e6%85%a7%e6%a0%a1%e9%95%b7/",
    "label": "林佳慧校長",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 30
+   "order": 30,
+   "checked_at": "2026-11-03T20:04:34+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "歷任校長",
+    "林佳慧校長"
+   ],
+   "changed_at": "2026-11-03T20:04:34+08:00",
+   "content_hash": "6235136dd0cbee3741c95b92f9896d3cb2cdd8eb8798a7859936fbf051f27616",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "宿舍",
+    "校訓"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-237235671191244.json",
+   "detail_revision": "0229e20ca192755baf61e5c8a47c3a069c359960e7c30fe86d88ee56d1af4788",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "冷氣"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   "163613439767654": {
    "page_id": 163613439767654,
    "url": "https://www.shsh.ylc.edu.tw/office/div_200/%e6%95%99%e5%8b%99%e8%99%95%e6%9c%80%e6%96%b0%e6%b6%88%e6%81%af/",
    "label": "教務處最新消息",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 31
+   "order": 31,
+   "checked_at": "2026-11-03T20:04:36+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教務處最新消息"
+   ],
+   "changed_at": "2026-11-03T20:04:36+08:00",
+   "content_hash": "e6be41b966482ea14c5643e23b1e37b4e12279f6478cef28462327142d7ba79f",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "奧林匹亞",
+    "公假",
+    "報名",
+    "工作坊",
+    "檢定",
+    "測驗",
+    "獎學金",
+    "自然組",
+    "英檢"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-163613439767654.json",
+   "detail_revision": "543b882adb40b1c48076ac578641d553c951c1658404a1687d98551b2290f49d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "期中考",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "公假",
+       "#contest",
+       "#leave"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "公假",
+       "#contest",
+       "#leave"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "101707251286139": {
    "page_id": 101707251286139,
@@ -4957,6 +5193,151 @@
    }
   },
   {
+   "id": "shsh-info-163613439767654",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 教務處最新消息",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_200/%e6%95%99%e5%8b%99%e8%99%95%e6%9c%80%e6%96%b0%e6%b6%88%e6%81%af/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "奧林匹亞",
+    "公假",
+    "報名",
+    "工作坊",
+    "檢定",
+    "測驗",
+    "獎學金",
+    "自然組",
+    "英檢"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-163613439767654.json",
+   "detail_revision": "543b882adb40b1c48076ac578641d553c951c1658404a1687d98551b2290f49d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "期中考",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "公假",
+       "#contest",
+       "#leave"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "公假",
+       "#contest",
+       "#leave"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "shsh-info-179032372992959",
    "kind": "school_info",
    "title": "新生專區 › 115學年正心中學國中部招生",
@@ -5125,6 +5506,100 @@
    "detail_ref": "data/details/shsh/shsh-info-231180721614861.json",
    "detail_revision": "aeae575e95f276f26732535be00aa0bae3670ff0287a1efd14048631bf647f4c",
    "detail_status": "parsed"
+  },
+  {
+   "id": "shsh-info-237235671191244",
+   "kind": "school_info",
+   "title": "校長室 › 歷任校長 › 林佳慧校長",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_100/all_principals/%e6%9e%97%e4%bd%b3%e6%85%a7%e6%a0%a1%e9%95%b7/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-03",
+   "attachment_names": [],
+   "keywords": [
+    "校長",
+    "宿舍",
+    "校訓"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-237235671191244.json",
+   "detail_revision": "0229e20ca192755baf61e5c8a47c3a069c359960e7c30fe86d88ee56d1af4788",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "冷氣"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "shsh-info-239097242878199",
@@ -5943,5 +6418,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-03T18:21:15+08:00"
+ "last_run_at": "2026-11-03T20:04:38+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-03T18:18:37+08:00",
+ "generated_at": "2026-11-03T20:02:26+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -272,15 +272,23 @@
    "page_id": 16962157405803,
    "url": "https://www.tnssh.tn.edu.tw/dri/",
    "label": "教官室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:02:23+08:00",
+   "path": [
+    "教官室"
+   ]
   },
   "169153867683848": {
    "page_id": 169153867683848,
    "url": "https://www.tnssh.tn.edu.tw/gam/",
    "label": "總務處",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-03T20:02:25+08:00",
+   "path": [
+    "總務處"
+   ]
   },
   "7093796562818": {
    "page_id": 7093796562818,
@@ -1072,5 +1080,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-03T18:18:37+08:00"
+ "last_run_at": "2026-11-03T20:02:26+08:00"
 }
