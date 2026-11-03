@@ -7,7 +7,7 @@ B = "https://classtable.cygsh.cy.edu.tw/classtable/"
 s = requests.Session(); s.headers.update({"User-Agent": UA})
 r = s.get(B + "JS/top.js", timeout=30); r.encoding = "big5"; js = r.text
 i = js.find("function go(")
-print(js[i:i + 7000])
+print(js[i + 6800:i + 14000])
 print("=====get_xtype")
 j = js.find("function get_xtype"); print(js[j:j + 1500])
 time.sleep(3)
