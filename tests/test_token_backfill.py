@@ -15,12 +15,14 @@ items = [
     {"id": "cysh-4", "school": "cysh", "url": "https://x/6", "first_seen": "2026-09-01", "tokens": {"v": 0}},
     {"id": "cysh-5", "school": "cysh", "url": "https://x/7", "first_seen": "2026-10-31", "link_missing_checks": 1},
     {"id": "cygsh-2", "school": "cygsh", "url": "https://x/8", "first_seen": "2026-10-31", "detail_status": "permanent_error"},
+    {"id": "cygsh-3", "school": "cygsh", "url": "https://x/9", "first_seen": "2026-10-31", "tokens_tried": b.TOKEN_VERSION},
 ]
 ids = [i["id"] for i in b.select_token_targets(items, 10)]
 assert "cysh-2" not in ids, "already labelled"
 assert "pksh-1" not in ids, "問校務 is open for 嘉中、嘉女 only"
 assert "cysh-3" not in ids, "the page is gone"
 assert "cysh-5" not in ids and "cygsh-2" not in ids, "a 404 or five failures is not retried every round"
+assert "cygsh-3" not in ids, "read once with nothing to label: not read again every round"
 assert "cysh-4" in ids, "old label version is redone"
 assert ids[0] in ("cysh-1", "cygsh-1") and set(ids[:2]) == {"cysh-1", "cygsh-1"}, ids
 assert len(b.select_token_targets(items, 1)) == 1

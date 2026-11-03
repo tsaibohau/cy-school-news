@@ -215,7 +215,9 @@ def select_token_targets(items, cap):
             # A page that already answered 404, or failed five times, waits for link_health to decide;
             # retrying it every round would crowd out pages never read.
             and not int(item.get("link_missing_checks") or 0)
-            and item.get("detail_status") != "permanent_error"]
+            and item.get("detail_status") != "permanent_error"
+            # Read once already and nothing to label (a 賀詞, a picture-only notice).
+            and item.get("tokens_tried") != TOKEN_VERSION]
     rows.sort(key=_cursor_key, reverse=True)
     return _round_robin(rows)[:cap]
 
@@ -269,6 +271,8 @@ def main():
                                 attachment_budget=attachment_budget, request_delay_sec=delay)
             if is_mojibake(item.get("title", "")) or is_mojibake(item.get("snippet", "")):
                 raise RuntimeError("decoded detail remains corrupted")
+            if token_mode:
+                item["tokens_tried"] = TOKEN_VERSION
         except Exception as error:
             record_detail_fetch_failure(item, error=error, now_iso=fetched_at)
             print(f"[warn] detail backfill failed {item.get('id')}: {type(error).__name__}")
