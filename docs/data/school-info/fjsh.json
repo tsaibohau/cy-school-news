@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-04T19:08:56+08:00",
+ "generated_at": "2026-11-05T02:43:43+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -2480,11 +2480,144 @@
   },
   "505": {
    "page_id": 505,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T02:43:39+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組",
+    "補充教材"
+   ],
+   "changed_at": "2026-11-05T02:43:39+08:00",
+   "content_hash": "615dc33763d2bf1c1f4544738cd6fbaae5febafc37ebadc66f23c9b15ecf2b98",
+   "doc_links": [
+    {
+     "name": "補充教材訂閱表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc5uA0WpCodB-q3qeYX4-oqh4NqXnS6nU7fe17Iw8tUnozk4A/viewform"
+    },
+    {
+     "name": "補充教材異動表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSeD7kgH8sYuh-zlTgGtKv0OR6-vl-L0RTkyuv6KJsUjFlEnXg/viewform?usp=sharing"
+    },
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "英檢",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-505.json",
+   "detail_revision": "d75e30eec606099fa0e0aa3409caa554aa8076c07abe79e18f27e0249e3947c8",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "507": {
    "page_id": 507,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T02:43:42+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組",
+    "設備維修"
+   ],
+   "changed_at": "2026-11-05T02:43:42+08:00",
+   "content_hash": "2c0eee85d69fb5eeb323eaca5ee27fff198bed9d158a4e6d194d0fe66ddd1a6c",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-507.json",
+   "detail_revision": "0c5aa58a53e836edc0f8b972381abb913f3ec8577d97870ab7c7d6ad6fdf3f7d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 9,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "508": {
    "page_id": 508,
@@ -5301,6 +5434,147 @@
    }
   },
   {
+   "id": "fjsh-info-505",
+   "kind": "school_info",
+   "title": "教務處 › 設備組 › 補充教材",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-505.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "補充教材訂閱表單",
+    "補充教材異動表單",
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "英檢",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "補充教材訂閱表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc5uA0WpCodB-q3qeYX4-oqh4NqXnS6nU7fe17Iw8tUnozk4A/viewform"
+    },
+    {
+     "name": "補充教材異動表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSeD7kgH8sYuh-zlTgGtKv0OR6-vl-L0RTkyuv6KJsUjFlEnXg/viewform?usp=sharing"
+    },
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-505.json",
+   "detail_revision": "d75e30eec606099fa0e0aa3409caa554aa8076c07abe79e18f27e0249e3947c8",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-507",
+   "kind": "school_info",
+   "title": "教務處 › 設備組 › 設備維修",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-507.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-507.json",
+   "detail_revision": "0c5aa58a53e836edc0f8b972381abb913f3ec8577d97870ab7c7d6ad6fdf3f7d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 9,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -5398,5 +5672,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-04T19:08:56+08:00"
+ "last_run_at": "2026-11-05T02:43:43+08:00"
 }

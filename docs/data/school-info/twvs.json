@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "twvs",
- "generated_at": "2026-11-04T19:11:22+08:00",
+ "generated_at": "2026-11-05T02:46:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "210511608049060": {
@@ -564,34 +564,49 @@
    "page_id": 173496926367273,
    "url": "https://www.twvs.tn.edu.tw/school-affairs-support/retirement-uniony/",
    "label": "退休聯誼會",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 45
+   "order": 45,
+   "checked_at": "2026-11-05T02:46:10+08:00",
+   "path": [
+    "校務支援",
+    "退休聯誼會"
+   ]
   },
   "249241422371817": {
    "page_id": 249241422371817,
    "url": "https://www.twvs.tn.edu.tw/link/",
    "label": "常用連結",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 46
+   "order": 46,
+   "checked_at": "2026-11-05T02:46:12+08:00",
+   "path": [
+    "關於本校",
+    "常用連結"
+   ]
   },
   "5962081898547": {
    "page_id": 5962081898547,
    "url": "https://www.twvs.tn.edu.tw/about-us/%e8%b3%87%e6%96%99%e5%85%ac%e9%96%8b%e5%b0%88%e5%8d%80/",
    "label": "資料公開專區",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 47
+   "order": 47,
+   "checked_at": "2026-11-05T02:46:14+08:00",
+   "path": [
+    "關於本校",
+    "資料公開專區"
+   ]
   },
   "165413668859760": {
    "page_id": 165413668859760,
@@ -2177,6 +2192,30 @@
     "校友會"
    ],
    "order": 181
+  },
+  "165234840836182": {
+   "page_id": 165234840836182,
+   "url": "https://www.twvs.tn.edu.tw/index.php?route=cms/cms&cms_id=64&path=7_64",
+   "label": "故障報修",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "關於本校",
+    "常用連結"
+   ],
+   "order": 182
+  },
+  "181883050373165": {
+   "page_id": 181883050373165,
+   "url": "https://www.twvs.tn.edu.tw/d-open/%e8%b3%87%e6%96%99%e5%85%ac%e9%96%8b%e5%b0%88%e5%8d%80%e6%b8%ac%e8%a9%a6/3827/",
+   "label": "資料公開專區測試",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "關於本校",
+    "資料公開專區"
+   ],
+   "order": 183
   }
  },
  "handbook": {},
@@ -2458,5 +2497,5 @@
   "f3ef66c885",
   "f9693f2c0a"
  ],
- "last_run_at": "2026-11-04T19:11:22+08:00"
+ "last_run_at": "2026-11-05T02:46:15+08:00"
 }

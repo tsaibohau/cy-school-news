@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-04T19:12:26+08:00",
+ "generated_at": "2026-11-05T02:47:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3500,8 +3500,22 @@
    "page_id": 261165729635,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-439.php",
    "label": "文教基金會",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T02:47:06+08:00",
+   "path": [
+    "校內團體",
+    "文教基金會"
+   ],
+   "changed_at": "2026-11-05T02:47:06+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-261165729635.json",
+   "detail_revision": "8df90204c2c1f22dd6a0f667b98b43b74f6c739cba93218da44d1fc5ed316e6b",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "200343015069308": {
    "page_id": 200343015069308,
@@ -5864,6 +5878,23 @@
  "rules": {},
  "services": {},
  "items": [
+  {
+   "id": "ksaivs-info-261165729635",
+   "kind": "school_info",
+   "title": "校內團體 › 文教基金會",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-439.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-261165729635.json",
+   "detail_revision": "8df90204c2c1f22dd6a0f667b98b43b74f6c739cba93218da44d1fc5ed316e6b",
+   "detail_status": "parsed"
+  },
   {
    "id": "ksaivs-info-2546312611315",
    "kind": "school_info",
@@ -9503,5 +9534,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-04T19:12:26+08:00"
+ "last_run_at": "2026-11-05T02:47:08+08:00"
 }

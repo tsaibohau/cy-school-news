@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-04T19:11:55+08:00",
+ "generated_at": "2026-11-05T02:46:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -385,20 +385,30 @@
    "page_id": 256219789788973,
    "url": "https://www.nknush.kh.edu.tw/%e9%98%b2%e7%96%ab%e5%b0%88%e5%8d%80/",
    "label": "防疫專區",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-05T02:46:42+08:00",
+   "path": [
+    "防疫專區"
+   ]
   },
   "109205620742526": {
    "page_id": 109205620742526,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/principal-office/%e6%a0%a1%e9%95%b7%e7%9a%84%e8%a9%b1/",
    "label": "校長的話",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "校長室"
    ],
-   "order": 33
+   "order": 33,
+   "checked_at": "2026-11-05T02:46:44+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "校長的話"
+   ]
   },
   "138740647053495": {
    "page_id": 138740647053495,
@@ -1233,5 +1243,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-04T19:11:55+08:00"
+ "last_run_at": "2026-11-05T02:46:46+08:00"
 }

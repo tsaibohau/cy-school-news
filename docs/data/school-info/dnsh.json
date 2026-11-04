@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-04T19:09:46+08:00",
+ "generated_at": "2026-11-05T02:44:28+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -338,15 +338,26 @@
    "page_id": 211123921570052,
    "url": "https://dnsh.ylc.edu.tw/101.htm",
    "label": "校長室",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-05T02:44:22+08:00",
+   "path": [
+    "南中團隊",
+    "校長室"
+   ]
   },
   "198872871200972": {
    "page_id": 198872871200972,
    "url": "https://dnsh.ylc.edu.tw/dnsh102.htm",
    "label": "秘書室",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-05T02:44:27+08:00",
+   "path": [
+    "南中團隊",
+    "秘書室",
+    "秘書室首頁"
+   ]
   },
   "250842390846352": {
    "page_id": 250842390846352,
@@ -758,6 +769,18 @@
     "雲林縣立斗南高級中學"
    ],
    "order": 68
+  },
+  "24304840960050": {
+   "page_id": 24304840960050,
+   "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=57038",
+   "label": "南中團隊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "南中團隊",
+    "校長室"
+   ],
+   "order": 69
   }
  },
  "handbook": {},
@@ -969,5 +992,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-04T19:09:46+08:00"
+ "last_run_at": "2026-11-05T02:44:28+08:00"
 }

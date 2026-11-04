@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-04T19:09:01+08:00",
+ "generated_at": "2026-11-05T02:43:49+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -1894,11 +1894,116 @@
   },
   "138": {
    "page_id": 138,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T02:43:44+08:00",
+   "path": [
+    "行政單位",
+    "竹中總務處",
+    "午餐專案經理"
+   ],
+   "changed_at": "2026-11-05T02:43:44+08:00",
+   "content_hash": "476afb2ee48e2b622ca3f7992e75030664c86cae83fb6a743a773e92758819c8",
+   "doc_links": [],
+   "keywords": [
+    "衛生",
+    "住宿",
+    "分機",
+    "申請"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-138.json",
+   "detail_revision": "a36c64fd551be70da11487766900a585cca537cf201d5b7744600a45df459d5a",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處",
+     "午餐"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "午餐",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "午餐",
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "139": {
    "page_id": 139,
-   "status": "pending"
+   "status": "staff_profile",
+   "checked_at": "2026-11-05T02:43:47+08:00",
+   "path": [
+    "行政單位",
+    "竹中圖書館",
+    "圖書館主任"
+   ]
   },
   "140": {
    "page_id": 140,
@@ -3964,6 +4069,107 @@
    }
   },
   {
+   "id": "ccjh-info-138",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中總務處 › 午餐專案經理",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-138.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "衛生",
+    "住宿",
+    "分機",
+    "申請"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-138.json",
+   "detail_revision": "a36c64fd551be70da11487766900a585cca537cf201d5b7744600a45df459d5a",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處",
+     "午餐"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "午餐",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "午餐",
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-143",
    "kind": "school_info",
    "title": "行政單位 › 竹中輔導處",
@@ -4176,5 +4382,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-04T19:09:01+08:00"
+ "last_run_at": "2026-11-05T02:43:49+08:00"
 }

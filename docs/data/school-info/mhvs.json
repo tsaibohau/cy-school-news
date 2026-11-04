@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mhvs",
- "generated_at": "2026-11-04T19:10:32+08:00",
+ "generated_at": "2026-11-05T02:45:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "234958134093923": {
@@ -647,23 +647,33 @@
    "page_id": 170603297935364,
    "url": "https://www.mhvs.cyc.edu.tw/modules/tad_web/page.php?WebID=4&CateID=310",
    "label": "實驗研究組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教務處"
    ],
-   "order": 51
+   "order": 51,
+   "checked_at": "2026-11-05T02:45:10+08:00",
+   "path": [
+    "教務處",
+    "實驗研究組"
+   ]
   },
   "232043573783590": {
    "page_id": 232043573783590,
    "url": "https://www.mhvs.cyc.edu.tw/index.php",
    "label": "回學校首頁",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教務處"
    ],
-   "order": 52
+   "order": 52,
+   "checked_at": "2026-11-05T02:45:12+08:00",
+   "path": [
+    "教務處",
+    "回學校首頁"
+   ]
   },
   "172986574714672": {
    "page_id": 172986574714672,
@@ -3950,5 +3960,5 @@
   "fdae5d8dc9",
   "ffc51e2322"
  ],
- "last_run_at": "2026-11-04T19:10:32+08:00"
+ "last_run_at": "2026-11-05T02:45:14+08:00"
 }
