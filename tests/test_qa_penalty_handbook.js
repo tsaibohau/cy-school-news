@@ -43,4 +43,28 @@ for (const [q, want] of cases) {
 /* Not a penalty question: the 獎懲 chapter is not read. */
 assert.ok(!QA.readList("圖書館幾點開", items, opts).some((i) => i.id === rules.id));
 assert.ok(QA.readList("遲到會怎樣", items, opts).some((i) => i.id === rules.id));
+/* Layouts seen in the real handbooks (lines written for this test, not copied):
+   - a heading that ends with 「。」: 「…之一者，記大過一次，且該科成績零分計算。」
+   - 嘉女: 「第十條 有下列事蹟之一者記警告：」 › 「六、…」, numbers like 「廿八、」
+   - 「(不含…遲到)」 means the rule is not about 遲到; 改過銷過 is not a penalty. */
+const QA2 = QA;
+const exam = { id: "t-exam", kind: "school_handbook", school: "cysh", school_name: "嘉中", title: "學生手冊 › 學生考試要點" };
+const girls = { id: "t-gp", kind: "school_handbook", school: "cygsh", school_name: "嘉女", title: "學生規定 › 學生獎懲規定" };
+const clear = { id: "t-clear", kind: "school_handbook", school: "cygsh", school_name: "嘉女", title: "學生規定 › 學生改過銷過辦法" };
+const lay = Object.assign({},
+  body(exam, ["十一、學生考試時有下列情形之一者，記大過一次，且該科成績零分計算。", "(一)夾帶小抄進場者。", "(二)與他人交換答案卷者。"]),
+  body(girls, ["第十條 有下列事蹟之一者記警告：", "三、未依時完成愛校服務，經勸導仍未改正者(不含服儀違規、遲到)。", "第十一條 有下列事蹟之一者記小過：", "廿八、出手毆打他人、情節輕微者。", "九、違反本校「試場規則」，經勸導仍未改正者。"]),
+  body(clear, ["一、受警告處分者，完成愛校服務後得申請銷過。"]));
+const girlsOpts = { asOf: "2026-11-04", schoolId: "cygsh", scopeLabel: "嘉女", calendarEvents: [] };
+let r = QA2.answer("考試作弊會怎樣", [exam], lay, opts);
+assert.match(text(r), /記大過一次，且該科成績零分計算：夾帶小抄/, text(r));
+r = QA2.answer("打架會怎樣", [girls, clear], lay, girlsOpts);
+assert.match(text(r), /記小過：出手毆打他人/, text(r));
+assert.doesNotMatch(text(r), /銷過/);
+r = QA2.answer("考試作弊會怎樣", [girls, clear], lay, girlsOpts);
+assert.match(text(r), /試場規則/, "a clause pointing to the exam rules counts for 作弊");
+r = QA2.answer("遲到會怎樣", [girls, clear], lay, girlsOpts);
+assert.doesNotMatch(text(r), /愛校服務，經勸導/, "(不含…遲到) is not a rule about 遲到");
+/* Ordinary questions keep their old answers: no penalty preference outside 會怎樣 questions. */
+assert.equal(QA2.asksPenalty("圖書館幾點開"), false);
 console.log("penalty handbook tests passed");
