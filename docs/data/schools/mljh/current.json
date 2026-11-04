@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "mljh",
   "name": "雲林縣立麥寮高級中學",
@@ -159,7 +159,24 @@
    "url": "https://mljh.ylc.edu.tw/News_Content.aspx?n=103100&s=401419",
    "category": "一般",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "截止"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "mljh-401393",
@@ -171,7 +188,17 @@
    "url": "https://mljh.ylc.edu.tw/News_Content.aspx?n=103100&s=401393",
    "category": "研習活動",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "mljh-401391",
@@ -183,7 +210,24 @@
    "url": "https://mljh.ylc.edu.tw/News_Content.aspx?n=103100&s=401391",
    "category": "研習活動",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "mljh-401388",
@@ -195,7 +239,17 @@
    "url": "https://mljh.ylc.edu.tw/News_Content.aspx?n=103100&s=401388",
    "category": "教職員",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "mljh-401353",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-03T23:44:30+08:00",
+ "generated_at": "2026-11-04T11:13:13+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -291,15 +291,25 @@
    "page_id": 16556550417277,
    "url": "https://dnsh.ylc.edu.tw/dataopensafe.htm",
    "label": "網站資料開放宣告",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:13:09+08:00",
+   "path": [
+    "首頁專用",
+    "網站資料開放宣告"
+   ]
   },
   "196102994488381": {
    "page_id": 196102994488381,
    "url": "https://dnsh.ylc.edu.tw/Privacyprotection.htm",
    "label": "隱私權宣告",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:13:11+08:00",
+   "path": [
+    "首頁專用",
+    "隱私權宣告"
+   ]
   },
   "234665204431815": {
    "page_id": 234665204431815,
@@ -661,6 +671,18 @@
     "高中課程計畫"
    ],
    "order": 61
+  },
+  "244649896904572": {
+   "page_id": 244649896904572,
+   "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=57141",
+   "label": "首頁專用",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "首頁專用",
+    "網站資料開放宣告"
+   ],
+   "order": 62
   }
  },
  "handbook": {},
@@ -872,5 +894,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-03T23:44:30+08:00"
+ "last_run_at": "2026-11-04T11:13:13+08:00"
 }

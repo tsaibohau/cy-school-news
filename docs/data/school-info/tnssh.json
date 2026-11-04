@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-04T04:13:37+08:00",
+ "generated_at": "2026-11-04T11:14:39+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -338,22 +338,34 @@
    "page_id": 113390600140739,
    "url": "https://www.tnssh.tn.edu.tw/cs/",
    "label": "輔導室",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:14:34+08:00",
+   "path": [
+    "輔導室"
+   ]
   },
   "12760052761675": {
    "page_id": 12760052761675,
    "url": "https://www.tnssh.tn.edu.tw/libm/",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:14:36+08:00",
+   "path": [
+    "圖書館"
+   ]
   },
   "70898184204847": {
    "page_id": 70898184204847,
    "url": "https://www.tnssh.tn.edu.tw/lib/",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:14:38+08:00",
+   "path": [
+    "圖書館"
+   ]
   },
   "10110920739411": {
    "page_id": 10110920739411,
@@ -865,6 +877,50 @@
     "出納組"
    ],
    "order": 81
+  },
+  "102062235154241": {
+   "page_id": 102062235154241,
+   "url": "https://www.tnssh.tn.edu.tw/cs/csmember",
+   "label": "輔導老師陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 82
+  },
+  "219914526521086": {
+   "page_id": 219914526521086,
+   "url": "https://www.tnssh.tn.edu.tw/cs/college/",
+   "label": "升學活動",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室"
+   ],
+   "order": 83
+  },
+  "107062404991320": {
+   "page_id": 107062404991320,
+   "url": "https://www.tnssh.tn.edu.tw/lib/libw/",
+   "label": "業務職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館"
+   ],
+   "order": 84
+  },
+  "68784642684419": {
+   "page_id": 68784642684419,
+   "url": "https://www.tnssh.tn.edu.tw/lib/libwork/",
+   "label": "業務宣導",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館"
+   ],
+   "order": 85
   }
  },
  "handbook": {},
@@ -1151,5 +1207,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-04T04:13:37+08:00"
+ "last_run_at": "2026-11-04T11:14:39+08:00"
 }

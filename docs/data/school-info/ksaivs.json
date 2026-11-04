@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-04T04:14:45+08:00",
+ "generated_at": "2026-11-04T11:16:06+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3301,8 +3301,130 @@
    "page_id": 201191619269020,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-426.php",
    "label": "校友會",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:16:02+08:00",
+   "path": [
+    "校內團體",
+    "校友會"
+   ],
+   "changed_at": "2026-11-04T11:16:02+08:00",
+   "content_hash": "0408113537bf14f44adcf55f560ce8d7a3d138713a9637c0393eecfd1209a8bc",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "傳真",
+    "地址",
+    "手機",
+    "繳費",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-201191619269020.json",
+   "detail_revision": "d18eb5a926401708cda5534b25b2016f2f34b7a2bd7487e4400ed0178d5849dd",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "校友會入會申請單下載",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/9/728820992.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "手機",
+       "#device",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "32089398396083": {
    "page_id": 32089398396083,
@@ -5601,6 +5723,42 @@
     "學生會"
    ],
    "order": 228
+  },
+  "168875489790491": {
+   "page_id": 168875489790491,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-428.php",
+   "label": "校友會組織章程",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "校友會"
+   ],
+   "order": 229
+  },
+  "120377470403171": {
+   "page_id": 120377470403171,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-429.php",
+   "label": "校友會資料下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "校友會"
+   ],
+   "order": 230
+  },
+  "144006475842642": {
+   "page_id": 144006475842642,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1358.php",
+   "label": "校友會最新消息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "校友會"
+   ],
+   "order": 231
   }
  },
  "handbook": {},
@@ -8643,6 +8801,133 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-201191619269020",
+   "kind": "school_info",
+   "title": "校內團體 › 校友會",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-426.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "校友會入會申請單下載"
+   ],
+   "keywords": [
+    "申請",
+    "傳真",
+    "地址",
+    "手機",
+    "繳費",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "校友會入會申請單下載",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/9/728820992.pdf"
+    }
+   ],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-201191619269020.json",
+   "detail_revision": "d18eb5a926401708cda5534b25b2016f2f34b7a2bd7487e4400ed0178d5849dd",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "手機",
+       "#device",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-223664676159128",
    "kind": "school_info",
    "title": "行政單位 › 實習處",
@@ -9053,5 +9338,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-04T04:14:45+08:00"
+ "last_run_at": "2026-11-04T11:16:06+08:00"
 }

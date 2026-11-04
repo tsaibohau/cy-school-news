@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "hhvs",
   "name": "國立新化高工",
@@ -8,6 +8,160 @@
   "base": "https://www.hhvs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "hhvs-12510",
+   "title": "《與2050淨零世代的對話》氣候變遷教育線上課程，鼓勵同學踴躍參加",
+   "date": "2026-11-04",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12510",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hhvs-12504",
    "title": "清華大學舉辦116年寒假「探索半導體高中創客營」活動",
@@ -879,7 +1033,126 @@
    "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12501",
    "category": "競賽",
    "first_seen": "2026-11-03T11:55:01+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "49707a52734d58f54f7568d6a2f75e16c1fa76ce1a60e02b36bcc3c31d5efda3"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-15",
+       "2027-03-01"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-15",
+       "2027-03-01"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hhvs-12493",
@@ -1124,7 +1397,129 @@
    "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12494",
    "category": "教職員",
    "first_seen": "2026-11-03T09:46:54+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-22"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-22"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hhvs-12492",

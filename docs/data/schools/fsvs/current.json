@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "fsvs",
   "name": "國立鳳山商工",
@@ -8,6 +8,119 @@
   "base": "https://www.fsvs.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fsvs-195757",
+   "title": "教育部第六屆防災青年國際領袖培訓營",
+   "date": "2026-11-04",
+   "source_category": "",
+   "school": "fsvs",
+   "school_name": "鳳山商工",
+   "url": "https://www.fsvs.khc.edu.tw/p/406-1003-195757,r11.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-27",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "penalty",
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "penalty",
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place",
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "fsvs-195752",
    "title": "【網路維護】高雄市教育網路中心機房基礎設施汰換",

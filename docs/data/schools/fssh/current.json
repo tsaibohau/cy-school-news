@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "fssh",
   "name": "國立鳳山高中",
@@ -8,6 +8,248 @@
   "base": "https://www.fssh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fssh-18685",
+   "title": "115-1高一彈性學習(週期二：115/11/11~116/01/13)分班名單",
+   "date": "2026-11-04",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18685",
+   "category": "選課",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "彈性學習"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "彈性學習"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-11",
+       "2027-01-13"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fssh-18684",
+   "title": "115學年度優質化園藝療育活動--指尖上的心旅行",
+   "date": "2026-11-04",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18684",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9db31b5637917359c909ddf578441a506e792fcd545ba22b4dacef39da6867c5"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9db31b5637917359c909ddf578441a506e792fcd545ba22b4dacef39da6867c5"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "考試",
+       "生活",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "輔導室",
+       "費用",
+       "報名",
+       "志工",
+       "#volunteer"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "audience",
+       "required",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-11-27",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "考試",
+       "生活",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "費用",
+       "報名",
+       "志工",
+       "#volunteer"
+      ],
+      "k": [
+       "audience",
+       "required",
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "fssh-18681",
    "title": "115學年度第1學期圖書館實體書班級借閱競賽得奬名單出爐囉",

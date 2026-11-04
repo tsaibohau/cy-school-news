@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "hot_cutoff": "2025-11-04",
  "items": [
   {
@@ -6010,7 +6010,182 @@
    "url": "https://cm.cmvsedu.tw/modules/tadnews/index.php?nsn=1000",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "四技二專",
+       "學測",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "大考"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-132810",
@@ -6744,7 +6919,77 @@
    "url": "https://cm.cmvsedu.tw/modules/tadnews/index.php?nsn=999",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "課輔",
+     "#tutoring"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "課輔",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "課輔",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "大考"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-132737",
@@ -8862,7 +9107,101 @@
    "url": "https://cm.cmvsedu.tw/modules/tadnews/index.php?nsn=998",
    "category": "招生編班",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-08-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "615d01c7955490efcc6020f732f624268364d6f622544fdb62d8672e8e606734"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2025-08-18"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "四技二專",
+       "學測",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-132644",
@@ -10428,7 +10767,81 @@
    "url": "https://cm.cmvsedu.tw/modules/tadnews/index.php?nsn=997",
    "category": "招生編班",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "轉學",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "轉學",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "轉學",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "大考"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "四技二專",
+       "學測",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nsjh-328103",
@@ -15860,7 +16273,74 @@
    "url": "https://cm.cmvsedu.tw/modules/tadnews/index.php?nsn=995",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-131977",
@@ -34753,7 +35233,65 @@
    "url": "https://cm.cmvsedu.tw/modules/tadnews/index.php?nsn=994",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 14,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "大考"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-129292",
@@ -38469,7 +39007,85 @@
    "url": "https://cm.cmvsedu.tw/modules/tadnews/index.php?nsn=993",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "大考"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "四技二專",
+       "學測",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-128970",
@@ -38920,7 +39536,167 @@
    "url": "https://cm.cmvsedu.tw/modules/tadnews/index.php?nsn=992",
    "category": "招生編班",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-07-30",
+       "2024-08-19"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "penalty",
+       "deadline"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#contact"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "penalty",
+       "audience",
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "大考"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-128870",
@@ -41848,7 +42624,72 @@
    "url": "https://cm.cmvsedu.tw/modules/tadnews/index.php?nsn=984",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-07-02"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "required",
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-122303",

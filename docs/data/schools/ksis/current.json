@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "ksis",
   "name": "臺南市崑山高中",
@@ -8,6 +8,28 @@
   "base": "https://www.ksis.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "ksis-14270",
+   "title": "金管會金融教育宣導影片",
+   "date": "2026-11-04",
+   "source_category": "",
+   "school": "ksis",
+   "school_name": "崑山高中",
+   "url": "https://www.ksis.tn.edu.tw/p/406-1000-14270,r15.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": []
+   }
+  },
   {
    "id": "ksis-14269",
    "title": "--11月宣導主題：「路邊停車請注意！起步前多看一眼!讓行進中的車輛先通過！」--",
@@ -33,7 +55,59 @@
    "url": "https://www.ksis.tn.edu.tw/p/406-1000-14250,r31.php",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "date_tried": true,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ksis-14249",
@@ -45,7 +119,67 @@
    "url": "https://www.ksis.tn.edu.tw/p/406-1000-14249,r31.php",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "date_tried": true,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ksis-14246",

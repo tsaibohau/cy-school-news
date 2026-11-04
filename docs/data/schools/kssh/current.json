@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "kssh",
   "name": "國立岡山高中",
@@ -8,6 +8,325 @@
   "base": "https://www.kssh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "kssh-190193",
+   "title": "【教學組公告】國立屏東大學 函:有關教育部特殊教育中央輔導團規劃115年12月23日至12月24日辦理「115學年度高中資優教育論壇【人文與科學共創：未來人才的想像】」",
+   "date": "2026-11-04",
+   "source_category": "",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/406-1001-190193,r88.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-23",
+       "2026-12-24"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "audience",
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "公假",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "kssh-190192",
+   "title": "【教學組公告】國立嘉義女子高級中學 函:歷史學科中心參與辦理115學年度專題演講—中央研究院臺灣史研究檔案教學資源運用（如附件）",
+   "date": "2026-11-04",
+   "source_category": "",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/406-1001-190192,r88.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "公假"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "kssh-190191",
+   "title": "【教學組公告】國立嘉義女子高級中學 函:歷史學科中心參與辦理115學年度中國史專題─空白處的聲音：明清之際的史實、記述與失語（如附件）",
+   "date": "2026-11-04",
+   "source_category": "",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/406-1001-190191,r88.php",
+   "category": "一般",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "公假"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "kssh-190190",
+   "title": "【教學組公告】國立嘉義女子高級中學 函:歷史學科中心參與辦理115學年度何事「要緊」？何需「補遺」？─《要緊補遺檔》與康熙、雍正兩朝交際的「實錄」（如附件）",
+   "date": "2026-11-04",
+   "source_category": "",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/406-1001-190190,r88.php",
+   "category": "一般",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "公假"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "kssh-190189",
    "title": "【體育組公告】轉知運動部政風處編製「運動員法律常識手冊」",
@@ -1001,7 +1320,86 @@
    "url": "https://www.kssh.khc.edu.tw/p/406-1001-190183,r88.php",
    "category": "研習活動",
    "first_seen": "2026-11-03T09:46:54+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event",
+       "#grading"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "公假",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "kssh-190182",
@@ -1013,7 +1411,70 @@
    "url": "https://www.kssh.khc.edu.tw/p/406-1001-190182,r88.php",
    "category": "教職員",
    "first_seen": "2026-11-03T09:46:54+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "手機",
+       "社團",
+       "報名",
+       "#device",
+       "#club"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "kssh-190181",
@@ -1025,7 +1486,66 @@
    "url": "https://www.kssh.khc.edu.tw/p/406-1001-190181,r88.php",
    "category": "研習活動",
    "first_seen": "2026-11-03T09:46:54+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-10"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "kssh-190180",
@@ -1037,7 +1557,83 @@
    "url": "https://www.kssh.khc.edu.tw/p/406-1001-190180,r88.php",
    "category": "教職員",
    "first_seen": "2026-11-03T09:46:54+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-10",
+       "2026-11-24",
+       "2026-12-29"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time",
+       "place",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-12-29"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "kssh-190169",

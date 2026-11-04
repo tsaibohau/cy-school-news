@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kmhjh",
- "generated_at": "2026-11-04T04:14:03+08:00",
+ "generated_at": "2026-11-04T11:15:20+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "222546907900704": {
@@ -475,15 +475,24 @@
    "page_id": 58834081915288,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/school-data/community-service/",
    "label": "社區服務",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:15:17+08:00",
+   "path": [
+    "校務資料",
+    "社區服務"
+   ]
   },
   "208026820423926": {
    "page_id": 208026820423926,
    "url": "https://nkhhs.kmhjh.kh.edu.tw/hospitality-journal/",
    "label": "餐旅季刊",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:15:19+08:00",
+   "path": [
+    "餐旅季刊"
+   ]
   },
   "270073999008054": {
    "page_id": 270073999008054,
@@ -1964,5 +1973,5 @@
   "faa0892d3a",
   "fb36ea8a1c"
  ],
- "last_run_at": "2026-11-04T04:14:03+08:00"
+ "last_run_at": "2026-11-04T11:15:20+08:00"
 }

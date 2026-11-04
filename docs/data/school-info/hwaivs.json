@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-03T23:44:16+08:00",
+ "generated_at": "2026-11-04T11:12:55+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -1829,8 +1829,45 @@
    "page_id": 156540777689270,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/",
    "label": "交通位置",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:12:53+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校務資料開放",
+    "認識虎農",
+    "交通位置"
+   ],
+   "changed_at": "2026-11-04T11:12:53+08:00",
+   "content_hash": "01d270ab221390a1b52b7addd66c437191973f25f719de155a43f8bacde344f0",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-156540777689270.json",
+   "detail_revision": "98ebea1e0bc586293f2bd50e39d5417bb53a659eccb49ea12e2d002f2e1aae1e",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "deadline",
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "262469179785944": {
    "page_id": 262469179785944,
@@ -6472,6 +6509,44 @@
    }
   },
   {
+   "id": "hwaivs-info-156540777689270",
+   "kind": "school_info",
+   "title": "校務資料開放 › 認識虎農 › 交通位置",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e4%ba%a4%e9%80%9a%e4%bd%8d%e7%bd%ae/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-156540777689270.json",
+   "detail_revision": "98ebea1e0bc586293f2bd50e39d5417bb53a659eccb49ea12e2d002f2e1aae1e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "deadline",
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hwaivs-info-165883895427263",
    "kind": "school_info",
    "title": "校務資料開放 › 認識虎農 › 校歌校訓",
@@ -6932,5 +7007,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-03T23:44:16+08:00"
+ "last_run_at": "2026-11-04T11:12:55+08:00"
 }

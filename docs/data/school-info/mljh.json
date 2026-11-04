@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mljh",
- "generated_at": "2026-11-04T04:12:31+08:00",
+ "generated_at": "2026-11-04T11:13:24+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31793209037602": {
@@ -281,15 +281,25 @@
    "page_id": 227403753504414,
    "url": "https://mljh.ylc.edu.tw/cl.aspx?n=54708",
    "label": "成績查詢",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:13:20+08:00",
+   "path": [
+    "學生專區",
+    "成績查詢"
+   ]
   },
   "146178250877525": {
    "page_id": 146178250877525,
    "url": "https://mljh.ylc.edu.tw/cl.aspx?n=106868",
    "label": "國中補考",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:13:23+08:00",
+   "path": [
+    "學生專區",
+    "國中補考"
+   ]
   },
   "86722036268617": {
    "page_id": 86722036268617,
@@ -605,5 +615,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-04T04:12:31+08:00"
+ "last_run_at": "2026-11-04T11:13:24+08:00"
 }

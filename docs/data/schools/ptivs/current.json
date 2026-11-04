@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "ptivs",
   "name": "國立成大附屬南工",
@@ -8,6 +8,189 @@
   "base": "https://www.ptivs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "ptivs-20266",
+   "title": "115年校慶公告",
+   "date": "2026-11-04",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20266",
+   "category": "一般",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "校慶",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ptivs-20265",
+   "title": "115年運動大會進場公告",
+   "date": "2026-11-04",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20265",
+   "category": "一般",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ptivs-20263",
+   "title": "114學年度應屆畢業生錄取成大、台科、北科、雲科、師範大學，校慶園遊會返校受獎",
+   "date": "2026-11-03",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20263",
+   "category": "招生編班",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "47972a0cf550adcdc56141950077db600aad6389d63b3d6696070126c70f8973"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "校慶",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學務處",
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "學務處",
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "ptivs-20259",
    "title": "宣導「2026反賄選愛臺灣公益宣導影片─出遊篇」，請同仁下載參閱。",
@@ -20,8 +203,8 @@
    "first_seen": "2026-11-04T04:05:17+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -67,8 +250,8 @@
    "first_seen": "2026-11-04T04:05:17+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-04T04:12:52+08:00",
+ "generated_at": "2026-11-04T11:13:50+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -1691,8 +1691,351 @@
    "page_id": 168207406295260,
    "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,4,32,29",
    "label": "評鑑結果",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:13:47+08:00",
+   "path": [
+    "評鑑結果"
+   ],
+   "changed_at": "2026-11-04T11:13:47+08:00",
+   "content_hash": "10c0b5fd4fa3241898a9681e366dc0a2a6a8cf9ee635b0a69f543e2704d5c8bf",
+   "doc_links": [],
+   "keywords": [
+    "志工",
+    "升學",
+    "服務學習",
+    "競賽",
+    "檢定",
+    "校長",
+    "入學",
+    "分發",
+    "參訪",
+    "學生證",
+    "宣導",
+    "招生",
+    "獎學金",
+    "獎懲",
+    "考試"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-168207406295260.json",
+   "detail_revision": "424950c349edfbc591b854817e3083a3a0910a6b2459c40a766e3a8b4fdbe878",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "102年度校務評鑑待改進及建議事項列管表.pdf",
+     "url": "https://www.hnvs.cy.edu.tw/df_ufiles/b/102年度校務評鑑待改進及建議事項列管表.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 19,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "學習歷程"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "午餐"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "合作社",
+       "午餐",
+       "獎懲",
+       "#merit",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "獎學金",
+       "家長",
+       "志工",
+       "#scholarship",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "志工",
+       "升學",
+       "#admission",
+       "#contest",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [
+       "#certificate",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 76,
+      "t": [
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [
+       "升學",
+       "生活",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 82,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 84,
+      "t": [
+       "網路",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 85,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 86,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 90,
+      "t": [
+       "志工",
+       "生活",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 96,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 99,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 100,
+      "t": [
+       "學生證",
+       "升學",
+       "#admission",
+       "#student_id"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 106,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2018-06-07"
+      ]
+     }
+    ]
+   }
   },
   "162731227812701": {
    "page_id": 162731227812701,
@@ -6069,6 +6412,355 @@
    }
   },
   {
+   "id": "hnvs-info-168207406295260",
+   "kind": "school_info",
+   "title": "評鑑結果",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,4,32,29",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "102年度校務評鑑待改進及建議事項列管表.pdf"
+   ],
+   "keywords": [
+    "志工",
+    "升學",
+    "服務學習",
+    "競賽",
+    "檢定",
+    "校長",
+    "入學",
+    "分發",
+    "參訪",
+    "學生證",
+    "宣導",
+    "招生",
+    "獎學金",
+    "獎懲",
+    "考試"
+   ],
+   "documents": [
+    {
+     "name": "102年度校務評鑑待改進及建議事項列管表.pdf",
+     "url": "https://www.hnvs.cy.edu.tw/df_ufiles/b/102年度校務評鑑待改進及建議事項列管表.pdf"
+    }
+   ],
+   "detail_ref": "data/details/hnvs/hnvs-info-168207406295260.json",
+   "detail_revision": "424950c349edfbc591b854817e3083a3a0910a6b2459c40a766e3a8b4fdbe878",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 19,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "學習歷程"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "午餐"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "合作社",
+       "午餐",
+       "獎懲",
+       "#merit",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "獎學金",
+       "家長",
+       "志工",
+       "#scholarship",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [
+       "志工",
+       "升學",
+       "#admission",
+       "#contest",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [
+       "#certificate",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 76,
+      "t": [
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [
+       "升學",
+       "生活",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 82,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 84,
+      "t": [
+       "網路",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 85,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 86,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 90,
+      "t": [
+       "志工",
+       "生活",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 96,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 99,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 100,
+      "t": [
+       "學生證",
+       "升學",
+       "#admission",
+       "#student_id"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 106,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2018-06-07"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-184660922987067",
    "kind": "school_info",
    "title": "科別介紹",
@@ -6508,5 +7200,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-04T04:12:52+08:00"
+ "last_run_at": "2026-11-04T11:13:50+08:00"
 }

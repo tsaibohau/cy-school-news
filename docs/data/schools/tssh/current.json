@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "tssh",
   "name": "國立東石高級中學",
@@ -8,6 +8,194 @@
   "base": "https://www.tssh.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "tssh-9-21417",
+   "title": "【升學資訊】116學年度大學繁星推薦、申請入學、分發入學三招生管道簡章，業已公告於相關網站",
+   "date": "2026-11-04",
+   "source_category": "最新消息",
+   "school": "tssh",
+   "school_name": "東石高中",
+   "url": "https://www.tssh.cyc.edu.tw/latestevent/Details.aspx?Parser=9,9,79,46,,,21417",
+   "category": "升學",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1,
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "繁星",
+     "申請入學",
+     "升學",
+     "#admission",
+     "#enrollment",
+     "#grading"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "繁星",
+       "申請入學",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment",
+       "#grading"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "繁星",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "繁星",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學期成績",
+       "繳交",
+       "#enrollment",
+       "#grading"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "出缺席",
+       "家長",
+       "獎懲",
+       "#attendance",
+       "#merit",
+       "#grading"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "繁星",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "繁星",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "繁星",
+       "申請入學",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "註冊組",
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "penalty",
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "作弊",
+       "記過",
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "繁星",
+       "申請入學",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "tssh-9-21409",
    "title": "【寒假營隊】國立臺灣大學學生社團「傳統醫學研究社」舉辦「2027臺灣大學傳統醫學研究社全國高中生中醫體驗營-華佗營」",

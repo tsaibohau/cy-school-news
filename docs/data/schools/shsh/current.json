@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "shsh",
   "name": "雲林縣私立正心高級中學",
@@ -8,6 +8,212 @@
   "base": "https://www.shsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "shsh-11859",
+   "title": "雲林縣115年「縣長盃」硬筆書法比賽實施計畫",
+   "date": "2026-11-04",
+   "source_category": "來文宣導",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e9%9b%b2%e6%9e%97%e7%b8%a3115%e5%b9%b4%e3%80%8c%e7%b8%a3%e9%95%b7%e7%9b%83%e3%80%8d%e7%a1%ac%e7%ad%86%e6%9b%b8%e6%b3%95%e6%af%94%e8%b3%bd%e5%af%a6%e6%96%bd%e8%a8%88%e7%95%ab/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-19",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "3eabbf0725a6b6c6b2aab546fc8b944f616533bb270073c3b2d7e8e308e7ebb3"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-12-19"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest",
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "#track"
+      ],
+      "k": [
+       "audience",
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest",
+       "#enrollment"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名",
+       "繳交",
+       "#contest"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "教務處",
+       "#track"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名",
+       "繳交",
+       "#contest",
+       "#track"
+      ],
+      "k": [
+       "penalty",
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-19",
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "社團",
+       "#club",
+       "#event"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-03"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "shsh-11858",
    "title": "社團法人中華民國應用商業管理協會2027冬令營-高中企管營(不過夜營隊)，招生中!!",

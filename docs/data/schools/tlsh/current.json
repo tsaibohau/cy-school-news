@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "tlsh",
   "name": "國立斗六高級中學",
@@ -8,6 +8,1219 @@
   "base": "https://www.tlsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "tlsh-68877",
+   "title": "本校承辦科技輔助自主學習計畫辦理Y系列研習",
+   "date": "2026-11-04",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68877/",
+   "category": "選課",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "2ad54bfa59adc2eb64700daa8203a59037ca6b85ac4ec486f75278422c428c77"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "2ad54bfa59adc2eb64700daa8203a59037ca6b85ac4ec486f75278422c428c77"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "#self_learning",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-04",
+       "2026-11-02"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "手機",
+       "報名",
+       "#device",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-25",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-12-02",
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68837",
+   "title": "國立嘉義大學「第十四屆獸醫營活動」",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68837/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-25",
+     "provenance": "verified_announcement_event",
+     "source_revision": "f747648442d8fbe2cf57fde008e85523a64483f2848a9a0fbac2fac226bb49e1"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f747648442d8fbe2cf57fde008e85523a64483f2848a9a0fbac2fac226bb49e1"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68833",
+   "title": "國立清華大學「2027人工智慧營隊」",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68833/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "10e4d09d88523ab1e75a300d5c86aa132a34dda4255e6778192d4a5c5f35f862"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2027-01-25"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "自主學習",
+       "#contest",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-28"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "自主學習",
+       "報名",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "繳交",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "自主學習",
+       "#contest",
+       "#self_learning",
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68829",
+   "title": "東海大學「第四屆牛奶節活動」",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68829/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-14",
+     "provenance": "verified_announcement_event",
+     "source_revision": "2628cad8addfd083c553105f84d2ce1ec22fd28cdc07636b4608b933231cffd0"
+    }
+   ],
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "社團",
+       "#club",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68824",
+   "title": "弘光科技大學「全國高中職電競大賽－秋季賽《特戰英豪》」",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68824/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-14",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6faf656dd4c792ac6684cbddc1a2f9bf418aa2ad539be37bcef3f6d83fe16af6"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "學生證",
+       "註冊組",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-15",
+       "2026-12-02"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68820",
+   "title": "國立臺南一中「第23屆竹園岡全國高中職學生流音大賽」及「第20屆竹園岡全國高中職學生流舞大賽」",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68820/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "8650bdcc98bc7db8a44f7bbf950e4d860758eaa99cb5e22381f617482a26248d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-13"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-14"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "網路",
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68816",
+   "title": "國立高雄餐旅大學「2027冬令營」",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68816/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "宿舍",
+       "費用",
+       "報名",
+       "#accommodation"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68812",
+   "title": "龍華科技大學「地酒盃全國永續綠餐創意飲調與餐服競賽」",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68812/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "tlsh-68800",
    "title": "國立陽明交通大學「心智圖超記憶親子免費講座」及「2027寒假-心智圖超記憶學習營」",
@@ -645,7 +1858,141 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68785/",
    "category": "競賽",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "5a3be7c30605001d9a7b1019a354a2728c88d3c13c56da7682c41c9fb040d9cb"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-27",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "penalty",
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "penalty",
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "place",
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68781",
@@ -657,7 +2004,196 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68781/",
    "category": "競賽",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-26",
+     "provenance": "verified_announcement_event",
+     "source_revision": "c674fc1a285546b03d52093c43002d91ba5dd7f5a44e4adbdb240aa17cf776c4"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "c674fc1a285546b03d52093c43002d91ba5dd7f5a44e4adbdb240aa17cf776c4"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1,
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-26",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-16"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "家長",
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "time",
+       "contact"
+      ],
+      "d": [
+       "2026-11-26"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "contact"
+      ],
+      "d": [
+       "2027-01-11"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "報名",
+       "導師",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68808",
@@ -669,7 +2205,70 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/03/68808/",
    "category": "教職員",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "補假"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "請假",
+       "補假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "補假"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "補假"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "補假"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68777",
@@ -854,7 +2453,129 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/02/68645/",
    "category": "競賽",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-10-31",
+     "provenance": "verified_announcement_event",
+     "source_revision": "9b20231428af66fcf0726ddb344e128c13870d148099f34151609df1d9675423"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-31"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68760",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-04T04:13:43+08:00",
+ "generated_at": "2026-11-04T11:14:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -4100,22 +4100,397 @@
    "page_id": 165061585630985,
    "url": "https://www.tnvs.tn.edu.tw/academic/special/",
    "label": "資源班",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:14:41+08:00",
+   "path": [
+    "資源班"
+   ],
+   "changed_at": "2026-11-04T11:14:41+08:00",
+   "content_hash": "b6a36f1581d6e3b26942fa5500c1d444fc2139d0ba12c701b78db7422a37da25",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "招生",
+    "宣導",
+    "志願",
+    "衛生",
+    "選填",
+    "電話",
+    "報名",
+    "試場"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-165061585630985.json",
+   "detail_revision": "6a6736c3c99891c90a00e794dd150ccb29f190cd44e148686c103a1f9503152f",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 8,
+      "t": [
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2021-11-16"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "網路",
+       "報名",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-11-26",
+       "2024-12-09"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "志願",
+       "網路",
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2025-06-04"
+      ]
+     }
+    ]
+   }
   },
   "142495118984649": {
    "page_id": 142495118984649,
    "url": "https://www.tnvs.tn.edu.tw/academic/sport-talent/",
    "label": "體育班",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:14:42+08:00",
+   "path": [
+    "體育班"
+   ],
+   "changed_at": "2026-11-04T11:14:42+08:00",
+   "content_hash": "8f7011354a0bbe34cbeb9f8c34b23105cfcdb99b60c353465002707abebf7e63",
+   "doc_links": [],
+   "keywords": [
+    "比賽",
+    "簡介",
+    "運動會",
+    "選擇"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-142495118984649.json",
+   "detail_revision": "a851dfcdad05651f182918365314f519af608612bc847fb649989ca917d19a83",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "游泳課",
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "72705391871107": {
    "page_id": 72705391871107,
    "url": "https://www.tnvs.tn.edu.tw/student/",
    "label": "學務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T11:14:44+08:00",
+   "path": [
+    "學務處"
+   ],
+   "changed_at": "2026-11-04T11:14:44+08:00",
+   "content_hash": "a8a69c18663920fcab06bf6d103ebc3358cfc30b30615d33ae7a7dd769457b51",
+   "doc_links": [],
+   "keywords": [
+    "志願",
+    "志願服務",
+    "報名",
+    "徵稿",
+    "志工",
+    "新生",
+    "校長",
+    "比賽",
+    "申請"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-72705391871107.json",
+   "detail_revision": "278399238a3aae6cd230269210337d6de62266f55b12524d3aeb8b823a7dd2cf",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-01-01"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "志工",
+       "志願",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2025-06-27"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "家長",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "171100446918162": {
    "page_id": 171100446918162,
@@ -5000,6 +5375,160 @@
     "教務處"
    ],
    "order": 113
+  },
+  "259799325174811": {
+   "page_id": 259799325174811,
+   "url": "https://tnvs.tn.edu.tw/academic/special/law",
+   "label": "法令規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "資源班"
+   ],
+   "order": 114
+  },
+  "37872152608077": {
+   "page_id": 37872152608077,
+   "url": "https://www.tnvs.tn.edu.tw/academic/special/tnvs.tn.edu.tw/academic/special/teacher",
+   "label": "工作團隊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "資源班"
+   ],
+   "order": 115
+  },
+  "244922405011243": {
+   "page_id": 244922405011243,
+   "url": "https://www.tnvs.tn.edu.tw/academic/special/tnvs.tn.edu.tw/academic/special/service",
+   "label": "服務項目",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "資源班"
+   ],
+   "order": 116
+  },
+  "60679550106779": {
+   "page_id": 60679550106779,
+   "url": "https://www.tnvs.tn.edu.tw/academic/special/tnvs.tn.edu.tw/academic/special/form",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "資源班"
+   ],
+   "order": 117
+  },
+  "15463626380165": {
+   "page_id": 15463626380165,
+   "url": "https://www.tnvs.tn.edu.tw/academic/special/tnvs.tn.edu.tw/academic/special/source",
+   "label": "相關資源",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "資源班"
+   ],
+   "order": 118
+  },
+  "210613232129903": {
+   "page_id": 210613232129903,
+   "url": "https://www.tnvs.tn.edu.tw/academic/special/publicity/",
+   "label": "特教專刊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "資源班"
+   ],
+   "order": 119
+  },
+  "128769337781293": {
+   "page_id": 128769337781293,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/sport-talent/師資陣容/",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "體育班"
+   ],
+   "order": 120
+  },
+  "45418742993477": {
+   "page_id": 45418742993477,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/sport-talent/課程規劃/",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "體育班"
+   ],
+   "order": 121
+  },
+  "172732319833977": {
+   "page_id": 172732319833977,
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/sport-talent/訓練場館/",
+   "label": "訓練場館",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "體育班"
+   ],
+   "order": 122
+  },
+  "186545268747395": {
+   "page_id": 186545268747395,
+   "url": "https://www.tnvs.tn.edu.tw/student/student-member/",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 123
+  },
+  "227916802476911": {
+   "page_id": 227916802476911,
+   "url": "https://www.tnvs.tn.edu.tw/student/student-regulation/",
+   "label": "相關辦法",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 124
+  },
+  "262012420761879": {
+   "page_id": 262012420761879,
+   "url": "https://www.tnvs.tn.edu.tw/student/student-form/",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 125
+  },
+  "58096026866881": {
+   "page_id": 58096026866881,
+   "url": "https://www.tnvs.tn.edu.tw/student/student-genderequality/",
+   "label": "性別平等專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 126
+  },
+  "253197647828777": {
+   "page_id": 253197647828777,
+   "url": "https://www.tnvs.tn.edu.tw/student/student-procedure/",
+   "label": "各項作業流程",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處"
+   ],
+   "order": 127
   }
  },
  "handbook": {},
@@ -5684,6 +6213,184 @@
    "detail_status": "parsed"
   },
   {
+   "id": "tnvs-info-72705391871107",
+   "kind": "school_info",
+   "title": "學務處",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/student/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "志願",
+    "志願服務",
+    "報名",
+    "徵稿",
+    "志工",
+    "新生",
+    "校長",
+    "比賽",
+    "申請"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-72705391871107.json",
+   "detail_revision": "278399238a3aae6cd230269210337d6de62266f55b12524d3aeb8b823a7dd2cf",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-01-01"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "志工",
+       "志願",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2025-06-27"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "家長",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-83678224443892",
    "kind": "school_info",
    "title": "電子商務科",
@@ -6122,6 +6829,80 @@
        "總務處"
       ],
       "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-info-142495118984649",
+   "kind": "school_info",
+   "title": "體育班",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/academic/sport-talent/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "比賽",
+    "簡介",
+    "運動會",
+    "選擇"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-142495118984649.json",
+   "detail_revision": "a851dfcdad05651f182918365314f519af608612bc847fb649989ca917d19a83",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "游泳課",
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
      }
     ]
    }
@@ -6604,6 +7385,141 @@
        "#event"
       ],
       "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-info-165061585630985",
+   "kind": "school_info",
+   "title": "資源班",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/academic/special/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "招生",
+    "宣導",
+    "志願",
+    "衛生",
+    "選填",
+    "電話",
+    "報名",
+    "試場"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-165061585630985.json",
+   "detail_revision": "6a6736c3c99891c90a00e794dd150ccb29f190cd44e148686c103a1f9503152f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 8,
+      "t": [
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2021-11-16"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "網路",
+       "報名",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-11-26",
+       "2024-12-09"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "志願",
+       "網路",
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2025-06-04"
+      ]
      }
     ]
    }
@@ -9392,5 +10308,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-04T04:13:43+08:00"
+ "last_run_at": "2026-11-04T11:14:46+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-03T23:43:50+08:00",
+ "generated_at": "2026-11-04T11:12:33+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -1710,11 +1710,52 @@
   },
   "134": {
    "page_id": 134,
-   "status": "pending"
+   "status": "staff_profile",
+   "checked_at": "2026-11-04T11:12:29+08:00",
+   "path": [
+    "行政單位",
+    "竹中總務處",
+    "總務主任"
+   ]
   },
   "135": {
    "page_id": 135,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-04T11:12:31+08:00",
+   "path": [
+    "行政單位",
+    "竹中總務處",
+    "庶務組"
+   ],
+   "changed_at": "2026-11-04T11:12:31+08:00",
+   "content_hash": "624708e89c922e7908b0b2258792b95978d8477c9b0c05c15ad27acd1d5407b2",
+   "doc_links": [],
+   "keywords": [
+    "登記",
+    "分機"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-135.json",
+   "detail_revision": "6c3da0b24395f37d1c583889eebeb98c8cd05e051a086a7e0fd17d1b2b42e159",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "136": {
    "page_id": 136,
@@ -3628,6 +3669,43 @@
    }
   },
   {
+   "id": "ccjh-info-135",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中總務處 › 庶務組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-135.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "登記",
+    "分機"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-135.json",
+   "detail_revision": "6c3da0b24395f37d1c583889eebeb98c8cd05e051a086a7e0fd17d1b2b42e159",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-143",
    "kind": "school_info",
    "title": "行政單位 › 竹中輔導處",
@@ -3840,5 +3918,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-03T23:43:50+08:00"
+ "last_run_at": "2026-11-04T11:12:33+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-03T23:43:45+08:00",
+ "generated_at": "2026-11-04T11:12:28+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -2052,11 +2052,229 @@
   },
   "501": {
    "page_id": 501,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-04T11:12:24+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "相關法規"
+   ],
+   "changed_at": "2026-11-04T11:12:24+08:00",
+   "content_hash": "ea136d52dcafe4a99537a1984296385a24fc3bfd68007c29b9ffd7ed818b4fc6",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "學習歷程",
+    "專線",
+    "招生",
+    "繁星",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-501.json",
+   "detail_revision": "a6354b6795ef78318d4075bd59f62122780591eb1fc88e15b541c033a8cb38a4",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "繁星",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "502": {
    "page_id": 502,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-04T11:12:26+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組",
+    "科學競賽"
+   ],
+   "changed_at": "2026-11-04T11:12:26+08:00",
+   "content_hash": "72d0b4e9acdfca53d07c0fc351beb3b3b3bcf563a32db63ea65be158c0e0a44e",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "報名",
+    "招生",
+    "初賽",
+    "地址",
+    "奧林匹亞",
+    "專線",
+    "志工",
+    "競賽",
+    "講座",
+    "電話",
+    "體驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-502.json",
+   "detail_revision": "cbd70397c92300e4d2669a96e0d3ff950628c71914bbae981904f88ab595d265",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "志工",
+       "#contest",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "503": {
    "page_id": 503,
@@ -4465,6 +4683,230 @@
    }
   },
   {
+   "id": "fjsh-info-501",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 相關法規",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-501.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "學習歷程",
+    "專線",
+    "招生",
+    "繁星",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-501.json",
+   "detail_revision": "a6354b6795ef78318d4075bd59f62122780591eb1fc88e15b541c033a8cb38a4",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "繁星",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-502",
+   "kind": "school_info",
+   "title": "教務處 › 設備組 › 科學競賽",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-502.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "報名",
+    "招生",
+    "初賽",
+    "地址",
+    "奧林匹亞",
+    "專線",
+    "志工",
+    "競賽",
+    "講座",
+    "電話",
+    "體驗"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-502.json",
+   "detail_revision": "cbd70397c92300e4d2669a96e0d3ff950628c71914bbae981904f88ab595d265",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "志工",
+       "#contest",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -4562,5 +5004,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-03T23:43:45+08:00"
+ "last_run_at": "2026-11-04T11:12:28+08:00"
 }

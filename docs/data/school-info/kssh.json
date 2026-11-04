@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-04T04:14:38+08:00",
+ "generated_at": "2026-11-04T11:15:59+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -2339,13 +2339,54 @@
    "page_id": 138528581396824,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5199.php",
    "label": "助理員",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 26
+   "order": 26,
+   "checked_at": "2026-11-04T11:15:57+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "助理員"
+   ],
+   "changed_at": "2026-11-04T11:15:57+08:00",
+   "content_hash": "b8a0a119d269627277c2f51491845b20d19b93638279b1629a38a565eba75ffc",
+   "doc_links": [],
+   "keywords": [
+    "分機"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-138528581396824.json",
+   "detail_revision": "8ded6a05fe8bd96392a4ab15bc818f8e74788e979d71272c1a857cdf12294384",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "46542080167281": {
    "page_id": 46542080167281,
@@ -3307,6 +3348,49 @@
    "detail_ref": "data/details/kssh/kssh-info-112967414483477.json",
    "detail_revision": "d91189469dd8b67c8a608c474082df97b828f10e223ab87764c6c388b4328004",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-138528581396824",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 助理員",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5199.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "分機"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-138528581396824.json",
+   "detail_revision": "8ded6a05fe8bd96392a4ab15bc818f8e74788e979d71272c1a857cdf12294384",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "kssh-info-140039901727931",
@@ -5229,5 +5313,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-04T04:14:38+08:00"
+ "last_run_at": "2026-11-04T11:15:59+08:00"
 }

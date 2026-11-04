@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "sgash",
   "name": "國立新港藝術高級中學",
@@ -1293,7 +1293,180 @@
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14919",
    "category": "競賽",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-02-13",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b137d3f2fff6e9170557fe7f83f0d3a1d588433678d03a63c2e606998636858f"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-13"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-14"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路",
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-13"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-14"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "網路",
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sgash-14918",
@@ -1305,7 +1478,178 @@
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14918",
    "category": "研習活動",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "audience",
+       "fee"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sgash-14917",
@@ -1317,7 +1661,108 @@
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14917",
    "category": "競賽",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-06",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f6f5cf357e6f244c7db77338b07effabaa80dcd81c1f91209b4b9b46cca31dfe"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "截止",
+       "#contest",
+       "#contact"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-12-06",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-12-06",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sgash-14916",
@@ -1329,7 +1774,255 @@
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14916",
    "category": "研習活動",
    "first_seen": "2026-11-03T17:14:09+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ee869a04514338b971f16c3bd1c5aa2ed06393a3bea3c650f9198ba12edcf868"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假",
+     "#enrollment",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "寒假",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "audience",
+       "fee"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "寒假",
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-12-27"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "寒假",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-01-21",
+       "2027-02-03"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "audience",
+       "fee"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "寒假",
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-12-27"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "寒假",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-01-21",
+       "2027-02-03"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sgash-14915",

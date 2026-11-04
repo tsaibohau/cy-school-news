@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "nehs",
   "name": "國立嘉科實驗高級中學",
@@ -8,6 +8,135 @@
   "base": "https://www.nehs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "nehs-4690",
+   "title": "【升學考試】「嘉義區高級中等學校特色招生核定作業要點」",
+   "date": "2026-11-04",
+   "source_category": "升學訊息",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4690",
+   "category": "升學",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "考試",
+     "升學",
+     "#admission",
+     "#exam",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "考試",
+       "升學",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "志願",
+       "考試",
+       "#admission",
+       "#exam",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "志願",
+       "考試",
+       "#admission",
+       "#exam",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nehs-4686",
    "title": "【錄取公告】國立嘉科實中115學年度生涯暨生命教育講座 家長錄取名單（115/11/10）",

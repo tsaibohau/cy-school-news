@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T04:05:17+08:00",
+ "generated_at": "2026-11-04T10:59:31+08:00",
  "school": {
   "id": "tngs",
   "name": "國立臺南女中",
@@ -8,6 +8,769 @@
   "base": "https://www.tngs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "tngs-92413",
+   "title": "中央大學辦理臺灣科學特殊人才提升計畫將於115年11月21日舉辦「蓋婭科普講座系列第65講」，請自行報名參加。",
+   "date": "2026-11-04",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/04/%e4%b8%ad%e5%a4%ae%e5%a4%a7%e5%ad%b8%e8%be%a6%e7%90%86%e8%87%ba%e7%81%a3%e7%a7%91%e5%ad%b8%e7%89%b9%e6%ae%8a%e4%ba%ba%e6%89%8d%e6%8f%90%e5%8d%87%e8%a8%88%e7%95%ab%e5%b0%87%e6%96%bc115%e5%b9%b411/",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "40ff6b529e69a3ebefcd72407cd75e1afcd6ddcdee9a8e3582a73bbbc2e2886f"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92408",
+   "title": "國立陽明交通大學辦理第十九屆「APX全國高中數理能力檢定」內容與資訊說明，請自行報名參加。",
+   "date": "2026-11-04",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/04/%e5%9c%8b%e7%ab%8b%e9%99%bd%e6%98%8e%e4%ba%a4%e9%80%9a%e5%a4%a7%e5%ad%b8%e8%be%a6%e7%90%86%e7%ac%ac%e5%8d%81%e4%b9%9d%e5%b1%86%e3%80%8capx%e5%85%a8%e5%9c%8b%e9%ab%98%e4%b8%ad%e6%95%b8%e7%90%86/",
+   "category": "一般",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#certificate"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#certificate"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "寒假",
+       "#certificate"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-28"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04",
+       "2026-12-02"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "費用",
+       "#certificate"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名",
+       "#certificate"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92407",
+   "title": "公保部為讓受保險人瞭解公教保險相關權益，於115年11月18日（星期三）舉辦公保業務視訊座談會。",
+   "date": "2026-11-04",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/04/%e5%85%ac%e4%bf%9d%e9%83%a8%e7%82%ba%e8%ae%93%e5%8f%97%e4%bf%9d%e9%9a%aa%e4%ba%ba%e7%9e%ad%e8%a7%a3%e5%85%ac%e6%95%99%e4%bf%9d%e9%9a%aa%e7%9b%b8%e9%97%9c%e6%ac%8a%e7%9b%8a%ef%bc%8c%e6%96%bc115/",
+   "category": "教職員",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "公假",
+       "報名",
+       "#leave"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92404",
+   "title": "中央研究院訂於115年11月19日（星期四）下午於國立臺灣海洋大學舉辦「中研講堂」基隆場科普演講，請自行報名參加。",
+   "date": "2026-11-04",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/04/%e4%b8%ad%e5%a4%ae%e7%a0%94%e7%a9%b6%e9%99%a2%e8%a8%82%e6%96%bc115%e5%b9%b411%e6%9c%8819%e6%97%a5%ef%bc%88%e6%98%9f%e6%9c%9f%e5%9b%9b%ef%bc%89%e4%b8%8b%e5%8d%88%e6%96%bc%e5%9c%8b%e7%ab%8b%e8%87%ba/",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f565b101efab63391a94735f77ac192aecdbb2dbb101146f064dc13edd3759f4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-02",
+       "2026-11-16"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92400",
+   "title": "國立清華大學辦理「2027 Fun AI Camp」人工智慧營隊",
+   "date": "2026-11-04",
+   "source_category": "學生營隊",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/04/%e5%9c%8b%e7%ab%8b%e6%b8%85%e8%8f%af%e5%a4%a7%e5%ad%b8%e8%be%a6%e7%90%86%e3%80%8c2027-fun-ai-camp%e3%80%8d%e4%ba%ba%e5%b7%a5%e6%99%ba%e6%85%a7%e7%87%9f%e9%9a%8a/",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "c9612ee1a6101a3a5ce8af19bc573c09018fa86edad2943c32a67c6c4c0969b8"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-28"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "自主學習",
+       "報名",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "繳交",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "自主學習",
+       "#contest",
+       "#self_learning",
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92399",
+   "title": "116學年度大學繁星推薦、申請入學、分發入學三招生管道簡章及相關注意事項",
+   "date": "2026-11-04",
+   "source_category": "_置頂公告",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/04/116%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%a4%a7%e5%ad%b8%e7%b9%81%e6%98%9f%e6%8e%a8%e8%96%a6%e3%80%81%e7%94%b3%e8%ab%8b%e5%85%a5%e5%ad%b8%e3%80%81%e5%88%86%e7%99%bc%e5%85%a5%e5%ad%b8%e4%b8%89%e6%8b%9b/",
+   "category": "升學",
+   "first_seen": "2026-11-04T10:59:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "繁星",
+     "申請入學",
+     "#admission",
+     "#enrollment",
+     "#grading"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "繁星",
+       "申請入學",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment",
+       "#grading"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "繁星",
+       "申請入學",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "註冊組",
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "penalty",
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "作弊",
+       "記過",
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "繁星",
+       "申請入學",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "tngs-92384",
    "title": "【學生競賽】115學年度數理及資訊學科能力競賽(化學、生物及資訊)複賽-得獎名單",
@@ -888,7 +1651,105 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e8%87%ba%e5%8c%97%e5%b8%82%e7%ab%8b%e5%bb%ba%e5%9c%8b%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8%e3%80%8c%e9%80%9f%e6%88%b0%e6%95%b8%e6%b1%ba%e5%b7%a5%e4%bd%9c%e5%9d%8a/",
    "category": "研習活動",
    "first_seen": "2026-11-03T11:55:01+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event",
+       "#campus_map"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "公假",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92349",
@@ -900,7 +1761,104 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e8%87%ba%e4%b8%ad%e5%b8%82%e7%ab%8b%e8%87%ba%e4%b8%ad%e5%a5%b3%e5%ad%90%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e3%80%8c115%e5%ad%b8%e5%b9%b4/",
    "category": "教職員",
    "first_seen": "2026-11-03T11:55:01+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9521e4ed4143d647f9e1fa06339b875a53128ce21f3427f22aae4e6c1edfe647"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-19",
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "網路",
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-04",
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92346",
@@ -912,7 +1870,74 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e8%87%ba%e5%8d%97%e7%ac%ac%e4%b8%80%e9%ab%98%e7%b4%9a%e4%b8%ad%e5%ad%b8%e3%80%8c115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%a4%be%e6%9c%83%e9%a0%98-2/",
    "category": "教職員",
    "first_seen": "2026-11-03T11:55:01+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "公假",
+       "費用",
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92344",
@@ -924,7 +1949,71 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e8%87%ba%e4%b8%ad%e5%b8%82%e7%ab%8b%e8%87%ba%e4%b8%ad%e5%a5%b3%e5%ad%90%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e3%80%8c%e7%95%b6ai%e9%81%87%e4%b8%8a/",
    "category": "研習活動",
    "first_seen": "2026-11-03T11:55:01+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "公假",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "公假",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92342",
@@ -936,7 +2025,94 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/03/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e5%bd%b0%e5%8c%96%e5%b8%ab%e7%af%84%e5%a4%a7%e5%ad%b8%e3%80%8c115%e5%b9%b4%e8%87%b3116%e5%b9%b4%e9%ab%98%e4%b8%ad%e8%8b%b1%e8%aa%9e%e6%96%87/",
    "category": "研習活動",
    "first_seen": "2026-11-03T11:55:01+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-25",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "3886b7225c2aabd3ab469e51530acf702e72ecf3d103c04f30fb56cb806d1c5f"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event",
+       "#grading"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "公假",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92336",
