@@ -1182,7 +1182,10 @@
   /* Penalties (記過、警告、愛校服務…) are written only in the handbook's 獎懲 chapters, whose titles never
      name the act (遲到、打架、段考). A question about what happens must always read those chapters. */
   var PENALTY_ASK = /會怎樣|會怎麼樣|會如何|後果|下場|記過|記(?:幾|一|兩)?支|被記|處罰|懲處|處分|懲罰|被罰|罰則|扣分|警告|申誡|小過|大過|退學|留校察看|違規|愛校服務/;
-  var PENALTY_DOC = /獎懲規定|獎懲辦法|懲處|改過銷過|銷過|愛校服務/;
+  var PENALTY_DOC = /獎懲規定|獎懲辦法|懲處|愛校服務|週末生活輔導|考試要點|考試規則|學生學習評量辦法$/;
+  var PENALTY_TEXT = /記(?:警告|申誡|小過|大過|過|[一二三兩]大過)|警告|申誡|零分|扣[^，。]{0,6}分|週輔|生活輔導|愛校服務|懲處|處分|移送警|勒令|退宿|不得(?:進入|入場|參加)|不准入場|以曠課(?:處理|論)|適性輔導/;
+  var CONCRETE_PENALTY = /記(?:警告|申誡|小過|大過|[一二三兩]大過)|警告[一二兩\d乙]?次|零分|扣[^，。]{0,6}分|週輔|愛校服務|勒令|退宿|不得(?:進入|入場)|不准入場/;
+  var PENALTY_WORD = /^(?:處罰|懲處|處分|懲罰|被罰|罰則|記過|記警告|警告|申誡|小過|大過|記小過|記大過|扣分|退學|後果|下場|違規)$/;
   function asksPenalty(query) { return PENALTY_ASK.test(clean(query)); }
   function penaltyDocs(items, query) {
     var evening = /進修|夜間部/.test(query || "");
@@ -1206,7 +1209,7 @@
     return out;
   }
   /* Rules are numbered (一、 (一) 1. 第三條) or are timetable rows (12:35-13:10 午休). */
-  var CLAUSE_START = /^\s*(?:[一二三四五六七八九十]+、|[壹貳參肆伍陸柒捌玖拾]+、|[（(][一二三四五六七八九十]+[)）]|\d{1,2}[.、](?!\d)|第[一二三四五六七八九十百]+條|※|\d{1,2}:\d{2})/;
+  var CLAUSE_START = /^\s*(?:[一二三四五六七八九十廿卅]+、|[壹貳參肆伍陸柒捌玖拾]+、|[（(][一二三四五六七八九十廿卅]+[)）]|\d{1,2}[.、](?!\d)|第[一二三四五六七八九十百廿卅]+條|※|\d{1,2}:\d{2})/;
   var RULE_SKIP = /^(?:[一二三四五六七八九十]+、|[壹貳參肆伍陸柒捌玖拾]+、|第[一二三四五六七八九十]+條\s*)?(?:實施)?依據|經校務會議.*(?:實施|修正)|^本(?:要點|辦法|規定|細則)(?:經|自)/;
   function ruleClauses(text) {
     var out = [], current = "", previous = "";
@@ -1227,19 +1230,33 @@
   }
   /* A list item inherits the heading above it: 「學生有下列情形之一者，記小過：」 then
      「(一)考試時夾帶…」 means 考試時夾帶 → 記小過. Returns [{ text, ctx, heading }]. */
-  var LIST_ITEM = /^(?:[（(][一二三四五六七八九十\d]+[)）]|\d+[.、．]|[一二三四五六七八九十]+[、．])/;
-  var HEADING_END = /[：:]$|如下[：:。]?$|之一者[，,]?[^。]{0,12}[：:]?$/;
+  var LIST_ITEM = /^\s*(?:[（(]\s*[一二三四五六七八九十廿卅\d]+\s*[)）]|\d+\s*[.、．]|[一二三四五六七八九十廿卅]+\s*[、．])\s*/;
+  /* 「…之一者，記大過一次，且該科成績零分計算。」 is a heading too, though it ends with 「。」. */
+  var HEADING_END = /[：:]$|如下[：:。]?$|之一者[，,]?[^。]{0,12}[：:]?$|下列[^。，]{0,8}之一者[，,][^。]{0,40}[。．]?$/;
+  /* List levels: 第十條 > 五、 > (一) > 1. A heading at one level frames the items below it
+     (「…給予生活輔導：」 › 「(一)生活常規：」 › 「10.集會…使用手機」; 嘉女「第十條 有下列事蹟之一者記警告：」 › 「六、…」). */
+  function listLevel(text) {
+    if (/^\s*第\s*[一二三四五六七八九十百廿卅\d]+\s*條/.test(text)) return 0;
+    if (/^\s*[一二三四五六七八九十廿卅]+\s*[、．]/.test(text)) return 1;
+    if (/^\s*[（(]/.test(text)) return 2;
+    if (/^\s*\d+\s*[.、．]/.test(text)) return 3;
+    return -1;
+  }
   function withHeadings(list) {
-    var heading = "", out = [];
+    var stack = [], out = [];
     list.forEach(function (text) {
       text = clean(text);
-      var item = LIST_ITEM.test(text) && heading && !HEADING_END.test(text);
-      out.push({ text: text, heading: item ? heading : "", ctx: item ? heading + " " + text : text });
-      if (HEADING_END.test(text)) heading = text.replace(LIST_ITEM, "");
-      else if (!LIST_ITEM.test(text)) heading = "";
+      var level = listLevel(text), isHeading = HEADING_END.test(text);
+      var above = level < 0 ? [] : stack.slice(0, level).filter(Boolean);
+      var heading = !isHeading && above.length ? above.join(" ") : "";
+      out.push({ text: text, heading: heading, ctx: heading ? heading + " " + text : text });
+      if (isHeading) { stack = stack.slice(0, Math.max(level, 0)); stack[Math.max(level, 0)] = text.replace(LIST_ITEM, "").replace(/^第\s*[一二三四五六七八九十百廿卅\d]+\s*條\s*/, ""); }
+      else if (level < 0) stack = [];
+      else stack = stack.slice(0, level + 1);
     });
     return out;
   }
+  function framedText(f) { return f.heading ? f.heading.replace(/[：:。．]$/, "") + "：" + f.text.replace(LIST_ITEM, "") : f.text; }
   function ruleText(record) {
     return (record && record.attachments || []).map(function (a) { return a && a.embedded_text || ""; }).join("\n") ||
       (record && record.blocks || []).map(function (b) { return b && (b.text || (b.items || []).join("\n") || (b.rows || []).map(function (r) { return (r || []).join(" "); }).join("\n")) || ""; }).join("\n");
@@ -1266,17 +1283,46 @@
     rest.forEach(function (t) { if (Synonyms) Synonyms.find(t).forEach(function (k) { synonymsOf(k).forEach(function (s) { if (s.length >= 2) related.push(s); }); }); });
     /* One group per asked word: every way to write it (段考: 定期考查、考試、試場…; 記過: 記大過、小過…).
        A clause is scored by how many of the asked words it covers, not by how many synonyms it has. */
-    var groups = unique(literal.concat(rest)).filter(function (t) { return t.length >= 2 && !/^(?:會被|怎樣|怎麼|如何|什麼|可以|需要|規定)$/.test(t); }).map(function (t) {
+    /* 「上課用手機」: 上課 is where it happens, not what is asked about. */
+    var penalty = asksPenalty(query);
+    var groups = unique(literal.concat(rest).map(function (t) { return t.replace(/^(?:上課|在校|校內|上學|學校)(?=.{2,})/, "").replace(/(?:用|時)$/, ""); }))
+      .filter(function (t) { return t.length >= 2 && !/^(?:會被|怎樣|怎麼|如何|什麼|可以|需要|規定|上課|在校|校內|上學|學校|記過)$/.test(t) || (t === "記過" && !penalty); }).map(function (t) {
       var forms = synonymsOf(t).concat(Synonyms && Synonyms.INCLUDES && Synonyms.INCLUDES[t] || []);
       var topic = (plan.term_matches || []).filter(function (row) { return row.kind === "topic" && compact(row.term) === t; })[0];
       var tt = topic && topics.filter(function (x) { return x.id === topic.id; })[0];
-      if (tt) forms = forms.concat(tt.terms.map(compact));
-      return { word: t, forms: unique([t].concat(forms.map(compact))).filter(function (f) { return f.length >= 2; }) };
+      /* The topic's other words (段考 → 考試、試場; 遲到 → 早退、曠課) count for less than the word
+         itself in a penalty question, which is about one act. */
+      var loose = tt ? tt.terms.map(compact) : [];
+      if (!penalty) { forms = forms.concat(loose); loose = []; }
+      var strict = unique([t].concat(forms.map(compact))).filter(function (f) { return f.length >= 2; });
+      return { word: t, forms: strict, loose: unique(loose).filter(function (f) { return f.length >= 2 && strict.indexOf(f) === -1; }) };
     });
+    if (penalty) {
+      /* The asked penalty (處罰、記過) is checked separately; the groups are the act. */
+      groups = groups.filter(function (g) { return !PENALTY_WORD.test(g.word); });
+      /* 「服裝不整」 is one act, though the planner reads 服裝 + 不整. */
+      var cq = compact(query);
+      ((Synonyms && Synonyms.SAME) || []).forEach(function (group) {
+        var phrase = group.map(compact).filter(function (w) { return w.length >= 3 && cq.indexOf(w) !== -1; })[0];
+        if (!phrase) return;
+        groups = groups.filter(function (g) { return phrase.indexOf(g.word) === -1; });
+        groups.push({ word: phrase, forms: unique(group.map(compact)), loose: [] });
+      });
+      /* A rule about 考試 covers 段考 (INCLUDES 考試 ⊃ 段考): the broader word counts in full. */
+      var includes = (Synonyms && Synonyms.INCLUDES) || {};
+      groups.forEach(function (g) {
+        Object.keys(includes).forEach(function (parent) {
+          if (includes[parent].map(compact).indexOf(g.word) !== -1 && !PENALTY_WORD.test(parent)) g.forms = unique(g.forms.concat([compact(parent)]));
+        });
+      });
+      /* 作弊 is punished under the exam rules (「違反本校『試場規則…』」). */
+      groups.forEach(function (g) { if (g.forms.some(function (f) { return /作弊|舞弊/.test(f); })) g.loose = unique((g.loose || []).concat(["試場", "考試"])); });
+    }
     return { literal: unique(literal), related: unique(related), rest: unique(rest), groups: groups };
   }
   function scoreClause(clause, terms, query, title) {
-    var c = compact(clause), score = 0;
+    /* 「(不含服儀違規…遲到)」 says the rule is NOT about 遲到. */
+    var c = compact(String(clause).replace(/[（(]\s*不(?:含|包括|包含)[^)）]*[)）]/g, "")), score = 0;
     if (RULE_SKIP.test(clause) || REVISION_HISTORY.test(clause)) return 0;
     /* A short heading (「圖書館借閱辦法」) names the rule but does not answer anything. */
     if (clause.length < 14 && !/[。；;：:]|\d|[一二三四五六七八九十]+(?:天|日|週|冊|次|時|分)/.test(clause)) return 0;
@@ -1296,11 +1342,29 @@
     /* 「段考怎樣會被記過」: a clause about the exam AND the penalty beats one about either alone.
        Asked words the chapter title already covers (獎懲 for 記過) count as covered. */
     var groups = terms.groups || [];
+    /* 偷東西 → 竊取、打架 → 毆打: a clause using the handbook's word counts almost like the asked word. */
+    var cc = c;
+    var has = function (list) { return list.some(function (f) { return cc.indexOf(f) !== -1; }); };
+    if (asksPenalty(query)) groups.forEach(function (g) {
+      if (cc.indexOf(g.word) !== -1) return;
+      if (has(g.forms.filter(function (f) { return f !== g.word; }))) score += 7;
+      else if (has(g.loose || [])) score += 3;
+    });
+    /* 「…會怎樣」 wants the clause that says the penalty, not the one that defines the act. */
+    if (score && asksPenalty(query)) {
+      /* A concrete penalty (記小過、零分、週輔) beats a passing mention of 懲處. */
+      score += CONCRETE_PENALTY.test(clause) ? 6 : PENALTY_TEXT.test(clause) ? 2 : -6;
+      /* A rule for exam time or the dorm answers 「上課用手機」 only when the exam or dorm was asked. */
+      if (/考試時|試場|監考/.test(clause) && !/考|試/.test(query)) score -= 6;
+      if (/晚自習|住宿|宿舍|舍監|學苑/.test(clause) && !/晚自習|住宿|宿舍|學苑/.test(query)) score -= 6;
+    }
     if (groups.length >= 2) {
       var t = compact(title);
-      var inClause = groups.filter(function (g) { return g.forms.some(function (f) { return c.indexOf(f) !== -1; }); }).length;
-      var inTitle = groups.filter(function (g) { return g.forms.some(function (f) { return t.indexOf(f) !== -1; }); }).length;
-      score += inClause * 8;
+      var inClause = groups.filter(function (g) { return has(g.forms); }).length;
+      var looseIn = groups.filter(function (g) { return !has(g.forms) && has(g.loose || []); }).length;
+      var inTitle = groups.filter(function (g) { return g.forms.concat(g.loose || []).some(function (f) { return t.indexOf(f) !== -1; }); }).length;
+      score += inClause * 8 + looseIn * 4;
+      inClause += looseIn;
       if (inClause + Math.min(inTitle, 1) < groups.length) score -= 8;
     }
     if (clause.length > 260) score -= 2;
@@ -1309,7 +1373,15 @@
   function ruleAnswer(query, ranked, details) {
     var terms = ruleTerms(query);
     if (!terms.literal.length && !terms.rest.length) return null;
-    var best = null;
+    var best = null, penaltyAsk = asksPenalty(query);
+    var actHit = function (text) {
+      var c = compact(String(text).replace(/[（(]\s*不(?:含|包括|包含)[^)）]*[)）]/g, ""));
+      /* 「違反本校『學生考試要點』」 points to the rules about 考試: the quoted name counts with the topic's words. */
+      var named = compact((String(text).match(/「[^」]{2,20}」/g) || []).join(" "));
+      return !terms.groups.length || terms.groups.every(function (g) {
+        return g.forms.some(function (f) { return c.indexOf(f) !== -1; }) || (g.loose || []).some(function (f) { return named.indexOf(f) !== -1; });
+      });
+    };
     ranked.slice(0, 12).forEach(function (row, position) {
       if (!isSchoolDoc(row.item) || !details[row.item.id]) return;
       var title = clean(row.item.title || ""), compactTitle = compact(title);
@@ -1317,6 +1389,11 @@
       (row.item.documents || []).forEach(function (doc) { linkLabels[compact(doc && doc.name || "")] = true; });
       /* A chapter whose own title is about the subject (行動載具 for 手機) beats one that only mentions it. */
       var titleBonus = terms.literal.concat(terms.related).some(function (t) { return t.length >= 2 && compactTitle.indexOf(t) !== -1; }) ? 4 : 0;
+      /* Penalty questions: the 獎懲規定 is the main source; dorm rules apply only to boarders. */
+      if (asksPenalty(query)) {
+        if (/獎懲規定|獎懲辦法/.test(title)) titleBonus += 6;
+        if (/住宿|學苑|宿舍|自修室/.test(title) && !/住宿|宿舍|學苑|晚自習|自修/.test(query)) titleBonus -= 10;
+      }
       var clauses = ruleClauses(ruleText(details[row.item.id])), framed = withHeadings(clauses);
       clauses.forEach(function (clause, index, all) {
         /* A clause made only of link labels (「服裝儀容委員名單 服裝儀容規定」) is not an answer. */
@@ -1324,12 +1401,14 @@
         Object.keys(linkLabels).forEach(function (label) { if (label) rest = rest.split(label).join(""); });
         var ctx = framed[index] && framed[index].heading ? framed[index].ctx : clause;
         var base = rest.replace(/[。．.、，,]/g, "").length < 6 ? 0 : scoreClause(ctx, terms, query, title);
-        var score = base ? base + titleBonus - position : 0;
-        if (!best || score > best.score) best = { score: score, clause: clause, heading: framed[index] && framed[index].heading || "", index: index, all: all, row: row };
+        /* A penalty answer names the act and states the penalty; otherwise say none was found. */
+        if (base && penaltyAsk && !(PENALTY_TEXT.test(ctx) && actHit(ctx))) base = 0;
+        var score = base ? base + titleBonus - (row.penaltyDoc ? 0 : position) : 0;
+        if (!best || score > best.score) best = { score: score, base: base, clause: clause, heading: framed[index] && framed[index].heading || "", index: index, all: all, row: row };
       });
     });
     if (!best || best.score < 10) return null;
-    var picked = [best.heading ? best.heading.replace(/[：:]$/, "") + "：" + best.clause.replace(LIST_ITEM, "") : best.clause];
+    var picked = [framedText({ heading: best.heading, text: best.clause })];
     /* 「作息時間表如下：」 needs the rows after it. */
     if (!best.heading && /[：:]$|如下/.test(best.clause)) picked = picked.concat(best.all.slice(best.index + 1, best.index + 5));
     else {
@@ -1338,8 +1417,9 @@
         if (index === best.index) return;
         var f = bestFramed[index] || { ctx: clause, heading: "" };
         var score = scoreClause(f.heading ? f.ctx : clause, terms, query, best.row.item.title || "");
-        var text = f.heading ? f.heading.replace(/[：:]$/, "") + "：" + clause.replace(LIST_ITEM, "") : clause;
-        if (score >= Math.max(10, best.score * 0.8) && (!second || score > second.score)) second = { score: score, clause: text, index: index };
+        var text = framedText({ heading: f.heading, text: clause });
+        if (penaltyAsk && !(PENALTY_TEXT.test(f.ctx) && actHit(f.ctx))) return;
+        if (score >= Math.max(10, (penaltyAsk ? best.base || best.score : best.score) * 0.8) && (!second || score > second.score)) second = { score: score, clause: text, index: index };
       });
       if (second) picked = second.index < best.index ? [second.clause, picked[0]] : [picked[0], second.clause];
     }
@@ -1941,7 +2021,12 @@
       items = (items || []).filter(function (item) { return item && !skip[String(item.id)] && !(options.dropResults && TITLE_RESULT.test(clean(item.title || ""))); });
     }
     var split = splitQuestion(query);
-    var result = split ? answerParts(query, split, items, details, options) : answerCore(query, items, details, options);
+    /* 「打架會怎樣」: when the handbook has a clause that says the penalty for it, that clause is the
+       answer, not an overview of 打架 with the penalty as a side note. */
+    var onlyPenalty = split && split.parts.every(function (p) { return p.aspect.id === "consequence"; });
+    var penaltyFirst = onlyPenalty && asksPenalty(query) ? answerCore(query, items, details, options) : null;
+    if (penaltyFirst && penaltyFirst.status === "answered" && penaltyFirst.mode === "rule" && PENALTY_TEXT.test(penaltyFirst.summary || "")) split = null;
+    var result = penaltyFirst && !split ? penaltyFirst : split ? answerParts(query, split, items, details, options) : answerCore(query, items, details, options);
     /* Splitting found nothing but the whole question does: keep the whole-question answer. */
     if (split && result && result.status !== "answered") {
       var whole = answerCore(query, items, details, options);
@@ -2198,7 +2283,10 @@
   /* Sentences that say what happens if you don't (懲處、記過、扣分、零分、曠課…), from the
      subject's rules and notices that can be read here. */
   function penaltySentence(part, overview, items, details, options) {
-    var forms = (Synonyms ? Synonyms.concepts(part.subject) : [part.subject]).filter(function (f) { return f.length >= 2; });
+    /* The act itself and its other names (打架 → 鬥毆、毆打), not its broad topic (手機 → 生活). */
+    var subjectGroups = ruleTerms(part.subject + "會怎樣").groups;
+    var forms = unique([].concat.apply([part.subject], subjectGroups.map(function (g) { return g.forms; }))
+      .concat(Synonyms ? Synonyms.expand(part.subject) : []).map(compact)).filter(function (f) { return f.length >= 2 && ALWAYS_GENERIC.indexOf(f) === -1; });
     var rows = rank(part.subject, items, details, options).slice(0, 8);
     /* Penalties are written in the handbook: its 獎懲 chapters are read first, then the subject's
        own chapters, and notices only when the handbook says nothing. */
@@ -2213,7 +2301,7 @@
     /* A penalty sentence that names the subject (考試舞弊者，記大過) beats one that only sits in the
        same document (記大過以上通知家長). A list item counts with its heading (記小過：(一)考試…). */
     var hit = null, loose = null;
-    var mentions = function (text) { var c = compact(text); return forms.some(function (f) { return c.indexOf(f) !== -1; }); };
+    var mentions = function (text) { var c = compact(String(text).replace(/[（(]\s*不(?:含|包括|包含)[^)）]*[)）]/g, "")); return forms.some(function (f) { return c.indexOf(f) !== -1; }); };
     var titleAbout = {};
     rows.forEach(function (row) { if (mentions(row.item.title || "")) titleAbout[row.item.id] = true; });
     /* Headings carry across a document's segments, so frame each document's segments in order. */
@@ -2228,9 +2316,12 @@
       if (hit) return;
       row.framed.forEach(function (s) {
         if (hit) return;
-        var penal = Composer.PENALTY.test(s.ctx) && (/未|逾期|沒有|不依|違反|遲交|缺交|不交|拒|情形之一|者/.test(s.ctx));
+        /* 「全勤獎資格：未有缺曠課…紀錄」 is an award condition, not a penalty. */
+        var penal = Composer.PENALTY.test(s.ctx) && PENALTY_TEXT.test(s.ctx) && !/全勤|遴選|獎資格|模範生/.test(s.ctx) &&
+          (/未|逾期|沒有|不依|違反|遲交|缺交|不交|拒|情形之一|者/.test(s.ctx));
         if (!penal) return;
-        var text = s.heading ? s.heading.replace(/[：:]$/, "") + "：" + s.text.replace(LIST_ITEM, "") : s.text;
+        if (/銷過|改過/.test(s.ctx)) return;   // clearing a penalty is not the penalty
+        var text = framedText(s);
         if (mentions(s.text)) { hit = { text: text, id: row.id }; return; }
         if (!loose && row.about && titleAbout[row.id] && /未|逾期|沒有|不依|遲交|缺交|不交|拒/.test(s.ctx)) loose = { text: text, id: row.id };
       });
@@ -2256,7 +2347,10 @@
     if (Tokens) {
       var asked = Tokens.tokenizeQuestion(part.subject + "沒交會怎樣");
       var labelled = (items || []).map(function (item) { return { item: item, hit: item && item.tokens ? Tokens.match(item.tokens, asked) : null }; })
-        .filter(function (row) { return row.hit && row.hit.segment && row.hit.kinds && row.hit.segment.k.indexOf("penalty") !== -1 && !TITLE_RESULT.test(clean(row.item.title || "")); })
+        /* Penalties are written in the handbook, or in the subject's own notice (閱讀心得 → its 繳交流程),
+           not in a scholarship notice that happens to have a penalty segment. */
+        .filter(function (row) { return row.hit && row.hit.segment && row.hit.kinds && row.hit.segment.k.indexOf("penalty") !== -1 && !TITLE_RESULT.test(clean(row.item.title || "")) &&
+          (isSchoolDoc(row.item) || compact(row.item.title || "").indexOf(compact(part.subject)) !== -1); })
         .sort(function (a, b) { return b.hit.score - a.hit.score || String(b.item.date || "").localeCompare(String(a.item.date || "")); })[0];
       if (labelled) {
         var it = labelled.item, label = isSchoolDoc(it) ? (it.school_name || "") + docLabel(it).replace(/的〈/, "〈") : sourceLabel(it).replace(/^根據/, "");
@@ -2383,6 +2477,16 @@
       sources.forEach(function (source) { shown[source.id] = true; });
       return { layer: key, label: LAYER_LABELS[key], summary: clean(layer.summary || ""), text: LAYER_LABELS[key] + "也有寫到：" + clean(layer.summary || ""), sources: sources };
     }).filter(function (row) { return row.summary && row.sources.length; });
+    /* A penalty answer from the handbook: a notice adds something only when it states a penalty
+       for the same act (not a firewall notice that says 竊取, nor an award's conditions). */
+    if (main.layer === "rule" && main.mode === "rule" && asksPenalty(query)) {
+      var act = ruleTerms(query).groups;
+      main.also = main.also.filter(function (row) {
+        if (row.layer !== "announcement") return true;
+        var c = compact(row.summary);
+        return CONCRETE_PENALTY.test(row.summary) && act.every(function (g) { return g.forms.some(function (f) { return c.indexOf(f) !== -1; }); });
+      });
+    }
     /* No direct answer in the announcements, but related ones exist: list them to open. */
     var notices = layers.announcement;
     if (main.status === "answered" && answered.indexOf("announcement") === -1 && notices && (notices.related || []).length) {
@@ -2543,7 +2647,7 @@
       /* 「(一)考試舞弊者」 under 「…記大過：」 is quoted with its heading. */
       var framed = withHeadings(segments.map(function (segment) { return segment.text; }));
       segments.map(function (segment, index) {
-        var f = framed[index], text = f && f.heading ? f.heading.replace(/[：:]$/, "") + "：" + segment.text.replace(LIST_ITEM, "") : segment.text;
+        var f = framed[index], text = f && framedText({ heading: f && f.heading, text: segment.text });
         return { text: text, meta: segment.meta || {}, score: evidenceScore(text, queryTokens, wanted, plan, row.item) + (index === pointed ? 60 : 0), item: row.item };
       }).filter(function (candidate) {
         return candidateQualifies(candidate, plan) && (!Validity || Validity.sentencePolicy(candidate.text, row.validity, query) !== "exclude");
@@ -2581,5 +2685,5 @@
   }
   return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank, readList: readList, asksPenalty: asksPenalty, penaltyDocs: penaltyDocs,
     smoothEvidence: smoothEvidence, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, correction: correction, comparePlan: comparePlan, compareResults: compareResults, smallTalk: smallTalk, wantsLink: wantsLink, answerLinks: answerLinks, scoreClause: scoreClause, ruleTerms: ruleTerms, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, correction: correction, comparePlan: comparePlan, compareResults: compareResults, smallTalk: smallTalk, wantsLink: wantsLink, answerLinks: answerLinks, scoreClause: scoreClause, ruleTerms: ruleTerms, withHeadings: withHeadings, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });
