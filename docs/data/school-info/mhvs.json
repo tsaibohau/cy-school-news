@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mhvs",
- "generated_at": "2026-11-04T11:14:01+08:00",
+ "generated_at": "2026-11-04T19:10:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "234958134093923": {
@@ -615,23 +615,33 @@
    "page_id": 248203274664148,
    "url": "https://www.mhvs.cyc.edu.tw/modules/tad_web/page.php?WebID=4&CateID=308",
    "label": "設備組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教務處"
    ],
-   "order": 49
+   "order": 49,
+   "checked_at": "2026-11-04T19:10:29+08:00",
+   "path": [
+    "教務處",
+    "設備組"
+   ]
   },
   "244014355835526": {
    "page_id": 244014355835526,
    "url": "https://www.mhvs.cyc.edu.tw/modules/tad_web/page.php?WebID=4&CateID=311",
    "label": "特教組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教務處"
    ],
-   "order": 50
+   "order": 50,
+   "checked_at": "2026-11-04T19:10:30+08:00",
+   "path": [
+    "教務處",
+    "特教組"
+   ]
   },
   "170603297935364": {
    "page_id": 170603297935364,
@@ -3940,5 +3950,5 @@
   "fdae5d8dc9",
   "ffc51e2322"
  ],
- "last_run_at": "2026-11-04T11:14:01+08:00"
+ "last_run_at": "2026-11-04T19:10:32+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T10:59:31+08:00",
+ "generated_at": "2026-11-04T18:49:27+08:00",
  "school": {
   "id": "nnkieh",
   "name": "國立南科國際實驗高中",
@@ -8,6 +8,539 @@
   "base": "https://www.nnkieh.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "nnkieh-892",
+   "title": "訊息轉知｜「青年百億海外圓夢基金計畫」116年第1梯次報名簡章",
+   "date": "2026-11-04",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=892",
+   "category": "招生編班",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-10-30",
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-10-30",
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnkieh-890",
+   "title": "【重要訊息】「116學年度身心障礙學生升學大專校院甄試簡章」暨應屆畢業生團報",
+   "date": "2026-11-04",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=890",
+   "category": "升學",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-24",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "608c1a3415d2d63a5db80172dab3104f4dbb7007d50339786c7a269e1f0a3073"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-03-19",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "608c1a3415d2d63a5db80172dab3104f4dbb7007d50339786c7a269e1f0a3073"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "升學",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-11-24",
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-03-19",
+       "2027-03-21"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-03-22"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-04-23"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "志願",
+       "網路",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-05-27",
+       "2027-06-02"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "轉學",
+       "#enrollment"
+      ],
+      "k": [
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "統測",
+       "四技二專",
+       "考試",
+       "#admission",
+       "#exam",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-17"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-11-24",
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-03-19",
+       "2027-03-21"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-03-22"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-04-23"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "志願",
+       "網路",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-05-27",
+       "2027-06-02"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "轉學",
+       "#enrollment"
+      ],
+      "k": [
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "統測",
+       "四技二專",
+       "考試",
+       "#admission",
+       "#exam",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-17"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnkieh-888",
+   "title": "「第23屆竹園岡全國高中職學生流音大賽」及「第20屆竹園岡全國高中職學生流舞大賽」",
+   "date": "2026-11-04",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=888",
+   "category": "競賽",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnkieh-887",
+   "title": "「2027金車曙光寒假物資贊助計劃」",
+   "date": "2026-11-04",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=887",
+   "category": "一般",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nnkieh-879",
    "title": "清華大學資訊工程學系與臺灣大專院校人工智慧學程聯盟(TAICA)等單位訂於116年1月25日至28日共同辦理「2027Fun AI Camp」人工智慧營隊",

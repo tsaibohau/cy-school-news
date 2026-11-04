@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T10:59:31+08:00",
+ "generated_at": "2026-11-04T18:49:27+08:00",
  "school": {
   "id": "ksaivs",
   "name": "國立岡山農工",
@@ -8,6 +8,112 @@
   "base": "https://www.ksvs.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "ksaivs-189862",
+   "title": "【營隊活動】嘉義大學-第十四屆獸醫營活動",
+   "date": "2026-11-04",
+   "source_category": "",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/406-1004-189862,r18.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-25",
+     "provenance": "verified_announcement_event",
+     "source_revision": "eab67d398ecb8147ee37b9685b94d4063fcecff651b129f6d6873070c1f22f9c"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "ksaivs-189860",
    "title": "【衛生組】轉知「校園性教育（含性傳染 病防治）計畫」之「『全面性教育』教師專業成長研 習」，因受颱風影響延期至115年12月11日辦 理，鼓勵踴躍報名參加，",
@@ -20,8 +126,8 @@
    "first_seen": "2026-11-04T10:59:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [

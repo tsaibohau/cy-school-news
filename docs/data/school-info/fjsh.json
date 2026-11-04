@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-04T11:12:28+08:00",
+ "generated_at": "2026-11-04T19:08:56+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -2278,11 +2278,205 @@
   },
   "503": {
    "page_id": 503,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-04T19:08:51+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組",
+    "教師研習"
+   ],
+   "changed_at": "2026-11-04T19:08:51+08:00",
+   "content_hash": "48e251a1ab361b3a51edfacbc066061e411cf51543487d082aafb0cc427bb9ed",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "研習",
+    "工作坊",
+    "地址",
+    "報名",
+    "奧林匹亞",
+    "專線",
+    "招生",
+    "申請",
+    "自主學習",
+    "電話",
+    "體驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-503.json",
+   "detail_revision": "b6cb32b7e4035870dff0112a058699c4a08fd3a9f6c814daec23506e5721f7f6",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "奧林匹亞",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "地科",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "奧林匹亞",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "504": {
    "page_id": 504,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-04T19:08:54+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組",
+    "教科書版本"
+   ],
+   "changed_at": "2026-11-04T19:08:54+08:00",
+   "content_hash": "c4ea94ffdee5bd40f58bc61d4ca10629e65240179aa544dc49c6aaddb373a540",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-504.json",
+   "detail_revision": "9021569e7a16a163f5e8f23336f85a5c267b069ef7d0d90dae3c7385f107a055",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "505": {
    "page_id": 505,
@@ -4907,6 +5101,206 @@
    }
   },
   {
+   "id": "fjsh-info-503",
+   "kind": "school_info",
+   "title": "教務處 › 設備組 › 教師研習",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-503.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "研習",
+    "工作坊",
+    "地址",
+    "報名",
+    "奧林匹亞",
+    "專線",
+    "招生",
+    "申請",
+    "自主學習",
+    "電話",
+    "體驗"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-503.json",
+   "detail_revision": "b6cb32b7e4035870dff0112a058699c4a08fd3a9f6c814daec23506e5721f7f6",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "奧林匹亞",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "地科",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "奧林匹亞",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-504",
+   "kind": "school_info",
+   "title": "教務處 › 設備組 › 教科書版本",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-504.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-504.json",
+   "detail_revision": "9021569e7a16a163f5e8f23336f85a5c267b069ef7d0d90dae3c7385f107a055",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -5004,5 +5398,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-04T11:12:28+08:00"
+ "last_run_at": "2026-11-04T19:08:56+08:00"
 }

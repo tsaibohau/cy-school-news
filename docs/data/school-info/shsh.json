@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-04T11:13:02+08:00",
+ "generated_at": "2026-11-04T19:09:34+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -2945,23 +2945,127 @@
    "page_id": 109931186577960,
    "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_210/%e6%95%99%e5%ad%b8%e7%b5%84%e8%a1%a8%e5%96%ae%e4%b8%8b%e8%bc%89/",
    "label": "教學組表單下載",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 35
+   "order": 35,
+   "checked_at": "2026-11-04T19:09:30+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組",
+    "教學組表單下載"
+   ]
   },
   "192144746401398": {
    "page_id": 192144746401398,
    "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_220/%e8%a8%bb%e5%86%8a%e7%b5%84%e5%b7%a5%e4%bd%9c%e8%81%b7%e6%8e%8c/",
    "label": "註冊組工作職掌",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 36
+   "order": 36,
+   "checked_at": "2026-11-04T19:09:32+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "註冊組工作職掌"
+   ],
+   "changed_at": "2026-11-04T19:09:32+08:00",
+   "content_hash": "7f1637efa79263af1d91405b215ed414dec53bbf7f8c95a5730e6d6404790548",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "分機",
+    "助學金",
+    "學生證",
+    "獎助學金",
+    "申請",
+    "補考",
+    "轉學"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-192144746401398.json",
+   "detail_revision": "f984718a745574fb9fa1ac6913652f3e66324e24343a98cd1aa8ed541c9b3c71",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "轉學",
+       "休學",
+       "復學",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "重補修",
+       "補考",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "成績單",
+       "學生證",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "38160352874505": {
    "page_id": 38160352874505,
@@ -7177,6 +7281,104 @@
    }
   },
   {
+   "id": "shsh-info-192144746401398",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 註冊組工作職掌",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_220/%e8%a8%bb%e5%86%8a%e7%b5%84%e5%b7%a5%e4%bd%9c%e8%81%b7%e6%8e%8c/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "分機",
+    "助學金",
+    "學生證",
+    "獎助學金",
+    "申請",
+    "補考",
+    "轉學"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-192144746401398.json",
+   "detail_revision": "f984718a745574fb9fa1ac6913652f3e66324e24343a98cd1aa8ed541c9b3c71",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "轉學",
+       "休學",
+       "復學",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "重補修",
+       "補考",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "成績單",
+       "學生證",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "shsh-info-197137405121860",
    "kind": "school_info",
    "title": "網站政策 › 著作權聲明",
@@ -8210,5 +8412,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-04T11:13:02+08:00"
+ "last_run_at": "2026-11-04T19:09:34+08:00"
 }

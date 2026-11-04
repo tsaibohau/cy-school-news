@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-04T11:12:55+08:00",
+ "generated_at": "2026-11-04T19:09:30+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -1873,15 +1873,89 @@
    "page_id": 262469179785944,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e6%a0%a1%e5%8d%80%e5%b9%b3%e9%9d%a2%e5%9c%96/",
    "label": "校區平面圖",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T19:09:26+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校務資料開放",
+    "認識虎農",
+    "校區平面圖"
+   ],
+   "changed_at": "2026-11-04T19:09:26+08:00",
+   "content_hash": "723ef8bb54014f036887c5a1e2b04e7551362c9deda9a5c5e976d2b6303fe35d",
+   "doc_links": [],
+   "keywords": [
+    "宿舍",
+    "圖書館",
+    "學生宿舍"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-262469179785944.json",
+   "detail_revision": "94a3d23cdca47572257535062aeb963eeeff5469c501b2bd28e6a24786ddcaa1",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#campus_map"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "131204166136202": {
    "page_id": 131204166136202,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e6%a0%a1%e5%9c%92%e6%99%af%e8%a7%80/",
    "label": "校園景觀",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T19:09:28+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校務資料開放",
+    "認識虎農",
+    "校園景觀"
+   ]
   },
   "267735019631775": {
    "page_id": 267735019631775,
@@ -6762,6 +6836,74 @@
    "detail_ref": "data/details/hwaivs/hwaivs-info-254578793326658.json",
    "detail_revision": "4345e9b30fd49ef5c1cdc5ab14771074ea7b49e7e8c7a72e9e25ffad021e1ae8",
    "detail_status": "parsed"
+  },
+  {
+   "id": "hwaivs-info-262469179785944",
+   "kind": "school_info",
+   "title": "校務資料開放 › 認識虎農 › 校區平面圖",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e8%aa%8d%e8%ad%98%e8%99%8e%e8%be%b2/%e6%a0%a1%e5%8d%80%e5%b9%b3%e9%9d%a2%e5%9c%96/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "宿舍",
+    "圖書館",
+    "學生宿舍"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-262469179785944.json",
+   "detail_revision": "94a3d23cdca47572257535062aeb963eeeff5469c501b2bd28e6a24786ddcaa1",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#campus_map"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     }
+    ]
+   }
   }
  ],
  "roots": [
@@ -7007,5 +7149,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-04T11:12:55+08:00"
+ "last_run_at": "2026-11-04T19:09:30+08:00"
 }

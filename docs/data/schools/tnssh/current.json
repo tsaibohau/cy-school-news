@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T10:59:31+08:00",
+ "generated_at": "2026-11-04T18:49:27+08:00",
  "school": {
   "id": "tnssh",
   "name": "國立臺南二中",
@@ -8,6 +8,149 @@
   "base": "https://www.tnssh.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "tnssh-56787",
+   "title": "全國創新行銷暨高中職小論文競賽",
+   "date": "2026-11-04",
+   "source_category": "圖書館",
+   "school": "tnssh",
+   "school_name": "臺南二中",
+   "url": "https://www.tnssh.tn.edu.tw/2026/11/04/%e5%85%a8%e5%9c%8b%e5%89%b5%e6%96%b0%e8%a1%8c%e9%8a%b7%e6%9a%a8%e9%ab%98%e4%b8%ad%e8%81%b7%e5%b0%8f%e8%ab%96%e6%96%87%e7%ab%b6%e8%b3%bd/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "eaa56f2e695034fa55fdea2312dfd7599cdff67924d9ff64a283829a72204f45"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "小論文",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#contest",
+       "#library",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": [
+       "audience",
+       "fee"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "截止",
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnssh-55159",
+   "title": "【轉知】台師大主辦2026-2027第八屆科普閱讀力大賽，10月底前報名五折優待，可作自主學習成果，歡迎參加",
+   "date": "2026-11-04",
+   "source_category": "圖書館",
+   "school": "tnssh",
+   "school_name": "臺南二中",
+   "url": "https://www.tnssh.tn.edu.tw/2026/11/04/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%8f%b0%e5%b8%ab%e5%a4%a7%e4%b8%bb%e8%be%a62026-2027%e7%ac%ac%e5%85%ab%e5%b1%86%e7%a7%91%e6%99%ae%e9%96%b1%e8%ae%80%e5%8a%9b%e5%a4%a7%e8%b3%bd%ef%bc%8c10%e6%9c%88/",
+   "category": "競賽",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "報名",
+     "#self_learning"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#contest",
+       "#library",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "tnssh-56781",
    "title": "【轉知】中國科技大學「2026年度全國高中職校際AI × 日語創意行銷競賽」資訊",
@@ -20,8 +163,8 @@
    "first_seen": "2026-11-04T10:59:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -76,8 +219,8 @@
    "first_seen": "2026-11-04T10:59:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -117,8 +260,8 @@
    "first_seen": "2026-11-04T10:59:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -918,7 +1061,54 @@
    "url": "https://www.tnssh.tn.edu.tw/2026/10/30/%e5%90%88%e4%bd%9c%e7%a4%be10%e6%9c%88%e4%bb%bd%e7%99%be%e5%85%83%e5%9b%9e%e9%a5%8b%e5%90%88%e4%bd%9c%e9%80%b2%e6%ad%a5%e4%b8%ad%e7%8d%8e%e5%90%8d%e5%96%ae-2/",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "合作社"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "合作社",
+       "學生證",
+       "#student_id"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tnssh-56666",
@@ -930,7 +1120,128 @@
    "url": "https://www.tnssh.tn.edu.tw/2026/10/30/%e4%b8%ad%e5%a4%ae%e7%a0%94%e7%a9%b6%e9%99%a2%e8%88%89%e8%be%a6%e3%80%8c%e4%b8%ad%e7%a0%94%e8%ac%9b%e5%a0%82%e3%80%8d%e5%9f%ba%e9%9a%86%e5%a0%b4%e7%a7%91%e6%99%ae%e6%bc%94%e8%ac%9b/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "cb08832df4b95ed93b33e32f6ecd6ecf20829b4b61b02308242bb65abf5a0750"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-02",
+       "2026-11-16"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tnssh-56663",
@@ -942,7 +1253,135 @@
    "url": "https://www.tnssh.tn.edu.tw/2026/10/30/%e5%9c%8b%e7%ab%8b%e4%b8%ad%e5%a4%ae%e5%a4%a7%e5%ad%b8%e8%88%89%e8%be%a6-%e3%80%8c%e8%93%8b%e5%a9%ad%e7%a7%91%e6%99%ae%e8%ac%9b%e5%ba%a7%e7%b3%bb%e5%88%97%e7%ac%ac65%e8%ac%9b%e3%80%8d/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "71f495bcd8ead1db2b404c1546249c9b0870d334bdedc9cf8c732c32c2e02400"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tnssh-56660",
@@ -954,7 +1393,218 @@
    "url": "https://www.tnssh.tn.edu.tw/2026/10/30/%e5%9c%8b%e7%ab%8b%e9%ab%98%e9%9b%84%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%b8%e4%b8%bb%e8%be%a6%e3%80%8ch2gp-taiwan-2027%e5%a4%a7%e7%8d%8e%e8%b3%bd%ef%bc%8d%e5%85%a8%e7%90%83%e6%9c%80%e5%a4%a7%e8%b7%a8/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "762882842b85368ab6afb2702c6577a697aa48b7c400304164ec7b86a90f9e67"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "選組",
+       "#track"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "費用",
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "還書",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "費用",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04",
+       "2026-12-14"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-04"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-16"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-05-01"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tnssh-56658",
@@ -966,13 +1616,123 @@
    "url": "https://www.tnssh.tn.edu.tw/2026/10/30/%e3%80%90%e8%bc%94%e5%b0%8e%e5%ae%a4%e3%80%91%e6%88%90%e5%8a%9f%e5%a4%a7%e5%ad%b8%e6%b3%95%e5%be%8b%e7%b3%bb%e5%ad%b8%e7%b3%bb%e8%ac%9b%e5%ba%a7%e5%ae%a3%e5%b0%8e%ef%bc%88%e9%96%8b%e6%94%be%e9%ab%98/",
    "category": "升學",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-11",
+     "provenance": "verified_announcement_event",
+     "source_revision": "44f84092a4fa504d73253c96178c42bea5ccdab817453fed19cb193db49580e5"
+    }
+   ],
    "audience": {
     "grades": [
      1
     ],
     "classes": [],
     "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室",
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "輔導室",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
    }
   }
  ],

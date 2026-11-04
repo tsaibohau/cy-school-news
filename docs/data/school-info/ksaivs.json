@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-04T11:16:06+08:00",
+ "generated_at": "2026-11-04T19:12:26+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3430,8 +3430,71 @@
    "page_id": 32089398396083,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-555.php",
    "label": "家長會",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-04T19:12:25+08:00",
+   "path": [
+    "校內團體",
+    "家長會"
+   ],
+   "changed_at": "2026-11-04T19:12:25+08:00",
+   "content_hash": "c3950b020a9782a296f82564a7c7eed507fcda67000b95a3ec06d90270bcaf74",
+   "doc_links": [],
+   "keywords": [
+    "報名",
+    "競賽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-32089398396083.json",
+   "detail_revision": "c57f404305abbae4d5c1bc0ba5cd81a0d790d732851b5e84c32f1ed12390c4fc",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "家長"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "家長",
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "261165729635": {
    "page_id": 261165729635,
@@ -5759,6 +5822,42 @@
     "校友會"
    ],
    "order": 231
+  },
+  "121791573145896": {
+   "page_id": 121791573145896,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-557.php",
+   "label": "組織規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "家長會"
+   ],
+   "order": 232
+  },
+  "190728212140097": {
+   "page_id": 190728212140097,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-558.php",
+   "label": "組織成員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "家長會"
+   ],
+   "order": 233
+  },
+  "104940997423618": {
+   "page_id": 104940997423618,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-559.php",
+   "label": "校務與會委員",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "校內團體",
+    "家長會"
+   ],
+   "order": 234
   }
  },
  "handbook": {},
@@ -7073,6 +7172,72 @@
    "detail_ref": "data/details/ksaivs/ksaivs-info-29440400751565.json",
    "detail_revision": "093553cf190939ecefea0405cac634c7fa9152a9f3f18920584c5732c78eef35",
    "detail_status": "parsed"
+  },
+  {
+   "id": "ksaivs-info-32089398396083",
+   "kind": "school_info",
+   "title": "校內團體 › 家長會",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-555.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "報名",
+    "競賽"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-32089398396083.json",
+   "detail_revision": "c57f404305abbae4d5c1bc0ba5cd81a0d790d732851b5e84c32f1ed12390c4fc",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "家長"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "家長",
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "ksaivs-info-41128050815012",
@@ -9338,5 +9503,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-04T11:16:06+08:00"
+ "last_run_at": "2026-11-04T19:12:26+08:00"
 }

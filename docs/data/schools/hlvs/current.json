@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T10:59:31+08:00",
+ "generated_at": "2026-11-04T18:49:27+08:00",
  "school": {
   "id": "hlvs",
   "name": "國立西螺高級農工職業學校",
@@ -8,6 +8,37 @@
   "base": "https://www.hlvs.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "hlvs-70148",
+   "title": "國立臺南第一高級中學社團舉辦「第23屆竹園岡全國高中職學生流音大賽」及「第20屆竹園岡全國高中職學生流舞大賽」",
+   "date": "2026-11-04",
+   "source_category": "學生訊息",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?p=70148",
+   "category": "競賽",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "社團",
+     "#club"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "hlvs-70143",
    "title": "全民國防有獎徵答",
@@ -20,8 +51,8 @@
    "first_seen": "2026-11-04T10:59:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],

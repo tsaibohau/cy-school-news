@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-04T11:13:13+08:00",
+ "generated_at": "2026-11-04T19:09:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -315,15 +315,24 @@
    "page_id": 234665204431815,
    "url": "https://dnsh.ylc.edu.tw/WebsiteSecurityPolicy.htm",
    "label": "資訊安全政策",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T19:09:42+08:00",
+   "path": [
+    "首頁專用",
+    "資訊安全政策"
+   ]
   },
   "225960586050712": {
    "page_id": 225960586050712,
    "url": "https://dnsh.ylc.edu.tw/Default.aspx",
    "label": "雲林縣立斗南高級中學",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-04T19:09:44+08:00",
+   "path": [
+    "雲林縣立斗南高級中學"
+   ]
   },
   "211123921570052": {
    "page_id": 211123921570052,
@@ -683,6 +692,72 @@
     "網站資料開放宣告"
    ],
    "order": 62
+  },
+  "85007066235099": {
+   "page_id": 85007066235099,
+   "url": "https://dnsh.ylc.edu.tw/StudentHandbook.htm",
+   "label": "學生手冊",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "雲林縣立斗南高級中學"
+   ],
+   "order": 63
+  },
+  "225142239810319": {
+   "page_id": 225142239810319,
+   "url": "https://dnsh.ylc.edu.tw/Chunhui.htm",
+   "label": "春暉網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "雲林縣立斗南高級中學"
+   ],
+   "order": 64
+  },
+  "243272610833253": {
+   "page_id": 243272610833253,
+   "url": "https://dnsh.ylc.edu.tw/dnsh316.htm",
+   "label": "健康資訊學校",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "雲林縣立斗南高級中學"
+   ],
+   "order": 65
+  },
+  "31357253469219": {
+   "page_id": 31357253469219,
+   "url": "https://dnsh.ylc.edu.tw/dnsh1002.htm",
+   "label": "友善校園網站",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "雲林縣立斗南高級中學"
+   ],
+   "order": 66
+  },
+  "145145765858840": {
+   "page_id": 145145765858840,
+   "url": "https://dnsh.ylc.edu.tw/Scholarshipandbursaryarea.htm",
+   "label": "獎助學金專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "雲林縣立斗南高級中學"
+   ],
+   "order": 67
+  },
+  "56280778435141": {
+   "page_id": 56280778435141,
+   "url": "https://dnsh.ylc.edu.tw/Camparea.htm",
+   "label": "營隊專區",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "雲林縣立斗南高級中學"
+   ],
+   "order": 68
   }
  },
  "handbook": {},
@@ -894,5 +969,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-04T11:13:13+08:00"
+ "last_run_at": "2026-11-04T19:09:46+08:00"
 }

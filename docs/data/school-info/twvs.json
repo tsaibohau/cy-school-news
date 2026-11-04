@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "twvs",
- "generated_at": "2026-11-04T11:14:53+08:00",
+ "generated_at": "2026-11-04T19:11:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "210511608049060": {
@@ -516,34 +516,49 @@
    "page_id": 196941652560875,
    "url": "https://www.twvs.tn.edu.tw/school-affairs-support/",
    "label": "校務支援",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 42
+   "order": 42,
+   "checked_at": "2026-11-04T19:11:17+08:00",
+   "path": [
+    "關於本校",
+    "校務支援"
+   ]
   },
   "127588809615342": {
    "page_id": 127588809615342,
    "url": "https://www.twvs.tn.edu.tw/school-affairs-support/parents-association/",
    "label": "家長會",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 43
+   "order": 43,
+   "checked_at": "2026-11-04T19:11:19+08:00",
+   "path": [
+    "校務支援",
+    "家長會"
+   ]
   },
   "103469779096450": {
    "page_id": 103469779096450,
    "url": "https://www.twvs.tn.edu.tw/school-affairs-support/alumni-association/",
    "label": "校友會",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 44
+   "order": 44,
+   "checked_at": "2026-11-04T19:11:20+08:00",
+   "path": [
+    "校務支援",
+    "校友會"
+   ]
   },
   "173496926367273": {
    "page_id": 173496926367273,
@@ -2126,6 +2141,42 @@
     "幼兒園"
    ],
    "order": 178
+  },
+  "57011221711857": {
+   "page_id": 57011221711857,
+   "url": "https://www.twvs.tn.edu.tw/school-affairs-support/alumni-association/2",
+   "label": "組織章程",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "校務支援",
+    "校友會"
+   ],
+   "order": 179
+  },
+  "181418646724246": {
+   "page_id": 181418646724246,
+   "url": "https://www.twvs.tn.edu.tw/school-affairs-support/alumni-association/4",
+   "label": "歷年傑出校友",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "校務支援",
+    "校友會"
+   ],
+   "order": 180
+  },
+  "17209998349213": {
+   "page_id": 17209998349213,
+   "url": "https://www.twvs.tn.edu.tw/school-affairs-support/alumni-association/5",
+   "label": "畢業校友資料登錄",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "校務支援",
+    "校友會"
+   ],
+   "order": 181
   }
  },
  "handbook": {},
@@ -2407,5 +2458,5 @@
   "f3ef66c885",
   "f9693f2c0a"
  ],
- "last_run_at": "2026-11-04T11:14:53+08:00"
+ "last_run_at": "2026-11-04T19:11:22+08:00"
 }

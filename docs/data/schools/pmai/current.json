@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T10:59:31+08:00",
+ "generated_at": "2026-11-04T18:49:27+08:00",
  "school": {
   "id": "pmai",
   "name": "國立北門農工",
@@ -8,6 +8,107 @@
   "base": "https://www.pmai.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "pmai-28320",
+   "title": "全民電子競技運動聯賽",
+   "date": "2026-11-04",
+   "source_category": "最新消息",
+   "school": "pmai",
+   "school_name": "北門農工",
+   "url": "https://www.pmai.tn.edu.tw/news/%e5%85%a8%e6%b0%91%e9%9b%bb%e5%ad%90%e7%ab%b6%e6%8a%80%e9%81%8b%e5%8b%95%e8%81%af%e8%b3%bd-page28320",
+   "category": "一般",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
+  },
+  {
+   "id": "pmai-28316",
+   "title": "中華民國高級中等學校體育總會辦理「115年運動賽事學生志工招募及培訓」",
+   "date": "2026-11-04",
+   "source_category": "最新消息",
+   "school": "pmai",
+   "school_name": "北門農工",
+   "url": "https://www.pmai.tn.edu.tw/news/%e4%b8%ad%e8%8f%af%e6%b0%91%e5%9c%8b%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e9%ab%94%e8%82%b2%e7%b8%bd%e6%9c%83%e8%be%a6%e7%90%86%e3%80%8c115%e5%b9%b4%e9%81%8b%e5%8b%95%e8%b3%bd-page28316",
+   "category": "一般",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "志工",
+     "#volunteer"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "pmai-28313",
+   "title": "公告本校115年度總務處庶務組長公開甄選參加面試人員名單及相關事宜。",
+   "date": "2026-11-04",
+   "source_category": "最新消息",
+   "school": "pmai",
+   "school_name": "北門農工",
+   "url": "https://www.pmai.tn.edu.tw/news/%e5%85%ac%e5%91%8a%e6%9c%ac%e6%a0%a1115%e5%b9%b4%e5%ba%a6%e7%b8%bd%e5%8b%99%e8%99%95%e5%ba%b6%e5%8b%99%e7%b5%84%e9%95%b7%e5%85%ac%e9%96%8b%e7%94%84%e9%81%b8%e5%8f%83%e5%8a%a0%e9%9d%a2%e8%a9%a6-page28313",
+   "category": "升學",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "place",
+       "required"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "pmai-26207",
    "title": "吳其熊獎學金申請說明會",

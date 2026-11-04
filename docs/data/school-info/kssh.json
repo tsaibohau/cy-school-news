@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-04T11:15:59+08:00",
+ "generated_at": "2026-11-04T19:12:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -2392,13 +2392,78 @@
    "page_id": 46542080167281,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-5201.php",
    "label": "常用表單",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 27
+   "order": 27,
+   "checked_at": "2026-11-04T19:12:17+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "常用表單"
+   ],
+   "changed_at": "2026-11-04T19:12:17+08:00",
+   "content_hash": "48e088e557131927e69390659324df42adb72529da5cced826bd43d3171dca48",
+   "doc_links": [],
+   "keywords": [
+    "申請"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-46542080167281.json",
+   "detail_revision": "3bba670ed4a3444863d2ac5e1b830140272103d9f25cd906e56aa7d95e0ee913",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "校園停車申請表",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/574024984.doc"
+    },
+    {
+     "name": "岡山高中用印申請書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/477833056.doc"
+    },
+    {
+     "name": "財產報廢單",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/263078706.xlsx"
+    },
+    {
+     "name": "非 消 耗 品 報 廢 單",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/526104720.xlsx"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "停車"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "263478500316531": {
    "page_id": 263478500316531,
@@ -3101,6 +3166,78 @@
      "教務處"
     ],
     "segments": []
+   }
+  },
+  {
+   "id": "kssh-info-46542080167281",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 常用表單",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-5201.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [
+    "校園停車申請表",
+    "岡山高中用印申請書",
+    "財產報廢單",
+    "非 消 耗 品 報 廢 單"
+   ],
+   "keywords": [
+    "申請"
+   ],
+   "documents": [
+    {
+     "name": "校園停車申請表",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/574024984.doc"
+    },
+    {
+     "name": "岡山高中用印申請書",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/477833056.doc"
+    },
+    {
+     "name": "財產報廢單",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/263078706.xlsx"
+    },
+    {
+     "name": "非 消 耗 品 報 廢 單",
+     "url": "https://www.kssh.khc.edu.tw/var/file/1/1001/img/8/526104720.xlsx"
+    }
+   ],
+   "detail_ref": "data/details/kssh/kssh-info-46542080167281.json",
+   "detail_revision": "3bba670ed4a3444863d2ac5e1b830140272103d9f25cd906e56aa7d95e0ee913",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "停車"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     }
+    ]
    }
   },
   {
@@ -5313,5 +5450,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-04T11:15:59+08:00"
+ "last_run_at": "2026-11-04T19:12:22+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-04T11:12:33+08:00",
+ "generated_at": "2026-11-04T19:09:01+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -1759,11 +1759,138 @@
   },
   "136": {
    "page_id": 136,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-04T19:08:57+08:00",
+   "path": [
+    "行政單位",
+    "竹中總務處",
+    "文書組"
+   ],
+   "changed_at": "2026-11-04T19:08:57+08:00",
+   "content_hash": "a484e2fbb453e29f951eedf747981e4e69c9ab07332b7f4464382797641070b6",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "登記",
+    "校史",
+    "獎懲"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-136.json",
+   "detail_revision": "19f71b4dcd4a73440ac024cdd93ab04c81eea6018085462af37d4fc030b7d5f6",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "137": {
    "page_id": 137,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-04T19:08:59+08:00",
+   "path": [
+    "行政單位",
+    "竹中總務處",
+    "出納組"
+   ],
+   "changed_at": "2026-11-04T19:08:59+08:00",
+   "content_hash": "47f5ff3c9bf59f9e5fecfb322e3294fcbf19dcc1ed580085f446f8f39314ff51",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "登記"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-137.json",
+   "detail_revision": "0b102da508ca6edcc5bf686846dff284e50b7bc699663f8776b95261898d2e8d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   "138": {
    "page_id": 138,
@@ -3706,6 +3833,137 @@
    }
   },
   {
+   "id": "ccjh-info-136",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中總務處 › 文書組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-136.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "登記",
+    "校史",
+    "獎懲"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-136.json",
+   "detail_revision": "19f71b4dcd4a73440ac024cdd93ab04c81eea6018085462af37d4fc030b7d5f6",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccjh-info-137",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中總務處 › 出納組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-137.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-04",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "登記"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-137.json",
+   "detail_revision": "0b102da508ca6edcc5bf686846dff284e50b7bc699663f8776b95261898d2e8d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-143",
    "kind": "school_info",
    "title": "行政單位 › 竹中輔導處",
@@ -3918,5 +4176,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-04T11:12:33+08:00"
+ "last_run_at": "2026-11-04T19:09:01+08:00"
 }

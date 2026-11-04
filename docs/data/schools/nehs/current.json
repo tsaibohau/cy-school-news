@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-04T10:59:31+08:00",
+ "generated_at": "2026-11-04T18:49:27+08:00",
  "school": {
   "id": "nehs",
   "name": "國立嘉科實驗高級中學",
@@ -8,6 +8,431 @@
   "base": "https://www.nehs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "nehs-4692",
+   "title": "國立嘉科實中【高中部】115校慶運度會交通車乘坐調查表",
+   "date": "2026-11-04",
+   "source_category": "最新消息",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4692",
+   "category": "生活學務",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-14",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b154aa6606f018a58f0af87f92753b0d983c4566a698b88208139ff1db12a1f7"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b154aa6606f018a58f0af87f92753b0d983c4566a698b88208139ff1db12a1f7"
+    }
+   ],
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "校車",
+     "校慶",
+     "#transport",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "校車",
+       "校慶",
+       "#transport",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "運動會",
+       "校車",
+       "#transport",
+       "#celebration"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "校車",
+       "導師",
+       "家長",
+       "#transport",
+       "#safety"
+      ],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "到校時間",
+       "放學",
+       "校慶",
+       "#transport",
+       "#celebration",
+       "#daily_schedule"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "教官室",
+       "#transport",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "運動會",
+       "校車",
+       "#transport",
+       "#celebration"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#transport"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "導師",
+       "家長",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "到校時間",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "到校時間",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "放學",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "教官室",
+       "#transport",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4691",
+   "title": "財團法人張進通許世賢文教基金會115學年度雲嘉南區國中數學競試",
+   "date": "2026-11-04",
+   "source_category": "競賽活動",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4691",
+   "category": "競賽",
+   "first_seen": "2026-11-04T18:49:27+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nehs-4690",
    "title": "【升學考試】「嘉義區高級中等學校特色招生核定作業要點」",
@@ -20,8 +445,8 @@
    "first_seen": "2026-11-04T10:59:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-04T11:14:39+08:00",
+ "generated_at": "2026-11-04T19:11:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -371,22 +371,34 @@
    "page_id": 10110920739411,
    "url": "https://www.tnssh.tn.edu.tw/lib/rs/",
    "label": "讀者服務組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T19:11:04+08:00",
+   "path": [
+    "讀者服務組"
+   ]
   },
   "51521996342574": {
    "page_id": 51521996342574,
    "url": "https://www.tnssh.tn.edu.tw/lib/im/",
    "label": "資訊媒體組",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T19:11:06+08:00",
+   "path": [
+    "資訊媒體組"
+   ]
   },
   "123887338866642": {
    "page_id": 123887338866642,
    "url": "https://www.tnssh.tn.edu.tw/ns15/",
    "label": "新生專區",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-04T19:11:08+08:00",
+   "path": [
+    "新生專區"
+   ]
   },
   "40879375999385": {
    "page_id": 40879375999385,
@@ -921,6 +933,171 @@
     "圖書館"
    ],
    "order": 85
+  },
+  "104826356117081": {
+   "page_id": 104826356117081,
+   "url": "https://www.tnssh.tn.edu.tw/lib/im/mac/",
+   "label": "校園無線網路MAC申請",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "資訊媒體組"
+   ],
+   "order": 86
+  },
+  "277236251235707": {
+   "page_id": 277236251235707,
+   "url": "https://www.tnssh.tn.edu.tw/lib/im/roam/",
+   "label": "eduroam及TANetRoaming說明",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "資訊媒體組"
+   ],
+   "order": 87
+  },
+  "37501974172758": {
+   "page_id": 37501974172758,
+   "url": "https://www.tnssh.tn.edu.tw/lib/im/software/",
+   "label": "軟體更新",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "資訊媒體組"
+   ],
+   "order": 88
+  },
+  "153953036908407": {
+   "page_id": 153953036908407,
+   "url": "https://www.tnssh.tn.edu.tw/ns/ns01/",
+   "label": "115學年度新生入學管道",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 89
+  },
+  "144935331519239": {
+   "page_id": 144935331519239,
+   "url": "https://www.tnssh.tn.edu.tw/ns/ns02/",
+   "label": "115學年度實驗班招生訊息",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 90
+  },
+  "82552896806170": {
+   "page_id": 82552896806170,
+   "url": "https://www.tnssh.tn.edu.tw/ns/ns04/",
+   "label": "115年07月09日(週四)新生報到重要事項",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 91
+  },
+  "152713381840534": {
+   "page_id": 152713381840534,
+   "url": "https://www.tnssh.tn.edu.tw/ns/ns05/",
+   "label": "新生學雜費減免 (新生必看)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 92
+  },
+  "111615818831877": {
+   "page_id": 111615818831877,
+   "url": "https://www.tnssh.tn.edu.tw/ns06/",
+   "label": "新生暑假行事曆",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 93
+  },
+  "108234286795048": {
+   "page_id": 108234286795048,
+   "url": "https://www.tnssh.tn.edu.tw/ns/ns07/",
+   "label": "校園介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 94
+  },
+  "146103010807208": {
+   "page_id": 146103010807208,
+   "url": "https://www.tnssh.tn.edu.tw/ns/ns08/",
+   "label": "轉學訊息(轉入本校)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 95
+  },
+  "5824391276517": {
+   "page_id": 5824391276517,
+   "url": "https://www.tnssh.tn.edu.tw/ns/ns09/",
+   "label": "新生健康檢查",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 96
+  },
+  "4965941280988": {
+   "page_id": 4965941280988,
+   "url": "https://www.tnssh.tn.edu.tw/ns/ns10/",
+   "label": "入學、在學及升學獎勵措施",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 97
+  },
+  "279155599900113": {
+   "page_id": 279155599900113,
+   "url": "https://www.tnssh.tn.edu.tw/ns/coonew/",
+   "label": "合作社新生須知",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 98
+  },
+  "122394204671781": {
+   "page_id": 122394204671781,
+   "url": "https://www.tnssh.tn.edu.tw/ns/ns14/",
+   "label": "成績評量、畢業條件",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 99
+  },
+  "60926110001366": {
+   "page_id": 60926110001366,
+   "url": "https://www.tnssh.tn.edu.tw/ns15/ns15/",
+   "label": "新生始業輔導日程表及注意事項(115年08月13日～14日)",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "新生專區"
+   ],
+   "order": 100
   }
  },
  "handbook": {},
@@ -1207,5 +1384,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-04T11:14:39+08:00"
+ "last_run_at": "2026-11-04T19:11:09+08:00"
 }
