@@ -29,7 +29,9 @@
   var labelCache = typeof WeakMap !== "undefined" ? new WeakMap() : null;
   var validityCache = typeof WeakMap !== "undefined" ? new WeakMap() : null;
   var STUDENT_TERMS = ["學生", "新生", "住宿生", "入住", "報到", "家長", "寢室", "床位", "舍監", "工讀生"];
-  var STAFF_TERMS = ["職缺", "徵才", "甄選", "遞補", "人員", "幹事", "面試", "任用"];
+  /* Hiring words. 「甄選」「面試」 alone are not: students have 校內甄選 and 大學面試
+     (「地科奧林匹亞校內甄選」 was ranked as a job posting). */
+  var STAFF_TERMS = ["職缺", "徵才", "教師甄選", "人員甄選", "甄選人員", "代理教師", "代課教師", "遞補", "人員", "幹事", "任用"];
   var FACETS = [
     { id: "regulation", terms: ["規定", "辦法", "要點", "規範", "準則", "標準"] },
     { id: "procedure", terms: ["流程", "步驟", "操作", "說明", "指南"] },
