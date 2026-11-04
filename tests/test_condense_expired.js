@@ -39,4 +39,19 @@ assert.equal(doc.items[0].condense_pending, undefined);
 assert.deepEqual(doc.items[0].calendar_events, []);
 assert.doesNotMatch(doc.items[0].summary + doc.items[0].snippet, /\d+月|\d+年/);
 assert.equal(doc.items[1].body_condensed, undefined, "only marked notices are touched");
+/* 2026-11-04 first real run: 211 of 300 kept only the title. PDF letters wrap every ~35 characters,
+   so no single line was labelled as an activity or a note. Whole sentences are judged now. */
+const letter = { provenance: "official_article", announcement_id: "x9", blocks: [], attachments: [{ parse_status: "parsed", filename: "來文.pdf", embedded_text: [
+  "國立某某大學 函", "地址：某市某路1號", "承辦人：王小明",
+  "主旨：本校辦理「114年度高中生化學營」，請轉知所屬學生踴躍報名參", "加，請查照。",
+  "說明：一、活動對象為高中一、二年級學生，請攜帶學生證及文具，", "於115年1月20日（星期二）上午9時報到。",
+  "恭喜本校王○明同學榮獲第一名。"].join("\n") }] };
+const kept = C.condense(letter, "某某大學化學營");
+assert.ok(kept.length >= 2, JSON.stringify(kept));
+assert.ok(kept.some((p) => /高中生化學營.*請轉知所屬學生踴躍報名參加/.test(p)), "a wrapped sentence is kept whole");
+assert.ok(kept.some((p) => /請攜帶學生證及文具/.test(p)));
+assert.ok(!kept.some((p) => /承辦人|地址|恭喜/.test(p)), "letter headers and congratulations are not kept");
+assert.ok(!kept.some((p) => /\d{2,4}\s*年|\d+月|星期|\d+時/.test(p)), JSON.stringify(kept));
+assert.ok(C.condense({ provenance: "official_article", blocks: [{ type: "paragraph", text: "班聯會執秘招生" }], attachments: [] }, "學生團體").length === 1,
+  "a line with a topic and no other label is kept");
 console.log("condense expired tests passed");

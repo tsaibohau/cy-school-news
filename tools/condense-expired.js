@@ -5,6 +5,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const Tokens = require("../docs/announcement-tokens.js");
+const QA = require("../docs/assistant-qa.js");
 
 const VERSION = 1;
 const KEEP_KINDS = new Set(["required", "method", "audience", "place", "penalty", "allow", "deny", "contact", "fee"]);
@@ -23,8 +24,11 @@ const TIME_PATTERNS = [
   /(?:上午|下午|中午|晚上|早上)\s*\d{1,2}\s*[點時](?:\s*\d{1,2}\s*分)?/g,
   /\d{1,2}\s*[點時]\s*\d{1,2}\s*分/g,
   /即日起/g,
+  /* A bare year or school year: 「114年度」「2024年」「113學年」. */
+  /(?:中華民國|民國)?\s*(?:1\d{2}|20\d{2})\s*(?:學年度?|年度?)/g,
 ];
-const LETTER = /函|字第|號令|號函|^依據|發文/;
+/* A letter's reference lines (「依據教育部…字第…號函辦理」「發文日期」), not the sentences that mention a 函. */
+const LETTER = /^(?:[一二三四五六七八九十]+、\s*)?(?:依據|依|復)?.{0,40}字第\s*\d+\s*號(?:函|令)?(?:辦理|辦|續辦)?[。，]?$|^(?:[一二三四五六七八九十]+、\s*)?依據.{0,60}(?:辦理|規定)。?$|發文(?:日期|字號)/;
 
 function stripTimes(text) {
   const MARK = "⁣";
@@ -52,12 +56,18 @@ function condense(record, title) {
   const kept = [];
   const seen = new Set();
   let total = 0;
-  for (const seg of Tokens.segmentsOf(record)) {
+  /* PDF letters wrap every ~35 characters: judge whole sentences, not the broken lines
+     (most expired notices kept only their title because no single line said what it was about). */
+  for (const seg of QA.quoteUnits(Tokens.segmentsOf(record))) {
     const text = seg.text;
     if (LETTER.test(text)) continue;
     const kinds = Tokens.kindsOf(text);
     const topics = Tokens.topicsOf(text);
-    const useful = kinds.some((k) => KEEP_KINDS.has(k)) || (topics.length && !kinds.every((k) => k === "time" || k === "deadline"));
+    /* Congratulations and result lists name students: nothing to keep from them. */
+    if (/恭喜|賀[!！]|榮獲|獲獎名單|錄取名單|得獎名單|感謝.{0,6}老師|同學(?:通過|榮獲|獲得|錄取|入選|進入)/.test(text)) continue;
+    /* A line about a topic with no other label counts (「班聯會執秘招生」); a line that is only a date does not. */
+    const onlyTime = kinds.length > 0 && kinds.every((k) => k === "time" || k === "deadline");
+    const useful = kinds.some((k) => KEEP_KINDS.has(k)) || (topics.length > 0 && !onlyTime);
     if (!useful) continue;
     const out = stripTimes(text);
     if (out.length < 6 || seen.has(out)) continue;

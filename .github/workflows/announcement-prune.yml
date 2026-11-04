@@ -63,7 +63,8 @@ jobs:
         run: |
           node tools/export-member-content.js .member-content-sync
           # Removed notices: empty their protected copy too (the endpoint only upserts).
-          node -e 'const fs=require("fs");const w=JSON.parse(fs.readFileSync(".announcement-wipe.json","utf8"));if(w.records.length)fs.writeFileSync(".member-content-sync/batch-wipe.json",JSON.stringify(w));console.log("wipe records: "+w.records.length)'
+          # The endpoint takes at most 400 records per request: send them 120 at a time.
+          node -e 'const fs=require("fs");const w=JSON.parse(fs.readFileSync(".announcement-wipe.json","utf8"));for(let i=0;i<w.records.length;i+=120)fs.writeFileSync(".member-content-sync/batch-wipe-"+String(i/120).padStart(3,"0")+".json",JSON.stringify({schema_version:1,records:w.records.slice(i,i+120)}));console.log("wipe records: "+w.records.length)'
           if [ -z "$ANNOUNCEMENT_CONTENT_SYNC_TOKEN" ] || [ -z "$ANNOUNCEMENT_CONTENT_SYNC_URL" ] || [ -z "$SUPABASE_PUBLISHABLE_KEY" ]; then
             echo "ANNOUNCEMENT_CONTENT_SYNC_NOT_CONFIGURED"
             exit 1
