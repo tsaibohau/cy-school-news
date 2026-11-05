@@ -27,4 +27,14 @@ r = QA.answer("校運會預演", items, {}, opts);
 assert.match(say(r), /已經過了.*「校運會預演」在 11\/4/, say(r));
 r = QA.answer("校慶什麼時候", items, {}, opts);
 assert.doesNotMatch(say(r), /臺北教育大學|NTUE/, "another school's 校慶 is not the answer");
+/* 「給我115年校運會比賽成績」 answered with a 書法比賽 notice and listed 班際比賽／游泳比賽 files. */
+const page2 = Object.assign({}, page, { documents: page.documents.concat([{ name: "班際比賽.pdf(另開新視窗)", url: "https://www.cysh.cy.edu.tw/var/file/9.pdf" }]) });
+const calligraphy = { id: "cysh-3", school: "cysh", school_name: "嘉中", date: "2026-09-15", title: "115學年度全國學生美術比賽書法類決賽嘉義市現場書寫簡章" };
+r = QA.answer("給我115年校運會比賽成績", [page2, calligraphy], {}, opts);
+assert.equal(r.mode, "document", say(r));
+assert.match(say(r), /「校運會」正在進行.*成績可能還沒公布.*校運會\.pdf/, say(r));
+assert.deepEqual((r.document_links || []).map((d) => d.name), ["校運會.pdf(另開新視窗)"], "only the files named after 校運會");
+assert.doesNotMatch(say(r), /書法|個人的東西/);
+r = QA.answer("校運會成績", [page2], {}, Object.assign({}, opts, { asOf: "2026-11-20" }));
+assert.doesNotMatch(say(r), /還沒公布/, "two weeks later the results may be out");
 console.log("sports day tests passed");

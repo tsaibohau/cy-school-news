@@ -1651,6 +1651,15 @@
         if (score >= 8) { seen[doc.url] = true; rows.push({ score: score, name: name, url: doc.url, page: clean(item.title || ""), school_name: item.school_name || "" }); }
       });
     });
+    /* 「校運會比賽成績」: the files named after the most specific word asked (校運會), not every
+       file that says 比賽 (班際比賽、游泳比賽). */
+    var bySpecific = wanted.slice().sort(function (a, b) { return b.length - a.length; });
+    for (var w = 0; w < bySpecific.length; w++) {
+      var forms = synonymsOf(bySpecific[w]).concat([bySpecific[w]]).map(compact).filter(function (f) { return f.length >= 2; });
+      var named = rows.filter(function (r) { var c = compact(r.name); return forms.some(function (f) { return c.indexOf(f) !== -1; }); });
+      if (named.length && named.length < rows.length) { rows = named; break; }
+      if (named.length) break;
+    }
     return rows.sort(function (a, b) { return b.score - a.score; }).slice(0, 3);
   }
   /* Conversational reply (no AI model): the answer as plain sentences, with list numbering,
@@ -1700,6 +1709,7 @@
     "這則公告你應該沒點開過吧？幫你看了。", "學校有說喔，只是你沒看到😏", "重點我畫好了，剩下的自己點開。"];
   var NONE_OPENERS = ["這題我翻遍了還是找不到🥲", "老實說，學校網站沒寫這個。", "找不到欸，不是我不努力。",
     "這題連我都考倒了，你很會問嘛。", "學校網站沒寫，我也不能亂掰😤", "嗯…我翻到手都酸了還是沒有。"];
+  var DOCUMENT_OPENERS = [""];
   var SERVICE_OPENERS = ["這個要登入系統才看得到，我進不去，你自己來：", "這種個人的東西在系統裡，入口給你：", ""];
   var LIST_OPENERS = ["幫你列好了。", "整理好了，自己看。", "", "列給你了，別說我沒提醒你。", "這些都跟你有關，滑一下。"];
   var TIMETABLE_OPENERS = ["課表幫你看了，別再帶錯課本。", "幫你查好了。", ""];
@@ -1754,7 +1764,8 @@
       return { text: text, bullets: bullets };
     }
     if (result.status !== "answered") return { text: plain ? text : joinOpener(pickLine(NONE_OPENERS, seed), text), bullets: [] };
-    if (result.mode === "service" || result.mode === "document") return { text: plain ? text : joinOpener(pickLine(SERVICE_OPENERS, seed).replace(/：$/, "。"), text), bullets: [] };
+    if (result.mode === "document") return { text: plain ? text : joinOpener(pickLine(DOCUMENT_OPENERS, seed).replace(/：$/, "。"), text), bullets: [] };
+    if (result.mode === "service") return { text: plain ? text : joinOpener(pickLine(SERVICE_OPENERS, seed).replace(/：$/, "。"), text), bullets: [] };
     if (result.mode === "browse") return { text: plain ? text : joinOpener(pickLine(LIST_OPENERS, seed), text), bullets: [] };
     /* Announcement answers: who said it, then the facts as points. */
     var first = (result.sources || [])[0];
@@ -2045,6 +2056,24 @@
     return { compared: ranked.length, read: ranked.filter(function (row) { return row.detail || details && details[row.item.id]; }).length, words: words,
       picked: rows.filter(function (r) { return r.chosen; }).slice(0, 4), skipped: rows.filter(function (r) { return !r.chosen; }).slice(0, 5) };
   }
+  /* 「115年校運會成績」 while the 校運會 is today: the results are not out yet. */
+  function resultsNote(query, options) {
+    var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var bare = clean(query.replace(/給我|請給我|我要|想看|查詢?|比賽|成績|結果|名單|得獎|名次|(?:民國\s*)?1[0-2]\d\s*(?:學年度?|年)/g, " "));
+    if (!bare || !options || !(options.calendarEvents || []).length) return "";
+    var hit = calendarMentions(bare, Object.assign({}, options, { asOf: isoAdd(asOf, -3), scopeLabel: options.scopeLabel }));
+    /* The event itself (「校運會」), not its rehearsal: the entry named exactly so, else the last one. */
+    var list = (hit && hit.sources || []).filter(function (x) { return x && x.date; });
+    var target = compact(bare);
+    var src = list.filter(function (x) { return compact(x.title) === target || (Synonyms && synonymsOf(target).indexOf(compact(x.title)) !== -1); })[0] || list[list.length - 1];
+    if (!src) return "";
+    var ev = (options.calendarEvents || []).filter(function (e) { return e && (e.id && "calendar:" + e.id === src.id); })[0] || {};
+    var to = String(ev.end_date || src.date).slice(0, 10);
+    if (to < isoAdd(asOf, -3)) return "";
+    var when = rangeLabel(src.date, to < src.date ? src.date : to);
+    if (src.date > asOf) return "「" + src.title + "」還沒舉行（" + when + "），成績要等比賽後才會公布。";
+    return "「" + src.title + "」" + (to >= asOf ? "正在進行（" + when + "）" : "剛在 " + when + "結束") + "，成績可能還沒公布。";
+  }
   function answerOnce(query, items, details, options) {
     var talk = smallTalk(query);
     if (talk) return smallTalkAnswer(talk, query, options);
@@ -2099,10 +2128,13 @@
       var weakPageAnswer = result.status === "answered" && result.mode !== "service" && topSource && topSource.kind === "school_info" && documents[0].score >= 12 && shortQuote;
       /* Pointing at a page is weaker than the rule file on it named after the question. */
       if (result.mode === "rule_pointer" && result.pointer_kind === "school_info" && documents[0].score >= 10) weakPageAnswer = true;
-      if ((result.status !== "answered" && documents[0].score >= 8) || weakPageAnswer) {
+      /* 「校運會成績」: name lists are not summarised here, but the official results file is the answer. */
+      var resultsFile = ASKS_RESULT.test(query) && (result.privacy_limited || result.status !== "answered" || weakPageAnswer);
+      if ((result.status !== "answered" && documents[0].score >= 8) || weakPageAnswer || resultsFile) {
         var doc = documents[0];
         result = Object.assign({}, result, { status: "answered", mode: "document", evidence: [], key_points: [],
-          summary: (doc.school_name || "學校") + "的相關規定在官方文件「" + doc.name + "」（" + doc.page + "）。本站讀不到這份文件的內文，請點開查看。",
+          summary: resultsFile ? resultsNote(query, options) + (doc.school_name || "學校") + "公布的成績在官方文件「" + doc.name + "」（" + doc.page + "）。本站不整理或轉述名單。"
+            : (doc.school_name || "學校") + "的相關規定在官方文件「" + doc.name + "」（" + doc.page + "）。本站讀不到這份文件的內文，請點開查看。",
           sources: documents.map(function (d) { return { id: "doc:" + d.url, kind: "service", title: d.name, url: d.url, school_name: d.school_name, note: d.page }; }),
           limitation: "文件連結來自學校官網；內容以學校公告的文件為準。", document_links: documents });
       }
