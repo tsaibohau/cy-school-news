@@ -44,7 +44,8 @@ const LETTER = /^(?:[一二三四五六七八九十]+、\s*)?(?:依據|依|復)?
 
 function stripTimes(text) {
   const MARK = "⁣";
-  let t = String(text || "");
+  /* Full-width digits and colons (「３月１７日」「１２：３０」) are dates too. */
+  let t = String(text || "").replace(/[０-９]/g, (d) => String.fromCharCode(d.charCodeAt(0) - 0xFEE0)).replace(/：(?=\d)/g, ":");
   TIME_PATTERNS.forEach((re) => { t = t.replace(re, MARK); });
   t = t
     /* 「於…前」「自…起」「…至…止」 around a removed time go with it. */

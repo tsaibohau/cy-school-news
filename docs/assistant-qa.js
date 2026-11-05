@@ -1562,8 +1562,9 @@
     if (!picked.length) return null;
     var where = options.scopeLabel ? options.scopeLabel + "行事曆" : "學校行事曆";
     /* The one thing asked, said first and big: 「下一次：11/26（週四）～11/27（週五）第二次期中考」. */
-    var headline = upcoming.length ? (picked.length > 1 ? "下一次：" : "") + rangeLabel(picked[0].from, picked[0].to) + "「" + picked[0].title + "」" : "";
-    var names = picked.slice(0, 3).map(function (r) { return rangeLabel(r.from, r.to) + "「" + r.title + "」"; }).join("、");
+    var today = function (r) { return r.from <= asOf && asOf <= r.to ? "（就是今天）" : ""; };
+    var headline = upcoming.length ? (picked.length > 1 ? "下一次：" : "") + rangeLabel(picked[0].from, picked[0].to) + "「" + picked[0].title + "」" + today(picked[0]) : "";
+    var names = picked.slice(0, 3).map(function (r) { return rangeLabel(r.from, r.to) + "「" + r.title + "」" + today(r); }).join("、");
     var summary = upcoming.length ? "依" + where + "，" + names + (picked.length > 3 ? "等" : "") + "。"
       : "依" + where + "，最近一次是 " + names + "，已經過了；下一次還沒排進行事曆。";
     var sources = picked.map(function (r) {
@@ -1650,6 +1651,15 @@
         if (score >= 8) { seen[doc.url] = true; rows.push({ score: score, name: name, url: doc.url, page: clean(item.title || ""), school_name: item.school_name || "" }); }
       });
     });
+    /* 「校運會比賽成績」: the files named after the most specific word asked (校運會), not every
+       file that says 比賽 (班際比賽、游泳比賽). */
+    var bySpecific = wanted.slice().sort(function (a, b) { return b.length - a.length; });
+    for (var w = 0; w < bySpecific.length; w++) {
+      var forms = synonymsOf(bySpecific[w]).concat([bySpecific[w]]).map(compact).filter(function (f) { return f.length >= 2; });
+      var named = rows.filter(function (r) { var c = compact(r.name); return forms.some(function (f) { return c.indexOf(f) !== -1; }); });
+      if (named.length && named.length < rows.length) { rows = named; break; }
+      if (named.length) break;
+    }
     return rows.sort(function (a, b) { return b.score - a.score; }).slice(0, 3);
   }
   /* Conversational reply (no AI model): the answer as plain sentences, with list numbering,
@@ -1699,6 +1709,7 @@
     "這則公告你應該沒點開過吧？幫你看了。", "學校有說喔，只是你沒看到😏", "重點我畫好了，剩下的自己點開。"];
   var NONE_OPENERS = ["這題我翻遍了還是找不到🥲", "老實說，學校網站沒寫這個。", "找不到欸，不是我不努力。",
     "這題連我都考倒了，你很會問嘛。", "學校網站沒寫，我也不能亂掰😤", "嗯…我翻到手都酸了還是沒有。"];
+  var DOCUMENT_OPENERS = [""];
   var SERVICE_OPENERS = ["這個要登入系統才看得到，我進不去，你自己來：", "這種個人的東西在系統裡，入口給你：", ""];
   var LIST_OPENERS = ["幫你列好了。", "整理好了，自己看。", "", "列給你了，別說我沒提醒你。", "這些都跟你有關，滑一下。"];
   var TIMETABLE_OPENERS = ["課表幫你看了，別再帶錯課本。", "幫你查好了。", ""];
@@ -1753,7 +1764,8 @@
       return { text: text, bullets: bullets };
     }
     if (result.status !== "answered") return { text: plain ? text : joinOpener(pickLine(NONE_OPENERS, seed), text), bullets: [] };
-    if (result.mode === "service" || result.mode === "document") return { text: plain ? text : joinOpener(pickLine(SERVICE_OPENERS, seed).replace(/：$/, "。"), text), bullets: [] };
+    if (result.mode === "document") return { text: plain ? text : joinOpener(pickLine(DOCUMENT_OPENERS, seed).replace(/：$/, "。"), text), bullets: [] };
+    if (result.mode === "service") return { text: plain ? text : joinOpener(pickLine(SERVICE_OPENERS, seed).replace(/：$/, "。"), text), bullets: [] };
     if (result.mode === "browse") return { text: plain ? text : joinOpener(pickLine(LIST_OPENERS, seed), text), bullets: [] };
     /* Announcement answers: who said it, then the facts as points. */
     var first = (result.sources || [])[0];
@@ -2044,6 +2056,24 @@
     return { compared: ranked.length, read: ranked.filter(function (row) { return row.detail || details && details[row.item.id]; }).length, words: words,
       picked: rows.filter(function (r) { return r.chosen; }).slice(0, 4), skipped: rows.filter(function (r) { return !r.chosen; }).slice(0, 5) };
   }
+  /* 「115年校運會成績」 while the 校運會 is today: the results are not out yet. */
+  function resultsNote(query, options) {
+    var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var bare = clean(query.replace(/給我|請給我|我要|想看|查詢?|比賽|成績|結果|名單|得獎|名次|(?:民國\s*)?1[0-2]\d\s*(?:學年度?|年)/g, " "));
+    if (!bare || !options || !(options.calendarEvents || []).length) return "";
+    var hit = calendarMentions(bare, Object.assign({}, options, { asOf: isoAdd(asOf, -3), scopeLabel: options.scopeLabel }));
+    /* The event itself (「校運會」), not its rehearsal: the entry named exactly so, else the last one. */
+    var list = (hit && hit.sources || []).filter(function (x) { return x && x.date; });
+    var target = compact(bare);
+    var src = list.filter(function (x) { return compact(x.title) === target || (Synonyms && synonymsOf(target).indexOf(compact(x.title)) !== -1); })[0] || list[list.length - 1];
+    if (!src) return "";
+    var ev = (options.calendarEvents || []).filter(function (e) { return e && (e.id && "calendar:" + e.id === src.id); })[0] || {};
+    var to = String(ev.end_date || src.date).slice(0, 10);
+    if (to < isoAdd(asOf, -3)) return "";
+    var when = rangeLabel(src.date, to < src.date ? src.date : to);
+    if (src.date > asOf) return "「" + src.title + "」還沒舉行（" + when + "），成績要等比賽後才會公布。";
+    return "「" + src.title + "」" + (to >= asOf ? "正在進行（" + when + "）" : "剛在 " + when + "結束") + "，成績可能還沒公布。";
+  }
   function answerOnce(query, items, details, options) {
     var talk = smallTalk(query);
     if (talk) return smallTalkAnswer(talk, query, options);
@@ -2087,6 +2117,9 @@
     }
     var services = serviceLinks(query, items);
     var documents = result && result.mode !== "timetable" ? documentLinks(query, items, options && options.schoolId) : [];
+    /* Three years' 「校運會.pdf」 are one button. */
+    var docNames = {};
+    documents = documents.filter(function (d) { var k = compact(d.name || ""); if (!k || docNames[k]) return false; docNames[k] = true; return true; });
     if (result && documents.length) {
       result.document_links = documents;
       /* A document named after exactly what was asked beats a weak sentence from a menu page. */
@@ -2095,10 +2128,13 @@
       var weakPageAnswer = result.status === "answered" && result.mode !== "service" && topSource && topSource.kind === "school_info" && documents[0].score >= 12 && shortQuote;
       /* Pointing at a page is weaker than the rule file on it named after the question. */
       if (result.mode === "rule_pointer" && result.pointer_kind === "school_info" && documents[0].score >= 10) weakPageAnswer = true;
-      if ((result.status !== "answered" && documents[0].score >= 8) || weakPageAnswer) {
+      /* 「校運會成績」: name lists are not summarised here, but the official results file is the answer. */
+      var resultsFile = ASKS_RESULT.test(query) && (result.privacy_limited || result.status !== "answered" || weakPageAnswer);
+      if ((result.status !== "answered" && documents[0].score >= 8) || weakPageAnswer || resultsFile) {
         var doc = documents[0];
         result = Object.assign({}, result, { status: "answered", mode: "document", evidence: [], key_points: [],
-          summary: (doc.school_name || "學校") + "的相關規定在官方文件「" + doc.name + "」（" + doc.page + "）。本站讀不到這份文件的內文，請點開查看。",
+          summary: resultsFile ? resultsNote(query, options) + (doc.school_name || "學校") + "公布的成績在官方文件「" + doc.name + "」（" + doc.page + "）。本站不整理或轉述名單。"
+            : (doc.school_name || "學校") + "的相關規定在官方文件「" + doc.name + "」（" + doc.page + "）。本站讀不到這份文件的內文，請點開查看。",
           sources: documents.map(function (d) { return { id: "doc:" + d.url, kind: "service", title: d.name, url: d.url, school_name: d.school_name, note: d.page }; }),
           limitation: "文件連結來自學校官網；內容以學校公告的文件為準。", document_links: documents });
       }
@@ -2469,7 +2505,7 @@
   }
   /* 翻找順序：先翻規定（學生手冊、校規、學校網頁），再翻行事曆（含課表），最後翻公告。
      三層都翻；第一個找到答案的當主答案，其他層找到的依同樣順序附在後面（result.also）。 */
-  var EVENT_ASK = /營|比賽|競賽|大賽|盃|講座|演講|講堂|研習|工作坊|活動|博覽會|論壇|徵文|徵稿|甄選|選拔|奧林匹|奧賽|學生日|展覽|體驗/;
+  var EVENT_ASK = /運動會|校運|校慶|園遊會|晚會|營|比賽|競賽|大賽|盃|講座|演講|講堂|研習|工作坊|活動|博覽會|論壇|徵文|徵稿|甄選|選拔|奧林匹|奧賽|學生日|展覽|體驗/;
   var LAYER_LABELS = { rule: "學校規定", calendar: "行事曆", announcement: "公告" };
   var HAS_TIME = /\d{1,2}\s*[\/／月]\s*\d{1,2}|\d{1,2}[:：]\d{2}|[一二三四五六七八九十\d]+\s*(?:月|日|號|週|天|點|時|節)|星期|週[一二三四五六日]|開學|結業|學期/;
   function answerCore(query, items, details, options) {
@@ -2498,6 +2534,10 @@
     /* A rule clause without any date does not answer 「什麼時候」: the calendar goes first then. */
     var asksWhen = WHEN_ASK.test(query) || !!datePlan(query, asOfDay);
     if (asksWhen && layers.rule && !HAS_TIME.test(layers.rule.summary || "")) order = ["calendar", "rule", "announcement"];
+    /* 「校運會什麼時候」「校運」: an entry on the school calendar that is on now or still ahead beats a
+       rule page about it (運動競賽成績) and an old notice (113學年 海報比賽). */
+    if (layers.calendar && layers.calendar.status === "answered" && !layers.calendar.weak && layers.calendar.mode === "browse" &&
+        !(layers.rule && layers.rule.mode === "rule" && !EVENT_ASK.test(query) && !asksWhen)) order = ["calendar"].concat(order.filter(function (k) { return k !== "calendar"; }));
     var answered = order.filter(function (key) { return layers[key] && layers[key].status === "answered" && !layers[key].weak; });
     var weak = order.filter(function (key) { return layers[key] && layers[key].status === "answered" && layers[key].weak; });
     if (!answered.length && !weak.length) return layers.calendar || layers.announcement || layers.rule;
@@ -2604,27 +2644,42 @@
     wanted = unique(wanted.map(compact)).filter(function (t) { return t.length >= 2 && ALWAYS_GENERIC.indexOf(t) === -1; });
     if (!wanted.length) return null;
     var groups = wanted.map(synonymsOf);
-    var asOf = options.asOf, rows = [];
+    var asOf = options.asOf, rows = [], past = [];
+    /* 「校運會預演」: an entry whose title has the whole asked phrase beats one with only part of it,
+       and when that entry is already over, say so instead of naming another entry. */
+    var phrases = [compact(plan.value || query)].filter(function (t) { return t.length >= 3; });
     calendar.forEach(function (ev) {
       var from = String(ev && (ev.start_date || ev.date) || "").slice(0, 10), to = String(ev && ev.end_date || from).slice(0, 10), title = clean(ev && ev.title || "");
-      if (!/^\d{4}-\d{2}-\d{2}$/.test(from) || to < asOf || DATE_STAFF.test(title)) return;
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(from) || DATE_STAFF.test(title)) return;
+      if (to < asOf) { if (phrases.some(function (p) { return compact(title).indexOf(p) !== -1; }) && to >= isoAdd(asOf, -45)) past.push({ from: from, to: to, title: title, ev: ev }); return; }
       var t = compact(title);
       /* Every subject asked must be in the title. */
       if (!groups.every(function (forms) { return forms.some(function (f) { return t.indexOf(f) !== -1; }); })) return;
       rows.push({ from: from, to: to < from ? from : to, title: title, ev: ev });
     });
+    var whole = rows.filter(function (r) { return phrases.some(function (p) { return compact(r.title).indexOf(p) !== -1; }); });
+    if (whole.length) rows = whole;
+    else if (past.length) {
+      var last = past.sort(function (a, b) { return b.to.localeCompare(a.to); })[0], whereLabel = options.scopeLabel ? options.scopeLabel + "行事曆" : "學校行事曆";
+      return { status: "answered", mode: "browse", list_label: "行事曆", query: query, weak: ATTRIBUTE_ASK.test(query),
+        summary: "已經過了：依" + whereLabel + "，「" + last.title + "」在 " + rangeLabel(last.from, last.to) + "。",
+        sources: [{ id: "calendar:" + (last.ev.id || last.from + last.title), kind: "calendar", title: last.title, school_id: last.ev.school_id || "", school_name: last.ev.school_name || options.scopeLabel || "", url: last.ev.source_url || "", date: last.from, category: "行事曆", note: shortDay(last.from) + " · 學校行事曆" }],
+        evidence: [], related: [], key_points: [], plan: questionPlan(query), limitation: "日期來自學校行事曆；學校臨時調整時以最新公告為準。" };
+    }
     if (!rows.length) return null;
     rows.sort(function (a, b) { return a.from.localeCompare(b.from); });
     var picked = rows.slice(0, 3), where = options.scopeLabel ? options.scopeLabel + "行事曆" : "學校行事曆";
     return { status: "answered", mode: "browse", list_label: "行事曆", query: query, weak: ATTRIBUTE_ASK.test(query),
-      summary: "依" + where + "，" + picked.map(function (r) { return rangeLabel(r.from, r.to) + "「" + r.title + "」"; }).join("、") + "。",
+      summary: "依" + where + "，" + picked.map(function (r) { return rangeLabel(r.from, r.to) + "「" + r.title + "」" + (r.from <= asOf && asOf <= r.to ? "（就是今天）" : ""); }).join("、") + "。",
       sources: picked.map(function (r) { return { id: "calendar:" + (r.ev.id || r.from + r.title), kind: "calendar", title: r.title, school_id: r.ev.school_id || "", school_name: r.ev.school_name || options.scopeLabel || "", url: r.ev.source_url || "", date: r.from, category: "行事曆", note: (r.from === r.to ? shortDay(r.from) : shortDay(r.from) + "～" + shortDay(r.to)) + " · 學校行事曆" }; }),
       evidence: [], related: [], key_points: [], plan: questionPlan(query), limitation: "日期來自學校行事曆；學校臨時調整時以最新公告為準。" };
   }
   var KIND_WORD = { deadline: "截止日", time: "時間", place: "地點", audience: "對象", required: "要準備的東西", fee: "費用", method: "做法", contact: "聯絡方式", penalty: "罰則", allow: "可以的情況", deny: "禁止的事" };
   function tokenAnswer(query, asked, ranked, options) {
     if (!asked || !asked.kinds.length) return null;
-    var hits = (ranked || []).filter(function (row) { return row.token && row.token.segment && row.token.topics && row.token.kinds && !TITLE_RESULT.test(clean(row.item.title || "")); });
+    /* 「校慶什麼時候」 asks about this school's, not a university's open day. */
+    var outsideOff = CAMPUS_LIFE.test(query) && !ASKS_OUTSIDE.test(query);
+    var hits = (ranked || []).filter(function (row) { var t = clean(row.item.title || ""); return row.token && row.token.segment && row.token.topics && row.token.kinds && !TITLE_RESULT.test(t) && !(outsideOff && OUTSIDE_TITLE.test(t)); });
     /* A title that says the asked word (段考) beats a narrower kind (複習考); a date still ahead beats a past one. */
     var words = deepWords(query), today = options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var rankOf = function (row) {
