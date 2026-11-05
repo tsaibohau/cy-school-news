@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "fhsh",
   "name": "國立鳳新高中",
@@ -8,6 +8,584 @@
   "base": "https://www.fhsh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fhsh-47268",
+   "title": "【公告】全國創新行銷暨高中職小論文競賽",
+   "date": "2026-11-05",
+   "source_category": "圖書館",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/library/20261105/47268",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "小論文",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47266",
+   "title": "【公告】2026年第十屆實驗教育國際工作坊",
+   "date": "2026-11-05",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261105/47266",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-12-12",
+     "provenance": "verified_announcement_event",
+     "source_revision": "5dea2bb019f4cdf22c3d2576a69e3e1b086c273d0a0a3c6156f9cff6da2fe7fa"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-12"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47262",
+   "title": "【研習】交通安全教育師資增能研習",
+   "date": "2026-11-05",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261105/47262",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "769321a95716f8f0e5681e3936c3e46e88889a5cf78365c53f6fbc8b9e0f90b1"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "機車",
+       "報名",
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名",
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47260",
+   "title": "【研習】「AI協作的風險與管控」教師增能研習",
+   "date": "2026-11-05",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261105/47260",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "13f9315989032a7b9b95912b01e0ff24a013402c8e61f5711a3fe6f1824c8826"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47258",
+   "title": "【研習】AI賦能教與學工作坊",
+   "date": "2026-11-05",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261105/47258",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-08-31",
+     "provenance": "verified_announcement_event",
+     "source_revision": "16ca214a7443a4703b6a61e361ad16622e452aa86d1e93c70b90bb1a8abe8144"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-26"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47248",
+   "title": "【 賀 】115學年度高級中等學校數理及資訊學科能力競賽國教署負責第五分區(數學、生物、資訊)複賽本校獲奬名單",
+   "date": "2026-11-05",
+   "source_category": "教務處公告",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/news/20261105/47248",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "fhsh-47243",
    "title": "【競賽】國立雲林科技大學辦理【2026瘋狂工程師｜爆走四驅！我要成為改造王-四驅車競速賽】",

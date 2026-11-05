@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "pksh",
   "name": "國立北港高級中學",
@@ -49,6 +49,60 @@
     ],
     "classes": [],
     "all_school": false
+   }
+  },
+  {
+   "id": "pksh-28733",
+   "title": "轉知「2026反賄選愛臺灣公益宣導影片─出遊篇」",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "pksh",
+   "school_name": "北港高中",
+   "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=28733",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
    }
   },
   {
@@ -55408,7 +55462,255 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26740",
    "category": "升學",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-03-26",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ec60194aae63698a31115415c53d96cec4d70799a303ebaeab3e2ab2caacd401"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-04-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ec60194aae63698a31115415c53d96cec4d70799a303ebaeab3e2ab2caacd401"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-05-08",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ec60194aae63698a31115415c53d96cec4d70799a303ebaeab3e2ab2caacd401"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-05-31",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ec60194aae63698a31115415c53d96cec4d70799a303ebaeab3e2ab2caacd401"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-06-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ec60194aae63698a31115415c53d96cec4d70799a303ebaeab3e2ab2caacd401"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "四技二專",
+     "報名",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "四技二專",
+       "報名",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-26"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "四技二專",
+       "報名",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-26"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-03-26",
+       "2026-04-09"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-26",
+       "2026-05-08"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學習歷程",
+       "報名",
+       "繳交",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-04-16",
+       "2026-05-31"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "志願",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-06-11",
+       "2026-07-02"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "四技二專",
+       "報名",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "四技二專",
+       "報名",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-26"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-03-26",
+       "2026-04-09"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-26",
+       "2026-05-08"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "學習歷程",
+       "報名",
+       "繳交",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-04-16",
+       "2026-05-31"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "志願",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-06-11",
+       "2026-07-02"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26739",
@@ -55420,7 +55722,71 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26739",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-26"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26737",
@@ -55432,7 +55798,234 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26737",
    "category": "升學",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-04-24",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "bb735a3217b49fde171e25d936440961f5829cc59ad05965eac878c2a9057603"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1,
+     2,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "截止",
+     "#admission",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學習歷程",
+       "截止",
+       "#admission",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-04-24"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-26"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-04-24"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2,
+       3
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "學習歷程",
+       "報名",
+       "繳交",
+       "#admission"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "學習歷程",
+       "教務處",
+       "註冊組",
+       "報名",
+       "繳交",
+       "#admission"
+      ],
+      "k": [
+       "penalty",
+       "required"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "嘉獎",
+       "#merit"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "嘉獎",
+       "#merit"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "嘉獎",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "學習歷程",
+       "自主學習",
+       "報名",
+       "繳交",
+       "#admission",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26734",
@@ -55444,7 +56037,63 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26734",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-25"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "社團",
+       "家長",
+       "報名",
+       "#admission",
+       "#club",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-04-29",
+       "2026-03-27"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26733",
@@ -55456,7 +56105,80 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26733",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-03-31",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "dd76117133c370d8dea0d3e83cca672422bed94948971b3e895cb0ca7af80857"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-25"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-03-31"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26732",
@@ -55468,7 +56190,146 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26732",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-03-28",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "bea0e6f1158d7c5b40320859a1ec50bb71f4f9d44be748858efaf237601f2f3d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-25"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-28",
+       "2026-10-17"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-28"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-11"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-05-15",
+       "2026-06-27"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-11"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-29"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-17"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26684",
@@ -55504,7 +56365,38 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26726",
    "category": "教職員",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "記過"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26727",
@@ -55516,7 +56408,113 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26727",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-03-25",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6e7df6b7841c95b8e239b2d219402925f1f1c8f2daf72b632c4e962d10412842"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "申請入學",
+     "報名"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "申請入學",
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "申請入學",
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "申請入學",
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-25"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-03-25"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "申請入學",
+       "報名",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26725",
@@ -55528,7 +56526,52 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26725",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26724",
@@ -55540,7 +56583,198 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26724",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-04-28",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e79df83c57c9fc57bcc14586bb2b06276611ae2a71439f085527c9bff79f993a"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-04-13",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e79df83c57c9fc57bcc14586bb2b06276611ae2a71439f085527c9bff79f993a"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-28"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-04-13"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-28"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-04-13"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26723",
@@ -55552,7 +56786,66 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26723",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#health"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26722",
@@ -55564,7 +56857,61 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26722",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26721",
@@ -55576,7 +56923,74 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26721",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#health"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "合作社",
+       "#health"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "合作社",
+       "#health"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26720",
@@ -55588,7 +57002,86 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26720",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-11"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-11"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26719",
@@ -55600,7 +57093,116 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26719",
    "category": "升學",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "申請入學",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "申請入學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26718",
@@ -55612,7 +57214,172 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26718",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-04-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "99de4bb42a1b6facb448861a1e7b5ac447389301a65c0e748a7f161004c9d6f8"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-11"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "獎學金",
+       "宿舍",
+       "#accommodation",
+       "#scholarship",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "校車",
+       "報名",
+       "#transport",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-11"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "獎學金",
+       "宿舍",
+       "#accommodation",
+       "#scholarship",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "校車",
+       "報名",
+       "#transport",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26717",
@@ -55624,7 +57391,134 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26717",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-07-06",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "4ef3a5170cc1a6fb630092b72496eef3a50f62f48d2f0e4982ad1b5dccca1cac"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-06",
+       "2026-07-10"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-03-21",
+       "2026-04-25"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-06",
+       "2026-07-10"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-03-21",
+       "2026-04-25"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26716",
@@ -55636,7 +57530,94 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26716",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-07-04",
+     "provenance": "verified_announcement_event",
+     "source_revision": "21acc4fd08e39aacf34942ef4386e03c9e9602a08f20dfbb9504b848a81d0727"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-04"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-04"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26715",
@@ -55648,7 +57629,153 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26715",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-07-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ee2b1c0e04939beefd0b5cf1802f8462d5990eb7396e57e19c73109aafc3c020"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "地科"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "地科"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "地科"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-07-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-05-03"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "地科"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-07-20"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-05-03"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26714",
@@ -55660,7 +57787,135 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26714",
    "category": "招生編班",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "家長",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "家長",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26713",
@@ -55672,7 +57927,137 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26713",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-08-04",
+     "provenance": "verified_announcement_event",
+     "source_revision": "59860b5273042af0b26e6df369a81c4231422d1cec5427a0b0ccb0b1a970a709"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-04",
+       "2026-08-06"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#campus_map"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "閱讀心得",
+       "費用",
+       "繳交"
+      ],
+      "k": [
+       "fee",
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-04",
+       "2026-08-06"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#campus_map"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "閱讀心得",
+       "費用",
+       "繳交"
+      ],
+      "k": [
+       "fee",
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26712",
@@ -55684,7 +58069,144 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26712",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "申請入學",
+       "#admission",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-01",
+       "2026-08-29"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "申請入學",
+       "#admission",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-01",
+       "2026-08-29"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26711",
@@ -55696,7 +58218,81 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26711",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-04-11"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-04-11"
+      ],
+      "g": [
+       3
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26710",
@@ -55708,7 +58304,175 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26710",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-07-13",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "8b6c58a8ae6a7b37b705a8f613d539df4ba6f2a1826562abdd959d50c8fde625"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-13"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-05-07"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "家長",
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-03-31"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-13"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-05-07"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "家長",
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-03-31"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26709",
@@ -55720,7 +58484,168 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26709",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-03-28",
+     "provenance": "verified_announcement_event",
+     "source_revision": "498237bf6848c8d035a25ba756ad17a071ada06c87281974956d07a37b48c142"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-24"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-28",
+       "2026-04-11",
+       "2026-05-09",
+       "2026-05-16"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-28",
+       "2026-04-11",
+       "2026-05-09",
+       "2026-05-16"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26708",

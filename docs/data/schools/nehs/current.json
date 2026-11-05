@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "nehs",
   "name": "國立嘉科實驗高級中學",
@@ -8,6 +8,537 @@
   "base": "https://www.nehs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "nehs-4697",
+   "title": "公告本校教職員工配合第3屆校慶運動會相關事項",
+   "date": "2026-11-05",
+   "source_category": "最新消息",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4697",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "運動會",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "運動會",
+       "補假",
+       "#celebration"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "出缺席",
+       "補假"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "運動會",
+       "補假",
+       "#celebration"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "出缺席",
+       "補假"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4699",
+   "title": "115學年度國民中學學術性向資賦優異冬令營實施計畫",
+   "date": "2026-11-05",
+   "source_category": "來文宣導",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4699",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4698",
+   "title": "116學年度國民中小學階段資賦優異學生鑑定及縮短修業年限(全部學習領域跳級)簡章",
+   "date": "2026-11-05",
+   "source_category": "升學訊息",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4698",
+   "category": "升學",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長",
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長",
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4695",
+   "title": "【研習】慈濟基金會與本縣環境教育輔導團合辦「115年度永續校園教師工作坊」",
+   "date": "2026-11-05",
+   "source_category": "教師研習",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4695",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-10",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b49d24c2e868d5fa534bc8e7948ec013cb1bd05bea489ffcc2361b2562997a2a"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b49d24c2e868d5fa534bc8e7948ec013cb1bd05bea489ffcc2361b2562997a2a"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-10"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-10"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4696",
+   "title": "「115學年度科技教育創意實作競賽」校內報名及競賽",
+   "date": "2026-11-05",
+   "source_category": "最新消息",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4696",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-10",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0d162801a9409917246b196eb5acc14e65f4c9aa9949827a0c29b98489f2fd1f"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "教務處",
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-10"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "放學",
+       "報名",
+       "#daily_schedule"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-10"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "教務處",
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-10"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "放學",
+       "報名",
+       "#daily_schedule"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-10"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nehs-4692",
    "title": "國立嘉科實中【高中部】115校慶運度會交通車乘坐調查表",

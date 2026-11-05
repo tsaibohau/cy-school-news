@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "tlsh",
   "name": "國立斗六高級中學",
@@ -8,6 +8,628 @@
   "base": "https://www.tlsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "tlsh-68895",
+   "title": "十九屆中臺灣模擬聯合國會議（CENTMUNXIX）",
+   "date": "2026-11-05",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/05/68895/",
+   "category": "一般",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-06",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f4993bdf0ba27e46e859c855d9316bb23bdfd288a722e1d0c85f0e2c7a9e91c2"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05",
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68891",
+   "title": "教育部「青年百億海外圓夢基金計畫」116年第1梯次",
+   "date": "2026-11-05",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/05/68891/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-10-30",
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68887",
+   "title": "南開科技大學「全國創新行銷暨高中職小論文競賽」",
+   "date": "2026-11-05",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/05/68887/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "小論文",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68871",
+   "title": "台南應用科技大學「流行音樂演唱工作坊」",
+   "date": "2026-11-05",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/05/68871/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68861",
+   "title": "【教案徵選】104人力銀行「2026高中職公益教材徵稿競賽」",
+   "date": "2026-11-04",
+   "source_category": "教務處",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68861/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "繳交",
+       "升學",
+       "#admission",
+       "#certificate",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-14",
+       "2026-12-31"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2027-01-11"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68859",
+   "title": "【教案徵選】全國教師純植永續推廣協會「第一屆（115年度）全國中小學純植永續教育創新教案徵選」",
+   "date": "2026-11-04",
+   "source_category": "教務處",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68859/",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68857",
+   "title": "【學生競賽】明道中學「第45屆全球華文學生文學獎」",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68857/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68854",
+   "title": "【學生課程】環境部與教育部共同推動「高中氣候變遷教育線上課程《與2050淨零世代的對話》」，完成課程之同學可取得雙部長簽署電子學習證明及多項獎勵～",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68854/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68845",
+   "title": "【教師研習】海洋大學「建構國家級海洋素養治理架構：Ocean & Society Survey 國際調查與 EMSEA 2026前瞻趨勢教師線上增能研習」",
+   "date": "2026-11-04",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68845/",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68851",
+   "title": "【教師研習】臺南二中「AI調香師－AI芳療應用實作研習」",
+   "date": "2026-11-04",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68851/",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68864",
+   "title": "中華民國應用商業管理協會2027冬令營-高中企管營(不過夜營隊)",
+   "date": "2026-11-04",
+   "source_category": "學生研習/活動/競賽",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68864/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68849",
+   "title": "【教師研習】慈濟高中「數位學習教師增能工作坊」系列線上研習",
+   "date": "2026-11-04",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68849/",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68843",
+   "title": "【教師研習】中崙高中「Google AI 行政自動化：打造你的智慧行政小助手」線上研習",
+   "date": "2026-11-04",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68843/",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68847",
+   "title": "【教師研習】麗山高中區域增能線上工作坊「 AI工具資料整理術—以課程諮詢工作為例」",
+   "date": "2026-11-04",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68847/",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68841",
+   "title": "【教師研習】國教署「115年選送高中教師海外短期進修」經驗分享會",
+   "date": "2026-11-04",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68841/",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68863",
+   "title": "教育部辦理「第六屆防災青年國際領袖培訓營」，詳如內容說明。",
+   "date": "2026-11-04",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68863/",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68865",
+   "title": "國立臺北大學「0基礎會計先修班」招生簡章及記帳士會計師職業經驗分享說明會",
+   "date": "2026-11-04",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68865/",
+   "category": "招生編班",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "tlsh-68877",
    "title": "本校承辦科技輔助自主學習計畫辦理Y系列研習",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "shsh",
   "name": "雲林縣私立正心高級中學",
@@ -8,6 +8,299 @@
   "base": "https://www.shsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "shsh-11866",
+   "title": "雲林縣 115 年度閱讀教育推動總體計畫",
+   "date": "2026-11-05",
+   "source_category": "來文宣導",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e9%9b%b2%e6%9e%97%e7%b8%a3-115-%e5%b9%b4%e5%ba%a6%e9%96%b1%e8%ae%80%e6%95%99%e8%82%b2%e6%8e%a8%e5%8b%95%e7%b8%bd%e9%ab%94%e8%a8%88%e7%95%ab/",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-11865",
+   "title": "【行銷新思維】全國創新行銷暨小論文競賽",
+   "date": "2026-11-05",
+   "source_category": "來文宣導",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e3%80%90%e8%a1%8c%e9%8a%b7%e6%96%b0%e6%80%9d%e7%b6%ad%e3%80%91%e5%85%a8%e5%9c%8b%e5%89%b5%e6%96%b0%e8%a1%8c%e9%8a%b7%e6%9a%a8%e5%b0%8f%e8%ab%96%e6%96%87%e7%ab%b6%e8%b3%bd/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "小論文",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-11863",
+   "title": "115學年第一學期行事曆修正",
+   "date": "2026-11-05",
+   "source_category": "行政公告",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/115%e5%ad%b8%e5%b9%b4%e7%ac%ac%e4%b8%80%e5%ad%b8%e6%9c%9f%e8%a1%8c%e4%ba%8b%e6%9b%86%e4%bf%ae%e6%ad%a3/",
+   "category": "一般",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "模擬考",
+       "放假",
+       "校慶",
+       "#mock",
+       "#celebration"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-12-08",
+       "2026-12-31"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "期末考",
+       "#final"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-07",
+       "2026-12-31"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-11862",
+   "title": "圖書館新書入館",
+   "date": "2026-11-05",
+   "source_category": "行政公告",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e5%9c%96%e6%9b%b8%e9%a4%a8%e6%96%b0%e6%9b%b8%e5%85%a5%e9%a4%a8-4/",
+   "category": "一般",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "shsh-11861",
    "title": "2026瘋狂工程師｜爆走四驅！我要成為改造王-四驅車競速賽",

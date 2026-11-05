@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "kghs",
   "name": "市立高雄女中",
@@ -8,6 +8,92 @@
   "base": "https://www.kghs.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "kghs-30360",
+   "title": "本市衛生局辦理115年「十一感恩月腸乳篩起來」癌症篩檢活動乙案",
+   "date": "2026-11-05",
+   "source_category": "訊息公告",
+   "school": "kghs",
+   "school_name": "高雄女中",
+   "url": "https://www.kghs.kh.edu.tw/ischool/public/news_view/show.php?nid=30360",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-01",
+     "provenance": "verified_announcement_event",
+     "source_revision": "f1356cda78eb96f220166aa0e318a1c81059ed399b1c83eaa93c0a3dadafdac5"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#health"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "健康中心"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-01",
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "audience",
+       "fee",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "kghs-23794",
    "title": "2024ASEP專題組甄選改至10/16中午",

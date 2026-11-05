@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "yfsh",
   "name": "雲林縣私立義峰高級中學",
@@ -8,6 +8,149 @@
   "base": "https://www.yfsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "yfsh-3428",
+   "title": "青年百億海外圓夢基金計畫",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "yfsh",
+   "school_name": "義峰高中",
+   "url": "https://www.yfsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=3428",
+   "category": "一般",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "cc89e35659ef7465f2c63cad3e45c46fd59e63e9c56a6066fdbc2efc82b1e2fd"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-10-30",
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-30",
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "yfsh-3427",
    "title": "雲林縣府辦理「2026明華園戲劇總團大型戶外演出」活動，敬邀出席觀賞",

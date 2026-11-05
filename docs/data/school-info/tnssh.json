@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-05T11:42:32+08:00",
+ "generated_at": "2026-11-05T16:38:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -464,23 +464,33 @@
    "page_id": 33643846811234,
    "url": "https://www.tnssh.tn.edu.tw/plan/ave/",
    "label": "均質化計畫",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "認識二中"
    ],
-   "order": 41
+   "order": 41,
+   "checked_at": "2026-11-05T16:38:29+08:00",
+   "path": [
+    "認識二中",
+    "均質化計畫"
+   ]
   },
   "85296379182368": {
    "page_id": 85296379182368,
    "url": "https://www.tnssh.tn.edu.tw/plan/intedu/",
    "label": "國際教育計畫(International Education)",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "認識二中"
    ],
-   "order": 42
+   "order": 42,
+   "checked_at": "2026-11-05T16:38:30+08:00",
+   "path": [
+    "認識二中",
+    "國際教育計畫(International Education)"
+   ]
   },
   "38521067527305": {
    "page_id": 38521067527305,
@@ -1131,6 +1141,30 @@
     "優質化計畫"
    ],
    "order": 101
+  },
+  "71905930971463": {
+   "page_id": 71905930971463,
+   "url": "https://www.tnssh.tn.edu.tw/plan/intedu/public/",
+   "label": "國際專刊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "認識二中",
+    "國際教育計畫(International Education)"
+   ],
+   "order": 102
+  },
+  "12273981153238": {
+   "page_id": 12273981153238,
+   "url": "https://www.tnssh.tn.edu.tw/plan/intedu/dualdegree/",
+   "label": "台加雙聯學制",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "認識二中",
+    "國際教育計畫(International Education)"
+   ],
+   "order": 103
   }
  },
  "handbook": {},
@@ -1417,5 +1451,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-05T11:42:32+08:00"
+ "last_run_at": "2026-11-05T16:38:32+08:00"
 }

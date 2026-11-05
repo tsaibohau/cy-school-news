@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "mhvs",
   "name": "國立民雄高級農工職業學校",
@@ -8,6 +8,296 @@
   "base": "https://www.mhvs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "mhvs-11048",
+   "title": "『全面性教育』教師專業成長研習」",
+   "date": "2026-11-05",
+   "source_category": "",
+   "school": "mhvs",
+   "school_name": "民雄農工",
+   "url": "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11048",
+   "category": "教職員",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "cef3868bc016cdf743d420ba2df6f1f7245166d1509469720a1b2e2efe355876"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "報名",
+       "#safety",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-11"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#safety",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-23",
+       "2026-12-11"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "獎學金",
+       "重補修",
+       "學雜費",
+       "#scholarship",
+       "#makeup",
+       "#fee"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "課表",
+       "#certificate",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mhvs-11047",
+   "title": "115學年第一學期 校內閱讀心得寫作比賽 得獎名單公告",
+   "date": "2026-11-05",
+   "source_category": "",
+   "school": "mhvs",
+   "school_name": "民雄農工",
+   "url": "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11047",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "閱讀心得",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "閱讀心得",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "閱讀心得",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "閱讀心得",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "獎學金",
+       "重補修",
+       "學雜費",
+       "#scholarship",
+       "#makeup",
+       "#fee"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "課表",
+       "#certificate",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "mhvs-11046",
    "title": "【延期及場地異動】「115年度性騷擾事件法院判決案例研討會」，改於11月27日舉辦",

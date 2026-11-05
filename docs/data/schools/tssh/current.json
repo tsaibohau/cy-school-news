@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "tssh",
   "name": "國立東石高級中學",
@@ -8,6 +8,64 @@
   "base": "https://www.tssh.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "tssh-9-21434",
+   "title": "【重補修】115-1第2階段重補修課表陸續更新中1105",
+   "date": "2026-11-05",
+   "source_category": "最新消息",
+   "school": "tssh",
+   "school_name": "東石高中",
+   "url": "https://www.tssh.cyc.edu.tw/latestevent/Details.aspx?Parser=9,9,79,46,,,21434",
+   "category": "段考考試",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "重補修",
+     "課表",
+     "#makeup",
+     "#course"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "作息",
+       "重補修",
+       "#makeup",
+       "#daily_schedule"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "作息",
+       "重補修",
+       "#makeup",
+       "#daily_schedule"
+      ],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "tssh-9-21417",
    "title": "【升學資訊】116學年度大學繁星推薦、申請入學、分發入學三招生管道簡章，業已公告於相關網站",

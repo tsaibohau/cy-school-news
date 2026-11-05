@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-05T11:41:46+08:00",
+ "generated_at": "2026-11-05T16:37:50+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -2918,15 +2918,105 @@
    "page_id": 194564895216657,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,389,382",
    "label": "考招運用說明",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T16:37:47+08:00",
+   "path": [
+    "考招運用說明"
+   ],
+   "changed_at": "2026-11-05T16:37:47+08:00",
+   "content_hash": "f24a394e04a93d70f67062d7563d6f89cbdadd1e27dffae0dad7ec6ef7588767",
+   "doc_links": [],
+   "keywords": [
+    "學習歷程"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-194564895216657.json",
+   "detail_revision": "183a96c5457602a1cc3debdaac5866a2965b0d612f1781737ee5a2f3419e73b4",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2019-11-20"
+      ]
+     }
+    ]
+   }
   },
   "124510116908912": {
    "page_id": 124510116908912,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,390,382",
    "label": "系統操作說明",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T16:37:49+08:00",
+   "path": [
+    "系統操作說明"
+   ],
+   "changed_at": "2026-11-05T16:37:49+08:00",
+   "content_hash": "ba4cb967e8e54e9b1b8a6fccae0d9b01288cf7cc9b04c13bd0b2d71d19896eaa",
+   "doc_links": [],
+   "keywords": [
+    "學習歷程"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-124510116908912.json",
+   "detail_revision": "fcf1685889fde2ff72f58c9667890a0cfaa2d81adc0f5c231e6a37497355c2d0",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "72202132360032": {
    "page_id": 72202132360032,
@@ -7702,6 +7792,53 @@
    }
   },
   {
+   "id": "hnvs-info-124510116908912",
+   "kind": "school_info",
+   "title": "系統操作說明",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,390,382",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "學習歷程"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-124510116908912.json",
+   "detail_revision": "fcf1685889fde2ff72f58c9667890a0cfaa2d81adc0f5c231e6a37497355c2d0",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-125225035936765",
    "kind": "school_info",
    "title": "課程諮詢表件",
@@ -8492,6 +8629,57 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-194564895216657",
+   "kind": "school_info",
+   "title": "考招運用說明",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,389,382",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "學習歷程"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-194564895216657.json",
+   "detail_revision": "183a96c5457602a1cc3debdaac5866a2965b0d612f1781737ee5a2f3419e73b4",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2019-11-20"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-196188571931543",
    "kind": "school_info",
    "title": "交通路線",
@@ -8914,5 +9102,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-05T11:41:46+08:00"
+ "last_run_at": "2026-11-05T16:37:50+08:00"
 }

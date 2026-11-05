@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-05T11:40:23+08:00",
+ "generated_at": "2026-11-05T16:36:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -2258,7 +2258,115 @@
   },
   "142": {
    "page_id": 142,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T16:36:33+08:00",
+   "path": [
+    "行政單位",
+    "竹中圖書館",
+    "技術服務組"
+   ],
+   "changed_at": "2026-11-05T16:36:33+08:00",
+   "content_hash": "873c16ed99fedb4bac611abbc01f3e761d23cf52c0074165b07e19a0f736bece",
+   "doc_links": [],
+   "keywords": [
+    "安全",
+    "圖書館",
+    "分機",
+    "學習歷程",
+    "宣導"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-142.json",
+   "detail_revision": "b2dd596ec5b6d206e82959d5e4e47f57d7398c7d2e9ae66681cc5704c5972876",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "place",
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "網路",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "143": {
    "page_id": 143,
@@ -2314,7 +2422,13 @@
   },
   "147": {
    "page_id": 147,
-   "status": "pending"
+   "status": "staff_profile",
+   "checked_at": "2026-11-05T16:36:35+08:00",
+   "path": [
+    "行政單位",
+    "竹中輔導處",
+    "輔導主任"
+   ]
   },
   "148": {
    "page_id": 148,
@@ -4660,6 +4774,116 @@
    }
   },
   {
+   "id": "ccjh-info-142",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中圖書館 › 技術服務組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-142.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "安全",
+    "圖書館",
+    "分機",
+    "學習歷程",
+    "宣導"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-142.json",
+   "detail_revision": "b2dd596ec5b6d206e82959d5e4e47f57d7398c7d2e9ae66681cc5704c5972876",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "place",
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "網路",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-143",
    "kind": "school_info",
    "title": "行政單位 › 竹中輔導處",
@@ -4872,5 +5096,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-05T11:40:23+08:00"
+ "last_run_at": "2026-11-05T16:36:37+08:00"
 }

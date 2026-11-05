@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "hkhs",
   "name": "市立小港高中",
@@ -8,6 +8,266 @@
   "base": "https://www.hkhs.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "hkhs-11689",
+   "title": "115學年度校慶運動會賽程表",
+   "date": "2026-11-05",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11689",
+   "category": "一般",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "運動會",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hkhs-11688",
+   "title": "11月5日捐血順序表",
+   "date": "2026-11-05",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11688",
+   "category": "一般",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "hkhs-11690",
+   "title": "116學年度身心障礙升學大專校院甄試簡章與報名",
+   "date": "2026-11-05",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11690",
+   "category": "升學",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-14",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0f13cef7430d8f9fc00cd033306bd9b2bf1c551db9ac49e55b731dbbc6562e48"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "升學",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-24",
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "轉學",
+       "#enrollment"
+      ],
+      "k": [
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "輔導室",
+       "報名",
+       "#contact"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-11-24"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hkhs-11692",
+   "title": "2026-2027第八屆科普閱讀力大賽",
+   "date": "2026-11-05",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11692",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hkhs-11687",
    "title": "社團法人高雄市慈善團體聯合總會「福氣餐券」，歡迎申請",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "sgash",
   "name": "國立新港藝術高級中學",
@@ -8,6 +8,675 @@
   "base": "https://www.sgash.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "sgash-14936",
+   "title": "交通安全教育師資增能研習（含教育部磨課師線上課程）",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14936",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14935",
+   "title": "台灣模擬教育協會辦理 2027 年第八屆台灣經濟學奧林匹亞競賽活動",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14935",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "df48c48510be527ca03920c6bceba25d5efbea08ba86654524032e352fba3f01"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "奧林匹亞",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14934",
+   "title": "嘉義市政府文化局辦理「2027嘉義市國際三分鐘影片大賽」",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14934",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "95cc09d13c57fccdd9e03ef51e2239931b7e69a0244995952badddb03ee8c5f8"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14932",
+   "title": "明新科技大學體育室辦理「115年竹風盃高中球類邀請賽」競賽",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14932",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "29107ffbce04351bd9560d193c9a9f02ca7c1186d282f3f7c547fa5f95f5c52d"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "29107ffbce04351bd9560d193c9a9f02ca7c1186d282f3f7c547fa5f95f5c52d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "手機",
+       "#device",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "手機",
+       "#device",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14931",
+   "title": "中華民國資訊聯盟協進會辦理115年度生成式AI演算法認證暨競賽活動",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14931",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0bd5270d24e37284757a5c695b33e8ac1624b52734b4f84d5168c3b4d109fb47"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-10-01",
+       "2026-11-10",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-30",
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-10-01",
+       "2026-11-10",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-30",
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14930",
+   "title": "明道高級中學辦理「拓凱新世紀青少年高峰論壇」活動",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14930",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "sgash-14928",
    "title": "臺北藝術大學關渡美術館辦理2026年「機制校園生活」與「共同的註腳」雙特展導覽與教育活動",

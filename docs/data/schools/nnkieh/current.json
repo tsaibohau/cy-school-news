@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "nnkieh",
   "name": "國立南科國際實驗高中",
@@ -8,6 +8,216 @@
   "base": "https://www.nnkieh.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "nnkieh-895",
+   "title": "轉知-【工作坊招生資訊】2027 NCKU Architecture Discovery Studio 成大建築工作坊招生中",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=895",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-25",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "00eac3f6824dec4ada8bce90f630ae18e01cfa78d563bdb1b87322beda3df594"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "00eac3f6824dec4ada8bce90f630ae18e01cfa78d563bdb1b87322beda3df594"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "午餐",
+       "宿舍",
+       "費用",
+       "報名",
+       "截止",
+       "#accommodation",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "audience",
+       "required",
+       "fee",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2027-01-25",
+       "2026-12-04",
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "午餐",
+       "宿舍",
+       "費用",
+       "#accommodation",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience",
+       "fee"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "截止",
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nnkieh-897",
+   "title": "恭喜本校高中部同學參加成功大學理學院研究日高中生專題發表榮獲佳績",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nnkieh",
+   "school_name": "南科實中",
+   "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=897",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nnkieh-892",
    "title": "訊息轉知｜「青年百億海外圓夢基金計畫」116年第1梯次報名簡章",

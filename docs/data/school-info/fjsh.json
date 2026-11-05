@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-05T11:40:18+08:00",
+ "generated_at": "2026-11-05T16:36:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -2778,11 +2778,210 @@
   },
   "510": {
    "page_id": 510,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T16:36:28+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "實驗研究組",
+    "選修課程"
+   ],
+   "changed_at": "2026-11-05T16:36:28+08:00",
+   "content_hash": "16b77c6ec8f3b5cd4639c58c8d322b1a5e542effb4f4a51aeadda160022a1d1b",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "選修",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-510.json",
+   "detail_revision": "57126d000d031608bd7dea4376c825aafca9ef2b38cfa0030d25b5127ff3f388",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "選課"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "511": {
    "page_id": 511,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T16:36:31+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "實驗研究組",
+    "自主學習"
+   ],
+   "changed_at": "2026-11-05T16:36:31+08:00",
+   "content_hash": "b5931a751c81d01ee51cafa06e35bd032aa32d4c3edcc6ced473cf0d73126dc6",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "自主學習",
+    "地址",
+    "專線",
+    "招生",
+    "申請",
+    "繳交",
+    "講座",
+    "選修",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-511.json",
+   "detail_revision": "a7f48349da96ee8b17fb68074c2c09248950dcc552cf951105ef71faf59cbe83",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "教務處",
+     "#self_learning"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "自主學習",
+       "選課",
+       "#self_learning"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "自主學習",
+       "繳交",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "512": {
    "page_id": 512,
@@ -5879,6 +6078,211 @@
    }
   },
   {
+   "id": "fjsh-info-510",
+   "kind": "school_info",
+   "title": "教務處 › 實驗研究組 › 選修課程",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-510.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "選修",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-510.json",
+   "detail_revision": "57126d000d031608bd7dea4376c825aafca9ef2b38cfa0030d25b5127ff3f388",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "選課"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-511",
+   "kind": "school_info",
+   "title": "教務處 › 實驗研究組 › 自主學習",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-511.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "自主學習",
+    "地址",
+    "專線",
+    "招生",
+    "申請",
+    "繳交",
+    "講座",
+    "選修",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-511.json",
+   "detail_revision": "a7f48349da96ee8b17fb68074c2c09248950dcc552cf951105ef71faf59cbe83",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "教務處",
+     "#self_learning"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "自主學習",
+       "選課",
+       "#self_learning"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "自主學習",
+       "繳交",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -5976,5 +6380,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-05T11:40:18+08:00"
+ "last_run_at": "2026-11-05T16:36:32+08:00"
 }

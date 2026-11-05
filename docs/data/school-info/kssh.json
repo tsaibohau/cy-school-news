@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-05T11:43:50+08:00",
+ "generated_at": "2026-11-05T16:39:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -2657,13 +2657,92 @@
    "page_id": 77805136686968,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-507.php",
    "label": "訓育組",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "訓育組",
     "各年級導師"
    ],
-   "order": 29
+   "order": 29,
+   "checked_at": "2026-11-05T16:39:35+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組"
+   ],
+   "changed_at": "2026-11-05T16:39:35+08:00",
+   "content_hash": "80ded5209412c1eedfa2b5b4c1292a14be51592553cf7ff4253c06962da4042e",
+   "doc_links": [],
+   "keywords": [
+    "上課地點",
+    "冬令營",
+    "比賽",
+    "社團",
+    "競賽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-77805136686968.json",
+   "detail_revision": "494c2ea620318ed8e9c3fd67f2e0eb7a6a5c56b0ee993d8bc46219c35328bb35",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "寒假",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "249836646961431": {
    "page_id": 249836646961431,
@@ -3457,6 +3536,87 @@
    "detail_ref": "data/details/kssh/kssh-info-64906662526285.json",
    "detail_revision": "0fdc6f429e6f0753800106c96c5b774448aa21fea7320016303978b018cfee26",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-77805136686968",
+   "kind": "school_info",
+   "title": "行政單位 › 學務處 › 訓育組",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-507.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "上課地點",
+    "冬令營",
+    "比賽",
+    "社團",
+    "競賽"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-77805136686968.json",
+   "detail_revision": "494c2ea620318ed8e9c3fd67f2e0eb7a6a5c56b0ee993d8bc46219c35328bb35",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "寒假",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "kssh-info-79814434365433",
@@ -5804,5 +5964,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-05T11:43:50+08:00"
+ "last_run_at": "2026-11-05T16:39:37+08:00"
 }

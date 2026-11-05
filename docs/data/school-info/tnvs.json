@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-05T11:42:39+08:00",
+ "generated_at": "2026-11-05T16:38:38+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -5513,8 +5513,45 @@
    "page_id": 165219326240650,
    "url": "https://www.tnvs.tn.edu.tw/student/instructor/",
    "label": "教官室",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T16:38:33+08:00",
+   "path": [
+    "教官室"
+   ],
+   "changed_at": "2026-11-05T16:38:33+08:00",
+   "content_hash": "494f868f63301f1363b46eddcc9337d8daaf1cea8194959d11cdcf209620d1b3",
+   "doc_links": [],
+   "keywords": [
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-165219326240650.json",
+   "detail_revision": "2813195dbfe2910c658023988dca78ff9cd9c688fd4f9fed0bc841b6b3525add",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "18363080357671": {
    "page_id": 18363080357671,
@@ -5563,15 +5600,23 @@
    "page_id": 193671334618012,
    "url": "https://www.tnvs.tn.edu.tw/practice/intership/",
    "label": "實習輔導組",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-05T16:38:35+08:00",
+   "path": [
+    "實習輔導組"
+   ]
   },
   "112345238280965": {
    "page_id": 112345238280965,
    "url": "https://www.tnvs.tn.edu.tw/practice/carreer/",
    "label": "就業輔導組",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-05T16:38:37+08:00",
+   "path": [
+    "就業輔導組"
+   ]
   },
   "236510457638457": {
    "page_id": 236510457638457,
@@ -6642,6 +6687,94 @@
     "實習處"
    ],
    "order": 135
+  },
+  "147819058472687": {
+   "page_id": 147819058472687,
+   "url": "https://www.tnvs.tn.edu.tw/?page_id=2872",
+   "label": "團隊簡介",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教官室"
+   ],
+   "order": 136
+  },
+  "7913669488745": {
+   "page_id": 7913669488745,
+   "url": "https://www.tnvs.tn.edu.tw/student/instructor/people-introduction/",
+   "label": "成員介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教官室"
+   ],
+   "order": 137
+  },
+  "93661805275784": {
+   "page_id": 93661805275784,
+   "url": "https://www.tnvs.tn.edu.tw/student/instructor/防制學生藥物濫用/",
+   "label": "防制學生藥物濫用",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "教官室"
+   ],
+   "order": 138
+  },
+  "4675546823220": {
+   "page_id": 4675546823220,
+   "url": "https://www.tnvs.tn.edu.tw/intership/introduction",
+   "label": "工作職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習輔導組"
+   ],
+   "order": 139
+  },
+  "137489461685868": {
+   "page_id": 137489461685868,
+   "url": "https://www.tnvs.tn.edu.tw/practice/intership/form/",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習輔導組"
+   ],
+   "order": 140
+  },
+  "74543206594497": {
+   "page_id": 74543206594497,
+   "url": "https://www.tnvs.tn.edu.tw/intership/laws",
+   "label": "法令規章",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習輔導組"
+   ],
+   "order": 141
+  },
+  "164389509418211": {
+   "page_id": 164389509418211,
+   "url": "https://www.tnvs.tn.edu.tw/carrer-manin/",
+   "label": "工作執掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "就業輔導組"
+   ],
+   "order": 142
+  },
+  "194285147115426": {
+   "page_id": 194285147115426,
+   "url": "https://www.tnvs.tn.edu.tw/carrer-dw/",
+   "label": "表單下載",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "就業輔導組"
+   ],
+   "order": 143
   }
  },
  "handbook": {},
@@ -9383,6 +9516,47 @@
       "d": [
        "2025-06-04"
       ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-info-165219326240650",
+   "kind": "school_info",
+   "title": "教官室",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/student/instructor/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-165219326240650.json",
+   "detail_revision": "2813195dbfe2910c658023988dca78ff9cd9c688fd4f9fed0bc841b6b3525add",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
      }
     ]
    }
@@ -12471,5 +12645,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-05T11:42:39+08:00"
+ "last_run_at": "2026-11-05T16:38:38+08:00"
 }

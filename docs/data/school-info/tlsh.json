@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-05T11:40:33+08:00",
+ "generated_at": "2026-11-05T16:36:50+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -448,23 +448,33 @@
    "page_id": 49452760652324,
    "url": "https://www.tlsh.ylc.edu.tw/foundation/",
    "label": "文教基金會",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "[新生請進]"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-05T16:36:46+08:00",
+   "path": [
+    "[新生請進]",
+    "文教基金會"
+   ]
   },
   "8043423627431": {
    "page_id": 8043423627431,
    "url": "https://www.tlsh.ylc.edu.tw/links/",
    "label": "More...",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "[新生請進]"
    ],
-   "order": 41
+   "order": 41,
+   "checked_at": "2026-11-05T16:36:48+08:00",
+   "path": [
+    "[新生請進]",
+    "More..."
+   ]
   },
   "176331011109318": {
    "page_id": 176331011109318,
@@ -740,6 +750,18 @@
     "網頁導覽"
    ],
    "order": 66
+  },
+  "249910119877413": {
+   "page_id": 249910119877413,
+   "url": "https://www.tlsh.ylc.edu.tw/foundation/53353-2/",
+   "label": "捐款芳名錄(109/01/01~114/06/31)",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "[新生請進]",
+    "文教基金會"
+   ],
+   "order": 67
   }
  },
  "handbook": {},
@@ -1009,5 +1031,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-05T11:40:33+08:00"
+ "last_run_at": "2026-11-05T16:36:50+08:00"
 }

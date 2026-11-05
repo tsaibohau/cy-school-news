@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "twvs",
- "generated_at": "2026-11-05T11:42:45+08:00",
+ "generated_at": "2026-11-05T16:38:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "210511608049060": {
@@ -660,34 +660,41 @@
    "page_id": 190677869871399,
    "url": "https://www.twvs.tn.edu.tw/about-us/%e7%89%b9%e8%89%b2%e5%b7%a1%e7%a6%ae/",
    "label": "特色巡禮",
-   "status": "pending",
+   "status": "gone",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 51
+   "order": 51,
+   "checked_at": "2026-11-05T16:38:40+08:00"
   },
   "71240335100317": {
    "page_id": 71240335100317,
    "url": "https://www.twvs.tn.edu.tw/about-us/%e6%a0%a1%e5%9c%92%e5%ae%89%e5%85%a8%e5%9c%b0%e5%9c%96/",
    "label": "校園安全地圖",
-   "status": "pending",
+   "status": "gone",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 52
+   "order": 52,
+   "checked_at": "2026-11-05T16:38:42+08:00"
   },
   "122261105422113": {
    "page_id": 122261105422113,
    "url": "https://www.twvs.tn.edu.tw/online-classes/",
    "label": "線上教學專區",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 53
+   "order": 53,
+   "checked_at": "2026-11-05T16:38:44+08:00",
+   "path": [
+    "關於本校",
+    "線上教學專區"
+   ]
   },
   "159042278397970": {
    "page_id": 159042278397970,
@@ -2512,5 +2519,5 @@
   "f3ef66c885",
   "f9693f2c0a"
  ],
- "last_run_at": "2026-11-05T11:42:45+08:00"
+ "last_run_at": "2026-11-05T16:38:46+08:00"
 }

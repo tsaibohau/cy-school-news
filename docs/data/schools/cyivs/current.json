@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "cyivs",
   "name": "國立嘉義高級工業職業學校",
@@ -8,6 +8,141 @@
   "base": "https://www.cyivs.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cyivs-25626",
+   "title": "研習圖書館轉知中興大學舉辦「學術研究倫理講座」",
+   "date": "2026-11-05",
+   "source_category": "訊息公告",
+   "school": "cyivs",
+   "school_name": "嘉義高工",
+   "url": "https://www.cyivs.cy.edu.tw/announcement/25626/%e7%a0%94%e7%bf%92%e5%9c%96%e6%9b%b8%e9%a4%a8%e8%bd%89%e7%9f%a5%e4%b8%ad%e8%88%88%e5%a4%a7%e5%ad%b8%e8%88%89%e8%be%a6%e3%80%8c%e5%ad%b8%e8%a1%93%e7%a0%94%e7%a9%b6%e5%80%ab%e7%90%86%e8%ac%9b%e5%ba%a7/",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cyivs-25594",
+   "title": "榮譽教務處115學年度第1學期第一次段考各班第一名頒獎",
+   "date": "2026-11-04",
+   "source_category": "榮譽榜",
+   "school": "cyivs",
+   "school_name": "嘉義高工",
+   "url": "https://www.cyivs.cy.edu.tw/announcement/25594/%e6%a6%ae%e8%ad%bd%e6%95%99%e5%8b%99%e8%99%95115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac1%e5%ad%b8%e6%9c%9f%e5%90%84%e7%8f%ad%e7%b4%9a%e7%ac%ac%e4%b8%80%e6%ac%a1%e6%ae%b5%e8%80%83%e6%88%90%e7%b8%be/",
+   "category": "段考考試",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "段考",
+     "#exam",
+     "#midterm"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "段考",
+       "#exam",
+       "#midterm"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cyivs-25611",
    "title": "公告教務處115學年度英語文(多益)輔導課程：2027線上多益字彙搭配進階班系列課程",

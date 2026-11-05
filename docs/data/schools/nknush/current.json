@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T11:27:56+08:00",
+ "generated_at": "2026-11-05T16:20:39+08:00",
  "school": {
   "id": "nknush",
   "name": "國立高師大附中",
@@ -8,6 +8,229 @@
   "base": "https://www.nknush.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "nknush-22452",
+   "title": "公告轉知國立臺灣師範大學與國家科學及技術委員會共同辦理「2026-2027第八屆科普閱讀力大賽」圖書館",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22452/%e5%85%ac%e5%91%8a-%e5%85%ac%e5%91%8a%e8%bd%89%e7%9f%a5%e5%9c%8b%e7%ab%8b%e8%87%ba%e7%81%a3%e5%b8%ab%e7%af%84%e5%a4%a7%e5%ad%b8%e8%88%87%e5%9c%8b%e5%ae%b6%e7%a7%91%e5%ad%b8%e5%8f%8a%e6%8a%80%e8%a1%93/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "處室",
+       "#library"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22449",
+   "title": "115 學年度高雄市中等學校運動會即日起開始報名",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22449/115-%e5%ad%b8%e5%b9%b4%e5%ba%a6%e9%ab%98%e9%9b%84%e5%b8%82%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e9%81%8b%e5%8b%95%e6%9c%83%e5%8d%b3%e6%97%a5%e8%b5%b7%e9%96%8b%e5%a7%8b%e5%a0%b1%e5%90%8d/",
+   "category": "一般",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d9a46110e3217c509f0c1d31eb32d55233f28e4853f1abf3480370d6975a4868"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "運動會",
+     "報名",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "家長",
+       "處室",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-20",
+       "2026-11-18"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22441",
+   "title": "國立臺東大學舉辦「115年度草地野餐日暨大學校園體驗」活動",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22441/%e5%9c%8b%e7%ab%8b%e8%87%ba%e6%9d%b1%e5%a4%a7%e5%ad%b8%e8%88%89%e8%be%a6%e3%80%8c115%e5%b9%b4%e5%ba%a6%e8%8d%89%e5%9c%b0%e9%87%8e%e9%a4%90%e6%97%a5%e6%9a%a8%e5%a4%a7%e5%ad%b8%e6%a0%a1%e5%9c%92/",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "輔導室",
+       "家長",
+       "處室",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-21950",
+   "title": "公告115學年度第1學期 高一學生學習扶助方案教務處",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/21950/%e5%85%ac%e5%91%8a115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac1%e5%ad%b8%e6%9c%9f-%e9%ab%98%e4%b8%80%e5%ad%b8%e7%94%9f%e5%ad%b8%e7%bf%92%e6%89%b6%e5%8a%a9%e6%96%b9%e6%a1%88%e6%95%99%e5%8b%99%e8%99%95/",
+   "category": "一般",
+   "first_seen": "2026-11-05T16:20:39+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f4a84478a604672086907333387175399d70942eeedd6d972a6f15710e54b587"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處",
+       "家長",
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "教務處",
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "放學",
+       "繳交",
+       "#daily_schedule"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required"
+      ],
+      "d": [
+       "2026-11-04"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nknush-22416",
    "title": "活動高餐大附中辦理國中生餐旅群體驗活動輔導室",
