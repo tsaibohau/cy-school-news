@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T20:15:32+08:00",
+ "generated_at": "2026-11-06T04:38:31+08:00",
  "school": {
   "id": "hlvs",
   "name": "國立西螺高級農工職業學校",
@@ -20,8 +20,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -55,8 +55,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1
@@ -112,8 +112,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -142,8 +142,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -187,8 +187,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -214,7 +214,7 @@
   },
   {
    "id": "hlvs-70181",
-   "title": "臺中市立惠文高級中學辦理「第十九屆中臺灣模擬聯合國會議（CENTMUNXIX）」",
+   "title": "臺中市立惠文高級中學辦理「第十九屆中臺灣模擬聯合國會議（CENTMUNXIX）」 – 國立西螺高級農工職業學校",
    "date": "2026-11-05",
    "source_category": "學生訊息",
    "school": "hlvs",
@@ -222,7 +222,209 @@
    "url": "https://www.hlvs.ylc.edu.tw/?p=70181",
    "category": "一般",
    "first_seen": "2026-11-05T20:15:32+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "週會"
+      ],
+      "k": []
+     },
+     {
+      "s": 100,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 102,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 103,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 110,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 113,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 121,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 122,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 123,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 125,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 127,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 128,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 129,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 130,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 228,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 229,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 231,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 232,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 234,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 236,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 237,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 239,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 240,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 243,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-70178",

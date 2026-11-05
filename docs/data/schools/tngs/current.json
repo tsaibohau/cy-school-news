@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T20:15:32+08:00",
+ "generated_at": "2026-11-06T04:38:31+08:00",
  "school": {
   "id": "tngs",
   "name": "國立臺南女中",
@@ -20,8 +20,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -94,8 +94,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -187,8 +187,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -282,8 +282,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -377,8 +377,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -450,7 +450,7 @@
   },
   {
    "id": "tngs-92484",
-   "title": "國立臺北大學辦理同步遠距線上課程–「20期Python基礎程式設計班~AI小助理輔助教學」",
+   "title": "國立臺北大學辦理同步遠距線上課程–「20期Python基礎程式設計班~AI小助理輔助教學」 – 國立臺南女子高級中學",
    "date": "2026-11-05",
    "source_category": "學生營隊",
    "school": "tngs",
@@ -458,7 +458,513 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/05/%e5%9c%8b%e7%ab%8b%e8%87%ba%e5%8c%97%e5%a4%a7%e5%ad%b8%e8%be%a6%e7%90%86%e5%90%8c%e6%ad%a5%e9%81%a0%e8%b7%9d%e7%b7%9a%e4%b8%8a%e8%aa%b2%e7%a8%8b-%e3%80%8c20%e6%9c%9fpython%e5%9f%ba%e7%a4%8e%e7%a8%8b/",
    "category": "研習活動",
    "first_seen": "2026-11-05T20:15:32+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-24",
+       "2027-01-12"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "place",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 73,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-08"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-22"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-29"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-05"
+      ]
+     },
+     {
+      "s": 82,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-12"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 89,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 123,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 124,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 128,
+      "t": [
+       "網路",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 130,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 131,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 132,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 136,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 140,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 141,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 142,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 143,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 144,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 146,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 147,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 148,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 151,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 158,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 159,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92481",

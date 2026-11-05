@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-05T20:25:22+08:00",
+ "generated_at": "2026-11-06T04:46:31+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -3960,23 +3960,581 @@
    "page_id": 129817414951531,
    "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_230/%e6%95%b8%e5%ad%b8%e8%88%87%e8%87%aa%e7%84%b6%e7%a7%91%e8%83%bd%e5%8a%9b%e7%ab%b6%e8%a9%a6/",
    "label": "數學與自然科能力競試",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 43
+   "order": 43,
+   "checked_at": "2026-11-06T04:46:23+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組",
+    "數學與自然科能力競試"
+   ],
+   "changed_at": "2026-11-06T04:46:23+08:00",
+   "content_hash": "bdfcbb6164db18debd3ea5ce484a1ba720105b466cd01f64e5f1266792fb6763",
+   "doc_links": [
+    {
+     "name": "114學年度分區賽選手報名資料填寫區",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSdlXg0hjPZghhbn4lrrK0aAQXLz5CQ2JSUJf7Jam9tHPlIEoA/formrestricted"
+    }
+   ],
+   "keywords": [
+    "報名"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-129817414951531.json",
+   "detail_revision": "66ab1b3c99af6f69cb4336a2b56161b7b7cc8f361e2aeeb70c042421c7d09ba5",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-08"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "183771198482229": {
    "page_id": 183771198482229,
    "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_230/%e6%99%ba%e6%85%a7%e9%bb%91%e6%9d%bf%e7%ae%a1%e7%90%86/",
    "label": "智慧黑板管理",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 44
+   "order": 44,
+   "checked_at": "2026-11-06T04:46:25+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組",
+    "智慧黑板管理"
+   ],
+   "changed_at": "2026-11-06T04:46:25+08:00",
+   "content_hash": "25e8c00c17d26d68340e41661f1bbcc1e2b06377d844f598900b903eb9228bcf",
+   "doc_links": [],
+   "keywords": [
+    "上課時間",
+    "放學",
+    "午休",
+    "校長",
+    "獎懲",
+    "登記",
+    "社團",
+    "補修",
+    "選修",
+    "重補修",
+    "分機",
+    "手機",
+    "段考",
+    "選擇"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-183771198482229.json",
+   "detail_revision": "37ffede4c75927403b14c250e502b243d016b577777e7506a12d73b50a7c1db4",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "新視窗開啟檔案",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/allen/資訊股長講義.pdf"
+    },
+    {
+     "name": "新視窗開啟檔案",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/allen/智慧黑板管理要點.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "午休",
+       "#lunch_break"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "放學",
+       "#daily_schedule"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "放學",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "method",
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [],
+      "k": [
+       "time",
+       "allow"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 86,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 87,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 88,
+      "t": [
+       "午休",
+       "#lunch_break"
+      ],
+      "k": []
+     },
+     {
+      "s": 90,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 92,
+      "t": [
+       "段考",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 97,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 99,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 108,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 109,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 110,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 112,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 113,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 124,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 125,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 126,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 127,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 128,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 129,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 130,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-12-03"
+      ]
+     },
+     {
+      "s": 132,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 135,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 136,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 139,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 141,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 143,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 145,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 146,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 149,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 154,
+      "t": [
+       "重補修",
+       "選課",
+       "社團",
+       "#makeup",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 158,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 159,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 161,
+      "t": [
+       "放學",
+       "#daily_schedule"
+      ],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "159981750650404": {
    "page_id": 159981750650404,
@@ -8057,6 +8615,66 @@
    "detail_status": "parsed"
   },
   {
+   "id": "shsh-info-129817414951531",
+   "kind": "school_info",
+   "title": "教務處 › 設備組 › 數學與自然科能力競試",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_230/%e6%95%b8%e5%ad%b8%e8%88%87%e8%87%aa%e7%84%b6%e7%a7%91%e8%83%bd%e5%8a%9b%e7%ab%b6%e8%a9%a6/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "114學年度分區賽選手報名資料填寫區"
+   ],
+   "keywords": [
+    "報名"
+   ],
+   "documents": [
+    {
+     "name": "114學年度分區賽選手報名資料填寫區",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSdlXg0hjPZghhbn4lrrK0aAQXLz5CQ2JSUJf7Jam9tHPlIEoA/formrestricted"
+    }
+   ],
+   "detail_ref": "data/details/shsh/shsh-info-129817414951531.json",
+   "detail_revision": "66ab1b3c99af6f69cb4336a2b56161b7b7cc8f361e2aeeb70c042421c7d09ba5",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-08-08"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "shsh-info-140037031608106",
    "kind": "school_info",
    "title": "認識正心 › 特色活動",
@@ -8465,6 +9083,511 @@
    "detail_ref": "data/details/shsh/shsh-info-179032372992959.json",
    "detail_revision": "3a96cc4f36b05874a1f66c97c21bbd24ec3e87a1a77c207fbbc392c09b4ddda5",
    "detail_status": "parsed"
+  },
+  {
+   "id": "shsh-info-183771198482229",
+   "kind": "school_info",
+   "title": "教務處 › 設備組 › 智慧黑板管理",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_230/%e6%99%ba%e6%85%a7%e9%bb%91%e6%9d%bf%e7%ae%a1%e7%90%86/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "新視窗開啟檔案",
+    "新視窗開啟檔案"
+   ],
+   "keywords": [
+    "上課時間",
+    "放學",
+    "午休",
+    "校長",
+    "獎懲",
+    "登記",
+    "社團",
+    "補修",
+    "選修",
+    "重補修",
+    "分機",
+    "手機",
+    "段考",
+    "選擇"
+   ],
+   "documents": [
+    {
+     "name": "新視窗開啟檔案",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/allen/資訊股長講義.pdf"
+    },
+    {
+     "name": "新視窗開啟檔案",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/allen/智慧黑板管理要點.pdf"
+    }
+   ],
+   "detail_ref": "data/details/shsh/shsh-info-183771198482229.json",
+   "detail_revision": "37ffede4c75927403b14c250e502b243d016b577777e7506a12d73b50a7c1db4",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "午休",
+       "#lunch_break"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "放學",
+       "#daily_schedule"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "penalty",
+       "deny"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "放學",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "method",
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [],
+      "k": [
+       "time",
+       "allow"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 86,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 87,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 88,
+      "t": [
+       "午休",
+       "#lunch_break"
+      ],
+      "k": []
+     },
+     {
+      "s": 90,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 92,
+      "t": [
+       "段考",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 97,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 99,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 108,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 109,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 110,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 112,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 113,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 124,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 125,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 126,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 127,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 128,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 129,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 130,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-12-03"
+      ]
+     },
+     {
+      "s": 132,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 135,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 136,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 139,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 141,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 143,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 145,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 146,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 149,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 154,
+      "t": [
+       "重補修",
+       "選課",
+       "社團",
+       "#makeup",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 158,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 159,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 161,
+      "t": [
+       "放學",
+       "#daily_schedule"
+      ],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "shsh-info-186822039847511",
@@ -10075,5 +11198,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-05T20:25:22+08:00"
+ "last_run_at": "2026-11-06T04:46:31+08:00"
 }

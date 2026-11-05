@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-05T20:28:02+08:00",
+ "generated_at": "2026-11-06T04:49:06+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -3075,12 +3075,27 @@
    "page_id": 102145295088097,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4460.php",
    "label": "組織架構",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 31
+   "order": 31,
+   "checked_at": "2026-11-06T04:49:05+08:00",
+   "path": [
+    "校務資料開放專區",
+    "學校校務資訊",
+    "組織架構"
+   ],
+   "changed_at": "2026-11-06T04:49:05+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-102145295088097.json",
+   "detail_revision": "4fbc20ae7f35935b6d705465f72258d9478ba4d1c13e687ee208a93621c5063b",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "220417356157942": {
    "page_id": 220417356157942,
@@ -3552,6 +3567,18 @@
     "學校分機"
    ],
    "order": 72
+  },
+  "13816593191961": {
+   "page_id": 13816593191961,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4449.php",
+   "label": "學校校務資訊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "學校校務資訊",
+    "組織架構"
+   ],
+   "order": 73
   }
  },
  "handbook": {},
@@ -4037,6 +4064,23 @@
      }
     ]
    }
+  },
+  {
+   "id": "kssh-info-102145295088097",
+   "kind": "school_info",
+   "title": "校務資料開放專區 › 學校校務資訊 › 組織架構",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4460.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-102145295088097.json",
+   "detail_revision": "4fbc20ae7f35935b6d705465f72258d9478ba4d1c13e687ee208a93621c5063b",
+   "detail_status": "parsed"
   },
   {
    "id": "kssh-info-108409169298673",
@@ -6599,5 +6643,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-05T20:28:02+08:00"
+ "last_run_at": "2026-11-06T04:49:06+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-05T20:24:35+08:00",
+ "generated_at": "2026-11-06T04:45:33+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -6519,11 +6519,754 @@
   },
   "2019": {
    "page_id": 2019,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-06T04:45:25+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "生涯輔導",
+    "生涯相關網站"
+   ],
+   "changed_at": "2026-11-06T04:45:25+08:00",
+   "content_hash": "e4a77d6346e7b324d608277269fb31b65e9c0f7575e046d1b0e208e772f35afd",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "學習歷程",
+    "考試"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2019.json",
+   "detail_revision": "b828683264fe38640a75b615e8b18bddcb332616554b29f4c18958e1d014e4c9",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "考試",
+       "升學",
+       "#admission",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "2020": {
    "page_id": 2020,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-06T04:45:27+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "同儕輔導",
+    "小草莓計畫"
+   ],
+   "changed_at": "2026-11-06T04:45:27+08:00",
+   "content_hash": "84c9a4554a63c1164540ed075132f672475c3500d51a6db1ba992285f3143afa",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "服務時數",
+    "請假",
+    "圖書館",
+    "工作坊",
+    "研習",
+    "選修",
+    "報名",
+    "新生",
+    "缺席",
+    "社團",
+    "講座"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/cygsh/cygsh-info-2020.json",
+   "detail_revision": "cad8a619a6b8eae54f8acff4324278d3689a3c3ace5696162d0221e4da458837",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "114學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/171451552.pdf"
+    },
+    {
+     "name": "114學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/652198587.pdf"
+    },
+    {
+     "name": "113學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/571547400.pdf"
+    },
+    {
+     "name": "113學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/583999759.pdf"
+    },
+    {
+     "name": "112學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/219404867.pdf"
+    },
+    {
+     "name": "112學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/430296619.pdf"
+    },
+    {
+     "name": "111學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/111-2.pdf"
+    },
+    {
+     "name": "111學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/111-1.pdf"
+    },
+    {
+     "name": "110學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/110-2.pdf"
+    },
+    {
+     "name": "110學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/110-1.pdf"
+    },
+    {
+     "name": "109學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/109-2.pdf"
+    },
+    {
+     "name": "109學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/109-1.pdf"
+    },
+    {
+     "name": "108學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/108-2.pdf"
+    },
+    {
+     "name": "108學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/108-1.pdf"
+    },
+    {
+     "name": "107學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/107-2.pdf"
+    },
+    {
+     "name": "107學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/107-1.pdf"
+    },
+    {
+     "name": "106學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/106-2.pdf"
+    },
+    {
+     "name": "106學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/106-1.pdf"
+    },
+    {
+     "name": "105學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/105-2.pdf"
+    },
+    {
+     "name": "105學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/105-1.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 26,
+      "t": [
+       "生活",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "導師",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "輔導室",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "請假",
+       "#leave",
+       "#attendance"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "輔導室",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "志工",
+       "#event",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "輔導室",
+       "嘉獎",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 88,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 93,
+      "t": [
+       "選課"
+      ],
+      "k": []
+     },
+     {
+      "s": 96,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 101,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 103,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 104,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 105,
+      "t": [
+       "教務處",
+       "學務處",
+       "總務處",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 107,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 112,
+      "t": [
+       "生活",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 116,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 117,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 118,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 120,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 121,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 122,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 123,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 124,
+      "t": [
+       "導師",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 130,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 132,
+      "t": [
+       "輔導室",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 133,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 134,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 135,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 138,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 140,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 141,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 143,
+      "t": [
+       "請假",
+       "#leave",
+       "#attendance"
+      ],
+      "k": []
+     },
+     {
+      "s": 147,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 148,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 149,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 151,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 152,
+      "t": [
+       "輔導室",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "2021": {
    "page_id": 2021,
@@ -18933,7 +19676,7 @@
     "chars": 4096
    }
   },
-  "checked_at": "2026-11-05T20:24:35+08:00",
+  "checked_at": "2026-11-06T04:45:33+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -35681,6 +36424,772 @@
    }
   },
   {
+   "id": "cygsh-info-2019",
+   "kind": "school_info",
+   "title": "輔導室 › 生涯輔導 › 生涯相關網站",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2019.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "學習歷程",
+    "考試"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-2019.json",
+   "detail_revision": "b828683264fe38640a75b615e8b18bddcb332616554b29f4c18958e1d014e4c9",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "考試",
+       "升學",
+       "#admission",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-info-2020",
+   "kind": "school_info",
+   "title": "輔導室 › 同儕輔導 › 小草莓計畫",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2020.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "114學年度第二學期小草莓同儕輔導計畫",
+    "114學年度第一學期小草莓同儕輔導計畫",
+    "113學年度第二學期小草莓同儕輔導計畫",
+    "113學年度第一學期小草莓同儕輔導計畫",
+    "112學年度第二學期小草莓同儕輔導計畫",
+    "112學年度第一學期小草莓同儕輔導計畫",
+    "111學年度第二學期小草莓同儕輔導計畫",
+    "111學年度第一學期小草莓同儕輔導計畫",
+    "110學年度第二學期小草莓同儕輔導計畫",
+    "110學年度第一學期小草莓同儕輔導計畫",
+    "109學年度第二學期小草莓同儕輔導計畫",
+    "109學年度第一學期小草莓同儕輔導計畫",
+    "108學年度第二學期小草莓同儕輔導計畫",
+    "108學年度第一學期小草莓同儕輔導計畫",
+    "107學年度第二學期小草莓同儕輔導計畫",
+    "107學年度第一學期小草莓同儕輔導計畫",
+    "106學年度第二學期小草莓同儕輔導計畫",
+    "106學年度第一學期小草莓同儕輔導計畫",
+    "105學年度第二學期小草莓同儕輔導計畫",
+    "105學年度第一學期小草莓同儕輔導計畫"
+   ],
+   "keywords": [
+    "校長",
+    "服務時數",
+    "請假",
+    "圖書館",
+    "工作坊",
+    "研習",
+    "選修",
+    "報名",
+    "新生",
+    "缺席",
+    "社團",
+    "講座"
+   ],
+   "documents": [
+    {
+     "name": "114學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/171451552.pdf"
+    },
+    {
+     "name": "114學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/652198587.pdf"
+    },
+    {
+     "name": "113學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/571547400.pdf"
+    },
+    {
+     "name": "113學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/583999759.pdf"
+    },
+    {
+     "name": "112學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/219404867.pdf"
+    },
+    {
+     "name": "112學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/430296619.pdf"
+    },
+    {
+     "name": "111學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/111-2.pdf"
+    },
+    {
+     "name": "111學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/111-1.pdf"
+    },
+    {
+     "name": "110學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/110-2.pdf"
+    },
+    {
+     "name": "110學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/110-1.pdf"
+    },
+    {
+     "name": "109學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/109-2.pdf"
+    },
+    {
+     "name": "109學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/109-1.pdf"
+    },
+    {
+     "name": "108學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/108-2.pdf"
+    },
+    {
+     "name": "108學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/108-1.pdf"
+    },
+    {
+     "name": "107學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/107-2.pdf"
+    },
+    {
+     "name": "107學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/107-1.pdf"
+    },
+    {
+     "name": "106學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/106-2.pdf"
+    },
+    {
+     "name": "106學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/106-1.pdf"
+    },
+    {
+     "name": "105學年度第二學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/105-2.pdf"
+    },
+    {
+     "name": "105學年度第一學期小草莓同儕輔導計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/105-1.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2020.json",
+   "detail_revision": "cad8a619a6b8eae54f8acff4324278d3689a3c3ace5696162d0221e4da458837",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 26,
+      "t": [
+       "生活",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "導師",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "輔導室",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "請假",
+       "#leave",
+       "#attendance"
+      ],
+      "k": []
+     },
+     {
+      "s": 62,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "輔導室",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "志工",
+       "#event",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "輔導室",
+       "嘉獎",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 88,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 93,
+      "t": [
+       "選課"
+      ],
+      "k": []
+     },
+     {
+      "s": 96,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 101,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 103,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 104,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 105,
+      "t": [
+       "教務處",
+       "學務處",
+       "總務處",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 107,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 112,
+      "t": [
+       "生活",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 116,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 117,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 118,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 120,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 121,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 122,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 123,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 124,
+      "t": [
+       "導師",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 130,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 132,
+      "t": [
+       "輔導室",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 133,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 134,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 135,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 138,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 140,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 141,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 143,
+      "t": [
+       "請假",
+       "#leave",
+       "#attendance"
+      ],
+      "k": []
+     },
+     {
+      "s": 147,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 148,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 149,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 151,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 152,
+      "t": [
+       "輔導室",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-info-2082",
    "kind": "school_info",
    "title": "新生專區",
@@ -47443,5 +48952,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-05T20:24:35+08:00"
+ "last_run_at": "2026-11-06T04:45:33+08:00"
 }

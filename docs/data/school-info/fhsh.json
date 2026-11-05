@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-05T20:27:55+08:00",
+ "generated_at": "2026-11-06T04:49:01+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -7563,12 +7563,192 @@
    "page_id": 68277618613810,
    "url": "https://www.fhsh.khc.edu.tw/ga/%e6%a0%a1%e5%9c%92%e9%96%8b%e6%94%be",
    "label": "校園開放",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 47
+   "order": 47,
+   "checked_at": "2026-11-06T04:48:59+08:00",
+   "path": [
+    "網站導覽",
+    "校園開放"
+   ],
+   "changed_at": "2026-11-06T04:48:59+08:00",
+   "content_hash": "1ab217ca56c762935cfc0553340a4ec38236fb0e32ac4c3a37acdafd03709a02",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "競賽",
+    "考試"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-68277618613810.json",
+   "detail_revision": "8ca1f0dbc1842312717a7ec70daab9a7aa09bd71a9cfaf4aee7444ac3c8418c5",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2025-05-01"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "補課"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "腳踏車"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "破壞公物"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "打掃"
+      ],
+      "k": [
+       "place",
+       "deny"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "186979743756594": {
    "page_id": 186979743756594,
@@ -10926,6 +11106,193 @@
       ],
       "k": [
        "audience"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-info-68277618613810",
+   "kind": "school_info",
+   "title": "網站導覽 › 校園開放",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/ga/%e6%a0%a1%e5%9c%92%e9%96%8b%e6%94%be",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "競賽",
+    "考試"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-68277618613810.json",
+   "detail_revision": "8ca1f0dbc1842312717a7ec70daab9a7aa09bd71a9cfaf4aee7444ac3c8418c5",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2025-05-01"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "補課"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "腳踏車"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "破壞公物"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "打掃"
+      ],
+      "k": [
+       "place",
+       "deny"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "audience",
+       "allow"
       ]
      }
     ]
@@ -17191,5 +17558,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-05T20:27:55+08:00"
+ "last_run_at": "2026-11-06T04:49:01+08:00"
 }

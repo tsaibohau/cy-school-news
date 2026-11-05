@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T20:15:32+08:00",
+ "generated_at": "2026-11-06T04:38:31+08:00",
  "school": {
   "id": "hkhs",
   "name": "市立小港高中",
@@ -8,6 +8,233 @@
   "base": "https://www.hkhs.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "hkhs-11693",
+   "title": "116學年度大學繁星推薦、申請入學、分發入學三招生管道簡章連結",
+   "date": "2026-11-05",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11693",
+   "category": "升學",
+   "first_seen": "2026-11-06T04:38:31+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-03",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e8337c3331ba31bd1b05ad43c5905669a38a4c495937ea2e0530177af2484e9b"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "繁星",
+     "申請入學",
+     "#admission",
+     "#enrollment",
+     "#grading"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "繁星",
+       "申請入學",
+       "#admission",
+       "#enrollment",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "繁星",
+       "申請入學",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment",
+       "#grading"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "繁星",
+       "申請入學",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "註冊組",
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "penalty",
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "作弊",
+       "記過",
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "繁星",
+       "申請入學",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "繁星",
+       "申請入學",
+       "#admission",
+       "#enrollment",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment",
+       "#grading"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "繁星",
+       "申請入學",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "註冊組",
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "penalty",
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "作弊",
+       "記過",
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "繁星",
+       "申請入學",
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hkhs-11689",
    "title": "115學年度校慶運動會賽程表",

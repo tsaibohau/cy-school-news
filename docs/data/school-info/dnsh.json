@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-05T20:25:33+08:00",
+ "generated_at": "2026-11-06T04:46:42+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -415,8 +415,14 @@
    "page_id": 277773278799179,
    "url": "https://dnsh.ylc.edu.tw/dnsh07.htm",
    "label": "圖書館",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-06T04:46:40+08:00",
+   "path": [
+    "南中團隊",
+    "圖書館",
+    "圖書館首頁"
+   ]
   },
   "102182243382622": {
    "page_id": 102182243382622,
@@ -817,6 +823,54 @@
     "輔導室首頁"
    ],
    "order": 70
+  },
+  "165070949425441": {
+   "page_id": 165070949425441,
+   "url": "https://dnsh.ylc.edu.tw/Libdata4.htm",
+   "label": "112-03-06 圖書館共讀站營運管理使用規範",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "圖書館首頁"
+   ],
+   "order": 71
+  },
+  "225163348206103": {
+   "page_id": 225163348206103,
+   "url": "https://dnsh.ylc.edu.tw/Libdata2.htm",
+   "label": "110-06-20 閱讀寫作計畫",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "圖書館首頁"
+   ],
+   "order": 72
+  },
+  "49714533401371": {
+   "page_id": 49714533401371,
+   "url": "https://dnsh.ylc.edu.tw/Libdata1.htm",
+   "label": "110-06-20 資訊業務",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "圖書館首頁"
+   ],
+   "order": 73
+  },
+  "202049476289993": {
+   "page_id": 202049476289993,
+   "url": "https://dnsh.ylc.edu.tw/Libdata3.htm",
+   "label": "110-06-20 館際合作",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "圖書館",
+    "圖書館首頁"
+   ],
+   "order": 74
   }
  },
  "handbook": {},
@@ -1028,5 +1082,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-05T20:25:33+08:00"
+ "last_run_at": "2026-11-06T04:46:42+08:00"
 }

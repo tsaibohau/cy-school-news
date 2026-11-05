@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-05T20:27:43+08:00",
+ "generated_at": "2026-11-06T04:48:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -522,25 +522,37 @@
    "page_id": 88280511900365,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/設備組",
    "label": "設備組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "教務處"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-06T04:48:33+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組"
+   ]
   },
   "121127351610290": {
    "page_id": 121127351610290,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/實研組/",
    "label": "實研組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "教務處"
    ],
-   "order": 41
+   "order": 41,
+   "checked_at": "2026-11-06T04:48:35+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "實研組"
+   ]
   },
   "91916813180763": {
    "page_id": 91916813180763,
@@ -1014,6 +1026,78 @@
     "註冊組"
    ],
    "order": 81
+  },
+  "2725835196827": {
+   "page_id": 2725835196827,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/%e8%a8%ad%e5%82%99%e7%b5%84/",
+   "label": "設備組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "設備組"
+   ],
+   "order": 82
+  },
+  "248700685817357": {
+   "page_id": 248700685817357,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/%e8%a8%ad%e5%82%99%e7%b5%84/%e5%bd%b1%e5%8d%b0%e6%a9%9f/",
+   "label": "影印機",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "設備組"
+   ],
+   "order": 83
+  },
+  "26435733066788": {
+   "page_id": 26435733066788,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/設備組/高雄市科展/",
+   "label": "高雄市科展",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "設備組"
+   ],
+   "order": 84
+  },
+  "231382837559186": {
+   "page_id": 231382837559186,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/%e5%af%a6%e7%a0%94%e7%b5%84/",
+   "label": "實研組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "實研組"
+   ],
+   "order": 85
+  },
+  "146831736345559": {
+   "page_id": 146831736345559,
+   "url": "https://www.nknush.kh.edu.tw/%e5%90%84%e9%a0%85%e8%a8%88%e7%95%ab/",
+   "label": "各項計畫",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "實研組"
+   ],
+   "order": 86
+  },
+  "64016813308000": {
+   "page_id": 64016813308000,
+   "url": "https://www.nknush.kh.edu.tw/%e5%af%a6%e7%bf%92%e6%95%99%e5%b8%ab%e6%a5%ad%e5%8b%99/",
+   "label": "實習教師業務",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "實研組"
+   ],
+   "order": 87
   }
  },
  "handbook": {},
@@ -1315,5 +1399,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-05T20:27:43+08:00"
+ "last_run_at": "2026-11-06T04:48:37+08:00"
 }

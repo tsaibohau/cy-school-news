@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ccjh",
- "generated_at": "2026-11-05T20:24:46+08:00",
+ "generated_at": "2026-11-06T04:45:44+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -2674,11 +2674,176 @@
   },
   "150": {
    "page_id": 150,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-06T04:45:40+08:00",
+   "path": [
+    "行政單位",
+    "竹中輔導處",
+    "特教組"
+   ],
+   "changed_at": "2026-11-06T04:45:40+08:00",
+   "content_hash": "206223c2e7e99e27c97a3edafb5ed86033c8c6dee3242f7aa689c5c2601cdb1b",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "分機",
+    "升學",
+    "報名",
+    "宣導",
+    "校外教學",
+    "校服",
+    "申訴",
+    "研習"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-150.json",
+   "detail_revision": "25b1ea0fd9a376d06a2e2f925e6bb7f602198639c8673b998b3f03c055b7a280",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "校外教學",
+       "#field_trip"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "151": {
    "page_id": 151,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-06T04:45:43+08:00",
+   "path": [
+    "行政單位",
+    "竹中輔導處",
+    "藝才組"
+   ],
+   "changed_at": "2026-11-06T04:45:43+08:00",
+   "content_hash": "21a97acb4b0cb7dc2a1c4a2b44ecfe7ceded2a2a87d2698a6cc5f850072ea16a",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "招生",
+    "校外教學",
+    "申請",
+    "競賽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ccjh/ccjh-info-151.json",
+   "detail_revision": "c8315f3a8dc2607aa23067ca5124af0067d4eb8e75a7433493f7cabb75bb5ed7",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "校外教學",
+       "#field_trip"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "轉學"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "152": {
    "page_id": 152,
@@ -5397,6 +5562,175 @@
    }
   },
   {
+   "id": "ccjh-info-150",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中輔導處 › 特教組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-150.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "申請",
+    "分機",
+    "升學",
+    "報名",
+    "宣導",
+    "校外教學",
+    "校服",
+    "申訴",
+    "研習"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-150.json",
+   "detail_revision": "25b1ea0fd9a376d06a2e2f925e6bb7f602198639c8673b998b3f03c055b7a280",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "校外教學",
+       "#field_trip"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ccjh-info-151",
+   "kind": "school_info",
+   "title": "行政單位 › 竹中輔導處 › 藝才組",
+   "school": "ccjh",
+   "school_name": "竹崎高中",
+   "url": "https://www.ccjh.cyc.edu.tw/p/412-1000-151.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "招生",
+    "校外教學",
+    "申請",
+    "競賽"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ccjh/ccjh-info-151.json",
+   "detail_revision": "c8315f3a8dc2607aa23067ca5124af0067d4eb8e75a7433493f7cabb75bb5ed7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "校外教學",
+       "#field_trip"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "轉學"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ccjh-info-153",
    "kind": "school_info",
    "title": "行政單位 › 竹中圖書館 › 電子書",
@@ -5568,5 +5902,5 @@
   86,
   153
  ],
- "last_run_at": "2026-11-05T20:24:46+08:00"
+ "last_run_at": "2026-11-06T04:45:44+08:00"
 }

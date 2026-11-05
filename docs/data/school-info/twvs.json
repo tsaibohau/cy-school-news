@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "twvs",
- "generated_at": "2026-11-05T20:27:11+08:00",
+ "generated_at": "2026-11-06T04:48:05+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "210511608049060": {
@@ -749,34 +749,52 @@
    "page_id": 222910447537708,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/library/read-passbook-promotion/",
    "label": "閱讀存摺推廣活動",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 57
+   "order": 57,
+   "checked_at": "2026-11-06T04:48:00+08:00",
+   "path": [
+    "行政單位",
+    "圖書館",
+    "閱讀存摺推廣活動"
+   ]
   },
   "58646431934843": {
    "page_id": 58646431934843,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/internship-adminstration-office/etest/",
    "label": "即測即評及發證",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 58
+   "order": 58,
+   "checked_at": "2026-11-06T04:48:02+08:00",
+   "path": [
+    "行政單位",
+    "實習處",
+    "即測即評及發證"
+   ]
   },
   "113754028647373": {
    "page_id": 113754028647373,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/secretary-office/internal-control-statement/",
    "label": "內控聲明書",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於本校"
    ],
-   "order": 59
+   "order": 59,
+   "checked_at": "2026-11-06T04:48:04+08:00",
+   "path": [
+    "行政單位",
+    "秘書室",
+    "內控聲明書"
+   ]
   },
   "19705678135454": {
    "page_id": 19705678135454,
@@ -2278,6 +2296,18 @@
     "就業媒合及求職資訊"
    ],
    "order": 185
+  },
+  "158046763839271": {
+   "page_id": 158046763839271,
+   "url": "https://www.twvs.tn.edu.tw/113etest/",
+   "label": "113年度即測即評及發證檢定辦理期程",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "實習處",
+    "即測即評及發證"
+   ],
+   "order": 186
   }
  },
  "handbook": {},
@@ -2559,5 +2589,5 @@
   "f3ef66c885",
   "f9693f2c0a"
  ],
- "last_run_at": "2026-11-05T20:27:11+08:00"
+ "last_run_at": "2026-11-06T04:48:05+08:00"
 }

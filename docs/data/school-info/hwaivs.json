@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-05T20:25:14+08:00",
+ "generated_at": "2026-11-06T04:46:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -2147,15 +2147,101 @@
    "page_id": 41397980686093,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e9%95%b7%e5%ae%a4/%e7%99%bc%e5%b1%95%e9%a1%98%e6%99%af%e5%8f%8a%e5%ad%b8%e7%94%9f%e5%9c%96%e5%83%8f-2/",
    "label": "發展願景及學生圖像",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-06T04:46:19+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校長室",
+    "發展願景及學生圖像"
+   ],
+   "changed_at": "2026-11-06T04:46:19+08:00",
+   "content_hash": "9d95ebe03b6a69f509491c70f553380964e91c92fd8361ab71473b93044d5374",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-41397980686093.json",
+   "detail_revision": "d439e160989749be5761bf03b554e927f32cce1d620daf1a8fcc532d4007c38f",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
   },
   "54368803087515": {
    "page_id": 54368803087515,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e9%95%b7%e5%ae%a4/%e6%a0%a1%e9%95%b7%e5%ae%a4%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1/",
    "label": "校長室組織成員",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-06T04:46:21+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校長室",
+    "校長室組織成員"
+   ],
+   "changed_at": "2026-11-06T04:46:21+08:00",
+   "content_hash": "62b656d99996ffc6fab17693d93ea071767a30e4123851cb5875ab26e2644445",
+   "doc_links": [],
+   "keywords": [
+    "分機",
+    "校長",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-54368803087515.json",
+   "detail_revision": "83b3e280d8b0049f48c5f18813eef46165283363d5cc8206cc45cd4a72107b8a",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "280287049223864": {
    "page_id": 280287049223864,
@@ -5367,6 +5453,30 @@
    }
   },
   {
+   "id": "hwaivs-info-41397980686093",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 校長室 › 發展願景及學生圖像",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e9%95%b7%e5%ae%a4/%e7%99%bc%e5%b1%95%e9%a1%98%e6%99%af%e5%8f%8a%e5%ad%b8%e7%94%9f%e5%9c%96%e5%83%8f-2/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-41397980686093.json",
+   "detail_revision": "d439e160989749be5761bf03b554e927f32cce1d620daf1a8fcc532d4007c38f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "hwaivs-info-44222696521714",
    "kind": "school_info",
    "title": "國立虎尾高級農工職業學校 › 網站連結",
@@ -5382,6 +5492,72 @@
    "detail_ref": "data/details/hwaivs/hwaivs-info-44222696521714.json",
    "detail_revision": "83c4975fa1392cc6ad1e0238d098c0eb886dcd7366c002ab02dd614a756cb088",
    "detail_status": "parsed"
+  },
+  {
+   "id": "hwaivs-info-54368803087515",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 校長室 › 校長室組織成員",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e9%95%b7%e5%ae%a4/%e6%a0%a1%e9%95%b7%e5%ae%a4%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "分機",
+    "校長",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-54368803087515.json",
+   "detail_revision": "83b3e280d8b0049f48c5f18813eef46165283363d5cc8206cc45cd4a72107b8a",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hwaivs-info-87001172833261",
@@ -7416,5 +7592,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-05T20:25:14+08:00"
+ "last_run_at": "2026-11-06T04:46:22+08:00"
 }

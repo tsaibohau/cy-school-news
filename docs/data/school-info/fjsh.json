@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-05T20:24:41+08:00",
+ "generated_at": "2026-11-06T04:45:39+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -3139,10 +3139,228 @@
   },
   "515": {
    "page_id": 515,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-06T04:45:35+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組"
+   ],
+   "changed_at": "2026-11-06T04:45:35+08:00",
+   "content_hash": "50d62f5a6bf465bb7999eaa8ed2ba6bbc6dd159fdfe9184799924442c18bfdc1",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "競賽",
+    "地址",
+    "專線",
+    "招生",
+    "比賽",
+    "登記",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-515.json",
+   "detail_revision": "d297d4b7648f3f0a814d55d5db846a6d711c2970a039a94eac2f99f45e814932",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "516": {
    "page_id": 516,
+   "status": "ok",
+   "checked_at": "2026-11-06T04:45:37+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "體衛組"
+   ],
+   "changed_at": "2026-11-06T04:45:37+08:00",
+   "content_hash": "684423fe91e3f867051bf6e76e1ca42f14d68a5467dd39e24f4fc025104016ab",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "社團",
+    "競賽",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-516.json",
+   "detail_revision": "66f22bf3366a4e35ff0b5dd7e3bc2cfa6b49be639460de5d017151d0011cebfb",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  "518": {
+   "page_id": 518,
+   "status": "pending"
+  },
+  "519": {
+   "page_id": 519,
+   "status": "pending"
+  },
+  "520": {
+   "page_id": 520,
+   "status": "pending"
+  },
+  "521": {
+   "page_id": 521,
+   "status": "pending"
+  },
+  "522": {
+   "page_id": 522,
+   "status": "pending"
+  },
+  "533": {
+   "page_id": 533,
+   "status": "pending"
+  },
+  "534": {
+   "page_id": 534,
+   "status": "pending"
+  },
+  "535": {
+   "page_id": 535,
+   "status": "pending"
+  },
+  "536": {
+   "page_id": 536,
+   "status": "pending"
+  },
+  "537": {
+   "page_id": 537,
    "status": "pending"
   },
   "539": {
@@ -3365,6 +3583,10 @@
    "page_id": 612,
    "status": "pending"
   },
+  "613": {
+   "page_id": 613,
+   "status": "pending"
+  },
   "614": {
    "page_id": 614,
    "status": "pending"
@@ -3456,6 +3678,10 @@
    "detail_revision": "80489e227335ff50545b06800c5dd5f1fc9714389119a9a5682d64d36ec246f0",
    "detail_status": "parsed",
    "attachments": []
+  },
+  "640": {
+   "page_id": 640,
+   "status": "pending"
   }
  },
  "handbook": {},
@@ -6582,6 +6808,192 @@
    }
   },
   {
+   "id": "fjsh-info-515",
+   "kind": "school_info",
+   "title": "行政單位 › 學務處 › 訓育組",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-515.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "競賽",
+    "地址",
+    "專線",
+    "招生",
+    "比賽",
+    "登記",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-515.json",
+   "detail_revision": "d297d4b7648f3f0a814d55d5db846a6d711c2970a039a94eac2f99f45e814932",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-516",
+   "kind": "school_info",
+   "title": "行政單位 › 學務處 › 體衛組",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-516.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "社團",
+    "競賽",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-516.json",
+   "detail_revision": "66f22bf3366a4e35ff0b5dd7e3bc2cfa6b49be639460de5d017151d0011cebfb",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -6679,5 +7091,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-05T20:24:41+08:00"
+ "last_run_at": "2026-11-06T04:45:39+08:00"
 }

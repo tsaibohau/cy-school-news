@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-05T20:28:06+08:00",
+ "generated_at": "2026-11-06T04:49:10+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3618,12 +3618,158 @@
    "page_id": 163160178993789,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-923.php",
    "label": "校史沿革",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "學校介紹"
    ],
-   "order": 38
+   "order": 38,
+   "checked_at": "2026-11-06T04:49:09+08:00",
+   "path": [
+    "學校介紹",
+    "校史沿革"
+   ],
+   "changed_at": "2026-11-06T04:49:09+08:00",
+   "content_hash": "7675c78c9a335e300eb64ef5212ea0c0612868a915470985b79da1db5b2f287a",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "宿舍",
+    "學生宿舍",
+    "校史",
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-163160178993789.json",
+   "detail_revision": "7a4fbbdf5cf7862b0334de87d5cba8181207d0a2b66ed30c74a515b64719740b",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "宿舍",
+       "開學",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1939-04-01"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1946-04-01"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1969-10-15"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2000-02-01"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2016-08-01"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "184174612128215": {
    "page_id": 184174612128215,
@@ -9007,6 +9153,155 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-163160178993789",
+   "kind": "school_info",
+   "title": "學校介紹 › 校史沿革",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-923.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "入學",
+    "宿舍",
+    "學生宿舍",
+    "校史",
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-163160178993789.json",
+   "detail_revision": "7a4fbbdf5cf7862b0334de87d5cba8181207d0a2b66ed30c74a515b64719740b",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "宿舍",
+       "開學",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1939-04-01"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1946-04-01"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "1969-10-15"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2000-02-01"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2016-08-01"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-187701472752311",
    "kind": "school_info",
    "title": "教學單位 › 機電科",
@@ -9717,5 +10012,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-05T20:28:06+08:00"
+ "last_run_at": "2026-11-06T04:49:10+08:00"
 }

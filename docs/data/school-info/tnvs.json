@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-05T20:27:05+08:00",
+ "generated_at": "2026-11-06T04:47:59+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -5765,19 +5765,345 @@
    "page_id": 90752130939613,
    "url": "https://www.tnvs.tn.edu.tw/general/",
    "label": "總務處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-06T04:47:55+08:00",
+   "path": [
+    "總務處"
+   ],
+   "changed_at": "2026-11-06T04:47:55+08:00",
+   "content_hash": "53476ecb281c9c20e204029e53d59f789aa47e442db9c1854ed5660a961512ec",
+   "doc_links": [
+    {
+     "name": "國立臺南高級海事水產職業學校校舍場所提供使用作業要點",
+     "url": "https://drive.google.com/file/d/1Y4vK-RckMZkM1SatW6BVkwZi7IJtG9_Q/view?usp=sharing"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校天然災害災後災損檢視統計陳報工作實施要點",
+     "url": "https://drive.google.com/file/d/1fK5x0jOWYtHen3J-p56SH8kKa8rs-Dqs/view?usp=sharing"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校汽機車停車場管理及使用要點",
+     "url": "https://drive.google.com/file/d/16x6w5iDfhVYaYQarFuXZBot2ecrIlIUy/view?usp=drive_link"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校平面圖暨逃生避難圖",
+     "url": "https://drive.google.com/file/d/1T5rAaR6zFMp-XwcQvEjqwPW8WJ0tDBZL/view?usp=drive_link"
+    },
+    {
+     "name": "線上報修表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSfAqKbWOExDX8RW2mkbHJXfJTfsi5BupAiKq1PAKnpNXxaojQ/viewform?usp=sharing&ouid=104802823315702810011"
+    },
+    {
+     "name": "查看連結",
+     "url": "https://docs.google.com/spreadsheets/d/1siH8ddS6cKh72OtNfZ91l4QIPArLBTYFISiXSH7MLos/edit?usp=sharing"
+    },
+    {
+     "name": "查看連結",
+     "url": "https://docs.google.com/spreadsheets/d/1sELZJ9Fj3SZ3caseCwysqE-mY9sz9pKeev2pu6l6HXk/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "平面圖",
+    "手機",
+    "災害",
+    "傳真",
+    "申請"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-90752130939613.json",
+   "detail_revision": "4de57714723710979445607a933455503593dfb3fcb9fdd724eb266a5ba59b6b",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "機車",
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "總務處",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "112021914716799": {
    "page_id": 112021914716799,
    "url": "https://www.tnvs.tn.edu.tw/general/gen-affairs/",
    "label": "庶務組",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "看見南水"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-06T04:47:57+08:00",
+   "path": [
+    "看見南水",
+    "庶務組"
+   ],
+   "changed_at": "2026-11-06T04:47:57+08:00",
+   "content_hash": "6f0a460acae948ed93c149abf8d26b9488006e92a1d17143a7e483b9d13a3954",
+   "doc_links": [
+    {
+     "name": "臨時人員就職通知單",
+     "url": "https://drive.google.com/file/d/1i62_zd4ltV7Qm_tIzkEwabQhrUT-DZmS/view?usp=sharing"
+    },
+    {
+     "name": "臨時人員離職通知單",
+     "url": "https://drive.google.com/file/d/1FqhThxkmjYEAXR3umrE4genklNfDdLza/view?usp=sharing"
+    },
+    {
+     "name": "代理老師勞健保加保",
+     "url": "https://drive.google.com/file/d/1mPxg0htGMx6RJ-wmaaeItYQxjB0sx3Pq/view?usp=sharing"
+    },
+    {
+     "name": "兼課老師勞健保加保",
+     "url": "https://drive.google.com/file/d/1SlRqiMczDuukYz7ibn05_7USKObLNEiA/view?usp=sharing"
+    },
+    {
+     "name": "眷屬健保加保單",
+     "url": "https://drive.google.com/file/d/1aPTYqvqSNoEgD-bNl9cyPpSPyQhziWjO/view?usp=sharing"
+    },
+    {
+     "name": "勞健保退保單",
+     "url": "https://drive.google.com/file/d/1PcigxB4WKUI12D5VyCvw0hdIqM3AptTh/view?usp=sharing"
+    },
+    {
+     "name": "財產及非消耗品減損單",
+     "url": "https://drive.google.com/file/d/1euBJXrfseNkuIawCPKd_F3lUeubBrQO3/view?usp=drive_link"
+    },
+    {
+     "name": "財產及非消耗品移動單",
+     "url": "https://drive.google.com/file/d/1HllgDRl4O2XULTA3HteN9tUr4tz5qZPZ/view?usp=sharing"
+    },
+    {
+     "name": "修繕申請單",
+     "url": "https://drive.google.com/file/d/15jiDQX5v7XX6GGiCgKO9yxJmT4AXNm6M/view?usp=drive_link"
+    },
+    {
+     "name": "監視器攝錄資料調閱申請單",
+     "url": "https://drive.google.com/file/d/1XpAWPP2yLvP_0UBLngcUusZWl0oPjDJG/view?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "申請",
+    "安全",
+    "宿舍",
+    "災害",
+    "簡介",
+    "衛生"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-112021914716799.json",
+   "detail_revision": "e62e196e146cfd8894071b728ebb58e5baec810a288f2d861dbd2322221be953",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   "33057863431096": {
    "page_id": 33057863431096,
@@ -7979,6 +8305,217 @@
    "detail_status": "parsed"
   },
   {
+   "id": "tnvs-info-90752130939613",
+   "kind": "school_info",
+   "title": "總務處",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/general/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "國立臺南高級海事水產職業學校校舍場所提供使用作業要點",
+    "國立臺南高級海事水產職業學校天然災害災後災損檢視統計陳報工作實施要點",
+    "國立臺南高級海事水產職業學校汽機車停車場管理及使用要點",
+    "國立臺南高級海事水產職業學校平面圖暨逃生避難圖",
+    "線上報修表單",
+    "查看連結",
+    "查看連結"
+   ],
+   "keywords": [
+    "平面圖",
+    "手機",
+    "災害",
+    "傳真",
+    "申請"
+   ],
+   "documents": [
+    {
+     "name": "國立臺南高級海事水產職業學校校舍場所提供使用作業要點",
+     "url": "https://drive.google.com/file/d/1Y4vK-RckMZkM1SatW6BVkwZi7IJtG9_Q/view?usp=sharing"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校天然災害災後災損檢視統計陳報工作實施要點",
+     "url": "https://drive.google.com/file/d/1fK5x0jOWYtHen3J-p56SH8kKa8rs-Dqs/view?usp=sharing"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校汽機車停車場管理及使用要點",
+     "url": "https://drive.google.com/file/d/16x6w5iDfhVYaYQarFuXZBot2ecrIlIUy/view?usp=drive_link"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校平面圖暨逃生避難圖",
+     "url": "https://drive.google.com/file/d/1T5rAaR6zFMp-XwcQvEjqwPW8WJ0tDBZL/view?usp=drive_link"
+    },
+    {
+     "name": "線上報修表單",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSfAqKbWOExDX8RW2mkbHJXfJTfsi5BupAiKq1PAKnpNXxaojQ/viewform?usp=sharing&ouid=104802823315702810011"
+    },
+    {
+     "name": "查看連結",
+     "url": "https://docs.google.com/spreadsheets/d/1siH8ddS6cKh72OtNfZ91l4QIPArLBTYFISiXSH7MLos/edit?usp=sharing"
+    },
+    {
+     "name": "查看連結",
+     "url": "https://docs.google.com/spreadsheets/d/1sELZJ9Fj3SZ3caseCwysqE-mY9sz9pKeev2pu6l6HXk/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/tnvs/tnvs-info-90752130939613.json",
+   "detail_revision": "4de57714723710979445607a933455503593dfb3fcb9fdd724eb266a5ba59b6b",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "機車",
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "總務處",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-100624286833690",
    "kind": "school_info",
    "title": "水產食品科",
@@ -8371,6 +8908,147 @@
        "總務處"
       ],
       "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-info-112021914716799",
+   "kind": "school_info",
+   "title": "看見南水 › 庶務組",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/general/gen-affairs/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "臨時人員就職通知單",
+    "臨時人員離職通知單",
+    "代理老師勞健保加保",
+    "兼課老師勞健保加保",
+    "眷屬健保加保單",
+    "勞健保退保單",
+    "財產及非消耗品減損單",
+    "財產及非消耗品移動單",
+    "修繕申請單",
+    "監視器攝錄資料調閱申請單"
+   ],
+   "keywords": [
+    "申請",
+    "安全",
+    "宿舍",
+    "災害",
+    "簡介",
+    "衛生"
+   ],
+   "documents": [
+    {
+     "name": "臨時人員就職通知單",
+     "url": "https://drive.google.com/file/d/1i62_zd4ltV7Qm_tIzkEwabQhrUT-DZmS/view?usp=sharing"
+    },
+    {
+     "name": "臨時人員離職通知單",
+     "url": "https://drive.google.com/file/d/1FqhThxkmjYEAXR3umrE4genklNfDdLza/view?usp=sharing"
+    },
+    {
+     "name": "代理老師勞健保加保",
+     "url": "https://drive.google.com/file/d/1mPxg0htGMx6RJ-wmaaeItYQxjB0sx3Pq/view?usp=sharing"
+    },
+    {
+     "name": "兼課老師勞健保加保",
+     "url": "https://drive.google.com/file/d/1SlRqiMczDuukYz7ibn05_7USKObLNEiA/view?usp=sharing"
+    },
+    {
+     "name": "眷屬健保加保單",
+     "url": "https://drive.google.com/file/d/1aPTYqvqSNoEgD-bNl9cyPpSPyQhziWjO/view?usp=sharing"
+    },
+    {
+     "name": "勞健保退保單",
+     "url": "https://drive.google.com/file/d/1PcigxB4WKUI12D5VyCvw0hdIqM3AptTh/view?usp=sharing"
+    },
+    {
+     "name": "財產及非消耗品減損單",
+     "url": "https://drive.google.com/file/d/1euBJXrfseNkuIawCPKd_F3lUeubBrQO3/view?usp=drive_link"
+    },
+    {
+     "name": "財產及非消耗品移動單",
+     "url": "https://drive.google.com/file/d/1HllgDRl4O2XULTA3HteN9tUr4tz5qZPZ/view?usp=sharing"
+    },
+    {
+     "name": "修繕申請單",
+     "url": "https://drive.google.com/file/d/15jiDQX5v7XX6GGiCgKO9yxJmT4AXNm6M/view?usp=drive_link"
+    },
+    {
+     "name": "監視器攝錄資料調閱申請單",
+     "url": "https://drive.google.com/file/d/1XpAWPP2yLvP_0UBLngcUusZWl0oPjDJG/view?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/tnvs/tnvs-info-112021914716799.json",
+   "detail_revision": "e62e196e146cfd8894071b728ebb58e5baec810a288f2d861dbd2322221be953",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
      }
     ]
    }
@@ -12943,5 +13621,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-05T20:27:05+08:00"
+ "last_run_at": "2026-11-06T04:47:59+08:00"
 }
