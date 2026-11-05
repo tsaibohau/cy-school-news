@@ -82,6 +82,13 @@ def condense_targets(items, today, cap):
     return rows[:cap]
 
 
+def retry_targets(items, today):
+    """Expired notices whose page could not be read (a timeout, a server error): read once more."""
+    return [i for i in items if _school(i) in SCHOOLS and i.get("url") and not is_gone(i)
+            and i.get("detail_status") in ("temporary_error", "permanent_error")
+            and i.get("body_condensed") != CONDENSE_VERSION and is_expired(i, today)]
+
+
 def prune(recent_doc, archive_doc):
     """Remove confirmed-gone notices of 嘉中、嘉女. Returns the removed items."""
     removed = []
@@ -114,7 +121,8 @@ def record_removed(items, now_iso):
     known = {str(r.get("id") or "") for r in rows}
     for item in items:
         if item.get("id") and item["id"] not in known:
-            rows.append({"id": item["id"], "school": _school(item), "reason": "official_page_gone", "removed_at": now_iso[:10]})
+            rows.append({"id": item["id"], "school": _school(item), "reason": item.get("removed_reason") or "official_page_gone",
+                         "removed_at": now_iso[:10]})
     REMOVED_PATH.write_text(json.dumps({"schema_version": 1, "removed": rows}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
@@ -162,6 +170,29 @@ def main():
                 record_missing(item, now_iso)
         time.sleep(delay)
 
+    # RETRY_FAILED=1: expired notices that could not be read get one more try; a second failure
+    # means the text cannot be fetched, so the notice is removed (it has no reference value).
+    retried = recovered = unreachable = 0
+    if os.environ.get("RETRY_FAILED") == "1":
+        today = now.date().isoformat()
+        budget = {"remaining": attachment_cap, "ocr_enabled": False, "ocr_remaining": 0}
+        for item in retry_targets(items, today):
+            retried += 1
+            try:
+                r = session.get(item["url"], timeout=CONFIG["timeout_sec"])
+                r.raise_for_status()
+                write_detail_record(item, decode_response(r), now_iso, session=session,
+                                    attachment_budget=budget, request_delay_sec=delay)
+                item["condense_pending"] = CONDENSE_VERSION
+                recovered += 1
+            except Exception as error:
+                if http_status(error) in GONE_HTTP_STATUS:
+                    record_missing(item, now_iso)
+                item["link_status"] = "gone"
+                item["removed_reason"] = "body_unreachable"
+                unreachable += 1
+            time.sleep(delay)
+
     removed = prune(recent_doc, archive_doc)
     if removed:
         record_removed(removed, now_iso)
@@ -188,7 +219,7 @@ def main():
     atomic_write_text(ARCHIVE_PATH, json.dumps(archive_doc, ensure_ascii=False, indent=1))
     build_school_shards(recent_doc, archive_doc, ROOT / "docs" / "data" / "schools")
     print(f"PRUNE rechecked={checked} confirmed_gone={gone} alive_again={alive} removed={len(removed)} "
-          f"condense_read={read}/{len(targets)}")
+          f"condense_read={read}/{len(targets)} retried={retried} recovered={recovered} unreachable={unreachable}")
     return 0
 
 
