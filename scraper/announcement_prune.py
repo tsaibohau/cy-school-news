@@ -27,7 +27,7 @@ REMOVED_PATH = ROOT / "docs" / "data" / "removed-announcements.json"
 WIPE_PATH = ROOT / ".announcement-wipe.json"
 DETAIL_ROOT = ROOT / "docs" / "data" / "details"
 SCHOOLS = {"cysh", "cygsh"}
-CONDENSE_VERSION = 1
+CONDENSE_VERSION = 2  # tools/condense-expired.js VERSION; version 1 notices are condensed again
 NO_DATE_EXPIRY_DAYS = 365
 
 

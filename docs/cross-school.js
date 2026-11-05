@@ -153,7 +153,9 @@
       if (x.years.length && y.years.length && !overlaps(x.years, y.years)) return;
       union.join(a, b);
       var root = union.find(a);
-      info[root] = { from: from, to: to, organizers: uniq(x.organizers.concat(y.organizers)), editions: uniq(x.editions.concat(y.editions)), years: uniq(x.years.concat(y.years)) };
+      info[root] = { from: from, to: to, organizers: uniq(x.organizers.concat(y.organizers)), /* 「第23屆流音 及 第20屆流舞」 joins a 第20屆 group only as 第20屆: keep the editions both share,
+           so a 第23屆-only notice cannot join through it. */
+        editions: x.editions.length && y.editions.length ? x.editions.filter(function (e) { return y.editions.indexOf(e) !== -1; }) : uniq(x.editions.concat(y.editions)), years: uniq(x.years.concat(y.years)) };
     });
     var groups = {};
     rows.forEach(function (row, i) { var root = union.find(i); (groups[root] = groups[root] || []).push(row); });
