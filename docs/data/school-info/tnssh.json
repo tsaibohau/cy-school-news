@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-05T02:45:53+08:00",
+ "generated_at": "2026-11-05T11:42:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -426,26 +426,39 @@
    "page_id": 68525095779748,
    "url": "https://www.tnssh.tn.edu.tw/plan/hf/",
    "label": "新增鐘點費",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:42:27+08:00",
+   "path": [
+    "新增鐘點費"
+   ]
   },
   "152564721207415": {
    "page_id": 152564721207415,
    "url": "https://www.tnssh.tn.edu.tw/plan/cc/",
    "label": "課諮師培訓",
-   "status": "pending",
-   "depth": 0
+   "status": "login",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:42:29+08:00",
+   "path": [
+    "課諮師培訓"
+   ]
   },
   "140003140030199": {
    "page_id": 140003140030199,
    "url": "https://www.tnssh.tn.edu.tw/plan/hq/",
    "label": "優質化計畫",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "認識二中"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-05T11:42:31+08:00",
+   "path": [
+    "認識二中",
+    "優質化計畫"
+   ]
   },
   "33643846811234": {
    "page_id": 33643846811234,
@@ -1106,6 +1119,18 @@
     "新生專區"
    ],
    "order": 100
+  },
+  "89841185678894": {
+   "page_id": 89841185678894,
+   "url": "https://www.tnssh.tn.edu.tw/plan/hq/activity/",
+   "label": "辦理研習活動場次 >>",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "認識二中",
+    "優質化計畫"
+   ],
+   "order": 101
   }
  },
  "handbook": {},
@@ -1392,5 +1417,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-05T02:45:53+08:00"
+ "last_run_at": "2026-11-05T11:42:32+08:00"
 }

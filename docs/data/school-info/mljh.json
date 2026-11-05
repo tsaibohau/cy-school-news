@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mljh",
- "generated_at": "2026-11-05T02:44:41+08:00",
+ "generated_at": "2026-11-05T11:41:18+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31793209037602": {
@@ -328,15 +328,23 @@
    "page_id": 116920329781195,
    "url": "https://mljh.ylc.edu.tw/cl.aspx?n=110144",
    "label": "課程計畫",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:41:13+08:00",
+   "path": [
+    "課程計畫"
+   ]
   },
   "70803735330643": {
    "page_id": 70803735330643,
    "url": "https://mljh.ylc.edu.tw/cl.aspx?n=118661",
    "label": "自主學習專區",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:41:16+08:00",
+   "path": [
+    "自主學習專區"
+   ]
   },
   "78670694280305": {
    "page_id": 78670694280305,
@@ -624,5 +632,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-05T02:44:41+08:00"
+ "last_run_at": "2026-11-05T11:41:18+08:00"
 }

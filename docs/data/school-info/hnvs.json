@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-05T02:45:05+08:00",
+ "generated_at": "2026-11-05T11:41:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -2862,8 +2862,57 @@
    "page_id": 81358467413825,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,388,382",
    "label": "資料搜集",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:41:44+08:00",
+   "path": [
+    "資料搜集"
+   ],
+   "changed_at": "2026-11-05T11:41:44+08:00",
+   "content_hash": "6eb8d69b6470de32c48642fbf606a815a4270591a31876d30ba92d026bc9ff56",
+   "doc_links": [],
+   "keywords": [
+    "學習歷程",
+    "入學"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-81358467413825.json",
+   "detail_revision": "1aca82da100c031bdcd6c58282256f5fd55f623d8ac70f36ca5c599766f8b5f1",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2020-01-07"
+      ]
+     }
+    ]
+   }
   },
   "194564895216657": {
    "page_id": 194564895216657,
@@ -6784,6 +6833,59 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-81358467413825",
+   "kind": "school_info",
+   "title": "資料搜集",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,388,382",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "學習歷程",
+    "入學"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-81358467413825.json",
+   "detail_revision": "1aca82da100c031bdcd6c58282256f5fd55f623d8ac70f36ca5c599766f8b5f1",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2020-01-07"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-92309457216428",
    "kind": "school_info",
    "title": "專案計畫",
@@ -8812,5 +8914,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-05T02:45:05+08:00"
+ "last_run_at": "2026-11-05T11:41:46+08:00"
 }

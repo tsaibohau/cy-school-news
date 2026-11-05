@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T02:37:15+08:00",
+ "generated_at": "2026-11-05T11:27:56+08:00",
  "school": {
   "id": "ptivs",
   "name": "國立成大附屬南工",
@@ -8,6 +8,49 @@
   "base": "https://www.ptivs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "ptivs-20272",
+   "title": "國立臺北大學辦理同步遠距線上課程--「20期Python基礎程式設計班~AI小助理輔助教學」簡章暨報名表",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20272",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "ptivs-20271",
    "title": "函轉社團法人台灣消費者保護協會辦理「致癌沙拉油校園團體訴訟」收件時間",
@@ -20,8 +63,8 @@
    "first_seen": "2026-11-05T02:37:15+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -1286,7 +1329,26 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20221",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ptivs-20217",
@@ -1298,7 +1360,39 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20217",
    "category": "教職員",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#health"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ptivs-20220",
@@ -1310,7 +1404,41 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20220",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "志工",
+     "#volunteer"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "社團",
+       "學務處",
+       "#club"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ptivs-20219",
@@ -1322,7 +1450,30 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20219",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "社團",
+       "學務處",
+       "#club"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ptivs-20192",
@@ -1334,11 +1485,72 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20192",
    "category": "生活學務",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
    "audience": {
     "grades": [],
     "classes": [],
     "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#health"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處",
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "課輔",
+       "#health",
+       "#tutoring"
+      ],
+      "k": [
+       "time",
+       "place",
+       "allow"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     }
+    ]
    }
   },
   {
@@ -1351,7 +1563,77 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20218",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "腳踏車"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "腳踏車"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "腳踏車"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "腳踏車",
+       "總務處",
+       "機車",
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "腳踏車"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "腳踏車",
+       "總務處",
+       "機車",
+       "停車"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "ptivs-20216",
@@ -1363,7 +1645,35 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20216",
    "category": "教職員",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ptivs-20215",
@@ -1375,7 +1685,65 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20215",
    "category": "教職員",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "處室",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "處室",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ptivs-20214",

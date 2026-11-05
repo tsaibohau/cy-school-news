@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "bwjh",
- "generated_at": "2026-11-05T02:44:21+08:00",
+ "generated_at": "2026-11-05T11:41:01+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "115174826298911": {
@@ -532,20 +532,26 @@
    "page_id": 58693729861948,
    "url": "https://www.bwjh.ylc.edu.tw/ann/6374/",
    "label": "中華大家功德會獎學金",
-   "status": "pending",
-   "depth": 0
+   "status": "gone",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:40:57+08:00"
   },
   "212934878415365": {
    "page_id": 212934878415365,
    "url": "https://www.bwjh.ylc.edu.tw/a01/",
    "label": "關於福高",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "關於福高",
     "校園環境"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-05T11:41:00+08:00",
+   "path": [
+    "福智高中",
+    "關於福高"
+   ]
   },
   "5854200693276": {
    "page_id": 5854200693276,
@@ -1031,5 +1037,5 @@
   "fb9a0fa8b3",
   "fce367420e"
  ],
- "last_run_at": "2026-11-05T02:44:21+08:00"
+ "last_run_at": "2026-11-05T11:41:01+08:00"
 }

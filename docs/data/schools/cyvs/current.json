@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T02:37:15+08:00",
+ "generated_at": "2026-11-05T11:27:56+08:00",
  "school": {
   "id": "cyvs",
   "name": "國立嘉義高級商業職業學校",
@@ -8,6 +8,488 @@
   "base": "https://www.cyvs.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cyvs-25265",
+   "title": "【榮譽榜】賀！廣二1陳懷恩入選競技疊杯國家代表隊",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "cyvs",
+   "school_name": "嘉義高商",
+   "url": "https://www.cyvs.cy.edu.tw/ischool/public/news_view/show.php?nid=25265",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cyvs-25267",
+   "title": "【活動轉知】「教育部表揚人權及轉型正義 教育推展貢獻獎」",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "cyvs",
+   "school_name": "嘉義高商",
+   "url": "https://www.cyvs.cy.edu.tw/ischool/public/news_view/show.php?nid=25267",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "2fa98294d9c59f78ec9c0e3f43a60c9c86021f1463ae896bc02b7f241a3c2812"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cyvs-25266",
+   "title": "【活動轉知】台南應用科大「流行音樂演唱工作坊」",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "cyvs",
+   "school_name": "嘉義高商",
+   "url": "https://www.cyvs.cy.edu.tw/ischool/public/news_view/show.php?nid=25266",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cyvs-25264",
+   "title": "【活動轉知】惠文高中「第十九屆中臺灣模擬聯合國會議（CENTMUN XIX）」",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "cyvs",
+   "school_name": "嘉義高商",
+   "url": "https://www.cyvs.cy.edu.tw/ischool/public/news_view/show.php?nid=25264",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "807b25946229a8a30f360a9fdc644db0c418a00f85507b6159be673f7480da53"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-06",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "807b25946229a8a30f360a9fdc644db0c418a00f85507b6159be673f7480da53"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05",
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05",
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "deadline"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "method",
+       "deadline"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "deadline"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "method",
+       "deadline"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "contact",
+       "deadline"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact",
+       "deadline"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "contact",
+       "deadline"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cyvs-25261",
    "title": "公告-重申本校教職員差勤管理規定及落實勤惰查核相關事宜",

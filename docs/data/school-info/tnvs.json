@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-05T02:46:08+08:00",
+ "generated_at": "2026-11-05T11:42:39+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -5520,8 +5520,44 @@
    "page_id": 18363080357671,
    "url": "https://www.tnvs.tn.edu.tw/practice/",
    "label": "實習處",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:42:37+08:00",
+   "path": [
+    "實習處"
+   ],
+   "changed_at": "2026-11-05T11:42:37+08:00",
+   "content_hash": "827dbceb43e57110ed599aed63466849e20b46f4c806b8a671c6a00ed8a94ed3",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "上課地點"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-18363080357671.json",
+   "detail_revision": "a584bbca8017b71e6971ab07605a4c10b4586605bc6fadfe04f9bcc68f05892f",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "193671334618012": {
    "page_id": 193671334618012,
@@ -6584,6 +6620,28 @@
     "體育組"
    ],
    "order": 133
+  },
+  "253935320297193": {
+   "page_id": 253935320297193,
+   "url": "https://www.tnvs.tn.edu.tw/practice-intro/",
+   "label": "成員介紹",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 134
+  },
+  "97390382788613": {
+   "page_id": 97390382788613,
+   "url": "https://www.tnvs.tn.edu.tw/?page_id=3607",
+   "label": "現況與展望",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實習處"
+   ],
+   "order": 135
   }
  },
  "handbook": {},
@@ -6648,6 +6706,46 @@
    "detail_ref": "data/details/tnvs/tnvs-info-14030893984672.json",
    "detail_revision": "a3eb897cd31939420d17e3dc492828bac226b3575310950352a51a6beb428846",
    "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-18363080357671",
+   "kind": "school_info",
+   "title": "實習處",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/practice/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "申請",
+    "上課地點"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-18363080357671.json",
+   "detail_revision": "a584bbca8017b71e6971ab07605a4c10b4586605bc6fadfe04f9bcc68f05892f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tnvs-info-20201151087164",
@@ -12373,5 +12471,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-05T02:46:08+08:00"
+ "last_run_at": "2026-11-05T11:42:39+08:00"
 }

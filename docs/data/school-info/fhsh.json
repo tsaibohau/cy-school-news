@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-05T02:46:58+08:00",
+ "generated_at": "2026-11-05T11:43:45+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -5769,23 +5769,568 @@
    "page_id": 168921987285276,
    "url": "https://www.fhsh.khc.edu.tw/ga",
    "label": "總務處",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 42
+   "order": 42,
+   "checked_at": "2026-11-05T11:43:41+08:00",
+   "path": [
+    "網站導覽",
+    "總務處"
+   ],
+   "changed_at": "2026-11-05T11:43:41+08:00",
+   "content_hash": "6ed1d464f61e15441e71ed81d7e32b4b9e4e9c3e3f8da7a447f11d9669b3cb5a",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/edit"
+    },
+    {
+     "name": "註冊單補列",
+     "url": "https://drive.google.com/file/d/1wktnrvKilWHppGLmF67SBekBUaU2kwTP/view"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "安全",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-168921987285276.json",
+   "detail_revision": "104ddd077bd6a8165688ee965dd0cf295f4f67f6747b99a10ccae4e39bb7035a",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "149341361535887": {
    "page_id": 149341361535887,
    "url": "https://www.fhsh.khc.edu.tw/ga/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
    "label": "組織成員",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 43
+   "order": 43,
+   "checked_at": "2026-11-05T11:43:43+08:00",
+   "path": [
+    "網站導覽",
+    "組織成員"
+   ],
+   "changed_at": "2026-11-05T11:43:43+08:00",
+   "content_hash": "f75cdc8ff1ce9692b8016460215a5c331067dbfc709ee01ea6444052d349a590",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "分機",
+    "登記",
+    "繳費",
+    "繳費單",
+    "收費",
+    "校長",
+    "代辦費",
+    "安全",
+    "宣導",
+    "放學",
+    "獎學金",
+    "獎懲"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-149341361535887.json",
+   "detail_revision": "e1a067a7082b0f8fd95d9b47938c6410fbcace909de659606f2ea356bf8452d5",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "學雜費",
+       "註冊組",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "學雜費",
+       "註冊組",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "冷氣"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [
+       "出缺席"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 81,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 82,
+      "t": [
+       "學雜費",
+       "註冊組",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 86,
+      "t": [
+       "獎學金",
+       "放學",
+       "費用",
+       "#scholarship",
+       "#daily_schedule"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 89,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 90,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 91,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 92,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 94,
+      "t": [
+       "總務處",
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 95,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 96,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 100,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 101,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 102,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 103,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 105,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 106,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "206035072355670": {
    "page_id": 206035072355670,
@@ -10365,6 +10910,469 @@
    }
   },
   {
+   "id": "fhsh-info-149341361535887",
+   "kind": "school_info",
+   "title": "網站導覽 › 組織成員",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/ga/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "分機",
+    "登記",
+    "繳費",
+    "繳費單",
+    "收費",
+    "校長",
+    "代辦費",
+    "安全",
+    "宣導",
+    "放學",
+    "獎學金",
+    "獎懲"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-149341361535887.json",
+   "detail_revision": "e1a067a7082b0f8fd95d9b47938c6410fbcace909de659606f2ea356bf8452d5",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "學雜費",
+       "註冊組",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "學雜費",
+       "註冊組",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "冷氣"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [
+       "出缺席"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 81,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 82,
+      "t": [
+       "學雜費",
+       "註冊組",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 86,
+      "t": [
+       "獎學金",
+       "放學",
+       "費用",
+       "#scholarship",
+       "#daily_schedule"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 89,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 90,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 91,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 92,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 94,
+      "t": [
+       "總務處",
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 95,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 96,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 100,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 101,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 102,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 103,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 105,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 106,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-149763357069977",
    "kind": "school_info",
    "title": "學務處 › 環境衛生",
@@ -10579,6 +11587,104 @@
       "s": 13,
       "t": [
        "#certificate"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-info-168921987285276",
+   "kind": "school_info",
+   "title": "網站導覽 › 總務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/ga",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "設備報修",
+    "註冊單補列",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "安全",
+    "簡介"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/edit"
+    },
+    {
+     "name": "註冊單補列",
+     "url": "https://drive.google.com/file/d/1wktnrvKilWHppGLmF67SBekBUaU2kwTP/view"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-168921987285276.json",
+   "detail_revision": "104ddd077bd6a8165688ee965dd0cf295f4f67f6747b99a10ccae4e39bb7035a",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "註冊組"
       ],
       "k": []
      }
@@ -13649,5 +14755,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-05T02:46:58+08:00"
+ "last_run_at": "2026-11-05T11:43:45+08:00"
 }

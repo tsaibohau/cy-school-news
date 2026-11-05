@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-05T02:47:08+08:00",
+ "generated_at": "2026-11-05T11:43:55+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3521,8 +3521,50 @@
    "page_id": 200343015069308,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1141.php",
    "label": "合作社",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:43:53+08:00",
+   "path": [
+    "校內團體",
+    "合作社"
+   ],
+   "changed_at": "2026-11-05T11:43:53+08:00",
+   "content_hash": "7133e3d17d6c6f0e33b569295f0ce83db009a0e2c65bca91f1d7bc4339793e61",
+   "doc_links": [],
+   "keywords": [
+    "助學金",
+    "申請"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-200343015069308.json",
+   "detail_revision": "6344cc0a4c4699cff5625a6282fdc3a6bb3527977f8178d247922d35cb9646f9",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "合作社"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "合作社"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   "16343487702058": {
    "page_id": 16343487702058,
@@ -8997,6 +9039,51 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-200343015069308",
+   "kind": "school_info",
+   "title": "校內團體 › 合作社",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1141.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "助學金",
+    "申請"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-200343015069308.json",
+   "detail_revision": "6344cc0a4c4699cff5625a6282fdc3a6bb3527977f8178d247922d35cb9646f9",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "合作社"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "合作社"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-201191619269020",
    "kind": "school_info",
    "title": "校內團體 › 校友會",
@@ -9534,5 +9621,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-05T02:47:08+08:00"
+ "last_run_at": "2026-11-05T11:43:55+08:00"
 }

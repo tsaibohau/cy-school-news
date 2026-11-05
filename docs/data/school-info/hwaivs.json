@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-05T02:44:11+08:00",
+ "generated_at": "2026-11-05T11:40:50+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -1989,15 +1989,82 @@
    "page_id": 52551129384659,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e5%8b%99%e8%b3%87%e6%96%99%e9%96%8b%e6%94%be%e5%b0%88%e5%8d%80/%e6%a0%a1%e5%8b%99%e7%99%bc%e5%b1%95%e8%a8%88%e7%95%ab/",
    "label": "校務發展計畫",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:40:46+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校務資料開放",
+    "校務發展計畫"
+   ]
   },
   "200740749496463": {
    "page_id": 200740749496463,
    "url": "https://www.hwaivs.ylc.edu.tw/%e8%a1%8c%e6%94%bf%e7%b3%bb%e7%b5%b1/%e5%85%a7%e9%83%a8%e6%8e%a7%e5%88%b6%e8%81%b2%e6%98%8e%e6%9b%b8/",
    "label": "內部控制聲明書",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T11:40:48+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "行政系統",
+    "內部控制聲明書"
+   ],
+   "changed_at": "2026-11-05T11:40:48+08:00",
+   "content_hash": "f205d9d29b2834a09afd6e4fe3417d3bd4b29235846a8bf3852fc4cb76982604",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-200740749496463.json",
+   "detail_revision": "c1f6757f7d628c18902ff2255f08293328b488a8e73b0f6e18572e85588d04d5",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-02-23"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-02-26"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-03-05"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2023-05-11"
+      ]
+     }
+    ]
+   }
   },
   "144034120728727": {
    "page_id": 144034120728727,
@@ -6751,6 +6818,69 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hwaivs-info-200740749496463",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 行政系統 › 內部控制聲明書",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e8%a1%8c%e6%94%bf%e7%b3%bb%e7%b5%b1/%e5%85%a7%e9%83%a8%e6%8e%a7%e5%88%b6%e8%81%b2%e6%98%8e%e6%9b%b8/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-200740749496463.json",
+   "detail_revision": "c1f6757f7d628c18902ff2255f08293328b488a8e73b0f6e18572e85588d04d5",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-02-23"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-02-26"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-03-05"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2023-05-11"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hwaivs-info-244449806408572",
    "kind": "school_info",
    "title": "國立虎尾高級農工職業學校 › 快速連結區 › 教師研習公告",
@@ -7163,5 +7293,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-05T02:44:11+08:00"
+ "last_run_at": "2026-11-05T11:40:50+08:00"
 }

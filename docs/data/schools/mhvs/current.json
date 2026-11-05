@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T02:37:15+08:00",
+ "generated_at": "2026-11-05T11:27:56+08:00",
  "school": {
   "id": "mhvs",
   "name": "國立民雄高級農工職業學校",
@@ -8,6 +8,305 @@
   "base": "https://www.mhvs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "mhvs-11046",
+   "title": "【延期及場地異動】「115年度性騷擾事件法院判決案例研討會」，改於11月27日舉辦",
+   "date": "2026-11-05",
+   "source_category": "",
+   "school": "mhvs",
+   "school_name": "民雄農工",
+   "url": "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11046",
+   "category": "行政公告",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-27",
+     "provenance": "verified_announcement_event",
+     "source_revision": "0b6656c594ce2043ae1d7fe2591b72bf062e9e6f1bec9dcc062242493ad6f4d4"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-19",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0b6656c594ce2043ae1d7fe2591b72bf062e9e6f1bec9dcc062242493ad6f4d4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "獎學金",
+       "重補修",
+       "學雜費",
+       "#scholarship",
+       "#makeup",
+       "#fee"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "課表",
+       "#certificate",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mhvs-11045",
+   "title": "冬季將至，請同學注意防範一氧化碳中毒",
+   "date": "2026-11-05",
+   "source_category": "",
+   "school": "mhvs",
+   "school_name": "民雄農工",
+   "url": "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11045",
+   "category": "一般",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "生活",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "教官室",
+       "導師",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "獎學金",
+       "重補修",
+       "學雜費",
+       "#scholarship",
+       "#makeup",
+       "#fee"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "課表",
+       "#certificate",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "mhvs-11043",
    "title": "11/7(六)閩南語；11/7(六)健康與護理；11/7(六)機械科-機件原理Ⅱ；11/8(日)一下英文；11/8(日)食品科-烘焙概論，名單於附件，請準時到課。",

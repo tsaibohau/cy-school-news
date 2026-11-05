@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "shsh",
- "generated_at": "2026-11-05T02:44:15+08:00",
+ "generated_at": "2026-11-05T11:40:56+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "114635209264224": {
@@ -3307,23 +3307,143 @@
    "page_id": 78555783588672,
    "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_230/%e6%b4%bb%e5%8b%95%e4%b8%80%e8%a6%bd%e8%a1%a8/",
    "label": "活動一覽表",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 39
+   "order": 39,
+   "checked_at": "2026-11-05T11:40:51+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組",
+    "活動一覽表"
+   ],
+   "changed_at": "2026-11-05T11:40:51+08:00",
+   "content_hash": "f0072eddfdba25d05de306a80867e4795432a68d3cf78fcc808d786690f40c63",
+   "doc_links": [],
+   "keywords": [
+    "初賽",
+    "報名",
+    "奧林匹亞",
+    "競賽"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-78555783588672.json",
+   "detail_revision": "39e7b49903bc8a87efad5d95ff0bcb5b9af00fba5836115d2bc928530fc424d3",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "奧林匹亞",
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "116227713187743": {
    "page_id": 116227713187743,
    "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_230/%e6%95%99%e5%ad%b8%e8%a8%ad%e5%82%99%e7%ae%a1%e7%90%86%e8%a6%8f%e5%89%87/",
    "label": "教學設備管理規則",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-05T11:40:53+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "設備組",
+    "教學設備管理規則"
+   ],
+   "changed_at": "2026-11-05T11:40:53+08:00",
+   "content_hash": "3f69afc01694e9a6c6163664ed20575380df858f111165a864638fedfda53ba0",
+   "doc_links": [],
+   "keywords": [
+    "校長",
+    "登記",
+    "續借"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/shsh/shsh-info-116227713187743.json",
+   "detail_revision": "e8393892a04e0e523739cf8d5f482934b2be58725fc16a9f54c3983bfd1746ad",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "新視窗開啟檔案",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/allen/正心中學資訊設備借用辦法.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 107,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     }
+    ]
+   }
   },
   "272781757957881": {
    "page_id": 272781757957881,
@@ -6369,6 +6489,73 @@
    "detail_status": "parsed"
   },
   {
+   "id": "shsh-info-78555783588672",
+   "kind": "school_info",
+   "title": "教務處 › 設備組 › 活動一覽表",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_230/%e6%b4%bb%e5%8b%95%e4%b8%80%e8%a6%bd%e8%a1%a8/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "初賽",
+    "報名",
+    "奧林匹亞",
+    "競賽"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/shsh/shsh-info-78555783588672.json",
+   "detail_revision": "39e7b49903bc8a87efad5d95ff0bcb5b9af00fba5836115d2bc928530fc424d3",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "奧林匹亞",
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "shsh-info-93412670516552",
    "kind": "school_info",
    "title": "教務處 › 教學組 › 課程計畫與教學正常化",
@@ -7210,6 +7397,63 @@
       "t": [],
       "k": [
        "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-info-116227713187743",
+   "kind": "school_info",
+   "title": "教務處 › 設備組 › 教學設備管理規則",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/office/div_200/section_230/%e6%95%99%e5%ad%b8%e8%a8%ad%e5%82%99%e7%ae%a1%e7%90%86%e8%a6%8f%e5%89%87/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "新視窗開啟檔案"
+   ],
+   "keywords": [
+    "校長",
+    "登記",
+    "續借"
+   ],
+   "documents": [
+    {
+     "name": "新視窗開啟檔案",
+     "url": "https://www.shsh.ylc.edu.tw/wp-content/uploads/doc/allen/正心中學資訊設備借用辦法.pdf"
+    }
+   ],
+   "detail_ref": "data/details/shsh/shsh-info-116227713187743.json",
+   "detail_revision": "e8393892a04e0e523739cf8d5f482934b2be58725fc16a9f54c3983bfd1746ad",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 107,
+      "t": [],
+      "k": [
+       "time"
       ]
      }
     ]
@@ -8842,5 +9086,5 @@
   "fe964338e1",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-05T02:44:15+08:00"
+ "last_run_at": "2026-11-05T11:40:56+08:00"
 }

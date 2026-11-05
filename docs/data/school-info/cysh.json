@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-05T02:47:32+08:00",
+ "generated_at": "2026-11-05T11:44:13+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5053,11 +5053,357 @@
   },
   "930": {
    "page_id": 930,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T11:44:04+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "體育組",
+    "體適能專區"
+   ],
+   "changed_at": "2026-11-05T11:44:04+08:00",
+   "content_hash": "b1bb7a821a4e3812dcff260e139b47c606692b2677c8a260a60e7d9112a42a71",
+   "doc_links": [],
+   "keywords": [
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-930.json",
+   "detail_revision": "294699765af59311a84f7754a297f7f6343c90f7e4c0acd86a60093d9183b0c9",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "932": {
    "page_id": 932,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T11:44:06+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "體育組",
+    "水域安全專區"
+   ],
+   "changed_at": "2026-11-05T11:44:06+08:00",
+   "content_hash": "b8bcfd742b6a1029d1c7048644e779753bf29d078e03a49e87454d2dad01596b",
+   "doc_links": [],
+   "keywords": [
+    "安全",
+    "宣導",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-932.json",
+   "detail_revision": "bb39840a60bce8da64a5fca25efce8f1e23df37998acdf9f4b3b7ca26b8d6993",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "水域遊憩活動警示旗幟.pdf(另開新視窗)",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/18/114527073.pdf"
+    },
+    {
+     "name": "預防溺水及自救或救人一覽表.pdf(另開新視窗)",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/18/113046413.pdf"
+    },
+    {
+     "name": "海灘生存指南(短片).mp4(另開新視窗)",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/18/660939777.mp4"
+    },
+    {
+     "name": "救溺五步(短片).mp4(另開新視窗)",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/18/878294402.mp4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "游泳課"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "游泳課"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 94,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 106,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 149,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 154,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 161,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 178,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 188,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 194,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 209,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 211,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 213,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 216,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "934": {
    "page_id": 934,
@@ -31061,6 +31407,359 @@
    }
   },
   {
+   "id": "cysh-info-930",
+   "kind": "school_info",
+   "title": "學務處 › 體育組 › 體適能專區",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-930.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-930.json",
+   "detail_revision": "294699765af59311a84f7754a297f7f6343c90f7e4c0acd86a60093d9183b0c9",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-info-932",
+   "kind": "school_info",
+   "title": "學務處 › 體育組 › 水域安全專區",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-932.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "水域遊憩活動警示旗幟.pdf(另開新視窗)",
+    "預防溺水及自救或救人一覽表.pdf(另開新視窗)",
+    "海灘生存指南(短片).mp4(另開新視窗)",
+    "救溺五步(短片).mp4(另開新視窗)"
+   ],
+   "keywords": [
+    "安全",
+    "宣導",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "水域遊憩活動警示旗幟.pdf(另開新視窗)",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/18/114527073.pdf"
+    },
+    {
+     "name": "預防溺水及自救或救人一覽表.pdf(另開新視窗)",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/18/113046413.pdf"
+    },
+    {
+     "name": "海灘生存指南(短片).mp4(另開新視窗)",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/18/660939777.mp4"
+    },
+    {
+     "name": "救溺五步(短片).mp4(另開新視窗)",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/18/878294402.mp4"
+    }
+   ],
+   "detail_ref": "data/details/cysh/cysh-info-932.json",
+   "detail_revision": "bb39840a60bce8da64a5fca25efce8f1e23df37998acdf9f4b3b7ca26b8d6993",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "游泳課"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "游泳課"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 94,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 106,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 149,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 154,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 161,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 178,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 188,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 194,
+      "t": [
+       "游泳課"
+      ],
+      "k": []
+     },
+     {
+      "s": 209,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 211,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 213,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 216,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-968",
    "kind": "school_info",
    "title": "行政單位 › 進修部 › 教務組",
@@ -51596,5 +52295,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-05T02:47:32+08:00"
+ "last_run_at": "2026-11-05T11:44:13+08:00"
 }

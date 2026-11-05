@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T02:37:15+08:00",
+ "generated_at": "2026-11-05T11:27:56+08:00",
  "school": {
   "id": "nknush",
   "name": "國立高師大附中",
@@ -8,6 +8,313 @@
   "base": "https://www.nknush.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "nknush-22416",
+   "title": "活動高餐大附中辦理國中生餐旅群體驗活動輔導室",
+   "date": "2026-11-05",
+   "source_category": "國中",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/junior-high-news/22416/%e6%b4%bb%e5%8b%95%e9%ab%98%e9%a4%90%e5%a4%a7%e9%99%84%e4%b8%ad%e8%be%a6%e7%90%86%e5%9c%8b%e4%b8%ad%e7%94%9f%e9%a4%90%e6%97%85%e7%be%a4%e9%ab%94%e9%a9%97%e6%b4%bb%e5%8b%95%e8%bc%94%e5%b0%8e%e5%ae%a4/",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "433281c7bd036fb45162b69ba1dcdbd7339ce1769d0a8b7fde124a8ce8e25a0e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "輔導室",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-28"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "繳交",
+       "#enrollment"
+      ],
+      "k": [
+       "place",
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "學習歷程",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "家長",
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-20"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22409",
+   "title": "青年百億海外圓夢基金計畫—海外翱翔組",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22409/%e9%9d%92%e5%b9%b4%e7%99%be%e5%84%84%e6%b5%b7%e5%a4%96%e5%9c%93%e5%a4%a2%e5%9f%ba%e9%87%91%e8%a8%88%e7%95%ab-%e6%b5%b7%e5%a4%96%e7%bf%b1%e7%bf%94%e7%b5%84/",
+   "category": "一般",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "家長",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22405",
+   "title": "115 年高中體總運動賽事學生志工招募及培訓實施計畫",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22405/115-%e5%b9%b4%e9%ab%98%e4%b8%ad%e9%ab%94%e7%b8%bd%e9%81%8b%e5%8b%95%e8%b3%bd%e4%ba%8b%e5%ad%b8%e7%94%9f%e5%bf%97%e5%b7%a5%e6%8b%9b%e5%8b%9f%e5%8f%8a%e5%9f%b9%e8%a8%93%e5%af%a6%e6%96%bd%e8%a8%88/",
+   "category": "一般",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "志工",
+     "#volunteer"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "家長",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22396",
+   "title": "國立中山大學主辦「2027年臺灣電信年會」，整合「全國電信研討會」、「橋接未來電磁研討會」及「消息理論及通訊春季公告研討會」三大子會議，領域涵蓋「電磁」、「通訊」、「訊號處理」與「網路」等重要前瞻研究 輔導室",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22396/%e5%9c%8b%e7%ab%8b%e4%b8%ad%e5%b1%b1%e5%a4%a7%e5%ad%b8%e4%b8%bb%e8%be%a6%e3%80%8c2027%e5%b9%b4%e8%87%ba%e7%81%a3%e9%9b%bb%e4%bf%a1%e5%b9%b4%e6%9c%83%e3%80%8d%ef%bc%8c%e6%95%b4%e5%90%88%e3%80%8c/",
+   "category": "一般",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室",
+     "網路"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "輔導室",
+       "處室"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22394",
+   "title": "研習115年中小學數位素養教育基地學校期中成果交流會暨A3數位素養講師回流研習教務處",
+   "date": "2026-11-05",
+   "source_category": "教師研習",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/%e6%95%99%e5%b8%ab%e7%a0%94%e7%bf%92/22394/%e7%a0%94%e7%bf%92115%e5%b9%b4%e4%b8%ad%e5%b0%8f%e5%ad%b8%e6%95%b8%e4%bd%8d%e7%b4%a0%e9%a4%8a%e6%95%99%e8%82%b2%e5%9f%ba%e5%9c%b0%e5%ad%b8%e6%a0%a1%e6%9c%9f%e4%b8%ad%e6%88%90%e6%9e%9c%e4%ba%a4/",
+   "category": "教職員",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22390",
+   "title": "活動2026臺灣太空科學聯盟TSU學生日教務處",
+   "date": "2026-11-05",
+   "source_category": "高中",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/high-school-news/22390/%e6%b4%bb%e5%8b%952026%e8%87%ba%e7%81%a3%e5%a4%aa%e7%a9%ba%e7%a7%91%e5%ad%b8%e8%81%af%e7%9b%9ftsu%e5%ad%b8%e7%94%9f%e6%97%a5%e6%95%99%e5%8b%99%e8%99%95/",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "nknush-22386",
+   "title": "研習流行音樂演唱工作坊教務處",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22386/%e7%a0%94%e7%bf%92%e6%b5%81%e8%a1%8c%e9%9f%b3%e6%a8%82%e6%bc%94%e5%94%b1%e5%b7%a5%e4%bd%9c%e5%9d%8a%e6%95%99%e5%8b%99%e8%99%95/",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T11:27:56+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#event"
+    ],
+    "segments": []
+   }
+  },
   {
    "id": "nknush-22377",
    "title": "公告訓育組「拓凱新世紀青少年高峰論壇」活動",
@@ -1117,7 +1424,27 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/22123/%e6%b4%bb%e5%8b%95%e3%80%8cai-x-creativity-%e8%8b%b1%e8%aa%9e%e5%89%b5%e6%84%8f%e8%a8%ad%e8%a8%88%e9%ab%94%e9%a9%97%e7%87%9f%e6%95%99%e5%8b%99%e8%99%95/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22114",
@@ -1129,7 +1456,164 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/22114/%e5%85%ac%e5%91%8a%e8%a1%9b%e7%94%9f%e7%b5%84%e9%ab%98%e5%b8%ab%e5%a4%a7%e9%99%84%e4%b8%ad%e5%9c%8b%e5%b0%8f%e3%80%81%e5%9c%8b%e4%b8%ad115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%81%a5%e5%ba%b7%e6%aa%a2/",
    "category": "生活學務",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     1
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "健康檢查",
+     "#health"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "家長",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "健康檢查",
+       "#health",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "contact"
+      ],
+      "d": [
+       "2026-11-02"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-02"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "健康檢查",
+       "繳交",
+       "#health",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "audience",
+       "deny"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "請假",
+       "家長",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "健康檢查",
+       "#health"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22119",
@@ -1141,7 +1625,26 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/22119/%e6%b4%bb%e5%8b%95%e3%80%8c%e4%b8%ad%e7%a0%94%e8%ac%9b%e5%a0%82%e3%80%8d%e5%9f%ba%e9%9a%86%e5%a0%b4%e7%a7%91%e6%99%ae%e6%bc%94%e8%ac%9b%e6%95%99%e5%8b%99%e8%99%95/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22112",
@@ -1153,7 +1656,116 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/high-school-news/22112/%e5%85%ac%e5%91%8a%e6%95%99%e8%82%b2%e9%83%a8%e8%be%a6%e7%90%86%e3%80%8c%e7%ac%ac%e5%85%ad%e5%b1%86%e9%98%b2%e7%81%bd%e9%9d%92%e5%b9%b4%e5%9c%8b%e9%9a%9b%e9%a0%98%e8%a2%96%e5%9f%b9%e8%a8%93%e7%87%9f/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e75764122b8c42fdac36841603dc8842ede9cf5f4d64a02d61f496bc6d0b1670"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室",
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-27",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "penalty",
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "penalty",
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "place",
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22109",
@@ -1165,7 +1777,25 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/22109/%e5%85%ac%e5%91%8a%e8%a8%93%e8%82%b2%e7%b5%84-%e5%8b%9e%e5%8b%95%e9%83%a8%e5%8b%9e%e5%8b%95%e5%8a%9b%e7%99%bc%e5%b1%95%e7%bd%b2%e6%89%80%e9%80%81%e3%80%8c%e5%b0%91%e5%b9%b4%e5%b0%b1%e6%a5%ad%e8%b3%87/",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "處室",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22103",
@@ -1177,7 +1807,24 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/high-school-news/22103/%e5%85%ac%e5%91%8ah2gp-taiwan-2027%e5%a4%a7%e7%8d%8e%e8%b3%bd%ef%bc%8d%e5%85%a8%e7%90%83%e6%9c%80%e5%a4%a7%e8%b7%a8%e5%ad%b8%e7%a7%91%e6%b0%ab%e8%83%bd%e6%95%99%e8%82%b2%e6%b4%bb%e5%8b%95%e8%a8%ad/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "家長",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22098",
@@ -1189,7 +1836,26 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/high-school-news/22098/%e5%85%ac%e5%91%8a2027-atz-g-%e9%9b%b6%e9%87%8d%e5%8a%9b%e5%af%a6%e9%a9%97%e6%8f%90%e6%a1%88%e7%ab%b6%e8%b3%bd%e8%a8%ad%e5%82%99%e7%b5%84/",
    "category": "競賽",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "家長",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22094",
@@ -1201,7 +1867,24 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/high-school-news/22094/%e5%85%ac%e5%91%8a2026%e5%85%a8%e5%9c%8b%e6%99%ba%e6%85%a7%e7%a7%91%e6%8a%80%e5%89%b5%e5%ae%a2%e6%8c%91%e6%88%b0%e8%b3%bd%e8%a8%ad%e5%82%99%e7%b5%84/",
    "category": "競賽",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "家長",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22090",
@@ -1213,7 +1896,26 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/high-school-news/22090/%e5%85%ac%e5%91%8a2026%e5%85%a8%e5%9c%8b%e6%99%ba%e6%85%a7%e5%9e%8b%e8%87%aa%e8%b5%b0%e8%bb%8a%e7%ab%b6%e8%b3%bd%e8%a8%ad%e5%82%99%e7%b5%84/",
    "category": "競賽",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "家長",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22084",
@@ -1225,7 +1927,24 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/high-school-news/22084/%e5%85%ac%e5%91%8a115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%8e%9f%e4%bd%8f%e6%b0%91%e6%97%8f%e6%96%87%e5%8c%96%e8%88%87%e7%a7%91%e5%ad%b8%e5%b1%95%e8%a6%bd%e6%9c%83%e8%a8%ad%e5%82%99%e7%b5%84/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "家長",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22081",
@@ -1237,7 +1956,48 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/headlines/22081/%e5%85%ac%e5%91%8a%e5%ad%b8%e5%8b%99%e8%99%95-%e9%ab%98%e5%b8%ab%e5%a4%a7%e9%99%84%e4%b8%ad115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac%e4%b8%80%e6%ac%a1%e5%ad%b8%e5%8b%99%e5%89%b5%e6%96%b0%e4%ba%ba/",
    "category": "招生編班",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "學務處",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "健康檢查",
+       "#enrollment"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22076",
@@ -1249,7 +2009,27 @@
    "url": "https://www.nknush.kh.edu.tw/competitions-activities/external-competitions-activities/22076/%e5%85%ac%e5%91%8a%e8%a8%93%e8%82%b2%e7%b5%84-%e3%80%8c116%e5%b9%b4%e5%ba%a6%e5%85%a8%e5%9c%8b%e5%85%ac%e7%a7%81%e7%ab%8b%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e5%8e%9f%e4%bd%8f/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "處室",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22067",
@@ -1261,7 +2041,132 @@
    "url": "https://www.nknush.kh.edu.tw/office-news/library-news/22067/%e3%80%8c115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e4%b8%ad%e5%b0%8f%e5%ad%b8%e5%9c%8b%e9%9a%9b%e6%95%99%e8%82%b2%e6%a0%a1%e9%95%b7%e6%9a%a8%e6%95%99%e5%b8%ab%e5%9f%b9%e5%8a%9b%e7%a0%94%e7%bf%92%e3%80%8d/",
    "category": "教職員",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18",
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23",
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "公假",
+       "#leave",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22064",
@@ -1273,7 +2178,27 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/22064/%e5%ae%a3%e5%b0%8e2026%e9%ab%98%e4%b8%ad%e8%81%b7%e5%85%ac%e7%9b%8a%e6%95%99%e6%9d%90%e5%be%b5%e7%a8%bf%e7%ab%b6%e8%b3%bd%e6%95%99%e5%8b%99%e8%99%95/",
    "category": "競賽",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#contest",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22059",
@@ -1285,7 +2210,25 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/22059/%e6%b4%bb%e5%8b%95%e7%ac%ac%e4%b8%89%e5%b1%86%e9%95%b7%e6%9c%9f%e7%85%a7%e9%a1%a7%e6%b0%b8%e7%ba%8c%e7%99%bc%e5%b1%95%e8%ab%96%e5%a3%87%e6%9a%a8%e7%a0%94%e8%a8%8e%e6%9c%83%e6%95%99%e5%8b%99%e8%99%95/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22055",
@@ -1297,7 +2240,26 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/22055/%e6%b4%bb%e5%8b%95%e7%ac%ac%e4%b8%80%e5%b1%86%e8%87%ba%e7%81%a3%e9%9d%92%e5%b0%91%e5%b9%b4%e7%a7%91%e5%ad%b8%e7%99%bc%e5%b1%95%e8%ab%96%e5%a3%87%e6%95%99%e5%8b%99%e8%99%95/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "nknush-22051",
@@ -1309,7 +2271,10 @@
    "url": "https://www.nknush.kh.edu.tw/announcement/22051/%e6%b4%bb%e5%8b%95%e5%be%9e%e5%9c%b0%e6%96%b9%e5%87%ba%e7%99%bc%ef%bc%8c%e8%88%87%e4%b8%96%e7%95%8c%e6%8e%a5%e8%bb%8c%e6%95%99%e5%8b%99%e8%99%95/",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "temporary_error",
+   "detail_attempts": 1,
+   "link_missing_checks": 1,
+   "link_missing_at": "2026-11-05T11:27:56+08:00"
   }
  ],
  "content_access": "approved-account-required"
