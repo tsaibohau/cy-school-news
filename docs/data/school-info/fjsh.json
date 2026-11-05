@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-05T16:36:32+08:00",
+ "generated_at": "2026-11-05T20:24:41+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -2985,11 +2985,157 @@
   },
   "512": {
    "page_id": 512,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T20:24:37+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "實驗研究組",
+    "課程諮詢"
+   ],
+   "changed_at": "2026-11-05T20:24:37+08:00",
+   "content_hash": "ed2c6af5c741d7a1ca5721de6ad1d843aba9db8bbee79896856af45d6c8c7b44",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-512.json",
+   "detail_revision": "36769c9125aa1e8219ebe98241792dd4c9be88420eb0c50473c586d89c17c0b8",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "513": {
    "page_id": 513,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T20:24:40+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "實驗研究組",
+    "學習歷程檔案"
+   ],
+   "changed_at": "2026-11-05T20:24:40+08:00",
+   "content_hash": "61fdf46e32b539175975a2e864cb09da9662cc25f3e1754d1f09d3ce488702ea",
+   "doc_links": [
+    {
+     "name": "2024年學長姐回娘家分享檔案",
+     "url": "https://drive.google.com/drive/folders/1rL8Y_MaXfEAnZtBac2QvNGSMde2hoC9Q"
+    },
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "學習歷程",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-513.json",
+   "detail_revision": "48f930e118ff89dcddf87c877a9c7ffcf5a94a02410f9ad1933c80efc19264ce",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "教務處",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "515": {
    "page_id": 515,
@@ -6283,6 +6429,159 @@
    }
   },
   {
+   "id": "fjsh-info-512",
+   "kind": "school_info",
+   "title": "教務處 › 實驗研究組 › 課程諮詢",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-512.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-512.json",
+   "detail_revision": "36769c9125aa1e8219ebe98241792dd4c9be88420eb0c50473c586d89c17c0b8",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-513",
+   "kind": "school_info",
+   "title": "教務處 › 實驗研究組 › 學習歷程檔案",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-513.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "2024年學長姐回娘家分享檔案",
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "學習歷程",
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "2024年學長姐回娘家分享檔案",
+     "url": "https://drive.google.com/drive/folders/1rL8Y_MaXfEAnZtBac2QvNGSMde2hoC9Q"
+    },
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-513.json",
+   "detail_revision": "48f930e118ff89dcddf87c877a9c7ffcf5a94a02410f9ad1933c80efc19264ce",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "教務處",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -6380,5 +6679,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-05T16:36:32+08:00"
+ "last_run_at": "2026-11-05T20:24:41+08:00"
 }

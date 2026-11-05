@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tncvs",
- "generated_at": "2026-11-05T16:38:21+08:00",
+ "generated_at": "2026-11-05T20:26:35+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179102805842520": {
@@ -1528,34 +1528,249 @@
    "page_id": 236564254730061,
    "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,4,1123,1113,1115",
    "label": "02-10-1-2. 組織架構",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 47
+   "order": 47,
+   "checked_at": "2026-11-05T20:26:30+08:00",
+   "path": [
+    "網站導覽",
+    "02-10-1-2. 組織架構"
+   ]
   },
   "199005984481290": {
    "page_id": 199005984481290,
    "url": "https://www.tncvs.tn.edu.tw/sub/form/index.asp?Parser=3,5,894,29",
    "label": "02-10-2-2. 課程相關資訊",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 48
+   "order": 48,
+   "checked_at": "2026-11-05T20:26:32+08:00",
+   "path": [
+    "網站導覽",
+    "02-10-2-2. 課程相關資訊"
+   ],
+   "changed_at": "2026-11-05T20:26:32+08:00",
+   "content_hash": "dfd2c7b091534af1088c35a5453eb8dc82a00cd3e62df6e633a358572518e3d1",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "課輔",
+    "選課"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tncvs/tncvs-info-199005984481290.json",
+   "detail_revision": "469bba5101c55e0d2d5e70eaacdcc6120e166aef77bd9a203229c2f91a937fce",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "彈性學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "選課",
+       "#course",
+       "#enrollment",
+       "#tutoring"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "選課",
+       "#course",
+       "#enrollment",
+       "#tutoring"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-19"
+      ]
+     }
+    ]
+   }
   },
   "7636599926506": {
    "page_id": 7636599926506,
    "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,5,92,28",
    "label": "03-1-2. 治校理念",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 49
+   "order": 49,
+   "checked_at": "2026-11-05T20:26:34+08:00",
+   "path": [
+    "網站導覽",
+    "03-1-2. 治校理念"
+   ],
+   "changed_at": "2026-11-05T20:26:34+08:00",
+   "content_hash": "1d2fe91fcd9f1d4de5a91092201eb3dcd59ea349a0a03f49ad8384beac7b3503",
+   "doc_links": [],
+   "keywords": [
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tncvs/tncvs-info-7636599926506.json",
+   "detail_revision": "47e10e3c65626d57fec73fe8f3927c520b74b1ca4c6b6aa7641ddfd0290b8b6c",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "家長",
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2019-02-17"
+      ]
+     }
+    ]
+   }
   },
   "89879130272124": {
    "page_id": 89879130272124,
@@ -4313,6 +4528,77 @@
  "services": {},
  "items": [
   {
+   "id": "tncvs-info-7636599926506",
+   "kind": "school_info",
+   "title": "網站導覽 › 03-1-2. 治校理念",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,5,92,28",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tncvs/tncvs-info-7636599926506.json",
+   "detail_revision": "47e10e3c65626d57fec73fe8f3927c520b74b1ca4c6b6aa7641ddfd0290b8b6c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "家長",
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2019-02-17"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "tncvs-info-59214228214472",
    "kind": "school_info",
    "title": "學習歷程公告資訊",
@@ -5108,6 +5394,151 @@
    }
   },
   {
+   "id": "tncvs-info-199005984481290",
+   "kind": "school_info",
+   "title": "網站導覽 › 02-10-2-2. 課程相關資訊",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/sub/form/index.asp?Parser=3,5,894,29",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "入學",
+    "課輔",
+    "選課"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tncvs/tncvs-info-199005984481290.json",
+   "detail_revision": "469bba5101c55e0d2d5e70eaacdcc6120e166aef77bd9a203229c2f91a937fce",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "彈性學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "選課",
+       "#course",
+       "#enrollment",
+       "#tutoring"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "選課",
+       "#course",
+       "#enrollment",
+       "#tutoring"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-19"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "tncvs-info-221469417634061",
    "kind": "school_info",
    "title": "輔導處",
@@ -5671,5 +6102,5 @@
   "fd93751649",
   "fdbcaf30e1"
  ],
- "last_run_at": "2026-11-05T16:38:21+08:00"
+ "last_run_at": "2026-11-05T20:26:35+08:00"
 }

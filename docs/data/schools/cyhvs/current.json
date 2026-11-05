@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T16:20:39+08:00",
+ "generated_at": "2026-11-05T20:15:32+08:00",
  "school": {
   "id": "cyhvs",
   "name": "國立嘉義高級家事職業學校",
@@ -8,6 +8,168 @@
   "base": "https://www.cyhvs.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cyhvs-23691",
+   "title": "弘光科大高齡照顧及職涯探索體驗活動",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "cyhvs",
+   "school_name": "嘉義家職",
+   "url": "https://www.cyhvs.cy.edu.tw/ischool/public/news_view/show.php?nid=23691",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e3015b0d15c01ea6b47b7b70a7f722a9371c41c4e00253a085d45b597d875f96"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-23"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "午餐",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-17"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-18"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cyhvs-23690",
    "title": "因應115年地方公職人員選舉，為維護選舉之公平性，並積極查察賄選、暴力、選舉賭盤、假訊息及境外勢力介選等妨害選舉之不法行為，檢送「2026反賄選愛臺灣公益宣導影片-出遊篇」。",

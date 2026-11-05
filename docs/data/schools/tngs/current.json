@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T16:20:39+08:00",
+ "generated_at": "2026-11-05T20:15:32+08:00",
  "school": {
   "id": "tngs",
   "name": "國立臺南女中",
@@ -8,6 +8,458 @@
   "base": "https://www.tngs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "tngs-92501",
+   "title": "2027嘉義市國際三分鐘影片大賽",
+   "date": "2026-11-05",
+   "source_category": "學生競賽",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/05/2027%e5%98%89%e7%be%a9%e5%b8%82%e5%9c%8b%e9%9a%9b%e4%b8%89%e5%88%86%e9%90%98%e5%bd%b1%e7%89%87%e5%a4%a7%e8%b3%bd/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d8c549502e7d40baf63f791dd2f1576bbf6cacbc891d8c889e16f2a75c47c1cb"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92497",
+   "title": "2027年第八屆台灣經濟學奧林匹亞競賽活動",
+   "date": "2026-11-05",
+   "source_category": "學生競賽",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/05/2027%e5%b9%b4%e7%ac%ac%e5%85%ab%e5%b1%86%e5%8f%b0%e7%81%a3%e7%b6%93%e6%bf%9f%e5%ad%b8%e5%a5%a7%e6%9e%97%e5%8c%b9%e4%ba%9e%e7%ab%b6%e8%b3%bd%e6%b4%bb%e5%8b%95/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "203713d905c0fe2d6e6c7a8d027fd03258e4ff2c16461e33b1f3124fd5a801ab"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "奧林匹亞",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92494",
+   "title": "臺南一中第20屆竹園岡全國高中職學生流舞大賽公告",
+   "date": "2026-11-05",
+   "source_category": "學生競賽",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/05/%e8%87%ba%e5%8d%97%e4%b8%80%e4%b8%ad%e7%ac%ac20%e5%b1%86%e7%ab%b9%e5%9c%92%e5%b2%a1%e5%85%a8%e5%9c%8b%e9%ab%98%e4%b8%ad%e8%81%b7%e5%ad%b8%e7%94%9f%e6%b5%81%e8%88%9e%e5%a4%a7%e8%b3%bd%e5%85%ac%e5%91%8a/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "4aab929b1daded2efd0d80b4ec55a0abfe9f1db803b1c0cbdb4b9646da5ef985"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-14"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "網路",
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92490",
+   "title": "臺南一中第23屆竹園岡全國高中職學生流音大賽公告",
+   "date": "2026-11-05",
+   "source_category": "學生競賽",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/05/%e8%87%ba%e5%8d%97%e4%b8%80%e4%b8%ad%e7%ac%ac23%e5%b1%86%e7%ab%b9%e5%9c%92%e5%b2%a1%e5%85%a8%e5%9c%8b%e9%ab%98%e4%b8%ad%e8%81%b7%e5%ad%b8%e7%94%9f%e6%b5%81%e9%9f%b3%e5%a4%a7%e8%b3%bd%e5%85%ac%e5%91%8a/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0ddcef1cc71600cdd0230280d3a714b95abacfa63911a9c4041bd45756b8c2ad"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#club"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-02-13"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "網路",
+       "報名",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92487",
+   "title": "中華民國資訊聯盟協進會辦理115年度生成式AI演算法認證暨競賽活動",
+   "date": "2026-11-05",
+   "source_category": "學生競賽",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/05/%e4%b8%ad%e8%8f%af%e6%b0%91%e5%9c%8b%e8%b3%87%e8%a8%8a%e8%81%af%e7%9b%9f%e5%8d%94%e9%80%b2%e6%9c%83%e8%be%a6%e7%90%86115%e5%b9%b4%e5%ba%a6%e7%94%9f%e6%88%90%e5%bc%8fai%e6%bc%94%e7%ae%97%e6%b3%95/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "70ce9d1edb17d36d1e0d25a6e05ffc6435e24a1825928f1db8c4f90d58c4ad7e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-10-01",
+       "2026-11-10",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-30",
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92484",
+   "title": "國立臺北大學辦理同步遠距線上課程–「20期Python基礎程式設計班~AI小助理輔助教學」",
+   "date": "2026-11-05",
+   "source_category": "學生營隊",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/05/%e5%9c%8b%e7%ab%8b%e8%87%ba%e5%8c%97%e5%a4%a7%e5%ad%b8%e8%be%a6%e7%90%86%e5%90%8c%e6%ad%a5%e9%81%a0%e8%b7%9d%e7%b7%9a%e4%b8%8a%e8%aa%b2%e7%a8%8b-%e3%80%8c20%e6%9c%9fpython%e5%9f%ba%e7%a4%8e%e7%a8%8b/",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "tngs-92481",
    "title": "國立雲林科技大學辦理【2026瘋狂工程師｜爆走四驅！我要成為改造王-四驅車競速賽】，請自行報名參加",

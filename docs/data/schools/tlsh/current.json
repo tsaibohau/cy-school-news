@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T16:20:39+08:00",
+ "generated_at": "2026-11-05T20:15:32+08:00",
  "school": {
   "id": "tlsh",
   "name": "國立斗六高級中學",
@@ -8,6 +8,84 @@
   "base": "https://www.tlsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "tlsh-68902",
+   "title": "中華民國資訊聯盟協進會舉辦115年度生成式AI演算法認證暨競賽活動",
+   "date": "2026-11-05",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/05/68902/",
+   "category": "競賽",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "3d08a288fe36d3861bfe445de7564d0ade14419dc98895e00768938f5c8a9406"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-10-01",
+       "2026-11-10",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-30",
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "tlsh-68895",
    "title": "十九屆中臺灣模擬聯合國會議（CENTMUNXIX）",

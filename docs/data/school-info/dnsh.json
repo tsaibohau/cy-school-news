@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-05T16:37:21+08:00",
+ "generated_at": "2026-11-05T20:25:33+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -402,8 +402,14 @@
    "page_id": 48185060612717,
    "url": "https://dnsh.ylc.edu.tw/dnsh06.htm",
    "label": "輔導室",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-05T20:25:32+08:00",
+   "path": [
+    "南中團隊",
+    "輔導室",
+    "輔導室首頁"
+   ]
   },
   "277773278799179": {
    "page_id": 277773278799179,
@@ -799,6 +805,18 @@
     "校長室"
    ],
    "order": 69
+  },
+  "46289929249246": {
+   "page_id": 46289929249246,
+   "url": "https://dnsh.ylc.edu.tw/dnshpaper.htm",
+   "label": "第1期至第24期",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "輔導室",
+    "輔導室首頁"
+   ],
+   "order": 70
   }
  },
  "handbook": {},
@@ -1010,5 +1028,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-05T16:37:21+08:00"
+ "last_run_at": "2026-11-05T20:25:33+08:00"
 }

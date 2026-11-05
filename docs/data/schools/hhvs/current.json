@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T16:20:39+08:00",
+ "generated_at": "2026-11-05T20:15:32+08:00",
  "school": {
   "id": "hhvs",
   "name": "國立新化高工",
@@ -8,6 +8,69 @@
   "base": "https://www.hhvs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "hhvs-12521",
+   "title": "115學年度高三模擬考帳密查詢",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12521",
+   "category": "段考考試",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "模擬考",
+     "#mock"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "模擬考",
+       "#mock"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hhvs-12520",
    "title": "南開科技大學行銷與流通管理系舉辦「全國創新行銷暨高中職小論文競賽」",

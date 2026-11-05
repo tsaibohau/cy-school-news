@@ -24,7 +24,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-08-27T10:54:04+08:00",
-  "notification_wait_attempts": 355,
+  "notification_wait_attempts": 356,
   "audience": {
    "grades": [],
    "classes": [],
@@ -58,7 +58,7 @@
   "date_tried": true,
   "category": "競賽",
   "first_seen": "2026-08-27T10:54:04+08:00",
-  "notification_wait_attempts": 355,
+  "notification_wait_attempts": 356,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T13:09:54+08:00"
  },
@@ -77,7 +77,7 @@
   "detail_ref": "data/details/cysh/cysh-136361.json",
   "detail_status": "parsed",
   "detail_revision": "5ae89f2d36d862aee34b59857067491c672bbc8c582629808477db12fa587203",
-  "detail_attempts": 3,
+  "detail_attempts": 4,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -85,7 +85,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-08-28T14:10:42+08:00",
-  "notification_wait_attempts": 353,
+  "notification_wait_attempts": 354,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -255,7 +255,8 @@
      "k": []
     }
    ]
-  }
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136367",
@@ -280,7 +281,7 @@
   "calendar_events": [],
   "category": "獎助學金",
   "first_seen": "2026-08-28T14:10:42+08:00",
-  "notification_wait_attempts": 353,
+  "notification_wait_attempts": 354,
   "link_missing_checks": 2,
   "link_missing_at": "2026-10-28T17:45:20+08:00",
   "link_status": "gone"
@@ -308,7 +309,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-08-28T21:01:26+08:00",
-  "notification_wait_attempts": 352,
+  "notification_wait_attempts": 353,
   "link_missing_checks": 1,
   "link_missing_at": "2026-10-26T20:58:19+08:00"
  },
@@ -336,7 +337,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-08-29T10:18:14+08:00",
-  "notification_wait_attempts": 346,
+  "notification_wait_attempts": 347,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -364,7 +365,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-08-29T10:18:14+08:00",
-  "notification_wait_attempts": 346,
+  "notification_wait_attempts": 347,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -398,7 +399,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-08-31T07:18:07+08:00",
-  "notification_wait_attempts": 321,
+  "notification_wait_attempts": 322,
   "audience": {
    "grades": [
     3
@@ -439,7 +440,7 @@
   "calendar_events": [],
   "category": "研習活動",
   "first_seen": "2026-08-31T09:18:08+08:00",
-  "notification_wait_attempts": 319,
+  "notification_wait_attempts": 320,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -964,7 +965,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-09-01T08:34:52+08:00",
-  "notification_wait_attempts": 306,
+  "notification_wait_attempts": 307,
   "snippet_tried": true
  },
  {
@@ -991,7 +992,7 @@
   "calendar_events": [],
   "category": "榮譽榜",
   "first_seen": "2026-09-01T11:25:16+08:00",
-  "notification_wait_attempts": 303,
+  "notification_wait_attempts": 304,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -1025,7 +1026,7 @@
   "calendar_events": [],
   "category": "獎助學金",
   "first_seen": "2026-09-01T15:24:49+08:00",
-  "notification_wait_attempts": 299,
+  "notification_wait_attempts": 300,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -1045,7 +1046,7 @@
   "detail_ref": "data/details/cysh/cysh-136508.json",
   "detail_status": "parsed",
   "detail_revision": "9b25d883b523b77757e6c36cfef168437a1565ce97b3207bbccdc89aa34a3e37",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -1053,7 +1054,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-01T21:25:02+08:00",
-  "notification_wait_attempts": 294,
+  "notification_wait_attempts": 295,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -1061,19 +1062,9 @@
     "服儀",
     "#uniform"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "教官室"
-     ],
-     "k": [],
-     "d": [
-      "2026-09-01"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136503",
@@ -1099,7 +1090,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-02T07:20:01+08:00",
-  "notification_wait_attempts": 293,
+  "notification_wait_attempts": 294,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -1135,7 +1126,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-09-02T14:33:45+08:00",
-  "notification_wait_attempts": 286,
+  "notification_wait_attempts": 287,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -1165,7 +1156,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-09-02T14:33:45+08:00",
-  "notification_wait_attempts": 286,
+  "notification_wait_attempts": 287,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -1185,7 +1176,7 @@
   "detail_ref": "data/details/cysh/cysh-136515.json",
   "detail_status": "parsed",
   "detail_revision": "af505bb27c12e265fcba1e2b1cecaee5eb3788f6c352a258e15679c94b124f1d",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -1193,474 +1184,16 @@
   "calendar_events": [],
   "category": "生活學務",
   "first_seen": "2026-09-02T15:24:15+08:00",
-  "notification_wait_attempts": 285,
+  "notification_wait_attempts": 286,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
    "title": [
     "#health"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "#health"
-     ],
-     "k": [],
-     "d": [
-      "2026-09-09",
-      "2026-09-14"
-     ]
-    },
-    {
-     "s": 1,
-     "t": [],
-     "k": [
-      "time"
-     ],
-     "d": [
-      "2025-09-11"
-     ]
-    },
-    {
-     "s": 2,
-     "t": [
-      "手機",
-      "#device"
-     ],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 3,
-     "t": [],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 4,
-     "t": [],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 6,
-     "t": [
-      "家長"
-     ],
-     "k": []
-    },
-    {
-     "s": 10,
-     "t": [],
-     "k": [
-      "method",
-      "allow"
-     ]
-    },
-    {
-     "s": 11,
-     "t": [
-      "截止"
-     ],
-     "k": [
-      "deadline",
-      "method",
-      "allow"
-     ]
-    },
-    {
-     "s": 12,
-     "t": [],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 13,
-     "t": [
-      "截止"
-     ],
-     "k": [
-      "deadline"
-     ]
-    },
-    {
-     "s": 14,
-     "t": [],
-     "k": [
-      "time",
-      "contact"
-     ]
-    },
-    {
-     "s": 15,
-     "t": [],
-     "k": [
-      "time"
-     ]
-    },
-    {
-     "s": 16,
-     "t": [],
-     "k": [
-      "contact"
-     ]
-    },
-    {
-     "s": 17,
-     "t": [
-      "#contact"
-     ],
-     "k": []
-    },
-    {
-     "s": 18,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 20,
-     "t": [],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 23,
-     "t": [],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 24,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 25,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 31,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 33,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 34,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 36,
-     "t": [
-      "#health",
-      "#safety"
-     ],
-     "k": []
-    },
-    {
-     "s": 37,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 38,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 39,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 40,
-     "t": [
-      "費用",
-      "#health"
-     ],
-     "k": [
-      "fee"
-     ]
-    },
-    {
-     "s": 41,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 43,
-     "t": [],
-     "k": [
-      "time"
-     ],
-     "d": [
-      "2026-06-01"
-     ]
-    },
-    {
-     "s": 45,
-     "t": [],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 46,
-     "t": [
-      "費用"
-     ],
-     "k": [
-      "fee",
-      "method"
-     ]
-    },
-    {
-     "s": 47,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 48,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 50,
-     "t": [],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 51,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 65,
-     "t": [
-      "#enrollment"
-     ],
-     "k": []
-    },
-    {
-     "s": 68,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 69,
-     "t": [
-      "#health"
-     ],
-     "k": [
-      "allow"
-     ]
-    },
-    {
-     "s": 71,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 73,
-     "t": [
-      "#health",
-      "#safety"
-     ],
-     "k": []
-    },
-    {
-     "s": 74,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 75,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 77,
-     "t": [
-      "費用"
-     ],
-     "k": [
-      "fee"
-     ]
-    },
-    {
-     "s": 78,
-     "t": [
-      "費用",
-      "#health"
-     ],
-     "k": [
-      "fee"
-     ]
-    },
-    {
-     "s": 80,
-     "t": [],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 81,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 82,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 83,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 84,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 86,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 89,
-     "t": [
-      "#health",
-      "#safety"
-     ],
-     "k": []
-    },
-    {
-     "s": 99,
-     "t": [
-      "#safety"
-     ],
-     "k": []
-    },
-    {
-     "s": 100,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 104,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 107,
-     "t": [],
-     "k": [
-      "method"
-     ]
-    },
-    {
-     "s": 109,
-     "t": [
-      "#health",
-      "#safety"
-     ],
-     "k": []
-    },
-    {
-     "s": 113,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 114,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 115,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    },
-    {
-     "s": 116,
-     "t": [
-      "#health"
-     ],
-     "k": []
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cygsh-186466",
@@ -1688,7 +1221,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-09-03T15:25:08+08:00",
-  "notification_wait_attempts": 273,
+  "notification_wait_attempts": 274,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -1716,7 +1249,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-03T16:26:42+08:00",
-  "notification_wait_attempts": 272,
+  "notification_wait_attempts": 273,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -1744,7 +1277,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-04T15:24:08+08:00",
-  "notification_wait_attempts": 259,
+  "notification_wait_attempts": 260,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:58:12+08:00"
  },
@@ -1773,7 +1306,7 @@
   "date_tried": true,
   "category": "招生編班",
   "first_seen": "2026-09-07T11:25:58+08:00",
-  "notification_wait_attempts": 231,
+  "notification_wait_attempts": 232,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -1800,7 +1333,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-09-07T13:23:46+08:00",
-  "notification_wait_attempts": 229,
+  "notification_wait_attempts": 230,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -1833,7 +1366,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-09-07T13:23:46+08:00",
-  "notification_wait_attempts": 229,
+  "notification_wait_attempts": 230,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -1960,7 +1493,7 @@
   "detail_ref": "data/details/cysh/cysh-136549.json",
   "detail_status": "parsed",
   "detail_revision": "445618652a71c4c1f5d0d28c9da4f1d111cb74b903852ea19f1d98ba5a7b2562",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -1968,7 +1501,7 @@
   "calendar_events": [],
   "category": "社團",
   "first_seen": "2026-09-07T15:26:52+08:00",
-  "notification_wait_attempts": 227,
+  "notification_wait_attempts": 228,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -1976,20 +1509,9 @@
     "社團",
     "#club"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "社團",
-      "#club"
-     ],
-     "k": [],
-     "d": [
-      "2026-09-07"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cygsh-186503",
@@ -2016,7 +1538,7 @@
   "date_tried": true,
   "category": "一般",
   "first_seen": "2026-09-07T15:26:52+08:00",
-  "notification_wait_attempts": 227,
+  "notification_wait_attempts": 228,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -2043,7 +1565,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-07T17:27:05+08:00",
-  "notification_wait_attempts": 225,
+  "notification_wait_attempts": 226,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -2503,7 +2025,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-07T17:27:05+08:00",
-  "notification_wait_attempts": 225,
+  "notification_wait_attempts": 226,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -2946,7 +2468,7 @@
   "calendar_events": [],
   "category": "研習活動",
   "first_seen": "2026-09-07T18:25:19+08:00",
-  "notification_wait_attempts": 224,
+  "notification_wait_attempts": 225,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:58:12+08:00"
  },
@@ -2975,7 +2497,7 @@
   "date_tried": true,
   "category": "競賽",
   "first_seen": "2026-09-08T16:27:15+08:00",
-  "notification_wait_attempts": 212,
+  "notification_wait_attempts": 213,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -2994,7 +2516,7 @@
   "detail_ref": "data/details/cysh/cysh-136579.json",
   "detail_status": "parsed",
   "detail_revision": "598b9eb359c6304ccb1e266da685e41db54e4817281677606dc889b4defeac48",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -3002,7 +2524,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-09T13:24:01+08:00",
-  "notification_wait_attempts": 206,
+  "notification_wait_attempts": 207,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -3313,7 +2835,8 @@
      ]
     }
    ]
-  }
+  },
+  "body_condensed": 2
  },
  {
   "id": "cygsh-184774",
@@ -3340,7 +2863,7 @@
   "date_tried": true,
   "category": "獎助學金",
   "first_seen": "2026-09-09T13:24:01+08:00",
-  "notification_wait_attempts": 206,
+  "notification_wait_attempts": 207,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -3367,7 +2890,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-10T12:37:40+08:00",
-  "notification_wait_attempts": 196,
+  "notification_wait_attempts": 197,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -3933,7 +3456,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-10T12:37:40+08:00",
-  "notification_wait_attempts": 196,
+  "notification_wait_attempts": 197,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -3959,7 +3482,7 @@
   "detail_ref": "data/details/cysh/cysh-136597.json",
   "detail_status": "parsed",
   "detail_revision": "7d1426fc2ed9aceef2b9bce7ec8860c93bee8097df97d3d0a1b6938b0d5440aa",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -3967,7 +3490,7 @@
   "calendar_events": [],
   "category": "生活學務",
   "first_seen": "2026-09-10T17:40:35+08:00",
-  "notification_wait_attempts": 195,
+  "notification_wait_attempts": 196,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -3975,19 +3498,9 @@
     "#health",
     "#event"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "#health"
-     ],
-     "k": [],
-     "d": [
-      "2026-09-10"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cygsh-186558",
@@ -4014,7 +3527,7 @@
   "date_tried": true,
   "category": "研習活動",
   "first_seen": "2026-09-10T17:40:35+08:00",
-  "notification_wait_attempts": 195,
+  "notification_wait_attempts": 196,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -4041,7 +3554,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-11T13:56:35+08:00",
-  "notification_wait_attempts": 192,
+  "notification_wait_attempts": 193,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -4498,7 +4011,7 @@
   "date_tried": true,
   "category": "榮譽榜",
   "first_seen": "2026-09-11T13:56:35+08:00",
-  "notification_wait_attempts": 192
+  "notification_wait_attempts": 193
  },
  {
   "id": "cygsh-186573",
@@ -4525,7 +4038,7 @@
   "date_tried": true,
   "category": "競賽",
   "first_seen": "2026-09-11T13:56:35+08:00",
-  "notification_wait_attempts": 192
+  "notification_wait_attempts": 193
  },
  {
   "id": "cygsh-186572",
@@ -4552,7 +4065,7 @@
   "date_tried": true,
   "category": "競賽",
   "first_seen": "2026-09-11T13:56:35+08:00",
-  "notification_wait_attempts": 192,
+  "notification_wait_attempts": 193,
   "tokens": {
    "v": 1,
    "title": [
@@ -4586,7 +4099,7 @@
   "date_tried": true,
   "category": "競賽",
   "first_seen": "2026-09-11T13:56:35+08:00",
-  "notification_wait_attempts": 192
+  "notification_wait_attempts": 193
  },
  {
   "id": "cygsh-186562",
@@ -4613,7 +4126,7 @@
   "date_tried": true,
   "category": "競賽",
   "first_seen": "2026-09-11T13:56:35+08:00",
-  "notification_wait_attempts": 192,
+  "notification_wait_attempts": 193,
   "audience": {
    "grades": [
     2,
@@ -4650,7 +4163,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-09-11T19:16:26+08:00",
-  "notification_wait_attempts": 191,
+  "notification_wait_attempts": 192,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -4677,7 +4190,7 @@
   "calendar_events": [],
   "category": "獎助學金",
   "first_seen": "2026-09-11T21:11:23+08:00",
-  "notification_wait_attempts": 190,
+  "notification_wait_attempts": 191,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -4712,7 +4225,7 @@
   "calendar_events": [],
   "category": "招生編班",
   "first_seen": "2026-09-11T21:11:23+08:00",
-  "notification_wait_attempts": 190,
+  "notification_wait_attempts": 191,
   "audience": {
    "grades": [
     1
@@ -4752,7 +4265,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-09-14T21:59:51+08:00",
-  "notification_wait_attempts": 178,
+  "notification_wait_attempts": 179,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:44:28+08:00"
  },
@@ -4780,7 +4293,7 @@
   "snippet_tried": true,
   "category": "一般",
   "first_seen": "2026-09-14T21:59:51+08:00",
-  "notification_wait_attempts": 178,
+  "notification_wait_attempts": 179,
   "tokens": {
    "v": 1,
    "title": [
@@ -4815,7 +4328,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-09-15T09:25:59+08:00",
-  "notification_wait_attempts": 177,
+  "notification_wait_attempts": 178,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T12:56:14+08:00"
  },
@@ -4842,7 +4355,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-09-15T21:30:37+08:00",
-  "notification_wait_attempts": 175,
+  "notification_wait_attempts": 176,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -5465,7 +4978,7 @@
   "detail_ref": "data/details/cysh/cysh-136633.json",
   "detail_status": "parsed",
   "detail_revision": "01487fa0fe289c39ccd53de203696c989125c4b9fec0af4f394a8b64f24f2072",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -5473,7 +4986,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-16T09:23:22+08:00",
-  "notification_wait_attempts": 174,
+  "notification_wait_attempts": 175,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -5833,7 +5346,8 @@
      ]
     }
    ]
-  }
+  },
+  "body_condensed": 2
  },
  {
   "id": "cygsh-186613",
@@ -5860,7 +5374,7 @@
   "date_tried": true,
   "category": "榮譽榜",
   "first_seen": "2026-09-16T21:29:06+08:00",
-  "notification_wait_attempts": 172,
+  "notification_wait_attempts": 173,
   "audience": {
    "grades": [
     2
@@ -5896,7 +5410,7 @@
   "date_tried": true,
   "category": "榮譽榜",
   "first_seen": "2026-09-16T21:29:06+08:00",
-  "notification_wait_attempts": 172,
+  "notification_wait_attempts": 173,
   "audience": {
    "grades": [
     3
@@ -5930,7 +5444,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-09-17T15:36:02+08:00",
-  "notification_wait_attempts": 170,
+  "notification_wait_attempts": 171,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -6466,7 +5980,7 @@
   "detail_ref": "data/details/cysh/cysh-136647.json",
   "detail_status": "parsed",
   "detail_revision": "7180e15aca2a106b7f25ce583b0055e760a0a25c7de0d4abdcc2baefea4c3009",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -6474,26 +5988,16 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-09-17T21:24:54+08:00",
-  "notification_wait_attempts": 169,
+  "notification_wait_attempts": 170,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
    "title": [
     "費用"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "註冊組"
-     ],
-     "k": [],
-     "d": [
-      "2026-09-17"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136654",
@@ -6518,7 +6022,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-09-18T15:22:47+08:00",
-  "notification_wait_attempts": 167,
+  "notification_wait_attempts": 168,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7039,7 +6543,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-09-18T20:56:47+08:00",
-  "notification_wait_attempts": 166,
+  "notification_wait_attempts": 167,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7073,7 +6577,7 @@
   "calendar_events": [],
   "category": "研習活動",
   "first_seen": "2026-09-18T20:56:47+08:00",
-  "notification_wait_attempts": 166,
+  "notification_wait_attempts": 167,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7098,7 +6602,7 @@
   "detail_ref": "data/details/cygsh/cygsh-186640.json",
   "detail_status": "empty",
   "detail_revision": "29c117beabad327832a4975314473050de411c0a0b744ea25ccba5146d376ff3",
-  "detail_attempts": 3,
+  "detail_attempts": 4,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -7108,7 +6612,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-09-18T20:56:47+08:00",
-  "notification_wait_attempts": 166,
+  "notification_wait_attempts": 167,
   "tokens": {
    "v": 1,
    "title": [],
@@ -7207,7 +6711,8 @@
      ]
     }
    ]
-  }
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136693",
@@ -7232,7 +6737,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-21T14:17:55+08:00",
-  "notification_wait_attempts": 155,
+  "notification_wait_attempts": 156,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7265,7 +6770,7 @@
   "calendar_events": [],
   "category": "榮譽榜",
   "first_seen": "2026-09-21T22:04:54+08:00",
-  "notification_wait_attempts": 154,
+  "notification_wait_attempts": 155,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7290,7 +6795,7 @@
   "detail_ref": "data/details/cysh/cysh-136634.json",
   "detail_status": "parsed",
   "detail_revision": "8152e2f183a249919a4d08216605175368590847a0a9d9830e4650642e77086f",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -7298,7 +6803,7 @@
   "calendar_events": [],
   "category": "升學",
   "first_seen": "2026-09-21T22:04:54+08:00",
-  "notification_wait_attempts": 154,
+  "notification_wait_attempts": 155,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7310,20 +6815,9 @@
     "#event",
     "#school_profile"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "社團",
-      "#club"
-     ],
-     "k": [],
-     "d": [
-      "2026-09-21"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136698",
@@ -7340,7 +6834,7 @@
   "detail_ref": "data/details/cysh/cysh-136698.json",
   "detail_status": "parsed",
   "detail_revision": "aefc4471cc4a561eba13dd69885ff6ba6107ea7236eb7fe3cba11448293491f9",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -7348,26 +6842,16 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-09-21T22:04:54+08:00",
-  "notification_wait_attempts": 154,
+  "notification_wait_attempts": 155,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
    "title": [
     "#contest"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "#health"
-     ],
-     "k": [],
-     "d": [
-      "2026-09-21"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136697",
@@ -7384,7 +6868,7 @@
   "detail_ref": "data/details/cysh/cysh-136697.json",
   "detail_status": "parsed",
   "detail_revision": "d5d4956ab092a668ba24a88d3ef82887649584af2013baa70f092c0376dcfc40",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -7392,7 +6876,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-09-21T22:04:54+08:00",
-  "notification_wait_attempts": 154,
+  "notification_wait_attempts": 155,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7400,19 +6884,9 @@
     "報名",
     "#contest"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "#health"
-     ],
-     "k": [],
-     "d": [
-      "2026-09-21"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136692",
@@ -7437,7 +6911,7 @@
   "calendar_events": [],
   "category": "生活學務",
   "first_seen": "2026-09-21T22:04:54+08:00",
-  "notification_wait_attempts": 154,
+  "notification_wait_attempts": 155,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:30:52+08:00"
  },
@@ -7466,7 +6940,7 @@
   "date_tried": true,
   "category": "一般",
   "first_seen": "2026-09-21T22:04:54+08:00",
-  "notification_wait_attempts": 154,
+  "notification_wait_attempts": 155,
   "tokens": {
    "v": 1,
    "title": [
@@ -7498,7 +6972,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-09-22T15:40:52+08:00",
-  "notification_wait_attempts": 152,
+  "notification_wait_attempts": 153,
   "snippet_tried": true
  },
  {
@@ -7524,7 +6998,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-09-23T15:43:31+08:00",
-  "notification_wait_attempts": 149,
+  "notification_wait_attempts": 150,
   "audience": {
    "grades": [
     3
@@ -7558,7 +7032,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-09-24T15:34:23+08:00",
-  "notification_wait_attempts": 146,
+  "notification_wait_attempts": 147,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7594,7 +7068,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-29T10:34:08+08:00",
-  "notification_wait_attempts": 130,
+  "notification_wait_attempts": 131,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7627,7 +7101,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-09-29T17:45:49+08:00",
-  "notification_wait_attempts": 129,
+  "notification_wait_attempts": 130,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7661,7 +7135,7 @@
   "category": "一般",
   "first_seen": "2026-09-29T17:45:49+08:00",
   "title_status": "repair_pending",
-  "notification_wait_attempts": 129,
+  "notification_wait_attempts": 130,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7751,7 +7225,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-09-29T17:45:49+08:00",
-  "notification_wait_attempts": 129,
+  "notification_wait_attempts": 130,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:30:52+08:00"
  },
@@ -7780,7 +7254,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-09-29T17:45:49+08:00",
-  "notification_wait_attempts": 129,
+  "notification_wait_attempts": 130,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:30:52+08:00"
  },
@@ -7807,7 +7281,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-30T16:30:23+08:00",
-  "notification_wait_attempts": 126,
+  "notification_wait_attempts": 127,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7840,7 +7314,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-09-30T23:53:54+08:00",
-  "notification_wait_attempts": 125,
+  "notification_wait_attempts": 126,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -7866,7 +7340,7 @@
   "detail_ref": "data/details/cysh/cysh-136761.json",
   "detail_status": "parsed",
   "detail_revision": "0ca1031036b55945c8b0b5e5724efb9b538b130c1a1984915a346f160fd1eb75",
-  "detail_attempts": 2,
+  "detail_attempts": 3,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -7874,7 +7348,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-30T23:53:54+08:00",
-  "notification_wait_attempts": 125,
+  "notification_wait_attempts": 126,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8100,7 +7574,8 @@
      "k": []
     }
    ]
-  }
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136760",
@@ -8125,7 +7600,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-30T23:53:54+08:00",
-  "notification_wait_attempts": 125,
+  "notification_wait_attempts": 126,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8159,7 +7634,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-09-30T23:53:54+08:00",
-  "notification_wait_attempts": 125,
+  "notification_wait_attempts": 126,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8192,7 +7667,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-02T00:24:39+08:00",
-  "notification_wait_attempts": 122,
+  "notification_wait_attempts": 123,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8227,7 +7702,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-10-02T00:24:39+08:00",
-  "notification_wait_attempts": 122,
+  "notification_wait_attempts": 123,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:18:15+08:00"
  },
@@ -8246,7 +7721,7 @@
   "detail_ref": "data/details/cysh/cysh-136786.json",
   "detail_status": "parsed",
   "detail_revision": "8292f10d0d8e8e935010d32969db62cfce9954dff415b2d373f8b89523f666bd",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -8254,7 +7729,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-02T10:13:26+08:00",
-  "notification_wait_attempts": 121,
+  "notification_wait_attempts": 122,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8262,19 +7737,9 @@
     "生活",
     "#contest"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "#health"
-     ],
-     "k": [],
-     "d": [
-      "2026-10-02"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136785",
@@ -8299,7 +7764,7 @@
   "calendar_events": [],
   "category": "研習活動",
   "first_seen": "2026-10-02T10:13:26+08:00",
-  "notification_wait_attempts": 121,
+  "notification_wait_attempts": 122,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:18:15+08:00"
  },
@@ -8326,7 +7791,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-02T17:41:48+08:00",
-  "notification_wait_attempts": 120,
+  "notification_wait_attempts": 121,
   "snippet_tried": true
  },
  {
@@ -8352,7 +7817,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-02T17:41:48+08:00",
-  "notification_wait_attempts": 120,
+  "notification_wait_attempts": 121,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8385,7 +7850,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-02T17:41:48+08:00",
-  "notification_wait_attempts": 120,
+  "notification_wait_attempts": 121,
   "snippet_tried": true
  },
  {
@@ -8411,7 +7876,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-05T16:58:36+08:00",
-  "notification_wait_attempts": 111,
+  "notification_wait_attempts": 112,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:18:15+08:00"
  },
@@ -8438,7 +7903,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-05T16:58:36+08:00",
-  "notification_wait_attempts": 111,
+  "notification_wait_attempts": 112,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8473,7 +7938,7 @@
   "calendar_events": [],
   "category": "研習活動",
   "first_seen": "2026-10-05T16:58:36+08:00",
-  "notification_wait_attempts": 111,
+  "notification_wait_attempts": 112,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:18:15+08:00"
  },
@@ -8500,7 +7965,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-05T16:58:36+08:00",
-  "notification_wait_attempts": 111,
+  "notification_wait_attempts": 112,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8535,7 +8000,7 @@
   "date_tried": true,
   "category": "競賽",
   "first_seen": "2026-10-05T16:58:36+08:00",
-  "notification_wait_attempts": 111,
+  "notification_wait_attempts": 112,
   "tokens": {
    "v": 1,
    "title": [
@@ -8569,7 +8034,7 @@
   "date_tried": true,
   "category": "競賽",
   "first_seen": "2026-10-05T16:58:36+08:00",
-  "notification_wait_attempts": 111,
+  "notification_wait_attempts": 112,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:18:15+08:00"
  },
@@ -8598,7 +8063,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-10-06T10:56:31+08:00",
-  "notification_wait_attempts": 109,
+  "notification_wait_attempts": 110,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:18:15+08:00"
  },
@@ -8627,7 +8092,7 @@
   "date_tried": true,
   "category": "競賽",
   "first_seen": "2026-10-06T10:56:31+08:00",
-  "notification_wait_attempts": 109,
+  "notification_wait_attempts": 110,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:18:15+08:00"
  },
@@ -8646,7 +8111,7 @@
   "detail_ref": "data/details/cysh/cysh-136827.json",
   "detail_status": "parsed",
   "detail_revision": "87a83466cf78d9320f24b5d82b3c76730dfbeca921a8ac6c0f08a50e7f8e3764",
-  "detail_attempts": 2,
+  "detail_attempts": 3,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -8654,7 +8119,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-10-07T10:21:16+08:00",
-  "notification_wait_attempts": 106,
+  "notification_wait_attempts": 107,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8916,7 +8381,8 @@
      "k": []
     }
    ]
-  }
+  },
+  "body_condensed": 2
  },
  {
   "id": "cysh-136825",
@@ -8941,7 +8407,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-07T10:21:16+08:00",
-  "notification_wait_attempts": 106,
+  "notification_wait_attempts": 107,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -8974,7 +8440,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-10-08T10:41:14+08:00",
-  "notification_wait_attempts": 103,
+  "notification_wait_attempts": 104,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:18:15+08:00"
  },
@@ -9001,7 +8467,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-12T10:21:34+08:00",
-  "notification_wait_attempts": 91,
+  "notification_wait_attempts": 92,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -9034,7 +8500,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-12T10:21:34+08:00",
-  "notification_wait_attempts": 91,
+  "notification_wait_attempts": 92,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -9114,7 +8580,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-10-12T10:21:34+08:00",
-  "notification_wait_attempts": 91,
+  "notification_wait_attempts": 92,
   "tokens": {
    "v": 1,
    "title": [],
@@ -9406,7 +8872,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-12T18:42:24+08:00",
-  "notification_wait_attempts": 90,
+  "notification_wait_attempts": 91,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -9441,7 +8907,7 @@
   "date_tried": true,
   "category": "研習活動",
   "first_seen": "2026-10-12T18:42:24+08:00",
-  "notification_wait_attempts": 90,
+  "notification_wait_attempts": 91,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:18:15+08:00"
  },
@@ -9468,7 +8934,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-13T11:31:24+08:00",
-  "notification_wait_attempts": 88,
+  "notification_wait_attempts": 89,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -9501,7 +8967,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-13T19:43:36+08:00",
-  "notification_wait_attempts": 87,
+  "notification_wait_attempts": 88,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -9735,7 +9201,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-13T19:43:36+08:00",
-  "notification_wait_attempts": 87,
+  "notification_wait_attempts": 88,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -9872,7 +9338,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-13T19:43:36+08:00",
-  "notification_wait_attempts": 87,
+  "notification_wait_attempts": 88,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -9960,7 +9426,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-13T19:43:36+08:00",
-  "notification_wait_attempts": 87,
+  "notification_wait_attempts": 88,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -10022,7 +9488,7 @@
   "summary_version": "extractive-v4",
   "summary_provenance": "",
   "calendar_events": [],
-  "notification_wait_attempts": 87,
+  "notification_wait_attempts": 88,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -10125,7 +9591,7 @@
   "summary_version": "extractive-v4",
   "summary_provenance": "",
   "calendar_events": [],
-  "notification_wait_attempts": 87,
+  "notification_wait_attempts": 88,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -10170,7 +9636,7 @@
   "detail_ref": "data/details/cysh/cysh-136897.json",
   "detail_status": "parsed",
   "detail_revision": "d9151b6af6d173af49650cda36163d08ffd53b1895aed3a85d83ea88d3ad3ab5",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -10178,7 +9644,7 @@
   "calendar_events": [],
   "category": "段考考試",
   "first_seen": "2026-10-14T21:40:41+08:00",
-  "notification_wait_attempts": 83,
+  "notification_wait_attempts": 84,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -10186,19 +9652,9 @@
     "期中考",
     "#midterm"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "註冊組"
-     ],
-     "k": [],
-     "d": [
-      "2026-10-14"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "cygsh-186920",
@@ -10225,7 +9681,7 @@
   "date_tried": true,
   "category": "研習活動",
   "first_seen": "2026-10-15T09:26:39+08:00",
-  "notification_wait_attempts": 82,
+  "notification_wait_attempts": 83,
   "tokens": {
    "v": 1,
    "title": [
@@ -10260,7 +9716,7 @@
   "date_tried": true,
   "category": "研習活動",
   "first_seen": "2026-10-15T09:26:39+08:00",
-  "notification_wait_attempts": 82,
+  "notification_wait_attempts": 83,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:02:51+08:00"
  },
@@ -10287,7 +9743,7 @@
   "calendar_events": [],
   "category": "生活學務",
   "first_seen": "2026-10-16T20:23:47+08:00",
-  "notification_wait_attempts": 77,
+  "notification_wait_attempts": 78,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -10320,7 +9776,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-19T15:43:37+08:00",
-  "notification_wait_attempts": 66,
+  "notification_wait_attempts": 67,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -10677,7 +10133,7 @@
   "detail_ref": "data/details/cysh/cysh-136923.json",
   "detail_status": "parsed",
   "detail_revision": "a9a494d224d62d6a7665af2442628a03e4a22918df10bb8cd874bc5530da2288",
-  "detail_attempts": 1,
+  "detail_attempts": 2,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -10685,7 +10141,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-10-19T15:43:37+08:00",
-  "notification_wait_attempts": 66,
+  "notification_wait_attempts": 67,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -10703,7 +10159,8 @@
      ]
     }
    ]
-  }
+  },
+  "body_condensed": 2
  },
  {
   "id": "cygsh-186959",
@@ -10730,7 +10187,7 @@
   "date_tried": true,
   "category": "一般",
   "first_seen": "2026-10-19T15:43:37+08:00",
-  "notification_wait_attempts": 66,
+  "notification_wait_attempts": 67,
   "tokens": {
    "v": 1,
    "title": [],
@@ -11012,7 +10469,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-10-19T23:33:51+08:00",
-  "notification_wait_attempts": 65,
+  "notification_wait_attempts": 66,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:02:51+08:00"
  },
@@ -11039,7 +10496,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-19T23:33:51+08:00",
-  "notification_wait_attempts": 65,
+  "notification_wait_attempts": 66,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -11074,7 +10531,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-19T23:33:51+08:00",
-  "notification_wait_attempts": 65,
+  "notification_wait_attempts": 66,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:02:51+08:00"
  },
@@ -11101,7 +10558,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-20T09:47:58+08:00",
-  "notification_wait_attempts": 64,
+  "notification_wait_attempts": 65,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -11322,7 +10779,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-20T09:47:58+08:00",
-  "notification_wait_attempts": 64,
+  "notification_wait_attempts": 65,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -11356,7 +10813,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-20T09:47:58+08:00",
-  "notification_wait_attempts": 64,
+  "notification_wait_attempts": 65,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -11389,7 +10846,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-20T15:29:12+08:00",
-  "notification_wait_attempts": 63,
+  "notification_wait_attempts": 64,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -11422,7 +10879,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-10-20T15:29:12+08:00",
-  "notification_wait_attempts": 63,
+  "notification_wait_attempts": 64,
   "snippet_tried": true
  },
  {
@@ -11438,9 +10895,9 @@
   "snippet": "",
   "detail_available": false,
   "detail_ref": "data/details/cygsh/cygsh-186994.json",
-  "detail_status": "empty",
+  "detail_status": "temporary_error",
   "detail_revision": "38d91ca410d4951f336bb80aa35748ea61700db9c10e505bdab798210ea0e133",
-  "detail_attempts": 3,
+  "detail_attempts": 4,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -11450,7 +10907,7 @@
   "date_tried": true,
   "category": "教職員",
   "first_seen": "2026-10-22T09:28:45+08:00",
-  "notification_wait_attempts": 58,
+  "notification_wait_attempts": 59,
   "tokens": {
    "v": 1,
    "title": [],
@@ -11626,7 +11083,9 @@
      "k": []
     }
    ]
-  }
+  },
+  "link_missing_checks": 1,
+  "link_missing_at": "2026-11-05T19:13:43+08:00"
  },
  {
   "id": "cysh-136989",
@@ -11651,7 +11110,7 @@
   "calendar_events": [],
   "category": "研習活動",
   "first_seen": "2026-10-22T15:30:58+08:00",
-  "notification_wait_attempts": 57,
+  "notification_wait_attempts": 58,
   "snippet_tried": true,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:02:51+08:00"
@@ -11679,7 +11138,7 @@
   "calendar_events": [],
   "category": "榮譽榜",
   "first_seen": "2026-10-22T21:44:49+08:00",
-  "notification_wait_attempts": 56,
+  "notification_wait_attempts": 57,
   "snippet_tried": true
  },
  {
@@ -11705,7 +11164,7 @@
   "calendar_events": [],
   "category": "研習活動",
   "first_seen": "2026-10-22T21:44:49+08:00",
-  "notification_wait_attempts": 56,
+  "notification_wait_attempts": 57,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -12234,7 +11693,7 @@
   "date_tried": true,
   "category": "研習活動",
   "first_seen": "2026-10-26T18:56:53+08:00",
-  "notification_wait_attempts": 52,
+  "notification_wait_attempts": 53,
   "tokens": {
    "v": 1,
    "title": [
@@ -12268,7 +11727,7 @@
   "date_tried": true,
   "category": "研習活動",
   "first_seen": "2026-10-26T18:56:53+08:00",
-  "notification_wait_attempts": 52,
+  "notification_wait_attempts": 53,
   "link_missing_checks": 1,
   "link_missing_at": "2026-11-03T10:02:51+08:00"
  },
@@ -12287,7 +11746,7 @@
   "detail_ref": "data/details/cysh/cysh-137009.json",
   "detail_status": "parsed",
   "detail_revision": "35d32fbb0c101337d85f413414c0118d64f9a4f02dc8e7d9b493e4179b3b2736",
-  "detail_attempts": 2,
+  "detail_attempts": 3,
   "summary": "",
   "summary_status": "insufficient",
   "summary_version": "extractive-v4",
@@ -12295,26 +11754,16 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-27T19:25:27+08:00",
-  "notification_wait_attempts": 40,
+  "notification_wait_attempts": 41,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
    "title": [
     "#contest"
    ],
-   "segments": [
-    {
-     "s": 0,
-     "t": [
-      "#health"
-     ],
-     "k": [],
-     "d": [
-      "2026-10-27"
-     ]
-    }
-   ]
-  }
+   "segments": []
+  },
+  "body_condensed": 2
  },
  {
   "id": "hlvs-69906",
@@ -12331,7 +11780,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "hlvs-69903",
@@ -12348,7 +11797,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "hlvs-69897",
@@ -12365,7 +11814,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "hlvs-69891",
@@ -12382,7 +11831,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "hlvs-69887",
@@ -12399,7 +11848,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "hlvs-69884",
@@ -12416,7 +11865,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "hlvs-69880",
@@ -12433,7 +11882,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "hlvs-69876",
@@ -12450,7 +11899,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "hlvs-69870",
@@ -12467,7 +11916,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "ycsh-21297",
@@ -12484,7 +11933,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 37
+  "notification_wait_attempts": 38
  },
  {
   "id": "hwsh-13621",
@@ -12501,7 +11950,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwsh-13620",
@@ -12518,7 +11967,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwsh-13609",
@@ -12535,7 +11984,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwsh-13608",
@@ -12552,7 +12001,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwsh-13605",
@@ -12569,7 +12018,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwsh-13604",
@@ -12586,7 +12035,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36,
+  "notification_wait_attempts": 37,
   "audience": {
    "grades": [
     1,
@@ -12611,7 +12060,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwsh-13606",
@@ -12628,7 +12077,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwsh-13603",
@@ -12645,7 +12094,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "pkvs-11948",
@@ -12662,7 +12111,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwaivs-30423",
@@ -12679,7 +12128,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwaivs-30420",
@@ -12696,7 +12145,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hwaivs-30414",
@@ -12713,7 +12162,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "mljh-400785",
@@ -12730,7 +12179,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "mljh-400761",
@@ -12747,7 +12196,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "mljh-400757",
@@ -12764,7 +12213,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "mljh-400729",
@@ -12781,7 +12230,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "mljh-400690",
@@ -12798,7 +12247,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "ycsh-21306",
@@ -12815,7 +12264,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "ycsh-21305",
@@ -12832,7 +12281,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "ycsh-21304",
@@ -12849,7 +12298,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "ycsh-21303",
@@ -12866,7 +12315,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 36
+  "notification_wait_attempts": 37
  },
  {
   "id": "hlvs-69982",
@@ -12883,7 +12332,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 35
+  "notification_wait_attempts": 36
  },
  {
   "id": "hlvs-69979",
@@ -12900,7 +12349,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 35
+  "notification_wait_attempts": 36
  },
  {
   "id": "hlvs-69976",
@@ -12917,7 +12366,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 35
+  "notification_wait_attempts": 36
  },
  {
   "id": "hlvs-69973",
@@ -12934,7 +12383,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 35
+  "notification_wait_attempts": 36
  },
  {
   "id": "hlvs-69970",
@@ -12951,7 +12400,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 35
+  "notification_wait_attempts": 36
  },
  {
   "id": "cysh-137030",
@@ -12976,7 +12425,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-29T17:52:57+08:00",
-  "notification_wait_attempts": 33,
+  "notification_wait_attempts": 34,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -13009,7 +12458,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-10-29T17:52:57+08:00",
-  "notification_wait_attempts": 33,
+  "notification_wait_attempts": 34,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -13042,7 +12491,7 @@
   "calendar_events": [],
   "category": "一般",
   "first_seen": "2026-10-29T17:52:57+08:00",
-  "notification_wait_attempts": 33,
+  "notification_wait_attempts": 34,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -13518,7 +12967,7 @@
   "snippet_tried": true,
   "category": "教職員",
   "first_seen": "2026-10-29T17:52:57+08:00",
-  "notification_wait_attempts": 33,
+  "notification_wait_attempts": 34,
   "tokens": {
    "v": 1,
    "title": [
@@ -13559,7 +13008,7 @@
   "snippet_tried": true,
   "category": "招生編班",
   "first_seen": "2026-10-30T00:54:05+08:00",
-  "notification_wait_attempts": 32,
+  "notification_wait_attempts": 33,
   "tokens": {
    "v": 1,
    "title": [
@@ -13591,7 +13040,7 @@
   "calendar_events": [],
   "category": "競賽",
   "first_seen": "2026-10-31T00:41:11+08:00",
-  "notification_wait_attempts": 29,
+  "notification_wait_attempts": 30,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -13627,7 +13076,7 @@
   "snippet_tried": true,
   "category": "一般",
   "first_seen": "2026-11-01T10:10:30+08:00",
-  "notification_wait_attempts": 21
+  "notification_wait_attempts": 22
  },
  {
   "id": "ksis-14269",
@@ -13653,7 +13102,7 @@
   "snippet_tried": true,
   "category": "研習活動",
   "first_seen": "2026-11-02T10:27:53+08:00",
-  "notification_wait_attempts": 17
+  "notification_wait_attempts": 18
  },
  {
   "id": "cygsh-187104",
@@ -13679,7 +13128,7 @@
   "snippet_tried": true,
   "category": "研習活動",
   "first_seen": "2026-11-02T17:49:33+08:00",
-  "notification_wait_attempts": 16,
+  "notification_wait_attempts": 17,
   "tokens": {
    "v": 1,
    "title": [],
@@ -14166,7 +13615,7 @@
   "snippet_tried": true,
   "category": "競賽",
   "first_seen": "2026-11-02T17:49:33+08:00",
-  "notification_wait_attempts": 16,
+  "notification_wait_attempts": 17,
   "tokens": {
    "v": 1,
    "title": [],
@@ -14663,7 +14112,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-11-02T18:56:52+08:00",
-  "notification_wait_attempts": 15,
+  "notification_wait_attempts": 16,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -14689,7 +14138,7 @@
   "detail_status": "temporary_error",
   "category": "一般",
   "first_seen": "2026-11-03T09:46:54+08:00",
-  "notification_wait_attempts": 13
+  "notification_wait_attempts": 14
  },
  {
   "id": "cygsh-187101",
@@ -14715,7 +14164,7 @@
   "snippet_tried": true,
   "category": "教職員",
   "first_seen": "2026-11-03T09:46:54+08:00",
-  "notification_wait_attempts": 13,
+  "notification_wait_attempts": 14,
   "tokens": {
    "v": 1,
    "title": [
@@ -14748,7 +14197,7 @@
   "snippet_tried": true,
   "category": "一般",
   "first_seen": "2026-11-03T09:46:54+08:00",
-  "notification_wait_attempts": 13
+  "notification_wait_attempts": 14
  },
  {
   "id": "fjsh-2737",
@@ -14774,7 +14223,7 @@
   "snippet_tried": true,
   "category": "生活學務",
   "first_seen": "2026-11-03T09:46:54+08:00",
-  "notification_wait_attempts": 13,
+  "notification_wait_attempts": 14,
   "tokens": {
    "v": 1,
    "title": [
@@ -14807,7 +14256,7 @@
   "calendar_events": [],
   "category": "招生編班",
   "first_seen": "2026-11-03T17:14:09+08:00",
-  "notification_wait_attempts": 10,
+  "notification_wait_attempts": 11,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -14841,7 +14290,7 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-11-03T17:14:09+08:00",
-  "notification_wait_attempts": 10,
+  "notification_wait_attempts": 11,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -14874,7 +14323,7 @@
   "calendar_events": [],
   "category": "榮譽榜",
   "first_seen": "2026-11-03T17:14:09+08:00",
-  "notification_wait_attempts": 10,
+  "notification_wait_attempts": 11,
   "snippet_tried": true,
   "tokens": {
    "v": 1,
@@ -14908,7 +14357,7 @@
   "snippet_tried": true,
   "category": "研習活動",
   "first_seen": "2026-11-04T10:59:31+08:00",
-  "notification_wait_attempts": 5,
+  "notification_wait_attempts": 6,
   "tokens": {
    "v": 1,
    "title": [
@@ -14941,7 +14390,7 @@
   "snippet_tried": true,
   "category": "招生編班",
   "first_seen": "2026-11-04T18:49:27+08:00",
-  "notification_wait_attempts": 4
+  "notification_wait_attempts": 5
  },
  {
   "id": "fsvs-195772",
@@ -14967,7 +14416,7 @@
   "snippet_tried": true,
   "category": "教職員",
   "first_seen": "2026-11-04T18:49:27+08:00",
-  "notification_wait_attempts": 4,
+  "notification_wait_attempts": 5,
   "tokens": {
    "v": 1,
    "title": [
@@ -15000,7 +14449,7 @@
   "snippet_tried": true,
   "category": "研習活動",
   "first_seen": "2026-11-04T18:49:27+08:00",
-  "notification_wait_attempts": 4,
+  "notification_wait_attempts": 5,
   "tokens": {
    "v": 1,
    "title": [
@@ -15034,7 +14483,7 @@
   "snippet_tried": true,
   "category": "一般",
   "first_seen": "2026-11-04T18:49:27+08:00",
-  "notification_wait_attempts": 4,
+  "notification_wait_attempts": 5,
   "tokens": {
    "v": 1,
    "title": [
@@ -15067,7 +14516,7 @@
   "snippet_tried": true,
   "category": "研習活動",
   "first_seen": "2026-11-05T11:27:56+08:00",
-  "notification_wait_attempts": 2,
+  "notification_wait_attempts": 3,
   "tokens": {
    "v": 1,
    "title": [
@@ -15099,7 +14548,15 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-11-05T16:20:39+08:00",
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2,
+  "snippet_tried": true,
+  "tokens": {
+   "v": 1,
+   "title": [
+    "#enrollment"
+   ],
+   "segments": []
+  }
  },
  {
   "id": "cysh-137091",
@@ -15124,7 +14581,17 @@
   "calendar_events": [],
   "category": "教職員",
   "first_seen": "2026-11-05T16:20:39+08:00",
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2,
+  "snippet_tried": true,
+  "tokens": {
+   "v": 1,
+   "title": [
+    "報名",
+    "教務處",
+    "#grading"
+   ],
+   "segments": []
+  }
  },
  {
   "id": "cysh-137090",
@@ -15149,7 +14616,15 @@
   "calendar_events": [],
   "category": "研習活動",
   "first_seen": "2026-11-05T16:20:39+08:00",
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2,
+  "snippet_tried": true,
+  "tokens": {
+   "v": 1,
+   "title": [
+    "報名"
+   ],
+   "segments": []
+  }
  },
  {
   "id": "hwsh-13719",
@@ -15166,7 +14641,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "hwsh-13718",
@@ -15183,7 +14658,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "hwsh-13717",
@@ -15200,7 +14675,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "hwsh-13716",
@@ -15217,7 +14692,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "hwsh-13715",
@@ -15234,7 +14709,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "hwsh-13714",
@@ -15251,7 +14726,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "hwsh-13710",
@@ -15268,7 +14743,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "hwsh-13709",
@@ -15285,7 +14760,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "hwsh-13708",
@@ -15302,7 +14777,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "hwsh-13707",
@@ -15319,7 +14794,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "pkvs-11978",
@@ -15336,7 +14811,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "dnsh-401807",
@@ -15353,7 +14828,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "mljh-401830",
@@ -15370,7 +14845,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "mljh-401829",
@@ -15387,7 +14862,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "cyvs-25262",
@@ -15404,7 +14879,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "sgash-14930",
@@ -15421,7 +14896,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tngs-92459",
@@ -15438,7 +14913,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tngs-92452",
@@ -15455,7 +14930,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tngs-92177",
@@ -15472,7 +14947,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "fhsh-47248",
@@ -15489,7 +14964,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "cchs-8393",
@@ -15506,7 +14981,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "cchs-8395",
@@ -15523,7 +14998,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "cchs-8391",
@@ -15540,7 +15015,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "cchs-8387",
@@ -15557,7 +15032,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "cchs-8386",
@@ -15574,7 +15049,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "cchs-8385",
@@ -15591,7 +15066,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "chimei-25203",
@@ -15608,7 +15083,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "chimei-25202",
@@ -15625,7 +15100,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "chimei-25205",
@@ -15642,7 +15117,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "chimei-25210",
@@ -15659,7 +15134,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "chimei-25207",
@@ -15676,7 +15151,12 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2,
+  "audience": {
+   "grades": [],
+   "classes": [],
+   "all_school": true
+  }
  },
  {
   "id": "tlsh-68859",
@@ -15693,7 +15173,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68857",
@@ -15710,7 +15190,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68854",
@@ -15727,7 +15207,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68845",
@@ -15744,7 +15224,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68851",
@@ -15761,7 +15241,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68864",
@@ -15778,7 +15258,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68849",
@@ -15795,7 +15275,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68843",
@@ -15812,7 +15292,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68847",
@@ -15829,7 +15309,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68841",
@@ -15846,7 +15326,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68863",
@@ -15863,7 +15343,7 @@
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,
-  "notification_wait_attempts": 1
+  "notification_wait_attempts": 2
  },
  {
   "id": "tlsh-68865",
@@ -15877,6 +15357,159 @@
   "source_category": "最新公告",
   "category": "招生編班",
   "first_seen": "2026-11-05T16:20:39+08:00",
+  "snippet": "",
+  "detail_status": "pending",
+  "detail_available": false,
+  "notification_wait_attempts": 2
+ },
+ {
+  "id": "hlvs-70181",
+  "school": "hlvs",
+  "school_name": "西螺農工",
+  "title": "臺中市立惠文高級中學辦理「第十九屆中臺灣模擬聯合國會議（CENTMUNXIX）」",
+  "url": "https://www.hlvs.ylc.edu.tw/?p=70181",
+  "date": "2026-11-05",
+  "date_source": "list",
+  "cat_ref": "",
+  "source_category": "學生訊息",
+  "category": "一般",
+  "first_seen": "2026-11-05T20:15:32+08:00",
+  "snippet": "",
+  "detail_status": "pending",
+  "detail_available": false,
+  "notification_wait_attempts": 1
+ },
+ {
+  "id": "hlvs-70178",
+  "school": "hlvs",
+  "school_name": "西螺農工",
+  "title": "臺中市私立明道高級中學舉辦「第45屆全球華文學生文學獎」競賽",
+  "url": "https://www.hlvs.ylc.edu.tw/?p=70178",
+  "date": "2026-11-05",
+  "date_source": "list",
+  "cat_ref": "",
+  "source_category": "學生訊息",
+  "category": "競賽",
+  "first_seen": "2026-11-05T20:15:32+08:00",
+  "snippet": "",
+  "detail_status": "pending",
+  "detail_available": false,
+  "notification_wait_attempts": 1
+ },
+ {
+  "id": "hlvs-70175",
+  "school": "hlvs",
+  "school_name": "西螺農工",
+  "title": "轉知衛生福利部115年9月1日至2日召開115年全國志願服務聯繫會報紀錄",
+  "url": "https://www.hlvs.ylc.edu.tw/?p=70175",
+  "date": "2026-11-05",
+  "date_source": "list",
+  "cat_ref": "",
+  "source_category": "學生訊息",
+  "category": "升學",
+  "first_seen": "2026-11-05T20:15:32+08:00",
+  "snippet": "",
+  "detail_status": "pending",
+  "detail_available": false,
+  "notification_wait_attempts": 1
+ },
+ {
+  "id": "hlvs-70172",
+  "school": "hlvs",
+  "school_name": "西螺農工",
+  "title": "弘光科技大學辦理「香氣探索與樂齡關懷-高齡照顧體驗及職涯探索」活動",
+  "url": "https://www.hlvs.ylc.edu.tw/?p=70172",
+  "date": "2026-11-05",
+  "date_source": "list",
+  "cat_ref": "",
+  "source_category": "學生訊息",
+  "category": "研習活動",
+  "first_seen": "2026-11-05T20:15:32+08:00",
+  "snippet": "",
+  "detail_status": "pending",
+  "detail_available": false,
+  "notification_wait_attempts": 1
+ },
+ {
+  "id": "hlvs-70169",
+  "school": "hlvs",
+  "school_name": "西螺農工",
+  "title": "財團法人金車文教基金會發佈「2027金車曙光寒假物資贊助計劃」",
+  "url": "https://www.hlvs.ylc.edu.tw/?p=70169",
+  "date": "2026-11-05",
+  "date_source": "list",
+  "cat_ref": "",
+  "source_category": "學生訊息",
+  "category": "一般",
+  "first_seen": "2026-11-05T20:15:32+08:00",
+  "snippet": "",
+  "detail_status": "pending",
+  "detail_available": false,
+  "notification_wait_attempts": 1
+ },
+ {
+  "id": "hlvs-70166",
+  "school": "hlvs",
+  "school_name": "西螺農工",
+  "title": "文藻學校財團法人文藻外語大學外語教學系辦理「AI × Creativity 英語創意設計體驗營」",
+  "url": "https://www.hlvs.ylc.edu.tw/?p=70166",
+  "date": "2026-11-05",
+  "date_source": "list",
+  "cat_ref": "",
+  "source_category": "學生訊息",
+  "category": "研習活動",
+  "first_seen": "2026-11-05T20:15:32+08:00",
+  "snippet": "",
+  "detail_status": "pending",
+  "detail_available": false,
+  "notification_wait_attempts": 1
+ },
+ {
+  "id": "hlvs-70163",
+  "school": "hlvs",
+  "school_name": "西螺農工",
+  "title": "教育部辦理「第六屆防災青年國際領袖培訓營」",
+  "url": "https://www.hlvs.ylc.edu.tw/?p=70163",
+  "date": "2026-11-05",
+  "date_source": "list",
+  "cat_ref": "",
+  "source_category": "學生訊息",
+  "category": "研習活動",
+  "first_seen": "2026-11-05T20:15:32+08:00",
+  "snippet": "",
+  "detail_status": "pending",
+  "detail_available": false,
+  "notification_wait_attempts": 1
+ },
+ {
+  "id": "hlvs-70160",
+  "school": "hlvs",
+  "school_name": "西螺農工",
+  "title": "國立清華大學奈微與材料科技中心舉辦116年寒假「探索半導體高中創客營」活動",
+  "url": "https://www.hlvs.ylc.edu.tw/?p=70160",
+  "date": "2026-11-05",
+  "date_source": "list",
+  "cat_ref": "",
+  "source_category": "學生訊息",
+  "category": "研習活動",
+  "first_seen": "2026-11-05T20:15:32+08:00",
+  "snippet": "",
+  "detail_status": "pending",
+  "detail_available": false,
+  "notification_wait_attempts": 1
+ },
+ {
+  "id": "tngs-92484",
+  "school": "tngs",
+  "school_name": "臺南女中",
+  "title": "國立臺北大學辦理同步遠距線上課程–「20期Python基礎程式設計班~AI小助理輔助教學」",
+  "url": "https://www.tngs.tn.edu.tw/2026/11/05/%e5%9c%8b%e7%ab%8b%e8%87%ba%e5%8c%97%e5%a4%a7%e5%ad%b8%e8%be%a6%e7%90%86%e5%90%8c%e6%ad%a5%e9%81%a0%e8%b7%9d%e7%b7%9a%e4%b8%8a%e8%aa%b2%e7%a8%8b-%e3%80%8c20%e6%9c%9fpython%e5%9f%ba%e7%a4%8e%e7%a8%8b/",
+  "date": "2026-11-05",
+  "date_source": "list",
+  "cat_ref": "",
+  "source_category": "學生營隊",
+  "category": "研習活動",
+  "first_seen": "2026-11-05T20:15:32+08:00",
   "snippet": "",
   "detail_status": "pending",
   "detail_available": false,

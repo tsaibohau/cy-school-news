@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-05T16:38:38+08:00",
+ "generated_at": "2026-11-05T20:27:05+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -5622,8 +5622,144 @@
    "page_id": 236510457638457,
    "url": "https://www.tnvs.tn.edu.tw/practice/skill/",
    "label": "實用技能組",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T20:26:49+08:00",
+   "path": [
+    "實用技能組"
+   ],
+   "changed_at": "2026-11-05T20:26:49+08:00",
+   "content_hash": "9643faba62e89a915abd8e6aaec2c6d38ff52973a11df4bae9a9c325e4b882b2",
+   "doc_links": [],
+   "keywords": [
+    "入學",
+    "博覽會",
+    "學分",
+    "申請",
+    "申辦"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/tnvs/tnvs-info-236510457638457.json",
+   "detail_revision": "fd9a35f3a2c4cc87869236ee331375cb73cda1b9ddfe28461eea1bf4e66bfac7",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "2022技職博覽會參展單位手冊",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2022/05/2022技職博覽會參展單位手冊.pdf"
+    },
+    {
+     "name": "110學年度業師申請書-核章版1100716",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度業師申請書-核章版1100716.pdf"
+    },
+    {
+     "name": "110學年度專班申辦計畫書-海事修改110.03.18-最終核定版",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度專班申辦計畫書-海事修改110.03.18-最終核定版.pdf"
+    },
+    {
+     "name": "110學年度實用技能學程課程計畫書-准予備查版-水產養殖技術科",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度實用技能學程課程計畫書-准予備查版-水產養殖技術科.pdf"
+    },
+    {
+     "name": "110學年度實用技能學程課程計畫書-准予備查版-船舶機電科",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度實用技能學程課程計畫書-准予備查版-船舶機電科.pdf"
+    },
+    {
+     "name": "109學年度入學適用-實用技能學程課程計畫書-食品群_烘焙食品科_日間",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/109學年度入學適用-實用技能學程課程計畫書-食品群_烘焙食品科_日間.pdf"
+    },
+    {
+     "name": "109學年度入學適用-實用技能學程課程計畫書-水產群_水產養殖技術科_日間",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/109學年度入學適用-實用技能學程課程計畫書-水產群_水產養殖技術科_日間.pdf"
+    },
+    {
+     "name": "110實用技能學程完稿-校正完成版三校",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110實用技能學程完稿-校正完成版三校.pdf"
+    },
+    {
+     "name": "110學年度實習式攜手合作專班實習生輔導計畫",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度實習式攜手合作專班實習生輔導計畫.pdf"
+    },
+    {
+     "name": "學生教育訓練之學分及成績採計要點",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/學生教育訓練之學分及成績採計要點.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "90752130939613": {
    "page_id": 90752130939613,
@@ -6775,6 +6911,17 @@
     "就業輔導組"
    ],
    "order": 143
+  },
+  "206178540200779": {
+   "page_id": 206178540200779,
+   "url": "https://www.tnvs.tn.edu.tw/practice/practice-intro/",
+   "label": "工作職掌",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "實用技能組"
+   ],
+   "order": 144
   }
  },
  "handbook": {},
@@ -11177,6 +11324,157 @@
    }
   },
   {
+   "id": "tnvs-info-236510457638457",
+   "kind": "school_info",
+   "title": "實用技能組",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/practice/skill/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [
+    "2022技職博覽會參展單位手冊",
+    "110學年度業師申請書-核章版1100716",
+    "110學年度專班申辦計畫書-海事修改110.03.18-最終核定版",
+    "110學年度實用技能學程課程計畫書-准予備查版-水產養殖技術科",
+    "110學年度實用技能學程課程計畫書-准予備查版-船舶機電科",
+    "109學年度入學適用-實用技能學程課程計畫書-食品群_烘焙食品科_日間",
+    "109學年度入學適用-實用技能學程課程計畫書-水產群_水產養殖技術科_日間",
+    "110實用技能學程完稿-校正完成版三校",
+    "110學年度實習式攜手合作專班實習生輔導計畫",
+    "學生教育訓練之學分及成績採計要點"
+   ],
+   "keywords": [
+    "入學",
+    "博覽會",
+    "學分",
+    "申請",
+    "申辦"
+   ],
+   "documents": [
+    {
+     "name": "2022技職博覽會參展單位手冊",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2022/05/2022技職博覽會參展單位手冊.pdf"
+    },
+    {
+     "name": "110學年度業師申請書-核章版1100716",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度業師申請書-核章版1100716.pdf"
+    },
+    {
+     "name": "110學年度專班申辦計畫書-海事修改110.03.18-最終核定版",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度專班申辦計畫書-海事修改110.03.18-最終核定版.pdf"
+    },
+    {
+     "name": "110學年度實用技能學程課程計畫書-准予備查版-水產養殖技術科",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度實用技能學程課程計畫書-准予備查版-水產養殖技術科.pdf"
+    },
+    {
+     "name": "110學年度實用技能學程課程計畫書-准予備查版-船舶機電科",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度實用技能學程課程計畫書-准予備查版-船舶機電科.pdf"
+    },
+    {
+     "name": "109學年度入學適用-實用技能學程課程計畫書-食品群_烘焙食品科_日間",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/109學年度入學適用-實用技能學程課程計畫書-食品群_烘焙食品科_日間.pdf"
+    },
+    {
+     "name": "109學年度入學適用-實用技能學程課程計畫書-水產群_水產養殖技術科_日間",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/109學年度入學適用-實用技能學程課程計畫書-水產群_水產養殖技術科_日間.pdf"
+    },
+    {
+     "name": "110實用技能學程完稿-校正完成版三校",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110實用技能學程完稿-校正完成版三校.pdf"
+    },
+    {
+     "name": "110學年度實習式攜手合作專班實習生輔導計畫",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/110學年度實習式攜手合作專班實習生輔導計畫.pdf"
+    },
+    {
+     "name": "學生教育訓練之學分及成績採計要點",
+     "url": "https://www.tnvs.tn.edu.tw/wp-content/uploads/sites/58/2021/12/學生教育訓練之學分及成績採計要點.pdf"
+    }
+   ],
+   "detail_ref": "data/details/tnvs/tnvs-info-236510457638457.json",
+   "detail_revision": "fd9a35f3a2c4cc87869236ee331375cb73cda1b9ddfe28461eea1bf4e66bfac7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-254008508211269",
    "kind": "school_info",
    "title": "註冊組",
@@ -12645,5 +12943,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-05T16:38:38+08:00"
+ "last_run_at": "2026-11-05T20:27:05+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T16:20:39+08:00",
+ "generated_at": "2026-11-05T20:15:32+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -8,6 +8,898 @@
   "base": "https://www.cygsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cygsh-187153",
+   "title": "【教師研習】B2-PBL 教學應用工作坊",
+   "date": "2026-11-05",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187153,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "午餐"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 75,
+      "t": [
+       "公假",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 81,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 82,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 87,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 91,
+      "t": [
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 92,
+      "t": [
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 93,
+      "t": [
+       "停車",
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 98,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187150",
+   "title": "【教師研習】次世代固態鋰電池製程與 3D 列印儲能應用",
+   "date": "2026-11-05",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187150,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "費用",
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2027-01-18",
+       "2027-01-29",
+       "2026-12-21"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "四技二專",
+       "#contact"
+      ],
+      "k": [
+       "audience",
+       "contact"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "四技二專",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-18",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "午休",
+       "#lunch_break"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-02"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187149",
+   "title": "【教師研習】當道德AI遇見SEL工作 坊",
+   "date": "2026-11-05",
+   "source_category": "研習活動",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187149,r548.php",
+   "category": "教職員",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-11-18",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-17"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "公假",
+       "報名",
+       "#leave",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187151",
+   "title": "【轉知】2026瘋狂工程師｜爆走四驅！我要成為改造王-四驅車競速賽",
+   "date": "2026-11-05",
+   "source_category": "競賽與投稿",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187151,r679.php",
+   "category": "競賽",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "網路",
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "cygsh-187148",
    "title": "【教師研習】AI 賦能教與學工作坊",
@@ -2042,6 +2934,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3875,6 +4768,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -4540,6 +5434,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      2,
@@ -4626,6 +5521,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      3
@@ -12443,6 +13339,7 @@
    "detail_attempts": 3,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -15170,6 +16067,7 @@
    "detail_attempts": 3,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -15404,6 +16302,7 @@
    "detail_attempts": 3,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -18474,6 +19373,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      1
@@ -20290,6 +21190,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -21260,6 +22161,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -21754,6 +22656,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -21902,14 +22805,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2026-10-01",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "7330611de914dca1216aec88704e6f4be758577550984d5822af4c520b1c791b"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -22439,6 +23335,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -26464,6 +27361,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -26628,6 +27526,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -26881,6 +27780,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -28807,6 +29707,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      3
@@ -28883,6 +29784,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -28995,14 +29897,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2026-10-07",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "b2f31015a0319048b7a1f0b96b91d62848ba80ce83db9c4dae1fc56a5ad93c3e"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -29263,6 +30158,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -29565,6 +30461,7 @@
    "detail_status": "empty",
    "detail_attempts": 4,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -29868,6 +30765,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -31099,6 +31997,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -32277,20 +33176,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2026-10-15",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "c16a415a6029cc310c2853eaaaba2d732ef6637a9c896a37f62d46a25f40a768"
-    },
-    {
-     "kind": "deadline",
-     "date": "2026-10-05",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "c16a415a6029cc310c2853eaaaba2d732ef6637a9c896a37f62d46a25f40a768"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -34226,6 +35112,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -35499,6 +36386,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -35593,6 +36481,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -36124,6 +37013,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -37682,14 +38572,7 @@
    "detail_attempts": 3,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2026-09-01",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "3b042003d897ed2e1fea84b4a1ed29270ddba992b4e0c87b7e58d75828b34c3f"
-    }
-   ],
+   "body_condensed": 2,
    "audience": {
     "grades": [
      1,
@@ -37811,6 +38694,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      2
@@ -37898,6 +38782,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -38036,6 +38921,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -38388,6 +39274,7 @@
    "detail_status": "empty",
    "detail_attempts": 3,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -38690,6 +39577,7 @@
    "detail_status": "empty",
    "detail_attempts": 3,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -39312,6 +40200,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -39358,6 +40247,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -39725,6 +40615,7 @@
    "detail_status": "empty",
    "detail_attempts": 3,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -40424,6 +41315,7 @@
    "detail_status": "empty",
    "detail_attempts": 3,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -44362,6 +45254,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -44619,6 +45512,7 @@
    "detail_status": "empty",
    "detail_attempts": 3,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -44679,6 +45573,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -44812,6 +45707,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -45582,6 +46478,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -45612,6 +46509,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -45727,6 +46625,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -46199,6 +47098,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -46678,6 +47578,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -47310,6 +48211,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      2,
@@ -47866,6 +48768,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -47965,6 +48868,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -48239,14 +49143,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2025-06-30",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "92233a8d4fe86f128b1559c42e34b2833b826f31381bc08ca55d2922bcda3e17"
-    }
-   ],
+   "body_condensed": 2,
    "audience": {
     "grades": [
      3
@@ -48557,14 +49454,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2024-08-14",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "576293379dd385133c4bd2c8d3c1819cbcd7fda9173d58f84cd4c30c13229149"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [

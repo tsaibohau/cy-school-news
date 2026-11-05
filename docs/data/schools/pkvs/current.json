@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T16:20:39+08:00",
+ "generated_at": "2026-11-05T20:15:32+08:00",
  "school": {
   "id": "pkvs",
   "name": "國立北港高級農工職業學校",
@@ -8,6 +8,433 @@
   "base": "https://www.pkvs.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "pkvs-11985",
+   "title": "資通安全通識教育訓練-線上研習",
+   "date": "2026-11-05",
+   "source_category": "通知",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11985",
+   "category": "研習活動",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-12",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "7137bcdd5f3e2068c058b421441811da174e25df2b3c8012a60fcd0de654b117"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "place",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "pkvs-11984",
+   "title": "【升學資訊】大葉大學116學年度特殊選才招生資訊",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11984",
+   "category": "升學",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-06",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6940b4c5636960d459df19b6022078b6439070e74f37f40c52c1c12312eb6ba4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "特殊選才",
+     "升學",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "特殊選才",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "特殊選才",
+       "報名",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-06",
+       "2026-12-14"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "網路",
+       "報名",
+       "繳交",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "宿舍",
+       "報名",
+       "#accommodation"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "特殊選才",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-06",
+       "2026-12-14"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "網路",
+       "報名",
+       "繳交",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "宿舍",
+       "報名",
+       "#accommodation"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "pkvs-11983",
    "title": "【升學資訊】真理大學116學年度學士班特殊選才招生資訊",

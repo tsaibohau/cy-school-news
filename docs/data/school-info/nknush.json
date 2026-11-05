@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-05T16:39:17+08:00",
+ "generated_at": "2026-11-05T20:27:43+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -486,25 +486,37 @@
    "page_id": 144256785123237,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/教學組/",
    "label": "教學組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "教務處"
    ],
-   "order": 38
+   "order": 38,
+   "checked_at": "2026-11-05T20:27:39+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組"
+   ]
   },
   "269463845289158": {
    "page_id": 269463845289158,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/註冊組/",
    "label": "註冊組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "教務處"
    ],
-   "order": 39
+   "order": 39,
+   "checked_at": "2026-11-05T20:27:41+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組"
+   ]
   },
   "88280511900365": {
    "page_id": 88280511900365,
@@ -978,6 +990,30 @@
     "業務職掌"
    ],
    "order": 79
+  },
+  "279396265589465": {
+   "page_id": 279396265589465,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/%e6%95%99%e5%ad%b8%e7%b5%84/",
+   "label": "教學組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "教學組"
+   ],
+   "order": 80
+  },
+  "56834519100864": {
+   "page_id": 56834519100864,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/%e8%a8%bb%e5%86%8a%e7%b5%84/",
+   "label": "註冊組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "註冊組"
+   ],
+   "order": 81
   }
  },
  "handbook": {},
@@ -1279,5 +1315,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-05T16:39:17+08:00"
+ "last_run_at": "2026-11-05T20:27:43+08:00"
 }

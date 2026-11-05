@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T16:20:39+08:00",
+ "generated_at": "2026-11-05T20:15:32+08:00",
  "school": {
   "id": "kssh",
   "name": "國立岡山高中",
@@ -8,6 +8,54 @@
   "base": "https://www.kssh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "kssh-190207",
+   "title": "【設備組公告】台灣模擬教育協會辦理 2027 年第八屆台灣經濟學奧林匹亞競賽活動",
+   "date": "2026-11-05",
+   "source_category": "",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/406-1001-190207,r88.php",
+   "category": "競賽",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f8d0b660e126552389a2ab6bfe3cf6910e2ee8763313c2f3921e19baacd9fc85"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "奧林匹亞",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "奧林匹亞",
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "kssh-190206",
    "title": "【教學組公告】國立臺灣海洋大學 函:本校臺灣海洋教育中心辦理「建構國家級海洋素養治理架構：Ocean & Society Survey 國際調查與 EMSEA 2026前瞻趨勢教師線上增能研習」",

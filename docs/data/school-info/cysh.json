@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-05T16:39:57+08:00",
+ "generated_at": "2026-11-05T20:28:24+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -5992,11 +5992,25 @@
   },
   "946": {
    "page_id": 946,
-   "status": "pending"
+   "status": "announcement_list",
+   "checked_at": "2026-11-05T20:28:18+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組",
+    "最新消息"
+   ]
   },
   "966": {
    "page_id": 966,
-   "status": "pending"
+   "status": "excluded_section",
+   "checked_at": "2026-11-05T20:28:20+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組",
+    "導師名單及法規"
+   ]
   },
   "968": {
    "page_id": 968,
@@ -6019,7 +6033,38 @@
   },
   "970": {
    "page_id": 970,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-05T20:28:22+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組",
+    "綜合活動課程"
+   ],
+   "changed_at": "2026-11-05T20:28:22+08:00",
+   "content_hash": "8362abad5345327735e6bbf7641fb5718db9b159ca1c53f0370c37a240f29283",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-970.json",
+   "detail_revision": "4407802515b0d56e794709cb34d4a8745dab6e77e6309ca66f41bab52a656b3d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "973": {
    "page_id": 973,
@@ -32954,6 +32999,38 @@
    "detail_status": "empty"
   },
   {
+   "id": "cysh-info-970",
+   "kind": "school_info",
+   "title": "學務處 › 訓育組 › 綜合活動課程",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-970.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-970.json",
+   "detail_revision": "4407802515b0d56e794709cb34d4a8745dab6e77e6309ca66f41bab52a656b3d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-992",
    "kind": "school_info",
    "title": "總務處 › 出納組 › 關於出納組",
@@ -53472,5 +53549,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-05T16:39:57+08:00"
+ "last_run_at": "2026-11-05T20:28:24+08:00"
 }

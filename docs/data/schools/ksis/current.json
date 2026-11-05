@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T16:20:39+08:00",
+ "generated_at": "2026-11-05T20:15:32+08:00",
  "school": {
   "id": "ksis",
   "name": "臺南市崑山高中",
@@ -8,6 +8,65 @@
   "base": "https://www.ksis.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "ksis-14272",
+   "title": "轉知-大葉大學116學年度特殊選才招生考試相關訊息",
+   "date": "2026-11-05",
+   "source_category": "",
+   "school": "ksis",
+   "school_name": "崑山高中",
+   "url": "https://www.ksis.tn.edu.tw/p/406-1000-14272,r15.php",
+   "category": "升學",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "特殊選才",
+     "考試",
+     "#admission",
+     "#exam",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-06",
+       "2026-12-14"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "ksis-14271",
    "title": "轉知-國立高雄師範大學辦理「校園性教育『全面性教育』教師專業成長研習」",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-05T16:39:40+08:00",
+ "generated_at": "2026-11-05T20:28:06+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3570,8 +3570,49 @@
    "page_id": 16343487702058,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-550.php",
    "label": "性別平等教育專區",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T20:28:04+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "性別平等教育專區"
+   ],
+   "changed_at": "2026-11-05T20:28:04+08:00",
+   "content_hash": "24d1e103d08b6a89181e09eeef17a5366f6042fc263f7e4a12f7f9c69725989c",
+   "doc_links": [],
+   "keywords": [
+    "霸凌"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-16343487702058.json",
+   "detail_revision": "fb8ac2d17758045ac2a043eb5483204c94a4814daa25578def15ac7906787a79",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 13,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "學務處",
+       "教官室"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "163160178993789": {
    "page_id": 163160178993789,
@@ -5914,6 +5955,18 @@
     "家長會"
    ],
    "order": 234
+  },
+  "40014575443583": {
+   "page_id": 40014575443583,
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-1355.php",
+   "label": "性平相關資訊公告",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "學務處",
+    "性別平等教育專區"
+   ],
+   "order": 235
   }
  },
  "handbook": {},
@@ -6045,6 +6098,49 @@
       "s": 9,
       "t": [
        "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ksaivs-info-16343487702058",
+   "kind": "school_info",
+   "title": "行政單位 › 學務處 › 性別平等教育專區",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-550.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "霸凌"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-16343487702058.json",
+   "detail_revision": "fb8ac2d17758045ac2a043eb5483204c94a4814daa25578def15ac7906787a79",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 13,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "學務處",
+       "教官室"
       ],
       "k": []
      }
@@ -9621,5 +9717,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-05T16:39:40+08:00"
+ "last_run_at": "2026-11-05T20:28:06+08:00"
 }

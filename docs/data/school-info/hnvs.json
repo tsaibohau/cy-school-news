@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-05T16:37:50+08:00",
+ "generated_at": "2026-11-05T20:26:01+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -3022,15 +3022,80 @@
    "page_id": 72202132360032,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,391,382",
    "label": "常見問題",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T20:25:58+08:00",
+   "path": [
+    "常見問題"
+   ],
+   "changed_at": "2026-11-05T20:25:58+08:00",
+   "content_hash": "4d09a17ef35ea5859bcfb4fff4ffdb7d0a514f01570f85f3214f174f14d581f1",
+   "doc_links": [],
+   "keywords": [
+    "學習歷程"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-72202132360032.json",
+   "detail_revision": "685bc2264217d16fccaa5e099bccd3f1ae4de43f45ad3475d4beff1b3d37d5c4",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "79527864739105": {
    "page_id": 79527864739105,
    "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,13,412,409,411",
    "label": "基本資訊",
-   "status": "pending",
-   "depth": 0
+   "status": "ok",
+   "depth": 0,
+   "checked_at": "2026-11-05T20:26:00+08:00",
+   "path": [
+    "基本資訊"
+   ],
+   "changed_at": "2026-11-05T20:26:00+08:00",
+   "content_hash": "74a345eca451c6991468ab902b6a3cbfc0aea34bcc92ec9657a0f6326f25442d",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-79527864739105.json",
+   "detail_revision": "b956719c0a496a4a4e6c02c3800c1a23d0506cf99868280b08fa3f863516dc06",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-23"
+      ]
+     }
+    ]
+   }
   },
   "200549200305570": {
    "page_id": 200549200305570,
@@ -6899,6 +6964,39 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-72202132360032",
+   "kind": "school_info",
+   "title": "常見問題",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,8,391,382",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [
+    "學習歷程"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-72202132360032.json",
+   "detail_revision": "685bc2264217d16fccaa5e099bccd3f1ae4de43f45ad3475d4beff1b3d37d5c4",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-74150307746498",
    "kind": "school_info",
    "title": "校務發展計畫",
@@ -6921,6 +7019,46 @@
    "detail_ref": "data/details/hnvs/hnvs-info-74150307746498.json",
    "detail_revision": "1f526f9ace096d666ce70cdf58f5b827429055f0f088b90274feca5d163ca58f",
    "detail_status": "parsed"
+  },
+  {
+   "id": "hnvs-info-79527864739105",
+   "kind": "school_info",
+   "title": "基本資訊",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,13,412,409,411",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-05",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-79527864739105.json",
+   "detail_revision": "b956719c0a496a4a4e6c02c3800c1a23d0506cf99868280b08fa3f863516dc06",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-23"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hnvs-info-81358467413825",
@@ -9102,5 +9240,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-05T16:37:50+08:00"
+ "last_run_at": "2026-11-05T20:26:01+08:00"
 }

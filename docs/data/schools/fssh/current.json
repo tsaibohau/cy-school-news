@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-05T16:20:39+08:00",
+ "generated_at": "2026-11-05T20:15:32+08:00",
  "school": {
   "id": "fssh",
   "name": "國立鳳山高中",
@@ -8,6 +8,87 @@
   "base": "https://www.fssh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fssh-18712",
+   "title": "115學年度全年級班際羽球賽 賽程表",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18712",
+   "category": "一般",
+   "first_seen": "2026-11-05T20:15:32+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-14",
+     "provenance": "verified_announcement_event",
+     "source_revision": "b914a3ca492290ad3fdc322d71fe8941f85f3f7271c5f81eda7426b34fae520e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "fssh-18711",
    "title": "116年度青年百億海外圓夢基金計畫",
