@@ -18,7 +18,7 @@ const record = { provenance: "official_article", announcement_id: "cysh-1", sour
   attachments: [{ provenance: "official_attachment", parse_status: "parsed", embedded_text: "請攜帶學生證，於3月5日上午8:00報到。" }],
   verified_dates: [{ date: "2027-01-25" }], summary: { text: "116年1月25日舉行" } };
 fs.writeFileSync(path.join(root, "docs", "data", "details", "cysh", "cysh-1.json"), JSON.stringify(record));
-const item = { id: "cysh-1", school: "cysh", title: "教育營", detail_ref: "data/details/cysh/cysh-1.json", detail_revision: "h1", condense_pending: 1,
+const item = { id: "cysh-1", school: "cysh", title: "教育營", detail_ref: "data/details/cysh/cysh-1.json", detail_revision: "h1", condense_pending: C.VERSION,
   calendar_events: [{ kind: "event", date: "2027-01-25" }], summary: "116年1月25日舉行", snippet: "116年1月25日舉行" };
 fs.writeFileSync(path.join(root, "docs", "data", "announcements.json"), JSON.stringify({ items: [item, { id: "cysh-2" }] }));
 fs.writeFileSync(path.join(root, "docs", "data", "archive.json"), JSON.stringify({ items: [] }));
@@ -26,7 +26,7 @@ assert.deepEqual(C.run(root), { done: 1, empty: 0 });
 const out = JSON.parse(fs.readFileSync(path.join(root, "docs", "data", "details", "cysh", "cysh-1.json"), "utf8"));
 const text = out.blocks.map((b) => b.text).join("\n");
 assert.equal(out.source_hash, "h1", "still matches the item, so the sync accepts it");
-assert.equal(out.condensed, 1);
+assert.equal(out.condensed, C.VERSION);
 assert.deepEqual(out.attachments, [], "attachment text is folded into the condensed version");
 assert.doesNotMatch(JSON.stringify(out), /\d{1,2}\s*月\s*\d{1,2}\s*日|\d{1,2}:\d{2}|116年|verified_dates|published_on/, "no time anywhere");
 assert.match(text, /地點：本校活動中心/);
@@ -34,7 +34,7 @@ assert.match(text, /逾期未繳交者，以零分計算/);
 assert.match(text, /請攜帶學生證/);
 assert.doesNotMatch(text, /依據/, "the letter reference is dropped");
 const doc = JSON.parse(fs.readFileSync(path.join(root, "docs", "data", "announcements.json"), "utf8"));
-assert.equal(doc.items[0].body_condensed, 1);
+assert.equal(doc.items[0].body_condensed, C.VERSION);
 assert.equal(doc.items[0].condense_pending, undefined);
 assert.deepEqual(doc.items[0].calendar_events, []);
 assert.doesNotMatch(doc.items[0].summary + doc.items[0].snippet, /\d+月|\d+年/);
@@ -54,4 +54,13 @@ assert.ok(!kept.some((p) => /承辦人|地址|恭喜/.test(p)), "letter headers 
 assert.ok(!kept.some((p) => /\d{2,4}\s*年|\d+月|星期|\d+時/.test(p)), JSON.stringify(kept));
 assert.ok(C.condense({ provenance: "official_article", blocks: [{ type: "paragraph", text: "班聯會執秘招生" }], attachments: [] }, "學生團體").length === 1,
   "a line with a topic and no other label is kept");
+/* Second real run, checked with the test account: more date forms, result tables and links. */
+for (const [raw, gone] of [["預計參訪日期：1 11 年 4 月份。", /年|月/], ["本課表至8月11 適用", /8月|11/], ["一百零一年三月十七日（星期六）上課，中午十二時集合", /年|月|日|時|星期/],
+  ["參加「2020 WMI世界數學邀請賽」總決賽", /2020/], ["學生將自 98 年 11 月上旬先接受入學課程", /98|月/]]) {
+  assert.doesNotMatch(C.stripTimes(raw), gone, raw + " → " + C.stripTimes(raw));
+}
+const results = C.condense({ provenance: "official_article", blocks: [{ type: "paragraph", text: [
+  "地球科學 318 黃○蓁 5 進入全國", "本班共3位學生通過複賽，入選選拔營", "http://web1.example.edu.tw/var/file/8/1.pdf",
+  "報名方式：請填寫線上表單並繳交家長同意書。"].join("\n") }], attachments: [] }, "學科能力競賽");
+assert.deepEqual(results, ["報名方式：請填寫線上表單並繳交家長同意書。"], JSON.stringify(results));
 console.log("condense expired tests passed");

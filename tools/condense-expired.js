@@ -7,7 +7,9 @@ const path = require("node:path");
 const Tokens = require("../docs/announcement-tokens.js");
 const QA = require("../docs/assistant-qa.js");
 
-const VERSION = 1;
+/* 2: whole sentences from PDF letters; result lists, links and more date forms are dropped
+   (version 1 notices are read again and condensed again). */
+const VERSION = 2;
 const KEEP_KINDS = new Set(["required", "method", "audience", "place", "penalty", "allow", "deny", "contact", "fee"]);
 const MAX_CHARS = 4000;
 
@@ -24,6 +26,16 @@ const TIME_PATTERNS = [
   /(?:上午|下午|中午|晚上|早上)\s*\d{1,2}\s*[點時](?:\s*\d{1,2}\s*分)?/g,
   /\d{1,2}\s*[點時]\s*\d{1,2}\s*分/g,
   /即日起/g,
+  /* 「1 11 年 4 月份」「98 年 11 月上旬」「8月11」: a month with or without the day. */
+  /\d[\d\s]{0,4}年\s*\d{1,2}\s*月(?:份|上旬|中旬|下旬|底|初)?/g,
+  /\d{1,2}\s*月\s*\d{1,2}(?!\d)/g,
+  /\d{1,2}\s*月(?:份|上旬|中旬|下旬|底|初)/g,
+  /* Dates and times written in Chinese numerals: 「一百零一年三月十七日」「中午十二時」. */
+  /[一二三四五六七八九十百零〇○]+年(?:[一二三四五六七八九十]+月(?:[一二三四五六七八九十]+日)?)?/g,
+  /[一二三四五六七八九十]+月[一二三四五六七八九十]+日/g,
+  /(?:上午|下午|中午|晚上|早上)[一二三四五六七八九十]+[時點](?:[一二三四五六七八九十]+分)?/g,
+  /* A bare year: 「2020 WMI」. */
+  /(?<![\d.\/])(?:19|20)\d{2}(?![\d年])/g,
   /* A bare year or school year: 「114年度」「2024年」「113學年」. */
   /(?:中華民國|民國)?\s*(?:1\d{2}|20\d{2})\s*(?:學年度?|年度?)/g,
 ];
@@ -41,6 +53,7 @@ function stripTimes(text) {
     .replace(new RegExp("[^，。、；：,;:\\s]{0,6}(?:時間|日期|期間|期限|時程|時段)\\s*(?:[：:]|為|是|訂為)\\s*" + MARK + "*\\s*(?=[，。、；,;]|$)[，。、；,;]?", "g"), "")
     .replace(new RegExp(MARK, "g"), " ")
     .replace(/[（(]\s*[)）]/g, "")
+    .replace(/([「『（(])\s+/g, "$1").replace(/\s+([」』）)])/g, "$1")
     .replace(/\s+/g, " ")
     .replace(/([\u3400-\u9fff])\s+(?=[\u3400-\u9fff])/g, "$1")
     .replace(/\s*([，。、；：,;:])\s*/g, "$1")
@@ -64,7 +77,11 @@ function condense(record, title) {
     const kinds = Tokens.kindsOf(text);
     const topics = Tokens.topicsOf(text);
     /* Congratulations and result lists name students: nothing to keep from them. */
-    if (/恭喜|賀[!！]|榮獲|獲獎名單|錄取名單|得獎名單|感謝.{0,6}老師|同學(?:通過|榮獲|獲得|錄取|入選|進入)/.test(text)) continue;
+    if (/恭喜|賀[!！~～]|榮獲|獲獎名單|錄取名單|得獎名單|感謝.{0,6}老師|同學(?:通過|榮獲|獲得|錄取|入選|進入)|入選|進入全國|通過(?:初賽|複賽|決賽)|佳作|第[一二三四五六七八九十\d]+名|金牌|銀牌|銅牌|榮譽榜|成績亮眼/.test(text)) continue;
+    /* A results table row: a class number and a name (「318 黃○蓁」). */
+    if (/\d{3}\s*[\u4e00-\u9fff○]{2,3}(?=\s|$|[，、])/.test(text)) continue;
+    /* A line that is only a link, or a line that is only who it is for (「本班高三同學」). */
+    if (/^\s*(?:https?:\/\/\S+\s*)+$/.test(text) || text.replace(/https?:\/\/\S+/g, "").trim().length < 6) continue;
     /* A line about a topic with no other label counts (「班聯會執秘招生」); a line that is only a date does not. */
     const onlyTime = kinds.length > 0 && kinds.every((k) => k === "time" || k === "deadline");
     const useful = kinds.some((k) => KEEP_KINDS.has(k)) || (topics.length > 0 && !onlyTime);

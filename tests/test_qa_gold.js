@@ -72,7 +72,8 @@ assert.ok(variantHits >= 28, "reworded questions keep finding the labelled notic
 for (const row of para.exclusive) {
   const top = QA.rank(row.q, corpus, {}, { asOf: "2026-10-27" }).slice(0, 3);
   assert.ok(top.length && top[0].item.title.includes(row.must), row.q + " should lead with " + row.must);
-  assert.ok(top.every(r => !r.item.title.includes(row.never)), row.q + " must not return " + row.never);
+  /* A notice about both (「第二次期中考暨高三期末考測驗範圍」) is fine; one about the other only is not. */
+  assert.ok(top.every(r => !r.item.title.includes(row.never) || r.item.title.includes(row.must)), row.q + " must not return " + row.never);
 }
 console.log("問校務 wording and distinct-term tests passed");
 
