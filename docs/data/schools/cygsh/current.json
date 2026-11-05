@@ -57304,7 +57304,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -57313,7 +57313,9 @@
     "segments": [
      {
       "s": 0,
-      "t": [],
+      "t": [
+       "說謊"
+      ],
       "k": [
        "method"
       ]
@@ -57335,14 +57337,14 @@
       ]
      },
      {
-      "s": 4,
+      "s": 3,
       "t": [],
       "k": [
        "method"
       ]
      },
      {
-      "s": 6,
+      "s": 4,
       "t": [
        "#safety"
       ],
@@ -57351,24 +57353,21 @@
       ]
      },
      {
-      "s": 7,
+      "s": 5,
       "t": [
        "#safety"
       ],
       "k": []
      },
      {
-      "s": 9,
+      "s": 6,
       "t": [],
       "k": [
        "method"
-      ],
-      "d": [
-       "2026-05-07"
       ]
      },
      {
-      "s": 10,
+      "s": 7,
       "t": [],
       "k": [
        "method"
@@ -57388,7 +57387,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -57399,18 +57398,14 @@
     ],
     "segments": [
      {
-      "s": 1,
+      "s": 0,
       "t": [],
       "k": [
-       "time",
        "method"
-      ],
-      "d": [
-       "2026-05-11"
       ]
      },
      {
-      "s": 2,
+      "s": 1,
       "t": [
        "選課",
        "#certificate",
@@ -57434,7 +57429,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 2,
+   "detail_attempts": 3,
    "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
@@ -58122,7 +58117,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -58139,10 +58134,17 @@
       "k": []
      },
      {
-      "s": 2,
+      "s": 1,
       "t": [],
       "k": [
        "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
        "method"
       ]
      },
@@ -58164,6 +58166,7 @@
       "s": 5,
       "t": [],
       "k": [
+       "time",
        "method"
       ]
      },
@@ -58171,22 +58174,7 @@
       "s": 6,
       "t": [],
       "k": [
-       "time",
        "method"
-      ],
-      "d": [
-       "2026-09-09"
-      ]
-     },
-     {
-      "s": 7,
-      "t": [],
-      "k": [
-       "time",
-       "method"
-      ],
-      "d": [
-       "2026-09-09"
       ]
      }
     ]
@@ -58383,7 +58371,7 @@
    "category": "競賽",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 2,
+   "detail_attempts": 3,
    "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
@@ -58907,7 +58895,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -58915,29 +58903,24 @@
     "title": [],
     "segments": [
      {
-      "s": 2,
+      "s": 0,
       "t": [
        "導師"
       ],
       "k": []
      },
      {
-      "s": 3,
+      "s": 1,
       "t": [
        "報名"
       ],
       "k": [
        "deadline",
-       "time",
        "method"
-      ],
-      "d": [
-       "2026-07-21",
-       "2026-07-26"
       ]
      },
      {
-      "s": 4,
+      "s": 2,
       "t": [
        "#contact"
       ],
@@ -59127,7 +59110,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -59150,20 +59133,16 @@
       "k": []
      },
      {
-      "s": 3,
+      "s": 2,
       "t": [
        "#event"
       ],
       "k": [
-       "time",
        "method"
-      ],
-      "d": [
-       "2026-04-16"
       ]
      },
      {
-      "s": 4,
+      "s": 3,
       "t": [
        "選課",
        "#certificate",
@@ -59272,7 +59251,7 @@
    "category": "競賽",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -59295,21 +59274,11 @@
       "s": 1,
       "t": [],
       "k": [
-       "time"
-      ],
-      "d": [
-       "2026-05-22"
-      ]
-     },
-     {
-      "s": 2,
-      "t": [],
-      "k": [
        "method"
       ]
      },
      {
-      "s": 3,
+      "s": 2,
       "t": [
        "學測",
        "#national"
@@ -59317,14 +59286,14 @@
       "k": []
      },
      {
-      "s": 4,
+      "s": 3,
       "t": [],
       "k": [
        "method"
       ]
      },
      {
-      "s": 5,
+      "s": 4,
       "t": [
        "升學",
        "#admission",
@@ -59333,7 +59302,7 @@
       "k": []
      },
      {
-      "s": 6,
+      "s": 5,
       "t": [
        "報名",
        "截止"
@@ -59345,7 +59314,7 @@
       ]
      },
      {
-      "s": 7,
+      "s": 6,
       "t": [
        "#contest",
        "#event"
@@ -59353,7 +59322,7 @@
       "k": []
      },
      {
-      "s": 8,
+      "s": 7,
       "t": [
        "網路",
        "報名"
@@ -60332,7 +60301,7 @@
    "category": "段考考試",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "audience": {
@@ -60362,12 +60331,7 @@
        "#final"
       ],
       "k": [
-       "time",
        "audience"
-      ],
-      "d": [
-       "2025-12-30",
-       "2025-12-31"
       ],
       "g": [
        3
@@ -60416,14 +60380,14 @@
       ]
      },
      {
-      "s": 6,
+      "s": 5,
       "t": [],
       "k": [
        "place"
       ]
      },
      {
-      "s": 7,
+      "s": 6,
       "t": [
        "加深加廣",
        "#advanced"
@@ -60437,21 +60401,21 @@
       ]
      },
      {
-      "s": 8,
+      "s": 7,
       "t": [],
       "k": [
        "place"
       ]
      },
      {
-      "s": 10,
+      "s": 8,
       "t": [
        "#exam"
       ],
       "k": []
      },
      {
-      "s": 11,
+      "s": 9,
       "t": [
        "考試",
        "大考",
@@ -60463,7 +60427,7 @@
       ]
      },
      {
-      "s": 12,
+      "s": 10,
       "t": [
        "手機",
        "考試",
@@ -60477,7 +60441,7 @@
       ]
      },
      {
-      "s": 13,
+      "s": 11,
       "t": [
        "手機",
        "考試",
@@ -60490,7 +60454,7 @@
       ]
      },
      {
-      "s": 14,
+      "s": 12,
       "t": [
        "考試",
        "#exam"
@@ -60500,7 +60464,7 @@
       ]
      },
      {
-      "s": 15,
+      "s": 13,
       "t": [
        "考試",
        "#exam"
@@ -60511,9 +60475,29 @@
       ]
      },
      {
-      "s": 16,
+      "s": 14,
+      "t": [
+       "作弊",
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 15,
       "t": [
        "考試",
+       "#exam"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
        "#exam"
       ],
       "k": [
@@ -60523,25 +60507,6 @@
      {
       "s": 17,
       "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "penalty"
-      ]
-     },
-     {
-      "s": 18,
-      "t": [
-       "#exam"
-      ],
-      "k": [
-       "penalty"
-      ]
-     },
-     {
-      "s": 19,
-      "t": [
        "導師"
       ],
       "k": [
@@ -60550,7 +60515,7 @@
       ]
      },
      {
-      "s": 20,
+      "s": 18,
       "t": [
        "手機",
        "記過",
@@ -60562,14 +60527,14 @@
       ]
      },
      {
-      "s": 22,
+      "s": 19,
       "t": [],
       "k": [
        "deny"
       ]
      },
      {
-      "s": 23,
+      "s": 20,
       "t": [
        "考試",
        "#exam"
@@ -60580,7 +60545,7 @@
       ]
      },
      {
-      "s": 24,
+      "s": 21,
       "t": [
        "考試",
        "#exam"
@@ -60588,7 +60553,7 @@
       "k": []
      },
      {
-      "s": 25,
+      "s": 22,
       "t": [
        "請假",
        "#leave"
@@ -60596,7 +60561,7 @@
       "k": []
      },
      {
-      "s": 26,
+      "s": 23,
       "t": [
        "段考",
        "補考",
@@ -60611,7 +60576,7 @@
       ]
      },
      {
-      "s": 27,
+      "s": 24,
       "t": [
        "請假",
        "公假",
@@ -60840,18 +60805,20 @@
    "category": "競賽",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
+     "奧林匹亞",
      "#contest"
     ],
     "segments": [
      {
       "s": 0,
       "t": [
+       "奧林匹亞",
        "#contest"
       ],
       "k": []
@@ -60863,12 +60830,7 @@
        "#contest"
       ],
       "k": [
-       "deadline",
-       "time",
        "method"
-      ],
-      "d": [
-       "2025-12-01"
       ]
      },
      {
@@ -60881,13 +60843,15 @@
      {
       "s": 3,
       "t": [
+       "奧林匹亞",
        "#contest"
       ],
       "k": []
      },
      {
-      "s": 5,
+      "s": 4,
       "t": [
+       "奧林匹亞",
        "#contest"
       ],
       "k": []

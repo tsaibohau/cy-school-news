@@ -20,7 +20,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "calendar_events": [
@@ -28,7 +28,7 @@
      "kind": "deadline",
      "date": "2025-10-27",
      "provenance": "verified_announcement_deadline",
-     "source_revision": "9416038cffe887daec6ed44fd8fb83d42929180b8c750364ef4ec832d22c29b5"
+     "source_revision": "dde32414b95c48c73367a1f84ff99d198d6e07f5848bf70a6121d0503be82771"
     }
    ],
    "tokens": {
@@ -36,50 +36,21 @@
     "title": [],
     "segments": [
      {
-      "s": 1,
+      "s": 0,
       "t": [
        "#grading"
       ],
       "k": []
      },
      {
-      "s": 2,
+      "s": 1,
       "t": [],
       "k": [
        "allow"
       ]
      },
      {
-      "s": 3,
-      "t": [
-       "考試",
-       "#exam",
-       "#certificate"
-      ],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2013-12-31",
-       "2014-01-01"
-      ]
-     },
-     {
-      "s": 4,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-12-13",
-       "2025-12-14",
-       "2025-12-20",
-       "2025-12-21"
-      ]
-     },
-     {
-      "s": 5,
+      "s": 2,
       "t": [
        "報名",
        "繳交"
@@ -91,14 +62,14 @@
       ]
      },
      {
-      "s": 6,
+      "s": 3,
       "t": [],
       "k": [
        "allow"
       ]
      },
      {
-      "s": 8,
+      "s": 4,
       "t": [
        "報名",
        "繳交"
@@ -108,17 +79,7 @@
       ]
      },
      {
-      "s": 10,
-      "t": [
-       "報名",
-       "繳交"
-      ],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 11,
+      "s": 5,
       "t": [
        "報名",
        "考試",
@@ -129,7 +90,7 @@
       ]
      },
      {
-      "s": 12,
+      "s": 6,
       "t": [
        "報名"
       ],
@@ -138,7 +99,7 @@
       ]
      },
      {
-      "s": 13,
+      "s": 7,
       "t": [],
       "k": [
        "penalty",
@@ -146,38 +107,28 @@
       ]
      },
      {
-      "s": 14,
+      "s": 8,
       "t": [
        "繳交"
       ],
       "k": [
-       "deadline",
-       "time",
        "method"
-      ],
-      "d": [
-       "2025-11-21"
       ]
      },
      {
-      "s": 15,
+      "s": 9,
       "t": [
        "手機",
        "報名",
        "#device"
       ],
       "k": [
-       "deadline",
-       "time",
        "method",
        "contact"
-      ],
-      "d": [
-       "2025-11-30"
       ]
      },
      {
-      "s": 16,
+      "s": 10,
       "t": [
        "報名",
        "截止"
@@ -188,14 +139,14 @@
       ]
      },
      {
-      "s": 18,
+      "s": 11,
       "t": [
        "公假"
       ],
       "k": []
      },
      {
-      "s": 19,
+      "s": 12,
       "t": [],
       "k": [
        "method",
@@ -203,7 +154,7 @@
       ]
      },
      {
-      "s": 20,
+      "s": 13,
       "t": [
        "#event",
        "#contact"
@@ -226,7 +177,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -234,7 +185,7 @@
     "title": [],
     "segments": [
      {
-      "s": 1,
+      "s": 0,
       "t": [
        "#contact"
       ],
@@ -257,7 +208,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -295,7 +246,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -303,25 +254,7 @@
     "title": [
      "#contest"
     ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "#contest"
-      ],
-      "k": [
-       "audience",
-       "allow"
-      ]
-     },
-     {
-      "s": 1,
-      "t": [],
-      "k": [
-       "allow"
-      ]
-     }
-    ]
+    "segments": []
    }
   },
   {
@@ -335,7 +268,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 11,
+   "detail_attempts": 12,
    "summary_version": "extractive-v4"
   },
   {
@@ -349,7 +282,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 11,
+   "detail_attempts": 12,
    "summary_version": "extractive-v4"
   },
   {
@@ -363,7 +296,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -378,34 +311,10 @@
       "k": []
      },
      {
-      "s": 3,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-12-06"
-      ]
-     },
-     {
-      "s": 4,
+      "s": 1,
       "t": [],
       "k": [
        "place"
-      ]
-     },
-     {
-      "s": 6,
-      "t": [
-       "截止",
-       "報名"
-      ],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2025-10-23"
       ]
      }
     ]
@@ -422,7 +331,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -453,7 +362,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -461,24 +370,14 @@
     "title": [],
     "segments": [
      {
-      "s": 2,
+      "s": 0,
       "t": [],
       "k": [
        "place"
       ]
      },
      {
-      "s": 3,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-12-06"
-      ]
-     },
-     {
-      "s": 4,
+      "s": 1,
       "t": [
        "報名"
       ],
@@ -487,7 +386,7 @@
       ]
      },
      {
-      "s": 6,
+      "s": 2,
       "t": [
        "費用"
       ],
@@ -496,7 +395,7 @@
       ]
      },
      {
-      "s": 7,
+      "s": 3,
       "t": [
        "報名"
       ],
@@ -518,7 +417,7 @@
    "category": "競賽",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -528,31 +427,10 @@
     ],
     "segments": [
      {
-      "s": 1,
-      "t": [
-       "公假",
-       "#contest"
-      ],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-10-25",
-       "2025-10-26"
-      ]
-     },
-     {
-      "s": 2,
+      "s": 0,
       "t": [
        "#contact"
       ],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 3,
-      "t": [],
       "k": [
        "contact"
       ]
@@ -571,7 +449,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "calendar_events": [
@@ -579,7 +457,7 @@
      "kind": "deadline",
      "date": "2025-10-13",
      "provenance": "verified_announcement_deadline",
-     "source_revision": "c1eba03fa88d7920bbffafdb21dfc67a4b970884d7bbe53f429b6ef397bbd0c9"
+     "source_revision": "941292f302bdf66c116e233cfc01282c9e71b511c760b63aeebd1593b11f2ca9"
     }
    ],
    "tokens": {
@@ -596,25 +474,14 @@
       "k": []
      },
      {
-      "s": 2,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-10-28",
-       "2025-10-29"
-      ]
-     },
-     {
-      "s": 3,
+      "s": 1,
       "t": [],
       "k": [
        "place"
       ]
      },
      {
-      "s": 4,
+      "s": 2,
       "t": [
        "選課"
       ],
@@ -623,28 +490,23 @@
       ]
      },
      {
-      "s": 7,
+      "s": 3,
       "t": [
        "報名"
       ],
       "k": [
-       "deadline",
-       "time",
        "method"
-      ],
-      "d": [
-       "2025-10-13"
       ]
      },
      {
-      "s": 8,
+      "s": 4,
       "t": [
        "公假"
       ],
       "k": []
      },
      {
-      "s": 9,
+      "s": 5,
       "t": [
        "公假",
        "報名",
@@ -668,7 +530,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 11,
+   "detail_attempts": 12,
    "summary_version": "extractive-v4"
   },
   {
@@ -682,7 +544,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4",
    "audience": {
     "grades": [
@@ -711,7 +573,7 @@
    "category": "競賽",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "calendar_events": [
@@ -719,7 +581,7 @@
      "kind": "deadline",
      "date": "2025-11-09",
      "provenance": "verified_announcement_deadline",
-     "source_revision": "8077568e37510a1084b697774408a8fdd13b68481a5ac3dd6c5a39f4cbe175b5"
+     "source_revision": "e7243d5c91a3556649daea60feb65aaaf80d9dac56dad40552eaae2dc0618bfb"
     }
    ],
    "tokens": {
@@ -737,12 +599,7 @@
       "s": 1,
       "t": [],
       "k": [
-       "deadline",
-       "time",
        "method"
-      ],
-      "d": [
-       "2025-11-09"
       ]
      },
      {
@@ -754,79 +611,6 @@
      },
      {
       "s": 3,
-      "t": [
-       "#contact"
-      ],
-      "k": [
-       "method",
-       "contact"
-      ]
-     },
-     {
-      "s": 4,
-      "t": [],
-      "k": [
-       "deadline",
-       "time",
-       "method"
-      ],
-      "d": [
-       "2025-11-09"
-      ]
-     },
-     {
-      "s": 5,
-      "t": [],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 6,
-      "t": [
-       "#contact"
-      ],
-      "k": [
-       "method",
-       "contact"
-      ]
-     },
-     {
-      "s": 8,
-      "t": [],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 9,
-      "t": [
-       "#contact"
-      ],
-      "k": [
-       "method",
-       "contact"
-      ]
-     },
-     {
-      "s": 10,
-      "t": [],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 11,
-      "t": [
-       "#contact"
-      ],
-      "k": [
-       "method",
-       "contact"
-      ]
-     },
-     {
-      "s": 12,
       "t": [
        "#contact"
       ],
@@ -849,7 +633,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 11,
+   "detail_attempts": 12,
    "summary_version": "extractive-v4"
   },
   {
@@ -863,7 +647,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 11,
+   "detail_attempts": 12,
    "summary_version": "extractive-v4"
   },
   {
@@ -877,7 +661,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 11,
+   "detail_attempts": 12,
    "summary_version": "extractive-v4"
   },
   {
@@ -891,7 +675,7 @@
    "category": "獎助學金",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -907,18 +691,7 @@
       "k": []
      },
      {
-      "s": 8,
-      "t": [],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2025-10-15"
-      ]
-     },
-     {
-      "s": 9,
+      "s": 1,
       "t": [
        "家長"
       ],
@@ -928,7 +701,7 @@
       ]
      },
      {
-      "s": 10,
+      "s": 2,
       "t": [
        "自主學習",
        "費用",
@@ -941,14 +714,14 @@
       ]
      },
      {
-      "s": 12,
+      "s": 3,
       "t": [],
       "k": [
        "required"
       ]
      },
      {
-      "s": 15,
+      "s": 4,
       "t": [],
       "k": [
        "fee",
@@ -956,21 +729,21 @@
       ]
      },
      {
-      "s": 18,
+      "s": 5,
       "t": [],
       "k": [
        "allow"
       ]
      },
      {
-      "s": 19,
+      "s": 6,
       "t": [],
       "k": [
        "allow"
       ]
      },
      {
-      "s": 21,
+      "s": 7,
       "t": [],
       "k": [
        "fee",
@@ -978,7 +751,7 @@
       ]
      },
      {
-      "s": 22,
+      "s": 8,
       "t": [],
       "k": [
        "required",
@@ -986,47 +759,42 @@
       ]
      },
      {
-      "s": 25,
+      "s": 9,
       "t": [],
       "k": [
        "method"
       ]
      },
      {
-      "s": 26,
-      "t": [],
-      "k": [
-       "deadline",
-       "time",
-       "required"
-      ],
-      "d": [
-       "2025-10-15"
-      ]
-     },
-     {
-      "s": 27,
+      "s": 10,
       "t": [],
       "k": [
        "required"
       ]
      },
      {
-      "s": 28,
+      "s": 11,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 12,
       "t": [
        "#grading"
       ],
       "k": []
      },
      {
-      "s": 29,
+      "s": 13,
       "t": [],
       "k": [
        "allow"
       ]
      },
      {
-      "s": 33,
+      "s": 14,
       "t": [
        "升學",
        "#admission"
@@ -1034,20 +802,11 @@
       "k": []
      },
      {
-      "s": 34,
+      "s": 15,
       "t": [
        "#enrollment"
       ],
       "k": []
-     },
-     {
-      "s": 35,
-      "t": [
-       "截止"
-      ],
-      "k": [
-       "deadline"
-      ]
      }
     ]
    }
@@ -1063,7 +822,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1091,7 +850,7 @@
       ]
      },
      {
-      "s": 3,
+      "s": 2,
       "t": [],
       "k": [
        "method",
@@ -1112,7 +871,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1130,18 +889,7 @@
       "k": []
      },
      {
-      "s": 2,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-10-03",
-       "2025-11-07"
-      ]
-     },
-     {
-      "s": 3,
+      "s": 1,
       "t": [
        "生活"
       ],
@@ -1150,7 +898,7 @@
       ]
      },
      {
-      "s": 5,
+      "s": 2,
       "t": [],
       "k": [
        "deadline",
@@ -1158,7 +906,7 @@
       ]
      },
      {
-      "s": 6,
+      "s": 3,
       "t": [
        "報名"
       ],
@@ -1180,7 +928,7 @@
    "category": "競賽",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
@@ -1201,7 +949,7 @@
    "category": "競賽",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1209,120 +957,24 @@
     "title": [],
     "segments": [
      {
-      "s": 1,
+      "s": 0,
       "t": [],
       "k": [
        "method"
       ]
      },
      {
-      "s": 2,
+      "s": 1,
       "t": [
        "報名"
       ],
       "k": [
-       "deadline",
-       "time",
        "required",
        "fee"
-      ],
-      "d": [
-       "2025-09-10",
-       "2025-10-01"
       ]
      },
      {
-      "s": 3,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-10-02",
-       "2025-11-14"
-      ]
-     },
-     {
-      "s": 5,
-      "t": [
-       "報名"
-      ],
-      "k": [
-       "deadline"
-      ]
-     },
-     {
-      "s": 6,
-      "t": [
-       "繳交"
-      ],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2025-11-14"
-      ]
-     },
-     {
-      "s": 7,
-      "t": [
-       "網路"
-      ],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2025-12-08"
-      ]
-     },
-     {
-      "s": 8,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-12-15",
-       "2025-12-31"
-      ]
-     },
-     {
-      "s": 9,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-01-14"
-      ]
-     },
-     {
-      "s": 10,
-      "t": [
-       "網路"
-      ],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-01-22"
-      ]
-     },
-     {
-      "s": 11,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-02-23",
-       "2026-03-31"
-      ]
-     },
-     {
-      "s": 13,
+      "s": 2,
       "t": [
        "#contact"
       ],
@@ -1344,7 +996,7 @@
    "category": "一般",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1379,7 +1031,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1396,16 +1048,17 @@
       "k": []
      },
      {
-      "s": 2,
+      "s": 1,
       "t": [
        "報名"
       ],
       "k": [
-       "method"
+       "method",
+       "allow"
       ]
      },
      {
-      "s": 3,
+      "s": 2,
       "t": [
        "報名",
        "#contact"
@@ -1429,7 +1082,7 @@
    "category": "競賽",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1442,22 +1095,11 @@
       "s": 0,
       "t": [],
       "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2025-09-15"
-      ]
-     },
-     {
-      "s": 2,
-      "t": [],
-      "k": [
        "allow"
       ]
      },
      {
-      "s": 4,
+      "s": 1,
       "t": [
        "報名"
       ],
@@ -1479,7 +1121,7 @@
    "category": "研習活動",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1498,7 +1140,7 @@
       ]
      },
      {
-      "s": 2,
+      "s": 1,
       "t": [
        "生活"
       ],
@@ -1507,7 +1149,7 @@
       ]
      },
      {
-      "s": 3,
+      "s": 2,
       "t": [
        "#school_profile"
       ],
@@ -1516,17 +1158,7 @@
       ]
      },
      {
-      "s": 4,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-09-25"
-      ]
-     },
-     {
-      "s": 5,
+      "s": 3,
       "t": [
        "生活"
       ],
@@ -1535,7 +1167,7 @@
       ]
      },
      {
-      "s": 6,
+      "s": 4,
       "t": [
        "報名"
       ],
@@ -1545,7 +1177,7 @@
       ]
      },
      {
-      "s": 7,
+      "s": 5,
       "t": [],
       "k": [
        "required",
@@ -1566,7 +1198,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 12,
+   "detail_attempts": 13,
    "snippet_tried": true,
    "summary_version": "extractive-v4"
   },
@@ -1581,7 +1213,7 @@
    "category": "榮譽榜",
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
@@ -1602,7 +1234,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1640,7 +1272,7 @@
    "category": "行政公告",
    "first_seen": "2026-08-11T14:33:34+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1648,7 +1280,7 @@
     "title": [],
     "segments": [
      {
-      "s": 1,
+      "s": 0,
       "t": [],
       "k": [
        "audience",
@@ -1656,7 +1288,7 @@
       ]
      },
      {
-      "s": 3,
+      "s": 1,
       "t": [],
       "k": [
        "method"
@@ -1676,7 +1308,7 @@
    "category": "教職員",
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "parsed",
-   "detail_attempts": 1,
+   "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {
@@ -1691,7 +1323,7 @@
       "k": []
      },
      {
-      "s": 2,
+      "s": 1,
       "t": [
        "手機",
        "#device"
@@ -1699,14 +1331,14 @@
       "k": []
      },
      {
-      "s": 3,
+      "s": 2,
       "t": [],
       "k": [
        "method"
       ]
      },
      {
-      "s": 4,
+      "s": 3,
       "t": [],
       "k": [
        "time",
@@ -1729,6 +1361,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -1751,6 +1384,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -1779,7 +1413,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
    "detail_attempts": 12,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-166370",
@@ -1793,7 +1428,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
    "detail_attempts": 12,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-166369",
@@ -1808,6 +1444,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -1830,6 +1467,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      1,
@@ -2092,14 +1730,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2025-03-11",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "564767ef109332b75bc6470a4c3445146c89d82ad19226366974e03300f2a2ab"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2166,6 +1797,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2196,6 +1828,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -2248,14 +1881,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2025-04-15",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "88895af127056327a156b686c831c7533c1ca692c0d6390a386168966e1156a8"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -2292,6 +1918,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2314,20 +1941,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2025-05-27",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "ff892de5d0b3cfffa4956d553cfa855b11e07e39e2f6063d5f2ba389c106d9c5"
-    },
-    {
-     "kind": "deadline",
-     "date": "2025-06-06",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "ff892de5d0b3cfffa4956d553cfa855b11e07e39e2f6063d5f2ba389c106d9c5"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2349,6 +1963,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2370,6 +1985,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2391,6 +2007,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2412,6 +2029,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2433,6 +2051,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2454,6 +2073,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2476,6 +2096,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      1
@@ -2513,14 +2134,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2025-05-23",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "5e26aa5bc3501d3abe54f58977a9223ac1378b2b68eaf1746f817459732ef805"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2565,7 +2179,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
    "detail_attempts": 12,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-158056",
@@ -2580,6 +2195,7 @@
    "detail_status": "empty",
    "detail_attempts": 12,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [],
     "classes": [
@@ -2602,6 +2218,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2696,6 +2313,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      1,
@@ -2750,6 +2368,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2884,6 +2503,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [],
     "classes": [
@@ -2912,6 +2532,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2932,7 +2553,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
    "detail_attempts": 12,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-154488",
@@ -2946,7 +2568,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
    "detail_attempts": 12,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-154489",
@@ -2960,7 +2583,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
    "detail_attempts": 12,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-154490",
@@ -2975,6 +2599,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -2997,6 +2622,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "audience": {
     "grades": [
      2,
@@ -3233,6 +2859,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3311,7 +2938,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
    "detail_attempts": 12,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-148012",
@@ -3326,6 +2954,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3348,6 +2977,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3368,7 +2998,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
    "detail_attempts": 12,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-147377",
@@ -3384,6 +3015,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3436,6 +3068,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3468,14 +3101,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2025-01-02",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "5993d6a3888244f845b0e2a16f6b1651299806b841a87889f8a8610a52d9405b"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [],
@@ -3631,14 +3257,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
-   "calendar_events": [
-    {
-     "kind": "event",
-     "date": "2025-03-01",
-     "provenance": "verified_announcement_event",
-     "source_revision": "30e29a91c0def7c8fb58c2a4b08d33cc0f623c4008c414c70baca2463d22502c"
-    }
-   ],
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3801,7 +3420,8 @@
    "first_seen": "2026-08-11T12:52:49+08:00",
    "detail_status": "empty",
    "detail_attempts": 13,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-146880",
@@ -3816,7 +3436,8 @@
    "detail_status": "parsed",
    "detail_attempts": 13,
    "snippet_tried": true,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-146401",
@@ -3832,6 +3453,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3853,7 +3475,8 @@
    "detail_status": "parsed",
    "detail_attempts": 13,
    "snippet_tried": true,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-146037",
@@ -3868,6 +3491,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3889,7 +3513,8 @@
    "first_seen": "2026-08-10T21:40:05+08:00",
    "detail_status": "empty",
    "detail_attempts": 12,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-146035",
@@ -3904,6 +3529,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3925,6 +3551,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3947,6 +3574,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3969,6 +3597,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -3990,6 +3619,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -4011,6 +3641,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -4032,6 +3663,7 @@
    "detail_status": "empty",
    "detail_attempts": 2,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -4054,6 +3686,7 @@
    "detail_attempts": 2,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
+   "body_condensed": 2,
    "tokens": {
     "v": 1,
     "title": [
@@ -4083,7 +3716,8 @@
    "detail_status": "parsed",
    "detail_attempts": 13,
    "snippet_tried": true,
-   "summary_version": "extractive-v4"
+   "summary_version": "extractive-v4",
+   "body_condensed": 2
   },
   {
    "id": "cygsh-131351",
