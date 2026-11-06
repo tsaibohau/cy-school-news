@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T11:24:29+08:00",
+ "generated_at": "2026-11-06T20:03:04+08:00",
  "school": {
   "id": "hhvs",
   "name": "國立新化高工",
@@ -8,6 +8,882 @@
   "base": "https://www.hhvs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "hhvs-12530",
+   "title": "國立東華大學「第27屆東華奇萊文學獎」徵文簡章及宣傳海報各乙份",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12530",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-03-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "008e12b5a6cb3cb71e31eecd53ad7365a4cee865138a8b4d66ffb3700e803126"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "東華",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "東華",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "東華",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "東華",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-03-15"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "東華",
+       "#contest"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "東華",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "東華",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-03-15"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "東華",
+       "#contest"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12529",
+   "title": "台東大學辦理「115年度草地野餐日暨大學校園體驗」活動",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12529",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "a0848bee721a90e49f197faffe36642eb6b32df8c6687e35a676a416d526b574"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學雜費減免",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "學雜費減免",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12528",
+   "title": "金車文教基金會辦理「2027金車曙光寒假物資贊助計劃」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12528",
+   "category": "一般",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "寒假",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "寒假",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12527",
+   "title": "銘傳大學檢送第38屆銘傳文藝獎高中職中文散文競賽辦法及宣傳DM電子檔",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12527",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-22"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-22"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12526",
+   "title": "115-1-84 116年度『中等學校教師在職進修第二專長學分班』本土語需求，報名至11/11(三)，請洽教學組",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12526",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "母語",
+     "報名",
+     "#grading"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "母語",
+       "報名",
+       "#grading"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "母語",
+       "報名",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "暑假",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "繳交",
+       "#grading"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "出缺席",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#grading"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "母語",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "暑假",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "繳交"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "出缺席",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#grading"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhvs-12525",
+   "title": "115-1-83 國立高雄師範大學辦理推動高級中等學校新興科技教育遠距示範服務計畫－「分主題發展專業研習－固定翼無人機應用與實作」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12525",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "hhvs-12524",
+   "title": "115-1-82 國立高雄師範大學附屬高級中學「115年度孝道教育種子教師研習」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12524",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "hhvs-12523",
+   "title": "115-1-81 國立陽明交通大學辦理第十九屆「APX全國高中數理能力檢定」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hhvs",
+   "school_name": "新化高工",
+   "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12523",
+   "category": "一般",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "hhvs-12522",
    "title": "轉知：「校園性教育（含性傳染病防治）計畫」之「『全面性教育』教師專業成長研習」",
@@ -20,8 +896,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",

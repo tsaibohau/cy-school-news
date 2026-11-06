@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-06T11:38:45+08:00",
+ "generated_at": "2026-11-06T20:24:00+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -624,23 +624,33 @@
    "page_id": 169652813495128,
    "url": "https://www.tlsh.ylc.edu.tw/%e8%bc%94%e5%b0%8e%e5%ae%a4-%e7%94%9f%e6%b6%af%e8%bc%94%e5%b0%8e/",
    "label": "生涯輔導",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "輔導室"
    ],
-   "order": 51
+   "order": 51,
+   "checked_at": "2026-11-06T20:23:56+08:00",
+   "path": [
+    "輔導室",
+    "生涯輔導"
+   ]
   },
   "106440260225302": {
    "page_id": 106440260225302,
    "url": "https://www.tlsh.ylc.edu.tw/gender1/",
    "label": "性別教育",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "輔導室"
    ],
-   "order": 52
+   "order": 52,
+   "checked_at": "2026-11-06T20:23:58+08:00",
+   "path": [
+    "輔導室",
+    "性別教育"
+   ]
   },
   "60320388423428": {
    "page_id": 60320388423428,
@@ -1076,5 +1086,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-06T11:38:45+08:00"
+ "last_run_at": "2026-11-06T20:24:00+08:00"
 }

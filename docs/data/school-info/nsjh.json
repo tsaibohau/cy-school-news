@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nsjh",
- "generated_at": "2026-11-06T11:39:28+08:00",
+ "generated_at": "2026-11-06T20:24:56+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179628626610013": {
@@ -523,23 +523,33 @@
    "page_id": 254720746849147,
    "url": "https://nsjh.ylc.edu.tw/cp.aspx?n=108666",
    "label": "交通資訊",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 43
+   "order": 43,
+   "checked_at": "2026-11-06T20:24:52+08:00",
+   "path": [
+    "交通資訊",
+    "交通資訊"
+   ]
   },
   "142570599765830": {
    "page_id": 142570599765830,
    "url": "https://nsjh.ylc.edu.tw/cp.aspx?n=117746",
    "label": "課程計畫",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 44
+   "order": 44,
+   "checked_at": "2026-11-06T20:24:54+08:00",
+   "path": [
+    "網站導覽",
+    "課程計畫"
+   ]
   },
   "6167610739587": {
    "page_id": 6167610739587,
@@ -1024,6 +1034,18 @@
     "網站導覽"
    ],
    "order": 88
+  },
+  "177099366640397": {
+   "page_id": 177099366640397,
+   "url": "https://nsjh.ylc.edu.tw/OpenData.aspx?SN=9CCB0F11D034FA09",
+   "label": "JSON",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "課程計畫"
+   ],
+   "order": 89
   }
  },
  "handbook": {},
@@ -1235,5 +1257,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-06T11:39:28+08:00"
+ "last_run_at": "2026-11-06T20:24:56+08:00"
 }

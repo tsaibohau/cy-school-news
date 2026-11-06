@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T11:24:29+08:00",
+ "generated_at": "2026-11-06T20:03:04+08:00",
  "school": {
   "id": "tngs",
   "name": "國立臺南女中",
@@ -8,6 +8,531 @@
   "base": "https://www.tngs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "tngs-92587",
+   "title": "115學年度普通型高級中等學校數理及資訊學科能力競賽決賽各科辦理時程",
+   "date": "2026-11-06",
+   "source_category": "設備組",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/06/115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%99%ae%e9%80%9a%e5%9e%8b%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e6%95%b8%e7%90%86%e5%8f%8a%e8%b3%87%e8%a8%8a%e5%ad%b8%e7%a7%91%e8%83%bd%e5%8a%9b/",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "中央大學",
+       "地科",
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ],
+      "d": [
+       "2026-12-04",
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "師大",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-19",
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "師大",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-29",
+       "2026-12-30"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "師大",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-28",
+       "2026-12-29"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "師大",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-29",
+       "2026-12-30"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "政大",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-18",
+       "2026-12-19"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92584",
+   "title": "「115學年度原住民族文化與科學展覽會」計畫競賽徵件說明會",
+   "date": "2026-11-06",
+   "source_category": "設備組",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e3%80%8c115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%8e%9f%e4%bd%8f%e6%b0%91%e6%97%8f%e6%96%87%e5%8c%96%e8%88%87%e7%a7%91%e5%ad%b8%e5%b1%95%e8%a6%bd%e6%9c%83%e3%80%8d%e8%a8%88%e7%95%ab%e7%ab%b6%e8%b3%bd/",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-27",
+     "provenance": "verified_announcement_event",
+     "source_revision": "6719af782070f71f9e1970d7dd7f28932042e80f583f8af693accc005fe0256d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "展覽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "東華",
+       "報名"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-11",
+       "2026-11-25"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92579",
+   "title": "【轉知】國立臺灣海洋大學訂於116年1月26日至27日辦理「2027年海洋科學營」",
+   "date": "2026-11-06",
+   "source_category": "02.學生活動",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e8%87%ba%e7%81%a3%e6%b5%b7%e6%b4%8b%e5%a4%a7%e5%ad%b8%e8%a8%82%e6%96%bc116%e5%b9%b41%e6%9c%8826%e6%97%a5%e8%87%b327%e6%97%a5%e8%be%a6%e7%90%86/",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "5b204d7553bfb42de17b838e7c51222a6073dcef7598714740527ea5c8732923"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "海大"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "社會情緒學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "海大"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-26"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-11"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "教務處",
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92574",
+   "title": "臺南市擇賢堂獎學金申請~115.11.18止",
+   "date": "2026-11-06",
+   "source_category": "_置頂公告",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e8%87%ba%e5%8d%97%e5%b8%82%e6%93%87%e8%b3%a2%e5%a0%82%e7%8d%8e%e5%ad%b8%e9%87%91%e7%94%b3%e8%ab%8b115-11-18%e6%ad%a2/",
+   "category": "獎助學金",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "683743400a6bafa3e92c10003898fa9edc4436288eb634f35e67c2f2cba5759e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "獎學金",
+       "註冊組",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "學期成績",
+       "學生證",
+       "#student_id",
+       "#grading"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-92570",
+   "title": "海洋委員會於115年11月18日（星期三）假高雄展覽館305、304A會議室舉辦「2026海洋科技專案成果發表會暨成果展」，請自行報名參加。",
+   "date": "2026-11-06",
+   "source_category": "00.一般訊息",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e6%b5%b7%e6%b4%8b%e5%a7%94%e5%93%a1%e6%9c%83%e6%96%bc115%e5%b9%b411%e6%9c%8818%e6%97%a5%ef%bc%88%e6%98%9f%e6%9c%9f%e4%b8%89%ef%bc%89%e5%81%87%e9%ab%98%e9%9b%84%e5%b1%95%e8%a6%bd%e9%a4%a8305%e3%80%813/",
+   "category": "社團",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f4c12a18142e3eb947a96dece5e248d1e7865a2260d763c3113ef4f9a2fee75c"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "展覽"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "展覽"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tngs-89983",
+   "title": "✏️115年11月6日至9日因全國性比賽本周末K館不開放",
+   "date": "2026-11-06",
+   "source_category": "_置頂公告",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e2%9c%8f%ef%b8%8f%e3%80%90%e5%81%87%e6%97%a5%e8%87%aa%e7%bf%92%e3%80%91115%e5%b9%b49%e6%9c%8812-13%e6%97%a5%e5%9b%a0%e4%ba%ba%e6%95%b8%e4%b8%8d%e8%b6%b3k%e9%a4%a8%e4%b8%8d%e9%96%8b%e6%94%be%e8%ab%8b/",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tngs-92564",
+   "title": "賀！115學年度數理及資訊學科能力競賽臺南區複賽本校獲獎名單~恭喜得獎同學！",
+   "date": "2026-11-06",
+   "source_category": "01.榮譽榜",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e8%b3%80%ef%bc%81115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%95%b8%e7%90%86%e5%8f%8a%e8%b3%87%e8%a8%8a%e5%ad%b8%e7%a7%91%e8%83%bd%e5%8a%9b%e7%ab%b6%e8%b3%bd%e8%87%ba%e5%8d%97%e5%8d%80%e8%a4%87%e8%b3%bd/",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tngs-92562",
+   "title": "校務系統1Campus APP系統緊急維護公告",
+   "date": "2026-11-06",
+   "source_category": "_置頂公告",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e6%a0%a1%e5%8b%99%e7%b3%bb%e7%b5%b11campus-app%e7%b3%bb%e7%b5%b1%e7%b7%8a%e6%80%a5%e7%b6%ad%e8%ad%b7%e5%85%ac%e5%91%8a/",
+   "category": "一般",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tngs-92555",
+   "title": "【英語競賽】11月07日(六)英文單字比賽南區決賽試場公告",
+   "date": "2026-11-06",
+   "source_category": "_置頂公告",
+   "school": "tngs",
+   "school_name": "臺南女中",
+   "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e3%80%90%e8%8b%b1%e8%aa%9e%e7%ab%b6%e8%b3%bd%e3%80%9111%e6%9c%8807%e6%97%a5%e5%85%ad%e8%8b%b1%e6%96%87%e5%96%ae%e5%ad%97%e6%af%94%e8%b3%bd%e5%8d%97%e5%8d%80%e6%b1%ba%e8%b3%bd%e9%87%8d%e8%a6%81/",
+   "category": "段考考試",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "tngs-92552",
    "title": "樹德科技大學辦理「2026資訊科技創新設計暨應用競賽」",
@@ -20,8 +545,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -180,8 +705,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -260,8 +785,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -489,8 +1014,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -511,8 +1036,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -533,8 +1058,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -644,8 +1169,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -666,8 +1191,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -688,8 +1213,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -880,8 +1405,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -2565,8 +3090,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -2587,8 +3112,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1,

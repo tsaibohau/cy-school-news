@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-06T11:41:20+08:00",
+ "generated_at": "2026-11-06T20:26:44+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -630,13 +630,19 @@
    "page_id": 64967749312091,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/衛生組/",
    "label": "衛生組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "學務處"
    ],
-   "order": 46
+   "order": 46,
+   "checked_at": "2026-11-06T20:26:42+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "衛生組"
+   ]
   },
   "113046428861619": {
    "page_id": 113046428861619,
@@ -1158,6 +1164,30 @@
     "生輔組"
    ],
    "order": 90
+  },
+  "21237771594226": {
+   "page_id": 21237771594226,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/%e8%a1%9b%e7%94%9f%e7%b5%84/",
+   "label": "衛生組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "學務處",
+    "衛生組"
+   ],
+   "order": 91
+  },
+  "50416124529506": {
+   "page_id": 50416124529506,
+   "url": "https://www.nknush.kh.edu.tw/3755-2/",
+   "label": "各處室登革熱病媒蚊回報表",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "學務處",
+    "衛生組"
+   ],
+   "order": 92
   }
  },
  "handbook": {},
@@ -1459,5 +1489,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-06T11:41:20+08:00"
+ "last_run_at": "2026-11-06T20:26:44+08:00"
 }

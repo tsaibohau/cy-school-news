@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-06T11:39:45+08:00",
+ "generated_at": "2026-11-06T20:25:19+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -3880,12 +3880,54 @@
    "page_id": 251420183781566,
    "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,13,420,409,418",
    "label": "學校未來發展願景或短中長程規劃",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 43
+   "order": 43,
+   "checked_at": "2026-11-06T20:25:14+08:00",
+   "path": [
+    "網站導覽",
+    "學校未來發展願景或短中長程規劃"
+   ],
+   "changed_at": "2026-11-06T20:25:14+08:00",
+   "content_hash": "1046ac84b7e095cf3680e528c9ac746516ffc793adb42cc8af5db47e205dadc8",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-251420183781566.json",
+   "detail_revision": "c3377a033d754a7667261dd397c946097ee89fd845aa80ab43230c4f54e2baa9",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "校務發展計畫書.pdf",
+     "url": "https://www.hnvs.cy.edu.tw/df_ufiles/校務發展計畫書.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-30"
+      ]
+     }
+    ]
+   }
   },
   "277352779129330": {
    "page_id": 277352779129330,
@@ -10379,6 +10421,53 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-251420183781566",
+   "kind": "school_info",
+   "title": "網站導覽 › 學校未來發展願景或短中長程規劃",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,13,420,409,418",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "校務發展計畫書.pdf"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "校務發展計畫書.pdf",
+     "url": "https://www.hnvs.cy.edu.tw/df_ufiles/校務發展計畫書.pdf"
+    }
+   ],
+   "detail_ref": "data/details/hnvs/hnvs-info-251420183781566.json",
+   "detail_revision": "c3377a033d754a7667261dd397c946097ee89fd845aa80ab43230c4f54e2baa9",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-30"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-254740829859223",
    "kind": "school_info",
    "title": "升學資訊",
@@ -10721,5 +10810,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-06T11:39:45+08:00"
+ "last_run_at": "2026-11-06T20:25:19+08:00"
 }

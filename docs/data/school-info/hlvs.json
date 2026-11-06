@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-06T11:38:51+08:00",
+ "generated_at": "2026-11-06T20:24:05+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -9422,23 +9422,29 @@
    "page_id": 27712480312774,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=3280",
    "label": "●螺聲校刊電子報",
-   "status": "pending",
+   "status": "excluded_section",
    "depth": 1,
    "parent_path": [
     "認識本校"
    ],
-   "order": 51
+   "order": 51,
+   "checked_at": "2026-11-06T20:24:01+08:00",
+   "path": [
+    "首頁-教職員連結(入口頁面)",
+    "業務推動"
+   ]
   },
   "17810228444310": {
    "page_id": 17810228444310,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=2263",
    "label": "●資訊安全政策",
-   "status": "pending",
+   "status": "gone",
    "depth": 1,
    "parent_path": [
     "認識本校"
    ],
-   "order": 52
+   "order": 52,
+   "checked_at": "2026-11-06T20:24:03+08:00"
   },
   "210012168304949": {
    "page_id": 210012168304949,
@@ -20839,5 +20845,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-06T11:38:51+08:00"
+ "last_run_at": "2026-11-06T20:24:05+08:00"
 }

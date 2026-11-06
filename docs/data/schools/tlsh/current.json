@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T11:24:29+08:00",
+ "generated_at": "2026-11-06T20:03:04+08:00",
  "school": {
   "id": "tlsh",
   "name": "國立斗六高級中學",
@@ -8,6 +8,600 @@
   "base": "https://www.tlsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "tlsh-68938",
+   "title": "【招生宣傳】國立台中教育大學學士班特殊選才入學招生訊息",
+   "date": "2026-11-06",
+   "source_category": "升學資訊",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/06/68938/",
+   "category": "升學",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中教大",
+     "特殊選才",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-27",
+       "2026-11-16"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "教務處",
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68936",
+   "title": "【招生宣傳】國立聯合大學文化觀光產業學系116學年度特殊選才管道招生訊息",
+   "date": "2026-11-06",
+   "source_category": "升學資訊",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/06/68936/",
+   "category": "升學",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "7b53c914b786b0444904d85f247a01d190ee7c867b815ac88ea8dc70a1a525db"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "聯大",
+     "特殊選才",
+     "旅遊",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "旅遊"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "特殊選才",
+       "旅遊",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-23",
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "聯大",
+       "旅遊"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68922",
+   "title": "【教師研習】教育部「2026自主學習節」資訊",
+   "date": "2026-11-06",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/06/68922/",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-30",
+     "provenance": "verified_announcement_event",
+     "source_revision": "af34144a1b6c77b1cdf4dc45ca409b97be2d76aff410faa9caca454780615be7"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "#self_learning",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-30",
+       "2026-12-09",
+       "2026-12-08"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "公假",
+       "報名",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68920",
+   "title": "【教師研習】高師大附中「115年度孝道教育種子教師線上研習」",
+   "date": "2026-11-06",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/06/68920/",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "0ee1fd8b273add55e1965a07f7de8142de587df36b931d44d0e8b4b98db7c609"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "師大",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-09"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-24"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "公假",
+       "報名",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68918",
+   "title": "【教師研習】臺中一中「AI 賦能教與學工作坊」",
+   "date": "2026-11-06",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/06/68918/",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-10",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b36d3225853d911d71d16298dd99fabe6da2a471d8a3c1b5a1a3d0672098ed7d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中一中",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "中一中",
+       "公假",
+       "報名",
+       "#leave",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-12-10"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-26"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "公假",
+       "報名",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tlsh-68904",
+   "title": "【英檢獎勵】115學年度第一學期英檢獎勵實施計畫",
+   "date": "2026-11-06",
+   "source_category": "教務處",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/06/68904/",
+   "category": "一般",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68898",
+   "title": "【語文競賽】115學年度語文競賽成績公告",
+   "date": "2026-11-06",
+   "source_category": "最新公告",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/06/68898/",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68914",
+   "title": "【教師研習】南山中學「Google 試算表與 Apps script 的奇幻組合」線上工作坊",
+   "date": "2026-11-05",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/05/68914/",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "tlsh-68911",
+   "title": "【教師研習】臺中二中近期多場研習，詳請點閱",
+   "date": "2026-11-05",
+   "source_category": "教師研習",
+   "school": "tlsh",
+   "school_name": "斗六高中",
+   "url": "https://www.tlsh.ylc.edu.tw/2026/11/05/68911/",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "tlsh-68902",
    "title": "中華民國資訊聯盟協進會舉辦115年度生成式AI演算法認證暨競賽活動",
@@ -576,8 +1170,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -635,8 +1229,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -706,8 +1300,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -776,8 +1370,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -842,8 +1436,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -943,8 +1537,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -1100,8 +1694,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -1210,8 +1804,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -1307,8 +1901,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",

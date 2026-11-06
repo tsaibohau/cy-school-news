@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T11:24:29+08:00",
+ "generated_at": "2026-11-06T20:03:04+08:00",
  "school": {
   "id": "tnvs",
   "name": "國立臺南海事",
@@ -8,6 +8,480 @@
   "base": "https://www.tnvs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "tnvs-24325",
+   "title": "115第1學期第3次行政會議紀錄1151014",
+   "date": "2026-11-06",
+   "source_category": "00.首頁",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/2026/11/115%e7%ac%ac1%e5%ad%b8%e6%9c%9f%e7%ac%ac3%e6%ac%a1%e8%a1%8c%e6%94%bf%e6%9c%83%e8%ad%b0%e7%b4%80%e9%8c%841151014/",
+   "category": "一般",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "統測",
+       "四技二專",
+       "考試",
+       "#admission",
+       "#exam",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-24320",
+   "title": "【學習歷程】115學年度學生課程學習成果分享會第3場次",
+   "date": "2026-11-06",
+   "source_category": "003.校務訊息",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/2026/11/%e3%80%90%e5%ad%b8%e7%bf%92%e6%ad%b7%e7%a8%8b%e3%80%91115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e5%ad%b8%e7%94%9f%e8%aa%b2%e7%a8%8b%e5%ad%b8%e7%bf%92%e6%88%90%e6%9e%9c%e5%88%86%e4%ba%ab%e6%9c%83%e7%ac%ac3/",
+   "category": "升學",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "2ba50fd14e21e6b062d47950a3cde69ad8660e1b71073381868aad159013df5f"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "學習歷程",
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "家長"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "四技二專",
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2022-08-11"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-28"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-24317",
+   "title": "【轉知】海洋委員會舉辦「2026海洋科技專案成果發表會暨成果展」，鼓勵同仁踴躍報名參加",
+   "date": "2026-11-06",
+   "source_category": "006.校外轉知",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/2026/11/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e6%b5%b7%e6%b4%8b%e5%a7%94%e5%93%a1%e6%9c%83%e8%88%89%e8%be%a6%e3%80%8c2026%e6%b5%b7%e6%b4%8b%e7%a7%91%e6%8a%80%e5%b0%88%e6%a1%88%e6%88%90%e6%9e%9c%e7%99%bc/",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-12",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "1d6ed43bc01d1c259bb44700cd72305ceff4f59a0975bd04dc31bdbb53647e91"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "展覽"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "北科大"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-24314",
+   "title": "【轉知】國立臺灣海洋大學辦理「2027年海洋科學營」，鼓勵學生踴躍報名參加",
+   "date": "2026-11-06",
+   "source_category": "006.校外轉知",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/2026/11/%e3%80%90%e8%bd%89%e7%9f%a5%e3%80%91%e5%9c%8b%e7%ab%8b%e8%87%ba%e7%81%a3%e6%b5%b7%e6%b4%8b%e5%a4%a7%e5%ad%b8%e8%be%a6%e7%90%86%e3%80%8c2027%e5%b9%b4%e6%b5%b7%e6%b4%8b%e7%a7%91%e5%ad%b8%e7%87%9f/",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "3622780ae513a60e385ceb5e021a446d104363fa11a6e4e4c24fbdc893daf18c"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "海大",
+     "報名"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-11"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "教務處",
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "tnvs-24310",
    "title": "教育部修正「高級中等以下學校教師解聘不續聘停聘或資遣辦法」",
@@ -20,8 +494,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -65,8 +539,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2
@@ -124,8 +598,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -364,8 +838,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -462,7 +936,7 @@
   },
   {
    "id": "tnvs-24231",
-   "title": "【公告】教育部性別平等教育委員會（簡稱:性平會）受理學生提案流程圖及提案單各1份",
+   "title": "【公告】教育部性別平等教育委員會（簡稱:性平會）受理學生提案流程圖及提案單各1份 – 國立臺南海事",
    "date": "2026-10-19",
    "source_category": "003.校務訊息",
    "school": "tnvs",
@@ -470,7 +944,181 @@
    "url": "https://www.tnvs.tn.edu.tw/2026/10/%e3%80%90%e5%85%ac%e5%91%8a%e3%80%91%e6%95%99%e8%82%b2%e9%83%a8%e6%80%a7%e5%88%a5%e5%b9%b3%e7%ad%89%e6%95%99%e8%82%b2%e5%a7%94%e5%93%a1%e6%9c%83%ef%bc%88%e7%b0%a1%e7%a8%b1%e6%80%a7%e5%b9%b3%e6%9c%83/",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "性平"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "教官室",
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "截止",
+       "性平"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-03-16",
+       "2026-09-15"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "性平"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "成大"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "性平"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-09-26"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tnvs-24227",

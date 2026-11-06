@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T11:24:29+08:00",
+ "generated_at": "2026-11-06T20:03:04+08:00",
  "school": {
   "id": "sgash",
   "name": "國立新港藝術高級中學",
@@ -8,6 +8,815 @@
   "base": "https://www.sgash.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "sgash-14943",
+   "title": "教育部青年發展署檢送「地方創生DNA：小白的Chill地方行動」培力青年參與地方創生數位課程地圖",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14943",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "彈性學習"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "彈性學習"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14942",
+   "title": "樹德科技大學與台灣網路智能學會共同辦理「2026資訊科技創新設計暨應用競賽」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14942",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "06786a4bd15e0953deb9d584a9a578b527a96b886d926d8a6e07dd7b503ea7c3"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "網路",
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "網路",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "網路",
+       "比賽",
+       "生活",
+       "#admission",
+       "#contest",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "截止",
+       "報名",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-11"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "手機",
+       "報名",
+       "繳交",
+       "#device"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "投影片",
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "學習歷程",
+       "網路",
+       "比賽",
+       "生活",
+       "#admission",
+       "#contest",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "截止",
+       "報名",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-11"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "手機",
+       "報名",
+       "繳交",
+       "#device"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "投影片",
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14941",
+   "title": "龍華科技大學辦理「交通AI工作坊」及「交通安全AI巡守隊-全國黑客松競賽」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14941",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest",
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "中山"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "比賽",
+       "科普",
+       "生活",
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "中山",
+       "公假",
+       "比賽",
+       "#contest",
+       "#leave",
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-04-17",
+       "2026-11-26",
+       "2026-11-27",
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "中山",
+       "公假",
+       "比賽",
+       "#contest",
+       "#leave",
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-04-17",
+       "2026-11-26",
+       "2026-11-27",
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "中山"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "比賽",
+       "科普",
+       "生活",
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "中山",
+       "比賽",
+       "#contest",
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-04-17",
+       "2026-11-26",
+       "2026-11-27",
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "中山",
+       "公假",
+       "比賽",
+       "#contest",
+       "#leave",
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-04-17",
+       "2026-11-26",
+       "2026-11-27",
+       "2026-12-03"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14940",
+   "title": "嘉義高級工業職業學校原訂辦理115學年度「阿里山鄒族跨文化體驗活動」取消及延期辦理",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14940",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11",
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11",
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14944",
+   "title": "學校辦理赴陸教育交流活動應注意事項及落實填報登錄平臺事宜",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14944",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgash-14945",
+   "title": "賀！本校學生參加嘉義縣115年中小學運動會榮獲佳績",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14945",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "sgash-14939",
+   "title": "賀！本校數音科技實驗班學生參加「嘉義縣廉政原創音樂徵選大賽」，榮獲「銀獎」殊榮",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14939",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "sgash-14937",
+   "title": "國立嘉義大學獸醫學系第十四屆獸醫營活動簡章",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14937",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
+  {
+   "id": "sgash-14938",
+   "title": "原住民族文化研習營(活動日期116/1/26~1/29)",
+   "date": "2026-11-05",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14938",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "sgash-14936",
    "title": "交通安全教育師資增能研習（含教育部磨課師線上課程）",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T11:24:29+08:00",
+ "generated_at": "2026-11-06T20:03:04+08:00",
  "school": {
   "id": "nehs",
   "name": "國立嘉科實驗高級中學",
@@ -8,6 +8,963 @@
   "base": "https://www.nehs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "nehs-4718",
+   "title": "轉知 : 「教育部臺灣台語語言能力認證」考試",
+   "date": "2026-11-06",
+   "source_category": "最新消息",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4718",
+   "category": "一般",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "考試",
+     "#exam"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4709",
+   "title": "【轉知】財團法人正覺教育基金會辦理生命教育教師研習「生命的圓滿——尋覓教師的春天」，歡迎教師踴躍報名參加！",
+   "date": "2026-11-06",
+   "source_category": "教師研習",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4709",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "8ad4384c047e90ba3c438d24d572190cf66f9b9c9a604724d6ef7a766727799e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "社會情緒學習",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "午餐",
+       "費用",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience",
+       "fee"
+      ],
+      "d": [
+       "2027-01-23",
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "社會情緒學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-23",
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "午餐",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4708",
+   "title": "【轉知】弘光科技大學辦理「香氣探索與樂齡關懷-高齡照顧體驗及職涯探索」活動，歡迎高中部同學踴躍報名參加！",
+   "date": "2026-11-06",
+   "source_category": "訊息轉知",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4708",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "037e72266a37a0a2d8c0a3a17dbbb2d0801c03fedf8b5590893f3bc1506d539a"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-17",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "037e72266a37a0a2d8c0a3a17dbbb2d0801c03fedf8b5590893f3bc1506d539a"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "弘光",
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "弘光",
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "弘光",
+       "午餐",
+       "費用",
+       "報名",
+       "生活",
+       "#safety",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience",
+       "fee"
+      ],
+      "d": [
+       "2027-01-23"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "弘光",
+       "網路",
+       "報名",
+       "截止",
+       "#contact"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2027-01-17",
+       "2027-01-18"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "required",
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-23"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "弘光",
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "午餐",
+       "費用",
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "生活",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-01-17"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-18"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "弘光",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4706",
+   "title": "【轉知】104人力銀行辦理「2026高中職公益教材徵稿競賽」，歡迎本校教師踴躍參與投稿！",
+   "date": "2026-11-06",
+   "source_category": "競賽活動",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4706",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-04",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "eabdd7dd5fb7d299dc72d09690cd5e304ba33275f2ef00a5879a1b23a87f3413"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "繳交",
+       "投影片",
+       "升學",
+       "#admission",
+       "#certificate",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-14",
+       "2026-12-31"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2027-01-11"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "繳交",
+       "投影片",
+       "升學",
+       "#admission",
+       "#certificate",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-14",
+       "2026-12-31"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2027-01-11"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4705",
+   "title": "【轉知】勞動部勞動力發展署編印「15歲以上未滿18歲少年就業資源寶典電子書」，歡迎有工讀或就業需求之同學下載運用！",
+   "date": "2026-11-06",
+   "source_category": "訊息轉知",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4705",
+   "category": "獎助學金",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#scholarship",
+       "#safety"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "家長",
+       "#admission"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "服儀",
+       "#admission",
+       "#scholarship",
+       "#event",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "申訴",
+       "霸凌",
+       "#safety",
+       "#contact",
+       "#appeal",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "輔導室",
+       "#scholarship",
+       "#contact"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#scholarship",
+       "#safety"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "家長",
+       "#admission"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "服儀",
+       "#admission",
+       "#scholarship",
+       "#event",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "申訴",
+       "霸凌",
+       "#safety",
+       "#contact",
+       "#appeal",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "輔導室",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4712",
+   "title": "「轉知」教育部國民及學前教育署委託國立高雄師範大學辦理「校園性教育（含性傳染病防治）計畫」之「『全面性教育』教師專業成長研習」，歡迎踴躍參加。",
+   "date": "2026-11-06",
+   "source_category": "訓練進修",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4712",
+   "category": "教職員",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "nehs-4702",
    "title": "【甄選】國立嘉科實驗高級中等學校 115學年度高中部第3次時薪制特殊教育學生助理員甄選公告",
@@ -20,8 +977,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -375,8 +1332,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -638,8 +1595,8 @@
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",

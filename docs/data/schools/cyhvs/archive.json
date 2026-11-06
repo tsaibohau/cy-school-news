@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T11:24:29+08:00",
+ "generated_at": "2026-11-06T20:03:04+08:00",
  "hot_cutoff": "2025-11-06",
  "school": {
   "id": "cyhvs",
@@ -8,6 +8,49 @@
   "short": "嘉義家職",
   "base": "https://www.cyhvs.cy.edu.tw"
  },
- "items": [],
+ "items": [
+  {
+   "id": "cyhvs-21182",
+   "title": "第55屆全國技能競賽南區分賽成績優異",
+   "date": "2025-04-02",
+   "source_category": "賀",
+   "school": "cyhvs",
+   "school_name": "嘉義家職",
+   "url": "https://www.cyhvs.cy.edu.tw/ischool/public/news_view/show.php?nid=21182",
+   "category": "競賽",
+   "first_seen": "2026-11-06T20:03:04+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-04-02"
+      ]
+     }
+    ]
+   }
+  }
+ ],
  "content_access": "approved-account-required"
 }

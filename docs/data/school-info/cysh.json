@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-06T11:38:10+08:00",
+ "generated_at": "2026-11-06T20:23:01+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -6926,11 +6926,83 @@
   },
   "978": {
    "page_id": 978,
-   "status": "pending"
+   "status": "announcement_list",
+   "checked_at": "2026-11-06T20:22:58+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "教務組",
+    "最新消息"
+   ]
   },
   "981": {
    "page_id": 981,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-06T20:23:00+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "出納組",
+    "關於出納組",
+    "工作內容"
+   ],
+   "changed_at": "2026-11-06T20:23:00+08:00",
+   "content_hash": "a60ecc51ad0137575522043d1a21ebf90a3c938d100acf9af9404f048e60daeb",
+   "doc_links": [],
+   "keywords": [
+    "收費",
+    "放學",
+    "獎學金",
+    "登記"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-981.json",
+   "detail_revision": "48b36f70ce2f99efd037ef5d6dbf5aa7563e6a5161ce25f00df6c11c25609aa1",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "獎學金",
+       "放學",
+       "費用",
+       "#scholarship",
+       "#daily_schedule"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "982": {
    "page_id": 982,
@@ -34737,6 +34809,71 @@
    }
   },
   {
+   "id": "cysh-info-981",
+   "kind": "school_info",
+   "title": "出納組 › 關於出納組 › 工作內容",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-981.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "收費",
+    "放學",
+    "獎學金",
+    "登記"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-981.json",
+   "detail_revision": "48b36f70ce2f99efd037ef5d6dbf5aa7563e6a5161ce25f00df6c11c25609aa1",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "獎學金",
+       "放學",
+       "費用",
+       "#scholarship",
+       "#daily_schedule"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-992",
    "kind": "school_info",
    "title": "總務處 › 出納組 › 關於出納組",
@@ -55255,5 +55392,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-06T11:38:10+08:00"
+ "last_run_at": "2026-11-06T20:23:01+08:00"
 }
