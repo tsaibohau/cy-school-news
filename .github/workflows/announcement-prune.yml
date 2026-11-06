@@ -21,6 +21,10 @@ on:
         description: "整理時最多讀幾個附件 PDF（上限 60）"
         required: false
         default: "30"
+      retry_failed:
+        description: "讀不到內文的過期公告再讀一次，仍失敗就移除：1＝執行"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -50,6 +54,7 @@ jobs:
           RECHECK_CAP: ${{ github.event.inputs.recheck }}
           CONDENSE_CAP: ${{ github.event.inputs.condense }}
           ATTACHMENT_PDF_CAP: ${{ github.event.inputs.pdfs }}
+          RETRY_FAILED: ${{ github.event.inputs.retry_failed }}
         run: python scraper/announcement_prune.py
 
       - name: 過期公告改成整理版（不含時間）

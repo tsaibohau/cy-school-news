@@ -45,4 +45,10 @@ pool = [{"id": "a", "school": "cysh", "url": "u", "detail_status": "parsed", "da
         {"id": "c", "school": "pksh", "url": "u", "detail_status": "parsed", "date": "2025-01-01"},
         {"id": "d", "school": "cygsh", "url": "u", "detail_status": "parsed", "date": "2025-01-01", "link_missing_checks": 1}]
 assert [i["id"] for i in p.condense_targets(pool, today, 10)] == ["a"]
+# RETRY_FAILED: only expired 嘉中、嘉女 notices whose page could not be read get the second try.
+failed = [{"id": "f1", "school": "cysh", "url": "u", "detail_status": "temporary_error", "date": "2025-01-01"},
+          {"id": "f2", "school": "cysh", "url": "u", "detail_status": "temporary_error", "date": today},
+          {"id": "f3", "school": "pksh", "url": "u", "detail_status": "temporary_error", "date": "2025-01-01"},
+          {"id": "f4", "school": "cygsh", "url": "u", "detail_status": "parsed", "date": "2025-01-01"}]
+assert [i["id"] for i in p.retry_targets(failed, today)] == ["f1"]
 print("announcement prune tests passed")
