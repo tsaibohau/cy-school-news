@@ -417,8 +417,8 @@
    "first_seen": "2026-11-06T08:06:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -517,8 +517,8 @@
    "first_seen": "2026-11-06T08:06:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -3829,8 +3829,8 @@
    "first_seen": "2026-11-05T20:15:32+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -13898,8 +13898,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -16034,8 +16034,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -26472,8 +26472,8 @@
    "first_seen": "2026-11-05T16:20:39+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -74698,645 +74698,6 @@
    }
   },
   {
-   "id": "cygsh-187109",
-   "title": "115-1 11/4 高三英閱期中考",
-   "date": "2026-11-03",
-   "source_category": "考試訊息",
-   "school": "cygsh",
-   "school_name": "嘉女",
-   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187109,r11.php",
-   "category": "段考考試",
-   "first_seen": "2026-11-03T11:55:01+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 2,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "audience": {
-    "grades": [
-     3
-    ],
-    "classes": [],
-    "all_school": false
-   },
-   "tokens": {
-    "v": 1,
-    "title": [
-     "期中考",
-     "#midterm"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "期中考",
-       "#midterm"
-      ],
-      "k": [
-       "time",
-       "audience"
-      ],
-      "d": [
-       "2026-11-04"
-      ],
-      "g": [
-       3
-      ]
-     },
-     {
-      "s": 1,
-      "t": [
-       "考程表",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 3,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "penalty",
-       "allow"
-      ]
-     },
-     {
-      "s": 4,
-      "t": [
-       "#certificate"
-      ],
-      "k": []
-     },
-     {
-      "s": 5,
-      "t": [
-       "手機",
-       "#device"
-      ],
-      "k": [
-       "place"
-      ]
-     },
-     {
-      "s": 6,
-      "t": [
-       "記過"
-      ],
-      "k": [
-       "penalty",
-       "deny"
-      ]
-     },
-     {
-      "s": 7,
-      "t": [
-       "段考",
-       "補考",
-       "請假",
-       "考試",
-       "#exam",
-       "#makeup",
-       "#leave"
-      ],
-      "k": [
-       "penalty"
-      ]
-     },
-     {
-      "s": 8,
-      "t": [
-       "請假",
-       "公假",
-       "考試",
-       "#exam",
-       "#leave"
-      ],
-      "k": []
-     },
-     {
-      "s": 9,
-      "t": [
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 10,
-      "t": [
-       "考試",
-       "大考",
-       "#exam",
-       "#enrollment"
-      ],
-      "k": [
-       "deny"
-      ]
-     },
-     {
-      "s": 11,
-      "t": [
-       "手機",
-       "考試",
-       "#exam",
-       "#contact"
-      ],
-      "k": [
-       "penalty",
-       "place",
-       "contact"
-      ]
-     },
-     {
-      "s": 12,
-      "t": [
-       "手機",
-       "考試",
-       "#exam",
-       "#contact"
-      ],
-      "k": [
-       "penalty",
-       "contact"
-      ]
-     },
-     {
-      "s": 13,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "deny"
-      ]
-     },
-     {
-      "s": 14,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "penalty",
-       "deny"
-      ]
-     },
-     {
-      "s": 15,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "penalty"
-      ]
-     },
-     {
-      "s": 16,
-      "t": [
-       "導師"
-      ],
-      "k": [
-       "method",
-       "allow"
-      ]
-     },
-     {
-      "s": 17,
-      "t": [
-       "手機",
-       "記過",
-       "#contact"
-      ],
-      "k": [
-       "penalty",
-       "contact"
-      ]
-     },
-     {
-      "s": 18,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "penalty",
-       "deny"
-      ]
-     },
-     {
-      "s": 19,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 20,
-      "t": [
-       "期中考",
-       "#exam",
-       "#midterm"
-      ],
-      "k": [
-       "audience"
-      ],
-      "g": [
-       3
-      ]
-     },
-     {
-      "s": 21,
-      "t": [
-       "期中考",
-       "#midterm"
-      ],
-      "k": [
-       "audience"
-      ],
-      "g": [
-       3
-      ]
-     },
-     {
-      "s": 22,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-11-04"
-      ]
-     },
-     {
-      "s": 23,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 24,
-      "t": [
-       "考程表",
-       "考試",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 25,
-      "t": [
-       "課表",
-       "考試",
-       "#exam",
-       "#course"
-      ],
-      "k": []
-     },
-     {
-      "s": 26,
-      "t": [
-       "作息",
-       "#daily_schedule"
-      ],
-      "k": []
-     },
-     {
-      "s": 27,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-11-04"
-      ]
-     },
-     {
-      "s": 28,
-      "t": [
-       "教務處",
-       "繳交",
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "time",
-       "method"
-      ]
-     },
-     {
-      "s": 30,
-      "t": [
-       "教務處",
-       "考試",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 31,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "penalty",
-       "allow"
-      ]
-     },
-     {
-      "s": 32,
-      "t": [
-       "#certificate"
-      ],
-      "k": []
-     },
-     {
-      "s": 33,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 35,
-      "t": [
-       "手機",
-       "#device"
-      ],
-      "k": [
-       "place"
-      ]
-     },
-     {
-      "s": 36,
-      "t": [
-       "記過"
-      ],
-      "k": [
-       "penalty",
-       "deny"
-      ]
-     },
-     {
-      "s": 37,
-      "t": [
-       "段考",
-       "請假",
-       "考試",
-       "#exam",
-       "#leave"
-      ],
-      "k": []
-     },
-     {
-      "s": 38,
-      "t": [
-       "補考",
-       "考試",
-       "#exam",
-       "#makeup"
-      ],
-      "k": [
-       "penalty"
-      ]
-     },
-     {
-      "s": 39,
-      "t": [
-       "請假",
-       "公假",
-       "#leave"
-      ],
-      "k": []
-     },
-     {
-      "s": 40,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 41,
-      "t": [
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 42,
-      "t": [
-       "考試",
-       "大考",
-       "#exam",
-       "#enrollment"
-      ],
-      "k": [
-       "deny"
-      ]
-     },
-     {
-      "s": 43,
-      "t": [
-       "手機",
-       "考試",
-       "#exam",
-       "#contact"
-      ],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 44,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "place"
-      ]
-     },
-     {
-      "s": 45,
-      "t": [],
-      "k": [
-       "penalty"
-      ]
-     },
-     {
-      "s": 46,
-      "t": [
-       "手機",
-       "考試",
-       "#exam",
-       "#contact"
-      ],
-      "k": [
-       "penalty",
-       "contact"
-      ]
-     },
-     {
-      "s": 47,
-      "t": [],
-      "k": [
-       "deny"
-      ]
-     },
-     {
-      "s": 48,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 49,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "deny"
-      ]
-     },
-     {
-      "s": 50,
-      "t": [],
-      "k": [
-       "penalty"
-      ]
-     },
-     {
-      "s": 52,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "penalty"
-      ]
-     },
-     {
-      "s": 53,
-      "t": [
-       "導師"
-      ],
-      "k": [
-       "method",
-       "allow"
-      ]
-     },
-     {
-      "s": 55,
-      "t": [
-       "手機",
-       "記過",
-       "#contact"
-      ],
-      "k": [
-       "penalty",
-       "contact"
-      ]
-     },
-     {
-      "s": 56,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": [
-       "penalty",
-       "deny"
-      ]
-     },
-     {
-      "s": 57,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 58,
-      "t": [
-       "考試",
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 60,
-      "t": [
-       "#exam"
-      ],
-      "k": []
-     },
-     {
-      "s": 62,
-      "t": [],
-      "k": [
-       "audience"
-      ],
-      "g": [
-       3
-      ]
-     },
-     {
-      "s": 66,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-11-04"
-      ]
-     },
-     {
-      "s": 67,
-      "t": [],
-      "k": [
-       "audience"
-      ],
-      "g": [
-       3
-      ]
-     },
-     {
-      "s": 68,
-      "t": [],
-      "k": [
-       "time"
-      ]
-     },
-     {
-      "s": 71,
-      "t": [],
-      "k": [
-       "time"
-      ]
-     }
-    ]
-   }
-  },
-  {
    "id": "cygsh-187114",
    "title": "【重修成績查詢】高二、三重修成績開放查詢(第三梯次)",
    "date": "2026-11-03",
@@ -114825,45 +114186,6 @@
    }
   },
   {
-   "id": "cygsh-187066",
-   "title": "【轉知】「從地方出發，與世界接軌——桃園智慧與永續觀光的創新實踐」專題演講",
-   "date": "2026-10-30",
-   "source_category": "最新消息",
-   "school": "cygsh",
-   "school_name": "嘉女",
-   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187066,r508.php",
-   "category": "研習活動",
-   "first_seen": "2026-10-30T10:34:25+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 3,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "tokens": {
-    "v": 1,
-    "title": [
-     "#event"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "報名"
-      ],
-      "k": [
-       "time",
-       "place",
-       "method"
-      ],
-      "d": [
-       "2026-11-04"
-      ]
-     }
-    ]
-   }
-  },
-  {
    "id": "cygsh-187069",
    "title": "【轉知】2027視覺藝術與設計新思維學術研討會",
    "date": "2026-10-30",
@@ -119691,41 +119013,6 @@
      "#enrollment"
     ],
     "segments": []
-   }
-  },
-  {
-   "id": "cysh-137038",
-   "title": "嘉義縣立竹崎高級中學辦理「概念為本的探究式教學：高中英語文課程設計與實踐 Part 1」研習",
-   "date": "2026-10-29",
-   "source_category": "研習活動",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137038,r14.php",
-   "category": "研習活動",
-   "first_seen": "2026-10-29T17:52:57+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 3,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "tokens": {
-    "v": 1,
-    "title": [
-     "#event"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "#event"
-      ],
-      "k": [],
-      "d": [
-       "2026-10-29"
-      ]
-     }
-    ]
    }
   },
   {
@@ -142970,199 +142257,6 @@
    }
   },
   {
-   "id": "cygsh-186994",
-   "title": "【轉知】國家海洋研究院（下稱國海院）訂於115年11月4日假 大臺南會展中心辦理新建置之「海洋素養及海洋職能數位 平臺（TODA）」上線發布會，請查照。",
-   "date": "2026-10-22",
-   "source_category": "最新消息",
-   "school": "cygsh",
-   "school_name": "嘉女",
-   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186994,r508.php",
-   "category": "教職員",
-   "first_seen": "2026-10-22T09:28:45+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 4,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "tokens": {
-    "v": 1,
-    "title": [],
-    "segments": [
-     {
-      "s": 94,
-      "t": [
-       "#campus_map"
-      ],
-      "k": []
-     },
-     {
-      "s": 96,
-      "t": [],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 97,
-      "t": [
-       "#contact"
-      ],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 98,
-      "t": [],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 103,
-      "t": [
-       "截止"
-      ],
-      "k": [
-       "deadline"
-      ]
-     },
-     {
-      "s": 116,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-10-12"
-      ]
-     },
-     {
-      "s": 216,
-      "t": [
-       "#campus_map"
-      ],
-      "k": []
-     },
-     {
-      "s": 217,
-      "t": [],
-      "k": [
-       "place"
-      ]
-     },
-     {
-      "s": 219,
-      "t": [
-       "#contact"
-      ],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 220,
-      "t": [
-       "#contact"
-      ],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 226,
-      "t": [
-       "截止"
-      ],
-      "k": [
-       "deadline"
-      ]
-     },
-     {
-      "s": 228,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-11-04"
-      ]
-     },
-     {
-      "s": 234,
-      "t": [
-       "報名"
-      ],
-      "k": []
-     },
-     {
-      "s": 237,
-      "t": [],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 240,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-11-04"
-      ]
-     },
-     {
-      "s": 343,
-      "t": [
-       "報名"
-      ],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 344,
-      "t": [],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 346,
-      "t": [
-       "公假"
-      ],
-      "k": []
-     },
-     {
-      "s": 348,
-      "t": [],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 355,
-      "t": [
-       "社團",
-       "#club"
-      ],
-      "k": []
-     },
-     {
-      "s": 356,
-      "t": [
-       "社團",
-       "#club"
-      ],
-      "k": []
-     }
-    ]
-   }
-  },
-  {
    "id": "hyivs-6459",
    "title": "陸軍軍官學校招募資訊",
    "date": "2026-10-21",
@@ -149872,117 +148966,6 @@
    }
   },
   {
-   "id": "cygsh-186952",
-   "title": "【教師研習】AI 賦能教學與行政—Codex 實戰應用工作坊",
-   "date": "2026-10-19",
-   "source_category": "研習活動",
-   "school": "cygsh",
-   "school_name": "嘉女",
-   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186952,r548.php",
-   "category": "教職員",
-   "first_seen": "2026-10-30T00:54:05+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 3,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "tokens": {
-    "v": 1,
-    "title": [
-     "#event"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "公假",
-       "報名",
-       "#leave",
-       "#contact"
-      ],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 1,
-      "t": [
-       "#event"
-      ],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 2,
-      "t": [],
-      "k": [
-       "time",
-       "method"
-      ],
-      "d": [
-       "2026-10-21",
-       "2026-10-28",
-       "2026-11-04"
-      ]
-     },
-     {
-      "s": 3,
-      "t": [],
-      "k": [
-       "time",
-       "place",
-       "method",
-       "allow"
-      ]
-     },
-     {
-      "s": 5,
-      "t": [],
-      "k": [
-       "audience"
-      ]
-     },
-     {
-      "s": 6,
-      "t": [
-       "報名",
-       "截止"
-      ],
-      "k": [
-       "deadline",
-       "required",
-       "method"
-      ]
-     },
-     {
-      "s": 7,
-      "t": [
-       "公假"
-      ],
-      "k": []
-     },
-     {
-      "s": 8,
-      "t": [
-       "#event"
-      ],
-      "k": []
-     },
-     {
-      "s": 9,
-      "t": [
-       "#contact"
-      ],
-      "k": [
-       "contact"
-      ]
-     }
-    ]
-   }
-  },
-  {
    "id": "cygsh-186961",
    "title": "【教師研習】115 學年度國教署「發現天生科學家」推廣研習系列",
    "date": "2026-10-19",
@@ -152062,41 +151045,6 @@
    }
   },
   {
-   "id": "cysh-136929",
-   "title": "新北市私立徐匯高級中學辦理「AI 賦能教學與行政—Codex 實戰應用工作坊」",
-   "date": "2026-10-19",
-   "source_category": "研習活動",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-136929,r14.php",
-   "category": "研習活動",
-   "first_seen": "2026-10-19T15:43:37+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 2,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "tokens": {
-    "v": 1,
-    "title": [
-     "#event"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "#event"
-      ],
-      "k": [],
-      "d": [
-       "2026-10-19"
-      ]
-     }
-    ]
-   }
-  },
-  {
    "id": "cysh-136925",
    "title": "國立嘉義女子高級中學辦理「高中核心古文與SEL融合教學」教師增能工作坊",
    "date": "2026-10-19",
@@ -152804,74 +151752,6 @@
        "報名"
       ],
       "k": []
-     }
-    ]
-   }
-  },
-  {
-   "id": "cysh-136917",
-   "title": "115學年度資訊安全議題講座",
-   "date": "2026-10-19",
-   "source_category": "研習活動",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-136917,r14.php",
-   "category": "研習活動",
-   "first_seen": "2026-10-19T09:13:06+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 2,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2026-11-01",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "9f245d229407fec743748bc52fbc39aac29b43b9c83dcb350d39bd4677e57cb1"
-    }
-   ],
-   "tokens": {
-    "v": 1,
-    "title": [
-     "#safety",
-     "#event"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "#safety",
-       "#event"
-      ],
-      "k": []
-     },
-     {
-      "s": 2,
-      "t": [
-       "報名"
-      ],
-      "k": [
-       "time",
-       "method"
-      ],
-      "d": [
-       "2026-11-03"
-      ]
-     },
-     {
-      "s": 3,
-      "t": [
-       "報名"
-      ],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2026-11-01"
-      ]
      }
     ]
    }
@@ -159251,41 +158131,6 @@
    }
   },
   {
-   "id": "cysh-136903",
-   "title": "桃園市立陽明高級中等學校辦理「情緒解碼，數位有感」跨校社群增能研習",
-   "date": "2026-10-14",
-   "source_category": "研習活動",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-136903,r14.php",
-   "category": "研習活動",
-   "first_seen": "2026-10-14T15:33:50+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 2,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "tokens": {
-    "v": 1,
-    "title": [
-     "#event"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "#event"
-      ],
-      "k": [],
-      "d": [
-       "2026-10-14"
-      ]
-     }
-    ]
-   }
-  },
-  {
    "id": "cysh-136900",
    "title": "臺北市立育成高級中學辦理「名畫大作戰——印象派光影與沙龍」桌遊體驗暨手作工作坊",
    "date": "2026-10-14",
@@ -159312,41 +158157,6 @@
        "#event"
       ],
       "k": []
-     }
-    ]
-   }
-  },
-  {
-   "id": "cysh-136899",
-   "title": "國立臺南第一高級中學辦理115學年度新興科技計畫「IBM AI 應用工作坊」",
-   "date": "2026-10-14",
-   "source_category": "研習活動",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-136899,r14.php",
-   "category": "研習活動",
-   "first_seen": "2026-10-14T15:33:50+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 2,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "tokens": {
-    "v": 1,
-    "title": [
-     "#event"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "#event"
-      ],
-      "k": [],
-      "d": [
-       "2026-10-14"
-      ]
      }
     ]
    }
@@ -193144,82 +191954,6 @@
    }
   },
   {
-   "id": "cysh-136630",
-   "title": "國立體育大學116學年度學士班特殊選才招生資訊",
-   "date": "2026-09-15",
-   "source_category": "升學資訊",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-136630,r386.php",
-   "category": "升學",
-   "first_seen": "2026-09-15T21:30:37+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 2,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2026-09-21",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "3f5e7c616927f70adeaf64da7f4fe9041fdec2e9eaf90306cd5b9df7e7f799fc"
-    }
-   ],
-   "tokens": {
-    "v": 1,
-    "title": [
-     "特殊選才",
-     "#admission",
-     "#enrollment"
-    ],
-    "segments": [
-     {
-      "s": 1,
-      "t": [
-       "游泳課"
-      ],
-      "k": []
-     },
-     {
-      "s": 4,
-      "t": [
-       "網路",
-       "報名"
-      ],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2026-09-21",
-       "2026-11-03"
-      ]
-     },
-     {
-      "s": 5,
-      "t": [
-       "報名"
-      ],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 6,
-      "t": [
-       "#enrollment"
-      ],
-      "k": [
-       "fee",
-       "method"
-      ]
-     }
-    ]
-   }
-  },
-  {
    "id": "cysh-136625",
    "title": "長榮大學116學年度辦理特殊選才招生資訊及宣傳海報",
    "date": "2026-09-15",
@@ -208499,155 +207233,6 @@
    }
   },
   {
-   "id": "cysh-136524",
-   "title": "南臺科技大學流行音樂產業系辦理第十屆『南臺獅吼』流行音樂大賽",
-   "date": "2026-09-03",
-   "source_category": "校外訊息",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-136524,r13.php",
-   "category": "競賽",
-   "first_seen": "2026-09-03T13:06:33+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 2,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2026-11-04",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "0fa4eefdb5aa4f8a57a025276f8ced8e30bc47ca6c88b4b8f2438f554397a178"
-    }
-   ],
-   "audience": {
-    "grades": [
-     3
-    ],
-    "classes": [],
-    "all_school": false
-   },
-   "tokens": {
-    "v": 1,
-    "title": [],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "#contest"
-      ],
-      "k": []
-     },
-     {
-      "s": 1,
-      "t": [
-       "報名"
-      ],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2026-11-04"
-      ],
-      "g": [
-       3
-      ]
-     },
-     {
-      "s": 96,
-      "t": [
-       "#campus_map"
-      ],
-      "k": []
-     },
-     {
-      "s": 97,
-      "t": [],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 98,
-      "t": [
-       "#contact"
-      ],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 99,
-      "t": [],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 104,
-      "t": [
-       "截止"
-      ],
-      "k": [
-       "deadline"
-      ]
-     },
-     {
-      "s": 107,
-      "t": [
-       "報名"
-      ],
-      "k": []
-     },
-     {
-      "s": 112,
-      "t": [
-       "#contest"
-      ],
-      "k": []
-     },
-     {
-      "s": 113,
-      "t": [
-       "報名"
-      ],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2026-11-04"
-      ]
-     },
-     {
-      "s": 115,
-      "t": [
-       "報名"
-      ],
-      "k": []
-     },
-     {
-      "s": 116,
-      "t": [
-       "#contest"
-      ],
-      "k": [
-       "required"
-      ]
-     },
-     {
-      "s": 117,
-      "t": [
-       "報名"
-      ],
-      "k": []
-     }
-    ]
-   }
-  },
-  {
    "id": "cygsh-186450",
    "title": "【轉知】升讀大學之考試、招生資訊網站",
    "date": "2026-09-03",
@@ -209145,69 +207730,6 @@
       ],
       "k": [
        "contact"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "cygsh-186440",
-   "title": "【轉知】南臺科技大學流行音樂產業系辦理第十屆『南臺獅吼』流行音樂大賽",
-   "date": "2026-09-03",
-   "source_category": "學務處公告",
-   "school": "cygsh",
-   "school_name": "嘉女",
-   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-186440,r740.php",
-   "category": "競賽",
-   "first_seen": "2026-09-03T08:35:13+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 2,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "audience": {
-    "grades": [
-     3
-    ],
-    "classes": [],
-    "all_school": false
-   },
-   "tokens": {
-    "v": 1,
-    "title": [],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "#contest"
-      ],
-      "k": []
-     },
-     {
-      "s": 1,
-      "t": [
-       "報名"
-      ],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2026-11-04"
-      ],
-      "g": [
-       3
-      ]
-     },
-     {
-      "s": 2,
-      "t": [
-       "報名",
-       "#contest"
-      ],
-      "k": [
-       "required"
       ]
      }
     ]
@@ -219058,75 +217580,6 @@
        "#contest",
        "#contact"
       ],
-      "k": [
-       "contact"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "cysh-136348",
-   "title": "朝陽科技大學「2026全國賣吶炬達人創新行銷競 賽－高中職組」",
-   "date": "2026-08-26",
-   "source_category": "校外訊息",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-136348,r13.php",
-   "category": "一般",
-   "first_seen": "2026-08-26T11:37:23+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 2,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T19:13:43+08:00",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2026-11-04",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "33f5e84386f63374c2439bf527afb4feee9946b89ca74bd32acfc181087697f8"
-    }
-   ],
-   "tokens": {
-    "v": 1,
-    "title": [
-     "#contest"
-    ],
-    "segments": [
-     {
-      "s": 1,
-      "t": [
-       "小論文",
-       "#contest"
-      ],
-      "k": []
-     },
-     {
-      "s": 2,
-      "t": [
-       "報名",
-       "截止"
-      ],
-      "k": [
-       "deadline",
-       "time"
-      ],
-      "d": [
-       "2026-11-04"
-      ]
-     },
-     {
-      "s": 3,
-      "t": [],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 4,
-      "t": [],
       "k": [
        "contact"
       ]
@@ -352198,9 +350651,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -352239,9 +350692,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -352443,9 +350896,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -352541,9 +350994,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -352573,9 +351026,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "event",
@@ -352740,9 +351193,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -352820,9 +351273,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -353400,9 +351853,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -353518,9 +351971,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -353562,9 +352015,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -353723,9 +352176,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -353874,9 +352327,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -353915,9 +352368,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -353958,9 +352411,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -354237,9 +352690,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -354332,9 +352785,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -354378,9 +352831,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -354461,9 +352914,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -354600,9 +353053,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -354689,9 +353142,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "audience": {
     "grades": [
      3
@@ -354785,9 +353238,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -354860,9 +353313,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -355016,9 +353469,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -355075,9 +353528,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -355246,9 +353699,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -374893,340 +373346,6 @@
       ],
       "k": [
        "audience"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "cysh-133583",
-   "title": "114學年度普通型高級中等學校數理及資訊學科能力競賽-國教署負責區第3區 颱風應變預案與影響說明",
-   "date": "2025-11-10",
-   "source_category": "最新消息",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133583,r140.php",
-   "category": "競賽",
-   "first_seen": "2026-08-11T14:33:34+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 3,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T18:28:12+08:00",
-   "tokens": {
-    "v": 1,
-    "title": [
-     "#contest",
-     "#safety"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "#contest",
-       "#safety"
-      ],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-11-10",
-       "2025-11-11",
-       "2025-11-12"
-      ]
-     },
-     {
-      "s": 1,
-      "t": [
-       "#contest",
-       "#safety"
-      ],
-      "k": []
-     },
-     {
-      "s": 2,
-      "t": [
-       "颱風假",
-       "#certificate",
-       "#safety"
-      ],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-11-11",
-       "2025-11-12"
-      ]
-     },
-     {
-      "s": 4,
-      "t": [
-       "#safety"
-      ],
-      "k": [
-       "method"
-      ]
-     },
-     {
-      "s": 5,
-      "t": [
-       "颱風假",
-       "#contest",
-       "#safety"
-      ],
-      "k": []
-     },
-     {
-      "s": 6,
-      "t": [
-       "颱風假",
-       "考程表",
-       "#exam",
-       "#safety"
-      ],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-11-11",
-       "2025-11-12",
-       "2025-11-14"
-      ]
-     },
-     {
-      "s": 7,
-      "t": [
-       "颱風假",
-       "#contest",
-       "#safety"
-      ],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-11-13",
-       "2025-11-14",
-       "2025-11-15"
-      ]
-     },
-     {
-      "s": 8,
-      "t": [
-       "颱風假",
-       "#contest",
-       "#safety"
-      ],
-      "k": []
-     },
-     {
-      "s": 9,
-      "t": [
-       "報名",
-       "#enrollment"
-      ],
-      "k": []
-     },
-     {
-      "s": 10,
-      "t": [],
-      "k": [
-       "allow"
-      ]
-     },
-     {
-      "s": 11,
-      "t": [
-       "颱風假",
-       "#contest",
-       "#safety"
-      ],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 12,
-      "t": [
-       "教務處",
-       "#contact"
-      ],
-      "k": [
-       "method",
-       "contact"
-      ]
-     },
-     {
-      "s": 13,
-      "t": [
-       "教務處",
-       "#contest"
-      ],
-      "k": []
-     },
-     {
-      "s": 14,
-      "t": [
-       "颱風假",
-       "#contest",
-       "#safety"
-      ],
-      "k": [
-       "contact"
-      ]
-     },
-     {
-      "s": 15,
-      "t": [
-       "颱風假",
-       "#safety"
-      ],
-      "k": []
-     }
-    ]
-   }
-  },
-  {
-   "id": "cysh-133595",
-   "title": "📢114-2高一高二多元選修大綱與選課公告",
-   "date": "2025-11-10",
-   "source_category": "多元選修",
-   "school": "cysh",
-   "school_name": "嘉中",
-   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133595,r320.php",
-   "category": "選課",
-   "first_seen": "2026-08-11T14:33:34+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 3,
-   "snippet_tried": true,
-   "summary_version": "extractive-v4",
-   "link_missing_checks": 1,
-   "link_missing_at": "2026-11-05T18:28:12+08:00",
-   "calendar_events": [
-    {
-     "kind": "deadline",
-     "date": "2025-12-01",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "f15d761871153c097d557ac7f1e8086eaac97814764f0bcda944a19fe8ca1420"
-    },
-    {
-     "kind": "deadline",
-     "date": "2025-12-29",
-     "provenance": "verified_announcement_deadline",
-     "source_revision": "f15d761871153c097d557ac7f1e8086eaac97814764f0bcda944a19fe8ca1420"
-    }
-   ],
-   "audience": {
-    "grades": [
-     1,
-     2
-    ],
-    "classes": [],
-    "all_school": false
-   },
-   "tokens": {
-    "v": 1,
-    "title": [
-     "多元選修",
-     "選課",
-     "#course",
-     "#elective"
-    ],
-    "segments": [
-     {
-      "s": 0,
-      "t": [
-       "多元選修",
-       "#elective"
-      ],
-      "k": [
-       "audience"
-      ],
-      "g": [
-       1,
-       2
-      ]
-     },
-     {
-      "s": 1,
-      "t": [],
-      "k": [
-       "audience"
-      ],
-      "g": [
-       1,
-       2
-      ]
-     },
-     {
-      "s": 2,
-      "t": [
-       "選課",
-       "#course"
-      ],
-      "k": [
-       "time",
-       "method",
-       "allow"
-      ],
-      "d": [
-       "2025-11-12",
-       "2025-12-01"
-      ]
-     },
-     {
-      "s": 3,
-      "t": [
-       "選課",
-       "#course"
-      ],
-      "k": [
-       "method",
-       "deny"
-      ]
-     },
-     {
-      "s": 4,
-      "t": [
-       "繳交"
-      ],
-      "k": []
-     },
-     {
-      "s": 5,
-      "t": [],
-      "k": [
-       "time"
-      ],
-      "d": [
-       "2025-12-22"
-      ]
-     },
-     {
-      "s": 6,
-      "t": [
-       "選課",
-       "志願",
-       "#admission",
-       "#course"
-      ],
-      "k": [
-       "time",
-       "method",
-       "allow"
-      ],
-      "d": [
-       "2025-12-24",
-       "2025-12-29"
-      ]
-     },
-     {
-      "s": 7,
-      "t": [
-       "#admission"
-      ],
-      "k": [
-       "method"
       ]
      }
     ]
