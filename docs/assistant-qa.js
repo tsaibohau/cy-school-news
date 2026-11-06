@@ -49,6 +49,8 @@
     if (OFFICE_CONTACT.test(query) && !/學生|同學|老師的|[\u4e00-\u9fff]{2,3}的電話/.test(query.replace(/(?:處|室|組|館|中心)的電話/, ""))) return false;
     if (!PERSONAL_DATA_QUERY.test(query)) return false;
     if (SCHEDULE_ASK.test(query) && !ASKS_RECORD_ITSELF.test(query)) return false;
+    /* 「重修第三梯次成績」: grades named without asking for anyone's own record point to the notice about them. */
+    if (!ASKS_RECORD_ITSELF.test(query) && !PERSONAL_DATA_QUERY.test(query.replace(/成績/g, ""))) return false;
     if (RECORD_ONLY.test(query)) return true;
     /* 「期中考成績」「模擬考成績」 ask when results come out, not for someone's record. */
     if (EXAM_RESULTS.test(query) && !PERSON_TARGET.test(query.replace(EXAM_RESULTS, "成績"))) return false;
@@ -451,9 +453,11 @@
      hundreds of unrelated notices. When the question also names something specific (a school or
      organisation such as 真理, a subject such as 旅遊 or 電競), a candidate has to contain at least
      one of those specific pieces, or one of its synonyms (亞大 = 亞洲大學), or it cannot be the answer. */
-  var GATE_STRIP = ["國立", "私立", "科技大學", "大學", "學院", "特殊選才", "營隊", "說明會", "簡章", "工作坊", "演講", "展覽", "招生", "徵選", "徵稿", "徵文", "研討會", "座談會", "體驗營", "登記", "參加", "查詢", "領取", "借用", "培訓", "座談", "實施", "計畫", "辦法", "開放日", "Open Day", "Open House", "線上課", "線上課程", "公開課",
+  var GATE_STRIP = ["國立", "私立", "科技大學", "大學", "學院", "特殊選才", "營隊", "說明會", "簡章", "工作坊", "演講", "展覽", "招生", "徵選", "徵稿", "徵文", "研討會", "座談會", "體驗營", "碩士", "在職", "專班", "碩專", "博士", "學士班", "研究所", "學系", "系所", "英語", "英文", "數學", "國文", "教學", "教師", "高中", "高職", "學習", "設計", "登記", "參加", "查詢", "領取", "借用", "培訓", "座談", "實施", "計畫", "辦法", "開放日", "Open Day", "Open House", "線上課", "線上課程", "公開課",
     "什麼時候", "哪一天", "哪天", "幾號", "幾月", "哪裡", "在哪", "怎麼", "如何", "多少", "可以", "有沒有", "是不是", "要不要", "舉辦", "辦理", "舉行", "相關", "資訊", "報考", "入學", "類的", "有關",
     "請問", "我想知道", "想知道", "怎樣", "是否", "還有", "哪些", "有什麼", "什麼", "開放", "名額"];
+  /* A degree program or department (中文系碩士在職專班) is named in the notice's title, not in a list inside it. */
+  var PROGRAM_ASK = /碩士|碩專|在職專班|學士班|研究所|學系/;
   function gateWords(query) {
     var value = compact(String(query || "").replace(YEAR_WORD, " "));
     /* Known multi-character terms (學生證) are kept whole even when they contain a generic word (學生). */
@@ -486,12 +490,16 @@
   /* The units a question is specific about. A unit is a list of ways to write one thing: a known term
      with its synonyms (亞大 = 亞洲大學), or one two-character piece. */
   function gateUnits(query, stats) {
-    var units = [], must = [], genericForms = GATE_STRIP.concat(ALWAYS_GENERIC).map(compact);
+    if (stats && stats.n < MIN_STATS_ITEMS) stats = null;   // too few notices to tell common words from specific ones
+    var units = [], must = [], leftovers = [], unknownPieces = [], chain = [], droppedKnown = false, genericForms = GATE_STRIP.concat(ALWAYS_GENERIC).map(compact);
     function add(forms) {
       forms = unique(forms.map(compact).filter(function (f) { return f.length >= 2 && (!/^[a-z0-9]+$/.test(f) || f.length >= 3); }));
       /* A concept that is itself a kind of activity (特殊選才 = 特選) decides nothing. */
       if (!forms.length || forms.some(function (f) { return genericForms.indexOf(f) !== -1; })) return;
-      if (!units.some(function (u) { return u.join() === forms.join(); })) units.push(forms);
+      /* Units that share a way of writing it (服務時數 / 志工) are one thing. */
+      var twin = units.filter(function (u) { return u.some(function (f) { return forms.indexOf(f) !== -1; }); })[0];
+      if (twin) forms.forEach(function (f) { if (twin.indexOf(f) === -1) twin.push(f); });
+      else units.push(forms);
     }
     gateWords(query).forEach(function (run) {
       var rest = run;
@@ -499,8 +507,12 @@
       (Synonyms ? Synonyms.find(run) : []).forEach(function (term) {
         var same = Synonyms.expand(term, { includes: false }).concat(Synonyms.expand(term + "大學", { includes: false }));
         if (same.some(function (f) { return genericForms.indexOf(compact(f)) !== -1; })) { rest = rest.split(term).join(" "); return; }
-        if (formShare(same, stats) > GENERIC_SHARE) { if (term.length >= 3) must.push(same.map(compact)); return; }
+        if (formShare(same, stats) > GENERIC_SHARE) { droppedKnown = true; if (term.length >= 3) must.push(same.map(compact)); return; }
         add(same);
+        /* A school or organisation name (not a topic with a synthetic 「…大學」 form): its short forms need a boundary. */
+        var made = units[units.length - 1];
+        if (made && made.join() === unique(same.map(compact).filter(function (f) { return f.length >= 2 && (!/^[a-z0-9]+$/.test(f) || f.length >= 3); })).join())
+          made.isName = same.some(function (f) { return f !== term + "大學" && /(?:大學|學院|研究院|高中|中學|高級中等學校|高級中學|女中)$/.test(f); }) || /^[a-z]{3,6}$/.test(term);
         rest = rest.split(term).join(" ");
       });
       /* Latin names (gemini, notebook, codex) are specific pieces too. */
@@ -508,13 +520,22 @@
         if (formShare([word], stats) <= GENERIC_SHARE) add([word]);
       });
       rest.replace(/[a-z0-9]+/g, " ").split(" ").forEach(function (part) {
+        var prevUnknown = false;
         for (var i = 0; i + 2 <= part.length; i++) {
           var g = part.slice(i, i + 2);
-          if (QUESTION_FILLER.test(g) || isGeneric(g, stats) || (stats && !pieceCount(g, stats))) continue;
+          if (QUESTION_FILLER.test(g)) { prevUnknown = false; continue; }
+          /* Two overlapping pieces that no title has (績校 + 校對) are one unknown word (校對). */
+          if (stats && !pieceCount(g, stats) && !/[我你他想要有的了嗎呢是在什麼麼哪]/.test(g)) { if (prevUnknown) { chain.push(g); if (chain.indexOf(part.slice(i - 1, i + 1)) === -1) chain.push(part.slice(i - 1, i + 1)); } prevUnknown = true; } else prevUnknown = false;
+          var unknown = stats && !pieceCount(g, stats);
+          if (isGeneric(g, stats) || unknown) { if (ALWAYS_GENERIC.indexOf(g) === -1 && genericForms.indexOf(g) === -1) (unknown ? unknownPieces : leftovers).push(g); continue; }
           add([g]);
         }
       });
     });
+    /* Nothing known is specific, yet the question has words of its own (竹崎, 中文系): they are the subject, even
+       when no title says them; a candidate that lacks all of them is about something else. */
+    if (!units.length && !droppedKnown && (unknownPieces.length || leftovers.length)) unique(unknownPieces.length ? unknownPieces : leftovers).slice(0, 6).forEach(function (g) { add([g]); });
+    units.chain = chain;
     units.must = must;   // common subject words (學生證) that cannot decide alone but still have to be in a title match
     return units;
   }
@@ -530,19 +551,43 @@
         .filter(function (m) { return m.kind === "topic" && runs.some(function (run) { return run.indexOf(compact(m.term)) !== -1; }); }).map(function (m) { return m.id; });
       if (ids.length) named = SearchQuery.taxonomyTopics().filter(function (row) { return ids.indexOf(row.id) !== -1; });
     }
-    function met(text, unit) { return unit.some(function (f) { return text.indexOf(f) !== -1; }); }
+    /* A short name (師大, 中山, NTU) counts only as a name of its own, not as the tail of a longer one
+       (彰師大, 台南一中, NTUE). Longer forms and single two-character pieces match anywhere. */
+    var BOUNDARY_PREFIX = /(?:國立|私立|市立|縣立|台灣|轉知|檢送|辦理|主辦|由|與|及|於|至|向|的)$/;
+    function prep(raw) {
+      raw = String(raw == null ? "" : raw);
+      return { c: compact(raw), s: " " + raw.toLowerCase().replace(/臺/g, "台").replace(/[^0-9a-z\u3400-\u9fff]+/g, " ") + " " };
+    }
+    function formIn(t, f, multi) {
+      if (t.c.indexOf(f) === -1) return false;
+      var ascii = /^[a-z0-9]+$/.test(f);
+      if (!multi && !ascii) return true;
+      if (ascii ? f.length > 5 : f.length > 3) return true;
+      var at = t.s.indexOf(f);
+      while (at !== -1) {
+        var prev = t.s.charAt(at - 1), next = t.s.charAt(at + f.length);
+        if (ascii ? !/[a-z0-9]/.test(prev) && !/[a-z0-9]/.test(next) : prev === " " || BOUNDARY_PREFIX.test(t.s.slice(Math.max(0, at - 2), at))) return true;
+        at = t.s.indexOf(f, at + 1);
+      }
+      return false;
+    }
+    function met(t, unit) {
+      return unit.some(function (f) { return formIn(t, f, !!unit.isName); });
+    }
     function has(text) {
-      text = compact(text);
-      return units.some(function (u) { return met(text, u); }) || named.some(function (row) { return SearchQuery.findTerms(text, row.terms).length; });
+      var t = prep(text);
+      return units.some(function (u) { return met(t, u); }) || named.some(function (row) { return SearchQuery.findTerms(t.c, row.terms).length; });
     }
     /* Share of the specific units that a title carries (order does not matter: 一日淡江營 = 淡江一日營). */
     function cover(text) {
-      text = compact(text);
-      return units.filter(function (u) { return met(text, u); }).length / units.length;
+      var t = prep(text);
+      return units.filter(function (u) { return met(t, u); }).length / units.length;
     }
     /* Every common subject word of the question is in the text (「學生證遺失」: the 遺失物 list is not about 學生證). */
-    function coversSubject(text) { text = compact(text); return (units.must || []).every(function (u) { return met(text, u); }); }
-    return { pieces: units.map(function (u) { return u[0]; }), units: units, test: has, cover: cover, coversSubject: coversSubject };
+    function coversSubject(text) { var t = prep(text); return (units.must || []).every(function (u) { return met(t, u); }); }
+    /* An unknown word of the question (校對): the quoted text has to say it. */
+    function chainTest(text) { if (!(units.chain || []).length) return true; var c = compact(text); return units.chain.some(function (g) { return c.indexOf(g) !== -1; }); }
+    return { pieces: units.map(function (u) { return u[0]; }), units: units, test: has, cover: cover, coversSubject: coversSubject, chainTest: chainTest };
   }
   function relatedAnnouncements(query, ranked, options, stats) {
     var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
@@ -619,9 +664,13 @@
          and one whose title carries it beats one that only mentions it. */
       var gateBonus = 0;
       if (gate) {
-        if (!gate.test(clean(item.title || "") + " " + combined + " " + keywordText + " " + reviewedText)) return null;
+        if (!gate.test(PROGRAM_ASK.test(query) ? clean(item.title || "") : clean(item.title || "") + " " + combined + " " + keywordText + " " + reviewedText)) return null;
         var titleCover = gate.cover(item.title || "");
         gateBonus = titleCover >= 0.6 ? 350 + Math.round(titleCover * 200) : titleCover > 0 ? 60 : 0;
+        /* Among notices that cover the specific words alike, the one whose title is the kind asked (比賽 = 競賽) comes first. */
+        ["比賽", "競賽", "研習", "營隊", "講座", "工作坊", "說明會"].forEach(function (kind) {
+          if (compact(query).indexOf(kind) !== -1 && synonymsOf(kind).some(function (f) { return compact(item.title || "").indexOf(f) !== -1; })) gateBonus += 80;
+        });
       }
       wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
       var slotBonus = slot ? Math.min(30, cueHits(combined, slot) * 6) : 0;
@@ -2155,6 +2204,7 @@
     /* A word that really is in some notice's title (校對, 成績校對) is not a typo. */
     if (fixed.fixes.length) {
       var titlesText = (Array.isArray(items) ? items : []).map(function (item) { return compact(item && item.title || ""); });
+      Object.keys(details || {}).forEach(function (key) { titlesText.push(compact(detailText(details[key]))); });
       var real = fixed.fixes.filter(function (f) { var w = compact(f.from); return w && titlesText.some(function (t) { return t.indexOf(w) !== -1; }); });
       if (real.length) {
         var kept = fixed.fixes.filter(function (f) { return real.indexOf(f) === -1; }), rebuilt = typed;
@@ -2713,6 +2763,26 @@
        rule page about it (運動競賽成績) and an old notice (113學年 海報比賽). */
     if (layers.calendar && layers.calendar.status === "answered" && !layers.calendar.weak && layers.calendar.mode === "browse" &&
         !(layers.rule && layers.rule.mode === "rule" && !EVENT_ASK.test(query) && !asksWhen)) order = ["calendar"].concat(order.filter(function (k) { return k !== "calendar"; }));
+    /* A notice whose title covers what was asked (聯大, 餘卷) beats a rule page or calendar entry that does not. */
+    var hijack = topicGate(query, corpusStats);
+    if (hijack && layers.announcement && layers.announcement.status === "answered" && layers.announcement.mode !== "token") {
+      var best = function (layer) { return (layer.sources || []).reduce(function (m, src) { return Math.max(m, hijack.cover(src.title || "")); }, 0); };
+      var noticeCover = best(layers.announcement);
+      var offTarget = noticeCover >= 0.5 && ["rule", "calendar"].some(function (key) {
+        var layer = layers[key];
+        return layer && layer.status === "answered" && Math.max(best(layer), 0) < noticeCover && hijack.cover(layer.summary || "") < noticeCover;
+      });
+      if (offTarget) order = ["announcement"].concat(order.filter(function (key) { return key !== "announcement"; }));
+    }
+    /* The notice about it is already past (「11/4 開放領取餘卷」) and the calendar only has a different 模考: say the notice's story. */
+    if (hijack && layers.announcement && layers.announcement.status !== "answered" && (layers.announcement.related || []).length) {
+      var relCover = layers.announcement.related.reduce(function (m, row) { return Math.max(m, hijack.cover(row.title || "")); }, 0);
+      var otherCover = ["calendar"].reduce(function (m, key) {
+        var layer = layers[key];
+        return layer && layer.status === "answered" ? Math.max(m, (layer.sources || []).reduce(function (x, src) { return Math.max(x, hijack.cover(src.title || "")); }, 0)) : m;
+      }, 0);
+      if (relCover >= 0.75 && relCover > otherCover && layers.calendar && layers.calendar.status === "answered") return layers.announcement;
+    }
     var answered = order.filter(function (key) { return layers[key] && layers[key].status === "answered" && !layers[key].weak; });
     var weak = order.filter(function (key) { return layers[key] && layers[key].status === "answered" && layers[key].weak; });
     if (!answered.length && !weak.length) return layers.calendar || layers.announcement || layers.rule;
@@ -2856,7 +2926,7 @@
     if (!asked || !asked.kinds.length) return null;
     /* 「校慶什麼時候」 asks about this school's, not a university's open day. */
     var outsideOff = CAMPUS_LIFE.test(query) && !ASKS_OUTSIDE.test(query);
-    var hits = (ranked || []).filter(function (row) { var t = clean(row.item.title || ""); return row.token && row.token.segment && row.token.topics && row.token.kinds && !TITLE_RESULT.test(t) && !(outsideOff && OUTSIDE_TITLE.test(t)); });
+    var hits = (ranked || []).filter(function (row) { var t = clean(row.item.title || ""); return row.token && row.token.segment && row.token.topics && row.token.kinds && !TITLE_RESULT.test(t) && (!/成績/.test(query) || /成績/.test(t)) && !(outsideOff && OUTSIDE_TITLE.test(t)); });
     /* A title that says the asked word (段考) beats a narrower kind (複習考); a date still ahead beats a past one. */
     var words = deepWords(query), today = options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var rankOf = function (row) {
@@ -2973,6 +3043,11 @@
     /* Evidence must be about the question's subject, not just share a common word
        (學生證遺失 was answered with a 學生音樂比賽 notice). */
     var stats = pieceStats(items);
+    /* The sentence that is quoted has to be about the asked words itself (or sit in a notice whose title is). */
+    /* 「期中考成績什麼時候查」 is about the grades; the exam timetable does not answer it. */
+    if (/成績/.test(query)) evidence = evidence.filter(function (row) { return /成績/.test((row.text || "") + (row.title || "")); });
+    var gateEv = topicGate(query, stats);
+    if (gateEv) evidence = evidence.filter(function (row) { return row.source_meta && row.source_meta.source_type === "title" || gateEv.cover((PROGRAM_ASK.test(query) ? "" : row.text || "") + " " + (row.title || "")) > 0 && gateEv.chainTest((row.text || "") + " " + (row.title || "")); });
     evidence = evidence.filter(function (row) { return topicScore((row.title || "") + " " + (row.text || "") + " " + (row.fragment && row.fragment.keywords || ""), query, stats) >= 0.5; });
     /* No text to quote (guests), but a notice's labels say which segment holds the asked kind:
        answer the date from it, or say where it is written. */
@@ -3032,7 +3107,10 @@
     }).slice(0, 4);
     var validityWarnings = [];
     ranked.forEach(function (row) { (row.validity.warnings || []).forEach(function (warning) { validityWarnings.push(warning); }); });
-    evidence.sort(function(a,b){return b.score-a.score;});var lines = answerLines(evidence, sources);
+    evidence.sort(function(a,b){return b.score-a.score;});
+    /* The notice the answer quotes is the first source. */
+    sources.sort(function (a, b) { return (b.id === evidence[0].announcement_id ? 1 : 0) - (a.id === evidence[0].announcement_id ? 1 : 0); });
+    var lines = answerLines(evidence, sources);
     var pointRow = ranked.filter(function (row) { return evidence[0] && row.item.id === evidence[0].announcement_id; })[0];
     var pointText = pointRow ? (detailText(pointRow.detail) || clean((pointRow.item.summary || "") + " " + (pointRow.item.snippet || ""))) : "";
     var points = keyPoints(pointText || evidence.filter(function (row) { return evidence[0] && row.announcement_id === evidence[0].announcement_id; }).map(function (row) { return row.text; }).join("。"), { published: pointRow && pointRow.item.date });

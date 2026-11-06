@@ -96,4 +96,42 @@ assert.doesNotMatch(say(r), /登入後/);
 r = QA.answer("已下架的虛構研習", items, details, opts);
 assert.ok(!ids(r).includes(items[10].id), "removed notice: " + say(r));
 
+/* Round 2 */
+let seq2 = 0;
+const n2 = (title, date) => note(title, date);
+const b2 = (id, lines) => body(id, lines);
+{
+  const a = n2("彰師大虛構學系碩士班招生簡章", "2026-10-20"), b = n2("國立臺灣師範大學虛構所碩士班招生簡章", "2026-10-21");
+  const c = n2("臺中第一高級中等學校辦理AI工作坊", "2026-10-22"), d = n2("台南一中AI創意競賽", "2026-10-23");
+  const e = n2("國立中興大學NCHU Nobel Laureate Forum講座", "2026-10-24"), f = n2("諾貝爾物理學獎得主虛構教授專題演講", "2026-10-25");
+  const g = n2("國立虛構大學會計學系碩士在職專班招生", "2026-10-26");
+  const h = n2("大學申請入學招生訊息公告", "2026-10-27"), i = n2("期中成績校對與查詢通知", "2026-10-28");
+  const j = n2("全國旅遊行程設計創意競賽", "2026-10-29"), k = n2("旅遊明信片創作展覽", "2026-10-30");
+  const m = n2("第二次期中考時間表", "2026-10-31");
+  const all = [a, b, c, d, e, f, g, h, i, j, k, m];
+  const det = { [h.id]: b2(h.id, ["大學申請入學簡章於11月3日公告，成績採計方式請見簡章。"]), [i.id]: b2(i.id, ["成績校對時間為11月10日，請同學於期限內上網查詢。"]),
+    [m.id]: b2(m.id, ["考試時間：11月26日(四)、11月27日(五)。"]), [j.id]: b2(j.id, ["本競賽以旅遊行程設計為主題，歡迎同學組隊參加，收件至11月30日止。"]), [k.id]: b2(k.id, ["旅遊明信片作品展出，歡迎參觀。"]) };
+  /* 1. A short name is not the tail of a longer one. */
+  let r = QA.answer("師大碩士班報考", all, det, opts);
+  assert.ok(ids(r).includes(b.id) && !ids(r).includes(a.id), "師大 is not 彰師大: " + say(r));
+  r = QA.answer("中一中有什麼AI工作坊", all, det, opts);
+  assert.ok(ids(r).includes(c.id) && !ids(r).includes(d.id), "中一中 is 臺中第一高級中等學校, not 台南一中: " + say(r));
+  /* 2. The notice with the institution's name wins over one that only shares the topic. */
+  r = QA.answer("中興大學諾貝爾講座", all, det, opts);
+  assert.equal(ids(r)[0], e.id, say(r));
+  /* 3. The asked program is in no notice: do not answer with a different program. */
+  r = QA.answer("中文系碩士在職專班招生", all, det, opts);
+  assert.ok(!ids(r).includes(g.id) && r.status !== "answered", "no catch-all 碩專 notice: " + say(r));
+  /* 5. Summary and source are the same notice, and it says the asked word. */
+  r = QA.answer("成績校對什麼時候", all, det, opts);
+  assert.equal(ids(r)[0], i.id, say(r));
+  assert.match(say(r), /校對/);
+  assert.doesNotMatch(say(r), /申請入學/);
+  /* 6. 旅遊 splits out of 旅遊企劃類; 比賽 = 競賽 puts the contest first. */
+  r = QA.answer("有沒有旅遊企劃類的比賽", all, det, opts);
+  assert.equal(ids(r)[0], j.id, say(r));
+  /* 7. A grades question is not answered by the exam timetable. */
+  r = QA.answer("期中考成績什麼時候查", all, det, opts);
+  assert.ok(!ids(r).includes(m.id), "timetable is not the grade schedule: " + say(r));
+}
 console.log("問校務 sweep fix tests passed");
