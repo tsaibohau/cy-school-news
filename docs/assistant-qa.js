@@ -31,10 +31,14 @@
   };
   var STOP = ["請問", "我想知道", "想知道", "可以幫我", "幫我", "有沒有", "是否", "可以", "目前", "學校", "公告", "相關", "一下", "嗎", "呢", "啊", "的", "了", "是"];
   var GENERIC = ["有什麼", "什麼", "哪些", "最近", "目前", "相關", "規定", "辦法", "如何", "怎麼", "何時", "時間", "日期", "截止", "活動", "資訊", "資料", "請問", "快", "或"];
-  var PERSONAL_DATA_QUERY = /名單|姓名|學號|座號|身分證|電話|地址|成績|獎懲|缺曠|請假紀錄|健康檢查結果|病歷|診斷|低收入|補助名冊|誰錄取|誰得獎/;
+  var PERSONAL_DATA_QUERY = /名單|姓名|學號|座號|身分證|電話|地址|成績|獎懲|缺曠|請假紀錄|健康檢查結果|病歷|診斷證明|病情診斷|低收入|補助名冊|誰錄取|誰得獎/;
   /* Asking when or how to check grades is a schedule question, not a request for records. */
   var PROCEDURE_QUESTION = /規定|辦法|要點|規範|準則|標準表|要注意|注意事項|重點|什麼時候|何時|哪天|哪一天|期程|時間|日期|怎麼查|如何查|在哪查|哪裡查|怎麼申請|如何申請|校對/;
-  var RECORD_ONLY = /名單|姓名|學號|座號|身分證|電話|地址|病歷|診斷|誰錄取|誰得獎/;
+  var RECORD_ONLY = /名單|姓名|學號|座號|身分證|電話|地址|病歷|診斷證明|病情診斷|誰錄取|誰得獎/;
+  /* Asking when or where the results are published, or how to look them up, is a schedule question;
+     asking for the list or someone's record itself is not. */
+  var SCHEDULE_ASK = /什麼時候|何時|哪天|哪一天|幾號|哪裡|在哪|去哪|怎麼查|如何查|怎麼看|如何看|查詢方式|網址|期限|截止|公布時間|放榜/;
+  var ASKS_RECORD_ITSELF = /誰|有哪些人|哪些人|有誰|幾分|多少分|排名|名次|我的|他的|她的|同學的|[\u4e00-\u9fff]{2,3}的(?:成績|電話|名字|姓名)|學號|座號|身分證|電話|地址|病歷|診斷證明|病情診斷|姓名/;
   var EXAM_RESULTS = /(?:期中考|期末考|段考|模擬考|複習考|補考|重修|重補修|學期|學測|統測|分科|英檢|會考|英聽|競賽|比賽)(?:的)?成績/;
   var PERSON_TARGET = /我的|他的|她的|同學的|[\u4e00-\u9fff]{2,3}的成績|幾分|多少分|排名|名次/;
   /* 「教務處電話」「圖書館分機」 ask for an office number, not a person's. */
@@ -44,6 +48,7 @@
     query = clean(query).replace(/行動電話/g, "手機");
     if (OFFICE_CONTACT.test(query) && !/學生|同學|老師的|[\u4e00-\u9fff]{2,3}的電話/.test(query.replace(/(?:處|室|組|館|中心)的電話/, ""))) return false;
     if (!PERSONAL_DATA_QUERY.test(query)) return false;
+    if (SCHEDULE_ASK.test(query) && !ASKS_RECORD_ITSELF.test(query)) return false;
     if (RECORD_ONLY.test(query)) return true;
     /* 「期中考成績」「模擬考成績」 ask when results come out, not for someone's record. */
     if (EXAM_RESULTS.test(query) && !PERSON_TARGET.test(query.replace(EXAM_RESULTS, "成績"))) return false;
@@ -108,7 +113,7 @@
     if (/誰可以|資格|對象|哪些人|年級/.test(q)) return "eligibility";
     if (/要帶什麼|準備什麼|需要什麼(?:資料|文件)|應備|檢附/.test(q)) return "documents";
     if (/一定要|強制|必須|自願|自由參加|需不需要/.test(q)) return "requirement";
-    if (/哪裡|地點|在哪|會場|教室|地址/.test(q)) return "place";
+    if (/哪裡|地點|在哪|去哪|會場|教室|地址/.test(q)) return "place";
     if (/怎麼|如何|辦法|流程|報名|申請|繳交|送交/.test(q)) return "method";
     return "";
   }
@@ -446,39 +451,78 @@
      hundreds of unrelated notices. When the question also names something specific (a school or
      organisation such as 真理, a subject such as 旅遊 or 電競), a candidate has to contain at least
      one of those specific pieces, or one of its synonyms (亞大 = 亞洲大學), or it cannot be the answer. */
-  var GATE_STRIP = ["國立", "私立", "科技大學", "大學", "學院", "特殊選才", "營隊", "說明會", "簡章", "工作坊", "演講", "展覽", "招生", "徵選", "徵稿", "徵文", "研討會", "座談會", "體驗營",
+  var GATE_STRIP = ["國立", "私立", "科技大學", "大學", "學院", "特殊選才", "營隊", "說明會", "簡章", "工作坊", "演講", "展覽", "招生", "徵選", "徵稿", "徵文", "研討會", "座談會", "體驗營", "開放日", "Open Day", "Open House", "線上課", "線上課程", "公開課",
     "什麼時候", "哪一天", "哪天", "幾號", "幾月", "哪裡", "在哪", "怎麼", "如何", "多少", "可以", "有沒有", "是不是", "要不要", "舉辦", "辦理", "舉行", "相關", "資訊", "報考", "入學", "類的", "有關",
     "請問", "我想知道", "想知道", "怎樣", "是否", "還有", "哪些", "有什麼", "什麼", "開放", "名額"];
   function gateWords(query) {
     var value = compact(String(query || "").replace(YEAR_WORD, " "));
-    STOP.concat(GENERIC, SLOT_QUERY_WORDS, ALWAYS_GENERIC, GATE_STRIP).map(compact).filter(function (w) { return w.length >= 2; })
-      .sort(function (a, b) { return b.length - a.length; }).forEach(function (w) { value = value.split(w).join(" "); });
-    return value.split(" ").filter(function (w) { return w.length >= 2; });
-  }
-  function distinctivePieces(query, stats) {
-    var out = [];
-    gateWords(query).forEach(function (run) {
-      for (var i = 0; i + 2 <= run.length; i++) {
-        var g = run.slice(i, i + 2);
-        if (QUESTION_FILLER.test(g) || isGeneric(g, stats) || (stats && !pieceCount(g, stats))) continue;
-        if (out.indexOf(g) === -1) out.push(g);
+    /* Known multi-character terms (學生證) are kept whole even when they contain a generic word (學生). */
+    var keep = [];
+    (Synonyms ? Synonyms.find(value) : []).forEach(function (term) {
+      if (term.length < 3) return;
+      var at = value.indexOf(term);
+      if (at !== -1) keep.push([at, at + term.length]);
+    });
+    var words = STOP.concat(GENERIC, SLOT_QUERY_WORDS, ALWAYS_GENERIC, GATE_STRIP).map(compact).filter(function (w) { return w.length >= 2; })
+      .sort(function (a, b) { return b.length - a.length; });
+    var chars = value.split("");
+    words.forEach(function (w) {
+      var at = value.indexOf(w);
+      while (at !== -1) {
+        var end = at + w.length;
+        if (!keep.some(function (k) { return at < k[1] && end > k[0] && !(at <= k[0] && end >= k[1]); })) for (var i = at; i < end; i++) chars[i] = " ";
+        at = value.indexOf(w, at + 1);
       }
     });
-    return out;
+    return chars.join("").split(" ").filter(function (w) { return w.length >= 2; });
   }
-  function gateForms(query) {
-    var forms = [];
+  /* Share of the titles that carry any of these forms. */
+  function formShare(forms, stats) {
+    if (!stats || !stats.n) return 0;
+    var hit = 0;
+    stats.titles.forEach(function (title) { if (forms.some(function (f) { return title.indexOf(f) !== -1; })) hit++; });
+    return hit / stats.n;
+  }
+  /* The units a question is specific about. A unit is a list of ways to write one thing: a known term
+     with its synonyms (亞大 = 亞洲大學), or one two-character piece. */
+  function gateUnits(query, stats) {
+    var units = [], must = [];
+    function add(forms) {
+      forms = unique(forms.map(compact).filter(function (f) { return f.length >= 2 && (!/^[a-z0-9]+$/.test(f) || f.length >= 4) && GATE_STRIP.map(compact).indexOf(f) === -1; }));
+      if (forms.length && !units.some(function (u) { return u.join() === forms.join(); })) units.push(forms);
+    }
     gateWords(query).forEach(function (run) {
-      var found = Synonyms ? Synonyms.find(run) : [];
-      found.concat(run).forEach(function (term) { forms = forms.concat(synonymsOf(term), Synonyms ? Synonyms.expand(term + "大學") : []); });
+      /* Latin names (gemini, notebook, codex) are specific pieces too. */
+      (run.match(/[a-z0-9]{3,}/g) || []).forEach(function (word) {
+        var forms = synonymsOf(word);
+        if (!ALWAYS_GENERIC.some(function (g) { return forms.indexOf(compact(g)) !== -1; }) && formShare(forms, stats) <= GENERIC_SHARE) add(forms);
+      });
+      run = run.replace(/[a-z0-9]+/g, " ");
+      /* Known terms (with synonyms) first; what is left is cut into two-character pieces. */
+      var rest = run;
+      (Synonyms ? Synonyms.find(run) : []).forEach(function (term) {
+        var same = Synonyms.expand(term, { includes: false }).concat(Synonyms.expand(term + "大學", { includes: false }));
+        if (ALWAYS_GENERIC.some(function (g) { return same.indexOf(compact(g)) !== -1; })) return;
+        if (formShare(same, stats) > GENERIC_SHARE) { if (term.length >= 3) must.push(same.map(compact)); return; }
+        add(same);
+        rest = rest.split(term).join(" ");
+      });
+      rest.split(" ").forEach(function (part) {
+        for (var i = 0; i + 2 <= part.length; i++) {
+          var g = part.slice(i, i + 2);
+          if (QUESTION_FILLER.test(g) || isGeneric(g, stats) || (stats && !pieceCount(g, stats))) continue;
+          add([g]);
+        }
+      });
     });
-    return unique(forms.filter(function (f) { return f.length >= 2 && ALWAYS_GENERIC.indexOf(f) === -1 && GATE_STRIP.indexOf(f) === -1; }));
+    units.must = must;   // common subject words (學生證) that cannot decide alone but still have to be in a title match
+    return units;
   }
-  /* Returns null when the question names nothing specific; else { pieces, forms, test(text), cover(text) }. */
+  /* Returns null when the question names nothing specific; else { pieces, test(text), cover(text) }. */
   function topicGate(query, stats) {
-    var pieces = distinctivePieces(query, stats);
-    if (!pieces.length) return null;
-    var forms = gateForms(query), named = [];
+    var units = gateUnits(query, stats);
+    if (!units.length) return null;
+    var named = [];
     if (SearchQuery && SearchQuery.queryPlan && SearchQuery.taxonomyTopics) {
       /* A taxonomy topic counts only when the question names it with a specific word (還書 → 圖書館);
          a generic one such as 比賽 matches every contest and decides nothing. */
@@ -486,18 +530,19 @@
         .filter(function (m) { return m.kind === "topic" && runs.some(function (run) { return run.indexOf(compact(m.term)) !== -1; }); }).map(function (m) { return m.id; });
       if (ids.length) named = SearchQuery.taxonomyTopics().filter(function (row) { return ids.indexOf(row.id) !== -1; });
     }
+    function met(text, unit) { return unit.some(function (f) { return text.indexOf(f) !== -1; }); }
     function has(text) {
       text = compact(text);
-      return pieces.some(function (p) { return text.indexOf(p) !== -1; }) || forms.some(function (f) { return text.indexOf(f) !== -1; }) ||
-        named.some(function (row) { return SearchQuery.findTerms(text, row.terms).length; });
+      return units.some(function (u) { return met(text, u); }) || named.some(function (row) { return SearchQuery.findTerms(text, row.terms).length; });
     }
-    /* Share of the specific pieces that a title carries (order does not matter: 一日淡江營 = 淡江一日營). */
+    /* Share of the specific units that a title carries (order does not matter: 一日淡江營 = 淡江一日營). */
     function cover(text) {
       text = compact(text);
-      if (forms.some(function (f) { return text.indexOf(f) !== -1; })) return 1;
-      return pieces.filter(function (p) { return text.indexOf(p) !== -1; }).length / pieces.length;
+      return units.filter(function (u) { return met(text, u); }).length / units.length;
     }
-    return { pieces: pieces, forms: forms, test: has, cover: cover };
+    /* Every common subject word of the question is in the text (「學生證遺失」: the 遺失物 list is not about 學生證). */
+    function coversSubject(text) { text = compact(text); return (units.must || []).every(function (u) { return met(text, u); }); }
+    return { pieces: units.map(function (u) { return u[0]; }), units: units, test: has, cover: cover, coversSubject: coversSubject };
   }
   function relatedAnnouncements(query, ranked, options, stats) {
     var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
@@ -543,6 +588,8 @@
     var askedTokens = askedTokensFor(query, options);
     var gate = topicGate(query, corpusStats);
     var ranked = sourceItems.map(function (item) {
+      /* The school took this notice down: it can no longer be an answer. */
+      if (detailMap[item.id] && detailMap[item.id].parse_status === "removed") return null;
       var metadataRow = metadataById[item.id];
       var metadataScore = metadataRow ? metadataRow.score : SearchQuery.announcementScore(item, query);
       /* Token labels: one segment with the asked topic and the asked kind beats a title that
@@ -552,7 +599,10 @@
       if (!metadataScore && tokenHit && tokenHit.topics && tokenHit.kinds) metadataScore = tokenScore;
       var reviewed=Validity&&Validity.reviewedRecord?Validity.reviewedRecord(item):null;
       var reviewedText=reviewed?(reviewed.fragments||[]).map(function(f){return clean(f.keywords+" "+f.text);}).join(" "):"";
-      var reviewedScore=scoreText(reviewedText,queryTokens,8);if(!metadataScore&&!reviewedScore)return null;
+      var reviewedScore=scoreText(reviewedText,queryTokens,8);
+      /* The title carries what was asked even though the search terms (which drop words like 能) found nothing. */
+      var coverNow = gate ? gate.cover(item.title || "") : 0;
+      if(!metadataScore&&!reviewedScore){if(coverNow>=0.6)metadataScore=20;else return null;}
       var titleScore = scoreText(item.title || "", queryTokens, 9);
       var overviewScore = scoreText(overview(item), queryTokens, 3);
       var body = detailText(detailMap[item.id]);
@@ -571,7 +621,7 @@
       if (gate) {
         if (!gate.test(clean(item.title || "") + " " + combined + " " + keywordText + " " + reviewedText)) return null;
         var titleCover = gate.cover(item.title || "");
-        gateBonus = titleCover >= 0.6 ? 100 + Math.round(titleCover * 60) : titleCover > 0 ? 40 : 0;
+        gateBonus = titleCover >= 0.6 ? 350 + Math.round(titleCover * 200) : titleCover > 0 ? 60 : 0;
       }
       wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
       var slotBonus = slot ? Math.min(30, cueHits(combined, slot) * 6) : 0;
@@ -594,8 +644,8 @@
       if (wanted.indexOf("date") !== -1 && titleTime(titleText)) intentBonus += 120;
       /* 學測什麼時候 asks about the real exam, not a cram school's mock exam. */
       if (/學測|統測|分科測驗|會考/.test(query) && !/模擬|模考|擬真/.test(query) && /模擬考|模考|擬真/.test(titleText)) intentBonus -= 300;
-      return { item:item,detail:detailMap[item.id]||null,text:combined,token:tokenHit,score:tokenScore+metadataScore+reviewedScore+reviewedBonus+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus+slotBonus+gateBonus+timeliness(item,query,asOf)-exclusivePenalty(query,item.title||""),anchorScore:anchorScore,reviewedMatch:reviewedScore>0,reviewedCoverage:reviewedCoverage,reviewedAnchorHits:reviewedAnchorHits,reviewedLongest:reviewedLongest,search_validity:metadataRow&&metadataRow.validity };
-    }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0 || row.reviewedMatch || anchorCoverage(row, anchorTokens) >= 0.6); }).sort(function (a, b) {
+      return { item:item,detail:detailMap[item.id]||null,text:combined,token:tokenHit,score:tokenScore+metadataScore+reviewedScore+reviewedBonus+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus+slotBonus+gateBonus+timeliness(item,query,asOf)-exclusivePenalty(query,item.title||""),anchorScore:anchorScore,gateCover:coverNow,reviewedMatch:reviewedScore>0,reviewedCoverage:reviewedCoverage,reviewedAnchorHits:reviewedAnchorHits,reviewedLongest:reviewedLongest,search_validity:metadataRow&&metadataRow.validity };
+    }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0 || row.gateCover >= 0.6 || row.reviewedMatch || anchorCoverage(row, anchorTokens) >= 0.6); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
     if (!ranked.length) return ranked;
@@ -615,8 +665,30 @@
   function sentences(value) {
     return clean(value).split(/(?<=[。！？!?；;])|\n+/).map(clean).filter(function (row) { return row.length >= 8 && row.length <= 420; });
   }
+  /* 「什麼時候／幾號」 asks for the day the thing happens, not the sign-up deadline, unless the question
+     itself talks about signing up (報名、截止、期限、申請…). */
+  /* 「學生證丟了怎麼辦」: a problem to solve is not answered by a notice that merely shares the subject. */
+  var PROBLEM_ASK = /怎麼辦|丟了|弄丟|不見了|壞了|怎麼補|被罰|會怎樣|會怎麼樣/;
+  var ASKS_WHEN = /什麼時候|何時|幾號|哪天|哪一天|哪幾天|幾月|日期|時間(?!表)/;
+  var ASKS_SIGNUP = /報名|截止|期限|申請|來得及|還能|還可以|最晚|索票|回覆|繳交|名額|收件|登記|到幾號|前要/;
+  var EVENT_CUE = /訂於|定於|舉辦|舉行|演出|開幕|上課|活動日|展期|比賽日|競賽日|決賽|開課|首演|公演|辦理日期|活動時間|活動日期|(?<!報名|索票|領票|收件|繳交|申請|回覆|截止)(?:日期|時間)\s*[:：]/;
+  var NOTICE_CUE = /錄取名單|公告於|放榜|審核後|公布|發文日期|發文字號/;
+  var EVENT_WEAK = /日期|時間|辦理|開始/;
+  var DEADLINE_CUE = /報名|截止|[日號)）]\s*(?:以)?前|前(?:完成|繳交|回覆|報名|上傳|送交|申請)|索票|回覆|期限|受理|繳交|收件|申請至|領票|劃位/;
+  var POSTPONE = /延期|順延|改期|延至|改至|延後至|延後到|更改為|異動為|調整為|改為|改在/;
+  function asksEventDate(query) { query = clean(query); return ASKS_WHEN.test(query) && !ASKS_SIGNUP.test(query); }
+  var ONE_DATE = /(?:\d{2,4}\s*年\s*)?\d{1,2}\s*[月\/]\s*\d{1,2}\s*日?(?:\s*[（(][^）)]{1,4}[）)])?(?:\s*(?:上午|下午|晚上)?\s*\d{1,2}\s*[:：]\s*\d{2}(?:\s*[~～－-]\s*\d{1,2}\s*[:：]\s*\d{2})?)?/;
+  /* The date a postponement sentence moves to (「原訂10/28，延至11/4」 → 11/4). */
+  function postponedPhrase(text) {
+    var m = POSTPONE.exec(text);
+    if (!m) return "";
+    var rest = text.slice(m.index + m[0].length), d = rest.match(ONE_DATE);
+    return d ? clean(d[0]) : "";
+  }
   function evidenceScore(sentence, queryTokens, wanted, plan, item) {
     var score = scoreText(sentence, queryTokens, 4), slot = plan && plan.answer_slot || "";
+    var eventDate = !!(plan && plan.event_date);
+    if (eventDate) slot = "";
     wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return sentence.indexOf(word) !== -1; })) score += 12; });
     if (slot) score += Math.min(72, cueHits(sentence, slot) * 24);
     var subjects = plan && plan.subject_terms || [];
@@ -627,8 +699,16 @@
     }
     if (/作者\s*[：:]|發[佈布]日期|最後更新日期/.test(sentence)) score -= 18;
     /* A 什麼時候 question is answered by a sentence that actually contains a date or time span. */
-    if ((wanted.indexOf("date") !== -1 || slot === "deadline") && TIME_PHRASE.test(sentence)) score += 40;
+    if ((wanted.indexOf("date") !== -1 || slot === "deadline" || eventDate) && TIME_PHRASE.test(sentence)) score += 40;
     else if (slot === "deadline") score -= 20;   // 「還來得及嗎」 is answered by the date, not by 「如至截止日期…」
+    if (eventDate) {
+      if (!TIME_PHRASE.test(sentence) && !ONE_DATE.test(sentence)) score -= 120;
+      if (EVENT_CUE.test(sentence)) score += 90; else if (EVENT_WEAK.test(sentence)) score += 10;
+      if (DEADLINE_CUE.test(sentence)) score -= EVENT_CUE.test(sentence) ? 12 : 110;
+      if (NOTICE_CUE.test(sentence) && !EVENT_CUE.test(sentence)) score -= 110;
+    }
+    /* A notice that moved the date: the new date wins over the original one. */
+    if ((eventDate || wanted.indexOf("date") !== -1 || slot === "deadline") && POSTPONE.test(sentence) && postponedPhrase(sentence)) score += 130;
     return score;
   }
   /* 「94年2月訂定，97年3月14日修訂」 at the top of a rule is its revision history, never an answer. */
@@ -663,6 +743,7 @@
       wants_latest: wanted.indexOf("status") !== -1 || /最新|最近|現在|目前/.test(query),
       yes_no: wanted.indexOf("yesno") !== -1,
       wants_steps: wanted.indexOf("method") !== -1,
+      event_date: asksEventDate(query),
     };
   }
   function answerLines(evidence, sources) {
@@ -722,7 +803,7 @@
     var first = sources.filter(function (item) { return item.id === evidence[0].announcement_id; })[0] || sources[0] || {};
     var fact = endSentence(lead.replace(/^(?:[一二三四五六七八九十]+、|\(?\d{1,2}\)?[、.．])\s*/, ""));
     var slot = plan && plan.answer_slot || "", asksTime = slot === "deadline" || wanted.indexOf("date") !== -1;
-    var when = asksTime ? timePhrase(lead) : "";
+    var when = asksTime ? (postponedPhrase(lead) || timePhrase(lead)) : "";
     var text = when ? "時間是 " + when + "。" + sourceLabel(first) + "：" + fact : sourceLabel(first) + "，" + fact;
     if (sources.length > 1) text += "另外還有 " + (sources.length - 1) + " 則相關公告列在下面；它們不是同一項活動，日期和資格請分開看。";
     var note = oldNote(first, asOf);
@@ -924,8 +1005,9 @@
   }
   function personalDataAnswer(query, ranked, options) {
     ranked.forEach(function(row){row.validity=validityFor(row,options);});
+    var top = ranked[0] && ranked[0].item, topDay = top ? shortDay(String(top.date || top.first_seen || "").slice(0, 10)) : "";
     return { status:"answered", query:query, privacy_limited:true,
-      summary:"這個問題可能涉及可識別的學生或個人資料；本站不整理、不轉述名單或個人紀錄。",
+      summary:"這個問題可能涉及可識別的學生或個人資料；本站不整理、不轉述名單或個人紀錄。" + (top && top.title ? "相關公告是" + (topDay ? " " + topDay + " 的" : "") + "「" + clean(top.title).slice(0, 40) + "」，請點開官方公告自己查看。" : ""),
       answer_lines:["請直接開啟下方官方公告核對；若資料有誤、已逾保存目的或需要更正，請聯絡原發布學校。"],
       limitation:"為降低個資再次散布風險，問校務只提供必要的官方入口，不顯示姓名、學號、健康、獎懲或其他個人紀錄。",
       confidence:"high",plan:questionPlan(query),evidence:[],sources:ranked.slice(0,4).map(function(row){return safeSource(row,options);}),validity_warnings:[] };
@@ -2067,10 +2149,23 @@
     /* 「你知道明天段考嗎」 asks about 段考, not about 「你知道」. */
     var typed = clean(query).replace(/^(?:請問一下|請問|小訊[，,、\s]*)?(?:你|妳)(?:知道|知不知道|曉得|曉不曉得)(?=.{2,})/, "").replace(/^請問(?=.{2,})/, ""), fixed = Typo && !smallTalk(typed) ? Typo.fix(typed) : { query: typed, fixes: [] };
     var result = null;
+    /* A word that really is in some notice's title (校對, 成績校對) is not a typo. */
+    if (fixed.fixes.length) {
+      var titlesText = (Array.isArray(items) ? items : []).map(function (item) { return compact(item && item.title || ""); });
+      var real = fixed.fixes.filter(function (f) { var w = compact(f.from); return w && titlesText.some(function (t) { return t.indexOf(w) !== -1; }); });
+      if (real.length) {
+        var kept = fixed.fixes.filter(function (f) { return real.indexOf(f) === -1; }), rebuilt = typed;
+        kept.forEach(function (f) { rebuilt = rebuilt.replace(f.from, f.to); });
+        fixed = { query: rebuilt, fixes: kept };
+      }
+    }
     if (fixed.fixes.length) {
       result = answerOnce(fixed.query, items, details, options);
-      var asTyped = result && result.status !== "answered" ? answerOnce(typed, items, details, options) : null;
-      if (asTyped && asTyped.status === "answered") result = asTyped;
+      /* What was typed is tried too; if it is answered from a notice it is the better answer. */
+      var asTyped = answerOnce(typed, items, details, options);
+      var fromNotice = asTyped && asTyped.status === "answered" && asTyped.mode !== "chat" && (asTyped.sources || []).length &&
+        (asTyped.sources || []).every(function (src) { return src && src.kind !== "school_handbook" && src.kind !== "school_info" && src.kind !== "calendar" && src.kind !== "service"; });
+      if (asTyped && asTyped.status === "answered" && (!result || result.status !== "answered" || fromNotice)) result = asTyped;
       else if (result) {
         var note = "（我把" + fixed.fixes.map(function (f) { return "「" + f.from + "」"; }).join("、") + "當成" + fixed.fixes.map(function (f) { return "「" + f.to + "」"; }).join("、") + "）";
         result.typo = fixed.fixes;
@@ -2143,7 +2238,14 @@
     if (src.date > asOf) return "「" + src.title + "」還沒舉行（" + when + "），成績要等比賽後才會公布。";
     return "「" + src.title + "」" + (to >= asOf ? "正在進行（" + when + "）" : "剛在 " + when + "結束") + "，成績可能還沒公布。";
   }
+  /* While a 「115年…」 question is answered (also its split parts) a title alone must not stand in for the year. */
+  var yearOfQuestion = 0;
   function answerOnce(query, items, details, options) {
+    var previous = yearOfQuestion;
+    yearOfQuestion = Number((clean(query).match(/(1[0-2]\d)\s*(?:學年度?|年)/) || [])[1]) || 0;
+    try { return answerOnceInner(query, items, details, options); } finally { yearOfQuestion = previous; }
+  }
+  function answerOnceInner(query, items, details, options) {
     var talk = smallTalk(query);
     if (talk) return smallTalkAnswer(talk, query, options);
     query = normalizeVariants(stripSchoolNames(clean(query).slice(0, 160)));
@@ -2704,7 +2806,7 @@
   /* Not a 「什麼時候」 question, but the topic is on the calendar (「校慶」「家長日」): list the
      upcoming entries whose titles name it, through the synonym database. */
   /* Asking about something of the event (its 範圍, rules, what happens if…), not when it is. */
-  var ATTRIBUTE_ASK = /範圍|幾科|科目|規定|怎麼|如何|可以|能不能|能否|會怎樣|怎樣|要帶|帶什麼|資格|費用|多少|分數|地點|哪裡|在哪|流程|方式|嗎|為什麼|誰/;
+  var ATTRIBUTE_ASK = /範圍|幾科|科目|規定|怎麼|如何|可以|能不能|能否|會怎樣|怎樣|要帶|帶什麼|資格|費用|多少|分數|地點|哪裡|在哪|去哪|流程|方式|嗎|為什麼|誰/;
   function calendarMentions(query, options) {
     var calendar = options.calendarEvents || [];
     if (!calendar.length || !SearchQuery || !SearchQuery.queryPlan || !Synonyms || WHEN_SKIP.test(query)) return null;
@@ -2714,13 +2816,15 @@
     wanted = unique(wanted.map(compact)).filter(function (t) { return t.length >= 2 && ALWAYS_GENERIC.indexOf(t) === -1; });
     if (!wanted.length) return null;
     var groups = wanted.map(synonymsOf);
-    var asOf = options.asOf, rows = [], past = [];
+    var asOf = options.asOf, rows = [], past = [], gate = topicGate(query, corpusStats);
     /* 「校運會預演」: an entry whose title has the whole asked phrase beats one with only part of it,
        and when that entry is already over, say so instead of naming another entry. */
     var phrases = [compact(plan.value || query)].filter(function (t) { return t.length >= 3; });
     calendar.forEach(function (ev) {
       var from = String(ev && (ev.start_date || ev.date) || "").slice(0, 10), to = String(ev && ev.end_date || from).slice(0, 10), title = clean(ev && ev.title || "");
       if (!/^\d{4}-\d{2}-\d{2}$/.test(from) || DATE_STAFF.test(title)) return;
+      /* The question names something specific (診斷式, 電競): a calendar entry that never says it is not the answer. */
+      if (gate && !gate.test(title)) return;
       if (to < asOf) { if (phrases.some(function (p) { return compact(title).indexOf(p) !== -1; }) && to >= isoAdd(asOf, -45)) past.push({ from: from, to: to, title: title, ev: ev }); return; }
       var t = compact(title);
       /* Every subject asked must be in the title. */
@@ -2759,16 +2863,28 @@
     var hit = hits.map(function (row, i) { return { row: row, r: rankOf(row), i: i }; }).sort(function (a, b) { return b.r - a.r || a.i - b.i; }).map(function (x) { return x.row; })[0];
     if (!hit) return null;
     var seg = hit.token.segment, item = hit.item, kind = asked.kinds.filter(function (k) { return seg.k.indexOf(k) !== -1; })[0];
+    /* 「什麼時候」 means the day it happens: a segment labelled as a deadline is not it. */
+    if (asksEventDate(query) && kind === "time" && seg.k.indexOf("deadline") !== -1 && item.tokens && Array.isArray(item.tokens.segments)) {
+      var alt = item.tokens.segments.filter(function (g) { return g.k.indexOf("time") !== -1 && g.k.indexOf("deadline") === -1 && g.d && g.d.length; })[0];
+      if (alt) seg = alt;
+    }
     var label = sourceLabel(item).replace(/^根據/, "");
     var asOf = options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var summary;
     if ((kind === "deadline" || kind === "time") && seg.d && seg.d.length) {
-      var day = seg.d.slice().sort()[seg.d.length - 1], past = day < asOf;
+      var ds = seg.d.slice().sort(), day = ds[ds.length - 1], past = day < asOf;
+      /* An event on several days: the next day still ahead (the first, when it has not started). */
+      if (kind === "time" && asksEventDate(query)) { var ahead = ds.filter(function (d) { return d >= asOf; }); if (ahead.length) { day = ahead[0]; past = false; } }
       summary = "依" + label + "，" + KIND_WORD[kind] + "是 " + dayLabel(day) + (past ? "（已經過了）" : "") + "。";
+    } else if (hit.detail) {
+      /* The member text is loaded: quote the segment the labels point to instead of telling them to log in. */
+      var unit = quoteUnits(detailSegments(hit.detail)).filter(function (u) { return u.index === seg.s; })[0];
+      if (!unit) return null;
+      summary = label + "，" + KIND_WORD[kind] + "：" + endSentence(unit.text.slice(0, 160));
     } else {
       summary = label + "的第 " + (seg.s + 1) + " 段寫到" + (KIND_WORD[kind] || "這件事") + "，點開原文就看得到；登入後我可以直接引用。";
     }
-    return { status: "answered", query: query, mode: "token", headline: (kind === "deadline" || kind === "time") && seg.d ? KIND_WORD[kind] + "：" + dayLabel(seg.d.slice().sort()[seg.d.length - 1]) : "",
+    return { status: "answered", query: query, mode: "token", headline: (kind === "deadline" || kind === "time") && seg.d && seg.d.length ? KIND_WORD[kind] + "：" + dayLabel(day) : "",
       summary: summary, evidence: [], key_points: [], related: [], plan: questionPlan(query),
       sources: [Object.assign({}, item, { note: "第 " + (seg.s + 1) + " 段・" + (KIND_WORD[kind] || "相關") })],
       limitation: "依公告的分段標籤（日期與類型）回答；內文細節以公告原文為準。" };
@@ -2816,6 +2932,10 @@
     }
     if (!query || !queryTokens.length || !ranked.length) return { status: "insufficient", query: query, summary: query && queryTokens.length ? insufficientSummary([], options && options.asOf, query, options && options.scopeLabel) : "請再多說一點，例如「期中考是哪幾天」或「獎學金怎麼申請」。", evidence: [], sources: [] };
     if(personalDataQuery(query))return personalDataAnswer(query,ranked,options);
+    /* 「得獎名單什麼時候公布」 is a schedule question, but a notice that is itself the list is only pointed to. */
+    if (PERSONAL_DATA_QUERY.test(query) && ranked[0] && TITLE_RESULT.test(clean(ranked[0].item.title || "")) ) return personalDataAnswer(query, ranked, options);
+    if (PERSONAL_DATA_QUERY.test(query)) ranked = ranked.filter(function (row) { return !TITLE_RESULT.test(clean(row.item.title || "")); });
+    if (!ranked.length) return { status: "insufficient", query: query, summary: insufficientSummary([], options && options.asOf, query, options && options.scopeLabel), evidence: [], sources: [], related: [] };
     ranked.forEach(function (row) { row.validity = validityFor(row, options); });
     var currentSensitive = Validity && Validity.requiresCurrentStatus(query);
     var openWindow = Validity && Validity.requiresOpenWindow(query);
@@ -2836,7 +2956,7 @@
       segments.map(function (segment, index) {
         var f = framed[index], text = f && framedText({ heading: f && f.heading, text: segment.text });
         var at = segment.index == null ? index : segment.index;
-        return { text: text, meta: segment.meta || {}, score: evidenceScore(text, queryTokens, wanted, plan, row.item) + (at === pointed ? (plan.answer_slot === "deadline" && !TIME_PHRASE.test(text) ? 10 : 60) : 0) + freshness(row.item, asOfDay) * (eventAsk ? 2 : 1) + (eventAsk ? Math.max(0, 24 - 12 * (position[row.item.id] || 0)) : 0), item: row.item };
+        return { text: text, meta: segment.meta || {}, score: evidenceScore(text, queryTokens, wanted, plan, row.item) + (at === pointed ? (plan.answer_slot === "deadline" && !TIME_PHRASE.test(text) ? 10 : plan.event_date && (DEADLINE_CUE.test(text) || NOTICE_CUE.test(text)) && !EVENT_CUE.test(text) ? 0 : 60) : 0) + freshness(row.item, asOfDay) * (eventAsk ? 2 : 1) + (eventAsk ? Math.max(0, 24 - 12 * (position[row.item.id] || 0)) : 0), item: row.item };
       }).filter(function (candidate) {
         return candidateQualifies(candidate, plan) && (!Validity || Validity.sentencePolicy(candidate.text, row.validity, query) !== "exclude");
       }).sort(function (a, b) { return b.score - a.score; }).slice(0, 2).forEach(function (candidate) {
@@ -2871,6 +2991,36 @@
         .sort(function (a, b) { return freshness(b.item, asOfDay) - freshness(a.item, asOfDay); })[0];
       if (titled) evidence.push({ text: clean(titled.item.title).replace(/^(?:轉知|檢送|【[^】]{1,8}】)\s*[：:]?\s*/, ""), announcement_id: titled.item.id, title: titled.item.title, score: 1, validity: titled.validity, source_meta: { source_type: "title" } });
     }
+    /* The notice's title is what was asked (「六感重生課程」, 「政府與公共事務碩士在職專班」) but its body is
+       empty or lives in an attachment: answer with that notice and say where the rest is. */
+    var titleOnly = false;
+    if (!evidence.length && !personalDataQuery(query) && plan.answer_slot !== "requirement" && !PROBLEM_ASK.test(query) && !wantsLink(query) && !YEAR_ASK.test(query) && !askedYearNow && !yearOfQuestion) {
+      var gateNow = topicGate(query, stats);
+      var byTitle = !gateNow ? [] : ranked.filter(function (row) {
+        var t = clean(row.item.title || "");
+        var ty = Number((periodToken(t).match(/^\d+/) || [])[0]);
+        if (ty >= 90 && ty < currentAcademicYear(asOfDay)) return false;   // last year's notice is not this year's answer
+        var postedDay = String(row.item.date || row.item.first_seen || "").slice(0, 10);
+        if (/^\d{4}-\d{2}-\d{2}$/.test(postedDay) && (Date.parse(asOfDay) - Date.parse(postedDay)) / 86400000 > 365) return false;
+        /* A 「什麼時候／截止」 question needs a date, and a title can only give one that is still ahead. */
+        if (WHEN_ASK.test(query) || plan.answer_slot === "deadline") {
+          if (!titleTime(t)) return false;
+          var td = titleDates(row.item);
+          if (td.length && td.every(function (d) { return d.to < asOfDay; })) return false;
+        }
+        return !(NARROW_AUDIENCE.test(t) && !NARROW_AUDIENCE.test(query)) && !(CAMPUS_LIFE.test(query) && !ASKS_OUTSIDE.test(query) && OUTSIDE_TITLE.test(t));
+      }).map(function (row, i) {
+        var t = clean(row.item.title || "");
+        return { row: row, i: i, c: TITLE_RESULT.test(t) && !ASKS_RESULT.test(query) || !gateNow.coversSubject(t) ? 0 : gateNow.cover(t) };
+      }).filter(function (x) { return x.c >= 0.6; }).sort(function (a, b) { return b.c - a.c || a.i - b.i; });
+      /* Several notices carry the asked words about equally (three GEPT notices): do not guess one of them. */
+      byTitle = byTitle.length && !byTitle.slice(1).some(function (x) { return x.c >= byTitle[0].c - 0.15 && familySimilarity(x.row, byTitle[0].row) >= 0.6; }) ? byTitle[0] : null;
+      if (byTitle) {
+        var tr = byTitle.row;
+        evidence.push({ text: clean(tr.item.title).replace(/^(?:轉知|檢送|【[^】]{1,8}】)\s*[：:]?\s*/, ""), announcement_id: tr.item.id, title: tr.item.title, score: 1, validity: tr.validity, source_meta: { source_type: "title" } });
+        titleOnly = true;
+      }
+    }
     if (!evidence.length) { var relatedRows = relatedAnnouncements(query, ranked, options, stats); return { status: "insufficient", query: query, summary: insufficientSummary(relatedRows, options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }), query, options && options.scopeLabel), evidence: [], sources: [], related: relatedRows }; }
     var sourceIds = {};
     evidence.forEach(function (row) { sourceIds[row.announcement_id] = true; });
@@ -2884,11 +3034,18 @@
     var pointText = pointRow ? (detailText(pointRow.detail) || clean((pointRow.item.summary || "") + " " + (pointRow.item.snippet || ""))) : "";
     var points = keyPoints(pointText || evidence.filter(function (row) { return evidence[0] && row.announcement_id === evidence[0].announcement_id; }).map(function (row) { return row.text; }).join("。"), { published: pointRow && pointRow.item.date });
     var links = wantsLink(query) ? answerLinks(pointRow || { item: sources[0] || {} }) : [];
-    return { status: "answered", query: query, key_points: points, links: links, summary: composeSummary(evidence, sources, wanted, plan, options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" })),
-      answer_lines: lines, limitation: evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
+    var summaryText = composeSummary(evidence, sources, wanted, plan, options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }));
+    /* Asked when it happens: the event date leads, and the sign-up deadline (if the notice has one) follows. */
+    if (plan.event_date && evidence[0] && pointText && !DEADLINE_CUE.test(evidence[0].text) && !(sources.length > 1)) {
+      var lead0 = compact(evidence[0].text);
+      var dl = sentences(pointText).filter(function (sentence) { return /截止|[日號)）點時]\s*(?:以)?前|前(?:完成|繳交|回覆|報名|上傳|送交|申請)|止[。，；]?$|至.{0,20}止|開放索票|開放報名/.test(sentence) && !EVENT_CUE.test(sentence) && ONE_DATE.test(sentence) && sentence.length <= 140 && lead0.indexOf(compact(sentence)) === -1; })[0];
+      if (dl) summaryText += "另外，" + endSentence(dl.replace(/^(?:[一二三四五六七八九十]+、|\(?\d{1,2}\)?[、.．])\s*/, ""));
+    }
+    return { status: "answered", query: query, key_points: points, links: links, summary: summaryText,
+      answer_lines: lines, limitation: titleOnly ? "公告內文沒有直接回答這題，細節在公告附件或原文連結，請點開公告查看。" : evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
       plan: plan, evidence: evidence, sources: sources, validity_warnings: unique(validityWarnings) };
   }
-  return { topicGate: topicGate, pieceStats: pieceStats, tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank, readList: readList, asksPenalty: asksPenalty, penaltyDocs: penaltyDocs,
+  return { topicScore: topicScore, topicGate: topicGate, pieceStats: pieceStats, tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank, readList: readList, asksPenalty: asksPenalty, penaltyDocs: penaltyDocs,
     smoothEvidence: smoothEvidence, quoteUnits: quoteUnits, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
     isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, correction: correction, comparePlan: comparePlan, compareResults: compareResults, smallTalk: smallTalk, wantsLink: wantsLink, answerLinks: answerLinks, scoreClause: scoreClause, ruleTerms: ruleTerms, withHeadings: withHeadings, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });
