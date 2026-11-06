@@ -265,7 +265,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(index.includes('src="calendar-state.js?v=44"'), "index must load current Calendar State");
   assert(index.includes('src="account-sync.js?v=56"'), "index must load versioned Account Sync before app.js");
   assert(index.indexOf('src="calendar-state.js?v=44"') < index.indexOf('src="account-sync.js?v=56"'), "Calendar State must load before Account Sync");
-  assert(index.includes('src="account-config.js?v=45"'), "index must load versioned account config");
+  assert(index.includes('src="account-config.js?v=46"'), "index must load versioned account config");
   assert(index.includes('src="account-auth.js?v=79"'), "index must load current account auth");
   assert(index.includes('src="app.js?v=138"'), "index must load current app shell");
   assert(sw.includes('"./calendar-state.js?v=44"'), "Service Worker shell must cache current Calendar State");
@@ -284,7 +284,7 @@ singletonAndRetryChecks().then(() => controller.signInWithGoogle()).then(async (
   assert(app.includes("同步待完成"));
   assert(app.includes("已登入・同步中"));
   assert(app.includes("已登入・同步待完成"));
-  assert(sw.includes("cy-news-v163"), "Service Worker cache must advance for the current app shell");
+  assert(sw.includes("cy-news-v164"), "Service Worker cache must advance for the current app shell");
   assert(app.includes('register("sw.js?v=82")'), "App must register the current Service Worker script");
   assert(app.includes("if (!auth.isConfigured())"));
   assert.equal(Auth.createController({ config: {} }).isConfigured(), false);

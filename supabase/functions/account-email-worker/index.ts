@@ -44,7 +44,7 @@ function contentFor(message: OutboxMessage): { subject: string; html: string } {
   const selected = templates[message.template] || { subject: "嘉校快訊：帳號異動", body: "你的嘉校快訊帳號狀態有新的異動。" }
   return {
     subject: selected.subject,
-    html: `<div style="font-family:system-ui,sans-serif;line-height:1.7;color:#17332d"><h2>${escapeHtml(selected.subject)}</h2><p>${selected.body}</p><p><a href="https://tsaibohau.github.io/cy-school-news/">開啟嘉校快訊</a></p><p style="color:#667b76;font-size:13px">這是帳號管理通知，請勿直接回覆。</p></div>`,
+    html: `<div style="font-family:system-ui,sans-serif;line-height:1.7;color:#17332d"><h2>${escapeHtml(selected.subject)}</h2><p>${selected.body}</p><p><a href="https://cy-school-news.pages.dev/">開啟嘉校快訊</a></p><p style="color:#667b76;font-size:13px">這是帳號管理通知，請勿直接回覆。</p></div>`,
   }
 }
 

@@ -2385,3 +2385,12 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
   - `app.js`：訪客搜尋用的「去掉摘要」複本每則只做一次，搜尋快取可以跨按鍵沿用。
 - 驗證：嘉中、嘉女各 450 題，修改前後的狀態、來源與摘要逐字相同；測試失敗集合與 main 相同。
 - 版本：`assistant-qa.js?v=88`、`qa-synonyms.js?v=10`、`search-query.js?v=61`、`app.js?v=138`、`cy-news-v163`。
+
+## 2026-11-06 搬到 Cloudflare Pages（https://cy-school-news.pages.dev/）
+- 部署：Cloudflare Pages 直接連 GitHub repo，production branch `main`，不需建置指令，輸出目錄 `docs`。每次 main 有新提交（含機器人每小時的公告更新）自動上線。
+- 舊網址：`index.html`、`legal.html` 的開頭與 `account-config.js`（sw.js 對它網路優先，舊快取的頁面也會轉）在 `tsaibohau.github.io` 上自動轉到新網址，路徑、查詢字串、#hash（登入連結的 token）都保留。
+- 登入：`account-config.js` 的 productionRedirectUrl 改新網址，舊網址暫留在允許清單；`username-auth` 允許新來源；帳號通知信與每日摘要信的連結改新網址。Supabase Auth 的 Site URL／Redirect URLs 與兩個 edge function 的重新部署由擁有者在 Supabase 後台操作。
+- 快取：新增 `docs/_headers`（只有 Cloudflare 讀），`sw.js`、`data/*`、`account-config.js` 設 `no-cache`。
+- 注意：瀏覽器的本機資料（登入狀態、通知訂閱、本機設定）跟網址綁定，搬家後使用者要重新登入、重新開通知；存在帳號裡的資料不受影響。
+- 順手修正：#112 調版本號時漏改 `tests/test_ui_visual_contract.js` 的斷言（search-query v61、assistant-qa v88）。
+- 版本：`account-config.js?v=46`、`cy-news-v164`。

@@ -1,0 +1,9 @@
+# Cloudflare Pages response headers (GitHub Pages ignores this file).
+# The service worker and the hourly data must not be held by browser caches,
+# so a new deploy and new announcements show up on the next visit.
+/sw.js
+  Cache-Control: no-cache
+/data/*
+  Cache-Control: no-cache
+/account-config.js
+  Cache-Control: no-cache

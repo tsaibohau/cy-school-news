@@ -7,6 +7,7 @@ const allowedOrigins = new Set([
   "https://cy-school-news-staging.vercel.app",
   "https://cy-school-news-staging-git-code-184992-tsaibohau-9644s-projects.vercel.app",
   "https://tsaibohau.github.io",
+  "https://cy-school-news.pages.dev",
 ])
 
 function required(name: string): string {

@@ -19,7 +19,7 @@ type Recipient = {
   last_sent_at: string | null
 }
 
-const SITE_URL = "https://tsaibohau.github.io/cy-school-news/"
+const SITE_URL = "https://cy-school-news.pages.dev/"
 
 function required(name: string): string {
   const value = Deno.env.get(name)
