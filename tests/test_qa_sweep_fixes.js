@@ -134,4 +134,20 @@ const b2 = (id, lines) => body(id, lines);
   r = QA.answer("期中考成績什麼時候查", all, det, opts);
   assert.ok(!ids(r).includes(m.id), "timetable is not the grade schedule: " + say(r));
 }
+/* Round 3 */
+{
+  const o = note("虛構地科奧林匹亞競賽校內甄選報名", "2026-11-02");
+  const page = { id: "info-x", kind: "school_info", school: "cysh", school_name: "嘉中", title: "學務處 › 體育組 › 各項運動競賽成績",
+    documents: [{ name: "班際比賽.pdf(另開新視窗)", url: "https://example.org/a.pdf" }, { name: "校外競賽績優獎勵要點", url: "https://example.org/b.pdf" }] };
+  const det3 = { [o.id]: body(o.id, ["請有興趣的同學，即日起至11月17日上午8：00止，填妥報名表單參加校內甄選。"]) };
+  let r = QA.answer("奧林匹克比賽還來的及報嗎", [o, page], det3, opts);
+  assert.notEqual(r.mode, "document", "a file named after 比賽 is not the answer: " + say(r));
+  assert.ok(ids(r).includes(o.id) && /11月17日/.test(say(r)), say(r));
+  const w = note("【教師研習】AI醫療診斷式段考精準檢討術", "2026-10-27");
+  const cal = [{ id: "c1", school_id: "cysh", school_name: "嘉中", title: "第二次期中考", start_date: "2026-11-26", end_date: "2026-11-27" }];
+  const det4 = { [w.id]: body(w.id, ["研習時間：12月8日(二)13:30，於視聽教室舉行。"]) };
+  r = QA.answer("段考什麼時候", [w], det4, Object.assign({}, opts, { calendarEvents: cal }));
+  assert.match(say(r), /第二次期中考/, "the calendar, not a teachers' workshop: " + say(r));
+  assert.ok(!ids(r).includes(w.id));
+}
 console.log("問校務 sweep fix tests passed");

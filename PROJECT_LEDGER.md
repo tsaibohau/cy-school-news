@@ -2368,3 +2368,8 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 隱私：只問某次成績（沒有我的、誰、幾分、排名）當作找公告，不再拒答。
 - 測試：`tests/test_qa_sweep_fixes.js` 增加第二輪案例（自編假公告）。版本：`assistant-qa.js?v=86`、`qa-synonyms.js?v=9`、`cy-news-v161`。
 - 離線回歸（900 題）：第一輪後 hit 639／near 58／miss 203；本輪後 hit 643／near 67／miss 190（嘉女 357/25/65，嘉中 286/42/125）。
+
+## 2026-11-06 問校務：第三輪（修回兩個退步）
+- 「奧林匹克比賽還來的及報嗎」：分類主題（競賽）不再讓「班際比賽.pdf」之類泛稱檔案通過門檻；來得及的錯字變體產生的雜訊不再要求引用句含該字。恢復用奧林匹亞公告回答。
+- 「段考什麼時候」：研習、工作坊、教師類公告不能取代行事曆；行事曆維持第一。
+- 測試：`tests/test_qa_sweep_fixes.js` 加上兩案（自編假資料）。版本：`assistant-qa.js?v=87`、`cy-news-v162`。回歸 hit 641／near 67／miss 192。

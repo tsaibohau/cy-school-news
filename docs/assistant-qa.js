@@ -525,7 +525,7 @@
           var g = part.slice(i, i + 2);
           if (QUESTION_FILLER.test(g)) { prevUnknown = false; continue; }
           /* Two overlapping pieces that no title has (績校 + 校對) are one unknown word (校對). */
-          if (stats && !pieceCount(g, stats) && !/[我你他想要有的了嗎呢是在什麼麼哪]/.test(g)) { if (prevUnknown) { chain.push(g); if (chain.indexOf(part.slice(i - 1, i + 1)) === -1) chain.push(part.slice(i - 1, i + 1)); } prevUnknown = true; } else prevUnknown = false;
+          if (stats && !pieceCount(g, stats) && !/[我你他想要有的了嗎呢是在什麼麼哪得及還來去會能可]/.test(g)) { if (prevUnknown) { chain.push(g); if (chain.indexOf(part.slice(i - 1, i + 1)) === -1) chain.push(part.slice(i - 1, i + 1)); } prevUnknown = true; } else prevUnknown = false;
           var unknown = stats && !pieceCount(g, stats);
           if (isGeneric(g, stats) || unknown) { if (ALWAYS_GENERIC.indexOf(g) === -1 && genericForms.indexOf(g) === -1) (unknown ? unknownPieces : leftovers).push(g); continue; }
           add([g]);
@@ -548,7 +548,7 @@
       /* A taxonomy topic counts only when the question names it with a specific word (還書 → 圖書館);
          a generic one such as 比賽 matches every contest and decides nothing. */
       var runs = gateWords(query), ids = (SearchQuery.queryPlan(clean(String(query).replace(YEAR_WORD, " "))).term_matches || [])
-        .filter(function (m) { return m.kind === "topic" && runs.some(function (run) { return run.indexOf(compact(m.term)) !== -1; }); }).map(function (m) { return m.id; });
+        .filter(function (m) { return m.kind === "topic" && runs.some(function (run) { return run.indexOf(compact(m.term)) !== -1; }) && !(compact(m.term).length >= 4 && units.some(function (u) { return u.indexOf(compact(m.term)) !== -1; })); }).map(function (m) { return m.id; });
       if (ids.length) named = SearchQuery.taxonomyTopics().filter(function (row) { return ids.indexOf(row.id) !== -1; });
     }
     /* A short name (師大, 中山, NTU) counts only as a name of its own, not as the tail of a longer one
@@ -2767,7 +2767,12 @@
     var hijack = topicGate(query, corpusStats);
     if (hijack && layers.announcement && layers.announcement.status === "answered" && layers.announcement.mode !== "token") {
       var best = function (layer) { return (layer.sources || []).reduce(function (m, src) { return Math.max(m, hijack.cover(src.title || "")); }, 0); };
-      var noticeCover = best(layers.announcement);
+      /* A teachers' workshop or staff notice never takes the place of the school's own calendar or rules. */
+      var STAFF_NOTICE = /研習|工作坊|教師|教職員|營隊|講座|增能|培訓/;
+      var noticeCover = (layers.announcement.sources || []).reduce(function (m, src) {
+        var t = src.title || "";
+        return STAFF_NOTICE.test(t) && !STAFF_NOTICE.test(query) || NARROW_AUDIENCE.test(t) && !NARROW_AUDIENCE.test(query) ? m : Math.max(m, hijack.cover(t));
+      }, 0);
       var offTarget = noticeCover >= 0.5 && ["rule", "calendar"].some(function (key) {
         var layer = layers[key];
         return layer && layer.status === "answered" && Math.max(best(layer), 0) < noticeCover && hijack.cover(layer.summary || "") < noticeCover;
