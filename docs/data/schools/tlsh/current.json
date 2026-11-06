@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "tlsh",
   "name": "國立斗六高級中學",
@@ -574,7 +574,54 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68859/",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "120225abdf775db4818db054eab39fbf9fb2ba1b0459f25cbd2d4e9c04ca2bee"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-20"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68857",
@@ -586,7 +633,66 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68857/",
    "category": "競賽",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "03fb12fd15b18c113566aa1b3c88de0a1cd844d5767be337e4240c5aba619fd2"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "截止",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-15",
+       "2027-03-01"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68854",
@@ -598,7 +704,65 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68854/",
    "category": "競賽",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68845",
@@ -610,7 +774,61 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68845/",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "公假",
+       "報名",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68851",
@@ -622,7 +840,96 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68851/",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "8058d017f20062fd6c1c3539a60d9e1cd672fa4f95b0fa0f028a2c8717ce986b"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-17"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "公假",
+       "報名",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68864",
@@ -634,7 +941,152 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68864/",
    "category": "競賽",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "#admission",
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "導師",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "自主學習",
+       "升學",
+       "#admission",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-02-03"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "課輔",
+       "請假",
+       "報名",
+       "#leave",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68849",
@@ -646,7 +1098,105 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68849/",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-10",
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-12-29"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "公假",
+       "報名",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68843",
@@ -658,7 +1208,92 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68843/",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "3ca630b3e725c7e3d71828525599c649edc7f9fa026cf2a6e709cb4fbf537ed9"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "公假",
+       "報名",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68847",
@@ -670,7 +1305,114 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68847/",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-24",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "646486135349e090dc3f3c90f2a74631a6c11d38ad9556785dc3063277889302"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-24"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-17"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "公假"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "公假",
+       "報名",
+       "#leave"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68841",

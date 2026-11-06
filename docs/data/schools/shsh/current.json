@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "shsh",
   "name": "雲林縣私立正心高級中學",
@@ -8,6 +8,247 @@
   "base": "https://www.shsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "shsh-11868",
+   "title": "轉發國教署-高中115上低收入戶及中低收入戶補助",
+   "date": "2026-11-06",
+   "source_category": "獎助學金",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/%e8%bd%89%e7%99%bc%e5%9c%8b%e6%95%99%e7%bd%b2-%e9%ab%98%e4%b8%ad115%e4%b8%8a%e4%bd%8e%e6%94%b6%e5%85%a5%e6%88%b6%e5%8f%8a%e4%b8%ad%e4%bd%8e%e6%94%b6%e5%85%a5%e6%88%b6%e8%a3%9c%e5%8a%a9/",
+   "category": "獎助學金",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "shsh-11867",
+   "title": "115學年度第2學期 TAICA「高級中等學校線上AI課程」",
+   "date": "2026-11-06",
+   "source_category": "活動競賽",
+   "school": "shsh",
+   "school_name": "正心高中",
+   "url": "https://www.shsh.ylc.edu.tw/news/115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e7%ac%ac2%e5%ad%b8%e6%9c%9f-taica%e3%80%8c%e9%ab%98%e7%b4%9a%e4%b8%ad%e7%ad%89%e5%ad%b8%e6%a0%a1%e7%b7%9a%e4%b8%8aai%e8%aa%b2%e7%a8%8b%e3%80%8d/",
+   "category": "競賽",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "51603db933b6ece4662e2ecf8052209606eaa4ec12c9a1d7de088dd5853c3d74"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "多元選修",
+       "#elective"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "選課"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-23"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-04-30"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "選課"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "shsh-11866",
    "title": "雲林縣 115 年度閱讀教育推動總體計畫",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "hkhs",
   "name": "市立小港高中",
@@ -8,6 +8,39 @@
   "base": "https://www.hkhs.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "hkhs-11694",
+   "title": "轉知高雄市教育局識詐資訊",
+   "date": "2026-11-06",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11694",
+   "category": "一般",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hkhs-11693",
    "title": "116學年度大學繁星推薦、申請入學、分發入學三招生管道簡章連結",
@@ -1036,6 +1069,70 @@
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
+  },
+  {
+   "id": "hkhs-11656",
+   "title": "115年11月午餐菜單",
+   "date": "2026-10-27",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11656",
+   "category": "生活學務",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "午餐"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-27"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "午餐",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hkhs-11664",

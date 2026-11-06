@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-06T08:15:20+08:00",
+ "generated_at": "2026-11-06T11:39:45+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -3753,12 +3753,128 @@
    "page_id": 216811727460584,
    "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,13,419,409,418",
    "label": "學校特色與發展願景",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 42
+   "order": 42,
+   "checked_at": "2026-11-06T11:39:43+08:00",
+   "path": [
+    "網站導覽",
+    "學校特色與發展願景"
+   ],
+   "changed_at": "2026-11-06T11:39:43+08:00",
+   "content_hash": "580a8d2b20447f763d19d0fce92bf70ca3ef95fff3fb4fcf43fa31d867583636",
+   "doc_links": [],
+   "keywords": [
+    "志工",
+    "服務學習",
+    "比賽",
+    "英檢",
+    "升學",
+    "參訪",
+    "志願",
+    "志願服務",
+    "檢定",
+    "社團",
+    "體驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-216811727460584.json",
+   "detail_revision": "dec4ad289f198eafa3de1481206c580b5f97436390aac185410a8447892a90f7",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "社團",
+       "#club",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "志工",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-01-18"
+      ]
+     }
+    ]
+   }
   },
   "251420183781566": {
    "page_id": 251420183781566,
@@ -10023,6 +10139,125 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-216811727460584",
+   "kind": "school_info",
+   "title": "網站導覽 › 學校特色與發展願景",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,13,419,409,418",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "志工",
+    "服務學習",
+    "比賽",
+    "英檢",
+    "升學",
+    "參訪",
+    "志願",
+    "志願服務",
+    "檢定",
+    "社團",
+    "體驗"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-216811727460584.json",
+   "detail_revision": "dec4ad289f198eafa3de1481206c580b5f97436390aac185410a8447892a90f7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "社團",
+       "#club",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "志工",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-01-18"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-217776837100967",
    "kind": "school_info",
    "title": "行政編制",
@@ -10486,5 +10721,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-06T08:15:20+08:00"
+ "last_run_at": "2026-11-06T11:39:45+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "mhvs",
   "name": "國立民雄高級農工職業學校",
@@ -8,6 +8,540 @@
   "base": "https://www.mhvs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "mhvs-11049",
+   "title": "115(1)體育重補修公告",
+   "date": "2026-11-06",
+   "source_category": "",
+   "school": "mhvs",
+   "school_name": "民雄農工",
+   "url": "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11049",
+   "category": "段考考試",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "重補修",
+     "#makeup"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "運動服"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "獎學金",
+       "重補修",
+       "學雜費",
+       "#scholarship",
+       "#makeup",
+       "#fee"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "課表",
+       "#certificate",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mhvs-11053",
+   "title": "轉知-「全國創新行銷暨高中職小論文競賽」",
+   "date": "2026-11-06",
+   "source_category": "",
+   "school": "mhvs",
+   "school_name": "民雄農工",
+   "url": "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11053",
+   "category": "競賽",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "小論文",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "小論文",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "小論文",
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "獎學金",
+       "重補修",
+       "學雜費",
+       "#scholarship",
+       "#makeup",
+       "#fee"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "課表",
+       "#certificate",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mhvs-11052",
+   "title": "轉知-「2026-2027第八屆科普閱讀力大賽」",
+   "date": "2026-11-06",
+   "source_category": "",
+   "school": "mhvs",
+   "school_name": "民雄農工",
+   "url": "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11052",
+   "category": "競賽",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9e5078be24b487ec0c2ce76a6cf5ce55d3298aecb3f5fa564441d8ca65c87511"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "獎學金",
+       "重補修",
+       "學雜費",
+       "#scholarship",
+       "#makeup",
+       "#fee"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "課表",
+       "#certificate",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mhvs-11051",
+   "title": "轉知-115年臺灣閱讀節",
+   "date": "2026-11-06",
+   "source_category": "",
+   "school": "mhvs",
+   "school_name": "民雄農工",
+   "url": "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11051",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "獎學金",
+       "重補修",
+       "學雜費",
+       "#scholarship",
+       "#makeup",
+       "#fee"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "課表",
+       "#certificate",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mhvs-11050",
+   "title": "115(1)體育重補修公告",
+   "date": "2026-11-06",
+   "source_category": "",
+   "school": "mhvs",
+   "school_name": "民雄農工",
+   "url": "https://www.mhvs.cyc.edu.tw/modules/tadnews/index.php?nsn=11050",
+   "category": "段考考試",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "重補修",
+     "#makeup"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "重補修",
+       "#makeup"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "運動服"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "獎學金",
+       "重補修",
+       "學雜費",
+       "#scholarship",
+       "#makeup",
+       "#fee"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "課表",
+       "#certificate",
+       "#course"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "mhvs-11048",
    "title": "『全面性教育』教師專業成長研習」",

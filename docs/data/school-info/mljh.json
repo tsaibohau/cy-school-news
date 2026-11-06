@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mljh",
- "generated_at": "2026-11-06T08:14:55+08:00",
+ "generated_at": "2026-11-06T11:39:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31793209037602": {
@@ -417,8 +417,12 @@
    "page_id": 248503922134270,
    "url": "https://mljh.ylc.edu.tw/SiteMap.aspx",
    "label": "網站導覽",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-06T11:39:20+08:00",
+   "path": [
+    "網站導覽"
+   ]
   },
   "162390219962636": {
    "page_id": 162390219962636,
@@ -451,6 +455,28 @@
     "認識本校"
    ],
    "order": 39
+  },
+  "240552986350538": {
+   "page_id": 240552986350538,
+   "url": "https://mljh.ylc.edu.tw/cl.aspx?n=125434",
+   "label": "水洗黑板清潔和維護的教學影片",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站導覽"
+   ],
+   "order": 40
+  },
+  "208077156753039": {
+   "page_id": 208077156753039,
+   "url": "https://mljh.ylc.edu.tw/cp.aspx?n=106636",
+   "label": "測驗系統使用說明",
+   "status": "pending",
+   "depth": 1,
+   "parent_path": [
+    "網站導覽"
+   ],
+   "order": 41
   }
  },
  "handbook": {},
@@ -657,5 +683,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-06T08:14:55+08:00"
+ "last_run_at": "2026-11-06T11:39:22+08:00"
 }

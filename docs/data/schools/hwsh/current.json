@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "hwsh",
   "name": "國立虎尾高級中學",
@@ -8,6 +8,1457 @@
   "base": "https://www.hwsh.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "hwsh-13730",
+   "title": "115-1生活輔導通報20",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hwsh",
+   "school_name": "虎尾高中",
+   "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13730",
+   "category": "一般",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-01-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6218b5afe3234946964e35f3dd966e2795760aea5a8a22054741f0478cbc1245"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-06",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6218b5afe3234946964e35f3dd966e2795760aea5a8a22054741f0478cbc1245"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1,
+     2
+    ],
+    "classes": [
+     "307"
+    ],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "生活"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處",
+       "教官室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學務處",
+       "班會",
+       "生活"
+      ],
+      "k": [
+       "place"
+      ],
+      "d": [
+       "2026-01-02",
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "教官室",
+       "機車",
+       "失物",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-06"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#transport"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-10"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "audience",
+       "required"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-06"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "合作社",
+       "作息",
+       "午休",
+       "生活",
+       "#lunch_break",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "課輔",
+       "午休",
+       "午餐",
+       "#tutoring",
+       "#lunch_break"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "作息",
+       "宿舍",
+       "#accommodation",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "晚自習",
+       "宿舍",
+       "#accommodation",
+       "#study_hall"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "生活",
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "生活"
+      ],
+      "k": [],
+      "d": [
+       "2026-01-02",
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "學務處",
+       "班會"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "教官室",
+       "機車",
+       "失物",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-06"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#transport"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-10"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "audience",
+       "required"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-06"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "作息",
+       "生活",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "合作社",
+       "作息",
+       "午休",
+       "#lunch_break",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "課輔",
+       "午休",
+       "午餐",
+       "#tutoring",
+       "#lunch_break"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "作息",
+       "宿舍",
+       "#accommodation",
+       "#daily_schedule"
+      ],
+      "k": []
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [
+       "晚自習",
+       "宿舍",
+       "#accommodation",
+       "#study_hall"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "生活",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "hwsh-13732",
+   "title": "【性平活動】雲林縣政府辦理性別平等辦公室辦理「教室裡的大象-紀錄片映 後座談」活動地點變更，詳如說明。",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hwsh",
+   "school_name": "虎尾高中",
+   "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13732",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-08-26",
+     "provenance": "verified_announcement_event",
+     "source_revision": "2e07addb2a68fc078e7cd785e42ed9d2d0317c21b32db25f865abbe2187f7c32"
+    },
+    {
+     "kind": "event",
+     "date": "2026-11-05",
+     "provenance": "verified_announcement_event",
+     "source_revision": "2e07addb2a68fc078e7cd785e42ed9d2d0317c21b32db25f865abbe2187f7c32"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-03",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "2e07addb2a68fc078e7cd785e42ed9d2d0317c21b32db25f865abbe2187f7c32"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time",
+       "place",
+       "allow"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time",
+       "place",
+       "allow"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "報名",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hwsh-13729",
+   "title": "台灣模擬教育協會-2027年第八屆台灣經濟學奧林匹亞競賽",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hwsh",
+   "school_name": "虎尾高中",
+   "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13729",
+   "category": "競賽",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "奧林匹亞",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "奧林匹亞",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hwsh-13728",
+   "title": "國立臺南第二高級中學新興科技教育聯盟計畫辦理「AI協作的風險與管控」教師增能研習",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hwsh",
+   "school_name": "虎尾高中",
+   "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13728",
+   "category": "教職員",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "637b9dc6b2f99b2ac25a87788bd64bdd15a699c4e4bcab54ca98fd15e894c4b8"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-07",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "637b9dc6b2f99b2ac25a87788bd64bdd15a699c4e4bcab54ca98fd15e894c4b8"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hwsh-13727",
+   "title": "國立花蓮高級中學辦理「AI賦能教與學工作坊」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hwsh",
+   "school_name": "虎尾高中",
+   "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13727",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-12-07",
+     "provenance": "verified_announcement_event",
+     "source_revision": "f4ab4e85e8502f3ca6fc0fb56657bc23489d2aa47d62bcbe6ec94e4ffdfc310f"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-26",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f4ab4e85e8502f3ca6fc0fb56657bc23489d2aa47d62bcbe6ec94e4ffdfc310f"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-26"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-26"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hwsh-13726",
+   "title": "國立嘉義女子高級中學與國立臺南第一高級中學聯合辦理深度學習教學新創計畫策略聯盟「NDPL初探教師增能工作坊」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hwsh",
+   "school_name": "虎尾高中",
+   "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13726",
+   "category": "教職員",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-28",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e0fe3602279d1d520bfbd66e660eabc825ba7e5804539e98fdd476bbe68a2aac"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e0fe3602279d1d520bfbd66e660eabc825ba7e5804539e98fdd476bbe68a2aac"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-28"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-23"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-28"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-23"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "hwsh-13724",
    "title": "【公車通學】今（11月5）日莿桐線下午發車時間調整",
@@ -407,7 +1858,157 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13719",
    "category": "研習活動",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-05-22",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f7c28fa5292d43555679184617fb700f09359e4f1f0b51522fc7d154693ff43d"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-24",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f7c28fa5292d43555679184617fb700f09359e4f1f0b51522fc7d154693ff43d"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-03-14",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f7c28fa5292d43555679184617fb700f09359e4f1f0b51522fc7d154693ff43d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "社團",
+       "學務處",
+       "#club"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-03-14"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-03-14"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13718",
@@ -419,7 +2020,97 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13718",
    "category": "一般",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "55022cabf9af34c39c97694ca30903df8926f10cde414cef7969c6dab62b38a3"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "截止",
+     "#certificate"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "截止",
+       "#certificate"
+      ],
+      "k": [
+       "deadline"
+      ],
+      "d": [
+       "2026-12-02"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13717",
@@ -431,7 +2122,167 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13717",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "6f2d12ff6989aafa414a9cd3c7713355d2b03a0690f1d79ec9353d9b22a2f88f"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-09"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-24"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-09"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-24"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13716",
@@ -443,7 +2294,71 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13716",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13715",
@@ -455,7 +2370,227 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13715",
    "category": "研習活動",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-11-18",
+     "provenance": "verified_announcement_event",
+     "source_revision": "f692561e96f7bbfb6c803c7a04ef3422e3db5336b5f2af0ed2f2ca38515b92e1"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f692561e96f7bbfb6c803c7a04ef3422e3db5336b5f2af0ed2f2ca38515b92e1"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13714",
@@ -467,7 +2602,136 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13714",
    "category": "競賽",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "be7324e2f9608d2aae0816b89298f4a9ec3c51230bde9e08e91b82f92f3b18c7"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-10-01",
+       "2026-11-10",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-30",
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-10-01",
+       "2026-11-10",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-30",
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13710",
@@ -479,7 +2743,137 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13710",
    "category": "研習活動",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13709",
@@ -491,7 +2885,157 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13709",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-01",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "7c0ddebf140f8871e14eba7b75ed634bb55b67c35d205818bf594706d2f07378"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "截止",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-12-02",
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "公假",
+       "報名"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "截止",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-12-02",
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "公假",
+       "報名"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13708",
@@ -503,7 +3047,80 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13708",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e41c8d0983d5cf414cf58cebf4d2fc9aba23dd0769d4edde81f4e3c3b5ccd582"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-20"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13707",
@@ -515,7 +3132,156 @@
    "url": "https://www.hwsh.ylc.edu.tw/ischool/public/news_view/show.php?nid=13707",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-08-31",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9a65c4dadbd4bd448dd27cc959455e3e5f204195b08cef46f4d9e8455d8df481"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-16",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9a65c4dadbd4bd448dd27cc959455e3e5f204195b08cef46f4d9e8455d8df481"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "audience",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-16"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "audience",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-16"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hwsh-13700",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "fhsh",
   "name": "國立鳳新高中",
@@ -8,6 +8,132 @@
   "base": "https://www.fhsh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fhsh-47278",
+   "title": "【競賽】樹德科技大學與台灣網路智能學會共同辦理「2026資訊科技創新設計暨應用競賽」",
+   "date": "2026-11-06",
+   "source_category": "教務處公告",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/news-aa/20261106/47278",
+   "category": "競賽",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "網路",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47275",
+   "title": "【活動】「數學 x 物理~探索之旅~高中生與大學教授對談」2026南部場座談會活動",
+   "date": "2026-11-06",
+   "source_category": "教務處公告",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/news/20261106/47275",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b4eba86d71cac804c5c8d98a21f09a51a2c03486a9ce652bceeac7a49cab4657"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "fhsh-47268",
    "title": "【公告】全國創新行銷暨高中職小論文競賽",
@@ -584,7 +710,27 @@
    "url": "https://www.fhsh.khc.edu.tw/news/20261105/47248",
    "category": "競賽",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "fhsh-47243",

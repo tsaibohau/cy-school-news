@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "nknush",
   "name": "國立高師大附中",
@@ -8,6 +8,226 @@
   "base": "https://www.nknush.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "nknush-22485",
+   "title": "公告訓育組「2027嘉義市國際三分鐘影片大賽」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22485/%e5%85%ac%e5%91%8a%e8%a8%93%e8%82%b2%e7%b5%84%e3%80%8c2027%e5%98%89%e7%be%a9%e5%b8%82%e5%9c%8b%e9%9a%9b%e4%b8%89%e5%88%86%e9%90%98%e5%bd%b1%e7%89%87%e5%a4%a7%e8%b3%bd%e3%80%8d/",
+   "category": "競賽",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "處室",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22478",
+   "title": "公告「115年度性騷擾事件法院判決案例研討會」延期及場地異動相關資訊生輔組",
+   "date": "2026-11-06",
+   "source_category": "學務處公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/office-news/student-affairs-office-news/22478/%e5%85%ac%e5%91%8a%e3%80%8c115%e5%b9%b4%e5%ba%a6%e6%80%a7%e9%a8%b7%e6%93%be%e4%ba%8b%e4%bb%b6%e6%b3%95%e9%99%a2%e5%88%a4%e6%b1%ba%e6%a1%88%e4%be%8b%e7%a0%94%e8%a8%8e%e6%9c%83%e3%80%8d%e5%bb%b6/",
+   "category": "行政公告",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-10-23",
+     "provenance": "verified_announcement_event",
+     "source_revision": "ecf6b149b61d6db209d024b23615b2be646fd6447a58c23a6d174b4bbc229e0a"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "教官室",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-23",
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22473",
+   "title": "公告訓育組萬能科技大學「BEAUTY NEXT 2026美麗新世代」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22473/%e5%85%ac%e5%91%8a%e8%a8%93%e8%82%b2%e7%b5%84%e8%90%ac%e8%83%bd%e7%a7%91%e6%8a%80%e5%a4%a7%e5%ad%b8%e3%80%8cbeauty-next-2026%e7%be%8e%e9%ba%97%e6%96%b0%e4%b8%96%e4%bb%a3%e3%80%8d/",
+   "category": "一般",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "處室",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22463",
+   "title": "公告訓育組「青年百億海外圓夢基金計畫」116年第1梯次報名簡章及計畫簡介折頁",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22463/%e5%85%ac%e5%91%8a%e8%a8%93%e8%82%b2%e7%b5%84%e3%80%8c%e9%9d%92%e5%b9%b4%e7%99%be%e5%84%84%e6%b5%b7%e5%a4%96%e5%9c%93%e5%a4%a2%e5%9f%ba%e9%87%91%e8%a8%88%e7%95%ab%e3%80%8d116%e5%b9%b4%e7%ac%ac1/",
+   "category": "招生編班",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "處室",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "nknush-22452",
    "title": "公告轉知國立臺灣師範大學與國家科學及技術委員會共同辦理「2026-2027第八屆科普閱讀力大賽」圖書館",

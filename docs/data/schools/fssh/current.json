@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "fssh",
   "name": "國立鳳山高中",
@@ -8,6 +8,101 @@
   "base": "https://www.fssh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fssh-18713",
+   "title": "【公告】本校115年庶務組長甄選正備取名單",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18713",
+   "category": "一般",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fssh-18714",
+   "title": "環境部與教育部共同推動高中氣候變遷教育線上課程《與 2050淨零世代的對話》，完成課程之同學可取得雙部長簽 署電子學習證明及多項獎勵，請惠予協助宣導暨善加運用 於教學",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18714",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "健康中心",
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "fssh-18712",
    "title": "115學年度全年級班際羽球賽 賽程表",

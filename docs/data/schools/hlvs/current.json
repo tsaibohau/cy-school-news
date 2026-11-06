@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "hlvs",
   "name": "國立西螺高級農工職業學校",
@@ -436,7 +436,36 @@
    "url": "https://www.hlvs.ylc.edu.tw/?p=70178",
    "category": "競賽",
    "first_seen": "2026-11-05T20:15:32+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2024-11-08"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-70175",
@@ -448,7 +477,55 @@
    "url": "https://www.hlvs.ylc.edu.tw/?p=70175",
    "category": "升學",
    "first_seen": "2026-11-05T20:15:32+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "志工",
+     "#admission",
+     "#health",
+     "#volunteer"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "教務處",
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2027-05-06"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-70172",
@@ -460,7 +537,33 @@
    "url": "https://www.hlvs.ylc.edu.tw/?p=70172",
    "category": "研習活動",
    "first_seen": "2026-11-05T20:15:32+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "輔導室",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-70169",
@@ -472,7 +575,17 @@
    "url": "https://www.hlvs.ylc.edu.tw/?p=70169",
    "category": "一般",
    "first_seen": "2026-11-05T20:15:32+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "hlvs-70166",
@@ -484,7 +597,39 @@
    "url": "https://www.hlvs.ylc.edu.tw/?p=70166",
    "category": "研習活動",
    "first_seen": "2026-11-05T20:15:32+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-08-01",
+       "2026-07-31"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-01-01"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-70163",
@@ -496,7 +641,31 @@
    "url": "https://www.hlvs.ylc.edu.tw/?p=70163",
    "category": "研習活動",
    "first_seen": "2026-11-05T20:15:32+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2025-03-15"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-70160",
@@ -508,7 +677,26 @@
    "url": "https://www.hlvs.ylc.edu.tw/?p=70160",
    "category": "研習活動",
    "first_seen": "2026-11-05T20:15:32+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-70155",

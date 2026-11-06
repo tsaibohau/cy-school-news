@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nsjh",
- "generated_at": "2026-11-06T08:15:02+08:00",
+ "generated_at": "2026-11-06T11:39:28+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179628626610013": {
@@ -495,23 +495,29 @@
    "page_id": 187329571230611,
    "url": "https://nsjh.ylc.edu.tw/Cool English酷英網英語線上學習平臺",
    "label": "Welcome to coolenglish.",
-   "status": "pending",
+   "status": "gone",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 41
+   "order": 41,
+   "checked_at": "2026-11-06T11:39:23+08:00"
   },
   "75163906493929": {
    "page_id": 75163906493929,
    "url": "https://nsjh.ylc.edu.tw/cl.aspx?n=99714",
    "label": "交通資訊",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 42
+   "order": 42,
+   "checked_at": "2026-11-06T11:39:26+08:00",
+   "path": [
+    "網站導覽",
+    "交通資訊"
+   ]
   },
   "254720746849147": {
    "page_id": 254720746849147,
@@ -1229,5 +1235,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-06T08:15:02+08:00"
+ "last_run_at": "2026-11-06T11:39:28+08:00"
 }

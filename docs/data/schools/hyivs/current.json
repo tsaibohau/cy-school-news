@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "hyivs",
   "name": "國立新營高工",
@@ -8,6 +8,146 @@
   "base": "https://www.hyivs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "hyivs-6507",
+   "title": "「交通AI工作坊」及「交通安全AI巡守隊-全國黑客松競賽」",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "hyivs",
+   "school_name": "新營高工",
+   "url": "https://www.hyivs.tn.edu.tw/ischool/public/news_view/show.php?nid=6507",
+   "category": "競賽",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest",
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "生活",
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contest",
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-04-17",
+       "2026-11-26",
+       "2026-11-27",
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "生活",
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest",
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-04-17",
+       "2026-11-26",
+       "2026-11-27",
+       "2026-12-03"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hyivs-6502",
    "title": "國立台灣師範大學與國家科學及技術委員會共同辦理「2026-2027第八屆科普閱讀力大賽」，鼓勵學生踴躍報名參加。",

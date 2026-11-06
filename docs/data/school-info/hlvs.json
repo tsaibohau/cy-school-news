@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-06T08:14:24+08:00",
+ "generated_at": "2026-11-06T11:38:51+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -9210,12 +9210,213 @@
    "page_id": 105899507870249,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=260",
    "label": "●申請補發【畢業證書】說明",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "認識本校"
    ],
-   "order": 50
+   "order": 50,
+   "checked_at": "2026-11-06T11:38:45+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組",
+    "其他"
+   ],
+   "changed_at": "2026-11-06T11:38:45+08:00",
+   "content_hash": "0f53b7be8cce317cfb2c78bb4c3c0b9c8a854b253a5eaf79c8684372a04a909d",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "電話",
+    "傳真",
+    "請假",
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-105899507870249.json",
+   "detail_revision": "aaf498913d412ba47b27bfe4a64a9da85fca1336abca0a4b8e3df8ac555ef50c",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "國立西螺農工申請補發畢業證書_委託書 (無法親自辦理時，委由他人時必須填寫)",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2021/11/國立西螺農工申請補發畢業證書_委託書-2.pdf"
+    },
+    {
+     "name": "「申請人」填寫委託書",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2021/11/國立西螺農工申請補發畢業證書_委託書.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "contact",
+       "allow"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 98,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 100,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 121,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 123,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 124,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 132,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 135,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 141,
+      "t": [
+       "費用",
+       "#contact"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 142,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   "27712480312774": {
    "page_id": 27712480312774,
@@ -11078,6 +11279,18 @@
     "秘書室"
    ],
    "order": 218
+  },
+  "172915483481599": {
+   "page_id": 172915483481599,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=260&preview=true",
+   "label": "預覽(在新分頁中開啟)",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "註冊組",
+    "其他"
+   ],
+   "order": 219
   }
  },
  "handbook": {},
@@ -15484,6 +15697,211 @@
       "t": [],
       "k": [
        "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hlvs-info-105899507870249",
+   "kind": "school_info",
+   "title": "教務處 › 註冊組 › 其他",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=260",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "國立西螺農工申請補發畢業證書_委託書 (無法親自辦理時，委由他人時必須填寫)",
+    "「申請人」填寫委託書"
+   ],
+   "keywords": [
+    "申請",
+    "電話",
+    "傳真",
+    "請假",
+    "校長"
+   ],
+   "documents": [
+    {
+     "name": "國立西螺農工申請補發畢業證書_委託書 (無法親自辦理時，委由他人時必須填寫)",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2021/11/國立西螺農工申請補發畢業證書_委託書-2.pdf"
+    },
+    {
+     "name": "「申請人」填寫委託書",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2021/11/國立西螺農工申請補發畢業證書_委託書.pdf"
+    }
+   ],
+   "detail_ref": "data/details/hlvs/hlvs-info-105899507870249.json",
+   "detail_revision": "aaf498913d412ba47b27bfe4a64a9da85fca1336abca0a4b8e3df8ac555ef50c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": [
+       "contact",
+       "allow"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 98,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 100,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 121,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 123,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 124,
+      "t": [
+       "註冊組",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 132,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 135,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 141,
+      "t": [
+       "費用",
+       "#contact"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 142,
+      "t": [],
+      "k": [
+       "fee"
       ]
      }
     ]
@@ -20421,5 +20839,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-06T08:14:24+08:00"
+ "last_run_at": "2026-11-06T11:38:51+08:00"
 }

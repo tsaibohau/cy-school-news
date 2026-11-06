@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "dnsh",
   "name": "雲林縣立斗南高級中學",
@@ -114,7 +114,19 @@
    "url": "https://dnsh.ylc.edu.tw/News_Content.aspx?n=57048&s=401807",
    "category": "招生編班",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#enrollment",
+     "#grading"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "dnsh-401751",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-06T08:16:52+08:00",
+ "generated_at": "2026-11-06T11:41:20+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -594,25 +594,37 @@
    "page_id": 112170978374225,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/%e8%a8%93%e8%82%b2%e7%b5%84/",
    "label": "訓育組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "學務處"
    ],
-   "order": 44
+   "order": 44,
+   "checked_at": "2026-11-06T11:41:17+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組"
+   ]
   },
   "173830454427502": {
    "page_id": 173830454427502,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/生輔組/",
    "label": "生輔組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "學務處"
    ],
-   "order": 45
+   "order": 45,
+   "checked_at": "2026-11-06T11:41:19+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "生輔組"
+   ]
   },
   "64967749312091": {
    "page_id": 64967749312091,
@@ -1134,6 +1146,18 @@
     "學務處業務職掌"
    ],
    "order": 89
+  },
+  "135857064889754": {
+   "page_id": 135857064889754,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/%e7%94%9f%e8%bc%94%e7%b5%84/",
+   "label": "生輔組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "學務處",
+    "生輔組"
+   ],
+   "order": 90
   }
  },
  "handbook": {},
@@ -1435,5 +1459,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-06T08:16:52+08:00"
+ "last_run_at": "2026-11-06T11:41:20+08:00"
 }

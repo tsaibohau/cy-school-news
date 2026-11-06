@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "tssh",
   "name": "國立東石高級中學",
@@ -8,6 +8,228 @@
   "base": "https://www.tssh.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "tssh-9-21441",
+   "title": "【寒假營隊】國立清華大學資訊工程學系與臺灣大專院校人工智慧學程聯盟(TAICA)等單位訂於116年1月25日至28日共同辦理「2027 Fun AI Camp」人工智慧營隊",
+   "date": "2026-11-06",
+   "source_category": "最新消息",
+   "school": "tssh",
+   "school_name": "東石高中",
+   "url": "https://www.tssh.cyc.edu.tw/latestevent/Details.aspx?Parser=9,9,79,46,,,21441",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "a3c54f6ec9a5c52315768961aacf5470c36be1741c609da475dc938f1663c94e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "自主學習",
+       "#contest",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-28"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "自主學習",
+       "報名",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "繳交",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "自主學習",
+       "#contest",
+       "#self_learning",
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "tssh-9-21434",
    "title": "【重補修】115-1第2階段重補修課表陸續更新中1105",

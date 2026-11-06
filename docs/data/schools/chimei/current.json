@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "chimei",
   "name": "國立旗美高中",
@@ -8,6 +8,46 @@
   "base": "https://www.cmsh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "chimei-25214",
+   "title": "轉知雲林縣立蔦松藝術高中辦理「當道德AI遇見SEL工作坊」",
+   "date": "2026-11-06",
+   "source_category": "教師活動",
+   "school": "chimei",
+   "school_name": "旗美高中",
+   "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25214",
+   "category": "教職員",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "chimei-25213",
    "title": "轉知【線上演講】115學年度考古學專題：人物人物，考古學如何見物又見人？",
@@ -202,7 +242,37 @@
    "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25203",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "chimei-25202",
@@ -214,7 +284,176 @@
    "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25202",
    "category": "教職員",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2024-01-29",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "4078bf3c16d717ae6a08feafc7d8e2d9030b619f7d194839ba353ae1a0cb36a0"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-09-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "4078bf3c16d717ae6a08feafc7d8e2d9030b619f7d194839ba353ae1a0cb36a0"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-23",
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-09-21"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-23",
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-09-21"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "chimei-25205",
@@ -226,7 +465,110 @@
    "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25205",
    "category": "競賽",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "9287b6889f2df2c78e0c707517b2c2fab4fbb7ce7cd979df8e2efed8d84fcd3d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "chimei-25210",
@@ -238,7 +580,35 @@
    "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25210",
    "category": "研習活動",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "chimei-25207",
@@ -250,11 +620,148 @@
    "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25207",
    "category": "一般",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
    "audience": {
     "grades": [],
     "classes": [],
     "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "家長日",
+     "家長"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "家長日",
+       "家長"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "家長日",
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學習歷程",
+       "家長日",
+       "導師",
+       "家長",
+       "#admission",
+       "#school_profile"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "家長日",
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長日",
+       "家長"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "家長日",
+       "導師"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#school_profile"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     }
+    ]
    }
   },
   {
@@ -1467,7 +1974,49 @@
    "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25200",
    "category": "研習活動",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "chimei-25143",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "pkvs",
   "name": "國立北港高級農工職業學校",
@@ -8,6 +8,682 @@
   "base": "https://www.pkvs.ylc.edu.tw"
  },
  "items": [
+  {
+   "id": "pkvs-11990",
+   "title": "科技輔助自主學習暨強化數位教學研習活動",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11990",
+   "category": "選課",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-25",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "4f2451f1f83aa3ea5dafa79f8478a863bab55b5e041ddfbb1a0bfe01bf976ed9"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "4f2451f1f83aa3ea5dafa79f8478a863bab55b5e041ddfbb1a0bfe01bf976ed9"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "#self_learning",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "自主學習",
+       "報名",
+       "#self_learning",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "公假",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-25",
+       "2026-12-02",
+       "2026-11-20",
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "教務處",
+       "手機",
+       "報名",
+       "#device",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-25",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-02",
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名",
+       "公假"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "pkvs-11989",
+   "title": "【獎助學金公告】雲林縣北港鎮115年第2次清寒獎助學金",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11989",
+   "category": "獎助學金",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "525208570d5c340cbd5eda337ec99486618cc1422781e1ddb9b5f199f0ad4099"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎學金",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "獎學金",
+       "截止",
+       "生活",
+       "#scholarship"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "費用",
+       "#health"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee",
+       "deny"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "required",
+       "fee"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "出缺席",
+       "獎懲",
+       "#attendance",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "教務處",
+       "註冊組",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "費用",
+       "#health"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee",
+       "deny"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "出缺席",
+       "獎懲",
+       "#attendance",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "教務處",
+       "註冊組",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "pkvs-11988",
+   "title": "「2026年第十屆實驗教育國際工作坊」，歡迎有興趣師長參加",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11988",
+   "category": "研習活動",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "pkvs-11987",
+   "title": "「2026麻豆大地藝術季策展人引路教師線上研習」，歡迎有興趣師長參加",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11987",
+   "category": "教職員",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "pkvs-11986",
+   "title": "「2026全民國防教育年終工作研商會議暨教學經驗分享工作坊」，歡迎全民國防教師參加",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "pkvs",
+   "school_name": "北港農工",
+   "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11986",
+   "category": "教職員",
+   "first_seen": "2026-11-06T11:24:29+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "pkvs-11985",
    "title": "資通安全通識教育訓練-線上研習",
@@ -1757,7 +2433,39 @@
    "url": "https://www.pkvs.ylc.edu.tw/ischool/public/news_view/show.php?nid=11978",
    "category": "研習活動",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pkvs-11973",

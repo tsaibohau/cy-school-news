@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-06T08:13:59+08:00",
+ "generated_at": "2026-11-06T11:38:35+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -3387,11 +3387,329 @@
   },
   "519": {
    "page_id": 519,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-06T11:38:31+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組",
+    "社團活動"
+   ],
+   "changed_at": "2026-11-06T11:38:31+08:00",
+   "content_hash": "23cdcf9938356fecea442d5cd2ceb152750ccf803ad7e36ebc6a9211fa53a867",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "社團",
+    "地址",
+    "專線",
+    "招生",
+    "選擇",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-519.json",
+   "detail_revision": "854078335d34f466966f690597f287cddc1b5815170e956211378bb4f741abfb",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "社團",
+     "學務處",
+     "#club"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "費用",
+       "社團",
+       "家長",
+       "#club"
+      ],
+      "k": [
+       "required",
+       "fee"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "520": {
    "page_id": 520,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-06T11:38:33+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組",
+    "校外教學"
+   ],
+   "changed_at": "2026-11-06T11:38:33+08:00",
+   "content_hash": "b2d65eeb66ae48f041f2707359081b8cad88b7efcca9009a88ae27d7b0aac2e6",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "畢業旅行",
+    "地址",
+    "安全",
+    "專線",
+    "招生",
+    "電話",
+    "體驗"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-520.json",
+   "detail_revision": "0db61f969c2d83535ba580fba3de00d94060a5c2a64164d4f3f3e3b3fe7db162",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "校外教學",
+     "學務處",
+     "#field_trip"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "校外教學",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "生活",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "521": {
    "page_id": 521,
@@ -7113,6 +7431,330 @@
    }
   },
   {
+   "id": "fjsh-info-519",
+   "kind": "school_info",
+   "title": "學務處 › 訓育組 › 社團活動",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-519.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "社團",
+    "地址",
+    "專線",
+    "招生",
+    "選擇",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-519.json",
+   "detail_revision": "854078335d34f466966f690597f287cddc1b5815170e956211378bb4f741abfb",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "社團",
+     "學務處",
+     "#club"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "費用",
+       "社團",
+       "家長",
+       "#club"
+      ],
+      "k": [
+       "required",
+       "fee"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-520",
+   "kind": "school_info",
+   "title": "學務處 › 訓育組 › 校外教學",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-520.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "畢業旅行",
+    "地址",
+    "安全",
+    "專線",
+    "招生",
+    "電話",
+    "體驗"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-520.json",
+   "detail_revision": "0db61f969c2d83535ba580fba3de00d94060a5c2a64164d4f3f3e3b3fe7db162",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "校外教學",
+     "學務處",
+     "#field_trip"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "校外教學",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "生活",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "畢業旅行",
+       "#field_trip"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -7210,5 +7852,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-06T08:13:59+08:00"
+ "last_run_at": "2026-11-06T11:38:35+08:00"
 }

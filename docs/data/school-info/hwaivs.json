@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-06T08:14:29+08:00",
+ "generated_at": "2026-11-06T11:38:56+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -2318,25 +2318,68 @@
    "page_id": 148549949499988,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e9%95%b7%e5%ae%a4/%e8%a1%a8%e5%96%ae%e9%80%a3%e7%b5%90%e5%8d%80/",
    "label": "表單連結區",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "國立虎尾高級農工職業學校",
     "網站連結"
    ],
-   "order": 42
+   "order": 42,
+   "checked_at": "2026-11-06T11:38:52+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校長室",
+    "表單連結區"
+   ],
+   "changed_at": "2026-11-06T11:38:52+08:00",
+   "content_hash": "7e8f67934563e20cd7a76873d5dd967a8a5b7bd6c64e00e112d6ab0ce9bb4716",
+   "doc_links": [
+    {
+     "name": "國立虎尾農工校內各項會議管考備忘錄",
+     "url": "https://docs.google.com/forms/d/1pn13KyZUeBFM4rQq1P95YS8YthG1O4_3PIgmAWGhEO4/edit"
+    }
+   ],
+   "keywords": [
+    "校長",
+    "申請"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-148549949499988.json",
+   "detail_revision": "d385d314300e1ff5509ace8bd14aafb4eb08f57dcaeef8fff67255ebd37c8cc9",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "96680719737135": {
    "page_id": 96680719737135,
    "url": "https://www.hwaivs.ylc.edu.tw/%e8%a1%8c%e6%94%bf%e5%96%ae%e4%bd%8d/",
    "label": "行政單位",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "國立虎尾高級農工職業學校",
     "網站連結"
    ],
-   "order": 43
+   "order": 43,
+   "checked_at": "2026-11-06T11:38:54+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "行政單位"
+   ]
   },
   "83763825928067": {
    "page_id": 83763825928067,
@@ -6950,6 +6993,48 @@
    }
   },
   {
+   "id": "hwaivs-info-148549949499988",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 校長室 › 表單連結區",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e9%95%b7%e5%ae%a4/%e8%a1%a8%e5%96%ae%e9%80%a3%e7%b5%90%e5%8d%80/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "國立虎尾農工校內各項會議管考備忘錄"
+   ],
+   "keywords": [
+    "校長",
+    "申請"
+   ],
+   "documents": [
+    {
+     "name": "國立虎尾農工校內各項會議管考備忘錄",
+     "url": "https://docs.google.com/forms/d/1pn13KyZUeBFM4rQq1P95YS8YthG1O4_3PIgmAWGhEO4/edit"
+    }
+   ],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-148549949499988.json",
+   "detail_revision": "d385d314300e1ff5509ace8bd14aafb4eb08f57dcaeef8fff67255ebd37c8cc9",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "hwaivs-info-156540777689270",
    "kind": "school_info",
    "title": "校務資料開放 › 認識虎農 › 交通位置",
@@ -7682,5 +7767,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-06T08:14:29+08:00"
+ "last_run_at": "2026-11-06T11:38:56+08:00"
 }

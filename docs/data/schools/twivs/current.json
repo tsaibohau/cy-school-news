@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T08:06:04+08:00",
+ "generated_at": "2026-11-06T11:24:29+08:00",
  "school": {
   "id": "twivs",
   "name": "國立曾文農工",
@@ -2905,14 +2905,48 @@
   {
    "id": "twivs-8749",
    "title": "112學年度下學期學習歷程檔案競賽",
-   "date": "2026-02-06",
+   "date": "2024-02-06",
    "source_category": "公告",
    "school": "twivs",
    "school_name": "曾文農工",
    "url": "https://www.twivs.tn.edu.tw/ischool/public/news_view/show.php?nid=8749",
    "category": "升學",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "#admission",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-02-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "twivs-8720",

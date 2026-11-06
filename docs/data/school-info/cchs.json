@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cchs",
- "generated_at": "2026-11-06T08:17:52+08:00",
+ "generated_at": "2026-11-06T11:42:04+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "153498002047988": {
@@ -5752,12 +5752,58 @@
    "page_id": 243752083699515,
    "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab",
    "label": "學生手冊(含學生獎懲規定) Student Handbook",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 50
+   "order": 50,
+   "checked_at": "2026-11-06T11:42:02+08:00",
+   "path": [
+    "進入首頁",
+    "學生手冊(含學生獎懲規定) Student Handbook"
+   ],
+   "changed_at": "2026-11-06T11:42:02+08:00",
+   "content_hash": "6885e47b577e9ba359cc5e9c67347fd4fefbab0efd2a9a323e4865861a6b5ba6",
+   "doc_links": [],
+   "keywords": [
+    "3C"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-243752083699515.json",
+   "detail_revision": "547a753ed9008c3553e3acf7ab0198552afe86ae3abb4996ff02c43ff667e6ab",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎懲",
+     "#merit"
+    ],
+    "segments": [
+     {
+      "s": 56,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 254,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "158967854032842": {
    "page_id": 158967854032842,
@@ -13263,6 +13309,55 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-243752083699515",
+   "kind": "school_info",
+   "title": "進入首頁 › 學生手冊(含學生獎懲規定) Student Handbook",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "3C"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-243752083699515.json",
+   "detail_revision": "547a753ed9008c3553e3acf7ab0198552afe86ae3abb4996ff02c43ff667e6ab",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "獎懲",
+     "#merit"
+    ],
+    "segments": [
+     {
+      "s": 56,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 254,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cchs-info-258591998499107",
    "kind": "school_info",
    "title": "進入首頁 › 親師月刊 Publications",
@@ -14233,5 +14328,5 @@
    "label": "進入首頁"
   }
  ],
- "last_run_at": "2026-11-06T08:17:52+08:00"
+ "last_run_at": "2026-11-06T11:42:04+08:00"
 }
