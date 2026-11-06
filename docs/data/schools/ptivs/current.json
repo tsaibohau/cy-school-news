@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T20:03:04+08:00",
+ "generated_at": "2026-11-07T03:56:30+08:00",
  "school": {
   "id": "ptivs",
   "name": "國立成大附屬南工",
@@ -8,6 +8,50 @@
   "base": "https://www.ptivs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "ptivs-20289",
+   "title": "第38屆銘傳文藝獎高中職中文散文競賽",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20289",
+   "category": "競賽",
+   "first_seen": "2026-11-07T03:56:30+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "ptivs-20290",
    "title": "轉知 2026資訊科技創新設計暨應用競賽，鼓勵師生踴躍組隊報名參加。",
@@ -20,8 +64,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -64,8 +108,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -160,8 +204,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -228,8 +272,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2
@@ -326,8 +370,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -2771,7 +2815,35 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20214",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "高科大"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "高科大"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-28"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ptivs-20213",

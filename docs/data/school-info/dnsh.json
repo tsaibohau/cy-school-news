@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-06T20:24:25+08:00",
+ "generated_at": "2026-11-07T04:09:05+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -480,19 +480,26 @@
    "page_id": 237310056130010,
    "url": "https://dnsh.ylc.edu.tw/dnsh94.htm",
    "label": "退休教師聯誼會",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-07T04:09:01+08:00",
+   "path": [
+    "南中團隊",
+    "退休教師聯誼會",
+    "退休教師首頁"
+   ]
   },
   "70378327992452": {
    "page_id": 70378327992452,
    "url": "https://dnsh.ylc.edu.tw/javascript :return false",
    "label": "網頁功能",
-   "status": "pending",
+   "status": "gone",
    "depth": 1,
    "parent_path": [
     "認識本校"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-07T04:09:03+08:00"
   },
   "7247197859832": {
    "page_id": 7247197859832,
@@ -1106,5 +1113,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-06T20:24:25+08:00"
+ "last_run_at": "2026-11-07T04:09:05+08:00"
 }

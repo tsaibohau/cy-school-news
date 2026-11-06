@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-06T20:25:19+08:00",
+ "generated_at": "2026-11-07T04:09:31+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -3933,12 +3933,49 @@
    "page_id": 277352779129330,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,422,409,421",
    "label": "學校績效表現",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 44
+   "order": 44,
+   "checked_at": "2026-11-07T04:09:29+08:00",
+   "path": [
+    "網站導覽",
+    "學校績效表現"
+   ],
+   "changed_at": "2026-11-07T04:09:29+08:00",
+   "content_hash": "b47ff3454dd511c9f610c757f66ec41bbf3b9bd1d4d93f43df071c4b0ac4e554",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-277352779129330.json",
+   "detail_revision": "9c76ce93fa8ed98d2bbc89c5b7ee5a9c1d3aa26b935f767b6f6d01741f6421ae",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-30"
+      ]
+     }
+    ]
+   }
   },
   "106180594146166": {
    "page_id": 106180594146166,
@@ -10530,6 +10567,46 @@
      }
     ]
    }
+  },
+  {
+   "id": "hnvs-info-277352779129330",
+   "kind": "school_info",
+   "title": "網站導覽 › 學校績效表現",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,422,409,421",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-277352779129330.json",
+   "detail_revision": "9c76ce93fa8ed98d2bbc89c5b7ee5a9c1d3aa26b935f767b6f6d01741f6421ae",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-30"
+      ]
+     }
+    ]
+   }
   }
  ],
  "roots": [
@@ -10810,5 +10887,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-06T20:25:19+08:00"
+ "last_run_at": "2026-11-07T04:09:31+08:00"
 }

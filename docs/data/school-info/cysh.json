@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-06T20:23:01+08:00",
+ "generated_at": "2026-11-07T04:08:04+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -7006,11 +7006,166 @@
   },
   "982": {
    "page_id": 982,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T04:08:00+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "出納組",
+    "關於出納組",
+    "組織職掌"
+   ],
+   "changed_at": "2026-11-07T04:08:00+08:00",
+   "content_hash": "73ecdbc8392468077cf6d15e83a9c216a16b3d0834607ab99b3f0bfa0d651d36",
+   "doc_links": [],
+   "keywords": [
+    "收費",
+    "代辦費",
+    "傳真",
+    "分機",
+    "專線",
+    "登記",
+    "註冊費",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-982.json",
+   "detail_revision": "f6003700bffa7c62ac252ecf3783b783aef55bb797d81166e9bc2eb829f2fc89",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   "983": {
    "page_id": 983,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T04:08:02+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "出納組",
+    "服務項目",
+    "法令規章"
+   ],
+   "changed_at": "2026-11-07T04:08:02+08:00",
+   "content_hash": "e9e06df5465969c1ecfdadf26c6323f9de11ba5a1129e88fbc4af095a52f1919",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-983.json",
+   "detail_revision": "2f2d12e39c3a2d443b26bf926bfbd47dee9690a2fe9c6f42ab7137805f4d75fe",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ],
+      "d": [
+       "2013-11-12"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ],
+      "d": [
+       "2016-07-27"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "allow"
+      ],
+      "d": [
+       "2016-09-30"
+      ]
+     }
+    ]
+   }
   },
   "984": {
    "page_id": 984,
@@ -34874,6 +35029,161 @@
    }
   },
   {
+   "id": "cysh-info-982",
+   "kind": "school_info",
+   "title": "出納組 › 關於出納組 › 組織職掌",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-982.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "收費",
+    "代辦費",
+    "傳真",
+    "分機",
+    "專線",
+    "登記",
+    "註冊費",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-982.json",
+   "detail_revision": "f6003700bffa7c62ac252ecf3783b783aef55bb797d81166e9bc2eb829f2fc89",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處",
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "費用",
+       "註冊組"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-info-983",
+   "kind": "school_info",
+   "title": "出納組 › 服務項目 › 法令規章",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-983.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-983.json",
+   "detail_revision": "2f2d12e39c3a2d443b26bf926bfbd47dee9690a2fe9c6f42ab7137805f4d75fe",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ],
+      "d": [
+       "2013-11-12"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ],
+      "d": [
+       "2016-07-27"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "allow"
+      ],
+      "d": [
+       "2016-09-30"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-992",
    "kind": "school_info",
    "title": "總務處 › 出納組 › 關於出納組",
@@ -55392,5 +55702,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-06T20:23:01+08:00"
+ "last_run_at": "2026-11-07T04:08:04+08:00"
 }

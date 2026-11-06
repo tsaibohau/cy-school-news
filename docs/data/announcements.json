@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-06T20:03:04+08:00",
+ "generated_at": "2026-11-07T03:56:30+08:00",
  "schools": [
   {
    "id": "cysh",
@@ -406,6 +406,521 @@
    "date_status": "unverified"
   },
   {
+   "id": "ycsh-21415",
+   "title": "第17屆全國高中職日語「看圖說故事」（紙芝居）比賽",
+   "date": "2026-11-06",
+   "source_category": "",
+   "school": "ycsh",
+   "school_name": "永慶高中",
+   "url": "https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21415",
+   "category": "競賽",
+   "first_seen": "2026-11-07T03:56:30+08:00",
+   "detail_status": "permanent_error",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "ycsh-21414",
+   "title": "學校行政數位轉化工作坊",
+   "date": "2026-11-06",
+   "source_category": "",
+   "school": "ycsh",
+   "school_name": "永慶高中",
+   "url": "https://www.ycsh.cyc.edu.tw/modules/tadnews/index.php?nsn=21414",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T03:56:30+08:00",
+   "detail_status": "permanent_error",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "ptivs-20289",
+   "title": "第38屆銘傳文藝獎高中職中文散文競賽",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20289",
+   "category": "競賽",
+   "first_seen": "2026-11-07T03:56:30+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nknush-22530",
+   "title": "公告學務處高師大附中48周年校慶活動",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22530/%e9%ab%98%e5%b8%ab%e5%a4%a7%e9%99%84%e4%b8%ad48%e5%91%a8%e5%b9%b4%e6%a0%a1%e6%85%b6%e6%b4%bb%e5%8b%95/",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T03:56:30+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "校慶",
+     "師大",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "家長",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "校慶",
+       "作息",
+       "放學",
+       "#celebration",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "運動會",
+       "放學",
+       "#celebration",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "運動會",
+       "校慶",
+       "#leave",
+       "#celebration"
+      ],
+      "k": [
+       "time",
+       "deny"
+      ],
+      "d": [
+       "2026-11-13",
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "運動會",
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "校慶",
+       "師大",
+       "#celebration"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "運動會",
+       "學務處",
+       "校慶",
+       "#celebration"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "家長",
+       "師大"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "中山",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "課表",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "午餐",
+       "導師"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 62,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "師大"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "師大"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [
+       "放學",
+       "校慶",
+       "導師",
+       "#celebration",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [
+       "學務處",
+       "校慶",
+       "比賽",
+       "#contest",
+       "#celebration"
+      ],
+      "k": [
+       "time"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-137113",
    "title": "第十九屆「APX全國高中數理能力檢定」報名自即日起至115年12月2日止",
    "date": "2026-11-06",
@@ -417,8 +932,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -963,8 +1478,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1
@@ -1547,8 +2062,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -1883,8 +2398,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -1907,8 +2422,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cysh-137114",
@@ -1922,8 +2437,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -1946,8 +2461,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -2127,8 +2642,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -2298,8 +2813,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -2378,8 +2893,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -2490,8 +3005,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -2541,8 +3056,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -2663,8 +3178,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "cygsh-187167",
@@ -2678,8 +3193,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -2864,8 +3379,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -3097,8 +3612,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -3254,8 +3769,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -3307,8 +3822,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -3379,8 +3894,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -3441,8 +3956,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -3497,8 +4012,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -3619,8 +4134,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -3885,8 +4400,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -3972,8 +4487,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -4022,8 +4537,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -4066,8 +4581,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -4275,8 +4790,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -4431,8 +4946,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -4471,8 +4986,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -4504,8 +5019,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -4546,8 +5061,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -4579,8 +5094,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -4625,8 +5140,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -4695,8 +5210,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -4799,8 +5314,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "event",
@@ -4931,8 +5446,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -5055,8 +5570,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -5195,8 +5710,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -5238,8 +5753,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -5289,8 +5804,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -5399,8 +5914,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -5435,8 +5950,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -5473,8 +5988,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -5591,8 +6106,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -5690,8 +6205,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -5819,8 +6334,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -5971,8 +6486,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "event",
@@ -6139,8 +6654,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6216,8 +6731,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6311,8 +6826,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6333,8 +6848,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6355,8 +6870,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6380,8 +6895,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "gwehs-402076",
@@ -6396,8 +6911,8 @@
    "detail_status": "parsed",
    "detail_attempts": 1,
    "date_tried": true,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6419,8 +6934,8 @@
    "detail_status": "parsed",
    "detail_attempts": 1,
    "date_tried": true,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6442,8 +6957,8 @@
    "detail_status": "parsed",
    "detail_attempts": 1,
    "date_tried": true,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "gwehs-402073",
@@ -6458,8 +6973,8 @@
    "detail_status": "parsed",
    "detail_attempts": 1,
    "date_tried": true,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6482,8 +6997,8 @@
    "detail_status": "parsed",
    "detail_attempts": 1,
    "date_tried": true,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6565,8 +7080,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      3
@@ -6594,8 +7109,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6643,8 +7158,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6687,8 +7202,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6729,8 +7244,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6775,8 +7290,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -6865,8 +7380,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -6912,8 +7427,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -7043,8 +7558,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -7103,8 +7618,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -7297,8 +7812,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -7539,8 +8054,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -7772,8 +8287,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -8000,8 +8515,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -8101,8 +8616,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -8409,8 +8924,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -8636,8 +9151,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -8728,8 +9243,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -8785,8 +9300,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -8879,8 +9394,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -8979,8 +9494,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "permanent_error",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -9004,8 +9519,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "permanent_error",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "ycsh-21411",
@@ -9019,8 +9534,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "permanent_error",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "ycsh-21409",
@@ -9034,8 +9549,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "permanent_error",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "ycsh-21410",
@@ -9049,8 +9564,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "permanent_error",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
-   "snippet_tried": true
+   "snippet_tried": true,
+   "summary_version": "extractive-v4"
   },
   {
    "id": "ycsh-21408",
@@ -9112,8 +9627,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -9236,8 +9751,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -9282,8 +9797,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -9390,8 +9905,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -9423,8 +9938,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -9465,8 +9980,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -9579,8 +10094,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -9601,8 +10116,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -9645,8 +10160,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -9741,8 +10256,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -9809,8 +10324,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      2
@@ -9907,8 +10422,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -9983,8 +10498,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -10248,8 +10763,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [],
     "classes": [],
@@ -10319,8 +10834,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -10504,8 +11019,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -10586,8 +11101,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -10698,8 +11213,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -10808,8 +11323,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "event",
@@ -10893,8 +11408,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -10998,8 +11513,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -11072,8 +11587,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -11223,8 +11738,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [
      1,
@@ -11293,8 +11808,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -11354,8 +11869,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -11414,8 +11929,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -11456,8 +11971,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -11558,8 +12073,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -11614,8 +12129,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -11824,8 +12339,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -11944,8 +12459,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -12032,8 +12547,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -12134,8 +12649,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12230,8 +12745,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -12341,8 +12856,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12375,8 +12890,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12407,8 +12922,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12439,8 +12954,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12472,8 +12987,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12551,8 +13066,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12611,8 +13126,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12671,8 +13186,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -12702,8 +13217,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12813,8 +13328,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -12901,8 +13416,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -12983,8 +13498,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -13118,8 +13633,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -13322,8 +13837,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -13456,8 +13971,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -13588,8 +14103,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -13859,8 +14374,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -13908,8 +14423,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -13941,8 +14456,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -13993,8 +14508,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -14096,8 +14611,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -14251,8 +14766,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -14282,8 +14797,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -14322,8 +14837,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -14362,8 +14877,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -14393,8 +14908,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -27884,8 +28399,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -149601,8 +150116,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -149641,7 +150156,39 @@
    "url": "https://www.sfsh.tn.edu.tw/ischool/public/news_view/show.php?nid=23209",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "電競"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "電競"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sfsh-23208",
@@ -155055,7 +155602,319 @@
    "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=829",
    "category": "升學",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "cc01d8f2715c08b325249ce920f295ce7fda5251f82a61a93c9d3aaa16fb409c"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "cc01d8f2715c08b325249ce920f295ce7fda5251f82a61a93c9d3aaa16fb409c"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-28"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "四技二專",
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "四技二專",
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "nnkieh-826",
@@ -155095,7 +155954,7 @@
   },
   {
    "id": "pmai-28255",
-   "title": "公務人力發展學院116年度訓練計畫-訓練需求調查",
+   "title": "公務人力發展學院116年度訓練計畫-訓練需求調查 – 國立北門高級農工職業學校行政單位網站",
    "date": "2026-10-28",
    "source_category": "最新消息",
    "school": "pmai",
@@ -155103,7 +155962,69 @@
    "url": "https://www.pmai.tn.edu.tw/news/%e5%85%ac%e5%8b%99%e4%ba%ba%e5%8a%9b%e7%99%bc%e5%b1%95%e5%ad%b8%e9%99%a2116%e5%b9%b4%e5%ba%a6%e8%a8%93%e7%b7%b4%e8%a8%88%e7%95%ab-%e8%a8%93%e7%b7%b4%e9%9c%80%e6%b1%82%e8%aa%bf%e6%9f%a5-page28255",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-03",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "c140c6f6eacc45c67a79072928f59e00c7deb90af3a7e5002d89f6ad063a89be"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pmai-28252",
@@ -155127,7 +156048,35 @@
    "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20214",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "高科大"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "高科大"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-28"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ptivs-20213",
@@ -155161,12 +156110,12 @@
    "school": "tncvs",
    "school_name": "臺南高商",
    "url": "https://www.tncvs.tn.edu.tw/latestevent/index-1.asp?Parser=9,3,15,,,,24295",
-   "category": "升學",
+   "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -180559,8 +181508,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -211217,8 +212166,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -254903,8 +255852,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -390075,9 +391024,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -390371,9 +391320,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -390420,9 +391369,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -390523,9 +391472,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -390642,9 +391591,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -390780,9 +391729,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -390907,9 +391856,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "audience": {
     "grades": [
      1,
@@ -391118,9 +392067,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "audience": {
     "grades": [
      3
@@ -391327,9 +392276,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -391528,9 +392477,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -391576,9 +392525,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -391678,9 +392627,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -391844,9 +392793,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -392054,9 +393003,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -392100,9 +393049,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [],
@@ -392132,9 +393081,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -392377,9 +393326,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "audience": {
     "grades": [],
     "classes": [],
@@ -392505,9 +393454,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "event",
@@ -392670,9 +393619,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -393227,9 +394176,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -393409,9 +394358,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -393496,9 +394445,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -393597,9 +394546,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -393642,9 +394591,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "calendar_events": [
     {
      "kind": "deadline",
@@ -393776,9 +394725,9 @@
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
+   "snippet_tried": true,
    "summary_version": "extractive-v4",
    "date_status": "verified",
-   "snippet_tried": true,
    "tokens": {
     "v": 1,
     "title": [
@@ -393819,7 +394768,45 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26534",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中山",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "中山",
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-14"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26533",
@@ -393831,7 +394818,153 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26533",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-03-07",
+     "provenance": "verified_announcement_event",
+     "source_revision": "0487be1ad6d537960bc4de1c970df91c8e31204ca7515580d026ef1214dab8b9"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "清大"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "清大"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-07",
+       "2026-03-15"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "清大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-07",
+       "2026-03-15"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "清大"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26532",
@@ -393843,7 +394976,104 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26532",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-04-11",
+     "provenance": "verified_announcement_event",
+     "source_revision": "5c5cb07c05570c7f0000fd8dc84e65285296e6bb2ce2b3ffe295c69037d21bc2"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "開放日",
+     "元智"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "開放日",
+       "元智"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-11"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "開放日",
+       "元智",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-04-11"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "開放日",
+       "元智",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26530",
@@ -393855,7 +395085,194 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26530",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-07-01",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ef290d3d49060d63a86e3d0ef0723894df86f885be51e788dd9b5cf87adf7371"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1,
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中興"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "中興"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       3
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-01",
+       "2026-07-03"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-05-31"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "中興"
+      ],
+      "k": [
+       "place",
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       3
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-01",
+       "2026-07-03"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-05-31"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "中興"
+      ],
+      "k": [
+       "place",
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26529",
@@ -393867,7 +395284,97 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26529",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "成大",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-14"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "交大",
+       "成大",
+       "中央大學"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "成大",
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-14"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "交大",
+       "成大",
+       "中央大學"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26528",
@@ -393879,7 +395386,144 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26528",
    "category": "招生編班",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "成大",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "成大",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-16"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "家長",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-16"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-16"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26531",
@@ -393891,7 +395535,40 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26531",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26527",
@@ -393903,7 +395580,74 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26527",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中山",
+     "#enrollment",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "中山",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "英檢",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26526",
@@ -393915,7 +395659,138 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26526",
    "category": "升學",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "開放日",
+     "弘光",
+     "升學",
+     "#admission",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "開放日",
+       "弘光",
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-15"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-15"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "家長",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-15"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-15"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26525",
@@ -393927,7 +395802,80 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26525",
    "category": "升學",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "四技二專",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "四技二專",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "申請入學",
+       "四技二專",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "申請入學",
+       "四技二專",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26523",
@@ -393939,7 +395887,144 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26523",
    "category": "招生編班",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-01-12",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d41863f637c266e3b909520f8d16ec796c1b582ec578d3a5c9631327a1d75c9d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-01-12"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-03-18",
+       "2026-04-15"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "教務處",
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-01-12"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-03-18",
+       "2026-04-15"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "教務處",
+       "考試",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26522",
@@ -393951,7 +396036,134 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26522",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-03-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "291155dfdd34d02b6a0ac955b2e11d6fac80ed492e600779dcb2101d8e05f5b7"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "海大"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "海大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-09"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-09"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26521",
@@ -393963,7 +396175,61 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26521",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26524",
@@ -393975,7 +396241,40 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26524",
    "category": "競賽",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26520",
@@ -393987,7 +396286,155 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26520",
    "category": "招生編班",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-07"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-14"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-16",
+       "2026-03-19"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-07"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-14"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-03-16",
+       "2026-03-19"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26518",
@@ -393999,7 +396446,71 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26518",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "機車"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "公假",
+       "機車",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2025-12-16",
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "教官室",
+       "機車",
+       "費用"
+      ],
+      "k": [
+       "fee",
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26519",
@@ -394011,7 +396522,29 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26519",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26517",
@@ -394023,7 +396556,36 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26517",
    "category": "教職員",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26516",
@@ -394035,7 +396597,36 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26516",
    "category": "教職員",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26515",
@@ -394047,7 +396638,27 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26515",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26514",
@@ -394059,7 +396670,43 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26514",
    "category": "一般",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "網路",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cysh-134567",
@@ -394423,7 +397070,62 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26513",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中山",
+     "網路"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "中山",
+       "網路"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-05"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "中山"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "中山"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26512",
@@ -394435,7 +397137,144 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26512",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-03-07",
+     "provenance": "verified_announcement_event",
+     "source_revision": "8b1b52f65c1d8677d0a19971eecb95ae5eabb1f33d7b2e3e281c631c55edca35"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "升學",
+       "#admission",
+       "#enrollment",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-07",
+       "2026-03-08"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "中山",
+       "中正"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "學習歷程",
+       "升學",
+       "#admission",
+       "#enrollment",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-07",
+       "2026-03-08"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "中山",
+       "中正"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26511",
@@ -394447,7 +397286,152 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26511",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-03-14",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "f2ad2f2ffe86d80f87909f9dd9527a4dcc525dac3f94dd78e9dba901a5f42e7d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-14"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-14"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26510",
@@ -394459,7 +397443,140 @@
    "url": "https://www.pksh.ylc.edu.tw/ischool/public/news_view/show.php?nid=26510",
    "category": "研習活動",
    "first_seen": "2026-09-07T03:55:21.045029+00:00",
-   "date_status": "unverified"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "date_status": "verified",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2026-03-21",
+     "provenance": "verified_announcement_event",
+     "source_revision": "1085bd0e1edacd56f6f46eff25f0a717716b545e249cb2cbdcf5dd4a19393fc6"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-21"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-21"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "政大"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-21"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-21"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "政大"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "pksh-26509",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-06T20:24:00+08:00",
+ "generated_at": "2026-11-07T04:08:43+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -656,12 +656,17 @@
    "page_id": 60320388423428,
    "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/learn1/",
    "label": "學習輔導",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "輔導室"
    ],
-   "order": 53
+   "order": 53,
+   "checked_at": "2026-11-07T04:08:42+08:00",
+   "path": [
+    "輔導室",
+    "學習輔導"
+   ]
   },
   "135385832175577": {
    "page_id": 135385832175577,
@@ -817,6 +822,42 @@
     "文教基金會"
    ],
    "order": 67
+  },
+  "123025984563710": {
+   "page_id": 123025984563710,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/learn1/learn1-2/",
+   "label": "學科學習輔導",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "輔導室",
+    "學習輔導"
+   ],
+   "order": 68
+  },
+  "30595600910491": {
+   "page_id": 30595600910491,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/learn1/learn1-3//",
+   "label": "學科能力競賽",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "輔導室",
+    "學習輔導"
+   ],
+   "order": 69
+  },
+  "256213878943097": {
+   "page_id": 256213878943097,
+   "url": "https://www.tlsh.ylc.edu.tw/affairs/counselors/learn1/learn1-4/",
+   "label": "課外閱讀建議書單",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "輔導室",
+    "學習輔導"
+   ],
+   "order": 70
   }
  },
  "handbook": {},
@@ -1086,5 +1127,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-06T20:24:00+08:00"
+ "last_run_at": "2026-11-07T04:08:43+08:00"
 }

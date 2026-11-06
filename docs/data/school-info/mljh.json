@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "mljh",
- "generated_at": "2026-11-06T20:24:51+08:00",
+ "generated_at": "2026-11-07T04:09:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "31793209037602": {
@@ -452,19 +452,26 @@
    "page_id": 93916770231141,
    "url": "https://mljh.ylc.edu.tw/cp.aspx?n=108817",
    "label": "分機表(二) Ext",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-07T04:09:06+08:00",
+   "path": [
+    "認識本校",
+    "校內分機",
+    "第二總機 05-6934514"
+   ]
   },
   "191624283064992": {
    "page_id": 191624283064992,
    "url": "https://mljh.ylc.edu.tw/javascript :return false",
    "label": "網頁功能",
-   "status": "pending",
+   "status": "gone",
    "depth": 1,
    "parent_path": [
     "認識本校"
    ],
-   "order": 39
+   "order": 39,
+   "checked_at": "2026-11-07T04:09:08+08:00"
   },
   "240552986350538": {
    "page_id": 240552986350538,
@@ -693,5 +700,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-06T20:24:51+08:00"
+ "last_run_at": "2026-11-07T04:09:09+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T20:03:04+08:00",
+ "generated_at": "2026-11-07T03:56:30+08:00",
  "school": {
   "id": "nnkieh",
   "name": "國立南科國際實驗高中",
@@ -20,8 +20,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -66,8 +66,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -174,8 +174,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -207,8 +207,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -249,8 +249,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -2943,7 +2943,319 @@
    "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=829",
    "category": "升學",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "cc01d8f2715c08b325249ce920f295ce7fda5251f82a61a93c9d3aaa16fb409c"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "cc01d8f2715c08b325249ce920f295ce7fda5251f82a61a93c9d3aaa16fb409c"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-28"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "四技二專",
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "四技二專",
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "nnkieh-826",

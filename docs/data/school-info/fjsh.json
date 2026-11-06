@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-06T20:23:46+08:00",
+ "generated_at": "2026-11-07T04:08:29+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -3713,11 +3713,144 @@
   },
   "521": {
    "page_id": 521,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T04:08:25+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組",
+    "畢業典禮"
+   ],
+   "changed_at": "2026-11-07T04:08:25+08:00",
+   "content_hash": "d2c51f50f43bcee694f60eb2551ef225eb69ddcf8b19ca2fc74e62dd8622b3ca",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "選擇"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-521.json",
+   "detail_revision": "c64cf9be00619b87954d66e3bbe37eb5ff3732aeaac7e1c085b73b19aa3fcda8",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "畢業典禮",
+     "學務處",
+     "#graduation"
+    ],
+    "segments": []
+   }
   },
   "522": {
    "page_id": 522,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T04:08:27+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組",
+    "學貸與工讀"
+   ],
+   "changed_at": "2026-11-07T04:08:27+08:00",
+   "content_hash": "eb6b0548d67df4b97c1e4de6590998ce1466bc92018ea8d71751dfc6b3c6c133",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "工讀",
+    "申請",
+    "地址",
+    "專線",
+    "志願",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-522.json",
+   "detail_revision": "4cbae27ef7390c7cd99d8840f4ae04fa95a30a6b7ca4e3aee2b1e303e767e919",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "就學貸款",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "志願",
+       "家長",
+       "#admission",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "533": {
    "page_id": 533,
@@ -7755,6 +7888,145 @@
    }
   },
   {
+   "id": "fjsh-info-521",
+   "kind": "school_info",
+   "title": "學務處 › 訓育組 › 畢業典禮",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-521.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "選擇"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-521.json",
+   "detail_revision": "c64cf9be00619b87954d66e3bbe37eb5ff3732aeaac7e1c085b73b19aa3fcda8",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "畢業典禮",
+     "學務處",
+     "#graduation"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "fjsh-info-522",
+   "kind": "school_info",
+   "title": "學務處 › 訓育組 › 學貸與工讀",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-522.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "工讀",
+    "申請",
+    "地址",
+    "專線",
+    "志願",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-522.json",
+   "detail_revision": "4cbae27ef7390c7cd99d8840f4ae04fa95a30a6b7ca4e3aee2b1e303e767e919",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "就學貸款",
+     "#scholarship"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "志願",
+       "家長",
+       "#admission",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -7852,5 +8124,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-06T20:23:46+08:00"
+ "last_run_at": "2026-11-07T04:08:29+08:00"
 }

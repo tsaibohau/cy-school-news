@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-06T11:41:52+08:00",
+ "generated_at": "2026-11-07T04:07:29+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -3128,12 +3128,28 @@
    "page_id": 47604525079125,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4467.php",
    "label": "學校校地總面積、校舍樓地板總面積",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 33
+   "order": 33,
+   "checked_at": "2026-11-07T04:07:27+08:00",
+   "path": [
+    "校務資料開放專區",
+    "學校校務資訊",
+    "基本資訊",
+    "學校校地總面積、校舍樓地板總面積"
+   ],
+   "changed_at": "2026-11-07T04:07:27+08:00",
+   "content_hash": "79e16f569cf36b27c774f75b05040bf9a4e8afd95bdae4a9b633dde2923cd3f7",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-47604525079125.json",
+   "detail_revision": "4d040cd4a7b9a36fa982b5de4f28f085f484f997c110e33fec450eba32464c47",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "89907306228635": {
    "page_id": 89907306228635,
@@ -3853,6 +3869,23 @@
      }
     ]
    }
+  },
+  {
+   "id": "kssh-info-47604525079125",
+   "kind": "school_info",
+   "title": "學校校務資訊 › 基本資訊 › 學校校地總面積、校舍樓地板總面積",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4467.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-47604525079125.json",
+   "detail_revision": "4d040cd4a7b9a36fa982b5de4f28f085f484f997c110e33fec450eba32464c47",
+   "detail_status": "parsed"
   },
   {
    "id": "kssh-info-64530537523419",
@@ -6676,5 +6709,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-06T11:41:52+08:00"
+ "last_run_at": "2026-11-07T04:07:29+08:00"
 }

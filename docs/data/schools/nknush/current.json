@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T20:03:04+08:00",
+ "generated_at": "2026-11-07T03:56:30+08:00",
  "school": {
   "id": "nknush",
   "name": "國立高師大附中",
@@ -8,6 +8,432 @@
   "base": "https://www.nknush.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "nknush-22530",
+   "title": "公告學務處高師大附中48周年校慶活動",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22530/%e9%ab%98%e5%b8%ab%e5%a4%a7%e9%99%84%e4%b8%ad48%e5%91%a8%e5%b9%b4%e6%a0%a1%e6%85%b6%e6%b4%bb%e5%8b%95/",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T03:56:30+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處",
+     "校慶",
+     "師大",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "家長",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "校慶",
+       "作息",
+       "放學",
+       "#celebration",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "運動會",
+       "放學",
+       "#celebration",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "運動會",
+       "校慶",
+       "#leave",
+       "#celebration"
+      ],
+      "k": [
+       "time",
+       "deny"
+      ],
+      "d": [
+       "2026-11-13",
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "運動會",
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "校慶",
+       "師大",
+       "#celebration"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-13"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "運動會",
+       "學務處",
+       "校慶",
+       "#celebration"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "公假",
+       "#leave"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1,
+       2
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "校慶",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "家長",
+       "師大"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "中山",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "作息",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "課表",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "午餐",
+       "導師"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "導師"
+      ],
+      "k": [
+       "time",
+       "audience"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 62,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 63,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "師大"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "師大"
+      ],
+      "k": []
+     },
+     {
+      "s": 68,
+      "t": [
+       "放學",
+       "校慶",
+       "導師",
+       "#celebration",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [
+       "學務處",
+       "校慶",
+       "比賽",
+       "#contest",
+       "#celebration"
+      ],
+      "k": [
+       "time"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nknush-22525",
    "title": "公告訓育組第38屆銘傳文藝獎高中職中文散文競賽",
@@ -20,8 +446,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -54,8 +480,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -86,8 +512,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -118,8 +544,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -151,8 +577,8 @@
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [

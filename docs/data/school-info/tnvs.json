@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-06T20:26:11+08:00",
+ "generated_at": "2026-11-07T04:10:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -7282,23 +7282,379 @@
    "page_id": 254244679750156,
    "url": "https://www.tnvs.tn.edu.tw/library/library-intro/",
    "label": "圖書館-簡介",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "看見南水"
    ],
-   "order": 45
+   "order": 45,
+   "checked_at": "2026-11-07T04:10:11+08:00",
+   "path": [
+    "看見南水",
+    "圖書館-簡介"
+   ],
+   "changed_at": "2026-11-07T04:10:11+08:00",
+   "content_hash": "fd85998e8f61880be4bc6c1151093104f38f41fa04d364e7d234863840e9bab4",
+   "doc_links": [],
+   "keywords": [
+    "圖書館",
+    "借閱",
+    "閱覽室",
+    "借書",
+    "簡介",
+    "傳真",
+    "分機",
+    "學生證",
+    "校長",
+    "演講",
+    "研習",
+    "社團",
+    "科展",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-254244679750156.json",
+   "detail_revision": "cd18a0e3bd4654c975c2c87acfa48eb09dae59b4524cfffbe6428370c215e4a8",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "圖書館",
+       "#library",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "圖書館",
+       "#library",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "教務處",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "圖書館",
+       "網路",
+       "借書",
+       "#library",
+       "#contact",
+       "#school_profile"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "自修室",
+       "網路",
+       "圖書館",
+       "借書",
+       "#contest",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "圖書館",
+       "社團",
+       "#club",
+       "#library",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "網路",
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "圖書館",
+       "網路",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "圖書館",
+       "網路",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "學生證",
+       "借書",
+       "#library",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "學務處",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "圖書館",
+       "展覽",
+       "#library",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   "240427130653925": {
    "page_id": 240427130653925,
    "url": "https://www.tnvs.tn.edu.tw/library/library-link/",
    "label": "圖書館-常用連結",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "看見南水"
    ],
-   "order": 46
+   "order": 46,
+   "checked_at": "2026-11-07T04:10:13+08:00",
+   "path": [
+    "看見南水",
+    "圖書館-常用連結"
+   ],
+   "changed_at": "2026-11-07T04:10:13+08:00",
+   "content_hash": "78cfaa22052e0f7441a656b945eadeef5dd066b4c8cb5b209f7f6f6afc8ea224",
+   "doc_links": [],
+   "keywords": [
+    "圖書館",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-240427130653925.json",
+   "detail_revision": "dc4374841bf6100faa0ea5ebdfe684fc0f906569dea01e5eb37d70ee4abca2f7",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "112796431957786": {
    "page_id": 112796431957786,
@@ -14578,6 +14934,81 @@
    }
   },
   {
+   "id": "tnvs-info-240427130653925",
+   "kind": "school_info",
+   "title": "看見南水 › 圖書館-常用連結",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/library/library-link/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "圖書館",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-240427130653925.json",
+   "detail_revision": "dc4374841bf6100faa0ea5ebdfe684fc0f906569dea01e5eb37d70ee4abca2f7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-254008508211269",
    "kind": "school_info",
    "title": "註冊組",
@@ -15148,6 +15579,293 @@
        "#scholarship"
       ],
       "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-info-254244679750156",
+   "kind": "school_info",
+   "title": "看見南水 › 圖書館-簡介",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/library/library-intro/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "圖書館",
+    "借閱",
+    "閱覽室",
+    "借書",
+    "簡介",
+    "傳真",
+    "分機",
+    "學生證",
+    "校長",
+    "演講",
+    "研習",
+    "社團",
+    "科展",
+    "電話"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-254244679750156.json",
+   "detail_revision": "cd18a0e3bd4654c975c2c87acfa48eb09dae59b4524cfffbe6428370c215e4a8",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "圖書館",
+       "#library",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "圖書館",
+       "#library",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "教務處",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "圖書館",
+       "網路",
+       "借書",
+       "#library",
+       "#contact",
+       "#school_profile"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "自修室",
+       "網路",
+       "圖書館",
+       "借書",
+       "#contest",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "圖書館",
+       "社團",
+       "#club",
+       "#library",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "網路",
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "圖書館",
+       "網路",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "圖書館",
+       "網路",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "學生證",
+       "借書",
+       "#library",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "學務處",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "圖書館",
+       "展覽",
+       "#library",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "audience"
+      ]
      }
     ]
    }
@@ -16046,5 +16764,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-06T20:26:11+08:00"
+ "last_run_at": "2026-11-07T04:10:14+08:00"
 }
