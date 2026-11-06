@@ -2373,3 +2373,15 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 「奧林匹克比賽還來的及報嗎」：分類主題（競賽）不再讓「班際比賽.pdf」之類泛稱檔案通過門檻；來得及的錯字變體產生的雜訊不再要求引用句含該字。恢復用奧林匹亞公告回答。
 - 「段考什麼時候」：研習、工作坊、教師類公告不能取代行事曆；行事曆維持第一。
 - 測試：`tests/test_qa_sweep_fixes.js` 加上兩案（自編假資料）。版本：`assistant-qa.js?v=87`、`cy-news-v162`。回歸 hit 641／near 67／miss 192。
+
+## 2026-11-06 問校務效能：每題 437 ms → 約 115 ms（回答完全不變）
+- 瓶頸（CPU profile）：同義詞查找（`qa-synonyms.js` 的 variants／find／expand）是純函式，卻對「每則公告 × 每個詞」重算，每次掃過整張同義詞表，占 40% 時間；`search-query.js` 的 hasRule 每次重建整份規則清單；`announcementScore` 在 readList 與 answer 各對約 2,300 則公告重算一次。
+- 修正：
+  - `qa-synonyms.js`：compact、expand、find、variants、broader、concepts 加快取（上限 2 萬筆，回傳複本）。
+  - `search-query.js`：規則清單與 id 索引只建一次；bigrams、exactTermsFor 快取；不帶 options 的 announcementScore 依「公告 × 題目」快取。
+  - `assistant-qa.js`：overview、detailText 依物件快取。
+  - 記憶體：兩個 compact 快取改成同時限制字數（300 萬字）；原本只限筆數，公告內文（最長 12 萬字）也當成 key，可能吃掉數百 MB。
+  - 正確性：登入後 `applyMemberContent` 會直接改公告物件的摘要；`itemFields`（原有）與新的快取都會比對摘要，變了就重算（原本登入後搜尋會用到舊欄位）。
+  - `app.js`：訪客搜尋用的「去掉摘要」複本每則只做一次，搜尋快取可以跨按鍵沿用。
+- 驗證：嘉中、嘉女各 450 題，修改前後的狀態、來源與摘要逐字相同；測試失敗集合與 main 相同。
+- 版本：`assistant-qa.js?v=88`、`qa-synonyms.js?v=10`、`search-query.js?v=61`、`app.js?v=138`、`cy-news-v163`。

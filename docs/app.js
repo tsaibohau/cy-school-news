@@ -1743,9 +1743,17 @@
       it.detail_revision = member.source_hash || "";
       return it;
     }
+    /* Guests search titles only. The stripped copy is made once per notice, so search caches
+       keyed by the notice object (fields, scores) keep working across keystrokes. */
+    var guestCopies = typeof WeakMap !== "undefined" ? new WeakMap() : null;
     function searchableItem(it) {
       if (hasSignedInAccount()) return it;
-      return Object.assign({}, it, { summary: "", snippet: "", calendar_events: [], detail_ref: "", detail_available: false });
+      var copy = guestCopies && guestCopies.get(it);
+      if (!copy) {
+        copy = Object.assign({}, it, { summary: "", snippet: "", calendar_events: [], detail_ref: "", detail_available: false });
+        if (guestCopies) guestCopies.set(it, copy);
+      }
+      return copy;
     }
     function queryScore(it, q) {
       if (!q) return true;
