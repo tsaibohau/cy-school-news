@@ -451,7 +451,7 @@
      hundreds of unrelated notices. When the question also names something specific (a school or
      organisation such as 真理, a subject such as 旅遊 or 電競), a candidate has to contain at least
      one of those specific pieces, or one of its synonyms (亞大 = 亞洲大學), or it cannot be the answer. */
-  var GATE_STRIP = ["國立", "私立", "科技大學", "大學", "學院", "特殊選才", "營隊", "說明會", "簡章", "工作坊", "演講", "展覽", "招生", "徵選", "徵稿", "徵文", "研討會", "座談會", "體驗營", "開放日", "Open Day", "Open House", "線上課", "線上課程", "公開課",
+  var GATE_STRIP = ["國立", "私立", "科技大學", "大學", "學院", "特殊選才", "營隊", "說明會", "簡章", "工作坊", "演講", "展覽", "招生", "徵選", "徵稿", "徵文", "研討會", "座談會", "體驗營", "登記", "參加", "查詢", "領取", "借用", "培訓", "座談", "實施", "計畫", "辦法", "開放日", "Open Day", "Open House", "線上課", "線上課程", "公開課",
     "什麼時候", "哪一天", "哪天", "幾號", "幾月", "哪裡", "在哪", "怎麼", "如何", "多少", "可以", "有沒有", "是不是", "要不要", "舉辦", "辦理", "舉行", "相關", "資訊", "報考", "入學", "類的", "有關",
     "請問", "我想知道", "想知道", "怎樣", "是否", "還有", "哪些", "有什麼", "什麼", "開放", "名額"];
   function gateWords(query) {
@@ -486,28 +486,28 @@
   /* The units a question is specific about. A unit is a list of ways to write one thing: a known term
      with its synonyms (亞大 = 亞洲大學), or one two-character piece. */
   function gateUnits(query, stats) {
-    var units = [], must = [];
+    var units = [], must = [], genericForms = GATE_STRIP.concat(ALWAYS_GENERIC).map(compact);
     function add(forms) {
-      forms = unique(forms.map(compact).filter(function (f) { return f.length >= 2 && (!/^[a-z0-9]+$/.test(f) || f.length >= 4) && GATE_STRIP.map(compact).indexOf(f) === -1; }));
-      if (forms.length && !units.some(function (u) { return u.join() === forms.join(); })) units.push(forms);
+      forms = unique(forms.map(compact).filter(function (f) { return f.length >= 2 && (!/^[a-z0-9]+$/.test(f) || f.length >= 3); }));
+      /* A concept that is itself a kind of activity (特殊選才 = 特選) decides nothing. */
+      if (!forms.length || forms.some(function (f) { return genericForms.indexOf(f) !== -1; })) return;
+      if (!units.some(function (u) { return u.join() === forms.join(); })) units.push(forms);
     }
     gateWords(query).forEach(function (run) {
-      /* Latin names (gemini, notebook, codex) are specific pieces too. */
-      (run.match(/[a-z0-9]{3,}/g) || []).forEach(function (word) {
-        var forms = synonymsOf(word);
-        if (!ALWAYS_GENERIC.some(function (g) { return forms.indexOf(compact(g)) !== -1; }) && formShare(forms, stats) <= GENERIC_SHARE) add(forms);
-      });
-      run = run.replace(/[a-z0-9]+/g, " ");
-      /* Known terms (with synonyms) first; what is left is cut into two-character pieces. */
       var rest = run;
+      /* Known terms (with synonyms) first: 亞大 = 亞洲大學, AI代理人 = AI Agent. */
       (Synonyms ? Synonyms.find(run) : []).forEach(function (term) {
         var same = Synonyms.expand(term, { includes: false }).concat(Synonyms.expand(term + "大學", { includes: false }));
-        if (ALWAYS_GENERIC.some(function (g) { return same.indexOf(compact(g)) !== -1; })) return;
+        if (same.some(function (f) { return genericForms.indexOf(compact(f)) !== -1; })) { rest = rest.split(term).join(" "); return; }
         if (formShare(same, stats) > GENERIC_SHARE) { if (term.length >= 3) must.push(same.map(compact)); return; }
         add(same);
         rest = rest.split(term).join(" ");
       });
-      rest.split(" ").forEach(function (part) {
+      /* Latin names (gemini, notebook, codex) are specific pieces too. */
+      (rest.match(/[a-z0-9]{3,}/g) || []).forEach(function (word) {
+        if (formShare([word], stats) <= GENERIC_SHARE) add([word]);
+      });
+      rest.replace(/[a-z0-9]+/g, " ").split(" ").forEach(function (part) {
         for (var i = 0; i + 2 <= part.length; i++) {
           var g = part.slice(i, i + 2);
           if (QUESTION_FILLER.test(g) || isGeneric(g, stats) || (stats && !pieceCount(g, stats))) continue;
@@ -1784,6 +1784,7 @@
     var related = unique([].concat.apply([], wanted.map(function (t) { return Synonyms ? Synonyms.concepts(t) : [t]; }))).filter(function (t) { return t.length >= 2 && wanted.indexOf(t) === -1; }), rows = [], seen = {};
     var ACTION_ONLY = /^(?:報名|申請|登記|繳交|上傳|填表|送件|查詢|選填|繳費)$/;
     var subjects = wanted.filter(function (t) { return !ACTION_ONLY.test(t); });
+    var gate = topicGate(query, corpusStats);
     var subject = compact(stripSchoolNames(query).replace(/請問|我想知道|怎麼辦|怎麼|如何|是什麼|有哪些|有沒有|在哪裡|在哪|哪裡|可以|嗎|呢|的|[？?！!。，,\s]/g, ""));
     (items || []).forEach(function (item) {
       if (!item || item.kind !== "school_info" || (scopeSchool && item.school !== scopeSchool)) return;
@@ -1795,6 +1796,8 @@
         if (STAFF_DOC.test(name) && !STAFF_DOC.test(query)) return;
         var subjectHit = !subjects.length || subjects.some(function (t) { return c.indexOf(t) !== -1; }) || related.some(function (t) { return c.indexOf(t) !== -1; });
         if (!subjectHit) return;
+        /* The question names something specific (商業案例, 電競): a file that never says it is not the answer. */
+        if (gate && !gate.test(name + " " + clean(item.title || ""))) return;
         wanted.forEach(function (t) { if (c.indexOf(t) !== -1) score += 10; });
         if (!score) related.forEach(function (t) { if (c.indexOf(t) !== -1) score = Math.max(score, 6); });
         if (/規定|辦法|要點|規範|章程|須知/.test(name)) score += 2;
