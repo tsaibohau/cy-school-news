@@ -392,6 +392,8 @@
      many titles (學生, 公告, 本校, 學年…) say little about the topic: 「學生證丟了」 must
      not be answered by a 「學生音樂比賽」 notice just because both contain 學生. */
   var GENERIC_SHARE = 0.04, MIN_STATS_ITEMS = 200, statsCache = { items: null, stats: null };
+  var corpusStats = null;   // statistics of the last full announcement list (rule lookups only see the handbook)
+  function useCorpus(items) { var st = pieceStats(items); if (st && st.n >= MIN_STATS_ITEMS) corpusStats = st; return st; }
   function pieceStats(items) {
     if (!Array.isArray(items) || !items.length) return null;
     if (statsCache.items === items) return statsCache.stats;
@@ -440,6 +442,63 @@
     if (!pieces.length) return 0;
     return pieces.filter(function (t) { return text.indexOf(t) !== -1; }).length / pieces.length;
   }
+  /* Topic gate. Words that name the activity kind (比賽, 研習, 營隊, 特殊選才, 招生…) are shared by
+     hundreds of unrelated notices. When the question also names something specific (a school or
+     organisation such as 真理, a subject such as 旅遊 or 電競), a candidate has to contain at least
+     one of those specific pieces, or one of its synonyms (亞大 = 亞洲大學), or it cannot be the answer. */
+  var GATE_STRIP = ["國立", "私立", "科技大學", "大學", "學院", "特殊選才", "營隊", "說明會", "簡章", "工作坊", "演講", "展覽", "招生", "徵選", "徵稿", "徵文", "研討會", "座談會", "體驗營",
+    "什麼時候", "哪一天", "哪天", "幾號", "幾月", "哪裡", "在哪", "怎麼", "如何", "多少", "可以", "有沒有", "是不是", "要不要", "舉辦", "辦理", "舉行", "相關", "資訊", "報考", "入學", "類的", "有關",
+    "請問", "我想知道", "想知道", "怎樣", "是否", "還有", "哪些", "有什麼", "什麼", "開放", "名額"];
+  function gateWords(query) {
+    var value = compact(String(query || "").replace(YEAR_WORD, " "));
+    STOP.concat(GENERIC, SLOT_QUERY_WORDS, ALWAYS_GENERIC, GATE_STRIP).map(compact).filter(function (w) { return w.length >= 2; })
+      .sort(function (a, b) { return b.length - a.length; }).forEach(function (w) { value = value.split(w).join(" "); });
+    return value.split(" ").filter(function (w) { return w.length >= 2; });
+  }
+  function distinctivePieces(query, stats) {
+    var out = [];
+    gateWords(query).forEach(function (run) {
+      for (var i = 0; i + 2 <= run.length; i++) {
+        var g = run.slice(i, i + 2);
+        if (QUESTION_FILLER.test(g) || isGeneric(g, stats) || (stats && !pieceCount(g, stats))) continue;
+        if (out.indexOf(g) === -1) out.push(g);
+      }
+    });
+    return out;
+  }
+  function gateForms(query) {
+    var forms = [];
+    gateWords(query).forEach(function (run) {
+      var found = Synonyms ? Synonyms.find(run) : [];
+      found.concat(run).forEach(function (term) { forms = forms.concat(synonymsOf(term), Synonyms ? Synonyms.expand(term + "大學") : []); });
+    });
+    return unique(forms.filter(function (f) { return f.length >= 2 && ALWAYS_GENERIC.indexOf(f) === -1 && GATE_STRIP.indexOf(f) === -1; }));
+  }
+  /* Returns null when the question names nothing specific; else { pieces, forms, test(text), cover(text) }. */
+  function topicGate(query, stats) {
+    var pieces = distinctivePieces(query, stats);
+    if (!pieces.length) return null;
+    var forms = gateForms(query), named = [];
+    if (SearchQuery && SearchQuery.queryPlan && SearchQuery.taxonomyTopics) {
+      /* A taxonomy topic counts only when the question names it with a specific word (還書 → 圖書館);
+         a generic one such as 比賽 matches every contest and decides nothing. */
+      var runs = gateWords(query), ids = (SearchQuery.queryPlan(clean(String(query).replace(YEAR_WORD, " "))).term_matches || [])
+        .filter(function (m) { return m.kind === "topic" && runs.some(function (run) { return run.indexOf(compact(m.term)) !== -1; }); }).map(function (m) { return m.id; });
+      if (ids.length) named = SearchQuery.taxonomyTopics().filter(function (row) { return ids.indexOf(row.id) !== -1; });
+    }
+    function has(text) {
+      text = compact(text);
+      return pieces.some(function (p) { return text.indexOf(p) !== -1; }) || forms.some(function (f) { return text.indexOf(f) !== -1; }) ||
+        named.some(function (row) { return SearchQuery.findTerms(text, row.terms).length; });
+    }
+    /* Share of the specific pieces that a title carries (order does not matter: 一日淡江營 = 淡江一日營). */
+    function cover(text) {
+      text = compact(text);
+      if (forms.some(function (f) { return text.indexOf(f) !== -1; })) return 1;
+      return pieces.filter(function (p) { return text.indexOf(p) !== -1; }).length / pieces.length;
+    }
+    return { pieces: pieces, forms: forms, test: has, cover: cover };
+  }
   function relatedAnnouncements(query, ranked, options, stats) {
     var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var current = currentAcademicYear(asOf);
@@ -482,6 +541,7 @@
     var metadataById = {};
     metadataRows.forEach(function (row) { metadataById[row.item.id] = row; });
     var askedTokens = askedTokensFor(query, options);
+    var gate = topicGate(query, corpusStats);
     var ranked = sourceItems.map(function (item) {
       var metadataRow = metadataById[item.id];
       var metadataScore = metadataRow ? metadataRow.score : SearchQuery.announcementScore(item, query);
@@ -505,6 +565,14 @@
       var reviewedLongest=literalTokens.reduce(function(best,token){return reviewedNormalized.indexOf(token)!==-1?Math.max(best,token.length):best;},0);
       var reviewedBonus=reviewedScore?(45+Math.round(reviewedCoverage*120)):0;
       var intentBonus = 0, combined = clean(overview(item) + " " + body);
+      /* The question names something specific: a notice that never mentions it cannot be the answer,
+         and one whose title carries it beats one that only mentions it. */
+      var gateBonus = 0;
+      if (gate) {
+        if (!gate.test(clean(item.title || "") + " " + combined + " " + keywordText + " " + reviewedText)) return null;
+        var titleCover = gate.cover(item.title || "");
+        gateBonus = titleCover >= 0.6 ? 100 + Math.round(titleCover * 60) : titleCover > 0 ? 40 : 0;
+      }
       wanted.forEach(function (key) { if (INTENTS[key].some(function (word) { return combined.indexOf(word) !== -1; })) intentBonus += 4; });
       var slotBonus = slot ? Math.min(30, cueHits(combined, slot) * 6) : 0;
       /* A title that is itself a schedule or a how-to answers 什麼時候 / 怎麼 questions directly. */
@@ -526,7 +594,7 @@
       if (wanted.indexOf("date") !== -1 && titleTime(titleText)) intentBonus += 120;
       /* 學測什麼時候 asks about the real exam, not a cram school's mock exam. */
       if (/學測|統測|分科測驗|會考/.test(query) && !/模擬|模考|擬真/.test(query) && /模擬考|模考|擬真/.test(titleText)) intentBonus -= 300;
-      return { item:item,detail:detailMap[item.id]||null,text:combined,token:tokenHit,score:tokenScore+metadataScore+reviewedScore+reviewedBonus+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus+slotBonus+timeliness(item,query,asOf)-exclusivePenalty(query,item.title||""),anchorScore:anchorScore,reviewedMatch:reviewedScore>0,reviewedCoverage:reviewedCoverage,reviewedAnchorHits:reviewedAnchorHits,reviewedLongest:reviewedLongest,search_validity:metadataRow&&metadataRow.validity };
+      return { item:item,detail:detailMap[item.id]||null,text:combined,token:tokenHit,score:tokenScore+metadataScore+reviewedScore+reviewedBonus+titleScore+overviewScore+Math.min(bodyScore,80)+intentBonus+slotBonus+gateBonus+timeliness(item,query,asOf)-exclusivePenalty(query,item.title||""),anchorScore:anchorScore,reviewedMatch:reviewedScore>0,reviewedCoverage:reviewedCoverage,reviewedAnchorHits:reviewedAnchorHits,reviewedLongest:reviewedLongest,search_validity:metadataRow&&metadataRow.validity };
     }).filter(function (row) { return row && row.score >= 8 && (!anchorTokens.length || row.anchorScore > 0 || row.reviewedMatch || anchorCoverage(row, anchorTokens) >= 0.6); }).sort(function (a, b) {
       return b.score - a.score || String(b.item.date || b.item.first_seen || "").localeCompare(String(a.item.date || a.item.first_seen || ""));
     });
@@ -1221,6 +1289,7 @@
   /* Which documents to read in full before answering (their text is fetched one by one):
      the best-ranked handbook chapters and notices, plus the 獎懲 chapters for a penalty question. */
   function readList(question, items, options) {
+    useCorpus(items);
     var docs = (items || []).filter(isSchoolDoc), notices = (items || []).filter(function (item) { return item && !isSchoolDoc(item); });
     var per = options && options.deep ? 15 : 6, seen = {}, out = [];
     var fixed = Typo ? Typo.fix(question).query : question;
@@ -2083,6 +2152,7 @@
       var skip = {}; (options.exclude || []).forEach(function (id) { skip[id] = true; });
       items = (items || []).filter(function (item) { return item && !skip[String(item.id)] && !(options.dropResults && TITLE_RESULT.test(clean(item.title || ""))); });
     }
+    useCorpus(items);   // corpus word statistics, used by the topic gate for every layer
     var split = splitQuestion(query);
     /* 「打架會怎樣」: when the handbook has a clause that says the penalty for it, that clause is the
        answer, not an overview of 打架 with the penalty as a side note. */
@@ -2818,7 +2888,7 @@
       answer_lines: lines, limitation: evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
       plan: plan, evidence: evidence, sources: sources, validity_warnings: unique(validityWarnings) };
   }
-  return { tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank, readList: readList, asksPenalty: asksPenalty, penaltyDocs: penaltyDocs,
+  return { topicGate: topicGate, pieceStats: pieceStats, tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank, readList: readList, asksPenalty: asksPenalty, penaltyDocs: penaltyDocs,
     smoothEvidence: smoothEvidence, quoteUnits: quoteUnits, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
     isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, correction: correction, comparePlan: comparePlan, compareResults: compareResults, smallTalk: smallTalk, wantsLink: wantsLink, answerLinks: answerLinks, scoreClause: scoreClause, ruleTerms: ruleTerms, withHeadings: withHeadings, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });
