@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-06T04:46:42+08:00",
+ "generated_at": "2026-11-06T08:14:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -428,8 +428,14 @@
    "page_id": 102182243382622,
    "url": "https://dnsh.ylc.edu.tw/dnsh80.htm",
    "label": "會計室",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-06T08:14:45+08:00",
+   "path": [
+    "南中團隊",
+    "會計室",
+    "會計室首頁"
+   ]
   },
   "170841268413224": {
    "page_id": 170841268413224,
@@ -1082,5 +1088,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-06T04:46:42+08:00"
+ "last_run_at": "2026-11-06T08:14:46+08:00"
 }

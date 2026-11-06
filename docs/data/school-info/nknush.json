@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-06T04:48:37+08:00",
+ "generated_at": "2026-11-06T08:16:52+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -558,25 +558,37 @@
    "page_id": 91916813180763,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/國小課務組/",
    "label": "國小課務組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "教務處"
    ],
-   "order": 42
+   "order": 42,
+   "checked_at": "2026-11-06T08:16:48+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "國小課務組"
+   ]
   },
   "100488426283583": {
    "page_id": 100488426283583,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/學務處業務職掌/",
    "label": "業務職掌",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "學務處"
    ],
-   "order": 43
+   "order": 43,
+   "checked_at": "2026-11-06T08:16:50+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "學務處業務職掌"
+   ]
   },
   "112170978374225": {
    "page_id": 112170978374225,
@@ -1098,6 +1110,30 @@
     "實研組"
    ],
    "order": 87
+  },
+  "267051284138176": {
+   "page_id": 267051284138176,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/academic-affairs-office/%e5%9c%8b%e5%b0%8f%e8%aa%b2%e5%8b%99%e7%b5%84/",
+   "label": "國小課務組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "國小課務組"
+   ],
+   "order": 88
+  },
+  "277518231643081": {
+   "page_id": 277518231643081,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/%e5%ad%b8%e5%8b%99%e8%99%95%e6%a5%ad%e5%8b%99%e8%81%b7%e6%8e%8c/",
+   "label": "學務處業務職掌",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "學務處業務職掌"
+   ],
+   "order": 89
   }
  },
  "handbook": {},
@@ -1399,5 +1435,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-06T04:48:37+08:00"
+ "last_run_at": "2026-11-06T08:16:52+08:00"
 }

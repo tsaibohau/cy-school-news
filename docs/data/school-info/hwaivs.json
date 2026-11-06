@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-06T04:46:22+08:00",
+ "generated_at": "2026-11-06T08:14:29+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -2247,25 +2247,72 @@
    "page_id": 280287049223864,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e9%95%b7%e5%ae%a4/%e6%a0%a1%e9%95%b7%e5%ae%a4%e6%96%b0%e8%81%9e%e5%b0%88%e5%8d%80/",
    "label": "校長室新聞專區",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "國立虎尾高級農工職業學校",
     "網站連結"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-06T08:14:26+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校長室",
+    "校長室新聞專區"
+   ],
+   "changed_at": "2026-11-06T08:14:26+08:00",
+   "content_hash": "05c834a79f640fb2cbd8b7b45fb46cee5e609abd0c80008017475eea584c4b77",
+   "doc_links": [],
+   "keywords": [
+    "競賽",
+    "繁星"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-280287049223864.json",
+   "detail_revision": "135b146eac46dba9dddcdb23a095f3e32dbe9512067bac5cd66612e9918be086",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "繁星",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "264708885080458": {
    "page_id": 264708885080458,
    "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e9%95%b7%e5%ae%a4/%e6%a0%a1%e9%95%b7%e5%ae%a4%e8%a1%a8%e5%96%ae%e4%b8%8b%e8%bc%89%e5%8d%80/",
    "label": "校長室表單下載區",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "國立虎尾高級農工職業學校",
     "網站連結"
    ],
-   "order": 41
+   "order": 41,
+   "checked_at": "2026-11-06T08:14:28+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "校長室",
+    "校長室表單下載區"
+   ]
   },
   "148549949499988": {
    "page_id": 148549949499988,
@@ -7347,6 +7394,49 @@
      }
     ]
    }
+  },
+  {
+   "id": "hwaivs-info-280287049223864",
+   "kind": "school_info",
+   "title": "國立虎尾高級農工職業學校 › 校長室 › 校長室新聞專區",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e6%a0%a1%e9%95%b7%e5%ae%a4/%e6%a0%a1%e9%95%b7%e5%ae%a4%e6%96%b0%e8%81%9e%e5%b0%88%e5%8d%80/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "競賽",
+    "繁星"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-280287049223864.json",
+   "detail_revision": "135b146eac46dba9dddcdb23a095f3e32dbe9512067bac5cd66612e9918be086",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "繁星",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   }
  ],
  "roots": [
@@ -7592,5 +7682,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-06T04:46:22+08:00"
+ "last_run_at": "2026-11-06T08:14:29+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-06T04:46:17+08:00",
+ "generated_at": "2026-11-06T08:14:24+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -9164,12 +9164,47 @@
    "page_id": 252382924361526,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=17523",
    "label": "●內部控制聲明書",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "認識本校"
    ],
-   "order": 49
+   "order": 49,
+   "checked_at": "2026-11-06T08:14:17+08:00",
+   "path": [
+    "行政單位",
+    "秘書室"
+   ],
+   "changed_at": "2026-11-06T08:14:17+08:00",
+   "content_hash": "168e2f18124fe783474dbc4cff69ccae97e584898b84f995f28ae011471f3419",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": true,
+   "detail_ref": "data/details/hlvs/hlvs-info-252382924361526.json",
+   "detail_revision": "a7b1ff5b8ff6bbac5fff0a5ac6143cb68f5c50e104e5ed53ab4dd5f84ee06129",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "110-2_110年度內部控制聲明書1110325",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2022/03/110-2_110年度內部控制聲明書1110325-1.pdf"
+    },
+    {
+     "name": "111年度內部控制聲明書西螺農工1120318-1",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2023/03/111年度內部控制聲明書西螺農工1120318-1.pdf"
+    },
+    {
+     "name": "112年度內部控制聲明書",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2024/03/112年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "113年度內部控制聲明書",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2025/03/113年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "114年度內部控制聲明書",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/03/114年度內部控制聲明書.pdf"
+    }
+   ]
   },
   "105899507870249": {
    "page_id": 105899507870249,
@@ -11031,6 +11066,18 @@
     "實習處"
    ],
    "order": 217
+  },
+  "172764323057356": {
+   "page_id": 172764323057356,
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=111",
+   "label": "秘書室",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "行政單位",
+    "秘書室"
+   ],
+   "order": 218
   }
  },
  "handbook": {},
@@ -19936,6 +19983,50 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hlvs-info-252382924361526",
+   "kind": "school_info",
+   "title": "行政單位 › 秘書室",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=17523",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "110-2_110年度內部控制聲明書1110325",
+    "111年度內部控制聲明書西螺農工1120318-1",
+    "112年度內部控制聲明書",
+    "113年度內部控制聲明書",
+    "114年度內部控制聲明書"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "110-2_110年度內部控制聲明書1110325",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2022/03/110-2_110年度內部控制聲明書1110325-1.pdf"
+    },
+    {
+     "name": "111年度內部控制聲明書西螺農工1120318-1",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2023/03/111年度內部控制聲明書西螺農工1120318-1.pdf"
+    },
+    {
+     "name": "112年度內部控制聲明書",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2024/03/112年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "113年度內部控制聲明書",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2025/03/113年度內部控制聲明書.pdf"
+    },
+    {
+     "name": "114年度內部控制聲明書",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/03/114年度內部控制聲明書.pdf"
+    }
+   ],
+   "detail_ref": "data/details/hlvs/hlvs-info-252382924361526.json",
+   "detail_revision": "a7b1ff5b8ff6bbac5fff0a5ac6143cb68f5c50e104e5ed53ab4dd5f84ee06129",
+   "detail_status": "parsed"
+  },
+  {
    "id": "hlvs-info-254461027853377",
    "kind": "school_info",
    "title": "電子科",
@@ -20330,5 +20421,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-06T04:46:17+08:00"
+ "last_run_at": "2026-11-06T08:14:24+08:00"
 }

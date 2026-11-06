@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-06T04:49:10+08:00",
+ "generated_at": "2026-11-06T08:17:26+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3775,12 +3775,51 @@
    "page_id": 184174612128215,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-924.php",
    "label": "校徽校訓",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "學校介紹"
    ],
-   "order": 39
+   "order": 39,
+   "checked_at": "2026-11-06T08:17:24+08:00",
+   "path": [
+    "學校介紹",
+    "校徽校訓"
+   ],
+   "changed_at": "2026-11-06T08:17:24+08:00",
+   "content_hash": "a2e8d7fff50479a631f639fbe6da8301b883c4db55067b46937db10cb1f0fc8a",
+   "doc_links": [],
+   "keywords": [
+    "校徽",
+    "校訓"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-184174612128215.json",
+   "detail_revision": "2d40374c2b81ac3fe8a70e0af098b0eefd7be87a8cfd0c5c2f897eab583045d6",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "141551191155795": {
    "page_id": 141551191155795,
@@ -9302,6 +9341,48 @@
    }
   },
   {
+   "id": "ksaivs-info-184174612128215",
+   "kind": "school_info",
+   "title": "學校介紹 › 校徽校訓",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-924.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [
+    "校徽",
+    "校訓"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-184174612128215.json",
+   "detail_revision": "2d40374c2b81ac3fe8a70e0af098b0eefd7be87a8cfd0c5c2f897eab583045d6",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-187701472752311",
    "kind": "school_info",
    "title": "教學單位 › 機電科",
@@ -10012,5 +10093,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-06T04:49:10+08:00"
+ "last_run_at": "2026-11-06T08:17:26+08:00"
 }

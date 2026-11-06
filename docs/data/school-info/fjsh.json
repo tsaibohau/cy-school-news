@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-06T04:45:39+08:00",
+ "generated_at": "2026-11-06T08:13:59+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -3325,7 +3325,65 @@
   },
   "518": {
    "page_id": 518,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-06T08:13:58+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "訓育組",
+    "活動課程"
+   ],
+   "changed_at": "2026-11-06T08:13:58+08:00",
+   "content_hash": "9fb3243f53027a770fc6860bd1a7449f42efc9c49c35044eeff4bbf1bbda15fd",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-518.json",
+   "detail_revision": "09b657914091a792e9604fd4f588643fd4e90da0b269bcffd237910ca0778dd9",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "519": {
    "page_id": 519,
@@ -6994,6 +7052,67 @@
    }
   },
   {
+   "id": "fjsh-info-518",
+   "kind": "school_info",
+   "title": "學務處 › 訓育組 › 活動課程",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-518.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-518.json",
+   "detail_revision": "09b657914091a792e9604fd4f588643fd4e90da0b269bcffd237910ca0778dd9",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -7091,5 +7210,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-06T04:45:39+08:00"
+ "last_run_at": "2026-11-06T08:13:59+08:00"
 }

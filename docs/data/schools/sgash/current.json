@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T04:38:31+08:00",
+ "generated_at": "2026-11-06T08:06:04+08:00",
  "school": {
   "id": "sgash",
   "name": "國立新港藝術高級中學",
@@ -675,7 +675,249 @@
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14930",
    "category": "研習活動",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-05-22",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "15690b3ecf0d5d21242fadb8d377192882f1c2b17af72c76c9fd8f31a853cfd7"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-24",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "15690b3ecf0d5d21242fadb8d377192882f1c2b17af72c76c9fd8f31a853cfd7"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-03-14"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-04-09",
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "小論文"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-04-09",
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "小論文"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-03-14"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-04-09",
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "小論文"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-04-09"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "小論文"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sgash-14928",

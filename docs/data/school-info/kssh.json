@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-06T04:49:06+08:00",
+ "generated_at": "2026-11-06T08:17:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -3101,12 +3101,28 @@
    "page_id": 220417356157942,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4464.php",
    "label": "近3年學生人數與班級數",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 32
+   "order": 32,
+   "checked_at": "2026-11-06T08:17:20+08:00",
+   "path": [
+    "校務資料開放專區",
+    "學校校務資訊",
+    "基本資訊",
+    "近3年學生人數與班級數"
+   ],
+   "changed_at": "2026-11-06T08:17:20+08:00",
+   "content_hash": "4947136665a5672cec99d670a469070127c00741a4ac5835545f1f99d8892ae0",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-220417356157942.json",
+   "detail_revision": "f7f3e0f59754b8117bb24bf9ffb73fc04d7fe42e0ae16c655354ef014387cf6f",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "47604525079125": {
    "page_id": 47604525079125,
@@ -5414,6 +5430,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "kssh-info-220417356157942",
+   "kind": "school_info",
+   "title": "學校校務資訊 › 基本資訊 › 近3年學生人數與班級數",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4464.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-220417356157942.json",
+   "detail_revision": "f7f3e0f59754b8117bb24bf9ffb73fc04d7fe42e0ae16c655354ef014387cf6f",
+   "detail_status": "parsed"
+  },
+  {
    "id": "kssh-info-225884442670662",
    "kind": "school_info",
    "title": "行政單位 › 總務處 › 庶務組",
@@ -6643,5 +6676,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-06T04:49:06+08:00"
+ "last_run_at": "2026-11-06T08:17:22+08:00"
 }

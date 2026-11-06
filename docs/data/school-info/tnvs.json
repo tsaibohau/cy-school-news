@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-06T04:47:59+08:00",
+ "generated_at": "2026-11-06T08:16:12+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -6109,12 +6109,181 @@
    "page_id": 33057863431096,
    "url": "https://www.tnvs.tn.edu.tw/general/cashier/",
    "label": "出納組",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "看見南水"
    ],
-   "order": 41
+   "order": 41,
+   "checked_at": "2026-11-06T08:16:10+08:00",
+   "path": [
+    "看見南水",
+    "出納組"
+   ],
+   "changed_at": "2026-11-06T08:16:10+08:00",
+   "content_hash": "bf4e9c351a015421bfa0b50984a5fbb34779042a33e7576e6bb4676572c2e81e",
+   "doc_links": [
+    {
+     "name": "開立支票不劃線申請書",
+     "url": "https://drive.google.com/file/d/14uwsgmChJFTQKKiTtxXbtmkToOCW2sKq/view?usp=drive_link"
+    }
+   ],
+   "keywords": [
+    "學雜費",
+    "代辦費",
+    "收費",
+    "申請",
+    "分機",
+    "學分",
+    "獎學金",
+    "登記",
+    "簡介",
+    "聯絡電話",
+    "重修",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-33057863431096.json",
+   "detail_revision": "877cefc5c32a06e118bd767bf4df4bf13cbdbc25ed6e096949bf67a15d67e996",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "學雜費",
+       "重補修",
+       "費用",
+       "#makeup",
+       "#fee",
+       "#grading"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "放假"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "27862966917767": {
    "page_id": 27862966917767,
@@ -7525,6 +7694,180 @@
    "detail_ref": "data/details/tnvs/tnvs-info-25469034902519.json",
    "detail_revision": "325e99a6c71451e5d04647f076ab931c13e4db28dd1aa0303cc9344e3eafac74",
    "detail_status": "parsed"
+  },
+  {
+   "id": "tnvs-info-33057863431096",
+   "kind": "school_info",
+   "title": "看見南水 › 出納組",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/general/cashier/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-06",
+   "attachment_names": [
+    "開立支票不劃線申請書"
+   ],
+   "keywords": [
+    "學雜費",
+    "代辦費",
+    "收費",
+    "申請",
+    "分機",
+    "學分",
+    "獎學金",
+    "登記",
+    "簡介",
+    "聯絡電話",
+    "重修",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "開立支票不劃線申請書",
+     "url": "https://drive.google.com/file/d/14uwsgmChJFTQKKiTtxXbtmkToOCW2sKq/view?usp=drive_link"
+    }
+   ],
+   "detail_ref": "data/details/tnvs/tnvs-info-33057863431096.json",
+   "detail_revision": "877cefc5c32a06e118bd767bf4df4bf13cbdbc25ed6e096949bf67a15d67e996",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "學雜費",
+       "重補修",
+       "費用",
+       "#makeup",
+       "#fee",
+       "#grading"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "放假"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tnvs-info-42054884206677",
@@ -13621,5 +13964,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-06T04:47:59+08:00"
+ "last_run_at": "2026-11-06T08:16:12+08:00"
 }

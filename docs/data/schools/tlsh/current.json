@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-06T04:38:31+08:00",
+ "generated_at": "2026-11-06T08:06:04+08:00",
  "school": {
   "id": "tlsh",
   "name": "國立斗六高級中學",
@@ -698,7 +698,7 @@
   },
   {
    "id": "tlsh-68865",
-   "title": "國立臺北大學「0基礎會計先修班」招生簡章及記帳士會計師職業經驗分享說明會",
+   "title": "國立臺北大學「0基礎會計先修班」招生簡章及記帳士會計師職業經驗分享說明會 – 國立斗六高級中學",
    "date": "2026-11-04",
    "source_category": "最新公告",
    "school": "tlsh",
@@ -706,7 +706,48 @@
    "url": "https://www.tlsh.ylc.edu.tw/2026/11/04/68865/",
    "category": "招生編班",
    "first_seen": "2026-11-05T16:20:39+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tlsh-68877",

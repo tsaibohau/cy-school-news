@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nsjh",
- "generated_at": "2026-11-06T04:46:55+08:00",
+ "generated_at": "2026-11-06T08:15:02+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179628626610013": {
@@ -467,19 +467,29 @@
    "page_id": 94071899877077,
    "url": "https://nsjh.ylc.edu.tw/cp.aspx?n=99688",
    "label": "住宿規劃",
-   "status": "pending",
-   "depth": 0
+   "status": "empty",
+   "depth": 0,
+   "checked_at": "2026-11-06T08:14:57+08:00",
+   "path": [
+    "招生資訊",
+    "住宿規劃"
+   ]
   },
   "255089738527683": {
    "page_id": 255089738527683,
    "url": "https://nsjh.ylc.edu.tw/cl.aspx?n=99711",
    "label": "雲端學習",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-06T08:15:00+08:00",
+   "path": [
+    "網站導覽",
+    "雲端學習"
+   ]
   },
   "187329571230611": {
    "page_id": 187329571230611,
@@ -1219,5 +1229,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-06T04:46:55+08:00"
+ "last_run_at": "2026-11-06T08:15:02+08:00"
 }
