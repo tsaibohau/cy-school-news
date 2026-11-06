@@ -74,13 +74,15 @@
   function clean(value) { return String(value == null ? "" : value).replace(/\s+/g, " ").trim(); }
   /* toLowerCase gives the same result as toLowerCase() for Chinese and
      ASCII but is far faster; repeated texts are cached (問校務 took 20+ seconds). */
-  var COMPACT_CACHE = new Map();
+  var COMPACT_CACHE = new Map(), COMPACT_CHARS = 0, COMPACT_CHAR_LIMIT = 3000000;
   function compact(value) {
     var key = String(value == null ? "" : value), hit = COMPACT_CACHE.get(key);
     if (hit !== undefined) return hit;
     /* Variant characters schools use interchangeably: 佈置／布置, 臺／台, 裏／裡. */
     var out = clean(key).toLowerCase().replace(/[^0-9a-z\u3400-\u9fff]+/g, "").replace(/佈/g, "布").replace(/臺/g, "台").replace(/裏/g, "裡");
-    if (COMPACT_CACHE.size > 20000) COMPACT_CACHE.clear();
+    /* Bounded by characters as well as entries: notice bodies (up to 120k characters) are keys too. */
+    COMPACT_CHARS += key.length + out.length;
+    if (COMPACT_CACHE.size > 20000 || COMPACT_CHARS > COMPACT_CHAR_LIMIT) { COMPACT_CACHE.clear(); COMPACT_CHARS = key.length + out.length; }
     COMPACT_CACHE.set(key, out);
     return out;
   }
@@ -152,7 +154,16 @@
     for(var size=Math.min(4,value.length);size>=2;size--)for(var i=0;i+size<=value.length;i++)out.push(value.slice(i,i+size));
     return unique(out);
   }
+  /* Notices and detail records do not change while the page is open: their derived text is kept
+     per object (rank() rebuilt it for every notice on every question). */
+  var OVERVIEW_CACHE = typeof WeakMap !== "undefined" ? new WeakMap() : null, DETAIL_TEXT_CACHE = typeof WeakMap !== "undefined" ? new WeakMap() : null;
   function overview(item) {
+    if (!OVERVIEW_CACHE || !item || typeof item !== "object") return overviewRaw(item);
+    var hit = OVERVIEW_CACHE.get(item);
+    if (!hit || hit.summary !== item.summary || hit.snippet !== item.snippet) { hit = { text: overviewRaw(item), summary: item.summary, snippet: item.snippet }; OVERVIEW_CACHE.set(item, hit); }
+    return hit.text;
+  }
+  function overviewRaw(item) {
     return clean([item && item.title, item && item.summary, item && item.snippet, item && item.category, item && item.source_category, item && item.school_name].filter(Boolean).join(" "));
   }
   function pushSegments(parts, value, meta) {
@@ -213,6 +224,12 @@
     return out.filter(function (u) { return u.text.length >= 6; });
   }
   function detailText(record) {
+    if (!DETAIL_TEXT_CACHE || !record || typeof record !== "object") return detailTextRaw(record);
+    var hit = DETAIL_TEXT_CACHE.get(record);
+    if (hit === undefined) { hit = detailTextRaw(record); DETAIL_TEXT_CACHE.set(record, hit); }
+    return hit;
+  }
+  function detailTextRaw(record) {
     return clean(detailSegments(record).map(function (part) { return part.text; }).join(" ")).slice(0, 120000);
   }
   function occurrence(text, token) {

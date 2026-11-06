@@ -13,13 +13,15 @@
   function clean(value) { return String(value == null ? "" : value).replace(/\s+/g, " ").trim(); }
   /* toLowerCase gives the same result as toLowerCase() for Chinese and
      ASCII but is far faster; repeated texts are cached (問校務 took 20+ seconds). */
-  var COMPACT_CACHE = new Map();
+  var COMPACT_CACHE = new Map(), COMPACT_CHARS = 0, COMPACT_CHAR_LIMIT = 3000000;
   function compact(value) {
     var key = String(value == null ? "" : value), hit = COMPACT_CACHE.get(key);
     if (hit !== undefined) return hit;
     /* Variant characters schools use interchangeably: 佈置／布置, 臺／台, 裏／裡. */
     var out = clean(key).toLowerCase().replace(/[^0-9a-z\u3400-\u9fff]+/g, "").replace(/佈/g, "布").replace(/臺/g, "台").replace(/裏/g, "裡");
-    if (COMPACT_CACHE.size > 20000) COMPACT_CACHE.clear();
+    /* Bounded by characters as well as entries: notice bodies (up to 120k characters) are keys too. */
+    COMPACT_CHARS += key.length + out.length;
+    if (COMPACT_CACHE.size > 20000 || COMPACT_CHARS > COMPACT_CHAR_LIMIT) { COMPACT_CACHE.clear(); COMPACT_CHARS = key.length + out.length; }
     COMPACT_CACHE.set(key, out);
     return out;
   }
@@ -48,8 +50,13 @@
       return Object.assign({}, row, { terms: terms });
     }) });
   }
-  function allRules() { return (taxonomy.topics || []).map(function (row) { return { kind: "topic", row: row }; })
-    .concat((taxonomy.actions || []).map(function (row) { return { kind: "action", row: row }; })); }
+  /* The taxonomy is fixed once loaded: build the rule list and its id index once
+     (hasRule ran allRules() for every notice × topic). */
+  var RULES = (taxonomy.topics || []).map(function (row) { return { kind: "topic", row: row }; })
+    .concat((taxonomy.actions || []).map(function (row) { return { kind: "action", row: row }; }));
+  var RULE_INDEX = {};
+  RULES.forEach(function (rule) { var k = rule.kind + ":" + rule.row.id; if (!RULE_INDEX[k]) RULE_INDEX[k] = rule; });
+  function allRules() { return RULES; }
   /* Words that contain a term without meaning it: 選課輔導 is not 課輔, 愛校服務 is not
      校服, 社團法人 is not a school club. */
   var FALSE_FRIENDS = { "課輔": ["選課輔導"], "校服": ["愛校服務"], "社團": ["社團法人"], "輔導課": ["輔導課程"] };
@@ -113,8 +120,10 @@
   }
   function itemFields(item) {
     item = item || {};
+    /* Signing in fills summary/snippet into the same notice object: a cached entry made before
+       that is rebuilt. */
     var cached = fieldCache && fieldCache.get(item);
-    if (cached) return cached;
+    if (cached && cached.__summary === item.summary && cached.__snippet === item.snippet) return cached;
     var fields = {
       title: compact(item.title),
       /* A school page's most frequent index words describe what it is about, like a title. */
@@ -123,7 +132,11 @@
       supporting: compact([item.summary, item.snippet].concat(Array.isArray(item.keywords) ? item.keywords : [],
         Array.isArray(item.attachment_names) ? item.attachment_names : []).filter(Boolean).join(" "))
     };
-    if (fieldCache && item && typeof item === "object") fieldCache.set(item, fields);
+    if (fieldCache && item && typeof item === "object") {
+      Object.defineProperty(fields, "__summary", { value: item.summary });
+      Object.defineProperty(fields, "__snippet", { value: item.snippet });
+      fieldCache.set(item, fields);
+    }
     return fields;
   }
   function primaryText(item) { return itemFields(item).primary; }
@@ -146,22 +159,33 @@
   function includesAll(values, wanted) { return wanted.every(function (value) { return values.indexOf(value) !== -1; }); }
   function hasWord(text, word) { return !word || text.indexOf(word) !== -1; }
   function hasAny(text, words) { return (words || []).some(function (word) { return text.indexOf(compact(word)) !== -1; }); }
-  function ruleById(kind, id) { return allRules().filter(function (rule) { return rule.kind === kind && rule.row.id === id; })[0]; }
+  function ruleById(kind, id) { return RULE_INDEX[kind + ":" + id]; }
   function hasRule(text, kind, id) {
     var rule = ruleById(kind, id);
     return !!(rule && findTerms(text, rule.row.terms).length);
   }
+  var EXACT_CACHE = typeof WeakMap !== "undefined" ? new WeakMap() : null;
+  /* Asked for every notice × topic with the same (cached) plan: keep the answer on the plan. */
   function exactTermsFor(plan, kind, id) {
-    return unique((plan.term_matches || []).filter(function (row) { return row.kind === kind && row.id === id; })
+    var memo = EXACT_CACHE ? EXACT_CACHE.get(plan) : null, key = kind + ":" + id;
+    if (!memo) { memo = {}; if (EXACT_CACHE) EXACT_CACHE.set(plan, memo); }
+    if (!memo[key]) memo[key] = unique((plan.term_matches || []).filter(function (row) { return row.kind === kind && row.id === id; })
       .map(function (row) { return row.term; }));
+    return memo[key];
   }
   function facetById(id) { return FACETS.filter(function (row) { return row.id === id; })[0]; }
   function fieldHit(text, words) { return (words || []).some(function (word) { return hasWord(text, word); }); }
+  /* Read-only result, cached per phrase (phraseCoverage asks again for every notice field). */
+  var BIGRAM_CACHE = new Map();
   function bigrams(value) {
     value = compact(value);
+    var hit = BIGRAM_CACHE.get(value);
+    if (hit) return hit;
     var out = [];
     for (var i = 0; i < value.length - 1; i += 1) out.push(value.slice(i, i + 2));
-    return unique(out);
+    if (BIGRAM_CACHE.size > 20000) BIGRAM_CACHE.clear();
+    BIGRAM_CACHE.set(value, out = unique(out));
+    return out;
   }
   function phraseCoverage(text, phrase) {
     phrase = compact(phrase);
@@ -217,7 +241,22 @@
     if (supportingCoverage >= 0.72) return 35 * supportingCoverage;
     return 0;
   }
+  /* Without options the score depends only on the notice and the question; 問校務 asks for it
+     for every notice in both readList and answer, so the second pass is a lookup. */
+  var SCORE_CACHE = typeof WeakMap !== "undefined" ? new WeakMap() : null;
   function announcementScore(item, query, options) {
+    if (options || !SCORE_CACHE || !item || typeof item !== "object") return announcementScoreRaw(item, query, options);
+    var byQuery = SCORE_CACHE.get(item), key = String(query == null ? "" : query);
+    if (!byQuery || byQuery.summary !== item.summary || byQuery.snippet !== item.snippet) {
+      byQuery = new Map(); byQuery.summary = item.summary; byQuery.snippet = item.snippet; SCORE_CACHE.set(item, byQuery);
+    }
+    if (byQuery.has(key)) return byQuery.get(key);
+    if (byQuery.size > 64) byQuery.clear();
+    var score = announcementScoreRaw(item, query);
+    byQuery.set(key, score);
+    return score;
+  }
+  function announcementScoreRaw(item, query, options) {
     var plan = queryPlan(query), title = titleText(item), primary = primaryText(item), supporting = supportingText(item);
     if (!plan.value) return 1;
     var fields = itemFields(item), reviewed = reviewedSearchText(item, options);

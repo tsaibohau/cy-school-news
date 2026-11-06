@@ -229,9 +229,22 @@
     "選課": ["多元選修", "加深加廣", "彈性學習", "自主學習"]
   };
 
-  function compact(value) {
-    return String(value == null ? "" : value).toLowerCase().replace(/[^0-9a-z㐀-鿿]+/g, "").replace(/臺/g, "台");
+  /* Results are pure functions of their input and are asked for once per notice per word,
+     so each is cached (問校務 spent ~40% of its time here). Callers get copies of arrays. */
+  var CACHE_LIMIT = 20000;
+  function memo(fn) {
+    var cache = new Map();
+    return function (key) {
+      var hit = cache.get(key);
+      if (hit === undefined) { if (cache.size > CACHE_LIMIT) cache.clear(); hit = fn(key); cache.set(key, hit); }
+      return hit;
+    };
   }
+  var compactText = memo(function (value) {
+    return value.toLowerCase().replace(/[^0-9a-z㐀-鿿]+/g, "").replace(/臺/g, "台");
+  });
+  function compact(value) { return compactText(value == null ? "" : String(value)); }
+  function key(value) { return value == null ? "" : String(value); }
   var groupsOf = {}, allTerms = [];
   SAME.forEach(function (group, index) {
     group.forEach(function (term) {
@@ -246,10 +259,12 @@
   function unique(rows) { var seen = {}; return rows.filter(function (row) { if (!row || seen[row]) return false; seen[row] = true; return true; }); }
 
   /* Every way to say this term (itself first). includes=true also adds the narrower terms. */
-  function expand(term, options) {
-    var key = compact(term), out = [key];
+  var expandWide = memo(function (term) { return expandRaw(term, true); }), expandSame = memo(function (term) { return expandRaw(term, false); });
+  function expand(term, options) { return (options && options.includes === false ? expandSame : expandWide)(compact(key(term))).slice(); }
+  function expandRaw(term, includes) {
+    var key = term, out = [key];
     (groupsOf[key] || []).forEach(function (index) { SAME[index].forEach(function (t) { out.push(compact(t)); }); });
-    if (!options || options.includes !== false) {
+    if (includes) {
       var narrower = INCLUDES[key] || [];
       (groupsOf[key] || []).forEach(function (index) { SAME[index].forEach(function (t) { narrower = narrower.concat(INCLUDES[compact(t)] || []); }); });
       narrower.forEach(function (t) { out.push(compact(t)); (groupsOf[compact(t)] || []).forEach(function (index) { SAME[index].forEach(function (s) { out.push(compact(s)); }); }); });
@@ -257,8 +272,10 @@
     return unique(out);
   }
   /* Known terms inside a phrase, longest first, without overlaps: 「閱讀心得報告要交」 → [閱讀心得報告]. */
-  function find(phrase) {
-    var text = compact(phrase), found = [];
+  var findCached = memo(function (text) { return findRaw(text); });
+  function find(phrase) { return findCached(compact(key(phrase))).slice(); }
+  function findRaw(text) {
+    var found = [];
     allTerms.forEach(function (term) {
       if (term.length < 2) return;
       var at = text.indexOf(term);
@@ -270,8 +287,16 @@
   }
   /* The phrase rewritten with each synonym of the terms it contains (at most `limit` variants):
      「閱讀心得報告」 → 閱讀心得、讀書心得、心得報告… so a title written either way matches. */
+  var variantsCached = new Map();
   function variants(phrase, limit) {
-    var base = compact(phrase), out = [base], max = limit || 12;
+    var base = compact(key(phrase)), max = limit || 12, cacheKey = max + "\u0001" + base, hit = variantsCached.get(cacheKey);
+    if (hit) return hit.slice();
+    if (variantsCached.size > CACHE_LIMIT) variantsCached.clear();
+    hit = variantsRaw(base, max); variantsCached.set(cacheKey, hit);
+    return hit.slice();
+  }
+  function variantsRaw(base, max) {
+    var out = [base];
     find(base).forEach(function (term) {
       expand(term).forEach(function (alt) {
         if (out.length >= max || alt === term) return;
@@ -282,7 +307,9 @@
   }
   /* The broader subjects a term belongs to: 記過 → 獎懲, 放學 → 作息. A rule about the broader
      subject usually covers the narrower question. */
-  function broader(term) {
+  var broaderCached = memo(function (term) { return broaderRaw(term); });
+  function broader(term) { return broaderCached(compact(key(term))).slice(); }
+  function broaderRaw(term) {
     var forms = expand(term, { includes: false }), out = [];
     Object.keys(INCLUDES).forEach(function (key) {
       if (INCLUDES[key].some(function (t) { return forms.indexOf(compact(t)) !== -1; })) out = out.concat(expand(key, { includes: false }));
@@ -291,14 +318,16 @@
   }
   /* Every useful way to look for a phrase: its synonyms, and the synonyms and broader subjects
      of the known terms inside it (「可以染頭髮嗎」 → 頭髮、髮型、服儀…). */
-  function concepts(phrase) {
+  var conceptsCached = memo(function (phrase) { return conceptsRaw(phrase); });
+  function concepts(phrase) { return conceptsCached(key(phrase)).slice(); }
+  function conceptsRaw(phrase) {
     var out = expand(phrase, { includes: false });
     find(phrase).forEach(function (term) { out = out.concat(expand(term, { includes: false }), broader(term)); });
     return unique(out);
   }
   /* Two terms mean the same thing (or one includes the other). */
   function related(a, b) {
-    a = compact(a); b = compact(b);
+    a = compact(key(a)); b = compact(key(b));
     return a === b || expand(a).indexOf(b) !== -1 || expand(b).indexOf(a) !== -1;
   }
   return { SAME: SAME, INCLUDES: INCLUDES, expand: expand, find: find, variants: variants, related: related, broader: broader, concepts: concepts, compact: compact };
