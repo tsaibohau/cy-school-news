@@ -777,6 +777,13 @@
     if ((eventDate || wanted.indexOf("date") !== -1 || slot === "deadline") && POSTPONE.test(sentence) && postponedPhrase(sentence)) score += 130;
     return score;
   }
+  /* A sentence that mostly repeats the notice's title tells the reader nothing new (the title is shown
+     already): it is marked down when a notice's own sentences are ordered, so the one with content wins. */
+  function echoPenalty(text, title) {
+    if (!Composer || !Composer.echoRatio || !title) return 0;
+    var ratio = Composer.echoRatio(text, title);
+    return ratio >= 0.6 ? Math.round(12 + ratio * 24) : 0;
+  }
   /* 「94年2月訂定，97年3月14日修訂」 at the top of a rule is its revision history, never an answer. */
   var REVISION_HISTORY = /^[\s\d年月日,，、.。()（）～~-]*(?:(?:校務會議|行政會議)?(?:訂定|修訂|修正|通過|核定|發布)[\s\d年月日,，、.。()（）]*)+$|^(?:中華民國)?\d{2,3}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日.{0,20}(?:校務會議|行政會議|部字第|號令|號函)/;
   function candidateQualifies(candidate, plan) {
@@ -862,15 +869,15 @@
     if (/^\d{4}-\d{2}-\d{2}$/.test(day) && asOf && (Date.parse(asOf) - Date.parse(day)) / 86400000 > 365) return "提醒：這是 " + day.slice(0, 4) + " 年的公告，現在的做法可能已經改變。";
     return "";
   }
-  function composeSummary(evidence, sources, wanted, plan, asOf) {
+  function composeSummary(evidence, sources, wanted, plan, asOf, content) {
     var lead = evidence.length ? smoothEvidence(evidence[0].text) : "";
     if (!lead) return "我沒有在公告裡找到能回答這題的內容。";
     if(sources.length>1&&sources.some(function(i){return i.validity&&i.validity.relations&&i.validity.relations.length;}))return"這幾則公告互相修正或補充，下面依官方指定的範圍合併整理；沒有被點名修改的部分，仍以原公告為準。";
     var first = sources.filter(function (item) { return item.id === evidence[0].announcement_id; })[0] || sources[0] || {};
     var fact = endSentence(lead.replace(/^(?:[一二三四五六七八九十]+、|\(?\d{1,2}\)?[、.．])\s*/, ""));
     var slot = plan && plan.answer_slot || "", asksTime = slot === "deadline" || wanted.indexOf("date") !== -1;
-    var when = asksTime ? (postponedPhrase(lead) || timePhrase(lead)) : "";
-    var text = when ? "時間是 " + when + "。" + sourceLabel(first) + "：" + fact : sourceLabel(first) + "，" + fact;
+    var when = asksTime && !content ? (postponedPhrase(lead) || timePhrase(lead)) : "";
+    var text = content && content.kind === "summary" ? sourceLabel(first) + "：" + fact : when ? "時間是 " + when + "。" + sourceLabel(first) + "：" + fact : sourceLabel(first) + "，" + fact;
     if (sources.length > 1) text += "另外還有 " + (sources.length - 1) + " 則相關公告列在下面；它們不是同一項活動，日期和資格請分開看。";
     var note = oldNote(first, asOf);
     return note ? text + note : text;
@@ -2010,6 +2017,12 @@
   }
   function composedReply(result) {
     var first = (result.sources || [])[0] || {};
+    if (result.content && result.content.text) {
+      var ct = result.content, noted = (clean(result.summary || "").match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。/g) || []).map(function (note) { return note.replace(/列在下面/, "放在參考資料裡"); });
+      var said = ct.text, facts = (ct.facts || []).filter(function (f) { return said.indexOf(f.value) === -1; }).map(function (f) { return f.label + "：" + f.value; });
+      var lead = sourceLabel(first);
+      return { text: lead + (ct.kind === "summary" ? "：" : "，") + said, bullets: facts.slice(0, 3), tail: noted.join(""), composed: "content" };
+    }
     var texts = (result.evidence || []).filter(function (row) { return !first.id || row.announcement_id === first.id; }).map(function (row) { return row.text; });
     if (!texts.length) texts = (result.answer_lines || []).slice();
     if (!texts.length) return null;
@@ -2994,6 +3007,79 @@
     if (deadlines.length) bonus += deadlines[deadlines.length - 1] >= asOf ? 8 : -10;
     return bonus;
   }
+  /* ---------- 公告內容層：問什麼就答公告裡的那一欄 ----------
+     把公告（及附件）的正文拆成欄位（時間、地點、對象、報名、攜帶、費用、聯絡、內容），依問題類型
+     回答該欄位的值；問「X是什麼」或只打活動名稱，就給 1–2 句內容摘要；公告沒寫該欄位就直說沒寫，
+     不再把標題換個說法講一遍。欄位規則在 answer-composer.js，標籤字典在 qa-synonyms.js。 */
+  var FIELD_CACHE = typeof WeakMap !== "undefined" ? new WeakMap() : null;
+  var HEADER_LINE = /(?:承辦人|聯絡人|電話|電子信箱|電子郵件)\s*[:：]/;
+  function noticeFields(row) {
+    var detail = row.detail, item = row.item || {};
+    var cached = detail && typeof detail === "object" && FIELD_CACHE ? FIELD_CACHE.get(detail) : null;
+    if (cached && cached.id === item.id) return cached.fields;
+    var lines = [], attachment = [], header = [];
+    if (detail) {
+      var segments = detailSegments(detail);
+      quoteUnits(segments).forEach(function (unit) { (unit.meta && unit.meta.source_type === "attachment" ? attachment : lines).push(unit.text); });
+      segments.forEach(function (segment) { if (HEADER_LINE.test(segment.text) && segment.text.length < 160) header.push(segment.text); });
+    }
+    if (!lines.length && !attachment.length) sentences(clean((item.summary || "") + " " + (item.snippet || ""))).forEach(function (text) { lines.push(text); });
+    var fields = Composer.fieldsOf({ lines: lines, attachmentLines: attachment, headerLines: header, title: item.title || "", posted: String(item.date || item.first_seen || "").slice(0, 10) });
+    if (detail && typeof detail === "object" && FIELD_CACHE) FIELD_CACHE.set(detail, { id: item.id, fields: fields });
+    return fields;
+  }
+  var FACT_ORDER = { time: ["place", "deadline", "audience", "signup"], deadline: ["signup", "time", "place"], place: ["time", "audience", "signup"], audience: ["time", "signup", "deadline"],
+    signup: ["deadline", "time", "fee", "bring"], bring: ["time", "place", "deadline"], fee: ["time", "signup", "deadline"], contact: ["time", "signup"], summary: ["signup", "fee", "bring", "contact", "deadline"] };
+  function contentLayer(query, ranked, evidence, asOfDay, plan) {
+    if (!Composer || !Composer.fieldsOf || !evidence.length) return null;
+    var top = evidence[0], row = ranked.filter(function (r) { return r.item.id === top.announcement_id; })[0];
+    if (!row || row.penaltyDoc || isSchoolDoc(row.item) || TITLE_RESULT.test(clean(row.item.title || "")) || (top.fragment && top.fragment.status)) return null;
+    var title = clean(row.item.title || "");
+    /* Where to hand something in, which class room, whether it is compulsory: the sentence layer answers those. */
+    if (plan && /^(?:destination|class_place|requirement)$/.test(plan.answer_slot || "")) return null;
+    var slot = Composer.askedSlot(query), general = Composer.isGeneralAsk(query, title);
+    /* A notice that is itself a change (改期, 取消) states the new date in its own sentence. */
+    if (/改期|延期|取消|停辦|更正|更改|異動|順延|暫停|補充/.test(title) && (general || slot === "time" || slot === "deadline")) return null;
+    var shortLead = clean(top.text).replace(/^[^：:]{2,14}[：:]\s*(?=.{6,})/, "");
+    var echo = (top.source_meta && top.source_meta.source_type === "title") || Composer.noveltyOf(shortLead, title) < 8;
+    /* No particular field is asked and the best sentence only repeats the title: tell what the notice is about. */
+    if (!slot && echo) general = true;
+    var fields = noticeFields(row), seed = query, found, kind;
+    if (slot && slot !== "summary" && !general) {
+      found = Composer.slotAnswer(slot, fields, seed);
+      if (found.found) kind = "slot";
+      else if (echo) kind = "missing";
+      else return null;
+    } else if (general || slot === "summary") {
+      found = Composer.slotAnswer("summary", fields, seed);
+      if (found.found) { kind = "summary"; slot = "summary"; }
+      else return null;
+    } else return null;
+    var text = found.text;
+    if (kind === "slot" && (slot === "time" || slot === "deadline")) {
+      var last = Composer.isoOf(found.value, String(row.item.date || row.item.first_seen || "").slice(0, 10), "last");
+      if (last && last < asOfDay) text += "這個日期已經過了。";
+    }
+    return { kind: kind, slot: slot, found: !!found.found, text: text, value: found.value || "", url: found.url || "", from: found.from || "", row: row,
+      facts: Composer.otherFacts(fields, slot === "summary" ? "" : slot).filter(function (f) { return (FACT_ORDER[slot] || []).indexOf(f.slot) !== -1; })
+        .sort(function (a, b) { return FACT_ORDER[slot].indexOf(a.slot) - FACT_ORDER[slot].indexOf(b.slot); }).slice(0, 3),
+      fields: fields,
+      evidence: { text: text, announcement_id: row.item.id, title: row.item.title, score: (top.score || 0) + 1000, validity: row.validity, source_meta: { source_type: "content", slot: slot } } };
+  }
+  var POINT_OF_SLOT = { time: "時間", deadline: "截止", place: "地點", signup: "方式", audience: "對象", fee: "費用", bring: "攜帶", contact: "聯絡" };
+  /* Labelled fields beat the guesses keyPoints() makes from running text. */
+  function mergeFieldPoints(points, fields) {
+    var out = (points || []).slice();
+    Object.keys(POINT_OF_SLOT).forEach(function (slot) {
+      var hit = fields && fields.slots && fields.slots[slot], label = POINT_OF_SLOT[slot];
+      if (!hit) return;
+      var at = -1; out.forEach(function (p, i) { if (p.label === label && at < 0) at = i; });
+      if (at >= 0) { if (hit.src === "label") out[at] = { label: label, value: hit.value }; }
+      else out.push({ label: label, value: hit.value });
+    });
+    var order = ["截止", "時間", "地點", "方式", "對象", "費用", "獎金", "攜帶", "聯絡"];
+    return out.sort(function (a, b) { return order.indexOf(a.label) - order.indexOf(b.label); }).slice(0, 6);
+  }
   function announcementLayer(query, items, details, options) {
     var asked = askedTokensFor(query, options);
     var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
@@ -3054,7 +3140,7 @@
         return { text: text, meta: segment.meta || {}, score: evidenceScore(text, queryTokens, wanted, plan, row.item) + (at === pointed ? (plan.answer_slot === "deadline" && !TIME_PHRASE.test(text) ? 10 : plan.event_date && (DEADLINE_CUE.test(text) || NOTICE_CUE.test(text)) && !EVENT_CUE.test(text) ? 0 : 60) : 0) + freshness(row.item, asOfDay) * (eventAsk ? 2 : 1) + (eventAsk ? Math.max(0, 24 - 12 * (position[row.item.id] || 0)) : 0), item: row.item };
       }).filter(function (candidate) {
         return candidateQualifies(candidate, plan) && (!Validity || Validity.sentencePolicy(candidate.text, row.validity, query) !== "exclude");
-      }).sort(function (a, b) { return b.score - a.score; }).slice(0, 2).forEach(function (candidate) {
+      }).map(function (candidate) { candidate.score -= echoPenalty(candidate.text, candidate.item.title); return candidate; }).sort(function (a, b) { return b.score - a.score; }).slice(0, 2).forEach(function (candidate) {
         var key = compact(candidate.text);
         if (!seen[key] && evidence.length < 6) {
           seen[key] = true;
@@ -3132,19 +3218,23 @@
     evidence.sort(function(a,b){return b.score-a.score;});
     /* The notice the answer quotes is the first source. */
     sources.sort(function (a, b) { return (b.id === evidence[0].announcement_id ? 1 : 0) - (a.id === evidence[0].announcement_id ? 1 : 0); });
+    var content = sources.length > 1 && sources.some(function (i) { return i.validity && i.validity.relations && i.validity.relations.length; }) ? null : contentLayer(query, ranked, evidence, asOfDay, plan);
+    if (content) { evidence.unshift(content.evidence); titleOnly = false; }
     var lines = answerLines(evidence, sources);
     var pointRow = ranked.filter(function (row) { return evidence[0] && row.item.id === evidence[0].announcement_id; })[0];
     var pointText = pointRow ? (detailText(pointRow.detail) || clean((pointRow.item.summary || "") + " " + (pointRow.item.snippet || ""))) : "";
     var points = keyPoints(pointText || evidence.filter(function (row) { return evidence[0] && row.announcement_id === evidence[0].announcement_id; }).map(function (row) { return row.text; }).join("。"), { published: pointRow && pointRow.item.date });
+    if (content) points = mergeFieldPoints(points, content.fields);
     var links = wantsLink(query) ? answerLinks(pointRow || { item: sources[0] || {} }) : [];
-    var summaryText = composeSummary(evidence, sources, wanted, plan, options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }));
+    var summaryText = composeSummary(evidence, sources, wanted, plan, options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }), content);
     /* Asked when it happens: the event date leads, and the sign-up deadline (if the notice has one) follows. */
-    if (plan.event_date && evidence[0] && pointText && !DEADLINE_CUE.test(evidence[0].text) && !(sources.length > 1)) {
+    if (plan.event_date && evidence[0] && pointText && !content && !DEADLINE_CUE.test(evidence[0].text) && !(sources.length > 1)) {
       var lead0 = compact(evidence[0].text);
       var dl = sentences(pointText).filter(function (sentence) { return /截止|[日號)）點時]\s*(?:以)?前|前(?:完成|繳交|回覆|報名|上傳|送交|申請)|止[。，；]?$|至.{0,20}止|開放索票|開放報名/.test(sentence) && !EVENT_CUE.test(sentence) && ONE_DATE.test(sentence) && sentence.length <= 140 && lead0.indexOf(compact(sentence)) === -1; })[0];
       if (dl) summaryText += "另外，" + endSentence(dl.replace(/^(?:[一二三四五六七八九十]+、|\(?\d{1,2}\)?[、.．])\s*/, ""));
     }
     return { status: "answered", query: query, key_points: points, links: links, summary: summaryText,
+      content: content ? { kind: content.kind, slot: content.slot, found: content.found, text: content.text, value: content.value, url: content.url, from: content.from, facts: content.facts } : undefined,
       answer_lines: lines, limitation: titleOnly ? "公告內文沒有直接回答這題，細節在公告附件或原文連結，請點開公告查看。" : evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
       plan: plan, evidence: evidence, sources: sources, validity_warnings: unique(validityWarnings) };
   }
