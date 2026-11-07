@@ -45,8 +45,10 @@
   var DEADLINE = /截止|期限|[日號)）]\s*(?:以)?前|前(?:完成|報名|繳交|上傳|送交|填寫|申請|交)|受理至|報名至|收件至|至.{0,24}止|逾期/;
   var REQUIRE = /(?:應|須|需|請|要|務必|前|並)\s*(?:檢附|攜帶|備妥|準備|附上)\s*[：:]?\s*([^。；;，,]{2,40}?)(?=送|交|至|向|於|，|,|。|；|$)/;
   var AUDIENCE = /(?:對象|資格|適用對象|參加對象|報名資格)\s*(?:[：:]|為|是)\s*([^。；;，,]{2,40})|(全校|高一|高二|高三|國一|國二|國三|新生|應屆畢業生|高中部|國中部|住宿生|全體(?:學生|同學)|[一二三]年級)(?:學生|同學)?/;
-  var DENY = /不得|禁止|不准|不可|不能|嚴禁|不予|不受理/;
-  var ALLOW = /(?:^|[^不])(?:得|可|可以|准予|允許|開放)(?=[一-鿿])/;
+  var DENY = /不得|禁止|不准|不可(?!攜)|不能|嚴禁|不予|不受理/;
+  var ALLOW = /(?:^|[^不])(?:得|可(?!攜|能|見|是|愛|惜|謂|靠)|可以|准予|允許|開放)(?=[一-鿿])/;
+  /* 「皆不得使用…經老師同意後方可使用」 is a ban with an exception, never 「可以」. */
+  var STRONG_DENY = /皆不得|均不得|一律不得|不得使用|不得置於|嚴禁|禁止|不准|應關機|以關機為原則/;
   var MUST = /應|須|必須|一律|務必|規定/;
   var PENALTY = /懲處|記(?:警告|申誡|小過|大過|過)|警告|申誡|扣(?:分|減|點)|不予計分|零分|以零分計|不計分|曠課|愛校服務|銷過|取消(?:資格|錄取|參加)|視同(?:放棄|未|曠)|不予(?:受理|核發|補)|補交|罰/;
   function grams(text) { var t = String(text).replace(/[^\u4e00-\u9fff\w]/g, ""), out = {}; for (var i = 0; i + 2 <= t.length; i++) out[t.slice(i, i + 2)] = true; return out; }
@@ -102,6 +104,7 @@
       if (MUST.test(s)) out.must = true;
     });
     rows.forEach(function (row) { var s = stripConnectives(row); if (!out.penalty && PENALTY.test(s)) out.penalty = s.replace(/[。；;]$/, ""); if (MUST.test(s)) out.must = true; if (out.allow === null && DENY.test(s)) out.allow = false; });
+    out.strongDeny = STRONG_DENY.test(rows.join(""));
     out.lead = first || (rows[0] ? stripConnectives(rows[0]).replace(/[。；;]$/, "") : "");
     (extra || []).forEach(function (point) {
       var v = clean(point && point.value);
@@ -460,7 +463,9 @@
     else if (type === "judge") {
       /* 「可以…嗎」 is answered with 可以／不行／可以但有條件; 「一定要…嗎」 with 要／沒寫死. */
       var asksMust = /一定要|要不要|需不需要|必須|是不是都要|強制/.test(query);
-      var key = facts.allow === false ? "deny" : asksMust ? (facts.must ? "must" : "unsure")
+      /* 「皆不得使用…應關機」 is a ban even when the same text also says the teacher may allow an exception; bringing it is another matter. */
+      var banned = facts.allow === false || (facts.strongDeny && !/帶/.test(query));
+      var key = banned ? "deny" : asksMust ? (facts.must ? "must" : "unsure")
         : facts.must ? "allowIf" : facts.allow === true ? "allow" : "unsure";
       head = fill(pick(T.judge[key], seed), slots);
     } else if (type === "stance") {

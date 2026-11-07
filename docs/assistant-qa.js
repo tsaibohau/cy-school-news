@@ -785,7 +785,7 @@
     return ratio >= 0.6 ? Math.round(12 + ratio * 24) : 0;
   }
   /* 「94年2月訂定，97年3月14日修訂」 at the top of a rule is its revision history, never an answer. */
-  var REVISION_HISTORY = /^[\s\d年月日,，、.。()（）～~-]*(?:(?:校務會議|行政會議)?(?:訂定|修訂|修正|通過|核定|發布)[\s\d年月日,，、.。()（）]*)+$|^(?:中華民國)?\d{2,3}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日.{0,20}(?:校務會議|行政會議|部字第|號令|號函)/;
+  var REVISION_HISTORY = /^[\s\d年月日,，、.。()（）～~-]*(?:(?:校務會議|行政會議)?(?:訂定|修訂|修正|通過|核定|發布)[\s\d年月日,，、.。()（）]*)+$|^(?:中華民國|民國)?\s*\d{2,3}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日.{0,20}(?:校務會議|行政會議|部字第|號令|號函)/;
   function candidateQualifies(candidate, plan) {
     if (REVISION_HISTORY.test(clean(candidate.text))) return false;
     /* A bare fragment such as 「記警告。」 cut from a list says nothing on its own. */
@@ -1428,6 +1428,8 @@
   function isSchoolDoc(item) { return !!item && (item.kind === "school_handbook" || item.kind === "school_info"); }
   /* Penalties (記過、警告、愛校服務…) are written only in the handbook's 獎懲 chapters, whose titles never
      name the act (遲到、打架、段考). A question about what happens must always read those chapters. */
+  /* 「會發生什麼事」「沒事嗎」: asks what happens to a violator, so the 獎懲 chapters are read too. */
+  var CONSEQUENCE_ASK = /會發生什麼|發生什麼事|會怎(?:麼)?樣|後果|下場|沒事|被抓到|被發現/;
   var PENALTY_ASK = /會怎樣|會怎麼樣|會如何|後果|下場|記過|記(?:幾|一|兩)?支|被記|處罰|懲處|處分|懲罰|被罰|罰則|扣分|警告|申誡|小過|大過|退學|留校察看|違規|愛校服務/;
   var PENALTY_DOC = /獎懲規定|獎懲辦法|懲處|愛校服務|週末生活輔導|考試要點|考試規則|學生學習評量辦法$/;
   var PENALTY_TEXT = /記(?:警告|申誡|小過|大過|過|[一二三兩]大過)|警告|申誡|零分|扣[^，。]{0,6}分|週輔|生活輔導|愛校服務|懲處|處分|移送警|勒令|退宿|不得(?:進入|入場|參加)|不准入場|以曠課(?:處理|論)|適性輔導/;
@@ -1453,12 +1455,15 @@
       rank(q, docs, {}, options).slice(0, per).forEach(function (row) { add(row.item); });
       rank(q, notices, {}, options).slice(0, per).forEach(function (row) { add(row.item); });
     });
-    if (asksPenalty(question) || asksPenalty(fixed)) penaltyDocs(docs, question).forEach(add);
+    if (asksPenalty(question) || asksPenalty(fixed) || CONSEQUENCE_ASK.test(question) || PROCEDURE_ASK.test(question)) penaltyDocs(docs, question).forEach(add);
     return out;
   }
   /* Rules are numbered (一、 (一) 1. 第三條) or are timetable rows (12:35-13:10 午休). */
   var CLAUSE_START = /^\s*(?:[一二三四五六七八九十廿卅]+、|[壹貳參肆伍陸柒捌玖拾]+、|[（(][一二三四五六七八九十廿卅]+[)）]|\d{1,2}[.、](?!\d)|第[一二三四五六七八九十百廿卅]+條|※|\d{1,2}:\d{2})/;
-  var RULE_SKIP = /^(?:[一二三四五六七八九十]+、|[壹貳參肆伍陸柒捌玖拾]+、|第[一二三四五六七八九十]+條\s*)?(?:實施)?依據|經校務會議.*(?:實施|修正)|^本(?:要點|辦法|規定|細則)(?:經|自)|^(?:[一二三四五六七八九十]+、\s*)?本(?:補充)?(?:規定|要點|辦法|細則|規範)(?:係)?依.{0,40}(?:辦理|訂定|訂之)。?$/;
+  var RULE_SKIP = /^(?:[一二三四五六七八九十]+、|[壹貳參肆伍陸柒捌玖拾]+、|第[一二三四五六七八九十]+條)?\s*(?:實施)?依據|經校務會議.*(?:實施|修正)|^本(?:要點|辦法|規定|細則)(?:經|自)|^(?:[一二三四五六七八九十]+、\s*)?本(?:補充)?(?:規定|要點|辦法|細則|規範)(?:係)?依.{0,40}(?:辦理|訂定|訂之)。?$|^(?:(?:[一二三四五六七八九十]+|[壹貳參肆伍陸柒捌玖拾]+)、|第[一二三四五六七八九十]+條)?\s*(?:實施)?(?:目的|宗旨|定義|適用(?:對象|範圍)|名詞定義)\s*[：:]/;
+  /* Basis, purpose and scope lines and revision dates are never the answer, unless the question asks for them. */
+  var ASKS_BOILERPLATE = /依據|根據什麼|法源|目的|宗旨|為什麼要|為何要|定義|適用|對象|範圍|修訂|修正|何時(?:訂|修|通過)|哪一年|什麼時候(?:訂|修|通過)/;
+  function boilerplate(clause, query) { return (RULE_SKIP.test(clause) || REVISION_HISTORY.test(clause)) && !ASKS_BOILERPLATE.test(query || ""); }
   function ruleClauses(text) {
     var out = [], current = "", previous = "";
     String(text || "").split(/\n/).forEach(function (line) {
@@ -1491,27 +1496,39 @@
     return -1;
   }
   function withHeadings(list) {
-    var stack = [], out = [];
+    var stack = [], out = [], previous = "";
     list.forEach(function (text) {
       text = clean(text);
+      /* A wrapped line (「…情節輕」 then 「微者。」) or a short tail (「另須照價賠償。」) continues the item above; it does not end the list. */
+      var continued = listLevel(text) < 0 && previous && (!/[。；;：:．.]$/.test(previous) || text.length < 20);
+      previous = text;
       var level = listLevel(text), isHeading = HEADING_END.test(text);
       var above = level < 0 ? [] : stack.slice(0, level).filter(Boolean);
       var heading = !isHeading && above.length ? above.join(" ") : "";
-      out.push({ text: text, heading: heading, ctx: heading ? heading + " " + text : text });
+      out.push({ text: text, heading: heading, headings: heading ? above : [], ctx: heading ? heading + " " + text : text });
       if (isHeading) { stack = stack.slice(0, Math.max(level, 0)); stack[Math.max(level, 0)] = text.replace(LIST_ITEM, "").replace(/^第\s*[一二三四五六七八九十百廿卅\d]+\s*條\s*/, ""); }
-      else if (level < 0) stack = [];
+      else if (level < 0) { if (!continued) stack = []; }
       else stack = stack.slice(0, level + 1);
     });
     return out;
   }
-  function framedText(f) { return f.heading ? f.heading.replace(/[：:。．]$/, "") + "：" + f.text.replace(LIST_ITEM, "") : f.text; }
+  /* A heading chain can start with a whole preamble paragraph (「四、使用規範：為維護…並遵守以下規範：」
+     › 「（三）學生須知：」): quote the nearest heading, not the preamble. */
+  function framedText(f) {
+    var heading = f.heading;
+    if (heading && f.headings && f.headings.length && heading.length > 40) {
+      var near = f.headings[f.headings.length - 1];
+      heading = near.length > 60 ? "" : near;
+    }
+    return heading ? heading.replace(/[：:。．]$/, "") + "：" + f.text.replace(LIST_ITEM, "") : f.text;
+  }
   function ruleText(record) {
     return (record && record.attachments || []).map(function (a) { return a && a.embedded_text || ""; }).join("\n") ||
       (record && record.blocks || []).map(function (b) { return b && (b.text || (b.items || []).join("\n") || (b.rows || []).map(function (r) { return (r || []).join(" "); }).join("\n")) || ""; }).join("\n");
   }
   /* 「抽菸會記幾支過」: the planner leaves unknown words as one phrase; split it on question and
      filler words, and read 「記幾支過」 as 記過. */
-  var RULE_FILLER = /會不會被|會不會|會被|會怎麼樣|會怎樣|怎麼樣|怎樣|怎麼|如何|為什麼|可不可以|可以|能不能|能否|要不要|有沒有|是不是|是否|嗎|呢|吧|啊|幾支|幾次|幾個|多少|會|被|要|的/g;
+  var RULE_FILLER = /如果校規有寫|如果規定有寫|如果|是不是就沒事|是不是就|就沒事|沒被抓到|沒有抓|沒抓到|但(?=老師|教官|導師)|哪裡|哪邊|在哪|去哪|要去|我忘記|忘記帶|忘記|忘了|會發生什麼事情|會發生什麼事|發生什麼事情|發生什麼事|會不會被|會不會|會被|會怎麼樣|會怎樣|怎麼樣|怎樣|怎麼|如何|為什麼|可不可以|可以|能不能|能否|要不要|有沒有|是不是|是否|嗎|呢|吧|啊|幾支|幾次|幾個|多少|會|被|要|的/g;
   function ruleTerms(query) {
     query = clean(query).replace(/記(?:幾|一|兩|二|三|多少)(?:支|次|個)?過/g, "記過");
     var plan = SearchQuery && SearchQuery.queryPlan ? SearchQuery.queryPlan(query) : { term_matches: [], remainder_terms: [] };
@@ -1534,7 +1551,7 @@
     /* 「上課用手機」: 上課 is where it happens, not what is asked about. */
     var penalty = asksPenalty(query);
     var groups = unique(literal.concat(rest).map(function (t) { return t.replace(/^(?:上課|在校|校內|上學|學校)(?=.{2,})/, "").replace(/(?:用|時)$/, ""); }))
-      .filter(function (t) { return t.length >= 2 && !/^(?:會被|怎樣|怎麼|如何|什麼|可以|需要|規定|上課|在校|校內|上學|學校|記過)$/.test(t) || (t === "記過" && !penalty); }).map(function (t) {
+      .filter(function (t) { return t.length >= 2 && !/^(?:會被|怎樣|怎麼|如何|什麼|可以|需要|規定|上課|在校|校內|上學|學校|記過|老師|校規)$/.test(t) || (t === "記過" && !penalty); }).map(function (t) {
       var forms = synonymsOf(t).concat(Synonyms && Synonyms.INCLUDES && Synonyms.INCLUDES[t] || []);
       var topic = (plan.term_matches || []).filter(function (row) { return row.kind === "topic" && compact(row.term) === t; })[0];
       var tt = topic && topics.filter(function (x) { return x.id === topic.id; })[0];
@@ -1571,7 +1588,7 @@
   function scoreClause(clause, terms, query, title) {
     /* 「(不含服儀違規…遲到)」 says the rule is NOT about 遲到. */
     var c = compact(String(clause).replace(/[（(]\s*不(?:含|包括|包含)[^)）]*[)）]/g, "")), score = 0;
-    if (RULE_SKIP.test(clause) || REVISION_HISTORY.test(clause)) return 0;
+    if (boilerplate(clause, query)) return 0;
     /* A short heading (「圖書館借閱辦法」) names the rule but does not answer anything. */
     if (clause.length < 14 && !/[。；;：:]|\d|[一二三四五六七八九十]+(?:天|日|週|冊|次|時|分)/.test(clause)) return 0;
     if (compact(title).indexOf(c.replace(/[。．.]$/, "")) !== -1) return 0;
@@ -1584,8 +1601,12 @@
       else for (var i = 0; i + 2 <= t.length; i++) if (c.indexOf(t.slice(i, i + 2)) !== -1) score += 1;
     });
     if (/幾點|時間|多久|何時|什麼時候|幾天|期限|開放|開館/.test(query) && /\d{1,2}[:：]\d{2}|[上下]午[一二三四五六七八九十\d]+時|[一二三四五六七八九十兩\d]+\s*(?:週|天|日|分鐘|小時|次|冊)/.test(clause)) score += 4;
-    if (/可以|可不可以|能不能|能否|嗎|是否|准不准/.test(query) && /不得|禁止|不可|應|須|得|准|始可|限/.test(clause)) score += 3;
+    if (POLAR_ASK.test(query) && /不得|禁止|不可|嚴禁|不准|關機|應|須|得|准|始可|限/.test(clause)) score += /不得|禁止|嚴禁|不准|以關機為原則|應關機|皆不得|不可/.test(clause) ? 5 : 3;
+    /* 「滑手機會怎樣」 is not answered by the line on how phones are kept during exams, unless exams were asked. */
+    if (score && POLAR_ASK.test(query) && /(?:^|[：:]\s*)(?:[（(]?[一二三四五六七八九十\d]+[)）、.]\s*)?(?:平時評量|測驗|定期評量|考試)/.test(clause) && !/考|試|測驗|評量/.test(query)) score -= 6;
     if (/怎麼|如何|申請|辦理|流程|手續/.test(query) && /應|須|申請|填寫|辦理|系統|向|持/.test(clause)) score += 3;
+    /* 「忘記帶／沒帶／遺失…怎麼辦」 wants the procedure: the alternatives and where to go, not the clause that only says to bring it. */
+    if (score && PROCEDURE_ASK.test(query)) score += (/代替|替代|改用|申領|補辦|補發|重新申請|臨時|核對|應到|應至|應向|通知|憑/.test(clause) ? 6 : 0) + (/記警告|警告|週輔|零分|不予/.test(clause) ? 2 : 0);
     if (score && score < 10 && terms.literal.some(function (t) { return compact(title).indexOf(t) !== -1; })) score += 5;
     /* 「段考怎樣會被記過」: a clause about the exam AND the penalty beats one about either alone.
        Asked words the chapter title already covers (獎懲 for 記過) count as covered. */
@@ -1652,11 +1673,11 @@
         /* A penalty answer names the act and states the penalty; otherwise say none was found. */
         if (base && penaltyAsk && !(PENALTY_TEXT.test(ctx) && actHit(ctx))) base = 0;
         var score = base ? base + titleBonus - (row.penaltyDoc ? 0 : position) : 0;
-        if (!best || score > best.score) best = { score: score, base: base, clause: clause, heading: framed[index] && framed[index].heading || "", index: index, all: all, row: row };
+        if (!best || score > best.score) best = { score: score, base: base, clause: clause, heading: framed[index] && framed[index].heading || "", headings: framed[index] && framed[index].headings || [], index: index, all: all, row: row };
       });
     });
     if (!best || best.score < 10) return null;
-    var picked = [framedText({ heading: best.heading, text: best.clause })];
+    var picked = [framedText({ heading: best.heading, headings: best.headings, text: best.clause })], pickedAt = [best.index];
     /* 「作息時間表如下：」 needs the rows after it. */
     if (!best.heading && /[：:]$|如下/.test(best.clause)) picked = picked.concat(best.all.slice(best.index + 1, best.index + 5));
     else {
@@ -1665,18 +1686,85 @@
         if (index === best.index) return;
         var f = bestFramed[index] || { ctx: clause, heading: "" };
         var score = scoreClause(f.heading ? f.ctx : clause, terms, query, best.row.item.title || "");
-        var text = framedText({ heading: f.heading, text: clause });
+        var text = framedText({ heading: f.heading, headings: f.headings, text: clause });
         if (penaltyAsk && !(PENALTY_TEXT.test(f.ctx) && actHit(f.ctx))) return;
         if (score >= Math.max(10, (penaltyAsk ? best.base || best.score : best.score) * 0.8) && (!second || score > second.score)) second = { score: score, clause: text, index: index };
       });
-      if (second) picked = second.index < best.index ? [second.clause, picked[0]] : [picked[0], second.clause];
+      if (second) { picked = second.index < best.index ? [second.clause, picked[0]] : [picked[0], second.clause]; pickedAt = second.index < best.index ? [second.index, best.index] : [best.index, second.index]; }
     }
     var item = best.row.item, pages = Array.isArray(item.page_range) ? "（第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁）" : "";
-    var quote = picked.map(function (c) { return c.length > 220 ? c.slice(0, 219) + "…" : c; });
-    return { status: "answered", query: query, mode: "rule", key_points: [], summary: "依" + (item.school_name || "學校") + "「" + clean(item.title) + "」" + pages + "：" + quote.join(" "),
-      answer_lines: quote, evidence: quote.map(function (text) { return { text: text, announcement_id: item.id, title: item.title, score: best.score, source_meta: { source_type: "school_doc" } }; }),
+    var extra = ruleExtras(query, best, picked, pickedAt, terms, penaltyAsk);
+    picked = extra.lines;
+    /* A procedure (證件代替、申領臨時學生證、記警告) is quoted whole; other clauses are cut at 220 characters. */
+    var cap = PROCEDURE_ASK.test(query) || extra.whole ? 600 : 220;
+    var quote = picked.map(function (c) { return c.length > cap ? c.slice(0, cap - 1) + "…" : c; });
+    var notes = extra.notes.length ? "提醒：" + extra.notes.join("；") + "。" : "";
+    return { status: "answered", query: query, mode: "rule", key_points: [], summary: "依" + (item.school_name || "學校") + "「" + clean(item.title) + "」" + pages + "：" + quote.join(" ") + (notes ? " " + notes : ""),
+      answer_lines: quote, notes: extra.notes, evidence: quote.map(function (text) { return { text: text, announcement_id: item.id, title: item.title, score: best.score, source_meta: { source_type: "school_doc" } }; }),
       sources: [Object.assign({}, item, { note: "學校規定原文" })], related: [], confidence: "high",
       limitation: "引用學校官網公告的規定原文；規定可能修訂，以學校最新公告為準。", plan: questionPlan(query) };
+  }
+  /* What a question needs beside the one clause that matched:
+     - the list items under it (a heading that ends in 「：」 owns the items below it);
+     - 「會怎樣／發生什麼事」: the clauses of the same rule that say what is done to a violator (違規處置、輔導管教、交導師處理);
+     - 「在哪裡」 when no clause says where: say so, and quote the facts that are there (day, time, cut-off);
+     - 「沒被抓到是不是就沒事」: a rule applies whether or not anyone notices. */
+  var POLAR_ASK = /可以|可不可以|能不能|能否|嗎|是否|是不是|准不准|會發生|會怎(?:麼)?樣|沒事|沒關係|不行/;
+  var PROCEDURE_ASK = /怎麼辦|怎麼處理|該怎麼|如何處理|忘記|忘了|沒帶|未帶|遺失|弄丟|補辦|補發/;
+  var VIOLATION_CLAUSE = /違規(?:處置|處理|者)|違反.{0,16}(?:者|時|規定).{0,24}(?:輔導|管教|處理|懲處|處置|依.{0,24}辦理)|發現.{0,10}違規|輔導管教|依校規處理|處置依|依.{0,16}(?:獎懲|校規|細則).{0,12}(?:辦理|處理)/;
+  var ASKS_PLACE = /哪裡|哪邊|在哪|去哪|何處|地點|集合地/;
+  var HAS_PLACE = /地點|[在於至到往]\s*[^，。；\s]{1,12}(?:室|場|館|樓|廳|處|組|操場|穿堂|中庭|大門|校門|禮堂|教室)|集合於|於.{1,10}集合/;
+  var NOT_CAUGHT = /沒(?:有)?(?:被)?(?:抓|發現|看到|看見|查到|查)|(?:不|沒)被(?:抓|發現|看到|查)|(?:老師|教官|導師|師長)沒有?(?:抓|發現|看到|管|處理)|沒抓到|沒人(?:抓|發現|管)|被抓到才|只要不被/;
+  var ASKS_ALLOWED = /可以|可不可以|能不能|能否|是不是|是否|有沒有關係|沒事|沒關係|不行|會怎|怎樣|發生/;
+  var PROHIBIT = /不得|禁止|嚴禁|不准|不可|應關機|以關機為原則|皆不得|不能/;
+  function ruleExtras(query, best, picked, pickedAt, terms, penaltyAsk) {
+    var all = best.all, notes = [], whole = false, framed = withHeadings(all);
+    var entries = picked.map(function (text, i) { return { at: pickedAt[i], text: text }; }), taken = {};
+    pickedAt.forEach(function (i) { taken[i] = true; });
+    var add = function (index) { if (taken[index]) return; taken[index] = true; entries.push({ at: index, text: framedText({ heading: framed[index].heading, headings: framed[index].headings, text: all[index] }) }); };
+    var forms = unique([].concat.apply([], (terms.groups || []).map(function (g) { return g.forms; })).concat(terms.literal || [], terms.related || [])).filter(function (f) { return f.length >= 2 && ALWAYS_GENERIC.indexOf(f) === -1; });
+    var plain = function (index) { return !boilerplate(all[index], ""); };
+    /* The items under a heading line. */
+    if (HEADING_END.test(best.clause)) {
+      var level = listLevel(best.clause);
+      for (var i = best.index + 1, n = 0; i < all.length && n < 8; i++, n++) {
+        if (level >= 0 && listLevel(all[i]) <= level && listLevel(all[i]) !== -1) break;
+        if (listLevel(all[i]) === -1 && n > 0 && !CLAUSE_START.test(all[i])) break;
+        add(i); whole = true;
+      }
+    }
+    /* 「可以嗎／會怎樣」: the clauses of the same rule that forbid it, so the answer is 不行 with the operative words quoted. */
+    if (POLAR_ASK.test(query) && !picked.some(function (t) { return PROHIBIT.test(t); })) {
+      var banned = 0;
+      all.forEach(function (clause, index) {
+        if (banned >= 2 || taken[index] || !plain(index) || !PROHIBIT.test(clause)) return;
+        var c = compact(framed[index].ctx);
+        if (!forms.some(function (f) { return c.indexOf(f) !== -1; })) return;
+        if (!/考|試|測驗|評量/.test(query) && /^(?:[（(]?[一二三四五六七八九十\d]+[)）、.]\s*)?(?:平時評量|測驗|定期評量|考試)/.test(clause)) return;
+        banned++; add(index);
+      });
+    }
+    /* What is done to a violator, from the same rule. */
+    if (/怎樣|怎麼樣|發生|後果|下場|會被|會不會|處罰|處分|被罰|違規|沒事/.test(query)) {
+      var found = 0;
+      all.forEach(function (clause, index) {
+        if (found >= 3 || taken[index] || !plain(index) || !VIOLATION_CLAUSE.test(clause)) return;
+        found++; add(index);
+      });
+    }
+    /* A place was asked and the rule never says one. */
+    if (ASKS_PLACE.test(query) && !entries.some(function (e) { return HAS_PLACE.test(e.text); })) {
+      notes.push("這份規定的條文沒有寫明地點，要在哪裡集合請問導師或相關處室");
+      var facts = 0;
+      all.forEach(function (clause, index) {
+        if (facts >= 4 || taken[index] || !plain(index)) return;
+        if (/[上下]午\s*\d{1,2}\s*時|\d{1,2}[:：]\d{2}.{0,10}(?:集合|後)|每月第.週|實施時間|輔導內容|請假.{0,20}前|留校/.test(clause)) { facts++; add(index); }
+      });
+    }
+    /* 「沒被抓到是不是就沒事」 */
+    if (NOT_CAUGHT.test(query) && ASKS_ALLOWED.test(query)) notes.push("有沒有被發現不影響規定本身：條文寫不得就是不得，沒被抓到只是沒被處理，不代表允許");
+    entries.sort(function (a, b) { return a.at - b.at; });
+    return { lines: entries.map(function (e) { return e.text; }), notes: notes, whole: whole };
   }
   /* 「101 星期三第3節是什麼課」「明天有什麼課」: answered from the official class timetable.
      The class comes from the question or the student's profile (options.className). */
@@ -1981,7 +2069,10 @@
       /* The opening line is said in our own words (template); the clauses stay as tidy points. */
       var head = !plain && Composer ? Composer.compose({ query: result.query || "", source: (item.school_name || "") + label.replace(/的〈/, "〈"), text: lines.join("。") }) : null;
       if (head && head.text) text = head.text;
-      return { text: text, bullets: bullets.slice(0, 6), tail: tail };
+      /* Notes from the rule layer (the place is not written; being unnoticed does not make it allowed) come before the sign-off. */
+      var ruleNotes = (result.notes || []).map(function (note) { return clean(note).replace(/[。；;]$/, "") + "。"; }).join("");
+      if (ruleNotes) tail = ruleNotes;
+      return { text: text, bullets: bullets.slice(0, plain || (result.notes || []).length || (result.answer_lines || []).length > 4 ? 10 : 6), tail: tail };
     }
     if (result.mode === "rule_pointer") return { text: text, bullets: [] };
     if (result.mode === "timetable") {
@@ -2675,8 +2766,11 @@
   function penaltySentence(part, overview, items, details, options) {
     /* The act itself and its other names (打架 → 鬥毆、毆打), not its broad topic (手機 → 生活). */
     var subjectGroups = ruleTerms(part.subject + "會怎樣").groups;
+    /* 「午休時間滑手機」: when it is done is not what is punished, so 午休 does not stand for the act. */
+    var actGroups = subjectGroups.filter(function (g) { return !/^(?:午休|午休時間|上課|下課|放學|早自習|晚自習|時間|校內|在校|考試期間)$/.test(g.word); });
+    if (actGroups.length) subjectGroups = actGroups;
     var forms = unique([].concat.apply([part.subject], subjectGroups.map(function (g) { return g.forms; }))
-      .concat(Synonyms ? Synonyms.expand(part.subject) : []).map(compact)).filter(function (f) { return f.length >= 2 && ALWAYS_GENERIC.indexOf(f) === -1; });
+      .concat(Synonyms ? Synonyms.expand(part.subject) : []).map(compact)).filter(function (f) { return f.length >= 2 && ALWAYS_GENERIC.indexOf(f) === -1 && !/^(?:生活|作息|3c)$/i.test(f); });
     var rows = rank(part.subject, items, details, options).slice(0, 8);
     /* Penalties are written in the handbook: its 獎懲 chapters are read first, then the subject's
        own chapters, and notices only when the handbook says nothing. */
@@ -2718,12 +2812,24 @@
     });
     hit = hit || loose;
     if (!hit) return null;
+    /* The same act can be punished at two degrees (輕微記警告、嚴重記小過): say both. */
+    var more = [], hitForms = forms.filter(function (f) { return f.length >= 3 && compact(hit.text).indexOf(f) !== -1; });
+    framedPool.forEach(function (row) {
+      if (row.id !== hit.id) return;
+      row.framed.forEach(function (s) {
+        var text = framedText(s);
+        if (more.length >= 2 || text === hit.text || !hitForms.some(function (f) { return compact(s.text).indexOf(f) !== -1; }) || !Composer.PENALTY.test(s.ctx) || !PENALTY_TEXT.test(s.ctx) || /銷過|改過/.test(s.ctx)) return;
+        more.push(text);
+      });
+    });
     var item = (items || []).filter(function (it) { return it && it.id === hit.id; })[0] || {};
-    return { text: hit.text, item: item };
+    return { text: hit.text, item: item, more: more };
   }
   function consequenceSection(part, overview, items, details, options, shown) {
     var ask = "「" + part.clause.replace(/[？?]$/, "") + "」";
     var hit = penaltySentence(part, overview, items, details, options);
+    /* The main answer is the rule and already says what is done on a violation (記警告、週輔…): nothing to add. */
+    if (!hit && overview.mode === "rule" && CONCRETE_PENALTY.test((overview.answer_lines || []).join(" "))) return null;
     /* The main answer already quotes this penalty: saying it twice adds nothing. */
     var quoted = compact((overview.answer_lines || []).concat((overview.evidence || []).map(function (e) { return e.text; })).join(" "));
     if (hit && quoted && quoted.indexOf(compact(hit.text).replace(/[。．.]$/, "")) !== -1) return null;
@@ -2731,7 +2837,8 @@
       var source = isSchoolDoc(hit.item) ? (hit.item.school_name || "") + docLabel(hit.item).replace(/的〈/, "〈") : sourceLabel(hit.item).replace(/^根據/, "");
       var said = Composer.consequence({ query: part.clause, text: hit.text, source: source });
       var src = hit.item.id ? [{ id: hit.item.id, title: clean(hit.item.title || ""), date: String(hit.item.date || "").slice(0, 10), school_name: hit.item.school_name || "", url: hit.item.url || "" }] : [];
-      return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: said.text, text: ask + "：" + said.text, sources: src.filter(function (s) { return !shown[s.id]; }) };
+      var extraText = (hit.more || []).length ? " 另外：" + hit.more.map(function (t) { return endSentence(t.slice(0, 160)); }).join(" ") : "";
+      return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: said.text + extraText, text: ask + "：" + said.text + extraText, sources: src.filter(function (s) { return !shown[s.id]; }) };
     }
     /* No readable text, but a notice's labels say one of its segments is a penalty. */
     if (Tokens) {
@@ -2744,6 +2851,14 @@
         .sort(function (a, b) { return b.hit.score - a.hit.score || String(b.item.date || "").localeCompare(String(a.item.date || "")); })[0];
       if (labelled) {
         var it = labelled.item, label = isSchoolDoc(it) ? (it.school_name || "") + docLabel(it).replace(/的〈/, "〈") : sourceLabel(it).replace(/^根據/, "");
+        /* The member text is loaded: quote the penalty itself instead of telling them to log in. */
+        var seg = (details || {})[it.id] ? quoteUnits(detailSegments(details[it.id])).filter(function (u) { return u.index === labelled.hit.segment.s; })[0] : null;
+        if (seg && !boilerplate(seg.text, "")) {
+          var quoted = Composer.consequence({ query: part.clause, text: seg.text, source: label });
+          return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: quoted.text,
+            text: ask + "：" + (quoted.found ? quoted.text : label + "寫到：" + endSentence(seg.text.slice(0, 200))),
+            sources: shown[it.id] ? [] : [{ id: it.id, title: clean(it.title || ""), date: String(it.date || "").slice(0, 10), school_name: it.school_name || "", url: it.url || "" }] };
+        }
         return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: "",
           text: ask + "：有罰則喔，" + label + "的第 " + (labelled.hit.segment.s + 1) + " 段寫到罰則，點開看；登入後我可以直接引用。",
           sources: shown[it.id] ? [] : [{ id: it.id, title: clean(it.title || ""), date: String(it.date || "").slice(0, 10), school_name: it.school_name || "", url: it.url || "" }] };
@@ -2771,10 +2886,23 @@
   }
   function answerParts(query, split, items, details, options) {
     var overview = answerCore(split.subject, items, details, options) || { status: "insufficient", evidence: [], sources: [] };
+    /* The subject alone found a rule: read that rule again with the whole question, so the clauses about what
+       happens to a violator and the note on 「沒被抓到」 come with it. */
+    if (overview.mode === "rule" && (overview.sources || [])[0] && !personalDataQuery(query)) {
+      var whole = ruleAnswer(query, [{ item: overview.sources[0], score: 0, penaltyDoc: true }], details || {});
+      if (whole && whole.mode === "rule" && (whole.sources || [])[0] && whole.sources[0].id === overview.sources[0].id)
+        overview = Object.assign({}, overview, { summary: whole.summary, answer_lines: whole.answer_lines, evidence: whole.evidence, notes: whole.notes });
+    }
+    /* The handbook has no such rule but names the one that governs it (嘉女 試場規則): that, not an unrelated notice, is the answer. */
+    if (overview.mode !== "rule" && !personalDataQuery(query)) {
+      var named = namedRuleAnswer(query, (Array.isArray(items) ? items : []).filter(isSchoolDoc), details || {});
+      if (named) overview = Object.assign({}, named, { layer: "rule" });
+    }
     var shown = {};
     (overview.sources || []).concat(overview.related || []).forEach(function (row) { shown[row.id] = true; });
     var sections = [];
     split.parts.forEach(function (part) {
+      if (overview.named) return;   // the named rule above is the whole answer
       /* 「沒寫會怎樣」: look for a penalty first; none found → tease (and say where to look). */
       if (part.aspect.id === "consequence" && Composer) { var said = consequenceSection(part, overview, items, details, options, shown); if (said) sections.push(said); return; }
       var sub = part.subject + part.aspect.phrase, found = answerCore(sub, items, details, Object.assign({}, options, { tokenSubject: part.subject }));
@@ -2794,6 +2922,8 @@
         var ask = "「" + part.clause.replace(/[？?]$/, "") + "」";
         /* The main answer is already the rule about this subject: that is where to look. */
         if (!where && overview.status === "answered" && (overview.layer === "rule" || overview.mode === "rule_pointer") && (overview.sources || [])[0]) where = overview.sources[0];
+        /* One question, one rule answered in full above: no need to say it again. */
+        if (where && shown[where.id] && overview.mode === "rule" && split.parts.every(function (p) { return p.clause === split.parts[0].clause; })) return;
         if (where && shown[where.id]) {
           sections.push({ layer: "same", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [],
             text: ask + "：我讀得到的內容沒有直接寫，最可能就寫在上面那份〈" + clean(where.title).split("›").pop().trim() + "〉裡。" });
@@ -2841,7 +2971,7 @@
     var ruled = personalDataQuery(query) ? null : ruleLayer(query, all.filter(isSchoolDoc), details, options);
     /* A rule chapter that only mentions the subject in passing (〈圖書館閱覽規定〉 says the library
        closes on 段考 days) is not the answer to 「什麼時候段考」. */
-    if (ruled && ruled.mode === "rule" && !chapterAbout(ruled.sources && ruled.sources[0], query) &&
+    if (ruled && ruled.mode === "rule" && !ruled.named && !chapterAbout(ruled.sources && ruled.sources[0], query) &&
         !(asksPenalty(query) && penaltyDocs(ruled.sources || [], query).length)) ruled = null;
     var layers = {
       rule: ruled,
@@ -2874,7 +3004,7 @@
       }, 0);
       var offTarget = noticeCover >= 0.5 && ["rule", "calendar"].some(function (key) {
         var layer = layers[key];
-        return layer && layer.status === "answered" && Math.max(best(layer), 0) < noticeCover && hijack.cover(layer.summary || "") < noticeCover;
+        return layer && !layer.named && layer.status === "answered" && Math.max(best(layer), 0) < noticeCover && hijack.cover(layer.summary || "") < noticeCover;
       });
       if (offTarget) order = ["announcement"].concat(order.filter(function (key) { return key !== "announcement"; }));
     }
@@ -2937,8 +3067,10 @@
       var terms = ruleTerms(query), out = [];
       terms.literal.concat(terms.rest).forEach(function (t) { out = out.concat(Synonyms ? Synonyms.concepts(t) : [t]); });
       return out.concat(terms.related);   // same topic: 還書 → 圖書館、借書
-    })()).filter(function (w) { return w.length >= 2 && ALWAYS_GENERIC.indexOf(w) === -1; });
-    return !words.length || words.some(function (w) { return chapter.indexOf(compact(w)) !== -1; });
+    })()).filter(function (w) { return w.length >= 2 && (ALWAYS_GENERIC.indexOf(w) === -1 || (w === "考試" && /段考|定期考|期中考|期末考|考試|補考/.test(query))); });
+    /* 「週末輔導」 is the chapter 〈週末生活輔導實施要點〉: the letters of a 4+ character word in order count. */
+    var inOrder = function (w) { var at = 0; for (var i = 0; i < w.length; i++) { at = chapter.indexOf(w[i], at); if (at === -1) return false; at++; } return true; };
+    return !words.length || words.some(function (w) { w = compact(w); return chapter.indexOf(w) !== -1 || (w.length >= 4 && w.length <= 6 && inOrder(w)); });
   }
   function ruleLayer(query, docs, details, options) {
     if (!docs.length) return null;
@@ -2949,7 +3081,34 @@
       var have = {}; ranked.forEach(function (row) { have[row.item.id] = true; });
       penaltyDocs(docs, query).forEach(function (item) { if (!have[item.id] && (details || {})[item.id]) ranked.push({ item: item, detail: details[item.id], score: 0, penaltyDoc: true }); });
     }
-    return ruleAnswer(query, ranked, details || {}) || handbookPointer(query, ranked, details || {}, options);
+    var base = ruleAnswer(query, ranked, details || {});
+    var named = !base || !chapterAbout(base.sources && base.sources[0], query) ? namedRuleAnswer(query, docs, details || {}) : null;
+    return named || base || handbookPointer(query, ranked, details || {}, options);
+  }
+  /* 「忘記帶學生證怎麼辦」 at a school whose handbook has no such rule: the 獎懲 chapter may still name the rule that
+     governs it (違反本校「試場規則及違規處理辦法」…記警告). Quote that, and say plainly that the named rule's own
+     text is not in the handbook, instead of answering with an unrelated notice. */
+  function namedRuleAnswer(query, docs, details) {
+    if (!PROCEDURE_ASK.test(query)) return null;
+    var terms = ruleTerms(query), groups = (terms.groups || []).filter(function (g) { return !/^(?:學生證|證件|身分證|健保卡|識別證)$/.test(g.word); });
+    if (!groups.length) return null;
+    var out = null;
+    penaltyDocs(docs, query).forEach(function (item) {
+      if (out || !details[item.id]) return;
+      var framed = withHeadings(ruleClauses(ruleText(details[item.id]))), lines = [];
+      framed.forEach(function (f) {
+        var named = compact((f.text.match(/「[^」]{2,24}」/g) || []).join(" "));
+        if (lines.length < 3 && named && groups.some(function (g) { return g.forms.concat(g.loose || []).some(function (x) { return x.length >= 2 && named.indexOf(x) !== -1; }); })) lines.push(framedText(f));
+      });
+      if (!lines.length) return;
+      var rule = (lines[0].match(/「([^」]{2,24})」/) || [])[1] || "相關辦法";
+      out = { status: "answered", query: query, mode: "rule", named: true, key_points: [], answer_lines: lines, evidence: lines.map(function (text) { return { text: text, announcement_id: item.id, title: item.title, score: 10, source_meta: { source_type: "school_doc" } }; }),
+        notes: ["學生規定裡沒有寫忘記帶學生證時怎麼處理，只提到違反「" + rule + "」會依情節懲處；該辦法的全文不在學生規定裡，請洽教務處確認"],
+        summary: "依" + (item.school_name || "學校") + "「" + clean(item.title) + "」：" + lines.join(" ") + " 提醒：學生規定裡沒有寫忘記帶學生證時怎麼處理，請洽教務處確認。",
+        sources: [Object.assign({}, item, { note: "學校規定原文" })], related: [], confidence: "medium",
+        limitation: "引用學校官網公告的規定原文；規定可能修訂，以學校最新公告為準。", plan: questionPlan(query) };
+    });
+    return out;
   }
   /* The handbook chapter named after the question (學生在校作息時間規定 for 「幾點放學」), when
      its text cannot be quoted here (guests) or no single clause answers: point to that chapter. */
@@ -3030,7 +3189,13 @@
     if (!asked || !asked.kinds.length) return null;
     /* 「校慶什麼時候」 asks about this school's, not a university's open day. */
     var outsideOff = CAMPUS_LIFE.test(query) && !ASKS_OUTSIDE.test(query);
-    var hits = (ranked || []).filter(function (row) { var t = clean(row.item.title || ""); return row.token && row.token.segment && row.token.topics && row.token.kinds && !TITLE_RESULT.test(t) && (!/成績/.test(query) || /成績/.test(t)) && !(outsideOff && OUTSIDE_TITLE.test(t)); });
+    /* A rule's 「實施依據：…函」 or 「98年1月19日校務會議修訂」 line carries dates but is not the date asked for. */
+    var plainSegment = function (row) {
+      if (!row.detail || !row.token.segment) return true;
+      var unit = quoteUnits(detailSegments(row.detail)).filter(function (u) { return u.index === row.token.segment.s; })[0];
+      return !(unit && boilerplate(unit.text, query));
+    };
+    var hits = (ranked || []).filter(function (row) { var t = clean(row.item.title || ""); return row.token && row.token.segment && row.token.topics && row.token.kinds && plainSegment(row) && !TITLE_RESULT.test(t) && (!/成績/.test(query) || /成績/.test(t)) && !(outsideOff && OUTSIDE_TITLE.test(t)); });
     /* A title that says the asked word (段考) beats a narrower kind (複習考); a date still ahead beats a past one. */
     var words = deepWords(query), today = options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var rankOf = function (row) {
@@ -3204,7 +3369,7 @@
       /* 「(一)考試舞弊者」 under 「…記大過：」 is quoted with its heading. */
       var framed = withHeadings(segments.map(function (segment) { return segment.text; }));
       segments.map(function (segment, index) {
-        var f = framed[index], text = f && framedText({ heading: f && f.heading, text: segment.text });
+        var f = framed[index], text = f && framedText({ heading: f && f.heading, headings: f && f.headings, text: segment.text });
         var at = segment.index == null ? index : segment.index;
         return { text: text, meta: segment.meta || {}, score: evidenceScore(text, queryTokens, wanted, plan, row.item) + (at === pointed ? (plan.answer_slot === "deadline" && !TIME_PHRASE.test(text) ? 10 : plan.event_date && (DEADLINE_CUE.test(text) || NOTICE_CUE.test(text)) && !EVENT_CUE.test(text) ? 0 : 60) : 0) + freshness(row.item, asOfDay) * (eventAsk ? 2 : 1) + (eventAsk ? Math.max(0, 24 - 12 * (position[row.item.id] || 0)) : 0), item: row.item };
       }).filter(function (candidate) {
