@@ -185,7 +185,7 @@ def postprocess(text: str) -> str:
         line = re.sub(f"(?<=[{_CJK}])\\s*\\(", "（", line)
         line = re.sub(f"\\)\\s*(?=[{_CJK}])", "）", line)
         for _ in range(2):
-            line = re.sub(f"(?<=[{tight}])\\s+(?=[{tight}0-9])|(?<=[0-9])\\s+(?=[{tight}])", "", line)
+            line = re.sub(f"(?<=[{tight}])\\s+(?=[{tight}])", "", line)
         lines.append(re.sub(r"[ \t]{2,}", " ", line).strip())
     return "\n".join(line for line in lines if line)
 
