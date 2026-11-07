@@ -1627,57 +1627,6 @@
         });
     }
 
-    var STAGING_REFRESH_ORIGIN = "https://cy-school-news-staging.vercel.app";
-    function stagingRefreshEndpoint() {
-      if (!window.location || window.location.origin !== STAGING_REFRESH_ORIGIN) return null;
-      var config = window.CYNEWS_ACCOUNT_CONFIG || {};
-      if (!config.supabaseUrl || !config.supabaseAnonKey) return null;
-      try {
-        var base = new URL(config.supabaseUrl);
-        if (base.protocol !== "https:" || base.username || base.password || !/\.supabase\.co$/i.test(base.hostname)) return null;
-        return {
-          url: base.origin + "/functions/v1/request-staging-refresh",
-          anonKey: String(config.supabaseAnonKey),
-        };
-      } catch (_) {
-        return null;
-      }
-    }
-
-    function requestStagingRefresh(endpoint) {
-      if (!window.crypto || typeof window.crypto.randomUUID !== "function") {
-        return Promise.resolve({ status: "unavailable" });
-      }
-      if (!accountAuth && window.CyNewsAccountAuth) accountAuth = window.CyNewsAccountAuth.createController();
-      if (!accountAuth || !accountAuth.isConfigured() || typeof accountAuth.getVerifiedSession !== "function") {
-        return Promise.resolve({ status: "unavailable" });
-      }
-      return accountAuth.getVerifiedSession().then(function (session) {
-        if (!session || !session.access_token || !session.user || !session.user.id) return { status: "unauthenticated" };
-        return fetch(endpoint.url, {
-          method: "POST",
-          cache: "no-store",
-          headers: {
-            "content-type": "application/json",
-            apikey: endpoint.anonKey,
-            authorization: "Bearer " + session.access_token,
-            "x-idempotency-key": window.crypto.randomUUID(),
-          },
-          body: "{}",
-        }).then(function (response) {
-          return response.json().catch(function () { return {}; }).then(function (body) {
-            if (response.status === 429 || body.status === "rate_limited") {
-              return { status: "rate_limited", retryAfterSeconds: Number(body.retryAfterSeconds) || 0 };
-            }
-            if (!response.ok || ["accepted", "already_requested"].indexOf(body.status) === -1) {
-              return { status: "unavailable" };
-            }
-            return { status: body.status };
-          });
-        });
-      }).catch(function () { return { status: "unavailable" }; });
-    }
-
     function generationAdvanced(before, after) {
       var afterTime = Date.parse(after || "");
       if (!Number.isFinite(afterTime)) return false;
@@ -3692,33 +3641,6 @@
     el.btnRefresh.addEventListener("click", function () {
       if (el.btnRefresh.disabled) return;
       var before = state.data && state.data.generated_at;
-      var endpoint = stagingRefreshEndpoint();
-      if (endpoint) {
-        setRefreshState("loading", "正在要求雲端立即更新…");
-        requestStagingRefresh(endpoint).then(function (request) {
-          if (request.status === "unauthenticated") {
-            setRefreshState("error", "請先登入後再要求立即更新；未送出更新");
-            return;
-          }
-          if (request.status === "rate_limited") {
-            var wait = request.retryAfterSeconds > 0 ? "，請在 " + request.retryAfterSeconds + " 秒後再試" : "，請稍後再試";
-            setRefreshState("current", "更新請求太頻繁" + wait);
-            return;
-          }
-          if (["accepted", "already_requested"].indexOf(request.status) === -1) {
-            setRefreshState("error", "立即更新服務目前不可用；未送出更新");
-            return;
-          }
-          setRefreshState("loading", request.status === "accepted"
-            ? "已送出立即更新，等待雲端發布…"
-            : "更新已在排程中，等待雲端發布…");
-          return pollPublishedGeneration(before).then(function (published) {
-            if (published.status === "updated") setRefreshState("updated", "已載入最新雲端資料");
-            else setRefreshState("current", "更新已排程；雲端尚未發布完成");
-          });
-        });
-        return;
-      }
       setRefreshState("loading", "正在取得雲端已發布資料…");
       fetchData().then(function (result) {
         if (!result || !result.ok) {

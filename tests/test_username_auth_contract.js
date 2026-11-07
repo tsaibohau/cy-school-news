@@ -13,7 +13,7 @@ assert.match(migration, /grant execute on function public\.username_login_email\
 assert.match(migration, /grant execute on function public\.claim_account_username\(text\) to authenticated/i);
 assert.doesNotMatch(fn, /console\.log|SUPABASE_SERVICE_ROLE_KEY[^\n]*Response/i);
 assert.match(fn, /invalid_credentials/);
-assert.match(fn, /https:\/\/cy-school-news-staging\.vercel\.app/);
+assert.doesNotMatch(fn, /vercel\.app/);
 assert.match(fn, /https:\/\/tsaibohau\.github\.io/);
 assert.match(fn, /allowedOrigins\.has\(origin\)/);
 assert.doesNotMatch(fn, /access-control-allow-origin": "\*"/);
