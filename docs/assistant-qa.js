@@ -2787,7 +2787,11 @@
       if (result.mode === "rule_pointer" && result.pointer_kind === "school_info" && documents[0].score >= 10) weakPageAnswer = true;
       /* 「校運會成績」: name lists are not summarised here, but the official results file is the answer. */
       var resultsFile = ASKS_RESULT.test(query) && (result.privacy_limited || result.status !== "answered" || weakPageAnswer);
-      if ((result.status !== "answered" && documents[0].score >= 8) || weakPageAnswer || resultsFile) {
+      /* 「學測錄取率是多少」: a file about 學測 study tips is not the figures; only a file named as results stands for them. */
+      var resultsName = /成績|名單|榜|錄取|結果|得獎|獲獎|名次|統計|概況|率/.test(documents[0].name || "");
+      var notResults = ASKS_RESULT.test(query) && /率|比例|人數|百分比|幾人|多少/.test(query) && !resultsName;
+      if (notResults) { resultsFile = false; weakPageAnswer = false; }
+      if (!notResults && ((result.status !== "answered" && documents[0].score >= 8) || weakPageAnswer || resultsFile)) {
         var doc = documents[0];
         result = Object.assign({}, result, { status: "answered", mode: "document", evidence: [], key_points: [],
           summary: resultsFile ? resultsNote(query, options) + (doc.school_name || "學校") + "公布的成績在官方文件「" + doc.name + "」（" + doc.page + "）。本站不整理或轉述名單。"
