@@ -3098,6 +3098,8 @@
         var options = assistantOptions(scope);
         options.hour = Number(new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei", hour: "numeric", hour12: false })) % 24;
         options.lastQuestion = previous ? previous.question : "";
+        /* 「這兩個人差在哪裡？」: what the previous turn was about (its subject, schools and the people it named). */
+        options.previousTurn = previous && previous.result && QA.turnSummary ? QA.turnSummary(previous.question, previous.result) : null;
         options.doubt = !!followUp.doubt;
         return crossSchoolAnswer(question, scope).then(function (cross) {
         if (cross) {
