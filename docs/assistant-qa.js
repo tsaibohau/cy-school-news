@@ -904,6 +904,7 @@
     value = value.split(/\s+(?=[一二三四五六七八九十]+、|\(?\d{1,2}\)?[、.．)]\s*\S|備註|◆|※|【|[\u4e00-\u9fff]{2,6}\s*[：:])/)[0];
     if (label === "費用") { var fee = value.match(/[\u4e00-\u9fff]{0,6}費?\s*[：:]?\s*(?:新[臺台]幣\s*)?[\d,]+\s*元整?|免費/); if (!fee) return ""; value = fee[0]; }
     if (label === "地點") value = value.split(/\s*[）)、，,]/)[0];
+    if (label === "地點" && !placeLike(value)) return "";
     value = balanceBrackets(value.replace(/^[【\[（(\s]+/, ""));
     value = clean(value.replace(PHONE, "").replace(/^(?:[一二三四五六七八九十]+、|\(?\d{1,2}\)?[、.．])\s*/, "").replace(/[，、；;：:。]+$/, ""));
     return value.length > 60 ? value.slice(0, 58) + "…" : value;
@@ -1456,6 +1457,7 @@
     if (asksPenalty(question) || asksPenalty(fixed)) penaltyDocs(docs, question).forEach(add);
     var official = officialRoleAsk(fixed) || officialRoleAsk(question);
     if (official) officialPages(official, items, options && options.schoolId).slice(0, 12).forEach(add);
+    if ((BUY_ASK.test(question) || BUY_ASK.test(fixed)) && BUY_ITEM.test(question)) (items || []).filter(function (item) { return item && /制服|校服|服儀|新生專區|新生始業|新生訓練|新生資訊/.test(String(item.title || "")) && (!options || !options.schoolId || item.school === options.schoolId); }).slice(0, 12).forEach(add);
     return out;
   }
   /* Rules are numbered (一、 (一) 1. 第三條) or are timetable rows (12:35-13:10 午休). */
@@ -1986,6 +1988,7 @@
       return { text: text, bullets: bullets.slice(0, 6), tail: tail };
     }
     if (result.mode === "rule_pointer") return { text: text, bullets: [] };
+    if (result.mode === "purchase") return { text: result.purchase_lead || text, bullets: result.purchase_bullets || [] };
     if (result.mode === "course_list") return { text: result.course_lead || text, bullets: result.course_bullets || [] };
     if (result.mode === "official") return { text: text, bullets: result.official_bullets || [] };
     if (result.mode === "timetable") {
@@ -2873,6 +2876,139 @@
     return { status: "answered", mode: "course_list", query: query, evidence: [], key_points: [], related: [], summary: text + groups.map(function (g) { return (g.label ? g.label + "：" : "") + g.names.join("、"); }).join("；") + "。", course_bullets: bullets, course_lead: text,
       sources: [Object.assign({}, item)], limitation: "課程名稱取自選課公告的課程總表；開課與否以學校最新公告為準。", plan: questionPlan(query) };
   }
+  /* ---------- 「去哪裡買制服」：跨 2–3 份來源整理廠商、地點、時間、方式 ----------
+     標籤要對得上內容：「地點」只放真的像地點的值，不把「購買數量可視個人需求」這類句子當地點。 */
+  var BUY_ASK = /(?:哪裡|哪邊|哪間|哪家|哪個地方|去哪|在哪|何處|哪).{0,4}(?:買|購|訂|採買|選購|訂購|訂做|量身|套量)|(?:買|購買|採購|選購|訂購|訂做|採買).{0,8}(?:哪裡|哪邊|哪家|去哪|在哪|何處)|怎麼買|如何購買|要買|想買|採買/;
+  var BUY_ITEM = /制服|校服|運動服|體育服|運動外套|書包|體育服裝/;
+  var BUY_CUE = /購買|訂購|選購|採購|販售|廠商|認購|代辦|義賣|領取|套量|量身|訂製|訂做|合作社|店家|商店/;
+  var PLACE_WORD = /路|街|巷|弄|號|樓|館|室|廳|堂|場|店|社|處|所|中心|大樓|學校|本校|校內|校門|賣場|教室|操場|線上|網路|市|縣|區|園|院|棟|組|班|會議/;
+  var CLAUSE_WORD = /購買數量|個人需求|自行比價|可視|請於|應於|須於|如有|需要|不得|必須|因應|以便|為了|依照|依據|得於|並於|前往|請至|及時/;
+  /* A value labelled 「地點」 must look like a place: it names a building, room, address or store, and is not a clause. */
+  function placeLike(value) {
+    var v = clean(value);
+    if (!v || v.length > 40 || CLAUSE_WORD.test(v) || /^[\d\s\-－()（）]+$/.test(v) || (v.match(/[，；。]/g) || []).length > 1) return false;
+    return PLACE_WORD.test(v);
+  }
+  function rawDetailLines(record) {
+    var raw = [];
+    if (!record || typeof record !== "object") return raw;
+    (record.blocks || []).forEach(function (block) {
+      if (!block) return;
+      if (block.text) raw.push(block.text);
+      (block.items || []).forEach(function (item) { raw.push(item); });
+      (block.rows || []).forEach(function (row) { raw.push((row || []).join(" ")); });
+    });
+    (record.attachments || []).forEach(function (file) { if (file && file.embedded_text) raw.push(file.embedded_text); });
+    return raw.join("\n").split(/\n+/).map(function (line) {
+      return clean(line).replace(/\s*([（）()、，。：:；\/—~])\s*/g, "$1").replace(/([一-鿿])\s+(?=[一-鿿\d(（])/g, "$1").replace(/(\d)\s+(?=[一-鿿])/g, "$1");
+    }).filter(Boolean);
+  }
+  var MOBILE = /09\d{2}-?\d{3}-?\d{3}/;
+  /* A sentence whose every M/D date is already behind us (the summer sale in August) is history, not advice. */
+  function pastDated(text, asOfDay) {
+    var days = [], m, re = /(\d{1,2})\/(\d{1,2})/g, year = Number(String(asOfDay).slice(0, 4));
+    while ((m = re.exec(text))) { var mo = Number(m[1]), d = Number(m[2]); if (mo >= 1 && mo <= 12 && d >= 1 && d <= 31) days.push(year + "-" + ("0" + mo).slice(-2) + "-" + ("0" + d).slice(-2)); }
+    return days.length > 0 && days.every(function (day) { return day < asOfDay; });
+  }
+  function purchaseFacts(record, asOfDay) {
+    var lines = rawDetailLines(record), out = { ways: [], visits: [], shops: [], prices: [], notes: [], sentences: [] }, seen = {};
+    function put(list, text, cap) { text = clean(text); var k = compact(text); if (!text || seen[list === out.ways ? "w" + k : k] || list.length >= cap) return; seen[list === out.ways ? "w" + k : k] = true; list.push(text); }
+    var flat = lines.join(" ").replace(/品項參考單價建議購買數量/g, " ");
+    var pm, priceRe = /([一-鿿][一-鿿()（）]{1,13}?)\s*(\d{2,4}(?:~\d{2,4})?)元\s*(\d+(?:-\d+)?)件/g;
+    while ((pm = priceRe.exec(flat))) put(out.prices, pm[1] + " " + pm[2] + " 元（建議 " + pm[3] + " 件）", 10);
+    lines.forEach(function (line, at) {
+      var m;
+      if ((m = line.match(/^\d+[.、]([^\/]{2,20}(?:\([^)]*\))?)\/([^\/]+)\/(.*)$/)) && /電話/.test(line)) {
+        var parts = line.replace(/^\d+[.、]/, "").split("/").map(clean), name = parts[0], addr = parts[1] || "", phone = "", hours = "";
+        parts.slice(2).forEach(function (part) {
+          var ph = part.match(/電話[：:]\s*([\d\-()#分機轉]+)/);
+          if (ph && !MOBILE.test(ph[1])) phone = ph[1];
+          var hr = part.match(/營業時間[：:\-]*\s*(.+)$/);
+          if (hr) hours = hr[1].split("。")[0];
+        });
+        put(out.shops, name + "：" + addr + (phone ? "，電話 " + phone : "") + (hours ? "，營業時間 " + hours : ""), 8);
+        return;
+      }
+      if ((m = line.match(/^[(（]?[一二三四五六七八九十][)）]?([一-鿿]{2,10})[：:](.+)$/)) && /地點/.test(line + (lines[at + 1] || ""))) {
+        var rest = m[2].replace(/[(（]電話[：:][^)）]*[)）]/g, "").replace(/，?地點[—\-:：]*/, "，地點：").replace(/^，/, "");
+        var where = (rest.match(/地點[：:]\s*([^，。；]+)/) || [])[1];
+        if (where && !placeLike(where)) rest = rest.replace(/，?地點[：:][^，。；]+/, "");
+        put(out.visits, m[1] + "：" + rest.replace(/[。]+$/, "") + (asOfDay && pastDated(rest, asOfDay) ? "（已結束）" : ""), 6);
+        return;
+      }
+      if (/^[(（]電話/.test(line)) return;
+      var sentence = line.replace(/^(?:[一二三四五六七八九十]+、|\d+[.、])/, "");
+      if (/^(?:各位|備註|廠商資訊|依筆順|後續如有)/.test(sentence)) return;
+      if (/[：:]$/.test(sentence) || /購買數量可視|廠商資訊、參考價格/.test(sentence)) return;
+      if (/無提供.{0,4}販售|自行在外訂購|自行(?:購買|訂購)|貨比三家|可在.{1,30}購買|起可在|到校提供.{0,6}選購|請於.{1,20}前.{0,10}購買|到店購買前|不代表.{0,6}(?:指定|推薦)|代辦|認購|義賣/.test(sentence) && sentence.length <= 140) {
+        if (/不代表/.test(sentence)) put(out.notes, sentence.replace(/[；;。]+$/, ""), 2);
+        else if (!(asOfDay && pastDated(sentence, asOfDay))) put(out.ways, sentence.replace(/[。；]+$/, ""), 6);
+      }
+    });
+    return out;
+  }
+  function purchaseAnswer(query, all, details, options) {
+    var q = clean(query);
+    if (!BUY_ASK.test(q) || !BUY_ITEM.test(q) || /退貨|換貨|賠償|遺失|破損|多少錢|價格/.test(q)) return null;
+    var schoolId = options && options.schoolId || "";
+    var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var newcomer = /新生|剛入學|入學|高一/.test(q);
+    var pool = all.filter(function (item) { return item && (!schoolId || item.school === schoolId); });
+    var cands = [], titles = {};
+    pool.forEach(function (item) { titles[compact(item.title || "")] = true; });
+    pool.forEach(function (item) {
+      var detail = (details || {})[item.id], title = clean(item.title || "");
+      var lines = detail ? rawDetailLines(detail) : [];
+      var text = lines.join("\n");
+      var inTitle = BUY_ITEM.test(title);
+      if (!inTitle && !(BUY_ITEM.test(text) && BUY_CUE.test(text))) return;
+      var day = String(item.date || "").slice(0, 10);
+      if (/^\d{4}-\d{2}-\d{2}$/.test(day) && (Date.parse(asOfDay) - Date.parse(day)) / 86400000 > 330) return;
+      if (/校慶|表揚|進修部|週年/.test(title)) return;
+      var facts = detail ? purchaseFacts(detail, asOfDay) : null;
+      var useful = facts && (facts.ways.length + facts.visits.length + facts.shops.length);
+      var sentences = [];
+      if (detail && !useful) text.split(/\n+/).forEach(function (line) { clean(line).split(/(?<=[。；])/).forEach(function (sen) { sen = clean(sen).replace(/^[一二三四五六七八九十]+、|^\d+[.、]/, ""); if (BUY_ITEM.test(sen) && BUY_CUE.test(sen) && /購|訂|領|代辦|販|義賣|認購|套量|量身/.test(sen) && sen.length >= 14 && sen.length <= 120 && !titles[compact(sen)] && sentences.indexOf(sen) === -1) sentences.push(sen.replace(/[；。]+$/, "")); }); });
+      if (!useful && !sentences.length) return;
+      var score = (inTitle ? 10 : 0) + (useful ? 8 : 0) + (newcomer && /新生/.test(title) ? 3 : 0) + (item.kind === "school_info" ? 0 : freshness(item, asOfDay) / 4);
+      var dupKey = compact(title) + day;
+      if (cands.some(function (c) { return c.dup === dupKey; })) return;
+      cands.push({ dup: dupKey, item: item, facts: facts, sentences: sentences, useful: !!useful, score: score, day: day });
+    });
+    if (!cands.length) return null;
+    var bySchool = {}, order = [];
+    cands.sort(function (a, b) { return b.score - a.score; }).forEach(function (c) {
+      var key = c.item.school || c.item.school_name || "";
+      if (!bySchool[key]) { bySchool[key] = []; order.push(key); }
+      if (bySchool[key].length < 3) bySchool[key].push(c);
+    });
+    var bullets = [], sources = [], names = [];
+    order.forEach(function (key) {
+      var group = bySchool[key], school = group[0].item.school_name || "", tag = order.length > 1 ? "【" + school + "】" : "";
+      var merged = { ways: [], visits: [], shops: [], prices: [], notes: [], sentences: [] }, seen = {}, vendorSeen = {};
+      group.forEach(function (c) {
+        if (c.facts) ["ways", "visits", "shops", "prices", "notes"].forEach(function (k) {
+          c.facts[k].forEach(function (v) {
+            var id = k + compact(k === "shops" ? v.split("：")[0] : v);
+            if (!seen[id]) { seen[id] = true; merged[k].push(v); }
+          });
+        });
+        c.sentences.forEach(function (sen) { if (merged.sentences.indexOf(sen) === -1) merged.sentences.push(sen); });
+        sources.push(Object.assign({}, c.item)); names.push((school ? school + "「" : "「") + clean(c.item.title).replace(/^[【\[][^】\]]{1,8}[】\]]/, "").slice(0, 24) + "」");
+      });
+      if (merged.ways.length) bullets.push(tag + "購買方式：" + merged.ways.slice(0, 5).join("；"));
+      if (merged.visits.length) bullets.push(tag + "到校販售：" + merged.visits.join("；"));
+      if (merged.shops.length) bullets.push(tag + "店家（依來源列出，僅供參考）：" + merged.shops.join("；"));
+      if (merged.prices.length) bullets.push(tag + "參考價格與建議數量：" + merged.prices.join("、"));
+      merged.sentences.forEach(function (v) { bullets.push(tag + "相關說明：" + v); });
+      merged.notes.slice(0, 1).forEach(function (v) { bullets.push(tag + "備註：" + v); });
+      if (!merged.shops.length && !merged.visits.length && !merged.ways.length) bullets.push(tag + "公告沒有寫明購買地點或廠商，建議洽詢學務處（生輔組）確認。");
+    });
+    var seenSource = {}; sources = sources.filter(function (it) { if (seenSource[it.id]) return false; seenSource[it.id] = true; return true; }).slice(0, 4);
+    var lead = "整理了" + names.slice(0, 3).join("、") + "裡跟購買" + (q.match(BUY_ITEM) || ["制服"])[0] + "有關的內容：";
+    return { status: "answered", mode: "purchase", query: query, evidence: [], key_points: [], related: [], summary: lead + bullets.join("；"), purchase_bullets: bullets, purchase_lead: lead,
+      sources: sources, limitation: "店家與價格是學校公告提供的參考資訊，不代表學校指定特定廠商；實際以各店家與學校最新公告為準。", plan: questionPlan(query) };
+  }
   function officialRoleAsk(query) {
     var q = clean(query), rm = q.match(OFFICIAL_ROLE);
     if (!rm || !OFFICIAL_WHO.test(q) || OFFICIAL_PAST.test(q) || /我的|導師|班導/.test(q)) return null;
@@ -2925,6 +3061,8 @@
     if (official) return official;
     var courses = courseListAnswer(query, all, details, options);
     if (courses) return courses;
+    var purchase = purchaseAnswer(query, all, details, options);
+    if (purchase) return purchase;
     var calendar = calendarLayer(query, all, options, asOfDay);
     var browse = browsePlan(query);
     if (browse && !calendar) return browseAnswer(query, items, browse, options);

@@ -215,6 +215,7 @@
   }
   function plausible(slot, value) {
     if (!value || value.length < 2 || (/^(?:無|略|同上|如下)$/.test(value))) return false;
+    if (slot === "place" && (/購買數量|個人需求|自行比價|可視|如有|不得|必須|應於|請於|^[\d\s\-－()（）]+$/.test(value) || value.length > 60)) return false;
     if (slot === "time" || slot === "deadline") return /\d/.test(value) || /星期|週[一二三四五六日]|即日起|隨時/.test(value);
     return true;
   }

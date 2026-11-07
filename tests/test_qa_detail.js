@@ -98,4 +98,47 @@ assert.match(t, /選課對象：高一各班學生/);
 x = run("多元選修的課程有哪些", [table]);
 assert.equal(x.r.mode, "course_list");
 assert.notEqual(run("多元選修什麼時候選課", [table]).r.mode, "course_list", "a when question is not a list question");
+
+/* 4. 「去哪裡買制服」：整理廠商、地點、時間、方式；標籤要對得上內容。 */
+const shop = mk("u1", "新生制服選購事宜", [
+  "各位新生及家長們好：",
+  "一、本校無提供制服販售服務，請學生、家長自行在外訂購。",
+  "二、購買數量可視個人需求自行比價購買。",
+  "三、廠商將到校提供選購服務，販售時間、地點如下：",
+  "( 一 ) 星光制服社： 12/5( 六 ) 上午 9 時到下午 16 時 ( 電話：陳先生 0912-345-678) ，地點 — 本校活動中心。",
+  "【廠商資訊】",
+  "1. 月亮服飾 ( 有電繡 )/ 星河市中山路 12 號 / 電話： 07-1112222/ 營業時間 - 周一至周六 (9:00-20:00)",
+  "2. 太陽制服行 / 星河市和平街 5 號 / 電話： 07-3334444/ 營業時間：周一至周日 (8:00-21:00) 。",
+  "【建議購買數量與參考價格】",
+  "品項 參考單價 建議購買數量",
+  "長袖制服 350~400 元 1-2 件 運動外套 550~750 元 1 件",
+  "備註：",
+  "本校提供之廠商資訊僅供參考，不代表本校指定或推薦特定廠商。"
+], "2026-11-01");
+const sizes = mk("u2", "新生校服建議購買數量及學號繡製說明", [
+  "一、請於開學前自行購買校服，並於新生訓練期間穿著到校。",
+  "二、學號請查詢校網新生編班。"
+], "2026-10-20");
+const sportsNotice = mk("u3", "校慶運動會相關說明", ["運動會當天請穿著運動服到校。"], "2026-10-25");
+x = run("我是剛入學的新生，想買制服，不知道應該去哪裡買，你能整理給我嗎？", [shop, sizes, sportsNotice]);
+t = flat(x);
+assert.equal(x.r.mode, "purchase");
+assert.match(t, /月亮服飾[^；]*星河市中山路 12 號|月亮服飾[^；]*中山路12號/);
+assert.match(t, /太陽制服行/);
+assert.match(t, /07-1112222/);
+assert.match(t, /星光制服社[^；]*活動中心/);
+assert.match(t, /自行在外訂購/);
+assert.match(t, /350~400 元（建議 1-2 件）/);
+assert.doesNotMatch(t, /0912-345-678/, "a person's mobile number is not repeated");
+assert.doesNotMatch(t, /地點：[^；、。]*購買數量/, "a 地點 label never carries an unrelated clause");
+assert.doesNotMatch(t, /運動會當天/, "an unrelated notice is not a source");
+/* a 地點 value has to look like a place */
+const bad = mk("u4", "新生制服選購事宜", ["( 一 ) 某某服飾： 12/5( 六 ) 上午 9 時 ，地點 — 購買數量可視個人需求自行比價購買。", "請至本校合作社購買制服。"], "2026-11-01");
+x = run("新生制服要去哪裡買", [bad]);
+assert.doesNotMatch(flat(x), /地點：購買數量/);
+/* a school with no vendor list says what it does say, and that the place is not stated */
+const coop = page("u5", "學生規定 › 服儀規定", ["本校合作社代辦學生制服、體育服裝、書包等項目，歡迎自由選購。"]);
+x = run("新生制服要去哪裡買", [coop]);
+assert.equal(x.r.mode, "purchase");
+assert.match(flat(x), /合作社代辦學生制服/);
 console.log("qa detail tests passed");
