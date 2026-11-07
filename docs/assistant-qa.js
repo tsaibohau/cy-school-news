@@ -1717,7 +1717,7 @@
      add a different subject (期中考成績繳交 is not 期中考). */
   var WHEN_ASK = /什麼時候|何時|哪一天|哪天|哪幾天|幾號|幾月幾|日期|期限|截止|到什麼時候|時間是/;
   var WHEN_SKIP = /哪裡|在哪|地點|怎麼|如何|多少錢|費用|要帶|帶什麼|找誰|聯絡|成績|名單|結果|錄取/;
-  var WHEN_FILLER_WORDS = /下一次|下次|下個|最近一次|接下來|這次|哪幾天|哪一天|哪天|幾號/g;
+  var WHEN_FILLER_WORDS = /大概落在|大約落在|大概會在|大約會在|大概|大約|大致|差不多|落在|下一次|下次|下個|最近一次|接下來|這次|哪幾天|哪一天|哪天|幾號/g;
   var NEXT_ASK = /下次|下一次|下個|最近一次|接下來/;
   var WHEN_FILLER = /^(?:下次|下一次|下個|最近一次|最近|接下來|這次|哪幾天|哪一天|哪天|幾號|檔案|資料|日期|時間|期限|截止|高[一二三]|第[一二三四五]次)$/;
   var WHEN_QUALIFIERS = ["成績", "繳交", "命題", "監考", "閱卷", "檢討", "會議", "說明會", "講座", "補考", "報名", "試題", "公告", "IEP"];
@@ -2782,6 +2782,9 @@
       calendar: calendar,
       announcement: announcementLayer(query, all, details, options)
     };
+    /* A records/results table page (運動會各項紀錄保持者紀錄表) is never the answer to a when-question the calendar answers. */
+    if (layers.rule && layers.calendar && layers.calendar.status === "answered" && !layers.calendar.weak && (WHEN_ASK.test(query) || datePlan(query, asOfDay)) &&
+        (layers.rule.sources || []).length && (layers.rule.sources || []).every(function (src) { return /紀錄|成績|名單|得獎|排行/.test(String(src.title || "").split("›").pop()); })) layers.rule = null;
     var order = ["rule", "calendar", "announcement"];
     /* Activities (營隊、比賽、講座、研習…) are announced, not written in the rules: 「防災營」 is the
        教育部 camp notice, not the 校園安全檢查規定. The rules come after the announcements then. */
