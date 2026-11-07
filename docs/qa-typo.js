@@ -44,6 +44,15 @@
     Object.keys(set).forEach(function (w) { (VOCAB.byLength[w.length] = VOCAB.byLength[w.length] || []).push(w); });
     return VOCAB;
   }
+  /* Everyday words that are right as typed: a window that cuts through one is not a typo
+     (「課程大致」 contains 課程, so 「程大」 is not 成大). */
+  var COMMON_WORDS = ["課程", "工程", "過程", "流程", "程度", "程式", "行程", "議程", "路程", "療程", "進程", "日程", "規程", "章程", "學程", "專程", "旅程", "全程", "賽程", "時程", "期程", "歷程", "航程", "里程", "病程", "排程"
+  ];
+  function protectedSpans(q) {
+    var spans = [];
+    COMMON_WORDS.forEach(function (w) { for (var at = q.indexOf(w); at !== -1; at = q.indexOf(w, at + 1)) spans.push([at, at + w.length]); });
+    return spans;
+  }
   function oneOff(window, word) {
     var diff = -1;
     for (var i = 0; i < word.length; i++) if (window[i] !== word[i]) { if (diff !== -1) return -1; diff = i; }
@@ -52,6 +61,7 @@
   /* fix(query) → { query, fixes: [{ from, to }] } (fixes empty when nothing changed). */
   function fix(query) {
     var q = String(query == null ? "" : query), v = vocab(), fixes = [];
+    var common = protectedSpans(q);
     var lengths = Object.keys(v.byLength).map(Number).sort(function (a, b) { return b - a; });
     var spans = [];
     Object.keys(v.byLength).forEach(function (len) {
@@ -69,6 +79,8 @@
         if (spans.some(function (sp) { return sp[0] < end && sp[1] > start && (sp[0] < start || sp[1] > end); })) continue;
         /* A correct word plus the next character (「期中考」+「是」) is not a typo of a longer word. */
         if (spans.some(function (sp) { return sp[0] >= start && sp[1] <= end && sp[1] - sp[0] >= len - 1; })) continue;
+        /* The window overlaps an everyday word: leave it. */
+        if (common.some(function (sp) { return sp[0] < end && sp[1] > start; })) continue;
         var best = null;
         (v.byLength[len] || []).some(function (word) {
           var at = oneOff(win, word);

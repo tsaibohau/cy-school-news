@@ -2529,7 +2529,7 @@
     /* One answer = a few plain sentences. Sources, quoted evidence and data notes for every
        answer go to one shared 依據與來源 panel under the conversation. */
     function assistantSourceButtons(result) {
-      return (result.sources || []).slice(0, result.cross_school ? 20 : result.mode === "browse" ? 8 : 5).map(function (item) {
+      return (result.sources || []).slice(0, result.cross_school ? 20 : result.multi_school ? 8 : result.mode === "browse" ? 8 : 5).map(function (item) {
         var validityLabel = window.CyNewsAnnouncementValidity && item.validity ? window.CyNewsAnnouncementValidity.label(item.validity) : "";
         var sourceMeta = (item.school_name || "官方公告") + " · " + displayDate(item) + (validityLabel ? " · " + validityLabel : "") + (item.note ? " · " + item.note : "");
         if (item.kind === "service") return '<a class="assistant-source" href="' + esc(/^https:\/\//.test(String(item.url || "")) ? item.url : "#") + '" target="_blank" rel="noopener"><strong>' + esc(item.title) + '</strong><small>' + esc(item.note || "官方系統") + '</small></a>';

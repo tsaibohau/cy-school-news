@@ -31,6 +31,13 @@
   var RANGE_JOIN = /\s*(?:至|到|~|～|－|-|—)\s*/;
   /* 連接詞：句首的「惟、另、並、且、如、若、又、但、即、故」只是銜接，不是內容。 */
   var CONNECTIVE = /^(?:惟|另外|另|並且|並|且|如|若|又|但是|但|即|故|因此|爰|請|敬請|煩請|務請)\s*[，,、]?\s*/;
+  /* 「115年12月02日(三)下午14:30-15:30」 is one time, not a date plus half a time range. */
+  var CLOCK_WORD = "(?:上午|下午|中午|晚上|早上)?\\s*\\d{1,2}\\s*[:：]\\s*\\d{2}";
+  var DATE_CLOCK = new RegExp("(?:(?:\\d{2,3}|20\\d{2})\\s*年\\s*)?\\d{1,2}\\s*月\\s*\\d{1,2}\\s*日(?:\\s*[（(]\\s*(?:星期|週)?" + WEEKDAY + "\\s*[)）])?\\s*" + CLOCK_WORD + "(?:\\s*(?:至|到|~|～|－|-|—)\\s*" + CLOCK_WORD + ")?");
+  function dateClock(text) {
+    var m = String(text).match(DATE_CLOCK);
+    return m ? clean(m[0]).replace(/\s*[:：]\s*/g, ":").replace(/\s*[至到~～－—]\s*/g, "～").replace(/(\d)\s*-\s*(?=(?:上午|下午|中午|晚上|早上)?\d)/g, "$1～") : "";
+  }
   function times(text) { return (String(text).match(TIME_WORD) || []).map(clean); }
   function stripConnectives(text) {
     var t = clean(text);
@@ -44,9 +51,11 @@
   /* ---------- 事實擷取 ---------- */
   var DEADLINE = /截止|期限|[日號)）]\s*(?:以)?前|前(?:完成|報名|繳交|上傳|送交|填寫|申請|交)|受理至|報名至|收件至|至.{0,24}止|逾期/;
   var REQUIRE = /(?:應|須|需|請|要|務必|前|並)\s*(?:檢附|攜帶|備妥|準備|附上)\s*[：:]?\s*([^。；;，,]{2,40}?)(?=送|交|至|向|於|，|,|。|；|$)/;
-  var AUDIENCE = /(?:對象|資格|適用對象|參加對象|報名資格)\s*(?:[：:]|為|是)\s*([^。；;，,]{2,40})|(全校|高一|高二|高三|國一|國二|國三|新生|應屆畢業生|高中部|國中部|住宿生|全體(?:學生|同學)|[一二三]年級)(?:學生|同學)?/;
-  var DENY = /不得|禁止|不准|不可|不能|嚴禁|不予|不受理/;
-  var ALLOW = /(?:^|[^不])(?:得|可|可以|准予|允許|開放)(?=[一-鿿])/;
+  var AUDIENCE = /(?:對象|資格|適用對象|參加對象|報名資格)\s*(?:[：:]|為|是)\s*([^。；;，,]{2,40})|((?:高|國)[一二三](?:[、及和與]?(?:高|國)[一二三])+|全校|高一|高二|高三|國一|國二|國三|新生|應屆畢業生|高中部|國中部|住宿生|全體(?:學生|同學)|[一二三]年級)(?:學生|同學)?/;
+  var DENY = /不得|禁止|不准|不可(?!攜)|不能|嚴禁|不予|不受理/;
+  var ALLOW = /(?:^|[^不])(?:得|可(?!攜|能|見|是|愛|惜|謂|靠)|可以|准予|允許|開放)(?=[一-鿿])/;
+  /* 「皆不得使用…經老師同意後方可使用」 is a ban with an exception, never 「可以」. */
+  var STRONG_DENY = /皆不得|均不得|一律不得|不得使用|不得置於|嚴禁|禁止|不准|應關機|以關機為原則/;
   var MUST = /應|須|必須|一律|務必|規定/;
   var PENALTY = /懲處|記(?:警告|申誡|小過|大過|過)|警告|申誡|扣(?:分|減|點)|不予計分|零分|以零分計|不計分|曠課|愛校服務|銷過|取消(?:資格|錄取|參加)|視同(?:放棄|未|曠)|不予(?:受理|核發|補)|補交|罰/;
   function grams(text) { var t = String(text).replace(/[^\u4e00-\u9fff\w]/g, ""), out = {}; for (var i = 0; i + 2 <= t.length; i++) out[t.slice(i, i + 2)] = true; return out; }
@@ -91,8 +100,9 @@
       var s = stripConnectives(row), found = times(s);
       /* 「…年…月…日函」「公告日期」 date a letter, not the event. */
       if (/函|來函|發文|公告日期|發布日期|發佈日期|張貼|字第|號令/.test(s)) found = [];
-      if (!out.deadline && DEADLINE.test(s) && found.length) out.deadline = found.slice(0, 2).join("–");
-      else if (!out.time && found.length && !DEADLINE.test(s)) out.time = found.slice(0, 2).join(RANGE_JOIN.test(s) ? "～" : "、");
+      var dc = found.length ? dateClock(s) : "";
+      if (!out.deadline && DEADLINE.test(s) && found.length) out.deadline = dc || found.slice(0, 2).join("–");
+      else if (!out.time && found.length && !DEADLINE.test(s)) out.time = dc || found.slice(0, 2).join(RANGE_JOIN.test(s) ? "～" : "、");
       var req = s.match(REQUIRE);
       if (!out.required && req && !/公告|本校|函|辦理/.test(req[1])) out.required = req[1].replace(/[，,]?(?:並|及|等)$/, "");
       var aud = s.match(AUDIENCE);
@@ -102,6 +112,7 @@
       if (MUST.test(s)) out.must = true;
     });
     rows.forEach(function (row) { var s = stripConnectives(row); if (!out.penalty && PENALTY.test(s)) out.penalty = s.replace(/[。；;]$/, ""); if (MUST.test(s)) out.must = true; if (out.allow === null && DENY.test(s)) out.allow = false; });
+    out.strongDeny = STRONG_DENY.test(rows.join(""));
     out.lead = first || (rows[0] ? stripConnectives(rows[0]).replace(/[。；;]$/, "") : "");
     (extra || []).forEach(function (point) {
       var v = clean(point && point.value);
@@ -121,7 +132,7 @@
      才用內文的固定規則（正規式）補。全部是規則，不呼叫任何外部服務。 */
   var Syn = typeof window !== "undefined" ? window.CyNewsSynonyms : null;
   if (!Syn && typeof module !== "undefined" && module.exports) { try { Syn = require("./qa-synonyms.js"); } catch (e) { Syn = null; } }
-  var SLOT_NAME = { time: "活動時間", deadline: "報名或申請的期限", place: "地點", audience: "對象", signup: "報名方式", bring: "要攜帶或準備的東西", fee: "費用", contact: "聯絡方式", purpose: "活動內容" };
+  var SLOT_NAME = { time: "活動時間", deadline: "報名或申請的期限", place: "地點", audience: "對象", signup: "報名方式", bring: "要攜帶或準備的東西", fee: "費用", contact: "聯絡方式", quota: "名額", purpose: "活動內容" };
   var LABEL_MAP = null;
   function labelMap() {
     if (LABEL_MAP) return LABEL_MAP;
@@ -207,6 +218,7 @@
   }
   function plausible(slot, value) {
     if (!value || value.length < 2 || (/^(?:無|略|同上|如下)$/.test(value))) return false;
+    if (slot === "place" && (/購買數量|個人需求|自行比價|可視|如有|不得|必須|應於|請於|^[\d\s\-－()（）]+$/.test(value) || value.length > 60)) return false;
     if (slot === "time" || slot === "deadline") return /\d/.test(value) || /星期|週[一二三四五六日]|即日起|隨時/.test(value);
     return true;
   }
@@ -297,6 +309,7 @@
             put("place", "線上" + (/Google\s*Meet/i.test(s) ? "（Google Meet）" : /Zoom/i.test(s) ? "（Zoom）" : "") + (link ? " " + link : ""), "prose", group[0]);
           }
         }
+        if (!out.slots.quota) { var qt = quotaOf(s); if (qt) put("quota", qt, "prose", group[0]); }
         if (!out.slots.signup && SIGNUP_CUE.test(s) && SIGNUP_HOW.test(s) && !/錄取|名單|公告結果|成績/.test(s)) put("signup", s, "prose", group[0]);
         if (!out.slots.fee && !/獎金|獎勵|獎品|獎額|補助|經費由/.test(s)) {
           var fm = s.match(FEE_RE);
@@ -337,6 +350,15 @@
     return out;
   }
 
+  /* 「名額為16人，未達16人將取消甄選」→ 名額與成行條件. */
+  function quotaOf(sentence) {
+    var s = clean(sentence), bits = [];
+    var n = s.match(/(?:名額|員額|限額|人數上限|可提報[^，。；\d]{0,8}名額)[^，。；\d]{0,8}?(\d+)\s*(?:人|名|位|組|隊)/) || s.match(/(?:限|至多|最多|招收|錄取|額滿為止[，,]?共)\s*(\d+)\s*(?:人|名|位)/);
+    if (n) bits.push(n[1] + " 人");
+    var c = s.match(/(未達|不足|少於|未滿)\s*(\d+)\s*(?:人|名|位)[^，。；]*?[，,]\s*(?:則|將|即|得)?\s*([^，。；]{0,10}?取消[^，。；]{0,8}|不[^，。；]{0,8}(?:辦理|開班|開課|舉行))/);
+    if (c && (n || /報名|甄選|開班|名額/.test(s))) bits.push(c[1] + " " + c[2] + " 人將" + c[3].replace(/^(?:將|則)?(?:公告|予以)?/, ""));
+    return bits.join("；");
+  }
   /* 問題 → 想問的欄位（字典在 qa-synonyms.js 的 QUESTION_SLOTS）。 */
   function askedSlot(query) {
     var q = clean(query), rules = Syn && Syn.QUESTION_SLOTS || [];
@@ -367,7 +389,8 @@
     signup: ["報名方式：{v}", "要這樣報名：{v}", "報名請看：{v}"],
     bring: ["要準備{v}", "記得帶{v}", "需要的東西是{v}"],
     fee: ["費用：{v}", "收費方面：{v}", "費用部分：{v}"],
-    contact: ["聯絡方式：{v}", "可以這樣聯絡：{v}", "洽詢請用：{v}"]
+    contact: ["聯絡方式：{v}", "可以這樣聯絡：{v}", "洽詢請用：{v}"],
+    quota: ["名額：{v}", "名額方面：{v}", "人數限制：{v}"]
   };
   /* 1–2 sentences about what the notice is: its purpose, then the date, place and who it is for. */
   function summaryOf(fields) {
@@ -396,8 +419,8 @@
   }
   /* The other facts worth showing beside the answer (not the asked one). */
   function otherFacts(fields, skip) {
-    var s = fields && fields.slots || {}, names = { time: "時間", deadline: "期限", place: "地點", audience: "對象", signup: "報名方式", fee: "費用", bring: "攜帶", contact: "聯絡" };
-    return ["time", "deadline", "place", "audience", "signup", "fee", "bring", "contact"].filter(function (k) { return k !== skip && s[k]; })
+    var s = fields && fields.slots || {}, names = { time: "時間", deadline: "報名期限", place: "地點", quota: "名額", audience: "對象", signup: "報名方式", fee: "費用", bring: "攜帶", contact: "聯絡" };
+    return ["time", "deadline", "place", "quota", "audience", "signup", "fee", "bring", "contact"].filter(function (k) { return k !== skip && s[k]; })
       .map(function (k) { return { slot: k, label: names[k], value: s[k].value }; });
   }
 
@@ -460,7 +483,9 @@
     else if (type === "judge") {
       /* 「可以…嗎」 is answered with 可以／不行／可以但有條件; 「一定要…嗎」 with 要／沒寫死. */
       var asksMust = /一定要|要不要|需不需要|必須|是不是都要|強制/.test(query);
-      var key = facts.allow === false ? "deny" : asksMust ? (facts.must ? "must" : "unsure")
+      /* 「皆不得使用…應關機」 is a ban even when the same text also says the teacher may allow an exception; bringing it is another matter. */
+      var banned = facts.allow === false || (facts.strongDeny && !/帶/.test(query));
+      var key = banned ? "deny" : asksMust ? (facts.must ? "must" : "unsure")
         : facts.must ? "allowIf" : facts.allow === true ? "allow" : "unsure";
       head = fill(pick(T.judge[key], seed), slots);
     } else if (type === "stance") {
