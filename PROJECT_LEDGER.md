@@ -2411,3 +2411,11 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 移除 Vercel 測試站：刪 `vercel.json`、`api/`、`tools/build-staging.js`、大部分 `tools/staging/`、`supabase/functions/request-staging-refresh/`、`staging-user-refresh.yml` 與相關測試；`docs/app.js` 的測試站更新按鈕程式；`username-auth` 不再允許 vercel.app 來源。擁有者需在 Supabase 後台重新部署 `username-auth`、刪除 `request-staging-refresh` 與 `GITHUB_REFRESH_TOKEN`。
 - 測試：`tests/test_qa_natural_reply.js`、`tests/test_qa_usual_when.js`（虛構資料）；措辭改變而更新的斷言：test_answer_composer、test_assistant_qa、test_qa_school_docs、test_qa_layers、test_qa_usual_when。
 - 版本：`assistant-qa.js?v=91`、`qa-synonyms.js?v=13`、`answer-composer.js?v=4`、`app.js?v=141`、`style.css?v=117`、`cy-news-v166`。
+
+## 2026-11-07 問校務：校長兩校分段、追問比較、「開啟新問校務」按鈕；Supabase 檢查
+- 校長／主任題在兩校範圍內分成【嘉中】【嘉女】兩段；重問同一題回完全相同的答案（移除「沒問題，再回答一次」，原本會改答另一校）。
+- 比較與追問：職稱答案帶 `entities`（學校、職稱、姓名、學歷、經歷、任期、分機、來源頁）。「這兩個人差在哪裡」這類指稱追問由 `docs/app.js` 傳入 `options.previousTurn = QA.turnSummary(...)`，並排比較各校官網頁面寫的事實，最後列差異摘要，頁面沒寫的欄位明說無法比較，不評價人；指不到時請使用者說完整，不再答無關公告。「嘉中和嘉女的校長差在哪裡」「兩校校長有什麼不同」走同一個並排比較。
+- 「＋ 開啟新問校務」按鈕（輸入框上方，有對話才出現）：清空對話、參考資料、`cynews-assistant-history` 與輸入框，重新顯示歡迎語；範圍與深度判斷不變。
+- Supabase（正式專案）：`username-auth` 重新部署為 v5（移除 vercel.app 來源，verify_jwt 維持 false），以測試帳號的帳號名稱實測登入成功；`request-staging-refresh` 在正式專案不存在；安全檢查：管理／擁有者函式皆有權限檢查，健康檢查無問題。`public_capabilities.member_content` 為開啟（未登入可讀會員內文），擁有者確認維持開啟。
+- 測試：`tests/test_qa_compare.js`、`tests/test_assistant_new_chat.js`（虛構資料）；`test_qa_school_docs.js` 重複提問改為斷言答案相同。
+- 版本：`assistant-qa.js?v=92`、`app.js?v=142`、`style.css?v=118`、`cy-news-v167`。
