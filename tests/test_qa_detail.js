@@ -141,4 +141,33 @@ const coop = page("u5", "學生規定 › 服儀規定", ["本校合作社代辦
 x = run("新生制服要去哪裡買", [coop]);
 assert.equal(x.r.mode, "purchase");
 assert.match(flat(x), /合作社代辦學生制服/);
+
+/* 5. 未點名學校：兩校各自回答；空的校長室頁面明說沒寫姓名；學歷只出現一次；readList 兩校各自讀取。 */
+const mkp = (school, name, id, title, lines) => ({ item: { id, title, kind: "school_info", school, school_name: name, summary: "", snippet: "", url: "https://school.example/" + id, date: "" },
+  detail: lines.length ? { provenance: "official_article", announcement_id: id, source_hash: "h" + id, blocks: lines.map((text) => ({ type: "paragraph", text })), attachments: [] } : null });
+const A1 = mkp("cysh", "嘉中", "a1", "行政單位 › 校長室", ["王大明 校長", "【學歷】", "星河大學教育博士"]);
+const B1 = mkp("cygsh", "嘉女", "b1", "行政單位 › 校長室", []);
+const ALL = { asOf: "2026-11-07", schoolId: "", scopeLabel: "", calendarEvents: [{ school_id: "cysh", date: "2026-11-20", title: "x" }, { school_id: "cygsh", date: "2026-11-20", title: "y" }] };
+const both = (q, rows) => { const d = {}; rows.forEach((r) => { if (r.detail) d[r.item.id] = r.detail; }); const r = QA.answer(q, rows.map((x) => x.item), d, ALL); return { r, said: QA.conversational(r) }; };
+x = both("校長名字是什麼", [A1, B1]);
+t = JSON.stringify(x.r) + flat(x);
+assert.match(flat(x), /王大明/);
+assert.match(flat(x), /嘉女[^\n]*沒有寫出校長的姓名/);
+assert.equal((flat(x).match(/星河大學教育博士/g) || []).length, 1, "the 學歷 line appears once");
+assert.doesNotMatch(flat(x), /AI|指引/);
+/* the read list reaches both schools' pages even when one school has many */
+const manyA = Array.from({ length: 15 }, (_, i) => mkp("cysh", "嘉中", "m" + i, "新生專區 › 制服資訊 " + i, ["制服"]).item);
+const shopB = mkp("cygsh", "嘉女", "b2", "學生規定 › 服儀規定", ["本校合作社代辦學生制服、體育服裝、書包等項目，歡迎自由選購。"]);
+const rl = QA.readList("新生制服要去哪裡買", manyA.concat([shopB.item]), ALL);
+assert.ok(rl.some((i) => i.id === "b2"), "the second school's page is read");
+x = both("新生制服要去哪裡買", [shopB, mkp("cysh", "嘉中", "a2", "新生專區 › 制服", ["本校不販售制服，請至中山路的月亮服飾購買。"])]);
+assert.match(flat(x), /合作社代辦學生制服/);
+assert.doesNotMatch(flat(x), /報到序號/);
+
+/* 6. 來源只列本次使用的公告；前一屆放在「歷屆」說明。 */
+const cur = mk("o2", "【奧林匹亞報名】第20屆星際奧林匹亞競賽校內甄選", ["本表單僅限在校高一高二學生填報。", "校內甄選地點：科學大樓四樓實驗室。", "校內甄選時間：115年12月02日(三)14:30-15:30。"], "2026-11-02");
+const old = mk("o1", "【星際奧林匹亞競賽】第19屆星際奧林匹亞競賽初選訊息", ["第19屆校內甄選地點：舊館三樓。", "校內甄選時間：114年12月01日(一)14:30-15:30。"], "2026-02-24");
+x = run("我這次參加的星際奧林匹亞競賽，不知道要去哪裡比", [cur, old]);
+assert.deepEqual(x.r.sources.map((s) => s.id), ["o2"], "the old edition is not a source");
+assert.match(flat(x), /科學大樓四樓實驗室/);
 console.log("qa detail tests passed");

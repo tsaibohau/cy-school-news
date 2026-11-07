@@ -1458,8 +1458,14 @@
     });
     if (asksPenalty(question) || asksPenalty(fixed) || CONSEQUENCE_ASK.test(question) || PROCEDURE_ASK.test(question)) penaltyDocs(docs, question).forEach(add);
     var official = officialRoleAsk(fixed) || officialRoleAsk(question);
-    if (official) officialPages(official, items, options && options.schoolId).slice(0, 12).forEach(add);
-    if ((BUY_ASK.test(question) || BUY_ASK.test(fixed)) && BUY_ITEM.test(question)) (items || []).filter(function (item) { return item && /制服|校服|服儀|新生專區|新生始業|新生訓練|新生資訊/.test(String(item.title || "")) && (!options || !options.schoolId || item.school === options.schoolId); }).slice(0, 12).forEach(add);
+    /* Each school gets its own share: a cap over both schools' pages would leave one of them unread. */
+    function perSchool(list, cap) {
+      var count = {};
+      return list.filter(function (item) { var k = itemSchool(item) || "_"; count[k] = (count[k] || 0) + 1; return count[k] <= cap; });
+    }
+    if (official) perSchool(officialPages(official, items, options && options.schoolId), 12).forEach(add);
+    if ((BUY_ASK.test(question) || BUY_ASK.test(fixed)) && BUY_ITEM.test(question)) perSchool((items || []).filter(function (item) { return item && /制服|校服|服儀|新生專區|新生始業|新生訓練|新生資訊/.test(String(item.title || "")) && (!options || !options.schoolId || item.school === options.schoolId); }), 12).forEach(add);
+    if (LIST_ASK.test(question) && LIST_SUBJECT.test(question)) perSchool(rank(fixed, notices, {}, options).map(function (row) { return row.item; }), 4).forEach(add);
     return out;
   }
   /* Rules are numbered (一、 (一) 1. 第三條) or are timetable rows (12:35-13:10 午休). */
@@ -2116,7 +2122,7 @@
   function composedReply(result) {
     var first = (result.sources || [])[0] || {};
     if (result.content && result.content.text) {
-      var ct = result.content, noted = (clean(result.summary || "").match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。/g) || []).map(function (note) { return note.replace(/列在下面/, "放在參考資料裡"); });
+      var ct = result.content, noted = (clean(result.summary || "").match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。|歷屆：[^。]*。/g) || []).map(function (note) { return note.replace(/列在下面/, "放在參考資料裡"); });
       var said = ct.text, facts = (ct.facts || []).filter(function (f) { return said.indexOf(f.value) === -1; }).map(function (f) { return f.label + "：" + f.value; });
       var lead = sourceLabel(first);
       return { text: lead + (ct.kind === "summary" ? "：" : "，") + said, bullets: facts.slice(0, 9), tail: noted.join(""), composed: "content" };
@@ -2127,7 +2133,7 @@
     var source = result.mode === "rule" ? (first.school_name || "") + docLabel(first).replace(/的〈/, "〈") : sourceLabel(first).replace(/^根據/, "");
     var out = Composer.compose({ query: result.query || "", subject: questionSubject(result.query || ""), source: source, text: texts.join("。"), points: result.key_points || [] });
     if (!out.text) return null;
-    var notes = (clean(result.summary || "").match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。/g) || []).map(function (note) { return note.replace(/列在下面/, "放在參考資料裡"); });
+    var notes = (clean(result.summary || "").match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。|歷屆：[^。]*。/g) || []).map(function (note) { return note.replace(/列在下面/, "放在參考資料裡"); });
     var pointBullets = (result.key_points || []).filter(function (p) { return p && p.value && out.text.indexOf(p.value) === -1; }).map(function (p) { return p.label + "：" + clean(p.value); });
     return { text: out.text, bullets: out.bullets.concat(pointBullets).slice(0, 5), tail: notes.join(""), composed: out.type };
   }
@@ -3233,7 +3239,17 @@
       if (!names.length) return;
       found.push({ item: item, name: names[0].name, text: text, rank: office && title.indexOf(office) !== -1 ? 1 : 0 });
     });
-    if (!found.length) return null;
+    if (!found.length) {
+      /* The office's own page exists but names nobody (an empty 校長室 page): say so and point to it. */
+      var own = office ? all.filter(function (item) { return item && item.kind === "school_info" && (!schoolId || item.school === schoolId) && String(item.title || "").replace(/\s+/g, "").slice(-office.length) === office; })
+        .sort(function (a, b) { return String(a.title).length - String(b.title).length; })[0] : null;
+      if (!own) return null;
+      var ownUrl = /^https:\/\//.test(String(own.url || "")) ? own.url : "";
+      return { status: "answered", mode: "official", query: query, evidence: [], key_points: [], related: [], official_bullets: [],
+        summary: (own.school_name || "學校") + "的「" + office + "」頁面沒有寫出" + role + "的姓名，請點開頁面確認。",
+        sources: [{ id: own.id, kind: ownUrl ? "service" : "", title: "學校網頁 › " + clean(String(own.title).split("›").slice(-2).join("›")), url: ownUrl, school_name: own.school_name || "", note: "學校網頁" }],
+        limitation: "姓名取自學校官網的公開頁面；人事異動以學校最新公告為準。", plan: questionPlan(query) };
+    }
     found = found.map(function (f, i) { return { f: f, i: i }; }).sort(function (a, b) { return b.f.rank - a.f.rank || a.i - b.i; }).map(function (x) { return x.f; });
     var bySchool = {};
     found = found.filter(function (f) { if (bySchool[f.item.school]) return false; bySchool[f.item.school] = true; return true; });
@@ -3244,7 +3260,7 @@
       var edu = seg ? seg[1].split(/\n/).map(clean).filter(Boolean).slice(0, 2) : [];
       if (edu.length) bullets.push((found.length > 1 ? f.item.school_name + " " : "") + "學歷：" + edu.join("；"));
     });
-    return { status: "answered", mode: "official", query: query, evidence: [], key_points: bullets.map(function (b) { var i = b.indexOf("："); return { label: b.slice(0, i), value: b.slice(i + 1) }; }), related: [],
+    return { status: "answered", mode: "official", query: query, evidence: [], key_points: [], related: [],
       summary: lines.join(""), official_bullets: bullets,
       sources: found.map(function (f) { var url = /^https:\/\//.test(String(f.item.url || "")) ? f.item.url : ""; return { id: f.item.id, kind: url ? "service" : "", title: "學校網頁 › " + clean(String(f.item.title).split("›").slice(-2).join("›")), url: url, school_name: f.item.school_name || "", note: "學校網頁" }; }),
       limitation: "姓名取自學校官網的公開頁面；人事異動以學校最新公告為準。", plan: questionPlan(query) };
@@ -3753,6 +3769,19 @@
     sources.sort(function (a, b) { return (b.id === evidence[0].announcement_id ? 1 : 0) - (a.id === evidence[0].announcement_id ? 1 : 0); });
     var content = sources.length > 1 && sources.some(function (i) { return i.validity && i.validity.relations && i.validity.relations.length; }) ? null : contentLayer(query, ranked, evidence, asOfDay, plan);
     if (content) { evidence.unshift(content.evidence); titleOnly = false; }
+    /* The sources are the notices the answer used. An older edition of the same event (第19屆 when the
+       answer is the 第20屆) is history: it is mentioned, not offered as a source. */
+    var pastEditions = [];
+    if (content && sources.length > 1) {
+      var leadSrc = sources[0], leadDay = String(leadSrc.date || leadSrc.first_seen || "").slice(0, 10);
+      sources = sources.filter(function (src, i) {
+        if (i === 0) return true;
+        var day = String(src.date || src.first_seen || "").slice(0, 10);
+        var older = /^\d{4}-\d{2}-\d{2}$/.test(day) && /^\d{4}-\d{2}-\d{2}$/.test(leadDay) && (Date.parse(leadDay) - Date.parse(day)) / 86400000 > 30;
+        if (older) pastEditions.push(src);
+        return !older;
+      });
+    }
     var lines = answerLines(evidence, sources);
     var pointRow = ranked.filter(function (row) { return evidence[0] && row.item.id === evidence[0].announcement_id; })[0];
     var pointText = pointRow ? (detailText(pointRow.detail) || clean((pointRow.item.summary || "") + " " + (pointRow.item.snippet || ""))) : "";
@@ -3760,6 +3789,7 @@
     if (content) points = mergeFieldPoints(points, content.fields);
     var links = wantsLink(query) ? answerLinks(pointRow || { item: sources[0] || {} }) : [];
     var summaryText = composeSummary(evidence, sources, wanted, plan, options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }), content);
+    if (pastEditions.length) summaryText += "歷屆：另有較早的公告「" + clean(pastEditions[0].title || "").replace(/^[【\[][^】\]]{1,12}[】\]]\s*/, "").slice(0, 24) + "」（" + String(pastEditions[0].date || "").slice(0, 10) + "），是前一屆的資料，沒有列入來源。";
     /* Asked when it happens: the event date leads, and the sign-up deadline (if the notice has one) follows. */
     if (plan.event_date && evidence[0] && pointText && !content && !DEADLINE_CUE.test(evidence[0].text) && !(sources.length > 1)) {
       var lead0 = compact(evidence[0].text);
