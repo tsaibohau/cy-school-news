@@ -573,6 +573,7 @@
     var BOUNDARY_PREFIX = /(?:國立|私立|市立|縣立|台灣|轉知|檢送|辦理|主辦|由|與|及|於|至|向|的)$/;
     function prep(raw) {
       raw = String(raw == null ? "" : raw);
+      if (Synonyms && Synonyms.ownEventText) raw = Synonyms.ownEventText(query, raw);
       return { c: compact(raw), s: " " + raw.toLowerCase().replace(/臺/g, "台").replace(/[^0-9a-z\u3400-\u9fff]+/g, " ") + " " };
     }
     function formIn(t, f, multi) {
@@ -1822,7 +1823,19 @@
      The school calendar is the most reliable source, so check it before announcements.
      Every topic in the question must appear in the calendar title, and the title must not
      add a different subject (期中考成績繳交 is not 期中考). */
-  var WHEN_ASK = /什麼時候|何時|哪一天|哪天|哪幾天|幾號|幾月幾|日期|期限|截止|到什麼時候|時間是/;
+  var WHEN_ASK = /什麼時候|何時|哪一天|哪天|哪幾天|幾號|幾月幾|幾月|哪個月|日期|期限|截止|到什麼時候|時間是/;
+  /* 「往常校運會什麼時候辦理」: asks for the usual timing (past years), and 辦理／舉辦 does not make it a how-to. */
+  var USUAL_ASK = /往常|通常|平常|每年|歷年|往年|一般|大多|大概都/;
+  var USUAL_WHEN_EXTRA = /辦理|舉辦|舉行|辦|開始|開辦|進行|月份/;
+  function usualWhenAsk(query) { var q = clean(query); return USUAL_ASK.test(q) && (WHEN_ASK.test(q) || USUAL_WHEN_EXTRA.test(q)) && !/哪裡|在哪|地點|怎麼|如何|多少錢|費用|要帶|帶什麼|找誰|聯絡|名單|錄取/.test(q); }
+  /* Pages that list results (運動會各項紀錄保持者紀錄表, 成績, 名單) never answer a when-question; a page with masked names (李〇諾) is not quoted either. */
+  var RECORDS_TITLE = /紀錄表|成績|名單|紀錄保持|得獎|榜單|獲獎|排行/;
+  var MASKED_NAME = /[\u4e00-\u9fff]〇[\u4e00-\u9fff]|[\u4e00-\u9fff]○[\u4e00-\u9fff]/;
+  function recordsPage(item, details) {
+    if (!item) return false;
+    if (RECORDS_TITLE.test(clean(String(item.title || "")))) return true;
+    return MASKED_NAME.test(detailText(details && details[item.id]) || "") || MASKED_NAME.test(clean(item.summary || item.content || ""));
+  }
   var WHEN_SKIP = /哪裡|在哪|地點|怎麼|如何|多少錢|費用|要帶|帶什麼|找誰|聯絡|成績|名單|結果|錄取/;
   var WHEN_FILLER_WORDS = /大概落在|大約落在|大概會在|大約會在|大概|大約|大致|差不多|落在|下一次|下次|下個|最近一次|接下來|這次|哪幾天|哪一天|哪天|幾號/g;
   var NEXT_ASK = /下次|下一次|下個|最近一次|接下來/;
@@ -1862,7 +1875,7 @@
     var asOf = options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     var ordinal = ordinalOf(query), grades = query.match(GRADE_RE) || [], asksStaff = DATE_STAFF.test(query);
     function fits(title) {
-      var t = compact(title);
+      var t = compact(Synonyms && Synonyms.ownEventText ? Synonyms.ownEventText(query, title) : title);
       if (!groups.every(function (g) { return g.some(function (term) { return t.indexOf(term) !== -1; }); })) return false;
       if (ordinal && ordinalOf(title) !== ordinal) return false;
       var titleGrades = title.match(GRADE_RE) || [];
@@ -1873,6 +1886,7 @@
     var rows = [], seen = {};
     calendar.forEach(function (ev) {
       var from = String(ev && (ev.start_date || ev.date) || "").slice(0, 10), to = String(ev && (ev.end_date || ev.endDate) || from).slice(0, 10), title = clean(ev && ev.title || "");
+      if (Synonyms && Synonyms.ownEventText && !compact(Synonyms.ownEventText(query, title))) return;
       if (!/^\d{4}-\d{2}-\d{2}$/.test(from) || !title || !fits(title)) return;
       var key = from + compact(title);
       if (seen[key]) return; seen[key] = true;
@@ -2523,6 +2537,9 @@
       items = (items || []).filter(function (item) { return item && !skip[String(item.id)] && !(options.dropResults && TITLE_RESULT.test(clean(item.title || ""))); });
     }
     useCorpus(items);   // corpus word statistics, used by the topic gate for every layer
+    /* 「往常校運會什麼時候辦理」: the usual timing comes from the calendar and earlier years' notices, never the rule layer. */
+    var usual = usualWhenAnswer(query, items, details, options);
+    if (usual) { usual.reply = conversational(usual); return usual; }
     var split = splitQuestion(query);
     /* 「打架會怎樣」: when the handbook has a clause that says the penalty for it, that clause is the
        answer, not an overview of 打架 with the penalty as a side note. */
@@ -3280,10 +3297,83 @@
       sources: found.map(function (f) { var url = /^https:\/\//.test(String(f.item.url || "")) ? f.item.url : ""; return { id: f.item.id, kind: url ? "service" : "", title: "學校網頁 › " + clean(String(f.item.title).split("›").slice(-2).join("›")), url: url, school_name: f.item.school_name || "", note: "學校網頁" }; }),
       limitation: "姓名取自學校官網的公開頁面；人事異動以學校最新公告為準。", plan: questionPlan(query) };
   }
+  /* ---- 「往常／通常／每年 X 什麼時候」: usual timing from this year's calendar entry, earlier years' calendar entries and past notices ---- */
+  var USUAL_NOISE = /往常|通常|平常|每年|歷年|往年|一般|大多|大概都|什麼時候|何時|哪個月|幾月|月份|辦理|舉辦|舉行|開辦|開始|進行|請問|學校|本校|我們|大概|都是|都在|都會|是在|會在|在|都|是|辦|的|呢|嗎|啊|吧|[？?！!。，,\s]/g;
+  /* Notices that only orbit the event (poster contest, volunteers, results) are not the event. */
+  var EVENT_SIDE = /海報|徵選|徵稿|攝影|志工|招募|紀錄表|成績|名單|得獎|獲獎|優勝|預演|預賽|彩排|練習|籌備|裁判|檢錄|補假|補課|補行|調整|倒數|報名|賽程表|行程概要|晚會/;
+  function academicYearOfDay(iso) { var y = Number(iso.slice(0, 4)), m = Number(iso.slice(5, 7)); return (m >= 8 ? y : y - 1) - 1911; }
+  function monthPhase(days) {
+    var months = unique(days.map(function (d) { return Number(d.slice(5, 7)); }));
+    if (months.length !== 1) return "";
+    var avg = days.reduce(function (n, d) { return n + Number(d.slice(8, 10)); }, 0) / days.length;
+    return months[0] + " 月" + (avg <= 10 ? "上旬" : avg <= 20 ? "中旬" : "下旬");
+  }
+  function usualWhenAnswer(query, items, details, options) {
+    options = options || {};
+    if (!usualWhenAsk(query)) return null;
+    var subject = clean(query).replace(USUAL_NOISE, "");
+    if (subject.length < 2 || !Synonyms) return null;
+    var forms = unique(Synonyms.expand(subject, { includes: false }).concat([compact(subject)])).filter(function (f) { return f.length >= 2; });
+    var asOf = options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }), thisYear = currentAcademicYear(asOf);
+    var isEvent = function (title) {
+      var c = compact(Synonyms.ownEventText ? Synonyms.ownEventText(subject, title) : title);
+      return forms.some(function (f) { return c.indexOf(f) !== -1; });
+    };
+    var asksOutside = ASKS_OUTSIDE.test(query), byYear = {};
+    function slot(year) { return byYear[year] || (byYear[year] = { year: year, cal: null, notices: [] }); }
+    (options.calendarEvents || []).forEach(function (ev) {
+      var from = String(ev && (ev.start_date || ev.date) || "").slice(0, 10), to = String(ev && (ev.end_date || ev.endDate) || from).slice(0, 10), title = clean(ev && ev.title || "");
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(from) || !title || title.length > 30 || !isEvent(title) || EVENT_SIDE.test(title) || DATE_STAFF.test(title)) return;
+      var row = { from: from, to: to < from ? from : to, title: title, ev: ev }, y = academicYearOfDay(from), cur = slot(y).cal;
+      /* The entry named most plainly (the shortest title) stands for that year. */
+      if (!cur || title.length < cur.title.length) slot(y).cal = row;
+    });
+    (items || []).forEach(function (item) {
+      var title = clean(item && item.title || ""), day = String(item && (item.date || item.first_seen) || "").slice(0, 10);
+      if (!item || item.kind || item.link_status === "gone" || !title || !/^\d{4}-\d{2}-\d{2}$/.test(day) || !isEvent(title)) return;
+      if (EVENT_SIDE.test(title) || TITLE_RESULT.test(title) || DATE_STAFF.test(title) || (!asksOutside && OUTSIDE_TITLE.test(title))) return;
+      /* The event day, when the notice's date labels give it (a date within a year after the notice). */
+      var days = [];
+      (((item.tokens || {}).segments) || []).forEach(function (seg) { if ((seg.k || []).indexOf("time") !== -1) (seg.d || []).forEach(function (d) { if (d >= day && d <= isoAdd(day, 240)) days.push(d); }); });
+      days.sort();
+      slot(academicYearOfDay(day)).notices.push({ item: item, title: title, day: day, from: days[0] || "", to: days[days.length - 1] || "" });
+    });
+    var years = Object.keys(byYear).map(Number).sort(function (a, b) { return b - a; });
+    if (!years.length) return null;
+    var span = function (from, to) { return shortDay(from) + (to && to !== from ? "–" + shortDay(to) : ""); };
+    var label = options.scopeLabel || "學校", dated = [], parts = [], sources = [], current = "", known = [];
+    years.forEach(function (y) {
+      var rec = byYear[y], notice = rec.notices.slice().sort(function (a, b) { return (b.from ? 1 : 0) - (a.from ? 1 : 0) || a.day.localeCompare(b.day); })[0];
+      var from = rec.cal ? rec.cal.from : notice && notice.from, to = rec.cal ? rec.cal.to : notice && notice.to, text;
+      if (from) {
+        dated.push(from);
+        var state = y === thisYear ? (to < asOf ? "，已經辦完了" : from > asOf ? "，還沒到" : "，正在進行") : "";
+        text = (y === thisYear ? "今年（" + y + " 學年）是 " : y + " 學年 ") + span(from, to) + state + (rec.cal ? "" : "（依公告）");
+      } else if (notice) text = y + " 學年有公告「" + notice.title + "」（" + notice.day + " 發布，日期見公告）";
+      else return;
+      known.push(y);
+      if (y === thisYear) current = text; else parts.push(text);
+      if (rec.cal) sources.push({ id: "calendar:" + (rec.cal.ev.id || rec.cal.from + rec.cal.title), kind: "calendar", title: rec.cal.title, school_id: rec.cal.ev.school_id || "", school_name: rec.cal.ev.school_name || options.scopeLabel || "", url: rec.cal.ev.source_url || "", date: rec.cal.from, category: "行事曆", note: y + " 學年 · " + span(rec.cal.from, rec.cal.to) + " · 學校行事曆" });
+      else if (notice) sources.push({ id: notice.item.id, title: notice.title, school_id: notice.item.school || "", school_name: notice.item.school_name || "", url: notice.item.url || "", date: notice.day, category: notice.item.category || "", note: y + " 學年 · 歷年公告" });
+    });
+    if (!known.length) return null;
+    var phase = dated.length >= 2 ? monthPhase(dated) : "";
+    var lead = label + "的" + subject;
+    var body = known.length === 1 ? (current || parts[0]) : [current].concat(parts.length ? ["往年：" + parts.join("；")] : []).filter(Boolean).join("；");
+    var summary;
+    if (known.length >= 2 && dated.length >= 2) summary = lead + (phase ? "通常在 " + phase + "舉行" : "每年日期不太一樣") + "：" + body + "。";
+    else if (known.length >= 2) summary = lead + "目前能對照的日期不多：" + body + "。";
+    else summary = lead + "目前只找到 " + known[0] + " 學年這一年的資料，沒有往年可以比較，所以說不出「通常」：" + body + "。";
+    return { status: "answered", mode: "browse", list_label: "行事曆", query: query, headline: "", summary: summary, evidence: [], sources: sources.slice(0, 6), related: [], key_points: [],
+      usual_when: { subject: subject, years: known, months: unique(dated.map(function (d) { return Number(d.slice(5, 7)); })), phase: phase, current: current, earlier: parts },
+      plan: questionPlan(query), limitation: "日期來自學校行事曆與歷年公告；每年實際日期以學校公告為準。" };
+  }
   function answerCore(query, items, details, options) {
     var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     /* 「最近有什麼新消息」 is a list of announcements, not a question for the three layers. */
     var all = Array.isArray(items) ? items : [];
+    /* A when-question is not answered by (nor pointed to) a school page that lists records/results or masked names; unless results are what is asked. */
+    if ((WHEN_ASK.test(query) || usualWhenAsk(query)) && !RECORDS_TITLE.test(query)) all = all.filter(function (item) { return !(isSchoolDoc(item) && recordsPage(item, details)); });
     var official = officialAnswer(query, all, details, options);
     if (official) return official;
     var courses = courseListAnswer(query, all, details, options);
@@ -3307,7 +3397,7 @@
     };
     /* A records/results table page (運動會各項紀錄保持者紀錄表) is never the answer to a when-question the calendar answers. */
     if (layers.rule && layers.calendar && layers.calendar.status === "answered" && !layers.calendar.weak && (WHEN_ASK.test(query) || datePlan(query, asOfDay)) &&
-        (layers.rule.sources || []).length && (layers.rule.sources || []).every(function (src) { return /紀錄|成績|名單|得獎|排行/.test(String(src.title || "").split("›").pop()); })) layers.rule = null;
+        (layers.rule.sources || []).length && (layers.rule.sources || []).every(function (src) { return RECORDS_TITLE.test(String(src.title || "").split("›").pop()); })) layers.rule = null;
     var order = ["rule", "calendar", "announcement"];
     /* Activities (營隊、比賽、講座、研習…) are announced, not written in the rules: 「防災營」 is the
        教育部 camp notice, not the 校園安全檢查規定. The rules come after the announcements then. */
