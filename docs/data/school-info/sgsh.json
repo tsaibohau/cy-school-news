@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "sgsh",
- "generated_at": "2026-11-07T13:33:33+08:00",
+ "generated_at": "2026-11-07T18:13:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "247594578953018": {
@@ -872,37 +872,105 @@
    "page_id": 61484610830362,
    "url": "https://sg.sgshedu.tw/modules/tad_link/index.php?link_sn=14",
    "label": "多益測驗服務專區",
-   "status": "pending",
+   "status": "login",
    "depth": 2,
    "parent_path": [
     "好站連結",
     "›"
    ],
-   "order": 54
+   "order": 54,
+   "checked_at": "2026-11-07T18:13:16+08:00",
+   "path": [
+    "好站連結",
+    "›",
+    "多益測驗服務專區"
+   ]
   },
   "110518432294896": {
    "page_id": 110518432294896,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?of_cat_sn=4",
    "label": "相關法規",
-   "status": "pending",
+   "status": "login",
    "depth": 2,
    "parent_path": [
     "檔案下載",
     "教務處"
    ],
-   "order": 55
+   "order": 55,
+   "checked_at": "2026-11-07T18:13:18+08:00",
+   "path": [
+    "檔案下載",
+    "教務處",
+    "相關法規"
+   ]
   },
   "133895791705540": {
    "page_id": 133895791705540,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=1&cat_sn=1&name=",
    "label": "招生DM",
-   "status": "pending",
+   "status": "ok",
    "depth": 2,
    "parent_path": [
     "檔案下載",
     "教務處"
    ],
-   "order": 56
+   "order": 56,
+   "checked_at": "2026-11-07T18:13:20+08:00",
+   "path": [
+    "檔案下載",
+    "教務處",
+    "招生DM"
+   ],
+   "changed_at": "2026-11-07T18:13:20+08:00",
+   "content_hash": "40052b6c3842d772c59088e7973e6f8bf487614b4ee7853965f4447c849cc7dd",
+   "doc_links": [],
+   "keywords": [
+    "3C"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/sgsh/sgsh-info-133895791705540.json",
+   "detail_revision": "8109910175c9f4e03dcd0df1f328f7b751b944d500c10edfbb1e38a3930ca446",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 62,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 280,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 338,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 388,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "51759367793621": {
    "page_id": 51759367793621,
@@ -1304,7 +1372,66 @@
  "handbook": {},
  "rules": {},
  "services": {},
- "items": [],
+ "items": [
+  {
+   "id": "sgsh-info-133895791705540",
+   "kind": "school_info",
+   "title": "檔案下載 › 教務處 › 招生DM",
+   "school": "sgsh",
+   "school_name": "新光高中",
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=1&cat_sn=1&name=",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "3C"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/sgsh/sgsh-info-133895791705540.json",
+   "detail_revision": "8109910175c9f4e03dcd0df1f328f7b751b944d500c10edfbb1e38a3930ca446",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 62,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 280,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 338,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 388,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     }
+    ]
+   }
+  }
+ ],
  "roots": [
   {
    "page_id": 247594578953018,
@@ -1475,5 +1602,5 @@
   "fcc13700e3",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-07T13:33:33+08:00"
+ "last_run_at": "2026-11-07T18:13:22+08:00"
 }

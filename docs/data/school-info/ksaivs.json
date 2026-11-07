@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-07T13:34:04+08:00",
+ "generated_at": "2026-11-07T18:13:44+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3948,24 +3948,115 @@
    "page_id": 82090096689803,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-929.php",
    "label": "歷任校長",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "學校介紹"
    ],
-   "order": 43
+   "order": 43,
+   "checked_at": "2026-11-07T18:13:40+08:00",
+   "path": [
+    "學校介紹",
+    "歷任校長"
+   ],
+   "changed_at": "2026-11-07T18:13:40+08:00",
+   "content_hash": "7796548684dfdbea2df293657f72692dd243255bd492b83170876bc35b9aa64c",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-82090096689803.json",
+   "detail_revision": "b0a7bf3c7c40556b9c2d5d81c8dbc0f8220e92ea6e94f1217679aacec123d5c1",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
   },
   "162217132942390": {
    "page_id": 162217132942390,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-652.php",
    "label": "個人簡歷",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "校長室"
    ],
-   "order": 44
+   "order": 44,
+   "checked_at": "2026-11-07T18:13:42+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "個人簡歷"
+   ],
+   "changed_at": "2026-11-07T18:13:42+08:00",
+   "content_hash": "9b23ff528fab9bb8647a15ce3025516ca7275a56e293639e1e6648402256eb6d",
+   "doc_links": [],
+   "keywords": [
+    "學分",
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-162217132942390.json",
+   "detail_revision": "852e1d0a6018b4b48fea6bef79a8a4bf0916a22aa1ac51a7adf279657e37bc41",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "中山",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "教務處",
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "249055823010100": {
    "page_id": 249055823010100,
@@ -7806,6 +7897,30 @@
    }
   },
   {
+   "id": "ksaivs-info-82090096689803",
+   "kind": "school_info",
+   "title": "學校介紹 › 歷任校長",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-929.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-82090096689803.json",
+   "detail_revision": "b0a7bf3c7c40556b9c2d5d81c8dbc0f8220e92ea6e94f1217679aacec123d5c1",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "ksaivs-info-95234546257200",
    "kind": "school_info",
    "title": "教學單位 › 電機科",
@@ -9342,6 +9457,78 @@
    }
   },
   {
+   "id": "ksaivs-info-162217132942390",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室 › 個人簡歷",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-652.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "學分",
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-162217132942390.json",
+   "detail_revision": "852e1d0a6018b4b48fea6bef79a8a4bf0916a22aa1ac51a7adf279657e37bc41",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "中山",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "教務處",
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-162406327427102",
    "kind": "school_info",
    "title": "行政單位 › 學務處",
@@ -10284,5 +10471,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-07T13:34:04+08:00"
+ "last_run_at": "2026-11-07T18:13:44+08:00"
 }

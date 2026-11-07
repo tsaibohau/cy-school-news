@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tncvs",
- "generated_at": "2026-11-07T13:36:18+08:00",
+ "generated_at": "2026-11-07T18:16:12+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179102805842520": {
@@ -3751,23 +3751,575 @@
    "page_id": 179266560939065,
    "url": "https://www.tncvs.tn.edu.tw/form/index.asp?Parser=2,5,109,29,108",
    "label": "03-2-9. 表件下載",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 64
+   "order": 64,
+   "checked_at": "2026-11-07T18:16:04+08:00",
+   "path": [
+    "網站導覽",
+    "03-2-9. 表件下載"
+   ],
+   "changed_at": "2026-11-07T18:16:04+08:00",
+   "content_hash": "f1435fd0efdcb9c29e8a003df1b8bdd26e8acf924a2210d4dfbe807126e0bceb",
+   "doc_links": [],
+   "keywords": [
+    "上傳",
+    "學習歷程",
+    "入學",
+    "及格",
+    "學分",
+    "模擬考",
+    "檢定",
+    "重修"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/tncvs/tncvs-info-179266560939065.json",
+   "detail_revision": "c95a10a290996ff169066b9f06760f293573b3bcb6a1fd89c05397267a02d007",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "學習歷程檔案操作建議.docx",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/學習歷程檔案操作建議.docx"
+    },
+    {
+     "name": "學習歷程檔案操作建議.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/學習歷程檔案操作建議.pdf"
+    },
+    {
+     "name": "學習歷程檔案操作建議.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/學習歷程檔案操作建議.odt"
+    },
+    {
+     "name": "國立臺南高級商業職業學校學生技能檢定及格抵免重修學分實施要點(1).odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/國立臺南高級商業職業學校學生技能檢定及格抵免重修學分實施要點(1).odt"
+    },
+    {
+     "name": "國立臺南高商學生技能檢定及格抵免重修學分實施要點(1).pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/國立臺南高商學生技能檢定及格抵免重修學分實施要點(1).pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "重補修",
+       "#makeup",
+       "#certificate",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "模擬考",
+       "#mock"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-28"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "網路",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 81,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 89,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 92,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 94,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 100,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 105,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 106,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 107,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 109,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 110,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 112,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 125,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 129,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 134,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 135,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 141,
+      "t": [
+       "網路",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 147,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 152,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 153,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 154,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 163,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 166,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 171,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 180,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 183,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "106557172318331": {
    "page_id": 106557172318331,
    "url": "https://www.tncvs.tn.edu.tw/sub/form/index.asp?Parser=3,5,680,29,108,,,64",
    "label": "03-2-9-3. 校友專區",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 65
+   "order": 65,
+   "checked_at": "2026-11-07T18:16:10+08:00",
+   "path": [
+    "網站導覽",
+    "03-2-9-3. 校友專區"
+   ],
+   "changed_at": "2026-11-07T18:16:10+08:00",
+   "content_hash": "c93fb719e37043c00a8c1064cbf108870955b792ac4d597ef18179d485040baf",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "升學",
+    "獎學金"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/tncvs/tncvs-info-106557172318331.json",
+   "detail_revision": "771532201cb8d50a15db9473802865298e14fa3df5a576d38f423d1b80bf95e6",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "修業證明申請書.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/修業證明申請書.odt"
+    },
+    {
+     "name": "修業證明申請書.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/修業證明申請書.pdf"
+    },
+    {
+     "name": "畢業證書補發申請書(1131220更新).doc",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/畢業證書補發申請書(1131220更新).doc"
+    },
+    {
+     "name": "畢業證書補發申請書(1131220更新).pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/畢業證書補發申請書(1131220更新).pdf"
+    },
+    {
+     "name": "畢業證書補發申請書(1131220更新).odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/畢業證書補發申請書(1131220更新).odt"
+    },
+    {
+     "name": "中文成績單申請書1140519.doc",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/中文成績單申請書1140519.doc"
+    },
+    {
+     "name": "中文成績單申請書1140519.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/中文成績單申請書1140519.pdf"
+    },
+    {
+     "name": "中文成績單申請書1140519.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/中文成績單申請書1140519.odt"
+    },
+    {
+     "name": "全英文成績單、畢業證明1150427.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/全英文成績單、畢業證明1150427.pdf"
+    },
+    {
+     "name": "全英文成績單、畢業證明1150427.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/全英文成績單、畢業證明1150427.odt"
+    },
+    {
+     "name": "110學年度校慶升學績優獎學金代領委託書.docx",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/110學年度校慶升學績優獎學金代領委託書.docx"
+    },
+    {
+     "name": "110學年度校慶升學績優獎學金代領委託書.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/110學年度校慶升學績優獎學金代領委託書.odt"
+    },
+    {
+     "name": "110學年度校慶升學績優獎學金代領委託書.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/110學年度校慶升學績優獎學金代領委託書.pdf"
+    },
+    {
+     "name": "申請各項文件所需證件表-公告.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/申請各項文件所需證件表-公告.pdf"
+    },
+    {
+     "name": "申請各項文件所需證件表(1).odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/申請各項文件所需證件表(1).odt"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-12-20"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2019-08-12"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "成績單"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "獎學金",
+       "升學",
+       "#admission",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-02"
+      ]
+     }
+    ]
+   }
   },
   "97334456389191": {
    "page_id": 97334456389191,
@@ -7669,6 +8221,178 @@
    }
   },
   {
+   "id": "tncvs-info-106557172318331",
+   "kind": "school_info",
+   "title": "網站導覽 › 03-2-9-3. 校友專區",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/sub/form/index.asp?Parser=3,5,680,29,108,,,64",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "修業證明申請書.odt",
+    "修業證明申請書.pdf",
+    "畢業證書補發申請書(1131220更新).doc",
+    "畢業證書補發申請書(1131220更新).pdf",
+    "畢業證書補發申請書(1131220更新).odt",
+    "中文成績單申請書1140519.doc",
+    "中文成績單申請書1140519.pdf",
+    "中文成績單申請書1140519.odt",
+    "全英文成績單、畢業證明1150427.pdf",
+    "全英文成績單、畢業證明1150427.odt",
+    "110學年度校慶升學績優獎學金代領委託書.docx",
+    "110學年度校慶升學績優獎學金代領委託書.odt",
+    "110學年度校慶升學績優獎學金代領委託書.pdf",
+    "申請各項文件所需證件表-公告.pdf",
+    "申請各項文件所需證件表(1).odt"
+   ],
+   "keywords": [
+    "申請",
+    "升學",
+    "獎學金"
+   ],
+   "documents": [
+    {
+     "name": "修業證明申請書.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/修業證明申請書.odt"
+    },
+    {
+     "name": "修業證明申請書.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/修業證明申請書.pdf"
+    },
+    {
+     "name": "畢業證書補發申請書(1131220更新).doc",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/畢業證書補發申請書(1131220更新).doc"
+    },
+    {
+     "name": "畢業證書補發申請書(1131220更新).pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/畢業證書補發申請書(1131220更新).pdf"
+    },
+    {
+     "name": "畢業證書補發申請書(1131220更新).odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/畢業證書補發申請書(1131220更新).odt"
+    },
+    {
+     "name": "中文成績單申請書1140519.doc",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/中文成績單申請書1140519.doc"
+    },
+    {
+     "name": "中文成績單申請書1140519.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/中文成績單申請書1140519.pdf"
+    },
+    {
+     "name": "中文成績單申請書1140519.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/中文成績單申請書1140519.odt"
+    },
+    {
+     "name": "全英文成績單、畢業證明1150427.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/全英文成績單、畢業證明1150427.pdf"
+    },
+    {
+     "name": "全英文成績單、畢業證明1150427.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/全英文成績單、畢業證明1150427.odt"
+    },
+    {
+     "name": "110學年度校慶升學績優獎學金代領委託書.docx",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/110學年度校慶升學績優獎學金代領委託書.docx"
+    },
+    {
+     "name": "110學年度校慶升學績優獎學金代領委託書.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/110學年度校慶升學績優獎學金代領委託書.odt"
+    },
+    {
+     "name": "110學年度校慶升學績優獎學金代領委託書.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/110學年度校慶升學績優獎學金代領委託書.pdf"
+    },
+    {
+     "name": "申請各項文件所需證件表-公告.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/申請各項文件所需證件表-公告.pdf"
+    },
+    {
+     "name": "申請各項文件所需證件表(1).odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/申請各項文件所需證件表(1).odt"
+    }
+   ],
+   "detail_ref": "data/details/tncvs/tncvs-info-106557172318331.json",
+   "detail_revision": "771532201cb8d50a15db9473802865298e14fa3df5a576d38f423d1b80bf95e6",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-12-20"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2019-08-12"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "成績單"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "獎學金",
+       "升學",
+       "#admission",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-02"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "tncvs-info-118510779131145",
    "kind": "school_info",
    "title": "網站導覽 › 校史室專區",
@@ -8168,6 +8892,414 @@
       ],
       "d": [
        "2018-12-28"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tncvs-info-179266560939065",
+   "kind": "school_info",
+   "title": "網站導覽 › 03-2-9. 表件下載",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/form/index.asp?Parser=2,5,109,29,108",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "學習歷程檔案操作建議.docx",
+    "學習歷程檔案操作建議.pdf",
+    "學習歷程檔案操作建議.odt",
+    "國立臺南高級商業職業學校學生技能檢定及格抵免重修學分實施要點(1).odt",
+    "國立臺南高商學生技能檢定及格抵免重修學分實施要點(1).pdf"
+   ],
+   "keywords": [
+    "上傳",
+    "學習歷程",
+    "入學",
+    "及格",
+    "學分",
+    "模擬考",
+    "檢定",
+    "重修"
+   ],
+   "documents": [
+    {
+     "name": "學習歷程檔案操作建議.docx",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/學習歷程檔案操作建議.docx"
+    },
+    {
+     "name": "學習歷程檔案操作建議.pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/學習歷程檔案操作建議.pdf"
+    },
+    {
+     "name": "學習歷程檔案操作建議.odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/學習歷程檔案操作建議.odt"
+    },
+    {
+     "name": "國立臺南高級商業職業學校學生技能檢定及格抵免重修學分實施要點(1).odt",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/國立臺南高級商業職業學校學生技能檢定及格抵免重修學分實施要點(1).odt"
+    },
+    {
+     "name": "國立臺南高商學生技能檢定及格抵免重修學分實施要點(1).pdf",
+     "url": "https://www.tncvs.tn.edu.tw/df_ufiles/sub01/國立臺南高商學生技能檢定及格抵免重修學分實施要點(1).pdf"
+    }
+   ],
+   "detail_ref": "data/details/tncvs/tncvs-info-179266560939065.json",
+   "detail_revision": "c95a10a290996ff169066b9f06760f293573b3bcb6a1fd89c05397267a02d007",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "重補修",
+       "#makeup",
+       "#certificate",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "模擬考",
+       "#mock"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-28"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "網路",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 81,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 89,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 92,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 94,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 100,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 105,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 106,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 107,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 109,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 110,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 112,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 125,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 129,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 131,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 134,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 135,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 141,
+      "t": [
+       "網路",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 147,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 152,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 153,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 154,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 163,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 166,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 171,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 180,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 183,
+      "t": [],
+      "k": [
+       "allow"
       ]
      }
     ]
@@ -9797,5 +10929,5 @@
   "fd93751649",
   "fdbcaf30e1"
  ],
- "last_run_at": "2026-11-07T13:36:18+08:00"
+ "last_run_at": "2026-11-07T18:16:12+08:00"
 }

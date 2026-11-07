@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T13:21:46+08:00",
+ "generated_at": "2026-11-07T17:59:52+08:00",
  "school": {
   "id": "ptivs",
   "name": "國立成大附屬南工",
@@ -8,6 +8,140 @@
   "base": "https://www.ptivs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "ptivs-20293",
+   "title": "11/27親職講座【Gen Z 數位社群，用網接住少年】",
+   "date": "2026-11-07",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20293",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T17:59:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "成大",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "輔導室",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "成大",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-27"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "輔導室",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "ptivs-20291",
    "title": "115年資訊月臺灣教育科技展【教育聯合展區】展示活動於臺北展出，歡迎全校師生前往參觀",

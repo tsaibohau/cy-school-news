@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-07T13:35:48+08:00",
+ "generated_at": "2026-11-07T18:15:31+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -4118,12 +4118,59 @@
    "page_id": 113014089902672,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,431,425,428",
    "label": "政府、學校與民間機構提供之各項助學措施資訊",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 47
+   "order": 47,
+   "checked_at": "2026-11-07T18:15:29+08:00",
+   "path": [
+    "網站導覽",
+    "政府、學校與民間機構提供之各項助學措施資訊"
+   ],
+   "changed_at": "2026-11-07T18:15:29+08:00",
+   "content_hash": "2d2e1c107b3f57a5e6799afe69fe1f038194003720188891a65e7303ce40d286",
+   "doc_links": [],
+   "keywords": [
+    "學雜費"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-113014089902672.json",
+   "detail_revision": "78144f30ba5c03647a23ec7c8126971b593ced7e656059f57f611ef331137e23",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-01-18"
+      ]
+     }
+    ]
+   }
   },
   "176332222094149": {
    "page_id": 176332222094149,
@@ -8704,6 +8751,56 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-113014089902672",
+   "kind": "school_info",
+   "title": "網站導覽 › 政府、學校與民間機構提供之各項助學措施資訊",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,431,425,428",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "學雜費"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-113014089902672.json",
+   "detail_revision": "78144f30ba5c03647a23ec7c8126971b593ced7e656059f57f611ef331137e23",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-01-18"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-115340714866332",
    "kind": "school_info",
    "title": "優質認證",
@@ -11123,5 +11220,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-07T13:35:48+08:00"
+ "last_run_at": "2026-11-07T18:15:31+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T13:21:46+08:00",
+ "generated_at": "2026-11-07T17:59:52+08:00",
  "school": {
   "id": "hkhs",
   "name": "市立小港高中",
@@ -8,6 +8,171 @@
   "base": "https://www.hkhs.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "hkhs-11695",
+   "title": "2026瘋狂工程師｜爆走四驅！我 要成為改造王-四驅車競速賽",
+   "date": "2026-11-06",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11695",
+   "category": "競賽",
+   "first_seen": "2026-11-07T17:59:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "088d6fbc17a765c73c2bec728664d07a7f50b1250d701f3a4c4681081d00e4ef"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "比賽",
+       "#contest",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "雲科大",
+       "生活"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "網路",
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "hkhs-11696",
+   "title": "2027 第二十屆阿公店溪文學獎 徵文",
+   "date": "2026-11-06",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11696",
+   "category": "競賽",
+   "first_seen": "2026-11-07T17:59:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hkhs-11694",
    "title": "轉知高雄市教育局識詐資訊",
@@ -2082,7 +2247,275 @@
    "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=9154",
    "category": "競賽",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-03-25"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "比賽",
+       "#contest",
+       "#enrollment"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "母語"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "網路",
+       "社團",
+       "霸凌",
+       "#club",
+       "#bullying"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "比賽",
+       "#contest",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "母語"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-04-29"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "網路",
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hkhs-10669",

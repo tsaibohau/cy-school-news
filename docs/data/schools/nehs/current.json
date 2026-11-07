@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T13:21:46+08:00",
+ "generated_at": "2026-11-07T17:59:52+08:00",
  "school": {
   "id": "nehs",
   "name": "國立嘉科實驗高級中學",
@@ -8,6 +8,882 @@
   "base": "https://www.nehs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "nehs-4722",
+   "title": "【轉知】國立陽明交通大學辦理「心智圖超記憶親子免費講座」及「2027寒假-心智圖超記憶學習營」，歡迎學生及家長踴躍報名參加！",
+   "date": "2026-11-07",
+   "source_category": "訊息轉知",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4722",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T17:59:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "be162cdba629005072a12cea2026798a1976badc8aef4f0ee53e80eaea5687ad"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "be162cdba629005072a12cea2026798a1976badc8aef4f0ee53e80eaea5687ad"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "be162cdba629005072a12cea2026798a1976badc8aef4f0ee53e80eaea5687ad"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-15",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "be162cdba629005072a12cea2026798a1976badc8aef4f0ee53e80eaea5687ad"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "交大",
+     "報名",
+     "寒假",
+     "家長",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "交大",
+       "報名",
+       "寒假",
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "自主學習",
+       "升學",
+       "#admission",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-11-21",
+       "2026-11-29",
+       "2026-12-19",
+       "2026-12-27"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "寒假"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-21",
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-28",
+       "2027-02-03"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-01-15"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "audience",
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "交大",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "交大",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "自主學習",
+       "升學",
+       "#admission",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-11-21",
+       "2026-11-29",
+       "2026-12-19",
+       "2026-12-27"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "寒假"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-21",
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-28",
+       "2027-02-03"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-01-15"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "audience",
+       "fee"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "交大",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "交大",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4721",
+   "title": "【轉知】教育部青年發展署辦理「116年青年生涯領航計畫實體說明會及企劃撰寫工作坊」，歡迎本校學生、教師及家長踴躍報名！",
+   "date": "2026-11-07",
+   "source_category": "訊息轉知",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4721",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T17:59:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-06",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "985b8d0bdaebef1b7de4060011bf4180378baaf21e947d68b824c51d223545be"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-12",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "985b8d0bdaebef1b7de4060011bf4180378baaf21e947d68b824c51d223545be"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-13",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "985b8d0bdaebef1b7de4060011bf4180378baaf21e947d68b824c51d223545be"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-20",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "985b8d0bdaebef1b7de4060011bf4180378baaf21e947d68b824c51d223545be"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "家長",
+     "報名",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "家長",
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "中興",
+       "家長",
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "allow"
+      ],
+      "d": [
+       "2026-12-06",
+       "2026-11-25",
+       "2026-12-12",
+       "2026-12-02"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-06",
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-12",
+       "2026-12-02"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-13",
+       "2026-12-02"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "中興",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-20",
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "nehs-4720",
+   "title": "【徵稿】嘉義縣特教資源中心「嘉義縣特教資訊第 24 期」刊物徵稿，歡迎全校師生及家長踴躍投稿！",
+   "date": "2026-11-07",
+   "source_category": "訊息轉知",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4720",
+   "category": "競賽",
+   "first_seen": "2026-11-07T17:59:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-31",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "32691587df89e3f738aa53f205cb2740296fc6747fecb7825572df1e38fd62e3"
+    }
+   ],
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "家長",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "家長",
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "家長",
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-31"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact",
+       "#campus_map"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "家長",
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-31"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "#contact",
+       "#campus_map"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nehs-4718",
    "title": "轉知 : 「教育部臺灣台語語言能力認證」考試",

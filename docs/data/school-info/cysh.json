@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-07T13:34:34+08:00",
+ "generated_at": "2026-11-07T18:13:59+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -7570,7 +7570,14 @@
   },
   "1005": {
    "page_id": 1005,
-   "status": "pending"
+   "status": "announcement_list",
+   "checked_at": "2026-11-07T18:13:54+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "棒球隊專區",
+    "最新消息"
+   ]
   },
   "1006": {
    "page_id": 1006,
@@ -7634,7 +7641,76 @@
   },
   "1009": {
    "page_id": 1009,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T18:13:56+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "文書組",
+    "服務項目",
+    "法令規章查詢"
+   ],
+   "changed_at": "2026-11-07T18:13:56+08:00",
+   "content_hash": "1a6ee1285c30a5c448d701472faa1cb5a9ba842ddd15b3c39fbb9bfd9b73b84e",
+   "doc_links": [],
+   "keywords": [
+    "傳真"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1009.json",
+   "detail_revision": "f876f67e834d85e73eff4e6f7b2c9f505370890b5135cbe81d69e971ea0bfa88",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2020-12-03"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ],
+      "d": [
+       "2016-04-01"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [],
+      "d": [
+       "1993-04-07"
+      ]
+     }
+    ]
+   }
   },
   "1010": {
    "page_id": 1010,
@@ -7678,7 +7754,24 @@
   },
   "1013": {
    "page_id": 1013,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T18:13:58+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "文書組",
+    "檔案下載",
+    "表單下載"
+   ],
+   "changed_at": "2026-11-07T18:13:58+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1013.json",
+   "detail_revision": "7c6f007b4f7cffb788bd99a72b5da005c1a1cf6bdbf4a59ef2cdbc0b4f2ef235",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1014": {
    "page_id": 1014,
@@ -35828,6 +35921,75 @@
    "detail_status": "empty"
   },
   {
+   "id": "cysh-info-1009",
+   "kind": "school_info",
+   "title": "文書組 › 服務項目 › 法令規章查詢",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1009.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "傳真"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1009.json",
+   "detail_revision": "f876f67e834d85e73eff4e6f7b2c9f505370890b5135cbe81d69e971ea0bfa88",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2020-12-03"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ],
+      "d": [
+       "2016-04-01"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [],
+      "d": [
+       "1993-04-07"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-1010",
    "kind": "school_info",
    "title": "總務處 › 文書組 › 常見問題",
@@ -35859,6 +36021,23 @@
    "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-1011.json",
    "detail_revision": "311ad7914af77ba55a8ecc16f7d1be861b8ebd9ad1495191f876632ff755259a",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-1013",
+   "kind": "school_info",
+   "title": "文書組 › 檔案下載 › 表單下載",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1013.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1013.json",
+   "detail_revision": "7c6f007b4f7cffb788bd99a72b5da005c1a1cf6bdbf4a59ef2cdbc0b4f2ef235",
    "detail_status": "empty"
   },
   {
@@ -56174,5 +56353,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-07T13:34:34+08:00"
+ "last_run_at": "2026-11-07T18:13:59+08:00"
 }

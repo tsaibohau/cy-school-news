@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T13:21:46+08:00",
+ "generated_at": "2026-11-07T17:59:52+08:00",
  "school": {
   "id": "hysh",
   "name": "國立新營高中",
@@ -2183,8 +2183,59 @@
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13892",
    "category": "段考考試",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 1
+   "detail_status": "parsed",
+   "detail_attempts": 2,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "模擬考",
+     "#mock"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "模擬考",
+       "#mock"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "模擬考",
+       "考程表",
+       "#exam",
+       "#mock"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "模擬考",
+       "考程表",
+       "#exam",
+       "#mock"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hysh-13893",
@@ -2198,8 +2249,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 2,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",

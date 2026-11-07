@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-07T13:34:44+08:00",
+ "generated_at": "2026-11-07T18:14:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -4238,11 +4238,316 @@
   },
   "537": {
    "page_id": 537,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T18:14:11+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "體衛組",
+    "傳染病防治"
+   ],
+   "changed_at": "2026-11-07T18:14:11+08:00",
+   "content_hash": "beb9e51dc93770a0f1cae54c6b56ee61b9224945aebf4f0c5f4b5beb74862f47",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "衛生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-537.json",
+   "detail_revision": "34b2200996d7c12ebb51a9e9e0eb9de0a4e715e305cf3e1e274d0566b3d47f49",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "539": {
    "page_id": 539,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T18:14:14+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "業務職掌"
+   ],
+   "changed_at": "2026-11-07T18:14:14+08:00",
+   "content_hash": "875d7f1e7a3b3b1d53853e22860438c7b8aac1e833d1bc8dd6c998c4648c68d1",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "電話",
+    "分機",
+    "地址",
+    "安全",
+    "專線",
+    "招生",
+    "校車",
+    "註冊費"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-539.json",
+   "detail_revision": "2469ef25df04bac707d2ca0a9bfeb541bf11d0c8dbaa460de823b3017cb064ad",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "540": {
    "page_id": 540,
@@ -8775,6 +9080,318 @@
    }
   },
   {
+   "id": "fjsh-info-537",
+   "kind": "school_info",
+   "title": "學務處 › 體衛組 › 傳染病防治",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-537.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "衛生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-537.json",
+   "detail_revision": "34b2200996d7c12ebb51a9e9e0eb9de0a4e715e305cf3e1e274d0566b3d47f49",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學務處"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-539",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 業務職掌",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-539.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "電話",
+    "分機",
+    "地址",
+    "安全",
+    "專線",
+    "招生",
+    "校車",
+    "註冊費"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-539.json",
+   "detail_revision": "2469ef25df04bac707d2ca0a9bfeb541bf11d0c8dbaa460de823b3017cb064ad",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "午餐"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -8872,5 +9489,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-07T13:34:44+08:00"
+ "last_run_at": "2026-11-07T18:14:15+08:00"
 }

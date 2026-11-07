@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-07T13:34:00+08:00",
+ "generated_at": "2026-11-07T18:13:38+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -3238,23 +3238,82 @@
    "page_id": 4109304343210,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4465.php",
    "label": "學校特色說明",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 36
+   "order": 36,
+   "checked_at": "2026-11-07T18:13:34+08:00",
+   "path": [
+    "校務資料專區",
+    "學校校務資訊",
+    "學校特色與發展願景",
+    "學校特色說明"
+   ],
+   "changed_at": "2026-11-07T18:13:34+08:00",
+   "content_hash": "f32a9e3042523686f9aa24e2651402f706f258946fc74b50ce5b89ae95c17c36",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-4109304343210.json",
+   "detail_revision": "74eb977f6b39181e50b5902cae9a034215c67dd8038a89fe54efe52f249375bf",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 6,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "39677151748038": {
    "page_id": 39677151748038,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4468.php",
    "label": "學校未來發展願景或短中長程規劃",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 37
+   "order": 37,
+   "checked_at": "2026-11-07T18:13:36+08:00",
+   "path": [
+    "校務資料專區",
+    "學校校務資訊",
+    "學校特色與發展願景",
+    "學校未來發展願景或短中長程規劃"
+   ],
+   "changed_at": "2026-11-07T18:13:36+08:00",
+   "content_hash": "80ca3dfe8a8299809a3c7f42915b4538108f44df46f45970681d12675d33e8cc",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-39677151748038.json",
+   "detail_revision": "b5a714a4aafd114d3389c88747e55900b498a5638a5e71ee8c58a36f40d96504",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "215452440202311": {
    "page_id": 215452440202311,
@@ -3679,6 +3738,50 @@
  "services": {},
  "items": [
   {
+   "id": "kssh-info-4109304343210",
+   "kind": "school_info",
+   "title": "學校校務資訊 › 學校特色與發展願景 › 學校特色說明",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4465.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-4109304343210.json",
+   "detail_revision": "74eb977f6b39181e50b5902cae9a034215c67dd8038a89fe54efe52f249375bf",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 6,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "kssh-info-14334021011520",
    "kind": "school_info",
    "title": "行政單位 › 總務處 › 校園環境",
@@ -3858,6 +3961,23 @@
     ],
     "segments": []
    }
+  },
+  {
+   "id": "kssh-info-39677151748038",
+   "kind": "school_info",
+   "title": "學校校務資訊 › 學校特色與發展願景 › 學校未來發展願景或短中長程規劃",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4468.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-39677151748038.json",
+   "detail_revision": "b5a714a4aafd114d3389c88747e55900b498a5638a5e71ee8c58a36f40d96504",
+   "detail_status": "parsed"
   },
   {
    "id": "kssh-info-46542080167281",
@@ -6837,5 +6957,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-07T13:34:00+08:00"
+ "last_run_at": "2026-11-07T18:13:38+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T13:21:46+08:00",
+ "generated_at": "2026-11-07T17:59:52+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -8,6 +8,239 @@
   "base": "https://www.cygsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cygsh-187174",
+   "title": "【轉知】教育部「青年志工行動競賽表揚計畫（青志獎）」",
+   "date": "2026-11-07",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187174,r508.php",
+   "category": "競賽",
+   "first_seen": "2026-11-07T17:59:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "志工",
+     "比賽",
+     "#contest",
+     "#volunteer"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "志工",
+       "志願",
+       "#admission",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "志工",
+       "比賽",
+       "#contest",
+       "#volunteer"
+      ],
+      "k": [
+       "fee",
+       "allow"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "志工",
+       "比賽",
+       "#admission",
+       "#contest",
+       "#volunteer"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-12-21"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187173",
+   "title": "【轉知】教育部青年發展署「地方創生DNA：小白的Chill地方行動」",
+   "date": "2026-11-07",
+   "source_category": "學務處公告",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187173,r740.php",
+   "category": "一般",
+   "first_seen": "2026-11-07T17:59:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "彈性學習"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-187172",
+   "title": "【轉知】明道高級中學「拓凱新世紀青少年高峰論壇」",
+   "date": "2026-11-07",
+   "source_category": "學務處公告",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187172,r740.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T17:59:52+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-05-22",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "bfff1daf637b0580478580ad91cd0ee2b9fad61f446198d6533bc3949e92c528"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-03-14"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-04-09",
+       "2027-05-22"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "小論文"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cygsh-187171",
    "title": "【轉知】竹科實中模擬聯合國社辦理「2027NEMUN實中模擬聯合國會議」",
@@ -20,8 +253,8 @@
    "first_seen": "2026-11-07T13:21:46+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",

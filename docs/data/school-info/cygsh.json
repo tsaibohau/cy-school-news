@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-07T13:34:38+08:00",
+ "generated_at": "2026-11-07T18:14:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -10413,7 +10413,195 @@
   },
   "2029": {
    "page_id": 2029,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T18:14:02+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "教育部學生輔導諮商中心",
+    "防疫專區"
+   ],
+   "changed_at": "2026-11-07T18:14:02+08:00",
+   "content_hash": "67eefaba83bee3b3593305b5ffbb97b2f25f282c34cdf38b33a88d3798e1862d",
+   "doc_links": [],
+   "keywords": [
+    "電話",
+    "安全",
+    "衛生",
+    "停課",
+    "專線"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/cygsh/cygsh-info-2029.json",
+   "detail_revision": "3f324dd39e9873314f52c37c76fcd4fea1d6cd84a783ee73a20c3a3a0903f5a7",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "公文",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/326113392.pdf"
+    },
+    {
+     "name": "附件一-嘉義區駐點因應COVID-19防疫保護措施暨心理輔導辦法",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/668252257.pdf"
+    },
+    {
+     "name": "附件二-健康關懷問卷(個案版)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/917190296.pdf"
+    },
+    {
+     "name": "附件二-健康關懷問卷(校外人士版)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/802351307.pdf"
+    },
+    {
+     "name": "附件三-安心防疫維他命",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/880330774.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2023-03-20"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "台大"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "輔導室",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "網路",
+       "放假",
+       "#safety",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "2030": {
    "page_id": 2030,
@@ -33949,9 +34137,132 @@
      }
     },
     "chars": 4747
+   },
+   "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/668252257.pdf": {
+    "name": "附件一-嘉義區駐點因應COVID-19防疫保護措施暨心理輔導辦法",
+    "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/668252257.pdf",
+    "page": "行政單位 › 輔導室 › 教育部學生輔導諮商中心 › 防疫專區",
+    "checked_at": "2026-11-07T18:14:07+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-ea930dc710",
+     "kind": "school_handbook",
+     "title": "學生規定 › 附件一-嘉義區駐點因應COVID-19防疫保護措施暨心理輔導辦法",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/668252257.pdf",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 輔導室 › 教育部學生輔導諮商中心 › 防疫專區",
+     "keywords": [
+      "電話",
+      "安全",
+      "停課"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-ea930dc710.json",
+     "detail_revision": "a05a45cdc1ab7607d3fef1324fd72c4525cbecfa8fed94484e076b3212afdf44",
+     "detail_status": "parsed",
+     "tokens": {
+      "v": 1,
+      "title": [],
+      "segments": [
+       {
+        "s": 1,
+        "t": [
+         "輔導室",
+         "#safety"
+        ],
+        "k": []
+       },
+       {
+        "s": 3,
+        "t": [
+         "#safety"
+        ],
+        "k": []
+       },
+       {
+        "s": 6,
+        "t": [
+         "#safety"
+        ],
+        "k": [
+         "method",
+         "allow"
+        ]
+       },
+       {
+        "s": 8,
+        "t": [],
+        "k": [
+         "method"
+        ]
+       },
+       {
+        "s": 11,
+        "t": [
+         "網路",
+         "#contact"
+        ],
+        "k": [
+         "contact"
+        ]
+       },
+       {
+        "s": 12,
+        "t": [
+         "網路",
+         "#contact"
+        ],
+        "k": [
+         "contact"
+        ]
+       },
+       {
+        "s": 13,
+        "t": [
+         "網路",
+         "#contact"
+        ],
+        "k": [
+         "contact"
+        ]
+       },
+       {
+        "s": 14,
+        "t": [
+         "網路",
+         "放假",
+         "#safety",
+         "#contact"
+        ],
+        "k": [
+         "contact"
+        ]
+       },
+       {
+        "s": 16,
+        "t": [
+         "輔導室"
+        ],
+        "k": []
+       },
+       {
+        "s": 17,
+        "t": [
+         "#contact"
+        ],
+        "k": [
+         "contact"
+        ]
+       }
+      ]
+     }
+    },
+    "chars": 826
    }
   },
-  "checked_at": "2026-11-07T13:34:38+08:00",
+  "checked_at": "2026-11-07T18:14:07+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -55241,6 +55552,121 @@
       }
      ]
     }
+   },
+   {
+    "id": "cygsh-rule-ea930dc710",
+    "kind": "school_handbook",
+    "title": "學生規定 › 附件一-嘉義區駐點因應COVID-19防疫保護措施暨心理輔導辦法",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/668252257.pdf",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 輔導室 › 教育部學生輔導諮商中心 › 防疫專區",
+    "keywords": [
+     "電話",
+     "安全",
+     "停課"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-ea930dc710.json",
+    "detail_revision": "a05a45cdc1ab7607d3fef1324fd72c4525cbecfa8fed94484e076b3212afdf44",
+    "detail_status": "parsed",
+    "tokens": {
+     "v": 1,
+     "title": [],
+     "segments": [
+      {
+       "s": 1,
+       "t": [
+        "輔導室",
+        "#safety"
+       ],
+       "k": []
+      },
+      {
+       "s": 3,
+       "t": [
+        "#safety"
+       ],
+       "k": []
+      },
+      {
+       "s": 6,
+       "t": [
+        "#safety"
+       ],
+       "k": [
+        "method",
+        "allow"
+       ]
+      },
+      {
+       "s": 8,
+       "t": [],
+       "k": [
+        "method"
+       ]
+      },
+      {
+       "s": 11,
+       "t": [
+        "網路",
+        "#contact"
+       ],
+       "k": [
+        "contact"
+       ]
+      },
+      {
+       "s": 12,
+       "t": [
+        "網路",
+        "#contact"
+       ],
+       "k": [
+        "contact"
+       ]
+      },
+      {
+       "s": 13,
+       "t": [
+        "網路",
+        "#contact"
+       ],
+       "k": [
+        "contact"
+       ]
+      },
+      {
+       "s": 14,
+       "t": [
+        "網路",
+        "放假",
+        "#safety",
+        "#contact"
+       ],
+       "k": [
+        "contact"
+       ]
+      },
+      {
+       "s": 16,
+       "t": [
+        "輔導室"
+       ],
+       "k": []
+      },
+      {
+       "s": 17,
+       "t": [
+        "#contact"
+       ],
+       "k": [
+        "contact"
+       ]
+      }
+     ]
+    }
    }
   ]
  },
@@ -65662,6 +66088,201 @@
        "#appeal"
       ],
       "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-info-2029",
+   "kind": "school_info",
+   "title": "輔導室 › 教育部學生輔導諮商中心 › 防疫專區",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2029.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "公文",
+    "附件一-嘉義區駐點因應COVID-19防疫保護措施暨心理輔導辦法",
+    "附件二-健康關懷問卷(個案版)",
+    "附件二-健康關懷問卷(校外人士版)",
+    "附件三-安心防疫維他命"
+   ],
+   "keywords": [
+    "電話",
+    "安全",
+    "衛生",
+    "停課",
+    "專線"
+   ],
+   "documents": [
+    {
+     "name": "公文",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/326113392.pdf"
+    },
+    {
+     "name": "附件一-嘉義區駐點因應COVID-19防疫保護措施暨心理輔導辦法",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/668252257.pdf"
+    },
+    {
+     "name": "附件二-健康關懷問卷(個案版)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/917190296.pdf"
+    },
+    {
+     "name": "附件二-健康關懷問卷(校外人士版)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/802351307.pdf"
+    },
+    {
+     "name": "附件三-安心防疫維他命",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/880330774.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2029.json",
+   "detail_revision": "3f324dd39e9873314f52c37c76fcd4fea1d6cd84a783ee73a20c3a3a0903f5a7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2023-03-20"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "台大"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#health"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "輔導室",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "網路",
+       "放假",
+       "#safety",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
      }
     ]
    }
@@ -88364,6 +88985,121 @@
    }
   },
   {
+   "id": "cygsh-rule-ea930dc710",
+   "kind": "school_handbook",
+   "title": "學生規定 › 附件一-嘉義區駐點因應COVID-19防疫保護措施暨心理輔導辦法",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/668252257.pdf",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 輔導室 › 教育部學生輔導諮商中心 › 防疫專區",
+   "keywords": [
+    "電話",
+    "安全",
+    "停課"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-ea930dc710.json",
+   "detail_revision": "a05a45cdc1ab7607d3fef1324fd72c4525cbecfa8fed94484e076b3212afdf44",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "輔導室",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "網路",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "網路",
+       "放假",
+       "#safety",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-service-library-cygsh-cy-edu-tw",
    "kind": "school_service",
    "title": "網路服務 › 圖書館館藏查詢",
@@ -88425,5 +89161,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-07T13:34:38+08:00"
+ "last_run_at": "2026-11-07T18:14:09+08:00"
 }
