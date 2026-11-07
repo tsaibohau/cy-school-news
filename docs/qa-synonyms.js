@@ -377,13 +377,14 @@
   /* 別人辦的運動會不是本校的校運會：主辦單位／層級／對象的限定詞放在「運動會」前面
      （全民e化資訊運動會、全國運動會、全中運、縣市聯合運動會）。問校運會時，這些字樣整段不算。 */
   var OUTSIDE_SPORTS_QUALIFIERS = ["全民", "全國", "全中", "全運", "e化", "資訊", "縣市", "縣運", "市際", "聯合", "中小學", "大專", "原住民", "身心障礙", "身障", "教職員", "教師", "親子", "社區", "區運", "海外", "國際", "世界", "亞洲", "奧林匹克"];
-  var OUTSIDE_SPORTS_RE = new RegExp("(?:" + OUTSIDE_SPORTS_QUALIFIERS.join("|") + ")[^，。；、：:\\s（）()]{0,8}?(?:運動會|運動大會)|全中運|全運會|全民運動", "gi");
+  var OUTSIDE_SPORTS_RE = new RegExp("(?:" + OUTSIDE_SPORTS_QUALIFIERS.join("|") + ")[^，。；、：:\\s（）()]{0,8}?(?:運動會|運動大會)|全中運|全運會|全民運動|[\\u4e00-\\u9fff]{1,4}[縣市]運動會", "gi");
   /* 問的是運動會／校運會嗎？ */
   var SPORTS_DAY_ASK = /運動會|校運/;
   /* 把「別人辦的運動會」字樣拿掉，剩下的才拿來比對校運會。 */
   function ownEventText(query, text) {
     var t = text == null ? "" : String(text);
-    return SPORTS_DAY_ASK.test(String(query == null ? "" : query)) ? t.replace(OUTSIDE_SPORTS_RE, " ") : t;
+    /* 「學校運動教練」「學校運動人才」: 學校＋運動… is not 校運 (only 學校運動會 is the sports day). */
+    return SPORTS_DAY_ASK.test(String(query == null ? "" : query)) ? t.replace(OUTSIDE_SPORTS_RE, " ").replace(/學校運動(?!會|大會)/g, "運動") : t;
   }
   return { OUTSIDE_SPORTS_QUALIFIERS: OUTSIDE_SPORTS_QUALIFIERS, ownEventText: ownEventText, FIELD_LABELS: FIELD_LABELS, LABEL_SUFFIX: LABEL_SUFFIX, QUESTION_SLOTS: QUESTION_SLOTS, SAME: SAME, INCLUDES: INCLUDES, expand: expand, find: find, variants: variants, related: related, broader: broader, concepts: concepts, compact: compact };
 });
