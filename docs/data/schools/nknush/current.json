@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T17:59:52+08:00",
+ "generated_at": "2026-11-08T00:23:48+08:00",
  "school": {
   "id": "nknush",
   "name": "國立高師大附中",
@@ -8,6 +8,49 @@
   "base": "https://www.nknush.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "nknush-22571",
+   "title": "115-1校慶運動會高中100M 400M預賽晉級及1500M決賽成績",
+   "date": "2026-11-07",
+   "source_category": "公告",
+   "school": "nknush",
+   "school_name": "高師大附中",
+   "url": "https://www.nknush.kh.edu.tw/announcement/22571/115-1%e6%a0%a1%e6%85%b6%e9%81%8b%e5%8b%95%e6%9c%83%e9%ab%98%e4%b8%ad100m-400m%e9%a0%90%e8%b3%bd%e6%99%89%e7%b4%9a%e5%8f%8a1500m%e6%b1%ba%e8%b3%bd%e6%88%90%e7%b8%be/",
+   "category": "競賽",
+   "first_seen": "2026-11-08T00:23:48+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "運動會",
+     "#contest",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處",
+       "家長",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "nknush-22557",
    "title": "115-1校慶運動會高中100M 400M預賽晉級及1500M決賽成績",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-07T18:13:44+08:00",
+ "generated_at": "2026-11-08T00:33:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -4062,13 +4062,35 @@
    "page_id": 249055823010100,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-668.php",
    "label": "辦學理念",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "校長室"
    ],
-   "order": 45
+   "order": 45,
+   "checked_at": "2026-11-08T00:33:07+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "辦學理念"
+   ],
+   "changed_at": "2026-11-08T00:33:07+08:00",
+   "content_hash": "535a966f0f502e8d462f952c4bdb2088c41387e99fa6224c14d129caecfe6493",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-249055823010100.json",
+   "detail_revision": "40fbe2a830f199a7aba1964efd354a6773ddf7b3168d452132d289a3499d10cc",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
   },
   "9581224037188": {
    "page_id": 9581224037188,
@@ -10078,6 +10100,30 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-249055823010100",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室 › 辦學理念",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-668.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-249055823010100.json",
+   "detail_revision": "40fbe2a830f199a7aba1964efd354a6773ddf7b3168d452132d289a3499d10cc",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "ksaivs-info-256448333079639",
    "kind": "school_info",
    "title": "教學單位 › 資訊科",
@@ -10471,5 +10517,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-07T18:13:44+08:00"
+ "last_run_at": "2026-11-08T00:33:08+08:00"
 }

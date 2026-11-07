@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "sgsh",
- "generated_at": "2026-11-07T18:13:22+08:00",
+ "generated_at": "2026-11-08T00:32:48+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "247594578953018": {
@@ -976,25 +976,78 @@
    "page_id": 51759367793621,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=2&cat_sn=1&name=免試入學登記表.docx",
    "label": "免試入學登記表.docx",
-   "status": "pending",
+   "status": "ok",
    "depth": 2,
    "parent_path": [
     "檔案下載",
     "教務處"
    ],
-   "order": 57
+   "order": 57,
+   "checked_at": "2026-11-08T00:32:45+08:00",
+   "path": [
+    "檔案下載",
+    "教務處",
+    "免試入學登記表.docx"
+   ],
+   "changed_at": "2026-11-08T00:32:45+08:00",
+   "content_hash": "3e0ba4cbc791c1e43e88159a1c6b2cf6e14ba0ce18970a37f83a18f8f19b0110",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/sgsh/sgsh-info-51759367793621.json",
+   "detail_revision": "cea6b36ec38dd98df614226fa0a094c03bf86eca361780c081f1e3f7d94fc7c5",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#enrollment"
+    ],
+    "segments": []
+   }
   },
   "214001959156689": {
    "page_id": 214001959156689,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=3&cat_sn=1&name=自編教材編輯.docx",
    "label": "自編教材編輯.docx",
-   "status": "pending",
+   "status": "ok",
    "depth": 2,
    "parent_path": [
     "檔案下載",
     "教務處"
    ],
-   "order": 58
+   "order": 58,
+   "checked_at": "2026-11-08T00:32:47+08:00",
+   "path": [
+    "檔案下載",
+    "教務處",
+    "自編教材編輯.docx"
+   ],
+   "changed_at": "2026-11-08T00:32:47+08:00",
+   "content_hash": "c5e8b25959b08694152d7186d901df46247c9a61244fa5287b321c8da5c53715",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/sgsh/sgsh-info-214001959156689.json",
+   "detail_revision": "221a018976b0db4957f8741e93539fa14af8cf7dcb5143417a2010d1b51634ba",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 147,
+      "t": [
+       "政大"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "36639879571744": {
    "page_id": 36639879571744,
@@ -1374,6 +1427,31 @@
  "services": {},
  "items": [
   {
+   "id": "sgsh-info-51759367793621",
+   "kind": "school_info",
+   "title": "檔案下載 › 教務處 › 免試入學登記表.docx",
+   "school": "sgsh",
+   "school_name": "新光高中",
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=2&cat_sn=1&name=免試入學登記表.docx",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/sgsh/sgsh-info-51759367793621.json",
+   "detail_revision": "cea6b36ec38dd98df614226fa0a094c03bf86eca361780c081f1e3f7d94fc7c5",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#enrollment"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "sgsh-info-133895791705540",
    "kind": "school_info",
    "title": "檔案下載 › 教務處 › 招生DM",
@@ -1425,6 +1503,38 @@
       "t": [
        "手機",
        "#device"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgsh-info-214001959156689",
+   "kind": "school_info",
+   "title": "檔案下載 › 教務處 › 自編教材編輯.docx",
+   "school": "sgsh",
+   "school_name": "新光高中",
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=3&cat_sn=1&name=自編教材編輯.docx",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/sgsh/sgsh-info-214001959156689.json",
+   "detail_revision": "221a018976b0db4957f8741e93539fa14af8cf7dcb5143417a2010d1b51634ba",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 147,
+      "t": [
+       "政大"
       ],
       "k": []
      }
@@ -1602,5 +1712,5 @@
   "fcc13700e3",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-07T18:13:22+08:00"
+ "last_run_at": "2026-11-08T00:32:48+08:00"
 }

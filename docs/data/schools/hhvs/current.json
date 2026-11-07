@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T17:59:52+08:00",
+ "generated_at": "2026-11-08T00:23:48+08:00",
  "school": {
   "id": "hhvs",
   "name": "國立新化高工",
@@ -5439,7 +5439,233 @@
    "url": "https://www.hhvs.tn.edu.tw/ischool/public/news_view/show.php?nid=12477",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b9948023ec605aad4b51ca1065070802596dd0057f866705c0a25f74f717ae01"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-18",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "b9948023ec605aad4b51ca1065070802596dd0057f866705c0a25f74f717ae01"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-27",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "penalty",
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "penalty",
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "place",
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-27",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "penalty",
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "penalty",
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "place",
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hhvs-12469",

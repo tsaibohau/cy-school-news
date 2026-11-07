@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T17:59:52+08:00",
+ "generated_at": "2026-11-08T00:23:48+08:00",
  "school": {
   "id": "ptivs",
   "name": "國立成大附屬南工",
@@ -8,6 +8,79 @@
   "base": "https://www.ptivs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "ptivs-20294",
+   "title": "國立彰化師範大學進修學院推廣教育課程「無人機足球種子師資研習班」及「樂齡無人機足球運動指導員培訓班」課程簡章",
+   "date": "2026-11-07",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20294",
+   "category": "研習活動",
+   "first_seen": "2026-11-08T00:23:48+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "無人機",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "無人機",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ptivs-20292",
+   "title": "客家委員會修正「客家委員會獎勵客語績優公教人員作業要點」",
+   "date": "2026-11-07",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20292",
+   "category": "教職員",
+   "first_seen": "2026-11-08T00:23:48+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "ptivs-20293",
    "title": "11/27親職講座【Gen Z 數位社群，用網接住少年】",
@@ -20,8 +93,8 @@
    "first_seen": "2026-11-07T17:59:52+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [

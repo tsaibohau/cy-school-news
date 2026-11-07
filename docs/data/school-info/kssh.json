@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-07T18:13:38+08:00",
+ "generated_at": "2026-11-08T00:33:04+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -3319,23 +3319,40 @@
    "page_id": 215452440202311,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4469.php",
    "label": "近期各類評鑑結果",
-   "status": "pending",
+   "status": "gone",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 38
+   "order": 38,
+   "checked_at": "2026-11-08T00:33:01+08:00"
   },
   "26091836638420": {
    "page_id": 26091836638420,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4470.php",
    "label": "其他與學校績效表現有關之訊息",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 39
+   "order": 39,
+   "checked_at": "2026-11-08T00:33:02+08:00",
+   "path": [
+    "校務資料專區",
+    "學校校務資訊",
+    "學校績效表現",
+    "其他與學校績效表現有關之訊息"
+   ],
+   "changed_at": "2026-11-08T00:33:02+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-26091836638420.json",
+   "detail_revision": "98d38eddd40a551c54b6c290c4e97625823da1fd1a97ba8a5c354a9887fe455a",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "64123942048132": {
    "page_id": 64123942048132,
@@ -3882,6 +3899,23 @@
      }
     ]
    }
+  },
+  {
+   "id": "kssh-info-26091836638420",
+   "kind": "school_info",
+   "title": "學校校務資訊 › 學校績效表現 › 其他與學校績效表現有關之訊息",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4470.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-26091836638420.json",
+   "detail_revision": "98d38eddd40a551c54b6c290c4e97625823da1fd1a97ba8a5c354a9887fe455a",
+   "detail_status": "parsed"
   },
   {
    "id": "kssh-info-28362482408635",
@@ -6957,5 +6991,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-07T18:13:38+08:00"
+ "last_run_at": "2026-11-08T00:33:04+08:00"
 }

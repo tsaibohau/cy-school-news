@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T17:59:52+08:00",
+ "generated_at": "2026-11-08T00:23:48+08:00",
  "school": {
   "id": "dystcs",
   "name": "私立大榮高中",
@@ -246,7 +246,174 @@
    "url": "https://www.dystcs.kh.edu.tw/modules/tadnews/index.php?nsn=971",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "運動服",
+       "制服",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [
+       "學雜費",
+       "費用",
+       "#fee"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "dystcs-2168",

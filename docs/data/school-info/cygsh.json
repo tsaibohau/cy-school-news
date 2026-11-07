@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-07T18:14:09+08:00",
+ "generated_at": "2026-11-08T00:33:39+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -10605,7 +10605,362 @@
   },
   "2030": {
    "page_id": 2030,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T00:33:31+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "教育部學生輔導諮商中心",
+    "嘉義區駐點"
+   ],
+   "changed_at": "2026-11-08T00:33:31+08:00",
+   "content_hash": "063f3434e764f4c8b2a7089ac33313b4f6748227aaf82b26bbcb22a84eafa09e",
+   "doc_links": [],
+   "keywords": [
+    "申請",
+    "宣導",
+    "校服",
+    "講座",
+    "升學",
+    "工作坊",
+    "電話",
+    "傳真",
+    "分發",
+    "獎懲",
+    "研習",
+    "衛生",
+    "體驗"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/cygsh/cygsh-info-2030.json",
+   "detail_revision": "1d822b73c8bd81e3468f556f674b6e2756738e1d586b10fdd613a28827fa1e7e",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "115年度南區分區中心暨嘉義區駐點服務學校實施計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/525377250.pdf"
+    },
+    {
+     "name": "心理專業工作服務計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/768409700.pdf"
+    },
+    {
+     "name": "附件1 轉介流程",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/546235741.pdf"
+    },
+    {
+     "name": "(pdf)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/448414230.pdf"
+    },
+    {
+     "name": "(odt)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/287429253.odt"
+    },
+    {
+     "name": "(pdf)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/172286942.pdf"
+    },
+    {
+     "name": "(pdf)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/610498076.pdf"
+    },
+    {
+     "name": "(odt)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/785774457.odt"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2023-03-20"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "家長",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "家長",
+       "#health",
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 72,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 73,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "required",
+       "method",
+       "contact",
+       "allow"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [
+       "導師",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 78,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "2031": {
    "page_id": 2031,
@@ -34260,9 +34615,112 @@
      }
     },
     "chars": 826
+   },
+   "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/525377250.pdf": {
+    "name": "115年度南區分區中心暨嘉義區駐點服務學校實施計畫",
+    "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/525377250.pdf",
+    "page": "行政單位 › 輔導室 › 教育部學生輔導諮商中心 › 嘉義區駐點",
+    "checked_at": "2026-11-08T00:33:37+08:00",
+    "status": "parsed",
+    "item": {
+     "id": "cygsh-rule-90ee4acb39",
+     "kind": "school_handbook",
+     "title": "學生規定 › 115年度南區分區中心暨嘉義區駐點服務學校實施計畫",
+     "school": "cygsh",
+     "school_name": "嘉女",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/525377250.pdf",
+     "category": "校園資訊",
+     "date": "",
+     "source_page": "行政單位 › 輔導室 › 教育部學生輔導諮商中心 › 嘉義區駐點",
+     "keywords": [
+      "校服",
+      "工作坊",
+      "分發",
+      "獎懲"
+     ],
+     "detail_ref": "data/details/cygsh/cygsh-rule-90ee4acb39.json",
+     "detail_revision": "6ec974f60313e818aaefca515cf012c478ec3de594beda0a38b4cbd72b6f7270",
+     "detail_status": "parsed",
+     "tokens": {
+      "v": 1,
+      "title": [],
+      "segments": [
+       {
+        "s": 7,
+        "t": [
+         "#admission"
+        ],
+        "k": [
+         "method"
+        ]
+       },
+       {
+        "s": 8,
+        "t": [
+         "家長"
+        ],
+        "k": []
+       },
+       {
+        "s": 9,
+        "t": [
+         "#event"
+        ],
+        "k": []
+       },
+       {
+        "s": 11,
+        "t": [
+         "制服",
+         "#uniform"
+        ],
+        "k": []
+       },
+       {
+        "s": 16,
+        "t": [
+         "制服",
+         "#uniform"
+        ],
+        "k": [
+         "time"
+        ]
+       },
+       {
+        "s": 19,
+        "t": [
+         "制服",
+         "#uniform"
+        ],
+        "k": [
+         "time"
+        ]
+       },
+       {
+        "s": 20,
+        "t": [
+         "#event"
+        ],
+        "k": [
+         "time",
+         "contact"
+        ]
+       },
+       {
+        "s": 23,
+        "t": [
+         "獎懲",
+         "#merit"
+        ],
+        "k": []
+       }
+      ]
+     }
+    },
+    "chars": 954
    }
   },
-  "checked_at": "2026-11-07T18:14:07+08:00",
+  "checked_at": "2026-11-08T00:33:37+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -55667,6 +56125,101 @@
       }
      ]
     }
+   },
+   {
+    "id": "cygsh-rule-90ee4acb39",
+    "kind": "school_handbook",
+    "title": "學生規定 › 115年度南區分區中心暨嘉義區駐點服務學校實施計畫",
+    "school": "cygsh",
+    "school_name": "嘉女",
+    "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/525377250.pdf",
+    "category": "校園資訊",
+    "date": "",
+    "source_page": "行政單位 › 輔導室 › 教育部學生輔導諮商中心 › 嘉義區駐點",
+    "keywords": [
+     "校服",
+     "工作坊",
+     "分發",
+     "獎懲"
+    ],
+    "detail_ref": "data/details/cygsh/cygsh-rule-90ee4acb39.json",
+    "detail_revision": "6ec974f60313e818aaefca515cf012c478ec3de594beda0a38b4cbd72b6f7270",
+    "detail_status": "parsed",
+    "tokens": {
+     "v": 1,
+     "title": [],
+     "segments": [
+      {
+       "s": 7,
+       "t": [
+        "#admission"
+       ],
+       "k": [
+        "method"
+       ]
+      },
+      {
+       "s": 8,
+       "t": [
+        "家長"
+       ],
+       "k": []
+      },
+      {
+       "s": 9,
+       "t": [
+        "#event"
+       ],
+       "k": []
+      },
+      {
+       "s": 11,
+       "t": [
+        "制服",
+        "#uniform"
+       ],
+       "k": []
+      },
+      {
+       "s": 16,
+       "t": [
+        "制服",
+        "#uniform"
+       ],
+       "k": [
+        "time"
+       ]
+      },
+      {
+       "s": 19,
+       "t": [
+        "制服",
+        "#uniform"
+       ],
+       "k": [
+        "time"
+       ]
+      },
+      {
+       "s": 20,
+       "t": [
+        "#event"
+       ],
+       "k": [
+        "time",
+        "contact"
+       ]
+      },
+      {
+       "s": 23,
+       "t": [
+        "獎懲",
+        "#merit"
+       ],
+       "k": []
+      }
+     ]
+    }
    }
   ]
  },
@@ -66282,6 +66835,371 @@
       ],
       "k": [
        "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-info-2030",
+   "kind": "school_info",
+   "title": "輔導室 › 教育部學生輔導諮商中心 › 嘉義區駐點",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2030.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "115年度南區分區中心暨嘉義區駐點服務學校實施計畫",
+    "心理專業工作服務計畫",
+    "附件1 轉介流程",
+    "(pdf)",
+    "(odt)",
+    "(pdf)",
+    "(pdf)",
+    "(odt)"
+   ],
+   "keywords": [
+    "申請",
+    "宣導",
+    "校服",
+    "講座",
+    "升學",
+    "工作坊",
+    "電話",
+    "傳真",
+    "分發",
+    "獎懲",
+    "研習",
+    "衛生",
+    "體驗"
+   ],
+   "documents": [
+    {
+     "name": "115年度南區分區中心暨嘉義區駐點服務學校實施計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/525377250.pdf"
+    },
+    {
+     "name": "心理專業工作服務計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/768409700.pdf"
+    },
+    {
+     "name": "附件1 轉介流程",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/546235741.pdf"
+    },
+    {
+     "name": "(pdf)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/448414230.pdf"
+    },
+    {
+     "name": "(odt)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/287429253.odt"
+    },
+    {
+     "name": "(pdf)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/172286942.pdf"
+    },
+    {
+     "name": "(pdf)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/610498076.pdf"
+    },
+    {
+     "name": "(odt)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/785774457.odt"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2030.json",
+   "detail_revision": "1d822b73c8bd81e3468f556f674b6e2756738e1d586b10fdd613a28827fa1e7e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2023-03-20"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "家長",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "家長",
+       "#health",
+       "#event"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ]
+     },
+     {
+      "s": 72,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 73,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "required",
+       "method",
+       "contact",
+       "allow"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [
+       "導師",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 78,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [],
+      "k": [
+       "method"
       ]
      }
     ]
@@ -89100,6 +90018,101 @@
    }
   },
   {
+   "id": "cygsh-rule-90ee4acb39",
+   "kind": "school_handbook",
+   "title": "學生規定 › 115年度南區分區中心暨嘉義區駐點服務學校實施計畫",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/525377250.pdf",
+   "category": "校園資訊",
+   "date": "",
+   "source_page": "行政單位 › 輔導室 › 教育部學生輔導諮商中心 › 嘉義區駐點",
+   "keywords": [
+    "校服",
+    "工作坊",
+    "分發",
+    "獎懲"
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-rule-90ee4acb39.json",
+   "detail_revision": "6ec974f60313e818aaefca515cf012c478ec3de594beda0a38b4cbd72b6f7270",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 7,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-service-library-cygsh-cy-edu-tw",
    "kind": "school_service",
    "title": "網路服務 › 圖書館館藏查詢",
@@ -89161,5 +90174,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-07T18:14:09+08:00"
+ "last_run_at": "2026-11-08T00:33:39+08:00"
 }

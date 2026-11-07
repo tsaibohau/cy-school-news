@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-07T18:15:31+08:00",
+ "generated_at": "2026-11-08T00:35:25+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -4176,12 +4176,49 @@
    "page_id": 176332222094149,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,432,425",
    "label": "課程相關資訊",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 48
+   "order": 48,
+   "checked_at": "2026-11-08T00:35:23+08:00",
+   "path": [
+    "網站導覽",
+    "課程相關資訊"
+   ],
+   "changed_at": "2026-11-08T00:35:23+08:00",
+   "content_hash": "0329c096c9a22a8e3eb4cb6d0cefbc5a46326fd060227f0a3f93748eda96a5bb",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-176332222094149.json",
+   "detail_revision": "b5a795f6bb7840f10350d371e6e267909ef0a2b29f0b83bb6c88eb99df808c34",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-27"
+      ]
+     }
+    ]
+   }
   },
   "132838690331083": {
    "page_id": 132838690331083,
@@ -9894,6 +9931,46 @@
    }
   },
   {
+   "id": "hnvs-info-176332222094149",
+   "kind": "school_info",
+   "title": "網站導覽 › 課程相關資訊",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,432,425",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-176332222094149.json",
+   "detail_revision": "b5a795f6bb7840f10350d371e6e267909ef0a2b29f0b83bb6c88eb99df808c34",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-27"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-184660922987067",
    "kind": "school_info",
    "title": "科別介紹",
@@ -11220,5 +11297,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-07T18:15:31+08:00"
+ "last_run_at": "2026-11-08T00:35:25+08:00"
 }

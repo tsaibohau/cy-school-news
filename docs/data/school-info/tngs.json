@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-07T18:16:20+08:00",
+ "generated_at": "2026-11-08T00:36:05+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -1143,25 +1143,37 @@
    "page_id": 46388308320132,
    "url": "https://www.tngs.tn.edu.tw/department/acad/staff/",
    "label": "組織職掌",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "教務處"
    ],
-   "order": 78
+   "order": 78,
+   "checked_at": "2026-11-08T00:36:01+08:00",
+   "path": [
+    "行政組織",
+    "教務處",
+    "組織職掌"
+   ]
   },
   "197962584266528": {
    "page_id": 197962584266528,
    "url": "https://www.tngs.tn.edu.tw/department/acad/music/",
    "label": "音樂班",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "教務處"
    ],
-   "order": 79
+   "order": 79,
+   "checked_at": "2026-11-08T00:36:03+08:00",
+   "path": [
+    "行政組織",
+    "教務處",
+    "音樂班"
+   ]
   },
   "161892531367005": {
    "page_id": 161892531367005,
@@ -1858,6 +1870,30 @@
     "歷任校長"
    ],
    "order": 137
+  },
+  "178418198502936": {
+   "page_id": 178418198502936,
+   "url": "https://www.tngs.tn.edu.tw/department/acad/music/outtest/",
+   "label": "升學管道",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "音樂班"
+   ],
+   "order": 138
+  },
+  "207744947888629": {
+   "page_id": 207744947888629,
+   "url": "https://www.tngs.tn.edu.tw/department/acad/music/intest/",
+   "label": "招生資訊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "教務處",
+    "音樂班"
+   ],
+   "order": 139
   }
  },
  "handbook": {},
@@ -2189,5 +2225,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-07T18:16:20+08:00"
+ "last_run_at": "2026-11-08T00:36:05+08:00"
 }

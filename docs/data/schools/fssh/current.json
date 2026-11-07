@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T17:59:52+08:00",
+ "generated_at": "2026-11-08T00:23:48+08:00",
  "school": {
   "id": "fssh",
   "name": "國立鳳山高中",
@@ -1994,7 +1994,55 @@
    "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18599",
    "category": "升學",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-28"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "家長",
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長",
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "fssh-18589",

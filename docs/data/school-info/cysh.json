@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-07T18:13:59+08:00",
+ "generated_at": "2026-11-08T00:33:29+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -7775,15 +7775,71 @@
   },
   "1014": {
    "page_id": 1014,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T00:33:23+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "文書組",
+    "檔案下載",
+    "公文執行檔案"
+   ],
+   "changed_at": "2026-11-08T00:33:23+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1014.json",
+   "detail_revision": "a315d5a870acaa9d890509427ac15ef8d18a35d17147d40d9312ba941cf4ed16",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1016": {
    "page_id": 1016,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T00:33:25+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "棒球隊專區",
+    "棒球隊招生簡章"
+   ],
+   "changed_at": "2026-11-08T00:33:25+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1016.json",
+   "detail_revision": "5435b9e7b18daddf1b96860709e78d871ea717f29046833742e120dd1693ee09",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": []
+   }
   },
   "1017": {
    "page_id": 1017,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T00:33:27+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "棒球隊專區",
+    "賽程相關訊息"
+   ],
+   "changed_at": "2026-11-08T00:33:27+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1017.json",
+   "detail_revision": "dbc27efa26558f5699afd3990f58d94b7719ff7da872c7d8f1284f2e959e4775",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1018": {
    "page_id": 1018,
@@ -36041,6 +36097,64 @@
    "detail_status": "empty"
   },
   {
+   "id": "cysh-info-1014",
+   "kind": "school_info",
+   "title": "文書組 › 檔案下載 › 公文執行檔案",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1014.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1014.json",
+   "detail_revision": "a315d5a870acaa9d890509427ac15ef8d18a35d17147d40d9312ba941cf4ed16",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-1016",
+   "kind": "school_info",
+   "title": "進修部 › 棒球隊專區 › 棒球隊招生簡章",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1016.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1016.json",
+   "detail_revision": "5435b9e7b18daddf1b96860709e78d871ea717f29046833742e120dd1693ee09",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cysh-info-1017",
+   "kind": "school_info",
+   "title": "進修部 › 棒球隊專區 › 賽程相關訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1017.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1017.json",
+   "detail_revision": "dbc27efa26558f5699afd3990f58d94b7719ff7da872c7d8f1284f2e959e4775",
+   "detail_status": "empty"
+  },
+  {
    "id": "cysh-info-1040",
    "kind": "school_info",
    "title": "學務處 › 衛生組 › 健促成果區",
@@ -56353,5 +56467,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-07T18:13:59+08:00"
+ "last_run_at": "2026-11-08T00:33:29+08:00"
 }

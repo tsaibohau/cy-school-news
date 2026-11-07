@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T17:59:52+08:00",
+ "generated_at": "2026-11-08T00:23:48+08:00",
  "school": {
   "id": "hkhs",
   "name": "市立小港高中",
@@ -20,8 +20,8 @@
    "first_seen": "2026-11-07T17:59:52+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -145,8 +145,8 @@
    "first_seen": "2026-11-07T17:59:52+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -1221,7 +1221,165 @@
    "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11669",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "a5f96f284f9eb2f95b3dd1bb70236c64eceabca3c220ba1be2b082e38e29e680"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "#admission",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學習歷程",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "輔導室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-28"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "四技二專",
+       "家長",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-15"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hkhs-11668",
@@ -2249,8 +2407,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
