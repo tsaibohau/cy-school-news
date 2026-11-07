@@ -2021,7 +2021,7 @@
       var ct = result.content, noted = (clean(result.summary || "").match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。/g) || []).map(function (note) { return note.replace(/列在下面/, "放在參考資料裡"); });
       var said = ct.text, facts = (ct.facts || []).filter(function (f) { return said.indexOf(f.value) === -1; }).map(function (f) { return f.label + "：" + f.value; });
       var lead = sourceLabel(first);
-      return { text: lead + (ct.kind === "summary" ? "：" : "，") + said, bullets: facts.slice(0, 3), tail: noted.join(""), composed: "content" };
+      return { text: lead + (ct.kind === "summary" ? "：" : "，") + said, bullets: facts.slice(0, 9), tail: noted.join(""), composed: "content" };
     }
     var texts = (result.evidence || []).filter(function (row) { return !first.id || row.announcement_id === first.id; }).map(function (row) { return row.text; });
     if (!texts.length) texts = (result.answer_lines || []).slice();
@@ -3028,8 +3028,11 @@
     if (detail && typeof detail === "object" && FIELD_CACHE) FIELD_CACHE.set(detail, { id: item.id, fields: fields });
     return fields;
   }
-  var FACT_ORDER = { time: ["place", "deadline", "audience", "signup"], deadline: ["signup", "time", "place"], place: ["time", "audience", "signup"], audience: ["time", "signup", "deadline"],
-    signup: ["deadline", "time", "fee", "bring"], bring: ["time", "place", "deadline"], fee: ["time", "signup", "deadline"], contact: ["time", "signup"], summary: ["signup", "fee", "bring", "contact", "deadline"] };
+  /* 巨細靡遺: whatever is asked, the notice's other facts about taking part come with it, in a fixed order. */
+  var FACT_ORDER = {};
+  ["time", "deadline", "place", "quota", "audience", "signup", "fee", "bring", "contact", "summary", ""].forEach(function (slot) {
+    FACT_ORDER[slot] = ["time", "deadline", "place", "quota", "audience", "signup", "fee", "bring", "contact"].filter(function (k) { return k !== slot; });
+  });
   function contentLayer(query, ranked, evidence, asOfDay, plan) {
     if (!Composer || !Composer.fieldsOf || !evidence.length) return null;
     var top = evidence[0], row = ranked.filter(function (r) { return r.item.id === top.announcement_id; })[0];
@@ -3062,11 +3065,11 @@
     }
     return { kind: kind, slot: slot, found: !!found.found, text: text, value: found.value || "", url: found.url || "", from: found.from || "", row: row,
       facts: Composer.otherFacts(fields, slot === "summary" ? "" : slot).filter(function (f) { return (FACT_ORDER[slot] || []).indexOf(f.slot) !== -1; })
-        .sort(function (a, b) { return FACT_ORDER[slot].indexOf(a.slot) - FACT_ORDER[slot].indexOf(b.slot); }).slice(0, 3),
+        .sort(function (a, b) { return FACT_ORDER[slot].indexOf(a.slot) - FACT_ORDER[slot].indexOf(b.slot); }),
       fields: fields,
       evidence: { text: text, announcement_id: row.item.id, title: row.item.title, score: (top.score || 0) + 1000, validity: row.validity, source_meta: { source_type: "content", slot: slot } } };
   }
-  var POINT_OF_SLOT = { time: "時間", deadline: "截止", place: "地點", signup: "方式", audience: "對象", fee: "費用", bring: "攜帶", contact: "聯絡" };
+  var POINT_OF_SLOT = { time: "時間", deadline: "截止", place: "地點", quota: "名額", signup: "方式", audience: "對象", fee: "費用", bring: "攜帶", contact: "聯絡" };
   /* Labelled fields beat the guesses keyPoints() makes from running text. */
   function mergeFieldPoints(points, fields) {
     var out = (points || []).slice();
@@ -3077,8 +3080,8 @@
       if (at >= 0) { if (hit.src === "label") out[at] = { label: label, value: hit.value }; }
       else out.push({ label: label, value: hit.value });
     });
-    var order = ["截止", "時間", "地點", "方式", "對象", "費用", "獎金", "攜帶", "聯絡"];
-    return out.sort(function (a, b) { return order.indexOf(a.label) - order.indexOf(b.label); }).slice(0, 6);
+    var order = ["截止", "時間", "地點", "名額", "方式", "對象", "費用", "獎金", "攜帶", "聯絡"];
+    return out.sort(function (a, b) { return order.indexOf(a.label) - order.indexOf(b.label); }).slice(0, 9);
   }
   function announcementLayer(query, items, details, options) {
     var asked = askedTokensFor(query, options);
