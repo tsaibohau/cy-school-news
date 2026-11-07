@@ -18,6 +18,7 @@
     var loading = document.getElementById("appLoading");
     if (loading) loading.hidden = true;
     if (window.__cyNewsLoadingDance) window.__cyNewsLoadingDance.stop();
+    if (window.__cyNewsLoadFonts) window.__cyNewsLoadFonts();
   }
 
   function startApp() {
@@ -1548,7 +1549,13 @@
     /* First load asks the browser to revalidate (a 304 when nothing changed) instead of
        downloading every file again; the refresh button still bypasses every cache. */
     function dataFetch(url, revalidate) {
-      return revalidate ? fetch(url, { cache: "no-cache" }) : fetch(url + "?_=" + Date.now(), { cache: "no-store" });
+      if (revalidate) {
+        /* index.html 的 <head> 已提早開始下載第一份資料，這裡只接手一次 */
+        var early = window.__cyNewsEarly, taken = early && early[url];
+        if (taken) { delete early[url]; return taken; }
+        return fetch(url, { cache: "no-cache" });
+      }
+      return fetch(url + "?_=" + Date.now(), { cache: "no-store" });
     }
 
     function fetchManifest(revalidate) {
@@ -4117,9 +4124,15 @@
         reloadedForUpdate = true;
         window.location.reload();
       });
-      window.addEventListener("load", function () {
+      /* 等第一份公告畫出來（或載入失敗）才註冊：Service Worker 安裝時會預載整批殼層檔案，
+         不要和公告資料搶頻寬。 */
+      var swRegistered = false, swLoaded = document.readyState === "complete";
+      window.__cyNewsRegisterSW = function () {
+        if (swRegistered || !swLoaded || !window.__cyNewsFirstPaintDone) return;
+        swRegistered = true;
         navigator.serviceWorker.register("sw.js?v=82").catch(function () {});
-      });
+      };
+      if (!swLoaded) window.addEventListener("load", function () { swLoaded = true; window.__cyNewsRegisterSW(); });
     }
 
     if (window.__CYNEWS_TEST__) {
@@ -4135,7 +4148,10 @@
 
     refreshNotifyState();
     setupAccountSync();
-    fetchData(false, { revalidate: true }).then(finishInitialLoading);
+    fetchData(false, { revalidate: true }).then(finishInitialLoading).then(function () {
+      window.__cyNewsFirstPaintDone = true;
+      if (window.__cyNewsRegisterSW) window.__cyNewsRegisterSW();
+    });
   }
 
   loadNotificationStateScript(startApp);
