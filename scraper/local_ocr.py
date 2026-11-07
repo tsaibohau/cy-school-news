@@ -18,6 +18,8 @@ import tempfile
 from io import BytesIO
 from pathlib import Path
 
+from text_cleanup import clean_text, remove_repeated_lines
+
 OCR_VERSION = "local-ocr-v2"
 DEFAULT_LANGUAGES = "chi_tra+eng"
 DEFAULT_MIN_CONFIDENCE = 55.0
@@ -247,7 +249,7 @@ def _ocr_page(image, directory: Path, name: str, *, languages: str,
         # result is made of many 1–5 character lines, prefer the vertical reading unless it is clearly worse.
         if vertical[1] > best[1] + 5 or (looks_vertical and vertical[1] >= best[1] - 5 and not _looks_vertical(vertical[0])):
             best = vertical
-    return postprocess(best[0]), best[1], best[2]
+    return clean_text(postprocess(best[0])), best[1], best[2]
 
 
 def _quality_result(text: str, confidence: float, candidate_chars: int, *,
@@ -324,7 +326,7 @@ def _ocr_pdf(data: bytes, *, languages: str, max_chars: int, max_pdf_pages: int,
         if page_count > max_pdf_pages:
             return {"text": "", "parse_status": "unsupported", "reason": "ocr_page_limit",
                     "ocr_version": OCR_VERSION, "ocr_attempted": False, "page_count": page_count}
-        texts = []
+        page_texts: list[tuple[int, str]] = []
         weighted = 0.0
         total_chars = 0
         attempted = False
@@ -347,11 +349,15 @@ def _ocr_pdf(data: bytes, *, languages: str, max_chars: int, max_pdf_pages: int,
                             "ocr_version": OCR_VERSION, "ocr_attempted": True,
                             "page_count": page_count}
                 if text:
-                    texts.append(f"[OCR 第 {index + 1} 頁]\n{text}")
+                    page_texts.append((index + 1, text))
                 weighted += confidence * chars
                 total_chars += chars
-                if sum(len(value) + 1 for value in texts) >= max_chars:
+                if sum(len(value) + 1 for _, value in page_texts) >= max_chars:
                     break
+        # Page headers / footers repeated on most pages are layout noise, not content.
+        bodies = remove_repeated_lines([value for _, value in page_texts])
+        texts = [f"[OCR 第 {number} 頁]\n{body}"
+                 for (number, _), body in zip(page_texts, bodies) if body.strip()]
         confidence = weighted / total_chars if total_chars else 0.0
         return _quality_result("\n".join(texts), confidence, total_chars,
                                max_chars=max_chars, min_confidence=min_confidence,
