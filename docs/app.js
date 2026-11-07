@@ -2651,12 +2651,28 @@
       /* The key fact first, in bold (「下一次：11/26～11/27 第二次期中考」); the explanation follows. */
       var html = (result && result.headline ? '<p class="chat-headline">' + esc(result.headline) + '</p>' : "") +
         '<p class="assistant-lead">' + esc(reply.text || "請換一種問法，或查看官方公告。") + '</p>';
-      if (reply.bullets && reply.bullets.length) html += '<ul class="chat-bullets">' + reply.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>';
-      if (reply.tail) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
+      /* Sections (one per school): a heading, a short paragraph, the details as points, then that section's own notes and source. */
+      var sections = Array.isArray(reply.paragraphs) ? reply.paragraphs.filter(function (part) { return part && (part.text || (part.bullets && part.bullets.length)); }) : [];
+      if (sections.length) {
+        html += sections.map(function (part) {
+          return '<section class="chat-section">' + (part.heading ? '<h3 class="chat-heading">' + esc(part.heading) + '</h3>' : '') +
+            (part.text ? '<p class="chat-para">' + esc(part.text) + '</p>' : '') +
+            (part.bullets && part.bullets.length ? '<ul class="chat-bullets">' + part.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>' : '') +
+            (part.tail ? '<p class="chat-tail">' + esc(part.tail) + '</p>' : '') +
+            (part.asides || []).map(function (line) { return '<p class="chat-aside">' + esc(line) + '</p>'; }).join("") +
+            (part.source ? '<p class="chat-source">' + esc(part.source) + '</p>' : '') + '</section>';
+        }).join("");
+      } else {
+        if (reply.bullets && reply.bullets.length) html += '<ul class="chat-bullets">' + reply.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>';
+        if (reply.tail) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
+        if (reply.source) html += '<p class="chat-source">' + esc(reply.source) + '</p>';
+      }
+      if (sections.length && reply.tail && !sections.some(function (part) { return part.tail; })) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
       if (result && result.status === "answered" && result.mode === "browse" && (result.sources || []).length) html += '<div class="assistant-sources chat-list">' + assistantSourceButtons(result) + '</div>';
       /* 規定 → 行事曆 → 公告：主答案以外，其他地方也找到的，依序列在後面。 */
-      (result && result.also || []).forEach(function (row) {
-        html += '<div class="chat-also"><p class="chat-aside">' + esc(row.text || row.label + "也有寫到：" + row.summary) + '</p></div>';
+      var asidesShown = sections.some(function (part) { return part.asides && part.asides.length; });
+      (asidesShown ? [] : result && result.also || []).forEach(function (row) {
+        html += '<div class="chat-also"><p class="chat-aside">' + esc(row.text || "另外，" + row.label + "提到：" + row.summary) + '</p></div>';
       });
       var related = (result && result.status !== "answered" && result.related || []).slice(0, 3).map(function (item) {
         var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");

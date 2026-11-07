@@ -8,7 +8,9 @@ const QA = require("../docs/assistant-qa.js");
 /* Every sentence type has at least three templates, and so does every slot. */
 for (const key of ["allow", "deny", "allowIf", "must", "unsure"]) assert.ok(C.TEMPLATES.judge[key].length >= 3, key);
 assert.ok(C.TEMPLATES.exist.yes.length >= 3 && C.TEMPLATES.exist.no.length >= 3);
-for (const key of ["stance", "narrate", "time", "deadline", "required", "audience"]) assert.ok(C.TEMPLATES[key].length >= 3, key);
+for (const key of ["stance", "time", "deadline", "required", "audience"]) assert.ok(C.TEMPLATES[key].length >= 3, key);
+/* A narrating answer has no verdict word: its first sentence is the answer itself. */
+assert.deepEqual(C.TEMPLATES.narrate, [""]);
 assert.ok(C.PENALTY_FOUND.length >= 3 && C.PENALTY_NONE.length >= 3 && C.PENALTY_LATE.length >= 3);
 
 /* Question types. */
