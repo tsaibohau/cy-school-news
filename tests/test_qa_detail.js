@@ -72,4 +72,30 @@ x = run("歷任校長有哪些", rows);
 assert.doesNotMatch(x.said.text, /王大明是|的校長是王大明/);
 /* the read list fetches the pages that name people */
 assert.ok(QA.readList("輔導主任是誰", rows.map((r) => r.item), OPTS).some((i) => i.id === "p3"));
+
+/* 3a. 打錯字修正不能切開常用詞：「課程大致」的「程大」不是「成大」。 */
+const Typo = require("../docs/qa-typo.js");
+assert.deepEqual(Typo.fix("多元選修的課程大致上會有什麼").fixes, []);
+assert.deepEqual(Typo.fix("工程大學的過程與流程").fixes, []);
+assert.equal(Typo.fix("程大的招生").query, "成大的招生", "a real typo is still fixed");
+assert.equal(Typo.fix("我學身證掉了").query, "我學生證掉了");
+
+/* 3b. 「有哪些課程」：從課程總表拆成清單，去編號、依科別分組。 */
+const table = mk("c1", "📢115-1高一多元選修課程選課重要事項", [
+  "1.115-1 學期高一多元選修線上選課。",
+  "2.選課對象：高一各班學生。",
+  "115-1 高一多元選修課程大綱科別序號課程名稱課程種類科技 1 機器人製作(需收材料費)實作(實驗)及探索體驗2 程式入門實作(實驗)及探索體驗國文 3 小說賞析通識性課程數學 4 數學桌遊實作(實驗)及探索體驗藝術 5 版畫通識性課程3科技領域4課程編號：1課程名稱：中文名稱：機器人製作英文名稱：Robot課程屬性：實作(實驗)及探索體驗議題融入：科技師資來源：校內"
+]);
+x = run("多元選修的課程大致上會有什麼？", [table]);
+t = flat(x);
+assert.equal(x.r.mode, "course_list");
+assert.match(t, /共 5 門/);
+assert.match(t, /科技：機器人製作\(需收材料費\)、程式入門/);
+assert.match(t, /國文：小說賞析/);
+assert.match(t, /藝術：版畫/);
+assert.doesNotMatch(t, /\b[1-5] 程式|3科技領域|通識性課程數學/, "no raw table fragments");
+assert.match(t, /選課對象：高一各班學生/);
+x = run("多元選修的課程有哪些", [table]);
+assert.equal(x.r.mode, "course_list");
+assert.notEqual(run("多元選修什麼時候選課", [table]).r.mode, "course_list", "a when question is not a list question");
 console.log("qa detail tests passed");

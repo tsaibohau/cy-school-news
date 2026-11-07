@@ -1986,6 +1986,7 @@
       return { text: text, bullets: bullets.slice(0, 6), tail: tail };
     }
     if (result.mode === "rule_pointer") return { text: text, bullets: [] };
+    if (result.mode === "course_list") return { text: result.course_lead || text, bullets: result.course_bullets || [] };
     if (result.mode === "official") return { text: text, bullets: result.official_bullets || [] };
     if (result.mode === "timetable") {
       var day = text.match(/^(.+?)：(.+、.+)。$/);
@@ -2794,6 +2795,84 @@
     });
     return out;
   }
+  /* ---------- 「有哪些課程」：把選課公告裡的課程表整理成清單 ----------
+     公告的課程總表被抓成一長串（「科技 1 APCS…實作(實驗)及探索體驗2 Android…」）；逐項拆開、去掉編號，
+     依科別分組列出，不貼破碎的原文。 */
+  var LIST_ASK = /有(?:什麼|哪些|那些|哪幾|啥|些什麼)|有幾(?:門|種|個)|哪些|列出|整理|大致|大概|都有|包含|包括/;
+  var LIST_SUBJECT = /課程|選修|科目|課/;
+  function rawDetailText(record) {
+    var raw = [];
+    if (!record || typeof record !== "object") return "";
+    (record.blocks || []).forEach(function (block) {
+      if (!block) return;
+      if (block.text) raw.push(block.text);
+      (block.items || []).forEach(function (item) { raw.push(item); });
+      (block.rows || []).forEach(function (row) { raw.push((row || []).join(" ")); });
+    });
+    (record.attachments || []).forEach(function (file) { if (file && file.embedded_text) raw.push(file.embedded_text); });
+    return raw.join("\n").replace(/\s+/g, " ");
+  }
+  function courseListOf(record) {
+    var text = rawDetailText(record), m, items = [], seen = {};
+    if (!text) return null;
+    var types = {};
+    var typeRe = /課程(?:屬性|種類|類別)[：:]\s*([^議師]{2,20}?)(?=議題融入|師資來源|學分)/g;
+    while ((m = typeRe.exec(text))) types[clean(m[1])] = true;
+    ["通識性課程", "實作(實驗)及探索體驗", "專題探究", "跨域整合課程", "自主學習", "充實(增廣)性課程", "補強性課程", "加深加廣課程"].forEach(function (t) { if (text.indexOf(t) !== -1) types[t] = true; });
+    var header = text.search(/序號\s*課程名稱\s*(?:課程)?(?:種類|類別|屬性)/);
+    var typeList = Object.keys(types).sort(function (a, b) { return b.length - a.length; });
+    if (header !== -1 && typeList.length) {
+      var body = text.slice(header).replace(/^序號\s*課程名稱\s*(?:課程)?(?:種類|類別|屬性)/, ""), cut = body.search(/課程編號[：:]/);
+      if (cut > 0) body = body.slice(0, cut);
+      var re = new RegExp("(?:^|[^\\d])(\\d{1,2})\\s+(.{2,80}?)(" + typeList.map(function (t) { return t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("|") + ")", "g"), prevEnd = 0, group = "";
+      while ((m = re.exec(body))) {
+        var numAt = m.index + m[0].search(/\d/), gap = clean(body.slice(prevEnd, numAt));
+        if (/^[\u4e00-\u9fff]{2,5}$/.test(gap)) group = gap;
+        var name = clean(m[2]);
+        if (!seen[name]) { seen[name] = true; items.push({ name: name, kind: m[3], group: group }); }
+        prevEnd = m.index + m[0].length;
+        re.lastIndex = prevEnd - 1;
+      }
+    }
+    if (items.length < 3) {
+      items = []; seen = {};
+      var nameRe = /課程名稱\s*[：:]\s*中文名稱\s*[：:]\s*(.{2,60}?)\s*英文名稱/g;
+      while ((m = nameRe.exec(text))) { var nm = clean(m[1]); if (!seen[nm]) { seen[nm] = true; items.push({ name: nm, kind: "", group: "" }); } }
+    }
+    return items.length >= 3 ? items : null;
+  }
+  function courseListAnswer(query, all, details, options) {
+    var q = clean(query);
+    if (!LIST_ASK.test(q) || !LIST_SUBJECT.test(q) || /什麼時候|何時|哪裡|在哪|怎麼|如何|幾點|截止|費用|多少錢|規定|可以|能不能/.test(q.replace(/大致上會有什麼/, ""))) return null;
+    var schoolId = options && options.schoolId || "";
+    var pool = all.filter(function (item) { return item && !isSchoolDoc(item) && (!schoolId || item.school === schoolId); });
+    var ranked = rank(q, pool, details, options).slice(0, 10);
+    if (!ranked.length) return null;
+    var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var top = ranked[0].score, hits = [];
+    ranked.forEach(function (row) {
+      if (row.score < top * 0.5 || !row.detail) return;
+      var courses = courseListOf(row.detail);
+      if (courses) hits.push({ row: row, courses: courses, key: row.score * (1 + freshness(row.item, asOfDay) / 60) });
+    });
+    if (!hits.length) return null;
+    hits.sort(function (a, b) { return b.key - a.key; });
+    var best = hits[0], item = best.row.item, groups = [], byGroup = {};
+    best.courses.forEach(function (c) {
+      var g = c.group || "";
+      if (!byGroup[g]) { byGroup[g] = { label: g, names: [] }; groups.push(byGroup[g]); }
+      byGroup[g].names.push(c.name);
+    });
+    var bullets = groups.map(function (g) { return (g.label ? g.label + "：" : "") + g.names.join("、"); });
+    var kinds = unique(best.courses.map(function (c) { return c.kind; }).filter(Boolean));
+    if (kinds.length) bullets.push("課程種類：" + kinds.join("、"));
+    var fields = noticeFields({ item: item, detail: best.row.detail }), slots = fields && fields.slots || {};
+    var extra = [["audience", "選課對象"], ["time", "時間"], ["deadline", "期限"], ["signup", "選課方式"]];
+    extra.forEach(function (pair) { var hit = slots[pair[0]]; if (hit && hit.src === "label" && hit.value && hit.value.length <= 80) bullets.push(pair[1] + "：" + hit.value); });
+    var text = sourceLabel(item) + "列出的課程共 " + best.courses.length + " 門：";
+    return { status: "answered", mode: "course_list", query: query, evidence: [], key_points: [], related: [], summary: text + groups.map(function (g) { return (g.label ? g.label + "：" : "") + g.names.join("、"); }).join("；") + "。", course_bullets: bullets, course_lead: text,
+      sources: [Object.assign({}, item)], limitation: "課程名稱取自選課公告的課程總表；開課與否以學校最新公告為準。", plan: questionPlan(query) };
+  }
   function officialRoleAsk(query) {
     var q = clean(query), rm = q.match(OFFICIAL_ROLE);
     if (!rm || !OFFICIAL_WHO.test(q) || OFFICIAL_PAST.test(q) || /我的|導師|班導/.test(q)) return null;
@@ -2844,6 +2923,8 @@
     var all = Array.isArray(items) ? items : [];
     var official = officialAnswer(query, all, details, options);
     if (official) return official;
+    var courses = courseListAnswer(query, all, details, options);
+    if (courses) return courses;
     var calendar = calendarLayer(query, all, options, asOfDay);
     var browse = browsePlan(query);
     if (browse && !calendar) return browseAnswer(query, items, browse, options);
