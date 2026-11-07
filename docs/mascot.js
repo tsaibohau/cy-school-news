@@ -350,10 +350,14 @@
     else if (!walks) show({ arms: "wave", eyes: "happy" });
     return { el: el, setMood: setMood, say: say, play: play, stop: function () { clearInterval(timer); } };
   }
-  /* Cameo: 小訊 first only peeks in from a screen edge (half a head, eyes looking in). Nothing
-     is covered and nothing is said. Tapped, it runs out and shows something (books to study,
-     a sign for a deadline), then leaves; left alone, it slips back out after a while.
-     options: { entry: "left"|"right"|"corner", prop: "books"|"sign"|"", text, onClick, holdMs, pixel } */
+  /* Cameo: 小訊 hides behind a screen edge, peeks out, ducks back once, then steps out and stands
+     ON the ground line (the bottom of the screen, or the top edge of the chat box). Entry "left" /
+     "right" hides behind that side edge; "corner" hides below the ground line and rises up.
+     The sprite is still pixel-art frame by frame (eyes, blink, walk), but the sliding, leaning and
+     ducking are CSS transform transitions on the figure, so they are smooth and GPU-composited.
+     Tapping the head (or the standing figure) makes it show its message; scrolling or focusing a
+     field makes it duck out of the way. Reduced motion: a still head at the edge, no sliding.
+     options: { entry: "left"|"right"|"corner", prop: "books"|"sign"|"", text, onClick, holdMs, peekMs, pixel } */
   var activeCameo = null;
   function cameo(options) {
     if (typeof document === "undefined" || !document.body || activeCameo) return null;
@@ -361,74 +365,178 @@
     var scale = options.pixel || 3, still = reducedMotion();
     var vw = window.innerWidth || 390, vh = window.innerHeight || 700, w = W * scale, h = H * scale;
     var entry = options.entry || "left", prop = options.prop || "";
-    var walkAnim = prop === "books" ? "booksWalk" : prop === "sign" ? "signWalk" : "run";
     var showAnim = prop === "books" ? "booksShow" : prop === "sign" ? "signShow" : "hello";
+    var rise = entry === "corner";
+    var side = rise ? (Math.random() < 0.5 ? "left" : "right") : entry;     /* which side it stands on */
+    var margin = Math.max(8, Math.round(vw * 0.04));
+    var stopX = side === "right" ? vw - w - margin : margin;
+    /* Empty sprite rows under the feet: the feet, not the image box, rest on the ground. */
+    var footGap = 0;
+    (function () { var rows = frame(STAND); for (var yy = H - 1; yy >= 0; yy--) { if (rows[yy].some(function (c) { return c !== "."; })) { footGap = H - 1 - yy; break; } } })();
     var el = document.createElement("button");
     el.type = "button";
-    el.className = "mascot mascot-cameo is-entry-" + entry;
-    el.setAttribute("aria-label", options.text ? "小訊：" + options.text : "小訊");
-    el.style.width = w + "px"; el.style.height = h + "px";
-    el.innerHTML = '<span class="mascot-bubble" role="status" aria-live="polite"></span><span class="mascot-figure"></span>';
-    document.body.appendChild(el);
-    var figure = el.querySelector(".mascot-figure"), bubble = el.querySelector(".mascot-bubble");
-    var top = entry === "corner" ? Math.max(64, Math.round(vh * 0.1)) : Math.round(vh * (0.25 + Math.random() * 0.35));
-    var stopX = entry === "right" ? Math.round(vw - w - vw * 0.1) : entry === "corner" ? 10 : Math.round(vw * 0.08);
-    var x = entry === "right" ? vw : entry === "corner" ? -w : -w, y = entry === "corner" ? -h : top;
-    /* Where the peeking head sits: just inside the edge it came from. */
-    var peekX = entry === "right" ? Math.round(vw - w * 0.45) : entry === "corner" ? 6 : Math.round(-w * 0.55);
-    var peekY = entry === "corner" ? Math.round(-h * 0.5) : top;
-    var phase = "peek", step = 0, shownAt = 0, peekAt = Date.now(), timer = null, finished = false, shown = "";
-    if (entry === "corner") x = peekX;   // drops down from the top edge, already in place sideways
-    el.classList.add("is-peeking");
+    el.className = "mascot mascot-cameo is-entry-" + entry + " is-hidden";
     el.setAttribute("aria-label", "小訊在偷看，點我");
+    el.style.width = w + "px"; el.style.height = h + "px";
+    el.style.setProperty("--cameo-foot", footGap * scale + "px");
+    el.style.transform = "translateX(" + stopX + "px)";
+    el.innerHTML = '<span class="mascot-bubble" role="status" aria-live="polite"></span><span class="mascot-shadow"></span>' +
+      '<span class="mascot-clip"><span class="mascot-figure"><span class="mascot-breath"></span></span></span>';
+    if (rise) el.querySelector(".mascot-clip").style.clipPath = "inset(-120px -120px " + footGap * scale + "px -120px)";
+    document.body.appendChild(el);
+    var figure = el.querySelector(".mascot-figure"), body = el.querySelector(".mascot-breath"), bubble = el.querySelector(".mascot-bubble");
     el.classList.toggle("is-right-half", stopX > vw / 2);
-    function place() { el.style.transform = "translate(" + Math.round(x / scale) * scale + "px," + Math.round(y / scale) * scale + "px)"; }
-    function show(pose) { var html = frameSvg(pose); if (html !== shown) { figure.innerHTML = html; shown = html; } }
-    function leave() { if (phase !== "out") { phase = "out"; step = 0; el.classList.remove("is-talking"); } }
+    /* Figure states: where it is relative to its standing spot (px) and how far it leans. */
+    var dir = side === "right" ? -1 : 1;                 /* lean direction: the head tips away from the wall */
+    var hideX = rise ? 0 : side === "right" ? vw - stopX + 6 : -(stopX + w + 6), hideY = rise ? h + 6 : 0;
+    var STATES = {
+      hidden: { x: hideX, y: hideY, r: 0 },
+      peek: { x: rise ? 0 : hideX + (side === "right" ? -1 : 1) * Math.round(w * 0.62), y: rise ? Math.round(h * 0.56) : 0, r: rise ? 0 : 9 * dir },
+      peek2: { x: rise ? 0 : hideX + (side === "right" ? -1 : 1) * Math.round(w * 0.5), y: rise ? Math.round(h * 0.5) : 0, r: rise ? 3 * dir : -4 * dir },
+      stand: { x: 0, y: 0, r: 0 }
+    };
+    var state = "hidden", phase = "peek";      /* phase: peek (the hide-and-seek loop) | in | show | out */
+    var born = Date.now(), timer = null, seqTimer = null, finished = false, shown = "", step = 0, shownAt = 0, standing = false;
+    var eyesSeq = [], eyeStep = 0, idleAnim = ANIM.idle, idleStep = 0, comingUntil = 0, duckedPose = false;
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function setState(name, ms, ease) {
+      var s = STATES[name]; state = name;
+      figure.style.transitionDuration = still ? "0s" : (ms || 500) + "ms";
+      figure.style.transitionTimingFunction = ease || "";
+      figure.style.transform = "translate3d(" + s.x + "px," + s.y + "px,0) rotate(" + s.r + "deg)";
+      el.classList.toggle("is-hidden", name === "hidden");
+      el.classList.toggle("is-standing", name === "stand");
+    }
+    function show(pose) { var html = frameSvg(pose); if (html !== shown) { body.innerHTML = html; shown = html; } }
+    function clearSeq() { clearTimeout(seqTimer); seqTimer = null; }
+    function later(ms, fn) { clearSeq(); seqTimer = setTimeout(function () { if (!finished) fn(); }, ms); }
+    function ground() {
+      /* Stand on the chat box's top edge when it is on screen, otherwise on the bottom of the screen. */
+      var box = document.querySelector("#viewAssistant:not([hidden]) .chat-box"), px = "";
+      if (box && box.getBoundingClientRect) {
+        var r = box.getBoundingClientRect();
+        if (r.height > 0 && r.top > h + 70 && r.top < vh) px = Math.round(vh - r.top) + "px";
+      }
+      if (px) el.style.setProperty("--cameo-ground", px); else el.style.removeProperty("--cameo-ground");
+    }
     function finish() {
       if (finished) return;
-      finished = true; clearInterval(timer);
+      finished = true; clearInterval(timer); clearSeq();
+      window.removeEventListener("scroll", onScroll, true);
+      document.removeEventListener("focusin", onFocus, true);
+      window.removeEventListener("resize", ground);
       if (el.parentNode) el.parentNode.removeChild(el);
       activeCameo = null;
       if (options.onDone) try { options.onDone(); } catch (_) {}
     }
-    el.addEventListener("click", function () {
-      if (phase === "peek") { phase = "in"; step = 0; el.classList.remove("is-peeking"); el.setAttribute("aria-label", options.text ? "小訊：" + options.text : "小訊"); return; }
+    function leave() {
+      if (phase === "out" || finished) return;
+      phase = "out"; step = 0; clearSeq(); el.classList.remove("is-talking");
+      setState("hidden", 650, "cubic-bezier(.5,0,.8,.4)");
+      later(still ? 0 : 700, finish);
+    }
+    /* The hide-and-seek loop: hidden, peek and look around, (maybe) duck back, then step out and stand. */
+    function lookInside() { return rise ? "up" : side === "right" ? "left" : "right"; }
+    function startPeek(skipDuck) {
+      if (phase !== "peek") return;
+      standing = false; duckedPose = false; eyesSeq = [];
+      setState("hidden", 350, "cubic-bezier(.5,0,.8,.4)");
+      later(rnd(700, 1600), function () {
+        setState("peek", 650, "cubic-bezier(.2,.9,.3,1.15)");
+        var inn = lookInside(), out = rise ? "left" : side === "right" ? "right" : "left";
+        eyesSeq = ["front", "front", inn, inn, inn, "closed", inn, out, out, "front", "front", "closed", "front"]; eyeStep = 0;
+        later(rnd(2300, 3200), function () {
+          if (!skipDuck && Math.random() < 0.65) {
+            duckedPose = true; eyesSeq = ["wide"]; eyeStep = 0;     /* spotted! ducks back behind the edge */
+            setState("hidden", 300, "cubic-bezier(.5,0,.8,.4)");
+            later(rnd(900, 1800), function () {
+              duckedPose = false; eyesSeq = ["front", "front", inn, "closed", inn, inn, out, "front"]; eyeStep = 0;
+              setState("peek2", 520, "cubic-bezier(.2,.9,.3,1.12)");
+              later(rnd(1500, 2300), stepOut);
+            });
+          } else stepOut();
+        });
+      });
+    }
+    function stepOut() {
+      standing = true; eyesSeq = []; idleAnim = ANIM.idle; idleStep = 0;
+      comingUntil = Date.now() + 620;
+      setState("stand", 650, "cubic-bezier(.34,1.45,.5,1)");   /* overshoots a little, settles on the ground */
+      el.setAttribute("aria-label", "小訊，點我");
+    }
+    /* Scrolling or typing: duck out of the way, come back after a quiet while. */
+    function duckAway(ms) {
+      if (phase !== "peek" || finished) return;
+      if (Date.now() - born > (options.peekMs || 25000)) { leave(); return; }
+      clearSeq(); standing = false; duckedPose = true; eyesSeq = ["wide"]; eyeStep = 0;
+      setState("hidden", 320, "cubic-bezier(.5,0,.8,.4)");
+      later(ms, function () { startPeek(true); });
+    }
+    var scrollAt = 0;
+    function onScroll() {
+      var now = Date.now(), quiet = now - scrollAt > 250;
+      scrollAt = now;
+      if (!still && phase === "peek" && state !== "hidden" && quiet) duckAway(rnd(4500, 8000));
+    }
+    function onFocus(e) { var t = e.target; if (t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName || "")) { if (phase === "peek") leave(); } }
+    function tapped() {
+      if (phase === "peek") {
+        clearSeq(); phase = "in"; step = 0; standing = true; comingUntil = Date.now() + 650;
+        el.setAttribute("aria-label", options.text ? "小訊：" + options.text : "小訊");
+        setState("stand", 600, "cubic-bezier(.34,1.45,.5,1)");
+        later(still ? 0 : 650, function () {
+          phase = "show"; step = 0; shownAt = Date.now(); bubble.textContent = options.text || "";
+          if (options.text) el.classList.add("is-talking");
+          if (still) { show(ANIM[showAnim][0]); later(options.holdMs || 6500, leave); }
+        });
+        return;
+      }
       if (options.onClick) try { options.onClick(); } catch (_) {}
       leave();
-    });
+    }
+    el.addEventListener("click", tapped);
     function tick() {
-      var speed = scale * 3;
+      if (finished) return;
+      if (step % 8 === 0) ground();
       if (phase === "peek") {
-        /* Slide to the edge, then look in and blink now and then. */
-        if (entry === "corner") y = Math.min(peekY, y + scale); else x = entry === "right" ? Math.max(peekX, x - scale) : Math.min(peekX, x + scale);
-        show({ eyes: entry === "right" ? "left" : entry === "corner" ? "down" : "right", arms: step % 40 < 20 ? "front" : "wave" });
-        if (Date.now() - peekAt > (options.peekMs || 25000)) { phase = "out"; step = 0; }
+        if (state === "hidden" && !duckedPose) { step++; return; }
+        if (standing) {
+          if (Date.now() < comingUntil) show(Object.assign({}, ANIM.walk[step % ANIM.walk.length], { eyes: "front" }));
+          else {
+            if (idleStep >= idleAnim.length) { idleStep = 0; idleAnim = pick([ANIM.idle, ANIM.idle, ANIM.blink, ANIM.look, ANIM.idle, ANIM.wave]); }
+            show(idleAnim[idleStep++]);
+          }
+          if (Date.now() - born > (options.peekMs || 25000)) leave();
+        } else {
+          var eyes = eyesSeq.length ? eyesSeq[Math.min(eyeStep++, eyesSeq.length - 1)] : "front";
+          show({ eyes: eyes, arms: "front" });
+          if (eyeStep >= eyesSeq.length && eyesSeq.length > 3) eyeStep = 3;   /* keep glancing about while it waits */
+        }
       } else if (phase === "in") {
-        if (entry === "corner") { x = Math.min(stopX, x + speed); y = Math.min(top, y + speed); }
-        else x = entry === "right" ? Math.max(stopX, x - speed) : Math.min(stopX, x + speed);
-        show(Object.assign({}, ANIM[walkAnim][step % ANIM[walkAnim].length], { eyes: entry === "right" ? "left" : "right" }));
-        if (x === stopX && y === top) { phase = "show"; step = 0; shownAt = Date.now(); bubble.textContent = options.text || ""; if (options.text) el.classList.add("is-talking"); }
+        show(Object.assign({}, ANIM.walk[step % ANIM.walk.length], { eyes: "front" }));
       } else if (phase === "show") {
         show(ANIM[showAnim][step % ANIM[showAnim].length]);
         if (Date.now() - shownAt > (options.holdMs || 6500)) leave();
       } else {
-        if (entry === "corner") { x -= speed; y -= speed; }
-        else x += entry === "right" ? speed : -speed;
-        show(Object.assign({}, ANIM[walkAnim][step % ANIM[walkAnim].length], { eyes: entry === "right" ? "right" : "left" }));
-        if (x < -w - 4 || x > vw + 4 || y < -h - 4) finish();
+        show(Object.assign({}, ANIM.walk[step % ANIM.walk.length], { eyes: lookInside() }));
       }
-      place();
       step++;
     }
+    ground();
+    window.addEventListener("scroll", onScroll, { passive: true, capture: true });
+    document.addEventListener("focusin", onFocus, true);
+    window.addEventListener("resize", ground);
     if (still) {
-      /* Reduced motion: the head is just there at the edge; a tap shows the message. */
-      x = peekX; y = peekY; place(); show({ eyes: "front" });
-      el.addEventListener("click", function () { if (phase === "in") { x = stopX; y = top; phase = "show"; place(); show(ANIM[showAnim][0]); bubble.textContent = options.text || ""; if (options.text) el.classList.add("is-talking"); timer = setTimeout(finish, options.holdMs || 6500); } });
-      timer = setTimeout(function () { if (phase === "peek") finish(); }, options.peekMs || 25000);
+      /* Reduced motion: no sliding. A still head at the edge, faded in; a tap shows the message. */
+      show({ eyes: "front", arms: "front" });
+      setState("peek", 0);
+      figure.style.opacity = "0"; figure.style.transition = "opacity .4s linear";
+      requestAnimationFrame(function () { figure.style.opacity = "1"; });
+      later(options.peekMs || 25000, function () { if (phase === "peek") finish(); });
     } else {
-      place(); show(ANIM[walkAnim][0]);
-      timer = setInterval(tick, TICK);
+      show({ eyes: "front", arms: "front" });
+      requestAnimationFrame(function () { startPeek(false); });
+      timer = setInterval(function () { if (!document.hidden) tick(); }, TICK);
     }
     activeCameo = { el: el, leave: leave, finish: finish };
     return activeCameo;

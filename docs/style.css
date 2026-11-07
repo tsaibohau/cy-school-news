@@ -865,8 +865,8 @@ body:has(#subBadge:not([hidden])) .menu-toggle::after { content: ""; position: a
 }
 /* Text scrolling under the composer must not show through: a full-width paper band behind it. */
 .chat-composer::before {
-  content: ""; position: absolute; z-index: -1; top: 0; bottom: -140px; left: 50%; width: 100vw; transform: translateX(-50%);
-  background: linear-gradient(to bottom, transparent, var(--paper) 14px); pointer-events: none;
+  content: ""; position: absolute; z-index: -1; top: -22px; bottom: -140px; left: 50%; width: 100vw; transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent, var(--paper) 22px); pointer-events: none;
 }
 .chat-suggestions { justify-content: center; margin-bottom: 10px; }
 .chat-view.has-turns .chat-suggestions { display: none; }
@@ -913,7 +913,22 @@ body.is-chat .foot { display: none; }
 .mascot-hero { display: inline-block; width: auto; height: auto; background: none; transform: none; margin-bottom: 10px; }
 .mascot-hero .mascot { position: relative; cursor: default; }
 /* 客串：從畫面左右衝出來或從左上角冒出來，泡泡在旁邊。 */
-.mascot-cameo { position: fixed; z-index: 70; top: 0; left: 0; }
+.mascot-cameo { position: fixed; z-index: 70; top: auto; left: 0; bottom: calc(var(--cameo-ground, calc(env(safe-area-inset-bottom, 0px) + 8px)) - var(--cameo-foot, 0px)); pointer-events: none; will-change: transform; }
+/* Only the visible figure takes taps (the hidden part is off screen or clipped), so page content below stays tappable. */
+.mascot-cameo .mascot-figure { pointer-events: auto; position: relative; transform-origin: 50% 100%; transition-property: transform, opacity; transition-timing-function: cubic-bezier(.34, 1.45, .5, 1); will-change: transform; }
+.mascot-cameo.is-hidden .mascot-figure { pointer-events: none; }
+.mascot-clip { position: absolute; inset: 0; display: block; }
+.mascot-cameo .mascot-breath { display: block; width: 100%; height: 100%; transform-origin: 50% 100%; }
+/* Standing: a slow breath (a hair of vertical stretch from the feet) and a soft shadow so it never looks frozen or floating. */
+.mascot-cameo.is-standing .mascot-breath { animation: mascot-breathe 2.8s ease-in-out infinite alternate; }
+.mascot-shadow { position: absolute; left: 22%; right: 22%; bottom: calc(var(--cameo-foot, 0px) * -1 - 1px); height: 6px; border-radius: 50%; background: rgba(40, 24, 12, .22); opacity: 0; transition: opacity .3s .35s; pointer-events: none; }
+.mascot-cameo.is-standing .mascot-shadow { opacity: 1; }
+@keyframes mascot-breathe { from { transform: scaleY(1); } to { transform: scaleY(1.035); } }
+@media (prefers-reduced-motion: reduce) {
+  .mascot-cameo .mascot-figure { transition-property: opacity; }
+  .mascot-cameo.is-standing .mascot-breath { animation: none; }
+  .mascot-shadow { transition: none; }
+}
 .mascot-cameo .mascot-bubble { bottom: auto; top: 30%; left: calc(100% + 4px); right: auto; max-width: min(240px, 58vw); }
 .mascot-cameo.is-right-half .mascot-bubble { left: auto; right: calc(100% + 4px); }
 /* 輸入框那一排的小訊：坐在送出鍵旁邊，泡泡往上冒（點了才說話）。 */
@@ -1038,7 +1053,7 @@ body.is-chat .foot { display: none; }
 .series-stage { padding: 0 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700; }
 
 /* 開啟新問校務：有對話時才出現，放在輸入框正上方，單手拇指好按 */
-.chat-newchat-row { display: flex; justify-content: center; }
+.chat-newchat-row { display: flex; justify-content: center; background: var(--paper); }
 .chat-newchat-row:has(.chat-newchat[hidden]) { display: none; }
 .chat-newchat { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 8px; padding: 7px 14px; min-height: 36px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font: inherit; font-size: 13px; line-height: 1.4; white-space: nowrap; cursor: pointer; }
 .chat-newchat[hidden] { display: none; }
