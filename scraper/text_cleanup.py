@@ -43,11 +43,19 @@ _BORDER_RUN_RE = re.compile("[─━│┃┌┐└┘├┤┬┴┼═║╔�
 _LEADER_RE = re.compile(r"(?:[.．·・…‧。]\s*){3,}")
 
 _SPACE_CJK_RE = re.compile(f"(?<=[{_HAN}{_ZH_PUNCT}])[ \t](?=[{_HAN}{_ZH_PUNCT}])")
-# CJK <-> plain integer only ("113 年" -> "113年"); times, decimals and dates keep their spacing.
-_SPACE_DIGIT_CJK_RE = re.compile(
-    f"(?<![^\\s{_HAN}{_ZH_PUNCT}])([0-9]+)[ \t](?=[{_HAN}{_ZH_PUNCT}])")
-_SPACE_CJK_DIGIT_RE = re.compile(
-    f"(?<=[{_HAN}{_ZH_PUNCT}])[ \t]([0-9]+)(?![^\\s{_HAN}{_ZH_PUNCT}])")
+# Space around a number is kept by default (table fields such as "張三 95" stay separate).
+# It is merged only (a) between a number and a following unit word ("113 年"), or
+# (b) after a fixed prefix ("第 3", "民國 115"). Times, decimals and dates are never touched.
+_UNITS = "學年|學期|[年月日時點分秒號屆次人名位元份張頁週周個級班歲天梯場組隊%％]"
+_PREFIXES = ("第", "民國", "西元", "共", "約", "每", "計", "前", "後",
+             "上午", "下午", "晚上", "中午", "至", "到", "為", "於",
+             "：", "，", "、", "；", "。", "（", "「")  # space after Chinese punctuation is noise
+_NUM_EDGE = f"[^\\s{_HAN}{_ZH_PUNCT}]"
+_SPACE_DIGIT_UNIT_RE = re.compile(f"(?<!{_NUM_EDGE})([0-9]+(?:,[0-9]{{3}})*)[ \t](?=(?:{_UNITS}))")
+# Date parts written apart ("113年 9月 1日") are joined once their own units are attached.
+_SPACE_DATE_PART_RE = re.compile("(?<=[年月])[ \t](?=[0-9]+[月日])|(?<=日)[ \t](?=[0-9]+[時點])")
+_SPACE_PREFIX_DIGIT_RE = re.compile(
+    "(?:" + "|".join(f"(?<={p})" for p in _PREFIXES) + f")[ \t]([0-9]+)(?!{_NUM_EDGE})")
 _REPEAT_PUNCT_RE = re.compile("([，、。；：])(?:[ \t]*[，、。；：]|[,.](?=[\\s]|$))+")
 _HALF_PUNCT_RE = re.compile(
     f"(?<=[{_HAN}{_CLOSERS}])[ \t]?([,;:])[ \t]?(?=[{_HAN}（「『【《〈0-9]|$)")
@@ -94,8 +102,9 @@ def _clean_line(line: str) -> str:
     line = _BORDER_RUN_RE.sub(" ", line)
     line = _LEADER_RE.sub(_LEADER, line)
     line = _SPACE_CJK_RE.sub("", line)
-    line = _SPACE_DIGIT_CJK_RE.sub(r"\1", line)
-    line = _SPACE_CJK_DIGIT_RE.sub(r"\1", line)
+    line = _SPACE_DIGIT_UNIT_RE.sub(r"\1", line)
+    line = _SPACE_PREFIX_DIGIT_RE.sub(r"\1", line)
+    line = _SPACE_DATE_PART_RE.sub("", line)
     line = _REPEAT_PUNCT_RE.sub(r"\1", line)
     line = _HALF_PUNCT_RE.sub(lambda m: {",": "，", ";": "；", ":": "："}[m.group(1)], line)
     line = re.sub(r"[ \t\r\f\v]+", " ", line).strip()
