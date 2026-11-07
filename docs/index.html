@@ -13,8 +13,45 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://oppdhtnepjagdwovndra.supabase.co" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=118">
+<!-- 宋體網路字型（Noto Serif TC 切成十幾個 ~90KB 的片段）會和公告資料搶頻寬：
+     先用系統宋體畫出公告，公告畫完（app.js 呼叫 __cyNewsLoadFonts）或 12 秒後才載入，載入後平滑換字（display=swap） -->
+<script>
+window.__cyNewsLoadFonts = function () {
+  if (window.__cyNewsFontsRequested) return;
+  window.__cyNewsFontsRequested = true;
+  var link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap";
+  document.head.appendChild(link);
+};
+setTimeout(window.__cyNewsLoadFonts, 12000);
+</script>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap"></noscript>
+<script>
+/* 提早開始下載公告資料（與程式檔平行），app.js 第一次載入時直接接手同一個請求。
+   只在使用者上次選的是全部學校／單一學校時預取；URL 與 app.js 的 dataFetch(revalidate) 完全一致。 */
+(function () {
+  try {
+    var early = window.__cyNewsEarly = {};
+    var school = String(localStorage.getItem("cyNews.school.v1") || "all");
+    if (school !== "all" && !/^[a-z0-9-]{1,32}$/.test(school)) school = "all";
+    function start(url) {
+      var p = fetch(url, { cache: "no-cache" });
+      p.catch(function () {});
+      early[url] = p;
+      return p;
+    }
+    if (school === "all") { start("data/announcements.json"); }
+    else {
+      start("data/schools/manifest.json").then(function (r) { return r.ok ? r.clone().json() : null; }).then(function (m) {
+        var row = m && (m.schools || []).filter(function (x) { return x.id === school; })[0];
+        if (row && row.current) start(row.current);
+      }).catch(function () {});
+    }
+  } catch (_) {}
+})();
+</script>
+<link rel="stylesheet" href="style.css?v=119">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -24,7 +61,7 @@
   <strong>校訊</strong>
   <span>正在整理最新公告</span>
 </div>
-<script src="mascot.js?v=7"></script>
+<script src="mascot.js?v=8"></script>
 
 <header class="mast">
   <div class="wrap mast-row">
@@ -434,15 +471,15 @@
 <script src="today.js?v=42"></script>
 <script src="daily-brief.js?v=2"></script>
 <script src="search-taxonomy.js?v=56"></script>
-<script src="qa-synonyms.js?v=13"></script>
-<script src="qa-typo.js?v=2"></script>
+<script src="qa-synonyms.js?v=14"></script>
+<script type="text/lazy-assistant" data-lazy-src="qa-typo.js?v=2"></script>
 <script src="search-query.js?v=61"></script>
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=52"></script>
 <script src="announcement-cleanup.js?v=82"></script>
 <script src="announcement-tokens.js?v=2"></script>
-<script src="answer-composer.js?v=4"></script>
-<script src="assistant-qa.js?v=92"></script>
+<script type="text/lazy-assistant" data-lazy-src="answer-composer.js?v=4"></script>
+<script type="text/lazy-assistant" data-lazy-src="assistant-qa.js?v=93"></script>
 <script src="weather.js?v=1"></script>
 <script src="announcement-sort.js?v=1"></script>
 <script src="series-view.js?v=1"></script>
@@ -452,7 +489,7 @@
 <script src="schedule-compare.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
 <script src="notification-state.js"></script>
-<script src="app.js?v=142"></script>
+<script src="app.js?v=143"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

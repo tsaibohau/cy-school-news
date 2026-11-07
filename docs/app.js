@@ -18,6 +18,7 @@
     var loading = document.getElementById("appLoading");
     if (loading) loading.hidden = true;
     if (window.__cyNewsLoadingDance) window.__cyNewsLoadingDance.stop();
+    if (window.__cyNewsLoadFonts) window.__cyNewsLoadFonts();
   }
 
   function startApp() {
@@ -1548,7 +1549,13 @@
     /* First load asks the browser to revalidate (a 304 when nothing changed) instead of
        downloading every file again; the refresh button still bypasses every cache. */
     function dataFetch(url, revalidate) {
-      return revalidate ? fetch(url, { cache: "no-cache" }) : fetch(url + "?_=" + Date.now(), { cache: "no-store" });
+      if (revalidate) {
+        /* index.html 的 <head> 已提早開始下載第一份資料，這裡只接手一次 */
+        var early = window.__cyNewsEarly, taken = early && early[url];
+        if (taken) { delete early[url]; return taken; }
+        return fetch(url, { cache: "no-cache" });
+      }
+      return fetch(url + "?_=" + Date.now(), { cache: "no-store" });
     }
 
     function fetchManifest(revalidate) {
@@ -1577,6 +1584,33 @@
       /* 校網原文已確認不存在（連續兩次 404）的公告不顯示 */
       data.items = (data.items || []).filter(function (item) { return visibleSchool(item) && !linkGone(item); });
       return data;
+    }
+
+    /* 問校務的回答引擎（qa-typo / answer-composer / assistant-qa，約 130KB 壓縮後）不擋公告列表：
+       index.html 只放 <script type="text/lazy-assistant" data-lazy-src>，第一份公告畫出後才依序載入，
+       載入完成再重畫一次（期限排序與問校務範例用得到）。要發問時若還沒載好會先等它。 */
+    var assistantLoading = null;
+    function ensureAssistant() {
+      if (window.CyNewsAssistantQA) return Promise.resolve(true);
+      if (assistantLoading) return assistantLoading;
+      var tags = [];
+      try { tags = Array.prototype.slice.call(document.querySelectorAll('script[type="text/lazy-assistant"][data-lazy-src]')); } catch (_) { tags = []; }
+      if (!tags.length) return Promise.resolve(false);
+      assistantLoading = tags.reduce(function (chain, tag) {
+        return chain.then(function () {
+          return new Promise(function (resolve) {
+            var script = document.createElement("script");
+            script.src = tag.getAttribute("data-lazy-src");
+            script.onload = script.onerror = function () { resolve(); };
+            document.head.appendChild(script);
+          });
+        });
+      }, Promise.resolve()).then(function () {
+        var ok = !!window.CyNewsAssistantQA;
+        if (ok && state.data) renderAll();
+        return ok;
+      });
+      return assistantLoading;
     }
 
     function fetchData(skipNotifications, options) {
@@ -3074,6 +3108,9 @@
       });
     }
     function askAssistant(question) {
+      if (!window.CyNewsAssistantQA && state.data) {
+        return ensureAssistant().then(function (ok) { return ok ? askAssistant(question) : null; });
+      }
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
       question = String(question || "").trim().slice(0, 160);
       if (!question) return Promise.resolve(null);
@@ -4117,9 +4154,15 @@
         reloadedForUpdate = true;
         window.location.reload();
       });
-      window.addEventListener("load", function () {
+      /* 等第一份公告畫出來（或載入失敗）才註冊：Service Worker 安裝時會預載整批殼層檔案，
+         不要和公告資料搶頻寬。 */
+      var swRegistered = false, swLoaded = document.readyState === "complete";
+      window.__cyNewsRegisterSW = function () {
+        if (swRegistered || !swLoaded || !window.__cyNewsFirstPaintDone) return;
+        swRegistered = true;
         navigator.serviceWorker.register("sw.js?v=82").catch(function () {});
-      });
+      };
+      if (!swLoaded) window.addEventListener("load", function () { swLoaded = true; window.__cyNewsRegisterSW(); });
     }
 
     if (window.__CYNEWS_TEST__) {
@@ -4135,7 +4178,11 @@
 
     refreshNotifyState();
     setupAccountSync();
-    fetchData(false, { revalidate: true }).then(finishInitialLoading);
+    fetchData(false, { revalidate: true }).then(finishInitialLoading).then(function () {
+      window.__cyNewsFirstPaintDone = true;
+      try { ensureAssistant(); } catch (_) {}
+      if (window.__cyNewsRegisterSW) window.__cyNewsRegisterSW();
+    });
   }
 
   loadNotificationStateScript(startApp);
