@@ -2759,8 +2759,39 @@
       thread.appendChild(turn);
       el.assistantAnswer = turn.querySelector(".chat-reply");
       if (el.viewAssistant) el.viewAssistant.classList.add("has-turns");
+      syncAssistantNewChat();
       if (el.assistantQuestion) { el.assistantQuestion.value = ""; resizeAssistantInput(); }
       if (turn.scrollIntoView) turn.scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+    /* 開啟新問校務: forget this conversation (turns, saved question history, follow-up context, 參考資料) but keep 範圍 and 深度判斷. */
+    function resetAssistantChat() {
+      try { finishAnswerTyping(); } catch (_) {}
+      state.assistantTurns = [];
+      state.assistantAnswer = null;
+      state.assistantItems = {};
+      try { localStorage.removeItem(ASSISTANT_HISTORY_KEY); } catch (_) {}
+      var thread = document.getElementById("assistantThread");
+      if (thread) {
+        thread.innerHTML = '<div id="assistantAnswer" class="assistant-answer"></div>';
+        el.assistantAnswer = thread.querySelector("#assistantAnswer");
+      }
+      var body = document.getElementById("assistantSourcesBody"), count = document.getElementById("assistantSourcesCount"), toggle = document.getElementById("assistantSourcesToggle");
+      if (body) body.innerHTML = "";
+      if (count) count.textContent = "0";
+      if (toggle) { toggle.hidden = true; toggle.classList.remove("is-new"); }
+      toggleAssistantSources(false);
+      if (el.assistantQuestion) { el.assistantQuestion.value = ""; resizeAssistantInput(); }
+      if (el.assistantStatus) el.assistantStatus.textContent = "已開啟新的問校務。";
+      if (el.viewAssistant) el.viewAssistant.classList.remove("has-turns");
+      syncAssistantNewChat();
+      mascotMood("idle", false);
+      renderAssistantGreeting();
+      renderAssistantExamples();
+      if (el.assistantQuestion && typeof el.assistantQuestion.focus === "function") el.assistantQuestion.focus();
+    }
+    function syncAssistantNewChat() {
+      var button = document.getElementById("assistantNewChat");
+      if (button) button.hidden = !state.assistantTurns.length;
     }
     function resizeAssistantInput() {
       var input = el.assistantQuestion;
@@ -3565,6 +3596,7 @@
     if (el.viewAssistant) el.viewAssistant.addEventListener("click", function (e) {
       var example = e.target.closest("button[data-assistant-example]");
       if (example) { el.assistantQuestion.value = example.dataset.assistantExample; askAssistant(el.assistantQuestion.value); return; }
+      if (e.target.closest("#assistantNewChat")) { resetAssistantChat(); return; }
       if (e.target.closest("#assistantSourcesToggle")) { toggleAssistantSources(); return; }
       if (e.target.closest("#assistantSourcesClose")) { toggleAssistantSources(false); return; }
       var source = e.target.closest("button[data-detail-id]");
