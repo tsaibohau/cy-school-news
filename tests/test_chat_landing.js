@@ -55,7 +55,7 @@ assert.ok(Mascot.lines.thinking.length && Mascot.lines.happy.length && Mascot.li
 assert.match(index, /id="mascotStage" class="mascot-stage"/);
 /* mascot.js loads right after the splash so 小訊 dances while the rest loads; still before assistant-qa.js. */
 assert.match(index, /id="appLoading"[\s\S]*?<\/div>\s*<script src="mascot\.js\?v=7"><\/script>/);
-assert.ok(index.indexOf('src="mascot.js') < index.indexOf('src="assistant-qa.js'));
+assert.ok(index.indexOf('src="mascot.js') < index.indexOf('data-lazy-src="assistant-qa.js'));
 assert.equal(typeof Mascot.loadingDance, "function");
 assert.match(read("mascot.js"), /prefers-reduced-motion: reduce/, "the mascot stops moving for reduced motion");
 assert.doesNotMatch(css, /transition: transform 1\.4s/, "no smooth sliding: the mascot walks step by step");

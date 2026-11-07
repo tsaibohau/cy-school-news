@@ -1586,6 +1586,33 @@
       return data;
     }
 
+    /* 問校務的回答引擎（qa-typo / answer-composer / assistant-qa，約 130KB 壓縮後）不擋公告列表：
+       index.html 只放 <script type="text/lazy-assistant" data-lazy-src>，第一份公告畫出後才依序載入，
+       載入完成再重畫一次（期限排序與問校務範例用得到）。要發問時若還沒載好會先等它。 */
+    var assistantLoading = null;
+    function ensureAssistant() {
+      if (window.CyNewsAssistantQA) return Promise.resolve(true);
+      if (assistantLoading) return assistantLoading;
+      var tags = [];
+      try { tags = Array.prototype.slice.call(document.querySelectorAll('script[type="text/lazy-assistant"][data-lazy-src]')); } catch (_) { tags = []; }
+      if (!tags.length) return Promise.resolve(false);
+      assistantLoading = tags.reduce(function (chain, tag) {
+        return chain.then(function () {
+          return new Promise(function (resolve) {
+            var script = document.createElement("script");
+            script.src = tag.getAttribute("data-lazy-src");
+            script.onload = script.onerror = function () { resolve(); };
+            document.head.appendChild(script);
+          });
+        });
+      }, Promise.resolve()).then(function () {
+        var ok = !!window.CyNewsAssistantQA;
+        if (ok && state.data) renderAll();
+        return ok;
+      });
+      return assistantLoading;
+    }
+
     function fetchData(skipNotifications, options) {
       var revalidate = !!(options && options.revalidate);
       var deletedIds = accountAuth && typeof accountAuth.getDeletedAnnouncementIds === "function" ?
@@ -3081,6 +3108,9 @@
       });
     }
     function askAssistant(question) {
+      if (!window.CyNewsAssistantQA && state.data) {
+        return ensureAssistant().then(function (ok) { return ok ? askAssistant(question) : null; });
+      }
       if (!window.CyNewsAssistantQA || !state.data) return Promise.resolve(null);
       question = String(question || "").trim().slice(0, 160);
       if (!question) return Promise.resolve(null);
@@ -4150,6 +4180,7 @@
     setupAccountSync();
     fetchData(false, { revalidate: true }).then(finishInitialLoading).then(function () {
       window.__cyNewsFirstPaintDone = true;
+      try { ensureAssistant(); } catch (_) {}
       if (window.__cyNewsRegisterSW) window.__cyNewsRegisterSW();
     });
   }
