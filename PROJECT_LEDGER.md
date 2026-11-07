@@ -2404,3 +2404,10 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 測試（全部虛構資料）：`tests/test_assistant_both_schools.js`、`test_qa_rule_polarity.js`、`test_qa_detail.js`。
 - 已知限制：已過期公告的日期在清理時刻意拿掉，所以制服答案會出現「新生訓練(8/)前」這類空缺；嘉女多元選修課程表需登入學校信箱，讀不到。
 - 版本：`assistant-qa.js?v=90`、`qa-synonyms.js?v=12`、`answer-composer.js?v=3`、`qa-typo.js?v=2`、`app.js?v=140`、`cy-news-v165`。
+
+## 2026-11-07 問校務：回答更像人並分段、「往常什麼時候」、移除 Vercel 測試站
+- 回覆改寫（`docs/assistant-qa.js`、`docs/answer-composer.js`、`docs/app.js`、`docs/style.css`）：第一段直接回答（「不可以。」「地點在…」），細節逐條列出（去掉一、（一）編號、重複詞、〇遮蔽姓名的句子），最後一行「資料來源：…」。兩校回答用 `reply.paragraphs` 分成【嘉中】【嘉女】兩段。拿掉嗆人與生硬的句子（整理好了自己看、別賭了、重點如下、公告也有寫到、找不到欸不是我不努力）。法源／函文字號類補充不再輸出；罰則補充改為「違規的後果：…」；過期公告被挖空的日期殘字（8/）、空的營業時間欄位會清掉，不捏造日期。
+- 往常／通常／每年 X 什麼時候：走行事曆（今年、往年）＋歷年同名公告，只有一年資料時照實說；紀錄表、成績、名單頁與含遮蔽姓名的頁面不得回答時間題；「全民e化資訊運動會」「全中運」等他辦運動會不算校運會。
+- 移除 Vercel 測試站：刪 `vercel.json`、`api/`、`tools/build-staging.js`、大部分 `tools/staging/`、`supabase/functions/request-staging-refresh/`、`staging-user-refresh.yml` 與相關測試；`docs/app.js` 的測試站更新按鈕程式；`username-auth` 不再允許 vercel.app 來源。擁有者需在 Supabase 後台重新部署 `username-auth`、刪除 `request-staging-refresh` 與 `GITHUB_REFRESH_TOKEN`。
+- 測試：`tests/test_qa_natural_reply.js`、`tests/test_qa_usual_when.js`（虛構資料）；措辭改變而更新的斷言：test_answer_composer、test_assistant_qa、test_qa_school_docs、test_qa_layers、test_qa_usual_when。
+- 版本：`assistant-qa.js?v=91`、`qa-synonyms.js?v=13`、`answer-composer.js?v=4`、`app.js?v=141`、`style.css?v=117`、`cy-news-v166`。
