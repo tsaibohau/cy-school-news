@@ -2227,7 +2227,7 @@
   }
   /* Typos (段烤 → 段考): answer the corrected question and say what was read differently.
      The question as typed is kept when the corrected one finds nothing either. */
-  function answer(query, items, details, options) {
+  function answerForScope(query, items, details, options) {
     /* 「你知道明天段考嗎」 asks about 段考, not about 「你知道」. */
     var typed = clean(query).replace(/^(?:請問一下|請問|小訊[，,、\s]*)?(?:你|妳)(?:知道|知不知道|曉得|曉不曉得)(?=.{2,})/, "").replace(/^請問(?=.{2,})/, ""), fixed = Typo && !smallTalk(typed) ? Typo.fix(typed) : { query: typed, fixes: [] };
     var result = null;
@@ -2261,6 +2261,72 @@
     if (result && result.status !== "answered" && !(result.related || []).length && offTopic(typed)) return chatResult("offtopic", typed, pickLine(TALK_LINES.offtopic, typed));
     if (result && options && options.deep && result.mode !== "chat") result.deep = deepReport(fixed.fixes.length && result.typo ? fixed.query : typed, items, details, options, result);
     return result;
+  }
+  /* Which schools a question names (嘉義高中 / 嘉女 …): ids from SCHOOL_PATTERNS. */
+  var SCHOOL_PATTERNS = { cysh: /嘉義高級中學|嘉義高中|嘉中/, cygsh: /嘉義女子高級中學|嘉義女中|嘉女/ };
+  function schoolsNamed(query) {
+    var q = clean(query);
+    return Object.keys(SCHOOL_PATTERNS).filter(function (id) { return SCHOOL_PATTERNS[id].test(q); });
+  }
+  function itemSchool(item) { return String(item && (item.school || item.school_id) || ""); }
+  /* The same options as the app builds for one school: its items, its calendar, its name. */
+  function scopeTo(schoolId, items, options) {
+    var scoped = Object.assign({}, options, { schoolId: schoolId, scopeLabel: SCHOOL_SHORT[schoolId] || schoolId, timetableSchool: schoolId });
+    scoped.calendarEvents = (options.calendarEvents || []).filter(function (ev) { return ev && String(ev.school_id || "") === schoolId; });
+    return { items: (items || []).filter(function (item) { var s = itemSchool(item); return !s || s === schoolId; }), options: scoped };
+  }
+  var NO_SCHOOL_ANSWER = "目前資料裡沒有找到相關內容";
+  /* No school picked (scope 所有學校) and none named: answer for each school on its own and say
+     so when one has nothing. A question that names one school is answered for that school only. */
+  function answer(query, items, details, options) {
+    options = options || {};
+    var list = Array.isArray(items) ? items : [];
+    if (options.schoolId) return answerForScope(query, items, details, options);
+    var ids = unique(list.map(itemSchool).concat((options.calendarEvents || []).map(function (ev) { return String(ev && ev.school_id || ""); })).filter(function (id) { return SCHOOL_PATTERNS[id]; }));
+    if (ids.length < 2) return answerForScope(query, items, details, options);
+    var typed = clean(query);
+    if (smallTalk(typed) || personalDataQuery(typed) || COMPARE_WORD.test(typed)) return answerForScope(query, items, details, options);
+    var named = schoolsNamed(typed);
+    if (named.length > 1) return answerForScope(query, items, details, options);
+    if (named.length === 1) {
+      var only = scopeTo(named[0], list, options);
+      return answerForScope(query, only.items, details, only.options);
+    }
+    var parts = ids.map(function (id) {
+      var sc = scopeTo(id, list, Object.assign({}, options, { deep: false }));
+      return { id: id, name: SCHOOL_SHORT[id], result: answerForScope(query, sc.items, details, sc.options) };
+    });
+    /* Small talk or an off-topic reply is not school-specific. */
+    var chat = parts.filter(function (p) { return p.result && p.result.mode === "chat"; })[0];
+    if (chat) return chat.result;
+    var good = parts.filter(function (p) { return p.result && p.result.status === "answered"; });
+    var out = { status: good.length ? "answered" : "insufficient", mode: "multi_school", query: clean(query), evidence: [], key_points: [], related: [], sources: [], also: [], multi_school: true,
+      school_results: parts.map(function (p) { return { school_id: p.id, status: p.result && p.result.status || "insufficient", mode: p.result && p.result.mode || "" }; }) };
+    var bullets = [], tails = [], limits = [];
+    parts.forEach(function (p) {
+      var r = p.result, ok = good.indexOf(p) !== -1;
+      if (!ok) { bullets.push(p.name + "：" + NO_SCHOOL_ANSWER + "。"); return; }
+      var reply = r.reply || { text: r.summary || "", bullets: [] };
+      bullets.push(p.name + "：" + clean(reply.text || r.summary || ""));
+      (reply.bullets || []).forEach(function (b) { bullets.push("　" + clean(b)); });
+      if (reply.tail) tails.push(p.name + "：" + clean(reply.tail));
+      out.sources = out.sources.concat((r.sources || []).slice(0, 3));
+      (r.also || []).forEach(function (row) { out.also.push(Object.assign({}, row, { text: p.name + "：" + (row.text || (row.label || "") + "也有寫到：" + (row.summary || "")) })); });
+      if (r.limitation) limits.push(p.name + "：" + r.limitation);
+      if (!out.evidence.length && r.evidence) out.evidence = r.evidence;
+    });
+    if (!good.length) {
+      /* Nobody has it: keep the closest notices (to open) and the office link of the first school that has one. */
+      parts.forEach(function (p) { out.related = out.related.concat((p.result && p.result.related || []).slice(0, 2)); if (!out.office_link && p.result && p.result.office_link) out.office_link = p.result.office_link; });
+    }
+    var lead = good.length ? "兩間學校分開回答：" : "兩間學校都沒有找到相關內容：";
+    out.reply = { text: lead, bullets: bullets };
+    if (tails.length) out.reply.tail = tails.join(" ");
+    out.summary = lead + bullets.join(" ");
+    if (limits.length) out.limitation = limits.join(" ");
+    out.layers_checked = good.length ? (good[0].result.layers_checked || []) : [];
+    if (options.deep) out.deep = deepReport(typed, list, details, options, out);
+    return out;
   }
   /* The words of the subject as asked (段考, 學生證), and whether a text says one of them
      (exactly or as a synonym: 定期考查 for 段考; not a narrower kind such as 複習考). */
