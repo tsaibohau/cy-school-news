@@ -34,6 +34,9 @@ const bodies = Object.assign({},
     "五、有下列情事者給予生活輔導：", "（一）違反一般規定：", "1. 當週週末輔導上午 9:10 後集合。"]),
   body(penalty, ["某校 學生獎懲規定", "十四、合於下列情事之一者，記警告：", "(一)遲到，經勸導仍未改正者。", "(二)違反本校「校園行動載具使用規定」，經勸導後仍未改正，情節輕微者。",
     "十五、合於下列情事之一者，記小過：", "(一)違反本校「校園行動載具使用規定」，經勸導後仍未改正，情節嚴重者。"]));
+const daily = chapter("學生在校作息時間規定");
+assert.ok(daily);
+Object.assign(bodies, body(daily, ["某校 學生在校作息時間規定", "一、午休應立即進入教室，不得喧鬧或在外逗留、走動。", "二、嚴禁利用午休於廁所聚集聊天。"]));
 const opts = { asOf: "2026-11-07", schoolId: "cysh", scopeLabel: "嘉中", calendarEvents: [] };
 function ask(q) {
   const details = {};
@@ -57,6 +60,14 @@ assert.doesNotMatch(t, /88 年|99 年|某字第/, "no revision history or 依據
 r = ask("午休可以滑手機嗎");
 assert.match((r.reply && r.reply.text) || "", /不行|不可以|這個不行/);
 assert.doesNotMatch(say(r), /可以，只是要照規矩來/);
+
+/* The asked subject (手機) picks the chapter; the situation (午休) alone does not. This phone chapter never says 午休. */
+const phoneText = bodies[phone.id].blocks[0].text;
+bodies[phone.id].blocks[0].text = phoneText.replace("上課、定期評量、午休及集會", "上課、定期評量及集會");
+r = ask("午休滑手機會怎樣");
+assert.match(say(r), /行動載具/, say(r));
+assert.doesNotMatch(say(r), /廁所聚集|不得喧鬧/, say(r));
+bodies[phone.id].blocks[0].text = phoneText;
 
 /* 2. A question about what to do: the procedure, every alternative, and the penalty. */
 r = ask("段考時間我忘記帶學生證該怎麼辦？");
