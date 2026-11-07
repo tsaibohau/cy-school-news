@@ -1036,3 +1036,11 @@ body.is-chat .foot { display: none; }
 .series-year li a { color: var(--ink); flex: 1 1 14em; min-width: 0; }
 .series-year time { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
 .series-stage { padding: 0 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700; }
+
+/* 開啟新問校務：有對話時才出現，放在輸入框正上方，單手拇指好按 */
+.chat-newchat-row { display: flex; justify-content: center; }
+.chat-newchat-row:has(.chat-newchat[hidden]) { display: none; }
+.chat-newchat { display: inline-flex; align-items: center; gap: 6px; margin: 0 0 8px; padding: 7px 14px; min-height: 36px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font: inherit; font-size: 13px; line-height: 1.4; white-space: nowrap; cursor: pointer; }
+.chat-newchat[hidden] { display: none; }
+.chat-newchat:hover { border-color: var(--seal); color: var(--seal); }
+.chat-newchat:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; }
