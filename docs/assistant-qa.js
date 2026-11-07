@@ -3300,7 +3300,7 @@
   /* ---- 「往常／通常／每年 X 什麼時候」: usual timing from this year's calendar entry, earlier years' calendar entries and past notices ---- */
   var USUAL_NOISE = /往常|通常|平常|每年|歷年|往年|一般|大多|大概都|什麼時候|何時|哪個月|幾月|月份|辦理|舉辦|舉行|開辦|開始|進行|請問|學校|本校|我們|大概|都是|都在|都會|是在|會在|在|都|是|辦|的|呢|嗎|啊|吧|[？?！!。，,\s]/g;
   /* Notices that only orbit the event (poster contest, volunteers, results) are not the event. */
-  var EVENT_SIDE = /海報|徵選|徵稿|攝影|志工|招募|紀錄表|成績|名單|得獎|獲獎|優勝|預演|預賽|彩排|練習|籌備|裁判|檢錄|補假|補課|補行|調整|倒數|報名|賽程表|行程概要/;
+  var EVENT_SIDE = /海報|徵選|徵稿|攝影|志工|招募|紀錄表|成績|名單|得獎|獲獎|優勝|預演|預賽|彩排|練習|籌備|裁判|檢錄|補假|補課|補行|調整|倒數|報名|賽程表|行程概要|晚會/;
   function academicYearOfDay(iso) { var y = Number(iso.slice(0, 4)), m = Number(iso.slice(5, 7)); return (m >= 8 ? y : y - 1) - 1911; }
   function monthPhase(days) {
     var months = unique(days.map(function (d) { return Number(d.slice(5, 7)); }));
@@ -3359,7 +3359,7 @@
     if (!known.length) return null;
     var phase = dated.length >= 2 ? monthPhase(dated) : "";
     var lead = label + "的" + subject;
-    var body = [current].concat(parts.length ? ["往年：" + parts.join("；")] : []).filter(Boolean).join("；");
+    var body = known.length === 1 ? (current || parts[0]) : [current].concat(parts.length ? ["往年：" + parts.join("；")] : []).filter(Boolean).join("；");
     var summary;
     if (known.length >= 2 && dated.length >= 2) summary = lead + (phase ? "通常在 " + phase + "舉行" : "每年日期不太一樣") + "：" + body + "。";
     else if (known.length >= 2) summary = lead + "目前能對照的日期不多：" + body + "。";
