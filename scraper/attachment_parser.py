@@ -24,7 +24,7 @@ DEFAULT_MAX_PAGES = 80
 DEFAULT_MAX_CHARS = 120_000
 DEFAULT_MAX_BYTES = 8 * 1024 * 1024
 DEFAULT_MAX_UNCOMPRESSED_BYTES = 24 * 1024 * 1024
-PARSER_VERSION = "attachment-text-v2"
+PARSER_VERSION = "attachment-text-v3"  # v3: text_cleanup (punctuation, leader dots, wrapped lines)
 SUPPORTED_TEXT_EXTENSIONS = {"pdf", "docx", "xlsx", "pptx"}
 OCR_EXTENSIONS = {"jpg", "jpeg", "png", "gif", "webp"}
 
