@@ -240,10 +240,13 @@ def classify(text: str) -> str:
 
 
 def apply_category(item: dict) -> None:
-    """Set item["category"] and item["category_confidence"] from title + office."""
+    """Set item["category"] from title + office.
+
+    The scorer's confidence is not stored: the site does not read it, and every visitor would
+    download it with announcements.json (~200 KB). Use tools/eval_category_scoring.py to see it."""
     result = score_category(item.get("title", ""), item.get("source_category", ""))
     item["category"] = result["category"]
-    item["category_confidence"] = result["confidence"]
+    item.pop("category_confidence", None)
 
 
 def normalize_url(url: str) -> str:
