@@ -1455,7 +1455,7 @@
       rank(q, docs, {}, options).slice(0, per).forEach(function (row) { add(row.item); });
       rank(q, notices, {}, options).slice(0, per).forEach(function (row) { add(row.item); });
     });
-    if (asksPenalty(question) || asksPenalty(fixed) || CONSEQUENCE_ASK.test(question)) penaltyDocs(docs, question).forEach(add);
+    if (asksPenalty(question) || asksPenalty(fixed) || CONSEQUENCE_ASK.test(question) || PROCEDURE_ASK.test(question)) penaltyDocs(docs, question).forEach(add);
     return out;
   }
   /* Rules are numbered (一、 (一) 1. 第三條) or are timetable rows (12:35-13:10 午休). */
@@ -2827,10 +2827,16 @@
       if (whole && whole.mode === "rule" && (whole.sources || [])[0] && whole.sources[0].id === overview.sources[0].id)
         overview = Object.assign({}, overview, { summary: whole.summary, answer_lines: whole.answer_lines, evidence: whole.evidence, notes: whole.notes });
     }
+    /* The handbook has no such rule but names the one that governs it (嘉女 試場規則): that, not an unrelated notice, is the answer. */
+    if (overview.mode !== "rule" && !personalDataQuery(query)) {
+      var named = namedRuleAnswer(query, (Array.isArray(items) ? items : []).filter(isSchoolDoc), details || {});
+      if (named) overview = Object.assign({}, named, { layer: "rule" });
+    }
     var shown = {};
     (overview.sources || []).concat(overview.related || []).forEach(function (row) { shown[row.id] = true; });
     var sections = [];
     split.parts.forEach(function (part) {
+      if (overview.named) return;   // the named rule above is the whole answer
       /* 「沒寫會怎樣」: look for a penalty first; none found → tease (and say where to look). */
       if (part.aspect.id === "consequence" && Composer) { var said = consequenceSection(part, overview, items, details, options, shown); if (said) sections.push(said); return; }
       var sub = part.subject + part.aspect.phrase, found = answerCore(sub, items, details, Object.assign({}, options, { tokenSubject: part.subject }));
@@ -2899,7 +2905,7 @@
     var ruled = personalDataQuery(query) ? null : ruleLayer(query, all.filter(isSchoolDoc), details, options);
     /* A rule chapter that only mentions the subject in passing (〈圖書館閱覽規定〉 says the library
        closes on 段考 days) is not the answer to 「什麼時候段考」. */
-    if (ruled && ruled.mode === "rule" && !chapterAbout(ruled.sources && ruled.sources[0], query) &&
+    if (ruled && ruled.mode === "rule" && !ruled.named && !chapterAbout(ruled.sources && ruled.sources[0], query) &&
         !(asksPenalty(query) && penaltyDocs(ruled.sources || [], query).length)) ruled = null;
     var layers = {
       rule: ruled,
@@ -2929,7 +2935,7 @@
       }, 0);
       var offTarget = noticeCover >= 0.5 && ["rule", "calendar"].some(function (key) {
         var layer = layers[key];
-        return layer && layer.status === "answered" && Math.max(best(layer), 0) < noticeCover && hijack.cover(layer.summary || "") < noticeCover;
+        return layer && !layer.named && layer.status === "answered" && Math.max(best(layer), 0) < noticeCover && hijack.cover(layer.summary || "") < noticeCover;
       });
       if (offTarget) order = ["announcement"].concat(order.filter(function (key) { return key !== "announcement"; }));
     }
@@ -2993,7 +2999,9 @@
       terms.literal.concat(terms.rest).forEach(function (t) { out = out.concat(Synonyms ? Synonyms.concepts(t) : [t]); });
       return out.concat(terms.related);   // same topic: 還書 → 圖書館、借書
     })()).filter(function (w) { return w.length >= 2 && (ALWAYS_GENERIC.indexOf(w) === -1 || (w === "考試" && /段考|定期考|期中考|期末考|考試|補考/.test(query))); });
-    return !words.length || words.some(function (w) { return chapter.indexOf(compact(w)) !== -1; });
+    /* 「週末輔導」 is the chapter 〈週末生活輔導實施要點〉: the letters of a 4+ character word in order count. */
+    var inOrder = function (w) { var at = 0; for (var i = 0; i < w.length; i++) { at = chapter.indexOf(w[i], at); if (at === -1) return false; at++; } return true; };
+    return !words.length || words.some(function (w) { w = compact(w); return chapter.indexOf(w) !== -1 || (w.length >= 4 && w.length <= 6 && inOrder(w)); });
   }
   function ruleLayer(query, docs, details, options) {
     if (!docs.length) return null;
@@ -3004,7 +3012,34 @@
       var have = {}; ranked.forEach(function (row) { have[row.item.id] = true; });
       penaltyDocs(docs, query).forEach(function (item) { if (!have[item.id] && (details || {})[item.id]) ranked.push({ item: item, detail: details[item.id], score: 0, penaltyDoc: true }); });
     }
-    return ruleAnswer(query, ranked, details || {}) || handbookPointer(query, ranked, details || {}, options);
+    var base = ruleAnswer(query, ranked, details || {});
+    var named = !base || !chapterAbout(base.sources && base.sources[0], query) ? namedRuleAnswer(query, docs, details || {}) : null;
+    return named || base || handbookPointer(query, ranked, details || {}, options);
+  }
+  /* 「忘記帶學生證怎麼辦」 at a school whose handbook has no such rule: the 獎懲 chapter may still name the rule that
+     governs it (違反本校「試場規則及違規處理辦法」…記警告). Quote that, and say plainly that the named rule's own
+     text is not in the handbook, instead of answering with an unrelated notice. */
+  function namedRuleAnswer(query, docs, details) {
+    if (!PROCEDURE_ASK.test(query)) return null;
+    var terms = ruleTerms(query), groups = (terms.groups || []).filter(function (g) { return !/^(?:學生證|證件|身分證|健保卡|識別證)$/.test(g.word); });
+    if (!groups.length) return null;
+    var out = null;
+    penaltyDocs(docs, query).forEach(function (item) {
+      if (out || !details[item.id]) return;
+      var framed = withHeadings(ruleClauses(ruleText(details[item.id]))), lines = [];
+      framed.forEach(function (f) {
+        var named = compact((f.text.match(/「[^」]{2,24}」/g) || []).join(" "));
+        if (lines.length < 3 && named && groups.some(function (g) { return g.forms.concat(g.loose || []).some(function (x) { return x.length >= 2 && named.indexOf(x) !== -1; }); })) lines.push(framedText(f));
+      });
+      if (!lines.length) return;
+      var rule = (lines[0].match(/「([^」]{2,24})」/) || [])[1] || "相關辦法";
+      out = { status: "answered", query: query, mode: "rule", named: true, key_points: [], answer_lines: lines, evidence: lines.map(function (text) { return { text: text, announcement_id: item.id, title: item.title, score: 10, source_meta: { source_type: "school_doc" } }; }),
+        notes: ["學生規定裡沒有寫忘記帶學生證時怎麼處理，只提到違反「" + rule + "」會依情節懲處；該辦法的全文不在學生規定裡，請洽教務處確認"],
+        summary: "依" + (item.school_name || "學校") + "「" + clean(item.title) + "」：" + lines.join(" ") + " 提醒：學生規定裡沒有寫忘記帶學生證時怎麼處理，請洽教務處確認。",
+        sources: [Object.assign({}, item, { note: "學校規定原文" })], related: [], confidence: "medium",
+        limitation: "引用學校官網公告的規定原文；規定可能修訂，以學校最新公告為準。", plan: questionPlan(query) };
+    });
+    return out;
   }
   /* The handbook chapter named after the question (學生在校作息時間規定 for 「幾點放學」), when
      its text cannot be quoted here (guests) or no single clause answers: point to that chapter. */
