@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-07T04:09:31+08:00",
+ "generated_at": "2026-11-07T11:01:32+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -3981,12 +3981,49 @@
    "page_id": 106180594146166,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,423,409,421",
    "label": "其他與學校績效表現有關之訊息",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 45
+   "order": 45,
+   "checked_at": "2026-11-07T11:01:30+08:00",
+   "path": [
+    "網站導覽",
+    "其他與學校績效表現有關之訊息"
+   ],
+   "changed_at": "2026-11-07T11:01:30+08:00",
+   "content_hash": "264c71d2574087e6149ac9080a100936be1ced3d38dd04c08d90f1145e7347c3",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-106180594146166.json",
+   "detail_revision": "172528720844f01d7f9fcc63bf8bafd8dd9c620974921030cfba934027589ce1",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-30"
+      ]
+     }
+    ]
+   }
   },
   "143617742311770": {
    "page_id": 143617742311770,
@@ -8499,6 +8536,46 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-106180594146166",
+   "kind": "school_info",
+   "title": "網站導覽 › 其他與學校績效表現有關之訊息",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,423,409,421",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-106180594146166.json",
+   "detail_revision": "172528720844f01d7f9fcc63bf8bafd8dd9c620974921030cfba934027589ce1",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-30"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-106377775275408",
    "kind": "school_info",
    "title": "網站導覽",
@@ -10887,5 +10964,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-07T04:09:31+08:00"
+ "last_run_at": "2026-11-07T11:01:32+08:00"
 }

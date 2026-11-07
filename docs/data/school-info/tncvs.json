@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tncvs",
- "generated_at": "2026-11-07T04:10:00+08:00",
+ "generated_at": "2026-11-07T11:01:58+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "179102805842520": {
@@ -3410,12 +3410,86 @@
    "page_id": 156938629911790,
    "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,5,106,29",
    "label": "03-2-7. 實研組",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 61
+   "order": 61,
+   "checked_at": "2026-11-07T11:01:57+08:00",
+   "path": [
+    "網站導覽",
+    "03-2-7. 實研組"
+   ],
+   "changed_at": "2026-11-07T11:01:57+08:00",
+   "content_hash": "c7e74914f91783cc0748950e9815e44e8e32ca428315ae116797b084c646bb23",
+   "doc_links": [],
+   "keywords": [
+    "學分",
+    "補修",
+    "選課",
+    "重補修"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tncvs/tncvs-info-156938629911790.json",
+   "detail_revision": "fd4d25979ab545eea409f9c682df7a5f29461fd4ef7f7fee634b73673b92dca7",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "重補修",
+       "選課",
+       "#makeup",
+       "#course",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-06-05"
+      ]
+     }
+    ]
+   }
   },
   "81003799404465": {
    "page_id": 81003799404465,
@@ -7439,6 +7513,83 @@
    }
   },
   {
+   "id": "tncvs-info-156938629911790",
+   "kind": "school_info",
+   "title": "網站導覽 › 03-2-7. 實研組",
+   "school": "tncvs",
+   "school_name": "臺南高商",
+   "url": "https://www.tncvs.tn.edu.tw/content/index.asp?Parser=1,5,106,29",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "學分",
+    "補修",
+    "選課",
+    "重補修"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tncvs/tncvs-info-156938629911790.json",
+   "detail_revision": "fd4d25979ab545eea409f9c682df7a5f29461fd4ef7f7fee634b73673b92dca7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "重補修",
+       "選課",
+       "#makeup",
+       "#course",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "處室"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-06-05"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "tncvs-info-175344832060000",
    "kind": "school_info",
    "title": "網站導覽 › 03-2-4. 教學組",
@@ -9172,5 +9323,5 @@
   "fd93751649",
   "fdbcaf30e1"
  ],
- "last_run_at": "2026-11-07T04:10:00+08:00"
+ "last_run_at": "2026-11-07T11:01:58+08:00"
 }

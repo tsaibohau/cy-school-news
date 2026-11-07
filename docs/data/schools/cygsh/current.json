@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T03:56:30+08:00",
+ "generated_at": "2026-11-07T10:46:17+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -8,6 +8,111 @@
   "base": "https://www.cygsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cygsh-187170",
+   "title": "🍬【嘉女新興科技】 12月手作活動特輯｜音樂吊飾 × 情緒扭蛋機 × 夢幻糖果燈",
+   "date": "2026-11-07",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187170,r508.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T10:46:17+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#certificate",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "社會情緒學習"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "社會情緒學習",
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cygsh-187167",
    "title": "【轉知】中央研究院「知識饗宴—胡適院長科普講座」：自西歐到東亞—公共博物館入華後的初期發展",

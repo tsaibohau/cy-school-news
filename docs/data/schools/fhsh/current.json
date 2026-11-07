@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T03:56:30+08:00",
+ "generated_at": "2026-11-07T10:46:17+08:00",
  "school": {
   "id": "fhsh",
   "name": "國立鳳新高中",
@@ -8,6 +8,960 @@
   "base": "https://www.fhsh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fhsh-47297",
+   "title": "【公告】教育部青年發展署「地方創生DNA：小白的Chill地方行動」培力青年參與地方創生數位課程地圖",
+   "date": "2026-11-07",
+   "source_category": "輔導室",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261107/47297",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T10:46:17+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "彈性學習"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47292",
+   "title": "【公告】教育部青年發展署「116年青年生涯領航計畫實體說明會及企劃撰寫工作坊」",
+   "date": "2026-11-07",
+   "source_category": "輔導室",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261107/47292",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T10:46:17+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-25",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "78dce6197f8004d6bcf24bf7cf217a355d4e9433bb397eda2cb842fa984390a3"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "78dce6197f8004d6bcf24bf7cf217a355d4e9433bb397eda2cb842fa984390a3"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-09",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "78dce6197f8004d6bcf24bf7cf217a355d4e9433bb397eda2cb842fa984390a3"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "place",
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-12"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-13"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "中興"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名",
+       "繳交",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "網路",
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-02"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-02"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-06"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-12"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 70,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-13"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 72,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ]
+     },
+     {
+      "s": 73,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 76,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-20"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 78,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [
+       "中興",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 82,
+      "t": [
+       "#campus_map"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 86,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 89,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47288",
+   "title": "【公告】國立鳳新高級中學慶祝三十四週年校慶美術比賽得獎名單",
+   "date": "2026-11-07",
+   "source_category": "首頁最新消息",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/news/20261107/47288",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-07T10:46:17+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "校慶",
+     "比賽",
+     "#contest",
+     "#celebration"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "fhsh-47286",
+   "title": "【研習】數位轉化工作坊",
+   "date": "2026-11-07",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261107/47286",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T10:46:17+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2025-04-11",
+     "provenance": "verified_announcement_event",
+     "source_revision": "f76fdcf1d73da14a162e9e60dd2639a7843bca6c998747e62eb3d0c4c2863388"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "師大"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-23"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47284",
+   "title": "【公告】2026國際青年人才培育與全球學習論壇：從雙語教育、雙聯學制到全球移動力",
+   "date": "2026-11-07",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261107/47284",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T10:46:17+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-23"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "政大"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "audience",
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "教務處",
+       "#school_profile"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-47282",
+   "title": "【公告】2027第17屆全國高中職日語「看圖說故事」（紙芝居）比賽",
+   "date": "2026-11-07",
+   "source_category": "教務處",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/aa/20261107/47282",
+   "category": "競賽",
+   "first_seen": "2026-11-07T10:46:17+08:00",
+   "detail_status": "pending"
+  },
   {
    "id": "fhsh-47278",
    "title": "【競賽】樹德科技大學與台灣網路智能學會共同辦理「2026資訊科技創新設計暨應用競賽」",

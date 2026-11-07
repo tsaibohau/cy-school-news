@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-07T04:07:23+08:00",
+ "generated_at": "2026-11-07T10:59:16+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -8186,23 +8186,227 @@
    "page_id": 178082122065097,
    "url": "https://www.fhsh.khc.edu.tw/library",
    "label": "圖書館",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 52
+   "order": 52,
+   "checked_at": "2026-11-07T10:59:12+08:00",
+   "path": [
+    "網站導覽",
+    "圖書館"
+   ],
+   "changed_at": "2026-11-07T10:59:12+08:00",
+   "content_hash": "285f216e172b38ff82f6c2e0b4738e62523921ae1011ad038f6d099ef03d1b1f",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "閱覽室",
+    "圖書館",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-178082122065097.json",
+   "detail_revision": "837ee2ac5d2e6d355369ae6422ed76e4007fdebc295fd077504dc1c4da4e7e68",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#library"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "154063706718468": {
    "page_id": 154063706718468,
    "url": "https://www.fhsh.khc.edu.tw/library/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
    "label": "組織成員",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 53
+   "order": 53,
+   "checked_at": "2026-11-07T10:59:14+08:00",
+   "path": [
+    "網站導覽",
+    "組織成員"
+   ],
+   "changed_at": "2026-11-07T10:59:14+08:00",
+   "content_hash": "6917427302adf3ed4d1cd4c3fc6f944b71878acf6fbba92ed59ea2458f9d2065",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "分機",
+    "圖書館",
+    "自主學習",
+    "安全"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-154063706718468.json",
+   "detail_revision": "46fc960b22101107629d4dfb3ca4c6a8f8951a704b1e1656e2c5cffdafd5c51d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "234531659288705": {
    "page_id": 234531659288705,
@@ -13548,6 +13752,147 @@
    }
   },
   {
+   "id": "fhsh-info-154063706718468",
+   "kind": "school_info",
+   "title": "網站導覽 › 組織成員",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/library/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "分機",
+    "圖書館",
+    "自主學習",
+    "安全"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-154063706718468.json",
+   "detail_revision": "46fc960b22101107629d4dfb3ca4c6a8f8951a704b1e1656e2c5cffdafd5c51d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-155408795879373",
    "kind": "school_info",
    "title": "營養午餐",
@@ -13949,6 +14294,83 @@
    "detail_ref": "data/details/fhsh/fhsh-info-178037915853432.json",
    "detail_revision": "10862575e753e1cf709a53aed3e10706de94ee730300f255f85ee583f562ec6a",
    "detail_status": "parsed"
+  },
+  {
+   "id": "fhsh-info-178082122065097",
+   "kind": "school_info",
+   "title": "網站導覽 › 圖書館",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/library",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "閱覽室",
+    "圖書館",
+    "簡介"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-178082122065097.json",
+   "detail_revision": "837ee2ac5d2e6d355369ae6422ed76e4007fdebc295fd077504dc1c4da4e7e68",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#library"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "fhsh-info-183850040132002",
@@ -18361,5 +18783,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-07T04:07:23+08:00"
+ "last_run_at": "2026-11-07T10:59:16+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T03:56:30+08:00",
+ "generated_at": "2026-11-07T10:46:17+08:00",
  "school": {
   "id": "nnkieh",
   "name": "國立南科國際實驗高中",
@@ -2945,8 +2945,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -3267,7 +3267,277 @@
    "url": "https://www.nnkieh.tn.edu.tw/ischool/public/news_view/show.php?nid=826",
    "category": "競賽",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-26",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "968ad73a9a0f10e751de46a956d76bcad3035f2dbd0c44b354d78eb599791e34"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處",
+       "#health"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-28"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "比賽",
+       "生活",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "比賽",
+       "升學",
+       "#admission",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "報名",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "fee",
+       "method"
+      ],
+      "d": [
+       "2026-11-26",
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "比賽",
+       "生活",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "比賽",
+       "升學",
+       "#admission",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "報名",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2026-11-26",
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "nnkieh-823",

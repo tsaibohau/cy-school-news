@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T03:56:30+08:00",
+ "generated_at": "2026-11-07T10:46:17+08:00",
  "school": {
   "id": "ptivs",
   "name": "國立成大附屬南工",
@@ -8,6 +8,116 @@
   "base": "https://www.ptivs.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "ptivs-20291",
+   "title": "115年資訊月臺灣教育科技展【教育聯合展區】展示活動於臺北展出，歡迎全校師生前往參觀",
+   "date": "2026-11-07",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20291",
+   "category": "研習活動",
+   "first_seen": "2026-11-07T10:46:17+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "展覽"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "展覽"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "展覽",
+       "#school_profile"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "展覽",
+       "#school_profile"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "ptivs-20289",
    "title": "第38屆銘傳文藝獎高中職中文散文競賽",
@@ -20,8 +130,8 @@
    "first_seen": "2026-11-07T03:56:30+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -2817,8 +2927,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [

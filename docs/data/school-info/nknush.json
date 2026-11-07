@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-06T20:26:44+08:00",
+ "generated_at": "2026-11-07T10:59:07+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -648,25 +648,37 @@
    "page_id": 113046428861619,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/體育組/",
    "label": "體育組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "學務處"
    ],
-   "order": 47
+   "order": 47,
+   "checked_at": "2026-11-07T10:59:03+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "體育組"
+   ]
   },
   "189938834069835": {
    "page_id": 189938834069835,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/總務處業務職掌/",
    "label": "業務職掌",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 48
+   "order": 48,
+   "checked_at": "2026-11-07T10:59:05+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "總務處業務職掌"
+   ]
   },
   "243630918401596": {
    "page_id": 243630918401596,
@@ -1188,6 +1200,30 @@
     "衛生組"
    ],
    "order": 92
+  },
+  "106832097328659": {
+   "page_id": 106832097328659,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/student-affairs-office/%e9%ab%94%e8%82%b2%e7%b5%84/",
+   "label": "體育組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "學務處",
+    "體育組"
+   ],
+   "order": 93
+  },
+  "130456512733143": {
+   "page_id": 130456512733143,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/%e7%b8%bd%e5%8b%99%e8%99%95%e6%a5%ad%e5%8b%99%e8%81%b7%e6%8e%8c/",
+   "label": "總務處業務職掌",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "總務處業務職掌"
+   ],
+   "order": 94
   }
  },
  "handbook": {},
@@ -1489,5 +1525,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-06T20:26:44+08:00"
+ "last_run_at": "2026-11-07T10:59:07+08:00"
 }

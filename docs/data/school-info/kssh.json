@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-07T04:07:29+08:00",
+ "generated_at": "2026-11-07T10:59:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -3155,12 +3155,34 @@
    "page_id": 89907306228635,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4115.php",
    "label": "學校校舍空間配置",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 34
+   "order": 34,
+   "checked_at": "2026-11-07T10:59:21+08:00",
+   "path": [
+    "學校簡介",
+    "平面圖"
+   ],
+   "changed_at": "2026-11-07T10:59:21+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-89907306228635.json",
+   "detail_revision": "5ab342b7f749e0361342f63a03a914debc9056f0514158b60a889f63bb22d5e7",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#campus_map",
+     "#school_profile"
+    ],
+    "segments": []
+   }
   },
   "92380448215049": {
    "page_id": 92380448215049,
@@ -4031,6 +4053,31 @@
    "detail_ref": "data/details/kssh/kssh-info-79814434365433.json",
    "detail_revision": "356da7be101cfb90f58b69acb61f76fa7a389b5c54584760b6e4e4300993217c",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-89907306228635",
+   "kind": "school_info",
+   "title": "學校簡介 › 平面圖",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4115.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-89907306228635.json",
+   "detail_revision": "5ab342b7f749e0361342f63a03a914debc9056f0514158b60a889f63bb22d5e7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#campus_map",
+     "#school_profile"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "kssh-info-91111307193695",
@@ -6709,5 +6756,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-07T04:07:29+08:00"
+ "last_run_at": "2026-11-07T10:59:22+08:00"
 }

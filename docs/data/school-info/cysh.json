@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-07T04:08:04+08:00",
+ "generated_at": "2026-11-07T11:00:02+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -7169,11 +7169,138 @@
   },
   "984": {
    "page_id": 984,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T10:59:58+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "出納組",
+    "辦理業務流程",
+    "各程序辦理流程"
+   ],
+   "changed_at": "2026-11-07T10:59:58+08:00",
+   "content_hash": "9e25483b54ddfbd40d3f3127b1a912129242a72122fab53736703f432a0743de",
+   "doc_links": [],
+   "keywords": [
+    "繳費",
+    "繳費單"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-984.json",
+   "detail_revision": "0a98f82e532f8e960b71ddfcbba736320f6b0aae8376e77fff0a92ad3816aa95",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "985": {
    "page_id": 985,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T11:00:00+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "出納組",
+    "檔案下載",
+    "表單下載"
+   ],
+   "changed_at": "2026-11-07T11:00:00+08:00",
+   "content_hash": "4b0301d16896982566b2c4c965e76166aefbadcfdb57afa1bd09d51b47d59645",
+   "doc_links": [],
+   "keywords": [
+    "申請"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-985.json",
+   "detail_revision": "5fddf60b792b957280f54b55c5d2f6aaa51ea797fb1ab969477d308206871bba",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "required",
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "990": {
    "page_id": 990,
@@ -35184,6 +35311,133 @@
    }
   },
   {
+   "id": "cysh-info-984",
+   "kind": "school_info",
+   "title": "出納組 › 辦理業務流程 › 各程序辦理流程",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-984.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "繳費",
+    "繳費單"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-984.json",
+   "detail_revision": "0a98f82e532f8e960b71ddfcbba736320f6b0aae8376e77fff0a92ad3816aa95",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-info-985",
+   "kind": "school_info",
+   "title": "出納組 › 檔案下載 › 表單下載",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-985.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "申請"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-985.json",
+   "detail_revision": "5fddf60b792b957280f54b55c5d2f6aaa51ea797fb1ab969477d308206871bba",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "required",
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-992",
    "kind": "school_info",
    "title": "總務處 › 出納組 › 關於出納組",
@@ -55702,5 +55956,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-07T04:08:04+08:00"
+ "last_run_at": "2026-11-07T11:00:02+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hwaivs",
- "generated_at": "2026-11-07T04:08:52+08:00",
+ "generated_at": "2026-11-07T11:00:47+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "44222696521714": {
@@ -2591,13 +2591,83 @@
    "page_id": 136443532383853,
    "url": "https://www.hwaivs.ylc.edu.tw/%e8%a1%8c%e6%94%bf%e5%96%ae%e4%bd%8d/%e6%95%99%e5%8b%99%e8%99%95/%e6%95%99%e5%8b%99%e8%99%95%e6%88%90%e5%93%a1/",
    "label": "教務處成員",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "國立虎尾高級農工職業學校",
     "網站連結"
    ],
-   "order": 47
+   "order": 47,
+   "checked_at": "2026-11-07T11:00:45+08:00",
+   "path": [
+    "國立虎尾高級農工職業學校",
+    "行政單位",
+    "教務處",
+    "教務處成員"
+   ],
+   "changed_at": "2026-11-07T11:00:45+08:00",
+   "content_hash": "071d6fbe34418a4b949936124555794887cc525d73b766d1b3e27e3a22753979",
+   "doc_links": [],
+   "keywords": [
+    "分機"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hwaivs/hwaivs-info-136443532383853.json",
+   "detail_revision": "822a48b2f94d836fc3901e6c7642172c221b814a732751ace11f9d88bdc82549",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "169659912962641": {
    "page_id": 169659912962641,
@@ -6604,6 +6674,77 @@
    }
   },
   {
+   "id": "hwaivs-info-136443532383853",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 教務處成員",
+   "school": "hwaivs",
+   "school_name": "虎尾農工",
+   "url": "https://www.hwaivs.ylc.edu.tw/%e8%a1%8c%e6%94%bf%e5%96%ae%e4%bd%8d/%e6%95%99%e5%8b%99%e8%99%95/%e6%95%99%e5%8b%99%e8%99%95%e6%88%90%e5%93%a1/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "分機"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hwaivs/hwaivs-info-136443532383853.json",
+   "detail_revision": "822a48b2f94d836fc3901e6c7642172c221b814a732751ace11f9d88bdc82549",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "hwaivs-info-139535134848489",
    "kind": "school_info",
    "title": "國立虎尾高級農工職業學校 › 獎助學金專區 › 各項獎助學金",
@@ -8103,5 +8244,5 @@
   "f8a81c2be1",
   "fc117da1ec"
  ],
- "last_run_at": "2026-11-07T04:08:52+08:00"
+ "last_run_at": "2026-11-07T11:00:47+08:00"
 }

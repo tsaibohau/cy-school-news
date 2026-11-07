@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-07T04:07:33+08:00",
+ "generated_at": "2026-11-07T10:59:27+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -3862,12 +3862,55 @@
    "page_id": 37214525670181,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-926.php",
    "label": "岡山農工交通位置圖",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "學校介紹"
    ],
-   "order": 41
+   "order": 41,
+   "checked_at": "2026-11-07T10:59:25+08:00",
+   "path": [
+    "學校介紹",
+    "岡山農工交通位置圖"
+   ],
+   "changed_at": "2026-11-07T10:59:25+08:00",
+   "content_hash": "44dfc23868eb90dc3e3229735dbad1ef2377b74a58f9ee0163dbf065ed307137",
+   "doc_links": [],
+   "keywords": [
+    "公車"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-37214525670181.json",
+   "detail_revision": "e8a11b6371a85ca4bf798691ef2b631e1e85af57bded1faa105a0596e786acec",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "182646786151669": {
    "page_id": 182646786151669,
@@ -7620,6 +7663,52 @@
    }
   },
   {
+   "id": "ksaivs-info-37214525670181",
+   "kind": "school_info",
+   "title": "學校介紹 › 岡山農工交通位置圖",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-926.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "公車"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-37214525670181.json",
+   "detail_revision": "e8a11b6371a85ca4bf798691ef2b631e1e85af57bded1faa105a0596e786acec",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-41128050815012",
    "kind": "school_info",
    "title": "教學單位 › 綜合職能科",
@@ -10150,5 +10239,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-07T04:07:33+08:00"
+ "last_run_at": "2026-11-07T10:59:27+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-07T04:10:14+08:00",
+ "generated_at": "2026-11-07T11:02:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -7660,12 +7660,624 @@
    "page_id": 112796431957786,
    "url": "https://www.tnvs.tn.edu.tw/library/library-contribution/",
    "label": "圖書館-小論文、閱讀心得比賽專區",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "看見南水"
    ],
-   "order": 47
+   "order": 47,
+   "checked_at": "2026-11-07T11:02:07+08:00",
+   "path": [
+    "看見南水",
+    "圖書館-小論文、閱讀心得比賽專區"
+   ],
+   "changed_at": "2026-11-07T11:02:07+08:00",
+   "content_hash": "00d88bd21c6a4e1c67203199a649641b11776e1d9265036fd95a463b8188707b",
+   "doc_links": [
+    {
+     "name": "國立臺南高級海事水產職業學校小論文寫作比賽校內賽要點",
+     "url": "https://drive.google.com/file/d/15-TQlql2L5w7JS6LhTg10iuXhxnhbzMv/view?usp=sharing"
+    },
+    {
+     "name": "114學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/15wMRDgno7fPyfSxvnnICAwQQC1AtW-IH/view?usp=sharing"
+    },
+    {
+     "name": "113學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1RlZLLOdqZ6PEf2Gf9CGCbHmHPRApf26w/view?usp=sharing"
+    },
+    {
+     "name": "112學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1JefjtRtC33ghW1ZKf7oj3pDitN0dWGNR/view?usp=sharing"
+    },
+    {
+     "name": "111學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1jbHAL_jPC9eJxRc_xgzjQdoZdtXtkN0R/view?usp=sharing"
+    },
+    {
+     "name": "110學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1a3fOegZMncpquC4zZz_kzrEl0GBb_dum/view?usp=sharing"
+    },
+    {
+     "name": "小論文比賽引註及參考格式範例",
+     "url": "https://drive.google.com/file/d/1Xf4H_qeCQhupc68Jc7NVd_6DsmI-3Xn6/view?usp=sharing"
+    },
+    {
+     "name": "小論文比賽格式說明暨評審要點",
+     "url": "https://drive.google.com/file/d/1iY2C8tPWPOtzHBYinR3EBv75rZbLeeIl/view?usp=sharing"
+    },
+    {
+     "name": "小論文比賽格式範例",
+     "url": "https://drive.google.com/file/d/1phvpUITQQC0KNCMVOX6B5Sq72q8ijOiw/view?usp=sharing"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校閱讀心得比賽校內賽要點",
+     "url": "https://drive.google.com/file/d/15-aY0VfAYdUa7SrxG5dxt4FzMQbDWnff/view?usp=sharing"
+    },
+    {
+     "name": "114學年度閱讀心得比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1ex7bVw1v3UeVTgM3GINGVwKD12y2PE5N/view?usp=sharing"
+    },
+    {
+     "name": "113學年度閱讀心得比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1jwFxcPpG4hd9a7I4Q9-ZEbEqA4PXQ4I8/view?usp=sharing"
+    },
+    {
+     "name": "112學年度閱讀心得比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1Jfo5dbQ-T35vvORjfxgs7GUITFkDsxDE/view?usp=sharing"
+    },
+    {
+     "name": "111學年度閱讀心得比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1jcyp_xeSCP_eCDTLj_u-4jdS0QGmpggA/view?usp=sharing"
+    },
+    {
+     "name": "110學年度閱讀心得比賽實施計畫(1101214修訂)",
+     "url": "https://drive.google.com/file/d/1tNaeMdM6Yo6yXpe-Ya0HsVcEg_HtODzy/view?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "比賽",
+    "圖書館",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-112796431957786.json",
+   "detail_revision": "d85806ebbd6b7ebf75c5494e565fea0009eb1bb849a449ba3b0ecf57707814fe",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "閱讀心得",
+     "小論文",
+     "圖書館",
+     "比賽",
+     "#contest",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "239545477354343": {
    "page_id": 239545477354343,
@@ -11583,6 +12195,637 @@
       ],
       "k": [
        "fee"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-info-112796431957786",
+   "kind": "school_info",
+   "title": "看見南水 › 圖書館-小論文、閱讀心得比賽專區",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/library/library-contribution/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "國立臺南高級海事水產職業學校小論文寫作比賽校內賽要點",
+    "114學年度小論文比賽實施計畫",
+    "113學年度小論文比賽實施計畫",
+    "112學年度小論文比賽實施計畫",
+    "111學年度小論文比賽實施計畫",
+    "110學年度小論文比賽實施計畫",
+    "小論文比賽引註及參考格式範例",
+    "小論文比賽格式說明暨評審要點",
+    "小論文比賽格式範例",
+    "國立臺南高級海事水產職業學校閱讀心得比賽校內賽要點",
+    "114學年度閱讀心得比賽實施計畫",
+    "113學年度閱讀心得比賽實施計畫",
+    "112學年度閱讀心得比賽實施計畫",
+    "111學年度閱讀心得比賽實施計畫",
+    "110學年度閱讀心得比賽實施計畫(1101214修訂)"
+   ],
+   "keywords": [
+    "比賽",
+    "圖書館",
+    "簡介"
+   ],
+   "documents": [
+    {
+     "name": "國立臺南高級海事水產職業學校小論文寫作比賽校內賽要點",
+     "url": "https://drive.google.com/file/d/15-TQlql2L5w7JS6LhTg10iuXhxnhbzMv/view?usp=sharing"
+    },
+    {
+     "name": "114學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/15wMRDgno7fPyfSxvnnICAwQQC1AtW-IH/view?usp=sharing"
+    },
+    {
+     "name": "113學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1RlZLLOdqZ6PEf2Gf9CGCbHmHPRApf26w/view?usp=sharing"
+    },
+    {
+     "name": "112學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1JefjtRtC33ghW1ZKf7oj3pDitN0dWGNR/view?usp=sharing"
+    },
+    {
+     "name": "111學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1jbHAL_jPC9eJxRc_xgzjQdoZdtXtkN0R/view?usp=sharing"
+    },
+    {
+     "name": "110學年度小論文比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1a3fOegZMncpquC4zZz_kzrEl0GBb_dum/view?usp=sharing"
+    },
+    {
+     "name": "小論文比賽引註及參考格式範例",
+     "url": "https://drive.google.com/file/d/1Xf4H_qeCQhupc68Jc7NVd_6DsmI-3Xn6/view?usp=sharing"
+    },
+    {
+     "name": "小論文比賽格式說明暨評審要點",
+     "url": "https://drive.google.com/file/d/1iY2C8tPWPOtzHBYinR3EBv75rZbLeeIl/view?usp=sharing"
+    },
+    {
+     "name": "小論文比賽格式範例",
+     "url": "https://drive.google.com/file/d/1phvpUITQQC0KNCMVOX6B5Sq72q8ijOiw/view?usp=sharing"
+    },
+    {
+     "name": "國立臺南高級海事水產職業學校閱讀心得比賽校內賽要點",
+     "url": "https://drive.google.com/file/d/15-aY0VfAYdUa7SrxG5dxt4FzMQbDWnff/view?usp=sharing"
+    },
+    {
+     "name": "114學年度閱讀心得比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1ex7bVw1v3UeVTgM3GINGVwKD12y2PE5N/view?usp=sharing"
+    },
+    {
+     "name": "113學年度閱讀心得比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1jwFxcPpG4hd9a7I4Q9-ZEbEqA4PXQ4I8/view?usp=sharing"
+    },
+    {
+     "name": "112學年度閱讀心得比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1Jfo5dbQ-T35vvORjfxgs7GUITFkDsxDE/view?usp=sharing"
+    },
+    {
+     "name": "111學年度閱讀心得比賽實施計畫",
+     "url": "https://drive.google.com/file/d/1jcyp_xeSCP_eCDTLj_u-4jdS0QGmpggA/view?usp=sharing"
+    },
+    {
+     "name": "110學年度閱讀心得比賽實施計畫(1101214修訂)",
+     "url": "https://drive.google.com/file/d/1tNaeMdM6Yo6yXpe-Ya0HsVcEg_HtODzy/view?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/tnvs/tnvs-info-112796431957786.json",
+   "detail_revision": "d85806ebbd6b7ebf75c5494e565fea0009eb1bb849a449ba3b0ecf57707814fe",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "閱讀心得",
+     "小論文",
+     "圖書館",
+     "比賽",
+     "#contest",
+     "#library"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "閱讀心得",
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "閱讀心得",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [],
+      "k": [
+       "allow"
       ]
      }
     ]
@@ -16764,5 +18007,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-07T04:10:14+08:00"
+ "last_run_at": "2026-11-07T11:02:09+08:00"
 }
