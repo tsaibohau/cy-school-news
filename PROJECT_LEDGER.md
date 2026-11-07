@@ -2419,3 +2419,10 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - Supabase（正式專案）：`username-auth` 重新部署為 v5（移除 vercel.app 來源，verify_jwt 維持 false），以測試帳號的帳號名稱實測登入成功；`request-staging-refresh` 在正式專案不存在；安全檢查：管理／擁有者函式皆有權限檢查，健康檢查無問題。`public_capabilities.member_content` 為開啟（未登入可讀會員內文），擁有者確認維持開啟。
 - 測試：`tests/test_qa_compare.js`、`tests/test_assistant_new_chat.js`（虛構資料）；`test_qa_school_docs.js` 重複提問改為斷言答案相同。
 - 版本：`assistant-qa.js?v=92`、`app.js?v=142`、`style.css?v=118`、`cy-news-v167`。
+
+## 2026-11-07 載入加速、小訊探頭動畫、問校務 5 題實測修正
+- 載入：公告資料於 head 提早下載；宋體網路字型與 Service Worker 註冊延到公告畫完後；問校務引擎（qa-typo、answer-composer、assistant-qa）改為首屏後延遲載入，提問時會自動等待。節流手機實測：首屏 2.96s→0.72s，公告列表 15.0s→8.1s。
+- 小訊：角落 cameo 改為躲到邊緣後→探頭張望（可能縮回再探）→走出站在地面線（聊天框上緣或視窗底）→呼吸待機；捲動會躲、點擊顯示訊息；支援減少動態。「＋ 開啟新問校務」加實底，不再蓋住回答文字。
+- 問校務：兩校「…的差異」逐校回答再附差異段；「那嘉中呢」沿用主題不再重複比較；一句多問（遲到＋病假）分題回答；學校運動教練、縣市運動會不再當成校運會；問題的關鍵詞資料裡沒有時直接說「資料裡沒有提到」，不附無關公告。回歸 637/900 持平。
+- 版本：assistant-qa v93、qa-synonyms v14、app v143、style v119、mascot v8、cy-news-v168。
+- 已知：test_school_registry_sync 在 main 上即失敗（公告量成長超過容量檢查），非本次造成。
