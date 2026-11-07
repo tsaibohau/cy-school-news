@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "twvs",
- "generated_at": "2026-11-07T11:02:13+08:00",
+ "generated_at": "2026-11-07T13:36:35+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "210511608049060": {
@@ -993,25 +993,37 @@
    "page_id": 27960540526153,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/student-affairs-office/4",
    "label": "衛生組",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "學務處"
    ],
-   "order": 71
+   "order": 71,
+   "checked_at": "2026-11-07T13:36:31+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "第 4 頁"
+   ]
   },
   "228978812196420": {
    "page_id": 228978812196420,
    "url": "https://www.twvs.tn.edu.tw/administrative-unit/student-affairs-office/5",
    "label": "健康中心",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "學務處"
    ],
-   "order": 72
+   "order": 72,
+   "checked_at": "2026-11-07T13:36:34+08:00",
+   "path": [
+    "行政單位",
+    "學務處",
+    "第 5 頁"
+   ]
   },
   "256189612993126": {
    "page_id": 256189612993126,
@@ -2540,6 +2552,30 @@
     "第 6 頁"
    ],
    "order": 200
+  },
+  "264348176353883": {
+   "page_id": 264348176353883,
+   "url": "https://www.twvs.tn.edu.tw/rules/rules-stu/%e8%a1%9b%e7%94%9f%e7%b5%84109-1-%e6%9c%ac%e6%a0%a1%e9%98%b2%e7%96%ab%e8%a6%8f%e7%af%84%e7%ae%a1%e7%90%86/2121/",
+   "label": "衛生組 109-1 本校防疫規範管理",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "學務處",
+    "第 4 頁"
+   ],
+   "order": 201
+  },
+  "106464853614590": {
+   "page_id": 106464853614590,
+   "url": "https://www.twvs.tn.edu.tw/rules/rules-stu/%e5%81%a5%e5%ba%b7%e4%b8%ad%e5%bf%83%e5%9c%8b%e7%ab%8b%e6%9b%be%e6%96%87%e9%ab%98%e7%b4%9a%e5%ae%b6%e4%ba%8b%e5%95%86%e6%a5%ad%e8%81%b7%e6%a5%ad%e5%ad%b8%e6%a0%a1%e7%b7%8a%e6%80%a5%e5%82%b7%e7%97%85/2141/",
+   "label": "健康中心 國立曾文高級家事商業職業學校緊急傷病處理規定 11008修訂",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "學務處",
+    "第 5 頁"
+   ],
+   "order": 202
   }
  },
  "handbook": {},
@@ -2821,5 +2857,5 @@
   "f3ef66c885",
   "f9693f2c0a"
  ],
- "last_run_at": "2026-11-07T11:02:13+08:00"
+ "last_run_at": "2026-11-07T13:36:35+08:00"
 }

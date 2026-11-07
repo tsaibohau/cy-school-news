@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T10:46:17+08:00",
+ "generated_at": "2026-11-07T13:21:46+08:00",
  "school": {
   "id": "fsvs",
   "name": "國立鳳山商工",
@@ -9,6 +9,108 @@
  },
  "items": [
   {
+   "id": "fsvs-195799",
+   "title": "青年百億海外圓夢基金計劃第一階段",
+   "date": "2026-11-07",
+   "source_category": "",
+   "school": "fsvs",
+   "school_name": "鳳山商工",
+   "url": "https://www.fsvs.khc.edu.tw/p/406-1003-195799,r11.php",
+   "category": "獎助學金",
+   "first_seen": "2026-11-07T13:21:46+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-10-30",
+       "2026-11-30"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fsvs-195798",
+   "title": "青年百億海外圓夢基金計畫-圓夢助力",
+   "date": "2026-11-07",
+   "source_category": "",
+   "school": "fsvs",
+   "school_name": "鳳山商工",
+   "url": "https://www.fsvs.khc.edu.tw/p/406-1003-195798,r11.php",
+   "category": "獎助學金",
+   "first_seen": "2026-11-07T13:21:46+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-30",
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "繳交"
+      ],
+      "k": [
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fsvs-195797",
    "title": "115學年度「英語多益班」錄取名單",
    "date": "2026-11-06",
@@ -16,7 +118,7 @@
    "school": "fsvs",
    "school_name": "鳳山商工",
    "url": "https://www.fsvs.khc.edu.tw/p/406-1003-195797,r11.php",
-   "category": "招生編班",
+   "category": "段考考試",
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -83,7 +185,7 @@
    "school": "fsvs",
    "school_name": "鳳山商工",
    "url": "https://www.fsvs.khc.edu.tw/p/406-1003-195774,r11.php",
-   "category": "一般",
+   "category": "行政公告",
    "first_seen": "2026-11-06T04:38:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -115,7 +217,7 @@
    "school": "fsvs",
    "school_name": "鳳山商工",
    "url": "https://www.fsvs.khc.edu.tw/p/406-1003-195769,r11.php",
-   "category": "招生編班",
+   "category": "升學",
    "first_seen": "2026-11-04T18:49:27+08:00",
    "detail_status": "empty",
    "detail_attempts": 1,
@@ -130,7 +232,7 @@
    "school": "fsvs",
    "school_name": "鳳山商工",
    "url": "https://www.fsvs.khc.edu.tw/p/406-1003-195772,r11.php",
-   "category": "教職員",
+   "category": "研習活動",
    "first_seen": "2026-11-04T18:49:27+08:00",
    "detail_status": "empty",
    "detail_attempts": 1,
@@ -531,7 +633,7 @@
    "school": "fsvs",
    "school_name": "鳳山商工",
    "url": "https://www.fsvs.khc.edu.tw/p/406-1003-195723,r11.php",
-   "category": "選課",
+   "category": "研習活動",
    "first_seen": "2026-11-02T17:49:33+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,

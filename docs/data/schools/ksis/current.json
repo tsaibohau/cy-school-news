@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T10:46:17+08:00",
+ "generated_at": "2026-11-07T13:21:46+08:00",
  "school": {
   "id": "ksis",
   "name": "臺南市崑山高中",
@@ -207,7 +207,7 @@
    "school": "ksis",
    "school_name": "崑山高中",
    "url": "https://www.ksis.tn.edu.tw/p/406-1000-14250,r31.php",
-   "category": "一般",
+   "category": "教職員",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -732,7 +732,81 @@
    "url": "https://www.ksis.tn.edu.tw/p/406-1000-14263,r15.php",
    "category": "升學",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-21",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "7e8a6b1017229adf9f41575b301d964806555386acf05cac338938c456865c40"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "特殊選才",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "特殊選才",
+       "網路",
+       "報名",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-21",
+       "2026-11-17"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "ksis-14226",
@@ -790,7 +864,7 @@
    "school": "ksis",
    "school_name": "崑山高中",
    "url": "https://www.ksis.tn.edu.tw/p/406-1000-14116,r28.php",
-   "category": "一般",
+   "category": "生活學務",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
   },
@@ -814,7 +888,7 @@
    "school": "ksis",
    "school_name": "崑山高中",
    "url": "https://www.ksis.tn.edu.tw/p/406-1000-14084,r28.php",
-   "category": "一般",
+   "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
   }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-07T11:00:02+08:00",
+ "generated_at": "2026-11-07T13:34:34+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -7304,7 +7304,24 @@
   },
   "990": {
    "page_id": 990,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T13:34:31+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "科學班",
+    "服務項目",
+    "網站連結"
+   ],
+   "changed_at": "2026-11-07T13:34:31+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-990.json",
+   "detail_revision": "2aa43ea1dbe56cb8c545da50517f7813229f9e245e68314c1f5711144cda1aae",
+   "detail_status": "empty",
+   "attachments": []
   },
   "992": {
    "page_id": 992,
@@ -7370,7 +7387,99 @@
   },
   "995": {
    "page_id": 995,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T13:34:33+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "文書組",
+    "關於文書組",
+    "工作內容"
+   ],
+   "changed_at": "2026-11-07T13:34:33+08:00",
+   "content_hash": "b9ff47de11325f46daa5e0c8306e9d88a78bcc68206ab1e28c9ee9e986739fc1",
+   "doc_links": [],
+   "keywords": [
+    "登記",
+    "校史",
+    "校長",
+    "傳真",
+    "分發"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-995.json",
+   "detail_revision": "4d166d70fd7787a8f500f837549f4c4f221c74848ff1659490fadb2bd9a96bd4",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "997": {
    "page_id": 997,
@@ -35438,6 +35547,23 @@
    }
   },
   {
+   "id": "cysh-info-990",
+   "kind": "school_info",
+   "title": "科學班 › 服務項目 › 網站連結",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-990.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-990.json",
+   "detail_revision": "2aa43ea1dbe56cb8c545da50517f7813229f9e245e68314c1f5711144cda1aae",
+   "detail_status": "empty"
+  },
+  {
    "id": "cysh-info-992",
    "kind": "school_info",
    "title": "總務處 › 出納組 › 關於出納組",
@@ -35489,6 +35615,98 @@
    "detail_ref": "data/details/cysh/cysh-info-994.json",
    "detail_revision": "ab90ac80f8691fb8a3a48347167ec8351ddf85b92477ffd08a6b216a51f68675",
    "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-995",
+   "kind": "school_info",
+   "title": "文書組 › 關於文書組 › 工作內容",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-995.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "登記",
+    "校史",
+    "校長",
+    "傳真",
+    "分發"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-995.json",
+   "detail_revision": "4d166d70fd7787a8f500f837549f4c4f221c74848ff1659490fadb2bd9a96bd4",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cysh-info-997",
@@ -55956,5 +56174,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-07T11:00:02+08:00"
+ "last_run_at": "2026-11-07T13:34:34+08:00"
 }
