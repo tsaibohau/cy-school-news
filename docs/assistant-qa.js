@@ -1454,6 +1454,8 @@
       rank(q, notices, {}, options).slice(0, per).forEach(function (row) { add(row.item); });
     });
     if (asksPenalty(question) || asksPenalty(fixed)) penaltyDocs(docs, question).forEach(add);
+    var official = officialRoleAsk(fixed) || officialRoleAsk(question);
+    if (official) officialPages(official, items, options && options.schoolId).slice(0, 12).forEach(add);
     return out;
   }
   /* Rules are numbered (一、 (一) 1. 第三條) or are timetable rows (12:35-13:10 午休). */
@@ -1984,6 +1986,7 @@
       return { text: text, bullets: bullets.slice(0, 6), tail: tail };
     }
     if (result.mode === "rule_pointer") return { text: text, bullets: [] };
+    if (result.mode === "official") return { text: text, bullets: result.official_bullets || [] };
     if (result.mode === "timetable") {
       var day = text.match(/^(.+?)：(.+、.+)。$/);
       if (day) { text = joinOpener(pickLine(TIMETABLE_OPENERS, seed), day[1] + "："); bullets = day[2].split("、").map(function (slot) { return clean(slot).replace(/^(\d)\s+/, "第 $1 節　"); }); }
@@ -2763,10 +2766,84 @@
   var EVENT_ASK = /運動會|校運|校慶|園遊會|晚會|營|比賽|競賽|大賽|盃|講座|演講|講堂|研習|工作坊|活動|博覽會|論壇|徵文|徵稿|甄選|選拔|奧林匹|奧賽|學生日|展覽|體驗/;
   var LAYER_LABELS = { rule: "學校規定", calendar: "行事曆", announcement: "公告" };
   var HAS_TIME = /\d{1,2}\s*[\/／月]\s*\d{1,2}|\d{1,2}[:：]\d{2}|[一二三四五六七八九十\d]+\s*(?:月|日|號|週|天|點|時|節)|星期|週[一二三四五六日]|開學|結業|學期/;
+  /* ---------- 誰是校長／主任／組長：學校網頁上公開的職稱與姓名 ----------
+     官網「校長室」「處室簡介」頁寫著「陳元泰 校長」「衛生組長 王大明」；問的是職務的人名，就從學校網頁
+     （school_info）拆出來回答。只認職稱旁邊的姓名，不碰學生資料；歷任校長、校史不在此列。 */
+  var OFFICIAL_ROLE = /(副校長|校長|教務主任|學務主任|總務主任|輔導主任|實習主任|主任教官|[\u4e00-\u9fff]{2,3}組長|[\u4e00-\u9fff]{2,3}室主任)/;
+  var OFFICIAL_WHO = /是誰|誰是|叫什麼|叫啥|名字|姓名|哪一?位|由誰|誰擔任|誰當|誰[？?]?$/;
+  var OFFICIAL_PAST = /歷任|前任|歷屆|第[一二三四五六七八九十\d]+任|以前|過去|之前|上一任|從前/;
+  var OFFICE_OF_ROLE = { "教務主任": "教務處", "學務主任": "學務處", "總務主任": "總務處", "輔導主任": "輔導室", "實習主任": "實習處", "主任教官": "教官室" };
+  var NOT_A_NAME = /^(?:本校|現任|歷任|學校|新任|代理|前任|各位|全體|兼任|負責|核定|核准|簽|審核|由|擔任|召集|應|得|並|之|與|會同|以|及|兼|辦理|處理|秉承|指示|聯繫|諮詢|討論|主辦|批示|職掌|協助|督導|綜理|主持|召開|一人|二人|各)/;
+  var NAME_TAIL = /(?:長|室|組|處|會|員|者|校|師|生|人|務|項|務)$/;
+  function officialNames(text, role) {
+    var out = [], lines = String(text || "").split(/\n+/).map(clean);
+    function add(name, line) {
+      name = clean(name);
+      if (name.length < 2 || name.length > 4 || NOT_A_NAME.test(name) || NAME_TAIL.test(name.replace(/(?:小姐|先生|女士|老師)$/, ""))) return;
+      if (!out.some(function (o) { return o.name === name; })) out.push({ name: name, line: line });
+    }
+    lines.forEach(function (line) {
+      var m;
+      if (role === "校長") {
+        if ((m = line.match(/^([\u4e00-\u9fff]{2,4})\s*校長$/))) add(m[1], line);
+        else if ((m = line.match(/(?:^|[\s，,；;])校長\s*[：:]\s*([\u4e00-\u9fff]{2,4})(?![\u4e00-\u9fff])/)) || (m = line.match(/^校長\s+([\u4e00-\u9fff]{2,4})(?![\u4e00-\u9fff])/))) add(m[1], line);
+      } else {
+        var re = new RegExp(role + "\\s*[：:]?\\s*([\\u4e00-\\u9fff]{2,4})(?![\\u4e00-\\u9fff])", "g");
+        while ((m = re.exec(line))) add(m[1], line);
+      }
+    });
+    return out;
+  }
+  function officialRoleAsk(query) {
+    var q = clean(query), rm = q.match(OFFICIAL_ROLE);
+    if (!rm || !OFFICIAL_WHO.test(q) || OFFICIAL_PAST.test(q) || /我的|導師|班導/.test(q)) return null;
+    var role = rm[1];
+    return { role: role, office: OFFICE_OF_ROLE[role] || (role === "校長" ? "校長室" : /組長$/.test(role) ? role.replace(/長$/, "") : /室主任$/.test(role) ? role.replace(/主任$/, "") : "") };
+  }
+  /* Pages that list people by title: the office's own pages, 成員, 聯絡資訊. */
+  function officialPages(ask, items, schoolId) {
+    return (items || []).filter(function (item) {
+      if (!item || item.kind !== "school_info" || (schoolId && item.school !== schoolId)) return false;
+      var title = String(item.title || "");
+      return !/歷任|校史|會議|計畫|特色|法規|辦法|要點|表件|校友|成果|報名/.test(title) && (!!ask.office && title.indexOf(ask.office) !== -1 || /聯絡資訊|成員|組織|人員|簡介|職掌/.test(title));
+    });
+  }
+  function officialAnswer(query, all, details, options) {
+    var ask = officialRoleAsk(query);
+    if (!ask) return null;
+    var role = ask.role, office = ask.office, schoolId = options && options.schoolId || "";
+    var found = [], seenSchool = {};
+    all.filter(function (item) { return item && item.kind === "school_info" && (!schoolId || item.school === schoolId); }).forEach(function (item) {
+      var title = String(item.title || "");
+      if (/歷任|校史|會議|計畫|特色|法規|辦法|要點|表件|校友|成果|報名/.test(title)) return;
+      var detail = (details || {})[item.id];
+      var text = detail ? detailSegments(detail).map(function (seg) { return seg.text; }).join("\n") : String(item.summary || "") + "\n" + String(item.snippet || "");
+      var names = officialNames(text, role);
+      if (!names.length) return;
+      found.push({ item: item, name: names[0].name, text: text, rank: office && title.indexOf(office) !== -1 ? 1 : 0 });
+    });
+    if (!found.length) return null;
+    found = found.map(function (f, i) { return { f: f, i: i }; }).sort(function (a, b) { return b.f.rank - a.f.rank || a.i - b.i; }).map(function (x) { return x.f; });
+    var bySchool = {};
+    found = found.filter(function (f) { if (bySchool[f.item.school]) return false; bySchool[f.item.school] = true; return true; });
+    var lines = found.map(function (f) { return (f.item.school_name ? f.item.school_name : "學校") + "的" + role + "是" + f.name + "。"; });
+    var bullets = [];
+    if (role === "校長") found.forEach(function (f) {
+      var seg = f.text.match(/【學歷】\s*([\s\S]*?)(?=【|$)/);
+      var edu = seg ? seg[1].split(/\n/).map(clean).filter(Boolean).slice(0, 2) : [];
+      if (edu.length) bullets.push((found.length > 1 ? f.item.school_name + " " : "") + "學歷：" + edu.join("；"));
+    });
+    return { status: "answered", mode: "official", query: query, evidence: [], key_points: bullets.map(function (b) { var i = b.indexOf("："); return { label: b.slice(0, i), value: b.slice(i + 1) }; }), related: [],
+      summary: lines.join(""), official_bullets: bullets,
+      sources: found.map(function (f) { var url = /^https:\/\//.test(String(f.item.url || "")) ? f.item.url : ""; return { id: f.item.id, kind: url ? "service" : "", title: "學校網頁 › " + clean(String(f.item.title).split("›").slice(-2).join("›")), url: url, school_name: f.item.school_name || "", note: "學校網頁" }; }),
+      limitation: "姓名取自學校官網的公開頁面；人事異動以學校最新公告為準。", plan: questionPlan(query) };
+  }
   function answerCore(query, items, details, options) {
     var asOfDay = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
     /* 「最近有什麼新消息」 is a list of announcements, not a question for the three layers. */
     var all = Array.isArray(items) ? items : [];
+    var official = officialAnswer(query, all, details, options);
+    if (official) return official;
     var calendar = calendarLayer(query, all, options, asOfDay);
     var browse = browsePlan(query);
     if (browse && !calendar) return browseAnswer(query, items, browse, options);

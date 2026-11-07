@@ -48,4 +48,28 @@ x = run("星際天文競賽什麼時候考", [star]);
 t = flat(x);
 assert.match(t, /天文館二樓觀測室/, "asking the time also lists the place");
 assert.match(t, /11月17日/);
+
+/* 2. 學校網頁上的校長、主任姓名（公開職稱）。 */
+const page = (id, title, lines) => ({ item: { id, title, kind: "school_info", school: "cysh", school_name: "嘉中", summary: "", snippet: "", url: "https://school.example/" + id, date: "" },
+  detail: { provenance: "official_article", announcement_id: id, source_hash: "h" + id, blocks: lines.map((text) => ({ type: "paragraph", text })), attachments: [] } });
+const principal = page("p1", "行政單位 › 校長室", ["王大明 校長", "【自我期許】", "「心念有多大，願力就有多大」", "【學歷】", "星河大學教育博士", "星河大學教育碩士", "【經歷】", "星河高中教師兼教務主任"]);
+const past = page("p2", "關於本校 › 歷任校長", ["屆別 校長姓名 任期", "第一任 李老舊 1950"]);
+const staff = page("p3", "認識本校 › 行政單位聯絡資訊", ["輔導主任 李小華 1601", "學務主任 張美麗 1301", "校長 王大明 1001"]);
+const group = page("p4", "學務處 › 衛生組 › 組織與職掌", ["衛生組長陳阿福 老師", "辦理健康檢查"]);
+const rows = [principal, past, staff, group];
+x = run("星河高中的校長名字叫什麼？", rows);
+assert.equal(x.r.status, "answered");
+assert.match(x.said.text, /王大明/);
+assert.match(flat(x), /星河大學教育博士/, "the principal's background is listed too");
+assert.doesNotMatch(flat(x), /李老舊/);
+assert.ok(!QA.isPersonalDataQuery("校長名字叫什麼"), "an official's name is public, not student data");
+assert.match(run("校長是誰", rows).said.text, /王大明/);
+assert.match(run("輔導主任是誰", rows).said.text, /李小華/);
+assert.match(run("學務主任叫什麼名字", rows).said.text, /張美麗/);
+assert.match(run("衛生組長是誰", rows).said.text, /陳阿福/);
+/* only the title's person; a student's name is never looked up */
+x = run("歷任校長有哪些", rows);
+assert.doesNotMatch(x.said.text, /王大明是|的校長是王大明/);
+/* the read list fetches the pages that name people */
+assert.ok(QA.readList("輔導主任是誰", rows.map((r) => r.item), OPTS).some((i) => i.id === "p3"));
 console.log("qa detail tests passed");
