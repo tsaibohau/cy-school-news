@@ -1464,7 +1464,8 @@
       rank(q, notices, {}, options).slice(0, per).forEach(function (row) { add(row.item); });
     });
     if (asksPenalty(question) || asksPenalty(fixed) || CONSEQUENCE_ASK.test(question) || PROCEDURE_ASK.test(question)) penaltyDocs(docs, question).forEach(add);
-    var official = officialRoleAsk(fixed) || officialRoleAsk(question);
+    var comparing = officialCompareAsk(question);
+    var official = officialRoleAsk(fixed) || officialRoleAsk(question) || (comparing ? officialRoleAsk(comparing.role + "是誰") : null);
     /* Each school gets its own share: a cap over both schools' pages would leave one of them unread. */
     function perSchool(list, cap) {
       var count = {};
@@ -2386,7 +2387,6 @@
   var GREETING_LATE = ["這麼晚了還沒睡嗎？要問什麼可以直接說，問完早點休息。", "夜深了，有學校的事想問儘管說，不過也要早點睡喔。", "晚安～要問什麼我來幫你查，查完早點休息。"];
   var GREETING_EARLY = ["這麼早就在查學校的事，很認真喔。", "早安～第一節還沒開始，有什麼要問的嗎？"];
   var DOUBT_OPENERS = ["我再確認了一次，結果是：", "重新查了一遍，結果是：", "再核對一次，結果是："];
-  var REPEAT_OPENERS = ["再說明一次：", "同一題，我再整理一次：", "沒問題，再回答一次："];
   function smallTalkAnswer(kind, question, options) {
     var hour = options && typeof options.hour === "number" ? options.hour : -1;
     if (kind === "greeting" && (hour >= 23 || (hour >= 0 && hour < 5))) return chatResult(kind, question, pickLine(GREETING_LATE, question));
@@ -2516,13 +2516,19 @@
   function answer(query, items, details, options) {
     options = options || {};
     var list = Array.isArray(items) ? items : [];
+    var followed = referenceFollowUp(query, options.previousTurn, list, details, options);
+    if (followed) return followed;
+    var compared = officialCompareAnswer(query, list, details, options);
+    if (compared) return compared;
     if (options.schoolId) return answerForScope(query, items, details, options);
     var ids = unique(list.map(itemSchool).concat((options.calendarEvents || []).map(function (ev) { return String(ev && ev.school_id || ""); })).filter(function (id) { return SCHOOL_PATTERNS[id]; }));
     if (ids.length < 2) return answerForScope(query, items, details, options);
     var typed = clean(query);
     if (smallTalk(typed) || personalDataQuery(typed) || COMPARE_WORD.test(typed)) return answerForScope(query, items, details, options);
     var named = schoolsNamed(typed);
-    if (named.length > 1) return answerForScope(query, items, details, options);
+    /* Two schools named without a compare word (「嘉中嘉女的校長是誰」): still one section per school. */
+    if (named.length > 1) ids = ids.filter(function (id) { return named.indexOf(id) !== -1; });
+    if (ids.length < 2) return answerForScope(query, items, details, options);
     if (named.length === 1) {
       var only = scopeTo(named[0], list, options);
       return answerForScope(query, only.items, details, only.options);
@@ -2548,7 +2554,8 @@
       paragraphs.push({ heading: p.name, text: clean(reply.text || r.summary || ""), bullets: (reply.bullets || []).map(clean), tail: clean(reply.tail || ""), source: clean(reply.source || ""),
         asides: (r.also || []).map(function (row) { return clean(row.text || "另外，" + (row.label || "") + "提到：" + (row.summary || "")); }).filter(Boolean) });
       if (reply.tail) tails.push(p.name + "：" + clean(reply.tail));
-      out.sources = out.sources.concat((r.sources || []).slice(0, 3));
+      out.entities = (out.entities || []).concat(r.entities || []);
+      out.sources =out.sources.concat((r.sources || []).slice(0, 3));
       (r.also || []).forEach(function (row) { out.also.push(Object.assign({}, row, { text: p.name + "：" + (row.text || "另外，" + (row.label || "") + "提到：" + (row.summary || "")) })); });
       if (r.limitation) limits.push(p.name + "：" + r.limitation);
       if (!out.evidence.length && r.evidence) out.evidence = r.evidence;
@@ -2753,10 +2760,7 @@
       result.reply = Object.assign({}, result.reply, { text: pickLine(DOUBT_OPENERS, query) + doubtText });
       return result;
     }
-    /* Same question twice in a row: answer again, with a little eye-roll. */
-    if (result && result.reply && result.mode !== "chat" && options && options.lastQuestion && compact(options.lastQuestion) === compact(query) && !personalDataQuery(query)) {
-      result.reply = Object.assign({}, result.reply, { text: pickLine(REPEAT_OPENERS, query) + result.reply.text });
-    }
+    /* The same question twice in a row gets the same complete answer, with no opener of its own. */
     return result;
   }
   /* Comparing schools: 「嘉中跟嘉女的請假規定差在哪」. The app answers the topic once per school
@@ -2777,6 +2781,9 @@
     names.forEach(function (name) { if (name) topic = topic.split(String(name)).join(" "); });
     topic = clean(topic.replace(COMPARE_FILLER, " "));
     var ids = schools.map(function (school) { return school.id; });
+    /* 「嘉中和嘉女的校長差在哪裡」: ask each school who it is, then set the pages side by side. */
+    var person = officialCompareAsk(text);
+    if (person && ids.length > 1) return { schools: ids.slice(0, 4), topic: person.role + "是誰" };
     /* 「那跟嘉女比呢？」 after a 嘉中 question: compare the previous school with the new one. */
     if (ids.length === 1 && previous && previous.scopeId && previous.scopeId !== "all" && previous.scopeId !== ids[0]) {
       ids.unshift(previous.scopeId);
@@ -2784,6 +2791,111 @@
     }
     if (ids.length < 2) return null;
     return { schools: ids.slice(0, 4), topic: compact(topic).length >= 2 ? topic : "" };
+  }
+  /* ---- 兩個人／兩間學校並排：「嘉中和嘉女的校長差在哪裡」「這兩個人差在哪裡？」 ----
+     Only what the schools' own pages say is set side by side (姓名、學歷、經歷、任期、分機).
+     Nothing is guessed and nobody is rated; what a page does not say is said plainly. */
+  var REF_COMPARE = new RegExp(COMPARE_WORD.source + "|區別|差距|相同|有何差|誰比較|哪位", "i");
+  var PLURAL_REF = /[這那][兩二幾](?:個|位|人|者|間|所|校|邊)|兩者|雙方|他們|她們|它們|兩邊/;
+  var SINGLE_REF = /^(?:那麼?)?(?:他|她|它|這位|那位|此人|這個人|那個人)(?!們)/;
+  var ENTITY_ATTR = /學歷|經歷|資歷|分機|任期|背景|畢業/;
+  var UNRESOLVED_ASK = "我不確定你指的是哪兩個，可以說得完整一點嗎？例如「嘉中和嘉女的校長差在哪裡」";
+  var ENTITY_FIELDS = [["學歷", "edu"], ["經歷", "exp"], ["任期", "tenure"]];
+  function entityFact(ent, key) { var v = ent[key]; return Array.isArray(v) ? v.join("；") : String(v || ""); }
+  function entitySource(ent) { return "資料來源：" + ent.school + "學校網頁" + (ent.page ? "〈" + ent.page + "〉" : ""); }
+  /* ents: [{ school_id, school, role, name, edu, exp, tenure, ext, page, url }] → a compare result. */
+  function compareEntities(ents) {
+    ents = (ents || []).filter(function (ent) { return ent && ent.name; }).slice(0, 4);
+    var roles = unique(ents.map(function (ent) { return ent.role; })), roleLabel = roles.length === 1 ? roles[0] : "人員";
+    var names = ents.map(function (ent) { return ent.school; }), paragraphs = [], bullets = [], diffs = [], unknown = [], sources = [];
+    var fields = ENTITY_FIELDS.concat([["分機", "ext"]]);
+    ents.forEach(function (ent) {
+      var lines = [];
+      fields.forEach(function (f) {
+        var anyone = ents.some(function (other) { return entityFact(other, f[1]); });
+        if (!anyone || (f[1] === "ext" && !entityFact(ent, "ext"))) return;
+        lines.push(f[0] + "：" + (entityFact(ent, f[1]) || "學校頁面沒有寫"));
+      });
+      paragraphs.push({ heading: ent.school, text: ent.role + "：" + ent.name, bullets: lines, source: entitySource(ent) });
+      bullets.push(ent.school + "：" + ent.name + (lines.length ? "（" + lines.join("；") + "）" : ""));
+      sources.push({ id: "page:" + (ent.url || ent.school_id + ent.page), kind: ent.url ? "service" : "", title: "學校網頁 › " + ent.page, url: ent.url, school_name: ent.school, note: "學校網頁" });
+    });
+    diffs.push("姓名不同：" + ents.map(function (ent) { return ent.school + "是" + ent.name; }).join("、"));
+    ENTITY_FIELDS.forEach(function (f) {
+      var have = ents.filter(function (ent) { return entityFact(ent, f[1]); }), lack = ents.filter(function (ent) { return !entityFact(ent, f[1]); });
+      if (!have.length) { unknown.push(f[0]); return; }
+      if (lack.length) { diffs.push(f[0] + "：只有" + have.map(function (ent) { return ent.school; }).join("、") + "的頁面有寫，" + lack.map(function (ent) { return ent.school; }).join("、") + "的頁面沒有寫，無法比較"); return; }
+      var first = compact(entityFact(have[0], f[1]));
+      diffs.push(have.every(function (ent) { return compact(entityFact(ent, f[1])) === first; }) ? f[0] + "相同" : f[0] + "不同（" + have.map(function (ent) { return ent.school + "：" + entityFact(ent, f[1]); }).join("；") + "）");
+    });
+    if (unknown.length) diffs.push(names.join("和") + "的頁面都沒有寫" + unknown.join("、") + "，這部分沒有資料可比");
+    var lead = names.join("和") + "的" + roleLabel + "，依各校官網公開的頁面並排整理：";
+    var tail = "只對照學校頁面上寫的內容，不做評價；人事異動以學校最新公告為準。";
+    paragraphs.push({ heading: "差異摘要", bullets: diffs });
+    return { status: "answered", mode: "compare", compare_kind: "official", query: roleLabel, summary: lead + bullets.join("；") + "。差異：" + diffs.join("；") + "。",
+      evidence: [], sources: sources, related: [], key_points: [], entities: ents, schools: unique(ents.map(function (ent) { return ent.school_id; })),
+      limitation: "姓名與經歷取自學校官網的公開頁面；人事異動以學校最新公告為準。",
+      reply: { text: lead, bullets: bullets.concat(["差異：" + diffs.join("；")]), tail: tail, paragraphs: paragraphs } };
+  }
+  /* 「嘉中和嘉女的校長差在哪裡」「兩校校長有什麼不同」: a role plus a compare word. */
+  function officialCompareAsk(query) {
+    var q = clean(query), rm = q.match(OFFICIAL_ROLE);
+    if (!rm || !REF_COMPARE.test(q) || OFFICIAL_PAST.test(q) || /我的|導師|班導/.test(q) || PLURAL_REF.test(q)) return null;
+    return { role: rm[1] };
+  }
+  function officialCompareAnswer(query, list, details, options) {
+    var ask = officialCompareAsk(query);
+    if (!ask) return null;
+    var named = schoolsNamed(query);
+    if (named.length === 1) return null;
+    var ids = named.length > 1 ? named : unique(list.map(itemSchool).filter(function (id) { return SCHOOL_PATTERNS[id]; }));
+    if (ids.length < 2) return null;
+    var rows = ids.map(function (id) {
+      var sc = scopeTo(id, list, options);
+      return { school: { id: id, short: SCHOOL_SHORT[id] || id }, result: officialAnswer(ask.role + "是誰", sc.items, details, sc.options) };
+    });
+    return compareResults(ask.role + "是誰", rows);
+  }
+  /* 「這兩個人差在哪裡？」「他們的學歷呢」: the words that point back to the previous turn.
+     prev = { question, mode, subject, schools, entities } from turnSummary(). */
+  function unresolvedFollowUp(query) {
+    return { status: "insufficient", mode: "chat", chat: "unresolved_reference", query: clean(query), summary: UNRESOLVED_ASK, evidence: [], sources: [], related: [], key_points: [],
+      reply: { text: UNRESOLVED_ASK, bullets: [] } };
+  }
+  function referenceFollowUp(query, prev, items, details, options) {
+    var q = clean(query);
+    if (!q || q.length > 40 || smallTalk(q)) return null;
+    var plural = PLURAL_REF.test(q), single = SINGLE_REF.test(q), ents = prev && Array.isArray(prev.entities) ? prev.entities.filter(function (ent) { return ent && ent.name; }) : [];
+    if (!plural && !single) return null;
+    if (plural && REF_COMPARE.test(q)) {
+      if (ents.length >= 2) return compareEntities(ents);
+      var schools = prev && Array.isArray(prev.schools) ? prev.schools.filter(function (id) { return SCHOOL_PATTERNS[id]; }) : [];
+      if (schools.length >= 2 && prev.question && Array.isArray(items)) {
+        var rows = schools.map(function (id) {
+          var sc = scopeTo(id, items, options || {});
+          return { school: { id: id, short: SCHOOL_SHORT[id] || id }, result: answerForScope(prev.question, sc.items, details, sc.options) };
+        });
+        return compareResults(prev.subject || followUpSubject(prev.question) || clean(prev.question), rows);
+      }
+      return unresolvedFollowUp(q);
+    }
+    /* 「他們的學歷呢」「那他的經歷」: one fact about the people just named. */
+    var attr = q.match(ENTITY_ATTR);
+    if (!attr || !ents.length || !(plural || single || /^那/.test(q))) return null;
+    var key = { 學歷: "edu", 畢業: "edu", 背景: "edu", 資歷: "exp", 經歷: "exp", 任期: "tenure", 分機: "ext" }[attr[0]];
+    var label = attr[0] === "畢業" || attr[0] === "背景" ? "學歷" : attr[0] === "資歷" ? "經歷" : attr[0];
+    var lines = ents.map(function (ent) { var v = entityFact(ent, key); return ent.school + "的" + ent.role + ent.name + (v ? "：" + v : "：學校頁面沒有寫" + label); });
+    var text = label + "，依學校網頁：";
+    return { status: "answered", mode: "official", query: q, summary: text + lines.join("；"), evidence: [], sources: [], related: [], key_points: [], entities: ents,
+      limitation: "取自學校官網的公開頁面；人事異動以學校最新公告為準。",
+      reply: { text: text, bullets: lines, tail: ents.every(function (ent) { return !entityFact(ent, key); }) ? "" : "沒寫的部分是學校頁面沒有公開，我不會自己猜。", source: "資料來源：" + unique(ents.map(function (ent) { return ent.school + "學校網頁" + (ent.page ? "〈" + ent.page + "〉" : ""); })).join("、") } };
+  }
+  /* What the next turn needs to know about this one (the app keeps it in state.assistantTurns). */
+  function turnSummary(question, result) {
+    if (!result || typeof result !== "object") return null;
+    var schools = result.schools || (result.school_results || []).filter(function (row) { return row && row.status === "answered"; }).map(function (row) { return row.school_id; });
+    return { question: clean(question), mode: result.mode || "", status: result.status || "", subject: followUpSubject(question || ""), schools: schools,
+      entities: (result.entities || []).map(function (ent) { return Object.assign({}, ent); }) };
   }
   var COMPARE_OPENERS = [
     function (t) { return "「" + t + "」各校的規定並排整理如下，可以對照看看差在哪："; },
@@ -2811,6 +2923,17 @@
   /* rows: [{ school: { id, short }, result }] in the order the user named them. */
   function compareResults(topic, rows) {
     rows = (rows || []).filter(function (row) { return row && row.school; });
+    /* The asked-for people (校長): their pages side by side instead of rule bullets. */
+    var people = rows.map(function (row) { var r = row.result; return r && r.mode === "official" && (r.entities || []).filter(function (ent) { return ent.school_id === row.school.id; })[0] || null; }).filter(Boolean);
+    if (people.length) {
+      var made = compareEntities(people);
+      var absent = rows.filter(function (row) { return !people.some(function (ent) { return ent.school_id === row.school.id; }); }).map(function (row) { return row.school.short; });
+      if (absent.length) {
+        made.reply.tail = absent.join("、") + "的學校網頁沒有查到" + (people[0].role || "") + "的姓名，所以沒有列入對照。" + made.reply.tail;
+        made.limitation = absent.join("、") + "的資料沒有查到。" + made.limitation;
+      }
+      if (people.length > 1 || absent.length) return made;
+    }
     if (!topic) {
       var ask = pickLine(COMPARE_NO_TOPIC, rows.map(function (r) { return r.school.id; }).join(","));
       return { status: "insufficient", mode: "chat", query: "", summary: ask, evidence: [], sources: [], reply: { text: ask, bullets: [] } };
@@ -3393,6 +3516,18 @@
       return !/歷任|校史|會議|計畫|特色|法規|辦法|要點|表件|校友|成果|報名/.test(title) && (!!ask.office && title.indexOf(ask.office) !== -1 || /聯絡資訊|成員|組織|人員|簡介|職掌/.test(title));
     });
   }
+  /* The people an answer named, kept for the next turn (「這兩個人差在哪裡」) and for side-by-side comparison.
+     Only what the school's own page says: name, 學歷, 經歷, 分機. */
+  function officialSegment(text, label, max) {
+    var seg = String(text || "").match(new RegExp("【" + label + "】\\s*([\\s\\S]*?)(?=【|$)"));
+    return seg ? seg[1].split(/\n/).map(clean).filter(Boolean).slice(0, max) : [];
+  }
+  function officialEntity(f, role) {
+    var ext = String(f.text || "").match(new RegExp(role + "\\s+" + f.name + "\\s+(\\d{3,4})(?!\\d)"));
+    return { school_id: String(f.item.school || ""), school: f.item.school_name || SCHOOL_SHORT[f.item.school] || "學校", role: role, name: f.name,
+      edu: officialSegment(f.text, "學歷", 3), exp: officialSegment(f.text, "經歷", 3), tenure: officialSegment(f.text, "任期", 1), ext: ext ? ext[1] : "",
+      page: clean(String(f.item.title || "").split("›").slice(-2).join("›")), url: /^https:\/\//.test(String(f.item.url || "")) ? f.item.url : "" };
+  }
   function officialAnswer(query, all, details, options) {
     var ask = officialRoleAsk(query);
     if (!ask) return null;
@@ -3422,6 +3557,7 @@
     var bySchool = {};
     found = found.filter(function (f) { if (bySchool[f.item.school]) return false; bySchool[f.item.school] = true; return true; });
     var lines = found.map(function (f) { return (f.item.school_name ? f.item.school_name : "學校") + "的" + role + "是" + f.name + "。"; });
+    var entities = found.map(function (f) { return officialEntity(f, role); });
     var bullets = [];
     if (role === "校長") found.forEach(function (f) {
       var seg = f.text.match(/【學歷】\s*([\s\S]*?)(?=【|$)/);
@@ -3429,7 +3565,7 @@
       if (edu.length) bullets.push((found.length > 1 ? f.item.school_name + " " : "") + "學歷：" + edu.join("；"));
     });
     return { status: "answered", mode: "official", query: query, evidence: [], key_points: [], related: [],
-      summary: lines.join(""), official_bullets: bullets,
+      summary: lines.join(""), official_bullets: bullets, entities: entities, role: role,
       sources: found.map(function (f) { var url = /^https:\/\//.test(String(f.item.url || "")) ? f.item.url : ""; return { id: f.item.id, kind: url ? "service" : "", title: "學校網頁 › " + clean(String(f.item.title).split("›").slice(-2).join("›")), url: url, school_name: f.item.school_name || "", note: "學校網頁" }; }),
       limitation: "姓名取自學校官網的公開頁面；人事異動以學校最新公告為準。", plan: questionPlan(query) };
   }
@@ -4045,5 +4181,5 @@
   }
   return { topicScore: topicScore, topicGate: topicGate, pieceStats: pieceStats, tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank, readList: readList, asksPenalty: asksPenalty, penaltyDocs: penaltyDocs,
     smoothEvidence: smoothEvidence, quoteUnits: quoteUnits, answerLines: answerLines, evidenceLimitation: evidenceLimitation, composeSummary: composeSummary,
-    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, correction: correction, comparePlan: comparePlan, compareResults: compareResults, smallTalk: smallTalk, wantsLink: wantsLink, answerLinks: answerLinks, scoreClause: scoreClause, ruleTerms: ruleTerms, withHeadings: withHeadings, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
+    isPersonalDataQuery:personalDataQuery, ruleClauses: ruleClauses, ruleAnswer: ruleAnswer, serviceLinks: serviceLinks, documentLinks: documentLinks, timetableAnswer: timetableAnswer, conversational: conversational, tidyClause: tidyClause, resolveFollowUp: resolveFollowUp, correction: correction, comparePlan: comparePlan, compareResults: compareResults, turnSummary: turnSummary, referenceFollowUp: referenceFollowUp, smallTalk: smallTalk, wantsLink: wantsLink, answerLinks: answerLinks, scoreClause: scoreClause, ruleTerms: ruleTerms, withHeadings: withHeadings, keyPoints: keyPoints, browsePlan: browsePlan, datePlan: datePlan, dateTarget: dateTarget, titleDates: titleDates, titleDeadline: titleDeadline,answer: answer };
 });

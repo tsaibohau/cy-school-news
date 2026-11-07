@@ -93,7 +93,7 @@ for (const q of ["好累 請假怎麼請", "考爛了要補考嗎", "你好，�
 for (const [q, kind] of [["我好帥", "self"], ["你幾歲", "age"], ["好餓", "food"], ["陪我聊天", "lonely"]]) assert.equal(QA.smallTalk(q), kind, q);
 assert.ok(QA.answer("你好", items, details, Object.assign({ hour: 1 }, opts)).reply.text.length > 8);
 assert.notEqual(QA.answer("你好", items, details, Object.assign({ hour: 1 }, opts)).reply.text, QA.answer("你好", items, details, Object.assign({ hour: 14 }, opts)).reply.text, "late-night greeting differs");
-assert.notEqual(QA.answer("書可以借多久", items, details, Object.assign({ lastQuestion: "書可以借多久" }, opts)).reply.text, ask("書可以借多久").reply.text, "a repeated question gets teased");
+assert.deepEqual(QA.answer("書可以借多久", items, details, Object.assign({ lastQuestion: "書可以借多久" }, opts)).reply, ask("書可以借多久").reply, "a repeated question gets the same complete answer");
 console.log("✓ 更多閒聊");
 
 /* Without member detail there is no rule answer, only the official link. */
