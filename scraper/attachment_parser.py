@@ -18,11 +18,13 @@ from io import BytesIO
 from urllib.parse import urlparse
 from xml.etree import ElementTree as ET
 
+from text_cleanup import clean_pages, clean_text
+
 DEFAULT_MAX_PAGES = 80
 DEFAULT_MAX_CHARS = 120_000
 DEFAULT_MAX_BYTES = 8 * 1024 * 1024
 DEFAULT_MAX_UNCOMPRESSED_BYTES = 24 * 1024 * 1024
-PARSER_VERSION = "attachment-text-v2"
+PARSER_VERSION = "attachment-text-v3"  # v3: text_cleanup (punctuation, leader dots, wrapped lines)
 SUPPORTED_TEXT_EXTENSIONS = {"pdf", "docx", "xlsx", "pptx"}
 OCR_EXTENSIONS = {"jpg", "jpeg", "png", "gif", "webp"}
 
@@ -77,7 +79,7 @@ def _extract_docx(data: bytes, max_chars: int) -> str:
                            if _local_name(node.tag) in {"t", "tab", "br"})
             if line.strip():
                 lines.append(line)
-        return _clean_lines(lines, max_chars)
+        return _clean_lines(clean_text("\n".join(lines), unwrap=False, aggressive=False).splitlines(), max_chars)
 
 
 def _xlsx_shared_strings(archive: zipfile.ZipFile) -> list[str]:
@@ -155,7 +157,7 @@ def _extract_xlsx(data: bytes, max_chars: int) -> str:
                     lines.append(" | ".join(str(value).strip() for value in values))
                 if sum(len(line) + 1 for line in lines) >= max_chars:
                     break
-        return _clean_lines(lines, max_chars)
+        return _clean_lines(clean_text("\n".join(lines), unwrap=False, aggressive=False).splitlines(), max_chars)
 
 
 def _slide_sort_key(name: str):
@@ -177,7 +179,7 @@ def _extract_pptx(data: bytes, max_chars: int) -> str:
                 lines.append(f"[投影片 {index}] {text}")
             if sum(len(line) + 1 for line in lines) >= max_chars:
                 break
-        return _clean_lines(lines, max_chars)
+        return _clean_lines(clean_text("\n".join(lines), unwrap=False, aggressive=False).splitlines(), max_chars)
 
 
 def _extract_pdf(data: bytes, max_pages: int, max_chars: int) -> tuple[str, int]:
@@ -189,6 +191,7 @@ def _extract_pdf(data: bytes, max_pages: int, max_chars: int) -> tuple[str, int]
     if len(reader.pages) > max_pages:
         raise OverflowError(str(len(reader.pages)))
     pages = [(page.extract_text() or "").strip() for page in reader.pages]
+    pages = [page for page in clean_pages(pages) if page.strip()]
     return _clean_lines(pages, max_chars), len(reader.pages)
 
 

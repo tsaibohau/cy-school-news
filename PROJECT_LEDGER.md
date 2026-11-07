@@ -2385,3 +2385,12 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
   - `app.js`：訪客搜尋用的「去掉摘要」複本每則只做一次，搜尋快取可以跨按鍵沿用。
 - 驗證：嘉中、嘉女各 450 題，修改前後的狀態、來源與摘要逐字相同；測試失敗集合與 main 相同。
 - 版本：`assistant-qa.js?v=88`、`qa-synonyms.js?v=10`、`search-query.js?v=61`、`app.js?v=138`、`cy-news-v163`。
+
+## 2026-11-07 問校務五項精進（免費）：OCR 去噪、分類計分、歷屆活動系列、回答講內容
+依研究報告「問校務 免費精進方案」，四條線同時進行後整合。全部零成本，會員內文不送外部服務。
+- OCR／PDF 去噪（`scraper/text_cleanup.py`，接入 `local_ocr.py`、`attachment_parser.py`）：零寬字元、選擇性全半形（不對全文 NFKC，中文標點維持全形）、表格框線、引導點、CJK 字間空白、重複標點、斷行合併（條列標號不併）、跨頁頁首頁尾。文字與數值之間的空白保留（「張三 95」不黏），只有數字＋單位（113年、35人）或固定前綴（第3屆、民國115年）才併。附件解析版本 `attachment-text-v3`；已存的附件要重設為 pending 才會重新解析。
+- 分類計分（`scraper/category_scorer.py`，scrape.py 的 classify 改用它）：每條規則投票、標題權重 3 倍、處室先驗、否定與情境規則（競賽成績不是成績、教師研習歸教職員、社團法人不是社團）。594 筆公開標題人工標註：準確率 66.5% → 91.8%（未調參的新樣本約 83–86%）。信心值不寫進公開資料。合併後下一次抓取會重分類全部公告（約 24% 換類；約 189 則教師研習改歸教職員，預設檢視隱藏）。
+- 歷屆活動系列（`scraper/event_series.py` → `docs/data/series.json`，每小時抓取時產生，排程不變；`docs/series-view.js`）：去年度、屆次、階段詞後比對，學科／年級／地區不同不合併。公告總庫選了分類時顯示「歷屆活動」清單，點開是依學年度的時間軸。全站 383 個系列；256 則人工標註：成對 precision 1.000、B-cubed F 0.958（開發集）。人工修正檔 `scraper/series_overrides.json`。
+- 回答講內容（`docs/answer-composer.js`、`docs/assistant-qa.js`、`docs/qa-synonyms.js`）：問題類型對應欄位（時間、截止、地點、對象、報名、費用、攜帶、聯絡、內容），解析「一、時間：…」條列，問題先扣掉標題用詞、重複標題的句子扣分，一般題給 1–2 句內容摘要，沒寫就說沒寫並指向附件。900 題：回答只重述標題的比例 28.5% → 13.9%，hit 不變（641）。聯絡欄位只回電話、信箱、單位，不回人名。
+- 測試：`tests/test_text_cleanup.py`、`test_category_scoring.py`、`test_event_series.py`、`test_series_view.js`、`test_qa_content.js`（全部虛構或公開標題）。順手修 `test_ui_visual_contract.js` 版本斷言。
+- 版本：`assistant-qa.js?v=89`、`qa-synonyms.js?v=11`、`answer-composer.js?v=2`、`app.js?v=139`、`series-view.js?v=1`、`cy-news-v164`。

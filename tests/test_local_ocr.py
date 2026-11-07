@@ -97,6 +97,7 @@ print("Local Traditional-Chinese OCR tests passed")
 # --- local-ocr-v2: blurry scans, vertical posters, clean-up rules -------------------------
 from PIL import ImageFilter  # noqa: E402
 from local_ocr import installed_languages, postprocess  # noqa: E402
+from text_cleanup import clean_text  # noqa: E402
 
 SCAN_LINES = ["一、報名期間：即日起至115年11月15日止。", "二、參加對象：全國高級中等學校在學學生。"]
 
@@ -130,9 +131,9 @@ if "chi_tra_vert" in installed_languages():
     vertical_score = SequenceMatcher(None, compact("".join(columns)), compact(vertical["text"])).ratio()
     assert vertical_score >= 0.8, (vertical_score, vertical["text"])
 
-assert postprocess("國 立 嘉 義 115 年 12 月 8 日 (二 ) 至") == "國立嘉義115年12月8日（二）至"
-assert postprocess("主 旨 : 獎金 新 臺 幣 30,000 元") == "主旨：獎金新臺幣30,000元"
-assert postprocess("民國 1l5 年") == "民國115年", postprocess("民國 1l5 年")
+assert clean_text(postprocess("國 立 嘉 義 115 年 12 月 8 日 (二 ) 至")) == "國立嘉義 115年12月8日（二）至"
+assert clean_text(postprocess("主 旨 : 獎金 新 臺 幣 30,000 元")) == "主旨：獎金新臺幣 30,000元"
+assert clean_text(postprocess("民國 1l5 年")) == "民國115年", clean_text(postprocess("民國 1l5 年"))
 assert postprocess("Tel: 05-2763208 ext 203") == "Tel: 05-2763208 ext 203", "English stays as is"
-assert postprocess("獎金 30,00g 元").startswith("獎金30,00g"), "ambiguous look-alikes are not guessed"
+assert "30,00g" in postprocess("獎金 30,00g 元"), "ambiguous look-alikes are not guessed"
 print("Local OCR v2 (scan, vertical, clean-up) tests passed")

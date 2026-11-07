@@ -1015,3 +1015,17 @@ body.is-chat .foot { display: none; }
   .chat-box-foot .assistant-scope select { font-size: 13px; min-width: 76px; max-width: 30vw; }
   .chat-deep-toggle, .chat-sources-toggle { padding: 5px 8px; }
 }
+
+/* ── 歷屆活動（同名活動系列） ── */
+.series-box { margin: 0 0 14px; }
+.series-box .list-group { margin-top: 4px; }
+.series-item { background: var(--card); border: 1px solid var(--line); border-radius: 10px; margin: 0 0 8px; }
+.series-item > summary { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 8px; padding: 10px 14px; cursor: pointer; font: 700 15px/1.4 var(--serif); }
+.series-item[open] > summary { border-bottom: 1px solid var(--line-soft); }
+.series-timeline { list-style: none; margin: 0; padding: 8px 14px 10px; }
+.series-year > b { display: block; margin: 6px 0 2px; color: var(--accent); font-size: 13px; }
+.series-year ul { list-style: none; margin: 0; padding: 0 0 0 10px; border-left: 2px solid var(--line-soft); }
+.series-year li { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; padding: 3px 0; font-size: 14px; }
+.series-year li a { color: var(--ink); flex: 1 1 14em; min-width: 0; }
+.series-year time { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.series-stage { padding: 0 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700; }

@@ -506,6 +506,9 @@ def run():
     assert fetch_state[SOURCE_STATUS_KEY]["https://example.test/list"]["status"] == "ok"
     print("✓ source failure state is explicit and fail-closed")
 
+    import test_text_cleanup
+    test_text_cleanup.run()
+
     return ok
 
 

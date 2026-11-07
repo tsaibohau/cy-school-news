@@ -29,6 +29,7 @@ from bs4 import BeautifulSoup
 import adapters as source_adapters
 
 from detail_parser import parse_article_detail
+from category_scorer import score_category
 
 ROOT = Path(__file__).resolve().parent.parent
 CONFIG = json.loads((ROOT / "scraper" / "config.json").read_text(encoding="utf-8"))
@@ -196,8 +197,9 @@ def merge_collected_item(collected: dict, item: dict) -> None:
         collected[item["id"]] = item
     else:
         choose_date(prev, item)
-def classify(text: str) -> str:
-    """Keyword classification. Exams come first; staff-only notices are checked next so
+def classify_first_match(text: str) -> str:
+    """LEGACY first-match-wins classifier, kept only as the evaluation baseline
+    (tools/eval_category_scoring.py --legacy). Keyword classification. Exams come first; staff-only notices are checked next so
     that 「教師甄選」 or 資安通報 never show up as student activities; softer staff words
     (同仁、請查照) only count when the notice does not also address students."""
     rules = dict(CATEGORY_RULES)
@@ -223,6 +225,28 @@ def classify(text: str) -> str:
         if hit(cat):
             return cat
     return "一般"
+
+
+def classify_scored(title: str, office: str = "", body: str = "") -> dict:
+    """Weighted-scoring classification (scraper/category_scorer.py).
+
+    Returns {"category", "confidence", ...}; 「一般」 is the unsorted bucket."""
+    return score_category(title, office, body)
+
+
+def classify(text: str) -> str:
+    """Category label for a single text string (title, optionally + office)."""
+    return score_category(text)["category"]
+
+
+def apply_category(item: dict) -> None:
+    """Set item["category"] from title + office.
+
+    The scorer's confidence is not stored: the site does not read it, and every visitor would
+    download it with announcements.json (~200 KB). Use tools/eval_category_scoring.py to see it."""
+    result = score_category(item.get("title", ""), item.get("source_category", ""))
+    item["category"] = result["category"]
+    item.pop("category_confidence", None)
 
 
 def normalize_url(url: str) -> str:
@@ -1135,7 +1159,6 @@ def main() -> int:
             time.sleep(delay)
 
         for it in collected.values():
-            base_text = it["title"] + " " + it.get("source_category", "")
             if it["id"] in removed_ids:
                 continue  # removed after its official page was confirmed gone
             if it["id"] in known_ids:
@@ -1145,9 +1168,9 @@ def main() -> int:
                 if not old.get("source_category") and it.get("source_category"):
                     old["source_category"] = it["source_category"]
                 choose_date(old, it)
-                old["category"] = classify(old["title"] + " " + old.get("source_category", ""))
+                apply_category(old)
             else:
-                it["category"] = classify(base_text)
+                apply_category(it)
                 it["first_seen"] = now_iso
                 it.setdefault("snippet", "")
                 it.setdefault("detail_status", "pending")
@@ -1286,7 +1309,7 @@ def main() -> int:
     # 分類規則調整後,沒有重新出現在列表頁的舊公告也要套用新規則。
     for it in items:
         if it.get("title_status") != "repair_pending":
-            it["category"] = classify(it.get("title", "") + " " + it.get("source_category", ""))
+            apply_category(it)
     items.sort(key=lambda x: (display_date(x), x.get("first_seen") or ""),
                reverse=True)
     all_ids_before_cap = validate_snapshot_items(items, "merged corpus")
