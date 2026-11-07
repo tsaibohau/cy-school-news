@@ -47,7 +47,7 @@ assert.doesNotMatch(r.summary + say(r), /〇|全民/);
 
 /* 3. only one year known: said honestly. */
 r = QA.answer("往常校運會什麼時候辦理", [], {}, Object.assign({}, opts, { calendarEvents: [calendar[0]] }));
-assert.match(r.summary, /只找到 115 學年這一年.*說不出「通常」/, r.summary);
+assert.match(r.summary, /只找到 115 學年這一年.*還沒辦法說往年通常在什麼時候/, r.summary);
 
 /* 4. a notice from an earlier year fills in a year the calendar lacks. */
 r = QA.answer("往常校運會什麼時候辦理", [older], {}, Object.assign({}, opts, { calendarEvents: [calendar[0]] }));

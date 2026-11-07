@@ -2105,9 +2105,20 @@
     return out;
   }
   /* A long point listing several things with 「；」 becomes one point each (the label stays on the first). */
+  /* Dates that were blanked out of an old notice leave scraps (「(8/)」「預計日起」「營業時間 -」): drop the scrap, never invent a date. */
+  function hollowClean(text) {
+    var t = String(text || "");
+    t = t.replace(/[，,]?\s*營業時間\s*([^；。，]*(?:，[^；。，]*(?:：|:)[^；。]*)?)(?=[；。]|$)/g, function (m, v) { return /\d/.test(v) ? m : ""; });
+    t = t.replace(/[，,]?\s*營業時間\s*[-－—]\s*(?=[；。，]|$)/g, "");
+    t = t.replace(/[(（]\s*\d{1,2}\s*\/\s*[)）]/g, "");
+    t = t.replace(/[，,]?[^，；。]{0,12}預計\s*日起[^，；。]*/g, "");
+    t = t.replace(/暫訂\s*\d{1,2}\s*\/(?=\D)/g, "預計");
+    t = t.replace(/\d{1,2}\s*\/(?=到校)/g, "");
+    return t.replace(/，{2,}/g, "，").replace(/，(?=[；。]|$)/g, "");
+  }
   function splitLong(list) {
     var out = [];
-    (list || []).forEach(function (b) {
+    (list || []).map(hollowClean).forEach(function (b) {
       var parts = clean(b).length > 70 ? clean(b).split(/；(?=[^；]{4,})/) : [b];
       parts.forEach(function (part) { out.push(part); });
     });
@@ -2205,7 +2216,10 @@
     if (result.mode === "rule_pointer") return { text: text, bullets: [] };
     if (result.mode === "purchase") return { text: result.purchase_lead || text, bullets: splitLong(result.purchase_bullets || []), source: sourceNote(result, 3) };
     if (result.mode === "course_list") return { text: result.course_lead || text, bullets: result.course_bullets || [], source: sourceNote(result, 1) };
-    if (result.mode === "official") return { text: text, bullets: result.official_bullets || [] };
+    if (result.mode === "official") {
+      var page = (result.sources || [])[0] || {}, pageTitle = clean(page.title || "").replace(/^學校網頁\s*›\s*/, "");
+      return { text: text, bullets: result.official_bullets || [], source: pageTitle && page.school_name ? "資料來源：" + page.school_name + "學校網頁〈" + pageTitle + "〉" : "" };
+    }
     if (result.mode === "timetable") {
       var day = text.match(/^(.+?)：(.+、.+)。$/);
       if (day) { text = joinOpener(pickLine(TIMETABLE_OPENERS, seed), day[1] + "："); bullets = day[2].split("、").map(function (slot) { return clean(slot).replace(/^(\d)\s+/, "第 $1 節　"); }); }
@@ -2964,6 +2978,17 @@
     var item = (items || []).filter(function (it) { return it && it.id === hit.id; })[0] || {};
     return { text: hit.text, item: item, more: more };
   }
+  /* 「違規的後果：…情節輕微記警告、嚴重記小過（嘉中學生手冊〈學生獎懲規定〉）。」 */
+  function penaltyAside(hit, source, said) {
+    var list = [penaltyClause(hit.text)].concat((hit.more || []).map(function (t) { return penaltyClause(t); })).map(function (t) { return dedupeText(clean(t)).replace(/[。；;，、\s]+$/, ""); }).filter(Boolean);
+    if (!list.length) return "違規的後果：" + said.text;
+    /* The same act at two degrees shares its beginning: say it once (…情節輕微者，記警告；嚴重者則記小過). */
+    if (list.length === 2) {
+      var n = 0; while (n < list[0].length && n < list[1].length && list[0][n] === list[1][n]) n++;
+      if (n >= 10) list = [list[0], list[1].slice(n).replace(/者，/, "者則")];
+    }
+    return "違規的後果：" + list.join("；") + "（" + source + "）。";
+  }
   function consequenceSection(part, overview, items, details, options, shown) {
     var ask = "「" + part.clause.replace(/[？?]$/, "") + "」";
     var hit = penaltySentence(part, overview, items, details, options);
@@ -2977,7 +3002,7 @@
       var said = Composer.consequence({ query: part.clause, text: penaltyClause(hit.text), source: source });
       var src = hit.item.id ? [{ id: hit.item.id, title: clean(hit.item.title || ""), date: String(hit.item.date || "").slice(0, 10), school_name: hit.item.school_name || "", url: hit.item.url || "" }] : [];
       var extraText = (hit.more || []).length ? " 另外，" + hit.more.map(function (t) { return endSentence(penaltyClause(t).slice(0, 160)); }).join(" ") : "";
-      return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: said.text + extraText, text: ask + "：" + dedupeText(said.text + extraText), sources: src.filter(function (s) { return !shown[s.id]; }) };
+      return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: said.text + extraText, text: penaltyAside(hit, source, said), sources: src.filter(function (s) { return !shown[s.id]; }) };
     }
     /* No readable text, but a notice's labels say one of its segments is a penalty. */
     if (Tokens) {
@@ -2995,18 +3020,18 @@
         if (seg && !boilerplate(seg.text, "")) {
           var quoted = Composer.consequence({ query: part.clause, text: seg.text, source: label });
           return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: quoted.text,
-            text: ask + "：" + (quoted.found ? quoted.text : label + "寫到：" + endSentence(seg.text.slice(0, 200))),
+            text: "違規的後果：" + (quoted.found ? quoted.text : endSentence(seg.text.slice(0, 200)) + "（" + label + "）"),
             sources: shown[it.id] ? [] : [{ id: it.id, title: clean(it.title || ""), date: String(it.date || "").slice(0, 10), school_name: it.school_name || "", url: it.url || "" }] };
         }
         return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: "",
-          text: ask + "：有罰則喔，" + label + "的第 " + (labelled.hit.segment.s + 1) + " 段寫到罰則，點開看；登入後我可以直接引用。",
+          text: "違規的後果：有罰則，" + label + "的第 " + (labelled.hit.segment.s + 1) + " 段寫到罰則，點開看；登入後我可以直接引用。",
           sources: shown[it.id] ? [] : [{ id: it.id, title: clean(it.title || ""), date: String(it.date || "").slice(0, 10), school_name: it.school_name || "", url: it.url || "" }] };
       }
     }
     var tease = Composer.consequence({ query: part.clause, text: "" }).text;
     var where = aspectDocument(part, items, details, options) || ((overview.layer === "rule" || overview.mode === "rule_pointer") && (overview.sources || [])[0]) || null;
     var hint = where ? " 真的想知道細節，可以看〈" + clean(where.title).split("›").pop().trim() + "〉。" : "";
-    return { layer: "tease", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: "", text: ask + "：" + tease + hint,
+    return { layer: "tease", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: "", text: "違規的後果：" + tease + hint,
       sources: where && !shown[where.id] ? [where] : [] };
   }
   /* 「你查的是得獎名單」「不是這個」「找錯了」: the user says the last answer missed. Re-ask the
@@ -3097,10 +3122,21 @@
      三層都翻；第一個找到答案的當主答案，其他層找到的依同樣順序附在後面（result.also）。 */
   var EVENT_ASK = /運動會|校運|校慶|園遊會|晚會|營|比賽|競賽|大賽|盃|講座|演講|講堂|研習|工作坊|活動|博覽會|論壇|徵文|徵稿|甄選|選拔|奧林匹|奧賽|學生日|展覽|體驗/;
   /* 「根據嘉中 9 月 1 日的公告「X」，Y」 → 「嘉中 9 月 1 日的公告〈X〉提到：Y」 */
+  /* An aside that only cites the legal basis (依據／實施依據／…字第…號函) or points at a page says nothing new;
+     a bare 「還有 N 則相關公告」 is not an aside either. */
+  var BASIS_ASIDE = /(?:^|[：:，。])\s*(?:實施)?依據[：:]|法源|字第[^，。]{0,20}號(?:函|令)|函頒|函示/;
+  function informativeAside(row, main) {
+    var body = clean(row.summary || "").replace(RELATED_NOTE, "").replace(/^根據.{1,30}?的公告「.+?」[，：]\s*/, "");
+    if (!body) return false;
+    if (BASIS_ASIDE.test(body) && body.length < 220) return false;
+    if (/就是在講這個，點開看原文/.test(body) && main && (main.layer === "calendar" || main.mode === "calendar")) return false;
+    return true;
+  }
   function alsoSentence(label, summary) {
     var m = summary.match(/^根據(.{1,24}?)的公告「(.+?)」[，：]\s*(.*)$/);
     if (m) return m[1] + "的公告〈" + m[2] + "〉提到：" + m[3];
-    return label + "提到：" + summary;
+    var page = summary.match(/^(.{1,12})學校網頁的「/);
+    return (page ? "學校網頁" : label) + "提到：" + summary;
   }
   var LAYER_LABELS = { rule: "學校規定", calendar: "行事曆", announcement: "公告" };
   var HAS_TIME = /\d{1,2}\s*[\/／月]\s*\d{1,2}|\d{1,2}[:：]\d{2}|[一二三四五六七八九十\d]+\s*(?:月|日|號|週|天|點|時|節)|星期|週[一二三四五六日]|開學|結業|學期/;
@@ -3463,7 +3499,7 @@
     var summary;
     if (known.length >= 2 && dated.length >= 2) summary = lead + (phase ? "通常在 " + phase + "舉行" : "每年日期不太一樣") + "：" + body + "。";
     else if (known.length >= 2) summary = lead + "目前能對照的日期不多：" + body + "。";
-    else summary = lead + "目前只找到 " + known[0] + " 學年這一年的資料，沒有往年可以比較，所以說不出「通常」：" + body + "。";
+    else summary = lead + "目前只找到 " + known[0] + " 學年這一年的資料，還沒辦法說往年通常在什麼時候：" + body + "。";
     return { status: "answered", mode: "browse", list_label: "行事曆", query: query, headline: "", summary: summary, evidence: [], sources: sources.slice(0, 6), related: [], key_points: [],
       usual_when: { subject: subject, years: known, months: unique(dated.map(function (d) { return Number(d.slice(5, 7)); })), phase: phase, current: current, earlier: parts },
       plan: questionPlan(query), limitation: "日期來自學校行事曆與歷年公告；每年實際日期以學校公告為準。" };
@@ -3549,7 +3585,7 @@
       var layer = layers[key], sources = (layer.sources || []).filter(function (source) { return !shown[source.id]; }).slice(0, 3);
       sources.forEach(function (source) { shown[source.id] = true; });
       return { layer: key, label: LAYER_LABELS[key], summary: clean(layer.summary || ""), text: "另外，" + alsoSentence(LAYER_LABELS[key], clean(layer.summary || "")), sources: sources };
-    }).filter(function (row) { return row.summary && row.sources.length; });
+    }).filter(function (row) { return row.summary && row.sources.length && informativeAside(row, main); });
     /* 「防災營」: a rule adds something only when it is about the activity asked (營、比賽…). */
     var eventWords = (clean(query).match(new RegExp(EVENT_ASK.source, "g")) || []);
     if (eventWords.length && !asksPenalty(query)) main.also = main.also.filter(function (row) {

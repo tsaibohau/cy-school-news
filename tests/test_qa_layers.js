@@ -53,7 +53,7 @@ r = ask("閱讀心得報告要交？不交會怎樣？");
 assert.deepEqual(r.split, { subject: "閱讀心得報告", aspects: ["consequence"] }, "the question is split into its subject and what is asked");
 assert.match(JSON.stringify(r), /閱讀心得繳交流程/);
 assert.match(r.summary + JSON.stringify(r.also || []), /11\/20.*高一閱讀心得繳交截止/);
-assert.ok((r.also || []).some((row) => /^「不交會怎樣」：/.test(row.text)), "the 不交會怎樣 part gets its own line");
+assert.ok((r.also || []).some((row) => /^違規的後果：/.test(row.text)), "the 不交會怎樣 part gets its own line");
 assert.doesNotMatch(r.reply.text, /找不到/);
 /* 「期末考範圍」 asks for the 範圍: exam dates are a side note, not the answer. */
 r = ask("期中考範圍");
@@ -109,7 +109,7 @@ r = ask("閱讀心得報告怎麼寫？沒寫會發生什麼事情？");
 assert.deepEqual(r.split, { subject: "閱讀心得報告", aspects: ["method", "consequence"] });
 assert.doesNotMatch(r.summary, /最近一個月/);
 assert.match(r.summary + JSON.stringify(r.also), /高一閱讀心得繳交截止/);
-assert.ok(r.also.some((row) => /閱讀心得報告怎麼寫/.test(row.text)) && r.also.some((row) => /沒寫會發生什麼事情/.test(row.text)), JSON.stringify(r.also));
+assert.ok(r.also.some((row) => /閱讀心得報告怎麼寫/.test(row.text)) && r.also.some((row) => /^違規的後果/.test(row.text)), JSON.stringify(r.also));
 /* A clause without its own subject borrows the one before; 「沒請假」 is about 請假. */
 r = ask("請假要怎麼請？沒請假會怎樣？");
 assert.deepEqual(r.split, { subject: "請假", aspects: ["method", "consequence"] });
