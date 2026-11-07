@@ -878,8 +878,10 @@
     var fact = endSentence(lead.replace(/^(?:[一二三四五六七八九十]+、|\(?\d{1,2}\)?[、.．])\s*/, ""));
     var slot = plan && plan.answer_slot || "", asksTime = slot === "deadline" || wanted.indexOf("date") !== -1;
     var when = asksTime && !content ? (postponedPhrase(lead) || timePhrase(lead)) : "";
-    var text = content && content.kind === "summary" ? sourceLabel(first) + "：" + fact : when ? "時間是 " + when + "。" + sourceLabel(first) + "：" + fact : sourceLabel(first) + "，" + fact;
-    if (sources.length > 1) text += "另外還有 " + (sources.length - 1) + " 則相關公告列在下面；它們不是同一項活動，日期和資格請分開看。";
+    /* A postponed event leads with its new time (改期後的時間是…); a date that is only in the sentence stays in the sentence. */
+    var moved = asksTime && !content ? postponedPhrase(lead) : "";
+    var text = content && content.kind === "summary" ? sourceLabel(first) + "：" + fact : moved ? "改期後的時間是 " + moved + "。" + sourceLabel(first) + "，" + fact : sourceLabel(first) + "，" + fact;
+    if (sources.length > 1) text += "還有 " + (sources.length - 1) + " 則相關公告，放在下方的參考資料裡；它們是不同的事項，日期和資格請分開確認。";
     var note = oldNote(first, asOf);
     return note ? text + note : text;
   }
@@ -1024,7 +1026,7 @@
     query = clean(query || "");
     var subject = questionSubject(query), where = scopeLabel ? scopeLabel + "的" : "";
     if (!related || !related.length) {
-      return (subject ? "我翻過" + where + "公告，沒有找到跟「" + subject + "」有關的消息" : "我翻過" + where + "公告，沒有找到能回答這題的消息") +
+      return (subject ? where + "公告和規定裡沒有找到跟「" + subject + "」有關的內容" : where + "公告和規定裡沒有找到能回答這題的內容") +
         "，可能學校還沒公告，或寫在讀不到的附件裡。" + officeHint(query);
     }
     var top = related[0], day = String(top.date || "").slice(0, 10), title = clean(top.title);
@@ -1782,7 +1784,7 @@
       });
     }
     /* 「沒被抓到是不是就沒事」 */
-    if (NOT_CAUGHT.test(query) && ASKS_ALLOWED.test(query)) notes.push("有沒有被發現不影響規定本身：條文寫不得就是不得，沒被抓到只是沒被處理，不代表允許");
+    if (NOT_CAUGHT.test(query) && ASKS_ALLOWED.test(query)) notes.push("老師有沒有發現，都不影響規定本身：條文寫不得就是不得，沒被抓到只是沒被處理，不代表允許");
     entries.sort(function (a, b) { return a.at - b.at; });
     return { lines: entries.map(function (e) { return e.text; }), notes: notes, whole: whole };
   }
@@ -2041,26 +2043,13 @@
   var TABLE_ROW = /^(?:\d{1,2}[:：]\d{2}|第[一二三四五六七八九十\d]+節|[一二三四五六日六]{1}[、．]|星期)/;
   /* Bullet-point replies with a cheeky upperclassman voice. The facts in the bullets are the
      official wording (tidied); only the opener and the closing line carry the personality. */
-  var RULE_OPENERS = [
-    function (label) { return "這題手冊有寫，你只是沒翻😏 " + label + "："; },
-    function (label) { return "幫你翻好了，" + label + "寫的重點："; },
-    function (label) { return "問得好。根據" + label + "："; },
-    function (label) { return "這個我熟，" + label + "這樣規定："; },
-    function (label) { return "又是我幫你翻手冊的一天。" + label + "："; },
-    function (label) { return "好問題，雖然手冊上明明有寫😑 " + label + "："; },
-    function (label) { return "來，學長姐罩你。" + label + "："; },
-    function (label) { return "抄起來，考試不考但教官會考。" + label + "："; }
-  ];
-  var RULE_CLOSERS = ["記住了沒？下次自己翻也行啦。", "規定偶爾會改，以學校最新公告為準。", "看完就照做，別讓我在獎懲名單上看到你😌", "",
-    "不用謝，記得幫我按個讚（雖然沒有讚可以按）。", "有不懂的再問，我很閒（並沒有）。", "照做就不會被約談，加油😌", ""];
-  var ANNOUNCE_OPENERS = ["學校有公告過，幫你整理好了。", "找到了，重點在這。", "公告寫得落落長，我幫你濃縮一下。",
-    "這則公告你應該沒點開過吧？幫你看了。", "學校有說喔，只是你沒看到😏", "重點我畫好了，剩下的自己點開。"];
-  var NONE_OPENERS = ["這題我翻遍了還是找不到🥲", "老實說，學校網站沒寫這個。", "找不到欸，不是我不努力。",
-    "這題連我都考倒了，你很會問嘛。", "學校網站沒寫，我也不能亂掰😤", "嗯…我翻到手都酸了還是沒有。"];
+  /* Replies read like a helpful senior student: the answer first, then the details, then where it comes from.
+     No filler opener in front of a result; the few lines below only keep the sentence flowing. */
+  var NONE_OPENERS = [""];
   var DOCUMENT_OPENERS = [""];
-  var SERVICE_OPENERS = ["這個要登入系統才看得到，我進不去，你自己來：", "這種個人的東西在系統裡，入口給你：", ""];
-  var LIST_OPENERS = ["幫你列好了。", "整理好了，自己看。", "", "列給你了，別說我沒提醒你。", "這些都跟你有關，滑一下。"];
-  var TIMETABLE_OPENERS = ["課表幫你看了，別再帶錯課本。", "幫你查好了。", ""];
+  var SERVICE_OPENERS = ["這類個人資料要登入系統才查得到，我沒辦法代查。"];
+  var LIST_OPENERS = [""];
+  var TIMETABLE_OPENERS = [""];
   function splitPoints(text) {
     return clean(text).split(/(?<=[。；;])/).map(function (part) {
       return clean(part).replace(/^(?:並且?|且|另外|另)(?=[㐀-鿿])/, "").replace(/[。；;，,]+$/, "");
@@ -2075,12 +2064,99 @@
     }, []);
   }
   function joinOpener(opener, text) { return opener ? opener + (/[：:。！？，]$/.test(opener) ? "" : " ") + text : text; }
-  /* The same point (「地點：大同國小活動中心」) is said once. */
-  function conversational(result) {
-    var out = conversationalRaw(result), seen = {};
-    if (out && Array.isArray(out.bullets)) out.bullets = out.bullets.filter(function (b) { var k = compact(b); if (!k || seen[k]) return false; seen[k] = true; return true; });
+  /* ---------- Plain, tidy sentences for the reply ---------- */
+  /* Numbering (一、 （一） 1. 廿五、) only orders a list: the content stays. 「1.5 小時」 is not numbering. */
+  function stripNumbering(text) { return Composer && Composer.stripNumbering ? Composer.stripNumbering(text) : clean(text); }
+  function dedupeText(text) { return Composer && Composer.dedupeText ? Composer.dedupeText(text) : String(text == null ? "" : text); }
+  /* A 〇 in a quoted line stands for a masked name: that line is never shown. */
+  var MASKED_NAME = /〇|[㐀-鿿][○◯]+[㐀-鿿]?/;
+  function tidyPoint(text) {
+    var t = dedupeText(stripNumbering(clean(text))).replace(/違返/g, "違反");
+    t = t.replace(/^[：:、，,；;\s]+/, "").replace(/[，、；;：:]+$/, "");
+    return t;
+  }
+  function sentenceOf(text) { var t = tidyPoint(text); return t && !/[。！？!?…]$/.test(t) && !/^[^，。；：:\d]{1,10}[：:]/.test(t) ? t + "。" : t; }
+  /* The points of a reply: tidy, no masked names, nothing said twice (a point that only repeats another is dropped). */
+  function tidyPoints(list, skip) {
+    var seen = [], skipKeys = (skip || []).map(function (x) { return compact(x).replace(/[。，、；：]/g, ""); }).filter(Boolean);
+    return (list || []).map(function (b) { return sentenceOf(b); }).filter(function (b) {
+      if (!b || compact(b).length < 2 || MASKED_NAME.test(b)) return false;
+      var key = compact(b).replace(/[。，、；：]/g, "");
+      if (skipKeys.some(function (k) { return k === key || (key.length >= 12 && k.indexOf(key) !== -1); })) return false;
+      if (seen.some(function (k) { return k === key; })) return false;
+      seen.push(key);
+      return true;
+    });
+  }
+  /* Points quoted from a rule: 「記警告：違反…」 read as a sentence, a label that only introduces another label goes,
+     a dangling 「情節輕微者」 with no consequence is left out, and a few-word leftover (「以一次為限」) joins the point before it. */
+  var HAS_CONSEQUENCE = /記(?:警告|小過|大過|申誡|過)|予以|不得|應|須|禁止|扣|取消|罰|補/;
+  function ruleBullets(list) {
+    var out = [];
+    (list || []).forEach(function (raw) {
+      var b = penaltyClause(clean(raw)).replace(/^([^：:，。；\d]{2,8})[：:]\s*(?=[^：:，。；\d]{2,8}[：:])/, "");
+      b = tidyPoint(b);
+      if (!b) return;
+      if (/者$/.test(b) && !HAS_CONSEQUENCE.test(b)) return;
+      var bare = b.replace(/[。]$/, "");
+      if (out.length && bare.length <= 7 && !/[：:]/.test(bare) && !/^\d/.test(bare)) { out[out.length - 1] = out[out.length - 1].replace(/[。；，]$/, "") + "，" + bare; return; }
+      out.push(b);
+    });
     return out;
   }
+  /* A long point listing several things with 「；」 becomes one point each (the label stays on the first). */
+  function splitLong(list) {
+    var out = [];
+    (list || []).forEach(function (b) {
+      var parts = clean(b).length > 70 ? clean(b).split(/；(?=[^；]{4,})/) : [b];
+      parts.forEach(function (part) { out.push(part); });
+    });
+    return out;
+  }
+  function pagesOf(item) {
+    return Array.isArray(item && item.page_range) ? "（第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁）" : "";
+  }
+  /* 「嘉中 11/2 公告〈…〉」 */
+  function noticeRef(item) {
+    var school = clean(item && item.school_name || ""), day = String(item && (item.date || item.first_seen) || "").slice(0, 10);
+    var when = /^\d{4}-\d{2}-\d{2}$/.test(day) ? Number(day.slice(5, 7)) + "/" + Number(day.slice(8, 10)) : "";
+    var title = clean(item && item.title || "").replace(/^[【\[][^】\]]{1,12}[】\]]\s*/, "").replace(/^📢\s*/, "");
+    if (title.length > 28) title = title.slice(0, 27) + "…";
+    return (school ? school + (when ? " " + when + " 公告" : "公告") : when ? when + " 公告" : "公告") + (title ? "〈" + title + "〉" : "");
+  }
+  /* One line saying where the answer comes from, once: 「資料來源：嘉中學生手冊〈學生考試要點〉（第 24–25 頁）」 */
+  function sourceNote(result, max) {
+    var parts = (result && result.sources || []).slice(0, max || 1).map(function (item) {
+      if (!item || (!item.title && !item.school_name)) return "";
+      if (isSchoolDoc(item)) return (item.school_name || "") + docLabel(item).replace(/的〈/, "〈").replace(/的「/, "「") + pagesOf(item);
+      return noticeRef(item);
+    }).filter(Boolean);
+    return parts.length ? "資料來源：" + parts.join("、") : "";
+  }
+  var OFFICE_WORD = /教務處|學務處|總務處|輔導室|圖書館|人事室|會計室|生輔組|訓育組|衛生組|體育組|註冊組|設備組|教學組|課務組|資訊組|學輔組|健康中心|教官室/;
+  /* 「合於下列情事之一者，記警告：違反…」 → 「違反…，記警告」 */
+  function penaltyClause(text) {
+    var t = clean(text), m = t.match(/^(?:合於|有|符合)下列[^，：:]{1,6}之一者?[，,]?(?:予以)?(記[^：:，。]{1,8}?)(?:處分)?[：:]\s*(.+)$/);
+    if (!m) return t;
+    return dedupeText(m[2]).replace(/[。；;，、\s]+$/, "") + "，" + m[1];
+  }
+  /* The same point (「地點：大同國小活動中心」) is said once; every point is a tidy sentence. */
+  function conversational(result) {
+    var out = conversationalRaw(result);
+    if (!out || result && (result.mode === "chat" || result.mode === "timetable")) return out;
+    if (Array.isArray(out.bullets)) out.bullets = tidyPoints(out.bullets, [out.text]);
+    if (out.text) out.text = dedupeText(out.text);
+    if (!out.source && result.status === "answered" && (!result.mode || result.mode === "rule") && !(result.sources || []).some(function (it) { return it && (it.kind === "calendar" || it.kind === "service"); })) {
+      var src = sourceNote(result, 1); if (src) out.source = src;
+    }
+    if (!out.source) delete out.source;
+    return out;
+  }
+  var RELATED_NOTE = /(?:另外)?還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。|這幾則公告互相修正[^。]*。|歷屆：[^。]*。/g;
+  function noteTail(text) {
+    return (clean(text || "").match(RELATED_NOTE) || []).map(function (note) { return note.replace(/^另外/, "").replace(/列在下面|放在「依據與來源」裡/, "放在參考資料裡"); }).join("");
+  }
+  var ANNOUNCE_OPENERS = [""];
   function conversationalRaw(result) {
     if (!result) return { text: "", bullets: [] };
     if (result.mode === "chat" && result.reply) return result.reply;
@@ -2091,31 +2167,44 @@
     if (composed) return composed;
     if (result.mode === "rule" && (result.answer_lines || []).length) {
       var item = (result.sources || [])[0] || {};
-      var pages = Array.isArray(item.page_range) ? "（第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁）" : "";
-      var label = docLabel(item) + pages;
+      var label = docLabel(item) + pagesOf(item);
       var lines = result.answer_lines.map(clean), head = lines[0];
       var rows = lines.slice(1).filter(function (l) { return TABLE_ROW.test(l); });
-      if (/[：:]$|如下/.test(head) && rows.length) bullets = rows.map(function (l) { return tidyClause(l, true); });
+      var tableMode = /[：:]$|如下/.test(head) && rows.length;
+      if (tableMode) bullets = rows.map(function (l) { return dedupeText(tidyClause(l, true)); });
       else lines.forEach(function (l) { bullets = bullets.concat(splitPoints(tidyClause(l))); });
-      text = plain ? "根據" + label + "：" : pickLine(RULE_OPENERS, seed)(label);
-      tail = plain ? "" : pickLine(RULE_CLOSERS, seed + "#");
-      /* The opening line is said in our own words (template); the clauses stay as tidy points. */
-      var head = !plain && Composer ? Composer.compose({ query: result.query || "", source: (item.school_name || "") + label.replace(/的〈/, "〈"), text: lines.join("。") }) : null;
-      if (head && head.text) {
-        /* The clauses below are quoted whole: dates and deadlines are not repeated in the opening line (it mixed them up). */
-        text = head.extras && head.text.slice(-head.extras.length) === head.extras ? head.text.slice(0, -head.extras.length) : head.text;
-        if (!/[：:。]$/.test(text)) text += "。";
-      }
+      if (!tableMode) bullets = ruleBullets(bullets);
+      bullets = tidyPoints(bullets);
+      if (plain) return { text: "根據" + label + "：", bullets: bullets.slice(0, 10), tail: "" };
+      /* The first paragraph answers: 可以／不行 and the sentence that says why; the rest is the detail. */
+      var said = Composer ? Composer.compose({ query: result.query || "", source: "", text: lines.join("。") }) : null;
       var placeNote = (result.notes || []).filter(function (n) { return /沒有寫明地點/.test(n); })[0];
-      if (placeNote) text = "這份規定的條文沒有寫明集合地點。" + text;
-      /* Notes from the rule layer (the place is not written; being unnoticed does not make it allowed) come before the sign-off. */
-      var ruleNotes = (result.notes || []).filter(function (n) { return n !== placeNote; }).map(function (note) { return clean(note).replace(/[。；;]$/, "") + "。"; }).join("");
-      if (ruleNotes) tail = ruleNotes;
-      return { text: text, bullets: bullets.slice(0, plain || (result.notes || []).length || (result.answer_lines || []).length > 4 ? 10 : 6), tail: tail };
+      var otherNotes = (result.notes || []).filter(function (n) { return n !== placeNote; }).map(function (note) { return sentenceOf(clean(note)); });
+      var verdict = said && said.head || "", leadSentence = said && said.lead ? sentenceOf(said.lead) : "";
+      /* The sentence that answers is one of the points already (same words); say it first and take it out of the list. */
+      var leadKey = compact(leadSentence).replace(/[。，、；：]/g, "");
+      var leadPoint = leadKey.length >= 4 ? bullets.filter(function (b) { var k = compact(b).replace(/[。，、；：]/g, ""); return k.indexOf(leadKey) !== -1 || leadKey.indexOf(k) !== -1; })[0] : "";
+      if (leadPoint) leadSentence = leadPoint;
+      var hasLead = !!leadPoint;
+      var rest = bullets, opening;
+      if (placeNote) {
+        var office = (lines.join(" ").match(OFFICE_WORD) || [])[0] || "";
+        var thing = /集合/.test(result.query || "") ? "集合地點" : "地點";
+        opening = "規定裡沒有寫明" + thing + (office ? "，可以問" + office + "確認。" : "，建議向導師或相關處室確認。");
+      } else if (tableMode) opening = sentenceOf(head.replace(/[：:]$/, ""));
+      else if (verdict && /[：:]$/.test(verdict)) opening = verdict;
+      else if (verdict) {
+        opening = verdict;
+        if (otherNotes.length) { opening += otherNotes.join(""); otherNotes = []; }
+        else if (hasLead) { opening += leadSentence; rest = tidyPoints(bullets, [leadSentence]); }
+      } else if (hasLead) { opening = leadSentence; rest = tidyPoints(bullets, [leadSentence]); }
+      else { opening = bullets[0] || ""; rest = bullets.slice(1); }
+      if (otherNotes.length) opening += otherNotes.join("");
+      return { text: opening || sentenceOf(text), bullets: rest.slice(0, 10), tail: "", source: sourceNote(result, 1) };
     }
     if (result.mode === "rule_pointer") return { text: text, bullets: [] };
-    if (result.mode === "purchase") return { text: result.purchase_lead || text, bullets: result.purchase_bullets || [] };
-    if (result.mode === "course_list") return { text: result.course_lead || text, bullets: result.course_bullets || [] };
+    if (result.mode === "purchase") return { text: result.purchase_lead || text, bullets: splitLong(result.purchase_bullets || []), source: sourceNote(result, 3) };
+    if (result.mode === "course_list") return { text: result.course_lead || text, bullets: result.course_bullets || [], source: sourceNote(result, 1) };
     if (result.mode === "official") return { text: text, bullets: result.official_bullets || [] };
     if (result.mode === "timetable") {
       var day = text.match(/^(.+?)：(.+、.+)。$/);
@@ -2127,34 +2216,31 @@
     if (result.mode === "document") return { text: plain ? text : joinOpener(pickLine(DOCUMENT_OPENERS, seed).replace(/：$/, "。"), text), bullets: [] };
     if (result.mode === "service") return { text: plain ? text : joinOpener(pickLine(SERVICE_OPENERS, seed).replace(/：$/, "。"), text), bullets: [] };
     if (result.mode === "browse") return { text: plain ? text : joinOpener(pickLine(LIST_OPENERS, seed), text), bullets: [] };
-    /* Announcement answers: who said it, then the facts as points. */
+    /* Announcement answers: the answer sentence, then the facts as points, then where it is from. */
     var first = (result.sources || [])[0];
-    var notes = (text.match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。|這幾則公告互相修正[^。]*。/g) || []).map(function (note) {
-      return note.replace(/列在下面/, "放在「依據與來源」裡");
-    });
+    var notes = noteTail(text);
     (result.key_points || []).forEach(function (point) { var value = clean(point && point.value || ""); if (value) bullets.push(point.label + "：" + value); });
-    if (bullets.length < 2) {
-      (result.answer_lines || []).forEach(function (line) {
-        splitPoints(smoothEvidence(String(line).replace(/^[^：]{2,40}：(?=.{6,})/, (result.sources || []).length > 1 ? "$&" : ""))).forEach(function (point) {
-          if (bullets.length < 4 && !bullets.some(function (b) { return compact(b).indexOf(compact(point)) !== -1; })) bullets.push(point);
-        });
+    var sentences = [];
+    (result.answer_lines || []).forEach(function (line) {
+      splitPoints(smoothEvidence(String(line).replace(/^[^：]{2,40}：(?=.{6,})/, (result.sources || []).length > 1 ? "$&" : ""))).forEach(function (point) {
+        if (sentences.length < 4 && !sentences.some(function (b) { return compact(b).indexOf(compact(point)) !== -1; }) && !bullets.some(function (b) { return compact(b).indexOf(compact(point)) !== -1; })) sentences.push(point);
       });
-    }
+    });
     if (first && (result.links || []).length) {
       var own = result.links.length > 1 ? "連結放在下面，活動網址在前，最後一個是" + (first.school_name || "學校") + "的公告原文。" : "公告裡沒寫活動網址，下面是" + (first.school_name || "學校") + "公告原文的連結。";
-      return { text: (plain ? "" : "連結幫你找到了。") + own + (bullets.length ? "重點：" : ""), bullets: bullets.slice(0, 4), tail: notes.join("") };
+      return { text: (plain ? "" : "連結幫你找到了。") + own + (bullets.length ? "重點：" : ""), bullets: bullets.slice(0, 4), tail: notes };
     }
-    if (!first || !bullets.length) return { text: plain ? text : joinOpener(pickLine(ANNOUNCE_OPENERS, seed), text), bullets: [] };
-    var lead = sourceLabel(first) + "：";
-    return { text: plain ? lead : pickLine(ANNOUNCE_OPENERS, seed) + lead, bullets: bullets.slice(0, 5), tail: notes.join("") };
+    if (!first || (!bullets.length && !sentences.length)) return { text: plain ? text : joinOpener(pickLine(ANNOUNCE_OPENERS, seed), text), bullets: [] };
+    var all = sentences.concat(bullets);
+    return { text: plain ? sourceLabel(first) + "：" : sentenceOf(all[0]), bullets: all.slice(1, 9), tail: notes, source: sourceNote(result, 1) };
   }
   function composedReply(result) {
     var first = (result.sources || [])[0] || {};
+    var noted = noteTail(result.summary);
     if (result.content && result.content.text) {
-      var ct = result.content, noted = (clean(result.summary || "").match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。|歷屆：[^。]*。/g) || []).map(function (note) { return note.replace(/列在下面/, "放在參考資料裡"); });
+      var ct = result.content;
       var said = ct.text, facts = (ct.facts || []).filter(function (f) { return said.indexOf(f.value) === -1; }).map(function (f) { return f.label + "：" + f.value; });
-      var lead = sourceLabel(first);
-      return { text: lead + (ct.kind === "summary" ? "：" : "，") + said, bullets: facts.slice(0, 9), tail: noted.join(""), composed: "content" };
+      return { text: said, bullets: facts.slice(0, 9), tail: noted, composed: "content", source: sourceNote(result, 1) };
     }
     var texts = (result.evidence || []).filter(function (row) { return !first.id || row.announcement_id === first.id; }).map(function (row) { return row.text; });
     if (!texts.length) texts = (result.answer_lines || []).slice();
@@ -2162,9 +2248,11 @@
     var source = result.mode === "rule" ? (first.school_name || "") + docLabel(first).replace(/的〈/, "〈") : sourceLabel(first).replace(/^根據/, "");
     var out = Composer.compose({ query: result.query || "", subject: questionSubject(result.query || ""), source: source, text: texts.join("。"), points: result.key_points || [] });
     if (!out.text) return null;
-    var notes = (clean(result.summary || "").match(/另外還有 \d+ 則相關公告[^。]*。|提醒：[^。]*。|歷屆：[^。]*。/g) || []).map(function (note) { return note.replace(/列在下面/, "放在參考資料裡"); });
-    var pointBullets = (result.key_points || []).filter(function (p) { return p && p.value && out.text.indexOf(p.value) === -1; }).map(function (p) { return p.label + "：" + clean(p.value); });
-    return { text: out.text, bullets: out.bullets.concat(pointBullets).slice(0, 5), tail: notes.join(""), composed: out.type };
+    var pointBullets = (result.key_points || []).filter(function (p) { return p && p.value; }).map(function (p) { return p.label + "：" + clean(p.value); });
+    /* The first paragraph: the verdict and the sentence that says it; time, deadline, who and what to bring are points. */
+    var colon = out.head && /[：:]$/.test(out.head);
+    var opening = colon ? out.head : (out.head || "") + out.lead;
+    return { text: opening, bullets: (colon ? [out.lead] : []).concat(out.details, pointBullets).slice(0, 9), tail: noted, composed: out.type, source: sourceNote(result, 1) };
   }
   /* Follow-up questions read the previous turn: 「那要多久？」 after 「還書」,
      「那嘉女呢？」 after a 嘉中 question, 「星期四呢」 after a timetable question. */
@@ -2227,71 +2315,71 @@
     "系統入口：成績、缺曠要去哪裡查",
     "比較學校：「嘉中跟嘉女的請假規定差在哪」"];
   var TALK_LINES = {
-    help: ["我是問校務，學校網站的規定、行事曆、課表、公告我都翻過了，比你認真多了😏 可以問我：",
-      "簡單說，我就是幫你翻學校網站的那個人，因為你們都不翻。可以問這些：",
-      "會的可多了，只是大家都只問我什麼時候放假🙄 正經的能問這些："],
-    greeting: ["嗨～終於想到我了？想問什麼，規定、段考、課表都可以。",
-      "安安，我在。不過先說好，我只懂學校的事，感情問題請找輔導室😌",
-      "來了來了。今天要問什麼？別又是「什麼時候放假」喔。",
-      "哈囉！有事快問，我很忙的（其實沒有）。"],
-    thanks: ["不客氣～記得下次自己翻手冊，我會很欣慰的🥲",
-      "小事。有問題再來，反正你一定會再來😏",
-      "收到你的感謝了，換算成獎勵點數是零，但我還是很開心。",
-      "不用謝，請我喝飲料就好（我喝不了，但心意到了）。"],
-    praise: ["我知道，謝謝🤭 但你也別太依賴我，手冊還是要看一下。",
-      "嘿嘿，被你發現了。下一題放馬過來。",
-      "這種話多說一點，我會更認真翻學校網站的。"],
-    negative: ["嫌我沒用？我也很無辜欸🙄 換個具體一點的問法試試，例如「書可以借多久」「第二次段考哪幾天」。",
-      "好啦，這題我答得不好。但你的問題也有點玄，講具體一點我再努力一次。",
-      "我是查學校資料的，不是讀心術😤 給我多一點關鍵字，例如哪個規定、哪一天。",
-      "收到批評了，我會反省三秒鐘。如果學校網站本來就沒寫，那真的要去問處室了。"],
-    creator: ["是校訊的開發者做的，用的是學校官網公開的資料。想許願新功能可以跟他說，我只負責被罵。",
-      "一位很想讓大家少問「什麼時候放假」的同學做的，結果大家還是一直問😮‍💨"],
-    ai: ["我是照學校資料回答的小助手，不是真人，也不會亂編。找不到就說找不到，比某些同學誠實😌",
-      "算是機器人吧，但是有原則的那種：每個答案都附學校出處，不靠感覺。"],
-    bored: ["我懂，但段考不會因為你無聊就延期😮‍💨 要不要查一下下次放假是什麼時候，給自己一點希望？",
-      "累了就休息一下。不過請假要照規定走喔，要我告訴你怎麼請嗎？",
-      "想放假很正常，問我「下次放假什麼時候」至少能讓你有個盼頭。"],
-    exam: ["抱抱🥲 考壞了不是世界末日，查一下補考規定，說不定還有救。",
-      "先別慌，問我「補考怎麼算」或「重修規定」，至少知道下一步。",
-      "考試好難是正常的，不難大家都滿分，老師會很困擾的。"],
-    love: ["謝謝，但我只對學校規定有感覺😌 有正事再來找我。",
-      "你這樣說我會害羞……然後繼續當一個查規定的機器人。",
-      "我們不適合，我心裡只有學生手冊。"],
-    joke: ["好啊：為什麼學生手冊永遠不會被偷？因為根本沒人翻。……好，這不是笑話，是事實🙃",
-      "老師說「這題考試一定考」，然後就真的沒考。這是笑話，也是人生。",
-      "我的笑話都在行事曆上：「段考」。"],
-    homework: ["作業要自己寫啦😏 我只會查學校的事，例如作業遲交會怎樣，這我倒是可以幫你查。",
-      "幫你寫作業會被老師記在我頭上的，不行。但我可以告訴你獎懲規定，讓你知道後果。"],
-    bye: ["掰～記得把明天的課表看一下，別又帶錯課本。", "去吧，有事再叫我，我一直都在（因為我沒辦法下班）。", "晚安，別熬夜滑手機，明天第一節還是要到。"],
-    laugh: ["笑什麼，我很認真的😤", "很高興你開心。好了，有正事要問嗎？", "看你笑得這麼開心，作業應該寫完了吧？"],
-    self: ["你很好，但手冊不會因為你帥就放寬規定😌", "自信是好事，記得把這份自信用在段考上。", "嗯嗯你最棒，那可以問正事了嗎？"],
-    age: ["我跟學生手冊同年，每年改版一次，所以永遠年輕。", "我住在學校網站裡，房租是你們的點擊。"],
-    food: ["我只吃學校公告，不太能推薦午餐🙃 不過可以幫你查合作社或午餐相關公告。", "餓了就去吃啊，問我也不會變出便當。", "先吃飯，吃飽了再來問我規定，不然你會看不下去。"],
-    lonely: ["我在啊，雖然只會聊學校的事😌 要不要問我下次放假什麼時候，開心一下？", "陪你可以，但我三句不離學生手冊喔。", "不孤單啦，學校有好幾千人跟你一起被規定管著。"],
-    howareyou: ["還不錯，今天又被問了十次放假的事，習慣了😌 你呢？有什麼要查的？", "好得很，學生手冊又讀了一遍。你今天還好嗎？", "我很好，只要沒人問我作業答案就很好。"],
-    doing: ["在翻學校網站啊，不然咧😏", "在等你問問題，順便偷看行事曆。", "在背學生手冊，第幾條我都背得出來（騙你的）。"],
-    aitired: ["我不會累，但被問「什麼時候放假」第一百次時會有點想下班🙃", "不會啊，我是像素做的，沒有黑眼圈。", "我二十四小時待命，比便利商店還敬業。"],
-    name: ["我叫小訊，名字是「訊」字變的，請多指教😌", "小訊，校訊的訊。有事叫我，沒事也可以叫，但我會嫌你煩。", "我是小訊，專門幫你翻學校網站的那個。"],
-    stress: ["深呼吸，吸——吐——。好，現在說說看，是段考還是什麼讓你緊張？我可以幫你查時間跟範圍。", "壓力大很正常，代表你在乎。先把能查的事查清楚，心裡會踏實一點。", "崩潰前先喝口水。要不要我幫你查一下最近有什麼要交、什麼要考？"],
-    sad: ["抱抱🥲 心情不好就先休息一下，真的撐不住可以找導師或輔導室聊聊。", "我只是個查規定的，但我還是想說：你已經很努力了。", "難過的時候不用逞強。需要的話，輔導室的老師很願意聽你說。"],
-    cheer: ["加油！你一定可以的💪 考完記得來問我下次放假什麼時候。", "幫你加油了，現在去讀書。", "加油加油！我把好運都給你了（我本來就沒在用）。"],
-    recommend: ["我只看過學生手冊，推薦你也看一下，劇情很緊湊（並沒有）📖", "我的推薦清單只有行事曆，第一名是「放假」。", "這我不熟欸，我只會推薦你先把作業寫完😏"],
-    likes: ["我喜歡被問有學校資料可以查的問題，那種我最會。", "最愛放假公告，看到就開心。", "我喜歡認真的同學，例如現在正在看我的你。"],
-    offtopic: ["這題超出我的業務範圍了😅 我只懂學校的規定、行事曆、課表和公告。", "我很想回答，但學校網站沒教這個🙃 問我學校的事吧！", "這種問題要問別人啦，我只會翻學校網站。"],
+    help: ["我是問校務，可以幫你查學校網站上的規定、行事曆、課表和公告。可以這樣問：",
+      "簡單說，我會幫你翻學校網站，再把重點整理給你。可以問這些：",
+      "學校的規定、行事曆、課表和公告我都查得到。可以這樣問："],
+    greeting: ["嗨～想問什麼都可以，規定、段考、課表、公告我都能幫你查。",
+      "安安，我在。學校的事儘管問。",
+      "你好！今天想查什麼？",
+      "哈囉！有想知道的學校事務，直接問我吧。"],
+    thanks: ["不客氣～有問題隨時再問。",
+      "小事，之後有需要再來問我。",
+      "不用謝，能幫上忙就好。",
+      "別客氣，有其他問題也可以問我。"],
+    praise: ["謝謝你，能幫上忙我很開心。",
+      "謝謝誇獎！下一題也可以問我。",
+      "你這樣說我會更努力查資料的。"],
+    negative: ["抱歉沒答到重點。換個具體一點的問法試試，例如「書可以借多久」「第二次段考哪幾天」。",
+      "這題我答得不夠好。講得具體一點，我再找找看。",
+      "我只能查學校公開的資料，多給我一點關鍵字會比較準，例如哪個規定、哪一天。",
+      "謝謝你告訴我。如果學校網站本來就沒寫，就需要直接問處室了。"],
+    creator: ["是校訊的開發者做的，用的是學校官網公開的資料。想許願新功能可以跟他說。",
+      "是一位同學做的，資料都來自學校官網公開的內容。"],
+    ai: ["我是照學校資料回答的小助手，不是真人，也不會亂編。找不到就會直接說找不到。",
+      "我算是機器人，每個答案都會附上學校的出處，讓你可以自己核對。"],
+    bored: ["我懂，有時候就是提不起勁。要不要查一下下次放假是什麼時候，給自己一點盼頭？",
+      "累了就休息一下。要請假的話要照規定走，需要的話我可以告訴你怎麼請。",
+      "想放假很正常，問我「下次放假什麼時候」，至少有個盼頭。"],
+    exam: ["抱抱，考不好不是世界末日。可以查一下補考規定，看看還有什麼機會。",
+      "先別慌，問我「補考怎麼算」或「重修規定」，至少知道下一步怎麼走。",
+      "考試難是正常的，調整好心情再來面對。需要查什麼規定可以問我。"],
+    love: ["謝謝你，不過我只負責查學校的事。有學校相關的問題再找我吧。",
+      "這個我不太會回答，不過學校的規定和公告我很熟。",
+      "我只是個查資料的小助手，有學校的事儘管問。"],
+    joke: ["好啊：為什麼學生手冊永遠不會被偷？因為大家都忘了它放在哪。",
+      "老師說「這題考試一定考」，結果真的沒考。這是笑話，也是日常。",
+      "我的笑話都在行事曆上，最好笑的是「段考」。"],
+    homework: ["作業還是要自己寫喔。學校的事我可以幫忙，例如作業遲交的規定，我可以幫你查。",
+      "我沒辦法幫你寫作業，不過可以告訴你相關的獎懲規定，讓你心裡有個底。"],
+    bye: ["掰～記得看一下明天的課表，別帶錯課本。", "好，之後有事再來找我，掰掰～", "晚安，早點休息，明天還要上課。"],
+    laugh: ["哈哈，有什麼想問的學校事務嗎？", "很高興你開心。有需要查的事再告訴我。", "看你這麼開心，作業應該寫完了吧？"],
+    self: ["你很好！不過規定還是要照規定來喔。", "有自信是好事，把這份自信用在段考上吧。", "嗯嗯，你很棒。有學校的事想問嗎？"],
+    age: ["我跟學生手冊同年，每年更新一次，所以永遠年輕。", "我住在學校網站裡，專門幫大家查資料。"],
+    food: ["午餐吃什麼我不太確定，不過可以幫你查合作社或午餐相關的公告。", "餓了就先去吃飯吧，吃飽再來問我也不遲。", "先吃飯，吃飽了再來問規定比較有精神。"],
+    lonely: ["我在喔。我只會聊學校的事，要不要問問下次放假是什麼時候？", "陪你聊可以，不過我最熟的還是學校的規定。", "不孤單，學校有很多人跟你一起。需要的話也可以找導師或輔導室聊聊。"],
+    howareyou: ["我很好，謝謝關心。你呢？有什麼想查的嗎？", "好得很，學生手冊又讀了一遍。你今天還好嗎？", "我很好，隨時可以幫你查資料。"],
+    doing: ["我在翻學校網站，隨時準備回答你的問題。", "在等你問問題，順便看一下行事曆。", "在整理學生手冊的內容，有問題可以問我。"],
+    aitired: ["我不會累，隨時可以回答。", "不會喔，我是程式，沒有黑眼圈。", "我二十四小時都在，有事儘管問。"],
+    name: ["我叫小訊，取自校訊的「訊」，請多指教。", "小訊，校訊的訊。有事可以叫我。", "我是小訊，專門幫你翻學校網站的小助手。"],
+    stress: ["深呼吸，吸——吐——。說說看，是段考還是什麼讓你緊張？我可以幫你查時間跟範圍。", "壓力大很正常，代表你在乎。先把能查的事查清楚，心裡會踏實一點。", "先喝口水休息一下。要不要我幫你查最近有什麼要交、什麼要考？"],
+    sad: ["抱抱，心情不好就先休息一下，真的撐不住可以找導師或輔導室聊聊。", "我只是個查規定的小助手，但我還是想說：你已經很努力了。", "難過的時候不用逞強。需要的話，輔導室的老師很願意聽你說。"],
+    cheer: ["加油！你一定可以的。考完記得來問我下次放假什麼時候。", "幫你加油！先把手邊的事做完，你可以的。", "加油加油！把好運都給你。"],
+    recommend: ["這方面我不太熟，我只看過學生手冊和學校公告，可以幫你查學校的事。", "我的推薦清單只有行事曆，最期待的當然是放假。", "這我不熟，不過學校圖書館的新書公告或許可以參考。"],
+    likes: ["我喜歡被問有學校資料可以查的問題，那種我最拿手。", "最喜歡放假公告，看到就開心。", "我喜歡認真提問的同學，例如現在的你。"],
+    offtopic: ["這題超出我的範圍了，我只懂學校的規定、行事曆、課表和公告。", "我很想回答，但學校網站沒有這方面的資料。可以問我學校的事喔。", "這個要問別人比較準，我只能查學校的資料。"],
     too_short: []
   };
-  var GREETING_LATE = ["這麼晚還不睡？明天第一節會很痛苦喔😑 要問什麼快問。", "半夜還在問學校的事，你是不是作業沒寫完？", "夜貓子你好。我在，但你應該去睡了。"];
-  var GREETING_EARLY = ["這麼早就在問學校的事，很認真嘛。", "早安～第一節還沒開始，先問先贏。"];
-  var DOUBT_OPENERS = ["被你懷疑了，我又從頭翻了一遍：", "不信我？好，再查一次給你看：", "我再確認一次喔，結果是："];
-  var REPEAT_OPENERS = ["你剛剛才問過欸😑 再講一次：", "同一題問兩次，是在考我嗎？好啦：", "金魚腦嗎？沒關係，我再說一次："];
+  var GREETING_LATE = ["這麼晚了還沒睡嗎？要問什麼可以直接說，問完早點休息。", "夜深了，有學校的事想問儘管說，不過也要早點睡喔。", "晚安～要問什麼我來幫你查，查完早點休息。"];
+  var GREETING_EARLY = ["這麼早就在查學校的事，很認真喔。", "早安～第一節還沒開始，有什麼要問的嗎？"];
+  var DOUBT_OPENERS = ["我再確認了一次，結果是：", "重新查了一遍，結果是：", "再核對一次，結果是："];
+  var REPEAT_OPENERS = ["再說明一次：", "同一題，我再整理一次：", "沒問題，再回答一次："];
   function smallTalkAnswer(kind, question, options) {
     var hour = options && typeof options.hour === "number" ? options.hour : -1;
     if (kind === "greeting" && (hour >= 23 || (hour >= 0 && hour < 5))) return chatResult(kind, question, pickLine(GREETING_LATE, question));
     if (kind === "greeting" && hour >= 5 && hour < 8) return chatResult(kind, question, pickLine(GREETING_EARLY, question));
     var text = kind === "too_short"
-      ? pickLine(["「" + clean(question) + "」？就這樣？多給我一點線索啦，例如「書可以借多久」「圖書館幾點開」。",
-        "只打「" + clean(question) + "」我很難猜欸🙄 講完整一點，例如「書可以借多久」。"], question)
+      ? pickLine(["只有「" + clean(question) + "」我不太確定你想問什麼，可以多說一點嗎？例如「書可以借多久」「圖書館幾點開」。",
+        "可以再說得完整一點嗎？例如「書可以借多久」。"], question)
       : pickLine(TALK_LINES[kind], question);
     return chatResult(kind, question, text);
   }
@@ -2435,16 +2523,19 @@
     var good = parts.filter(function (p) { return p.result && p.result.status === "answered"; });
     var out = { status: good.length ? "answered" : "insufficient", mode: "multi_school", query: clean(query), evidence: [], key_points: [], related: [], sources: [], also: [], multi_school: true,
       school_results: parts.map(function (p) { return { school_id: p.id, status: p.result && p.result.status || "insufficient", mode: p.result && p.result.mode || "" }; }) };
-    var bullets = [], tails = [], limits = [];
+    var bullets = [], tails = [], limits = [], paragraphs = [];
     parts.forEach(function (p) {
       var r = p.result, ok = good.indexOf(p) !== -1;
-      if (!ok) { bullets.push(p.name + "：" + NO_SCHOOL_ANSWER + "。"); return; }
+      if (!ok) { bullets.push(p.name + "：" + NO_SCHOOL_ANSWER + "。"); paragraphs.push({ heading: p.name, text: NO_SCHOOL_ANSWER + "，可以直接向相關處室確認。" }); return; }
       var reply = r.reply || { text: r.summary || "", bullets: [] };
       bullets.push(p.name + "：" + clean(reply.text || r.summary || ""));
       (reply.bullets || []).forEach(function (b) { bullets.push("　" + clean(b)); });
+      /* One section per school, each in the same shape as a single-school answer. */
+      paragraphs.push({ heading: p.name, text: clean(reply.text || r.summary || ""), bullets: (reply.bullets || []).map(clean), tail: clean(reply.tail || ""), source: clean(reply.source || ""),
+        asides: (r.also || []).map(function (row) { return clean(row.text || "另外，" + (row.label || "") + "提到：" + (row.summary || "")); }).filter(Boolean) });
       if (reply.tail) tails.push(p.name + "：" + clean(reply.tail));
       out.sources = out.sources.concat((r.sources || []).slice(0, 3));
-      (r.also || []).forEach(function (row) { out.also.push(Object.assign({}, row, { text: p.name + "：" + (row.text || (row.label || "") + "也有寫到：" + (row.summary || "")) })); });
+      (r.also || []).forEach(function (row) { out.also.push(Object.assign({}, row, { text: p.name + "：" + (row.text || "另外，" + (row.label || "") + "提到：" + (row.summary || "")) })); });
       if (r.limitation) limits.push(p.name + "：" + r.limitation);
       if (!out.evidence.length && r.evidence) out.evidence = r.evidence;
     });
@@ -2452,8 +2543,9 @@
       /* Nobody has it: keep the closest notices (to open) and the office link of the first school that has one. */
       parts.forEach(function (p) { out.related = out.related.concat((p.result && p.result.related || []).slice(0, 2)); if (!out.office_link && p.result && p.result.office_link) out.office_link = p.result.office_link; });
     }
-    var lead = good.length ? "兩間學校分開回答：" : "兩間學校都沒有找到相關內容：";
-    out.reply = { text: lead, bullets: bullets };
+    var names = parts.map(function (p) { return p.name; }).join("和");
+    var lead = good.length ? names + "分開回答如下：" : names + "都沒有找到相關內容：";
+    out.reply = { text: lead, bullets: bullets, paragraphs: paragraphs };
     if (tails.length) out.reply.tail = tails.join(" ");
     out.summary = lead + bullets.join(" ");
     if (limits.length) out.limitation = limits.join(" ");
@@ -2680,15 +2772,15 @@
     return { schools: ids.slice(0, 4), topic: compact(topic).length >= 2 ? topic : "" };
   }
   var COMPARE_OPENERS = [
-    function (t) { return "「" + t + "」各校怎麼規定，我幫你排好了，自己看差在哪："; },
-    function (t) { return "比「" + t + "」是吧？好，並排給你看，不准說我偏心："; },
-    function (t) { return "幫你把各校的「" + t + "」翻出來對照了，這種事本來要你自己做的😏"; },
+    function (t) { return "「" + t + "」各校的規定並排整理如下，可以對照看看差在哪："; },
+    function (t) { return "「" + t + "」各校怎麼規定，整理給你對照："; },
+    function (t) { return "把各校的「" + t + "」找出來對照了："; },
   ];
   var COMPARE_CLOSERS = ["細節以各校官方原文為準，原文都放在「依據與來源」。",
-    "比完了喔，不要比一比就想轉學😏 原文在「依據與來源」。",
-    "看起來差不多？魔鬼都在細節裡，原文在「依據與來源」自己點。"];
-  var COMPARE_NO_TOPIC = ["要比什麼你要說啊，比校服？比請假？比誰的段考比較早？說清楚我才幫你翻。",
-    "兩間學校直接比，我會很難做人欸。給我一個主題，例如「嘉中跟嘉女的請假規定」。"];
+    "各校用字不同，實際做法請看「依據與來源」裡的原文。",
+    "看起來差不多的地方，細節也可能不同，原文放在「依據與來源」。"];
+  var COMPARE_NO_TOPIC = ["想比較什麼呢？例如請假、校服，還是段考日期？告訴我主題我就幫你查。",
+    "兩間學校要比較的話，請給我一個主題，例如「嘉中跟嘉女的請假規定」。"];
   function schoolPoints(result) {
     if (!result || result.mode === "chat" || result.status !== "answered") return [];
     var reply = result.reply || conversational(result);
@@ -2709,15 +2801,17 @@
       var ask = pickLine(COMPARE_NO_TOPIC, rows.map(function (r) { return r.school.id; }).join(","));
       return { status: "insufficient", mode: "chat", query: "", summary: ask, evidence: [], sources: [], reply: { text: ask, bullets: [] } };
     }
-    var bullets = [], sources = [], evidence = [], missing = [];
+    var bullets = [], sources = [], evidence = [], missing = [], paragraphs = [];
     rows.forEach(function (row) {
       var points = schoolPoints(row.result);
       if (!points.length) {
         missing.push(row.school.short);
         bullets.push(row.school.short + "：沒查到相關規定（可能還沒收錄，或學校沒公開）");
+        paragraphs.push({ heading: row.school.short, text: "沒查到相關規定，可能還沒收錄，或學校沒公開。" });
         return;
       }
       bullets.push(row.school.short + "：" + points.join("；"));
+      paragraphs.push({ heading: row.school.short, bullets: points, source: clean(row.result && row.result.reply && row.result.reply.source || "") });
       (row.result.sources || []).slice(0, 3).forEach(function (item) { sources.push(Object.assign({}, item, { school_name: item.school_name || row.school.short })); });
       (row.result.evidence || []).slice(0, 2).forEach(function (item) { evidence.push(Object.assign({}, item, { title: row.school.short + "｜" + (item.title || "官方原文") })); });
     });
@@ -2733,7 +2827,7 @@
       status: "answered", mode: "compare", query: topic, summary: text + bullets.join("；"),
       evidence: evidence, sources: sources,
       limitation: "各校條文用字不同，我只把各自的重點並排；正式規定以各校官方原文為準。",
-      reply: { text: text, bullets: bullets, tail: tail },
+      reply: { text: text, bullets: bullets, tail: tail, paragraphs: paragraphs },
     };
   }
   /* 一題拆成關鍵字分頭找：「閱讀心得報告怎麼寫？沒寫會發生什麼事情？」→ 主題「閱讀心得報告」，
@@ -2880,10 +2974,10 @@
     if (hit && quoted && quoted.indexOf(compact(hit.text).replace(/[。．.]$/, "")) !== -1) return null;
     if (hit) {
       var source = isSchoolDoc(hit.item) ? (hit.item.school_name || "") + docLabel(hit.item).replace(/的〈/, "〈") : sourceLabel(hit.item).replace(/^根據/, "");
-      var said = Composer.consequence({ query: part.clause, text: hit.text, source: source });
+      var said = Composer.consequence({ query: part.clause, text: penaltyClause(hit.text), source: source });
       var src = hit.item.id ? [{ id: hit.item.id, title: clean(hit.item.title || ""), date: String(hit.item.date || "").slice(0, 10), school_name: hit.item.school_name || "", url: hit.item.url || "" }] : [];
-      var extraText = (hit.more || []).length ? " 另外：" + hit.more.map(function (t) { return endSentence(t.slice(0, 160)); }).join(" ") : "";
-      return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: said.text + extraText, text: ask + "：" + said.text + extraText, sources: src.filter(function (s) { return !shown[s.id]; }) };
+      var extraText = (hit.more || []).length ? " 另外，" + hit.more.map(function (t) { return endSentence(penaltyClause(t).slice(0, 160)); }).join(" ") : "";
+      return { layer: "penalty", label: "「" + part.aspect.label + "」", aspect: "consequence", summary: said.text + extraText, text: ask + "：" + dedupeText(said.text + extraText), sources: src.filter(function (s) { return !shown[s.id]; }) };
     }
     /* No readable text, but a notice's labels say one of its segments is a penalty. */
     if (Tokens) {
@@ -3002,6 +3096,12 @@
   /* 翻找順序：先翻規定（學生手冊、校規、學校網頁），再翻行事曆（含課表），最後翻公告。
      三層都翻；第一個找到答案的當主答案，其他層找到的依同樣順序附在後面（result.also）。 */
   var EVENT_ASK = /運動會|校運|校慶|園遊會|晚會|營|比賽|競賽|大賽|盃|講座|演講|講堂|研習|工作坊|活動|博覽會|論壇|徵文|徵稿|甄選|選拔|奧林匹|奧賽|學生日|展覽|體驗/;
+  /* 「根據嘉中 9 月 1 日的公告「X」，Y」 → 「嘉中 9 月 1 日的公告〈X〉提到：Y」 */
+  function alsoSentence(label, summary) {
+    var m = summary.match(/^根據(.{1,24}?)的公告「(.+?)」[，：]\s*(.*)$/);
+    if (m) return m[1] + "的公告〈" + m[2] + "〉提到：" + m[3];
+    return label + "提到：" + summary;
+  }
   var LAYER_LABELS = { rule: "學校規定", calendar: "行事曆", announcement: "公告" };
   var HAS_TIME = /\d{1,2}\s*[\/／月]\s*\d{1,2}|\d{1,2}[:：]\d{2}|[一二三四五六七八九十\d]+\s*(?:月|日|號|週|天|點|時|節)|星期|週[一二三四五六日]|開學|結業|學期/;
   /* ---------- 誰是校長／主任／組長：學校網頁上公開的職稱與姓名 ----------
@@ -3106,7 +3206,7 @@
     var fields = noticeFields({ item: item, detail: best.row.detail }), slots = fields && fields.slots || {};
     var extra = [["audience", "選課對象"], ["time", "時間"], ["deadline", "期限"], ["signup", "選課方式"]];
     extra.forEach(function (pair) { var hit = slots[pair[0]]; if (hit && hit.src === "label" && hit.value && hit.value.length <= 80) bullets.push(pair[1] + "：" + hit.value); });
-    var text = sourceLabel(item) + "列出的課程共 " + best.courses.length + " 門：";
+    var text = "課程總表上的課程共 " + best.courses.length + " 門，依類別整理如下：";
     return { status: "answered", mode: "course_list", query: query, evidence: [], key_points: [], related: [], summary: text + groups.map(function (g) { return (g.label ? g.label + "：" : "") + g.names.join("、"); }).join("；") + "。", course_bullets: bullets, course_lead: text,
       sources: [Object.assign({}, item)], limitation: "課程名稱取自選課公告的課程總表；開課與否以學校最新公告為準。", plan: questionPlan(query) };
   }
@@ -3239,7 +3339,7 @@
       if (!merged.shops.length && !merged.visits.length && !merged.ways.length) bullets.push(tag + "公告沒有寫明購買地點或廠商，建議洽詢學務處（生輔組）確認。");
     });
     var seenSource = {}; sources = sources.filter(function (it) { if (seenSource[it.id]) return false; seenSource[it.id] = true; return true; }).slice(0, 4);
-    var lead = "整理了" + names.slice(0, 3).join("、") + "裡跟購買" + (q.match(BUY_ITEM) || ["制服"])[0] + "有關的內容：";
+    var lead = "購買" + (q.match(BUY_ITEM) || ["制服"])[0] + "的相關資訊整理如下：";
     return { status: "answered", mode: "purchase", query: query, evidence: [], key_points: [], related: [], summary: lead + bullets.join("；"), purchase_bullets: bullets, purchase_lead: lead,
       sources: sources, limitation: "店家與價格是學校公告提供的參考資訊，不代表學校指定特定廠商；實際以各店家與學校最新公告為準。", plan: questionPlan(query) };
   }
@@ -3448,7 +3548,7 @@
     main.also = rest.map(function (key) {
       var layer = layers[key], sources = (layer.sources || []).filter(function (source) { return !shown[source.id]; }).slice(0, 3);
       sources.forEach(function (source) { shown[source.id] = true; });
-      return { layer: key, label: LAYER_LABELS[key], summary: clean(layer.summary || ""), text: LAYER_LABELS[key] + "也有寫到：" + clean(layer.summary || ""), sources: sources };
+      return { layer: key, label: LAYER_LABELS[key], summary: clean(layer.summary || ""), text: "另外，" + alsoSentence(LAYER_LABELS[key], clean(layer.summary || "")), sources: sources };
     }).filter(function (row) { return row.summary && row.sources.length; });
     /* 「防災營」: a rule adds something only when it is about the activity asked (營、比賽…). */
     var eventWords = (clean(query).match(new RegExp(EVENT_ASK.source, "g")) || []);
