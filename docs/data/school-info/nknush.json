@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-07T10:59:07+08:00",
+ "generated_at": "2026-11-07T13:33:29+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -684,25 +684,37 @@
    "page_id": 243630918401596,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/代收代辦/",
    "label": "代收代辦",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 49
+   "order": 49,
+   "checked_at": "2026-11-07T13:33:26+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "代收代辦"
+   ]
   },
   "227874953903069": {
    "page_id": 227874953903069,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/職業安全/",
    "label": "職業安全",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "總務處"
    ],
-   "order": 50
+   "order": 50,
+   "checked_at": "2026-11-07T13:33:28+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "職業安全"
+   ]
   },
   "89144176392083": {
    "page_id": 89144176392083,
@@ -1224,6 +1236,30 @@
     "總務處業務職掌"
    ],
    "order": 94
+  },
+  "56176296861042": {
+   "page_id": 56176296861042,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/%e4%bb%a3%e6%94%b6%e4%bb%a3%e8%be%a6/",
+   "label": "代收代辦",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "代收代辦"
+   ],
+   "order": 95
+  },
+  "158176865142928": {
+   "page_id": 158176865142928,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/general-affairs-office/%e8%81%b7%e6%a5%ad%e5%ae%89%e5%85%a8/",
+   "label": "職業安全",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "職業安全"
+   ],
+   "order": 96
   }
  },
  "handbook": {},
@@ -1525,5 +1561,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-07T10:59:07+08:00"
+ "last_run_at": "2026-11-07T13:33:29+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-07T10:59:22+08:00",
+ "generated_at": "2026-11-07T13:34:00+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -3188,12 +3188,51 @@
    "page_id": 92380448215049,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4114.php",
    "label": "交通資訊",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 35
+   "order": 35,
+   "checked_at": "2026-11-07T13:33:58+08:00",
+   "path": [
+    "學校簡介",
+    "交通資訊"
+   ],
+   "changed_at": "2026-11-07T13:33:58+08:00",
+   "content_hash": "ca14bab875015c4e81b906b1afbc8c99c8ec5297b0b381ce12316de625317df1",
+   "doc_links": [],
+   "keywords": [
+    "公車"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-92380448215049.json",
+   "detail_revision": "9ae5614b9ad5532b7eaf501adf91fc6cfd807ad57164a5f5c4787be46a1fb00c",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "4109304343210": {
    "page_id": 4109304343210,
@@ -4157,6 +4196,48 @@
        "#safety"
       ],
       "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "kssh-info-92380448215049",
+   "kind": "school_info",
+   "title": "學校簡介 › 交通資訊",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4114.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "公車"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-92380448215049.json",
+   "detail_revision": "9ae5614b9ad5532b7eaf501adf91fc6cfd807ad57164a5f5c4787be46a1fb00c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "place"
+      ]
      }
     ]
    }
@@ -6756,5 +6837,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-07T10:59:22+08:00"
+ "last_run_at": "2026-11-07T13:34:00+08:00"
 }

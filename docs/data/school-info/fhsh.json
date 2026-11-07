@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-07T10:59:16+08:00",
+ "generated_at": "2026-11-07T13:33:54+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -8412,23 +8412,809 @@
    "page_id": 234531659288705,
    "url": "https://www.fhsh.khc.edu.tw/library/%e5%9c%96%e6%9b%b8%e9%a4%a8%e5%85%ac%e5%91%8a",
    "label": "處室公告",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 54
+   "order": 54,
+   "checked_at": "2026-11-07T13:33:34+08:00",
+   "path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "changed_at": "2026-11-07T13:33:34+08:00",
+   "content_hash": "d99455a5e0e280b2e070c3e82b79da4e8d887a86d044c42d73112c9844759166",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "圖書館",
+    "競賽",
+    "服務學習",
+    "申請",
+    "研習",
+    "自主學習",
+    "徵文",
+    "比賽",
+    "講座"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-234531659288705.json",
+   "detail_revision": "074397f86ee14e0c8027b09b75691270339aa95c5d7e053f1544f8add4e012a6",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "處室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "北教大"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "展覽"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "自修室",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "177919152583784": {
    "page_id": 177919152583784,
    "url": "https://www.fhsh.khc.edu.tw/library/%e8%87%aa%e4%b8%bb%e5%ad%b8%e7%bf%92%e5%b0%88%e5%8d%80",
    "label": "自主學習專區",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 55
+   "order": 55,
+   "checked_at": "2026-11-07T13:33:36+08:00",
+   "path": [
+    "網站導覽",
+    "自主學習專區"
+   ],
+   "changed_at": "2026-11-07T13:33:36+08:00",
+   "content_hash": "34deddf1e5977034dbc9f166051f39927ff5e2fca42a10b05ea7486219d5aec3",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "自主學習教師用手冊",
+     "url": "https://drive.google.com/file/d/1oWlirWHrv8E5Gma9PajTJUe3CIqsYTtz/view?usp=sharing"
+    },
+    {
+     "name": "110學年度自主學習成果手冊",
+     "url": "https://drive.google.com/file/d/1CooTS0q7ndVFCLgHfaj4SA3X28lsYnLN/view?usp=sharing"
+    },
+    {
+     "name": "109學年度自主學習成果手冊",
+     "url": "https://drive.google.com/file/d/1av98xSliVRKdbbtrZc8ZT_cw2m0YmNkG/view?usp=sharing"
+    },
+    {
+     "name": "何謂自主學習簡報檔(對象",
+     "url": "https://drive.google.com/file/d/1OpWORO6_SGKp4lxU_xknLGtc2JSE_ePq/view?usp=sharing"
+    },
+    {
+     "name": "學習簡報檔(對象：學生)",
+     "url": "https://drive.google.com/file/d/1gXdP3yAQHS2WjbFjERo84QFKgwLNkWES/view?usp=sharing"
+    },
+    {
+     "name": "自主學習報告範例(簡化版)",
+     "url": "https://drive.google.com/file/d/1EGF3E95wGTwJFmnXfirCMM_3YNl9rrq3/view?usp=sharing"
+    },
+    {
+     "name": "鳳新高中自主學習實施規範(修正版)",
+     "url": "https://drive.google.com/file/d/1h_XKXHgSCtbzIOv3alrSgy_pe1_u_JfG/view?usp=sharing"
+    },
+    {
+     "name": "自主學習導師同意書",
+     "url": "https://drive.google.com/file/d/1VvFY6WS0jneA_uxeV2v0KymLvhLHlo9E/view?usp=sharing"
+    },
+    {
+     "name": "自主學習報告模板",
+     "url": "https://docs.google.com/document/d/1Um1lCdJ9efRd03S0F1qytGU-jdCfOl5n/edit?usp=drive_link&ouid=118352327613933269226&rtpof=true&sd=true"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "自主學習",
+    "圖書館",
+    "新生",
+    "比賽",
+    "報名",
+    "研習",
+    "競賽",
+    "選修",
+    "電話",
+    "霸凌"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/fhsh/fhsh-info-177919152583784.json",
+   "detail_revision": "94cfb47e14c879af25079d4c190c893cbecab1f22cb2d25e2cd7aaea964f2dfa",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "科技與藝術的饗宴-202胡O瑜",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/10/科技與藝術的饗宴-202胡O瑜.pdf"
+    },
+    {
+     "name": "好老師的特質-問卷調查-204陳O伃",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/10/好老師的特質-問卷調查-204陳O伃.pdf"
+    },
+    {
+     "name": "金證達陣多益自主學習實證與⼼得-303黃O夫",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/10/金證達陣多益自主學習實證與⼼得-303黃O夫.pdf"
+    },
+    {
+     "name": "漫功出細活-202曾O柔",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/10/漫功出細活-202曾楷O柔.pdf"
+    },
+    {
+     "name": "114新生始業輔導-自主學習說明會公告版",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/08/114新生始業輔導-自主學習說明會公告版.pdf"
+    },
+    {
+     "name": "「高級中等學校自主學習」數位學習",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2023/10/「高級中等學校自主學習」數位學習.pdf"
+    },
+    {
+     "name": "國立臺灣圖書館-高級中等學校自主學習資源網公文",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2024/08/國立臺灣圖書館-高級中等學校自主學習資源網公文.pdf"
+    },
+    {
+     "name": "免費數位資源研習課程",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2023/06/免費數位資源研習課程.pdf"
+    },
+    {
+     "name": "ewant育網開放教育平臺公文114-1",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/06/ewant育網開放教育平臺公文114-1.pdf"
+    },
+    {
+     "name": "附件一114-1高中自主學習課程清單",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/06/附件一114-1高中自主學習課程清單.ods"
+    },
+    {
+     "name": "附件二-ewant平台高中自主學習課程報名流程",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/06/附件二-ewant平台高中自主學習課程報名流程.pdf"
+    },
+    {
+     "name": "附件三-ewant平台高中自主學習課程海報",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/06/附件三-ewant平台高中自主學習課程海報.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "#self_learning"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "自主學習",
+       "投影片",
+       "#self_learning"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "投影片"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "自主學習",
+       "導師",
+       "#self_learning"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "自主學習",
+       "圖書館",
+       "#self_learning",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "台大"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "選課",
+       "台大"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "自主學習",
+       "報名",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "科普"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "投影片"
+      ],
+      "k": []
+     },
+     {
+      "s": 99,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 107,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 116,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 125,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 127,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 129,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 134,
+      "t": [
+       "投影片"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 150,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 151,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 161,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 197,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 198,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 199,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 200,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 203,
+      "t": [],
+      "k": [
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 204,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "73739603141734": {
    "page_id": 73739603141734,
@@ -10153,6 +10939,258 @@
     "防疫專區"
    ],
    "order": 210
+  },
+  "81776160929947": {
+   "page_id": 81776160929947,
+   "url": "https://www.fhsh.khc.edu.tw/library/20261105/47268",
+   "label": "【公告】全國創新行銷暨高中職小論文競賽",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 211
+  },
+  "225030805336861": {
+   "page_id": 225030805336861,
+   "url": "https://www.fhsh.khc.edu.tw/library/20261104/47222",
+   "label": "【公告】第45屆全球華文學生文學獎",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 212
+  },
+  "15942688590632": {
+   "page_id": 15942688590632,
+   "url": "https://www.fhsh.khc.edu.tw/library/20261021/46951",
+   "label": "【公告】高中生犯罪文學短篇小說比賽",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 213
+  },
+  "121827997311373": {
+   "page_id": 121827997311373,
+   "url": "https://www.fhsh.khc.edu.tw/library/20261014/46758",
+   "label": "【公告】2026全國高中職小論文研討會",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 214
+  },
+  "148173434576776": {
+   "page_id": 148173434576776,
+   "url": "https://www.fhsh.khc.edu.tw/library/20261012/46706",
+   "label": "【公告】西洋文學經典的跨界閱讀-《愛麗絲夢遊仙境》」冬季閱讀講座",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 215
+  },
+  "65496144432070": {
+   "page_id": 65496144432070,
+   "url": "https://www.fhsh.khc.edu.tw/library/20261008/46658",
+   "label": "【公告】115年度「高中職學校學生自主學習成果分享展-聚光時刻」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 216
+  },
+  "77719832002365": {
+   "page_id": 77719832002365,
+   "url": "https://www.fhsh.khc.edu.tw/library/20261008/46655",
+   "label": "【公告】「歲閱重生—臺灣圖書醫院的經典修護之路」常設展",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 217
+  },
+  "16034652864171": {
+   "page_id": 16034652864171,
+   "url": "https://www.fhsh.khc.edu.tw/library/20260916/46137",
+   "label": "【公告】時光淬釀的經典—國資圖凱迪克大獎繪本展",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 218
+  },
+  "200465210833957": {
+   "page_id": 200465210833957,
+   "url": "https://www.fhsh.khc.edu.tw/library/20260828/45599",
+   "label": "【公告】2026第15屆全國連鎖加盟產業創新提案競賽暨高中職學校小論文競賽",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 219
+  },
+  "199055699232438": {
+   "page_id": 199055699232438,
+   "url": "https://www.fhsh.khc.edu.tw/library/20260807/45162",
+   "label": "【公告】114學年度中原大學服務學習年刊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 220
+  },
+  "33179819094542": {
+   "page_id": 33179819094542,
+   "url": "https://www.fhsh.khc.edu.tw/library/20260716/44676",
+   "label": "【公告】北教大校訊第222期",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 221
+  },
+  "110637048303104": {
+   "page_id": 110637048303104,
+   "url": "https://www.fhsh.khc.edu.tw/library/20260630/44236",
+   "label": "【公告】高中數位教學平臺啟動專案",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 222
+  },
+  "85827086472383": {
+   "page_id": 85827086472383,
+   "url": "https://www.fhsh.khc.edu.tw/library/20260616/43907",
+   "label": "【公告】「生命教育與心靈成長」心得寫作徵文活動",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 223
+  },
+  "32468615173681": {
+   "page_id": 32468615173681,
+   "url": "https://www.fhsh.khc.edu.tw/library/20260522/43315",
+   "label": "【公告】中原大學服務學習季刊-115年5月號",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 224
+  },
+  "76408199379689": {
+   "page_id": 76408199379689,
+   "url": "https://www.fhsh.khc.edu.tw/library/20260313/41503",
+   "label": "【公告】國立公共資訊圖書館提供教育雲電子書服務平臺",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 225
+  },
+  "197536224965319": {
+   "page_id": 197536224965319,
+   "url": "https://www.fhsh.khc.edu.tw/library/20260108/40134",
+   "label": "【公告】115年度「Cool-English自主學習活動」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 226
+  },
+  "162211093474392": {
+   "page_id": 162211093474392,
+   "url": "https://www.fhsh.khc.edu.tw/library/20250814/36471",
+   "label": "【公告】國立臺灣文學館文學五金行線上展覽",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 227
+  },
+  "43224721933002": {
+   "page_id": 43224721933002,
+   "url": "https://www.fhsh.khc.edu.tw/library/20231110/20492",
+   "label": "【公告】行政院及所屬機關（構）使用生成式AI參考指引",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 228
+  },
+  "102826656215856": {
+   "page_id": 102826656215856,
+   "url": "https://www.fhsh.khc.edu.tw/library/20230602/15725",
+   "label": "【公告】社區共讀站「圖書館之友」申請表",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 229
+  },
+  "95890276390787": {
+   "page_id": 95890276390787,
+   "url": "https://www.fhsh.khc.edu.tw/library/20220915/10102",
+   "label": "【公告】圖書館 K 書中心開放班級團體申請 C 館辦法",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 230
+  },
+  "179844624156425": {
+   "page_id": 179844624156425,
+   "url": "https://www.fhsh.khc.edu.tw/library/20220830/9568",
+   "label": "【公告】著作權法第46條遠距教學措施指引",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "處室公告"
+   ],
+   "order": 231
   }
  },
  "handbook": {},
@@ -14250,6 +15288,624 @@
    }
   },
   {
+   "id": "fhsh-info-177919152583784",
+   "kind": "school_info",
+   "title": "網站導覽 › 自主學習專區",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/library/%e8%87%aa%e4%b8%bb%e5%ad%b8%e7%bf%92%e5%b0%88%e5%8d%80",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "科技與藝術的饗宴-202胡O瑜",
+    "好老師的特質-問卷調查-204陳O伃",
+    "金證達陣多益自主學習實證與⼼得-303黃O夫",
+    "漫功出細活-202曾O柔",
+    "114新生始業輔導-自主學習說明會公告版",
+    "「高級中等學校自主學習」數位學習",
+    "國立臺灣圖書館-高級中等學校自主學習資源網公文",
+    "免費數位資源研習課程",
+    "ewant育網開放教育平臺公文114-1",
+    "附件一114-1高中自主學習課程清單",
+    "附件二-ewant平台高中自主學習課程報名流程",
+    "附件三-ewant平台高中自主學習課程海報",
+    "數位黑板回報",
+    "設備報修",
+    "自主學習教師用手冊",
+    "110學年度自主學習成果手冊",
+    "109學年度自主學習成果手冊",
+    "何謂自主學習簡報檔(對象",
+    "學習簡報檔(對象：學生)",
+    "自主學習報告範例(簡化版)",
+    "鳳新高中自主學習實施規範(修正版)",
+    "自主學習導師同意書",
+    "自主學習報告模板",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "自主學習",
+    "圖書館",
+    "新生",
+    "比賽",
+    "報名",
+    "研習",
+    "競賽",
+    "選修",
+    "電話",
+    "霸凌"
+   ],
+   "documents": [
+    {
+     "name": "科技與藝術的饗宴-202胡O瑜",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/10/科技與藝術的饗宴-202胡O瑜.pdf"
+    },
+    {
+     "name": "好老師的特質-問卷調查-204陳O伃",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/10/好老師的特質-問卷調查-204陳O伃.pdf"
+    },
+    {
+     "name": "金證達陣多益自主學習實證與⼼得-303黃O夫",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/10/金證達陣多益自主學習實證與⼼得-303黃O夫.pdf"
+    },
+    {
+     "name": "漫功出細活-202曾O柔",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/10/漫功出細活-202曾楷O柔.pdf"
+    },
+    {
+     "name": "114新生始業輔導-自主學習說明會公告版",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/08/114新生始業輔導-自主學習說明會公告版.pdf"
+    },
+    {
+     "name": "「高級中等學校自主學習」數位學習",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2023/10/「高級中等學校自主學習」數位學習.pdf"
+    },
+    {
+     "name": "國立臺灣圖書館-高級中等學校自主學習資源網公文",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2024/08/國立臺灣圖書館-高級中等學校自主學習資源網公文.pdf"
+    },
+    {
+     "name": "免費數位資源研習課程",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2023/06/免費數位資源研習課程.pdf"
+    },
+    {
+     "name": "ewant育網開放教育平臺公文114-1",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/06/ewant育網開放教育平臺公文114-1.pdf"
+    },
+    {
+     "name": "附件一114-1高中自主學習課程清單",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/06/附件一114-1高中自主學習課程清單.ods"
+    },
+    {
+     "name": "附件二-ewant平台高中自主學習課程報名流程",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/06/附件二-ewant平台高中自主學習課程報名流程.pdf"
+    },
+    {
+     "name": "附件三-ewant平台高中自主學習課程海報",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/06/附件三-ewant平台高中自主學習課程海報.pdf"
+    },
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "自主學習教師用手冊",
+     "url": "https://drive.google.com/file/d/1oWlirWHrv8E5Gma9PajTJUe3CIqsYTtz/view?usp=sharing"
+    },
+    {
+     "name": "110學年度自主學習成果手冊",
+     "url": "https://drive.google.com/file/d/1CooTS0q7ndVFCLgHfaj4SA3X28lsYnLN/view?usp=sharing"
+    },
+    {
+     "name": "109學年度自主學習成果手冊",
+     "url": "https://drive.google.com/file/d/1av98xSliVRKdbbtrZc8ZT_cw2m0YmNkG/view?usp=sharing"
+    },
+    {
+     "name": "何謂自主學習簡報檔(對象",
+     "url": "https://drive.google.com/file/d/1OpWORO6_SGKp4lxU_xknLGtc2JSE_ePq/view?usp=sharing"
+    },
+    {
+     "name": "學習簡報檔(對象：學生)",
+     "url": "https://drive.google.com/file/d/1gXdP3yAQHS2WjbFjERo84QFKgwLNkWES/view?usp=sharing"
+    },
+    {
+     "name": "自主學習報告範例(簡化版)",
+     "url": "https://drive.google.com/file/d/1EGF3E95wGTwJFmnXfirCMM_3YNl9rrq3/view?usp=sharing"
+    },
+    {
+     "name": "鳳新高中自主學習實施規範(修正版)",
+     "url": "https://drive.google.com/file/d/1h_XKXHgSCtbzIOv3alrSgy_pe1_u_JfG/view?usp=sharing"
+    },
+    {
+     "name": "自主學習導師同意書",
+     "url": "https://drive.google.com/file/d/1VvFY6WS0jneA_uxeV2v0KymLvhLHlo9E/view?usp=sharing"
+    },
+    {
+     "name": "自主學習報告模板",
+     "url": "https://docs.google.com/document/d/1Um1lCdJ9efRd03S0F1qytGU-jdCfOl5n/edit?usp=drive_link&ouid=118352327613933269226&rtpof=true&sd=true"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-177919152583784.json",
+   "detail_revision": "94cfb47e14c879af25079d4c190c893cbecab1f22cb2d25e2cd7aaea964f2dfa",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "自主學習",
+     "#self_learning"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "自主學習",
+       "#self_learning",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "自主學習",
+       "投影片",
+       "#self_learning"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "投影片"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "自主學習",
+       "導師",
+       "#self_learning"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "自主學習",
+       "圖書館",
+       "#self_learning",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "台大"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "選課",
+       "台大"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "自主學習",
+       "報名",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 65,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "科普"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 69,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 72,
+      "t": [
+       "投影片"
+      ],
+      "k": []
+     },
+     {
+      "s": 99,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ]
+     },
+     {
+      "s": 104,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 107,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 116,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 125,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 127,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 129,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 134,
+      "t": [
+       "投影片"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 150,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 151,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 161,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 197,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 198,
+      "t": [
+       "霸凌",
+       "#bullying"
+      ],
+      "k": []
+     },
+     {
+      "s": 199,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 200,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 203,
+      "t": [],
+      "k": [
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 204,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-178037915853432",
    "kind": "school_info",
    "title": "鳳新校史",
@@ -16151,6 +17807,208 @@
       "t": [
        "霸凌",
        "#bullying"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-info-234531659288705",
+   "kind": "school_info",
+   "title": "網站導覽 › 處室公告",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/library/%e5%9c%96%e6%9b%b8%e9%a4%a8%e5%85%ac%e5%91%8a",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "圖書館",
+    "競賽",
+    "服務學習",
+    "申請",
+    "研習",
+    "自主學習",
+    "徵文",
+    "比賽",
+    "講座"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-234531659288705.json",
+   "detail_revision": "074397f86ee14e0c8027b09b75691270339aa95c5d7e053f1544f8add4e012a6",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "處室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "小論文"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "小論文",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "北教大"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "志工",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "展覽"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "自修室",
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "網路"
       ],
       "k": []
      }
@@ -18783,5 +20641,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-07T10:59:16+08:00"
+ "last_run_at": "2026-11-07T13:33:54+08:00"
 }

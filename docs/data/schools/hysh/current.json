@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-07T10:46:17+08:00",
+ "generated_at": "2026-11-07T13:21:46+08:00",
  "school": {
   "id": "hysh",
   "name": "國立新營高中",
@@ -16,7 +16,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13923",
-   "category": "社團",
+   "category": "研習活動",
    "first_seen": "2026-11-06T20:03:04+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -273,7 +273,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13920",
-   "category": "一般",
+   "category": "競賽",
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -541,7 +541,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13917",
-   "category": "招生編班",
+   "category": "獎助學金",
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -719,7 +719,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13916",
-   "category": "招生編班",
+   "category": "獎助學金",
    "first_seen": "2026-11-06T11:24:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -950,7 +950,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13912",
-   "category": "一般",
+   "category": "榮譽榜",
    "first_seen": "2026-11-04T10:59:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -1475,7 +1475,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13908",
-   "category": "一般",
+   "category": "教職員",
    "first_seen": "2026-11-03T11:55:01+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -1515,7 +1515,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13907",
-   "category": "一般",
+   "category": "獎助學金",
    "first_seen": "2026-11-03T09:46:54+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
@@ -2196,8 +2196,157 @@
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13893",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "temporary_error",
-   "detail_attempts": 1
+   "detail_status": "parsed",
+   "detail_attempts": 2,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-11",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "911ad0a538c69bc42fbddd296da7bf959b2e640ea5bb5eaba6abda4ddd6457bc"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-06",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "911ad0a538c69bc42fbddd296da7bf959b2e640ea5bb5eaba6abda4ddd6457bc"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#enrollment",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hysh-13890",
@@ -2243,7 +2392,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13887",
-   "category": "教職員",
+   "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
   },
@@ -2267,7 +2416,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13885",
-   "category": "研習活動",
+   "category": "競賽",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
   },
@@ -2291,7 +2440,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13883",
-   "category": "招生編班",
+   "category": "升學",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
   },
@@ -2303,7 +2452,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13882",
-   "category": "研習活動",
+   "category": "教職員",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
   },
@@ -2387,7 +2536,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13875",
-   "category": "一般",
+   "category": "升學",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
   },
@@ -2399,7 +2548,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13824",
-   "category": "一般",
+   "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
   },
@@ -2459,7 +2608,7 @@
    "school": "hysh",
    "school_name": "新營高中",
    "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=10640",
-   "category": "招生編班",
+   "category": "升學",
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "pending"
   }

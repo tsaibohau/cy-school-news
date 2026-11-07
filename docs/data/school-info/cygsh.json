@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-07T11:00:15+08:00",
+ "generated_at": "2026-11-07T13:34:38+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -10291,7 +10291,125 @@
   },
   "2028": {
    "page_id": 2028,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-07T13:34:36+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "學生申訴",
+    "申請表單"
+   ],
+   "changed_at": "2026-11-07T13:34:36+08:00",
+   "content_hash": "abe226222be607ea19da92e8b8b34d60eb5869cd2dcc19ced48b8e3559280b78",
+   "doc_links": [],
+   "keywords": [
+    "申訴",
+    "申請"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2028.json",
+   "detail_revision": "3b0097fbd660b8f74b6478f3bc9d6ba8f61ba5ffe264e88128805d8fdf81c05a",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "國立嘉義女子高級中學學生申訴書－本人申請用",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/267821457.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生申訴書－代為申請用",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/295054659.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生自治組織申訴書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/499875396.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生申訴評議委員會撤回申訴書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/770411313.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學校選定代表人聲明書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/522497922.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學校學生申訴委任書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/899531119.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生申訴代理人選任書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/475416093.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生申訴輔佐人選任書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/238668390.odt"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室",
+     "申訴",
+     "#appeal"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "2029": {
    "page_id": 2029,
@@ -33833,7 +33951,7 @@
     "chars": 4747
    }
   },
-  "checked_at": "2026-11-07T11:00:08+08:00",
+  "checked_at": "2026-11-07T13:34:38+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -65421,6 +65539,134 @@
    }
   },
   {
+   "id": "cygsh-info-2028",
+   "kind": "school_info",
+   "title": "輔導室 › 學生申訴 › 申請表單",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2028.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [
+    "國立嘉義女子高級中學學生申訴書－本人申請用",
+    "國立嘉義女子高級中學學生申訴書－代為申請用",
+    "國立嘉義女子高級中學學生自治組織申訴書",
+    "國立嘉義女子高級中學學生申訴評議委員會撤回申訴書",
+    "國立嘉義女子高級中學學校選定代表人聲明書",
+    "國立嘉義女子高級中學學校學生申訴委任書",
+    "國立嘉義女子高級中學學生申訴代理人選任書",
+    "國立嘉義女子高級中學學生申訴輔佐人選任書"
+   ],
+   "keywords": [
+    "申訴",
+    "申請"
+   ],
+   "documents": [
+    {
+     "name": "國立嘉義女子高級中學學生申訴書－本人申請用",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/267821457.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生申訴書－代為申請用",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/295054659.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生自治組織申訴書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/499875396.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生申訴評議委員會撤回申訴書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/770411313.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學校選定代表人聲明書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/522497922.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學校學生申訴委任書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/899531119.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生申訴代理人選任書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/475416093.odt"
+    },
+    {
+     "name": "國立嘉義女子高級中學學生申訴輔佐人選任書",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/110/238668390.odt"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2028.json",
+   "detail_revision": "3b0097fbd660b8f74b6478f3bc9d6ba8f61ba5ffe264e88128805d8fdf81c05a",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室",
+     "申訴",
+     "#appeal"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-info-2082",
    "kind": "school_info",
    "title": "新生專區",
@@ -88179,5 +88425,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-07T11:00:15+08:00"
+ "last_run_at": "2026-11-07T13:34:38+08:00"
 }

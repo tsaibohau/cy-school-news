@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-07T11:01:32+08:00",
+ "generated_at": "2026-11-07T13:35:48+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -4029,12 +4029,90 @@
    "page_id": 143617742311770,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,430,425,428",
    "label": "減免學雜費相關資訊",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 46
+   "order": 46,
+   "checked_at": "2026-11-07T13:35:46+08:00",
+   "path": [
+    "網站導覽",
+    "減免學雜費相關資訊"
+   ],
+   "changed_at": "2026-11-07T13:35:46+08:00",
+   "content_hash": "ab387488f350bf345a725514b5e1a606dacec844e67816a1b81c41655a762d34",
+   "doc_links": [],
+   "keywords": [
+    "學雜費",
+    "助學金",
+    "學雜費減免"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-143617742311770.json",
+   "detail_revision": "eeb443ada9f81a1cd700aa175320488cb9b1f9772ae5b9411f94a9b31e468172",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學雜費減免",
+     "#fee"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學雜費減免",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "學雜費減免",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "學雜費減免",
+       "獎學金",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-30"
+      ]
+     }
+    ]
+   }
   },
   "113014089902672": {
    "page_id": 113014089902672,
@@ -8953,6 +9031,87 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hnvs-info-143617742311770",
+   "kind": "school_info",
+   "title": "網站導覽 › 減免學雜費相關資訊",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,430,425,428",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-07",
+   "attachment_names": [],
+   "keywords": [
+    "學雜費",
+    "助學金",
+    "學雜費減免"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-143617742311770.json",
+   "detail_revision": "eeb443ada9f81a1cd700aa175320488cb9b1f9772ae5b9411f94a9b31e468172",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學雜費減免",
+     "#fee"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學雜費減免",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "學雜費減免",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "學雜費減免",
+       "獎學金",
+       "#scholarship",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-30"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-151117057407702",
    "kind": "school_info",
    "title": "--> 新生專區",
@@ -10964,5 +11123,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-07T11:01:32+08:00"
+ "last_run_at": "2026-11-07T13:35:48+08:00"
 }
