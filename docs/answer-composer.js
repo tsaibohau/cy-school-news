@@ -42,7 +42,22 @@
   function stripConnectives(text) {
     var t = clean(text);
     for (var i = 0; i < 3; i++) { var next = t.replace(CONNECTIVE, ""); if (next === t) break; t = next; }
-    return t.replace(/^(?:[一二三四五六七八九十]+、|[（(][一二三四五六七八九十\d]+[)）]|\d{1,2}[.、．])\s*/, "");
+    return stripNumbering(t);
+  }
+  /* 「一、」「（一）」「廿五、」「1.」 only number the list; the content stays. 「1.5 小時」 is not numbering. */
+  var LIST_NUMBER = /^(?:[（(]\s*[一二三四五六七八九十廿卅\d]+\s*[)）]|[一二三四五六七八九十廿卅]+\s*[、．]|\d{1,2}\s*(?:[、．)）]|\.(?!\d))|[①-⑩]|第[一二三四五六七八九十\d]+[條項款點]\s*[、：:]?)\s*/;
+  function stripNumbering(text) {
+    var t = clean(text), prev;
+    do { prev = t; t = t.replace(LIST_NUMBER, ""); } while (t !== prev);
+    return t;
+  }
+  /* PDF/OCR text sometimes says a word twice (「情節情節輕微」) or repeats a label (「實施方式：實施方式：」). */
+  var KEEP_REPEAT = /^[一二三四五六七八九十每各逐]|^(?:研究|考慮|討論|檢討|整理|了解|瞭解|試試|看看|謝謝|常常|慢慢|好好)/;
+  function dedupeText(text) {
+    var t = String(text == null ? "" : text);
+    t = t.replace(/([^：:，。；;\s]{2,10})[：:]\s*\1\s*[：:]/g, "$1：");
+    t = t.replace(/([㐀-鿿]{2,4})\1/g, function (m, unit) { return KEEP_REPEAT.test(unit) ? m : unit; });
+    return t;
   }
   function sentences(text) {
     return clean(text).split(/(?<=[。！？!?；;])|\n+/).map(clean).filter(function (s) { return s.length >= 4; });
@@ -439,18 +454,19 @@
      補充句的空格：{time} 時間、{deadline} 截止、{required} 報名必備、{audience} 針對對象。 ---------- */
   var T = {
     exist: {
-      yes: ["有。{source}有寫到：", "有的，{source}裡查得到：", "查到了，在{source}："],
+      yes: ["有。", "有的，查得到。", "查到了，有相關的資料。"],
       no: ["目前沒有查到{subject}的消息。", "沒有，規定、行事曆和公告裡都沒看到{subject}。", "暫時沒有，{subject}還沒出現在學校的公告裡。"]
     },
     judge: {
-      allow: ["可以。{source}這樣寫：", "行，{source}是允許的：", "答案是可以的，依{source}："],
-      deny: ["不行。{source}寫明：", "不可以喔，{source}寫得很清楚：", "這個不行，依{source}："],
-      allowIf: ["可以，但有條件，依{source}：", "可以，只是要照規矩來，{source}這樣寫：", "行，不過{source}有但書："],
-      must: ["要。{source}規定：", "需要，依{source}：", "是必須的，{source}寫明："],
-      unsure: ["{source}沒有直接說可不可以，相關的寫法是：", "規定沒寫死，{source}提到的是：", "沒有明講，最接近的是{source}這幾點："]
+      allow: ["可以。", "可以的。", "答案是可以的。"],
+      deny: ["不可以。", "不可以喔。", "這個不行。"],
+      allowIf: ["可以，但有條件。", "可以，只是要照規矩來。", "行，不過有但書。"],
+      must: ["要。", "需要。", "是必須的。"],
+      unsure: ["規定沒有直接說可不可以，相關的內容是：", "規定沒寫死，相關的寫法是：", "沒有明講，最接近的是這幾點："]
     },
-    stance: ["我的建議：{advice}。{source}這樣寫：", "如果是我會{advice}，依{source}：", "{advice}比較保險，{source}寫到："],
-    narrate: ["{source}是這樣寫的：", "照{source}，重點如下：", "{source}裡寫到："],
+    stance: ["我的建議是{advice}。", "如果是我，會{advice}。", "{advice}會比較保險。"],
+    /* A narrating answer has no verdict: its first sentence is the answer itself. */
+    narrate: [""],
     deadline: ["{deadline}截止", "最晚{deadline}前要完成", "期限是{deadline}"],
     time: ["時間在{time}", "{time}舉行", "日期是{time}"],
     clock: ["時間是{time}", "在{time}這段時間", "從{time}"],
@@ -467,8 +483,9 @@
   }
   /* 「借閱期限：借期二週」→「借期二週」; numbering and connectives go, the wording stays. */
   function tidy(sentence) {
-    var t = stripConnectives(sentence).replace(/^[^，。：:]{2,8}[：:]\s*(?=.{4,})/, "");
-    return t.replace(/[。；;]$/, "") + "。";
+    var t = dedupeText(stripConnectives(sentence)).replace(/^[^，。：:\d]{2,8}[：:]\s*(?=.{4,})/, "");
+    t = stripNumbering(t);
+    return t.replace(/[。；;，、]+$/, "") + "。";
   }
   /* compose({ query, subject, source, text, points }) → { text, bullets, type, facts }.
      text: the verdict and where it comes from, with the slots that were found (time, deadline,
@@ -476,7 +493,7 @@
   function compose(input) {
     var query = clean(input.query), seed = query, type = input.type || sentenceType(query);
     var facts = factsOf(input.text || "", input.points, query, input.title || "");
-    if (!facts.lead) return { text: "", bullets: [], type: type, facts: facts };
+    if (!facts.lead) return { text: "", bullets: [], type: type, facts: facts, head: "", lead: "", details: [] };
     var slots = { subject: input.subject || "這件事", source: input.source || "學校公告" };
     var head;
     if (type === "exist") head = fill(pick(T.exist.yes, seed), slots);
@@ -493,30 +510,38 @@
       head = fill(pick(T.stance, seed), slots);
     } else head = fill(pick(T.narrate, seed), slots);
     var extras = extrasLine(facts, seed);
-    var bullets = [tidy(facts.lead)];
+    var lead = tidy(facts.lead);
+    var bullets = [lead];
     if (facts.place) bullets.push("地點：" + facts.place);
     if (facts.fee) bullets.push("費用：" + facts.fee);
-    /* Verdict first, then the slots: 「查到了，在X。12/10截止，對象是高一高二。」 */
-    var text = extras ? head.replace(/[：:]$/, "。") + extras : head;
-    return { text: text.replace(/。。/g, "。"), bullets: bullets, type: type, facts: facts, extras: extras };
+    /* The same facts as labelled points, for a reply that keeps its first paragraph short. */
+    var details = [];
+    if (facts.time) details.push("時間：" + facts.time);
+    if (facts.deadline) details.push("截止：" + facts.deadline);
+    if (facts.place) details.push("地點：" + facts.place);
+    if (facts.audience) details.push("對象：" + facts.audience);
+    if (facts.required) details.push("需要準備：" + facts.required);
+    if (facts.fee) details.push("費用：" + facts.fee);
+    /* Verdict first, then the slots: 「查到了，在X。12/10截止，對象是高一高二。」 A narrating answer opens with its own first sentence. */
+    var text = head ? (extras ? head.replace(/[：:]$/, "。") + extras : head) : lead + extras;
+    return { text: text.replace(/。。/g, "。"), bullets: bullets, type: type, facts: facts, extras: extras, head: head, lead: lead, details: details };
   }
 
   /* ---------- 「不做會怎樣」：先找罰則，沒有就虧一下 ---------- */
   var PENALTY_FOUND = [
-    "有罰則喔：{penalty}（{source}）。乖乖做比較划算。",
-    "會，{source}寫到：{penalty}。別賭了。",
-    "不做的代價在{source}裡寫得很清楚：{penalty}。"
+    "會，依{source}：{penalty}。",
+    "有罰則：{penalty}（{source}）。",
+    "{source}寫到：{penalty}。"
   ];
   var PENALTY_NONE = [
-    "規定裡沒寫罰則，但與其研究不{act}會怎樣，不如把這時間拿去{act}，多{act}一點又不會少塊肉😏",
-    "我翻遍了沒看到罰則。不過老師的記憶力通常比規定好，建議還是乖乖{act}。",
-    "沒{act}會怎樣？目前查不到罰則，但「沒{act}」本身就是最大的損失。快去{act}，{act}完你就不用問我了🙃",
-    "罰則沒查到。給你一個免費建議：問這題的時間，已經夠你{act}一半了✍️"
+    "目前沒有查到不{act}的罰則，規定裡沒有明寫會怎麼處理。",
+    "規定裡沒有寫不{act}的處置，詳細情形可以問承辦的處室。",
+    "查不到不{act}的罰則；實際怎麼處理，建議向導師或承辦處室確認。"
   ];
   var PENALTY_LATE = [
-    "遲到的罰則沒查到，但鬧鐘多設一個比問我有用⏰",
-    "規定裡沒寫遲到會怎樣，不過導師的點名簿會記得。早五分鐘出門就解決了。",
-    "查不到遲到的罰則。建議你把問這題的時間拿去睡覺，明天比較起得來😴"
+    "規定裡沒有寫遲到的罰則，實際怎麼處理，建議向導師或學務處確認。",
+    "目前查不到遲到的處置規定，可以問導師或學務處。",
+    "遲到的罰則在資料裡沒有找到，詳細情形請向學務處確認。"
   ];
   /* 「沒請假會怎樣」→ 請假；「不交會怎樣」→ 交；沒寫明動作時用「做」。 */
   function actOf(clause) {
@@ -534,5 +559,5 @@
   return { fieldsOf: fieldsOf, askedSlot: askedSlot, isGeneralAsk: isGeneralAsk, queryRemainder: queryRemainder, slotAnswer: slotAnswer, summaryOf: summaryOf, otherFacts: otherFacts,
     isoOf: isoOf, noveltyOf: noveltyOf, echoRatio: echoRatio, breakLines: breakLines, classifyLabel: classifyLabel,
     compose: compose, consequence: consequence, actOf: actOf, factsOf: factsOf, sentenceType: sentenceType, times: times,
-    stripConnectives: stripConnectives, TEMPLATES: T, PENALTY_FOUND: PENALTY_FOUND, PENALTY_NONE: PENALTY_NONE, PENALTY_LATE: PENALTY_LATE, PENALTY: PENALTY };
+    stripConnectives: stripConnectives, stripNumbering: stripNumbering, dedupeText: dedupeText, TEMPLATES: T, PENALTY_FOUND: PENALTY_FOUND, PENALTY_NONE: PENALTY_NONE, PENALTY_LATE: PENALTY_LATE, PENALTY: PENALTY };
 });

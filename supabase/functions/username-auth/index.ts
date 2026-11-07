@@ -4,8 +4,6 @@ import { createClient } from "@supabase/supabase-js"
 type RequestBody = { action?: string; username?: string; password?: string }
 const usernamePattern = /^[a-z][a-z0-9_]{2,31}$/
 const allowedOrigins = new Set([
-  "https://cy-school-news-staging.vercel.app",
-  "https://cy-school-news-staging-git-code-184992-tsaibohau-9644s-projects.vercel.app",
   "https://tsaibohau.github.io",
 ])
 
@@ -25,7 +23,7 @@ function publishableKey(): string {
   return required("SUPABASE_ANON_KEY")
 }
 function reply(body: Record<string, unknown>, status: number, origin: string | null): Response {
-  const allowedOrigin = origin && allowedOrigins.has(origin) ? origin : "https://cy-school-news-staging.vercel.app"
+  const allowedOrigin = origin && allowedOrigins.has(origin) ? origin : "https://tsaibohau.github.io"
   return Response.json(body, { status, headers: {
     "access-control-allow-origin": allowedOrigin,
     "access-control-allow-headers": "apikey, content-type",

@@ -1627,57 +1627,6 @@
         });
     }
 
-    var STAGING_REFRESH_ORIGIN = "https://cy-school-news-staging.vercel.app";
-    function stagingRefreshEndpoint() {
-      if (!window.location || window.location.origin !== STAGING_REFRESH_ORIGIN) return null;
-      var config = window.CYNEWS_ACCOUNT_CONFIG || {};
-      if (!config.supabaseUrl || !config.supabaseAnonKey) return null;
-      try {
-        var base = new URL(config.supabaseUrl);
-        if (base.protocol !== "https:" || base.username || base.password || !/\.supabase\.co$/i.test(base.hostname)) return null;
-        return {
-          url: base.origin + "/functions/v1/request-staging-refresh",
-          anonKey: String(config.supabaseAnonKey),
-        };
-      } catch (_) {
-        return null;
-      }
-    }
-
-    function requestStagingRefresh(endpoint) {
-      if (!window.crypto || typeof window.crypto.randomUUID !== "function") {
-        return Promise.resolve({ status: "unavailable" });
-      }
-      if (!accountAuth && window.CyNewsAccountAuth) accountAuth = window.CyNewsAccountAuth.createController();
-      if (!accountAuth || !accountAuth.isConfigured() || typeof accountAuth.getVerifiedSession !== "function") {
-        return Promise.resolve({ status: "unavailable" });
-      }
-      return accountAuth.getVerifiedSession().then(function (session) {
-        if (!session || !session.access_token || !session.user || !session.user.id) return { status: "unauthenticated" };
-        return fetch(endpoint.url, {
-          method: "POST",
-          cache: "no-store",
-          headers: {
-            "content-type": "application/json",
-            apikey: endpoint.anonKey,
-            authorization: "Bearer " + session.access_token,
-            "x-idempotency-key": window.crypto.randomUUID(),
-          },
-          body: "{}",
-        }).then(function (response) {
-          return response.json().catch(function () { return {}; }).then(function (body) {
-            if (response.status === 429 || body.status === "rate_limited") {
-              return { status: "rate_limited", retryAfterSeconds: Number(body.retryAfterSeconds) || 0 };
-            }
-            if (!response.ok || ["accepted", "already_requested"].indexOf(body.status) === -1) {
-              return { status: "unavailable" };
-            }
-            return { status: body.status };
-          });
-        });
-      }).catch(function () { return { status: "unavailable" }; });
-    }
-
     function generationAdvanced(before, after) {
       var afterTime = Date.parse(after || "");
       if (!Number.isFinite(afterTime)) return false;
@@ -2651,12 +2600,28 @@
       /* The key fact first, in bold (「下一次：11/26～11/27 第二次期中考」); the explanation follows. */
       var html = (result && result.headline ? '<p class="chat-headline">' + esc(result.headline) + '</p>' : "") +
         '<p class="assistant-lead">' + esc(reply.text || "請換一種問法，或查看官方公告。") + '</p>';
-      if (reply.bullets && reply.bullets.length) html += '<ul class="chat-bullets">' + reply.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>';
-      if (reply.tail) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
+      /* Sections (one per school): a heading, a short paragraph, the details as points, then that section's own notes and source. */
+      var sections = Array.isArray(reply.paragraphs) ? reply.paragraphs.filter(function (part) { return part && (part.text || (part.bullets && part.bullets.length)); }) : [];
+      if (sections.length) {
+        html += sections.map(function (part) {
+          return '<section class="chat-section">' + (part.heading ? '<h3 class="chat-heading">' + esc(part.heading) + '</h3>' : '') +
+            (part.text ? '<p class="chat-para">' + esc(part.text) + '</p>' : '') +
+            (part.bullets && part.bullets.length ? '<ul class="chat-bullets">' + part.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>' : '') +
+            (part.tail ? '<p class="chat-tail">' + esc(part.tail) + '</p>' : '') +
+            (part.asides || []).map(function (line) { return '<p class="chat-aside">' + esc(line) + '</p>'; }).join("") +
+            (part.source ? '<p class="chat-source">' + esc(part.source) + '</p>' : '') + '</section>';
+        }).join("");
+      } else {
+        if (reply.bullets && reply.bullets.length) html += '<ul class="chat-bullets">' + reply.bullets.map(function (line) { return '<li>' + esc(line) + '</li>'; }).join("") + '</ul>';
+        if (reply.tail) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
+        if (reply.source) html += '<p class="chat-source">' + esc(reply.source) + '</p>';
+      }
+      if (sections.length && reply.tail && !sections.some(function (part) { return part.tail; })) html += '<p class="chat-tail">' + esc(reply.tail) + '</p>';
       if (result && result.status === "answered" && result.mode === "browse" && (result.sources || []).length) html += '<div class="assistant-sources chat-list">' + assistantSourceButtons(result) + '</div>';
       /* 規定 → 行事曆 → 公告：主答案以外，其他地方也找到的，依序列在後面。 */
-      (result && result.also || []).forEach(function (row) {
-        html += '<div class="chat-also"><p class="chat-aside">' + esc(row.text || row.label + "也有寫到：" + row.summary) + '</p></div>';
+      var asidesShown = sections.some(function (part) { return part.asides && part.asides.length; });
+      (asidesShown ? [] : result && result.also || []).forEach(function (row) {
+        html += '<div class="chat-also"><p class="chat-aside">' + esc(row.text || "另外，" + row.label + "提到：" + row.summary) + '</p></div>';
       });
       var related = (result && result.status !== "answered" && result.related || []).slice(0, 3).map(function (item) {
         var meta = (item.school_name || "官方公告") + " · " + (item.date || "日期未知") + (item.note ? " · " + item.note : "");
@@ -3692,33 +3657,6 @@
     el.btnRefresh.addEventListener("click", function () {
       if (el.btnRefresh.disabled) return;
       var before = state.data && state.data.generated_at;
-      var endpoint = stagingRefreshEndpoint();
-      if (endpoint) {
-        setRefreshState("loading", "正在要求雲端立即更新…");
-        requestStagingRefresh(endpoint).then(function (request) {
-          if (request.status === "unauthenticated") {
-            setRefreshState("error", "請先登入後再要求立即更新；未送出更新");
-            return;
-          }
-          if (request.status === "rate_limited") {
-            var wait = request.retryAfterSeconds > 0 ? "，請在 " + request.retryAfterSeconds + " 秒後再試" : "，請稍後再試";
-            setRefreshState("current", "更新請求太頻繁" + wait);
-            return;
-          }
-          if (["accepted", "already_requested"].indexOf(request.status) === -1) {
-            setRefreshState("error", "立即更新服務目前不可用；未送出更新");
-            return;
-          }
-          setRefreshState("loading", request.status === "accepted"
-            ? "已送出立即更新，等待雲端發布…"
-            : "更新已在排程中，等待雲端發布…");
-          return pollPublishedGeneration(before).then(function (published) {
-            if (published.status === "updated") setRefreshState("updated", "已載入最新雲端資料");
-            else setRefreshState("current", "更新已排程；雲端尚未發布完成");
-          });
-        });
-        return;
-      }
       setRefreshState("loading", "正在取得雲端已發布資料…");
       fetchData().then(function (result) {
         if (!result || !result.ok) {

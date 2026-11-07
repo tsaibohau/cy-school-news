@@ -20,7 +20,7 @@ assert.match(result.limitation, /官方|公告|附件/);
 assert.match(result.summary, /^根據嘉中 8 月 20 日的公告「學生行動載具管理規定」，學生攜帶之手機由學生自行保管。$/, "answer reads naturally: who said it, when, then the fact");
 assert(!result.summary.includes("整理出以下重點"), "answer lead should be natural instead of a generic result count");
 assert.equal(QA.smoothEvidence("主旨：請於九月十日前送件。"), "請於九月十日前送件。");
-assert.match(QA.composeSummary([{ text: "科學營於九月五日前報名。" }, { text: "寫作工作坊於九月十日前報名。" }], [{ id: "one" }, { id: "two" }], []), /不是同一項活動/);
+assert.match(QA.composeSummary([{ text: "科學營於九月五日前報名。" }, { text: "寫作工作坊於九月十日前報名。" }], [{ id: "one" }, { id: "two" }], []), /不同的事項，日期和資格請分開確認/);
 assert.equal(Schools.mentionedSchool("嘉義女中的獎學金有哪些？").id, "cygsh");
 assert.equal(Schools.mentionedSchool("請查 CYSH 宿舍規定").id, "cysh");
 assert.equal(Schools.mentionedSchool("北港高中模擬考公告了嗎").id, "pksh");

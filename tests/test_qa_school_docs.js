@@ -43,11 +43,13 @@ console.log("✓ 學生手冊規定原文回答");
 
 /* Reply: a short opener naming the source, then the official facts as bullet points. */
 r = ask("書可以借多久");
-assert.match(r.reply.text, /學生手冊〈圖書館借書規定〉（第 40–41 頁）/);
-assert.doesNotMatch(r.reply.text, /借期二週/, "the opening line is our own sentence; the facts are the points");
-assert.deepEqual(r.reply.bullets.slice(0, 2), ["借期二週", "借閱期滿如果沒有他人預約可以續借一次"]);
+assert.match(r.reply.source, /^資料來源：.*學生手冊〈圖書館借書規定〉（第 40–41 頁）$/, "the source is said once, on its own line");
+assert.doesNotMatch(r.reply.text, /學生手冊|重點如下|寫到/, "the opening line is the answer, not the source");
+assert.equal(r.reply.text, "借期二週。", "the first paragraph answers directly");
+assert.deepEqual(r.reply.bullets.slice(0, 1), ["借閱期滿如果沒有他人預約可以續借一次。"]);
 assert.ok(r.reply.bullets.every(b => !/^八、|借閱期限：/.test(b)), "list numbers and labels are taken out");
-assert.deepEqual(ask("午休時間是幾點").reply.bullets, ["午休是 12:35–13:10"]);
+assert.equal(ask("午休時間是幾點").reply.text, "午休是 12:35–13:10。", "a one-fact answer is just the first paragraph");
+assert.deepEqual(ask("午休時間是幾點").reply.bullets, []);
 assert.ok(!ask("第一節幾點上課").reply.bullets.some(b => /第一節第一節/.test(b)));
 assert.equal(ask("書可以借多久").reply.text, r.reply.text, "the same question gets the same wording");
 assert.equal(QA.tidyClause("(一)遲到：老師到班後至曠課時間前為遲到。"), "老師到班後至曠課時間前為遲到。");
@@ -203,7 +205,7 @@ assert.ok(compared.evidence.every(e => /^(?:嘉中|嘉女)｜/.test(e.title)), "
 const none = QA.compareResults("宿舍門禁", rows.map(r => ({ school: r.school, result: { status: "insufficient" } })));
 assert.equal(none.status, "insufficient");
 assert.match(none.reply.text, /都沒查到「宿舍門禁」/);
-assert.match(QA.compareResults("", rows).reply.text, /比什麼|給我一個主題/);
+assert.match(QA.compareResults("", rows).reply.text, /想比較什麼|給我一個主題/);
 
 /* 「學校有什麼新鮮事」 lists recent notices; doubt follow-ups search the last question again;
    last year's notice is reported as last year's. */
@@ -219,7 +221,7 @@ const readingOpts = { asOf: "2026-11-01", scopeLabel: "嘉中", schoolId: "cysh"
 r = QA.answer("閱讀心得報告什麼時候要交？", reading, {}, readingOpts);
 assert.match(r.reply.text, /115 學年度的「閱讀心得報告」我還沒看到公告。最近一次是 114 學年度/);
 r = QA.answer("閱讀心得報告什麼時候要交？ 115年", reading, {}, Object.assign({ doubt: true }, readingOpts));
-assert.match(r.reply.text, /^(?:被你懷疑了|不信我|我再確認).*115 學年度的「閱讀心得報告」我還沒看到公告/);
+assert.match(r.reply.text, /^(?:我再確認|重新查了|再核對).*115 學年度的「閱讀心得報告」我還沒看到公告/);
 assert.doesNotMatch(r.reply.text, /亂掰|考倒/, "one opener, not two");
 
 /* 「給我…的連結」 answers with links: the activity site written in the notice, then the notice itself. */
