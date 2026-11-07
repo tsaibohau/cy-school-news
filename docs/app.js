@@ -2190,13 +2190,58 @@
         return card.replace('<div class="card-meta">', '<div class="card-meta"><span class="urgency-tag" data-level="' + u.level + '" title="截止日 ' + esc(u.due) + '">' + esc(u.label) + '</span>');
       }).join("");
     }
+    /* ── 活動系列：選了分類後，列出歷屆同名活動（簡章／報名／延期／得獎），點開看時間軸 ──
+       data/series.json 由 Actions 產生，只有 id、名稱、成員 id；第一次需要時才載入。 */
+    var seriesState = { doc: null, loading: false, open: {}, all: false, itemsRef: null, itemsLen: -1, items: null };
+    var SERIES_SHOWN = 6;
+    function ensureSeries() {
+      if (seriesState.doc || seriesState.loading) return;
+      seriesState.loading = true;
+      fetch("data/series.json?_=" + Date.now(), { cache: "no-store" })
+        .then(function (r) { return r.ok ? r.json() : { series: [] }; })
+        .catch(function () { return { series: [] }; })
+        .then(function (doc) { seriesState.doc = doc || { series: [] }; seriesState.loading = false; renderLatest(); });
+    }
+    function seriesItemMap() {
+      var rows = state.data ? state.data.items : [];
+      if (seriesState.itemsRef !== rows || seriesState.itemsLen !== rows.length) {
+        seriesState.items = {};
+        rows.forEach(function (it) { seriesState.items[String(it.id)] = it; });
+        seriesState.itemsRef = rows; seriesState.itemsLen = rows.length;
+      }
+      return seriesState.items;
+    }
+    function seriesBlockHTML() {
+      var View = window.CyNewsSeriesView;
+      if (!View || !state.data || state.cat === "all" || state.q) return "";
+      if (!seriesState.doc) { ensureSeries(); return ""; }
+      var list = View.forCategory(seriesState.doc, { category: state.cat, school: state.school, items: seriesItemMap(),
+        hidden: function (it) { return !visibleSchool(it) || !!state.deletedAnnouncements[it.id] || linkGone(it); } });
+      if (!list.length) return "";
+      var shown = seriesState.all ? list : list.slice(0, SERIES_SHOWN);
+      return '<section class="series-box" aria-label="歷屆活動"><h3 class="list-group">歷屆活動<small>' + list.length + ' 個系列，點開看時間軸</small></h3>' +
+        shown.map(function (s) {
+          var first = s.groups[0].rows[0];
+          return '<details class="series-item" data-series="' + esc(s.id) + '"' + (seriesState.open[s.id] ? " open" : "") + '><summary>' +
+            (state.school === "all" && first.school_name ? '<span class="tag tag-school">' + esc(first.school_name) + '</span>' : "") +
+            '<span class="series-name">' + esc(s.label) + '</span></summary><ol class="series-timeline">' +
+            s.groups.map(function (g) {
+              return '<li class="series-year"><b>' + esc(View.yearTitle(g.year)) + '</b><ul>' + g.rows.map(function (r) {
+                return '<li>' + (r.stage ? '<span class="series-stage">' + esc(r.stage) + '</span>' : "") +
+                  '<a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(displayTitle(r.item)) + '</a><time>' + esc(displayDate(r.item)) + '</time></li>';
+              }).join("") + '</ul></li>';
+            }).join("") + '</ol></details>';
+        }).join("") +
+        (list.length > shown.length ? '<div class="more-wrap"><button type="button" class="btn-ghost" data-series-more>看全部 ' + list.length + ' 個系列</button></div>' : "") +
+        '</section>';
+    }
     function renderLatest() {
       var items = sortedLatest(latestItems());
       var shown = Math.min(state.shown, items.length);
       var rest = items.length - shown;
       el.countLine.textContent = "共 " + items.length + " 則"
         + (state.archive === "loading" ? " · 搜尋歷史資料中…" : "");
-      el.list.innerHTML = shown ? latestCardsHTML(items.slice(0, shown), items) : '<p class="empty">找不到符合條件的公告,換個關鍵字或篩選試試。</p>';
+      el.list.innerHTML = seriesBlockHTML() + (shown ? latestCardsHTML(items.slice(0, shown), items) : '<p class="empty">找不到符合條件的公告,換個關鍵字或篩選試試。</p>');
       if (state.sort === "office" && !state.office) rest = 0;  // every office is already listed
       if (rest > 0) {
         el.list.insertAdjacentHTML("beforeend",
@@ -3408,6 +3453,11 @@
       document.body.appendChild(link); link.click(); link.remove();
       setTimeout(function () { URL.revokeObjectURL(link.href); }, 4000);
     });
+    /* 記住哪些系列展開著，重新排版（載入更多、標已讀）時不會自己收起來 */
+    if (el.list) el.list.addEventListener("toggle", function (event) {
+      var node = event.target;
+      if (node && node.classList && node.classList.contains("series-item")) seriesState.open[node.getAttribute("data-series")] = node.open;
+    }, true);
     if (el.list) el.list.addEventListener("click", function (event) {
       var button = event.target.closest && event.target.closest("button[data-office]");
       if (!button) return;
@@ -3447,6 +3497,7 @@
       var b = e.target.closest("button[data-cat]");
       if (!b) return;
       state.cat = b.dataset.cat;
+      seriesState.all = false;
       if (state.cat !== "all") ensureArchive(); /* 分類瀏覽超出近一年範圍時需要完整資料 */
       resetPaging(); renderControls(); renderLatest();
     });
@@ -3507,6 +3558,7 @@
         markRead(readButton.dataset.readId);
         return;
       }
+      if (e.target.closest("button[data-series-more]")) { seriesState.all = true; renderLatest(); return; }
       if (!e.target.closest("#btnMore")) return;
       state.shown += PAGE_SIZE;
       renderLatest();
