@@ -85,4 +85,36 @@ r = QA.answer("學測錄取率是多少", [guide], {}, { asOf: "2026-11-07", sch
 assert.notEqual(r.mode, "document");
 assert.doesNotMatch(flat(r) + (r.summary || ""), /公布的成績在官方文件/);
 
+/* ---- 5. 問的關鍵詞資料裡沒有：照實說沒提到，不拿不相干的公告充數；順帶提到不算答案 ---- */
+const pool = "山水風雲花草鳥魚星月日光石林海河橋路門窗書筆墨紙琴棋畫茶酒米麵糖鹽油燈火鐵銅金銀玉珠貝竹松梅蘭菊荷柳桃李杏梨棗瓜豆麥稻".split("");
+const filler = Array.from({ length: 230 }, (_, i) => ({ id: "f" + i, school: "cygsh", school_name: "嘉女", date: "2026-10-01",
+  title: "公告" + pool[i % 60] + pool[(i * 7 + 3) % 60] + pool[(i * 11 + 5) % 60] + pool[(i * 13 + 1) % 60] + "通知" }));
+const coach = { id: "g1", school: "cygsh", school_name: "嘉女", date: "2026-10-06", title: "【公告】高級中等以下學校運動教練專業增能研習實施計畫" };
+const coachDetail = { announcement_id: "g1", provenance: "official_article", source_hash: "g1", attachments: [], blocks: [{ type: "paragraph", text: "一、研習對象為專任運動教練。二、研習時間為10月15日，採網路報名，聯絡電話049-0000000。" }] };
+const club = { id: "g2", school: "cygsh", school_name: "嘉女", date: "2026-09-20", title: "社團博覽會報名提醒" };
+const clubDetail = { announcement_id: "g2", provenance: "official_article", source_hash: "g2", attachments: [], blocks: [{ type: "paragraph", text: "社團博覽會將於9月25日舉行，各社團請於9月22日前向社團活動組報名攤位。" }] };
+const drill = { item: { id: "cygsh-handbook-115-9", kind: "school_handbook", title: "學生手冊 › 緊急應變計畫", school: "cygsh", school_name: "嘉女", url: "https://school.example/9", category: "校園資訊", date: "2026-09-01", page_range: [9, 10], keywords: ["地震", "疏散"] },
+  detail: { announcement_id: "cygsh-handbook-115-9", provenance: "official_article", source_hash: "h9", blocks: [], attachments: [{ provenance: "official_attachment", parse_status: "parsed", filename: "手冊.pdf", embedded_text: "嘉義女子高級中學 緊急應變計畫\n一、地震發生時利用廣播通知教職員工於辦公處所、同學於教室內就近於樑柱下，實施緊急避難，當地震停止時由任課老師指導同學關閉電源，立即迅速疏散人員並於操場集合，學生宿舍同學集合於停車場，清查人數。" }] } };
+const bigItems = filler.concat([coach, club, drill.item]);
+const bigDetails = { g1: coachDetail, g2: clubDetail, [drill.item.id]: drill.detail };
+const gopts = { asOf: "2026-11-07", schoolId: "cygsh", scopeLabel: "嘉女" };
+r = QA.answer("上下學搭公車的話最近的站牌在哪", bigItems, bigDetails, gopts);
+assert.equal(r.status, "insufficient", r.summary);
+assert.match(r.summary, /嘉女的資料裡沒有提到「站牌」/);
+assert.doesNotMatch(flat(r) + r.summary, /運動教練|研習/);
+r = QA.answer("我想加入吉他社，要怎麼報名", bigItems, bigDetails, gopts);
+assert.notEqual(r.status, "answered", r.summary);
+assert.doesNotMatch(flat(r) + r.summary, /博覽會/, "an unrelated sign-up notice is not the answer");
+/* 兩校：沒有的那間照實說，不貼別間的公告。 */
+r = QA.answer("上下學搭公車的話最近的站牌在哪", bigItems, bigDetails, Object.assign({}, gopts, { schoolId: "", scopeLabel: "", calendarEvents: [{ school_id: "cysh" }, { school_id: "cygsh" }] }));
+assert.doesNotMatch(flat(r), /運動教練/);
+/* 正常有寫的題目不受影響。 */
+r = QA.answer("社團博覽會什麼時候", bigItems, bigDetails, gopts);
+assert.equal(r.status, "answered");
+assert.match(flat(r) + r.summary, /9月25日|9 月 25/);
+/* 只在逃生流程最後順帶提到宿舍：不能回「有」。 */
+r = QA.answer("有宿舍嗎", bigItems, bigDetails, gopts);
+assert.notEqual(r.status, "answered", r.summary);
+assert.doesNotMatch(flat(r) + r.summary, /^有。/);
+
 console.log("qa five tests passed");

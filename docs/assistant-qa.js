@@ -2553,7 +2553,7 @@
     var bullets = [], tails = [], limits = [], paragraphs = [];
     parts.forEach(function (p) {
       var r = p.result, ok = good.indexOf(p) !== -1;
-      if (!ok) { bullets.push(p.name + "：" + NO_SCHOOL_ANSWER + "。"); paragraphs.push({ heading: p.name, text: NO_SCHOOL_ANSWER + "，可以直接向相關處室確認。" }); return; }
+      if (!ok) { bullets.push(p.name + "：" + NO_SCHOOL_ANSWER + "。"); paragraphs.push({ heading: p.name, text: p.result && p.result.absent_terms ? clean(p.result.summary) : NO_SCHOOL_ANSWER + "，可以直接向相關處室確認。" }); return; }
       var reply = r.reply || { text: r.summary || "", bullets: [] };
       bullets.push(p.name + "：" + clean(reply.text || r.summary || ""));
       (reply.bullets || []).forEach(function (b) { bullets.push("　" + clean(b)); });
@@ -2678,6 +2678,118 @@
     yearOfQuestion = Number((clean(query).match(/(1[0-2]\d)\s*(?:學年度?|年)/) || [])[1]) || 0;
     try { return answerIndependent(query, items, details, options) || answerOnceInner(query, items, details, options); } finally { yearOfQuestion = previous; }
   }
+  /* ---- Coverage guard: the cited text has to be about what was asked ----
+     The specific words of a question (吉他社, 站牌, 宿舍) must appear in the title of what is cited, or at the
+     start of the quoted clause. A word that no notice or rule says is "not in the data"; one that only turns up
+     deep inside an unrelated clause (a drill procedure that ends 「學生宿舍同學集合於停車場」) is incidental.
+     Either way the answer says so instead of attaching an unrelated notice. */
+  function coreAsked(query, stats) {
+    var terms = [], anchors = [], parts = [], genericForms = GATE_STRIP.concat(ALWAYS_GENERIC).map(compact);
+    gateWords(query).forEach(function (run) {
+      var rest = run;
+      (Synonyms ? Synonyms.find(run) : []).forEach(function (term) {
+        var same = unique(Synonyms.expand(term, { includes: false }).map(compact));
+        rest = rest.split(term).join(" ");
+        if (term.length >= 2) anchors.push({ word: term, forms: same });
+        if (term.length < 2 || same.some(function (f) { return genericForms.indexOf(f) !== -1; }) || formShare(same, stats) > GENERIC_SHARE) return;
+        terms.push({ word: term, forms: same });
+      });
+      (rest.match(/[a-z0-9]{2,}/g) || []).forEach(function (w) { anchors.push({ word: w, forms: [w] }); });
+      /* The rest of the run in two-character pieces: those some title has (and that are not everywhere) are the
+         specific known words; a word whose pieces no title has at all (吉他 + 他社 = 吉他社) is absent from the data. */
+      rest.replace(/[a-z0-9]+/g, " ").split(" ").forEach(function (part) {
+        if (part.length >= 2) parts.push(part);
+        var known = [], from = -1, count = 0, spans = [];
+        for (var i = 0; i + 2 <= part.length + 1; i++) {
+          var g = i + 2 <= part.length ? part.slice(i, i + 2) : "";
+          var skip = !g || QUESTION_FILLER.test(g) || /[我你想要有的了嗎呢是在什麼麼哪得及還來去會能可]/.test(g) || ALWAYS_GENERIC.indexOf(g) !== -1;
+          var seen = !skip && pieceCount(g, stats) > 0;
+          if (seen && !isGeneric(g, stats)) known.push(g);
+          var unknown = !skip && !seen;
+          if (unknown && from === -1) { from = i; count = 0; }
+          if (unknown) count++;
+          if (!unknown && from !== -1) { if (count >= 1 && !/[記幾忘帶拿沒不能會該做想要去來出到過給被把讓用減變準備輕更表]/.test(part.slice(from, i + 1))) spans.push({ word: part.slice(from, i + 1), forms: [part.slice(from, i + 1)].concat(part.slice(from, i + 1).length > 2 ? [part.slice(from, from + 2), part.slice(i - 1, i + 1)] : []), absentWord: true }); from = -1; }
+        }
+        /* Only a segment with no known specific piece at all can be an absent word (noise crosses word boundaries next to known ones). */
+        if (!known.length) spans.forEach(function (t) { terms.push(t); });
+        if (known.length) terms.push({ word: known[0], forms: known, piece: true });
+      });
+    });
+    terms = terms.slice(0, 4);
+    terms.anchors = anchors;
+    terms.parts = parts;
+    return terms;
+  }
+  function coverageGuard(query, result, options) {
+    if (!result || result.status !== "answered" || (result.mode && !/^(?:rule|browse|official)?$/.test(result.mode)) || !corpusStats || personalDataQuery(query)) return result;
+    var texts = (result.evidence || []).map(function (e) { return { title: compact(e.title || ""), text: clean(e.text || "") }; });
+    if (!texts.length) (result.answer_lines || []).forEach(function (line) { texts.push({ title: "", text: clean(line) }); });
+    if (!texts.length) return result;
+    (result.sources || []).forEach(function (s) { texts.push({ title: compact(s.title || ""), text: "", sourceOnly: true }); });
+    var terms = coreAsked(query, corpusStats);
+    if (!terms.length) return result;
+    var covers = function (row, term) {
+      var lead = compact(row.text.replace(/^[^：:\d]{0,40}[：:]\s*/, "").slice(0, 100));
+      return term.forms.some(function (f) { return f.length >= 2 && (row.title.indexOf(f) !== -1 || lead.indexOf(f) !== -1 || compact(row.text.slice(0, 100)).indexOf(f) !== -1); });
+    };
+    var everywhere = function (term) { return term.forms.some(function (f) { return texts.some(function (row) { return compact(row.title + row.text).indexOf(f) !== -1; }); }); };
+    var anchors = terms.anchors || [], parts = terms.parts || [];
+    terms = terms.filter(function (t) { return !SITUATION_WORD.test(t.word); });
+    if (!terms.length) return result;
+    var missing = terms.filter(function (term) { return !texts.some(function (row) { return covers(row, term); }); });
+    /* A word that no title has at all (站牌) and that the cited text does not say decides it, unless a cited title is about another asked word. */
+    /* How much of what was asked the cited titles are about: asked characters covered by a title that has the word (or a piece of it). */
+    var inTitle = function (f) { return f.length >= 2 && texts.some(function (row) { return row.title.indexOf(f) !== -1; }); };
+    var total = 0, got = 0;
+    anchors.forEach(function (a) { total += a.word.length; if (a.forms.some(inTitle)) got += a.word.length; });
+    parts.forEach(function (part) {
+      total += part.length;
+      var mark = [];
+      for (var i = 0; i + 2 <= part.length; i++) if (pieceCount(part.slice(i, i + 2), corpusStats) > 0 && inTitle(part.slice(i, i + 2))) { mark[i] = mark[i + 1] = true; }
+      got += mark.filter(Boolean).length;
+    });
+    var titleCovered = total > 0 && got / total >= 0.35;
+    var absentMissing =missing.some(function (t) { return t.absentWord; });
+    if (missing.length < terms.length && (!absentMissing || titleCovered)) {
+      /* The first quoted clause is about something else (a drill line that ends in 學生宿舍) while a later one is on point: keep the on-point ones. */
+      var ev = result.evidence || [];
+      /* How early the asked words come in a quoted clause (a title that has them counts as 0). */
+      var where = function (e) {
+        var title = compact(e.title || ""), text = compact(clean(e.text || "").replace(/^[^：:\d]{0,40}[：:]\s*/, "")), best = 1e9;
+        terms.forEach(function (t) { t.forms.forEach(function (f) { if (f.length < 2) return; if (title.indexOf(f) !== -1) best = Math.min(best, 0); var at = text.indexOf(f); if (at !== -1) best = Math.min(best, at); }); });
+        return best;
+      };
+      if (ev.length > 1) {
+        var order = ev.map(function (e) { return { e: e, at: where(e) }; }), first = order[0].at;
+        var good = order.filter(function (row) { return row.at < 1e9; }).sort(function (x, y) { return x.at - y.at; });
+        if (good.length && good[0].e !== ev[0] && good[0].at + 15 < first) {
+          var keep = good.filter(function (row) { return row.at <= good[0].at + 15; }).map(function (row) { return row.e; });
+          var ids = {}; keep.forEach(function (e) { ids[String(e.announcement_id)] = true; });
+          var kept = (result.sources || []).filter(function (src) { return ids[String(src.id)]; });
+          result = Object.assign({}, result, { evidence: keep, answer_lines: keep.map(function (e) { return clean((e.title ? e.title + "：" : "") + e.text); }),
+            sources: kept.length ? kept : result.sources, related: [], also: [], key_points: [], notes: [],
+            summary: "依" + clean((kept[0] || {}).school_name || "學校") + "「" + clean(keep[0].title || "") + "」：" + clean(keep[0].text) });
+        }
+      }
+      /* Still nothing but a passing mention (a line that ends 「…返回宿舍、賃屋處所之學生」): say so instead of answering 「有」 from it. */
+      var main = terms.filter(function (t) { return !t.piece && !t.absentWord; });
+      var evNow = result.evidence || [];
+      if (main.length && evNow.length && evNow.every(function (e) {
+        var title = compact(e.title || "");
+        return !main.some(function (t) { return t.forms.some(function (f) { return f.length >= 2 && title.indexOf(f) !== -1; }); }) && where(e) >= 18;
+      })) {
+        var what = main.map(function (t) { return "「" + t.word + "」"; }).join("、"), scope = options && options.scopeLabel ? options.scopeLabel + "的資料" : "資料";
+        return { status: "insufficient", query: result.query || clean(query), evidence: [], sources: [], related: [], key_points: [], absent_terms: main.map(function (t) { return t.word; }),
+          summary: scope + "裡沒有直接寫到" + what + "，只在別的內容裡順帶提到（〈" + clean(String(((result.sources || [])[0] || {}).title || evNow[0].title || "").split("›").pop()) + "〉），不是在說這件事，所以我不拿它當答案。想確認的話，可以問導師或相關處室。" };
+      }
+      return result;
+    }
+    if (!absentMissing) return result;
+    var words = missing.map(function (t) { return "「" + t.word + "」"; }).join("、"), where = options && options.scopeLabel ? options.scopeLabel + "的資料" : "資料";
+    var incidental = missing.some(everywhere);
+    return { status: "insufficient", query: result.query || clean(query), evidence: [], sources: [], related: [], key_points: [], absent_terms: missing.map(function (t) { return t.word; }),
+      summary: where + "裡沒有提到" + words + "。" + (incidental ? "只在別的內容裡順帶出現，不是在說這件事，所以我不拿它當答案。" : "") + "想確認的話，可以問導師或相關處室。" };
+  }
   /* 「遲到會被記什麼？還有請病假要怎麼辦」: two unrelated questions in one message. Each is answered on its own,
      in its own paragraph; the questions about one subject (沒寫會怎樣) stay with splitQuestion. */
   var CLAUSE_ASK = /什麼|甚麼|怎麼|如何|嗎|哪|幾|多少|會不會|可不可以|能不能|可以|要不要|有沒有|是不是|何時|為什麼|為何|手續|流程|辦法/;
@@ -2714,7 +2826,7 @@
       var r = row.result || {}, reply = r.reply || conversational(r) || { text: r.summary || "", bullets: [] }, ok = r.status === "answered";
       var name = row.clause.text.replace(/[？?]$/, "").replace(/^(?:如果|要是|請問|我想問)/, "");
       paragraphs.push({ heading: name.length > 12 ? row.clause.heading : name,
-        text: ok ? clean(reply.text || r.summary || "") : "我讀得到的內容沒有直接寫到這一點，" + (r.office_link ? "可以先看" + r.office_link.label + "，或" : "") + "建議直接問導師或承辦處室。" + ((r.related || []).length ? "下方「參考資料」有幾則可能有關的公告。" : ""),
+        text: ok ? clean(reply.text || r.summary || "") : r.absent_terms ? clean(r.summary) : "我讀得到的內容沒有直接寫到這一點，" + (r.office_link ? "可以先看" + r.office_link.label + "，或" : "") + "建議直接問導師或承辦處室。" + ((r.related || []).length ? "下方「參考資料」有幾則可能有關的公告。" : ""),
         bullets: ok ? (reply.bullets || []).map(clean) : [], tail: ok ? clean(reply.tail || "") : "", source: ok ? clean(reply.source || "") : "",
         asides: ok ? (r.also || []).map(function (a) { return clean(a.text || "另外，" + (a.label || "") + "提到：" + (a.summary || "")); }).filter(Boolean) : [] });
       out.sources = out.sources.concat((r.sources || []).slice(0, 3));
@@ -2832,6 +2944,7 @@
         result.summary = String(result.summary || "").replace(/想確認的話，可以問導師或[^。]*。$/, "") + "可以先看" + link.label + "，或直接問" + link.office + "。";
       }
     }
+    if (result) result = coverageGuard(query, result, options);
     if (result) result.reply = conversational(result);
     /* The calendar or rules found something even though the announcements did not: no 「找不到」 opener. */
     if (result && result.status !== "answered" && (result.also || []).length && result.reply) result.reply = Object.assign({}, result.reply, { text: clean(result.summary || result.reply.text) });
@@ -3323,6 +3436,11 @@
       merged.push(row);
     });
     sections = merged;
+    /* Nothing was found about the subject itself: a notice that only answers the aspect (報名方式) for something else is no answer. */
+    if (overview.status !== "answered") {
+      var subjectGate = topicGate(split.subject, corpusStats);
+      if (subjectGate) sections = sections.filter(function (row) { return !row.sources.length || row.sources.some(function (s) { return subjectGate.test(clean(s.title || "")); }); });
+    }
     sections.forEach(function (row) { row.sources.forEach(function (s) { shown[s.id] = true; }); });
     (overview.also || []).forEach(function (row) { row.sources = (row.sources || []).filter(function (s) { return !shown[s.id] || row.layer !== "announcement"; }); });
     overview.also = (overview.also || []).filter(function (row) { return row.sources.length; });
