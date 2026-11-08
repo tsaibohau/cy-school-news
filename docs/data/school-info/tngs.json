@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-08T00:36:05+08:00",
+ "generated_at": "2026-11-08T10:37:18+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -1179,49 +1179,73 @@
    "page_id": 161892531367005,
    "url": "https://www.tngs.tn.edu.tw/department/sa/staff/",
    "label": "組織職掌",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "學務處"
    ],
-   "order": 80
+   "order": 80,
+   "checked_at": "2026-11-08T10:37:11+08:00",
+   "path": [
+    "行政組織",
+    "學務處",
+    "組織職掌"
+   ]
   },
   "134094958471378": {
    "page_id": 134094958471378,
    "url": "https://www.tngs.tn.edu.tw/department/gene/staff/",
    "label": "組織職掌",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "總務處"
    ],
-   "order": 81
+   "order": 81,
+   "checked_at": "2026-11-08T10:37:13+08:00",
+   "path": [
+    "行政組織",
+    "總務處",
+    "組織職掌"
+   ]
   },
   "120015077598042": {
    "page_id": 120015077598042,
    "url": "https://www.tngs.tn.edu.tw/department/gene/goal/",
    "label": "工作目標",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "總務處"
    ],
-   "order": 82
+   "order": 82,
+   "checked_at": "2026-11-08T10:37:15+08:00",
+   "path": [
+    "行政組織",
+    "總務處",
+    "工作目標"
+   ]
   },
   "259209281497812": {
    "page_id": 259209281497812,
    "url": "https://www.tngs.tn.edu.tw/department/gene/construction/",
    "label": "施工資訊",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "總務處"
    ],
-   "order": 83
+   "order": 83,
+   "checked_at": "2026-11-08T10:37:16+08:00",
+   "path": [
+    "行政組織",
+    "總務處",
+    "施工資訊"
+   ]
   },
   "69714958682886": {
    "page_id": 69714958682886,
@@ -1894,6 +1918,42 @@
     "音樂班"
    ],
    "order": 139
+  },
+  "144770133718612": {
+   "page_id": 144770133718612,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/goal/filing/",
+   "label": "文書組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "工作目標"
+   ],
+   "order": 140
+  },
+  "27901323531910": {
+   "page_id": 27901323531910,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/goal/cashier/",
+   "label": "出納組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "工作目標"
+   ],
+   "order": 141
+  },
+  "181048685999986": {
+   "page_id": 181048685999986,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/goal/maint/",
+   "label": "庶務組",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "工作目標"
+   ],
+   "order": 142
   }
  },
  "handbook": {},
@@ -2225,5 +2285,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-08T00:36:05+08:00"
+ "last_run_at": "2026-11-08T10:37:18+08:00"
 }

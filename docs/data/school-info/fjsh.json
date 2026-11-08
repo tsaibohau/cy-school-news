@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-08T00:33:45+08:00",
+ "generated_at": "2026-11-08T10:35:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -4983,11 +4983,192 @@
   },
   "542": {
    "page_id": 542,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T10:35:10+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "各項費用"
+   ],
+   "changed_at": "2026-11-08T10:35:10+08:00",
+   "content_hash": "4d0d189fc82b7aebe12f4d1a5b9dfcf5f85b8c00c12bf11d665576c82509230f",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "註冊費",
+    "繳費",
+    "地址",
+    "學雜費",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-542.json",
+   "detail_revision": "650e82fbfee34cba4d869be3a028f0822836414cd69abeb9cb42ace838b8a2b4",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處",
+     "費用"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "543": {
    "page_id": 543,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T10:35:13+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "場地租借"
+   ],
+   "changed_at": "2026-11-08T10:35:13+08:00",
+   "content_hash": "6e894e8770b6244e33476bd54f57baa46e2da380a23cff00a704b8a44a00822a",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "申請",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-543.json",
+   "detail_revision": "250a40ebdfbf59a51ffad26eba8d4ac2e284c17422237f31b90a661d6c5cfdc6",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "545": {
    "page_id": 545,
@@ -10248,6 +10429,195 @@
    }
   },
   {
+   "id": "fjsh-info-542",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 各項費用",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-542.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "註冊費",
+    "繳費",
+    "地址",
+    "學雜費",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-542.json",
+   "detail_revision": "650e82fbfee34cba4d869be3a028f0822836414cd69abeb9cb42ace838b8a2b4",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處",
+     "費用"
+    ],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-543",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 場地租借",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-543.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "申請",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-543.json",
+   "detail_revision": "250a40ebdfbf59a51ffad26eba8d4ac2e284c17422237f31b90a661d6c5cfdc6",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -10345,5 +10715,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-08T00:33:45+08:00"
+ "last_run_at": "2026-11-08T10:35:14+08:00"
 }

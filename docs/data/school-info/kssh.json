@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-08T00:33:04+08:00",
+ "generated_at": "2026-11-08T10:34:41+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -3358,12 +3358,37 @@
    "page_id": 64123942048132,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4471.php",
    "label": "學雜費及代收代辦費收費標準",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 40
+   "order": 40,
+   "checked_at": "2026-11-08T10:34:40+08:00",
+   "path": [
+    "校務資料專區",
+    "學生專區",
+    "學雜費與就學補助資訊",
+    "學雜費及代收代辦費收費標準"
+   ],
+   "changed_at": "2026-11-08T10:34:40+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-64123942048132.json",
+   "detail_revision": "6baf93b68b6d4870c854e6919a7c09d7cbedacedfbfb4fe60a5adddc41bdd152",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學雜費",
+     "費用",
+     "#fee"
+    ],
+    "segments": []
+   }
   },
   "195128619221838": {
    "page_id": 195128619221838,
@@ -3748,6 +3773,18 @@
     "組織架構"
    ],
    "order": 73
+  },
+  "264896712655255": {
+   "page_id": 264896712655255,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4450.php",
+   "label": "學生專區",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "學雜費與就學補助資訊",
+    "學雜費及代收代辦費收費標準"
+   ],
+   "order": 74
   }
  },
  "handbook": {},
@@ -4101,6 +4138,32 @@
    "detail_ref": "data/details/kssh/kssh-info-47604525079125.json",
    "detail_revision": "4d040cd4a7b9a36fa982b5de4f28f085f484f997c110e33fec450eba32464c47",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-64123942048132",
+   "kind": "school_info",
+   "title": "學生專區 › 學雜費與就學補助資訊 › 學雜費及代收代辦費收費標準",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4471.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-64123942048132.json",
+   "detail_revision": "6baf93b68b6d4870c854e6919a7c09d7cbedacedfbfb4fe60a5adddc41bdd152",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學雜費",
+     "費用",
+     "#fee"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "kssh-info-64530537523419",
@@ -6991,5 +7054,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-08T00:33:04+08:00"
+ "last_run_at": "2026-11-08T10:34:41+08:00"
 }

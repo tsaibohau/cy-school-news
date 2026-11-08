@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-08T00:32:56+08:00",
+ "generated_at": "2026-11-08T10:34:35+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -10379,23 +10379,564 @@
    "page_id": 33659985067039,
    "url": "https://www.fhsh.khc.edu.tw/library/%e5%9c%96%e6%9b%b8%e8%b3%87%e6%ba%90",
    "label": "圖書資源",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 58
+   "order": 58,
+   "checked_at": "2026-11-08T10:34:32+08:00",
+   "path": [
+    "網站導覽",
+    "圖書資源"
+   ]
   },
   "93027821734617": {
    "page_id": 93027821734617,
    "url": "https://www.fhsh.khc.edu.tw/library/線上辦證資源",
    "label": "線上辦證資源",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 59
+   "order": 59,
+   "checked_at": "2026-11-08T10:34:34+08:00",
+   "path": [
+    "網站導覽",
+    "線上辦證資源"
+   ],
+   "changed_at": "2026-11-08T10:34:34+08:00",
+   "content_hash": "569da82281673cd7f600933e2bf36c9a3f27b6761693bfa69c98b2063aef8f63",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "圖書館",
+    "申請",
+    "借書",
+    "借閱",
+    "申辦",
+    "上傳",
+    "繳交",
+    "借還書",
+    "報名",
+    "手機",
+    "繳費",
+    "還書"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-93027821734617.json",
+   "detail_revision": "cbbb828977c6bbfa1268fab71cf84d04d6fe43e180f0b25dff8813e1ae8a149d",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長",
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "contact",
+       "deny"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "借書",
+       "繳交",
+       "#library"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "圖書館",
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "手機",
+       "借書",
+       "#device",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "圖書館",
+       "失物",
+       "#library"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "圖書館",
+       "借書",
+       "報名",
+       "#library"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "網路",
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "家長",
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "政大",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "費用",
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "required",
+       "fee"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "清大",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "圖書館",
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "元智",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "借書",
+       "繳交",
+       "#library"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [
+       "借書",
+       "元智",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "失物",
+       "借書",
+       "元智",
+       "#library"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "中教大",
+       "勤益",
+       "弘光",
+       "亞大",
+       "聯大",
+       "中興",
+       "圖書館",
+       "中山"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "audience",
+       "contact"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "penalty",
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "借書",
+       "繳交",
+       "#library"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   "175586535518894": {
    "page_id": 175586535518894,
@@ -15540,6 +16081,549 @@
        "time",
        "method",
        "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-info-93027821734617",
+   "kind": "school_info",
+   "title": "網站導覽 › 線上辦證資源",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/library/線上辦證資源",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "圖書館",
+    "申請",
+    "借書",
+    "借閱",
+    "申辦",
+    "上傳",
+    "繳交",
+    "借還書",
+    "報名",
+    "手機",
+    "繳費",
+    "還書"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-93027821734617.json",
+   "detail_revision": "cbbb828977c6bbfa1268fab71cf84d04d6fe43e180f0b25dff8813e1ae8a149d",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "家長",
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "contact",
+       "deny"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "借書",
+       "繳交",
+       "#library"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "圖書館",
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "手機",
+       "借書",
+       "#device",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "圖書館",
+       "失物",
+       "#library"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "圖書館",
+       "借書",
+       "報名",
+       "#library"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "網路",
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "家長",
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "政大",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "費用",
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "required",
+       "fee"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "清大",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "圖書館",
+       "借書",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 48,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "元智",
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "借書",
+       "繳交",
+       "#library"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [
+       "借書",
+       "元智",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "失物",
+       "借書",
+       "元智",
+       "#library"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 54,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "中教大",
+       "勤益",
+       "弘光",
+       "亞大",
+       "聯大",
+       "中興",
+       "圖書館",
+       "中山"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "借書",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "audience",
+       "contact"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "penalty",
+       "deadline",
+       "method"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [
+       "借書",
+       "繳交",
+       "#library"
+      ],
+      "k": [
+       "required"
       ]
      }
     ]
@@ -22934,5 +24018,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-08T00:32:56+08:00"
+ "last_run_at": "2026-11-08T10:34:35+08:00"
 }

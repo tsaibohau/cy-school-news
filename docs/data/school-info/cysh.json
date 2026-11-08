@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-08T00:33:29+08:00",
+ "generated_at": "2026-11-08T10:35:02+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -7843,11 +7843,51 @@
   },
   "1018": {
    "page_id": 1018,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T10:34:58+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "棒球隊專區",
+    "棒球隊後援會"
+   ],
+   "changed_at": "2026-11-08T10:34:58+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1018.json",
+   "detail_revision": "afa04217c20363801872d77f4ba4c89f70ecf2f73fc8daeeca35410ff62689a7",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1019": {
    "page_id": 1019,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T10:35:01+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "棒球隊專區",
+    "宿舍管理辦法"
+   ],
+   "changed_at": "2026-11-08T10:35:01+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1019.json",
+   "detail_revision": "92d0cf13519738fabf33edd72c01a208c85f76d5b86c6925b249da7787eadf86",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "宿舍",
+     "#accommodation"
+    ],
+    "segments": []
+   }
   },
   "1020": {
    "page_id": 1020,
@@ -36155,6 +36195,48 @@
    "detail_status": "empty"
   },
   {
+   "id": "cysh-info-1018",
+   "kind": "school_info",
+   "title": "進修部 › 棒球隊專區 › 棒球隊後援會",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1018.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1018.json",
+   "detail_revision": "afa04217c20363801872d77f4ba4c89f70ecf2f73fc8daeeca35410ff62689a7",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-1019",
+   "kind": "school_info",
+   "title": "進修部 › 棒球隊專區 › 宿舍管理辦法",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1019.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1019.json",
+   "detail_revision": "92d0cf13519738fabf33edd72c01a208c85f76d5b86c6925b249da7787eadf86",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "宿舍",
+     "#accommodation"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "cysh-info-1040",
    "kind": "school_info",
    "title": "學務處 › 衛生組 › 健促成果區",
@@ -56467,5 +56549,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-08T00:33:29+08:00"
+ "last_run_at": "2026-11-08T10:35:02+08:00"
 }

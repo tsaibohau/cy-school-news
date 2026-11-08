@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-08T00:33:08+08:00",
+ "generated_at": "2026-11-08T10:34:46+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -4096,13 +4096,46 @@
    "page_id": 9581224037188,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-669.php",
    "label": "經營主軸與策略",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "校長室"
    ],
-   "order": 46
+   "order": 46,
+   "checked_at": "2026-11-08T10:34:44+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "經營主軸與策略"
+   ],
+   "changed_at": "2026-11-08T10:34:44+08:00",
+   "content_hash": "b953887c6fddfe568ef1709c75209f6772681d71aceeb6b30f69024a15d66fe8",
+   "doc_links": [],
+   "keywords": [
+    "升學"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-9581224037188.json",
+   "detail_revision": "71d860a838fb6b6c3b83672999ef760bb8cf41ae281a09252a4698604294944a",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "6541261989210": {
    "page_id": 6541261989210,
@@ -6425,6 +6458,41 @@
      },
      {
       "s": 28,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ksaivs-info-9581224037188",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室 › 經營主軸與策略",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-669.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [
+    "升學"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-9581224037188.json",
+   "detail_revision": "71d860a838fb6b6c3b83672999ef760bb8cf41ae281a09252a4698604294944a",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
       "t": [
        "升學",
        "#admission"
@@ -10517,5 +10585,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-08T00:33:08+08:00"
+ "last_run_at": "2026-11-08T10:34:46+08:00"
 }

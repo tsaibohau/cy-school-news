@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-08T00:33:39+08:00",
+ "generated_at": "2026-11-08T10:35:08+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -10964,7 +10964,110 @@
   },
   "2031": {
    "page_id": 2031,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T10:35:04+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "教育部學生輔導諮商中心",
+    "南區分區中心"
+   ],
+   "changed_at": "2026-11-08T10:35:04+08:00",
+   "content_hash": "951b10f8598ad4433fb2f4771f367785db1068884ac690845015e41e421d09be",
+   "doc_links": [],
+   "keywords": [
+    "校服",
+    "工作坊",
+    "分發",
+    "獎懲"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2031.json",
+   "detail_revision": "5a89a022c735fb3d8ec8bc01cb6c2955479aa362d15ae17a9232e10348ebf501",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "115年度南區分區中心暨嘉義區駐點服務學校實施計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/525377250.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 10,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "2032": {
    "page_id": 2032,
@@ -34720,7 +34823,7 @@
     "chars": 954
    }
   },
-  "checked_at": "2026-11-08T00:33:37+08:00",
+  "checked_at": "2026-11-08T10:35:08+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -67206,6 +67309,112 @@
    }
   },
   {
+   "id": "cygsh-info-2031",
+   "kind": "school_info",
+   "title": "輔導室 › 教育部學生輔導諮商中心 › 南區分區中心",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2031.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "115年度南區分區中心暨嘉義區駐點服務學校實施計畫"
+   ],
+   "keywords": [
+    "校服",
+    "工作坊",
+    "分發",
+    "獎懲"
+   ],
+   "documents": [
+    {
+     "name": "115年度南區分區中心暨嘉義區駐點服務學校實施計畫",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/525377250.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2031.json",
+   "detail_revision": "5a89a022c735fb3d8ec8bc01cb6c2955479aa362d15ae17a9232e10348ebf501",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 10,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "制服",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-info-2082",
    "kind": "school_info",
    "title": "新生專區",
@@ -90174,5 +90383,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-08T00:33:39+08:00"
+ "last_run_at": "2026-11-08T10:35:08+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cyivs",
- "generated_at": "2026-11-08T00:35:14+08:00",
+ "generated_at": "2026-11-08T10:36:18+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "176898544836631": {
@@ -1197,25 +1197,35 @@
    "page_id": 70745004118328,
    "url": "https://www.cyivs.cy.edu.tw/home/administration/president-office/%e6%ad%b7%e4%bb%bb%e6%a0%a1%e9%95%b7/",
    "label": "歷任校長",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "．",
     "校長室"
    ],
-   "order": 72
+   "order": 72,
+   "checked_at": "2026-11-08T10:36:14+08:00",
+   "path": [
+    "．",
+    "行政單位",
+    "．",
+    "校長室",
+    "．",
+    "歷任校長"
+   ]
   },
   "256215320918963": {
    "page_id": 256215320918963,
    "url": "https://www.cyivs.cy.edu.tw/home/administration/academic-affairs/%e7%99%bc%e5%b1%95%e8%a8%88%e5%8a%83/",
    "label": "發展計劃",
-   "status": "pending",
+   "status": "gone",
    "depth": 1,
    "parent_path": [
     "．",
     "教務處"
    ],
-   "order": 73
+   "order": 73,
+   "checked_at": "2026-11-08T10:36:16+08:00"
   },
   "122664233409746": {
    "page_id": 122664233409746,
@@ -4219,5 +4229,5 @@
   "f3ef66c885",
   "fb63c59ff7"
  ],
- "last_run_at": "2026-11-08T00:35:14+08:00"
+ "last_run_at": "2026-11-08T10:36:18+08:00"
 }

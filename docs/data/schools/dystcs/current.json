@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T00:23:48+08:00",
+ "generated_at": "2026-11-08T10:25:51+08:00",
  "school": {
   "id": "dystcs",
   "name": "私立大榮高中",
@@ -248,8 +248,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "audience": {
     "grades": [],
     "classes": [],
@@ -437,7 +437,126 @@
    "url": "https://www.dystcs.kh.edu.tw/modules/tadnews/index.php?nsn=961",
    "category": "一般",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "課表",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "模擬考",
+       "段考",
+       "考試",
+       "#exam",
+       "#mock",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "獎學金",
+       "#scholarship"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "學生證",
+       "#student_id"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "成績單"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "網路",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "dystcs-1249",

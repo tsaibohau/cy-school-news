@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T00:23:48+08:00",
+ "generated_at": "2026-11-08T10:25:51+08:00",
  "school": {
   "id": "chimei",
   "name": "國立旗美高中",
@@ -2617,7 +2617,26 @@
    "url": "https://www.cmsh.khc.edu.tw/ischool/public/news_view/show.php?nid=25146",
    "category": "競賽",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "chimei-25145",
