@@ -7,7 +7,8 @@
   --paper-deep: #EAE0CB;
   --card: #FBF7EE;
   --ink: #2A2420;
-  --muted: #776B5D;
+  --muted: #6B5F51;
+  --control-line: #8C7F6A;
   --line: #DCCFB6;
   --line-soft: #E8DECB;
   --seal: #A8352B;
@@ -33,6 +34,7 @@
     --card: #23201B;
     --ink: #ECE3D2;
     --muted: #A89B88;
+    --control-line: #857868;
     --line: #3A3329;
     --line-soft: #2F2A22;
     --seal: #D0685A;
@@ -1059,3 +1061,57 @@ body.is-chat .foot { display: none; }
 .chat-newchat[hidden] { display: none; }
 .chat-newchat:hover { border-color: var(--seal); color: var(--seal); }
 .chat-newchat:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; }
+
+/* ── 人體工學與可讀性（2026-11）：拇指好按、對比足夠、字不貼太近 ──
+   觸控目標 ≥44px（小膠囊用透明的延伸點擊區，外觀不變）、次要文字對比 ≥4.5:1、
+   控制項邊框對比 ≥3:1、CJK 內文行距與段距、底部安全區、按下與聚焦回饋。 */
+.chat-view button, .chat-view summary, .chat-view select, .tabbar .tab { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.chat-box, .chat-box-foot .assistant-scope select, .chat-deep-toggle, .chat-sources-toggle, .chat-newchat, .assistant-examples button { border-color: var(--control-line); }
+.chat-box:focus-within { border-color: var(--ink); box-shadow: 0 6px 24px rgba(40, 28, 16, .12), 0 0 0 1px var(--ink); }
+
+/* 輸入列：送出鍵 44px、不被擠扁；放不下時換行而不是縮小按鈕；底部留安全區 */
+.chat-box-foot { flex-wrap: wrap; row-gap: 10px; align-items: center; }
+.chat-send { flex: none; width: 44px; height: 44px; border-radius: 14px; font-size: 20px; }
+.chat-send:active:not(:disabled), .chat-newchat:active, .chat-deep-toggle:active, .chat-sources-toggle:active, .assistant-examples button:active { transform: scale(.96); filter: brightness(.94); }
+.chat-box-foot .assistant-scope, .chat-box-foot .assistant-scope select { min-height: 44px; }
+/* 小膠囊：外觀維持，點擊區上下各多 6px（≥44px），左右不重疊 */
+.chat-deep-toggle, .chat-sources-toggle, .assistant-examples button, .chat-newchat { position: relative; min-height: 34px; }
+.chat-deep-toggle::after, .chat-sources-toggle::after, .assistant-examples button::after, .chat-newchat::after { content: ""; position: absolute; inset: -6px 0; }
+.chat-deep-toggle, .chat-sources-toggle { font-size: 13.5px; }
+.chat-sources-count { font-size: 12px; }
+.assistant-examples { gap: 10px 8px; }
+.assistant-examples button { font-size: 14px; padding: 6px 14px; color: var(--ink); }
+.chat-newchat { font-size: 14px; padding: 7px 16px; margin-bottom: 12px; }
+.chat-composer::before { bottom: calc(-140px - env(safe-area-inset-bottom, 0px)); }
+.chat-deep-toggle:focus-visible, .chat-sources-toggle:focus-visible, .assistant-examples button:focus-visible, .chat-send:focus-visible, .chat-sources-close:focus-visible, .chat-toast-undo:focus-visible { outline: 2px solid var(--seal); outline-offset: 2px; }
+.chat-deep-toggle[aria-pressed="true"]::before { content: "✓ "; }
+
+/* 關閉參考資料、判斷過程：整列 44px 好按 */
+.chat-sources-close { min-width: 44px; min-height: 44px; margin: -6px -8px -6px 0; padding: 0; font-size: 18px; }
+.chat-deep, .chat-evidence { padding-top: 0; padding-bottom: 0; }
+.chat-deep summary, .chat-evidence > summary { display: flex; align-items: center; min-height: 44px; font-size: 14px; }
+.chat-deep[open] summary, .chat-evidence[open] > summary { border-bottom: 1px dashed var(--line); margin-bottom: 8px; }
+.chat-deep ul { padding-bottom: 8px; }
+.chat-deep { font-size: 14px; }
+.chat-deep li { line-height: 1.7; }
+.assistant-details > summary { min-height: 44px; display: flex; align-items: center; font-size: 14px; }
+
+/* 回答的閱讀：答案最大、出處與補充退一階但仍 ≥4.5:1；CJK 行距 1.85、段落分明，長螢幕限制行長 */
+.chat-reply .assistant-lead, .chat-para { line-height: 1.85; }
+.chat-section { margin-top: 20px; }
+.chat-headline { line-height: 1.55; }
+.chat-bullets li + li { margin-top: 6px; }
+.chat-source { font-size: 14px; line-height: 1.7; }
+.chat-tail, .chat-aside { font-size: 14px; line-height: 1.75; }
+.chat-context { font-size: 13px; }
+.chat-status { font-size: 13px; }
+.chat-answer .chat-para, .chat-answer .chat-bullets, .chat-answer .chat-aside, .chat-answer .chat-source, .chat-answer .chat-headline { max-width: 36em; }
+.chat-user p { line-height: 1.7; }
+
+/* 「已開啟新對話 · 復原」：開啟新問校務會清掉對話，給 6 秒反悔 */
+.chat-toast { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 8px 0 0; padding: 4px 6px 4px 16px; border-radius: 14px; background: var(--ink); color: var(--paper); font-size: 14px; animation: chat-toast-in .18s ease-out; }
+.chat-toast[hidden] { display: none; }
+.chat-toast-undo { min-width: 64px; min-height: 44px; padding: 0 14px; border: 0; border-radius: 10px; background: transparent; color: inherit; font: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; touch-action: manipulation; }
+.chat-toast-undo:active { background: rgba(127, 127, 127, .3); }
+.chat-toast-undo:focus-visible { outline-color: var(--paper); }
+@keyframes chat-toast-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
