@@ -111,11 +111,16 @@
     return names;
   }
   // 舊匯入日期尚未經官方文章頁確認的公告（首見早於 dateUnverifiedBefore 且未標 verified）
+  var cutoffById = null;
   function unverifiedLegacyDate(item) {
     if (!item) return false;
     if (item.date_status === "unverified" || item.date_source === "legacy_unverified") return true;
-    var school = schools.find(function (row) { return row.id === String(item.school || ""); });
-    var cutoff = school && school.dateUnverifiedBefore;
+    /* 每則公告都會問一次：用索引取代逐校線性搜尋（8 千則 × 60 校） */
+    if (!cutoffById) {
+      cutoffById = Object.create(null);
+      schools.forEach(function (row) { if (!(row.id in cutoffById)) cutoffById[row.id] = row.dateUnverifiedBefore; });
+    }
+    var cutoff = cutoffById[String(item.school || "")];
     return !!cutoff && item.date_status !== "verified" && !!item.date && String(item.first_seen || "").slice(0, 10) < cutoff;
   }
   return {

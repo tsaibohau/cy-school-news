@@ -198,10 +198,26 @@
         statusMessage("此帳號尚未開放這項功能。");
       }
     }, true);
-    new MutationObserver(function () {
+    /* 小訊每個影格都改自己的 DOM、一頁公告也是一次塞進幾百個節點：合併成每個影格最多處理一次
+       （影格繪製前執行，新插入的按鈕不會閃現），並略過只動到小訊的變動。 */
+    var guardScheduled = false;
+    function runGuards() {
+      guardScheduled = false;
       applyVisibility();
       renderMemberPolicy();
       renderPublicCapabilities();
+    }
+    function mascotOnly(records) {
+      return records.every(function (record) {
+        var node = record.target;
+        var element = node && node.nodeType === 1 ? node : node && node.parentElement;
+        return !!(element && typeof element.closest === "function" && element.closest(".mascot, .mascot-stage, #mascotStage, #mascotPerch"));
+      });
+    }
+    new MutationObserver(function (records) {
+      if (guardScheduled || mascotOnly(records)) return;
+      guardScheduled = true;
+      if (typeof requestAnimationFrame === "function") requestAnimationFrame(runGuards); else setTimeout(runGuards, 0);
     }).observe(document.documentElement, { childList: true, subtree: true });
     applyVisibility();
     renderMemberPolicy();
@@ -215,8 +231,11 @@
       var originalAccess = controller.getAccountAccess;
       var originalAdmin = controller.getAdminAccounts;
       controller.getAccountAccess = function () {
+        /* 權限清單和帳號狀態同時詢問（原本先後兩趟網路往返）；帳號狀態失敗時這個請求的結果直接丟掉。 */
+        var capabilityRequest = controller.getClient().then(function (client) { return client.rpc("current_account_capabilities"); });
+        capabilityRequest.catch(function () {});
         return originalAccess.call(controller).then(function (access) {
-          return controller.getClient().then(function (client) { return client.rpc("current_account_capabilities"); }).then(function (result) {
+          return capabilityRequest.then(function (result) {
             if (result.error) throw result.error;
             current = normalize(result.data);
             approved = access.status === "approved";

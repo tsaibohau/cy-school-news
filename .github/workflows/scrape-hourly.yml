@@ -145,6 +145,11 @@ jobs:
       - name: 移除公開產物中的會員內容
         run: node tools/public-metadata-projection.js docs
 
+      - name: 產生首屏快照（最新公告的精簡檔，手機開站先載這個）
+        # Optional: a failure must not block the announcement update; the site falls back to the full files.
+        continue-on-error: true
+        run: python scraper/latest_slim.py
+
       - name: 產生活動系列（歷屆同名活動的時間軸，只用公開標題與日期）
         # Optional: a failure must not block the announcement update; the page just keeps the previous series.json.
         continue-on-error: true

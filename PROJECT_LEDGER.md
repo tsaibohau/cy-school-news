@@ -2426,3 +2426,14 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 問校務：兩校「…的差異」逐校回答再附差異段；「那嘉中呢」沿用主題不再重複比較；一句多問（遲到＋病假）分題回答；學校運動教練、縣市運動會不再當成校運會；問題的關鍵詞資料裡沒有時直接說「資料裡沒有提到」，不附無關公告。回歸 637/900 持平。
 - 版本：assistant-qa v93、qa-synonyms v14、app v143、style v119、mascot v8、cy-news-v168。
 - 已知：test_school_registry_sync 在 main 上即失敗（公告量成長超過容量檢查），非本次造成。
+
+## 2026-11-08 載入加速第二輪（手機 4G 開站約 20 秒）
+問題：手機開站要等 8.4MB 的 announcements.json（壓縮後約 950KB）下載、解析並對 8 千則公告逐則運算，之後才畫第一頁；已登入的會員還要先等「已刪除公告」RPC（需先載入 Supabase 程式庫）才畫得出來，問校務首頁（登入後的落地頁）又要等權限檢查三趟網路往返；會員摘要（每則公告的 summary／snippet）逐頁循序下載（最多 20 頁）；Service Worker 安裝時另外預載 1.1MB 資料。
+- 首屏精簡快照：`scraper/latest_slim.py`（接在 `scrape-hourly.yml` 既有 job、公開資料去識別化之後；排程不變）產生 `docs/data/announcements-latest.json` 與各校 `docs/data/schools/<id>/latest.json`（最新 320 則，約完整檔 1/27、gzip 約 48KB；機器人產物，不可手改）。前端先用它畫第一頁，問校務引擎載入後的閒置時間才背景載入完整檔，換進來時分段重畫。快照不存在（部署後第一次排程前）或抓失敗時自動退回完整檔案。搜尋、篩分類、改排序、發問、清單看到底、切到其他分頁會立刻要求完整資料。
+- 公告列表不再等「已刪除公告」RPC：背景取回後校正，已刪除編號記在 localStorage（`cyNews.deletedIds.v1`）。
+- 會員摘要延後到完整資料之後才下載，並一次同時要 4 頁；發問時若還沒下載完會先等。權限清單與帳號狀態同時詢問；head 提早 `import()` Supabase 程式庫（版本須與 `account-auth.js` 的 CLIENT_VERSION 一致，`test_load_performance.js` 檢查）。
+- 主執行緒：capability-layer 的 MutationObserver 每影格最多處理一次且略過小訊；台北日期／時間改用算術（`toLocaleDateString` 帶時區每次都很慢）；學校登錄與相關度查表快取；「我的今日」只在首頁／今天分頁時重畫；推薦問題先剔除不相關公告。
+- Service Worker 安裝不再預載 `calendar-events.json`、`class-timetables.json`（第一次用到時由 /data/ 規則快取）。
+- 測試：`tests/test_latest_slim.py`；`test_pwa_notification.js` 加快照流程（快照→完整、404 退回、搜尋觸發完整載入）；`test_load_performance.js` 更新接線檢查。
+- 版本號（app.js、index.html 內各腳本、sw.js 快取名稱）合併時再一起加。
+- 需等下一次排程才生效的部分：兩種 `latest.json` 快照檔。
