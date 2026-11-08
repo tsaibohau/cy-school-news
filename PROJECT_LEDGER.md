@@ -2437,3 +2437,9 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 測試：`tests/test_latest_slim.py`；`test_pwa_notification.js` 加快照流程（快照→完整、404 退回、搜尋觸發完整載入）；`test_load_performance.js` 更新接線檢查。
 - 版本號（app.js、index.html 內各腳本、sw.js 快取名稱）合併時再一起加。
 - 需等下一次排程才生效的部分：兩種 `latest.json` 快照檔。
+
+## 2026-11-08 問校務：「怎麼辦」問流程、五種長度實測
+- 「怎麼辦／去哪裡補／補發」問的是辦理流程：先找補發、申請、處室等句子；處罰只在問「會怎樣」時回答，否則列為「另外」補充；資料沒寫就直說並建議問導師或處室（只在資料寫明時才指名處室）。學生證對應處室改為教務處。手冊修訂日期不再當成「時間」重點。
+- 五題實測（圖書館時間／期中考成績何時能查／繁星推薦要怎麼選填志願／微課程後八週選課結果與上課地點／運動賽事志工報名與志工時數能否放備審）：開放時間只用寫到時間的句子；名單、修訂紀錄不當答案；前八週與後八週不互相取代；多梯次全列；長篇敘述拆成兩件事分開答。
+- 測試：tests/test_qa_howto.js、tests/test_qa_lengths.js（虛構資料）。
+- 版本：assistant-qa v94、answer-composer v5、app v144、account-auth v80、account-config v46、capability-layer v13、school-registry v50、relevance v44、today v43、daily-brief v3、announcement-validity v53、cy-news-v169。

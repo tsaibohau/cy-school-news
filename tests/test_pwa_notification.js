@@ -639,7 +639,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v168/);
+  assert.match(swSource, /cy-news-v169/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
@@ -662,7 +662,7 @@ function testServiceWorkerContract() {
   assert.doesNotMatch(shellList, /\.\/data\//, "big data files (timetables, calendar events) are cached on first use, not precached at install");
   assert.match(swSource, /url\.pathname\.indexOf\("\/data\/"\) !== -1/, "data files are cached the first time they are fetched");
   assert.match(swSource, /\.\/announcement-validity-reviewed\.js\?v=52/, "PWA caches reviewed validity records");
-  assert.match(swSource, /\.\/announcement-validity\.js\?v=52/, "PWA caches the validity module with the same shell revision");
+  assert.match(swSource, /\.\/announcement-validity\.js\?v=53/, "PWA caches the validity module with the same shell revision");
   assert.match(swSource, /searchParams\.has\("code"\)/);
   assert.match(swSource, /searchParams\.has\("access_token"\)/);
   assert.match(swSource, /searchParams\.has\("refresh_token"\)/);

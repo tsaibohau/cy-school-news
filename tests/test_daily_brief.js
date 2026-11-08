@@ -100,9 +100,9 @@ const today = "2026-10-27";  // 星期二
   const sw = fs.readFileSync(path.join(root, "docs/sw.js"), "utf8");
   const brief = fs.readFileSync(path.join(root, "docs/daily-brief.js"), "utf8");
   assert.match(index, /id="dailyBrief"[\s\S]*id="dailyBriefText"[^>]*aria-hidden="true"[\s\S]*id="dailyBriefSr"/);
-  assert(index.indexOf('src="daily-brief.js?v=2"') > index.indexOf('src="today.js'), "brief loads after today.js");
-  assert(index.indexOf('src="daily-brief.js?v=2"') < index.indexOf('src="app.js'), "brief loads before app.js");
-  assert(sw.includes("./daily-brief.js?v=2"), "service worker caches the brief module");
+  assert(index.indexOf('src="daily-brief.js?v=3"') > index.indexOf('src="today.js'), "brief loads after today.js");
+  assert(index.indexOf('src="daily-brief.js?v=3"') < index.indexOf('src="app.js'), "brief loads before app.js");
+  assert(sw.includes("./daily-brief.js?v=3"), "service worker caches the brief module");
   assert.match(app, /prefers-reduced-motion: reduce/, "typewriter respects reduced motion");
   assert.match(app, /el\.dailyBriefSr\.textContent = brief\.text/, "screen readers get the full text at once");
   /* 2026-10-31: members with 問校務 now land on 問校務 (chat); others stay on 公告總庫. */
