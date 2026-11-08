@@ -2444,10 +2444,17 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 測試：tests/test_qa_howto.js、tests/test_qa_lengths.js（虛構資料）。
 - 版本：assistant-qa v94、answer-composer v5、app v144、account-auth v80、account-config v46、capability-layer v13、school-registry v50、relevance v44、today v43、daily-brief v3、announcement-validity v53、cy-news-v169。
 
+## 2026-11-08 問校務截圖三題、前幾輪抽檢、UI 人體工學
+- 截圖三題：「閱讀心得怎麼寫」改由該主題的公告說明怎麼做（對象、步驟、影片、期限），行事曆日期附後，不再以得獎名單開頭或重複引用；「嘉中有幾位老師」的「有幾／多少」不再當成主題詞，改讀學校簡介（無單獨老師人數則直說，附教職員工總數）；「沒寫會怎樣」不再只回一個標題（noBareTitle）。表情符號、圖示一律去除。
+- 抽檢：繁星等本學年度文件不再誤標過期；電子郵件與連結不再被截斷；分題標題用公告主題；嘉女午休手機、遲到規定改引正確條文；學生證補發流程不再指到申訴流程圖；住宿題不再引用食物中毒條文。
+- UI：送出鍵 44×44、晶片點擊區 44px、淺色次要文字對比 4.41→5.28、控制項框線 3:1 以上、360px 寬不再重疊；「開啟新問校務」可在 6 秒內復原。
+- 測試：tests/test_qa_shots3.js、tests/test_qa_recheck.js（虛構資料）。
+- 版本：assistant-qa v95、answer-composer v6、qa-synonyms v15、app v145、style v120、cy-news-v170。
+
 ## 2026-11-08 只有嘉中公開，其他學校（含嘉女）限聯席管理員以上
 - 畫面：school-registry 預設只顯示嘉中；登入確認為聯席管理員或主要管理員後才顯示全部學校（身分改變時重新載入頁面）。一般使用者的學校選單、公告、行事曆、課表、問校務範圍都只有嘉中；跨校比對只剩一間學校時隱藏；問到看不到的學校時回答「目前沒有開放」。
 - 資料庫（migration 20261108190000）：member_announcement_detail／index、member_historical_reference_index 只回傳嘉中，管理員例外。
 - 電子報預設只寄嘉中。
 - 說明文字改為「嘉義高中公告彙整」，頁面描述與 manifest 移除嘉義女中。
 - 限制：docs/data 的公開 JSON（公告標題、行事曆、課表、校園資訊）仍可被直接下載；要完全不公開需改爬蟲輸出（另案）。
-- 版本：app v145、school-registry v51、cy-news-v170。測試：tests/test_restricted_schools.js。
+- 版本：app v146、school-registry v51、cy-news-v171。測試：tests/test_restricted_schools.js。

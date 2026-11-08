@@ -2,7 +2,7 @@
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>校訊｜嘉義高中公告匯集系統</title>
 <meta name="description" content="嘉義高中官網最新公告即時彙整：段考、社團、升學、獎學金分類與關鍵字訂閱。非官方服務。">
 <meta name="theme-color" content="#F3ECDD">
@@ -57,7 +57,7 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
   } catch (_) {}
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=119">
+<link rel="stylesheet" href="style.css?v=120">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -154,6 +154,7 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
           <button id="assistantAsk" class="chat-send" type="submit" aria-label="送出問題"><span aria-hidden="true">↑</span></button>
         </div>
       </div>
+      <div id="assistantToast" class="chat-toast" role="status" aria-live="polite" hidden><span id="assistantToastText"></span><button type="button" id="assistantToastUndo" class="chat-toast-undo">復原</button></div>
       <p id="assistantStatus" class="chat-status" role="status" aria-live="polite"></p>
     </form>
   </section>
@@ -477,15 +478,15 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
 <script src="today.js?v=43"></script>
 <script src="daily-brief.js?v=3"></script>
 <script src="search-taxonomy.js?v=56"></script>
-<script src="qa-synonyms.js?v=14"></script>
+<script src="qa-synonyms.js?v=15"></script>
 <script type="text/lazy-assistant" data-lazy-src="qa-typo.js?v=2"></script>
 <script src="search-query.js?v=61"></script>
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=53"></script>
 <script src="announcement-cleanup.js?v=82"></script>
 <script src="announcement-tokens.js?v=2"></script>
-<script type="text/lazy-assistant" data-lazy-src="answer-composer.js?v=5"></script>
-<script type="text/lazy-assistant" data-lazy-src="assistant-qa.js?v=94"></script>
+<script type="text/lazy-assistant" data-lazy-src="answer-composer.js?v=6"></script>
+<script type="text/lazy-assistant" data-lazy-src="assistant-qa.js?v=95"></script>
 <script src="weather.js?v=1"></script>
 <script src="announcement-sort.js?v=1"></script>
 <script src="series-view.js?v=1"></script>
@@ -495,7 +496,7 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
 <script src="schedule-compare.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
 <script src="notification-state.js"></script>
-<script src="app.js?v=145"></script>
+<script src="app.js?v=146"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>
