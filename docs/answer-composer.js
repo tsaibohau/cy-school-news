@@ -176,14 +176,32 @@
   var LIST_MARK = /^(?:[一二三四五六七八九十廿]{1,3}[、．]|[（(][一二三四五六七八九十廿\d]{1,3}[)）]|\d{1,2}[.、．)](?!\d)|[①②③④⑤⑥⑦⑧⑨⑩◎●■◆▲※•○☆★▶►])\s*/;
   var NOISE_LINE = /^(?:[.．·\s]+|第\s*\d+\s*頁.*|檔\s*號.*|裝|訂|線|正本[：:].*|副本[：:].*)$/;
   var POINTER = /^(?:詳(?:如|見|請參[閱見])|請(?:參閱|見|詳見)|如|見|依)?\s*(?:附件|附檔|附表|簡章|計畫|實施計畫|活動網站|網站|官網|公告)[^，。；]{0,12}$/;
+  /* Cut a long value without breaking an e-mail address, a link or a number in the middle; prefer a clause boundary. */
+  function cutText(value, limit) {
+    var v = String(value == null ? "" : value);
+    if (v.length <= limit) return v;
+    var idx = limit - 1, token = /[A-Za-z0-9][A-Za-z0-9._%+\-@:\/?=&#~]*/g, m, extended = false;
+    while ((m = token.exec(v))) {
+      if (m.index < idx && m.index + m[0].length > idx) { idx = m.index + m[0].length; extended = true; break; }
+      if (m.index >= idx) break;
+    }
+    var out = v.slice(0, idx);
+    if (!extended) {
+      var back = out.search(/[，、；;：:（(][^，。；、]{0,40}$/);
+      if (back > limit * 0.5) out = out.slice(0, back);
+    }
+    var rest = v.slice(out.length).replace(/^[，,、；;：:。\s]+/, "");
+    out = out.replace(/[，,、；;：:\s]+$/, "");
+    return rest ? out + "…" : out;
+  }
   function cleanValue(value, slot) {
     var v = clean(value).replace(/^[：:，,、\s]+/, "");
-    var limit = slot === "signup" || slot === "purpose" ? 140 : 100;
+    var limit = slot === "signup" ? 200 : slot === "purpose" ? 140 : 100;
     var stop = slot === "signup" || slot === "purpose" || slot === "contact" ? 2 : 1, parts = v.split(/(?<=[。！？!?])/), out = "";
     for (var i = 0; i < parts.length && i < stop; i++) { if (out && (out + parts[i]).length > limit) break; out += parts[i]; }
     v = out || v;
     v = v.replace(/[，,、；;：:。\s]+$/, "").replace(/[（(]\s*$/, "");
-    return v.length > limit ? v.slice(0, limit - 1).replace(/[，、；;：:（(]?[^，。；、]{0,12}$/, "") + "…" : v;
+    return cutText(v, limit);
   }
   function parseLabelled(lines) {
     var pieces = [];
@@ -560,7 +578,7 @@
     return { found: false, text: fill(pick(PENALTY_NONE, input.query), slots) };
   }
 
-  return { fieldsOf: fieldsOf, askedSlot: askedSlot, isGeneralAsk: isGeneralAsk, queryRemainder: queryRemainder, slotAnswer: slotAnswer, summaryOf: summaryOf, otherFacts: otherFacts,
+  return { cutText: cutText, fieldsOf: fieldsOf, askedSlot: askedSlot, isGeneralAsk: isGeneralAsk, queryRemainder: queryRemainder, slotAnswer: slotAnswer, summaryOf: summaryOf, otherFacts: otherFacts,
     isoOf: isoOf, noveltyOf: noveltyOf, echoRatio: echoRatio, breakLines: breakLines, classifyLabel: classifyLabel,
     compose: compose, consequence: consequence, actOf: actOf, factsOf: factsOf, sentenceType: sentenceType, times: times,
     stripConnectives: stripConnectives, stripNumbering: stripNumbering, dedupeText: dedupeText, TEMPLATES: T, PENALTY_FOUND: PENALTY_FOUND, PENALTY_NONE: PENALTY_NONE, PENALTY_LATE: PENALTY_LATE, PENALTY: PENALTY };
