@@ -74,7 +74,8 @@ const none = QA.answer("停車證要怎麼申請", items, {}, { asOf, scopeLabel
 assert.equal(none.status, "insufficient");
 assert.match(none.summary, /嘉中的公告.*「停車證」.*總務處/);
 const lost = QA.answer("學生證遺失怎麼辦", items, {}, { asOf });
-assert.match(lost.summary, /「學生證遺失」/);
+/* A how-to question about something lost says what is missing (the replacement procedure), not what happens to a violator. */
+assert.match(lost.summary, /沒有寫學生證遺失後的補辦方式/);
 assert.ok(!shown(QA.answer("愛校服務", items, {}, { asOf })).some(t => /校服|志願服務/.test(t)));
 
 console.log("問校務 precision tests passed");
