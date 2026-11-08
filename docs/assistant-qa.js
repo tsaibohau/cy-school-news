@@ -1489,6 +1489,9 @@
     if (official) perSchool(officialPages(official, items, options && options.schoolId), 12).forEach(add);
     if ((BUY_ASK.test(question) || BUY_ASK.test(fixed)) && BUY_ITEM.test(question)) perSchool((items || []).filter(function (item) { return item && /制服|校服|服儀|新生專區|新生始業|新生訓練|新生資訊/.test(String(item.title || "")) && (!options || !options.schoolId || item.school === options.schoolId); }), 12).forEach(add);
     if (LIST_ASK.test(question) && LIST_SUBJECT.test(question)) perSchool(rank(fixed, notices, {}, options).map(function (row) { return row.item; }), 4).forEach(add);
+    /* 「閱讀心得怎麼寫」: the subject's own current notice is read too, to answer from. */
+    var storyAbout = storySubject(question);
+    if (storyAbout) storyNotices(storyAbout, notices, options).slice(0, 1).forEach(add);
     return out;
   }
   /* Rules are numbered (一、 (一) 1. 第三條) or are timetable rows (12:35-13:10 午休). */
@@ -2170,7 +2173,7 @@
   /* The same point (「地點：大同國小活動中心」) is said once; every point is a tidy sentence. */
   function conversational(result) {
     var out = conversationalRaw(result);
-    if (!out || result && (result.mode === "chat" || result.mode === "timetable")) return out;
+    if (!out || result && (result.mode === "chat" || result.mode === "timetable" || result.mode === "notice_howto")) return out;
     if (Array.isArray(out.bullets)) out.bullets = tidyPoints(out.bullets, [out.text]);
     if (out.text) out.text = dedupeText(out.text);
     if (!out.source && result.status === "answered" && (!result.mode || result.mode === "rule") && !(result.sources || []).some(function (it) { return it && (it.kind === "calendar" || it.kind === "service"); })) {
@@ -2186,7 +2189,7 @@
   var ANNOUNCE_OPENERS = [""];
   function conversationalRaw(result) {
     if (!result) return { text: "", bullets: [] };
-    if ((result.mode === "chat" || result.mode === "howto") && result.reply) return result.reply;
+    if ((result.mode === "chat" || result.mode === "howto" || result.mode === "notice_howto") && result.reply) return result.reply;
     var seed = result.query || result.summary || "", text = clean(result.summary || ""), bullets = [], tail = "";
     var plain = personalDataQuery(result.query || "");
     /* 先把找到的句子拆成事實，再用句型模板說出來（不是貼原文；原文在參考資料裡）。 */
@@ -2883,7 +2886,7 @@
     var loss = HOWTO_LOSS.test(query), mode = result.mode, answered = result.status === "answered";
     var penaltyish = answered && howtoPenaltyish(result, query);
     /* Answers that are the right kind already: a system to open, a file, the calendar, a pointer to the chapter, a list. */
-    if (answered && /^(?:service|document|timetable|browse|official|purchase|course_list|multi_school|multi_question)$/.test(mode || "") || answered && mode === "rule_pointer" && !loss && !HOWTO_FORGOT.test(query)) return result;
+    if (answered && /^(?:service|document|timetable|browse|official|purchase|course_list|multi_school|multi_question|notice_howto)$/.test(mode || "") || answered && mode === "rule_pointer" && !loss && !HOWTO_FORGOT.test(query)) return result;
     /* A specific rule that already covers every asked word (段考 + 遲到: not allowed in after the cut-off) stays. */
     if (penaltyish && !loss && !HOWTO_FORGOT.test(query) && subject.words.length >= 2) {
       var shownText = compact((result.answer_lines || []).join(" "));
@@ -3144,6 +3147,10 @@
     var usual = usualWhenAnswer(query, items, details, options);
     if (usual) { usual.reply = conversational(usual); return usual; }
     var split = splitQuestion(query);
+    if (!split) {
+      var direct = directNoticeAsk(query, items, details, options);
+      if (direct) { direct.reply = direct.reply || conversational(direct); stripResultGlyphs(direct); return direct; }
+    }
     /* 「打架會怎樣」: when the handbook has a clause that says the penalty for it, that clause is the
        answer, not an overview of 打架 with the penalty as a side note. */
     var onlyPenalty = split && split.parts.every(function (p) { return p.aspect.id === "consequence"; });
@@ -3238,6 +3245,7 @@
     if (result) result = coverageGuard(query, result, options);
     if (result) result = howtoFix(query, result, items, details, options);
     if (result) result.reply = conversational(result);
+    if (result) stripResultGlyphs(result);
     /* The calendar or rules found something even though the announcements did not: no 「找不到」 opener. */
     if (result && result.status !== "answered" && (result.also || []).length && result.reply) result.reply = Object.assign({}, result.reply, { text: clean(result.summary || result.reply.text) });
     /* Asked for a link but the notice text isn't readable here (guests): still give the official
@@ -3667,8 +3675,149 @@
     var apology = what ? "抱歉，剛剛給的是" + what + "，不是你要的。我重新找：" : "抱歉，剛剛沒答到重點。我重新找：";
     return { query: previous.query, exclude: unique(exclude), dropResults: !ASKS_RESULT.test(previous.query), apology: apology };
   }
+  /* ---------- Glyphs: emoji and dingbats from a notice (📜 🚨) are decoration, not text ---------- */
+  var GLYPHS = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}\u{20E3}\u{E0020}-\u{E007F}]/gu;
+  function stripGlyphs(text) {
+    return typeof text === "string" ? text.replace(GLYPHS, "").replace(/[ \t]{2,}/g, " ").replace(/^\s+|\s+$/g, "") : text;
+  }
+  function stripResultGlyphs(result) {
+    if (!result || typeof result !== "object") return result;
+    var fix = function (obj, keys) { keys.forEach(function (k) { if (obj && typeof obj[k] === "string") obj[k] = stripGlyphs(obj[k]); }); };
+    fix(result, ["summary"]);
+    if (result.reply) {
+      fix(result.reply, ["text", "tail", "source"]);
+      if (Array.isArray(result.reply.bullets)) result.reply.bullets = result.reply.bullets.map(stripGlyphs);
+      (result.reply.paragraphs || []).forEach(function (p) { fix(p, ["text", "tail", "source", "heading"]); if (Array.isArray(p.bullets)) p.bullets = p.bullets.map(stripGlyphs); (p.asides || []).forEach(function (a, i) { if (typeof a === "string") p.asides[i] = stripGlyphs(a); else fix(a, ["text"]); }); });
+    }
+    (result.also || []).forEach(function (row) { fix(row, ["text", "summary"]); });
+    return result;
+  }
+  /* ---------- 「閱讀心得怎麼寫」「閱讀心得沒寫會怎樣」: the subject's own notice tells the story ----------
+     When the school's rules have nothing on the subject but a current notice is named after it (繳交流程、時程),
+     that notice is the answer: what to do (its lines, tidied), who, by when; the calendar's dates follow as one
+     supporting paragraph. A question about what happens if you don't says plainly that nothing is written, and
+     what the notice does ask for. */
+  function storyLines(units) {
+    var kept = [];
+    units.forEach(function (u) {
+      var t = stripGlyphs(clean(u.text)).replace(/^[\s*※＊]+/, "");
+      if (!/[一-鿿A-Za-z0-9]/.test(t) || /^注意(?:事項)?\s*[：:]?$/.test(t) || SIGNATURE_LINE.test(t)) return;
+      kept.push(t);
+    });
+    var merged = [];
+    kept.forEach(function (t) {
+      var last = merged[merged.length - 1];
+      if (last && last.open && !LIST_START.test(t)) { last.text += "；" + t; last.parts = true; }
+      else if (last && /[：:]$/.test(last.text) && !LIST_START.test(t)) { last.text += t; last.open = true; }
+      else merged.push({ text: t });
+    });
+    return merged.map(function (m) {
+      var t = Composer && Composer.stripNumbering ? Composer.stripNumbering(m.text) : m.text;
+      t = t.replace(/連結如下\s*[：:]\s*/g, "連結：").replace(/\s*([，。；、！？：])\s*/g, "$1").replace(/\s+「/g, "「").replace(/」\s+/g, "」").replace(/[：:]$/, "");
+      return /(?:https?:\/\/\S+|[。！？])$/.test(t) ? t : t + "。";
+    }).filter(function (t) { return compact(t).length >= 4; });
+  }
+  /* 「閱讀心得截止日」「閱讀心得要交到哪裡」「閱讀心得字數」: one plain ask about a subject that has its own notice. */
+  var DIRECT_ASKS = [
+    { id: "format", re: /字數|格式|頁數|幾頁|幾個字|要寫多少|要寫幾|版面|字型/ },
+    { id: "where", re: /交到哪|哪裡交|哪裡繳|在哪(?:裡|裏)?[交繳]|[交繳]去哪|[交繳]在哪|上傳到哪|在哪(?:裡|裏)?上傳|繳交地點/ },
+    { id: "deadline", re: /截止|期限|什麼時候[交繳]|何時[交繳]|幾號[交繳]|哪天[交繳]|最晚/ }
+  ];
+  function directNoticeAsk(query, items, details, options) {
+    var q = clean(query), hit = DIRECT_ASKS.filter(function (a) { return a.re.test(q); })[0];
+    if (!hit || personalDataQuery(q)) return null;
+    var bare = q.replace(new RegExp(DIRECT_ASKS.map(function (a) { return a.re.source; }).join("|"), "g"), " ").replace(/日$/, "");
+    var subject = clauseSubject(bare);
+    if (!subject || subject.length < 3) return null;
+    var overview = answerCore(subject, items, details, options) || { status: "insufficient" };
+    var split = { subject: subject, parts: [{ clause: q, subject: subject, aspect: { id: hit.id } }], formatWord: (q.match(/字數|格式|頁數/) || ["字數與格式"])[0] };
+    return noticeStory(query, split, overview, items, details, options);
+  }
+  function storySubject(query) {
+    var split = splitQuestion(query);
+    if (split) return split.parts.some(function (p) { return /^(?:method|deadline|consequence)$/.test(p.aspect.id); }) ? split.subject : "";
+    var q = clean(query), hit = DIRECT_ASKS.filter(function (a) { return a.re.test(q); })[0];
+    if (!hit) return "";
+    var subject = clauseSubject(q.replace(new RegExp(DIRECT_ASKS.map(function (a) { return a.re.source; }).join("|"), "g"), " ").replace(/日$/, ""));
+    return subject && subject.length >= 3 ? subject : "";
+  }
+  /* Notices named after the subject (…閱讀心得繳交流程…), newest first, from the last ~10 months, not result lists. */
+  function storyNotices(subject, items, options) {
+    var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var forms = (Synonyms ? Synonyms.concepts(subject) : [subject]).concat([subject]).map(compact).filter(function (f) { return f.length >= 3; });
+    if (!forms.length) return [];
+    return (items || []).filter(function (it) {
+      var day = String(it && (it.date || it.first_seen) || "").slice(0, 10);
+      return it && !isSchoolDoc(it) && it.kind !== "school_service" && !TITLE_RESULT.test(clean(it.title || "")) && /^\d{4}-\d{2}-\d{2}$/.test(day) && day <= asOf &&
+        (Date.parse(asOf) - Date.parse(day)) / 86400000 <= 300 && forms.some(function (f) { return compact(it.title || "").indexOf(f) !== -1; }) &&
+        (!options || !options.schoolId || !itemSchool(it) || itemSchool(it) === options.schoolId);
+    }).sort(function (a, b) { return String(b.date || b.first_seen).localeCompare(String(a.date || a.first_seen)); });
+  }
+  function noticeStory(query, split, overview, items, details, options) {
+    if (!Composer || !split || personalDataQuery(query)) return null;
+    var kinds = split.parts.map(function (p) { return p.aspect.id; }), askDeadline = kinds.indexOf("deadline") !== -1, askFormat = kinds.indexOf("format") !== -1;
+    var wantsHow = split.parts.some(function (p) { return /^(?:method|deadline|where|format)$/.test(p.aspect.id); }), wantsLoss = split.parts.some(function (p) { return p.aspect.id === "consequence"; });
+    if (!wantsHow && !wantsLoss) return null;
+    if (overview.status === "answered" && overview.mode && !/^(?:browse|calendar)$/.test(overview.mode)) return null;
+    var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var forms = (Synonyms ? Synonyms.concepts(split.subject) : [split.subject]).concat([split.subject]).map(compact).filter(function (f) { return f.length >= 3; });
+    var row = storyNotices(split.subject, items, options).filter(function (it) { return (details || {})[it.id]; })[0];
+    if (!row) return null;
+    var detail = details[row.id], units = quoteUnits(detailSegments(detail)).filter(function (u) { return !(u.meta && u.meta.source_type === "attachment"); });
+    var lines = storyLines(units);
+    if (!lines.length) return null;
+    var scope = clean(row.school_name || options && options.scopeLabel || "學校"), day = String(row.date || row.first_seen).slice(0, 10);
+    var shortDay = Number(day.slice(5, 7)) + "/" + Number(day.slice(8, 10));
+    var ref = scope + " " + Number(day.slice(5, 7)) + " 月 " + Number(day.slice(8, 10)) + " 日的公告〈" + clean(row.title) + "〉";
+    var fields = noticeFields({ item: row, detail: detail }), slots = fields && fields.slots || {};
+    var joinedLines = compact(lines.join(""));
+    var bullets = lines.slice(0, 8);
+    if (slots.audience && joinedLines.indexOf(compact(slots.audience.value)) === -1) bullets.push("對象：" + clean(slots.audience.value) + "。");
+    if (slots.deadline && joinedLines.indexOf(compact(slots.deadline.value).replace(/^\d+年/, "")) === -1) bullets.push("期限：" + clean(slots.deadline.value) + "。");
+    var files = (detail.attachments || []).map(function (a) { return clean(a && a.filename || ""); }).filter(Boolean);
+    var fileNote = files.length ? "公告附件「" + files[0] + "」" + (files.length > 1 ? "等 " + files.length + " 個檔案" : "") + "本站讀不到內容，格式、字數等要求如果寫在附件裡，請點開公告下載來看。" : "";
+    /* The school's own page named after the subject says which office to ask. */
+    var page = (items || []).filter(function (it) { return it && it.kind === "school_info" && forms.some(function (f) { return compact(String(it.title || "").split("›").pop()).indexOf(f) !== -1; }); })[0];
+    var office = page ? howtoOffice(page.title) : "";
+    var calendar = calendarLayer(split.subject, items, options, asOf), also = [];
+    var calText = calendar && calendar.status === "answered" && calendar.mode === "browse" ? clean(calendar.summary || "").replace(/^依[^，]{1,12}行事曆，/, "") : "";
+    if (calText) also.push({ layer: "calendar", label: "行事曆", summary: calText, text: "行事曆上的相關日期：" + calText, sources: (calendar.sources || []).slice(0, 3) });
+    var formatFound = false, lead, extra = "", onlyKind = kinds.length === 1 ? kinds[0] : "";
+    if (onlyKind === "deadline") {
+      var dlines = lines.filter(function (l) { return /期限|截止|[日號點時]前|另行公告/.test(l); });
+      if (dlines.length) bullets = dlines;
+    } else if (onlyKind === "format") {
+      var flines = lines.filter(function (l) { return /字數|格式|頁數|A4|字型|版面/.test(l); });
+      bullets = flines.length ? flines : lines.filter(function (l) { return /檔名/.test(l); });
+      formatFound = !!flines.length;
+    }
+    var lossAsk = split.parts.filter(function (p) { return p.aspect.id === "consequence"; })[0];
+    if (wantsLoss) {
+      var dl = slots.deadline ? "期限是 " + clean(slots.deadline.value).replace(/^\d+年/, "").replace(/(\d+)月(\d+)日/, "$1/$2").replace(/下午\s*(\d+):00/, "下午 $1 點") : "";
+      dl = dl.replace(/期限是 (\d+\/\d+)(?=下午)/, "期限是 $1 ");
+      var lossText = scope + "的公告和規定裡沒有寫" + split.subject + "沒做的處置。" + (slots.deadline ? "不過公告要求" + (slots.audience ? clean(slots.audience.value) : "") + "要繳交，" + dl + "（" + shortDay + " 公告）。" : "") + (office ? "有問題可以問" + office + "。" : "");
+      var pen = penaltySentence(lossAsk, overview, items, details, options);
+      if (pen) { var cs = consequenceSection(lossAsk, overview, items, details, options, {}); if (cs && cs.text) lossText = cs.text; }
+      if (wantsHow) { extra = lossText; lead = "照" + ref + "的說明："; }
+      else { lead = lossText; bullets = []; fileNote = ""; }
+    } else if (onlyKind === "deadline") { lead = "依" + ref + "："; fileNote = ""; }
+    else if (onlyKind === "format") {
+      lead = formatFound ? "照" + ref + "的說明：" : scope + "的公告內文沒有寫" + (split.formatWord || "字數與格式") + "的要求" + (bullets.length ? "，只有提到：" : "。");
+      if (!formatFound && office) fileNote += "有問題可以問" + office + "。";
+    } else lead = "照" + ref + "的說明：";
+    var tailParts = [extra, fileNote].filter(Boolean);
+    var src = Object.assign({}, row, { note: "公告" });
+    var out = { status: "answered", mode: "notice_howto", query: query, key_points: [], related: [], notes: [], plan: questionPlan(query), summary: lead + bullets.join(""),
+      answer_lines: bullets.slice(), evidence: lines.slice(0, 4).map(function (t) { return { text: t, announcement_id: row.id, title: row.title, score: 10, source_meta: { source_type: "content" } }; }),
+      sources: [src], also: also, confidence: "high", limitation: "引用學校官網公告；日期與要求以學校最新公告為準。", layers_checked: ["announcement", "calendar"],
+      split: { subject: split.subject, aspects: split.parts.map(function (p) { return p.aspect.id; }) } };
+    out.reply = { text: lead, bullets: bullets, tail: tailParts.join(""), source: sourceNote(out, 1) };
+    return out;
+  }
   function answerParts(query, split, items, details, options) {
     var overview = answerCore(split.subject, items, details, options) || { status: "insufficient", evidence: [], sources: [] };
+    var story = noticeStory(query, split, overview, items, details, options);
+    if (story) return story;
     /* The subject alone found a rule: read that rule again with the whole question, so the clauses about what
        happens to a violator and the note on 「沒被抓到」 come with it. */
     if (overview.mode === "rule" && (overview.sources || [])[0] && !personalDataQuery(query)) {
@@ -4173,6 +4322,9 @@
       calendar: calendar,
       announcement: announcementLayer(query, all, details, options)
     };
+    /* A school page that is only a list of link titles with dates (得獎名單 …) is no answer when a notice or the calendar has one. */
+    if (layers.rule && layers.rule.mode === "rule" && onlyLinkTitles(layers.rule, details) &&
+        ((layers.announcement && layers.announcement.status === "answered") || (layers.calendar && layers.calendar.status === "answered"))) layers.rule = null;
     /* A records/results table page (運動會各項紀錄保持者紀錄表) is never the answer to a when-question the calendar answers. */
     if (layers.rule && layers.calendar && layers.calendar.status === "answered" && !layers.calendar.weak && (WHEN_ASK.test(query) || datePlan(query, asOfDay)) &&
         (layers.rule.sources || []).length && (layers.rule.sources || []).every(function (src) { return RECORDS_TITLE.test(String(src.title || "").split("›").pop()); })) layers.rule = null;
@@ -4266,6 +4418,16 @@
     }
     main.layers_checked = order.slice();
     return main;
+  }
+  /* True when a rule answer is quoted from a page that is a list of link titles, each followed by its date line
+     (圖書館「閱讀心得」頁: 得獎名單 …): the quoted line is a title, not a statement. */
+  function onlyLinkTitles(layer, details) {
+    var src = (layer.sources || [])[0], rec = src && details && details[src.id];
+    if (!rec || !Array.isArray(rec.blocks)) return false;
+    var texts = rec.blocks.map(function (b) { return clean(b && b.text || ""); }).filter(Boolean);
+    var dates = texts.filter(function (t) { return /^\d{4}-\d{2}-\d{2}$/.test(t); }).length;
+    var prose = texts.filter(function (t) { return t.length > 40 && /[，。；]/.test(t); }).length;
+    return dates >= 3 && dates * 2 >= texts.length - 3 && !prose;
   }
   /* True when every line of a rule answer is just the title of an announcement (a menu page's link list). */
   function onlyNoticeTitles(layer, all) {
