@@ -2787,7 +2787,11 @@
     if (/沒收|扣留|收走/.test(query)) return s + "被沒收後的處理方式";
     if (HOWTO_BROKEN.test(query)) return s + "損壞後的補辦方式";
     if (HOWTO_LOSS.test(query)) return s + "遺失後的補辦方式";
-    if (HOWTO_FORGOT.test(query)) return "忘記帶" + s + "時的處理方式";
+    if (HOWTO_FORGOT.test(query)) {
+      var tail = clean(query).split(/忘記帶|忘了帶|忘帶|沒帶|未帶/).slice(1).join(" ");
+      var carried = subject.words.filter(function (w) { return tail.indexOf(w) !== -1; })[0];
+      return "忘記帶" + (carried || s) + "時的處理方式";
+    }
     return s + "的處理方式";
   }
   /* The side note: a labelled sentence or two, never the answer itself. */
@@ -2807,7 +2811,8 @@
     return !/考|試|測驗|評量/.test(query) && (result.sources || []).some(function (src) { return isSchoolDoc(src) && PENALTY_DOC.test(clean(src.title || "")); });
   }
   function howtoFix(query, result, items, details, options) {
-    if (!result || result.mode === "chat" || !howtoAsk(query) || personalDataQuery(query)) return result;
+    /* A rule that names the procedure's own document (named) already says plainly what the handbook lacks. */
+    if (!result || result.mode === "chat" || result.named || !howtoAsk(query) || personalDataQuery(query)) return result;
     var subject = howtoSubject(query);
     if (!subject.words.length) return result;
     var loss = HOWTO_LOSS.test(query), mode = result.mode, answered = result.status === "answered";
@@ -2839,7 +2844,7 @@
       subject.groups.every(function (group) { return group.some(function (f) { return shownKey.indexOf(f) !== -1; }); });
     /* The answer already says what to do. */
     if (procedural) return result;
-    if (found.main && (!answered || penaltyish || mode === "rule" || loss)) {
+    if (found.main && (!answered || penaltyish || mode === "rule" || mode === "rule_pointer" || loss)) {
       var lines = unique(found.main.proc.map(function (s) { return tidyPoint(s); })).slice(0, 4).map(function (s) { return /[。！？]$/.test(s) ? s : s + "。"; });
       var aside = noticeAside(); if (aside) also.unshift(aside);
       var src = Object.assign({}, found.main.item, { note: "學校規定原文" });

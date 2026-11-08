@@ -90,4 +90,14 @@ const options = (school, label) => ({ asOf: "2026-11-07", schoolId: school, scop
   assert(!/98 年 1 月 19 日/.test(all), all);
 }
 
+/* 7. Forgot to bring it: the procedure (substitutes, temporary ID) leads; the penalty is a labelled side note. */
+{
+  const items = [doc("a-exam", "學生手冊 › 學生考試要點", "school_handbook", "alpha")];
+  const details = { "a-exam": detail(exam) };
+  const r = QA.answer("忘記帶學生證怎麼辦", items, details, options("alpha", "星月"));
+  const text = [r.reply.text].concat(r.reply.bullets || []).join("\n");
+  assert(/身分證/.test(r.reply.text) && /證件組/.test(text) && /臨時學生證/.test(text), text);
+  assert(!/記警告/.test(text), "penalty is not part of the answer: " + text);
+}
+
 console.log("test_qa_howto ok");
