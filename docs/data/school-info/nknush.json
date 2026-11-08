@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-08T18:27:43+08:00",
+ "generated_at": "2026-11-09T01:09:06+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -900,25 +900,37 @@
    "page_id": 179085209045908,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/輔導空間資源/",
    "label": "輔導空間資源",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "輔導室"
    ],
-   "order": 61
+   "order": 61,
+   "checked_at": "2026-11-09T01:09:02+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "輔導空間資源"
+   ]
   },
   "97487636490361": {
    "page_id": 97487636490361,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/學生申訴委員會/",
    "label": "學生申訴委員會",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "輔導室"
    ],
-   "order": 62
+   "order": 62,
+   "checked_at": "2026-11-09T01:09:04+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "學生申訴委員會"
+   ]
   },
   "181160531649701": {
    "page_id": 181160531649701,
@@ -1416,6 +1428,30 @@
     "下載專區"
    ],
    "order": 104
+  },
+  "17115123656292": {
+   "page_id": 17115123656292,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/%e8%bc%94%e5%b0%8e%e7%a9%ba%e9%96%93%e8%b3%87%e6%ba%90/",
+   "label": "輔導空間資源",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "輔導室",
+    "輔導空間資源"
+   ],
+   "order": 105
+  },
+  "59630061698554": {
+   "page_id": 59630061698554,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/%e5%ad%b8%e7%94%9f%e7%94%b3%e8%a8%b4%e5%a7%94%e5%93%a1%e6%9c%83/",
+   "label": "學生申訴委員會",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "輔導室",
+    "學生申訴委員會"
+   ],
+   "order": 106
   }
  },
  "handbook": {},
@@ -1717,5 +1753,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-08T18:27:43+08:00"
+ "last_run_at": "2026-11-09T01:09:06+08:00"
 }

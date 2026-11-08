@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "sgsh",
- "generated_at": "2026-11-08T18:27:48+08:00",
+ "generated_at": "2026-11-09T01:09:10+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "247594578953018": {
@@ -1311,25 +1311,111 @@
    "page_id": 107434181291003,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=9&cat_sn=1&name=教師專業發展評鑑工具.docx",
    "label": "教師專業發展評鑑工具.docx",
-   "status": "pending",
+   "status": "ok",
    "depth": 2,
    "parent_path": [
     "檔案下載",
     "教務處"
    ],
-   "order": 64
+   "order": 64,
+   "checked_at": "2026-11-09T01:09:07+08:00",
+   "path": [
+    "檔案下載",
+    "教務處",
+    "教師專業發展評鑑工具.docx"
+   ],
+   "changed_at": "2026-11-09T01:09:07+08:00",
+   "content_hash": "13e94f98d8824dd8ef1960ef402d39919ba31a2668dc5b63826a9533812567de",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/sgsh/sgsh-info-107434181291003.json",
+   "detail_revision": "818bc8aa2698d41d94ccd9bd1acfacd6f67625ec5fd8adb166bbb4209f690591",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 342,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 389,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 396,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "26297376088586": {
    "page_id": 26297376088586,
    "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=10&cat_sn=1&name=教學進度表.docx",
    "label": "教學進度表.docx",
-   "status": "pending",
+   "status": "ok",
    "depth": 2,
    "parent_path": [
     "檔案下載",
     "教務處"
    ],
-   "order": 65
+   "order": 65,
+   "checked_at": "2026-11-09T01:09:09+08:00",
+   "path": [
+    "檔案下載",
+    "教務處",
+    "教學進度表.docx"
+   ],
+   "changed_at": "2026-11-09T01:09:09+08:00",
+   "content_hash": "e2c460f0ed1765c18ec0798bf0aae785a318585b7a0c45f4d68650c3d83f7160",
+   "doc_links": [],
+   "keywords": [
+    "3C"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/sgsh/sgsh-info-26297376088586.json",
+   "detail_revision": "7542f718b27fbdf3169378bb570aea2e4d1d1be8bbdb775a9e09d49cb8a7a698",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 87,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 220,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "191520947623859": {
    "page_id": 191520947623859,
@@ -1625,6 +1711,48 @@
  "services": {},
  "items": [
   {
+   "id": "sgsh-info-26297376088586",
+   "kind": "school_info",
+   "title": "檔案下載 › 教務處 › 教學進度表.docx",
+   "school": "sgsh",
+   "school_name": "新光高中",
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=10&cat_sn=1&name=教學進度表.docx",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "3C"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/sgsh/sgsh-info-26297376088586.json",
+   "detail_revision": "7542f718b27fbdf3169378bb570aea2e4d1d1be8bbdb775a9e09d49cb8a7a698",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 87,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 220,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "sgsh-info-36639879571744",
    "kind": "school_info",
    "title": "檔案下載 › 教務處 › 重修學分實施要點.docx",
@@ -1762,6 +1890,54 @@
        "#device"
       ],
       "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "sgsh-info-107434181291003",
+   "kind": "school_info",
+   "title": "檔案下載 › 教務處 › 教師專業發展評鑑工具.docx",
+   "school": "sgsh",
+   "school_name": "新光高中",
+   "url": "https://sg.sgshedu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=9&cat_sn=1&name=教師專業發展評鑑工具.docx",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/sgsh/sgsh-info-107434181291003.json",
+   "detail_revision": "818bc8aa2698d41d94ccd9bd1acfacd6f67625ec5fd8adb166bbb4209f690591",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 342,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 389,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 396,
+      "t": [],
+      "k": [
+       "method"
+      ]
      }
     ]
    }
@@ -2118,5 +2294,5 @@
   "fcc13700e3",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-08T18:27:48+08:00"
+ "last_run_at": "2026-11-09T01:09:10+08:00"
 }

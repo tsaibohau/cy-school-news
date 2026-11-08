@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-08T18:28:14+08:00",
+ "generated_at": "2026-11-09T01:09:27+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -4192,13 +4192,82 @@
    "page_id": 197183669305382,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-249.php",
    "label": "組織成員",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "教務處"
    ],
-   "order": 48
+   "order": 48,
+   "checked_at": "2026-11-09T01:09:26+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "組織成員"
+   ],
+   "changed_at": "2026-11-09T01:09:26+08:00",
+   "content_hash": "ab4fa297024b80bfe666e840c7155dcc6f23a7611f8ff4bd7fd5563401ff0821",
+   "doc_links": [],
+   "keywords": [
+    "分機"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-197183669305382.json",
+   "detail_revision": "11523b63c37ba9ea18c3df160a1799e89a4a3e2c2d1b63e7893b64a1091474ed",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "93539503277740": {
    "page_id": 93539503277740,
@@ -10034,6 +10103,77 @@
    "detail_status": "parsed"
   },
   {
+   "id": "ksaivs-info-197183669305382",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 組織成員",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-249.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "分機"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-197183669305382.json",
+   "detail_revision": "11523b63c37ba9ea18c3df160a1799e89a4a3e2c2d1b63e7893b64a1091474ed",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-199329525544673",
    "kind": "school_info",
    "title": "行政單位 › 進修部",
@@ -10665,5 +10805,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-08T18:28:14+08:00"
+ "last_run_at": "2026-11-09T01:09:27+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-08T18:28:40+08:00",
+ "generated_at": "2026-11-09T01:09:58+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -5597,6 +5597,10 @@
     ]
    }
   },
+  "549": {
+   "page_id": 549,
+   "status": "pending"
+  },
   "553": {
    "page_id": 553,
    "status": "ok",
@@ -5702,11 +5706,154 @@
   },
   "557": {
    "page_id": 557,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T01:09:54+08:00",
+   "path": [
+    "行政單位",
+    "輔導處",
+    "諮商服務"
+   ],
+   "changed_at": "2026-11-09T01:09:54+08:00",
+   "content_hash": "836eafde0b7c0a80197e3e1bb29bfa9d9580e0d5834c6450fb538de98526e8fb",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-557.json",
+   "detail_revision": "4e4a7c6d239378f54e9afdab1da710894915e182cc284189524858bbd97357eb",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "560": {
    "page_id": 560,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T01:09:57+08:00",
+   "path": [
+    "行政單位",
+    "輔導處",
+    "輔導業務",
+    "輔導工作"
+   ],
+   "changed_at": "2026-11-09T01:09:57+08:00",
+   "content_hash": "ae243db322b3da6c031f2a513b268c22a04f958915176f0aeca1c45865132e28",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-560.json",
+   "detail_revision": "1203c0811fd3cef6b2b0d9a01bbea1cd32bfe03fe251828f887934a84de946a6",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "561": {
    "page_id": 561,
@@ -11662,6 +11809,156 @@
    }
   },
   {
+   "id": "fjsh-info-557",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導處 › 諮商服務",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-557.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-557.json",
+   "detail_revision": "4e4a7c6d239378f54e9afdab1da710894915e182cc284189524858bbd97357eb",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-560",
+   "kind": "school_info",
+   "title": "輔導處 › 輔導業務 › 輔導工作",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-560.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-560.json",
+   "detail_revision": "1203c0811fd3cef6b2b0d9a01bbea1cd32bfe03fe251828f887934a84de946a6",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -11759,5 +12056,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-08T18:28:40+08:00"
+ "last_run_at": "2026-11-09T01:09:58+08:00"
 }

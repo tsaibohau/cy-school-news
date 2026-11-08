@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-08T18:27:52+08:00",
+ "generated_at": "2026-11-09T01:09:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -11310,23 +11310,640 @@
    "page_id": 195195623028423,
    "url": "https://www.fhsh.khc.edu.tw/counseling",
    "label": "輔導室",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 64
+   "order": 64,
+   "checked_at": "2026-11-09T01:09:11+08:00",
+   "path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "changed_at": "2026-11-09T01:09:11+08:00",
+   "content_hash": "792774cd83bcc75056f08b0a6721b68f97ed5c803ae0c1a41f03caa11be9d1c8",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "招生",
+    "入學",
+    "志願",
+    "分發",
+    "選填",
+    "體驗",
+    "講座",
+    "工作坊",
+    "醫療",
+    "博覽會",
+    "園遊會",
+    "報名",
+    "校慶",
+    "比賽",
+    "特殊選才",
+    "申請",
+    "申請入學",
+    "考試",
+    "面試"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-195195623028423.json",
+   "detail_revision": "fb2d8a7b00b894a1b970948edd894ba8ef63a0e72fa13eba7f2e0283c7fc4536",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "弘光",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "開放日",
+       "元智"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "開放日",
+       "中山"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "北教大",
+       "開放日",
+       "台大",
+       "校慶",
+       "#event",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "開放日"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "開放日"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "開放日"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "開放日"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "中正",
+       "無人機"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "中山"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "中教大",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "志願",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "志願",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "志願",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "志願",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "開放日",
+       "中山",
+       "科普"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [
+       "弘光"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "家長",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "申請入學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [
+       "中正",
+       "無人機"
+      ],
+      "k": []
+     },
+     {
+      "s": 75,
+      "t": [
+       "聯大",
+       "旅遊",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 81,
+      "t": [
+       "聯大",
+       "旅遊",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 83,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 85,
+      "t": [
+       "北科大",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 87,
+      "t": [
+       "弘光",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [
+       "中興",
+       "課輔",
+       "#enrollment",
+       "#tutoring"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 93,
+      "t": [
+       "高科大"
+      ],
+      "k": []
+     },
+     {
+      "s": 95,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "154170553191645": {
    "page_id": 154170553191645,
    "url": "https://www.fhsh.khc.edu.tw/counseling/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
    "label": "組織成員",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 65
+   "order": 65,
+   "checked_at": "2026-11-09T01:09:13+08:00",
+   "path": [
+    "網站導覽",
+    "組織成員"
+   ],
+   "changed_at": "2026-11-09T01:09:13+08:00",
+   "content_hash": "275bb03a5c0f311f0687e530d7f087897441f3270b9809cde98128b0a9349438",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "分機",
+    "申訴",
+    "升學",
+    "宣導",
+    "志工",
+    "申請",
+    "選組"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-154170553191645.json",
+   "detail_revision": "2fee8411254dc266378e3757a696f5a7cb5ebf542bd5912f108133b71b863340",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "輔導室",
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "輔導室",
+       "選組",
+       "志工",
+       "#track",
+       "#volunteer"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "place",
+       "audience"
+      ],
+      "g": [
+       1,
+       3
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "28684498373935": {
    "page_id": 28684498373935,
@@ -13193,6 +13810,438 @@
     "處室公告"
    ],
    "order": 231
+  },
+  "82423979155554": {
+   "page_id": 82423979155554,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261107/47292",
+   "label": "【公告】教育部青年發展署「116年青年生涯領航計畫實體說明會及企劃撰寫工作坊」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 232
+  },
+  "6269873697802": {
+   "page_id": 6269873697802,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261104/47215",
+   "label": "【公告】暨南大學「116學年度特殊選才單獨招生」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 233
+  },
+  "144570019687713": {
+   "page_id": 144570019687713,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261103/47188",
+   "label": "【公告】勞動部勞動力發展署「少年就業資源寶典電子書」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 234
+  },
+  "143195168474945": {
+   "page_id": 143195168474945,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261103/47165",
+   "label": "【公告】弘光科技大學「香氣探索與樂齡關懷-高齡照顧體驗及職涯探索」活動",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 235
+  },
+  "193099246728479": {
+   "page_id": 193099246728479,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261103/47161",
+   "label": "【公告】臺東大學「115年度草地野餐日暨大學校園體驗」活動",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 236
+  },
+  "62527693254008": {
+   "page_id": 62527693254008,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261027/47031",
+   "label": "【公告】勞動部「青年職涯發展中心」115年11月活動DM",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 237
+  },
+  "153175181484516": {
+   "page_id": 153175181484516,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261021/46960",
+   "label": "【公告】淡江大學辦理「116一日淡江會計挑戰營」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 238
+  },
+  "253192749820063": {
+   "page_id": 253192749820063,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261020/46910",
+   "label": "【公告】馬偕醫學大學「醫路向前行·青春不迷航」系列講座",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 239
+  },
+  "64782595850039": {
+   "page_id": 64782595850039,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261016/46820",
+   "label": "【公告】元智大學【花Young元智】Open Day活動",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 240
+  },
+  "179135970891438": {
+   "page_id": 179135970891438,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261013/46754",
+   "label": "【公告】國立中山大學｢OPEN HOUSE 校園開放日｣活動",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 241
+  },
+  "252354521484238": {
+   "page_id": 252354521484238,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261013/46749",
+   "label": "【公告】國立臺北教育大學「NTUE Open Day｜校慶×園遊會×校園體驗日」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 242
+  },
+  "44934198169874": {
+   "page_id": 44934198169874,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261013/46746",
+   "label": "【公告】台南應用科技大學「2026 TUTech藝術季X校園開放日」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 243
+  },
+  "87908837763548": {
+   "page_id": 87908837763548,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261006/46600",
+   "label": "【公告】馬偕醫學大學辦理「2026馬偕醫學大學OPENDAY活動」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 244
+  },
+  "90849127786606": {
+   "page_id": 90849127786606,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261001/46509",
+   "label": "【公告】勞動部青年職涯發展中心115年10月活動DM",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 245
+  },
+  "262707894271601": {
+   "page_id": 262707894271601,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20261001/46505",
+   "label": "【公告】116年青年生涯領航計畫更正報名網址",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 246
+  },
+  "123411652368636": {
+   "page_id": 123411652368636,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260922/46288",
+   "label": "【公告】國立中正大學「無人機產業應用專業操作人員培訓班(第2期)」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 247
+  },
+  "171588387077409": {
+   "page_id": 171588387077409,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260922/46272",
+   "label": "【公告】教育部「116年青年生涯領航計畫」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 248
+  },
+  "46180927665820": {
+   "page_id": 46180927665820,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260915/46094",
+   "label": "【公告】國立中山大學辦理「高中生 STEM 職涯發展非同步線上課程」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 249
+  },
+  "214495466391853": {
+   "page_id": 214495466391853,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260903/45782",
+   "label": "【公告】國立臺中教育大學舉辦諮心體驗營",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 250
+  },
+  "69674245584037": {
+   "page_id": 69674245584037,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260731/44967",
+   "label": "【公告】115年分發入學選填志願諮詢時間表-更新版",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 251
+  },
+  "58464562248272": {
+   "page_id": 58464562248272,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260731/44962",
+   "label": "【公告】楊璦慈老師分科志願選填準備懶人包",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 252
+  },
+  "217126270382222": {
+   "page_id": 217126270382222,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260728/44904",
+   "label": "【公告】115年分發入學選填志願諮詢時間表",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 253
+  },
+  "74332064087567": {
+   "page_id": 74332064087567,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260715/44243",
+   "label": "【公告】115分發志願落點分析講座暨選填志願諮詢",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 254
+  },
+  "197955679816574": {
+   "page_id": 197955679816574,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260629/44159",
+   "label": "【公告】開南大學辦理「桃園【有頭鹿】職能訓練場－115年度培養數位新世代計畫」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 255
+  },
+  "115791790909342": {
+   "page_id": 115791790909342,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260623/44058",
+   "label": "【公告】國立屏東科技大學工作犬訓練中心辦理「D.O.G. 職涯探索工作坊」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 256
+  },
+  "83640932986215": {
+   "page_id": 83640932986215,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260623/44055",
+   "label": "【公告】開南大學「桃園【有頭鹿】職能訓練場－115年度培養數位新世代計畫」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 257
+  },
+  "270911671723973": {
+   "page_id": 270911671723973,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260604/43586",
+   "label": "【公告】國立臺北大學115學年度進修學士班申請入學招生",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 258
+  },
+  "52616101308784": {
+   "page_id": 52616101308784,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260602/43535",
+   "label": "【公告】國立中正大學產業新尖兵計畫「無人機產業應用專業操作人員培訓班」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 259
+  },
+  "154255425363277": {
+   "page_id": 154255425363277,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260527/43408",
+   "label": "【公告】南華大學115學年度「分發入學」考試招生入學管道",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 260
+  },
+  "149894915459104": {
+   "page_id": 149894915459104,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260525/43340",
+   "label": "【公告】國立聯合大學文化觀光產業學系（簡稱文觀系）115學年度進修學士班招生",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 261
+  },
+  "234178369325747": {
+   "page_id": 234178369325747,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260524/43327",
+   "label": "【公告】國立高雄師範大學辦理「親職教育線上講座系列」活動",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 262
+  },
+  "148185416259692": {
+   "page_id": 148185416259692,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260521/43289",
+   "label": "【公告】國立臺北科技大學辦理「115年技職跨域探索博覽會」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 263
+  },
+  "141348644483054": {
+   "page_id": 141348644483054,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260518/43200",
+   "label": "【公告】台南應用科技大學辦理「AI動畫遊戲數位內容跨域開發人才培訓班」",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 264
+  },
+  "277623799988518": {
+   "page_id": 277623799988518,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260512/43066",
+   "label": "【公告】國立中興大學5/23「人工智慧工程素養認證輔導」課程招生資訊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 265
+  },
+  "24147771610672": {
+   "page_id": 24147771610672,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260512/43063",
+   "label": "【公告】國立高雄科技大學辦理「115年勞動部產業新尖兵計畫」課程資訊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 266
+  },
+  "165496059684836": {
+   "page_id": 165496059684836,
+   "url": "https://www.fhsh.khc.edu.tw/counseling/20260512/43058",
+   "label": "【公告】面試的接力棒，換你傳下去了！",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "網站導覽",
+    "輔導室"
+   ],
+   "order": 267
   }
  },
  "handbook": {},
@@ -18964,6 +20013,243 @@
    }
   },
   {
+   "id": "fhsh-info-154170553191645",
+   "kind": "school_info",
+   "title": "網站導覽 › 組織成員",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/counseling/%e7%b5%84%e7%b9%94%e6%88%90%e5%93%a1",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "分機",
+    "申訴",
+    "升學",
+    "宣導",
+    "志工",
+    "申請",
+    "選組"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-154170553191645.json",
+   "detail_revision": "2fee8411254dc266378e3757a696f5a7cb5ebf542bd5912f108133b71b863340",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "輔導室",
+       "申訴",
+       "#appeal"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "輔導室",
+       "選組",
+       "志工",
+       "#track",
+       "#volunteer"
+      ],
+      "k": [
+       "audience",
+       "method"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "place",
+       "audience"
+      ],
+      "g": [
+       1,
+       3
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "升學",
+       "#admission",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-155408795879373",
    "kind": "school_info",
    "title": "營養午餐",
@@ -20842,6 +22128,400 @@
       "k": [
        "contact"
       ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-info-195195623028423",
+   "kind": "school_info",
+   "title": "網站導覽 › 輔導室",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/counseling",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "招生",
+    "入學",
+    "志願",
+    "分發",
+    "選填",
+    "體驗",
+    "講座",
+    "工作坊",
+    "醫療",
+    "博覽會",
+    "園遊會",
+    "報名",
+    "校慶",
+    "比賽",
+    "特殊選才",
+    "申請",
+    "申請入學",
+    "考試",
+    "面試"
+   ],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-195195623028423.json",
+   "detail_revision": "fb2d8a7b00b894a1b970948edd894ba8ef63a0e72fa13eba7f2e0283c7fc4536",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "弘光",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "開放日",
+       "元智"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "開放日",
+       "中山"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "北教大",
+       "開放日",
+       "台大",
+       "校慶",
+       "#event",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "開放日"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "開放日"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "開放日"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "開放日"
+      ],
+      "k": []
+     },
+     {
+      "s": 31,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "中正",
+       "無人機"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "中山"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "中教大",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "志願",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "志願",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "志願",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "志願",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "開放日",
+       "中山",
+       "科普"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [
+       "弘光"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [
+       "家長",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "申請入學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [
+       "中正",
+       "無人機"
+      ],
+      "k": []
+     },
+     {
+      "s": 75,
+      "t": [
+       "聯大",
+       "旅遊",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 77,
+      "t": [
+       "考試",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 81,
+      "t": [
+       "聯大",
+       "旅遊",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 83,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 85,
+      "t": [
+       "北科大",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 87,
+      "t": [
+       "弘光",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [
+       "中興",
+       "課輔",
+       "#enrollment",
+       "#tutoring"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 93,
+      "t": [
+       "高科大"
+      ],
+      "k": []
+     },
+     {
+      "s": 95,
+      "t": [
+       "#admission"
+      ],
+      "k": []
      }
     ]
    }
@@ -24674,5 +26354,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-08T18:27:52+08:00"
+ "last_run_at": "2026-11-09T01:09:15+08:00"
 }

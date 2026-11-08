@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-08T18:28:28+08:00",
+ "generated_at": "2026-11-09T01:09:45+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -7969,15 +7969,99 @@
   },
   "1024": {
    "page_id": 1024,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T01:09:39+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "籃球隊專區",
+    "籃球隊後援會"
+   ],
+   "changed_at": "2026-11-09T01:09:39+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1024.json",
+   "detail_revision": "2a96a1af92646e8cbb9cef6f9bd314ce0c9ad3adc738e4adf545f1ab1d7a5f1c",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1025": {
    "page_id": 1025,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T01:09:41+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "籃球隊專區",
+    "宿舍管理辦法"
+   ],
+   "changed_at": "2026-11-09T01:09:41+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1025.json",
+   "detail_revision": "08eba45b1fb5b5accb6b59bb4ea468baba5293b3b947e55f0331058e5f4945db",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "宿舍",
+     "#accommodation"
+    ],
+    "segments": []
+   }
   },
   "1028": {
    "page_id": 1028,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T01:09:43+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "教務組",
+    "學生學習歷程檔案平台"
+   ],
+   "changed_at": "2026-11-09T01:09:43+08:00",
+   "content_hash": "7f0d36cb4d81452ea73dff2fdc3e50e6ad37da2ac23f5be2da23583c607a9e9b",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1028.json",
+   "detail_revision": "86408c3d64665f6fe0f80ba30315c8ed8834ecda0f3a175c708fd4e5a0dd40bb",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "教務處",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "北科大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "1029": {
    "page_id": 1029,
@@ -36357,6 +36441,93 @@
    "detail_status": "empty"
   },
   {
+   "id": "cysh-info-1024",
+   "kind": "school_info",
+   "title": "進修部 › 籃球隊專區 › 籃球隊後援會",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1024.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1024.json",
+   "detail_revision": "2a96a1af92646e8cbb9cef6f9bd314ce0c9ad3adc738e4adf545f1ab1d7a5f1c",
+   "detail_status": "empty"
+  },
+  {
+   "id": "cysh-info-1025",
+   "kind": "school_info",
+   "title": "進修部 › 籃球隊專區 › 宿舍管理辦法",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1025.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1025.json",
+   "detail_revision": "08eba45b1fb5b5accb6b59bb4ea468baba5293b3b947e55f0331058e5f4945db",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "宿舍",
+     "#accommodation"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cysh-info-1028",
+   "kind": "school_info",
+   "title": "進修部 › 教務組 › 學生學習歷程檔案平台",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1028.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1028.json",
+   "detail_revision": "86408c3d64665f6fe0f80ba30315c8ed8834ecda0f3a175c708fd4e5a0dd40bb",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學習歷程",
+     "教務處",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "北科大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-1040",
    "kind": "school_info",
    "title": "學務處 › 衛生組 › 健促成果區",
@@ -56669,5 +56840,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-08T18:28:28+08:00"
+ "last_run_at": "2026-11-09T01:09:45+08:00"
 }

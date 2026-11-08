@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T18:13:21+08:00",
+ "generated_at": "2026-11-09T01:00:50+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -8,6 +8,600 @@
   "base": "https://www.cygsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cygsh-187175",
+   "title": "【轉知】「116學年度身心障礙學生升學大專校院甄試」招生訊息",
+   "date": "2026-11-09",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187175,r508.php",
+   "category": "升學",
+   "first_seen": "2026-11-09T01:00:50+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-24",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e0e0b8975b1935593527e9894925087dd2af22c269d6f6c622b6187a9b974012"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-05-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e0e0b8975b1935593527e9894925087dd2af22c269d6f6c622b6187a9b974012"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "升學",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-05",
+       "2026-12-08"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-23"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-24",
+       "2026-12-07"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-03-19",
+       "2027-03-21"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-03-22"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "志願",
+       "網路",
+       "#admission"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-05-27",
+       "2027-06-02"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名",
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience",
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "audience",
+       "deny"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "audience",
+       "allow"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "轉學",
+       "#enrollment"
+      ],
+      "k": [
+       "deny",
+       "allow"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "required",
+       "allow"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "學測",
+       "英聽",
+       "考試",
+       "#exam",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "統測",
+       "四技二專",
+       "學測",
+       "#admission",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [
+       "宿舍",
+       "#accommodation"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "升學",
+       "#admission",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [
+       "繳交"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2,
+       3
+      ]
+     },
+     {
+      "s": 54,
+      "t": [
+       "四技二專",
+       "學測",
+       "考試",
+       "#exam",
+       "#national",
+       "#certificate",
+       "#enrollment"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 68,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 71,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 75,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 85,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 87,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 95,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 106,
+      "t": [
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 110,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 112,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 114,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 115,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 116,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 120,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 122,
+      "t": [
+       "考試",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 124,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cygsh-187174",
    "title": "【轉知】教育部「青年志工行動競賽表揚計畫（青志獎）」",

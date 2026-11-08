@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-08T18:29:54+08:00",
+ "generated_at": "2026-11-09T01:11:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -4530,12 +4530,42 @@
    "page_id": 278395357512862,
    "url": "https://www.hnvs.cy.edu.tw/links/index.asp?Parser=11,10,341",
    "label": "策略聯盟夥伴學校",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 52
+   "order": 52,
+   "checked_at": "2026-11-09T01:11:12+08:00",
+   "path": [
+    "網站導覽",
+    "策略聯盟夥伴學校"
+   ],
+   "changed_at": "2026-11-09T01:11:12+08:00",
+   "content_hash": "3c966afe230a86fa93449b0f1c87f64617cc42639c4c6315cc7a0910a394bf06",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-278395357512862.json",
+   "detail_revision": "dcc65b85ffa87730982d2016579ad6725271ffae59b9e8890a16174e094e394f",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2021-04-29"
+      ]
+     }
+    ]
+   }
   },
   "5658917682126": {
    "page_id": 5658917682126,
@@ -11572,6 +11602,39 @@
      }
     ]
    }
+  },
+  {
+   "id": "hnvs-info-278395357512862",
+   "kind": "school_info",
+   "title": "網站導覽 › 策略聯盟夥伴學校",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/links/index.asp?Parser=11,10,341",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-278395357512862.json",
+   "detail_revision": "dcc65b85ffa87730982d2016579ad6725271ffae59b9e8890a16174e094e394f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2021-04-29"
+      ]
+     }
+    ]
+   }
   }
  ],
  "roots": [
@@ -11852,5 +11915,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-08T18:29:54+08:00"
+ "last_run_at": "2026-11-09T01:11:14+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-08T18:31:09+08:00",
+ "generated_at": "2026-11-09T01:12:28+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -10350,45 +10350,351 @@
    "page_id": 52789488375909,
    "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-equ/",
    "label": "教學設備",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "機電科"
    ],
-   "order": 61
+   "order": 61,
+   "checked_at": "2026-11-09T01:12:20+08:00",
+   "path": [
+    "機電科",
+    "教學設備"
+   ],
+   "changed_at": "2026-11-09T01:12:20+08:00",
+   "content_hash": "3150d257a2be87cc8692dbe5d6d05a2fb624cb58dea3b5ab2a3808b86f69ae72",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-52789488375909.json",
+   "detail_revision": "c43b2f4b3aaa79063b231a117cd08234c4bd1041295d7be7be256dce780f0bbc",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "76014471549581": {
    "page_id": 76014471549581,
    "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-school/",
    "label": "升學資訊",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "機電科"
    ],
-   "order": 62
+   "order": 62,
+   "checked_at": "2026-11-09T01:12:22+08:00",
+   "path": [
+    "機電科",
+    "升學資訊"
+   ],
+   "changed_at": "2026-11-09T01:12:22+08:00",
+   "content_hash": "8e39f3d28586074c836570825e018abb3a00a81d662be564ebaac834975810e2",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "招生",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-76014471549581.json",
+   "detail_revision": "7e50acf0bbc6f51d443af5771a76ed84099c17512896da2b4fdc56e8c2921d4e",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "升學",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "216708920769127": {
    "page_id": 216708920769127,
    "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-teach/",
    "label": "教學資源",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "機電科"
    ],
-   "order": 63
+   "order": 63,
+   "checked_at": "2026-11-09T01:12:25+08:00",
+   "path": [
+    "機電科",
+    "教學資源"
+   ],
+   "changed_at": "2026-11-09T01:12:25+08:00",
+   "content_hash": "1fcb2226b1cf9509cea152ea3bb7814fe3db205328efe2cfcdef312ca771b93d",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-216708920769127.json",
+   "detail_revision": "f8099f76a8fa3e071f656be293841e5286a82f56132c961dbc90e4b68657e7ac",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "235830683618751": {
    "page_id": 235830683618751,
    "url": "https://www.tnvs.tn.edu.tw/teaching-unit/aquaculture/aqua-intro/",
    "label": "本科簡介",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "水產養殖科"
    ],
-   "order": 64
+   "order": 64,
+   "checked_at": "2026-11-09T01:12:26+08:00",
+   "path": [
+    "水產養殖科",
+    "本科簡介"
+   ],
+   "changed_at": "2026-11-09T01:12:26+08:00",
+   "content_hash": "a699697cf7637c3606f1a8ecb0f43a2cd859e4c777e56cf6f927b49236b87123",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "競賽",
+    "分發",
+    "科系"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-235830683618751.json",
+   "detail_revision": "4fb6c1c57ca405b0dc0cec36fcbfe3c521542da9757cfb6f76bb69c1d8513330",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   "214200032385436": {
    "page_id": 214200032385436,
@@ -13023,6 +13329,89 @@
    "detail_status": "parsed"
   },
   {
+   "id": "tnvs-info-52789488375909",
+   "kind": "school_info",
+   "title": "機電科 › 教學設備",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-equ/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-52789488375909.json",
+   "detail_revision": "c43b2f4b3aaa79063b231a117cd08234c4bd1041295d7be7be256dce780f0bbc",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-64856116346192",
    "kind": "school_info",
    "title": "看見南水 › 前導學校專區",
@@ -13410,6 +13799,121 @@
        "游泳課"
       ],
       "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-info-76014471549581",
+   "kind": "school_info",
+   "title": "機電科 › 升學資訊",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-school/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "招生",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-76014471549581.json",
+   "detail_revision": "7e50acf0bbc6f51d443af5771a76ed84099c17512896da2b4fdc56e8c2921d4e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "升學",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "四技二專",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "method"
+      ]
      }
     ]
    }
@@ -18564,6 +19068,47 @@
    }
   },
   {
+   "id": "tnvs-info-216708920769127",
+   "kind": "school_info",
+   "title": "機電科 › 教學資源",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-teach/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-216708920769127.json",
+   "detail_revision": "f8099f76a8fa3e071f656be293841e5286a82f56132c961dbc90e4b68657e7ac",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-218930160176923",
    "kind": "school_info",
    "title": "電子科",
@@ -19586,6 +20131,85 @@
        "#library"
       ],
       "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-info-235830683618751",
+   "kind": "school_info",
+   "title": "水產養殖科 › 本科簡介",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/teaching-unit/aquaculture/aqua-intro/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "競賽",
+    "分發",
+    "科系"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-235830683618751.json",
+   "detail_revision": "4fb6c1c57ca405b0dc0cec36fcbfe3c521542da9757cfb6f76bb69c1d8513330",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#admission"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
      }
     ]
    }
@@ -22080,5 +22704,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-08T18:31:09+08:00"
+ "last_run_at": "2026-11-09T01:12:28+08:00"
 }

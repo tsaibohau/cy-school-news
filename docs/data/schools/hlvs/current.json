@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T18:13:21+08:00",
+ "generated_at": "2026-11-09T01:00:50+08:00",
  "school": {
   "id": "hlvs",
   "name": "國立西螺高級農工職業學校",
@@ -20,8 +20,8 @@
    "first_seen": "2026-11-08T18:13:21+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -298,8 +298,8 @@
    "first_seen": "2026-11-08T18:13:21+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -2961,7 +2961,7 @@
   },
   {
    "id": "hlvs-69906",
-   "title": "國立中正大學116學年度學士班特殊選才(含新住民入學)招生相關資訊",
+   "title": "國立中正大學116學年度學士班特殊選才(含新住民入學)招生相關資訊 – 國立西螺高級農工職業學校",
    "date": "2026-10-28",
    "source_category": "升學資訊",
    "school": "hlvs",
@@ -2969,7 +2969,266 @@
    "url": "https://www.hlvs.ylc.edu.tw/?p=69906",
    "category": "升學",
    "first_seen": "2026-10-28T10:12:15+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中正",
+     "特殊選才",
+     "#admission",
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "教官室"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "政大"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "繁星",
+       "申請入學",
+       "特殊選才",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "特殊選才",
+       "#admission"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "網路",
+       "報名",
+       "繳交",
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-03",
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 36,
+      "t": [
+       "截止",
+       "網路",
+       "繳交"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-10"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 39,
+      "t": [
+       "報名",
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "教務處",
+       "#enrollment"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-69903",

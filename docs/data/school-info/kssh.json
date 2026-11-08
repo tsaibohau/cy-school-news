@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-08T18:28:09+08:00",
+ "generated_at": "2026-11-09T01:09:23+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -4314,23 +4314,71 @@
    "page_id": 222425196456650,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4477.php",
    "label": "校園開放時間",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 43
+   "order": 43,
+   "checked_at": "2026-11-09T01:09:20+08:00",
+   "path": [
+    "校務資料專區",
+    "其他",
+    "社區服務",
+    "校園開放時間"
+   ],
+   "changed_at": "2026-11-09T01:09:20+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-222425196456650.json",
+   "detail_revision": "06639ab33e1ec45d3d971ad722a732eb0d32de16dfef821759169f7d066de7a4",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "74148713421051": {
    "page_id": 74148713421051,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4461.php",
    "label": "基本資訊",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 44
+   "order": 44,
+   "checked_at": "2026-11-09T01:09:21+08:00",
+   "path": [
+    "校務資料專區",
+    "學校校務資訊",
+    "基本資訊"
+   ],
+   "changed_at": "2026-11-09T01:09:21+08:00",
+   "content_hash": "306ccd7865b79a38859b416ae1880c34e90093611029080a36fcdadc6bd5fab1",
+   "doc_links": [],
+   "keywords": [
+    "分機"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-74148713421051.json",
+   "detail_revision": "5784940e3bf9426b796ff6ff564164e546359381a554828c9dac03ddb8ddf7f5",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "181427945960182": {
    "page_id": 181427945960182,
@@ -4695,6 +4743,18 @@
     "學校法令規章"
    ],
    "order": 75
+  },
+  "133334356175919": {
+   "page_id": 133334356175919,
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4452.php",
+   "label": "其他",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "社區服務",
+    "校園開放時間"
+   ],
+   "order": 76
   }
  },
  "handbook": {},
@@ -5116,6 +5176,40 @@
    "detail_ref": "data/details/kssh/kssh-info-64906662526285.json",
    "detail_revision": "0fdc6f429e6f0753800106c96c5b774448aa21fea7320016303978b018cfee26",
    "detail_status": "parsed"
+  },
+  {
+   "id": "kssh-info-74148713421051",
+   "kind": "school_info",
+   "title": "校務資料專區 › 學校校務資訊 › 基本資訊",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4461.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "分機"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-74148713421051.json",
+   "detail_revision": "5784940e3bf9426b796ff6ff564164e546359381a554828c9dac03ddb8ddf7f5",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "kssh-info-77805136686968",
@@ -7676,6 +7770,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "kssh-info-222425196456650",
+   "kind": "school_info",
+   "title": "其他 › 社區服務 › 校園開放時間",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4477.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-222425196456650.json",
+   "detail_revision": "06639ab33e1ec45d3d971ad722a732eb0d32de16dfef821759169f7d066de7a4",
+   "detail_status": "parsed"
+  },
+  {
    "id": "kssh-info-225884442670662",
    "kind": "school_info",
    "title": "行政單位 › 總務處 › 庶務組",
@@ -8905,5 +9016,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-08T18:28:09+08:00"
+ "last_run_at": "2026-11-09T01:09:23+08:00"
 }

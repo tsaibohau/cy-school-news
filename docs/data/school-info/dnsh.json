@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-08T18:29:19+08:00",
+ "generated_at": "2026-11-09T01:10:43+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -685,25 +685,37 @@
    "page_id": 249336453362200,
    "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=128729",
    "label": "114學年課程計畫備查公文",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "課程計畫",
     "國中課程計畫"
    ],
-   "order": 51
+   "order": 51,
+   "checked_at": "2026-11-09T01:10:38+08:00",
+   "path": [
+    "課程計畫",
+    "國中課程計畫",
+    "114學年課程計畫備查公文"
+   ]
   },
   "174708288166095": {
    "page_id": 174708288166095,
    "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=132141",
    "label": "115學年課程計畫備查和教學正常化自我檢核表",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "課程計畫",
     "國中課程計畫"
    ],
-   "order": 52
+   "order": 52,
+   "checked_at": "2026-11-09T01:10:41+08:00",
+   "path": [
+    "課程計畫",
+    "國中課程計畫",
+    "115學年課程計畫備查和教學正常化自我檢核表"
+   ]
   },
   "61308924649350": {
    "page_id": 61308924649350,
@@ -1478,6 +1490,18 @@
     "自評表"
    ],
    "order": 117
+  },
+  "9629463529441": {
+   "page_id": 9629463529441,
+   "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=132143",
+   "label": "115學年度雲林縣國民中學正常教學學校自我檢核表",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "國中課程計畫",
+    "115學年課程計畫備查和教學正常化自我檢核表"
+   ],
+   "order": 118
   }
  },
  "handbook": {},
@@ -1689,5 +1713,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-08T18:29:19+08:00"
+ "last_run_at": "2026-11-09T01:10:43+08:00"
 }

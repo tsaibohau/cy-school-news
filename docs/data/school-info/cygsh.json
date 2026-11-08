@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-08T18:28:33+08:00",
+ "generated_at": "2026-11-09T01:09:52+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -12037,11 +12037,505 @@
   },
   "2133": {
    "page_id": 2133,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T01:09:46+08:00",
+   "path": [
+    "行政單位",
+    "教官室",
+    "防制學生藥物濫用"
+   ],
+   "changed_at": "2026-11-09T01:09:46+08:00",
+   "content_hash": "5723cd9b47b2001bedeb24bf3f8c7bfa9812f194a2ffb6cbd72b0070db748d6c",
+   "doc_links": [],
+   "keywords": [
+    "宣導"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2133.json",
+   "detail_revision": "90c019868c566b378c8210de43ee786042beae5275c47c0e1ad6cd681f8c7281",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "校園防毒守門員-當惡魔來敲門",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/241266915.mp4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "科普"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-11-27"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "寒假"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "寒假"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "寒假"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   "2134": {
    "page_id": 2134,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T01:09:48+08:00",
+   "path": [
+    "行政單位",
+    "教官室",
+    "交通安全教育"
+   ],
+   "changed_at": "2026-11-09T01:09:48+08:00",
+   "content_hash": "9284f285b798683040daa6deb4249694f3beb9217df9fde8919604615dc80bd9",
+   "doc_links": [],
+   "keywords": [
+    "安全",
+    "宣導",
+    "電話",
+    "入學"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2134.json",
+   "detail_revision": "2a72779d11ae67f954181c8461a3946fe2eb3f8b784bf9e7796652852add2fce",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "交通安全宣導1030505附件 (DOC)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/196941765.pdf"
+    },
+    {
+     "name": "微型電動二輪車騎乘安全-安全不青菜篇 (MP4)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/316638242.mp4"
+    },
+    {
+     "name": "您不可不知道的新規定 (MP4)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/143244157.mp4"
+    },
+    {
+     "name": "現實無法重來-腳踏車出行指引 (MP4)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/271720830.mp4"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室",
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "手機",
+       "機車",
+       "#safety",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact",
+       "deny"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "手機",
+       "腳踏車",
+       "#safety",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "腳踏車"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "機車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "喝酒"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "penalty"
+      ],
+      "d": [
+       "2014-05-05"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "腳踏車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": [],
+      "d": [
+       "2014-05-06"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "penalty",
+       "time"
+      ],
+      "d": [
+       "2023-03-31"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "腳踏車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "腳踏車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "停車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "腳踏車"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#safety",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
   },
   "2135": {
    "page_id": 2135,
@@ -35643,7 +36137,7 @@
     "chars": 954
    }
   },
-  "checked_at": "2026-11-08T18:28:33+08:00",
+  "checked_at": "2026-11-09T01:09:52+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -69187,6 +69681,511 @@
    }
   },
   {
+   "id": "cygsh-info-2133",
+   "kind": "school_info",
+   "title": "行政單位 › 教官室 › 防制學生藥物濫用",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2133.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "校園防毒守門員-當惡魔來敲門"
+   ],
+   "keywords": [
+    "宣導"
+   ],
+   "documents": [
+    {
+     "name": "校園防毒守門員-當惡魔來敲門",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/241266915.mp4"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2133.json",
+   "detail_revision": "90c019868c566b378c8210de43ee786042beae5275c47c0e1ad6cd681f8c7281",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "科普"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-11-27"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "寒假"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "寒假"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "寒假"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cygsh-info-2134",
+   "kind": "school_info",
+   "title": "行政單位 › 教官室 › 交通安全教育",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2134.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "交通安全宣導1030505附件 (DOC)",
+    "微型電動二輪車騎乘安全-安全不青菜篇 (MP4)",
+    "您不可不知道的新規定 (MP4)",
+    "現實無法重來-腳踏車出行指引 (MP4)"
+   ],
+   "keywords": [
+    "安全",
+    "宣導",
+    "電話",
+    "入學"
+   ],
+   "documents": [
+    {
+     "name": "交通安全宣導1030505附件 (DOC)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/196941765.pdf"
+    },
+    {
+     "name": "微型電動二輪車騎乘安全-安全不青菜篇 (MP4)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/316638242.mp4"
+    },
+    {
+     "name": "您不可不知道的新規定 (MP4)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/143244157.mp4"
+    },
+    {
+     "name": "現實無法重來-腳踏車出行指引 (MP4)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/271720830.mp4"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2134.json",
+   "detail_revision": "2a72779d11ae67f954181c8461a3946fe2eb3f8b784bf9e7796652852add2fce",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室",
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "手機",
+       "機車",
+       "#safety",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact",
+       "deny"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "手機",
+       "腳踏車",
+       "#safety",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "腳踏車"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "機車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "喝酒"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "penalty"
+      ],
+      "d": [
+       "2014-05-05"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "腳踏車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": [],
+      "d": [
+       "2014-05-06"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 28,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "penalty",
+       "time"
+      ],
+      "d": [
+       "2023-03-31"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "腳踏車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "腳踏車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "停車",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [
+       "腳踏車"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "#safety",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 51,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-info-2171",
    "kind": "school_info",
    "title": "學校夥伴 › 合作社",
@@ -92028,5 +93027,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-08T18:28:33+08:00"
+ "last_run_at": "2026-11-09T01:09:52+08:00"
 }

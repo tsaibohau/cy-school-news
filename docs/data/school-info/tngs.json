@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-08T18:30:52+08:00",
+ "generated_at": "2026-11-09T01:12:10+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -1377,49 +1377,73 @@
    "page_id": 274255652802445,
    "url": "https://www.tngs.tn.edu.tw/department/lib/shs/",
    "label": "閱讀心得與小論文指引",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "圖書館"
    ],
-   "order": 91
+   "order": 91,
+   "checked_at": "2026-11-09T01:12:02+08:00",
+   "path": [
+    "行政組織",
+    "圖書館",
+    "閱讀心得與小論文指引"
+   ]
   },
   "38884662057078": {
    "page_id": 38884662057078,
    "url": "https://www.tngs.tn.edu.tw/ie/",
    "label": "國際交流",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "圖書館"
    ],
-   "order": 92
+   "order": 92,
+   "checked_at": "2026-11-09T01:12:05+08:00",
+   "path": [
+    "行政組織",
+    "圖書館",
+    "國際交流"
+   ]
   },
   "131483925707494": {
    "page_id": 131483925707494,
    "url": "https://www.tngs.tn.edu.tw/teaching/chinese/staff/",
    "label": "授課教師",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教學單位",
     "國文科"
    ],
-   "order": 93
+   "order": 93,
+   "checked_at": "2026-11-09T01:12:06+08:00",
+   "path": [
+    "教學單位",
+    "國文科",
+    "授課教師"
+   ]
   },
   "126056794041817": {
    "page_id": 126056794041817,
    "url": "https://www.tngs.tn.edu.tw/teaching/chinese/resource/",
    "label": "學習資源",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教學單位",
     "國文科"
    ],
-   "order": 94
+   "order": 94,
+   "checked_at": "2026-11-09T01:12:08+08:00",
+   "path": [
+    "教學單位",
+    "國文科",
+    "學習資源"
+   ]
   },
   "112914110943203": {
    "page_id": 112914110943203,
@@ -2032,6 +2056,30 @@
     "校園景觀"
    ],
    "order": 145
+  },
+  "35538548392452": {
+   "page_id": 35538548392452,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/ie/",
+   "label": "國際交流",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "圖書館",
+    "國際交流"
+   ],
+   "order": 146
+  },
+  "23564455264122": {
+   "page_id": 23564455264122,
+   "url": "https://www.tngs.tn.edu.tw/department/lib/ie/%e7%96%ab%e6%83%85%e6%9c%9f%e9%96%93%e7%9a%84%e5%9c%8b%e9%9a%9b%e4%ba%a4%e6%b5%81/",
+   "label": "疫情期間的國際交流",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "圖書館",
+    "國際交流"
+   ],
+   "order": 147
   }
  },
  "handbook": {},
@@ -2363,5 +2411,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-08T18:30:52+08:00"
+ "last_run_at": "2026-11-09T01:12:10+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T18:13:21+08:00",
+ "generated_at": "2026-11-09T01:00:50+08:00",
  "school": {
   "id": "nehs",
   "name": "國立嘉科實驗高級中學",
@@ -8,6 +8,58 @@
   "base": "https://www.nehs.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "nehs-4723",
+   "title": "【公告】轉知教育部函發「高級中等教育法」第58條條文修正案",
+   "date": "2026-11-09",
+   "source_category": "法令動態",
+   "school": "nehs",
+   "school_name": "嘉科實中",
+   "url": "https://www.nehs.cyc.edu.tw/ischool/public/news_view/show.php?nid=4723",
+   "category": "一般",
+   "first_seen": "2026-11-09T01:00:50+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience",
+       "required"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience",
+       "required"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "nehs-4722",
    "title": "【轉知】國立陽明交通大學辦理「心智圖超記憶親子免費講座」及「2027寒假-心智圖超記憶學習營」，歡迎學生及家長踴躍報名參加！",

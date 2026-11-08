@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T18:13:21+08:00",
+ "generated_at": "2026-11-09T01:00:50+08:00",
  "school": {
   "id": "ptivs",
   "name": "國立成大附屬南工",
@@ -320,6 +320,90 @@
       ],
       "k": [
        "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ptivs-20288",
+   "title": "機制校園生活",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20288",
+   "category": "一般",
+   "first_seen": "2026-11-09T01:00:50+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "生活"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "ptivs-20287",
+   "title": "115年度孝道教育種子教師研習",
+   "date": "2026-11-06",
+   "source_category": "公告",
+   "school": "ptivs",
+   "school_name": "成大附工",
+   "url": "https://www.ptivs.tn.edu.tw/ischool/public/news_view/show.php?nid=20287",
+   "category": "教職員",
+   "first_seen": "2026-11-09T01:00:50+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
       ]
      }
     ]
