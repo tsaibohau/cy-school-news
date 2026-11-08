@@ -77,3 +77,9 @@ enabled = true
 verify_jwt = true
 import_map = "./functions/announcement-content-sync/deno.json"
 entrypoint = "./functions/announcement-content-sync/index.ts"
+
+[functions.restricted-data-sync]
+enabled = true
+verify_jwt = true
+import_map = "./functions/restricted-data-sync/deno.json"
+entrypoint = "./functions/restricted-data-sync/index.ts"
