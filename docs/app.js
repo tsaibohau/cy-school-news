@@ -1569,10 +1569,11 @@
 
     /* 首屏快照（scraper/latest_slim.py 產生）：最新 ~300 則，約整份檔案的 1/25。
        還沒產生（部署後的第一次排程前）或抓不到時，自動退回完整檔案。 */
-    function currentDataRequest(revalidate) {
-      if (state.school === "all") return Promise.resolve({ url: "data/announcements.json", slim: "data/announcements-latest.json", manifest: null });
+    function currentDataRequest(revalidate, schoolId) {
+      schoolId = schoolId || state.school;
+      if (schoolId === "all") return Promise.resolve({ url: "data/announcements.json", slim: "data/announcements-latest.json", manifest: null });
       return fetchManifest(revalidate).then(function (manifest) {
-        var school = (manifest.schools || []).find(function (row) { return row.id === state.school; });
+        var school = (manifest.schools || []).find(function (row) { return row.id === schoolId; });
         if (!school || !school.current) throw new Error("unknown school shard");
         return { url: school.current, slim: /current\.json$/.test(school.current) ? school.current.replace(/current\.json$/, "latest.json") : "", manifest: manifest };
       }).catch(function () {
@@ -1670,9 +1671,10 @@
       if (accountAuth && typeof accountAuth.getDeletedAnnouncementIds === "function") {
         accountAuth.getDeletedAnnouncementIds().then(applyDeletedIds).catch(function () {});
       }
-      var download = currentDataRequest(revalidate).then(function (request) {
+      var requestedSchool = state.school;
+      var download = currentDataRequest(revalidate, requestedSchool).then(function (request) {
         /* 這所學校的資料還沒進來：先下載精簡快照畫出第一頁，完整檔案畫完後再背景載入。 */
-        var wantSlim = !!request.slim && !window.__CYNEWS_NO_SLIM__ && (!state.data || state.dataSchool !== state.school);
+        var wantSlim = !!request.slim && !window.__CYNEWS_NO_SLIM__ && (!state.data || state.dataSchool !== requestedSchool);
         if (wantSlim) {
           return dataFetch(request.slim, revalidate).then(function (r) {
             return parseDataResponse(r, request, request.slim).then(function (result) {
@@ -1702,7 +1704,7 @@
             });
           }
           state.data = data;
-          state.dataSchool = state.school;
+          state.dataSchool = requestedSchool;
           state.partial = !!data.partial;
           state.fullFailed = false;
           if (!state.partial) fullPromise = null;
@@ -1724,11 +1726,11 @@
     function loadFullData() {
       if (!state.partial || state.fullFailed) return Promise.resolve(state.data);
       if (fullPromise) return fullPromise;
-      var school = state.school;
-      fullPromise = currentDataRequest(true).then(function (request) {
+      var school = state.dataSchool || state.school;
+      fullPromise = currentDataRequest(true, school).then(function (request) {
         return dataFetch(request.url, true).then(function (r) { return parseDataResponse(r, request, request.url); });
       }).then(function (result) {
-        if (state.school !== school || !state.partial) return state.data;
+        if (state.dataSchool !== school || !state.partial) return state.data;
         var data = result.data;
         data.items = (data.items || []).filter(function (item) { return !state.deletedAnnouncements[item.id]; });
         data.items.forEach(applyMemberContent);
