@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T11:22:22+08:00",
+ "generated_at": "2026-11-08T18:13:21+08:00",
  "school": {
   "id": "hwaivs",
   "name": "國立虎尾高級農工職業學校",
@@ -1848,7 +1848,7 @@
   },
   {
    "id": "hwaivs-30423",
-   "title": "國立虎尾高級農工職業學校綜合球場配色師生票選活動",
+   "title": "國立虎尾高級農工職業學校綜合球場配色師生票選活動 – 國立虎尾高級農工職業學校",
    "date": "2026-10-28",
    "source_category": "學校公告",
    "school": "hwaivs",
@@ -1856,7 +1856,115 @@
    "url": "https://www.hwaivs.ylc.edu.tw/2026/10/28/%e5%9c%8b%e7%ab%8b%e8%99%8e%e5%b0%be%e9%ab%98%e7%b4%9a%e8%be%b2%e5%b7%a5%e8%81%b7%e6%a5%ad%e5%ad%b8%e6%a0%a1%e7%b6%9c%e5%90%88%e7%90%83%e5%a0%b4%e9%85%8d%e8%89%b2%e5%b8%ab%e7%94%9f%e7%a5%a8%e9%81%b8/",
    "category": "研習活動",
    "first_seen": "2026-10-28T17:34:56+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "a9377ac8687d04d7538121f16ff2f5424c0ef5188538ee102ef56a319b747bd1"
+    }
+   ],
+   "audience": {
+    "grades": [],
+    "classes": [],
+    "all_school": true
+   },
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-28"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "班會",
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-30"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "英檢",
+       "報名",
+       "#certificate"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "hwaivs-30420",

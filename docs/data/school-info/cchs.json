@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cchs",
- "generated_at": "2026-11-08T11:35:16+08:00",
+ "generated_at": "2026-11-08T18:28:22+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "153498002047988": {
@@ -7748,23 +7748,226 @@
    "page_id": 125951644130611,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/51/",
    "label": "高中彈性學習專區",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 57
+   "order": 57,
+   "checked_at": "2026-11-08T18:28:18+08:00",
+   "path": [
+    "進入首頁",
+    "高中彈性學習專區"
+   ],
+   "changed_at": "2026-11-08T18:28:18+08:00",
+   "content_hash": "033e3d2db44ea9dca0c070d35004027f8f24a0ccb7696b616b8e66b032ede185",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-125951644130611.json",
+   "detail_revision": "f339930c08761dab6e4564cec9de08b17a9f6456c4b9c6ea19e21b8840cc9925",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "彈性學習"
+    ],
+    "segments": []
+   }
   },
   "163042028638357": {
    "page_id": 163042028638357,
    "url": "https://www.cchs.kh.edu.tw/home?cid=1555",
    "label": "中正翰林雲端學院(國中部)",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 58
+   "order": 58,
+   "checked_at": "2026-11-08T18:28:20+08:00",
+   "path": [
+    "進入首頁",
+    "中正翰林雲端學院(國中部)"
+   ],
+   "changed_at": "2026-11-08T18:28:20+08:00",
+   "content_hash": "c44bc34d4278a10c04ca31cd43a9751707ddf408d2e29e2e37358330363ac814",
+   "doc_links": [],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-163042028638357.json",
+   "detail_revision": "aa569102b0a0ef229d6fb7fcdcb3111eb44a431deef10372501df93e508fc3d7",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中正"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "台大",
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "台大",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "中正",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "140621898600000": {
    "page_id": 140621898600000,
@@ -12329,6 +12532,30 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-125951644130611",
+   "kind": "school_info",
+   "title": "進入首頁 › 高中彈性學習專區",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/51/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cchs/cchs-info-125951644130611.json",
+   "detail_revision": "f339930c08761dab6e4564cec9de08b17a9f6456c4b9c6ea19e21b8840cc9925",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "彈性學習"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "cchs-info-134017460526150",
    "kind": "school_info",
    "title": "進入首頁 › 圖書館",
@@ -13759,6 +13986,195 @@
       "t": [
        "運動會",
        "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cchs-info-163042028638357",
+   "kind": "school_info",
+   "title": "進入首頁 › 中正翰林雲端學院(國中部)",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1555",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "學生手冊(含學生獎懲規定) Student Handbook",
+    "新生加入班務專區操作說明",
+    "一卡通數位學生證遺失補卡處理方式"
+   ],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "研習",
+    "競賽",
+    "簡介",
+    "運動會"
+   ],
+   "documents": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "detail_ref": "data/details/cchs/cchs-info-163042028638357.json",
+   "detail_revision": "aa569102b0a0ef229d6fb7fcdcb3111eb44a431deef10372501df93e508fc3d7",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中正"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 33,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 34,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "台大",
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "台大",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "中正",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 47,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "中正"
       ],
       "k": []
      }
@@ -18112,5 +18528,5 @@
    "label": "進入首頁"
   }
  ],
- "last_run_at": "2026-11-08T11:35:16+08:00"
+ "last_run_at": "2026-11-08T18:28:22+08:00"
 }

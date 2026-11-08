@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-08T11:35:25+08:00",
+ "generated_at": "2026-11-08T18:28:28+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -7922,11 +7922,50 @@
   },
   "1022": {
    "page_id": 1022,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T18:28:24+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "籃球隊專區",
+    "籃球隊招生簡章"
+   ],
+   "changed_at": "2026-11-08T18:28:24+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1022.json",
+   "detail_revision": "adebc39b82263d2d1f5c91e836abbd457560119dea34d68386597abb5d1b8b16",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": []
+   }
   },
   "1023": {
    "page_id": 1023,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T18:28:26+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "籃球隊專區",
+    "賽程相關訊息"
+   ],
+   "changed_at": "2026-11-08T18:28:26+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1023.json",
+   "detail_revision": "2356a7bb1ebc83aff1d8f2a96878c946b8a89d84d8c3f942cd9e3cc92d40e662",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1024": {
    "page_id": 1024,
@@ -36277,6 +36316,47 @@
    "detail_status": "empty"
   },
   {
+   "id": "cysh-info-1022",
+   "kind": "school_info",
+   "title": "進修部 › 籃球隊專區 › 籃球隊招生簡章",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1022.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1022.json",
+   "detail_revision": "adebc39b82263d2d1f5c91e836abbd457560119dea34d68386597abb5d1b8b16",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cysh-info-1023",
+   "kind": "school_info",
+   "title": "進修部 › 籃球隊專區 › 賽程相關訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1023.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1023.json",
+   "detail_revision": "2356a7bb1ebc83aff1d8f2a96878c946b8a89d84d8c3f942cd9e3cc92d40e662",
+   "detail_status": "empty"
+  },
+  {
    "id": "cysh-info-1040",
    "kind": "school_info",
    "title": "學務處 › 衛生組 › 健促成果區",
@@ -56589,5 +56669,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-08T11:35:25+08:00"
+ "last_run_at": "2026-11-08T18:28:28+08:00"
 }

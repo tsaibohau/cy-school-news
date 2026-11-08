@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-08T11:34:13+08:00",
+ "generated_at": "2026-11-08T18:27:43+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -864,25 +864,37 @@
    "page_id": 165260102315485,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/輔導資源/",
    "label": "輔導資源",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "輔導室"
    ],
-   "order": 59
+   "order": 59,
+   "checked_at": "2026-11-08T18:27:39+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "輔導資源"
+   ]
   },
   "205958438427288": {
    "page_id": 205958438427288,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/下載專區/",
    "label": "下載專區",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "輔導室"
    ],
-   "order": 60
+   "order": 60,
+   "checked_at": "2026-11-08T18:27:41+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "下載專區"
+   ]
   },
   "179085209045908": {
    "page_id": 179085209045908,
@@ -1380,6 +1392,30 @@
     "輔導工作計畫"
    ],
    "order": 102
+  },
+  "178321627012325": {
+   "page_id": 178321627012325,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/%e8%bc%94%e5%b0%8e%e8%b3%87%e6%ba%90/",
+   "label": "輔導資源",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "輔導室",
+    "輔導資源"
+   ],
+   "order": 103
+  },
+  "153085695873459": {
+   "page_id": 153085695873459,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/%e4%b8%8b%e8%bc%89%e5%b0%88%e5%8d%80/",
+   "label": "下載專區",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "輔導室",
+    "下載專區"
+   ],
+   "order": 104
   }
  },
  "handbook": {},
@@ -1681,5 +1717,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-08T11:34:13+08:00"
+ "last_run_at": "2026-11-08T18:27:43+08:00"
 }

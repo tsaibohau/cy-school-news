@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-08T11:34:56+08:00",
+ "generated_at": "2026-11-08T18:28:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -4141,13 +4141,52 @@
    "page_id": 6541261989210,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-670.php",
    "label": "願景",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "校長室"
    ],
-   "order": 47
+   "order": 47,
+   "checked_at": "2026-11-08T18:28:12+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "願景"
+   ],
+   "changed_at": "2026-11-08T18:28:12+08:00",
+   "content_hash": "bc09fb4f5d43e72e35e2c1e166077700d337fafb9f4f7baeea7bb5f0a53812e1",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-6541261989210.json",
+   "detail_revision": "94f215bb6d32b9f91aff597a91a47eec84d778747561f949e3d346eb6de741d8",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "元智"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "197183669305382": {
    "page_id": 197183669305382,
@@ -6461,6 +6500,47 @@
       "t": [
        "升學",
        "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "ksaivs-info-6541261989210",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室 › 願景",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-670.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-6541261989210.json",
+   "detail_revision": "94f215bb6d32b9f91aff597a91a47eec84d778747561f949e3d346eb6de741d8",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [
+       "元智"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長"
       ],
       "k": []
      }
@@ -10585,5 +10665,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-08T11:34:56+08:00"
+ "last_run_at": "2026-11-08T18:28:14+08:00"
 }

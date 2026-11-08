@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tssh",
- "generated_at": "2026-11-08T11:37:07+08:00",
+ "generated_at": "2026-11-08T18:30:14+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "212970716483767": {
@@ -817,23 +817,33 @@
    "page_id": 97949145295012,
    "url": "https://www.tssh.cyc.edu.tw/sub/content/index.aspx?Parser=1,22,89",
    "label": "處室介紹",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "公開觀課"
    ],
-   "order": 63
+   "order": 63,
+   "checked_at": "2026-11-08T18:30:10+08:00",
+   "path": [
+    "公開觀課",
+    "處室介紹"
+   ]
   },
   "21054391923799": {
    "page_id": 21054391923799,
    "url": "https://www.tssh.cyc.edu.tw/sub/form/index.aspx?Parser=2,22,348",
    "label": "教務章則",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "公開觀課"
    ],
-   "order": 64
+   "order": 64,
+   "checked_at": "2026-11-08T18:30:12+08:00",
+   "path": [
+    "公開觀課",
+    "教務章則"
+   ]
   },
   "12685307576617": {
    "page_id": 12685307576617,
@@ -3643,5 +3653,5 @@
    "label": "報廢產品變賣專區"
   }
  ],
- "last_run_at": "2026-11-08T11:37:07+08:00"
+ "last_run_at": "2026-11-08T18:30:14+08:00"
 }

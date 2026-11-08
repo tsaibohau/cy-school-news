@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-08T11:36:48+08:00",
+ "generated_at": "2026-11-08T18:29:54+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -4489,12 +4489,42 @@
    "page_id": 199560769958989,
    "url": "https://www.hnvs.cy.edu.tw/links/index.asp?Parser=11,10,340",
    "label": "教育資源",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 51
+   "order": 51,
+   "checked_at": "2026-11-08T18:29:52+08:00",
+   "path": [
+    "網站導覽",
+    "教育資源"
+   ],
+   "changed_at": "2026-11-08T18:29:52+08:00",
+   "content_hash": "f272b79b4fd2840b902f9e845a9dcca09b548d931a8dc5c8308bb63254d17f41",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-199560769958989.json",
+   "detail_revision": "5fc431afa0df8488e5871d0decf54c7495d39b17675add89f39a272689e64b7f",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-05-09"
+      ]
+     }
+    ]
+   }
   },
   "278395357512862": {
    "page_id": 278395357512862,
@@ -10976,6 +11006,39 @@
    }
   },
   {
+   "id": "hnvs-info-199560769958989",
+   "kind": "school_info",
+   "title": "網站導覽 › 教育資源",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/links/index.asp?Parser=11,10,340",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-199560769958989.json",
+   "detail_revision": "5fc431afa0df8488e5871d0decf54c7495d39b17675add89f39a272689e64b7f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-05-09"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-200549200305570",
    "kind": "school_info",
    "title": "學校校地總面積、校舍樓地板總面積",
@@ -11789,5 +11852,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-08T11:36:48+08:00"
+ "last_run_at": "2026-11-08T18:29:54+08:00"
 }

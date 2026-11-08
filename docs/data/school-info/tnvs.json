@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-08T11:37:49+08:00",
+ "generated_at": "2026-11-08T18:31:09+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -10051,34 +10051,300 @@
    "page_id": 234784464705896,
    "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-intro/",
    "label": "本科簡介",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "機電科"
    ],
-   "order": 58
+   "order": 58,
+   "checked_at": "2026-11-08T18:31:03+08:00",
+   "path": [
+    "機電科",
+    "本科簡介"
+   ],
+   "changed_at": "2026-11-08T18:31:03+08:00",
+   "content_hash": "225adaa53395587c4808d4ad7a40586ac9e9ca1577083ce90613b781d0c7c719",
+   "doc_links": [],
+   "keywords": [
+    "檢定",
+    "升學",
+    "簡介",
+    "申請",
+    "科系"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-234784464705896.json",
+   "detail_revision": "207a547821ea62f14e613a5c285d047111feb3b89cfac71e6ac27fd385ac8309",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "暑假"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "195535099377964": {
    "page_id": 195535099377964,
    "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-teacher/",
    "label": "師資陣容",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "機電科"
    ],
-   "order": 59
+   "order": 59,
+   "checked_at": "2026-11-08T18:31:05+08:00",
+   "path": [
+    "機電科",
+    "師資陣容"
+   ],
+   "changed_at": "2026-11-08T18:31:05+08:00",
+   "content_hash": "5c854954713cba8280d05dca1dc4f2a7f5923f347c2e09737d168f6647ad966c",
+   "doc_links": [],
+   "keywords": [
+    "電話",
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-195535099377964.json",
+   "detail_revision": "d4b5735471d7dca3ddf1e69587f86e39121dfc1eb9de5f904d3583aa4b43874c",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "122416383984323": {
    "page_id": 122416383984323,
    "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-class/",
    "label": "課程規劃",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "機電科"
    ],
-   "order": 60
+   "order": 60,
+   "checked_at": "2026-11-08T18:31:07+08:00",
+   "path": [
+    "機電科",
+    "課程規劃"
+   ],
+   "changed_at": "2026-11-08T18:31:07+08:00",
+   "content_hash": "72be0430ab2bbc35c76030135d5df75d818e97fe28c81c27f23d55310f3aa04c",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-122416383984323.json",
+   "detail_revision": "ff55eed69eca899b0f84af66b1a3fbdd5542a0b38a32638c05cbee1e5f970908",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "52789488375909": {
    "page_id": 52789488375909,
@@ -15265,6 +15531,47 @@
    }
   },
   {
+   "id": "tnvs-info-122416383984323",
+   "kind": "school_info",
+   "title": "機電科 › 課程規劃",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-class/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-122416383984323.json",
+   "detail_revision": "ff55eed69eca899b0f84af66b1a3fbdd5542a0b38a32638c05cbee1e5f970908",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-138987058819621",
    "kind": "school_info",
    "title": "看見南水 › 性別平等教育專區",
@@ -18122,6 +18429,141 @@
    "detail_status": "parsed"
   },
   {
+   "id": "tnvs-info-195535099377964",
+   "kind": "school_info",
+   "title": "機電科 › 師資陣容",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-teacher/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [
+    "電話",
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-195535099377964.json",
+   "detail_revision": "d4b5735471d7dca3ddf1e69587f86e39121dfc1eb9de5f904d3583aa4b43874c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "導師"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-218930160176923",
    "kind": "school_info",
    "title": "電子科",
@@ -18558,6 +19000,105 @@
       "t": [
        "繁星",
        "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "tnvs-info-234784464705896",
+   "kind": "school_info",
+   "title": "機電科 › 本科簡介",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/mechanical/mech-intro/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [
+    "檢定",
+    "升學",
+    "簡介",
+    "申請",
+    "科系"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-234784464705896.json",
+   "detail_revision": "207a547821ea62f14e613a5c285d047111feb3b89cfac71e6ac27fd385ac8309",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "暑假"
       ],
       "k": []
      }
@@ -21539,5 +22080,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-08T11:37:49+08:00"
+ "last_run_at": "2026-11-08T18:31:09+08:00"
 }

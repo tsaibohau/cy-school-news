@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-08T11:36:02+08:00",
+ "generated_at": "2026-11-08T18:29:00+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -12546,12 +12546,105 @@
    "page_id": 183077034264202,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=24953",
    "label": "●後期中等教育普查問卷",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "認識本校"
    ],
-   "order": 63
+   "order": 63,
+   "checked_at": "2026-11-08T18:28:58+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "註冊組"
+   ],
+   "changed_at": "2026-11-08T18:28:58+08:00",
+   "content_hash": "90fbf6349993a55718f0cc9304434b99aaa0e0e3a7dcd4b00484c1d7ce929b7c",
+   "doc_links": [],
+   "keywords": [
+    "新生",
+    "校長"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hlvs/hlvs-info-183077034264202.json",
+   "detail_revision": "2796f8f99188cf8c70988f43ec81098d503270cf53bab201f922ae939d218f7a",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "師大"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2022-04-14"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "152707219625896": {
    "page_id": 152707219625896,
@@ -21979,6 +22072,101 @@
    "detail_status": "parsed"
   },
   {
+   "id": "hlvs-info-183077034264202",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 註冊組",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=24953",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [
+    "新生",
+    "校長"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hlvs/hlvs-info-183077034264202.json",
+   "detail_revision": "2796f8f99188cf8c70988f43ec81098d503270cf53bab201f922ae939d218f7a",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處",
+     "註冊組"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "師大"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2022-04-14"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "註冊組"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "hlvs-info-183207436674326",
    "kind": "school_info",
    "title": "校園公告",
@@ -27085,5 +27273,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-08T11:36:02+08:00"
+ "last_run_at": "2026-11-08T18:29:00+08:00"
 }

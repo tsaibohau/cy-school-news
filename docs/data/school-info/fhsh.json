@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-08T11:34:24+08:00",
+ "generated_at": "2026-11-08T18:27:52+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -11052,23 +11052,259 @@
    "page_id": 61846934496722,
    "url": "https://www.fhsh.khc.edu.tw/library/information_service",
    "label": "資訊服務",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 62
+   "order": 62,
+   "checked_at": "2026-11-08T18:27:49+08:00",
+   "path": [
+    "網站導覽",
+    "資訊服務"
+   ],
+   "changed_at": "2026-11-08T18:27:49+08:00",
+   "content_hash": "875e296a339a2e1f3ccefe1f3c6840d43e5f857d44bafe8fe06c63200ba128d9",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "按我下載設定檔",
+     "url": "https://drive.google.com/file/d/111fuCfA4_LdwD_1E-I8wXs6tlZceiuug/view"
+    },
+    {
+     "name": "無線網路設定工具",
+     "url": "https://drive.google.com/file/d/1htN-VTKKb51Q2pgDUU0QGiZCBubyLykK/view?usp=drive_link"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [
+    "手機"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-61846934496722.json",
+   "detail_revision": "17d6021b7d750f07dd81c4e749ea9fb3bc3a8237826dad61915d12d3eed493a3",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "教育雲帳號",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/05/教育雲設定方式.png"
+    },
+    {
+     "name": "學校信箱",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/12/學校信箱設定方式.jpg"
+    },
+    {
+     "name": "Open ID",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/05/KH連線設定.png"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "206522467412531": {
    "page_id": 206522467412531,
    "url": "https://www.fhsh.khc.edu.tw/library/%e8%b3%87%e8%a8%8a%e5%a0%b1%e4%bf%ae",
    "label": "資訊報修",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 63
+   "order": 63,
+   "checked_at": "2026-11-08T18:27:51+08:00",
+   "path": [
+    "網站導覽",
+    "資訊報修"
+   ]
   },
   "195195623028423": {
    "page_id": 195195623028423,
@@ -14502,6 +14738,248 @@
       ],
       "k": [
        "audience"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fhsh-info-61846934496722",
+   "kind": "school_info",
+   "title": "網站導覽 › 資訊服務",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/library/information_service",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "教育雲帳號",
+    "學校信箱",
+    "Open ID",
+    "數位黑板回報",
+    "設備報修",
+    "按我下載設定檔",
+    "無線網路設定工具",
+    "教育雲端硬碟"
+   ],
+   "keywords": [
+    "手機"
+   ],
+   "documents": [
+    {
+     "name": "教育雲帳號",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/05/教育雲設定方式.png"
+    },
+    {
+     "name": "學校信箱",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2025/12/學校信箱設定方式.jpg"
+    },
+    {
+     "name": "Open ID",
+     "url": "https://www.fhsh.khc.edu.tw/wp-content/uploads/sites/33/2026/05/KH連線設定.png"
+    },
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "按我下載設定檔",
+     "url": "https://drive.google.com/file/d/111fuCfA4_LdwD_1E-I8wXs6tlZceiuug/view"
+    },
+    {
+     "name": "無線網路設定工具",
+     "url": "https://drive.google.com/file/d/1htN-VTKKb51Q2pgDUU0QGiZCBubyLykK/view?usp=drive_link"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-61846934496722.json",
+   "detail_revision": "17d6021b7d750f07dd81c4e749ea9fb3bc3a8237826dad61915d12d3eed493a3",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 57,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 58,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 79,
+      "t": [],
+      "k": [
+       "method"
       ]
      }
     ]
@@ -24196,5 +24674,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-08T11:34:24+08:00"
+ "last_run_at": "2026-11-08T18:27:52+08:00"
 }

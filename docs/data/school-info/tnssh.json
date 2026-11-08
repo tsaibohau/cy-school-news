@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnssh",
- "generated_at": "2026-11-08T11:37:42+08:00",
+ "generated_at": "2026-11-08T18:31:00+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "113186254541556": {
@@ -929,34 +929,49 @@
    "page_id": 108159147684177,
    "url": "https://www.tnssh.tn.edu.tw/sa/parent/",
    "label": "家長會",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "學務處"
    ],
-   "order": 70
+   "order": 70,
+   "checked_at": "2026-11-08T18:30:55+08:00",
+   "path": [
+    "學務處",
+    "家長會"
+   ]
   },
   "199437033500939": {
    "page_id": 199437033500939,
    "url": "https://www.tnssh.tn.edu.tw/sa/gui/guidata/",
    "label": "資料下載",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "生輔組"
    ],
-   "order": 71
+   "order": 71,
+   "checked_at": "2026-11-08T18:30:57+08:00",
+   "path": [
+    "學務處",
+    "生輔組"
+   ]
   },
   "201172402443094": {
    "page_id": 201172402443094,
    "url": "https://www.tnssh.tn.edu.tw/sa/club/clubdoc/",
    "label": "活動申請相關文件",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "社團活動組"
    ],
-   "order": 72
+   "order": 72,
+   "checked_at": "2026-11-08T18:30:59+08:00",
+   "path": [
+    "學務處",
+    "社團活動組"
+   ]
   },
   "214439498845765": {
    "page_id": 214439498845765,
@@ -1923,5 +1938,5 @@
   "f24f9d9bab",
   "f791f2ae59"
  ],
- "last_run_at": "2026-11-08T11:37:42+08:00"
+ "last_run_at": "2026-11-08T18:31:00+08:00"
 }
