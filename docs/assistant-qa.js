@@ -799,10 +799,16 @@
     return t.length < 260 && (t.match(/(?:訂定|修訂|修正)/g) || []).length >= 2 && (t.match(/\d{2,3}\s*年/g) || []).length >= 2;
   }
   var ROSTER_TEXT = /座號.{0,12}學號|學號.{0,12}姓名|班級.{0,6}座號|姓名.{0,8}(?:課程|班級|座號)|[\u4e00-\u9fff][〇○O◯][\u4e00-\u9fff]|自動播放下一集/;
+  function openBracket(text) {
+    var s = String(text || "");
+    return [["（", "）"], ["(", ")"], ["「", "」"], ["【", "】"]].some(function (p) { return s.split(p[0]).length > s.split(p[1]).length; });
+  }
   function candidateQualifies(candidate, plan) {
     if (REVISION_HISTORY.test(clean(candidate.text)) || ROSTER_TEXT.test(clean(candidate.text)) || revisionLog(candidate.text)) return false;
     /* A bare fragment such as 「記警告。」 cut from a list says nothing on its own. */
     if (compact(candidate.text).replace(/[。，、；：.,;:]/g, "").length < 8) return false;
+    /* A line cut at a page or line break inside a bracket (「…（例如排汗」) is half a sentence. */
+    if (openBracket(candidate.text)) return false;
     var slot = plan && plan.answer_slot || "";
     if (!slot) return candidate.score >= 4;
     var hits = cueHits(candidate.text, slot);
@@ -1709,7 +1715,7 @@
         var rest = compact(clause);
         Object.keys(linkLabels).forEach(function (label) { if (label) rest = rest.split(label).join(""); });
         var ctx = framed[index] && framed[index].heading ? framed[index].ctx : clause;
-        var base = rest.replace(/[。．.、，,]/g, "").length < 6 ? 0 : scoreClause(ctx, terms, query, title);
+        var base = rest.replace(/[。．.、，,]/g, "").length < 6 || openBracket(clause) ? 0 : scoreClause(ctx, terms, query, title);
         /* A penalty answer names the act and states the penalty; otherwise say none was found. */
         if (base && penaltyAsk && !(PENALTY_TEXT.test(ctx) && actHit(ctx))) base = 0;
         /* The asked subject (手機) must be in the clause or the chapter title; the situation (午休) cannot pick the chapter alone. */
@@ -2174,8 +2180,16 @@
     return dedupeText(m[2]).replace(/[。；;，、\s]+$/, "") + "，" + m[1];
   }
   /* The same point (「地點：大同國小活動中心」) is said once; every point is a tidy sentence. */
+  /* Icons and decorative stars copied from a web page (🔔 ★ ▶) are not words. */
+  var GLYPH_JUNK = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}\u25A0-\u25FF\u2190-\u21FF]/gu;
+  function stripGlyphs(text) { return typeof text === "string" && text.search(GLYPH_JUNK) !== -1 ? text.replace(GLYPH_JUNK, " ").replace(/\s{2,}/g, " ").replace(/\s+([，。；、：！？])/g, "$1").trim() : text; }
   function conversational(result) {
     var out = conversationalRaw(result);
+    if (out && result && result.mode !== "chat") {
+      if (out.text) out.text = stripGlyphs(out.text);
+      if (out.tail) out.tail = stripGlyphs(out.tail);
+      if (Array.isArray(out.bullets)) out.bullets = out.bullets.map(stripGlyphs).filter(function (b) { return !b || /[\u4e00-\u9fffA-Za-z0-9]/.test(b); });
+    }
     if (!out || result && (result.mode === "chat" || result.mode === "timetable")) return out;
     if (Array.isArray(out.bullets)) out.bullets = tidyPoints(out.bullets, [out.text]);
     if (out.text) out.text = dedupeText(out.text);
@@ -2982,7 +2996,7 @@
      Either way the answer says so instead of attaching an unrelated notice. */
   function coreAsked(query, stats) {
     /* 「我是高二的」 says who is asking, not what is asked: the data need not mention it. */
-    query = String(query || "").replace(/我(?:現在)?(?:是|讀|念)(?:高|國)[一二三](?:的|生|年級)?(?:學生)?/g, " ").replace(/順便|累積|一些|好像|想說|想問|想知道|看到|不知道|可是|另外|我也|請問|麻煩|有點|其實|因為|所以|但是|然後|還是|或是|應該|是不是/g, " ");
+    query = String(query || "").replace(/我(?:現在)?(?:是|讀|念)(?:高|國)[一二三](?:的|生|年級)?(?:學生)?/g, " ").replace(/順便|累積|一些|好像|想說|想問|想知道|看到|不知道|可是|另外|我也|請問|麻煩|有點|其實|因為|所以|但是|然後|還是|或是|應該|是不是|如果|要是|的話|發生|事情|拿來|放進|校規|可不可以|能不能|會不會/g, " ");
     var terms = [], anchors = [], parts = [], genericForms = GATE_STRIP.concat(ALWAYS_GENERIC).map(compact);
     gateWords(query).forEach(function (run) {
       var rest = run;
@@ -3007,7 +3021,7 @@
           var unknown = !skip && !seen;
           if (unknown && from === -1) { from = i; count = 0; }
           if (unknown) count++;
-          if (!unknown && from !== -1) { if (count >= 1 && !/[記幾忘帶拿沒不能會該做想要去來出到過給被把讓用減變準備輕更表]/.test(part.slice(from, i + 1))) spans.push({ word: part.slice(from, i + 1), forms: [part.slice(from, i + 1)].concat(part.slice(from, i + 1).length > 2 ? [part.slice(from, from + 2), part.slice(i - 1, i + 1)] : []), absentWord: true }); from = -1; }
+          if (!unknown && from !== -1) { if (count >= 1 && !/[記幾忘帶拿沒不能會該做想要去來出到過給被把讓用減變準備輕更表寫但抓]/.test(part.slice(from, i + 1))) spans.push({ word: part.slice(from, i + 1), forms: [part.slice(from, i + 1)].concat(part.slice(from, i + 1).length > 2 ? [part.slice(from, from + 2), part.slice(i - 1, i + 1)] : []), absentWord: true }); from = -1; }
         }
         /* Only a segment with no known specific piece at all can be an absent word (noise crosses word boundaries next to known ones). */
         if (!known.length) spans.forEach(function (t) { terms.push(t); });
