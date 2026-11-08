@@ -2935,6 +2935,54 @@
       renderAssistantExamples();
       if (el.assistantQuestion && typeof el.assistantQuestion.focus === "function") el.assistantQuestion.focus();
     }
+    /* 開啟新問校務會清掉對話：先把舊的對話節點收起來，約 6 秒內可以按「復原」放回去。 */
+    var assistantUndo = null;
+    function hideAssistantToast() {
+      var toast = document.getElementById("assistantToast");
+      if (assistantUndo && assistantUndo.timer) clearTimeout(assistantUndo.timer);
+      assistantUndo = null;
+      if (toast) toast.hidden = true;
+    }
+    function resetAssistantChatWithUndo() {
+      if (!state.assistantTurns.length) return;
+      var thread = document.getElementById("assistantThread"), body = document.getElementById("assistantSourcesBody"), count = document.getElementById("assistantSourcesCount");
+      var snap = {
+        turns: state.assistantTurns, answer: state.assistantAnswer, items: state.assistantItems,
+        threadNodes: thread ? Array.prototype.slice.call(thread.childNodes) : [],
+        sourceNodes: body ? Array.prototype.slice.call(body.childNodes) : [],
+        count: count ? count.textContent : "0", history: null
+      };
+      try { snap.history = localStorage.getItem(ASSISTANT_HISTORY_KEY); } catch (_) {}
+      resetAssistantChat();
+      var toast = document.getElementById("assistantToast"), text = document.getElementById("assistantToastText");
+      if (!toast || !text) return;
+      if (assistantUndo && assistantUndo.timer) clearTimeout(assistantUndo.timer);
+      text.textContent = "已開啟新對話";
+      if (el.assistantStatus) el.assistantStatus.textContent = "";
+      toast.hidden = false;
+      snap.timer = setTimeout(hideAssistantToast, 6000);
+      assistantUndo = snap;
+    }
+    function undoAssistantReset() {
+      var snap = assistantUndo;
+      if (!snap) return;
+      hideAssistantToast();
+      var thread = document.getElementById("assistantThread"), body = document.getElementById("assistantSourcesBody"), count = document.getElementById("assistantSourcesCount"), toggle = document.getElementById("assistantSourcesToggle");
+      state.assistantTurns = snap.turns; state.assistantAnswer = snap.answer; state.assistantItems = snap.items;
+      if (thread) {
+        thread.innerHTML = "";
+        snap.threadNodes.forEach(function (node) { thread.appendChild(node); });
+        var replies = thread.querySelectorAll(".chat-reply");
+        el.assistantAnswer = replies.length ? replies[replies.length - 1] : thread.querySelector("#assistantAnswer");
+      }
+      if (body) { body.innerHTML = ""; snap.sourceNodes.forEach(function (node) { body.appendChild(node); }); }
+      if (count) count.textContent = snap.count;
+      if (toggle && snap.sourceNodes.length) toggle.hidden = false;
+      try { if (snap.history !== null) localStorage.setItem(ASSISTANT_HISTORY_KEY, snap.history); } catch (_) {}
+      if (el.viewAssistant) el.viewAssistant.classList.add("has-turns");
+      if (el.assistantStatus) el.assistantStatus.textContent = "已復原先前的對話。";
+      syncAssistantNewChat();
+    }
     function syncAssistantNewChat() {
       var button = document.getElementById("assistantNewChat");
       if (button) button.hidden = !state.assistantTurns.length;
@@ -3769,7 +3817,8 @@
     if (el.viewAssistant) el.viewAssistant.addEventListener("click", function (e) {
       var example = e.target.closest("button[data-assistant-example]");
       if (example) { el.assistantQuestion.value = example.dataset.assistantExample; askAssistant(el.assistantQuestion.value); return; }
-      if (e.target.closest("#assistantNewChat")) { resetAssistantChat(); return; }
+      if (e.target.closest("#assistantNewChat")) { resetAssistantChatWithUndo(); return; }
+      if (e.target.closest("#assistantToastUndo")) { undoAssistantReset(); return; }
       if (e.target.closest("#assistantSourcesToggle")) { toggleAssistantSources(); return; }
       if (e.target.closest("#assistantSourcesClose")) { toggleAssistantSources(false); return; }
       var source = e.target.closest("button[data-detail-id]");
