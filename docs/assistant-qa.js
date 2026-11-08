@@ -817,7 +817,7 @@
     var text = clean(value).replace(/^[•●▪▫◆◇※*\-–—]+\s*/, "")
       .replace(/^(?:說明|公告內容|主旨|注意事項|辦理方式|相關資訊)\s*[：:]\s*/i, "")
       .replace(/\s*詳情請(?:參閱|見).*$/i, "").trim();
-    if (text.length > 170) text = text.slice(0, 168).replace(/[，、；;：:]?[^，。！？!?；;]{0,22}$/, "") + "…";
+    if (text.length > 170) text = Composer && Composer.cutText ? Composer.cutText(text, 170) : text.slice(0, 168).replace(/[，、；;：:]?[^，。！？!?；;]{0,22}$/, "") + "…";
     return text;
   }
   function questionPlan(query) {
@@ -874,10 +874,16 @@
     text = clean(text).replace(/[；;，,、：:]+$/, "");
     return text && !/[。！？!?…]$/.test(text) ? text + "。" : text;
   }
+  function titleYearIsCurrent(item, asOf) {
+    var year = Number((periodToken(item && item.title || "").match(/^\d+/) || [])[0]);
+    return year >= 90 && year >= currentAcademicYear(asOf || new Date().toISOString().slice(0, 10));
+  }
   function oldNote(item, asOf) {
     var year = Number((periodToken(item && item.title || "").match(/^\d+/) || [])[0]);
     var current = currentAcademicYear(asOf || new Date().toISOString().slice(0, 10));
     if (year >= 90 && year < current) return "提醒：這是 " + year + " 學年度的公告，現在的做法可能已經改變。";
+    /* A title that names this school year (or a later one) is current whenever it was posted. */
+    if (year >= current) return "";
     var day = String(item && (item.date || item.first_seen) || "").slice(0, 10);
     if (/^\d{4}-\d{2}-\d{2}$/.test(day) && asOf && (Date.parse(asOf) - Date.parse(day)) / 86400000 > 365) return "提醒：這是 " + day.slice(0, 4) + " 年的公告，現在的做法可能已經改變。";
     return "";
@@ -922,7 +928,7 @@
     if (label === "地點" && !placeLike(value)) return "";
     value = balanceBrackets(value.replace(/^[【\[（(\s]+/, ""));
     value = clean(value.replace(PHONE, "").replace(/^(?:[一二三四五六七八九十]+、|\(?\d{1,2}\)?[、.．])\s*/, "").replace(/[，、；;：:。]+$/, ""));
-    return value.length > 60 ? value.slice(0, 58) + "…" : value;
+    return Composer && Composer.cutText ? Composer.cutText(value, 60) : value.length > 60 ? value.slice(0, 58) + "…" : value;
   }
   /* Drop a stray closing bracket at the end, keep a matched one: 「11月15日（日）」 stays whole. */
   function balanceBrackets(value) {
@@ -2335,6 +2341,9 @@
     if (placeAsked && !/地點|教室|地址|位於|會場|場地|[樓館]|室[內外]?(?![一-鿿])/.test(joined) && !pointBullets.some(function (b) { return /^地點/.test(b); })) {
       pointBullets = pointBullets.concat(["公告內文沒有寫地點" + (/附件|名單/.test(joined) ? "，細節可能在附件裡" : "")]);
     }
+    /* A point that only repeats (or is a cut copy of) what the opening sentence already says is not shown twice. */
+    var openKey = compact(opening);
+    pointBullets = pointBullets.filter(function (b) { var v = compact(String(b).replace(/^[^：:]{1,6}[：:]/, "")).replace(/…$/, ""); return v.length < 12 || openKey.indexOf(v) === -1; });
     return { text: opening, bullets: (colon ? [out.lead] : []).concat(out_details, pointBullets).slice(0, 9), tail: noted, composed: out.type, source: sourceNote(result, 1) };
   }
   /* Follow-up questions read the previous turn: 「那要多久？」 after 「還書」,
@@ -2836,7 +2845,7 @@
     var notices = (items || []).filter(function (item) { return item && !isSchoolDoc(item) && hasSubject(clean(item.title || "")) && HOWTO_NOTICE.test(clean(item.title || "")); })
       .sort(function (a, b) { return String(b.date || b.first_seen || "").localeCompare(String(a.date || a.first_seen || "")); });
     var notice = notices[0] || null;
-    var noticeOld = notice && /^\d{4}-\d{2}-\d{2}$/.test(String(notice.date || "").slice(0, 10)) && String(notice.date).slice(0, 10) < isoAdd(asOf, -365);
+    var noticeOld = notice && !titleYearIsCurrent(notice, asOf) && /^\d{4}-\d{2}-\d{2}$/.test(String(notice.date || "").slice(0, 10)) && String(notice.date).slice(0, 10) < isoAdd(asOf, -365);
     /* The penalty side note: the exam rule (with its temporary-ID step) or the nearest penalty sentence. */
     var side = null;
     /* Something lost: only the exam rule's temporary-ID step is useful; another act's penalty is not. */
@@ -3106,6 +3115,19 @@
     });
     return ok ? clauses : null;
   }
+  /* The heading of one answered question: the topic it is about (「運動賽事學生志工招募及培訓」), not only the
+     word it shares with the other question (「志工」). The notice's own title when it holds the asked subject,
+     else the question with its ask words taken out, else the subject words in the order they were asked. */
+  function clauseHeading(clause, result) {
+    var text = clean(clause.text).replace(/[？?]+$/, ""), terms = (Synonyms ? Synonyms.find(text) : []).map(compact).filter(function (t) { return t.length >= 2 && !CLAUSE_DETAIL.test(t); });
+    var src = ((result && result.sources) || [])[0], title = src ? clean(String(src.title || "").split("›").pop()) : "";
+    title = title.replace(/^[【\[][^】\]]{1,12}[】\]]\s*/, "").replace(/[「」『』]/g, "").replace(/^\d{2,3}\s*(?:學年度?|年度?)\s*(?:第[一二12]學期)?\s*/, "").replace(/(?:實施計畫|實施要點|注意事項|公告|通知|簡章)$/, "").trim();
+    if (result && result.status === "answered" && title.length >= 4 && title.length <= 16 && terms.some(function (t) { return compact(title).indexOf(t) !== -1; })) return title;
+    var name = text.replace(/^(?:如果|要是|請問|我也想問|我想問|也想問|想問|另外|還有|然後|我想知道|我想)/, "").replace(/(?:要?怎麼辦|要?怎麼|如何|是什麼|有什麼|什麼|嗎|呢|吧)/g, "").replace(/^[要想會]+(?=.{2,})/, "").replace(/[，,、\s]+$/, "");
+    if (compact(name).length >= 2 && compact(name).length <= 12) return name;
+    var ordered = terms.filter(function (t, i) { return terms.indexOf(t) === i; }).sort(function (a, b) { return compact(text).indexOf(a) - compact(text).indexOf(b); });
+    return ordered.slice(0, 2).join("與") || clause.heading || compact(text).slice(0, 10);
+  }
   function answerIndependent(query, items, details, options) {
     var clauses = independentAsks(query);
     if (!clauses) return null;
@@ -3115,8 +3137,7 @@
     var paragraphs = [];
     rows.forEach(function (row) {
       var r = row.result || {}, reply = r.reply || conversational(r) || { text: r.summary || "", bullets: [] }, ok = r.status === "answered";
-      var name = row.clause.text.replace(/[？?]$/, "").replace(/^(?:如果|要是|請問|我想問)/, "");
-      paragraphs.push({ heading: name.length > 12 ? row.clause.heading : name,
+      paragraphs.push({ heading: clauseHeading(row.clause, r),
         text: ok ? clean(reply.text || r.summary || "") : r.absent_terms ? clean(r.summary) : "我讀得到的內容沒有直接寫到這一點，" + (r.office_link ? "可以先看" + r.office_link.label + "，或" : "") + "建議直接問導師或承辦處室。" + ((r.related || []).length ? "下方「參考資料」有幾則可能有關的公告。" : ""),
         bullets: ok ? (reply.bullets || []).map(clean) : [], tail: ok ? clean(reply.tail || "") : "", source: ok ? clean(reply.source || "") : "",
         asides: ok ? (r.also || []).map(function (a) { return clean(a.text || "另外，" + (a.label || "") + "提到：" + (a.summary || "")); }).filter(Boolean) : [] });
@@ -3707,6 +3728,9 @@
         if (!where && overview.status === "answered" && (overview.layer === "rule" || overview.mode === "rule_pointer") && (overview.sources || [])[0]) where = overview.sources[0];
         /* One question, one rule answered in full above: no need to say it again. */
         if (where && shown[where.id] && overview.mode === "rule" && split.parts.every(function (p) { return p.clause === split.parts[0].clause; })) return;
+        /* The main answer already holds sentences that say this very thing: no 「沒有直接寫」 note beside it. */
+        var overviewText = clean((overview.answer_lines || []).join(" ") + " " + (overview.evidence || []).map(function (e) { return e.text; }).join(" "));
+        if (where && shown[where.id] && overview.status === "answered" && overview.mode !== "rule_pointer" && part.aspect.cues.test(overviewText) && split.parts.length === 1) return;
         if (where && shown[where.id]) {
           sections.push({ layer: "same", label: "「" + part.aspect.label + "」", aspect: part.aspect.id, summary: "", sources: [],
             text: ask + "：我讀得到的內容沒有直接寫，最可能就寫在上面那份〈" + clean(where.title).split("›").pop().trim() + "〉裡。" });
