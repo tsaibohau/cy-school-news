@@ -1730,6 +1730,12 @@
       });
     });
     if (!best || best.score < 10) return null;
+    /* 「段考遲到可以進場嗎」 (three asked words): a clause that speaks of only one of them (上課遲到) cannot give the verdict. */
+    if (POLAR_ASK.test(query) && !penaltyAsk && !PENALTY_WORD.test(query) && anchors.length >= 3) {
+      var ctxBest = (best.heading ? withHeadings(best.all)[best.index].ctx : best.clause) + " " + clean(best.row.item.title || "");
+      var cb = compact(ctxBest), got = anchors.filter(function (g) { return g.forms.concat(g.loose || []).some(function (f) { return cb.indexOf(f) !== -1; }); }).length;
+      if (got < anchors.length - 1) return null;
+    }
     var picked = [framedText({ heading: best.heading, headings: best.headings, text: best.clause })], pickedAt = [best.index];
     /* 「作息時間表如下：」 needs the rows after it. */
     if (!best.heading && /[：:]$|如下/.test(best.clause)) picked = picked.concat(best.all.slice(best.index + 1, best.index + 5));
@@ -1748,6 +1754,8 @@
     var item = best.row.item, pages = Array.isArray(item.page_range) ? "（第 " + item.page_range[0] + (item.page_range[1] !== item.page_range[0] ? "–" + item.page_range[1] : "") + " 頁）" : "";
     var extra = ruleExtras(query, best, picked, pickedAt, terms, penaltyAsk);
     picked = extra.lines;
+    /* 「忘記帶…怎麼辦」 quoted from a description of the item (what to buy, how it looks): no procedure, so no rule answer. */
+    if (FORGOT_ASK.test(query) && !asksPenalty(query) && !/忘記|攜帶|帶來|代替|替代|臨時|補發|補辦|登記|申請|證明|請假|依規定|聯絡|通知|家長|報備|懲|罰|記[過警]/.test(picked.join(""))) return null;
     /* A procedure (證件代替、申領臨時學生證、記警告) is quoted whole; other clauses are cut at 220 characters. */
     var cap = PROCEDURE_ASK.test(query) || extra.whole ? 600 : 220;
     var quote = picked.map(function (c) { return c.length > cap ? c.slice(0, cap - 1) + "…" : c; });
@@ -3003,16 +3011,17 @@
      Either way the answer says so instead of attaching an unrelated notice. */
   function coreAsked(query, stats) {
     /* 「我是高二的」 says who is asking, not what is asked: the data need not mention it. */
-    query = String(query || "").replace(/我(?:現在)?(?:是|讀|念)(?:高|國)[一二三](?:的|生|年級)?(?:學生)?/g, " ").replace(/順便|累積|一些|好像|想說|想問|想知道|看到|不知道|可是|另外|我也|請問|麻煩|有點|其實|因為|所以|但是|然後|還是|或是|應該|是不是|如果|要是|的話|發生|事情|拿來|放進|校規|可不可以|能不能|會不會/g, " ");
+    query = String(query || "").replace(/我(?:現在)?(?:是|讀|念)(?:高|國)[一二三](?:的|生|年級)?(?:學生)?/g, " ").replace(/順便|累積|一些|好像|想說|想問|想知道|看到|不知道|可是|另外|我也|請問|麻煩|有點|其實|因為|所以|但是|然後|還是|或是|應該|是不是|如果|要是|的話|發生|事情|拿來|放進|校規|到校|到學校|可不可以|能不能|會不會/g, " ");
     var terms = [], anchors = [], parts = [], genericForms = GATE_STRIP.concat(ALWAYS_GENERIC).map(compact);
     gateWords(query).forEach(function (run) {
       var rest = run;
       (Synonyms ? Synonyms.find(run) : []).forEach(function (term) {
         var same = unique(Synonyms.expand(term, { includes: false }).map(compact));
+        /* An exam by its name (段考, 期中考) is written 「考試」 in the exam rules. */
         rest = rest.split(term).join(" ");
         if (term.length >= 2) anchors.push({ word: term, forms: same });
         if (term.length < 2 || same.some(function (f) { return genericForms.indexOf(f) !== -1; }) || formShare(same, stats) > GENERIC_SHARE) return;
-        terms.push({ word: term, forms: same });
+        terms.push({ word: term, forms: /^(?:段考|期中考|期末考|模擬考|定期考)/.test(term) ? same.concat(["考試"]) : same });
       });
       (rest.match(/[a-z0-9]{2,}/g) || []).forEach(function (w) { anchors.push({ word: w, forms: [w] }); });
       /* The rest of the run in two-character pieces: those some title has (and that are not everywhere) are the
@@ -3719,7 +3728,7 @@
       if (whole && whole.mode === "rule" && (whole.sources || [])[0] && whole.sources[0].id === overview.sources[0].id)
         overview = Object.assign({}, overview, { summary: whole.summary, answer_lines: whole.answer_lines, evidence: whole.evidence, notes: whole.notes });
       /* 「運動服忘記帶」: the subject's rule says nothing of forgetting it (the whole question finds no clause), so it is not the answer. */
-      else if (!whole && FORGOT_ASK.test(query)) overview = { status: "insufficient", evidence: [], sources: [], related: [] };
+      else if (!whole && FORGOT_ASK.test(query) && !/記過|警告|懲處|處罰|處分/.test(query) && !/忘記|忘了|攜帶|帶來|沒帶|未帶|代替|替代|臨時|補發|補辦|登記/.test(clean((overview.answer_lines || []).join(" ")))) overview = { status: "insufficient", evidence: [], sources: [], related: [] };
     }
     /* The handbook has no such rule but names the one that governs it (嘉女 試場規則): that, not an unrelated notice, is the answer. */
     if (overview.mode !== "rule" && !personalDataQuery(query)) {
