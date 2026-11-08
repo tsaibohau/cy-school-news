@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-08T10:35:08+08:00",
+ "generated_at": "2026-11-08T11:35:29+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -11071,7 +11071,73 @@
   },
   "2032": {
    "page_id": 2032,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T11:35:27+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "教育部學生輔導諮商中心",
+    "資源連結"
+   ],
+   "changed_at": "2026-11-08T11:35:27+08:00",
+   "content_hash": "6fd4b7a980077cc49121db52a3c76dd9dec18591ecc082db19235c9441dbbbc0",
+   "doc_links": [],
+   "keywords": [
+    "衛生",
+    "宣導",
+    "社團"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2032.json",
+   "detail_revision": "d9cf381563e2137cf9e48eaed2514a4bc96c55201e2875a432d79e4b7547caa8",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "2082": {
    "page_id": 2082,
@@ -34823,7 +34889,7 @@
     "chars": 954
    }
   },
-  "checked_at": "2026-11-08T10:35:08+08:00",
+  "checked_at": "2026-11-08T11:35:29+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -67415,6 +67481,73 @@
    }
   },
   {
+   "id": "cygsh-info-2032",
+   "kind": "school_info",
+   "title": "輔導室 › 教育部學生輔導諮商中心 › 資源連結",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2032.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [
+    "衛生",
+    "宣導",
+    "社團"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-2032.json",
+   "detail_revision": "d9cf381563e2137cf9e48eaed2514a4bc96c55201e2875a432d79e4b7547caa8",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#health",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "性平"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-info-2082",
    "kind": "school_info",
    "title": "新生專區",
@@ -90383,5 +90516,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-08T10:35:08+08:00"
+ "last_run_at": "2026-11-08T11:35:29+08:00"
 }

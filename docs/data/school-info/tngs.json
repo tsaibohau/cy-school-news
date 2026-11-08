@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-08T10:37:18+08:00",
+ "generated_at": "2026-11-08T11:37:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -1251,37 +1251,55 @@
    "page_id": 69714958682886,
    "url": "https://www.tngs.tn.edu.tw/department/gene/landscape/",
    "label": "校園景觀",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "總務處"
    ],
-   "order": 84
+   "order": 84,
+   "checked_at": "2026-11-08T11:37:32+08:00",
+   "path": [
+    "行政組織",
+    "總務處",
+    "校園景觀"
+   ]
   },
   "95632245234264": {
    "page_id": 95632245234264,
    "url": "https://www.tngs.tn.edu.tw/department/gene/link/",
    "label": "相關連結",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "總務處"
    ],
-   "order": 85
+   "order": 85,
+   "checked_at": "2026-11-08T11:37:34+08:00",
+   "path": [
+    "行政組織",
+    "總務處",
+    "相關連結"
+   ]
   },
   "140046463685676": {
    "page_id": 140046463685676,
    "url": "https://www.tngs.tn.edu.tw/department/counsel/staff/",
    "label": "組織職掌",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政組織",
     "輔導室"
    ],
-   "order": 86
+   "order": 86,
+   "checked_at": "2026-11-08T11:37:36+08:00",
+   "path": [
+    "行政組織",
+    "輔導室",
+    "組織職掌"
+   ]
   },
   "213202005872598": {
    "page_id": 213202005872598,
@@ -1954,6 +1972,42 @@
     "工作目標"
    ],
    "order": 142
+  },
+  "252438568239868": {
+   "page_id": 252438568239868,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/landscape/%e6%a4%b0%e9%a2%a8%e8%b0%b7%e6%a0%a1%e5%9c%92%e9%a2%a8%e6%83%85/",
+   "label": "椰風谷校園風情",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "校園景觀"
+   ],
+   "order": 143
+  },
+  "109313302841763": {
+   "page_id": 109313302841763,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/landscape/%e6%a0%a1%e5%9c%92%e8%8a%b1%e8%8d%89%e4%bb%8b%e7%b4%b9/",
+   "label": "校園花草介紹",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "校園景觀"
+   ],
+   "order": 144
+  },
+  "21518160248171": {
+   "page_id": 21518160248171,
+   "url": "https://www.tngs.tn.edu.tw/department/gene/landscape/%e9%85%b8%e6%9e%9c%e6%a8%b9%e7%a7%bb%e9%99%a4%e8%88%87%e6%96%b0%e6%a4%8d/",
+   "label": "酸果樹移除與新植 2005.04.12",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "總務處",
+    "校園景觀"
+   ],
+   "order": 145
   }
  },
  "handbook": {},
@@ -2285,5 +2339,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-08T10:37:18+08:00"
+ "last_run_at": "2026-11-08T11:37:37+08:00"
 }

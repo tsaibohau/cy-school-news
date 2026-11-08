@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T10:25:51+08:00",
+ "generated_at": "2026-11-08T11:22:22+08:00",
  "school": {
   "id": "tngs",
   "name": "國立臺南女中",
@@ -632,7 +632,52 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e2%9c%8f%ef%b8%8f%e3%80%90%e5%81%87%e6%97%a5%e8%87%aa%e7%bf%92%e3%80%91115%e5%b9%b49%e6%9c%8812-13%e6%97%a5%e5%9b%a0%e4%ba%ba%e6%95%b8%e4%b8%8d%e8%b6%b3k%e9%a4%a8%e4%b8%8d%e9%96%8b%e6%94%be%e8%ab%8b/",
    "category": "競賽",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "放假"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-07",
+       "2026-11-08"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92564",
@@ -644,7 +689,27 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e8%b3%80%ef%bc%81115%e5%ad%b8%e5%b9%b4%e5%ba%a6%e6%95%b8%e7%90%86%e5%8f%8a%e8%b3%87%e8%a8%8a%e5%ad%b8%e7%a7%91%e8%83%bd%e5%8a%9b%e7%ab%b6%e8%b3%bd%e8%87%ba%e5%8d%97%e5%8d%80%e8%a4%87%e8%b3%bd/",
    "category": "榮譽榜",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92562",
@@ -656,7 +721,43 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e6%a0%a1%e5%8b%99%e7%b3%bb%e7%b5%b11campus-app%e7%b3%bb%e7%b5%b1%e7%b7%8a%e6%80%a5%e7%b6%ad%e8%ad%b7%e5%85%ac%e5%91%8a/",
    "category": "一般",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "註冊組"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92555",
@@ -668,7 +769,130 @@
    "url": "https://www.tngs.tn.edu.tw/2026/11/06/%e3%80%90%e8%8b%b1%e8%aa%9e%e7%ab%b6%e8%b3%bd%e3%80%9111%e6%9c%8807%e6%97%a5%e5%85%ad%e8%8b%b1%e6%96%87%e5%96%ae%e5%ad%97%e6%af%94%e8%b3%bd%e5%8d%97%e5%8d%80%e6%b1%ba%e8%b3%bd%e9%87%8d%e8%a6%81/",
    "category": "競賽",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#exam",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "比賽",
+       "生活",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ],
+      "d": [
+       "2026-11-07"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "required",
+       "deny"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#exam"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "學生證",
+       "家長"
+      ],
+      "k": [
+       "required",
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "停車"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "#exam"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#exam"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#exam"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "tngs-92552",

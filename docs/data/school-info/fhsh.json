@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fhsh",
- "generated_at": "2026-11-08T10:34:35+08:00",
+ "generated_at": "2026-11-08T11:34:24+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "196514779464320": {
@@ -10942,23 +10942,111 @@
    "page_id": 175586535518894,
    "url": "https://www.fhsh.khc.edu.tw/library/information_security/%e7%9b%b8%e9%97%9c%e6%96%87%e4%bb%b6",
    "label": "相關文件",
-   "status": "pending",
+   "status": "excluded_section",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 60
+   "order": 60,
+   "checked_at": "2026-11-08T11:34:21+08:00",
+   "path": [
+    "圖書館",
+    "資通安全專區"
+   ]
   },
   "127487549670793": {
    "page_id": 127487549670793,
    "url": "https://www.fhsh.khc.edu.tw/library/free_software",
    "label": "免費線上資源",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 61
+   "order": 61,
+   "checked_at": "2026-11-08T11:34:23+08:00",
+   "path": [
+    "網站導覽",
+    "免費線上資源"
+   ],
+   "changed_at": "2026-11-08T11:34:23+08:00",
+   "content_hash": "09460be5014a1e80c362e3c883262671c480fbcc0550c4f6e63ea08824265a20",
+   "doc_links": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fhsh/fhsh-info-127487549670793.json",
+   "detail_revision": "0a6d768052865a0ada3346fa78def90a3cbf83e5f4897219318fa14f7a67186e",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   "61846934496722": {
    "page_id": 61846934496722,
@@ -17528,6 +17616,96 @@
    "detail_status": "parsed"
   },
   {
+   "id": "fhsh-info-127487549670793",
+   "kind": "school_info",
+   "title": "網站導覽 › 免費線上資源",
+   "school": "fhsh",
+   "school_name": "鳳新高中",
+   "url": "https://www.fhsh.khc.edu.tw/library/free_software",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "數位黑板回報",
+    "設備報修",
+    "教育雲端硬碟"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "數位黑板回報",
+     "url": "https://docs.google.com/forms/d/e/1FAIpQLSc9ysHNGWeYAdI61lsaEqDPc_b6b6p9gC0HKbFeo6X785vIPA/viewform"
+    },
+    {
+     "name": "設備報修",
+     "url": "https://docs.google.com/forms/d/1pcCf7GRK58_prO6BaoYiYBeUsg2dshp9YXtBiGNvhSY/viewform"
+    },
+    {
+     "name": "教育雲端硬碟",
+     "url": "https://drive.google.com/a/go.edu.tw"
+    }
+   ],
+   "detail_ref": "data/details/fhsh/fhsh-info-127487549670793.json",
+   "detail_revision": "0a6d768052865a0ada3346fa78def90a3cbf83e5f4897219318fa14f7a67186e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fhsh-info-132264428718467",
    "kind": "school_info",
    "title": "學務處",
@@ -24018,5 +24196,5 @@
   "f8e0060dcf",
   "f951f36d21"
  ],
- "last_run_at": "2026-11-08T10:34:35+08:00"
+ "last_run_at": "2026-11-08T11:34:24+08:00"
 }

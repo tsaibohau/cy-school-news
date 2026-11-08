@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T10:25:51+08:00",
+ "generated_at": "2026-11-08T11:22:22+08:00",
  "school": {
   "id": "mljh",
   "name": "雲林縣立麥寮高級中學",
@@ -157,7 +157,25 @@
    "url": "https://mljh.ylc.edu.tw/News_Content.aspx?n=103100&s=402072",
    "category": "教職員",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "社團",
+     "#club"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "mljh-402071",
@@ -169,7 +187,17 @@
    "url": "https://mljh.ylc.edu.tw/News_Content.aspx?n=103100&s=402071",
    "category": "一般",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   }
   },
   {
    "id": "mljh-402045",
@@ -181,7 +209,25 @@
    "url": "https://mljh.ylc.edu.tw/News_Content.aspx?n=103100&s=402045",
    "category": "教職員",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "社會情緒學習",
+     "#event"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "mljh-402042",
@@ -193,7 +239,24 @@
    "url": "https://mljh.ylc.edu.tw/News_Content.aspx?n=103100&s=402042",
    "category": "研習活動",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "mljh-402027",

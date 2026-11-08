@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T10:25:51+08:00",
+ "generated_at": "2026-11-08T11:22:22+08:00",
  "school": {
   "id": "sgash",
   "name": "國立新港藝術高級中學",
@@ -779,7 +779,55 @@
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14945",
    "category": "榮譽榜",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "運動會",
+     "#celebration"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "sgash-14939",
@@ -791,7 +839,28 @@
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14939",
    "category": "榮譽榜",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sgash-14937",
@@ -803,7 +872,51 @@
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14937",
    "category": "研習活動",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "嘉大"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "嘉大"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "sgash-14938",
@@ -815,7 +928,78 @@
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14938",
    "category": "研習活動",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "event",
+     "date": "2027-01-26",
+     "provenance": "verified_announcement_event",
+     "source_revision": "f8638988501a48b9fc0d3440794b2a2e61a967410d6693880d4fc256f49ca36a"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-26",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-05"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sgash-14936",

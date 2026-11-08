@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-08T10:35:14+08:00",
+ "generated_at": "2026-11-08T11:35:37+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -5172,11 +5172,184 @@
   },
   "545": {
    "page_id": 545,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T11:35:33+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "法規下載"
+   ],
+   "changed_at": "2026-11-08T11:35:33+08:00",
+   "content_hash": "1c8e6d3630b63c716c4979f4b7f1b6186aae7bdc87dcd8cbcbb7e8b9bf420ebd",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-545.json",
+   "detail_revision": "d7f9d119eb005d92dc977479db1883d30c99b555ad70036985c3bac8f1f24232",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "546": {
    "page_id": 546,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T11:35:35+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "表單下載"
+   ],
+   "changed_at": "2026-11-08T11:35:35+08:00",
+   "content_hash": "f0e427b8e98e9307877fd3ece4dae22595a2451fbd89aa08d7d70ea0e17593c2",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "申請",
+    "地址",
+    "學雜費",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-546.json",
+   "detail_revision": "69af86323e01842c21773b736b8963fd5c5c8d30d90748783c6e4667e83ab6fe",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "出缺席"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "548": {
    "page_id": 548,
@@ -10618,6 +10791,187 @@
    }
   },
   {
+   "id": "fjsh-info-545",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 法規下載",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-545.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-545.json",
+   "detail_revision": "d7f9d119eb005d92dc977479db1883d30c99b555ad70036985c3bac8f1f24232",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 12,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "fjsh-info-546",
+   "kind": "school_info",
+   "title": "行政單位 › 總務處 › 表單下載",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-546.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "申請",
+    "地址",
+    "學雜費",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-546.json",
+   "detail_revision": "69af86323e01842c21773b736b8963fd5c5c8d30d90748783c6e4667e83ab6fe",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "總務處"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "出缺席"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "總務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "學雜費",
+       "#fee"
+      ],
+      "k": []
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -10715,5 +11069,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-08T10:35:14+08:00"
+ "last_run_at": "2026-11-08T11:35:37+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T10:25:51+08:00",
+ "generated_at": "2026-11-08T11:22:22+08:00",
  "school": {
   "id": "kmhjh",
   "name": "國立高餐大附屬餐旅中學",
@@ -779,7 +779,155 @@
    "url": "https://nkhhs.kmhjh.kh.edu.tw/news/5331/%e7%a6%8f%e8%aa%a0%e9%ab%98%e4%b8%ad%e8%be%a6%e7%90%86%e3%80%8c%e9%ab%98%e4%b8%ad%e7%89%b9%e8%89%b2%e8%aa%b2%e7%a8%8b%e5%8d%9a%e8%a6%bd%e6%9c%83%e3%80%8d/",
    "category": "研習活動",
    "first_seen": "2026-11-08T00:23:48+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d6658cea1a74d9a2b70eec7aac6b179dfb0d6862b8ff4faf9035d185a98eb9fe"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "教務處",
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "午餐"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "地科"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event",
+       "#daily_schedule"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "教務處",
+       "報名",
+       "#contact"
+      ],
+      "k": [
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-23"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "kmhjh-5327",

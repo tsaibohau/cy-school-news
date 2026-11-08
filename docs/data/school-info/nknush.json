@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "nknush",
- "generated_at": "2026-11-08T10:34:09+08:00",
+ "generated_at": "2026-11-08T11:34:13+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "17198296817807": {
@@ -828,25 +828,37 @@
    "page_id": 48829517584684,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/%e5%bf%83%e7%90%86%e5%81%a5%e5%ba%b7%e5%b0%88%e5%8d%80/",
    "label": "心理健康專區",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "輔導室"
    ],
-   "order": 57
+   "order": 57,
+   "checked_at": "2026-11-08T11:34:10+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "心理健康專區"
+   ]
   },
   "151727298838003": {
    "page_id": 151727298838003,
    "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/輔導工作計畫/",
    "label": "輔導工作計畫",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "輔導室"
    ],
-   "order": 58
+   "order": 58,
+   "checked_at": "2026-11-08T11:34:12+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "輔導工作計畫"
+   ]
   },
   "165260102315485": {
    "page_id": 165260102315485,
@@ -1356,6 +1368,18 @@
     "採購專區"
    ],
    "order": 101
+  },
+  "164305879551863": {
+   "page_id": 164305879551863,
+   "url": "https://www.nknush.kh.edu.tw/administrative-units/counseling-office/%e8%bc%94%e5%b0%8e%e5%b7%a5%e4%bd%9c%e8%a8%88%e7%95%ab/",
+   "label": "輔導工作計畫",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "輔導室",
+    "輔導工作計畫"
+   ],
+   "order": 102
   }
  },
  "handbook": {},
@@ -1657,5 +1681,5 @@
   "fb63c59ff7",
   "ffbba3de09"
  ],
- "last_run_at": "2026-11-08T10:34:09+08:00"
+ "last_run_at": "2026-11-08T11:34:13+08:00"
 }

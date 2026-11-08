@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-08T10:36:30+08:00",
+ "generated_at": "2026-11-08T11:36:48+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -4413,12 +4413,77 @@
    "page_id": 230514725450089,
    "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,435,425,433",
    "label": "重要補充規定",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 50
+   "order": 50,
+   "checked_at": "2026-11-08T11:36:46+08:00",
+   "path": [
+    "網站導覽",
+    "重要補充規定"
+   ],
+   "changed_at": "2026-11-08T11:36:46+08:00",
+   "content_hash": "7ccd9397a334bc8170be4ffb49a10aff2882a30f41965f24ab3f5975dc2668d5",
+   "doc_links": [],
+   "keywords": [
+    "學習歷程",
+    "獎懲",
+    "請假"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-230514725450089.json",
+   "detail_revision": "d57761a37ff599a842816334b772c194efda2f9f1d6544e15371617e1496f285",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-27"
+      ]
+     }
+    ]
+   }
   },
   "199560769958989": {
    "page_id": 199560769958989,
@@ -11203,6 +11268,74 @@
    }
   },
   {
+   "id": "hnvs-info-230514725450089",
+   "kind": "school_info",
+   "title": "網站導覽 › 重要補充規定",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/form/index.asp?Parser=2,13,435,425,433",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [
+    "學習歷程",
+    "獎懲",
+    "請假"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-230514725450089.json",
+   "detail_revision": "d57761a37ff599a842816334b772c194efda2f9f1d6544e15371617e1496f285",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "獎懲",
+       "#merit"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "請假",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2022-09-27"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "hnvs-info-249480265844905",
    "kind": "school_info",
    "title": "校長室",
@@ -11656,5 +11789,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-08T10:36:30+08:00"
+ "last_run_at": "2026-11-08T11:36:48+08:00"
 }

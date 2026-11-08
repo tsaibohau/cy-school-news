@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cchs",
- "generated_at": "2026-11-08T10:34:57+08:00",
+ "generated_at": "2026-11-08T11:35:16+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "153498002047988": {
@@ -7509,23 +7509,240 @@
    "page_id": 39461924449590,
    "url": "https://www.cchs.kh.edu.tw/ischool/publish_page/84/?cid=3110",
    "label": "高中學習歷程檔案 Student Portfolios",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 55
+   "order": 55,
+   "checked_at": "2026-11-08T11:35:12+08:00",
+   "path": [
+    "進入首頁",
+    "高中學習歷程檔案 Student Portfolios"
+   ]
   },
   "241429767849534": {
    "page_id": 241429767849534,
    "url": "https://www.cchs.kh.edu.tw/home?cid=1547",
    "label": "線上學習 Online Learning",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "進入首頁"
    ],
-   "order": 56
+   "order": 56,
+   "checked_at": "2026-11-08T11:35:14+08:00",
+   "path": [
+    "進入首頁",
+    "線上學習 Online Learning"
+   ],
+   "changed_at": "2026-11-08T11:35:14+08:00",
+   "content_hash": "17981c7b146ce6be46d624fcfa6a389f6e5a67029e7c63fa14d208d4d31a22c5",
+   "doc_links": [],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "圖書館",
+    "測驗",
+    "研習",
+    "競賽",
+    "簡介",
+    "英聽",
+    "運動會"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cchs/cchs-info-241429767849534.json",
+   "detail_revision": "f87751cda516149e594ac0e2586e07ecbba7b5c8246e55df2af0a81a4fb72732",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "彈性學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "英聽",
+       "大考",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "台大",
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "台大",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "中正",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "125951644130611": {
    "page_id": 125951644130611,
@@ -16657,6 +16874,225 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cchs-info-241429767849534",
+   "kind": "school_info",
+   "title": "進入首頁 › 線上學習 Online Learning",
+   "school": "cchs",
+   "school_name": "中正高中",
+   "url": "https://www.cchs.kh.edu.tw/home?cid=1547",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [
+    "學生手冊(含學生獎懲規定) Student Handbook",
+    "新生加入班務專區操作說明",
+    "一卡通數位學生證遺失補卡處理方式"
+   ],
+   "keywords": [
+    "畢業典禮",
+    "入學",
+    "圖書館",
+    "測驗",
+    "研習",
+    "競賽",
+    "簡介",
+    "英聽",
+    "運動會"
+   ],
+   "documents": [
+    {
+     "name": "學生手冊(含學生獎懲規定) Student Handbook",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/71ff75ba58c748598f2f72f8831d03ab"
+    },
+    {
+     "name": "新生加入班務專區操作說明",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/88265db5bda43da0be4a8788e9101ec1"
+    },
+    {
+     "name": "一卡通數位學生證遺失補卡處理方式",
+     "url": "https://www.cchs.kh.edu.tw/ischool/rfile/d94c17436e6db3f3e44dd3abdb3dcb85"
+    }
+   ],
+   "detail_ref": "data/details/cchs/cchs-info-241429767849534.json",
+   "detail_revision": "f87751cda516149e594ac0e2586e07ecbba7b5c8246e55df2af0a81a4fb72732",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "彈性學習"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "英聽",
+       "大考",
+       "#national"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 35,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "台大",
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 39,
+      "t": [
+       "台大",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 41,
+      "t": [
+       "中正",
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 42,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "畢業典禮",
+       "#graduation"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "運動會",
+       "#celebration"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "中正"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cchs-info-243752083699515",
    "kind": "school_info",
    "title": "進入首頁 › 學生手冊(含學生獎懲規定) Student Handbook",
@@ -17676,5 +18112,5 @@
    "label": "進入首頁"
   }
  ],
- "last_run_at": "2026-11-08T10:34:57+08:00"
+ "last_run_at": "2026-11-08T11:35:16+08:00"
 }

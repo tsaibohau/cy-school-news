@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-08T10:35:02+08:00",
+ "generated_at": "2026-11-08T11:35:25+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -7891,11 +7891,34 @@
   },
   "1020": {
    "page_id": 1020,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-08T11:35:21+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "棒球隊專區",
+    "棒球隊獎勵公費生規定"
+   ],
+   "changed_at": "2026-11-08T11:35:21+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1020.json",
+   "detail_revision": "4507da5305d5f09dc48e2c49790e03a0c7a5605f9b8b814a91bd27c6ee0bff56",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1021": {
    "page_id": 1021,
-   "status": "pending"
+   "status": "announcement_list",
+   "checked_at": "2026-11-08T11:35:23+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "籃球隊專區",
+    "最新消息"
+   ]
   },
   "1022": {
    "page_id": 1022,
@@ -36237,6 +36260,23 @@
    }
   },
   {
+   "id": "cysh-info-1020",
+   "kind": "school_info",
+   "title": "進修部 › 棒球隊專區 › 棒球隊獎勵公費生規定",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1020.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1020.json",
+   "detail_revision": "4507da5305d5f09dc48e2c49790e03a0c7a5605f9b8b814a91bd27c6ee0bff56",
+   "detail_status": "empty"
+  },
+  {
    "id": "cysh-info-1040",
    "kind": "school_info",
    "title": "學務處 › 衛生組 › 健促成果區",
@@ -56549,5 +56589,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-08T10:35:02+08:00"
+ "last_run_at": "2026-11-08T11:35:25+08:00"
 }

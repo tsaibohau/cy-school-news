@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tlsh",
- "generated_at": "2026-11-08T10:35:30+08:00",
+ "generated_at": "2026-11-08T11:35:54+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "217263824686834": {
@@ -800,23 +800,33 @@
    "page_id": 149530988469089,
    "url": "https://www.tlsh.ylc.edu.tw/%e8%bc%94%e5%b0%8e%e5%ae%a4-%e5%ad%b8%e7%94%9f%e7%94%b3%e8%a8%b4/",
    "label": "學生申訴",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "輔導室"
    ],
-   "order": 62
+   "order": 62,
+   "checked_at": "2026-11-08T11:35:50+08:00",
+   "path": [
+    "輔導室",
+    "學生申訴"
+   ]
   },
   "257221626017117": {
    "page_id": 257221626017117,
    "url": "https://www.tlsh.ylc.edu.tw/organization/",
    "label": "組織架構",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 63
+   "order": 63,
+   "checked_at": "2026-11-08T11:35:52+08:00",
+   "path": [
+    "校務資料開放專區",
+    "組織架構"
+   ]
   },
   "206223377808279": {
    "page_id": 206223377808279,
@@ -1167,5 +1177,5 @@
   "f38f157303",
   "f53203fabc"
  ],
- "last_run_at": "2026-11-08T10:35:30+08:00"
+ "last_run_at": "2026-11-08T11:35:54+08:00"
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tnvs",
- "generated_at": "2026-11-08T10:37:35+08:00",
+ "generated_at": "2026-11-08T11:37:49+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "136120520640750": {
@@ -10000,12 +10000,52 @@
    "page_id": 170993583273783,
    "url": "https://www.tnvs.tn.edu.tw/e-commence/",
    "label": "電子商務科",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "南水簡介"
    ],
-   "order": 57
+   "order": 57,
+   "checked_at": "2026-11-08T11:37:47+08:00",
+   "path": [
+    "南水簡介",
+    "電子商務科"
+   ],
+   "changed_at": "2026-11-08T11:37:47+08:00",
+   "content_hash": "4fb9cfba30773f350ba0779df7c3f69af90fa465016b1d6c609f629884231119",
+   "doc_links": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/tnvs/tnvs-info-170993583273783.json",
+   "detail_revision": "fcef101465039a9cccbe5f4f31d85a1f41ff3db2a8561670fab348009ba6dd32",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "234784464705896": {
    "page_id": 234784464705896,
@@ -11191,6 +11231,78 @@
     "商業經營科"
    ],
    "order": 163
+  },
+  "19810082277339": {
+   "page_id": 19810082277339,
+   "url": "https://www.tnvs.tn.edu.tw/e-commence/e-commence-intro",
+   "label": "本科簡介",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "南水簡介",
+    "電子商務科"
+   ],
+   "order": 164
+  },
+  "9969432935197": {
+   "page_id": 9969432935197,
+   "url": "https://www.tnvs.tn.edu.tw/e-commence/e-commence-teacher",
+   "label": "師資陣容",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "南水簡介",
+    "電子商務科"
+   ],
+   "order": 165
+  },
+  "140086997588436": {
+   "page_id": 140086997588436,
+   "url": "https://www.tnvs.tn.edu.tw/e-commence/e-commence-class",
+   "label": "課程規劃",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "南水簡介",
+    "電子商務科"
+   ],
+   "order": 166
+  },
+  "108160536253557": {
+   "page_id": 108160536253557,
+   "url": "https://www.tnvs.tn.edu.tw/e-commence/e-commence-equ",
+   "label": "教學設備",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "南水簡介",
+    "電子商務科"
+   ],
+   "order": 167
+  },
+  "68764503601651": {
+   "page_id": 68764503601651,
+   "url": "https://www.tnvs.tn.edu.tw/e-commence/e-commence-school",
+   "label": "升學資訊",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "南水簡介",
+    "電子商務科"
+   ],
+   "order": 168
+  },
+  "41857225138336": {
+   "page_id": 41857225138336,
+   "url": "https://www.tnvs.tn.edu.tw/e-commence/e-commence-teach",
+   "label": "教學資源",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "南水簡介",
+    "電子商務科"
+   ],
+   "order": 169
   }
  },
  "handbook": {},
@@ -16895,6 +17007,49 @@
    "detail_status": "parsed"
   },
   {
+   "id": "tnvs-info-170993583273783",
+   "kind": "school_info",
+   "title": "南水簡介 › 電子商務科",
+   "school": "tnvs",
+   "school_name": "臺南海事",
+   "url": "https://www.tnvs.tn.edu.tw/e-commence/",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-08",
+   "attachment_names": [],
+   "keywords": [
+    "升學",
+    "簡介"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/tnvs/tnvs-info-170993583273783.json",
+   "detail_revision": "fcef101465039a9cccbe5f4f31d85a1f41ff3db2a8561670fab348009ba6dd32",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "tnvs-info-171100446918162",
    "kind": "school_info",
    "title": "訓育組",
@@ -21384,5 +21539,5 @@
   "feabab020e",
   "ff8de2e893"
  ],
- "last_run_at": "2026-11-08T10:37:35+08:00"
+ "last_run_at": "2026-11-08T11:37:49+08:00"
 }

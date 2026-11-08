@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T10:25:51+08:00",
+ "generated_at": "2026-11-08T11:22:22+08:00",
  "school": {
   "id": "cchs",
   "name": "市立中正高中",
@@ -1087,7 +1087,39 @@
    "url": "https://www.cchs.kh.edu.tw/ischool/public/news_view/show.php?nid=8407",
    "category": "競賽",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cchs-8406",
@@ -1099,7 +1131,175 @@
    "url": "https://www.cchs.kh.edu.tw/ischool/public/news_view/show.php?nid=8406",
    "category": "競賽",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-31",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "613d422269f370d345e1d25a0a70ab86aa98fdb9c3c47927f782c5bbaf167c91"
+    },
+    {
+     "kind": "deadline",
+     "date": "2027-01-08",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "613d422269f370d345e1d25a0a70ab86aa98fdb9c3c47927f782c5bbaf167c91"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "截止",
+       "嘉獎",
+       "導師",
+       "#merit"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-12-31"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名",
+       "截止",
+       "比賽",
+       "#contest",
+       "#track"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2027-01-08"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "截止",
+       "嘉獎",
+       "導師",
+       "#merit"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2026-12-31"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名",
+       "截止",
+       "比賽",
+       "#contest",
+       "#track"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2027-01-08"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "報名",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cchs-8405",
@@ -1111,7 +1311,46 @@
    "url": "https://www.cchs.kh.edu.tw/ischool/public/news_view/show.php?nid=8405",
    "category": "榮譽榜",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cchs-8401",
@@ -1123,7 +1362,198 @@
    "url": "https://www.cchs.kh.edu.tw/ischool/public/news_view/show.php?nid=8401",
    "category": "一般",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "bec38242f7467b43bfeda3dcdeeb84d72a867d9a947cf51b7bce204c9e1066d5"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-11-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "bec38242f7467b43bfeda3dcdeeb84d72a867d9a947cf51b7bce204c9e1066d5"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "中山",
+       "報名",
+       "#admission"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "中山"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "午餐",
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "台大",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method",
+       "contact"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "清大"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "中山",
+       "報名",
+       "#admission"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-05"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "中山"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "午餐",
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-11-30"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "清大"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "cchs-8399",
@@ -1135,7 +1565,103 @@
    "url": "https://www.cchs.kh.edu.tw/ischool/public/news_view/show.php?nid=8399",
    "category": "競賽",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest",
+     "#safety",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "比賽",
+       "科普",
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "中山"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "比賽",
+       "科普",
+       "#contest",
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "中山"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cchs-8398",
@@ -1147,7 +1673,156 @@
    "url": "https://www.cchs.kh.edu.tw/ischool/public/news_view/show.php?nid=8398",
    "category": "生活學務",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-29",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "1e168c92b2b35898a52c06ee27fd253b0f73164cf2f3254221ec537ac631620d"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "機車"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教官室"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "教官室",
+       "機車",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "機車",
+       "費用"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2025-12-16",
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "機車"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "教官室",
+       "機車",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-19"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [
+       "機車"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2025-12-16",
+       "2026-12-15"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "機車",
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "機車"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cchs-8397",
@@ -1159,7 +1834,239 @@
    "url": "https://www.cchs.kh.edu.tw/ischool/public/news_view/show.php?nid=8397",
    "category": "競賽",
    "first_seen": "2026-11-07T17:59:52+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-14",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "d1f2a1109a38edac6800ee58e0c9aeece67825239927245f35f9be4359ee08f9"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "註冊組",
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "註冊組",
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cchs-8392",
@@ -7626,8 +8533,8 @@
    "first_seen": "2026-11-01T22:46:31+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -7827,7 +8734,103 @@
    "url": "https://www.cchs.kh.edu.tw/ischool/public/news_view/show.php?nid=8354",
    "category": "研習活動",
    "first_seen": "2026-11-01T22:46:31+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "清大",
+     "寒假"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "清大",
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-29"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "清大",
+       "寒假",
+       "科普"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "清大",
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "清大",
+       "寒假"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "科普"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "清大",
+       "#event"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "cchs-8352",

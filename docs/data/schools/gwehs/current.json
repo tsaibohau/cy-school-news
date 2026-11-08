@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T10:25:51+08:00",
+ "generated_at": "2026-11-08T11:22:22+08:00",
  "school": {
   "id": "gwehs",
   "name": "雲林縣立古坑華德福實驗高級中學",
@@ -151,7 +151,11 @@
    "url": "https://gwehs.ylc.edu.tw/News_Content.aspx?n=89866&s=402071",
    "category": "一般",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "date_tried": true,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "gwehs-402045",
@@ -163,7 +167,19 @@
    "url": "https://gwehs.ylc.edu.tw/News_Content.aspx?n=89866&s=402045",
    "category": "教職員",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "date_tried": true,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "社會情緒學習",
+     "#event"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "gwehs-402042",
@@ -175,7 +191,18 @@
    "url": "https://gwehs.ylc.edu.tw/News_Content.aspx?n=89866&s=402042",
    "category": "研習活動",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "date_tried": true,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "寒假"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "gwehs-401975",
@@ -187,7 +214,11 @@
    "url": "https://gwehs.ylc.edu.tw/News_Content.aspx?n=89866&s=401975",
    "category": "教職員",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "date_tried": true,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true
   },
   {
    "id": "gwehs-401944",
@@ -199,7 +230,19 @@
    "url": "https://gwehs.ylc.edu.tw/News_Content.aspx?n=89866&s=401944",
    "category": "教職員",
    "first_seen": "2026-11-06T20:03:04+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "date_tried": true,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "#event"
+    ],
+    "segments": []
+   }
   },
   {
    "id": "gwehs-401924",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-08T10:25:51+08:00",
+ "generated_at": "2026-11-08T11:22:22+08:00",
  "school": {
   "id": "fhsh",
   "name": "國立鳳新高中",
@@ -1104,7 +1104,79 @@
    "url": "https://www.fhsh.khc.edu.tw/aa/20261107/47282",
    "category": "競賽",
    "first_seen": "2026-11-07T10:46:17+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-03-19",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "8f0659c601b2b9f078d0d0126237d4bb488b2a451969f35548f48a7af5bf54aa"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "比賽",
+       "升學",
+       "#admission",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名",
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-03-19",
+       "2027-03-04"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "fhsh-47278",

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "dnsh",
- "generated_at": "2026-11-08T10:36:00+08:00",
+ "generated_at": "2026-11-08T11:36:18+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "48073578180151": {
@@ -631,13 +631,19 @@
    "page_id": 82738909944243,
    "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=125560",
    "label": "自評表",
-   "status": "pending",
+   "status": "empty",
    "depth": 1,
    "parent_path": [
     "課程計畫",
     "國中課程計畫"
    ],
-   "order": 48
+   "order": 48,
+   "checked_at": "2026-11-08T11:36:16+08:00",
+   "path": [
+    "課程計畫",
+    "國中課程計畫",
+    "自評表"
+   ]
   },
   "232711590791549": {
    "page_id": 232711590791549,
@@ -1448,6 +1454,18 @@
     "112學年度國中課程計畫"
    ],
    "order": 116
+  },
+  "272497000138373": {
+   "page_id": 272497000138373,
+   "url": "https://dnsh.ylc.edu.tw/cl.aspx?n=127084",
+   "label": "113學年度國中八年級彈性課程計畫(修正版)",
+   "status": "pending",
+   "depth": 2,
+   "parent_path": [
+    "國中課程計畫",
+    "自評表"
+   ],
+   "order": 117
   }
  },
  "handbook": {},
@@ -1659,5 +1677,5 @@
  "boiler": [
   "836e95a99c"
  ],
- "last_run_at": "2026-11-08T10:36:00+08:00"
+ "last_run_at": "2026-11-08T11:36:18+08:00"
 }
