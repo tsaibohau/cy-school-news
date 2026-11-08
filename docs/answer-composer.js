@@ -34,8 +34,9 @@
   /* 「115年12月02日(三)下午14:30-15:30」 is one time, not a date plus half a time range. */
   var CLOCK_WORD = "(?:上午|下午|中午|晚上|早上)?\\s*\\d{1,2}\\s*[:：]\\s*\\d{2}";
   var DATE_CLOCK = new RegExp("(?:(?:\\d{2,3}|20\\d{2})\\s*年\\s*)?\\d{1,2}\\s*月\\s*\\d{1,2}\\s*日(?:\\s*[（(]\\s*(?:星期|週)?" + WEEKDAY + "\\s*[)）])?\\s*" + CLOCK_WORD + "(?:\\s*(?:至|到|~|～|－|-|—)\\s*" + CLOCK_WORD + ")?");
+  var SLASH_CLOCK = new RegExp("\\d{1,2}\\s*[/／]\\s*\\d{1,2}(?:\\s*[（(]\\s*(?:星期|週)?" + WEEKDAY + "\\s*[)）])?\\s*" + CLOCK_WORD);
   function dateClock(text) {
-    var m = String(text).match(DATE_CLOCK);
+    var m = String(text).match(DATE_CLOCK) || String(text).match(SLASH_CLOCK);
     return m ? clean(m[0]).replace(/\s*[:：]\s*/g, ":").replace(/\s*[至到~～－—]\s*/g, "～").replace(/(\d)\s*-\s*(?=(?:上午|下午|中午|晚上|早上)?\d)/g, "$1～") : "";
   }
   function times(text) { return (String(text).match(TIME_WORD) || []).map(clean); }
@@ -64,7 +65,7 @@
   }
 
   /* ---------- 事實擷取 ---------- */
-  var DEADLINE = /截止|期限|[日號)）]\s*(?:以)?前|前(?:完成|報名|繳交|上傳|送交|填寫|申請|交)|受理至|報名至|收件至|至.{0,24}止|逾期/;
+  var DEADLINE = /截止|期限|[日號)）]\s*(?:以)?前|\d\s*[:：]\s*\d{2}\s*(?:以)?前|[點時]\s*(?:以)?前|前(?:完成|報名|繳交|上傳|送交|填寫|申請|交)|受理至|報名至|收件至|至.{0,24}止|逾期/;
   var REQUIRE = /(?:應|須|需|請|要|務必|前|並)\s*(?:檢附|攜帶|備妥|準備|附上)\s*[：:]?\s*([^。；;，,]{2,40}?)(?=送|交|至|向|於|，|,|。|；|$)/;
   var AUDIENCE = /(?:對象|資格|適用對象|參加對象|報名資格)\s*(?:[：:]|為|是)\s*([^。；;，,]{2,40})|((?:高|國)[一二三](?:[、及和與]?(?:高|國)[一二三])+|全校|高一|高二|高三|國一|國二|國三|新生|應屆畢業生|高中部|國中部|住宿生|全體(?:學生|同學)|[一二三]年級)(?:學生|同學)?/;
   var DENY = /不得|禁止|不准|不可(?!攜)|不能|嚴禁|不予|不受理/;
@@ -337,6 +338,9 @@
         }
       });
     });
+    /* 「(一)第一梯次…11/14 (二)第二梯次…11/15 (三)第三梯次…11/21」: several sessions are all told, not only the first. */
+    var sessions = (groups[0][2] || []).filter(function (l) { return /^[（(]?[一二三四五六七八九十\d]+[)）、.]\s*第[一二三四五六七八九十\d]+(?:梯次|場次?|期|堂|階段|批)/.test(clean(l)) && times(l).length; });
+    if (sessions.length >= 2) { out.slots.time = { value: sessions.map(function (l) { return stripNumbering(clean(l)).replace(/[。；;]$/, ""); }).join("；"), src: "prose", from: "notice", list: true };; delete out.slots.place; }
     /* A signup sentence with a date before 前／止 also gives the deadline; keep its link. */
     if (!out.slots.deadline && out.slots.signup) { var df = factsOf(out.slots.signup.value).deadline; if (df) put("deadline", df, "prose", out.slots.signup.from); }
     if (out.slots.signup) { var url = (out.slots.signup.value.match(URL_RE) || [""])[0]; if (url) out.slots.signup.url = url; }
