@@ -62,6 +62,17 @@
     var HIDDEN_SCHOOL_PREFIX = Object.keys(HIDDEN_SCHOOL_IDS).length
       ? new RegExp("^(?:" + Object.keys(HIDDEN_SCHOOL_IDS).join("|") + ")(?:-|$)") : null;
     function linkGone(item) { return !!item && item.link_status === "gone"; }
+    /* 其他學校的資料在私有 bucket（restricted-data.js）；只有管理員合併得到，其他人與任何失敗都原樣回傳公開資料 */
+    var RESTRICTED = window.CyNewsRestricted || null;
+    function restrictedOn() { return !!(RESTRICTED && RESTRICTED.enabled()); }
+    function restrictedMerge(url, json, force) {
+      return RESTRICTED ? RESTRICTED.loadMerged(url, json, force ? { force: true } : undefined).catch(function () { return json; }) : Promise.resolve(json);
+    }
+    /* 非公開學校沒有 data/schools/<id>/ 分片：改讀合併後的總檔再依學校篩出 */
+    function restrictedShardOf(url) {
+      var shard = RESTRICTED && RESTRICTED.shardOf ? RESTRICTED.shardOf(url) : null;
+      return shard && SCHOOL_REGISTRY && !SCHOOL_REGISTRY.isPublic(shard.school) ? shard : null;
+    }
     /* 管理員身分改變（聯席管理員登入、登出）時，學校清單、問校務範圍、已載入的公告都要重算：直接重新載入頁面最穩。
        回傳 true 表示頁面即將重新載入。 */
     function syncAdminSchoolView(isAdmin) {
@@ -448,6 +459,7 @@
       if (!el.accountState || !window.CyNewsAccountAuth || !window.CyNewsAccountSync) return;
       var auth = accountAuth || window.CyNewsAccountAuth.createController();
       accountAuth = auth;
+      if (RESTRICTED && auth.getClient) RESTRICTED.useClient(function () { return auth.getClient(); });
       if (!auth.isConfigured()) {
         var accountBox = document.getElementById("accountBox");
         if (accountBox) accountBox.hidden = true;
@@ -841,7 +853,7 @@
           return fetch(url + "?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
             if (!response.ok) throw new Error(String(response.status));
             return response.json();
-          });
+          }).then(function (json) { return restrictedMerge(url, json); });
         })).then(function (sets) {
           var byId = {};
           sets.forEach(function (set) { (set.items || []).filter(visibleSchool).forEach(function (item) { if (item && item.id && !state.deletedAnnouncements[item.id]) { applyMemberContent(item); byId[item.id] = item; } }); });
@@ -1583,6 +1595,10 @@
     function currentDataRequest(revalidate, schoolId) {
       schoolId = schoolId || state.school;
       if (schoolId === "all") return Promise.resolve({ url: "data/announcements.json", slim: "data/announcements-latest.json", manifest: null });
+      /* 非公開學校（管理員才選得到）沒有公開分片：讀總檔、合併私有資料後只留這所學校 */
+      if (SCHOOL_REGISTRY && !SCHOOL_REGISTRY.isPublic(schoolId) && restrictedOn()) {
+        return Promise.resolve({ url: "data/announcements.json", slim: "data/announcements-latest.json", manifest: null, onlySchool: schoolId });
+      }
       return fetchManifest(revalidate).then(function (manifest) {
         var school = (manifest.schools || []).find(function (row) { return row.id === schoolId; });
         if (!school || !school.current) throw new Error("unknown school shard");
@@ -1672,7 +1688,36 @@
     function parseDataResponse(r, request, url) {
       if (!r.ok) throw new Error(r.status);
       return r.json().then(function (data) {
+        if (request.onlySchool) {
+          /* 管理員選了非公開學校：沒有可畫的公開資料，等私有資料合併完再畫（失敗就是空清單） */
+          return restrictedMerge(url, data, request.force).then(function (merged) {
+            merged = Object.assign({}, merged);
+            merged.items = (merged.items || []).filter(function (item) { return String(item && item.school || "") === request.onlySchool; });
+            return { data: normalizeCurrentData(merged, null), freshNetwork: isFreshNetworkResponse(r), url: url };
+          });
+        }
         return { data: normalizeCurrentData(data, request.manifest), freshNetwork: isFreshNetworkResponse(r), url: url };
+      });
+    }
+    /* 「全部學校」：公開資料先畫（不等私有 bucket），管理員的私有資料到了再合併並重畫。 */
+    function mergeRestrictedLater(url, base, school, force) {
+      if (school !== "all" || !restrictedOn()) return;
+      restrictedMerge(url, base, force).then(function (merged) {
+        if (!merged || merged === base || state.data !== base || state.dataSchool !== school) return;
+        var next = normalizeCurrentData(merged, null);
+        next.items = next.items.filter(function (item) { return !state.deletedAnnouncements[item.id]; });
+        next.items.forEach(applyMemberContent);
+        state.data = next;
+        renderAll();
+      }).catch(function () {});
+    }
+    function withRestricted(result, school, force) {
+      if (school !== "all" || !restrictedOn()) return Promise.resolve(result);
+      return restrictedMerge(result.url, result.data, force).then(function (merged) {
+        if (!merged || merged === result.data) return result;
+        var next = normalizeCurrentData(merged, null);
+        next.partial = result.data.partial;
+        return Object.assign({}, result, { data: next });
       });
     }
 
@@ -1684,6 +1729,7 @@
       }
       var requestedSchool = state.school;
       var download = currentDataRequest(revalidate, requestedSchool).then(function (request) {
+        request.force = !revalidate;
         /* 這所學校的資料還沒進來：先下載精簡快照畫出第一頁，完整檔案畫完後再背景載入。 */
         var wantSlim = !!request.slim && !window.__CYNEWS_NO_SLIM__ && (!state.data || state.dataSchool !== requestedSchool);
         if (wantSlim) {
@@ -1701,7 +1747,16 @@
       });
       return download
         .then(function (result) {
-          var data = result.data;
+          var data = result.data, usedCached = false;
+          if (requestedSchool === "all" && restrictedOn()) {
+            /* 重新整理時先用這頁已下載過的私有資料，畫面不會閃一下 */
+            var cachedMerge = RESTRICTED.mergeCached(result.url, data);
+            if (cachedMerge !== data) {
+              var cachedData = normalizeCurrentData(cachedMerge, null);
+              cachedData.partial = data.partial;
+              data = cachedData; usedCached = true;
+            }
+          }
           if (Array.isArray(data.items)) data.items = data.items.filter(function (item) { return !state.deletedAnnouncements[item.id]; });
           var recentItems = Array.isArray(data.items) ? data.items.slice() : [];
           if (!Array.isArray(data.items)) data.items = [];
@@ -1720,6 +1775,7 @@
           state.fullFailed = false;
           if (!state.partial) fullPromise = null;
           renderAll();
+          if (!usedCached || !revalidate) mergeRestrictedLater(result.url, data, requestedSchool, !revalidate);
           if (result.freshNetwork && !skipNotifications) processFreshRecentNotifications(recentItems);
           return { ok: true, freshNetwork: result.freshNetwork, generatedAt: data.generated_at || "" };
         })
@@ -1740,6 +1796,8 @@
       var school = state.dataSchool || state.school;
       fullPromise = currentDataRequest(true, school).then(function (request) {
         return dataFetch(request.url, true).then(function (r) { return parseDataResponse(r, request, request.url); });
+      }).then(function (result) {
+        return withRestricted(result, school, false);
       }).then(function (result) {
         if (state.dataSchool !== school || !state.partial) return state.data;
         var data = result.data;
@@ -1797,11 +1855,11 @@
       state.archive = "loading";
       renderLatest();
       var archiveUrl = state.school === "all" ? "data/archive.json" : "data/schools/" + encodeURIComponent(state.school) + "/archive.json";
-      state.archivePromise = fetch(archiveUrl + "?_=" + Date.now(), { cache: "no-store" })
-        .then(function (r) {
-          if (r.status === 404) return { items: [] }; /* 尚未產生封存檔,視為空 */
-          if (!r.ok) throw new Error(r.status);
-          return r.json();
+      var archiveSchool = state.school;
+      state.archivePromise = fetchShardedJson(archiveUrl)
+        .then(function (arc) {
+          /* 管理員看全部學校時，封存也要接上私有資料 */
+          return archiveSchool === "all" ? restrictedMerge("data/archive.json", arc) : arc;
         })
         .then(function (arc) {
           var ids = {};
@@ -2036,7 +2094,7 @@
       });
     }
     function loadOfficialEvents() {
-      return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
+      return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) { return restrictedMerge("data/calendar-events.json", rows); }).then(function (rows) {
         state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) {
           return ev && visibleSchool(ev) && (ev.start_date || ev.date) && ev.title && ev.provenance &&
             /^\d{4}-\d{2}-\d{2}$/.test(ev.start_date || ev.date) &&
@@ -2049,7 +2107,7 @@
       fetch("data/calendar-source-status.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) {
         if (!r.ok) throw new Error(r.status);
         return r.json();
-      }).then(function (status) {
+      }).then(function (status) { return restrictedMerge("data/calendar-source-status.json", status); }).then(function (status) {
         var rows = Array.isArray(status) ? status : (Array.isArray(status && status.schools) ? status.schools : []);
         if (state.calendarSchool !== "all") rows = rows.filter(function (row) { return String(row.school_id || row.id || "") === state.calendarSchool; });
         state.calendarStatus = rows.length && rows.every(function (row) { return row.status === "official_complete" && !row.review_pending; }) ? "complete" : "partial";
@@ -2059,7 +2117,7 @@
     function loadTimetables() {
       return fetch("data/class-timetables.json?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
         return response.ok ? response.json() : { timetables: [] };
-      }).then(function (data) {
+      }).then(function (data) { return restrictedMerge("data/class-timetables.json", data); }).then(function (data) {
         state.timetables = Array.isArray(data && data.timetables) ? data.timetables.filter(visibleSchool) : [];
         renderToday();
       }).catch(function () {
@@ -2293,6 +2351,7 @@
       fetch("data/series.json?_=" + Date.now(), { cache: "no-store" })
         .then(function (r) { return r.ok ? r.json() : { series: [] }; })
         .catch(function () { return { series: [] }; })
+        .then(function (doc) { return restrictedMerge("data/series.json", doc); })
         .then(function (doc) { seriesState.doc = doc || { series: [] }; seriesState.loading = false; renderLatest(); });
     }
     function seriesItemMap() {
@@ -2527,12 +2586,24 @@
         return record;
       }).catch(function () { return null; });
     }
-    function fetchJsonItems(url) {
+    /* 抓公開 JSON；404 視為空。非公開學校的分片網址改讀合併後的總檔再依學校篩出。 */
+    function fetchShardedJson(url) {
+      var shard = restrictedShardOf(url);
+      if (shard && restrictedOn()) {
+        return fetchShardedJson(shard.url).then(function (data) {
+          return restrictedMerge(shard.url, data).then(function (merged) {
+            return { items: ((merged && merged.items) || []).filter(function (item) { return String(item && item.school || "") === shard.school; }) };
+          });
+        });
+      }
       return fetch(url + "?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
-        if (response.status === 404) return { items: [] };
-        if (!response.ok) throw new Error("corpus HTTP " + response.status);
+        if (response.status === 404) return { items: [] }; /* 尚未產生,視為空 */
+        if (!response.ok) throw new Error(response.status);
         return response.json();
-      }).then(function (data) { return Array.isArray(data && data.items) ? data.items.filter(function (item) { return visibleSchool(item) && !linkGone(item); }) : []; });
+      });
+    }
+    function fetchJsonItems(url) {
+      return fetchShardedJson(url).then(function (data) { return restrictedMerge(url, data); }).then(function (data) { return Array.isArray(data && data.items) ? data.items.filter(function (item) { return visibleSchool(item) && !linkGone(item); }) : []; });
     }
     /* 問校務的範圍：所有學校、一個縣市（"region:臺南市"）、或一間學校。回傳學校代碼清單；所有學校回傳 null。 */
     function scopeMembers(scopeId) {
