@@ -291,12 +291,22 @@
       getMemberAnnouncementIndex: function () {
         return getClient().then(function (c) {
           var rows = [];
-          function next(offset) {
+          /* 每頁 500 筆、最多 10000 筆：一次同時要 4 頁（原本一頁等一頁，往返次數是現在的 4 倍） */
+          function page(offset) {
             return c.rpc("member_announcement_index", { page_size: 500, page_offset: offset }).then(function (result) {
               if (result.error) throw result.error;
-              var page = Array.isArray(result.data) ? result.data : [];
-              rows = rows.concat(page);
-              return page.length === 500 && rows.length < 10000 ? next(offset + 500) : rows;
+              return Array.isArray(result.data) ? result.data : [];
+            });
+          }
+          function next(offset) {
+            return Promise.all([0, 1, 2, 3].map(function (i) { return page(offset + i * 500); })).then(function (pages) {
+              var last = false;
+              pages.forEach(function (rowsOfPage) {
+                if (last) return;
+                rows = rows.concat(rowsOfPage);
+                if (rowsOfPage.length < 500) last = true;
+              });
+              return last || rows.length >= 10000 ? rows : next(offset + 2000);
             });
           }
           return next(0);

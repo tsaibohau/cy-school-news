@@ -30,7 +30,7 @@
     return String(year).padStart(4, "0") + "-" + String(month).padStart(2, "0") + "-" + String(day).padStart(2, "0");
   }
   function taipeiToday() {
-    try { return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }); }
+    try { return new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10); }
     catch (_) { return new Date().toISOString().slice(0, 10); }
   }
   function validIso(value) { return /^20\d\d-\d\d-\d\d$/.test(String(value || "")) ? String(value) : ""; }

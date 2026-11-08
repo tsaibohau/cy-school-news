@@ -115,6 +115,9 @@
       accountAccess: null,
       memberContent: {},
       deletedAnnouncements: {},
+      partial: false,       /* true：目前只有最新 ~300 則的首屏快照，完整檔案還在載入 */
+      fullFailed: false,
+      dataSchool: "",
       adminOffset: 0,
       adminTotal: 0,
       cleanupCandidates: [],
@@ -1016,7 +1019,7 @@
         publishState(anonymousState, "anonymous");
         showAnonymousShell();
         if (auth.getPublicCapabilities) auth.getPublicCapabilities().then(function (capabilities) {
-          if (capabilities.member_content) return auth.getMemberAnnouncementIndex().then(function (rows) {
+          if (capabilities.member_content) return deferredMemberIndex(auth).then(function (rows) {
             state.memberContent = {}; rows.forEach(function (row) { if (row && row.announcement_id) state.memberContent[row.announcement_id] = row; });
             if (state.data) { state.data.items.forEach(applyMemberContent); renderAll(); }
           });
@@ -1157,7 +1160,7 @@
                 return;
               }
               showAccountShell();
-              auth.getMemberAnnouncementIndex().then(function (rows) {
+              deferredMemberIndex(auth).then(function (rows) {
                 if (!hasSignedInAccount()) return;
                 state.memberContent = {};
                 rows.forEach(function (row) { if (row && row.announcement_id) state.memberContent[row.announcement_id] = row; });
@@ -1563,14 +1566,16 @@
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
     }
 
+    /* 首屏快照（scraper/latest_slim.py 產生）：最新 ~300 則，約整份檔案的 1/25。
+       還沒產生（部署後的第一次排程前）或抓不到時，自動退回完整檔案。 */
     function currentDataRequest(revalidate) {
-      if (state.school === "all") return Promise.resolve({ url: "data/announcements.json", manifest: null });
+      if (state.school === "all") return Promise.resolve({ url: "data/announcements.json", slim: "data/announcements-latest.json", manifest: null });
       return fetchManifest(revalidate).then(function (manifest) {
         var school = (manifest.schools || []).find(function (row) { return row.id === state.school; });
         if (!school || !school.current) throw new Error("unknown school shard");
-        return { url: school.current, manifest: manifest };
+        return { url: school.current, slim: /current\.json$/.test(school.current) ? school.current.replace(/current\.json$/, "latest.json") : "", manifest: manifest };
       }).catch(function () {
-        return { url: "data/announcements.json", manifest: null };
+        return { url: "data/announcements.json", slim: "", manifest: null };
       });
     }
 
@@ -1613,34 +1618,81 @@
       return assistantLoading;
     }
 
+    /* 已被刪除的公告編號（帳號服務的 RPC，要等 Supabase 載入才拿得到）：記在本機，
+       下次開站畫面就能先濾掉，不必等網路；RPC 回來後再校正。 */
+    var LS_DELETED = "cyNews.deletedIds.v1";
+    function loadCachedDeletedIds() {
+      try {
+        var ids = JSON.parse(localStorage.getItem(LS_DELETED) || "[]");
+        (Array.isArray(ids) ? ids : []).slice(0, 5000).forEach(function (id) { if (typeof id === "string") state.deletedAnnouncements[id] = true; });
+      } catch (_) {}
+    }
+    function applyDeletedIds(ids) {
+      var next = {}, grew = false;
+      ids.forEach(function (id) { next[id] = true; if (!state.deletedAnnouncements[id]) grew = true; });
+      state.deletedAnnouncements = next;
+      try { localStorage.setItem(LS_DELETED, JSON.stringify(ids.slice(0, 5000))); } catch (_) {}
+      if (grew && state.data && Array.isArray(state.data.items)) {
+        state.data.items = state.data.items.filter(function (item) { return !state.deletedAnnouncements[item.id]; });
+        renderAll();
+      }
+    }
+    loadCachedDeletedIds();
+
+    /* 會員摘要（每則公告的 summary／snippet，可能有數 MB）只有搜尋內文與問校務會用到，不該跟第一頁搶頻寬：
+       等公告畫完、完整資料與問校務引擎都到了（或 12 秒後）才開始下載；發問時若還沒下載完會先等它。 */
+    var memberGateOpen = null, memberGate = new Promise(function (resolve) { memberGateOpen = resolve; });
+    var memberIndexPending = null;
+    setTimeout(function () { memberGateOpen(); }, 12000);
+    function deferredMemberIndex(auth) {
+      var started = memberGate.then(function () { return auth.getMemberAnnouncementIndex(); });
+      memberIndexPending = started;
+      var clear = function () { if (memberIndexPending === started) memberIndexPending = null; };
+      started.then(clear, clear);
+      return started;
+    }
+    function waitForMemberIndex() {
+      memberGateOpen();
+      return memberIndexPending ? memberIndexPending.catch(function () {}).then(function () {}) : Promise.resolve();
+    }
+
+    function parseDataResponse(r, request, url) {
+      if (!r.ok) throw new Error(r.status);
+      return r.json().then(function (data) {
+        return { data: normalizeCurrentData(data, request.manifest), freshNetwork: isFreshNetworkResponse(r), url: url };
+      });
+    }
+
     function fetchData(skipNotifications, options) {
       var revalidate = !!(options && options.revalidate);
-      var deletedIds = accountAuth && typeof accountAuth.getDeletedAnnouncementIds === "function" ?
-        accountAuth.getDeletedAnnouncementIds().catch(function () { return Object.keys(state.deletedAnnouncements); }) :
-        Promise.resolve(Object.keys(state.deletedAnnouncements));
-      /* The deleted list (account service) and the data file download at the same time. */
+      /* 公告列表不等帳號服務：已刪除清單在背景取回，回來後再校正畫面（見 applyDeletedIds）。 */
+      if (accountAuth && typeof accountAuth.getDeletedAnnouncementIds === "function") {
+        accountAuth.getDeletedAnnouncementIds().then(applyDeletedIds).catch(function () {});
+      }
       var download = currentDataRequest(revalidate).then(function (request) {
-        return dataFetch(request.url, revalidate)
-        .then(function (r) {
-          if (!r.ok) throw new Error(r.status);
-          return r.json().then(function (data) {
-            return { data: normalizeCurrentData(data, request.manifest), freshNetwork: isFreshNetworkResponse(r) };
+        /* 這所學校的資料還沒進來：先下載精簡快照畫出第一頁，完整檔案畫完後再背景載入。 */
+        var wantSlim = !!request.slim && !window.__CYNEWS_NO_SLIM__ && (!state.data || state.dataSchool !== state.school);
+        if (wantSlim) {
+          return dataFetch(request.slim, revalidate).then(function (r) {
+            return parseDataResponse(r, request, request.slim).then(function (result) {
+              if (!Array.isArray(result.data.items) || !result.data.items.length) throw new Error("empty slim");
+              result.data.partial = true;
+              return result;
+            });
+          }).catch(function () {
+            return dataFetch(request.url, revalidate).then(function (r) { return parseDataResponse(r, request, request.url); });
           });
-        });
+        }
+        return dataFetch(request.url, revalidate).then(function (r) { return parseDataResponse(r, request, request.url); });
       });
-      download.catch(function () { /* handled below, after the deleted list */ });
-      return deletedIds.then(function (ids) {
-        state.deletedAnnouncements = {};
-        ids.forEach(function (id) { state.deletedAnnouncements[id] = true; });
-        return download;
-      })
+      return download
         .then(function (result) {
           var data = result.data;
           if (Array.isArray(data.items)) data.items = data.items.filter(function (item) { return !state.deletedAnnouncements[item.id]; });
           var recentItems = Array.isArray(data.items) ? data.items.slice() : [];
           if (!Array.isArray(data.items)) data.items = [];
           data.items.forEach(applyMemberContent);
-          if (state.archive === "loaded") {
+          if (state.archive === "loaded" && state.data) {
             /* 已載入過封存資料:重新抓的檔案只有近一年,把封存部分接回去 */
             var ids = {};
             data.items.forEach(function (it) { ids[it.id] = true; });
@@ -1649,6 +1701,10 @@
             });
           }
           state.data = data;
+          state.dataSchool = state.school;
+          state.partial = !!data.partial;
+          state.fullFailed = false;
+          if (!state.partial) fullPromise = null;
           renderAll();
           if (result.freshNetwork && !skipNotifications) processFreshRecentNotifications(recentItems);
           return { ok: true, freshNetwork: result.freshNetwork, generatedAt: data.generated_at || "" };
@@ -1659,6 +1715,43 @@
           }
           return { ok: false, freshNetwork: false, generatedAt: state.data && state.data.generated_at || "" };
         });
+    }
+
+    /* 首屏只載入最新 ~300 則；搜尋、篩選分類、問校務、看到清單底端、切到其他分頁時才需要完整資料。
+       第一頁畫完且問校務引擎載入後，也會在背景自動載入。 */
+    var fullPromise = null;
+    function loadFullData() {
+      if (!state.partial || state.fullFailed) return Promise.resolve(state.data);
+      if (fullPromise) return fullPromise;
+      var school = state.school;
+      fullPromise = currentDataRequest(true).then(function (request) {
+        return dataFetch(request.url, true).then(function (r) { return parseDataResponse(r, request, request.url); });
+      }).then(function (result) {
+        if (state.school !== school || !state.partial) return state.data;
+        var data = result.data;
+        data.items = (data.items || []).filter(function (item) { return !state.deletedAnnouncements[item.id]; });
+        data.items.forEach(applyMemberContent);
+        if (state.archive === "loaded" && state.data) {
+          var ids = {};
+          data.items.forEach(function (it) { ids[it.id] = true; });
+          state.data.items.forEach(function (it) {
+            if (!ids[it.id] && !state.deletedAnnouncements[it.id]) data.items.push(it);
+          });
+        }
+        state.data = data;
+        state.partial = false;
+        renderAllChunked();
+        return state.data;
+      }).catch(function () {
+        state.fullFailed = true;
+        fullPromise = null;
+        renderLatest();
+        return state.data;
+      });
+      return fullPromise;
+    }
+    function needsFullData() {
+      return !!state.partial && !state.fullFailed;
     }
 
     function generationAdvanced(before, after) {
@@ -1762,6 +1855,8 @@
     }
     function latestItems() {
       if (!state.data) return [];
+      /* 首屏快照只有最新 ~300 則：搜尋、篩選分類、改排序要看完整資料，先在背景載入，載完會自動重畫。 */
+      if (needsFullData() && (state.q || state.cat !== "all" || state.sort !== "newest")) loadFullData();
       var candidates = state.data.items.filter(function (it) {
         if (!visibleSchool(it)) return false;
         if (state.school !== "all" && it.school !== state.school) return false;
@@ -2222,8 +2317,10 @@
       var items = sortedLatest(latestItems());
       var shown = Math.min(state.shown, items.length);
       var rest = items.length - shown;
-      el.countLine.textContent = "共 " + items.length + " 則"
+      var partialNow = needsFullData();
+      el.countLine.textContent = partialNow ? "最新 " + items.length + " 則 · 完整資料載入中…" : "共 " + items.length + " 則"
         + (state.archive === "loading" ? " · 搜尋歷史資料中…" : "");
+      if (partialNow && items.length <= state.shown) loadFullData();
       el.list.innerHTML = seriesBlockHTML() + (shown ? latestCardsHTML(items.slice(0, shown), items) : '<p class="empty">找不到符合條件的公告,換個關鍵字或篩選試試。</p>');
       if (state.sort === "office" && !state.office) rest = 0;  // every office is already listed
       if (rest > 0) {
@@ -2243,7 +2340,7 @@
     }
     function taskDateLabel(due) {
       if (!due) return "未設定截止日期";
-      var today = window.CyNewsToday ? window.CyNewsToday.build({ today: new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }) }).today : new Date().toISOString().slice(0, 10);
+      var today = window.CyNewsToday ? window.CyNewsToday.build({ today: new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10) }).today : new Date().toISOString().slice(0, 10);
       return (window.CyNewsToday ? window.CyNewsToday.dueLabel(today, due) : due) + " · " + due;
     }
     function taskHTML(task, completed) {
@@ -2386,7 +2483,7 @@
       syncSubscriptions();
       var next = null;
       (state.reminderRules || []).forEach(function (rule) {
-        var row = window.CyNewsReminderRules && window.CyNewsReminderRules.nextReminder(rule, new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }));
+        var row = window.CyNewsReminderRules && window.CyNewsReminderRules.nextReminder(rule, new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10));
         if (row && (!next || row.date < next.date)) next = row;
       });
       var reminderStatus = window.CyNewsReminderRules ? window.CyNewsReminderRules.subscriptionStatus({
@@ -2752,7 +2849,7 @@
       function add(label, question) { if (!label || !question || seen[question] || chips.length >= 4) return; seen[question] = true; chips.push({ label: label, question: question }); }
       var school = preferredSchoolId() || (state.school !== "all" ? state.school : "");
       var profile = Object.assign({}, state.profile || {}, { school_id: school });
-      var today = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+      var today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
       var mine = (state.data.items || []).filter(function (item) {
         if (!item || linkGone(item) || (school && item.school !== school)) return false;
         var rel = window.CyNewsRelevance && window.CyNewsSchoolRegistry ? window.CyNewsRelevance.calculate(item, profile, window.CyNewsSchoolRegistry) : null;
@@ -2858,7 +2955,7 @@
        有快到期的事（3 天內的公告期限或待辦）就舉牌提醒，段考快到就搬書叫你讀書，否則隨口唸兩句。 */
     var CAMEO_FIRST_MS = 25000, CAMEO_GAP_MS = [240000, 420000], CAMEO_MAX = 4;
     var cameoTimer = null, cameoCount = 0;
-    function taipeiToday() { return new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }); }
+    function taipeiToday() { return new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10); }
     function daysFromToday(day) { return Math.round((Date.parse(day + "T00:00:00Z") - Date.parse(taipeiToday() + "T00:00:00Z")) / 86400000); }
     function shortTitle(title, max) { title = String(title || "").replace(/^\s*(?:【[^】]{1,10}】|\[[^\]]{1,10}\])\s*/, "").trim(); return title.length > max ? title.slice(0, max - 1) + "…" : title; }
     function whenWord(days) { return days <= 0 ? "今天" : days === 1 ? "明天" : days + " 天後"; }
@@ -3108,6 +3205,8 @@
       });
     }
     function askAssistant(question) {
+      if (needsFullData()) return loadFullData().then(function () { return askAssistant(question); });
+      if (memberIndexPending) return waitForMemberIndex().then(function () { return askAssistant(question); });
       if (!window.CyNewsAssistantQA && state.data) {
         return ensureAssistant().then(function (ok) { return ok ? askAssistant(question) : null; });
       }
@@ -3372,8 +3471,25 @@
         el.staleBanner.textContent = stale ? "公告資料已超過 " + Math.floor(hours) + " 小時沒有更新（最後更新 " + t + "），最新消息請以校網為準。" : "";
       }
     }
+    /* 完整資料（8 千則）換進來時的重畫：拆成多個小工作，中間讓出主執行緒，
+       手機上不會凍結幾秒、使用者在問校務輸入框打字也不卡；目前看得到的分頁先畫。 */
+    var renderToken = 0;
+    function renderAllChunked() {
+      if (!state.data) return;
+      var token = ++renderToken;
+      var steps = [renderControls, renderImportant, renderLatest, renderSub, renderTasks, renderToday, renderBadge, renderUpdatedAt, renderAssistantExamples];
+      if (state.tab === "assistant") steps.unshift(steps.pop());
+      var index = 0;
+      (function next() {
+        if (token !== renderToken || !state.data) return;
+        var step = steps[index++];
+        if (!step) return;
+        try { step(); } finally { setTimeout(next, 0); }
+      })();
+    }
     function renderAll() {
       if (!state.data) return;
+      renderToken += 1;
       renderControls();
       renderImportant();
       renderLatest();
@@ -3846,6 +3962,7 @@
       }
       state.tab = tab;
       try { updatePerch(); } catch (_) {}
+      if (tab !== "latest" && tab !== "assistant" && needsFullData()) loadFullData();
       var home = tab === "home";
       var latest = tab === "latest";
       var today = tab === "today";
@@ -4168,6 +4285,7 @@
     if (window.__CYNEWS_TEST__) {
       window.__cyNewsAppTest = {
         fetchData: fetchData,
+        loadFullData: loadFullData,
         ensureArchive: ensureArchive,
         renderAll: renderAll,
         processFreshRecentNotifications: processFreshRecentNotifications,
@@ -4180,8 +4298,16 @@
     setupAccountSync();
     fetchData(false, { revalidate: true }).then(finishInitialLoading).then(function () {
       window.__cyNewsFirstPaintDone = true;
-      try { ensureAssistant(); } catch (_) {}
       if (window.__cyNewsRegisterSW) window.__cyNewsRegisterSW();
+      /* 問校務引擎先載（它比完整資料小很多，且先到才能回答），完成後在背景補齊完整公告。 */
+      var loadRest = function () {
+        var go = function () {
+          var open = function () { memberGateOpen(); };
+          try { loadFullData().then(open, open); } catch (_) { open(); }
+        };
+        if (typeof window.requestIdleCallback === "function") window.requestIdleCallback(go, { timeout: 2500 }); else setTimeout(go, 800);
+      };
+      try { ensureAssistant().then(loadRest, loadRest); } catch (_) { loadRest(); }
     });
   }
 

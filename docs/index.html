@@ -29,7 +29,8 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&display=swap"></noscript>
 <script>
 /* 提早開始下載公告資料（與程式檔平行），app.js 第一次載入時直接接手同一個請求。
-   只在使用者上次選的是全部學校／單一學校時預取；URL 與 app.js 的 dataFetch(revalidate) 完全一致。 */
+   先抓「首屏快照」（最新 ~300 則，約 50KB；scraper/latest_slim.py 產生），完整檔案畫完第一頁後才背景載入。
+   快照還不存在時 app.js 會自動退回完整檔案。URL 與 app.js 的 dataFetch(revalidate) 完全一致。 */
 (function () {
   try {
     var early = window.__cyNewsEarly = {};
@@ -41,13 +42,18 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
       early[url] = p;
       return p;
     }
-    if (school === "all") { start("data/announcements.json"); }
+    if (school === "all") { start("data/announcements-latest.json"); }
     else {
       start("data/schools/manifest.json").then(function (r) { return r.ok ? r.clone().json() : null; }).then(function (m) {
         var row = m && (m.schools || []).filter(function (x) { return x.id === school; })[0];
-        if (row && row.current) start(row.current);
+        if (row && /current\.json$/.test(row.current || "")) start(row.current.replace(/current\.json$/, "latest.json"));
       }).catch(function () {});
     }
+    /* 登入／權限檢查要用的 Supabase 程式庫（jsdelivr）：現在就開始下載，帳號模組用到時已在快取。
+       版本與帳號模組的 CLIENT_URL 相同。 */
+    setTimeout(function () {
+      try { import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/+esm").catch(function () {}); } catch (_) {}
+    }, 0);
   } catch (_) {}
 })();
 </script>

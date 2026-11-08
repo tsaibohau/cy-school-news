@@ -105,7 +105,7 @@
   }
   function build(input) {
     input = input || {};
-    var today = date(input.today) ? input.today : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var today = date(input.today) ? input.today : new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
     var until = input.days == null ? 7 : Math.max(1, Number(input.days));
     var official = Array.isArray(input.officialEvents) ? input.officialEvents : [];
     var announcementItems = Array.isArray(input.announcementItems) ? input.announcementItems : [];
