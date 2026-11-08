@@ -117,6 +117,7 @@
       deletedAnnouncements: {},
       partial: false,       /* true：目前只有最新 ~300 則的首屏快照，完整檔案還在載入 */
       fullFailed: false,
+      todayStale: false,    /* 資料換了但「我的今日」還沒重畫（看到那一頁時才畫） */
       dataSchool: "",
       adminOffset: 0,
       adminTotal: 0,
@@ -2850,8 +2851,20 @@
       var school = preferredSchoolId() || (state.school !== "all" ? state.school : "");
       var profile = Object.assign({}, state.profile || {}, { school_id: school });
       var today = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+      var todayMs = Date.parse(today), soonLimit = todayMs + 21 * 86400000;
       var mine = (state.data.items || []).filter(function (item) {
         if (!item || linkGone(item) || (school && item.school !== school)) return false;
+        /* 下面只會用到「21 天內截止」和「30 天內發布」的公告：其他的先剔除，不必逐則算相關度（完整資料有 8 千則） */
+        var day = String(item.date || item.first_seen || "").slice(0, 10), age = (todayMs - Date.parse(day)) / 86400000;
+        if (!(age >= 0 && age <= 30)) {
+          var soonDue = false, events = item.calendar_events || [];
+          for (var i = 0; i < events.length && !soonDue; i += 1) {
+            var ev = events[i], t = ev && ev.kind === "deadline" ? Date.parse(ev.date) : NaN;
+            soonDue = t >= todayMs && t <= soonLimit;
+          }
+          if (!soonDue && QA.titleDeadline) { var titleDue = Date.parse(QA.titleDeadline(item)); soonDue = titleDue >= todayMs && titleDue <= soonLimit; }
+          if (!soonDue) return false;
+        }
         var rel = window.CyNewsRelevance && window.CyNewsSchoolRegistry ? window.CyNewsRelevance.calculate(item, profile, window.CyNewsSchoolRegistry) : null;
         item.__chipRel = rel;
         return !(rel && (rel.not_for_me || rel.school_mismatch));
@@ -3025,7 +3038,7 @@
       setupMascot();
       var title = document.getElementById("assistantTitle");
       if (!title) return;
-      var hour = Number(new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei", hour: "numeric", hour12: false })) % 24;
+      var hour = new Date(Date.now() + 8 * 3600000).getUTCHours();
       var hello = hour < 5 ? "夜深了" : hour < 11 ? "早安" : hour < 18 ? "午安" : "晚安";
       title.textContent = state.nickname ? hello + "，" + state.nickname : hello + "，想問學校什麼？";
     }
@@ -3263,7 +3276,7 @@
         items.forEach(function (item) { state.assistantItems[String(item.id)] = item; });
         rememberAssistantQuestion(asked);
         var options = assistantOptions(scope);
-        options.hour = Number(new Date().toLocaleString("en-US", { timeZone: "Asia/Taipei", hour: "numeric", hour12: false })) % 24;
+        options.hour = new Date(Date.now() + 8 * 3600000).getUTCHours();
         options.lastQuestion = previous ? previous.question : "";
         /* 「這兩個人差在哪裡？」: what the previous turn was about (its subject, schools and the people it named). */
         options.previousTurn = previous && previous.result && QA.turnSummary ? QA.turnSummary(previous.question, previous.result) : null;
@@ -3477,7 +3490,7 @@
     function renderAllChunked() {
       if (!state.data) return;
       var token = ++renderToken;
-      var steps = [renderControls, renderImportant, renderLatest, renderSub, renderTasks, renderToday, renderBadge, renderUpdatedAt, renderAssistantExamples];
+      var steps = [renderControls, renderImportant, renderLatest, renderSub, renderTasks, renderTodayLazy, renderBadge, renderUpdatedAt, renderAssistantExamples];
       if (state.tab === "assistant") steps.unshift(steps.pop());
       var index = 0;
       (function next() {
@@ -3495,10 +3508,15 @@
       renderLatest();
       renderSub();
       renderTasks();
-      renderToday();
+      renderTodayLazy();
       renderBadge();
       renderUpdatedAt();
       renderAssistantExamples();
+    }
+    /* 「我的今日」要對每則公告算相關度（8 千則約 0.5 秒）：沒在看首頁／今天時先不算，切過去時才補畫。 */
+    function renderTodayLazy() {
+      if (state.tab === "home" || state.tab === "today") { state.todayStale = false; renderToday(); }
+      else state.todayStale = true;
     }
 
     /* ── 通知 ── */
@@ -3969,6 +3987,7 @@
       var assistant = tab === "assistant";
       var timetable = tab === "timetable";
       if (el.viewHome) el.viewHome.hidden = !home;
+      if ((home || today) && state.todayStale) { state.todayStale = false; renderToday(); }
       if (home) playBrief();
       if (el.viewToday) el.viewToday.hidden = !today;
       el.viewLatest.hidden = !latest;
