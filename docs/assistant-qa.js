@@ -111,6 +111,8 @@
     var q = clean(query);
     if (/(?:報名表|申請表|資料|文件|表格).{0,10}(?:交|繳|送)|(?:交|繳|送).{0,12}(?:哪裡|哪個處室|哪一個處室|哪個組|誰)|去哪(?:裡)?辦/.test(q)) return "destination";
     if (/(?:去哪|哪裡|在哪).{0,8}(?:上課|上|學)|(?:上課|課程).{0,8}(?:哪裡|地點|教室|在哪)/.test(q)) return "class_place";
+    /* 「成績何時能查」: asks whether it can be looked up yet; a notice saying where to look it up answers it, no deadline needed. */
+    if (/(?:何時|什麼時候|哪時).{0,3}(?:能|可以|才能|可)(?:查|看)|(?:成績|結果).{0,4}(?:何時|什麼時候).{0,3}(?:出來|公布|公佈|開放)/.test(q) && !/截止|期限|到幾號|來得及/.test(q)) return "";
     if (/截止|期限|何時|什麼時候|到幾號|幾點|來得及|還能報|還可以報|報得到|還有名額|還能參加/.test(q)) return "deadline";
     if (/找誰|聯絡誰|電話|分機|承辦人|聯絡人/.test(q)) return "contact";
     if (/多少錢|費用|金額|繳費/.test(q)) return "fee";
@@ -371,8 +373,11 @@
   var EXCLUSIVE_GROUPS = [
     ["多元選修", "微課程", "加深加廣", "充實補強", "自主學習", "彈性學習"],
     ["期中考", "期末考", "模擬考", "複習考", "補考"],
-    ["高一", "高二", "高三"]
+    ["高一", "高二", "高三"],
+    ["前八週", "後八週"]
   ];
+  /* The first/second half of a course is a different notice, not a near match. */
+  EXCLUSIVE_GROUPS[3].firm = true;
   function exclusivePenalty(query, title) {
     var q = clean(query), t = clean(title), penalty = 0;
     EXCLUSIVE_GROUPS.forEach(function (group) {
@@ -380,7 +385,7 @@
       if (!asked.length) return;
       var hasAsked = asked.some(function (term) { return t.indexOf(term) !== -1; });
       var hasOther = group.some(function (term) { return asked.indexOf(term) === -1 && t.indexOf(term) !== -1; });
-      if (hasOther && !hasAsked) penalty += 400;
+      if (hasOther && !hasAsked) penalty += group.firm ? 1500 : 400;
     });
     return penalty;
   }
@@ -430,7 +435,7 @@
     statsCache = { items: items, stats: { n: items.length, df: df, titles: titles } };
     return statsCache.stats;
   }
-  var QUESTION_FILLER = /^(?:要去|去哪|哪個|哪裡|哪天|怎麼|什麼|時候|可以|需要|如何|是否|有沒|沒有|嗎|呢|現在|目前|請問|一下|多少|幾點|哪些|要怎|麼辦|怎樣)$/;
+  var QUESTION_FILLER = /^(?:要去|去哪|哪個|哪裡|哪天|怎麼|什麼|時候|可以|需要|如何|是否|有沒|沒有|嗎|呢|現在|目前|請問|一下|多少|幾點|哪些|要怎|麼辦|怎樣|不知|知道|想問|想說|看到|聽說|好像|順便|累積|一些|應該|是不是|不太|還是|或是|然後|另外|可是|但是|因為|所以|如果|還有|已經|剛剛|剛好|請教|想請|麻煩)$/;
   /* Words too broad to decide a topic on their own, even without corpus statistics. */
   var ALWAYS_GENERIC = ["比賽", "競賽", "考試", "測驗", "課程", "活動", "研習", "講座", "申請", "報名", "學生", "公告", "選修", "選擇", "選填", "學校", "本校", "老師", "時間", "資訊"];
   function pieceCount(piece, stats) {
@@ -787,8 +792,15 @@
   }
   /* 「94年2月訂定，97年3月14日修訂」 at the top of a rule is its revision history, never an answer. */
   var REVISION_HISTORY = /^[\s\d年月日,，、.。()（）～~-]*(?:(?:校務會議|行政會議)?(?:訂定|修訂|修正|通過|核定|發布)[\s\d年月日,，、.。()（）]*)+$|^(?:中華民國|民國)?\s*\d{2,3}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日.{0,20}(?:校務會議|行政會議|部字第|號令|號函)/;
+  /* Roster text (column headings 座號 學號 姓名 or masked names such as 王○明) is never quoted: the notice is pointed to instead. */
+  /* 「…借書規定94年2月訂定，97年3月14日修訂，101年12月03日修訂」: a rule's amendment log, whatever words come first. */
+  function revisionLog(text) {
+    var t = clean(text);
+    return t.length < 260 && (t.match(/(?:訂定|修訂|修正)/g) || []).length >= 2 && (t.match(/\d{2,3}\s*年/g) || []).length >= 2;
+  }
+  var ROSTER_TEXT = /座號.{0,12}學號|學號.{0,12}姓名|班級.{0,6}座號|姓名.{0,8}(?:課程|班級|座號)|[\u4e00-\u9fff][〇○O◯][\u4e00-\u9fff]|自動播放下一集/;
   function candidateQualifies(candidate, plan) {
-    if (REVISION_HISTORY.test(clean(candidate.text))) return false;
+    if (REVISION_HISTORY.test(clean(candidate.text)) || ROSTER_TEXT.test(clean(candidate.text)) || revisionLog(candidate.text)) return false;
     /* A bare fragment such as 「記警告。」 cut from a list says nothing on its own. */
     if (compact(candidate.text).replace(/[。，、；：.,;:]/g, "").length < 8) return false;
     var slot = plan && plan.answer_slot || "";
@@ -929,6 +941,7 @@
     return m ? Number(m[1]) + "-" + Number(m[2]) : "";
   }
   /* options.published: the notice's own date. A 時間 equal to it is the posting date, not the event. */
+  var REVISION_DATE = /(?:會議|大會|委員會)\s*(?:修訂|修正|訂定|制訂|通過|決議)|(?:修訂|修正|訂定|公布|備查|核備)\s*$|字第\s*\d+\s*號|函\s*(?:備查|核備|頒)/;
   function keyPoints(text, options) {
     var clauses = [], published = String(options && options.published || "").slice(0, 10);
     var postedDay = /^\d{4}-\d{2}-\d{2}$/.test(published) ? Number(published.slice(5, 7)) + "-" + Number(published.slice(8, 10)) : "";
@@ -947,6 +960,8 @@
         var time = timePhrase(clause);
         if (rule.needTime && !time) return;
         if (rule.label === "時間" && /前$|止$/.test(time)) return;
+        /* 「98 年 1 月 19 日校務會議修訂」 is when a rule was revised, not a time to act on (unless the date was asked). */
+        if (rule.label === "時間" && !(options && options.asksWhen) && REVISION_DATE.test(clause)) return;
         if (rule.label === "時間" && used["截止"] && /截止|期限|前完成|前繳交/.test(clause)) return;
         if (rule.label === "時間" && (/(?:公告|發布|發佈|發文|張貼|更新)日期|\d\s*日\s*(?:公告|發布|發佈|函|來函|發文)/.test(clause) || postedDay && monthDay(time) === postedDay && !/舉行|舉辦|上課|考試|報到|開始|開幕|比賽|活動時間/.test(clause))) return;
         var value = pointValue(clause, rule.label, time);
@@ -964,9 +979,9 @@
      title (a date such as (7/20-7/21) often answers 何時), whether that is already past,
      and who at school can confirm. Fixed templates only. */
   var OFFICE_RULES = [
-    { office: "教務處", re: /考|成績|選課|選修|微課程|加深加廣|選組|類組|社會組|自然組|轉組|重補修|補考|課表|學測|統測|分科|英聽|英檢|檢定|自主學習/ },
+    { office: "教務處", re: /考|成績|選課|選修|微課程|加深加廣|選組|類組|社會組|自然組|轉組|重補修|補考|課表|學測|統測|分科|英聽|英檢|檢定|自主學習|學生證/ },
     { office: "輔導室", re: /升學|繁星|個人申請|特殊選才|學習歷程|志願|科系|輔導/ },
-    { office: "學務處", re: /社團|請假|公假|缺曠|獎懲|銷過|愛校服務|學生證|制服|校服|服儀|校慶|運動會|畢業典禮|志工|服務學習|校車|交通車|晚自習|班聯會|營隊|比賽|競賽|獎學金|助學金/ },
+    { office: "學務處", re: /社團|請假|公假|缺曠|獎懲|銷過|愛校服務|制服|校服|服儀|校慶|運動會|畢業典禮|志工|服務學習|校車|交通車|晚自習|班聯會|營隊|比賽|競賽|獎學金|助學金/ },
     { office: "總務處", re: /學雜費|代辦費|繳費|註冊費|停車|午餐|便當/ },
     { office: "健康中心", re: /健康檢查|健檢|疫苗|體檢/ },
     { office: "圖書館", re: /圖書館|借書|還書|借還|借閱|續借|逾期|閱覽|自修室|自習室/ }
@@ -1481,7 +1496,7 @@
   var RULE_SKIP = /^(?:[一二三四五六七八九十]+、|[壹貳參肆伍陸柒捌玖拾]+、|第[一二三四五六七八九十]+條)?\s*(?:實施)?依據|經校務會議.*(?:實施|修正)|^本(?:要點|辦法|規定|細則)(?:經|自)|^(?:[一二三四五六七八九十]+、\s*)?本(?:補充)?(?:規定|要點|辦法|細則|規範)(?:係)?依.{0,40}(?:辦理|訂定|訂之)。?$|^(?:(?:[一二三四五六七八九十]+|[壹貳參肆伍陸柒捌玖拾]+)、|第[一二三四五六七八九十]+條)?\s*(?:實施)?(?:目的|宗旨|定義|適用(?:對象|範圍)|名詞定義)\s*[：:]/;
   /* Basis, purpose and scope lines and revision dates are never the answer, unless the question asks for them. */
   var ASKS_BOILERPLATE = /依據|根據什麼|法源|目的|宗旨|為什麼要|為何要|定義|適用|對象|範圍|修訂|修正|何時(?:訂|修|通過)|哪一年|什麼時候(?:訂|修|通過)/;
-  function boilerplate(clause, query) { return (RULE_SKIP.test(clause) || REVISION_HISTORY.test(clause)) && !ASKS_BOILERPLATE.test(query || ""); }
+  function boilerplate(clause, query) { return (RULE_SKIP.test(clause) || REVISION_HISTORY.test(clause) || revisionLog(clause)) && !ASKS_BOILERPLATE.test(query || ""); }
   function ruleClauses(text) {
     var out = [], current = "", previous = "";
     String(text || "").split(/\n/).forEach(function (line) {
@@ -1960,10 +1975,10 @@
       return item && item.kind === "school_service" && (item.keywords || []).some(function (k) { k = compact(k); return k.length >= 2 && q.indexOf(k) !== -1; });
     }).map(function (item) {
       var hits = (item.keywords || []).filter(function (k) { return q.indexOf(compact(k)) !== -1; });
-      return { item: item, weight: hits.reduce(function (n, k) { return n + compact(k).length; }, 0) };
+      return { item: item, hits: hits.map(compact), weight: hits.reduce(function (n, k) { return n + compact(k).length; }, 0) };
     }).sort(function (a, b) { return b.weight - a.weight; }).slice(0, 2).map(function (row) {
       var item = row.item;
-      return { id: item.id, name: clean(item.title).replace(/^網路服務\s*›\s*/, ""), url: item.url, purpose: item.purpose || "", login_required: item.login_required, weight: row.weight };
+      return { id: item.id, hits: row.hits, name: clean(item.title).replace(/^網路服務\s*›\s*/, ""), url: item.url, purpose: item.purpose || "", login_required: item.login_required, weight: row.weight };
     });
   }
   var SERVICE_ASK = /查|登入|系統|網址|網站|哪裡|在哪|去哪|怎麼|如何|預約|列印|下載|紀錄/;
@@ -1994,7 +2009,7 @@
         var subjectHit = !subjects.length || subjects.some(function (t) { return c.indexOf(t) !== -1; }) || related.some(function (t) { return c.indexOf(t) !== -1; });
         if (!subjectHit) return;
         /* The question names something specific (商業案例, 電競): a file that never says it is not the answer. */
-        if (gate && !gate.test(name + " " + clean(item.title || ""))) return;
+        if (gate && (!gate.test(name + " " + clean(item.title || "")) || compact(query).length >= 24 && gate.cover(name + " " + clean(item.title || "")) < (gate.units.length >= 4 ? 0.34 : gate.units.length >= 2 ? 0.51 : 0))) return;
         wanted.forEach(function (t) { if (c.indexOf(t) !== -1) score += 10; });
         if (!score) related.forEach(function (t) { if (c.indexOf(t) !== -1) score = Math.max(score, 6); });
         if (/規定|辦法|要點|規範|章程|須知/.test(name)) score += 2;
@@ -2171,7 +2186,7 @@
   var ANNOUNCE_OPENERS = [""];
   function conversationalRaw(result) {
     if (!result) return { text: "", bullets: [] };
-    if (result.mode === "chat" && result.reply) return result.reply;
+    if ((result.mode === "chat" || result.mode === "howto") && result.reply) return result.reply;
     var seed = result.query || result.summary || "", text = clean(result.summary || ""), bullets = [], tail = "";
     var plain = personalDataQuery(result.query || "");
     /* 先把找到的句子拆成事實，再用句型模板說出來（不是貼原文；原文在參考資料裡）。 */
@@ -2180,7 +2195,7 @@
     if (result.mode === "rule" && (result.answer_lines || []).length) {
       var item = (result.sources || [])[0] || {};
       var label = docLabel(item) + pagesOf(item);
-      var lines = result.answer_lines.map(clean), head = lines[0];
+      var lines = result.answer_lines.map(function (l) { return clean(l).replace(/^(?:[^>＞\s]{2,10}\s*[>＞]\s*){2,}/, ""); }).filter(Boolean), head = lines[0];
       var rows = lines.slice(1).filter(function (l) { return TABLE_ROW.test(l); });
       var tableMode = /[：:]$|如下/.test(head) && rows.length;
       if (tableMode) bullets = rows.map(function (l) { return dedupeText(tidyClause(l, true)); });
@@ -2212,6 +2227,11 @@
       } else if (hasLead) { opening = leadSentence; rest = tidyPoints(bullets, [leadSentence]); }
       else { opening = bullets[0] || ""; rest = bullets.slice(1); }
       if (otherNotes.length) opening += otherNotes.join("");
+      /* A page whose text is only link titles (【大學申請入學選填系統說明】): say that, instead of presenting the titles as sentences. */
+      var linkTitle = /^[【\[][^】\]]{2,40}[】\]][。.]?$/, titleLines = [opening].concat(rest).map(clean).filter(Boolean);
+      if (titleLines.length >= 2 && titleLines.every(function (l) { return linkTitle.test(l); })) {
+        return { text: "這個頁面只列出連結標題，實際的說明在連結裡，標題有：", bullets: titleLines.map(function (l) { return l.replace(/^[【\[]|[】\]][。.]?$/g, ""); }), tail: "", source: sourceNote(result, 1) };
+      }
       return { text: opening || sentenceOf(text), bullets: rest.slice(0, 10), tail: "", source: sourceNote(result, 1) };
     }
     if (result.mode === "rule_pointer") return { text: text, bullets: [] };
@@ -2249,12 +2269,47 @@
     var all = sentences.concat(bullets);
     return { text: plain ? sourceLabel(first) + "：" : sentenceOf(all[0]), bullets: all.slice(1, 9), tail: notes, source: sourceNote(result, 1) };
   }
+  function joined0(list) { return (list || []).join(" "); }
+  /* 「開放日期如下：9/19, 10/3, 10/31…」: a list of dates is told in full, with the ones still ahead pointed out. */
+  function dateListLine(result, texts) {
+    var run = joined0(texts).match(/\d{1,2}\/\d{1,2}(?:\s*[,，、]\s*\d{1,2}\/\d{1,2}){2,}/);
+    if (!run) return "";
+    var days = run[0].split(/\s*[,，、]\s*/).map(clean), line = "日期：" + days.join("、"), ahead = upcomingDays(days, result.as_of);
+    if (ahead && ahead.length && ahead.length < days.length) line += "；今天（" + monthDayOf(result.as_of) + "）之後還有：" + ahead.join("、");
+    else if (ahead && !ahead.length) line += "；這些日期都已經過了";
+    return line;
+  }
+  function monthDayOf(iso) { return /^\d{4}-\d{2}-\d{2}$/.test(iso || "") ? Number(iso.slice(5, 7)) + "/" + Number(iso.slice(8, 10)) : ""; }
+  /* Days written M/D within one school year (Aug-Jul): the ones on or after asOf, or null when asOf is unknown. */
+  function upcomingDays(days, asOf) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(asOf || "")) return null;
+    var y = Number(asOf.slice(0, 4)), m = Number(asOf.slice(5, 7)), startYear = m >= 8 ? y : y - 1;
+    return days.filter(function (d) {
+      var mm = Number(d.split("/")[0]), dd = Number(d.split("/")[1]), yy = mm >= 8 ? startYear : startYear + 1;
+      return yy + "-" + String(mm).padStart(2, "0") + "-" + String(dd).padStart(2, "0") >= asOf;
+    });
+  }
   function composedReply(result) {
     var first = (result.sources || [])[0] || {};
     var noted = noteTail(result.summary);
     if (result.content && result.content.text) {
       var ct = result.content;
       var said = ct.text, facts = (ct.facts || []).filter(function (f) { return said.indexOf(f.value) === -1; }).map(function (f) { return f.label + "：" + f.value; });
+      var contentDates = dateListLine(result, (result.evidence || []).filter(function (row) { return !first.id || row.announcement_id === first.id; }).map(function (row) { return row.text; }));
+      if (contentDates) facts.push(contentDates);
+      /* 「排在11月10日」 alone does not say what is scheduled: a notice that is about one narrow thing (高三英文閱讀期中考) names it first. */
+      if (/^(?:排在|時間是|時間在|期限是|截止|最晚|在)/.test(said)) {
+        var core = clean(first.title || "").replace(/^(?:[【\[][^】\]]{1,20}[】\]]\s*)+/, "").replace(/^[📢🔈\s]+/u, "");
+        if (core.length >= 6 && core.length <= 40) said = core + "：" + said;
+      }
+      /* A notice of a few lines: its own sentences follow the answer (the sentence that holds the same date replaces the template wording). */
+      var ownLines = (result.evidence || []).filter(function (row) { return row.rest && row.announcement_id === first.id; }).sort(function (a, b) { return (a.at == null ? 99 : a.at) - (b.at == null ? 99 : b.at); })
+        .map(function (row) { return sentenceOf((Composer.stripNumbering ? Composer.stripNumbering(clean(row.text)) : clean(row.text)).replace(/\s*([，。；、！])\s*/g, "$1")); });
+      if (ownLines.length) {
+        var day = (said.match(/\d{1,2}月\d{1,2}日/) || [""])[0], full = day ? ownLines.filter(function (l) { return l.indexOf(day) !== -1; })[0] : "";
+        if (full) { said = full; ownLines = ownLines.filter(function (l) { return l !== full; }); facts = facts.filter(function (f) { return full.indexOf(f.replace(/^[^：]+：/, "")) === -1; }); }
+        facts = ownLines.concat(facts);
+      }
       return { text: said, bullets: facts.slice(0, 9), tail: noted, composed: "content", source: sourceNote(result, 1) };
     }
     var texts = (result.evidence || []).filter(function (row) { return !first.id || row.announcement_id === first.id; }).map(function (row) { return row.text; });
@@ -2267,7 +2322,20 @@
     /* The first paragraph: the verdict and the sentence that says it; time, deadline, who and what to bring are points. */
     var colon = out.head && /[：:]$/.test(out.head);
     var opening = colon ? out.head : (out.head || "") + out.lead;
-    return { text: opening, bullets: (colon ? [out.lead] : []).concat(out.details, pointBullets).slice(0, 9), tail: noted, composed: out.type, source: sourceNote(result, 1) };
+    /* A notice of a few lines is told whole: its other lines replace the guessed 時間／對象 points. */
+    var restLines = (result.evidence || []).filter(function (row) { return row.rest && (!first.id || row.announcement_id === first.id); }).sort(function (a, b) { return (a.at == null ? 99 : a.at) - (b.at == null ? 99 : b.at); }).map(function (row) { return sentenceOf(clean(row.text).replace(/^[※*＊]\s*/, "").replace(/\s+([。，、；])/g, "$1")); })
+      .filter(function (line) { return compact(opening).indexOf(compact(line).replace(/[。]$/, "")) === -1; });
+    var out_details = out.details;
+    if (restLines.length) { pointBullets = restLines; out_details = []; }
+    var dateLine = dateListLine(result, texts);
+    if (dateLine) pointBullets = pointBullets.concat([dateLine]);
+    /* Asked where, and the notice's text never says: say so plainly (and where the rest may be). */
+    var placeAsked = result.plan && /^(?:place|class_place)$/.test(result.plan.answer_slot || "");
+    var joined = texts.join("");
+    if (placeAsked && !/地點|教室|地址|位於|會場|場地|[樓館]|室[內外]?(?![一-鿿])/.test(joined) && !pointBullets.some(function (b) { return /^地點/.test(b); })) {
+      pointBullets = pointBullets.concat(["公告內文沒有寫地點" + (/附件|名單/.test(joined) ? "，細節可能在附件裡" : "")]);
+    }
+    return { text: opening, bullets: (colon ? [out.lead] : []).concat(out_details, pointBullets).slice(0, 9), tail: noted, composed: out.type, source: sourceNote(result, 1) };
   }
   /* Follow-up questions read the previous turn: 「那要多久？」 after 「還書」,
      「那嘉女呢？」 after a 嘉中 question, 「星期四呢」 after a timetable question. */
@@ -2671,6 +2739,226 @@
     if (src.date > asOf) return "「" + src.title + "」還沒舉行（" + when + "），成績要等比賽後才會公布。";
     return "「" + src.title + "」" + (to >= asOf ? "正在進行（" + when + "）" : "剛在 " + when + "結束") + "，成績可能還沒公布。";
   }
+  /* ---- How-to questions (怎麼辦／怎麼處理／如何申請／去哪裡補／補發) ----
+     These ask for the PROCEDURE (where to go, what to bring, the fee), not for what happens to a violator.
+     howtoFix() runs on the answer the layers produced. When that answer is a penalty clause (記警告…), or nothing,
+     it is replaced by the procedure found in the school's pages, handbook or notices, or by a plain
+     「資料裡沒有寫…」. A penalty stays only as a labelled side note (「另外，考試時…」). */
+  var HOWTO_ASK = /怎麼辦|怎麼處理|該怎麼|要怎麼|怎麼(?:補|申請|辦|領|換|請)|如何(?:申請|辦理|處理|補|領|換|請)|(?:去|到|在)哪(?:裡|邊|兒)?(?:辦|補|領|申請|換)|哪(?:裡|邊)可以(?:辦|補|領|申請|換)|補辦|補發|補領|掛失/;
+  var HOWTO_LOSS = /遺失|弄丟|丟掉|丟了|搞丟|不見了?|掉了|遺落|被偷|沒收|扣留|收走|壞掉|壞了|損壞|破損/;
+  var HOWTO_SEIZED = /沒收|扣留|收走/;
+  var HOWTO_BROKEN = /壞掉|壞了|損壞|破損/;
+  var HOWTO_FORGOT = /忘記|忘了|忘帶|沒帶|未帶/;
+  /* Asks what happens (or whether it is allowed), not what to do. */
+  var HOWTO_NOT = /會怎(?:麼)?樣|會被|後果|下場|處罰|懲處|處分|記過|被記|罰則|扣分|違規|沒事|可以嗎|行不行|能不能|是不是|是否/;
+  /* A sentence that says what to do: where to go, what to bring, what replaces it. */
+  var HOWTO_STRONG = /補發|補辦|補領|補購|換發|重新(?:申請|辦理|購買|訂購|製作|領)|申領|申請|掛失|領回|領取|歸還|返還|代替|替代|改用|臨時|洽|應(?:到|至|向|由)|須(?:到|至|向)|至[^，。；]{1,10}(?:辦理|領|申請|登記)|向[^，。；]{1,10}(?:申請|辦理|領|洽|登記|報備)|費用|工本費|繳交|照片/;
+  /* For something lost: only a replacement counts. */
+  var HOWTO_LOSS_STRONG = /補發|補辦|補領|補購|換發|重新(?:申請|辦理|購買|訂購|製作|領)|申領|掛失|臨時(?:學生)?證|遺失/;
+  var HOWTO_SEIZED_STRONG = /領回|發還|歸還|返還|拿回|取回|洽|通知家長/;
+  var HOWTO_PENALTY = /記(?:警告|申誡|小過|大過|過|[一二三兩]大過)|警告[一二兩\d乙]?次|零分|不予計算|扣[^，。]{0,6}分|懲處|處分|愛校服務/;
+  var HOWTO_EXAM_DOC = /考試|評量|試場/;
+  /* Chapters that list penalties: a line from them is the condition of a penalty, never the procedure. */
+  var HOWTO_PENALTY_DOC = /獎懲|愛校服務|週末生活輔導|懲處/;
+  var HOWTO_PAGE = /補發|補辦|補領|換發|申請|辦理|申辦|領取|掛失/;
+  var HOWTO_NOTICE = /補發|補辦|補領|換發|掛失|重新(?:申請|辦理)|遺失/;
+  function howtoAsk(query) {
+    var q = clean(query);
+    return (HOWTO_ASK.test(q) || (HOWTO_LOSS.test(q) && !/招領|失物|撿到|拾獲/.test(q))) && !HOWTO_NOT.test(q) && !CONSEQUENCE_ASK.test(q);
+  }
+  /* The thing as the student wrote it (圖書館借書證, 悠遊卡學生證) when it comes right before the loss word. */
+  function howtoNoun(query) {
+    var noun = (clean(query).match(/([^，。？?！!\s]{2,10}?)(?:被|已經|已|有)?(?:遺失|弄丟|丟掉|丟了|搞丟|不見|掉了|遺落|被偷|壞掉|壞了|損壞|破損)/) || [])[1] || "";
+    return noun.replace(/^(?:請問|我的|我|的|那|如果|要是|因為)+/, "");
+  }
+  /* The thing asked about (學生證, 制服, 手機), with the words that also name it. */
+  function howtoSubject(query) {
+    var terms = ruleTerms(query), words = unique(terms.literal.map(compact)).filter(function (w) { return w.length >= 2 && ALWAYS_GENERIC.indexOf(w) === -1 && !SITUATION_WORD.test(w); });
+    var forms = [], groups = [];
+    words.forEach(function (w) {
+      var own = [w];
+      (Synonyms ? Synonyms.expand(w, { includes: false }) : []).forEach(function (f) { f = compact(f); if (f.length >= 2) own.push(f); });
+      /* 圖書館借書證: a sentence about 借書證 alone (「借書證遺失，應向本館掛失」) is about it too. */
+      var noun = howtoNoun(query);
+      if (noun.length > w.length && noun.indexOf(w) !== -1) { own.push(noun); var tail = noun.replace(w, ""); if (tail.length >= 2) own.push(tail); }
+      own = unique(own);
+      groups.push(own);
+      forms = forms.concat(own);
+    });
+    return { words: words, forms: unique(forms), groups: groups };
+  }
+  /* A rule chapter as sentences (「十九、…。…。」 is one clause but several sentences). */
+  function howtoSentences(detail) {
+    var out = [];
+    ruleClauses(ruleText(detail)).forEach(function (clause) {
+      (clean(clause).match(/[^。]+。?/g) || []).forEach(function (s) {
+        s = clean(s).replace(/^[（(]?[一二三四五六七八九十]+[)）、.]\s*/, "");
+        if (compact(s).length >= 6) out.push(s);
+      });
+    });
+    return out;
+  }
+  function howtoOffice(title) {
+    var segs = clean(title).split(/\s*›\s*/), out = "";
+    segs.slice(0, 2).forEach(function (seg) { if (/(?:處|室|組|館|中心)$/.test(seg) && seg.length <= 6) out += seg; });
+    return out;
+  }
+  function howtoFind(query, subject, items, details, options, loss) {
+    var docs = (items || []).filter(isSchoolDoc), asksExam = /考|試|測驗|評量/.test(query), forgot = HOWTO_FORGOT.test(query), evening = /進修|夜間部/.test(query);
+    var asOf = options && /^\d{4}-\d{2}-\d{2}$/.test(String(options.asOf || "")) ? options.asOf : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    /* 愛校服務 is not 校服. */
+    /* Every asked word (段考 and 遲到) has to be there. */
+    var hasSubject = function (text) { var c = compact(text).replace(/愛校服務|校服務/g, ""); return subject.groups.every(function (group) { return group.some(function (f) { return c.indexOf(f) !== -1; }); }); };
+    var hasWord = function (text) { var c = compact(String(text).replace(/[（(]\s*不(?:含|包括|包含)[^)）]*[)）]/g, "")).replace(/愛校服務|校服務/g, ""); return subject.words.some(function (f) { return c.indexOf(f) !== -1; }); };
+    var seized = HOWTO_SEIZED.test(query);
+    var rows = [], pointer = null, office = "", chapterDoc = null;
+    docs.forEach(function (item) {
+      var title = clean(item.title || ""), chapter = clean(title.split("›").pop()), inTitle = subject.forms.some(function (f) { return compact(chapter).indexOf(f) !== -1; });
+      if (!evening && /進修部/.test(title)) return;
+      var proc = [], pen = [], procAll = [], det = details && details[item.id];
+      if (det) howtoSentences(det).forEach(function (s) {
+        if (!hasSubject(s)) return;
+        if (HOWTO_PENALTY.test(s)) { if (hasWord(s)) pen.push(s); }
+        else if (HOWTO_STRONG.test(s) && !(seized ? HOWTO_SEIZED_STRONG : loss ? HOWTO_LOSS_STRONG : HOWTO_STRONG).test(s)) procAll.push(s);
+        else if ((seized ? HOWTO_SEIZED_STRONG : loss ? HOWTO_LOSS_STRONG : HOWTO_STRONG).test(s)) proc.push(s);
+      });
+      /* The school's own page for it (教務處 › 註冊組 › 學生證補發與各項文件申請) also names the office. */
+      if (item.kind === "school_info" && inTitle && HOWTO_PAGE.test(chapter)) { if (!pointer) pointer = item; }
+      if (inTitle && !chapterDoc && item.kind === "school_handbook" && !HOWTO_PENALTY_DOC.test(chapter) && !HOWTO_EXAM_DOC.test(chapter)) chapterDoc = item;
+      var penDoc = HOWTO_PENALTY_DOC.test(chapter);
+      if (penDoc) proc = [];
+      if (proc.length || pen.length) rows.push({ item: item, chapter: chapter, proc: proc, pen: pen, lead: procAll, inTitle: inTitle, penDoc: penDoc, exam: HOWTO_EXAM_DOC.test(chapter) && !asksExam && !forgot });
+    });
+    if (pointer) office = howtoOffice(pointer.title) || office;
+    var mains = rows.filter(function (r) { return r.proc.length && !r.exam; })
+      .sort(function (a, b) { return (b.proc.length * 10 + (b.inTitle ? 8 : 0)) - (a.proc.length * 10 + (a.inTitle ? 8 : 0)); });
+    /* A notice about replacing it (一卡通數位學生證補發申請書), newest first. */
+    var notices = (items || []).filter(function (item) { return item && !isSchoolDoc(item) && hasSubject(clean(item.title || "")) && HOWTO_NOTICE.test(clean(item.title || "")); })
+      .sort(function (a, b) { return String(b.date || b.first_seen || "").localeCompare(String(a.date || a.first_seen || "")); });
+    var notice = notices[0] || null;
+    var noticeOld = notice && /^\d{4}-\d{2}-\d{2}$/.test(String(notice.date || "").slice(0, 10)) && String(notice.date).slice(0, 10) < isoAdd(asOf, -365);
+    /* The penalty side note: the exam rule (with its temporary-ID step) or the nearest penalty sentence. */
+    var side = null;
+    /* Something lost: only the exam rule's temporary-ID step is useful; another act's penalty is not. */
+    var sideRow = rows.filter(function (r) { return r.exam && (loss ? r.proc.length : r.proc.length || r.pen.length); })[0] ||
+      (loss ? null : rows.filter(function (r) { return r.pen.length; }).sort(function (a, b) { return (b.inTitle ? 1 : 0) - (a.inTitle ? 1 : 0); })[0]);
+    if (sideRow) side = { row: sideRow, lines: sideRow.exam ? sideRow.lead.slice(0, 1).concat(sideRow.proc.slice(0, 1), sideRow.pen.slice(0, 1)) : sideRow.pen.slice(0, 2) };
+    return { main: mains[0] || null, pointer: pointer, chapterDoc: chapterDoc, office: office, notice: notice, noticeOld: !!noticeOld, side: side };
+  }
+  function howtoThing(query, subject) {
+    var s = subject.words[0] || "";
+    var noun = howtoNoun(query);
+    if (noun.length >= 2 && !HOWTO_SEIZED.test(query)) s = noun;
+    if (/沒收|扣留|收走/.test(query)) return s + "被沒收後的處理方式";
+    if (HOWTO_BROKEN.test(query)) return s + "損壞後的補辦方式";
+    if (HOWTO_LOSS.test(query)) return s + "遺失後的補辦方式";
+    if (HOWTO_FORGOT.test(query)) {
+      var tail = clean(query).split(/忘記帶|忘了帶|忘帶|沒帶|未帶/).slice(1).join(" ");
+      var carried = subject.words.filter(function (w) { return tail.indexOf(w) !== -1; })[0];
+      return "忘記帶" + (carried || s) + "時的處理方式";
+    }
+    return s + "的處理方式";
+  }
+  /* The side note: a labelled sentence or two, never the answer itself. */
+  function howtoSideNote(found, subject, query) {
+    if (!found.side) return null;
+    var row = found.side.row, lines = found.side.lines.map(function (s) { s = tidyPoint(s); return s.length > 150 ? s.slice(0, 149) + "…" : s; });
+    if (!lines.length) return null;
+    var lead = row.exam ? "另外，考試時的規定（〈" + row.chapter + "〉）：" : "另外，〈" + row.chapter + "〉有寫相關的處分：";
+    var body = lines.map(function (l) { return /[。！？]$/.test(l) ? l : l + "。"; }).join("");
+    return { layer: "rule", label: "規定", summary: body, text: lead + body, sources: [Object.assign({}, row.item, { note: "學校規定原文" })] };
+  }
+  /* The answer the layers produced is a penalty (記警告…) rather than a procedure. */
+  function howtoPenaltyish(result, query) {
+    var text = (result.answer_lines || []).concat([result.summary || ""]).join(" ");
+    if (HOWTO_PENALTY.test(text) || /週輔/.test(text)) return true;
+    /* A line quoted from a 獎懲／考試 chapter is a condition of a penalty, even when the penalty is in the next line. */
+    return !/考|試|測驗|評量/.test(query) && (result.sources || []).some(function (src) { return isSchoolDoc(src) && PENALTY_DOC.test(clean(src.title || "")); });
+  }
+  function howtoFix(query, result, items, details, options) {
+    /* A rule that names the procedure's own document (named) already says plainly what the handbook lacks. */
+    if (!result || result.mode === "chat" || result.named || !howtoAsk(query) || personalDataQuery(query)) return result;
+    var subject = howtoSubject(query);
+    if (!subject.words.length) return result;
+    var loss = HOWTO_LOSS.test(query), mode = result.mode, answered = result.status === "answered";
+    var penaltyish = answered && howtoPenaltyish(result, query);
+    /* Answers that are the right kind already: a system to open, a file, the calendar, a pointer to the chapter, a list. */
+    if (answered && /^(?:service|document|timetable|browse|official|purchase|course_list|multi_school|multi_question)$/.test(mode || "") || answered && mode === "rule_pointer" && !loss && !HOWTO_FORGOT.test(query)) return result;
+    /* A specific rule that already covers every asked word (段考 + 遲到: not allowed in after the cut-off) stays. */
+    if (penaltyish && !loss && !HOWTO_FORGOT.test(query) && subject.words.length >= 2) {
+      var shownText = compact((result.answer_lines || []).join(" "));
+      if (subject.groups.every(function (group) { return group.some(function (f) { return shownText.indexOf(f) !== -1; }); })) return result;
+    }
+    var found = howtoFind(query, subject, items, details, options, loss);
+    var scope = options && options.scopeLabel ? options.scopeLabel : "學校";
+    var side = howtoSideNote(found, subject, query), also = side ? [side] : [];
+    var base = { query: query, key_points: [], related: [], notes: [], plan: questionPlan(query), limitation: "引用學校官網與公告的原文；規定可能修訂，以學校最新公告為準。" };
+    var noticeAside = function () {
+      if (!found.notice) return null;
+      var n = found.notice, day = String(n.date || "").slice(0, 10);
+      return { layer: "announcement", label: "公告", summary: clean(n.title), text: "另外，" + scope + (day ? " " + Number(day.slice(5, 7)) + " 月 " + Number(day.slice(8, 10)) + " 日" : "") + "的公告〈" + clean(n.title) + "〉也和這件事有關" + (found.noticeOld ? "（這是 " + day.slice(0, 4) + " 年的公告，現在的做法可能不同）" : "") + "。", sources: [n] };
+    };
+    /* A. The chapter or page says what to do. */
+    /* What the answer says once its penalty sentences are taken out; a line from a 獎懲 chapter (or, for something lost, from the exam rule) is not a procedure. */
+    var shown = (result.answer_lines || []).join("。").split("。").filter(function (sentence) { return !HOWTO_PENALTY.test(sentence); }).join("。"), shownKey = compact(shown);
+    var fromPenaltyChapter = (result.sources || []).some(function (src) {
+      var chapter = clean(String(src && src.title || "").split("›").pop());
+      return isSchoolDoc(src) && (HOWTO_PENALTY_DOC.test(chapter) || loss && HOWTO_EXAM_DOC.test(chapter) && !/考|試/.test(query));
+    });
+    var procedural = answered && !fromPenaltyChapter && (loss ? HOWTO_LOSS_STRONG : HOWTO_STRONG).test(shown) &&
+      subject.groups.every(function (group) { return group.some(function (f) { return shownKey.indexOf(f) !== -1; }); });
+    /* The answer already says what to do. */
+    if (procedural) return result;
+    if (found.main && (!answered || penaltyish || mode === "rule" || mode === "rule_pointer" || loss)) {
+      var lines = unique(found.main.proc.map(function (s) { return tidyPoint(s); })).slice(0, 4).map(function (s) { return /[。！？]$/.test(s) ? s : s + "。"; });
+      var aside = noticeAside(); if (aside) also.unshift(aside);
+      var src = Object.assign({}, found.main.item, { note: "學校規定原文" });
+      var out = Object.assign({}, base, { status: "answered", mode: "howto", summary: "依" + scope + "「" + clean(found.main.item.title) + "」：" + lines.join(""),
+        answer_lines: lines, evidence: lines.map(function (text) { return { text: text, announcement_id: found.main.item.id, title: found.main.item.title, score: 10, source_meta: { source_type: "school_doc" } }; }),
+        sources: [src], also: also, confidence: "high" });
+      out.reply = { text: lines[0], bullets: lines.slice(1), source: sourceNote(out, 1) };
+      return out;
+    }
+    /* Some other answer that is not a penalty and not about something lost: leave it. */
+    if (answered && !penaltyish && !loss) return result;
+    /* B. Only the school's own page about it (and perhaps a notice): say where, without inventing the steps. */
+    if (found.pointer) {
+      var page = clean(String(found.pointer.title).split("›").pop()), office = found.office;
+      var aside2 = noticeAside(); if (aside2) also.unshift(aside2);
+      var text = scope + "學校網頁" + (office ? "在" + office + "底下" : "") + "有「" + page + "」這一頁，就是在講這件事，辦理的細節請點開看原文" + (office ? "，也可以直接問" + office : "") + "。";
+      var outB = Object.assign({}, base, { status: "answered", mode: "howto", summary: text, answer_lines: [], evidence: [],
+        sources: [Object.assign({}, found.pointer, { kind: found.pointer.kind, note: "學校網頁" })], also: also, confidence: "medium" });
+      outB.reply = { text: text, bullets: [], source: "" };
+      return outB;
+    }
+    /* B'. A handbook chapter named after it, whose text cannot be read here. */
+    if (found.chapterDoc && !loss && !answered) {
+      var ch = clean(String(found.chapterDoc.title).split("›").pop()), pg = Array.isArray(found.chapterDoc.page_range) ? "（第 " + found.chapterDoc.page_range[0] + (found.chapterDoc.page_range[1] !== found.chapterDoc.page_range[0] ? "–" + found.chapterDoc.page_range[1] : "") + " 頁）" : "";
+      var textP = scope + bookName(found.chapterDoc) + "的「" + ch + "」" + pg + "就是在講這個，辦理的做法請點開看原文。";
+      var outP = Object.assign({}, base, { status: "answered", mode: "howto", summary: textP, answer_lines: [], evidence: [], sources: [Object.assign({}, found.chapterDoc, { note: pg || bookName(found.chapterDoc) })], also: also, confidence: "medium" });
+      outP.reply = { text: textP, bullets: [], source: "" };
+      return outP;
+    }
+    /* C. Nothing says what to do: say so plainly; a penalty is only the side note. */
+    var idish = /證/.test(subject.words[0] || "");
+    var ask = found.office ? "通常可以到" + found.office + "詢問" : idish ? "可以先問導師或教務處" : "可以先問導師或相關處室";
+    var none = scope + "的資料裡沒有寫" + howtoThing(query, subject) + "，" + ask + "。";
+    var aside3 = noticeAside(); if (aside3) also.unshift(aside3);
+    /* The penalty answer the layers found stays as a labelled side note (not for something lost: that rule is about another act). */
+    if (penaltyish && !loss && (result.answer_lines || []).length && !side) {
+      var top = (result.sources || [])[0] || {}, shownLines = (result.answer_lines || []).slice(0, 2).map(function (l) { l = tidyPoint(l); return l.length > 150 ? l.slice(0, 149) + "…" : l; });
+      also.push({ layer: "rule", label: "規定", summary: shownLines.join(""), text: "另外，〈" + clean(String(top.title || "").split("›").pop() || "相關規定") + "〉有寫相關的規定：" + shownLines.map(function (l) { return /[。！？]$/.test(l) ? l : l + "。"; }).join(""), sources: (result.sources || []).slice(0, 1) });
+    }
+    var onlyNotice = also.length === 1 && also[0].layer === "announcement";
+    if (!also.length || onlyNotice) {
+      var related = (result.related || []).slice();
+      if (onlyNotice) related = [Object.assign({}, found.notice, { note: found.noticeOld ? "這是 " + String(found.notice.date || "").slice(0, 4) + " 年的公告" : "和補辦有關的公告" })].concat(related);
+      return Object.assign({}, base, { status: "insufficient", summary: none, evidence: [], sources: [], related: related, absent_terms: subject.words.slice(0, 1), reply: { text: none, bullets: [] } });
+    }
+    var outC = Object.assign({}, base, { status: "answered", mode: "howto", summary: none, answer_lines: [], evidence: [], sources: [], also: also, confidence: "medium" });
+    outC.reply = { text: none, bullets: [], source: "" };
+    return outC;
+  }
   /* While a 「115年…」 question is answered (also its split parts) a title alone must not stand in for the year. */
   var yearOfQuestion = 0;
   function answerOnce(query, items, details, options) {
@@ -2684,6 +2972,8 @@
      deep inside an unrelated clause (a drill procedure that ends 「學生宿舍同學集合於停車場」) is incidental.
      Either way the answer says so instead of attaching an unrelated notice. */
   function coreAsked(query, stats) {
+    /* 「我是高二的」 says who is asking, not what is asked: the data need not mention it. */
+    query = String(query || "").replace(/我(?:現在)?(?:是|讀|念)(?:高|國)[一二三](?:的|生|年級)?(?:學生)?/g, " ").replace(/順便|累積|一些|好像|想說|想問|想知道|看到|不知道|可是|另外|我也|請問|麻煩|有點|其實|因為|所以|但是|然後|還是|或是|應該|是不是/g, " ");
     var terms = [], anchors = [], parts = [], genericForms = GATE_STRIP.concat(ALWAYS_GENERIC).map(compact);
     gateWords(query).forEach(function (run) {
       var rest = run;
@@ -2809,7 +3099,8 @@
       terms = terms.filter(function (t) { return !CLAUSE_DETAIL.test(t); });
       if (!terms.length) return false;
       /* The same subject twice (請假…請假, 社團…吉他社) is one question about it: no word of one may share a character with another. */
-      if (terms.some(function (t) { return seen.some(function (o) { return t.split("").some(function (ch) { return o.indexOf(ch) !== -1; }); }); })) return false;
+      /* A clause with a subject of its own (申請入學) next to a shared word (志工) is a second question; one that adds nothing new is not. */
+      if (terms.every(function (t) { return seen.some(function (o) { return t.split("").some(function (ch) { return o.indexOf(ch) !== -1; }); }); })) return false;
       seen = seen.concat(terms); c.heading = terms[0];
       return true;
     });
@@ -2915,7 +3206,7 @@
     if (result && services.length) {
       result.service_links = services;
       /* 「成績怎麼查」「考試範圍在哪看」: the answer is the system itself. */
-      var strong = services[0].weight >= 4 && SERVICE_ASK.test(query) && result.mode !== "timetable" && result.list_label !== "行事曆";
+      var strong = services[0].weight >= 4 && SERVICE_ASK.test(query) && !noticeAnswersAvailability(query, result, services) && result.mode !== "timetable" && result.list_label !== "行事曆";
       if (strong || (result.status !== "answered" && (SERVICE_ASK.test(query) || services[0].weight >= 3))) {
         var first = services[0];
         result = Object.assign({}, result, { status: "answered", mode: "service", evidence: [], related: result.related || [], key_points: [],
@@ -2945,6 +3236,7 @@
       }
     }
     if (result) result = coverageGuard(query, result, options);
+    if (result) result = howtoFix(query, result, items, details, options);
     if (result) result.reply = conversational(result);
     /* The calendar or rules found something even though the announcements did not: no 「找不到」 opener. */
     if (result && result.status !== "answered" && (result.also || []).length && result.reply) result.reply = Object.assign({}, result.reply, { text: clean(result.summary || result.reply.text) });
@@ -3871,6 +4163,11 @@
        closes on 段考 days) is not the answer to 「什麼時候段考」. */
     if (ruled && ruled.mode === "rule" && !ruled.named && !chapterAbout(ruled.sources && ruled.sources[0], query) &&
         !(asksPenalty(query) && penaltyDocs(ruled.sources || [], query).length)) ruled = null;
+    /* A long message names many specific things (運動賽事 招募 志工): a page that carries only one common word of them is not about it. */
+    var longGate = ruled ? topicGate(query, corpusStats) : null;
+    if (ruled && longGate && longGate.units.length >= 4 && compact(query).length >= 30 && !asksPenalty(query) && longGate.cover(clean((ruled.sources || []).map(function (src) { return src.title || ""; }).join(" ") + " " + (ruled.summary || ""))) < 0.34) ruled = null;
+    /* A school page that only lists announcement titles (選課資訊、結果及上課地點) is a list of old links, not an answer, when an announcement can answer. */
+    if (ruled && ruled.mode === "rule" && onlyNoticeTitles(ruled, all)) ruled = null;
     var layers = {
       rule: ruled,
       calendar: calendar,
@@ -3880,12 +4177,18 @@
     if (layers.rule && layers.calendar && layers.calendar.status === "answered" && !layers.calendar.weak && (WHEN_ASK.test(query) || datePlan(query, asOfDay)) &&
         (layers.rule.sources || []).length && (layers.rule.sources || []).every(function (src) { return RECORDS_TITLE.test(String(src.title || "").split("›").pop()); })) layers.rule = null;
     var order = ["rule", "calendar", "announcement"];
+    var hijack0 = topicGate(query, corpusStats);
     /* Activities (營隊、比賽、講座、研習…) are announced, not written in the rules: 「防災營」 is the
        教育部 camp notice, not the 校園安全檢查規定. The rules come after the announcements then. */
     if (EVENT_ASK.test(query) && !asksPenalty(query)) order = ["announcement", "calendar", "rule"];
     /* A rule clause without any date does not answer 「什麼時候」: the calendar goes first then. */
     var asksWhen = WHEN_ASK.test(query) || !!datePlan(query, asOfDay);
     if (asksWhen && layers.rule && !HAS_TIME.test(layers.rule.summary || "")) order = ["calendar", "rule", "announcement"];
+    /* 「期中考成績何時能查」: a rule that never gives a date does not beat a notice that does, when the notice is about the asked thing (成績校對). */
+    if (asksWhen && layers.rule && layers.announcement && layers.announcement.status === "answered" && !layers.announcement.weak && layers.announcement.mode !== "token" &&
+        !HAS_TIME.test(layers.rule.summary || "") && hijack0 && (layers.announcement.sources || []).some(function (src) { return hijack0.cover(src.title || "") >= 0.5; })) order = ["calendar", "announcement", "rule"];
+    /* 「圖書館時間」: a rule page that never mentions opening hours (借書辦法) is not the hours. */
+    if (HOURS_ASK.test(clean(query)) && layers.rule && layers.rule.mode === "rule" && !HOURS_CUE.test(clean((layers.rule.summary || "") + " " + (layers.rule.answer_lines || []).join(" ")))) layers.rule = null;
     /* 「校運會什麼時候」「校運」: an entry on the school calendar that is on now or still ahead beats a
        rule page about it (運動競賽成績) and an old notice (113學年 海報比賽). */
     if (layers.calendar && layers.calendar.status === "answered" && !layers.calendar.weak && layers.calendar.mode === "browse" &&
@@ -3936,6 +4239,8 @@
     if (eventWords.length && !asksPenalty(query)) main.also = main.also.filter(function (row) {
       return row.layer !== "rule" || eventWords.some(function (w) { return String(row.summary).indexOf(w) !== -1; });
     });
+    /* A rule that only names the exam (考試要點) while the notice answers about its 成績 adds nothing. */
+    if (main.layer === "announcement" && hijack0 && !asksPenalty(query)) main.also = main.also.filter(function (row) { return row.layer !== "rule" || hijack0.cover(row.summary || "") > 0.5; });
     /* 「校運會什麼時候」: a results notice (成績公告、得獎名單) says nothing about when, so it is no side note. */
     if (!/成績|名次|得獎|獲獎|結果|名單|榜|錄取|排名/.test(query) && /時候|日期|哪天|幾號|何時|幾月|哪一天|差異/.test(query)) main.also = main.also.filter(function (row) {
       return row.layer !== "announcement" || !(row.sources || []).length || !(row.sources || []).every(function (src) { return TITLE_RESULT.test(src.title || "") || /成績/.test(src.title || ""); });
@@ -3962,6 +4267,44 @@
     main.layers_checked = order.slice();
     return main;
   }
+  /* True when every line of a rule answer is just the title of an announcement (a menu page's link list). */
+  function onlyNoticeTitles(layer, all) {
+    var lines = (layer.answer_lines || []).map(function (line) { return compact(String(line).replace(/\s*\d{4}-\d{2}-\d{2}\s*$/, "").replace(/[。.]$/, "")); }).filter(function (line) { return line.length >= 6; });
+    if (!lines.length || lines.length !== (layer.answer_lines || []).length) return false;
+    var titles = {};
+    (all || []).forEach(function (item) { if (item && !isSchoolDoc(item) && item.kind !== "school_service") titles[compact(item.title || "")] = true; });
+    return lines.every(function (line) { return titles[line]; });
+  }
+  /* 「選課結果出來了嗎」: when a public notice with that very title exists, the notice is the answer;
+     the login system is only where one's own record is. */
+  var ASKS_PUBLISHED = /出來了嗎|公布了嗎|公佈了嗎|公告了嗎|出爐|放榜了嗎|有沒有出來|發布了嗎|出來沒|公布了沒|公告了沒/;
+  function noticeAnswersAvailability(query, result, services) {
+    if (!result || result.status !== "answered" || !ASKS_PUBLISHED.test(clean(query))) return false;
+    var src = (result.sources || [])[0];
+    if (!src || isSchoolDoc(src) || src.kind === "school_service") return false;
+    var title = compact(src.title || "");
+    return (services || []).some(function (s) { return (s.hits || []).some(function (k) { return title.indexOf(k) !== -1; }); });
+  }
+  /* A notice that is only a few lines long is told whole: the line that answers comes first and the
+     remaining lines (who to ask, by when) follow, so no detail of a three-line notice is left out. */
+  var SIGNATURE_LINE = /^[\u4e00-\u9fff]{2,8}\s*\d{6,8}$/;
+  function withShortNoticeRest(evidence, ranked) {
+    var lead = evidence[0];
+    if (!lead || !lead.announcement_id || (lead.source_meta && lead.source_meta.source_type === "title") || lead.fragment) return evidence;
+    var row = (ranked || []).filter(function (r) { return r.item.id === lead.announcement_id; })[0];
+    if (!row || !row.detail || isSchoolDoc(row.item)) return evidence;
+    var units = quoteUnits(detailSegments(row.detail)).filter(function (u) { return !(u.meta && u.meta.source_type === "attachment") && compact(u.text).length >= 6 && !SIGNATURE_LINE.test(clean(u.text)); });
+    if (units.length < 2 || units.length > 4 || units.some(function (u) { return u.text.length > 120 || ROSTER_TEXT.test(u.text); })) return evidence;
+    var have = {}; evidence.forEach(function (e) { have[compact(e.text)] = true; });
+    var leadKey = compact(lead.text), leadMarked = Object.assign({}, lead, { rest: true, at: -1 });
+    units.forEach(function (u, i) { if (compact(u.text).indexOf(leadKey) !== -1 || leadKey.indexOf(compact(u.text)) !== -1) leadMarked.at = i; });
+    var extra = units.filter(function (u) { return !have[compact(u.text)]; }).map(function (u, i) {
+      return { text: u.text.slice(0, 220), announcement_id: lead.announcement_id, title: lead.title, score: lead.score - 1 - i, validity: lead.validity, source_meta: u.meta || {}, rest: true, at: units.indexOf(u) };
+    });
+    return [leadMarked].concat(extra, evidence.filter(function (e) { return e !== lead && e.announcement_id !== lead.announcement_id; }));
+  }
+  var HOURS_ASK = /幾點|開到|開放時間|營業時間|服務時間|開館時間|(?:圖書館|自習室|自修室|合作社|福利社|保健室|健康中心|游泳池|體育館|輔導室|教務處|學務處|總務處|圖書室)(?:的)?時間\s*[？?]?$/;
+  var HOURS_CUE = /\d{1,2}\s*[:：]\s*\d{2}|[0-9一二三四五六七八九十]+\s*[點時](?!間)|開放時間|開館|閉館|早上|上午|下午|晚上|中午|星期|週[一二三四五六日]/;
   function chapterAbout(item, query) {
     if (!item) return false;
     var chapter = compact(String(item.title || "").split("›").pop());
@@ -4280,7 +4623,7 @@
       segments.map(function (segment, index) {
         var f = framed[index], text = f && framedText({ heading: f && f.heading, headings: f && f.headings, text: segment.text });
         var at = segment.index == null ? index : segment.index;
-        return { text: text, meta: segment.meta || {}, score: evidenceScore(text, queryTokens, wanted, plan, row.item) + (at === pointed ? (plan.answer_slot === "deadline" && !TIME_PHRASE.test(text) ? 10 : plan.event_date && (DEADLINE_CUE.test(text) || NOTICE_CUE.test(text)) && !EVENT_CUE.test(text) ? 0 : 60) : 0) + freshness(row.item, asOfDay) * (eventAsk ? 2 : 1) + (eventAsk ? Math.max(0, 24 - 12 * (position[row.item.id] || 0)) : 0), item: row.item };
+        return { text: text, meta: segment.meta || {}, score: evidenceScore(text, queryTokens, wanted, plan, row.item) + (at === pointed ? (plan.answer_slot === "deadline" && !TIME_PHRASE.test(text) ? 10 : plan.event_date && (DEADLINE_CUE.test(text) || NOTICE_CUE.test(text)) && !EVENT_CUE.test(text) ? 0 : 60) : 0) + freshness(row.item, asOfDay) * (eventAsk ? 2 : 1) + (eventAsk ? Math.max(0, 24 - 12 * (position[row.item.id] || 0)) : Math.max(0, 30 - 15 * (position[row.item.id] || 0))), item: row.item };
       }).filter(function (candidate) {
         return candidateQualifies(candidate, plan) && (!Validity || Validity.sentencePolicy(candidate.text, row.validity, query) !== "exclude");
       }).map(function (candidate) { candidate.score -= echoPenalty(candidate.text, candidate.item.title); return candidate; }).sort(function (a, b) { return b.score - a.score; }).slice(0, 2).forEach(function (candidate) {
@@ -4297,8 +4640,13 @@
     /* The sentence that is quoted has to be about the asked words itself (or sit in a notice whose title is). */
     /* 「期中考成績什麼時候查」 is about the grades; the exam timetable does not answer it. */
     if (/成績/.test(query)) evidence = evidence.filter(function (row) { return /成績/.test((row.text || "") + (row.title || "")); });
+    /* 「圖書館時間」 asks for opening hours: only a sentence that names hours can answer it. */
+    if (HOURS_ASK.test(clean(query))) evidence = evidence.filter(function (row) { return HOURS_CUE.test(row.text || ""); });
     var gateEv = topicGate(query, stats);
-    if (gateEv) evidence = evidence.filter(function (row) { return row.source_meta && row.source_meta.source_type === "title" || gateEv.cover((PROGRAM_ASK.test(query) ? "" : row.text || "") + " " + (row.title || "")) > 0 && gateEv.chainTest((row.text || "") + " " + (row.title || "")); });
+    if (gateEv) evidence = evidence.filter(function (row) { return row.source_meta && row.source_meta.source_type === "title" || gateEv.cover((PROGRAM_ASK.test(query) ? "" : row.text || "") + " " + (row.title || "")) > ((gateEv.units.length >= 4 && compact(query).length >= 30) ? 0.3 : (gateEv.units.length >= 2 && compact(query).length >= 24) ? 0.5 : 0) && gateEv.chainTest((row.text || "") + " " + (row.title || "")); });
+    /* 「微課程後八週」: a sentence from a notice about a different kind of course (充實補強) or the other half (前八週) is not the answer while the right kind has one. */
+    var offKind = function (row) { return exclusivePenalty(query, (row.title || "") + " " + (row.text || "")); };
+    if (evidence.length > 1 && evidence.some(function (row) { return !offKind(row); })) evidence = evidence.filter(function (row) { return !offKind(row); });
     evidence = evidence.filter(function (row) { return topicScore((row.title || "") + " " + (row.text || "") + " " + (row.fragment && row.fragment.keywords || ""), query, stats) >= 0.5; });
     /* No text to quote (guests), but a notice's labels say which segment holds the asked kind:
        answer the date from it, or say where it is written. */
@@ -4313,7 +4661,11 @@
     /* A bare activity question (「半導體營」) is about the newest matching activity: its sentence leads,
        the others follow as related notices. */
     if (eventAsk && !plan.answer_slot && !wanted.length && topRow) evidence.forEach(function (e) { if (e.announcement_id === topRow.item.id) e.score += 500; });
-    if (!evidence.length) { var fromLabels = tokenAnswer(query, asked, ranked, options); if (fromLabels) return fromLabels; }
+    /* With several specific things asked (運動賽事 招募 志工), a notice that carries only one of them is no answer from labels either. */
+    var labelGate = !evidence.length ? topicGate(query, stats) : null;
+    var labelFloor = labelGate && compact(query).length >= 24 ? (labelGate.units.length >= 4 ? 0.34 : labelGate.units.length >= 2 ? 0.51 : 0) : 0;
+    var labelRanked = labelFloor ? ranked.filter(function (row) { return labelGate.cover(clean(row.item.title || "") + " " + overview(row.item)) >= labelFloor; }) : ranked;
+    if (!evidence.length && labelRanked.length) { var fromLabels = tokenAnswer(query, asked, labelRanked, options); if (fromLabels) return fromLabels; }
     /* 「中研講堂」: the page has no text beyond its title, but the title says what, when and where. */
     if (!evidence.length && eventAsk && !wanted.length && !plan.answer_slot && !WHEN_ASK.test(query) && !YEAR_ASK.test(query)) {
       var titled = ranked.filter(function (row) { var t = clean(row.item.title || ""); return t.length >= 16 && topicScore(t, query, stats) >= 0.8 && !TITLE_RESULT.test(t); })
@@ -4359,6 +4711,7 @@
     var validityWarnings = [];
     ranked.forEach(function (row) { (row.validity.warnings || []).forEach(function (warning) { validityWarnings.push(warning); }); });
     evidence.sort(function(a,b){return b.score-a.score;});
+    evidence = withShortNoticeRest(evidence, ranked);
     /* The notice the answer quotes is the first source. */
     sources.sort(function (a, b) { return (b.id === evidence[0].announcement_id ? 1 : 0) - (a.id === evidence[0].announcement_id ? 1 : 0); });
     var content = sources.length > 1 && sources.some(function (i) { return i.validity && i.validity.relations && i.validity.relations.length; }) ? null : contentLayer(query, ranked, evidence, asOfDay, plan);
@@ -4371,15 +4724,18 @@
       sources = sources.filter(function (src, i) {
         if (i === 0) return true;
         var day = String(src.date || src.first_seen || "").slice(0, 10);
+        /* Only an earlier edition of the same event is 「歷屆」: a different notice that happens to be older is not. */
         var older = /^\d{4}-\d{2}-\d{2}$/.test(day) && /^\d{4}-\d{2}-\d{2}$/.test(leadDay) && (Date.parse(leadDay) - Date.parse(day)) / 86400000 > 30;
-        if (older) pastEditions.push(src);
+        if (older && familySimilarity({ item: src }, { item: leadSrc }) >= 0.5) pastEditions.push(src);
         return !older;
       });
     }
     var lines = answerLines(evidence, sources);
     var pointRow = ranked.filter(function (row) { return evidence[0] && row.item.id === evidence[0].announcement_id; })[0];
     var pointText = pointRow ? (detailText(pointRow.detail) || clean((pointRow.item.summary || "") + " " + (pointRow.item.snippet || ""))) : "";
-    var points = keyPoints(pointText || evidence.filter(function (row) { return evidence[0] && row.announcement_id === evidence[0].announcement_id; }).map(function (row) { return row.text; }).join("。"), { published: pointRow && pointRow.item.date });
+    var points = keyPoints(pointText || evidence.filter(function (row) { return evidence[0] && row.announcement_id === evidence[0].announcement_id; }).map(function (row) { return row.text; }).join("。"), { published: pointRow && pointRow.item.date, asksWhen: WHEN_ASK.test(query) });
+    /* 「…閱覽規定 94年2月訂定」 is a revision note, not a place or a time. */
+    points = points.filter(function (p) { return !/訂定|修訂|修正/.test(p && p.value || ""); });
     if (content) points = mergeFieldPoints(points, content.fields);
     var links = wantsLink(query) ? answerLinks(pointRow || { item: sources[0] || {} }) : [];
     var summaryText = composeSummary(evidence, sources, wanted, plan, options && options.asOf || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" }), content);
@@ -4392,7 +4748,7 @@
     }
     return { status: "answered", query: query, key_points: points, links: links, summary: summaryText,
       content: content ? { kind: content.kind, slot: content.slot, found: content.found, text: content.text, value: content.value, url: content.url, from: content.from, facts: content.facts } : undefined,
-      answer_lines: lines, limitation: titleOnly ? "公告內文沒有直接回答這題，細節在公告附件或原文連結，請點開公告查看。" : evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
+      as_of: asOfDay, answer_lines: lines, limitation: titleOnly ? "公告內文沒有直接回答這題，細節在公告附件或原文連結，請點開公告查看。" : evidenceLimitation(evidence, sources, plan, validityWarnings), confidence: validityWarnings.length ? "medium" : (lines.length >= 2 ? "high" : "medium"),
       plan: plan, evidence: evidence, sources: sources, validity_warnings: unique(validityWarnings) };
   }
   return { topicScore: topicScore, topicGate: topicGate, pieceStats: pieceStats, tokens: tokens, anchors: anchors, literalAnchors:literalAnchors, intent: intent, answerSlot:answerSlot, subjectTerms:subjectTerms, questionPlan: questionPlan, detailText: detailText, detailSegments:detailSegments, rank: rank, readList: readList, asksPenalty: asksPenalty, penaltyDocs: penaltyDocs,

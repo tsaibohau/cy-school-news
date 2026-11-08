@@ -142,7 +142,7 @@ async function flush() {
   await new Promise((resolve) => setImmediate(resolve));
 }
 
-async function createApp({ storage, responses, notification, controller = null, location = null, crypto = null, accountAuth = null, accountConfig = null, swRegistration = null }) {
+async function createApp({ storage, responses, notification, controller = null, location = null, crypto = null, accountAuth = null, accountConfig = null, swRegistration = null, slim = false }) {
   const document = makeDocument();
   const queue = responses.slice();
   const fetchRequests = [];
@@ -156,6 +156,8 @@ async function createApp({ storage, responses, notification, controller = null, 
     scrollTo() {},
     addEventListener() {},
     __CYNEWS_TEST__: true,
+    __CYNEWS_NO_SLIM__: !slim,
+    requestIdleCallback: slim ? () => 0 : undefined,  /* the background full load only runs when a test asks for it */  /* these tests queue one response per full-file request */
   };
   if (location) window.location = location;
   if (crypto) window.crypto = crypto;
@@ -637,7 +639,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v168/);
+  assert.match(swSource, /cy-news-v169/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);
@@ -656,9 +658,11 @@ function testServiceWorkerContract() {
   assert.match(swSource, /\.\/account-sync\.js/);
   assert.match(swSource, /\.\/task-state\.js/);
   assert.match(swSource, /\.\/today\.js/);
-  assert.match(swSource, /\.\/data\/class-timetables\.json/, "PWA shell includes the public class timetable snapshot");
+  const shellList = swSource.slice(swSource.indexOf("var SHELL"), swSource.indexOf("self.addEventListener(\"install\""));
+  assert.doesNotMatch(shellList, /\.\/data\//, "big data files (timetables, calendar events) are cached on first use, not precached at install");
+  assert.match(swSource, /url\.pathname\.indexOf\("\/data\/"\) !== -1/, "data files are cached the first time they are fetched");
   assert.match(swSource, /\.\/announcement-validity-reviewed\.js\?v=52/, "PWA caches reviewed validity records");
-  assert.match(swSource, /\.\/announcement-validity\.js\?v=52/, "PWA caches the validity module with the same shell revision");
+  assert.match(swSource, /\.\/announcement-validity\.js\?v=53/, "PWA caches the validity module with the same shell revision");
   assert.match(swSource, /searchParams\.has\("code"\)/);
   assert.match(swSource, /searchParams\.has\("access_token"\)/);
   assert.match(swSource, /searchParams\.has\("refresh_token"\)/);
@@ -669,7 +673,44 @@ function testServiceWorkerContract() {
   assert.match(swSource, /markDataSource\(hit, "cache"\)/);
 }
 
+
+async function testSlimFirstLoad() {
+  /* First load reads the small latest snapshot, then upgrades to the full file in the background. */
+  /* more than one page (200) of items, so showing the snapshot's end is not what triggers the full load */
+  const recent = Array.from({ length: 250 }, (_, i) => item("new-" + i, "2026-08-20T00:00:00Z", "最新公告" + i));
+  const slimDoc = Object.assign(dataOf(recent), { partial: true, total_items: 251 });
+  const full = dataOf(recent.concat([item("old-1", "2026-01-20T00:00:00Z", "較舊公告")]));
+  const run = await createApp({ storage: new MemoryStorage(), responses: [response(slimDoc), response(full)], notification: makeNotification(), slim: true });
+  assert.match(run.fetchRequests[0].url, /data\/announcements-latest\.json/, "first request is the slim snapshot");
+  assert.equal(run.app.getState().partial, true);
+  assert.equal(run.app.getState().data.items.length, 250);
+  assert.match(run.document.elements.countLine.textContent, /完整資料載入中/);
+  await run.app.loadFullData();
+  assert.match(run.fetchRequests[1].url, /data\/announcements\.json/, "then the full file");
+  assert.equal(run.app.getState().partial, false);
+  assert.equal(run.app.getState().data.items.length, 251);
+  await run.app.loadFullData();
+  assert.equal(run.fetchRequests.length, 2, "the full file is only fetched once");
+
+  /* The snapshot does not exist yet (before the first scraper run): fall back to the full file. */
+  const notFound = { ok: false, status: 404, json: () => Promise.resolve({}), headers: { get: () => null } };
+  const fallback = await createApp({ storage: new MemoryStorage(), responses: [notFound, response(full)], notification: makeNotification(), slim: true });
+  assert.match(fallback.fetchRequests[0].url, /announcements-latest\.json/);
+  assert.match(fallback.fetchRequests[1].url, /data\/announcements\.json/);
+  assert.equal(fallback.app.getState().partial, false);
+  assert.equal(fallback.app.getState().data.items.length, 251);
+
+  /* Searching needs every announcement: the full file starts loading as soon as a query is typed. */
+  const searching = await createApp({ storage: new MemoryStorage(), responses: [response(slimDoc), response(full)], notification: makeNotification(), slim: true });
+  searching.document.elements.q.value = "較舊";
+  searching.document.elements.q.emit("input");
+  await flush();
+  await new Promise((resolve) => setTimeout(resolve, 400));
+  assert.ok(searching.fetchRequests.some((req) => /data\/announcements\.json/.test(req.url)), "a search triggers the full load");
+}
+
 (async function () {
+  await testSlimFirstLoad();
   await testRepeatedAppOpens();
   await testRepeatedRefreshAndRender();
   await testRefreshStatusContract();

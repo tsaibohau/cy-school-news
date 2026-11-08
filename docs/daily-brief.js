@@ -90,7 +90,7 @@
    */
   function compose(input) {
     input = input || {};
-    var today = DATE.test(String(input.today || "")) ? input.today : new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Taipei" });
+    var today = DATE.test(String(input.today || "")) ? input.today : new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
     var p = input.projection || {};
     var lines = [];
     var who = String(input.nickname || "").trim();

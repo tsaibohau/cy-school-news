@@ -53,12 +53,20 @@
     if (grade && grade < 3 && (SENIOR_ADMISSION.test(title) || clean(item.category) === "升學")) return "senior_admission";
     return "";
   }
+  /* registry.find 每次都複製一份學校資料；這裡只讀 short，同一個 registry 的結果記起來重複使用（上千則公告各問兩次）。 */
+  var schoolCache = typeof WeakMap === "function" ? new WeakMap() : null;
+  function findSchool(registry, id) {
+    var bucket = schoolCache && schoolCache.get(registry);
+    if (!bucket) { bucket = Object.create(null); if (schoolCache) schoolCache.set(registry, bucket); }
+    if (!(id in bucket)) bucket[id] = registry.find(id);
+    return bucket[id];
+  }
   function calculate(item, profile, schoolRegistry) {
     item = item || {}; profile = profile || {};
     var audience = audienceFor(item), reasons = [], priority = 0;
     var school = clean(item.school || item.school_id), profileSchool = clean(profile.school_id);
-    var schoolDef = schoolRegistry && schoolRegistry.find ? schoolRegistry.find(school) : null;
-    var profileSchoolDef = schoolRegistry && schoolRegistry.find ? schoolRegistry.find(profileSchool) : null;
+    var schoolDef = schoolRegistry && schoolRegistry.find ? findSchool(schoolRegistry, school) : null;
+    var profileSchoolDef = schoolRegistry && schoolRegistry.find ? findSchool(schoolRegistry, profileSchool) : null;
     var schoolMatch = !!school && !!profileSchool && school === profileSchool;
     var schoolMismatch = !!school && !!profileSchool && school !== profileSchool && !audience.all_school;
     if (schoolMatch) { priority += 120; reasons.push(reason("school_match", "school", school, profileSchoolDef ? profileSchoolDef.short : school)); }
