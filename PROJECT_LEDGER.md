@@ -2458,3 +2458,15 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 說明文字改為「嘉義高中公告彙整」，頁面描述與 manifest 移除嘉義女中。
 - 限制：docs/data 的公開 JSON（公告標題、行事曆、課表、校園資訊）仍可被直接下載；要完全不公開需改爬蟲輸出（另案）。
 - 版本：app v146、school-registry v51、cy-news-v171。測試：tests/test_restricted_schools.js。
+
+## 2026-11-08 其他學校資料不進公開倉庫（切分與還原）
+- 問題：倉庫與 GitHub Pages 都是公開的，docs/data 與 scraper/*.json 仍含全部 58 校的公告、行事曆、校園資訊與爬蟲狀態。只有嘉中可以公開；其他學校（含嘉女）的資料改存在公開倉庫之外的 Supabase 私有 bucket `restricted-data`（物件＝原檔路徑＋`.gz`）。
+- 規則表：docs/restricted-files.json（`public_schools`＝["cysh"]，各檔的形狀與學校欄位、衍生欄位 series.count／announcements-latest.total_items、逐校檔案與目錄、calendar.ics）。學校代號、名稱、網址一律從 docs/school-registry.js 解析，不在規則表重複。未知的學校欄位值、未知的網址主機一律視為 restricted（寧可多藏）。
+- scraper/restricted_split.py：`split`（階段 blobs＝只寫出備份檔；階段 apply＝重新規劃、確認備份檔與樹完全對得上後才用暫存檔改名改寫公開檔並刪除其他學校的逐校檔案與目錄）、`restore`（把備份檔併回，爬蟲看到的跟切分前一樣；可重複執行不會重複）、`verify`（洩漏掃描：docs/data、scraper/*.json、docs/calendar.ics；不掃 docs/school-registry.js 與 scraper/config.json，它們是學校名錄的程式／設定，不是蒐集到的資料）。備份檔是同形狀、只留 restricted 項目的壓縮 JSON（位元組決定性）；公開檔保留原本的縮排與換行格式，沒有其他學校項目時不改動。日誌只印數量與公開檔案路徑，不印學校代號、名稱或網址。
+- calendar.ics：依 SUMMARY 的 `[學校簡稱]` 前綴逐個 VEVENT 過濾（位元組不變），其他學校的 VEVENT 進備份檔；不認得前綴的一律視為 restricted。schoolcal.py build 仍會用還原後的完整事件重建。
+- 逐校衍生目錄 docs/data/schools/<id>/ 與 docs/data/details/<id>/：切分時直接刪除、不備份；scrape.py、announcement_prune.py、detail_backfill.py 每輪都會由合併後的公告檔重建（測試以重建結果與原檔逐項比對）。
+- scraper/restricted_sync.py：與 Edge Function `restricted-data-sync` 溝通（urllib）。`download`＝列出後逐一下載並比對 sha256（空 bucket 正常；未設定印 RESTRICTED_SYNC_NOT_CONFIGURED 並結束碼 0）；`upload`＝只上傳 sha256 有變的物件、再列出並讀回比對，`--prune` 才刪遠端多餘物件；失敗重試 3 次，未設定結束碼 1（fail closed）。日誌把物件名稱遮成 obj#雜湊。
+- 組合動作 .github/actions/restricted-data（mode＝restore｜split）：split 的順序固定為 寫備份檔 → 上傳並讀回 → 才移除公開檔中的其他學校資料 → 洩漏掃描；任何一步失敗就整個工作失敗、不提交。呼叫端要在 `uses:` 步驟設 env：ANNOUNCEMENT_CONTENT_SYNC_TOKEN（secrets）、ANNOUNCEMENT_CONTENT_SYNC_URL（vars）、SUPABASE_PUBLISHABLE_KEY（vars 或 secrets）。
+- 工作流程：scrape-hourly、announcement-prune、school-info-backfill、token-backfill、calendar-daily、pksh-windows-production 開頭還原、提交前切分；全部放進 concurrency group `scrape`（calendar-daily 原為 calendar-daily、pksh-windows-production 原為 pksh-production），避免同時覆寫同一批私有備份檔。排程頻率不變。ntfy 推播、會員內容同步、提醒目標同步都在切分前的完整資料上執行。census-south-once 只寫 reports/census，不碰這些檔案，未接入。
+- 第一次執行：bucket 還沒有物件時還原視為正常，工作目錄維持原樣；切分時把全部其他學校資料上傳（等於播種），之後 main 上只剩嘉中。歷史提交仍含舊資料，需另行處理（改寫歷史或視為已公開）。
+- 測試：tests/test_restricted_split.py（虛構三校樹的切分／還原／重複切分／中途失敗不動工作樹；同步客戶端對模擬伺服器；真實樹複本的完整往返與洩漏掃描；工作流程步驟順序）。tests/test_calendar_workflow.js 的 group 斷言改為 scrape。

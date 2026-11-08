@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: calendar-daily
+  group: scrape
   cancel-in-progress: false
 
 jobs:
@@ -26,6 +26,15 @@ jobs:
       - name: 安裝相依套件
         run: pip install -r scraper/requirements.txt
 
+      - name: 還原其他學校資料（私有儲存；公開倉庫只有嘉中）
+        uses: ./.github/actions/restricted-data
+        with:
+          mode: restore
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
+
       - name: 檢查官方學校行事曆來源
         run: python scraper/schoolcal.py discover
 
@@ -38,6 +47,15 @@ jobs:
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || vars.NTFY_TOPIC }}
         run: python scraper/schoolcal.py notify
+
+      - name: 切分其他學校資料（上傳私有儲存並確認後才移除，再提交）
+        uses: ./.github/actions/restricted-data
+        with:
+          mode: split
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
 
       - name: 提交 Actions-owned 行事曆資料
         run: |

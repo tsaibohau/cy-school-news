@@ -7,7 +7,7 @@ const workflow = fs.readFileSync(path.join(__dirname, "..", ".github", "workflow
 
 assert.match(workflow, /cron: '1 23 \* \* \*'/, "daily frequency must remain unchanged");
 assert.match(workflow, /permissions:\s*\n\s*contents: write/);
-assert.match(workflow, /group: calendar-daily/);
+assert.match(workflow, /group: scrape\n/, "shares the scrape group: both write the same private blobs");
 assert.match(workflow, /cancel-in-progress: false/);
 
 const discover = workflow.indexOf("python scraper/schoolcal.py discover");

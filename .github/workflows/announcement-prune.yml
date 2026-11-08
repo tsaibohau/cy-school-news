@@ -49,6 +49,15 @@ jobs:
       - name: 安裝相依套件
         run: pip install -r scraper/requirements.txt
 
+      - name: 還原其他學校資料（私有儲存；公開倉庫只有嘉中）
+        uses: ./.github/actions/restricted-data
+        with:
+          mode: restore
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
+
       - name: 確認 404、移除下架公告、重讀過期公告
         env:
           RECHECK_CAP: ${{ github.event.inputs.recheck }}
@@ -101,6 +110,15 @@ jobs:
           const removed = require("./docs/data/removed-announcements.json").removed.length;
           console.log("嘉中、嘉女公告 " + all.length + " 則；已整理 " + all.filter((i) => i.body_condensed).length +
             " 則；待確認 404 " + all.filter((i) => i.link_missing_checks && i.link_status !== "gone").length + " 則；累計移除 " + removed + " 則");'
+
+      - name: 切分其他學校資料（上傳私有儲存並確認後才移除，再提交）
+        uses: ./.github/actions/restricted-data
+        with:
+          mode: split
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
 
       - name: 提交
         run: |

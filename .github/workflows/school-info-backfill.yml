@@ -48,6 +48,15 @@ jobs:
       - name: 安裝相依套件
         run: pip install -r scraper/requirements.txt
 
+      - name: 還原其他學校資料（私有儲存；公開倉庫只有嘉中）
+        uses: ./.github/actions/restricted-data
+        with:
+          mode: restore
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
+
       - name: 收錄校園資訊、學生手冊與 PDF 規定
         env:
           SCHOOL_INFO_PAGE_CAP: ${{ github.event.inputs.pages }}
@@ -88,6 +97,15 @@ jobs:
 
       - name: 移除公開產物中的會員內容
         run: node tools/public-metadata-projection.js docs
+
+      - name: 切分其他學校資料（上傳私有儲存並確認後才移除，再提交）
+        uses: ./.github/actions/restricted-data
+        with:
+          mode: split
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
 
       - name: 提交校園資訊索引
         run: |
