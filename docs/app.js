@@ -62,6 +62,14 @@
     var HIDDEN_SCHOOL_PREFIX = Object.keys(HIDDEN_SCHOOL_IDS).length
       ? new RegExp("^(?:" + Object.keys(HIDDEN_SCHOOL_IDS).join("|") + ")(?:-|$)") : null;
     function linkGone(item) { return !!item && item.link_status === "gone"; }
+    /* 管理員身分改變（聯席管理員登入、登出）時，學校清單、問校務範圍、已載入的公告都要重算：直接重新載入頁面最穩。
+       回傳 true 表示頁面即將重新載入。 */
+    function syncAdminSchoolView(isAdmin) {
+      if (!SCHOOL_REGISTRY || !SCHOOL_REGISTRY.setAdminViewer) return false;
+      if (!SCHOOL_REGISTRY.setAdminViewer(!!isAdmin)) return false;
+      try { window.location.reload(); } catch (_) { return false; }
+      return true;
+    }
     function visibleSchool(row) {
       if (!row) return false;
       // 舊來源整批匯入、年份未經官方文章頁確認的日期：確認前不顯示，避免錯的日期出現在清單
@@ -256,7 +264,8 @@
     /* 問校務的範圍：有設定學校時多一個「我的學校」；所有人都能直接挑任何一間學校或所有學校。 */
     var LS_ASK_SCOPE = "cy-news-ask-scope";
     /* 問校務目前只開放這幾間學校（規定、行事曆、公告都收齊的學校）；其他學校顯示「尚未開放」。 */
-    var ASSISTANT_OPEN_SCHOOLS = ["cysh", "cygsh"];
+    /* 問校務開放嘉中、嘉女；嘉女（和其他學校）只有聯席管理員以上看得到，由 school-registry 決定。 */
+    var ASSISTANT_OPEN_SCHOOLS = ["cysh", "cygsh"].filter(function (id) { return !SCHOOL_REGISTRY || !!SCHOOL_REGISTRY.find(id); });
     function assistantOpen(id) { return ASSISTANT_OPEN_SCHOOLS.indexOf(String(id || "")) !== -1; }
     function assistantOpenNames() {
       var registry = window.CyNewsSchoolRegistry;
@@ -1153,6 +1162,7 @@
             setAccountUser(session.user);
             return auth.getAccountAccess().then(function (access) {
               state.accountAccess = access;
+              if (syncAdminSchoolView(access.status === "approved" && !!access.is_admin)) return;
               applyServiceAccess();
               if (access.status !== "approved") {
                 if (el.tabAdmin) el.tabAdmin.hidden = true;
@@ -1191,6 +1201,7 @@
               status("權限待確認");
             });
           } else if (requestedUid !== null || readyUid !== null || accountPhase !== "ANONYMOUS_READY") {
+            if (syncAdminSchoolView(false)) return;
             restoreAnonymous();
             setAccountUser(null);
             if (el.accountDeleteCloud) el.accountDeleteCloud.hidden = true;
@@ -1970,7 +1981,8 @@
       }).join("");
       el.calendarSchoolFilter.value = state.calendarSchool;
       if (document.querySelectorAll) Array.prototype.forEach.call(document.querySelectorAll(".calendar-legend [data-legend-school]"), function (node) {
-        node.hidden = state.calendarSchool !== "all" && node.getAttribute("data-legend-school") !== state.calendarSchool;
+        var legendId = node.getAttribute("data-legend-school");
+        node.hidden = !(SCHOOL_REGISTRY && SCHOOL_REGISTRY.find(legendId)) || state.calendarSchool !== "all" && legendId !== state.calendarSchool;
       });
     }
     function renderCalendar() {
@@ -2026,7 +2038,7 @@
     function loadOfficialEvents() {
       return fetch("data/calendar-events.json?_=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.ok ? r.json() : []; }).then(function (rows) {
         state.officialEvents = Array.isArray(rows) ? rows.filter(function (ev) {
-          return ev && (ev.start_date || ev.date) && ev.title && ev.provenance &&
+          return ev && visibleSchool(ev) && (ev.start_date || ev.date) && ev.title && ev.provenance &&
             /^\d{4}-\d{2}-\d{2}$/.test(ev.start_date || ev.date) &&
             /^\d{4}-\d{2}-\d{2}$/.test(ev.end_date || ev.start_date || ev.date);
         }) : [];
@@ -2048,7 +2060,7 @@
       return fetch("data/class-timetables.json?_=" + Date.now(), { cache: "no-store" }).then(function (response) {
         return response.ok ? response.json() : { timetables: [] };
       }).then(function (data) {
-        state.timetables = Array.isArray(data && data.timetables) ? data.timetables : [];
+        state.timetables = Array.isArray(data && data.timetables) ? data.timetables.filter(visibleSchool) : [];
         renderToday();
       }).catch(function () {
         state.timetables = [];
@@ -2546,6 +2558,21 @@
       var result = { status: "insufficient", mode: "closed", query: asked, summary: text, reply: { text: text, bullets: [] }, evidence: [], sources: [], related: [] };
       renderAssistantAnswer(result, state.assistantTurns.length - 1);
       mascotMood("sad");
+      return Promise.resolve(result);
+    }
+    function restrictedSchoolWord(text) {
+      var registry = window.CyNewsSchoolRegistry;
+      if (!registry || !registry.hiddenNames) return "";
+      text = String(text || "");
+      var names = registry.hiddenNames().filter(function (name) { return name && !/^[a-z0-9-]+$/i.test(name); });
+      names.sort(function (a, b) { return b.length - a.length; });
+      return names.filter(function (name) { return text.indexOf(name) !== -1; })[0] || "";
+    }
+    function assistantRestrictedAnswer(asked, word) {
+      startAssistantTurn(asked, "");
+      var text = "「" + word + "」的內容目前沒有開放。問校務現在可以問" + assistantOpenNames() + "的事。";
+      var result = { status: "insufficient", mode: "closed", query: asked, summary: text, reply: { text: text, bullets: [] }, evidence: [], sources: [], related: [] };
+      renderAssistantAnswer(result, state.assistantTurns.length - 1);
       return Promise.resolve(result);
     }
     /* Every school's public pages and handbook (scraper/school_info.py); a school not collected yet is a 404 = nothing. */
@@ -3243,6 +3270,9 @@
       /* 「明天要不要帶傘」: the weather forecast for the school's 縣市, not the notices. */
       var weatherPlan = window.CyNewsWeather && window.CyNewsWeather.asks(asked);
       if (weatherPlan) return askWeather(asked, weatherPlan);
+      /* 問到看不到的學校（一般使用者只看得到嘉中）：照實說沒有開放，不拿嘉中的資料硬答，也不列出其他學校。 */
+      var restrictedWord = !named.length && restrictedSchoolWord(asked);
+      if (restrictedWord) return assistantRestrictedAnswer(asked, restrictedWord);
       var closedNamed = named.filter(function (school) { return !assistantOpen(school.id); });
       if (closedNamed.length) return assistantClosedAnswer(asked, closedNamed);
       /* 「哪間學校段考最早」「嘉中跟嘉女誰先放寒假」: compare dates across schools. */
@@ -3976,6 +4006,7 @@
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此功能目前未開放。";
       }
       if (tab === "admin" && !isAdminAccount()) tab = "latest";
+      if (tab === "cross" && SCHOOL_REGISTRY && SCHOOL_REGISTRY.schools().length < 2) tab = "latest";
       if (isTimetableOnly() && ["home", "today", "assistant", "calendar"].indexOf(tab) !== -1) {
         tab = "timetable";
         if (el.publicAccessStatus) el.publicAccessStatus.textContent = "此帳號目前只有課表服務。";
@@ -4077,6 +4108,9 @@
     try { updatePerch(); } catch (_) {}
     if (typeof document.addEventListener === "function") document.addEventListener("keydown", function (e) { if (e.key === "Escape") setSideMenu(false); });
     el.tabLatest.addEventListener("click", function () { pickTab("latest"); });
+    /* 只看得到一間學校（一般使用者只有嘉中）時，跨校比對沒有意義：不顯示。 */
+    var CROSS_SCHOOL_OFF = !!(SCHOOL_REGISTRY && SCHOOL_REGISTRY.schools().length < 2);
+    if (el.tabCross) el.tabCross.hidden = CROSS_SCHOOL_OFF;
     if (el.tabCross) el.tabCross.addEventListener("click", function () { pickTab("cross"); });
     if (el.tabActivities) el.tabActivities.addEventListener("click", function () { pickTab("activities"); });
     if (el.activitySort) el.activitySort.addEventListener("change", function () { activityView.shown = 40; renderActivities(); });

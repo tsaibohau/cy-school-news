@@ -29,6 +29,7 @@ function makeDom() {
 }
 const script = html.slice(html.lastIndexOf("<script>") + 8, html.lastIndexOf("</script>"));
 const dom = makeDom();
+Registry.setAdminViewer(true); // co-admin view lists every school
 vm.runInNewContext(script, { window: { CyNewsSchoolRegistry: Registry }, document: dom.document, URL });
 const total = Registry.schools().length;
 assert.strictEqual(dom.nodes.sitesCount.textContent, "共 " + total + " 校");

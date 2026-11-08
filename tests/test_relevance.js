@@ -2,6 +2,7 @@ const assert = require("assert");
 const Relevance = require("../docs/relevance.js");
 const Profile = require("../docs/profile.js");
 const Registry = require("../docs/school-registry.js");
+Registry.setAdminViewer(true); // co-admin view
 
 assert.equal(Registry.find("pksh").short, "北港高中");
 assert.equal(Registry.find("pksh").visible, undefined, "PKSH is public again after the TLS/date repair");

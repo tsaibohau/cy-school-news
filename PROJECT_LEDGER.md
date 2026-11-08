@@ -2443,3 +2443,11 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 五題實測（圖書館時間／期中考成績何時能查／繁星推薦要怎麼選填志願／微課程後八週選課結果與上課地點／運動賽事志工報名與志工時數能否放備審）：開放時間只用寫到時間的句子；名單、修訂紀錄不當答案；前八週與後八週不互相取代；多梯次全列；長篇敘述拆成兩件事分開答。
 - 測試：tests/test_qa_howto.js、tests/test_qa_lengths.js（虛構資料）。
 - 版本：assistant-qa v94、answer-composer v5、app v144、account-auth v80、account-config v46、capability-layer v13、school-registry v50、relevance v44、today v43、daily-brief v3、announcement-validity v53、cy-news-v169。
+
+## 2026-11-08 只有嘉中公開，其他學校（含嘉女）限聯席管理員以上
+- 畫面：school-registry 預設只顯示嘉中；登入確認為聯席管理員或主要管理員後才顯示全部學校（身分改變時重新載入頁面）。一般使用者的學校選單、公告、行事曆、課表、問校務範圍都只有嘉中；跨校比對只剩一間學校時隱藏；問到看不到的學校時回答「目前沒有開放」。
+- 資料庫（migration 20261108190000）：member_announcement_detail／index、member_historical_reference_index 只回傳嘉中，管理員例外。
+- 電子報預設只寄嘉中。
+- 說明文字改為「嘉義高中公告彙整」，頁面描述與 manifest 移除嘉義女中。
+- 限制：docs/data 的公開 JSON（公告標題、行事曆、課表、校園資訊）仍可被直接下載；要完全不公開需改爬蟲輸出（另案）。
+- 版本：app v145、school-registry v51、cy-news-v170。測試：tests/test_restricted_schools.js。

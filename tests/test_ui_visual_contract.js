@@ -28,7 +28,7 @@ assert.match(app, /row\.date_status === "unverified" \|\| row\.date_source === "
 assert.doesNotMatch(app, /fjsh: true|pksh: true/, "no hardcoded hidden-school list");
 assert.match(app, /function cardHTML\(it\) \{[\s\S]*if \(!visibleSchool\(it\)\) return "";/, "card rendering fails closed for disabled sources");
 assert.match(index, /<h1>校訊<\/h1>/, "the masthead uses the short service name");
-assert.match(index, /嘉義・雲林公告彙整/, "the subtitle describes the current Chiayi + Yunlin scope truthfully");
+assert.match(index, /<span class="mast-sub">嘉義高中公告彙整<\/span>/, "the subtitle names 嘉義高中, the only public school");
 assert.doesNotMatch(index, /嘉中・嘉女公告彙整/, "the retired two-school subtitle is gone");
 assert.doesNotMatch(index, /嘉雲校訊|從三校公告中/, "retired cross-county and three-school copy is removed");
 assert.match(index, /legal\.html\?v=20260925/, "the legal notice link bypasses stale installed-shell entries");

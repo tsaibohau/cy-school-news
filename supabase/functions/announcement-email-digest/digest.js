@@ -2,7 +2,7 @@
 // so the same file runs in the Edge Function (Deno) and in Node tests.
 
 export const DEFAULTS = Object.freeze({
-  schools: ["cysh", "cygsh"],
+  schools: ["cysh"], // 只有嘉中公開；其他學校只給聯席管理員以上，不寄給一般訂閱者
   lookbackHours: 72,
   maxItems: 20,
   dailyHourTaipei: 7,
