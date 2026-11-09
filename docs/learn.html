@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#F3ECDD">
+  <title>教學：這個網站怎麼寫出來的｜嘉義校訊</title>
+  <link rel="stylesheet" href="style.css?v=120">
+  <style>
+    .learn { max-width: 760px; margin: 0 auto; padding: 20px 16px 72px; line-height: 1.8; }
+    .learn h1 { font-size: 26px; letter-spacing: .08em; margin: 4px 0 8px; }
+    .learn h2 { font-size: 19px; letter-spacing: .06em; margin: 0 0 6px; }
+    .learn .lead { color: var(--muted); margin: 0 0 16px; }
+    .learn .toc { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0 0 20px; list-style: none; }
+    .learn .toc a { display: inline-block; min-height: 40px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); text-decoration: none; font-size: 14px; }
+    .learn .chapter { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px 18px; margin: 0 0 16px; scroll-margin-top: 12px; }
+    .learn .step { display: inline-block; min-width: 28px; margin-right: 6px; padding: 0 8px; border-radius: 6px; background: var(--seal-soft); color: var(--seal); font-size: 14px; text-align: center; }
+    .learn pre { overflow-x: auto; padding: 12px; border-radius: 8px; background: #2A2420; color: #F3ECDD; font: 13px/1.6 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+    .learn code { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: .92em; }
+    .learn :not(pre) > code { padding: 1px 5px; border-radius: 4px; background: var(--chip-bg); }
+    .learn .flow { display: grid; gap: 6px; padding: 0; margin: 8px 0; list-style: none; counter-reset: flow; }
+    .learn .flow li { padding: 8px 12px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0; }
+    .learn .tip { padding: 10px 12px; border-radius: 8px; background: var(--seal-soft); }
+    .learn details { margin: 8px 0; }
+    .learn summary { cursor: pointer; min-height: 40px; padding: 8px 0; color: var(--accent); }
+    .learn .lab { display: grid; gap: 8px; }
+    .learn .lab input { min-height: 44px; padding: 8px 12px; border: 1px solid var(--control-line); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; }
+    .learn .lab ul { margin: 0; padding-left: 20px; }
+    .learn .lab mark { background: #F2D58A; color: inherit; }
+    .learn .done { display: flex; align-items: center; gap: 8px; margin-top: 10px; color: var(--muted); font-size: 14px; }
+    .learn .done input { width: 20px; height: 20px; }
+    .learn .progress { position: sticky; top: 0; z-index: 2; padding: 8px 0; background: var(--paper); font-size: 14px; color: var(--muted); }
+    .learn .bar { height: 6px; border-radius: 3px; background: var(--line-soft); overflow: hidden; }
+    .learn .bar span { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+    @media (prefers-reduced-motion: reduce) { .learn .bar span { transition: none; } }
+  </style>
+</head>
+<body>
+<main class="learn">
+  <p class="eyebrow">LEARN TO BUILD</p>
+  <h1>教學：這個網站怎麼寫出來的</h1>
+  <p class="lead">從零開始，一步一步看嘉義校訊是怎麼架起來的：網頁、爬蟲、自動排程、離線 App、問答、帳號與資料庫。每一章都有可以照著做的程式碼，不需要先會寫程式。</p>
+
+  <div class="progress" aria-live="polite">
+    <span id="progressText">已讀 0 / 10 章</span>
+    <div class="bar" aria-hidden="true"><span id="progressBar"></span></div>
+  </div>
+
+  <ul class="toc" aria-label="章節">
+    <li><a href="#c1">1 全貌</a></li>
+    <li><a href="#c2">2 準備工具</a></li>
+    <li><a href="#c3">3 網頁骨架</a></li>
+    <li><a href="#c4">4 爬蟲</a></li>
+    <li><a href="#c5">5 資料檔</a></li>
+    <li><a href="#c6">6 自動排程</a></li>
+    <li><a href="#c7">7 離線 App</a></li>
+    <li><a href="#c8">8 問校務</a></li>
+    <li><a href="#c9">9 帳號與資料庫</a></li>
+    <li><a href="#c10">10 守則與下一步</a></li>
+  </ul>
+
+  <section class="chapter" id="c1">
+    <h2><span class="step">1</span>全貌：資料怎麼從學校跑到你的手機</h2>
+    <p>整個網站其實只有一條資料流：</p>
+    <ol class="flow">
+      <li>GitHub Actions 定時叫醒一台雲端電腦。</li>
+      <li>電腦執行 Python 爬蟲，讀學校官網的公告列表。</li>
+      <li>爬蟲把結果整理成 JSON 檔（一種純文字的資料格式）。</li>
+      <li>JSON 檔存回 GitHub，GitHub Pages 把 <code>docs/</code> 資料夾變成網站。</li>
+      <li>你的瀏覽器下載網頁和 JSON，用 JavaScript 排好顯示出來。</li>
+    </ol>
+    <p>這種做法叫「靜態網站」：沒有自己的伺服器要顧，費用是 0 元。需要登入、存個人資料的部分才交給雲端資料庫 Supabase。</p>
+    <label class="done"><input type="checkbox" data-done="c1"> 我讀完這章了</label>
+  </section>
+
+  <section class="chapter" id="c2">
+    <h2><span class="step">2</span>準備工具</h2>
+    <ul>
+      <li><strong>GitHub 帳號</strong>：放程式碼、跑自動排程、架網站，都免費。</li>
+      <li><strong>VS Code</strong>：寫程式的編輯器。</li>
+      <li><strong>Python 3</strong>：寫爬蟲用。安裝後在終端機輸入 <code>python --version</code> 確認。</li>
+      <li><strong>Git</strong>：記錄每一次修改，可以隨時回到以前的版本。</li>
+    </ul>
+    <pre><code># 下載這個專案到自己電腦
+git clone https://github.com/tsaibohau/cy-school-news.git
+cd cy-school-news
+pip install -r scraper/requirements.txt</code></pre>
+    <p class="tip">小技巧：每做一個新功能就開一個「分支」（branch），做好再合併回 main。這樣正式網站不會被做到一半的東西弄壞。</p>
+    <label class="done"><input type="checkbox" data-done="c2"> 我讀完這章了</label>
+  </section>
+
+  <section class="chapter" id="c3">
+    <h2><span class="step">3</span>網頁骨架：HTML、CSS、JavaScript</h2>
+    <p>網頁由三種檔案組成：HTML 是內容和結構、CSS 是外觀、JavaScript 讓它會動。最小的公告頁長這樣：</p>
+    <pre><code>&lt;!doctype html&gt;
+&lt;html lang="zh-Hant-TW"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;
+  &lt;title&gt;我的校訊&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;最新公告&lt;/h1&gt;
+  &lt;ul id="list"&gt;&lt;/ul&gt;
+  &lt;script src="app.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p>本站的 <code>docs/index.html</code> 就是放大版：上面是標題、中間是各個分頁（公告、行事曆、課表、問校務），下面是導覽列。按導覽列時，JavaScript 只是把某一區顯示、其他區藏起來，不用重新載入頁面。</p>
+    <p><strong>上線</strong>：在 GitHub 倉庫的 Settings → Pages，選擇從 <code>main</code> 分支的 <code>/docs</code> 發布，幾分鐘後就有網址。</p>
+    <label class="done"><input type="checkbox" data-done="c3"> 我讀完這章了</label>
+  </section>
+
+  <section class="chapter" id="c4">
+    <h2><span class="step">4</span>爬蟲：用 Python 讀公告列表</h2>
+    <p>爬蟲做的事跟你自己打開官網一樣：下載網頁、找到公告的標題、日期和連結。用 <code>requests</code> 下載、<code>BeautifulSoup</code> 解析：</p>
+    <pre><code>import time
+import requests
+from bs4 import BeautifulSoup
+
+URL = "https://example.edu.tw/news"   # 換成你要讀的公告列表網址
+
+def fetch_list(url):
+    html = requests.get(url, timeout=20,
+                        headers={"User-Agent": "my-school-news (教學範例)"}).text
+    soup = BeautifulSoup(html, "html.parser")
+    items = []
+    for row in soup.select("table tr"):        # 每一列是一則公告
+        link = row.find("a")
+        if not link:
+            continue
+        items.append({
+            "title": link.get_text(strip=True),
+            "url": requests.compat.urljoin(url, link["href"]),
+        })
+    return items
+
+items = fetch_list(URL)
+time.sleep(1.5)   # 每次請求之間至少等 1.5 秒，不要拖慢學校的網站
+print(items[:5])</code></pre>
+    <p>每間學校的網站長得不一樣，所以本站的 <code>scraper/scrape.py</code> 為不同的網站系統寫了不同的「轉接器」（<code>scraper/adapters/</code>），再把結果統一成同一種格式。</p>
+    <details>
+      <summary>為什麼要等 1.5 秒？</summary>
+      <p>學校的伺服器通常不大。一秒內連續送幾十個請求，可能讓其他同學打不開網站。慢慢讀、只讀需要的頁面，是寫爬蟲最基本的禮貌。</p>
+    </details>
+    <label class="done"><input type="checkbox" data-done="c4"> 我讀完這章了</label>
+  </section>
+
+  <section class="chapter" id="c5">
+    <h2><span class="step">5</span>資料檔：把結果存成 JSON，網頁再讀出來</h2>
+    <p>Python 把清單存成 JSON：</p>
+    <pre><code>import json
+with open("docs/data/announcements.json", "w", encoding="utf-8") as f:
+    json.dump({"items": items}, f, ensure_ascii=False, indent=1)</code></pre>
+    <p>網頁用 <code>fetch</code> 讀回來，一筆一筆放進清單：</p>
+    <pre><code>fetch("data/announcements.json")
+  .then((res) =&gt; res.json())
+  .then((data) =&gt; {
+    const list = document.getElementById("list");
+    data.items.forEach((item) =&gt; {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = item.url;
+      a.textContent = item.title;   // 用 textContent，不要用 innerHTML，避免被插入惡意程式
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+  });</code></pre>
+    <p><strong>試試看</strong>：下面是用假資料做的小搜尋框，跟本站公告頁的搜尋是同一個概念——把每一則的標題拿來比對你打的字。</p>
+    <div class="lab">
+      <input id="labInput" type="search" placeholder="輸入關鍵字，例如：段考" aria-label="搜尋練習">
+      <ul id="labList" aria-live="polite"></ul>
+    </div>
+    <details>
+      <summary>看這個搜尋框的程式碼</summary>
+      <pre><code>input.addEventListener("input", () =&gt; {
+  const q = input.value.trim();
+  const hits = items.filter((t) =&gt; t.includes(q));
+  render(hits, q);
+});</code></pre>
+    </details>
+    <label class="done"><input type="checkbox" data-done="c5"> 我讀完這章了</label>
+  </section>
+
+  <section class="chapter" id="c6">
+    <h2><span class="step">6</span>自動排程：GitHub Actions</h2>
+    <p>不想每天自己按「執行」，就讓 GitHub 幫你定時跑。在 <code>.github/workflows/</code> 放一個 YAML 檔：</p>
+    <pre><code>name: scrape
+on:
+  schedule:
+    - cron: "17 * * * *"     # 每小時第 17 分跑一次（時間是 UTC）
+  workflow_dispatch:          # 也可以手動按按鈕執行
+permissions:
+  contents: write
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r scraper/requirements.txt
+      - run: python scraper/scrape.py
+      - name: 有新資料才存回去
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data
+          git diff --cached --quiet || git commit -m "更新公告"
+          git push</code></pre>
+    <p>本站的 <code>scrape-hourly.yml</code> 多做了幾件事：抓公告內文、整理行事曆和課表、送通知、產生縮小版的首頁資料，讓網頁開得更快。</p>
+    <p class="tip">排程不要設太密。本站固定低頻率抓取，對學校伺服器比較友善。</p>
+    <label class="done"><input type="checkbox" data-done="c6"> 我讀完這章了</label>
+  </section>
+
+  <section class="chapter" id="c7">
+    <h2><span class="step">7</span>離線 App：PWA</h2>
+    <p>PWA 讓網頁可以「加到主畫面」，像 App 一樣打開，沒網路也看得到上次的內容。需要兩個檔：</p>
+    <p><code>manifest.webmanifest</code>：App 的名字、圖示、顏色。</p>
+    <pre><code>{
+  "name": "我的校訊",
+  "start_url": "./",
+  "display": "standalone",
+  "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+}</code></pre>
+    <p><code>sw.js</code>（Service Worker）：在背景把網頁檔案存在手機裡。</p>
+    <pre><code>const CACHE = "my-news-v1";
+self.addEventListener("install", (e) =&gt; {
+  e.waitUntil(caches.open(CACHE).then((c) =&gt; c.addAll(["./", "./index.html", "./app.js"])));
+});
+self.addEventListener("fetch", (e) =&gt; {
+  e.respondWith(caches.match(e.request).then((hit) =&gt; hit || fetch(e.request)));
+});</code></pre>
+    <details>
+      <summary>為什麼本站的檔名後面有 <code>?v=147</code>？</summary>
+      <p>手機會把檔案存起來重複使用。改了程式卻沒改版本號，使用者可能一直看到舊版。每次修改就把版本號加一，瀏覽器就知道要下載新的。</p>
+    </details>
+    <label class="done"><input type="checkbox" data-done="c7"> 我讀完這章了</label>
+  </section>
+
+  <section class="chapter" id="c8">
+    <h2><span class="step">8</span>問校務：不用 AI 也能做的問答</h2>
+    <p>問校務是「規則式」的：沒有呼叫 AI，而是把問題拆成關鍵字，再到公告和學校規章裡找最相關的段落。主要步驟：</p>
+    <ol class="flow">
+      <li><strong>整理問題</strong>：去掉「請問」「嗎」這類不影響意思的字。</li>
+      <li><strong>同義詞</strong>：「段考」也找「期中考」（<code>qa-synonyms.js</code>）。</li>
+      <li><strong>錯字</strong>：打成「段烤」也認得（<code>qa-typo.js</code>）。</li>
+      <li><strong>判斷意圖</strong>：問「怎麼辦」要回答步驟；問「會怎樣」才回答後果。</li>
+      <li><strong>打分數</strong>：標題、內文命中關鍵字的次數和位置決定排名，最高分的拿來組答案（<code>answer-composer.js</code>）。</li>
+    </ol>
+    <pre><code>function score(question, doc) {
+  let s = 0;
+  for (const word of question.keywords) {
+    if (doc.title.includes(word)) s += 3;   // 標題命中比較重要
+    if (doc.text.includes(word)) s += 1;
+  }
+  return s;
+}</code></pre>
+    <p>好處是快、免費、每個答案都找得到出處；缺點是要一直補規則。本站每次改版都會拿一批真實問法去問，答錯的就補規則，再寫成自動測試（<code>tests/</code>）防止以後退步。</p>
+    <label class="done"><input type="checkbox" data-done="c8"> 我讀完這章了</label>
+  </section>
+
+  <section class="chapter" id="c9">
+    <h2><span class="step">9</span>帳號與資料庫：Supabase</h2>
+    <p>收藏、待辦、提醒這些「每個人不一樣」的資料，不能放在公開的 JSON。本站用 Supabase：它提供登入（Google 帳號）和 PostgreSQL 資料庫。</p>
+    <p>最重要的觀念是 <strong>RLS（資料列層級安全）</strong>：在資料庫裡直接規定「每個人只能讀寫自己的資料」，就算有人改了網頁程式也繞不過去。</p>
+    <pre><code>alter table public.tasks enable row level security;
+
+create policy "只能看自己的待辦"
+  on public.tasks for select
+  to authenticated
+  using (user_id = (select auth.uid()));</code></pre>
+    <p>資料庫的每一次結構變更都寫成一個檔案放在 <code>supabase/migrations/</code>，誰改了什麼、什麼時候改的都查得到。</p>
+    <p>本站也用同樣的方法把資料分成公開和限制兩種：公開的放在網站上；不能公開的存在私有儲存空間，只有通過驗證的管理員讀得到。</p>
+    <p class="tip">金鑰、密碼、Token 一律存在 GitHub Secrets 或 Supabase 的設定裡，<strong>絕對不要寫進程式碼</strong>。公開倉庫裡的東西，任何人都看得到，而且刪掉以後歷史紀錄裡還在。</p>
+    <label class="done"><input type="checkbox" data-done="c9"> 我讀完這章了</label>
+  </section>
+
+  <section class="chapter" id="c10">
+    <h2><span class="step">10</span>守則與下一步</h2>
+    <ul>
+      <li><strong>尊重來源</strong>：只讀公開、不需登入的頁面；顯示標題、日期和官方連結，需要完整內容時請讀者回官網。</li>
+      <li><strong>保護個資</strong>：名單、成績、聯絡方式不要轉存或做成可以搜尋的資料。</li>
+      <li><strong>先測試再上線</strong>：改了爬蟲就跑 <code>python tests/test_parser.py</code>，全部通過才合併。</li>
+      <li><strong>留下紀錄</strong>：每次修改寫清楚做了什麼、為什麼（本站記在 <code>PROJECT_LEDGER.md</code>）。</li>
+    </ul>
+    <p><strong>練習題</strong></p>
+    <ol>
+      <li>照第 4 章，讀一個你常看的公開網頁，印出前 5 個標題。</li>
+      <li>照第 5 章，把結果存成 JSON，做一個能搜尋的網頁。</li>
+      <li>照第 6 章，讓它每天自動更新一次。</li>
+    </ol>
+    <p>想看完整程式碼：<a href="https://github.com/tsaibohau/cy-school-news" rel="noopener" target="_blank">GitHub 上的專案</a>。</p>
+    <label class="done"><input type="checkbox" data-done="c10"> 我讀完這章了</label>
+  </section>
+
+  <p><a href="./">返回嘉義校訊</a></p>
+</main>
+<script>
+(function () {
+  // 練習用的假資料（不是真的公告）
+  var samples = ["高一段考時間表公布", "社團博覽會報名開始", "第二次段考成績查詢", "圖書館暑假開放時間", "校慶運動會流程", "獎學金申請說明"];
+  var input = document.getElementById("labInput");
+  var list = document.getElementById("labList");
+  function render() {
+    var q = input.value.trim();
+    var hits = samples.filter(function (t) { return !q || t.indexOf(q) !== -1; });
+    list.textContent = "";
+    if (!hits.length) { var none = document.createElement("li"); none.textContent = "找不到，換個字試試"; list.appendChild(none); return; }
+    hits.forEach(function (t) {
+      var li = document.createElement("li");
+      var i = q ? t.indexOf(q) : -1;
+      if (i === -1) { li.textContent = t; }
+      else {
+        li.appendChild(document.createTextNode(t.slice(0, i)));
+        var m = document.createElement("mark"); m.textContent = t.slice(i, i + q.length); li.appendChild(m);
+        li.appendChild(document.createTextNode(t.slice(i + q.length)));
+      }
+      list.appendChild(li);
+    });
+  }
+  input.addEventListener("input", render);
+  render();
+
+  // 閱讀進度只存在這台裝置
+  var KEY = "cyNews.learnDone.v1";
+  var done = {};
+  try { done = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { done = {}; }
+  var boxes = document.querySelectorAll("[data-done]");
+  function update() {
+    var n = 0;
+    boxes.forEach(function (b) { if (b.checked) n++; });
+    document.getElementById("progressText").textContent = "已讀 " + n + " / " + boxes.length + " 章";
+    document.getElementById("progressBar").style.width = (n / boxes.length * 100) + "%";
+  }
+  boxes.forEach(function (b) {
+    b.checked = !!done[b.getAttribute("data-done")];
+    b.addEventListener("change", function () {
+      done[b.getAttribute("data-done")] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (e) {}
+      update();
+    });
+  });
+  update();
+})();
+</script>
+</body>
+</html>
