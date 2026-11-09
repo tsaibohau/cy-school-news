@@ -35,6 +35,7 @@ import io
 import json
 import os
 import re
+import subprocess
 import shutil
 import sys
 import time
@@ -264,13 +265,18 @@ def split_object(obj, spec: dict, pol: Policy):
 
 
 def merge_object(pub, blob, spec: dict, pol: Policy):
-    """Merge a restricted blob into the public document (idempotent)."""
+    """Merge a restricted blob into the public document (idempotent).
+
+    The blob is the source of truth for restricted schools: any restricted entry already in the
+    tree (e.g. an older copy left over before the first successful split) is dropped first, so an
+    announcement never appears twice with different content."""
     shape = spec["shape"]
     dropped = 0
     if shape == "array":
         ls = _list_specs(spec)[0]
         if not isinstance(blob, list):
             raise SplitError(f"blob of {spec['path']} should be a list")
+        pub = [e for e in pub if pol.entry_public(e, ls, spec)]
         have = {_canon(e) for e in pub}
         add = []
         for e in blob:
@@ -289,7 +295,7 @@ def merge_object(pub, blob, spec: dict, pol: Policy):
                 continue
             if not isinstance(blob[key], list):
                 raise SplitError(f"blob of {spec['path']}: {key} should be a list")
-            base = list(out.get(key) or [])
+            base = [e for e in (out.get(key) or []) if pol.entry_public(e, ls, spec)]
             have = {_canon(e) for e in base}
             for e in blob[key]:
                 if pol.entry_public(e, ls, spec):
@@ -300,11 +306,12 @@ def merge_object(pub, blob, spec: dict, pol: Policy):
             out[key] = base
         return out, dropped
     if shape == "object_keys":
+        out = {k: v for k, v in out.items() if pol.key_public(k, spec)}
         for k, v in blob.items():
             if pol.key_public(k, spec):
                 dropped += 1
             else:
-                out.setdefault(k, v)
+                out[k] = v
         return out, dropped
     raise SplitError(f"unknown shape in rules: {shape}")
 
@@ -616,9 +623,11 @@ def cmd_restore(root: Path, in_dir: Path) -> int:
         else:
             header, events, footer = parse_ics(blob_text.encode("utf-8"))
             events = []
+        stale = [e for e in events if not ics_event_public(e, pol)]
+        events = [e for e in events if ics_event_public(e, pol)]
         have = set(events)
         add = [b for b in blob_events if not ics_event_public(b, pol) and b not in have]
-        if add:
+        if add or stale:
             atomic_write_bytes(target, (header + "".join(events + add) + footer).encode("utf-8"))
             ics_added = len(add)
     known = known_blob_names(root, rules, pol, in_dir)
@@ -647,7 +656,25 @@ def scan_files(root: Path, rules: dict) -> list[Path]:
     ics = root / "docs" / "calendar.ics"
     if ics.is_file():
         files.append(ics)
-    return [p for p in files if p not in ignored]
+    files = [p for p in files if p not in ignored]
+    skip = _git_ignored(root, files)
+    return [p for p in files if p not in skip]
+
+
+def _git_ignored(root: Path, files: list[Path]) -> set[Path]:
+    """Files git never commits (.gitignore, e.g. scraper/new_items.json) cannot leak; skip them.
+    Outside a git checkout (tests on temp copies) nothing is skipped."""
+    if not files:
+        return set()
+    try:
+        rel = "\0".join(p.relative_to(root).as_posix() for p in files) + "\0"
+        done = subprocess.run(["git", "-C", str(root), "check-ignore", "-z", "--stdin"],
+                              input=rel.encode("utf-8"), capture_output=True, timeout=30)
+    except (OSError, ValueError, subprocess.SubprocessError):
+        return set()
+    if done.returncode not in (0, 1):
+        return set()
+    return {root / name for name in done.stdout.decode("utf-8").split("\0") if name}
 
 
 def _walk(value, visit):
