@@ -74,10 +74,17 @@ runs:
         set -euo pipefail
         python scraper/restricted_split.py split --root . --out "$RUNNER_TEMP/restricted-out" --phase apply
 
-    - name: 切分：洩漏掃描（公開檔不得含其他學校資料）
+    - name: 切分：把切分過的檔案全部加入提交（各工作流程的 git add 清單可能漏列）
       if: inputs.mode == 'split'
       shell: bash
       run: |
         set -euo pipefail
-        python scraper/restricted_split.py verify --root .
+        python scraper/restricted_split.py stage --root .
+
+    - name: 切分：洩漏掃描（公開檔與即將提交的內容都不得含其他學校資料）
+      if: inputs.mode == 'split'
+      shell: bash
+      run: |
+        set -euo pipefail
+        python scraper/restricted_split.py verify --root . --staged
         rm -rf "$RUNNER_TEMP/restricted-out"

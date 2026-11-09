@@ -2480,3 +2480,7 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 第一次執行（合併 #123 後）：上傳私有儲存與讀回比對都成功，但最後的洩漏掃描抓到 `scraper/new_items.json`。這個檔案在 .gitignore 裡、從不提交，是誤報；工作流程依設計失敗、沒有提交任何資料（issue #124）。
 - 修正：洩漏掃描略過 git 忽略的檔案（git check-ignore）；還原時私有儲存為準，先丟掉工作目錄裡其他學校的舊副本再合併，避免過渡期同一則公告出現兩份。
 - 測試：tests/test_restricted_split.py 新增過渡期還原與忽略檔案；真實資料模擬（完整樹＋私有備份還原）無重複、各檔筆數一致。
+
+## 2026-11-09 切分：提交一定帶上全部切分檔
+- 第二次執行成功（公告、封存、校園資訊、行事曆只剩嘉中），但 `scraper/site_map.json`（嘉女網站地圖）、`scraper/events.json`、`scraper/school_backlog.json` 仍是完整版：切分有改到它們，但 scrape-hourly 的 `git add` 清單沒有列這幾個檔，所以沒提交。
+- 修正：組合動作在套用切分後執行 `restricted_split.py stage`（把規則表裡每個檔案與目錄 `git add -A`），洩漏掃描改為 `verify --staged`（即將提交的內容與工作目錄不一致就失敗）。以 main 實際資料模擬：恰好清掉這三個檔。
