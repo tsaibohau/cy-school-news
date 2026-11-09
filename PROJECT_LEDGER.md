@@ -2470,3 +2470,8 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 工作流程：scrape-hourly、announcement-prune、school-info-backfill、token-backfill、calendar-daily、pksh-windows-production 開頭還原、提交前切分；全部放進 concurrency group `scrape`（calendar-daily 原為 calendar-daily、pksh-windows-production 原為 pksh-production），避免同時覆寫同一批私有備份檔。排程頻率不變。ntfy 推播、會員內容同步、提醒目標同步都在切分前的完整資料上執行。census-south-once 只寫 reports/census，不碰這些檔案，未接入。
 - 第一次執行：bucket 還沒有物件時還原視為正常，工作目錄維持原樣；切分時把全部其他學校資料上傳（等於播種），之後 main 上只剩嘉中。歷史提交仍含舊資料，需另行處理（改寫歷史或視為已公開）。
 - 測試：tests/test_restricted_split.py（虛構三校樹的切分／還原／重複切分／中途失敗不動工作樹；同步客戶端對模擬伺服器；真實樹複本的完整往返與洩漏掃描；工作流程步驟順序）。tests/test_calendar_workflow.js 的 group 斷言改為 scrape。
+- 管理員讀回（docs/restricted-data.js）：聯席管理員以上登入後，從私有 bucket 下載其他學校的 blob，與公開檔合併後重畫（公開資料先畫，不擋第一屏）；訪客與一般會員完全不碰 storage。以真實資料切分後交叉驗證：合併後各檔筆數與原檔完全相同。
+- 正式環境（2026-11-09）：私有 bucket `restricted-data` 與唯讀規則（僅現役 owner／co_admin，經 can_read_restricted_data()）由使用者在 SQL Editor 執行；Edge Function `restricted-data-sync` v1 已部署（verify_jwt true）。實測：無金鑰、缺同步金鑰、不合法檔名全部被擋；非管理員與匿名者無法讀。
+- 停用 staging-detail-backfill（會把全部學校提交到公開 staging 分支）。calendar-daily、pksh-windows-production 併入 concurrency group `scrape`。
+- 已知：git 歷史仍含舊資料（需另案重寫歷史才能清除）；docs/school-registry.js、scraper/config.json 仍列出全部學校名稱與網址（設定，非收錄資料）；第一次排程跑完才會真正把其他學校搬進私有 bucket 並從倉庫移除。
+- 版本：app v147、cy-news-v172（restricted-data.js v1）。
