@@ -8,7 +8,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: pksh-production
+  group: scrape
   cancel-in-progress: false
 
 jobs:
@@ -42,14 +42,36 @@ jobs:
           python tools/pksh_snapshot.py
           --html "$env:RUNNER_TEMP/pksh-list.json"
           --output "$env:RUNNER_TEMP/pksh-metadata.json"
-      - name: Update production metadata without truncation
+      - name: Bring the checkout up to date
+        shell: pwsh
+        run: git pull --rebase origin main
+      - name: 還原其他學校資料（私有儲存；公開倉庫只有嘉中）
+        uses: ./.github/actions/restricted-data
+        with:
+          mode: restore
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
+
+      - name: Overlay PKSH metadata without truncation
+        shell: pwsh
+        run: node tools/pksh-staging-overlay.js docs "$env:RUNNER_TEMP/pksh-metadata.json"
+      - name: 切分其他學校資料（上傳私有儲存並確認後才移除，再提交）
+        uses: ./.github/actions/restricted-data
+        with:
+          mode: split
+        env:
+          ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+          ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+          SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
+
+      - name: Commit production metadata
         shell: pwsh
         run: |
-          git pull --rebase origin main
-          node tools/pksh-staging-overlay.js docs "$env:RUNNER_TEMP/pksh-metadata.json"
           git config user.name "news-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/announcements.json docs/data/schools/pksh/current.json docs/data/schools/manifest.json
+          git add -A docs/data/announcements.json docs/data/schools
           if (git diff --cached --quiet) {
             Write-Host "PKSH production metadata is unchanged."
           } else {

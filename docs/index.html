@@ -2,9 +2,9 @@
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <title>校訊｜嘉義高中公告匯集系統</title>
-<meta name="description" content="嘉義高中與嘉義女中官網最新公告即時彙整:段考、社團、升學、獎學金分類與關鍵字訂閱。非官方服務。">
+<meta name="description" content="嘉義高中官網最新公告即時彙整：段考、社團、升學、獎學金分類與關鍵字訂閱。非官方服務。">
 <meta name="theme-color" content="#F3ECDD">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon-192.png?v=3">
@@ -57,7 +57,7 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
   } catch (_) {}
 })();
 </script>
-<link rel="stylesheet" href="style.css?v=119">
+<link rel="stylesheet" href="style.css?v=120">
 <link rel="stylesheet" href="admin-announcement-export.css?v=1">
 </head>
 <body>
@@ -76,7 +76,7 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
     </button>
     <button id="brandHome" class="brand brand-button" type="button" aria-label="返回主畫面">
       <span class="seal" aria-hidden="true">訊</span>
-      <span class="brand-text"><h1>校訊</h1><span class="mast-sub">嘉義・雲林公告彙整</span></span>
+      <span class="brand-text"><h1>校訊</h1><span class="mast-sub">嘉義高中公告彙整</span></span>
     </button>
     <div class="mast-tools">
       <span id="mascotPerch" class="mascot-perch-slot" hidden></span>
@@ -154,6 +154,7 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
           <button id="assistantAsk" class="chat-send" type="submit" aria-label="送出問題"><span aria-hidden="true">↑</span></button>
         </div>
       </div>
+      <div id="assistantToast" class="chat-toast" role="status" aria-live="polite" hidden><span id="assistantToastText"></span><button type="button" id="assistantToastUndo" class="chat-toast-undo">復原</button></div>
       <p id="assistantStatus" class="chat-status" role="status" aria-live="polite"></p>
     </form>
   </section>
@@ -470,22 +471,23 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
 <script src="task-state.js?v=41"></script>
 <script src="calendar-state.js?v=44"></script>
 <script src="account-sync.js?v=56"></script>
-<script src="school-registry.js?v=50"></script>
+<script src="school-registry.js?v=51"></script>
+<script src="restricted-data.js?v=1"></script>
 <script src="profile.js?v=41"></script>
 <script src="relevance.js?v=44"></script>
 <script src="assistant-feedback.js?v=41"></script>
 <script src="today.js?v=43"></script>
 <script src="daily-brief.js?v=3"></script>
 <script src="search-taxonomy.js?v=56"></script>
-<script src="qa-synonyms.js?v=14"></script>
+<script src="qa-synonyms.js?v=15"></script>
 <script type="text/lazy-assistant" data-lazy-src="qa-typo.js?v=2"></script>
 <script src="search-query.js?v=61"></script>
 <script src="announcement-validity-reviewed.js?v=52"></script>
 <script src="announcement-validity.js?v=53"></script>
 <script src="announcement-cleanup.js?v=82"></script>
 <script src="announcement-tokens.js?v=2"></script>
-<script type="text/lazy-assistant" data-lazy-src="answer-composer.js?v=5"></script>
-<script type="text/lazy-assistant" data-lazy-src="assistant-qa.js?v=94"></script>
+<script type="text/lazy-assistant" data-lazy-src="answer-composer.js?v=6"></script>
+<script type="text/lazy-assistant" data-lazy-src="assistant-qa.js?v=95"></script>
 <script src="weather.js?v=1"></script>
 <script src="announcement-sort.js?v=1"></script>
 <script src="series-view.js?v=1"></script>
@@ -495,7 +497,7 @@ setTimeout(window.__cyNewsLoadFonts, 12000);
 <script src="schedule-compare.js?v=1"></script>
 <script src="detail-ui.js?v=42"></script>
 <script src="notification-state.js"></script>
-<script src="app.js?v=144"></script>
+<script src="app.js?v=147"></script>
 <script src="announcement-csv.js?v=1" defer></script>
 <script src="admin-announcement-export-source.js?v=1" defer></script>
 <script src="admin-announcement-csv-ui.js?v=1" defer></script>

@@ -499,12 +499,12 @@ async function testSchoolScopedDataLoading() {
   assert.match(run.fetchRequests[0].url, /data\/schools\/manifest\.json/);
   assert.match(run.fetchRequests[1].url, /data\/schools\/cysh\/current\.json/);
   assert.equal(run.app.getState().data.items[0].id, "cysh-only");
-  assert.equal(run.app.getState().data.schools.length, 3, "active schools from the manifest appear in selectors");
+  assert.equal(run.app.getState().data.schools.length, 1, "guests only see 嘉中; other schools are for co-admins and owners");
   assert.equal(run.document.elements.schoolFilter.value, "cysh");
   assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="all">所有學校<\/option>/);
   assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="cysh">嘉中<\/option>/);
-  assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="cygsh">嘉女<\/option>/);
-  assert.match(run.document.elements.schoolFilter.innerHTML, /<option value="pksh">北港高中<\/option>/);
+  assert.doesNotMatch(run.document.elements.schoolFilter.innerHTML, /cygsh|嘉女/);
+  assert.doesNotMatch(run.document.elements.schoolFilter.innerHTML, /pksh|北港高中/);
 
   run.queue.push(response({ items: [] }));
   run.app.ensureArchive();
@@ -514,6 +514,7 @@ async function testSchoolScopedDataLoading() {
 
 async function testSchoolSelectionFallbackAndPersistence() {
   const storage = new MemoryStorage();
+  storage.setItem("cyNews.adminView.v1", "1"); // co-admin view: 嘉女 can be picked
   const combined = dataOf([item("cysh-1", "2026-08-20T00:00:00Z", "嘉中公告")]);
   combined.schools = [
     { id: "cysh", short: "嘉中" },
@@ -639,7 +640,7 @@ function testServiceWorkerContract() {
   assert.match(appSource, /data-read-id/);
   assert.match(appSource, /read\.upsert/);
   assert.match(appSource, /it\.date is publication date/);
-  assert.match(swSource, /cy-news-v169/);
+  assert.match(swSource, /cy-news-v172/);
   assert.match(swSource, /addEventListener\("push"/);
   assert.match(swSource, /showNotification/);
   assert.match(swSource, /addEventListener\("notificationclick"/);

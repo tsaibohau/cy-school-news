@@ -115,7 +115,7 @@ assert.match(app, /tab === "latest" \|\| tab === "cross" \|\| tab === "activitie
 
 /* 2026-11-02: 問校務 is open for 嘉中 and 嘉女 only; other schools are listed as 尚未開放 and
    a question naming one gets a plain "not open yet" reply. */
-assert.match(app, /var ASSISTANT_OPEN_SCHOOLS = \["cysh", "cygsh"\];/);
+assert.match(app, /var ASSISTANT_OPEN_SCHOOLS = \["cysh", "cygsh"\]\.filter\(function \(id\) \{ return !SCHOOL_REGISTRY \|\| !!SCHOOL_REGISTRY\.find\(id\); \}\);/, "嘉女 only for co-admins and owners");
 assert.match(app, /'<optgroup label="尚未開放">' \+ closed\.map[^\n]*\+ '" disabled>'/);
 assert.match(app, /if \(!scopeId \|\| scopeId === "all"\) return ASSISTANT_OPEN_SCHOOLS\.slice\(\);/, "「兩校都問」 means the open schools, not all 58");
 assert.match(app, /if \(closedNamed\.length\) return assistantClosedAnswer\(asked, closedNamed\);/);

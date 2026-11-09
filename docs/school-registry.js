@@ -65,13 +65,30 @@
     { id: "cchs", county: "高雄市", site: "https://www.cchs.kh.edu.tw/", name: "市立中正高中", short: "中正高中", aliases: ["cchs", "中正高中"], capabilities: { announcements: true, official_calendar: false } },
     { id: "chimei", county: "高雄市", site: "https://www.cmsh.khc.edu.tw/", name: "國立旗美高中", short: "旗美高中", aliases: ["chimei", "旗美高中"], capabilities: { announcements: true, official_calendar: false } },
   ];
+  /* 只有嘉中公開；其他學校（含嘉女）只給聯席管理員以上看。管理員身分由 app.js 確認後呼叫 setAdminViewer；
+     確認前一律當成一般訪客（先藏起來）。會員內文另由資料庫依學校擋下，這裡只決定畫面上要不要出現。 */
+  var PUBLIC_IDS = { cysh: true };
+  var ADMIN_VIEW_KEY = "cyNews.adminView.v1";
+  var adminViewer = false;
+  try { adminViewer = typeof localStorage !== "undefined" && localStorage.getItem(ADMIN_VIEW_KEY) === "1"; } catch (_) { adminViewer = false; }
+  function shown(school) {
+    if (!school || school.visible === false) return false;
+    return adminViewer || !!PUBLIC_IDS[school.id];
+  }
+  function setAdminViewer(on) {
+    on = !!on;
+    var changed = on !== adminViewer;
+    adminViewer = on;
+    try { if (on) localStorage.setItem(ADMIN_VIEW_KEY, "1"); else localStorage.removeItem(ADMIN_VIEW_KEY); } catch (_) {}
+    return changed;
+  }
   function copy(school) {
     return Object.assign({}, school, { aliases: (school.aliases || []).slice(), capabilities: Object.assign({}, school.capabilities) });
   }
   function mentionedSchool(value) {
     var text = String(value || "").toLowerCase();
     return schools.find(function (school) {
-      if (school.visible === false) return false;
+      if (!shown(school)) return false;
       return [school.short, school.name].concat(school.aliases || []).some(function (alias) {
         return text.indexOf(String(alias).toLowerCase()) !== -1;
       });
@@ -83,7 +100,7 @@
     var text = String(value || "").toLowerCase(), found = [];
     var names = [];
     schools.forEach(function (school) {
-      if (school.visible === false) return;
+      if (!shown(school)) return;
       [school.short, school.name].concat(school.aliases || []).forEach(function (alias) { names.push({ school: school, alias: String(alias).toLowerCase() }); });
     });
     names.sort(function (a, b) { return b.alias.length - a.alias.length; });
@@ -100,13 +117,13 @@
   }
   function hiddenIds() {
     var out = {};
-    schools.forEach(function (school) { if (school.visible === false) out[school.id] = true; });
+    schools.forEach(function (school) { if (!shown(school)) out[school.id] = true; });
     return out;
   }
   function hiddenNames() {
     var names = [];
     schools.forEach(function (school) {
-      if (school.visible === false) names = names.concat([school.name, school.short], school.aliases || []);
+      if (!shown(school)) names = names.concat([school.name, school.short], school.aliases || []);
     });
     return names;
   }
@@ -128,8 +145,11 @@
     ids: function () { return schools.map(function (school) { return school.id; }); },
     hiddenIds: hiddenIds,
     hiddenNames: hiddenNames,
-    schools: function () { return schools.filter(function (school) { return school.visible !== false; }).map(copy); },
-    find: function (id) { var school = schools.find(function (row) { return row.id === String(id); }); return school ? copy(school) : null; },
+    schools: function () { return schools.filter(shown).map(copy); },
+    find: function (id) { var school = schools.find(function (row) { return row.id === String(id); }); return school && shown(school) ? copy(school) : null; },
+    isPublic: function (id) { return !!PUBLIC_IDS[String(id || "")]; },
+    adminViewer: function () { return adminViewer; },
+    setAdminViewer: setAdminViewer,
     mentionedSchool: function (value) { var school = mentionedSchool(value); return school ? copy(school) : null; },
     mentionedSchools: mentionedSchools,
   };

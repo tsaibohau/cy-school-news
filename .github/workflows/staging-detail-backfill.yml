@@ -14,8 +14,10 @@ concurrency:
 
 jobs:
   backfill:
-    # A generated-data commit must not recursively start another backfill run.
-    if: github.actor != 'github-actions[bot]'
+    # 停用（2026-11-08）：測試站已不再使用，而且這個流程會把全部學校的資料提交到公開倉庫的 staging 分支。
+    # 只有嘉中可以公開；其他學校的資料改存在私有儲存（見 .github/actions/restricted-data）。
+    # （保留原本防遞迴的條件；前面的 false 讓整個 job 永遠不執行。）
+    if: false && github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5

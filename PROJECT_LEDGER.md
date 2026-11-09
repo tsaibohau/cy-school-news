@@ -2443,3 +2443,35 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 五題實測（圖書館時間／期中考成績何時能查／繁星推薦要怎麼選填志願／微課程後八週選課結果與上課地點／運動賽事志工報名與志工時數能否放備審）：開放時間只用寫到時間的句子；名單、修訂紀錄不當答案；前八週與後八週不互相取代；多梯次全列；長篇敘述拆成兩件事分開答。
 - 測試：tests/test_qa_howto.js、tests/test_qa_lengths.js（虛構資料）。
 - 版本：assistant-qa v94、answer-composer v5、app v144、account-auth v80、account-config v46、capability-layer v13、school-registry v50、relevance v44、today v43、daily-brief v3、announcement-validity v53、cy-news-v169。
+
+## 2026-11-08 問校務截圖三題、前幾輪抽檢、UI 人體工學
+- 截圖三題：「閱讀心得怎麼寫」改由該主題的公告說明怎麼做（對象、步驟、影片、期限），行事曆日期附後，不再以得獎名單開頭或重複引用；「嘉中有幾位老師」的「有幾／多少」不再當成主題詞，改讀學校簡介（無單獨老師人數則直說，附教職員工總數）；「沒寫會怎樣」不再只回一個標題（noBareTitle）。表情符號、圖示一律去除。
+- 抽檢：繁星等本學年度文件不再誤標過期；電子郵件與連結不再被截斷；分題標題用公告主題；嘉女午休手機、遲到規定改引正確條文；學生證補發流程不再指到申訴流程圖；住宿題不再引用食物中毒條文。
+- UI：送出鍵 44×44、晶片點擊區 44px、淺色次要文字對比 4.41→5.28、控制項框線 3:1 以上、360px 寬不再重疊；「開啟新問校務」可在 6 秒內復原。
+- 測試：tests/test_qa_shots3.js、tests/test_qa_recheck.js（虛構資料）。
+- 版本：assistant-qa v95、answer-composer v6、qa-synonyms v15、app v145、style v120、cy-news-v170。
+
+## 2026-11-08 只有嘉中公開，其他學校（含嘉女）限聯席管理員以上
+- 畫面：school-registry 預設只顯示嘉中；登入確認為聯席管理員或主要管理員後才顯示全部學校（身分改變時重新載入頁面）。一般使用者的學校選單、公告、行事曆、課表、問校務範圍都只有嘉中；跨校比對只剩一間學校時隱藏；問到看不到的學校時回答「目前沒有開放」。
+- 資料庫（migration 20261108190000）：member_announcement_detail／index、member_historical_reference_index 只回傳嘉中，管理員例外。
+- 電子報預設只寄嘉中。
+- 說明文字改為「嘉義高中公告彙整」，頁面描述與 manifest 移除嘉義女中。
+- 限制：docs/data 的公開 JSON（公告標題、行事曆、課表、校園資訊）仍可被直接下載；要完全不公開需改爬蟲輸出（另案）。
+- 版本：app v146、school-registry v51、cy-news-v171。測試：tests/test_restricted_schools.js。
+
+## 2026-11-08 其他學校資料不進公開倉庫（切分與還原）
+- 問題：倉庫與 GitHub Pages 都是公開的，docs/data 與 scraper/*.json 仍含全部 58 校的公告、行事曆、校園資訊與爬蟲狀態。只有嘉中可以公開；其他學校（含嘉女）的資料改存在公開倉庫之外的 Supabase 私有 bucket `restricted-data`（物件＝原檔路徑＋`.gz`）。
+- 規則表：docs/restricted-files.json（`public_schools`＝["cysh"]，各檔的形狀與學校欄位、衍生欄位 series.count／announcements-latest.total_items、逐校檔案與目錄、calendar.ics）。學校代號、名稱、網址一律從 docs/school-registry.js 解析，不在規則表重複。未知的學校欄位值、未知的網址主機一律視為 restricted（寧可多藏）。
+- scraper/restricted_split.py：`split`（階段 blobs＝只寫出備份檔；階段 apply＝重新規劃、確認備份檔與樹完全對得上後才用暫存檔改名改寫公開檔並刪除其他學校的逐校檔案與目錄）、`restore`（把備份檔併回，爬蟲看到的跟切分前一樣；可重複執行不會重複）、`verify`（洩漏掃描：docs/data、scraper/*.json、docs/calendar.ics；不掃 docs/school-registry.js 與 scraper/config.json，它們是學校名錄的程式／設定，不是蒐集到的資料）。備份檔是同形狀、只留 restricted 項目的壓縮 JSON（位元組決定性）；公開檔保留原本的縮排與換行格式，沒有其他學校項目時不改動。日誌只印數量與公開檔案路徑，不印學校代號、名稱或網址。
+- calendar.ics：依 SUMMARY 的 `[學校簡稱]` 前綴逐個 VEVENT 過濾（位元組不變），其他學校的 VEVENT 進備份檔；不認得前綴的一律視為 restricted。schoolcal.py build 仍會用還原後的完整事件重建。
+- 逐校衍生目錄 docs/data/schools/<id>/ 與 docs/data/details/<id>/：切分時直接刪除、不備份；scrape.py、announcement_prune.py、detail_backfill.py 每輪都會由合併後的公告檔重建（測試以重建結果與原檔逐項比對）。
+- scraper/restricted_sync.py：與 Edge Function `restricted-data-sync` 溝通（urllib）。`download`＝列出後逐一下載並比對 sha256（空 bucket 正常；未設定印 RESTRICTED_SYNC_NOT_CONFIGURED 並結束碼 0）；`upload`＝只上傳 sha256 有變的物件、再列出並讀回比對，`--prune` 才刪遠端多餘物件；失敗重試 3 次，未設定結束碼 1（fail closed）。日誌把物件名稱遮成 obj#雜湊。
+- 組合動作 .github/actions/restricted-data（mode＝restore｜split）：split 的順序固定為 寫備份檔 → 上傳並讀回 → 才移除公開檔中的其他學校資料 → 洩漏掃描；任何一步失敗就整個工作失敗、不提交。呼叫端要在 `uses:` 步驟設 env：ANNOUNCEMENT_CONTENT_SYNC_TOKEN（secrets）、ANNOUNCEMENT_CONTENT_SYNC_URL（vars）、SUPABASE_PUBLISHABLE_KEY（vars 或 secrets）。
+- 工作流程：scrape-hourly、announcement-prune、school-info-backfill、token-backfill、calendar-daily、pksh-windows-production 開頭還原、提交前切分；全部放進 concurrency group `scrape`（calendar-daily 原為 calendar-daily、pksh-windows-production 原為 pksh-production），避免同時覆寫同一批私有備份檔。排程頻率不變。ntfy 推播、會員內容同步、提醒目標同步都在切分前的完整資料上執行。census-south-once 只寫 reports/census，不碰這些檔案，未接入。
+- 第一次執行：bucket 還沒有物件時還原視為正常，工作目錄維持原樣；切分時把全部其他學校資料上傳（等於播種），之後 main 上只剩嘉中。歷史提交仍含舊資料，需另行處理（改寫歷史或視為已公開）。
+- 測試：tests/test_restricted_split.py（虛構三校樹的切分／還原／重複切分／中途失敗不動工作樹；同步客戶端對模擬伺服器；真實樹複本的完整往返與洩漏掃描；工作流程步驟順序）。tests/test_calendar_workflow.js 的 group 斷言改為 scrape。
+- 管理員讀回（docs/restricted-data.js）：聯席管理員以上登入後，從私有 bucket 下載其他學校的 blob，與公開檔合併後重畫（公開資料先畫，不擋第一屏）；訪客與一般會員完全不碰 storage。以真實資料切分後交叉驗證：合併後各檔筆數與原檔完全相同。
+- 正式環境（2026-11-09）：私有 bucket `restricted-data` 與唯讀規則（僅現役 owner／co_admin，經 can_read_restricted_data()）由使用者在 SQL Editor 執行；Edge Function `restricted-data-sync` v1 已部署（verify_jwt true）。實測：無金鑰、缺同步金鑰、不合法檔名全部被擋；非管理員與匿名者無法讀。
+- 停用 staging-detail-backfill（會把全部學校提交到公開 staging 分支）。calendar-daily、pksh-windows-production 併入 concurrency group `scrape`。
+- 已知：git 歷史仍含舊資料（需另案重寫歷史才能清除）；docs/school-registry.js、scraper/config.json 仍列出全部學校名稱與網址（設定，非收錄資料）；第一次排程跑完才會真正把其他學校搬進私有 bucket 並從倉庫移除。
+- 版本：app v147、cy-news-v172（restricted-data.js v1）。

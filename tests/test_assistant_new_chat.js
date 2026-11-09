@@ -11,7 +11,13 @@ assert.match(index, /<button type="button" id="assistantNewChat"[^>]*aria-label=
 assert.ok(index.indexOf('id="assistantNewChat"') > index.indexOf('id="assistantForm"') && index.indexOf('id="assistantNewChat"') < index.indexOf('id="assistantQuestion"'), "button sits just above the input");
 assert.match(style, /\.chat-newchat\[hidden\]\s*\{\s*display:\s*none/);
 assert.match(style, /\.chat-newchat\s*\{[^}]*var\(--line\)[^}]*var\(--card\)[^}]*var\(--ink\)/, "uses theme variables");
-assert.match(app, /closest\("#assistantNewChat"\)\) \{ resetAssistantChat\(\)/, "click is wired");
+assert.match(app, /closest\("#assistantNewChat"\)\) \{ resetAssistantChatWithUndo\(\)/, "click is wired (through the undo wrapper)");
+assert.match(app, /closest\("#assistantToastUndo"\)\) \{ undoAssistantReset\(\)/, "復原 is wired");
+assert.match(index, /id="assistantToast"[^>]*role="status"[^>]*hidden>[\s\S]*?id="assistantToastUndo"[^>]*>復原<\/button>/, "undo toast exists, hidden by default");
+assert.match(style, /\.chat-toast\[hidden\]\s*\{\s*display:\s*none/);
+assert.match(app, /snap\.timer = setTimeout\(hideAssistantToast, 6000\)/, "undo window is 6 seconds");
+assert.match(style, /\.chat-send \{[^}]*width: 44px; height: 44px/, "send button meets the 44px touch target");
+assert.match(index, /enterkeyhint="send"/);
 
 const grab = (name) => { const r = app.match(new RegExp("function " + name + "\\([^)]*\\) \\{[\\s\\S]*?\\n    \\}\\n")); assert.ok(r, name); return r[0]; };
 const body = grab("resetAssistantChat");

@@ -174,6 +174,7 @@ for (const school of ["cysh", "cygsh"]) {
 }
 /* Comparing schools: each school answers from its own data, then the answers sit side by side. */
 const Registry = require("../docs/school-registry.js");
+Registry.setAdminViewer(true); // co-admin view: 嘉女 is visible
 const plan = (q, prev) => QA.comparePlan(q, Registry.mentionedSchools(q), prev);
 assert.deepEqual(plan("嘉中跟嘉女的請假規定差在哪"), { schools: ["cysh", "cygsh"], topic: "請假規定" });
 assert.deepEqual(plan("比較民雄農工、嘉義高工的手機規定").schools, ["mhvs", "cyivs"]);

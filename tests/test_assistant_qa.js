@@ -2,6 +2,7 @@ const assert = require("node:assert/strict");
 const QA = require("../docs/assistant-qa.js");
 const Feedback = require("../docs/assistant-feedback.js");
 const Schools = require("../docs/school-registry.js");
+Schools.setAdminViewer(true); // the engine is tested with every school visible (co-admin view)
 
 const items = [
   { id: "a1", title: "學生行動載具管理規定", school_name: "嘉中", summary: "手機由學生自行保管，上課依教師指示使用。", url: "https://school.example/a1", date: "2026-08-20" },

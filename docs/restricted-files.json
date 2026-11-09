@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "note": "Single source of truth for which collected data is public. Only public_schools may stay in this public repository; every other school's entries are moved to the private Supabase bucket by scraper/restricted_split.py. Plain JSON on purpose: browser code may read it. School ids, names and hosts come from docs/school-registry.js (not repeated here).",
+  "public_schools": ["cysh"],
+  "bucket": "restricted-data",
+  "blob_suffix": ".gz",
+  "registry": "docs/school-registry.js",
+  "files": [
+    {
+      "path": "docs/data/announcements.json",
+      "shape": "object_lists",
+      "lists": [
+        {"key": "items", "school_field": "school"},
+        {"key": "schools", "school_field": "id"}
+      ]
+    },
+    {
+      "path": "docs/data/archive.json",
+      "shape": "object_lists",
+      "lists": [{"key": "items", "school_field": "school"}]
+    },
+    {
+      "path": "docs/data/announcements-latest.json",
+      "shape": "object_lists",
+      "lists": [
+        {"key": "items", "school_field": "school"},
+        {"key": "schools", "school_field": "id"}
+      ],
+      "derived": [{"field": "total_items", "count_of": "docs/data/announcements.json#items"}]
+    },
+    {
+      "path": "docs/data/schools/manifest.json",
+      "shape": "object_lists",
+      "lists": [{"key": "schools", "school_field": "id"}]
+    },
+    {
+      "path": "docs/data/calendar-events.json",
+      "shape": "array",
+      "school_field": "school_id"
+    },
+    {
+      "path": "docs/data/official-calendar-events.json",
+      "shape": "array",
+      "school_field": "school_id"
+    },
+    {
+      "path": "docs/data/calendar-source-status.json",
+      "shape": "array",
+      "school_field": "school_id"
+    },
+    {
+      "path": "docs/data/class-timetables.json",
+      "shape": "object_lists",
+      "lists": [{"key": "timetables", "school_field": "school_id"}]
+    },
+    {
+      "path": "docs/data/series.json",
+      "shape": "object_lists",
+      "lists": [{"key": "series", "school_field": "school"}],
+      "derived": [{"field": "count", "len_of": "series"}]
+    },
+    {
+      "path": "docs/data/removed-announcements.json",
+      "shape": "object_lists",
+      "lists": [{"key": "removed", "school_field": "school"}]
+    },
+    {
+      "path": "docs/data/reminder-targets.json",
+      "shape": "object_lists",
+      "lists": [{"key": "targets", "school_from": "target_id"}]
+    },
+    {
+      "path": "scraper/notification_outbox.json",
+      "shape": "array",
+      "school_field": "school"
+    },
+    {
+      "path": "scraper/coverage_gaps.json",
+      "shape": "object_lists",
+      "lists": [{"key": "gaps", "school_field": "school"}]
+    },
+    {
+      "path": "scraper/events.json",
+      "shape": "array",
+      "school_field": "school",
+      "school_value": "id_or_name"
+    },
+    {
+      "path": "scraper/fetch_state.json",
+      "shape": "object_keys",
+      "key_kind": "url_host"
+    },
+    {
+      "path": "scraper/site_map.json",
+      "shape": "object_keys",
+      "key_kind": "school_id"
+    },
+    {
+      "path": "scraper/school_backlog.json",
+      "shape": "object_lists",
+      "lists": [{"key": "schools", "all_restricted": true}]
+    }
+  ],
+  "per_school": [
+    {"kind": "files", "dir": "docs/data/school-info", "pattern": "{id}.json", "store": true},
+    {"kind": "dirs", "dir": "docs/data/schools", "store": false, "note": "derived: scrape.py / announcement_prune.py / detail_backfill.py rebuild every school shard from the merged announcements and archive"},
+    {"kind": "dirs", "dir": "docs/data/details", "store": false, "note": "protected detail records are already stripped by tools/public-metadata-projection.js; never leave other schools' behind"}
+  ],
+  "calendar_ics": {
+    "path": "docs/calendar.ics",
+    "note": "VEVENTs carry a [short name] prefix in SUMMARY; unknown or non-public prefixes are restricted. schoolcal.py build regenerates the whole file from the restored events."
+  },
+  "neutral_files": [
+    "scraper/config.json",
+    "scraper/subscriptions.json",
+    "scraper/series_overrides.json"
+  ],
+  "leak_scan": {
+    "roots": ["docs/data", "scraper/*.json", "docs/calendar.ics"],
+    "ignored": ["docs/school-registry.js", "scraper/config.json"],
+    "note": "The ignored files are code/config (the school directory itself), not collected data."
+  }
+}

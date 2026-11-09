@@ -1,0 +1,83 @@
+name: 其他學校資料（還原／切分）
+description: >-
+  The repository is public: only the schools in docs/restricted-files.json (public_schools) may be committed.
+  mode=restore  puts the other schools' data back into the working tree (from the private Supabase bucket)
+                so the scraper sees everything it saw before; call it right after checkout + setup-python.
+  mode=split    moves the other schools' data out of the working tree: write blobs, upload them and read
+                them back, and only then remove them from the tree; call it right before `git add`.
+                Any failure fails the job, nothing is committed and nothing is deleted.
+
+# Composite actions cannot read secrets, so every calling step must pass them like this
+# (the whole block, on the `uses:` step):
+#
+#   - uses: ./.github/actions/restricted-data
+#     with:
+#       mode: restore        # or: split
+#     env:
+#       ANNOUNCEMENT_CONTENT_SYNC_TOKEN: ${{ secrets.ANNOUNCEMENT_CONTENT_SYNC_TOKEN }}
+#       ANNOUNCEMENT_CONTENT_SYNC_URL: ${{ vars.ANNOUNCEMENT_CONTENT_SYNC_URL }}
+#       SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY || secrets.SUPABASE_PUBLISHABLE_KEY }}
+#
+# Needs Python 3.12 (actions/setup-python) on the runner; no packages beyond the standard library.
+# Every workflow that writes docs/data or scraper state must run in concurrency group `scrape`,
+# so two runs never overwrite the same private blobs.
+
+inputs:
+  mode:
+    description: "restore | split"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Check mode
+      shell: bash
+      env:
+        MODE: ${{ inputs.mode }}
+      run: |
+        case "$MODE" in
+          restore|split) ;;
+          *) echo "::error::restricted-data: mode must be restore or split"; exit 1 ;;
+        esac
+
+    # ---- restore -------------------------------------------------------------------------
+    - name: 還原其他學校資料（私有儲存）
+      if: inputs.mode == 'restore'
+      shell: bash
+      run: |
+        set -euo pipefail
+        dir="$RUNNER_TEMP/restricted-in"
+        rm -rf "$dir"
+        python scraper/restricted_sync.py download --dest "$dir"
+        python scraper/restricted_split.py restore --root . --in "$dir"
+
+    # ---- split ---------------------------------------------------------------------------
+    - name: 切分：寫出其他學校資料的備份檔
+      if: inputs.mode == 'split'
+      shell: bash
+      run: |
+        set -euo pipefail
+        rm -rf "$RUNNER_TEMP/restricted-out"
+        python scraper/restricted_split.py split --root . --out "$RUNNER_TEMP/restricted-out" --phase blobs
+
+    - name: 切分：上傳到私有儲存並讀回比對
+      if: inputs.mode == 'split'
+      shell: bash
+      run: |
+        set -euo pipefail
+        python scraper/restricted_sync.py upload --src "$RUNNER_TEMP/restricted-out"
+
+    - name: 切分：上傳確認後才從工作目錄移除
+      if: inputs.mode == 'split'
+      shell: bash
+      run: |
+        set -euo pipefail
+        python scraper/restricted_split.py split --root . --out "$RUNNER_TEMP/restricted-out" --phase apply
+
+    - name: 切分：洩漏掃描（公開檔不得含其他學校資料）
+      if: inputs.mode == 'split'
+      shell: bash
+      run: |
+        set -euo pipefail
+        python scraper/restricted_split.py verify --root .
+        rm -rf "$RUNNER_TEMP/restricted-out"
