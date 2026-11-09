@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-09T10:50:51+08:00",
+ "generated_at": "2026-11-09T12:43:44+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -8116,11 +8116,53 @@
   },
   "1031": {
    "page_id": 1031,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T12:43:40+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "出納組",
+    "常見問題",
+    "學雜費問與答"
+   ],
+   "changed_at": "2026-11-09T12:43:40+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1031.json",
+   "detail_revision": "5bbc43b69c017505f0fa20f3b1e8be86f08ae07180197d241369ecbc820522e7",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學雜費",
+     "#fee"
+    ],
+    "segments": []
+   }
   },
   "1032": {
    "page_id": 1032,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T12:43:42+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "出納組",
+    "常見問題",
+    "綜合業務問與答"
+   ],
+   "changed_at": "2026-11-09T12:43:42+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1032.json",
+   "detail_revision": "5f1b7e8be6da90fead39208f67706a9ae277c55e673e36bffb0b5b3f91789fd4",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1040": {
    "page_id": 1040,
@@ -36614,6 +36656,48 @@
    }
   },
   {
+   "id": "cysh-info-1031",
+   "kind": "school_info",
+   "title": "出納組 › 常見問題 › 學雜費問與答",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1031.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1031.json",
+   "detail_revision": "5bbc43b69c017505f0fa20f3b1e8be86f08ae07180197d241369ecbc820522e7",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "學雜費",
+     "#fee"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cysh-info-1032",
+   "kind": "school_info",
+   "title": "出納組 › 常見問題 › 綜合業務問與答",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1032.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1032.json",
+   "detail_revision": "5f1b7e8be6da90fead39208f67706a9ae277c55e673e36bffb0b5b3f91789fd4",
+   "detail_status": "empty"
+  },
+  {
    "id": "cysh-info-1040",
    "kind": "school_info",
    "title": "學務處 › 衛生組 › 健促成果區",
@@ -56926,5 +57010,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-09T10:50:51+08:00"
+ "last_run_at": "2026-11-09T12:43:44+08:00"
 }
