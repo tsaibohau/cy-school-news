@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hnvs",
- "generated_at": "2026-11-09T01:11:14+08:00",
+ "generated_at": "2026-11-09T10:52:13+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "106377775275408": {
@@ -4571,12 +4571,86 @@
    "page_id": 5658917682126,
    "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,11,342",
    "label": "全文檢索",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "網站導覽"
    ],
-   "order": 53
+   "order": 53,
+   "checked_at": "2026-11-09T10:52:11+08:00",
+   "path": [
+    "網站導覽",
+    "全文檢索"
+   ],
+   "changed_at": "2026-11-09T10:52:11+08:00",
+   "content_hash": "981ff5c418df1c646dc916da57241e779a0450df89bf5bfab9cf89c79c5e6b15",
+   "doc_links": [],
+   "keywords": [
+    "選擇"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hnvs/hnvs-info-5658917682126.json",
+   "detail_revision": "bb6020b53e4142ba4658169ff12cc4f1e4358e0db0279362f4ba37db3e7361ac",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2021-02-26"
+      ]
+     }
+    ]
+   }
   },
   "17724699035859": {
    "page_id": 17724699035859,
@@ -7289,6 +7363,83 @@
  "rules": {},
  "services": {},
  "items": [
+  {
+   "id": "hnvs-info-5658917682126",
+   "kind": "school_info",
+   "title": "網站導覽 › 全文檢索",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/content/index.asp?Parser=1,11,342",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "選擇"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hnvs/hnvs-info-5658917682126.json",
+   "detail_revision": "bb6020b53e4142ba4658169ff12cc4f1e4358e0db0279362f4ba37db3e7361ac",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2021-02-26"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hnvs-info-11223732727002",
    "kind": "school_info",
@@ -11915,5 +12066,5 @@
   "fcae0f0748",
   "feaaf01d4a"
  ],
- "last_run_at": "2026-11-09T01:11:14+08:00"
+ "last_run_at": "2026-11-09T10:52:13+08:00"
 }

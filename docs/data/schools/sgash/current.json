@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T01:00:50+08:00",
+ "generated_at": "2026-11-09T10:38:22+08:00",
  "school": {
   "id": "sgash",
   "name": "國立新港藝術高級中學",
@@ -8,6 +8,53 @@
   "base": "https://www.sgash.cyc.edu.tw"
  },
  "items": [
+  {
+   "id": "sgash-14947",
+   "title": "國家圖書館辦理「西洋文學經典的跨界閱讀——《愛麗絲夢遊仙境》冬季閱讀講座",
+   "date": "2026-11-09",
+   "source_category": "公告",
+   "school": "sgash",
+   "school_name": "新港藝術高中",
+   "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=14947",
+   "category": "研習活動",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "圖書館",
+     "#library",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "圖書館",
+       "#library",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "sgash-14943",
    "title": "教育部青年發展署檢送「地方創生DNA：小白的Chill地方行動」培力青年參與地方創生數位課程地圖",
@@ -6425,14 +6472,51 @@
   {
    "id": "sgash-8498",
    "title": "公告-有關公務員延長辦公(加班)時數上限規範一覽表",
-   "date": "2026-02-05",
+   "date": "2024-02-05",
    "source_category": "公告",
    "school": "sgash",
    "school_name": "新港藝術高中",
    "url": "https://www.sgash.cyc.edu.tw/ischool/public/news_view/show.php?nid=8498",
    "category": "教職員",
    "first_seen": "2026-10-27T19:25:27+08:00",
-   "detail_status": "pending"
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2024-02-05"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "#school_profile"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "sgash-13674",

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T01:00:50+08:00",
+ "generated_at": "2026-11-09T10:38:22+08:00",
  "school": {
   "id": "fssh",
   "name": "國立鳳山高中",
@@ -8,6 +8,145 @@
   "base": "https://www.fssh.khc.edu.tw"
  },
  "items": [
+  {
+   "id": "fssh-18737",
+   "title": "國立鳳山高級中學115學年度劉保佑先生全民英檢獎學金申請",
+   "date": "2026-11-09",
+   "source_category": "公告",
+   "school": "fssh",
+   "school_name": "鳳山高中",
+   "url": "https://www.fssh.khc.edu.tw/ischool/public/news_view/show.php?nid=18737",
+   "category": "獎助學金",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-04-30",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "41e8b5cc661b2da38be797aaebfa538005634bdda2063bd6d4a8e29e5eae190b"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "英檢",
+     "獎學金",
+     "#scholarship",
+     "#certificate"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "英檢",
+       "獎學金",
+       "#scholarship",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "英檢",
+       "獎學金",
+       "註冊組",
+       "#scholarship",
+       "#certificate"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required"
+      ],
+      "d": [
+       "2027-04-30"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "教務處",
+       "註冊組",
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "英檢",
+       "獎學金",
+       "註冊組",
+       "#scholarship",
+       "#certificate"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "教務處",
+       "註冊組"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "required"
+      ],
+      "d": [
+       "2027-04-30"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "教務處",
+       "註冊組",
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "fssh-18729",
    "title": "四技二專統測報名與注意事項",

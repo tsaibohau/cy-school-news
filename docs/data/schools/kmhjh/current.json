@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T01:00:50+08:00",
+ "generated_at": "2026-11-09T10:38:22+08:00",
  "school": {
   "id": "kmhjh",
   "name": "國立高餐大附屬餐旅中學",
@@ -8,6 +8,72 @@
   "base": "https://nkhhs.kmhjh.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "kmhjh-5352",
+   "title": "115年資訊月臺灣教育科技展【教育聯合展區】展示活動",
+   "date": "2026-11-09",
+   "source_category": "教務處 公告",
+   "school": "kmhjh",
+   "school_name": "高餐大附中",
+   "url": "https://nkhhs.kmhjh.kh.edu.tw/teacher-training/5352/115%e5%b9%b4%e8%b3%87%e8%a8%8a%e6%9c%88%e8%87%ba%e7%81%a3%e6%95%99%e8%82%b2%e7%a7%91%e6%8a%80%e5%b1%95%e3%80%90%e6%95%99%e8%82%b2%e8%81%af%e5%90%88%e5%b1%95%e5%8d%80%e3%80%91%e5%b1%95%e7%a4%ba/",
+   "category": "研習活動",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "教務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "教務處",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "展覽",
+       "#school_profile"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "kmhjh-5348",
    "title": "2026麻豆大地藝術季策展人引路教師研習",

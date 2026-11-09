@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "ksaivs",
- "generated_at": "2026-11-09T01:09:27+08:00",
+ "generated_at": "2026-11-09T10:50:19+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "193029198059858": {
@@ -4273,13 +4273,94 @@
    "page_id": 93539503277740,
    "url": "https://www.ksvs.khc.edu.tw/p/412-1004-261.php",
    "label": "教學組",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "行政單位",
     "教務處"
    ],
-   "order": 49
+   "order": 49,
+   "checked_at": "2026-11-09T10:50:14+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "教學組"
+   ],
+   "changed_at": "2026-11-09T10:50:14+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [
+    "缺課",
+    "考試"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/ksaivs/ksaivs-info-93539503277740.json",
+   "detail_revision": "2d1493516e287598151edf22a44a6f0c4ac9984a58f06815a6e55d83a1c7e9c5",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "課程編排",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/239018784.docx"
+    },
+    {
+     "name": "教學實施",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/100146621.docx"
+    },
+    {
+     "name": "課業考查",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/494635513.docx"
+    },
+    {
+     "name": "教學研究",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/134420046.docx"
+    },
+    {
+     "name": "教育指導",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/142131984.docx"
+    },
+    {
+     "name": "課程手冊",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/743887465.docx"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "補課",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "考程表",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "展覽"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "148704601299884": {
    "page_id": 148704601299884,
@@ -8160,6 +8241,96 @@
    }
   },
   {
+   "id": "ksaivs-info-93539503277740",
+   "kind": "school_info",
+   "title": "行政單位 › 教務處 › 教學組",
+   "school": "ksaivs",
+   "school_name": "岡山農工",
+   "url": "https://www.ksvs.khc.edu.tw/p/412-1004-261.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "課程編排",
+    "教學實施",
+    "課業考查",
+    "教學研究",
+    "教育指導",
+    "課程手冊"
+   ],
+   "keywords": [
+    "缺課",
+    "考試"
+   ],
+   "documents": [
+    {
+     "name": "課程編排",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/239018784.docx"
+    },
+    {
+     "name": "教學實施",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/100146621.docx"
+    },
+    {
+     "name": "課業考查",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/494635513.docx"
+    },
+    {
+     "name": "教學研究",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/134420046.docx"
+    },
+    {
+     "name": "教育指導",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/142131984.docx"
+    },
+    {
+     "name": "課程手冊",
+     "url": "https://www.ksvs.khc.edu.tw/var/file/4/1004/img/30/743887465.docx"
+    }
+   ],
+   "detail_ref": "data/details/ksaivs/ksaivs-info-93539503277740.json",
+   "detail_revision": "2d1493516e287598151edf22a44a6f0c4ac9984a58f06815a6e55d83a1c7e9c5",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "補課",
+       "#leave"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "考程表",
+       "#exam"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "展覽"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "ksaivs-info-95234546257200",
    "kind": "school_info",
    "title": "教學單位 › 電機科",
@@ -10805,5 +10976,5 @@
   "f2e6dab022",
   "f8b196e68e"
  ],
- "last_run_at": "2026-11-09T01:09:27+08:00"
+ "last_run_at": "2026-11-09T10:50:19+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T01:00:50+08:00",
+ "generated_at": "2026-11-09T10:38:22+08:00",
  "school": {
   "id": "cyvs",
   "name": "國立嘉義高級商業職業學校",
@@ -8,6 +8,147 @@
   "base": "https://www.cyvs.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cyvs-25289",
+   "title": "教育部校安中心115年10月份全國學生交通意外死亡樣態分析",
+   "date": "2026-11-09",
+   "source_category": "公告",
+   "school": "cyvs",
+   "school_name": "嘉義高商",
+   "url": "https://www.cyvs.cy.edu.tw/ischool/public/news_view/show.php?nid=25289",
+   "category": "一般",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "教官室",
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cyvs-25287",
+   "title": "龍華科技大學「交通安全AI巡守隊–全國黑客松競賽」",
+   "date": "2026-11-09",
+   "source_category": "公告",
+   "school": "cyvs",
+   "school_name": "嘉義高商",
+   "url": "https://www.cyvs.cy.edu.tw/ischool/public/news_view/show.php?nid=25287",
+   "category": "競賽",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest",
+     "#safety"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教官室",
+       "#safety"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cyvs-25276",
    "title": "有關外交部旅外安全宣導及申辦護照新制案",

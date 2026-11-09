@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T01:00:50+08:00",
+ "generated_at": "2026-11-09T10:38:22+08:00",
  "school": {
   "id": "hnvs",
   "name": "國立華南高級商業職業學校",
@@ -8,6 +8,88 @@
   "base": "https://www.hnvs.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "hnvs-9-14196",
+   "title": "115年10月份全國高級中等學校學生交通意外死亡事件樣態宣導",
+   "date": "2026-11-09",
+   "source_category": "公告訊息",
+   "school": "hnvs",
+   "school_name": "華南高商",
+   "url": "https://www.hnvs.cy.edu.tw/latestevent/index-1.asp?Parser=9,3,15,,,,14196",
+   "category": "研習活動",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#safety",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "機車"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "機車",
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "hnvs-9-14193",
    "title": "校園防毒守門員教師及家長志工入班宣導教材",

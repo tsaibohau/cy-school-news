@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T01:00:50+08:00",
+ "generated_at": "2026-11-09T10:38:22+08:00",
  "school": {
   "id": "hkhs",
   "name": "市立小港高中",
@@ -8,6 +8,160 @@
   "base": "https://www.hkhs.kh.edu.tw"
  },
  "items": [
+  {
+   "id": "hkhs-11699",
+   "title": "吉娃斯愛科學決戰",
+   "date": "2026-11-09",
+   "source_category": "校內公告",
+   "school": "hkhs",
+   "school_name": "小港高中",
+   "url": "https://www.hkhs.kh.edu.tw/ischool/public/news_view/show.php?nid=11699",
+   "category": "一般",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-11-02",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "e51109716865d37154012f0838dda60a779c8cc8d0e712c0005ee5b69e707593"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "清大"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "清大",
+       "導師",
+       "比賽",
+       "科普",
+       "#certificate",
+       "#contest",
+       "#event"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "註冊組",
+       "#certificate"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-14"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time",
+       "audience",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-11-21"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contest"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hkhs-11695",
    "title": "2026瘋狂工程師｜爆走四驅！我 要成為改造王-四驅車競速賽",

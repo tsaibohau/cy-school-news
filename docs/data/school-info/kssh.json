@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "kssh",
- "generated_at": "2026-11-09T01:09:23+08:00",
+ "generated_at": "2026-11-09T10:50:11+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "79814434365433": {
@@ -4384,23 +4384,53 @@
    "page_id": 181427945960182,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4462.php",
    "label": "學校特色與發展願景",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 45
+   "order": 45,
+   "checked_at": "2026-11-09T10:50:08+08:00",
+   "path": [
+    "校務資料專區",
+    "學校校務資訊",
+    "學校特色與發展願景"
+   ],
+   "changed_at": "2026-11-09T10:50:08+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-181427945960182.json",
+   "detail_revision": "c37f83299d0cecf0793ad2eb80e8935d953886a5698f209e747fc7aea75b3a89",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "128029969640905": {
    "page_id": 128029969640905,
    "url": "https://www.kssh.khc.edu.tw/p/412-1001-4463.php",
    "label": "學校績效表現",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "校務資料開放專區"
    ],
-   "order": 46
+   "order": 46,
+   "checked_at": "2026-11-09T10:50:10+08:00",
+   "path": [
+    "校務資料專區",
+    "學校校務資訊",
+    "學校績效表現"
+   ],
+   "changed_at": "2026-11-09T10:50:10+08:00",
+   "content_hash": "c65ce6598d4c7eea78fced96fbec4f4fcb602071e655137589b67bf38e335634",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/kssh/kssh-info-128029969640905.json",
+   "detail_revision": "9e6c4b10b38e3b343ce35c7fa765652c03276d0fa66412c2d24c3c9069c3b7a6",
+   "detail_status": "parsed",
+   "attachments": []
   },
   "131797466688985": {
    "page_id": 131797466688985,
@@ -5670,6 +5700,23 @@
    "detail_status": "parsed"
   },
   {
+   "id": "kssh-info-128029969640905",
+   "kind": "school_info",
+   "title": "校務資料專區 › 學校校務資訊 › 學校績效表現",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4463.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-128029969640905.json",
+   "detail_revision": "9e6c4b10b38e3b343ce35c7fa765652c03276d0fa66412c2d24c3c9069c3b7a6",
+   "detail_status": "parsed"
+  },
+  {
    "id": "kssh-info-138528581396824",
    "kind": "school_info",
    "title": "行政單位 › 總務處 › 助理員",
@@ -6877,6 +6924,23 @@
      }
     ]
    }
+  },
+  {
+   "id": "kssh-info-181427945960182",
+   "kind": "school_info",
+   "title": "校務資料專區 › 學校校務資訊 › 學校特色與發展願景",
+   "school": "kssh",
+   "school_name": "岡山高中",
+   "url": "https://www.kssh.khc.edu.tw/p/412-1001-4462.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/kssh/kssh-info-181427945960182.json",
+   "detail_revision": "c37f83299d0cecf0793ad2eb80e8935d953886a5698f209e747fc7aea75b3a89",
+   "detail_status": "parsed"
   },
   {
    "id": "kssh-info-195128619221838",
@@ -9016,5 +9080,5 @@
   "fa2dc17c96",
   "fc611dd016"
  ],
- "last_run_at": "2026-11-09T01:09:23+08:00"
+ "last_run_at": "2026-11-09T10:50:11+08:00"
 }

@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T01:00:50+08:00",
+ "generated_at": "2026-11-09T10:38:22+08:00",
  "school": {
   "id": "hysh",
   "name": "國立新營高中",
@@ -8,6 +8,142 @@
   "base": "https://www.hysh.tn.edu.tw"
  },
  "items": [
+  {
+   "id": "hysh-13924",
+   "title": "116年度『中等學校教師在職進修第二專長學分班』需求及薦送表",
+   "date": "2026-11-09",
+   "source_category": "公告",
+   "school": "hysh",
+   "school_name": "新營高中",
+   "url": "https://www.hysh.tn.edu.tw/ischool/public/news_view/show.php?nid=13924",
+   "category": "教職員",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-10-22",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "5a38590578b9a49ff9d1cd583fa87d28c9f57e50986b6ec06e3820a80fd9f17e"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#grading"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "教務處"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "暑假",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "contact"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "暑假",
+       "#grading"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#grading"
+      ],
+      "k": [
+       "required"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "hysh-13923",
    "title": "轉知2026海洋科技專案成果發表會暨成果展",

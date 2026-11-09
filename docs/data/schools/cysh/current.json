@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T01:00:50+08:00",
+ "generated_at": "2026-11-09T10:38:22+08:00",
  "school": {
   "id": "cysh",
   "name": "國立嘉義高級中學",
@@ -8,6 +8,148 @@
   "base": "https://www.cysh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cysh-137117",
+   "title": "115學年度數理及資訊學科能力競賽國教署第三區賽相關資訊",
+   "date": "2026-11-09",
+   "source_category": "最新消息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137117,r140.php",
+   "category": "競賽",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "大考"
+      ],
+      "k": [
+       "required"
+      ],
+      "d": [
+       "2026-11-09"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "penalty",
+       "allow"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "失物"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cysh-137113",
    "title": "第十九屆「APX全國高中數理能力檢定」報名自即日起至115年12月2日止",

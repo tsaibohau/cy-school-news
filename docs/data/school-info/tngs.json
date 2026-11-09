@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "tngs",
- "generated_at": "2026-11-09T01:12:10+08:00",
+ "generated_at": "2026-11-09T10:53:04+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "180718558093293": {
@@ -1449,49 +1449,73 @@
    "page_id": 112914110943203,
    "url": "https://www.tngs.tn.edu.tw/teaching/english/staff/",
    "label": "授課教師",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教學單位",
     "英文科"
    ],
-   "order": 95
+   "order": 95,
+   "checked_at": "2026-11-09T10:52:57+08:00",
+   "path": [
+    "教學單位",
+    "英文科",
+    "授課教師"
+   ]
   },
   "85865204661702": {
    "page_id": 85865204661702,
    "url": "https://www.tngs.tn.edu.tw/teaching/english/resource/",
    "label": "學習資源",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教學單位",
     "英文科"
    ],
-   "order": 96
+   "order": 96,
+   "checked_at": "2026-11-09T10:52:59+08:00",
+   "path": [
+    "教學單位",
+    "英文科",
+    "學習資源"
+   ]
   },
   "271299723592852": {
    "page_id": 271299723592852,
    "url": "https://www.tngs.tn.edu.tw/teaching/math/staff/",
    "label": "授課教師",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教學單位",
     "數學科"
    ],
-   "order": 97
+   "order": 97,
+   "checked_at": "2026-11-09T10:53:00+08:00",
+   "path": [
+    "教學單位",
+    "數學科",
+    "授課教師"
+   ]
   },
   "46215494238751": {
    "page_id": 46215494238751,
    "url": "https://www.tngs.tn.edu.tw/teaching/math/resource/",
    "label": "學習資源",
-   "status": "pending",
+   "status": "login",
    "depth": 1,
    "parent_path": [
     "教學單位",
     "數學科"
    ],
-   "order": 98
+   "order": 98,
+   "checked_at": "2026-11-09T10:53:02+08:00",
+   "path": [
+    "教學單位",
+    "數學科",
+    "學習資源"
+   ]
   },
   "234341837235031": {
    "page_id": 234341837235031,
@@ -2411,5 +2435,5 @@
   "fbd916799e",
   "fc05c2ce0f"
  ],
- "last_run_at": "2026-11-09T01:12:10+08:00"
+ "last_run_at": "2026-11-09T10:53:04+08:00"
 }

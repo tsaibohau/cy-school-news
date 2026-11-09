@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cygsh",
- "generated_at": "2026-11-09T01:09:52+08:00",
+ "generated_at": "2026-11-09T10:51:00+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "1591": {
@@ -12539,11 +12539,213 @@
   },
   "2135": {
    "page_id": 2135,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T10:50:52+08:00",
+   "path": [
+    "行政單位",
+    "教官室",
+    "學生宿舍"
+   ],
+   "changed_at": "2026-11-09T10:50:52+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cygsh/cygsh-info-2135.json",
+   "detail_revision": "466f184a8b71d7dbb25c5d912b13776d785b019211719dd7524eb2fbbf4cf606",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "宿舍",
+     "教官室",
+     "#accommodation"
+    ],
+    "segments": []
+   }
   },
   "2136": {
    "page_id": 2136,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T10:50:54+08:00",
+   "path": [
+    "行政單位",
+    "教官室",
+    "賃居生服務"
+   ],
+   "changed_at": "2026-11-09T10:50:54+08:00",
+   "content_hash": "16f410487a6a82c0a1a43a80493ac299a3ad914360b5fe67dfb7365744ce67a6",
+   "doc_links": [],
+   "keywords": [
+    "安全",
+    "公車",
+    "申請",
+    "登記",
+    "電話"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/cygsh/cygsh-info-2136.json",
+   "detail_revision": "792304106077425cf835493bdcd453d85e03e0393b67f3304c560b6cfca7829c",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "租屋點交手冊",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/196941765.pdf"
+    },
+    {
+     "name": "租屋教戰手冊",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/393622354.pdf"
+    },
+    {
+     "name": "內政部不動產資訊平臺「租金統計資料」",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/286105226.pdf"
+    },
+    {
+     "name": "審計部 「113年10月份民間租屋網刊登出租物件行情」",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/455050656.pdf"
+    },
+    {
+     "name": "嘉義女中賃居名冊(空白表格)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/653227112.ods"
+    },
+    {
+     "name": "國立嘉義女中學生賃居服務要點",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/733262490.pdf"
+    },
+    {
+     "name": "新式賃居學生自主檢核表(參考範例)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/345222882.pdf"
+    },
+    {
+     "name": "新式學生賃居安全關懷訪視表(",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/114818127.pdf"
+    },
+    {
+     "name": "362172683.pdf",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/362172683.pdf"
+    },
+    {
+     "name": "新版住宅租賃契約-",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/208185792.odt"
+    },
+    {
+     "name": "全國各大專院校周邊租金統計資訊圖卡",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/358329384.pdf"
+    },
+    {
+     "name": "租屋電費新制懶人包",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/572279774.pdf"
+    },
+    {
+     "name": "租屋電費新制-常見問題 QA-【 房客篇】",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/498165635.pdf"
+    },
+    {
+     "name": "嘉義市政府警察局寄居校外學生安全訪視紀錄表(",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/765022448.pdf"
+    },
+    {
+     "name": "參考範例)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/138122376.pdf"
+    },
+    {
+     "name": "行政院租賃住宅問答集",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/149591923.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "生活",
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "2137": {
    "page_id": 2137,
@@ -36137,7 +36339,7 @@
     "chars": 954
    }
   },
-  "checked_at": "2026-11-09T01:09:52+08:00",
+  "checked_at": "2026-11-09T10:51:00+08:00",
   "items": [
    {
     "id": "cygsh-rule-630da2ca88",
@@ -70186,6 +70388,229 @@
    }
   },
   {
+   "id": "cygsh-info-2135",
+   "kind": "school_info",
+   "title": "行政單位 › 教官室 › 學生宿舍",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2135.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cygsh/cygsh-info-2135.json",
+   "detail_revision": "466f184a8b71d7dbb25c5d912b13776d785b019211719dd7524eb2fbbf4cf606",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "宿舍",
+     "教官室",
+     "#accommodation"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cygsh-info-2136",
+   "kind": "school_info",
+   "title": "行政單位 › 教官室 › 賃居生服務",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/412-1013-2136.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "租屋點交手冊",
+    "租屋教戰手冊",
+    "內政部不動產資訊平臺「租金統計資料」",
+    "審計部 「113年10月份民間租屋網刊登出租物件行情」",
+    "嘉義女中賃居名冊(空白表格)",
+    "國立嘉義女中學生賃居服務要點",
+    "新式賃居學生自主檢核表(參考範例)",
+    "新式學生賃居安全關懷訪視表(",
+    "362172683.pdf",
+    "新版住宅租賃契約-",
+    "全國各大專院校周邊租金統計資訊圖卡",
+    "租屋電費新制懶人包",
+    "租屋電費新制-常見問題 QA-【 房客篇】",
+    "嘉義市政府警察局寄居校外學生安全訪視紀錄表(",
+    "參考範例)",
+    "行政院租賃住宅問答集"
+   ],
+   "keywords": [
+    "安全",
+    "公車",
+    "申請",
+    "登記",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "租屋點交手冊",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/196941765.pdf"
+    },
+    {
+     "name": "租屋教戰手冊",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/393622354.pdf"
+    },
+    {
+     "name": "內政部不動產資訊平臺「租金統計資料」",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/286105226.pdf"
+    },
+    {
+     "name": "審計部 「113年10月份民間租屋網刊登出租物件行情」",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/455050656.pdf"
+    },
+    {
+     "name": "嘉義女中賃居名冊(空白表格)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/653227112.ods"
+    },
+    {
+     "name": "國立嘉義女中學生賃居服務要點",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/733262490.pdf"
+    },
+    {
+     "name": "新式賃居學生自主檢核表(參考範例)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/345222882.pdf"
+    },
+    {
+     "name": "新式學生賃居安全關懷訪視表(",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/114818127.pdf"
+    },
+    {
+     "name": "362172683.pdf",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/362172683.pdf"
+    },
+    {
+     "name": "新版住宅租賃契約-",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/208185792.odt"
+    },
+    {
+     "name": "全國各大專院校周邊租金統計資訊圖卡",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/358329384.pdf"
+    },
+    {
+     "name": "租屋電費新制懶人包",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/572279774.pdf"
+    },
+    {
+     "name": "租屋電費新制-常見問題 QA-【 房客篇】",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/498165635.pdf"
+    },
+    {
+     "name": "嘉義市政府警察局寄居校外學生安全訪視紀錄表(",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/765022448.pdf"
+    },
+    {
+     "name": "參考範例)",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/116/138122376.pdf"
+    },
+    {
+     "name": "行政院租賃住宅問答集",
+     "url": "https://www.cygsh.cy.edu.tw/var/file/13/1013/img/149591923.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cygsh/cygsh-info-2136.json",
+   "detail_revision": "792304106077425cf835493bdcd453d85e03e0393b67f3304c560b6cfca7829c",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教官室"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "生活",
+       "#safety"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cygsh-info-2171",
    "kind": "school_info",
    "title": "學校夥伴 › 合作社",
@@ -93027,5 +93452,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-09T01:09:52+08:00"
+ "last_run_at": "2026-11-09T10:51:00+08:00"
 }

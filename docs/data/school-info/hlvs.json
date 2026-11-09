@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hlvs",
- "generated_at": "2026-11-09T01:10:23+08:00",
+ "generated_at": "2026-11-09T10:51:30+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "209684137677274": {
@@ -12918,12 +12918,592 @@
    "page_id": 31212440303943,
    "url": "https://www.hlvs.ylc.edu.tw/?page_id=2082",
    "label": "●新生報到",
-   "status": "pending",
+   "status": "ok",
    "depth": 1,
    "parent_path": [
     "認識本校"
    ],
-   "order": 65
+   "order": 65,
+   "checked_at": "2026-11-09T10:51:23+08:00",
+   "path": [
+    "認識本校",
+    "●新生報到"
+   ],
+   "changed_at": "2026-11-09T10:51:23+08:00",
+   "content_hash": "0ef592ca3f0aa2547fa01e12fbdfa0b2799cdd9e1eb4af22cf97355033d792b1",
+   "doc_links": [],
+   "keywords": [
+    "報到",
+    "專車",
+    "新生",
+    "健康檢查",
+    "登記",
+    "入學",
+    "服裝",
+    "繳交",
+    "分機",
+    "電話",
+    "報名",
+    "醫療",
+    "招生",
+    "衛生",
+    "上傳",
+    "交通車",
+    "健檢",
+    "暑期輔導",
+    "缺席",
+    "註冊費",
+    "課輔"
+   ],
+   "attachments_pending": true,
+   "detail_ref": "data/details/hlvs/hlvs-info-31212440303943.json",
+   "detail_revision": "49bcbff5280e89c4038dc20d0fbf8e2e2ae1a6742bdc85ac7affeae58d0aa544",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "錄取報到切結書-1150709報到用",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/07/註冊組-錄取報到切結書-1150709報到用.pdf"
+    },
+    {
+     "name": "115健康檢查家長通知書及同意書回條(更新)",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/08/115健康檢查家長通知書及同意書回條更新.pdf"
+    },
+    {
+     "name": "115健康狀況調查表暨緊急事件聯絡表",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/08/115健康狀況調查表暨緊急事件聯絡表.pdf"
+    },
+    {
+     "name": "115-1開學前注意事項",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/06/教務處-115-1開學前注意事項-修正.pdf"
+    },
+    {
+     "name": "115新生報到程序表",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/07/115新生報到程序表.pdf"
+    },
+    {
+     "name": "報到後放棄錄取資格聲明書（簡章限期內）",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/06/報到後放棄錄取資格聲明書（簡章限期內）.doc"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "教務處",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "校車",
+       "處室",
+       "#transport",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "教務處",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "校車",
+       "處室",
+       "#transport",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "校車",
+       "處室",
+       "#transport",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-09"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "校車",
+       "#transport",
+       "#enrollment",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-06-12"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [
+       "中山"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "deadline",
+       "deny"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "deny"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [
+       "校車",
+       "#transport",
+       "#enrollment",
+       "#uniform"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 66,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 68,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [
+       "校車",
+       "#transport",
+       "#enrollment",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 78,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 79,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 80,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 82,
+      "t": [
+       "繳交",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 83,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 85,
+      "t": [
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 86,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 88,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 93,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 95,
+      "t": [
+       "校車",
+       "#transport",
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "required"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "167862248600200": {
    "page_id": 167862248600200,
@@ -15521,6 +16101,596 @@
    "detail_ref": "data/details/hlvs/hlvs-info-17436244430559.json",
    "detail_revision": "75fdaf2408e53eb4b0cc5928ef6fce70c18b1df7c8232acbf8526d82606cff34",
    "detail_status": "parsed"
+  },
+  {
+   "id": "hlvs-info-31212440303943",
+   "kind": "school_info",
+   "title": "認識本校 › ●新生報到",
+   "school": "hlvs",
+   "school_name": "西螺農工",
+   "url": "https://www.hlvs.ylc.edu.tw/?page_id=2082",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "錄取報到切結書-1150709報到用",
+    "115健康檢查家長通知書及同意書回條(更新)",
+    "115健康狀況調查表暨緊急事件聯絡表",
+    "115-1開學前注意事項",
+    "115新生報到程序表",
+    "報到後放棄錄取資格聲明書（簡章限期內）"
+   ],
+   "keywords": [
+    "報到",
+    "專車",
+    "新生",
+    "健康檢查",
+    "登記",
+    "入學",
+    "服裝",
+    "繳交",
+    "分機",
+    "電話",
+    "報名",
+    "醫療",
+    "招生",
+    "衛生",
+    "上傳",
+    "交通車",
+    "健檢",
+    "暑期輔導",
+    "缺席",
+    "註冊費",
+    "課輔"
+   ],
+   "documents": [
+    {
+     "name": "錄取報到切結書-1150709報到用",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/07/註冊組-錄取報到切結書-1150709報到用.pdf"
+    },
+    {
+     "name": "115健康檢查家長通知書及同意書回條(更新)",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/08/115健康檢查家長通知書及同意書回條更新.pdf"
+    },
+    {
+     "name": "115健康狀況調查表暨緊急事件聯絡表",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/08/115健康狀況調查表暨緊急事件聯絡表.pdf"
+    },
+    {
+     "name": "115-1開學前注意事項",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/06/教務處-115-1開學前注意事項-修正.pdf"
+    },
+    {
+     "name": "115新生報到程序表",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/07/115新生報到程序表.pdf"
+    },
+    {
+     "name": "報到後放棄錄取資格聲明書（簡章限期內）",
+     "url": "https://www.hlvs.ylc.edu.tw/wp-content/uploads/sites/61/2026/06/報到後放棄錄取資格聲明書（簡章限期內）.doc"
+    }
+   ],
+   "detail_ref": "data/details/hlvs/hlvs-info-31212440303943.json",
+   "detail_revision": "49bcbff5280e89c4038dc20d0fbf8e2e2ae1a6742bdc85ac7affeae58d0aa544",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "教務處",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "校車",
+       "處室",
+       "#transport",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 15,
+      "t": [
+       "教務處",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "校車",
+       "處室",
+       "#transport",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "校車",
+       "處室",
+       "#transport",
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 29,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 38,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 43,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 46,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-07-09"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "校車",
+       "#transport",
+       "#enrollment",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-06-12"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [
+       "中山"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [],
+      "k": [
+       "deadline",
+       "deny"
+      ]
+     },
+     {
+      "s": 56,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "deadline",
+       "deny"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [
+       "校車",
+       "#transport",
+       "#enrollment",
+       "#uniform"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 62,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 64,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 65,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 66,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 67,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 68,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 73,
+      "t": [
+       "校車",
+       "#transport",
+       "#enrollment",
+       "#uniform"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 77,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 78,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 79,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 80,
+      "t": [
+       "#enrollment"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 82,
+      "t": [
+       "繳交",
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 83,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 84,
+      "t": [
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 85,
+      "t": [
+       "#uniform"
+      ],
+      "k": []
+     },
+     {
+      "s": 86,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 88,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     },
+     {
+      "s": 91,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 93,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 95,
+      "t": [
+       "校車",
+       "#transport",
+       "#enrollment"
+      ],
+      "k": [
+       "audience",
+       "required"
+      ]
+     },
+     {
+      "s": 97,
+      "t": [
+       "校車",
+       "#transport"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   {
    "id": "hlvs-info-35603066307103",
@@ -27839,5 +29009,5 @@
   "fcfe2b39c3",
   "fe0528b7b1"
  ],
- "last_run_at": "2026-11-09T01:10:23+08:00"
+ "last_run_at": "2026-11-09T10:51:30+08:00"
 }

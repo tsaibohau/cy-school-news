@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "fjsh",
- "generated_at": "2026-11-09T01:09:58+08:00",
+ "generated_at": "2026-11-09T10:51:06+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "129": {
@@ -5599,7 +5599,129 @@
   },
   "549": {
    "page_id": 549,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T10:51:02+08:00",
+   "path": [
+    "行政單位",
+    "輔導處",
+    "輔導業務"
+   ],
+   "changed_at": "2026-11-09T10:51:02+08:00",
+   "content_hash": "e5699738099155ea9978b1207f6eca6ed5a3b7bcd2dc8b85dc1cd1e6bb045410",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-549.json",
+   "detail_revision": "fb167f3070ad66af069b0f26c62328d4e66a73e8e4b1e0fc045341168363f044",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "553": {
    "page_id": 553,
@@ -5857,7 +5979,116 @@
   },
   "561": {
    "page_id": 561,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T10:51:05+08:00",
+   "path": [
+    "行政單位",
+    "輔導處",
+    "輔導業務",
+    "轉銜輔導"
+   ],
+   "changed_at": "2026-11-09T10:51:05+08:00",
+   "content_hash": "549f119fb59734f25f5c973c0c38bf722e97e8eba833f155ed7d624f8d1e8453",
+   "doc_links": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/fjsh/fjsh-info-561.json",
+   "detail_revision": "590594bcf143549c7cd8d3cec7a85a166c97314ad3420065df1d0d8670d3326e",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
   },
   "562": {
    "page_id": 562,
@@ -11706,6 +11937,132 @@
    }
   },
   {
+   "id": "fjsh-info-549",
+   "kind": "school_info",
+   "title": "行政單位 › 輔導處 › 輔導業務",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-549.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-549.json",
+   "detail_revision": "fb167f3070ad66af069b0f26c62328d4e66a73e8e4b1e0fc045341168363f044",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 30,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 32,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-553",
    "kind": "school_info",
    "title": "行政單位 › 輔導處 › 情感教育",
@@ -11959,6 +12316,118 @@
    }
   },
   {
+   "id": "fjsh-info-561",
+   "kind": "school_info",
+   "title": "輔導處 › 輔導業務 › 轉銜輔導",
+   "school": "fjsh",
+   "school_name": "輔仁高中",
+   "url": "https://rpage.fjsh.cy.edu.tw/p/412-1000-561.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [
+    "【聯絡資訊】"
+   ],
+   "keywords": [
+    "地址",
+    "專線",
+    "招生",
+    "電話"
+   ],
+   "documents": [
+    {
+     "name": "【聯絡資訊】",
+     "url": "https://docs.google.com/spreadsheets/d/1yCngqeqx9PiTz4rVycHVTGUljEDKslm6lFL5phJ1aA4/edit?usp=sharing"
+    }
+   ],
+   "detail_ref": "data/details/fjsh/fjsh-info-561.json",
+   "detail_revision": "590594bcf143549c7cd8d3cec7a85a166c97314ad3420065df1d0d8670d3326e",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 5,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 14,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "學務處"
+      ],
+      "k": []
+     },
+     {
+      "s": 24,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "fjsh-info-627",
    "kind": "school_info",
    "title": "校務系統",
@@ -12056,5 +12525,5 @@
   473,
   627
  ],
- "last_run_at": "2026-11-09T01:09:58+08:00"
+ "last_run_at": "2026-11-09T10:51:06+08:00"
 }

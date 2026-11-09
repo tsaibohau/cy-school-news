@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-09T01:09:45+08:00",
+ "generated_at": "2026-11-09T10:50:51+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -8065,11 +8065,54 @@
   },
   "1029": {
    "page_id": 1029,
-   "status": "pending"
+   "status": "gone",
+   "checked_at": "2026-11-09T10:50:47+08:00"
   },
   "1030": {
    "page_id": 1030,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T10:50:49+08:00",
+   "path": [
+    "行政單位",
+    "進修部",
+    "教務組",
+    "成績查詢登錄系統"
+   ],
+   "changed_at": "2026-11-09T10:50:49+08:00",
+   "content_hash": "7f0d36cb4d81452ea73dff2fdc3e50e6ad37da2ac23f5be2da23583c607a9e9b",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1030.json",
+   "detail_revision": "9b3641e97c7be14cf915b450c7f74fe6707899a6db74b7f25ab4050bd7123d99",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "北科大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "1031": {
    "page_id": 1031,
@@ -36528,6 +36571,49 @@
    }
   },
   {
+   "id": "cysh-info-1030",
+   "kind": "school_info",
+   "title": "進修部 › 教務組 › 成績查詢登錄系統",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1030.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1030.json",
+   "detail_revision": "9b3641e97c7be14cf915b450c7f74fe6707899a6db74b7f25ab4050bd7123d99",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "北科大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "台大"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-1040",
    "kind": "school_info",
    "title": "學務處 › 衛生組 › 健促成果區",
@@ -56840,5 +56926,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-09T01:09:45+08:00"
+ "last_run_at": "2026-11-09T10:50:51+08:00"
 }

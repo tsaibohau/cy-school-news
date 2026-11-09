@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "hhsh",
- "generated_at": "2026-11-09T01:11:08+08:00",
+ "generated_at": "2026-11-09T10:52:07+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "151128910348640": {
@@ -1531,25 +1531,126 @@
    "page_id": 189106138156115,
    "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=3&cat_sn=8&fn=logo.png",
    "label": "興華五好LOGO(桃紅)",
-   "status": "pending",
+   "status": "ok",
    "depth": 2,
    "parent_path": [
     "檔案下載 /上傳",
     "學校LOGO及QRCode"
    ],
-   "order": 91
+   "order": 91,
+   "checked_at": "2026-11-09T10:52:03+08:00",
+   "path": [
+    "檔案下載 /上傳",
+    "學校LOGO及QRCode",
+    "興華五好LOGO(桃紅)"
+   ],
+   "changed_at": "2026-11-09T10:52:03+08:00",
+   "content_hash": "8413e1a325124f87b5f65cd028471f1cff7f0070f5e6056d32035b10b6612af7",
+   "doc_links": [],
+   "keywords": [
+    "3C"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hhsh/hhsh-info-189106138156115.json",
+   "detail_revision": "0acb6025615d5fe12dbde275e93a2b5e40c04e3817e03b010115957d7e5dcd63",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "繳交"
+    ],
+    "segments": [
+     {
+      "s": 104,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 145,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 291,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 335,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "66777537968113": {
    "page_id": 66777537968113,
    "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=10&cat_sn=8&fn=IMG_0250.png",
    "label": "興華五好LOGO(綠)",
-   "status": "pending",
+   "status": "ok",
    "depth": 2,
    "parent_path": [
     "檔案下載 /上傳",
     "學校LOGO及QRCode"
    ],
-   "order": 92
+   "order": 92,
+   "checked_at": "2026-11-09T10:52:06+08:00",
+   "path": [
+    "檔案下載 /上傳",
+    "學校LOGO及QRCode",
+    "興華五好LOGO(綠)"
+   ],
+   "changed_at": "2026-11-09T10:52:06+08:00",
+   "content_hash": "d6a5fda328df65f39a0dab62aa24856d96beb189bd3aaeb8187d007076212ecc",
+   "doc_links": [],
+   "keywords": [
+    "3C"
+   ],
+   "attachments_pending": false,
+   "detail_ref": "data/details/hhsh/hhsh-info-66777537968113.json",
+   "detail_revision": "f8c3ee31b556cecb2fa3b1eaf4104842592c0578e65821c00e299573d7789b8f",
+   "detail_status": "parsed",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "繳交"
+    ],
+    "segments": [
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 340,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "112812968013700": {
    "page_id": 112812968013700,
@@ -1999,7 +2100,113 @@
  "handbook": {},
  "rules": {},
  "services": {},
- "items": [],
+ "items": [
+  {
+   "id": "hhsh-info-66777537968113",
+   "kind": "school_info",
+   "title": "檔案下載 /上傳 › 學校LOGO及QRCode › 興華五好LOGO(綠)",
+   "school": "hhsh",
+   "school_name": "興華高中",
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=10&cat_sn=8&fn=IMG_0250.png",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "3C"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hhsh/hhsh-info-66777537968113.json",
+   "detail_revision": "f8c3ee31b556cecb2fa3b1eaf4104842592c0578e65821c00e299573d7789b8f",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "繳交"
+    ],
+    "segments": [
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 35,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 340,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "hhsh-info-189106138156115",
+   "kind": "school_info",
+   "title": "檔案下載 /上傳 › 學校LOGO及QRCode › 興華五好LOGO(桃紅)",
+   "school": "hhsh",
+   "school_name": "興華高中",
+   "url": "https://www.hhsh.cy.edu.tw/modules/tad_uploader/index.php?op=dlfile&cfsn=3&cat_sn=8&fn=logo.png",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [
+    "3C"
+   ],
+   "documents": [],
+   "detail_ref": "data/details/hhsh/hhsh-info-189106138156115.json",
+   "detail_revision": "0acb6025615d5fe12dbde275e93a2b5e40c04e3817e03b010115957d7e5dcd63",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "繳交"
+    ],
+    "segments": [
+     {
+      "s": 104,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 145,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 291,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 335,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  }
+ ],
  "roots": [
   {
    "page_id": 151128910348640,
@@ -2336,5 +2543,5 @@
   "ff9c890f55",
   "fff273069d"
  ],
- "last_run_at": "2026-11-09T01:11:08+08:00"
+ "last_run_at": "2026-11-09T10:52:07+08:00"
 }

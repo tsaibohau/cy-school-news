@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-09T01:00:50+08:00",
+ "generated_at": "2026-11-09T10:38:22+08:00",
  "school": {
   "id": "cygsh",
   "name": "國立嘉義女子高級中學",
@@ -8,6 +8,28 @@
   "base": "https://www.cygsh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cygsh-187176",
+   "title": "【轉知】教育部116年持續辦 理高級中等以下學校教師在職進修學分班，請貴校於115 年11月17日（星期二）前，提供教師進修數量及薦送教師 名單，詳如說明，請查照",
+   "date": "2026-11-09",
+   "source_category": "最新消息",
+   "school": "cygsh",
+   "school_name": "嘉女",
+   "url": "https://www.cygsh.cy.edu.tw/p/406-1013-187176,r508.php",
+   "category": "教職員",
+   "first_seen": "2026-11-09T10:38:22+08:00",
+   "detail_status": "empty",
+   "detail_attempts": 1,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#grading"
+    ],
+    "segments": []
+   }
+  },
   {
    "id": "cygsh-187175",
    "title": "【轉知】「116學年度身心障礙學生升學大專校院甄試」招生訊息",
@@ -20,8 +42,8 @@
    "first_seen": "2026-11-09T01:00:50+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
