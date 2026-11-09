@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-09T12:43:44+08:00",
+ "generated_at": "2026-11-09T15:11:13+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -8261,7 +8261,30 @@
   },
   "1046": {
    "page_id": 1046,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T15:11:09+08:00",
+   "path": [
+    "行政單位",
+    "教務處",
+    "特教組",
+    "藝才班"
+   ],
+   "changed_at": "2026-11-09T15:11:09+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1046.json",
+   "detail_revision": "6bebe48741da8f9e390e5094ea796e874680df0cacde443fd3d9c52e9ab47cd1",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": []
+   }
   },
   "1047": {
    "page_id": 1047,
@@ -8287,7 +8310,24 @@
   },
   "1048": {
    "page_id": 1048,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-09T15:11:11+08:00",
+   "path": [
+    "行政單位",
+    "總務處",
+    "文書組",
+    "服務項目",
+    "公文小教室"
+   ],
+   "changed_at": "2026-11-09T15:11:11+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1048.json",
+   "detail_revision": "dd7bd04bcb954801d355c5afa9d3736ac7eab1a25f6f751f65e6b3a13d1ec818",
+   "detail_status": "empty",
+   "attachments": []
   },
   "1053": {
    "page_id": 1053,
@@ -36801,6 +36841,30 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cysh-info-1046",
+   "kind": "school_info",
+   "title": "教務處 › 特教組 › 藝才班",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1046.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1046.json",
+   "detail_revision": "6bebe48741da8f9e390e5094ea796e874680df0cacde443fd3d9c52e9ab47cd1",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "教務處"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "cysh-info-1047",
    "kind": "school_info",
    "title": "教務處 › 特教組 › 辦理業務",
@@ -36818,6 +36882,23 @@
    "detail_ref": "data/details/cysh/cysh-info-1047.json",
    "detail_revision": "259184d0d13dcdd100f5773b7d5232c38a2a15f7aa841ec381def46bdac088c8",
    "detail_status": "parsed"
+  },
+  {
+   "id": "cysh-info-1048",
+   "kind": "school_info",
+   "title": "文書組 › 服務項目 › 公文小教室",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1048.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-09",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1048.json",
+   "detail_revision": "dd7bd04bcb954801d355c5afa9d3736ac7eab1a25f6f751f65e6b3a13d1ec818",
+   "detail_status": "empty"
   },
   {
    "id": "cysh-info-1057",
@@ -57010,5 +57091,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-09T12:43:44+08:00"
+ "last_run_at": "2026-11-09T15:11:13+08:00"
 }
