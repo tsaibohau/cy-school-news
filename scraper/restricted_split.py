@@ -751,6 +751,53 @@ def cmd_verify(root: Path) -> int:
     return 0
 
 
+def rule_paths(rules: dict) -> list[str]:
+    """Every repo path the split may rewrite or delete."""
+    paths = [f["path"] for f in rules["files"]]
+    if rules.get("calendar_ics"):
+        paths.append(rules["calendar_ics"]["path"])
+    paths += [r["dir"] for r in rules.get("per_school", [])]
+    return sorted(set(paths))
+
+
+def cmd_stage(root: Path) -> int:
+    """Stage every split path (rewrites and deletions) so the commit always carries the split.
+
+    Workflows commit with their own `git add` lists; a rewritten file missing from such a list
+    (scraper/site_map.json, scraper/events.json, …) would otherwise keep its old full copy in git."""
+    rules = load_rules(root)
+    paths = []
+    for rel in rule_paths(rules):
+        tracked = subprocess.run(["git", "-C", str(root), "ls-files", "--error-unmatch", "--", rel],
+                                 capture_output=True).returncode == 0
+        if (root / rel).exists() or tracked:
+            paths.append(rel)
+    if not paths:
+        print("stage: nothing to stage")
+        return 0
+    done = subprocess.run(["git", "-C", str(root), "add", "-A", "--", *paths], capture_output=True, text=True)
+    if done.returncode != 0:
+        print("stage: git add failed", file=sys.stderr)
+        return 1
+    print(f"stage: {len(paths)} split path(s) staged")
+    return 0
+
+
+def cmd_verify_staged(root: Path) -> int:
+    """Leak scan of what git will commit: every split path must be identical in the index and the tree."""
+    rules = load_rules(root)
+    done = subprocess.run(["git", "-C", str(root), "diff", "--name-only", "--", *rule_paths(rules)],
+                          capture_output=True, text=True)
+    if done.returncode != 0:
+        print("verify: cannot compare the index with the tree", file=sys.stderr)
+        return 1
+    unstaged = [line for line in done.stdout.splitlines() if line.strip()]
+    if unstaged:
+        print(f"verify FAILED: {len(unstaged)} split file(s) differ from what would be committed (run stage first)")
+        return 1
+    return cmd_verify(root)
+
+
 # --------------------------------------------------------------------------- cli
 
 def main(argv=None) -> int:
@@ -765,6 +812,10 @@ def main(argv=None) -> int:
     p.add_argument("--in", dest="in_dir", required=True)
     p = sub.add_parser("verify")
     p.add_argument("--root", default=".")
+    p.add_argument("--staged", action="store_true",
+                   help="also fail when a split file differs from the git index (what will be committed)")
+    p = sub.add_parser("stage")
+    p.add_argument("--root", default=".")
     args = parser.parse_args(argv)
     try:
         root = Path(args.root).resolve()
@@ -772,7 +823,9 @@ def main(argv=None) -> int:
             return cmd_split(root, Path(args.out).resolve(), args.phase)
         if args.cmd == "restore":
             return cmd_restore(root, Path(args.in_dir).resolve())
-        return cmd_verify(root)
+        if args.cmd == "stage":
+            return cmd_stage(root)
+        return cmd_verify_staged(root) if args.staged else cmd_verify(root)
     except SplitError as exc:
         print(f"restricted_split: ERROR {exc}", file=sys.stderr)
         return 2

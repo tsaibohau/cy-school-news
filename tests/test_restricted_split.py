@@ -562,8 +562,8 @@ def test_workflows():
         modes = [re.search(r"'(\w+)'", s["if"]).group(1) for s in steps]
         assert modes[0] == "restore" and set(modes[1:]) == {"split"}
     text = (ROOT / ".github/actions/restricted-data/action.yml").read_text(encoding="utf-8")
-    order = [text.index(k) for k in ("--phase blobs", "restricted_sync.py upload", "--phase apply", "restricted_split.py verify")]
-    assert order == sorted(order), "split order: blobs -> upload+verify -> apply -> leak scan"
+    order = [text.index(k) for k in ("--phase blobs", "restricted_sync.py upload", "--phase apply", "restricted_split.py stage", "restricted_split.py verify --root . --staged")]
+    assert order == sorted(order), "split order: blobs -> upload+verify -> apply -> stage -> leak scan of what will be committed"
     assert text.index("restricted_sync.py download") < text.index("restricted_split.py restore")
 
     for name in WRITERS:
@@ -644,6 +644,32 @@ def test_transitional_restore_and_ignored_files():
         assert code == 0, out
 
 
+def test_stage_commits_every_split_file():
+    """The commit must carry the split: a rewritten file missing from a workflow's own `git add`
+    list (scraper/site_map.json, scraper/events.json) used to keep its old full copy in git."""
+    with tempfile.TemporaryDirectory() as tmp:
+        base = Path(tmp)
+        repo = make_tree(base)
+        git = lambda *a: subprocess.run(["git", "-C", str(repo), *a], check=True, capture_output=True)
+        git("init", "-q")
+        git("-c", "user.name=t", "-c", "user.email=t@example.com", "add", "-A")
+        git("-c", "user.name=t", "-c", "user.email=t@example.com", "commit", "-q", "-m", "full tree")
+        code, out = run("split", "--root", str(repo), "--out", str(base / "blobs"))
+        assert code == 0, out
+        code, out = run("verify", "--root", str(repo))
+        assert code == 0, out  # the working tree is clean …
+        code, out = run("verify", "--root", str(repo), "--staged")
+        assert code != 0, "… but nothing is staged yet: the commit would still carry restricted data"
+        code, out = run("stage", "--root", str(repo))
+        assert code == 0, out
+        code, out = run("verify", "--root", str(repo), "--staged")
+        assert code == 0, out
+        staged = subprocess.run(["git", "-C", str(repo), "diff", "--cached", "--name-only"],
+                                capture_output=True, text=True).stdout.split()
+        assert any(p.startswith("docs/data/school-info/") for p in staged), staged
+        assert "docs/data/announcements.json" in staged, staged
+
+
 def main():
     test_synthetic()
     print("restricted_split synthetic: ok")
@@ -651,6 +677,8 @@ def main():
     print("restricted_split failure handling: ok")
     test_transitional_restore_and_ignored_files()
     print("restricted_split transitional restore + git-ignored files: ok")
+    test_stage_commits_every_split_file()
+    print("restricted_split stage + verify --staged: ok")
     test_sync_client()
     print("restricted_sync: ok")
     test_workflows()
