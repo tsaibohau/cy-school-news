@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-09T15:28:10+08:00",
+ "generated_at": "2026-11-10T07:11:03+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -1654,7 +1654,30 @@
   },
   "433": {
    "page_id": 433,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-10T07:10:59+08:00",
+   "path": [
+    "教學單位",
+    "數學科",
+    "多元選修"
+   ],
+   "changed_at": "2026-11-10T07:10:59+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-433.json",
+   "detail_revision": "6ef6c3f9cfc691680b9a48a4f20238fcd2f61220b501380dc4687cd9a1c51c5a",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "多元選修",
+     "#elective"
+    ],
+    "segments": []
+   }
   },
   "436": {
    "page_id": 436,
@@ -10411,7 +10434,29 @@
   },
   "1131": {
    "page_id": 1131,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-10T07:11:01+08:00",
+   "path": [
+    "行政單位",
+    "校長室",
+    "活動相關"
+   ],
+   "changed_at": "2026-11-10T07:11:01+08:00",
+   "content_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-1131.json",
+   "detail_revision": "4af42dddca6b2263559fb07602c1e9df904a7f30fd3607ea68d3a12192be1bb3",
+   "detail_status": "empty",
+   "attachments": [],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
   },
   "1133": {
    "page_id": 1133,
@@ -39948,6 +39993,31 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cysh-info-433",
+   "kind": "school_info",
+   "title": "教學單位 › 數學科 › 多元選修",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-433.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-10",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-433.json",
+   "detail_revision": "6ef6c3f9cfc691680b9a48a4f20238fcd2f61220b501380dc4687cd9a1c51c5a",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "多元選修",
+     "#elective"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "cysh-info-472",
    "kind": "school_info",
    "title": "學務處 › 衛生組 › 清掃工作專區",
@@ -48056,6 +48126,30 @@
    "documents": [],
    "detail_ref": "data/details/cysh/cysh-info-1130.json",
    "detail_revision": "083cffbab033c0534aa463a9ed32b5c2ba1a4f45c792f66a8e7ccea76f18bfbf",
+   "detail_status": "empty",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#school_profile"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cysh-info-1131",
+   "kind": "school_info",
+   "title": "行政單位 › 校長室 › 活動相關",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-1131.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-10",
+   "attachment_names": [],
+   "keywords": [],
+   "documents": [],
+   "detail_ref": "data/details/cysh/cysh-info-1131.json",
+   "detail_revision": "4af42dddca6b2263559fb07602c1e9df904a7f30fd3607ea68d3a12192be1bb3",
    "detail_status": "empty",
    "tokens": {
     "v": 1,
@@ -75403,5 +75497,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-09T15:28:10+08:00"
+ "last_run_at": "2026-11-10T07:11:03+08:00"
 }
