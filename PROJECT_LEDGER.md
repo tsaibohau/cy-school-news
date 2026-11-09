@@ -2484,3 +2484,9 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 ## 2026-11-09 切分：提交一定帶上全部切分檔
 - 第二次執行成功（公告、封存、校園資訊、行事曆只剩嘉中），但 `scraper/site_map.json`（嘉女網站地圖）、`scraper/events.json`、`scraper/school_backlog.json` 仍是完整版：切分有改到它們，但 scrape-hourly 的 `git add` 清單沒有列這幾個檔，所以沒提交。
 - 修正：組合動作在套用切分後執行 `restricted_split.py stage`（把規則表裡每個檔案與目錄 `git add -A`），洩漏掃描改為 `verify --staged`（即將提交的內容與工作目錄不一致就失敗）。以 main 實際資料模擬：恰好清掉這三個檔。
+
+## 2026-11-09 公開教學頁「教學：程式寫法」
+
+- 新增 `docs/learn.html`：10 章（全貌、工具、網頁骨架、爬蟲、JSON、Actions 排程、PWA、規則式問校務、Supabase 與 RLS、守則與練習），附假資料搜尋練習與只存在本機的閱讀進度（localStorage `cyNews.learnDone.v1`）。
+- 入口：「設定」頁卡片 `#learnEntry`、頁尾連結；Service Worker 收進離線清單，快取 `cy-news-v173`。
+- 公開內容不含任何金鑰、專案代號、同步端點或限制學校的資料；`tests/test_learn_page.js` 擋這些字串。
