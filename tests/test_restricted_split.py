@@ -602,11 +602,55 @@ def test_workflows():
     assert "cron: '10 23,0-11,13 * * *'" in (ROOT / ".github/workflows/scrape-schedule.yml").read_text(encoding="utf-8")
 
 
+def test_transitional_restore_and_ignored_files():
+    """Before the first successful split, the tree still holds older copies of restricted entries.
+    The blob is the source of truth: each restricted announcement must appear exactly once, with
+    the blob's content. Files git never commits (.gitignore) are not leak-scanned."""
+    with tempfile.TemporaryDirectory() as tmp:
+        base = Path(tmp)
+        root = make_tree(base)
+        blobs = base / "blobs"
+        code, out = run("split", "--root", str(root), "--out", str(blobs))
+        assert code == 0, out
+        stale_base = base / "stale"
+        stale_base.mkdir()
+        stale = make_tree(stale_base)
+        ann = stale / "docs/data/announcements.json"
+        doc = json.loads(ann.read_text(encoding="utf-8"))
+        for item in doc["items"]:
+            if item["school"] != "cysh":
+                item["title"] = "舊版標題"
+        ann.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")
+        code, out = run("restore", "--root", str(stale), "--in", str(blobs))
+        assert code == 0, out
+        merged = json.loads(ann.read_text(encoding="utf-8"))["items"]
+        ids = [it["id"] for it in merged]
+        assert len(ids) == len(set(ids)), "a restricted announcement appears twice after restore"
+        assert not any(it["title"] == "舊版標題" for it in merged), "the stale tree copy must lose to the blob"
+        assert len(merged) == len(doc["items"])
+
+        # git-ignored scratch files (scraper/new_items.json) are never committed: not a leak
+        repo = make_tree(base / "gitrepo")
+        code, out = run("split", "--root", str(repo), "--out", str(base / "b-git"))
+        assert code == 0, out
+        restricted = next(s for s in SCHOOL_IDS if s != "cysh")
+        (repo / "scraper").mkdir(exist_ok=True)
+        (repo / "scraper/new_items.json").write_text(json.dumps([{"id": restricted + "-9", "school": restricted}]), encoding="utf-8")
+        code, out = run("verify", "--root", str(repo))
+        assert code != 0, "outside git, an untracked restricted file must still be reported"
+        subprocess.run(["git", "init", "-q", str(repo)], check=True)
+        (repo / ".gitignore").write_text("scraper/new_items.json\n", encoding="utf-8")
+        code, out = run("verify", "--root", str(repo))
+        assert code == 0, out
+
+
 def main():
     test_synthetic()
     print("restricted_split synthetic: ok")
     test_failure_leaves_tree_untouched()
     print("restricted_split failure handling: ok")
+    test_transitional_restore_and_ignored_files()
+    print("restricted_split transitional restore + git-ignored files: ok")
     test_sync_client()
     print("restricted_sync: ok")
     test_workflows()

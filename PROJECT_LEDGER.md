@@ -2475,3 +2475,8 @@ Recovery 最終回報：GitHub CI 雖為 failure，但現有 failure 都屬 main
 - 停用 staging-detail-backfill（會把全部學校提交到公開 staging 分支）。calendar-daily、pksh-windows-production 併入 concurrency group `scrape`。
 - 已知：git 歷史仍含舊資料（需另案重寫歷史才能清除）；docs/school-registry.js、scraper/config.json 仍列出全部學校名稱與網址（設定，非收錄資料）；第一次排程跑完才會真正把其他學校搬進私有 bucket 並從倉庫移除。
 - 版本：app v147、cy-news-v172（restricted-data.js v1）。
+
+## 2026-11-09 切分第一次上線失敗的修正
+- 第一次執行（合併 #123 後）：上傳私有儲存與讀回比對都成功，但最後的洩漏掃描抓到 `scraper/new_items.json`。這個檔案在 .gitignore 裡、從不提交，是誤報；工作流程依設計失敗、沒有提交任何資料（issue #124）。
+- 修正：洩漏掃描略過 git 忽略的檔案（git check-ignore）；還原時私有儲存為準，先丟掉工作目錄裡其他學校的舊副本再合併，避免過渡期同一則公告出現兩份。
+- 測試：tests/test_restricted_split.py 新增過渡期還原與忽略檔案；真實資料模擬（完整樹＋私有備份還原）無重複、各檔筆數一致。
