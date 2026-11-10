@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-10T12:39:29+08:00",
+ "generated_at": "2026-11-10T21:28:42+08:00",
  "school": {
   "id": "cysh",
   "name": "國立嘉義高級中學",
@@ -8,6 +8,1220 @@
   "base": "https://www.cysh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cysh-137135",
+   "title": "115年兒童權利公約繪畫及標語比賽得獎公告",
+   "date": "2026-11-10",
+   "source_category": "榮譽榜",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137135,r17.php",
+   "category": "榮譽榜",
+   "first_seen": "2026-11-10T21:28:42+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "allow"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137141",
+   "title": "轉知：國立清華大學資訊工程學系與臺灣大專院校人工智慧學程聯盟(TAICA)等單位訂於116年1月25日至28日共同辦理「2027Fun AI Camp」人工智慧營隊",
+   "date": "2026-11-10",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137141,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-10T21:28:42+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "清大",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "清大",
+       "輔導室",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-10",
+       "2027-01-25"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "自主學習",
+       "比賽",
+       "#contest",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-28"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "自主學習",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "自主學習",
+       "報名",
+       "#self_learning"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "繳交",
+       "#event"
+      ],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "比賽",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "比賽",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-12-18"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "自主學習",
+       "比賽",
+       "#contest",
+       "#self_learning",
+       "#event"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "清大"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "交大",
+       "成大",
+       "清大",
+       "社團",
+       "#club"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "雲科大"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137140",
+   "title": "轉知：社團法人中華民國應用商業管理協會2027冬令營-高中企管營(不過夜營隊)，招生中!!鼓勵 有志於往【管理學群】、【財經學群】相關科系探索體驗的同學踴躍報名參加。",
+   "date": "2026-11-10",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137140,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-10T21:28:42+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "報名",
+     "社團",
+     "#admission",
+     "#club",
+     "#enrollment",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室",
+       "社團",
+       "#club",
+       "#enrollment",
+       "#event"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-10"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "報名",
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "導師",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "自主學習",
+       "升學",
+       "#admission",
+       "#self_learning"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-02-03"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "place",
+       "method"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "課輔",
+       "請假",
+       "報名",
+       "#leave",
+       "#tutoring"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 10,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137139",
+   "title": "轉知：國立臺灣海洋大學訂於116年1月26日至27日辦理「2027年海洋科學營」",
+   "date": "2026-11-10",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137139,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-10T21:28:42+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "海大"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "海大",
+       "輔導室",
+       "#event"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-10",
+       "2027-01-26"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-12-11"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "教務處",
+       "#enrollment",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137138",
+   "title": "轉知：中興大學化學系第三十二屆化學營—「現場化位」宣傳活動資訊",
+   "date": "2026-11-10",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137138,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-10T21:28:42+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中興"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "中興",
+       "輔導室",
+       "宿舍",
+       "費用",
+       "報名",
+       "#accommodation",
+       "#enrollment"
+      ],
+      "k": [
+       "time",
+       "place",
+       "audience",
+       "fee"
+      ],
+      "d": [
+       "2026-11-10",
+       "2027-01-26",
+       "2027-01-30"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137137",
+   "title": "轉知：財團法人伊甸社會福利基金會擬於115年11月開始進行「2027伊甸服務學習寒假營隊」的招募及報名，期昐學生來投入志願服務，在服務中自我學習，培養公共參與的精神。",
+   "date": "2026-11-10",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137137,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-10T21:28:42+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "志工",
+     "寒假",
+     "報名",
+     "#admission",
+     "#event",
+     "#volunteer"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "志工",
+       "輔導室",
+       "寒假",
+       "報名",
+       "#admission",
+       "#event",
+       "#volunteer"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-10"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "志工",
+       "生活",
+       "#admission",
+       "#event",
+       "#volunteer"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "allow"
+      ],
+      "d": [
+       "2027-01-24",
+       "2027-01-25",
+       "2026-11-09",
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "註冊組",
+       "報名",
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137136",
+   "title": "臺北城市科技大學「2026北城企管全國股王股后爭霸賽」",
+   "date": "2026-11-10",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137136,r13.php",
+   "category": "競賽",
+   "first_seen": "2026-11-10T21:28:42+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-27",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23",
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 21,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-27",
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23",
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-09"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 37,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 44,
+      "t": [
+       "學生證",
+       "#student_id"
+      ],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 45,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 46,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-10-27",
+       "2023-11-20"
+      ]
+     },
+     {
+      "s": 47,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 48,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 49,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-10-27",
+       "2023-11-20"
+      ]
+     },
+     {
+      "s": 50,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23",
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 51,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-20"
+      ]
+     },
+     {
+      "s": 52,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-23"
+      ]
+     },
+     {
+      "s": 53,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 54,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2023-12-09"
+      ]
+     },
+     {
+      "s": 55,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 57,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 60,
+      "t": [
+       "記過"
+      ],
+      "k": [
+       "penalty",
+       "time"
+      ],
+      "d": [
+       "2023-11-23",
+       "2023-11-25",
+       "2023-11-26"
+      ]
+     },
+     {
+      "s": 61,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 64,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 66,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 67,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 69,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 72,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 73,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 74,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 80,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 81,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 87,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 88,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     },
+     {
+      "s": 89,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 92,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 93,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": [
+       "deny"
+      ]
+     },
+     {
+      "s": 94,
+      "t": [
+       "比賽",
+       "#contest"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137134",
+   "title": "檢送中正大學財務金融學系碩士在職專班116學年度招生宣傳 海報，請同仁踴躍報名。",
+   "date": "2026-11-10",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137134,r13.php",
+   "category": "教職員",
+   "first_seen": "2026-11-10T21:28:42+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "中正",
+     "報名",
+     "#enrollment"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cysh-137142",
+   "title": "115學年度數理及資訊學科能力競賽成績公告(物理、化學、資訊)",
+   "date": "2026-11-10",
+   "source_category": "最新消息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137142,r140.php",
+   "category": "競賽",
+   "first_seen": "2026-11-10T21:28:42+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "allow"
+      ],
+      "d": [
+       "2026-11-10"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cysh-137133",
    "title": "檢送國立中正大學「資訊管理學系碩士在職專班」116學年度招生資訊與海報，敬請同仁踴躍報名。",
@@ -20,8 +1234,8 @@
    "first_seen": "2026-11-10T12:39:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -180,8 +1394,8 @@
    "first_seen": "2026-11-10T12:39:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -242,8 +1456,8 @@
    "first_seen": "2026-11-10T12:39:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [],
@@ -333,8 +1547,8 @@
    "first_seen": "2026-11-10T12:39:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -611,8 +1825,8 @@
    "first_seen": "2026-11-10T12:39:29+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "calendar_events": [
     {
      "kind": "deadline",
@@ -34024,7 +35238,7 @@
    "category": "一般",
    "first_seen": "2026-09-29T17:45:49+08:00",
    "detail_status": "temporary_error",
-   "detail_attempts": 2,
+   "detail_attempts": 4,
    "snippet_tried": true,
    "summary_version": "extractive-v4",
    "tokens": {

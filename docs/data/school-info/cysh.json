@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-10T12:56:16+08:00",
+ "generated_at": "2026-11-10T21:40:55+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -19558,7 +19558,35 @@
   },
   "5117": {
    "page_id": 5117,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-10T21:40:33+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "【特殊需求學生服務】國家法規",
+    "特教專業知能"
+   ],
+   "changed_at": "2026-11-10T21:40:33+08:00",
+   "content_hash": "17f35fd1006fc0a6ded055bd774e78d905ac70283e35bbd25cd97c89806e2301",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-5117.json",
+   "detail_revision": "00179a795c7f34951375f8686abf17fa7d30e1a7524c2a7ca018056e03185ff0",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "認識身心障礙者特質及需求",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/71/821109158.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
   },
   "5120": {
    "page_id": 5120,
@@ -56710,6 +56738,37 @@
    }
   },
   {
+   "id": "cysh-info-5117",
+   "kind": "school_info",
+   "title": "輔導室 › 【特殊需求學生服務】國家法規 › 特教專業知能",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-5117.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-10",
+   "attachment_names": [
+    "認識身心障礙者特質及需求"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "認識身心障礙者特質及需求",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/71/821109158.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cysh/cysh-info-5117.json",
+   "detail_revision": "00179a795c7f34951375f8686abf17fa7d30e1a7524c2a7ca018056e03185ff0",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": []
+   }
+  },
+  {
    "id": "cysh-info-5122",
    "kind": "school_info",
    "title": "行政單位 › 輔導室 › 【特殊需求學生服務】最新消息",
@@ -75582,5 +75641,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-10T12:56:16+08:00"
+ "last_run_at": "2026-11-10T21:40:55+08:00"
 }
