@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-10T07:11:03+08:00",
+ "generated_at": "2026-11-10T12:56:16+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -11624,7 +11624,8 @@
   },
   "1146": {
    "page_id": 1146,
-   "status": "pending"
+   "status": "gone",
+   "checked_at": "2026-11-10T12:56:10+08:00"
   },
   "1147": {
    "page_id": 1147,
@@ -19513,7 +19514,47 @@
   },
   "5116": {
    "page_id": 5116,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-10T12:56:13+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "【特殊需求學生服務】國家法規",
+    "身心障礙者權利公約施行法"
+   ],
+   "changed_at": "2026-11-10T12:56:13+08:00",
+   "content_hash": "f2512e38397f11d1f797586e9d6d3b09d775d445453558e4813a99cfcb03cf2f",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-5116.json",
+   "detail_revision": "7f7bb5163094d24aab10a0b6bd7255afb7803af1c915a051301df9872d4e6082",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "身心障礙者權利公約圖文版",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/71/CRPD.jpg"
+    },
+    {
+     "name": "身心障礙者權利公約易讀版",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/71/546502563.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     }
+    ]
+   }
   },
   "5117": {
    "page_id": 5117,
@@ -56625,6 +56666,50 @@
    "detail_status": "parsed"
   },
   {
+   "id": "cysh-info-5116",
+   "kind": "school_info",
+   "title": "輔導室 › 【特殊需求學生服務】國家法規 › 身心障礙者權利公約施行法",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-5116.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-10",
+   "attachment_names": [
+    "身心障礙者權利公約圖文版",
+    "身心障礙者權利公約易讀版"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "身心障礙者權利公約圖文版",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/71/CRPD.jpg"
+    },
+    {
+     "name": "身心障礙者權利公約易讀版",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/71/546502563.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cysh/cysh-info-5116.json",
+   "detail_revision": "7f7bb5163094d24aab10a0b6bd7255afb7803af1c915a051301df9872d4e6082",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 2,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-5122",
    "kind": "school_info",
    "title": "行政單位 › 輔導室 › 【特殊需求學生服務】最新消息",
@@ -75497,5 +75582,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-10T07:11:03+08:00"
+ "last_run_at": "2026-11-10T12:56:16+08:00"
 }
