@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-11T10:47:08+08:00",
+ "generated_at": "2026-11-11T18:52:46+08:00",
  "school": {
   "id": "cysh",
   "name": "國立嘉義高級中學",
@@ -8,6 +8,1084 @@
   "base": "https://www.cysh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cysh-137152",
+   "title": "📢115-2 高三三類(308-313、315)【加深加廣課程】大綱及線上選課公告",
+   "date": "2026-11-11",
+   "source_category": "校園訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137152,r12.php",
+   "category": "選課",
+   "first_seen": "2026-11-11T18:52:46+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2026-12-01",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ae46a044dc35b6d7f3efceb0592ae75f1eda9e9dbf2a0b9710d10e0b4b6af14a"
+    },
+    {
+     "kind": "deadline",
+     "date": "2026-12-23",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "ae46a044dc35b6d7f3efceb0592ae75f1eda9e9dbf2a0b9710d10e0b4b6af14a"
+    }
+   ],
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "加深加廣",
+     "選課",
+     "#course",
+     "#advanced"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [
+       "學務處"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-18",
+       "2026-12-01"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "截止"
+      ],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "加深加廣",
+       "選課",
+       "#course",
+       "#advanced"
+      ],
+      "k": [
+       "method",
+       "deny"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "繳交"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [
+       "選課",
+       "志願",
+       "#admission",
+       "#course"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-12-15",
+       "2026-12-18",
+       "2026-12-23"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "加深加廣",
+       "#advanced"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "地科",
+       "選課"
+      ],
+      "k": []
+     },
+     {
+      "s": 23,
+      "t": [
+       "成大"
+      ],
+      "k": []
+     },
+     {
+      "s": 26,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 27,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 44,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 45,
+      "t": [
+       "申請入學"
+      ],
+      "k": []
+     },
+     {
+      "s": 50,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 55,
+      "t": [
+       "生活",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 56,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 58,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 59,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 61,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "加深加廣",
+       "#advanced"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 66,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 68,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 70,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 71,
+      "t": [
+       "申請入學"
+      ],
+      "k": []
+     },
+     {
+      "s": 76,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 78,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 81,
+      "t": [
+       "生活",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 82,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 84,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 85,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 87,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 95,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 96,
+      "t": [
+       "加深加廣",
+       "#advanced"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 97,
+      "t": [
+       "地科",
+       "選課"
+      ],
+      "k": []
+     },
+     {
+      "s": 110,
+      "t": [
+       "成大"
+      ],
+      "k": []
+     },
+     {
+      "s": 113,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 114,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 115,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 119,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 120,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 129,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 131,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 132,
+      "t": [
+       "申請入學"
+      ],
+      "k": []
+     },
+     {
+      "s": 137,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 139,
+      "t": [
+       "生活"
+      ],
+      "k": []
+     },
+     {
+      "s": 142,
+      "t": [
+       "生活",
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 143,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 145,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 146,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 148,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 150,
+      "t": [
+       "加深加廣",
+       "#advanced"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 153,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 155,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 157,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137150",
+   "title": "📢115-2高一多元選修大綱及線上選課公告",
+   "date": "2026-11-11",
+   "source_category": "校園訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137150,r12.php",
+   "category": "選課",
+   "first_seen": "2026-11-11T18:52:46+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "1e3164ed29eb594c9e4aa7525a0c38bc86a09f54a266ff94ab2a3d5fd8951927"
+    }
+   ],
+   "audience": {
+    "grades": [
+     1
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "多元選修",
+     "選課",
+     "#course",
+     "#elective"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "多元選修",
+       "選課",
+       "#course",
+       "#elective"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-18",
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "繳交"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "選課",
+       "志願",
+       "#admission",
+       "#course"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-12-30",
+       "2026-12-31",
+       "2027-01-05"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137151",
+   "title": "📢115-2高二多元選修大綱及線上選課公告",
+   "date": "2026-11-11",
+   "source_category": "校園訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137151,r12.php",
+   "category": "選課",
+   "first_seen": "2026-11-11T18:52:46+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2027-01-05",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "36aa2535b9cf31b0d580aa2df3a046f0e4112e06041c3e6a568fc9717d2477f3"
+    }
+   ],
+   "audience": {
+    "grades": [
+     2
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "多元選修",
+     "選課",
+     "#course",
+     "#elective"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "多元選修",
+       "選課",
+       "#course",
+       "#elective"
+      ],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       2
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-18",
+       "2026-12-03"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "繳交"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "選課",
+       "志願",
+       "#admission",
+       "#course"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2026-12-30",
+       "2026-12-31",
+       "2027-01-05"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137149",
+   "title": "轉知：南華大學開辦之【欲見‧觀自在】韓國三十三觀音巡禮朝聖研習營(第二期)：首部曲營隊資訊。",
+   "date": "2026-11-11",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137149,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-11T18:52:46+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室",
+       "#event"
+      ],
+      "k": [
+       "audience"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 5,
+      "t": [
+       "宿舍",
+       "#accommodation",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 6,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-24",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 16,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 18,
+      "t": [
+       "#event",
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137148",
+   "title": "法鼓學校財團法人法鼓文理學院「115學年度法鼓文理學院佛教學系校園課程體驗之旅」活動",
+   "date": "2026-11-11",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137148,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-11T18:52:46+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "calendar_events": [
+    {
+     "kind": "deadline",
+     "date": "2025-12-27",
+     "provenance": "verified_announcement_deadline",
+     "source_revision": "4c07b6c7b574e5325605a23ab7035ec959433dbcd1abbfc97f8958d2474dde34"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2025-12-27"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "校車",
+       "#transport",
+       "#campus_map"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "費用"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2025-12-14"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137146",
+   "title": "中央選舉委員會函以，115年11月28日（星期六）為115年地方公職人員選舉及全國性公民投票案第22案投票日，是日依法為應放假之日，請查照。",
+   "date": "2026-11-11",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137146,r13.php",
+   "category": "行政公告",
+   "first_seen": "2026-11-11T18:52:46+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "放假"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "放假"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137153",
+   "title": "115學年度數理及資訊學科能力競賽成績公告(數學、生物、地球科學)",
+   "date": "2026-11-11",
+   "source_category": "最新消息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137153,r140.php",
+   "category": "競賽",
+   "first_seen": "2026-11-11T18:52:46+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "地科",
+     "比賽",
+     "#contest"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [],
+      "k": [
+       "allow"
+      ],
+      "d": [
+       "2026-11-11"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cysh-137145",
    "title": "新北市私立徐匯高級中學辦理「Vibe Coding: AI寫程式初體驗」",
@@ -20,8 +1098,8 @@
    "first_seen": "2026-11-11T10:47:08+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -195,8 +1273,8 @@
    "first_seen": "2026-11-11T10:47:08+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
@@ -433,8 +1511,8 @@
    "first_seen": "2026-11-11T10:47:08+08:00",
    "detail_status": "parsed",
    "detail_attempts": 1,
-   "summary_version": "extractive-v4",
    "snippet_tried": true,
+   "summary_version": "extractive-v4",
    "tokens": {
     "v": 1,
     "title": [
