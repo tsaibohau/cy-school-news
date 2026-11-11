@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-10T21:40:55+08:00",
+ "generated_at": "2026-11-11T11:05:15+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -19590,7 +19590,43 @@
   },
   "5120": {
    "page_id": 5120,
-   "status": "pending"
+   "status": "ok",
+   "checked_at": "2026-11-11T11:05:11+08:00",
+   "path": [
+    "行政單位",
+    "輔導室",
+    "【特殊需求學生服務】校內辦法",
+    "特教轉銜流程圖"
+   ],
+   "changed_at": "2026-11-11T11:05:11+08:00",
+   "content_hash": "ff42d6b65dcdfe33462fd53ba6d68c86f453d1b12d4ff4ef568360c41ea99e14",
+   "doc_links": [],
+   "keywords": [],
+   "attachments_pending": false,
+   "detail_ref": "data/details/cysh/cysh-info-5120.json",
+   "detail_revision": "d13898e7c5620de2857ae5a25f97ccba0cd01ed00587a0509df2da1d6b080661",
+   "detail_status": "parsed",
+   "attachments": [
+    {
+     "name": "國立嘉義高中校內疑似特殊教育需求學生提報轉介鑑定流程圖",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/71/125149399.pdf"
+    }
+   ],
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
   },
   "5122": {
    "page_id": 5122,
@@ -56769,6 +56805,45 @@
    }
   },
   {
+   "id": "cysh-info-5120",
+   "kind": "school_info",
+   "title": "輔導室 › 【特殊需求學生服務】校內辦法 › 特教轉銜流程圖",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/412-1008-5120.php",
+   "category": "校園資訊",
+   "date": "",
+   "updated_at": "2026-11-11",
+   "attachment_names": [
+    "國立嘉義高中校內疑似特殊教育需求學生提報轉介鑑定流程圖"
+   ],
+   "keywords": [],
+   "documents": [
+    {
+     "name": "國立嘉義高中校內疑似特殊教育需求學生提報轉介鑑定流程圖",
+     "url": "https://www.cysh.cy.edu.tw/var/file/8/1008/img/71/125149399.pdf"
+    }
+   ],
+   "detail_ref": "data/details/cysh/cysh-info-5120.json",
+   "detail_revision": "d13898e7c5620de2857ae5a25f97ccba0cd01ed00587a0509df2da1d6b080661",
+   "detail_status": "parsed",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "輔導室"
+    ],
+    "segments": [
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "cysh-info-5122",
    "kind": "school_info",
    "title": "行政單位 › 輔導室 › 【特殊需求學生服務】最新消息",
@@ -75641,5 +75716,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-10T21:40:55+08:00"
+ "last_run_at": "2026-11-11T11:05:15+08:00"
 }
