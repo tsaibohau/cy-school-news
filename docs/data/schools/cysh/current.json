@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-12T02:42:16+08:00",
+ "generated_at": "2026-11-12T11:49:08+08:00",
  "school": {
   "id": "cysh",
   "name": "國立嘉義高級中學",
@@ -8,6 +8,1052 @@
   "base": "https://www.cysh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cysh-137160",
+   "title": "轉知：國立陽明交通大學推廣教育中心辦理「心智圖超記憶親子免費講座」及「2027寒假-心智圖超記憶學習營」。",
+   "date": "2026-11-12",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137160,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-12T11:49:08+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "交大",
+     "寒假",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "交大",
+       "輔導室",
+       "寒假",
+       "#event"
+      ],
+      "k": [
+       "fee"
+      ],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "家長",
+       "#event"
+      ],
+      "k": [
+       "audience",
+       "fee"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place",
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "place",
+       "method"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "寒假",
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "fee"
+      ],
+      "d": [
+       "2026-12-27"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "寒假",
+       "截止",
+       "#event"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2027-01-21",
+       "2027-02-03"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137159",
+   "title": "轉知：國立高雄餐旅大學餐飲管理系系學會 辦之「2027「餐」聚開飯啦！展開「冬」遊世界！」冬令營活動。",
+   "date": "2026-11-12",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137159,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-12T11:49:08+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-29",
+       "2027-01-31"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "place",
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "報名",
+       "#event"
+      ],
+      "k": [
+       "time",
+       "required",
+       "method"
+      ],
+      "d": [
+       "2026-12-04"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "宿舍",
+       "費用",
+       "報名",
+       "#accommodation"
+      ],
+      "k": [
+       "audience",
+       "fee"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137158",
+   "title": "轉知：文藻學校財團法人文藻外語大學辦理2027文藻國高中雙外語冬令營海報。",
+   "date": "2026-11-12",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137158,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-12T11:49:08+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "audience": {
+    "grades": [
+     3
+    ],
+    "classes": [],
+    "all_school": false
+   },
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室",
+       "#event"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-21",
+       "2027-01-24"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "audience"
+      ],
+      "g": [
+       3
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137157",
+   "title": "轉知：嘉義大學獸醫學系辦理第十四屆獸醫營活動。",
+   "date": "2026-11-12",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137157,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-12T11:49:08+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "嘉大"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "嘉大",
+       "輔導室"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-25",
+       "2027-01-29"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [
+       "截止",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-18"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "費用",
+       "報名"
+      ],
+      "k": [
+       "fee",
+       "method"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137156",
+   "title": "轉知：朝陽科技大學飛行與民航人員技術系與中華航空事業發展基金會共同辦理之「從起飛到落地D&A-2027航發會寒期高中職生航空營」。",
+   "date": "2026-11-12",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137156,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-12T11:49:08+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "time",
+       "method",
+       "allow"
+      ],
+      "d": [
+       "2027-01-27"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "required",
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "報名"
+      ],
+      "k": []
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2027-01-27",
+       "2027-01-28"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 12,
+      "t": [
+       "學生證",
+       "#safety",
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 16,
+      "t": [
+       "#enrollment"
+      ],
+      "k": []
+     },
+     {
+      "s": 17,
+      "t": [
+       "家長"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 19,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 20,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 21,
+      "t": [
+       "#transport"
+      ],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 22,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-29"
+      ]
+     },
+     {
+      "s": 23,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 24,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-29"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "audience",
+       "method"
+      ],
+      "d": [
+       "2026-11-29"
+      ]
+     },
+     {
+      "s": 26,
+      "t": [
+       "學期成績",
+       "#national",
+       "#grading"
+      ],
+      "k": [
+       "audience",
+       "required",
+       "allow"
+      ],
+      "g": [
+       1
+      ]
+     },
+     {
+      "s": 27,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "audience"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-16"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [],
+      "k": [
+       "penalty"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 36,
+      "t": [
+       "#event"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 37,
+      "t": [
+       "#admission",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 38,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "time",
+       "place"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method",
+       "contact"
+      ]
+     },
+     {
+      "s": 42,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "time",
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137155",
+   "title": "轉知：中華覺知教育關懷協會為協助國、高中學生探索生科與醫藥領域及升學方向，辦理「2026成大一日大學生－沉浸式學職涯探索營」第三梯次活動，延期至115年12月12日（星期六）舉行。",
+   "date": "2026-11-12",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137155,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-12T11:49:08+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "成大",
+     "升學",
+     "#admission"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "輔導室",
+       "成大",
+       "升學",
+       "#admission"
+      ],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-11-12",
+       "2026-12-12"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "成大",
+       "升學",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "選課",
+       "升學",
+       "#admission",
+       "#course",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 3,
+      "t": [
+       "#safety"
+      ],
+      "k": [
+       "time",
+       "place"
+      ],
+      "d": [
+       "2026-10-24",
+       "2026-12-12"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "time"
+      ],
+      "d": [
+       "2026-12-12"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [
+       "成大"
+      ],
+      "k": [
+       "place"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [
+       "#health"
+      ],
+      "k": []
+     },
+     {
+      "s": 8,
+      "t": [
+       "選課",
+       "#course"
+      ],
+      "k": []
+     },
+     {
+      "s": 9,
+      "t": [
+       "報名",
+       "截止"
+      ],
+      "k": [
+       "deadline",
+       "time"
+      ],
+      "d": [
+       "2026-11-25"
+      ]
+     },
+     {
+      "s": 10,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 11,
+      "t": [
+       "成大",
+       "學習歷程",
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 12,
+      "t": [
+       "報名",
+       "家長"
+      ],
+      "k": []
+     },
+     {
+      "s": 13,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 14,
+      "t": [
+       "#contact"
+      ],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 15,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-137154",
+   "title": "轉知：國立臺灣師範大學機電工程學系舉辦「2027 AI 智慧機器人冬令營」。",
+   "date": "2026-11-12",
+   "source_category": "校外訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-137154,r13.php",
+   "category": "研習活動",
+   "first_seen": "2026-11-12T11:49:08+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "summary_version": "extractive-v4",
+   "snippet_tried": true,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "師大",
+     "#event"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "師大",
+       "輔導室",
+       "#event"
+      ],
+      "k": [],
+      "d": [
+       "2026-11-12"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "比賽",
+       "#contest",
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [
+       "師大",
+       "報名"
+      ],
+      "k": [
+       "deadline",
+       "time",
+       "method"
+      ],
+      "d": [
+       "2026-11-09",
+       "2026-11-06"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [
+       "#event"
+      ],
+      "k": []
+     },
+     {
+      "s": 4,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "contact"
+      ]
+     }
+    ]
+   }
+  },
   {
    "id": "cysh-137152",
    "title": "📢115-2 高三三類(308-313、315)【加深加廣課程】大綱及線上選課公告",
