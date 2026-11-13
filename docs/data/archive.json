@@ -1,7 +1,81 @@
 {
- "generated_at": "2026-11-13T20:10:30+08:00",
- "hot_cutoff": "2025-11-13",
+ "generated_at": "2026-11-14T04:30:10+08:00",
+ "hot_cutoff": "2025-11-14",
  "items": [
+  {
+   "id": "cysh-133862",
+   "title": "【漏洞預警】Microsoft SQL Server 存在重大資安漏洞(CVE-2025-59499)",
+   "date": "2025-11-13",
+   "source_category": "資安訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133862,r19.php",
+   "category": "教職員",
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "網路"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 6,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-133611",
+   "title": "管樂社榮獲114學年度嘉義市音樂比賽管樂合奏A組特優",
+   "date": "2025-11-13",
+   "source_category": "重要訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133611,r136.php",
+   "category": "榮譽榜",
+   "first_seen": "2026-08-11T12:52:49+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 2,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "body_condensed": 2,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
+  },
   {
    "id": "cysh-133610",
    "title": "【漏洞預警】Samba存在高風險安全漏洞(CVE-2025-10230)，請儘速確認並進行修補",
