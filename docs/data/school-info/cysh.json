@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-14T19:38:05+08:00",
+ "generated_at": "2026-11-15T02:52:18+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -11950,7 +11950,7 @@
   "1144": {
    "page_id": 1144,
    "status": "ok",
-   "checked_at": "2026-11-09T15:27:35+08:00",
+   "checked_at": "2026-11-15T02:52:14+08:00",
    "path": [
     "協同單位",
     "校友會",
@@ -11962,11 +11962,15 @@
    "content_hash": "951ff0f3f829285f6b4dbc0707c73576b3b07f8b0d68a3295585bf1999904d92",
    "doc_links": [],
    "keywords": [
-    "申請"
+    "申請",
+    "繳交",
+    "地址",
+    "手機",
+    "電話"
    ],
-   "attachments_pending": true,
+   "attachments_pending": false,
    "detail_ref": "data/details/cysh/cysh-info-1144.json",
-   "detail_revision": "12918e775abf6ddf9fb7c7564e225555bb33567cf958cd294262471d1b0a1065",
+   "detail_revision": "c3933fb5d7b00fe9b1f0e1032c6e510917a526e592d8b55ede1324c32995fbc0",
    "detail_status": "parsed",
    "attachments": [
     {
@@ -12019,6 +12023,119 @@
       "t": [],
       "k": [
        "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "繳交"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "contact"
       ]
      }
     ]
@@ -51014,7 +51131,11 @@
     "嘉義市嘉義中學校友會校友入會申請書"
    ],
    "keywords": [
-    "申請"
+    "申請",
+    "繳交",
+    "地址",
+    "手機",
+    "電話"
    ],
    "documents": [
     {
@@ -51023,7 +51144,7 @@
     }
    ],
    "detail_ref": "data/details/cysh/cysh-info-1144.json",
-   "detail_revision": "12918e775abf6ddf9fb7c7564e225555bb33567cf958cd294262471d1b0a1065",
+   "detail_revision": "c3933fb5d7b00fe9b1f0e1032c6e510917a526e592d8b55ede1324c32995fbc0",
    "detail_status": "parsed",
    "tokens": {
     "v": 1,
@@ -51070,6 +51191,119 @@
       "t": [],
       "k": [
        "method"
+      ]
+     },
+     {
+      "s": 9,
+      "t": [],
+      "k": [
+       "required"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "#campus_map"
+      ],
+      "k": []
+     },
+     {
+      "s": 19,
+      "t": [
+       "#contact"
+      ],
+      "k": []
+     },
+     {
+      "s": 20,
+      "t": [
+       "手機",
+       "#device"
+      ],
+      "k": []
+     },
+     {
+      "s": 22,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 25,
+      "t": [],
+      "k": [
+       "audience",
+       "allow"
+      ]
+     },
+     {
+      "s": 28,
+      "t": [
+       "繳交"
+      ],
+      "k": []
+     },
+     {
+      "s": 29,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 30,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 31,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 32,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 33,
+      "t": [
+       "繳交"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 40,
+      "t": [],
+      "k": [
+       "contact"
+      ]
+     },
+     {
+      "s": 41,
+      "t": [],
+      "k": [
+       "contact"
       ]
      }
     ]
@@ -78267,5 +78501,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-14T19:38:05+08:00"
+ "last_run_at": "2026-11-15T02:52:18+08:00"
 }
