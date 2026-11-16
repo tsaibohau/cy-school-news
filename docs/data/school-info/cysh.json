@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "school": "cysh",
- "generated_at": "2026-11-16T10:59:19+08:00",
+ "generated_at": "2026-11-16T19:24:06+08:00",
  "content_access": "approved-account-required",
  "pages": {
   "86": {
@@ -20580,7 +20580,7 @@
   "5077": {
    "page_id": 5077,
    "status": "ok",
-   "checked_at": "2026-11-09T15:27:46+08:00",
+   "checked_at": "2026-11-16T19:23:59+08:00",
    "path": [
     "行政單位",
     "圖書館",
@@ -20592,14 +20592,17 @@
    "doc_links": [],
    "keywords": [
     "圖書館",
+    "校長",
+    "申請",
     "上課時間",
     "借閱",
+    "分發",
     "志工",
     "電話"
    ],
    "attachments_pending": true,
    "detail_ref": "data/details/cysh/cysh-info-5077.json",
-   "detail_revision": "ce5ea4cbdfa1f3149fa65ab04eb676122747c999bcc864f55888706ddb12d85a",
+   "detail_revision": "8934848117472725bac8a1e6f022e556fecc1ba63fc9c0ae62acc54b1f54700f",
    "detail_status": "parsed",
    "attachments": [
     {
@@ -20771,6 +20774,103 @@
       "g": [
        1
       ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "圖書館",
+       "#library",
+       "#school_profile"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 89,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
      }
     ]
    }
@@ -60153,8 +60253,11 @@
    ],
    "keywords": [
     "圖書館",
+    "校長",
+    "申請",
     "上課時間",
     "借閱",
+    "分發",
     "志工",
     "電話"
    ],
@@ -60221,7 +60324,7 @@
     }
    ],
    "detail_ref": "data/details/cysh/cysh-info-5077.json",
-   "detail_revision": "ce5ea4cbdfa1f3149fa65ab04eb676122747c999bcc864f55888706ddb12d85a",
+   "detail_revision": "8934848117472725bac8a1e6f022e556fecc1ba63fc9c0ae62acc54b1f54700f",
    "detail_status": "parsed",
    "tokens": {
     "v": 1,
@@ -60331,6 +60434,103 @@
       "g": [
        1
       ]
+     },
+     {
+      "s": 17,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 18,
+      "t": [
+       "圖書館",
+       "#library",
+       "#school_profile"
+      ],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 34,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 40,
+      "t": [
+       "#admission"
+      ],
+      "k": []
+     },
+     {
+      "s": 43,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 49,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 52,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
+     },
+     {
+      "s": 53,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 63,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 64,
+      "t": [],
+      "k": [
+       "time"
+      ]
+     },
+     {
+      "s": 83,
+      "t": [
+       "#school_profile"
+      ],
+      "k": []
+     },
+     {
+      "s": 89,
+      "t": [
+       "圖書館",
+       "#library"
+      ],
+      "k": []
      }
     ]
    }
@@ -80343,5 +80543,5 @@
    ]
   }
  ],
- "last_run_at": "2026-11-16T10:59:19+08:00"
+ "last_run_at": "2026-11-16T19:24:06+08:00"
 }
