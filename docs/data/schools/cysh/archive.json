@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-17T22:21:49+08:00",
- "hot_cutoff": "2025-11-17",
+ "generated_at": "2026-11-18T12:17:01+08:00",
+ "hot_cutoff": "2025-11-18",
  "school": {
   "id": "cysh",
   "name": "國立嘉義高級中學",
@@ -9,6 +9,137 @@
   "base": "https://www.cysh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cysh-133671",
+   "title": "【賀】本校學生參加「2025年第22屆清華盃全國高級中學化學科能力競賽」成績優異！",
+   "date": "2025-11-17",
+   "source_category": "榮譽榜",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133671,r17.php",
+   "category": "榮譽榜",
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#contest"
+    ],
+    "segments": []
+   }
+  },
+  {
+   "id": "cysh-133863",
+   "title": "【漏洞預警】Cisco旗下Catalyst Center存在重大資安漏洞(CVE-2025-20341)",
+   "date": "2025-11-17",
+   "source_category": "資安訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133863,r19.php",
+   "category": "教職員",
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "method",
+       "allow"
+      ]
+     },
+     {
+      "s": 7,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-133649",
+   "title": "轉知：國立暨南國際大學護理暨健康福祉學院護理及高齡長照原住民族專班115學年度招生資訊",
+   "date": "2025-11-17",
+   "source_category": "升學資訊",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133649,r386.php",
+   "category": "升學",
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 2,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "body_condensed": 2,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "#enrollment"
+    ],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "費用",
+       "志願",
+       "報名",
+       "升學",
+       "#admission",
+       "#enrollment"
+      ],
+      "k": [
+       "fee"
+      ]
+     },
+     {
+      "s": 1,
+      "t": [
+       "報名"
+      ],
+      "k": [
+       "method"
+      ]
+     },
+     {
+      "s": 2,
+      "t": [
+       "宿舍",
+       "考試",
+       "#accommodation",
+       "#admission",
+       "#exam",
+       "#enrollment"
+      ],
+      "k": []
+     }
+    ]
+   }
+  },
   {
    "id": "cysh-133642",
    "title": "114學科能力競賽國教署第三區得獎名單(物理/化學/資訊)",
