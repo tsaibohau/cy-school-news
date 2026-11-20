@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
- "generated_at": "2026-11-20T20:52:20+08:00",
- "hot_cutoff": "2025-11-20",
+ "generated_at": "2026-11-21T05:04:54+08:00",
+ "hot_cutoff": "2025-11-21",
  "school": {
   "id": "cysh",
   "name": "國立嘉義高級中學",
@@ -9,6 +9,100 @@
   "base": "https://www.cysh.cy.edu.tw"
  },
  "items": [
+  {
+   "id": "cysh-133864",
+   "title": "【漏洞預警】SolarWinds旗下Serv-U軟體存在3個重大資安漏洞(CVE-2025-40547)(CVE-2025-40548)(CVE-2025-40549)",
+   "date": "2025-11-20",
+   "source_category": "資安訊息",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133864,r19.php",
+   "category": "教職員",
+   "first_seen": "2026-08-12T00:00:23+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 1,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "tokens": {
+    "v": 1,
+    "title": [],
+    "segments": [
+     {
+      "s": 0,
+      "t": [
+       "網路"
+      ],
+      "k": []
+     },
+     {
+      "s": 1,
+      "t": [
+       "#safety"
+      ],
+      "k": []
+     },
+     {
+      "s": 2,
+      "t": [],
+      "k": [
+       "deadline"
+      ]
+     },
+     {
+      "s": 3,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 4,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 5,
+      "t": [],
+      "k": [
+       "allow"
+      ]
+     },
+     {
+      "s": 8,
+      "t": [],
+      "k": [
+       "method"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "cysh-133710",
+   "title": "第1141009梯次全國高級中等學校閱讀心得寫作比賽 得獎名單",
+   "date": "2025-11-20",
+   "source_category": "閱讀心得",
+   "school": "cysh",
+   "school_name": "嘉中",
+   "url": "https://www.cysh.cy.edu.tw/p/406-1008-133710,r912.php",
+   "category": "榮譽榜",
+   "first_seen": "2026-08-11T14:33:34+08:00",
+   "detail_status": "parsed",
+   "detail_attempts": 2,
+   "snippet_tried": true,
+   "summary_version": "extractive-v4",
+   "body_condensed": 2,
+   "tokens": {
+    "v": 1,
+    "title": [
+     "閱讀心得",
+     "#contest"
+    ],
+    "segments": []
+   }
+  },
   {
    "id": "cysh-133688",
    "title": "恭喜! 2026年物理奧林匹亞初選，本校同學表現優異",
